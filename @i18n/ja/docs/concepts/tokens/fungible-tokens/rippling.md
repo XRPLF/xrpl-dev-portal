@@ -15,7 +15,7 @@ Ripplingは、支払[パス](paths.md)でのみ発生します。[XRP間の直�
 
 発行アカウント以外のアカウントでは、Ripplingが望ましくない場合があります。Ripplingを使えば、他のユーザが同一通貨のイシュアー間で債権債務を移動できるようになるためです。このため、アカウントの[DefaultRippleフラグ](#defaultrippleフラグ)を有効にして、アカウントがデフォルトでRipplingを有効にしない限り、デフォルトでは[NoRippleフラグ](#norippleフラグ)により着信トラストラインでのRipplingが無効になっています。
 
-**注意:** 別のアドレスへのトラストラインを作成する場合、そのトラストラインのあなたの側でRipplingをブロックするには、tfSetNoRippleフラグを明示的に有効にする必要があります。
+{% admonition type="warning" name="注意" %}別のアドレスへのトラストラインを作成する場合、そのトラストラインのあなたの側でRipplingをブロックするには、tfSetNoRippleフラグを明示的に有効にする必要があります。{% /admonition %}
 
 ## Ripplingの例
 

@@ -18,7 +18,7 @@ There are two kinds of `LedgerHashes` object. Both types have the same fields. E
 - Exactly one "recent history" `LedgerHashes` object
 - A number of "previous history" `LedgerHashes` objects based on the current ledger index (that is, the length of the ledger history). Specifically, the XRP Ledger adds a new "previous history" object every 65536 ledger versions. <!-- STYLE_OVERRIDE: a number of -->
 
-**Note:** As an exception, a new genesis ledger has no `LedgerHashes` objects at all, because it has no ledger history.
+{% admonition type="info" name="Note" %}As an exception, a new genesis ledger has no `LedgerHashes` objects at all, because it has no ledger history.{% /admonition %}
 
 Example `LedgerHashes` object (trimmed for length):
 
@@ -63,7 +63,7 @@ Using the "recent history" `LedgerHashes` object of a given ledger, you can get 
 
 The "previous history" `LedgerHashes` entries collectively contain the hash of every 256th ledger version (also called "flag ledgers") in the full history of the ledger. When the child of a flag ledger closes, the flag ledger's hash is added to the `Hashes` array of the newest "previous history" `LedgerHashes` object. Every 65536 ledgers, `rippled` creates a new `LedgerHashes` object, so that each "previous history" object has the hashes of 256 flag ledgers.
 
-**Note:** The oldest "previous history" `LedgerHashes` object contains only 255 entries because the genesis ledger has ledger index 1, not 0.
+{% admonition type="info" name="Note" %}The oldest "previous history" `LedgerHashes` object contains only 255 entries because the genesis ledger has ledger index 1, not 0.{% /admonition %}
 
 The "previous history" `LedgerHashes` objects act as a [skip list](https://en.wikipedia.org/wiki/Skip_list) so you can get the hash of any historical flag ledger from its index. From there, you can use that flag ledger's "recent history" object to get the hash of any other ledger.
 
@@ -85,6 +85,6 @@ The **"previous history"** `LedgerHashes` objects have an ID that is the [SHA-51
 - The `LedgerHashes` space key (`0x0073`)
 - The 32-bit [Ledger Index][] of a flag ledger in the object's `Hashes` array, divided by 65536.
 
-    **Tip:** Dividing by 65536 keeps the most significant 16 bits, which are the same for all the flag ledgers listed in a "previous history" object, and only those ledgers. You can use this fact to look up the `LedgerHashes` object that contains the hash of any flag ledger.
+    {% admonition type="success" name="Tip" %}Dividing by 65536 keeps the most significant 16 bits, which are the same for all the flag ledgers listed in a "previous history" object, and only those ledgers. You can use this fact to look up the `LedgerHashes` object that contains the hash of any flag ledger.{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

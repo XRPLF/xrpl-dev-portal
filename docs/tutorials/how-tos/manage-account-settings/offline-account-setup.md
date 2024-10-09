@@ -11,7 +11,7 @@ labels:
 
 A highly secure [signing configuration](../../../concepts/transactions/secure-signing.md) involves keeping an XRP Ledger [account](../../../concepts/accounts/index.md)'s [cryptographic keys](../../../concepts/accounts/cryptographic-keys.md) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
 
-**Caution:** Proper operational security is necessary to protect your offline machine. For example, the offline machine must be physically located where untrusted people cannot get access to it, and trusted operators must be careful not to transfer compromised software onto the machine. (For example, do not use a USB drive that was previously attached to a network-connected computer.)
+{% admonition type="warning" name="Caution" %}Proper operational security is necessary to protect your offline machine. For example, the offline machine must be physically located where untrusted people cannot get access to it, and trusted operators must be careful not to transfer compromised software onto the machine. (For example, do not use a USB drive that was previously attached to a network-connected computer.){% /admonition %}
 
 ## Prerequisites
 
@@ -85,7 +85,7 @@ Take note of the following values:
 
 From an online machine, send enough XRP to the **account address** you noted in step 1. For more information, see [Creating Accounts](../../../concepts/accounts/index.md#creating-accounts).
 
-**Tip:** For testing purposes, you can use the [Testnet Faucet](/resources/dev-tools/xrp-faucets) to get a new account with Test XRP, then use that account to fund the address you generated offline.
+{% admonition type="success" name="Tip" %}For testing purposes, you can use the [Testnet Faucet](/resources/dev-tools/xrp-faucets) to get a new account with Test XRP, then use that account to fund the address you generated offline.{% /admonition %}
 
 
 
@@ -236,7 +236,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 {% /tabs %}
 
-**Tip:** If you are submitting more than 10 transactions at a time, you may have more success if you submit them in groups of 10 or less at a time, because the [transaction queue](../../../concepts/transactions/transaction-queue.md) is limited to 10 transactions from the same sender at a time. After each group of 10 transactions, wait for all the transactions to leave the queue before submitting the next group.
+{% admonition type="success" name="Tip" %}If you are submitting more than 10 transactions at a time, you may have more success if you submit them in groups of 10 or less at a time, because the [transaction queue](../../../concepts/transactions/transaction-queue.md) is limited to 10 transactions from the same sender at a time. After each group of 10 transactions, wait for all the transactions to leave the queue before submitting the next group.{% /admonition %}
 
 Retry submitting any transactions that failed with a [non-final outcome](../../../concepts/transactions/finality-of-results/index.md). There is no chance of the same transaction being processed more than once.
 

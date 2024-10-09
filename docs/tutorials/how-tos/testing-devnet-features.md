@@ -54,7 +54,7 @@ pip install xrpl-py
 
 Utilize the [server_definitions](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md) command to retrieve the definitions.json content.
 
-**Note:** Any [parallel test network](../../concepts/networks-and-servers/parallel-networks.md) may be used instead of Devnet.
+{% admonition type="info" name="Note" %}Any [parallel test network](../../concepts/networks-and-servers/parallel-networks.md) may be used instead of Devnet.{% /admonition %}
 
 {% tabs %}
 

@@ -19,7 +19,7 @@ This enables the following methods to be used on "public" [JSON-RPC and WebSocke
 
 You **do not** need to enable public signing to use these methods from an admin connection.
 
-**Caution:** Ripple does not recommend enabling public signing. Like the [wallet_propose method][], the signing commands do not perform any actions that would require administrative-level permissions, but restricting them to admin connections protects users from irresponsibly sending or receiving secret keys over unsecured communications, or to servers they do not control.
+{% admonition type="warning" name="Caution" %}Ripple does not recommend enabling public signing. Like the [wallet_propose method][], the signing commands do not perform any actions that would require administrative-level permissions, but restricting them to admin connections protects users from irresponsibly sending or receiving secret keys over unsecured communications, or to servers they do not control.{% /admonition %}
 
 To enable public signing, perform the following steps:
 

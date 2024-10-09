@@ -11,7 +11,7 @@ labels:
 
 To submit [transactions](index.md) to the XRP Ledger, you need a way to digitally sign them without compromising the security of your [secret keys](../accounts/cryptographic-keys.md). (If others gain access to your secret keys, they have as much control over your accounts as you do, and can steal or destroy all your money.) This page summarizes how to set up such an environment so you can sign transactions securely.
 
-**Tip:** If you are not submitting transactions to the network, you can safely use a trustworthy public server, such as the ones run by Ripple, to monitor for incoming transactions or read other network activity. All transactions, balances, and data in the XRP Ledger are public.
+{% admonition type="success" name="Tip" %}If you are not submitting transactions to the network, you can safely use a trustworthy public server, such as the ones run by Ripple, to monitor for incoming transactions or read other network activity. All transactions, balances, and data in the XRP Ledger are public.{% /admonition %}
 
 There are several configurations with varying levels of security that may be acceptable for your situation. Choose one of the following that best fits your needs:
 
@@ -47,11 +47,11 @@ In this configuration, you run `rippled` on the machine that generates the trans
 
     The [example config file](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
-    **Caution:** Using the [commandline API](../../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](../../tutorials/http-websocket-apis/build-apps/get-started.md) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plain text.
+    {% admonition type="warning" name="Caution" %}Using the [commandline API](../../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](../../tutorials/http-websocket-apis/build-apps/get-started.md) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plain text.{% /admonition %}
 
 3. Maintain the server to keep it running, updated, and in sync with the network while you're using it.
 
-    **Note:** You _can_ turn off your `rippled` server when you're not sending transactions, but it can take up to 15 minutes to sync with the network when you start it up again.
+    {% admonition type="info" name="Note" %}You _can_ turn off your `rippled` server when you're not sending transactions, but it can take up to 15 minutes to sync with the network when you start it up again.{% /admonition %}
 
 
 ## Run rippled on the same LAN

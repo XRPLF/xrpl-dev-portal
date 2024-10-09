@@ -278,7 +278,7 @@ This indicates that the server tried to start acquiring a new history shard, but
 - The file system became unmounted
 - The shard folder was deleted
 
-**Tip:** It is generally safe to delete `rippled`'s database files when the service is stopped, but you should never delete them while the server is running.
+{% admonition type="success" name="Tip" %}It is generally safe to delete `rippled`'s database files when the service is stopped, but you should never delete them while the server is running.{% /admonition %}
 
 
 ## Unable to determine hash of ancestor

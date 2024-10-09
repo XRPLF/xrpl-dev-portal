@@ -101,7 +101,7 @@ There is also a deprecated `ledger` parameter which accepts any of the above thr
 
 If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, the server chooses the `current` (in-progress) ledger. In [Reporting Mode](../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode), the server uses the most recent validated ledger instead. Do not provide more than one field specifying ledgers.
 
-**Note:** Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.
+{% admonition type="info" name="Note" %}Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.{% /admonition %}
 
 Reporting Mode does not record ledger data until it has been validated. If you make a request to a Reporting Mode server for the `current` or `closed` ledger, the server forwards the request to a P2P Mode server. If you request a ledger index or hash that is not validated, a Reporting Mode server responds with a `lgrNotFound` error.
 

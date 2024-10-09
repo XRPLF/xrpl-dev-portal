@@ -136,7 +136,7 @@ The response follows the [standard format][], with a successful result containin
 | `source_account`       | String - [Address][]      | The source account specified in the request. |
 | `validated`            | Boolean                   | _(May be omitted)_ If `true`, the information comes from a validated ledger version. |
 
-**Note:** A `deposit_authorized` status of `true` does not guarantee that a payment can be sent from the specified source to the specified destination. For example, the destination account may not have a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) for the specified currency, or there may not be enough liquidity to deliver a payment.
+{% admonition type="info" name="Note" %}A `deposit_authorized` status of `true` does not guarantee that a payment can be sent from the specified source to the specified destination. For example, the destination account may not have a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) for the specified currency, or there may not be enough liquidity to deliver a payment.{% /admonition %}
 
 ## Possible Errors
 

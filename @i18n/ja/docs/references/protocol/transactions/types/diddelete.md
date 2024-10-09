@@ -15,7 +15,7 @@ _([DID Amendment][] {% not-enabled /%} が必要です。)_
 
 指定した`Account`フィールドに関連付けられている[DIDレジャーエントリ](../../ledger-data/ledger-entry-types/did.md)を削除します。
 
-**注記:** このトランザクションは[共通フィールド][]のみ利用します。
+{% admonition type="info" name="注記" %}このトランザクションは[共通フィールド][]のみ利用します。{% /admonition %}
 
 
 ## {% $frontmatter.seo.title %} JSONの例

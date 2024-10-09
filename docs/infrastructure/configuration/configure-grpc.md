@@ -10,7 +10,7 @@ labels:
 
 The `rippled` server has a limited [gRPC API](https://grpc.io/) which [P2P mode servers](../../concepts/networks-and-servers/rippled-server-modes.md) can provide. Reporting mode servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.
 
-**Caution:** gRPC support is intended specifically for providing data to reporting mode servers from P2P mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.
+{% admonition type="warning" name="Caution" %}gRPC support is intended specifically for providing data to reporting mode servers from P2P mode servers. Breaking changes to the gRPC API may occur without warning or it may be removed entirely in future versions of the server.{% /admonition %}
 
 ## Prerequisites
 

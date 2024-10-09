@@ -17,7 +17,7 @@ _トランザクタ_ はトランザクションを処理し、XRP Ledgerを変�
 2. _view_ 内の値を更新、削除、挿入します。
 3. 確定した変更を _view_ からレジャーに適用します。
 
-**注記:** _view_ はレジャーのサンドボックスです。トランザクタは必要なエラーチェックと変更のすべてをサンドボックス内で行い、レジャーでは直接行いません。値が確定した後、変更はレジャーにアトミックに適用されます。
+{% admonition type="info" name="注記" %}_view_ はレジャーのサンドボックスです。トランザクタは必要なエラーチェックと変更のすべてをサンドボックス内で行い、レジャーでは直接行いません。値が確定した後、変更はレジャーにアトミックに適用されます。{% /admonition %}
 
 このチュートリアルでは、既存の`CreateCheck`トランザクションを例として使用します。ソースファイルはここで確認できます。
 
@@ -75,7 +75,7 @@ public:
     (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
     ```
 
-    **注記:** `~`記号は optional型を返します。
+    {% admonition type="info" name="注記" %}`~`記号は optional型を返します。{% /admonition %}
 
 - レジャーとトランザクションのスキーマはこちらから確認できます。
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
@@ -356,7 +356,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 - 複数のシーケンス番号を消費するチケット。
 - 設定されたフラグやフィールドによって、正常またはブロッカーとなるトランザクション。
 
-**注記:** `TxConsequences`は[トランザクションキュー](../../docs/concepts/transactions/transaction-queue.md)にのみ影響します。トランザクションがレジャーに適用されたときに手数料を請求する可能性が高い場合、それはピアに送信されます。手数料を請求する可能性がない場合、またはそれが判断できない場合は、送信されません。
+{% admonition type="info" name="注記" %}`TxConsequences`は[トランザクションキュー](../../docs/concepts/transactions/transaction-queue.md)にのみ影響します。トランザクションがレジャーに適用されたときに手数料を請求する可能性が高い場合、それはピアに送信されます。手数料を請求する可能性がない場合、またはそれが判断できない場合は、送信されません。{% /admonition %}
 
 
 ```c++

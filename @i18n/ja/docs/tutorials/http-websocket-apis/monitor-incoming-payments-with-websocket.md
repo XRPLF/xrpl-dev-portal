@@ -14,7 +14,7 @@ labels:
 
 WebSocketは、クライアントとサーバが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、リクエストごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
 
-**ヒント:** このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、[JavaScript向けxrpl.jsライブラリ](https://js.xrpl.org/)も利用すると、一部の作業を簡素化できます。このチュートリアルでは、xrpl.jsを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 _しない_ でトランザクションを監視する方法を説明します。
+{% admonition type="success" name="ヒント" %}このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、[JavaScript向けxrpl.jsライブラリ](https://js.xrpl.org/)も利用すると、一部の作業を簡素化できます。このチュートリアルでは、xrpl.jsを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 _しない_ でトランザクションを監視する方法を説明します。{% /admonition %}
 
 ## 前提条件
 
@@ -70,7 +70,7 @@ socket.addEventListener('close', (event) => {
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**ヒント:** デフォルトでは、ローカル`rippled`サーバに接続することで、インターネット上の公開サーバに接続する際に使用できる[パブリックメソッド](../../references/http-websocket-apis/public-api-methods/index.md)以外に、すべての[管理メソッド](../../references/http-websocket-apis/admin-api-methods/index.md)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。
+{% admonition type="success" name="ヒント" %}デフォルトでは、ローカル`rippled`サーバに接続することで、インターネット上の公開サーバに接続する際に使用できる[パブリックメソッド](../../references/http-websocket-apis/public-api-methods/index.md)以外に、すべての[管理メソッド](../../references/http-websocket-apis/admin-api-methods/index.md)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。{% /admonition %}
 
 例:
 
@@ -124,11 +124,11 @@ WebSocket接続では、複数のメッセージをどちらの方向にも送�
 
   - APIがリクエストの処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功したレスポンス](../../references/http-websocket-apis/api-conventions/response-formatting.md)を示します。文字列値`error`は、[エラー](../../references/http-websocket-apis/api-conventions/error-formatting.md)を示します。
 
-    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。
+    {% admonition type="danger" name="警告" %}トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。{% /admonition %}
 
 - [サブスクリプション](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfindingリクエスト](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
 
-**ヒント:** [JavaScript向けxrpl.js](https://js.xrpl.org/)は、デフォルトでこのステップに対応しています。すべての非同期APIリクエストはPromiseを使用してレスポンスを提供します。また[`.on(event, callback)`メソッド](https://js.xrpl.org/classes/Client.html#on)を使用して、ストリームをリッスンできます。
+{% admonition type="success" name="ヒント" %}[JavaScript向けxrpl.js](https://js.xrpl.org/)は、デフォルトでこのステップに対応しています。すべての非同期APIリクエストはPromiseを使用してレスポンスを提供します。また[`.on(event, callback)`メソッド](https://js.xrpl.org/classes/Client.html#on)を使用して、ストリームをリッスンできます。{% /admonition %}
 
 以下のJavaScriptコードでは、APIリクエストを便利な非同期[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)に変換するヘルパー関数を定義し、他のタイプのメッセージをグローバルハンドラーにマップするインターフェイスを設定します。
 
@@ -351,7 +351,7 @@ WS_HANDLERS["transaction"] = log_tx
 
   - **[Paymentトランザクション][]** はXRPまたは[トークン](../../concepts/tokens/index.md)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)。
 
-    **警告:** 代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](../../concepts/payment-types/partial-payments.md#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。
+    {% admonition type="danger" name="警告" %}代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](../../concepts/payment-types/partial-payments.md#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。{% /admonition %}
 
   - **[CheckCashトランザクション][]**では、アカウントは別のアカウントの[CheckCreateトランザクション][]によって承認された金額を受け取ることができます。**CheckCashトランザクション**のメタデータを確認すると、アカウントが受け取った通貨の額を確認できます。
 
@@ -491,7 +491,7 @@ $("#tx_read").click((event) => {
 
 {% /tabs %}
 
-**ヒント:** 目的のプログラミング言語の例がない場合があります。このページの最上部にある「GitHubで編集する」リンクをクリックして、作成したサンプルコードを提供してください。
+{% admonition type="success" name="ヒント" %}目的のプログラミング言語の例がない場合があります。このページの最上部にある「GitHubで編集する」リンクをクリックして、作成したサンプルコードを提供してください。{% /admonition %}
 
 ## 脚注
 

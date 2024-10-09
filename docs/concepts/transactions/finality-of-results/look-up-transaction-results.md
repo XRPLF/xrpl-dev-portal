@@ -24,7 +24,7 @@ To understand the outcome of a transaction as described in these instructions, y
     - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.
     - For outcomes of older transactions, you may want to use a [full-history server](../../networks-and-servers/ledger-history.md#full-history).
 
-**Tip:** There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](../../../references/data-api.md) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `rippled` API directly, for the most direct and authoritative results possible.
+{% admonition type="success" name="Tip" %}There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](../../../references/data-api.md) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `rippled` API directly, for the most direct and authoritative results possible.{% /admonition %}
 
 
 ## 1. Get Transaction Status
@@ -155,11 +155,11 @@ The _only_ changes made by this [no-op transaction](canceling-a-transaction.md) 
 
 - The previous transaction to affect this account was the transaction `E710CADE7FE9C26C51E8630138322D80926BE91E46D69BF2F36E6E4598D6D0CF`, which executed in ledger version 46447387, as specified in the `PreviousTxnID` and `PreviousTxnLgrSeq` fields. (This may be useful if you want to walk backwards through the account's transaction history.)
 
-    **Note:** Although the metadata does not explicitly show it, any time a transaction modifies a ledger object, it updates that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields with the current transaction's information. If the same sender has multiple transactions in a single ledger version, each one after the first provides a `PreviousTxnLgrSeq` whose value is the [ledger index](../../../references/protocol/data-types/basic-data-types.md#ledger-index) of the ledger version that included all those transactions.
+    {% admonition type="info" name="Note" %}Although the metadata does not explicitly show it, any time a transaction modifies a ledger object, it updates that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields with the current transaction's information. If the same sender has multiple transactions in a single ledger version, each one after the first provides a `PreviousTxnLgrSeq` whose value is the [ledger index](../../../references/protocol/data-types/basic-data-types.md#ledger-index) of the ledger version that included all those transactions.{% /admonition %}
 
 Since the `ModifiedNode` entry for `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`'s account is the only object in the `AffectedNodes` array, no other changes were made to the ledger as a result of this transaction.
 
-**Tip:** If the transaction sends or receives XRP, the sender's balance changes are combined with the transaction cost, resulting in a single change to the `Balance` field in the net amount. For example, if you sent 1 XRP (1,000,000 drops) and destroyed 10 drops for the transaction cost, the metadata shows your `Balance` decreasing by 1,000,010 drops of XRP.
+{% admonition type="success" name="Tip" %}If the transaction sends or receives XRP, the sender's balance changes are combined with the transaction cost, resulting in a single change to the `Balance` field in the net amount. For example, if you sent 1 XRP (1,000,000 drops) and destroyed 10 drops for the transaction cost, the metadata shows your `Balance` decreasing by 1,000,010 drops of XRP.{% /admonition %}
 
 ### General-Purpose Bookkeeping
 
@@ -233,7 +233,7 @@ All changes in token balances are reflected in [RippleState objects](../../../re
 
 A single payment may go across a long [path](../../tokens/fungible-tokens/paths.md) consisting of several trust lines and order books. The process of changing the balances on several trust lines to connect parties indirectly is called [rippling](../../tokens/fungible-tokens/rippling.md). Depending on the `issuer` specified in the transaction's `Amount` field, it is also possible that the amount delivered may be split between several trust lines (`RippleState` accounts) connected to the destination account.
 
-**Tip:** The order that modified objects are presented in the metadata does not necessarily match the order those objects were visited while processing a payment. To better understand payment execution, it may help to reorder `AffectedNodes` members to reconstruct the paths the funds took through the ledger.
+{% admonition type="success" name="Tip" %}The order that modified objects are presented in the metadata does not necessarily match the order those objects were visited while processing a payment. To better understand payment execution, it may help to reorder `AffectedNodes` members to reconstruct the paths the funds took through the ledger.{% /admonition %}
 
 Cross-currency payments consume [Offers](../../../references/protocol/ledger-data/ledger-entry-types/offer.md) in part or entirely to change between different currency codes and issuers. If a transaction shows `DeletedNode` objects for `Offer` types, that can indicate an Offer that was fully consumed, or an Offer that was found to be [expired or unfunded](../../tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) at the time of processing. If a transaction shows a `ModifiedNode` of type `Offer`, that indicates an Offer that was partially consumed.
 

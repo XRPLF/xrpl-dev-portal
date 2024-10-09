@@ -51,7 +51,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
   - [Response Format](#response-format)
   - [Possible Errors](#possible-errors)
 
-**Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
+{% admonition type="warning" name="Caution" %}If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.{% /admonition %}
 
 
 ### Get Ledger Object by ID

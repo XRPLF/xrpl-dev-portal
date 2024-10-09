@@ -71,7 +71,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 | `feature` | 文字列  | _（省略可）_ Amendmentの一意のID（16進数）またはAmendmentの短い名前。指定されている場合は、レスポンスが1つのAmendmentに限定されます。それ以外の場合はレスポンスにすべてのAmendmentのリストが表示されます。 |
 | `vetoed`  | ブール値 | （省略可、`feature`が指定されていない場合は無視されます）trueの場合、サーバに対し`feature`で指定されたAmendmentに反対票を投じるように指示します。falseの場合、サーバに対しAmendmentに賛成票を投じるように指示します。 |
 
-**注記:** サーバが新しいAmendmentの適用方法を現在認識していない場合でも、`feature`フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバを設定できます。たとえば、Amendmentをサポートする新しい`rippled`バージョンに _確実に_ アップグレードする予定がある場合などにこのように設定できます。
+{% admonition type="info" name="注記" %}サーバが新しいAmendmentの適用方法を現在認識していない場合でも、`feature`フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバを設定できます。たとえば、Amendmentをサポートする新しい`rippled`バージョンに _確実に_ アップグレードする予定がある場合などにこのように設定できます。{% /admonition %}
 
 ### レスポンスのフォーマット
 
@@ -191,7 +191,7 @@ Connecting to 127.0.0.1:5005
 | `supported` | ブール値 | サーバがこのAmendmentの適用方法を認識しているかどうか。このフィールドが`false`（サーバがこのAmendmentの適用方法を認識していない）に設定されており、`enabled`が`true`（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバが[Amendmentブロック](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked)される可能性があります。 |
 | `vetoed`    | ブール値 または 文字列 | ほとんどのAmendmentにおいて、これはサーバがこのAmendmentに反対票を投じるように指示されているかどうかを示すブール値です。コードの中で廃止とマークされているAmendmentについては、代わりに`Obsolete`という文字列を指定します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}更新: rippled 1.11.0{% /badge %}. |
 
-**注意:** Amendmentの`name`は、Amendmentの内容を厳密に示すものではありません。サーバ間でこの名前が一意であることや整合性があることは保証されません。
+{% admonition type="warning" name="注意" %}Amendmentの`name`は、Amendmentの内容を厳密に示すものではありません。サーバ間でこの名前が一意であることや整合性があることは保証されません。{% /admonition %}
 
 ### 考えられるエラー
 

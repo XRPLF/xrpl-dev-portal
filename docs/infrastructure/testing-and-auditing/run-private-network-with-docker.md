@@ -14,7 +14,7 @@ This tutorial describes how to run a private XRP Ledger network on your computer
 
 While you can easily use the public XRP Testnet servers, running a private network can be useful when trying to understand how the XRP Ledger works, or when testing new features in isolation.
 
-**Caution:** This tutorial is suited for development or testing purposes only, and does not involve using real money. You should **not** use this configuration for a production network.
+{% admonition type="warning" name="Caution" %}This tutorial is suited for development or testing purposes only, and does not involve using real money. You should **not** use this configuration for a production network.{% /admonition %}
 
 ## Learning Goals
 
@@ -44,7 +44,7 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
     docker run -it --entrypoint /bin/bash xrpllabsofficial/xrpld:latest
     ```
 
-    **Note:** For Apple M1 or M2 chips, run `docker run -it --platform linux/amd64 --entrypoint /bin/bash xrpllabsofficial/xrpld:latest` instead.
+    {% admonition type="info" name="Note" %}For Apple M1 or M2 chips, run `docker run -it --platform linux/amd64 --entrypoint /bin/bash xrpllabsofficial/xrpld:latest` instead.{% /admonition %}
 
     Sample output:
 
@@ -67,7 +67,7 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
     This file should be stored securely and not shared.
     ```
 
-    **Warning:** In a production or test environment you should follow best practices always and store the generated keys in a secure, offline, and recoverable location, such as an encrypted USB flash drive. However, as this tutorial is an example of a local development setup, storing the keys on your computer is sufficient.
+    {% admonition type="danger" name="Warning" %}In a production or test environment you should follow best practices always and store the generated keys in a secure, offline, and recoverable location, such as an encrypted USB flash drive. However, as this tutorial is an example of a local development setup, storing the keys on your computer is sufficient.{% /admonition %}
 
 3. Copy the **public_key** value from the JSON output, and store it in a text file on your computer.
 
@@ -113,7 +113,7 @@ Generate the keys for **each** of your validator nodes by using the `validator-k
 
 This section describes how to configure the validator nodes in your network.
 
-**Note:** The configuration in this tutorial enables the network to retain _some_ ledger history, but the amount of transaction history stored will depend on how long the network has been online.
+{% admonition type="info" name="Note" %}The configuration in this tutorial enables the network to retain _some_ ledger history, but the amount of transaction history stored will depend on how long the network has been online.{% /admonition %}
 
 ### Create the node directories
 
@@ -278,7 +278,7 @@ For each node, follow these steps:
 
 Docker Compose lets you manage multiple containers on your computer with a simple `yaml` file configuration. This section describes how to run the network with Docker Compose, and how to verify that the network is running successfully.
 
-**Note:**  Docker Compose ensures the containers are part of the same Docker virtual network by default, so you don't need to take any additional steps for the `rippled` containers to communicate with each other.
+{% admonition type="info" name="Note" %} Docker Compose ensures the containers are part of the same Docker virtual network by default, so you don't need to take any additional steps for the `rippled` containers to communicate with each other.{% /admonition %}
 
 To start running your private network, follow these steps:
 
@@ -352,7 +352,7 @@ Now that the private ledger network is up, you need to verify that **each** vali
     "server_state" : "proposing"
     ```
 
-    **Note:** If the state is not updated to **proposing**, repeat step **2** after a few minutes as the ledger can take some time to update.
+    {% admonition type="info" name="Note" %}If the state is not updated to **proposing**, repeat step **2** after a few minutes as the ledger can take some time to update.{% /admonition %}
 
 3. Verify the number of peers connected to the validator.
 

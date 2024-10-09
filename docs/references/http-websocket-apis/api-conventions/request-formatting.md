@@ -97,7 +97,7 @@ The commandline calls JSON-RPC, so its responses always match the JSON-RPC [resp
 
 The commandline always uses the latest [API version](#api-versioning).
 
-**Caution:** The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!
+{% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
 
 
 ## API Versioning

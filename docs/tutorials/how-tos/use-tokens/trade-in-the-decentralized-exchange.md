@@ -59,7 +59,7 @@ You must be connected to the network to submit transactions to it. Additionally,
 
 {% /tabs %}
 
-**Note:** The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
+{% admonition type="info" name="Note" %}The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.{% /admonition %}
 
 For this tutorial, click the following button to connect:
 
@@ -89,7 +89,7 @@ When you're building production-ready software, you should use an existing accou
 
 Before you buy or sell a token, you usually want to look up what others are buying and selling for, to get a sense of how others value it. In the XRP Ledger, you can look up existing offers for any currency pair using the [book_offers method][].
 
-**Tip:** Technically, this step is not a requirement for placing an Offer, but it is a good practice to confirm the current situation before trading anything with real value.
+{% admonition type="success" name="Tip" %}Technically, this step is not a requirement for placing an Offer, but it is a good practice to confirm the current situation before trading anything with real value.{% /admonition %}
 
 The following code shows how to look up existing Offers and compare them to a proposed Offer to estimate how it would execute:
 
@@ -105,7 +105,7 @@ The following code shows how to look up existing Offers and compare them to a pr
 
 {% /tabs %}
 
-**Note:** Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is [final](../../../concepts/transactions/finality-of-results/index.md).
+{% admonition type="info" name="Note" %}Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is [final](../../../concepts/transactions/finality-of-results/index.md).{% /admonition %}
 
 The following block demonstrates these calculations in action:
 

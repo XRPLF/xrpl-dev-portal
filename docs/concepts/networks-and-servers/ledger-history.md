@@ -54,7 +54,7 @@ Ripple also provides a set of public full-history servers as a public service at
 
 Providers of Full History servers reserve the right to block access that is found to abuse resources, or put inordinate load on the systems.
 
-**Tip:** Unlike some cryptocurrency networks, servers in the XRP Ledger do not need full history to know the current state and keep up with current transactions.
+{% admonition type="success" name="Tip" %}Unlike some cryptocurrency networks, servers in the XRP Ledger do not need full history to know the current state and keep up with current transactions.{% /admonition %}
 
 For instructions on setting up full history, see [Configure Full History](../../infrastructure/configuration/data-retention/configure-full-history.md).
 

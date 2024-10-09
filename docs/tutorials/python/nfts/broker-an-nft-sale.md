@@ -24,7 +24,7 @@ This example shows how to:
 
 [![Quickstart form with Broker Account](/docs/img/quickstart-py23.png)](/docs/img/quickstart-py23.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples in your own browser.
 
 ## Get Accounts
 
@@ -101,7 +101,7 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to examine the code samples.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to examine the code samples.
 
 ## ripplex5-broker-nfts.js
 <!-- SPELLING_IGNORE: ripplex5 -->

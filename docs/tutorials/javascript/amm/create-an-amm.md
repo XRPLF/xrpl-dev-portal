@@ -9,9 +9,9 @@ This example shows how to:
 
 [![Create AMM test harness](/docs/img/quickstart-create-amm1.png)](/docs/img/quickstart-create-amm1.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
 
-{% admonition type="note" name="Note" %}
+{% admonition type="info" name="Note" %}
 Without the Quickstart Samples, you will not be able to try the examples that follow.
 {% /admonition %}
 
@@ -81,7 +81,7 @@ Create a new AMM pool with XRP and the issued tokens.
 5. Enter an amount in the **Asset 2 Amount** field.
 6. Click **Create AMM**.
 
-{% admonition type="note" name="Note" %}
+{% admonition type="info" name="Note" %}
 Save the seed values of the standby and operational accounts for subsequent AMM tutorials.
 {% /admonition %}
 

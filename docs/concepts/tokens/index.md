@@ -12,7 +12,7 @@ All assets other than XRP can be represented in the XRP Ledger as _tokens_.
 
 Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Tokens can be used for [cross-currency payments](../payment-types/cross-currency-payments.md) and can be traded in the [decentralized exchange](decentralized-exchange/index.md).
 
-**Note:** Tokens on the XRP Ledger have also been called "IOUs" (as in [I-owe-you](https://en.wikipedia.org/wiki/IOU)) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that XRP Ledger tokens can represent. <!-- STYLE_OVERRIDE: ious -->
+{% admonition type="info" name="Note" %}Tokens on the XRP Ledger have also been called "IOUs" (as in [I-owe-you](https://en.wikipedia.org/wiki/IOU)) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that XRP Ledger tokens can represent. <!-- STYLE_OVERRIDE: ious -->{% /admonition %}
 
 Tokens can also be non-fungible. Non-fungible tokens (NFTs) serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
 
@@ -34,7 +34,7 @@ For more on this type of usage, see [paths](fungible-tokens/paths.md). <!--{# TO
 
 There are other use cases for tokens issued in the XRP Ledger. For example, you can create an "Initial Coin Offering" (ICO) by issuing a fixed amount of currency to a secondary address, then "throwing away the key" to the issuer.
 
-**Warning:** ICOs might be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA. <!-- SPELLING_IGNORE: ico, icos -->
+{% admonition type="danger" name="Warning" %}ICOs might be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA. <!-- SPELLING_IGNORE: ico, icos -->{% /admonition %}
 
 Be sure to research the relevant regulations before engaging in any financial service business.
 

@@ -23,7 +23,7 @@ For day-to-day payments, this may be preferable, since these types of wallets ar
 
 A non-custodial wallet, such as [Xaman](https://Xaman.app/), is one where you have the secret keys to your account. This means you're ultimately responsible for managing the security of your account.
 
-**Caution:** If you lose your keys, you are locked out of your XRP Ledger account and there are no recovery options.
+{% admonition type="warning" name="Caution" %}If you lose your keys, you are locked out of your XRP Ledger account and there are no recovery options.{% /admonition %}
 
 Non-custodial wallets allow more freedom. Since you're interacting directly with the XRP Ledger yourself, you can handle any type of transaction you want without anyone restricting your options. If the ledger allows it, you can do it. Non-custodial wallets also don't require you to trust an institution with your money, which can insulate you from market factors outside your control.
 

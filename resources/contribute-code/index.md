@@ -27,7 +27,7 @@ If you're not sure where to start, Dev Null Productions provides a detailed and 
 
 Changes to `rippled` are tracked by an XRP Ledger Standard (XLS), a document that identifies and details the specifications of a change. Before committing to development, you must start a discussion in the [XRPL-Standards repo](https://github.com/XRPLF/XRPL-Standards/discussions). This provides the community a chance to discuss and provide feedback about your change.
 
-**Note:** Bug fixes don't require an XLS, but may require an amendment.
+{% admonition type="info" name="Note" %}Bug fixes don't require an XLS, but may require an amendment.{% /admonition %}
 
 Creating an XLS has its own process, but can be summarized as:
 
@@ -46,7 +46,7 @@ After you've created an XLS draft, you now need to determine if your change requ
 - Add or remove transactions.
 - Affect consensus.
 
-**Note:** If your change doesn't need an amendment, you can go straight to coding and deployment.
+{% admonition type="info" name="Note" %}If your change doesn't need an amendment, you can go straight to coding and deployment.{% /admonition %}
 
 Implementing code as an amendment requires you to add the amendment to these files:
 
@@ -65,7 +65,7 @@ The general development path breaks down as follows:
 
 1. Create a fork or branch in the [`rippled` repository](https://github.com/XRPLF/rippled) to develop your code.
 
-    **Tip:** If you're not sure where to start, _Dev Null Productions_ provides a detailed and thorough [`rippled` Source Code Guide](https://xrpintel.com/source).
+    {% admonition type="success" name="Tip" %}If you're not sure where to start, _Dev Null Productions_ provides a detailed and thorough [`rippled` Source Code Guide](https://xrpintel.com/source).{% /admonition %}
 
 2. Run unit and integration tests. Running a server in _stand-alone mode_ is useful for testing your changes in an isolated environment, but you may want to stand up a private network for extensive changes.
 

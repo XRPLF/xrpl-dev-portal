@@ -114,7 +114,7 @@ The response follows the [standard format][], with a successful result containin
 |-------|------|-------------|
 | `signature_verified` | Boolean | If `true`, the signature is valid for the stated amount, channel, and public key. |
 
-**Caution:** This does not indicate check that the channel has enough XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [account_channels method][].
+{% admonition type="warning" name="Caution" %}This does not indicate check that the channel has enough XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [account_channels method][].{% /admonition %}
 
 ## Possible Errors
 

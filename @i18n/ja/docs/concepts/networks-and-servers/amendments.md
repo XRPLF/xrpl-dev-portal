@@ -12,7 +12,7 @@ Amendmentは、トランザクション処理における新機能またはそ�
 
 Amendmentシステムは、XRP Ledger上のトランザクション処理に影響を与える変更を合意形成プロセスを用いて承認します。完全に機能するトランザクション処理の変更は、Amendmentとして提出され、バリデータはその変更について投票します。もしAmendmentが2週間にわたって80%超の支持を得た場合、そのAmendmentは可決され、その後のすべてのレジャーバージョンに変更が恒久的に適用されます。可決されたAmendmentを無効にするには、別の新たなAmendmentが必要です。
 
-**注記:** トランザクションプロセスを変更するバグ修正にも、Amendmentが必要です。
+{% admonition type="info" name="注記" %}トランザクションプロセスを変更するバグ修正にも、Amendmentが必要です。{% /admonition %}
 
 <!-- Amendmentチュートリアルに移動します。
 すべてのAmendmentには、16進数の一意な短い名前があります。短い名前は読みやすくするためだけのものです。サーバは同じ Amendment IDを表すのに異なる名前を使うことができ、その名前が一意であることは保証されていません。Amendment IDは、Amendmentの短い名前のSHA-512Halfハッシュでなければなりません。
@@ -33,7 +33,7 @@ Amendmentのコードがソフトウェアリリースに組み込まれた後�
     * `tfLostMajority`フラグはAmendmentへの支持が80%以下になったことを意味します。
     * フラグなしは、Amendmentが有効であることを意味します。
 
-    **注記:** Amendmentが有効化されるために必要な2週間の期間に達したのと同一のレジャーで、80%の支持を失う可能性があります。このような場合、両方のシナリオで `EnableAmendment`擬似トランザクションが追加されますが、最終的にそのAmendmentは有効になります。
+    {% admonition type="info" name="注記" %}Amendmentが有効化されるために必要な2週間の期間に達したのと同一のレジャーで、80%の支持を失う可能性があります。このような場合、両方のシナリオで `EnableAmendment`擬似トランザクションが追加されますが、最終的にそのAmendmentは有効になります。{% /admonition %}
 
 4. **フラグレジャー +2:** Amendmentが有効になった場合、このレジャー以降のトランザクションに適用されます。
 
@@ -42,7 +42,7 @@ Amendmentのコードがソフトウェアリリースに組み込まれた後�
 
 `rippled`の各バージョンは、[既知のAmendment](/resources/known-amendments.md)のリストとそれらのAmendmentを実装するためのコードでコンパイルされています。`rippled`バリデータのオペレータは、各Amendmentに投票するようにサーバを設定し、いつでも変更することができます。オペレータが投票を選択しない場合、サーバはソースコードで定義されたデフォルトの投票を使用します。
 
-**注記:** デフォルトの投票はソフトウェアのリリースごとに変更される可能性があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}更新: rippled 1.8.1{% /badge %}
+{% admonition type="info" name="注記" %}デフォルトの投票はソフトウェアのリリースごとに変更される可能性があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}更新: rippled 1.8.1{% /badge %}{% /admonition %}
 
 Amendmentが有効になるには、信頼できるバリデータの80%超から2週間の支持を得なければなりません。支持率が80%以下となると、そのAmendmentは一時的に却下され、再び2週間の支持が必要となります。Amendmentは、恒久的に有効になるまで、何度でも過半数を獲得したり失ったりすることができます。
 

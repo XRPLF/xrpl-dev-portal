@@ -15,7 +15,7 @@ steps: ['Generate', 'Connect', 'Choose Trust Line', 'Send TrustSet to Freeze', '
 
 This tutorial shows the steps to [freeze an individual trust line](../../../concepts/tokens/fungible-tokens/freezes.md#individual-freeze). The issuer of a token in the XRP Ledger may freeze the trust line to a particular counterparty if that account is engaged in suspicious activity.
 
-**Tip:** As a reminder, freezes only apply to issued tokens, not XRP.
+{% admonition type="success" name="Tip" %}As a reminder, freezes only apply to issued tokens, not XRP.{% /admonition %}
 
 
 ## Prerequisites
@@ -195,7 +195,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 {% /interactive-block %}
 
-**Note:** If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each trust line. It is possible to send several transactions in a single ledger if you use a different [sequence number](../../../references/protocol/data-types/basic-data-types.md#account-sequence) for each transaction. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->
+{% admonition type="info" name="Note" %}If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each trust line. It is possible to send several transactions in a single ledger if you use a different [sequence number](../../../references/protocol/data-types/basic-data-types.md#account-sequence) for each transaction. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->{% /admonition %}
 
 
 ### 5. Wait for Validation
@@ -213,7 +213,7 @@ At this point, the trust line from the counterparty should be frozen. You can ch
 | `account` | String | Your address. (In this case, the issuing address.) |
 | `peer`    | String | The address of the counterparty.                   |
 
-**Caution:** The response includes _all_ trust lines between the two accounts. (Each different currency code uses a different trust line.) Be sure to check the one for the right token.
+{% admonition type="warning" name="Caution" %}The response includes _all_ trust lines between the two accounts. (Each different currency code uses a different trust line.) Be sure to check the one for the right token.{% /admonition %}
 
 In the response, the field `"freeze": true` indicates that the account from the request has enabled an Individual Freeze on that trust line. The field `"freeze_peer": true` indicates that the counterparty (`peer`) from the request has frozen the trust line. For example:
 

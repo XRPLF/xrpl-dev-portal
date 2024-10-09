@@ -23,7 +23,7 @@ The key principles of a DID are:
 
 - **Interoperability:** DIDs are open to any solution that recognizes the W3C DID standard. This means a DID can be used to authenticate and establish trust in various digital transactions and interactions.
 
-**Note:** The implementation of DIDs on the XRP Ledger conforms to the requirements in the [DID v1.0 specification](https://www.w3.org/TR/did-core/).
+{% admonition type="info" name="Note" %}The implementation of DIDs on the XRP Ledger conforms to the requirements in the [DID v1.0 specification](https://www.w3.org/TR/did-core/).{% /admonition %}
 
 
 ## How It Works
@@ -38,14 +38,14 @@ The key principles of a DID are:
 
 DID documents contain the necessary information to cryptographically verify the identity of the subject described by a DID document. The subject can be a person, organization, or thing. For example, a DID document could contain cryptographic public keys that the DID subject can use to authenticate itself and prove its association with the DID.
 
-**Note:** DID documents usually serialize to a JSON or JSON-LD representation.
+{% admonition type="info" name="Note" %}DID documents usually serialize to a JSON or JSON-LD representation.{% /admonition %}
 
 On the XRP Ledger, there are several ways to associate a DID to a DID document:
 
 1. Store a reference to the document in the `URI` field of the `DID` object, which points to a document stored on another decentralized storage network, such as IPFS or STORJ.
 2. Store a minimal DID document in the `DIDDocument` field of the `DID` object.
 3. Use a minimal _implicit_ DID document generated from the DID and other available public information.
-    **Note:** Simpler use cases may only need signatures and simple authorization tokens. In cases where there isn't explicitly a DID document on the ledger, an implicit document is used instead. For example, the implicit DID Document of `did:xrpl:1:0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` enables only a single key `0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` to authorize changes on the DID document or sign credentials in the name of the DID.
+    {% admonition type="info" name="Note" %}Simpler use cases may only need signatures and simple authorization tokens. In cases where there isn't explicitly a DID document on the ledger, an implicit document is used instead. For example, the implicit DID Document of `did:xrpl:1:0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` enables only a single key `0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` to authorize changes on the DID document or sign credentials in the name of the DID.{% /admonition %}
 
 
 ### Sample XRPL DID Document

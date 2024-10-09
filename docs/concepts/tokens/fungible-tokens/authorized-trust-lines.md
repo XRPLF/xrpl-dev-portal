@@ -17,7 +17,7 @@ You can authorize a trust line by sending a [TrustSet transaction][] from your i
 
 The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address.
 
-**Caution:** You can only enable Require Auth if your account has no trust lines and no Offers in the XRP Ledger, so you must decide whether or not to use it _before_ you start issuing tokens.
+{% admonition type="warning" name="Caution" %}You can only enable Require Auth if your account has no trust lines and no Offers in the XRP Ledger, so you must decide whether or not to use it _before_ you start issuing tokens.{% /admonition %}
 
 ## Reserves
 
@@ -32,7 +32,7 @@ With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process 
 3. The customer sends a [TrustSet transaction][] to create a trust line to the issuer's address, with a positive limit.
 4. The issuer sends a TrustSet transaction to authorize the customer's trust line.
 
-**Tip:** The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line.
+{% admonition type="success" name="Tip" %}The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line.{% /admonition %}
 
 ## As a Precaution
 

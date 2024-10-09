@@ -22,7 +22,7 @@ To help members of the XRP Ledger community interact with XRP Ledger technology 
 
 Each altnet has its own separate supply of test XRP, which is [given away for free](/resources/dev-tools/xrp-faucets) to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.
 
-**Caution:** Unlike the XRP Ledger Mainnet, test networks are usually _centralized_ and there are no guarantees about the stability and availability of these networks. They have been and continue to be used to test various properties of server configuration, network topology, and network performance.
+{% admonition type="warning" name="Caution" %}Unlike the XRP Ledger Mainnet, test networks are usually _centralized_ and there are no guarantees about the stability and availability of these networks. They have been and continue to be used to test various properties of server configuration, network topology, and network performance.{% /admonition %}
 
 
 ## Parallel Networks and Consensus

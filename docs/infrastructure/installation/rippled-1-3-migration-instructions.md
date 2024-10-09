@@ -70,7 +70,7 @@ Ripple's official RPM repository and instructions for using it have changed. If 
     ```
 
 
-**Warning:** If you use [automatic updates](update-rippled-automatically-on-linux.md), they should continue working after performing this migration process. However, **the `ripple-repo` package is now deprecated**. As a consequence, in the future, any changes to Ripple's repositories may require you to manually update your repos file.
+{% admonition type="danger" name="Warning" %}If you use [automatic updates](update-rippled-automatically-on-linux.md), they should continue working after performing this migration process. However, **the `ripple-repo` package is now deprecated**. As a consequence, in the future, any changes to Ripple's repositories may require you to manually update your repos file.{% /admonition %}
 
 
 ## Migration on Ubuntu Linux

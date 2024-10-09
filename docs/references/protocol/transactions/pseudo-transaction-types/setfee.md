@@ -10,7 +10,7 @@ labels:
 
 A `SetFee` [pseudo-transaction](pseudo-transaction-types.md) marks a change in [transaction cost](../../../../concepts/transactions/transaction-cost.md) or [reserve requirements](../../../../concepts/accounts/reserves.md) as a result of [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md).
 
-**Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
+{% admonition type="info" name="Note" %}You cannot send a pseudo-transaction, but you may find one when processing ledgers.{% /admonition %}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

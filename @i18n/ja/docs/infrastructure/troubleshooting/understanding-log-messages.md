@@ -177,7 +177,7 @@ ShardStore:ERR shard 2236: No such file or directory
 - ファイルシステムがアンマウントされた
 - シャードフォルダーが削除された
 
-**ヒント:** 一般的に、サービスが停止している場合は、`rippled`のデータベースファイルを削除しても安全ですが、サーバの稼働中には決してデータベースファイルを削除しないでください。
+{% admonition type="success" name="ヒント" %}一般的に、サービスが停止している場合は、`rippled`のデータベースファイルを削除しても安全ですが、サーバの稼働中には決してデータベースファイルを削除しないでください。{% /admonition %}
 
 
 ## Unable to determine hash of ancestor

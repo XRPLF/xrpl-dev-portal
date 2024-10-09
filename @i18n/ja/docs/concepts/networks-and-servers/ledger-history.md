@@ -50,7 +50,7 @@ XRP Ledgerネットワーク内の一部のサーバは、「すべての履歴�
 XRP Ledger財団は、コミュニティメンバーが運営する一連の全履歴サーバへのアクセスを提供しています（詳細は[xrplcluster.com](https://xrplcluster.com)を参照）。
 また、Ripple社は公開サービスとして、`s2.ripple.com`に一連の公開全履歴サーバを提供しています。
 
-**ヒント:** 一部の暗号資産ネットワークとは異なり、XRP Ledgerのサーバは、現在の状態を認識して最新のトランザクションを把握するのにすべての履歴を必要としません。
+{% admonition type="success" name="ヒント" %}一部の暗号資産ネットワークとは異なり、XRP Ledgerのサーバは、現在の状態を認識して最新のトランザクションを把握するのにすべての履歴を必要としません。{% /admonition %}
 
 すべての履歴の設定については、[完全な履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)をご覧ください。
 

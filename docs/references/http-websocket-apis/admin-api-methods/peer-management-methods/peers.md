@@ -412,7 +412,7 @@ The `metrics` object contains the following fields:
 | `total_bytes_recv` | String  | The total number of bytes of data received from this peer. |
 | `total_bytes_sent` | String  | The total number of bytes of data sent to this peer. |
 
-**Note:** All of the fields in the `metrics` object are 64-bit unsigned integers serialized to string format so that they do not lose precision in JSON encoding/decoding.
+{% admonition type="info" name="Note" %}All of the fields in the `metrics` object are 64-bit unsigned integers serialized to string format so that they do not lose precision in JSON encoding/decoding.{% /admonition %}
 
 ### Possible Errors
 

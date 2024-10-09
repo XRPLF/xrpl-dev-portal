@@ -165,7 +165,7 @@ The response follows the [standard format][], with a successful result containin
 | `send_currencies`    | Array of Strings           | Array of [Currency Code][]s for currencies that this account can send. |
 | `validated`          | Boolean                    | If `true`, this data comes from a validated ledger. |
 
-**Note:** The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method _doesn't_ check whether the trust line is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) or authorized.
+{% admonition type="info" name="Note" %}The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method _doesn't_ check whether the trust line is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) or authorized.{% /admonition %}
 
 ## Possible Errors
 

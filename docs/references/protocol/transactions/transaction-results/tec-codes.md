@@ -13,7 +13,7 @@ These codes indicate that the transaction failed, but it was applied to a ledger
 
 Transactions with `tec` codes destroy the XRP paid as a [transaction cost](../../../../concepts/transactions/transaction-cost.md), and consume a [sequence number](../../data-types/basic-data-types.md#account-sequence). For the most part, the transactions take no other action, but there are some exceptions. For example, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer). Always look at the [transaction metadata](../metadata.md) to see precisely what a transaction did.
 
-**Caution:** A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) and [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md).
+{% admonition type="warning" name="Caution" %}A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) and [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md).{% /admonition %}
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|

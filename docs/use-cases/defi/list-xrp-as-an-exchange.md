@@ -60,7 +60,7 @@ Before integrating, exchanges should be aware of the [partial payments](../../co
 
 When the [`tfPartialPayment` flag](../../references/protocol/transactions/types/payment.md#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
 
-**Warning:** Be aware that malicious actors could exploit this. For more information, see [Partial Payments](../../concepts/payment-types/partial-payments.md).
+{% admonition type="danger" name="Warning" %}Be aware that malicious actors could exploit this. For more information, see [Partial Payments](../../concepts/payment-types/partial-payments.md).{% /admonition %}
 
 ### Accounts
 

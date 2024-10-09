@@ -8,7 +8,7 @@ parent: https://js.xrpl.org/
 
 **ripple-lib** (1.x)ライブラリからJavaScript / TypeScriptコードを移行し、代わりにXRP Ledger用**xrpl.js** (2.x)ライブラリーを使用するためには、以下の手順に従ってください。
 
-**ヒント:** 必要な場合は、依然[legacy 1.x "RippleAPI"用ドキュメンテーション](https://github.com/XRPLF/xrpl.js/blob/1.x/docs/index.md)にアクセスできます。
+{% admonition type="success" name="ヒント" %}必要な場合は、依然[legacy 1.x "RippleAPI"用ドキュメンテーション](https://github.com/XRPLF/xrpl.js/blob/1.x/docs/index.md)にアクセスできます。{% /admonition %}
 
 ## 差異の概略
 

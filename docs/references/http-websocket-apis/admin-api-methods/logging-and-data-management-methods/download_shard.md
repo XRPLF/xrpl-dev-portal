@@ -131,7 +131,7 @@ The response follows the [standard format][], with a successful result containin
 |:----------|:-------|:--------------------------------------------------------|
 | `message` | String | A message describing the actions taken in response to this request. |
 
-**Tip:** To see which shards your server has available, use the [crawl_shards method][]. Alternatively, you can look at the subfolders in your configured location for the shard store (the `path` parameter of `[shard_db]` in your `rippled.cfg`). The folders are named to match the numbers of the shards; up to one of those folders may contain a `control.txt` file indicating that the shard is incomplete.
+{% admonition type="success" name="Tip" %}To see which shards your server has available, use the [crawl_shards method][]. Alternatively, you can look at the subfolders in your configured location for the shard store (the `path` parameter of `[shard_db]` in your `rippled.cfg`). The folders are named to match the numbers of the shards; up to one of those folders may contain a `control.txt` file indicating that the shard is incomplete.{% /admonition %}
 
 ### Possible Errors
 

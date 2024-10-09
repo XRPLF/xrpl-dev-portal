@@ -18,7 +18,7 @@ The FlowV2 Engine also makes it easier to improve and expand the payment engine 
 
 If you operate a `rippled` server, you should upgrade to version 0.32.1 by Wednesday, 2016-08-24 for the best performance.
 
-**Note:** A previous version of this post incorrectly stated that backend software must be updated to construct transactions for the new payment processing engine. The process of creating and submitting transactions for the FlowV2 payment engine is the same as for the previous payment engine.
+{% admonition type="info" name="Note" %}A previous version of this post incorrectly stated that backend software must be updated to construct transactions for the new payment processing engine. The process of creating and submitting transactions for the FlowV2 payment engine is the same as for the previous payment engine.{% /admonition %}
 
 ## Impact of Not Upgrading
 

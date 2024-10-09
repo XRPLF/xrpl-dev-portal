@@ -11,7 +11,7 @@ labels:
 
 All pending escrows are stored in the ledger as [Escrow objects](../../../../concepts/payment-types/escrow.md). You can look them up by the sender's address or the destination address.
 
-**Note:** You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment][] was enabled on 2017-11-14.
+{% admonition type="info" name="Note" %}You can only look up pending escrow objects by destination address if those escrows were created after the [fix1523 amendment][] was enabled on 2017-11-14.{% /admonition %}
 
 Use the [account_objects method][], where the sender or destination address is the `account` value.
 

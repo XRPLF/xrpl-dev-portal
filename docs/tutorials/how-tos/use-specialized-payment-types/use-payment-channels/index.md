@@ -24,7 +24,7 @@ The example addresses used in this tutorial are:
 | **Public key used for channel (in hex)** | `023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6` |
 | **Payee's address** | `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` |
 
-**Tip:** In this example, the channel's public key is the public key from the payer's master key pair. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->
+{% admonition type="success" name="Tip" %}In this example, the channel's public key is the public key from the payer's master key pair. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->{% /admonition %}
 
 Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
@@ -56,11 +56,11 @@ You can match up the numbered steps in this diagram with the steps of this tutor
 
 This is a [PaymentChannelCreate transaction][]. As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel. <!-- STYLE_OVERRIDE: will -->
 
-**Tip:** The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.
+{% admonition type="success" name="Tip" %}The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.{% /admonition %}
 
 The following example shows creation of a payment channel by [submitting](../../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
-**Note:** A payment channel counts as one object toward the payer's [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
+{% admonition type="info" name="Note" %}A payment channel counts as one object toward the payer's [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.{% /admonition %}
 
 Request:
 

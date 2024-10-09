@@ -13,7 +13,7 @@ _[DepositPreauth Amendment][]により追加されました。_
 
 DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。これは、このトランザクションの送信者が[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用している（または使用する予定がある）場合にのみ有用です。
 
-**ヒント:** このトランザクションを使用して、Deposit Authorizationを有効にする前に特定の取引相手を事前承認できます。これは、Deposit Authorizationの義務化への円滑な移行に役立ちます。
+{% admonition type="success" name="ヒント" %}このトランザクションを使用して、Deposit Authorizationを有効にする前に特定の取引相手を事前承認できます。これは、Deposit Authorizationの義務化への円滑な移行に役立ちます。{% /admonition %}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

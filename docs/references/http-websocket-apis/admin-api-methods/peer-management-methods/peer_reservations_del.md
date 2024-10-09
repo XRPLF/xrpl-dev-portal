@@ -13,7 +13,7 @@ The {% code-page-name /%} method removes a specific [peer reservation][], if one
 
 _The {% code-page-name /%} method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
-**Note:** Removing a peer reservation does not automatically disconnect the corresponding peer, if that peer is connected.
+{% admonition type="info" name="Note" %}Removing a peer reservation does not automatically disconnect the corresponding peer, if that peer is connected.{% /admonition %}
 
 ### Request Format
 
@@ -119,7 +119,7 @@ The response follows the [standard format][], with a successful result containin
 |:--------|:-------|:----------------------------------------------------------|
 | `previous` | Object | _(May be omitted)_ A **peer reservation object** with the last state of the peer reservation before deleting it. This field is always provided if a peer reservation was successfully deleted. |
 
-**Note:** If the specified reservation did not exist, this command returns success with an empty result object. In this case, the `previous` field is omitted.
+{% admonition type="info" name="Note" %}If the specified reservation did not exist, this command returns success with an empty result object. In this case, the `previous` field is omitted.{% /admonition %}
 
 #### Peer Reservation Object
 

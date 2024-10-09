@@ -108,7 +108,7 @@ After a transaction has been executed, the XRP Ledger adds [metadata](../../refe
 
 You can check a transaction's status using the API, for example using the [tx command](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md).
 
-**Caution:** The results of a transaction, including all its metadata, are not final unless the transaction appears in a **validated** ledger. See also: [Finality of Results](finality-of-results/index.md).
+{% admonition type="warning" name="Caution" %}The results of a transaction, including all its metadata, are not final unless the transaction appears in a **validated** ledger. See also: [Finality of Results](finality-of-results/index.md).{% /admonition %}
 
 Example response from the `tx` command:
 

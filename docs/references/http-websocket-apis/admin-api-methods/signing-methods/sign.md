@@ -14,7 +14,7 @@ The `sign` method takes a [transaction in JSON format](../../../protocol/transac
 {% partial file="/docs/_snippets/public-signing-note.md" /%}
 
 
-**Caution:** Unless you run the `rippled` server yourself, you should do local signing using a [client library](../../../client-libraries.md) instead of using this command. For more information, see [Set Up Secure Signing](../../../../concepts/transactions/secure-signing.md).
+{% admonition type="warning" name="Caution" %}Unless you run the `rippled` server yourself, you should do local signing using a [client library](../../../client-libraries.md) instead of using this command. For more information, see [Set Up Secure Signing](../../../../concepts/transactions/secure-signing.md).{% /admonition %}
 
 ## Request Format
 An example of the request format:
@@ -212,7 +212,7 @@ The response follows the [standard format][], with a successful result containin
 | `tx_blob` | String | Binary representation of the fully-qualified, signed transaction, as hex |
 | `tx_json` | Object | JSON specification of the [complete transaction](../../../protocol/transactions/index.md) as signed, including any fields that were automatically filled in |
 
-**Caution:** If this command results in an error messages, the message can contain a secret value provided in the request. Make sure that these errors are not visible to others.
+{% admonition type="warning" name="Caution" %}If this command results in an error messages, the message can contain a secret value provided in the request. Make sure that these errors are not visible to others.{% /admonition %}
 
 * Do not write this error to a log file that can be seen by multiple people.
 * Do not paste this error to a public place for debugging.

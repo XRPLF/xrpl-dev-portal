@@ -262,6 +262,8 @@ ul.nav.navbar-nav {
   --link-color-primary-hover: #9a52ff;
   
   --search-highlight-text-color: #4BB7FF; /* color-blue-4 */
+  
+  --code-block-tokens-comment-color: #C1C1C2; /* color-gray-3 */
 }
 
 :root .form-control-plaintext {

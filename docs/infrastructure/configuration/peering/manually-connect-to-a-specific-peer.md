@@ -10,7 +10,7 @@ labels:
 
 Use these steps to manually connect your server to a specific [peer](../../../concepts/networks-and-servers/peer-protocol.md) in the XRP Ledger network.
 
-**Tip:** If you want to make sure your server automatically connects to this server on startup and remains connected later, you may want to configure a [peer reservation](use-a-peer-reservation.md) for that peer.
+{% admonition type="success" name="Tip" %}If you want to make sure your server automatically connects to this server on startup and remains connected later, you may want to configure a [peer reservation](use-a-peer-reservation.md) for that peer.{% /admonition %}
 
 
 ## Prerequisites

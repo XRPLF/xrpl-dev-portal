@@ -12,7 +12,7 @@ _(Added by the [NegativeUNL amendment][].)_
 
 A `UNLModify` [pseudo-transaction](pseudo-transaction-types.md) marks a change to the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), indicating that a trusted validator has gone offline or come back online.
 
-**Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
+{% admonition type="info" name="Note" %}You cannot send a pseudo-transaction, but you may find one when processing ledgers.{% /admonition %}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

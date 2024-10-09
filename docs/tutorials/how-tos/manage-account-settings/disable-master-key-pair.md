@@ -11,7 +11,7 @@ labels:
 
 This page describes how to disable the [master key pair](../../../concepts/accounts/cryptographic-keys.md) that is mathematically associated with an [account](../../../concepts/accounts/index.md)'s address. You should do this if your account's master key pair may have been compromised, or if you want to make [multi-signing](../../../concepts/accounts/multi-signing.md) the _only_ way to submit transactions from your account.
 
-**Warning:** Disabling the master key pair removes one method of [authorizing transactions](../../../concepts/transactions/index.md#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.md), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.
+{% admonition type="danger" name="Warning" %}Disabling the master key pair removes one method of [authorizing transactions](../../../concepts/transactions/index.md#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.md), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.{% /admonition %}
 
 **To disable the master key pair, you must use the master key pair.** However, you can _re-enable_ the master key pair using any other method of authorizing transactions.
 
@@ -40,13 +40,13 @@ Prepare an [AccountSet transaction][] from your account with the field `"SetValu
 }
 ```
 
-**Tip:** It is strongly recommended to also provide the `LastLedgerSequence` field so that you can [reliably get the outcome of the transaction in a predictable amount of time](../../../concepts/transactions/reliable-transaction-submission.md).
+{% admonition type="success" name="Tip" %}It is strongly recommended to also provide the `LastLedgerSequence` field so that you can [reliably get the outcome of the transaction in a predictable amount of time](../../../concepts/transactions/reliable-transaction-submission.md).{% /admonition %}
 
 ### 2. Sign Transaction
 
 You must use the **master key pair** to sign the transaction.
 
-**Warning:** Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](../../../concepts/transactions/secure-signing.md#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](../../../concepts/transactions/secure-signing.md).
+{% admonition type="danger" name="Warning" %}Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](../../../concepts/transactions/secure-signing.md#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](../../../concepts/transactions/secure-signing.md).{% /admonition %}
 
 #### Example Request
 

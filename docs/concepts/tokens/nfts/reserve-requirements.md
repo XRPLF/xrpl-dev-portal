@@ -38,7 +38,7 @@ The following table provides examples of how much the total owner reserve might 
 
 Each `NFTokenOffer` object costs the account placing the offer one incremental reserve. As of this writing, the incremental reserve is 2 XRP. The reserve can be recovered by cancelling the offer. The reserve is also recovered if the offer is accepted, which removes the offer from the XRP Ledger.
 
-**Tip** After you sell an NFT, as a courtesy, cancel any stale `NFTokenOffer` objects on behalf of your bidders to give them back their reserve. You can do this with [NFTokenCancelOffer](../../../references/protocol/transactions/types/nftokencanceloffer.md) transactions.
+{% admonition type="success" name="Tip" %}After you sell an NFT, as a courtesy, cancel any stale `NFTokenOffer` objects on behalf of your bidders to give them back their reserve. You can do this with [NFTokenCancelOffer](../../../references/protocol/transactions/types/nftokencanceloffer.md) transactions.{% /admonition %}
 
 ## Practical Considerations
 
@@ -54,7 +54,7 @@ If you create a new account, mint an NFT, and create an `NFTokenSellOffer` on th
 | Total               | 14 XRP  |
 |                     |         |
 
-**Note** While not a reserve requirement, keep in mind that you would want to have at least 1 XRP above your reserves to cover the trivial fee for each transaction in the mint and sell process (typically 12 drops, or .000012 XRP).
+{% admonition type="info" name="Note" %}While not a reserve requirement, keep in mind that you would want to have at least 1 XRP above your reserves to cover the trivial fee for each transaction in the mint and sell process (typically 12 drops, or .000012 XRP).{% /admonition %}
 
 If you were to mint 200 NFTs and create an `NFTokenSellOffer`for each, that would require as much as 436 XRP held in reserve.
 

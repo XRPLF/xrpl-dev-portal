@@ -58,7 +58,7 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 [tfPartialPaymentフラグ](../../references/protocol/transactions/types/payment.md#paymentのフラグ)が有効にされると、`Amount`フィールド **_は受取り金額とは同じでなくなることがあります_** 。支払いのメタデータにある`delivered_amount`フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。支払いを受信するときに、Amountフィールドの代わりに、`delivered_amount`を使用してアカウントで受信した金額を判断します。
 
-**警告:** この機能が悪用されることがあります。詳細については、[Partial Payments](../../concepts/payment-types/partial-payments.md)をご覧ください。
+{% admonition type="danger" name="警告" %}この機能が悪用されることがあります。詳細については、[Partial Payments](../../concepts/payment-types/partial-payments.md)をご覧ください。{% /admonition %}
 
 ### アカウント
 

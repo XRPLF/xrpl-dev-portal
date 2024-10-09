@@ -18,7 +18,7 @@ The signature must be from one of the keys on the door's signer list at the time
 
 Any account can submit signatures.
 
-**Note:** The reward is only sent to accounts that have keys on the current list. A quorum of signers need to agree on the `SignatureReward`, the same way they need to agree on the other data. A single witness server can't provide an incorrect value for this in an attempt to collect a larger reward.
+{% admonition type="info" name="Note" %}The reward is only sent to accounts that have keys on the current list. A quorum of signers need to agree on the `SignatureReward`, the same way they need to agree on the other data. A single witness server can't provide an incorrect value for this in an attempt to collect a larger reward.{% /admonition %}
 
 
 ## Example XChainAddAccountCreateAttestation JSON

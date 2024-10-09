@@ -59,7 +59,7 @@ A token issuer can submit an [AccountSet transaction][] to change the `TransferR
 
 Anyone can check an account's `TransferRate` with the [account_info method][]. If the `TransferRate` is omitted, then that indicates no fee.
 
-**Note:** The ledger may contain accounts with a transfer fee larger than the current maximum. The [fix1201 amendment](/resources/known-amendments.md#fix1201), enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). Transfer fees that were already set continue to apply at their stated rate.
+{% admonition type="info" name="Note" %}The ledger may contain accounts with a transfer fee larger than the current maximum. The [fix1201 amendment](/resources/known-amendments.md#fix1201), enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). Transfer fees that were already set continue to apply at their stated rate.{% /admonition %}
 
 ## Client Library Support
 

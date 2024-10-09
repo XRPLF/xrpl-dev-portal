@@ -53,4 +53,4 @@ If you run a `rippled` server [connected to the XRP Testnet](https://xrpl.org/co
 # systemctl restart rippled.service
 ```
 
-**Warning:** Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of a `rippled` server's database files, but you should only do this if the configured database folder is not used for anything other than `rippled`'s databases.
+{% admonition type="danger" name="Warning" %}Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of a `rippled` server's database files, but you should only do this if the configured database folder is not used for anything other than `rippled`'s databases.{% /admonition %}

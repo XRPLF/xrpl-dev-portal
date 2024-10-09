@@ -36,7 +36,7 @@ The request contains the following parameters:
 | `limit`        | Integer | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value.|
 
 
-**Note** If you do not specify a ledger version, Clio uses the latest validated ledger.
+{% admonition type="info" name="Note" %}If you do not specify a ledger version, Clio uses the latest validated ledger.{% /admonition %}
 
 ## Response Format
 

@@ -22,7 +22,7 @@ For a validator in AWS, consider `z1d.2xlarge` with an extra 1 TB disk for loggi
 
 ## Minimum Specifications
 
-**Caution:** These specifications are not enough to reliably [stay synced with Mainnet](../troubleshooting/server-doesnt-sync.md). For production use, follow the recommended specifications above.
+{% admonition type="warning" name="Caution" %}These specifications are not enough to reliably [stay synced with Mainnet](../troubleshooting/server-doesnt-sync.md). For production use, follow the recommended specifications above.{% /admonition %}
 
 For testing purposes, you can run an XRP Ledger server on commodity hardware with the following minimum requirements:
 

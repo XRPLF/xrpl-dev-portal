@@ -84,7 +84,7 @@ XRP Ledgerの堅牢性は、他のバリデータが共謀しないことをそ�
 - [新しいジェネシスレジャー](../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md)を最初から作成する。
 - ディスクから[既存のレジャーバージョンを読み込み](../../infrastructure/testing-and-auditing/load-a-saved-ledger-in-stand-alone-mode.md)、特定のトランザクションを再生して、その結果を再現したり、他の可能性をテストする。
 
-**注意:** スタンドアロンモードでは[レジャーを手動で進める](../../infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode.md)必要があります。
+{% admonition type="warning" name="注意" %}スタンドアロンモードでは[レジャーを手動で進める](../../infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode.md)必要があります。{% /admonition %}
 
 ## 関連項目
 

@@ -14,7 +14,7 @@ For regulatory purposes, some issuers need the ability to recover tokens after t
 
 Issuers can gain the ability to claw back their tokens by enabling the **Allow Clawback** flag on their issuing account. This flag cannot be enabled if the issuer has already issued tokens.
 
-**Note:** You can only claw back issued tokens created by your account. You cannot claw back XRP in this way.
+{% admonition type="info" name="Note" %}You can only claw back issued tokens created by your account. You cannot claw back XRP in this way.{% /admonition %}
 
 Clawback is disabled by default. To use clawback, you must send an [AccountSet transaction][] to enable the **Allow Trust Line Clawback** setting. **An issuer with any existing tokens cannot enable Clawback.** You can only enable **Allow Trust Line Clawback** if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.
 

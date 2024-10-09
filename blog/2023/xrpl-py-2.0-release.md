@@ -91,7 +91,7 @@ response = send_reliable_submission(signed_tx, client)
 response = submit_and_wait(tx, client, test_wallet)
 ```
 
-**Tip:** You can also use `submit_and_wait` as a direct replacement for `send_reliable_submission` if you want to handle autofill and signing separately from transaction submission. 
+{% admonition type="success" name="Tip" %}You can also use `submit_and_wait` as a direct replacement for `send_reliable_submission` if you want to handle autofill and signing separately from transaction submission. {% /admonition %}
 
 #### `submit_transaction` -> `submit`
 
@@ -205,7 +205,7 @@ Payment(
 )
 ```
 
-**Tip:** You can also omit the `sequence` field and use `autofill` before signing your transaction. The `submit_and_wait` method does this automatically when you give it an unsigned transaction.
+{% admonition type="success" name="Tip" %}You can also omit the `sequence` field and use `autofill` before signing your transaction. The `submit_and_wait` method does this automatically when you give it an unsigned transaction.{% /admonition %}
 
 
 #### `Wallet.classic_address` -> `Wallet.address`
@@ -227,7 +227,9 @@ Payment(
     amount="10",
 )
 ```
-**Tip:** `classic_address` still exists as an alias, and both are now also read-only since they should never change.
+{% admonition type="success" name="Tip" %}
+`classic_address` still exists as an alias, and both are now also read-only since they should never change.
+{% /admonition %}
 
 ### Other changes
 
@@ -262,7 +264,7 @@ DUMMY_BYTES = b"\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10"
 seed = generate_seed(DUMMY_BYTES.hex())
 ```
 
-**Note:** If your string is longer than 16 bytes, you must truncate it before passing it into `generate_seed()`. Previously, the method would quietly truncate it for you, but now it is explicit in order to raise errors when the wrong data type is provided.
+{% admonition type="info" name="Note" %}If your string is longer than 16 bytes, you must truncate it before passing it into `generate_seed()`. Previously, the method would quietly truncate it for you, but now it is explicit in order to raise errors when the wrong data type is provided.{% /admonition %}
 
 #### Sign (async -> sync)
 
@@ -362,7 +364,7 @@ You can install this version of xrpl-py using pip:
 pip install xrpl-py
 ```
 
-**Note:** The xrpl-py 2.0 release does not include Automated Market-Maker (AMM) or Sidechains functionality. Those are on separate beta branches.
+{% admonition type="info" name="Note" %}The xrpl-py 2.0 release does not include Automated Market-Maker (AMM) or Sidechains functionality. Those are on separate beta branches.{% /admonition %}
 
 If you're just getting started using xrpl-py, see [Get Started Using Python](https://xrpl.org/get-started-using-python.html), the [xrpl-py source code repository](https://github.com/XRPLF/xrpl-py), or [reference documentation](https://xrpl-py.readthedocs.io/en/stable/).
 

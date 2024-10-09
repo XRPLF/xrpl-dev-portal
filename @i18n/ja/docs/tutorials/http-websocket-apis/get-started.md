@@ -14,7 +14,7 @@ showcase_icon: assets/img/logos/globe.svg
 
 自分の好みのプログラミング言語の[クライアント・ライブラリ](../../references/client-libraries.md)を持っていなかったり、使いたくなかったりする場合は、XRP Ledgerのコアサーバソフトウェアである[`rippled`](../../concepts/networks-and-servers/index.md)のAPIを通して直接XRP Ledgerにアクセスすることができます。このサーバはJSON-RPCとWebSocketプロトコルでAPIを提供します。もし`rippled`(install-rippled.html)のインスタンスを実行しない場合でも、[公開サーバ][public servers]を利用することができます。
 
-**ヒント:** [**WebSocket API ツール**](/resources/dev-tools/websocket-api-tool)を使ってAPIを利用することもできますし、[XRP Ledger Explorer](https://livenet.xrpl.org/)を使ってレジャーの進捗をライブで見ることもできます。
+{% admonition type="success" name="ヒント" %}[**WebSocket API ツール**](/resources/dev-tools/websocket-api-tool)を使ってAPIを利用することもできますし、[XRP Ledger Explorer](https://livenet.xrpl.org/)を使ってレジャーの進捗をライブで見ることもできます。{% /admonition %}
 
 ## JSON-RPCとWebSocketの違い
 
@@ -87,7 +87,7 @@ rippled --conf=/etc/rippled.cfg server_info
 
 さらに見る: [dコマンドライン使用リファレンス >](../../infrastructure/commandline-usage.md)
 
-**注記:** コマンドラインインターフェイスは、管理の目的でのみ使用されることを想定しており _サポートされるAPIではありません_。`rippled`の将来のバージョンでは、警告なしにコマンドラインAPIに破壊的変更を加える可能性があります！
+{% admonition type="info" name="注記" %}コマンドラインインターフェイスは、管理の目的でのみ使用されることを想定しており _サポートされるAPIではありません_。`rippled`の将来のバージョンでは、警告なしにコマンドラインAPIに破壊的変更を加える可能性があります！{% /admonition %}
 
 ## 利用可能なメソッド
 

@@ -33,7 +33,7 @@ Linuxでは、`rippled`が1回限りの`cron`構成を使用して最新バー�
 
 
 
-**注意:** 将来的には、Rippleのリポジトリが変更された場合に、更新を検索するスクリプトが実行されるURLの手動更新が必要となることがあります。必要な変更についての最新情報は、[XRP Ledgerブログ](/blog/)または[ripple-serverメーリングリスト](https://groups.google.com/forum/#!forum/ripple-server)でお知らせします。
+{% admonition type="warning" name="注意" %}将来的には、Rippleのリポジトリが変更された場合に、更新を検索するスクリプトが実行されるURLの手動更新が必要となることがあります。必要な変更についての最新情報は、[XRP Ledgerブログ](/blog/)または[ripple-serverメーリングリスト](https://groups.google.com/forum/#!forum/ripple-server)でお知らせします。{% /admonition %}
 
 
 ## 関連項目

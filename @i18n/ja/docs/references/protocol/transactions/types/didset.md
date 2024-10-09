@@ -40,7 +40,7 @@ _([DID Amendment][] {% not-enabled /%} が必要です。)_
 
 `DIDSet`トランザクションを送信するときには`Data`、`DIDDocument`、`URI`のいずれかを含める必要があります。この3つのフィールドが欠けていると、トランザクションは失敗します。
 
-**注記:** 既存のDIDレジャーエントリから`Data`、`DIDDocument`、`URI`フィールドを削除するには、そのフィールドを空文字列として設定します。
+{% admonition type="info" name="注記" %}既存のDIDレジャーエントリから`Data`、`DIDDocument`、`URI`フィールドを削除するには、そのフィールドを空文字列として設定します。{% /admonition %}
 
 
 ## エラーケース

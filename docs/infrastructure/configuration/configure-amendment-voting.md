@@ -48,7 +48,7 @@ rippled feature SHAMapV2 reject
 
 {% /tabs %}
 
-**Note:** The short name of the amendment is case-sensitive. You can also use an amendment's ID as hexadecimal, which is not case sensitive.
+{% admonition type="info" name="Note" %}The short name of the amendment is case-sensitive. You can also use an amendment's ID as hexadecimal, which is not case sensitive.{% /admonition %}
 
 ## Using the Config File
 
@@ -61,7 +61,7 @@ If you prefer to use the config file to configure amendment voting, you can add 
 
 Be sure to restart your server for changes to take effect.
 
-**Caution:** Any commands in the `[rpc_startup]` stanza run each time the server starts up, which can override voting settings you configured while the server was running.
+{% admonition type="warning" name="Caution" %}Any commands in the `[rpc_startup]` stanza run each time the server starts up, which can override voting settings you configured while the server was running.{% /admonition %}
 
 ## See Also
 

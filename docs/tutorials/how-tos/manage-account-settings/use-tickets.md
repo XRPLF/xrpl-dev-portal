@@ -56,7 +56,7 @@ You must be connected to the network to submit transactions to it. Since Tickets
 
 {% /tabs %}
 
-**Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
+{% admonition type="info" name="Note" %}The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.{% /admonition %}
 
 For this tutorial, click the following button to connect:
 
@@ -153,7 +153,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 The power of Tickets is that you can carry on with your account's business as usual while you are getting Ticketed transactions ready. When you want to send a transaction using a Ticket, you can do that in parallel with other sending transactions, including ones using different Tickets, and submit a Ticketed transaction at any time. The only constraint is that each Ticket can only be used once.
 
-**Tip:** You can come back here to send Sequenced transactions between or during any of the following steps, without interfering with the success of your Ticketed transaction.
+{% admonition type="success" name="Tip" %}You can come back here to send Sequenced transactions between or during any of the following steps, without interfering with the success of your Ticketed transaction.{% /admonition %}
 
 {% interactive-block label="Intermission" steps=$frontmatter.steps %}
 
@@ -186,7 +186,7 @@ When you want to send a Ticketed transaction, you need to know what Ticket Seque
 
 {% /interactive-block %}
 
-**Tip:** You can repeat the steps from here through the end as long as you have Tickets left to be used!
+{% admonition type="success" name="Tip" %}You can repeat the steps from here through the end as long as you have Tickets left to be used!{% /admonition %}
 
 ### 8. Prepare Ticketed Transaction
 

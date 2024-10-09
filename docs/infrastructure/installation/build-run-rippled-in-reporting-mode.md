@@ -34,7 +34,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 1. Ensure that your system meets the [system requirements](system-requirements.md).
 
-    **Note:** If you choose to use Cassandra as the database, the disk requirements for `rippled` will be lower as the data will not be stored on your local disk.  
+    {% admonition type="info" name="Note" %}If you choose to use Cassandra as the database, the disk requirements for `rippled` will be lower as the data will not be stored on your local disk.  {% /admonition %}
 
 2. You also need to run at least one `rippled` server in P2P mode.
 

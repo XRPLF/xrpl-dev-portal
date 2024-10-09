@@ -14,7 +14,7 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 
 This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java or `XRPL_PHP` for PHP. First, we step through the process with the [XRP Ledger Testnet](../../concepts/networks-and-servers/parallel-networks.md). Then, we compare that to the additional requirements for doing the equivalent in production.
 
-**Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples) for a complete version of the code used in this tutorial.
+{% admonition type="success" name="Tip" %}Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples) for a complete version of the code used in this tutorial.{% /admonition %}
 
 ## Prerequisites
 
@@ -302,7 +302,7 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 - **JavaScript:** Use the response from `submitAndWait()` or call the [tx method][] using [`Client.request()`](https://js.xrpl.org/classes/Client.html#request).
 
-    **Tip:** In **TypeScript** you can pass a [`TxRequest`](https://js.xrpl.org/interfaces/TxRequest.html) to the [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) method.
+    {% admonition type="success" name="Tip" %}In **TypeScript** you can pass a [`TxRequest`](https://js.xrpl.org/interfaces/TxRequest.html) to the [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) method.{% /admonition %}
 
 - **Python:** Use the response from [`submit_and_wait()`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) or call the [`xrpl.transaction.get_transaction_from_hash()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash). (See the [tx method response format](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md#response-format) for a detailed reference of the fields this can contain.)
 
@@ -330,7 +330,7 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 {% /tabs %}
 
-**Caution:** XRP Ledger APIs may return tentative results from ledger versions that have not yet been validated. For example, in [tx method][] response, be sure to look for `"validated": true` to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](../../concepts/transactions/finality-of-results/index.md).
+{% admonition type="warning" name="Caution" %}XRP Ledger APIs may return tentative results from ledger versions that have not yet been validated. For example, in [tx method][] response, be sure to look for `"validated": true` to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](../../concepts/transactions/finality-of-results/index.md).{% /admonition %}
 
 {% interactive-block label="Check" steps=$frontmatter.steps %}
 
@@ -393,7 +393,7 @@ print_r("Seed: " . $wallet->getSeed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoU
 
 {% /tabs %}
 
-**Warning:** You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.
+{% admonition type="danger" name="Warning" %}You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.{% /admonition %}
 
 Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to [fund the account](../../concepts/accounts/index.md#creating-accounts). A common way to acquire XRP is to buy it from an exchange, then withdraw it to your own address.
 
@@ -471,7 +471,7 @@ $client = new JsonRpcClient("http://localhost:5005");
 
 {% /tabs %}
 
-**Tip:** The local connection uses an unencrypted protocol (`ws` or `http`) rather than the TLS-encrypted version (`wss` or `https`). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use `wss` or `https`.
+{% admonition type="success" name="Tip" %}The local connection uses an unencrypted protocol (`ws` or `http`) rather than the TLS-encrypted version (`wss` or `https`). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use `wss` or `https`.{% /admonition %}
 
 ## Next Steps
 

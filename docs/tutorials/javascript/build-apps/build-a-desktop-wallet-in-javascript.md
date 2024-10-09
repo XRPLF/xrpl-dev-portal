@@ -21,7 +21,7 @@ To complete this tutorial, you should meet the following requirements:
 
 You can find the complete source code for all of this tutorial's examples in the {% repo-link path="_code-samples/build-a-desktop-wallet/js/" %}code samples section of this website's repository{% /repo-link %}. After a `npm install` in this directory you can run the application for each step as described in the `scripts` section of  `package.json`, e.g, `npm run ledger-index`.
 
-**Caution:** Be careful if you copy-and-paste the source code from these directly from these files. The sample code is split up into different files per step, so some shared imports and files are in different directories in the examples. This especially applies to the `library`, `bootstrap`, and `WALLET_DIR` contents.
+{% admonition type="warning" name="Caution" %}Be careful if you copy-and-paste the source code from these directly from these files. The sample code is split up into different files per step, so some shared imports and files are in different directories in the examples. This especially applies to the `library`, `bootstrap`, and `WALLET_DIR` contents.{% /admonition %}
 
 ## Rationale
 
@@ -154,7 +154,7 @@ app.whenReady().then(() => {
 npm run start
 ```
 
-**Tip:** When you need to debug the application, you can open Developer Tools like in Chrome or Firefox by selecting "View / Toggle Developer Tools" from The application Menu or using a Shortcut ("Ctrl+Shift+I" on Windows or Linux, "Option+Command+I on Mac).
+{% admonition type="success" name="Tip" %}When you need to debug the application, you can open Developer Tools like in Chrome or Firefox by selecting "View / Toggle Developer Tools" from The application Menu or using a Shortcut ("Ctrl+Shift+I" on Windows or Linux, "Option+Command+I on Mac).{% /admonition %}
 
 You should see a window appear that displays the text "Build a XRPL Wallet" and "Hello world!"
 To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:

@@ -12,7 +12,7 @@ You can start a `rippled` server in [Stand-Alone Mode](../../concepts/networks-a
 
 Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](../../concepts/networks-and-servers/amendments.md) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](../../concepts/consensus-protocol/consensus-protections.md) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process.
 
-**Caution:** As `rippled` is updated to newer versions, amendments are retired and become core functions of the ledger, which can affect how transactions are processed. To produce historically accurate results, you need to replay ledgers using the version of `rippled` the transaction was processed in.
+{% admonition type="warning" name="Caution" %}As `rippled` is updated to newer versions, amendments are retired and become core functions of the ledger, which can affect how transactions are processed. To produce historically accurate results, you need to replay ledgers using the version of `rippled` the transaction was processed in.{% /admonition %}
 
 ## 1. Start `rippled` normally.
 

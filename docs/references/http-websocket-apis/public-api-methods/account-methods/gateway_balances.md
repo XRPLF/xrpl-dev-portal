@@ -12,7 +12,7 @@ labels:
 
 The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md).
 
-**Caution:** Some public servers disable this API method because it can require a large amount of processing.
+{% admonition type="warning" name="Caution" %}Some public servers disable this API method because it can require a large amount of processing.{% /admonition %}
 
 ## Request Format
 An example of the request format:

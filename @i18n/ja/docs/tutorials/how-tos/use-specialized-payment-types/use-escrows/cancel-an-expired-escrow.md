@@ -114,6 +114,6 @@ EscrowCancelトランザクションの識別用ハッシュを指定した[tx�
 
 上記の例では、`r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT`がEscrowの送金元であり、`Balance`が99999**8**9990 dropから99999**9**9990 dropに増加していることから、エスクローに預託されていた10,000 XRP dropが返金されたことがわかります（drop = 0.01XRP） 。
 
-**ヒント:** Escrowを実行する[EscrowFinishトランザクション][]で使用する`OfferSequence`が不明な場合は、Escrowの`PreviousTxnID`フィールドのトランザクションの識別用ハッシュを指定した[txメソッド][]を使用して、そのEscrowを作成したトランザクションを検索します。Escrowを終了するときには、そのトランザクションの`Sequence`の値を`OfferSequence`の値として使用します。
+{% admonition type="success" name="ヒント" %}Escrowを実行する[EscrowFinishトランザクション][]で使用する`OfferSequence`が不明な場合は、Escrowの`PreviousTxnID`フィールドのトランザクションの識別用ハッシュを指定した[txメソッド][]を使用して、そのEscrowを作成したトランザクションを検索します。Escrowを終了するときには、そのトランザクションの`Sequence`の値を`OfferSequence`の値として使用します。{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

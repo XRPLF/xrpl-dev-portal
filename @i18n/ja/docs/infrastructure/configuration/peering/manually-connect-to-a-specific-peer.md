@@ -10,7 +10,7 @@ labels:
 
 サーバをXRP Ledgerネットワーク内の特定の[ピア](../../../concepts/networks-and-servers/peer-protocol.md)に手動で接続するには、次の手順を実行します。
 
-**ヒント:** サーバが起動時にこのサーバに自動的に接続して、以降も接続を維持するようにするには、そのピアに対して[ピアリザベーション](use-a-peer-reservation.md)を設定することができます。
+{% admonition type="success" name="ヒント" %}サーバが起動時にこのサーバに自動的に接続して、以降も接続を維持するようにするには、そのピアに対して[ピアリザベーション](use-a-peer-reservation.md)を設定することができます。{% /admonition %}
 
 
 ## 前提条件

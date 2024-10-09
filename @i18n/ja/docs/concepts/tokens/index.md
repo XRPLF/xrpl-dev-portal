@@ -10,7 +10,7 @@ labels:
 
 XRP以外のすべての資産は、XRP Ledgerでは **トークン** として扱うことができます。通常のトークンは、アカウント間の[トラストライン](fungible-tokens/index.md) と呼ばれる関係で管理されます。すべてのアカウントは、トークンを保有することを許可する他のアカウントにはトークンを発行できますが、トークンを必要としないアカウントに一方的にトークンを配付することはできません。トークンは、台帳の外に存在する資産に裏付けられた「ステーブルコイン」、XRP Ledger上で独自に作成された純粋なデジタルトークン、コミュニティクレジットなど、様々な種類の価値を表すことが出来ます。
 
-**注記:** XRP Ledger上のトークンは、過去に「IOUs」（[I-owe-you](https://en.wikipedia.org/wiki/IOU)の略）および「発行済み通貨」とも呼ばれてきました。しかし、これらの呼称は、XRP Ledgerのトークンが表すことのできるデジタル資産の全範囲をカバーしていないため、望ましくないとされています。<!-- STYLE_OVERRIDE: ious -->
+{% admonition type="info" name="注記" %}XRP Ledger上のトークンは、過去に「IOUs」（[I-owe-you](https://en.wikipedia.org/wiki/IOU)の略）および「発行済み通貨」とも呼ばれてきました。しかし、これらの呼称は、XRP Ledgerのトークンが表すことのできるデジタル資産の全範囲をカバーしていないため、望ましくないとされています。<!-- STYLE_OVERRIDE: ious -->{% /admonition %}
 
 通常のトークンは代替可能です。つまり、同じトークンはすべて代替可能であり、区別がつきません。非代替トークン(NFT)も可能です。XRP Ledgerでのネイティブ対応の詳細については、[非代替トークン(NFT)](nfts/index.md)をご覧ください。
 
@@ -40,7 +40,7 @@ XRP Ledgerのもう一つの利用方法として、「コミュニティクレ�
 
 XRP Ledgerで発行されるトークンには、その他にも使用例があります。例えば、セカンダリアドレスに一定数量の通貨を発行し、発行者に「キーを渡す」ことで、「ICO（Initial Coin Offering）」を行うことができます。
 
-**警告:** ICOは米国では[証券と見なされ、規制対象となる](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings)可能性があります。
+{% admonition type="danger" name="警告" %}ICOは米国では[証券と見なされ、規制対象となる](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings)可能性があります。{% /admonition %}
 
 金融サービスビジネスを始める前に、関連規制を調査されることを強くお勧めします。
 

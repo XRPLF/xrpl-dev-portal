@@ -19,7 +19,7 @@ Clioをインストールする前に、以下の条件を満たしている必�
 
 - お使いのシステムが[システム要件](system-requirements.md)を満たしていることを確認してください。
 
-    **Note:** Clioのシステム要件は`rippled`サーバと同じですが、同じ量のレジャー履歴を保存するのに必要なディスク容量はClioの方が少なくなります。
+    {% admonition type="info" name="Note" %}Clioのシステム要件は`rippled`サーバと同じですが、同じ量のレジャー履歴を保存するのに必要なディスク容量はClioの方が少なくなります。{% /admonition %}
 
 -  互換性のあるバージョンのCMakeとBoostが必要です。ClioにはC++20とBoost 1.75.0以上が必要です。
 
@@ -49,7 +49,7 @@ Clioをインストールする前に、以下の条件を満たしている必�
     sudo apt -y update
     ```
 
-    **ヒント:** すでに同じマシンに`rippled`の最新版をインストールしている場合、Rippleのパッケージリポジトリと署名キーを追加する以下のステップは省略できます。ステップ5の"Rippleリポジトリを取得します。"から再開します。
+    {% admonition type="success" name="ヒント" %}すでに同じマシンに`rippled`の最新版をインストールしている場合、Rippleのパッケージリポジトリと署名キーを追加する以下のステップは省略できます。ステップ5の"Rippleリポジトリを取得します。"から再開します。{% /admonition %}
 
 2. ユーティリティをインストールします。
 
@@ -136,7 +136,7 @@ Clioをインストールする前に、以下の条件を満たしている必�
         - `rippled`が暗号化されていないWebSocket接続を受け付けるポート番号
         - `rippled`がgRPCリクエストを受け付けるポート番号
 
-        **注記** `etl_sources`セクションに項目を追加することで、複数の`rippled`サーバをデータソースとして使用することができます。そうすると、Clioはリスト内のすべてのサーバでリクエストを負荷分散し、少なくとも`rippled`サーバの一つが同期している限り、ネットワークに追いつくことができます。
+        {% admonition type="info" name="注記" %}`etl_sources`セクションに項目を追加することで、複数の`rippled`サーバをデータソースとして使用することができます。そうすると、Clioはリスト内のすべてのサーバでリクエストを負荷分散し、少なくとも`rippled`サーバの一つが同期している限り、ネットワークに追いつくことができます。{% /admonition %}
 
         [設定ファイル例](https://github.com/XRPLF/clio/blob/develop/example-config.json)は、ローカルのループバックネットワーク(127.0.0.1)上で動作している`rippled`サーバに、ポート6006のWebSocket(WS)とポート50051のgRPCでアクセスします。
 
@@ -160,7 +160,7 @@ Clioをインストールする前に、以下の条件を満たしている必�
             secure_gateway = 127.0.0.1
             ```
 
-            **ヒント:** もし`rippled`と同じマシンでClioを実行していない場合は、サンプルの`secure_gateway`を変更して、ClioサーバのIPアドレスを使用してください。
+            {% admonition type="success" name="ヒント" %}もし`rippled`と同じマシンでClioを実行していない場合は、サンプルの`secure_gateway`を変更して、ClioサーバのIPアドレスを使用してください。{% /admonition %}
 
 8. Clioのsystemdサービスを有効にして起動します。
 

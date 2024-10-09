@@ -24,7 +24,7 @@ Payment Channelは、少額の単位に分割可能な「非同期」のXRPペ�
 | **Channelに使用する公開鍵（16進数）** | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
 | **受取人のアドレス** | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn |
 
-**ヒント:** この例では、Channelの公開鍵は支払人のマスターキーペアの公開鍵です。これは完全に安全であり有効です。また、支払人のみが異なるキーペアの公開鍵と秘密鍵を把握している場合に限り、そのキーペアを使用することも完全に安全であり有効です。 <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->
+{% admonition type="success" name="ヒント" %}この例では、Channelの公開鍵は支払人のマスターキーペアの公開鍵です。これは完全に安全であり有効です。また、支払人のみが異なるキーペアの公開鍵と秘密鍵を把握している場合に限り、そのキーペアを使用することも完全に安全であり有効です。 <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->{% /admonition %}
 
 また、トランザクションの送信先`rippled`サーバも必要です。このチュートリアルの例では、`rippled`サーバがテストマシン（`localhost`）で稼働しており、このテストマシンはポート**5005**で非暗号化JSON-RPC APIエンドポイントに接続しています。
 
@@ -56,11 +56,11 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
 
 これは[PaymentChannelCreateトランザクション][]です。このプロセスでは、支払人がChannelの特定の特性（有効期限、決済遅延など、Channelのクレームに関する保証に影響する特性）を設定します。支払人は、Channelに対するクレームの検証に使用する公開鍵も設定します。 <!-- STYLE_OVERRIDE: will -->
 
-**ヒント:** 「決済遅延」の設定だけが決済を遅延するわけでわありません。レジャーバージョンが閉鎖すると即時に決済が遅延されます（3～5秒）。「決済遅延」とは、Channel閉鎖の強制的な遅延です。これにより、受取人が決済を完了できるようになります。
+{% admonition type="success" name="ヒント" %}「決済遅延」の設定だけが決済を遅延するわけでわありません。レジャーバージョンが閉鎖すると即時に決済が遅延されます（3～5秒）。「決済遅延」とは、Channel閉鎖の強制的な遅延です。これにより、受取人が決済を完了できるようになります。{% /admonition %}
 
 以下の例は、JSON-RPC APIを使用してローカル`rippled`サーバへ[送信](../../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#署名と送信モード)することでPayment Channelを作成する方法を示しています。Payment Channelは、決済を1日遅らせて[サンプルの支払人](#サンプルの値)（rN7n7...）から[サンプルの受取人](#サンプルの値)（rf1Bi...）に100 XRPを割り当てます。公開鍵はサンプルの支払人のマスター公開鍵（16進数）です。
 
-**注記:** Payment Channelは1つのオブジェクトとして支払人の[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)に反映されます。所有者は少なくとも、Payment Channelに割り当てられたXRPを差引き後に、準備金を維持するのに十分なXRPを保有している必要があります。
+{% admonition type="info" name="注記" %}Payment Channelは1つのオブジェクトとして支払人の[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)に反映されます。所有者は少なくとも、Payment Channelに割り当てられたXRPを差引き後に、準備金を維持するのに十分なXRPを保有している必要があります。{% /admonition %}
 
 リクエスト:
 

@@ -19,7 +19,7 @@ A best practice is to use `Tickets` to reserve the transaction sequence numbers.
 
 ## Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try the sample in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try the sample in your own browser.
 
 ## Get an Account
 
@@ -30,7 +30,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         2. Click **Get Account from Seed**.
     2. If you do not want to use an existing account seed, click **Get New Standby Account**.
 
-**Note:** Running this command throws an error in the JavaScript console because the `getAccountsFromSeeds` function in `ripplex1-send-xrp.js` looks for the operational seed field, which is not included in this form. You can ignore the error (or fix it in your own implementation).
+{% admonition type="info" name="Note" %}Running this command throws an error in the JavaScript console because the `getAccountsFromSeeds` function in `ripplex1-send-xrp.js` looks for the operational seed field, which is not included in this form. You can ignore the error (or fix it in your own implementation).{% /admonition %}
 
 ## Batch Mint NFTs
 
@@ -56,7 +56,7 @@ The difference between this function and the `getTokens()` function used earlier
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
 
 ## Get Account From Seed
 

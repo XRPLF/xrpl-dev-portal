@@ -34,7 +34,7 @@ OfferCancelトランザクションは、XRP LedgerからOfferオブジェクト
 |:--------------|:----------|:------------------|:-----------------------------|
 | OfferSequence | 数値    | UInt32            | 前のOfferCreateトランザクションのシーケンス番号。指定されている場合は、レジャーでそのトランザクションにより作成されたOfferオブジェクトがすべて取り消されます。指定されたオファーが存在しない場合はエラーと見なされません。 |
 
-*ヒント:* 古いオファーを削除して新しいオファーに置き換えるには、OfferCancelとOfferCreateを使用する代わりに、`OfferSequence`パラメーターを指定した[OfferCreateトランザクション][]を使用できます。
+{% admonition type="success" name="ヒント" %}古いオファーを削除して新しいオファーに置き換えるには、OfferCancelとOfferCreateを使用する代わりに、`OfferSequence`パラメーターを指定した[OfferCreateトランザクション][]を使用できます。{% /admonition %}
 
 OfferCancelメソッドは、一致するシーケンス番号が見つからない場合でも[tesSUCCESS](../transaction-results/tes-success.md)を返します。
 

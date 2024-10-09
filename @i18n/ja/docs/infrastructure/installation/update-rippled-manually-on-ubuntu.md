@@ -11,9 +11,9 @@ labels:
 
 このページでは、Ubuntu Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。以下の手順は、[`rippled`がすでにネイティブパッケージを使用してインストール](install-rippled-on-ubuntu.md)されていることを前提としています。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.md)を設定することが推奨されます。
 
-**注意:** Ubuntu Linuxで`rippled` 1.2.xから1.3.1以降にアップグレードするには、[1.3.1への移行手順](rippled-1-3-migration-instructions.md)に従う必要があります。以下の手順は、バージョン1.3.1以降で提供されているネイティブAPTパッケージがインストール済みであることを前提としています。
+{% admonition type="warning" name="注意" %}Ubuntu Linuxで`rippled` 1.2.xから1.3.1以降にアップグレードするには、[1.3.1への移行手順](rippled-1-3-migration-instructions.md)に従う必要があります。以下の手順は、バージョン1.3.1以降で提供されているネイティブAPTパッケージがインストール済みであることを前提としています。{% /admonition %}
 
-**ヒント:** これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。`rippled`バージョン1.3.1以降、このスクリプトはUbuntuおよびDebianと互換性があります。このスクリプトは`sudo`ユーザとして実行する必要があります。
+{% admonition type="success" name="ヒント" %}これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。`rippled`バージョン1.3.1以降、このスクリプトはUbuntuおよびDebianと互換性があります。このスクリプトは`sudo`ユーザとして実行する必要があります。{% /admonition %}
 
 手動で更新するには、以下の手順を実行します。
 

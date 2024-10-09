@@ -10,7 +10,7 @@ labels:
 
 [手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)の結果として[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)または[アカウント準備金](../../../../concepts/accounts/reserves.md)の要件が変更されます。
 
-**注記:** 疑似トランザクションは送信できませんが、レジャーの処理時に疑似トランザクションが見つかることがあります。
+{% admonition type="info" name="注記" %}疑似トランザクションは送信できませんが、レジャーの処理時に疑似トランザクションが見つかることがあります。{% /admonition %}
 
 ```json
 {

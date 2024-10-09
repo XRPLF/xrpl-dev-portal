@@ -61,7 +61,7 @@ To specify an amount of a [(fungible) token](../../../concepts/tokens/index.md),
 
 [String Number]: #string-numbers
 
-**Caution:** These field names are case-sensitive.
+{% admonition type="warning" name="Caution" %}These field names are case-sensitive.{% /admonition %}
 
 For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59`, you would specify:
 
@@ -109,7 +109,7 @@ Tokens can represent a wide variety of assets, including those typically measure
 
 When sending token amounts in the XRP Ledger's peer-to-peer network, servers [serialize](../binary-format.md) the amount to a 64-bit binary value.
 
-**Tip:** For tokens that should not be divisible at all, see [Non-Fungible Tokens (NFTs)](../../../concepts/tokens/nfts/index.md).
+{% admonition type="success" name="Tip" %}For tokens that should not be divisible at all, see [Non-Fungible Tokens (NFTs)](../../../concepts/tokens/nfts/index.md).{% /admonition %}
 
 ## Currency Codes
 [Currency Code]: #currency-codes

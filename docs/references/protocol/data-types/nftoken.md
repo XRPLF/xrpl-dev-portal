@@ -106,7 +106,7 @@ The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically 
 
 The URI field points to the data or metadata associated with the `NFToken`. This field does not need to be an HTTP or HTTPS URL; it could be an IPFS URI, a magnet link, an [RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even a totally custom encoding. The URI is not checked for validity, but the field is limited to a maximum length of 256 bytes.
 
-**Caution:** The URI is immutable, so no one can update it if, for example, it links to a website that no longer exists.
+{% admonition type="warning" name="Caution" %}The URI is immutable, so no one can update it if, for example, it links to a website that no longer exists.{% /admonition %}
 
 # Retrieving NFToken Data and Metadata
 

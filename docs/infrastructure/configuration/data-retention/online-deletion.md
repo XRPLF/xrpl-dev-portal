@@ -16,7 +16,7 @@ The server always keeps the complete _current_ state of the ledger, with all the
 
 The default config file sets the `rippled` server to keep the most recent 2000 ledger versions and automatically delete older data.
 
-**Tip:** Even with online deletion, the amount of disk space required to store the same time span's worth of ledger data increases over time, because the size of individual ledger versions tends to grow over time. This growth is very slow in comparison to the accumulation of data that occurs without deleting old ledgers. For more information on disk space needs, see [Capacity Planning](../../installation/capacity-planning.md).
+{% admonition type="success" name="Tip" %}Even with online deletion, the amount of disk space required to store the same time span's worth of ledger data increases over time, because the size of individual ledger versions tends to grow over time. This growth is very slow in comparison to the accumulation of data that occurs without deleting old ledgers. For more information on disk space needs, see [Capacity Planning](../../installation/capacity-planning.md).{% /admonition %}
 
 
 ## Background
@@ -71,7 +71,7 @@ The following settings relate to online deletion:
 
     The default config file specifies 2000 for this value. This cannot be less than 256, because some events like [Fee Voting](../../../concepts/consensus-protocol/fee-voting.md) and the [Amendment Process](../../../concepts/networks-and-servers/amendments.md#amendment-process) update only every 256 ledgers.
 
-    **Caution:** If you run `rippled` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but does not delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server after changing the `online_delete` setting.
+    {% admonition type="warning" name="Caution" %}If you run `rippled` with `online_delete` disabled, then later enable `online_delete` and restart the server, the server disregards but does not delete existing ledger history that your server already downloaded while `online_delete` was disabled. To save disk space, delete your existing history before re-starting the server after changing the `online_delete` setting.{% /admonition %}
 
 - **`[ledger_history]`** - Specify how many validated ledgers to backfill. Must be equal to or less than `online_delete`. If the server does not have at least this many validated ledger versions, it attempts to fetch the data from peers when it can.
 

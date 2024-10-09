@@ -15,7 +15,7 @@ Rippling only occurs along the [paths](paths.md) of a payment. [Direct XRP-to-XR
 
 For non-issuing accounts, rippling can be undesirable because it lets other users shift obligations between tokens with the same currency code but different issuers. The [No Ripple Flag](#the-no-ripple-flag) disables rippling by default when others open trust lines to your account, unless you enable rippling by default using the [Default Ripple flag](#the-default-ripple-flag).
 
-**Caution:** When you create a trust line, you must explicitly enable the `tfSetNoRipple` flag to block rippling on your side of that trust line.
+{% admonition type="warning" name="Caution" %}When you create a trust line, you must explicitly enable the `tfSetNoRipple` flag to block rippling on your side of that trust line.{% /admonition %}
 
 ## Example of Rippling
 

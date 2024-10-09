@@ -13,7 +13,7 @@ labels:
 
 [`rippled`バリデータ](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)のオペレーターは、`rippled.cfg`ファイルの`[voting]`スタンザでトランザクションコストと必要準備金の設定を指定できます。
 
-**注意:** 信頼できるバリデータの合意により不十分な必要準備金が採用された場合、XRP Ledgerピアツーピアネットワークがサービス拒否（DoS）攻撃を受ける可能性があります。
+{% admonition type="warning" name="注意" %}信頼できるバリデータの合意により不十分な必要準備金が採用された場合、XRP Ledgerピアツーピアネットワークがサービス拒否（DoS）攻撃を受ける可能性があります。{% /admonition %}
 
 設定できるパラメーターは次の通りです。
 

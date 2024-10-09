@@ -18,7 +18,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 どのアカウントでも署名を提出できます。
 
-**注記:** 報酬は現在のリストにある鍵を持っているアカウントにのみ送られます。署名者の定足数は`SignatureReward`に一致する必要があります。より大きな報酬を得ようとして、一つのWitnessサーバがこの値に不正な値を指定することはできません。
+{% admonition type="info" name="注記" %}報酬は現在のリストにある鍵を持っているアカウントにのみ送られます。署名者の定足数は`SignatureReward`に一致する必要があります。より大きな報酬を得ようとして、一つのWitnessサーバがこの値に不正な値を指定することはできません。{% /admonition %}
 
 
 ## XChainAddClaimAttestation JSONの例

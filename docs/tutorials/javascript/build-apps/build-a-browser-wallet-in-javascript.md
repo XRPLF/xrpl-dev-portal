@@ -45,7 +45,7 @@ This application can:
 
 Before you begin, make sure you have the prerequisites installed. Check your node version by running `node -v`. If necessary, [download Node.js](https://nodejs.org/en/download/).
 
-**Tip:** If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).
+{% admonition type="success" name="Tip" %}If you get stuck while doing this tutorial, or working on another project, feel free to ask for help in the XRPL's [Developer Discord](https://discord.com/invite/KTNmhJDXqa).{% /admonition %}
 
 ### 1. Set up the project
 
@@ -181,7 +181,7 @@ Now that we have created the home page and the send XRP page, let's create the t
   - Delivered amount: The amount of XRP or tokens delivered by the transaction, if applicable.
   - Link: A link to the transaction on the XRP Ledger Explorer.
 
-**Caution:** When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](../../../concepts/payment-types/partial-payments.md) can deliver much less than the stated `Amount` and still be successful.
+{% admonition type="warning" name="Caution" %}When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](../../../concepts/payment-types/partial-payments.md) can deliver much less than the stated `Amount` and still be successful.{% /admonition %}
 
 ![Transactions Page Screenshot](/docs/img/js-wallet-transaction.png)
 

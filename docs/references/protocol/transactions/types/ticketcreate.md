@@ -37,7 +37,7 @@ A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Nu
 
 If the transaction cannot create _all_ of the requested Tickets (either due to the 250-Ticket limit or the [owner reserve](../../../../concepts/accounts/reserves.md)), it fails and creates no Tickets. To look up how many Tickets an account currently owns, use the [account_info method][] and check the `account_data.TicketCount` field.
 
-**Tip:** This transaction increases the sending account's [sequence number][Sequence Number] by 1 _plus_ the number of tickets created (`TicketCount`). This is the only transaction that increases an account's sequence number by more than 1.
+{% admonition type="success" name="Tip" %}This transaction increases the sending account's [sequence number][Sequence Number] by 1 _plus_ the number of tickets created (`TicketCount`). This is the only transaction that increases an account's sequence number by more than 1.{% /admonition %}
 
 ## Error Cases
 

@@ -9,7 +9,7 @@ In an evolving industry where trust and security are critical, scams continue to
 ## Take Action
 If you think you've been scammed, make sure to collect as much information as you can about the scam and scammer as soon as possible. Review the options below for how to take action.
 
-**Caution:** Please be aware that _no one_ can freeze accounts or revert transactions on the XRP Ledger. This is due to the decentralized design of the XRP Ledger blockchain.
+{% admonition type="warning" name="Caution" %}Please be aware that _no one_ can freeze accounts or revert transactions on the XRP Ledger. This is due to the decentralized design of the XRP Ledger blockchain.{% /admonition %}
 
 1. Submit the scammer's wallet address to [Xrplorer's forensics team](https://xrplorer.com/forensics/submit).
 

@@ -31,7 +31,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 
 ## Address Encoding
 
-**Tip:** These technical details are only relevant for people building low-level library software for XRP Ledger compatibility!
+{% admonition type="success" name="Tip" %}These technical details are only relevant for people building low-level library software for XRP Ledger compatibility!{% /admonition %}
 
 [[Source]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "Source")
 

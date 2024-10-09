@@ -10,7 +10,7 @@ labels:
 
 The `rippled` server has a configurable soft maximum number of [peers](../../../concepts/networks-and-servers/peer-protocol.md) to connect to. The default maximum number of peers is **21**.
 
-**Note:** Internally, the server generates approximate quotas of incoming and outgoing peers. You can potentially go over the soft maximum if you are using [fixed peers, peer reservations](../../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations), or if you manually connect to additional peers using the [connect method][].
+{% admonition type="info" name="Note" %}Internally, the server generates approximate quotas of incoming and outgoing peers. You can potentially go over the soft maximum if you are using [fixed peers, peer reservations](../../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations), or if you manually connect to additional peers using the [connect method][].{% /admonition %}
 
 To change the maximum number of peers your server allows, complete the following steps:
 
@@ -33,7 +33,7 @@ To change the maximum number of peers your server allows, complete the following
 
     If the `[peers_max]` value is less than 10, the server still allows a hardcoded minimum of 10 outgoing peers so that it can maintain connectivity with the network. To block all outgoing peer connections, [configure the server as a private peer](../server-modes/run-rippled-as-a-validator.md#connect-using-proxies) instead.
 
-    **Caution:** The more peer servers you are connected to, the more network bandwidth your `rippled` server uses. You should only configure large numbers of peer servers if your `rippled` server has a good network connection and you can afford the costs you may incur for the bandwidth it uses.
+    {% admonition type="warning" name="Caution" %}The more peer servers you are connected to, the more network bandwidth your `rippled` server uses. You should only configure large numbers of peer servers if your `rippled` server has a good network connection and you can afford the costs you may incur for the bandwidth it uses.{% /admonition %}
 
 3. Restart the `rippled` server.
 

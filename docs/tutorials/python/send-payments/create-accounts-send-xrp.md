@@ -29,9 +29,9 @@ To get started, create a new folder on your local disk and install the Python li
 pip3 install xrpl-py
 ```
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive.
 
-**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
+{% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
 
 ## Usage
 <div align="center">
@@ -71,7 +71,7 @@ To transfer XRP from the Operational account to the Standby account:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)in the source repository for this website.
 
 ## mod1.py
 
