@@ -182,7 +182,7 @@ async function getOffers() {
       "TransactionType": "OfferCreate",
       "Account": operational_wallet.address,
       "TakerGets": takerGets,
-        "TakerPays": takerPays
+      "TakerPays": takerPays
     })   
     // ------------------------------------------------- Sign prepared instructions
     const signed = operational_wallet.sign(prepared)
