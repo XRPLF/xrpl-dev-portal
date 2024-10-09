@@ -167,6 +167,12 @@
         - page: docs/tutorials/javascript/index.md
           expanded: false
           items:
+            - page: docs/tutorials/javascript/amm/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/javascript/amm/create-an-amm.md
+                - page: docs/tutorials/javascript/amm/add-assets-to-amm.md
+                - page: docs/tutorials/javascript/amm/trade-with-auction-slot.md
             - page: docs/tutorials/javascript/send-payments/index.md
               expanded: false
               items:
@@ -189,11 +195,6 @@
                 - page: docs/tutorials/javascript/build-apps/get-started.md
                 - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
                 - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
-            - page: docs/tutorials/javascript/trade-on-ledger/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees.md
-                - page: docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:
