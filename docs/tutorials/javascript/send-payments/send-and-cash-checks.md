@@ -27,7 +27,7 @@ Checks offer another option for transferring funds between accounts. Checks have
 
 ## Prerequisites
 
-Clone or download the [Modular Tutorial Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download}.
+Clone or download the [Modular Tutorial Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/).
 
 {% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
 
@@ -111,7 +111,7 @@ To cancel a check you have previously sent to another account.
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/) in the source repository for this website.
 
 ## ripplex10-check.js
 

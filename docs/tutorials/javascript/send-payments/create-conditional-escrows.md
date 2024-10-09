@@ -24,7 +24,7 @@ This example shows how to:
 
 ## Prerequisites
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive.
 
 ## Usage
 
@@ -121,7 +121,7 @@ If you forget to save the sequence number, you can find it in the escrow transac
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)in the source repository for this website.
 
 ## getConditionAndFulfillment.js
 

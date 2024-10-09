@@ -22,7 +22,7 @@ This example shows how to:
 
 [![Test harness with currency transfer](/docs/img/quickstart5.png)](/docs/img/quickstart5.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
 
 {% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
 
@@ -67,7 +67,7 @@ To transfer an issued currency token, once you have created a trust line:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
 
 ## ripplex2-send-currency.js
 <!-- SPELLING_IGNORE: ripplex2 -->

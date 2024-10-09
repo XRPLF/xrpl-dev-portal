@@ -11,9 +11,9 @@ This example shows how to:
 
 [![Trade with Auction Slot Test Harness](/docs/img/quickstart-trade-auction-slot1.png)](/docs/img/quickstart-trade-auction-slot1.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
 
-{% admonition type="note" name="Note" %}
+{% admonition type="info" name="Note" %}
 Without the Quickstart Samples, you will not be able to try the examples that follow.
 {% /admonition %}
 
