@@ -48,10 +48,8 @@
  results += "\nSubmitting transaction...."
   // -------------------------------------------------------- Submit signed blob
   const tx = await client.submitAndWait(signed.tx_blob)
-  
-  results += tx.results + "\n"
   results  += "\nBalance changes: " + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
   standbyResultField.value = results
 
   standbyBalanceField.value =  (await client.getXrpBalance(standby_wallet.address))
@@ -71,7 +69,7 @@ async function getOffers() {
   await client.connect()
   results  += "Connected.\n"
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  results += standbyNameField.value + " acccount: " + standby_wallet.address
+  results += standbyNameField.value + " account: " + standby_wallet.address
 // -------------------------------------------------------- Prepare request
 
   results += '\n\n*** Offers ***\n'
@@ -86,7 +84,6 @@ async function getOffers() {
   } catch (err) {
       results += err
   }
-  results += JSON.stringify(offers,null,2)
   standbyResultField.value = results
   client.disconnect()
 }// End of getOffers()
@@ -128,7 +125,6 @@ async function getOffers() {
   results  += "\nBalance changes: \n" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
   standbyResultField.value = results
-
   standbyBalanceField.value =  (await client.getXrpBalance(standby_wallet.address))
   client.disconnect()    
   } // End of cancelOffer()
@@ -190,10 +186,9 @@ async function getOffers() {
     // -------------------------------------------------------- Submit signed blob
     const tx = await client.submitAndWait(signed.tx_blob)
     
-    results += tx.results + "\n"
     results  += "\nBalance changes: " + 
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-      operationalResultField.value = results
+    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    operationalResultField.value = results
 
     standbyBalanceField.value =  (await client.getXrpBalance(standby_wallet.address))
     operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
@@ -232,7 +227,6 @@ async function oPgetOffers() {
   } catch (err) {
       results += err
   }
-  results += JSON.stringify(offers,null,2)
   operationalResultField.value = results
   client.disconnect()
 }// End of oPgetOffers()
