@@ -306,6 +306,18 @@ const events = [
     end_date: "October 2, 2024",
   },
   {
+    name: "XRPL Meetup @ Permissionless III - by xrpcafe",
+    description:
+      "Get ready for an unforgettable evening at the XRPL Meetup - Permissionless III in the heart of Salt Lake City! Join us on October 10th from 6 PM to 9 PM at the lively Squatters Pub Brewery.",
+    type: "meetup",
+    link: "https://lu.ma/71ag93un?locale=en-GB",
+    location: "Salt Lake City, Utah",
+    date: "October 10, 2024",
+    image:  require('../static/img/events/salt-lake-city.jpg'),
+    start_date: "October 10, 2024",
+    end_date: "October 10, 2024",
+  },
+  {
     name: "XRPL Builder Office Hours",
     description:
       "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
@@ -328,7 +340,7 @@ const events = [
     image: infoSession4,
     start_date: "November 22, 2024",
     end_date: "November 22, 2024",
-  }
+  },
 ];
 const { nearestDateDiff, nearestEvent, index } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {

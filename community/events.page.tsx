@@ -941,6 +941,17 @@ const events = [
     image: require('../static/img/events/xrpl-future.png'),
     end_date: "October 3, 2024",
   },
+  {
+    name: "XRPL Meetup @ Permissionless III - by xrpcafe",
+    description:
+      "Get ready for an unforgettable evening at the XRPL Meetup - Permissionless III in the heart of Salt Lake City! Join us on October 10th from 6 PM to 9 PM at the lively Squatters Pub Brewery.",
+    type: "meetup",
+    link: "https://lu.ma/71ag93un?locale=en-GB",
+    location: "Salt Lake City, Utah",
+    date: "October 10, 2024",
+    image:  require('../static/img/events/salt-lake-city.jpg'),
+    end_date: "October 10, 2024",
+  },
 ];
 
 
