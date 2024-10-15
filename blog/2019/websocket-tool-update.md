@@ -44,7 +44,7 @@ The new Permalink button, represented by a button with a chain-link icon, provid
 
 Maybe you're more comfortable using the command line, or you're trying to figure out how to replicate a given thing using JSON-RPC. The new curl syntax button, represented by a `>_` icon, loads a popup with the current inputs of the request box translated into a JSON-RPC call you can make with [the `curl` utility](https://curl.haxx.se/). Copy-paste this into your command line or your bash scripts and see it go!
 
-**Note:** The [`path_find`](/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find/) command isn't available over JSON-RPC, so the button is hidden when that command is selected. Some other commands may not work without modification on JSON-RPC; for example, the [`subscribe`](/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe/) and [`unsubscribe`](/docs/references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe/) commands require an admin-only `url` callback field in JSON-RPC.
+{% admonition type="info" name="Note" %}The [`path_find`](/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find/) command isn't available over JSON-RPC, so the button is hidden when that command is selected. Some other commands may not work without modification on JSON-RPC; for example, the [`subscribe`](/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe/) and [`unsubscribe`](/docs/references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe/) commands require an admin-only `url` callback field in JSON-RPC.{% /admonition %}
 
 
 ### Error Highlighting

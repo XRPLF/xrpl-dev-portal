@@ -95,7 +95,7 @@ unl = "https://vl.ripple.com"
 
 Finally, the list of accounts. I added an `[[ACCOUNTS]]` entry for each of the XRP Ledger addresses whose keys I have saved. As a result of doing various tests and experiments, I have a few more accounts than a normal person needs, and I honestly don't even remember what some of these were for. I added a description `desc` field to the accounts where I remembered their purpose, most importantly for the "primary" address where I want to receive XRP if, for example, people want to send me tips. I also tagged that one explicitly as being on the main network just to be sure. (Some of my addresses are in use on both the test net and the production network; that's not a good practice to follow, but I'm stuck with it.)
 
-**Tip:** I love sending XRP tips to people who contribute to the XRP Ledger Dev Portal. If you open a PR to the dev portal, make your XRP Ledger address known and I might just send some XRP your way! You could even just provide your domain if you serve an `xrp-ledger.toml` file with your preferred address there.
+{% admonition type="success" name="Tip" %}I love sending XRP tips to people who contribute to the XRP Ledger Dev Portal. If you open a PR to the dev portal, make your XRP Ledger address known and I might just send some XRP your way! You could even just provide your domain if you serve an `xrp-ledger.toml` file with your preferred address there.{% /admonition %}
 
 My accounts list:
 

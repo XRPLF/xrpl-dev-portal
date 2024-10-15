@@ -62,7 +62,7 @@ You can verify that your `rippled` server is amendment blocked using the `server
 
 The easiest solution is to update to the latest version of `rippled`, but depending on the scenario, you may want to update to an older version with the amendment blocking your server.
 
-**Warning:** If the newest `rippled` version provides security or other urgent fixes, you should upgrade to the newest version as soon as possible.
+{% admonition type="danger" name="Warning" %}If the newest `rippled` version provides security or other urgent fixes, you should upgrade to the newest version as soon as possible.{% /admonition %}
 
 To determine if you can unblock your `rippled` server by upgrading to a version older than the newest version, find out which features are blocking your server and then look up the `rippled` version that supports the blocking features.
 

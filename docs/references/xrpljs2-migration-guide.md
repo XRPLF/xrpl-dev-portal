@@ -8,7 +8,7 @@ parent: https://js.xrpl.org/
 
 Follow these instructions to migrate JavaScript / TypeScript code using the **ripple-lib** (1.x) library to use the **xrpl.js** (2.x) library for the XRP Ledger instead.
 
-**Tip:** You can still access [documentation for the legacy 1.x "RippleAPI"](https://github.com/XRPLF/xrpl.js/blob/1.x/docs/index.md) if necessary.
+{% admonition type="success" name="Tip" %}You can still access [documentation for the legacy 1.x "RippleAPI"](https://github.com/XRPLF/xrpl.js/blob/1.x/docs/index.md) if necessary.{% /admonition %}
 
 ## High-Level Differences
 

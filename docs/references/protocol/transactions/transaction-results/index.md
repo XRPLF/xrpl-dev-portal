@@ -23,7 +23,7 @@ The `rippled` server summarizes transaction results with result codes, which app
 
 The `rippled` server automatically retries failed transactions. It is important not to assume that a transaction has completely failed based on a tentative failure result. A transaction may later succeed unless its success or failure is [final](../../../../concepts/transactions/finality-of-results/index.md).
 
-**Warning:** Transactions' provisional result codes may differ than their final result. Transactions that provisionally succeeded may eventually fail and transactions that provisionally failed may eventually succeed. Transactions that provisionally failed may also eventually fail with a different code. See [finality of results](../../../../concepts/transactions/finality-of-results/index.md) for how to know when a transaction's result is final.
+{% admonition type="danger" name="Warning" %}Transactions' provisional result codes may differ than their final result. Transactions that provisionally succeeded may eventually fail and transactions that provisionally failed may eventually succeed. Transactions that provisionally failed may also eventually fail with a different code. See [finality of results](../../../../concepts/transactions/finality-of-results/index.md) for how to know when a transaction's result is final.{% /admonition %}
 
 The distinction between a local error (`tel`) and a malformed transaction (`tem`) is a matter of protocol-level rules. For example, the protocol sets no limit on the maximum number of paths that can be included in a transaction. However, a server may define a finite limit of paths it can process. If two different servers are configured differently, then one of them may return a `tel` error for a transaction with many paths, while the other server could successfully process the transaction. If enough servers are able to process the transaction that it survives consensus, then it can still be included in a validated ledger.
 
@@ -50,6 +50,6 @@ If nothing went wrong when submitting and applying the transaction locally, the 
     "engine_result_message": "The transaction was applied. Only final in a validated ledger."
 ```
 
-**Note:** A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. Failed results at this stage are also provisional and may change. See [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) for details.
+{% admonition type="info" name="Note" %}A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. Failed results at this stage are also provisional and may change. See [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) for details.{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

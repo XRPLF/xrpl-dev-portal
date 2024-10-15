@@ -136,7 +136,7 @@ Loading: "/etc/rippled.cfg"
 | `source_account` | 文字列 - [アドレス][] | リクエストに指定されている支払元アカウント。 |
 | `validated` | ブール値 | _（省略される場合があります）_`true`の場合、検証済みレジャーバージョンからの情報が取り込まれます。 |
 
-**注記:** `deposit_authorized`ステータスが`true`でも、指定の支払元から指定の支払先への送金が可能であるとは保証されません。たとえば、支払先アカウントに指定通貨の[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)がない場合や、送金に十分な流動性がない場合があります。
+{% admonition type="info" name="注記" %}`deposit_authorized`ステータスが`true`でも、指定の支払元から指定の支払先への送金が可能であるとは保証されません。たとえば、支払先アカウントに指定通貨の[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)がない場合や、送金に十分な流動性がない場合があります。{% /admonition %}
 
 ## 考えられるエラー
 

@@ -11,7 +11,7 @@ labels:
 
 [履歴シャーディング](history-sharding.md)では、各サーバで完全な履歴を保管することなく、履歴XRP Ledgerデータを保存できます。デフォルトでは`rippled`サーバは履歴シャードを保管しません。
 
-**ヒント:** バリデータおよび`rippled`追跡（またはストック）サーバの両方で履歴シャードを保管するように設定できます。ただし`rippled`バリデータサーバの経費を抑えるために、バリデータサーバでシャードを保管するように設定 _しない_ ことが推奨されます。バリデータを実行していて、XRP Ledger履歴を保管したい場合は、履歴シャーディングを有効にして別の`rippled`サーバを実行することが推奨されます。
+{% admonition type="success" name="ヒント" %}バリデータおよび`rippled`追跡（またはストック）サーバの両方で履歴シャードを保管するように設定できます。ただし`rippled`バリデータサーバの経費を抑えるために、バリデータサーバでシャードを保管するように設定 _しない_ ことが推奨されます。バリデータを実行していて、XRP Ledger履歴を保管したい場合は、履歴シャーディングを有効にして別の`rippled`サーバを実行することが推奨されます。{% /admonition %}
 
 レジャー履歴のシャードを保管できるよう`rippled`を設定するには、以下の手順を実行します。
 
@@ -44,7 +44,7 @@ max_size_gb=50
 
 `type`フィールドは省略できます。省略しない場合は、`NuDB`である _必要があります_ 。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.3.1" %}新規: rippled 1.3.1{% /badge %}
 
-**注意:** `rippled`がシャードストアーパスで不適切なデータを検出すると、[起動できない](../../troubleshooting/server-wont-start.md)可能性があります。シャードストアーには新しいフォルダーを使用する必要があります。以前にRocksDBシャードストアー（`rippled` 1.2.x以前）を使用していた場合は、別のパスを使用するか、RocksDBシャードデータを削除します。
+{% admonition type="warning" name="注意" %}`rippled`がシャードストアーパスで不適切なデータを検出すると、[起動できない](../../troubleshooting/server-wont-start.md)可能性があります。シャードストアーには新しいフォルダーを使用する必要があります。以前にRocksDBシャードストアー（`rippled` 1.2.x以前）を使用していた場合は、別のパスを使用するか、RocksDBシャードデータを削除します。{% /admonition %}
 
 詳細は、[rippled.cfgの設定例](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)の`[shard_db]`の例をご覧ください。
 

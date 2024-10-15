@@ -84,7 +84,7 @@ The request includes the following parameters:
 | `marker`                 | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 | `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `bridge`, `check`, `deposit_preauth`, `escrow`, `nft_offer`, `nft_page`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
 
-**Note:** The commandline interface to the `account_objects` command doesn't accept the `type` field. Use the [json method][] to send the JSON-RPC format request on the commandline instead.
+{% admonition type="info" name="Note" %}The commandline interface to the `account_objects` command doesn't accept the `type` field. Use the [json method][] to send the JSON-RPC format request on the commandline instead.{% /admonition %}
 
 ## Response Format
 

@@ -34,7 +34,7 @@ top_nav_grouping: 人気ページ
 
 1. お使いのシステムが[システム要件](system-requirements.md)を満たしていることを確認してください。
 
-    **注記:** データベースとしてCassandraを選択した場合、データがローカルディスクに保存されないため、`rippled`のディスク要件は低くなります。
+    {% admonition type="info" name="注記" %}データベースとしてCassandraを選択した場合、データがローカルディスクに保存されないため、`rippled`のディスク要件は低くなります。{% /admonition %}
 
 2. 少なくとも1台の`rippled`サーバをP2Pモードで動作させる必要があります。
 

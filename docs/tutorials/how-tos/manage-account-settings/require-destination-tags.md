@@ -16,7 +16,7 @@ The Require Destination Tag setting is designed for addresses that host balances
 
 This tutorial demonstrates how to enable the Require Destination Tag flag on your account.
 
-**Note:** The meanings of specific destination tags are entirely up to the logic built on top of the XRP Ledger. The ledger has no way of knowing whether any specific tag is valid in your system, so you must still be ready to receive transactions with the wrong destination tag. Typically, this involves providing a customer support experience that can track down payments made incorrectly and credit customers accordingly, and possibly also bouncing unwanted payments.
+{% admonition type="info" name="Note" %}The meanings of specific destination tags are entirely up to the logic built on top of the XRP Ledger. The ledger has no way of knowing whether any specific tag is valid in your system, so you must still be ready to receive transactions with the wrong destination tag. Typically, this involves providing a customer support experience that can track down payments made incorrectly and credit customers accordingly, and possibly also bouncing unwanted payments.{% /admonition %}
 
 ## Prerequisites
 

@@ -36,7 +36,7 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 |:-------------------|:----------|:------------------|:------------------|
 | `Amount`           | [Currency Amount][]  | Amount |Indicates the amount being clawed back, as well as the counterparty from which the amount is being clawed back. The quantity to claw back, in the `value` sub-field, must not be zero. If this is more than the current balance, the transaction claws back the entire balance. The sub-field `issuer` within `Amount` represents the token holder's account ID, rather than the issuer's.|
 
-**Note:** In the XRP Ledger, the party that created a token is called the _issuer_, but trust lines are bidirectional and, under some configurations, both sides can be seen as the issuer. In this transaction, the token issuer's address is in the `Account` field, and the token holder's address is in the `Amount` field's `issuer` sub-field.
+{% admonition type="info" name="Note" %}In the XRP Ledger, the party that created a token is called the _issuer_, but trust lines are bidirectional and, under some configurations, both sides can be seen as the issuer. In this transaction, the token issuer's address is in the `Account` field, and the token holder's address is in the `Amount` field's `issuer` sub-field.{% /admonition %}
 
 
 ## Error Cases

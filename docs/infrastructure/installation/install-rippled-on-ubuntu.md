@@ -79,7 +79,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `unstable` - Pre-release builds ([`release` branch](https://github.com/XRPLF/rippled/tree/release))
     - `nightly` - Experimental/development builds ([`develop` branch](https://github.com/XRPLF/rippled/tree/develop))
 
-    **Warning:** Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.
+    {% admonition type="danger" name="Warning" %}Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.{% /admonition %}
 
 6. Update the package index to include Ripple's repo and install `rippled`.
 
@@ -132,7 +132,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     gdb /opt/ripple/bin/rippled /var/lib/apport/coredump/core
     ```
 
-    **Note:** To debug a core file this way, you must have the `rippled-dbgsym` package installed, and you need permission to read files in the core dump directory.
+    {% admonition type="info" name="Note" %}To debug a core file this way, you must have the `rippled-dbgsym` package installed, and you need permission to read files in the core dump directory.{% /admonition %}
 
 
 ## Next Steps

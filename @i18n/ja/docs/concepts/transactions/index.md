@@ -106,7 +106,7 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
 
 トランザクションが送信されたら、APIを使用して（例えば、[txコマンド](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md)を使用して）トランザクションのステータスを確認できます。これにより、トランザクションの指示、その結果、およびそれを実行する過程で行われたすべての変更の[メタデータ](../../references/protocol/transactions/metadata.md) が表示されます。
 
-**注意:** トランザクションが結果コード`tesSUCCESS`で**検証済み**のレジャーに表示されない限り、トランザクションの成功は確定ではありません。関連項目: [結果のファイナリティー](finality-of-results/index.md)
+{% admonition type="warning" name="注意" %}トランザクションが結果コード`tesSUCCESS`で**検証済み**のレジャーに表示されない限り、トランザクションの成功は確定ではありません。関連項目: [結果のファイナリティー](finality-of-results/index.md){% /admonition %}
 
 `tx`コマンドのレスポンスの例:
 

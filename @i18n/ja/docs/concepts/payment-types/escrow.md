@@ -32,7 +32,7 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 
 3. 受取人はXRPを受け渡すために`EscrowFinish`トランザクションを送信します。条件が満たされた場合、`Escrow`オブジェクトは破棄され、XRPは受取人に引き渡されます。
 
-    **注記:** Escrowに有効期限があり、それまでに正常に終了しなかった場合、Escrowは期限切れになります。期限切れのEscrowは`EscrowCancel`トランザクションがそれをキャンセルするまで台帳に残り、`Escrow`オブジェクトを破棄してXRPを送信者に返します。
+    {% admonition type="info" name="注記" %}Escrowに有効期限があり、それまでに正常に終了しなかった場合、Escrowは期限切れになります。期限切れのEscrowは`EscrowCancel`トランザクションがそれをキャンセルするまで台帳に残り、`Escrow`オブジェクトを破棄してXRPを送信者に返します。{% /admonition %}
 
 ## 状態遷移図
 
@@ -68,7 +68,7 @@ Crypto-conditionを使用する場合、Crypto-conditionフルフィルメント
 
 必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、**330 drop（[XRPのdrop数](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)）と、フルフィルメントのサイズで16バイトあたり10 drop**が必要です。
 
-**注記:** 上記の式は、トランザクションのリファレンスコストが10 dropであることを前提としています。
+{% admonition type="info" name="注記" %}上記の式は、トランザクションのリファレンスコストが10 dropであることを前提としています。{% /admonition %}
 
 [手数料投票](../consensus-protocol/fee-voting.md)により`reference_fee`の値が変更される場合、この式は新しいリファレンスコストに基づいてスケーリングされます。フルフィルメントのあるEscrowFinishトランザクションの公式は次のとおりです。
 

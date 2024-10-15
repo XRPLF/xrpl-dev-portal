@@ -46,7 +46,7 @@ XLSドラフトを作成した後、その変更にAmendmentが必要かどう�
 - トランザクションの追加または削除。
 - コンセンサスへの影響がある変更。
 
-**注記:** 変更にAmendmentが必要ない場合、そのままコーディングとデプロイに進むことができます。
+{% admonition type="info" name="注記" %}変更にAmendmentが必要ない場合、そのままコーディングとデプロイに進むことができます。{% /admonition %}
 
 コードをAmendmentとして実装するには、次のファイルにAmendment情報を追加する必要があります。
 
@@ -65,7 +65,7 @@ XLSドラフトを作成した後、その変更にAmendmentが必要かどう�
 
 1. コードを開発するためにはまず、[`rippled` リポジトリ](https://github.com/XRPLF/rippled) をフォークまたはブランチを作成します。
 
-    **ヒント:** 何から始めたらいいかわからない場合は、_Dev Null Productions_ が詳細かつ充実した [`rippled` ソースコードガイド](https://xrpintel.com/source) を提供しています。
+    {% admonition type="success" name="ヒント" %}何から始めたらいいかわからない場合は、_Dev Null Productions_ が詳細かつ充実した [`rippled` ソースコードガイド](https://xrpintel.com/source) を提供しています。{% /admonition %}
 
 2. 単体テストと統合テストを実行します。独立した環境で作業をテストするにはスタンドアロンモードでサーバを実行するのが良いでしょう。
 

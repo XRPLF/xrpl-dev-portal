@@ -69,7 +69,7 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
     ```
 
 
-**警告:** [自動更新](update-rippled-automatically-on-linux.md)を使用している場合、この移行プロセスを実行した後も自動更新が続きます。ただし、**`ripple-repo`パッケージは、現在は廃止予定**です。そのため、今後は、Rippleのリポジトリへの変更があれば、各自がrepoファイルを手動で更新する必要があります。
+{% admonition type="danger" name="警告" %}[自動更新](update-rippled-automatically-on-linux.md)を使用している場合、この移行プロセスを実行した後も自動更新が続きます。ただし、**`ripple-repo`パッケージは、現在は廃止予定**です。そのため、今後は、Rippleのリポジトリへの変更があれば、各自がrepoファイルを手動で更新する必要があります。{% /admonition %}
 
 
 ## Ubuntu Linuxでの移行

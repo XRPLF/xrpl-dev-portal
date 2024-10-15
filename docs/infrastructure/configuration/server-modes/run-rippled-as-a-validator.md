@@ -25,7 +25,7 @@ Issuing validation messages does not automatically give your validator a say in 
 
 Even if your validator isn't a _trusted_ validator, it still plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
 
-**Warning:** Validators should not be accessible to the public. Do not allow public WebSocket access to your validator server or any other form of public access.
+{% admonition type="danger" name="Warning" %}Validators should not be accessible to the public. Do not allow public WebSocket access to your validator server or any other form of public access.{% /admonition %}
 
 
 
@@ -94,7 +94,7 @@ In a secure location **not** on your validator:
     This file should be stored securely and not shared.
     ```
 
-      **Warning:** Store the generated `validator-keys.json` key file in a secure, offline, and recoverable location, such as an encrypted USB flash drive. Do not store keys on the validator where you intend to use the keys. If your `secret_key` is compromised, [revoke the key](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation) immediately. Do not modify the contents of `validator-keys.json`, except to update the backup after generating a new token. If you generate more than one token from the same backup without updating, the network ignores the later tokens because they use the same `token_sequence` number.
+      {% admonition type="danger" name="Warning" %}Store the generated `validator-keys.json` key file in a secure, offline, and recoverable location, such as an encrypted USB flash drive. Do not store keys on the validator where you intend to use the keys. If your `secret_key` is compromised, [revoke the key](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation) immediately. Do not modify the contents of `validator-keys.json`, except to update the backup after generating a new token. If you generate more than one token from the same backup without updating, the network ignores the later tokens because they use the same `token_sequence` number.{% /admonition %}
 
       For more information about the `validator-keys` tool and the key pairs it generates, see the [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md).
 
@@ -178,7 +178,7 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 
 3. In your validator's `rippled.cfg` file, set `[peer_private]` to `1`. This prevents your validator's IP address from being forwarded. For more information, see [Private Peers](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). It also prevents your validator from connecting to servers other than those defined in the `[ips_fixed]` stanza you defined to run your validator in a cluster.
 
-    **Warning:** Be sure that you don't publish your validator's IP address in other ways.
+    {% admonition type="danger" name="Warning" %}Be sure that you don't publish your validator's IP address in other ways.{% /admonition %}
 
 4. Configure your validator host machine's firewall to allow the following traffic only:
 
@@ -215,7 +215,7 @@ _**To connect your validator to the network using public hubs:**_
     sahyadri.isrdc.in 51235
     ```
 
-    **Caution:** This configuration connects your validator to the network using default public hubs. Because these are the _default_ public hubs, they may sometimes be too busy to provide your validator with a connection to the network. To help avoid this issue, connect to more public hubs and, even better, connect to non-default public hubs.
+    {% admonition type="warning" name="Caution" %}This configuration connects your validator to the network using default public hubs. Because these are the _default_ public hubs, they may sometimes be too busy to provide your validator with a connection to the network. To help avoid this issue, connect to more public hubs and, even better, connect to non-default public hubs.{% /admonition %}
 
     You can include the IP addresses of other `rippled` servers here, but _**only**_ if you can expect them to:
 
@@ -232,7 +232,7 @@ _**To connect your validator to the network using public hubs:**_
     1
     ```
 
-    **Warning:** Be sure that you don't publish your validator's IP address in other ways.
+    {% admonition type="danger" name="Warning" %}Be sure that you don't publish your validator's IP address in other ways.{% /admonition %}
 
     With `[peer_private]` enabled, `rippled` ignores any connections suggested by the `[ips]` stanza. If you need to connect to an IP currently in your `[ips]` stanza, put it in the `[ips_fixed]` stanza instead, but _**only**_ if you can expect them to behave responsibly as described in step 1.
 

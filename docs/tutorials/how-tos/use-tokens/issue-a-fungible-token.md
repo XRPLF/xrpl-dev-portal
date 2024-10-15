@@ -57,7 +57,7 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 
 {% /interactive-block %}
 
-**Caution:** Ripple provides the [Testnet and Devnet](../../../concepts/networks-and-servers/parallel-networks.md) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
+{% admonition type="warning" name="Caution" %}Ripple provides the [Testnet and Devnet](../../../concepts/networks-and-servers/parallel-networks.md) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.{% /admonition %}
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md).
 
@@ -83,7 +83,7 @@ You must be connected to the network to submit transactions to it. The following
 {% /tabs %}
 
 
-**Note:** The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
+{% admonition type="info" name="Note" %}The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.{% /admonition %}
 
 For this tutorial, click the following button to connect:
 
@@ -96,7 +96,7 @@ First, configure the settings for your cold address (which will become the issue
 
 - [Default Ripple][]: **This setting is required** so that users can send your token to each other. It's best to enable it _before_ setting up any trust lines or issuing any tokens.
 - [Authorized Trust Lines][]: (Optional) This setting (also called "Require Auth") limits your tokens to being held _only_ by accounts you've explicitly approved. You cannot enable this setting if you already have any trust lines or offers for _any_ token.
-    **Note:** To use authorized trust lines, you must perform additional steps that are not shown in this tutorial.
+    {% admonition type="info" name="Note" %}To use authorized trust lines, you must perform additional steps that are not shown in this tutorial.{% /admonition %}
 
 [Default Ripple]: ../../../concepts/tokens/fungible-tokens/rippling.md
 [Authorized Trust Lines]: ../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md
@@ -118,7 +118,7 @@ Other settings you may want to, optionally, configure for your cold address (iss
 
 You can change these settings later as well.
 
-**Note:** Many issuing settings apply equally to all tokens issued by an address, regardless of the currency code. If you want to issue multiple types of tokens in the XRP Ledger with different settings, you should use a different address to issue each different token.
+{% admonition type="info" name="Note" %}Many issuing settings apply equally to all tokens issued by an address, regardless of the currency code. If you want to issue multiple types of tokens in the XRP Ledger with different settings, you should use a different address to issue each different token.{% /admonition %}
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended cold address settings:
 
@@ -209,7 +209,7 @@ The code samples in this tutorial use helper functions to wait for validation wh
 - **Python:** The `submit_and_wait()` [method of the xrpl-py library](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait).
 - **Java:** The `submitAndWaitForValidation()` method in the [sample Java class](https://github.com/XRPLF/xrpl-dev-portal/blob/master/_code-samples/issue-a-token/java/IssueToken.java).
 
-**Tip:** Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.
+{% admonition type="success" name="Tip" %}Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.{% /admonition %}
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Issuer Setup)"} /%}
 
@@ -308,7 +308,7 @@ Before you can receive tokens, you need to create a [trust line](../../../concep
 
 The hot address needs a trust line like this before it can receive tokens from the issuer. Similarly, each user who wants to hold your token must also create a trust line[¹](#footnotes). Each trust line increases the [reserve requirement](../../../concepts/accounts/reserves.md) of the hot address, so you must hold enough spare XRP to pay for the increased requirement. Your reserve requirement goes back down if you remove the trust line.
 
-**Tip:** A trust line has a "limit" on how much the recipient is willing to hold; others cannot send you more tokens than your specified limit. For community credit systems, you may want to configure limits per individual based on how much you trust that person. For other types and uses of tokens, it is normally OK to set the limit to a very large number.
+{% admonition type="success" name="Tip" %}A trust line has a "limit" on how much the recipient is willing to hold; others cannot send you more tokens than your specified limit. For community credit systems, you may want to configure limits per individual based on how much you trust that person. For other types and uses of tokens, it is normally OK to set the limit to a very large number.{% /admonition %}
 
 To create a trust line, send a [TrustSet transaction][] from the **hot address** with the following fields:
 
@@ -376,7 +376,7 @@ The following code sample shows how to send a [TrustSet transaction][] from the 
 
 {% /interactive-block %}
 
-**Note:** If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#authorizing-trust-lines).
+{% admonition type="info" name="Note" %}If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#authorizing-trust-lines).{% /admonition %}
 
 
 ### 8. Wait for Validation
@@ -471,7 +471,7 @@ Use the [account_lines method][] to look up the balances from the perspective of
 
 Use the [gateway_balances method][] to look up balances from the perspective of a token issuer. This provides a sum of all tokens issued by a given address.
 
-**Tip:** Since the XRP Ledger is fully public, you can check the balances of any account at any time without needing any cryptographic keys.
+{% admonition type="success" name="Tip" %}Since the XRP Ledger is fully public, you can check the balances of any account at any time without needing any cryptographic keys.{% /admonition %}
 
 The following code sample shows how to use both methods:
 

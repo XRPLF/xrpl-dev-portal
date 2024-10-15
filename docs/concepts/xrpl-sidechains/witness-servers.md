@@ -22,7 +22,7 @@ The bridge between the locking chain and the issuing chain includes the followin
 
 Anyone can run a witness server. However, the burden is on the participants of the issuing chain to evaluate the reliability of witness servers. If you run a witness server, you must also run a `rippled` node and sync it to the chain the witness server needs access to.
 
-**Note:** Issuing chains may choose to configure a bridge with only one witness server initially and run the witness server itself. This strategy is helpful in the initial period, when the issuing chain hasn't established itself yet in the marketplace.
+{% admonition type="info" name="Note" %}Issuing chains may choose to configure a bridge with only one witness server initially and run the witness server itself. This strategy is helpful in the initial period, when the issuing chain hasn't established itself yet in the marketplace.{% /admonition %}
 
 
 ## Witness Server Configuration

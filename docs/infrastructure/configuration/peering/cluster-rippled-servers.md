@@ -45,7 +45,7 @@ If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/i
 
         This defines specific peer servers to which this server should always attempt to maintain a direct peer-to-peer connection.
 
-        **Note:** If you omit the port number, the server uses port 2459, the IANA-assigned port for the XRP Ledger protocol.
+        {% admonition type="info" name="Note" %}If you omit the port number, the server uses port 2459, the IANA-assigned port for the XRP Ledger protocol.{% /admonition %}
 
     2. In the `[node_seed]` section, set the server's node seed to one of the `validation_seed` values you generated using the [validation_create method][] in step 2. Each server must use a unique node seed. For example:
 

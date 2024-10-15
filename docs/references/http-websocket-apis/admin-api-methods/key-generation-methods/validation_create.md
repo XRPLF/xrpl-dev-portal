@@ -16,7 +16,7 @@ _The `validation_create` method is an [admin method](../index.md) that cannot be
 
 You can configure your server to use the generated key pair to sign validations (validation key pair) or regular peer-to-peer communications ([node key pair](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair)).
 
-**Tip:** For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` RPM) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server).
+{% admonition type="success" name="Tip" %}For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` RPM) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server).{% /admonition %}
 
 
 ### Request Format
@@ -62,7 +62,7 @@ The request includes the following parameters:
 |:---------|:-------|:---------------------------------------------------------|
 | `secret` | String | _(Optional)_ Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or the XRP Ledger's [base58][] format. If omitted, generate a random seed. |
 
-**Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value for real business purposes unless it is generated with a strong source of randomness. Ripple recommends omitting the `secret` when generating new credentials for the first time.
+{% admonition type="info" name="Note" %}The security of your validator depends on the entropy of your seed. Do not use a secret value for real business purposes unless it is generated with a strong source of randomness. Ripple recommends omitting the `secret` when generating new credentials for the first time.{% /admonition %}
 
 ### Response Format
 

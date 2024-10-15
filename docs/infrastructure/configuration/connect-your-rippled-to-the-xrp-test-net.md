@@ -12,7 +12,7 @@ labels:
 
 Various [alternative test and development networks](../../concepts/networks-and-servers/parallel-networks.md) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](../../concepts/networks-and-servers/index.md) to any of these test networks.
 
-**Caution:** On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](../../concepts/networks-and-servers/parallel-networks.md) for information on what code version each network needs.
+{% admonition type="warning" name="Caution" %}On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](../../concepts/networks-and-servers/parallel-networks.md) for information on what code version each network needs.{% /admonition %}
 
 ## Steps
 
@@ -86,7 +86,7 @@ Edit your `rippled.cfg` file.
 
     For custom networks, everyone who connects to the network should use a value unique to that network. When creating a new network, choose a network ID at random from the integers 11 to 4,294,967,295.
 
-    **Note:** This setting helps your server find peers who are on the same network, but it is not a hard control on what network your server follows. The UNL / trusted validator settings (in the next step) are what actually define what network the server follows.
+    {% admonition type="info" name="Note" %}This setting helps your server find peers who are on the same network, but it is not a hard control on what network your server follows. The UNL / trusted validator settings (in the next step) are what actually define what network the server follows.{% /admonition %}
 
 ## 2. Set your trusted validator list.
 
@@ -130,7 +130,7 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
     {% /tabs %}
 
-    **Tip:** Preview packages might come with the necessary stanzas pre-configured, but check them just in case.
+    {% admonition type="success" name="Tip" %}Preview packages might come with the necessary stanzas pre-configured, but check them just in case.{% /admonition %}
 
 2. Comment out any previous `[validator_list_sites]`, `[validator_list_keys]`, or `[validators]` stanzas.
 
@@ -190,7 +190,7 @@ XChainBridge
 
 {% /tabs %}
 
-**Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
+{% admonition type="danger" name="Warning" %}Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.{% /admonition %}
 
 ## 4. Restart the server.
 

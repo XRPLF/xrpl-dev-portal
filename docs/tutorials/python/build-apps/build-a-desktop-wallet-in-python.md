@@ -110,7 +110,7 @@ The main challenge with threads is that you have to be careful not to access dat
 
 To make full use of the XRP Ledger's ability to push messages to the client, use [xrpl-py's `AsyncWebsocketClient`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.clients.html#xrpl.asyncio.clients.AsyncWebsocketClient) instead of `JsonRpcClient`. This lets you "subscribe" to updates using asynchronous code, while also performing other request/response actions in response to various events such as user input.
 
-**Note:** While you can, technically, use the synchronous (that is, non-async) WebSocket client, it gets significantly more complicated to manage these things while also handling input from the GUI. Even if writing async code is unfamiliar to you, it can be worth it to reduce the overall complexity of the code you have to write later.
+{% admonition type="info" name="Note" %}While you can, technically, use the synchronous (that is, non-async) WebSocket client, it gets significantly more complicated to manage these things while also handling input from the GUI. Even if writing async code is unfamiliar to you, it can be worth it to reduce the overall complexity of the code you have to write later.{% /admonition %}
 
 Add these imports to the top of the file:
 
@@ -124,7 +124,7 @@ This code defines a `Thread` subclass for the worker. When the thread starts, it
 
 The `watch_xrpl()` function is an example of a such a task (which the GUI thread starts when it's ready): it connects to the XRP Ledger, then calls the [subscribe method][] to be notified whenever a new ledger is validated. It uses the immediate response _and_ all later subscription stream messages to trigger updates of the GUI.
 
-**Tip:** Define worker jobs like this using `async def` instead of `def` so that you can use the `await` keyword in them; you need to use `await` to get the response to the [`AsyncWebsocketClient.request()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.clients.html#xrpl.asyncio.clients.AsyncWebsocketClient.request). Normally, you would also need to use `await` or something similar to get the response from any function you define with `async def`; but, in this app, the `run_bg_job()` helper takes care of that in a different way.
+{% admonition type="success" name="Tip" %}Define worker jobs like this using `async def` instead of `def` so that you can use the `await` keyword in them; you need to use `await` to get the response to the [`AsyncWebsocketClient.request()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.clients.html#xrpl.asyncio.clients.AsyncWebsocketClient.request). Normally, you would also need to use `await` or something similar to get the response from any function you define with `async def`; but, in this app, the `run_bg_job()` helper takes care of that in a different way.{% /admonition %}
 
 Update the code for the main thread and GUI frame to look like this:
 
@@ -132,7 +132,7 @@ Update the code for the main thread and GUI frame to look like this:
 
 The part that builds the GUI has been moved to a separate method, `build_ui(self)`. This helps to divide the code into chunks that are easier to understand, because the `__init__()` constructor has other work to do now, too: it starts the worker thread, and gives it its first job. The GUI setup also now uses a [sizer](https://docs.wxpython.org/sizers_overview.html) to control placement of the text within the frame.
 
-**Tip:** In this tutorial, all the GUI code is written by hand, but you may find it easier to create powerful GUIs using a "builder" tool such as [wxGlade](http://wxglade.sourceforge.net/). Separating the GUI code from the constructor may make it easier to switch to this type of approach later. <!-- SPELLING_IGNORE: wxGlade -->
+{% admonition type="success" name="Tip" %}In this tutorial, all the GUI code is written by hand, but you may find it easier to create powerful GUIs using a "builder" tool such as [wxGlade](http://wxglade.sourceforge.net/). Separating the GUI code from the constructor may make it easier to switch to this type of approach later. <!-- SPELLING_IGNORE: wxGlade -->{% /admonition %}
 
 There's a new helper method, `run_bg_job()`, which runs an asynchronous function (defined with `async def`) in the worker thread. Use this method any time you want the worker thread to interact with the XRP Ledger network.
 
@@ -144,7 +144,7 @@ Finally, change the code to start the app (at the end of the file) slightly:
 
 Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to use a WebSocket URL to connect.
 
-**Tip:** If you [run your own `rippled` server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](../../public-servers.md) to connect to the Mainnet or other test networks.
+{% admonition type="success" name="Tip" %}If you [run your own `rippled` server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](../../public-servers.md) to connect to the Mainnet or other test networks.{% /admonition %}
 
 #### Troubleshooting SSL Certificate Errors
 
@@ -205,7 +205,7 @@ Update the `build_ui()` method definition as follows:
 
 This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with several new widgets, then uses the `AutoGridBagSizer` (defined above) to lay them out in 2×4 grid within the box. These new widgets are all static text to display [details of the account](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md), though some of them start with placeholder text. (Since they require data from the ledger, you have to wait for the worker thread to send that data back.)
 
-**Caution:** You may notice that even though the constructor for this class sees the `wallet` variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be thread-safe.
+{% admonition type="warning" name="Caution" %}You may notice that even though the constructor for this class sees the `wallet` variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be thread-safe.{% /admonition %}
 
 Add a new `prompt_for_account()` method to the `TWaXLFrame` class:
 
@@ -220,7 +220,7 @@ The constructor calls this method to prompt the user for their [address](../../.
 
 From there, the `prompt_for_account()` code branches based on whether the input is a classic address, X-address, seed, or not a valid value at all. Assuming the value decodes successfully, it updates the `wx.StaticText` widgets with both the classic and X-address equivalents of the address and returns them. (As noted above, the constructor passes these values to the worker thread.)
 
-**Tip:** This code exits if the user inputs an invalid value, but you could rewrite it to prompt again or display a different message to the user.
+{% admonition type="success" name="Tip" %}This code exits if the user inputs an invalid value, but you could rewrite it to prompt again or display a different message to the user.{% /admonition %}
 
 This code also binds an _event handler_, which is a method that is called whenever a certain type of thing happens to a particular part of the GUI, usually based on the user's actions. In this case, the trigger is `wx.EVT_TEXT` on the dialog, which triggers immediately when the user types or pastes anything into the dialog's text box.
 
@@ -285,7 +285,7 @@ Have the worker use the [account_tx method][] to look up the account's transacti
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/4_tx_history.py" from="# Get the first page of the account's transaction history" before="class AutoGridBagSizer" language="py" /%}
 
-**Note:** You may have to [paginate](../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) across multiple [account_tx][account_tx method] requests and responses if you want the _complete_ list of transactions that affected an account since its creation. This example does not show pagination, so the app only displays the most recent transactions to affect the account.
+{% admonition type="info" name="Note" %}You may have to [paginate](../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) across multiple [account_tx][account_tx method] requests and responses if you want the _complete_ list of transactions that affected an account since its creation. This example does not show pagination, so the app only displays the most recent transactions to affect the account.{% /admonition %}
 
 Now, edit the `build_ui()` method of the `TWaXLFrame` class. **Update the beginning of the method** to add a new [`wx.Notebook`](https://docs.wxpython.org/wx.Notebook.html), which makes a "tabs" interface, and make the `main_panel` into the first tab, as follows:
 
@@ -413,7 +413,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
     python3
     ```
 
-    **Caution:** Depending on your OS, the command may be `python` or `python3`. You want to open Python 3, not a Python 2.x version.
+    {% admonition type="warning" name="Caution" %}Depending on your OS, the command may be `python` or `python3`. You want to open Python 3, not a Python 2.x version.{% /admonition %}
 
 
 2. Run the following commands in the Python interpreter:
@@ -471,7 +471,7 @@ If the account _does_ exist, the code checks for the [`lsfDisallowXRP` flag](../
 
 Finally, the code decodes the account's `Domain` field, if present, and performs domain verification using the method imported above.
 
-**Caution:** The background check takes the Send XRP dialog (`dlg`) as a parameter, since each dialog is a separate instance, but does not modify the dialog directly since that might not be thread-safe. (It _only_ uses `wx.CallAfter` to pass the results of the check back to the dialog.)
+{% admonition type="warning" name="Caution" %}The background check takes the Send XRP dialog (`dlg`) as a parameter, since each dialog is a separate instance, but does not modify the dialog directly since that might not be thread-safe. (It _only_ uses `wx.CallAfter` to pass the results of the check back to the dialog.){% /admonition %}
 
 After this, it's time to update the `SendXRPDialog` class to make it capable of displaying these errors. You can also set a more specific upper bound for how much XRP the account can actually send. Change the constructor to take a new parameter:
 

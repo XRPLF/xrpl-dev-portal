@@ -9,7 +9,7 @@ seo:
 
 The `tx_history` method retrieves some of the most recent transactions made.
 
-**Caution:** This method is removed in [API v2][].
+{% admonition type="warning" name="Caution" %}This method is removed in [API v2][].{% /admonition %}
 
 ## Request Format
 An example of the request format:

@@ -14,7 +14,7 @@ This tutorial shows how to monitor for incoming [payments](../../../concepts/pay
 
 WebSocket follows a model where the client and server open one connection, then send messages both ways through the same connection, which stays open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.[¹](#footnote-1)<a id="from-footnote-1"></a>
 
-**Tip:** The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the [xrpl.js library for JavaScript](https://js.xrpl.org/) to simplify some tasks. This tutorial shows how to monitor for transactions _without_ using a xrpl.js so that you can translate the steps to other programming languages that don't have a native XRP Ledger client library.
+{% admonition type="success" name="Tip" %}The examples in this page use JavaScript so that the examples can run natively in a web browser. If you are developing in JavaScript, you can also use the [xrpl.js library for JavaScript](https://js.xrpl.org/) to simplify some tasks. This tutorial shows how to monitor for transactions _without_ using a xrpl.js so that you can translate the steps to other programming languages that don't have a native XRP Ledger client library.{% /admonition %}
 
 ## Prerequisites
 
@@ -71,7 +71,7 @@ The above example opens a secure connection (`wss://`) to one of Ripple's public
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](../../../references/http-websocket-apis/admin-api-methods/index.md) and admin-only data in some responses such as [server_info][server_info method], plus the [public methods](../../../references/http-websocket-apis/public-api-methods/index.md) that are available when you connect to public servers over the internet.
+{% admonition type="success" name="Tip" %}By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](../../../references/http-websocket-apis/admin-api-methods/index.md) and admin-only data in some responses such as [server_info][server_info method], plus the [public methods](../../../references/http-websocket-apis/public-api-methods/index.md) that are available when you connect to public servers over the internet.{% /admonition %}
 
 Example:
 
@@ -125,11 +125,11 @@ Since WebSocket connections can have several messages going each way and there i
 
     - A `status` field that indicates whether the API successfully processed your request. The string value `success` indicates [a successful response](../../../references/http-websocket-apis/api-conventions/response-formatting.md). The string value `error` indicates [an error](../../../references/http-websocket-apis/api-conventions/error-formatting.md).
 
-        **Warning:** When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md).
+        {% admonition type="danger" name="Warning" %}When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md).{% /admonition %}
 
 - For follow-up messages from [subscriptions](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md), the `type` indicates the type of follow-up message it is, such as the notification of a new transaction, ledger, or validation; or a follow-up to an ongoing [pathfinding request](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md). Your client only receives these messages if it subscribes to them.
 
-**Tip:** The [xrpl.js library for JavaScript](https://js.xrpl.org/) handles this step by default. All asynchronous API requests use Promises to provide the response, and you can listen to streams using the `.on(event, callback)` method of the `Client`.
+{% admonition type="success" name="Tip" %}The [xrpl.js library for JavaScript](https://js.xrpl.org/) handles this step by default. All asynchronous API requests use Promises to provide the response, and you can listen to streams using the `.on(event, callback)` method of the `Client`.{% /admonition %}
 
 The following JavaScript code defines a helper function to make API requests into convenient asynchronous [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and sets up an interface to map other types of messages to global handlers:
 
@@ -349,7 +349,7 @@ When you subscribe to an account, you get messages for _all transactions to or f
 - The **`transaction.TransactionType` field** is the type of transaction. The transaction types that can possibly deliver currency to an account are as follows:
     - **[Payment transactions][]** can deliver XRP or [tokens](../../../concepts/tokens/index.md). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts).
 
-        **Warning:** If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](../../../concepts/payment-types/partial-payments.md#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.
+        {% admonition type="danger" name="Warning" %}If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](../../../concepts/payment-types/partial-payments.md#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.{% /admonition %}
 
     - **[CheckCash transactions][]** allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
 
@@ -493,7 +493,7 @@ Many programming languages have libraries for sending and receiving data over a 
 
 {% /tabs %}
 
-**Tip:** Don't see the programming language of your choice? Click the "Edit on GitHub" link at the top of this page and contribute your own sample code!
+{% admonition type="success" name="Tip" %}Don't see the programming language of your choice? Click the "Edit on GitHub" link at the top of this page and contribute your own sample code!{% /admonition %}
 
 
 ## Footnotes

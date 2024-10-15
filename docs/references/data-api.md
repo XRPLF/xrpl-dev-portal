@@ -9,7 +9,7 @@ sidebar: ../../sidebars.yaml
 ---
 # Ripple Data API v2
 
-**Warning:** The Ripple Data API v2 is deprecated with no ongoing support. Please use the native [XRP Ledger HTTP APIs](http-websocket-apis/index.md) instead.
+{% admonition type="danger" name="Warning" %}The Ripple Data API v2 is deprecated with no ongoing support. Please use the native [XRP Ledger HTTP APIs](http-websocket-apis/index.md) instead.{% /admonition %}
 
 For information on the old Data API, see the [rippled-historical-database repository](https://github.com/ripple/rippled-historical-database).
 

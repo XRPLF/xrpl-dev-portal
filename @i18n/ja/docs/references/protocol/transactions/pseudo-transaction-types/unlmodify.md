@@ -12,7 +12,7 @@ _([NegativeUNL amendment][]により追加されました)_
 
 `UNLModify`[疑似トランザクション](pseudo-transaction-types.md)は[Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
 
-**注記:** 擬似トランザクションを送信することはできませんが、台帳を処理する際に擬似トランザクションを発見することがあります。
+{% admonition type="info" name="注記" %}擬似トランザクションを送信することはできませんが、台帳を処理する際に擬似トランザクションを発見することがあります。{% /admonition %}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

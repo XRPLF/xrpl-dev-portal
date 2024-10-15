@@ -27,7 +27,7 @@ All XRP Ledger servers should continue to operate as normal for now. If any new 
 
 - If you operate a `rippled` server, please [upgrade](https://xrpl.org/install-rippled.html) to version 1.4.0.
 
-    **Caution:** Upgrading to v1.4.0 may take longer than usual because of SQL database cleanup the server performs the first time after upgrading. For more information, see [XRP Ledger version 1.4.0 Upgrade Advisory](https://xrpl.org/blog/2020/rippled-1.4.0-upgrade-advisory.html).
+    {% admonition type="warning" name="Caution" %}Upgrading to v1.4.0 may take longer than usual because of SQL database cleanup the server performs the first time after upgrading. For more information, see [XRP Ledger version 1.4.0 Upgrade Advisory](https://xrpl.org/blog/2020/rippled-1.4.0-upgrade-advisory.html).{% /admonition %}
 
 - If you use the XRP Ledger APIs to list payment channels, such as using the [account_channels](https://xrpl.org/account_channels.html) method, be aware that the fixPayChanRecipientOwnerDir amendment affects the results of this API. Specifically, the method will list newly-created channels for which the specified account is the recipient. Previously, this method only listed channels for which the account is the sender. (Existing payment channels for which the specified account is the recipient will continue not to appear in the results. Only new channels, created after the amendment becomes enabled, are affected.)
 

@@ -88,7 +88,7 @@ const xrpl = require("xrpl")
 
 参照や取引を行うには、XRP Ledgerへの接続を確立する必要があります。`xrpl.js`でこれを行うには、`Client`クラスのインスタンスを作成し、`connect()`メソッドを使用します。
 
-**Tip:** `xrpl.js` の多くのネットワーク関数は、[Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)を使って非同期に値を返します。ここで紹介するコードサンプルでは、[`async/await` パターン](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)を使用して、Promises の実際の結果を待ちます。
+{% admonition type="success" name="Tip" %}`xrpl.js` の多くのネットワーク関数は、[Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)を使って非同期に値を返します。ここで紹介するコードサンプルでは、[`async/await` パターン](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)を使用して、Promises の実際の結果を待ちます。{% /admonition %}
 
 {% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
 

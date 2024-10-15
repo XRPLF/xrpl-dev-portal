@@ -16,7 +16,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 `XChainAccountCreateCommit`トランザクションは、発行チェーンにトランザクションを送信するために、Witnessサーバ用の新しいアカウントを作成します。
 
-**注意:** このトランザクションは、Witnessの証明書が送信先チェーンに確実に送信される場合にのみ実行されるべきです。署名が送信されない場合、証明書が受信されるまでアカウント作成はブロックされます。XRP-XRPブリッジでこのトランザクションを無効にするには、ブリッジの`MinAccountCreateAmount`フィールドを省略します。
+{% admonition type="warning" name="注意" %}このトランザクションは、Witnessの証明書が送信先チェーンに確実に送信される場合にのみ実行されるべきです。署名が送信されない場合、証明書が受信されるまでアカウント作成はブロックされます。XRP-XRPブリッジでこのトランザクションを無効にするには、ブリッジの`MinAccountCreateAmount`フィールドを省略します。{% /admonition %}
 
 
 ## XChainAccountCreateCommit JSONの例

@@ -6,4 +6,4 @@
 
 {% /interactive-block %}
 
-**Caution:** Ripple provides the [Testnet and Devnet](../../concepts/networks-and-servers/parallel-networks.md) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
+{% admonition type="warning" name="Caution" %}Ripple provides the [Testnet and Devnet](../../concepts/networks-and-servers/parallel-networks.md) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.{% /admonition %}

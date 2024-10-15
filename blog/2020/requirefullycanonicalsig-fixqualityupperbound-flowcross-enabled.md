@@ -22,7 +22,7 @@ With these amendments enabled, **version 1.5.0 is the minimum** server version t
 
     For instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](https://xrpl.org/install-rippled.html).
 
-    **Note:** As of 2020-08-04, [version 1.6.0 is in the release candidate process](https://github.com/ripple/rippled/commit/7b048b423e8ae08a54018a89231d050b9f562855), so the full 1.6.0 release is expected in the near future.
+    {% admonition type="info" name="Note" %}As of 2020-08-04, [version 1.6.0 is in the release candidate process](https://github.com/ripple/rippled/commit/7b048b423e8ae08a54018a89231d050b9f562855), so the full 1.6.0 release is expected in the near future.{% /admonition %}
 
 - If you use a custom or very old (pre-2014) tool for signing XRP Ledger transactions using secp256k1, check that your tool produces _fully canonical_ signatures. All valid Ed25519 signatures are fully canonical. If your tool produces secp256k1 signatures that are not fully canonical (see [Alternate secp256k1 signatures](https://xrpl.org/transaction-malleability.html#alternate-secp256k1-signatures) for details), you must update your tool to continue sending XRP Ledger transactions.
 

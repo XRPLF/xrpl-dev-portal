@@ -12,7 +12,7 @@ Amendments represent new features or other changes to transaction processing.
 
 The amendment system uses the consensus process to approve any changes that affect transaction processing on the XRP Ledger. Fully-functional, transaction process changes are introduced as amendments; validators then vote on these changes. If an amendment receives more than 80% support for two weeks, the amendment passes and the change applies permanently to all subsequent ledger versions. Disabling a passed amendment requires a new amendment to do so.
 
-**Note:** Bug fixes that change transaction processes also require amendments.
+{% admonition type="info" name="Note" %}Bug fixes that change transaction processes also require amendments.{% /admonition %}
 
 <!-- TODO: Move this to an amendment tutorial.
 Every amendment has a unique identifying hex value and a short name. The short name is for readability only; servers can use different names to describe the same amendement ID, and the names aren't guaranteed to be unique. The amendment ID should be the SHA-512Half hash of the amendment's short name.
@@ -33,7 +33,7 @@ Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have spe
     * The `tfLostMajority` flag means support for the amendment has decreased to 80% or less.
     * No flag means the amendment is enabled.
 
-    **Note:** It's possible for an amendment to lose 80% support on the same ledger it reaches the required two-week period to be enabled. In these cases, an `EnableAmendment` pseudo-transactions is added for both scenarios, but the amendment is ultimately enabled. 
+    {% admonition type="info" name="Note" %}It's possible for an amendment to lose 80% support on the same ledger it reaches the required two-week period to be enabled. In these cases, an `EnableAmendment` pseudo-transactions is added for both scenarios, but the amendment is ultimately enabled. {% /admonition %}
 
 4. **Flag Ledger +2:** Enabled amendments apply to transactions on this ledger onwards.
 
@@ -42,7 +42,7 @@ Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have spe
 
 Each version of `rippled` is compiled with a list of [known amendments](/resources/known-amendments.md) and the code to implement those amendments. Operators of `rippled` validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.
 
-**Note:** The default vote can change between software releases. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %}
+{% admonition type="info" name="Note" %}The default vote can change between software releases. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %}{% /admonition %}
 
 Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before they become permanently enabled.
 

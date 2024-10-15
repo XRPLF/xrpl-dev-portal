@@ -176,7 +176,7 @@ This warning indicates that the server answering the request is running [Reporti
 
 It is generally safe to ignore this warning.
 
-**Caution:** If you request ledger data without explicitly [specifying a ledger version][Specifying Ledgers], Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.
+{% admonition type="warning" name="Caution" %}If you request ledger data without explicitly [specifying a ledger version][Specifying Ledgers], Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.{% /admonition %}
 
 
 ## See Also

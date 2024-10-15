@@ -39,7 +39,7 @@ print(release_date_ripple)
 
 {% /tabs %}
 
-**警告:** `FinishAfter`フィールドで、UNIX時刻を同等のRipple時刻に変換せずに使用すると、ロック解除時刻が30年先に設定されることになります。
+{% admonition type="danger" name="警告" %}`FinishAfter`フィールドで、UNIX時刻を同等のRipple時刻に変換せずに使用すると、ロック解除時刻が30年先に設定されることになります。{% /admonition %}
 
 ## 2.EscrowCreateトランザクションの送信
 
@@ -129,7 +129,7 @@ print(release_date_ripple)
 
 `FinishAfter`の時刻が経過した後で資金のリリースを実行する[EscrowFinishトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Owner`フィールドにEscrowCreateトランザクションの`Account`アドレスを設定し、`OfferSequence` にEscrowCreateトランザクションの`Sequence`番号を設定します。時刻のみに基づいて保留されているEscrowの場合は、`Condition`フィールドと`Fulfillment`フィールドを省略します。
 
-**ヒント:** XRP Ledgerの状態はトランザクションでしか変更できないため、EscrowFinishトランザクションが必要です。このトランザクションの送信者は、Escrowの受取人、Escrowの元としての送金人、またはその他のXRP Ledgerアドレスのいずれかです。
+{% admonition type="success" name="ヒント" %}XRP Ledgerの状態はトランザクションでしか変更できないため、EscrowFinishトランザクションが必要です。このトランザクションの送信者は、Escrowの受取人、Escrowの元としての送金人、またはその他のXRP Ledgerアドレスのいずれかです。{% /admonition %}
 
 Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired-escrow.md)だけが可能です。
 

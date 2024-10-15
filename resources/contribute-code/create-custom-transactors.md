@@ -17,7 +17,7 @@ Transactors follow a basic order of operations:
 2. Update, erase, or insert values in the _view_.
 3. Apply the finalized changes from the _view_ to the ledger.
 
-**Note:** _Views_ are sandboxes into ledgers. Transactors make all necessary error checks and changes in sandboxes, not directly on the ledger. After values are finalized, changes are applied atomically to the ledger.
+{% admonition type="info" name="Note" %}_Views_ are sandboxes into ledgers. Transactors make all necessary error checks and changes in sandboxes, not directly on the ledger. After values are finalized, changes are applied atomically to the ledger.{% /admonition %}
 
 This tutorial uses the existing `CreateCheck` transactor as an example. You can view the source files here:
 
@@ -75,7 +75,7 @@ The `preflight` function checks for errors in the transaction itself before acce
     (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
     ```
 
-    **Note:** The `~` symbol returns an optional type.
+    {% admonition type="info" name="Note" %}The `~` symbol returns an optional type.{% /admonition %}
 
 - You can view ledger and transaction schemas here:
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
@@ -356,7 +356,7 @@ The `makeTxConsequences` function enables you to create custom consequences for 
 - Tickets consuming more than one sequence number.
 - Transactions that are normal or blockers, depending on flags or fields set.
 
-**Note:** `TxConsequences` only affects the [transaction queue](../../docs/concepts/transactions/transaction-queue.md). If a transaction is likely to claim a fee when applied to the ledger, it will be broadcast to peers. If it's not likely to claim a fee, or that can't be determined, it won't be broadcast.
+{% admonition type="info" name="Note" %}`TxConsequences` only affects the [transaction queue](../../docs/concepts/transactions/transaction-queue.md). If a transaction is likely to claim a fee when applied to the ledger, it will be broadcast to peers. If it's not likely to claim a fee, or that can't be determined, it won't be broadcast.{% /admonition %}
 
 
 ```c++

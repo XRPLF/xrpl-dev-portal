@@ -32,7 +32,7 @@ The XRP Ledger supports three types of escrow:
 
 3. The recipient sends an `EscrowFinish` transaction to deliver the XRP. If the conditions have been met, this destroys the `Escrow` object and delivers the XRP to the recipient.
 
-    **Note:** If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, destroying the `Escrow` object and returning the XRP to the sender.
+    {% admonition type="info" name="Note" %}If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, destroying the `Escrow` object and returning the XRP to the sender.{% /admonition %}
 
 ## Escrow States
 
@@ -68,7 +68,7 @@ The additional transaction cost required is proportional to the size of the fulf
 
 Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**.
 
-**Note:** The above formula is based on the assumption that the reference cost of a transaction is 10 drops of XRP.
+{% admonition type="info" name="Note" %}The above formula is based on the assumption that the reference cost of a transaction is 10 drops of XRP.{% /admonition %}
 
 If [Fee Voting](../consensus-protocol/fee-voting.md) changes the `reference_fee` value, the formula scales based on the new reference cost. The generalized formula for an EscrowFinish transaction with a fulfillment is as follows:
 

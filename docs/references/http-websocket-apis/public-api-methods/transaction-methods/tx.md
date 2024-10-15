@@ -92,7 +92,7 @@ The request includes the following parameters:
 
 You must provide _either_ `ctid` or `transaction`, but not both.
 
-**Caution:** This command may successfully find the transaction even if it is included in a ledger _outside_ the range of `min_ledger` to `max_ledger`.
+{% admonition type="warning" name="Caution" %}This command may successfully find the transaction even if it is included in a ledger _outside_ the range of `min_ledger` to `max_ledger`.{% /admonition %}
 
 ## Response Format
 

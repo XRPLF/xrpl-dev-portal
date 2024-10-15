@@ -13,7 +13,7 @@ _Added by the [DepositPreauth amendment][]._
 
 A DepositPreauth transaction gives another account pre-approval to deliver payments to the sender of this transaction. This is only useful if the sender of this transaction is using (or plans to use) [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 
-**Tip:** You can use this transaction to preauthorize certain counterparties before you enable Deposit Authorization. This may be useful to ensure a smooth transition from not requiring deposit authorization to requiring it.
+{% admonition type="success" name="Tip" %}You can use this transaction to preauthorize certain counterparties before you enable Deposit Authorization. This may be useful to ensure a smooth transition from not requiring deposit authorization to requiring it.{% /admonition %}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

@@ -71,7 +71,7 @@ The request includes the following parameters:
 
 The request **must** specify exactly one of `secret`, `seed`, `seed_hex`, or `passphrase`.
 
-**Warning:** Do not send secret keys to untrusted servers or through unsecured network connections. (This includes the `secret`, `seed`, `seed_hex`, or `passphrase` fields of this request.) You should only use this method on a secure, encrypted network connection to a server you run or fully trust with your funds. Otherwise, eavesdroppers could use your secret key to sign claims and take all the money from this payment channel and anything else using the same key pair. See [Set Up Secure Signing](../../../../concepts/transactions/secure-signing.md) for instructions.
+{% admonition type="danger" name="Warning" %}Do not send secret keys to untrusted servers or through unsecured network connections. (This includes the `secret`, `seed`, `seed_hex`, or `passphrase` fields of this request.) You should only use this method on a secure, encrypted network connection to a server you run or fully trust with your funds. Otherwise, eavesdroppers could use your secret key to sign claims and take all the money from this payment channel and anything else using the same key pair. See [Set Up Secure Signing](../../../../concepts/transactions/secure-signing.md) for instructions.{% /admonition %}
 
 ## Response Format
 

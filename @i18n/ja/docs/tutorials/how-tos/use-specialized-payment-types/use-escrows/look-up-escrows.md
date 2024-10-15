@@ -48,7 +48,7 @@ Escrowオブジェクトを検索するには、[account_objectsメソッド][]�
 
 [account_objectsメソッド][]を使用して、送金先アドレスからEscrowオブジェクトを検索できます。
 
-**注記:** 送金先のアドレスによる保留中のEscrowオブジェクトの検索は、[fix1523 Amendment][]が2017/11/14に有効化された後に作成されたEscrowについてのみ行うことができます。
+{% admonition type="info" name="注記" %}送金先のアドレスによる保留中のEscrowオブジェクトの検索は、[fix1523 Amendment][]が2017/11/14に有効化された後に作成されたEscrowについてのみ行うことができます。{% /admonition %}
 
 たとえば、送金先アドレスが`rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`である保留中のEscrowオブジェクトをすべて検索するとします。以下のリクエストの例に従ってこの検索を実行できます。この例では送金先アドレスは`account`の値です。
 

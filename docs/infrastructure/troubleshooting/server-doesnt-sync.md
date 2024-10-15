@@ -70,7 +70,7 @@ In rare cases, corrupt data saved in your `rippled` server's internal databases 
 
 As a test, you can temporarily change the paths to your server's databases as long as you have enough free space to re-download the current ledger and store other settings.
 
-**Note:** When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.
+{% admonition type="info" name="Note" %}When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.{% /admonition %}
 
 1. Stop the `rippled` server if it is running.
 

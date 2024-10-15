@@ -128,6 +128,6 @@ If you don't specify an "OtherChainDestination", the account that submitted the 
   }, {autofill: true, wallet: wallet_lockingchain})
 ```
 
-**Note:** When enough `XChainAddClaimAttestation` signatures are submitted by the witness servers to reach quorum, the funds are released on the issuing chain to the `OtherChainDestination`.
+{% admonition type="info" name="Note" %}When enough `XChainAddClaimAttestation` signatures are submitted by the witness servers to reach quorum, the funds are released on the issuing chain to the `OtherChainDestination`.{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

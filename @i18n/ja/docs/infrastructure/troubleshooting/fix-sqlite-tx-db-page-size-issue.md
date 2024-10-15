@@ -16,7 +16,7 @@ seo:
 
 SQLiteデータベースの容量は、データベースの _ページサイズ_ パラメーターによって決まります。この容量は、データベース作成後は容易に変更できません。（SQLiteの内部についての詳細は、[SQLite公式ドキュメント](https://www.sqlite.org/fileformat.html)をご覧ください。）データベースが保管されているディスクとファイルシステムに空き容量がある場合でも、データベースが容量いっぱいになることがあります。以下の「[解決策](#解決策)」で説明するように、この問題を回避するためにページサイズを再構成するには、時間のかかる移行プロセスが必要です。
 
-**ヒント:** ほとんどの場合、`rippled`サーバの稼働に全履歴が必要となることはありません。サーバにトランザクションの全履歴が記録されていれば、長期分析やアーカイブ、または災害に対する事前対策に役立ちます。リソースを大量に消費せずにトランザクション履歴を保管する方法については、[履歴シャーディング](../configuration/data-retention/history-sharding.md)をご覧ください。
+{% admonition type="success" name="ヒント" %}ほとんどの場合、`rippled`サーバの稼働に全履歴が必要となることはありません。サーバにトランザクションの全履歴が記録されていれば、長期分析やアーカイブ、または災害に対する事前対策に役立ちます。リソースを大量に消費せずにトランザクション履歴を保管する方法については、[履歴シャーディング](../configuration/data-retention/history-sharding.md)をご覧ください。{% /admonition %}
 
 
 ## 検出
@@ -28,7 +28,7 @@ SQLiteデータベースの容量は、データベースの _ページサイズ
 
 いずれの場合でも、問題を検出するには`rippled`のサーバログへのアクセスが必要です。
 
-**ヒント:** このデバッグログの位置は、`rippled`サーバの構成ファイルの設定に応じて異なる可能性があります。[デフォルトの構成](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142)では、サーバのデバッグログは`/var/log/rippled/debug.log`ファイルに書き込まれます。
+{% admonition type="success" name="ヒント" %}このデバッグログの位置は、`rippled`サーバの構成ファイルの設定に応じて異なる可能性があります。[デフォルトの構成](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142)では、サーバのデバッグログは`/var/log/rippled/debug.log`ファイルに書き込まれます。{% /admonition %}
 
 ### 事前の検出
 

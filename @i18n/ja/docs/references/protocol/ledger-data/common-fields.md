@@ -14,7 +14,7 @@ seo:
 | `LedgerEntryType`        | 文字列   | UInt16      | はい   | レジャーエントリのタイプ。有効な[レジャーエントリのタイプ](ledger-entry-types/index.md)には`AccountRoot`、`Offer`、`RippleState`などがあります。 |
 | `Flags`                  | 数値     | UInt32      | はい   | このレジャーエントリのビットフラグのセット。 |
 
-**注意:** JSONでは、レジャーエントリIDは`index`または`LedgerIndex`フィールドになります。これは`ledger_index`フィールドの[レジャーインデックス][]とは異なります。
+{% admonition type="warning" name="注意" %}JSONでは、レジャーエントリIDは`index`または`LedgerIndex`フィールドになります。これは`ledger_index`フィールドの[レジャーインデックス][]とは異なります。{% /admonition %}
 
 
 ## Ledger Entry ID

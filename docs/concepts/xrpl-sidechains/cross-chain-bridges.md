@@ -18,7 +18,7 @@ A locking chain is where the digital asset originates from. These assets are loc
 
 An issuing chain is an independent ledger with its own consensus algorithm and transaction types and rules. A wrapped version of the digital asset is minted and burned, depending on if an asset is received or sent from the locking chain.
 
-**Note:** Bridges utilize special _door accounts_ when moving assets cross-chain. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain is used to issue wrapped assets. 
+{% admonition type="info" name="Note" %}Bridges utilize special _door accounts_ when moving assets cross-chain. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain is used to issue wrapped assets. {% /admonition %}
 
 Both the locking and issuing chains operate as parallel networks with independent nodes and validators. They rely on independent [witness servers](witness-servers.md) to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.
 
@@ -30,12 +30,12 @@ At a high-level, bridges enable cross-chain transactions through these steps:
 1. Create a cross-chain claim ID on the issuing chain. A cross-chain claim ID represents one transfer of value between blockchains.
 2. Submit a commit transaction on the locking chain, putting the assets in a trust. The transaction includes the cross-chain claim ID and reward for witness servers.
 
-    **Note:** Witness servers monitor transactions on both chains. They provide attestations, or signed messages, to verify a transaction occurred. There are attestations for `XChainCommit` and `XChainAccountCreateCommit` transactions.
+    {% admonition type="info" name="Note" %}Witness servers monitor transactions on both chains. They provide attestations, or signed messages, to verify a transaction occurred. There are attestations for `XChainCommit` and `XChainAccountCreateCommit` transactions.{% /admonition %}
 
 3. Witness servers provide attestations to the issuing chain, saying the assets were locked on the locking chain.
 4. When there are enough signatures to reach quorum, the assets are released on the issuing chain to the destination account.
 
-    **Note:** In some cases, such as deposit authorization being enabled, you'll need to submit a transaction claim for the transferred assets on the issuing chain.
+    {% admonition type="info" name="Note" %}In some cases, such as deposit authorization being enabled, you'll need to submit a transaction claim for the transferred assets on the issuing chain.{% /admonition %}
 
 5. Rewards are distributed to the witness servers' accounts on the issuing chain.
 

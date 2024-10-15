@@ -101,7 +101,7 @@ The following [Transaction flags](../common-fields.md#flags-field) (`tf` flags),
 | `tfDisallowXRP`     | `0x00100000` | 1048576       | `asfDisallowXRP` (`SetFlag`)    |
 | `tfAllowXRP`        | `0x00200000` | 2097152       | `asfDisallowXRP` (`ClearFlag`)  |
 
-**Caution:** The numeric values of `tf` and `asf` flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see [`AccountRoot` flags](../../ledger-data/ledger-entry-types/accountroot.md#accountroot-flags).
+{% admonition type="warning" name="Caution" %}The numeric values of `tf` and `asf` flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see [`AccountRoot` flags](../../ledger-data/ledger-entry-types/accountroot.md#accountroot-flags).{% /admonition %}
 
 
 ### Blocking Incoming Transactions

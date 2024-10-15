@@ -10,7 +10,7 @@ labels:
 
 Transaction metadata is a section of data that gets added to a transaction after it is processed. Any transaction that gets included in a ledger has metadata, regardless of whether it is successful. The transaction metadata describes the outcome of the transaction in detail.
 
-**Warning:** The changes described in transaction metadata are only final if the transaction is in a validated ledger version.
+{% admonition type="danger" name="Warning" %}The changes described in transaction metadata are only final if the transaction is in a validated ledger version.{% /admonition %}
 
 Some fields that may appear in transaction metadata include:
 
@@ -242,7 +242,7 @@ A `ModifiedNode` object contains the following fields:
 | `PreviousTxnID`     | String - [Hash][]         | _(May be omitted)_ The [identifying hash][] of the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnID` field.                                                                                                          |
 | `PreviousTxnLgrSeq` | Number - [Ledger Index][] | _(May be omitted)_  The [Ledger Index][] of the ledger version containing the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnLgrSeq` field.                                                                           |
 
-**Note:** If the modified ledger entry has `PreviousTxnID` and `PreviousTxnLgrSeq` fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the `FinalFields` of the `ModifiedNode` object, and their previous values are listed at the top level of the `ModifiedNode` object rather than in the nested `PreviousFields` object.
+{% admonition type="info" name="Note" %}If the modified ledger entry has `PreviousTxnID` and `PreviousTxnLgrSeq` fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the `FinalFields` of the `ModifiedNode` object, and their previous values are listed at the top level of the `ModifiedNode` object rather than in the nested `PreviousFields` object.{% /admonition %}
 
 
 ## NFT Fields
@@ -267,7 +267,7 @@ The `rippled` server provides a `delivered_amount` field in JSON transaction met
 
 If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the `AffectedNodes` in the transaction's metadata.
 
-**Note:** The `delivered_amount` field is generated on-demand for the request, and is not included in the binary format for transaction metadata, nor is it used when calculating the [hash](../data-types/basic-data-types.md#hashes) of the transaction metadata. In contrast, the `DeliveredAmount` field _is_ included in the binary format for partial payment transactions after 2014-01-20.
+{% admonition type="info" name="Note" %}The `delivered_amount` field is generated on-demand for the request, and is not included in the binary format for transaction metadata, nor is it used when calculating the [hash](../data-types/basic-data-types.md#hashes) of the transaction metadata. In contrast, the `DeliveredAmount` field _is_ included in the binary format for partial payment transactions after 2014-01-20.{% /admonition %}
 
 See also: [Partial Payments](../../../concepts/payment-types/partial-payments.md)
 
