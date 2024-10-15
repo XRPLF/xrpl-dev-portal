@@ -52,7 +52,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -62,7 +62,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -83,7 +83,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -93,7 +93,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -109,7 +109,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-request.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-request.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -119,7 +119,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-response.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-response.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -143,7 +143,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -153,7 +153,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -173,7 +173,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -183,7 +183,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
