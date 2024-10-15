@@ -18,17 +18,19 @@ Each ledger version contains **at most one** `NegativeUNL` entry. If no validato
 
 ```json
 {
-  "DisabledValidators": [
-    {
-      "DisabledValidator": {
-        "FirstLedgerSequence": 1609728,
-        "PublicKey": "ED6629D456285AE3613B285F65BBFF168D695BA3921F309949AFCD2CA7AFEC16FE"
+    "DisabledValidators": [
+      {
+        "DisabledValidator": {
+          "FirstLedgerSequence": 91371264,
+          "PublicKey": "ED58F6770DB5DD77E59D28CB650EC3816E2FC95021BB56E720C9A12DA79C58A3AB"
+        }
       }
-    }
-  ],
-  "Flags": 0,
-  "LedgerEntryType": "NegativeUNL",
-  "index": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244"
+    ],
+    "Flags": 0,
+    "LedgerEntryType": "NegativeUNL",
+    "PreviousTxnID": "8D47FFE664BE6C335108DF689537625855A6A95160CC6D351341B92624D9C5E3",
+    "PreviousTxnLgrSeq": 91442944,
+    "index": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244"
 }
 ```
 
@@ -40,6 +42,8 @@ In addition to the [common fields](../common-fields.md), the {% code-page-name /
 |:----------------------|:----------|:------------------|:----------|:---------------------|
 | `DisabledValidators`  | Array     | Array             | No        | A list of `DisabledValidator` objects (see below), each representing a trusted validator that is currently disabled. |
 | `LedgerEntryType`     | String    | UInt16            | Yes       | The value `0x004E`, mapped to the string `NegativeUNL`, indicates that this entry is the Negative UNL. |
+| `PreviousTxnID`     | String    | Hash256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 | `ValidatorToDisable`  | String    | Blob              | No        | The public key of a trusted validator that is scheduled to be disabled in the next flag ledger. |
 | `ValidatorToReEnable` | String    | Blob              | No        | The public key of a trusted validator in the Negative UNL that is scheduled to be re-enabled in the next flag ledger. |
 
