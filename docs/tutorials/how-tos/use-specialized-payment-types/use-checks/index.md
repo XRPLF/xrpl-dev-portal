@@ -1,6 +1,4 @@
 ---
-html: use-checks.html
-parent: use-specialized-payment-types.html
 seo:
     description: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
 metadata:
@@ -12,7 +10,6 @@ labels:
 
 Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
-
+See also: [Modular Tutorial: Send and Cash Checks](../../../javascript/send-payments/send-and-cash-checks.md).
 
 {% child-pages /%}

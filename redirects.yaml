@@ -1,11 +1,20 @@
-/docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider/:
-    to: /docs/tutorials/javascript/amm/add-assets-to-amm/
+/docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider:
+    to: /docs/tutorials/javascript/amm/add-assets-to-amm
     type: 301
-/docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees/:
-    to: /docs/tutorials/javascript/amm/trade-with-auction-slot/
+/docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees:
+    to: /docs/tutorials/javascript/amm/trade-with-auction-slot
     type: 301
-/docs/references/protocol/transactions/transaction-results/transaction-results/:
-    to: /docs/references/protocol/transactions/transaction-results/
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient:
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks
+    type: 301
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender:
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks
+    type: 301
+/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks:
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks
+    type: 301
+/docs/references/protocol/transactions/transaction-results/transaction-results:
+    to: /docs/references/protocol/transactions/transaction-results
     type: 301
 xrp-ledger-rpc-tool.html:
     to: /resources/dev-tools/rpc-tool

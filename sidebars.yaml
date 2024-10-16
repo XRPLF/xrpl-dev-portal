@@ -272,15 +272,14 @@
                   expanded: false
                   items:
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md
-                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks.md
+                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/index.md
                   expanded: false
                   items:
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks.md
             - page: docs/tutorials/how-tos/use-tokens/index.md
               expanded: false
               items:

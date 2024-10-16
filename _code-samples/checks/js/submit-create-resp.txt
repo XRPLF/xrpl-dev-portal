@@ -1,3 +1,0 @@
-Connected
-Preliminary transaction result: tesSUCCESS
-Disconnected

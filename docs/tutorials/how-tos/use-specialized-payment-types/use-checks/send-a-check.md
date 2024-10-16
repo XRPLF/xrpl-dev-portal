@@ -1,20 +1,14 @@
 ---
-html: send-a-check.html
-parent: use-checks.html
 seo:
-    description: Put a Check in the ledger so its intended recipient can cash it later.
+    description: Send a Check whose intended recipient can cash it to be paid later.
 labels:
   - Checks
 ---
 # Send a Check
 
-Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check object in the ledger](../../../../references/protocol/ledger-data/ledger-entry-types/check.md) which the recipient can cash later.
+Sending a [Check](/docs/concepts/payment-types/checks.md) is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a [Check entry in the ledger](../../../../references/protocol/ledger-data/ledger-entry-types/check.md) which the recipient can cash later.
 
 In many cases, you want to send a [Payment][] instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses [DepositAuth](../../../../concepts/accounts/depositauth.md), you cannot send them Payments directly, so a Check is a good alternative.
-
-This tutorial uses the example of a fictitious company, BoxSend SG (whose XRP Ledger address is `rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za`) paying a fictitious cryptocurrency consulting company named Grand Payments (with XRP Ledger address `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`) for some consulting work. Grand Payments prefers be paid in XRP, but to simplify their taxes and regulation, only accepts payments they've explicitly approved.
-
-Outside of the XRP Ledger, Grand Payments sends an invoice to BoxSend SG with the ID `46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`, and requests a Check for 100 XRP be sent to Grand Payments' XRP Ledger address of `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`. <!-- SPELLING_IGNORE: boxsend -->
 
 ## Prerequisites
 
@@ -23,10 +17,17 @@ To send a Check with this tutorial, you need the following:
 - The **address** and **secret key** of a funded account to send the Check from.
     - You can use the [XRP Ledger Test Net Faucet](/resources/dev-tools/xrp-faucets) to get a funded address and secret with 10,000 Test Net XRP.
 - The **address** of a funded account to receive the Check.
-- A [secure way to sign transactions](../../../../concepts/transactions/secure-signing.md).
-- A [client library](../../../../references/client-libraries.md) or any HTTP or WebSocket library.
+- You should be familiar with the basics of using [xrpl.js](../../../javascript/build-apps/get-started.md).
 
-## 1. Prepare the CheckCreate transaction
+## Source Code
+
+The complete source code for this tutorial is available in the source repository for this website:
+
+{% repo-link path="_code-samples/checks/js/" %}Checks sample code{% /repo-link %}
+
+## Steps
+
+### 1. Prepare the CheckCreate transaction
 
 Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
@@ -37,157 +38,28 @@ Decide how much money the Check is for and who can cash it. Figure out the value
 | `Destination`     | String (Address)          | The address of the intended recipient who can cash the Check. |
 | `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For tokens, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](../../../../concepts/tokens/transfer-fees.md), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
 
-### Example CheckCreate Preparation
+For example, imagine you were asked to pay a company named Grand Payments for some consulting work. By email, Grand Payments informs you that the maximum charge is 120 XRP, their XRP Ledger address is `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`, and this work has been billed with an invoice ID of `46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291` which they ask you to attach for their records. The following code shows how you could use a Check to send that payment:
 
-The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za`) to Grand Payments (`rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`) for 100 XRP. As additional (optional) metadata, BoxSend SG adds the ID of the invoice from Grand Payments so Grand Payments knows which invoice this Check is intended to pay.
+{% code-snippet file="/_code-samples/checks/js/create-check.js" language="js" from="// Prepare the transaction" before="// Submit the transaction" /%}
 
-{% tabs %}
-
-{% tab label="ripple-lib 1.x" %}
-{% code-snippet file="/_code-samples/checks/js/prepareCreate.js" language="js" /%}
-{% /tab %}
-
-{% tab label="JSON-RPC, WebSocket, or Commandline" %}
-```json
-{
-  "TransactionType": "CheckCreate",
-  "Account": "rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
-  "Destination": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
-  "SendMax": "100000000",
-  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"
-}
-```
-{% /tab %}
-
-{% /tabs %}
-
-## 2. Sign the CheckCreate transaction
-
-{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
+{% admonition type="success" name="Tip" %}The `InvoiceID` is optional metadata that can be attached to any Check (or Payment). This field is purely informational and is not used in transaction processing.{% /admonition %}
 
 
-### Example Request
+### 2. Submit the transaction
 
-{% tabs %}
+Send the transaction and wait for it to be validated by the consensus process, as normal:
 
-{% tab label="ripple-lib 1.x" %}
-{% code-snippet file="/_code-samples/checks/js/signCreate.js" language="js" /%}
-{% /tab %}
-
-{% tab label="WebSocket" %}
-{% code-snippet file="/_code-samples/checks/websocket/sign-create-req.json" language="json" /%}
-{% /tab %}
-
-{% tab label="Commandline" %}
-{% code-snippet file="/_code-samples/checks/cli/sign-create-req.sh" language="bash" /%}
-{% /tab %}
-
-{% /tabs %}
-
-#### Example Response
-
-{% tabs %}
-
-{% tab label="ripple-lib 1.x" %}
-{% code-snippet file="/_code-samples/checks/js/sign-create-resp.txt" language="js" /%}
-{% /tab %}
-
-{% tab label="WebSocket" %}
-{% code-snippet file="/_code-samples/checks/websocket/sign-create-resp.json" language="json" /%}
-{% /tab %}
-
-{% tab label="Commandline" %}
-{% code-snippet file="/_code-samples/checks/cli/sign-create-resp.txt" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
-
-## 3. Submit the signed transaction
-
-{% partial file="/docs/_snippets/tutorial-submit-step.md" /%}
-
-### Example Request
-
-{% tabs %}
-
-{% tab label="ripple-lib 1.x" %}
-{% code-snippet file="/_code-samples/checks/js/submitCreate.js" language="js" /%}
-{% /tab %}
-
-{% tab label="WebSocket" %}
-{% code-snippet file="/_code-samples/checks/websocket/submit-create-req.json" language="json" /%}
-{% /tab %}
-
-{% tab label="Commandline" %}
-{% code-snippet file="/_code-samples/checks/cli/submit-create-req.sh" language="bash" /%}
-{% /tab %}
-
-{% /tabs %}
-
-### Example Response
-
-{% tabs %}
-
-{% tab label="ripple-lib 1.x" %}
-{% code-snippet file="/_code-samples/checks/js/submit-create-resp.txt" language="js" /%}
-{% /tab %}
-
-{% tab label="WebSocket" %}
-{% code-snippet file="/_code-samples/checks/websocket/submit-create-resp.json" language="json" /%}
-{% /tab %}
-
-{% tab label="Commandline" %}
-{% code-snippet file="/_code-samples/checks/cli/submit-create-resp.txt" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
+{% code-snippet file="/_code-samples/checks/js/create-check.js" language="js" from="// Submit the transaction" before="// Get transaction result" /%}
 
 
-## 4. Wait for validation
+### 3. Confirm transaction result
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%}
+If the transaction succeeded, it should have a `"TransactionResult": "tesSUCCESS"` field in the metadata, and the field `"validated": true` in the result, indicating that this result is final.
 
+{% admonition type="success" name="Tip" %}The `submitAndWait()` method in xrpl.js only returns when the transaction's result is final, so you can assume that the transaction is validated if it returns a result code of `tesSUCCESS`.{% /admonition %}
 
-## 5. Confirm final result
+To cash or cancel the Check later, you'll need the Check ID. You can find this in the transaction's metadata by looking for a `CreatedNode` entry with a `LedgerEntryType` of `"Check"`. This indicates that the transaction created a [Check ledger entry](../../../../references/protocol/ledger-data/ledger-entry-types/check.md). The `LedgerIndex` of this object is the ID of the Check. This should be a [hash][] value such as `84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`.
 
-Use the [tx method][] with the CheckCreate transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
-
-Look for a `CreatedNode` object in the transaction metadata with a `LedgerEntryType` of `"Check"`. This indicates that the transaction created a [Check ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/check.md). The `LedgerIndex` of this object is the ID of the Check. In the following example, the Check's ID is `84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`.
-
-### Example Request
-
-{% tabs %}
-
-{% tab label="ripple-lib 1.x" %}
-{% code-snippet file="/_code-samples/checks/js/getCreateTx.js" language="" /%}
-{% /tab %}
-
-{% tab label="WebSocket" %}
-{% code-snippet file="/_code-samples/checks/websocket/tx-create-req.json" language="json" /%}
-{% /tab %}
-
-{% tab label="Commandline" %}
-{% code-snippet file="/_code-samples/checks/cli/tx-create-req.sh" language="bash" /%}
-{% /tab %}
-
-{% /tabs %}
-
-### Example Response
-
-{% tabs %}
-
-{% tab label="ripple-lib 1.x" %}
-{% code-snippet file="/_code-samples/checks/js/get-create-tx-resp.txt" language="" /%}
-{% /tab %}
-
-{% tab label="WebSocket" %}
-{% code-snippet file="/_code-samples/checks/websocket/tx-create-resp.json" language="json" /%}
-{% /tab %}
-
-{% tab label="Commandline" %}
-{% code-snippet file="/_code-samples/checks/cli/tx-create-resp.txt" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
+At this point, it is up to the recipient to cash the Check.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
