@@ -81,9 +81,9 @@ Step 5: After 3-4 months, final interviews are conducted
 
 ## About The XRP Ledger
 
-The XRP Ledger is open-source and permissionless, delivering powerful utility to developers on a public blockchain. Its built-in decentralized exchange (DEX)(https://xrpl.org/decentralized-exchange.html#main-page-header) and custom token functionality—[Issued Currencies](https://xrpl.org/issued-currencies-overview.html)—supports the seamless exchange of tokens, with more than 5,400 currencies issued and traded on the XRP Ledger to date.
+The XRP Ledger is open-source and permissionless, delivering powerful utility to developers on a public blockchain. Its built-in decentralized exchange (DEX)(https://xrpl.org/decentralized-exchange.html#main-page-header) and custom token functionality—Issued Currencies—supports the seamless exchange of tokens, with more than 5,400 currencies issued and traded on the XRP Ledger to date.
 
-Additionally, the XRP Ledger is the first major [carbon-neutral blockchain](https://xrpl.org/impact.html) and inherently energy efficient, alleviating high costs that developers experience when building on proof-of-work blockchains. Development and forward progress of the XRPL is maintained by the growing developer community around XRP for which RippleX is just one participant.
+Additionally, the XRP Ledger is the only major L-1 blockchain that’s built for business and designed specifically to power finance use cases and applications at scale. Development and forward progress of the XRPL is maintained by the growing developer community around XRP for which RippleX is just one participant.
 
 ## Get Started Today
 

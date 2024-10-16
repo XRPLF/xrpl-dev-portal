@@ -18,7 +18,7 @@ While XRPL.org serves as a central, robust portal for developers of all experien
 
 The XRPL Learning Portal offers an easy and interactive way for developers to start their Web 3 journey. Developers can create their learning paths—whether they start by getting acquainted with the basics of crypto and blockchain or jump right into learning how to code on the XRP Ledger. 
 
-Portal users can explore educational material explaining the XRP Ledger and the many use cases it supports, such as decentralized finance (DeFi) and gaming. At the same time, developers will gain an understanding of the XRP Ledger’s core features, history and mechanics through hands-on learning modules. Because the XRP Ledger is a scalable, carbon-neutral blockchain, a sustainable future theme underpins each course. 
+Portal users can explore educational material explaining the XRP Ledger and the many use cases it supports, such as decentralized finance (DeFi) and gaming. At the same time, developers will gain an understanding of the XRP Ledger’s core features, history and mechanics through hands-on learning modules. 
 
 ## Course Expectations
 

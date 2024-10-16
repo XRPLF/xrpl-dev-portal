@@ -18,10 +18,6 @@ No, the XRP Ledger is a decentralized, public blockchain. Any changes that would
 
 Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](../docs/concepts/consensus-protocol/index.md) solves the same problem in a far faster, cheaper and more energy efficient way.
 
-#### How can a blockchain be sustainable?
-
-It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](../docs/concepts/consensus-protocol/index.md)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
-
 #### Can currencies other than XRP be traded through XRPL?
 
 Yes, the XRP Ledger was built specifically to be able to tokenize arbitrary assets, such as USD, EUR, Oil, Gold, reward points, and more. Any currency can be issued on the XRP Ledger. This is illustrated by XRPL’s growing community that backs a variety of fiat and crypto tokens.

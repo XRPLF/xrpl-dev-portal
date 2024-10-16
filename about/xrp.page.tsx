@@ -267,17 +267,14 @@ export default function XrpOverview() {
                   <div className="z-index-1 position-relative">
                     <h2 className="h4 mb-10-until-sm mb-8-sm">
                       {translate(
-                        "The XRP Ledger was designed with sustainability in mind."
+                        "The XRP Ledger is built for business."
                       )}
                     </h2>
                     <p className="mb-10">
                       {translate(
-                        "Explore the impact of the world's first major, global, public carbon-neutral blockchain."
+                        "The only major L-1 blockchain that’s built for business and designed specifically to power finance use cases and applications at scale. Powerful enough to bootstrap a new economy, the XRP Ledger (XRPL) is fast, scalable, and sustainable."
                       )}
                     </p>
-                    <a className="btn btn-primary btn-arrow" href="/about/impact">
-                      {translate("Impact")}
-                    </a>
                   </div>
                 </div>
               </div>
