@@ -503,6 +503,8 @@
 [fixNFTokenRemintの修正]: /resources/known-amendments.md#fixnftokenremint
 [fixPayChanRecipientOwnerDir amendment]: /resources/known-amendments.md#fixpaychanrecipientownerdir
 [fixPayChanRecipientOwnerDirの修正]: /resources/known-amendments.md#fixpaychanrecipientownerdir
+[fixPreviousTxnID amendment]: /resources/known-amendments.md#fixprevioustxnid
+[fixPreviousTxnIDの修正]: /resources/known-amendments.md#fixprevioustxnid
 [fixQualityUpperBound amendment]: /resources/known-amendments.md#fixqualityupperbound
 [fixQualityUpperBoundの修正]: /resources/known-amendments.md#fixqualityupperbound
 [fixRemoveNFTokenAutoTrustLine amendment]: /resources/known-amendments.md#fixremovenftokenautotrustline

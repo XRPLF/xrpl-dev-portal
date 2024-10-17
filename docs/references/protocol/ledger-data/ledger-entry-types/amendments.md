@@ -15,36 +15,47 @@ The `Amendments` ledger entry type contains a list of [Amendments](../../../../c
 
 ```json
 {
-    "Majorities": [
-        {
-            "Majority": {
-                "Amendment": "1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146",
-                "CloseTime": 535589001
-            }
-        }
-    ],
     "Amendments": [
         "42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE",
         "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373",
-        "6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC",
-        "740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11"
+        // (... Long list of enabled amendment IDs ...)
+        "03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C",
+        "35291ADD2D79EB6991343BDA0912269C817D0F094B02226C1C14AD2858962ED4"
     ],
     "Flags": 0,
     "LedgerEntryType": "Amendments",
+    "Majorities": [
+    {
+        "Majority": {
+            "Amendment": "7BB62DC13EC72B775091E9C71BF8CF97E122647693B50C5E87A80DFD6FCFAC50",
+            "CloseTime": 779561310
+        }
+    },
+    {
+        "Majority": {
+            "Amendment": "755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE",
+            "CloseTime": 779561310
+        }
+    }
+    ],
     "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4"
 }
 ```
+
+<!-- Note: At time of writing (2024-10-15) fixPreviousTxnID is the most recently enabled amendment, which means that the last time the Amendments entry changed was when it became enabled. Amendments' changes don't apply until the next ledger, so fixPreviousTxnID was not in effect at the time. The PreviousTxnID and PreviousTxnLgrSeq fields will be added to the Amendments entry the next time any amendment gains supermajority support. -->
 
 ## {% $frontmatter.seo.title %} Fields
 
 In addition to the [common fields](../common-fields.md), the {% code-page-name /%} ledger entry has the following fields:
 
-| Name              | JSON Type | [Internal Type][] | Required? | Description |
-|-------------------|-----------|-------------------|-----------|-------------|
-| `Amendments`      | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](../../../../concepts/networks-and-servers/amendments.md) for all currently enabled amendments. If omitted, there are no enabled amendments. |
-| `Flags`           | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Amendments` objects. The value is always `0`. |
-| `LedgerEntryType` | String    | UInt16            | Yes       | The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
-| `Majorities`      | Array     | STArray           | No        | Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
+| Name                | JSON Type | [Internal Type][] | Required? | Description |
+|---------------------|-----------|-------------------|-----------|-------------|
+| `Amendments`        | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](../../../../concepts/networks-and-servers/amendments.md) for all currently enabled amendments. If omitted, there are no enabled amendments. |
+| `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Amendments` objects. The value is always `0`. |
+| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
+| `Majorities`        | Array     | STArray           | No        | Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
+| `PreviousTxnID`     | String    | Hash256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 
 Each member of the `Majorities` field, if it is present, is an object with one field, `Majority`, whose contents are a nested object with the following fields:
 

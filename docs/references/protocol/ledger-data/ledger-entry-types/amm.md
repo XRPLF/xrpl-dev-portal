@@ -18,52 +18,44 @@ An `AMM` ledger entry describes a single [Automated Market Maker](../../../../co
 
 ```json
 {
-    "Account" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
-    "Asset" : {
-      "currency" : "XRP"
+    "Account": "rBp3UDRuEteeJqp4rEk5kxMe7BGWNYrF9A",
+    "Asset": {
+      "currency": "XRP"
     },
-    "Asset2" : {
-      "currency" : "TST",
-      "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+    "Asset2": {
+      "currency": "NEX",
+      "issuer": "rQGiPFWhaTDdue1xHX7cVpxGqPQK54zng1"
     },
-    "AuctionSlot" : {
-      "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
-      "AuthAccounts" : [
-          {
-            "AuthAccount" : {
-                "Account" : "rMKXGCbJ5d8LbrqthdG46q3f969MVK2Qeg"
-            }
-          },
-          {
-            "AuthAccount" : {
-                "Account" : "rBepJuTLFJt3WmtLXYAxSjtBWAeQxVbncv"
-            }
-          }
-      ],
-      "DiscountedFee" : 60,
-      "Expiration" : 721870180,
-      "Price" : {
-          "currency" : "039C99CD9AB0B70B32ECDA51EAAE471625608EA2",
-          "issuer" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
-          "value" : "0.8696263565463045"
+    "AuctionSlot": {
+      "Account": "r3ZGQZw1NCbBp5AEGkMDE9NgNpzw91aofD",
+      "Expiration": 778576560,
+      "Price": {
+        "currency": "03DC324562A8915B7C65E9D31B93D62D02BC491C",
+        "issuer": "rBp3UDRuEteeJqp4rEk5kxMe7BGWNYrF9A",
+        "value": "0"
       }
     },
-    "Flags" : 0,
-    "LPTokenBalance" : {
-      "currency" : "039C99CD9AB0B70B32ECDA51EAAE471625608EA2",
-      "issuer" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
-      "value" : "71150.53584131501"
+    "Flags": 0,
+    "LPTokenBalance": {
+      "currency": "03DC324562A8915B7C65E9D31B93D62D02BC491C",
+      "issuer": "rBp3UDRuEteeJqp4rEk5kxMe7BGWNYrF9A",
+      "value": "5509581.299648495"
     },
-    "TradingFee" : 600,
-    "VoteSlots" : [
+    "LedgerEntryType": "AMM",
+    "OwnerNode": "0",
+    "PreviousTxnID": "9E8E9B8FD27391C818525BFF6A29452F7A9888F31622BEF6FC36064D05CF6436",
+    "PreviousTxnLgrSeq": 91448830,
+    "TradingFee": 1,
+    "VoteSlots": [
       {
-          "VoteEntry" : {
-            "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
-            "TradingFee" : 600,
-            "VoteWeight" : 100000
-          }
+        "VoteEntry": {
+          "Account": "r3ZGQZw1NCbBp5AEGkMDE9NgNpzw91aofD",
+          "TradingFee": 1,
+          "VoteWeight": 100000
+        }
       }
-    ]
+    ],
+    "index": "F490627BACE2D0AA744514A640B4999D50E495DD1677550D8B10E2D20FBB15C3"
 }
 ```
 
@@ -78,8 +70,11 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `Account`     | String              | AccountID         | Yes       | The address of the [special account](accountroot.md#special-amm-accountroot-entries) that holds this AMM's assets. |
 | `AuctionSlot`    | Object              | STObject          | No        | Details of the current owner of the auction slot, as an [Auction Slot object](#auction-slot-object). |
 | `LPTokenBalance` | [Currency Amount][] | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected. |
+| `PreviousTxnID`     | String    | Hash256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 | `TradingFee`     | Number              | UInt16            | Yes       | The percentage fee to be charged for trades against this AMM instance, in units of 1/100,000. The maximum value is 1000, for a 1% fee. |
 | `VoteSlots`      | Array               | STArray           | No        | A list of vote objects, representing votes on the pool's trading fee. |
+
 
 ### Auction Slot Object
 

@@ -17,13 +17,13 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
-| [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
-| [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [PriceOracle][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472" %}Enabled: 2024-09-27{% /badge %} |
+| [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171" %}Enabled: 2024-09-27{% /badge %} |
+| [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/8C8F5566464097BF1BAF7C645BB9E1762986844A052BBA3B9769F6564EEFAB71" %}Enabled: 2024-09-24{% /badge %} |
 | [fixNFTokenReserve][]             | v2.1.0     | {% badge href="https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4" %}Enabled: 2024-04-12{% /badge %} |
 | [fixAMMOverflowOffer][]           | v2.1.1     | {% badge href="https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC" %}Enabled: 2024-04-11{% /badge %} |
 | [fixDisallowIncomingV1][]         | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB" %}Enabled: 2024-04-11{% /badge %} |
@@ -103,6 +103,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
 {% /admonition %}
 
+
 ## Obsolete Amendments
 
 The following is a list of known [amendments](../docs/concepts/networks-and-servers/amendments.md) that have been removed in a previous version, or are obsolete and have been marked for removal.
@@ -120,7 +121,6 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 
 ## Details about Known Amendments
-
 
 ### AMM
 [AMM]: #amm
@@ -230,7 +230,6 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 This amendment was intended to add support for several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions.
 
 However, the amendment was added to `rippled` v0.60.0 before implementation was complete. As a result, this amendment ID refers to incomplete code which does almost nothing. Modifying the existing amendment to add support for other crypto-conditions would cause a conflict with old versions of the amendment already in released software. If a future release adds support for additional crypto-conditions, it must use a new and different amendment ID.
-
 
 
 ### DeletableAccounts
@@ -654,7 +653,7 @@ This amendment fixes the improper handling of large synthetic AMM offers in the 
 | Amendment    | fixAMMv1_1 |
 |:-------------|:-----------|
 | Amendment ID | 35291ADD2D79EB6991343BDA0912269C817D0F094B02226C1C14AD2858962ED4 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -706,7 +705,7 @@ This amendment has no effect unless the [DisallowIncoming][] amendment is enable
 | Amendment    | fixEmptyDID |
 |:-------------|:------------|
 | Amendment ID | 755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -717,7 +716,6 @@ With this amendment, if a transaction would create an empty DID, it returns the 
 Without this amendment, an empty DID can be created, which takes up space and counts towards the owner reserve but does nothing useful.
 
 This amendment has no effect unless the [DID][] amendment is enabled.
-
 
 
 ### fixFillOrKill
@@ -738,7 +736,6 @@ This amendment has no effect unless the [FlowCross][] amendment is enabled.
 
 
 ### fixInnerObjTemplate
-
 [fixInnerObjTemplate]: #fixinnerobjtemplate
 
 | Amendment    | fixInnerObjTemplate |
@@ -822,7 +819,6 @@ The amendment also introduces a new account deletion restriction. An account can
 
 
 ### fixNFTokenReserve
-
 [fixNFTokenReserve]: #fixnftokenreserve
 
 | Amendment    | fixNFTokenReserve |
@@ -897,7 +893,7 @@ This change prevents accounts from being deleted if they are the recipient for o
 | Amendment    | fixPreviousTxnID |
 |:-------------|:-----------------|
 | Amendment ID | 7BB62DC13EC72B775091E9C71BF8CF97E122647693B50C5E87A80DFD6FCFAC50 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1491,5 +1487,7 @@ Simplifies transaction cost calculations to use XRP directly rather than calcula
 - Updates the SetFee transaction type. Replaces `BaseFee`, `ReferenceFeeUnits`, `ReserveBase`, `ReserveIncrement` fields with `BaseFeeDrops`, `ReserveBaseDrops`, `ReserveIncrementDrops`.
 
 Without this amendment, the format of the transaction and ledger entry are the same.
+
+
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
