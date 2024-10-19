@@ -30,4 +30,4 @@ A CTID contains the following parts, in order (big-endian):
 
 ## See Also
 
-For more information including sample code and background, see the [XLS-37d Standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0037d-concise-transaction-identifier-ctid).
+For more information including sample code and background, see the [XLS-0037 Standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0037-concise-transaction-identifier-ctid).

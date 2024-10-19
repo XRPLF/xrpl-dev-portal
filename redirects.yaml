@@ -476,13 +476,13 @@ issued-currencies-overview.html:
     to: /docs/concepts/tokens/
     type: 301
 federated-sidechains.html:
-    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    to: /docs/concepts/xrpl-sidechains/cross-chain-bridges
     type: 301
 xrpl-interoperability.html:
-    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    to: /docs/concepts/xrpl-sidechains/cross-chain-bridges
     type: 301
 intro-to-evm-sidechain.html:
-    to: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+    to: https://docs.xrplevm.org/docs/evm-sidechain/intro-to-evm-sidechain/
     type: 301
 the-rippled-server.html:
     to: /docs/concepts/networks-and-servers/

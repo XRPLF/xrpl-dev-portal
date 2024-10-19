@@ -1312,7 +1312,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment adds a "Price Oracle" feature to the XRP Ledger, as defined in the [XLS-47 specification](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-47d-PriceOracles/README.md). A blockchain oracle is a system where a service provides to the blockchain about the outside world, which can then be used by decentralized applications (dApps) that run primarily on or using the blockchain. This price oracle is intended to store pricing information about asset pairs that exist outside of the XRP Ledger so that smart contracts that rely on the XRP Ledger can use this information.
+This amendment adds a "Price Oracle" feature to the XRP Ledger, as defined in the [XLS-47 specification](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md). A blockchain oracle is a system where a service provides to the blockchain about the outside world, which can then be used by decentralized applications (dApps) that run primarily on or using the blockchain. This price oracle is intended to store pricing information about asset pairs that exist outside of the XRP Ledger so that smart contracts that rely on the XRP Ledger can use this information.
 
 This amendment creates a new ledger entry type, `PriceOracle`, and new transactions, `OracleSet` (creates or modifies oracle data) and `OracleDelete` (deletes a given oracle).
 
@@ -1448,7 +1448,7 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 | Pre-amendment functionality retired? | No |
 
 Adds cross-chain bridges, enabling the transfer of digital assets between networks (for example, between Mainnet and a sidechain).
-Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
+Standards draft: [XLS-0038 Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0038-cross-chain-bridge/README.md).
 
 Adds new transactions:
 

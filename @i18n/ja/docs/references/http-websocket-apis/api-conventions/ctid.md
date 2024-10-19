@@ -30,4 +30,4 @@ CTIDは以下の要素を含みます(ビッグエンディアン順)。
 
 ## 関連項目
 
-サンプルコードや背景などの詳細については、[XLS-37d Standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0037d-concise-transaction-identifier-ctid)をご覧ください。
+サンプルコードや背景などの詳細については、[XLS-0037 Standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0037-concise-transaction-identifier-ctid)をご覧ください。
