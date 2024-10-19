@@ -2248,6 +2248,42 @@ blog/2014/curves-with-a-twist.html:
 blog/2014/introducing-ripple-names.html:
     to: /blog/2014/introducing-ripple-names
     type: 301
+blog/2014.html:
+    to: /blog/
+    type: 301
+blog/2014.html:
+    to: /blog/
+    type: 301
+blog/2015.html:
+    to: /blog/
+    type: 301
+blog/2016.html:
+    to: /blog/
+    type: 301
+blog/2017.html:
+    to: /blog/
+    type: 301
+blog/2018.html:
+    to: /blog/
+    type: 301
+blog/2019.html:
+    to: /blog/
+    type: 301
+blog/2020.html:
+    to: /blog/
+    type: 301
+blog/2021.html:
+    to: /blog/
+    type: 301
+blog/2022.html:
+    to: /blog/
+    type: 301
+blog/2023.html:
+    to: /blog/
+    type: 301
+blog/2024.html:
+    to: /blog/
+    type: 301
 code_of_conduct/:
     to: /code-of-conduct
     type: 301
