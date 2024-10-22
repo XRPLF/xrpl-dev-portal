@@ -476,13 +476,13 @@ issued-currencies-overview.html:
     to: /docs/concepts/tokens/
     type: 301
 federated-sidechains.html:
-    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    to: /docs/concepts/xrpl-sidechains/cross-chain-bridges
     type: 301
 xrpl-interoperability.html:
-    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    to: /docs/concepts/xrpl-sidechains/cross-chain-bridges
     type: 301
 intro-to-evm-sidechain.html:
-    to: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+    to: https://docs.xrplevm.org/docs/evm-sidechain/intro-to-evm-sidechain/
     type: 301
 the-rippled-server.html:
     to: /docs/concepts/networks-and-servers/
@@ -2247,6 +2247,39 @@ blog/2014/curves-with-a-twist.html:
     type: 301
 blog/2014/introducing-ripple-names.html:
     to: /blog/2014/introducing-ripple-names
+    type: 301
+blog/2014.html:
+    to: /blog/
+    type: 301
+blog/2015.html:
+    to: /blog/
+    type: 301
+blog/2016.html:
+    to: /blog/
+    type: 301
+blog/2017.html:
+    to: /blog/
+    type: 301
+blog/2018.html:
+    to: /blog/
+    type: 301
+blog/2019.html:
+    to: /blog/
+    type: 301
+blog/2020.html:
+    to: /blog/
+    type: 301
+blog/2021.html:
+    to: /blog/
+    type: 301
+blog/2022.html:
+    to: /blog/
+    type: 301
+blog/2023.html:
+    to: /blog/
+    type: 301
+blog/2024.html:
+    to: /blog/
     type: 301
 code_of_conduct/:
     to: /code-of-conduct
