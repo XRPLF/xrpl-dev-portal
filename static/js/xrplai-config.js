@@ -74,6 +74,7 @@ Answer (including related code snippets if available and markdown links to relev
       getLabel: (reference) => {
         return reference.meta?.leadHeading?.value || reference.file?.title;
       },
+      display: 'none',
     },
     showBranding: false,
     trigger: {
