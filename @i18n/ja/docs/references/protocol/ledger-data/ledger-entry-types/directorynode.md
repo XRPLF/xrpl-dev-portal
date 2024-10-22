@@ -23,18 +23,20 @@ labels:
 {% tab label="オファーディレクトリ" %}
 ```json
 {
-  "ExchangeRate": "4F069BA8FF484000",
+  "ExchangeRate": "4e133c40576f7c00",
   "Flags": 0,
   "Indexes": [
-      "AD7EAE148287EF12D213A251015F86E6D4BD34B3C4A0A1ED9A17198373F908AD"
+    "353E55E7A0B0E82D16DF6E748D48BDAFE4C56045DF5A8B0ED723FF3C38A4787A"
   ],
   "LedgerEntryType": "DirectoryNode",
-  "RootIndex": "1BBEF97EDE88D40CEE2ADE6FEF121166AFE80D99EBADB01A4F069BA8FF484000",
+  "PreviousTxnID": "0F79E60C8642A23658ECB29D939499EA0F28D804077B7EE16613BE0C813A2DD6",
+  "PreviousTxnLgrSeq": 91448326,
+  "RootIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E133C40576F7C00",
   "TakerGetsCurrency": "0000000000000000000000000000000000000000",
   "TakerGetsIssuer": "0000000000000000000000000000000000000000",
-  "TakerPaysCurrency": "0000000000000000000000004A50590000000000",
-  "TakerPaysIssuer": "5BBC0F22F61D9224A110650CFE21CC0C4BE13098",
-  "index": "1BBEF97EDE88D40CEE2ADE6FEF121166AFE80D99EBADB01A4F069BA8FF484000"
+  "TakerPaysCurrency": "0000000000000000000000005553440000000000",
+  "TakerPaysIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230",
+  "index": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E133C40576F7C00"
 }
 ```
 {% /tab %}
@@ -43,14 +45,29 @@ labels:
 ```json
 {
   "Flags": 0,
+  "IndexNext": "0",
+  "IndexPrevious": "0",
   "Indexes": [
-      "AD7EAE148287EF12D213A251015F86E6D4BD34B3C4A0A1ED9A17198373F908AD",
-      "E83BBB58949A8303DF07172B16FB8EFBA66B9191F3836EC27A4568ED5997BAC5"
+    "1192C0191D1B8861AA6F5A84A575E0CBE4B97574A5E8B3D7B7AD64643EE38CA7",
+    "16A0674079229DB47EDDF4FD83AFEA59ADAC944DD5F16EA5D9C989ED8F918AE0",
+    "1F65776E640C97B76E365763E97E5B59B6C4CDBB46FB7C8869D1712528985E6D",
+    "35D6A9F578E63C875EDB6348E55EFADBD300A0817290276D8CC3DD3587FAD4B3",
+    "36B236D80688C2975A5D24935020B75BEB4B26F5115D71943356E86CCD3B8CE4",
+    "39E8F12D519E5C6C1AC36434D7340281C362508B7D5BC863166C8FE8621A124C",
+    "4DF14053E1BD697C5B4A4A1A7BA8988BD802F0CD5DB6ED9C2AC74AD8A7B91A35",
+    "5E2D97ABAB0D2BE1948F275823096597E3359DD0696CF2938A712169394236BE",
+    "678CE03A2F8157FBF7D5EFDED2D55D127F60EC26BC4F51DBC8FB05DF370B248E",
+    "8250CE37F6495903C1F7D16E072E8823ECE06FA73F011A0F8D79D5626BF581BB",
+    "C353DA9F84EB02B4206D6F5166A9277916559115EEDF7B841C38E4473084A010",
+    "CB2D979DE863A7AF792A12D6C4518E2B299EF782E361705DE7F1D0077521D521",
+    "DFA7CB434A3D9D782C2FACEB95F431476D3AAAD62078C0FBE8C115E00039C6F5"
   ],
   "LedgerEntryType": "DirectoryNode",
-  "Owner": "rpR95n1iFkTqpoy1e878f4Z1pVHVtWKMNQ",
-  "RootIndex": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94",
-  "index": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"
+  "Owner": "rBTwLga3i2gz3doX6Gva3MgEV8ZCD8jjah",
+  "PreviousTxnID": "CB802FC111C4C03B1E1D762E813D3F1F47347E57C68D00B5F92822C417C2484C",
+  "PreviousTxnLgrSeq": 91448329,
+  "RootIndex": "0A2600D85F8309FE7F75A490C19613F1CE0C37483B856DB69B8140154C2335F3",
+  "index": "0A2600D85F8309FE7F75A490C19613F1CE0C37483B856DB69B8140154C2335F3"
 }
 ```
 {% /tab %}
@@ -58,22 +75,16 @@ labels:
 {% tab label="NFTオファーディレクトリ" %}
 ```json
 {
-   "result": {
-      "index": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A",
-      "ledger_current_index": 310,
-      "node": {
-         "Flags": 2,
-         "Indexes": [
-            "83C81AC39F9771DDBCD66F6C225FC76EFC0971384EC6148BAFA5BD18019FC495"
-         ],
-         "LedgerEntryType": "DirectoryNode",
-         "NFTokenID": "000800009988C43C563A7BB35AF34D642990CDF089F11B445EB3DCCD00000132",
-         "RootIndex": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A",
-         "index": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A"
-      },
-      "status": "success",
-      "validated": false
-   }
+  "Flags": 1,
+  "Indexes": [
+    "68227B203065DED9EEB8B73FC952494A1DA6A69CEABEAA99923836EB5E77C95A"
+  ],
+  "LedgerEntryType": "DirectoryNode",
+  "NFTokenID": "000822603EA060FD1026C04B2D390CC132D07D600DA9B082CB5CE9AC0487E50B",
+  "PreviousTxnID": "EF8A9AD51E7CC6BBD219C3C980EC3145C7B0814ED3184471FD952D9D23A1918D",
+  "PreviousTxnLgrSeq": 91448417,
+  "RootIndex": "0EC5802BD1AB56527A9DE524CCA2A2BA25E1085CCE7EA112940ED115FFF91EE2",
+  "index": "0EC5802BD1AB56527A9DE524CCA2A2BA25E1085CCE7EA112940ED115FFF91EE2"
 }
 ```
 {% /tab %}
@@ -82,26 +93,35 @@ labels:
 
 ## {% $frontmatter.seo.title %}のフィールド
 
-| 名前                | JSONの型   | [内部の型][] | 必須? | 説明 |
-|---------------------|-----------|------------|:------|-------------|
-| `ExchangeRate`      | 数値      | UInt64      | いいえ | （オファーディレクトリのみ）**廃止予定**。使用しないでください。 |
-| `Flags`             | 数値      | UInt32      | はい  | このディレクトリに対して有効になっているブール値フラグのビットマップ。現在、プロトコルではDirectoryNodeオブジェクトのフラグは定義されていません。 |
-| `Indexes`           | 配列      | Vector256   | はい  | このディレクトリの内容: 他のオブジェクトのIDの配列。 |
-| `IndexNext`         | 数値      | UInt64      | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の次のオブジェクトにリンクし、末尾でラップアラウンドします。 |
-| `IndexPrevious`     | 数値      | UInt64      | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の前のオブジェクトにリンクし、先頭でラップアラウンドします。 |
-| `LedgerEntryType`   | 文字列    | UInt16      | はい  | 値が`0x0064`（文字列`DirectoryNode`にマッピング）の場合は、このオブジェクトがディレクトリの一部であることを示します。 |
-| `NFTokenID`         | 文字列    | Hash25      | No       |(NFTオファーディレクトリのみ) 購入または売却オファーに紐づくNFTのID。. |
-| `Owner`             | 文字列    | AccountID   | いいえ | （所有者ディレクトリのみ）このディレクトリ内のオブジェクトを所有するアカウントのアドレス。 |
-| `RootIndex`         | 文字列    | Hash256     | はい  | このディレクトリのルートオブジェクトのID。 |
-| `TakerGetsCurrency` | 文字列    | Hash160     | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額の通貨コード。 |
-| `TakerGetsIssuer`   | 文字列    | Hash160     | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額のイシュアー。 |
-| `TakerPaysCurrency` | 文字列    | Hash160     | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額の通貨コード。 |
-| `TakerPaysIssuer`   | 文字列    | Hash160     | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額のイシュアー。 |
+| 名前                | JSONの型  | [内部の型][] | 必須?  | 説明 |
+|---------------------|-----------|--------------|:-------|-------------|
+| `ExchangeRate`      | 数値      | UInt64       | いいえ | （オファーディレクトリのみ）**廃止予定**。使用しないでください。 |
+| `Flags`             | 数値      | UInt32       | はい   | このディレクトリに対して有効になっているブール値フラグのビットマップ。現在、プロトコルではDirectoryNodeオブジェクトのフラグは定義されていません。 |
+| `Indexes`           | 配列      | Vector256    | はい   | このディレクトリの内容: 他のオブジェクトのIDの配列。 |
+| `IndexNext`         | 数値      | UInt64       | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の次のオブジェクトにリンクし、末尾でラップアラウンドします。 |
+| `IndexPrevious`     | 数値      | UInt64       | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の前のオブジェクトにリンクし、先頭でラップアラウンドします。 |
+| `LedgerEntryType`   | 文字列    | UInt16       | はい   | 値が`0x0064`（文字列`DirectoryNode`にマッピング）の場合は、このオブジェクトがディレクトリの一部であることを示します。 |
+| `NFTokenID`         | 文字列    | Hash256      | いいえ |(NFTオファーディレクトリのみ) 購入または売却オファーに紐づくNFTのID。. |
+| `Owner`             | 文字列    | AccountID    | いいえ | （所有者ディレクトリのみ）このディレクトリ内のオブジェクトを所有するアカウントのアドレス。 |
+| `PreviousTxnID`     | 文字列    | Hash256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnLgrSeq` | 数値      | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `RootIndex`         | 文字列    | Hash256      | はい   | このディレクトリのルートオブジェクトのID。 |
+| `TakerGetsCurrency` | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額の通貨コード。 |
+| `TakerGetsIssuer`   | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額のイシュアー。 |
+| `TakerPaysCurrency` | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額の通貨コード。 |
+| `TakerPaysIssuer`   | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額のイシュアー。 |
 
 
 ## {% $frontmatter.seo.title %}のフラグ
 
-{% code-page-name /%}エントリに定義されているフラグはありません。
+{% code-page-name /%} エントリは以下のフラグを持つことができます。
+
+| フラグ名               | 16進数値     | 10進数値 | 説明 |
+|:-----------------------|:-------------|:---------|:------------|
+| `lsfNFTokenBuyOffers`  | `0x00000001` | 1        | このディレクトリにはNFTの購入オファーが含まれます。 |
+| `lsfNFTokenSellOffers` | `0x00000002` | 2        | このディレクトリにはNFTの売却オファーが含まれます。 |
+
+オファーディレクトリと所有者ディレクトリはフラグを使用しません。それらの`Flags`の値は常に0です。
 
 
 ## {% $frontmatter.seo.title %}の準備金

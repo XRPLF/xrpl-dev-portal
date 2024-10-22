@@ -25,18 +25,18 @@ The `Amendments` ledger entry type contains a list of [Amendments](../../../../c
     "Flags": 0,
     "LedgerEntryType": "Amendments",
     "Majorities": [
-    {
-        "Majority": {
+        {
+            "Majority": {
             "Amendment": "7BB62DC13EC72B775091E9C71BF8CF97E122647693B50C5E87A80DFD6FCFAC50",
-            "CloseTime": 779561310
+                "CloseTime": 779561310
+            }
+        },
+        {
+            "Majority": {
+                "Amendment": "755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE",
+                "CloseTime": 779561310
+            }
         }
-    },
-    {
-        "Majority": {
-            "Amendment": "755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE",
-            "CloseTime": 779561310
-        }
-    }
     ],
     "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4"
 }

@@ -18,52 +18,44 @@ _([AMM amendment][])_
 
 ```json
 {
-    "Account" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
-    "Asset" : {
-      "currency" : "XRP"
-    },
-    "Asset2" : {
-      "currency" : "TST",
-      "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
-    },
-    "AuctionSlot" : {
-      "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
-      "AuthAccounts" : [
-          {
-            "AuthAccount" : {
-                "Account" : "rMKXGCbJ5d8LbrqthdG46q3f969MVK2Qeg"
-            }
-          },
-          {
-            "AuthAccount" : {
-                "Account" : "rBepJuTLFJt3WmtLXYAxSjtBWAeQxVbncv"
-            }
-          }
-      ],
-      "DiscountedFee" : 60,
-      "Expiration" : 721870180,
-      "Price" : {
-          "currency" : "039C99CD9AB0B70B32ECDA51EAAE471625608EA2",
-          "issuer" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
-          "value" : "0.8696263565463045"
+  "Account": "rBp3UDRuEteeJqp4rEk5kxMe7BGWNYrF9A",
+  "Asset": {
+    "currency": "XRP"
+  },
+  "Asset2": {
+    "currency": "NEX",
+    "issuer": "rQGiPFWhaTDdue1xHX7cVpxGqPQK54zng1"
+  },
+  "AuctionSlot": {
+    "Account": "r3ZGQZw1NCbBp5AEGkMDE9NgNpzw91aofD",
+    "Expiration": 778576560,
+    "Price": {
+      "currency": "03DC324562A8915B7C65E9D31B93D62D02BC491C",
+      "issuer": "rBp3UDRuEteeJqp4rEk5kxMe7BGWNYrF9A",
+      "value": "0"
+    }
+  },
+  "Flags": 0,
+  "LPTokenBalance": {
+    "currency": "03DC324562A8915B7C65E9D31B93D62D02BC491C",
+    "issuer": "rBp3UDRuEteeJqp4rEk5kxMe7BGWNYrF9A",
+    "value": "5509581.299648495"
+  },
+  "LedgerEntryType": "AMM",
+  "OwnerNode": "0",
+  "PreviousTxnID": "9E8E9B8FD27391C818525BFF6A29452F7A9888F31622BEF6FC36064D05CF6436",
+  "PreviousTxnLgrSeq": 91448830,
+  "TradingFee": 1,
+  "VoteSlots": [
+    {
+      "VoteEntry": {
+        "Account": "r3ZGQZw1NCbBp5AEGkMDE9NgNpzw91aofD",
+        "TradingFee": 1,
+        "VoteWeight": 100000
       }
-    },
-    "Flags" : 0,
-    "LPTokenBalance" : {
-      "currency" : "039C99CD9AB0B70B32ECDA51EAAE471625608EA2",
-      "issuer" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
-      "value" : "71150.53584131501"
-    },
-    "TradingFee" : 600,
-    "VoteSlots" : [
-      {
-          "VoteEntry" : {
-            "Account" : "rJVUeRqDFNs2xqA7ncVE6ZoAhPUoaJJSQm",
-            "TradingFee" : 600,
-            "VoteWeight" : 100000
-          }
-      }
-    ]
+    }
+  ],
+  "index": "F490627BACE2D0AA744514A640B4999D50E495DD1677550D8B10E2D20FBB15C3"
 }
 ```
 
@@ -71,15 +63,18 @@ _([AMM amendment][])_
 
 [共通フィールド][]に加えて、{% $frontmatter.seo.title %}エントリは以下のフィールドを使用します。
 
-| フィールド        | JSONの型             | [内部の型][]       | 必須?      | 説明         |
-|:-----------------|:--------------------|:------------------|:----------|--------------|
-| `Asset`          | オブジェクト          | STIssue           | はい       | このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
-| `Asset2`         | オブジェクト          | STIssue           | はい       | このAMMが保有するもう一つの資産の定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
-| `Account`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.md#ammの特殊なaccountrootエントリ)のアドレス。 |
-| `AuctionSlot`    | オブジェクト          | STObject          | いいえ     | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
-| `LPTokenBalance` | [通貨額][]           | Amount            | はい       | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
-| `TradingFee`     | 数値                 | UInt16            | はい       | AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。 |
-| `VoteSlots`      | 配列                 | STArray           | いいえ     | プールの取引手数料に関する投票を表す、投票オブジェクトのリスト。|
+| フィールド          | JSONの型     | [内部の型][] | 必須?  | 説明         |
+|:--------------------|:-------------|:-------------|:-------|--------------|
+| `Asset`             | オブジェクト | STIssue      | はい   | このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
+| `Asset2`            | オブジェクト | STIssue      | はい   | このAMMが保有するもう一つの資産の定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
+| `Account`           | 文字列       | AccountID    | はい   | このAMMの資産を保有する[特殊なアカウント](accountroot.md#ammの特殊なaccountrootエントリ)のアドレス。 |
+| `AuctionSlot`       | オブジェクト | STObject     | いいえ | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
+| `LPTokenBalance`    | [通貨額][]   | Amount       | はい   | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
+| `PreviousTxnID`     | 文字列       | Hash256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnLgrSeq` | 数値         | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `TradingFee`        | 数値         | UInt16       | はい   | AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。 |
+| `VoteSlots`         | 配列         | STArray      | いいえ | プールの取引手数料に関する投票を表す、投票オブジェクトのリスト。|
+
 
 ### AuctionSlotオブジェクト
 
@@ -117,9 +112,9 @@ _([AMM amendment][])_
 `AMM`エントリのIDは、以下の値を順に繋げた[SHA-512Half][]です。
 
 1. `AMM`のスペースキー(`0x0041`)
-2. 第1アセットの発行者のAccountID。
+2. 第1トークンの発行者のAccountID。
 3. 第1トークンの160ビットの通貨コード。
-4. 第2アセットの発行者のAccountID。
+4. 第2トークンの発行者のAccountID。
 5. 第2トークンの160ビットの通貨コード。
 
 XRPの場合、トークン・発行者ともに全て0を使用します。

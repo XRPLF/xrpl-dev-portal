@@ -21,13 +21,15 @@ _([NegativeUNL amendment][]により追加されました。)_
   "DisabledValidators": [
     {
       "DisabledValidator": {
-        "FirstLedgerSequence": 1609728,
-        "PublicKey": "ED6629D456285AE3613B285F65BBFF168D695BA3921F309949AFCD2CA7AFEC16FE"
+        "FirstLedgerSequence": 91371264,
+        "PublicKey": "ED58F6770DB5DD77E59D28CB650EC3816E2FC95021BB56E720C9A12DA79C58A3AB"
       }
     }
   ],
   "Flags": 0,
   "LedgerEntryType": "NegativeUNL",
+  "PreviousTxnID": "8D47FFE664BE6C335108DF689537625855A6A95160CC6D351341B92624D9C5E3",
+  "PreviousTxnLgrSeq": 91442944,
   "index": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244"
 }
 ```
@@ -35,13 +37,15 @@ _([NegativeUNL amendment][]により追加されました。)_
 
 `NegativeUNL`オブジェクトは、以下のフィールドを持ちます。
 
-| 名前                   | JSONの型 | [内部の型][] | 必須? | 説明                  |
-|:----------------------|:---------|:-----------|:------|:---------------------|
-| `DisabledValidators`  | 配列     | Array       | いいえ | `DisabledValidator`オブジェクト(下記参照)は、現在無効になっている信頼できるバリデータを表すリストです。 |
-| `Flags`               | 数値     | UInt32      | はい  | 真偽値フラグのビットマップ。NegativeUNLオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`となります。 |
-| `LedgerEntryType`     | 文字列    | UInt16     | はい  | `0x004E`は文字列`NegativeUNL`に対応し、このオブジェクトがNegativeUNLであることを意味します。 |
-| `ValidatorToDisable`  | 文字列    | Blob       | いいえ | 次回のフラグレジャーで無効化される予定の信頼できるバリデータの公開鍵を表します。 |
-| `ValidatorToReEnable` | 文字列    | Blob       | いいえ | 次回のフラグレジャーで再有効化される予定のネガティブUNLの信頼できるバリデータの公開鍵を表します。 |
+| 名前                  | JSONの型 | [内部の型][] | 必須?  | 説明                 |
+|:----------------------|:---------|:-------------|:-------|:---------------------|
+| `DisabledValidators`  | 配列     | Array        | いいえ | `DisabledValidator`オブジェクト(下記参照)は、現在無効になっている信頼できるバリデータを表すリストです。 |
+| `Flags`               | 数値     | UInt32       | はい   | 真偽値フラグのビットマップ。NegativeUNLオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`となります。 |
+| `LedgerEntryType`     | 文字列   | UInt16       | はい   | `0x004E`は文字列`NegativeUNL`に対応し、このオブジェクトがNegativeUNLであることを意味します。 |
+| `PreviousTxnID`       | 文字列   | Hash256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnLgrSeq`   | 数値     | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `ValidatorToDisable`  | 文字列   | Blob         | いいえ | 次回のフラグレジャーで無効化される予定の信頼できるバリデータの公開鍵を表します。 |
+| `ValidatorToReEnable` | 文字列   | Blob         | いいえ | 次回のフラグレジャーで再有効化される予定のネガティブUNLの信頼できるバリデータの公開鍵を表します。 |
 
 ## DisabledValidatorオブジェクト
 
