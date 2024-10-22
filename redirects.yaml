@@ -2251,9 +2251,6 @@ blog/2014/introducing-ripple-names.html:
 blog/2014.html:
     to: /blog/
     type: 301
-blog/2014.html:
-    to: /blog/
-    type: 301
 blog/2015.html:
     to: /blog/
     type: 301
