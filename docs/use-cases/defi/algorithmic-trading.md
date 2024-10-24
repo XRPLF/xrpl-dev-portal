@@ -88,8 +88,8 @@ To give yourself as much time as possible to react to profit-taking opportunitie
 
 The XRP Ledger natively supports Automated Market Makers (AMMs) that work alongside the existing central limit order based (CLOB) decentralized exchange. AMMs are an important factor in trading on the XRP Ledger. You can read more at the following links:
 
-- [Automated Market Makers](/docs/concepts/tokens/decentralized-exchange/automated-market-makers)
-- [Use the AMM Auction Slot for Lower Fees](/docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees)
+- [Automated Market Makers](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)
+- [Use the AMM Auction Slot for Lower Fees](../../tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees.md)
 - [XLS-30 Specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#readme)
 
 ## Further Reading
