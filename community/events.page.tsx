@@ -966,7 +966,7 @@ const events = [
   {
     name: "XRPL Hackathon Paris",
     description:
-      "Join the hackathon organized by Chair UNESCO ITEN, XRPL Commons,  and KRYPTOSPHERE, for a unique opportunity to dive into the rapidly growing  open-source ecosystem. Tackle real-world challenges and create innovative  solutions that can make a meaningful impact on today's most pressing  societal issues!",
+      "Join the hackathon organized by Chaire UNESCO ITEN, XRPL Commons,  and KRYPTOSPHERE, for a unique opportunity to dive into the rapidly growing  open-source ecosystem. Tackle real-world challenges and create innovative  solutions that can make a meaningful impact on today's most pressing  societal issues!",
     type: "hackathon",
     link: "https://xrpl.at/Eventbrite-EducationWeek-XRPLHackathon-Paris",
     location: "Paris, France",
