@@ -1,6 +1,4 @@
 ---
-html: known-amendments.html
-parent: resources.html
 seo:
     description: 本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 labels:
@@ -13,86 +11,98 @@ labels:
 
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
-{% admonition type="success" name="ヒント" %}このリストは手動で更新されています。最新のステータスは[XRPScan Amendmentダッシュボード](https://xrpscan.com/amendments)をご覧下さい。{% /admonition %}
+{% admonition type="success" name="ヒント" %}
+このリストは手動で更新されています。最新のステータスは[XRPScan Amendmentダッシュボード](https://xrpscan.com/amendments)をご覧下さい。
+{% /admonition %}
 
-| 名前                               | 登場       | ステータス                              |
+| 名前                              | 登場       | ステータス                          |
 |:----------------------------------|:-----------|:------------------------------------|
-| [fixAMMOverflowOffer][]           | v2.1.1     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC "BADGE_GREEN") |
-| [fixInnerObjTemplate][]           | v2.1.0     | [有効: 2024-04-08](https://livenet.xrpl.org/transactions/EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235 "BADGE_GREEN") |
-| [fixNFTokenReserve][]             | v2.1.0     | [有効: 2024-04-12](https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4 "BADGE_GREEN") |
-| [DID][]                           | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixDisallowIncomingV1][]         | v2.0.0     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB "BADGE_GREEN") |
-| [fixFillOrKill][]                 | v2.0.0     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B "BADGE_GREEN") |
-| [XChainBridge][]                  | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [AMM][]                           | v1.12.0    | [有効: 2024-03-22](https://livenet.xrpl.org/transactions/75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99 "BADGE_GREEN") |
-| [XRPFees][]                       | v1.10.0    | [有効: 2023-03-25](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
-| [Clawback][]                      | v1.12.0    | [有効: 2024-02-08](https://livenet.xrpl.org/transactions/C6BCCE60DFA4430A1F9097D774EA49E6FEFB1B535BA0EF9170DA0F2D08CDDB11 "BADGE_GREEN") |
-| [fixReducedOffersV1][]            | v1.12.0    | [有効: 2023-11-24](https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1 "BADGE_GREEN") |
-| [fixNFTokenRemint][]              | v1.11.0    | [有効: 2023-11-27](https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF "BADGE_GREEN") |
-| [DisallowIncoming][]              | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E "BADGE_GREEN") |
-| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E "BADGE_GREEN") |
-| [fixTrustLinesToSelf][]           | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43 "BADGE_GREEN") |
-| [fixUniversalNumber][]            | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3 "BADGE_GREEN") |
-| [ImmediateOfferKilled][]          | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B "BADGE_GREEN") |
-| [CheckCashMakesTrustLine][]       | v1.8.0     | [有効: 2023-01-23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
-| [NonFungibleTokensV1_1][]         | v1.9.2     | [有効: 2022-10-31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
-| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [有効: 2022-10-27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
-| [ExpandedSignerList][]            | v1.9.1     | [有効: 2022-10-13](https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87 "BADGE_GREEN") |
-| [NegativeUNL][]                   | v1.7.3     | [有効: 2021-11-21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
-| [fixRmSmallIncreasedQOffers][]    | v1.7.2     | [有効: 2021-11-18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
-| [TicketBatch][]                   | v1.7.0     | [有効: 2021-11-18](https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36 "BADGE_GREEN") |
-| [fixSTAmountCanonicalize][]       | v1.7.0     | [有効: 2021-11-11](https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532 "BADGE_GREEN") |
-| [FlowSortStrands][]               | v1.7.0     | [有効: 2021-11-11](https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1 "BADGE_GREEN") |
-| [fix1781][]                       | v1.6.0     | [有効: 2021-04-08](https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB "BADGE_GREEN") |
-| [fixAmendmentMajorityCalc][]      | v1.6.0     | [有効: 2021-04-08](https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF "BADGE_GREEN") |
-| [HardenedValidations][]           | v1.6.0     | [有効: 2021-04-08](https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF "BADGE_GREEN") |
-| [FlowCross][]                     | v0.70.0    | [有効: 2020-08-04](https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
-| [fixQualityUpperBound][]          | v1.5.0     | [有効: 2020-07-09](https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
-| [RequireFullyCanonicalSig][]      | v1.5.0     | [有効: 2020-07-03](https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
-| [Checks][]                        | v0.90.0    | [有効: 2020-06-18](https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
-| [DeletableAccounts][]             | v1.4.0     | [有効: 2020-05-08](https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
-| [fixCheckThreading][]             | v1.4.0     | [有効: 2020-05-01](https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
-| [fixPayChanRecipientOwnerDir][]   | v1.4.0     | [有効: 2020-05-01](https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
-| [fixMasterKeyAsRegularKey][]      | v1.3.1     | [有効: 2019-10-02](https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
-| [MultiSignReserve][]              | v1.2.0     | [有効: 2019-04-17](https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
-| [fixTakerDryOfferRemoval][]       | v1.2.0     | [有効: 2019-04-02](https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
-| [fix1578][]                       | v1.2.0     | [有効: 2019-03-23](https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
-| [DepositPreauth][]                | v1.1.0     | [有効: 2018-10-09](https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
-| [fix1515][]                       | v1.1.0     | [有効: 2018-10-09](https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
-| [fix1543][]                       | v1.0.0     | [有効: 2018-06-21](https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
-| [fix1623][]                       | v1.0.0     | [有効: 2018-06-20](https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
-| [fix1571][]                       | v1.0.0     | [有効: 2018-06-19](https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC "BADGE_GREEN") |
-| [DepositAuth][]                   | v0.90.0    | [有効: 2018-04-06](https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25 "BADGE_GREEN") |
-| [fix1513][]                       | v0.90.0    | [有効: 2018-04-06](https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B "BADGE_GREEN") |
-| [fix1201][]                       | v0.80.0    | [有効: 2017-11-14](https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
-| [fix1512][]                       | v0.80.0    | [有効: 2017-11-14](https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
-| [fix1523][]                       | v0.80.0    | [有効: 2017-11-14](https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
-| [fix1528][]                       | v0.80.0    | [有効: 2017-11-14](https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E "BADGE_GREEN") |
-| [SortedDirectories][]             | v0.80.0    | [有効: 2017-11-14](https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
-| [EnforceInvariants][]             | v0.70.0    | [有効: 2017-07-07](https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6 "BADGE_GREEN") |
-| [fix1373][]                       | v0.70.0    | [有効: 2017-07-07](https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399 "BADGE_GREEN") |
-| [Escrow][]                        | v0.60.0    | [有効: 2017-03-31](https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515 "BADGE_GREEN") |
-| [fix1368][]                       | v0.60.0    | [有効: 2017-03-31](https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F "BADGE_GREEN") |
-| [PayChan][]                       | v0.33.0    | [有効: 2017-03-31](https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E "BADGE_GREEN") |
-| [TickSize][]                      | v0.50.0    | [有効: 2017-02-21](https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
-| [CryptoConditions][]              | v0.50.0    | [有効: 2017-01-03](https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
-| [Flow][]                          | v0.33.0    | [有効: 2016-10-21](https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
-| [TrustSetAuth][]                  | v0.30.0    | [有効: 2016-07-19](https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
-| [MultiSign][]                     | v0.31.0    | [有効: 2016-06-27](https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
-| [FeeEscalation][]                 | v0.31.0    | [有効: 2016-05-19](https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
+| [PriceOracle][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
+| [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
+| [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
+| [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472" %}有効: 2024-09-27{% /badge %} |
+| [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171" %}有効: 2024-09-27{% /badge %} |
+| [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/8C8F5566464097BF1BAF7C645BB9E1762986844A052BBA3B9769F6564EEFAB71" %}有効: 2024-09-24{% /badge %} |
+| [fixNFTokenReserve][]             | v2.1.0     | {% badge href="https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4" %}有効: 2024-04-12{% /badge %} |
+| [fixAMMOverflowOffer][]           | v2.1.1     | {% badge href="https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC" %}有効: 2024-04-11{% /badge %} |
+| [fixDisallowIncomingV1][]         | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB" %}有効: 2024-04-11{% /badge %} |
+| [fixFillOrKill][]                 | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B" %}有効: 2024-04-11{% /badge %} |
+| [fixInnerObjTemplate][]           | v2.1.0     | {% badge href="https://livenet.xrpl.org/transactions/EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235" %}有効: 2024-04-08{% /badge %} |
+| [XRPFees][]                       | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/4B6047F84B959B64FDD10E22D9E7CCC1EA0D228387462E8FF975B17F7C779021" %}有効: 2024-03-25{% /badge %} |
+| [AMM][]                           | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99" %}有効: 2024-03-22{% /badge %} |
+| [Clawback][]                      | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/C6BCCE60DFA4430A1F9097D774EA49E6FEFB1B535BA0EF9170DA0F2D08CDDB11" %}有効: 2024-02-08{% /badge %} |
+| [fixNFTokenRemint][]              | v1.11.0    | {% badge href="https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF" %}有効: 2023-11-27{% /badge %} |
+| [fixReducedOffersV1][]            | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1" %}有効: 2023-11-24{% /badge %} |
+| [DisallowIncoming][]              | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E" %}有効: 2023-08-21{% /badge %} |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E" %}有効: 2023-08-21{% /badge %} |
+| [fixTrustLinesToSelf][]           | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43" %}有効: 2023-08-21{% /badge %} |
+| [fixUniversalNumber][]            | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3" %}有効: 2023-08-21{% /badge %} |
+| [ImmediateOfferKilled][]          | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B" %}有効: 2023-08-21{% /badge %} |
+| [CheckCashMakesTrustLine][]       | v1.8.0     | {% badge href="https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557" %}有効: 2023-01-23{% /badge %} |
+| [NonFungibleTokensV1_1][]         | v1.9.2     | {% badge href="https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE" %}有効: 2022-10-31{% /badge %} |
+| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | {% badge href="https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C" %}有効: 2022-10-27{% /badge %} |
+| [ExpandedSignerList][]            | v1.9.1     | {% badge href="https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87" %}有効: 2022-10-13{% /badge %} |
+| [NegativeUNL][]                   | v1.7.3     | {% badge href="https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA" %}有効: 2021-11-21{% /badge %} |
+| [fixRmSmallIncreasedQOffers][]    | v1.7.2     | {% badge href="https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7" %}有効: 2021-11-18{% /badge %} |
+| [TicketBatch][]                   | v1.7.0     | {% badge href="https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36" %}有効: 2021-11-18{% /badge %} |
+| [fixSTAmountCanonicalize][]       | v1.7.0     | {% badge href="https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532" %}有効: 2021-11-11{% /badge %} |
+| [FlowSortStrands][]               | v1.7.0     | {% badge href="https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1" %}有効: 2021-11-11{% /badge %} |
+| [fix1781][]                       | v1.6.0     | {% badge href="https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB" %}有効: 2021-04-08{% /badge %} |
+| [fixAmendmentMajorityCalc][]      | v1.6.0     | {% badge href="https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF" %}有効: 2021-04-08{% /badge %} |
+| [HardenedValidations][]           | v1.6.0     | {% badge href="https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF" %}有効: 2021-04-08{% /badge %} |
+| [FlowCross][]                     | v0.70.0    | {% badge href="https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F" %}有効: 2020-08-04{% /badge %} |
+| [fixQualityUpperBound][]          | v1.5.0     | {% badge href="https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E" %}有効: 2020-07-09{% /badge %} |
+| [RequireFullyCanonicalSig][]      | v1.5.0     | {% badge href="https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3" %}有効: 2020-07-03{% /badge %} |
+| [Checks][]                        | v0.90.0    | {% badge href="https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6" %}有効: 2020-06-18{% /badge %} |
+| [DeletableAccounts][]             | v1.4.0     | {% badge href="https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE" %}有効: 2020-05-08{% /badge %} |
+| [fixCheckThreading][]             | v1.4.0     | {% badge href="https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A" %}有効: 2020-05-01{% /badge %} |
+| [fixPayChanRecipientOwnerDir][]   | v1.4.0     | {% badge href="https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09" %}有効: 2020-05-01{% /badge %} |
+| [fixMasterKeyAsRegularKey][]      | v1.3.1     | {% badge href="https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20" %}有効: 2019-10-02{% /badge %} |
+| [MultiSignReserve][]              | v1.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB" %}有効: 2019-04-17{% /badge %} |
+| [fixTakerDryOfferRemoval][]       | v1.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF" %}有効: 2019-04-02{% /badge %} |
+| [fix1578][]                       | v1.2.0     | {% badge href="https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" %}有効: 2019-03-23{% /badge %} |
+| [DepositPreauth][DepositPreauthAmendment] | v1.1.0     | {% badge href="https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" %}有効: 2018-10-09{% /badge %} |
+| [fix1515][]                       | v1.1.0     | {% badge href="https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF" %}有効: 2018-10-09{% /badge %} |
+| [fix1543][]                       | v1.0.0     | {% badge href="https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6" %}有効: 2018-06-21{% /badge %} |
+| [fix1623][]                       | v1.0.0     | {% badge href="https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB" %}有効: 2018-06-20{% /badge %} |
+| [fix1571][]                       | v1.0.0     | {% badge href="https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC" %}有効: 2018-06-19{% /badge %} |
+| [DepositAuth][]                   | v0.90.0    | {% badge href="https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25" %}有効: 2018-04-06{% /badge %} |
+| [fix1513][]                       | v0.90.0    | {% badge href="https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B" %}有効: 2018-04-06{% /badge %} |
+| [fix1201][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E" %}有効: 2017-11-14{% /badge %} |
+| [fix1512][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647" %}有効: 2017-11-14{% /badge %} |
+| [fix1523][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469" %}有効: 2017-11-14{% /badge %} |
+| [fix1528][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E" %}有効: 2017-11-14{% /badge %} |
+| [SortedDirectories][]             | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29" %}有効: 2017-11-14{% /badge %} |
+| [EnforceInvariants][]             | v0.70.0    | {% badge href="https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6" %}有効: 2017-07-07{% /badge %} |
+| [fix1373][]                       | v0.70.0    | {% badge href="https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399" %}有効: 2017-07-07{% /badge %} |
+| [Escrow][]                        | v0.60.0    | {% badge href="https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515" %}有効: 2017-03-31{% /badge %} |
+| [fix1368][]                       | v0.60.0    | {% badge href="https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F" %}有効: 2017-03-31{% /badge %} |
+| [PayChan][]                       | v0.33.0    | {% badge href="https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E" %}有効: 2017-03-31{% /badge %} |
+| [TickSize][]                      | v0.50.0    | {% badge href="https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E" %}有効: 2017-02-21{% /badge %} |
+| [CryptoConditions][]              | v0.50.0    | {% badge href="https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" %}有効: 2017-01-03{% /badge %} |
+| [Flow][]                          | v0.33.0    | {% badge href="https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" %}有効: 2016-10-21{% /badge %} |
+| [TrustSetAuth][]                  | v0.30.0    | {% badge href="https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF" %}有効: 2016-07-19{% /badge %} |
+| [MultiSign][]                     | v0.31.0    | {% badge href="https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7" %}有効: 2016-06-27{% /badge %} |
+| [FeeEscalation][]                 | v0.31.0    | {% badge href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" %}有効: 2016-05-19{% /badge %} |
 
-{% admonition type="info" name="注記" %}多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。{% /admonition %}
+{% admonition type="info" name="注記" %}
+多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。
+{% /admonition %}
 
 ## 開発中のAmendment
 
 以下は、現在開発中の[Amendment](../docs/concepts/networks-and-servers/amendments.md)のリストで、変更をテストするためのテストネットが利用可能です。
 
-| 名前                               | ステータス                                 | 追加情報                         |
-|:----------------------------------|:------------------------------------------|:-------------------------------|
+| 名前                               | ステータス                         | 追加情報                       |
+|:----------------------------------|:------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}開発中: 未定{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [OwnerPaysFee][]                  | {% badge %}開発中: 未定{% /badge %} | |
 
-{% admonition type="info" name="注記" %}このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code/index.md)をご覧ください。{% /admonition %}
+{% admonition type="info" name="注記" %}
+このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code/index.md)をご覧ください。
+{% /admonition %}
+
 
 ## 撤回または廃止されたAmendment
 
@@ -112,7 +122,6 @@ labels:
 
 ## 既知のAmendmentsの詳細
 
-
 ### AMM
 [AMM]: #amm
 
@@ -127,12 +136,12 @@ labels:
 
 追加される新規トランザクション
 
-- AMMBid - 取引手数料を割引するAMMプールのオークション枠に入札します。
-- AMMCreate - AMMプールの新しいインスタンスを作成し、初期資金を供給します。
-- AMMDelete - 空となったAMMプールのインスタンスを削除します。
-- AMMDeposit - 既存のAMMプールに資金を供給し、LPトークンを受け取ります。
-- AMMWithdraw - LPトークンをAMMプールに返却して資金を引き出します。
-- AMMVote - AMMプールの取引手数料について投票します。
+- [AMMBid](../docs/references/protocol/transactions/types/ammbid.md) - 取引手数料を割引するAMMプールのオークション枠に入札します。
+- [AMMCreate](../docs/references/protocol/transactions/types/ammcreate.md) - AMMプールの新しいインスタンスを作成し、初期資金を供給します。
+- [AMMDelete](../docs/references/protocol/transactions/types/ammdelete.md) - 空となったAMMプールのインスタンスを削除します。
+- [AMMDeposit](../docs/references/protocol/transactions/types/ammdeposit.md) - 既存のAMMプールに資金を供給し、LPトークンを受け取ります。
+- [AMMWithdraw](../docs/references/protocol/transactions/types/ammwithdraw.md) - LPトークンをAMMプールに返却して資金を引き出します。
+- [AMMVote](../docs/references/protocol/transactions/types/ammvote.md) - AMMプールの取引手数料について投票します。
 
 既存のトランザクションを新たな機能でアップデートします。
 
@@ -208,28 +217,6 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 この修正は有効ですが、[SusPay](#suspay) Amendmentも有効でない限り、何の影響も及ぼしません。SusPayの修正は、[Escrow](#escrow)の修正に置き換えられたため、CryptoConditionsの修正は効力を持ちません。
 
 
-### DID
-[DID]: #did
-
-| Amendment    | DID |
-|:-------------|:----|
-| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
-| ステータス     | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
-
-[World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/)標準に準拠した分散アイデンティティ(DID)機能を追加します。DIDは、中央集権的な機関に依存せず、DID主体によって管理されるデジタルIDを提供します。
-
-次の新しいトランザクションを追加します。
-
-- DIDDelete - XRPLアカウントに関連付けられたDIDを削除します。
-- DIDSet - 新しいDIDを作成するか、既存のDIDを更新します。
-
-新しい`DID`レジャーエントリタイプを追加します。
-
-いくつかの新しいトランザクション結果コードを追加します。
-
-
 ## CryptoConditionsSuite
 [CryptoConditionsSuite]: #cryptoconditionssuite
 
@@ -298,6 +285,28 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 あるアカウントからそれ自身へのクロスカレンシー決済において、そのアカウントがDeposit Authorizationを必要とする場合の動作を変更しました。このamendmentなしでは、これらの支払いは常に`tecNO_PERMISSION`というコードで失敗します。この修正により、Deposit Authorizationが無効な場合と同様に、これらの支払いは成功します。
 
 また、アカウントにDeposit Authorizationが必要な場合、アカウントから自身への異なる通貨間での支払いの動作も変更します。この修正を行わない場合、これらの支払いはコードtecNO_PERMISSIONにて常に失敗します。この修正を行う場合、これらの支払いはDeposit Authorization無効時と同様に成功します。
+
+
+### DID
+[DID]: #did
+
+| Amendment    | DID |
+|:-------------|:----|
+| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
+| ステータス     | 投票中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+[World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/)標準に準拠した分散アイデンティティ(DID)機能を追加します。DIDは、中央集権的な機関に依存せず、DID主体によって管理されるデジタルIDを提供します。
+
+次の新しいトランザクションを追加します。
+
+- DIDDelete - XRPLアカウントに関連付けられたDIDを削除します。
+- DIDSet - 新しいDIDを作成するか、既存のDIDを更新します。
+
+新しい`DID`レジャーエントリタイプを追加します。
+
+いくつかの新しいトランザクション結果コードを追加します。
 
 
 ### DisallowIncoming
@@ -610,20 +619,6 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 この修正が適用された場合、これらの支払いは、代わりに[結果コード`temBAD_PATH_LOOP`](../docs/references/protocol/transactions/transaction-results/tem-codes.md)で失敗します。
 
 
-### fixAMMOverflowOffer
-
-[fixAMMOverflowOffer]: #fixammoverflowoffer
-
-| Amendment    | fixAMMOverflowOffer |
-|:-------------|:--------------|
-| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
-| ステータス     | 有効 |
-| デフォルトの投票(最新の安定版) | はい |
-| Amendment前の機能は廃止? | いいえ |
-
-このAmendmentにより、決済エンジンにおけるAMMの大規模な合成オファーの不適切な処理が修正されます。このAmendmentは重大な修正であるため、ソースコードのデフォルトの投票はYESに設定されています。
-
-
 ### fixAmendmentMajorityCalc
 [fixAmendmentMajorityCalc]: #fixamendmentmajoritycalc
 
@@ -637,6 +632,32 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 丸め処理の影響により、Amendmentが過半数を達成した後、信頼できるバリデータの80%にわずかに満たない賛成で有効になることがあるバグを修正しました。
 
 この修正が適用されない場合、Amendmentが有効になるための最小閾値は、信頼できるバリデータの204/256を丸めた値であり、これはその時の信頼できるバリデータの数に依存します。例えば、36人中28人(約77.8%)のバリデータがあれば、補正は有効になりえます。この修正により、実際に必要な最小限のバリデータの数は、信頼できるバリデータの80％を下回ることはありません。
+
+
+### fixAMMOverflowOffer
+[fixAMMOverflowOffer]: #fixammoverflowoffer
+
+| Amendment    | fixAMMOverflowOffer |
+|:-------------|:--------------|
+| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
+
+このAmendmentにより、決済エンジンにおけるAMMの大規模な合成オファーの不適切な処理が修正されます。このAmendmentは重大な修正であるため、ソースコードのデフォルトの投票はYESに設定されています。
+
+
+### fixAMMv1_1
+[fixAMMv1_1]: #fixammv1_1
+
+| Amendment    | fixAMMv1_1 |
+|:-------------|:-----------|
+| Amendment ID | 35291ADD2D79EB6991343BDA0912269C817D0F094B02226C1C14AD2858962ED4 |
+| ステータス       | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+AMMからのオファーの丸めと低品質なオーダーブックのオファーをAMMがブロックする問題を修正します。
 
 
 ### fixCheckThreading
@@ -671,12 +692,30 @@ Checksトランザクションがアカウントのメタデータに影響を�
 1. 発行者が自分のアカウントに`asfRequireAuth`を設定します。
 2. ユーザが自分のアカウントに`asfDisallowIncomingTrustline`を設定します。
 3. ユーザは`SetTrust`トランザクションを発行者に送信します。
-
 4. 発行者はトラストラインを承認できません。
 
 このamendmentにより、発行者はトラストラインを認可できるようになりました。
 
 このamendmentは、[DisallowIncoming][] amendmentが有効でない場合、影響はありません。
+
+
+### fixEmptyDID
+[fixEmptyDID]: #fixemptydid
+
+| Amendment    | fixEmptyDID |
+|:-------------|:------------|
+| Amendment ID | 755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE |
+| ステータス   | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+このAmendmentにより、空の DID エントリが作成されないようにするためのチェックが追加されます。
+
+また、トランザクションで空の DID が作成されると、代わりに新しいエラーコード `tecEMPTY_DID` が返されます。
+
+このAmendmentがない場合、空のDIDが作成される可能性があり、これはレジャーのスペースを消費し、所有者の準備金としてカウントされますが、何の役にも立ちません。
+
+この修正は、[DID][]Amendmentが有効になっていない限り、何の影響もありません。
 
 
 ### fixFillOrKill
@@ -780,7 +819,6 @@ Checksトランザクションがアカウントのメタデータに影響を�
 
 
 ### fixNFTokenReserve
-
 [fixNFTokenReserve]: #fixnftokenreserve
 
 | Amendment    | fixNFTokenReserve |
@@ -849,6 +887,23 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 この修正により、受取人によるPayment Channelの検索が容易になります。また、アカウントがオープンPayment Channelの受取人だった場合に、そのアカウントが削除されないようにします（ただし、この修正の前に作成されたチャンネルを除きます）。
 
 
+### fixPreviousTxnID
+[fixPreviousTxnID]: #fixprevioustxnid
+
+| Amendment    | fixPreviousTxnID |
+|:-------------|:-----------------|
+| Amendment ID | 7BB62DC13EC72B775091E9C71BF8CF97E122647693B50C5E87A80DFD6FCFAC50 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+このAmendmentにより、レジャーエントリ`DirectoryNode`、`Amendments`、`FeeSettings`、`NegativeUNL`、および`AMM`に`PreviousTxnID`および`PreviousTxnLgrSequence`フィールドが追加されます。
+
+このAmendmentが有効になる前に作成されたレジャーエントリは、トランザクションがそれらのエントリを変更するたびに新しいフィールドを設定します。
+
+この修正がない場合、一部のレジャーエントリにこれら2つのフィールドがないため、それらのレジャーエントリの変更履歴を追跡することが難しくなります。
+
+
 ### fixQualityUpperBound
 [fixQualityUpperBound]: #fixqualityupperbound
 
@@ -885,6 +940,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 このamendmentにより、減額されたオファーの取引レートは、(テイカーの観点から)元のオファーと同等かそれ以上となるように丸められます。これにより、減額されたオファーは、元の全額と一致するオファーによって約定されます。丸められた金額は、XRPの1ドロップまたはトークンの1e-81を超えることはありません。
 
 このamendmentがない場合、残額が非常に少ないオファーは、四捨五入後の取引レートが当初よりも大幅に悪化する可能性があります。このため、非常に少額のオファーが、同じオーダーブック内のより良いオファーの取得を「ブロック」してしまう可能性があります。
+
 
 ### fixRemoveNFTokenAutoTrustLine
 [fixRemoveNFTokenAutoTrustLine]: #fixremovenftokenautotrustline
@@ -982,6 +1038,23 @@ XRP Ledger内にドライオファーを残す可能性がある[オートブリ
 この修正が適用されない場合、コードは引き続き`STAmount`と`IOUAmount`オブジェクトに対して別々の計算を使用し、[自動マーケットメーカー(XLS-30d)](https://github.com/XRPLF/XRPL-Standards/discussions/78)は計算のために新しい3つめの計算方法を使用します。
 
 
+### fixXChainRewardRounding
+[fixXChainRewardRounding]: #fixxchainrewardrounding
+
+| Amendment    | fixXChainRewardRounding |
+|:-------------|:------------------------|
+| Amendment ID | 2BF037D90E1B676B17592A8AF55E88DB465398B4B597AE46EECEE1399AB05699 |
+| ステータス     | 投票中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+この修正により、クロスチェーン取引の報酬シェアは常に切り捨てられるようになります。これにより、当初意図された動作が維持されます。
+
+このAmendmentがなければ、[XChainBridge][]Amendmentは[fixUniversalNumber][]Amendmentと互換性がありません。この2つのAmendmentが有効になっている場合、トークン金額の中間計算に`Number`型を使用できます。場合によっては、これまで切り捨てられていた値が切り上げられるようになり、クロスチェーン取引における報酬シェアの計算がが意図しない切り上げ処理に変更されます。
+
+このAmendmentにより、意図された丸め動作が復元されます。[XChainBridge][]と[fixUniversalNumber][]の両方のAmendmentも有効になっていない限り、このAmendmentは何も影響を及ぼしません。
+
+
 ### Flow
 [Flow]: #flow
 
@@ -1036,6 +1109,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 |:-------------|:-------|
 | Amendment ID | 5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26 |
 | ステータス     | 禁止 |
+| デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
 これは[Flow](#flow) Amendmentの旧バージョンです。[バグが原因で不採用となり](https://xrpl.org/blog/2016/flowv2-vetoed.html)、バージョン0.33.0で除外されました。
@@ -1228,6 +1302,21 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 詳細は、[Payment Channelsのチュートリアル](../docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md)をご覧ください。
 
 
+### PriceOracle
+[PriceOracle]: #priceoracle
+
+| Amendment    | PriceOracle |
+|:-------------|:------------|
+| Amendment ID | 96FD2F293A519AE1DB6F8BED23E4AD9119342DA7CB6BAFD00953D16C54205D8B |
+| ステータス     | 投票中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+この修正により、[XLS-47規格]（https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md）で定義されているとおり、XRPLedgerに「価格オラクル」機能が追加されます。ブロックチェーン・オラクルとは、外部世界に関する情報をブロックチェーンに提供するサービスであり、主にブロックチェーン上で、またはブロックチェーンを使用して実行される分散型アプリケーション（dApps）が利用できるシステムです。この価格オラクルは、XRP Ledgerの外に存在する資産ペアの価格情報を保存し、XRP Ledgerに依存するスマートコントラクトがこの情報を利用できるようにすることを目的としています。
+
+このAmendmentにより、新しいレジャーエントリタイプ`PriceOracle`と新しいトランザクション`OracleSet`(オラクルデータの作成または変更)および`OracleDelete`(指定されたオラクルの削除)が作成されます。
+
+
 ### RequireFullyCanonicalSig
 [RequireFullyCanonicalSig]: #requirefullycanonicalsig
 
@@ -1236,7 +1325,7 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 | Amendment ID | 00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC |
 | ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | はい |
-| Amendment前の機能は廃止? | はい |
+| Amendment前の機能は廃止? | いいえ |
 
 XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも完全に正規でない署名は無効とします。これにより、[tfFullyCanonicalSigフラグ](../docs/references/protocol/transactions/common-fields.md#グローバルフラグ)を有効にしたトランザクションのみを保護することに代わって、_すべての_ トランザクションにおいて[トランザクションの展性](../docs/concepts/transactions/finality-of-results/transaction-malleability.md)から守られます。
 
@@ -1254,6 +1343,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 |:-------------|:---------|
 | Amendment ID | C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3 |
 | ステータス     | 廃止 |
+| デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
 `rippled`がレジャーを表示する際に使用するハッシュツリー構造を変更します。新しい構造は以前のバージョンよりもコンパクトで効率的です。この修正はレジャーハッシュの計算方法が変わりますが、その他にユーザに与える影響はありません。
@@ -1283,7 +1373,8 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 |:-------------|:-------|
 | Amendment ID | DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13 |
 | ステータス     | 廃止 |
-| Amendment前の機能は廃止? | はい |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
 この修正は、[Escrow](../docs/references/protocol/ledger-data/ledger-entry-types/escrow.md) Amendmentに置き換えられました。
 
@@ -1310,6 +1401,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 |:-------------|:--------|
 | Amendment ID | C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490 |
 | ステータス     | 廃止 |
+| デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
 この修正は、[TicketBatch][] Amendmentに置き換えられました。
@@ -1356,6 +1448,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 | Amendment前の機能は廃止? | いいえ |
 
 クロスチェーンブリッジを追加し、メインネットとサイドチェーンなどのネットワーク間でのデジタル資産の移動を可能にします。
+標準規格草案： [XLS-38 Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0038-cross-chain-bridge/README.md)。
 
 次の新しいトランザクションを追加します
 
@@ -1407,5 +1500,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 - SetFee トランザクションタイプを変更します。`BaseFee`、`ReferenceFeeUnits`、`ReserveBase`、`ReserveIncrement`フィールドを`BaseFeeDrops`、`ReserveBaseDrops`、`ReserveIncrementDrops`に置き換えます。
 
 このAmendmentがなければ、トランザクションの形式と台帳の項目は同一です。
+
+
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
