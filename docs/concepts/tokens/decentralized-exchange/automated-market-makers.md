@@ -57,6 +57,10 @@ Tokens with different issuers are considered different assets. This means that t
 
 When the flow of funds between the two assets in a pool is relatively active and balanced, the fees provide a source of passive income for liquidity providers. However, when the relative price between the assets shifts, liquidity providers can take a loss on the [currency risk](https://www.investopedia.com/terms/c/currencyrisk.asp).
 
+### DEX Interaction
+
+AMMs are integrated with the central limit order book (CLOB)-based DEX to enhance liquidity on the XRPL. Offers and payments are automatically optimized to determine whether swapping within a liquidity pool, through the order book, or both, provides the best rate and executes accordingly. This ensures that transactions use the most efficient path for trades, whether through offers on the DEX or through AMM pools, or a combination of the two.
+
 ### Restrictions on Assets
 
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
