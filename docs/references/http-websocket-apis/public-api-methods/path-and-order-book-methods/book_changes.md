@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Get information on 
+    description: Get information on order book changes
 labels:
   - Decentralized Exchange
   - Cross-Currency
@@ -20,7 +20,7 @@ An example of the request format:
 ```json
 {
     "id": "example_book_changes",
-    "command": "book_changes",
+    "command": "{% $frontmatter.seo.title %}",
     "ledger_index": 88530953
 }
 ```
@@ -110,7 +110,7 @@ A Book Update Object represents the changes to a single order book in a single l
 | `high`         | String - Number | The highest exchange rate among all offers matched in this ledger, as a ratio of the first currency to the second currency. (In other words, `currency_a : currency_b`.) |
 | `low`          | String - Number | The lowest exchange rate among all offers matched in this ledger, as a ratio of the first currency to the second currency. |
 | `open`         | String - Number | The exchange rate at the top of this order book before processing the transactions in this ledger, as a ratio of the first currency to the second currency. |
-| `close`        | String - Number | The exchange rate at the top of this order book after processing the transactions in this ledger, as a ratio of the first currency to the second currency. |
+| `close`        | String - Number | The exchange rate at the bottom of this order book after processing the transactions in this ledger, as a ratio of the first currency to the second currency. |
 
 For XRP-token order books, XRP is always `currency_a`. For token-token order books, the currencies are sorted alphabetically by the issuer and then currency code.
 
