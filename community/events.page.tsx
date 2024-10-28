@@ -952,6 +952,28 @@ const events = [
     image:  require('../static/img/events/salt-lake-city.jpg'),
     end_date: "October 10, 2024",
   },
+  {
+    name: "Futureverse Developer Training",
+    description:
+      "This training session will focus on exploring the Metaverse and discovering The Root Network and Futureverse, run by Marco Brondani, Co-Founder  and CTO, and Rich Deane, Senior Full Stack Developer.",
+    type: "meetup",
+    link: "https://xrpl.at/Eventbrite-FutureverseDeveloperTraining",
+    location: "Paris, France",
+    date: "November 4 - 5, 2024",
+    image:  require('../static/img/events/dev-training.png'),
+    end_date: "November 5, 2024",
+  },
+  {
+    name: "XRPL Hackathon Paris",
+    description:
+      "Join the hackathon organized by Chaire UNESCO ITEN, XRPL Commons,  and KRYPTOSPHERE, for a unique opportunity to dive into the rapidly growing  open-source ecosystem. Tackle real-world challenges and create innovative  solutions that can make a meaningful impact on today's most pressing  societal issues!",
+    type: "hackathon",
+    link: "https://xrpl.at/Eventbrite-EducationWeek-XRPLHackathon-Paris",
+    location: "Paris, France",
+    date: "November 8 - 11, 2024",
+    image: require('../static/img/events/hackathon-paris.png'),
+    end_date: "November 11, 2024",
+  },
 ];
 
 
