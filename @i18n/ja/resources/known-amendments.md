@@ -1312,7 +1312,7 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
-この修正により、[XLS-47規格]（https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-47d-PriceOracles/README.md）で定義されているとおり、XRPLedgerに「価格オラクル」機能が追加されます。ブロックチェーン・オラクルとは、外部世界に関する情報をブロックチェーンに提供するサービスであり、主にブロックチェーン上で、またはブロックチェーンを使用して実行される分散型アプリケーション（dApps）が利用できるシステムです。この価格オラクルは、XRP Ledgerの外に存在する資産ペアの価格情報を保存し、XRP Ledgerに依存するスマートコントラクトがこの情報を利用できるようにすることを目的としています。
+この修正により、[XLS-47規格]（https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md）で定義されているとおり、XRPLedgerに「価格オラクル」機能が追加されます。ブロックチェーン・オラクルとは、外部世界に関する情報をブロックチェーンに提供するサービスであり、主にブロックチェーン上で、またはブロックチェーンを使用して実行される分散型アプリケーション（dApps）が利用できるシステムです。この価格オラクルは、XRP Ledgerの外に存在する資産ペアの価格情報を保存し、XRP Ledgerに依存するスマートコントラクトがこの情報を利用できるようにすることを目的としています。
 
 このAmendmentにより、新しいレジャーエントリタイプ`PriceOracle`と新しいトランザクション`OracleSet`(オラクルデータの作成または変更)および`OracleDelete`(指定されたオラクルの削除)が作成されます。
 
@@ -1448,7 +1448,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 | Amendment前の機能は廃止? | いいえ |
 
 クロスチェーンブリッジを追加し、メインネットとサイドチェーンなどのネットワーク間でのデジタル資産の移動を可能にします。
-標準規格草案： [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md)。
+標準規格草案： [XLS-38 Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0038-cross-chain-bridge/README.md)。
 
 次の新しいトランザクションを追加します
 
@@ -1468,6 +1468,19 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 - XChainOwnedCreateAccountClaimID - クロスチェーン送金でアカウントを作成する際の証明書。
 
 いくつかの新しいトランザクション結果コードを追加します。
+
+
+### XChainBridge
+[XChainBridge]: #xchainbridge
+
+| Amendment    | XChainBridge |
+|:-------------|:-------------|
+| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
+| ステータス       | 開発中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+メインネットとサイドチェーンなど異なるネットワーク間でアセットを同期させるための「クロスチェーンブリッジ」を追加します。標準規格草案： [XLS-0038 Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0038-cross-chain-bridge/README.md)。
 
 
 ### XRPFees

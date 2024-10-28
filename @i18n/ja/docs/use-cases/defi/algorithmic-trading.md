@@ -84,12 +84,13 @@ XRP Ledgerのトレード活動に関する情報源は数多くあります。�
 
 利益確定のチャンスに反応する時間をできるだけ多く確保するために、[オープンレジャー](../../concepts/ledgers/open-closed-validated-ledgers.md)から保留中のデータを見たり、提案されているトランザクションをモニタリングしたりすることもできます。WebSocketに接続している場合、`transactions_proposed`ストリームで[subscribeメソッド](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md)を使用すると、コンセンサスによって検証される前のトランザクションを見ることができます。また、`accounts_proposed`パラメータを使用してsubscribeすることで、特定のアカウント（例えば、トレードに興味のあるトークンの発行者）に影響するトランザクションのサブセットに限定することもできます。
 
-### 今後の展開
+### 自動マーケットメーカー
 
-Ripple社はXRP Ledger プロトコルを拡張し、既存の中央指値注文ベース(CLOB)の分散型取引所と連携するネイティブな自動マーケットメーカー(AMM)の機能を追加することを提案しました。この提案が受け入れられ、[amendments](../../concepts/networks-and-servers/amendments.md)として有効になれば、AMMはXRP Ledger上のトレードにおいて重要な要素となるでしょう。詳しくは以下のリンクをご覧ください。
+XRP Ledgerは既存の中央指値注文ベース(CLOB)の分散型取引所と連携するネイティブな自動マーケットメーカー(AMM)の機能をネイティブサポートしています。AMMはXRP Ledger上のトレードにおいて重要な要素となっています。詳しくは以下のリンクをご覧ください。
 
-- [XLS-30d: Automated Market Maker 規格草案](https://github.com/XRPLF/XRPL-Standards/discussions/78)
-- [AMMドキュメント](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)
+- [自動マーケットメーカー](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)
+- [AMMのオークションスロットを利用して低い取引手数料でトレードする](../../tutorials/javascript/amm/add-assets-to-amm.md)
+- [XLS-30 標準規格](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#readme)
 
 ## さらに詳しく
 
