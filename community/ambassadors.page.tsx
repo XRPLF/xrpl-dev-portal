@@ -23,6 +23,7 @@ export default function Ambassadors() {
         <img alt="background purple waves" src={require("../static/img/backgrounds/ambassador-purple.svg")} className="position-absolute" style={{top: 0, right: 0}} />
     </div>
     <section className="container-new py-26 text-lg-center">
+        {/* For translater: This section could change dynamically based on the time of year */}
         <div className="p-0 col-lg-8 mx-lg-auto">
             <div className="d-flex flex-column-reverse">
                 <h1 className="mb-0">{translate("Become an XRP Ledger Campus Ambassador")}</h1>
