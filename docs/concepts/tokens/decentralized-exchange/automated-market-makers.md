@@ -61,6 +61,10 @@ When the flow of funds between the two assets in a pool is relatively active and
 
 AMMs are integrated with the central limit order book (CLOB)-based DEX to enhance liquidity on the XRPL. Offers and payments are automatically optimized to determine whether swapping within a liquidity pool, through the order book, or both, provides the best rate and executes accordingly. This ensures that transactions use the most efficient path for trades, whether through offers on the DEX or through AMM pools, or a combination of the two.
 
+The diagram below illustrates how an offer interacts with other offers and AMM liquidity in the XRPL DEX.
+
+![Offer path through XRPL DEX.](/docs/img/amm-clob-diagram.png)
+
 ### Restrictions on Assets
 
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
