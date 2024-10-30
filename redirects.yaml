@@ -1,3 +1,9 @@
+/docs/concepts/xrpl-sidechains/price-oracles/:
+    to: /docs/concepts/decentralized-storage/price-oracles/
+    type: 301
+/docs/concepts/accounts/decentralized-identifiers/:
+    to: /docs/concepts/decentralized-storage/decentralized-identifiers/
+    type: 301
 /docs/tutorials/javascript/trade-on-ledger/:
     to: /docs/tutorials/javascript/amm/
     type: 301
