@@ -32,14 +32,15 @@ labels:
 
 `FeeSettings`オブジェクトのフィールドは次のとおりです。
 
-| 名前                | JSONの型 | [内部の型][] | 説明            |
-|:--------------------|:----------|:------------------|:-----------------------|
-| `LedgerEntryType`   | 文字列    | UInt16            | 値`0x0073`が文字列`FeeSettings`にマッピングされている場合は、このオブジェクトにレジャーの手数料設定が含まれていることを示します。 |
-| `BaseFee`           | 文字列    | UInt64            | 「リファレンストランザクション」の[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（XRPのdrop数、16進数） |
-| `ReferenceFeeUnits` | 数値    | UInt32            | 「手数料単位」に変換された`BaseFee` |
-| `ReserveBase`       | 数値    | UInt32            | XRP Ledgerのアカウントの[基本準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。 |
-| `ReserveIncrement`  | 数値    | UInt32            | 所有するオブジェクトごとに増加する[所有者準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。 |
-| `Flags`             | 数値    | UInt32            | このオブジェクトのブールフラグのビットマップ。このタイプではフラグは定義されていません。 |
+| 名前                | JSONの型  | [内部の型][] | 説明            |
+|:--------------------|:----------|:-------------|:-----------------------|
+| `LedgerEntryType`   | 文字列    | UInt16       | 値`0x0073`が文字列`FeeSettings`にマッピングされている場合は、このオブジェクトにレジャーの手数料設定が含まれていることを示します。 |
+| `BaseFee`           | 文字列    | UInt64       | 「リファレンストランザクション」の[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（XRPのdrop数、16進数） |
+| `ReferenceFeeUnits` | 数値      | UInt32       | 「手数料単位」に変換された`BaseFee` |
+| `ReserveBase`       | 数値      | UInt32       | XRP Ledgerのアカウントの[基本準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。 |
+| `ReserveIncrement`  | 数値      | UInt32       | 所有するオブジェクトごとに増加する[所有者準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。 |
+| `PreviousTxnID`     | 文字列    | Hash256      | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnLgrSeq` | 数値      | UInt32       | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
 
 {% admonition type="danger" name="警告" %}このレジャーオブジェクトのJSONフォーマットは一般的ではありません。`BaseFee`、`ReserveBase`、および`ReserveIncrement`はXRPのdrop数を示しますが、通常の[XRP指定][通貨額]フォーマットでは***ありません*** 。{% /admonition %}
 
