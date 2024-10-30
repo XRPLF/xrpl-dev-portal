@@ -41,7 +41,7 @@ labels:
 |:------------------------------|:---------|:------------------|:------|:------|
 | `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](../../../../concepts/accounts/index.md)を識別するための（クラシック）アドレスです。 |
 | `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](../../transactions/common-fields.md#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](../../transactions/types/accountset.md#accountsetのフラグ)を送信してください。 |
-| `AMMID`                       | 文字列    | Hash256           | いいえ | _([AMM amendment][] {% not-enabled /%}が必要です。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
+| `AMMID`                       | 文字列    | Hash256           | いいえ | _([AMM amendment][]により追加されました。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
 | `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](../../../../concepts/tokens/nfts/index.md) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
 | `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
@@ -64,7 +64,7 @@ labels:
 
 ## AMMの特殊なAccountRootエントリ
 
-_([AMM amendment][] {% not-enabled /%}が必要です。)_
+_([AMM amendment][]により追加されました。)_
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)は、AMMの詳細の一部を追跡するための[AMMレジャーエントリ](amm.md)に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootレジャーエントリを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。
 

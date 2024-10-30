@@ -14,7 +14,7 @@ steps: ['Connect', 'Generate', 'Acquire tokens', 'Check for AMM', 'Look up AMMCr
 ---
 # Create an Automated Market Maker
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
 

@@ -9,7 +9,7 @@ labels:
 # AMMWithdraw
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
 
-_([AMM amendment][])_
+_([AMM amendment][]により追加されました。)_
 
 AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
 

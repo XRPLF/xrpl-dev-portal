@@ -156,7 +156,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 ### AMMオブジェクトを取得する
 
-_([AMM amendment][])_
+_([AMM amendment][]により追加されました。)_
 
 レジャーからAutomated Market-Maker(AMM)オブジェクトを取得します。これは[amm_infoメソッド][]と似ていますが、`ledger_entry`は保存されているレジャーエントリのみを返します。
 

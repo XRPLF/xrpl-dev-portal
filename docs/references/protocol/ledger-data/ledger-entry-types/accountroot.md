@@ -41,7 +41,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 |:------------------------------|:----------|:------------------|:----------|:-------------|
 | `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this [account](../../../../concepts/accounts/index.md). |
 | `AccountTxnID`                | String    | Hash256           | No        | The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the [`AccountTxnID` transaction field](../../transactions/common-fields.md#accounttxnid). To enable it, send an [AccountSet transaction with the `asfAccountTxnID` flag enabled](../../transactions/types/accountset.md#accountset-flags). |
-| `AMMID`                       | String    | Hash256           | No        | _(Requires the [AMM amendment][])_ The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM AccountRoot; always omitted on non-AMM accounts. |
+| `AMMID`                       | String    | Hash256           | No        | _(Added by the [AMM amendment][])_ The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM AccountRoot; always omitted on non-AMM accounts. |
 | `Balance`                     | String    | Amount            | No        | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
 | `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](../../../../concepts/tokens/nfts/index.md) have been burned. This number is always equal or less than `MintedNFTokens`. |
 | `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
@@ -64,7 +64,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 ## Special AMM AccountRoot Entries
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 Automated Market Makers use an AccountRoot ledger entry to issue their LP Tokens and hold the assets in the AMM pool, and an [AMM ledger entry](amm.md) for tracking some of the details of the AMM. The address of an AMM's AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:
 
