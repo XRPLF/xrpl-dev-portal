@@ -75,8 +75,6 @@ rippled version
 ```json
 200 OK
 
-Headers
-
 {
   "result": {
     "version": {
