@@ -227,6 +227,73 @@ How can a blockchain be sustainable?: ブロックチェーンはどうして持
 It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>.: ビットコインのエネルギー消費量は、2021年時点で、アルゼンチンが使用するエネルギーと同等であり、ビットコインの採掘者が使用する電力の多くは環境破壊につながる資源から供給されていると広く報告されています。XRP Ledgerは、Proof of Workのようにエネルギーを浪費しない「コンセンサス」メカニズムを通じてトランザクションを検証し、カーボンオフセットを活用して、<a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>最初の真のカーボンニュートラルなブロックチェーンの1つとなっています。</a>
 View Full FAQ: 全てのFAQを見る
 
+# about/xrp.page.tsx
+Your Questions About XRP, Answered: XRPについての質問にお答えします
+XRP Overview: XRPの概要
+About XRP: XRPについて
+XRP in Trading: XRPの取引
+Ripple vs. XRP: RippleとXRP
+XRP Wallets: XRPウォレット
+XRP Exchanges: XRPを取り扱う取引所
+What Is XRP?: XRPとは?
+about.xrp.what-is-xrp.ppart1: XRPはオープンソース、パーミッションレス、分散型の
+about.xrp.what-is-xrp.ppart2: ブロックチェーン技術
+about.xrp.what-is-xrp.ppart3: であるXRP Ledger上のネイティブなデジタル資産です。
+Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.: 2012年に決済に特化して作られたXRPは、XRP Ledger上で3〜5秒で取引を決済できます。XRPは、他のどのデジタル資産よりも速く、安く、環境に優しい、より優れたビットコインを目指して作られました。
+Benefits: メリット
+XRP: XRP
+Bitcoin: Bitcoin
+Fast: 速度
+3-5 seconds to settle: 3-5秒で決済
+500 seconds to settle: 500秒で決済
+Low-Cost: 低コスト
+$0.0002/tx: 1txあたり0.0002ドル
+$0.50/tx: 1txあたり0.50ドル
+Scalable: スケーラビリティ
+1,500 tx per second: 1秒あたり1,500tx
+3 tx per second: 1秒あたり3tx
+Sustainable: 持続可能性
+Environmentally sustainable (negligible energy consumption): 環境に優しい（ごくわずかなエネルギー消費量）
+0.3% of global energy consumption: 世界のエネルギー消費の0.3%
+XRP can be sent directly without needing a central intermediary, making it a convenient instrument in bridging two different currencies quickly and efficiently. It is freely exchanged on the open market and used in the real world for enabling cross-border payments and microtransactions.: XRPは、第三者を必要とせずに直接送金できるため、2つの異なる通貨を迅速かつ効率的に交換する便利な手段となります。XRPは世界中の市場で自由に取引され、国境を越えた支払いと少額取引を可能にする手段として実世界で利用されています。
+Financial Institutions: 金融機関
+Leverage XRP as a bridge currency to facilitate faster, more affordable cross-border payments around the world.: XRPをブリッジ通貨として活用して、世界中でより迅速かつ安価な国境を越えた支払いを可能にします。
+Individual Consumers: 個人ユーザ
+Use XRP to move different currencies around the world.: 世界中で異なる通貨を移動するためにXRPを活用します。
+The XRP Ledger is built for business.: XRP Ledgerはビジネスのために構築されています。
+The only major L-1 blockchain that’s built for business and designed specifically to power finance use cases and applications at scale. Powerful enough to bootstrap a new economy, the XRP Ledger (XRPL) is fast, scalable, and sustainable.: ビジネスに利用できるように構築され、金融のユースケースやアプリケーションを広範囲にサポートするように特別に設計された、唯一の主要なL1ブロックチェーンです。新しい金融経済を牽引する十分なパワーを秘めたXRP Ledger(XRPL)は、高速でスケーラブル、かつ持続可能なブロックチェーンです。
+How Is XRP Used in Trading?: XRPは取引にどのように利用されていますか？
+XRP is traded on more than 100 markets and exchanges worldwide.: XRPは世界中の100以上の市場と取引所で取引されています。
+about.xrp.xrp-in-trading.ppart1: XRPの安い取引手数料、信頼性、高速性により、トレーダーは、取引の場を問わず、デジタル資産を高速でコスト効率が高く信頼性の高い担保として利用することが可能になり、
+about.xrp.xrp-in-trading.ppart2: 裁定機会の獲得
+about.xrp.xrp-in-trading.ppart3: 、マージンコールへの対応、一般的な取引在庫の管理をリアルタイムで行うことができます。
+Because of the properties inherent to XRP and the ecosystem around it, traders worldwide are able to shift collateral, bridge currencies and switch from one crypto into another nearly instantly, across any exchange on the planet.: XRPの特性とその周辺のエコシステムにより、世界中のトレーダーは、担保を移動し、通貨をブリッジし、暗号通貨をほぼ瞬時に別の暗号通貨に交換することが、地球上のあらゆる取引所で可能となっています。
+What Is the Relationship Between Ripple and XRP?: RippleとXRPの関係は？
+" is a technology company that makes it easier to build a high-performance, global payments business. XRP is a digital asset independent of this.": は、高パフォーマンスのグローバル決済業務を構築するための技術会社です。XRPはこの技術会社とは独立したデジタル資産です。
+There is a finite amount of XRP. All XRP is already in existence today—no more than the original 100 billion can be created. The XRPL founders gifted 80 billion XRP, the platform’s native currency, to Ripple. To provide predictability to the XRP supply, Ripple has locked 55 billion XRP (55% of the total possible supply) into a series of escrows using the XRP Ledger itself. The XRPL's transaction processing rules, enforced by the consensus protocol, control the release of the XRP.: プラットフォームのネイティブ通貨であるXRPの総量はプロトコルにより一定量に設定されています。その上限は1000億枚であり、そのすべてが発行済みです。XRPLの発明者たちは、そのうち800億XRPをRipple社に寄付しました。XRPの供給量に予測可能性を持たせるため、Ripple社は550億XRP(総供給量の55%)をXRP Ledger自体を使用した一連のエスクローにロックしています。コンセンサスプロトコルによって強制されるXRPLのトランザクション処理ルールが、XRPの放出を管理しています。
+about.xrp.ripple-escrow.ppart1: " "
+about.xrp.ripple-escrow.ppart2: 2024年10月
+about.xrp.ripple-escrow.ppart3: 時点で
+38B: 380億
+XRP remains in escrow: がエスクローに存在
+What Wallets Support XRP?: XRPをサポートするウォレットは？
+"Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.": デジタルウォレットは、XRPを含む暗号通貨を送信、受け取り、および保管できるソフトウェアのピースです。デジタルウォレットにはハードウェア型とソフトウェア型の2種類があります。
+Software Wallets: ソフトウェアウォレット
+Hardware Wallets: ハードウェアウォレット
+"Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.": 免責事項：この情報はインターネット上の他の情報源から引用されています。XRPL.orgは、いかなる取引所も推奨または推薦せず、また、取引所またはデジタル資産の売買一般に関して表明を行なうものではありません。第三者の技術や第三者に依存する前に、ご自身でデューデリジェンスを実施されることをお勧めします。また、プロバイダーによってコンプライアンス、データセキュリティ、プライバシー慣行は大きく異なる場合があります。
+What Exchanges Support XRP?: XRPをサポートする取引所は？
+Exchanges are where people trade currencies. XRP is traded on more than 100 markets and exchanges worldwide.: 取引所は人々が通貨を取引する場所です。XRPは世界中の100以上の市場と取引所で取引されています。
+There are different types of exchanges that vary depending on the type of market (spot, futures, options, swaps), and the type of security model (custodial, non-custodial).: 取引所の種類は、市場の種類（現物、先物、オプション、スワップ）やセキュリティモデルの種類（カストディアル、非カストディアル）によって異なります。
+Spot Exchanges: 現物取引所
+Spot exchanges allow people to buy and sell cryptocurrencies at current (spot) market rates.: 現物取引所では、人々が現物市場価格で暗号通貨を買い、売ることができます。
+Futures, Options and Swap Exchanges: 先物、オプション、スワップ取引所
+Futures, options and swap exchanges allow people to buy and sell standardized contracts of cryptocurrency market rates in the future.: 先物、オプション、スワップ取引所では、将来の暗号通貨市場レートの標準化された契約を売買することができます。
+Custodial Exchanges: カストディアル取引所
+Custodial exchanges manage a user’s private keys, and publish centralized order books of buyers and sellers.: カストディアル取引所では、ユーザの秘密鍵を管理し、買い手と売り手の中央集権的なオーダーブックを公開します。
+Non-Custodial Exchanges: ノンカストディアル取引所
+Non-custodial exchanges, also known as decentralized exchanges, do not manage a user’s private keys, and publish decentralized order books of buyers and sellers on a blockchain.: ノンカストディアル取引所、もしくは分散型取引所では、ユーザの秘密鍵を管理しません。また、ブロックチェーン上に分散型の買い手と売り手のオーダーブックを公開します。
+Top Exchanges, according to CryptoCompare: CryptoCompareによるトップ取引所
+
 # about/uses.page.tsx
 Powering Innovative Use Cases and Projects: 革新的なプロジェクトとユースケースを生み出す
 XRPL Ecosystem: XRPLエコシステム
@@ -495,7 +562,6 @@ XRPL Campus Ambassadors: XRPLキャンパスアンバサダー
 Current Students: 現役学生
 The XRPL Campus Ambassador program aims to elevate the impact of college students who are passionate about blockchain technology. In their role, Campus Ambassadors help educate other students about crypto and how to start building on the XRPL.: XRPLキャンパスアンバサダープログラムは、ブロックチェーン技術に情熱を持つ大学生の影響力を高めることを目指しています。彼らの役割として、キャンパスアンバサダーは他の学生に暗号通貨について教育し、XRPL上での開発を始める方法を教えます。
 Why become an XRPL Campus Ambassador?: XRPLキャンパスアンバサダーになる理由
-Benefits: メリット
 Join a global cohort of students empowering others to build on the XRPL.: XRPLをベースに他の人に力を与える、世界的な学生グループに参加しましょう
 Exclusive Opportunities: 特別な機会
 Get access and invitations to Ambassador-only events, conferences, and opportunities: アンバサダー限定のイベント、カンファレンス、チャンスの情報を入手できます
