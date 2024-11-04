@@ -59,7 +59,7 @@ The request includes the following parameters:
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | String                     | A unique identifier for the account, most commonly the account's address. |
 | `role`         | String                     | Whether the address refers to a `gateway` or `user`. Recommendations depend on the role of the account. Issuers must have Default Ripple enabled and must disable No Ripple on all trust lines. Users should have Default Ripple disabled, and should enable No Ripple on all trust lines. |
-| `transactions` | Boolean                    | [API v1][]: _(Optional)_ If `true`, include an array of suggested [transactions](../../../protocol/transactions/index.md), as JSON objects, that you can sign and submit to fix the problems. The default is `false`.<br>[API v2][]: Identical to v1, but also returns an `invalidParams` error if you use a non-boolean value. |
+| `transactions` | Boolean                    | _(Optional)_ If `true`, include an array of suggested [transactions](../../../protocol/transactions/index.md), as JSON objects, that you can sign and submit to fix the problems. The default is `false`. |
 | `limit`        | Unsigned Integer           | _(Optional)_ The maximum number of trust line problems to include in the results. Defaults to 300. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
@@ -187,7 +187,7 @@ The response follows the [standard format][], with a successful result containin
 ## Possible Errors
 
 * Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. In [API v1][], you won't receive this error if you specify a non-boolean value for the `transactions` field.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 

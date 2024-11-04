@@ -64,7 +64,7 @@ The request contains the following parameters:
 | `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `queue`        | Boolean              | No        | If `true`, return stats about [queued transactions](../../../../concepts/transactions/transaction-queue.md) sent by this account. Can only be used when querying for the data from the current open ledger. Not available from servers in [Reporting Mode][]. |
-| `signer_lists` | Boolean              | No        | [API v1][]: If `true`, return any [SignerList objects](../../../protocol/ledger-data/ledger-entry-types/signerlist.md) associated with this account.<br>[API v2][]: Identical to v1, but also returns an `invalidParams` error if you provide a non-boolean value. |
+| `signer_lists` | Boolean              | No        | If `true`, return any [SignerList objects](../../../protocol/ledger-data/ledger-entry-types/signerlist.md) associated with this account. |
 
 The following fields are deprecated and should not be provided: `ident`, `ledger`, `strict`.
 
@@ -253,7 +253,7 @@ Each object in the `transactions` array of `queue_data`, if present, may contain
 ## Possible Errors
 
 * Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. For example, the request specified `queue` as `true` but specified a `ledger_index` that is not the current open ledger.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. For example, the request specified `queue` as `true` but specified a `ledger_index` that is not the current open ledger. In [API v1][], you won't receive this error when specifying a non-boolean value for `signer_lists`.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
