@@ -12,7 +12,7 @@ status: not_enabled
 
 _([DID Amendment][] {% not-enabled /%} が必要です。)_
 
-`DID`のレジャーエントリは、単一の[DID](../../../../concepts/accounts/decentralized-identifiers.md)への参照、またはそれに関連するデータを保持します。
+`DID`のレジャーエントリは、単一の[DID](../../../../concepts/decentralized-storage/decentralized-identifiers.md)への参照、またはそれに関連するデータを保持します。
 
 
 ## DID JSONの例
