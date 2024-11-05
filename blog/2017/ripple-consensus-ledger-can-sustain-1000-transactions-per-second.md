@@ -3,10 +3,9 @@ category: 2017
 labels:
     - Features
 date: 2017-02-28
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Ripple Consensus Ledger Can Sustain 1000 Transactions per Second
 

@@ -3,10 +3,9 @@ date: 2016-06-12
 category: 2016
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing RippleAPI
 

@@ -1,0 +1,916 @@
+page.previousButton: "前のページ"
+page.nextButton: "次のページ"
+page.lastUpdated.timeago: "最終更新: "
+markdown.editPage.text: 編集
+toc.header: 目次
+search.label: ドキュメントの検索
+search.navbar.label: 検索
+search.recent: 直近の検索
+search.keys.navigate: 選択
+search.keys.select: 決定
+search.keys.exit: 閉じる
+feedback.settings.label: 参考になりましたか?
+footer.copyrightText: © 2024 XRP Ledger. オープンソース.
+
+navbar.about: 概要
+navbar.docs: ドキュメント
+navbar.resources: リソース
+navbar.community: コミュニティ
+footer.about: 概要
+footer.docs: ドキュメント
+footer.resources: リソース
+footer.community: コミュニティ
+
+sidebar.docs: ドキュメント
+sidebar.docs.tutorials: チュートリアル
+sidebar.docs.references: リファレンス
+sidebars.resources: リソース
+sidebar.resources.codesamples: コードサンプル
+sidebar.resources.dev-tools: 開発者ツール
+sidebar.resources.dev-tools.rpc-tool: RPCツール
+sidebar.resources.dev-tools.websocket-api-tool: WebSocket APIツール
+sidebar.resources.dev-tools.xrp-ledger-toml-checker: xrp-ledger.tomlチェッカー
+sidebar.resources.dev-tools.domain-verifier: ドメイン検証ツール
+sidebar.resources.dev-tools.xrp-faucets: XRP Faucets
+sidebar.resources.dev-tools.tx-sender: トランザクション送信ツール
+sidebar.resources.xrpl-learning-portal: XRPL学習ポータル
+sidebar.resources.xrpl-brand-kit: XRPLブランドキット
+sidebar.resources.ledger-explorer: エクスプローラ
+sidebar.resources.contribute-documentation.contributor-code-of-conduct: 行動規範
+sidebar.blog: ブログ
+
+topnav.about.xrp-ledger: XRP Ledger
+topnav.about.xrpl-overview: XRPLの概要
+topnav.about.use-cases-featured-projects: ユースケースと注目プロジェクト
+topnav.about.history: 歴史
+topnav.about.xrp: XRP
+topnav.about.xrp-overview: XRPの概要
+topnav.about.sustainability: 持続可能性
+topnav.about.impact: 環境への影響
+topnav.about.about: 概要
+topnav.about.xrpl-foundation: XRPL財団
+topnav.about.faq: よくある質問
+topnav.about.privacy-policy: プライバシーポリシー
+topnav.docs.title: ドキュメント
+topnav.docs.description: XRP Ledgerの世界に飛び込み、開発を始めましょう。
+topnav.docs.article-types: コンテンツの種類
+topnav.docs.concepts: 基本概念
+topnav.docs.tutorials: チュートリアル
+topnav.docs.references: リファレンス
+topnav.docs.infrastructure: インフラ
+topnav.docs.use-cases: ユースケース
+topnav.docs.payments: 支払い
+topnav.docs.tokenization: トークン化
+topnav.docs.defi: DeFi(分散型金融)
+topnav.docs.get-started: はじめよう
+topnav.resources.development: 開発
+topnav.resources.code-samples: サンプルコード
+topnav.resources.dev-tools: 開発者ツール
+topnav.resources.xrpl-learning-portal: XRPL学習ポータル
+topnav.resources.xrpl-brand-kit: XRPLブランドキット
+topnav.resources.current-status: 現在のステータス
+topnav.resources.join-in: 参加しよう
+topnav.resources.explorer: エクスプローラ
+topnav.resources.known-amendments: 既知のAmendment
+topnav.resources.contribute-code: コードへの貢献
+topnav.resources.contribute-documentation: ドキュメントへの貢献
+topnav.community.title: コミュニティ
+topnav.community.description: 話題に加わろう。
+topnav.community.get-involved: 参加する
+topnav.community.events: イベント
+topnav.community.ambassadors: アンバサダー
+topnav.community.developer-funding: 開発者向け資金提供
+topnav.community.xrpl-jobs: XRPLの仕事
+topnav.community.dev-blog: 開発者ブログ
+topnav.community.xrpl-grants: XRPL Grants
+topnav.community.github: GitHub
+topnav.community.report-a-scam: 詐欺の報告
+
+footer.about.xrpl-overview: XRPLの概要
+footer.about.use-cases-projects: ユースケースとプロジェクト
+footer.about.history: 歴史
+footer.about.impact: 環境への影響
+footer.about.xrpl-foundation: XRPL財団
+footer.about.faq: よくある質問
+footer.about.privacy-policy: プライバシーポリシー
+footer.docs.xrpl-documentation: XRPLドキュメント
+footer.docs.introduction: はじめに
+footer.docs.use-cases: ユースケース
+footer.docs.concepts: 基本概念
+footer.docs.tutorials: チュートリアル
+footer.docs.references: リファレンス
+footer.docs.infrastructure: インフラ
+footer.resources.code-samples: サンプルコード
+footer.resources.dev-tools: 開発者ツール
+footer.resources.xrpl-learning-portal: XRPL学習ポータル
+footer.resources.xrpl-brand-kit: XRPLブランドキット
+footer.resources.explorer: エクスプローラ
+footer.resources.known-amendments: 既知のAmendment
+footer.resources.contribute-code: コードへの貢献
+footer.resources.contribute-documentation: ドキュメントへの貢献
+footer.community.community: コミュニティ
+footer.community.events: イベント
+footer.community.ambassadors: アンバサダー
+footer.community.developer-funding: 開発者向け資金提供
+footer.community.xrpl-jobs: XRPLの仕事
+footer.community.dev-blog: 開発者ブログ
+footer.community.xrpl-grants: XRPL Grants
+footer.community.github: GitHub
+footer.community.report-a-scam: 詐欺の報告
+
+# index.page.tsx
+home.hero.h1part1: ビジネスのための
+home.hero.h1part2: ブロックチェーン
+XRPL | XRP Ledger: XRPL | XRP Ledger
+Start Building: 始めよう
+'The XRP Ledger: The Blockchain Built for Business': 'XRP Ledger: ビジネスに最適なブロックチェーン'
+The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global community of businesses and developers looking to solve problems and create value.: XRP Ledger(XRPL)は課題の解決と価値の創造を目指す企業と開発者のグローバルコミュニティが主導する、分散型のパブリックブロックチェーンです。
+Proven reliable over more than a decade of error-free functioning, the XRPL offers streamlined development, low transaction costs, high performance, and sustainability. So you can build with confidence–and move your most critical projects forward.: 10年以上にわたって稼働し、高い信頼性が実証されているXRPLは、合理化された開発、低い取引コスト、高いパフォーマンス、そして持続可能性を提供します。これにより、我々は安心して開発し、プロジェクトに専念することができます。
+Why developers choose the XRP Ledger: 開発者がXRP Ledgerを選択する理由
+Public and Decentralized: パブリック＆分散型
+Open source, open to anyone to build on, maintained by the community: オープンソースで、誰でも構築でき、コミュニティによって維持されています
+Streamlined Development: 効率的な開発
+Intentional innovations, tools and documentation reduce time to market: 開発のスピードアップと市場投入までの時間短縮を実現するツールとドキュメントがあります
+High Performance: 高パフォーマンス
+Thousands of transactions settled in seconds: 数千件のトランザクションを数秒で決済することが可能です
+Low Cost: 低コスト
+Motivated Community: 活発なコミュニティ
+Companies, developers, validators, and users work together to make the XRP Ledger better every day: 開発者、バリデータ、ユーザ、そして企業によって、XRP Ledgerは日々進化しています
+Proven Reliability: 確かな信頼性
+10+ years of error-free, uninterrupted performance over more than 63 million ledgers: 10年以上、6,300万件以上のレジャーで安定したパフォーマンスを実現しています
+Powerful Features: パワフルな機能
+Activate the proven potential of the XRP Ledger and find a trusted foundation for your next innovation: XRP Ledgerを活用し、次のイノベーションのための信頼できるプラットフォームを見つけましょう。
+A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain: ブロックチェーンに直接組み込まれた高性能な分散型P2P多通貨取引所
+Cross-Currency Payments: クロスカレンシー決済
+Atomically settle multi-hop payments that cross currency or national boundaries with ease: 通貨や国境を越えたマルチホップ決済をアトミックに簡単に実現
+Payment Channels: ペイメントチャネル
+Batched micropayments with unlimited speed, secured with XRP: XRPによる安全かつ無制限のスピードでのバッチ式マイクロペイメント
+Multi-Signing: マルチシグ
+Flexible options for custody and security of on-ledger accounts: オンレジャーアカウントの保護とセキュリティのための柔軟なオプション
+All currencies other than XRP can be represented in the XRP Ledger as tokens: XRP以外のすべての通貨は、XRP Ledger内でトークンとして表現されます
+Choose a path, and bring your project to life on the XRP Ledger: XRP Ledger上でプロジェクトをスタートしましょう。
+Where to Start: 最初の一歩
+Documentation: ドキュメント
+Access everything you need to get started working with the XRPL: XRPLを使うためのあらゆる情報にアクセスできます
+Guided Tutorials: チュートリアルガイド
+Follow step-by-step guides for frequent tasks: ステップバイステップのガイドを使って頻出の作業をサポートします
+XRPL Fundamentals: XRPLの基礎知識
+Read about the XRPL’s foundational concepts: XRPLの基本概念について学びましょう
+Choose a Language: 開発言語の選択
+Find tools, documentation, and sample code in Python, Java, Javascript, or use HTTP APIs: Python、Java、Javascriptのツール、ドキュメント、サンプルコードを検索したり、HTTP APIを使用することができます
+Get Inspired: インスピレーション
+See what your peers have built on the XRPL: 他のユーザがXRPLで構築したものを見てみましょう
+Our Shared Vision for XRPL’s Future: XRPLの未来に対する私たちの共有のビジョン
+Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life.: 私たちは、開発者コミュニティのビジョンを実現するために、実用性や性能を犠牲にすることなく、ブロックチェーンのイノベーションを推進する最も環境に配慮したインフラストラクチャを共に構築しています
+Preview New Features: 新機能のプレビュー
+Explore what the community is building to enable new features and use cases on XRPL: コミュニティがどのような新機能やユースケースを構築しているのかを見てみましょう
+In Development: 開発中
+Smart Contracts: スマートコントラクト
+Open for Voting: 投票中
+Automated Market Makers: 自動マーケットメイカー
+Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.: XRPLに組み込み済みのオーダーブックDEXと相互に補完する、流動性を提供し、通貨交換を促進することで受動的な収入を得るためのスマートコントラクト。
+Enabled: 利用可能
+Non-Fungible Tokens: 非代替性トークン
+# Join the Community: XRPL.orgの
+# at XRPL.org: コミュニティに参加
+'Connect at XRPL.org, a community by and for the developers ': XRPL.orgは、XRPLを利用する開発者と
+' and entrepeneurs who rely on the XRPL.': 起業家のためのコミュニティです。
+Get Involved: 参加する
+
+# about/index.page.tsx
+about.index.h1part1: ビジネスに衝撃を
+about.index.h1part2: ' '
+XRPL Today, XRPL Tomorrow: 現在のXRPL、未来のXRPL
+How the XRP Ledger works: XRP Ledgerの仕組み
+XRP Ledger Basics: XRP Ledgerの基本
+The XRP Ledger is a decentralized public blockchain built for business.: XRP Ledgerは、エンタープライズレベルの分散型パブリックブロックチェーンです。
+The peer-to-peer network that manages the ledger is open to everyone. The XRP Ledger is maintained by software engineers, server operators, users, and businesses–a global community working to solve problems and create real-world value.: レジャーを管理するピアツーピアネットワークは誰でも利用できます。XRP Ledgerは、ソフトウェアエンジニア、サーバー運用者、ユーザ、そして企業によって維持されており、課題の解決と実世界での価値創造に取り組むグローバルなコミュニティです。
+Read Technical Docs: 技術ドキュメントを読む
+Watch Explainer Videos: 解説ビデオを見る
+How the Consensus Protocol works: コンセンサスプロトコルの仕組み
+Consensus: コンセンサス
+about.index.consensus.h5part1: パフォーマンスを維持するために、XRPLはコンセンサスプロトコルを使用しています。誰でも運用な特定の種類のサーバは
+about.index.consensus.h5part2: バリデータ
+about.index.consensus.h5part3: と呼ばれ3〜5秒ごとにトランザクションの順序と結果について合意します。
+All servers in the network process each transaction according to the same rules, and any transaction that follows the protocol is confirmed right away. All transactions are public, and strong cryptography guarantees the integrity of the system.: ネットワーク内のすべてのサーバは、同じルールに従って各トランザクションを処理し、プロトコルに従うすべてのトランザクションは即座に確認されます。すべてのトランザクションは公開され、強力な暗号化技術によってシステムの整合性が保証されます。
+about.index.consensus.ppart1: 現在120以上の
+about.index.consensus.ppart2: バリデータ
+about.index.consensus.ppart3: がXRP Ledgerのコンセンサスプロセスに参加しており、大学や取引所、企業、個人などにより運用されています。より多様な主体がバリデータを運用していくにつれて、コンセンサスプロトコルはブロックチェーンを長期的に分散化します。
+A Sustainable Blockchain: 持続可能なブロックチェーン
+Unlike most other blockchains, the XRP Ledger requires no mining and uses negligible energy, key to long-term growth and stability.: 他のいくつかのブロックチェーンとは異なり、XRP Ledgerはマイニングを必要とせず、長期的な成長と安定性の鍵となるエネルギー消費もごくわずかです。
+'Building with confidence on ': 実績と信頼性がある技術
+proven technology: ' '
+XRPL Today: XRPLの今
+With 10+ years of error-free functioning and enterprise companies as champions, XRPL has established reliability.: 10年以上にわたる安定した運用とエンタープライズ企業からの支持により、XRPLは信頼性を確立しています。
+With the XRPL, these developers are building innovative blockchain projects and applications across use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi.: XRPLを使うことで、開発者は資産のトークン化やオンラインゲーム、カストディ、NFT、DeFiなどのユースケースにわたって革新的なブロックチェーンプロジェクトやアプリケーションを構築しています。
+Explore More: もっと知る
+Creating new value for long-term growth: 長期的な成長のための新たな価値を創造する
+XRPL Tomorrow: XRPLの未来
+As a community-led blockchain built for business, XRPL attracts companies and developers driven to solve real problems and generate real value–now and into the future.: ビジネスの発展のために構築されたコミュニティ主導のブロックチェーンであるXRPLは、現在そして将来にわたって真の問題を解決し、真の価値を生み出そうとする企業や開発者を惹きつけています。
+Significant investment in development, along with low transaction costs and energy usage, is fueling growth and opening up a wide variety of use cases at scale.: 低い取引コストとエネルギー使用量に加え、開発への多額の投資が成長を促し、大規模で多様なユースケースを開拓しています。
+Watch the explainer video series to learn more about the XRP Ledger: XRP Ledgerの詳細については、説明用のビデオシリーズをご覧ください。
+Tune In: 視聴する
+The Consensus Mechanism: コンセンサスの仕組み
+Nodes and Validators: ノードとバリデータ
+Sustainability of the XRP Ledger: XRP Ledgerの持続可能性
+Watch Full Series on YouTube: YouTubeで全シリーズを見る
+Tomorrow’s Blockchain Starts With You: 未来のブロックチェーンは、あなたから始まる
+about.index.tomorrow.ppart1: XRP Ledgerのイノベーションは、皆さんのような開発者によるコミュニティの経験を大切にしています。もしあなたが次の大きな
+about.index.tomorrow.ppart2: プロジェクト
+about.index.tomorrow.ppart3: を始める準備ができているなら、今すぐXRPLを試し、XRPL開発者向け資金提供プログラムへの応募を検討しましょう。
+Explore XRPL Developer Funding: XRPL開発者向け資金提供プログラムを見る
+Is XRPL a private blockchain, owned by Ripple?: XRPLはRipple社が所有するプライベートブロックチェーンですか？
+No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” in the Full FAQ) — Ripple runs 1 of these nodes.: いいえ、XRP Ledgerは分散型のパブリックブロックチェーンです。取引処理やコンセンサスに影響を与えるような変更は、ネットワークの少なくとも80％の承認が必要です。Ripple社はネットワークへの貢献者ですが、その権利は他の貢献者と同じです。バリデーションの面では、ネットワーク上に150人以上のバリデータが存在し、35人以上がユニークノードリスト（FAQ全文の「ユニークノードリスト（UNL）とは何ですか」参照）に登録されており、Ripple社はこれらのノードのうち1つのみを管理しています。"
+Isn’t Proof of Work the best validation mechanism?: Proof of Workが最良のコンセンサスメカニズムではないでしょうか？
+Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. However the XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way.: Proof of Work(PoW)は、信頼できる第三者を必要とせずに二重消費問題を解決する最初の仕組みでした。しかし、XRP Ledgerのコンセンサスメカニズムは、同じ問題をはるかに速く、安く、エネルギー効率の良い方法で解決しています。
+How can a blockchain be sustainable?: ブロックチェーンはどうして持続可能なのでしょうか？
+It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “consensus” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be <a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>one of the first truly carbon neutral blockchains</a>.: ビットコインのエネルギー消費量は、2021年時点で、アルゼンチンが使用するエネルギーと同等であり、ビットコインの採掘者が使用する電力の多くは環境破壊につながる資源から供給されていると広く報告されています。XRP Ledgerは、Proof of Workのようにエネルギーを浪費しない「コンセンサス」メカニズムを通じてトランザクションを検証し、カーボンオフセットを活用して、<a href='https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/' target='_blank'>最初の真のカーボンニュートラルなブロックチェーンの1つとなっています。</a>
+View Full FAQ: 全てのFAQを見る
+
+# about/xrp.page.tsx
+Your Questions About XRP, Answered: XRPについての質問にお答えします
+XRP Overview: XRPの概要
+About XRP: XRPについて
+XRP in Trading: XRPの取引
+Ripple vs. XRP: RippleとXRP
+XRP Wallets: XRPウォレット
+XRP Exchanges: XRPを取り扱う取引所
+What Is XRP?: XRPとは?
+about.xrp.what-is-xrp.ppart1: XRPはオープンソース、パーミッションレス、分散型の
+about.xrp.what-is-xrp.ppart2: ブロックチェーン技術
+about.xrp.what-is-xrp.ppart3: であるXRP Ledger上のネイティブなデジタル資産です。
+Created in 2012 specifically for payments, XRP can settle transactions on the ledger in 3-5 seconds. It was built to be a better Bitcoin—faster, cheaper and greener than any other digital asset.: 2012年に決済に特化して作られたXRPは、XRP Ledger上で3〜5秒で取引を決済できます。XRPは、他のどのデジタル資産よりも速く、安く、環境に優しい、より優れたビットコインを目指して作られました。
+Benefits: メリット
+XRP: XRP
+Bitcoin: Bitcoin
+Fast: 速度
+3-5 seconds to settle: 3-5秒で決済
+500 seconds to settle: 500秒で決済
+Low-Cost: 低コスト
+$0.0002/tx: 1txあたり0.0002ドル
+$0.50/tx: 1txあたり0.50ドル
+Scalable: スケーラビリティ
+1,500 tx per second: 1秒あたり1,500tx
+3 tx per second: 1秒あたり3tx
+Sustainable: 持続可能性
+Environmentally sustainable (negligible energy consumption): 環境に優しい（ごくわずかなエネルギー消費量）
+0.3% of global energy consumption: 世界のエネルギー消費の0.3%
+XRP can be sent directly without needing a central intermediary, making it a convenient instrument in bridging two different currencies quickly and efficiently. It is freely exchanged on the open market and used in the real world for enabling cross-border payments and microtransactions.: XRPは、第三者を必要とせずに直接送金できるため、2つの異なる通貨を迅速かつ効率的に交換する便利な手段となります。XRPは世界中の市場で自由に取引され、国境を越えた支払いと少額取引を可能にする手段として実世界で利用されています。
+Financial Institutions: 金融機関
+Leverage XRP as a bridge currency to facilitate faster, more affordable cross-border payments around the world.: XRPをブリッジ通貨として活用して、世界中でより迅速かつ安価な国境を越えた支払いを可能にします。
+Individual Consumers: 個人ユーザ
+Use XRP to move different currencies around the world.: 世界中で異なる通貨を移動するためにXRPを活用します。
+The XRP Ledger is built for business.: XRP Ledgerはビジネスのために構築されています。
+The only major L-1 blockchain that’s built for business and designed specifically to power finance use cases and applications at scale. Powerful enough to bootstrap a new economy, the XRP Ledger (XRPL) is fast, scalable, and sustainable.: ビジネスに利用できるように構築され、金融のユースケースやアプリケーションを広範囲にサポートするように特別に設計された、唯一の主要なL1ブロックチェーンです。新しい金融経済を牽引する十分なパワーを秘めたXRP Ledger(XRPL)は、高速でスケーラブル、かつ持続可能なブロックチェーンです。
+How Is XRP Used in Trading?: XRPは取引にどのように利用されていますか？
+XRP is traded on more than 100 markets and exchanges worldwide.: XRPは世界中の100以上の市場と取引所で取引されています。
+about.xrp.xrp-in-trading.ppart1: XRPの安い取引手数料、信頼性、高速性により、トレーダーは、取引の場を問わず、デジタル資産を高速でコスト効率が高く信頼性の高い担保として利用することが可能になり、
+about.xrp.xrp-in-trading.ppart2: 裁定機会の獲得
+about.xrp.xrp-in-trading.ppart3: 、マージンコールへの対応、一般的な取引在庫の管理をリアルタイムで行うことができます。
+Because of the properties inherent to XRP and the ecosystem around it, traders worldwide are able to shift collateral, bridge currencies and switch from one crypto into another nearly instantly, across any exchange on the planet.: XRPの特性とその周辺のエコシステムにより、世界中のトレーダーは、担保を移動し、通貨をブリッジし、暗号通貨をほぼ瞬時に別の暗号通貨に交換することが、地球上のあらゆる取引所で可能となっています。
+What Is the Relationship Between Ripple and XRP?: RippleとXRPの関係は？
+" is a technology company that makes it easier to build a high-performance, global payments business. XRP is a digital asset independent of this.": は、高パフォーマンスのグローバル決済業務を構築するための技術会社です。XRPはこの技術会社とは独立したデジタル資産です。
+There is a finite amount of XRP. All XRP is already in existence today—no more than the original 100 billion can be created. The XRPL founders gifted 80 billion XRP, the platform’s native currency, to Ripple. To provide predictability to the XRP supply, Ripple has locked 55 billion XRP (55% of the total possible supply) into a series of escrows using the XRP Ledger itself. The XRPL's transaction processing rules, enforced by the consensus protocol, control the release of the XRP.: プラットフォームのネイティブ通貨であるXRPの総量はプロトコルにより一定量に設定されています。その上限は1000億枚であり、そのすべてが発行済みです。XRPLの発明者たちは、そのうち800億XRPをRipple社に寄付しました。XRPの供給量に予測可能性を持たせるため、Ripple社は550億XRP(総供給量の55%)をXRP Ledger自体を使用した一連のエスクローにロックしています。コンセンサスプロトコルによって強制されるXRPLのトランザクション処理ルールが、XRPの放出を管理しています。
+about.xrp.ripple-escrow.ppart1: " "
+about.xrp.ripple-escrow.ppart2: 2024年10月
+about.xrp.ripple-escrow.ppart3: 時点で
+38B: 380億
+XRP remains in escrow: がエスクローに存在
+What Wallets Support XRP?: XRPをサポートするウォレットは？
+"Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.": デジタルウォレットは、XRPを含む暗号通貨を送信、受け取り、および保管できるソフトウェアのピースです。デジタルウォレットにはハードウェア型とソフトウェア型の2種類があります。
+Software Wallets: ソフトウェアウォレット
+Hardware Wallets: ハードウェアウォレット
+"Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.": 免責事項：この情報はインターネット上の他の情報源から引用されています。XRPL.orgは、いかなる取引所も推奨または推薦せず、また、取引所またはデジタル資産の売買一般に関して表明を行なうものではありません。第三者の技術や第三者に依存する前に、ご自身でデューデリジェンスを実施されることをお勧めします。また、プロバイダーによってコンプライアンス、データセキュリティ、プライバシー慣行は大きく異なる場合があります。
+What Exchanges Support XRP?: XRPをサポートする取引所は？
+Exchanges are where people trade currencies. XRP is traded on more than 100 markets and exchanges worldwide.: 取引所は人々が通貨を取引する場所です。XRPは世界中の100以上の市場と取引所で取引されています。
+There are different types of exchanges that vary depending on the type of market (spot, futures, options, swaps), and the type of security model (custodial, non-custodial).: 取引所の種類は、市場の種類（現物、先物、オプション、スワップ）やセキュリティモデルの種類（カストディアル、非カストディアル）によって異なります。
+Spot Exchanges: 現物取引所
+Spot exchanges allow people to buy and sell cryptocurrencies at current (spot) market rates.: 現物取引所では、人々が現物市場価格で暗号通貨を買い、売ることができます。
+Futures, Options and Swap Exchanges: 先物、オプション、スワップ取引所
+Futures, options and swap exchanges allow people to buy and sell standardized contracts of cryptocurrency market rates in the future.: 先物、オプション、スワップ取引所では、将来の暗号通貨市場レートの標準化された契約を売買することができます。
+Custodial Exchanges: カストディアル取引所
+Custodial exchanges manage a user’s private keys, and publish centralized order books of buyers and sellers.: カストディアル取引所では、ユーザの秘密鍵を管理し、買い手と売り手の中央集権的なオーダーブックを公開します。
+Non-Custodial Exchanges: ノンカストディアル取引所
+Non-custodial exchanges, also known as decentralized exchanges, do not manage a user’s private keys, and publish decentralized order books of buyers and sellers on a blockchain.: ノンカストディアル取引所、もしくは分散型取引所では、ユーザの秘密鍵を管理しません。また、ブロックチェーン上に分散型の買い手と売り手のオーダーブックを公開します。
+Top Exchanges, according to CryptoCompare: CryptoCompareによるトップ取引所
+
+# about/uses.page.tsx
+Powering Innovative Use Cases and Projects: 革新的なプロジェクトとユースケースを生み出す
+XRPL Ecosystem: XRPLエコシステム
+Explore Featured Projects: 注目プロジェクトを見る
+The XRPL has a rich ecosystem with many contributors globally. Explore the community of developers, validators, and partners.: XRPLには、世界中の多くの貢献者がいる豊かなエコシステムがあります。開発者、バリデータ、パートナーのコミュニティを見てみましょう。
+Introducing the XRPL Ecosystem: XRPLエコシステムの紹介
+about.uses.apps-build-1: XRPL上の
+about.uses.apps-build-2: アプリ,
+about.uses.apps-build-3: 取引所など
+Infrastructure: インフラ
+Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more.: ノード、開発ツール、ストレージ、セキュリティなど、XRP Ledgerの機能を助けるコンポーネントやシステムを構築・運用します。
+Developer Tooling: 開発者ツール
+Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality.: 開発者は、オープンソースライブラリやSDKなどを活用して、プロジェクトの構築や、XRP Ledgerの必須機能全般をサポートすることができます。
+Interoperability: 相互運用性
+Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.: 開発者やノード運用者は、XRPLの軽量で効率的な機能セットを活用しながら、カスタムサイドチェーンを構築・運用することができます。
+Wallet: ウォレット
+Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP.: パスワードを保存するデジタルウォレットを構築し、様々なブロックチェーンとやり取りして、XRPを含むデジタル資産を送受信します。
+NFTs: NFT
+XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs).: XRPLは、あらゆる価値の通貨を表すIOUのほか、非代替性トークン(NFT)にも対応しています
+Exchanges: 取引所
+Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.: ユーザが暗号資産や株式、ETF、コモディティなどの資産を投資・取引できる高度な取引所を構築します。
+Gaming: ゲーム
+The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.: 信頼性の高いスループット、低い手数料、サイドチェーンの相互運用性からXRPLは高速なゲームに最適です。
+Security: セキュリティ
+Build services and tools that help prevent and combat fraudulent activity with the XRPL.: XRPLを使った不正行為の防止や対策に役立つサービスやツールを構築します。
+Payments: ペイメント
+Leverage the efficiency and speed of the XRP Ledger to move value all over the globe.: 高効率かつ高速なXRP Ledgerを活用して、世界中で価値を移動させます。
+CBDC: CBDC
+A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).: XRP Ledgerのプライベートバージョンは、中央銀行が中央銀行発行デジタル通貨（CBDC）を発行・管理するための、安全で統制のとれた柔軟なソリューションを提供します。
+Sustainability: 持続可能性
+Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).: XRP Ledgerを使用して、カーボンオフセットをNFT(Non-Fungible Token)としてトークン化します。
+Custody: カストディ
+Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.: XRP Ledgerを使用して暗号資産カストディを構築し、資産を安全に保持、保管、使用することができます。
+Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page.: XRPLエコシステムに参加して、あなたのXRPLプロジェクト、アプリケーション、製品を紹介しましょう。開発者向けブログやエコシステムのページで紹介されます。
+Submit Your Project: プロジェクトを登録
+about.uses.businesses.h3part1: XRP Ledgerを活用する
+about.uses.businesses.h3part2: プロジェクトと開発者
+Solving Real-World Problems: 実世界の問題の解決
+With intentional innovations, tools and documentation that accelerate development and minimize time to market, XRP Ledger is used to create solutions across an expansive range of industries and use cases.: XRP Ledgerは、開発を加速させ、市場投入までの時間を最短にするイノベーション、ツール、ドキュメントによって、幅広い業界やユースケースにおけるソリューションの構築に利用されています。
+Filter by Categories: カテゴリで絞り込む
+Featured Categories: 注目のカテゴリ
+Other Categories: 他のカテゴリ
+# TODO: Add projects' details
+
+# about/history.page.tsx
+Provide a Better Alternative to Bitcoin: Bitcoinに代わる選択肢
+XRPL's Origin: XRPLの原点
+In 2011, three engineers—David Schwartz, Jed McCaleb, and Arthur Britto—began developing the XRP Ledger (XRPL). Fascinated by Bitcoin, they set out to create a better version that improved upon its limitations—with the goal of creating a digital asset that was more sustainable and built specifically for payments.: 2011年、David Schwartz、Jed McCaleb、Arthur Brittoの3人のエンジニアがXRP Ledger（XRPL）の開発を開始しました。Bitcoinに魅了されていた3人は、Bitcoinが持つ制約を改善したより優れたバージョンを作ることを目指し、さらに持続可能で決済に特化したデジタルアセットを構築するという目標を掲げました。
+The XRP Ledger first launched in June 2012. Shortly thereafter, they were joined by Chris Larsen, and the group started the Company NewCoin in September 2012 (quickly renamed OpenCoin and now named Ripple).: XRP Ledgerが初めてローンチされたのは2012年6月のことです。開発チームにはその後すぐにChris Larsenが加わり、2012年9月にOpenCoinという会社を創設しました（その後社名はOpenCoinに変わり、現在はRippleという名前になっています）。
+The XRPL founders gifted 80 billion XRP, the platform’s native currency, to the company. Ripple has since put the majority in escrow.: XRPLの創設者達は、このプラットフォームのネイティブ通貨である800億XRPを同社に贈与しました。その後、Ripple社はその大半をエスクローに預けています。
+XRP Ledger Development: XRP Ledgerの開発
+about.history.2011.part1: 2011年初頭、David Schwartz、Jed McCaleb、Arthur Brittの3人の開発者は、Bitcoinに魅了されながらも、Bitcoinに潜む問題を考えていました。彼らは、より持続可能な価値の送信システムを作ろうとしました。（このアイデアは、
+about.history.2011.part2: 2011年5月のフォーラムへの投稿「Bitcoin without mining」
+about.history.2011.part3: で概説されています）。
+Read More: 詳細を読む
+Their initial observations about the high energy consumption and scalability issues that would plague Bitcoin proved prescient. In 2019, estimates suggest Bitcoin mining used more energy than the entire country of Portugal. Moreover, their initial read indicated that significant problems could arise if any miner obtained (or miners colluded to obtain) greater than 50% of the mining power. That risk persists with Bitcoin (and Ethereum) today as mining power has consolidated in China.: 莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという最初の気付きには先見の明があったことが実証されました。（2019年には、Bitcoinのマイニングに使用されたエネルギー量はポルトガルの国全体のエネルギー消費量を上回ったと推定されています）。また、3人は当初から、もしいずれかのマイナー（または共謀したマイナー集団）がマイニングパワーの51%以上を獲得した場合、深刻な問題が発生するであろうと考えていました。Bitcoin（とEthereum）のマイニングパワーは中国に集中しているため、現在もなおそのリスクを抱えています。
+XRPL Launches its Native Currency, XRP: XRPL、ネイティブ通貨「XRP」がローンチ
+The trio of developers continued the work to build a distributed ledger that improved upon these fundamental limitations of Bitcoin, originally naming the code Ripple. The ledger included a digital asset that would originally be called “ripples” (XRP as the currency code) to follow the same naming convention as Bitcoin (BTC). At the time, the name Ripple stood for the open-source project, the unique consensus ledger (Ripple Consensus Ledger), transaction protocol (Ripple Transaction Protocol or RTXP), the network (Ripple network), and the digital asset (known as “ripples”).: 3人の開発者は、このようなBitcoinの基本的な限界を改善した分散型台帳を構築する作業を続け、当初そのコードを「Ripple」と命名しました。この台帳には、Bitcoin（BTC）と同じ命名規則に従って、当初は「ripples」（通貨コードとしてはXRP）と呼ばれるデジタル資産が含まれていました。当時、Rippleはオープンソースプロジェクト、独自のコンセンサスレジャー（Ripple Consensus Ledger）、トランザクションプロトコル（Ripple Transaction ProtocolまたはRTXP）、ネットワーク（Ripple network）、デジタルアセット（「ripples」と呼称）を表す名称でした。
+In practice, this approach led to many broad uses of “Ripple.” For clarity, the community simply started calling the digital asset by its currency code, “XRP.”: このアプローチでは「Ripple」という言葉が幅広い意味でよく使われるため、コミュニティでは明確にするためにデジタルアセットを「XRP」と呼び始めました。
+By June 2012, Schwartz, McCaleb, and Britto finished code development, and the Ledger was complete.: 2012年6月には、Schwartz、McCaleb、Brittoがコードの開発を完了し、XRP Ledgerが完全に機能するようになっていました。
+Once the XRP Ledger was live, 80% of the XRP was gifted to a new company that set out to build use cases for the digital asset—initially called NewCoin and renamed quickly to OpenCoin.: XRP Ledgerが完全に機能するようになると、XRPの80%が彼らによって設立された会社に贈与されました。当初その会社の名称はNewCoinでしたが、すぐにOpenCoinという名前に変更されました。
+Chris Larsen was the CEO of OpenCoin, and at the company's founding, Jed was co-founder and CTO, David Schwartz was the Chief Cryptography Officer, and Arthur Britto an advisor.: Chris LarsenがOpenCoinのCEOになり、創業時点では、Jed McCalebが共同創業者兼CTO、David Schwartzが最高暗号技術責任者、Arthur Brittoが相談役でした。
+OpenCoin Rebranded to Ripple Labs: OpenCoinからRipple Labsにブランド変更
+Since the early days, OpenCoin set out to revolutionize the global financial system. Despite the revolutionary ideals of many of Bitcoin’s early believers, Larsen never thought blockchain technology should be used to overthrow the existing financial system. He believed that history’s most transformative innovations have always relied on the great ideas that came before them—not displacing them.: OpenCoinはその初期から、世界の金融システムに革命を起こすことを目標としていました。Bitcoinの初期の賛同者の多くが革命的な理想を抱いていたにもかかわらず、Larsenはブロックチェーン技術が既存の金融システムを転覆させるために使用さわれるべきではないと考えていました。彼は、歴史上最も革新的なイノベーションは、常にその前に現れた偉大なアイデアに依存しており、それらを置き換えるものではないと信じていました。
+In early conversations with potential customers, the team was asked about the differences between the Ripple project and OpenCoin company. With the community starting to refer to the digital asset as XRP, company leaders decided to rebrand the company to Ripple Labs, which has been shortened over time to “Ripple.”: 創立して間もないころ、見込み顧客との商談のなかで、Rippleプロジェクトと会社であるOpenCoinとの違いについて尋ねられました。コミュニティではデジタルアセットを通貨コードである「XRP」と広く呼ぶようになっていたことから、経営陣は会社をRipple Labsというブランドに変更することを決めました。それが次第に短縮して「Ripple」と呼ばれるようになりました。
+Today, Ripple has created a use case leveraging the XRP Ledger and XRP for liquidity management in its cross-border payments business. Ripple also remains a stakeholder and contributor to the broader XRPL community.: 現在、この会社は自社の国際送金事業でXRPとXRP Ledgerを流動性管理に使用しています。Ripple社は今でも、広範なXRPLコミュニティのステークホルダーでありコントリビューターです。
+XRPL Foundation Launched: XRPL財団の創設
+about.history.xrplf.part1: 2020年9月24日に
+about.history.xrplf.part2: 設立
+about.history.xrplf.part3: されたXRPL財団は、分散化されたXRP Ledgerの開発と採用を加速させることをミッションとする独立した非営利団体です。財団は、XRP Ledgerを構築する開発者やその他の
+about.history.xrplf.part4: グローバルなコミュニティメンバー
+about.history.xrplf.part5: の増加に対応するための財団の活動資金として、Coil、Ripple、Gatehubから650万ドルを超える初期寄付金の提供を受けています。
+
+# about/impact.page.tsx
+Today’s Value, Tomorrow’s Vision: 現在の価値、将来のビジョン
+Building for the Future: 未来を見据えた開発
+Consensus protocol is efficient and sustainable: 効率的で持続可能なコンセンサスプロトコル
+For more than 272 million migrants worldwide, sending and receiving money across borders is expensive, unreliable and complex.: 世界で2億7,200万人を超える移民にとって、国境を越えた送金は高額で不確実かつ複雑です。
+about.impact.feature.ppart1: オープンで分散型のブロックチェーンと暗号資産は、リテールや機関投資家からCBDC、NFT、クロスボーダー決済などの
+about.impact.feature.ppart2: 商業ユースケース 
+about.impact.feature.ppart3: まで、金融サービス業界全体で導入が進んでいます。
+A Sustainable Future: 持続可能な未来
+What makes the XRPL sustainable?: XRPLが持続可能な理由は？
+XRPL’s unique consensus mechanism is eco-friendly—it does not require mining to settle transactions. This results in efficiency without sacrificing security, decentralization, or scalability.: XRPLの独自のコンセンサスメカニズムは環境に優しく、トランザクションを処理するためにマイニングを必要としません。このため、セキュリティ、分散性、スケーラビリティを犠牲にすることなく、効率化を実現することができます。
+Featured companies & projects running on the XRP Ledger.: XRP Ledgerで活動する注目の企業とプロジェクト
+Sustainable Projects: 持続可能なプロジェクト
+Learn more about companies and developers who are using the XRP Ledger to solve interesting problems efficiently and sustainably.: XRP Ledgerを利用して興味深い問題を効率的かつ持続的に解決している企業や開発者について、詳しくご紹介します。
+See More: 利用例を見る
+How can businesses and developers connect and contribute?: 開発者はどのように繋がり、貢献できるのでしょうか？
+"If you want to advance business with sustainable solutions to real-world problems, you’re invited to join the global, growing XRPL community. Here are some ways to get involved:": 現実世界の問題に対する持続可能なソリューションでビジネスを発展させたいと考える方は、グローバルに成長するXRPLコミュニティに参加しましょう。
+Join the Community: コミュニティに参加
+Blog: ブログ
+about.impact.blog.ppart1: " "
+about.impact.blog.ppart2: XRPL開発者ブログ
+about.impact.blog.ppart3: をチェックして、XRPLコミュニティのイノベーションと開発について最新情報を入手しましょう。
+Events: イベント
+about.impact.events.ppart1: " "
+about.impact.events.ppart2: ミートアップ、ハッカソン、カンファレンス
+about.impact.events.ppart3: に参加して、コミュニティの他のメンバーと交流しましょう。
+Code: コード
+about.impact.code.ppart1: " "
+about.impact.code.ppart2: Githubリポジトリ
+about.impact.code.ppart3: からブロックチェーンプロジェクトを見つけ、どのように貢献できるか見てみましょう。
+Connect: 繋がる
+about.impact.connect.ppart1: SNSで#XRPLCommunityを使って話題に加わりましょう。
+
+# docs/index.page.tsx
+XRP Ledger Developer Resources: XRP Ledger 開発者向けリソース
+Concepts: コンセプト
+'Learn the "what" and the "why" behind fundamental aspects of the XRP Ledger.': XRP Ledgerの基本的な機能の背景を学びましょう。
+Read the Docs: ドキュメントを読む
+Tutorials: チュートリアル
+Get step-by-step guidance to perform common tasks with the XRP Ledger.: XRP Ledgerで頻出するタスクのガイドラインをご覧ください。
+View Tutorials: チュートリアルを見る
+References: リファレンス
+Look up reference documentation for the XRP Ledger protocol, API methods, and more.: XRP LedgerプロトコルやAPIメソッドなどのリファレンスドキュメントをご覧ください。
+View References: リファレンスを見る
+Use Cases: ユースケース
+On-Chain Finance: オンチェーン金融
+Algorithmic Trading: アルゴリズム取引
+List XRP as an Exchange: 取引所へのXRPのリスト
+Payment Types: 多様なPayment
+Tokens: トークン
+Stablecoin Issuer: ステーブルコインの発行者
+NFT Marketplace: NFTマーケットプレイス
+Digital Artist: デジタルアーティスト
+Peer-to-Peer Payments: 個人間の直接決済
+Cross-currency payments: クロスカレンシー決済
+Getting Started: 始めましょう
+Introduction to the XRP Ledger: XRP Ledgerのご紹介
+An introduction to fundamental aspects of the XRP Ledger.: XRP Ledgerの基本的な機能の紹介
+Introduction: XRP Ledgerの基本
+Intro to XRP Ledger: XRP Ledger クイックスタート
+Accounts: アカウント
+Decentralized Exchange: 分散型取引所
+Tokenization: トークン化
+Watch Full Series: 全てのシリーズを見る
+Interact with the XRP Ledger in a language of your choice: お好みの言語でXRP Ledgerへアクセスできます
+Explore SDKs: SDKを探す
+Intermediate Learning Sources: 次の学習教材
+Advanced Payment Features: 高度な支払い機能
+Governance and the Amendment Process: ガバナンスとAmendmentプロセス
+Federated Sidechains: 連合サイドチェーン
+Explore, Test, Verify: 探索、テスト、検証
+Explore Dev Tools: 開発者ツールを探す
+Use these web-based tools to assist during all stages of development, from getting your first payment to testing your implementation for best practices.: 次のWebベースのツールを使用して、最初の支払いからベストプラクティスのための実装テストまで、開発のすべてのステージにわたりサポートします。
+Faucets: XRP Faucet
+Get credentials and test-XRP for XRP Ledger Testnet or Devnet.: XRP Ledger TestnetまたはDevnetでアカウントとテスト用XRPを取得しましょう。
+WebSocket Tool: Websocketツール
+Send sample requests and get responses from the rippled API.: サンプルリクエストを送信し、rippled APIからレスポンスを取得しましょう。
+XRP Ledger Explorer: XRP Ledgerエクスプローラ
+View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.: 新しいレジャーバージョンの検証結果をリアルタイムで表示したり、XRP Ledgerサーバの位置をチャートで表示します。
+Transaction Sender: トランザクション送信ツール
+Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.: コードが様々なXRP Ledgerのトランザクションをどのように処理するか、テストネットを通じてテストしましょう。
+View All tools: 全てのツールを見る
+Browse By Recommended Pages: おすすめのページを見る
+Public API Methods: 公開APIメソッド
+Run a Validator: バリデータを運用
+Reserves: 準備金
+Transaction Types: トランザクションの種類
+Get Free Test XRP: テスト用XRPを入手
+Generate Testnet Credentials: テストネットのアカウントを作成 
+Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.: XRP Ledger Testnetに接続することで、現実の資産やMainnetユーザに影響を与えることなくXRP Ledger上に構築するアプリを開発・テストすることができます。
+
+# docs/use-cases/tokenization/index.page.tsx
+Work with a variety of tokens supported by the XRP Ledger.: XRP Ledgerでサポートされている様々なトークンを扱いましょう。
+Explore the possibilities of tokenization on the XRP Ledger, revolutionizing ownership, transactions, and value exchange with unparalleled efficiency and security.: XRP Ledgerでのトークン化の可能性を探り、効率とセキュリティに優れた所有権、トランザクション、価値の交換に革命をもたらします。
+Authorized Minter: 認可Minter
+Quick Start: クイックスタート
+Learn more: もっと詳しく
+Check out the security features you can tap into right from the chain without the hassle of piecing together smart contracts.: スマートコントラクトを組み合わせる手間をかけずに、チェーンから直接利用できるセキュリティ機能をご覧ください
+Security advantages: セキュリティ上の利点
+Trust Lines & Authorized Trust Lines: トラストラインと認可トラストライン
+Trust Lines: トラストライン
+No spamming of wallets without permission.: 許可なくウォレットにスパムを送信することはありません。
+Authorized Trustlines: 認可トラストライン
+Control who can hold your tokens with allowlisting.: ホワイトリスト形式で誰がトークンを保持できるかを制御します。
+Freeze & Clawbacks: 凍結とクローバック
+Freeze: 凍結
+If you see signs of suspicious activity, you can suspend trading of your token while investigating the issue.: 不審な活動の兆候が見られた場合は、問題を調査する間、トークンの取引を停止することができます。
+Clawback: クローバック
+"Recover tokens distributed to accounts in error: for example, reclaim funds sent to an account sanctioned for illegal activity.": 誤ってアカウントに送信されたトークンを回収することができます。たとえば、違法行為に対して制裁を受けたアカウントに送金された資金を回収します。
+Non-transferable Tokens: 譲渡不可トークン
+Transferable flag: 譲渡可能フラグ
+Native support for nontransferable items such as identity tokens, airline credits, and consumer rewards, honored by all on-chain participants.: 譲渡不可のアイテム（IDトークン、航空会社のクレジット、消費者向けリワードなど）に対するネイティブサポートがあり、すべてのオンチェーン参加者によって認識されます。
+Royalties: ロイヤリティ
+NFT Transfer Fees: NFTの売買手数料
+Reliably collect your percentage of the sale price of your tokens.: トークンの売却価格の一部を確実に収集します。
+Stats: 統計
+NFTs minted: 作成されたNFT
+NFT trading volume: NFTの取引量
+Seconds to confirmation: トランザクション承認までの秒数
+Avg fee per NFT tx: NFTトランザクションごとの平均手数料
+Featured real world projects: 注目の実世界プロジェクト
+Related Articles: 関連記事
+More related articles: 追加の関連記事
+
+# community/index.page.tsx
+XRPL Community: XRPLコミュニティ
+community.index.h1part1: 開発者とイノベーターによる
+community.index.h1part2: グローバルな
+community.index.h1part3: " "
+community.index.h1part4: ブロックチェーンコミュニティ
+Join the Conversation: 参加する
+Hot Topics Happening Now: 今話題のトピック
+community.index.event.h4part1: XRPLコミュニティ主催の
+community.index.event.h4part2: グローバルイベントをチェック
+Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions.: グローバルな地域で開催されるミートアップ、ハッカソン、ブロックチェーンカンファレンスなどで、XRPLコミュニティと出会いましょう。
+View All Events: 全てのイベントを見る
+UPCOMING EVENT: 次のイベント
+days: 日後
+# TODO: translate "XRPL Events Carousel Section"
+Get Funding: 資金を獲得
+funding been awarded: 受賞総額
+teams awarded globally: 受賞チーム数
+countries represented: 参加国数
+XRPL Developer Funding: XRPL開発者向けの資金提供
+Funding Opportunities for Blockchain Businesses: ブロックチェーンビジネスのための資金獲得の機会
+If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation.: あなたがXRP Ledger(XRPL)上で次のブロックチェーンビジネスを構築しようとしているソフトウェア開発者やチームであれば、助成金やハッカソンなど数多くの資金調達の機会があなたをお待ちしています。
+XRPL Community Spotlight: XRPLコミュニティの紹介
+Showcase your blockchain project, application, or product: あなたのブロックチェーンプロジェクト、アプリケーション、製品を紹介しましょう
+Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community.: 開発者向けブログやエコシステムのページで紹介され、ブロックチェーンコミュニティ内でのイノベーションを広めましょう。
+Submit Your Projects: プロジェクトを登録
+# TODO: translate project-cards
+View Projects: プロジェクトを見る
+Contribute to Consensus: コンセンサスへの貢献
+Run an XRP Ledger network node: XRP Ledgerのノードを実行する
+Thank you for your interest in contributing to XRP Ledger.: XRP Ledgerへの貢献に興味がありますか？
+Networks and Servers: ネットワークとサーバ
+Join UNL: UNLに参加
+Install & Configure: インストールと設定
+Troubleshooting: トラブルシューティング
+XRPL Careers: XRPLキャリア
+Discover your next career opportunity in the XRPL community: XRPLコミュニティで次のキャリアを見つけましょう
+Teams across the XRPL community are looking for talented individuals to help build their next innovation.: XRPLコミュニティ全体が、次のイノベーションを構築するために才能ある人物を探しています。
+View Open Roles: 募集中の職種を見る
+Contribute to XRPL.org: XRPL.orgに貢献する
+A Community-Driven Resource for All Things XRP Ledger: XRP Ledgerに関する情報を提供するコミュニティ主導のリソース
+Contribute to XRPL.org, the go-to resource for XRP Ledger. This open-source portal welcomes contributions from anyone for suggested changes.: XRP LedgerのためのリソースであるXRPL.orgに貢献しましょう。このオープンソースポータルでは、皆様からの変更や提案を歓迎します。
+Read Contributor Guidelines: ガイドラインを読む
+
+# community/events.page.tsx
+Find the XRPL Community Around the World: 世界中のXRPLコミュニティを見つけよう
+# TODO: translate event details
+Register Now: いますぐ登録
+Check out meetups, hackathons, and other events hosted by the XRPL Community: XRPLコミュニティが主催するミートアップ、ハッカソン、その他のイベントをチェックしましょう
+"Filter By:": "絞り込み:"
+Conference: カンファレンス
+Meetups: ミートアップ
+Hackathons: ハッカソン
+AMAs: AMA
+Community Calls: コミュニティコール
+XRPL Zone: XRPL Zone
+Info Session: セッション
+# TODO: translate feature events
+Explore past community-hosted events: 過去のコミュニティ主催のイベントを見る
+Past Events: 過去のイベント
+# TODO: translate past events
+
+# community/ambassadors.page.tsx
+Become an XRP Ledger Campus Ambassador: XRP Ledgerキャンパスアンバサダーになる
+Join the Student Cohort: 学生コミュニティに参加
+The XRPL Campus Ambassador program engages, supports, connects, and recognizes a group of student champions of the XRPL and empowers them to further advance engagement on the ledger.: XRPLキャンパスアンバサダープログラムは、XRPLの学生による代表者を参加させ、支援し、繋いで、表彰し、彼らがコミュニティ/エコシステムへの関与をさらに進めるように支援するものです。
+# Apply for Fall 2023: 2023年秋の申し込み #old
+XRPL Campus Ambassadors: XRPLキャンパスアンバサダー
+Current Students: 現役学生
+The XRPL Campus Ambassador program aims to elevate the impact of college students who are passionate about blockchain technology. In their role, Campus Ambassadors help educate other students about crypto and how to start building on the XRPL.: XRPLキャンパスアンバサダープログラムは、ブロックチェーン技術に情熱を持つ大学生の影響力を高めることを目指しています。彼らの役割として、キャンパスアンバサダーは他の学生に暗号通貨について教育し、XRPL上での開発を始める方法を教えます。
+Why become an XRPL Campus Ambassador?: XRPLキャンパスアンバサダーになる理由
+Join a global cohort of students empowering others to build on the XRPL.: XRPLをベースに他の人に力を与える、世界的な学生グループに参加しましょう
+Exclusive Opportunities: 特別な機会
+Get access and invitations to Ambassador-only events, conferences, and opportunities: アンバサダー限定のイベント、カンファレンス、チャンスの情報を入手できます
+Education: 学習
+Tutorials and workshops from leading XRPL and blockchain developers: トップクラスのXRPLおよびブロックチェーン開発者によるチュートリアルとワークショップを提供します
+Swag: グッズ
+New XRPL swag for Ambassadors and swag to share with other students: アンバサダー用の特別なXRPLグッズと他の学生と共有できるグッズを提供します
+Mentorship: メンター
+Serve as an advocate and receive support from notable members of the community: アドボケートの役割を果たし、コミュニティの主要メンバーからのサポートが提供されます
+Career Acceleration: キャリア促進
+Gain hands-on experience building communities and grow your professional network in the blockchain industry: ブロックチェーン業界におけるコミュニティ構築の経験を積み、プロフェッショナルなネットワークを広げることができます
+Stipend: 奨学金
+Receive a stipend to fund your ideas and initiatives that fuel XRPL growth on your campus: キャンパスでのXRPLの成長を促進するアイデアやイニシアチブの資金となる奨学金を受け取ることができます
+Should You Apply?: 応募すべきでしょうか？
+Eligibility for XRPL Campus Ambassadors: XRPLキャンパスアンバサダーの応募資格
+Students currently enrolled in an undergraduate or postgraduate program at an accredited college or university are eligible to apply.: 現在、認定された大学の学部または大学院に在籍している学生が応募可能です。
+A Leader: リーダー
+Interested in leading meetups and workshops for your local campus community: 学内のコミュニティでミートアップやワークショップを開催することに関心を持っている
+Active: アクティブ
+An active participant in the XRPL community or interested in blockchain and crypto technologies: XRPLコミュニティに積極的に参加している、またはブロックチェーンや暗号技術に興味を持っている
+Curious: 好奇心旺盛
+Eager to learn more about technical blockchain topics and the XRPL: ブロックチェーン技術やXRPLについてより深く学ぶ意欲がある
+Passionate: 情熱的
+Passionate about increasing XRPL education and awareness through events, content, and classroom engagement: イベント、コンテンツ、授業への参加を通じて、XRPLの教育と認知度を高めることに情熱を持っている
+Creative: クリエイティブ
+Ability to think outside the box to grow the XRPL student community: 既成概念にとらわれず、XRPLの学生コミュニティを成長させる思考力がある
+Process to become a Campus Ambassador: キャンパスアンバサダー就任までの流れ
+How it Works: 手続き
+Apply now to become an XRPL Campus Ambassador.: XRPLキャンパスアンバサダーになりたい方は今すぐ応募しましょう。
+Apply: 応募
+Submit an application to be considered for the Campus Ambassador program.: キャンパスアンバサダープログラムの選考を受けるには、応募書類を提出してください。
+Interview: 面接
+Tell the XRPL community-led panel more about yourself and your interest in the program during an interview.: XRPLコミュニティが中心となって運営する委員との面接で、あなた自身、またプログラムへの関心について詳しく話してください。
+Join: 参加
+Congrats on your new role! Join the global cohort of Ambassadors and meet with community participants during onboarding.: 就任おめでとうございます！グローバルなアンバサダーグループに参加し、新しいコミュニティメンバーとお会いしましょう。
+Learn: 学習
+Participate in personalized learning and training sessions for Ambassadors on the XRPL and blockchain technology.: XRPLおよびブロックチェーン技術に関するアンバサダー向けの個別学習およびトレーニングセッションへ参加しましょう。
+Join a global cohort of Student Ambassadors: 学生アンバサダーのグローバルなコミュニティに参加する
+Global Community: グローバルコミュニティ
+Stay connected to the XRPL Campus Ambassadors: XRPLキャンパスアンバサダーとの繋がりを持つ
+"To stay up-to-date on the latest activity, meetups, and events of the XRPL Campus Ambassadors be sure to follow these channels:": XRPL キャンパスアンバサダーの最新の活動、ミートアップ、イベントに関する最新情報を得るには、次のチャンネルをフォローしましょう。
+MeetUp: ミートアップ
+Attend an XRPL Meetup in your local area: 近隣のXRPLミートアップに参加しましょう
+Dev.to Blog: Dev.to ブログ
+Read more about the activity of the XRPL Ambassadors: XRPLアンバサダーの活動についてもっと知る
+Join the conversation on the XRPL Developer Discord: XRPL開発者Discordで意見交換しましょう
+
+# community/developer-funding.tsx
+XRPL Developer Funding Programs: XRPL開発者向け資金提供プログラム
+Project Resources: プロジェクト資金
+Explore funding opportunities for developers and teams: 開発者やチームのための資金調達の方法を見つけましょう
+Funding Overview: 資金調達の概要
+"If you’re a software developer or team looking to build your next project or venture on the XRP Ledger (XRPL), there are a number of opportunities to fund your next innovation.": "XRP Ledger(XRPL)上に次のプロジェクトやベンチャーを構築しようとしているソフトウェア開発者やチーム向けの資金を提供されるチャンスは数多く存在します。"
+XRPL Hackathons: XRPLハッカソン
+Join an Event: イベントに参加
+Hackathons are open to all developers to explore and invent a project on the XRP Ledger. Visit the events page for updates on upcoming hackathons.: XRP Ledgerのハッカソンはプロジェクトを調査・考案するために、すべての開発者に開放されています。今後のハッカソンに関する最新情報は、イベントページでご確認ください。
+See Upcoming Events: 今後のイベントを見る
+Best for: こんな方に最適
+Software developers and teams building directly on the XRP Ledger: XRP Ledger上のソフトウェア開発者やXRP Ledger上で直接開発を行うチーム
+Required: 必須要件
+Some coding experience: コーディング経験
+Level: レベル
+XRPL beginner to advanced developers: XRPLの初級開発者から上級開発者まで
+Funding Levels: 資金調達の規模
+Prize money and awards: 賞金および賞品
+XRPL Grants: XRPL Grants
+Fund Your Project: プロジェクトの資金調達
+Developer grants for projects that contribute to the growing XRP Ledger community.: 成長するXRP Ledgerコミュニティに貢献するプロジェクトに開発者向けの助成金を提供します。
+"Past awardees include:": "過去の受賞者:"
+Visit XRPL Grants: XRPL Grantsを見る
+Software developers, teams, and start-ups building directly on the XRP Ledger: XRP Ledger上で直接開発を行うソフトウェア開発者やチーム、スタートアップ企業
+Coding experience: コーディング経験
+Github repository: Githubリポジトリ
+Project narrative/description: プロジェクトの説明
+At least one developer on the core team: 少なくとも1人のコアチーム開発者
+Budget and milestones: 予算とマイルストーン
+XRPL intermediate to advanced developers: XRPLの中級開発者から上級開発者
+$10,000 - $200,000: $10,000 ~ $200,000
+XRPL Accelerator: XRPLアクセラレータ
+Advance your project: プロジェクトの推進
+12-week program for entrepreneurs building on the XRP Ledger to scale their projects into thriving businesses.: XRP Ledgerをベースとする起業家向けの12週間のプログラムで、プロジェクトを繁栄するビジネスへとスケールアップさせることができます。
+Start-ups building scalable products on XRPL that can capture a large market opportunity: XRPL上でスケーラブルなプロダクトを構築し、大きな市場機会を獲得できるスタートアップ企業
+Strong founding team: 強力な創業チーム
+Bold, ambitious vision: 大胆で野心的なビジョン
+Ideally an MVP and monetization strategy: 理想的にはMVPと収益化戦略
+XRPL advanced developers: XRPLの上級開発者
+Business acumen: ビジネス知識
+View XRPL Accelerator: XRPLアクセラレータを見る
+$50,000 (grant) + pitch for venture funding: $50,000(助成金)＋ベンチャー資金へのピッチ
+
+# resources/code-samples.page.tsx
+Start Building with Example Code: コードサンプルから開発を始める
+Code Samples: コードサンプル
+Browse sample code for building common use cases on the XRP Ledger: XRP Ledger上で一般的なユースケースを構築するためのコードサンプルを見ることができます
+Contribute Code Samples: コードサンプルへの貢献
+Help the XRPL community by submitting your own code samples: コードサンプルを投稿して、XRPLコミュニティに貢献しましょう
+Fork and clone: フォークしてクローン
+resources.contribute.1.part1: 'gitを使い'
+resources.contribute.1.part2: 'xrpl-dev-portalリポジトリ'
+resources.contribute.1.part3: 'をフォークし、自分のデバイスにクローンしましょう'
+Add to folder: フォルダに追加
+resources.contribute.2.part1: ' '
+resources.contribute.2.part2: 'に作成したサンプルコードを追加し、そのコードが何をするのか、そして必要となる事前知識を要約した'
+resources.contribute.2.part3: 'ファイルがあることを確認してください。'
+Commit and push: コミットしてプッシュ
+resources.contribute.3.part1: 変更内容をコミットし、リモートリポジトリにプッシュします
+Open a pull request: プルリクエストを作成
+resources.contribute.4.part1: '元のリポジトリにプルリクエストを提出してください。メンテナーがあなたの提出内容をレビューし、必要であれば変更を提案します。コードサンプルが有益であれば、マージされてXRPL.orgに追加されます！'
+
+# resources/dev-tools/index.page.tsx
+Use the developer tools to test, explore, and validate XRP Ledger API requests and behavior.: 開発者ツールを使用して、XRP Ledger APIのリクエストと動作をテスト、調査、検証しましょう。
+Dev Tools: 開発者ツール
+Explorers: エクスプローラ
+API Access: APIアクセス
+Other: その他
+XRPL Explorer: XRPLエクスプローラ
+View validations of new ledger versions in real-time, or chart the location of servers in the XRP Ledger.: 新しいレジャーバージョンの検証結果をリアルタイムで表示したり、XRP Ledgerサーバの位置をチャートで表示します。
+Bithomp Explorer: Bithompエクスプローラ
+Explore public ledger data including accounts' transaction history and known names.: アカウントのトランザクション履歴や既知のアカウント名など、公開されたレジャーデータを調査します。
+XRPScan: XRPScan
+Explore ledger activity, view amendment voting in real-time, and get account information. API access is also available.: レジャーのアクティビティを調査し、リアルタイムでAmendmentの投票を表示したり、アカウント情報を取得します。APIアクセスも可能です。
+Token List: トークン一覧
+See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.: XRP Ledgerで発行されたすべてのトークンを見ることができます。また、ボタンをクリックするだけでカスタムトークンを発行するためのプリセットツールを使用できます。
+RPC Tool: RPCツール
+Print raw information about an XRP Ledger account, transaction, or ledger.: XRP Ledgerのアカウント、トランザクション、またはレジャーに関する生データを表示します。
+Technical Explorers: Technicalエクスプローラ
+Browse API objects from the ledger with real-time updates.: リアルタイムで更新されるレジャーからのAPIオブジェクトを確認します。
+Domain Verification Checker: ドメイン検証チェッカー
+Verify your validator's domain.: バリデータのドメインを検証します。
+xrp-ledger.toml Checker: xrp-ledger.tomlチェッカー
+Verify that your xrp-ledger.toml file is set up properly.: xrp-ledger.tomlファイルが正しく設定されているかを確認します。
+Binary Visualizer: バイナリビジュアライザ
+Parse the XRP Ledger's native binary format with a visual representation breaking down the raw structure into its parts.: XRP Ledgerのネイティブバイナリ形式を解析し、生の構造を部品に分解したビジュアル表現を提供します。
+Token Metadata Lookup: トークンメタデータ検索
+Query known information about any token issued on the XRP Ledger.: XRP Ledgerで発行されたトークンに関する既知の情報を問い合わせます。
+Have an Idea For a Tool?: ツールのアイデアをお持ちですか？
+Open a pull Request: プルリクエストを作成する
+Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool.: ツールのアイデアを提出したり、ツールを開発した場合はプルリクエストを開いて、XRP Ledgerコミュニティに貢献しましょう。
+
+# resources/dev-tools/rpc-tool.page.tsx
+This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).: これは、アカウント(クラシックアドレス)、トランザクション(ハッシュ)、またはレジャー(シーケンス番号)に関する実際の情報を表示するためのデバッグツールです。
+resourses.rpc-tool.help-block.part1: ' '
+resourses.rpc-tool.help-block.part2: ' のようなアカウントで試してみましょう。'
+Get info: 情報を見る
+Input is not a valid address or transaction hash: 入力値が有効なアドレスまたはトランザクションハッシュではありません
+Result: 結果
+Permalink: パーマリンク
+Explorer: エクスプローラ
+expand tx: txを展開
+(last 20): (直近20件)
+expand all: すべて展開
+collapse all: すべて閉じる
+
+# resources/dev-tools/websocket-api-tool.page.tsx
+# TODO: translate currentMethod.description
+Read more: 詳細を見る
+Request: リクエスト
+Send request: リクエストを送信
+Connected: 接続済み
+Not Connected: 未接続
+Failed to Connect: 接続に失敗
+Responses: レスポンス
+"Keep last:": 表示数
+Pause Subscriptions: サブスクリプション停止
+Unpause Subscriptions: サブスクリプション停止を解除
+Delete All Responses: 全レスポンスを削除
+# resources/dev-tools/websocket-api/connection-modal.tsx
+Connection Settings: 接続先設定
+Close: 閉じる
+# resources/dev-tools/websocket-api/curl-modal.tsx
+cURL Syntax: cURL構文
+resources.dev-tools.websocket-api.curl.modal.desc.part1: コマンドラインインターフェースから
+resources.dev-tools.websocket-api.curl.modal.desc.part2: を使用してこれと同等のJSON-RPCリクエストを行うには、以下の構文を使用します。
+# resources/dev-tools/websocket-api/right-sidebar.tsx
+API Methods: APIメソッド
+Methods: メソッド
+Examples: の例
+
+# resources/dev-tools/xrp-ledger-toml-checker.page.tsx
+resources.dev-tools.toml-checker.p.part1: もしあなたがXRP Ledgerバリデータを運営していたり、XRP Ledgerをビジネスで利用しているのであれば、XRP Ledgerの利用状況に関する情報を、機械読み取り可能な
+resources.dev-tools.toml-checker.p.part2: ファイル
+resources.dev-tools.toml-checker.p.part3: で世界中に提供することができます。
+Look Up By Domain: ドメインで検索
+resources.dev-tools.toml-checker.domain.description.part1: ' '
+resources.dev-tools.toml-checker.domain.description.part2: が構文的に正しく、正しくデプロイされているかどうかを確認することができます。
+Check toml file: tomlファイルをチェック
+example.com (Domain name to check): example.com (チェックするドメイン名)
+Look Up By Account: アカウントで検索
+resources.dev-tools.toml-checker.account.description.part1: XRP Ledgerのアドレスを入力し、そのアカウントがドメインによって所有されているかどうかを確認します。
+Check account: アカウントをチェック
+Wallet Address to check: チェックするウォレットアドレス
+
+# resources/dev-tools/domain-verifier.page.tsx
+This tool allows you to verify that domain verification is properly configured.: このツールを使用すると、ドメイン検証が正しく設定されているかどうかを確認できます。
+Enter the manifest found in your validator-keys.json file. Do not confuse this with your validator's secret key.: validator-keys.jsonファイルにあるマニフェストを入力してください。これはバリデータの秘密鍵とは異なるものです。
+"To do this with the validator-keys-tool use the following command:": これをvalidator-keys-toolで行うには、次のコマンドを使用します。
+Verify: 検証
+Your Manifest Here: マニフェスト情報を入力してください
+Parsing TOML data...: TOMLデータを解析中...
+Validators: バリデータ
+Success: 成功
+Wrong type - should be table-array: 間違ったタイプ - テーブル配列である必要があります
+Domain Verification Succeeded: ドメイン検証に成功しました
+Domain Verification Failed: ドメイン検証に失敗しました
+The validator key for this manifest was not found in the TOML file: このマニフェストのバリデータキーがTOMLファイルに見つかりませんでした
+No Validators Found: バリデータが見つかりません
+"Error decoding manifest:": マニフェストのデコードエラー
+Domain not found in manifest: マニフェストにドメインが見つかりません
+Checking: 確認中
+resources.dev-tools.domain-verifier.checking.part1: ' '
+resources.dev-tools.domain-verifier.checking.part2: を確認中
+Found: 見つかりました
+
+# resources/dev-tools/xrp-faucets.page.tsx
+Servers: サーバ
+resources.dev-tool.faucet.content.part1: これらのは、
+resources.dev-tool.faucet.content.part2: XRP Ledger並列テストネットワーク
+resources.dev-tool.faucet.content.part3: はXRP Ledgerやその上に構築されたソフトウェアへの変更を、実際の資金を使わずにテストするためのプラットフォームを提供します。
+resources.dev-tool.faucet.content.part4: これらの資金は
+resources.dev-tool.faucet.content.part5: テストのみ
+resources.dev-tool.faucet.content.part6: を目的としています。テストネットワークの履歴と残高は必要に応じてリセットされます。Devnetは警告なしにリセットされることがあります。
+resources.dev-tool.faucet.content.part7: これらのネットワーク上のすべての残高とXRPは、メインネットとは別のものです。安全のため、テストネットやDevnetの認証情報をメインネットで使用しないでください。
+"Choose Network:": "ネットワークを選択:"
+Mainnet-like network for testing applications.: アプリケーションのテスト用のメインネットに似たネットワーク。
+Preview of upcoming amendments.: 今後のAmendmentのプレビューネットワーク。
+Hooks (L1 smart contracts) enabled Xahau testnet.: Hooks（L1スマートコントラクト）が有効化されたXahau Networkのテストネット。
+resources.dev-tools.faucet.cred-btn.part1: ' '
+resources.dev-tools.faucet.cred-btn.part2: のアカウントを生成
+resources.dev-tools.faucet.your-cred.part1: 生成した
+resources.dev-tools.faucet.your-cred.part2: のアカウント情報
+resources.dev-tools.faucet.error.part1: ' '
+resources.dev-tools.faucet.error.part2: のFaucetでエラーが発生しました。再度お試しください。
+Generating keys..: キーを生成中...
+Address: アドレス
+Secret: シークレット
+Funding account...: アカウントに資金を供給中...
+Balance: 残高
+Sequence Number: シーケンス番号
+Waiting...: お待ちください...
+
+# resources/dev-tools/tx-sender.page.tsx
+resources.dev-tool.tx-sender.content.part1: あなたが選択した
+resources.dev-tool.tx-sender.content.part2: アドレスにトランザクションを送信し、どのように受信トランザクションを管理し、レスポンスを行っているかをテストすることができます。
+Initialize: 初期化
+Set up the necessary Testnet XRP addresses to send test payments.: テスト支払いに必要なTestnet XRPアドレスを設定する。
+Destination Address: 送金先のアドレス
+Send transactions to this XRP Testnet address: このXRP Testnetアドレスに送信
+Send Transaction: トランザクション送信
+Send XRP Payment: XRPを送信
+drops of XRP: XRPのdrop数
+resources.dev-tool.tx-sender.send-xrp-desc.part1: ' '
+resources.dev-tool.tx-sender.send-xrp-desc.part2: シンプルなXRP同士の支払い
+resources.dev-tool.tx-sender.send-xrp-desc.part3: を送信します。
+(Getting ready to send partial payments): （Partial Paymentの準備中）
+Send Partial Payment: Partial Paymentを送信する
+# TODO: translate following content desctiptions
+# Deliver a small amount of XRP with a large Amount value, to test your handling of partial payments.
+# Create a time-based escrow of 1 XRP for the specified number of seconds.
+# Create a payment channel and fund it with the specified amount of XRP.
+# Your destination address needs a trust line to (the test sender) for the currency in question. Otherwise, you'll get tecPATH_DRY.
+# The test sender creates a trust line to your account for the given currency.
+Create Escrow: Escrowを作成
+seconds: 秒
+Finish automatically: 自動的に終了
+(Waiting to release Escrow when it's ready): （Escrowの解放を待っています。）
+Create Payment Channel: Payment Channelを作成
+Send Issued Currency: トークンを送信
+Trust for: トラストラインの設定
+# resources/dev-tools/components/StatusSidebar.tsx
+"Sending Address:": 送信元アドレス
+(None): (なし)
+"Testnet XRP Available:": 利用可能なTestnet XRP
+Transaction History: トランザクション履歴
+
+# blob/index.page.tsx
+XRPL Blog: XRPLブログ
+blog.banner.date.part1: YYYY
+blog.banner.date.part2: /
+blog.banner.date.part3: MM/DD
+blog.card.date: YYYY/MM/DD
+"Filter by Category:": カテゴリで絞り込む
+"Filter by:": 絞り込む
+Category: カテゴリ
+General: 一般
+Release Notes: リリースノート
+Advisories: お知らせ
+Amendments: Amendment
+Development: 開発
+Developer Reflections: 開発者の声
+Features: 機能
+# Security: セキュリティ
+
+Open Source.: オープンソース
+Jump to top of page: ページの先頭へ
+Edit page: ページを編集
+Search: 検索
+Search site...: サイトを検索
+Search for articles, training, and code samples...: 記事、トレーニング、コードサンプルを検索...
+Help the XRPL community by submitting your<br> own code samples: コードサンプルを投稿して、XRPLコミュニティに貢献しましょう
+The XRPL Community: XRPL コミュニティ
+Find the community on the platforms below: 以下のプラットフォームでコミュニティにアクセスできます。
+Apply for funding to build your XRPL project: 将来のXRPLプロジェクトのための資金調達に応募する
+Awarded in a single grant: 1回のGrantでの助成金
+Distributed to grant recipients: 助成対象者への配布
+Open-source projects funded : オープンソースプロジェクトへの資金提供
+Learn More: もっと知る
+Showcase your XRPL project, application or product: XRPLプロジェクト、アプリケーション、製品の紹介
+Read the Blog: ブログを読む
+Check out global events across the XRPL community: XRPLコミュニティで開催されるグローバルなイベントをチェック
+XRPL Events: XRPLイベント
+Review guidelines for using XRPL design assets: XRPLのデザインアセットを使用するためのガイドラインを確認
+XRPL Assets: XRPLのアセット
+Download the PDF and Assets: PDFとアセットをダウンロード
+A community-driven resource for all things XRPL.org: XRPとXRP Ledgerのあらゆるものを提供する、コミュニティ主体のリソース
+Full documentation index: 全ドキュメントの目次
+See Everything: 全てを見る
+rippled API Reference: rippled APIリファレンス
+XRP Faucet: XRP Faucet
+Getting Started with Python: Pythonを使ってみよう
+Websocket API Tool: Websocket APIツール
+Trade on the decentralized exchange: 分散型取引所でトレード
+Make payments: 支払いを実行
+Use specialized payment types: 高度な支払い機能
+Non-fungible Tokens: 非代替性トークン
+Issue a stablecoin: ステーブルコインを発行
+Assign an authorized minter: 認可Minterの割り当て
+Peer to peer payments: 直接支払い
+Escrows: エスクロー
+Get Started: 始めましょう
+See full documentation index: 全ドキュメントの目次
+The XRPL Developer Summit: XRPL開発者サミット
+Save the Date: 日程を確認
+Upcoming Events: 今後のイベント情報
+Sorry, this page is not available in your language.: 申し訳ありませんが、このページはお使いの言語では提供されていません。
+References and APIs: リファレンスとAPI
+Everything You Need to Know: 全てはここに
+XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
+Status: ステータス
+(loading): （ローディング中）
+Carbon Markets/Sustainability: 持続可能性
+Ledger City is a crypto real estate game powered by the XRP Ledger.: Ledger Cityは、XRP Ledgerを利用した暗号不動産ゲームです。
+Ripple's CBDC Platform: Ripple社のCBDC Platform\
+Ripple's On-Demand Liquidity: Ripple社のOn-Demand Liquidity
+XRPL Rosetta explores fiat data on XRPL through visualization.: XRPL Rosettaは、XRPL上のフィアットデータを可視化することで素晴らしさを追求します。
+XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger.: XRPL.orgのLedger Explorerは、XRP Ledgerのブロックエクスプローラーです。
+Xaman is a non custodial wallet with superpower for the XRP Ledger.: Xamanは、XRP Ledgerのための最高能力を備えた非カストディアルウォレットです。
+Web Monetization: ウェブ収益化
+CBDCs: CBDC
+Cancel: キャンセル
+Proven Powerful for Innovation: イノベーションのための確かな実績
+XRPL Use Cases: XRPLのユースケース
+Building businesses and creating new value: ビジネスの構築と新たな価値の創造

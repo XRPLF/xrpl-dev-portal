@@ -206,7 +206,7 @@ Decentralized exchanges (DEXes) are integral to the decentralized finance ecosys
 
 
 ### List on an AMM
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 

@@ -3,10 +3,9 @@ date: 2016-02-10
 labels:
     - Release Notes
 category: 2016
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # rippled 0.30.1 Released
 

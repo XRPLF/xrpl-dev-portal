@@ -8,7 +8,7 @@ labels:
 ---
 # Automated Market Makers
 
-_(Requires the XLS-30 [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 Automated Market Makers (AMMs) provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets. You can swap between the two assets at an exchange rate set by a formula.
 
@@ -56,6 +56,14 @@ Tokens with different issuers are considered different assets. This means that t
 ### Currency Risk
 
 When the flow of funds between the two assets in a pool is relatively active and balanced, the fees provide a source of passive income for liquidity providers. However, when the relative price between the assets shifts, liquidity providers can take a loss on the [currency risk](https://www.investopedia.com/terms/c/currencyrisk.asp).
+
+### DEX Interaction
+
+AMMs are integrated with the central limit order book (CLOB)-based DEX to enhance liquidity. Offers and payments are automatically optimized to determine whether swapping within a liquidity pool, through the order books, or both, provides the best rate and executes accordingly. This ensures that transactions use the most efficient path for trades, whether through offers on the DEX or through AMM pools, or a combination of the two.
+
+The diagram below illustrates how an offer interacts with other offers and AMM liquidity in the DEX.
+
+![Offer path through DEX.](/docs/img/amm-clob-diagram.png)
 
 ### Restrictions on Assets
 

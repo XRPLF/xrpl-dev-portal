@@ -101,9 +101,7 @@ sudo apt-get install python3.8 python3-pip
 pip install -r requirements.txt
 ```
 
-4. Edit line 47 @ `relay-transaction.py` and insert the signed transaction blob from scanning the QR code Machine 1 generated.
-
-5. Run `relay-transaction.py`
+4. Run `relay-transaction.py` with one argument, the signed transaction blob to submit.
 
 ## Phone Setup
 The phone requires a working camera that is able to scan a QR code and an internet connection for it to be able to transmit the signed transaction blob to Machine 2.

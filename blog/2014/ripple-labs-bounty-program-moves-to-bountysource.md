@@ -3,10 +3,9 @@ category: 2014
 date: 2014-07-07
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Daniel Radding
 ---
 # Ripple Labs Bounty Program Moves To Bountysource

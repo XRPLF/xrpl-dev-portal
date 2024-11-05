@@ -3,10 +3,9 @@ category: 2020
 date: 2020-05-01
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Two Fix Amendments Are Now Enabled
 

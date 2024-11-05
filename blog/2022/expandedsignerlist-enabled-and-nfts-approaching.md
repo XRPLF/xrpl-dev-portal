@@ -3,10 +3,9 @@ category: 2022
 date: 2022-10-13
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # ExpandedSignerList Enabled and NFTs Approaching
 

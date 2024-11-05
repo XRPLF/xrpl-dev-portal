@@ -4,10 +4,9 @@ category: 2018
 labels:
     - Advisories
     - Development
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Boost 1.66 Not Supported for rippled 0.81.0
 

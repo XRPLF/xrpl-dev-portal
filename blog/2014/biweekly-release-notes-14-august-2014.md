@@ -3,10 +3,9 @@ date: 2014-08-14
 category: 2014
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Biweekly Release Notes (14 August 2014)
 

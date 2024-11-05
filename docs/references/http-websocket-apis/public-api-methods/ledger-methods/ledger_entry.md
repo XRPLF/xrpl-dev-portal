@@ -158,7 +158,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 ### Get AMM Object
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 

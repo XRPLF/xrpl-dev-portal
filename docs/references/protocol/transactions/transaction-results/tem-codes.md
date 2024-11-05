@@ -14,7 +14,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 | Code                          | Explanation                                   |
 |:------------------------------|:----------------------------------------------|
-| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. _(Requires the [AMM amendment][])_  |
+| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. _(Added by the [AMM amendment][])_  |
 | `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment][]) was invalid, possibly because it was a negative number. |
 | `temBAD_AUTH_MASTER`          | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) set. |
 | `temBAD_CURRENCY`             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |

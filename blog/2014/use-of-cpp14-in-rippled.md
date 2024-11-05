@@ -3,10 +3,9 @@ date: 2014-08-19
 category: 2014
 labels:
     - Development
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Howard Hinnant
 ---
 # Use of C++14 in rippled
