@@ -3,10 +3,9 @@ category: 2022
 date: 2022-10-26
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: Get Your Project Featured on XRPL.org
 

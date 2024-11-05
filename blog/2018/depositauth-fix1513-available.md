@@ -3,10 +3,9 @@ date: 2018-04-09
 category: 2018
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The DepositAuth & fix1513 Amendments are Now Available
 

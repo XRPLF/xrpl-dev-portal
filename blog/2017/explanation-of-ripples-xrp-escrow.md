@@ -3,10 +3,9 @@ date: 2017-12-15
 category: 2017
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # An Explanation of Ripple’s XRP Escrow
 

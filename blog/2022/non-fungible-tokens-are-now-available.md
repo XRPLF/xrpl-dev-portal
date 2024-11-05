@@ -3,10 +3,9 @@ category: 2022
 date: 2022-11-01
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Non-Fungible Tokens Are Now Available
 

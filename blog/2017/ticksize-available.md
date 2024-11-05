@@ -3,10 +3,9 @@ date: 2017-02-22
 category: 2017
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # TickSize is Now Available
 

@@ -3,10 +3,9 @@ date: 2015-09-02
 category: 2015
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Correction to Ripple White Paper
 

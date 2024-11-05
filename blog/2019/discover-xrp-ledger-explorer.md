@@ -3,10 +3,9 @@ labels:
     - Features
 category: 2019
 date: 2019-07-03
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Discover the XRP Ledger with Explorer!
 

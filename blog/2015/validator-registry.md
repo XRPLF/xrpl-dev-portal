@@ -3,10 +3,9 @@ date: 2015-08-18
 category: 2015
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Validator Registry
 

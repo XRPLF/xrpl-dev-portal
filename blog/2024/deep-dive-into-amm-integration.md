@@ -6,10 +6,9 @@ seo:
     description: The XLS-30 AMM amendment unlocks new liquidity and trading options on the XRP Ledger network. Explore how developers can integrate with AMM.
 labels:
     - Development
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # XLS-30 Overview: XRP Ledger Automated Market Maker
 

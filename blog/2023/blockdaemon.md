@@ -3,10 +3,9 @@ category: 2023
 date: 2023-08-29
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: Blockdaemon
 

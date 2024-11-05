@@ -4,10 +4,9 @@ category: 2014
 labels:
     - Advisories
     - Security
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Why the Stellar Forking Issue Does Not Affect Ripple
 

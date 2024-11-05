@@ -3,10 +3,9 @@ labels:
     - Security
 category: 2019
 date: 2019-01-14
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Statement on the “Biased Nonce Sense” Paper
 
