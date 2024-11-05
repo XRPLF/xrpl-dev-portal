@@ -1,6 +1,6 @@
 # Oracle
 
-_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+_(Requires the [PriceOracle amendment][])_
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L353-L366 "Source")
 

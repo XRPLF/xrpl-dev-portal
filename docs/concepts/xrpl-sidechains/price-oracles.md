@@ -1,6 +1,6 @@
 # Price Oracles
 
-_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+_(Requires the [PriceOracle amendment][])_
 
 Blockchains can't inherently interact with and "know" what's happening off the network, but many of its use cases in decentralized finance require this information.
 
