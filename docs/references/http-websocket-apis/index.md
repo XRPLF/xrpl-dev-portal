@@ -52,12 +52,12 @@ The table below shows which version of the `rippled` API is used if you don't sp
 |----------------|-------------|------------------|
 | Websocket      | 1           | |
 | JSON-RPC       | 1           | |
-| Commandline    | 2           | The commandline only uses the latest API version (currently 2). |
+| Commandline    | 2           | The commandline only uses the latest API version. |
 | [xrpl.js](https://github.com/XRPLF/xrpl.js) | 2 | Defaults to [API v2][] starting in v4.0.0. |
 | [xrpl-py](https://github.com/XRPLF/xrpl-py) | 2 | Defaults to [API v2][] starting in v3.0.0. |
 
 {% admonition type="info" name="Note" %}
-[API v2][] is used by default when you make a request to a Clio server, starting in v???.
+Clio responses use [API v1][] by default, but support [API v2][] requests.
 {% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
