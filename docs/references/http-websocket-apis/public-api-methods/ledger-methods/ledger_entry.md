@@ -404,7 +404,7 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 ### Get Oracle Object
 
-_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+_(Requires the [PriceOracle amendment][])_
 
 Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/oracle.md), which represents a single price oracle that can store token prices.
 

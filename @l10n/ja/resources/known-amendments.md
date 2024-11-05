@@ -18,7 +18,7 @@ labels:
 | 名前                              | 登場       | ステータス                          |
 |:----------------------------------|:-----------|:------------------------------------|
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
-| [PriceOracle][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
+| [PriceOracle][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1" %}有効: 2024-11-02{% /badge %} |
 | [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
 | [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472" %}有効: 2024-09-27{% /badge %} |
@@ -1308,7 +1308,7 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 | Amendment    | PriceOracle |
 |:-------------|:------------|
 | Amendment ID | 96FD2F293A519AE1DB6F8BED23E4AD9119342DA7CB6BAFD00953D16C54205D8B |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
