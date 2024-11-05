@@ -4,10 +4,9 @@ parent: transaction-types.html
 blurb: Create or update an existing price oracle.
 labels:
   - Oracle
-status: not_enabled
 ---
 # OracleSet
-_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+_(Requires the [PriceOracle amendment][])_
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetOracle.cpp "Source")
 
