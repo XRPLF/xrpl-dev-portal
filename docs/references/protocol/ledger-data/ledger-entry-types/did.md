@@ -12,7 +12,7 @@ status: not_enabled
 
 _(Requires the [DID amendment][] {% not-enabled /%})_
 
-A `DID` ledger entry holds references to, or data associated with, a single [DID](/docs/concepts/decentralized-storage/decentralized-identifiers.md).
+A `DID` ledger entry holds references to, or data associated with, a single [DID](../../../../concepts/decentralized-storage/decentralized-identifiers.md).
 
 
 ## Example DID JSON
