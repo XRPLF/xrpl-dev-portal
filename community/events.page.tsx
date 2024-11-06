@@ -1105,7 +1105,7 @@ export default function Events() {
                   target="_blank"
                   href="https://www.xrpledgerapex.com/"
                 >
-                  {translate("Register Now")}
+                  {translate("Learn More")}
                 </a>
               </div>
             </div>
