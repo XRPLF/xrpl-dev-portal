@@ -301,8 +301,8 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 
 次の新しいトランザクションを追加します。
 
-- DIDDelete - XRPLアカウントに関連付けられたDIDを削除します。
-- DIDSet - 新しいDIDを作成するか、既存のDIDを更新します。
+- [DIDDelete](../docs/references/protocol/transactions/types/diddelete.md) - XRPLアカウントに関連付けられたDIDを削除します。
+- [DIDSet](../docs/references/protocol/transactions/types/didset.md) - 新しいDIDを作成するか、既存のDIDを更新します。
 
 新しい`DID`レジャーエントリタイプを追加します。
 

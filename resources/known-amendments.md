@@ -301,8 +301,8 @@ Adds to the ledger Decentralized Identifier (DID) functionality that conforms to
 
 Adds new transactions:
 
-- DIDDelete - Delete the DID associated with your XRPL account.
-- DIDSet - Create a new DID or update an existing one.
+- [DIDDelete](../docs/references/protocol/transactions/types/diddelete.md) - Delete the DID associated with your XRPL account.
+- [DIDSet](../docs/references/protocol/transactions/types/didset.md) - Create a new DID or update an existing one.
 
 Adds a new `DID` ledger entry type.
 
