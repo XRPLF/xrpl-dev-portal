@@ -19,7 +19,7 @@ labels:
 |:----------------------------------|:-----------|:------------------------------------|
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
 | [PriceOracle][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1" %}有効: 2024-11-02{% /badge %} |
-| [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
+| [DID][]                           | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D" %}有効: 2024-10-30{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
 | [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472" %}有効: 2024-09-27{% /badge %} |
 | [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171" %}有効: 2024-09-27{% /badge %} |
@@ -293,7 +293,7 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 | Amendment    | DID |
 |:-------------|:----|
 | Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -301,8 +301,8 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 
 次の新しいトランザクションを追加します。
 
-- DIDDelete - XRPLアカウントに関連付けられたDIDを削除します。
-- DIDSet - 新しいDIDを作成するか、既存のDIDを更新します。
+- [DIDDelete](../docs/references/protocol/transactions/types/diddelete.md) - XRPLアカウントに関連付けられたDIDを削除します。
+- [DIDSet](../docs/references/protocol/transactions/types/didset.md) - 新しいDIDを作成するか、既存のDIDを更新します。
 
 新しい`DID`レジャーエントリタイプを追加します。
 

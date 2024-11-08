@@ -5,13 +5,12 @@ seo:
     description: DIDを削除する。
 labels:
   - DID
-status: not_enabled
 ---
 # DIDDelete
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "ソース")
 
-_([DID Amendment][] {% not-enabled /%} が必要です。)_
+_([DID Amendment][])_
 
 指定した`Account`フィールドに関連付けられている[DIDレジャーエントリ](../../ledger-data/ledger-entry-types/did.md)を削除します。
 

@@ -5,12 +5,11 @@ seo:
     description: The definition and details of a Decentralized Identifier (DID).
 labels:
   - DID
-status: not_enabled
 ---
 # DID
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L330-L341 "Source")
 
-_(Requires the [DID amendment][] {% not-enabled /%})_
+_(Requires the [DID amendment][])_
 
 A `DID` ledger entry holds references to, or data associated with, a single [DID](../../../../concepts/decentralized-storage/decentralized-identifiers.md).
 
