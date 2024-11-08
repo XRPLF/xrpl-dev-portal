@@ -19,6 +19,8 @@ To make a digital signature, you use a cryptographic key pair associated with th
 
 Many [client libraries](../../references/client-libraries.md) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use key pairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
 
+Note: Client libraries (xrpl-py, xrpl.js) and the `rippled` CLI's [wallet_propose](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose) admin RPC command can be used to generate keys. Client libraries use `ED25519` as the default cryptographic algorithm, whereas the rippled CLI uses `SECP256K1` as the default algorithm. 
+
 
 ## Key Components
 
