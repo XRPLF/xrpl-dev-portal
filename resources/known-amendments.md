@@ -19,7 +19,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 |:----------------------------------|:-----------|:------------------------------|
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [PriceOracle][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1" %}Enabled: 2024-11-02{% /badge %} |
-| [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [DID][]                           | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D" %}Enabled: 2024-10-30{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
 | [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472" %}Enabled: 2024-09-27{% /badge %} |
 | [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171" %}Enabled: 2024-09-27{% /badge %} |
@@ -293,7 +293,7 @@ Also changes the OfferCreate transaction to return `tecEXPIRED` when trying to c
 | Amendment    | DID |
 |:-------------|:----|
 | Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 

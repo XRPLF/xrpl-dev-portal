@@ -5,13 +5,12 @@ seo:
     description: Create or update a DID.
 labels:
   - DID
-status: not_enabled
 ---
 # DIDSet
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "Source")
 
-_(Requires the [DID amendment][] {% not-enabled /%})_
+_(Requires the [DID amendment][])_
 
 Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or updates the fields of an existing one.
 

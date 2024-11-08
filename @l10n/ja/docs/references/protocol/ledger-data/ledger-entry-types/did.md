@@ -5,12 +5,11 @@ seo:
     description: 分散型ID(DID)の定義と詳細
 labels:
   - DID
-status: not_enabled
 ---
 # DID
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L330-L341 "ソース)
 
-_([DID Amendment][] {% not-enabled /%} が必要です。)_
+_([DID Amendment][])_
 
 `DID`のレジャーエントリは、単一の[DID](../../../../concepts/decentralized-storage/decentralized-identifiers.md)への参照、またはそれに関連するデータを保持します。
 
