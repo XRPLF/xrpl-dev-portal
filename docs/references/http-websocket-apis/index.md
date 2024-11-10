@@ -8,12 +8,28 @@ metadata:
 
 You can communicate with the XRP Ledger through the `rippled` servers' publicly available APIs.
 
-Currently, there are two API versions: `1` and `2` {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %}. The server reports the range of supported API versions in the `version` API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when `version` method is documented. -->
+Currently, there are two API versions: `1` and `2` {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %}. The server reports the range of supported API versions in the [`version` API method](public-api-methods/server-info-methods/version.md); you can specify which version to use in your API requests.
 
 Separate API requests can use different API versions even on the same persistent connection. For example, if you connect through WebSocket to a server that supports API versions 1 and 2, you can make an `account_tx` request using API version 2 and then make another `account_tx` request using API version 1 from the same connection.
 
-Future versions of `rippled` that introduce breaking changes will introduce a new API version 3.
 
+## Default API Versions
+
+The table below shows which version of the `rippled` API is used if you don't specify it in the request:
+
+| Request Method | API Version | Additional Notes |
+|----------------|-------------|------------------|
+| Websocket      | 1           | |
+| JSON-RPC       | 1           | |
+| Commandline    | 2           | The commandline only uses the latest API version. |
+| [xrpl.js](https://github.com/XRPLF/xrpl.js) | 2 | Defaults to [API v2][] starting in v4.0.0. |
+| [xrpl-py](https://github.com/XRPLF/xrpl-py) | 2 | Defaults to [API v2][] starting in v3.0.0. |
+
+{% admonition type="info" name="Note" %}
+Clio responses use [API v1][] by default, but support [API v2][] requests.
+{% /admonition %}
+
+Future versions of `rippled` that introduce breaking changes will introduce a new API version 3.
 
 ### Breaking Changes
 
@@ -42,23 +58,6 @@ The following types of changes are **non-breaking changes** and may occur withou
 
 - Adding a new field to a request or response, not including positional parameters.
 - Adding a new API method.
-
-
-## Default API Versions
-
-The table below shows which version of the `rippled` API is used if you don't specify it in the request:
-
-| Request Format | API Version | Additional Notes |
-|----------------|-------------|------------------|
-| Websocket      | 1           | |
-| JSON-RPC       | 1           | |
-| Commandline    | 2           | The commandline only uses the latest API version. |
-| [xrpl.js](https://github.com/XRPLF/xrpl.js) | 2 | Defaults to [API v2][] starting in v4.0.0. |
-| [xrpl-py](https://github.com/XRPLF/xrpl-py) | 2 | Defaults to [API v2][] starting in v3.0.0. |
-
-{% admonition type="info" name="Note" %}
-Clio responses use [API v1][] by default, but support [API v2][] requests.
-{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
 
