@@ -51,8 +51,8 @@ function CountXRPReceived(tx, address) {
     console.log("Transaction failed.")
     return
   }
-  if (tx.transaction.TransactionType === "Payment") {
-    if (tx.transaction.Destination !== address) {
+  if (tx.tx_json.TransactionType === "Payment") {
+    if (tx.tx_json.Destination !== address) {
       console.log("Not the destination of this payment.")
       return
     }
@@ -67,10 +67,10 @@ function CountXRPReceived(tx, address) {
     }
   } else if (["PaymentChannelClaim", "PaymentChannelFund", "OfferCreate",
           "CheckCash", "EscrowFinish"].includes(
-          tx.transaction.TransactionType)) {
+          tx.tx_json.TransactionType)) {
     CountXRPDifference(tx.meta.AffectedNodes, address)
   } else {
     console.log("Not a currency-delivering transaction type (" +
-                tx.transaction.TransactionType + ").")
+                tx.tx_json.TransactionType + ").")
   }
 }

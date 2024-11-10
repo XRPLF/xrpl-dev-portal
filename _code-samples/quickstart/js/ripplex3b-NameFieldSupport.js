@@ -136,7 +136,7 @@ async function sendXRP() {
   const prepared = await client.autofill({
     "TransactionType": "Payment",
     "Account": standby_wallet.address,
-    "Amount": xrpl.xrpToDrops(sendAmount),
+    "DeliverMax": xrpl.xrpToDrops(sendAmount),
     "Destination": standbyDestinationField.value
   })
       
@@ -186,7 +186,7 @@ async function oPsendXRP() {
   const prepared = await client.autofill({
     "TransactionType": "Payment",
     "Account": operational_wallet.address,
-    "Amount": xrpl.xrpToDrops(sendAmount),
+    "DeliverMax": xrpl.xrpToDrops(sendAmount),
     "Destination": operationalDestinationField.value
   })
 
