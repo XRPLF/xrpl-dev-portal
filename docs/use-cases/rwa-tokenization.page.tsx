@@ -161,11 +161,11 @@ function RwaTokenizationFeatures() {
   );
 }
 
-function FeatureItem({ title }) {
+function FeatureItem({ title, link }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
-    <li className="feature-item">
+    <li onClick={() => window.open(link, "_blank")} className="feature-item">
       <div className="feature-item__content">
         <span className="feature-item__title">{translate(title)}</span>
         <span className="right-arrow-item"> </span>
@@ -197,6 +197,7 @@ function DeveloperTools() {
               {features.map((feature, index) => (
                 <FeatureItem
                   key={index}
+                  link={feature.link}
                   title={feature.title}
                 />
               ))}
