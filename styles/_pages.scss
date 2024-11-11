@@ -1691,7 +1691,7 @@ html.light {
     'zoniqx': '../img/tokenization/zoniqx.png',
     'archax': '../img/tokenization/archax.png',
     'meld': '../img/tokenization/meld.png',
-    'ripple-logo': '../img/tokenization/ripple.png',
+    'ripple-logo': '../img/tokenization/ripple-logo.png',
   );
   @each $name, $path in $company-logos {
     .company-logo.#{$name} {
