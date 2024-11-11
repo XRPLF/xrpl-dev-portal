@@ -150,18 +150,18 @@ function RwaTokenizationFeatures() {
           ))}
         </div>
         <div className="cta-container">
-          <a
-            href="https://xrpl.org/docs/concepts/tokens/decentralized-exchange/autobridging"
+          <Link
+            to="/docs/concepts/tokens/decentralized-exchange/autobridging"
             className="btn btn-primary small-100 auto-bridge"
           >
             {translate("Learn About Auto-bridging")}
-          </a>
-          <a
-            href="https://xrpl.org/docs/concepts/tokens/fungible-tokens/paths"
+          </Link>
+          <Link
+            to="/docs/concepts/tokens/fungible-tokens/paths"
             className="btn btn-link"
           >
             {translate("Explore Pathfinding")}
-          </a>
+          </Link>
         </div>
       </div>
     </section>
@@ -417,7 +417,7 @@ export default function RwaTokenization() {
                 <Link
                   target="_blank"
                   className="com-card-link"
-                  to="/community/report-a-scam/"
+                  to="https://xrplresources.org/subscribe"
                 >
                   {translate("Sign up for the Newsletter")}
                 </Link>

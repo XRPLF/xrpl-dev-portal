@@ -1273,6 +1273,9 @@ $company-logos-light: (
 .developer-tools__image {
   background-image: url("../img/tokenization/lightmode/graphic.png");
 }
+.right-arrow-item::after {
+  content: url('../img/icons/lightmode/arrow-right-purple.svg');
+}
 .token-video-text-container {
   p {
     color: var(--XRPL-Primary-Black, #000);
