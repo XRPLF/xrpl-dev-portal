@@ -5,7 +5,7 @@ export const frontmatter = {
   seo: {
     title: "RWA Tokenization on XRP Ledger",
     description:
-      " Power blockchain tokenization use cases on the XRP Ledger. Learn how to build RWA tokenization solutions with developer tools and APIs. Get started today.",
+      "Power blockchain tokenization use cases on the XRP Ledger. Learn how to build RWA tokenization solutions with developer tools and APIs. Get started today.",
   },
 };
 
