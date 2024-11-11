@@ -121,10 +121,7 @@ function FeatureCard({ title, description }) {
   return (
     <article className="feature-card">
       <header className="feature-header">
-        <h2 className="feature-title">
-          {title}
-          <div className="right-arrow-item" />
-        </h2>
+        <h2 className="feature-title">{title}</h2>
       </header>
       <p className="feature-description">{translate(description)}</p>
     </article>
@@ -213,12 +210,12 @@ function DeveloperTools() {
               ))}
             </ul>
           </div>
-          <div className="col-lg-6">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c98dd39ff57551bf5900a0e69f90c7bc9a72b376cc462e2caebaaecdc622267d?placeholderIfAbsent=true&apiKey=7f21b7559e5f46cebba4373859bcb6b5"
-              alt="Developer tools illustration"
-              className="developer-tools__image img-fluid"
-            />
+          <div className="col-lg-6 m-h-300">
+            <div
+              className="developer-tools__image"
+              role="img"
+              aria-label="Developer tools illustration"
+            ></div>
           </div>
         </div>
       </div>

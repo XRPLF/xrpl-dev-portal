@@ -1270,7 +1270,9 @@ $company-logos-light: (
     background-image: url(#{$path});
   }
 }
-
+.developer-tools__image {
+  background-image: url("../img/tokenization/lightmode/graphic.png");
+}
 .token-video-text-container {
   p {
     color: var(--XRPL-Primary-Black, #000);

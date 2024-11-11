@@ -1779,10 +1779,17 @@ html.light {
   }
 
   .developer-tools__image {
-    max-width: 100%;
-    height: auto;
+    width: 110%;
+    height: 124%;
+    background-image: url("../img/tokenization/graphic.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
-
+  .m-h-300 {
+    min-height: 300px;
+  }
+  
   @media (max-width: 991px) {
     .developer-tools {
       padding: 50px 0;
