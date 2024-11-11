@@ -70,7 +70,7 @@ const companies = [
     className: "ripple-logo",
     alt: "Ripple",
     aspectRatio: 3.89,
-    link: "https://ripple.com/",
+    link: "https://ripple.com/rwa-tokenization",
   },
 ];
 
