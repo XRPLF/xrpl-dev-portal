@@ -1678,6 +1678,7 @@ html.light {
   }
 }
 .company-logo {
+  cursor: pointer;
   flex: 0 0 auto;
   max-width: 140px;
   aspect-ratio: var(--aspect-ratio);

@@ -11,61 +11,66 @@ export const frontmatter = {
 
 const benefitsData = [
   {
-    iconClass: 'low-fees',
-    title: 'Fast Settlement and Low Fees',
+    iconClass: "low-fees",
+    title: "Fast Settlement and Low Fees",
     description:
-      'Leverage transaction finality in 3-5 seconds at fractions of a cent, making XRP Ledger an ideal platform for handling large-scale tokenization with cost-effective, high-speed transactions.',
+      "Leverage transaction finality in 3-5 seconds at fractions of a cent, making XRP Ledger an ideal platform for handling large-scale tokenization with cost-effective, high-speed transactions.",
   },
   {
-    iconClass: 'access',
-    title: 'Access to Liquidity',
+    iconClass: "access",
+    title: "Access to Liquidity",
     description:
       "Integrate XRP Ledger's native liquidity pools and order books directly into your applications via API. Liquidity is aggregated at the protocol layer, rather than fragmented across various applications, providing developers with seamless access at the core blockchain level.",
   },
   {
-    iconClass: 'full-stack',
-    title: 'Full-Stack Tokenization Tools',
+    iconClass: "full-stack",
+    title: "Full-Stack Tokenization Tools",
     description:
       "Issue, manage, and trade real-world assets without needing to build smart contracts. XRP Ledger's built-in functionality and compliance-enabling features allows you to focus on building without additional layers of complexity.",
   },
   {
-    iconClass: 'best-in-class',
-    title: 'Best-in-Class On-chain DEX',
+    iconClass: "best-in-class",
+    title: "Best-in-Class On-chain DEX",
     description:
-      'Utilize XRP Ledger\'s native decentralized exchange (DEX) with integrated Automated Market Makers (AMM) and on-chain 24/7 order books, providing a developer-friendly environment to create DeFi solutions for traditional finance applications.',
+      "Utilize XRP Ledger's native decentralized exchange (DEX) with integrated Automated Market Makers (AMM) and on-chain 24/7 order books, providing a developer-friendly environment to create DeFi solutions for traditional finance applications.",
   },
   {
-    iconClass: 'cross-chain',
-    title: 'Cross-Chain Interoperability*',
+    iconClass: "cross-chain",
+    title: "Cross-Chain Interoperability*",
     description:
       "Enable seamless interaction with other blockchains via secure cross-chain bridges, allowing you to expand your project's functionality and liquidity options across ecosystems.",
   },
 ];
 const companies = [
   {
-    className: 'open-eden',
-    alt: 'Open Eden',
+    className: "open-eden",
+    alt: "Open Eden",
     aspectRatio: 5,
+    link: "https://openeden.com/tbill",
   },
   {
-    className: 'zoniqx',
-    alt: 'Zoniqx',
+    className: "zoniqx",
+    alt: "Zoniqx",
     aspectRatio: 2.7,
+    link: "https://www.zoniqx.com/",
   },
   {
-    className: 'archax',
-    alt: 'Archax',
+    className: "archax",
+    alt: "Archax",
     aspectRatio: 1.25,
+    link: "https://archax.com/",
   },
   {
-    className: 'meld',
-    alt: 'Meld',
+    className: "meld",
+    alt: "Meld",
     aspectRatio: 0.81,
+    link: "https://www.meld.gold/",
   },
   {
-    className: 'ripple-logo',
-    alt: 'Ripple',
+    className: "ripple-logo",
+    alt: "Ripple",
     aspectRatio: 3.89,
+    link: "https://ripple.com/",
   },
 ];
 
@@ -76,11 +81,11 @@ const features = [
   },
   {
     title: "DEX Integration",
-    link: "https://xrpl.org/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange"
+    link: "https://xrpl.org/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange",
   },
   {
     title: "Cross-chain Interoperability",
-    link: "https://docs.xrplevm.org/docs/axelar/intro-to-axelar/"
+    link: "https://docs.xrplevm.org/docs/axelar/intro-to-axelar/",
   },
 ];
 const featuresToken = [
@@ -109,7 +114,6 @@ const featuresToken = [
     number: "04",
   },
 ];
-
 
 function FeatureCard({ title, description }) {
   const { useTranslate } = useThemeHooks();
@@ -149,10 +153,16 @@ function RwaTokenizationFeatures() {
           ))}
         </div>
         <div className="cta-container">
-          <a href="https://xrpl.org/docs/concepts/tokens/decentralized-exchange/autobridging" className="btn btn-primary small-100 auto-bridge">
+          <a
+            href="https://xrpl.org/docs/concepts/tokens/decentralized-exchange/autobridging"
+            className="btn btn-primary small-100 auto-bridge"
+          >
             {translate("Learn About Auto-bridging")}
           </a>
-          <a href="https://xrpl.org/docs/concepts/tokens/fungible-tokens/paths" className="btn btn-link">
+          <a
+            href="https://xrpl.org/docs/concepts/tokens/fungible-tokens/paths"
+            className="btn btn-link"
+          >
             {translate("Explore Pathfinding")}
           </a>
         </div>
@@ -216,13 +226,14 @@ function DeveloperTools() {
   );
 }
 
-function CompanyLogo({ className, alt, aspectRatio }) {
+function CompanyLogo({ className, alt, aspectRatio, link }) {
   return (
     <div
+      onClick={() => window.open(link, "_blank")}
       className={`company-logo ${className}`}
       role="img"
       aria-label={alt}
-      style={{ '--aspect-ratio': aspectRatio }}
+      style={{ "--aspect-ratio": aspectRatio }}
     />
   );
 }
@@ -237,7 +248,7 @@ function UpcomingEvents() {
         )}
       </h2>
       <div className="upcoming-events__logo-container">
-      {companies.map((company, index) => (
+        {companies.map((company, index) => (
           <CompanyLogo key={index} {...company} />
         ))}
       </div>
@@ -356,7 +367,12 @@ export default function RwaTokenization() {
               <h6 className="card-title">{translate("Developer Resources")}</h6>
               <p className="card-description">
                 {translate("Easily integrate with ")}
-                <a target="_blank" href={"https://xrpl.org/docs/tutorials/public-servers"}>{translate("existing infrastructure ")}</a>
+                <a
+                  target="_blank"
+                  href={"https://xrpl.org/docs/tutorials/public-servers"}
+                >
+                  {translate("existing infrastructure ")}
+                </a>
                 {translate(
                   "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
                 )}
@@ -385,7 +401,9 @@ export default function RwaTokenization() {
               alt="Bottom Right Image"
             />
             <div className="card-content custom-gap">
-            <h6 className="card-title">{translate("Learn & Stay Updated")}</h6>
+              <h6 className="card-title">
+                {translate("Learn & Stay Updated")}
+              </h6>
               <p className="card-description">
                 {translate(
                   "Stay ahead of the curve with the latest developments in RWA tokenization on the XRP Ledger by joining the developer Discord and signing up for the XRPL Community Newsletter."
@@ -395,7 +413,7 @@ export default function RwaTokenization() {
                 <Link
                   target="_blank"
                   className="com-card-link mt-16"
-                  to="/community/report-a-scam/"
+                  to="https://discord.gg/sfX3ERAMjH"
                 >
                   {translate("Join the Developer Discord")}
                 </Link>
