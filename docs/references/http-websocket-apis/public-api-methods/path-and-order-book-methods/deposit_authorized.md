@@ -59,7 +59,7 @@ The request includes the following parameters:
 |:----------------------|:---------------------------|:------------------------|
 | `source_account`      | String - [Address][]       | The sender of a possible payment. |
 | `destination_account` | String - [Address][]       | The recipient of a possible payment. |
-| `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`         | String                     | _(Optional)_ A 32-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 
