@@ -996,6 +996,17 @@ const events = [
     image:  require('../static/img/events/aquarium.png'),
     end_date: "December 11, 2024",
   },
+  {
+    name: "XRPL Meetup NYC",
+    description:
+      "Get ready for an unforgettable evening at the XRPL Meetup NYC!",
+    type: "meetup",
+    link: "https://xrpl.at/Aquarium-XRPL-Residency-DemoDay4",
+    location: " New York, New York",
+    date: "November 19, 2024",
+    image:  require('../static/img/events/new-york.jpeg'),
+    end_date: "November 19, 2024",
+  },
 ];
 
 

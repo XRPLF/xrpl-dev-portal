@@ -330,6 +330,18 @@ const events = [
     end_date: "October 25, 2024",
   },
   {
+    name: "XRPL Meetup NYC",
+    description:
+      "Get ready for an unforgettable evening at the XRPL Meetup NYC!",
+    type: "meetup",
+    link: "https://xrpl.at/Aquarium-XRPL-Residency-DemoDay4",
+    location: " New York, New York",
+    date: "November 19, 2024",
+    image:  require('../static/img/events/new-york.jpeg'),
+    end_date: "November 19, 2024",
+    start_date: "November 19, 2024",
+  },
+  {
     name: "XRPL Builder Office Hours",
     description:
       "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
