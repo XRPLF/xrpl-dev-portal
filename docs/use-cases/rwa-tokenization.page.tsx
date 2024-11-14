@@ -135,9 +135,9 @@ function RwaTokenizationFeatures() {
     <section className="rwa-tokenization">
       <div className="container max-w-1150">
         <header className="rwa-header">
-          <h1 className="rwa-title">
+          <h2 className="rwa-title">
             {translate("Why Developers Choose XRPL for RWA Tokenization")}
-          </h1>
+          </h2>
           <p className="rwa-subtitle">
             {translate(
               "A developer-first blockchain for building efficient, scalable tokenization solutions."
@@ -284,13 +284,13 @@ export default function RwaTokenization() {
           )}
         </h1>
         <div className="d-lg-block small-100 ">
-          <a
+          <Link
             className="btn btn-primary btn-arrow-out"
             target="_blank"
-            href="https://xrpl.org/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token"
+            to="/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token"
           >
             {translate("Get Started Now")}
-          </a>
+          </Link>
         </div>
       </div>
       <div className="token-video-container">
@@ -334,13 +334,13 @@ export default function RwaTokenization() {
             </div>
           </div>
           <div className="d-lg-block small-100">
-            <a
+            <Link
               className="btn btn-primary btn-arrow-out"
               target="_blank"
-              href="https://xrpl.org/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token"
+              to="/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token"
             >
               {translate("Start Building Now")}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -364,12 +364,12 @@ export default function RwaTokenization() {
               <h6 className="card-title">{translate("Developer Resources")}</h6>
               <p className="card-description">
                 {translate("Easily integrate with ")}
-                <a
+                <Link
                   target="_blank"
-                  href={"https://xrpl.org/docs/tutorials/public-servers"}
+                  to="/docs/tutorials/public-servers"
                 >
                   {translate("existing infrastructure ")}
-                </a>
+                </Link>
                 {translate(
                   "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
                 )}
