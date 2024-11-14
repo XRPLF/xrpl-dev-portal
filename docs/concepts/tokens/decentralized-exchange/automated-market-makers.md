@@ -65,6 +65,85 @@ The diagram below illustrates how an offer interacts with other offers and AMM l
 
 ![Offer path through DEX.](/docs/img/amm-clob-diagram.png)
 
+You can also use the test harness below to experiment with offers and AMM interactions.
+
+<!-- Interactive Tutorial -->
+
+<script src="https://unpkg.com/xrpl@4.0.0/build/xrpl-latest.js"></script>
+<script type="application/javascript" src="/js/tutorials/amm-clob-interactive.js"></script>
+
+<div style="padding: 5px">
+  <div id="header">
+    <button id="startButton" type="button" class="btn btn-primary" style="margin-bottom: 5px">Start Demo</button>
+  </div>
+  <div id="amm-box" style="border: 1px solid black; height: 250px; margin-bottom: 5px; padding: 5px; background-color: #f0f0f0">
+  <p style="font-weight: bold">XRP/TST AMM</p>
+  <textarea id="ammInfoField" style="height: 80%; width: 100%; resize: none"></textarea>
+  </div>
+  <div id="offers-box" style="display:flex; gap: 5px">
+    <div id="alice-box" style="border: 1px solid black; width: 50%; background-color: #f0f0f0; padding: 5px">
+      <p style="font-weight: bold">Alice's Wallet</p>
+      <textarea readonly id="aliceWalletField" style="height: 30px; width: 200px; resize: none"></textarea>
+      <div style="display: flex; gap: 10px">
+        <label style="display: flex; align-items: center; gap: 10px">Taker Gets:
+          <textarea id="aliceTakerGetsAmount" style="height: 30px; width: 100px; resize: none"></textarea>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px">Currency:
+          <select id="aliceTakerGetsCurrency" style="height: 30px">
+            <option>XRP</option>
+            <option>USD</option>
+          </select>
+        </label>
+      </div>
+      <div style="display:flex; gap: 10px">
+        <label style="display: flex; align-items: center; gap: 10px">Taker Pays:
+          <textarea id="aliceTakerPaysAmount" style="height: 30px; width: 100px; resize: none"></textarea>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px">Currency:
+          <select id="aliceTakerPaysCurrency" style="height: 30px">
+            <option>USD</option>
+            <option>XRP</option>
+          </select>
+        </label>
+      </div>
+      <button id= "aCreateOfferButton" type="button" class="btn btn-primary" style="margin-bottom: 5px">Create Offer</button>
+      <p style="font-weight: bold">Alice's Offers</p>
+      <textarea id="aliceOffersField" style="height: 210px; width: 100%; resize: none"></textarea>
+    </div>
+    <div id="bob-box" style="border: 1px solid black; width: 50%; background-color: #f0f0f0; padding: 5px">
+      <p style="font-weight: bold">Bob's Wallet</p>
+      <textarea readonly id="bobWalletField" style="height: 30px; width: 200px; resize: none"></textarea>
+      <div style="display: flex; gap: 10px">
+        <label style="display: flex; align-items: center; gap: 10px">Taker Gets:
+          <textarea id="bobTakerGetsAmount" style="height: 30px; width: 100px; resize: none"></textarea>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px">Currency:
+          <select id="bobTakerGetsCurrency" style="height: 30px">
+            <option>XRP</option>
+            <option>USD</option>
+          </select>
+        </label>
+      </div>
+      <div style="display:flex; gap: 10px">
+        <label style="display: flex; align-items: center; gap: 10px">Taker Pays:
+          <textarea id="bobTakerPaysAmount" style="height: 30px; width: 100px; resize: none"></textarea>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px">Currency:
+          <select id="bobTakerPaysCurrency" style="height: 30px">
+            <option>USD</option>
+            <option>XRP</option>
+          </select>
+        </label>
+      </div>
+      <button id="bCreateOfferButton" type="button" class="btn btn-primary" style="margin-bottom: 5px">Create Offer</button>
+      <p style="font-weight: bold">Bob's Offers</p>
+      <textarea id="bobOffersField" style="height: 210px; width: 100%; resize: none"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Interactive Tutorial -->
+
 ### Restrictions on Assets
 
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
