@@ -1270,6 +1270,11 @@ $company-logos-light: (
     background-image: url(#{$path});
   }
 }
+.token-features-section {
+  .btn-link {
+    color: #7919FF;
+  }
+}
 .developer-tools__image {
   background-image: url("../img/tokenization/lightmode/graphic.png");
 }
