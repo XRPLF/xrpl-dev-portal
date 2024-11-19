@@ -49,9 +49,9 @@ print(f"\n  Encoded Transaction MEMO: {payment_tx_signed.memos}")
 submit_tx_regular = submit_and_wait(transaction=payment_tx_signed, client=client)
 submit_tx_regular = submit_tx_regular.result
 
-tx_MemoData = bytes.fromhex(submit_tx_regular['Memos'][0]['Memo']['MemoData']).decode('utf-8')
-tx_MemoFormat = bytes.fromhex(submit_tx_regular['Memos'][0]['Memo']['MemoFormat']).decode('utf-8')
-tx_MemoType = bytes.fromhex(submit_tx_regular['Memos'][0]['Memo']['MemoType']).decode('utf-8')
+tx_MemoData = bytes.fromhex(submit_tx_regular['tx_json']['Memos'][0]['Memo']['MemoData']).decode('utf-8')
+tx_MemoFormat = bytes.fromhex(submit_tx_regular['tx_json']['Memos'][0]['Memo']['MemoFormat']).decode('utf-8')
+tx_MemoType = bytes.fromhex(submit_tx_regular['tx_json']['Memos'][0]['Memo']['MemoType']).decode('utf-8')
 
 print(f"  Decoded Transaction MEMO:")
 print(f"         MemoData: {tx_MemoData}")

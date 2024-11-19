@@ -44,8 +44,8 @@ stxn_result = stxn_response.result
 
 
 # Parse result and print out the neccesary info
-print(stxn_result["Account"])
-print(stxn_result["Sequence"])
+print(stxn_result["tx_json"]["Account"])
+print(stxn_result["tx_json"]["Sequence"])
 
 print(stxn_result["meta"]["TransactionResult"])
 print(stxn_result["hash"])

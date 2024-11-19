@@ -23,7 +23,7 @@ async function main() {
   const prepared = await client.autofill({
     "TransactionType": "Payment",
     "Account": wallet.address,
-    "Amount": xrpl.xrpToDrops("22"),
+    "DeliverMax": xrpl.xrpToDrops("22"),
     "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
   })
   const max_ledger = prepared.LastLedgerSequence

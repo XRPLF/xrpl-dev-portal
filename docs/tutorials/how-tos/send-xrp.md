@@ -102,7 +102,7 @@ Typically, we create XRP Ledger transactions as objects in the JSON [transaction
 {
   "TransactionType": "Payment",
   "Account": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-  "Amount": "2000000",
+  "DeliverMax": "2000000",
   "Destination": "rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"
 }
 ```
@@ -112,7 +112,7 @@ The bare minimum set of instructions you must provide for an XRP Payment is:
 - An indicator that this is a payment. (`"TransactionType": "Payment"`)
 - The sending address. (`"Account"`)
 - The address that should receive the XRP (`"Destination"`). This can't be the same as the sending address.
-- The amount of XRP to send (`"Amount"`). Typically, this is specified as an integer in "drops" of XRP, where 1,000,000 drops equals 1 XRP.
+- The amount of XRP to send (`"DeliverMax"`). Typically, this is specified as an integer in "drops" of XRP, where 1,000,000 drops equals 1 XRP.
 
 Technically, a transaction must contain some additional fields, and certain optional fields such as `LastLedgerSequence` are strongly recommended. Some other language-specific notes:
 
