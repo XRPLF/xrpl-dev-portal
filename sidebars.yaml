@@ -32,6 +32,7 @@
                 - page: docs/use-cases/tokenization/nftoken-marketplace.md
                 - page: docs/use-cases/tokenization/authorized-minter.md
                 - page: docs/use-cases/tokenization/digital-artist.md
+            - page: docs/use-cases/tokenization/real-world-assets.page.tsx
         - page: docs/use-cases/defi/index.md
           expanded: false
           items:
