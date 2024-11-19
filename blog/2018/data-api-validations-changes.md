@@ -3,10 +3,9 @@ date: 2018-10-23
 category: 2018
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Updates Coming to Data API
 

@@ -3,10 +3,9 @@ date: 2016-06-15
 category: 2016
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Data API v2.2 Released
 

@@ -74,8 +74,6 @@ An example of a successful response:
 ```json
 200 OK
 
-Headers
-
 {
   "result": {
     "version": {

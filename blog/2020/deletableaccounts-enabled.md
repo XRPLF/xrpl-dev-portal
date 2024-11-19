@@ -3,10 +3,9 @@ category: 2020
 date: 2020-05-08
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # DeletableAccounts is Now Enabled
 

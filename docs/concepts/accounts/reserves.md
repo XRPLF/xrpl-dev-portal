@@ -38,7 +38,7 @@ An exception to the owner reserve is that you can create your first two trust li
 
 Many objects in the ledger (ledger entries) are owned by a particular account. Usually, the owner is the account that created the object. Each object increases the owner's total reserve requirement by the owner reserve. When objects are removed from the ledger, they no longer count against the reserve requirement.
 
-Objects that count towards their owner's reserve requirement include: [Checks](../payment-types/checks.md), [Deposit Preauthorizations](depositauth.md#preauthorization), [Escrows](../payment-types/escrow.md), [NFT Offers](../tokens/nfts/trading.md), [NFT Pages](../tokens/nfts/index.md), [Offers](../../references/protocol/ledger-data/ledger-entry-types/offer.md), [Oracles](../xrpl-sidechains/price-oracles.md), [Payment Channels](../payment-types/payment-channels.md), [Signer Lists](multi-signing.md), [Tickets](tickets.md), and [Trust Lines](../tokens/fungible-tokens/index.md).
+Objects that count towards their owner's reserve requirement include: [Checks](../payment-types/checks.md), [Deposit Preauthorizations](depositauth.md#preauthorization), [Escrows](../payment-types/escrow.md), [NFT Offers](../tokens/nfts/trading.md), [NFT Pages](../tokens/nfts/index.md), [Offers](../../references/protocol/ledger-data/ledger-entry-types/offer.md), [Oracles](../decentralized-storage/price-oracles.md), [Payment Channels](../payment-types/payment-channels.md), [Signer Lists](multi-signing.md), [Tickets](tickets.md), and [Trust Lines](../tokens/fungible-tokens/index.md).
 
 Some special cases:
 

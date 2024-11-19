@@ -3,10 +3,9 @@ category: 2022
 date: 2022-11-30
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: Ziggurat
 

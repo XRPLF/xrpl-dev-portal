@@ -3,10 +3,9 @@ category: 2020
 date: 2020-05-02
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: XRPScan
 

@@ -4,10 +4,9 @@ parent: transaction-types.html
 blurb: Delete an existing price oracle.
 labels:
   - Oracle
-status: not_enabled
 ---
 # OracleDelete
-_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+_(Requires the [PriceOracle amendment][])_
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DeleteOracle.cpp "Source")
 

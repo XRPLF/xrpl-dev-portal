@@ -3,10 +3,9 @@ category: 2022
 date: 2022-03-01
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The NFT-Devnet Has Been Reset
 

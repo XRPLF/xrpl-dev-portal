@@ -3,10 +3,9 @@ labels:
     - Amendments
 category: 2019
 date: 2019-04-02
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # fixTakerDryOfferRemoval is Now Available
 
