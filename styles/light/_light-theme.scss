@@ -1275,6 +1275,11 @@ $company-logos-light: (
     color: #7919FF;
   }
 }
+.card-description {
+  a {
+    color: #7919FF !important;
+  }
+}
 .developer-tools__image {
   background-image: url("../img/tokenization/lightmode/graphic.png");
 }
