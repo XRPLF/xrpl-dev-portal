@@ -4,6 +4,6 @@
   "version": "0.0.2",
   "license": "MIT",
   "dependencies": {
-    "xrpl": "^3.0.0"
+    "xrpl": "^4.0.0"
   }
 }

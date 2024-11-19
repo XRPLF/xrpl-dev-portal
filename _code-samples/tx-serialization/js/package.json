@@ -10,7 +10,7 @@
     "fs": "^0.0.1-security",
     "minimist": "^1.2.7",
     "ripple-address-codec": "^5.0.0",
-    "xrpl": "^3.0.0"
+    "xrpl": "^4.0.0"
   },
   "main": "index.js",
   "scripts": {

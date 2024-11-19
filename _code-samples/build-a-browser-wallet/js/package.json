@@ -16,6 +16,6 @@
     },
     "dependencies": {
         "dotenv": "^16.0.3",
-        "xrpl": "^3.0.0"
+        "xrpl": "^4.0.0"
     }
 }

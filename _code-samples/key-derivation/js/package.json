@@ -12,7 +12,7 @@
     "ripple-address-codec": "^5.0.0",
     "ripple-keypairs": "^2.0.0",
     "secp256k1": "^5.0.0",
-    "xrpl": "^3.0.0"
+    "xrpl": "^4.0.0"
   },
   "main": "index.js",
   "scripts": {
