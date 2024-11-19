@@ -41,6 +41,14 @@ const explorers_tools = [
     href: "https://xrpl.services/tokens",
     img: require("../../static/img/dev-tools/tokenlist.png"),
   },
+  {
+    id: "xrplwin",
+    title: "XRPLWin Explorer",
+    description:
+      "View detailed transaction breakdown, transaction participants, examine account details, explorer offers transaction exporter and other useful tools.",
+    href: "https://xrplwin.com/",
+    img: require("../../static/img/dev-tools/xrplwin.png"),
+  },
 ];
 
 const api_access_tools = [
