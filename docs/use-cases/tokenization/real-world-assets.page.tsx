@@ -273,7 +273,7 @@ export default function RwaTokenization() {
       <div className="position-relative d-none-sm">
         <img
           alt="orange waves"
-          src={require("../../static/img/backgrounds/events-orange.svg")}
+          src={require("./../../../static/img/backgrounds/events-orange.svg")}
           id="events-orange"
         />
       </div>
