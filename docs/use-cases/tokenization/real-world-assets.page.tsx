@@ -77,7 +77,7 @@ const companies = [
 const features = [
   {
     title: "Token Issuance Tutorial",
-    link: "https://xrpl.org/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token",
+    link: "/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token",
   },
   {
     title: "DEX Integration",
