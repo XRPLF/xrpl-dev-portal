@@ -31,7 +31,7 @@ The funds are transferred through the Issuer, but ultimately the Issuer’s bala
 
 Rippling can involve several accounts as the XRPL server finds a path to transfer the funds. For example, the funds might flow between two issuer accounts that have a trust line between them.
 
-[![Holder A transfers currency through Issuers A and B to get to Holder B.](/docs/img/cpt-rippling4.png "Holder A transfers currency through Issuers A and B to get to Holder B.")](/docs/img/cpt-rippling4.png)
+[![Holder A transfers currency through Issuers A and B to get to Holder B.](/docs/img/cpt-rippling5.png "Holder A transfers currency through Issuers A and B to get to Holder B.")](/docs/img/cpt-rippling5.png)
 
 Other accounts such as liquidity providers and normal holders should not allow rippling. Rippling can lead to exploits where balances shift unexpectedly, funds are allocated at higher rates, and the holder ends up losing money on a transaction where they played no part.
 
