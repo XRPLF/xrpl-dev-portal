@@ -1835,14 +1835,6 @@ html.light {
     color: #e0e0e1;
   }
 
-  .feature-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
-
   .cta-container {
     display: flex;
     justify-content: center;
@@ -1884,12 +1876,28 @@ html.light {
       align-items: center;
     }
   }
-
+  .feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 20px;
   .feature-card {
-    flex: 1 1 240px;
-    max-width: 300px;
-    cursor: pointer;
+    flex: 1 0 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      flex: 1 0 calc(50% - 40px);
+      max-width: calc(50% - 40px);
+    }
+
+    @media (min-width: 1200px) {
+      flex: 1 0 calc(25% - 30px);
+      max-width: calc(25% - 30px);
+    }
   }
+}
 
   .feature-card:hover .right-arrow-item::after {
     transform: translateX(4px);
