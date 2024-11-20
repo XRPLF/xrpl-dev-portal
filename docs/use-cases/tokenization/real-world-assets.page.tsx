@@ -3,7 +3,7 @@ import { Link } from "@redocly/theme/components/Link/Link";
 
 export const frontmatter = {
   seo: {
-    title: "RWA Tokenization on XRP Ledger",
+    title: "Real-World Asset Tokenization",
     description:
       "Power blockchain tokenization use cases on the XRP Ledger. Learn how to build RWA tokenization solutions with developer tools and APIs. Get started today.",
   },
