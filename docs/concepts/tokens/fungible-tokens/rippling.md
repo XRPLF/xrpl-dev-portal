@@ -15,19 +15,23 @@ Issuers distribute currency to holders over trust lines. When a holder creates a
 
 [![Issuer with trust lines to two holders.](/docs/img/cpt-rippling1.png "Issuer with trust lines to two holders.")](/docs/img/cpt-rippling1.png)
 
-The Issuer transfers 50 USD to Holder A, and 10 USD to Holder B.
+The Issuer transfers 50 USD to Holder A, and 10 USD to Holder B. For these trust lines, the Issuer has a net balance of -60 USD.
 
 [![Issuer sends currency to holders.](/docs/img/cpt-rippling2.png "Issuer sends currency to holders.")](/docs/img/cpt-rippling2.png)
 
-Since both accounts are willing to accept payments in USD tokens, Holder A can send a payment of 20 USD to Holder B. Internally, Holder A’s side of the trust line is reduced by 20 USD and the Issuer’s side of the trust line is increased by 20 USD. 
+Since both accounts are willing to accept payments in USD tokens, Holder A can send a payment of 20 USD to Holder B. This appears to be a single transaction, but it actually involves two steps. Holder A sees their balance go down by 20 USD, Holder B sees their balance go up by 20 USD. Behind the scenes, though, Holder A’s side of the trust line to the Issuer is reduced by 20 USD. The Issuer’s side of the trust line is increased by 20 USD, bringing its net balance to -40 USD.
 
 [![Holder A sends currency through the Issuer.](/docs/img/cpt-rippling3.png "Holder A sends currency through the Issuer.")](/docs/img/cpt-rippling3.png)
 
-Next, the Issuer side of the trust line to Holder B is reduced by 20 USD, and the account of Holder B increases by 20 USD.
+Then the Issuer side of the trust line to Holder B is reduced by 20 USD, and the account of Holder B is increased by 20 USD.
 
 [![Holder B receives currency through the Issuer.](/docs/img/cpt-rippling4.png "Holder B receives currency through the Issuer.")](/docs/img/cpt-rippling4.png)
 
 The funds are transferred through the Issuer, but ultimately the Issuer’s balance doesn’t change. This flow of funds is known as _rippling_. Issuing accounts must allow rippling so that their holders can transfer funds to one another. 
+
+Rippling can involve several accounts as the XRPL server finds a path to transfer the funds. For example, the funds might flow between two issuer accounts that have a trust line between them.
+
+[![Holder A transfers currency through Issuers A and B to get to Holder B.](/docs/img/cpt-rippling4.png "Holder A transfers currency through Issuers A and B to get to Holder B.")](/docs/img/cpt-rippling4.png)
 
 Other accounts such as liquidity providers and normal holders should not allow rippling. Rippling can lead to exploits where balances shift unexpectedly, funds are allocated at higher rates, and the holder ends up losing money on a transaction where they played no part.
 
