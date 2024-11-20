@@ -81,7 +81,7 @@ const features = [
   },
   {
     title: "DEX Integration",
-    link: "https://xrpl.org/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange",
+    link: "/docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange",
   },
   {
     title: "Cross-chain Interoperability",
@@ -172,12 +172,14 @@ function FeatureItem({ title, link }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
-    <li onClick={() => window.open(link, "_blank")} className="feature-item">
+    <li className="feature-item">
+      <Link to={link} target="_blank">
       <div className="feature-item__content">
         <span className="feature-item__title">{translate(title)}</span>
         <span className="right-arrow-item"> </span>
       </div>
       <div className="feature-item__divider"></div>
+      </Link>
     </li>
   );
 }
