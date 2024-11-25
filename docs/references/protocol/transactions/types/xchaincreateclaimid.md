@@ -46,7 +46,7 @@ It also includes the account on the source chain that locks or burns the funds o
 | Field              | JSON Type         | [Internal Type][] | Required? | Description |
 |:-------------------|:------------------|:------------------|:----------|-------------|
 | `OtherChainSource` | String            | Account           | Yes       | The account that must send the `XChainCommit` transaction on the source chain. |
-| `SignatureReward`  | String            | Account           | Yes       | The amount, in XRP, to reward the witness servers for providing signatures. This must match the amount on the `Bridge` ledger object. |
+| `SignatureReward`  | [Currency Amount][] | Amount           | Yes       | The amount, in XRP, to reward the witness servers for providing signatures. This must match the amount on the `Bridge` ledger object. |
 | `XChainBridge`     | XChainBridge      | XChain_Bridge     | Yes       | The bridge to create the claim ID for. |
 
 
