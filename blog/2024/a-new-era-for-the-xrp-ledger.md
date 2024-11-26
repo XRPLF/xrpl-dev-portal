@@ -52,6 +52,7 @@ To fulfill its purpose and meet its objectives, the Foundation has outlined an e
 * Engaging in regulatory advocacy
 * Driving interoperability with other blockchain networks
 
+
 To measure the success of the new Foundation, a number of key indicators will be monitored, including:
 
 * Increase in developer engagement
@@ -83,7 +84,7 @@ The XRPL Foundation is committed to transparency from day one and will openly pu
 
 As the new XRPL Foundation embarks on its journey, several critical steps lie ahead:
 
-1. Transfer of assets (listed in the [earlier blog pos](./evolving-the-xrp-ledger.md)) from the previous entity to the new Foundation.
+1. Transfer of assets (listed in the [earlier blog post](./evolving-the-xrp-ledger.md)) from the previous entity to the new Foundation.
 2. Recruitment of an Executive Director and staff to lead day-to-day operations.
 3. Further building out of relevant committees and establishing processes for efficient governance.
  
