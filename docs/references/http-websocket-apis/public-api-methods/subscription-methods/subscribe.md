@@ -259,105 +259,100 @@ The `accounts_proposed` subscription works the same way, except it also includes
 
 ```json
 {
-  "status": "closed",
-  "type": "transaction",
+  "close_time_iso": "2024-11-01T23:59:01Z",
   "engine_result": "tesSUCCESS",
   "engine_result_code": 0,
-  "engine_result_message": "The transaction was applied.",
-  "ledger_hash": "989AFBFD65D820C6BD85301B740F5D592F060668A90EEF5EC1815EBA27D58FE8",
-  "ledger_index": 7125442,
+  "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+  "hash": "6489E52A909208E371ACE82E19CAE59896C7F8BA40E7C36C5B8AA3C451914BED",
+  "ledger_hash": "0B6F44849E6D702D0CFB447FDBD7B603C269E9EEECE9176882EF376E0C9DFF6A",
+  "ledger_index": 1969852,
   "meta": {
     "AffectedNodes": [
       {
         "ModifiedNode": {
           "FinalFields": {
+            "Account": "rH3PxjJPrrkvsATddBXkayjAyWR8xigaE8",
+            "Balance": "39999964",
             "Flags": 0,
-            "IndexPrevious": "0000000000000000",
-            "Owner": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
-            "RootIndex": "ABD8CE2D1205D0C062876E9E1F3CBDC902ED8EF4E8D3D071B962C7ED0E113E68"
+            "OwnerCount": 0,
+            "Sequence": 1969812
           },
-          "LedgerEntryType": "DirectoryNode",
-          "LedgerIndex": "0BBDEE7D0BE120F7BF27640B5245EBFE0C5FD5281988BA823C44477A70262A4D"
-        }
-      },
-      {
-        "DeletedNode": {
-          "FinalFields": {
-            "Account": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
-            "BookDirectory": "892E892DC63D8F70DCF5C9ECF29394FF7DD3DC6F47DB8EB34A03920BFC5E99BE",
-            "BookNode": "0000000000000000",
-            "Flags": 0,
-            "OwnerNode": "000000000000006E",
-            "PreviousTxnID": "58A17D95770F8D07E08B81A85896F4032A328B6C2BDCDEC0A00F3EF3914DCF0A",
-            "PreviousTxnLgrSeq": 7125330,
-            "Sequence": 540691,
-            "TakerGets": "4401967683",
-            "TakerPays": {
-              "currency": "BTC",
-              "issuer": "rNPRNzBB92BVpAhhZr4iXDTveCgV5Pofm9",
-              "value": "0.04424"
-            }
+          "LedgerEntryType": "AccountRoot",
+          "LedgerIndex": "EDE60B24659BCC06CCE1EA2804A4A202F1C88155CEAED9C140833C0C39100617",
+          "PreviousFields": {
+            "Balance": "59999976",
+            "Sequence": 1969811
           },
-          "LedgerEntryType": "Offer",
-          "LedgerIndex": "386B7803A9210747941B0D079BB408F31ACB1CB98832184D0287A1CBF4FE6D00"
-        }
-      },
-      {
-        "DeletedNode": {
-          "FinalFields": {
-            "ExchangeRate": "4A03920BFC5E99BE",
-            "Flags": 0,
-            "RootIndex": "892E892DC63D8F70DCF5C9ECF29394FF7DD3DC6F47DB8EB34A03920BFC5E99BE",
-            "TakerGetsCurrency": "0000000000000000000000000000000000000000",
-            "TakerGetsIssuer": "0000000000000000000000000000000000000000",
-            "TakerPaysCurrency": "0000000000000000000000004254430000000000",
-            "TakerPaysIssuer": "92D705968936C419CE614BF264B5EEB1CEA47FF4"
-          },
-          "LedgerEntryType": "DirectoryNode",
-          "LedgerIndex": "892E892DC63D8F70DCF5C9ECF29394FF7DD3DC6F47DB8EB34A03920BFC5E99BE"
+          "PreviousTxnID": "1DBC93373D47794A684A5013178D0EBE10E6641D7C262BF20151B0E19156FF79",
+          "PreviousTxnLgrSeq": 1969843
         }
       },
       {
         "ModifiedNode": {
           "FinalFields": {
-            "Account": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
-            "Balance": "11133297300",
+            "Account": "rfdGuuVnq9juqWDV4W3LoLiNcW8g2hAXhN",
+            "Balance": "160000000",
             "Flags": 0,
-            "OwnerCount": 9,
-            "Sequence": 540706
+            "OwnerCount": 0,
+            "Sequence": 1969810
           },
           "LedgerEntryType": "AccountRoot",
-          "LedgerIndex": "A6C2532E1008A513B3F822A92B8E5214BD0D413DC20AD3631C1A39AD6B36CD07",
+          "LedgerIndex": "F7D350FB54C5BBA734AE574EE6BF7A9294E11F9B75413972F98846AFC587C62C",
           "PreviousFields": {
-            "Balance": "11133297310",
-            "OwnerCount": 10,
-            "Sequence": 540705
+            "Balance": "140000000"
           },
-          "PreviousTxnID": "484D57DFC4E446DA83B4540305F0CE836D4E007361542EC12CC0FFB5F0A1BE3A",
-          "PreviousTxnLgrSeq": 7125358
+          "PreviousTxnID": "1DBC93373D47794A684A5013178D0EBE10E6641D7C262BF20151B0E19156FF79",
+          "PreviousTxnLgrSeq": 1969843
         }
       }
     ],
-    "TransactionIndex": 1,
-    "TransactionResult": "tesSUCCESS"
+    "TransactionIndex": 4,
+    "TransactionResult": "tesSUCCESS",
+    "delivered_amount": "20000000"
   },
-  "transaction": {
-    "Account": "rRh634Y6QtoqkwTTrGzX66UYoCAvgE6jL",
-    "Fee": "10",
-    "Flags": 2147483648,
-    "OfferSequence": 540691,
-    "Sequence": 540705,
-    "SigningPubKey": "030BB49C591C9CD65C945D4B78332F27633D7771E6CF4D4B942D26BA40748BB8B4",
-    "TransactionType": "OfferCancel",
-    "TxnSignature": "30450221008223604A383F3AED25D53CE7C874700619893A6EEE4336508312217850A9722302205E0614366E174F2DFF78B879F310DB0B3F6DA1967E52A32F65E25DCEC622CD68",
-    "date": 455751680,
-    "hash": "94CF924C774DFDBE474A2A7E40AEA70E7E15D130C8CBEF8AF1D2BE97A8269F14"
+  "status": "closed",
+  "tx_json": {
+    "Account": "rH3PxjJPrrkvsATddBXkayjAyWR8xigaE8",
+    "DeliverMax": "20000000",
+    "Destination": "rfdGuuVnq9juqWDV4W3LoLiNcW8g2hAXhN",
+    "Fee": "12",
+    "Flags": 0,
+    "LastLedgerSequence": 1969870,
+    "Sequence": 1969811,
+    "SigningPubKey": "ED0761CDA5507784F6CEB445DE2343F861DD5EC7A869F75B08C7E8F29A947AD9FC",
+    "TransactionType": "Payment",
+    "TxnSignature": "20D5447ED7095BCCC3D42EA1955600D97D791811072E93D2A358AD9FB258C3A7F004974039D25708F5AE598C78F85B688DD586158F7E9C13AE0F30CC18E3390D",
+    "date": 783820741
   },
+  "type": "transaction",
   "validated": true
 }
 ```
 
 Transaction stream messages have the following fields:
+
+{% tabs %}
+
+{% tab label="API v2" %}
+
+| `Field`                 | Type                      | Description            |
+|:------------------------|:--------------------------|:-----------------------|
+| `close_time_iso`        | String                    | The ledger close time represented in ISO 8601 time format. |
+| `type`                  | String                    | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
+| `engine_result`         | String                    | String [Transaction result code](../../../protocol/transactions/transaction-results/index.md) |
+| `engine_result_code`    | Number                    | Numeric [transaction response code](../../../protocol/transactions/transaction-results/index.md), if applicable. |
+| `engine_result_message` | String                    | Human-readable explanation for the transaction response |
+| `hash`                  | String                    | The unique hash identifier of the transaction. |
+| `ledger_current_index`  | Number - [Ledger Index][] | _(Unvalidated transactions only)_ The ledger index of the current in-progress [ledger version](../../../../concepts/ledgers/index.md) for which this transaction is currently proposed. |
+| `ledger_hash`           | String - [Hash][]         | _(Validated transactions only)_ The identifying hash of the ledger version that includes this transaction |
+| `ledger_index`          | Number - [Ledger Index][] | _(Validated transactions only)_ The ledger index of the ledger version that includes this transaction. |
+| `meta`                  | Object                    | _(Validated transactions only)_ The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact outcome of the transaction in detail. |
+| `tx_json`               | Object                    | The [definition of the transaction](../../../protocol/transactions/index.md) in JSON format. |
+| `validated`             | Boolean                   | If `true`, this transaction is included in a validated ledger and its outcome is final. Responses from the `transaction` stream should always be validated. |
+
+{% /tab %}
+
+{% tab label="API v1" %}
 
 | `Field`                 | Type                      | Description            |
 |:------------------------|:--------------------------|:-----------------------|
@@ -369,9 +364,12 @@ Transaction stream messages have the following fields:
 | `ledger_hash`           | String - [Hash][]         | _(Validated transactions only)_ The identifying hash of the ledger version that includes this transaction |
 | `ledger_index`          | Number - [Ledger Index][] | _(Validated transactions only)_ The ledger index of the ledger version that includes this transaction. |
 | `meta`                  | Object                    | _(Validated transactions only)_ The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact outcome of the transaction in detail. |
-| `transaction`           | Object                    | The [definition of the transaction](../../../protocol/transactions/index.md) in JSON format |
+| `transaction`           | Object                    | The [definition of the transaction](../../../protocol/transactions/index.md) in JSON format. |
 | `validated`             | Boolean                   | If `true`, this transaction is included in a validated ledger and its outcome is final. Responses from the `transaction` stream should always be validated. |
 
+{% /tab %}
+
+{% /tabs %}
 
 ## Peer Status Stream
 
@@ -423,126 +421,143 @@ Example order book stream message:
 
 ```json
 {
-    "engine_result": "tesSUCCESS",
-    "engine_result_code": 0,
-    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-    "ledger_hash": "08547DD866F099CCB3666F113116B7AA2DF520FA2E3011DD1FF9C9C04A6C7C3E",
-    "ledger_index": 18852105,
-    "meta": {
-        "AffectedNodes": [{
-            "ModifiedNode": {
-                "FinalFields": {
-                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-                    "AccountTxnID": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
-                    "Balance": "3070332374272",
-                    "Flags": 0,
-                    "OwnerCount": 23,
-                    "RegularKey": "r9S56zu6QeJD5d8A7QMfLAeYavgB9dhaX4",
-                    "Sequence": 12142921
-                },
-                "LedgerEntryType": "AccountRoot",
-                "LedgerIndex": "2880A9B4FB90A306B576C2D532BFE390AB3904642647DCF739492AA244EF46D1",
-                "PreviousFields": {
-                    "AccountTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
-                    "Balance": "3070332385272",
-                    "Sequence": 12142920
-                },
-                "PreviousTxnID": "3CA3422B0E42D76A7A677B0BA0BE72DFCD93676E0C80F8D2EB27C04BD8457A0F",
-                "PreviousTxnLgrSeq": 18852102
-            }
-        }, {
-            "ModifiedNode": {
-                "FinalFields": {
-                    "Flags": 0,
-                    "IndexPrevious": "00000000000022D2",
-                    "Owner": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-                    "RootIndex": "F435FBBEC9654204D7151A01E686BAA8CB325A472D7B61C7916EA58B59355767"
-                },
-                "LedgerEntryType": "DirectoryNode",
-                "LedgerIndex": "29A543B6681AD7FC8AFBD1386DAE7385F02F9B8C4756A467DF6834AB54BBC9DB"
-            }
-        }, {
-            "ModifiedNode": {
-                "FinalFields": {
-                    "ExchangeRate": "4C1BA999A513EF78",
-                    "Flags": 0,
-                    "RootIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
-                    "TakerGetsCurrency": "0000000000000000000000000000000000000000",
-                    "TakerGetsIssuer": "0000000000000000000000000000000000000000",
-                    "TakerPaysCurrency": "0000000000000000000000005553440000000000",
-                    "TakerPaysIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230"
-                },
-                "LedgerEntryType": "DirectoryNode",
-                "LedgerIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78"
-            }
-        }, {
-            "CreatedNode": {
-                "LedgerEntryType": "Offer",
-                "LedgerIndex": "92E235EE80D2B28A89BEE2C905D4545C2A004FD5D4097679C8A3FB25507FD9EB",
-                "NewFields": {
-                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-                    "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
-                    "Expiration": 508543674,
-                    "OwnerNode": "00000000000022F4",
-                    "Sequence": 12142920,
-                    "TakerGets": "6537121438",
-                    "TakerPays": {
-                        "currency": "USD",
-                        "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-                        "value": "50.9"
-                    }
-                }
-            }
-        }, {
-            "DeletedNode": {
-                "FinalFields": {
-                    "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-                    "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784C1BA999A513EF78",
-                    "BookNode": "0000000000000000",
-                    "Expiration": 508543133,
-                    "Flags": 0,
-                    "OwnerNode": "00000000000022F4",
-                    "PreviousTxnID": "58B3279C2D56AAC3D9B06106E637C01E3D911E9D31E2FE4EA0D886AC9F4DEE1E",
-                    "PreviousTxnLgrSeq": 18851945,
-                    "Sequence": 12142889,
-                    "TakerGets": "6537121438",
-                    "TakerPays": {
-                        "currency": "USD",
-                        "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-                        "value": "50.9"
-                    }
-                },
-                "LedgerEntryType": "Offer",
-                "LedgerIndex": "D3436CE21925E1CB12C5C444963B47D7EA0CD9A0E387926DC76B23FE5CD1C15F"
-            }
-        }],
-        "TransactionIndex": 26,
-        "TransactionResult": "tesSUCCESS"
+  "tx_json": {
+    "Account": "rBTwLga3i2gz3doX6Gva3MgEV8ZCD8jjah",
+    "Fee": "20",
+    "Flags": 0,
+    "LastLedgerSequence": 91826205,
+    "OfferSequence": 156917168,
+    "Sequence": 156917177,
+    "SigningPubKey": "0253C1DFDCF898FE85F16B71CCE80A5739F7223D54CC9EBA4749616593470298C5",
+    "TakerGets": "35992000000",
+    "TakerPays": {
+      "currency": "USD",
+      "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+      "value": "18570.025718376"
     },
-    "status": "closed",
-    "transaction": {
-        "Account": "rfCFLzNJYvvnoGHWQYACmJpTgkLUaugLEw",
-        "Expiration": 508543674,
-        "Fee": "11000",
-        "Flags": 2147483648,
-        "LastLedgerSequence": 18852106,
-        "OfferSequence": 12142889,
-        "Sequence": 12142920,
-        "SigningPubKey": "034841BF24BD72C7CC371EBD87CCBF258D8ADB05C18DE207130364A97D8A3EA524",
-        "TakerGets": "6537121438",
-        "TakerPays": {
-            "currency": "USD",
-            "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
-            "value": "50.9"
-        },
-        "TransactionType": "OfferCreate",
-        "TxnSignature": "3045022100B9AD678A773FB61F8F9B565713C80CBF187A2F9EB8E9CE0DAC7B839CA6F4B04C02200613D173A0636CD9BE13F2E3EBD13A16932B5B7D8A96BB5F6D561CA5CDBC4AD3",
-        "date": 508543090,
-        "hash": "D295E2BE50E3B78AED24790D7B9096996DAF43F095BF17DB83EEACC283D14050",
-        "owner_funds": "3070197374272"
-    },
-    "type": "transaction",
-    "validated": true
+    "TransactionType": "OfferCreate",
+    "TxnSignature": "30440220520439D8DDB6B6D0E4EA1504873D780ADE524E3961E02A5DD84B8B4C456BA3240220533CF99250737C13FD376C18F6D64149332BA1FE6EA04895442247BD29952193",
+    "date": 783819060,
+    "owner_funds": "36054185999"
+  },
+  "meta": {
+    "AffectedNodes": [
+      {
+        "ModifiedNode": {
+          "FinalFields": {
+            "Flags": 0,
+            "IndexNext": "0",
+            "IndexPrevious": "0",
+            "Owner": "rBTwLga3i2gz3doX6Gva3MgEV8ZCD8jjah",
+            "RootIndex": "0A2600D85F8309FE7F75A490C19613F1CE0C37483B856DB69B8140154C2335F3"
+          },
+          "LedgerEntryType": "DirectoryNode",
+          "LedgerIndex": "0A2600D85F8309FE7F75A490C19613F1CE0C37483B856DB69B8140154C2335F3",
+          "PreviousTxnID": "73BBE254DDC97EAD6ECB2D9F7A7EB13DBA1A5B816C2727548FCFBC41B40604EF",
+          "PreviousTxnLgrSeq": 91826203
+        }
+      },
+      {
+        "ModifiedNode": {
+          "FinalFields": {
+            "Account": "rBTwLga3i2gz3doX6Gva3MgEV8ZCD8jjah",
+            "Balance": "36092186059",
+            "Flags": 0,
+            "OwnerCount": 14,
+            "Sequence": 156917178
+          },
+          "LedgerEntryType": "AccountRoot",
+          "LedgerIndex": "1ED8DDFD80F275CB1CE7F18BB9D906655DE8029805D8B95FB9020B30425821EB",
+          "PreviousFields": {
+            "Balance": "36092186079",
+            "Sequence": 156917177
+          },
+          "PreviousTxnID": "73BBE254DDC97EAD6ECB2D9F7A7EB13DBA1A5B816C2727548FCFBC41B40604EF",
+          "PreviousTxnLgrSeq": 91826203
+        }
+      },
+      {
+        "CreatedNode": {
+          "LedgerEntryType": "Offer",
+          "LedgerIndex": "3B4D42B185D1FE4EBED70F7E35A8E8AEA39028FB6B16DCDFC175363EA38DED28",
+          "NewFields": {
+            "Account": "rBTwLga3i2gz3doX6Gva3MgEV8ZCD8jjah",
+            "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E125486AFA57980",
+            "Sequence": 156917177,
+            "TakerGets": "35992000000",
+            "TakerPays": {
+              "currency": "USD",
+              "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+              "value": "18570.025718376"
+            }
+          }
+        }
+      },
+      {
+        "DeletedNode": {
+          "FinalFields": {
+            "ExchangeRate": "4e12547b29376a80",
+            "Flags": 0,
+            "PreviousTxnID": "D4CB92E19CBADB14F82B0E0703B3F157338253EE1DD46DB91F6C98C93D01DA9C",
+            "PreviousTxnLgrSeq": 91826201,
+            "RootIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E12547B29376A80",
+            "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+            "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+            "TakerPaysCurrency": "0000000000000000000000005553440000000000",
+            "TakerPaysIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230"
+          },
+          "LedgerEntryType": "DirectoryNode",
+          "LedgerIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E12547B29376A80"
+        }
+      },
+      {
+        "CreatedNode": {
+          "LedgerEntryType": "DirectoryNode",
+          "LedgerIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E125486AFA57980",
+          "NewFields": {
+            "ExchangeRate": "4e125486afa57980",
+            "RootIndex": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E125486AFA57980",
+            "TakerPaysCurrency": "0000000000000000000000005553440000000000",
+            "TakerPaysIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230"
+          }
+        }
+      },
+      {
+        "DeletedNode": {
+          "FinalFields": {
+            "Account": "rBTwLga3i2gz3doX6Gva3MgEV8ZCD8jjah",
+            "BookDirectory": "79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E12547B29376A80",
+            "BookNode": "0",
+            "Flags": 0,
+            "OwnerNode": "0",
+            "PreviousTxnID": "D4CB92E19CBADB14F82B0E0703B3F157338253EE1DD46DB91F6C98C93D01DA9C",
+            "PreviousTxnLgrSeq": 91826201,
+            "Sequence": 156917168,
+            "TakerGets": "35992000000",
+            "TakerPays": {
+              "currency": "USD",
+              "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+              "value": "18569.847557976"
+            }
+          },
+          "LedgerEntryType": "Offer",
+          "LedgerIndex": "F72F9E5C9C81C6D2403C062365B34AA371D5D0BB13E1787622E936D0B8B4A499"
+        }
+      }
+    ],
+    "TransactionIndex": 23,
+    "TransactionResult": "tesSUCCESS"
+  },
+  "type": "transaction",
+  "validated": true,
+  "status": "closed",
+  "close_time_iso": "2024-11-01T23:31:00Z",
+  "ledger_index": 91826203,
+  "ledger_hash": "746D115326E08B884D7EA5F0E379272774F1B41443C000044D5DF97781E0601D",
+  "hash": "2250BB2914AC7BC143AD62E7DD36F23A22F2BC50495FC29B36C6B0CA570BB4FA",
+  "engine_result_code": 0,
+  "engine_result": "tesSUCCESS",
+  "engine_result_message": "The transaction was applied. Only final in a validated ledger."
 }
 ```
 
@@ -550,7 +565,7 @@ The format of an order book stream message is the same as that of [transaction s
 
 | Field                     | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
-| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
+| `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md).<br>[API v2][] Renamed to `tx_json.owner_funds`. |
 
 
 ## Book Changes Stream

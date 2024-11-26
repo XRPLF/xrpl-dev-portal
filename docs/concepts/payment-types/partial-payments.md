@@ -9,6 +9,8 @@ labels:
 ---
 # Partial Payments
 
+{% admonition type="warning" name="Caution" %}This page describes the specifics of the `Amount` field that appears in `Payment` transactions and various API methods. While the contextual information regarding `Amount` and partial payments is still relevant, the field has been renamed to `DeliverMax` in `rippled` [API v2][]. This was done to make the field name more specific to its behavior and help prevent the misunderstandings and exploit described below.{% /admonition %}
+
 The sender of any [Payment transaction][] can enable the ["Partial Payment" flag](../../references/protocol/transactions/types/payment.md#payment-flags) and send a payment which delivers less than the `Amount` field indicates. When processing any Payment, use the `delivered_amount` metadata field, not the `Amount` field. The `delivered_amount` is the amount a payment actually delivered.
 
 If a Payment does not enable the Partial Payment flag, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the amount to deliver after charging for exchange rates and [transfer fees](../tokens/transfer-fees.md). The Partial Payment flag ([`tfPartialPayment`](../../references/protocol/transactions/types/payment.md#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](bouncing-payments.md) without incurring additional costs to oneself.
