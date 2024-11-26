@@ -26,7 +26,7 @@ Today, November 26th, 2024, a milestone has been reached as the incorporation do
 
 The XRPL Foundation will operate under French law, with the Paris Court of Appeals having exclusive jurisdiction over disputes. As part of the incorporation of the new Foundation, a comprehensive set of bylaws has been established to ensure effective governance. The bylaws provide a framework for decision-making, member roles, and operational procedures.
 
-You can also view [the full copy of the bylaws in both French and English (PDF)](/2024-11-13-XRPLedger-Foundation-ByLaws-(Statuts).pdf).
+You can also view [the full copy of the bylaws in both French and English (PDF)](https://xrpl.org/2024-11-13-XRPLedger-Foundation-ByLaws-(Statuts).pdf).
 
 ## The New Foundation’s Purpose 
 
