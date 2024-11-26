@@ -22,7 +22,7 @@ Since the initial announcement, the first steps towards the creation of the new 
 
 ## A Significant Milestone: The Incorporation of the New Foundation
 
-Today, November 26th, 2024, a milestone has been reached as the incorporation documents for the new XRPL Foundation were filed in France today. This non-profit association, governed by French 1901 law, has been filed under the name 'XRP Ledger Foundation'. The decision to incorporate in France aligns with the original objectives laid out in the [XRPL.org post](./evolving-the-xrp-ledger.md) on August 10th, 2024, and marks a new chapter in the Foundation's history. The filing is available [here](https://www.journal-officiel.gouv.fr/pages/associations-detail-annonce/?q.id=id:202400481665).
+Today, November 26th, 2024, a milestone has been reached as the incorporation documents for the new XRPL Foundation were filed in France today. This non-profit association, governed by French 1901 law, has been filed under the name 'XRP Ledger Foundation'. The decision to incorporate in France aligns with the original objectives laid out in the [XRPL.org post](./evolving-the-xrp-ledger.md) on August 10th, 2024, and marks a new chapter in the Foundation's history. You can [access the official filing online](https://www.journal-officiel.gouv.fr/pages/associations-detail-annonce/?q.id=id:202400481665).
 
 The XRPL Foundation will operate under French law, with the Paris Court of Appeals having exclusive jurisdiction over disputes. As part of the incorporation of the new Foundation, a comprehensive set of bylaws has been established to ensure effective governance. The bylaws provide a framework for decision-making, member roles, and operational procedures.
 
