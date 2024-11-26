@@ -1,6 +1,6 @@
 ---
 category: 2024
-date: 2024-12-02
+date: 2024-11-25
 seo:
     title: Introducing XRP Ledger version 2.3.0
     description: rippled version 2.3.0 is now available. This version introduces new features and stability fixes.
@@ -12,14 +12,14 @@ markdown:
 ---
 # Introducing XRP Ledger version 2.3.0
 
-Version 2.3.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes 8 new amendments, including Multi-Purpose Tokens, Credentials, Clawback support for AMMs, and the ability to make offers as part of minting NFTs. Additionally, this release includes important fixes for stability, so server operators are encouraged to upgrade as soon as possible.
+Version 2.3.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes 8 new amendments, including Multi-Purpose Tokens (MPTs), Credentials, Clawback support for AMMs, and the ability to make offers as part of minting NFTs. Additionally, this release includes important fixes for stability, so server operators are encouraged to upgrade as soon as possible.
 
 
 ## Action Required
 
 If you run an XRP Ledger server, upgrade to version 2.3.0 as soon as possible to ensure service continuity.
 
-Additionally, new amendments are now open for voting according to the XRP Ledger's [amendment process](https://xrpl.org/amendments.html), which enables protocol changes following two weeks of >80% support from trusted validators. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
+Additionally, new amendments are now open for voting according to the XRP Ledger's [amendment process](../../docs/concepts/networks-and-servers/amendments.md), which enables protocol changes following two weeks of >80% support from trusted validators. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
 ## Install / Upgrade
 
@@ -31,7 +31,7 @@ On supported platforms, see the [instructions on installing or updating `rippled
 | [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.3.0-1_amd64.deb) | `c773c9e33cb0e661cc8805bd55bf1e28b36c399107a562bae1d2291515ef9838` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
-For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
 commit f64cf9187affd69650907d0d92e097eb29693945
@@ -48,9 +48,9 @@ Date:   Mon Nov 25 12:27:17 2024 -0800
 
 The following amendments are open for voting with this release:
 
-- **XLS-70 Credentials** - Users can issue Credentials on the ledger and use Credentials to pre-approve incoming payments when using Deposit Authorization instead of individually approving payers. ([#5103](https://github.com/XRPLF/rippled/pull/5103))
+- **XLS-70 Credentials** - Introduces the ability to issue Credentials on the ledger and use these Credentials to pre-approve incoming payments when using Deposit Authorization instead of individually approving payers. ([#5103](https://github.com/XRPLF/rippled/pull/5103))
     - related fix: #5189 (https://github.com/XRPLF/rippled/pull/5189)
-- **XLS-33 Multi-Purpose Tokens** - A new type of fungible token optimized for institutional DeFi including stablecoins. ([#5143](https://github.com/XRPLF/rippled/pull/5143))
+- **XLS-33 Multi-Purpose Tokens** - Introduces a new type of fungible token optimized for institutional DeFi including stablecoins. ([#5143](https://github.com/XRPLF/rippled/pull/5143))
 - **XLS-37 AMM Clawback** - Allows clawback-enabled tokens to be used in AMMs, with appropriate guardrails. ([#5142](https://github.com/XRPLF/rippled/pull/5142))
 - **XLS-52 NFTokenMintOffer** - Allows creating an NFT sell offer as part of minting a new NFT. ([#4845](https://github.com/XRPLF/rippled/pull/4845))
 - **fixAMMv1_2** - Fixes two bugs in Automated Market Maker (AMM) transaction processing. ([#5176](https://github.com/XRPLF/rippled/pull/5176))
@@ -72,7 +72,7 @@ The following amendment is partially implemented but not open for voting:
 - History Shards are removed. ([#5066](https://github.com/XRPLF/rippled/pull/5066))
 - Reporting mode is removed. ([#5092](https://github.com/XRPLF/rippled/pull/5092))
 
-For users wanting to store more ledger history, it is recommended to run a Clio server instead.
+If you want to store more ledger history, it is recommended that you run a [Clio server](../../docs/concepts/networks-and-servers/the-clio-server.md) instead.
 
 ### Bug fixes
 
