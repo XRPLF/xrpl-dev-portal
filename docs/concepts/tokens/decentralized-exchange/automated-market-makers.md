@@ -83,7 +83,7 @@ You can also use the test harness below to experiment with offers and AMM intera
   <div id="offers-box" style="display:flex; gap: 5px">
     <div id="alice-box" style="border: 1px solid black; width: 50%; background-color: #f0f0f0; padding: 5px">
       <p style="font-weight: bold">Alice's Wallet</p>
-      <textarea readonly id="aliceWalletField" style="height: 30px; width: 200px; resize: none"></textarea>
+      <textarea readonly id="aliceWalletField" style="height: 30px; width: 225px; resize: none"></textarea>
       <div style="display: flex; gap: 10px">
         <label style="display: flex; align-items: center; gap: 10px">Taker Gets:
           <textarea id="aliceTakerGetsAmount" style="height: 30px; width: 100px; resize: none"></textarea>
@@ -112,7 +112,7 @@ You can also use the test harness below to experiment with offers and AMM intera
     </div>
     <div id="bob-box" style="border: 1px solid black; width: 50%; background-color: #f0f0f0; padding: 5px">
       <p style="font-weight: bold">Bob's Wallet</p>
-      <textarea readonly id="bobWalletField" style="height: 30px; width: 200px; resize: none"></textarea>
+      <textarea readonly id="bobWalletField" style="height: 30px; width: 225px; resize: none"></textarea>
       <div style="display: flex; gap: 10px">
         <label style="display: flex; align-items: center; gap: 10px">Taker Gets:
           <textarea id="bobTakerGetsAmount" style="height: 30px; width: 100px; resize: none"></textarea>
