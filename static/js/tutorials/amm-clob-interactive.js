@@ -104,7 +104,6 @@ async function start() {
     const ammSetTrust = client.submitAndWait({
         "TransactionType": "TrustSet",
         "Account": ammWallet.address,
-        "Flags": 262144,
         "LimitAmount": {
             "currency": "USD",
             "issuer": issuerWallet.address,
@@ -115,7 +114,6 @@ async function start() {
     const aliceSetTrust = client.submitAndWait({
         "TransactionType": "TrustSet",
         "Account": aliceWallet.address,
-        "Flags": 262144,
         "LimitAmount": {
             "currency": "USD",
             "issuer": issuerWallet.address,
@@ -126,7 +124,6 @@ async function start() {
     const bobSetTrust = client.submitAndWait({
         "TransactionType": "TrustSet",
         "Account": bobWallet.address,
-        "Flags": 262144,
         "LimitAmount": {
             "currency": "USD",
             "issuer": issuerWallet.address,
