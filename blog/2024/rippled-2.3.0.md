@@ -32,7 +32,7 @@ On supported platforms, see the [instructions on installing or updating `rippled
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 {% admonition type="info" name="Note" %}
-The packages in the stable repository were accidentally overwritten with a slightly different build from the same source code. This post has been updated with the new package hashes based on the packages currently available in the stable branch of each repository. The previous package hashes, below, are also acceptable, and represent the same release:
+The packages in the stable repository were accidentally overwritten with a different build from the same source code as a result of version 2.3.0 being merged to both the `release` and `master` source code branches. This post has been updated with the new package hashes based on the packages currently available in the stable branch of each repository. The previous package hashes, below, are also acceptable, and represent the same release:
 
 | Package | SHA-256 |
 |:--------|:--------|
