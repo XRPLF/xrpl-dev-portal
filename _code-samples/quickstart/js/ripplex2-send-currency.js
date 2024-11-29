@@ -116,7 +116,7 @@ async function sendCurrency() {
   const send_token_tx = {
     "TransactionType": "Payment",
     "Account": standby_wallet.address,
-    "Amount": {
+    "DeliverMax": {
       "currency": standbyCurrencyField.value,
       "value": standbyAmountField.value,
       "issuer": standby_wallet.address
@@ -249,7 +249,7 @@ async function oPsendCurrency() {
   const send_token_tx = {
     "TransactionType": "Payment",
     "Account": operational_wallet.address,
-    "Amount": {
+    "DeliverMax": {
       "currency": currency_code,
       "value": issue_quantity,
       "issuer": operational_wallet.address

@@ -9,6 +9,6 @@
   "author": "",
   "license": "CC0-1.0",
   "dependencies": {
-    "xrpl": "^3.0.0"
+    "xrpl": "^4.0.0"
   }
 }

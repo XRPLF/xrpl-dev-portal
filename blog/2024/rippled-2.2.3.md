@@ -3,13 +3,12 @@ category: 2024
 date: 2024-09-14
 seo:
     title: Introducing XRP Ledger version 2.2.3
-    description: Rippled version 2.2.3 is now available, addressing an issue that could cause full-history servers to run out of space in their SQLite databases. Learn more about this release.
+    description: rippled version 2.2.3 is now available, addressing an issue that could cause full-history servers to run out of space in their SQLite databases. Learn more about this release.
 labels:
     - rippled Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger version 2.2.3
 

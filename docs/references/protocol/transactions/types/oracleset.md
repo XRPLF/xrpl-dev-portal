@@ -4,10 +4,9 @@ parent: transaction-types.html
 blurb: Create or update an existing price oracle.
 labels:
   - Oracle
-status: not_enabled
 ---
 # OracleSet
-_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+_(Requires the [PriceOracle amendment][])_
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetOracle.cpp "Source")
 
@@ -46,7 +45,7 @@ Creates a new `Oracle` ledger entry or updates the fields of an existing one, us
 | `OracleDocumentID` | Number    | UInt32        | Yes       | A unique identifier of the price oracle for the `Account`. |
 | `Provider`         | String    | Blob          | Variable  | An arbitrary value that identifies an oracle provider, such as Chainlink, Band, or DIA. This field is a string, up to 256 ASCII hex encoded characters (0x20-0x7E). This field is required when creating a new `Oracle` ledger entry, but is optional for updates. |
 | `URI`              | String    | Blob          | No        | An optional Universal Resource Identifier to reference price data off-chain. This field is limited to 256 bytes. |
-| `LastUpdateTime`   | Number    | UInt32        | Yes       | The time the data was last updated, in [seconds since the Ripple Epoch][]. |
+| `LastUpdateTime`   | Number    | UInt32        | Yes       | The time the data was last updated, in seconds since the UNIX Epoch. |
 | `AssetClass`       | String    | Blob          | Variable  | Describes the type of asset, such as "currency", "commodity", or "index". This field is a string, up to 16 ASCII hex encoded characters (0x20-0x7E). This field is required when creating a new `Oracle` ledger entry, but is optional for updates. |
 | `PriceDataSeries`  | Array     | Array         | Yes       | An array of up to 10 `PriceData` objects, each representing the price information for a token pair. More than five `PriceData` objects require two owner reserves. |
 
@@ -56,9 +55,9 @@ Creates a new `Oracle` ledger entry or updates the fields of an existing one, us
 | Field               | JSON Type | Internal Type | Required? | Description |
 |---------------------|-----------|---------------|-----------|-------------|
 | `BaseAsset`         | String    | Currency      | Yes       | The primary asset in a trading pair. Any valid identifier, such as a stock symbol, bond CUSIP, or currency code is allowed. For example, in the BTC/USD pair, BTC is the base asset; in 912810RR9/BTC, 912810RR9 is the base asset. |
-| `QuoteAsset`        | String    | Currency      | Yes       | The quote asset in a trading pair. The quote asset denotes the price of one unit of the base asset. For example, in the BTC/USD pair, USD is the quote asset; in 912810RR9/BTC, BTC is the quote asset. |
-| `AssetPrice`        | Number    | UInt64        | No        | The asset price after applying the `Scale` precision level. If it is not included, the PriceData object will be deleted. |
-| `Scale`             | Number    | UInt8         | No        | The scaling factor to apply to an asset price. For example, if `Scale` is 6 and original price is 0.155, then the scaled price is 155000. Valid scale ranges are 0-10. The default value is 0. |
+| `QuoteAsset`        | String    | Currency      | Yes       | The quote asset in a trading pair. The quote asset denotes the price of one unit of the base asset. For example, in the BTC/USD pair, BTC is the base asset; in 912810RR9/BTC, 912810RR9 is the base asset. |
+| `AssetPrice`        | String    | UInt64        | No        | The asset price after applying the `Scale` precision level. It's not included if the last update transaction didn't include the `BaseAsset`/`QuoteAsset` pair. It's recommended you provide this value as a hexadecimal, but [client libraries](https://xrpl.org/docs/references#client-libraries) will accept decimal numbers and convert to hexadecimal strings. |
+| `Scale`             | Number    | UInt8         | No        | The scaling factor to apply to an asset price. For example, if `Scale` is 6 and original price is 0.155, then the scaled price is 155000. Valid scale ranges are 0-10. It's not included if the last update transaction didn't include the `BaseAsset`/`QuoteAsset` pair.|
 
 `PriceData` is created or updated, following these rules:
 

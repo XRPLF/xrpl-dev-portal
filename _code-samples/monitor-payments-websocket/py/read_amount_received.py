@@ -53,21 +53,21 @@ def CountXRPReceived(tx, address):
 	if tx['meta']['TransactionResult'] != 'tesSUCCESS':
 		print("Transaction failed")
 		return
-	if tx['transaction']['TransactionType'] == 'Payment':
-		if tx['transaction']['Destination'] != address:
+	if tx['tx_json']['TransactionType'] == 'Payment':
+		if tx['tx_json']['Destination'] != address:
 			print("Not the destination of this payment.")
 			return
 		if tx['meta']['delivered_amount'] is int or str:
-			amount_in_drops = int(tx['transaction']['Amount'])
+			amount_in_drops = int(tx['tx_json']['DeliverMax'])
 			xrp_amount = (amount_in_drops / 1000000)
 			print(f"Received {xrp_amount} XRP")
 			return
 		else:
 			print("Received non-XRP currency")
-	elif tx['transaction']['TransactionType'] == 'PaymentChannelClaim' or 'PaymentChannelFund' or'OfferCreate' or 'CheckCash' or 'EscrowFinish':
+	elif tx['tx_json']['TransactionType'] == 'PaymentChannelClaim' or 'PaymentChannelFund' or'OfferCreate' or 'CheckCash' or 'EscrowFinish':
 		FindXRPDifference(tx, address)
 	else:
-		print("Not a currency-delivering transaction type", tx['transaction']['TransactionType'])
+		print("Not a currency-delivering transaction type", tx['tx_json']['TransactionType'])
 
 CountXRPReceived(tx=transaction, address='rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe')
 

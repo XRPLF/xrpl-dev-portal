@@ -4,10 +4,9 @@ labels:
     - Security
 category: 2019
 date: 2019-04-05
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Nik Bougalis
 ---
 # Protecting the Ledger: Secure Development Practices

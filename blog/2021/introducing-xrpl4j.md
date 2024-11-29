@@ -1,9 +1,8 @@
 ---
 category: 2021
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 date: 2021-05-20
 labels:
     - xrpl4j Release Notes

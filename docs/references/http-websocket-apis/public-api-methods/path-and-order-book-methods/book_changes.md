@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Get information on 
+    description: Get information on order book changes
 labels:
   - Decentralized Exchange
   - Cross-Currency
@@ -20,7 +20,7 @@ An example of the request format:
 ```json
 {
     "id": "example_book_changes",
-    "command": "book_changes",
+    "command": "{% $frontmatter.seo.title %}",
     "ledger_index": 88530953
 }
 ```

@@ -9,7 +9,7 @@ labels:
 # AMM
 [[Source]](https://github.com/XRPLF/rippled/blob/89780c8e4fd4d140fcb912cf2d0c01c1b260539e/src/ripple/protocol/impl/LedgerFormats.cpp#L272-L284 "Source")
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-entries).
 

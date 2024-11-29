@@ -3,10 +3,9 @@ date: 2018-01-17
 category: 2018
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # rippled Validator Key Replacement
 

@@ -3,10 +3,9 @@ category: 2020
 date: 2020-06-24
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The RequireFullyCanonicalSig Amendment is Expected 2020-07-03
 

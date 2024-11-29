@@ -2,16 +2,15 @@
 category: 2024
 date: 2024-08-10
 seo:
-    title: Upcoming Testnet Reset Notification
+    title: Evolving the XRP Ledger Foundation
     description: Discover the latest in the XRPL community, including key organizations' plans to establish a more effective, inclusive, and visible XRPL Foundation with democratic governance.
  
 
 labels:
     - General
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Evolving the XRP Ledger Foundation
 

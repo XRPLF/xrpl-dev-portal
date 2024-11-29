@@ -1,10 +1,9 @@
 ---
 category: 2014
 date: 2014-09-22
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # How Ripple Labs supports gateways
 

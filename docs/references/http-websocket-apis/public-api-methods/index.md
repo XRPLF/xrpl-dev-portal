@@ -48,7 +48,6 @@ Transactions are the only thing that can modify the shared state of the XRP Ledg
 * **[`submit_multisigned`](transaction-methods/submit_multisigned.md)** - Send a multi-signed transaction to the network.
 * **[`transaction_entry`](transaction-methods/transaction_entry.md)** - Retrieve info about a transaction from a particular ledger version.
 * **[`tx`](transaction-methods/tx.md)** - Retrieve info about a transaction from all the ledgers on hand.
-* **[`tx_history`](transaction-methods/tx_history.md)** - Retrieve info about all recent transactions.
 
 By default, the following methods are [admin-only](../admin-api-methods/index.md). They can be used as public methods if the server admin has [enabled public signing](../../../infrastructure/configuration/enable-public-signing.md).
 
@@ -115,4 +114,9 @@ Use these methods to perform convenient tasks, such as ping and random number ge
 
 ## Deprecated Methods
 
-The `owner_info` command is deprecated. Use [`account_objects`](account-methods/account_objects.md) instead.
+The following methods are deprecated and either have been removed, or may be removed without further notice:
+
+* **`owner_info`** - Use [`account_objects`](account-methods/account_objects.md) instead.
+* **[`tx_history`](transaction-methods/tx_history.md)** - Use either the [account_tx method][], or the [ledger method][] with the `transactions` field set to `true`.
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

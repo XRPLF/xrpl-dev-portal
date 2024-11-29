@@ -3,10 +3,9 @@ category: 2024
 date: 2024-07-08
 labels:
     - Clio Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing Clio version 2.2.1
 

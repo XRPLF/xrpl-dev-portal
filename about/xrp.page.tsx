@@ -150,7 +150,7 @@ export default function XrpOverview() {
                       }`}
                       href={link.hash}
                     >
-                      {link.text}
+                      {translate(link.text)}
                     </a>
                   </li>
                 ))}
@@ -161,15 +161,17 @@ export default function XrpOverview() {
                 <h2 className="h4 h2-sm mb-8">{translate("What Is XRP?")}</h2>
                 <h5 className="longform mb-10">
                   {translate(
-                    "XRP is a digital asset that’s native to the XRP Ledger—an open-source, permissionless and decentralized"
-                  )}{" "}
+                    "about.xrp.what-is-xrp.ppart1",
+                    "XRP is a digital asset that’s native to the XRP Ledger—an open-source, permissionless and decentralized ",
+                  )}
                   <a
                     href="https://www.distributedagreement.com/2018/09/24/what-is-a-blockchain/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {translate("blockchain technology.")}
+                    {translate("about.xrp.what-is-xrp.ppart2", "blockchain technology.")}
                   </a>
+                  {translate("about.xrp.what-is-xrp.ppart3", " ")}
                 </h5>
 
                 <p className="mb-6">
@@ -254,7 +256,7 @@ export default function XrpOverview() {
                     </h6>
                     <p>
                       {translate(
-                        "Use XRP to move different currencies around the world. "
+                        "Use XRP to move different currencies around the world."
                       )}
                     </p>
                   </div>
@@ -290,15 +292,17 @@ export default function XrpOverview() {
                 </h5>
                 <p className="mb-6">
                   {translate(
+                      "about.xrp.xrp-in-trading.ppart1",
                     "XRP’s low transaction fees, reliability and high-speed enable traders to use the digital asset as high-speed, cost-efficient and reliable collateral across trading venues—"
                   )}
                   <a
                     href="https://ripple.com/insights/xrp-a-preferred-base-currency-for-arbitrage-trading/"
                     target="_blank"
                   >
-                    {translate("seizing arbitrage opportunities")}
+                    {translate("about.xrp.xrp-in-trading.ppart2","seizing arbitrage opportunities")}
                   </a>
                   {translate(
+                      "about.xrp.xrp-in-trading.ppart3",
                     ", servicing margin calls and managing general trading inventory in real time."
                   )}
                 </p>
@@ -337,10 +341,11 @@ export default function XrpOverview() {
                   />
                   <div className="z-index-1 position-relative">
                     <h3 className="h4">
-                      {translate("As of ")}
+                      {translate("about.xrp.ripple-escrow.ppart1","As of ")}
                       <span className="stat-highlight" id="ripple-escrow-as-of">
-                        December 2017
+                        {translate("about.xrp.ripple-escrow.ppart2","October 2024")}
                       </span>
+                      {translate("about.xrp.ripple-escrow.ppart3"," ")}
                       <br />
                       <span className="d-inline-flex">
                         <img
@@ -353,7 +358,7 @@ export default function XrpOverview() {
                           className="numbers stat-highlight"
                           id="ripple-escrow-amount"
                         >
-                          55B
+                          {translate("38B")}
                         </span>
                       </span>
                       <br />

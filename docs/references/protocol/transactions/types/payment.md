@@ -23,7 +23,7 @@ Payments are also the only way to [create accounts](#creating-accounts).
   "TransactionType" : "Payment",
   "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
   "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-  "Amount" : {
+  "DeliverMax" : {
      "currency" : "USD",
      "value" : "1",
      "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -42,8 +42,8 @@ Payments are also the only way to [create accounts](#creating-accounts).
 
 | Field            | JSON Type            | [Internal Type][] | Description    |
 |:-----------------|:---------------------|:------------------|:---------------|
-| `Amount`         | [Currency Amount][]  | Amount            | [API v1][]: Only available in API v1. The maximum amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [`tfPartialPayment` flag](#payment-flags) is set, deliver _up to_ this amount instead. |
-| `DeliverMax`     | [Currency Amount][]  | Amount            | [API v2][]: Only available in API v2. The maximum amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [`tfPartialPayment` flag](#payment-flags) is set, deliver _up to_ this amount instead. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %} |
+| `Amount`         | [Currency Amount][]  | Amount            | Alias to `DeliverMax`. |
+| `DeliverMax`     | [Currency Amount][]  | Amount            | [API v2][]: The maximum amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [`tfPartialPayment` flag](#payment-flags) is set, deliver _up to_ this amount instead. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %} |
 | `DeliverMin`     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](../../../../concepts/payment-types/partial-payments.md). For non-XRP amounts, the nested field names are lower-case. |
 | `Destination`    | String               | AccountID         | The unique address of the account receiving the payment. |
 | `DestinationTag` | Number               | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |

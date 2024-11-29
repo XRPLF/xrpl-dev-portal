@@ -55,7 +55,7 @@ async function main() {
                 JSON.stringify(escrowCreateTransaction, null,  "\t"), "\n"
     );
     const response  = await client.submitAndWait(escrowCreateTransaction, { wallet });
-    console.log(`Sequence number: ${response.result.Sequence}`);
+    console.log(`Sequence number: ${response.result.tx_json.Sequence}`);
     console.log(`Finished submitting! ${JSON.stringify(response.result, null, "\t")}`);
 
     await client.disconnect();

@@ -82,8 +82,8 @@ async function do_subscribe() {
 }
 
 const log_tx = function(tx) {
-  console.log(tx.transaction.TransactionType + " transaction sent by " +
-              tx.transaction.Account +
+  console.log(tx.tx_json.TransactionType + " transaction sent by " +
+              tx.tx_json.Account +
               "\n  Result: " + tx.meta.TransactionResult +
               " in ledger " + tx.ledger_index +
               "\n  Validated? " + tx.validated)

@@ -19,8 +19,8 @@ const alertBanner = {
 export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
   const themeConfig = useThemeConfig();
-  const { useI18n } = useThemeHooks();
-  const { changeLanguage } = useI18n();
+  const { useL10n } = useThemeHooks();
+  const { changeLanguage } = useL10n();
   const menu = themeConfig.navbar?.items;
   const logo = themeConfig.logo;
 

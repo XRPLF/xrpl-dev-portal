@@ -68,7 +68,9 @@ def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, passwo
         amount=xrp_to_drops(xrp=_xrp_amount),
         destination=_destination,
         last_ledger_sequence=validated_seq + 100,
-        # +100 to catch up with the ledger when we transmit the signed tx blob to Machine 2
+        # 100 ledgers usually takes about 6 minutes, so you have about that
+        # long to submit it before it expires. To give more time, increase 
+        # this number; for unlimited time, remove last_ledger entirely.
         sequence=_wallet_seq,
         fee="10"
     )
@@ -77,7 +79,7 @@ def sign_transaction(_xrp_amount, _destination, _ledger_seq, _wallet_seq, passwo
     # Scan the QR code and transmit the signed_tx blob to an online machine (Machine 2) to relay it to the XRPL
     my_tx_payment_signed = sign(transaction=my_tx_payment, wallet=_wallet)
 
-    img = qrcode.make(my_tx_payment_signed.to_dict())
+    img = qrcode.make(my_tx_payment_signed.blob())
     img.save(get_path("/Wallet/transactionID.png"))
     image = Image.open(get_path("/Wallet/transactionID.png"))
     image.show()
@@ -119,12 +121,15 @@ def main():
     # If the Wallet's folder already exists, continue on
     if os.path.exists(File) and os.path.exists(get_path("/Wallet/public.txt")):
         while True:
-            ask = int(input("\n 1. Transact XRP"
+            try:
+                ask = int(input("\n 1. Transact XRP"
                             "\n 2. Generate an XRP wallet (read only)"
                             "\n 3. Showcase XRP Wallet Address (QR Code)"
                             "\n 4. Exit"
                             "\n\n Enter Index: "
                             ))
+            except ValueError:
+                continue
 
             if ask == 1:
                 password = str(input("             Enter Password: "))
@@ -142,6 +147,7 @@ def main():
                                  _wallet_seq=wallet_sequence,
                                  password=password
                                  )
+                print("This transaction is expected to expire in ~6 minutes.")
 
                 del destination, amount, wallet_sequence, ledger_sequence
 
