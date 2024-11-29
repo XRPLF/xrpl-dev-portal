@@ -36,7 +36,7 @@ const benefitsData = [
   },
   {
     iconClass: "cross-chain",
-    title: "Cross-Chain Interoperability*",
+    title: "Cross-Chain Interoperability",
     description:
       "Enable seamless interaction with other blockchains via secure cross-chain bridges, allowing you to expand your project's functionality and liquidity options across ecosystems.",
   },
@@ -121,7 +121,7 @@ function FeatureCard({ title, description }) {
   return (
     <article className="feature-card">
       <header className="feature-header">
-        <h2 className="feature-title">{title}</h2>
+        <h2 className="feature-title">{translate(title)}</h2>
       </header>
       <p className="feature-description">{translate(description)}</p>
     </article>
@@ -243,7 +243,7 @@ function UpcomingEvents() {
     <section className="upcoming-events">
       <h2 className="upcoming-events__title">
         {translate(
-          "Explore the companies tokenizing  real-world assets on the XRP Ledger"
+          "Explore the companies tokenizing real-world assets on the XRP Ledger"
         )}
       </h2>
       <div className="upcoming-events__logo-container">
@@ -365,14 +365,15 @@ export default function RwaTokenization() {
             <div className="card-content custom-gap">
               <h6 className="card-title">{translate("Developer Resources")}</h6>
               <p className="card-description">
-                {translate("Easily integrate with ")}
+                {translate("use-cases.rwa.dev-resources.p1", "Easily integrate with ")}
                 <Link
                   target="_blank"
                   to="/docs/tutorials/public-servers"
                 >
-                  {translate("existing infrastructure ")}
+                  {translate("use-cases.rwa.dev-resources.p2", "existing infrastructure ")}
                 </Link>
                 {translate(
+                    "use-cases.rwa.dev-resources.p3", 
                   "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
                 )}
               </p>
