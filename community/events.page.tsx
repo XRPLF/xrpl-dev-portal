@@ -1007,6 +1007,17 @@ const events = [
     image:  require('../static/img/events/new-york.jpeg'),
     end_date: "November 19, 2024",
   },
+  {
+    name: "XRPL Webinar - Crypto for Good Fund",
+    description:
+      "Join Mercy Corps Ventures, Ripple Impact and XRPL Commons for a webinar  focused on supporting emerging market startups building on XRPL.",
+    type: "info",
+    link: "https://xrpl.at/XRPL-Webinar-CryptoForGoodFund",
+    location: "Virtual",
+    date: "December 3, 2024",
+    image: infoSession,
+    end_date: "December 3, 2024",
+  },
 ];
 
 
