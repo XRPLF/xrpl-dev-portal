@@ -15,6 +15,7 @@ const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.
 const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
 const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
 const decarb = require('../static/img/events/xrpl-decarb.png')
+const townHall = require('../static/img/events/town-hall-meetup.png')
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -872,7 +873,7 @@ const events = [
     link: "https://www.eventbrite.fr/e/xrpl-town-hall-meeting-tickets-959615815737",
     location: "Virtual",
     date: "September 16, 2024",
-    image: require('../static/img/events/town-hall-meetup.png'),
+    image: townHall,
     end_date: "September 16, 2024",
   },
   {
@@ -1026,7 +1027,7 @@ const events = [
     link: "https://xrpl.at/XRPL-TownHall-meeting2",
     location: "Virtual",
     date: "December 11, 2024",
-    image: require('../static/img/events/town-hall-meetup.png'),
+    image: townHall,
     end_date: "December 11, 2024",
   },
 ];
