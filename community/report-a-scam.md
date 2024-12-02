@@ -26,6 +26,3 @@ If you think you've been scammed, make sure to collect as much information as yo
 
 4. If the scammer exchanged XRP for another token on the XRP Ledger, contact the token's issuer. The issuer may be able to [freeze the scammer's trust line](../docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md) to prevent the scammer from sending those tokens to others.
 
-For more details on reporting scammers, see [Xrplorer Forensics Help](https://xrplorer.com/forensics/help).
-
-For help from the XRP Ledger community, you can also try the [XRPChat forum](https://xrpchat.com).
