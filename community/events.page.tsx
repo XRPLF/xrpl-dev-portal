@@ -1018,6 +1018,17 @@ const events = [
     image: infoSession,
     end_date: "December 3, 2024",
   },
+  {
+    name: "XRPL Town Hall Meeting #2",
+    description:
+      "Join Us for the Second XRPL Town Hall Meeting! These recurring meeting are designed to bring our community together, provide updates, and offer a platform to address your most pressing questions.",
+    type: "info",
+    link: "https://xrpl.at/XRPL-TownHall-meeting2",
+    location: "Virtual",
+    date: "December 11, 2024",
+    image: require('../static/img/events/town-hall-meetup.png'),
+    end_date: "December 11, 2024",
+  },
 ];
 
 
