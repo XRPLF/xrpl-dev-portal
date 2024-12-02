@@ -212,7 +212,7 @@ async function parseXRPLToml(
         })
 
         addNewLogEntry(setLogEntries, {
-            message: "Account not found in TOML file. Domain can not be verified.",
+            message: "Account not found in TOML file. Domain cannot be verified.",
             id: statusLogId,
             status: {
                 icon: {
