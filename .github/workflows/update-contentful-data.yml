@@ -54,7 +54,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 head: process.env.BRANCH_NAME,
-                base: 'master',
+                base: 'events-json-contentful-gh-actions',
                 title: 'Update data from Contentful',
                 body: 'Automated update of data from Contentful.',
               });
