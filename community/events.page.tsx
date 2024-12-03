@@ -15,6 +15,7 @@ const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.
 const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
 const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
 const decarb = require('../static/img/events/xrpl-decarb.png')
+const townHall = require('../static/img/events/town-hall-meetup.png')
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -872,7 +873,7 @@ const events = [
     link: "https://www.eventbrite.fr/e/xrpl-town-hall-meeting-tickets-959615815737",
     location: "Virtual",
     date: "September 16, 2024",
-    image: require('../static/img/events/town-hall-meetup.png'),
+    image: townHall,
     end_date: "September 16, 2024",
   },
   {
@@ -1006,6 +1007,28 @@ const events = [
     date: "November 19, 2024",
     image:  require('../static/img/events/new-york.jpeg'),
     end_date: "November 19, 2024",
+  },
+  {
+    name: "XRPL Webinar - Crypto for Good Fund",
+    description:
+      "Join Mercy Corps Ventures, Ripple Impact and XRPL Commons for a webinar  focused on supporting emerging market startups building on XRPL.",
+    type: "info",
+    link: "https://xrpl.at/XRPL-Webinar-CryptoForGoodFund",
+    location: "Virtual",
+    date: "December 3, 2024",
+    image: infoSession,
+    end_date: "December 3, 2024",
+  },
+  {
+    name: "XRPL Town Hall Meeting #2",
+    description:
+      "Join Us for the Second XRPL Town Hall Meeting! These recurring meeting are designed to bring our community together, provide updates, and offer a platform to address your most pressing questions.",
+    type: "info",
+    link: "https://xrpl.at/XRPL-TownHall-meeting2",
+    location: "Virtual",
+    date: "December 11, 2024",
+    image: townHall,
+    end_date: "December 11, 2024",
   },
 ];
 
