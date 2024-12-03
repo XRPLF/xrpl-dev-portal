@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import moment from "moment";
 import { Link } from "@redocly/theme/components/Link/Link";
@@ -17,29 +17,9 @@ const hackathon = require("../static/img/events/Hackathons.png");
 const conference = require("../static/img/events/Conference.png");
 const zone = require("../static/img/events/XRPLZone.png");
 const brazil = require("../static/img/events/event-meetup-brazil.png");
-const korea = require("../static/img/events/SouthKoreaMeetup.png");
 const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.png");
 const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
 const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
-const findNearestUpcomingEvent = (events) => {
-  let nearestEvent = null;
-  let nearestDateDiff = Infinity;
-  let index;
-  events.forEach((event, i) => {
-    const eventStartDate = moment(event.start_date, "MMMM DD, YYYY");
-    const currentDate = moment();
-    const diff = eventStartDate.diff(currentDate, "days");
-
-    if (diff >= 0 && diff < nearestDateDiff) {
-      nearestEvent = event;
-      nearestDateDiff = diff;
-      index = i
-    }
-  });
-
-  return { nearestEvent, nearestDateDiff, index };
-};
-
 const events = [
   {
     name: "New Horizon: Innovate Without Limits: New Horizons Await",
@@ -354,11 +334,46 @@ const events = [
     end_date: "November 22, 2024",
   },
 ];
-const { nearestDateDiff, nearestEvent, index } = findNearestUpcomingEvent(events);
+
+const findNearestUpcomingEvent = (events) => {
+  let nearestEvent = null;
+  let nearestDateDiff = Infinity;
+  let index = 0;
+  events.forEach((event, i) => {
+    const eventStartDate = moment(event.start_date, "MMMM DD, YYYY");
+    const currentDate = moment();
+    const diff = eventStartDate.diff(currentDate, "days");
+
+    if (diff >= 0 && diff < nearestDateDiff) {
+      nearestEvent = event;
+      nearestDateDiff = diff;
+      index = i;
+    }
+  });
+
+  return { nearestEvent, nearestDateDiff, index };
+};
+
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(index); // use nearest event's index as init state
+
+  // State variables for the nearest event
+  const [nearestEventInfo, setNearestEventInfo] = useState({
+    nearestEvent: null,
+    nearestDateDiff: null,
+    index: 0,
+  });
+
+  // State for the current index in the carousel
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const { nearestEvent, nearestDateDiff, index } = findNearestUpcomingEvent(events);
+    setNearestEventInfo({ nearestEvent, nearestDateDiff, index });
+    setCurrentIndex(index);
+  }, [events]);
+
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;
     const currentEvent = events[currentIndex];
@@ -373,17 +388,18 @@ const XrplEventsAndCarouselSection = ({ events }) => {
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
 
   const handleNext = () => {
     if (currentIndex < events.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
 
   const { prevEvent, currentEvent, nextEvent } = updateCarousel();
+
   return (
     <>
       <section className="xrpl-events-section">
@@ -415,24 +431,24 @@ const XrplEventsAndCarouselSection = ({ events }) => {
             {translate("View All Events")}
           </Link>
         </div>
-        {!!nearestEvent && (
+        {!!nearestEventInfo.nearestEvent && (
           <div className="upcoming-event" id="upcoming-events-section">
             <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
             <div id="days-count" className="days-count">
-              {nearestDateDiff}
+            {nearestEventInfo.nearestDateDiff}
             </div>
             <div className="days-word">{translate("days")}</div>
             <div className="num-separator"></div>
             <h5 id="upcoming-event-name" className="event-name">
-              {translate(nearestEvent?.name)}
+            {translate(nearestEventInfo.nearestEvent?.name)}
             </h5>
             <p className="mb-2 event-details d-flex icon">
               <span className="icon-location"></span>
-              <span id="upcoming-event-date">{nearestEvent?.date}</span>
+              <span id="upcoming-event-date">{nearestEventInfo.nearestEvent?.date}</span>
             </p>
             <p className="event-location d-flex icon">
               <span className="icon-date" id="upcoming-event-location"></span>
-              <span id="location-tag">{nearestEvent?.location}</span>
+              <span id="location-tag">{nearestEventInfo.nearestEvent?.location}</span>
             </p>
           </div>
         )}
