@@ -1,19 +1,13 @@
-import React, { useState } from "react";
-import { useThemeHooks } from "@redocly/theme/core/hooks";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
+import { useThemeHooks } from "@redocly/theme/core/hooks";
+import allEvents from "../static/JSON/events.json";
 import { Link } from "@redocly/theme/components/Link/Link";
-import events from "../static/JSON/events.json"
-export const frontmatter = {
-  seo: {
-    title: "Community",
-    description:
-      "The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.",
-  },
-};
+
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
-  let index;
+  let index = 0;
   events.forEach((event, i) => {
     const eventStartDate = moment(event.start_date, "MMMM DD, YYYY");
     const currentDate = moment();
@@ -22,19 +16,33 @@ const findNearestUpcomingEvent = (events) => {
     if (diff >= 0 && diff < nearestDateDiff) {
       nearestEvent = event;
       nearestDateDiff = diff;
-      index = i
+      index = i;
     }
   });
 
   return { nearestEvent, nearestDateDiff, index };
 };
 
-
-const { nearestDateDiff, nearestEvent, index } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(index); // use nearest event's index as init state
+  const { translate } = useTranslate(); 
+  // State variables for the nearest event
+  const [nearestEventInfo, setNearestEventInfo] = useState({
+    nearestEvent: null,
+    nearestDateDiff: null,
+    index: 0,
+  });
+
+  // State for the current index in the carousel
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const { nearestEvent, nearestDateDiff, index } =
+      findNearestUpcomingEvent(events);
+    setNearestEventInfo({ nearestEvent, nearestDateDiff, index });
+    setCurrentIndex(index);
+  }, [events]);
+
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;
     const currentEvent = events[currentIndex];
@@ -49,17 +57,18 @@ const XrplEventsAndCarouselSection = ({ events }) => {
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
 
   const handleNext = () => {
     if (currentIndex < events.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
 
   const { prevEvent, currentEvent, nextEvent } = updateCarousel();
+
   return (
     <>
       <section className="xrpl-events-section">
@@ -91,24 +100,28 @@ const XrplEventsAndCarouselSection = ({ events }) => {
             {translate("View All Events")}
           </Link>
         </div>
-        {!!nearestEvent && (
+        {!!nearestEventInfo.nearestEvent && (
           <div className="upcoming-event" id="upcoming-events-section">
             <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
             <div id="days-count" className="days-count">
-              {nearestDateDiff}
+              {nearestEventInfo.nearestDateDiff}
             </div>
             <div className="days-word">{translate("days")}</div>
             <div className="num-separator"></div>
             <h5 id="upcoming-event-name" className="event-name">
-              {translate(nearestEvent?.name)}
+              {translate(nearestEventInfo.nearestEvent?.name)}
             </h5>
             <p className="mb-2 event-details d-flex icon">
               <span className="icon-location"></span>
-              <span id="upcoming-event-date">{nearestEvent?.date}</span>
+              <span id="upcoming-event-date">
+                {nearestEventInfo.nearestEvent?.date}
+              </span>
             </p>
             <p className="event-location d-flex icon">
               <span className="icon-date" id="upcoming-event-location"></span>
-              <span id="location-tag">{nearestEvent?.location}</span>
+              <span id="location-tag">
+                {nearestEventInfo.nearestEvent?.location}
+              </span>
             </p>
           </div>
         )}
@@ -126,14 +139,14 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <img
             id="left-image"
             alt="Left Event Image"
-            src={prevEvent ? prevEvent.image : ""}
+            src={prevEvent ? `/img/events/${prevEvent.image}` : ""}
             style={{ visibility: prevEvent ? "visible" : "hidden" }}
           />
           <div className="center-image-wrapper">
             <img
               id="center-image"
               alt="Featured Event Image"
-              src={currentEvent ? currentEvent.image : ""}
+              src={currentEvent ? `/img/events/${currentEvent.image}` : ""}
               onClick={() =>
                 currentEvent && window.open(currentEvent.link, "_blank")
               }
@@ -155,7 +168,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <img
             id="right-image"
             alt="Right Event Image"
-            src={nextEvent ? nextEvent.image : ""}
+            src={nextEvent ? `/img/events/${nextEvent.image}` : ""}
             style={{ visibility: nextEvent ? "visible" : "hidden" }}
           />
         </div>
@@ -174,6 +187,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
 };
 
 const CommunityPage: React.FC = () => {
+  const events = allEvents.filter((event) => event.community)
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
@@ -469,16 +483,17 @@ const CommunityPage: React.FC = () => {
       {/* Bottom Cards Section 2 cards */}
       <section className="bottom-cards-section bug-bounty">
         <div className="com-card">
-          <img className="top-right-img bug-bounty-card-bg" alt="Top Right Image" />
+          <img
+            className="top-right-img bug-bounty-card-bg"
+            alt="Top Right Image"
+          />
           <div className="card-content">
             <h6 className="card-title">
               {translate("RippleX Bug Bounty Program")}
             </h6>
             <h6 className="card-subtitle">
-              {translate(
-                "Contribute to the XRP Ledger's"
-              )}
-              <br/>
+              {translate("Contribute to the XRP Ledger's")}
+              <br />
               Security
             </h6>
             <p className="card-description">
@@ -486,14 +501,14 @@ const CommunityPage: React.FC = () => {
                 "RippleX’s Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem."
               )}
               <p className="card-description">
-                {
-                  translate("Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to ")
-                }
-              <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
-              {
-                translate(" and use the ")
-              }
-              <a href="https://ripple.com/files/bug-bounty.asc">Public Key.</a>
+                {translate(
+                  "Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to "
+                )}
+                <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
+                {translate(" and use the ")}
+                <a href="https://ripple.com/files/bug-bounty.asc">
+                  Public Key.
+                </a>
               </p>
             </p>
             <div className="card-links">
@@ -508,13 +523,14 @@ const CommunityPage: React.FC = () => {
           </div>
         </div>
         <div className="com-card">
-          <img className="bottom-right-img bug-bounty-card-bg-2" alt="Bottom Right Image" />
+          <img
+            className="bottom-right-img bug-bounty-card-bg-2"
+            alt="Bottom Right Image"
+          />
           <div className="card-content">
             <h6 className="card-title">{translate("Report a Scam")}</h6>
             <h6 className="card-subtitle pr-bt28">
-              {translate(
-                "Report Scams to Safeguard Our Community"
-              )}
+              {translate("Report Scams to Safeguard Our Community")}
             </h6>
             <p className="card-description">
               {translate(
