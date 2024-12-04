@@ -3,10 +3,9 @@ category: 2023
 date: 2023-09-06
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Upcoming Devnet Reset
 _by Team RippleX_
@@ -38,7 +37,7 @@ We plan to reset Devnet so that it has all the following amemdments enabled:
 
 - Amendments currently enabled on Mainnet.
 
-    **Note:** For retired amendments, the Devnet will follow the amended behavior but the retired amendment's ID will not appear enabled in the on-ledger `Amendments` entry or the `feature` API method.
+    {% admonition type="info" name="Note" %}For retired amendments, the Devnet will follow the amended behavior but the retired amendment's ID will not appear enabled in the on-ledger `Amendments` entry or the `feature` API method.{% /admonition %}
 
 - Amendments that are "open for voting" as of version 1.11.0, including FixNFTokenRemint and XRPFees.
 

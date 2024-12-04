@@ -1,55 +1,57 @@
 'use strict'
-const xrpl = require('xrpl');
+const xrpl = require('xrpl')
 
-const address = "rEYyvXCwv1WJ6a8hW4sBx5afXbJTK97bbR"; // <-- Change this to your account
-
-const main = async () => {
+async function main() {
   try {
     // Connect ----------------------------------------------------------------
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
-    await client.connect();
+    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+    await client.connect()
 
-    let currMarker = null;
-    let account_objects = [];
-
-    // Loop through all account objects until marker is undefined --------------
+    // Loop through account objects until marker is undefined -----------------
+    let current_marker = null
+    let checks_found = []
     do {
-        const payload = {
-            "command": "account_objects",
-            "account": address,
-            "ledger_index": "validated",
-            "type": "check",
-        };
+      const request = {
+        "command": "account_objects",
+        "account": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
+        "ledger_index": "validated",
+        "type": "check"
+      }
 
-        if(currMarker !== null) {
-            payload.marker = currMarker;
-        };
+      if (current_marker) {
+        request.marker = current_marker
+      }
 
-        let { result: { account_objects : checks, marker } } = await client.request(payload);
+      const response = await client.request(request)
+      
+      checks_found = checks_found.concat(response.result.account_objects)
+      current_marker = response.result.marker
 
-        if (marker === currMarker) {
-            break;
-        }
-        
-        account_objects.push(...checks);
-        currMarker = marker;
-        
-    } while (typeof currMarker !== "undefined")
+    } while (current_marker)
+
+    // Filter results by recipient --------------------------------------------
+    // To filter by sender, check Account field instead of Destination
+    const checks_by_recipient = []
+    for (const check of checks_found) {
+      if (check.Destination == "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis") {
+        checks_by_recipient.push(check)
+      }
+    }
     
     // Print results ----------------------------------------------------------
-    if (account_objects.length === 0) {
-        console.log("No checks found.");
+    if (checks_by_recipient.length === 0) {
+      console.log("No checks found.")
     } else {
-      console.log("Checks: \n", JSON.stringify(account_objects, null, "\t"));
-    };
+      console.log("Checks: \n", JSON.stringify(checks_by_recipient, null, 2))
+    }
 
     // Disconnect -------------------------------------------------------------
-    await client.disconnect();
+    await client.disconnect()
 
   } catch (error) {
-    console.log(error);
-    process.exit(0);
+    console.log(error)
+    process.exit(1)
   }
 }
 
-main();
+main()

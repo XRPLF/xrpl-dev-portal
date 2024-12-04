@@ -252,6 +252,18 @@
 [OfferCreateトランザクション]: /docs/references/protocol/transactions/types/offercreate.md
 [Offerエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
 [Offerオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
+[OracleDelete transaction]: /docs/references/protocol/transactions/types/oracledelete.md
+[OracleDeleteトランザクション]: /docs/references/protocol/transactions/types/oracledelete.md
+[OracleDelete transactions]: /docs/references/protocol/transactions/types/oracledelete.md
+[OracleDeleteトランザクション]: /docs/references/protocol/transactions/types/oracledelete.md
+[Oracle entry]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
+[Oracleエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
+[Oracle object]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
+[Oracleオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
+[OracleSet transaction]: /docs/references/protocol/transactions/types/oracleset.md
+[OracleSetトランザクション]: /docs/references/protocol/transactions/types/oracleset.md
+[OracleSet transactions]: /docs/references/protocol/transactions/types/oracleset.md
+[OracleSetトランザクション]: /docs/references/protocol/transactions/types/oracleset.md
 [OwnerPaysFee amendment]: /resources/known-amendments.md#ownerpaysfee
 [OwnerPaysFeeの修正]: /resources/known-amendments.md#ownerpaysfee
 [PayChan amendment]: /resources/known-amendments.md#paychan
@@ -282,6 +294,7 @@
 [PaymentChannelFundトランザクション]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
 [Paymentトランザクション]: /docs/references/protocol/transactions/types/payment.md
+[PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode
 [RequireFullyCanonicalSig amendment]: /resources/known-amendments.md#requirefullycanonicalsig
@@ -490,6 +503,8 @@
 [fixNFTokenRemintの修正]: /resources/known-amendments.md#fixnftokenremint
 [fixPayChanRecipientOwnerDir amendment]: /resources/known-amendments.md#fixpaychanrecipientownerdir
 [fixPayChanRecipientOwnerDirの修正]: /resources/known-amendments.md#fixpaychanrecipientownerdir
+[fixPreviousTxnID amendment]: /resources/known-amendments.md#fixprevioustxnid
+[fixPreviousTxnIDの修正]: /resources/known-amendments.md#fixprevioustxnid
 [fixQualityUpperBound amendment]: /resources/known-amendments.md#fixqualityupperbound
 [fixQualityUpperBoundの修正]: /resources/known-amendments.md#fixqualityupperbound
 [fixRemoveNFTokenAutoTrustLine amendment]: /resources/known-amendments.md#fixremovenftokenautotrustline
@@ -498,6 +513,10 @@
 [fixTakerDryOfferRemovalの修正]: /resources/known-amendments.md#fixtakerdryofferremoval
 [fixTrustLinesToSelf amendment]: /resources/known-amendments.md#fixtrustlinestoself
 [fixTrustLinesToSelfの修正]: /resources/known-amendments.md#fixtrustlinestoself
+[get_aggregate_price command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
+[get_aggregate_priceコマンド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
+[get_aggregate_price method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
+[get_aggregate_priceメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
 [gateway_balances command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [gateway_balances method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [gateway_balances メソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md

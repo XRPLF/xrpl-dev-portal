@@ -19,7 +19,7 @@ This example shows how to:
 
 Checks offer another option for transferring funds between accounts. Checks have two particular advantages.
 
-1. You can use a check to send funds to another account without first creating a trust line - the trust line is created automatically when the receiver chooses to accept the funds.
+1. You can use a check to send [tokens](../../../concepts/tokens/index.md) to someone who has not already created a trust line. The trust line is created automatically when the receiver chooses to accept the funds.
 2. The receiver can choose to accept less than the full amount of the check. This allows you to authorize a maximum amount when the actual cost is not finalized. 
 
 
@@ -27,9 +27,11 @@ Checks offer another option for transferring funds between accounts. Checks have
 
 ## Prerequisites
 
-Clone or download the [Modular Tutorial Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download}.
+Clone or download the {% repo-link path="_code-samples/quickstart/js/" %}Modular Tutorial Samples{% /repo-link %}.
 
-**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
+{% admonition type="info" name="Note" %}
+Without the Modular Tutorial Samples, you will not be able to try the examples that follow.
+{% /admonition %}
 
 ## Usage
 
@@ -73,7 +75,7 @@ To send a check for an issued currency token from the Standby account to the Ope
 
 ### Get Checks
 
-Click **Get Checks** to get a list of the current checks you have sent or received. To uniquely identify a check (for existence, when cashing a check), capture the _index_ value for the check.
+Click **Get Checks** to get a list of the current checks you have sent or received. To uniquely identify a check (for example, when cashing a check), use the check's ledger entry ID, in the `index` field.
 
 [![Get Checks with index highlighted](/docs/img/quickstart-checks5.png)](/docs/img/quickstart-checks5.png)
 
@@ -103,7 +105,7 @@ Click **Get Balances** to get a list of obligations and assets for each account.
 
 To cancel a check you have previously sent to another account.
 
-1. Enter the **Check ID** (**index** value).
+1. Enter the **Check ID** (`index` value).
 2. Click **Cancel Check**.
 
 [![Canceled check results](/docs/img/quickstart-checks8.png)](/docs/img/quickstart-checks8.png)
@@ -111,7 +113,7 @@ To cancel a check you have previously sent to another account.
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} in the source repository for this website.
+You can download the {% repo-link path="_code-samples/quickstart/js/" %}Modular Tutorial Samples{% /repo-link %} in the source repository for this website.
 
 ## ripplex10-check.js
 

@@ -76,7 +76,7 @@ In the following cases, a `rippled` server does not connect to untrusted peers:
 
 You can configure a `rippled` server to act as a "private" server to keep its IP address hidden from the general public. This can be a useful precaution against denial of service attacks and intrusion attempts on important `rippled` servers such as trusted validators. To participate in the peer-to-peer network, a private server must be configured to connect to at least one non-private server, which relays its messages to the rest of the network.
 
-**Caution:** If you configure a private server without any [fixed peers](#fixed-peers-and-peer-reservations), the server cannot connect to the network, so it cannot know network state, broadcast transactions, or participate in the consensus process.
+{% admonition type="warning" name="Caution" %}If you configure a private server without any [fixed peers](#fixed-peers-and-peer-reservations), the server cannot connect to the network, so it cannot know network state, broadcast transactions, or participate in the consensus process.{% /admonition %}
 
 Configuring a server as a private server has several effects:
 
@@ -86,7 +86,7 @@ Configuring a server as a private server has several effects:
 
     Validators always ask their peers to hide the validators' IP addresses, regardless of the private server settings. This helps protect validators from being overloaded by denial of service attacks.
 
-    **Caution:** It is possible to modify a server's source code so that it ignores this request and shares its immediate peers' IP addresses anyway. You should configure your private server to connect only to servers that you know are not modified in this way.
+    {% admonition type="warning" name="Caution" %}It is possible to modify a server's source code so that it ignores this request and shares its immediate peers' IP addresses anyway. You should configure your private server to connect only to servers that you know are not modified in this way.{% /admonition %}
 
 ### Pros and Cons of Peering Configurations
 

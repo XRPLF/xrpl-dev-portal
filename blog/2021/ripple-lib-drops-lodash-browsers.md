@@ -1,9 +1,8 @@
 ---
 category: 2021
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 date: 2021-08-26
 labels:
     - xrpl.js Release Notes
@@ -31,7 +30,7 @@ Starting with 1.10.0, ripple-lib incorporates Lodash into the browser-ready Java
 <script src="https://unpkg.com/ripple-lib@1.10.0/build/ripple-latest-min.js"></script>
 ```
 
-**Tip:** You can safely update ripple-lib to 1.10.0 even if you haven't removed the Lodash script tag. The extra script tag is now an unnecessary extra download for most cases, but it doesn't cause errors if it's still there.
+{% admonition type="success" name="Tip" %}You can safely update ripple-lib to 1.10.0 even if you haven't removed the Lodash script tag. The extra script tag is now an unnecessary extra download for most cases, but it doesn't cause errors if it's still there.{% /admonition %}
 
 ## Same Process on Node.js
 

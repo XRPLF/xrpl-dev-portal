@@ -16,7 +16,7 @@ The `XChainModifyBridge` transaction allows bridge managers to modify the parame
 
 This transaction must be sent by the door account and requires the entities that control the witness servers to coordinate and provide the signatures for this transaction. This coordination happens outside the ledger.
 
-**Note:** You can't modify the signer list for the bridge with this transaction. The signer list is on the door account itself and is changed in the same way signer lists are changed on accounts (via a `SignerListSet` transaction).
+{% admonition type="info" name="Note" %}You can't modify the signer list for the bridge with this transaction. The signer list is on the door account itself and is changed in the same way signer lists are changed on accounts (via a `SignerListSet` transaction).{% /admonition %}
 
 
 ## Example XChainModifyBridge JSON

@@ -105,12 +105,13 @@ An example of the request format:
 ```json
 {
   "id": 2,
+  "api_version": 2,
   "command": "submit",
   "tx_json" : {
       "TransactionType" : "Payment",
       "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Amount" : {
+      "DeliverMax" : {
          "currency" : "USD",
          "value" : "1",
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -130,10 +131,11 @@ An example of the request format:
     "params": [
         {
             "offline": false,
+            "api_version": 2,
             "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "Amount": {
+                "DeliverMax": {
                     "currency": "USD",
                     "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
                     "value": "1"
@@ -151,7 +153,7 @@ An example of the request format:
 {% tab label="Commandline" %}
 ```sh
 #Syntax: submit secret json [offline]
-rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Amount": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
+rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "DeliverMax": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
 ```
 {% /tab %}
 
@@ -169,6 +171,7 @@ An example of a successful response:
 ```json
 {
   "id": 1,
+  "api_version": 2,
   "status": "success",
   "type": "response",
   "result": {
@@ -186,7 +189,7 @@ An example of a successful response:
     "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
     "tx_json": {
       "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Amount": {
+      "DeliverMax": {
         "currency": "USD",
         "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
         "value": "1"
@@ -225,7 +228,7 @@ An example of a successful response:
         "tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
         "tx_json": {
             "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Amount": {
+            "DeliverMax": {
                 "currency": "USD",
                 "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
                 "value": "1"
@@ -267,7 +270,7 @@ Connecting to 127.0.0.1:5005
         "tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
         "tx_json": {
             "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Amount": {
+            "DeliverMax": {
                 "currency": "USD",
                 "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
                 "value": "1"
@@ -308,9 +311,9 @@ The response follows the [standard format][], with a successful result containin
 | `open_ledger_cost`      | String  | _(Omitted in sign-and-submit mode)_ The current [open ledger cost](../../../../concepts/transactions/transaction-cost.md#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be [queued](../../../../concepts/transactions/transaction-queue.md). |
 | `validated_ledger_index` | Integer  | _(Omitted in sign-and-submit mode)_ The [ledger index][] of the newest validated ledger at the time of submission. This provides a lower bound on the ledger versions that the transaction can appear in as a result of this request. (The transaction could only have been validated in this ledger version or earlier if it had already been submitted before.) |
 
-**Warning:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](../../../protocol/transactions/transaction-results/index.md) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+{% admonition type="danger" name="Warning" %}Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](../../../protocol/transactions/transaction-results/index.md) for details, and do not consider the transaction's results final until they appear in a validated ledger version.{% /admonition %}
 
-**Caution:** If this command results in an error message, the message can contain the secret key from the request. (This can only happen in sign-and-submit mode.) Make sure that these errors are not visible to others.
+{% admonition type="warning" name="Caution" %}If this command results in an error message, the message can contain the secret key from the request. (This can only happen in sign-and-submit mode.) Make sure that these errors are not visible to others.{% /admonition %}
 
 * Do not write an error including your secret key to a log file that can be seen by multiple people.
 * Do not paste an error including your secret key to a public place for debugging.

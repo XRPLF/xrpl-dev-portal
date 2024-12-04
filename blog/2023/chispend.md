@@ -3,10 +3,9 @@ category: 2023
 date: 2023-04-05
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: ChiSpend
 
@@ -16,7 +15,7 @@ This week on Developer Reflections, we’re proud to highlight [ChiSpend](https:
 
 ChiSpend (also known as Unispend) supports various blockchains and their native tokens, including the XRP Ledger, Polygon, Ethereum, Celo, and BNB Chain. Users can pay directly from their non-custodial wallets to buy real products like gift cards, send money via the Mobile Money integration, and send Airtime (prepaid minutes) to friends and family around the world. ChiSpend also supports the spending of block rewards, DeFi earnings, yield farming gains, and more. 
 
-The development team behind ChiSpend has prioritized ease-of-use for other developers via simple APIs that enhance existing mobile or web apps, games, wallets, or other on/off-chain projects. The project which is now live on Mainnet was built using `rippled`. Since launch, they have processed over $50,000 worth of transactions in XRP and other tokens. The app is also live on XUMM.
+The development team behind ChiSpend has prioritized ease-of-use for other developers via simple APIs that enhance existing mobile or web apps, games, wallets, or other on/off-chain projects. The project which is now live on Mainnet was built using `rippled`. Since launch, they have processed over $50,000 worth of transactions in XRP and other tokens. The app is also live on Xaman.
 
 ![Screenshot: ChiSpend](/blog/img/dev-reflections-chispend.png)
 

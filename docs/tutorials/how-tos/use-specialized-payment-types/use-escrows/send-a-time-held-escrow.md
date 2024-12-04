@@ -39,7 +39,7 @@ print(release_date_ripple)
 
 {% /tabs %}
 
-**Warning:** If you use a UNIX time in the `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!
+{% admonition type="danger" name="Warning" %}If you use a UNIX time in the `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!{% /admonition %}
 
 ## 2. Submit EscrowCreate transaction
 
@@ -52,7 +52,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -62,7 +62,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -83,7 +83,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -93,7 +93,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowcreate-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -109,7 +109,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-request.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-request.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -119,7 +119,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-response.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-response.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -130,7 +130,9 @@ Response:
 [Sign and submit](../../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
 
 ***TODO: First half of this statement is covered by concept info already. It's also reiterated in escrow.md. The second portion about potential recipients should remain.***
-**Tip:** The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
+{% admonition type="success" name="Tip" %}
+The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
+{% /admonition %}
 
 If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.md) instead.
 
@@ -141,7 +143,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -151,7 +153,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -171,7 +173,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -181,7 +183,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-time.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}

@@ -18,7 +18,7 @@ Some [metrics][] in the health check can rapidly fluctuate into unhealthy ranges
 
 For example, if you check the health of the server once per second, you might raise an alert if the server reports "warning" status three times in a row, or four times in a five-second span. You might also raise an alert if the server reports "critical" status twice in a five-second span. It is usually excessive to raise an alert every single time the server reports "warning".
 
-**Tip:** The server normally reports a "critical" status for the first few seconds after startup, switches to a "warning" status after it establishes a connection to the network, and finally reports a "healthy" status when it has fully synced to the network. After a restart, you should give a server 5–15 minutes to sync before taking additional interventions.
+{% admonition type="success" name="Tip" %}The server normally reports a "critical" status for the first few seconds after startup, switches to a "warning" status after it establishes a connection to the network, and finally reports a "healthy" status when it has fully synced to the network. After a restart, you should give a server 5–15 minutes to sync before taking additional interventions.{% /admonition %}
 
 ## Special Cases
 
@@ -66,7 +66,7 @@ $ sudo systemctl restart rippled.service
 
 A stronger intervention is to restart the entire machine.
 
-**Caution:** After a server starts, it typically needs up to 15 minutes to sync to the network. During this time, the health check is likely to report a critical or warning status. You should be sure your automated systems give servers enough time to sync before restarting them again.
+{% admonition type="warning" name="Caution" %}After a server starts, it typically needs up to 15 minutes to sync to the network. During this time, the health check is likely to report a critical or warning status. You should be sure your automated systems give servers enough time to sync before restarting them again.{% /admonition %}
 
 
 ### Upgrade

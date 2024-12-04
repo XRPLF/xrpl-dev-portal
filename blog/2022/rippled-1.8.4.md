@@ -3,10 +3,9 @@ category: 2022
 date: 2022-01-13
 labels:
     - rippled Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger version 1.8.4
 
@@ -60,7 +59,7 @@ path=/var/lib/rippled/db/nudb
 fast_load=1
 ```
 
-**Caution:** When the server is 'fast loading' data, it does not open JSON-RPC and WebSocket interfaces until after the initial load is completed. Because of this, it may appear unresponsive or down.
+{% admonition type="warning" name="Caution" %}When the server is 'fast loading' data, it does not open JSON-RPC and WebSocket interfaces until after the initial load is completed. Because of this, it may appear unresponsive or down.{% /admonition %}
 
 ## Security Fixes
 

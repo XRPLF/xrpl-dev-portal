@@ -20,6 +20,6 @@ Depending on how the `rippled` server is configured, how long it has been runnin
 | `validating`   | The server is currently participating in validation of the ledger |
 | `proposing`    | The server is participating in validation of the ledger and currently proposing its own version. |
 
-**Note:** The distinction between `full`, `validating`, and `proposing` is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.
+{% admonition type="info" name="Note" %}The distinction between `full`, `validating`, and `proposing` is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

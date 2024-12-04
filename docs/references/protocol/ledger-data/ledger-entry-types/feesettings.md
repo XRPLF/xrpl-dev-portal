@@ -37,8 +37,10 @@ In addition to the [common fields](../common-fields.md), the {% code-page-name /
 | `ReferenceFeeUnits` | Number    | UInt32            | Yes       | The `BaseFee` translated into "fee units". |
 | `ReserveBase`       | Number    | UInt32            | Yes       | The [base reserve](../../../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
 | `ReserveIncrement`  | Number    | UInt32            | Yes       | The incremental [owner reserve](../../../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
+| `PreviousTxnID`     | String    | Hash256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 
-**Warning:** The JSON format for this ledger entry type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP][Currency Amount].
+{% admonition type="danger" name="Warning" %}The JSON format for this ledger entry type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP][Currency Amount].{% /admonition %}
 
 
 If the _[XRPFees amendment][]_ is enabled, the `FeeSettings` object has these fields instead:

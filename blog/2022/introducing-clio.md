@@ -3,10 +3,9 @@ category: 2022
 date: 2022-03-22
 labels:
     - Clio Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing Clio, an XRP Ledger API server, now in Beta
 

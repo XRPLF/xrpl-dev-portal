@@ -3,10 +3,9 @@ category: 2024
 date: 2024-06-04
 labels:
     - rippled Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger version 2.2.0
 
@@ -50,7 +49,7 @@ Date:   Mon Jun 3 21:48:05 2024 -0400
 ### Amendments and New Features
 (These are changes which may impact or be useful to end users. For example, you may be able to update your code/workflow to take advantage of these changes.)
 
-- **featurePriceOracle** amendment: Implements a price oracle as defined in the [XLS-47](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-47d-PriceOracles/README.md) spec. A Price Oracle is used to bring real-world data, such as market prices, onto the blockchain, enabling dApps to access and utilize information that resides outside the blockchain. [#4789](https://github.com/XRPLF/rippled/pull/4789) 
+- **featurePriceOracle** amendment: Implements a price oracle as defined in the [XLS-0047](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md) spec. A Price Oracle is used to bring real-world data, such as market prices, onto the blockchain, enabling dApps to access and utilize information that resides outside the blockchain. [#4789](https://github.com/XRPLF/rippled/pull/4789) 
 
 - **fixEmptyDID** amendment: Modifies the behavior of the DID amendment: adds an additional check to ensure that DIDs are non-empty when created, and returns a `tecEMPTY_DID` error if the DID would be empty. [#4950](https://github.com/XRPLF/rippled/pull/4950)
 

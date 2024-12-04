@@ -3,10 +3,9 @@ category: 2022
 date: 2022-12-13
 labels:
     - xrpl-py Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Team RippleX
 ---
 # Introducing xrpl-py version 2.0.0-beta.0
@@ -25,7 +24,7 @@ The three main breaking changes made in this update are:
 
 The `Wallet` class previously included a sequence field to make sending transactions easier. In practice, it made things harder. You usually don't know the sequence number when you create a `Wallet` instance, and you needed to manually increment the number after each transaction. It is safer to get the sequence number from the ledger, the real source of truth, when you auto-fill transactions.
 
-Generating seeds from an entropy string now takes in hex strings instead of UTF-8 strings. This was especially necessary to implement wallet generation from [XLS-12 Secret Numbers](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-12), commonly used by the XUMM wallet app. xrpl-py used to treat entropy as a UTF-8 value, but that's problematic because not all byte strings are valid UTF-8 strings, preventing us from the full range of random entropies for seed generation.
+Generating seeds from an entropy string now takes in hex strings instead of UTF-8 strings. This was especially necessary to implement wallet generation from [XLS-12 Secret Numbers](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-12), commonly used by the Xaman app. xrpl-py used to treat entropy as a UTF-8 value, but that's problematic because not all byte strings are valid UTF-8 strings, preventing us from the full range of random entropies for seed generation.
 
 Lastly, when you initialize a `Wallet` from a seed without specifying an algorithm, the library now uses Ed25519 by default since it has better performance and other convenient properties compared to the secp256k1 algorithm. Previously xrpl-py would try to interpret the algorithm from the seed. To use the old encoding, you can specify `algorithm=secp256k1` when initializing a `Wallet` object.
 
@@ -76,7 +75,7 @@ OfferCancel(
 ),
 ```
 
-**Tip:** You can also omit the `sequence` field and use `autofill` before signing your transaction.
+{% admonition type="success" name="Tip" %}You can also omit the `sequence` field and use `autofill` before signing your transaction.{% /admonition %}
 
 ### Core Keypairs Seed Generation
 
@@ -93,7 +92,7 @@ DUMMY_BYTES = b"\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10"
 seed = generate_seed(DUMMY_BYTES.hex())
 ```
 
-**Note:** If your string is longer than 16 bytes, you must truncate it before passing it into `generate_seed()`
+{% admonition type="info" name="Note" %}If your string is longer than 16 bytes, you must truncate it before passing it into `generate_seed()`{% /admonition %}
 
 ### Wallet Constructor
 
@@ -111,7 +110,7 @@ wallet = Wallet.from_seed("snoPBrXtMeMyMHUVTgbuqAfg1SUTb", algorithm="secp256k1"
 // wallet.address: rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh
 ```
 
-**Note:** If your seed previously used the secp256k1 algorithm to decode, and you don't specify it explicitly, `Wallet.from_seed()` returns a different classic address and public / private keys.
+{% admonition type="info" name="Note" %}If your seed previously used the secp256k1 algorithm to decode, and you don't specify it explicitly, `Wallet.from_seed()` returns a different classic address and public / private keys.{% /admonition %}
 
 ## Start Building
 
@@ -121,7 +120,7 @@ You can install this beta version using pip:
 pip install xrpl-py==2.0.0b0
 ```
 
-**Note:** This beta does not include Automated Market-Maker (AMM) or Sidechains functionality. This is only for testing Wallet changes.
+{% admonition type="info" name="Note" %}This beta does not include Automated Market-Maker (AMM) or Sidechains functionality. This is only for testing Wallet changes.{% /admonition %}
 
 If you're just getting started using xrpl-py, see [Get Started Using Python](https://xrpl.org/get-started-using-python.html), the [xrpl-py source code repository](https://github.com/XRPLF/xrpl-py/tree/xrpl-py-2.0), or [reference documentation](https://xrpl-py.readthedocs.io/en/stable/).
 

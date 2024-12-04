@@ -1,10 +1,9 @@
 ---
 category: 2014
 date: 2014-12-18
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Turn your exchange into a Ripple Gateway
 

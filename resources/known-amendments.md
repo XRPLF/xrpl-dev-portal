@@ -12,18 +12,18 @@ labels:
 The following is a comprehensive list of all known [amendments](../docs/concepts/networks-and-servers/amendments.md) and their status on the production XRP Ledger:
 
 {% admonition type="success" name="Tip" %}
-This list is updated manually. For a live view of amendment voting, see the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments).
+This list is updated manually. For a live view of amendment voting, see the Amendments Dashboards: [XRPScan](https://xrpscan.com/amendments), [XRPLExplorer](https://xrplexplorer.com/amendments).
 {% /admonition %}
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
-| [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
-| [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
-| [PriceOracle][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
-| [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [PriceOracle][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1" %}Enabled: 2024-11-02{% /badge %} |
+| [DID][]                           | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D" %}Enabled: 2024-10-30{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472" %}Enabled: 2024-09-27{% /badge %} |
+| [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171" %}Enabled: 2024-09-27{% /badge %} |
+| [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/8C8F5566464097BF1BAF7C645BB9E1762986844A052BBA3B9769F6564EEFAB71" %}Enabled: 2024-09-24{% /badge %} |
 | [fixNFTokenReserve][]             | v2.1.0     | {% badge href="https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4" %}Enabled: 2024-04-12{% /badge %} |
 | [fixAMMOverflowOffer][]           | v2.1.1     | {% badge href="https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC" %}Enabled: 2024-04-11{% /badge %} |
 | [fixDisallowIncomingV1][]         | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB" %}Enabled: 2024-04-11{% /badge %} |
@@ -103,6 +103,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
 {% /admonition %}
 
+
 ## Obsolete Amendments
 
 The following is a list of known [amendments](../docs/concepts/networks-and-servers/amendments.md) that have been removed in a previous version, or are obsolete and have been marked for removal.
@@ -121,7 +122,6 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 ## Details about Known Amendments
 
-
 ### AMM
 [AMM]: #amm
 
@@ -132,16 +132,16 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.
+Adds [XLS-30](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#readme) Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.
 
 Adds new transactions:
 
-- AMMBid - Bid on the AMM's auction slot, which offers discounted fees.
-- AMMCreate - Create a new AMM instance and provide initial funding.
-- AMMDelete - Remove an empty AMM instance from the ledger.
-- AMMDeposit - Add funds to an existing AMM and receive LP Tokens.
-- AMMWithdraw - Return LP Tokens to an AMM to remove funds.
-- AMMVote - Vote on the AMM's trading fee.
+- [AMMBid](../docs/references/protocol/transactions/types/ammbid.md) - Bid on the AMM's auction slot, which offers discounted fees.
+- [AMMCreate](../docs/references/protocol/transactions/types/ammcreate.md) - Create a new AMM instance and provide initial funding.
+- [AMMDelete](../docs/references/protocol/transactions/types/ammdelete.md) - Remove an empty AMM instance from the ledger.
+- [AMMDeposit](../docs/references/protocol/transactions/types/ammdeposit.md) - Add funds to an existing AMM and receive LP Tokens.
+- [AMMWithdraw](../docs/references/protocol/transactions/types/ammwithdraw.md) - Return LP Tokens to an AMM to remove funds.
+- [AMMVote](../docs/references/protocol/transactions/types/ammvote.md) - Vote on the AMM's trading fee.
 
 Updates existing transactions with new functionality:
 
@@ -232,7 +232,6 @@ This amendment was intended to add support for several types of crypto-condition
 However, the amendment was added to `rippled` v0.60.0 before implementation was complete. As a result, this amendment ID refers to incomplete code which does almost nothing. Modifying the existing amendment to add support for other crypto-conditions would cause a conflict with old versions of the amendment already in released software. If a future release adds support for additional crypto-conditions, it must use a new and different amendment ID.
 
 
-
 ### DeletableAccounts
 [DeletableAccounts]: #deletableaccounts
 
@@ -294,7 +293,7 @@ Also changes the OfferCreate transaction to return `tecEXPIRED` when trying to c
 | Amendment    | DID |
 |:-------------|:----|
 | Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -302,8 +301,8 @@ Adds to the ledger Decentralized Identifier (DID) functionality that conforms to
 
 Adds new transactions:
 
-- DIDDelete - Delete the DID associated with your XRPL account.
-- DIDSet - Create a new DID or update an existing one.
+- [DIDDelete](../docs/references/protocol/transactions/types/diddelete.md) - Delete the DID associated with your XRPL account.
+- [DIDSet](../docs/references/protocol/transactions/types/didset.md) - Create a new DID or update an existing one.
 
 Adds a new `DID` ledger entry type.
 
@@ -654,7 +653,7 @@ This amendment fixes the improper handling of large synthetic AMM offers in the 
 | Amendment    | fixAMMv1_1 |
 |:-------------|:-----------|
 | Amendment ID | 35291ADD2D79EB6991343BDA0912269C817D0F094B02226C1C14AD2858962ED4 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -706,7 +705,7 @@ This amendment has no effect unless the [DisallowIncoming][] amendment is enable
 | Amendment    | fixEmptyDID |
 |:-------------|:------------|
 | Amendment ID | 755C971C29971C9F20C6F080F2ED96F87884E40AD19554A5EBECDCEC8A1F77FE |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -717,7 +716,6 @@ With this amendment, if a transaction would create an empty DID, it returns the 
 Without this amendment, an empty DID can be created, which takes up space and counts towards the owner reserve but does nothing useful.
 
 This amendment has no effect unless the [DID][] amendment is enabled.
-
 
 
 ### fixFillOrKill
@@ -738,7 +736,6 @@ This amendment has no effect unless the [FlowCross][] amendment is enabled.
 
 
 ### fixInnerObjTemplate
-
 [fixInnerObjTemplate]: #fixinnerobjtemplate
 
 | Amendment    | fixInnerObjTemplate |
@@ -818,11 +815,10 @@ Amendment `fixNFTokenRemint` would change the way NFT sequence numbers are const
 
 The amendment also introduces a new account deletion restriction. An account can only be deleted if `FirstNFTSequence` + `MintedNFTokens` + 256 is less than the current ledger sequence (256 was chosen as a heuristic restriction for account deletion and already exists in the account deletion constraint). Without this restriction, an NFT could still be re-minted under certain conditions.
 
-**Warning:** This is a **breaking change** for projects & tools relying on their own locally computed NFTokenID for minted tokens. If you have code to calculate NFTokenIDs, you must update it to match the new fomula. For an example of how to do so with backwards compatibility, see this [well known reference implementation in JavaScript](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).
+{% admonition type="danger" name="Warning" %}This is a **breaking change** for projects & tools relying on their own locally computed NFTokenID for minted tokens. If you have code to calculate NFTokenIDs, you must update it to match the new fomula. For an example of how to do so with backwards compatibility, see this [well known reference implementation in JavaScript](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).{% /admonition %}
 
 
 ### fixNFTokenReserve
-
 [fixNFTokenReserve]: #fixnftokenreserve
 
 | Amendment    | fixNFTokenReserve |
@@ -897,7 +893,7 @@ This change prevents accounts from being deleted if they are the recipient for o
 | Amendment    | fixPreviousTxnID |
 |:-------------|:-----------------|
 | Amendment ID | 7BB62DC13EC72B775091E9C71BF8CF97E122647693B50C5E87A80DFD6FCFAC50 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1229,7 +1225,7 @@ Implements a "Negative UNL" system, where the network can track which validators
 
 Adds native support for [non-fungible tokens](../docs/concepts/tokens/nfts/index.md). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
-**Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment][].
+{% admonition type="danger" name="Warning" %}There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment][].{% /admonition %}
 
 This amendment adds 5 new transaction types:
 
@@ -1269,7 +1265,7 @@ This amendment combines the effects of the following amendments, rendering the i
 
 It has no other effects.
 
-**Caution:** The [fixRemoveNFTokenAutoTrustLine][] fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.
+{% admonition type="warning" name="Caution" %}The [fixRemoveNFTokenAutoTrustLine][] fixes an known issue with this amendment. When creating a new test network, you should make sure that these amendments should be enabled together or the fix amendment is enabled first.{% /admonition %}
 
 
 ### OwnerPaysFee
@@ -1286,7 +1282,7 @@ Fixes an inconsistency in the way [transfer fees](../docs/concepts/tokens/transf
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
-**Note:** An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.)
+{% admonition type="info" name="Note" %}An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.){% /admonition %}
 
 
 ### PayChan
@@ -1312,11 +1308,11 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 | Amendment    | PriceOracle |
 |:-------------|:------------|
 | Amendment ID | 96FD2F293A519AE1DB6F8BED23E4AD9119342DA7CB6BAFD00953D16C54205D8B |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment adds a "Price Oracle" feature to the XRP Ledger, as defined in the [XLS-47 specification](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-47d-PriceOracles/README.md). A blockchain oracle is a system where a service provides to the blockchain about the outside world, which can then be used by decentralized applications (dApps) that run primarily on or using the blockchain. This price oracle is intended to store pricing information about asset pairs that exist outside of the XRP Ledger so that smart contracts that rely on the XRP Ledger can use this information.
+This amendment adds a "Price Oracle" feature to the XRP Ledger, as defined in the [XLS-47 specification](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md). A blockchain oracle is a system where a service provides to the blockchain about the outside world, which can then be used by decentralized applications (dApps) that run primarily on or using the blockchain. This price oracle is intended to store pricing information about asset pairs that exist outside of the XRP Ledger so that smart contracts that rely on the XRP Ledger can use this information.
 
 This amendment creates a new ledger entry type, `PriceOracle`, and new transactions, `OracleSet` (creates or modifies oracle data) and `OracleDelete` (deletes a given oracle).
 
@@ -1367,7 +1363,7 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 
 Sorts the entries in [DirectoryNode ledger objects](../docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](../docs/infrastructure/installation/index.md) to `rippled` version 0.80.0 or later.
+{% admonition type="danger" name="Warning" %}Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](../docs/infrastructure/installation/index.md) to `rippled` version 0.80.0 or later.{% /admonition %}
 
 
 ### SusPay
@@ -1452,7 +1448,7 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 | Pre-amendment functionality retired? | No |
 
 Adds cross-chain bridges, enabling the transfer of digital assets between networks (for example, between Mainnet and a sidechain).
-Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
+Standards draft: [XLS-0038 Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0038-cross-chain-bridge/README.md).
 
 Adds new transactions:
 
@@ -1491,5 +1487,7 @@ Simplifies transaction cost calculations to use XRP directly rather than calcula
 - Updates the SetFee transaction type. Replaces `BaseFee`, `ReferenceFeeUnits`, `ReserveBase`, `ReserveIncrement` fields with `BaseFeeDrops`, `ReserveBaseDrops`, `ReserveIncrementDrops`.
 
 Without this amendment, the format of the transaction and ledger entry are the same.
+
+
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

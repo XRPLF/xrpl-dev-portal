@@ -12,7 +12,7 @@ Issuers can freeze the tokens they issue in the XRP Ledger. **This does not appl
 
 In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an exchange or gateway may want to freeze token balances.
 
-**Tip:** No one can freeze XRP in the XRP Ledger. However, custodial exchanges can always freeze the funds they custody at their own discretion. For more details, see [Common Misunderstandings about Freezes](common-misconceptions-about-freezes.md).
+{% admonition type="success" name="Tip" %}No one can freeze XRP in the XRP Ledger. However, custodial exchanges can always freeze the funds they custody at their own discretion. For more details, see [Common Misunderstandings about Freezes](common-misconceptions-about-freezes.md).{% /admonition %}
 
 There are three settings related to freezes:
 

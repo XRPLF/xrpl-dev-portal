@@ -59,7 +59,7 @@ The response follows the [standard format][], with a successful result containin
 |:-----------------------|:-----------------|:---------------------------------|
 | `ledger_current_index` | Unsigned Integer - [Ledger Index][] | Ledger index of the newly created 'current' ledger |
 
-**Note:** When you close a ledger, `rippled` determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.
+{% admonition type="info" name="Note" %}When you close a ledger, `rippled` determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.{% /admonition %}
 
 ### Possible Errors
 

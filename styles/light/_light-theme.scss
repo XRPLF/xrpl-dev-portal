@@ -117,7 +117,7 @@ h6,
   background-color: $light-form-bg;
 }
 
-[data-component-name="Search/SearchIcon"] > path {
+[data-component-name="Search/SearchIcon"]>path {
   fill: black;
 }
 
@@ -139,8 +139,7 @@ a:not([role="button"]) {
 
   &:hover,
   &:active,
-  &.active
-  {
+  &.active {
     color: $light-link-hover-color;
   }
 
@@ -205,11 +204,11 @@ article a.button,
   }
 
   // nav "hero" images
-  #dropdown-hero-for-docs > img {
+  #dropdown-hero-for-docs>img {
     content: url(../img/icons/lightmode/docs.svg);
   }
 
-  #dropdown-hero-for-community > img {
+  #dropdown-hero-for-community>img {
     content: url(../img/icons/lightmode/contribute.svg);
   }
 
@@ -241,7 +240,7 @@ article a.button,
       color: $gray-600;
     }
 
-    .col-for-get_started{
+    .col-for-get_started {
       background-color: $gray-200;
     }
   }
@@ -462,7 +461,8 @@ code {
 }
 
 // Code blocks
-pre code, pre {
+pre code,
+pre {
   background-color: $gray-200;
 }
 
@@ -564,6 +564,10 @@ pre code, pre {
 
   #wallet-coin {
     content: url("../img/wallets/lightmode/coin.svg");
+  }
+
+  #wallet-gem {
+    content: url("../img/wallets/lightmode/gem.svg");
   }
 }
 
@@ -673,6 +677,7 @@ pre code, pre {
       }
     }
   }
+
   #use_case_companies_list {
     #threezy {
       .biz-logo {
@@ -681,19 +686,22 @@ pre code, pre {
       }
     }
   }
-.modal-content-uses{
-  .first-ledger-bot{
-    content: url("../img/uses/lightmode/first-ledger-bot.svg");
+
+  .modal-content-uses {
+    .first-ledger-bot {
+      content: url("../img/uses/lightmode/first-ledger-bot.svg");
+    }
+
+    .moai-finance {
+      content: url("../img/uses/lightmode/moai-finance.svg");
+    }
+
+    .orchestra-finance {
+      max-height: 52px;
+      margin: 0;
+      content: url("../img/uses/lightmode/orchestra-finance.svg");
+    }
   }
-  .moai-finance{
-    content: url("../img/uses/lightmode/moai-finance.svg");  
-  }
-  .orchestra-finance{
-    max-height: 52px ;
-    margin: 0;
-    content: url("../img/uses/lightmode/orchestra-finance.svg");  
-  }
-}
 
   // Monochrome logos; invert.
   #bitpay,
@@ -789,18 +797,21 @@ pre code, pre {
 
 .page-docs-index,
 .page-community {
-  .funding-text{
+  .funding-text {
     color: #232325;
   }
-  .stat{
-    .small-text{
+
+  .stat {
+    .small-text {
       color: #232325;
     }
   }
-  .project-card{
+
+  .project-card {
     background-color: transparent;
 
   }
+
   .card-details {
     background-color: transparent;
   }
@@ -900,7 +911,7 @@ pre code, pre {
   #xrplGrantsDark g,
   #xrplGrantsDark-small g,
   #careersDark g,
-  #careersDark-small g{
+  #careersDark-small g {
     filter: invert(100%) brightness(0.8);
   }
 }
@@ -1141,12 +1152,12 @@ main article .card-grid {
 
   #general-badge {
     background-color: #FFFFFF;
-    color: #343437; 
+    color: #343437;
   }
 
   #release_notes-badge {
     background-color: #32E685;
-    color: #145C35; 
+    color: #145C35;
   }
 
   #advisories-badge {
@@ -1156,7 +1167,7 @@ main article .card-grid {
 
   #amendments-badge {
     background-color: #FAFF19;
-    color: #4B4C00; 
+    color: #4B4C00;
   }
 
   #development-badge {
@@ -1217,7 +1228,7 @@ main article .card-grid {
   }
 
   .prev img {
-    content: url("../img/icons/prev_light.svg"); 
+    content: url("../img/icons/prev_light.svg");
   }
 
   .next img {
@@ -1228,4 +1239,99 @@ main article .card-grid {
   .arrow-button {
     background-color: $gray-200;
   }
+}
+
+.page-rwa-tokenization {
+
+  $icons: (
+    'low-fees': '../img/tokenization/lightmode/low-fees.png',
+    'access': '../img/tokenization/lightmode/access.png',
+    'full-stack': '../img/tokenization/lightmode/full-stack.png',
+    'best-in-class': '../img/tokenization/lightmode/best-in-class.png',
+    'cross-chain': '../img/tokenization/lightmode/cross-chain.png',
+  );
+
+@each $name, $path in $icons {
+  .benefit-icon.#{$name} {
+    background-image: url(#{$path});
+  }
+}
+
+$company-logos-light: (
+  'open-eden': '../img/tokenization/lightmode/open-eden.png',
+  'zoniqx': '../img/tokenization/lightmode/zoniqx.png',
+  'archax': '../img/tokenization/lightmode/archax.png',
+  'meld': '../img/tokenization/lightmode/meld.png',
+  'ripple-logo': '../img/tokenization/lightmode/ripple-logo.png',
+);
+
+@each $name, $path in $company-logos-light {
+  .company-logo.#{$name} {
+    background-image: url(#{$path});
+  }
+}
+.token-features-section {
+  .btn-link {
+    color: #7919FF;
+  }
+}
+.card-description {
+  a {
+    color: #7919FF !important;
+  }
+}
+.developer-tools__image {
+  background-image: url("../img/tokenization/lightmode/graphic.png");
+}
+.right-arrow-item::after {
+  content: url('../img/icons/lightmode/arrow-right-purple.svg');
+}
+.token-video-text-container {
+  p {
+    color: var(--XRPL-Primary-Black, #000);
+  }
+}
+
+.cards-title-token {
+  color: var(--XRPL-Primary-Black, #000);
+}
+
+.benefit-card {
+  background: #FFF;
+
+  .benefit-title {
+    color: var(--XRPL-Primary-Black, #000);
+  }
+
+  .benefit-description {
+    color: var(--XRPL-Black-Black-80, #232325);
+  }
+}
+
+.developer-tools__description {
+  color: var(--XRPL-Primary-Black, #000);
+}
+
+.feature-item__title {
+  color: var(--XRPL-Primary-Black, #000);
+}
+
+.feature-item__divider {
+  background-color: black;
+}
+
+.rwa-subtitle {
+  color: var(--XRPL-Primary-Black, #000);
+}
+
+.feature-title {
+  color: var(--XRPL-Primary-Black, #000);
+}
+
+.feature-description {
+  color: var(--XRPL-Black-Black-80, #232325);
+}
+.com-card-link {
+  color: #7919FF !important;
+}
 }

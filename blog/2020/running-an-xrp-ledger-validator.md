@@ -3,10 +3,9 @@ category: 2020
 date: 2021-02-07
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Mayur Bhandary
 ---
 # Running an XRP Ledger Validator

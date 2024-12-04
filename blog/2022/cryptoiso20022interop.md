@@ -3,10 +3,9 @@ category: 2022
 date: 2022-11-15
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: CryptoIso20022 Interop
 

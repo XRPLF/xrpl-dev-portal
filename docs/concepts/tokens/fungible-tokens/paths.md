@@ -40,7 +40,7 @@ The `rippled` API has two methods that can be used for pathfinding. The [ripple_
 
 You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method][] or [`submit` command (sign-and-submit mode)](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
 
-**Caution:** Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.
+{% admonition type="warning" name="Caution" %}Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.{% /admonition %}
 
 Finding paths is a very challenging problem that changes slightly every few seconds as new ledgers are validated, so `rippled` is not designed to find the absolute best path. Still, you can find several possible paths and estimate the cost of delivering a particular amount.
 

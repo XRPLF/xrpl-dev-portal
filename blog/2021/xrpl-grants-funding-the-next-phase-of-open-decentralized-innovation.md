@@ -1,9 +1,8 @@
 ---
 category: 2021
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 date: 2021-06-05
 labels:
     - Features
@@ -63,7 +62,7 @@ The focus area for the first round relates to the development of NFTs on the XRP
 
 The XRP Ledger is ideally suited to deliver a superior user experience for NFTs and tokenization more broadly. When combined with a robust suite of tools and resources, the innate performance advantages of the XRPL and its native digital asset [XRP](https://xrpl.org/xrp-overview.html) enable developers a seamless experience for NFTs, without the environmental implications inherent in other blockchains.
 
-The developer community around the XRP Ledger is already hard at work proposing features and providing tools and documentation to make XRPL the go-to chain for NFTs. XRPL Labs(https://xrpl-labs.com/), for example, proposed a [standard](https://github.com/XRPLF/XRPL-Standards/discussions/30) for using existing functionality to issue NFTs on the XRP Ledger and started working on an embedded xApp in XRP wallet XUMM for minting NFTs on the XRPL.
+The developer community around the XRP Ledger is already hard at work proposing features and providing tools and documentation to make XRPL the go-to chain for NFTs. XRPL Labs(https://xrpl-labs.com/), for example, proposed a [standard](https://github.com/XRPLF/XRPL-Standards/discussions/30) for using existing functionality to issue NFTs on the XRP Ledger and started working on an embedded xApp in XRP wallet Xaman for minting NFTs on the XRPL.
 
 Inspired by XRPL Labs’ standard, the RippleX team also [proposed](https://github.com/XRPLF/XRPL-Standards/discussions/46) additional functionality that would provide enhanced NFT support on the XRP Ledger.
 
@@ -81,9 +80,9 @@ Step 5: After 3-4 months, final interviews are conducted
 
 ## About The XRP Ledger
 
-The XRP Ledger is open-source and permissionless, delivering powerful utility to developers on a public blockchain. Its built-in decentralized exchange (DEX)(https://xrpl.org/decentralized-exchange.html#main-page-header) and custom token functionality—[Issued Currencies](https://xrpl.org/issued-currencies-overview.html)—supports the seamless exchange of tokens, with more than 5,400 currencies issued and traded on the XRP Ledger to date.
+The XRP Ledger is open-source and permissionless, delivering powerful utility to developers on a public blockchain. Its built-in decentralized exchange (DEX)(https://xrpl.org/decentralized-exchange.html#main-page-header) and custom token functionality—Issued Currencies—supports the seamless exchange of tokens, with more than 5,400 currencies issued and traded on the XRP Ledger to date.
 
-Additionally, the XRP Ledger is the first major [carbon-neutral blockchain](https://xrpl.org/impact.html) and inherently energy efficient, alleviating high costs that developers experience when building on proof-of-work blockchains. Development and forward progress of the XRPL is maintained by the growing developer community around XRP for which RippleX is just one participant.
+Additionally, the XRP Ledger is the only major L-1 blockchain that’s built for business and designed specifically to power finance use cases and applications at scale. Development and forward progress of the XRPL is maintained by the growing developer community around XRP for which RippleX is just one participant.
 
 ## Get Started Today
 

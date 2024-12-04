@@ -13,11 +13,13 @@ In the XRP Ledger, a digital signature _authorizes_ a [transaction](../transacti
 
 To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.md), regardless of what algorithm was used to generate it.
 
-**Warning:** It is important to maintain proper security over your cryptographic keys. Digital signatures are the only way of authorizing transactions in the XRP Ledger, and there is no privileged administrator who can undo or reverse any transactions after they have applied. If someone else knows the seed or private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
+{% admonition type="danger" name="Warning" %}It is important to maintain proper security over your cryptographic keys. Digital signatures are the only way of authorizing transactions in the XRP Ledger, and there is no privileged administrator who can undo or reverse any transactions after they have applied. If someone else knows the seed or private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.{% /admonition %}
 
 ## Generating Keys
 
 Many [client libraries](../../references/client-libraries.md) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use key pairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
+
+Note: Different tools have different defaults. Many client libraries (such as xrpl.js) use Ed25519 as the default cryptographic algorithm, but `rippled`'s [wallet_propose](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) admin RPC command uses secp256k1 as the default. This means that you may get a different address if you instantiate a wallet from the same seed using a different tool, unless you specify the algorithm explicitly.
 
 
 ## Key Components
@@ -86,7 +88,7 @@ The master key pair consists of a private key and a public key. The address of a
 
 The [wallet_propose method][] is one way of generating a master key pair. The response from this method shows the account's seed, address, and master public key together. For some other ways of setting up master key pairs, see [Secure Signing](../transactions/secure-signing.md).
 
-**Warning:** If a malicious actor learns your master private key (or seed), they have full control over your account, unless your master key pair is disabled. They can take all the money your account holds and do other irreparable harm. Treat your secret values with care!
+{% admonition type="danger" name="Warning" %}If a malicious actor learns your master private key (or seed), they have full control over your account, unless your master key pair is disabled. They can take all the money your account holds and do other irreparable harm. Treat your secret values with care!{% /admonition %}
 
 Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to [keep your master key pair offline](../../tutorials/how-tos/manage-account-settings/offline-account-setup.md) and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.
 
@@ -165,11 +167,11 @@ The key derivation processes described here are implemented in multiple places a
 
 1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte secret key.
 
-    **Tip:** All 32-byte numbers are valid Ed25519 secret keys. However, only numbers that are chosen randomly enough are secure enough to be used as secret keys.
+    {% admonition type="success" name="Tip" %}All 32-byte numbers are valid Ed25519 secret keys. However, only numbers that are chosen randomly enough are secure enough to be used as secret keys.{% /admonition %}
 
 2. To calculate an Ed25519 public key, use the standard public key derivation for [Ed25519](https://ed25519.cr.yp.to/software.html) to derive the 32-byte public key.
 
-    **Caution:** As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.
+    {% admonition type="warning" name="Caution" %}As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.{% /admonition %}
 
 3. Prefix the 32-byte public key with the single byte `0xED` to indicate an Ed25519 public key, resulting in 33 bytes.
 
@@ -205,7 +207,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 
-    **Tip:** Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58][] serialization for validator public keys uses the prefix `0x1c`.
+    {% admonition type="success" name="Tip" %}Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58][] serialization for validator public keys uses the prefix `0x1c`.{% /admonition %}
 
 2. Convert the root public key to its 33-byte compressed form.
 

@@ -37,7 +37,7 @@ You can configure parameters such as `minsize` and `rotate` depending on the amo
 
 The official packages [for CentOS/Red Hat](../../../../infrastructure/installation/install-rippled-on-centos-rhel-with-yum.md) and [Ubuntu or Debian](../../../../infrastructure/installation/install-rippled-on-ubuntu.md) provide the script `/etc/logrotate.d/rippled` by default. You can make modifications to this as required. Your modifications will not be overwritten on package upgrades. <!-- STYLE_OVERRIDE: will -->
 
-**Note:** You should have only one system log rotation script per application. Please ensure that you do not have any other log rotation that handles the same directory.
+{% admonition type="info" name="Note" %}You should have only one system log rotation script per application. Please ensure that you do not have any other log rotation that handles the same directory.{% /admonition %}
 
 _The `logrotate` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 

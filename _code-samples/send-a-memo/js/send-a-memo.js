@@ -31,7 +31,7 @@ if (typeof module !== "undefined") {
       "TransactionType": "Payment",
       "Account": wallet.address,
       "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
-      "Amount": "1000000", // Amount in drops, 1 XRP = 1,000,000 drops
+      "DeliverMax": "1000000", // Amount in drops, 1 XRP = 1,000,000 drops
       "Memos": [{
             "Memo":{
                 "MemoType": MemoType,
@@ -45,9 +45,9 @@ if (typeof module !== "undefined") {
     console.log("Submitting a payment transaction with our memo field...")
     const submit_result = await client.submitAndWait(signed.tx_blob)
 xrpl.convertHexToString
-    const tx_MemoData = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoData);
-    const tx_MemoFormat = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoFormat);
-    const tx_MemoType = xrpl.convertHexToString(string=submit_result.result.Memos[0].Memo.MemoType);
+    const tx_MemoData = xrpl.convertHexToString(string=submit_result.result.tx_json.Memos[0].Memo.MemoData);
+    const tx_MemoFormat = xrpl.convertHexToString(string=submit_result.result.tx_json.Memos[0].Memo.MemoFormat);
+    const tx_MemoType = xrpl.convertHexToString(string=submit_result.result.tx_json.Memos[0].Memo.MemoType);
 
     console.log(`\n Encoded Transaction MEMO: ${JSON.stringify({"MemoType": MemoType, "MemoData": MemoData, "MemoFormat": MemoFormat})}`)
     console.log(` Decoded Transaction MEMO: ${JSON.stringify({"MemoType": tx_MemoType, "MemoData": tx_MemoData, "MemoFormat": tx_MemoFormat})}`);

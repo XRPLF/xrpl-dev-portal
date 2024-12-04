@@ -1,1 +1,1 @@
-xrpl-py
+xrpl-py>=3.0.0

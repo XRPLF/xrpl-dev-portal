@@ -49,7 +49,7 @@ When you submit a transaction to the XRP Ledger, regardless of whether you used 
 4. The validated ledger includes the transaction, and its effects are reflected in the ledger state.
     - Transaction results are no longer provisional, success or failure is now final and immutable.
 
-**Note:** A successful status code returned from a [submit method][] indicates the server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.
+{% admonition type="info" name="Note" %}A successful status code returned from a [submit method][] indicates the server has received the candidate transaction. The transaction may or may not be applied to a validated ledger.{% /admonition %}
 
 APIs may return provisional results based on the result of applying candidate transactions to the current, in-progress ledger. Applications must not confuse these with the final, *immutable*, results of a transaction.  Immutable results are found only in validated ledgers.  Applications may need to query the status of a transaction repeatedly, until the ledger containing the transaction results is validated.
 
@@ -168,7 +168,7 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 
     - If you have two or more transaction-sending systems in an active/passive failover configuration, it's possible that the passive system mistakenly believes the active system has failed, and has become active while the original active system is still also sending transactions. Check the connectivity between the systems and ensure that at most one of them is active. Check your account's transaction history (for example, with the [account_tx method][]) and record the final outcome of all transactions that were included in validated ledgers. Any different transactions with the same `Sequence` numbers have failed permanently; save those final outcomes as well. When you have finished reconciling the differences from all the systems and have resolved the issues that made the systems activate simultaneously, resume normal activities.
 
-        **Tip:** The [`AccountTxnID` field](../../references/protocol/transactions/common-fields.md#accounttxnid) can help prevent redundant transactions from succeeding in this situation.
+        {% admonition type="success" name="Tip" %}The [`AccountTxnID` field](../../references/protocol/transactions/common-fields.md#accounttxnid) can help prevent redundant transactions from succeeding in this situation.{% /admonition %}
 
     - A malicious actor may have used your secret key to send a transaction. If this is the case, [rotate your key pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md) if you can, and check for other transactions sent. You should also audit your network to determine if the secret key was part of a larger intrusion or security leak. When you successfully rotate your key pair and are certain that the malicious actor no longer has access to your accounts and systems, you can resume normal activities.
 

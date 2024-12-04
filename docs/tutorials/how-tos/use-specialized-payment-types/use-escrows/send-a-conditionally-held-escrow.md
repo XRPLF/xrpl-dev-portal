@@ -88,7 +88,7 @@ print(cancel_after)
 
 {% /tabs %}
 
-**Warning:** In the XRP Ledger, you must specify time as **[seconds since the Ripple Epoch][]**. If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting it, that sets the unlock time to an extra **30 years** in the future!
+{% admonition type="danger" name="Warning" %}In the XRP Ledger, you must specify time as **[seconds since the Ripple Epoch][]**. If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting it, that sets the unlock time to an extra **30 years** in the future!{% /admonition %}
 
 ## 3. Submit EscrowCreate transaction
 
@@ -101,7 +101,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -111,7 +111,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -129,7 +129,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -139,7 +139,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -148,7 +148,7 @@ Response:
 
 [Sign and submit](../../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. Set the `Condition` and `Fulfillment` fields to the condition and fulfillment values, in hexadecimal, that you generated in step 1. Set the `Fee` ([transaction cost](../../../../concepts/transactions/transaction-cost.md)) value based on the size of the fulfillment in bytes: a conditional EscrowFinish requires at least 330 drops of XRP plus 10 drops per 16 bytes in the size of the fulfillment.
 
-**Note:** If you included a `FinishAfter` field in the EscrowCreate transaction, you cannot execute it before that time has passed, even if you provide the correct fulfillment for the Escrow's condition. The EscrowFinish transaction fails with the [result code](../../../../references/protocol/transactions/transaction-results/index.md) `tecNO_PERMISSION` if the previously-closed ledger's close time is before the `FinishAfter` time.
+{% admonition type="info" name="Note" %}If you included a `FinishAfter` field in the EscrowCreate transaction, you cannot execute it before that time has passed, even if you provide the correct fulfillment for the Escrow's condition. The EscrowFinish transaction fails with the [result code](../../../../references/protocol/transactions/transaction-results/index.md) `tecNO_PERMISSION` if the previously-closed ledger's close time is before the `FinishAfter` time.{% /admonition %}
 
 If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.md) instead.
 
@@ -157,7 +157,7 @@ If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-es
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -167,7 +167,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowfinish-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -184,11 +184,11 @@ Use the [tx method][] with the EscrowFinish transaction's identifying hash to ch
 
 Request:
 
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowfinish-condition.json" language="json" /%}
 
 Response:
 
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
 
 
 

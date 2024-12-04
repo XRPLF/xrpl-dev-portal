@@ -10,11 +10,11 @@ labels:
 
 These codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol. They have numerical values in the range -299 to -200. The exact code for any given error is subject to change, so don't rely on it.
 
-**Tip:** Transactions with `tem` codes are not applied to ledgers, and cannot cause any changes to XRP Ledger state. A `tem` result is final unless the rules for a valid transaction change. (For example, using functionality from an [Amendment](../../../../concepts/networks-and-servers/amendments.md) before that amendment is enabled results in `temDISABLED`; such a transaction could succeed later if it becomes valid when the amendment is enabled.)
+{% admonition type="success" name="Tip" %}Transactions with `tem` codes are not applied to ledgers, and cannot cause any changes to XRP Ledger state. A `tem` result is final unless the rules for a valid transaction change. (For example, using functionality from an [Amendment](../../../../concepts/networks-and-servers/amendments.md) before that amendment is enabled results in `temDISABLED`; such a transaction could succeed later if it becomes valid when the amendment is enabled.){% /admonition %}
 
 | Code                          | Explanation                                   |
 |:------------------------------|:----------------------------------------------|
-| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. _(Requires the [AMM amendment][])_  |
+| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. _(Added by the [AMM amendment][])_  |
 | `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment][]) was invalid, possibly because it was a negative number. |
 | `temBAD_AUTH_MASTER`          | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) set. |
 | `temBAD_CURRENCY`             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |

@@ -25,7 +25,8 @@ An example of the request format:
   "id": 1,
   "command": "tx",
   "transaction": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
-  "binary": false
+  "binary": false,
+  "api_version": 2
 }
 ```
 {% /tab %}
@@ -36,7 +37,8 @@ An example of the request format:
   "id": "CTID example",
   "command": "tx",
   "ctid": "C005523E00000000",
-  "binary": false
+  "binary": false,
+  "api_version": 2
 }
 ```
 {% /tab %}
@@ -48,7 +50,8 @@ An example of the request format:
     "params": [
         {
             "transaction": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
-            "binary": false
+            "binary": false,
+            "api_version": 2
         }
     ]
 }
@@ -62,7 +65,8 @@ An example of the request format:
     "params": [
         {
             "ctid": "C005523E00000000",
-            "binary": false
+            "binary": false,
+            "api_version": 2
         }
     ]
 }
@@ -92,7 +96,7 @@ The request includes the following parameters:
 
 You must provide _either_ `ctid` or `transaction`, but not both.
 
-**Caution:** This command may successfully find the transaction even if it is included in a ledger _outside_ the range of `min_ledger` to `max_ledger`.
+{% admonition type="warning" name="Caution" %}This command may successfully find the transaction even if it is included in a ledger _outside_ the range of `min_ledger` to `max_ledger`.{% /admonition %}
 
 ## Response Format
 
@@ -240,6 +244,29 @@ An example of a successful response:
 
 {% /tabs %}
 
+{% tabs %}
+
+{% tab label="API v2" %}
+
+The response follows the [standard format][], with a successful result containing the fields of the [Transaction object](../../../protocol/transactions/index.md) as well as the following additional fields:
+
+| `Field`        | Type                             | Description              |
+|:---------------|:---------------------------------|:-------------------------|
+| `ctid`         | String                           | The transaction's [compact transaction identifier](../../api-conventions/ctid.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}New in: rippled 1.12.0{% /badge %} _(Not supported in Clio v2.0 and earlier.)_ |
+| `date`         | Number                           | The [close time](../../../../concepts/ledgers/ledger-close-times.md) of the ledger in which the transaction was applied, in [seconds since the Ripple Epoch][]. |
+| `hash`         | String                           | The unique [identifying hash][] of the transaction |
+| `inLedger`     | Number                           | _(Deprecated)_ Alias for `ledger_index`. |
+| `ledger_index` | Number                           | The [ledger index][] of the ledger that includes this transaction. |
+| `meta`         | Object (JSON)                    | (JSON mode) [Transaction metadata](../../../protocol/transactions/metadata.md), which describes the results of the transaction. |
+| `meta_blob`    | String (binary)                  | (Binary mode) [Transaction metadata](../../../protocol/transactions/metadata.md), which describes the results of the transaction, represented as a hex string. |
+| `tx_blob`      | String (binary)                  | (Binary mode) The transaction data represented as a hex string. |
+| `tx_json`      | Object (JSON)                    | The transaction data represented in JSON. |
+| `validated`    | Boolean                          | If `true`, this data comes from a validated ledger version; if omitted or set to `false`, this data is not final. |
+
+{% /tab %}
+
+{% tab label="API v1" %}
+
 The response follows the [standard format][], with a successful result containing the fields of the [Transaction object](../../../protocol/transactions/index.md) as well as the following additional fields:
 
 | `Field`        | Type                             | Description              |
@@ -250,8 +277,13 @@ The response follows the [standard format][], with a successful result containin
 | `inLedger`     | Number                           | _(Deprecated)_ Alias for `ledger_index`. |
 | `ledger_index` | Number                           | The [ledger index][] of the ledger that includes this transaction. |
 | `meta`         | Object (JSON) or String (binary) | [Transaction metadata](../../../protocol/transactions/metadata.md), which describes the results of the transaction. |
+| `tx`           | String (binary)                  | (Binary mode) The transaction data represented as a hex string. |
 | `validated`    | Boolean                          | If `true`, this data comes from a validated ledger version; if omitted or set to `false`, this data is not final. |
 | (Various)      | (Various)                        | Other fields from the [Transaction object](../../../protocol/transactions/index.md) |
+
+{% /tab %}
+
+{% /tabs %}
 
 
 ### Not Found Response

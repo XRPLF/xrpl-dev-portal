@@ -51,15 +51,15 @@ If you make changes to the [Domain Verification Checker](https://xrpl.org/valida
 
 This repo includes English (en) and Japanese (ja) locales. 
 
-This is done by setting up the internationalization (@i18n) folders, adding the `i18n` configuration to your `redocly.yaml` file, and adding the translated content in the respective language directory under the @i18n directory.
+This is done by setting up the internationalization (@l10n) folders, adding the `i18n` configuration to your `redocly.yaml` file, and adding the translated content in the respective language directory under the @l10n directory.
 
 To add support for a new language:
 
-1. Create a new subdirectory in the @i18n directory of the portal. For example, to add support for Spanish, create a new subdirectory "es-ES".
+1. Create a new subdirectory in the @l10n directory of the portal. For example, to add support for Spanish, create a new subdirectory "es-ES".
 
 2. Update the i18n configuration in your `redocly.yaml` file defining the display labels for the different languages you support.
 
-        i18n:
+        l10n:
           defaultLocale: en-US
           locales:
             - code: en-US
@@ -69,9 +69,9 @@ To add support for a new language:
             - code: es-ES
               name: Spanish
 
-3. Add the translated content in the respective language directory under the @i18n directory. 
+3. Add the translated content in the respective language directory under the @l10n directory. 
 
-    The relative path from the language directory to the translated file must be the same as the relative path from the root of the portal to the file in the default language. For example, if you originally had a file with path `path/to/my/markdown.md`, the file translated to Spanish must be /`@i18n/es-ES/path/to/my/markdown.md`.
+    The relative path from the language directory to the translated file must be the same as the relative path from the root of the portal to the file in the default language. For example, if you originally had a file with path `path/to/my/markdown.md`, the file translated to Spanish must be /`@l10n/es-ES/path/to/my/markdown.md`.
 
 ## Issues, Projects, and Project Boards
 

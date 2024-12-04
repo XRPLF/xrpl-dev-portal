@@ -3,10 +3,9 @@ date: 2018-06-20
 category: 2018
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # fix1571 is Now Available
 

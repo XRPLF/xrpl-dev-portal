@@ -1,11 +1,17 @@
 - group: Blog
   groupTranslationKey: sidebar.blog
-  page: blog/index.page.tsx
+  page: index.page.tsx
   expanded: true
   items:
     - group: '2024'
       expanded: false
       items:
+        - page: 2024/a-new-era-for-the-xrp-ledger.md      
+        - page: 2024/rippled-2.3.0.md
+        - page: 2024/rippled-2.2.3.md
+        - page: 2024/rippled-2.2.2.md
+        - page: 2024/testnet-reset-notification.md
+        - page: 2024/evolving-the-xrp-ledger.md
         - page: 2024/deep-dive-into-amm-integration.md
         - page: 2024/clio-2.2.2.md
         - page: 2024/rippled-2.2.1.md

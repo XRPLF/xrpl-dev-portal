@@ -1,9 +1,8 @@
 ---
 category: 2021
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 date: 2021-11-10
 labels:
     - Amendments
@@ -26,7 +25,7 @@ Each amendment will become enabled if it maintains support from at least 80% of 
 
 If you operate an XRP Ledger (`rippled`) server, you should upgrade to **version 1.7.3** (or higher) as soon as possible, for service continuity.
 
-**Note:** Version 1.8.0 is currently in the release candidate stage, and also supports these amendments. However, the amendments may go live before version 1.8.0 reaches full release, so you should not wait to upgrade.
+{% admonition type="info" name="Note" %}Version 1.8.0 is currently in the release candidate stage, and also supports these amendments. However, the amendments may go live before version 1.8.0 reaches full release, so you should not wait to upgrade.{% /admonition %}
 
 No action is needed for applications and integrations with the XRP Ledger. You may want to review how [Tickets](https://xrpl.org/tickets.html) work to see if you want to use them in your software, or enable your users to use them.
 

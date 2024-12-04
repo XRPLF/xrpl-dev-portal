@@ -86,7 +86,8 @@
           "ledger_index_max": -1,
           "binary": false,
           "limit": 2,
-          "forward": false
+          "forward": false,
+          "api_version": 2
         }
       },
       {
@@ -224,7 +225,8 @@
         "body": {
           "command": "transaction_entry",
           "tx_hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
-          "ledger_index": 348734
+          "ledger_index": 348734,
+          "api_version": 2
         }
       },
       {
@@ -234,7 +236,8 @@
         "body": {
           "command": "tx",
           "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
-          "binary": false
+          "binary": false,
+          "api_version": 2
         }
       }
     ]
@@ -292,6 +295,32 @@
           "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
           "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "get_aggregate_price",
+        "description": "Retrieves the aggregate price of specified Oracle objects, returning three price statistics: mean, median, and trimmed mean.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price",
+        "body": {
+          "command": "get_aggregate_price",
+          "ledger_index": "current",
+          "base_asset": "XRP",
+          "quote_asset": "USD",
+          "trim": 20,
+          "oracles": [
+            {
+              "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+              "oracle_document_id": 34
+            },
+            {
+              "account": "rMVKq8zrVsJZQFEiTARyC6WfZznhhLMcNi",
+              "oracle_document_id": 100
+            },
+            {
+              "account": "r92kJTnUbUUq15t2BBZYGYxY79RnNc7rLQ",
+              "oracle_document_id": 2
+            }
+          ]
         }
       },
       {
@@ -626,6 +655,21 @@
           "offer": {
             "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
             "seq": 359
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - Oracle",
+        "description": "Returns a single Oracle object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-oracle-object",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_oracle",
+          "command": "ledger_entry",
+          "oracle" : {
+            "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+            "oracle_document_id":  34
           },
           "ledger_index": "validated"
         }

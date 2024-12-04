@@ -88,7 +88,7 @@ The request can contain the following parameters:
 
 You must provide **at most one** of the following fields: `passphrase`, `seed`, or `seed_hex`. If you omit all three, `rippled` uses a random seed.
 
-**Note:** The commandline version of this command cannot generate [Ed25519](https://ed25519.cr.yp.to/) keys.
+{% admonition type="info" name="Note" %}The commandline version of this command cannot generate [Ed25519](https://ed25519.cr.yp.to/) keys.{% /admonition %}
 
 #### Specifying a Seed
 

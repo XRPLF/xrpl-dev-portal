@@ -49,7 +49,7 @@ Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/dec
 | `EPrice`     | [Currency Amount][] | Amount            | No        | The minimum effective price, in LP Token returned, to pay per unit of the asset to withdraw. |
 | `LPTokenIn`  | [Currency Amount][] | Amount            | No        | How many of the AMM's LP Tokens to redeem. |
 
-**Note:** For a double-asset withdrawal, it is possible for `Asset` to correspond to _either_ `Amount` or `Amount2` as long as `Asset2` corresponds to the other one. It is recommended to match them (that is, `Amount2` is an amount of the asset defined in `Asset2`) because it is less confusing that way.
+{% admonition type="info" name="Note" %}For a double-asset withdrawal, it is possible for `Asset` to correspond to _either_ `Amount` or `Amount2` as long as `Asset2` corresponds to the other one. It is recommended to match them (that is, `Amount2` is an amount of the asset defined in `Asset2`) because it is less confusing that way.{% /admonition %}
 
 ### AMMWithdraw Modes
 

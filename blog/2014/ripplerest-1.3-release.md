@@ -3,10 +3,9 @@ category: 2014
 date: 2014-11-04
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # ripple-rest 1.3 release
 

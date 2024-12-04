@@ -38,7 +38,7 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](../../../concepts/accounts/account-types.md), you need the **master keys** to the _cold address_, which is the **issuer** of the token. Only the issuer's No Freeze setting has any effect on a token.
 
-**Caution:** You cannot use a [regular key pair](../../../concepts/accounts/cryptographic-keys.md) or [multi-signing](../../../concepts/accounts/multi-signing.md) to enable the No Freeze setting.
+{% admonition type="warning" name="Caution" %}You cannot use a [regular key pair](../../../concepts/accounts/cryptographic-keys.md) or [multi-signing](../../../concepts/accounts/multi-signing.md) to enable the No Freeze setting.{% /admonition %}
 
 For this tutorial, you can get credentials from the following interface:
 

@@ -61,7 +61,7 @@ The request includes the following parameters:
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `tx_hash`      | String                     | Unique hash of the transaction you are looking up |
 
-**Note:** This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.
+{% admonition type="info" name="Note" %}This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.{% /admonition %}
 
 ## Response Format
 
@@ -76,7 +76,7 @@ An example of a successful response:
   "result": {
     "ledger_hash": "793E56131D8D4ABFB27FA383BFC44F2978B046E023FF46C588D7E0C874C2472A",
     "ledger_index": 56865245,
-    "metadata": {
+    "meta": {
       "AffectedNodes": [
         {
           "ModifiedNode": {
@@ -200,7 +200,7 @@ An example of a successful response:
     "result": {
         "ledger_hash": "793E56131D8D4ABFB27FA383BFC44F2978B046E023FF46C588D7E0C874C2472A",
         "ledger_index": 56865245,
-        "metadata": {
+        "meta": {
             "AffectedNodes": [
                 {
                     "ModifiedNode": {
@@ -323,7 +323,7 @@ An example of a successful response:
    "result" : {
       "ledger_hash" : "793E56131D8D4ABFB27FA383BFC44F2978B046E023FF46C588D7E0C874C2472A",
       "ledger_index" : 56865245,
-      "metadata" : {
+      "meta" : {
          "AffectedNodes" : [
             {
                "ModifiedNode" : {
@@ -444,12 +444,33 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
+{% tabs %}
+
+{% tab label="API v2" %}
+
+| `Field`          | Type                      | Description                     |
+|:-----------------|:--------------------------|:--------------------------------|
+| `close_time_iso` | String                    | The ledger close time represented in ISO 8601 time format. |
+| `hash`           | String                    | The unique hash identifier of the transaction. |
+| `ledger_index`   | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `ledger_hash`    | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `meta`           | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail. |
+| `tx_json`        | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md) |
+
+{% /tab %}
+
+{% tab label="API v1" %}
+
 | `Field`        | Type                      | Description                     |
 |:---------------|:--------------------------|:--------------------------------|
 | `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
 | `ledger_hash`  | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
 | `metadata`     | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail. |
 | `tx_json`      | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md) |
+
+{% /tab %}
+
+{% /tabs %}
 
 There are a couple possible reasons the server may fail to find the transaction:
 

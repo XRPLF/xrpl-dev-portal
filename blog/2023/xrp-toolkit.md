@@ -3,10 +3,9 @@ category: 2023
 date: 2023-07-28
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: XRP Toolkit
 
@@ -20,7 +19,7 @@ Since our previous coverage on the project, XRP Toolkit has seen more hardware w
 
 ![Screenshot: XRP Toolkit Trade tab](/blog/img/dev-reflections-xrp-toolkit-trade-tab.png)
 
-XRP Toolkit is used by thousands of [Bifrost Wallet](https://bifrostwallet.com/), [Xumm](https://xumm.app/), [Keystone](https://keyst.one/), [D’CENT](https://dcentwallet.com/), and [Ledger](https://www.ledger.com/) hardware wallet users to access advanced XRP Ledger features, such as limit orders, cross-currency payments, escrows, trust lines, and account settings. 
+XRP Toolkit is used by thousands of [Bifrost Wallet](https://bifrostwallet.com/), [Xaman](https://xaman.app/), [Keystone](https://keyst.one/), [D’CENT](https://dcentwallet.com/), and [Ledger](https://www.ledger.com/) hardware wallet users to access advanced XRP Ledger features, such as limit orders, cross-currency payments, escrows, trust lines, and account settings. 
 
 ![Screenshot: XRP Toolkit Account tab](/blog/img/dev-reflections-xrp-toolkit-account-tab.png)
 

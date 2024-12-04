@@ -938,14 +938,29 @@
         /* This will push the links to the bottom */
     }
 
-
+    .bottom-cards-section.bug-bounty {
+        justify-content: space-around;
+        .com-card{
+            min-width: 559px;
+            max-width: 559px;
+            height: 442px;
+        }
+    }
+    .pr-bt16{
+        position: relative;
+        bottom: 16px;
+    }
+    .pr-bt28{
+        position: relative;
+        bottom: 28px;
+    }
     .bottom-cards-section {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
         gap: 48px;
         max-width: 1280px;
-        margin: 0 auto;
+        margin: 100px auto;
 
         .com-card {
             padding: 36px;
@@ -961,6 +976,12 @@
                 height: 292px;
                 left: 0;
                 content: url(../img/community/card-bg-1.svg);
+            }
+            .top-right-img.bug-bounty-card-bg {
+                content: url(../img/community/bug-bounty-card-bg.png)
+            }
+            .bottom-right-img.bug-bounty-card-bg-2 {
+                content: url(../img/community/bug-bounty-card-bg-2.png)
             }
 
             .bottom-right-img {
@@ -1020,6 +1041,9 @@
                     /* 150% */
                     margin-top: 15px;
                     margin-bottom: 15px;
+                    a{
+                        color: $blue-purple-400;
+                    }
                 }
 
                 .card-links {
@@ -1027,7 +1051,7 @@
                     flex-direction: column;
                     gap: 8px;
                 }
-
+                
                 .com-card-link {
                     text-decoration: none;
                     cursor: pointer;
@@ -1075,10 +1099,26 @@
 
     /* Media query for mobile view */
     @media (max-width: 768px) {
+        .pr-bt28{
+            position: relative;
+            bottom: 0px;
+        }
+        .pr-bt16{
+            position: relative;
+            bottom: 0px;
+        }
         .bottom-cards-section {
             flex-direction: column;
             align-items: center;
             padding: 20px;
+        }
+        .bottom-cards-section.bug-bounty {
+            justify-content: space-around;
+            .com-card{
+                min-width: 352px;
+                height: fit-content;
+                max-width: 352px;
+            }
         }
 
         .bottom-cards-section .com-card {
@@ -1086,19 +1126,6 @@
             /* Ensure that the card takes up space */
             display: block;
             width: 100%;
-        }
-
-        /* Reset the image positions for mobile */
-        .com-card .top-left-img,
-        .com-card .bottom-right-img,
-        .com-card .top-right-img {
-            position: static;
-            /* This removes the absolute positioning */
-            display: block;
-            width: 100%;
-            /* Adjust this if you want the image to take up less width */
-            margin-bottom: 15px;
-            /* Add some space between the image and the card content */
         }
     }
 

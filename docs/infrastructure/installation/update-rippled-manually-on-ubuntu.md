@@ -22,7 +22,7 @@ wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | \
 For more information, see the [`rippled` 1.7.0 release notes](https://xrpl.org/blog/2021/rippled-1.7.0.html#upgrading-special-action-required).
 {% /admonition %}
 
-**Tip:** To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian. This script should be run as a `sudo` user.
+{% admonition type="success" name="Tip" %}To perform these steps all at once, you can run the `/opt/ripple/bin/update-rippled.sh` script, which is included with the `rippled` package and is compatible with Ubuntu and Debian. This script should be run as a `sudo` user.{% /admonition %}
 
 To update manually, complete the following steps:
 

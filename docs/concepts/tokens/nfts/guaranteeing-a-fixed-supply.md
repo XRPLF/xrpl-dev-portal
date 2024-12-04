@@ -20,4 +20,4 @@ To guarantee a fixed number of NFTs:
 
 At this point, it is impossible for any new tokens to be minted with the issuer’s address as the issuing account.
 
-**Caution** Once you "blackhole" the account, no one, including you, receives transfer fees for future sales of the NFTs.
+{% admonition type="warning" name="Caution" %}Once you "blackhole" the account, no one, including you, receives transfer fees for future sales of the NFTs.{% /admonition %}

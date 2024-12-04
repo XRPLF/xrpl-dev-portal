@@ -5,17 +5,16 @@ seo:
     description: Delete a DID.
 labels:
   - DID
-status: not_enabled
 ---
 # DIDDelete
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "Source")
 
-_(Requires the [DID amendment][] {% not-enabled /%})_
+_(Requires the [DID amendment][])_
 
 Delete the [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) associated with the specified `Account` field.
 
-**Note:** This transaction only uses the [common fields][].
+{% admonition type="info" name="Note" %}This transaction only uses the [common fields][].{% /admonition %}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

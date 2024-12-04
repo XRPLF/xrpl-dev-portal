@@ -127,11 +127,6 @@ export default function Impact() {
                   "XRPL’s unique consensus mechanism is eco-friendly—it does not require mining to settle transactions. This results in efficiency without sacrificing security, decentralization, or scalability."
                 )}
               </h5>
-              <p>
-                {translate(
-                  "The trivial amount of energy it does consume is then neutralized with carbon credits through EW Zero, an open-source blockchain decarbonization tool."
-                )}
-              </p>
             </div>
           </div>
         </section>

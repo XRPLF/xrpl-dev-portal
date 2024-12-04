@@ -40,6 +40,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
     - [Get Bridge Object](#get-bridge-object)
     - [Get DirectoryNode Object](#get-directorynode-object)
     - [Get Offer Object](#get-offer-object)
+    - [Get Oracle Object](#get-oracle-object)
     - [Get RippleState Object](#get-ripplestate-object)
     - [Get Check Object](#get-check-object)
     - [Get Escrow Object](#get-escrow-object)
@@ -50,7 +51,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
   - [Response Format](#response-format)
   - [Possible Errors](#possible-errors)
 
-**Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
+{% admonition type="warning" name="Caution" %}If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.{% /admonition %}
 
 
 ### Get Ledger Object by ID
@@ -157,7 +158,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 ### Get AMM Object
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 
@@ -400,6 +401,61 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 [Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
 
+
+### Get Oracle Object
+
+_(Requires the [PriceOracle amendment][])_
+
+Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/oracle.md), which represents a single price oracle that can store token prices.
+
+| Field                       | Type                 | Required? | Description |
+|-----------------------------|----------------------|-----------|-------------|
+| `oracle`                    | Object               | Yes       | The oracle identifier. |
+| `oracle.account`            | String - [Address][] | Yes       | The account that controls the `Oracle` object. |
+| `oracle.oracle_document_id` | Number               | Yes       | A unique identifier of the price oracle for the `Account` |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_oracle",
+  "command": "ledger_entry",
+  "oracle" : {
+    "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+    "oracle_document_id":  34
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [
+    {
+      "oracle" : {
+        "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+        "oracle_document_id":  34
+      },
+      "ledger_index": "validated"
+    }
+  ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-oracle)
 
 
 ### Get RippleState Object

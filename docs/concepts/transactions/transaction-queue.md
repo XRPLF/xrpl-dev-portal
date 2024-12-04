@@ -30,7 +30,7 @@ The transaction queue plays an important role in selecting the transactions that
 
     After this step, the process repeats from the beginning.
 
-**Note:** Technically, several of the steps described in the above process occur in parallel, because each server is always listening for new transactions, and starts preparing its next ledger proposal while the consensus process for the previous ledger version is ongoing.
+{% admonition type="info" name="Note" %}Technically, several of the steps described in the above process occur in parallel, because each server is always listening for new transactions, and starts preparing its next ledger proposal while the consensus process for the previous ledger version is ongoing.{% /admonition %}
 
 ## Queuing Restrictions
 
@@ -64,7 +64,7 @@ Within the transaction queue, transactions are ranked so that transactions payin
 
 The precise order of transactions in the queue decides which transactions get added to the next in-progress ledger version in cases where there are more transactions in the queue than the expected size of the next ledger version. The order of the transactions **does not affect the order the transactions are executed within a validated ledger**. In each validated ledger version, the transaction set for that version executes in [canonical order](../consensus-protocol/consensus-structure.md#calculate-and-share-validations).
 
-**Note:** When `rippled` queues a transaction, the provisional [transaction response code](../../references/protocol/transactions/transaction-results/index.md) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](finality-of-results/index.md).
+{% admonition type="info" name="Note" %}When `rippled` queues a transaction, the provisional [transaction response code](../../references/protocol/transactions/transaction-results/index.md) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](finality-of-results/index.md).{% /admonition %}
 
 
 ## See Also

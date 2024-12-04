@@ -20,7 +20,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-request-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-request-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -30,7 +30,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-response-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-response-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -44,7 +44,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-request-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-request-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -54,7 +54,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-response-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-response-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -63,7 +63,7 @@ Response:
 
 ***Anyone*** can cancel an expired escrow in the XRP Ledger by sending an [EscrowCancel transaction][]. Set the `Owner` field of the transaction to the `Account` of the `EscrowCreate` transaction that created this escrow. Set the `OfferSequence` field to the `Sequence` of the `EscrowCreate` transaction.
 
-**Tip:** If you don't know what `OfferSequence` to use, you can look up the transaction that created the Escrow: call the [tx method][] with the value of the Escrow's `PreviousTxnID` field. In `tx` response, use the `Sequence` value of that transaction as the `OfferSequence` value of the EscrowCancel transaction.
+{% admonition type="success" name="Tip" %}If you don't know what `OfferSequence` to use, you can look up the transaction that created the Escrow: call the [tx method][] with the value of the Escrow's `PreviousTxnID` field. In `tx` response, use the `Sequence` value of that transaction as the `OfferSequence` value of the EscrowCancel transaction.{% /admonition %}
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
@@ -72,7 +72,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -82,7 +82,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -102,7 +102,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -112,7 +112,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}

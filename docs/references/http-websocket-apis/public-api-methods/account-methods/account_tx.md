@@ -28,7 +28,8 @@ An example of the request format:
   "ledger_index_max": -1,
   "binary": false,
   "limit": 2,
-  "forward": false
+  "forward": false,
+  "api_version": 2
 }
 ```
 {% /tab %}
@@ -44,7 +45,8 @@ An example of the request format:
             "forward": false,
             "ledger_index_max": -1,
             "ledger_index_min": -1,
-            "limit": 2
+            "limit": 2,
+            "api_version": 2
         }
     ]
 }
@@ -69,12 +71,12 @@ The request includes the following parameters:
 |:-------------------|:-------------------------------------------|:-----------|
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
 | `tx_type`          | String                                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. See [Transaction Types](../../../../references//protocol/transactions/types/index.md#transaction-types). [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") [AMM support since: Clio v2.1.0](https://github.com/XRPLF/clio/releases/tag/2.1.0 "BADGE_GREEN") |
-| `ledger_index_min` | Integer                                    | [API v1][]: _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available.<br>[API v2][]: Identical to v1, but also returns a `lgrIdxMalformed` error if a value is specified beyond the range of ledgers the server has. |
-| `ledger_index_max` | Integer                                    | [API v1][]: _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available.<br>[API v2][]: Identical to v1, but also returns a `lgrIdxMalformed` error if a value is specified beyond the range of ledgers the server has. |
+| `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
+| `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
 | `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
 | `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
-| `binary`           | Boolean                                    | [API v1][]: _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON.<br>[API v2][]: Identical to v1, but also returns an `invalidParams` error if you provide a non-boolean value. |
-| `forward`          | Boolean                                    | [API v1][]: _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.)<br>[API v2][]: Identical to v1, but also returns an `invalidParams` error if you provide a non-boolean value. |
+| `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
+| `forward`          | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
@@ -97,16 +99,10 @@ An example of a successful response:
 {% tab label="WebSocket" %}
 ```json
 {
-  "id": 2,
   "result": {
-    "account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-    "ledger_index_max": 57111999,
-    "ledger_index_min": 55886305,
-    "limit": 2,
-    "marker": {
-      "ledger": 57111981,
-      "seq": 16
-    },
+    "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "ledger_index_min": 32570,
+    "ledger_index_max": 91824401,
     "transactions": [
       {
         "meta": {
@@ -114,62 +110,69 @@ An example of a successful response:
             {
               "ModifiedNode": {
                 "FinalFields": {
-                  "Account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-                  "Balance": "3732969177079",
-                  "Flags": 131072,
-                  "OwnerCount": 0,
-                  "Sequence": 702817
+                  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                  "AccountTxnID": "932CC7E9BAC1F7B9FA5381679F293EEC0A646E5E7F2F6D14C85FEE2102F0E66C",
+                  "Balance": "1086222646",
+                  "Domain": "6D64756F31332E636F6D",
+                  "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+                  "Flags": 9568256,
+                  "MessageKey": "0000000000000000000000070000000300",
+                  "OwnerCount": 17,
+                  "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+                  "Sequence": 393,
+                  "TicketCount": 5,
+                  "TransferRate": 4294967295
                 },
                 "LedgerEntryType": "AccountRoot",
-                "LedgerIndex": "140FA03FE8C39540CA8189BC7A7956795C712BC0A542C6409C041150703C8574",
+                "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
                 "PreviousFields": {
-                  "Balance": "3713891690008"
+                  "Balance": "1086222601"
                 },
-                "PreviousTxnID": "D58864C16344ADCC15995C7986CFC607CB693E88F84D2E019F0A35FB29749202",
-                "PreviousTxnLgrSeq": 57111994
+                "PreviousTxnID": "7E50969CDEF8E12B1AD26E64B338935813624A4D1CDDC4C9457832524F0FF74C",
+                "PreviousTxnLgrSeq": 89353048
               }
             },
             {
               "ModifiedNode": {
                 "FinalFields": {
-                  "Account": "rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg",
-                  "Balance": "40010160",
-                  "Flags": 131072,
+                  "Account": "rPJARH5nLWQisdmvDAbvzwS7N32Z1kusTZ",
+                  "Balance": "55022190",
+                  "Flags": 0,
                   "OwnerCount": 0,
-                  "Sequence": 466334
+                  "Sequence": 89113341
                 },
                 "LedgerEntryType": "AccountRoot",
-                "LedgerIndex": "CC20FEBEA6D2AF969EC46F2BD92684D9FBABC3F238E841B5E056FE4EBF4379A9",
+                "LedgerIndex": "C0363F86E070B70E7DA129736C3B05E509261C8668F61A7E958C4C10F17EAB90",
                 "PreviousFields": {
-                  "Balance": "19117497271",
-                  "Sequence": 466333
+                  "Balance": "55022245",
+                  "Sequence": 89113340
                 },
-                "PreviousTxnID": "F6B8274D3D419A95A59681E5F55578084C395FF9051924360CA3EA745F5581E8",
-                "PreviousTxnLgrSeq": 57111993
+                "PreviousTxnID": "60D0FE881F9B1457FB1711011C6E490C22532B1D495557D6488BE3A634167CEE",
+                "PreviousTxnLgrSeq": 90136515
               }
             }
           ],
-          "TransactionIndex": 25,
+          "TransactionIndex": 2,
           "TransactionResult": "tesSUCCESS",
-          "delivered_amount": "19077487071"
+          "delivered_amount": "45"
         },
-        "tx": {
-          "Account": "rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg",
-          "Amount": "19077487071",
-          "Destination": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-          "DestinationTag": 1,
-          "Fee": "40",
-          "Flags": 2147483648,
-          "LastLedgerSequence": 57112020,
-          "Sequence": 466333,
-          "SigningPubKey": "0381575032E254BF4D699C3D8D6EFDB63B3A71F97475C6F6885BC7DAEEE55D9A01",
+        "tx_json": {
+          "Account": "rPJARH5nLWQisdmvDAbvzwS7N32Z1kusTZ",
+          "DeliverMax": "45",
+          "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "DestinationTag": 316562,
+          "Fee": "10",
+          "Sequence": 89113340,
+          "SigningPubKey": "EDE21591E615E1D77C8C8A7F95372D001B3DF090AB47B99729CFCBC1E4E07D35F4",
           "TransactionType": "Payment",
-          "TxnSignature": "3045022100CFC5FD057C7C685C690637AD1E639E2642BBC00EFD8E06E3F6C72FA924BC99D40220317D0708E814F69F874D641B6732E37A53B1220B493B2B8390D9EF51E8062515",
-          "date": 649200260,
-          "hash": "46BF0B576677B0DEA2D94591424A57A2DE8E3D89383631E16F40D09A513C656C",
-          "inLedger": 57111998,
-          "ledger_index": 57111998
+          "TxnSignature": "D229FEB6ED82367102AC12DE5045BE6D548CBB52E0CB8F037A23171910A6158FA3377F5118B6CEAFDB07D6D43F76FE29CC26BE1ACBC7A86C9D86E14043C66104",
+          "ledger_index": 90136515,
+          "date": 777284672
         },
+        "ledger_index": 90136515,
+        "hash": "894541402AC968C98C329A88D097170B14BF4DEB8B2A7DF377EE89DDD332E018",
+        "ledger_hash": "14110F60753176E1F6A71AA084B6AD8663CBB46193CCFCDFAC02561626AA6B75",
+        "close_time_iso": "2024-08-18T08:24:32Z",
         "validated": true
       },
       {
@@ -178,66 +181,80 @@ An example of a successful response:
             {
               "ModifiedNode": {
                 "FinalFields": {
-                  "Account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-                  "Balance": "3713891690008",
-                  "Flags": 131072,
-                  "OwnerCount": 0,
-                  "Sequence": 702817
+                  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                  "AccountTxnID": "932CC7E9BAC1F7B9FA5381679F293EEC0A646E5E7F2F6D14C85FEE2102F0E66C",
+                  "Balance": "1086222601",
+                  "Domain": "6D64756F31332E636F6D",
+                  "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+                  "Flags": 9568256,
+                  "MessageKey": "0000000000000000000000070000000300",
+                  "OwnerCount": 17,
+                  "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+                  "Sequence": 393,
+                  "TicketCount": 5,
+                  "TransferRate": 4294967295
                 },
                 "LedgerEntryType": "AccountRoot",
-                "LedgerIndex": "140FA03FE8C39540CA8189BC7A7956795C712BC0A542C6409C041150703C8574",
+                "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
                 "PreviousFields": {
-                  "Balance": "3714441690048",
-                  "Sequence": 702816
+                  "Balance": "1086222552"
                 },
-                "PreviousTxnID": "FDD5007913B39027BAF10B31144DBC1F7DC147528DF31FF048A06DC5D3108BD6",
-                "PreviousTxnLgrSeq": 57111981
+                "PreviousTxnID": "EED9EB1880B951FAB3EE0DBBEB67B7ABEE3FA77F15782B6BD40342B3C23CFB75",
+                "PreviousTxnLgrSeq": 89343389
               }
             },
             {
               "ModifiedNode": {
                 "FinalFields": {
-                  "Account": "r9dU6Z7P2i7MrDi1VUZ7uyq6J77eg86YtB",
-                  "Balance": "2629998983",
+                  "Account": "rPSDqHdMPsnkmyUX4BvBkY8rycQYwrhUqw",
+                  "Balance": "52611432",
                   "Flags": 0,
                   "OwnerCount": 0,
-                  "Sequence": 10
+                  "Sequence": 89196186
                 },
                 "LedgerEntryType": "AccountRoot",
-                "LedgerIndex": "27B96FE681B33825CC95DA197358B30D3A1721F2125F2D76022D46B2418ABA0A",
+                "LedgerIndex": "20761D2C37004C70318F7A3C5A1C35817A90A0AE56485F6E3281FB2B3F05B0C9",
                 "PreviousFields": {
-                  "Balance": "2079998983"
+                  "Balance": "52611491",
+                  "Sequence": 89196185
                 },
-                "PreviousTxnID": "44A47AC04C0C7237C32BE9A532B578D07641705D3A59DB9B3C5B6225001E39B7",
-                "PreviousTxnLgrSeq": 56613857
+                "PreviousTxnID": "BAF86C2776C08407E0FAF42D374874E10430CB8C23AD464D9D9097EA326ABE92",
+                "PreviousTxnLgrSeq": 89353024
               }
             }
           ],
-          "TransactionIndex": 16,
+          "TransactionIndex": 4,
           "TransactionResult": "tesSUCCESS",
-          "delivered_amount": "550000000"
+          "delivered_amount": "49"
         },
-        "tx": {
-          "Account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-          "Amount": "550000000",
-          "Destination": "r9dU6Z7P2i7MrDi1VUZ7uyq6J77eg86YtB",
-          "Fee": "40",
-          "Flags": 2147483648,
-          "LastLedgerSequence": 57112016,
-          "Sequence": 702816,
-          "SigningPubKey": "020A46D8D02AC780C59853ACA309EAA92E7D8E02DD72A0B6AC315A7D18A6C3276A",
+        "tx_json": {
+          "Account": "rPSDqHdMPsnkmyUX4BvBkY8rycQYwrhUqw",
+          "DeliverMax": "49",
+          "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "DestinationTag": 342662134,
+          "Fee": "10",
+          "Sequence": 89196185,
+          "SigningPubKey": "ED7E4A2970ADFCCE93D59D469322745E98CBEB3D7D5388728B3BB2268E71F30B0F",
           "TransactionType": "Payment",
-          "TxnSignature": "3045022100D589029EF63F9E528F6100C7A36D26AFFF84085EC9AC16DA8E30E11F390D4E87022011466E0FE4A90B89142EE47E535545EEA4A2D65E0BD234DFB447721218B59C9B",
-          "date": 649200241,
-          "hash": "D58864C16344ADCC15995C7986CFC607CB693E88F84D2E019F0A35FB29749202",
-          "inLedger": 57111994,
-          "ledger_index": 57111994
+          "TxnSignature": "8CE14FD18BD186694DED8C204C3FCC2A527CC24AD51C2E0B2B792D035C85D662BC1A1450A8DF04BBEC66821B362056311127C627056AC7779B385517FD3A9202",
+          "ledger_index": 89353048,
+          "date": 774249571
         },
+        "ledger_index": 89353048,
+        "hash": "7E50969CDEF8E12B1AD26E64B338935813624A4D1CDDC4C9457832524F0FF74C",
+        "ledger_hash": "ED54DA98F3E495C36C2B0D9A511565E04454A1F4503B9DEE3FD39301D7625865",
+        "close_time_iso": "2024-07-14T05:19:31Z",
         "validated": true
       }
     ],
-    "validated": true
+    "validated": true,
+    "marker": {
+      "ledger": 89353048,
+      "seq": 4
+    },
+    "limit": 2
   },
+  "api_version": 2,
   "status": "success",
   "type": "response"
 }
@@ -246,149 +263,130 @@ An example of a successful response:
 
 {% tab label="JSON-RPC" %}
 ```json
-200 OK
 {
     "result": {
         "account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-        "ledger_index_max": 57112019,
-        "ledger_index_min": 56248229,
-        "limit": 2,
-        "marker": {
-            "ledger": 57112007,
-            "seq": 13
-        },
-        "status": "success",
-        "transactions": [
-            {
-                "meta": {
-                    "AffectedNodes": [
-                        {
-                            "ModifiedNode": {
-                                "FinalFields": {
-                                    "Account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-                                    "Balance": "3732290013101",
-                                    "Flags": 131072,
-                                    "OwnerCount": 0,
-                                    "Sequence": 702820
-                                },
-                                "LedgerEntryType": "AccountRoot",
-                                "LedgerIndex": "140FA03FE8C39540CA8189BC7A7956795C712BC0A542C6409C041150703C8574",
-                                "PreviousFields": {
-                                    "Balance": "3732745656171",
-                                    "Sequence": 702819
-                                },
-                                "PreviousTxnID": "7C031FD5B710E3C048EEF31254089BEEC505900BCC9A842257A0319453333998",
-                                "PreviousTxnLgrSeq": 57112010
-                            }
+        "ledger_index_min": 32570,
+        "ledger_index_max": 91824423,
+        "transactions": [{
+            "meta": {
+                "AffectedNodes": [{
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rLJmawLfNAFNyyYHFbNErTfCrfsbmRzrTc",
+                            "Balance": "77694521",
+                            "Domain": "7872702D6C65646765722D746F6D6C2E68746D6C",
+                            "EmailHash": "CE29D0E8928E95C3FF5BDD8CFE82F445",
+                            "Flags": 8388608,
+                            "MessageKey": "02000000000000000000000000A9E7611C8B9AFE2DEDA42039DBF09F3BFA185F76",
+                            "OwnerCount": 26,
+                            "RegularKey": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
+                            "Sequence": 62418073
                         },
-                        {
-                            "ModifiedNode": {
-                                "FinalFields": {
-                                    "Account": "raLPjTYeGezfdb6crXZzcC8RkLBEwbBHJ5",
-                                    "Balance": "4231510602153",
-                                    "Flags": 0,
-                                    "OwnerCount": 0,
-                                    "Sequence": 96486
-                                },
-                                "LedgerEntryType": "AccountRoot",
-                                "LedgerIndex": "39DC5D448DECEFC3CD20818788E3DA891CA943935E8D7B12FCB5B5871FCB1638",
-                                "PreviousFields": {
-                                    "Balance": "4231054959123"
-                                },
-                                "PreviousTxnID": "33D2014C832610293730028CA37857AC183BFCE3E42B9979C491FB8B82B3E9DC",
-                                "PreviousTxnLgrSeq": 57112004
-                            }
-                        }
-                    ],
-                    "TransactionIndex": 12,
-                    "TransactionResult": "tesSUCCESS",
-                    "delivered_amount": "455643030"
-                },
-                "tx": {
-                    "Account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-                    "Amount": "455643030",
-                    "Destination": "raLPjTYeGezfdb6crXZzcC8RkLBEwbBHJ5",
-                    "DestinationTag": 18240312,
-                    "Fee": "40",
-                    "Flags": 2147483648,
-                    "LastLedgerSequence": 57112037,
-                    "Sequence": 702819,
-                    "SigningPubKey": "020A46D8D02AC780C59853ACA309EAA92E7D8E02DD72A0B6AC315A7D18A6C3276A",
-                    "TransactionType": "Payment",
-                    "TxnSignature": "30450221008602B2E390C0C7B65182C6DBC86292052C1961B2BEFB79C2C8431722C0ADB911022024B74DCF910A4C8C95572CF662EB7F5FF67E1AC4D7B9B7BFE2A8EE851EC16576",
-                    "date": 649200322,
-                    "hash": "08EF5BDA2825D7A28099219621CDBECCDECB828FEA202DEB6C7ACD5222D36C2C",
-                    "inLedger": 57112015,
-                    "ledger_index": 57112015
-                },
-                "validated": true
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "548E97B1F63273FC2F339CBEB8C202FBF9231C4C61BC1BA51A6239501A2F6FB9",
+                        "PreviousFields": {
+                            "Balance": "77694533",
+                            "Sequence": 62418072
+                        },
+                        "PreviousTxnID": "5FDB0B2ECE005EEA87DC35B33204424D0766AB37B764F1618A6C69C06BDDD511",
+                        "PreviousTxnLgrSeq": 87319056
+                    }
+                }],
+                "TransactionIndex": 24,
+                "TransactionResult": "tesSUCCESS"
             },
-            {
-                "meta": {
-                    "AffectedNodes": [
-                        {
-                            "ModifiedNode": {
-                                "FinalFields": {
-                                    "Account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-                                    "Balance": "3732745656171",
-                                    "Flags": 131072,
-                                    "OwnerCount": 0,
-                                    "Sequence": 702819
-                                },
-                                "LedgerEntryType": "AccountRoot",
-                                "LedgerIndex": "140FA03FE8C39540CA8189BC7A7956795C712BC0A542C6409C041150703C8574",
-                                "PreviousFields": {
-                                    "Balance": "3732246155784"
-                                },
-                                "PreviousTxnID": "CCBCCB528F602007C937C496F0828C118E073DF180084CCD3646EC1E414844E4",
-                                "PreviousTxnLgrSeq": 57112007
-                            }
+            "tx_json": {
+                "Account": "rLJmawLfNAFNyyYHFbNErTfCrfsbmRzrTc",
+                "Fee": "12",
+                "Flags": 131072,
+                "LastLedgerSequence": 88061884,
+                "LimitAmount": {
+                    "currency": "QNT",
+                    "issuer": "rGPsXnzAkdv1FYKkhC59GRp3M42axDhE1d",
+                    "value": "500000000"
+                },
+                "Sequence": 62418072,
+                "SigningPubKey": "023833AB55CD985EB4F7744DC2B02D34886A71ECC0177EE59749A0113ABEE8D64A",
+                "TransactionType": "TrustSet",
+                "TxnSignature": "304402201B00F6D2D9C3B290B8EB3CBAB15612C16C7C06E1D5D8A8B55528D4E1762EB7110220565D2A7369884D84F324FB3CA521BA4EDAFF8F2DDDE48AF8992CF99DF0EEB3F0",
+                "ledger_index": 88061876,
+                "date": 769309032
+            },
+            "ledger_index": 88061876,
+            "hash": "735E296F0F271382FF8FBBBD0058AC7330419B8A1C955388A7384E5E3D5B2FCB",
+            "ledger_hash": "95B2DA521829572779128884B145DF921B4239CC74057C08EB570DD31641A8F5",
+            "close_time_iso": "2024-05-18T00:57:12Z",
+            "validated": true
+        }, {
+            "meta": {
+                "AffectedNodes": [{
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
+                            "Balance": "8579705270",
+                            "Flags": 131072,
+                            "OwnerCount": 0,
+                            "Sequence": 1152385
                         },
-                        {
-                            "ModifiedNode": {
-                                "FinalFields": {
-                                    "Account": "rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg",
-                                    "Balance": "236476361",
-                                    "Flags": 131072,
-                                    "OwnerCount": 0,
-                                    "Sequence": 466335
-                                },
-                                "LedgerEntryType": "AccountRoot",
-                                "LedgerIndex": "CC20FEBEA6D2AF969EC46F2BD92684D9FBABC3F238E841B5E056FE4EBF4379A9",
-                                "PreviousFields": {
-                                    "Balance": "735976788",
-                                    "Sequence": 466334
-                                },
-                                "PreviousTxnID": "C528B32DD588EFAE2FE833E8AA92E6AE2DF2C8DB3DB8C6C4F334AD37B253D72A",
-                                "PreviousTxnLgrSeq": 57112010
-                            }
-                        }
-                    ],
-                    "TransactionIndex": 33,
-                    "TransactionResult": "tesSUCCESS",
-                    "delivered_amount": "499500387"
-                },
-                "tx": {
-                    "Account": "rw2ciyaNshpHe7bCHo4bRWq6pqqynnWKQg",
-                    "Amount": "499500387",
-                    "Destination": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-                    "DestinationTag": 1,
-                    "Fee": "40",
-                    "Flags": 2147483648,
-                    "LastLedgerSequence": 57112032,
-                    "Sequence": 466334,
-                    "SigningPubKey": "0381575032E254BF4D699C3D8D6EFDB63B3A71F97475C6F6885BC7DAEEE55D9A01",
-                    "TransactionType": "Payment",
-                    "TxnSignature": "3045022100C7EA1701FE48C75508EEBADBC9864CD3FFEDCEB48AB99AEA960BFA360AE163ED0220453C9577502924C9E1A9A450D4B950A44016813BC70E1F16A65A402528D730B7",
-                    "date": 649200302,
-                    "hash": "7C031FD5B710E3C048EEF31254089BEEC505900BCC9A842257A0319453333998",
-                    "inLedger": 57112010,
-                    "ledger_index": 57112010
-                },
-                "validated": true
-            }
-        ],
-        "validated": true
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "140FA03FE8C39540CA8189BC7A7956795C712BC0A542C6409C041150703C8574",
+                        "PreviousFields": {
+                            "Balance": "8554705270"
+                        },
+                        "PreviousTxnID": "DB31B6D0A304777F125CAD069E2D2C60829475BC30A5DB63376C425C10B85752",
+                        "PreviousTxnLgrSeq": 86879421
+                    }
+                }, {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rpKoCafrEz7FxQZ9FfktocuBGNZZyrz4KH",
+                            "Balance": "802086263",
+                            "Flags": 0,
+                            "OwnerCount": 0,
+                            "Sequence": 60818358
+                        },
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "481C0CDDC838688B61B960A1EE721F657BD8E501F64141A51E9A905A1D87A2C9",
+                        "PreviousFields": {
+                            "Balance": "827086275",
+                            "Sequence": 60818357
+                        },
+                        "PreviousTxnID": "7C1671C63D75EBDDD87672D1DE9D5A9EAEAF34C37BDB29D1359301B85ECEF776",
+                        "PreviousTxnLgrSeq": 60818357
+                    }
+                }],
+                "TransactionIndex": 39,
+                "TransactionResult": "tesSUCCESS",
+                "delivered_amount": "25000000"
+            },
+            "tx_json": {
+                "Account": "rpKoCafrEz7FxQZ9FfktocuBGNZZyrz4KH",
+                "DeliverMax": "25000000",
+                "Destination": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
+                "DestinationTag": 997786069,
+                "Fee": "12",
+                "LastLedgerSequence": 87598991,
+                "Sequence": 60818357,
+                "SigningPubKey": "0229DA128237D9A63FBA95666C5B8794F455875D843EDF39F6C02DF07FD5B4720D",
+                "TransactionType": "Payment",
+                "TxnSignature": "304402203B0048779085087566AABB4B878EF30EB41D3B29581937111F2708780EE4168702203E2D3B1B73F3F8B86EE009F818B226467E3BFC444B831AE851E0E0B0FB7F49C8",
+                "ledger_index": 87598983,
+                "date": 767543720
+            },
+            "ledger_index": 87598983,
+            "hash": "16DFB8551F5301E3B7D1BCEAA8DB92E9AF5D783E6DCA7C0E11FD143D988E904A",
+            "ledger_hash": "2B363FD30EA376E2662777CEBDDDE22C035A87DA3CD3EA0E6125CBBC9D8A7873",
+            "close_time_iso": "2024-04-27T14:35:20Z",
+            "validated": true
+        }],
+        "validated": true,
+        "marker": {
+            "ledger": 87598983,
+            "seq": 39
+        },
+        "limit": 2,
+        "status": "success"
     }
 }
 ```
@@ -431,6 +429,10 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
+{% tabs %}
+
+{% tab label="API v2" %}
+
 | `Field`            | Type                       | Description                |
 |:-------------------|:---------------------------|:---------------------------|
 | `account`          | String                     | Unique [Address][] identifying the related account |
@@ -438,27 +440,63 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
 | `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
 | `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
+| `meta`             | Object (JSON)              | (JSON mode) The transaction results metadata in JSON. |
+| `meta_blob`        | String (Binary)            | (Binary mode) The transaction results metadata as a hex string. |
 | `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
 | `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-**Note:** The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.
+{% admonition type="info" name="Note" %}The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.{% /admonition %}
+
+Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
+
+| `Field`          | Type            | Description              |
+|:-----------------|:----------------|:-------------------------|
+| `close_time_iso` | String          | The ledger close time represented in ISO 8601 time format. |
+| `hash`           | String          | The unique hash identifier of the transaction. |
+| `ledger_hash`    | String          | A hex string of the ledger version that included this transaction. |
+| `ledger_index`   | Integer         | The [ledger index][] of the ledger version that included this transaction. |
+| `tx_json`        | Object (JSON)   | (JSON mode) JSON object defining the transaction. |
+| `tx_blob`        | String (Binary) | (Binary mode) A unique hex string defining the transaction. |
+| `validated`      | Boolean         | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
+
+{% /tab %}
+
+{% tab label="API v1" %}
+
+| `Field`            | Type                       | Description                |
+|:-------------------|:---------------------------|:---------------------------|
+| `account`          | String                     | Unique [Address][] identifying the related account |
+| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
+| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
+| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
+| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
+| `meta`       | Object (JSON) or String (Binary) | If `binary` is `true`, then this is a hex string of the transaction results metadata. Otherwise, the transaction results metadata is included in JSON format. |
+| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
+| `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
+
+{% admonition type="info" name="Note" %}The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.{% /admonition %}
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
 | `Field`        | Type                             | Description              |
 |:---------------|:---------------------------------|:-------------------------|
 | `ledger_index` | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
-| `meta`         | Object (JSON) or String (Binary) | If `binary` is True, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
-| `tx`           | Object                           | (JSON mode only) JSON object defining the transaction |
-| `tx_blob`      | String                           | (Binary mode only) Unique hashed String representing the transaction. |
+| `tx`           | Object                           | (JSON mode) JSON object defining the transaction. |
+| `tx_blob`      | String                           | (Binary mode) Hex string representing the transaction. |
 | `validated`    | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
+
+{% /tab %}
+
+{% /tabs %}
 
 ## Possible Errors
 
 * Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. In [API v1][], you won't receive this error if you specify:
+  * `ledger_index_min` or `ledger_index_max`, but also try to specify `ledger_index` or `ledger_hash`.
+  * A non-boolean value for the `binary` or `forward` fields.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
-* `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
+* `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist the server does not have it. In [API v1][], you won't receive this error if you specify a `ledger_index_min` or `ledger_index_max` value beyond the range of ledgers that the server has.
 * `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

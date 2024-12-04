@@ -145,7 +145,7 @@ async function main() {
   const send_token_tx = {
     "TransactionType": "Payment",
     "Account": cold_wallet.address,
-    "Amount": {
+    "DeliverMax": {
       "currency": currency_code,
       "value": issue_quantity,
       "issuer": cold_wallet.address
@@ -171,7 +171,7 @@ async function main() {
   const send_token_tx2 = {
     "TransactionType": "Payment",
     "Account": hot_wallet.address,
-    "Amount": {
+    "DeliverMax": {
       "currency": currency_code,
       "value": issue_quantity,
       "issuer": cold_wallet.address
@@ -197,7 +197,7 @@ async function main() {
   const send_token_tx3 = {
     "TransactionType": "Payment",
     "Account": customer_one_wallet.address,
-    "Amount": {
+    "DeliverMax": {
       "currency": currency_code,
       "value": issue_quantity,
       "issuer": cold_wallet.address

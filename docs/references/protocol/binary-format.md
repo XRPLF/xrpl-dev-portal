@@ -25,7 +25,7 @@ The process of serializing a transaction from JSON or any other representation i
 
     The [Transaction Formats Reference](transactions/index.md) defines the required and optional fields for XRP Ledger transactions.
 
-    **Note:** The `SigningPubKey` must also be provided at this step. When signing, you can [derive this key](../../concepts/accounts/cryptographic-keys.md#key-derivation) from the secret key that is provided for signing.
+    {% admonition type="info" name="Note" %}The `SigningPubKey` must also be provided at this step. When signing, you can [derive this key](../../concepts/accounts/cryptographic-keys.md#key-derivation) from the secret key that is provided for signing.{% /admonition %}
 
 2. Convert each field's data into its ["internal" binary format](#internal-format).
 
@@ -37,7 +37,7 @@ The process of serializing a transaction from JSON or any other representation i
 
 The result is a single binary blob that can be signed using well-known signature algorithms such as ECDSA (with the secp256k1 elliptic curve) and Ed25519. For purposes of the XRP Ledger, you must also [hash][Hash] the data with the appropriate prefix (`0x53545800` if single-signing, or `0x534D5400` if multi-signing). After signing, you must re-serialize the transaction with the `TxnSignature` field included. <!--{# TODO: link docs on how to compute a transaction signature. #}-->
 
-**Note:** The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.
+{% admonition type="info" name="Note" %}The XRP Ledger uses the same serialization format to represent other types of data, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and processed transactions. However, only certain fields are appropriate for including in a transaction that gets signed. (For example, the `TxnSignature` field, containing the signature itself, should not be present in the binary blob that you sign.) Thus, some fields are designated as "Signing" fields, which are included in objects when those objects are signed, and "non-signing" fields, which are not.{% /admonition %}
 
 ### Examples
 
@@ -116,13 +116,13 @@ When decoding, you can tell how many bytes the field ID is by which bits **of th
 | **Low 4 bits are nonzero**  | 1 byte: high 4 bits define type; low 4 bits define field.                     | 2 bytes: low 4 bits of the first byte define field; next byte defines type |
 | **Low 4 bits are zero** | 2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field | 3 bytes: first byte is `0x00`, second byte defines type; third byte defines field |
 
-**Caution:** Even though the Field ID consists of the two elements that are used to sort fields, you should not sort by the serialized Field ID itself, because the byte structure of the Field ID changes the sort order.
+{% admonition type="warning" name="Caution" %}Even though the Field ID consists of the two elements that are used to sort fields, you should not sort by the serialized Field ID itself, because the byte structure of the Field ID changes the sort order.{% /admonition %}
 
 ### Length Prefixing
 
 Some types of variable-length fields are prefixed with a length indicator. `Blob` fields (containing arbitrary binary data) are one such type. For a list of which types are length-prefixed, see the [Type List](#type-list) table.
 
-**Note:** Some types of fields that vary in length are not length-prefixed. Those types have other ways of indicating the end of their contents.
+{% admonition type="info" name="Note" %}Some types of fields that vary in length are not length-prefixed. Those types have other ways of indicating the end of their contents.{% /admonition %}
 
 The length prefix consists of one to three bytes indicating the length of the field immediately after the type prefix and before the contents.
 
@@ -385,7 +385,7 @@ The `XChainBridge` field, used in transactions and ledger entries related to [cr
 
 The two nested [STIssue][] types are each either 160 or 320 bits. The STIssue field is 160 bits if the currency code it contains is all 0's, meaning that the bridged asset is the native asset of its respective chain, for example XRP on the XRP Ledger Mainnet. If the currency code is nonzero, then the STIssue field also contains the (non-length-prefixed) AccountID of the token's issuer on its native chain.
 
-**Note:** The door AccountID values are length-prefixed, but the issuer AccountID values are not.
+{% admonition type="info" name="Note" %}The door AccountID values are length-prefixed, but the issuer AccountID values are not.{% /admonition %}
 
 In total, an XChainBridge field is always either 656, 816, or 976 bits (82, 102, or 122 bytes) depending on whether zero, one, or both of the assets are the native asset on their respective chain.
 

@@ -4,10 +4,9 @@ date: 2024-03-26
 labels:
     - Advisories
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # AMM Status Update
 

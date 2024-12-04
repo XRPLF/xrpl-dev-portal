@@ -52,7 +52,7 @@ Some fields can be automatically filled in before a transaction is signed, eithe
 
 * `Fee` - Automatically fill in the [Transaction Cost][] based on the network.
 
-    **Note:** When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_div_max` parameters.)
+    {% admonition type="info" name="Note" %}When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_div_max` parameters.){% /admonition %}
 
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
@@ -81,7 +81,7 @@ The only flag that applies globally to all transactions is as follows:
 
 When using the [sign method][] (or [submit method][] in "sign-and-submit" mode), `rippled` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag is not automatically enabled if `Flags` is explicitly specified. The flag is not automatically enabled when using the [sign_for method][] to add a signature to a multi-signed transaction.
 
-**Note:** The `tfFullyCanonicalSig` flag was used from 2014 until 2020 to protect against [transaction malleability](../../../concepts/transactions/finality-of-results/transaction-malleability.md) while maintaining compatibility with legacy signing software. The [RequireFullyCanonicalSig amendment][] ended compatibility with such legacy software and made the protections the default for all transactions. If you are using a [parallel network](../../../concepts/networks-and-servers/parallel-networks.md) that does not have RequireFullyCanonicalSig enabled, you should always enable the `tfFullyCanonicalSig` flag to protect against transaction malleability.
+{% admonition type="info" name="Note" %}The `tfFullyCanonicalSig` flag was used from 2014 until 2020 to protect against [transaction malleability](../../../concepts/transactions/finality-of-results/transaction-malleability.md) while maintaining compatibility with legacy signing software. The [RequireFullyCanonicalSig amendment][] ended compatibility with such legacy software and made the protections the default for all transactions. If you are using a [parallel network](../../../concepts/networks-and-servers/parallel-networks.md) that does not have RequireFullyCanonicalSig enabled, you should always enable the `tfFullyCanonicalSig` flag to protect against transaction malleability.{% /admonition %}
 
 ### Flag Ranges
 
@@ -93,7 +93,7 @@ A transaction's `Flags` field can contain flags that apply at different levels o
 | Type-based Flags | `0x00ff0000` | Flags with different meanings depending on the [transaction type](types/index.md) that uses them. |
 | Reserved Flags   | `0x0000ffff` | Flags that are not currently defined. A transaction is only valid if these flags are disabled. |
 
-**Note:** The [AccountSet transaction][] type has [its own non-bitwise flags](types/accountset.md#accountset-flags), which serve a similar purpose to type-based flags. [Ledger objects](../ledger-data/ledger-entry-types/index.md) also have a `Flags` field with different bitwise flag definitions.
+{% admonition type="info" name="Note" %}The [AccountSet transaction][] type has [its own non-bitwise flags](types/accountset.md#accountset-flags), which serve a similar purpose to type-based flags. [Ledger objects](../ledger-data/ledger-entry-types/index.md) also have a `Flags` field with different bitwise flag definitions.{% /admonition %}
 
 
 ## Memos Field
@@ -134,15 +134,15 @@ Example of a transaction with a Memos field:
 
 The `NetworkID` field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a [parallel network](../../../concepts/networks-and-servers/parallel-networks.md) that it wasn't intended for. For compatibility with existing chains, the `NetworkID` field must be omitted on any network with a Network ID of 1024 or less, but must be included on any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:
 
-| Network       | ID | `NetworkID` Field |
-|---------------|----|-------------------|
-| Mainnet       | 0  | Disallowed        |
-| Testnet       | 1  | Disallowed        |
-| Devnet        | 2  | Disallowed        |
-| AMM Devnet    | 25 | Disallowed        |
-| Sidechains Devnet Locking Chain | 2551 | Disallowed, but will become required after an update |
-| Sidechains Devnet Issuing Chain | 2552 | Disallowed, but will become required after an update |
-| Hooks V3 Testnet | 21338 | Required    |
+| Network                         | ID    | `NetworkID` Field                                    |
+| ------------------------------- | ----- | ---------------------------------------------------- |
+| Mainnet                         | 0     | Disallowed                                           |
+| Testnet                         | 1     | Disallowed                                           |
+| Devnet                          | 2     | Disallowed                                           |
+| Batch Testnet                   | 21336 | Required                                             |
+| Xahau Mainnet                   | 21337 | Required                                             |
+| Xahau Testnet                   | 21338 | Required                                             |
+| JS Hooks Testnet                | 31338 | Required                                             |
 
 Transaction replay attacks are theoretically possible, but require specific conditions on the second network. All of the following must be true:
 

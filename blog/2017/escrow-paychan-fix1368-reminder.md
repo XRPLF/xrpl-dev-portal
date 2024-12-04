@@ -3,10 +3,9 @@ date: 2017-03-27
 category: 2017
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Escrow, PayChan, and fix1368 Will Be Available in 3 Days
 

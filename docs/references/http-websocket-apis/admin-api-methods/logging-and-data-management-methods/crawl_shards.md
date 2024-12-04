@@ -45,7 +45,7 @@ An example of the request format:
 
 {% /tabs %}
 
-**Note:** There is no command-line syntax for this method. Use the [json method][] to access this from the command line.
+{% admonition type="info" name="Note" %}There is no command-line syntax for this method. Use the [json method][] to access this from the command line.{% /admonition %}
 
 The request includes the following fields:
 
@@ -54,7 +54,7 @@ The request includes the following fields:
 | `public_key` | Boolean | _(Optional)_ If `true`, the response includes the node public keys (for peer-to-peer communications) of servers that were crawled. The default is `false`. |
 | `limit`  | Number  | _(Optional)_ How many hops deep to search. The default is 0, which searches direct peers only. With a limit of `1`, searches peers' peers also. The maximum value is `3`. |
 
-**Caution:** The number of peers potentially searched grows exponentially as `limit` increases. With a limit of 2 or 3, it can take several seconds for the server to respond to the API request.
+{% admonition type="warning" name="Caution" %}The number of peers potentially searched grows exponentially as `limit` increases. With a limit of 2 or 3, it can take several seconds for the server to respond to the API request.{% /admonition %}
 
 
 ### Response Format

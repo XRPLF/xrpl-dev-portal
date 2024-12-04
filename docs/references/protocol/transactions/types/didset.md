@@ -5,13 +5,12 @@ seo:
     description: Create or update a DID.
 labels:
   - DID
-status: not_enabled
 ---
 # DIDSet
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "Source")
 
-_(Requires the [DID amendment][] {% not-enabled /%})_
+_(Requires the [DID amendment][])_
 
 Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or updates the fields of an existing one.
 
@@ -40,7 +39,7 @@ Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or
 
 You must include either `Data`, `DIDDocument`, or `URI` when you submit the `DIDSet` transaction. If all three fields are missing, the transaction fails.
 
-**Note:** To delete the `Data`, `DIDDocument`, or `URI` field from an existing DID ledger entry, add the field as an empty string.
+{% admonition type="info" name="Note" %}To delete the `Data`, `DIDDocument`, or `URI` field from an existing DID ledger entry, add the field as an empty string.{% /admonition %}
 
 
 ## Error Cases

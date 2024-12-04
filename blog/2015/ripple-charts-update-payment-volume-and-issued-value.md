@@ -3,10 +3,9 @@ date: 2015-06-10
 labels:
     - Advisories
 category: 2015
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Ripple Charts Update: Payment Volume and Issued Value
 

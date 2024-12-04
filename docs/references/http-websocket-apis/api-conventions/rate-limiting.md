@@ -10,7 +10,7 @@ labels:
 
 The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
 
-**Tip:** Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access).
+{% admonition type="success" name="Tip" %}Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access).{% /admonition %}
 
 When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.md). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
 

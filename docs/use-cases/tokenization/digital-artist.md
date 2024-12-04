@@ -16,7 +16,7 @@ When you create a NFToken, you create a unique token on the XRPL that is effecti
 
 As a digital artist, you’re focused on creating NFTs, presumably to sell on the XRP Ledger (it’s  also possible you might create NFTs as a way of establishing provenance for your creations).
 
-You can create NFTokens using an app such as the [Xumm app](https://xumm.app).
+You can create NFTokens using an app such as the [Xaman app](https://xaman.app).
 
 For a more hands-on experience, you can follow the steps in the [Quickstart Tutorial 3 - Mint and Burn NFTokens](../../tutorials/javascript/nfts/mint-and-burn-nfts.md).
 

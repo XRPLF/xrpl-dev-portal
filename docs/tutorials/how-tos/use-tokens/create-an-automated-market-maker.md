@@ -14,7 +14,7 @@ steps: ['Connect', 'Generate', 'Acquire tokens', 'Check for AMM', 'Look up AMMCr
 ---
 # Create an Automated Market Maker
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
 
@@ -175,7 +175,7 @@ Send an [AMMCreate transaction][] to create the AMM. Important aspects of this t
 
 For the two starting assets, it does not matter which is `Asset` and which is `Asset2`, but you should specify amounts that are about equal in total value, because otherwise other users can profit at your expense by trading against the AMM.
 
-**Tip:** Use `fail_hard` when submitting this transaction, so you don't have to pay the high transaction cost if the transaction initially fails. (It's still _possible_ that the transaction could tentatively succeed, and then fail and still burn the transaction cost, but this protects you from burning XRP on many of types of failures.)
+{% admonition type="success" name="Tip" %}Use `fail_hard` when submitting this transaction, so you don't have to pay the high transaction cost if the transaction initially fails. (It's still _possible_ that the transaction could tentatively succeed, and then fail and still burn the transaction cost, but this protects you from burning XRP on many of types of failures.){% /admonition %}
 
 {% tabs %}
 
@@ -264,7 +264,7 @@ You can also use the [account_lines method][] to get an updated view of your tok
 
 The `account_lines` response shows only the tokens held by the account you looked up (probably yours). If you have a lot of tokens, you may want to specify the AMM address as the `peer` in the request so you don't have to [paginate](../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) over multiple requests to find the AMM's LP Tokens. In this tutorial, your account probably only holds the three different tokens, so you can see all three in the same response.
 
-**Tip:** If one of the assets in the AMM's pool is XRP, you need to call the [account_info method][] on your account to see the difference in your balance (the `Balance` field of the account object).
+{% admonition type="success" name="Tip" %}If one of the assets in the AMM's pool is XRP, you need to call the [account_info method][] on your account to see the difference in your balance (the `Balance` field of the account object).{% /admonition %}
 
 {% interactive-block label="Check trust lines" steps=$frontmatter.steps %}
 
