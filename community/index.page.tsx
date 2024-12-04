@@ -37,8 +37,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const { nearestEvent, nearestDateDiff, index } =
-      findNearestUpcomingEvent(events);
+    const { nearestEvent, nearestDateDiff, index } = findNearestUpcomingEvent(events);
     setNearestEventInfo({ nearestEvent, nearestDateDiff, index });
     setCurrentIndex(index);
   }, [events]);
