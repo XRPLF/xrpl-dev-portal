@@ -17,6 +17,15 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [AMMClawback][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [fixReducedOffersV2][]            | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [PriceOracle][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1" %}Enabled: 2024-11-02{% /badge %} |
 | [DID][]                           | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D" %}Enabled: 2024-10-30{% /badge %} |
@@ -97,7 +106,8 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
-| [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} | |
+| [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} |  |
+| [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -153,6 +163,25 @@ Adds a new type of ledger entry, `AMM`, and adds an `AMMID` field to the `Accoun
 Adds several new transaction result codes.
 
 
+### AMMClawback
+[AMMClawback]: #ammclawback
+
+| Amendment    | AMMClawback |
+|:-------------|:------------|
+| Amendment ID | 726F944886BCDF7433203787E93DD9AA87FAB74DFE3AF4785BA03BEFC97ADA1F |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Allows tokens with clawback enabled to be used in Automated Market Makers (AMMs). Adds a new transaction:
+
+- **AMMClawback** - allows an issuer to claw back tokens that have been deposited in an AMM, if the token has clawback enabled.
+
+Also modifies the AMMDeposit transaction type to prevent depositing frozen tokens into the AMM.
+
+For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPLF/XRPL-Standards/discussions/212).
+
+
 ### CheckCashMakesTrustLine
 [CheckCashMakesTrustLine]: #checkcashmakestrustline
 
@@ -202,6 +231,43 @@ For regulatory purposes, some issuers must have the ability to recover issued to
 Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrustLineClawback` flag using an `AccountSet` transaction.
 
 See [Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md) for details on this amendment.
+
+
+### Credentials
+[Credentials]: #credentials
+
+| Amendment    | Credentials |
+|:-------------|:------------|
+| Amendment ID | 1CB67D082CF7D9102412D34258CEDB400E659352D3B207348889297A6D90F5EF |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Introduces Credentials, a set of tools for managing authorization and compliance requirements using the XRP Ledger. Adds three new transaction types for managing credentials:
+
+- CredentialCreate transaction - Create a credential in the ledger.
+- CredentialAccept transaction - Accept a credential issued to you.
+- CredentialDelete transaction - Delete a credential from the ledger.
+
+Modifies an existing transaction type:
+
+- DepositPreauth transaction - Authorizes deposits to your account. Modified to allow credential-based authorization.
+
+Adds a new field to several existing transaction types:
+
+- `CredentialIDs` field - Credentials to prove authorization to deposit money. Added to Payment, EscrowFinish, PaymentChannelClaim, and AccountDelete transaction types.
+
+Adds a new type of ledger entry:
+
+- Credential ledger entry - Stores a credential in the ledger.
+
+Modifies an existing type of ledger entry:
+
+- DepositPreauth ledger entry - Records authorization for depositing to a specific account; modified to allow for credential-based authorization.
+
+Also extends the `deposit_authorized` API method to check for credential-based auth and extends the `ledger_entry` method to allow lookup of Credential entries.
+
+For more details, see the [XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070d-credentials).
 
 
 ### CryptoConditions
@@ -660,6 +726,22 @@ This amendment fixes the improper handling of large synthetic AMM offers in the 
 Fixes AMM offer rounding and low quality order book offers from blocking the AMM.
 
 
+### fixAMMv1_2
+[fixAMMv1_2]: #fixammv1_2
+
+| Amendment    | fixAMMv1_2 |
+|:-------------|:-----------|
+| Amendment ID | 1E7ED950F2F13C4F8E2A54103B74D57D5D298FFDBD005936164EE9E6484C438C |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fixes two bugs in Automated Market Maker (AMM) transaction processing:
+
+- Fixes a bug that causes AMMWithdraw to not properly apply a reserve check before creating trust lines in some cases.
+- Fixes a bug in payment processing that causes cross-currency payments not to use the full amount of liquidity available from the combination of AMM and order books in some cases.
+
+
 ### fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
@@ -718,6 +800,22 @@ Without this amendment, an empty DID can be created, which takes up space and co
 This amendment has no effect unless the [DID][] amendment is enabled.
 
 
+### fixEnforceNFTokenTrustline
+[fixEnforceNFTokenTrustline]: #fixenforcenftokentrustline
+
+| Amendment    | fixEnforceNFTokenTrustline |
+|:-------------|:---------------------------|
+| Amendment ID | 763C37B352BE8C7A04E810F8E462644C45AFEAD624BF3894A08E5C917CF9FF39 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fixes two bugs relating to the handling of NFT transfer fees and trust lines:
+
+- Adds a check to [NFTokenAcceptOffer transactions][] to ensure that the minter has a trust line to accept the transfer fee. Without this amendment, the check only applies when an NFT trade offer is created, not when the offer is accepted; as a result, if a necessary trust line is removed in between creating and accepting the offer, the trust line is inappropriate re-created when the offer is accepted. With this amendment, the transaction to accept the NFT trade offer fails if the minter no longer has a trust line to accept the transfer fee. (For more detail, see [issue #4925](https://github.com/XRPLF/rippled/issues/4925).)
+- Adjusts a check for the presence of a trust line when the minter of the NFT is also the issuer of the fungible token that would be paid as a transfer fee. Without this amendment, the [NFTokenCreateOffer transaction][] fails with the result code `tecNO_LINE` if the NFT in question has a transfer fee, the offer amount is denominated in fungible tokens issued by the minter, and the account placing the offer does not have a trust line for those tokens. With the amendment, the offer can be created successfully. (For more detail, see [issue #4941](https://github.com/XRPLF/rippled/issues/4941).)
+
+
 ### fixFillOrKill
 [fixFillOrKill]: #fixfillorkill
 
@@ -748,6 +846,31 @@ This amendment has no effect unless the [FlowCross][] amendment is enabled.
 This amendment fixes an issue with accessing the AMM `sfTradingFee` and `sfDiscountedFee` fields in the inner objects of `sfVoteEntry` and `sfAuctionSlot`.
 
 Currently, the inner object template isn't set upon object creation. If the object contains an `soeDEFAULT` field and is initially set to the default value, accessing the field results in a `tefEXCEPTION` error in some circumstances. This amendment adds an `STObject` constructor overload that includes an additional boolean argument to set the inner object template.
+
+
+### fixInnerObjTemplate2
+[fixInnerObjTemplate2]: #fixinnerobjtemplate2
+
+| Amendment    | fixInnerObjTemplate2 |
+|:-------------|:---------------------|
+| Amendment ID | 9196110C23EA879B4229E51C286180C7D02166DA712559F634372F5264D0EC59 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment standardizes the way inner objects ([Object-type fields in the canonical binary format](../docs/references/protocol/binary-format.md#object-fields)) have their formats and default values enforced. This is the same type of check that the `fixInnerObjTemplate` applies to AMM-related fields, but this amendment applies to all other types of inner objects, namely:
+
+- `DisabledValidator` field of the [NegativeUNL ledger entry][].
+- Members of the `Majorities` array in the [Amendments ledger entry][].
+- Members of the [`Signers` array](../docs/references/protocol/transactions/common-fields.md#signers-field) of multi-signed transactions.
+- Members of the `SignerEntries` array of [SignerList ledger entries][].
+- Several parts of the [XChainBridge][] amendment {% not-enabled /%}:
+    - Members of the `XChainClaimAttestations` array in [XChainOwnedClaimID ledger entries][]
+    - Members of the `XChainCreateAccountAttestations` array in [XChainOwnedCreateAccountClaimID ledger entries][]
+    - Members of the `XChainClaimAttestationBatch` array in [XChainAddClaimAttestation transactions][]
+    - Members of the `XChainCreateAccountAttestationBatch` array in [XChainAddClaimAttestation transactions][]
+
+It is believed that this change does not affect transaction processing, but it is possible that there are edge cases where it could cause an improperly formatted transaction to receive a different error. With this amendment, any such transactions would fail with a different result code such as `temMALFORMED`; without this amendment, those transactions would be expected to fail with the code `tefEXCEPTION` instead.
 
 
 ### fixMasterKeyAsRegularKey
@@ -795,6 +918,23 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 This amendment fixes a bug in the [NonFungibleTokensV1][] amendment code where NFTs could be traded for negative amounts of money. Without this fix, users could place and accept an offer to buy or sell a `NFToken` for a negative amount of money, which resulted in the person "buying" the NFT also receiving money from the "seller". With this amendment, NFT offers for negative amounts are considered invalid.
 
 This amendment has no effect unless the [NonFungibleTokensV1][] amendment is enabled. This amendment is obsolete because its effects are included as part of [NonFungibleTokensV1_1][].
+
+
+### fixNFTokenPageLinks
+[fixNFTokenPageLinks]: #fixnftokenpagelinks
+
+| Amendment    | fixNFTokenPageLinks |
+|:-------------|:--------------------|
+| Amendment ID | C7981B764EC4439123A86CC7CCBA436E9B3FF73B3F10A0AE51882E404522FC41 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes a bug that can cause NFT directories to have missing links in the middle of the directory chain. It also introduces invariant checks that can prevent similar types of corruption from occurring in the future, and introduces a new transaction type:
+
+- [LedgerStateFix transactions][] can be used to repair corruptions in ledger data. With this amendment enabled, you can use a LedgerStateFix transaction to repair a broken link in NFT directories. In the case that future bugs cause new types of ledger corruption, this transaction type can be extended to repair the other types of corruption as well.
+
+Without this amendment, it is possible in specific circumstances to delete the last page of an NFT directory, then later create a new last page that is missing a link to the previous page. For a detailed description of the scenario that can cause this problem, see [PR #4945](https://github.com/XRPLF/rippled/pull/4945). With this amendment, the bug that caused that corruption is fixed; additionally, a new invariant check ensures that other bugs cannot remove the last page inappropriately.
 
 
 ### fixNFTokenRemint
@@ -940,6 +1080,19 @@ In general, offers can be _reduced_ in 3 ways:
 With this amendment, the exchange rate of a reduced offer is rounded such that it is as good or better than the original offer (from the taker's perspective). This allows the reduced offer to be consumed by offers that would have matched the original, full amounts. The rounded amount is no more than 1 drop of XRP or 1e-81 of a token.
 
 Without this amendment, an offer with very small amounts remaining can have a a much worse exchange rate after rounding than it had initially. This can cause an offer for very small amounts to "block" better offers in the same order book from being taken.
+
+
+### fixReducedOffersV2
+[fixReducedOffersV2]: #fixreducedoffersv2
+
+| Amendment    | fixReducedOffersV2 |
+|:-------------|:-------------------|
+| Amendment ID | 31E0DA76FB8FB527CADCDF0E61CB9C94120966328EFA9DCA202135BAF319C0BA |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adjusts rounding in an additional case that can cause an order book to become blocked by a "reduced" offer. This addresses the same symptoms as the fixReducedOffersV1 amendment, but in an additional case that was not covered by that amendment.
 
 
 ### fixRemoveNFTokenAutoTrustLine
@@ -1156,6 +1309,53 @@ Changes OfferCreate transactions so that if an Offer uses `tfImmediateOrCancel` 
 Without this amendment, "Immediate or Cancel" Offers that failed to move any funds returned a `tesSUCCESS` result code, which could be confusing because the transaction effectively did nothing.
 
 
+### InvariantsV1_1
+[InvariantsV1_1]: #invariantsv1_1
+
+| Amendment    | InvariantsV1_1 |
+|:-------------|:---------------|
+| Amendment ID | D8ED3BE0B2673496CB49DE8B5588C8805DF7B1DE203F38FE0367ACE703D36C0F |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adds several new invariants to protect the ledger against bugs in transaction processing. The developers intend to set it as open for voting after a set of several invariants are implemented. The invariants included are as follows:
+
+- When deleting an account, ensure that certain types of ledger entries are also deleted, including that account's `DirectoryNode`, `SignerList`, `NFTokenPage`, and `AMM` directories, if any, are deleted with it.
+
+
+### MPTokensV1
+[MPTokensV1]: #mptokensv1
+
+| Amendment    | MPTokensV1 |
+|:-------------|:-----------|
+| Amendment ID | 950AE2EA4654E47F04AA8739C0B214E242097E802FD372D24047A89AB1F5EC38 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Implements a new type of fungible token, called a _Multi-Purpose Token_ (MPT). This token type is optimized to be used for common token use cases such as stablecoins, and are intended to avoid some of the complexity inherent to the XRP Ledger's existing fungible tokens which are stored in bidirectional trust lines. This amendment adds the following:
+
+**New ledger entry types:**
+
+- MPToken - represents tokens held by a specific account, including the amount held and who issued them.
+- MPTokenIssuance - records information and settings for a specific issuance of MPT, such as the scale and transfer fee of those tokens.
+
+**Transaction types:**
+
+- (New) MPTokenIssuanceCreate - Define a new issuance of MPTs.
+- (New) MPTokenIssuanceDestroy - Remove an issuance definition.
+- (New) MPTokenIssuanceSet - Modify an issuance definition.
+- (New) MPTokenAuthorize - Allow an account to hold a specific issuance definition.
+- (Updated) [Payment transactions][] can also send MPTs.
+- (Updated) [Clawback transactions][] can also claw back MPTs if the issuance definition allows clawback.
+
+**API Methods:**
+
+- (New) `mpt_holders` method - Returns a list of accounts that hold a specific MPT issuance.
+- (Updated) `ledger_entry` method - Can look up MPToken and MPTokenIssuance ledger entry types.
+
+
 ### MultiSign
 [MultiSign]: #multisign
 
@@ -1211,6 +1411,27 @@ With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, re
 | Pre-amendment functionality retired? | No |
 
 Implements a "Negative UNL" system, where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
+
+
+### NFTokenMintOffer
+[NFTokenMintOffer]: #nftokenmintoffer
+
+| Amendment    | NFTokenMintOffer |
+|:-------------|:-----------------|
+| Amendment ID | EE3CF852F0506782D05E65D49E5DCC3D16D50898CD1B646BAE274863401CC3CE |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Modifies the process of minting NFTs so that you can also create a sell offer for the token at the same time.
+
+With this amendment, an [NFTokenMint transaction][] can simultaneously place a sell offer for the minted token. This adds three optional fields to the transaction, which define the NFT sell offer if you provide them:
+
+- `Amount` - The sell price of the NFT
+- `Destination` - Limit the sale so that it can only be accepted by this account
+- `Expiration` - The time after which this sell offer expires.
+
+Without this amendment, you must separately send an [NFTokenMint transaction][] after minting an NFT to place a sell offer.
 
 
 ### NonFungibleTokensV1
