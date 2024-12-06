@@ -29,10 +29,12 @@ NFTの保有枚数や保有ページ数によって、所有者準備金の総�
 
 | NFTの保有数  | 最良のケース    | 標準的なケース | 最悪のケース |
 |:------------|:----------|:-------------|:-----------|
-| 32以下         | 2 XRP       | 2 XRP          | 2 XRP      |
-| 50            | 4 XRP        | 6 XRP           | 8 XRP      |
-| 200            | 14 XRP      | 18 XRP         | 26 XRP     |
-| 1000          | 64 XRP      | 84 XRP         | 126 XRP    |
+| 32以下       | 0.2 XRP   | 0.2 XRP      | 0.2 XRP    |
+| 50          | 0.4 XRP   | 0.6 XRP      | 0.8 XRP    |
+| 200         | 1.4 XRP   | 1.8 XRP      | 2.6 XRP    |
+| 1000        | 6.4 XRP   | 8.4 XRP      | 12.6 XRP   |
+
+<!-- RESERVES_REMINDER: update math if reserves change -->
 
 ## `NFTokenOffer`の準備金
 
@@ -46,11 +48,10 @@ NFTをミントし、保有し、売買のオファーをする場合、必要�
 
 | 準備金の種類          | 準備金の額 |
 |:--------------------|--------:|
-| 基本                 | 10 XRP  |
-| NFTokenページ        | 2 XRP   |
-| NFTokenオファー       | 2 XRP   |
-| 合計                 | 14 XRP  |
-|                     |         |
+| 基本                 | {% $env.PUBLIC_BASE_RESERVE %} |
+| NFTokenページ        | {% $env.PUBLIC_OWNER_RESERVE %} |
+| NFTokenオファー       | {% $env.PUBLIC_OWNER_RESERVE % |
+| 合計                 | 1.4 XRP |
 
 {% admonition type="info" name="注記" %}準備金要件ではありませんが、ミントと売却のプロセスにおけるトランザクションの些細な手数料（通常12drops、または.000012XRP）を負担するために、少なくとも必要準備金より1XRPより多く用意しておきくべきです。{% /admonition %}
 
@@ -58,10 +59,9 @@ NFTをミントし、保有し、売買のオファーをする場合、必要�
 
 | 準備金の種類          | 準備金の額 |
 |:--------------------|--------:|
-| 基本                 | 10 XRP  |
-| NFTokenページ        | 26 XRP  |
-| NFTokenオファー      | 400 XRP |
-| 合計                 | 436 XRP |
-|                     |         |
+| 基本                 | {% $env.PUBLIC_BASE_RESERVE %}  |
+| NFTokenページ        | 2.6 XRP |
+| NFTokenオファー      | 40 XRP |
+| 合計                 | 43.6 XRP |
 
 必要準備金の額が余裕を持って確保できる額を超える場合は、オンデマンドミントモデルを使用して、一度に保有するNFTとオファーの数を減らすことを検討してください。[オンデマンドMint](batch-minting.md#オンデマンドmint-遅延minting)をご覧ください。

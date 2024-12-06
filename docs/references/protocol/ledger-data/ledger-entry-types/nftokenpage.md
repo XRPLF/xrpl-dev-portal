@@ -92,14 +92,16 @@ Since each page can hold up to 32 entries, the _effective_ reserve cost per NFT 
 
 Because of the way splitting and combining pages works, the actual number of `NFToken` objects per page is somewhat unpredictable and depends on the actual `NFTokenID` values involved. In practice, after minting or receiving a large number of NFTs, each page can have as few as 16 items, or as many as 32, with the typical case being around 24 `NFToken` objects per page.
 
-Currently, the reserve per item is 2 XRP. The table below shows how much the **total owner reserve** is for various numbers of NFTs owned under various scenarios:
+Currently, the reserve per item is {% $env.PUBLIC_OWNER_RESERVE %}. The table below shows how much the **total owner reserve** is for various numbers of NFTs owned under various scenarios:
 
 | NFTs Owned  | Best Case | Typical | Worst Case |
 |:------------|:----------|:--------|:-----------|
-| 32 or fewer | 2 XRP     | 2 XRP   | 2 XRP      |
-| 50          | 4 XRP     | 6 XRP   | 8 XRP      |
-| 200         | 14 XRP    | 18 XRP  | 26 XRP     |
-| 1000        | 64 XRP    | 84 XRP  | 126 XRP    |
+| 32 or fewer | 0.2 XRP   | 0.2 XRP | 0.2 XRP    |
+| 50          | 0.4 XRP   | 0.6 XRP | 0.8 XRP    |
+| 200         | 1.4 XRP   | 1.8 XRP | 2.6 XRP    |
+| 1000        | 6.4 XRP   | 8.4 XRP | 12.6 XRP   |
+
+<!-- RESERVES_REMINDER: update math if reserves change -->
 
 These numbers are estimates; the actual numbers may vary.
 
