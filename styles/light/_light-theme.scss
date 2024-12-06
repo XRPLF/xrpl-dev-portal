@@ -1334,4 +1334,12 @@ $company-logos-light: (
 .com-card-link {
   color: #7919FF !important;
 }
+
+.algolia-autocomplete .ds-dropdown-menu::before {
+  background-color: $gray-100;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion {
+  background-color: $gray-100;
+}
+
 }
