@@ -1,0 +1,64 @@
+name: Update Contentful Data
+
+on:
+  repository_dispatch:
+    types: [contentful_update]  # This should match the event type sent by the webhook
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Set Branch Name with Date
+        id: set-branch-name
+        run: echo "BRANCH_NAME=contentful-updates-$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_ENV
+
+      - name: Fetch Data from Contentful
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+        run: node scripts/fetchContentfulData.cjs
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Update data from Contentful'
+          branch: ${{ env.BRANCH_NAME }}
+          create_branch: true
+
+      - name: Create Pull Request
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: existingPulls } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:${process.env.BRANCH_NAME}`,
+              state: 'open',
+            });
+
+            if (existingPulls.length === 0) {
+              const { data: pullRequest } = await github.rest.pulls.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                head: process.env.BRANCH_NAME,
+                base: 'master',
+                title: 'Update data from Contentful',
+                body: 'Automated update of data from Contentful.',
+              });
+              console.log(`Pull request created: ${pullRequest.html_url}`);
+            } else {
+              console.log('Pull request already exists:', existingPulls[0].html_url);
+            }
