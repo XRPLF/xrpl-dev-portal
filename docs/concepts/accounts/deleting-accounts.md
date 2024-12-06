@@ -25,13 +25,13 @@ To be deleted, an account must meet the following requirements:
     - `RippleState`
     - `Check`
 - The account must own fewer than 1000 objects in the ledger.
-- The transaction must pay a special [transaction cost][] equal to at least the [owner reserve](reserves.md) for one item (currently 2 XRP).
+- The transaction must pay a special [transaction cost][] equal to at least the [owner reserve](reserves.md) for one item (currently {% $env.PUBLIC_OWNER_RESERVE %}).
 
 ## Cost of Deleting
 
 {% admonition type="danger" name="Warning" %}The [AccountDelete transaction][]'s transaction cost always applies when the transaction is included in a validated ledger, even if the transaction failed because the account does not meet the requirements to be deleted. To greatly reduce the chances of paying the high transaction cost if the account cannot be deleted, use the `fail_hard` option when submitting an AccountDelete transaction.{% /admonition %}
 
-Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, you should not create new XRP Ledger accounts unless necessary. You can recover some of an account's 10 XRP [reserve](reserves.md) by deleting the account, but you must still destroy at least 2 XRP to do so.
+Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, you should not create new XRP Ledger accounts unless necessary. You can recover some of an account's {% $env.PUBLIC_BASE_RESERVE %} [reserve](reserves.md) by deleting the account, but you must still destroy at least {% $env.PUBLIC_OWNER_RESERVE %} to do so.
 
 Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](../transactions/source-and-destination-tags.md) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
 

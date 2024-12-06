@@ -18,8 +18,10 @@ The parameters you can set are as follows:
 | Parameter | Description | Recommended Value |
 |-----------|-------------|-------------------|
 | `reference_fee` | The **reference transaction cost.** This is the amount of XRP, in _drops_ (1 XRP = 1 million drops.), that must be destroyed to send the reference transaction, the cheapest possible transaction. The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers. | `10` (0.00001 XRP) |
-| `account_reserve` | The **base account reserve.** This is the minimum amount of XRP, in _drops_, that an account must hold in reserve, which is also the minimum requirement to fund a new account. | `10000000` (10 XRP) |
-| `owner_reserve` | The **owner reserve increment.** This is how much more XRP, in _drops_, that an account must hold for _each_ object it owns in the ledger. | `2000000` (2 XRP) |
+| `account_reserve` | The **base account reserve.** This is the minimum amount of XRP, in _drops_, that an account must hold in reserve, which is also the minimum requirement to fund a new account. | `1000000` ({% $env.PUBLIC_BASE_RESERVE %}) |
+| `owner_reserve` | The **owner reserve increment.** This is how much more XRP, in _drops_, that an account must hold for _each_ object it owns in the ledger. | `200000` ({% $env.PUBLIC_OWNER_RESERVE %}) |
+
+<!-- RESERVES_REMINDER: update recommendations in drops if reserves change -->
 
 ## Precautions
 

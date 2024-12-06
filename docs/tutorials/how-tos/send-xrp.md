@@ -244,7 +244,7 @@ If you see any other result, you should check the following:
 
 - Are you using the correct addresses for the sender and destination?
 - Did you forget any other fields of the transaction, skip any steps, or make any other typos?
-- Do you have enough Test XRP to send the transaction? The amount of XRP you can send is limited by the [reserve requirement](../../concepts/accounts/reserves.md), which is currently 10 XRP with an additional 2 XRP for each "object" you own in the ledger. (If you generated a new address with the Testnet Faucet, you don't own any objects.)
+- Do you have enough Test XRP to send the transaction? The amount of XRP you can send is limited by the [reserve requirement](../../concepts/accounts/reserves.md), which is currently {% $env.PUBLIC_BASE_RESERVE %} with an additional {% $env.PUBLIC_OWNER_RESERVE %} for each "object" you own in the ledger. (If you generated a new address with the Testnet Faucet, you don't own any objects.)
 - Are you connected to a server on the test network?
 
 See the full list of [transaction results](../../references/protocol/transactions/transaction-results/index.md) for more possibilities.
