@@ -27,8 +27,8 @@ The reserve requirement has two parts:
 
 The current reserve requirements on Mainnet are:
 
-- Base reserve: **10 XRP**
-- Owner reserve: **2 XRP** per item
+- Base reserve: **1 XRP**
+- Owner reserve: **0.2 XRP** per item
 
 Reserves on other networks may vary.
 
