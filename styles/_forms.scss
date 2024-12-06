@@ -45,7 +45,10 @@ html {
   }
   .DocSearch-Modal {
     max-width: 55%;
-    margin-right: 13.5em;
+
+    @include media-breakpoint-up(xl) {
+      margin-right: 112px;
+    }
   }
 
   @include media-breakpoint-down(md) {
