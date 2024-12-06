@@ -46,7 +46,7 @@ The typical way to get an account in the XRP Ledger is as follows:
 
     - For example, you can buy XRP in a private exchange, then withdraw XRP from the exchange to the address you specified.
 
-        {% admonition type="warning" name="Caution" %}The first time you receive XRP at your own XRP Ledger address, you must pay the [account reserve](reserves.md) (currently 10 XRP), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers don't have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.{% /admonition %}
+        {% admonition type="warning" name="Caution" %}The first time you receive XRP at your own XRP Ledger address, you must pay the [account reserve](reserves.md) (currently {% $env.PUBLIC_BASE_RESERVE %}), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers don't have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.{% /admonition %}
 
 
 

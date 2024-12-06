@@ -430,7 +430,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 3. Open your wallet app and provide a **Secret** (seed) value from an already-funded address, such as one you got from the [Testnet Faucet](/resources/dev-tools/xrp-faucets).
 
-4. Send at least the [base reserve](../../../concepts/accounts/reserves.md) (currently 10 XRP) to the brand-new classic address you generated in the Python interpreter.
+4. Send at least the [base reserve](../../../concepts/accounts/reserves.md) (currently {% $env.PUBLIC_BASE_RESERVE %}) to the brand-new classic address you generated in the Python interpreter.
 
 5. Wait for the transaction to be confirmed, then close your wallet app.
 
