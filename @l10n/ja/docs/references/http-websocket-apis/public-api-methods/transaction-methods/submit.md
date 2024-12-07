@@ -105,12 +105,13 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 ```json
 {
   "id": 2,
+  "api_version": 2,
   "command": "submit",
   "tx_json" : {
       "TransactionType" : "Payment",
       "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
       "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "Amount" : {
+      "DeliverMax" : {
          "currency" : "USD",
          "value" : "1",
          "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
@@ -130,10 +131,11 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
     "params": [
         {
             "offline": false,
+            "api_version": 2,
             "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "Amount": {
+                "DeliverMax": {
                     "currency": "USD",
                     "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
                     "value": "1"
@@ -151,7 +153,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 {% tab label="コマンドライン" %}
 ```sh
 #Syntax: submit secret json [offline]
-rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Amount": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
+rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "DeliverMax": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
 ```
 {% /tab %}
 
@@ -169,16 +171,25 @@ rippled submit s█████████████████████�
 ```json
 {
   "id": 1,
+  "api_version": 2,
   "status": "success",
   "type": "response",
   "result": {
+    "accepted" : true,
+    "account_sequence_available" : 362,
+    "account_sequence_next" : 362,
+    "applied" : true,
+    "broadcast" : true,
     "engine_result": "tesSUCCESS",
     "engine_result_code": 0,
-    "engine_result_message": "The transaction was applied.Only final in a validated ledger.",
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "kept" : true,
+    "open_ledger_cost": "10",
+    "queued" : false,
     "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
     "tx_json": {
       "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Amount": {
+      "DeliverMax": {
         "currency": "USD",
         "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
         "value": "1"
@@ -191,7 +202,8 @@ rippled submit s█████████████████████�
       "TransactionType": "Payment",
       "TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
       "hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
-    }
+    },
+    "validated_ledger_index" : 21184416
   }
 }
 ```
@@ -201,14 +213,22 @@ rippled submit s█████████████████████�
 ```json
 {
     "result": {
+        "accepted" : true,
+        "account_sequence_available" : 362,
+        "account_sequence_next" : 362,
+        "applied" : true,
+        "broadcast" : true,
         "engine_result": "tesSUCCESS",
         "engine_result_code": 0,
-        "engine_result_message": "The transaction was applied.Only final in a validated ledger.",
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
         "status": "success",
+        "kept" : true,
+        "open_ledger_cost": "10",
+        "queued" : false,
         "tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
         "tx_json": {
             "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Amount": {
+            "DeliverMax": {
                 "currency": "USD",
                 "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
                 "value": "1"
@@ -222,7 +242,8 @@ rippled submit s█████████████████████�
             "TxnSignature": "3045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F1",
             "hash": "5B31A7518DC304D5327B4887CD1F7DC2C38D5F684170097020C7C9758B973847"
         }
-    }
+    },
+    "validated_ledger_index" : 21184416
 }
 ```
 {% /tab %}
@@ -233,29 +254,38 @@ Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 
 {
-   "result" : {
-      "engine_result" : "tesSUCCESS",
-      "engine_result_code" : 0,
-      "engine_result_message" : "The transaction was applied.Only final in a validated ledger.",
-      "status" : "success",
-      "tx_blob" : "1200002280000000240000016A61D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100FBBF74057359EC31C3647AD3B33D8954730E9879C35034374858A76B7CFA643102200EAA08C61071396E9CF0987FBEA16CF113CBD8068AA221214D165F151285EECD81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
-      "tx_json" : {
-         "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-         "Amount" : {
-            "currency" : "USD",
-            "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "value" : "1"
-         },
-         "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-         "Fee" : "10000",
-         "Flags" : 2147483648,
-         "Sequence" : 362,
-         "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-         "TransactionType" : "Payment",
-         "TxnSignature" : "3045022100FBBF74057359EC31C3647AD3B33D8954730E9879C35034374858A76B7CFA643102200EAA08C61071396E9CF0987FBEA16CF113CBD8068AA221214D165F151285EECD",
-         "hash" : "CB98A6FA1FAC47F9FCC6A233EB46F8F9AF59CC69BD69AE6D06F298F6FF52162A"
-      }
-   }
+    "result": {
+        "accepted" : true,
+        "account_sequence_available" : 362,
+        "account_sequence_next" : 362,
+        "applied" : true,
+        "broadcast" : true,
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "kept" : true,
+        "open_ledger_cost": "10",
+        "queued" : false,
+        "tx_blob": "1200002280000000240000016961D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F181144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "DeliverMax": {
+                "currency": "USD",
+                "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "value": "1"
+            },
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Fee": "10000",
+            "Flags": 2147483648,
+            "Sequence": 361,
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "Payment",
+            "TxnSignature": "3045022100A7CCD11455E47547FF617D5BFC15D120D9053DFD0536B044F10CA3631CD609E502203B61DEE4AC027C5743A1B56AF568D1E2B8E79BB9E9E14744AC87F38375C3C2F1",
+            "hash": "5B31A7518DC304D5327B4887CD1F7DC2C38D5F684170097020C7C9758B973847"
+        }
+    },
+    "validated_ledger_index" : 21184416
 }
 ```
 {% /tab %}
