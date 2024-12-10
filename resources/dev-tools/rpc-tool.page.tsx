@@ -278,7 +278,7 @@ export default function RpcTool() {
                   )}
                   {txResponse && (
                     <RPCResponseGroup response={txResponse}
-                                      anchor={<a href="tx.html">tx</a>}
+                                      anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx">tx</Link>}
                                       customExpanded={3}
                                       customExpandedText={translate("expand tx")}
                     />
@@ -287,7 +287,7 @@ export default function RpcTool() {
                     {accountInfoResponse && (
                       <>
                         <h3>
-                          <a href="account_info.html">account_info</a>
+                          <Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_info">account_info</Link>
                         </h3>
                         <JsonView
                           src={accountInfoResponse}
@@ -299,25 +299,25 @@ export default function RpcTool() {
                     )}
                     {accountLinesResponse && (
                       <RPCResponseGroup response={accountLinesResponse}
-                                        anchor={<a href="account_lines.html">account_lines</a>}
+                                        anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines">account_lines</Link>}
                       />)
                     }
                     {accountTxResponse && (
                       <RPCResponseGroup response={accountTxResponse}
-                                        anchor={<><a href="account_tx.html">account_tx</a>{" "} {translate("(last 20)")}</>}
+                                        anchor={<><Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx">account_tx</Link>{" "} {translate("(last 20)")}</>}
                                         customExpanded={3}
                                         customExpandedText={translate("expand tx")}
                       />)
                     }
                     {accountObjectsResponse && (
                         <RPCResponseGroup response={accountObjectsResponse}
-                                          anchor={<a href="account_objects.html">account_objects</a>}
+                                          anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects">account_objects</Link>}
                         />)
                     }
                   </div>
                   {ledgerResponse && (
                     <RPCResponseGroup response={ledgerResponse}
-                                      anchor={<a href="ledger.html">ledger</a>}
+                                      anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger">ledger</Link>}
                     />)
                   }
                 </div>

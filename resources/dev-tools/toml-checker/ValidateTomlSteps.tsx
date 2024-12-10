@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from "@redocly/theme/components/Link/Link";
 import axios, { AxiosError } from "axios";
 import { parse } from "smol-toml";
 import { getListEntries } from "./ListTomlFields";
@@ -299,7 +300,7 @@ export async function fetchFile(
             followUpMessage: (<p>
                 {"Check if the file is actually hosted at the URL above, "
                 + "check your server's HTTPS settings and certificate, and make sure your server provides the required "}
-                <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a>
+                <Link to="../../docs/references/xrp-ledger-toml#cors-setup">CORS header.</Link>
             </p>)
         }}
         updateLogEntry(setLogEntries, errorUpdate)

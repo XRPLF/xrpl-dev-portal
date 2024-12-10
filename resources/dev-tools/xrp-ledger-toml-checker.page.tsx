@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from "@redocly/theme/components/Link/Link";
 import { TextLookupForm, type TextLookupFormProps } from './components/TextLookupForm';
 import { fetchFile, fetchWallet } from './toml-checker/ValidateTomlSteps';
 import { LogEntryItem } from './components/LogEntry';
@@ -76,7 +77,7 @@ export default function TomlChecker() {
                     <h1>{translate(`xrp-ledger.toml Checker`)}</h1>
                     <p>{translate('resources.dev-tools.toml-checker.p.part1', `If you run an XRP Ledger validator or use the XRP Ledger for your business,
                     you can provide information about your usage of the XRP Ledger to the world in a machine-readable `)}
-                    <a href="https://xrpl.org/xrp-ledger-toml.html"><code>{translate(`xrp-ledger.toml`)}</code>{translate('resources.dev-tools.toml-checker.p.part2', ` file`)}</a>{translate('resources.dev-tools.toml-checker.p.part3', `.`)}</p>
+                    <Link to="../../docs/references/xrp-ledger-toml"><code>{translate(`xrp-ledger.toml`)}</code>{translate('resources.dev-tools.toml-checker.p.part2', ` file`)}</Link>{translate('resources.dev-tools.toml-checker.p.part3', `.`)}</p>
                 </div>
 
                 <TextLookupForm {...domainButtonProps} />
