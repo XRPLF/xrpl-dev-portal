@@ -20,8 +20,10 @@ Los parámetros que puedes configurar son los siguientes:
 | Parámetro | Descripción | Valor recomendado |
 |-----------|-------------|-------------------|
 | `reference_fee` | Cantidad de XRP, en _drops_ (1 XRP = 1 millón de drops.), que debe ser destruido para enviar la transacción de referencia, la transacción más barata posible. El coste de una transacción real es un múltiplo de ese valor, escalado dinámicamente basado en la carga de de los servidores individuales. | `10` (0.00001 XRP) |
-| `account_reserve` | Cantidad mínima de XRP, en _drops_, que una cuenta debe tener en reserva. Esta es la cantidad más pequeña que se puede enviar para financiar una nueva cuenta en el ledger. | `10000000` (10 XRP) |
-| `owner_reserve` | XRP de más, en _drops_, que se debe poseer en una dirección por _cada_ objeto que posees en el ledger. | `2000000` (2 XRP) |
+| `account_reserve` | Cantidad mínima de XRP, en _drops_, que una cuenta debe tener en reserva. Esta es la cantidad más pequeña que se puede enviar para financiar una nueva cuenta en el ledger. | `1000000` ({% $env.PUBLIC_BASE_RESERVE %}) |
+| `owner_reserve` | XRP de más, en _drops_, que se debe poseer en una dirección por _cada_ objeto que posees en el ledger. | `200000` ({% $env.PUBLIC_OWNER_RESERVE %}) |
+
+<!-- RESERVES_REMINDER: update recommendations in drops if reserves change -->
 
 ## Proceso de votación
 
