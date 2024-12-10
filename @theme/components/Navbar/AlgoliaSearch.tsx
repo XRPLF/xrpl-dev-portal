@@ -4,9 +4,6 @@ import { useThemeHooks } from '@redocly/theme/core/hooks';
 export function AlgoliaSearch() {
     const { useL10n } = useThemeHooks()
     let { lang } = useL10n()
-    if (lang == "en-US") {
-        lang = "en"
-    }
     return (
             <DocSearch
                 appId="R39QY3MZC7"
