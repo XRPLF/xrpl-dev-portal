@@ -1,18 +1,15 @@
 ---
-html: paychannel.html
-parent: ledger-entry-types.html
 seo:
     description: A channel for asynchronous XRP payments.
 labels:
   - Payment Channels
 ---
 # PayChannel
-[[Source]](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L348-L363 "Source")
+
+A `PayChannel` entry represents a [payment channel](../../../../concepts/payment-types/payment-channels.md). You can create a payment channel with a [PaymentChannelCreate transaction][].
 
 _(Added by the [PayChan amendment][].)_
-
-A `PayChannel` entry represents a [payment channel](../../../../concepts/payment-types/payment-channels.md).
-
 
 ## Example {% $frontmatter.seo.title %} JSON
 

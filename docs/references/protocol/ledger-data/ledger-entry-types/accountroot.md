@@ -1,6 +1,4 @@
 ---
-html: accountroot.html
-parent: ledger-entry-types.html
 seo:
     description: The settings, XRP balance, and other metadata for one account.
 labels:
@@ -8,9 +6,9 @@ labels:
   - XRP
 ---
 # AccountRoot
-[[Source]](https://github.com/XRPLF/rippled/blob/264280edd79b7f764536e02459f33f66a59c0531/src/ripple/protocol/impl/LedgerFormats.cpp#L36-L60 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L136-L158 "Source")
 
-An `AccountRoot` ledger entry type describes a single [account](../../../../concepts/accounts/index.md), its settings, and XRP balance.
+An `AccountRoot` ledger entry type describes a single [account](../../../../concepts/accounts/index.md), its settings, and XRP balance. You can create a new account by sending a [Payment transaction][] with enough XRP to a mathematically-valid address.
 
 ## Example {% $frontmatter.seo.title %} JSON
 
