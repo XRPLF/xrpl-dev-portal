@@ -21,8 +21,8 @@ Transactors follow a basic order of operations:
 
 This tutorial uses the existing `CreateCheck` transactor as an example. You can view the source files here:
 
-- [Header File](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.h)
-- [CPP File](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp)
+- [Header File](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.h)
+- [CPP File](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp)
 
 
 ## Header File

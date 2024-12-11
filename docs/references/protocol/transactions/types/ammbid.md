@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMBid
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMBid.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMBid.cpp "Source")
 
 _(Added by the [AMM amendment][])_
 

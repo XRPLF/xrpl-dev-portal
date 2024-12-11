@@ -8,7 +8,7 @@ labels:
 # OracleSet
 _(Requires the [PriceOracle amendment][])_
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetOracle.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "Source")
 
 Creates a new `Oracle` ledger entry or updates the fields of an existing one, using the Oracle Document ID.
 

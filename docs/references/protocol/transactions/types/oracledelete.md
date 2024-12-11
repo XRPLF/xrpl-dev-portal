@@ -8,7 +8,7 @@ labels:
 # OracleDelete
 _(Requires the [PriceOracle amendment][])_
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DeleteOracle.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteOracle.cpp "Source")
 
 Delete an `Oracle` ledger entry.
 

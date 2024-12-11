@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMDelete
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")
 
 _([AMM amendment][]により追加されました。)_
 
