@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-import allEvents from "../static/JSON/events.json";
+import base_events from "../static/JSON/events.json";
+import contentful_events from "../static/JSON/contentful-events.json";
 import { Link } from "@redocly/theme/components/Link/Link";
-
+const allEvents = base_events.concat(contentful_events)
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -138,14 +139,14 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <img
             id="left-image"
             alt="Left Event Image"
-            src={prevEvent ? `/img/events/${prevEvent.image}` : ""}
+            src={prevEvent ? (prevEvent.image.startsWith('https://') ? prevEvent.image : `/img/events/${prevEvent.image}`) : ""}
             style={{ visibility: prevEvent ? "visible" : "hidden" }}
           />
           <div className="center-image-wrapper">
             <img
               id="center-image"
               alt="Featured Event Image"
-              src={currentEvent ? `/img/events/${currentEvent.image}` : ""}
+              src={currentEvent ? (currentEvent.image.startsWith('https://') ? currentEvent.image : `/img/events/${currentEvent.image}`) : ""}
               onClick={() =>
                 currentEvent && window.open(currentEvent.link, "_blank")
               }
@@ -167,7 +168,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <img
             id="right-image"
             alt="Right Event Image"
-            src={nextEvent ? `/img/events/${nextEvent.image}` : ""}
+            src={nextEvent ? (nextEvent.image.startsWith('https://') ? nextEvent.image : `/img/events/${nextEvent.image}`) : ""}
             style={{ visibility: nextEvent ? "visible" : "hidden" }}
           />
         </div>

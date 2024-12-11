@@ -2,7 +2,7 @@ name: Update Contentful Data
 
 on:
   repository_dispatch:
-    types: [contentful_update]  # This should match the event type sent by the webhook
+    types: [contentful_update]
 
 jobs:
   update-data:
@@ -30,14 +30,29 @@ jobs:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
         run: node scripts/fetchContentfulData.cjs
 
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: No changes found
+        if: steps.check_changes.outputs.no_changes == 'true'
+        run: echo "No changes found. Skipping commit and pull request steps."
+
       - name: Commit and Push Changes
+        if: steps.check_changes.outputs.no_changes == 'false'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Update data from Contentful'
           branch: ${{ env.BRANCH_NAME }}
           create_branch: true
-
+      
       - name: Create Pull Request
+        if: steps.check_changes.outputs.no_changes == 'false'
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

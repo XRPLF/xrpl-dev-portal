@@ -1,7 +1,9 @@
 import { useState, useMemo } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
-import events from "../static/JSON/events.json";
+import base_events from "../static/JSON/events.json";
+import contentful_events from "../static/JSON/contentful-events.json";
 
+const events = base_events.concat(contentful_events);
 const moment = require("moment");
 export const frontmatter = {
   seo: {
@@ -268,7 +270,7 @@ export default function Events() {
                   <div
                     className="event-card-header"
                     style={{
-                      backgroundImage: `url(/img/events/${event.image})`,
+                      backgroundImage: `url(${event.image.startsWith('https://') ? event.image : `/img/events/${event.image}`})`,
                       backgroundRepeat: "no-repeat",
                     }}
                   >
@@ -402,7 +404,7 @@ export default function Events() {
                 <div
                   className="event-card-header"
                   style={{
-                    backgroundImage: `url(/img/events/${event.image})`,
+                    backgroundImage: `url(${event.image.startsWith('https://') ? event.image : `/img/events/${event.image}`})`,
                     backgroundRepeat: "no-repeat",
                   }}
                 >
