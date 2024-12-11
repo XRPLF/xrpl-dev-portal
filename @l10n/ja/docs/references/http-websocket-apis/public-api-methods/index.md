@@ -49,7 +49,6 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 * **[`submit_multisigned`](transaction-methods/submit_multisigned.md)** - マルチ署名済みトランザクションをネットワークに送信します。
 * **[`transaction_entry`](transaction-methods/transaction_entry.md)** - レジャーの特定のバージョンからトランザクションについての情報を取得します。
 * **[`tx`](transaction-methods/tx.md)** - 手元にあるすべてのレジャーからトランザクションについての情報を取得します。
-* **[`tx_history`](transaction-methods/tx_history.md)** - 最新の全トランザクションについての情報を取得します。
 
 
 ## [パスおよびオーダーブックのメソッド](path-and-order-book-methods/index.md)
@@ -99,6 +98,11 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 * **[`random`](utility-methods/random.md)** - 乱数を生成します。
 
 
-## 廃止予定のメソッド
+## 非推奨のメソッド
 
-`owner_info`コマンドは廃止される予定です。代わりに[`account_objects`](account-methods/account_objects.md)を使用してください。
+以下の方法は廃止予定であり、すでに削除されているか、または予告なく削除される場合があります。
+
+* **`owner_info`** - 代わりに[`account_objects`](account-methods/account_objects.md)を使用してください。
+* **[`tx_history`](transaction-methods/tx_history.md)** - 代わりに[`account_tx`](account-methods/account_tx.md)メソッド、または[`ledger`](ledger-methods/ledger.md)メソッドを使用し、`transactions`フィールドを`true`に設定してください。
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
