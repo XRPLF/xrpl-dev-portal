@@ -211,6 +211,8 @@ async function start() {
 // Submit Alice Offers
 async function aliceCreateOffer() {
 
+    aCreateOfferButton.textContent = "Creating Offer..."
+
     try {
         let aliceTakerGets = null
         let aliceTakerPays = null
@@ -249,10 +251,14 @@ async function aliceCreateOffer() {
     } catch (error) {
         aliceOffersField.value = `${error.message}`
     }
+
+    aCreateOfferButton.textContent = "Create Another Offer"
 }
 
 // Submit Bob Offers
 async function bobCreateOffer() {
+
+    bCreateOfferButton.textContent = "Creating Offer..."
 
     try {
         let bobTakerGets = null
@@ -292,4 +298,6 @@ async function bobCreateOffer() {
     } catch (error) {
         bobOffersField.value = `${error.message}`
     }
+
+    bCreateOfferButton.textContent = "Create Another Offer"
 }
