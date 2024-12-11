@@ -144,7 +144,6 @@ $banner-height: 0; // Apex 2024 banner was 46px. 0 for no pencil banner.
   }
 
   #topnav-search {
-    flex-grow: 1;
     .input-group {
       flex-grow: 1;
       flex-wrap: nowrap; // Fix search bar splitting into two lines on iPhone 5
@@ -316,7 +315,7 @@ $banner-height: 0; // Apex 2024 banner was 46px. 0 for no pencil banner.
 
     @include media-breakpoint-up(xl) {
       #topnav-search {
-        margin-left: 3.5rem;
+        margin-left: auto;
         margin-right: 0.5rem;
       }
       #topnav-language {

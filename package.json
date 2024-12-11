@@ -14,6 +14,7 @@
   "dependencies": {
     "@codemirror/state": "6.4.1",
     "@codemirror/view": "^6.22.2",
+    "@docsearch/react": "^3.8.0",
     "@lezer/highlight": "^1.2.0",
     "@redocly/realm": "0.103.1",
     "@uiw/codemirror-themes": "4.21.21",

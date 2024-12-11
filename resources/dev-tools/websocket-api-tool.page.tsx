@@ -198,12 +198,12 @@ export function WebsocketApiTool() {
             <h1>{translate("WebSocket Tool")}</h1>
             <div className="api-method-description-wrapper">
               <h3>
-                <a
-                  href={`${currentMethod.name.split(" ")[0]}.html`}
+                <Link
+                  to={currentMethod.link}
                   className="selected_command"
                 >
                   {currentMethod.name}
-                </a>
+                </Link>
               </h3>
               {currentMethod.description && (
                 <p
