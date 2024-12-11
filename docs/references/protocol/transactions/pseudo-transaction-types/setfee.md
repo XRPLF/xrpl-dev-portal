@@ -58,7 +58,7 @@ This transaction has two formats, depending on whether the [XRPFees amendment][]
 
 ## {% $frontmatter.seo.title %} Fields
 
-The fields of a SetFee pseudo-transaction depend on whether the [XRPFees amendment][] was enabled at the time. In addition to the [common fields](../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md), they can use the following:
+The fields of a SetFee pseudo-transaction depend on whether the [XRPFees amendment][] was enabled at the time. In addition to the [common fields](./pseudo-transaction-types.md), they can use the following:
 
 {% tabs %}
 {% tab label="Current Format" %}
