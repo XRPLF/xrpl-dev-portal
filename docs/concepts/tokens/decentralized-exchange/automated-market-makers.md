@@ -100,6 +100,15 @@ Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.00
 
 Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the number of LP tokens they hold. To vote, a liquidity provider sends an [AMMVote][] transaction. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes, weighted by how many LP tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote, then only the top 8 votes (by most LP tokens held) are counted. Even though liquidity providers' share of LP tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.md)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
 
+{% admonition type="info" name="Note" %}
+
+_Trading fees_ differ from _transfer fees_.
+
+- Trading fees are set by the liquidity providers of an AMM, only apply to trades against the AMM, and can be redeemed with LP tokens.
+- Transfer fees are set by the token issuer, apply to all transfers (except when sending to or receiving from the issuer), and are burned.
+
+{% /admonition %}
+
 ### Auction Slot
 
 The XRP Ledger's AMM design includes an _auction slot_. A liquidity provider can bid LP Tokens to claim the auction slot to receive a discount on the trading fee for a 24-hour period. The LP tokens that were bid are returned to the AMM.
