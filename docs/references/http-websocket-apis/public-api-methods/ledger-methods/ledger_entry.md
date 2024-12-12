@@ -48,6 +48,8 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
     - [Get DepositPreauth Object](#get-depositpreauth-object)
     - [Get Ticket Object](#get-ticket-object)
     - [Get NFT Page](#get-nft-page)
+    - [Get MPT Issuance Object](#get-mpt-issuance-object)
+    - [Get MPToken Object](#get-mptoken-object)
   - [Response Format](#response-format)
   - [Possible Errors](#possible-errors)
 
@@ -920,6 +922,200 @@ An example of a successful response:
 {% /tab %}
 
 {% /tabs %}
+
+### Get MPT Issuance Object 
+
+Return an `MPTokenIssuance` object.
+
+| Field                   | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `mpt_issuance`              | String | The 192-bit `MPTokenIssuanceID` that's associated with the MPTokenIssuance. |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    "id": "example_get_mpt_issuance",
+    "command": "ledger_entry",
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+  }]
+}
+```
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
+```
+### Get MPToken Object 
+
+Return an `MPToken` object.
+
+| Field                   | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `mptoken`               | ️Object or String          | If a string, interpret as ledger entry ID of the MPToken to retrieve. If an object, requires the sub-fields account and mpt_issuance_id to unique identify the MPToken. |
+| mptoken.mpt_issuance_id |	️String                      |	(Required if the `MPToken` is specified as an object) The 192-bit MPTokenIssuanceID that's associated with the MPTokenIssuance. |
+| mptoken.account	️         | String	                    | (Required if the `MPToken` is specified as an object) The account that owns the MPToken. |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    "id": "example_get_mpt_issuance",
+    "command": "ledger_entry",
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+  }]
+}
+```
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
+```
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](https://xrpl.org/resources/dev-tools/websocket-api-tool.html#ledger_entry-mpt_issuance)
+
+## Response Format
+
+The response follows the [standard format](https://xrpl.org/docs/references/http-websocket-apis/api-conventions/response-formatting/), with a successful result containing the following fields:
+
+| Field          | Type             | Description                              |
+|:---------------|:-----------------|:-----------------------------------------|
+| `index`        | String           | The unique ID of this [ledger entry](https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/). |
+| `ledger_index` | Unsigned Integer | The [ledger index](https://xrpl.org/docs/references/protocol/data-types/basic-data-types/#ledger-index) of the ledger that was used when retrieving this data. |
+| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format](https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/). |
+| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](https://xrpl.org/docs/references/protocol/binary-format/) of the ledger object, as hexadecimal. |
+
+An example of a successful response:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_accountroot",
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "31850E8E48E76D1064651DF39DF4E9542E8C90A9A9B629F4DE339EB3FA74F726",
+    "ledger_index": 61966146,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "validated": true
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
+    "ledger_index": 61966165,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
+```
+
+*Commandline*
+
+```json
+{
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
+    "ledger_index": 61966165,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
 
 
 ## Possible Errors
