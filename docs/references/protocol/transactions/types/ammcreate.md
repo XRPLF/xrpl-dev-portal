@@ -48,7 +48,7 @@ One or both of `Amount` and `Amount2` can be [tokens](../../../../concepts/token
 
 ## Special Transaction Cost
 
-Since each AMM instance involves an AccountRoot ledger entry, an AMM ledger entry, and a trust line for each token in its pool, an AMMCreate transaction requires a much higher than usual [transaction cost][] to deter ledger spam. Instead of the standard minimum of 0.00001 XRP, AMMCreate must destroy at least the incremental owner reserve amount, currently 2 XRP. This is the same special transaction cost as [AccountDelete transactions][].
+Since each AMM instance involves an AccountRoot ledger entry, an AMM ledger entry, and a trust line for each token in its pool, an AMMCreate transaction requires a much higher than usual [transaction cost][] to deter ledger spam. Instead of the standard minimum of 0.00001 XRP, AMMCreate must destroy at least the incremental owner reserve amount, currently {% $env.PUBLIC_OWNER_RESERVE %}. This is the same special transaction cost as [AccountDelete transactions][].
 
 ## Error Cases
 

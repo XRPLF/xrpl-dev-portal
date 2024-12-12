@@ -40,7 +40,7 @@ Later, you can send a transaction using a specific Ticket instead of a sequence 
 
 Continuing the above example, you can send a transaction using sequence number 105 or any of the three Tickets you created. If you send a transaction using Ticket 103, doing so deletes Ticket 103 from the ledger. Your next transaction after that can use sequence number 105, Ticket 102, or Ticket 104.
 
-{% admonition type="warning" name="Caution" %}Each Ticket counts as a separate item for the [owner reserve](reserves.md), so you must set aside 2 XRP for each Ticket. (The XRP becomes available again after you use the Ticket.) This cost can add up quickly if you create a large number of Tickets at once.{% /admonition %}
+{% admonition type="warning" name="Caution" %}Each Ticket counts as a separate item for the [owner reserve](reserves.md), so you must set aside {% $env.PUBLIC_OWNER_RESERVE %} for each Ticket. (The XRP becomes available again after you use the Ticket.) This cost can add up quickly if you create a large number of Tickets at once.{% /admonition %}
 
 As with sequence numbers, sending a transaction uses up the Ticket _if and only if_ the transaction is confirmed by [consensus](../consensus-protocol/index.md). However, transactions that fail to do what they were intended to do can still be confirmed by consensus with [`tec`-class result codes](../../references/protocol/transactions/transaction-results/tec-codes.md).
 
@@ -53,7 +53,7 @@ Any account can create and use Tickets on any type of transaction. However, some
 - Each Ticket can only be used once. It is possible to have multiple different candidate transactions that would use the same Ticket Sequence, but only one of those candidates can be validated by consensus.
 - Each account cannot have more than 250 Tickets in the ledger at a time. You cannot create more than 250 Tickets at a time, either.
 - You _can_ use a Ticket to create more Tickets. If you do, the Ticket you used does not count towards the total number of Tickets you can have at once.
-- Each Ticket counts toward the [owner reserve](reserves.md), so you must set aside 2 XRP for each Ticket you have not used yet. The XRP becomes available for you to use again after the Ticket is used.
+- Each Ticket counts toward the [owner reserve](reserves.md), so you must set aside {% $env.PUBLIC_OWNER_RESERVE %} for each Ticket you have not used yet. The XRP becomes available for you to use again after the Ticket is used.
 - Within an individual ledger, transactions that use Tickets execute after other transactions from the same sender. If an account has multiple transactions using Tickets in the same ledger version, those Tickets execute in order from lowest Ticket Sequence to highest. (For more information, see the documentation on consensus's [canonical order](../consensus-protocol/consensus-structure.md#calculate-and-share-validations).)
 - To "cancel" a Ticket, use the Ticket to [perform a no-op](../transactions/finality-of-results/canceling-a-transaction.md) [AccountSet transaction][]. This deletes the Ticket so that you don't have to meet its reserve requirement.
 
