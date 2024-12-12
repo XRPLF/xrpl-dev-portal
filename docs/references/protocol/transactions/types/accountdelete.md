@@ -31,12 +31,12 @@ An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_AccountDelete%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%221AF19BF9717DA0B05A3BFC5007873E7743BA54C0311CCCCC60776AAEAC5C4635%22%2C%22binary%22%3Afalse%7D)
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
-| Field            | JSON Type        | [Internal Type][] | Description        |
-|:-----------------|:-----------------|:------------------|:-------------------|
-| `Destination`    |  String - [Address][] | AccountID    | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
-| `DestinationTag` | Number           | UInt32            | _(Optional)_ Arbitrary [destination tag](../../../../concepts/transactions/source-and-destination-tags.md) that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP. |
+| Field            | JSON Type        | [Internal Type][] | Required? | Description |
+|:-----------------|:-----------------|:------------------|:----------|:------------|
+| `CredentialIDs` | Array of Strings  | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. For details, see [Credential IDs](./payment.md#credential-ids). |
+| `Destination`    |  String - [Address][] | AccountID    | Yes       | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
+| `DestinationTag` | Number           | UInt32            | No        | Arbitrary [destination tag](../../../../concepts/transactions/source-and-destination-tags.md) that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP. |
 
 ## Special Transaction Cost
 
