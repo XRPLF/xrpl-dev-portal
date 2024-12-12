@@ -46,18 +46,18 @@ The **destination address** of a channel can:
 <!--{# TODO: replace the above example with one where the channel, public key, signature, and balance match #}-->
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 
-| Field       | JSON Type | [Internal Type][] | Description                    |
-|:------------|:----------|:------------------|:-------------------------------|
-| `Channel`   | String    | Hash256           | The unique ID of the channel, as a 64-character hexadecimal string. |
-| `Balance`   | String    | Amount            | _(Optional)_ Total amount of [XRP, in drops][Currency Amount], delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
-| `Amount`    | String    | Amount            | _(Optional)_ The amount of [XRP, in drops][Currency Amount], authorized by the `Signature`. This must match the amount in the signed message. This is the cumulative amount of XRP that can be dispensed by the channel, including XRP previously redeemed. |
-| `Signature` | String    | Blob              | _(Optional)_ The signature of this claim, as hexadecimal. The signed message contains the channel ID and the amount of the claim. Required unless the sender of the transaction is the source address of the channel. |
-| `PublicKey` | String    | Blob              | _(Optional)_ The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the public key so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
+| Field       | JSON Type | [Internal Type][] | Required? | Description |
+|:------------|:----------|:------------------|:----------|:------------|
+| `Amount`    | String    | Amount            | No        | The amount of [XRP, in drops][Currency Amount], authorized by the `Signature`. This must match the amount in the signed message. This is the cumulative amount of XRP that can be dispensed by the channel, including XRP previously redeemed. |
+| `Balance`   | String    | Amount            | No        | Total amount of [XRP, in drops][Currency Amount], delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
+| `Channel`   | String    | Hash256           | Yes       | The unique ID of the channel, as a 64-character hexadecimal string. |
+| `CredentialIDs` | Array of Strings | Vector256  | No    | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. For details, see [Credential IDs](./payment.md#credential-ids). |
+| `PublicKey` | String    | Blob              | No        | The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the public key so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
+| `Signature` | String    | Blob              | No        | The signature of this claim, as hexadecimal. The signed message contains the channel ID and the amount of the claim. Required unless the sender of the transaction is the source address of the channel. |
 
-If the payment channel was created before the [fixPayChanRecipientOwnerDir amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir) became enabled (on 2020-05-01), it is possible that the destination of the payment channel has been [deleted](../../../../concepts/accounts/deleting-accounts.md) and does not currently exist in the ledger. If the destination has been deleted, the source account cannot send XRP from the channel to the destination; instead, the transaction fails with `tecNO_DST`. (And, of course, the deleted account cannot send any transactions at all.) Other uses of this transaction type are unaffected when the destination account has been deleted, including adjusting the channel expiration, closing a channel with no XRP, or removing a channel that has passed its expiration time.
+If the payment channel was created before the [fixPayChanRecipientOwnerDir amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir) became enabled (on 2020-05-01), it is possible that the destination account has been [deleted](../../../../concepts/accounts/deleting-accounts.md) and does not currently exist in the ledger. If the destination has been deleted, the source account cannot send XRP from the channel to the destination; instead, the transaction fails with `tecNO_DST`. Other uses of this transaction type are unaffected when the destination account has been deleted, including adjusting the channel expiration, closing a channel with no XRP, or removing a channel that has passed its expiration time.
 
 
 ## PaymentChannelClaim Flags

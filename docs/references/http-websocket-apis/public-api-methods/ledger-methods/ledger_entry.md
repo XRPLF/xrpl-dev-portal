@@ -34,19 +34,20 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 - [ledger\_entry](#ledger_entry)
   - [Request Format](#request-format)
     - [General Fields](#general-fields)
-    - [Get Ledger Object by ID](#get-ledger-object-by-id)
-    - [Get AccountRoot Object](#get-accountroot-object)
-    - [Get AMM Object](#get-amm-object)
-    - [Get Bridge Object](#get-bridge-object)
-    - [Get DirectoryNode Object](#get-directorynode-object)
-    - [Get Offer Object](#get-offer-object)
-    - [Get Oracle Object](#get-oracle-object)
-    - [Get RippleState Object](#get-ripplestate-object)
-    - [Get Check Object](#get-check-object)
-    - [Get Escrow Object](#get-escrow-object)
-    - [Get PayChannel Object](#get-paychannel-object)
-    - [Get DepositPreauth Object](#get-depositpreauth-object)
-    - [Get Ticket Object](#get-ticket-object)
+    - [Get Ledger Entry by ID](#get-ledger-entry-by-id)
+    - [Get AccountRoot Entry](#get-accountroot-entry)
+    - [Get AMM Entry](#get-amm-entry)
+    - [Get Bridge Entry](#get-bridge-entry)
+    - [Get Credential Entry](#get-credential-object)
+    - [Get DirectoryNode Entry](#get-directorynode-object)
+    - [Get Offer Entry](#get-offer-object)
+    - [Get Oracle Entry](#get-oracle-object)
+    - [Get RippleState Entry](#get-ripplestate-object)
+    - [Get Check Entry](#get-check-object)
+    - [Get Escrow Entry](#get-escrow-object)
+    - [Get PayChannel Entry](#get-paychannel-object)
+    - [Get DepositPreauth Entry](#get-depositpreauth-object)
+    - [Get Ticket Entry](#get-ticket-object)
     - [Get NFT Page](#get-nft-page)
   - [Response Format](#response-format)
   - [Possible Errors](#possible-errors)
@@ -54,9 +55,10 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 {% admonition type="warning" name="Caution" %}If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.{% /admonition %}
 
 
-### Get Ledger Object by ID
+### Get Ledger Entry by ID
+<a id="get-ledger-object-by-id"></a><!-- legacy ID -->
 
-Retrieve any type of ledger object by its unique ID.
+Retrieve any type of ledger entry by its unique ID.
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -109,7 +111,8 @@ You can use this type of request to get any singleton ledger entry, if it exists
 
 
 
-### Get AccountRoot Object
+### Get AccountRoot Entry
+<a id="get-accountroot-entry"></a><!-- legacy ID -->
 
 Retrieve an [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) by its address. This is roughly equivalent to the [account_info method][].
 
@@ -156,7 +159,8 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 
 
-### Get AMM Object
+### Get AMM Entry
+<a id="get-amm-entry"></a><!-- legacy ID -->
 
 _(Added by the [AMM amendment][])_
 
@@ -222,7 +226,8 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 [Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
 
 
-### Get Bridge Object
+### Get Bridge Entry
+<a id="get-bridge-object"></a><!-- legacy ID -->
 
 _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
@@ -292,7 +297,61 @@ rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuq
 [Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-bridge)
 
 
-### Get DirectoryNode Object
+### Get Credential Entry
+
+Retrieve a [Credential entry][], which represents an attestation by one account about another account. 
+
+| Field                        | Type                 | Required? | Description |
+|:-----------------------------|:---------------------|:----------|-------------|
+| `credential` | Object or String | Yes | Specify the Credential to retrieve. If a string, must be the [ledger entry ID][] of the entry, as hexadecimal. If an object, requires `subject`, `issuer`, and `credential_type` sub-fields. |
+| `credential.subject` | String - [Address][] | Yes | The account that is the subject of the credential. |
+| `credential.issuer` | String -  [Address][] | Yes | The account that issued the credential. |
+| `credential.credential_type` | String - Hexadecimal | Yes | The type of the credential, as issued. |
+
+WebSocket:
+
+```json
+{
+  "id": "example_get_credential",
+  "command": "ledger_entry",
+  "credential": {
+    "subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+    "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "credential_type": "6D795F63726564656E7469616C"
+  },
+  "ledger_index": "validated"
+}
+```
+
+JSON-RPC:
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "credential": {
+      "subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+      "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "credential_type": "6D795F63726564656E7469616C"
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+
+Commandline:
+
+```bash
+rippled json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8", "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX","credential_type": "6D795F63726564656E7469616C"}, "ledger_index": "validated" }'
+```
+
+<!-- TODO: create working example in tool
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-credential)
+-->
+
+
+### Get DirectoryNode Entry
+<a id="get-directorynode-object"></a><!-- legacy ID -->
 
 Retrieve a [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md), which contains a list of other ledger objects. Can be provided as string (object ID of the Directory) or as an object.
 
@@ -348,7 +407,8 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 
 
-### Get Offer Object
+### Get Offer Entry
+<a id="get-offer-object"></a><!-- legacy ID -->
 
 Retrieve an [Offer entry](../../../protocol/ledger-data/ledger-entry-types/offer.md), which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.
 
@@ -402,7 +462,8 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 [Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
 
 
-### Get Oracle Object
+### Get Oracle Entry
+<a id="get-oracle-object"></a><!-- legacy ID -->
 
 _(Requires the [PriceOracle amendment][])_
 
@@ -458,7 +519,8 @@ rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4Q
 [Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-oracle)
 
 
-### Get RippleState Object
+### Get RippleState Entry
+<a id="get-ripplestate-object"></a><!-- legacy ID -->
 
 Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance between two accounts.
 
@@ -517,7 +579,8 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 
 
-### Get Check Object
+### Get Check Entry
+<a id="get-check-object"></a><!-- legacy ID -->
 
 Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md), which is a potential payment that can be cashed by its recipient.
 
@@ -562,7 +625,8 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 
 
-### Get Escrow Object
+### Get Escrow Entry
+<a id="get-escrow-object"></a><!-- legacy ID -->
 
 Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escrow.md), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object.
 
@@ -615,7 +679,8 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 
 
-### Get PayChannel Object
+### Get PayChannel Entry
+<a id="get-paychannel-object"></a><!-- legacy ID -->
 
 Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/paychannel.md), which holds XRP for asynchronous payments.
 
@@ -659,15 +724,24 @@ rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D
 [Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-paychannel)
 
 
-### Get DepositPreauth Object
+### Get DepositPreauth Entry
+<a id="get-depositpreauth-object"></a><!-- legacy ID -->
 
 Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 
-| Field                        | Type                 | Description            |
-|:-----------------------------|:---------------------|:-----------------------|
-| `deposit_preauth`            | Object or String     | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` and `authorized` sub-fields. |
-| `deposit_preauth.owner`      | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that provided the preauthorization. |
-| `deposit_preauth.authorized` | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that received the preauthorization. |
+| Field                        | Type                 | Required? | Description |
+|:-----------------------------|:---------------------|:----------|-------------|
+| `deposit_preauth`            | Object or String     | Yes       | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID][] of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` sub-field and either `authorized` or `authorize_credentials` sub-field. |
+| `deposit_preauth.owner`      | String - [Address][] | Yes       | The account that provided the preauthorization. |
+| `deposit_preauth.authorized` | String - [Address][] | No        | The account that received the preauthorization. |
+| `deposit_preauth.authorized_credentials` | Array    | No        | A set of credentials that received the preauthorization. |
+
+Each member of the `deposit_preauth.authorized_credentials` array, if provided, must include the following nested fields:
+
+| Field             | Type                 | Required? | Description |
+|:------------------|:---------------------|:----------|:------------|
+| `issuer`          | String - [Address][] | Yes       | The address of the account that issued the credential. |
+| `credential_type` | String - Hexadecimal | Yes       | The type of the credential, as issued. |
 
 {% tabs %}
 
@@ -711,7 +785,8 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 [Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-depositpreauth)
 
 
-### Get Ticket Object
+### Get Ticket Entry
+<a id="get-ticket-object"></a><!-- legacy ID -->
 
 Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use. _(Added by the [TicketBatch amendment][])_
 
