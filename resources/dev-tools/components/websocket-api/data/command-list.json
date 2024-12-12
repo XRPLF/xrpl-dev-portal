@@ -130,8 +130,6 @@
         "body": {
           "command": "ledger",
           "ledger_index": "validated",
-          "full": false,
-          "accounts": false,
           "transactions": false,
           "expand": false,
           "owner_funds": false
@@ -163,6 +161,16 @@
           "limit": 5,
           "binary": true
         }
+      },
+      {
+        "name": "ledger_index",
+        "description": "Looks up the most recently closed ledger at a specific time.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index",
+        "body": {
+          "command": "ledger_index",
+          "date": "2024-06-20T09:00:42.000Z"
+        },
+        "clio_only": true
       }
     ]
   },

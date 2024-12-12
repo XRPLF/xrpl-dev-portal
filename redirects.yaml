@@ -22,6 +22,9 @@
 /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks
     type: 301
+/docs/references/http-websocket-apis/public-api-methods/clio-server:
+    to: /docs/references/http-websocket-apis/public-api-methods/clio-methods
+    type: 301
 /docs/references/protocol/transactions/transaction-results/transaction-results:
     to: /docs/references/protocol/transactions/transaction-results
     type: 301
