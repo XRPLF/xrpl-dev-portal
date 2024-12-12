@@ -37,19 +37,21 @@ Payments are also the only way to [create accounts](#creating-accounts).
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 
-| Field            | JSON Type            | [Internal Type][] | Description    |
-|:-----------------|:---------------------|:------------------|:---------------|
-| `Amount`         | [Currency Amount][]  | Amount            | Alias to `DeliverMax`. |
-| `DeliverMax`     | [Currency Amount][]  | Amount            | [API v2][]: The maximum amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [`tfPartialPayment` flag](#payment-flags) is set, deliver _up to_ this amount instead. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %} |
-| `DeliverMin`     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](../../../../concepts/payment-types/partial-payments.md). For non-XRP amounts, the nested field names are lower-case. |
-| `Destination`    | String               | AccountID         | The unique address of the account receiving the payment. |
-| `DestinationTag` | Number               | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
-| `InvoiceID`      | String               | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
-| `Paths`          | Array of path arrays | PathSet           | (Optional, auto-fillable) Array of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| `SendMax`        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](../../../../concepts/tokens/transfer-fees.md), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](../../../../concepts/transactions/transaction-cost.md). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| Field            | JSON Type            | [Internal Type][] | Required? | Description |
+|:-----------------|:---------------------|:------------------|:----------|:------------|
+| `Amount`         | [Currency Amount][]  | Amount            | API v1: Yes | Alias to `DeliverMax`. |
+| `CredentialIDs`  | Array of Strings     | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. _(Requires the [Credentials amendment][]._ {% not-enabled /%})_ |
+| `DeliverMax`     | [Currency Amount][]  | Amount            | Yes       | [API v2][]: The maximum amount of currency to deliver. [Partial payments](#partial-payments) can deliver less than this amount and still succeed; other payments fail unless they deliver the exact amount. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %} |
+| `DeliverMin`     | [Currency Amount][]  | Amount            | No        | Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](../../../../concepts/payment-types/partial-payments.md). For non-XRP amounts, the nested field names are lower-case. |
+| `Destination`    | String               | AccountID         | Yes       | The unique address of the account receiving the payment. |
+| `DestinationTag` | Number               | UInt32            | No        | Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
+| `InvoiceID`      | String               | Hash256           | No        | Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
+| `Paths`          | Array of path arrays | PathSet           | No        | _(Auto-fillable)_ Array of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
+| `SendMax`        | [Currency Amount][]  | Amount            | No        | Highest amount of source currency this transaction is allowed to cost, including [transfer fees](../../../../concepts/tokens/transfer-fees.md), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](../../../../concepts/transactions/transaction-cost.md). Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+
+When specifying a transaction, you must specify either `Amount` or `DeliverMax`, but not both. When displaying transactions in JSON, API v1 always uses `Amount` and API v2 (or later) always uses `DeliverMax`.
 
 
 ## Types of Payments
@@ -85,7 +87,7 @@ Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates 
 
 The Payment transaction type can create new accounts in the XRP Ledger by sending enough XRP to an unfunded address. Other transactions to unfunded addresses always fail.
 
-For more information, see [Accounts](../../../../concepts/accounts/index.md#creating-accounts).
+For more information, see [Creating Accounts](../../../../concepts/accounts/index.md#creating-accounts).
 
 ## Paths
 
@@ -114,7 +116,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 ## Partial Payments
 
-A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](../../../../concepts/payment-types/bouncing-payments.md) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered.
+A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](../../../../concepts/payment-types/bouncing-payments.md) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered. To reduce confusion, `Amount` has been renamed to `DeliverMax` in API v2 and later.
 
 A partial payment is any [Payment transaction][] with the `tfPartialPayment` flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its `DeliverMin` field (or any positive amount at all if `DeliverMin` is not specified) without sending more than the `SendMax` value.
 
@@ -169,5 +171,23 @@ Version 1 MPTokens only support direct MPT payment between accounts. They cannot
    "Flags": 0,
 }
 ```
+## Credential IDs
+
+_(Requires the [Credentials amendment][] {% not-enabled /%})_
+
+You can send money to an account that uses [Deposit Authorization](../../../../concepts/accounts/depositauth.md) by providing the `CredentialIDs` field with an exact set of credentials that are preauthorized by the recipient. The set of credentials must match a [DepositPreauth entry](../../ledger-data/ledger-entry-types/depositpreauth.md) in the ledger.
+
+The credentials provided in the `CredentialIDs` field must all be valid, meaning:
+
+- The provided credentials must exist.
+- The provided credentials must have been accepted by the subject.
+- None of the provided credentials may be expired.
+- The sender of this transaction must be the subject of each of the credentials.
+
+If you provide credentials even though the destination account does not use Deposit Authorization, the credentials are not needed but they are still checked for validity.
+
+### Special Case for Destination Accounts Below the Reserve
+
+If an account has Deposit Authorization enabled, but its current XRP balance is less than the [reserve requirement](../../../../concepts/accounts/reserves.md), there is a special exception to Deposit Authorization where anyone can send a Payment transaction, without preauthorization, for up to the base account reserve; this exists as an emergency measure to prevent an account from getting "stuck" without enough XRP to transact. To qualify for this special case, the payment MUST NOT use the `CredentialIDs` field.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

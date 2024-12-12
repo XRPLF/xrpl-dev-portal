@@ -65,6 +65,20 @@
 [CheckCreateトランザクション]: /docs/references/protocol/transactions/types/checkcreate.md
 [Checks amendment]: /resources/known-amendments.md#checks
 [Clawback amendment]: /resources/known-amendments.md#clawback
+[Clawbackの修正]: /resources/known-amendments.md#clawback
+[Credentials amendment]: /resources/known-amendments.md#credentials
+[CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialCreate transactions]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialCreate]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialCreateトランザクション]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialAccept transaction]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAccept transactions]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAccept]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAcceptトランザクション]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialDelete transaction]: /docs/references/protocol/transactions/types/credentialdelete.md
+[CredentialDelete transactions]: /docs/references/protocol/transactions/types/credentialdelete.md
+[CredentialDelete]: /docs/references/protocol/transactions/types/credentialdelete.md
+[CredentialDeleteトランザクション]: /docs/references/protocol/transactions/types/credentialdelete.md
 [Crypto-Conditions Specification]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [CryptoConditions amendment]: /resources/known-amendments.md#cryptoconditions
 [CryptoConditionsSuite amendment]: /resources/known-amendments.md#cryptoconditionssuite
