@@ -30,7 +30,7 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
   "method": "mpt_holders",
   "params": [
     {
-      "mpt_id": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000",
+      "mpt_issuance_id": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000",
       "ledger_index": "validated"
     }
   ]
