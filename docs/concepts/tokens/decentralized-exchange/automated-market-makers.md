@@ -104,8 +104,11 @@ Each AMM gives its liquidity providers the power to vote on its fees, in proport
 
 _Trading fees_ differ from _transfer fees_.
 
-- Trading fees are set by the liquidity providers of an AMM, only apply to trades against the AMM, and can be redeemed with LP tokens.
-- Transfer fees are set by the token issuer, apply to all transfers (except when sending to or receiving from the issuer), and are burned.
+| Differences | AMM Trading Fees | Token Transfer Fees |
+|-------------|------------------|---------------------|
+| Who sets the fee? | AMM liquidity providers. | Token issuer. |
+| When does the fee apply? | When swapping against the AMM. | Any time the token transfers accounts, except when sending or receiving _directly_ to and from the token issuer. |
+| Can fees be redeemed? | Yes, by liquidity providers when they turn in their LP tokens. | No, fees are burned. |
 
 {% /admonition %}
 
