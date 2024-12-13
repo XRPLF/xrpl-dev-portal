@@ -18,7 +18,7 @@ El protocolo de pares es el modo principal de comunicación entre servidores en 
 - Solicitar datos de ledger de ledgers históricos, o proporcionar esos datos.
 - Proponer una conjunto de transacciones para el consenso, o compartir el resultado calculado de aplicar el conjunto de transacciones de consenso.
 
-Para establecer una conexión peer-to-peer, un servidor se conecta a otro usando HTTPS y solicita una [actualización HTTP](https://tools.ietf.org/html/rfc7230#section-6.7) para cambiar al protocolo `XRPL/2.0` (anteriormente `RTXP/1.2`). (Para más información, consultar el artículo [Red de superposición](https://github.com/XRPLF/rippled/blob/96bbabbd2ece106779bb544aa0e4ce174e99fdf6/src/ripple/overlay/README.md#handshake) en el [repositorio `rippled`](https://github.com/ripple/rippled).)
+Para establecer una conexión peer-to-peer, un servidor se conecta a otro usando HTTPS y solicita una [actualización HTTP](https://tools.ietf.org/html/rfc7230#section-6.7) para cambiar al protocolo `XRPL/2.0` (anteriormente `RTXP/1.2`). (Para más información, consultar el artículo [Red de superposición](https://github.com/XRPLF/rippled/blob/96bbabbd2ece106779bb544aa0e4ce174e99fdf6/src/ripple/overlay/README.md#handshake) en el [repositorio `rippled`](https://github.com/XRPLF/rippled).)
 
 ## Descubrimiento de pares
 

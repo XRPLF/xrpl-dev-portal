@@ -7,7 +7,7 @@ labels:
   - Checks
 ---
 # CheckCreate
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")
 
 _（[Checks Amendment][]が必要です）_
 

@@ -8,7 +8,7 @@ labels:
 ---
 # DIDSet
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")
 
 _(Requires the [DID amendment][])_
 
