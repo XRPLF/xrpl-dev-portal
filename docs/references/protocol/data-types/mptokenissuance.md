@@ -18,7 +18,7 @@ The `MPTokenIssuance` object represents a single MPT issuance and holds data ass
     "LedgerEntryType": "MPTokenIssuance",
     "Flags": 131072,
     "Issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-    "AssetScale": "2",
+    "AssetScale": 2,
     "MaximumAmount": "100000000",
     "OutstandingAmount": "100",
     "TransferFee": 50000,     
