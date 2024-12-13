@@ -252,13 +252,17 @@ async function aliceCreateOffer() {
         aliceOffersField.value = `${error.message}`
     }
 
+
     aCreateOfferButton.textContent = "Create Another Offer"
+
+
 }
 
 // Submit Bob Offers
 async function bobCreateOffer() {
 
     bCreateOfferButton.textContent = "Creating Offer..."
+
 
     try {
         let bobTakerGets = null
@@ -299,5 +303,7 @@ async function bobCreateOffer() {
         bobOffersField.value = `${error.message}`
     }
 
+
     bCreateOfferButton.textContent = "Create Another Offer"
+
 }
