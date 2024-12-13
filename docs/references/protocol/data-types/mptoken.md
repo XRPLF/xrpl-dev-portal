@@ -41,7 +41,7 @@ The `MPTokenID` is the result of SHA512-Half of the following values, concatenat
 | `LedgerEntryType`   | number    | UInt16        | The value 0x007F, mapped to the string `MPToken`, indicates that this object describes an individual account's holding of an MPT. |
 | `Account`           | string    | AccountID     | The owner of the MPT. |
 | `MPTokenIssuanceID` | string    | UInt192       | The `MPTokenIssuance` identifier. |
-| `MPTAmount`         | string    | UInt64        | This value specifies a positive amount of tokens currently held by the owner. Valid values for this field are between 0x0 and 0xFFFFFFFFFFFFFFFF. |
+| `MPTAmount`         | string    | UInt64        | This value specifies a positive amount of tokens currently held by the owner. Valid values for this field are between 0x0 and 0x7FFFFFFFFFFFFFFF. |
 | `Flags`             | number    | UInt32        | (Default) See [MPToken Flags](#mptoken-flags) |
 | `PreviousTxnID`     | string    | Hash256       | Transaction ID of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | number    | UInt32        | The sequence of the ledger that contains the transaction that most recently modified this object. |

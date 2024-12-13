@@ -9,7 +9,7 @@ labels:
 
 {% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
 
-For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all holders of that MPT and their balance. This method likely returns very large data sets, so you should expect to implement paging via the `marker` field.
+For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all holders of that MPT and their balance. This method likely returns very large data sets, so you should expect to implement paging via the `marker` field. This API is only available using Clio, not rippled.
 
 ## Request Format
 
@@ -91,14 +91,7 @@ An `mptoken` object has the following parameters:
 | `account`              | string  | The account address of the holder who owns the `MPToken`. |
 | `flags`                | number  | The flags assigned to the`MPToken` object. |
 | `mpt_amount`           | string  | Base 10-encoded amount of the holder's balance. |
-| `locked_amount`        | string  | Base 10-encoded amount of the locked balance. (Can be omitted if the value is 0.) |
 | `mptoken_index`        | string  | Key of the `MPToken` object. |
-
-#### Synthetic mpt_issuance_id field
-`MPTokenIssuanceID` is an identifier that allows you to specify an `MPTokenIssuance` in RPCs. The server adds a synthetically parsed `mpt_issuance_id` field to API responses to avoid the need for client-side parsing of the `MPTokenIssuanceID`.
-
-##### Transaction Metadata
-An `mpt_issuance_id` field is provided in JSON transaction metadata (not available for binary) for all successful `MPTokenIssuanceCreate` transactions. The following APIs are impacted: `tx`, `account_tx`, `subscribe` and `ledger`.
 
 ##### Example
 Example of a `tx` response:
@@ -147,7 +140,7 @@ Example of an `account_objects` response:
             "Flags": 64,
             "Issuer": "rBT9cUqK6UvpvZhPFNQ2qpUTin8rDokBeL",
             "LedgerEntryType": "MPTokenIssuance",
-            "OutstandingAmount": "5a",
+            "OutstandingAmount": "100",
             "OwnerNode": "0",
             "PreviousTxnID": "BDC5ECA6B115C74BF4DA83E36325A2F55DF9E2C968A5CC15EB4D009D87D5C7CA",
             "PreviousTxnLgrSeq": 308,
