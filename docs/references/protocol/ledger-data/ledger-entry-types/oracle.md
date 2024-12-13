@@ -45,7 +45,7 @@ _(Added by the [PriceOracle amendment][])_
 | `PriceDataSeries`   | Array     | Array         | Yes       | An array of up to 10 `PriceData` objects, each representing the price information for an asset pair. More than five `PriceData` objects require two owner reserves. |
 | `LastUpdateTime`    | Number    | UInt32        | Yes       | The time the data was last updated, represented in Unix time. (**Note:** Unlike many other time values on the XRP Ledger, this value does not use the Ripple Epoch.) |
 | `URI`               | String    | Blob          | No        | An optional Universal Resource Identifier to reference price data off-chain. This field is limited to 256 bytes. |
-| `AssetClass`        | String    | Blob          | Yes       | Describes the type of asset, such as "currency", "commodity", or "index". This field is a string, up to 16 ASCII hex encoded characters (`0x20`-`0x7E`). |
+| `AssetClass`        | String    | Blob          | Yes       | Arbitrary string to describe the type of asset, such as _currency_, _commodity_, or _index_. Must be formatted as hexadecimal representing ASCII characters (`0x20`-`0x7E`), maximum 16 bytes. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the oracle owner's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | UInt256       | Yes       | The hash of the previous transaction that modified this entry. |
 | `PreviousTxnLgrSeq` | String    | UInt32        | Yes       | The ledger index that this object was most recently modified or created in. |

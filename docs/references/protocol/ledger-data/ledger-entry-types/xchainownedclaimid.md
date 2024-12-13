@@ -10,7 +10,7 @@ status: not_enabled
 
 An `XChainOwnedClaimID` entry represents *one* cross-chain transfer of value and includes information of the account on the source chain that locks or burns the funds on the source chain.
 
-The `XChainOwnedClaimID` entry must be acquired on the destination chain before submitting a `XChainCommit` on the source chain. Its purpose is to prevent transaction replay attacks and is also used as a place to collect attestations from witness servers.
+The `XChainOwnedClaimID` entry must be acquired on the destination chain before submitting a `XChainCommit` on the source chain. Its purpose is to prevent transaction replay attacks. It is also used as a place to collect attestations from witness servers.
 
 You can create a new `XChainOwnedClaimID` by sending an [XChainCreateClaimID transaction][]. An `XChainOwnedClaimID` is destroyed when the funds are successfully claimed on the destination chain.
 
