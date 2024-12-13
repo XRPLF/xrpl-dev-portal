@@ -59,7 +59,6 @@ The request contains the following parameters:
         "account": "rEiNkzogdHEzUxPfsri5XSMqtXUixf2Yx",
         "flags": 0,
         "mpt_amount": "20",
-        "locked_amount": "1",
         "mptoken_index": "36D91DEE5EFE4A93119A8B84C944A528F2B444329F3846E49FE921040DE17E65"
     },
     {

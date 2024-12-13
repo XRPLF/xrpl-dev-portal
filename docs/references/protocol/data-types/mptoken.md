@@ -54,7 +54,7 @@ Flags are properties or other options associated with the `MPToken` object.
 
 | Flag Name         | Flag Value | Description                                 |
 |:------------------|:-----------|:--------------------------------------------|
-| `lsfMPTLocked`     | `0x00000001`   | If enabled, indicates that the MPT owned by this account is currently locked and cannot be used in any XRP transactions other than sending value back to the issuer. When this flag is set, the LockedAmount must equal the MPTAmount value. |
+| `lsfMPTLocked`     | `0x00000001`   | If enabled, indicates that the MPT owned by this account is currently locked and cannot be used in any XRP transactions other than sending value back to the issuer. |
 | `lsfMPTAuthorized` | `0x00000002`   | (Only applicable for allow-listing) If set, indicates that the issuer has authorized the holder for the MPT. This flag can be set using a `MPTokenAuthorize` transaction; it can also be "un-set" using a `MPTokenAuthorize` transaction specifying the `tfMPTUnauthorize` flag. |
 
 <!--{# common link defs #}-->
