@@ -25,7 +25,7 @@ MPTs let you take advantage of ready-to-use tokenization features with a few lin
     - The issuer can configure MPTs that can be clawed back from tokenholder wallets, either to revoke them, or to reassign them in the case of lost wallet keys. 
     - An opt-in feature can allow only wallets authorized by the issuer to hold issued tokens.
 
-## MPTs vs Trust Lines
+## MPTs versus Trust Lines
 
 Unlike trust lines, MPTs do not represent bidirectional debt relationships. Instead, MPTs function more like a unidirectional trust line with only one balance. This reduces the overhead to support common tokenization requirements, including non-monetary use cases such as tracking reputation points in an online game.
 
