@@ -253,7 +253,7 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ## 考えられるエラー
 
 * いずれかの[汎用エラータイプ][]。
-* `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。例えば、リクエストで`queue`を`true`と指定したが、現在開いているレジャーではない`ledger_index`を指定した場合です。[API v1]()では、`signer_lists`に非真偽値を指定した場合にこのエラーが発生します。
+* `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。例えば、リクエストで`queue`を`true`と指定したが、現在開いているレジャーではない`ledger_index`を指定した場合です。[API v1][]では、`signer_lists`に非真偽値を指定した場合にこのエラーが発生します。
 * `actNotFound` - リクエストの`account`フィールドに指定したアドレスが、レジャー内のアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 
