@@ -7,7 +7,7 @@ labels:
   - Payment Channels
 ---
 # PaymentChannelFund
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
 _Added by the [PayChan amendment][]._
 

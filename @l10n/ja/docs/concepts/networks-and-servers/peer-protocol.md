@@ -18,7 +18,7 @@ XRP Ledgerのサーバは、XRP Ledgerピアプロトコル（RTXP）を使用�
 - 履歴レジャーへのレジャーデータのリクエスト、またはレジャーデータの提供。
 - コンセンサスのための一連のトランザクションの提示、またはコンセンサストランザクションセットの適用に関する算出結果の共有。
 
-ピアツーピア接続を確立するには、サーバどうしをHTTPSで接続し、一方のサーバはRTXPへの切り替えのために[HTTPアップグレード](https://tools.ietf.org/html/rfc7230#section-6.7)をリクエストします。（詳細は、[`rippled`リポジトリ](https://github.com/ripple/rippled)の[Overlay Network](https://github.com/XRPLF/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake)をご覧ください。）
+ピアツーピア接続を確立するには、サーバどうしをHTTPSで接続し、一方のサーバはRTXPへの切り替えのために[HTTPアップグレード](https://tools.ietf.org/html/rfc7230#section-6.7)をリクエストします。（詳細は、[`rippled`リポジトリ](https://github.com/XRPLF/rippled)の[Overlay Network](https://github.com/XRPLF/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake)をご覧ください。）
 
 ## ピアの検出
 

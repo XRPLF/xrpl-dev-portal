@@ -1,5 +1,6 @@
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { useEffect } from "react";
 
 export const frontmatter = {
   seo: {
@@ -243,7 +244,7 @@ function UpcomingEvents() {
     <section className="upcoming-events">
       <h2 className="upcoming-events__title">
         {translate(
-          "Explore the companies tokenizing real-world assets on the XRP Ledger"
+          "Explore the companies pioneering tokenization using XRP Ledger"
         )}
       </h2>
       <div className="upcoming-events__logo-container">
@@ -270,6 +271,25 @@ const BenefitCard = ({ iconClass, title, description }) => {
 export default function RwaTokenization() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.id = 'video-schema'
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Tokenization on XRP Ledger",
+      "description": "The XRP Ledger was the first blockchain to support the tokenization of a variety of assets. This includes stablecoins or other forms of value – anything from US dollars, to euros, gold, stocks, and other cryptocurrencies like Bitcoin or Ethereum – and even non-fungible tokens (NFTs) that might represent valuable items like pieces of art or cinema tickets. Tokens are often called issued assets, or IOUs, on the XRPL.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Oj4cWOiWf4A/hqdefault.jpg",
+      "uploadDate": "2022-01-10",
+      "embedUrl": "https://www.youtube.com/watch?v=Oj4cWOiWf4A"
+    });
+    document.head.appendChild(script);
+    // Remove the script from the head when the component unmounts
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
   return (
     <div className="page-rwa-tokenization">
       <div className="position-relative d-none-sm">
@@ -324,7 +344,7 @@ export default function RwaTokenization() {
           <div>
             <h2 className="cards-title-token">
               {translate(
-                "Benefits of RWA Tokenization on XRP Ledger for Developers"
+                "Benefits of Real-World Asset Tokenization Development on XRP Ledger"
               )}
             </h2>
           </div>

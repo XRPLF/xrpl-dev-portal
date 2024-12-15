@@ -25,8 +25,8 @@ Los requisito de reserva consta de dos partes:
 
 Los requerimientos de reserva actuales en Mainnet son:
 
-- Reserva base: **10 XRP**
-- Reserva de propietario: **2 XRP** por artículo
+- Reserva base: **{% $env.PUBLIC_BASE_RESERVE %}**
+- Reserva de propietario: **{% $env.PUBLIC_OWNER_RESERVE %}** por artículo
 
 Reservas en otras redes pueden variar.
 

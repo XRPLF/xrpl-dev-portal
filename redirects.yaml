@@ -22,6 +22,9 @@
 /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks
     type: 301
+/docs/references/http-websocket-apis/public-api-methods/clio-server:
+    to: /docs/references/http-websocket-apis/public-api-methods/clio-methods
+    type: 301
 /docs/references/protocol/transactions/transaction-results/transaction-results:
     to: /docs/references/protocol/transactions/transaction-results
     type: 301
@@ -2779,13 +2782,13 @@ code_of_conduct.ja:
     to: /ja/docs/concepts/tokens/
     type: 301
 /ja/federated-sidechains.html:
-    to: /jahttps://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
     type: 301
 /ja/xrpl-interoperability.html:
-    to: /jahttps://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
     type: 301
 /ja/intro-to-evm-sidechain.html:
-    to: /jahttps://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+    to: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
     type: 301
 /ja/the-rippled-server.html:
     to: /ja/docs/concepts/networks-and-servers/
@@ -3076,22 +3079,22 @@ code_of_conduct.ja:
     to: /ja/docs/concepts/transactions/finality-of-results/canceling-a-transaction
     type: 301
 /ja/evm-sidechains.html:
-    to: /jahttps://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+    to: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
     type: 301
 /ja/get-started-evm-sidechain.html:
-    to: /jahttps://opensource.ripple.com/docs/evm-sidechain/get-started-evm-sidechain/
+    to: https://opensource.ripple.com/docs/evm-sidechain/get-started-evm-sidechain/
     type: 301
 /ja/connect-metamask-to-xrpl-evm-sidechain.html:
-    to: /jahttps://opensource.ripple.com/docs/evm-sidechain/connect-metamask-to-xrpl-evm-sidechain/
+    to: https://opensource.ripple.com/docs/evm-sidechain/connect-metamask-to-xrpl-evm-sidechain/
     type: 301
 /ja/join-evm-sidechain-devnet.html:
-    to: /jahttps://opensource.ripple.com/docs/evm-sidechain/join-evm-sidechain-devnet/
+    to: https://opensource.ripple.com/docs/evm-sidechain/join-evm-sidechain-devnet/
     type: 301
 /ja/evm-sidechain-validator-security.html:
-    to: /jahttps://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-validator-security/
+    to: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-validator-security/
     type: 301
 /ja/evm-sidechain-run-a-validator-node.html:
-    to: /jahttps://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-run-a-validator-node/
+    to: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-run-a-validator-node/
     type: 301
 /ja/use-xrpl-sidechains.html:
     to: /ja/docs/tutorials/how-tos/use-xrpl-sidechains/
@@ -3382,7 +3385,7 @@ code_of_conduct.ja:
     to: /ja/docs/references/client-libraries
     type: 301
 /ja/rippleapi-reference.html:
-    to: /jahttps://js.xrpl.org/
+    to: https://js.xrpl.org/
     type: 301
 /ja/xrpljs2-migration-guide.html:
     to: /ja/docs/references/xrpljs2-migration-guide
@@ -3700,7 +3703,7 @@ code_of_conduct.ja:
     to: /ja/docs/references/http-websocket-apis/peer-port-methods/validator-list
     type: 301
 /ja/xrp-api.html:
-    to: /jahttps://xpring-eng.github.io/xrp-api/
+    to: https://xpring-eng.github.io/xrp-api/
     type: 301
 /ja/data-api.html:
     to: /ja/docs/references/data-api

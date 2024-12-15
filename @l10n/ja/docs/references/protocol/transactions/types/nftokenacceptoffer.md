@@ -7,7 +7,7 @@ labels:
   - NFT, 非代替性トークン
 ---
 # NFTokenAcceptOffer
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenAcceptOffer.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "ソース")
 
 `NFTokenAcceptOffer`トランザクションは`NFToken`の購入または売却のオファーを受け入れるために使用されます。トランザクションは次のいずれかになります。
 

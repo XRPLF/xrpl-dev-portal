@@ -7,7 +7,7 @@ labels:
   - Checks
 ---
 # CheckCancel
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CancelCheck.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
 
 _(Added by the [Checks amendment][].)_
 

@@ -1251,87 +1251,100 @@ main article .card-grid {
     'cross-chain': '../img/tokenization/lightmode/cross-chain.png',
   );
 
-@each $name, $path in $icons {
-  .benefit-icon.#{$name} {
-    background-image: url(#{$path});
+  @each $name, $path in $icons {
+    .benefit-icon.#{$name} {
+      background-image: url(#{$path});
+    }
   }
-}
 
-$company-logos-light: (
-  'open-eden': '../img/tokenization/lightmode/open-eden.png',
-  'zoniqx': '../img/tokenization/lightmode/zoniqx.png',
-  'archax': '../img/tokenization/lightmode/archax.png',
-  'meld': '../img/tokenization/lightmode/meld.png',
-  'ripple-logo': '../img/tokenization/lightmode/ripple-logo.png',
-);
+  $company-logos-light: (
+    'open-eden': '../img/tokenization/lightmode/open-eden.png',
+    'zoniqx': '../img/tokenization/lightmode/zoniqx.png',
+    'archax': '../img/tokenization/lightmode/archax.png',
+    'meld': '../img/tokenization/lightmode/meld.png',
+    'ripple-logo': '../img/tokenization/lightmode/ripple-logo.png',
+  );
 
-@each $name, $path in $company-logos-light {
-  .company-logo.#{$name} {
-    background-image: url(#{$path});
+  @each $name, $path in $company-logos-light {
+    .company-logo.#{$name} {
+      background-image: url(#{$path});
+    }
   }
-}
-.token-features-section {
-  .btn-link {
-    color: #7919FF;
+  .token-features-section {
+    .btn-link {
+      color: #7919FF;
+    }
   }
-}
-.card-description {
-  a {
+  .card-description {
+    a {
+      color: #7919FF !important;
+    }
+  }
+  .developer-tools__image {
+    background-image: url("../img/tokenization/lightmode/graphic.png");
+  }
+  .right-arrow-item::after {
+    content: url('../img/icons/lightmode/arrow-right-purple.svg');
+  }
+  .token-video-text-container {
+    p {
+      color: var(--XRPL-Primary-Black, #000);
+    }
+  }
+
+  .cards-title-token {
+    color: var(--XRPL-Primary-Black, #000);
+  }
+
+  .benefit-card {
+    background: #FFF;
+
+    .benefit-title {
+      color: var(--XRPL-Primary-Black, #000);
+    }
+
+    .benefit-description {
+      color: var(--XRPL-Black-Black-80, #232325);
+    }
+  }
+
+  .developer-tools__description {
+    color: var(--XRPL-Primary-Black, #000);
+  }
+
+  .feature-item__title {
+    color: var(--XRPL-Primary-Black, #000);
+  }
+
+  .feature-item__divider {
+    background-color: black;
+  }
+
+  .rwa-subtitle {
+    color: var(--XRPL-Primary-Black, #000);
+  }
+
+  .feature-title {
+    color: var(--XRPL-Primary-Black, #000);
+  }
+
+  .feature-description {
+    color: var(--XRPL-Black-Black-80, #232325);
+  }
+  .com-card-link {
     color: #7919FF !important;
   }
 }
-.developer-tools__image {
-  background-image: url("../img/tokenization/lightmode/graphic.png");
+
+/* Search styles */
+
+.algolia-autocomplete .ds-dropdown-menu::before {
+  background-color: $gray-100;
 }
-.right-arrow-item::after {
-  content: url('../img/icons/lightmode/arrow-right-purple.svg');
-}
-.token-video-text-container {
-  p {
-    color: var(--XRPL-Primary-Black, #000);
-  }
+.algolia-autocomplete .algolia-docsearch-suggestion {
+  background-color: $gray-100;
 }
 
-.cards-title-token {
-  color: var(--XRPL-Primary-Black, #000);
-}
-
-.benefit-card {
-  background: #FFF;
-
-  .benefit-title {
-    color: var(--XRPL-Primary-Black, #000);
-  }
-
-  .benefit-description {
-    color: var(--XRPL-Black-Black-80, #232325);
-  }
-}
-
-.developer-tools__description {
-  color: var(--XRPL-Primary-Black, #000);
-}
-
-.feature-item__title {
-  color: var(--XRPL-Primary-Black, #000);
-}
-
-.feature-item__divider {
-  background-color: black;
-}
-
-.rwa-subtitle {
-  color: var(--XRPL-Primary-Black, #000);
-}
-
-.feature-title {
-  color: var(--XRPL-Primary-Black, #000);
-}
-
-.feature-description {
-  color: var(--XRPL-Black-Black-80, #232325);
-}
-.com-card-link {
-  color: #7919FF !important;
-}
+.DocSearch-Modal {
+  box-shadow: $light-box-shadow;  
 }

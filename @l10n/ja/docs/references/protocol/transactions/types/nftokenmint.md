@@ -7,7 +7,7 @@ labels:
   - 非代替性トークン, NFT
 ---
 # NFTokenMint
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenMint.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
 
 `NFTokenMint`トランザクションは非代替性トークンを作成し、`NFTokenMinter`に紐付く[NFTokenPageオブジェクト][]に[NFToken][]オブジェクトとして追加します。このトランザクションは`NFTokenMinter`にとって、不変と定義されているトークンフィールド(例えば`Flags`)を設定することができる唯一の方法です。
 
@@ -48,8 +48,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 | `Issuer` | 文字列 | AccountID | _(省略可)_ 送信元アカウントが他のアカウントの代理としてトークンを発行する場合における、トークンの発行者。トランザクションを送信するアカウントが `NFToken` の発行者である場合、このフィールドは指定してはいけません。指定される場合、発行者の[AccountRootオブジェクト][]には `NFTokenMinter` フィールドが、このトランザクションの送信者(このトランザクションの`Account`フィールド)に設定されていなければなりません。 |
 | `TransferFee` | 数値 | UInt16 | _(省略可)_ この値は、`NFToken`の二次販売が許可されている場合に、発行者が徴収する手数料を指定します。このフィールドの有効な値は0から50000の間で、0.001刻みで0.00%から50.00%の送金手数料を設定することができます。このフィールドが設定されている場合、トランザクションは[`tfTransferable`フラグ](#nftokenmintのフラグ) を有効にしなければなりません。 |
 | `URI` | 文字列 | Blob | _(省略可)_ 最大256バイトの任意のデータ。JSONでは、16進数の文字列としてエンコードされる必要があります。URIを16進数に変換するために、[`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex)ユーティリティを使用することができます。これは、NFTに関連するデータまたはメタデータを指し示すURIであることを想定しています。コンテンツは、HTTPまたはHTTPS URL、IPFS URI、マグネットリンク、[RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397) としてエンコードされた即値データ、あるいは発行者固有のエンコーディングにデコードされていることがあります。URIの有効性はチェックされません。 |
-
-
+| `Amount`      | [Currency Amount][] | Amount            | _(Optional)_ Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
+| `Expiration`  | Number              | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. Results in an error if the `Amount` field is not specified. |
+| `Destination` | String              | AccountID         | _(Optional)_ If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail. Results in an error if the `Amount` field is not specified. |
 
 ## NFTokenMintのフラグ
 

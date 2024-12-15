@@ -15,7 +15,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## Reserve Requirements
 
-Every `NFTokenOffer` object requires that your account increase its owner reserve, currently 2 XRP per `NFTokenSellOffer` and 2 XRP per `NFTokenBuyOffer`. This is to prevent accounts from spamming the ledger with offers they don't intend to complete.
+Every `NFTokenOffer` object requires that your account increase its owner reserve, currently {% $env.PUBLIC_OWNER_RESERVE %} per `NFTokenSellOffer` and {% $env.PUBLIC_OWNER_RESERVE %} per `NFTokenBuyOffer`. This is to prevent accounts from spamming the ledger with offers they don't intend to complete.
 
 See [NFT Reserve Requirements](reserve-requirements.md).
 

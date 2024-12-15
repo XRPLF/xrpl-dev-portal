@@ -50,6 +50,8 @@ links:
     rel: stylesheet
   - href: https://www.unpkg.com/@xrpl/ai-css/xrplai.css
     rel: stylesheet
+  - href: https://cdn.jsdelivr.net/npm/@docsearch/css@3
+    rel: stylesheet
 
 logo:
   srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark

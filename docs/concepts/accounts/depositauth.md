@@ -42,7 +42,7 @@ An account with Deposit Authorization enabled:
 
 - **Cannot** be the destination of [Payment transactions][], with **the following exceptions**:
     - If the destination has [preauthorized](#preauthorization) the sender of the Payment. _(Added by the [DepositPreauth amendment][])_
-    - If the account's XRP balance is equal to or below the minimum account [reserve requirement](reserves.md), it can be the destination of an XRP Payment whose `Amount` is equal or less than the minimum account reserve (currently 10 XRP). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.
+    - If the account's XRP balance is equal to or below the minimum account [reserve requirement](reserves.md), it can be the destination of an XRP Payment whose `Amount` is equal or less than the minimum account reserve (currently {% $env.PUBLIC_BASE_RESERVE %}). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.
 - Can receive XRP from [PaymentChannelClaim transactions][] **only in the following cases**:
     - The sender of the PaymentChannelClaim transaction is the destination of the payment channel.
     - The destination of the PaymentChannelClaim transaction has [preauthorized](#preauthorization) the sender of the PaymentChannelClaim. _(Added by the [DepositPreauth amendment][])_

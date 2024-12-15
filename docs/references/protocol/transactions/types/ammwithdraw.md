@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMWithdraw
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
 
 _(Added by the [AMM amendment][])_
 
