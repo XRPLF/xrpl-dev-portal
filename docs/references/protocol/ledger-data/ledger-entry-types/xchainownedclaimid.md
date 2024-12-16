@@ -1,6 +1,4 @@
 ---
-html: xchainownedclaimid.html
-parent: ledger-entry-types.html
 seo:
     description: An `XChainOwnedClaimID` object represents *one* cross-chain transfer of value. 
 labels:
@@ -8,15 +6,15 @@ labels:
 status: not_enabled
 ---
 # XChainOwnedClaimID
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L259-L269 "Source")
+
+An `XChainOwnedClaimID` entry represents *one* cross-chain transfer of value and includes information of the account on the source chain that locks or burns the funds on the source chain.
+
+The `XChainOwnedClaimID` entry must be acquired on the destination chain before submitting a `XChainCommit` on the source chain. Its purpose is to prevent transaction replay attacks. It is also used as a place to collect attestations from witness servers.
+
+You can create a new `XChainOwnedClaimID` by sending an [XChainCreateClaimID transaction][]. An `XChainOwnedClaimID` is destroyed when the funds are successfully claimed on the destination chain.
+
 _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-[[Source]](https://github.com/seelabs/rippled/blob/xbridge/src/ripple/protocol/impl/LedgerFormats.cpp#L281-L293 "Source")
-
-An `XChainOwnedClaimID` object represents *one* cross-chain transfer of value and includes information of the account on the source chain that locks or burns the funds on the source chain.
-
-The `XChainOwnedClaimID` object must be acquired on the destination chain before submitting a `XChainCommit` on the source chain. Its purpose is to prevent transaction replay attacks and is also used as a place to collect attestations from witness servers.
-
-An `XChainCreateClaimID` transaction is used to create a new `XChainOwnedClaimID`. The ledger object is destroyed when the funds are successfully claimed on the destination chain.
 
 
 ## Example XChainOwnedClaimID JSON

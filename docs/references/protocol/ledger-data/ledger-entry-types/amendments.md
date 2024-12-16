@@ -1,13 +1,11 @@
 ---
-html: amendments-object.html #amendments.html is taken by the concept page
-parent: ledger-entry-types.html
 seo:
     description: Singleton ledger entry with status of enabled and pending amendments.
 labels:
   - Blockchain
 ---
 # Amendments
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L138-L144 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L187-L192 "Source")
 
 The `Amendments` ledger entry type contains a list of [Amendments](../../../../concepts/networks-and-servers/amendments.md) that are currently active. Each ledger version contains **at most one** `Amendments` entry.
 

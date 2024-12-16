@@ -116,6 +116,11 @@
 [DepositPreauthエントリ]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauthオブジェクト]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauthトランザクション]: /docs/references/protocol/transactions/types/depositpreauth.md
+[DIDSet transaction]: /docs/references/protocol/transactions/types/didset.md
+[DIDSet transactions]: /docs/references/protocol/transactions/types/didset.md
+[DIDSet トランザクション]: /docs/references/protocol/transactions/types/didset.md
+[DIDSet]: /docs/references/protocol/transactions/types/didset.md
+[DIDSetトランザクション]: /docs/references/protocol/transactions/types/didset.md
 [DirectoryNode entry]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DirectoryNode object]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DirectoryNode エントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
@@ -367,8 +372,23 @@
 [UNLModify pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
 [UNLModify]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
 [UNLModify疑似トランザクション]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
+[XChainAddAccountCreateAttestation transaction]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+[XChainAddAccountCreateAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+[XChainAddAccountCreateAttestation トランザクション]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+[XChainAddAccountCreateAttestation]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+[XChainAddAccountCreateAttestationトランザクション]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainBridge amendment]: /resources/known-amendments.md#xchainbridge
 [XChainBridgeの修正]: /resources/known-amendments.md#xchainbridge
+[XChainCreateBridge transaction]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
+[XChainCreateBridge transactions]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
+[XChainCreateBridge トランザクション]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
+[XChainCreateBridge]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
+[XChainCreateBridgeトランザクション]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
+[XChainCreateClaimID transaction]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
+[XChainCreateClaimID transactions]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
+[XChainCreateClaimID トランザクション]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
+[XChainCreateClaimID]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
+[XChainCreateClaimIDトランザクション]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XRP, in drops]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [XRPFees amendment]: /resources/known-amendments.md#xrpfees
 [XRPFeesの修正]: /resources/known-amendments.md#xrpfees

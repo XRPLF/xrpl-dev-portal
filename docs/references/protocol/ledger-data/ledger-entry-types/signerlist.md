@@ -1,18 +1,15 @@
 ---
-html: signerlist.html
-parent: ledger-entry-types.html
 seo:
     description: A list of addresses for multi-signing transactions.
 labels:
   - Security
 ---
 # SignerList
-[[Source]](https://github.com/XRPLF/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L111-L118 "Source")
+
+A `SignerList` entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account by [multi-signing](../../../../concepts/accounts/multi-signing.md). You can create, replace, or remove a signer list using a [SignerListSet transaction][].
 
 _(Added by the [MultiSign amendment][].)_
-
-A `SignerList` entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a [SignerListSet transaction][].
-
 
 ## Example {% $frontmatter.seo.title %} JSON
 
