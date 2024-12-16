@@ -143,6 +143,8 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 When you send a payment using MPTs, the _Amount_ field requires only the `mpt_issuance_id` and the `value`. The `MPTokenIssuanceID` is used to uniquely identify the MPT for the transaction.
 
+Version 1 MPTokens only support direct MPT payment between accounts. They cannot be traded in the decentralized exchange.
+
 ### Sample MPT Payment transaction
 
 ```json
@@ -153,6 +155,10 @@ When you send a payment using MPTs, the _Amount_ field requires only the `mpt_is
       "value": "100"
    },
    "DeliverMax": {
+      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
+      "value": "100"
+   },
+   "SendMax": {
       "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
       "value": "100"
    },
