@@ -45,7 +45,7 @@ The `MPTokenID` is the result of SHA512-Half of the following values, concatenat
 | `Flags`             | number    | UInt32        | (Default) See [MPToken Flags](#mptoken-flags) |
 | `PreviousTxnID`     | string    | Hash256       | Transaction ID of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | number    | UInt32        | The sequence of the ledger that contains the transaction that most recently modified this object. |
-| `OwnerNode`         | number    | UInt64        | (Default) The page in the owner's directory where this item is referenced. |
+| `OwnerNode`         | string    | UInt64        | (Default) The page in the owner's directory where this item is referenced. |
 
 ### MPToken Flags
 
