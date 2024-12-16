@@ -20,7 +20,7 @@ The `MPToken` object represents a number of tokens held by an account that is no
     "MPTokenIssuanceID": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
     "Flags": 0,
     "MPTAmount": "100000000",
-    "OwnerNode": 1
+    "OwnerNode": "1"
 }
 ```
 
