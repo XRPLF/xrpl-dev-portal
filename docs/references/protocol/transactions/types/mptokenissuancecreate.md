@@ -41,7 +41,7 @@ Example MPTokenIssuanceCreate transaction
 
 | Field           | JSON Type           | [Internal Type][] | Description        |
 |:----------------|:--------------------|:------------------|:-------------------|
-| `TransactionType` | object              | UInt16            | Indicates the new transaction type MPTokenIssuanceCreate. |
+| `TransactionType` | string              | UInt16            | Indicates the new transaction type MPTokenIssuanceCreate. |
 | `AssetScale`      | number              | UInt8             | (Optional) An asset scale is the difference, in orders of magnitude, between a standard unit and a corresponding fractional unit. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. If the fractional unit equals the standard unit, then the asset scale is 0. Note that this value is optional, and will default to 0 if not supplied. |
 | `Flags`           | number              | UInt16            | Specifies the flags for this transaction. See [MPTokenIssuanceCreate Flags](#mptokenissuancecreate-flags). |
 | `TransferFee`      | number             | UInt16            | (Optional) The value specifies the fee to charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 50,000 inclusive, allowing transfer rates of between 0.000% and 50.000% in increments of 0.001. The field _must not_ be present if the tfMPTCanTransfer flag is not set. If it is, the transaction should fail and a fee should be claimed. |
