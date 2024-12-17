@@ -5,7 +5,8 @@ import { LanguagePicker } from "@redocly/theme/components/LanguagePicker/Languag
 import { slugify } from "../../helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
-import { AlgoliaSearch } from "./AlgoliaSearch";
+// import { AlgoliaSearch } from "./AlgoliaSearch";
+import { Search } from "@redocly/theme/components/Search/Search";
 
 // @ts-ignore
 
@@ -101,7 +102,7 @@ export function Navbar(props) {
           <NavItems>
             {navItems}
             <div id="topnav-search" className="nav-item search">
-              <AlgoliaSearch />
+              <Search className="topnav-search" />
             </div>
             <div id="topnav-language" className="nav-item">
               <LanguagePicker

@@ -4,6 +4,9 @@ ignore:
   - _code-samples/*/README.md
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
+  - CODE-OF-CONDUCT.*
+  - CODE_OF_CONDUCT.es-ES.md
+  - CONTRIBUTING.*
 l10n:
   defaultLocale: en-US
   locales:
@@ -24,7 +27,7 @@ analytics:
     trackingId: GTM-KCQZ3L8
     defaultDataLayer:
       platform: redocly
-    enableWebVitalsTracking: true 
+    enableWebVitalsTracking: true
 scripts:
   head:
     - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
@@ -53,6 +56,10 @@ links:
   - href: https://cdn.jsdelivr.net/npm/@docsearch/css@3
     rel: stylesheet
 
+search:
+  engine: typesense
+  ai:
+    hide: false
 logo:
   srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark
   altText: XRP Ledger Developer Portal
