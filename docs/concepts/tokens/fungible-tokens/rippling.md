@@ -39,7 +39,7 @@ Other accounts such as liquidity providers and normal holders should not allow r
 
 The Default Ripple flag is an account level setting that enables rippling for all incoming trust lines. The default setting of the Default Ripple flag is false. Issuers must enable this flag for their customers to be able to send tokens to one another.
 
-The Default Ripple setting doesn’t affect trust lines created by your account, only trust lines others open to your account. If you change the setting, trust lines that were created before the change keep their existing No Ripple settings. You can use a TrustSet transaction to change the No Ripple setting of a trust line to match your account’s new default.
+The Default Ripple setting doesn’t affect trust lines that you create, only trust lines that others open to your account. If you change the setting, trust lines that were created before the change keep their existing No Ripple settings. You can use a [TrustSet transaction][] to change the No Ripple setting of a trust line to match your account’s new default.
 
 # The No Ripple Flag
 
