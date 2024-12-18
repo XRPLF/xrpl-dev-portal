@@ -171,7 +171,7 @@ V<sub>a</sub>は、サーバ側のコンセンサス見解と一致した過去2
 - **リファレンス:**
     - [negativeUNL オブジェクト](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [UNLModify pseudo-transaction][]
-    - [ledger_entry メソッド][]
-    - [consensus_info メソッド][]
+    - [ledger_entryメソッド][]
+    - [consensus_infoメソッド][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
