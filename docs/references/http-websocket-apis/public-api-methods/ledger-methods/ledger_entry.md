@@ -112,7 +112,7 @@ You can use this type of request to get any singleton ledger entry, if it exists
 
 
 ### Get AccountRoot Entry
-<a id="get-accountroot-entry"></a><!-- legacy ID -->
+<a id="get-accountroot-object"></a><!-- legacy ID -->
 
 Retrieve an [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) by its address. This is roughly equivalent to the [account_info method][].
 
@@ -160,7 +160,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 
 ### Get AMM Entry
-<a id="get-amm-entry"></a><!-- legacy ID -->
+<a id="get-amm-object"></a><!-- legacy ID -->
 
 _(Added by the [AMM amendment][])_
 

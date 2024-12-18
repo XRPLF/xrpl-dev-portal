@@ -3,7 +3,7 @@ seo:
     description: Provisionally issue a credential to a subject account.
 ---
 
-# CredentialCreate Transaction
+# CredentialCreate
 
 A CredentialCreate transaction creates a credential in the ledger. The issuer of the credential uses this transaction to provisionally issue a credential. The credential is not valid until the subject of the credential accepts it with a [CredentialAccept transaction][].
 
@@ -37,7 +37,7 @@ The `Account` field (the sender) of the transaction is the issuer of the credent
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, CredentialCreate transactions can result in the following [transaction result codes][]:
+Besides errors that can occur for all transactions, CredentialCreate transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code | Description |
 |:-----------|:------------|
@@ -45,7 +45,7 @@ Besides errors that can occur for all transactions, CredentialCreate transaction
 | `tecEXPIRED` | The credential's expiration time is in the past. |
 | `tecNO_TARGET` | The account specified in the `Subject` field is not a funded account in the ledger. |
 | `temDISABLED` | The related amendment is not enabled. |
-| `temINVALID_ACCOUNT_ID` | The provided `Subject` field is invalid. For example, it contains [ACCOUNT_ZERO][]. |
+| `temINVALID_ACCOUNT_ID` | The provided `Subject` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

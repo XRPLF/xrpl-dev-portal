@@ -83,7 +83,7 @@ In addition to error types that can occur for all transactions, DepositPreauth t
 | Error Code                | Description |
 |:--------------------------|:------------|
 | `tecDUPLICATE`            | The transaction would create a preauthorization that already exists. |
-| `tecINSUFFICIENT_RESERVE` | The sender would not meet the [reserve requirement][] after adding another entry to the ledger. (A DepositPreauth entry counts as one item towards the authorizer's owner reserve.) |
+| `tecINSUFFICIENT_RESERVE` | The sender would not meet the [reserve requirement](../../../../concepts/accounts/reserves.md) after adding another entry to the ledger. (A DepositPreauth entry counts as one item towards the authorizer's owner reserve.) |
 | `tecNO_ENTRY`             | The transaction tried to revoke a preauthorization that does not exist in the ledger. |
 | `tecNO_ISSUER`            | One or more specified credential issuers does not exist in the ledger. |
 | `tecNO_TARGET`            | The transaction tried to authorize an account that is not a funded account in the ledger. |

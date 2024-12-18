@@ -4,7 +4,7 @@ seo:
 ---
 # Credential
 
-A `Credential` entry represents a [credential](../index.md), which contains an attestation about a _subject_ account from a _credential issuer_ account. The meaning of the attestation is defined by the issuer.
+A `Credential` entry represents a [credential](../../../../concepts/decentralized-storage/credentials.md), which contains an attestation about a _subject_ account from a _credential issuer_ account. The meaning of the attestation is defined by the issuer.
 
 ## Example Credential JSON
 
