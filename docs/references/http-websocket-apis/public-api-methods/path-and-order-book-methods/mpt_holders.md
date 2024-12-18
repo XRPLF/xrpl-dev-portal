@@ -73,7 +73,7 @@ The request contains the following parameters:
 
 ### Response Fields
 
-The response follows the [standard format](https://xrpl.org/docs/references/http-websocket-apis/api-conventions/response-formatting/), with the result containing the following fields:
+The response follows the [standard format][], with the result containing the following fields:
 
 | Field                  | Type    | Description                               |
 |:-----------------------|:--------|:------------------------------------------|
