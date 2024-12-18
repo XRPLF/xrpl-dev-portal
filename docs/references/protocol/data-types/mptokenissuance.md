@@ -1,5 +1,5 @@
 ---
-blurb: Introduction to XRPL MPTs.
+blurb: The `MPTokenIssuance` object represents a single MPT issuance and holds data associated with the issuance itself.
 labels:
   - Multi-purpose Tokens, MPTs, Tokens
 ---
@@ -15,19 +15,29 @@ The `MPTokenIssuance` object represents a single MPT issuance and holds data ass
 
 ```json
 {
-  "name": "US Treasury Bill Token",
-  "symbol": "USTBT",
-  "issuer": "US Treasury",
-  "issueDate": "2024-03-25",
-  "maturityDate": "2025-03-25",
-  "faceValue": 1000,
-  "interestRate": 2.5,
-  "interestFrequency": "Quarterly",
-  "collateral": "US Government",
-  "jurisdiction": "United States",
-  "regulatoryCompliance": "SEC Regulations",
-  "securityType": "Treasury Bill",
-  "external_url": "https://example.com/t-bill-token-metadata.json"
+    "LedgerEntryType": "MPTokenIssuance",
+    "Flags": 131072,
+    "Issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "AssetScale": 2,
+    "MaximumAmount": "100000000",
+    "OutstandingAmount": "100",
+    "TransferFee": 50000,     
+    "MPTokenMetadata": "{
+      "name": "US Treasury Bill Token",
+      "symbol": "USTBT",
+      "issuer": "US Treasury",
+      "issueDate": "2024-03-25",
+      "maturityDate": "2025-03-25",
+      "faceValue": 1000,
+      "interestRate": 2.5,
+      "interestFrequency": "Quarterly",
+      "collateral": "US Government",
+      "jurisdiction": "United States",
+      "regulatoryCompliance": "SEC Regulations",
+      "securityType": "Treasury Bill",
+      "external_url": "https://example.com/t-bill-token-metadata.json"
+    }",
+    "OwnerNode": "74"
 }
 ```
 
