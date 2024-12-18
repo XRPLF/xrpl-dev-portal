@@ -1013,10 +1013,10 @@ The response follows the [standard format][], with a successful result containin
 
 | Field          | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `index`        | String           | The unique ID of this [ledger entry](https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/). |
-| `ledger_index` | Unsigned Integer | The [ledger index](https://xrpl.org/docs/references/protocol/data-types/basic-data-types/#ledger-index) of the ledger that was used when retrieving this data. |
-| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format](https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/). |
-| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](https://xrpl.org/docs/references/protocol/binary-format/) of the ledger object, as hexadecimal. |
+| `index`        | String           | The unique ID of this [ledger entry](../../../protocol/ledger-data/ledger-entry-types/index.md). |
+| `ledger_index` | Unsigned Integer | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger that was used when retrieving this data. |
+| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format](../../../protocol/ledger-data/ledger-entry-types/index.md). |
+| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger object, as hexadecimal. |
 
 An example of a successful response:
 
