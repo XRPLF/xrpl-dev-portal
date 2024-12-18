@@ -24,7 +24,7 @@ Use this transaction to update a mutable property for a Multi-purpose Token.
 
 ## MPTokenIssuanceSet Fields
 
-<!-- {% include '_snippets/tx-fields-intro.md' %} -->
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type           | [Internal Type][] | Description        |
 |:-------------------|:--------------------|:------------------|:-------------------|
