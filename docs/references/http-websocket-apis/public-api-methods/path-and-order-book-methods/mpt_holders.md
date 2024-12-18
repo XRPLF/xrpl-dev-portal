@@ -134,8 +134,8 @@ Example of an `account_objects` response:
    "result": {
       "account": "rBT9cUqK6UvpvZhPFNQ2qpUTin8rDokBeL",
       "account_objects": [
-      {
-      "AssetScale": 2,
+          {
+              "AssetScale": 2,
             "Flags": 64,
             "Issuer": "rBT9cUqK6UvpvZhPFNQ2qpUTin8rDokBeL",
             "LedgerEntryType": "MPTokenIssuance",
