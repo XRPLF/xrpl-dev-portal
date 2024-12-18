@@ -41,30 +41,32 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 }
 ```
 
+[トランザクションを取得してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelClaim%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33%22%2C%22binary%22%3Afalse%7D)
+
 <!--{# TODO: replace the above example with one where the channel, pubkey, signature, and balance match #}-->
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 
-| フィールド   | JSONの型  | [内部の型][]      | 説明                            |
-|:------------|:----------|:------------------|:-------------------------------|
-| `Channel` | 文字列 | Hash256 | Channelの一意のID（64文字の16進文字列）。 |
-| `Balance` | 文字列 | Amount | _（省略可）_ このクレームの処理後にこのChannelから送金される[XRP、drop単位][通貨額]。XRPを送金する場合に必須です。Channelからこれまでに送金された総額よりも大きく、署名済みクレームの`Amount`よりも少ない額である必要があります。Channelを閉鎖する場合を除き、指定する必要があります。 |
-| `Amount` | 文字列 | Amount | _（省略可）_ `Signature`により承認された[XRP、drop単位][通貨額]の額。これは、署名済みメッセージの額に一致している必要があります。これは、Channelが利用できるXRPの累計額であり、以前に精算されたXRPを含みます。 |
-| `Signature` | 文字列 | Blob | _（省略可）_ クレームの署名です（16進数）。署名付きメッセージには、Channel IDとクレームの額が含まれています。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。 |
-| `PublicKey` | 文字列 | Blob | _（省略可）_ 署名に使用する公開鍵（16進数）。公開鍵はレジャーに保管されているこのChannelの`PublicKey`と一致している必要があります。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。また`Signature`フィールドは省略されます。（`rippled`がトランザクションをレジャーに適用する前に署名の有効性をチェックできるように、トランザクションにPubKeyが指定されています。） |
+| フィールド      | JSONの型     | [内部の型][] | 必須?  | 説明 |
+| :-------------- | :----------- | :----------- | :----- | ---- |
+| `Amount`        | 文字列       | Amount       | いいえ | `Signature`により承認された[XRP、drop単位][通貨額]の額。これは、署名済みメッセージの額に一致している必要があります。これは、Channelが利用できるXRPの累計額であり、以前に精算されたXRPを含みます。 |
+| `Balance`       | 文字列       | Amount       | いいえ | このクレームの処理後にこのChannelから送金される[XRP、drop単位][通貨額]。XRPを送金する場合に必須です。Channelからこれまでに送金された総額よりも大きく、署名済みクレームの`Amount`よりも少ない額である必要があります。Channelを閉鎖する場合を除き、指定する必要があります。 |
+| `Channel`       | 文字列       | Hash256      | はい   | Channelの一意のID(64文字の16進文字列) |
+| `CredentialIDs` | 文字列の配列 | Vector256    | いいえ | このトランザクションによる入金を承認するための資格情報のセット。配列の各要素は、レジャーのCredentialエントリのレジャエントリIDでなければなりません。詳細は、[Credential ID](./payment.md#credential-id)をご覧ください。 |
+| `PublicKey`     | 文字列       | Blob         | いいえ | 署名に使用する公開鍵(16進数)。公開鍵はレジャーに保管されているこのChannelの`PublicKey`と一致している必要があります。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。また`Signature`フィールドは省略されます。(`rippled`がトランザクションをレジャーに適用する前に署名の有効性をチェックできるように、トランザクションにPubKeyが指定されています。) |
+| `Signature`     | 文字列       | Blob         | いいえ | クレームの署名(16進数)。署名付きメッセージには、Channel IDとクレームの額が含まれています。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。 |
 
-[DeletableAccounts Amendment](/resources/known-amendments.md#deletableaccounts)が有効であり、 _かつ_ Payment Channelの作成時に[fixPayChanRecipientOwnerDir Amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir)が有効でなかった場合は、Payment Channelの送金先が[削除](../../../../concepts/accounts/deleting-accounts.md)され、現在レジャーに存在しない可能性があります。宛先が削除されている場合、支払元アカウントはチャネルから宛先にXRPを送金できません。トランザクションは`tecNO_DST`で失敗します。（もちろん、削除されたアカウントがトランザクションを送信することはできません。）宛先アカウントが削除されている場合に、このトランザクションタイプを他の用途（チャネルの有効期限の調整、XRPのないチャネルのクローズ、有効期限を過ぎたチャネルの削除など）で使用しても影響はありません。
+[DeletableAccounts Amendment](/resources/known-amendments.md#deletableaccounts)が有効であり、 _かつ_ Payment Channelの作成時に[fixPayChanRecipientOwnerDir Amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir)が有効でなかった場合は、Payment Channelの送金先が[削除](../../../../concepts/accounts/deleting-accounts.md)され、現在レジャーに存在しない可能性があります。宛先が削除されている場合、支払元アカウントはチャネルから宛先にXRPを送金できません。トランザクションは`tecNO_DST`で失敗します。宛先アカウントが削除されている場合に、このトランザクションタイプを他の用途(チャネルの有効期限の調整、XRPのないチャネルのクローズ、有効期限を過ぎたチャネルの削除など)で使用しても影響はありません。
 
 
 ## PaymentChannelClaimフラグ
 
 PaymentChannelClaimタイプのトランザクションについては、[`Flags`フィールド](../common-fields.md#flagsフィールド)で以下の値が追加でサポートされます。
 
-| フラグ名   | 16進数値   | 10進数値       | 説明                                |
-|:----------|:-----------|:--------------|:------------------------------------|
-| `tfRenew` | 0x00010000 | 65536 | Channelの`Expiration`時刻をクリアします。（`Expiration`は、Channelの変更できない`CancelAfter`時刻とは異なります。）このフラグは、Payment Channelの支払元アドレスだけが使用できます。 |
-| `tfClose` | 0x00020000 | 131072 | Channelの閉鎖を要求します。このフラグは、Channelの支払元アドレスと宛先アドレスだけが使用できます。このフラグにより、現在のクレームの処理後にChannelにこれ以上のXRPが割り当てられない場合、または宛先アドレスが使用している場合に、Channelが即時に閉鎖されます。XRPがまだChannelに保有されているときに、支払元アドレスがこのフラグを使用した場合、`SettleDelay`秒の経過後にChannelが閉鎖するようにスケジュールされます。（具体的には、Channelの`Expiration`は、前のレジャーの閉鎖時刻にChannelの`SettleDelay`の時間を加算した時刻に設定されます。ただし、Channelにこの時刻よりも早い`Expiration`時刻がすでに設定されている場合を除きます。）XRPがまだChannelに保有されているときに、宛先アドレスがこのフラグを使用した場合、クレーム処理後に残っているXRPはすべて支払元アドレスに返金されます。 |
+| フラグ名  | 16進数値     | 10進数値 | 説明 |
+| :-------- | :----------- | :------- | ---- |
+| `tfRenew` | `0x00010000` | 65536    | Channelの`Expiration`時刻をクリアします。(`Expiration`は、Channelの変更できない`CancelAfter`時刻とは異なります。)このフラグは、Payment Channelの支払元アドレスだけが使用できます。 |
+| `tfClose` | `0x00020000` | 131072   | Channelの閉鎖を要求します。このフラグは、Channelの支払元アドレスと宛先アドレスだけが使用できます。このフラグにより、現在のクレームの処理後にChannelにこれ以上のXRPが割り当てられない場合、または宛先アドレスが使用している場合に、Channelが即時に閉鎖されます。XRPがまだChannelに保有されているときに、支払元アドレスがこのフラグを使用した場合、`SettleDelay`秒の経過後にChannelが閉鎖するようにスケジュールされます。(具体的には、Channelの`Expiration`は、前のレジャーの閉鎖時刻にChannelの`SettleDelay`の時間を加算した時刻に設定されます。ただし、Channelにこの時刻よりも早い`Expiration`時刻がすでに設定されている場合を除きます。) XRPがまだChannelに保有されているときに、宛先アドレスがこのフラグを使用した場合、クレーム処理後に残っているXRPはすべて支払元アドレスに返金されます。 |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

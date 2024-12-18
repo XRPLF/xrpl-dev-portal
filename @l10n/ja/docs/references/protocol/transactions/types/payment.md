@@ -34,15 +34,16 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
+[トランザクションを取得してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 
+<!-- TODO: Update table (required field) -->
 | フィールド       | JSONの型       | [内部の型][] | 説明      |
 |:---------------|:--------------|:------------------|:-----------------|
 | `Amount`         | [通貨額][]     | Amount            | 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 |
+| `CredentialIDs`  | 文字列の配列     | Vector256         | いいえ        | このトランザクションによって作成される入金を承認するための、受取人によって事前承認された資格証明のセット。配列の各メンバは、レジャーのCredentialエントリのレジャーエントリIDでなければなりません。(_[**Credentials** amendment](../../../../concepts/amendments/index.md#credentials)が必要です。_ {% not-enabled /%}) |
 | `Destination`    | 文字列         | AccountID         | 支払いを受取るアカウントの一意アドレス。 |
 | `DestinationTag` | 数値           | UInt32            |  _（省略可）_ 宛先（支払先となる、ホスティングされている受取人）への支払い理由を明確にするための任意のタグ。 |
 | `InvoiceID`      | 文字列         | Hash256           |  _（省略可）_ この支払いの具体的な理由または識別子を表現する任意の256ビットハッシュ。 |
@@ -50,6 +51,7 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 | `SendMax`        | [通貨額][]     | Amount            |  _（省略可）_ [送金手数料](../../../../concepts/tokens/transfer-fees.md)、為替レート、[スリッページ](http://en.wikipedia.org/wiki/Slippage_%28finance%29)を含め、このトランザクションに関して支払い元通貨での負担を許容する上限額。[トランザクションの送信コストとして消却されるXRP](../../../../concepts/transactions/transaction-cost.md)は含めないでください。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。クロスカレンシー支払いまたは複数のトークンを伴う支払いについては、このフィールドを入力する必要があります。XRP間の支払いでは省略する必要があります。 |
 | `DeliverMin`     | [通貨額][]     | Amount            |  _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
 
+トランザクションを指定する際は、`Amount`または`DeliverMax`のいずれかを指定する必要がありますが、両方を指定することはできません。JSONでトランザクションを表示する場合、API v1では常に`Amount`を使用し、API v2（以降）では常に`DeliverMax`を使用します。
 
 ## Paymentの種類
 
@@ -83,7 +85,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 
 Payment型のトランザクションでは、資金供給のないアドレスに対して十分なXRPを送金することで、XRP Ledgerに新規のアカウントを作成できます。資金供給のないアドレスに対するその他のトランザクションは、常に失敗します。
 
-詳細は、[アカウント](../../../../concepts/accounts/index.md#アカウントの作成)をご覧ください。
+詳細は、[アカウントの作成](../../../../concepts/accounts/index.md#アカウントの作成)をご覧ください。
 
 ## パス
 
@@ -112,7 +114,7 @@ Payment型のトランザクションについては、[`Flags`フィールド](
 
 ## Partial Payments
 
-Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](../../../../concepts/payment-types/bouncing-payments.md)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
+Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](../../../../concepts/payment-types/bouncing-payments.md)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。これらの理由から、API v2以降では、`Amount`フィールドの名前を`DeliverMax`に変更しました。
 
 Partial Paymentsとは、**tfPartialPayment**フラグが有効になっている[Paymentトランザクション][]です。Partial Paymentsは、`SendMax`値を超える金額を送金することなく、`DeliverMin`フィールド以上の正の金額（`DeliverMin`が指定されていない場合、任意の正の金額）を送金する場合に成功します。
 
@@ -136,5 +138,22 @@ tfLimitQualityフラグが設定されていない場合、17米ドルという�
 tfLimitQualityフラグが最も有用となるのは、[Partial Payments](../../../../concepts/payment-types/partial-payments.md)と組み合わせる場合です。*tfPartialPayment*と*tfLimitQuality*の両方がトランザクションに対して設定されている場合、トランザクションでは、クオリティの制限よりも低い変換を使用することなく、送金可能な最大限の宛先`Amount`が送金されます。
 
 95人民元/15米ドルのオファーと5人民元/2米ドルのオファーがある上の例で、トランザクションに関してtfPartialPaymentとtfLimitQualityの両方が有効になっている場合、状況は異なります。20米ドルの`SendMax`および100人民元の宛先`Amount`を維持する場合も、クオリティの制限は`5`です。ただし、実行しようとするのはPartial Paymentsであるため、宛先に対する送金の全額を一度で送金できない場合、トランザクションを失敗とするのではなく、送金可能な最大限の金額が送金されます。つまり、トランザクションでは、クオリティが約`6.3`である95人民元/15米ドルのオファーは受け入れますが、5人民元/2米ドルのオファーはクオリティが`2.5`であり、クオリティの制限の`5`より低いため、拒否します。最終的に、トランザクションで送金されるのは満額の100人民元ではなく95人民元になりますが、不利な為替レートで資金を浪費することを避けられます。
+
+## Credential ID
+
+[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用しているアカウントに対して、受取人によって事前承認された資格証明のセットを`CredentialIDs`フィールドで提供することで、そのアカウントに対して送金することができます。資格証明のセットは、[DepositPreauthエントリ](../../ledger-data/ledger-entry-types/depositpreauth.md)と一致していなければなりません。
+
+`CredentialIDs`フィールドで提供された資格証明はすべて有効である必要があります。つまり、以下の条件をすべて満たしている必要があります。
+
+- 提供された資格証明は存在している必要があります。
+- 提供された資格証明は、受取人によって承認されている必要があります。
+- 提供された資格証明は、期限切れではない必要があります。
+- このトランザクションの送信者は、提供された資格証明のすべての受取人である必要があります。
+
+提供された資格証明が、Deposit Authorizationを使用していないアカウントに対して提供されている場合、資格証明は不要ですが、有効性は依然としてチェックされます。
+
+### 準備金を下回るアカウントに対する特別な送金のケース
+
+Deposit Authorizationを使用しているアカウントが、そのアカウントの現在のXRP残高が[準備金要件](../../../../concepts/accounts/reserves.md)よりも少ない場合、Deposit Authorizationには、誰でもPaymentトランザクションを送信できる特別な例外があります。これは、アカウントが「取引できない」状態になるのを防ぐための緊急措置です。この特別なケースに該当するには、`CredentialIDs`フィールドを使用してはいけません。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

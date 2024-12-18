@@ -88,6 +88,11 @@
 [Checkオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Clawback amendment]: /resources/known-amendments.md#clawback
 [Clawbackの修正]: /resources/known-amendments.md#clawback
+[CredentialAccept transaction]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAccept transactions]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAccept トランザクション]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAccept]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAcceptトランザクション]: /docs/references/protocol/transactions/types/credentialaccept.md
 [Crypto-Conditions Specification]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [CryptoConditions amendment]: /resources/known-amendments.md#cryptoconditions
 [CryptoConditionsSuite amendment]: /resources/known-amendments.md#cryptoconditionssuite
@@ -637,6 +642,7 @@
 [ripple_path_find メソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [ripple_path_findメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [seconds since the Ripple Epoch]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
+[リップルエポックからの秒数]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [server_info command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_info method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_info メソッド]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
