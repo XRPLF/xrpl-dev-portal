@@ -7,7 +7,7 @@ labels:
 ---
 
 # MPTokenIssuanceCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/MPTokenIssuanceCreate.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp "Source")
 
 {% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
 
