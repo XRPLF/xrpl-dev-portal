@@ -44,7 +44,7 @@ The request contains the following parameters:
 |:------------------|:---------------------|:----------|-------------|
 | `mpt_issuance_id` | string               | Yes       | The `MPTokenIssuance` to query. |
 | `ledger_index`    | string or number (positive integer) | No | The ledger index of the max ledger to use, ora shortcut string to choose a ledger automatically. You must specify either ledger_index or ledger_hash. |
-| `ledger_hash`     | string               | No        | A 20-byte hex string for the ma ledger version to use. You must specify either ledger_index or ledger_hash. |
+| `ledger_hash`     | string               | No        | A 32-byte hex string for the ledger version to use. You must specify either ledger_index or ledger_hash. |
 | `marker`          | string               | No        | Used to continue your query where it left off in paginating. |
 | `limit`           | number (positive integer) | No   | Specify a limit to the number of MPTs returned. |
 
