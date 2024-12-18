@@ -25,6 +25,7 @@ label:
 | `binary`                | ブール値                 | _（省略可）_ `true`の場合、リクエストしたレジャーオブジェクトの内容がXRP Ledgerの[バイナリ形式](../../../protocol/binary-format.md)の16進数の文字列として返されます。それ以外の場合はデータがJSONフォーマットで返されます。デフォルトは`false`です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}更新: rippled 1.2.0{% /badge %} |
 | `ledger_hash`           | 文字列                  | _（省略可）_ 使用するレジャーバージョンの20バイトの16進数の文字列。（[レジャーの指定][]をご覧ください。 |
 | `ledger_index`          | 文字列 または 符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列("validated"や"closed"、"current"など)。（[レジャーの指定][]をご覧ください。 |
+| `include_deleted`       | 真偽値                  | _(省略可, Clioサーバのみ)_ クエリされたオブジェクトが削除されている場合、その完全なデータを削除前の状態で返します。`false`または提供されていない場合、クエリされたオブジェクトが削除されている場合は`objectNotFound`を返します。 |
 
 `generator`と`ledger`パラメータは非推奨であり、予告なく削除される可能性があります。
 
@@ -39,6 +40,7 @@ label:
     - [Bridgeオブジェクトを取得する](#bridgeオブジェクトを取得する)
     - [Directorynodeオブジェクトを取得する](#directorynodeオブジェクトを取得する)
     - [Offerオブジェクトを取得する](#offerオブジェクトを取得する)
+    - [Oracleオブジェクトを取得する](#oracleオブジェクトを取得する)
     - [RippleStateオブジェクトを取得する](#ripplestateオブジェクトを取得する)
     - [Checkオブジェクトを取得する](#checkオブジェクトを取得する)
     - [Escrowオブジェクトを取得する](#escrowオブジェクトを取得する)
@@ -46,6 +48,8 @@ label:
     - [DepositPreauthオブジェクトを取得する](#depositpreauthオブジェクトを取得する)
     - [Ticketオブジェクトを取得する](#ticketオブジェクトを取得する)
     - [Nft Pageを取得する](#nft-pageを取得する)
+    - [MPT Issuanceオブジェクトを取得する](#mpt-issuanceオブジェクトを取得する)
+    - [MPTokenオブジェクトを取得する](#mptokenオブジェクトを取得する)
   - [レスポンスのフォーマット](#レスポンスのフォーマット)
   - [考えられるエラー](#考えられるエラー)
 
@@ -400,6 +404,60 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 [試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
 
+### Oracleオブジェクトを取得する
+
+_([PriceOracle amendment][]が必要です)_
+
+[Oracleエントリ](../../../protocol/ledger-data/ledger-entry-types/oracle.md)を取得します。これは、トークン価格を保存できる単一の価格オラクルを表します。
+
+| フィールド                  | 型                   | 必須? | 説明 |
+|-----------------------------|----------------------|-------|------|
+| `oracle`                    | Object               | はい  | オラクルの識別子。 |
+| `oracle.account`            | String - [Address][] | はい  | `Oracle`オブジェクトを制御するアカウント。 |
+| `oracle.oracle_document_id` | Number               | はい  | `Account`のオラクルの一意の識別子。 |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_oracle",
+  "command": "ledger_entry",
+  "oracle" : {
+    "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+    "oracle_document_id":  34
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [
+    {
+      "oracle" : {
+        "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+        "oracle_document_id":  34
+      },
+      "ledger_index": "validated"
+    }
+  ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+[試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-oracle)
 
 
 ### RippleStateオブジェクトを取得する
@@ -863,6 +921,205 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 {% /tab %}
 
 {% /tabs %}
+
+
+### MPT Issuanceオブジェクトを取得する
+
+`MPTokenIssuance`オブジェクトを返します。
+
+| フィールド              | 型     | 説明           |
+|:------------------------|:-------|:---------------|
+| `mpt_issuance`          | 文字列 | 192ビットの`MPTokenIssuanceID`。 |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    "id": "example_get_mpt_issuance",
+    "command": "ledger_entry",
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+  }]
+}
+```
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
+```
+### MPTokenオブジェクトを取得する
+
+`MPToken`オブジェクトを返します。
+
+| フィールド              | 型                       | 説明           |
+|:------------------------|:-------------------------|:----------------------|
+| `mptoken`               | オブジェクトまたは文字列 | 文字列の場合、取得するMPTokenのレジャーエントリIDとして解釈します。オブジェクトの場合、`MPToken`を一意に識別するために、`account`と`mpt_issuance_id`のサブフィールドが必要です。 |
+| mptoken.mpt_issuance_id |	文字列                   | (`MPToken`がオブジェクトの場合必須) MPTokenIssuanceに紐づく192ビットのMPTokenIssuanceID。 |
+| mptoken.account	️        | 文字列	                  | (`MPToken`がオブジェクトの場合必須) MPTokenの所有者のアカウント。 |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+    "id": "example_get_mpt_issuance",
+    "command": "ledger_entry",
+    "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
+    "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "mptoken":{
+                "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
+                "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
+            } 
+        }
+    ]
+}
+```
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"}'
+```
+<!-- MULTICODE_BLOCK_END -->
+
+[試してみる! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mpt_issuance)
+
+## レスポンスフォーマット
+
+レスポンスは[標準フォーマット][]に従い、成功した結果には次のフィールドが含まれます。
+
+| フィールド          | 型             | 説明                              |
+|:---------------|:-----------------|:-----------------------------------------|
+| `index`        | 文字列           | [レジャーエントリ](../../../protocol/ledger-data/ledger-entry-types/index.md)の一意のID。 |
+| `ledger_index` | 正の整数 | このデータを取得するために使用されたレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#ledger-index)。 |
+| `node`         | オブジェクト           | _(`"binary": true`の場合省略)_ このレジャーエントリのデータ。[レジャーのフォーマット](../../../protocol/ledger-data/ledger-entry-types/index.md)に従っています。 |
+| `node_binary`  | 文字列           | _(`"binary": true`の場合省略)_ レジャーオブジェクトの[バイナリフォーマっt](../../../protocol/binary-format.md)。 |
+
+成功したレスポンスの例:
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": "example_get_accountroot",
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "31850E8E48E76D1064651DF39DF4E9542E8C90A9A9B629F4DE339EB3FA74F726",
+    "ledger_index": 61966146,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "validated": true
+  },
+  "status": "success",
+  "type": "response"
+}
+```
+
+*JSON-RPC*
+
+```json
+200 OK
+
+{
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
+    "ledger_index": 61966165,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
+```
+
+*Commandline*
+
+```json
+{
+  "result": {
+    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
+    "ledger_index": 61966165,
+    "node": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "Balance": "424021949",
+      "Domain": "6D64756F31332E636F6D",
+      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
+      "Flags": 9568256,
+      "LedgerEntryType": "AccountRoot",
+      "MessageKey": "0000000000000000000000070000000300",
+      "OwnerCount": 12,
+      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
+      "PreviousTxnLgrSeq": 61965653,
+      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
+      "Sequence": 385,
+      "TransferRate": 4294967295,
+      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
+    },
+    "status": "success",
+    "validated": true
+  }
+}
+```
+
+<!-- MULTICODE_BLOCK_END -->
 
 
 ## 考えられるエラー

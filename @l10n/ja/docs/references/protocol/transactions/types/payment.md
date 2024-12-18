@@ -34,7 +34,7 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
+[トランザクションを取得してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
@@ -62,6 +62,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 | [クロスカレンシー（通貨間）決済][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | 通常は必須 | いいえ | 発行された通貨を保有者から別の保有者に送信します。`Amount`と`SendMax`の両方をXRPにすることはできません。これらの支払いは、発行者を介して[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)し、トランザクションがパスセットを指定した場合、複数の仲介者を介してより長い[パス](../../../../concepts/tokens/fungible-tokens/paths.md)を取ることができます。トランザクション形式には、発行者が設定した[送金手数料](../../../../concepts/tokens/transfer-fees.md) が適用されます。これらのトランザクションは、異なる通貨間や、場合によっては同じ通貨コードで異なる発行者の通貨間を接続するために、[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)のオファーを利用します。 |
 | [Partial payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | 通常は必須 | いいえ | 任意の通貨を特定の金額まで送ります。[`tfPartialPayment` フラグ](#paymentのフラグ)を使用します。トランザクションが成功するための最小値を指定する `DeliverMin` 値を含めることができます。トランザクションが `DeliverMin` を指定しない場合、_任意の正の値_ を指定して成功させることができる。 |
 | 通貨変換 | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | 必須         | はい | [分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)のオファーを消費して、ある通貨を別の通貨に交換し、[裁定取引](https://ja.wikipedia.org/wiki/%E8%A3%81%E5%AE%9A%E5%8F%96%E5%BC%95)の機会を得ることが出来ます。`Amount`と `SendMax` の両方を XRP にすることはできません。[Data API](../../../data-api.md) は、このタイプの取引を "payment" ではなく、"exchange" として追跡しています。 |
+| MPTの支払い | オブジェクト | 省略 | 省略 | はい | MPTを保有者に送信します。[MPTの支払い](#mpt-payments)をご覧ください。 |
 
 [XRP同士の直接支払い]: ../../../../concepts/payment-types/direct-xrp-payments.md
 [発行通貨の作成・償還]: ../../../../concepts/tokens/index.md
@@ -136,5 +137,34 @@ tfLimitQualityフラグが設定されていない場合、17米ドルという�
 tfLimitQualityフラグが最も有用となるのは、[Partial Payments](../../../../concepts/payment-types/partial-payments.md)と組み合わせる場合です。*tfPartialPayment*と*tfLimitQuality*の両方がトランザクションに対して設定されている場合、トランザクションでは、クオリティの制限よりも低い変換を使用することなく、送金可能な最大限の宛先`Amount`が送金されます。
 
 95人民元/15米ドルのオファーと5人民元/2米ドルのオファーがある上の例で、トランザクションに関してtfPartialPaymentとtfLimitQualityの両方が有効になっている場合、状況は異なります。20米ドルの`SendMax`および100人民元の宛先`Amount`を維持する場合も、クオリティの制限は`5`です。ただし、実行しようとするのはPartial Paymentsであるため、宛先に対する送金の全額を一度で送金できない場合、トランザクションを失敗とするのではなく、送金可能な最大限の金額が送金されます。つまり、トランザクションでは、クオリティが約`6.3`である95人民元/15米ドルのオファーは受け入れますが、5人民元/2米ドルのオファーはクオリティが`2.5`であり、クオリティの制限の`5`より低いため、拒否します。最終的に、トランザクションで送金されるのは満額の100人民元ではなく95人民元になりますが、不利な為替レートで資金を浪費することを避けられます。
+
+## MPTの支払い
+
+MPTの支払いを行う場合、_Amount_ フィールドは`mpt_issuance_id`と`value`のみを必要とします。`MPTokenIssuanceID`は、トランザクションのためにMPTを一意に識別するために使用されます。
+
+MPTokenのバージョン1では、アカウント間の直接支払いのみをサポートしています。DEXでは取引できません。
+
+### MPTの支払いの例
+
+```json
+{
+   "Account": "rLWSJKbwYSzG32JuGissYd66MFTvfMk4Bt",
+   "Amount": {
+      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
+      "value": "100"
+   },
+   "DeliverMax": {
+      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
+      "value": "100"
+   },
+   "SendMax": {
+      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
+      "value": "100"
+   },
+   "Destination": "raZ3wTTKiMHn3BiStvz4ET9rbCHfU1DMak",
+   "Fee": "120",
+   "Flags": 0,
+}
+```
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

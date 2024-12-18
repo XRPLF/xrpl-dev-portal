@@ -295,6 +295,7 @@
 [Payment]: /docs/references/protocol/transactions/types/payment.md
 [Paymentトランザクション]: /docs/references/protocol/transactions/types/payment.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
+[MPTokenV1_1 amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode
 [RequireFullyCanonicalSig amendment]: /resources/known-amendments.md#requirefullycanonicalsig
