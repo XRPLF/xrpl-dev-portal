@@ -1009,7 +1009,7 @@ rippled json ledger_entry '{ "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB58
 
 ## Response Format
 
-The response follows the [standard format](https://xrpl.org/docs/references/http-websocket-apis/api-conventions/response-formatting/), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | Field          | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
