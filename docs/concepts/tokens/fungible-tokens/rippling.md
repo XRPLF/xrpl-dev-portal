@@ -43,13 +43,13 @@ The Default Ripple setting doesn’t affect trust lines that you create, only tr
 
 # The No Ripple Flag
 
-Accounts that do not want to allow rippling can set the No Ripple flag. If you set the No Ripple flag on two of its trust lines, other accounts cannot use those trust lines to ripple payments through your account.
+Accounts that do not want to allow rippling can enable the No Ripple flag. If you enable the No Ripple flag on two of your trust lines, other accounts cannot use that pair of trust lines to ripple payments through your account. However, if you have any other trust lines that do not have the No Ripple flag enabled, payments can still ripple through your account as long as _one_ of the trust lines involved does not have No Ripple enabled.
 
 ## Using No Ripple
 
 The No Ripple flag can only be enabled on a trust line if the address has a positive or zero balance. This is so that the feature cannot be abused to remove the obligation the trust line balance represents.
 
-To enable the No Ripple flag, send a `TrustSet` transaction with the `tfSetNoRipple` flag. To disable the No Ripple flag, send a `TrustSet` transaction with the `tfClearNoRipple` flag.
+To enable the No Ripple flag, send a [TrustSet transaction][] with the `tfSetNoRipple` flag. To disable the No Ripple flag, send a TrustSet transaction with the `tfClearNoRipple` flag.
 
 ## Looking up No Ripple status
 
