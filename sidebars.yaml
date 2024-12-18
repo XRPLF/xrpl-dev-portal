@@ -314,8 +314,6 @@
                 - page: docs/references/protocol/data-types/base58-encodings.md
                 - page: docs/references/protocol/data-types/currency-formats.md
                 - page: docs/references/protocol/data-types/nftoken.md
-                - page: docs/references/protocol/data-types/mptoken.md
-                - page: docs/references/protocol/data-types/mptokenissuance.md
             - page: docs/references/protocol/ledger-data/index.md
               expanded: false
               items:
@@ -335,6 +333,8 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/escrow.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/feesettings.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
@@ -492,7 +492,6 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
-                    - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/mpt_holders.md
                 - page: docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/index.md
                   expanded: false
                   items:
@@ -518,10 +517,12 @@
                   items:
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/mpt_holders.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/version.md
+
                 - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/index.md
                   expanded: false
                   items:

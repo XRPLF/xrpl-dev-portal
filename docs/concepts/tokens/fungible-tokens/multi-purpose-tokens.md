@@ -52,3 +52,14 @@ On a technical level, MPTs provide a fundamentally different way to represent fu
 On a usage level, MPTs provide a straightforward conceptual model compared to trustlines and rippling. Developers can more easily build web3 applications around `MPToken` and `MPTokenIssuance` objects, with some similarities to the conceptual model of XLS-20 NFTs.  It is also simpler for ordinary users to understand what tokens are available, what tokens they have issued, and what they hold in their wallet.  For both issuers and holders of MPTs, there will typically be a smaller XRP reserve compared to the equivalent representations with IOU trustlines.
 
 MPTs are intended to be complementary to IOUs.  While there might be use cases where either MPTs or IOUs might be suitable, there will likely be a need for both over the long term.  There will be use cases such as credit lines for lending and borrowing that might be better represented by IOUs long term.  The MPT feature set should evolve in an incremental manner to unlock more common use cases first and deliver additional feature support at a later time. During the MPT development period, some cases might still be better represented by an IOU, then later be better supported with MPTs.
+
+## See Also
+
+- **References:**
+    - [MPToken](../../../references/protocol/data-types/mptoken.md)
+    - [MPTokenIssuance](../../../references/protocol/data-types/mptokenissuance.md)
+    - [MPTokenAuthorize](../../../references/protocol/transactions/types/mptokenauthorize.md)
+    - [MPTokenIssuanceCreate](../../../references/protocol/transactions/types/mptokenissuancecreate.md)
+    - [MPTokenIssuanceDestroy](../../../references/protocol/transactions/types/mptokenissuancedestroy.md)
+    - [MPTokenIssuanceSet](../../../references/protocol/transactions/types/mptokenissuanceset.md)
+    
