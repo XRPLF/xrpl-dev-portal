@@ -29,7 +29,7 @@ Then the Issuer side of the trust line to Holder B is reduced by 20 USD, and the
 
 The funds are transferred through the Issuer, but ultimately the Issuer’s balance doesn’t change. This flow of funds is known as _rippling_. Issuing accounts must allow rippling so that their holders can transfer funds to one another. 
 
-Rippling can involve several accounts as the XRPL server finds a path to transfer the funds. For example, the funds might flow between two issuer accounts that have a trust line between them.
+Rippling can involve several accounts as the XRP Ledger finds a path to transfer the funds. For example, the funds might flow between two issuer accounts that have a trust line between them.
 
 [![Holder A transfers currency through Issuers A and B to get to Holder B.](/docs/img/cpt-rippling5.png "Holder A transfers currency through Issuers A and B to get to Holder B.")](/docs/img/cpt-rippling5.png)
 
