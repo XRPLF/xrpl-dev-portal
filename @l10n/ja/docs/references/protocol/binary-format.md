@@ -155,17 +155,17 @@ curated_anchors:
 
 ### タイプコード
 
-各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは[`SField.h`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74)で定義されています。
+各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは[`SField.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L60-L98)で定義されています。
 
-たとえば [UInt32のタイプコードが2である](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59)ので、すべてのUInt32フィールドは、すべての[Amountフィールド（タイプコード6）](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63)よりも前に位置します。
+たとえば [UInt32のタイプコードが2である](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L67)ので、すべてのUInt32フィールドは、すべての[Amountフィールド（タイプコード6）](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L71)よりも前に位置します。
 
 [定義ファイル](#定義ファイル)には、`TYPES`マップの各タイプのタイプコードがリストされています。
 
 ### フィールドコード
 
-各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは[`SField.cpp`](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266)で定義されています。
+各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは[`sfields/macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro)で定義されています。
 
-たとえば[Paymentトランザクション][]の`Account`フィールドの[ソートコードが1である](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219)場合、このフィールドは`Destination`フィールド（[ソートコードが3である](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221)フィールド）よりも前に位置します。
+たとえば[Paymentトランザクション][]の`Account`フィールドの[ソートコードが1である](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L269)場合、このフィールドは`Destination`フィールド（[ソートコードが3である](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L271)フィールド）よりも前に位置します。
 
 フィールドコードは異なるフィールドタイプのフィールドで再利用されますが、同じタイプのフィールドに同じフィールドコードが含まれることはありません。タイプコードとフィールドコードを組み合わせると、フィールドの一意の[フィールドID](#フィールドid)になります。
 
