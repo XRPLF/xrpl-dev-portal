@@ -52,7 +52,7 @@ The `MPTokenIssuanceID` is a 192-bit integer, concatenated in order:
 
 | Field Name        | JSON Type | Internal Type | Description |
 |:------------------|:----------|:--------------|:------------|
-| LedgerEntryType   | number    | UInt16        | The value 0x007E, mapped to the string MPTokenIssuance, indicates that this object describes a Multi-Purpose Token (MPT). |
+| `LedgerEntryType`   | number    | UInt16        | The value 0x007E, mapped to the string MPTokenIssuance, indicates that this object describes a Multi-Purpose Token (MPT). |
 | `Flags`             | number    | UInt32        | See [MPTokenIssuance Flags](#mptokenissuance-flags) |
 | `Issuer`           | string    | AccountID     | The address of the account that controls both the issuance amounts and characteristics of a particular fungible token. |
 | `AssetScale` | number    | UInt8       | An asset scale is the difference, in orders of magnitude, between a standard unit and a corresponding fractional unit. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. If the fractional unit equals the standard unit, then the asset scale is 0. |
