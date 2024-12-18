@@ -31,7 +31,7 @@ Use this transaction to update a mutable property for a Multi-purpose Token.
 | `TransactionType`  | string              | UInt16            | Indicates the new transaction type `MPTokenIssuanceSet`. |
 | `MPTokenIssuanceID`| string              | UInt192           | The `MPTokenIssuance` identifier. |
 | `Holder`    | string              | AccountID         | (Optional) XRPL Address of an individual token holder balance to lock/unlock. If omitted, this transaction applies to all any accounts holding MPTs. |
-| `Flag`             | string               | UInt64           | Specifies flags for this transaction. See [MPTokenIssuanceSet Flags](#mptokenissuanceset-flags). |
+| `Flag`             | number               | UInt64           | Specifies flags for this transaction. See [MPTokenIssuanceSet Flags](#mptokenissuanceset-flags). |
 
 ### MPTokenIssuanceSet Flags
 
