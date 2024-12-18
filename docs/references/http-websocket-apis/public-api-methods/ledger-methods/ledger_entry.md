@@ -1005,7 +1005,7 @@ rippled json ledger_entry '{ "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB58
 ```
 <!-- MULTICODE_BLOCK_END -->
 
-[Try it! >](https://xrpl.org/resources/dev-tools/websocket-api-tool.html#ledger_entry-mpt_issuance)
+[Try it! >](/resources/dev-tools/websocket-api-tool.html#ledger_entry-mpt_issuance)
 
 ## Response Format
 
