@@ -54,12 +54,11 @@ On a usage level, MPTs provide a straightforward conceptual model compared to tr
 MPTs are intended to be complementary to IOUs.  While there might be use cases where either MPTs or IOUs might be suitable, there will likely be a need for both over the long term.  There will be use cases such as credit lines for lending and borrowing that might be better represented by IOUs long term.  The MPT feature set should evolve in an incremental manner to unlock more common use cases first and deliver additional feature support at a later time. During the MPT development period, some cases might still be better represented by an IOU, then later be better supported with MPTs.
 
 ## See Also
-
+ 
 - **References:**
-    - [MPToken](../../../references/protocol/data-types/mptoken.md)
-    - [MPTokenIssuance](../../../references/protocol/data-types/mptokenissuance.md)
+    - [MPToken](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md)
+    - [MPTokenIssuance](../../../references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md)
     - [MPTokenAuthorize](../../../references/protocol/transactions/types/mptokenauthorize.md)
     - [MPTokenIssuanceCreate](../../../references/protocol/transactions/types/mptokenissuancecreate.md)
     - [MPTokenIssuanceDestroy](../../../references/protocol/transactions/types/mptokenissuancedestroy.md)
     - [MPTokenIssuanceSet](../../../references/protocol/transactions/types/mptokenissuanceset.md)
-    

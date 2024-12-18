@@ -960,6 +960,9 @@ Return an `MPTokenIssuance` object.
 ```sh
 rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
 ```
+
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mpt_issuance)
+
 ### Get MPToken Object 
 
 Return an `MPToken` object.
@@ -1004,8 +1007,7 @@ Return an `MPToken` object.
 rippled json ledger_entry '{ "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"}'
 ```
 <!-- MULTICODE_BLOCK_END -->
-
-[Try it! >](/resources/dev-tools/websocket-api-tool.html#ledger_entry-mpt_issuance)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mptissuance)
 
 ## Response Format
 
