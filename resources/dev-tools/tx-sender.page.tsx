@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react'
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 import AlertTemplate from './components/AlertTemplate';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -223,7 +224,7 @@ function TxSenderBody(): React.JSX.Element {
                                 {{
                                     buttonText: "Send XRP Payment",
                                     units: "drops of XRP",
-                                    longerDescription: (<div>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part1", "Send a ")}<a href="send-xrp.html">{translate("resources.dev-tool.tx-sender.send-xrp-desc.part2", "simple XRP-to-XRP payment")}</a>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part3", ".")}</div>),
+                                    longerDescription: (<div>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part1", "Send a ")}<Link to="../../docs/tutorials/how-tos/send-xrp">{translate("resources.dev-tool.tx-sender.send-xrp-desc.part2", "simple XRP-to-XRP payment")}</Link>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part3", ".")}</div>),
                                 }}
                                 inputSettings={
                                 {
@@ -259,7 +260,7 @@ function TxSenderBody(): React.JSX.Element {
                                     units: "drops of XRP",
                                     longerDescription: <div>{translate("Deliver a small amount of XRP with a large ")}
                                     <code>{translate("Amount")}</code>{translate(" value, to test your handling of ")}
-                                    <a href="partial-payments.html">{translate("partial payments")}</a>{translate(".")}</div>,
+                                    <Link to="../../docs/concepts/payment-types/partial-payments">{translate("partial payments")}</Link>{translate(".")}</div>,
                                     buttonTitle: "(Please wait for partial payments setup to finish)",
                                 }}
                                 loadingBar={{
@@ -287,7 +288,7 @@ function TxSenderBody(): React.JSX.Element {
                                 {{
                                     buttonText: translate("Create Escrow"),
                                     units: translate("seconds"),
-                                    longerDescription: (<div>{translate("Create a ")}<a href="escrow.html">{translate("time-based escrow")}</a>
+                                    longerDescription: (<div>{translate("Create a ")}<Link to="../../docs/concepts/payment-types/escrow">{translate("time-based escrow")}</Link>
                                     {translate(" of 1 XRP for the specified number of seconds.")}</div>),
                                 }}
                                 inputSettings={
@@ -338,7 +339,7 @@ function TxSenderBody(): React.JSX.Element {
                                 content={{
                                     buttonText: translate("Create Payment Channel"),
                                     units: translate("drops of XRP"),
-                                    longerDescription: (<div>{translate("Create a ")}<a href="payment-channels.html">{translate("payment channel")}</a>
+                                    longerDescription: (<div>{translate("Create a ")}<Link to="../../docs/concepts/payment-types/payment-channels">{translate("payment channel")}</Link>
                                     {translate(" and fund it with the specified amount of XRP.")}</div>),
                                 }}
                                 inputSettings={
@@ -372,7 +373,7 @@ function TxSenderBody(): React.JSX.Element {
                                     buttonText: translate("Send Issued Currency"),
                                     units: translate(trustCurrencyCode),
                                     longerDescription: (<div>{translate("Your destination address needs a ")}
-                                    <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>{translate(" to ")}
+                                    <Link to="../../docs/concepts/tokens/fungible-tokens#trust-lines">{translate("trust line")}</Link>{translate(" to ")}
                                     <span className="sending-address-item">{translate("(the test sender)")}</span>
                                     {translate(" for the currency in question. Otherwise, you'll get tecPATH_DRY.")}</div>),
                                 }}
@@ -404,7 +405,7 @@ function TxSenderBody(): React.JSX.Element {
                                     buttonText: translate("Trust for"),
                                     units: translate(trustCurrencyCode),
                                     longerDescription: (<div>{translate("The test sender creates a ")}
-                                    <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>
+                                    <Link to="../../docs/concepts/tokens/fungible-tokens#trust-lines">{translate("trust line")}</Link>
                                     {translate(" to your account for the given currency.")}</div>),
                                 }}
                                 inputSettings={

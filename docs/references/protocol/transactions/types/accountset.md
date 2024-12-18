@@ -1,6 +1,4 @@
 ---
-html: accountset.html
-parent: transaction-types.html
 seo:
     description: Set options on an account.
 labels:
@@ -8,7 +6,7 @@ labels:
 ---
 # AccountSet
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetAccount.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")
 
 An AccountSet transaction modifies the properties of an [account in the XRP Ledger](../../ledger-data/ledger-entry-types/accountroot.md).
 

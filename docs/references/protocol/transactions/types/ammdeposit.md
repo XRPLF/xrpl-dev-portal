@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMDeposit
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMDeposit.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")
 
 _(Added by the [AMM amendment][])_
 

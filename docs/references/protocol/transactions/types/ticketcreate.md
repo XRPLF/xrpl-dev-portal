@@ -8,7 +8,7 @@ labels:
 ---
 # TicketCreate
 
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/CreateTicket.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateTicket.cpp "Source")
 
 _(Added by the [TicketBatch amendment][].)_
 

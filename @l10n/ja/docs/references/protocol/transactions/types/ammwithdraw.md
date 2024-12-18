@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMWithdraw
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
 
 _([AMM amendment][]により追加されました。)_
 

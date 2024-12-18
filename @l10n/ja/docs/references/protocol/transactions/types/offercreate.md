@@ -8,7 +8,7 @@ labels:
 ---
 # OfferCreate
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateOffer.cpp "ソース")
 
 OfferCreateトランザクションは[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で[注文](../../../../concepts/tokens/decentralized-exchange/offers.md)を作成します。
 

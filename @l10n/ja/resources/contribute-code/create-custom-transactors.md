@@ -21,8 +21,8 @@ _トランザクタ_ はトランザクションを処理し、XRP Ledgerを変�
 
 このチュートリアルでは、既存の`CreateCheck`トランザクションを例として使用します。ソースファイルはここで確認できます。
 
-- [ヘッダファイル](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.h)
-- [CPPファイル](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp)
+- [ヘッダファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.h)
+- [CPPファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp)
 
 
 ## ヘッダファイル

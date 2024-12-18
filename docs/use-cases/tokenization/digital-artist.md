@@ -49,9 +49,9 @@ You can sell your NFTs in an auction format. See [Running an NFT Auction](../../
 
 ### Reserve requirements
 
-There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
+There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of {% $env.PUBLIC_OWNER_RESERVE %}. A NFToken page can store 16-32 NFTs.
 
-Each `NFTokenOffer` object requires a reserve of 2 XRP.
+Each `NFTokenOffer` object requires a reserve of {% $env.PUBLIC_OWNER_RESERVE %}.
 
 ![Reserves](/docs/img/uc-nft-reserves.png)
 

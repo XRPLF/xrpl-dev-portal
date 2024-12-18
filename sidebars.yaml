@@ -512,12 +512,13 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/version.md
 
-                - page: docs/references/http-websocket-apis/public-api-methods/clio-server/index.md
+                - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/index.md
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/mpt_holders.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
