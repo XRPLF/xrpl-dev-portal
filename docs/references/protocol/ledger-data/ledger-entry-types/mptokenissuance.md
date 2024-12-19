@@ -90,7 +90,4 @@ Flags are properties or other options associated with the `MPToken` object. Exce
 | `lsfMPTCanTransfer` | `0x00000020`   | If set, indicates that tokens held by non-issuers can be transferred to other accounts. If not set, indicates that tokens held by non-issuers cannot be transferred except back to the issuer; this enables use cases such as store credit. |
 | `lsfMPTCanClawback` | `0x00000040`   | If set, indicates that the issuer may use the `Clawback` transaction to claw back value from individual holders. |
 
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
