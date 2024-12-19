@@ -46,6 +46,9 @@ xrp-testnet-faucet.html:
 xrp-test-net-faucet.html:
     to: /resources/dev-tools/xrp-faucets
     type: 301
+/resources/xrp-faucets:
+    to: /resources/dev-tools/xrp-faucets
+    type: 301
 tx-sender.html:
     to: /resources/dev-tools/tx-sender
     type: 301
@@ -2290,6 +2293,9 @@ blog/2023.html:
 blog/2024.html:
     to: /blog/
     type: 301
+blog/label/developer-reflections.html:
+    to: /blog/
+    type: 301
 code_of_conduct/:
     to: /code-of-conduct
     type: 301
@@ -2340,6 +2346,9 @@ code_of_conduct.ja:
 /ja/xrp-test-net-faucet.html:
     to: /ja/resources/dev-tools/xrp-faucets
     type: 301
+/ja/resources/xrp-test-net-faucets:
+    to: /ja/resources/dev-tools/xrp-faucets
+    type: 301
 /ja/tx-sender.html:
     to: /ja/resources/dev-tools/tx-sender
     type: 301
@@ -2368,6 +2377,9 @@ code_of_conduct.ja:
     to: /ja/about/history
     type: 301
 /ja/impact.html:
+    to: /ja/about/impact
+    type: 301
+/ja/impact:
     to: /ja/about/impact
     type: 301
 /ja/carbon-calculator.html:
@@ -2818,7 +2830,7 @@ code_of_conduct.ja:
     to: /ja/docs/tutorials/python/get-started
     type: 301
 /ja/docs/tutorials/python/get-started/:
-    to: /jadocs/tutorials/python/build-apps/get-started/
+    to: /ja/docs/tutorials/python/build-apps/get-started/
     type: 301
 /ja/modular-tutorials-in-python.html:
     to: /ja/docs/tutorials/python/
@@ -2860,10 +2872,10 @@ code_of_conduct.ja:
     to: /ja/docs/tutorials/javascript/build-apps/get-started
     type: 301
 /ja/docs/tutorials/javascript/get-started:
-    to: /jadocs/tutorials/javascript/build-apps/get-started/
+    to: /ja/docs/tutorials/javascript/build-apps/get-started/
     type: 301
 /ja/docs/tutorials/javascript/get-started/:
-    to: /jadocs/tutorials/javascript/build-apps/get-started/
+    to: /ja/docs/tutorials/javascript/build-apps/get-started/
     type: 301
 /ja/get-started-using-node-js.html:
     to: /ja/docs/tutorials/javascript/build-apps/get-started
@@ -2917,10 +2929,10 @@ code_of_conduct.ja:
     to: /ja/docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
     type: 301
 /ja/docs/tutorials/javascript/build-a-browser-wallet-in-javascript:
-    to: /jadocs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
+    to: /ja/docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
     type: 301
 /ja/docs/tutorials/javascript/build-a-browser-wallet-in-javascript/:
-    to: /jadocs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
+    to: /ja/docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
     type: 301
 /ja/build-a-desktop-wallet-in-javascript.html:
     to: /ja/docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
