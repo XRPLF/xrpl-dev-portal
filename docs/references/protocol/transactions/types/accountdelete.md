@@ -20,7 +20,7 @@ An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry
     "Account": "rWYkbWkCeg8dP6rXALnjgZSjjLyih5NXm",
     "Destination": "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe",
     "DestinationTag": 13,
-    "Fee": "2000000",
+    "Fee": "200000",
     "Sequence": 2470665,
     "Flags": 2147483648
 }
