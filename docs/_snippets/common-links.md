@@ -187,6 +187,7 @@
 [LedgerHashesエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [LedgerHashesオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [Marker]: /docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
+[MPToken amendment]: /resources/known-amendments.md#mptokensv1
 [MultiSign amendment]: /resources/known-amendments.md#multisign
 [MultiSignReserve amendment]: /resources/known-amendments.md#multisignreserve
 [MultiSignReserveの修正]: /resources/known-amendments.md#multisignreserve

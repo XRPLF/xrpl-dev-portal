@@ -7,7 +7,7 @@ labels:
 
 # mpt_holders
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all holders of that MPT and their balance. This method likely returns very large data sets, so you should expect to implement paging via the `marker` field. This API is only available using Clio, not rippled.
 
@@ -154,3 +154,5 @@ Example of an `account_objects` response:
    }
 }
 ```
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

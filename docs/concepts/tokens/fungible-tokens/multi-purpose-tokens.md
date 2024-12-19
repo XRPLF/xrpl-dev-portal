@@ -8,7 +8,7 @@ status: not_enabled
 ---
 # Multi-purpose Tokens
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 Multi-purpose tokens (MPTs) are a more compact and flexible type of fungible token.
 
@@ -62,3 +62,5 @@ MPTs are intended to be complementary to IOUs.  While there might be use cases w
     - [MPTokenIssuanceCreate](../../../references/protocol/transactions/types/mptokenissuancecreate.md)
     - [MPTokenIssuanceDestroy](../../../references/protocol/transactions/types/mptokenissuancedestroy.md)
     - [MPTokenIssuanceSet](../../../references/protocol/transactions/types/mptokenissuanceset.md)
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

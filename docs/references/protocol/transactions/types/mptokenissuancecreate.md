@@ -9,7 +9,7 @@ labels:
 # MPTokenIssuanceCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp "Source")
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 The `MPTokenIssuanceCreate` transaction creates an MPTokenIssuance <!--[MPTokenIssuance](mptokenissuance.html)--> object and adds it to the relevant directory node of the creator account. This transaction is the only opportunity an issuer has to specify any token fields that are defined as immutable (for example, MPT Flags).
 
@@ -61,3 +61,4 @@ Transactions of the MPTokenIssuanceCreate type support additional values in the 
 | `tfMPTCanTransfer` | `0x00000020`     | `32`          | If set, indicates that tokens can be transferred to other accounts that are not the issuer. |
 | `tfMPTCanClawback` | `0x00000040`     | `64`          | If set, indicates that the issuer can use the Clawback transaction to claw back value from individual holders. |
 
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

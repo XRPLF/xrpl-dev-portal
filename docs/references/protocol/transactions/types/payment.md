@@ -141,6 +141,8 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 ## MPT Payments
 
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
+
 When you send a payment using MPTs, the _Amount_ field requires only the `mpt_issuance_id` and the `value`. The `MPTokenIssuanceID` is used to uniquely identify the MPT for the transaction.
 
 Version 1 MPTokens only support direct MPT payment between accounts. They cannot be traded in the decentralized exchange.

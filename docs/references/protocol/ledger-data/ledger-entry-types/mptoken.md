@@ -5,7 +5,7 @@ labels:
 ---
 # MPToken
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 The `MPToken` object represents a number of tokens held by an account that is not the token issuer. MPTs are acquired via ordinary payment or DEX transactions, and can optionally be redeemed or exchanged using these same types of transactions. The object key of the MPToken is derived from hashing the space key, the holder's address, and the `MPTokenIssuanceID`.
 
@@ -58,7 +58,7 @@ Flags are properties or other options associated with the `MPToken` object.
 | `lsfMPTAuthorized` | `0x00000002`   | (Only applicable for allow-listing) If set, indicates that the issuer has authorized the holder for the MPT. This flag can be set using a `MPTokenAuthorize` transaction; it can also be "un-set" using a `MPTokenAuthorize` transaction specifying the `tfMPTUnauthorize` flag. |
 
 <!--{# common link defs #}-->
-<!-- Uncomment for xrpl.org
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %} -->
+{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

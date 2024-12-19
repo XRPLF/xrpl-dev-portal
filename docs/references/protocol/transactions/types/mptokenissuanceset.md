@@ -7,7 +7,7 @@ labels:
 ---
 # MPTokenIssuanceSet
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 Use this transaction to update a mutable property for a Multi-purpose Token.
 
@@ -41,3 +41,5 @@ Transactions of the `MPTokenIssuanceSet` type support additional values in the `
 |:-------------------|:-------------|:--------------|:------------------------------|
 | `tfMPTLock`        | `0x00000001`     | 1             | If set, indicates that all MPT balances for this asset should be locked. |
 | `tfMPTUnlock`      | `0x00000002`     | 2             | If set, indicates that all MPT balances for this asset should be unlocked. |
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

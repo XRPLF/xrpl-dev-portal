@@ -9,7 +9,7 @@ labels:
 # MPTokenAuthorize
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "Source")
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 This transaction enables an account to hold an amount of a particular MPT issuance. When applied successfully, it creates a new `MPToken` object with an initial zero balance, owned by the holder account.
 
@@ -33,3 +33,5 @@ Transactions of the MPTokenAuthorize type support additional values in the Flags
 | Flag Name          | Hex Value    | Decimal Value | Description                   |
 |:-------------------|:-------------|:--------------|:------------------------------|
 | `tfMPTUnauthorize` | `0x00000001` | 1             | If set, and transaction is submitted by a holder, it indicates that the holder no longer wants to hold the `MPToken`, which will be deleted as a result. If the holder's `MPToken` has a non-zero balance while trying to set this flag, the transaction fails. On the other hand, if set, and transaction is submitted by an issuer, it would mean that the issuer wants to unauthorize the holder (only applicable for allow-listing), which would unset the `lsfMPTAuthorized` flag on the `MPToken`. |
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
