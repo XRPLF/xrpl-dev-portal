@@ -13,6 +13,15 @@ l10n:
       name: 日本語
 redirects:
   $ref: redirects.yaml
+responseHeaders: 
+  '**':
+    - name: X-Frame-Options
+      value: DENY
+    - name: frame-ancestors
+      value: NONE
+  '/@l10n/es-ES/**':     
+    - name: X-Robots-Tag
+      value: noindex
 seo:
   siteUrl: https://xrpl.org/
 rbac:
