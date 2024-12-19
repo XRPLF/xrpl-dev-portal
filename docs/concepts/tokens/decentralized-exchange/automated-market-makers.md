@@ -65,6 +65,11 @@ The diagram below illustrates how an offer interacts with other offers and AMM l
 
 ![Offer path through DEX.](/docs/img/amm-clob-diagram.png)
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tJ1mQxYpt-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+
 ### Restrictions on Assets
 
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
