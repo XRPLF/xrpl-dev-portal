@@ -2290,7 +2290,7 @@ blog/2023.html:
 blog/2024.html:
     to: /blog/
     type: 301
-blog/label/developer-reflections.html
+blog/label/developer-reflections.html:
     to: /blog/
     type: 301
 code_of_conduct/:
