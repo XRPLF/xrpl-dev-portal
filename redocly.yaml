@@ -17,8 +17,8 @@ responseHeaders:
   '**':
     - name: X-Frame-Options
       value: DENY
-    - name: frame-ancestors
-      value: NONE
+    - name: Content-Security-Policy
+      value: frame-ancestors 'none'
   '/@l10n/es-ES/**':     
     - name: X-Robots-Tag
       value: noindex
