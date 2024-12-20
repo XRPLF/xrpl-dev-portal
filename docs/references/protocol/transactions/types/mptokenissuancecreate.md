@@ -11,7 +11,7 @@ labels:
 
 _(Requires the [MPToken amendment][] {% not-enabled /%})_
 
-The `MPTokenIssuanceCreate` transaction creates an MPTokenIssuance <!--[MPTokenIssuance](mptokenissuance.html)--> object and adds it to the relevant directory node of the creator account. This transaction is the only opportunity an issuer has to specify any token fields that are defined as immutable (for example, MPT Flags).
+The `MPTokenIssuanceCreate` transaction creates an [MPTokenIssuance](../../data-types/mptokenissuance.md) object and adds it to the relevant directory node of the creator account. This transaction is the only opportunity an issuer has to specify any token fields that are defined as immutable (for example, MPT Flags).
 
 If the transaction is successful, the newly created token is owned by the account (the creator account) that executed the transaction.
 
@@ -22,22 +22,21 @@ Whenever your query returns an `MPTokenIssuance` transaction response, there wil
 This example assumes that the issuer of the token is the signer of the transaction.
 
 ```json
-Example MPTokenIssuanceCreate transaction
 {
   "TransactionType": "MPTokenIssuanceCreate",
   "Account": "rajgkBmMxmz161r8bWYH7CQAFZP5bA9oSG",
-  "AssetScale": "2",
+  "AssetScale": 2,
   "TransferFee": 314,
   "MaximumAmount": "50000000",
   "Flags": 83659,
   "MPTokenMetadata": "FOO",
-  "Fee": 10
+  "Fee": "10"
 }
 ```
 
-## MPTokenIssuanceCreate Fields
+<!-- ## MPTokenIssuanceCreate Fields -->
 
-<!-- {% include '_snippets/tx-fields-intro.md' %} -->
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field           | JSON Type           | [Internal Type][] | Description        |
 |:----------------|:--------------------|:------------------|:-------------------|
@@ -50,7 +49,7 @@ Example MPTokenIssuanceCreate transaction
 
 ## MPTokenIssuanceCreate Flags
 
-Transactions of the MPTokenIssuanceCreate type support additional values in the `Flags` field <!-- [`Flags` field](transaction-common-fields.html#flags-field)-->, as follows:
+Transactions of the MPTokenIssuanceCreate type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
 
 | Flag Name          | Hex Value    | Decimal Value | Description                   |
 |:-------------------|:-------------|:--------------|:------------------------------|

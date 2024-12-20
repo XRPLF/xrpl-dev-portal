@@ -6,6 +6,7 @@ labels:
  - Multi-purpose Tokens, MPTs
 ---
 # MPTokenIssuanceSet
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
 
 _(Requires the [MPToken amendment][] {% not-enabled /%})_
 
@@ -16,13 +17,13 @@ Use this transaction to update a mutable property for a Multi-purpose Token.
 ```json 
 {
       "TransactionType": "MPTokenIssuanceSet",
-      "Fee": 10,
+      "Fee": "10",
       "MPTokenIssuanceID": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000",
       "Flags": 1
 }
 ```
 
-## MPTokenIssuanceSet Fields
+<!-- ## MPTokenIssuanceSet Fields -->
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
