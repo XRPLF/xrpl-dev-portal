@@ -63,6 +63,7 @@ The `Payment` transaction type functions differently depending on how you fill i
 | [Cross-currency Payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Send tokens from one holder to another. The `Amount` or `SendMax` can be XRP or tokens, but can't both be XRP. These payments [ripple through](../../../../concepts/tokens/fungible-tokens/rippling.md) the issuer and can take longer [paths](../../../../concepts/tokens/fungible-tokens/paths.md) through several intermediaries if the transaction specifies a path set. [Transfer fees](../../../../concepts/tokens/transfer-fees.md) set by the issuer(s) apply to this type of transaction. These transactions consume offers in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md) to connect different currencies, or currencies with the same currency code and different issuers. |
 | [Partial payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Sends _up to_ a specific amount of any currency. Uses the [`tfPartialPayment` flag](#payment-flags). May include a `DeliverMin` amount specifying the minimum that the transaction must deliver to be successful; if the transaction does not specify `DeliverMin`, it can succeed by delivering _any positive amount_. |
 | Currency conversion | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. This type of transaction may be classified as an "exchange" and not a "payment". |
+| MPT Payment | Object | Omitted | Omitted | Yes | Send MPTs to a holder. See [MPT Payments](#mpt-payments). | 
 
 [Direct XRP Payment]: ../../../../concepts/payment-types/direct-xrp-payments.md
 [Creating or redeeming tokens]: ../../../../concepts/tokens/index.md
@@ -137,5 +138,36 @@ Without the `tfLimitQuality` flag set, this transaction would succeed, because t
 The `tfLimitQuality` flag is most useful when combined with [partial payments](../../../../concepts/payment-types/partial-payments.md). When both `tfPartialPayment` and `tfLimitQuality` are set on a transaction, then the transaction delivers as much of the destination `Amount` as it can, without using any conversions that are worse than the limit quality.
 
 In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is different if my transaction has both `tfPartialPayment` and `tfLimitQuality` enabled. If we keep my `SendMax` of 20 USD and a destination `Amount` of 100 CNY, then the limit quality is still `5`. However, because I am doing a partial payment, the transaction sends as much as it can instead of failing if the full destination amount cannot be sent. This means that my transaction consumes the ¥95/$15 offer, whose quality is about `6.3`, but it rejects the ¥5/$2 offer because that offer's quality of `2.5` is worse than the quality limit of `5`. In the end, my transaction only delivers ¥95 instead of the full ¥100, but it avoids wasting money on poor exchange rates.
+
+## MPT Payments
+
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
+
+When you send a payment using MPTs, the _Amount_ field requires only the `mpt_issuance_id` and the `value`. The `MPTokenIssuanceID` is used to uniquely identify the MPT for the transaction.
+
+Version 1 MPTokens only support direct MPT payment between accounts. They cannot be traded in the decentralized exchange.
+
+### Sample MPT Payment transaction
+
+```json
+{
+   "Account": "rLWSJKbwYSzG32JuGissYd66MFTvfMk4Bt",
+   "Amount": {
+      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
+      "value": "100"
+   },
+   "DeliverMax": {
+      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
+      "value": "100"
+   },
+   "SendMax": {
+      "mpt_issuance_id": "006419063CEBEB49FC20032206CE0F203138BFC59F1AC578",
+      "value": "100"
+   },
+   "Destination": "raZ3wTTKiMHn3BiStvz4ET9rbCHfU1DMak",
+   "Fee": "120",
+   "Flags": 0,
+}
+```
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

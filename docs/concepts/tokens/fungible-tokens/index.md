@@ -16,7 +16,7 @@ Fungible tokens are interchangeable and indistinguishable from one another. They
 
 Trust lines are structures in the XRP Ledger for holding fungible [tokens](../index.md). Trust lines enforce the XRP Ledger's rule that you cannot cause someone else to hold a token they don't want. This precaution is necessary to enable the XRP Ledger's use case for [community credit](../index.md#community-credit) among other benefits.
 
-A trust line is defined as a [RippleState](../../references/protocol/ledger-data/ledger-entry-types/ripplestate) object. Each trust line is a _bidirectional_ relationship consisting of:
+A trust line is defined as a [RippleState](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate) object. Each trust line is a _bidirectional_ relationship consisting of:
 
 - The identifiers for the two [accounts](../../accounts/index.md) that the trust line connects.
 - A single, shared balance, which is positive from the perspective of one account and negative from the other perspective.
