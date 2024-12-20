@@ -9,7 +9,7 @@ labels:
 ---
 # Partial Payment
 
-{% admonition type="warning" name="警告" %}このページでは、`Payment`トランザクションおよび各種APIメソッドに表示される`Amount`フィールドの詳細について説明します。`Amount`とPartial Paymentに関するコンテキスト情報は依然として関連性がありますが、`rippled` [API v2](../../references/http-websocket-apis/api-versions.md)においてフィールド名が`DeliverMax`に変更されました。これは、フィールド名をその動作に特化させ、以下に説明する誤解や悪用を防ぐためです。{% /admonition %}
+{% admonition type="warning" name="警告" %}このページでは、`Payment`トランザクションおよび各種APIメソッドに表示される`Amount`フィールドの詳細について説明します。`Amount`とPartial Paymentに関するコンテキスト情報は依然として関連性がありますが、`rippled` [API v2](../../references/http-websocket-apis/index.md)においてフィールド名が`DeliverMax`に変更されました。これは、フィールド名をその動作に特化させ、以下に説明する誤解や悪用を防ぐためです。{% /admonition %}
 
 デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](../tokens/transfer-fees.md)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](../../references/protocol/transactions/types/payment.md#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](bouncing-payments.md)したい場合に便利です。
 
