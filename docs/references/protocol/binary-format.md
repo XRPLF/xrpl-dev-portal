@@ -155,17 +155,17 @@ All fields in a transaction are sorted in a specific order based first on the fi
 
 ### Type Codes
 
-Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/SField.h#L57-L74).
+Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L60-L98).
 
-For example, [UInt32 has type code 2](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L59), so all UInt32 fields come before all [Amount fields, which have type code 6](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/SField.h#L63).
+For example, [UInt32 has type code 2](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L67), so all UInt32 fields come before all [Amount fields, which have type code 6](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L71).
 
 The [definitions file](#definitions-file) lists the type codes for each type in the `TYPES` map.
 
 ### Field Codes
 
-Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`SField.cpp`](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L72-L266).
+Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`sfields.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro).
 
-For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L219), so it comes before the `Destination` field which [has sort code 3](https://github.com/XRPLF/rippled/blob/72e6005f562a8f0818bc94803d222ac9345e1e40/src/ripple/protocol/impl/SField.cpp#L221).
+For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L269), so it comes before the `Destination` field which [has sort code 3](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L271).
 
 Field codes are reused for fields of different field types, but fields of the same type never have the same field code. When you combine the type code with the field code, you get the field's unique [Field ID](#field-ids).
 
