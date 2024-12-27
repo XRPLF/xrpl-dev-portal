@@ -1,17 +1,15 @@
 ---
-html: amm.html
-parent: ledger-entry-types.html
 seo:
     description: The definition and details of an Automated Market Maker (AMM) instance.
 labels:
   - AMM
 ---
 # AMM
-[[Source]](https://github.com/XRPLF/rippled/blob/89780c8e4fd4d140fcb912cf2d0c01c1b260539e/src/ripple/protocol/impl/LedgerFormats.cpp#L272-L284 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L369-L380 "Source")
+
+An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-entries). You can create an AMM by sending an [AMMCreate transaction][].
 
 _(Added by the [AMM amendment][])_
-
-An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-entries).
 
 
 ## Example AMM JSON

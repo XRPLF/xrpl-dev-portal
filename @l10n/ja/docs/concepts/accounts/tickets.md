@@ -28,7 +28,7 @@ XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引�
 
 ## チケットは予約済みのシーケンス番号
 
-チケットとは、あるシーケンス番号が後に使用されるために確保されたという記録です。アカウントは、まず[TicketCreate トランザクション][]を送信して、1つまたは複数のシーケンス番号をチケットとして確保します。これにより、[台帳の状態データ](../ledgers/index.md)に、予約された各シーケンス番号について[Ticket オブジェクト][]の形で記録が残されます。
+チケットとは、あるシーケンス番号が後に使用されるために確保されたという記録です。アカウントは、まず[TicketCreateトランザクション][]を送信して、1つまたは複数のシーケンス番号をチケットとして確保します。これにより、[台帳の状態データ](../ledgers/index.md)に、予約された各シーケンス番号について[Ticketオブジェクト][]の形で記録が残されます。
 
 チケットには、チケット作成時に設定されたシーケンス番号が使用されます。例えば、あなたのアカウントの現在のシーケンス番号が101で、3枚のチケットを作成した場合、それらのチケットにはチケットシーケンス番号102、103、104が付けられます。これにより、あなたのアカウントのシーケンス番号は105になります。
 
@@ -44,7 +44,7 @@ XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引�
 
 シーケンス番号と同様に、トランザクションの送信は、そのトランザクションが[コンセンサス](../consensus-protocol/index.md)によって確認された場合にのみ、チケットを使用します。しかし、意図した通りにならなかった取引でも、[`tec`クラスの結果コード](../../references/protocol/transactions/transaction-results/tec-codes.md)を用いてコンセンサスで確認することができます。
 
-あるアカウントで利用可能なチケットを調べるには、[account_objects メソッド][]を使用します。
+あるアカウントで利用可能なチケットを調べるには、[account_objectsメソッド][]を使用します。
 
 ## 制約事項
 
@@ -65,9 +65,9 @@ XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引�
 - **Tutorials:**
     - [チケットを使用する](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
 - **References:**
-    - [TicketCreate トランザクション][]
+    - [TicketCreateトランザクション][]
     - [トランザクションの共通フィールド](../../references/protocol/transactions/common-fields.md)
     - [Ticket オブジェクト](../../references/protocol/ledger-data/ledger-entry-types/ticket.md)
-    - [account_objects メソッド][]
+    - [account_objectsメソッド][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,6 +1,4 @@
 ---
-html: xchainownedcreateaccountclaimid.html
-parent: ledger-entry-types.html
 seo:
     description: The `XChainOwnedCreateAccountClaimID` ledger object is used to collect attestations for creating an account via a cross-chain transfer. 
 labels:
@@ -8,15 +6,15 @@ labels:
 status: not_enabled
 ---
 # XChainOwnedCreateAccountClaimID
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L315-L323 "Source")
+
+An `XChainOwnedCreateAccountClaimID` ledger entry collects attestations for creating an account via a cross-chain transfer.
+
+You can create a new `XChainOwnedCreateAccountClaimID` entry by sending an [XChainAddAccountCreateAttestation transaction][] with a signed attestation of a relevant transaction occurring on another chain.
+
+An `XChainOwnedCreateAccountClaimID` ledger entry is destroyed when all the attestations have been received and the funds have transferred to the new account.
+
 _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-[[Source]](https://github.com/seelabs/rippled/blob/xbridge/src/ripple/protocol/impl/LedgerFormats.cpp#L296-L306 "Source")
-
-The `XChainOwnedCreateAccountClaimID` ledger object is used to collect attestations for creating an account via a cross-chain transfer.
-
-It is created when an `XChainAddAccountCreateAttestation` transaction adds a signature attesting to a `XChainAccountCreateCommit` transaction and the `XChainAccountCreateCount` is greater than or equal to the current `XChainAccountClaimCount` on the `Bridge` ledger object.
-
-The ledger object is destroyed when all the attestations have been received and the funds have transferred to the new account.
 
 
 ## Example XChainOwnedCreateAccountClaimID JSON

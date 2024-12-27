@@ -1,14 +1,13 @@
 ---
-html: nftokenoffer.html
-parent: ledger-entry-types.html
 seo:
     description: Create offers to buy or sell NFTs.
 labels:
  - Non-fungible Tokens, NFTs
 ---
 # NFTokenOffer
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L34-L44 "Source")
 
-An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](../../../../concepts/tokens/nfts/index.md).
+An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](../../../../concepts/tokens/nfts/index.md). You can create an NFT buy or sell offer by sending an [NFTokenCreateOffer transaction][].
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
