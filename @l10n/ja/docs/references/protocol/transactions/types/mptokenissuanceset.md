@@ -23,14 +23,16 @@ labels:
 }
 ```
 
+<!-- ## MPTokenIssuanceSetのフィールド -->
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド         | JSON型             | [Internal Type][] | 説明                |
-|:-------------------|:-------------------|:------------------|:-------------------|
-| `TransactionType`  | 文字列             | UInt16           | 新しいトランザクションタイプ`MPTokenIssuanceSet`を示します。 |
-| `MPTokenIssuanceID`| 文字列             | UInt192          | `MPTokenIssuance`の識別子。 |
-| `Holder`           | 文字列             | AccountID        | (任意) ロック/アンロックする個別のトークン保有者残高のXRPLアドレス。省略した場合、このトランザクションはMPTを保有する全てのアカウントに適用されます。 |
-| `Flag`             | 数値               | UInt64           | このトランザクションのフラグを指定します。[MPTokenIssuanceSetのフラグ](#mptokenissuancesetのフラグ)をご覧ください。 |
+| フィールド         | JSON型             | [内部の型][] | 説明                |
+|:-------------------|:-------------------|:-------------|:-------------------|
+| `TransactionType`  | 文字列             | UInt16       | 新しいトランザクションタイプ`MPTokenIssuanceSet`を示します。 |
+| `MPTokenIssuanceID`| 文字列             | UInt192      | `MPTokenIssuance`の識別子。 |
+| `Holder`           | 文字列             | AccountID    | (任意) ロック/アンロックする個別のトークン保有者残高のXRPLアドレス。省略した場合、このトランザクションはMPTを保有する全てのアカウントに適用されます。 |
+| `Flag`             | 数値               | UInt64       | このトランザクションのフラグを指定します。[MPTokenIssuanceSetのフラグ](#mptokenissuancesetのフラグ)をご覧ください。 |
 
 ### MPTokenIssuanceSetのフラグ
 

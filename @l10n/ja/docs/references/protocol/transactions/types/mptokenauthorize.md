@@ -15,6 +15,8 @@ labels:
 
 発行者が`MPTokenIssuance`に`lsfMPTRequireAuth`(ホワイトリスト形式)を設定している場合、発行者も保有者に許可を与えるために`MPTokenAuthorize`トランザクションを送信する必要があります。`lsfMPTRequireAuth`が設定されていない状態で発行者がこのトランザクションを送信しようとすると、失敗します。
 
+<!-- ## MPTokenAuthorizeのフィールド -->
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド          | JSON型              | [内部の型][]      | 説明                |

@@ -11,7 +11,7 @@ labels:
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 
-`MPTokenIssuanceCreate`トランザクションは、[MPTokenIssuance](../../data-types/mptokenissuance.md)オブジェクトを作成し、作成者アカウントの関連するディレクトリノードに追加します。このトランザクションは、変更不可として定義するトークンのフィールド(例：MPT Flags)を指定できる唯一の機会です。
+`MPTokenIssuanceCreate`トランザクションは、[MPTokenIssuance](../../ledger-data/ledger-entry-types/mptokenissuance.md)オブジェクトを作成し、作成者アカウントの関連するディレクトリノードに追加します。このトランザクションは、変更不可として定義するトークンのフィールド(例：MPT Flags)を指定できる唯一の機会です。
 
 トランザクションが成功すると、新しく作成されたトークンはトランザクションを実行したアカウント(作成者アカウント)が所有することになります。
 
@@ -34,6 +34,8 @@ labels:
 }
 ```
 
+<!-- ## MPTokenIssuanceCreateのフィールド -->
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド        | JSON型 | [内部の型][] | 説明 |
@@ -48,7 +50,7 @@ labels:
 
 ## MPTokenIssuanceCreateのフラグ
 
-MPTokenIssuanceCreateトランザクションでは、[`Flags`フィールド](../common-fields.md#flags-field)に以下の追加の値がサポートされています。
+MPTokenIssuanceCreateトランザクションでは、[`Flags`フィールド](../common-fields.md#Flagsフィールド)に以下の追加の値がサポートされています。
 
 | フラグ名           | 16進数値     | 10進数値      | 説明 |
 | :----------------- | :----------- | :------------ | ---- |

@@ -24,6 +24,8 @@ labels:
 }
 ```
 
+<!-- ## MPTokenIssuanceDestroyのフィールド -->
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド          | JSONの型            | [内部の型][] | 説明              |
