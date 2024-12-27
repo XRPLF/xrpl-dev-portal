@@ -2,12 +2,12 @@
 html: nftokenmint.html
 parent: transaction-types.html
 seo:
-    description: TokenMintを使用して新規NFTを発行する。
+    description: NFTokenMintを使用して新規NFTを発行する。
 labels:
   - 非代替性トークン, NFT
 ---
 # NFTokenMint
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenMint.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
 
 `NFTokenMint`トランザクションは非代替性トークンを作成し、`NFTokenMinter`に紐付く[NFTokenPageオブジェクト][]に[NFToken][]オブジェクトとして追加します。このトランザクションは`NFTokenMinter`にとって、不変と定義されているトークンフィールド(例えば`Flags`)を設定することができる唯一の方法です。
 
@@ -42,26 +42,26 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド      | JSONの型            | [内部の型][]        | 説明               |
-|:--------------|:--------------------|:------------------|:-------------------|
-| `NFTokenTaxon` | 数値 | UInt32 | トークンに関連する分類群。Taxonは通常、トークンの発行者が選択した値です。1つのTaxonは複数のトークンに使用することができます。`0xFFFFFFFF`より大きいTaxonの識別子は使用できません。 |
-| `Issuer` | 文字列 | AccountID | _(省略可)_ 送信元アカウントが他のアカウントの代理としてトークンを発行する場合における、トークンの発行者。トランザクションを送信するアカウントが `NFToken` の発行者である場合、このフィールドは指定してはいけません。指定される場合、発行者の[AccountRootオブジェクト][]には `NFTokenMinter` フィールドが、このトランザクションの送信者(このトランザクションの`Account`フィールド)に設定されていなければなりません。 |
-| `TransferFee` | 数値 | UInt16 | _(省略可)_ この値は、`NFToken`の二次販売が許可されている場合に、発行者が徴収する手数料を指定します。このフィールドの有効な値は0から50000の間で、0.001刻みで0.00%から50.00%の送金手数料を設定することができます。このフィールドが設定されている場合、トランザクションは[`tfTransferable`フラグ](#nftokenmintのフラグ) を有効にしなければなりません。 |
-| `URI` | 文字列 | Blob | _(省略可)_ 最大256バイトの任意のデータ。JSONでは、16進数の文字列としてエンコードされる必要があります。URIを16進数に変換するために、[`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex)ユーティリティを使用することができます。これは、NFTに関連するデータまたはメタデータを指し示すURIであることを想定しています。コンテンツは、HTTPまたはHTTPS URL、IPFS URI、マグネットリンク、[RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397) としてエンコードされた即値データ、あるいは発行者固有のエンコーディングにデコードされていることがあります。URIの有効性はチェックされません。 |
-| `Amount`      | [Currency Amount][] | Amount            | _(Optional)_ Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
-| `Expiration`  | Number              | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. Results in an error if the `Amount` field is not specified. |
-| `Destination` | String              | AccountID         | _(Optional)_ If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail. Results in an error if the `Amount` field is not specified. |
+| フィールド     | JSONの型            | [内部の型][] | 説明 |
+| :------------- | :------------------ | :----------- | ---- |
+| `NFTokenTaxon` | 数値                | UInt32       | トークンに関連する分類群。Taxonは通常、トークンの発行者が選択した値です。1つのTaxonは複数のトークンに使用することができます。`0xFFFFFFFF`より大きいTaxonの識別子は使用できません。 |
+| `Issuer`       | 文字列              | AccountID    | _(省略可)_ 送信元アカウントが他のアカウントの代理としてトークンを発行する場合における、トークンの発行者。トランザクションを送信するアカウントが `NFToken` の発行者である場合、このフィールドは指定してはいけません。指定される場合、発行者の[AccountRootオブジェクト][]には `NFTokenMinter` フィールドが、このトランザクションの送信者(このトランザクションの`Account`フィールド)に設定されていなければなりません。 |
+| `TransferFee`  | 数値                | UInt16       | _(省略可)_ この値は、`NFToken`の二次販売が許可されている場合に、発行者が徴収する手数料を指定します。このフィールドの有効な値は0から50000の間で、0.001刻みで0.00%から50.00%の送金手数料を設定することができます。このフィールドが設定されている場合、トランザクションは[`tfTransferable`フラグ](#nftokenmintのフラグ) を有効にしなければなりません。 |
+| `URI`          | 文字列              | Blob         | _(省略可)_ 最大256バイトの任意のデータ。JSONでは、16進数の文字列としてエンコードされる必要があります。URIを16進数に変換するために、[`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex)ユーティリティを使用することができます。これは、NFTに関連するデータまたはメタデータを指し示すURIであることを想定しています。コンテンツは、HTTPまたはHTTPS URL、IPFS URI、マグネットリンク、[RFC2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397) としてエンコードされた即値データ、あるいは発行者固有のエンコーディングにデコードされていることがあります。URIの有効性はチェックされません。 |
+| `Amount`       | [通貨額][]          | Amount       | _(省略可)_ 対応する`NFToken`の売却オファー金額を示します。資産がXRPの場合を除き、金額はゼロ以外でなければなりません。ゼロの場合、トークンの現在の所有者が、誰に対しても、または `Destination` フィールドで指定されたアカウントに対して、無償でトークンを譲渡することを意味します。 |
+| `Expiration`   | 数値                | UInt32       | _(省略可)_ オファーが有効でなくなるまでの時間([リップルエポックからの秒数][])。Amountフィールドが指定されていない場合、エラーが発生します。 |
+| `Destination`  | 文字列              | AccountID    | _(省略可)_ 存在する場合、このオファーは指定されたアカウントからのみ受け入れられることを示します。他のアカウントでこのオファーを受け入れようとしても、必ず失敗します。`Amount`フィールドが指定されていない場合、エラーが発生します。 |
 
 ## NFTokenMintのフラグ
 
 NFTokenMint型のトランザクションでは、以下のように[`Flags`フィールド](../common-fields.md#flagsフィールド)に追加の値を設定することが可能です。
 
-| フラグ名       | 16進数値      | 整数値          | 説明                          |
-|:--------------|:-------------|:--------------|:------------------------------|
-| `tfBurnable` | `0x00000001` | 1 | 発行者(または発行者が許可した者)が`NFToken`を破棄できるようにします。(`NFToken`の所有者は常に破棄することができます)。 |
-| `tfOnlyXRP` | `0x00000002` | 2 | 発行された`NFToken`はXRPでのみ売買が可能です。これは、トークンに送金手数料がかかり、発行者がXRP以外のトークンで手数料を受け取りたくない場合に望ましいでしょう。 |
-| `tfTrustLine` | `0x00000004` | 4 | **非推奨** 発行者が、発行した`NFToken`を転送する際に受け取る手数料を保有するために、自動的に[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md) を作成します。[fixRemoveNFTokenAutoTrustLine Amendment][]により、このフラグの設定は無効となります。 |
-| `tfTransferable` | `0x00000008` | 8 | 発行された`NFToken`は他の人に譲渡することができます。このフラグが _有効でない_ 場合、トークンは _発行者から_ 、または _発行者へ_ のみ転送することができます。 |
+| フラグ名         | 16進数値     | 整数値 | 説明 |
+| :--------------- | :----------- | :----- | ---- |
+| `tfBurnable`     | `0x00000001` | 1      | 発行者(または発行者が許可した者)が`NFToken`を破棄できるようにします。(`NFToken`の所有者は常に破棄することができます)。 |
+| `tfOnlyXRP`      | `0x00000002` | 2      | 発行された`NFToken`はXRPでのみ売買が可能です。これは、トークンに送金手数料がかかり、発行者がXRP以外のトークンで手数料を受け取りたくない場合に望ましいでしょう。 |
+| `tfTrustLine`    | `0x00000004` | 4      | **非推奨** 発行者が、発行した`NFToken`を転送する際に受け取る手数料を保有するために、自動的に[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md) を作成します。[fixRemoveNFTokenAutoTrustLine Amendment][]により、このフラグの設定は無効となります。 |
+| `tfTransferable` | `0x00000008` | 8      | 発行された`NFToken`は他の人に譲渡することができます。このフラグが _有効でない_ 場合、トークンは _発行者から_ 、または _発行者へ_ のみ転送することができます。 |
 
 
 ## 追加情報の埋め込み
@@ -106,15 +106,15 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 
 すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/index.md)が発生する可能性があります。
 
-| エラーコード                    | 説明                                          |
-|:------------------------------|:---------------------------------------------|
+| エラーコード                  | 説明 |
+| :---------------------------- | ---- |
 | `temDISABLED`                 | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
 | `temBAD_NFTOKEN_TRANSFER_FEE` | `TransferFee`が許容範囲外です。 |
-| `temINVALID_FLAG`             | `Flags`値には、許可されていない、または有効なフラグでないビットが有効になっています。[fixRemoveNFTokenAutoTrustLine amendment][]が有効になっている場合、`tfTrustLine`フラグはこのエラーを発生させます。|
+| `temINVALID_FLAG`             | `Flags`値には、許可されていない、または有効なフラグでないビットが有効になっています。[fixRemoveNFTokenAutoTrustLine amendment][]が有効になっている場合、`tfTrustLine`フラグはこのエラーを発生させます。 |
 | `temMALFORMED`                | トランザクションが正しく指定されていません。例えば、`URI`フィールドが256バイトより長い場合です。 |
 | `tecNO_ISSUER`                | `Issuer`は、レジャーに存在しないアカウントを指定しています。 |
 | `tecNO_PERMISSION`            | `Issuer`フィールドで参照されるアカウントは、このトランザクションの送信者（`NFTokenMinter`設定を使用）が自身の代わりに発行することを承認していません。 |
-| `tecINSUFFICIENT_RESERVE`     | トークンを発行した後、オーナーは更新された[準備金要件](../../../../concepts/accounts/reserves.md)を満たせなくなります。新しい`NFToken`は、新しい[NFTokenPageオブジェクト][]を必要とする場合にのみ、オーナーの準備金を増加させることに注意する必要があり、それぞれ最大32NFTを格納することができます。|
+| `tecINSUFFICIENT_RESERVE`     | トークンを発行した後、オーナーは更新された[準備金要件](../../../../concepts/accounts/reserves.md)を満たせなくなります。新しい`NFToken`は、新しい[NFTokenPageオブジェクト][]を必要とする場合にのみ、オーナーの準備金を増加させることに注意する必要があり、それぞれ最大32NFTを格納することができます。 |
 | `tecMAX_SEQUENCE_REACHED`     | `Issuer`の`MintedNFTokens`フィールドはすでに最大値になっています。これは、発行者またはその代理人が合計で2<sup>32</sup>-1つの`NFToken`を発行した場合にのみ発生します。 |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

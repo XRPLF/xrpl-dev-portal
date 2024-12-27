@@ -1,18 +1,15 @@
 ---
-html: did.html
-parent: ledger-entry-types.html
 seo:
     description: The definition and details of a Decentralized Identifier (DID).
 labels:
   - DID
 ---
 # DID
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L330-L341 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L69-L77 "Source")
 
-_(Requires the [DID amendment][])_
+A `DID` ledger entry holds references to, or data associated with, a single [Decentralized Identifier (DID)](../../../../concepts/decentralized-storage/decentralized-identifiers.md). You can create or modify a DID by sending a [DIDSet transaction][].
 
-A `DID` ledger entry holds references to, or data associated with, a single [DID](../../../../concepts/decentralized-storage/decentralized-identifiers.md).
-
+_(Added by the [DID amendment][])_
 
 ## Example DID JSON
 

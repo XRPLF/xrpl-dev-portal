@@ -8,7 +8,7 @@ labels:
 ---
 # Clawback
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Clawback.cpp "ソース")
 
 {% partial file="/@l10n/ja/docs/_snippets/clawback-disclaimer.md" /%}
 

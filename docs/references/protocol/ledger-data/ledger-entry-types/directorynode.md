@@ -6,7 +6,7 @@ labels:
   - Decentralized Exchange
 ---
 # DirectoryNode
-[[Source]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L165-L179 "Source")
 
 The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_ takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](../common-fields.md). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
 
@@ -15,6 +15,8 @@ There are three kinds of directory:
 * _Owner directories_ list other entries owned by an account, such as [`RippleState` (trust line)](ripplestate.md) or [`Offer`](offer.md) entries.
 * _Offer directories_ list the offers available in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
 * _NFT Offer directories_ list buy and sell offers for NFTs. Each NFT has up to two directories, one for buy offers, the other for sell offers.
+
+All types of directories are automatically updated by the protocol as necessary.
 
 ## Example {% $frontmatter.seo.title %} JSON
 

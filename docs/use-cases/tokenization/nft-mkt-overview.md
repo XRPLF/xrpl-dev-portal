@@ -70,7 +70,7 @@ Once the authorized minter has finished creating NFTs for you, you can revoke th
 
 See [Authorized Minter](../../concepts/tokens/nfts/authorizing-another-minter.md).
 
-Minted NFTs are listed on a `NFTokenPage`. There is a reserve requirement of 2 XRP for every `NFTokenPage` on your account. See [NFT Reserve Requirements](../../concepts/tokens/nfts/reserve-requirements.md).
+Minted NFTs are listed on a `NFTokenPage`. There is a reserve requirement of {% $env.PUBLIC_OWNER_RESERVE %} for every `NFTokenPage` on your account. See [NFT Reserve Requirements](../../concepts/tokens/nfts/reserve-requirements.md).
 
 Each `NFTokenPage` holds 16-32 NFTs. Minting a large number of NFTs can tie up a great deal of your XRP. You can keep your XRP liquid by minting on demand (or _lazy minting_). For details of different approaches, see [Batch minting](../../concepts/tokens/nfts/batch-minting.md).
 
@@ -79,7 +79,7 @@ Each `NFTokenPage` holds 16-32 NFTs. Minting a large number of NFTs can tie up a
 
 Set up a new wallet. See [Xaman](https://xaman.app/).
 
-When you set up your account, keep in mind that there is a base reserve requirement of 10 XRP. See [Reserves](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve).
+When you set up your account, keep in mind that there is a base reserve requirement of {% $env.PUBLIC_BASE_RESERVE %}. See [Reserves](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve).
 
 ### Transferring NFTs
 
@@ -93,9 +93,9 @@ You can act as a broker, connecting sellers with bidders, completing the transfe
 
 #### Reserve requirements
 
-There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
+There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of {% $env.PUBLIC_OWNER_RESERVE %}. A NFToken page can store 16-32 NFTs.
 
-Each `NFTokenOffer` object requires a reserve of 2 XRP.
+Each `NFTokenOffer` object requires a reserve of {% $env.PUBLIC_OWNER_RESERVE %}.
 
 ![Reserves](/docs/img/uc-nft-reserves.png)
 

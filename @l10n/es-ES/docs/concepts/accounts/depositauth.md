@@ -42,7 +42,7 @@ Una cuenta con Deposit Authorization activado:
 
 - **No puede** ser destinatario de [transacciones Payment][], con **las siguientes excepciones**:
     - Si el destinatario tiene [preautorizado](#preautorización) al remitente del pago. _(Añadido con la [enmienda DepositPreauth][])_
-    - Si el balance XRP de la cuenta es igual o inferior al [requisito de reserva](reserves.md) de la cuenta, puede ser el destinatario de un pago XRP cuya cantidad `Amount` es igual o menor que el mínimo de reserva de la cuenta (actualmente 10 XRP). Esto es para prevenir a una cuenta de quedarse "atascada" no siendo posible enviar transacciones ni tampoco recibir XRP. La reserva de la cuenta del propietario no importa en este caso.
+    - Si el balance XRP de la cuenta es igual o inferior al [requisito de reserva](reserves.md) de la cuenta, puede ser el destinatario de un pago XRP cuya cantidad `Amount` es igual o menor que el mínimo de reserva de la cuenta (actualmente {% $env.PUBLIC_BASE_RESERVE %}). Esto es para prevenir a una cuenta de quedarse "atascada" no siendo posible enviar transacciones ni tampoco recibir XRP. La reserva de la cuenta del propietario no importa en este caso.
 - Puede recibir XRP de [transacciones PaymentChannelClaim][] **únicamente en los siguientes casos**:
     - El remitente de la transacción PaymentChannelClaim es el destino del canal de pago (payment channel).
     - El destino de la transacción del PaymentChannelClaim tiene [preautorizado](#preautorización) al remitente del PaymentChannelClaim. _(Añadido en la [enmienda DepositPreauth][])_

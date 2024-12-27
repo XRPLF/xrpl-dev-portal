@@ -1,11 +1,11 @@
 ---
-blurb: Introduction to XRPL MPTs.
+blurb: The `MPTokenIssuance` object represents a single MPT issuance and holds data associated with the issuance itself.
 labels:
   - Multi-purpose Tokens, MPTs, Tokens
 ---
 # MPTokenIssuance
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 The `MPTokenIssuance` object represents a single MPT issuance and holds data associated with the issuance itself. Token issuances are created using the `MPTokenIssuanceCreate` transaction and can be destroyed by the `MPTokenIssuanceDestroy` transaction.
 
@@ -15,19 +15,29 @@ The `MPTokenIssuance` object represents a single MPT issuance and holds data ass
 
 ```json
 {
-  "name": "US Treasury Bill Token",
-  "symbol": "USTBT",
-  "issuer": "US Treasury",
-  "issueDate": "2024-03-25",
-  "maturityDate": "2025-03-25",
-  "faceValue": 1000,
-  "interestRate": 2.5,
-  "interestFrequency": "Quarterly",
-  "collateral": "US Government",
-  "jurisdiction": "United States",
-  "regulatoryCompliance": "SEC Regulations",
-  "securityType": "Treasury Bill",
-  "external_url": "https://example.com/t-bill-token-metadata.json"
+    "LedgerEntryType": "MPTokenIssuance",
+    "Flags": 131072,
+    "Issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "AssetScale": 2,
+    "MaximumAmount": "100000000",
+    "OutstandingAmount": "100",
+    "TransferFee": 50000,     
+    "MPTokenMetadata": "{
+      "name": "US Treasury Bill Token",
+      "symbol": "USTBT",
+      "issuer": "US Treasury",
+      "issueDate": "2024-03-25",
+      "maturityDate": "2025-03-25",
+      "faceValue": 1000,
+      "interestRate": 2.5,
+      "interestFrequency": "Quarterly",
+      "collateral": "US Government",
+      "jurisdiction": "United States",
+      "regulatoryCompliance": "SEC Regulations",
+      "securityType": "Treasury Bill",
+      "external_url": "https://example.com/t-bill-token-metadata.json"
+    }",
+    "OwnerNode": "74"
 }
 ```
 
@@ -52,7 +62,7 @@ The `MPTokenIssuanceID` is a 192-bit integer, concatenated in order:
 
 | Field Name        | JSON Type | Internal Type | Description |
 |:------------------|:----------|:--------------|:------------|
-| LedgerEntryType   | number    | UInt16        | The value 0x007E, mapped to the string MPTokenIssuance, indicates that this object describes a Multi-Purpose Token (MPT). |
+| `LedgerEntryType`   | number    | UInt16        | The value 0x007E, mapped to the string MPTokenIssuance, indicates that this object describes a Multi-Purpose Token (MPT). |
 | `Flags`             | number    | UInt32        | See [MPTokenIssuance Flags](#mptokenissuance-flags) |
 | `Issuer`           | string    | AccountID     | The address of the account that controls both the issuance amounts and characteristics of a particular fungible token. |
 | `AssetScale` | number    | UInt8       | An asset scale is the difference, in orders of magnitude, between a standard unit and a corresponding fractional unit. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. If the fractional unit equals the standard unit, then the asset scale is 0. |
@@ -80,9 +90,4 @@ Flags are properties or other options associated with the `MPToken` object. Exce
 | `lsfMPTCanTransfer` | `0x00000020`   | If set, indicates that tokens held by non-issuers can be transferred to other accounts. If not set, indicates that tokens held by non-issuers cannot be transferred except back to the issuer; this enables use cases such as store credit. |
 | `lsfMPTCanClawback` | `0x00000040`   | If set, indicates that the issuer may use the `Clawback` transaction to claw back value from individual holders. |
 
-
-<!--{# common link defs #}-->
-<!-- uncomment for xrpl.org
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %} -->
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

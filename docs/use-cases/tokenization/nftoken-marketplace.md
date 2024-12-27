@@ -43,11 +43,11 @@ You can act as a broker, connecting sellers with bidders, completing the transfe
 
 ### Reserve requirements
 
-There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
+There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of {% $env.PUBLIC_OWNER_RESERVE %}. A NFToken page can store 16-32 NFTs.
 
 ![Reserves](/docs/img/uc-nft-reserves.png)
 
-Each `NFTokenOffer` object requires a reserve of 2 XRP.
+Each `NFTokenOffer` object requires a reserve of {% $env.PUBLIC_OWNER_RESERVE %}.
 
 When you post the `NFTokenOffer` or sell the NFT, there are trivial transfer fees (roughly 6000 drops, or .006 XRP). When you are selling at a high volume, the trivial amounts can add up quickly, and need to be considered as part of your cost of doing business.
 

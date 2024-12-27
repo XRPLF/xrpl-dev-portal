@@ -7,13 +7,13 @@ labels:
   - AMM
 ---
 # AMMDelete
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")
 
 _([AMM amendment][]により追加されました。)_
 
 自動で削除しきれなかった空の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを削除します。
 
-通常、[AMMWithdraw トランザクション][]は、AMMのプールからすべての資産を引き出すと、AMMと関連するすべてのレジャーエントリを自動的に削除します。ただし、AMMアカウントへのトラストラインが多すぎて1回のトランザクションで削除できない場合は、AMMの削除を行わない場合があります。しかしこの場合でも、AMMDeleteトランザクションは最大512のトラストラインを削除します。すべてのトラストラインとそのAMMを削除するには、数回のAMMDeleteトランザクションが必要な場合があります。いずれの場合も、AMMとAccountRootのレジャーエントリが削除されるのは、最後のトランザクションのみです。
+通常、[AMMWithdrawトランザクション][]は、AMMのプールからすべての資産を引き出すと、AMMと関連するすべてのレジャーエントリを自動的に削除します。ただし、AMMアカウントへのトラストラインが多すぎて1回のトランザクションで削除できない場合は、AMMの削除を行わない場合があります。しかしこの場合でも、AMMDeleteトランザクションは最大512のトラストラインを削除します。すべてのトラストラインとそのAMMを削除するには、数回のAMMDeleteトランザクションが必要な場合があります。いずれの場合も、AMMとAccountRootのレジャーエントリが削除されるのは、最後のトランザクションのみです。
 
 
 ## {% $frontmatter.seo.title %} JSONの例

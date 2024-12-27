@@ -7,7 +7,7 @@ labels:
 
 # mpt_holders
 
-{% partial file="/docs/_snippets/mpts-disclaimer.md" /%}
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all holders of that MPT and their balance. This method likely returns very large data sets, so you should expect to implement paging via the `marker` field. This API is only available using Clio, not rippled.
 
@@ -44,7 +44,7 @@ The request contains the following parameters:
 |:------------------|:---------------------|:----------|-------------|
 | `mpt_issuance_id` | string               | Yes       | The `MPTokenIssuance` to query. |
 | `ledger_index`    | string or number (positive integer) | No | The ledger index of the max ledger to use, ora shortcut string to choose a ledger automatically. You must specify either ledger_index or ledger_hash. |
-| `ledger_hash`     | string               | No        | A 20-byte hex string for the ma ledger version to use. You must specify either ledger_index or ledger_hash. |
+| `ledger_hash`     | string               | No        | A 32-byte hex string for the ledger version to use. You must specify either ledger_index or ledger_hash. |
 | `marker`          | string               | No        | Used to continue your query where it left off in paginating. |
 | `limit`           | number (positive integer) | No   | Specify a limit to the number of MPTs returned. |
 
@@ -73,7 +73,7 @@ The request contains the following parameters:
 
 ### Response Fields
 
-The response follows the [standard format](https://xrpl.org/docs/references/http-websocket-apis/api-conventions/response-formatting/), with the result containing the following fields:
+The response follows the [standard format][], with the result containing the following fields:
 
 | Field                  | Type    | Description                               |
 |:-----------------------|:--------|:------------------------------------------|
@@ -134,8 +134,8 @@ Example of an `account_objects` response:
    "result": {
       "account": "rBT9cUqK6UvpvZhPFNQ2qpUTin8rDokBeL",
       "account_objects": [
-      {
-      "AssetScale": 2,
+          {
+              "AssetScale": 2,
             "Flags": 64,
             "Issuer": "rBT9cUqK6UvpvZhPFNQ2qpUTin8rDokBeL",
             "LedgerEntryType": "MPTokenIssuance",
@@ -154,3 +154,5 @@ Example of an `account_objects` response:
    }
 }
 ```
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

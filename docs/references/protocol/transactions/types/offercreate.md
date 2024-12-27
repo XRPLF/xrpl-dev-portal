@@ -8,7 +8,7 @@ labels:
 ---
 # OfferCreate
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateOffer.cpp "Source")
 
 An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentralized-exchange/offers.md) in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md).
 

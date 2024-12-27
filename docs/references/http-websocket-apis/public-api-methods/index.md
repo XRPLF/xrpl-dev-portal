@@ -93,7 +93,7 @@ Use these methods to retrieve information about the current state of the `ripple
 * **[`server_state`](server-info-methods/server_state.md)** - Retrieve status of the server in machine-readable format.
 - **[`manifest`](server-info-methods/manifest.md)** - Retrieve the latest ephemeral public key information about a known validator.
 
-## [Clio Methods](clio-server/index.md)
+## [Clio Methods](clio-methods/index.md)
 
 Use these methods to retrieve information using Clio server APIs.
 

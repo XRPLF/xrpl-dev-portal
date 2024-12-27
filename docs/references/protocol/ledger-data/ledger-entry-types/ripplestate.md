@@ -1,15 +1,13 @@
 ---
-html: ripplestate.html
-parent: ledger-entry-types.html
 seo:
     description: This entry represents a trust line, tracking the net balance of tokens between them.
 labels:
   - Tokens
 ---
 # RippleState
-[[Source]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L277-L289 "Source")
 
-A `RippleState` ledger entry represents a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) between two accounts. Each account can change its own limit and other settings, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist and is automatically deleted.
+A `RippleState` ledger entry represents a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) between two accounts. Each account can change its own limit and other settings, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist and is automatically deleted. You can create or modify a trust line with a [TrustSet transaction][].
 
 ## High vs. Low Account
 

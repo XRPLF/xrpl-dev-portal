@@ -923,7 +923,9 @@ An example of a successful response:
 
 {% /tabs %}
 
-### Get MPT Issuance Object 
+### Get MPT Issuance Object
+
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 Return an `MPTokenIssuance` object.
 
@@ -960,7 +962,12 @@ Return an `MPTokenIssuance` object.
 ```sh
 rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
 ```
-### Get MPToken Object 
+
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mpt_issuance)
+
+### Get MPToken Object
+
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 Return an `MPToken` object.
 
@@ -1004,19 +1011,18 @@ Return an `MPToken` object.
 rippled json ledger_entry '{ "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"}'
 ```
 <!-- MULTICODE_BLOCK_END -->
-
-[Try it! >](https://xrpl.org/resources/dev-tools/websocket-api-tool.html#ledger_entry-mpt_issuance)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mptissuance)
 
 ## Response Format
 
-The response follows the [standard format](https://xrpl.org/docs/references/http-websocket-apis/api-conventions/response-formatting/), with a successful result containing the following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
 | Field          | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `index`        | String           | The unique ID of this [ledger entry](https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/). |
-| `ledger_index` | Unsigned Integer | The [ledger index](https://xrpl.org/docs/references/protocol/data-types/basic-data-types/#ledger-index) of the ledger that was used when retrieving this data. |
-| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format](https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/). |
-| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](https://xrpl.org/docs/references/protocol/binary-format/) of the ledger object, as hexadecimal. |
+| `index`        | String           | The unique ID of this [ledger entry](../../../protocol/ledger-data/ledger-entry-types/index.md). |
+| `ledger_index` | Unsigned Integer | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger that was used when retrieving this data. |
+| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format](../../../protocol/ledger-data/ledger-entry-types/index.md). |
+| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger object, as hexadecimal. |
 
 An example of a successful response:
 

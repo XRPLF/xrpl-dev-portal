@@ -31,7 +31,7 @@ labels:
 
 ### 1. トランザクションJSONの作成
 
-アカウントから、`"SetValue": 4`のフィールドを持つ[AccountSet トランザクション][]を準備します。これは AccountSet フラグ "Disable Master" (`asfDisableMaster`) に対応する値です。このトランザクションの他の必須フィールドは、必須の[共通フィールド](../../../references/protocol/transactions/common-fields.md)のみです。例えば、[自動入力可能なフィールド](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド) を省けば、以下のトランザクション指示で十分である。
+アカウントから、`"SetValue": 4`のフィールドを持つ[AccountSetトランザクション][]を準備します。これは AccountSet フラグ "Disable Master" (`asfDisableMaster`) に対応する値です。このトランザクションの他の必須フィールドは、必須の[共通フィールド](../../../references/protocol/transactions/common-fields.md)のみです。例えば、[自動入力可能なフィールド](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド) を省けば、以下のトランザクション指示で十分である。
 
 ```json
 {
@@ -498,6 +498,6 @@ else:
 - 結果が0でない場合は `lsfDisableMaster` の値と等しく、 **マスターキーが正常に無効化されたこと** を示します。
 - 結果が0の場合は、そのアカウントのマスターキーが無効になっていないことを示します。
 
-結果が予想と異なる場合は、前の手順で送信したトランザクションが正常に実行されたかどうかを確認してください。それは、その口座のトランザクション履歴（[account_tx メソッド][]）の中で最も新しいもので、結果コード `tesSUCCESS` がついているはずです。それ以外の[結果コード](../../../references/protocol/transactions/transaction-results/index.md)が表示された場合、そのトランザクションは正常に実行されませんでした。エラーの原因によっては、これらの手順を最初からやり直した方がよいかもしれません。
+結果が予想と異なる場合は、前の手順で送信したトランザクションが正常に実行されたかどうかを確認してください。それは、その口座のトランザクション履歴（[account_txメソッド][]）の中で最も新しいもので、結果コード `tesSUCCESS` がついているはずです。それ以外の[結果コード](../../../references/protocol/transactions/transaction-results/index.md)が表示された場合、そのトランザクションは正常に実行されませんでした。エラーの原因によっては、これらの手順を最初からやり直した方がよいかもしれません。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

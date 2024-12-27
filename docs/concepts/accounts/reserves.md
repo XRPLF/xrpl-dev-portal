@@ -27,12 +27,12 @@ The reserve requirement has two parts:
 
 The current reserve requirements on Mainnet are:
 
-- Base reserve: **10 XRP**
-- Owner reserve: **2 XRP** per item
+- Base reserve: **{% $env.PUBLIC_BASE_RESERVE %}**
+- Owner reserve: **{% $env.PUBLIC_OWNER_RESERVE %}** per item
 
 Reserves on other networks may vary.
 
-An exception to the owner reserve is that you can create your first two trust lines on the XRPL without the required reserves of 2 XRP per trust line. Create your new account with the 10 XRP base reserve, then create your 2 trust lines and the reserves are not required. If you fund your account with more than 10 XRP, your account will be charged the normal reserve fees for your first two trust lines.
+An exception to the owner reserve is that you can create your first two trust lines on the XRPL with just the base reserve. Create your new account with the {% $env.PUBLIC_BASE_RESERVE %} base reserve, then you can create your 2 trust lines and the reserves are not required. If you fund your account with more than {% $env.PUBLIC_BASE_RESERVE %}, your account will be charged the normal reserve fees for your first two trust lines.
 
 ## Owner Reserves
 
