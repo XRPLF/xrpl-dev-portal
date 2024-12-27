@@ -2,9 +2,9 @@
 seo:
     description: Remove a credential from the ledger, effectively revoking it.
 ---
-# CredentialDelete Transaction
+# CredentialDelete
 
-A CredentialDelete transaction removes a credential from the ledger, effectively revoking it. Users may also want to delete an unwanted credential to reduce their [reserve requirement][].
+A CredentialDelete transaction removes a credential from the ledger, effectively revoking it. Users may also want to delete an unwanted credential to reduce their [reserve requirement](../../../../concepts/accounts/reserves.md).
 
 ## Example CredentialDelete JSON
 
@@ -41,7 +41,7 @@ This transaction looks for a [Credential ledger entry](../../ledger-data/ledger-
 | Error Code | Description |
 |:-----------|:------------|
 | `temDISABLED` | The related amendment is not enabled. |
-| `temINVALID_ACCOUNT_ID` | A provided `Subject` or `Issuer` field is invalid. For example, it contains [ACCOUNT_ZERO][]. |
+| `temINVALID_ACCOUNT_ID` | A provided `Subject` or `Issuer` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 | `tecNO_PERMISSION` | The sender is neither the issuer nor subject of the credential, and the credential is not expired. |
 | `tecNO_ENTRY` | The specified credential does not exist in the ledger. |
 

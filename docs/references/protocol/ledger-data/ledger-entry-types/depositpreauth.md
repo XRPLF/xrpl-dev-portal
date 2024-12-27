@@ -9,7 +9,7 @@ labels:
 # DepositPreauth
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
 
-A `DepositPreauth` entry tracks a preauthorization from one account. You can always create a preauthorization by sending a [DepositPreauth transaction][], but it has no effect unless you are using [Deposit Authorization](https://xrpl.org/docs/concepts/accounts/depositauth).
+A `DepositPreauth` entry tracks a preauthorization from one account. You can always create a preauthorization by sending a [DepositPreauth transaction][], but it has no effect unless you are using [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 
 A preauthorization allows specific others to send money directly to you even if you have Deposit Authorization enabled. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
 

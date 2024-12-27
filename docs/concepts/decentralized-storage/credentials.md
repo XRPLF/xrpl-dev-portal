@@ -1,6 +1,6 @@
 # Credentials
 
-The Credentials feature is a set of tools for managing authorization and compliance requirements using the XRP Ledger blockchain, while respecting privacy and decentralization. This feature extends and interconnects with other features of the XRP Ledger including [Deposit Authorization](https://xrpl.org/docs/concepts/accounts/depositauth). The goal of this feature is to streamline the process of compliance checks such as [KYC (Know Your Customer)](https://en.wikipedia.org/wiki/Know_your_customer) and to enable further trust-based applications within the XRP Ledger ecosystem.
+The Credentials feature is a set of tools for managing authorization and compliance requirements using the XRP Ledger blockchain, while respecting privacy and decentralization. This feature extends and interconnects with other features of the XRP Ledger including [Deposit Authorization](../../concepts/accounts/depositauth.md)). The goal of this feature is to streamline the process of compliance checks such as [KYC (Know Your Customer)](https://en.wikipedia.org/wiki/Know_your_customer) and to enable further trust-based applications within the XRP Ledger ecosystem.
 
 The design of the Credentials standard draws from the [W3C Verifiable Credentials standard](https://www.w3.org/TR/vc-data-model-2.0/). It is intended to be compatible to an extent that makes sense in the context of the XRP Ledger. There are some differences in data structures and formatting: for example, the subject of a credential is identified by an XRP Ledger address rather than a URL.
 

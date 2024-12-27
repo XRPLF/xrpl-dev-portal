@@ -8,7 +8,7 @@ labels:
 # deposit_authorized
 [[Source]](https://github.com/XRPLF/rippled/blob/817d2339b8632cb2f97d3edd6f7af33aa7631744/src/ripple/rpc/handlers/DepositAuthorized.cpp "Source")
 
-The `deposit_authorized` command indicates whether one account is authorized to send payments directly to another. See [Deposit Authorization](https://xrpl.org/docs/concepts/accounts/depositauth/) for information on how to require authorization to deliver money to your account.
+The `deposit_authorized` command indicates whether one account is authorized to send payments directly to another. See [Deposit Authorization](../../../../concepts/accounts/depositauth.md) for information on how to require authorization to deliver money to your account.
 
 ## Request Format
 An example of the request format:
@@ -65,7 +65,7 @@ The request includes the following parameters:
 |:----------------------|:---------------------|:----------|-------------|
 | `source_account`      | String - [Address][] | Yes       | The sender of a possible payment. |
 | `destination_account` | String - [Address][] | Yes       | The recipient of a possible payment. |
-| `ledger_hash`         | [Hash][]             | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`         | [Hash][]             | No        | A 32-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | [Ledger Index][]     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `credentials`         | Array                | No        | A set of credentials to take into account when checking if the sender can send funds to the destination. Each member of the array must be the unique ID of a [Credential entry][] in the ledger. Cannot be an empty array. |
 
@@ -150,7 +150,7 @@ The response follows the [standard format][], with a successful result containin
 | Field                  | Type                      | Required? | Description   |
 |:-----------------------|:--------------------------|:----------|:--------------|
 | `credentials`          | Array of [Hash][]         | No        | The credentials specified in the request, if any. |
-| `deposit_authorized`   | Boolean                   | Yes       | Whether the specified source account is authorized to send payments directly to the destination account. If `true`, either the destination account does not require [deposit authorization](https://xrpl.org/docs/concepts/accounts/depositauth) or the source account is preauthorized. |
+| `deposit_authorized`   | Boolean                   | Yes       | Whether the specified source account is authorized to send payments directly to the destination account. If `true`, either the destination account does not require [deposit authorization](../../../../concepts/accounts/depositauth.md) or the source account is preauthorized. |
 | `destination_account`  | String - [Address][]      | Yes       | The destination account specified in the request. |
 | `ledger_hash`          | String                    | No        | The identifying hash of the ledger that was used to generate this response. |
 | `ledger_index`         | Number - [Ledger Index][] | No        | The ledger index of the ledger version that was used to generate this response. |
@@ -159,7 +159,7 @@ The response follows the [standard format][], with a successful result containin
 | `validated`            | Boolean                   | No        | If `true`, the information comes from a validated ledger version. |
 
 {% admonition type="info" name="Note" %}
-A `deposit_authorized` status of `true` does not guarantee that a payment can be sent from the specified source to the specified destination. For example, the destination account may not have a [trust line](https://xrpl.org/docs/concepts/tokens/fungible-tokens) for the specified currency, or there may not be enough liquidity to deliver a payment.
+A `deposit_authorized` status of `true` does not guarantee that a payment can be sent from the specified source to the specified destination. For example, the destination account may not have a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) for the specified currency, or there may not be enough liquidity to deliver a payment.
 {% /admonition %}
 
 ## Possible Errors

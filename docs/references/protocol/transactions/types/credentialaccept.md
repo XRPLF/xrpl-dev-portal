@@ -2,7 +2,7 @@
 seo:
     description: Accept a credential provisionally issued to your account.
 ---
-# CredentialAccept Transaction
+# CredentialAccept
 
 A CredentialAccept transaction accepts a credential, which makes the credential valid. Only the subject of the credential can do this.
 
@@ -42,7 +42,7 @@ The combination of `Account`, `Issuer`, and `CredentialType` must match a `Crede
 | `tecEXPIRED` | The specified credential has an expiration time in the past. (In this case, the transaction also deletes the expired credentials from the ledger.) |
 | `tecNO_ENTRY` | The credential uniquely identified by the `Account`, `Issuer`, and `CredentialType` fields of the transaction does not exist in the ledger. |
 | `temDISABLED` | The related amendment is not enabled. |
-| `temINVALID_ACCOUNT_ID` | The provided `Issuer` field is invalid. For example, it contains [ACCOUNT_ZERO][]. |
+| `temINVALID_ACCOUNT_ID` | The provided `Issuer` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
