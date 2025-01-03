@@ -20,7 +20,7 @@ print("connected!!!")
 oracle_creator = generate_faucet_wallet(client=client)
 
 # define the oracle document id
-# this should be stored offline as the blockchain doesn't retrieve it in requets
+# this should be stored offline as the blockchain doesn't retrieve it in requests
 oracle_document_id = 1
 
 # define the provider's name and convert to hexadecimal e.g: band, chainlink etc
@@ -66,10 +66,8 @@ oracle_set = OracleSet(
 )
 
 
-print("siging and submitting transaction, awaiting response")
-# sign, submit and wait for transaction result
-
-
+print("signing and submitting transaction, awaiting response")
+# sign, submit, and wait forthe  transaction result
 oracle_set_txn_response = submit_and_wait(
     transaction=oracle_set, client=client, wallet=oracle_creator
 )
