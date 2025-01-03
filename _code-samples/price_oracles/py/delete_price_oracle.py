@@ -12,7 +12,7 @@ print("connecting to the test network")
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 print("connected!!!")
 
-# create demo wallet or use an exist
+# create demo wallet or use an existing one as created in the oracle set transaction
 oracle_creator = Wallet.from_seed(seed="sEdTXKysakqYD1eRaBmYAGvmwFRbNWa")
 
 # define the oracle document id
