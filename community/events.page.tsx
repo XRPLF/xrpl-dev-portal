@@ -1033,7 +1033,7 @@ const events = [
   {
     name: "XRPL Meetup in London",
     description:
-      "Calling all blockchain and XRP Ledger enthusiasts in London! Join XRPL  Meetups to share knowledge, build real-life connections, and foster  communities centered around blockchain and XRP Ledger.  We're establishing local “XRPL Hubs” across Europe, and we want you  to be a part of it!",
+      "Calling all blockchain and XRP Ledger enthusiasts in London! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
     type: "meetup",
     link: "https://xrpl.at/XRPL-Meetup-London",
     location: "London, United Kingdom",
