@@ -77,7 +77,7 @@ markdown:
 footer:
   logo:
     hide: true
-  copyrightText: © 2024 XRP Ledger. Open Source.
+  copyrightText: © 2025 XRP Ledger. Open Source.
   items:
     - group: About
       groupTranslationKey: footer.about
