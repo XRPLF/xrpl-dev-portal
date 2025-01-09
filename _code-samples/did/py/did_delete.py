@@ -1,3 +1,4 @@
+# neccasary imports
 from xrpl.models import DIDDelete
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
@@ -10,9 +11,11 @@ client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 print("connected!!!")
 
 
-# restore an account that has an existing DID
-account_did_creator = Wallet.from_seed(seed="sEdTP3iaY4PE9vYm2LBCsrY4LaTpU7m")
+# input the seed that was generated from running the did_set.py
+seed = input("now, enter the seed of the account that has a DID object to delete: ")
 
+# restore an account that has an existing DID
+account_did_creator = Wallet.from_seed(seed=seed)
 
 # define the account DIDDelete transaction
 did_delete_txn = DIDDelete(account=account_did_creator.address)
