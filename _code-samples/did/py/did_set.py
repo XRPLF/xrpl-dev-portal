@@ -17,7 +17,9 @@ account_did_creator = generate_faucet_wallet(client)
 
 print("⭐successfully generated wallet")
 print("here's your seed phrase. You'll need it to modify and delete the DID set by this account/wallet")
+# it is not good practise to expose your seed.
 print(f"seed: {account_did_creator.seed}")
+
 
 # define the document associated with the DID
 document = "did:example:123#public-key-0"
