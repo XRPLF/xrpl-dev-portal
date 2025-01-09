@@ -35,9 +35,9 @@ Rippling can involve several accounts as the XRP Ledger finds a path to transfer
 
 [![Holder A transfers tokens through Issuers A and B to get to Holder B.](/docs/img/cpt-rippling5.png "Holder A transfers tokens through Issuers A and B to get to Holder B.")](/docs/img/cpt-rippling5.png)
 
-Tokens might also flow through intermediary gateway accounts to reach a holder.
+Tokens might also flow through intermediary exchanger accounts to reach a holder.
 
-[![Holder A transfers tokens through Issuers A and B and Gateway X to get to Holder B.](/docs/img/cpt-rippling6.png "Holder A transfers tokens through Issuers A and B and Gateway X to get to Holder B.")](/docs/img/cpt-rippling6.png)
+[![Holder A transfers tokens through Issuers A and B and Exchanger X to get to Holder B.](/docs/img/cpt-rippling6.png "Holder A transfers tokens through Issuers A and B and Exchanger X to get to Holder B.")](/docs/img/cpt-rippling6.png)
 
 Other accounts, such as liquidity providers and normal holders, should not allow rippling. Rippling can lead to exploits where balances shift unexpectedly, tokens are allocated at higher rates, and the holder ends up losing value on a transaction where they played no part.
 
