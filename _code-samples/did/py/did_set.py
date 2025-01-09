@@ -16,7 +16,7 @@ print("connected!!!")
 account_did_creator = generate_faucet_wallet(client)
 
 print("⭐successfully generated wallet")
-print("here's your seed phrase. You'll need it to modify and delete the DID set by this account/wallet")
+print("here's your seed. You'll need it to modify and delete the DID set by this account/wallet")
 # it is not good practise to expose your seed.
 print(f"seed: {account_did_creator.seed}")
 
