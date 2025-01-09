@@ -1038,7 +1038,7 @@ const events = [
     link: "https://xrpl.at/XRPL-Meetup-London",
     location: "London, United Kingdom",
     date: "January 30, 2025",
-    image:  require('../static/img/events/commons-france.png'),
+    image:  require('../static/img/events/commons-london.png'),
     end_date: "January 30, 2025",
   },
   {
@@ -1049,7 +1049,7 @@ const events = [
     link: "https://xrpl.at/CommunityMagazine4-Launch-Executive-Breakfast",
     location: "Paris, France",
     date: "February 5, 2025",
-    image:  require('../static/img/events/commons-london.png'),
+    image:  require('../static/img/events/commons-france.png'),
     end_date: "February 5, 2025",
   },
   {
