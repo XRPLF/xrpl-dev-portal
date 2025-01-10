@@ -254,7 +254,7 @@ export default function Index() {
               <p className="mb-10">
                 {translate('Connect at XRPL.org, a community by and for the developers ')}
                 <br className="until-sm" />
-                {translate(' and entrepeneurs who rely on the XRPL.')}
+                {translate(' and entrepreneurs who rely on the XRPL.')}
               </p>
               <Link className="btn btn-primary btn-arrow" to="/community">
                 {translate('Get Involved')}
