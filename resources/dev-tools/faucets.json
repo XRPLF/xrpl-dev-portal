@@ -25,14 +25,6 @@
             "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
         },
         {
-            "id": "faucet-select-mpt-devnet",
-            "wsUrl": "wss://mpt.devnet.rippletest.net:51233/",
-            "jsonRpcUrl": "https://mpt.devnet.rippletest.net:51234/",
-            "faucetHost": "mptfaucet.devnet.rippletest.net",
-            "shortName": "MPT-Devnet",
-            "desc": "Preview of XLS-33d Multi-Purpose Tokens amendment."
-        },
-        {
             "id": "faucet-select-batch-devnet",
             "wsUrl": "wss://batch.nerdnest.xyz",
             "jsonRpcUrl": "https://batch.rpc.nerdnest.xyz",

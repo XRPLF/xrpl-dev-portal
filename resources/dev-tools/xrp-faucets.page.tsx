@@ -133,6 +133,7 @@ async function generateFaucetCredentialsAndUpdateUI(
   const wallet = Wallet.generate()
   
   const client = new Client(selectedFaucet.wsUrl)
+  client.apiVersion = 1 // Workaround for networks that don't support APIv2
   await client.connect()
 
   try {
