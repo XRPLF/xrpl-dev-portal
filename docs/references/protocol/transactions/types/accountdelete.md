@@ -32,6 +32,7 @@ An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry
 
 | Field            | JSON Type        | [Internal Type][] | Required? | Description |
 |:-----------------|:-----------------|:------------------|:----------|:------------|
+| `CredentialIDs` | Array of Strings  | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. For details, see [Credential IDs](./payment.md#credential-ids). |
 | `Destination`    |  String - [Address][] | AccountID    | Yes       | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
 | `DestinationTag` | Number           | UInt32            | No        | Arbitrary [destination tag](../../../../concepts/transactions/source-and-destination-tags.md) that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP. |
 
