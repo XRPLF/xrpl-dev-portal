@@ -1,4 +1,4 @@
----
+-dallar ile baglantımı kes--
 html: unsubscribe.html
 parent: subscription-methods.html
 seo:
