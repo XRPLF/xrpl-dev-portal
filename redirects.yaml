@@ -133,8 +133,11 @@ get-started.html:
 run-rippled-as-a-wallet-server.html:
     to: /docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
     type: 301
+faq:
+    to: /about/faq
+    type: 301
 faq.html:
-    to: /faq
+    to: /about/faq
     type: 301
 privacy-policy.html:
     to: /about/privacy-policy
@@ -143,7 +146,7 @@ privacy-policy/:
     to: /about/privacy-policy
     type: 301
 technical-faq.html:
-    to: /faq
+    to: /about/faq
     type: 301
 introduction.html:
     to: /docs/introduction/
@@ -2437,7 +2440,10 @@ code_of_conduct.ja:
     to: /ja/docs/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
     type: 301
 /ja/faq.html:
-    to: /ja/faq
+    to: /ja/about/faq
+    type: 301
+/ja/faq:
+    to: /ja/about/faq
     type: 301
 /ja/privacy-policy.html:
     to: /ja/about/privacy-policy
@@ -2446,7 +2452,7 @@ code_of_conduct.ja:
     to: /ja/about/privacy-policy
     type: 301
 /ja/technical-faq.html:
-    to: /ja/faq
+    to: /ja/about/faq
     type: 301
 /ja/introduction.html:
     to: /ja/docs/introduction/
