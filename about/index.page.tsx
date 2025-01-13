@@ -438,7 +438,7 @@ export default function XrplOverview() {
               </div>
             ))}
             <center>
-              <a className="btn btn-primary btn-arrow mt-20" href="faq">
+              <a className="btn btn-primary btn-arrow mt-20" href="/about/faq">
                 {translate("View Full FAQ")}
               </a>
             </center>
