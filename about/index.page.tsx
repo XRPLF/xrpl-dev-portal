@@ -235,7 +235,7 @@ export default function XrplOverview() {
                   "Unlike most other blockchains, the XRP Ledger requires no mining and uses negligible energy, key to long-term growth and stability."
                 )}
               </p>
-              <a className="btn btn-primary btn-arrow" href="impact">
+              <a className="btn btn-primary btn-arrow" href="/about/impact">
                 {translate("Learn More")}
               </a>
             </div>
@@ -262,7 +262,7 @@ export default function XrplOverview() {
                   "With the XRPL, these developers are building innovative blockchain projects and applications across use cases including tokenization of assets, online gaming, asset custody, NFTs, and DeFi."
                 )}
               </p>
-              <a className="btn btn-primary btn-arrow mb-10-sm" href="uses">
+              <a className="btn btn-primary btn-arrow mb-10-sm" href="/about/uses">
                 {translate("Explore More")}
               </a>
             </div>
