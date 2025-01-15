@@ -18,7 +18,7 @@ labels:
 ほとんどの実装では、"ウォーム"ウォレットとしてスタンバイアカウントを使用します。信頼できる人間のオペレータは、スタンバイアカウントを使用してステーブルコインを運用アカウントに配布します。
 
 <div align="center">
-<img src="img/uc-stablecoin-distribution-flow.png" height="50%" width="50%"></image>
+<img src="/docs/img/uc-stablecoin-distribution-flow.png" height="50%" width="50%"></image>
 </div>
 
 運用アカウント、または「ホット」ウォレットは、XRPL上で他のアカウントと取引します。自動化されたインターネット接続システムは、これらのアドレスの秘密鍵を使用して、顧客やパートナーへの送金などの日常業務を行います。
