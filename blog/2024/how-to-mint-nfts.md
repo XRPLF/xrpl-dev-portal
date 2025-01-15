@@ -64,7 +64,7 @@ To view a list of NFTs associated with your account, simply click **Get NFTs**. 
 
 ## Burning Your NFT
 
-[Burning an NFT](https://xrpl.org/docs/tutorials/python/modular-tutorials/nfts/mint-and-burn-nfts#mint-and-burn-nfts-using-python) is the process of permanently destroying the token. To burn an NFT:
+[Burning an NFT](https://xrpl.org/docs/tutorials/python/nfts/mint-and-burn-nfts) is the process of permanently destroying the token. To burn an NFT:
 
 1. Enter the Token ID of the NFT you wish to destroy.
 2. Click **Burn NFT** to remove it permanently from the ledger.

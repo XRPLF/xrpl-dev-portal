@@ -30,7 +30,7 @@ Proposed and agreed upon by XRPL server operators, the features in this latest r
 
 Today’s release is another step in the continuous evolution of the XRPL. Feature updates, such as those being introduced today, are reviewed and voted on by the XRPL’s network operators and help improve its capabilities.
 
-[The XRP Ledger Foundation](https://xrplf.org/)—whose goal is to accelerate the development and adoption of XRPL by engaging developers—will also play an active role in maintaining XRPL’s infrastructure and default [Unique Node List (UNL)](https://xrpl.org/faq.html#validators-and-unique-node-lists) in the future.
+[The XRP Ledger Foundation](https://xrplf.org/)—whose goal is to accelerate the development and adoption of XRPL by engaging developers—will also play an active role in maintaining XRPL’s infrastructure and default [Unique Node List (UNL)](https://xrpl.org/about/faq#validators-and-unique-node-lists) in the future.
 
 “Enhancements, such as today’s improvements to memory usage, are key to growth and innovation on the Ledger,” says Bharath Chari of the XRP Ledger Foundation. “We look forward to supporting the wider ecosystem, including the superb code development by the RippleX team. Testament to this will be our focus on producing an evolving list of validators and enhancing the core code and infrastructure behind the XRP Ledger."
 
