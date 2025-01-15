@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 const moment = require("moment");
 const amaImage = require("../static/img/events/AMAs.png");
@@ -1029,6 +1029,39 @@ const events = [
     date: "December 11, 2024",
     image: townHall,
     end_date: "December 11, 2024",
+  },
+  {
+    name: "XRPL Meetup in London",
+    description:
+      "Calling all blockchain and XRP Ledger enthusiasts in London! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+    type: "meetup",
+    link: "https://xrpl.at/XRPL-Meetup-London",
+    location: "London, United Kingdom",
+    date: "January 30, 2025",
+    image:  require('../static/img/events/commons-london.png'),
+    end_date: "January 30, 2025",
+  },
+  {
+    name: "XRPL Community Magazine #4 Launch Executive Breakfast",
+    description:
+      "Join us for Launch Executive Breakfast. Connect with experts, mingle with fellow blockchain enthusiasts, and hear more about opportunities in the XRP Ledger ecosystem.",
+    type: "meetup",
+    link: "https://xrpl.at/CommunityMagazine4-Launch-Executive-Breakfast",
+    location: "Paris, France",
+    date: "February 5, 2025",
+    image:  require('../static/img/events/commons-france.png'),
+    end_date: "February 5, 2025",
+  },
+  {
+    name: "Building on the XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who are  curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://xrpl.at/Building-on-the-XRPLedger-january",
+    location: "Paris, France",
+    date: "January 27, 2025",
+    image:  require('../static/img/events/commons-building.png'),
+    end_date: "January 28, 2025",
   },
 ];
 

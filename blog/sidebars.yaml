@@ -6,6 +6,7 @@
     - group: '2024'
       expanded: false
       items:
+        - page: 2025/vulnerabilitydisclosurereport-bug-nov2024.md      
         - page: 2024/lower-reserves-are-in-effect.md
         - page: 2024/a-new-era-for-the-xrp-ledger.md
         - page: 2024/rippled-2.3.0.md

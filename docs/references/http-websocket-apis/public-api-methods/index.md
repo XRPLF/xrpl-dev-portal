@@ -91,7 +91,8 @@ Use these methods to retrieve information about the current state of the `ripple
 * **[`fee`](server-info-methods/fee.md)** - Get information about transaction cost.
 * **[`server_info`](server-info-methods/server_info.md)** - Retrieve status of the server in human-readable format.
 * **[`server_state`](server-info-methods/server_state.md)** - Retrieve status of the server in machine-readable format.
-- **[`manifest`](server-info-methods/manifest.md)** - Retrieve the latest ephemeral public key information about a known validator.
+* **[`server_definitions`](server-info-methods/server_definitions.md)** - Retrieve a list of types and fields used for the XRPL's canonical binary format.
+* **[`manifest`](server-info-methods/manifest.md)** - Retrieve the latest ephemeral public key information about a known validator.
 
 ## [Clio Methods](clio-methods/index.md)
 
