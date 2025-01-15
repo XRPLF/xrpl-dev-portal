@@ -1645,6 +1645,19 @@ report-a-scam.html:
 wallets.html:
     to: /docs/introduction/crypto-wallets
     type: 301
+blog/2014:
+    to: /blog
+    type: 301
+blog/2015:
+    to: /blog
+    type: 301
+
+blog/2020:
+    to: /blog
+    type: 301
+blog/2021:
+    to: /blog
+    type: 301
 blog/2024/rippled-2.2.0.html:
     to: /blog/2024/rippled-2.2.0
     type: 301
