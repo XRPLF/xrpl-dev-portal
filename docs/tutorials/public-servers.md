@@ -17,6 +17,7 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 | XRP Ledger Foundation | **Mainnet** | `https://xrplcluster.com/` <br> `https://xrpl.ws/` [²][] | `wss://xrplcluster.com/` <br>  `wss://xrpl.ws/` [²][] | Full history server cluster with CORS support. |
 | Ripple[¹][]   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | General purpose server cluster |
 | Ripple[¹][]   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [Full-history server](../concepts/networks-and-servers/ledger-history.md#full-history) cluster |
+| QuickNode | | **Mainnet** | `https://www.quicknode.com/chains/xrpl` | QuickNode provides hosted XRPL RPC mainnet under their free and paid plans, granting flexible and reliable access to the network.
 
 ## Test Networks
 
@@ -29,6 +30,7 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 | Ripple[¹][]   | Devnet (Clio)  | `https://clio.devnet.rippletest.net:51234/`	| `wss://clio.devnet.rippletest.net:51233/` | Devnet public server with Clio |
 | Ripple[¹][]   | Sidechain-Devnet | `https://sidechain-net2.devnet.rippletest.net:51234/` | `wss://sidechain-net2.devnet.rippletest.net:51233/` | Sidechain Devnet to test cross-chain bridge features. Devnet serves as the locking chain while this sidechain serves as the issuing chain. |
 | XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooks-enabled](https://hooks.xrpl.org/) Xahau Testnet |
+| QuickNode | | Testnet | `https://www.quicknode.com/chains/xrpl` | QuickNode provides hosted XRPL RPC testnet nodes under their free and paid plans, granting flexible and reliable access to the network.
 
 
 [Network]: ../concepts/networks-and-servers/parallel-networks.md
