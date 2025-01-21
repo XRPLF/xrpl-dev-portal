@@ -30,6 +30,12 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 | Ripple[¹][]   | Sidechain-Devnet | `https://sidechain-net2.devnet.rippletest.net:51234/` | `wss://sidechain-net2.devnet.rippletest.net:51233/` | Sidechain Devnet to test cross-chain bridge features. Devnet serves as the locking chain while this sidechain serves as the issuing chain. |
 | XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooks-enabled](https://hooks.xrpl.org/) Xahau Testnet |
 
+## RPC Ecosystem Providers
+
+| Operator  | [Networks] | Notes |
+|:----------|:------------|:-------------|:--------------|:---------------------|
+| [QuickNode](https://www.quicknode.com/chains/xrpl) | Testnet/Mainnet | QuickNode provides hosted XRPL RPC mainnet and testnet under their free and paid plans, granting flexible and reliable access to the network. |
+
 
 [Network]: ../concepts/networks-and-servers/parallel-networks.md
 [¹]: #footnote-1
