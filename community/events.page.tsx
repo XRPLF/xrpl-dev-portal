@@ -1042,17 +1042,6 @@ const events = [
     end_date: "January 30, 2025",
   },
   {
-    name: "XRPL Community Magazine #4 Launch Executive Breakfast",
-    description:
-      "Join us for Launch Executive Breakfast. Connect with experts, mingle with fellow blockchain enthusiasts, and hear more about opportunities in the XRP Ledger ecosystem.",
-    type: "meetup",
-    link: "https://xrpl.at/CommunityMagazine4-Launch-Executive-Breakfast",
-    location: "Paris, France",
-    date: "February 5, 2025",
-    image:  require('../static/img/events/commons-france.png'),
-    end_date: "February 5, 2025",
-  },
-  {
     name: "Building on the XRP Ledger",
     description:
       "This 2-day intensive hands-on training is designed for developers who are  curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
