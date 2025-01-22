@@ -16,7 +16,7 @@ labels:
 
 トラストラインとは、XRP Ledgerにおける[トークン](../index.md)を保持するための仕組みを指します。トラストラインは、XRP Ledgerのルールである「不要なトークンを他者に保有させることはできない」という原則を強制するものです。この制限は、XRP Ledgerのユースケースである[コミュニティクレジット](../index.md#コミュニティクレジット)などを実現するために不可欠なものです。
 
-トラストラインは[RippleState](../../references/protocol/ledger-data/ledger-entry-types/ripplestate)オブジェクトとして定義されます。それぞれのトラストラインは、以下のような _双方向_ の関係から成り立っています。
+トラストラインは[RippleState](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)オブジェクトとして定義されます。それぞれのトラストラインは、以下のような _双方向_ の関係から成り立っています。
 
 - トラストラインが接続する **2つの[アカウント](../../accounts/index.md)** の識別子
 - 一方のアカウントから見てプラス、他方のアカウントから見てマイナスとなる、単一の共有された**残高**
