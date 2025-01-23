@@ -7,6 +7,7 @@
       expanded: false
       items:
         - page: 2025/vulnerabilitydisclosurereport-bug-nov2024.md
+        - page: 2025/devnet-reset.md
     - group: '2024'
       expanded: false
       items:
