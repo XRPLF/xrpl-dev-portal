@@ -47,7 +47,7 @@ rm -r /var/lib/rippled/db/*
 systemctl restart rippled.service
 ```
 
-You will also have to update the `[validator_list_keys]` keys stanza in your `validators.txt` file:
+You will also have to update the `[validator_list_keys]` keys stanza in your `validators.txt` file with a new key, as in the following example:
 
 ```
 [validator_list_sites]
