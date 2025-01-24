@@ -23,7 +23,7 @@ The reset has completed successfully. Devnet is online and fully operational.
 
 Ripple operates Clio servers on Devnet to help the community access validated ledger data efficiently. Clio handles API calls better and stores data in a more space-efficient format than `rippled` servers, ultimately reducing the load on the network.
 
-The virtual machines we're running the Clio servers from are nearing storage capacity. In order to continue serving the community, Devnet will be reset to clear the Clio databases.
+The virtual machines running the Clio servers are nearing storage capacity. In order to continue serving the community, Devnet will be reset to clear the Clio databases.
 
 ## Impact
 
