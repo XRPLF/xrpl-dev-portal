@@ -236,10 +236,21 @@
         - page: docs/tutorials/php/index.md
           expanded: false
           items:
-            - page: docs/tutorials/php/build-apps/index.md
+            - page: docs/tutorials/php/ecourty_xrpl-php/index.md
               expanded: false
               items:
-                - page: docs/tutorials/php/build-apps/get-started.md
+                - page: docs/tutorials/php/ecourty_xrpl-php/build-apps/create-a-wallet.md
+                - page: docs/tutorials/php/ecourty_xrpl-php/build-apps/import-a-wallet.md
+                - page: docs/tutorials/php/ecourty_xrpl-php/build-apps/fund-a-test-wallet.md
+                - page: docs/tutorials/php/ecourty_xrpl-php/build-apps/submit-transactions/index.md
+                  expanded: false
+                  items:
+                    - page: docs/tutorials/php/ecourty_xrpl-php/build-apps/submit-transactions/send-a-payment.md
+                    - page: docs/tutorials/php/ecourty_xrpl-php/build-apps/submit-transactions/mint-an-nft.md
+            - page: docs/tutorials/php/hardcastle_xrpl_php/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/php/hardcastle_xrpl_php/build-apps/get-started.md
         - page: docs/tutorials/http-websocket-apis/index.md
           expanded: false
           items:
