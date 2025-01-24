@@ -862,7 +862,7 @@ Return an `MPToken` object.
 
 | Field                     | Type             | Description |
 |:--------------------------|:-----------------|:------------|
-| `mptoken`                 | ️Object or String | If a string, interpret as ledger entry ID of the MPToken to retrieve. If an object, requires the sub-fields `account` and `mpt_issuance_id` to unique identify the MPToken. |
+| `mptoken`                 | ️Object or String | If a string, interpret as ledger entry ID of the MPToken to retrieve. If an object, requires the sub-fields `account` and `mpt_issuance_id` to uniquely identify the MPToken. |
 | `mptoken.mpt_issuance_id` | String           | (Required if the `MPToken` is specified as an object) The 192-bit MPTokenIssuanceID that's associated with the MPTokenIssuance. |
 | `mptoken.account` ️        | String           | (Required if the `MPToken` is specified as an object) The account that owns the MPToken. |
 
