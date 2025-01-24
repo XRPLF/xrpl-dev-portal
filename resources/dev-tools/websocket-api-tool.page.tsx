@@ -22,7 +22,7 @@ import { CommandGroup, CommandMethod } from './components/websocket-api/types';
 
 import commandList from "./components/websocket-api/data/command-list.json";
 import connections from "./components/websocket-api/data/connections.json";
-import { Loader } from './components/Loader';
+import XRPLoader from '../../@theme/components/XRPLoader';
 
 export const frontmatter = {
   seo: {
@@ -245,7 +245,7 @@ export function WebsocketApiTool() {
                   {sendLoading && (
                     <div className="input-group loader send-loader">
                       <span className="input-group-append">
-                        <Loader />
+                        <XRPLoader show={true} />
                       </span>
                     </div>
                   )}
@@ -274,7 +274,7 @@ export function WebsocketApiTool() {
                   {wsLoading && (
                     <div className="input-group loader connect-loader">
                       <span className="input-group-append">
-                        <Loader />
+                        <XRPLoader show={true} />
                       </span>
                     </div>
                   )}
