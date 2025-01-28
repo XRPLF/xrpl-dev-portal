@@ -53,3 +53,5 @@ All three parties need XRP Ledger accounts. The flow works as follows:
 Importantly, the documents that Alice sends to Isabel can include personally identifiable or private information that's needed to verify Alice's identity, but this information is never published or stored on the blockchain and Verity does not need to see it. Also, other businesses that trust Isabel can accept the same credentials so Alice does not need to repeatedly re-verify for every party she wants to interact with.
 
 To revoke a credential, Isabel can delete it from the ledger. Alice can also delete her own credentials.
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
