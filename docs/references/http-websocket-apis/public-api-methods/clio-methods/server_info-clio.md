@@ -7,12 +7,13 @@ labels:
   - Core Server
 ---
 # server_info
+
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "Source")
 
 The `server_info` command asks the [Clio server](../../../../concepts/networks-and-servers/the-clio-server.md) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](../server-info-methods/server_info.md) instead. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.0.0" %}New in: Clio v1.0.0{% /badge %}
 
-
 ## Request Format
+
 An example of the request format:
 
 {% tabs %}
@@ -569,12 +570,7 @@ The `info` object may have some arrangement of the following fields:
 |:------------------------------------|:----------------|:---------------------|
 | `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
 | `counters`                          | Object          | _(May be omitted)_ Stats on API calls handled since server startup. This is present only if the client connects to the Clio server over `localhost`.
-| `rpc`                               | Object          | _(May be omitted)_ Stats on each API call handled by the Clio server since startup. Since this is nested within the `counters` object, this is also present only if the client connects to the Clio server over `localhost`. |
-| `rpc.*.started`                     | Number          | Number of API calls of this type that the Clio server has started processing since startup. |
-| `rpc.*.finished`                    | Number          | Number of API calls of this type that the Clio server has finished processing since startup. |
-| `rpc.*.errored`                     | Number          | Number of API calls of this type that have resulted in some sort of error since startup.  |
-| `rpc.*.forwarded`                   | Number          | Number of API calls of this type that the Clio server has forwarded to a `rippled` P2P server since startup. |
-| `rpc.*.duration_us`                 | Number          | The total number of microseconds spent processing API calls of this type since startup. |
+| `rpc`                               | Object          | _(May be omitted)_ Stats on each API call handled by the Clio server since startup. Since this is nested within the `counters` object, this is also present only if the client connects to the Clio server over `localhost`. The rpc object is a map of API method names to [API Stats Objects](#api-stats-objects). |
 | `subscriptions`                     | Object          | _(May be omitted)_ Number of current subscribers for each stream type.  Since this is nested within the `counters` object, this is also present only if the client connects to the Clio server over `localhost`. |
 | `subscriptions.ledger`              |                 |   |
 | `subscriptions.transactions`        |                 |   |
@@ -619,6 +615,17 @@ The `info` object may have some arrangement of the following fields:
 | `validated`                         | Boolean         |  When true, this indicates that the response uses a ledger version that has been validated by consensus. In Clio, this is always true as Clio stores and returns validated ledger data. If a request was forwarded to `rippled` and the server returns current data, a missing or false value indicates that this ledger's data is not final. |
 | `status`                            | String          |  Returns the status of the API request: `success` when the request completes successfully. |
 
+### API Stats Objects
+
+An API Stats object provides key metrics for every API call handled by the Clio server since startup. It includes the following fields:
+
+| `Field`       | Type   | Description                                                                                                  |
+| :------------ | :----- | :----------------------------------------------------------------------------------------------------------- |
+| `started`     | Number | Number of API calls of this type that the Clio server has started processing since startup.                  |
+| `finished`    | Number | Number of API calls of this type that the Clio server has finished processing since startup.                 |
+| `errored`     | Number | Number of API calls of this type that have resulted in some sort of error since startup.                     |
+| `forwarded`   | Number | Number of API calls of this type that the Clio server has forwarded to a `rippled` P2P server since startup. |
+| `duration_us` | Number | The total number of microseconds spent processing API calls of this type since startup.                      |
 
 ## Possible Errors
 
