@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: 2025-01-27
+date: 2025-01-29
 seo:
     title: Introducing XRP Ledger version 2.3.1
     description: rippled version 2.3.1 is now available. This version introduces new features and stability fixes.
@@ -12,7 +12,7 @@ markdown:
 ---
 # Introducing XRP Ledger version 2.3.1
 
-Version 2.3.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes bug fixes and updates.
+Version 2.3.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes bug fixes and updates for peer charges.
 
 ## Action Required
 
@@ -47,10 +47,11 @@ Date:   Mon Nov 25 12:27:17 2024 -0800
 
 ### Bug Fixes and Updates
 
-- A fix for an erroneous high fee penalty that peers could incur for sending older transactions.
-- An update to the fees charged for imposing a load on the server.
-- A fix to prevent the relaying of internal pseudo-transactions. Previously, psuedo-transactions received from a peer failed the signature check, even if they were requested (using TMGetObjectByHash), because they had no signature. This caused the peer to be charged for an invalid signature. With the fix, pseudo-transactions are placed in the global cache (TransactionMaster) only. If the transaction is not part of a TMTransactions batch, the peer is charged an unwanted data fee. These fees will not be a problem in the normal course of operations, but should dissuade peers from sending a bunch of unwanted transactions.
-- Improved logging now specifies the reason for the fee charged to the peer.
+- Reduce peer charges for well-behaved peers. ([#5243](https://github.com/XRPLF/rippled/pull/5243))
+  - Fix an erroneous high fee penalty that some peers could incur for sending older transactions.
+  - Update the fees charged for imposing a load on the server.
+  - Fix to prevent interal pseudo-transactions from relaying. Previously, pseudo-transcations received from a peer failed the signature check because they had no signature--even if they were requested using `TMGetObjectByHash`. This caused the peer to be charged for an invalid signature. This fix places pseudo-transactions only in the global cache (TransactionMaster). If the transaction is not part of a `TMTransactions` batch, the peer is charged an unwanted data fee. These fees won't be a problem in the normal course of operations, but should dissuade peers from sending many unwanted transactions.
+  - Improve logging to specify the reason for fees charged to a peer.
 
 ## Credits
 
