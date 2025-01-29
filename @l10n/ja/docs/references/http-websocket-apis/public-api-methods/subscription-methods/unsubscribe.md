@@ -45,7 +45,7 @@ labels:
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#unsubscribe)
+{% try-it method="unsubscribe" /%}
 
 このリクエストのパラメーターは、[subscribeメソッド][]のパラメーターとほぼ同様の方法で指定されますが、終了するサブスクリプションを定義するために使用される点が異なります。これらのパラメーターを以下に示します。
 

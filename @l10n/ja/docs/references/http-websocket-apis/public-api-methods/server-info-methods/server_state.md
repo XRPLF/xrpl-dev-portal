@@ -49,7 +49,7 @@ rippled server_state
 
 {% /tabs %}
 
-[試してみる>](/resources/dev-tools/websocket-api-tool#server_state)
+{% try-it method="server_state" /%}
 
 リクエストはパラメーターをとりません。
 

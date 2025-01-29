@@ -51,7 +51,7 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#transaction_entry)
+{% try-it method="transaction_entry" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

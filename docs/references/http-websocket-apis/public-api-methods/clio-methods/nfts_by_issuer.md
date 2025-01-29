@@ -22,7 +22,7 @@ An example of the request format:
 }
 ```
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#nfts_by_issuer)
+{% try-it method="nfts_by_issuer" /%}
 
 The request contains the following parameters:
 

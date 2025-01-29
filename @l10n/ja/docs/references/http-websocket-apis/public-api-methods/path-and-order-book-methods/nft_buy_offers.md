@@ -44,7 +44,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#nft_buy_offers)
+{% try-it method="nft_buy_offers" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

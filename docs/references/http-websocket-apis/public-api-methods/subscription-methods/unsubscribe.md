@@ -46,7 +46,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#unsubscribe)
+{% try-it method="unsubscribe" /%}
 
 The parameters in the request are specified almost exactly like the parameters to the [subscribe method][], except that they are used to define which subscriptions to end instead. The parameters are:
 

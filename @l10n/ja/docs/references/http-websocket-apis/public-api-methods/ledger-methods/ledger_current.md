@@ -46,7 +46,7 @@ rippled ledger_current
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_current)
+{% try-it method="ledger_current" /%}
 
 このリクエストにはパラメーターは含まれていません。
 

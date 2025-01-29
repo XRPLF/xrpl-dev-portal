@@ -39,7 +39,7 @@ labels:
 
 {% /tabs %}
 
-<!-- [Try it! >](websocket-api-tool.html#server_info) -->
+{% try-it method="server_info" server="s1" /%}
 
 リクエストにパラメーターは含みません。
 

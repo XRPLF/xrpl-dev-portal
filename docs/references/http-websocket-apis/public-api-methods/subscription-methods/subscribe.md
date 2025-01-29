@@ -62,7 +62,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#subscribe)
+{% try-it method="subscribe" /%}
 
 The request includes the following parameters:
 

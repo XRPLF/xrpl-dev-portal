@@ -33,6 +33,8 @@ Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tok
 }
 ```
 
+{% tx-example txid="BE72A46233F91C71030DC88D8D86077D37FD98223E9114A46180C09FC5C11E5B" /%}
+
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field        | JSON Type | [Internal Type][] | Required? | Description |

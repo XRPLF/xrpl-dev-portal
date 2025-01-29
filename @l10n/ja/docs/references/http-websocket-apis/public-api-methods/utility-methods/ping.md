@@ -45,7 +45,7 @@ rippled ping
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ping)
+{% try-it method="ping" /%}
 
 リクエストにはパラメーターが含まれていません。
 

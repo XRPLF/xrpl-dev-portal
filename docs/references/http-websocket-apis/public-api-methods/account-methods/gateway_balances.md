@@ -61,6 +61,8 @@ rippled json gateway_balances ' {"account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"
 
 {% /tabs %}
 
+{% try-it method="gateway_balances" /%}
+
 The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |

@@ -52,6 +52,8 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 
 {% /tabs %}
 
+{% try-it method="account_channels" /%}
+
 The request includes the following parameters:
 
 | Field                 | Type                 | Required? | Description |

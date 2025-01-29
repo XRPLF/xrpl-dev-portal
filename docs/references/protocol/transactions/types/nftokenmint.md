@@ -38,7 +38,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

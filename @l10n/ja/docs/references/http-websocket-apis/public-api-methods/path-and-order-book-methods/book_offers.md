@@ -65,7 +65,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#book_offers)
+{% try-it method="book_offers" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

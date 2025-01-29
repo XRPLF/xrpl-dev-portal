@@ -26,7 +26,7 @@ A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Nu
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_TicketCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22738AEF36B48CA4A2D85C2B74910DC34DDBBCA4C83643F2DB84A58785ED5AD3E3%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="738AEF36B48CA4A2D85C2B74910DC34DDBBCA4C83643F2DB84A58785ED5AD3E3" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->

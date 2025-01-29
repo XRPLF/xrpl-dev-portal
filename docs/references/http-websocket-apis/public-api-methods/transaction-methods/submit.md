@@ -64,7 +64,7 @@ submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#submit)
+{% try-it method="submit" /%}
 
 
 ## Sign-and-Submit Mode
@@ -159,7 +159,7 @@ rippled submit s█████████████████████�
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#submit)
+{% try-it method="submit" /%}
 
 ## Response Format
 

@@ -52,6 +52,8 @@ An example of the request format:
 
 {% /tabs %}
 
+{% try-it method="noripple_check" /%}
+
 
 The request includes the following parameters:
 

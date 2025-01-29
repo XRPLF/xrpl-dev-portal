@@ -41,7 +41,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_index)
+{% try-it method="ledger_index" /%}
 
 The request can contain the following parameters:
 
