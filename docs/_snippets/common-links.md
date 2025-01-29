@@ -1,5 +1,6 @@
 [AMM amendment]: /resources/known-amendments.md#amm
 [AMM entry]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
+[AMMClawback amendment]: /resources/known-amendments.md#ammclawback
 [AMM object]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
 [AMMエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
 [AMMオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
@@ -7,6 +8,7 @@
 [AMMBid transactions]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBid]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBidトランザクション]: /docs/references/protocol/transactions/types/ammbid.md
+[AMMClawback transaction]: /docs/references/protocol/transactions/types/ammclawback.md
 [AMMCreate transaction]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate transactions]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate]: /docs/references/protocol/transactions/types/ammcreate.md
