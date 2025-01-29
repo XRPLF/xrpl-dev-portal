@@ -254,6 +254,16 @@ NFTを含むトランザクション（`tx`と`account_tx`）はメタデータ�
 | `nftoken_ids`       | 配列                       | トランザクションの結果、レジャー上で変更された`NFToken`のすべての`NFTokenID`を表示します。トランザクションが `NFTokenCancelOffer`の場合のみ表示されます。 |
 | `offer_id`          | 文字列                      | `NFTokenCreateOffer`トランザクションからのレスポンスに、新しい`NFTokenOffer`の`OfferID`を表示します。 |
 
+## MPTのフィールド
+
+### 合成されたmpt_issuance_idフィールド
+
+`MPTokenIssuanceID`は、RPCで`MPTokenIssuance`を指定するための識別子です。サーバはAPIレスポンスに合成された`mpt_issuance_id`フィールドを追加して、`MPTokenIssuanceID`のクライアントサイド解析の必要性を回避します。
+
+### トランザクションのメタデータ
+
+`MPTokenIssuanceCreate`トランザクションの成功したすべてのJSONトランザクションメタデータに合成された`mpt_issuance_id`フィールドが提供されます(バイナリでは利用できません)。次のAPIが影響を受けます。 `tx`,`account_tx`,`subscribe`,`ledger`
+
 ## delivered_amount
 
 [Paymentトランザクション][]によって`Destination`に実際送金された金額を表します。トランザクションが成功すると、**[Partial Payments](../../../concepts/payment-types/partial-payments.md)であった場合を除いて、** 宛先は当該の金額を受取ります（Partial Paymentsの場合、`Amount`を上限とする正の金額が受取られます）。`Amount`フィールドを信頼するかどうかを選択するのではなく、メタデータの`delivered_amount`フィールドを使用して、宛先に実際に到達する金額を確認してください。
