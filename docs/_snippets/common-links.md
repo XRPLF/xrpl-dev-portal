@@ -394,6 +394,7 @@
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
 [fixMasterKeyAsRegularKey amendment]: /resources/known-amendments.md#fixmasterkeyasregularkey
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
+[fixNFTokenPageLinks amendment]: /resources/known-amendments.md#fixnftokenpagelinks
 [fixNFTokenRemint amendment]: /resources/known-amendments.md#fixnftokenremint
 [fixPayChanRecipientOwnerDir amendment]: /resources/known-amendments.md#fixpaychanrecipientownerdir
 [fixPreviousTxnID amendment]: /resources/known-amendments.md#fixprevioustxnid
