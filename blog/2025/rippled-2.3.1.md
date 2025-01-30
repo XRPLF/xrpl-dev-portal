@@ -3,7 +3,7 @@ category: 2025
 date: 2025-01-30
 seo:
     title: Introducing XRP Ledger version 2.3.1
-    description: rippled version 2.3.1 is now available. This version introduces new features and stability fixes.
+    description: rippled version 2.3.1 is now available. This version includes stability fixes.
 labels:
     - rippled Release Notes
 markdown:
