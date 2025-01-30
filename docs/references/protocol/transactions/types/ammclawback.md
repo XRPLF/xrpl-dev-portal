@@ -5,7 +5,7 @@
 
 _(Added by the [AMM amendment][])_
 
-Claw back tokens from a holder that has deposited your issued tokens into an AMM pool.
+Claw back tokens from a holder who has deposited your issued tokens into an AMM pool.
 
 Clawback is disabled by default. To use clawback, you must send an [AccountSet transaction](https://xrpl.org/docs/references/protocol/transactions/types/accountset) to enable the **Allow Trust Line Clawback** setting. An issuer with any existing tokens cannot enable clawback. You can only enable **Allow Trust Line Clawback** if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists. After you enable clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.
 
@@ -39,10 +39,10 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 
 | Field              | JSON Type | [Internal Type][] | Required | Description |
 |:-------------------|:----------|:------------------|:---------|:------------------|
-| `Account` | String | AccountID | Yes | The issuer of the asset being clawed back. This field must match the account submitting the transaction. |
+| `Account` | String | AccountID | Yes | The issuer of the asset being clawed back. Only the issuer can submit this transaction. |
 | `Asset`   | Object | STIssue   | Yes | Specifies the asset that the issuer wants to claw back from the AMM pool. In JSON, this is an object with `currency` and `issuer` fields. The `issuer` field must match with `Account`. |
 | `Asset2`  | Object | STIssue   | Yes | Specifies the other asset in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
-| `Amount`  | [Currency Amount](https://xrpl.org/docs/references/protocol/data-types/basic-data-types#specifying-currency-amounts) | Amount | No | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield exceeds the holder's available tokens in the AMM, all of the holder's tokens will be clawed back. |
+| `Amount`  | [Currency Amount](https://xrpl.org/docs/references/protocol/data-types/basic-data-types#specifying-currency-amounts) | Amount | No | The maximum amount to claw back from the AMM account. The `currency` and `issuer` subfields should match the `Asset` subfields. If this field isn't specified, or the `value` subfield exceeds the holder's available tokens in the AMM, all of the holder's tokens are clawed back. |
 | `Holder`  | String | AccountID | Yes | The account holding the asset to be clawed back. |
 
 
