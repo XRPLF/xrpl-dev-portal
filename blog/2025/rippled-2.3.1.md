@@ -12,7 +12,9 @@ markdown:
 ---
 # Introducing XRP Ledger version 2.3.1
 
-Version 2.3.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes bug fixes and updates for peer charges.
+Version 2.3.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. 
+
+This release fixes an ongoing issue where normal peer traffic is charged incorrectly, causing peers to be disconnected inappropriately during normal operations. This affects network connectivity and the ability of some UNL validators to reach consensus with the others.
 
 ## Action Required
 
