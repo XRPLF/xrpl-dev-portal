@@ -1,0 +1,309 @@
+<html>
+<!-- Add Signers list -->
+<head>
+  <title>Account Configurator</title>
+  <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      padding: 20px;
+      background: #abe2ff;
+    }
+
+    h1 {
+      font-weight: bold;
+    }
+
+    input,
+    button {
+      padding: 6px;
+      margin-bottom: 8px;
+      border: none
+    }
+
+    button {
+      font-weight: bold;
+      font-family: "Work Sans", sans-serif;
+      background-color: #006aff;
+      -webkit-text-fill-color: white;
+    }
+
+   
+
+    td {
+      vertical-align: middle;
+    }
+  </style>
+  <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
+  <script src='account-configurator.js'></script>
+  <script>
+    if (typeof module !== "undefined") {
+      const xrpl = require('xrpl')
+    }
+
+  </script>
+</head>
+
+<!-- ************************************************************** -->
+<!-- ********************** The Form ****************************** -->
+<!-- ************************************************************** -->
+
+<body>
+  <h1>Account Configurator</h1>
+  <form id="theForm">
+    Choose your ledger instance:
+    &nbsp;&nbsp;
+    <input type="radio" id="mn" name="server" value="wss://xrplcluster.com/">
+    <label for="mainnet">Mainnet</label>
+    &nbsp;&nbsp;
+    <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233" checked>
+    <label for="testnet">Testnet</label>
+    &nbsp;&nbsp;
+    <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233">
+    <label for="devnet">Devnet</label><br />
+    <table>
+      <tr valign="top">
+        <td>
+          <table>
+            <tr valign="top">
+              <td align="right">
+                Account
+              </td>
+              <td>
+                <input type="text" id="accountField" size="40"></input>
+              </td>
+              <td>
+                <button type="button" onClick="getAccount()">Get New Account</button>
+              </td>
+            </tr>
+            <tr>
+              <td align="right">
+                Seed
+              </td>
+              <td>
+                <input type="text" id="seedField" size="40"></input>
+              </td>
+              <td>
+                <button type="button" onClick="getAccountFromSeed()">Get Account From Seed</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>           
+              <td>
+                <button type="button" onClick="getAccountInfo()">Get Account Info</button>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                Account Configuration Templates:
+                &nbsp;&nbsp;
+                <input type="radio" id="hd" name="accountType" value="hd" onclick="setHolder()">
+                <label for="hd" background="green">Holder</label>
+                &nbsp;&nbsp;
+                <input type="radio" id="ex" name="accountType" value="ex" onclick="setExchanger()">
+                <label for="ex">Exchanger</label>
+                &nbsp;&nbsp;
+                <input type="radio" id="is" name="accountType" value="is" onclick="setIssuer()">
+                <label for="issuer">Issuer</label>
+                &nbsp;&nbsp;
+                    <button type="button" onClick="configureAccount()">Configure Account</button>
+                  </td>
+                </tr>
+              </td>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div id="issuer_additional_fields">
+      <table>
+        <tr valign="top">
+          <td align="right">
+            Domain
+          </td>
+          <td>
+            <input type="text" id="domainField" size="40"></input>
+          </td>
+          <td>
+            A web address.
+          </td>
+        </tr>
+        <tr>
+          <td align="right">
+            Transfer Rate
+          </td>
+          <td>
+            <input type="text" id="transferRateField" size="40"></input>
+          </td>  
+          <td>
+            A value between 1000000000 and 2000000000, inclusive.
+          </td>        
+        </tr>
+        <tr>
+          <td align="right">
+            Tick Size
+          </td>
+          <td>
+            <input type="text" id="tickSizeField" size="40"></input>
+          </td>
+          <td>
+            Valid values are 3 to 15, inclusive, or 0 to disable.
+          </td>        
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right">
+            Signer1 Account
+          </td>
+          <td>
+            <input type="text" id="signer1AccountField" size="40"></input>
+          </td>
+          <td>Signer1 Weight&nbsp;&nbsp;
+            <input type="text" id="signer1WeightField" size="5"></input>
+          </td>
+          <td>
+            <button type="button" onClick="removeSigners()">Remove Signers</button>
+          </td>      
+        </tr>
+        <tr>
+          <td align="right">
+            Signer2 Account
+          </td>
+          <td>
+            <input type="text" id="signer2AccountField" size="40"></input>
+          </td>
+          <td>Signer2 Weight&nbsp;&nbsp;
+            <input type="text" id="signer2WeightField" size="5"></input>
+          </td>        
+        </tr>
+        <tr>
+          <td align="right">
+            Signer3 Account</td>
+            <td>
+            <input type="text" id="signer3AccountField" size="40"></input>
+          </td>
+          <td>Signer3 Weight&nbsp;&nbsp;
+            <input type="text" id="signer3WeightField" size="5"></input>
+          </td>        
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>Signer Quorum&nbsp;&nbsp;
+            <input type="text" id="signerQuorumField" size="5"></input>
+          </td>        
+        </tr>
+      </table>
+    </div>
+    <div id="account_flags">
+    <table>
+      <tr>
+        <td>
+          defaultRipple
+        </td>
+        <td>
+          <input type='checkbox' id="defaultRipple"></input></br>
+        </td>
+        <td>
+          Allow rippling on trust lines by default.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          allowTrustLineClawback
+        </td>
+        <td>
+          <input type='checkbox' id='allowTrustLineClawback'></input></br>
+        </td>
+        <td>
+          Allow clawback of tokens on trust lines to the account.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          depositAuth
+        </td>
+        <td>
+          <input type='checkbox' id='depositAuth'></input></br>
+        </td>
+        <td>
+          Use Deposit Authorization to deny payments from unknown third parties.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          disableMasterKey
+        </td>
+        <td>
+          <input type='checkbox' id='disableMasterKey'></input>
+        </td>
+        <td>
+          Disable the account master key pair.
+        </td>
+      </tr>
+      <tr>
+        <td>disallowIncomingCheck</td>
+        <td><input type='checkbox' id='disallowIncomingCheck'></input></td>
+        <td>Prevent other accounts from sending checks to the account.</td>
+      </tr>
+      <tr>
+        <td>disallowIncomingNFTokenOffer</td>
+        <td><input type='checkbox' id='disallowIncomingNFTokenOffer'></input></td>
+        <td>Prevent other accounts from sending NFT buy or sell offers to the account.</td>
+      </tr>
+      <tr>
+        <td>disallowIncomingPayChan</td>
+        <td><input type='checkbox' id='disallowIncomingPayChan'></input></td>
+        <td>Prevent other accounts from creating payment channels to the account.</td>
+      </tr>
+      <tr>
+        <td>disallowIncomingTrustline</td>
+        <td><input type='checkbox' id='disallowIncomingTrustline'></input></td>
+        <td>Prevent other accounts from creating trust lines to the account.</td>
+      </tr>
+      <tr>
+        <td>disallowIncomingXRP</td>
+        <td><input type='checkbox' id='disallowIncomingXRP'></input></td>
+        <td>Prevent other accounts from sending XRP to the account. (This is advisory, and not enforced at the protocol
+          level.)</td>
+      </tr>
+      <tr>
+        <td>globalFreeze</td>
+        <td><input type='checkbox' id='globalFreeze'></input></td>
+        <td>Freeze all tokens issued by the account.</td>
+      </tr>
+      <tr>
+        <td>noFreeze</td>
+        <td><input type='checkbox' id='noFreeze'></input></td>
+        <td>Permanently remove the ability to freeze individual trust lines or end a global freeze.</td>
+      </tr>
+      <tr>
+        <td>requireAuthorization</td>
+        <td><input type='checkbox' id='requireAuthorization'></input></td>
+        <td>The account requires authorized trust lines for other accounts to hold tokens it issues.</td>
+      </tr>
+      <tr>
+        <td>requireDestinationTag</td>
+        <td><input type='checkbox' id='requireDestinationTag'></input></td>
+        <td>The account requires a destination tag on all payments it receives.</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    </div>
+    <textarea id="resultField" cols="80" rows="15"></textarea>
+  </form>
+</body>
+</html>
