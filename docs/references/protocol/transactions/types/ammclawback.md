@@ -1,9 +1,8 @@
 # AMMClawback
 
-<!--> Add link to github source after feature is merged into devnet. <-->
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMClawback.cpp "Source")
 
-_(Added by the [AMM amendment][])_
+_(Added by the [AMMClawback amendment][])_
 
 Claw back tokens from a holder who has deposited your issued tokens into an AMM pool.
 
