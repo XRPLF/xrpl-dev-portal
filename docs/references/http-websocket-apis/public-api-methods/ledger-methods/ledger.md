@@ -56,7 +56,7 @@ rippled ledger validated
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger)
+{% try-it method="ledger" server="xrplcluster" /%}
 
 The request can contain the following parameters:
 

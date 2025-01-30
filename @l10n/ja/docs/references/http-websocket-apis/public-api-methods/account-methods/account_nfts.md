@@ -44,7 +44,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#account_nfts)
+{% try-it method="account_nfts" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

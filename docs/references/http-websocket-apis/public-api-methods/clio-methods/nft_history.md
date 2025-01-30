@@ -44,7 +44,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#nft_history)
+{% try-it method="nft_history" /%}
 
 The request contains the following parameters:
 

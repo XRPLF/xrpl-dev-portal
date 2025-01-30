@@ -56,7 +56,7 @@ rippled ledger current
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger)
+{% try-it method="ledger" server="xrplcluster" /%}
 
 リクエストには以下のパラメーターを含めることができます。
 

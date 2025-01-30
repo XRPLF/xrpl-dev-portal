@@ -62,7 +62,7 @@ labels:
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#subscribe)
+{% try-it method="subscribe" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

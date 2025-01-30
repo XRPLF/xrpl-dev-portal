@@ -28,7 +28,7 @@ Clioサーバはデフォルトで検証済みのレジャーデータを返す�
 
 {% /tabs %}
 
-<!-- [Try it! >](websocket-api-tool.html#ledger) -->
+{% try-it method="ledger" server="s1" /%}
 
 リクエストには以下のパラメータを含めることができます。
 

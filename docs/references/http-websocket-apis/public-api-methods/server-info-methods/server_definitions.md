@@ -37,7 +37,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#server_definitions)
+{% try-it method="server_definitions" /%}
 
 The request does not take any parameters.
 

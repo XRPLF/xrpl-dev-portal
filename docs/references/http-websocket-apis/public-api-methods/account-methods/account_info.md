@@ -54,7 +54,7 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#account_info)
+{% try-it method="account_info" /%}
 
 The request contains the following parameters:
 

@@ -40,7 +40,7 @@ An example of the request format:
 
 {% /tabs %}
 
-<!-- [Try it! >](websocket-api-tool.html#server_info) -->
+{% try-it method="server_info" server="s1" /%}
 
 The request does not take any parameters.
 

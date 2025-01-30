@@ -49,7 +49,7 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#account_lines)
+{% try-it method="account_lines" /%}
 
 The request accepts the following parameters:
 

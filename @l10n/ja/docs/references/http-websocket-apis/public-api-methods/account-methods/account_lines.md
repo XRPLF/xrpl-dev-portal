@@ -49,7 +49,7 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#account_lines)
+{% try-it method="account_lines" /%}
 
 リクエストには以下のパラメーターを指定できます。
 

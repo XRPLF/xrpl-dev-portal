@@ -44,7 +44,7 @@ rippled version
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#version)
+{% try-it method="version" /%}
 
 The request does not takes any parameters.
 

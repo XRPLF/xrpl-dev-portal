@@ -49,7 +49,7 @@ rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#account_offers)
+{% try-it method="account_offers" /%}
 
 A request can include the following parameters:
 

@@ -355,8 +355,8 @@
                 - page: docs/references/protocol/transactions/types/index.md
                   expanded: false
                   items:
-                    - page: docs/references/protocol/transactions/types/accountset.md
                     - page: docs/references/protocol/transactions/types/accountdelete.md
+                    - page: docs/references/protocol/transactions/types/accountset.md
                     - page: docs/references/protocol/transactions/types/ammbid.md
                     - page: docs/references/protocol/transactions/types/ammclawback.md
                     - page: docs/references/protocol/transactions/types/ammcreate.md

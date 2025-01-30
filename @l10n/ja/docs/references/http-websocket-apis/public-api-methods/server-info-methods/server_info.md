@@ -45,7 +45,7 @@ rippled server_info
 
 {% /tabs %}
 
-[試してみる>](/resources/dev-tools/websocket-api-tool#server_info)
+{% try-it method="server_info" /%}
 
 リクエストにパラメーターは何も含まれません。
 

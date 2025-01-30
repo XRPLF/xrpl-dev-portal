@@ -49,6 +49,8 @@ labels:
 
 {% /tabs %}
 
+{% try-it method="noripple_check" /%}
+
 {% admonition type="info" name="注記" %}このメソッドのコマンドライン構文はありません。コマンドラインからアクセスするには[jsonメソッド][]を使用してください。{% /admonition %}
 
 リクエストには以下のパラメーターが含まれます。

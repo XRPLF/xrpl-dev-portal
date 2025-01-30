@@ -50,7 +50,7 @@ rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#account_currencies)
+{% try-it method="account_currencies" /%}
 
 The request includes the following parameters:
 

@@ -100,7 +100,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-by-object-id)
+{% try-it method="ledger_entry-by-object-id" /%}
 
 {% admonition type="success" name="Tip" %}
 You can use this type of request to get any singleton ledger entry, if it exists in the ledger data, because its ID is always the same. For example:
@@ -157,7 +157,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-accountroot)
+{% try-it method="ledger_entry-accountroot" /%}
 
 
 
@@ -225,7 +225,7 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+{% try-it method="ledger_entry-amm" server="testnet" /%}
 
 
 ### Get Bridge Entry
@@ -296,7 +296,7 @@ rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuq
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-bridge)
+{% try-it method="ledger_entry-bridge" server="devnet" /%}
 
 
 ### Get Credential Entry
@@ -348,7 +348,7 @@ rippled json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4
 ```
 
 <!-- TODO: create working example in tool
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-credential)
+{% try-it method="ledger_entry-credential" /%}
 -->
 
 
@@ -405,7 +405,7 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-directorynode)
+{% try-it method="ledger_entry-directorynode" /%}
 
 
 
@@ -461,7 +461,7 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
+{% try-it method="ledger_entry-offer" /%}
 
 
 ### Get Oracle Entry
@@ -518,7 +518,7 @@ rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4Q
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-oracle)
+{% try-it method="ledger_entry-oracle" server="devnet" /%}
 
 
 ### Get RippleState Entry
@@ -577,7 +577,7 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-ripplestate)
+{% try-it method="ledger_entry-ripplestate" /%}
 
 
 
@@ -623,7 +623,7 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-check)
+{% try-it method="ledger_entry-check" /%}
 
 
 
@@ -677,7 +677,7 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-escrow)
+{% try-it method="ledger_entry-escrow" /%}
 
 
 
@@ -723,7 +723,7 @@ rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-paychannel)
+{% try-it method="ledger_entry-paychannel" /%}
 
 
 ### Get DepositPreauth Entry
@@ -784,7 +784,7 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-depositpreauth)
+{% try-it method="ledger_entry-depositpreauth" /%}
 
 
 ### Get Ticket Entry
@@ -837,7 +837,7 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-ticket)
+{% try-it method="ledger_entry-ticket" /%}
 
 
 ### Get NFT Page
@@ -881,7 +881,7 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-nft-page)
+{% try-it method="ledger_entry-nft-page" /%}
 
 ### Get MPT Issuance Object
 
@@ -926,7 +926,7 @@ rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577
 {% /tabs %}
 
 <!-- TODO: add try-it for MPT issuance
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mpt_issuance)
+{% try-it method="ledger_entry-mpt_issuance" /%}
 -->
 
 ### Get MPToken Object
@@ -980,7 +980,7 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4
 {% /tabs %}
 
 <!-- TODO: make a try-it link for MPT object
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mptoken)
+{% try-it method="ledger_entry-mptoken" /%}
  -->
 
 

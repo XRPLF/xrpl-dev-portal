@@ -41,7 +41,7 @@ labels:
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#nft_info)
+{% try-it method="nft_info" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

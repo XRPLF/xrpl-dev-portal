@@ -51,7 +51,7 @@ rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#transaction_entry)
+{% try-it method="transaction_entry" /%}
 
 The request includes the following parameters:
 

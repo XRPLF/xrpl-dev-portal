@@ -65,7 +65,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#book_offers)
+{% try-it method="book_offers" /%}
 
 The request includes the following parameters:
 

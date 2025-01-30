@@ -132,7 +132,8 @@
           "ledger_index": "validated",
           "transactions": false,
           "expand": false,
-          "owner_funds": false
+          "owner_funds": false,
+          "api_version": 2
         }
       },
       {
@@ -509,6 +510,16 @@
         }
       },
       {
+        "name": "manifest",
+        "description": "Look up manifest information for a given validator public key.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/manifest",
+        "body": {
+          "id": "manifest_example",
+          "command": "manifest",
+          "public_key": "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
+        }
+      },
+      {
         "name": "server_definitions",
         "description": "Returns an SDK-compatible definitions.json, generated from the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions",
@@ -525,19 +536,19 @@
         }
       },
       {
-        "name": "version",
-        "description": "Retrieves the API version information. When you connect to a cluster that includes a Clio server, the Clio method is used.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/version",
-        "body": {
-          "command": "version"
-        }
-      },
-      {
         "name": "server_state",
         "description": "Reports a machine-readable version of various information about the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state",
         "body": {
           "command": "server_state"
+        }
+      },
+      {
+        "name": "version",
+        "description": "Retrieves the API version information. When you connect to a cluster that includes a Clio server, the Clio method is used.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/version",
+        "body": {
+          "command": "version"
         }
       }
     ]

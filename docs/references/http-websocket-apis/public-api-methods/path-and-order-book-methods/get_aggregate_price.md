@@ -87,9 +87,7 @@ An example of the request format:
 
 {% /tabs %}
 
-
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#get_aggregate_price)
-
+{% try-it method="get_aggregate_price" server="devnet" /%}
 
 The request contains the following parameters:
 

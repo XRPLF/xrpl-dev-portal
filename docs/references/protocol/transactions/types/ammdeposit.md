@@ -46,6 +46,8 @@ You can't deposit either asset into an AMM if:
 }
 ```
 
+{% tx-example txid="BB00ECE591DFD0F8F410C5C2C639F1C1D1D2EFD92DF567AA226C3BDBE712FDD9" /%}
+
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field         | JSON Type           | [Internal Type][] | Required? | Description |
