@@ -16,7 +16,7 @@ Deposit funds into an [Automated Market Maker](../../../../concepts/tokens/decen
 If successful, this transaction creates a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) to the AMM Account (limit 0) to hold the LP Tokens.
 
 {% admonition type="info" name="Note" %}
-You can't depot either asset into an AMM if:
+You can't deposit either asset into an AMM if:
 - At least one of the pooled assets is frozen by the token issuer.
 - You aren't authorized to hold at least one of the pooled assets.
 {% /admonition %}
