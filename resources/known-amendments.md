@@ -17,13 +17,13 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [AMMClawback][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}Enabled: 2025-01-30{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
-| [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
-| [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
-| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
-| [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
-| [fixReducedOffersV2][]            | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/71D5031A5BD927BDFE424E51699E69F2784097D615D0852BF20C168BA9B5EA76" %}Enabled: 2025-01-30{% /badge %} |
+| [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/606FA84C4BA30F67582C11A39BBFC11A9D994E114CD515E9F63FC7D8701A8ED9" %}Enabled: 2025-01-30{% /badge %} |
+| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/426314C8BC64BA339E97E53B278602ADC44F115056274BF7971F694C9A8AF946" %}Enabled: 2025-01-30{% /badge %} |
+| [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/2D9A29768A7FA4BAC01DF1941380077E304785279E5E49267EC269F53ABADF5A" %}Enabled: 2025-01-30{% /badge %} |
+| [fixReducedOffersV2][]            | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/6D325D5EFF8230F1FECA3EE6418C9678637F3F56B0CA247013F70B3BDCFE75C8" %}Enabled: 2025-01-30{% /badge %} |
 | [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
 | [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
@@ -169,7 +169,7 @@ Adds several new transaction result codes.
 | Amendment    | AMMClawback |
 |:-------------|:------------|
 | Amendment ID | 726F944886BCDF7433203787E93DD9AA87FAB74DFE3AF4785BA03BEFC97ADA1F |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -732,7 +732,7 @@ Fixes AMM offer rounding and low quality order book offers from blocking the AMM
 | Amendment    | fixAMMv1_2 |
 |:-------------|:-----------|
 | Amendment ID | 1E7ED950F2F13C4F8E2A54103B74D57D5D298FFDBD005936164EE9E6484C438C |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -806,7 +806,7 @@ This amendment has no effect unless the [DID][] amendment is enabled.
 | Amendment    | fixEnforceNFTokenTrustline |
 |:-------------|:---------------------------|
 | Amendment ID | 763C37B352BE8C7A04E810F8E462644C45AFEAD624BF3894A08E5C917CF9FF39 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -854,7 +854,7 @@ Currently, the inner object template isn't set upon object creation. If the obje
 | Amendment    | fixInnerObjTemplate2 |
 |:-------------|:---------------------|
 | Amendment ID | 9196110C23EA879B4229E51C286180C7D02166DA712559F634372F5264D0EC59 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -926,7 +926,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 | Amendment    | fixNFTokenPageLinks |
 |:-------------|:--------------------|
 | Amendment ID | C7981B764EC4439123A86CC7CCBA436E9B3FF73B3F10A0AE51882E404522FC41 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1088,7 +1088,7 @@ Without this amendment, an offer with very small amounts remaining can have a a 
 | Amendment    | fixReducedOffersV2 |
 |:-------------|:-------------------|
 | Amendment ID | 31E0DA76FB8FB527CADCDF0E61CB9C94120966328EFA9DCA202135BAF319C0BA |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
