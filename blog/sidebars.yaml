@@ -6,8 +6,9 @@
     - group: '2025'
       expanded: false
       items:
-        - page: 2025/vulnerabilitydisclosurereport-bug-nov2024.md
+        - page: 2025/rippled-2.3.1.md
         - page: 2025/devnet-reset.md
+        - page: 2025/vulnerabilitydisclosurereport-bug-nov2024.md
     - group: '2024'
       expanded: false
       items:
