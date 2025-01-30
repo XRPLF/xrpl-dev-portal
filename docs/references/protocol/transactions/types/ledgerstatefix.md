@@ -29,7 +29,7 @@ labels:
 
 | Field | Data Type  | Required? | Description |
 |:------|:-----------|:----------|:------------|
-| `TransactionType` | uint16 | Required | Identifies this as a `LedgerStateFix` transaction. |
+| `TransactionType` | UInt16 | Required | Identifies this as a `LedgerStateFix` transaction. |
 | `Account` | STAccount | Required | Identifies the account signing and submitting the transaction as well as paying the Fee. |
 | `Fee` | STAmount | Required | This transaction is rare and potentially compute intensive. The minimum fee is the same as the fee for an AccountDelete transaction. If the transaction fails with a tec code, the fee is still charged. |
 | `Flags` | uint32 | Optional | Not needed for `LedgerFixType` == _1_. Reserved for a future type of ledger fix. |
