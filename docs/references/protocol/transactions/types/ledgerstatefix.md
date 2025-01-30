@@ -42,7 +42,7 @@ Transactions of the LedgerStateFix type can support additional values in the `Fl
 
 ## Error Cases
 
-Potential errors are those that can occur for all transactions. {% $frontmatter.seo.title %}. 
+Potential errors are those that can occur for all transactions.
 
 ## LedgerStateFix Types
 
