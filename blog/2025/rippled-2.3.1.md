@@ -24,18 +24,18 @@ On supported platforms, see the [instructions on installing or updating `rippled
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.3.1-1.el7.x86_64.rpm) | `fb74f401e5ba121bbc37e6188aa064488ad78ffef549a1e19bc8b71316d08031` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.3.1-1_amd64.deb) | `5d616d53218b47a2f0803c1d37d410f72d19b57cdb9cabdf77b1cf0134cce3ca` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.3.1-1.el7.x86_64.rpm) | `db3ad27d3b61675caad0e0f74e66b2e2004c7d7ee97b5decd297168d27e48a25` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.3.1-1_amd64.deb) | `21931aa5fbf8cd2cf3fb4dc71a3b593bff754e4a804ba712891dea5ed48357e9` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
-commit f64cf9187affd69650907d0d92e097eb29693945
-Author: Elliot Lee <github.public@intelliot.com>
-Date:   Mon Nov 25 12:27:17 2024 -0800
+commit 8458233a31c98cbb13cfae212189ce3d8a1095d4
+Author: Ed Hennis <ed@ripple.com>
+Date:   Wed Jan 29 09:26:27 2025 -0500
 
-    Set version to 2.3.0
+    Set version to 2.3.1
 ```
 
 
