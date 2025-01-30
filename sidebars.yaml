@@ -377,6 +377,7 @@
                     - page: docs/references/protocol/transactions/types/escrowcancel.md
                     - page: docs/references/protocol/transactions/types/escrowcreate.md
                     - page: docs/references/protocol/transactions/types/escrowfinish.md
+                    - page: docs/references/protocol/transactions/types/ledgerstatefix.md
                     - page: docs/references/protocol/transactions/types/mptokenauthorize.md
                     - page: docs/references/protocol/transactions/types/mptokenissuancecreate.md
                     - page: docs/references/protocol/transactions/types/mptokenissuancedestroy.md
