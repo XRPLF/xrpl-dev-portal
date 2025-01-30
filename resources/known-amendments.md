@@ -860,13 +860,13 @@ Currently, the inner object template isn't set upon object creation. If the obje
 
 This amendment standardizes the way inner objects ([Object-type fields in the canonical binary format](../docs/references/protocol/binary-format.md#object-fields)) have their formats and default values enforced. This is the same type of check that the `fixInnerObjTemplate` applies to AMM-related fields, but this amendment applies to all other types of inner objects, namely:
 
-- `DisabledValidator` field of the [NegativeUNL ledger entry][].
-- Members of the `Majorities` array in the [Amendments ledger entry][].
+- `DisabledValidator` field of the [NegativeUNL entry][].
+- Members of the `Majorities` array in the [Amendments entry][].
 - Members of the [`Signers` array](../docs/references/protocol/transactions/common-fields.md#signers-field) of multi-signed transactions.
-- Members of the `SignerEntries` array of [SignerList ledger entries][].
+- Members of the `SignerEntries` array of [SignerList ledger entries][SignerList entry].
 - Several parts of the [XChainBridge][] amendment {% not-enabled /%}:
-    - Members of the `XChainClaimAttestations` array in [XChainOwnedClaimID ledger entries][]
-    - Members of the `XChainCreateAccountAttestations` array in [XChainOwnedCreateAccountClaimID ledger entries][]
+    - Members of the `XChainClaimAttestations` array in [XChainOwnedClaimID ledger entries][XChainOwnedClaimID entry]
+    - Members of the `XChainCreateAccountAttestations` array in [XChainOwnedCreateAccountClaimID ledger entries][XChainOwnedCreateAccountClaimID entry]
     - Members of the `XChainClaimAttestationBatch` array in [XChainAddClaimAttestation transactions][]
     - Members of the `XChainCreateAccountAttestationBatch` array in [XChainAddClaimAttestation transactions][]
 
@@ -932,7 +932,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 
 This amendment fixes a bug that can cause NFT directories to have missing links in the middle of the directory chain. It also introduces invariant checks that can prevent similar types of corruption from occurring in the future, and introduces a new transaction type:
 
-- [LedgerStateFix transactions][] can be used to repair corruptions in ledger data. With this amendment enabled, you can use a LedgerStateFix transaction to repair a broken link in NFT directories. In the case that future bugs cause new types of ledger corruption, this transaction type can be extended to repair the other types of corruption as well.
+- **LedgerStateFix transactions** <!-- TODO: link when docs have been added --> can be used to repair corruptions in ledger data. With this amendment enabled, you can use a LedgerStateFix transaction to repair a broken link in NFT directories. In the case that future bugs cause new types of ledger corruption, this transaction type can be extended to repair the other types of corruption as well.
 
 Without this amendment, it is possible in specific circumstances to delete the last page of an NFT directory, then later create a new last page that is missing a link to the previous page. For a detailed description of the scenario that can cause this problem, see [PR #4945](https://github.com/XRPLF/rippled/pull/4945). With this amendment, the bug that caused that corruption is fixed; additionally, a new invariant check ensures that other bugs cannot remove the last page inappropriately.
 
