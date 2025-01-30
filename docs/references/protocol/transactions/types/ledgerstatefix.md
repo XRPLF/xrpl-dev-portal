@@ -2,7 +2,8 @@
 seo:
     description: Repair corruptions to the XRP ledger.
 labels:
-  - Utilities, troubleshooting
+  - Utilities
+  - Troubleshooting
 ---
 # LedgerStateFix
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/LedgerStateFix.cpp "Source")
