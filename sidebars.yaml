@@ -358,6 +358,7 @@
                     - page: docs/references/protocol/transactions/types/accountset.md
                     - page: docs/references/protocol/transactions/types/accountdelete.md
                     - page: docs/references/protocol/transactions/types/ammbid.md
+                    - page: docs/references/protocol/transactions/types/ammclawback.md
                     - page: docs/references/protocol/transactions/types/ammcreate.md
                     - page: docs/references/protocol/transactions/types/ammdelete.md
                     - page: docs/references/protocol/transactions/types/ammdeposit.md
