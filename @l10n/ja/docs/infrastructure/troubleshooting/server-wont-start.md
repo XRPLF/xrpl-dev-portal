@@ -84,7 +84,7 @@ Aborted (core dumped)
 
 考えられる解決策:
 
-- `[validators.txt]`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
+- `validators.txt`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
 
     {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
