@@ -68,7 +68,7 @@ Aborted (core dumped)
 
 - `rippled`ユーザが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザのホームディレクトリを指しています）。
 
-    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
+    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `--conf`[コマンドラインオプション](../commandline-usage.md)を使用して、使用する構成ファイルのパスを指定します。
 
@@ -84,9 +84,9 @@ Aborted (core dumped)
 
 考えられる解決策:
 
-- `[validators.txt]`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
+- `validators.txt`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
 
-    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
+    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
 
