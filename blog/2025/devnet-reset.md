@@ -13,11 +13,9 @@ markdown:
 
 Devnet is scheduled for a reset on **Monday, February 3, 2025**. Clio server databases on the network are nearing storage capacity and need to be cleared.
 
-<!--
 {% admonition type="success" name="Update" %}
 The reset has completed successfully. Devnet is online and fully operational.
 {% /admonition %}
--->
 
 ## Background
 
