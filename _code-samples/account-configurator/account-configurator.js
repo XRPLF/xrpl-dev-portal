@@ -281,33 +281,35 @@ async function configureAccount() {
     const signedAccount = my_wallet.sign(preparedAccount)
     const resultAccount = await client.submitAndWait(signedAccount.tx_blob)
     resultField.value += JSON.stringify(resultAccount, null, 2)
-    my_signers= {
-        "Flags": 0,
-        "TransactionType": "SignerListSet",
-        "Account": my_wallet.address,
-        "Fee": "12",
-        "SignerQuorum": parseInt(signerQuorumField.value),
-        "SignerEntries": [
-          {"SignerEntry":
-          {"Account": signer1AccountField.value,
-          "SignerWeight": parseInt(signer1WeightField.value)
-          }},
-          {"SignerEntry":
-          {"Account": signer2AccountField.value,
-          "SignerWeight": parseInt(signer2WeightField.value)}
-          },
-          {"SignerEntry":
-            {"Account": signer3AccountField.value,
-            "SignerWeight": parseInt(signer3WeightField.value)
+    if(signer1AccountField.value!=""){
+      my_signers= {
+          "Flags": 0,
+          "TransactionType": "SignerListSet",
+          "Account": my_wallet.address,
+          "Fee": "12",
+          "SignerQuorum": parseInt(signerQuorumField.value),
+          "SignerEntries": [
+            {"SignerEntry":
+            {"Account": signer1AccountField.value,
+            "SignerWeight": parseInt(signer1WeightField.value)
+            }},
+            {"SignerEntry":
+            {"Account": signer2AccountField.value,
+            "SignerWeight": parseInt(signer2WeightField.value)}
+            },
+            {"SignerEntry":
+              {"Account": signer3AccountField.value,
+              "SignerWeight": parseInt(signer3WeightField.value)
+              }
             }
-          }
-        ]
-      }
-    
-    const preparedSigner = await client.autofill(my_signers)
-    const signedSigner = my_wallet.sign(preparedSigner)
-    const resultSigner = await client.submitAndWait(signedSigner.tx_blob)
-    resultField.value += JSON.stringify(resultSigner, null, 2)
+          ]
+        }
+      
+      const preparedSigner = await client.autofill(my_signers)
+      const signedSigner = my_wallet.sign(preparedSigner)
+      const resultSigner = await client.submitAndWait(signedSigner.tx_blob)
+      resultField.value += JSON.stringify(resultSigner, null, 2)
+    }
   }
   client.disconnect()
   if(!document.getElementById("is").checked) {
