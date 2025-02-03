@@ -23,13 +23,32 @@
 }
 
 .page-home {
+  #home-hero-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 54.8%;
+    overflow: hidden;
+  }
+
   #home-hero-graphic {
+    width: 100%;
+    max-width: 856px;
+    object-fit: cover;
     content: url("../img/home-hero.svg");
-    margin-left: auto;
-    width: 856px;
-    margin-right: auto;
-    margin-bottom: 24px;
-    max-width: 100%;
+
+    @media (min-width: 992px) {
+      min-height: 470px;
+    }
+
+    @media (max-width: 991px) and (min-width: 540px) {
+      min-height: 250px;
+    }
+
+    @media (max-width: 539px) {
+      min-height: 170px;
+    }
   }
 
   #benefits-list {
@@ -44,7 +63,7 @@
   }
 
   #advanced-features {
-    $feature-cards: [ "pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2"];
+    $feature-cards: ("pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2");
 
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
@@ -54,8 +73,7 @@
   }
 
   #get-started {
-    $gs-cards: [ "orange-yellow", "magenta-orange", "purple-blue-green",
-      "light-blue", "green-blue"];
+    $gs-cards: ("orange-yellow", "magenta-orange", "purple-blue-green", "light-blue", "green-blue");
 
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
