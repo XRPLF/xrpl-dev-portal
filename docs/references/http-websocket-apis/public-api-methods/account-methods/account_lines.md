@@ -57,7 +57,7 @@ The request accepts the following parameters:
 | `Field`          | Type                 | Description    |
 |:-----------------|:---------------------|:---------------|
 | `account`        | String - [Address][] | Look up trust lines connected to this account. |
-| `ignore_default` | Boolean              | _(Optional)_ If true, suppress the output of incoming trust lines in the default state. Defaults to false. |
+| `ignore_default` | Boolean              | _(Optional)_ If `true`, suppress the output of incoming trust lines in the default state. The default is `false`. |
 | `ledger_hash`    | String               | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`   | Number or String     | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `peer`           | String - [Address][] | _(Optional)_ A second account; if provided, filter results to trust lines connecting the two accounts. |
