@@ -89,13 +89,10 @@
                 &nbsp;&nbsp;
                 <input type="radio" id="is" name="accountType" value="is" onclick="setIssuer()">
                 <label for="issuer">Issuer</label>
-                &nbsp;&nbsp;
-                    <button type="button" onClick="configureAccount()">Configure Account</button>
-                  </td>
-                </tr>
               </td>
+            </tr>
             <tr>
-              <td>&nbsp;</td>
+              <td align="right"><button type="button" onClick="configureAccount()">Configure Account</button></td>
             </tr>
           </table>
         </td>
@@ -211,8 +208,11 @@
            defaultRipple
           </span>
         </td>
-        <td>
-          <input type='checkbox' id="defaultRipple"></input></br>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="defaultRipple">
+              <span class="slider round"></span>
+          </label>
         </td>
       </tr>
       <tr>
@@ -221,8 +221,11 @@
             allowTrustLineClawback
           </span>
         </td>
-        <td>
-          <input type='checkbox' id='allowTrustLineClawback'></input></br>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="allowTrustLineClawback">
+              <span class="slider round"></span>
+          </label>
         </td>
       </tr>
       <tr>
@@ -231,8 +234,11 @@
             depositAuth
           </span>
         </td>
-        <td>
-          <input type='checkbox' id='depositAuth'></input></br>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="depositAuth">
+              <span class="slider round"></span>
+          </label>
         </td>
       </tr>
       <tr>
@@ -241,8 +247,11 @@
             disableMasterKey
           </span>
         </td>
-        <td>
-          <input type='checkbox' id='disableMasterKey'></input>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disableMasterKey">
+              <span class="slider round"></span>
+          </label>
         </td>
       </tr>
       <tr>
@@ -251,7 +260,12 @@
             disallowIncomingCheck
           </span>
         </td>
-        <td><input type='checkbox' id='disallowIncomingCheck'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingCheck">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>          
@@ -259,7 +273,12 @@
             disallowIncomingNFTokenOffer
           </span>
         </td>
-        <td><input type='checkbox' id='disallowIncomingNFTokenOffer'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingNFTokenOffer">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>
@@ -267,7 +286,12 @@
             disallowIncomingPayChan
           </span>
         </td>
-        <td><input type='checkbox' id='disallowIncomingPayChan'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingPayChan">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>
@@ -275,7 +299,12 @@
             disallowIncomingTrustline
           </span>
         </td>
-        <td><input type='checkbox' id='disallowIncomingTrustline'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingTrustline">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>
@@ -284,7 +313,12 @@
             disallowIncomingXRP
           </span>
         </td>
-        <td><input type='checkbox' id='disallowIncomingXRP'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingXRP">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>
@@ -292,7 +326,12 @@
             globalFreeze
           </span>
         </td>
-        <td><input type='checkbox' id='globalFreeze'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="globalFreeze">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>
@@ -300,7 +339,12 @@
             noFreeze
           </span>
         </td>
-        <td><input type='checkbox' id='noFreeze'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="noFreeze">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>
@@ -308,14 +352,25 @@
             requireAuthorization
           </span>
         </td>
-        <td><input type='checkbox' id='requireAuthorization'></input></td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="requireAuthorization">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>
           <span class="tooltip" tooltip-data="The account requires a destination tag on all payments it receives.">
             requireDestinationTag
-          </span></td>
-        <td><input type='checkbox' id='requireDestinationTag'></input></td>
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="requireDestinationTag">
+              <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
