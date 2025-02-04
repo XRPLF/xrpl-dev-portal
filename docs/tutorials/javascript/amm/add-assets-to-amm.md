@@ -4,7 +4,7 @@ Follow the steps from the [Create an AMM](/docs/tutorials/javascript/amm/create-
 
 This example shows how to:
 
-1. Deposit assets to an existing AMM and receive LP tokens.
+1. Deposit assets to an existing [AMM](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) and receive LP tokens.
 2. Vote on AMM trading fees.
 3. Check the value of your LP tokens.
 4. Redeem LP tokens for assets in the AMM pair.

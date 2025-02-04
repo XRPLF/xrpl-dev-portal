@@ -12,7 +12,7 @@ markdown:
 ---
 # XLS-30 Overview: XRP Ledger Automated Market Maker
 
-XLS-30 is live on Mainnet, bringing with it new avenues for liquidity and trading on the network. Designed as a native protocol, XLS-30 enables developers to integrate with the AMM and establish their own front-end trading and liquidity provision interfaces. 
+XLS-30 is live on Mainnet, bringing with it new avenues for liquidity and trading on the network. Designed as a native protocol, XLS-30 enables developers to integrate with the [AMM](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) and establish their own front-end trading and liquidity provision interfaces. 
 
 <!-- BREAK -->
 
