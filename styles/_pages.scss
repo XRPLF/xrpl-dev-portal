@@ -33,8 +33,7 @@
   }
 
   #home-hero-graphic {
-    width: 100%;
-    max-width: 856px;
+    width: 856px;
     object-fit: cover;
     content: url("../img/home-hero.svg");
 
@@ -63,7 +62,7 @@
   }
 
   #advanced-features {
-    $feature-cards: ("pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2");
+    $feature-cards: [ "pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2"];
 
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
@@ -73,7 +72,8 @@
   }
 
   #get-started {
-    $gs-cards: ("orange-yellow", "magenta-orange", "purple-blue-green", "light-blue", "green-blue");
+    $gs-cards: [ "orange-yellow", "magenta-orange", "purple-blue-green",
+      "light-blue", "green-blue"];
 
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
