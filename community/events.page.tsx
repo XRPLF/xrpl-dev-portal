@@ -1052,6 +1052,17 @@ const events = [
     image:  require('../static/img/events/commons-building.png'),
     end_date: "January 28, 2025",
   },
+  {
+    name: "XRPL Commons Soirée",
+    description:
+      "We are pleased to invite you to an exclusive, invite-only XRPL Commons Soiree hosted by XRPL Commons, Deloitte and Pyratz Labs, focusing on: 'Exploring the Agentic Web: Blockchain, AI & Digital Identity'",
+    type: "meetup",
+    link: "https://xrpl.at/XRPL-Commons-soiree-20250212",
+    location: "Paris, France",
+    date: "February 12, 2025",
+    image: require("../static/img/events/commons-soiree.png"),
+    end_date: "February 12, 2025",
+  },
 ];
 
 
