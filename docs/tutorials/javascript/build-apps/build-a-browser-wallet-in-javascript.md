@@ -82,8 +82,6 @@ SEED="s████████████████████████�
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/vite.config.js" language="js" /%}
 
-This example includes the necessary configuration to make [xrpl.js work with Vite](https://github.com/XRPLF/xrpl.js/blob/main/UNIQUE_SETUPS.md#using-xrpljs-with-vite-react).
-
 8. Add script to `package.json`
 
 In your `package.json` file, add the following section if it's not there already:
