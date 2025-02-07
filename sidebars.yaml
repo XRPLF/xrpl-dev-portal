@@ -146,6 +146,7 @@
           expanded: false
           items:
             - page: docs/concepts/accounts/account-types.md
+            - page: docs/concepts/accounts/configuring-accounts.md
             - page: docs/concepts/accounts/deleting-accounts.md
             - page: docs/concepts/accounts/reserves.md
             - page: docs/concepts/accounts/addresses.md
