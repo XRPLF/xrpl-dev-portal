@@ -8,8 +8,7 @@ labels:
   - Core Server
 ---
 # History Sharding
-
-{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}Introduced in: rippled 0.90.0{% /badge %}
+{% admonition type="danger" name="Warning" %}History sharding was removed in [rippled 2.3.0](https://github.com/XRPLF/rippled/releases/tag/2.3.0). This page describes historical behavior of older versions of XRP Ledger software.{% /admonition %}
 
 As XRP Ledger servers run, they naturally produce a database containing data about the ledgers they built or acquired during network runtime. Each server stores that ledger data in its _ledger store_, but [online deletion](online-deletion.md) removes old ledgers' data automatically over time. History sharding provides a separate storage system for older ledger history so that the network can divide up the work of recording the entire (multiple terabyte) history of the XRP Ledger.
 
