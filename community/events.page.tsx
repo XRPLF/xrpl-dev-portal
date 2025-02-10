@@ -1055,7 +1055,7 @@ const events = [
   {
     name: "XRPL Commons Soirée",
     description:
-      "We are pleased to invite you to an exclusive, invite-only XRPL Commons Soiree hosted by XRPL Commons, Deloitte and Pyratz Labs, focusing on: 'Exploring the Agentic Web: Blockchain, AI & Digital Identity'",
+      "XRPL Commons Soiree hosted by XRPL Commons, Deloitte and Pyratz Labs, focusing on: Exploring the Agentic Web: Blockchain, AI & Digital Identity",
     type: "meetup",
     link: "https://xrpl.at/XRPL-Commons-soiree-20250212",
     location: "Paris, France",
