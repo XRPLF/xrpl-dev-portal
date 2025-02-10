@@ -28,19 +28,31 @@ $custody-logos: "gatehub", "bitgo";
     }
   }
 }
-
+.modal-uses.exchanges{
+.logo-item{
+  max-height: 58px;
+  margin: 5px;
+  width: 145px;
+  height: 28px;
+  max-width: none;
+}
+}
 .modal-content-uses {
+  .carbonland-trust{
+    max-width: 218px;
+  }
   .first-ledger-bot{
-    min-height: 80px !important;
+    min-height: 100px !important;
     position: relative;
     bottom: 20px;
     content: url("../img/uses/first-ledger-bot.svg");
   }
   .orchestra-finance{
+    min-height: 56px !important;
     content: url("../img/uses/orchestra-finance.svg");
   }
   .moai-finance{
-    min-height: 80px !important;
+    min-height: 100px !important;
     position: relative;
     bottom: 20px;
     content: url("../img/uses/moai-finance.svg");
@@ -186,20 +198,24 @@ html.light {
 }
 
 .modal-content-uses {
+  padding-top: 40px;
   position: relative;
-  /* Add position: relative to modal-content-uses */
   background-color: #232325;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
+  padding: 40px 20px 20px 20px;
   width: 60% !important;
-  height: 60%;
+  height: 520px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  overflow-y: hidden;
+
+  @media only screen and (max-width: 1024px) {
+    overflow-y: auto;
+  }
 }
 
 .modal-content-uses::before {
@@ -293,10 +309,13 @@ html.light {
   border: 0;
   border-top: 1px solid #ccc;
 }
-
+.logo-item.anchain {
+  height: 34px !important;
+  max-width: 146px !important;
+}
 .threezy-logo {
   margin: 4px;
-  max-height: 38px;
+  max-height: 55px !important;
 }
 
 .blockforce-logo {
@@ -325,16 +344,29 @@ html.light {
 .bottom-row {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 
   @media only screen and (max-width: 768px) {
-    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 0;
   }
 }
 
+.top-row {
+  margin-bottom: 10px;
+}
+
+.bottom-row {
+  margin-top: 10px;
+}
+
 .logo-item {
-  max-height: 30px;
-  max-width: 130px;
-  margin: 10px 11px;
+  max-height: 45px;
+  max-width: 108px;
+  margin: 5px;
 }
 
 .close {
@@ -362,9 +394,11 @@ html.light {
   @include media-breakpoint-up(lg) {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  @media (max-width: 1220px) and (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); // Adjust to 3 columns for screens between 1024px and 1220px
+  }
 }
-
-
 
 .use-case-circle {
   display: flex;
@@ -946,4 +980,14 @@ html.light {
     z-index: 2;
     display: block;
   }
+}
+
+body, .landing.page-uses {
+  overflow-x: hidden; // Prevent horizontal scrolling
+}
+
+.container-new {
+  max-width: 100%; // Ensure container does not exceed viewport width
+  padding: 0 15px; // Add padding to ensure content is not flush with the edges
+  box-sizing: border-box; // Include padding in the element's total width
 }

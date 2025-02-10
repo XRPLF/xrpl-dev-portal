@@ -7,7 +7,7 @@ import arrow from "../static/js/ecosystem/arrow-animation.json";
 export const frontmatter = {
   seo: {
     title: 'Use Cases & Featured Projects',
-    description: "Here’s how the XRP Ledger is used to power innovative technology across the payments and public blockchain landscape.",
+    description: "Here's how the XRP Ledger is used to power innovative technology across the payments and public blockchain landscape.",
   }
 };
 
@@ -247,7 +247,7 @@ const cardsData = [
     id: "Edge",
     title: "Edge",
     description:
-      "Edge is a secure, easy, and private way to use, store, trade, and exchange crypto assets. Edge ensures sure you’re always in control of your money and information while also providing the tools necessary to protect yourself from others and your own mistakes. Edge has rich functionality, a battle-tested security architecture, and the industry’s best customer support.",
+      "Edge is a secure, easy, and private way to use, store, trade, and exchange crypto assets. Edge ensures sure you're always in control of your money and information while also providing the tools necessary to protect yourself from others and your own mistakes. Edge has rich functionality, a battle-tested security architecture, and the industry's best customer support.",
     category_id: "wallet",
     category_name: "Wallet",
     link: "https://edge.app/ripple-wallet/",
@@ -430,7 +430,7 @@ const uses = [
     title: "Infrastructure",
     number: 7,
     description:
-      "Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more.",
+      "Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more."
   },
 
   {
@@ -438,49 +438,49 @@ const uses = [
     title: "Developer Tooling",
     number: 4,
     description:
-      "Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality.",
+      "Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality."
   },
   {
     id: "interoperability",
     title: "Interoperability",
     number: 1,
     description:
-      "Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.",
+      "Developers and node operators can build and run custom sidechains while leveraging the XRPL's lean and efficient feature set."
   },
   {
     id: "wallet",
     title: "Wallet",
     number: 4,
     description:
-      "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP.",
+      "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
   },
   {
     id: "nfts",
     title: "NFTs",
     number: 7,
     description:
-      "XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs).",
+      "XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs)."
   },
   {
     id: "exchanges",
     title: "Exchanges",
     number: 5,
     description:
-      "Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.",
+      "Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities."
   },
   {
     id: "gaming",
     title: "Gaming",
     number: 4,
     description:
-      "The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.",
+      "The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability."
   },
   {
     id: "security",
     title: "Security",
     number: 1,
     description:
-      "Build services and tools that help prevent and combat fraudulent activity with the XRPL.",
+      "Build services and tools that help prevent and combat fraudulent activity with the XRPL."
   },
 
   {
@@ -488,7 +488,7 @@ const uses = [
     title: "Payments",
     number: 2,
     description:
-      "Leverage the efficiency and speed of the XRP Ledger to move value all over the globe.",
+      "Leverage the efficiency and speed of the XRP Ledger to move value all over the globe."
   },
 
   {
@@ -496,7 +496,7 @@ const uses = [
     title: "CBDC",
     number: 1,
     description:
-      "A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).",
+      "A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs)."
   },
 
   {
@@ -504,7 +504,7 @@ const uses = [
     title: "Sustainability",
     number: 1,
     description:
-      "Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).",
+      "Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs)."
   },
 
   {
@@ -512,7 +512,7 @@ const uses = [
     title: "Custody",
     number: 2,
     description:
-      "Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.",
+      "Use the XRP Ledger to build crypto custody and securely hold, store and use your assets."
   },
 ];
 
@@ -601,10 +601,9 @@ export default function Uses() {
   }, [theme]);
   const [modalData, setModalData] = React.useState({
     id: "",
-    src: "",
     title: "",
     description: "",
-    number: "",
+    number: ""
   });
   const { View } = useLottie(options);
 
@@ -791,7 +790,7 @@ export default function Uses() {
             </ul>
           </section>
           <div
-            className={`modal modal-uses ${displayModal ? "d-block" : ""}`}
+            className={`modal modal-uses ${modalData?.id} ${displayModal ? "d-block" : ""}`}
             id="myModal"
           >
             <div
