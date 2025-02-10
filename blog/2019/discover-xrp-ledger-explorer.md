@@ -25,7 +25,7 @@ The new explorer serves as a tool to help people look up: historical transaction
 
 Check out the new Explorer today:
 
-- [Production XRP Ledger Explorer](http://livenet.xrpl.org/)
+- [Production XRP Ledger Explorer](https://livenet.xrpl.org/)
 - [Test Net XRP Ledger Explorer](https://testnet.xrpl.org/)
 
 Other similar tools that allow people to look up XRP Ledger historical information include:
