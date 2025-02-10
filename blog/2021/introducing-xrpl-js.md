@@ -26,7 +26,7 @@ xrpl.js will continue to support all ripple-lib features, such as:
 
 - Serializing, signing, and submitting transactions to the XRPL
 - Retrieving information from the XRPL
-- Helpful utility functions (such as converting between [drops](https://xrpl.org/xrp.html#xrp-properties) and XRP)
+- Helpful utility functions (such as converting between [drops](https://xrpl.org/docs/introduction/what-is-xrp) and XRP)
 - Support for Node.js, web browsers, and React
 
 It also introduces a number of new features, including:
