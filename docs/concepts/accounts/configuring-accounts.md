@@ -74,7 +74,7 @@ All of the configuration flags can be helpful for specific use cases. The follow
 | `allowTrustLineClawback` | Allow account to claw back tokens it has issued. See [Clawing Back Tokens](../../tokens/fungible-tokens/clawing-back-tokens). |
 | `disableMasterKey` | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a regular key or a signer list. See [Master Key Pair](./cryptographic-keys#master-key-pair). |
 | `disallowIncomingTrustLine` | Block incoming trust lines. See [Trust Lines](../tokens/fungible-tokens#trust-lines). |
-| `globalFreeze` | Freeze all tokens issued by this account. See [Global Freeze](../tokens/fungible-tokens/freezes#global-freeze).
+| `globalFreeze` | Freeze all tokens issued by this account. See [Global Freeze](../tokens/fungible-tokens/freezes.md#global-freeze).
 | `noFreeze` | Permanently remove the ability to freeze individual trust lines or end a global freeze. See [Freezing Tokens](../tokens/fungible-tokens/freezes). |
 | `requireAuthorization` | Requires authorized trust lines for other accounts to hold tokens issued by this account. See [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines).
 
