@@ -57,7 +57,7 @@ Multi-signing in the XRP Ledger is a method of authorizing transactions by using
 | Flag | Description |
 |------|-------------|
 | `defaultRipple` | Allow rippling on trust lines by default. Rippling is necessary in order for accounts to trade tokens you issue through this account. See [Rippling](../../tokens/fungible-tokens/rippling). |
-| `depositAuth` | Deposit Authorization prevents unauthorized third parties from sending you payments. See [Deposit Authorization](./depositauth).
+| `depositAuth` | Deposit Authorization prevents unauthorized third parties from sending you payments. See [Deposit Authorization](./depositauth.md).
 | `disallowIncomingCheck` | Prevent other accounts from sending checks to this account. See [Checks](../payment-types/checks/).
 | `disallowIncomingNFTokenOffer` | Prevent other accounts from sending NFT buy or sell offers to this account. This avoids unsolicited offers unrelated to the primary purpose of the exchanger account. See [Trading NFTs](../../tokens/nfts/trading). |
 | `disallowIncomingPayChan` | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../../payment-types/payment-channels). |
