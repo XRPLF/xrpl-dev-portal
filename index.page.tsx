@@ -112,7 +112,7 @@ export default function Index() {
       <div className="overflow-hidden">
         <section className="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
           <div className="w-100">
-            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" width="856" height="469" loading="lazy" />
+            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" width="856" height="469" loading='eager' />
           </div>
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
