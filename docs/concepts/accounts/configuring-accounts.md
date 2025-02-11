@@ -101,7 +101,7 @@ The response is displayed in the **Results** field.
 
 ### Getting a New Account
 
-You can create sandbox accounts on _Testnet_ or _Devnet_. To create an account on _Mainnet_, see [Creating Accounts](../accounts#creating-accounts).
+You can create sandbox accounts on _Testnet_ or _Devnet_. To create an account on _Mainnet_, see [Creating Accounts](../accounts/index.md#creating-accounts).
 
 #### To get a new Account
 
