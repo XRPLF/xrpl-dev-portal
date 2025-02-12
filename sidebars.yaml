@@ -26,6 +26,7 @@
           expanded: false
           items:
             - page: docs/use-cases/tokenization/stablecoin-issuer.md
+            - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
             - page: docs/use-cases/tokenization/nft-mkt-overview.md
               expanded: false
               items:
