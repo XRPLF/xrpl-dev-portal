@@ -37,5 +37,7 @@ By standardizing price feeds in this manner, all XRPL apps can access a dependab
     - [Oracle entry][]
     - [OracleDelete transaction][]
     - [OracleSet transaction][]
+- **Blog**
+    - [How to fetch up-to-date asset price using DIA Oracle](../../../blog/2025/how-to-fetch-asset-price-using-dia-oracle.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
