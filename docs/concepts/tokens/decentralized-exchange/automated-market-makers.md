@@ -69,6 +69,17 @@ The diagram below illustrates how an offer interacts with other offers and AMM l
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tJ1mQxYpt-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "VideoObject",
+"name": "AMM CLOB Demo",
+"description": "AMM CLOB Demo on XRPL",
+"thumbnailUrl": "https://i.ytimg.com/vi/tJ1mQxYpt-A/hqdefault.jpg",
+"uploadDate": "2024-12-13",
+"embedUrl": "https://youtu.be/tJ1mQxYpt-A?feature=shared"
+}
+</script>
 
 ### Restrictions on Assets
 
