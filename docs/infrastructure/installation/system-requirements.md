@@ -13,7 +13,7 @@ labels:
 For reliable performance in production environments, it is recommended to run an XRP Ledger (`rippled`) server on bare metal with the following characteristics or better:
 
 - Operating System: Ubuntu (LTS), Red Hat Enterprise Linux (latest release), or a compatible Linux distribution.
-- CPU: 64-bit x86_64, 8+ cores.
+- CPU: 3+ GHz 64-bit x86_64 processor with 8+ cores.
 - Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.
 - RAM: 64 GB.
 - Network: Enterprise data center network with a gigabit network interface on the host.
