@@ -4,17 +4,24 @@ parent: tokens.html
 metadata:
   indexPage: true
 seo:
-    description: The XRP Ledger contains a fully functional exchange where users can trade tokens for XRP or each other.
+    title: Decentralized Exchange (DEX)
+    description: Explore how the XRP Ledger powers its decentralized exchange (DEX) for seamless crypto trading. Learn how you can trade tokens securely on the XRP Ledger.
 targets:
   - en
 ---
-# Decentralized Exchange
+# Decentralized Exchange (DEX)
 
-The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](../index.md) for XRP or other tokens, with minimal [fees](../../transactions/fees.md) charged to the network itself (not paid out to any party).
+The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](../index.md) for XRP or other tokens, with minimal trading [fees](../../transactions/fees.md) charged to the network itself (not paid out to any party).
 
 {% admonition type="warning" name="Caution" %}Anyone can [issue a token](../../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.{% /admonition %}
 
-## Structure
+<!-- To Do
+## What is a Decentralized Exchange? 
+
+## How DEX Works? 
+-->
+
+## DEX Structure
 
 The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. A currency pair can consist of XRP and a token or two different tokens; tokens are always identified by the combination of an issuer and a currency code. It is possible to trade between two tokens with the same currency code and different issuers, or the same issuer and different currency codes. <!-- STYLE_OVERRIDE: limited number -->
 
@@ -45,7 +52,7 @@ Later transactions, including ones executed immediately after Tran's in the _sam
 {% admonition type="info" name="Note" %}The canonical order transactions execute in when a ledger is closed and validated is not the same as the order those transactions were sent. When multiple transactions affect the same order book in the same ledger, the final results of those transactions may be very different than the tentative results calculated at the time of transaction submission. For more details on when transactions' results are or are not final, see [Finality of Results](../../transactions/finality-of-results/index.md).{% /admonition %}
 
 
-## Limitations
+## DEX Limitations
 
 The decentralized exchange is designed with the following limitations:
 
@@ -53,7 +60,7 @@ Because trades are only executed each time a new ledger closes (approximately ev
 
 The XRP Ledger does not natively represent concepts such as market orders, stop orders, or trading on leverage. Some of these may be possible with creative use of custom tokens and Offer properties.
 
-As a decentralized system, the XRP Ledger does not have any information on the actual people and organizations behind the [accounts](../../accounts/index.md) involved in trading. The ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](../fungible-tokens/freezes.md) and [authorized trust lines](../fungible-tokens/authorized-trust-lines.md) are intended to help issuers comply with relevant laws and regulations.
+As a decentralized system, the XRP Ledger does not have any personal information on the actual people and organizations behind the [accounts](../../accounts/index.md) involved in trading. The ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](../fungible-tokens/freezes.md) and [authorized trust lines](../fungible-tokens/authorized-trust-lines.md) are intended to help issuers comply with relevant laws and regulations.
 
 ## See Also
 
