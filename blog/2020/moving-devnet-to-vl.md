@@ -39,7 +39,7 @@ To connect to the Devnet after the update, complete the following steps:
         https://vl.devnet.rippletest.net
 
         [validator_list_keys]
-        EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
+        EDBB54B0D9AEE071BB37784AF5A9E7CC49AC7A0EFCE868C54532BCB966B9CFC13B
 
     The `validators.txt` file defines a server's trusted validator settings. The [recommended installation](https://xrpl.org/install-rippled.html) places this file at `/etc/opt/ripple/validators.txt` by default.
 
@@ -60,6 +60,10 @@ To connect to the Devnet after the update, complete the following steps:
 3. After changing your config, **restart** the `rippled` service.
 
         $ sudo systemctl restart rippled
+
+{% admonition type="success" name="Update" %}
+The `validator_list_keys` above has been updated for the new key introduced on February 3, 2025.
+{% /admonition %}
 
 
 ## Next Steps
