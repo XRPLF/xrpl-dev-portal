@@ -1,85 +1,124 @@
-.top-banner {
+.web-banner {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 46px;
-  background: url(../img/backgrounds/bg-apex-banner.svg);
-  background-position: center !important;
-  background-size: cover;
-  background-color: $blue-purple-500;
   color: $white;
+  background: var(--XRPL-Secondary-Blue-Purple, #7919ff);
+  padding: 7px 70px;
+  z-index: 9999;
 
-  .inner-apex {
+  @media (max-width: 991px) {
+    padding: 0 20px;
+  }
+
+  .banner-content {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 24px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
 
-  }
-
-  .apex-banner-text {
-    color: #FFF;
-    font-family: "Work Sans";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
-  }
-
-  .apex-btn {
-    margin-left: 16px;
-    color: var(--Gray-100, #000) !important;
-    font-family: "Work Sans";
-    font-size: 16px;
-    font-style: normal;
-    display: flex;
-    justify-content: center;
-    font-weight: 600;
-    align-items: center;
-    line-height: 100%;
-    letter-spacing: -0.16px;
-    padding: 2px 4px;
-    border-radius: 100px !important;
-    background: #18FF83 !important;
-    text-decoration: none !important;
-    width: 135px;
-    height: 28px;
-  }
-
-  @media (max-width: 1024px) {
-    background: url(../img/backgrounds/bg-apex-banner-md.svg);
-
-    .apex-banner-text {
-      font-size: 18px;
-    }
-
-    .apex-btn {
-      width: 122px;
-      height: 26px;
-      font-size: 14px;
-      letter-spacing: -0.14px;
-    }
-  }
-
-  @media (max-width: 535px) {
-    background: url(../img/backgrounds/bg-apex-banner-sm.svg);
-
-    .apex-btn {
-      margin-left: 0;
-      width: 85px;
-      height: 16px;
-      font-size: 10px;
-      line-height: 100%;
-      letter-spacing: -0.1px;
-    }
-
-    .apex-banner-text {
-      font-size: 12px;
-      line-height: 12px;
-    }
-
-    .inner-apex {
-      flex-direction: column;
+    @media (max-width: 524px) {
       gap: 8px;
     }
+
+    @media (max-width: 991px) {
+      max-width: 100%;
+    }
   }
+
+  .event-info {
+    color: #fff;
+    font: 500 18px/1 Work Sans, -apple-system, Roboto, Helvetica, sans-serif;
+    align-self: stretch;
+    margin: auto 0;
+
+    @media (max-width: 524px) {
+      font-size: 12px;
+    }
+  }
+
+  .ticket-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 3141.892px;
+    background: var(--XRPL-Primary-White, #fff);
+    color: var(--XRPL-Secondary-Blue-Purple, #7919ff);
+    text-align: center;
+    letter-spacing: -0.16px;
+    padding: 8px 16px;
+    font: 600 18px/1 Work Sans Apex, -apple-system, Roboto, Helvetica, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    transform-origin: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background: #f3f3f3;
+      color: #6a09f2;
+    }
+
+    @media (max-width: 524px) {
+      font: 600 12px/1 Work Sans Apex, -apple-system, Roboto, Helvetica, sans-serif;
+      width: 117px;
+      height: 27px;
+      padding: 6px 12px;
+
+      &:hover {
+        background: #f3f3f3;
+        color: #6a09f2;
+      }
+    }
+  }
+
+  .button-text {
+    align-self: stretch;
+    margin: auto 0;
+    font-size: 16px;
+    color: var(--XRPL-Secondary-Blue-Purple, #7919FF);
+    @media (max-width: 524px) {
+      font-size: 12px;
+    }
+  }
+
+  .button-icon {
+    aspect-ratio: 0.71;
+    object-fit: contain;
+    width: 12px;
+
+    @media (max-width: 524px) {
+      width: 10px;
+    }
+
+    align-self: stretch;
+    margin: auto 0;
+    transform-style: preserve-3d;
+  }
+
+  .ticket-button:hover .button-icon {
+    animation: iconJitter 0.7s ease forwards;
+  }
+
+  @keyframes iconJitter {
+    0% {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(22deg) skew(0deg, 0deg);
+    }
+
+    40% {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(55deg) skew(0deg, 0deg);
+    }
+
+    70% {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(40deg) skew(0deg, 0deg);
+    }
+
+    100% {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(45deg) skew(0deg, 0deg);
+    }
+  }
+
 }

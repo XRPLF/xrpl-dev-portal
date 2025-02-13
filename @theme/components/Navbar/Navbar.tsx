@@ -10,10 +10,10 @@ import { AlgoliaSearch } from "./AlgoliaSearch";
 // @ts-ignore
 
 const alertBanner = {
-  show: false,
-  message: "XRP Ledger Apex is back in Amsterdam",
-  button: "Register Now",
-  link: "https://www.xrpledgerapex.com/?utm_source=email&utm_medium=email_marketing&utm_campaign=EVENTS_XRPL_Apex_2024_Q2&utm_term=events_page_cta_button",
+  show: true,
+  message: "XRP Ledger Apex 2025 | June 10-12",
+  button: "GET TICKETS",
+  link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_gettickets",
 };
 
 export function Navbar(props) {
@@ -120,23 +120,30 @@ export function Navbar(props) {
   );
 }
 
-const StyledColorModeSwitcher = styled(ColorModeSwitcher)`
-  padding: 10px;
-`;
-
 export function AlertBanner({ message, button, link, show }) {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
   if (show) {
     return (
       <div className="top-banner fixed-top">
-        <div className="inner-apex">
-          <span>
-            <p className="mb-0 apex-banner-text">{message}</p>
-          </span>
-          <span>
-            <Link to={link} target="_blank" className="apex-btn">
-              {button}
-            </Link>
-          </span>
+        <div className={`web-banner`}>
+          <div className="banner-content">
+            <div className="event-info">{translate(message)}</div>
+            <a
+              href={link}
+              target="_blank"
+              className="ticket-button"
+              rel="noopener noreferrer"
+              aria-label="Get Tickets for XRP Ledger Apex 2025 Event"
+            >
+              <span className="button-text">{translate(button)}</span>
+              <img
+                src={require("../../static/img/icons/arrow-up-right-purple.svg")}
+                alt="Get Tickets Icon"
+                className="button-icon"
+              />
+            </a>
+          </div>
         </div>
       </div>
     );
