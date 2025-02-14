@@ -5,7 +5,7 @@ import { slugify } from "../../helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { AlgoliaSearch } from "./AlgoliaSearch";
-import arrowUpRightPurpleIcon from "../../static/img/icons/arrow-up-right-purple.svg";
+import arrowUpRightPurpleIcon from "../../../static/img/icons/arrow-up-right-purple.svg";
 
 // @ts-ignore
 
