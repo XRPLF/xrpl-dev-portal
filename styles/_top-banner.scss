@@ -119,4 +119,9 @@
 
 .web-banner a {
   text-decoration: none;
+  background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF);
+}
+// to avoid a focus outline causing the background to turn white
+.web-banner:focus, .web-banner:active {
+  background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF) !important;
 }
