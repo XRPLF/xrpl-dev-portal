@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 import { useThemeConfig, useThemeHooks } from "@redocly/theme/core/hooks";
 import { LanguagePicker } from "@redocly/theme/components/LanguagePicker/LanguagePicker";
 import { slugify } from "../../helpers";
