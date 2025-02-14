@@ -6,6 +6,7 @@ import { slugify } from "../../helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { AlgoliaSearch } from "./AlgoliaSearch";
+import arrowUpRightPurpleIcon from "../../static/img/icons/arrow-up-right-purple.svg";
 
 // @ts-ignore
 
@@ -138,7 +139,7 @@ export function AlertBanner({ message, button, link, show }) {
             >
               <span className="button-text">{translate(button)}</span>
               <img
-                src={require("../../static/img/icons/arrow-up-right-purple.svg")}
+                src={arrowUpRightPurpleIcon}
                 alt="Get Tickets Icon"
                 className="button-icon"
               />
