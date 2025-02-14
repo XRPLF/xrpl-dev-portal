@@ -23,55 +23,13 @@ To learn more, see [Multi-purpose Tokens](../../concepts/tokens/fungible-tokens/
 
 The MPT Generator utility lets you experiment with an MPT configuration in a sandbox environment. When you are satisfied with the settings, you can generate the transaction code required to create your MPT on Mainnet.
 
-In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form below with a new account and the transaction works fine. See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process. The form is populated with sample values, but you can change the parameters for your own experiments.
+In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form below with a new account and the transaction works fine. See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process. The form is populated with sample values, but you can change the parameters for your own experiments. A T-bill is just one example of the many types of asset you can create and trade on the XRP Ledger.
 
-<div style="background-color:#abe2ff">
+<hr/>
+<div>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
-<!--
-<style>
-    .tooltip {
-  position: relative;
-  border-bottom: 1px dotted black;
-}
-.tooltip:before {
-  content: attr(tooltip-data); 
-  position: absolute;
-  width: 250px;
-  background-color: #006aff;
-  color: #fff;
-  text-align: center;
-  padding: 15px;
-  line-height: 1.1;
-  border-radius: 5px;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity .5s;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-  font-size: 0.70em;
-  visibility: hidden;
-}
-.tooltip:after {
-  content: "";
-  position: absolute;
-  bottom: 75%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  opacity: 0;
-  transition: opacity .5s;
-  border-color: #000 transparent transparent transparent;
-  visibility: hidden;
-}
-.tooltip:hover:before, 
-.tooltip:hover:after {
-  opacity: 1;
-  visibility: visible;
-}
-</style> -->
+
 <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -130,7 +88,7 @@ function getNet() {
     let v_flags = 0
     if (clawbackSlider.checked) {v_flags+=64}
     if (lockSlider.checked) {v_flags+=2}
-    if (authTokensSlider.checked) {v_flags +=4}
+    if (authTokenSlider.checked) {v_flags +=4}
     if (txrSlider.checked) {v_flags += 32}
     if (tradeSlider.checked) {v_flags += 16}
     if (escrowSlider.checked) {v_flags+=8}
@@ -148,7 +106,7 @@ async function sendTransaction() {
   let v_flags = 0
   if (clawbackSlider.checked) {v_flags+=64}
   if (lockSlider.checked) {v_flags+=2}
-  if (authTokensSlider.checked) {v_flags +=4}
+  if (authTokenSlider.checked) {v_flags +=4}
   if (txrSlider.checked) {v_flags += 32}
   if (tradeSlider.checked) {v_flags += 16}
   if (escrowSlider.checked) {v_flags+=8}
@@ -178,175 +136,136 @@ const transactionJson = {
 
 </script>
 <div>
-    <hr/>
-    <h1>MPT Generator</h1>
-    <form>
-        <table width="100%" border-color= "#006aff">
-        <tbody>
-            <tr>
-                <td valign="top">
-                    <table>
-                        <tbody>
-                            <tr valign="top">
-                                <td align="right">
-                                    <font color="red"><b>1.</b></font> Choose your ledger instance.
-                                </td>
-                                <td>
-                                    <input type="radio" id="tn" name="server"
-                                        value="wss://s.altnet.rippletest.net:51233" >
-                                    <label for="testnet">Testnet</label>
-                                    <br/>
-                                    <input type="radio" id="dn" name="server"
-                                        value="wss://s.devnet.rippletest.net:51233" checked>
-                                    <label for="devnet">Devnet</label><br />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                  <font color="red"><b>2.</b></font> Get a new account or one from a seed.<br/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                Account
-                                </td>
-                                <td>
-                                    <input type="text" id="accountField" size="40"></input>
-                                </td>
-                                <td>
-                                    <button type="button" id="getNewAccountButton" style="background-color: #006aff;
-  -webkit-text-fill-color: white;">Get New
-                                        Account</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right">
-                                    Seed
-                                </td>
-                                <td>
-                                    <input type="text" id="seedField" size="40"></input>
-                                </td>
-                                <td>
-                                    <button type="button" id="getAccountFromSeedButton" style="background-color: #006aff; -webkit-text-fill-color: white;">
-                                        Get Account From Seed
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                            <td>
-                            <font color="red"><b>3.</b></font> Set fields for your new MPT.<br/>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td align="right">
-                                Asset Scale
-                            </td>
-                            <td>
-                                <input type="text" size="10" id="assetScaleField" value="2"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Maximum Tokens
-                            </td>
-                            <td>
-                                <input type="text" size="10" id="maximumAmountField" value="1000000"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Transfer Fee
-                            </td>
-                            <td>
-                                <input type="text" size="5" id="transferFeeField" value="314"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <font color="red"><b>4.</b></font> Set flags for your new MPT.<br/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Clawback
-                            </td>
-                            <td align="left">
-                                <label class="switch">
-                                    <input type="checkbox" id="clawbackSlider" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Lock
-                            </td>
-                            <td align="left">
-                                <label class="switch">
-                                    <input type="checkbox" id="lockSlider" name="lockSlider">
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Require Authorization
-                            </td>
-                            <td align="left">
-                                <label class="switch">
-                                    <input type="checkbox" id="authTokensSlider" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Can Transfer
-                            </td>                            
-                            <td align="left">
-                                <label class="switch">
-                                    <input type="checkbox" id="txrSlider" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Can Trade
-                            </td>
-                            <td align="left">
-                                <label class="switch">
-                                    <input type="checkbox" id="tradeSlider" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">
-                                Can Escrow
-                            </td>
-                            <td align="left">
-                                <label class="switch">
-                                    <input type="checkbox" id="escrowSlider">
-                                    <span class="slider round"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>                   
-                                <br/><br/><p>
-                                <font color="red"><b>5.</b></font> Copy and paste the metadata for your token (or use sample provided).
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <b>Token Metadata</b>
-                                <textarea id="metadataTextArea" rows="25" cols="30" 
-                                    value='{
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <div class="container">
+        <div class="row">
+            <div class="col align-self-start">
+              <b>1. Choose your preferred network.</b>
+            </div>
+            <div class="col align-self-center">
+              <input type="radio" id="tn" name="server"
+                  value="wss://s.altnet.rippletest.net:51233">
+              <label for="testnet">Testnet</label>
+              <br/>
+              <input type="radio" id="dn" name="server"
+                  value="wss://s.devnet.rippletest.net:51233" checked>
+              <label for="devnet">Devnet</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col align-self-start">
+              <b>2. Get a new account or retrieve one from its seed.</b><br/>
+            </div>
+            <div class="col align-self-start">
+                Account: <input type="text" id="accountField" size="40"></input>
+                Seed: <input type="text" id="seedField" size="40"></input>
+            </div>
+            <div class="col align-self-start">
+              <button type="button" id="getNewAccountButton" class="btn btn-primary">Get New Account</button><br/><br/>
+              <button type="button" id="getAccountFromSeedButton" class="btn btn-primary">Get Account From Seed</button>
+            </div>
+        </div>
+        <p>
+        <div class="row">
+          <div class="col align-self-start">
+            <b>3. Enter parameter values for your new MPT.</b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col align-right">
+            Asset Scale:
+          </div>
+          <div class="col align-self-start">
+            <input type="text" size="10" id="assetScaleField" value="2"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col align-right">
+            Maximum Tokens:
+          </div>
+          <div class="col align-self-start">
+            <input type="text" size="10" id="maximumAmountField" value="1000000"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col align-right">
+            Transfer Fee:
+          </div>
+          <div class="col align-self-start">
+            <input type="text" size="10" id="transferFeeField" value="314"/>
+          </div>
+        </div>
+        <div class="row"><p></div>
+        <div>
+        <div class="row">
+          <div class="col align-self-start">
+            <b>4. Set flags for your new MPT.</b>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          Clawback
+        </div>
+        <div class="col align-self-start">
+            <input type="checkbox" id="clawbackSlider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          Lock
+        </div>
+        <div class="col align-self-start">
+            <input type="checkbox" id="lockSlider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          Require Authorization
+        </div>
+        <div class="col align-self-start">
+            <input type="checkbox" id="authTokenSlider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          Can Transfer
+        </div>
+        <div class="col align-self-start">
+            <input type="checkbox" id="txrSlider" checked>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          Can Trade
+        </div>
+        <div class="col align-self-start">
+            <input type="checkbox" id="tradeSlider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          Can Escrow
+        </div>
+        <div class="col align-self-start">
+            <input type="checkbox" id="escrowSlider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          <b>5. Enter the token metadata.</b>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col align-self-start">
+          <b>Token Metadata</b>
+          <textarea id="metadataTextArea" rows="18" cols="30" 
+            value='{
     "Name": "US Treasury Bill Token",
     "Identifier": "USTBT",
     "Issuer": "US Treasury",
@@ -360,37 +279,35 @@ const transactionJson = {
     "RegulatoryCompliance": "SEC Regulations",
     "SecurityType": "Treasury Bill",
     "ExternalUrl": "https://example.com/t-bill-token-metadata.json"
-}'
-                                >
-                                </textarea>
-                            </td>
-                            <td align="center" width="10%">
-                                <font color="red"><b>6.</b></font> Click <b>Generate Transaction</b><br/>
-                                <button type="button" id="generateCodeButton" style="background-color: #006aff;
-  -webkit-text-fill-color: white;">Generate Transaction</button>
-                                <br/><br/>
-                                <p>
-                                <font color="red"><b>7.</b></font> Click <b>Send Transaction</b><br/>
-                                <button type = "button" id="sendTransactionButton" style="background-color: #006aff;
-  -webkit-text-fill-color: white;">Send Transaction</button></p>
-                            </td>
-                            <td align="left">
-                                <b>MPToken Create Transaction</b>
-                                <textarea id="codeTextArea" rows="25" cols="30"></textarea>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </tbody>
-        </table>
-    </form>
+}'> </textarea>
+        </div>
+        <div class="col-align-items-left">
+          <p><b>6.</b> Click <b>Generate Transaction</b><br/>
+             <button type="button" id="generateCodeButton" class="btn btn-primary">Generate Transaction</button>
+          </p>
+          <p><b>7.</b> Click <b>Send Transaction</b><br/>
+            <button type = "button" id="sendTransactionButton" class="btn btn-primary">Send Transaction</button>
+          </p>
+          <p>
+          <b>8. Follow the URL to your new T-bill.</b>
+          </p>
+        </div>
+        <div class="col-align-self-start">
+          <p align="right"><b>MPToken Create Transaction</b></p>
+          <textarea id="codeTextArea" rows="18" cols="30"></textarea>
+        </div>
+      </div>
     </div>
-  <hr />
+  </div>
 </div>
+</div>
+<hr/>
 
 ## Creating a US Treasury Bill
 
 A US Treasury bill (T-bill) is a short-term debt security issued by the US government. T-bills are considered a safe investment because they're backed by the US government. T-bills are appealing to investors in American states that have high income tax because the interest earned is exempt from state and local taxes. See [Treasury Bills In Depth](https://www.treasurydirect.gov/research-center/history-of-marketable-securities/bills/t-bills-indepth/).
+
+A T-bill is just one of the many asset-backed tokens you can create and trade as an MPT on the XRP Ledger.
 
 ### Creating an Issuing Account
 
