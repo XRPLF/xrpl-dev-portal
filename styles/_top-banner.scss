@@ -1,13 +1,21 @@
 .web-banner {
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 46px;
   color: $white;
-  background: var(--XRPL-Secondary-Blue-Purple, #7919ff);
+  background: var(--XRPL-Secondary-Blue-Purple, #7919FF);
   padding: 7px 70px;
   z-index: 9999;
-
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    background: var(--XRPL-Blue-Purple-700, #4A00B2);
+    .button-icon {
+      animation: iconJitter 0.7s ease forwards;
+    }
+  }
   @media (max-width: 991px) {
     padding: 0 20px;
   }
@@ -40,13 +48,14 @@
   }
 
   .ticket-button {
+    border: 1px solid var(--XRPL-Primary-White, #fff);
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 6px;
     border-radius: 3141.892px;
-    background: var(--XRPL-Primary-White, #fff);
-    color: var(--XRPL-Secondary-Blue-Purple, #7919ff);
+    background: inherit;
+    color: #FFF;
     text-align: center;
     letter-spacing: -0.16px;
     padding: 8px 16px;
@@ -57,21 +66,11 @@
     transform-origin: center;
     transition: background-color 0.3s ease, color 0.3s ease;
 
-    &:hover {
-      background: #f3f3f3;
-      color: #6a09f2;
-    }
-
     @media (max-width: 524px) {
       font: 600 12px/1 Work Sans Apex, -apple-system, Roboto, Helvetica, sans-serif;
       width: 117px;
       height: 27px;
       padding: 6px 12px;
-
-      &:hover {
-        background: #f3f3f3;
-        color: #6a09f2;
-      }
     }
   }
 
@@ -79,7 +78,6 @@
     align-self: stretch;
     margin: auto 0;
     font-size: 16px;
-    color: var(--XRPL-Secondary-Blue-Purple, #7919FF);
     @media (max-width: 524px) {
       font-size: 12px;
     }
@@ -97,10 +95,6 @@
     align-self: stretch;
     margin: auto 0;
     transform-style: preserve-3d;
-  }
-
-  .ticket-button:hover .button-icon {
-    animation: iconJitter 0.7s ease forwards;
   }
 
   @keyframes iconJitter {
@@ -121,4 +115,8 @@
     }
   }
 
+}
+
+.web-banner a {
+  text-decoration: none;
 }

@@ -5,7 +5,7 @@ import { slugify } from "../../helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { AlgoliaSearch } from "./AlgoliaSearch";
-import arrowUpRightPurpleIcon from "../../../static/img/icons/arrow-up-right-purple.svg";
+import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
 
 // @ts-ignore
 
@@ -125,27 +125,25 @@ export function AlertBanner({ message, button, link, show }) {
   const { translate } = useTranslate();
   if (show) {
     return (
-      <div className="top-banner fixed-top">
-        <div className={`web-banner`}>
-          <div className="banner-content">
-            <div className="event-info">{translate(message)}</div>
-            <a
-              href={link}
-              target="_blank"
-              className="ticket-button"
-              rel="noopener noreferrer"
-              aria-label="Get Tickets for XRP Ledger Apex 2025 Event"
-            >
-              <span className="button-text">{translate(button)}</span>
-              <img
-                src={arrowUpRightPurpleIcon}
-                alt="Get Tickets Icon"
-                className="button-icon"
-              />
-            </a>
+      <a
+        href={link}
+        target="_blank"
+        className="top-banner fixed-top web-banner"
+        rel="noopener noreferrer"
+        aria-label="Get Tickets for XRP Ledger Apex 2025 Event"
+      >
+        <div className="banner-content">
+          <div className="event-info">{translate(message)}</div>
+          <div className="ticket-button">
+            <span className="button-text">{translate(button)}</span>
+            <img
+              src={arrowUpRight}
+              alt="Get Tickets Icon"
+              className="button-icon"
+            />
           </div>
         </div>
-      </div>
+      </a>
     );
   }
   return null;
