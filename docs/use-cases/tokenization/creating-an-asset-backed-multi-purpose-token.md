@@ -127,10 +127,11 @@ const transactionJson = {
   "MPTokenMetadata": metadataHexString
 }
   const tx = await client.submitAndWait(transactionJson, { wallet: my_wallet} )
+  client.disconnect()
   if (document.getElementById("tn").checked) {
-    codeTextArea.value += "\n Success! Ledger Index: " + tx.result.ledger_index + "\nSee https://testnet.xrpl.org/ledgers/" + tx.result.ledger_index
+    successURLfield.value += "https://testnet.xrpl.org/ledgers/" + tx.result.ledger_index
   } else {
-    codeTextArea.value = "\n Success! Ledger Index: " + tx.result.ledger_index + "\nSee https://devnet.xrpl.org/ledgers/" + tx.result.ledger_index
+    successURLfield.value = "https://devnet.xrpl.org/ledgers/" + tx.result.ledger_index
   }
 } //End of sendTransaction()
 
@@ -263,8 +264,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          <b>Token Metadata</b>
-          <textarea id="metadataTextArea" rows="18" cols="30" 
+          <textarea id="metadataTextArea" rows="18" cols="60" 
             value='{
     "Name": "US Treasury Bill Token",
     "Identifier": "USTBT",
@@ -281,20 +281,31 @@ const transactionJson = {
     "ExternalUrl": "https://example.com/t-bill-token-metadata.json"
 }'> </textarea>
         </div>
+    </div>
+    <div class="row">
         <div class="col-align-items-left">
+        <br/>
           <p><b>6.</b> Click <b>Generate Transaction</b><br/>
              <button type="button" id="generateCodeButton" class="btn btn-primary">Generate Transaction</button>
           </p>
-          <p><b>7.</b> Click <b>Send Transaction</b><br/>
+          </div>
+    </div>
+    <div class="row">
+        <div class="col-align-self-start">
+          <p><b>MPToken Create Transaction</b></p>
+          <textarea id="codeTextArea" rows="18" cols="60">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-align-self-start">
+            <br/>
+            <p><b>7.</b> Click <b>Send Transaction</b><br/>
             <button type = "button" id="sendTransactionButton" class="btn btn-primary">Send Transaction</button>
           </p>
           <p>
           <b>8. Follow the URL to your new T-bill.</b>
           </p>
-        </div>
-        <div class="col-align-self-start">
-          <p align="right"><b>MPToken Create Transaction</b></p>
-          <textarea id="codeTextArea" rows="18" cols="30"></textarea>
+          <input type="text" id="successURLfield" size="60"></input>
         </div>
       </div>
     </div>
