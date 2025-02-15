@@ -137,6 +137,7 @@ const transactionJson = {
 
 </script>
 <div>
+<form>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
     <!-- Required meta tags -->
@@ -264,7 +265,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          <textarea id="metadataTextArea" rows="18" cols="60" 
+          <textarea class="form-contol" id="metadataTextArea" rows="18" cols="40" 
             value='{
     "Name": "US Treasury Bill Token",
     "Identifier": "USTBT",
@@ -293,7 +294,7 @@ const transactionJson = {
     <div class="row">
         <div class="col-align-self-start">
           <p><b>MPToken Create Transaction</b></p>
-          <textarea id="codeTextArea" rows="18" cols="60">
+          <textarea class="form-control" id="codeTextArea" rows="18" cols="40"></textarea>
         </div>
     </div>
     <div class="row">
@@ -305,12 +306,13 @@ const transactionJson = {
           <p>
           <b>8. Follow the URL to your new T-bill.</b>
           </p>
-          <input type="text" id="successURLfield" size="60"></input>
+          <input type="text" id="successURLfield" size="40"></input>
         </div>
       </div>
     </div>
   </div>
 </div>
+</form>
 </div>
 <hr/>
 
