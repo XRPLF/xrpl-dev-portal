@@ -79,6 +79,8 @@
     .banner-button{
       align-self: baseline;
       gap: 8px !important;
+      margin-top: -2px !important;
+      padding-top: 0px !important;
     }
   }
   .banner-button{
@@ -90,14 +92,13 @@
       width: 24.5px; 
       height: 33.7px;
       @media (max-width: 768px) {
-        width: 14.5px;
-        height: 14px;
+        width: 15.5px;
+        height: 17px;
         margin-top: 4px;
       }
       @media (max-width: 564px) {
-        width: 15.5px;
-        height: 20.85px;
-        padding-top: 0px;
+        width: 14.5px;
+        height: 13.85px;
       }
     }
   }
