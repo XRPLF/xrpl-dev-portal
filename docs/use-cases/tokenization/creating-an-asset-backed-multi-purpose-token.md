@@ -142,6 +142,11 @@ const transactionJson = {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <div class="container">
+      <div class="row">
+        <div class="col align-self-start">
+        <h4>MPT Generator</h4>
+        </div>
+      </div>
         <div class="row">
             <div class="col align-self-start">
               <b>1. Choose your preferred network.</b>
@@ -259,8 +264,8 @@ const transactionJson = {
           <b>5. Enter the token metadata.</b>
         </div>
       </div>
-      <div class="row">
-        <div class="col align-self-start">
+    <div class="row">
+      <div class="col align-self-start">
           <textarea class="form-contol" id="metadataTextArea" rows="18" cols="40" 
             value='{
     "Name": "US Treasury Bill Token",
@@ -277,12 +282,12 @@ const transactionJson = {
     "SecurityType": "Treasury Bill",
     "ExternalUrl": "https://example.com/t-bill-token-metadata.json"
 }'> </textarea>
-        </div>
+      </div>
     </div>
     <div class="row">
         <div class="col-align-items-left">
         <br/>
-          <p><b>6.</b> Click <b>Generate Transaction</b><br/>
+          <p><b>6. Click Generate Transaction</b><br/>
              <button type="button" id="generateCodeButton" class="btn btn-primary">Generate Transaction</button>
           </p>
           </div>
@@ -296,7 +301,7 @@ const transactionJson = {
     <div class="row">
         <div class="col-align-self-start">
             <br/>
-            <p><b>7.</b> Click <b>Send Transaction</b><br/>
+            <p><b>7. Click Send Transaction</b><br/>
             <button type = "button" id="sendTransactionButton" class="btn btn-primary">Send Transaction</button>
           </p>
           <p>
