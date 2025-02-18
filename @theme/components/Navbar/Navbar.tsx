@@ -24,15 +24,11 @@ export function AlertBanner({ message, button, link, show }) {
   React.useEffect(() => {
     const banner = bannerRef.current;
     if (!banner) return;
-    
-    // Define the event handler
     const handleMouseEnter = () => {
       banner.classList.add('has-hover');
     };
-
     // Attach the event listener
     banner.addEventListener('mouseenter', handleMouseEnter);
-
     // Clean up the event listener on unmount
     return () => {
       banner.removeEventListener('mouseenter', handleMouseEnter);

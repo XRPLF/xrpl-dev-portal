@@ -14,6 +14,7 @@
     color: $white;
     .button-icon{
       animation: iconJitter 1s ease-in-out forwards;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
   color: $white !important;
@@ -35,13 +36,14 @@
     z-index: 0;
     transform: scaleX(0);       // Start scaled down to 0
     transform-origin: left;     // Scale from the left edge
-    transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 0.7s cubic-bezier(0.7, 0, 0.84, 0);
     will-change: transform;     // Hint for smoother animations
   }
 
   // On hover, scale to full width
   &:hover::after {
     transform: scaleX(1);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
   // Ensure direct children are above the pseudo-element
   > * {
@@ -107,7 +109,7 @@
     width: 12.5px; // Scaled down from 13.8px
     animation: none;
     transform: rotateZ(0deg);
-    transition: transform 0.5s ease-in-out; // Adjust duration as needed
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); // Adjust duration as needed
     @media (max-width: 524px) {
       width: 9px; // Scaled down from 10px
     }
@@ -151,6 +153,7 @@
 .button-icon {
   animation: iconJitter 1s ease-in-out;
   animation-iteration-count: 1;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @keyframes iconReturn {
   from {
@@ -163,4 +166,5 @@
 /* After the banner has been hovered once, on unhover run the reverse animation */
 .web-banner.has-hover:not(:hover) .button-icon {
   animation: iconReturn 1s ease-in-out forwards;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
