@@ -13,7 +13,7 @@
     text-decoration: none;
     color: $white;
     .button-icon{
-      animation: iconJitter 1s ease-in-out forwards;
+      animation: iconJitter 0.7s ease-in-out forwards;
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
@@ -62,6 +62,7 @@
       gap: 0px !important;
       flex-direction: column;
       text-align: left;
+      line-height: 21px;
     }
     .banner-button{
       align-self: baseline;
@@ -94,32 +95,6 @@
     gap: 32px;
   }
 
-  .ticket-button {
-    border: 1px solid var(--XRPL-Primary-White, #fff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    border-radius: 3141.892px;
-    background: inherit;
-    color: #FFF;
-    text-align: center;
-    letter-spacing: -0.16px;
-    padding: 8px 16px;
-    font: 600 15px/1 Work Sans ;
-    cursor: pointer;
-    white-space: nowrap;
-    text-decoration: none;
-    transform-origin: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-    @media (max-width: 564px) {
-      font: 600 9px/1 Work Sans ;
-      width: 117px;
-      height: 27px;
-      padding: 6px 12px;
-    }
-  }
 
   .button-icon {
     transform-style: preserve-3d;
@@ -134,20 +109,11 @@
   }
 
   @keyframes iconJitter {
-    0% {
-      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(22deg) skew(0deg, 0deg);
+    from {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(0deg) skew(0deg, 0deg);
     }
-
-    40% {
-      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(55deg) skew(0deg, 0deg);
-    }
-
-    70% {
-      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(40deg) skew(0deg, 0deg);
-    }
-
-    100% {
-      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(45deg) skew(0deg, 0deg);
+    to {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(45deg) skew(0deg, 0deg);
     }
   }
 
@@ -158,7 +124,7 @@
 }
 
 .button-icon {
-  animation: iconJitter 1s ease-in-out;
+  animation: iconJitter 0.7s ease-in-out;
   animation-iteration-count: 1;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -172,6 +138,6 @@
 }
 /* After the banner has been hovered once, on unhover run the reverse animation */
 .web-banner.has-hover:not(:hover) .button-icon {
-  animation: iconReturn 1s ease-in-out forwards;
+  animation: iconReturn 0.7s ease-in-out forwards;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }

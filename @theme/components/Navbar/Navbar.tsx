@@ -11,7 +11,7 @@ import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
 
 const alertBanner = {
   show: true,
-  message: "XRP Ledger Apex 2025",
+  message: "XRP LEDGER APEX 2025",
   button: "GET TICKETS",
   link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_gettickets",
   date: "JUNE 10-12",
