@@ -9,7 +9,7 @@ labels:
 
 _As a financial professional, I want to use multi-purpose tokens to create an asset-backed token in order to profit from resale transactions._
 
-A multi-purpose token (MPT) is a compact and flexible type of token that offers the best aspects of fungible and non-fungible tokens. It is the next generation of tokenization on the XRPL. Notable features include:
+A multi-purpose token (MPT) is a compact and flexible object that offers the best aspects of fungible and non-fungible tokens. It is the next generation of tokenization on the XRPL. Notable features include:
 
 - MPTs store metadata directly on the XRPL blockchain, with the option of linking to additional off-chain data.
 - MPTs can have a fixed token supply, with a cap on the maximum number of tokens.
@@ -21,7 +21,7 @@ To learn more, see [Multi-purpose Tokens](../../concepts/tokens/fungible-tokens/
 
 ## MPT Generator
 
-The MPT Generator utility lets you experiment with an MPT configuration in a sandbox environment. When you are satisfied with the settings, you can generate the transaction code required to create your MPT on Mainnet.
+The MPT Generator utility embedded on the page below lets you experiment with an MPT configuration in a sandbox environment. When you are satisfied with the settings, you can generate the transaction code required to create your MPT on Mainnet.
 
 In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form below with a new account and the transaction works fine. See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process. The form is populated with sample values, but you can change the parameters for your own experiments. A T-bill is just one example of the many types of asset you can create and trade on the XRP Ledger.
 
@@ -29,8 +29,6 @@ In practice, you want to use an Issuer account configuration to issue an MPT, bu
 <div>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
-
-<script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         getNewAccountButton.addEventListener("click", getAccount)
@@ -143,8 +141,6 @@ const transactionJson = {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <div class="container">
         <div class="row">
             <div class="col align-self-start">
