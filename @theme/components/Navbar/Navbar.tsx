@@ -158,19 +158,6 @@ export function Navbar(props) {
   );
 }
 
-export function XrplApexEvent({ message, button, link, show, date }) {
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
-  if (show) {
-    return (
-      <div className="xrpl-apex-event">
-        
-      </div>
-    );
-  }
-  return null;
-}
-
 export function TopNavCollapsible({ children }) {
   return (
     <div
