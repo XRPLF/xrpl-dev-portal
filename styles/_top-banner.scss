@@ -12,7 +12,7 @@
     text-decoration: none;
     color: $white;
     .button-icon{
-      animation: iconJitter 1.65s ease-in-out forwards;
+      animation: iconJitter 1s ease-in-out forwards;
     }
   }
   color: $white !important;
@@ -28,18 +28,20 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 100%; // Full width so that we can scale it
     height: 100%;
     background-color: #7919FF;
     z-index: 0;
-    transition: width 2s ease-out;
+    transform: scaleX(0);       // Start scaled down to 0
+    transform-origin: left;     // Scale from the left edge
+    transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform;     // Hint for smoother animations
   }
 
-  // On hover, expand the pseudo-element to cover the full width
+  // On hover, scale to full width
   &:hover::after {
-    width: 100%;
+    transform: scaleX(1);
   }
-
   // Ensure direct children are above the pseudo-element
   > * {
     position: relative;
