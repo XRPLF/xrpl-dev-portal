@@ -48,6 +48,7 @@ function getNet() {
   async function getAccount() {
     let net = getNet()
     const client = new xrpl.Client(net)
+    accountField.value = "Getting a new account..."
     results = 'Connecting to ' + net + '....'
   //-------------------------------This uses the default faucet for Testnet/Devnet.
     let faucetHost = null
@@ -71,6 +72,7 @@ function getNet() {
   async function getAccountFromSeed() {
     let net = getNet()
     const client = new xrpl.Client(net)
+    accountField.value = "Getting account from seed..."
     results = 'Connecting to ' + getNet() + '....'
     await client.connect()
     results += '\nConnected, finding wallets.\n'
@@ -154,11 +156,11 @@ const transactionJson = {
             <div class="col align-self-center">
               <input type="radio" id="tn" name="server"
                   value="wss://s.altnet.rippletest.net:51233">
-              <label for="testnet">Testnet</label>
+              <label for="tn">Testnet</label>
               <br/>
               <input type="radio" id="dn" name="server"
                   value="wss://s.devnet.rippletest.net:51233" checked>
-              <label for="devnet">Devnet</label>
+              <label for="dn">Devnet</label>
             </div>
         </div>
         <div class="row">
@@ -168,7 +170,7 @@ const transactionJson = {
           </div>
           <div class="row">
             <div class="col align-self-start">
-              Account:<br/>
+              <label for="accountField">Account</label>
             </div>
           </div>
           <div class="row">
@@ -178,7 +180,7 @@ const transactionJson = {
           </div>
           <div class="row">
             <div class="col align-self-start">
-              Seed:<br/>
+              <label for="seedField">Seed</label>
             </div>
           </div>
           <div class="row">
@@ -197,7 +199,6 @@ const transactionJson = {
               </div>
             </div>
           </div>
-
         <div class="row">
           <div class="col align-self-start">
             <b>3. Enter parameter values for your new MPT.</b>
@@ -205,7 +206,7 @@ const transactionJson = {
         </div>
         <div class="row">
           <div class="col align-right">
-            Asset Scale:
+            <label for="assetScaleField">Asset Scale</label>
           </div>
           <div class="col align-self-start">
             <input type="text" size="10" id="assetScaleField" value="2"/>
@@ -213,7 +214,7 @@ const transactionJson = {
         </div>
         <div class="row">
           <div class="col align-right">
-            Maximum Tokens:
+            <label for="maximumAmountField">Maximum Tokens</label>
           </div>
           <div class="col align-self-start">
             <input type="text" size="10" id="maximumAmountField" value="1000000"/>
@@ -221,7 +222,7 @@ const transactionJson = {
         </div>
         <div class="row">
           <div class="col align-right">
-            Transfer Fee:
+            <label for="transferFeeField">Transfer Fee</label>
           </div>
           <div class="col align-self-start">
             <input type="text" size="10" id="transferFeeField" value="314"/>
@@ -236,7 +237,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          Clawback
+          <label for="clawbackSlider">Clawback</label>
         </div>
         <div class="col align-self-start">
             <input type="checkbox" id="clawbackSlider">
@@ -244,7 +245,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          Lock
+          <label for="lockSlider">Lock</label>
         </div>
         <div class="col align-self-start">
             <input type="checkbox" id="lockSlider">
@@ -252,7 +253,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          Require Authorization
+          <label for="authTokenSlider">Require Authorization</label>
         </div>
         <div class="col align-self-start">
             <input type="checkbox" id="authTokenSlider">
@@ -260,7 +261,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          Can Transfer
+          <label for="txrSlider">Can Transfer</label>
         </div>
         <div class="col align-self-start">
             <input type="checkbox" id="txrSlider" checked>
@@ -268,7 +269,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          Can Trade
+          <label for="tradeSlider">Can Trade</label>
         </div>
         <div class="col align-self-start">
             <input type="checkbox" id="tradeSlider">
@@ -276,7 +277,7 @@ const transactionJson = {
       </div>
       <div class="row">
         <div class="col align-self-start">
-          Can Escrow
+          <label for="escrowSlider">Can Escrow</label>
         </div>
         <div class="col align-self-start">
             <input type="checkbox" id="escrowSlider">
@@ -304,7 +305,7 @@ const transactionJson = {
     "RegulatoryCompliance": "SEC Regulations",
     "SecurityType": "Treasury Bill",
     "ExternalUrl": "https://example.com/t-bill-token-metadata.json"
-}'> </textarea>
+}'></textarea>
       </div>
     </div>
     <div class="row">
