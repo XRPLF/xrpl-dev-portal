@@ -14,8 +14,33 @@ const alertBanner = {
   message: "XRP Ledger Apex 2025 | June 10-12",
   button: "GET TICKETS",
   link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_gettickets",
+  date: "JUNE 10-12",
 };
-
+export function AlertBanner({ message, button, link, show }) {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+  if (show) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        className="top-banner fixed-top web-banner"
+        rel="noopener noreferrer"
+        aria-label="Get Tickets for XRP Ledger Apex 2025 Event"
+      >
+        <div className="banner-event-details">
+          <div className="event-info">XRPL APEX 2025</div>
+          <div className="event-date">JUNE 10-12</div>
+        </div>
+        <div className="banner-button">
+          <div className="button-text">GET TICKETS</div>
+          <img className="button-icon" src={arrowUpRight} alt="Get Tickets Icon" />
+        </div>
+      </a>
+    );
+  }
+  return null;
+}
 export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
   const themeConfig = useThemeConfig();
@@ -48,6 +73,7 @@ export function Navbar(props) {
       );
     }
   });
+
 
   React.useEffect(() => {
     // Turns out jQuery is necessary for firing events on Bootstrap v4
@@ -86,12 +112,7 @@ export function Navbar(props) {
 
   return (
     <>
-      <AlertBanner
-        show={alertBanner.show}
-        message={alertBanner.message}
-        button={alertBanner.button}
-        link={alertBanner.link}
-      />
+      <AlertBanner {...alertBanner} />
       <NavWrapper belowAlertBanner={alertBanner.show}>
         <LogoBlock to={href} img={logo} alt={altText} />
         <NavControls>
@@ -120,30 +141,14 @@ export function Navbar(props) {
   );
 }
 
-export function AlertBanner({ message, button, link, show }) {
+export function XrplApexEvent({ message, button, link, show, date }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   if (show) {
     return (
-      <a
-        href={link}
-        target="_blank"
-        className="top-banner fixed-top web-banner"
-        rel="noopener noreferrer"
-        aria-label="Get Tickets for XRP Ledger Apex 2025 Event"
-      >
-        <div className="banner-content">
-          <div className="event-info">{translate(message)}</div>
-          <div className="ticket-button">
-            <span className="button-text">{translate(button)}</span>
-            <img
-              src={arrowUpRight}
-              alt="Get Tickets Icon"
-              className="button-icon"
-            />
-          </div>
-        </div>
-      </a>
+      <div className="xrpl-apex-event">
+        
+      </div>
     );
   }
   return null;
@@ -273,7 +278,7 @@ export function NavWrapper(props) {
   return (
     <nav
       className="top-nav navbar navbar-expand-lg navbar-dark fixed-top"
-      style={props.belowAlertBanner ? { marginTop: "46px" } : {}}
+      style={props.belowAlertBanner ? { marginTop: "52px" } : {}}
     >
       {props.children}
     </nav>

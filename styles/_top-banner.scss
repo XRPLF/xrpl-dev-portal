@@ -1,50 +1,73 @@
 .web-banner {
   text-decoration: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 46px;
-  color: $white;
-  background: var(--XRPL-Secondary-Blue-Purple, #7919FF);
-  padding: 7px 70px;
+  justify-content: space-between;
+  height: 52px;
+  background: #D919FF !important;
+  padding: 7px 35px;
+  font-family: "Work Sans";
   z-index: 9999;
   cursor: pointer;
   &:hover {
     text-decoration: none;
-    background: var(--XRPL-Blue-Purple-700, #4A00B2);
-    .button-icon {
-      animation: iconJitter 0.7s ease forwards;
+    color: $white;
+    .button-icon{
+      animation: iconJitter 1.65s ease-in-out forwards;
     }
   }
+  color: $white !important;
+  text-align: center;
+  font-family: "Work Sans";
+  font-size: 26px; // Further scaled down from 28px
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.32px;
+  // Pseudo-element for the fill animation
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #7919FF;
+    z-index: 0;
+    transition: width 2s ease-out;
+  }
+
+  // On hover, expand the pseudo-element to cover the full width
+  &:hover::after {
+    width: 100%;
+  }
+
+  // Ensure direct children are above the pseudo-element
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
   @media (max-width: 991px) {
     padding: 0 20px;
   }
-
-  .banner-content {
+  .banner-button{
     display: flex;
     align-items: center;
-    gap: 24px;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
+    gap: 14.5px;
+    img{
+      width: 24.5px; 
+      height: 33.7px;
+    }
+  }
+  .event-info {
 
     @media (max-width: 524px) {
-      gap: 8px;
-    }
-
-    @media (max-width: 991px) {
-      max-width: 100%;
+      font-size: 15px;
     }
   }
 
-  .event-info {
-    color: #fff;
-    font: 500 18px/1 Work Sans, -apple-system, Roboto, Helvetica, sans-serif;
-    align-self: stretch;
-    margin: auto 0;
-
-    @media (max-width: 524px) {
-      font-size: 12px;
-    }
+  .banner-event-details {
+    display: flex;
+    gap: 32px;
   }
 
   .ticket-button {
@@ -59,7 +82,7 @@
     text-align: center;
     letter-spacing: -0.16px;
     padding: 8px 16px;
-    font: 600 18px/1 Work Sans Apex, -apple-system, Roboto, Helvetica, sans-serif;
+    font: 600 15px/1 Work Sans ;
     cursor: pointer;
     white-space: nowrap;
     text-decoration: none;
@@ -67,29 +90,21 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 
     @media (max-width: 524px) {
-      font: 600 12px/1 Work Sans Apex, -apple-system, Roboto, Helvetica, sans-serif;
+      font: 600 9px/1 Work Sans ;
       width: 117px;
       height: 27px;
       padding: 6px 12px;
     }
   }
 
-  .button-text {
-    align-self: stretch;
-    margin: auto 0;
-    font-size: 16px;
-    @media (max-width: 524px) {
-      font-size: 12px;
-    }
-  }
-
   .button-icon {
     aspect-ratio: 0.71;
     object-fit: contain;
-    width: 13.8px;
+    width: 12.5px; // Scaled down from 13.8px
+    animation: none;
 
     @media (max-width: 524px) {
-      width: 10px;
+      width: 9px; // Scaled down from 10px
     }
 
     align-self: stretch;
@@ -119,9 +134,16 @@
 
 .web-banner a {
   text-decoration: none;
-  background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF);
+  // background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF);
 }
-// to avoid a focus outline causing the background to turn white
-.web-banner:focus, .web-banner:active {
-  background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF) !important;
+
+// // to avoid a focus outline causing the background to turn white
+// .web-banner:focus,
+// .web-banner:active {
+//   background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF) !important;
+// }
+
+.button-icon {
+  animation: iconJitter 1s ease-in-out;
+  animation-iteration-count: 1;
 }
