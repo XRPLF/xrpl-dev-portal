@@ -19,11 +19,32 @@ const alertBanner = {
 export function AlertBanner({ message, button, link, show }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
+  const bannerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const banner = bannerRef.current;
+    if (!banner) return;
+    
+    // Define the event handler
+    const handleMouseEnter = () => {
+      banner.classList.add('has-hover');
+    };
+
+    // Attach the event listener
+    banner.addEventListener('mouseenter', handleMouseEnter);
+
+    // Clean up the event listener on unmount
+    return () => {
+      banner.removeEventListener('mouseenter', handleMouseEnter);
+    };
+  }, []);
+
   if (show) {
     return (
       <a
         href={link}
         target="_blank"
+        ref={bannerRef}
         className="top-banner fixed-top web-banner"
         rel="noopener noreferrer"
         aria-label="Get Tickets for XRP Ledger Apex 2025 Event"

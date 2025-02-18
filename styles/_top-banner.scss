@@ -8,6 +8,7 @@
   font-family: "Work Sans";
   z-index: 9999;
   cursor: pointer;
+  
   &:hover {
     text-decoration: none;
     color: $white;
@@ -34,7 +35,7 @@
     z-index: 0;
     transform: scaleX(0);       // Start scaled down to 0
     transform-origin: left;     // Scale from the left edge
-    transition: transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1);
     will-change: transform;     // Hint for smoother animations
   }
 
@@ -100,11 +101,13 @@
   }
 
   .button-icon {
+    transform-style: preserve-3d;
     aspect-ratio: 0.71;
     object-fit: contain;
     width: 12.5px; // Scaled down from 13.8px
     animation: none;
-
+    transform: rotateZ(0deg);
+    transition: transform 0.5s ease-in-out; // Adjust duration as needed
     @media (max-width: 524px) {
       width: 9px; // Scaled down from 10px
     }
@@ -148,4 +151,16 @@
 .button-icon {
   animation: iconJitter 1s ease-in-out;
   animation-iteration-count: 1;
+}
+@keyframes iconReturn {
+  from {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(45deg) skew(0deg, 0deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(0deg) skew(0deg, 0deg);
+  }
+}
+/* After the banner has been hovered once, on unhover run the reverse animation */
+.web-banner.has-hover:not(:hover) .button-icon {
+  animation: iconReturn 1s ease-in-out forwards;
 }
