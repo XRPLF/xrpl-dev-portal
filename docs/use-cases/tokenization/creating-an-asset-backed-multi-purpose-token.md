@@ -165,16 +165,39 @@ const transactionJson = {
             <div class="col align-self-start">
               <b>2. Get a new account or retrieve one from its seed.</b><br/>
             </div>
+          </div>
+          <div class="row">
             <div class="col align-self-start">
-                Account: <input type="text" id="accountField" size="40"></input>
-                Seed: <input type="text" id="seedField" size="40"></input>
+              Account:<br/>
             </div>
+          </div>
+          <div class="row">
             <div class="col align-self-start">
-              <button type="button" id="getNewAccountButton" class="btn btn-primary">Get New Account</button><br/><br/>
+              <input type="text" id="accountField" size="40"></input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col align-self-start">
+              Seed:<br/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col align-self-start">
+              <input type="text" id="seedField" size="40"></input>
+              <br/><br/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col align-self-start">
+              <button type="button" id="getNewAccountButton" class="btn btn-primary">Get New Account</button>
+              </div>
+              <div class="col align-self-start">
               <button type="button" id="getAccountFromSeedButton" class="btn btn-primary">Get Account From Seed</button>
+              <br/><br/>
+              </div>
             </div>
-        </div>
-        <p>
+          </div>
+
         <div class="row">
           <div class="col align-self-start">
             <b>3. Enter parameter values for your new MPT.</b>
