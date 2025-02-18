@@ -13,7 +13,7 @@
     text-decoration: none;
     color: $white;
     .button-icon{
-      animation: iconJitter 0.7s ease-in-out forwards;
+      animation: iconJitter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
@@ -53,16 +53,25 @@
   @media (max-width: 768px) {
     font-size: 18px;
     padding: 11px 35px;
-
+    .button-text{
+      margin-bottom: 4px;
+    }
   }
   @media (max-width: 564px) {
     font-size: 15px;
     padding: 5px 40px;
+    .button-text{
+      margin-bottom: 0px;
+    }
     .banner-event-details{
       gap: 0px !important;
       flex-direction: column;
       text-align: left;
       line-height: 21px;
+      .event-date{
+        position: relative;
+        top: -5px;
+      }
     }
     .banner-button{
       align-self: baseline;
