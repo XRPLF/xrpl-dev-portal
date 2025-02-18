@@ -11,12 +11,12 @@ import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
 
 const alertBanner = {
   show: true,
-  message: "XRP Ledger Apex 2025 | June 10-12",
+  message: "XRP Ledger Apex 2025",
   button: "GET TICKETS",
   link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_gettickets",
   date: "JUNE 10-12",
 };
-export function AlertBanner({ message, button, link, show }) {
+export function AlertBanner({ message, date, button, link, show }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const bannerRef = React.useRef(null);
@@ -46,11 +46,11 @@ export function AlertBanner({ message, button, link, show }) {
         aria-label="Get Tickets for XRP Ledger Apex 2025 Event"
       >
         <div className="banner-event-details">
-          <div className="event-info">XRPL APEX 2025</div>
-          <div className="event-date">JUNE 10-12</div>
+          <div className="event-info">{translate(message)}</div>
+          <div className="event-date">{translate(date)}</div>
         </div>
         <div className="banner-button">
-          <div className="button-text">GET TICKETS</div>
+          <div className="button-text">{translate(button)}</div>
           <img className="button-icon" src={arrowUpRight} alt="Get Tickets Icon" />
         </div>
       </a>

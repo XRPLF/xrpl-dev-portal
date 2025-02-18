@@ -50,23 +50,42 @@
     position: relative;
     z-index: 1;
   }
+  @media (max-width: 768px) {
+    font-size: 18px;
+    padding: 11px 35px;
 
-  @media (max-width: 991px) {
-    padding: 0 20px;
+  }
+  @media (max-width: 564px) {
+    font-size: 15px;
+    padding: 5px 40px;
+    .banner-event-details{
+      gap: 0px !important;
+      flex-direction: column;
+      text-align: left;
+    }
+    .banner-button{
+      align-self: baseline;
+      gap: 8px !important;
+    }
   }
   .banner-button{
     display: flex;
     align-items: center;
     gap: 14.5px;
+    padding-top: 1px;
     img{
       width: 24.5px; 
       height: 33.7px;
-    }
-  }
-  .event-info {
-
-    @media (max-width: 524px) {
-      font-size: 15px;
+      @media (max-width: 768px) {
+        width: 19.5px;
+        height: 18.7px;
+        padding-top: 0px;
+      }
+      @media (max-width: 564px) {
+        width: 15.5px;
+        height: 20.85px;
+        padding-top: 0px;
+      }
     }
   }
 
@@ -94,7 +113,7 @@
     transform-origin: center;
     transition: background-color 0.3s ease, color 0.3s ease;
 
-    @media (max-width: 524px) {
+    @media (max-width: 564px) {
       font: 600 9px/1 Work Sans ;
       width: 117px;
       height: 27px;
@@ -106,14 +125,9 @@
     transform-style: preserve-3d;
     aspect-ratio: 0.71;
     object-fit: contain;
-    width: 12.5px; // Scaled down from 13.8px
     animation: none;
     transform: rotateZ(0deg);
     transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); // Adjust duration as needed
-    @media (max-width: 524px) {
-      width: 9px; // Scaled down from 10px
-    }
-
     align-self: stretch;
     margin: auto 0;
     transform-style: preserve-3d;
@@ -141,14 +155,7 @@
 
 .web-banner a {
   text-decoration: none;
-  // background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF);
 }
-
-// // to avoid a focus outline causing the background to turn white
-// .web-banner:focus,
-// .web-banner:active {
-//   background-color: var(--XRPL-Secondary-Blue-Purple, #7919FF) !important;
-// }
 
 .button-icon {
   animation: iconJitter 1s ease-in-out;
