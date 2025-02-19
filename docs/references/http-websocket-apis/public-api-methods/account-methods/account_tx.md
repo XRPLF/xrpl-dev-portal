@@ -439,8 +439,6 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
 | `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
 | `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `meta`             | Object (JSON)              | (JSON mode) The transaction results metadata in JSON. |
-| `meta_blob`        | String (Binary)            | (Binary mode) The transaction results metadata as a hex string. |
 | `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
 | `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
@@ -456,6 +454,8 @@ Each transaction object includes the following fields, depending on whether it w
 | `ledger_index`   | Integer         | The [ledger index][] of the ledger version that included this transaction. |
 | `tx_json`        | Object (JSON)   | (JSON mode) JSON object defining the transaction. |
 | `tx_blob`        | String (Binary) | (Binary mode) A unique hex string defining the transaction. |
+| `meta`           | Object (JSON)   | (JSON mode) The transaction results metadata in JSON. |
+| `meta_blob`      | String (Binary) | (Binary mode) The transaction results metadata as a hex string. |
 | `validated`      | Boolean         | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
 
 {% /tab %}
