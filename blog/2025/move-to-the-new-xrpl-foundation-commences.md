@@ -56,7 +56,7 @@ If your XRP Ledger node currently trusts the UNL published by the XRP Ledger Fou
     ED42AEC58B701EEBB77356FFFEC26F83C1F0407263530F068C7C73D392C7E06FD1
     ```
 
-2. **Restart _rippled_**
+2. **Restart `rippled`.**
   
     After saving the changes, restart your `rippled` service. On supported platforms, you can run the following command:
     
