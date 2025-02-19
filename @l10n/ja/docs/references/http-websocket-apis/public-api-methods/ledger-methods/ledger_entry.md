@@ -808,18 +808,120 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 [試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-nft-page)
 
-## レスポンスのフォーマット
+### MPT Issuanceオブジェクトを取得する
 
-レスポンスは[標準フォーマット][]に従って、成功結果には以下のフィールドが含まれます。
+_([MPToken amendment][]が必要です。 {% not-enabled /%})_
 
-| フィールド       | 型               | 説明                                      |
+`MPTokenIssuance`オブジェクトを返します。
+
+| フィールド              | 型     | 説明           |
+|:------------------------|:-------|:---------------|
+| `mpt_issuance`          | 文字列 | 192ビットの`MPTokenIssuanceID`を16進文字列で指定。 |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_mpt_issuance",
+    "command": "ledger_entry",
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
+```
+{% /tab %}
+{% /tabs %}
+
+<!-- TODO: add try-it for MPT issuance
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mpt_issuance)
+-->
+
+### MPTokenオブジェクトを取得する
+
+_([MPToken amendment][]が必要です。 {% not-enabled /%})_
+
+`MPToken`オブジェクトを返します。
+
+| フィールド              | 型                       | 説明           |
+|:------------------------|:-------------------------|:----------------------|
+| `mptoken`               | オブジェクトまたは文字列 | 文字列の場合、取得するMPTokenのレジャーエントリIDとして解釈します。オブジェクトの場合、`MPToken`を一意に識別するために、`account`と`mpt_issuance_id`のサブフィールドが必要です。 |
+| mptoken.mpt_issuance_id |	文字列                   | (`MPToken`がオブジェクトの場合必須) MPTokenIssuanceに紐づく192ビットのMPTokenIssuanceID。 |
+| mptoken.account	️        | 文字列	                  | (`MPToken`がオブジェクトの場合必須) MPTokenの所有者のアカウント。 |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+
+```json
+{
+    "id": "example_get_mpt_issuance",
+    "command": "ledger_entry",
+    "mptoken": {
+      "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
+      "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
+    }
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "mptoken":{
+                "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
+                "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
+            } 
+        }
+    ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"} }'
+```
+{% /tab %}
+{% /tabs %}
+
+<!-- TODO: make a try-it link for MPT object
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mptoken)
+ -->
+
+## レスポンスフォーマット
+
+レスポンスは[標準フォーマット][]に従い、成功した結果には次のフィールドが含まれます。
+
+| フィールド          | 型             | 説明                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `index`        | 文字列            | [レジャーオブジェクト](../../../protocol/ledger-data/ledger-entry-types/index.md)の一意のID。 |
-| `ledger_index` | 符号なし整数       | このデータを取得する際に使用したレジャーの [レジャーインデックス][]。 |
-| `node`         | オブジェクト       | _(`"binary": true`が指定されている場合、省略)_ [レジャーフォーマット][]に基づいた、この元帳オブジェクトのデータを含むオブジェクト。 |
-| `node_binary`  | 文字列            | _(`"binary": true`が指定されていない場合、省略)_ レジャーオブジェクトの[バイナリ形式](../../../protocol/binary-format.md)を16進数で表したもの。 |
+| `index`        | 文字列           | [レジャーエントリ](../../../protocol/ledger-data/ledger-entry-types/index.md)の一意のID。 |
+| `ledger_index` | 正の整数 | このデータを取得するために使用されたレジャーの[レジャーインデックス][]。 |
+| `node`         | オブジェクト           | _(`"binary": true`の場合省略)_ このレジャーエントリのデータ。[レジャーのフォーマット][]に従っています。 |
+| `node_binary`  | 文字列           | _(`"binary": true`の場合省略)_ レジャーオブジェクトの[バイナリフォーマット](../../../protocol/binary-format.md)。 |
+| `deleted_ledger_index` | String | _(Clioサーバのみ, `include_deleted`パラメータが設定されている場合のみ)_ レジャーエントリオブジェクトが削除された[レジャーインデックス][]。 |
 
-処理が成功したレスポンスの例:
+成功したレスポンスの例:
 
 {% tabs %}
 
@@ -889,7 +991,7 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 ```
 {% /tab %}
 
-{% tab label="コマンドライン" %}
+{% tab label="Commandline" %}
 ```json
 {
   "result": {
@@ -921,205 +1023,6 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 {% /tab %}
 
 {% /tabs %}
-
-
-### MPT Issuanceオブジェクトを取得する
-
-`MPTokenIssuance`オブジェクトを返します。
-
-| フィールド              | 型     | 説明           |
-|:------------------------|:-------|:---------------|
-| `mpt_issuance`          | 文字列 | 192ビットの`MPTokenIssuanceID`。 |
-
-<!-- MULTICODE_BLOCK_START -->
-
-*WebSocket*
-
-```json
-{
-    "id": "example_get_mpt_issuance",
-    "command": "ledger_entry",
-    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
-    "ledger_index": "validated"
-}
-```
-
-*JSON-RPC*
-
-```json
-{
-  "method": "ledger_entry",
-  "params": [{
-    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
-    "ledger_index": "validated"
-  }]
-}
-```
-*Commandline*
-
-```sh
-rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
-```
-### MPTokenオブジェクトを取得する
-
-`MPToken`オブジェクトを返します。
-
-| フィールド              | 型                       | 説明           |
-|:------------------------|:-------------------------|:----------------------|
-| `mptoken`               | オブジェクトまたは文字列 | 文字列の場合、取得するMPTokenのレジャーエントリIDとして解釈します。オブジェクトの場合、`MPToken`を一意に識別するために、`account`と`mpt_issuance_id`のサブフィールドが必要です。 |
-| mptoken.mpt_issuance_id |	文字列                   | (`MPToken`がオブジェクトの場合必須) MPTokenIssuanceに紐づく192ビットのMPTokenIssuanceID。 |
-| mptoken.account	️        | 文字列	                  | (`MPToken`がオブジェクトの場合必須) MPTokenの所有者のアカウント。 |
-
-<!-- MULTICODE_BLOCK_START -->
-
-*WebSocket*
-
-```json
-{
-    "id": "example_get_mpt_issuance",
-    "command": "ledger_entry",
-    "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
-    "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
-}
-```
-
-*JSON-RPC*
-
-```json
-{
-    "method": "ledger_entry",
-    "params": [
-        {
-            "mptoken":{
-                "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
-                "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
-            } 
-        }
-    ]
-}
-```
-*Commandline*
-
-```sh
-rippled json ledger_entry '{ "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"}'
-```
-<!-- MULTICODE_BLOCK_END -->
-
-[試してみる! >](/resources/dev-tools/websocket-api-tool#ledger_entry-mpt_issuance)
-
-## レスポンスフォーマット
-
-レスポンスは[標準フォーマット][]に従い、成功した結果には次のフィールドが含まれます。
-
-| フィールド          | 型             | 説明                              |
-|:---------------|:-----------------|:-----------------------------------------|
-| `index`        | 文字列           | [レジャーエントリ](../../../protocol/ledger-data/ledger-entry-types/index.md)の一意のID。 |
-| `ledger_index` | 正の整数 | このデータを取得するために使用されたレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#ledger-index)。 |
-| `node`         | オブジェクト           | _(`"binary": true`の場合省略)_ このレジャーエントリのデータ。[レジャーのフォーマット](../../../protocol/ledger-data/ledger-entry-types/index.md)に従っています。 |
-| `node_binary`  | 文字列           | _(`"binary": true`の場合省略)_ レジャーオブジェクトの[バイナリフォーマっt](../../../protocol/binary-format.md)。 |
-
-成功したレスポンスの例:
-
-<!-- MULTICODE_BLOCK_START -->
-
-*WebSocket*
-
-```json
-{
-  "id": "example_get_accountroot",
-  "result": {
-    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-    "ledger_hash": "31850E8E48E76D1064651DF39DF4E9542E8C90A9A9B629F4DE339EB3FA74F726",
-    "ledger_index": 61966146,
-    "node": {
-      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
-      "Balance": "424021949",
-      "Domain": "6D64756F31332E636F6D",
-      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
-      "Flags": 9568256,
-      "LedgerEntryType": "AccountRoot",
-      "MessageKey": "0000000000000000000000070000000300",
-      "OwnerCount": 12,
-      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
-      "PreviousTxnLgrSeq": 61965653,
-      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
-      "Sequence": 385,
-      "TransferRate": 4294967295,
-      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
-    },
-    "validated": true
-  },
-  "status": "success",
-  "type": "response"
-}
-```
-
-*JSON-RPC*
-
-```json
-200 OK
-
-{
-  "result": {
-    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
-    "ledger_index": 61966165,
-    "node": {
-      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
-      "Balance": "424021949",
-      "Domain": "6D64756F31332E636F6D",
-      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
-      "Flags": 9568256,
-      "LedgerEntryType": "AccountRoot",
-      "MessageKey": "0000000000000000000000070000000300",
-      "OwnerCount": 12,
-      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
-      "PreviousTxnLgrSeq": 61965653,
-      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
-      "Sequence": 385,
-      "TransferRate": 4294967295,
-      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
-    },
-    "status": "success",
-    "validated": true
-  }
-}
-```
-
-*Commandline*
-
-```json
-{
-  "result": {
-    "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-    "ledger_hash": "395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E",
-    "ledger_index": 61966165,
-    "node": {
-      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "AccountTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
-      "Balance": "424021949",
-      "Domain": "6D64756F31332E636F6D",
-      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
-      "Flags": 9568256,
-      "LedgerEntryType": "AccountRoot",
-      "MessageKey": "0000000000000000000000070000000300",
-      "OwnerCount": 12,
-      "PreviousTxnID": "4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB",
-      "PreviousTxnLgrSeq": 61965653,
-      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
-      "Sequence": 385,
-      "TransferRate": 4294967295,
-      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"
-    },
-    "status": "success",
-    "validated": true
-  }
-}
-```
-
-<!-- MULTICODE_BLOCK_END -->
 
 
 ## 考えられるエラー
