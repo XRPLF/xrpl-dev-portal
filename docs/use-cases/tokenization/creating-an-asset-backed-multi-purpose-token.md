@@ -103,6 +103,7 @@ function getNet() {
   // *************** Send Transaction **********************
   // *******************************************************
 async function sendTransaction() {
+  successURLfield.value="Sending transaction..."
   let v_flags = 0
   if (clawbackSlider.checked) {v_flags+=64}
   if (lockSlider.checked) {v_flags+=2}
