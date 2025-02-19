@@ -17,6 +17,15 @@ labels:
 
 | 名前                              | 登場       | ステータス                          |
 |:----------------------------------|:-----------|:------------------------------------|
+| [AMMClawback][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [fixReducedOffersV2][]            | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
 | [PriceOracle][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1" %}有効: 2024-11-02{% /badge %} |
 | [DID][]                           | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D" %}有効: 2024-10-30{% /badge %} |
@@ -98,6 +107,7 @@ labels:
 |:----------------------------------|:------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}開発中: 未定{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [OwnerPaysFee][]                  | {% badge %}開発中: 未定{% /badge %} | |
+| [InvariantsV1_1][]                | {% badge %}開発中: 未定{% /badge %} | |
 
 {% admonition type="info" name="注記" %}
 このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code/index.md)をご覧ください。
@@ -153,6 +163,26 @@ labels:
 いくつかの新しい結果コードを追加します。
 
 
+
+### AMMClawback
+[AMMClawback]: #ammclawback
+
+| Amendment                      | AMMClawback                                                      |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | 726F944886BCDF7433203787E93DD9AA87FAB74DFE3AF4785BA03BEFC97ADA1F |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+このAmendmentにより、Clawbackが有効になっているトークンが自動マーケットメーカー(AMM)で使用できるようになります。新しいトランザクションを追加します。
+
+- **AMMClawback** - トークンにClawbackが有効になっている場合、発行者は、AMMに預けられたトークンをClawbackできるようになります。
+
+AMMDepositトランザクションタイプを修正し、AMMに凍結されたトークンを預けることを防ぎます。
+
+詳細については、[XLS-73: AMMClawback specification](https://github.com/XRPLF/XRPL-Standards/discussions/212)をご覧ください。
+
+
 ### CheckCashMakesTrustLine
 [CheckCashMakesTrustLine]: #checkcashmakestrustline
 
@@ -193,7 +223,7 @@ labels:
 | Amendment    | Clawback |
 |:-------------|:---------|
 | Amendment ID | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
-| Status       | 有効 |
+| ステータス       | 有効 |
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -202,6 +232,42 @@ labels:
 Clawbackはデフォルトでは無効になっています。Clawbackを使用するには、`AccountSet`トランザクションを使用して`lsfAllowTrustLineClawback`フラグを設定する必要があります。
 
 この修正の詳細については、[Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md)をご覧ください。
+
+### Credentials
+[Credentials]: #credentials
+
+| Amendment                      | Credentials                                                      |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | 1CB67D082CF7D9102412D34258CEDB400E659352D3B207348889297A6D90F5EF |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+XRP Ledgerを使用して資格情報およびコンプライアンス要件を管理するためのツールセット、Credentialsを追加します。 Credentialsを管理するための3つの新しいトランザクションタイプを追加します。
+
+- CredentialCreateトランザクション - レジャーにCredentialを作成します。
+- CredentialAcceptトランザクション - 発行されたCredentialを受け入れます。
+- CredentialDeleteトランザクション - レジャーからCredentialを削除します。
+
+既存のトランザクションタイプを修正します。
+
+- DepositPreauthトランザクション - アカウントへの入金を承認します。Credentialに基づく承認を許可するように修正します。
+
+いくつかの既存のトランザクションタイプに新しいフィールドを追加します。
+
+- `CredentialIDs`フィールド - 入金の承認を認証するためのクレデンシャル。Payment、EscrowFinish、PaymentChannelClaim、および AccountDelete トランザクション・タイプに追加されます。
+
+新しいレジャーエントリタイプを追加します。
+
+- Credentialレジャーエントリ - レジャーにCredentialを保存します。
+
+既存のレジャーエントリタイプを修正します。
+
+- DepositPreauthレジャーエントリ - 特定のアカウントへの入金の承認を記録します。Credentialに基づく承認を許可するように修正します。
+
+`deposit_authorized` APIメソッドを修正し、Credentialに基づく認証をチェックするようにします。また、`ledger_entry`メソッドを修正し、Credentialエントリの検索を許可します。
+
+詳細については、[XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070d-credentials)をご覧ください。
 
 
 ### CryptoConditions
@@ -660,6 +726,22 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 AMMからのオファーの丸めと低品質なオーダーブックのオファーをAMMがブロックする問題を修正します。
 
 
+### fixAMMv1_2
+[fixAMMv1_2]: #fixammv1_2
+
+| Amendment                      | fixAMMv1_2                                                       |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | 1E7ED950F2F13C4F8E2A54103B74D57D5D298FFDBD005936164EE9E6484C438C |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+Automated Market Maker (AMM)トランザクション処理の2つのバグを修正します。
+
+- AMMWithdrawが、特定の条件下においてトラストラインを作成する前に準備金チェックを適切に行わないバグを修正します。
+- 特定の条件下においてAMMとオーダーブックの組み合わせから利用可能な流動性の全額を使用しない支払い処理のバグを修正します。
+
+
 ### fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
@@ -718,6 +800,22 @@ Checksトランザクションがアカウントのメタデータに影響を�
 この修正は、[DID][]Amendmentが有効になっていない限り、何の影響もありません。
 
 
+### fixEnforceNFTokenTrustline
+[fixEnforceNFTokenTrustline]: #fixenforcenftokentrustline
+
+| Amendment                      | fixEnforceNFTokenTrustline                                       |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | 763C37B352BE8C7A04E810F8E462644C45AFEAD624BF3894A08E5C917CF9FF39 |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+NFTの転送手数料とトラストラインの処理に関する2つのバグを修正します。
+
+- NFTの発行者が送金手数料を受け取るためのトラストラインを持っていることを確認するため、[NFTokenAcceptOfferトランザクション][]にチェックを追加します。このAmendmentがない場合、このチェックはNFT取引のオファーが作成されるときにのみ適用され、オファーが承認されるときには適用されません。その結果、オファーの作成と承認の間に必要なトラストラインが削除された場合、オファーが承認されるときに不適切にトラストラインが再作成されてしまいます。このAmendmentでは、ミンターが送金手数料を受け取るためのトラストラインを持っていない場合、NFT取引オファーを承認するトランザクションは失敗します。(詳細については、[issue #4925](https://github.com/XRPLF/rippled/issues/4925)をご覧ください。)
+- NFTの発行者が、送金手数料として支払われる代替可能トークンの発行者でもある場合のトラストラインの存在チェックを調整します。このAmendmentがない場合、対象のNFTに送金手数料が設定されており、オファー額が発行者が発行した代替可能トークンで指定され、オファーを出すアカウントがそれらのトークンのトラストラインを持っていない場合、[NFTokenCreateOfferトランザクション][]は結果コード`tecNO_LINE`で失敗します。このAmendmentでは、オファーは正常に作成できます。(詳細については、[issue #4941](https://github.com/XRPLF/rippled/issues/4941)をご覧ください。)
+
+
 ### fixFillOrKill
 [fixFillOrKill]: #fixfillorkill
 | Amendment    | fixFillOrKill |
@@ -748,6 +846,31 @@ Checksトランザクションがアカウントのメタデータに影響を�
 このamendmentにより、AMMの`sfVoteEntry`と`sfAuctionSlot`の内部オブジェクトの`sfTradingFee`フィールドと`sfDiscountedFee`フィールドにアクセスする際の問題が修正されました。
 
 現在、内部オブジェクトのテンプレートはオブジェクトの生成時に設定されません。オブジェクトに`soeDEFAULT`フィールドがあり、初期値にデフォルト値が設定されている場合、そのフィールドにアクセスすると、状況によっては`tefEXCEPTION`エラーが発生します。このamendmentにより、内部オブジェクトテンプレートを設定するための追加の真偽値引数を含む`STObject`コンストラクタのオーバーロードが追加されます。
+
+
+### fixInnerObjTemplate2
+[fixInnerObjTemplate2]: #fixinnerobjtemplate2
+
+| Amendment                      | fixInnerObjTemplate2                                             |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | 9196110C23EA879B4229E51C286180C7D02166DA712559F634372F5264D0EC59 |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+このAmendmentは、内部オブジェクト([正規バイナリフォーマットのObject型フィールド](../docs/references/protocol/binary-format.md#object-fields))のフォーマットとデフォルト値の強制方法を標準化します。これは`fixInnerObjTemplate`がAMM関連フィールドに適用するのと同じタイプのチェックですが、このAmendmentは他のすべての種類の内部オブジェクトに適用されます。具体的には次の通りです。
+
+- [NegativeUNLレジャーエントリ][]の`DisabledValidator`フィールド
+- [Amendmentsレジャーエントリ][]の`Majorities`配列のメンバー
+- マルチシグトランザクションの[`Signers`配列](../docs/references/protocol/transactions/common-fields.md#signers-field)のメンバー
+- [SignerListレジャーエントリ][]の`SignerEntries`配列のメンバー
+- [XChainBridge][] Amendment {% not-enabled /%}の複数の部分:
+    - [XChainOwnedClaimIDレジャーエントリ][]の`XChainClaimAttestations`配列のメンバー
+    - [XChainOwnedCreateAccountClaimIDレジャーエントリ][]の`XChainCreateAccountAttestations`配列のメンバー
+    - [XChainAddClaimAttestationトランザクション][]の`XChainClaimAttestationBatch`配列のメンバー
+    - [XChainAddClaimAttestationトランザクション][]の`XChainCreateAccountAttestationBatch`配列のメンバー
+
+この変更はトランザクション処理に影響を与えないと考えられていますが、不適切にフォーマットされたトランザクションが異なるエラーを受け取るエッジケースが存在する可能性があります。このAmendmentでは、そのようなトランザクションは`temMALFORMED`などの異なる結果コードで失敗します。このAmendmentがない場合、それらのトランザクションは代わりに`tefEXCEPTION`コードで失敗すると予想されます。
 
 
 ### fixMasterKeyAsRegularKey
@@ -795,6 +918,23 @@ Checksトランザクションがアカウントのメタデータに影響を�
 この修正は、[NonFungibleTokensV1][] Amendmentのコードにおいて、NFTが負の金額で取引されてしまうバグを修正したものです。この修正が適用されない場合、ユーザは負の金額でNFTの売買を申し込むことができ、その結果、NFTを「買う」人は「売る」人からお金も受け取ることになります。この修正により、マイナスの金額でのNFTのオファーは無効とみなされます。
 
 この修正は、[NonFungibleTokensV1][] Amendmentが有効でない限り、何の影響もありません。この修正は、その効果が[NonFungibleTokensV1_1][]の一部として含まれているため、廃止されました。
+
+
+### fixNFTokenPageLinks
+[fixNFTokenPageLinks]: #fixnftokenpagelinks
+
+| Amendment                      | fixNFTokenPageLinks                                              |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | C7981B764EC4439123A86CC7CCBA436E9B3FF73B3F10A0AE51882E404522FC41 |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+このAmendmentは、NFTディレクトリのチェーンの途中でリンクが欠落する可能性があるバグを修正します。また、将来同様の破損が発生するのを防ぐための不変性チェックを導入し、新しいトランザクションタイプも追加します。
+
+- [LedgerStateFixトランザクション][]は、レジャーデータの破損を修復するために使用できます。このAmendmentが有効になると、LedgerStateFixトランザクションを使用してNFTディレクトリの破損したリンクを修復できます。将来のバグによって新しいタイプのレジャー破損が発生した場合、このトランザクションタイプを拡張して他のタイプの破損も修復できるようになります。
+
+このAmendmentがない場合、特定の状況下でNFTディレクトリの最後のページを削除し、その後、前のページへのリンクが欠落した新しい最後のページを作成することが可能です。この問題を引き起こす可能性のあるシナリオの詳細な説明については、[PR #4945](https://github.com/XRPLF/rippled/pull/4945)をご覧ください。このAmendmentにより、その破損を引き起こしたバグが修正されます。さらに、新しい不変性チェックにより、他のバグが不適切に最後のページを削除できないようになります。
 
 
 ### fixNFTokenRemint
@@ -940,6 +1080,19 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 このamendmentにより、減額されたオファーの取引レートは、(テイカーの観点から)元のオファーと同等かそれ以上となるように丸められます。これにより、減額されたオファーは、元の全額と一致するオファーによって約定されます。丸められた金額は、XRPの1ドロップまたはトークンの1e-81を超えることはありません。
 
 このamendmentがない場合、残額が非常に少ないオファーは、四捨五入後の取引レートが当初よりも大幅に悪化する可能性があります。このため、非常に少額のオファーが、同じオーダーブック内のより良いオファーの取得を「ブロック」してしまう可能性があります。
+
+
+### fixReducedOffersV2
+[fixReducedOffersV2]: #fixreducedoffersv2
+
+| Amendment                      | fixReducedOffersV2                                               |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | 31E0DA76FB8FB527CADCDF0E61CB9C94120966328EFA9DCA202135BAF319C0BA |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+このAmendmentは、「減額された」オファーによってオーダーブックがブロックされる可能性がある特定のケースにおける丸め処理を調整します。これはfixReducedOffersV1 Amendmentと同じ症状に対処するものですが、そのAmendmentでカバーされていなかった追加のケースに対応します。
 
 
 ### fixRemoveNFTokenAutoTrustLine
@@ -1134,7 +1287,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 | Amendment    | Hooks |
 |:-------------|:------|
 | Amendment ID | ECE6819DBA5DB528F1A241695F5A9811EF99467CDE22510954FD357780BBD078 |
-| Status       | 開発中 |
+| ステータス       | 開発中 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -1154,6 +1307,53 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 オファーが`tfImmediateOrCancel`を使用し、トランザクション処理で資金を移動せずにオファーを終了した場合、トランザクションは`tesSUCCESS`ではなく結果コード`tecKILLED`を使用するようにOfferCreateトランザクションを変更します。Offerが少額でも資金を交換した場合、トランザクションは引き続き`tesSUCCESS`を使用します。トランザクションの処理自体には変更はありません（例えば、トランザクション処理中に台帳に表示された期限切れのオファーや未入金のオファーをクリーンアップするかどうかという点など）。
 
 この修正が適用されない場合、資金の移動に失敗した「Immediate or Cancel」注文は、結果コード「tesSUCCESS」を返し、そのトランザクションが事実上何もしなかったため、混乱する可能性を残します。
+
+
+### InvariantsV1_1
+[InvariantsV1_1]: #invariantsv1_1
+
+| Amendment                      | InvariantsV1_1                                                   |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | D8ED3BE0B2673496CB49DE8B5588C8805DF7B1DE203F38FE0367ACE703D36C0F |
+| ステータス                     | 開発中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+このAmendmentは、トランザクション処理におけるバグからレジャーを保護するために、いくつかの新しい不変性チェックを追加します。開発者は、複数の不変性チェックが実装された後、投票のために開放することを意図しています。含まれる不変性は次の通りです。
+
+- アカウントを削除する際、そのアカウントの`DirectoryNode`、`SignerList`、`NFTokenPage`、`AMM`ディレクトリなど、特定のタイプのレジャーエントリも一緒に削除されることを確認します。
+
+
+### MPTokensV1
+[MPTokensV1]: #mptokensv1
+
+| Amendment                      | MPTokensV1                                                       |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | 950AE2EA4654E47F04AA8739C0B214E242097E802FD372D24047A89AB1F5EC38 |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+_多目的トークン(MPT)_ と呼ばれる新しいタイプの代替可能トークンを実装します。このトークンタイプは、ステーブルコインなどの一般的なトークンのユースケースに最適化されており、双方向のトラストラインに保存されるXRP Ledgerの既存の代替可能トークンに固有の複雑さを回避することを目的としています。このAmendmentは次のものを追加します。
+
+**新しいレジャーエントリタイプ：**
+
+- MPToken - 特定のアカウントが保有するトークンを表し、保有量と発行者の情報を含みます。
+- MPTokenIssuance - MPTの特定の発行に関する情報と設定（スケールや送金手数料など）を記録します。
+
+**トランザクションタイプ：**
+
+- (新規) MPTokenIssuanceCreate - MPTの新しい発行を定義します。
+- (新規) MPTokenIssuanceDestroy - MPTの発行定義を削除します。
+- (新規) MPTokenIssuanceSet - MPTの発行定義を変更します。
+- (新規) MPTokenAuthorize - アカウントが特定のMPTを保持することを許可します。
+- (更新) [Paymentトランザクション][]でもMPTを送信できます。
+- (更新) 発行定義でクローバックが許可されている場合、[Clawbackトランザクション][]でMPTのClawbackも可能です。
+
+**APIメソッド：**
+
+- (新規) `mpt_holders`メソッド - 特定のMPT発行を保有するアカウントのリストを返します。
+- (更新) `ledger_entry`メソッド - MPTokenとMPTokenIssuanceのレジャーエントリタイプを検索できます。
 
 
 ### MultiSign
@@ -1211,6 +1411,27 @@ XRP Ledgerアカウントが[マルチシグ](../docs/concepts/accounts/multi-si
 | Amendment前の機能は廃止? | いいえ |
 
 ネットワークがどのバリデータが一時的にオフラインになったかを追跡し、定足数計算の際にそれらのバリデータを無視できる「ネガティブUNL」システムを実装します。これにより、ネットワークが不安定な状態でも、ネットワークを進展させる能力を高めることができます。
+
+
+### NFTokenMintOffer
+[NFTokenMintOffer]: #nftokenmintoffer
+
+| Amendment                      | NFTokenMintOffer                                                 |
+| :----------------------------- | :--------------------------------------------------------------- |
+| Amendment ID                   | EE3CF852F0506782D05E65D49E5DCC3D16D50898CD1B646BAE274863401CC3CE |
+| ステータス                     | 投票中                                                           |
+| デフォルトの投票(最新の安定版) | いいえ                                                           |
+| Amendment前の機能は廃止?       | いいえ                                                           |
+
+NFTの発行処理を変更し、同時にトークンの売却オファーも作成できるようにします。
+
+このAmendmentにより、[NFTokenMintトランザクション][]でミントしたトークンの売却オファーを同時に出すことができます。これにより、トランザクションに3つのオプションフィールドが追加され、これらを提供するとNFTの売却オファーを定義できます。
+
+- `Amount` - NFTの売却価格
+- `Destination` - このアカウントのみが受け入れ可能となるように販売を制限
+- `Expiration` - この売却オファーが期限切れとなる時間
+
+このAmendmentがない場合、NFTをミントした後に売却オファーを出すには、別途[NFTokenCreateOfferトランザクション][]を送信する必要があります。
 
 
 ### NonFungibleTokensV1
@@ -1443,7 +1664,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 | Amendment    | XChainBridge |
 |:-------------|:-----------------|
 | Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
-| Status       | 投票中 |
+| ステータス       | 投票中 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 

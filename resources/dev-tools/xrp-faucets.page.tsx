@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from "@redocly/theme/components/Link/Link";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import * as React from 'react';
 import { useState } from 'react';
-import { Client, dropsToXrp, Wallet } from 'xrpl'; 
-import * as faucetData from './faucets.json'
+import { Client, dropsToXrp, Wallet } from 'xrpl';
 import XRPLoader from '../../@theme/components/XRPLoader';
+import * as faucetData from './faucets.json';
 
 export const frontmatter = {
   seo: {
@@ -17,7 +17,7 @@ interface FaucetInfo {
   id: string,
   wsUrl: string,
   jsonRpcUrl: string,
-  faucetUrl: string,
+  faucetHost: string,
   shortName: string,
   desc: string,
 }
@@ -133,13 +133,14 @@ async function generateFaucetCredentialsAndUpdateUI(
   const wallet = Wallet.generate()
   
   const client = new Client(selectedFaucet.wsUrl)
+  client.apiVersion = 1 // Workaround for networks that don't support APIv2
   await client.connect()
 
   try {
     setAddress(wallet.address)
     setSecret(wallet.seed)
 
-    await client.fundWallet(wallet, { faucetHost: selectedFaucet.faucetUrl, usageContext: "xrpl.org-faucet" })
+    await client.fundWallet(wallet, { faucetHost: selectedFaucet.faucetHost, usageContext: "xrpl.org-faucet" })
 
     const response = await waitForSequence(client, wallet.address)
 

@@ -25,7 +25,7 @@ Trust lines are ledger objects that require a reserve of {% $env.PUBLIC_OWNER_RE
 
 ## With Stablecoin Issuing
 
-With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process of onboarding a new customer might look something like the following:
+With a stablecoin on the XRP Ledger and the use of Authorized Trust Lines, the process of onboarding a new customer might look something like the following:
 
 1. The customer registers with the stablecoin issuer's systems and sends proof of their identity (also known as "Know Your Customer", or KYC, information).
 2. The customer and stablecoin issuer tell each other their XRP Ledger addresses.

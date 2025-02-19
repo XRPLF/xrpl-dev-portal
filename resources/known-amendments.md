@@ -1431,7 +1431,7 @@ With this amendment, an [NFTokenMint transaction][] can simultaneously place a s
 - `Destination` - Limit the sale so that it can only be accepted by this account
 - `Expiration` - The time after which this sell offer expires.
 
-Without this amendment, you must separately send an [NFTokenMint transaction][] after minting an NFT to place a sell offer.
+Without this amendment, you must separately send an [NFTokenCreateOffer transaction][] after minting an NFT to place a sell offer.
 
 
 ### NonFungibleTokensV1
