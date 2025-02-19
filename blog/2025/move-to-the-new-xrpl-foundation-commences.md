@@ -64,7 +64,7 @@ If your XRP Ledger node currently trusts the UNL published by the XRP Ledger Fou
     sudo systemctl restart rippled.service
     ```
 
-3. **Confirm the New Settings**
+3. **Confirm the new settings**
 
     Run:
 
