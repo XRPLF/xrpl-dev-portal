@@ -49,7 +49,7 @@ If your XRP Ledger node currently trusts the UNL published by the XRP Ledger Fou
 
 1. **Edit validators.txt**
 
-    Update the [`validator_list_keys`] section (the current endpoint remains unchanged) to replace the old key (`ED45D1840EE724BE327ABE9146503D5848EFD5F38B6D5FEDE71E80ACCE5E6E738B`) with the following:
+    Update the `[validator_list_keys]` section (the current endpoint remains unchanged) to replace the old key (`ED45D1840EE724BE327ABE9146503D5848EFD5F38B6D5FEDE71E80ACCE5E6E738B`) with the following:
 
     ```
     [validator_list_keys]
