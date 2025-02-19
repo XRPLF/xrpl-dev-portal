@@ -13,7 +13,7 @@ markdown:
 ---
 # Move to the New XRPL Foundation Commences
 
-_By XRPL Foundation, XRPL Commons, XRPL Labs, Ripple, and XAO DAO_
+_By the XRPL Foundation_
 
 Late last year the initial groundwork for the launch of the new XRPL Foundation was laid, including the [incorporation of the new Foundation](../2024/a-new-era-for-the-xrp-ledger.md) in France. This major milestone has enabled the Founding Members (XRPL Commons, XRPL Labs, Ripple, and XAO DAO) to continue with immediate next steps. In line with this, the migration of assets (listed in an [earlier blog post](../2024/a-new-era-for-the-xrp-ledger.md)) from the previous entity to the newly established Foundation is now underway.
 
