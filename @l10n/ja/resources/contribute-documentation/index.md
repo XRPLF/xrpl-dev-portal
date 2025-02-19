@@ -103,21 +103,25 @@ Markdownファイルのページは、[frontmatterスタンザ](#frontmatterの�
 
 新機能を文書化する場合、その機能が導入されたプログラムのバージョンを示すバッジを含めてください。バッジタグは以下の構造です。
 
-`{badge href="myurl" date="<リリース日>"}新規: <プログラム> <バージョン番号>{% /badge%}`
+<pre><code>
+{% badge href="myurl" date="<リリース日>" %}新規: <プログラム> <バージョン番号>{% /badge%}
+</code></pre>
 
 例えば次のようなバッジ定義になります。
 
-`{% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" date="February 18, 2024" %}新規: Clio v2.0.0{% /badge %}`
+<pre><code>
+{% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" date="February 18, 2024" %}新規: Clio v2.0.0{% /badge %}
+</code></pre>
 
 次のように表示されます。 {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" date="February 18, 2024" %}新規: Clio v2.0.0{% /badge %}
-
-When updating a feature, replace _New in:_ with _Updated in:_. For example, the following badge definition:
 
 機能の更新の場合、_新規:_ を _更新:_ に置き換えてください。例えば、次のバッジ定義となります。
 
 `{% badge href="https://github.com/XRPLF/clio/releases/tag/2.1.0" date="May 4, 2024" %} 更新: Clio v2.1.0{% /badge %}`
 
 次のように表示されます。 {% badge href="https://github.com/XRPLF/clio/releases/tag/2.1.0" date="May 4, 2024" %} 更新: Clio v2.1.0{% /badge %}
+
+いくつかのフレーズは自動的にバッジの色を設定し、また`color="purple"`のような色のパラメータをタグに追加することで色を明示的に設定できます。
 
 2年以上前の新規/更新バッジは削除するのがベストプラクティスです。
 
@@ -133,13 +137,16 @@ When updating a feature, replace _New in:_ with _Updated in:_. For example, the 
 | レジャーエントリ | レジャーオブジェクト, ノード | XRP Ledgerの状態データ内の単一のオブジェクト。_レジャーオブジェクト_ という用語は、これらの一つを指すこともあれば、レジャー全体を指すこともあります。レジャーの状態データはグラフとして想定できるため、_ノード_ という用語が使われることもありましたが、_ノード_ には他の用途もあるため、混乱を招きます。 |
 | 流動性提供者 | マーケットメイカー | 2つの通貨または資産間の売買を提供し、多くの場合、取引間の価格差から利益を得る企業または個人。マーケットメーカーという用語は、法域によっては特定の法律上の定義があり、すべての同じ状況で適用されるとは限りません。 |
 | 悪質業者   | ハッカー | 個人、組織、または自動化されたツールなどによる、機密情報の取得、暗号化の解除、サービスの拒否、その他の安全なリソースへの攻撃を試みる可能性のあるもの。 |
+| a NFT             | an NFT | A NFT object in the XRP Ledger tracks or represents a non-fungible token. Pronounced "nifty" and written _a NFT_ rather than _an NFT_. |
 | PostgreSQL        | Postgres | リレーショナルデータベース・ソフトウェアの特定のブランド。非公式な短いバージョンではなく、常に完全な名前を使用します。 |
 | オーダーブック      | オファーブック | マッチングされ約定されるのを待っているトレード注文のコレクション。通常は取引レートごとにソートされています。 |
 | サーバ             | ノード | サーバとは、ソフトウェアやハードウェアのことで、特にXRP Ledgerのピアツーピアネットワークに接続するものを指します。_ノード_ という用語はこの目的のために使われることもありますが、グラフのエントリやJavaScriptインタプリタであるNode.jsなど、他の意味でも多用されます。 |
 | ステーブルコイン発行者 | ゲートウェイ | 発行者とは、XRP Ledgerにおいてトークンを発行する組織です。ステーブルコインとは、発行者が外部の資産（例えば不換紙幣）に完全に裏付けられていることを約束しているトークンのことで、ステーブルコインの発行者は、その2つの資産を（場合によっては手数料を払って）交換する入出金操作を提供します。以前は、このユースケースを表現するために（特にリップル社によって）_ゲートウェイ_ という用語が使用されていましたが、業界の他の部分は代わりに _ステーブルコイン発行者_ を採用しました。 |
 | トランザクションコスト  | トランザクション手数料 | XRP Ledgerでトランザクションを送信するために消費されるXRPの金額。これはトランザクションの`Fee`フィールドで指定されますが、_手数料_ という用語は誰かにお金を支払うことを意味するため、_コスト_ の方が望ましいです。 |
+| trust line        | trustline | Use two words. A trust line is a relationship between two accounts in the XRP Ledger that tracks a balance of tokens between those accounts. |
 | トークン           | IOU, issuances, issues, 発行済み通貨 | XRP Ledgerのトークンは、_IOU_ という名前から想像されるように、レジャーの外部にある価値を表すことはできません。必要であれば、_代替可能トークン_ を使用して、非代替性トークン(NFT)と区別してください。 |
 | ウォレット          | ウォレット | 文脈によっては、_ウォレット_ はハードウェア、ソフトウェア、暗号鍵ペア、またはオンラインサービスを指します。意味が明確になるように十分な文脈を提供するか、_キーペア_ や _クライアントアプリケーション_ などの別の表現を使用してください。 |
+| WebSocket         | web socket, Websockets | A two way protocol for communication on the web. Always singular and in CamelCase. |
 | XRP               | Ripple, リップル | XRP Ledgerのネイティブデジタルアセットまたは暗号通貨。XRPはレジャーの外部の価値を表すトークンではありません。 |
 | XRP Ledger    | Ripple, リップル, Ripple Network, リップルネットワーク, RCL | XRP Ledgerは、過去に様々な場面で「リップルネットワーク」や「リップルコンセンサスレジャー」あるいは「RCL」と呼ばれていました。これらの名称は、コアサーバのリファレンス実装を開発しているRipple(Ripple Labs)の社名と類似しているため、紛らわしく、廃止されました。 |
 | XRPL              | XRPL | _XRP Ledger_ の略です。_XRPL_ は不明瞭で、_XRP_ のタイプミスのように見えることがあります。 |
@@ -175,11 +182,7 @@ navigation:
 ---
 ```
 
-## Markdocのコンポーネント
-
-これらのファイルは[Markdoc](https://markdoc.dev/)で処理されるため、`{% ... %}`構文で特別なタグを含めることができます。Redoclyの組み込みタグに加えて、このリポジトリには`/@theme/markdoc/`に定義されたいくつかのカスタムタグがあります。
-
-### グラフィック
+## グラフィック
 
 `/docs/img`ディレクトリにグラフィックを保存します。グラフィックを埋め込むには、次の構文を使用します。
 
@@ -189,7 +192,7 @@ navigation:
 
 ![XRPL財団のロゴ](/docs/img/xrplf-logo.png)
 
-### ビデオ
+## ビデオ
 
 ビデオはYouTubeに保存されます。アップロード後、埋め込み手順をコピーしてドキュメントに貼り付けることができます。
 
@@ -215,7 +218,7 @@ si=Mbi8diaFTDR2fc20" title="YouTube video player" frameborder="0" allow="acceler
 autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### テーブル
+## テーブル
 
 Markdocは、テーブルを生成するための3つの異なる構文スタイルを提供します。
 
@@ -283,7 +286,7 @@ Markdocは、テーブルを生成するための3つの異なる構文スタイ
 
 可能な限り、これらの基本的なテーブルを使用してください。上記の例で提供されていない特別なフォーマットが本当に必要な場合は、HTML構文を使用してテーブルを作成できます。
 
-### リンク
+## リンク
 
 リンクは`[<リンクテキスト>](<URL>)`の構文を使用します。
 
@@ -295,11 +298,11 @@ Markdocは、テーブルを生成するための3つの異なる構文スタイ
 
 [XRPL.org](http://xrpl.org)で世界のあらゆる問題の解決策をご覧ください。
 
-### 共通のリンク
+## 共通のリンク
 
 共通的に引用されるページへのリンクを作成するには、`{% raw-partial file="/docs/_snippets/common-links.md /%}`タグをMarkdownファイルに追加し、`[account_infoメソッド][]`や`[Paymentトランザクション][]`などの参照スタイルのリンクを使用できます。common-linksファイルの内容はアルファベット順になっています。(以前はスクリプトで生成されていましたが、現在は手動で管理されています。)
 
-### サンプルコード
+## サンプルコード
 
 サンプルコードを挿入する場合は、バッククォート(&#96;)文字でコードを囲みます。例えば:
 
@@ -313,14 +316,16 @@ Markdocは、テーブルを生成するための3つの異なる構文スタイ
 
 例えば、
 
-&#96;&#96;&#96;javascript<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;const prepared = await client.autofill({<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TransactionType": "Payment",<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Account": standby_wallet.address,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Amount": xrpl.xrpToDrops(sendAmount),<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Destination": standbyDestinationField.value<br/>
-&nbsp;&nbsp;})
-&#96;&#96;&#96;
+<pre><code>
+```javascript
+const prepared = await client.autofill({
+    "TransactionType": "Payment",
+    "Account": standby_wallet.address,
+    "Amount": xrpl.xrpToDrops(sendAmount),
+    "Destination": standbyDestinationField.value
+})
+```
+</code></pre>
 
 次のように表示されます。
 
@@ -332,6 +337,14 @@ Markdocは、テーブルを生成するための3つの異なる構文スタイ
     "Destination": standbyDestinationField.value
   })
 ```
+
+## Markdocのコンポーネント
+
+これらのファイルは[Markdoc](https://markdoc.dev/)で処理されるため、`{% ... %}`構文で特別なタグを含めることができます。Redoclyの組み込みタグに加えて、このリポジトリには`/@theme/markdoc/`に定義されたいくつかのカスタムタグがあります。
+
+### バッジ
+
+[新機能](#新機能)をご覧ください。
 
 ### 部分的なコンテンツ
 
@@ -369,6 +382,79 @@ There I was, happy as a lark, skipping through the daisies, when I shyly handed 
 
 Alas, if only I had heeded that sage advice, I would not rue the day as I do today.
 </blockquote>
+
+### Not-Enabledバッジ
+
+{% not-enabled /%} Markdocコンポーネントは、その機能が本番環境のXRP Ledgerでは利用できないことを示すツールチップ付きの黄色いフラスクアイコンを表示します。投票中だが現在有効になっていない修正についての説明で使用します。例: {% not-enabled /%}
+
+このタグは自己終了型で、パラメータは必要ありません。
+
+### リポジトリリンク
+
+このタグは、通常コードサンプルである、このサイトのソースコードリポジトリの特定のファイルへのリンクを作成します。例えば、
+
+<pre><code>
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
+</code></pre>
+
+次のようになります: {% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
+
+サイトのフォークやブランチで作業している場合、サイト設定の変更で一度にすべてのリンクを更新できます。
+
+
+### 試してみる
+
+`{% try-it ... /%}` Markdocタグは、WebSocketツールへのリンクをボタンとして提供する便利なショートカットです。このタグは自己終了型です。
+
+{% try-it method="account_currencies" server="testnet" /%}
+
+構文例:
+
+<pre><code>
+{% try-it method="account_currencies" server="testnet" /%}
+</code></pre>
+
+
+ボタンのテキストは英語では "Try it!" で、ローカライゼーションの`translations.yaml`ファイルの`component.tryit`キーを設定することで翻訳できます。
+
+このタグは以下のパラメータを受け付けます:
+
+| パラメータ | 必須? | 説明 |
+| ---------- | ----- | ---- |
+| `method`   | はい  | WebSocketツールページで使用するアンカーのID。ほとんどの WebSocket API メソッドでは、これはまさにその API メソッドですが、それ以上のものも含む可能性があります。例えば、異なる `ledger_entry` のバリエーションには、`ledger_entry-nft-page` のような接尾辞が使用されます。新しいメソッドを文書化する場合は、`/resources/dev-tools/components/websocket-api/data/command-list.json` を編集して、そのメソッドを WebSocket ツールに追加する必要があります。 |
+| `server`   | いいえ    | リクエストに使用する特定のサーバ。Clio または `rippled` サーバに固有のメソッドを使用する場合、または、例で使用するデータやAmendmentが特定のテストネットワーク上のみにある場合、サーバを指定する必要があります。 |
+
+`server`パラメータには以下の値を指定できます。
+
+| `server`値     | 使用するサーバ |
+| -------------- | ------------- |
+| (省略)      | デフォルトのサーバ (現在は`s1.ripple.com`) |
+| `s1`           | RippleのMainnet公開クラスタ`s1.ripple.com`（通常Clioサーバーが提供） |
+| `s2`           | RippleのMainnetフルヒストリ公開クラスタ`s2.ripple.com`（通常Clioサーバーが提供） |
+| `xrplcluster`  | 軽量プロキシを前面に配置した`rippled`サーバーが提供する`xrplcluster.com`公開サーバークラスタ |
+| `devnet`       | テストネットサーバのクラスタ`s.altnet.rippletest.net` |
+| `testnet`      |開発ネットサーバのクラスタ`s.devnet.rippletest.net` |
+
+### トランザクション例
+
+`{% tx-example ... /%}`Markdocタグは、特定の例示トランザクションを検索するためのボディが事前に入力されたWebSocketツールへのリンクをボタンとして提供する便利なショートカットです。このタグは自己終了型です。例として、
+
+{% tx-example txid="1AF19BF9717DA0B05A3BFC5007873E7743BA54C0311CCCCC60776AAEAC5C4635" /%}
+
+構文例:
+
+<pre><code>
+{% tx-example txid="1AF19BF9717DA0B05A3BFC5007873E7743BA54C0311CCCCC60776AAEAC5C4635" /%}
+</code></pre>
+
+ボタンのテキストは通常英語では"Query example transaction"で、ローカライゼーションの`translations.yaml`ファイルの`component.queryexampletx`キーを設定することで翻訳できます。
+
+このタグは以下のパラメータを受け付けます。
+
+| パラメータ | 必須?  | 説明 |
+| ---------- | ------ | ---- |
+| `txid`     | はい   | 検索するトランザクションの一意のハッシュ。 |
+| `server`   | いいえ | リクエストに使用する特定のサーバ。可能な値は上記の`{% try-it %}`で定義されているものと同じです。例えば、Mainnetでは有効になっていないAmendmentによって追加されたトランザクションを表示するためには`devnet`を指定する必要があります。 |
 
 
 {% child-pages /%}
