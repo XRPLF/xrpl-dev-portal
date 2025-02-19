@@ -60,7 +60,7 @@ If your XRP Ledger node currently trusts the UNL published by the XRP Ledger Fou
   
     After saving the changes, restart your `rippled` service. On supported platforms, you can run the following command:
     
-    ```json
+    ```sh
     sudo systemctl restart rippled.service
     ```
 
