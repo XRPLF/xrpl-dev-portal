@@ -80,7 +80,6 @@ The request includes the following parameters:
 | `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
-- You must use at least one of the following fields in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
 - [API v2]: If you specify either `ledger_index` or `ledger_hash`, including `ledger_index_min` and `ledger_index_max` returns an `invalidParams` error.
 
 
