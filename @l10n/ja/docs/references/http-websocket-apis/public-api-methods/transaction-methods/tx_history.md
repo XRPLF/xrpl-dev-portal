@@ -48,7 +48,7 @@ rippled tx_history 0
 
 {% /tabs %}
 
-[試してみる>](/resources/dev-tools/websocket-api-tool#tx_history)
+{% try-it method="tx_history" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

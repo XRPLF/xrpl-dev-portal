@@ -49,7 +49,7 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#account_offers)
+{% try-it method="account_offers" /%}
 
 リクエストには以下のパラメーターを指定できます。
 

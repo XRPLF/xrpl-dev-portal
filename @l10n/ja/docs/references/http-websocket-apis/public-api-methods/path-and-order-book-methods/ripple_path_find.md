@@ -81,7 +81,7 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ripple_path_find)
+{% try-it method="ripple_path_find" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

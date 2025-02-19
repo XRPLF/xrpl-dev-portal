@@ -161,6 +161,7 @@
         - page: docs/concepts/decentralized-storage/index.md
           expanded: false
           items:
+            - page: docs/concepts/decentralized-storage/credentials.md
             - page: docs/concepts/decentralized-storage/decentralized-identifiers.md
             - page: docs/concepts/decentralized-storage/price-oracles.md
     - page: docs/tutorials/index.md
@@ -327,6 +328,7 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/amm.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/bridge.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/check.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/credential.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/depositpreauth.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/did.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
@@ -353,14 +355,18 @@
                 - page: docs/references/protocol/transactions/types/index.md
                   expanded: false
                   items:
-                    - page: docs/references/protocol/transactions/types/accountset.md
                     - page: docs/references/protocol/transactions/types/accountdelete.md
+                    - page: docs/references/protocol/transactions/types/accountset.md
                     - page: docs/references/protocol/transactions/types/ammbid.md
+                    - page: docs/references/protocol/transactions/types/ammclawback.md
                     - page: docs/references/protocol/transactions/types/ammcreate.md
                     - page: docs/references/protocol/transactions/types/ammdelete.md
                     - page: docs/references/protocol/transactions/types/ammdeposit.md
                     - page: docs/references/protocol/transactions/types/ammvote.md
                     - page: docs/references/protocol/transactions/types/ammwithdraw.md
+                    - page: docs/references/protocol/transactions/types/credentialaccept.md
+                    - page: docs/references/protocol/transactions/types/credentialcreate.md
+                    - page: docs/references/protocol/transactions/types/credentialdelete.md
                     - page: docs/references/protocol/transactions/types/checkcancel.md
                     - page: docs/references/protocol/transactions/types/checkcash.md
                     - page: docs/references/protocol/transactions/types/checkcreate.md
@@ -371,6 +377,7 @@
                     - page: docs/references/protocol/transactions/types/escrowcancel.md
                     - page: docs/references/protocol/transactions/types/escrowcreate.md
                     - page: docs/references/protocol/transactions/types/escrowfinish.md
+                    - page: docs/references/protocol/transactions/types/ledgerstatefix.md
                     - page: docs/references/protocol/transactions/types/mptokenauthorize.md
                     - page: docs/references/protocol/transactions/types/mptokenissuancecreate.md
                     - page: docs/references/protocol/transactions/types/mptokenissuancedestroy.md

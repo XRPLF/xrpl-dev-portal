@@ -25,7 +25,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCancelOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="9FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5" /%}
 
 ## Permissions
 

@@ -46,7 +46,7 @@ rippled book_changes 88530953
 
 {% /tabs %}
 
-[試してみる! >](/resources/dev-tools/websocket-api-tool#book_changes)
+{% try-it method="book_changes" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

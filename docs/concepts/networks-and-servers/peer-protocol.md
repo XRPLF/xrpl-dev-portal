@@ -107,7 +107,7 @@ The pros and cons of each configuration are as follows:
 <tr><th>Discovered Peers</th>
   <td><ul>
     <li><p>Simplest configuration, with a low maintenance burden.</p></li>
-    <li><p>Creates the opportunity for a lot of direct peer connections. Having more direct peers comes with several benefits. Your server can <a href="ledger-history.html#fetching-history">fetch history</a> from multiple peers in parallel, both when syncing and when backfilling history. Since not all peers maintain full history, having access to more peers can also provide access to a wider range of historical data.</p></li>
+    <li><p>Creates the opportunity for a lot of direct peer connections. Having more direct peers comes with several benefits. Your server can <a href="ledger-history#fetching-history">fetch history</a> from multiple peers in parallel, both when syncing and when backfilling history. Since not all peers maintain full history, having access to more peers can also provide access to a wider range of historical data.</p></li>
     <li><p>Lowers the possibility of disconnecting from the network because your server can replace disconnected peers with new ones.</p></li>
   </ul></td>
   <td><ul>
@@ -119,7 +119,7 @@ The pros and cons of each configuration are as follows:
   <td><ul>
     <li><p>Most secure and reliable configuration when implemented effectively.</p></li>
     <li><p>As reliable and as redundant as you make it.</p></li>
-    <li><p>Can optimize the private server's performance with <a href="clustering.html">clustering</a>.</p></li>
+    <li><p>Can optimize the private server's performance with <a href="clustering">clustering</a>.</p></li>
     <li><p>Enables you to create as many direct peer connections as you want. Your private server can <a href="ledger-history.html#fetching-history">fetch history</a> from multiple peers in parallel. Since you run the peers, you also control how much ledger history each peer keeps.</p></li>
   </ul></td>
   <td><ul>

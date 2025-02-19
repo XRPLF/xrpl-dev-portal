@@ -1,16 +1,13 @@
 ---
-html: clawback.html
-parent: transaction-types.html
 seo:
     description: Claw back tokens you've issued.
 labels:
   - Tokens
 ---
 # Clawback
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Clawback.cpp "Source")
 
-{% partial file="/docs/_snippets/clawback-disclaimer.md" /%}
+_(Added by the [Clawback amendment][].)_
 
 Claw back tokens issued by your account.
 

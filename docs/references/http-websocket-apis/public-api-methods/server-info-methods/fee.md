@@ -45,6 +45,8 @@ rippled fee
 
 {% /tabs %}
 
+{% try-it method="fee" /%}
+
 The request does not include any parameters.
 
 ## Response Format

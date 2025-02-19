@@ -28,7 +28,7 @@ An example of the request format:
 
 {% /tabs %}
 
-<!-- [Try it! >](websocket-api-tool.html#ledger) -->
+{% try-it method="ledger" server="s1" /%}
 
 The request can contain the following parameters:
 

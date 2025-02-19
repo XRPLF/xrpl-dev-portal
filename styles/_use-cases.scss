@@ -29,29 +29,48 @@ $custody-logos: "gatehub", "bitgo";
   }
 }
 
+.modal-uses.exchanges {
+  .logo-item {
+    max-height: 58px;
+    margin: 5px;
+    width: 145px;
+    height: 28px;
+    max-width: none;
+  }
+}
+
 .modal-content-uses {
-  .first-ledger-bot{
-    min-height: 80px !important;
+  .carbonland-trust {
+    max-width: 218px;
+  }
+
+  .first-ledger-bot {
+    min-height: 100px !important;
     position: relative;
     bottom: 20px;
     content: url("../img/uses/first-ledger-bot.svg");
   }
-  .orchestra-finance{
+
+  .orchestra-finance {
+    min-height: 56px !important;
     content: url("../img/uses/orchestra-finance.svg");
   }
-  .moai-finance{
-    min-height: 80px !important;
+
+  .moai-finance {
+    min-height: 100px !important;
     position: relative;
     bottom: 20px;
     content: url("../img/uses/moai-finance.svg");
   }
-  .ledger-city{
+
+  .ledger-city {
     margin: 0px !important;
     position: relative;
     bottom: 4px;
     left: 6px;
     max-height: 47px !important;
   }
+
   .zerpmon {
     margin: 0px;
     min-width: 80px;
@@ -186,20 +205,24 @@ html.light {
 }
 
 .modal-content-uses {
+  padding-top: 40px;
   position: relative;
-  /* Add position: relative to modal-content-uses */
   background-color: #232325;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
+  padding: 40px 20px 20px 20px;
   width: 60% !important;
-  height: 60%;
+  height: 520px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  overflow-y: hidden;
+
+  @media only screen and (max-width: 1024px) {
+    overflow-y: auto;
+  }
 }
 
 .modal-content-uses::before {
@@ -209,14 +232,12 @@ html.light {
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    #b480ff -0.32%,
-    #5f00e6 32.7%,
-    #1aa4ff 61.53%,
-    #19ff83 100.32%,
-    #19ff83 100.32%
-  );
+  background: linear-gradient(90deg,
+      #b480ff -0.32%,
+      #5f00e6 32.7%,
+      #1aa4ff 61.53%,
+      #19ff83 100.32%,
+      #19ff83 100.32%);
 }
 
 .content-section {
@@ -294,9 +315,14 @@ html.light {
   border-top: 1px solid #ccc;
 }
 
+.logo-item.anchain {
+  height: 34px !important;
+  max-width: 146px !important;
+}
+
 .threezy-logo {
   margin: 4px;
-  max-height: 38px;
+  max-height: 55px !important;
 }
 
 .blockforce-logo {
@@ -325,16 +351,29 @@ html.light {
 .bottom-row {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 
   @media only screen and (max-width: 768px) {
-    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 0;
   }
 }
 
+.top-row {
+  margin-bottom: 10px;
+}
+
+.bottom-row {
+  margin-top: 10px;
+}
+
 .logo-item {
-  max-height: 30px;
-  max-width: 130px;
-  margin: 10px 11px;
+  max-height: 45px;
+  max-width: 108px;
+  margin: 5px;
 }
 
 .close {
@@ -362,9 +401,11 @@ html.light {
   @include media-breakpoint-up(lg) {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  @media (max-width: 1220px) and (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); // Adjust to 3 columns for screens between 1024px and 1220px
+  }
 }
-
-
 
 .use-case-circle {
   display: flex;
@@ -448,13 +489,11 @@ html.light {
   font-weight: 400;
   font-size: 32px;
   line-height: 38px;
-  background: linear-gradient(
-    90deg,
-    #feff01 0%,
-    #ff2d9a 30.82%,
-    #e24cff 64.01%,
-    #9a52ff 100%
-  );
+  background: linear-gradient(90deg,
+      #feff01 0%,
+      #ff2d9a 30.82%,
+      #e24cff 64.01%,
+      #9a52ff 100%);
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -511,13 +550,11 @@ html.light {
     font-weight: 400;
     font-size: 32px;
     line-height: 38px;
-    background: linear-gradient(
-      90deg,
-      #b480ff -0.32%,
-      #5f00e6 32.7%,
-      #1aa4ff 61.53%,
-      #19ff83 100.32%
-    );
+    background: linear-gradient(90deg,
+        #b480ff -0.32%,
+        #5f00e6 32.7%,
+        #1aa4ff 61.53%,
+        #19ff83 100.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -617,6 +654,7 @@ html.light {
 
   .show-md {
     display: none;
+
     @include media-breakpoint-down(md) {
       display: block;
     }
@@ -624,6 +662,7 @@ html.light {
 
   .hide-md {
     display: block;
+
     @include media-breakpoint-down(md) {
       display: none;
     }
@@ -653,6 +692,7 @@ html.light {
     padding: 4rem 2rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
     @include media-breakpoint-down(md) {
       display: block;
       height: 100%;
@@ -672,7 +712,7 @@ html.light {
       padding-top: 2rem;
       border-bottom: 2px solid black;
     }
-    
+
   }
 
   .stat-container:last-child {
@@ -707,8 +747,8 @@ html.light {
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(90deg, #d91aff 26.41%, #1aa4ff 100.32%);
-    mask: 
-      linear-gradient(#fff 0 0) content-box, 
+    mask:
+      linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: xor;
@@ -839,7 +879,7 @@ html.light {
   }
 
   .prev img {
-    content: url("../img/icons/prev.svg"); 
+    content: url("../img/icons/prev.svg");
   }
 
   .next img {
@@ -898,8 +938,8 @@ html.light {
     text-decoration: none;
   }
 
-  .project-cards a:hover{
-    .project-name{
+  .project-cards a:hover {
+    .project-name {
       color: $purple;
     }
   }
@@ -946,4 +986,9 @@ html.light {
     z-index: 2;
     display: block;
   }
+}
+
+body,
+.landing.page-uses {
+  overflow-x: hidden;
 }

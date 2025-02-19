@@ -51,6 +51,8 @@ labels:
 
 {% /tabs %}
 
+{% try-it method="gateway_balances" /%}
+
 リクエストには以下のパラメーターが含まれます。
 
 | `Field`        | 型                         | 説明                           |

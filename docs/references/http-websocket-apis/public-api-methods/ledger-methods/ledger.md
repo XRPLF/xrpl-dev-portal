@@ -56,7 +56,7 @@ rippled ledger validated
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger)
+{% try-it method="ledger" server="xrplcluster" /%}
 
 The request can contain the following parameters:
 
@@ -105,7 +105,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger.close_time_resolution` | Number  | Ledger close times are rounded to within this many seconds. |
 | `ledger.closed`                | Boolean | Whether or not this ledger has been closed. |
 | `ledger.ledger_hash`           | String  | Unique identifying hash of the entire ledger. |
-| `ledger.ledger_index`          | String  | The [Ledger Index][] of this ledger, as a quoted integer. |
+| `ledger.ledger_index`          | [API v1][]: String <br> [API v2][]: Number  | The [Ledger Index][] of this ledger. |
 | `ledger.parent_close_time`     | Number  | The time at which the previous ledger was closed. |
 | `ledger.parent_hash`           | String  | The unique identifying hash of the ledger that came immediately before this one, as hexadecimal. |
 | `ledger.total_coins`           | String  | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.) |

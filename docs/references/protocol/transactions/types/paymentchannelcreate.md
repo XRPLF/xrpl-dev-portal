@@ -29,10 +29,9 @@ Create a [payment channel](../../../../concepts/payment-types/payment-channels.m
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22711C4F606C63076137FAE90ADC36379D7066CF551E96DA6FE2BDAB5ECBFACF2B%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="711C4F606C63076137FAE90ADC36379D7066CF551E96DA6FE2BDAB5ECBFACF2B" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 
 | Field            | JSON Type | [Internal Type][] | Description               |

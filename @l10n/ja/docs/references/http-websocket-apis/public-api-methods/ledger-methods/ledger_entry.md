@@ -98,7 +98,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-by-object-id)
+{% try-it method="ledger_entry-by-object-id" /%}
 
 {% admonition type="success" name="ヒント" %}
 このタイプのリクエストは、レジャーデータにシングルトンオブジェクトが存在する場合、そのIDは常に同一であるため、任意のシングルトンオブジェクトを取得するために使用できます。たとえば
@@ -154,7 +154,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-accountroot)
+{% try-it method="ledger_entry-accountroot" /%}
 
 
 
@@ -221,7 +221,7 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+{% try-it method="ledger_entry-amm" server="testnet" /%}
 
 
 ### Bridgeオブジェクトを取得する
@@ -291,7 +291,7 @@ rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuq
 
 {% /tabs %}
 
-[試してみよう! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-bridge)
+{% try-it method="ledger_entry-bridge" server="devnet" /%}
 
 
 
@@ -347,7 +347,7 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-directorynode)
+{% try-it method="ledger_entry-directorynode" /%}
 
 
 
@@ -402,7 +402,7 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
+{% try-it method="ledger_entry-offer" /%}
 
 ### Oracleオブジェクトを取得する
 
@@ -515,7 +515,7 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-ripplestate)
+{% try-it method="ledger_entry-ripplestate" /%}
 
 
 
@@ -560,7 +560,7 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-check)
+{% try-it method="ledger_entry-check" /%}
 
 
 
@@ -613,7 +613,7 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-escrow)
+{% try-it method="ledger_entry-escrow" /%}
 
 
 
@@ -658,7 +658,7 @@ rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-paychannel)
+{% try-it method="ledger_entry-paychannel" /%}
 
 
 ### DepositPreauthオブジェクトを取得する
@@ -710,7 +710,7 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-depositpreauth)
+{% try-it method="ledger_entry-depositpreauth" /%}
 
 
 ### Ticketオブジェクトを取得する
@@ -762,7 +762,7 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-ticket)
+{% try-it method="ledger_entry-ticket" /%}
 
 
 ### NFT Pageを取得する
@@ -806,7 +806,7 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_entry-nft-page)
+{% try-it method="ledger_entry-nft-page" /%}
 
 ### MPT Issuanceオブジェクトを取得する
 

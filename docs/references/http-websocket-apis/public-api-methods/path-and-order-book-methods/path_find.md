@@ -51,7 +51,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#path_find)
+{% try-it method="path_find" /%}
 
 The request includes the following parameters:
 

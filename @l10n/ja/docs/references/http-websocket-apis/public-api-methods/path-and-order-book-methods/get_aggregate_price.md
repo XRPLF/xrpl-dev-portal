@@ -87,9 +87,7 @@ _([PriceOracle amendment][])_
 
 {% /tabs %}
 
-
-[試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#get_aggregate_price)
-
+{% try-it method="get_aggregate_price" server="devnet" /%}
 
 リクエストには以下のパラメータが含まれています:
 

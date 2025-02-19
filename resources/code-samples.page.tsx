@@ -29,7 +29,7 @@ export default function CodeSamples() {
   const { codeSamples, langs } = usePageSharedData<any>('code-samples');
 
   return (
-    <div className="landing page-community">
+    <main className="landing page-code-samples">
       <div className="">
         <section className="py-26">
           <div className="col-lg-8 mx-auto text-lg-center">
@@ -126,6 +126,6 @@ export default function CodeSamples() {
           </div>
         </section>
       </div>
-    </div>
+    </main>
   );
 }

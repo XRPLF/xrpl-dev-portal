@@ -1,5 +1,6 @@
 [AMM amendment]: /resources/known-amendments.md#amm
 [AMM entry]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
+[AMMClawback amendment]: /resources/known-amendments.md#ammclawback
 [AMM object]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
 [AMMエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
 [AMMオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
@@ -7,6 +8,7 @@
 [AMMBid transactions]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBid]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBidトランザクション]: /docs/references/protocol/transactions/types/ammbid.md
+[AMMClawback transaction]: /docs/references/protocol/transactions/types/ammclawback.md
 [AMMCreate transaction]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate transactions]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate]: /docs/references/protocol/transactions/types/ammcreate.md
@@ -65,6 +67,25 @@
 [CheckCreateトランザクション]: /docs/references/protocol/transactions/types/checkcreate.md
 [Checks amendment]: /resources/known-amendments.md#checks
 [Clawback amendment]: /resources/known-amendments.md#clawback
+[Clawbackの修正]: /resources/known-amendments.md#clawback
+[Clawback transaction]: /docs/references/protocol/transactions/types/clawback.md
+[Clawback transactions]: /docs/references/protocol/transactions/types/clawback.md
+[Clawbackトランザクション]: /docs/references/protocol/transactions/types/clawback.md
+[Credentials amendment]: /resources/known-amendments.md#credentials
+[CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialCreate transactions]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialCreate]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialCreateトランザクション]: /docs/references/protocol/transactions/types/credentialcreate.md
+[CredentialAccept transaction]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAccept transactions]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAccept]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialAcceptトランザクション]: /docs/references/protocol/transactions/types/credentialaccept.md
+[CredentialDelete transaction]: /docs/references/protocol/transactions/types/credentialdelete.md
+[CredentialDelete transactions]: /docs/references/protocol/transactions/types/credentialdelete.md
+[CredentialDelete]: /docs/references/protocol/transactions/types/credentialdelete.md
+[CredentialDeleteトランザクション]: /docs/references/protocol/transactions/types/credentialdelete.md
+[Credential entry]: /docs/references/protocol/ledger-data/ledger-entry-types/credential
+[Credentialエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/credential
 [Crypto-Conditions Specification]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [CryptoConditions amendment]: /resources/known-amendments.md#cryptoconditions
 [CryptoConditionsSuite amendment]: /resources/known-amendments.md#cryptoconditionssuite
@@ -279,6 +300,9 @@
 [XChainAddAccountCreateAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainAddAccountCreateAttestation]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainAddAccountCreateAttestationトランザクション]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+[XChainAddClaimAttestation transaction]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
+[XChainAddClaimAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
+[XChainAddClaimAttestationトランザクション]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
 [XChainBridge amendment]: /resources/known-amendments.md#xchainbridge
 [XChainCreateBridge transaction]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateBridge transactions]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
@@ -288,6 +312,7 @@
 [XChainCreateClaimID transactions]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimID]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimIDトランザクション]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
+[XChainOwnedClaimID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid
 [XRP, in drops]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [XRPFees amendment]: /resources/known-amendments.md#xrpfees
 [XRP、drop単位]: /docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
@@ -379,6 +404,7 @@
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
 [fixMasterKeyAsRegularKey amendment]: /resources/known-amendments.md#fixmasterkeyasregularkey
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
+[fixNFTokenPageLinks amendment]: /resources/known-amendments.md#fixnftokenpagelinks
 [fixNFTokenRemint amendment]: /resources/known-amendments.md#fixnftokenremint
 [fixPayChanRecipientOwnerDir amendment]: /resources/known-amendments.md#fixpaychanrecipientownerdir
 [fixPreviousTxnID amendment]: /resources/known-amendments.md#fixprevioustxnid

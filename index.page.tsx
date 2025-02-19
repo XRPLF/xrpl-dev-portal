@@ -76,7 +76,7 @@ const cards3 = [
     description: 'Access everything you need to get started working with the XRPL',
   },
   { href: '/docs/tutorials', title: 'Guided Tutorials', description: 'Follow step-by-step guides for frequent tasks' },
-  { href: '/docs/concepts', title: 'XRPL Fundamentals', description: 'Read about the XRPL’s foundational concepts' },
+  { href: '/docs/concepts', title: 'XRPL Fundamentals', description: 'Read about the XRPL\u2019s foundational concepts' },
   {
     href: '/docs/references/client-libraries/',
     title: 'Choose a Language',
@@ -112,7 +112,7 @@ export default function Index() {
       <div className="overflow-hidden">
         <section className="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
           <div className="w-100">
-            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" width="856" height="469" />
+            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" width="856" height="469" loading='eager' />
           </div>
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
@@ -129,8 +129,8 @@ export default function Index() {
           </div>
         </section>
         <div className="position-relative d-none-sm">
-          <img src={require('./static/img/backgrounds/home-purple.svg')} id="home-purple" />
-          <img src={require('./static/img/backgrounds/home-green.svg')} id="home-green" />
+          <img src={require('./static/img/backgrounds/home-purple.svg')} id="home-purple" loading="lazy" />
+          <img src={require('./static/img/backgrounds/home-green.svg')} id="home-green" loading="lazy" />
         </div>
         <section className="container-new py-26">
           <div className="col-lg-6 offset-lg-3 pl-0-sm pr-0-sm p-8-sm p-10-until-sm">

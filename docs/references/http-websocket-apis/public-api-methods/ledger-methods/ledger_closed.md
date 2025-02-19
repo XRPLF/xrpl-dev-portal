@@ -45,7 +45,7 @@ rippled ledger_closed
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_closed)
+{% try-it method="ledger_closed" /%}
 
 This method accepts no parameters.
 

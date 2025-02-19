@@ -28,7 +28,7 @@ If you operate an XRP Ledger server but don’t upgrade to version 1.9.2 (or hig
 
 If the NonFungibleTokensV1_1 amendment does not become enabled, then your server will not become amendment blocked and should continue to operate.
 
-For instructions on upgrading on supported platforms, see [Install `rippled`](https://xrpl.org/install-rippled.html).
+For instructions on upgrading on supported platforms, see [Install `rippled`](/docs/infrastructure/installation).
 
 ## Amendment Voting Summary
 
@@ -36,9 +36,9 @@ For an amendment to the XRP Ledger protocol to become enabled, it must hold **ov
 
 The exact amendment voting calculations depend on the quorum of validators that are currently online and participating in consensus, which means that the exact number of votes in favor of an amendment can fluctuate when validators go temporarily offline. If at any point its support drops below 80%, the timer resets and the amendment must wait a full two weeks again starting when it regains 80%+ support.
 
-Previously, the threshold for amendment voting was "at least 80%" but in some cases rounding in the reference server's calculations could cause this condition to be met with slightly below 80%. The [fixAmendmentMajorityCalc amendment](https://xrpl.org/known-amendments.html#fixamendmentmajoritycalc), which activated on 2021-04-08, changed the calculation to be **strictly greater than 80%**. Since there are currently 35 validators in all three [recommended UNLs](https://xrpl.org/faq.html#validators-and-unique-node-lists), and 28/35 is _exactly_ 80%, the threshold for voting to enable an amendment when all validators are online is at least 29 votes in favor.
+Previously, the threshold for amendment voting was "at least 80%" but in some cases rounding in the reference server's calculations could cause this condition to be met with slightly below 80%. The [fixAmendmentMajorityCalc amendment](/resources/known-amendments#fixamendmentmajoritycalc), which activated on 2021-04-08, changed the calculation to be **strictly greater than 80%**. Since there are currently 35 validators in all three [recommended UNLs](/about/faq#validators-and-unique-node-lists), and 28/35 is _exactly_ 80%, the threshold for voting to enable an amendment when all validators are online is at least 29 votes in favor.
 
-For a live view of amendment voting, you can use the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments). For more discussion of the voting process, see [this blog by Ripple developer Nik B.](https://dev.to/ripplexdev/xrpl-amendments-to-vote-or-not-to-vote-5l3) as well as the [Amendments documentation](https://xrpl.org/amendments.html).
+For a live view of amendment voting, you can use the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments). For more discussion of the voting process, see [this blog by Ripple developer Nik B.](https://dev.to/ripplexdev/xrpl-amendments-to-vote-or-not-to-vote-5l3) as well as the [Amendments documentation](https://xrpl.org/docs/concepts/networks-and-servers/amendments).
 
 ## NFT Functionality Summary
 
@@ -46,9 +46,9 @@ Non-fungible tokens, or `NFToken` objects, are a new type of object on the XRP L
 
 Tokens can have transfer fees that provide their creator with a share of the revenue when the NFT is bought and sold, and they can be part of a set of related NFTs that share a "taxon". Creators can also designate a broker who mints and sells the tokens on their behalf.
 
-The [**NonFungibleTokensV1_1** amendment](https://xrpl.org/known-amendments.html#nonfungibletokensv1_1) incorporates the original [NonFungibleTokensV1 amendment](https://xrpl.org/known-amendments.html#nonfungibletokensv1) as well as two bug fixes that were added in later releases, [fixNFTokenDirV1](https://xrpl.org/known-amendments.html#fixnftokendirv1) and [fixNFTokenNegOffer](https://xrpl.org/known-amendments.html#fixnftokennegoffer).
+The [**NonFungibleTokensV1_1** amendment](/resources/known-amendments#nonfungibletokensv1_1) incorporates the original [NonFungibleTokensV1 amendment](/resources/known-amendments#nonfungibletokensv1) as well as two bug fixes that were added in later releases, [fixNFTokenDirV1](/resources/known-amendments#fixnftokendirv1) and [fixNFTokenNegOffer](/resources/known-amendments#fixnftokennegoffer).
 
-For more information on NFTs, see the [NFT Conceptual Overview](https://xrpl.org/non-fungible-tokens.html) and related documentation.
+For more information on NFTs, see the [NFT Conceptual Overview](/docs/concepts/tokens/nfts) and related documentation.
 
 
 ## A Word of Caution
@@ -56,12 +56,12 @@ For more information on NFTs, see the [NFT Conceptual Overview](https://xrpl.org
 Since the road to enabling native NFT support has been long, some members of the community have voiced concern regarding pent-up demand for minting NFTs and converting NFTs from the deprecated XLS-14d specification. When the NFT amendment becomes enabled, the onset of NFT minting may cause a temporary increase in traffic on the XRP Ledger network. Possible effects could include:
 
 - Outages of individual XRP Ledger servers, especially ones with older or weaker hardware
-- Increased [transaction costs](https://xrpl.org/transaction-cost.html) as a result of network load
+- Increased [transaction costs](/docs/concepts/transactions/transaction-cost) as a result of network load
 - Slower results from popular public API servers, or a higher rate of errors
 
 While performance testing has shown that the network is capable of handling the long-term effects of NFTs, the short-term impact on the actual, decentralized Mainnet and all the infrastructure built on top of it is more complex. Alloy Networks, a founding member of the XRP Ledger Foundation, [advises minters](https://twitter.com/alloynetworks/status/1561672954299269120) to be cautious and not mint or convert large collections of NFTs all at once.
 
-Users should also be careful not to burn more XRP than they intended on temporarily-elevated transaction costs. If you have an automated system for submitting transactions, now is a good time to review your code to make sure you [properly handle](https://xrpl.org/reliable-transaction-submission.html) `terQUEUED` and other non-final transaction results.
+Users should also be careful not to burn more XRP than they intended on temporarily-elevated transaction costs. If you have an automated system for submitting transactions, now is a good time to review your code to make sure you [properly handle](/docs/concepts/transactions/reliable-transaction-submission) `terQUEUED` and other non-final transaction results.
 
 
 ## Learn, ask questions, and discuss

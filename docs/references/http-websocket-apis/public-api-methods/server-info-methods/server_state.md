@@ -49,7 +49,7 @@ rippled server_state
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#server_state)
+{% try-it method="server_state" server="xrplcluster" /%}
 
 The request does not takes any parameters.
 

@@ -45,7 +45,7 @@ rippled ping
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ping)
+{% try-it method="ping" /%}
 
 The request includes no parameters.
 

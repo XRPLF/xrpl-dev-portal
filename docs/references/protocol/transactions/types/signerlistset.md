@@ -44,7 +44,7 @@ The SignerListSet transaction creates, replaces, or removes a list of signers th
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_SignerListSet%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%2209A9C86BF20695735AB03620EB1C32606635AC3DA0B70282F37C674FC889EFE7%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="09A9C86BF20695735AB03620EB1C32606635AC3DA0B70282F37C674FC889EFE7" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
