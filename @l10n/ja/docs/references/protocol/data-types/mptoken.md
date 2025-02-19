@@ -1,7 +1,7 @@
 ---
-blurb:  XRPLの多目的トークンのオブジェクトについて説明します。
+blurb:  XRPLのMulti-Purpose Tokenのオブジェクトについて説明します。
 labels:
-  - 多目的トークン, MPT, トークン
+  - Multi-Purpose Token, MPT, トークン
 ---
 # MPToken
 

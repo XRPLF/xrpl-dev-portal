@@ -3,14 +3,14 @@ html: mptokenissuanceset.html
 parent: transaction-types.html
 blurb: MPTの変更可能なプロパティを設定します。
 labels:
- - 多目的トークン, MPT
+ - Multi-Purpose Token, MPT
 ---
 # MPTokenIssuanceSet
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "ソース")
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 
-このトランザクションを使用して、多目的トークンの変更可能なプロパティを更新します。
+このトランザクションを使用して、Multi-Purpose Tokenの変更可能なプロパティを更新します。
 
 ## MPTokenIssuanceSetの例
 

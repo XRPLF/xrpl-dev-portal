@@ -1,9 +1,9 @@
 ---
 html: mptokenissuancecreate.html
 parent: transaction-types.html
-blurb: 新しい多目的トークンを発行します。
+blurb: 新しいMulti-Purpose Tokenを発行します。
 labels:
- - 多目的トークン, MPT
+ - Multi-Purpose Token, MPT
 ---
 
 # MPTokenIssuanceCreate

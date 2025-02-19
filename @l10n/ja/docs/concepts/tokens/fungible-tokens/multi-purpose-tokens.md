@@ -1,16 +1,16 @@
 ---
-blurb: 多目的トークンは、トラストラインよりもコンパクトで柔軟なトークンタイプです。
+blurb: Multi-Purpose Tokenは、トラストラインよりもコンパクトで柔軟なトークンタイプです。
 labels:
   - トークン
   - MPT
-  - 多目的トークン
+  - Multi-Purpose Token
 status: not_enabled
 ---
-# 多目的トークン
+# Multi-Purpose Token
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 
-多目的トークン(MPT)は、トラストラインよりもコンパクトで柔軟なトークンタイプです。
+Multi-Purpose Token(MPT)は、トラストラインよりもコンパクトで柔軟なトークンタイプです。
 
 MPTを使用することで、数行のコードですぐに使えるトークン化機能を利用できます。1つのトークンプログラムから多くのトークンを作成することができます。以下のような特徴があります。
 

@@ -3,7 +3,7 @@ html: mptokenauthorize.html
 parent: transaction-types.html
 blurb: アカウントが特定のMPTの残高を保持することを許可します。
 labels:
- - 多目的トークン, MPT
+ - Multi-Purpose Token, MPT
 ---
 
 # MPTokenAuthorize

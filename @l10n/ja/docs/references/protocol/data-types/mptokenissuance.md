@@ -1,7 +1,7 @@
 ---
 blurb: Introduction to XRPL MPTs.
 labels:
-  - 多目的トークン, MPT, トークン
+  - Multi-Purpose Token, MPT, トークン
 ---
 # MPTokenIssuance
 

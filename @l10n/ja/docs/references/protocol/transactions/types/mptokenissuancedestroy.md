@@ -1,9 +1,9 @@
 ---
 html: mptokenissuancedestroy.html
 parent: transaction-types.html
-blurb: レジャーから多目的トークンを削除します。
+blurb: レジャーからMulti-Purpose Tokenを削除します。
 labels:
- - 多目的トークン, MPT
+ - Multi-Purpose Token, MPT
 ---
 # MPTokenIssuanceDestroy
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceDestroy.cpp "ソース")
