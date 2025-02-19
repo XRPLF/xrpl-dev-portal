@@ -810,7 +810,7 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 ### MPT Issuanceオブジェクトを取得する
 
-_([MPToken amendment][]が必要です。 {% not-enabled /%})_
+_([MPTokensV1 amendment][]が必要です。 {% not-enabled /%})_
 
 `MPTokenIssuance`オブジェクトを返します。
 
@@ -856,7 +856,7 @@ rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577
 
 ### MPTokenオブジェクトを取得する
 
-_([MPToken amendment][]が必要です。 {% not-enabled /%})_
+_([MPTokensV1 amendment][]が必要です。 {% not-enabled /%})_
 
 `MPToken`オブジェクトを返します。
 

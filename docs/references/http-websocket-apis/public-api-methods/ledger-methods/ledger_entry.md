@@ -925,7 +925,7 @@ An example of a successful response:
 
 ### Get MPT Issuance Object
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
 Return an `MPTokenIssuance` object.
 
@@ -967,7 +967,7 @@ rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577
 
 ### Get MPToken Object
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
 Return an `MPToken` object.
 

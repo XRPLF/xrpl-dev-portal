@@ -8,7 +8,7 @@ status: not_enabled
 ---
 # Multi-purpose Tokens
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
 Multi-purpose tokens (MPTs) are a more compact and flexible type of fungible token.
 

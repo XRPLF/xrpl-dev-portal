@@ -134,7 +134,7 @@
 [LedgerHashesエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [LedgerHashesオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [Marker]: /docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
-[MPToken amendment]: /resources/known-amendments.md#mptokensv1
+[MPTokensV1 amendment]: /resources/known-amendments.md#mptokensv1
 [MultiSign amendment]: /resources/known-amendments.md#multisign
 [MultiSignReserve amendment]: /resources/known-amendments.md#multisignreserve
 [NFTokenAcceptOffer transaction]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
@@ -220,7 +220,7 @@
 [Payment]: /docs/references/protocol/transactions/types/payment.md
 [Paymentトランザクション]: /docs/references/protocol/transactions/types/payment.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
-[MPTokenV1_1 amendment]: /resources/known-amendments.md#priceoracle
+[MPTokensV1_1 amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode
 [RequireFullyCanonicalSig amendment]: /resources/known-amendments.md#requirefullycanonicalsig
