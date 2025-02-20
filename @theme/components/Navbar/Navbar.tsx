@@ -13,7 +13,7 @@ const alertBanner = {
   show: true,
   message: "XRP LEDGER APEX 2025",
   button: "GET TICKETS",
-  link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_gettickets",
+  link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner",
   date: "JUNE 10-12",
 };
 export function AlertBanner({ message, date, button, link, show }) {
