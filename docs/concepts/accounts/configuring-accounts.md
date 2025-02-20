@@ -65,6 +65,26 @@ Multi-signing in the XRP Ledger is a method of authorizing transactions by using
 
 [![Account Configurator Issuer Settings](../../img/cpt-account-configurator3.png)](../../img/cpt-account-configurator3.png)
 
+## Other Configuration Flags
+
+All of the configuration flags can be helpful for specific use cases. The following are the account configuration flags not used in the standard Holder, Exchanger, and Issuer configurations.
+
+| Flag | Description |
+|------|-------------|
+| `allowTrustLineClawback` | Allow account to claw back tokens it has issued. See [Clawing Back Tokens](../tokens/fungible-tokens/clawing-back-tokens). |
+| `disableMasterKey` | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a regular key or a signer list. See [Master Key Pair](./cryptographic-keys.md#master-key-pair). |
+| `disallowIncomingTrustLine` | Block incoming trust lines. See [Trust Lines](../tokens/fungible-tokens/index.md#trust-lines). |
+| `globalFreeze` | Freeze all tokens issued by this account. See [Global Freeze](../tokens/fungible-tokens/freezes.md#global-freeze).
+| `noFreeze` | Permanently remove the ability to freeze individual trust lines or end a global freeze. See [Freezing Tokens](../tokens/fungible-tokens/freezes.md). |
+| `requireAuthorization` | Requires authorized trust lines for other accounts to hold tokens issued by this account. See [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md).
+
+## Using the Account Configurator
+
+You can download a copy of the [Account Configurator](../../../_code-samples/account-configurator/account-configurator.zip) from the `_code_samples` directory.
+
+Expand the archive and open `account_configurator.html` in a browser window.
+
+You can also use the form embedded here.
 <!-- Account Configurator Form -->
 <div class="container">
 <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
@@ -779,15 +799,106 @@ client.disconnect()
 </div>
 <!-- End of Account Configurator Form -->
 
-## Other Configuration Flags
 
-All of the configuration flags can be helpful for specific use cases. The following are the account configuration flags not used in the standard Holder, Exchanger, and Issuer configurations.
+### Getting Account Information
 
-| Flag | Description |
-|------|-------------|
-| `allowTrustLineClawback` | Allow account to claw back tokens it has issued. See [Clawing Back Tokens](../tokens/fungible-tokens/clawing-back-tokens). |
-| `disableMasterKey` | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a regular key or a signer list. See [Master Key Pair](./cryptographic-keys.md#master-key-pair). |
-| `disallowIncomingTrustLine` | Block incoming trust lines. See [Trust Lines](../tokens/fungible-tokens/index.md#trust-lines). |
-| `globalFreeze` | Freeze all tokens issued by this account. See [Global Freeze](../tokens/fungible-tokens/freezes.md#global-freeze).
-| `noFreeze` | Permanently remove the ability to freeze individual trust lines or end a global freeze. See [Freezing Tokens](../tokens/fungible-tokens/freezes.md). |
-| `requireAuthorization` | Requires authorized trust lines for other accounts to hold tokens issued by this account. See [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md).
+You can use the Account Configurator to view information about accounts on Mainnet, Testnet, and Devnet.
+
+#### To get Account information
+
+1. Choose the account's ledger instance (_Mainnet_, _Testnet_ or _Devnet_).
+2. Enter the account number in the **Account** field.
+3. Click **Get Account Info**.
+
+The response is displayed in the **Results** field.
+
+[![Account Configurator Get Account Info Results](../../img/cpt-account-configurator6.png)](../../img/cpt-account-configurator6.png)
+
+### Getting a New Account
+
+You can create sandbox accounts on _Testnet_ or _Devnet_. To create an account on _Mainnet_, see [Creating Accounts](../accounts/index.md#creating-accounts).
+
+#### To get a new Account
+
+1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
+2. Click **Get New Account**.
+
+Be sure to capture the **Seed** value for your new account so that you can easily retrieve it.
+
+### Getting an Account from Its Seed
+
+You can reload information for an existing account based on its seed value.
+
+#### To get an account from its seed
+
+1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
+2. Enter the value in the **Seed** field.
+3. Click **Get Account From Seed**.
+
+[![Account Configurator Get Account from Seed](../../img/cpt-account-configurator1.png)](../../img/cpt-account-configurator1.png)
+
+### Configuring a Holder Account
+
+A Holder account requires no configuration (default settings). If the account previously had configuration changes, you can revert them and return the account to default status.
+
+#### To configure a Holder account
+
+1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
+2. Click **Get New Account**
+   OR
+   1. Enter the value in the **Seed** field.
+   2. Click **Get Account From Seed**.
+3. Choose the _Holder_ **Account Configuration Template**.
+4. Click **Configure Account**.
+
+If the account has never been configured, the response in the **Results** field is identical to the original account information, less the nominal transaction fee.
+
+[![Account Configurator Holder Results](../../img/cpt-account-configurator1.png)](../../img/cpt-account-configurator1.png)
+
+### Configuring an Exchanger Account
+
+The standard Exchanger account configuration requires only four flags.
+
+#### To configure an Exchanger account
+
+1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
+2. Click **Get New Account**.
+   OR  
+   1. Enter a value in the **Seed** field.
+   2. Click **Get Account From Seed**.
+3. Choose the _Exchanger_ **Account Configuration Template**.
+   The configuration flag checkboxes update with the 4 standard configuration choices. You can choose more or fewer configuration settings to customize the account to your needs.
+4. Click **Configure Account**.
+
+[![Account Configurator Exchanger Results](../../img/cpt-account-configurator4.png)](../../img/cpt-account-configurator4.png)
+
+### Configuring an Issuer Account
+
+Configure an Issuer account by filling in additional fields and selecting flags that serve your needs.
+
+#### To configure an Issuer account
+
+1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
+2. Click **Get New Account**.
+   OR  
+   1. Enter a value in the **Seed** field.
+   2. Click **Get Account From Seed**.
+3. Choose the _Issuer_ **Account Configuration Template**.
+   The configuration flag checkboxes update with the 6 standard configuration choices. You can choose more or fewer 
+   configuration settings to customize the account to your needs.
+4. Enter the **Domain**, a URL to the server where your `xrp-ledger.toml` resides. Note that you enter a human readable URL, which is converted to a hexidecimal string when you get the account information. If you want to reconfigure the account, you'll need to re-enter the **Domain** URL.
+5. Enter the **Transfer Rate**, a percentage fee to charge whenever counterparties transfer the currency you issue.
+6. Enter the **Tick Size**, which truncates the number of significant digits in the exchange.
+7. If you choose to include signers, this example module requires that you add valid account IDs in **Signer1 Account**, **Signer2 Account**, and **Signer3 Account**, a **Signer Weight** for each, and a **Signer Quorum** value. 
+8. Click **Configure Account**.
+
+{% admonition name="Note" %}Admitting to laziness on the author's part (and avoiding scope creep), setting Signers for an account requires changing all of them in a single transaction. The additional programming required to allow for an indeterminate number of signers and updates to individual signer weights is not essential to understanding account configuration. The sample code is easy to manipulate if you want your own example to add more or fewer than 3 signers.{% /admonition %}
+
+
+[![Account Configurator Issuer Results](../../img/cpt-account-configurator5.png)](../../img/cpt-account-configurator5.png)
+
+### Removing Signers
+
+Click **Remove Signers** to remove all signers for the current account.
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
