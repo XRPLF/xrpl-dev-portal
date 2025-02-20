@@ -27,7 +27,7 @@ Throughout its history, the XRPL Foundation has played a critical role in mainta
 
 ### Required Actions for Validators and Node Operators
 
-Ahead of the migration date, validators need to take the following actions:
+Ahead of the migration date, validators and node operators need to take the following actions:
 
 1. Update their configuration to reflect the new cryptographic public key provided by the new Foundation.
 2. Restart their node to apply the updated configuration.
