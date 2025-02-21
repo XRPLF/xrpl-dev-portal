@@ -7,7 +7,6 @@ yarn-error.log
 /.idea
 *.iml
 .venv/
-scripts/
 _code-samples/*/js/package-lock.json
 
 # PHP
