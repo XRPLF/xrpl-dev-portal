@@ -22,7 +22,7 @@ Explore ecosystem price oracles such as DIA and discover how to use DIA Oracles 
 
 ## Usage of DIA Oracles on XRP Ledger
 
-dApps building on XRP Ledger can utilize DIA oracles to obtain up-to-date asset price information. These deployed oracles are suitable for use in production environments. They come with a list of supported assets and settings. However, if dApps require a custom oracle with a different set of assets and configurations, they should [contact DIA on Telegram](https://t.me/diabdteam).
+DApps building on XRP Ledger can utilize DIA oracles to obtain up-to-date asset price information. These deployed oracles are suitable for use in production environments. They come with a list of supported assets and settings. However, if dApps require a custom oracle with a different set of assets and configurations, they should [contact DIA on Telegram](https://t.me/diabdteam).
 
 ## Deployed Contracts
 
