@@ -186,7 +186,7 @@ async function getAccountFromSeed() {
 // ***************** Get Account Info ******************** 
 // *******************************************************
 async function getAccountInfo() {
-  let net = getNet()
+ let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
   await client.connect()   
@@ -201,15 +201,9 @@ async function getAccountInfo() {
   results = JSON.stringify(my_acct_info, null, 2)
   resultField.value += results
   var parsedResults = JSON.parse(results)
-  try {
-    tickSizeField.value = parsedResults.result.account_data.TickSize
-  } catch (error) {
-  }
-  try {
-    transferRateField.value = parsedResults.result.account_data.TransferRate
-  } catch (error) {
-  }
-  domainField.value = parsedResults.result.account_data.Domain
+  document.getElementById("tickSizeField").value = parsedResults.result.account_data.TickSize
+  document.getElementById("transferRateField").value = parsedResults.result.account_data.TransferRate
+  document.getElementById("domainField").value = xrpl.convertHexToString(parsedResults.result.account_data.Domain)
   document.getElementById("defaultRipple").checked = parsedResults.result.account_flags.defaultRipple
   document.getElementById("allowTrustLineClawback").checked = parsedResults.result.account_flags.allowTrustLineClawback
   document.getElementById("depositAuth").checked = parsedResults.result.account_flags.depositAuth
@@ -648,7 +642,7 @@ client.disconnect()
          </div>
          <div class="col align-right"><label for="signer1WeightField">Signer1 Weight</label>
          </div>
-         <div class="col align-right"><input type="text" id="signer1WeightField" size="5"></input>
+         <div class="col align-right"><input type="text"  id="signer1WeightField" size="5"></input>
           </div>
       </div>
       <div class="row">
@@ -835,7 +829,7 @@ You can reload information for an existing account based on its seed value.
 2. Enter the value in the **Seed** field.
 3. Click **Get Account From Seed**.
 
-[![Account Configurator Get Account from Seed](../../img/cpt-account-configurator1.png)](../../img/cpt-account-configurator1.png)
+[![Account Configurator Get Account from Seed](../../img/cpt-account-configurator7.png)](../../img/cpt-account-configurator7.png)
 
 ### Configuring a Holder Account
 
@@ -870,7 +864,7 @@ The standard Exchanger account configuration requires only four flags.
    The configuration flag checkboxes update with the 4 standard configuration choices. You can choose more or fewer configuration settings to customize the account to your needs.
 4. Click **Configure Account**.
 
-[![Account Configurator Exchanger Results](../../img/cpt-account-configurator4.png)](../../img/cpt-account-configurator4.png)
+[![Account Configurator Exchanger Results](../../img/cpt-account-configurator2.png)](../../img/cpt-account-configurator2.png)
 
 ### Configuring an Issuer Account
 
@@ -892,10 +886,9 @@ Configure an Issuer account by filling in additional fields and selecting flags 
 7. If you choose to include signers, this example module requires that you add valid account IDs in **Signer1 Account**, **Signer2 Account**, and **Signer3 Account**, a **Signer Weight** for each, and a **Signer Quorum** value. 
 8. Click **Configure Account**.
 
-{% admonition name="Note" %}Admitting to laziness on the author's part (and avoiding scope creep), setting Signers for an account requires changing all of them in a single transaction. The additional programming required to allow for an indeterminate number of signers and updates to individual signer weights is not essential to understanding account configuration. The sample code is easy to manipulate if you want your own example to add more or fewer than 3 signers.{% /admonition %}
+<!-- {% admonition type="info" name="Note" %}Admitting to laziness on the author's part (and avoiding scope creep), setting Signers for an account requires changing all of them in a single transaction. The additional programming required to allow for an indeterminate number of signers and updates to individual signer weights is not essential to understanding account configuration. The sample code is easy to manipulate if you want your own example to add more or fewer than 3 signers.{% /admonition %} -->
 
-
-[![Account Configurator Issuer Results](../../img/cpt-account-configurator5.png)](../../img/cpt-account-configurator5.png)
+[![Account Configurator Issuer Results](../../img/cpt-account-configurator3.png)](../../img/cpt-account-configurator3.png)
 
 ### Removing Signers
 

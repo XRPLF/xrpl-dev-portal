@@ -106,7 +106,7 @@ async function getAccountInfo() {
   var parsedResults = JSON.parse(results)
   document.getElementById("tickSizeField").value = parsedResults.result.account_data.TickSize
   document.getElementById("transferRateField").value = parsedResults.result.account_data.TransferRate
-  document.getElementById("domainField").value = parsedResults.result.account_data.Domain
+  document.getElementById("domainField").value = xrpl.convertHexToString(parsedResults.result.account_data.Domain)
   document.getElementById("defaultRipple").checked = parsedResults.result.account_flags.defaultRipple
   document.getElementById("allowTrustLineClawback").checked = parsedResults.result.account_flags.allowTrustLineClawback
   document.getElementById("depositAuth").checked = parsedResults.result.account_flags.depositAuth
