@@ -1,85 +1,156 @@
-.top-banner {
+.web-banner {
+  text-decoration: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 46px;
-  background: url(../img/backgrounds/bg-apex-banner.svg);
-  background-position: center !important;
-  background-size: cover;
-  background-color: $blue-purple-500;
-  color: $white;
-
-  .inner-apex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-  }
-
-  .apex-banner-text {
-    color: #FFF;
-    font-family: "Work Sans";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
-  }
-
-  .apex-btn {
-    margin-left: 16px;
-    color: var(--Gray-100, #000) !important;
-    font-family: "Work Sans";
-    font-size: 16px;
-    font-style: normal;
-    display: flex;
-    justify-content: center;
-    font-weight: 600;
-    align-items: center;
-    line-height: 100%;
-    letter-spacing: -0.16px;
-    padding: 2px 4px;
-    border-radius: 100px !important;
-    background: #18FF83 !important;
-    text-decoration: none !important;
-    width: 135px;
-    height: 28px;
-  }
-
-  @media (max-width: 1024px) {
-    background: url(../img/backgrounds/bg-apex-banner-md.svg);
-
-    .apex-banner-text {
-      font-size: 18px;
-    }
-
-    .apex-btn {
-      width: 122px;
-      height: 26px;
-      font-size: 14px;
-      letter-spacing: -0.14px;
+  justify-content: space-between;
+  height: $banner-height;
+  background: #D919FF !important;
+  padding: 7px 35px;
+  font-family: "Work Sans";
+  z-index: 9999;
+  cursor: pointer;
+  
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    .button-icon{
+      animation: iconJitter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
+  color: $white !important;
+  text-align: center;
+  font-family: "Work Sans";
+  font-size: 26px; // Further scaled down from 28px
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.32px;
+  // Pseudo-element for the fill animation
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; // Full width so that we can scale it
+    height: 100%;
+    background-color: #7919FF;
+    z-index: 0;
+    transform: scaleX(0);       // Start scaled down to 0
+    transform-origin: left;     // Scale from the left edge
+    transition: transform 0.7s cubic-bezier(0.7, 0, 0.84, 0);
+    will-change: transform;     // Hint for smoother animations
+  }
 
-  @media (max-width: 535px) {
-    background: url(../img/backgrounds/bg-apex-banner-sm.svg);
-
-    .apex-btn {
-      margin-left: 0;
-      width: 85px;
-      height: 16px;
-      font-size: 10px;
-      line-height: 100%;
-      letter-spacing: -0.1px;
+  // On hover, scale to full width
+  &:hover::after {
+    transform: scaleX(1);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  // Ensure direct children are above the pseudo-element
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
+    padding: 11px 35px;
+    .banner-button{
+      gap: 11px !important;
     }
-
-    .apex-banner-text {
-      font-size: 12px;
-      line-height: 12px;
+    .button-text{
+      margin-bottom: 4px;
     }
-
-    .inner-apex {
+  }
+  @media (max-width: 564px) {
+    font-size: 15px;
+    padding: 9px 40px;
+    .button-text{
+      margin-bottom: 0px;
+    }
+    .banner-event-details{
+      gap: 0px !important;
       flex-direction: column;
-      gap: 8px;
+      text-align: left;
+      line-height: 21px;
+      .event-date{
+        position: relative;
+        top: -5px;
+      }
+    }
+    .banner-button{
+      align-self: baseline;
+      gap: 8px !important;
+      margin-top: -2px !important;
+      padding-top: 0px !important;
     }
   }
+  .banner-button{
+    display: flex;
+    align-items: center;
+    gap: 14.5px;
+    padding-top: 1px;
+    img{
+      width: 24.5px; 
+      height: 33.7px;
+      @media (max-width: 768px) {
+        width: 15.5px;
+        height: 17px;
+        margin-top: 4px;
+      }
+      @media (max-width: 564px) {
+        width: 14.5px;
+        height: 13.85px;
+      }
+    }
+  }
+
+  .banner-event-details {
+    display: flex;
+    gap: 32px;
+  }
+
+
+  .button-icon {
+    transform-style: preserve-3d;
+    aspect-ratio: 0.71;
+    object-fit: contain;
+    animation: none;
+    transform: rotateZ(0deg);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); // Adjust duration as needed
+    align-self: stretch;
+    margin: auto 0;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes iconJitter {
+    from {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(0deg) skew(0deg, 0deg);
+    }
+    to {
+      transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(45deg) skew(0deg, 0deg);
+    }
+  }
+
+}
+
+.web-banner a {
+  text-decoration: none;
+}
+
+.button-icon {
+  animation: iconJitter 0.7s ease-in-out;
+  animation-iteration-count: 1;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes iconReturn {
+  from {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(45deg) skew(0deg, 0deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(0deg) skew(0deg, 0deg);
+  }
+}
+/* After the banner has been hovered once, on unhover run the reverse animation */
+.web-banner.has-hover:not(:hover) .button-icon {
+  animation: iconReturn 0.7s ease-in-out forwards;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }

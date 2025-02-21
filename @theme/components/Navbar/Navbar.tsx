@@ -1,21 +1,63 @@
 import * as React from "react";
-import styled from "styled-components";
 import { useThemeConfig, useThemeHooks } from "@redocly/theme/core/hooks";
 import { LanguagePicker } from "@redocly/theme/components/LanguagePicker/LanguagePicker";
 import { slugify } from "../../helpers";
 import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { AlgoliaSearch } from "./AlgoliaSearch";
+import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
 
 // @ts-ignore
 
 const alertBanner = {
-  show: false,
-  message: "XRP Ledger Apex is back in Amsterdam",
-  button: "Register Now",
-  link: "https://www.xrpledgerapex.com/?utm_source=email&utm_medium=email_marketing&utm_campaign=EVENTS_XRPL_Apex_2024_Q2&utm_term=events_page_cta_button",
+  show: true,
+  message: "XRP LEDGER APEX 2025",
+  button: "GET TICKETS",
+  link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner",
+  date: "JUNE 10-12",
 };
+export function AlertBanner({ message, date, button, link, show }) {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+  const bannerRef = React.useRef(null);
 
+  React.useEffect(() => {
+    const banner = bannerRef.current;
+    if (!banner) return;
+    const handleMouseEnter = () => {
+      banner.classList.add('has-hover');
+    };
+    // Attach the event listener
+    banner.addEventListener('mouseenter', handleMouseEnter);
+    // Clean up the event listener on unmount
+    return () => {
+      banner.removeEventListener('mouseenter', handleMouseEnter);
+    };
+  }, []);
+
+  if (show) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        ref={bannerRef}
+        className="top-banner fixed-top web-banner"
+        rel="noopener noreferrer"
+        aria-label="Get Tickets for XRP Ledger Apex 2025 Event"
+      >
+        <div className="banner-event-details">
+          <div className="event-info">{translate(message)}</div>
+          <div className="event-date">{translate(date)}</div>
+        </div>
+        <div className="banner-button">
+          <div className="button-text">{translate(button)}</div>
+          <img className="button-icon" src={arrowUpRight} alt="Get Tickets Icon" />
+        </div>
+      </a>
+    );
+  }
+  return null;
+}
 export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
   const themeConfig = useThemeConfig();
@@ -48,6 +90,7 @@ export function Navbar(props) {
       );
     }
   });
+
 
   React.useEffect(() => {
     // Turns out jQuery is necessary for firing events on Bootstrap v4
@@ -86,12 +129,7 @@ export function Navbar(props) {
 
   return (
     <>
-      <AlertBanner
-        show={alertBanner.show}
-        message={alertBanner.message}
-        button={alertBanner.button}
-        link={alertBanner.link}
-      />
+      <AlertBanner {...alertBanner} />
       <NavWrapper belowAlertBanner={alertBanner.show}>
         <LogoBlock to={href} img={logo} alt={altText} />
         <NavControls>
@@ -118,30 +156,6 @@ export function Navbar(props) {
       </NavWrapper>
     </>
   );
-}
-
-const StyledColorModeSwitcher = styled(ColorModeSwitcher)`
-  padding: 10px;
-`;
-
-export function AlertBanner({ message, button, link, show }) {
-  if (show) {
-    return (
-      <div className="top-banner fixed-top">
-        <div className="inner-apex">
-          <span>
-            <p className="mb-0 apex-banner-text">{message}</p>
-          </span>
-          <span>
-            <Link to={link} target="_blank" className="apex-btn">
-              {button}
-            </Link>
-          </span>
-        </div>
-      </div>
-    );
-  }
-  return null;
 }
 
 export function TopNavCollapsible({ children }) {
@@ -268,7 +282,7 @@ export function NavWrapper(props) {
   return (
     <nav
       className="top-nav navbar navbar-expand-lg navbar-dark fixed-top"
-      style={props.belowAlertBanner ? { marginTop: "46px" } : {}}
+      style={props.belowAlertBanner ? { marginTop: "52px" } : {}}
     >
       {props.children}
     </nav>
