@@ -82,7 +82,9 @@ Specify the amount of MPTs using the  `MPTAmount` field. For example, to specify
 
 ```json
 {
-  "MPTAmount": "1000000"
+    "mpt_issuance_id": 
+	     "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
+    "value": "1000000"
 }
 ```
 
