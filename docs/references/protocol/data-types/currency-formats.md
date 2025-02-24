@@ -78,7 +78,7 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 ```
 ### MPT Amounts
 
-Specify the amount of MPTs using the  `MPTAmount` field. For example, to specify 1 million units of an MPT you would specify:
+Specify the amount of MPTs using the  `Amount` field. For example, to specify 1 million units of an MPT you would specify:
 
 ```json
 {
