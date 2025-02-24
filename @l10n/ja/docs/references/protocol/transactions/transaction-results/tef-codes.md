@@ -28,7 +28,7 @@ labels:
 | `tefINVARIANT_FAILED` | [トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)を請求しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]により追加されました。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
 | `tefMASTER_DISABLED` | トランザクションはアカウントのマスターキーで署名されていましたが、アカウントに`lsfDisableMaster`フィールドが設定されていました。 |
 | `tefMAX_LEDGER` | トランザクションには[`LastLedgerSequence`](../../../../concepts/transactions/reliable-transaction-submission.md#lastledgersequence)パラメーターが指定されていましたが、現在のレジャーのシーケンス番号はすでに指定値を上回っています。 |
-| `tefNO_AUTH_REQUIRED` | [TrustSetトランザクション][]がトラストラインを承認済みとしてマークしようとしましたが、対応するアカウントに対して`lsfRequireAuth`フラグが有効になっていないため、承認は不要です。 |
+| `tefNO_AUTH_REQUIRED` | [TrustSetトランザクション][]で相手トラストラインを承認済みとしてマークしようとしましたが、自身のアカウントにおいてlsfRequireAuthフラグが有効になっていないため、承認できません。 |
 | `tefNOT_MULTI_SIGNING` | トランザクションは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションでしたが、送信側アカウントでSignerListが定義されていません。 |
 | `tefPAST_SEQ` | トランザクションのシーケンス番号は、トランザクションの送信元アカウントの現在のシーケンス番号よりも小さい番号です。 |
 | `tefTOO_BIG` | レジャー内にある、トランザクションの影響を受けるオブジェクトが多過ぎます。例えば、これは[AccountDeleteトランザクション][]でしたが、削除されるアカウントのレジャーには1,000個を超えるオブジェクトがあります。 |
