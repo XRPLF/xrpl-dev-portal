@@ -55,7 +55,7 @@ XRP amounts cannot be negative.
 
 ### Token Amounts
 
-To specify an amount of a [(fungible) token](../../../concepts/tokens/index.md), use an Amount object. This is a JSON object with three fields:
+To specify an amount of a [(fungible) token](../../../concepts/tokens/index.md), use an `Amount` object. Tokens use the `currency`, `value`, and `issuer` fields.
 
 | `Field`    | Type                       | Description                        |
 |:-----------|:---------------------------|:-----------------------------------|
@@ -78,7 +78,14 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 ```
 ### MPT Amounts
 
-Specify the amount of MPTs using the  `Amount` field. For example, to specify 1 million units of an MPT you would specify:
+Specify the amount of MPTs using the `value` field. 
+
+| `Field`    | Type                       | Description                        |
+|:-----------|:---------------------------|:-----------------------------------|
+| `mpt_issuance_id` | String              | Arbitrary unique identifier for a Multi-purpose Token. |
+| `value`    | [String Number][]          | A string representing a positive integer value.  Valid values for this field are between 0x0 and 0x7FFFFFFFFFFFFFFF. Use `AssetScale` to enable values as fractions of the MPT value. See [MPT Precision](#mpt-precision). |
+
+For example, to specify 1 million units of an MPT you would specify:
 
 ```json
 {
@@ -129,7 +136,17 @@ When sending token amounts in the XRP Ledger's peer-to-peer network, servers [se
 
 ## MPT Precision
 
+MPTs are always expressed in whole integers. You can change the `AssetScale` of your MPT to express the basic unit as a fraction of an MPT. The XRP Ledger doesn't use the `AssetScale` on-chain: this is for your convenience in specifying the basic unit.
 
+For example, to express a value of 13.1 MPT, the MPT would require that the `AssetScale` be set to 1, and the `value` of the MPT set to 131.
+
+```json
+   "Amount": {
+      "mpt_issuance_id":
+        "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
+      "value": "131"
+    }
+```
 
 ## Currency Codes
 [Currency Code]: #currency-codes
