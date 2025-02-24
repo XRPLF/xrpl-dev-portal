@@ -130,7 +130,7 @@ XRP is specified as a string containing an integer number of "drops" of XRP, whe
     }
     ```
     
-- **MPT** - Use `MPTAmount` to specify the value of an MPT. To specify a value of 13.1 units of an MPT:
+- **MPT** - Use `Amount` to specify the value of an MPT. To specify a value of 13.1 units of an MPT:
 
     ```
   "Amount": {
