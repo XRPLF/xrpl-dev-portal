@@ -133,7 +133,11 @@ XRP is specified as a string containing an integer number of "drops" of XRP, whe
 - **MPT** - Use `MPTAmount` to specify the value of an MPT. To specify a value of 13.1 units of an MPT:
 
     ```
-    "MPTAmount": 13.1
+  "Amount": {
+    "mpt_issuance_id": 
+     "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
+    "value": "131"
+  }
     ```
 
 For more information, see [Currency Formats](currency-formats.md).
