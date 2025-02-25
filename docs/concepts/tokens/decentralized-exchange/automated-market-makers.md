@@ -114,7 +114,7 @@ If an LP token is associated with a liquidity pool that contains at least one fr
 1. The holder can't send the frozen LP token to other accounts.
 2. The holder can receive frozen LP tokens, but can't send them out (similar to frozen trust lines).
 
-These are the practical results when LP tokens are part of the following transactions:
+Frozen LP tokens affect the following transactions:
 
 **Payment**
 
