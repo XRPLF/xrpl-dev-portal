@@ -122,7 +122,8 @@ These are the practical results when LP tokens are part of the following transac
 
 **OfferCreate**
 
-- accounts are prohibited from creating offers that would sell frozen LP tokens.
+- Accounts are prohibited from creating offers that would sell frozen LP tokens.
+- Offers that contain frozen LP tokens cannot be consumed on the DEX.
 
 **CheckCash**
 
