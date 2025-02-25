@@ -131,7 +131,7 @@ These are the practical results when LP tokens are part of the following transac
 
 **NFTokenCreateOffer**
 
-- Buyers are prohibited from creating buy offers the use frozen LP tokens.
+- Buyers are prohibited from creating buy offers that use frozen LP tokens.
 
 **NFTokenAcceptOffer**
 
