@@ -16,7 +16,7 @@ metadata:
 ---
 # Send Payments Using Python
 
-Send XRP and issued currency on the XRP Ledger using JavaScript.
+Send XRP and issued currency on the XRP Ledger using Python.
 
 
 {% child-pages /%}
