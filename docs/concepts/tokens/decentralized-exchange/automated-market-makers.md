@@ -116,7 +116,7 @@ If an LP token is associated with a liquidity pool that contains at least one fr
 
 These are the practical results when LP tokens are part of the following transactions:
 
-**Payments**
+**Payment**
 
 - A frozen account can no longer send LP tokens through direct payment.
 - Offers that contain frozen LP tokens cannot be consumed on the DEX.
