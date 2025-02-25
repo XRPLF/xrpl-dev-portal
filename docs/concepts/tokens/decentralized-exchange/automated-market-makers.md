@@ -119,7 +119,6 @@ These are the practical results when LP tokens are part of the following transac
 **Payment**
 
 - A frozen account can no longer send LP tokens through direct payment.
-- Offers that contain frozen LP tokens cannot be consumed on the DEX.
 
 **OfferCreate**
 
