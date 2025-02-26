@@ -150,7 +150,27 @@ a.card:hover h3 {
 .light .circled-logo {
   border: none;
 }
-
+.cols-of-1{
+  grid-template-rows:repeat(1, min-content)
+}
+.cols-of-2{
+  grid-template-rows:repeat(2, min-content)
+} 
+.cols-of-3{
+  grid-template-rows:repeat(3, min-content)
+}
+.cols-of-4{
+  grid-template-rows:repeat(4, min-content)
+}
+.cols-of-5{
+  grid-template-rows:repeat(5, min-content)
+}
+.cols-of-6{
+  grid-template-rows:repeat(6, min-content)
+}
+.cols-of-7{
+  grid-template-rows:repeat(7, min-content)
+}
 .card-deck {
   margin-top: 2.5rem;
   margin-left: (-$card-deck-margin);

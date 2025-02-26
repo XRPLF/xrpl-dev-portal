@@ -111,7 +111,7 @@ export default function XrpOverview() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  const totalCols = Math.max(softwallets.length, hardwallets.length) + 1;
   return (
     <div className="landing">
       <div>
@@ -376,7 +376,7 @@ export default function XrpOverview() {
                     "Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software."
                   )}
                 </h5>
-                <ul className="nav nav-grid-lg cols-of-6" id="wallets">
+                <ul className={`nav nav-grid-lg cols-of-${totalCols}`} id="wallets">
                   <li className="nav-item nav-grid-head">
                     <h6 className="fs-4-5">{translate("Software Wallets")}</h6>
                   </li>
