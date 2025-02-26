@@ -23,6 +23,10 @@ To learn more, see [Multi-purpose Tokens](../../concepts/tokens/fungible-tokens/
 
 The MPT Generator utility embedded on the page below lets you experiment with an MPT configuration in a sandbox environment. When you are satisfied with the settings, you can generate the transaction code required to create your MPT on Mainnet.
 
+![MPT Generator Utility](../../img/uc-mpt1-mpt-generator-empty-form.png)
+
+You can download a [standalone version of the MPT Generator](../../../_code-samples/mpt-generator/mpt-generator.zip) as sample code, or use the embedded form that follows.
+
 In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form below with a new account and the transaction works fine. See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process. The form is populated with sample values, but you can change the parameters for your own experiments. A T-bill is just one example of the many types of asset you can create and trade on the XRP Ledger.
 
 <hr/>
