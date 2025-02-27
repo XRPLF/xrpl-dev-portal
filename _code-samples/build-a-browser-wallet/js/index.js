@@ -36,21 +36,25 @@ txHistoryButton.addEventListener('click', () => {
         });
 
         // Fetch the wallet details
-        getWalletDetails({ client })
-            .then(({ account_data, accountReserves, xAddress, address }) => {
-                walletElement.querySelector('.wallet_address').textContent = `Wallet Address: ${account_data.Account}`;
-                walletElement.querySelector('.wallet_balance').textContent = `Wallet Balance: ${dropsToXrp(account_data.Balance)} XRP`;
-                walletElement.querySelector('.wallet_reserve').textContent = `Wallet Reserve: ${accountReserves} XRP`;
-                walletElement.querySelector('.wallet_xaddress').textContent = `X-Address: ${xAddress}`;
+        let wallet_details
+        try {
+            wallet_details = await getWalletDetails({ client })
+        } catch(error) {
+            alert(`Error loading wallet: ${error}.\n\nMake sure you set the SEED in your .env file.`)
+            return
+        }
+        const { account_data, accountReserve, xAddress, address } = wallet_details;
+        walletElement.querySelector('.wallet_address').textContent = `Wallet Address: ${account_data.Account}`;
+        walletElement.querySelector('.wallet_balance').textContent = `Wallet Balance: ${dropsToXrp(account_data.Balance)} XRP`;
+        walletElement.querySelector('.wallet_reserve').textContent = `Wallet Reserve: ${accountReserve} XRP`;
+        walletElement.querySelector('.wallet_xaddress').textContent = `X-Address: ${xAddress}`;
 
-                // Redirect on View More link click
-                walletElement.querySelector('#view_more_button').addEventListener('click', () => {
-                    window.open(`https://${process.env.EXPLORER_NETWORK}.xrpl.org/accounts/${address}`, '_blank');
-                });
-            })
-            .finally(() => {
-                walletLoadingDiv.style.display = 'none';
-            });
+        // Redirect on View More link click
+        walletElement.querySelector('#view_more_button').addEventListener('click', () => {
+            window.open(`https://${process.env.EXPLORER_NETWORK}.xrpl.org/accounts/${address}`, '_blank');
+        });
+        
+        walletLoadingDiv.style.display = 'none';
 
 
         // Fetch the latest ledger details
