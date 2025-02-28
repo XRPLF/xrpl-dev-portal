@@ -57,10 +57,10 @@ async function getAccount() {
   const my_balance = (await client.getXrpBalance(my_wallet.address))  
   accountField.value = my_wallet.address
   seedField.value = my_wallet.seed
-  results += '\nAccount created.'
-  resultField.value = results
+  results += '\nAccount created.\n'
   client.disconnect()
-  getAccountInfo()
+  results+=JSON.stringify(my_wallet)
+  resultField.value = results
 } // End of getAccount()
       
 // *******************************************************
