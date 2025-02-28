@@ -8,7 +8,7 @@ function generateCode() {
     if (escrowSlider.checked) {v_flags+=8}
     const mptHexString = xrpl.convertStringToHex(metadataTextArea.value)
     let v_codeBlock = "{\n  \"TransactionType\": \"MPTokenIssuanceCreate\",\n  \"Account\": \"" + accountField.value +
-    "\",\n  \"AssetScale\": 2, \n  \"MaximumAmount\": \"" + maximumAmountField.value +
+    "\",\n  \"AssetScale\": " + parseInt(assetScaleField.value) + ", \n  \"MaximumAmount\": \"" + maximumAmountField.value +
     "\",\n  \"TransferFee\": " + transferFeeField.value +
     ",\n  \"Flags\": " + v_flags + ",\n  \"MPTokenMetadata\": \"" + mptHexString +  "\"\n}"
 
