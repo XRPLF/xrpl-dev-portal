@@ -28,7 +28,7 @@ NFTs have several immutable settings that are defined when the token is minted. 
 - Identifying data that uniquely defines the token.
 - Whether the issuer can burn the token, regardless of who currently holds it.
 - Whether the holder of the token can transfer it to others. (An NFT can always be sent to or from the issuer directly.)
-- If transfers are allowed, the issuer can charge a transfer fee as a percentage of the sale price.
+- If transfers are allowed, the issuer can charge a transfer fee as a percentage of the sale price. If there is a transfer fee, the NFT can only be traded for tokens for which the issuer has a trust line.
 - Whether the holder can sell the NFT for [fungible token](../fungible-tokens/index.md) amounts, or only for XRP.
 
 ## NFT Lifecycle
