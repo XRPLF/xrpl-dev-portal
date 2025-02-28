@@ -15,7 +15,6 @@ The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometim
 
 {% admonition type="warning" name="Caution" %}Anyone can [issue a token](../../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.{% /admonition %}
 
-<!-- To Do
 ## What is a Decentralized Exchange? 
 
 A decentralized exchange, abbreviated "DEX", is a platform that enables anyone to directly buy, sell, and trade digital assets with one another, without relying on a centralized intermediary like a bank or traditional exchange. DEXes typically use smart contracts and automated market makers (AMMs) to facilitate peer-to-peer trading and liquidity provision, enabling users to retain control over their assets while interacting in a decentralized manner. 
@@ -31,10 +30,11 @@ A decentralized exchange, abbreviated "DEX", is a platform that enables anyone t
 "name": "What is a Decentralized Exchange, or DEX?",
 "description": "What is a Decentralized Exchange, or DEX?",
 "uploadDate": "2022-01-10",
-"embedUrl": "https://www.youtube.com/watch?v=VWNrHBDfXvA"
+"embedUrl": "https://www.youtube.com/watch?v=VWNrHBDfXvA?feature=shared"
 }
 </script>
 
+<!-- To Do
 ## How DEX Works? 
 -->
 
