@@ -110,7 +110,7 @@ The parameters of the JSON request body should be as follows:
 |---|---|---|---|
 | `subject` | String - Address | Yes | The XRPL classic address of the subject of the credential. Set this to the address that you generated at the start of this tutorial for the credential holder account. |
 | `credential` | String | Yes | The type of credential to issue. The example microservice accepts any string consisting of alphanumeric characters as well as the special characters underscore (`_`), dash (`-`), and period (`.`), with a minimum length of 1 and a maximum length of 64 characters. |
-| `documents` | Any | Yes | For a real service, the issuer could require the user to submit specific data in this field that proves that they deserve the credential. The sample code only checks that this field is present and doesn't evaluate to false. |
+| `documents` | Object | Yes | As a credential issuer, you typically need to verify some confidential information about someone before you issue them a credential. As a placeholder, the sample code checks that for a nested field named `reason` that contains the string `please`. |
 | `expiration` | String - ISO8601 Datetime | No | The time after which the credential expires, such as `2025-12-31T00:00:00Z`. |
 | `uri` | String | No | Optional URI data to store with the credential. If provided, this must be a string with minimum length 1 and max length 256, consisting of only characters that are valid in URIs, which are numbers, letters, and the following special characters: `-._~:/?#[]@!$&'()*+,;=%`. |
 

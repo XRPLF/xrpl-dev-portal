@@ -36,6 +36,8 @@ app = Flask(__name__)
 def request_credential():
     # CredentialRequest throws if the request is not validly formatted
     cred_request = CredentialRequest(request.json).to_xrpl()
+    # verify_documents() throws if the provided documents don't pass inspection
+    cred_request.verify_documents()
 
     cc_response = sign_and_submit(CredentialCreate(
         account=wallet.address,

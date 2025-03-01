@@ -157,10 +157,25 @@ class CredentialRequest(Credential):
     """
     def __init__(self, cred_request):
         super().__init__(cred_request)
-
+        # As a credential issuer, you typically need to verify some information
+        # about someone before you issue them a credential. For this example,
+        # the user passes relevant information in a documents field of the API
+        # request. The documents are kept confidential, off-chain.
         self.documents = cred_request.get("documents")
+    
+    def verify_documents(self):
         # This is where you would check the user's documents to see if you
-        # should issue the requested Credential to them. This API only checks
-        # that the documents field is present and does not evaluate to false.
+        # should issue the requested Credential to them.
+        # Depending on the type of credentials your service needs, you might
+        # need to implement different types of checks here.
         if not self.documents:
             raise ValueError(f"you must provide a non-empty 'documents' field")
+        
+        # As a placeholder, this example checks that the documents field
+        # contains a string field named "reason" containing the word "please"
+        if type(documents.get("reason")) != str:
+            raise ValueError(f"documents must contain a 'reason' string")
+        if "please" not in documents["reason"].lower():
+            raise ValueError(f"reason must include 'please'")
+        
+        return True
