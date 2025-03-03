@@ -226,6 +226,7 @@
               items:
                 - page: docs/tutorials/python/build-apps/get-started.md
                 - page: docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python.md
+                - page: docs/tutorials/python/build-apps/credential-issuing-service.md
         - page: docs/tutorials/java/index.md
           expanded: false
           items:
