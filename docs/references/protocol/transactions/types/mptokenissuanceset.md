@@ -8,7 +8,7 @@ labels:
 # MPTokenIssuanceSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
 Use this transaction to update a mutable property for a Multi-purpose Token.
 
