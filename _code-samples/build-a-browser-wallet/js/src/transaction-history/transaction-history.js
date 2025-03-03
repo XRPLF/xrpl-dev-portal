@@ -102,13 +102,13 @@ async function fetchTxHistory() {
 
         // Add the transactions to the table
         const values = transactions.map((transaction) => {
-            const { meta, tx } = transaction;
+            const { hash, meta, tx_json } = transaction;
             return {
-                Account: tx.Account,
-                Destination: tx.Destination,
-                Fee: tx.Fee,
-                Hash: tx.hash,
-                TransactionType: tx.TransactionType,
+                Account: tx_json.Account,
+                Destination: tx_json.Destination,
+                Fee: tx_json.Fee,
+                Hash: hash,
+                TransactionType: tx_json.TransactionType,
                 result: meta?.TransactionResult,
                 delivered: meta?.delivered_amount
             };
