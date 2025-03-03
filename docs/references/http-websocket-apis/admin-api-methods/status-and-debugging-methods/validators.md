@@ -186,7 +186,8 @@ An example of a successful response:
     "validator_list": {
       "count": 1,
       "expiration": "2022-Jun-01 00:00:00.000000000 UTC",
-      "status": "active"
+      "status": "active",
+      "validator_list_threshold": 1
     }
   },
   "status": "success",
@@ -327,7 +328,8 @@ An example of a successful response:
     "validator_list": {
       "count": 1,
       "expiration": "2022-Jun-01 00:00:00.000000000 UTC",
-      "status": "active"
+      "status": "active",
+      "validator_list_threshold": 1
     }
   }
 }
@@ -467,7 +469,8 @@ Connecting to 127.0.0.1:5005
     "validator_list": {
       "count": 1,
       "expiration": "2022-Jun-01 00:00:00.000000000 UTC",
-      "status": "active"
+      "status": "active",
+      "validator_list_threshold": 1
     }
   }
 }
@@ -485,7 +488,8 @@ The response follows the [standard format][], with a successful result containin
 | `signing_keys`           | Object | Mapping from master public key to current ephemeral public key for all currently-trusted validators. Excludes validators that don't use an ephemeral signing key. |
 | `trusted_validator_keys` | Array  | Array of master public keys of all currently trusted validators. |
 | `validation_quorum`      | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
-| `validator_list_expires` | String | The human readable time when the current validator list expires. There are two special cases: the string `unknown` if the server has not yet loaded a published validator list, or the string `never` if the server uses a static validator list. |
+| `validator_list.expiration` | String | The human readable time when the current validator list expires. There are two special cases: the string `unknown` if the server has not yet loaded a published validator list, or the string `never` if the server uses a static validator list. |
+| `validator_list.validator_list_threshold` | Number | The threshold number of UNL publisher lists a validator must be one for the server to use it. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.4.0" %}New in: rippled 2.4.0{% /badge %} |
 
 Each member of the `publisher_lists` array is a **Publisher List** object with the following fields:
 

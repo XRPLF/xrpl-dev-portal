@@ -640,6 +640,7 @@
                 - page: docs/infrastructure/configuration/peering/use-a-peer-reservation.md
             - page: docs/infrastructure/configuration/configure-amendment-voting.md
             - page: docs/infrastructure/configuration/configure-statsd.md
+            - page: docs/infrastructure/configuration/configure-validator-list-threshold.md
             - page: docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
             - page: docs/infrastructure/configuration/configure-grpc.md
             - page: docs/infrastructure/configuration/enable-public-signing.md
