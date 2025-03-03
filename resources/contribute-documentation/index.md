@@ -218,7 +218,7 @@ si=Mbi8diaFTDR2fc20" title="YouTube video player" frameborder="0" allow="acceler
 autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### Tables
+## Tables
 
 Markdoc provides three different syntax styles for generating tables.
 
@@ -428,9 +428,9 @@ The values you can provide to the `server` parameter are as follows:
 
 | `server` value | Server to use |
 |---|---|
-| (Omitted) | The WebSocket tool's default server (currently s1.ripple.com) |
-| `s1` | Ripple's s1.ripple.com Mainnet public cluster, typically served by Clio servers. |
-| `s2` | Ripple's s2.ripple.com Mainnet full-history public cluster, typically served by Clio servers. |
+| (Omitted) | The WebSocket tool's default server (currently `s1.ripple.com`) |
+| `s1` | Ripple's `s1.ripple.com` Mainnet public cluster, typically served by Clio servers. |
+| `s2` | Ripple's `s2.ripple.com` Mainnet full-history public cluster, typically served by Clio servers. |
 | `xrplcluster` | The `xrplcluster.com` cluster of public servers, typically served by `rippled` servers with a lightweight proxy in front. |
 | `devnet` | The `s.altnet.rippletest.net` cluster of Testnet servers. |
 | `testnet` | The `s.devnet.rippletest.net` cluster of Devnet servers. |
