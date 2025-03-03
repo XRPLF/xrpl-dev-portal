@@ -44,7 +44,7 @@ The following table provides examples of how much the total owner reserve might 
 | 200 | 14 XRP | 18 XRP | 26 XRP |
 | 1000 | 64 XRP | 84 XRP | 126 XRP |
 
-## Getting Started
+## NFT Minting: Getting Started
 
 Before diving into how to mint an NFT, ensure you have access to test accounts on the XRP Ledger's Testnet or Devnet. This is crucial for experimenting without risking real assets. You can easily acquire test accounts by downloading the Quickstart Samples archive, available in [JavaScript] (https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) and [Python](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py), and following these steps:
 
@@ -81,11 +81,11 @@ Minting an NFT involves creating a new, unique digital token using blockchain te
 3. Specify the Transfer Fee: Define a fee between 0-50000, allowing for a royalty of 0.000% to 50.000% on future sales. If the NFT is non-transferable, set this to 0.
 4. Click **Mint NFT** to create your token.
 
-## Viewing Your Minted NFTs
+## Viewing Your NFTs
 
 To view a list of NFTs associated with your account, simply click **Get NFTs**. This action fetches and displays all NFTs owned by the account in use.
 
-## Burning Your Minted NFT
+## Burning Your NFT
 
 [Burning an NFT](https://xrpl.org/docs/tutorials/python/nfts/mint-and-burn-nfts) is the process of permanently destroying the token. To burn an NFT:
 

@@ -11,13 +11,15 @@ targets:
 ---
 # Decentralized Exchange (DEX)
 
-The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](../index.md) for XRP or other tokens, with minimal trading [fees](../../transactions/fees.md) charged to the network itself (not paid out to any party).
+The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](../index.md) for XRP or other tokens, with minimal [fees](../../transactions/fees.md) charged to the network itself (not paid out to any party).
 
 {% admonition type="warning" name="Caution" %}Anyone can [issue a token](../../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.{% /admonition %}
 
 ## What is a Decentralized Exchange? 
 
 A decentralized exchange, abbreviated "DEX", is a platform that enables anyone to directly buy, sell, and trade digital assets with one another, without relying on a centralized intermediary like a bank or traditional exchange. DEXes typically use smart contracts and automated market makers (AMMs) to facilitate peer-to-peer trading and liquidity provision, enabling users to retain control over their assets while interacting in a decentralized manner. 
+
+The XRP Ledger's CLOB DEX is unique in that it does **not require** AMMs to swap. Trades on the XRP Ledger _can_ use AMMs to swap too, but unlike other DEXes, an AMM is not required.  
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/watch?v=VWNrHBDfXvA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
