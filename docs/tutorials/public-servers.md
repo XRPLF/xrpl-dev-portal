@@ -19,7 +19,7 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 ## Commercial
 | Operator  | [Network][] | JSON-RPC     | Notes                |
 |:----------|:------------|:-------------|:---------------------|
-| XRP Ledger Foundation full history paid API via [Dhali](https://dhali.io/) | **Mainnet** | `https://run.api.dhali.io/199fd80b-1776-4708-b1a1-4b2bb386435d/` | You must [create a paid API key](https://pay.dhali.io/?uuids=199fd80b-1776-4708-b1a1-4b2bb386435d) and embed it in the request's `Payment-Claim` header. |
+| XRP Ledger Foundation full history paid API via [Dhali](https://dhali.io/) | **Mainnet** | `https://xrplcluster.dhali.io/` | You must [create a paid API key](https://pay.dhali.io/?uuids=199fd80b-1776-4708-b1a1-4b2bb386435d) and embed it in the request's `Payment-Claim` header. |
 | [QuickNode](https://www.quicknode.com/chains/xrpl) | Testnet/Mainnet | N/A | QuickNode provides hosted XRPL RPC mainnet and testnet under their free and paid plans, granting flexible and reliable access to the network.
 
 

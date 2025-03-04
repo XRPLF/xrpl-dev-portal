@@ -19,6 +19,10 @@ Every `NFTokenOffer` object requires that your account increase its owner reserv
 
 See [NFT Reserve Requirements](reserve-requirements.md).
 
+## Transfer Fees
+
+As an issuer, you can mint your NFT with a transfer fee to be collected whenever your NFT is traded on the XRPL. If you specify a transfer fee, the NFT can only be traded for tokens for which you have a trust line. See [Trust Lines](../fungible-tokens/index.md#trust-lines).
+
 ## Sell Offers
 
 ### Create a Sell Offer
