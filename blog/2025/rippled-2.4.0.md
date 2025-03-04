@@ -56,12 +56,13 @@ The following amendments are open for voting with this release:
 - **XLS-80 Permissioned Domains** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161)) **TODO: move docs from opensource**
 - **XLS-77 Deep Freeze** - Adds the ability to deep freeze trust lines, enabling token issuers to block the transfer of assets for holders who have been deep frozen. ([#5187](https://github.com/XRPLF/rippled/pull/5187)) **TODO: move docs from opensource**
 - **fixFrozenLPTokenTransfer** - Prohibits the transfer of LP tokens when the associated liquidity pool contains at least one frozen asset. ([#5227](https://github.com/XRPLF/rippled/pull/5227)) **TODO: upate docs**
+- **fixInvalidTxFlags** - Adds transaction flag checking for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. ([#5250](https://github.com/XRPLF/rippled/pull/5250))
 
 
 ### New Features
 
 - Added the ability to specify MPTs when defining assets in transactions. ([#5200](https://github.com/XRPLF/rippled/pull/5200)) **TODO: doc new `mpt_issuance_id` field**
-- Refactored `LedgerEntry.cpp` to make it easier to read. Also added a `state` alias for `ripple_state` in the `ledger_entry` API method. ([#5199](https://github.com/XRPLF/rippled/pull/5199)) **TODO: doc update ledger_entry method**
+- Refactored `LedgerEntry.cpp` to make it easier to read. Also added a `state` alias for `ripple_state` in the `ledger_entry` API method. ([#5199](https://github.com/XRPLF/rippled/pull/5199))
 - Improved UNL security by enabling validators to set a minimum number of UNL publishers to agree on validators. ([#5112](https://github.com/XRPLF/rippled/pull/5112))
 - Added a new `simulate` API method to execute dry runs of transactions and see the simulated metadata. ([#5069](https://github.com/XRPLF/rippled/pull/5069), [#5265](https://github.com/XRPLF/rippled/pull/5265)) **TODO: doc new API method**
 - Updated the XRPL Foundation UNL keys. ([#5289](https://github.com/XRPLF/rippled/pull/5289))
@@ -101,7 +102,6 @@ The following amendments are open for voting with this release:
 - Improved CI management. ([#5268](https://github.com/XRPLF/rippled/pull/5268))
 - Updated the git commit message rules for contributors. ([#5283](https://github.com/XRPLF/rippled/pull/5283))
 - Fixed unnecessary `setCurrentThreadName` calls. ([#5280](https://github.com/XRPLF/rippled/pull/5280))
-- Added transaction flag checking for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. ([#5250](https://github.com/XRPLF/rippled/pull/5250))
 - Added a check to prevent permissioned domains from being created in the event the Permissioned Domains amendement is enabled before the Credentials amendement. ([#5275](https://github.com/XRPLF/rippled/pull/5275))
 - Updated Conan dependencies. ([#5256](https://github.com/XRPLF/rippled/pull/5256))
 
