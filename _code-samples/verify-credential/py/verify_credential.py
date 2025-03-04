@@ -1,5 +1,8 @@
-import sys
+#!/usr/bin/env python
+
+import argparse
 import logging
+import sys
 from binascii import hexlify
 from re import match
 
@@ -10,9 +13,6 @@ from xrpl.utils import ripple_time_to_datetime
 logger = logging.getLogger("verify_credential")
 logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler(sys.stderr))
-
-# class CredentialVerificationError(Exception):
-#     pass
 
 class XRPLLookupError(Exception):
     def __init__(self, xrpl_response):
@@ -55,14 +55,17 @@ def verify_credential(client:JsonRpcClient,
         # Hexadecimal is always 2 chars per byte, so an odd length is invalid.
         raise ValueError("credential_type_hex must be 1-64 bytes as hexadecimal.")
 
-    xrpl_response = client.request(LedgerEntry(
+    ledger_entry_request = LedgerEntry(
         credential={
             "subject": subject,
             "issuer": issuer,
             "credential_type": credential_type_hex
         },
         ledger_index="validated"
-    ))
+    )
+    logger.info("Looking up credential...")
+    logger.info(ledger_entry_request.to_dict())
+    xrpl_response = client.request(ledger_entry_request)
 
     if xrpl_response.status != "success":
         if xrpl_response.result["error"] == "entryNotFound":
@@ -93,15 +96,44 @@ def verify_credential(client:JsonRpcClient,
             logger.info("Credential is expired.")
             return False
 
+    logger.info("Credential is valid.")
     return True
 
+# Commandline usage -----------------------------------------------------------
+
+NETWORKS = {
+    # JSON-RPC URLs of public servers
+    "devnet": "https://s.devnet.rippletest.net:51234/",
+    "testnet": "https://s.altnet.rippletest.net:51234/",
+    "mainnet": "https://xrplcluster.com/"
+}
 
 if __name__=="__main__":
-    XRPL_SERVER = "https://s.devnet.rippletest.net:51234/"
-    client = JsonRpcClient(XRPL_SERVER)
-    verify_credential(client, 
-                      issuer="ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-                      subject="rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
-                      credential_type="my_credential",
-                      # credential_type_hex = "6D795F63726564656E7469616C",
-    )
+    parser = argparse.ArgumentParser(description="Verify an XRPL credential")
+    parser.add_argument("issuer", type=str, nargs="?",
+                        help="Credential issuer address as base58.",
+                        default="rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS")
+    parser.add_argument("subject", type=str, nargs="?",
+                        help="Credential subject (holder) address as base58.",
+                        default="rsYhHbanGpnYe3M6bsaMeJT5jnLTfDEzoA")
+    parser.add_argument("credential_type", type=str, nargs="?",
+                        help="Credential type as string", 
+                        default="my_credential")
+    parser.add_argument("-b", "--binary", action="store_true",
+                        help="Use binary (hexadecimal) for credential_type")
+    parser.add_argument("-n", "--network", choices=NETWORKS.keys(),
+                        help="Use the specified network for lookup",
+                        default="devnet")
+    args = parser.parse_args()
+
+    client = JsonRpcClient(NETWORKS[args.network])
+    if args.binary:
+        verify_credential(client,
+                          issuer=args.issuer,
+                          subject=args.subject,
+                          credential_type_hex=args.credential_type)
+    else:
+        verify_credential(client,
+                          issuer=args.issuer,
+                          subject=args.subject,
+                          credential_type=args.credential_type)
