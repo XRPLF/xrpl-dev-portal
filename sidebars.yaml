@@ -134,6 +134,7 @@
                 - page: docs/concepts/tokens/nfts/guaranteeing-a-fixed-supply.md
                 - page: docs/concepts/tokens/nfts/nft-apis.md
                 - page: docs/concepts/tokens/nfts/non-transferable-tokens.md
+                - page: docs/concepts/tokens/nfts/dynamic-nfts.md
             - page: docs/concepts/tokens/transfer-fees.md
             - page: docs/concepts/tokens/decentralized-exchange/index.md
               expanded: false
@@ -387,6 +388,7 @@
                     - page: docs/references/protocol/transactions/types/nftokencanceloffer.md
                     - page: docs/references/protocol/transactions/types/nftokencreateoffer.md
                     - page: docs/references/protocol/transactions/types/nftokenmint.md
+                    - page: docs/references/protocol/transactions/types/nftokenmodify.md
                     - page: docs/references/protocol/transactions/types/offercancel.md
                     - page: docs/references/protocol/transactions/types/offercreate.md
                     - page: docs/references/protocol/transactions/types/oracledelete.md
