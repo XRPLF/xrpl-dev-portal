@@ -35,16 +35,17 @@ app = Flask(__name__)
 @app.route("/credential", methods=['POST'])
 def request_credential():
     # CredentialRequest throws if the request is not validly formatted
-    cred_request = CredentialRequest(request.json).to_xrpl()
+    cred_request = CredentialRequest(request.json)
     # verify_documents() throws if the provided documents don't pass inspection
     cred_request.verify_documents()
+    cred_xrpl = cred_request.to_xrpl()
 
     cc_response = sign_and_submit(CredentialCreate(
         account=wallet.address,
-        subject=cred_request.subject,
-        credential_type=cred_request.credential,
-        uri=cred_request.uri,
-        expiration=cred_request.expiration
+        subject=cred_xrpl.subject,
+        credential_type=cred_xrpl.credential,
+        uri=cred_xrpl.uri,
+        expiration=cred_xrpl.expiration
     ), client=client, wallet=wallet, autofill=True)
 
     if cc_response.status != "success":

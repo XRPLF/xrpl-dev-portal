@@ -32,7 +32,7 @@ wallet = init_wallet()
 pending_credentials = look_up_credentials(
         client, 
         subject=wallet.address, 
-        accepted="yes"
+        accepted="no"
 )
 
 prompt = """
@@ -45,7 +45,7 @@ for i, cred in enumerate(pending_credentials):
 selection = None
 options = [str(n) for n in range(len(pending_credentials)+1)]
 while selection not in options:
-    selection = input(prompt+f"\n Select an option (0-{i+1}): ")
+    selection = input(prompt+f"\n Select an option (0-{len(options)-1}): ")
 
 if selection == "0":
     exit(0)

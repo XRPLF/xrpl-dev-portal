@@ -173,9 +173,9 @@ class CredentialRequest(Credential):
         
         # As a placeholder, this example checks that the documents field
         # contains a string field named "reason" containing the word "please"
-        if type(documents.get("reason")) != str:
+        if type(self.documents.get("reason")) != str:
             raise ValueError(f"documents must contain a 'reason' string")
-        if "please" not in documents["reason"].lower():
+        if "please" not in self.documents["reason"].lower():
             raise ValueError(f"reason must include 'please'")
         
         return True

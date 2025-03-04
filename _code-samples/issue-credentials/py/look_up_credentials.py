@@ -20,8 +20,8 @@ def look_up_credentials(client:JsonRpcClient,
         raise ValueError("Must specify issuer or subject")
     
     accepted = accepted.lower()
-    if accepted not in ("true","false","both"):
-        raise ValueError("accepted must be str 'true', 'false', or 'both'")
+    if accepted not in ("yes","no","both"):
+        raise ValueError("accepted must be str 'yes', 'no', or 'both'")
 
     credentials = []
     has_more_pages = True
