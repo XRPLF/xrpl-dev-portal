@@ -39,8 +39,8 @@ Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tok
 
 | Field        | JSON Type | [Internal Type][] | Required? | Description |
 |:-------------|:----------|:------------------|:----------|:------------|
-| `Asset`      | Object    | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
-| `Asset2`     | Object    | STIssue           | Yes       | The definition for the other asset in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
+| `Asset`      | Object    | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset2`     | Object    | STIssue           | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
 | `TradingFee` | Number    | UInt16            | Yes       | The proposed fee to vote for, in units of 1/100,000; a value of 1 is equivalent to 0.001%. The maximum value is 1000, indicating a 1% fee. |
 
 ## Error Cases

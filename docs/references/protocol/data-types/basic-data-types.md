@@ -108,7 +108,7 @@ Reporting Mode does not record ledger data until it has been validated. If you m
 
 ## Specifying Currency Amounts
 
-There are two kinds of currencies in the XRP Ledger: XRP and tokens. These two types of currencies are specified in different formats, with different precision and rounding behavior.
+There are three kinds of currencies in the XRP Ledger: XRP, tokens, and MPTs. These three types of currencies are specified in different formats, with different precision and rounding behavior.
 
 Some fields, such as the destination `Amount` of a [Payment transaction][], can be either type. Some fields only accept XRP specifically, such as the `Fee` field ([transaction cost](../../../concepts/transactions/transaction-cost.md)).
 

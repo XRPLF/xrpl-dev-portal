@@ -273,6 +273,7 @@
 [Specifying Currency Amounts]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [Specifying Ledgers]: /docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
 [Specifying Time]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
+[Specifying Without Amounts]: /docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
 [SusPay amendment]: /resources/known-amendments.md#suspay
 [TickSize amendment]: /resources/known-amendments.md#ticksize
 [Ticket entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md

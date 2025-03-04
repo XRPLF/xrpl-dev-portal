@@ -94,6 +94,13 @@ To describe XRP without an amount, specify it as a JSON object with _only_ a `cu
 }
 ```
 
+To describe an MPT without an amount, specify it as a JSON object with _only_ a `mpt_issuance_id` field. For example:
+
+```json
+{
+  "mpt_issuance_id": "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47"
+}
+```
 
 ## String Numbers
 
