@@ -11,8 +11,8 @@ logger = logging.getLogger("verify_credential")
 logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler(sys.stderr))
 
-class CredentialVerificationError(Exception):
-    pass
+# class CredentialVerificationError(Exception):
+#     pass
 
 class XRPLLookupError(Exception):
     def __init__(self, xrpl_response):
