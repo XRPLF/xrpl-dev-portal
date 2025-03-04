@@ -118,7 +118,7 @@ Frozen LP tokens affect the following transactions:
 
 **Payment**
 
-- A frozen account can no longer send LP tokens through direct payment.
+- An account can no longer send frozen LP tokens through direct payment.
 
 **OfferCreate**
 
