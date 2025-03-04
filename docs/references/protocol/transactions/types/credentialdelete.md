@@ -47,6 +47,7 @@ This transaction looks for a [Credential ledger entry](../../ledger-data/ledger-
 | `temINVALID_ACCOUNT_ID` | A provided `Subject` or `Issuer` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 | `tecNO_PERMISSION` | The sender is neither the issuer nor subject of the credential, and the credential is not expired. |
 | `tecNO_ENTRY` | The specified credential does not exist in the ledger. |
+| `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. _(Requires the [fixInvalidTxFlags amendment][] {% not-enabled /%})_ |
 
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
