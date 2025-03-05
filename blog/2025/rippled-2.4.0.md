@@ -23,15 +23,15 @@ Version 2.4.0 of `rippled`, the reference server implementation of the XRP Ledge
 
 ## Notable Updates: New Public Key Provided by the new XRPL Foundation
 
-Following the recent announcement regarding the [move to the new XRPL Foundation](https://xrpl.org/blog/2025/move-to-the-new-xrpl-foundation-commences), the XRPL Foundation members have been working diligently to facilitate a smooth transition of the Unique Node List (UNL) from the old XRPL Foundation to the new XRPL Foundation.
+Following the recent announcement regarding the [move to the new XRPL Foundation](./move-to-the-new-xrpl-foundation-commences.md), the XRPL Foundation members have been working diligently to facilitate a smooth transition of the Unique Node List (UNL) from the old XRPL Foundation to the new XRPL Foundation.
 
 There are two key goals driving this transition:
 - Ensure continued network participation and avoid potential downtime.
 - Allow for a staged migration with minimal impact on validators and node operators.
 
-Keeping these goals in mind, a new subdomain, unl.xrplf.org, has been introduced alongside the existing https://vl.xrplf.org/. This approach allows for a staged migration without modifying the key for the current UNL list. Eventually, vl.xrplf.org will be fully deprecated and replaced by unl.xrplf.org.
+Keeping these goals in mind, a new subdomain, **unl.xrplf.org**, has been introduced alongside the existing https://vl.xrplf.org/. This approach allows for a staged migration without modifying the key for the current UNL list. Eventually, vl.xrplf.org will be fully deprecated and replaced by unl.xrplf.org.
 
-In rippled release 2.4.0, the validators-example.txt has been updated to include the new public key published by the new XRPL Foundation. validators-example.txt has been updated to include the new public key published by the new XRPL Foundation. 
+In `rippled` release 2.4.0, the validators-example.txt has been updated to include the new public key published by the new XRPL Foundation.
 
 Further information on the transition will be shared by the XRPL Foundation in the near future.
 
