@@ -58,6 +58,8 @@ Transactions of the TrustSet type support additional values in the [`Flags` fiel
 | `tfClearNoRipple` | `0x00040000` | 262144        | Disable the No Ripple flag, allowing [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on this trust line. |
 | `tfSetFreeze`     | `0x00100000` | 1048576       | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) the trust line. |
 | `tfClearFreeze`   | `0x00200000` | 2097152       | [Unfreeze](../../../../concepts/tokens/fungible-tokens/freezes.md) the trust line. |
+| `tfSetDeepFreeze` | `0x00400000` | 4194304       | [Deep Freeze](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) the trust line. |
+| `tfClearDeepFreeze` | `0x00800000` | 8388608     | Clear the [Deep Freeze](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) on the trust line. |
 
 If a transaction tries to enable No Ripple but cannot, it fails with the result code `tecNO_PERMISSION`. Before the [fix1578 amendment][] became enabled, such a transaction would result in `tesSUCCESS` (making any other changes it could) instead.
 

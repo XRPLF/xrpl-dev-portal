@@ -115,6 +115,7 @@
                 - page: docs/concepts/tokens/fungible-tokens/multi-purpose-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/freezes.md
+                - page: docs/concepts/tokens/fungible-tokens/deep-freeze.md
                   expanded: false
                   items:
                     - page: docs/concepts/tokens/fungible-tokens/common-misconceptions-about-freezes.md
@@ -143,6 +144,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/autobridging.md
                 - page: docs/concepts/tokens/decentralized-exchange/ticksize.md
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
+                - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:
@@ -397,6 +399,8 @@
                     - page: docs/references/protocol/transactions/types/paymentchannelclaim.md
                     - page: docs/references/protocol/transactions/types/paymentchannelcreate.md
                     - page: docs/references/protocol/transactions/types/paymentchannelfund.md
+                    - page: docs/references/protocol/transactions/types/permissioneddomaindelete.md
+                    - page: docs/references/protocol/transactions/types/permissioneddomainset.md
                     - page: docs/references/protocol/transactions/types/setregularkey.md
                     - page: docs/references/protocol/transactions/types/signerlistset.md
                     - page: docs/references/protocol/transactions/types/ticketcreate.md

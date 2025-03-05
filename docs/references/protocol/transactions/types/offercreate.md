@@ -70,7 +70,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | `temBAD_CURRENCY`        | Occurs if the transaction specifies a token with the currency code "XRP". |
 | `temBAD_ISSUER`          | Occurs if the transaction specifies a token with an invalid `issuer` value. |
 | `tecNO_ISSUER`           | Occurs if the transaction specifies a token whose `issuer` value is not a funded account in the ledger. |
-| `tecFROZEN`              | Occurs if the transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes). |
+| `tecFROZEN`              | Occurs if the transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes). Occurs if the `TakerPays` (buy amount) token has been deep-frozen by the issuer. |
 | `tecUNFUNDED_OFFER`      | Occurs if the owner does not hold a positive amount of the `TakerGets` currency. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.) |
 | `tecNO_LINE`             | Occurs if the transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the necessary trust line does not exist. |
 | `tecNO_AUTH`             | Occurs if the transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the the trust line that would receive the tokens exists but has not been authorized. |
