@@ -484,6 +484,7 @@
                 - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/index.md
                   expanded: false
                   items:
+                    - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
@@ -642,6 +643,7 @@
                 - page: docs/infrastructure/configuration/peering/use-a-peer-reservation.md
             - page: docs/infrastructure/configuration/configure-amendment-voting.md
             - page: docs/infrastructure/configuration/configure-statsd.md
+            - page: docs/infrastructure/configuration/configure-validator-list-threshold.md
             - page: docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
             - page: docs/infrastructure/configuration/configure-grpc.md
             - page: docs/infrastructure/configuration/enable-public-signing.md

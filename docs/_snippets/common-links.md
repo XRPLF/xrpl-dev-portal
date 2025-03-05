@@ -274,6 +274,7 @@
 [Specifying Currency Amounts]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [Specifying Ledgers]: /docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
 [Specifying Time]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
+[Specifying Without Amounts]: /docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
 [SusPay amendment]: /resources/known-amendments.md#suspay
 [TickSize amendment]: /resources/known-amendments.md#ticksize
 [Ticket entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
@@ -402,6 +403,8 @@
 [fixCheckThreading amendment]: /resources/known-amendments.md#fixcheckthreading
 [fixDisallowIncomingV1 amendment]: /resources/known-amendments.md#fixdisallowincomingv1
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
+[fixFrozenLPTokenTransfer]: /resources/known-amendments.md#fixfrozenlptokentransfer
+[fixInvalidTxFlags amendment]: /resources/known-amendments.md#fixinvalidtxflags
 [fixMasterKeyAsRegularKey amendment]: /resources/known-amendments.md#fixmasterkeyasregularkey
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
 [fixNFTokenPageLinks amendment]: /resources/known-amendments.md#fixnftokenpagelinks

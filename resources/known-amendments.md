@@ -18,6 +18,8 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
+| [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
+| [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}Enabled: 2025-01-30{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
 | [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/71D5031A5BD927BDFE424E51699E69F2784097D615D0852BF20C168BA9B5EA76" %}Enabled: 2025-01-30{% /badge %} |
@@ -850,6 +852,24 @@ This amendment enables the payment engine to properly handle this scenario and a
 This amendment has no effect unless the [FlowCross][] amendment is enabled.
 
 
+### fixFrozenLPTokenTransfer
+[fixFrozenLPTokenTransfer]: #fixfrozenlptokentransfer
+
+| Amendment    | fixFrozenLPTokenTransfer |
+|:-------------|:-------------------------|
+| Amendment ID |  |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes a loophole that enabled blacklisted accounts to transfer frozen LP tokens through alternative mechanisms, such as such as payments, checks, offers, or NFTs.
+
+With this amendment enabled, if an LP token is associated with a liquidity pool that contains at least one frozen asset, the LP token is also frozen. This means:
+
+1. The holder can't send the frozen LP token to other accounts.
+2. The holder can receive frozen LP tokens, but can't send them out (similar to frozen trust lines).
+
+
 ### fixInnerObjTemplate
 [fixInnerObjTemplate]: #fixinnerobjtemplate
 
@@ -889,6 +909,18 @@ This amendment standardizes the way inner objects ([Object-type fields in the ca
 
 It is believed that this change does not affect transaction processing, but it is possible that there are edge cases where it could cause an improperly formatted transaction to receive a different error. With this amendment, any such transactions would fail with a different result code such as `temMALFORMED`; without this amendment, those transactions would be expected to fail with the code `tefEXCEPTION` instead.
 
+
+### fixInvalidTxFlags
+[fixInvalidTxFlags]: #fixinvalidtxflags
+
+| Amendment    | fixInvalidTxFlags |
+|:-------------|:-------------------------|
+| Amendment ID |  |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adds flag checks for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. With this amendment enabled, these transactions will return a `temINVALID_FLAG` error if they include a flag that doesn't exist, or a contradictory combination of flags.
 
 ### fixMasterKeyAsRegularKey
 [fixMasterKeyAsRegularKey]: #fixmasterkeyasregularkey

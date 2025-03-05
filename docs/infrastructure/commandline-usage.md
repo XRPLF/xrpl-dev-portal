@@ -30,7 +30,7 @@ The `rippled` executable usually runs as a daemon that powers the XRP Ledger, al
 - **Other Usage** - Each of the following commands causes the `rippled` executable to print some information, then exit:
     - **Help** - Use `-h` or `--help` to print a usage statement.
     - **Unit Tests** - Use `-u` or `--unittest` to run unit tests and print a summary of results. This can be helpful to confirm that you have compiled `rippled` successfully.
-    - **Version statement** - Use `--version` to have `rippled` print its version number, then exit.
+    - **Version statement** - Use `--version` to have `rippled` print its version number, Git commit hash, and Git build branch.
 
 ## Generic Options
 

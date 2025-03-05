@@ -6,6 +6,7 @@
     - group: '2025'
       expanded: false
       items:
+        - page: 2025/rippled-2.4.0.md
         - page: 2025/move-to-the-new-xrpl-foundation-commences.md
         - page: 2025/rippled-2.3.1.md
         - page: 2025/devnet-reset.md
