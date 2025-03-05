@@ -17,6 +17,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}Enabled: 2025-01-30{% /badge %} |
@@ -1553,6 +1554,21 @@ Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating
 Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](../docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md) (creates a signed Claim), [`channel_verify`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md) (verifies a signed Claim), and [`account_channels`](../docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md) (lists Channels associated with an account).
 
 For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md).
+
+
+### PermissionedDomains
+[PermissionedDomains]: #permissioneddomains
+
+| Amendment    | PermissionedDomains |
+|:-------------|:--------|
+| Amendment ID | A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Permissioned domains are controlled environments within the broader ecosystem of the XRP Ledger blockchain. Domains do nothing on their own, but features such as Permissioned DEXes and Lending Protocols can use domains to restrict access, so that traditional financial institutions can offer services on chain while complying with various compliance rules.
+
+This amendment creates a new ledger entry type, `PermissionedDomain`, and new transactions, `PermissionedDomainSet` (creates or modifies permissioned domains) and `PermissionedDomainDelete` (deletes permissioned domains).
 
 
 ### PriceOracle

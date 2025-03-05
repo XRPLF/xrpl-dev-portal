@@ -71,6 +71,7 @@
 [Clawback transaction]: /docs/references/protocol/transactions/types/clawback.md
 [Clawback transactions]: /docs/references/protocol/transactions/types/clawback.md
 [Clawbackトランザクション]: /docs/references/protocol/transactions/types/clawback.md
+[credentials]: /docs/concepts/decentralized-storage/credentials.md
 [Credentials amendment]: /resources/known-amendments.md#credentials
 [CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
 [CredentialCreate transactions]: /docs/references/protocol/transactions/types/credentialcreate.md
@@ -240,6 +241,8 @@
 [PaymentChannelFundトランザクション]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
 [Paymentトランザクション]: /docs/references/protocol/transactions/types/payment.md
+[PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
+[permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode
