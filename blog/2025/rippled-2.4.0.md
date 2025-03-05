@@ -148,6 +148,7 @@ The following people contributed directly to this release:
 - Donovan Hide <donovanhide@gmail.com>
 - Ed Hennis <ed@ripple.com>
 - Elliot Lee <github.public@intelliot.com>
+- Javier Romero <jromero@ripple.com>
 - Kenny Lei <klei@ripple.com>
 - Mark Travis <7728157+mtrippled@users.noreply.github.com>
 - Mayukha Vadari <mvadari@gmail.com>
@@ -160,6 +161,7 @@ The following people contributed directly to this release:
 - Sophia Xie <sxie@ripple.com>
 - Vijay Khanna Raviraj <vraviraj@ripple.com>
 - Vladislav Vysokikh <vvysokikh@gmail.com>
+- Xun Zhao <xzhao@ripple.com>
 
 
 ## Bug Bounties and Responsible Disclosures
