@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: 2025-03-03
+date: 2025-03-05
 seo:
     title: Introducing XRP Ledger version 2.4.0
     description: rippled version 2.4.0 is now available. This version introduces new features and stability fixes.
@@ -12,19 +12,27 @@ markdown:
 ---
 # Introducing XRP Ledger version 2.4.0
 
-Version 2.4.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes 8 new amendments, including Multi-Purpose Tokens (MPTs), Credentials, Clawback support for AMMs, and the ability to make offers as part of minting NFTs. Additionally, this release includes important fixes for stability, so server operators are encouraged to upgrade as soon as possible.
+Version 2.4.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds new features and bug fixes, and introduces these amendments:
 
-## Additional Announcement
+- `PermissionedDomains`
+- `DeepFreeze`
+- `DynamicNFT`
+- `fixFrozenLPTokenTransfer`
+- `fixInvalidTxFlags`
 
-New UNL pub keys will be published on ...
+## Additional UNL Announcement
+
+**TODO: Waiting on messaging approval**
 
 ## Action Required
 
-If you run an XRP Ledger server, upgrade to version 2.3.0 as soon as possible to ensure service continuity.
+If you run an XRP Ledger server, upgrade to version 2.4.0 as soon as possible to ensure service continuity.
 
 Additionally, new amendments are now open for voting according to the XRP Ledger's [amendment process](../../docs/concepts/networks-and-servers/amendments.md), which enables protocol changes following two weeks of >80% support from trusted validators. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
 ## Install / Upgrade
+
+**TODO: Update package and SHA-256**
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
@@ -54,17 +62,17 @@ The following amendments are open for voting with this release:
 
 - **XLS-46 DynamicNFT** - Adds the ability to update the URI of `NFToken` objects. ([#5048](https://github.com/XRPLF/rippled/pull/5048))
 - **XLS-80 Permissioned Domains** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161))
-- **XLS-77 Deep Freeze** - Adds the ability to deep freeze trust lines, enabling token issuers to block the transfer of assets for holders who have been deep frozen. ([#5187](https://github.com/XRPLF/rippled/pull/5187)) **TODO: move docs from opensource**
+- **XLS-77 Deep Freeze** - Adds the ability to deep freeze trust lines, enabling token issuers to block the transfer of assets for holders who have been deep frozen. ([#5187](https://github.com/XRPLF/rippled/pull/5187))
 - **fixFrozenLPTokenTransfer** - Prohibits the transfer of LP tokens when the associated liquidity pool contains at least one frozen asset. ([#5227](https://github.com/XRPLF/rippled/pull/5227))
 - **fixInvalidTxFlags** - Adds transaction flag checking for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. ([#5250](https://github.com/XRPLF/rippled/pull/5250))
 
 
 ### New Features
 
+- Added a new `simulate` API method to execute dry runs of transactions and see the simulated metadata. ([#5069](https://github.com/XRPLF/rippled/pull/5069), [#5265](https://github.com/XRPLF/rippled/pull/5265))
 - Added the ability to specify MPTs when defining assets in transactions. ([#5200](https://github.com/XRPLF/rippled/pull/5200))
 - Refactored `LedgerEntry.cpp` to make it easier to read. Also added a `state` alias for `ripple_state` in the `ledger_entry` API method. ([#5199](https://github.com/XRPLF/rippled/pull/5199))
 - Improved UNL security by enabling validators to set a minimum number of UNL publishers to agree on validators. ([#5112](https://github.com/XRPLF/rippled/pull/5112))
-- Added a new `simulate` API method to execute dry runs of transactions and see the simulated metadata. ([#5069](https://github.com/XRPLF/rippled/pull/5069), [#5265](https://github.com/XRPLF/rippled/pull/5265))
 - Updated the XRPL Foundation UNL keys. ([#5289](https://github.com/XRPLF/rippled/pull/5289))
 - Added a new XRPL Foundation subdomain to enable a staged migration without modifying the key for the current UNL list. ([#5326](https://github.com/XRPLF/rippled/pull/5326))
 - Added support to filter ledger entry types by their canonical names in the `ledger`, `ledger_data`, and `account_objects` API methods. ([#5271](https://github.com/XRPLF/rippled/pull/5271))
@@ -119,13 +127,27 @@ The following amendments are open for voting with this release:
 
 The following people contributed directly to this release:
 
+- Aanchal Malhotra <amalhotra@ripple.com>
+- Bart Thomee <11445373+bthomee@users.noreply.github.com>
+- Bronek Kozicki <brok@incorrekt.com>
+- code0xff <ian.jungyong.um@gmail.com>
+- Darius Tumas <tokeiito@tokeiito.eu>
+- David Fuelling <fuelling@ripple.com>
+- Donovan Hide <donovanhide@gmail.com>
 - Ed Hennis <ed@ripple.com>
-- JoelKatz <DavidJoelSchwartz@GMail.com>
-- Sophia Xie <106177003+sophiax851@users.noreply.github.com>
-- Valentin Balaschenko <13349202+vlntb@users.noreply.github.com>
-
-@rrmanukyan made their first contribution in #5233
-@kuznetsss made their first contribution in #5252
+- Elliot Lee <github.public@intelliot.com>
+- Kenny Lei <klei@ripple.com>
+- Mark Travis <7728157+mtrippled@users.noreply.github.com>
+- Mayukha Vadari <mvadari@gmail.com>
+- Michael Legleux <mlegleux@ripple.com>
+- Oleksandr <115580134+oleks-rip@users.noreply.github.com>
+- Qi Zhao <qzhao@ripple.com>
+- Ramkumar Srirengaram Gunasegharan <rgunasegharan@ripple.com>
+- Shae Wang <swang@ripple.com>
+- Shawn Xie <shawnxie920@gmail.com>
+- Sophia Xie <sxie@ripple.com>
+- Vijay Khanna Raviraj <vraviraj@ripple.com>
+- Vladislav Vysokikh <vvysokikh@gmail.com>
 
 
 ## Bug Bounties and Responsible Disclosures
