@@ -107,6 +107,35 @@ The AMM is designed so that an AMM's asset pool is empty if and only if the AMM 
 
 LP tokens use a special type of currency code in the 160-bit hexadecimal ["non-standard" format](../../../references/protocol/data-types/currency-formats.md#nonstandard-currency-codes). These codes have the first 8 bits `0x03`. The remainder of the code is a SHA-512 hash, truncated to the first 152 bits, of the two assets' currency codes and their issuers. (The assets are placed in a "canonical order" with the numerically lower currency+issuer pair first.) As a result, the LP tokens for a given asset pair's AMM have a predictable, consistent currency code.
 
+### LP Token Freeze
+
+If an LP token is associated with a liquidity pool that contains at least one frozen asset, the LP token is also frozen. This means:
+
+1. The holder can't send the frozen LP token to other accounts.
+2. The holder can receive frozen LP tokens, but can't send them out (similar to frozen trust lines).
+
+Frozen LP tokens affect the following transactions:
+
+**Payment**
+
+- An account can no longer send frozen LP tokens through direct payment.
+
+**OfferCreate**
+
+- Accounts are prohibited from creating offers that would sell frozen LP tokens.
+- Offers that contain frozen LP tokens cannot be consumed on the DEX.
+
+**CheckCash**
+
+- Cashing a check fails if it attempts to cash a frozen LP token from the sender.
+
+**NFTokenCreateOffer**
+
+- Buyers are prohibited from creating buy offers that use frozen LP tokens.
+
+**NFTokenAcceptOffer**
+
+- Buyers can't accept a sell offer if the offer requires the use of frozen LP tokens as payment.
 
 ## Trading Fees
 
