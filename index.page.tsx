@@ -112,7 +112,17 @@ export default function Index() {
       <div className="overflow-hidden">
         <section className="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
           <div className="w-100">
-            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" width="856" height="469" loading='eager' />
+            <img 
+              id="home-hero-graphic" 
+              alt="(stylized X graphic surrounded by a diverse mix of people)" 
+              width="1216" 
+              height="667" 
+              loading="eager" 
+              fetchPriority="high"
+              src={require('./static/img/home-hero.svg')}
+              sizes="(max-width: 539px) 400px, (max-width: 991px) 650px, 1216px"
+              decoding="async"
+            />
           </div>
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
@@ -155,7 +165,7 @@ export default function Index() {
           <ul className="mt-10 card-grid card-grid-3xN" id="benefits-list">
             {cards.map(card => (
               <li className="col ls-none" key={card.id}>
-                <img id={card.id} alt={card.title + ' Icon'} />
+                <img loading="lazy" id={card.id} alt={card.title + ' Icon'} />
                 <h4 className="mt-3 mb-0 h5">{translate(card.title)}</h4>
                 <p className="mt-6-until-sm mt-3 mb-0">
                   {typeof card.description === 'string' ? translate(card.description) : card.description}
@@ -180,7 +190,7 @@ export default function Index() {
                   <h4 className="card-title h5">{translate(card.title)}</h4>
                   <p className="card-text">{translate(card.description)}</p>
                 </div>
-                <div className="card-footer">&nbsp;</div>
+                <img loading="lazy" className="card-footer"/>
               </Link>
             ))}
           </div>
@@ -197,17 +207,17 @@ export default function Index() {
                   <h4 className="card-title h5">{translate(card.title)}</h4>
                   <p className="card-text">{translate(card.description)}</p>
                 </div>
-                <div className="card-footer">&nbsp;</div>
+                <img loading="lazy" className="card-footer"/>
               </Link>
             ))}
           </div>
         </section>
         <section className="container-new py-26">
           <div className="col-lg-6 offset-lg-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img src={require('./static/img/backgrounds/cta-home-purple.svg')} className="d-none-sm cta cta-top-left" />
-            <img src={require('./static/img/backgrounds/cta-home-green.svg')} className="cta cta-bottom-right" />
+            <img src={require('./static/img/backgrounds/cta-home-purple.svg')} className="d-none-sm cta cta-top-left" loading='lazy' />
+            <img src={require('./static/img/backgrounds/cta-home-green.svg')} className="cta cta-bottom-right" loading='lazy' />
             <div className="z-index-1 position-relative">
-              <h2 className="h4 mb-8-sm mb-10-until-sm">{translate('Our Shared Vision for XRPL’s Future')}</h2>
+              <h2 className="h4 mb-8-sm mb-10-until-sm">{translate("Our Shared Vision for XRPL's Future")}</h2>
               <p className="mb-10">
                 {translate(
                   "Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life."
@@ -242,7 +252,7 @@ export default function Index() {
         </section>
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-8-sm p-10-until-sm br-8 cta-card">
-            <img alt="" src={require('./static/img/backgrounds/cta-home-magenta.svg')} className="cta cta-bottom-right" />
+            <img alt="" src={require('./static/img/backgrounds/cta-home-magenta.svg')} className="cta cta-bottom-right" loading='lazy'/>
             <div className="z-index-1 position-relative">
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 mb-8-sm mb-10-until-sm">

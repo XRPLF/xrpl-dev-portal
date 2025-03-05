@@ -518,10 +518,6 @@ pre {
 
 // Homepage
 .page-home {
-  #home-hero-graphic {
-    content: url("../img/lightmode/home-hero.svg");
-  }
-
   #benefits-list {
     @each $benefit in "public", "streamlined", "performance", "low-cost",
     "community", "reliability"
@@ -627,7 +623,7 @@ pre {
   "carbon_markets",
   "defi" {
     ##{$usecase} {
-      content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png");
+      // content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png"); // Removed to use src attribute with JS theme switching
     }
   }
 
@@ -672,7 +668,7 @@ pre {
       ##{$company} {
         .biz-logo {
           max-height: 40px;
-          content: url("../img/uses/lightmode/#{$company}.#{$type}");
+          // content: url("../img/uses/lightmode/#{$company}.#{$type}"); // Removed to use src attribute with JS theme switching
         }
       }
     }
@@ -682,24 +678,24 @@ pre {
     #threezy {
       .biz-logo {
         max-height: 40px;
-        content: url("../img/uses/lightmode/threezy.png");
+        // content: url("../img/uses/lightmode/threezy.png"); // Removed to use src attribute with JS theme switching
       }
     }
   }
 
   .modal-content-uses {
     .first-ledger-bot {
-      content: url("../img/uses/lightmode/first-ledger-bot.svg");
+      // content: url("../img/uses/lightmode/first-ledger-bot.svg"); // Removed to use src attribute with JS theme switching
     }
 
     .moai-finance {
-      content: url("../img/uses/lightmode/moai-finance.svg");
+      // content: url("../img/uses/lightmode/moai-finance.svg"); // Removed to use src attribute with JS theme switching
     }
 
     .orchestra-finance {
       max-height: 52px;
       margin: 0;
-      content: url("../img/uses/lightmode/orchestra-finance.svg");
+      // content: url("../img/uses/lightmode/orchestra-finance.svg"); // Removed to use src attribute with JS theme switching
     }
   }
 
@@ -1037,7 +1033,7 @@ $placeholder-color: $gray-600;
 
       {
       ##{$benefits} {
-        content: url("../img/ambassadors/lightmode/#{$benefits}.svg");
+        content: url("../img/ambassadors/lightmode/#{$benefits}.svg"); // Removed to use src attribute with JS theme switching
       }
     }
   }
@@ -1048,7 +1044,7 @@ $placeholder-color: $gray-600;
 
       {
       ##{$eligibility} {
-        content: url("../img/ambassadors/lightmode/#{$eligibility}.svg");
+        content: url("../img/ambassadors/lightmode/#{$eligibility}.svg"); // Removed to use src attribute with JS theme switching
       }
     }
   }
@@ -1058,7 +1054,7 @@ $placeholder-color: $gray-600;
   .funding-list {
     @each $funding in "funding-01", "funding-02", "funding-03", "funding-04" {
       ##{$funding} {
-        content: url("../img/funding/lightmode/#{$funding}.svg");
+        // content: url("../img/funding/lightmode/#{$funding}.svg"); // Removed to use src attribute with JS theme switching
       }
     }
   }
@@ -1073,7 +1069,7 @@ $placeholder-color: $gray-600;
   .connect-list {
     @each $connect in "connect-01", "connect-02", "connect-03", "connect-04" {
       ##{$connect} {
-        content: url("../img/impact/lightmode/#{$connect}.svg");
+        // content: url("../img/impact/lightmode/#{$connect}.svg"); // Removed to use src attribute with JS theme switching
       }
     }
   }
@@ -1224,7 +1220,7 @@ main article .card-grid {
   }
 
   .evernode {
-    content: url("../img/logos/evernode.svg");
+    // content: url("../img/logos/evernode.svg"); // Removed to use src attribute with JS theme switching
   }
 
   .prev img {
