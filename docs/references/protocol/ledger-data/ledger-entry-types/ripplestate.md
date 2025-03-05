@@ -80,6 +80,8 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `lsfHighNoRipple` | `0x00200000` | 2097152       | `tfSetNoRipple` | The high account [has disabled rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) from this trust line. |
 | `lsfLowFreeze`    | `0x00400000` | 4194304       | `tfSetFreeze`   | The low account has frozen the trust line, preventing the high account from transferring the asset. |
 | `lsfHighFreeze`   | `0x00800000` | 8388608       | `tfSetFreeze`   | The high account has frozen the trust line, preventing the low account from transferring the asset. |
+| `lsfLowDeepFreeze` | `0x02000000` | 33554432 |`tfSetLowDeepFreeze` | The low account has deep-frozen the trust line, preventing the high account from sending and receiving the asset. |
+| `lsfHighDeepFreeze` | `0x04000000` | 67108864 | `tfSetHighDeepFreeze` | The high account has deep-frozen the trust line, preventing the low account from sending and receiving the asset. |
 
 The two accounts connected by the trust line can each change their own settings with a [TrustSet transaction][].
 
