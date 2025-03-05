@@ -17,6 +17,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [DeepFreeze][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
@@ -299,6 +300,26 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 This amendment was intended to add support for several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions.
 
 However, the amendment was added to `rippled` v0.60.0 before implementation was complete. As a result, this amendment ID refers to incomplete code which does almost nothing. Modifying the existing amendment to add support for other crypto-conditions would cause a conflict with old versions of the amendment already in released software. If a future release adds support for additional crypto-conditions, it must use a new and different amendment ID.
+
+
+### DeepFreeze
+[DeepFreeze]: #deepfreeze
+
+| Amendment    | DeletableAccounts |
+|:-------------|:------------------|
+| Amendment ID | DAF3A6EB04FA5DC51E8E4F23E9B7022B693EFA636F23F22664746C77B5786B23 |
+| Status       | Enabled |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment enables issuers to deep freeze trustlines from interacting with payments, offers, AMMs, and the DEX. This prevents deep frozen accounts from sending and receiving frozen assets. With this amendment, four new flags are introduced:
+
+- `RippleState` flags:
+  - `lsfLowDeepFreeze`
+  - `lsfHighDeepFreeze`
+- `TrustSet` flags:
+  - `tfSetDeepFreeze`
+  - `tfClearDeepFreeze`
 
 
 ### DeletableAccounts
