@@ -841,7 +841,7 @@ This amendment has no effect unless the [FlowCross][] amendment is enabled.
 
 | Amendment    | fixFrozenLPTokenTransfer |
 |:-------------|:-------------------------|
-| Amendment ID |  |
+| Amendment ID | 83FD6594FF83C1D105BD2B41D7E242D86ECB4A8220BD9AF4DA35CB0F69E39B2A |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
@@ -899,7 +899,7 @@ It is believed that this change does not affect transaction processing, but it i
 
 | Amendment    | fixInvalidTxFlags |
 |:-------------|:-------------------------|
-| Amendment ID |  |
+| Amendment ID | 8EC4304A06AF03BE953EA6EDA494864F6F3F30AA002BABA35869FBB8C6AE5D52  |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
