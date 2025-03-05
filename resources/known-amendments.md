@@ -407,7 +407,7 @@ Without this amendment, any account can create these objects with any object as 
 
 | Amendment    | DisallowIncoming |
 |:-------------|:-----------------|
-| Amendment ID |  |
+| Amendment ID | C1CE18F2A268E6A849C27B3DE485006771B4C01B2FCEC4F18356FE92ECD6BB74 |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
