@@ -482,6 +482,7 @@
                 - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/index.md
                   expanded: false
                   items:
+                    - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
