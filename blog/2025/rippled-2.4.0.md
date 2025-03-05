@@ -53,7 +53,7 @@ The following amendments are open for voting with this release:
 
 
 - **XLS-46 DynamicNFT** - Adds the ability to update the URI of `NFToken` objects. ([#5048](https://github.com/XRPLF/rippled/pull/5048))
-- **XLS-80 Permissioned Domains** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161)) **TODO: move docs from opensource**
+- **XLS-80 Permissioned Domains** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161))
 - **XLS-77 Deep Freeze** - Adds the ability to deep freeze trust lines, enabling token issuers to block the transfer of assets for holders who have been deep frozen. ([#5187](https://github.com/XRPLF/rippled/pull/5187)) **TODO: move docs from opensource**
 - **fixFrozenLPTokenTransfer** - Prohibits the transfer of LP tokens when the associated liquidity pool contains at least one frozen asset. ([#5227](https://github.com/XRPLF/rippled/pull/5227))
 - **fixInvalidTxFlags** - Adds transaction flag checking for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. ([#5250](https://github.com/XRPLF/rippled/pull/5250))
@@ -66,6 +66,7 @@ The following amendments are open for voting with this release:
 - Improved UNL security by enabling validators to set a minimum number of UNL publishers to agree on validators. ([#5112](https://github.com/XRPLF/rippled/pull/5112))
 - Added a new `simulate` API method to execute dry runs of transactions and see the simulated metadata. ([#5069](https://github.com/XRPLF/rippled/pull/5069), [#5265](https://github.com/XRPLF/rippled/pull/5265))
 - Updated the XRPL Foundation UNL keys. ([#5289](https://github.com/XRPLF/rippled/pull/5289))
+- Added a new XRPL Foundation subdomain to enable a staged migration without modifying the key for the current UNL list. ([#5326](https://github.com/XRPLF/rippled/pull/5326))
 - Added support to filter ledger entry types by their canonical names in the `ledger`, `ledger_data`, and `account_objects` API methods. ([#5271](https://github.com/XRPLF/rippled/pull/5271))
 - Added detailed logging for each validation and proposal received from the network. ([#5291](https://github.com/XRPLF/rippled/pull/5291))
 - Improved git commit hash lookups when checking the version of a `rippled` debug build. Also added git commit hash info when using the `server_info` API method on an admin connection. ([#5225](https://github.com/XRPLF/rippled/pull/5225))
@@ -82,8 +83,11 @@ The following amendments are open for voting with this release:
 - Fixed the levelization script to ignore single-line comments during dependency analysis. ([#5194](https://github.com/XRPLF/rippled/pull/5194))
 - Fixed the assert name used in `PermissionedDomainDelete`. ([#5245](https://github.com/XRPLF/rippled/pull/5245))
 - Fixed MacOS unit tests. ([#5196](https://github.com/XRPLF/rippled/pull/5196))
-- Fixed an issue with validators not accurately reflecting amendment votes. Also added debug logging of amendment votes. ([#5173](https://github.com/XRPLF/rippled/pull/5173))
+- Fixed an issue with validators not accurately reflecting amendment votes. Also added debug logging of amendment votes. ([#5173](https://github.com/XRPLF/rippled/pull/5173), [#5312](https://github.com/XRPLF/rippled/pull/5312))
 - Fixed a potential issue with double-charging fees. ([#5269](https://github.com/XRPLF/rippled/pull/5269))
+- Removed the `new parent hash` assert and replaced it with a log message. ([#5313](https://github.com/XRPLF/rippled/pull/5313))
+- Fixed an issue that prevented previously-failed inbound ledgers to not be acquired if a new trusted proposal arrived. ([#5318](https://github.com/XRPLF/rippled/pull/5318))
+
 
 ### Other Improvements
 
@@ -98,12 +102,17 @@ The following amendments are open for voting with this release:
 - Improved logs readability. ([#5251](https://github.com/XRPLF/rippled/pull/5251))
 - Updated Visual Studio CI to VS 2022, and added VS Debug builds. ([#5240](https://github.com/XRPLF/rippled/pull/5240))
 - Updated the `secp256k1` library to version 0.6.0. ([#5254](https://github.com/XRPLF/rippled/pull/5254))
-- Changed the `[port_peer]` parameter in `rippled` example config back to `51235`; also added the recommendation to use the default port of `2459` for new deployments. ([#5299](https://github.com/XRPLF/rippled/pull/5299))
+- Changed the `[port_peer]` parameter in `rippled` example config back to `51235`; also added the recommendation to use the default port of `2459` for new deployments. ([#5290](https://github.com/XRPLF/rippled/pull/5290), [#5299](https://github.com/XRPLF/rippled/pull/5299))
 - Improved CI management. ([#5268](https://github.com/XRPLF/rippled/pull/5268))
 - Updated the git commit message rules for contributors. ([#5283](https://github.com/XRPLF/rippled/pull/5283))
 - Fixed unnecessary `setCurrentThreadName` calls. ([#5280](https://github.com/XRPLF/rippled/pull/5280))
 - Added a check to prevent permissioned domains from being created in the event the Permissioned Domains amendement is enabled before the Credentials amendement. ([#5275](https://github.com/XRPLF/rippled/pull/5275))
 - Updated Conan dependencies. ([#5256](https://github.com/XRPLF/rippled/pull/5256))
+- Fixed minor typos in code comments. ([#5279](https://github.com/XRPLF/rippled/pull/5279))
+- Fixed incorrect build instructions. ([#5274](https://github.com/XRPLF/rippled/pull/5274))
+- Refactored `rotateWithLock()` to not hold a lock during callbacks. ([#5276](https://github.com/XRPLF/rippled/pull/5276))
+- Cleaned up debug logging by combining multiple data points into a single message. ([#5302](https://github.com/XRPLF/rippled/pull/5302))
+- Updated build flags to fix performance regressions. ([#5325](https://github.com/XRPLF/rippled/pull/5325))
 
 
 ## Credits
