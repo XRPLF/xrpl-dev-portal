@@ -1,1 +1,1 @@
-fastecdsa==2.1.2
+fastecdsa==2.3.2
