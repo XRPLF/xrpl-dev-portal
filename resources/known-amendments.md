@@ -17,6 +17,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}Enabled: 2025-01-30{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
@@ -832,6 +833,24 @@ This amendment fixes an issue introduced in the `FlowCross` amendment. Offers wi
 This amendment enables the payment engine to properly handle this scenario and allow offers to cross.
 
 This amendment has no effect unless the [FlowCross][] amendment is enabled.
+
+
+### fixFrozenLPTokenTransfer
+[fixFrozenLPTokenTransfer]: #fixfrozenlptokentransfer
+
+| Amendment    | fixFrozenLPTokenTransfer |
+|:-------------|:-------------------------|
+| Amendment ID |  |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes a loophole that enabled blacklisted accounts to transfer frozen LP tokens through alternative mechanisms, such as such as payments, checks, offers, or NFTs.
+
+With this amendment enabled, if an LP token is associated with a liquidity pool that contains at least one frozen asset, the LP token is also frozen. This means:
+
+1. The holder can't send the frozen LP token to other accounts.
+2. The holder can receive frozen LP tokens, but can't send them out (similar to frozen trust lines).
 
 
 ### fixInnerObjTemplate

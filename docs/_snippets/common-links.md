@@ -402,6 +402,7 @@
 [fixCheckThreading amendment]: /resources/known-amendments.md#fixcheckthreading
 [fixDisallowIncomingV1 amendment]: /resources/known-amendments.md#fixdisallowincomingv1
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
+[fixFrozenLPTokenTransfer]: /resources/known-amendments.md#fixfrozenlptokentransfer
 [fixInvalidTxFlags amendment]: /resources/known-amendments.md#fixinvalidtxflags
 [fixMasterKeyAsRegularKey amendment]: /resources/known-amendments.md#fixmasterkeyasregularkey
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
