@@ -623,7 +623,7 @@ pre {
   "carbon_markets",
   "defi" {
     ##{$usecase} {
-      content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png"); // Removed to use src attribute with JS theme switching
+      content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png"); 
     }
   }
 
@@ -668,7 +668,7 @@ pre {
       ##{$company} {
         .biz-logo {
           max-height: 40px;
-          content: url("../img/uses/lightmode/#{$company}.#{$type}"); // Removed to use src attribute with JS theme switching
+          content: url("../img/uses/lightmode/#{$company}.#{$type}"); 
         }
       }
     }
@@ -678,24 +678,24 @@ pre {
     #threezy {
       .biz-logo {
         max-height: 40px;
-        content: url("../img/uses/lightmode/threezy.png"); // Removed to use src attribute with JS theme switching
+        content: url("../img/uses/lightmode/threezy.png"); 
       }
     }
   }
 
   .modal-content-uses {
     .first-ledger-bot {
-      content: url("../img/uses/lightmode/first-ledger-bot.svg"); // Removed to use src attribute with JS theme switching
+      content: url("../img/uses/lightmode/first-ledger-bot.svg"); 
     }
 
     .moai-finance {
-      content: url("../img/uses/lightmode/moai-finance.svg"); // Removed to use src attribute with JS theme switching
+      content: url("../img/uses/lightmode/moai-finance.svg"); 
     }
 
     .orchestra-finance {
       max-height: 52px;
       margin: 0;
-      content: url("../img/uses/lightmode/orchestra-finance.svg"); // Removed to use src attribute with JS theme switching
+      content: url("../img/uses/lightmode/orchestra-finance.svg"); 
     }
   }
 
