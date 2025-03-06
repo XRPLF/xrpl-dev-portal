@@ -31,7 +31,7 @@ There are two key goals driving this transition:
 
 Keeping these goals in mind, a new subdomain, **unl.xrplf.org**, has been introduced alongside the existing https://vl.xrplf.org/. This approach allows for a staged migration without modifying the key for the current UNL list. Eventually, vl.xrplf.org will be fully deprecated and replaced by unl.xrplf.org.
 
-In `rippled` release 2.4.0, the validators-example.txt has been updated to include the new public key published by the new XRPL Foundation.
+In `rippled` release 2.4.0, the `validators-example.txt` file has been updated to include the new public key published by the new XRPL Foundation.
 
 Further information on the transition will be shared by the XRPL Foundation in the near future.
 
