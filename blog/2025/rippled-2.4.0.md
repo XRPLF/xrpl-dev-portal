@@ -42,6 +42,7 @@ If you run an XRP Ledger server, upgrade to version 2.4.0 as soon as possible to
 
 Additionally, new amendments are now open for voting according to the XRP Ledger's [amendment process](../../docs/concepts/networks-and-servers/amendments.md), which enables protocol changes following two weeks of >80% support from trusted validators. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
+
 ## Install / Upgrade
 
 **TODO: Update package and SHA-256**
@@ -70,7 +71,6 @@ Date:   Mon Nov 25 12:27:17 2024 -0800
 ### Amendments
 
 The following amendments are open for voting with this release:
-
 
 - **DynamicNFT (XLS-46)** - Adds the ability to mint mutable `NFToken` objects whose URI can be changed. ([#5048](https://github.com/XRPLF/rippled/pull/5048))
 - **PermissionedDomains (XLS-80)** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161))
