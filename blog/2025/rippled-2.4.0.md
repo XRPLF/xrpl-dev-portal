@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: 2025-03-05
+date: 2025-03-06
 seo:
     title: Introducing XRP Ledger version 2.4.0
     description: rippled version 2.4.0 is now available. This version introduces new features and stability fixes.
@@ -45,24 +45,22 @@ Additionally, new amendments are now open for voting according to the XRP Ledger
 
 ## Install / Upgrade
 
-**TODO: Update package and SHA-256**
-
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.3.0-1.el7.x86_64.rpm) | `fb74f401e5ba121bbc37e6188aa064488ad78ffef549a1e19bc8b71316d08031` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.3.0-1_amd64.deb) | `5d616d53218b47a2f0803c1d37d410f72d19b57cdb9cabdf77b1cf0134cce3ca` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.4.0-1.el7.x86_64.rpm) | `f87f44005b84b35606413313f7414bfdf2bf09f01ce88bfe9fafc3ff75fd5199` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.4.0-1_amd64.deb) | `a3df84ba3d21f7182a57c8ca11fb2fbd1707e5cf53112822e60aa89886d943ad` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
-commit f64cf9187affd69650907d0d92e097eb29693945
-Author: Elliot Lee <github.public@intelliot.com>
-Date:   Mon Nov 25 12:27:17 2024 -0800
+commit 2216e5a13f306d01baf34ef3a48966ecaf908ad6
+Author: Michael Legleux <mlegleux@ripple.com>
+Date:   Wed Mar 5 11:48:16 2025 -0800
 
-    Set version to 2.3.0
+    Set version to 2.4.0
 ```
 
 
