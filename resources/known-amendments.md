@@ -17,6 +17,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [DeepFreeze][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
 | [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-05{% /badge %} |
@@ -421,6 +422,22 @@ Adds 4 new AccountSet Flags and modifies the AccountSet transaction to allow ena
 Changes transaction processing to check the status of those flags before creating the corresponding type of object. If the destination account has the flag enabled, the transaction fails with the error code `tecNO_PERMISSION`.
 
 Without this amendment, any account can create these objects with any object as the destination; while this is usually harmless, it can block an account from later being deleted, and may also be used as part of scams.
+
+
+### DynamicNFT
+[DynamicNFT]: #dynamicnft
+
+| Amendment    | DynamicNFT |
+|:-------------|:-----------------|
+| Amendment ID | C1CE18F2A268E6A849C27B3DE485006771B4C01B2FCEC4F18356FE92ECD6BB74 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adds functionality to update the `URI` field of an `NFToken` ledger entry. This amendment introduces a new transaction type and `NFTokenMint` flag:
+
+1. `NFTokenModify`: New transaction type that updates the `URI` field of an NFT.
+2. `tfMutable`: New flag that enables authorized accounts to modify the `URI` of an NFT. This flag must be enabled when the NFT is initially minted.
 
 
 ### EnforceInvariants
