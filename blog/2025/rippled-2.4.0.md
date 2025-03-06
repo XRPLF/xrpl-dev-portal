@@ -72,7 +72,7 @@ Date:   Mon Nov 25 12:27:17 2024 -0800
 The following amendments are open for voting with this release:
 
 
-- **XLS-46 DynamicNFT** - Adds the ability to update the URI of `NFToken` objects. ([#5048](https://github.com/XRPLF/rippled/pull/5048))
+- **XLS-46 DynamicNFT** - Adds the ability to mint mutable `NFToken` objects whose URI can be changed. ([#5048](https://github.com/XRPLF/rippled/pull/5048))
 - **XLS-80 Permissioned Domains** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161))
 - **XLS-77 Deep Freeze** - Adds the ability to deep freeze trust lines, enabling token issuers to block the transfer of assets for holders who have been deep frozen. ([#5187](https://github.com/XRPLF/rippled/pull/5187))
 - **fixFrozenLPTokenTransfer** - Prohibits the transfer of LP tokens when the associated liquidity pool contains at least one frozen asset. ([#5227](https://github.com/XRPLF/rippled/pull/5227))
