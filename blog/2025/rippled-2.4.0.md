@@ -29,9 +29,9 @@ There are two key goals driving this transition:
 - Ensure continued network participation and avoid potential downtime.
 - Allow for a staged migration with minimal impact on validators and node operators.
 
-Keeping these goals in mind, a new subdomain, **unl.xrplf.org**, has been introduced alongside the existing https://vl.xrplf.org/. This approach allows for a staged migration without modifying the key for the current UNL list. Eventually, vl.xrplf.org will be fully deprecated and replaced by unl.xrplf.org.
+Keeping these goals in mind, a new subdomain, **unl.xrplf.org**, has been introduced alongside the existing list at **vl.xrplf.org**. This approach allows for a staged migration without modifying the key for the current UNL list. Eventually, vl.xrplf.org will be fully deprecated and replaced by unl.xrplf.org.
 
-In `rippled` release 2.4.0, the validators-example.txt has been updated to include the new public key published by the new XRPL Foundation.
+In `rippled` release 2.4.0, the `validators-example.txt` file has been updated to include the new public key published by the new XRPL Foundation.
 
 Further information on the transition will be shared by the XRPL Foundation in the near future.
 
@@ -72,9 +72,9 @@ Date:   Mon Nov 25 12:27:17 2024 -0800
 The following amendments are open for voting with this release:
 
 
-- **XLS-46 DynamicNFT** - Adds the ability to update the URI of `NFToken` objects. ([#5048](https://github.com/XRPLF/rippled/pull/5048))
-- **XLS-80 Permissioned Domains** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161))
-- **XLS-77 Deep Freeze** - Adds the ability to deep freeze trust lines, enabling token issuers to block the transfer of assets for holders who have been deep frozen. ([#5187](https://github.com/XRPLF/rippled/pull/5187))
+- **DynamicNFT (XLS-46)** - Adds the ability to mint mutable `NFToken` objects whose URI can be changed. ([#5048](https://github.com/XRPLF/rippled/pull/5048))
+- **PermissionedDomains (XLS-80)** - Adds Permissioned Domains, which act as part of broader systems on the XRP Ledger to restrict access to satisfy compliance rules. ([#5161](https://github.com/XRPLF/rippled/pull/5161))
+- **DeepFreeze (XLS-77)** - Adds the ability to deep freeze trust lines, enabling token issuers to block the transfer of assets for holders who have been deep frozen. ([#5187](https://github.com/XRPLF/rippled/pull/5187))
 - **fixFrozenLPTokenTransfer** - Prohibits the transfer of LP tokens when the associated liquidity pool contains at least one frozen asset. ([#5227](https://github.com/XRPLF/rippled/pull/5227))
 - **fixInvalidTxFlags** - Adds transaction flag checking for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. ([#5250](https://github.com/XRPLF/rippled/pull/5250))
 
@@ -83,7 +83,7 @@ The following amendments are open for voting with this release:
 
 - Added a new `simulate` API method to execute dry runs of transactions and see the simulated metadata. ([#5069](https://github.com/XRPLF/rippled/pull/5069), [#5265](https://github.com/XRPLF/rippled/pull/5265))
 - Added the ability to specify MPTs when defining assets in transactions. ([#5200](https://github.com/XRPLF/rippled/pull/5200))
-- Refactored `LedgerEntry.cpp` to make it easier to read. Also added a `state` alias for `ripple_state` in the `ledger_entry` API method. ([#5199](https://github.com/XRPLF/rippled/pull/5199))
+- Added a `state` alias for `ripple_state` in the `ledger_entry` API method. Also refactored `LedgerEntry.cpp` to make it easier to read.  ([#5199](https://github.com/XRPLF/rippled/pull/5199))
 - Improved UNL security by enabling validators to set a minimum number of UNL publishers to agree on validators. ([#5112](https://github.com/XRPLF/rippled/pull/5112))
 - Updated the XRPL Foundation UNL keys. ([#5289](https://github.com/XRPLF/rippled/pull/5289))
 - Added a new XRPL Foundation subdomain to enable a staged migration without modifying the key for the current UNL list. ([#5326](https://github.com/XRPLF/rippled/pull/5326))

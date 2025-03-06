@@ -115,9 +115,9 @@
                 - page: docs/concepts/tokens/fungible-tokens/multi-purpose-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/freezes.md
-                - page: docs/concepts/tokens/fungible-tokens/deep-freeze.md
                   expanded: false
                   items:
+                    - page: docs/concepts/tokens/fungible-tokens/deep-freeze.md
                     - page: docs/concepts/tokens/fungible-tokens/common-misconceptions-about-freezes.md
                 - page: docs/concepts/tokens/fungible-tokens/paths.md
                 - page: docs/concepts/tokens/fungible-tokens/rippling.md

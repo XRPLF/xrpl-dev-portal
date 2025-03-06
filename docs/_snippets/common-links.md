@@ -96,6 +96,7 @@
 [DID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DIDエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DeletableAccounts amendment]: /resources/known-amendments.md#deletableaccounts
+[DeepFreeze amendment]: /resources/known-amendments.md#deepfreeze
 [DepositAuth amendment]: /resources/known-amendments.md#depositauth
 [DepositPreauth amendment]: /resources/known-amendments.md#depositpreauth
 [DepositPreauth entry]: /docs/references/protocol/transactions/types/depositpreauth.md
