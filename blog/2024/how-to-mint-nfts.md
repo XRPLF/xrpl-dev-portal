@@ -10,13 +10,19 @@ markdown:
     editPage:
         hide: true
 ---
-# How to Mint an NFT on the XRP Ledger: A Step-by-Step Guide
+# How to Mint an NFT: A Simple Step-by-Step Guide
 
 The first in a broader series dedicated to making your XRP Ledger building journey an altogether smoother experience is here! In this piece we cover how you can begin to shape your very own NFT collection on the XRP Ledger today. 
 
-Navigating the exciting realm of [Non-fungible Tokens (NFTs)](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger can seem daunting at first. However, with the right tools and a bit of JavaScript or Python, minting, managing, and burning NFTs becomes a straightforward process. This blog demystifies the process, providing a clear guide on how to create, view, and destroy NFTs on this innovative platform.
+Navigating the exciting realm of [Non-fungible Tokens (NFTs)](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger can seem daunting at first. However, with the right tools and a bit of JavaScript or Python, minting, managing, and burning NFTs becomes a straightforward process. This blog demystifies the process, providing a clear step-by-step guide on how to create, view, and destroy NFTs on this innovative platform.
 
 <!-- BREAK -->
+
+## What is an NFT?
+
+A Non-Fungible Token (NFT) is a unique digital asset that represents ownership or proof of authenticity of a specific item, such as digital art, collectibles, music, in-game assets, or even tokenized real-world assets. 
+
+Unlike fungible tokens such as XRP, which are interchangeable and hold the same value, NFTs are distinct and cannot be exchanged on a one-to-one basis. Each NFT carries unique metadata stored on the blockchain, ensuring verifiable provenance and scarcity. On the XRP Ledger (XRPL), NFTs benefit from low transaction costs, high-speed settlements, and built-in royalty enforcement, making them an efficient and scalable option for creators and businesses looking to tokenize assets.
 
 
 ## How Much Does it Cost to Mint an NFT?
@@ -38,9 +44,9 @@ The following table provides examples of how much the total owner reserve might 
 | 200 | 14 XRP | 18 XRP | 26 XRP |
 | 1000 | 64 XRP | 84 XRP | 126 XRP |
 
-## Getting Started
+## NFT Minting: Getting Started
 
-Before diving into NFT minting, ensure you have access to test accounts on the XRP Ledger's Testnet or Devnet. This is crucial for experimenting without risking real assets. You can easily acquire test accounts by downloading the Quickstart Samples archive, available in [JavaScript] (https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) and [Python](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py), and following these steps:
+Before diving into how to mint an NFT, ensure you have access to test accounts on the XRP Ledger's Testnet or Devnet. This is crucial for experimenting without risking real assets. You can easily acquire test accounts by downloading the Quickstart Samples archive, available in [JavaScript] (https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) and [Python](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py), and following these steps:
 
 1. Open the `3.mint-nfts.html` file in a browser to initiate.
 2. Obtain test accounts:
@@ -49,9 +55,26 @@ Before diving into NFT minting, ensure you have access to test accounts on the X
 
 ![Screenshot: Token Test Harness to mint and burn NFTs](/blog/img/devblog-how-to-mint-nfts-token-test-harness.png)
 
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=oGzKbQJCTJ0&t=9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "VideoObject",
+"name": "How to Mint an NFT on the XRP Ledger?",
+"description": "How to Mint an NFT on the XRP Ledger?",
+"uploadDate": "2024-02-29",
+"embedUrl": "https://www.youtube.com/watch?v=oGzKbQJCTJ0&t=9s"
+}
+</script>
+
+
 ## What does it mean to mint an NFT?
 
-Minting an NFT involves creating a new, unique digital token on the blockchain. To [mint an NFT](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger:
+Minting an NFT involves creating a new, unique digital token using blockchain technology. To [mint an NFT](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger:
 
 1. Set the Flags: For testing, set the Flags field to 8. This makes your NFT transferable to others outside the issuing account. For a non-transferable NFT, you can omit this or set a different value.
 2. Input the Token URL: This URL points to your NFT's data or metadata. You can use a sample URI or provide your own.
