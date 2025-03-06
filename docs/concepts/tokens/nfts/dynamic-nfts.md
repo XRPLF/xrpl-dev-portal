@@ -15,7 +15,7 @@ When minting a new NFT, set the `tfMutable` flag (`0x00000010`) to enable the ab
 
 ## Modifying a dNFT
 
-Use the `NFTokenModify` transaction to update the URI field of a dNFT. Provide the `Account` of the issuer or an authorized minter, the `Owner` of the dNFT, the `NFTokenID`, and the `URI` to the new object data.
+Use the `NFTokenModify` transaction to update the URI field of a dNFT. Provide the `Account` of the issuer or an authorized minter, the `Owner` of the dNFT (if different than the `Account` address), the `NFTokenID`, and the `URI` to the new object data.
 
 ### Sample NFTokenModify Transaction
 
