@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: 2025-03-05
+date: 2025-03-06
 seo:
     title: Introducing XRP Ledger version 2.4.0
     description: rippled version 2.4.0 is now available. This version introduces new features and stability fixes.
