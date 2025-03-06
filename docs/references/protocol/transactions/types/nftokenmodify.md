@@ -21,9 +21,9 @@ title:
   "Owner": "rogue5HnPRSszD9CWGSUz8UGHMVwSSKF6",
   "Fee": "10",
   "Sequence": 33,
-  "NFTokenID": “0008C350C182B4F213B82CCFA4C6F59AD76F0AFCFBDF04D5A048C0A300000007",
+  "NFTokenID": "0008C350C182B4F213B82CCFA4C6F59AD76F0AFCFBDF04D5A048C0A300000007",
   "URI": "697066733A2F2F62616679626569636D6E73347A736F6C686C6976346C746D6E356B697062776373637134616C70736D6C6179696970666B73746B736D3472746B652F5665742E706E67"
-  }
+}
 ```
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
@@ -38,7 +38,7 @@ title:
 ## Error Cases
 Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
-| Error Code                   | Description |
-|:-------------------------|:-------------|
+| Error Code         | Description |
+|:-------------------|:------------|
 | `tecNO_PERMISSION` | The `tfMutable` flag wasn't enabled, so you can't update the `URI` field. You can also receive this error if the `Account` field isn't an issuer or authorized minter of the NFT.  |
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
