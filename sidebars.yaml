@@ -117,6 +117,7 @@
                 - page: docs/concepts/tokens/fungible-tokens/freezes.md
                   expanded: false
                   items:
+                    - page: docs/concepts/tokens/fungible-tokens/deep-freeze.md
                     - page: docs/concepts/tokens/fungible-tokens/common-misconceptions-about-freezes.md
                 - page: docs/concepts/tokens/fungible-tokens/paths.md
                 - page: docs/concepts/tokens/fungible-tokens/rippling.md
@@ -134,6 +135,7 @@
                 - page: docs/concepts/tokens/nfts/guaranteeing-a-fixed-supply.md
                 - page: docs/concepts/tokens/nfts/nft-apis.md
                 - page: docs/concepts/tokens/nfts/non-transferable-tokens.md
+                - page: docs/concepts/tokens/nfts/dynamic-nfts.md
             - page: docs/concepts/tokens/transfer-fees.md
             - page: docs/concepts/tokens/decentralized-exchange/index.md
               expanded: false
@@ -142,6 +144,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/autobridging.md
                 - page: docs/concepts/tokens/decentralized-exchange/ticksize.md
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
+                - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:
@@ -387,6 +390,7 @@
                     - page: docs/references/protocol/transactions/types/nftokencanceloffer.md
                     - page: docs/references/protocol/transactions/types/nftokencreateoffer.md
                     - page: docs/references/protocol/transactions/types/nftokenmint.md
+                    - page: docs/references/protocol/transactions/types/nftokenmodify.md
                     - page: docs/references/protocol/transactions/types/offercancel.md
                     - page: docs/references/protocol/transactions/types/offercreate.md
                     - page: docs/references/protocol/transactions/types/oracledelete.md
@@ -395,6 +399,8 @@
                     - page: docs/references/protocol/transactions/types/paymentchannelclaim.md
                     - page: docs/references/protocol/transactions/types/paymentchannelcreate.md
                     - page: docs/references/protocol/transactions/types/paymentchannelfund.md
+                    - page: docs/references/protocol/transactions/types/permissioneddomaindelete.md
+                    - page: docs/references/protocol/transactions/types/permissioneddomainset.md
                     - page: docs/references/protocol/transactions/types/setregularkey.md
                     - page: docs/references/protocol/transactions/types/signerlistset.md
                     - page: docs/references/protocol/transactions/types/ticketcreate.md
@@ -482,6 +488,7 @@
                 - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/index.md
                   expanded: false
                   items:
+                    - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
                     - page: docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
@@ -640,6 +647,7 @@
                 - page: docs/infrastructure/configuration/peering/use-a-peer-reservation.md
             - page: docs/infrastructure/configuration/configure-amendment-voting.md
             - page: docs/infrastructure/configuration/configure-statsd.md
+            - page: docs/infrastructure/configuration/configure-validator-list-threshold.md
             - page: docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
             - page: docs/infrastructure/configuration/configure-grpc.md
             - page: docs/infrastructure/configuration/enable-public-signing.md
