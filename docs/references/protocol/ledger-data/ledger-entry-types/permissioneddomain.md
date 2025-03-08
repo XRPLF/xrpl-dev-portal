@@ -45,7 +45,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field                 | JSON Type            | [Internal Type][] | Required? | Description  |
 |:----------------------|:----------|:------------------|:----------|--------------|
-| `AcceptedCredentials` | Array                | Array             | Yes       | A list of 1 to 10 [**Accepted Credentials objects**](#acceptedcredentials-objects) that grant access to this domain. The array is stored sorted by issuer. |
+| `AcceptedCredentials` | Array                | Array             | Yes       | A list of 1 to 10 [Credential](#acceptedcredentials-objects) objects that grant access to this domain. The array is stored sorted by issuer. |
 | `Owner`               | String - [Address][] | AccountID         | Yes       | The address of the account that owns this domain. |
 | `OwnerNode`           | String               | UInt64            | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`       | String - [Hash][]    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
