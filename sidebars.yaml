@@ -345,6 +345,7 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/offer.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
