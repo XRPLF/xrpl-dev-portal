@@ -32,7 +32,8 @@ The XRP Ledger's CLOB DEX is unique in that it does **not require** AMMs to swap
 "name": "What is a Decentralized Exchange, or DEX?",
 "description": "What is a Decentralized Exchange, or DEX?",
 "uploadDate": "2022-01-10",
-"embedUrl": "https://www.youtube.com/watch?v=VWNrHBDfXvA?feature=shared"
+"embedUrl": "https://www.youtube.com/watch?v=VWNrHBDfXvA?feature=shared",
+"thumbnailUrl": "https://i.ytimg.com/vi/VWNrHBDfXvA/maxresdefault.jpg"
 }
 </script>
 

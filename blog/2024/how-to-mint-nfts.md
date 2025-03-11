@@ -66,8 +66,8 @@ Before diving into how to mint an NFT, ensure you have access to test accounts o
 "@type": "VideoObject",
 "name": "How to Mint an NFT on the XRP Ledger?",
 "description": "How to Mint an NFT on the XRP Ledger?",
-"uploadDate": "2024-02-29",
-"embedUrl": "https://www.youtube.com/watch?v=oGzKbQJCTJ0&t=9s"
+"uploadDate": "2024-02-29","embedUrl": "https://www.youtube.com/watch?v=oGzKbQJCTJ0&t=9s",
+"thumbnailUrl": "https://img.youtube.com/vi/oGzKbQJCTJ0/hqdefault.jpg"
 }
 </script>
 
