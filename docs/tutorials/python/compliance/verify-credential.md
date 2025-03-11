@@ -1,6 +1,6 @@
 ---
 seo:
-    description: 
+    description: Verify that an account holds a valid credential on the XRP Ledger.
 labels:
     - Credentials
 ---
