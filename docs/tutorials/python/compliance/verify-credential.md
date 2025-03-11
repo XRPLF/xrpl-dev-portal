@@ -73,7 +73,9 @@ python verify_credential.py rsYhHbanGpnYe3M6bsaMeJT5jnLTfDEzoA rsYhHbanGpnYe3M6b
 
 A full usage statement is available with the `-h` flag.
 
-You can also open an interactive python shell and import the `verify_credential` function, as in the following example:
+### Interactive Shell
+
+You can open an interactive python shell and import the `verify_credential` function, as in the following example:
 
 ```py
 >>> from verify_credential import verify_credential
@@ -82,6 +84,60 @@ You can also open an interactive python shell and import the `verify_credential`
 >>> verify_credential(client, issuer="rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS", subject="rsYhHbanGpnYe3M6bsaMeJT5jnLTfDEzoA", credential_type="my_credential")
 True
 ```
+
+You can import the `verify_credential(...)` function into other scripts and use it the same way.
+
+### Other Examples
+
+The following examples show other possible scenarios. The data for these examples may or may not still be present in Devnet—for example, anyone can delete an expired credential.
+
+{% tabs %}
+{% tab label="Valid with Expiration" %}
+```text
+$ ./verify_credential.py rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S long_lasting_credential
+
+Encoded credential_type as hex: 6C6F6E675F6C617374696E675F63726564656E7469616C
+Looking up credential...
+{'ledger_index': 'validated', 'method': 'ledger_entry', 'api_version': 2, 'credential': {'subject': 'rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S', 'issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'credential_type': '6C6F6E675F6C617374696E675F63726564656E7469616C'}, 'binary': False}
+Found credential:
+{'CredentialType': '6C6F6E675F6C617374696E675F63726564656E7469616C', 'Expiration': 1167724800, 'Flags': 65536, 'Issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'IssuerNode': '0', 'LedgerEntryType': 'Credential', 'PreviousTxnID': 'C65794B7C322F028DB0D2DD72C9FF69D53A676B1608B77ADEF22311AFB22BFF7', 'PreviousTxnLgrSeq': 996934, 'Subject': 'rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S', 'SubjectNode': '0', 'index': 'FC4BB495DAE7C9F4615174188B3C5F2E337680017BA90E1F126DE08CAD15FD66'}
+Credential has expiration: 2037-01-01T08:00:00+00:00
+Looking up validated ledger to check for expiration.
+Most recent validated ledger is: 2025-03-11T20:01:51+00:00
+Credential is valid.
+```
+{% /tab %}
+
+{% tab label="Expired" %}
+```text
+$ ./verify_credential.py rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S expiring_credential
+
+Encoded credential_type as hex: 6578706972696E675F63726564656E7469616C
+Looking up credential...
+{'ledger_index': 'validated', 'method': 'ledger_entry', 'api_version': 2, 'credential': {'subject': 'rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S', 'issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'credential_type': '6578706972696E675F63726564656E7469616C'}, 'binary': False}
+Found credential:
+{'CredentialType': '6578706972696E675F63726564656E7469616C', 'Expiration': 795038400, 'Flags': 65536, 'Issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'IssuerNode': '0', 'LedgerEntryType': 'Credential', 'PreviousTxnID': 'E497F1EFE2E198EDED0D94ADDEE4CEFACDDC3B1674133A0123C765F8061B9600', 'PreviousTxnLgrSeq': 997087, 'Subject': 'rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S', 'SubjectNode': '0', 'index': 'F3A9475871E7BA994E257732D0C7CB0B91CACBBB9F840BDFA6ABABD6F71454CD'}
+Credential has expiration: 2025-03-11T20:00:00+00:00
+Looking up validated ledger to check for expiration.
+Most recent validated ledger is: 2025-03-11T20:02:03+00:00
+Credential is expired.
+```
+{% /tab %}
+
+{% tab label="Unaccepted" %}
+```text
+$ ./verify_credential.py rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S unaccepted_credential
+
+Encoded credential_type as hex: 756E61636365707465645F63726564656E7469616C
+Looking up credential...
+{'ledger_index': 'validated', 'method': 'ledger_entry', 'api_version': 2, 'credential': {'subject': 'rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S', 'issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'credential_type': '756E61636365707465645F63726564656E7469616C'}, 'binary': False}
+Found credential:
+{'CredentialType': '756E61636365707465645F63726564656E7469616C', 'Flags': 0, 'Issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'IssuerNode': '0', 'LedgerEntryType': 'Credential', 'PreviousTxnID': '59DB4B17E5552AB1CA1E2A89F5C03E51C2ACD0D293955FA701AE4A1801E94C96', 'PreviousTxnLgrSeq': 997107, 'Subject': 'rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S', 'SubjectNode': '0', 'index': '8E5AD9444D566BE5C6F87C94D696139CEEE43ACB9A96137A59C003B48DF565C6'}
+Credential is not accepted.
+```
+{% /tab %}
+{% /tabs %}
+
 
 ## Code Walkthrough
 
@@ -106,7 +162,7 @@ The `verify_credential(...)` function performs the main work for this tutorial. 
 
 {% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Main function" before="# Handle function inputs" /%}
 
-The first thing the function does is verify that the user provided a credential type as either `credential_type` or `credential_type_hex` parameter. The XRP Ledger APIs require the credential type to be hexadecimal, so it converts the user input if necessary:
+The first thing the function does is verify that the user provided a credential type in either the `credential_type` or `credential_type_hex` parameter. The XRP Ledger APIs require the credential type to be hexadecimal, so it converts the user input if necessary:
 
 {% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Handle function inputs" before="# Perform XRPL lookup" /%}
 
