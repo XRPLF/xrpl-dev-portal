@@ -16,7 +16,7 @@ This tutorial uses sample code in Python using the [xrpl-py library](../index.md
 
 ## Prerequisites
 
-- You must have Python installed and know how to run Python code from the command line.
+- You must have Python installed and know how to run Python code from the command line. Python 3.8 or later is required for xrpl-py.
 - You should have a basic understanding of the XRP Ledger
 - The credential you want to verify should exist in the ledger already, and you should know the addresses of both the issuer and the holder, as well as the official credential type you want to check.
 <!-- Uncomment when both are merged:
