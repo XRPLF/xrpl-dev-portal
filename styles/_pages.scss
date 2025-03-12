@@ -1641,7 +1641,8 @@ html.light {
   justify-content: center;
   overflow: hidden;
   padding: 100px 40px;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .upcoming-events__title {
@@ -1655,8 +1656,8 @@ html.light {
 .upcoming-events__logo-container {
   display: flex;
   align-items: center;
-  gap: 100px;
-  justify-content: flex-start;
+  gap: 35px;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -1711,6 +1712,7 @@ html.light {
     'archax': '../img/tokenization/archax.png',
     'meld': '../img/tokenization/meld.png',
     'ripple-logo': '../img/tokenization/ripple-logo.png',
+    'ondo': '../img/tokenization/ondo.png',
   );
   @each $name, $path in $company-logos {
     .company-logo.#{$name} {

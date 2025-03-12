@@ -1263,6 +1263,7 @@ main article .card-grid {
     'archax': '../img/tokenization/lightmode/archax.png',
     'meld': '../img/tokenization/lightmode/meld.png',
     'ripple-logo': '../img/tokenization/lightmode/ripple-logo.png',
+    'ondo': '../img/tokenization/lightmode/ondo.png',
   );
 
   @each $name, $path in $company-logos-light {

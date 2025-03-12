@@ -42,12 +42,13 @@ const benefitsData = [
       "Enable seamless interaction with other blockchains via secure cross-chain bridges, allowing you to expand your project's functionality and liquidity options across ecosystems.",
   },
 ];
+
 const companies = [
   {
-    className: "open-eden",
-    alt: "Open Eden",
-    aspectRatio: 5,
-    link: "https://openeden.com/tbill",
+    className: "archax",
+    alt: "Archax",
+    aspectRatio: 1.25,
+    link: "https://archax.com/",
   },
   {
     className: "zoniqx",
@@ -56,22 +57,28 @@ const companies = [
     link: "https://www.zoniqx.com/",
   },
   {
-    className: "archax",
-    alt: "Archax",
-    aspectRatio: 1.25,
-    link: "https://archax.com/",
+    className: "open-eden",
+    alt: "Open Eden",
+    aspectRatio: 5,
+    link: "https://openeden.com/tbill",
   },
   {
-    className: "meld",
-    alt: "Meld",
-    aspectRatio: 0.81,
-    link: "https://www.meld.gold/",
+    className: "ondo",
+    alt: "Ondo",
+    aspectRatio: 1.25,
+    link: "https://ondo.finance/",
   },
   {
     className: "ripple-logo",
     alt: "Ripple",
     aspectRatio: 3.89,
     link: "https://ripple.com/rwa-tokenization",
+  },
+  {
+    className: "meld",
+    alt: "Meld",
+    aspectRatio: 0.81,
+    link: "https://www.meld.gold/",
   },
 ];
 
