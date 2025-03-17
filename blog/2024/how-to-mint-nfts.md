@@ -57,7 +57,7 @@ Before diving into how to mint an NFT, ensure you have access to test accounts o
 
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=oGzKbQJCTJ0&t=9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oGzKbQJCTJ0?si=opmCEOjqZgTmCm1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <script type="application/ld+json">
@@ -70,7 +70,6 @@ Before diving into how to mint an NFT, ensure you have access to test accounts o
 "thumbnailUrl": "https://img.youtube.com/vi/oGzKbQJCTJ0/hqdefault.jpg"
 }
 </script>
-
 
 ## What does it mean to mint an NFT?
 
