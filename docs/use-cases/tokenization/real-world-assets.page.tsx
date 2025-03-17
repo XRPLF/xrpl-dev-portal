@@ -57,6 +57,18 @@ const companies = [
     link: "https://www.zoniqx.com/",
   },
   {
+    className: "axiology",
+    alt: "Axiology",
+    aspectRatio: 1.25,
+    link: "https://www.axiology.xyz/",
+  },
+  {
+    className: "palisade",
+    alt: "Palisade",
+    aspectRatio: 1.25,
+    link: "https://www.palisade.co/",
+  },
+  {
     className: "open-eden",
     alt: "Open Eden",
     aspectRatio: 5,

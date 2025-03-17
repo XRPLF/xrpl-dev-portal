@@ -1707,12 +1707,14 @@ html.light {
 }
 
   $company-logos: (
-    'open-eden': '../img/tokenization/open-eden.png',
     'zoniqx': '../img/tokenization/zoniqx.png',
     'archax': '../img/tokenization/archax.png',
+    'palisade': '../img/tokenization/palisade.png',
+    'axiology': '../img/tokenization/axiology.png',
+    'open-eden': '../img/tokenization/open-eden.png',
+    'ondo': '../img/tokenization/ondo.png',
     'meld': '../img/tokenization/meld.png',
     'ripple-logo': '../img/tokenization/ripple-logo.png',
-    'ondo': '../img/tokenization/ondo.png',
   );
   @each $name, $path in $company-logos {
     .company-logo.#{$name} {
@@ -1720,16 +1722,11 @@ html.light {
     }
   }
   
-    .company-logo.open-eden{
-      height: 30px;
-    }
-
-  .company-logo.archax{
-    max-height: 96px;
-  }
-  .company-logo.meld{
-    max-height: 96px;
-    max-width: 80px;
+  .company-logo{
+    max-height: 66px;
+    max-width: 100px;
+    width: 100%;
+    height: 100%;
   }
 
 .token-developer-tools-section {
