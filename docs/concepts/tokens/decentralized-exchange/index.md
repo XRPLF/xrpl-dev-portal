@@ -22,7 +22,7 @@ A decentralized exchange, abbreviated "DEX", is a platform that enables anyone t
 The XRP Ledger's CLOB DEX is unique in that it does **not require** AMMs to swap. Trades on the XRP Ledger _can_ use AMMs to swap too, but unlike other DEXes, an AMM is not required.  
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=VWNrHBDfXvA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VWNrHBDfXvA?si=fEcezzSmuJfhbdoc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <script type="application/ld+json">
@@ -32,7 +32,8 @@ The XRP Ledger's CLOB DEX is unique in that it does **not require** AMMs to swap
 "name": "What is a Decentralized Exchange, or DEX?",
 "description": "What is a Decentralized Exchange, or DEX?",
 "uploadDate": "2022-01-10",
-"embedUrl": "https://www.youtube.com/watch?v=VWNrHBDfXvA?feature=shared"
+"embedUrl": "https://www.youtube.com/watch?v=VWNrHBDfXvA?feature=shared",
+"thumbnailUrl": "https://i.ytimg.com/vi/VWNrHBDfXvA/maxresdefault.jpg"
 }
 </script>
 
