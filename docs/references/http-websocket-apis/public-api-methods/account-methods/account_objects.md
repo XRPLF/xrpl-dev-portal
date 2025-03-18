@@ -94,6 +94,7 @@ Valid `type` field values are:
 | `Check`          | `check`           |
 | `DepositPreauth` | `deposit_preauth` |
 | `Escrow`         | `escrow`          |
+| `MPToken`        | `mptoken`         |
 | `NFTokenOffer`   | `nft_offer`       |
 | `NFTokenPage`    | `nft_page`        |
 | `Offer`          | `offer`           |
@@ -102,6 +103,7 @@ Valid `type` field values are:
 | `SignerList`     | `signer_list`     |
 | `Ticket`         | `ticket`          |
 
+{% admonition type="info" name="Note" %}MPToken requires the [MPToken amendment][] {% not-enabled /%}.{% /admonition %}
 {% admonition type="info" name="Note" %}The commandline interface to the `account_objects` command doesn't accept the `type` field. Use the [json method][] to send the JSON-RPC format request on the commandline instead.{% /admonition %}
 
 ## Response Format
