@@ -174,9 +174,12 @@ At the protocol level, this format is [serialized](../binary-format.md#currency-
 
 ### Nonstandard Currency Codes
 
-You can also use a 160-bit (40-character) hexadecimal string, such as `444F4C4C415259444F4F00000000000000000000` as the currency code. To prevent this from being treated as a "standard" currency code, the first 8 bits MUST NOT be `0x00`. When using or reading a nonstandard currency code, consider the following:
+You can also use a 160-bit (40-character) hexadecimal string, such as `444F4C4C415259444F4F00000000000000000000` as the currency code. To prevent this from being treated as a "standard" currency code, the first 8 bits SHOULD NOT be `0x00`. At a protocol level, non-standard currency codes starting with `0x00` are allowed, but they may not be handled correctly by all APIs. When using or reading a nonstandard currency code, consider the following:
 
 - Most interfaces that read currency codes translate them into ASCII when the currency code is nonstandard.
+- If you decode a nonstandard currency code into text (ASCII or UTF-8), beware of non-printing characters or text that may be treated as markup where you are displaying them. Also be careful of "lookalike" currency codes that may display as XRP or other assets, but aren't.
 - Not all hexadecimal strings have a direct, human-readable format. See: [Normalize Currency Codes](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/normalize-currency-codes).
 
 **Deprecated:** Some previous versions of [ripple-lib](https://github.com/XRPLF/xrpl.js) supported an "interest-bearing" or "demurraging" currency code type, such as `015841551A748AD2C1F76FF6ECB0CCCD00000000`. These codes have the first 8 bits `0x01`. Demurraging / interest-bearing currencies are no longer supported, but you may find them in ledger data. For more information, see [Demurrage](../../../concepts/tokens/fungible-tokens/demurrage.md).
+
+
