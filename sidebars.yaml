@@ -26,7 +26,6 @@
           expanded: false
           items:
             - page: docs/use-cases/tokenization/stablecoin-issuer.md
-            - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
             - page: docs/use-cases/tokenization/nft-mkt-overview.md
               expanded: false
               items:
@@ -34,6 +33,11 @@
                 - page: docs/use-cases/tokenization/authorized-minter.md
                 - page: docs/use-cases/tokenization/digital-artist.md
             - page: docs/use-cases/tokenization/real-world-assets.page.tsx
+            - page: docs/use-cases/tokenization/mpt-overview.md
+              expanded: false
+              items:
+                - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
+                - page: docs/use-cases/tokenization/send-an-mpt.md
         - page: docs/use-cases/defi/index.md
           expanded: false
           items:

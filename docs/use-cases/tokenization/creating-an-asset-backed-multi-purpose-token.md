@@ -138,6 +138,7 @@ const transactionJson = {
   } else {
     successURLfield.value = "https://devnet.xrpl.org/ledgers/" + tx.result.ledger_index
   }
+  mptIssuanceIdField.value = JSON.stringify(tx.result.meta.mpt_issuance_id)
 } //End of sendTransaction()
 
 </script>
@@ -340,6 +341,11 @@ const transactionJson = {
         </div>
       </div>
     </div>
+    <div class="row">
+      <p><b>MPT Issuance ID</b><br/>
+        <input type="text" id="mptIssuanceIdField" size="40"></input>
+      </p>
+    </div>
   </div>
 </div>
 </form>
@@ -373,6 +379,8 @@ The form sets the standard flags for an Issuer account and displays additional c
 | **Signer Accounts** | _account addresses_ | Accounts that have a vote regarding approval of transactions for this account. |
 | **Signer Weights** | _int_ | The weight of each signer's signature, relative to other signers. |
 | **Signer Quorum**  | _int_ | The required minimum value of signer weights to approve a transaction. |
+
+{% admonition type="info" name="Note" %}In practice, configuring signers for your issuing account is a best practice. To reduce complexity, this example does not use signer configuration.{% /admonition %}
 
 #### Issuer Account Flag Settings
 
@@ -429,7 +437,7 @@ The metadata you provide is what distinguishes your token from other MPTs. The f
     "ExternalUrl": "https://example.com/t-bill-token-metadata.json"
   }
 ```
-Once you've set your preferred values, click **Generate Code** to see the transaction syntax for your settings. The `Flags` field displays the sum of the flags you've selected, and the `MPTokenMetadata` is converted to a hexidecimal string.
+Once you've set your preferred values, click **Generate Transaction** to see the transaction syntax for your settings. The `Flags` field displays the sum of the flags you've selected, and the `MPTokenMetadata` is converted to a hexidecimal string.
 
 ![Generated syntax for MPTokenIssuanceCreate transaction](../../img/uc-mpt1-t-bill-mpt-generator-generate-code.png)
 
@@ -437,6 +445,8 @@ To create your T-bill MPT, click **Send Transaction**. When your transaction suc
 
 ![Success link appended to the code field.](../../img/uc-mpt1-t-bill-create-success.png)
 
-Follow the link and scroll down to find the `MPTokenIssuanceCreate` transaction for your new T-bill in the Explorer.
+Be sure to copy and save the **Seed** field and the **MPT Issuance ID** so that you can try transferring the MPT to another account as shown in [Sending an MPT](./send-an-mpt.md).
+
+Follow the link appended to the result field and scroll down to find the `MPTokenIssuanceCreate` transaction for your new T-bill in the Explorer.
 
 ![Explorer record of the new T-bill MPT.](../../img/uc-mpt1-t-bill-in-explorer.png)

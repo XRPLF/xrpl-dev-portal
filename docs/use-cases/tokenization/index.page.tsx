@@ -21,6 +21,10 @@ const useCases = [
     link: "/docs/use-cases/tokenization/nftoken-marketplace/",
   },
   {
+    description: "MPT Overview",
+    link: "/docs/use-cases/tokenization/mpt-overview/"
+  },
+  {
     description: "Authorized Minter",
     link: "/docs/use-cases/tokenization/authorized-minter/",
   },
