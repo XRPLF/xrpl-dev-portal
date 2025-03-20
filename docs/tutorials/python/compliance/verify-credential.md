@@ -19,9 +19,7 @@ This tutorial uses sample code in Python using the [xrpl-py library](../index.md
 - You must have Python installed and know how to run Python code from the command line. Python 3.8 or later is required for xrpl-py.
 - You should have a basic understanding of the XRP Ledger.
 - The credential you want to verify should exist in the ledger already, and you should know the addresses of both the issuer and the holder, as well as the official credential type you want to check.
-<!-- Uncomment when both are merged:
      - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md).
--->
 
 ## Setup
 
@@ -218,8 +216,6 @@ Otherwise, the code exits as normal, which returns a successful exit code of `0`
 Now that you know how to use `xrpl-py` to verify credentials, you can try building this or related steps together into a bigger project. For example:
 
 - Incorporate credential verification into a [wallet application](../build-apps/build-a-desktop-wallet-in-python.md).
-<!-- Uncomment when both are merged:
 - Issue your own credentials with a [credential issuing service](../build-apps/credential-issuing-service.md).
--->
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
