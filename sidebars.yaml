@@ -527,6 +527,7 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/version.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/feature.md
 
                 - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/index.md
                   expanded: false
