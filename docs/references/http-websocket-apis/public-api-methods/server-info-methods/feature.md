@@ -27,8 +27,8 @@ An example of the request format:
 {% tab label="WebSocket" %}
 ```json
 {
-  "id": "list_all_features",
-  "command": "feature"
+  "command": "feature",
+  "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373"
 }
 ```
 {% /tab %}
@@ -72,34 +72,11 @@ An example of a successful response:
 {% tab label="WebSocket" %}
 ```json
 {
-  "id": "list_all_features",
   "result": {
-    "features": {
-      "00C1FC4A53E60AB02C864641002B3172F38677E29C26C5406685179B37E1EDAC": {
-        "enabled": true,
-        "name": "RequireFullyCanonicalSig",
-        "supported": true
-      },
-      "0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3": {
-        "enabled": false,
-        "name": "fixNFTokenDirV1",
-        "supported": true
-      },
-      "03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C": {
-        "enabled": true,
-        "name": "fixNFTokenReserve",
-        "supported": true
-      },
-      "07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104": {
-        "enabled": false,
-        "name": "Escrow",
-        "supported": true
-      },
-      "08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647": {
-        "enabled": false,
-        "name": "PayChan",
-        "supported": true
-      }
+    "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373": {
+      "enabled": false,
+      "name": "MultiSign",
+      "supported": true
     }
   },
   "status": "success",
