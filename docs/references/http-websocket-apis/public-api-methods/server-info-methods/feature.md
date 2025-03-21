@@ -10,7 +10,7 @@ labels:
 
 # feature
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")<br/>
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Feature1.cpp "Source")<br/>
 
 The `feature` command returns information about [amendments](../../../../concepts/networks-and-servers/amendments.md) this server knows about, including whether they are enabled and if the server knows how to apply the amendments.
 
