@@ -1,0 +1,211 @@
+<html>
+  <head>
+    <title>Send MPT Test Harness</title>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link href="mpt-generator.css" rel="stylesheet"> 
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+    <script src='get-accounts.js'></script>
+    <script src='send-mpt.js'></script>
+    <script>
+      if (typeof module !== "undefined") {
+        const xrpl = require('xrpl')
+      }
+    </script>
+  </head>
+  
+<!-- ************************************************************** -->
+<!-- ********************** The Form ****************************** -->
+<!-- ************************************************************** -->
+
+  <body>
+    <h1>Send MPTs</h1>
+    <form id="theForm">
+      Choose your ledger instance:  
+      &nbsp;&nbsp;
+      <input type="radio" id="tn" name="server"
+        value="wss://s.altnet.rippletest.net:51233" >
+      <label for="testnet">Testnet</label>
+      &nbsp;&nbsp;
+      <input type="radio" id="dn" name="server"
+        value="wss://s.devnet.rippletest.net:51233" checked>
+      <label for="devnet">Devnet</label>
+      <br/><br/>
+      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
+      <br/>
+      <textarea id="seeds" cols="40" rows= "2"></textarea>
+      <br/><br/>
+      <table>
+        <tr valign="top">
+          <td>
+            <table>
+              <tr valign="top">
+                <td>
+                <td>
+                  <button type="button" onClick="getAccount('left')">Get New Left Account</button>
+                  <table>
+                    <tr valign="top">
+                      <td align="right">
+                        Left Account
+                      </td>
+                      <td>
+                        <input type="text" id="leftAccountField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Seed
+                      </td>
+                      <td>
+                        <input type="text" id="leftSeedField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        XRP Balance
+                      </td>
+                      <td>
+                        <input type="text" id="leftBalanceField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Quantity
+                      </td>
+                      <td>
+                        <input type="text" id="leftQuantityField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Destination
+                      </td>
+                      <td>
+                        <input type="text" id="leftDestinationField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        MPT Issuance ID
+                      </td>
+                      <td>
+                        <input type="text" id="leftIssuanceIdField" size="40"></input>
+                      </td>
+                    </tr>
+                  </table>
+                  <p align="left">
+                    <textarea id="leftResultField" cols="80" rows="20" ></textarea>
+                  </p>
+                </td>
+                </td>
+                <td>
+                  <table>
+                    <tr valign="top">
+                      <td align="center" valign="top">
+                        <button type="button" onClick="MPTAuthorize()">Authorize MPTs</button>
+                         <br/>
+                         <button type="button" onClick="sendMPT()">Send MPT</button>
+                        <br/>
+                         <button type="button" onClick="getMPTs()">Get MPTs</button>
+                      </td>
+                    </tr>
+                    </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                <td>
+                  <table>
+                    <tr>
+                      <td align="center" valign="top">
+                        <button type="button" onClick="rightMPTAuthorize()">Authorize MPTs</button>
+                         <br/>
+                        <button type="button" onClick="rightSendMPT()">Send MPT</button>
+                        <br/>
+                        <button type="button" onClick="rightGetMPTs()">Get MPTs</button>
+                      </td>
+                      <td valign="top" align="right">
+                        <button type="button" onClick="getAccount('right')">Get New Right Account</button>
+                        <table>
+                          <tr valign="top">
+                            <td align="right">
+                              Right Account
+                            </td>
+                            <td>
+                              <input type="text" id="rightAccountField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Seed
+                            </td>
+                            <td>
+                              <input type="text" id="rightSeedField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              XRP Balance
+                            </td>
+                            <td>
+                              <input type="text" id="rightBalanceField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Quantity
+                            </td>
+                            <td>
+                              <input type="text" id="rightQuantityField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Destination
+                            </td>
+                            <td>
+                              <input type="text" id="rightDestinationField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              MPT Issuance ID
+                            </td>
+                            <td>
+                              <input type="text" id="rightIssuanceIdField" size="40"></input>
+                            </td>
+                          </tr>
+                        </table>
+                        <p align="right">
+                          <textarea id="rightResultField" cols="80" rows="20" ></textarea>
+                        </p>
+                      </td>
+                      </td>
+                    </tr>
+                    </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
