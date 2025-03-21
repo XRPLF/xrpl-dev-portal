@@ -335,4 +335,16 @@ Finally, the `CredentialRequest` class inherits from the `Credential` class but 
 
 {% code-snippet file="/_code-samples/issue-credentials/py/credential_model.py" language="py" from="class CredentialRequest(Credential):" /%}
 
+## Next Steps
+
+Using this service as a base, you can extend the service with more features, such as:
+
+- Security/authentication to protect API methods from unauthorized use.
+- Actually checking user documents to decide if you should issue a credential.
+
+Alternatively, you can use credentials to for various purposes, such as:
+
+- Define a [Permissioned Domain](/docs/concepts/tokens/decentralized-exchange/permissioned-domains) that uses your credentials to grant access to features on the XRP Ledger.
+- [Verify credentials](../compliance/verify-credential.md) manually to grant access to services that exist off-ledger.
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
