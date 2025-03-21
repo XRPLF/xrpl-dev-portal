@@ -4,6 +4,7 @@ ignore:
   - _code-samples/*/README.md
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
+  - resources/contribute-blog/_blog-template.md
 l10n:
   defaultLocale: en-US
   locales:
