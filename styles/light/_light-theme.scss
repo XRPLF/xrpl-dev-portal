@@ -1256,13 +1256,17 @@ main article .card-grid {
       background-image: url(#{$path});
     }
   }
+  
 
   $company-logos-light: (
     'open-eden': '../img/tokenization/lightmode/open-eden.png',
     'zoniqx': '../img/tokenization/lightmode/zoniqx.png',
+    'axiology': '../img/tokenization/lightmode/axiology.png',
     'archax': '../img/tokenization/lightmode/archax.png',
     'meld': '../img/tokenization/lightmode/meld.png',
+    'palisade': '../img/tokenization/lightmode/palisade.png',
     'ripple-logo': '../img/tokenization/lightmode/ripple-logo.png',
+    'ondo': '../img/tokenization/lightmode/ondo.png',
   );
 
   @each $name, $path in $company-logos-light {
