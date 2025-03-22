@@ -43,7 +43,7 @@ TokenTaxonフィールドを使用して、特定のテーマや目的に基づ�
 
 ## NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。   
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
 
 NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
