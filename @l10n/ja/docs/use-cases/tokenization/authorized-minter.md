@@ -10,9 +10,9 @@ labels:
 
 _私は認可Minterとして、トークン発行者のために合意されたレートでトークンをミントし、トークンを売却して利益を得て、ロイヤリティを発行者に還元したいのです。_
 
-トークン発行者の認可Minterとして動作することができます。この場合、あなたはNFTokenを所有しますが、ロイヤリティはNFTokenの発行者が受け取ります。そのNFTokenを売却する場合、最初の売却益はあなたに入ります。発行者と合意の上、初回売却額の一部または全部を発行者に支払うことができます。
+トークン発行者の認可Minterとして活動することができます。この場合、NFTの所有者はあなたになりますが、ロイヤリティはNFTokenの発行者に送られます。そのNFTokenを販売すると、最初の販売収益はあなたのものになります。発行者と合意の上、初回売却額の一部または全部を発行者に支払うことも可能です。
 
-チュートリアル[認可Minterの割り当て](../../tutorials/javascript/nfts/assign-an-authorized-minter.md)で詳しく説明されています。
+詳しくは、チュートリアル[認可Minterの割り当て](../../tutorials/javascript/nfts/assign-an-authorized-minter.md)をご覧ください。
 
 [![認可Minterのフロー](/docs/img/nft-mkt-auth-minter.png "認可Minterのフロー")](/docs/img/nft-mkt-auth-minter.png)
 
@@ -37,25 +37,25 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 最も気になるであろう留意点：
 
 * [コレクションとしてNFTをミントする](../../concepts/tokens/nfts/collections.md)
-TokenTaxonフィールドを使用して、特定のテーマや目的をもったNFTのセットを作成します。
+TokenTaxonフィールドを使用して、特定のテーマや目的に基づいたNFTセットを作成可能。
 * [NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)
 また、「使い捨て」アカウントでNFTを作成し、別のアカウントで一定数のNFTを取得した後、ミントに使用した「使い捨て」アカウントを削除することで、作成したNFTの希少性を確保することができます。[NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)をご覧ください。
 
 ## NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。   
 
 NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/javascript/nfts/broker-an-nft-sale.md)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、販売価格の一部を報酬として得ることもできます。[NFTokenの取引を仲介する](../../tutorials/javascript/nfts/broker-an-nft-sale.md)をご覧ください。
 
 ### 準備金要件
 
-販売用のNFTをミントする際には、XRPの準備金が必要となります。各NFTokenページには、2XRPの準備金が必要です。NFTokenページは16～32個のNFTを保管することができます。
+販売用のNFTをミントする際には、XRPの準備金が必要となります。各NFTokenページには、{% $env.PUBLIC_OWNER_RESERVE %}の準備金が必要です。NFTokenページは16～32個のNFTを保管することができます。
 
-各`NFTokenOffer`オブジェクトは、2XRPの準備金が必要です。
+各`NFTokenOffer`オブジェクトは、{% $env.PUBLIC_OWNER_RESERVE %}の準備金が必要です。
 
-`NFTokenOffer`を作成したり、NFTを売却したりする際には、些細な送金手数料（およそ6000ドロップ、または0.006 XRP）が発生します。大量に販売する場合、こうした少額の手数料はすぐにかさみますので、ビジネスのコストとして考慮する必要があります。
+`NFTokenOffer`を作成したり、NFTを売却したりする際には、わずかな送金手数料（およそ6000ドロップ、または0.006 XRP）が発生します。大量に販売する場合、こうした少額の手数料はすぐにかさみますので、ビジネスのコストとして考慮する必要があります。
 
 次のコンテンツをご覧ください。
 
