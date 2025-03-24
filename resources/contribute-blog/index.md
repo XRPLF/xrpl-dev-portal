@@ -12,6 +12,9 @@ Thanks for considering a contribution to the XRP Ledger Dev Blog!
 
 This page includes high-level instructions to create a new blog post. Detailed instructions and guidelines to contribute to the XRPL Developer Portal are available in [Contribute Documentation](../contribute-documentation/index.md).
 
+{% admonition type="info" name="Note" %}Blog posts are currently only available in English and are not yet translated.{% /admonition %}
+
+
 ## Directory Structure for Blog Posts
 
 The source files are located in the `blog` directory of the public `xrpl-dev-portal` repository. 
