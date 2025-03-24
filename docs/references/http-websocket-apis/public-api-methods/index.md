@@ -89,11 +89,11 @@ Use these methods to enable the server to push updates to your client when vario
 Use these methods to retrieve information about the current state of the `rippled` server.
 
 * **[`fee`](server-info-methods/fee.md)** - Get information about transaction cost.
+* **[`feature`](server-info-methods/feature.md)** - Returns information about amendments this server knows about.
 * **[`server_info`](server-info-methods/server_info.md)** - Retrieve status of the server in human-readable format.
 * **[`server_state`](server-info-methods/server_state.md)** - Retrieve status of the server in machine-readable format.
 * **[`server_definitions`](server-info-methods/server_definitions.md)** - Retrieve a list of types and fields used for the XRPL's canonical binary format.
 * **[`manifest`](server-info-methods/manifest.md)** - Retrieve the latest ephemeral public key information about a known validator.
-* **[`feature`](server-info-methods/feature.md)** - Returns information about amendments this server knows about.
 
 ## [Clio Methods](clio-methods/index.md)
 

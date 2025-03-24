@@ -136,7 +136,7 @@ The response follows the [standard format][], with a successful result containin
 
 - Any of the [universal error types][].
 - `badFeature` - The `feature` specified was invalidly formatted, or the server does not know an amendment with that name.
-- `noPermission` - The user does not have permission to run the specified command (i.e., `vetoed`).
+- `noPermission` - The server does not have permission to run the specified command. For example, this can occur if the request includes admin-only fields that are not allowed, such as the `vetoed` request parameter.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
