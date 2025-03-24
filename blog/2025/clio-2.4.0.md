@@ -102,7 +102,7 @@ See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.3.1..
 | Package  |
 | :------- |
 | [Clio Server Linux Release (GCC)](https://github.com/XRPLF/clio/releases/download/2.4.0/clio_server_Linux_Release_gcc_2.4.0.zip) |
-| [Clio Server macOS Release (Apple Clang 16)](https://github.com/XRPLF/clio/releases/download/2.4.0/clio_server_Linux_Release_gcc_2.4.0.zip) |
+| [Clio Server macOS Release (Apple Clang 16)](https://github.com/XRPLF/clio/releases/download/2.4.0/clio_server_macOS_Release_apple_clang_16_2.4.0.zip) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/clio/releases/tag/2.4.0). The most recent commit in the git log should be:
 
@@ -116,7 +116,4 @@ Date:   Thu Mar 13 17:02:52 2025 +0000
 
 ## Feedback
 
-The Clio open-source project is seeking feedback and engagement from the XRPL community.
-
-- To provide feedback, please [fill out this survey](https://forms.gle/fnGPTUCAdmEzkFy57).
-- To report an issue or propose a new idea, please [open an issue](https://github.com/XRPLF/clio/issues).
+To report an issue or propose a new idea, please [open an issue](https://github.com/XRPLF/clio/issues).
