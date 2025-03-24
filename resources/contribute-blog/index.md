@@ -18,7 +18,7 @@ The source files are located in the `blog` directory of the public `xrpl-dev-por
 
 The image files used in blog posts are located in the `blog/img` directory.
 
-The blog posts are grouped by year, so all blog posts published in year 2025 will be located in the `blog/2025` directory. 
+The blog posts are grouped by year, so all blog posts published in year 2025 are located in the `blog/2025` directory. 
 
 ## Steps to Create a New Blog Post
 
