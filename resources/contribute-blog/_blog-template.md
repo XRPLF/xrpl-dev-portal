@@ -2,7 +2,7 @@
 category: 2025
 date: 2025-mm-dd
 seo:
-    title: SEO optimized title under 50chars
+    title: SEO Optimized Title
     description: SEO optimized description for the blog post that can be displayed in search results.
 
 labels:
@@ -11,22 +11,24 @@ markdown:
     editPage:
         hide: true
 ---
-# SEO optimized title under 50chars (Recommend keeping it same as the meta title above for consistency)
+# SEO Optimized Title
 
 
 Congrats on taking the first step toward drafting your blog post! Use this template as a starting point to organize your blog post.
 
 <!-- BREAK -->
 
-Refer to the [Contributing Guide](https://xrpl.org/resources/contribute-documentation) for detailed guidelines and examples.
+Refer to [Contribute Blog](https://xrpl.org/resources/contribute-blog/) for detailed guidelines and examples.
 
 ## Section: Handy Reference
 
 To help you get started quickly, here’s a handy guide to the syntax for some of the most frequently used components in a blog post — perfect for streamlining your writing process.
 
-To include an internal link, use a relative path.  For example, here's a link to the [Contributing Guide](../resources/contribute-documentation/index.md).
+Choosing an SEO optimized title helps boost your blog post. It is recommended to limit your title to under 50 characters and keep it same as the meta `seo -> title` field for consistency.
 
-To include an external link, use the absolute URL instead of a relative path. For example, [Contributing Guide](https://xrpl.org/resources/contribute-documentation).
+To include an internal link, use a relative path.  For example, to create a link to the Contributing Documentation topic, use the following syntax: [Contribute Documentation](../resources/contribute-documentation/index.md).
+
+To include an external link, use the absolute URL instead of a relative path. For example, [Contribute Documentation](https://xrpl.org/resources/contribute-documentation).
 
 To include an unordered list, use the following syntax:
 
@@ -51,4 +53,4 @@ For example, ![XRPL Developer Portal](/blog/img/docs-iav3/xrpl-docs-home.png) re
 
 ### Sub-section: Embedding Videos In Your Blog Post
 
-For instructions to embed a video, refer to the [Contribution Guide](https://xrpl.org/resources/contribute-documentation#videos).
+For instructions to embed a video, refer to the [Contribute Documentation](https://xrpl.org/resources/contribute-documentation#videos) topic.

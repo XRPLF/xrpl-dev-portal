@@ -10,7 +10,7 @@ labels:
 
 Thanks for considering a contribution to the XRP Ledger Dev Blog!
 
-This page includes high-level instructions to create a new blog post. Detailed instructions and guidelines to contribute to the XRPL Developer Portal are available in [Contributing Documentation](../contribute-documentation/index.md).
+This page includes high-level instructions to create a new blog post. Detailed instructions and guidelines to contribute to the XRPL Developer Portal are available in [Contribute Documentation](../contribute-documentation/index.md).
 
 ## Directory Structure for Blog Posts
 
@@ -30,7 +30,7 @@ To create a new post, follow these steps:
 
 3. Create a new markdown file in the `blog/_current_year_` folder, for example https://github.com/XRPLF/xrpl-dev-portal/tree/master/blog/2025
 
-4. Refer to the template file `_blog_template.md` to compose your draft blog. 
+4. Refer to the template file [`_blog_template.md`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/resources/contribute-blog/_blog-template.md) to compose your draft blog. 
 
 5. Update the `blog/sidebar.yaml` file to include the newly created file.
 
