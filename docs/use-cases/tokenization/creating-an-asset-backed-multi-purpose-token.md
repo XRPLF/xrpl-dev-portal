@@ -25,10 +25,11 @@ The MPT Generator utility embedded on the page below lets you experiment with an
 
 ![MPT Generator Utility](../../img/uc-mpt1-mpt-generator-empty-form.png)
 
-You can download a [standalone version of the MPT Generator](../../../_code-samples/mpt-generator/mpt-generator.zip) as sample code, or use the embedded form that follows.
+You can download a [standalone version of the MPT Generator](../../../_code-samples/mpt-generator/mpt-generator.zip) as sample code<!--, or use the embedded form that follows-->.
 
 In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form below with a new account and the transaction works fine. See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process. The form is populated with sample values, but you can change the parameters for your own experiments. A T-bill is just one example of the many types of asset you can create and trade on the XRP Ledger.
 
+<!--
 <hr/>
 <div>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
@@ -146,7 +147,7 @@ const transactionJson = {
 <form>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
-    <!-- Required meta tags -->
+    <!-- Required meta tags - - >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <div class="container">
@@ -351,7 +352,7 @@ const transactionJson = {
 </form>
 </div>
 <hr/>
-
+-->
 ## Creating a US Treasury Bill
 
 A US Treasury bill (T-bill) is a short-term debt security issued by the US government. T-bills are considered a safe investment because they're backed by the US government. T-bills are appealing to investors in American states that have high income tax because the interest earned is exempt from state and local taxes. See [Treasury Bills In Depth](https://www.treasurydirect.gov/research-center/history-of-marketable-securities/bills/t-bills-indepth/).

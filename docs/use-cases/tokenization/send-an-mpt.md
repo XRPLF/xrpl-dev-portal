@@ -15,12 +15,52 @@ Once an account receives an MPT, it can send the MPT to another account, provide
 
 ## Send MPT Utility
 
-The Send MPT utility embedded below lets you create an account, authorize it to receive a specific MPT issuance, then send it the authorized MPT from an issuer or holder account. (You can issue an MPT using the [MPT Generator](./creating-an-asset-backed-multi-purpose-token.md) utility.)
+The Send MPT utility <!-- embedded below -->lets you create an account, authorize it to receive a specific MPT issuance, then send it the authorized MPT from an issuer or holder account. (You can issue an MPT using the [MPT Generator](./creating-an-asset-backed-multi-purpose-token.md) utility.)
 
 ![MPT Sender Utility](../../img/uc-mpt2-mpt-sender-empty-form.png)
 
-You can download a [standalone version of the MPT Sender](../../../_code-samples/mpt-sender/mpt-sender.zip) as sample code, or use the embedded form that follows.
+You can download a [standalone version of the MPT Sender](../../../_code-samples/mpt-sender/mpt-sender.zip) as sample code<!--, or use the embedded form that follows-->.
 
+## Get Accounts
+
+To send an MPT, you need the **Seed** value for the MPT issuer to retrieve its account, then you need either a new account or an account seed for the target account.
+
+To get the accounts:
+
+1. Open <tt>send-mpt.html</tt> in a browser.
+2. Choose your ledger instance (**Devnet** or **Testnet**).
+3. Paste the issuer seed in the left **Seed** field.
+![Issuer (left) Seed field](../../img/uc-mpt2-issuer-seed-field.png)
+4. On the _right_ side of the form, click **Get New Right Account**. This will populate the **Seeds** field with seeds for both accounts.
+![Get new right account](../../img/uc-mpt2-new-right-account.png)
+5. Click **Get Accounts From Seeds**.
+![Get accounts from seeds](../../img/uc-mpt2-accounts-from-seeds.png)
+## Authorize MPT
+
+To receive MPTs, the right account needs to authorize the MPT.
+
+To authorize MPTs:
+
+1. On the right side of the form, enter the **MPT Issuance ID**.
+2. Click **Authorize MPTs**.
+![Authorize MPTs](../../img/uc-mpt2-authorize-mpts.png)
+
+## Send MPT
+
+To send an MPT:
+
+1. On the left side of the form, enter the **Quantity** of MPTs to send.
+2. Enter the **Destination** (likely the **Right Account** field, but it can be any account on the same ledger instance).
+3. Enter the **MPT Issuance ID**.
+4. Click **Send MPT**.
+![Send MPTs](../../img/uc-mpt2-send-mpts.png)
+
+## Get MPTs
+
+To verify receipt of the MPTs, click **Get MPTs** for the right account.
+![Get MPTs](../../img/uc-mpt2-get-mpts.png)
+
+<!--
 <div>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
@@ -207,7 +247,7 @@ async function authorizeMPT() {
 <form>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
-    <!-- Required meta tags -->
+<!-- Required meta tags - - >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <div class="container">
@@ -368,3 +408,4 @@ async function authorizeMPT() {
 </div>
 <hr/>
 
+==>
