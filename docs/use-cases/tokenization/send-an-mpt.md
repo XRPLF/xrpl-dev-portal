@@ -11,11 +11,13 @@ _As an XRPL holder, I want to send multi-purpose tokens to another account in or
 
 To send an MPT to another account, the receiving account must first authorize the receipt of the MPT, based on its MPToken Issuance ID. This is to prevent malicious users from spamming accounts with unwanted tokens that could negatively impact storage and XRP reserves.
 
+Once an account receives an MPT, it can send the MPT to another account, provided the MPT was created with the _Can Transfer_ flag set, and the receiving account authorizes the MPT.
+
 ## Send MPT Utility
 
-The Send MPT utility embedded on the page below lets you create an account to receive an MPT, authorize it to receive a specific MPT issuance, then send an MPT from an issuer or holder account. (You can issue an MPT using the [MPT Generator](./creating-an-asset-backed-multi-purpose-token.md) utility.)
+The Send MPT utility embedded below lets you create an account, authorize it to receive a specific MPT issuance, then send it the authorized MPT from an issuer or holder account. (You can issue an MPT using the [MPT Generator](./creating-an-asset-backed-multi-purpose-token.md) utility.)
 
-![MPT Generator Utility](../../img/uc-mpt2-mpt-sender-empty-form.png)
+![MPT Sender Utility](../../img/uc-mpt2-mpt-sender-empty-form.png)
 
 You can download a [standalone version of the MPT Sender](../../../_code-samples/mpt-sender/mpt-sender.zip) as sample code, or use the embedded form that follows.
 
