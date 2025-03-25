@@ -84,8 +84,9 @@ You can download a copy of the [Account Configurator](../../../_code-samples/acc
 
 Expand the archive and open `account_configurator.html` in a browser window.
 
+<!--
 You can also use the form embedded here.
-<!-- Account Configurator Form -->
+<!-- Account Configurator Form - - >
 <div class="container">
 <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
 <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
@@ -534,10 +535,11 @@ const resultSigner = await client.submitAndWait(signedSigner.tx_blob)
 resultField.value += JSON.stringify(resultSigner, null, 2)
 client.disconnect()
 }
-</script>
+</script> -->
 <!-- ************************************************************** -->
 <!-- ********************** The Form ****************************** -->
 <!-- ************************************************************** -->
+<!--
 <div class="container">
   <h3>Account Configurator</h3>
   <div class="form-group" id="theForm">
