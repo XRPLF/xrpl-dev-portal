@@ -69,7 +69,7 @@ Currency codes do not have to be unique. For instance, if you're issuing a stabl
 
 ### xrp-ledger.toml
 
-You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an `xrp-ledger.toml` file on your website. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.
+You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an `xrp-ledger.toml` file on your web server. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.
 
 You can use the _Currencies_ table to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See [xrp-ledger.toml File](../../references/xrp-ledger-toml.md#currencies).
 
