@@ -54,7 +54,6 @@ async function getAccount() {
   results += '\nGot a wallet.'
 
 // ------------------------------------------------------Get the current balance.
-  const my_balance = (await client.getXrpBalance(my_wallet.address))  
   accountField.value = my_wallet.address
   seedField.value = my_wallet.seed
   results += '\nAccount created.\n'
@@ -152,7 +151,6 @@ async function configureAccount() {
     account: accountField.value,
     ledger_index: "validated",
   })
-  // client.disconnect()
 
   json_results = JSON.stringify(my_acct_info, null, 2)
   var parsedResults = JSON.parse(json_results)
