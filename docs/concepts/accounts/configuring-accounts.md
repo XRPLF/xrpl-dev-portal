@@ -839,9 +839,8 @@ A Holder account requires no configuration (default settings). If the account pr
 To configure a Holder account:
 
 1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
-2. Click **Get New Account**
-   OR
-   1. Enter the value in the **Seed** field.
+2. Click **Get New Account** or:
+   1. Enter an existing seed value in the **Seed** field.
    2. Click **Get Account From Seed**.
 3. Choose the _Holder_ **Account Configuration Template**.
 4. Click **Configure Account**.
@@ -857,9 +856,8 @@ The standard Exchanger account configuration requires only four flags.
 To configure an Exchanger account:
 
 1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
-2. Click **Get New Account**.
-   OR  
-   1. Enter a value in the **Seed** field.
+2. Click **Get New Account** or: 
+   1. Enter an existing seed value in the **Seed** field.
    2. Click **Get Account From Seed**.
 3. Choose the _Exchanger_ **Account Configuration Template**.
    The configuration flag checkboxes update with the 4 standard configuration choices. You can choose more or fewer configuration settings to customize the account to your needs.
