@@ -108,7 +108,7 @@ Reporting Mode does not record ledger data until it has been validated. If you m
 
 ## Specifying Currency Amounts
 
-There are two kinds of currencies in the XRP Ledger: XRP and tokens. These two types of currencies are specified in different formats, with different precision and rounding behavior.
+There are three kinds of currencies in the XRP Ledger: XRP, tokens, and MPTs. These three types of currencies are specified in different formats, with different precision and rounding behavior.
 
 Some fields, such as the destination `Amount` of a [Payment transaction][], can be either type. Some fields only accept XRP specifically, such as the `Fee` field ([transaction cost](../../../concepts/transactions/transaction-cost.md)).
 
@@ -128,6 +128,16 @@ XRP is specified as a string containing an integer number of "drops" of XRP, whe
         "currency": "FOO",
         "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
     }
+    ```
+    
+- **MPT** - Use `Amount` to specify the value of an MPT. Assuming an `AssetScale` of *1*, you would specify a value of 13.1 units of an MPT as follows:
+
+    ```
+  "Amount": {
+    "mpt_issuance_id": 
+     "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
+    "value": "131"
+  }
     ```
 
 For more information, see [Currency Formats](currency-formats.md).

@@ -84,8 +84,26 @@ The request includes the following parameters:
 | `ledger_index`           | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`                  | Number           | No        | The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
-| `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `bridge`, `check`, `deposit_preauth`, `escrow`, `nft_offer`, `nft_page`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
+| `type`                   | String           | No        | Filter results to a specific type of ledger entry. This field accepts canonical ledger entry names (case insensitive) or short names. |
 
+Valid `type` field values are:
+<!-- Author's note: Omitted types that can't be owned by an account -->
+| Canonical Name   | Short Name        |
+| ---------------- | ----------------- |
+| `Bridge`         | `bridge`          |
+| `Check`          | `check`           |
+| `DepositPreauth` | `deposit_preauth` |
+| `Escrow`         | `escrow`          |
+| `MPToken`        | `mptoken`         |
+| `NFTokenOffer`   | `nft_offer`       |
+| `NFTokenPage`    | `nft_page`        |
+| `Offer`          | `offer`           |
+| `PayChannel`     | `payment_channel` |
+| `RippleState`    | `state`           |
+| `SignerList`     | `signer_list`     |
+| `Ticket`         | `ticket`          |
+
+{% admonition type="info" name="Note" %}MPToken requires the [MPToken amendment][] {% not-enabled /%}.{% /admonition %}
 {% admonition type="info" name="Note" %}The commandline interface to the `account_objects` command doesn't accept the `type` field. Use the [json method][] to send the JSON-RPC format request on the commandline instead.{% /admonition %}
 
 ## Response Format

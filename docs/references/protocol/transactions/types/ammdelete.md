@@ -39,8 +39,8 @@ Normally, an [AMMWithdraw transaction][] automatically deletes an AMM and all as
 
 | Field          | JSON Type           | [Internal Type][] | Required? | Description |
 |:---------------|:--------------------|:------------------|:----------|:------------|
-| `Asset`        | Object              | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
-| `Asset2`       | Object              | STIssue           | Yes       | The definition for the other asset in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
+| `Asset`        | Object              | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset2`       | Object              | STIssue           | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
 
 
 ## Error Cases

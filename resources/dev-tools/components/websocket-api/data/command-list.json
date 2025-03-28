@@ -179,6 +179,21 @@
     "group": "Transaction Methods",
     "methods": [
       {
+        "name": "simulate",
+        "description": "Executes a dry run of any transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/simulate",
+        "body": {
+          "id": "example_simulate",
+          "command": "simulate",
+          "tx_json" : {
+              "TransactionType" : "Payment",
+              "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+              "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+              "Amount" : "1000000"
+          }
+        }
+      },
+      {
         "name": "submit",
         "description": "Submits a transaction to the network to be confirmed and included in future ledgers.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit",

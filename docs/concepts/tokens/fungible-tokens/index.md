@@ -52,6 +52,7 @@ In addition to the shared balance, each account has its own settings on the trus
 - **Authorized**: A true/false value used with [Authorized Trust Lines](authorized-trust-lines.md) to allow the other side to hold tokens this account issues. The default is `false`. Once set to `true`, this cannot be changed back.
 - **No Ripple**: A true/false value to control whether tokens can [ripple](rippling.md) through this trust line. The default depends on the account's "Default Ripple" setting; for new accounts, "Default Ripple" is off which means that `true` is the default for No Ripple. Usually, issuers should allow rippling and non-issuers should disable rippling unless they are using trust lines for community credit.
 - **Freeze**: A true/false value indicating whether an [individual freeze](freezes.md#individual-freeze) is in effect on this trust line. The default is `false`.
+- **DeepFreeze**: A true/false value indicating whether a [deep freeze](deep-freeze.md) is in effect on this trust line. The default is `false`.
 - **Quality In** and **Quality Out** settings, which allow the account to value tokens issued by the other account on this trust line at less (or more) than face value. For example, if a stablecoin issuer charges a 3% fee for withdrawing tokens for the equivalent off-ledger assets, you could use these settings to value those tokens at 97% of face value. The default, `0`, represents face value.
 
 

@@ -38,16 +38,16 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
     - [Get AccountRoot Entry](#get-accountroot-entry)
     - [Get AMM Entry](#get-amm-entry)
     - [Get Bridge Entry](#get-bridge-entry)
-    - [Get Credential Entry](#get-credential-object)
-    - [Get DirectoryNode Entry](#get-directorynode-object)
-    - [Get Offer Entry](#get-offer-object)
-    - [Get Oracle Entry](#get-oracle-object)
-    - [Get RippleState Entry](#get-ripplestate-object)
-    - [Get Check Entry](#get-check-object)
-    - [Get Escrow Entry](#get-escrow-object)
-    - [Get PayChannel Entry](#get-paychannel-object)
-    - [Get DepositPreauth Entry](#get-depositpreauth-object)
-    - [Get Ticket Entry](#get-ticket-object)
+    - [Get Credential Entry](#get-credential-entry)
+    - [Get DirectoryNode Entry](#get-directorynode-entry)
+    - [Get Offer Entry](#get-offer-entry)
+    - [Get Oracle Entry](#get-oracle-entry)
+    - [Get RippleState Entry](#get-ripplestate-entry)
+    - [Get Check Entry](#get-check-entry)
+    - [Get Escrow Entry](#get-escrow-entry)
+    - [Get PayChannel Entry](#get-paychannel-entry)
+    - [Get DepositPreauth Entry](#get-depositpreauth-entry)
+    - [Get Ticket Entry](#get-ticket-entry)
     - [Get NFT Page](#get-nft-page)
     - [Get MPT Issuance Object](#get-mpt-issuance-object)
     - [Get MPToken Object](#get-mptoken-object)
@@ -528,9 +528,11 @@ Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance betw
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
+| `state`                 | Object                     | Alias to `ripple_state`. |
 | `ripple_state`          | Object                     | Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
 | `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address][]es, defining the two accounts linked by this RippleState entry. |
 | `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the RippleState entry to retrieve. |
+| `state`                 | Object                     | Alias to `ripple_state`. |
 
 {% tabs %}
 

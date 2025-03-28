@@ -71,6 +71,7 @@
 [Clawback transaction]: /docs/references/protocol/transactions/types/clawback.md
 [Clawback transactions]: /docs/references/protocol/transactions/types/clawback.md
 [Clawbackトランザクション]: /docs/references/protocol/transactions/types/clawback.md
+[credentials]: /docs/concepts/decentralized-storage/credentials.md
 [Credentials amendment]: /resources/known-amendments.md#credentials
 [CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
 [CredentialCreate transactions]: /docs/references/protocol/transactions/types/credentialcreate.md
@@ -95,6 +96,7 @@
 [DID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DIDエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DeletableAccounts amendment]: /resources/known-amendments.md#deletableaccounts
+[DeepFreeze amendment]: /resources/known-amendments.md#deepfreeze
 [DepositAuth amendment]: /resources/known-amendments.md#depositauth
 [DepositPreauth amendment]: /resources/known-amendments.md#depositpreauth
 [DepositPreauth entry]: /docs/references/protocol/transactions/types/depositpreauth.md
@@ -114,6 +116,7 @@
 [DirectoryNodeエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DirectoryNodeオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DisallowIncoming amendment]: /resources/known-amendments.md#disallowincoming
+[DynamicNFT amendment]: /resources/known-amendments.md#dynamicnft
 [EnableAmendment pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
@@ -240,6 +243,9 @@
 [PaymentChannelFundトランザクション]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
 [Paymentトランザクション]: /docs/references/protocol/transactions/types/payment.md
+[PermissionedDomainSet transaction]: /docs/references/protocol/transactions/types/permissioneddomainset.md
+[PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
+[permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode
@@ -273,6 +279,7 @@
 [Specifying Currency Amounts]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [Specifying Ledgers]: /docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
 [Specifying Time]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
+[Specifying Without Amounts]: /docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
 [SusPay amendment]: /resources/known-amendments.md#suspay
 [TickSize amendment]: /resources/known-amendments.md#ticksize
 [Ticket entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
@@ -401,6 +408,8 @@
 [fixCheckThreading amendment]: /resources/known-amendments.md#fixcheckthreading
 [fixDisallowIncomingV1 amendment]: /resources/known-amendments.md#fixdisallowincomingv1
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
+[fixFrozenLPTokenTransfer]: /resources/known-amendments.md#fixfrozenlptokentransfer
+[fixInvalidTxFlags amendment]: /resources/known-amendments.md#fixinvalidtxflags
 [fixMasterKeyAsRegularKey amendment]: /resources/known-amendments.md#fixmasterkeyasregularkey
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
 [fixNFTokenPageLinks amendment]: /resources/known-amendments.md#fixnftokenpagelinks

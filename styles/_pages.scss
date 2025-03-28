@@ -1641,7 +1641,8 @@ html.light {
   justify-content: center;
   overflow: hidden;
   padding: 100px 40px;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .upcoming-events__title {
@@ -1655,8 +1656,8 @@ html.light {
 .upcoming-events__logo-container {
   display: flex;
   align-items: center;
-  gap: 100px;
-  justify-content: flex-start;
+  gap: 35px;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -1706,9 +1707,12 @@ html.light {
 }
 
   $company-logos: (
-    'open-eden': '../img/tokenization/open-eden.png',
     'zoniqx': '../img/tokenization/zoniqx.png',
     'archax': '../img/tokenization/archax.png',
+    'palisade': '../img/tokenization/palisade.png',
+    'axiology': '../img/tokenization/axiology.png',
+    'open-eden': '../img/tokenization/open-eden.png',
+    'ondo': '../img/tokenization/ondo.png',
     'meld': '../img/tokenization/meld.png',
     'ripple-logo': '../img/tokenization/ripple-logo.png',
   );
@@ -1718,16 +1722,11 @@ html.light {
     }
   }
   
-    .company-logo.open-eden{
-      height: 30px;
-    }
-
-  .company-logo.archax{
-    max-height: 96px;
-  }
-  .company-logo.meld{
-    max-height: 96px;
-    max-width: 80px;
+  .company-logo{
+    max-height: 66px;
+    max-width: 100px;
+    width: 100%;
+    height: 100%;
   }
 
 .token-developer-tools-section {

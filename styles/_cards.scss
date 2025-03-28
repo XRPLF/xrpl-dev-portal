@@ -150,7 +150,11 @@ a.card:hover h3 {
 .light .circled-logo {
   border: none;
 }
-
+@for $i from 1 through 10 {
+  .cols-of-#{$i} {
+    grid-template-rows: repeat(#{$i}, min-content);
+  }
+}
 .card-deck {
   margin-top: 2.5rem;
   margin-left: (-$card-deck-margin);
