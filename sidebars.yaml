@@ -525,6 +525,7 @@
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/feature.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md

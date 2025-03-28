@@ -565,6 +565,15 @@
         "body": {
           "command": "version"
         }
+      },
+      {
+        "name": "feature",
+        "description": "Returns information about amendments this server knows about. When you connect to a cluster that includes a Clio server, the Clio method is used.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/feature",
+        "body": {
+          "command": "feature",
+          "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373"
+        }
       }
     ]
   },

@@ -14,7 +14,7 @@ The `feature` command returns information about [amendments](../../../../concept
 
 You can use the `feature` command to configure the server to vote against or in favor of an amendment. This change persists even if you restart the server. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}Updated in: rippled 1.7.0{% /badge %}
 
-_The `feature` method is an [admin method](../index.md) that cannot be run by unprivileged users._
+_The `feature` method documented on this page is an [admin method](../index.md). For the non-admin version, see the [`feature` public API method](../../public-api-methods/server-info-methods/feature.md)._
 
 ### Request Format
 An example of the request format:
