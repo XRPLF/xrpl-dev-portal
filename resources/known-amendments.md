@@ -272,7 +272,7 @@ Modifies an existing type of ledger entry:
 
 Also extends the `deposit_authorized` API method to check for credential-based auth and extends the `ledger_entry` method to allow lookup of Credential entries.
 
-For more details, see the [XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070d-credentials).
+For more details, see the [XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials).
 
 
 ### CryptoConditions
