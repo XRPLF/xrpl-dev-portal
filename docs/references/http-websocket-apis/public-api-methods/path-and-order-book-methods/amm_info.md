@@ -11,7 +11,7 @@ labels:
 # amm_info
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp "Source")
 
-The {% code-page-name /%} method gets information about an Automated Market Maker (AMM) instance.
+The {% code-page-name /%} method gets information about an [Automated Market Maker (AMM)](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) instance.
 
 _(Added by the [AMM amendment][])_
 
@@ -58,7 +58,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.altnet.rippletest.net%3A51233%2F#amm_info)
+{% try-it method="amm_info" server="testnet" /%}
 
 The request includes the following parameters:
 

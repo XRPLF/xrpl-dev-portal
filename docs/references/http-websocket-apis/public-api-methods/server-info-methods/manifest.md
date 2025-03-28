@@ -47,6 +47,8 @@ rippled {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsf
 
 {% /tabs %}
 
+{% try-it method="manifest" /%}
+
 The request includes the following parameters:
 
 | `Field`      | Type   | Description                        |

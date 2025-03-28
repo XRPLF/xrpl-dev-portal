@@ -9,7 +9,7 @@ labels:
 ---
 # Amendment投票機能の設定
 
-バリデータとして設定されたサーバは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](../../tutorials/http-websocket-apis/build-apps/get-started.md#管理者アクセス権限)が必要です).
+バリデータとして設定されたサーバは、[featureメソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](../../tutorials/http-websocket-apis/build-apps/get-started.md#管理者アクセス権限)が必要です).
 
 例えば、「SHAMapV2」Amendmentに反対票を投じるには、以下のコマンドを実行します。
 
@@ -67,6 +67,6 @@ rippled feature SHAMapV2 reject
 
 - [Amendment](../../concepts/networks-and-servers/amendments.md)
     - [既知のAmendment](/resources/known-amendments.md)
-- [feature メソッド][]
+- [featureメソッド][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

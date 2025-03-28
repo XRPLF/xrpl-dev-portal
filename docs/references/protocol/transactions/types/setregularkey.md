@@ -26,7 +26,7 @@ You can protect your account by assigning a regular key pair to it and using it 
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_SetRegularKey%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%226AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="6AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->

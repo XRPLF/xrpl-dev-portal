@@ -37,7 +37,7 @@ labels:
 
 {% /tabs %}
 
-[試してみよう! >](/resources/dev-tools/websocket-api-tool#server_definitions)
+{% try-it method="server_definitions" /%}
 
 リクエストにパラメータは含まれません。
 

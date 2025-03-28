@@ -23,13 +23,31 @@
 }
 
 .page-home {
+  #home-hero-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 54.8%;
+    overflow: hidden;
+  }
+
   #home-hero-graphic {
-    content: url("../img/home-hero.svg");
-    margin-left: auto;
     width: 856px;
-    margin-right: auto;
+    object-fit: cover;
+    content: url("../img/home-hero.svg");
     margin-bottom: 24px;
-    max-width: 100%;
+    @media (min-width: 992px) {
+      min-height: 470px;
+    }
+
+    @media (max-width: 991px) and (min-width: 540px) {
+      min-height: 250px;
+    }
+
+    @media (max-width: 539px) {
+      min-height: 170px;
+    }
   }
 
   #benefits-list {

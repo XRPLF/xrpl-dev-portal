@@ -23,10 +23,11 @@ In doing so, you join the growing list of XRPL developers currently featured and
 
 ### How can I get featured?
 
-Interested projects, companies and developers must submit their projects through the form featured on the [XRPL Community](/community) page (see “XRPL Community Spotlight”). Submissions will be reviewed for completeness and must meet the minimum word requirements to be featured on the blog. To help you get started, check out previous [Developer Reflections](https://xrpl.org/blog/label/developer-reflections.html):
+Interested projects, companies and developers must submit their projects through the form featured on the [XRPL Community](/community) page (see “XRPL Community Spotlight”). Submissions will be reviewed for completeness and must meet the minimum word requirements to be featured on the blog. To help you get started, check out previous Developer Reflections:
 
-- [XRPScan](https://xrpl.org/blog/2020/developer-reflections-xrpscan.html)
-- [XRP Toolkit](https://xrpl.org/blog/2020/developer-reflections-xrp-toolkit.html)
+- [XRPScan](https://xrpl.org/blog/2020/developer-reflections-xrpscan)
+- [XRP Toolkit](https://xrpl.org/blog/2020/developer-reflections-xrp-toolkit)
+- [Xrplorer](https://xrpl.org/blog/2020/developer-reflections-xrplorer)
 
 Projects seeking to be featured on the **[Use Cases page](/about/uses)** can also submit via the form. 
 

@@ -1,17 +1,15 @@
 ---
-html: escrow-object.html #escrow.html is taken by the concept page
-parent: ledger-entry-types.html
 seo:
     description: Contains XRP held for a conditional payment.
 labels:
   - Escrow
 ---
 # Escrow
-[[Source]](https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L329-L342 "Source")
+
+An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds XRP until specific conditions are met. You can create an escrow by sending an [EscrowCreate transaction][].
 
 _(Added by the [Escrow amendment][].)_
-
-An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds XRP until specific conditions are met.
 
 ## Example {% $frontmatter.seo.title %} JSON
 

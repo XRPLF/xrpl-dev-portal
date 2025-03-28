@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMWithdraw
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
 
 _(Added by the [AMM amendment][])_
 
@@ -37,6 +37,8 @@ Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/dec
     "TransactionType" : "AMMWithdraw"
 }
 ```
+
+{% tx-example txid="E606F37847E012E0D71267ED18CEA8B235AD9409BB6C2383A7D53ADEC2F314D4" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

@@ -77,7 +77,7 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 
 新しいウォレットをセットアップします。[Xaman](https://xaman.app/)をご覧ください。
 
-アカウントを作成する際には、10 XRPの基本準備金が必要であることに注意してください。[準備金](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve)をご覧ください。
+アカウントを作成する際には、{% $env.PUBLIC_BASE_RESERVE %}の基本準備金が必要であることに注意してください。[準備金](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve)をご覧ください。
 
 ### NFTの取引
 

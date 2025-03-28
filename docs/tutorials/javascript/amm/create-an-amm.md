@@ -2,7 +2,7 @@
 
 This example shows how to:
 
-1. Check if an AMM pair exists.
+1. Check if an [AMM](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) pair exists.
 2. Issue a token.
 3. Create an AMM pair with the issued tokens and XRP.
 4. Create another AMM pair with two issued tokens.

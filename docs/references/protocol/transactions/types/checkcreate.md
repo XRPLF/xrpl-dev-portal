@@ -7,7 +7,7 @@ labels:
   - Checks
 ---
 # CheckCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")
 
 _(Added by the [Checks amendment][].)_
 
@@ -28,10 +28,9 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_CheckCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%224E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | Field            | JSON Type           | [Internal Type][] | Description     |
 |:-----------------|:--------------------|:------------------|:----------------|

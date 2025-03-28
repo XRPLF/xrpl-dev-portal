@@ -63,7 +63,7 @@ rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descen
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#account_tx)
+{% try-it method="account_tx" /%}
 
 The request includes the following parameters:
 

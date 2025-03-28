@@ -48,6 +48,7 @@ An example of the request format:
 
 {% /tabs %}
 
+{% try-it method="ledger_data" /%}
 
 A request can include the following fields:
 

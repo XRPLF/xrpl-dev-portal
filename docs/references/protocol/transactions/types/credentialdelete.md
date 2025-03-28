@@ -1,10 +1,13 @@
 ---
 seo:
     description: Remove a credential from the ledger, effectively revoking it.
+status: not_enabled
 ---
 # CredentialDelete
 
 A CredentialDelete transaction removes a credential from the ledger, effectively revoking it. Users may also want to delete an unwanted credential to reduce their [reserve requirement](../../../../concepts/accounts/reserves.md).
+
+_(Requires the [Credentials amendment][] {% not-enabled /%})_
 
 ## Example CredentialDelete JSON
 

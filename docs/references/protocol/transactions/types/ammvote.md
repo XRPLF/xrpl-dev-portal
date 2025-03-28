@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMVote
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMVote.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMVote.cpp "Source")
 
 _(Added by the [AMM amendment][])_
 
@@ -32,6 +32,8 @@ Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tok
     "TransactionType" : "AMMVote"
 }
 ```
+
+{% tx-example txid="BE72A46233F91C71030DC88D8D86077D37FD98223E9114A46180C09FC5C11E5B" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

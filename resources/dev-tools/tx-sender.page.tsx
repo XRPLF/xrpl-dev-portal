@@ -260,7 +260,7 @@ function TxSenderBody(): React.JSX.Element {
                                     units: "drops of XRP",
                                     longerDescription: <div>{translate("Deliver a small amount of XRP with a large ")}
                                     <code>{translate("Amount")}</code>{translate(" value, to test your handling of ")}
-                                    <Link to="../../docs/concepts/payment-types/partial-payments">{translate("partial payments")}</Link>{translate(".")}</div>,
+                                    <Link to="/docs/concepts/payment-types/partial-payments">{translate("partial payments")}</Link>{translate(".")}</div>,
                                     buttonTitle: "(Please wait for partial payments setup to finish)",
                                 }}
                                 loadingBar={{
@@ -288,7 +288,7 @@ function TxSenderBody(): React.JSX.Element {
                                 {{
                                     buttonText: translate("Create Escrow"),
                                     units: translate("seconds"),
-                                    longerDescription: (<div>{translate("Create a ")}<Link to="../../docs/concepts/payment-types/escrow">{translate("time-based escrow")}</Link>
+                                    longerDescription: (<div>{translate("Create a ")}<Link to="/docs/concepts/payment-types/escrow">{translate("time-based escrow")}</Link>
                                     {translate(" of 1 XRP for the specified number of seconds.")}</div>),
                                 }}
                                 inputSettings={

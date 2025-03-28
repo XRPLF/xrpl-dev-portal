@@ -7,7 +7,7 @@ labels:
   - NFTs, Non-fungible Tokens
 ---
 # NFTokenCancelOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenCancelOffer.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "Source")
 
 The `NFTokenCancelOffer` transaction can be used to cancel existing token offers created using `NFTokenCreateOffer`.
 
@@ -25,7 +25,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCancelOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="9FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5" /%}
 
 ## Permissions
 

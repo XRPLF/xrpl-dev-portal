@@ -8,7 +8,7 @@ labels:
 ---
 # EscrowCreate
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
 _Added by the [Escrow amendment][]._
 
@@ -30,11 +30,10 @@ Sequester XRP until the escrow process either finishes or is canceled.
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_EscrowCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7" /%}
+
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
-
 
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|

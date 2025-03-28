@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMCreate
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMCreate.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")
 
 _([AMM amendment][]により追加されました。)_
 

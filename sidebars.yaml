@@ -112,6 +112,7 @@
                     - page: docs/concepts/tokens/fungible-tokens/stablecoins/configuration.md
                     - page: docs/concepts/tokens/fungible-tokens/stablecoins/precautions.md
                     - page: docs/concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md
+                - page: docs/concepts/tokens/fungible-tokens/multi-purpose-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/freezes.md
                   expanded: false
@@ -334,6 +335,8 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/escrow.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/feesettings.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
@@ -352,9 +355,10 @@
                 - page: docs/references/protocol/transactions/types/index.md
                   expanded: false
                   items:
-                    - page: docs/references/protocol/transactions/types/accountset.md
                     - page: docs/references/protocol/transactions/types/accountdelete.md
+                    - page: docs/references/protocol/transactions/types/accountset.md
                     - page: docs/references/protocol/transactions/types/ammbid.md
+                    - page: docs/references/protocol/transactions/types/ammclawback.md
                     - page: docs/references/protocol/transactions/types/ammcreate.md
                     - page: docs/references/protocol/transactions/types/ammdelete.md
                     - page: docs/references/protocol/transactions/types/ammdeposit.md
@@ -373,6 +377,11 @@
                     - page: docs/references/protocol/transactions/types/escrowcancel.md
                     - page: docs/references/protocol/transactions/types/escrowcreate.md
                     - page: docs/references/protocol/transactions/types/escrowfinish.md
+                    - page: docs/references/protocol/transactions/types/ledgerstatefix.md
+                    - page: docs/references/protocol/transactions/types/mptokenauthorize.md
+                    - page: docs/references/protocol/transactions/types/mptokenissuancecreate.md
+                    - page: docs/references/protocol/transactions/types/mptokenissuancedestroy.md
+                    - page: docs/references/protocol/transactions/types/mptokenissuanceset.md
                     - page: docs/references/protocol/transactions/types/nftokenacceptoffer.md
                     - page: docs/references/protocol/transactions/types/nftokenburn.md
                     - page: docs/references/protocol/transactions/types/nftokencanceloffer.md
@@ -510,15 +519,18 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/version.md
 
-                - page: docs/references/http-websocket-apis/public-api-methods/clio-server/index.md
+                - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/index.md
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/mpt_holders.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/version.md
+
                 - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/index.md
                   expanded: false
                   items:

@@ -82,7 +82,7 @@ rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 fals
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#tx)
+{% try-it method="tx" /%}
 
 The request includes the following parameters:
 

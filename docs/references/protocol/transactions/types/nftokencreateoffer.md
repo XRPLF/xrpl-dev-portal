@@ -7,7 +7,7 @@ labels:
  - Non-fungible Tokens, NFTs
 ---
 # NFTokenCreateOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenCreateOffer.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "Source")
 
 Creates either a new _Sell_ offer for an `NFToken` owned by the account executing the transaction, or a new _Buy_ offer for an `NFToken` owned by another account.
 
@@ -27,7 +27,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCreateOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

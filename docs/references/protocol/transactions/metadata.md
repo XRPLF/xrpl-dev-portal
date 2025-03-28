@@ -254,7 +254,15 @@ Transactions (`tx` and `account_tx`) involving NFTs can contain the following fi
 | `nftoken_id`  | String | Shows the `NFTokenID` for the `NFToken` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenMint` or `NFTokenAcceptOffer`. See [NFTokenID](../data-types/nftoken.md#nftokenid). |
 | `nftoken_ids` | Array  | Shows all the `NFTokenIDs` for the `NFTokens` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenCancelOffer`.                                                                 |
 | `offer_id`    | String | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction.                                                                                                                                 |
+## MPT Fields
 
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
+
+### Synthetic mpt_issuance_id field
+`MPTokenIssuanceID` is an identifier that allows you to specify an `MPTokenIssuance` in RPCs. The server adds a synthetically parsed `mpt_issuance_id` field to API responses to avoid the need for client-side parsing of the `MPTokenIssuanceID`.
+
+### Transaction Metadata
+An `mpt_issuance_id` field is provided in JSON transaction metadata (not available for binary) for all successful `MPTokenIssuanceCreate` transactions. The following APIs are impacted: `tx`, `account_tx`, `subscribe` and `ledger`.
 
 ## delivered_amount
 

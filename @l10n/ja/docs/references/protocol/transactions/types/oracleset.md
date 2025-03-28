@@ -8,7 +8,7 @@ labels:
 # OracleSet
 _([PriceOracle Amendment][])_
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetOracle.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "ソース")
 
 Oracle Document ID を使用して、新しい`Oracle`レジャーエントリを作成するか、既存のフィールドを更新します。
 
@@ -45,7 +45,7 @@ Oracle Document ID を使用して、新しい`Oracle`レジャーエントリ�
 | `OracleDocumentID` | Number    | UInt32        | はい   | `Account`の価格オラクルのユニークな識別子。 |
 | `Provider`         | 文字列    | Blob          | 可変   | Oracleプロバイダを識別する任意の値、例えばChainlink、Band、またはDIAなど。このフィールドは文字列で、ASCII 16進コード化文字(0x20~0x7E)を最大256文字まで使用できます。このフィールドは、新しい`Oracle`レジャーエントリを作成する際に必須ですが、更新の場合は任意です。 |
 | `URI`              | 文字列    | Blob          | いいえ | 任意で指定可能なユニバーサルリソース識別子で、チェーン外の価格データを参照します。このフィールドは256バイトに制限されています。 |
-| `LastUpdateTime`   | Number    | UInt32        | はい   | データが最後に更新された時刻を、[リップルエポックからの秒数]で表します。 |
+| `LastUpdateTime`   | Number    | UInt32        | はい   | データが最後に更新された時刻を、Unix時間で表します。 |
 | `AssetClass`       | 文字列    | Blob          | 可変   | 「通貨」、「商品」、「指数」などの資産の種類を指定します。このフィールドは、最大16文字のASCII 16進コード文字(0x20~0x7E)の文字列です。このフィールドは、新しい`Oracle`レジャーエントリを新規作成する際に必須ですが、更新の場合は任意です。 |
 | `PriceDataSeries`  | Array     | Array         | はい   | トークンペアの価格情報を表す、最大10個の`PriceData`オブジェクトの配列。`PriceData`が5個を超える場合は、2つの所有者準備金が必要です。 |
 

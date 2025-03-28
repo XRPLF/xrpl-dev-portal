@@ -1,15 +1,13 @@
 ---
-html: offer.html
-parent: ledger-entry-types.html
 seo:
     description: An order to make a currency trade.
 labels:
   - Decentralized Exchange
 ---
 # Offer
-[[Source]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L229-L240 "Source")
 
-The `Offer` ledger entry describes an [Offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to exchange currencies in the XRP Ledger's [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). (In finance, this is more traditionally known as an _order_.) An [OfferCreate transaction][] only creates an `Offer` entry in the ledger when the Offer cannot be fully executed immediately by consuming other Offers already in the ledger.
+An `Offer` ledger entry describes an [Offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to exchange currencies in the XRP Ledger's [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). (In finance, this is more traditionally known as an _order_.) You an create a new Offer entry by sending an [OfferCreate transaction][] that is not fully executed immediately.
 
 An Offer can become unfunded through other activities in the network, while remaining in the ledger. When processing transactions, the network automatically removes any unfunded Offers that those transactions come across. (Otherwise, unfunded Offers remain, because _only_ transactions can change the ledger state.)
 

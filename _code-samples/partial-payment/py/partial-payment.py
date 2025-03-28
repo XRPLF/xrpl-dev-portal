@@ -8,7 +8,7 @@ from xrpl.wallet import generate_faucet_wallet
 
 # References
 # - https://xrpl.org/partial-payments.html#partial-payments
-# - https://xrpl.org/payment.html#payment-flags
+# - https://xrpl.org/docs/references/protocol/transactions/types/payment#payment-flags
 # - https://xrpl.org/trustset.html#trustset
 # - https://xrpl.org/account_lines.html#account_lines
 

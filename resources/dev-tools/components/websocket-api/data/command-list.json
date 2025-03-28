@@ -130,11 +130,10 @@
         "body": {
           "command": "ledger",
           "ledger_index": "validated",
-          "full": false,
-          "accounts": false,
           "transactions": false,
           "expand": false,
-          "owner_funds": false
+          "owner_funds": false,
+          "api_version": 2
         }
       },
       {
@@ -163,6 +162,16 @@
           "limit": 5,
           "binary": true
         }
+      },
+      {
+        "name": "ledger_index",
+        "description": "Looks up the most recently closed ledger at a specific time.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger_index",
+        "body": {
+          "command": "ledger_index",
+          "date": "2024-06-20T09:00:42.000Z"
+        },
+        "clio_only": true
       }
     ]
   },
@@ -501,6 +510,16 @@
         }
       },
       {
+        "name": "manifest",
+        "description": "Look up manifest information for a given validator public key.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/manifest",
+        "body": {
+          "id": "manifest_example",
+          "command": "manifest",
+          "public_key": "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
+        }
+      },
+      {
         "name": "server_definitions",
         "description": "Returns an SDK-compatible definitions.json, generated from the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions",
@@ -517,19 +536,19 @@
         }
       },
       {
-        "name": "version",
-        "description": "Retrieves the API version information. When you connect to a cluster that includes a Clio server, the Clio method is used.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/version",
-        "body": {
-          "command": "version"
-        }
-      },
-      {
         "name": "server_state",
         "description": "Reports a machine-readable version of various information about the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state",
         "body": {
           "command": "server_state"
+        }
+      },
+      {
+        "name": "version",
+        "description": "Retrieves the API version information. When you connect to a cluster that includes a Clio server, the Clio method is used.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/version",
+        "body": {
+          "command": "version"
         }
       }
     ]

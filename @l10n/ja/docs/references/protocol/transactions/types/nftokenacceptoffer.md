@@ -7,7 +7,7 @@ labels:
   - NFT, 非代替性トークン
 ---
 # NFTokenAcceptOffer
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenAcceptOffer.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "ソース")
 
 `NFTokenAcceptOffer`トランザクションは`NFToken`の購入または売却のオファーを受け入れるために使用されます。トランザクションは次のいずれかになります。
 
@@ -36,7 +36,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 }
 ```
 
-[トランザクションの例を確認 >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenAcceptOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909" server="s2" /%}
 
 ## ブローカー vs. ダイレクト モード
 

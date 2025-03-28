@@ -1,17 +1,15 @@
 ---
-html: check.html
-parent: ledger-entry-types.html
 seo:
     description: A check that can be redeemed for money by its destination.
 labels:
   - Checks
 ---
 # Check
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L50-L63 "Source")
+
+A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender. You can create a check by sending a [CheckCreate transaction][].
 
 _(Added by the [Checks amendment][].)_
-
-A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender.
 
 ## Example {% $frontmatter.seo.title %} JSON
 

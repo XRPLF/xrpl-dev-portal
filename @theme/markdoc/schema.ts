@@ -181,3 +181,37 @@ export const cardGrid: Schema & { tagName: string } = {
   },
   render: 'CardGrid'
 }
+
+export const tryIt: Schema &  { tagName: string } = {
+  tagName: 'try-it',
+  attributes: {
+    method: {
+      type: 'String',
+      required: true
+    },
+    server: {
+      type: 'String',
+      required: false,
+      default: ""
+    }
+  },
+  render: 'TryIt',
+  selfClosing: true
+}
+
+export const txExample: Schema &  { tagName: string } = {
+  tagName: 'tx-example',
+  attributes: {
+    txid: {
+      type: 'String',
+      required: true
+    },
+    server: {
+      type: 'String',
+      required: false,
+      default: ""
+    }
+  },
+  render: 'TxExample',
+  selfClosing: true
+}

@@ -65,6 +65,22 @@ The diagram below illustrates how an offer interacts with other offers and AMM l
 
 ![Offer path through DEX.](/docs/img/amm-clob-diagram.png)
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tJ1mQxYpt-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "VideoObject",
+"name": "AMM CLOB Demo",
+"description": "AMM CLOB Demo on XRPL",
+"thumbnailUrl": "https://i.ytimg.com/vi/tJ1mQxYpt-A/hqdefault.jpg",
+"uploadDate": "2024-12-13",
+"embedUrl": "https://youtu.be/tJ1mQxYpt-A?feature=shared"
+}
+</script>
+
 ### Restrictions on Assets
 
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
@@ -99,6 +115,18 @@ Trading fees are a source of passive income for liquidity providers. They offset
 Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%. Liquidity providers have an incentive to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will --> 
 
 Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the number of LP tokens they hold. To vote, a liquidity provider sends an [AMMVote][] transaction. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes, weighted by how many LP tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote, then only the top 8 votes (by most LP tokens held) are counted. Even though liquidity providers' share of LP tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.md)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
+
+{% admonition type="info" name="Note" %}
+
+_Trading fees_ differ from _transfer fees_.
+
+| Differences | AMM Trading Fees | Token Transfer Fees |
+|-------------|------------------|---------------------|
+| Who sets the fee? | AMM liquidity providers. | Token issuer. |
+| When does the fee apply? | When swapping against the AMM. | Any time the token transfers accounts, except when sending or receiving _directly_ to and from the token issuer. |
+| Can fees be redeemed? | Yes, by liquidity providers when they turn in their LP tokens. | No, fees are burned. |
+
+{% /admonition %}
 
 ### Auction Slot
 

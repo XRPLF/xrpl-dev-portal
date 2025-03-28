@@ -8,6 +8,7 @@ filters:
   - interactive_steps
 labels:
   - アカウント
+steps: ['Generate', 'Connect', 'Check Sequence', 'Prepare & Sign', 'Submit', 'Wait', 'Intermission', 'Check Tickets', 'Prepare Ticketed Tx', 'Submit Ticketed Tx', 'Wait Again']
 ---
 # チケットの使用
 
@@ -17,7 +18,7 @@ labels:
 
 <!-- Source for this tutorial's interactive bits: -->
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
-<script type="application/javascript" src="/js/tutorials/how-tos/use-tickets.js"></script>
+<script type="application/javascript" src="/js/tutorials/use-tickets.js"></script>
 
 このページでは、[xrpl.js](https://js.xrpl.org/)ライブラリを使用したJavaScriptのサンプルを提供しています。設定方法は、[JavaScriptを使ってみよう](../../javascript/build-apps/get-started.md)をご覧ください。
 
@@ -88,7 +89,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 ### 4. TicketCreateの準備と署名
 
-前のステップで決定したシーケンス番号を使用して、[TicketCreate トランザクション][]を構築します。`TicketCount`フィールドを使って、作成するチケットの枚数を指定します。例えば、10枚のチケットを作成するトランザクションを準備するには、次のようにします。
+前のステップで決定したシーケンス番号を使用して、[TicketCreateトランザクション][]を構築します。`TicketCount`フィールドを使って、作成するチケットの枚数を指定します。例えば、10枚のチケットを作成するトランザクションを準備するには、次のようにします。
 
 {% tabs %}
 
@@ -167,7 +168,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 ### 7. 有効なチケットの確認
 
-チケット付きのトランザクションを送信したい場合、どのチケットシーケンス番号を使用するかを知る必要があります。アカウントを注意深く管理していれば、どのチケットを持っているかはすでにわかっていると思いますが、よくわからない場合は、[account_objects メソッド][]を使って、利用可能なチケットを調べることができます。例えば、以下のようになります。
+チケット付きのトランザクションを送信したい場合、どのチケットシーケンス番号を使用するかを知る必要があります。アカウントを注意深く管理していれば、どのチケットを持っているかはすでにわかっていると思いますが、よくわからない場合は、[account_objectsメソッド][]を使って、利用可能なチケットを調べることができます。例えば、以下のようになります。
 
 {% tabs %}
 
@@ -191,7 +192,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 チケットが利用できるようになったので、それを使用するトランザクションを準備します。
 
-ここでは、好きな[トランザクションのタイプ](../../../references/protocol/transactions/types/index.md)を使用することができます。次の例では、何も行わない[AccountSet トランザクション][]を使用していますが、これはレジャーに他の設定を必要としないからです。`Sequence`フィールドを`0`に設定して、利用可能なチケットの1つのチケットシーケンス番号を持つ`TicketSequence`フィールドを含めます。
+ここでは、好きな[トランザクションのタイプ](../../../references/protocol/transactions/types/index.md)を使用することができます。次の例では、何も行わない[AccountSetトランザクション][]を使用していますが、これはレジャーに他の設定を必要としないからです。`Sequence`フィールドを`0`に設定して、利用可能なチケットの1つのチケットシーケンス番号を持つ`TicketSequence`フィールドを含めます。
 
 {% tabs %}
 
@@ -264,10 +265,10 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
     - [マルチシグの設定](set-up-multi-signing.md)
     - [信頼出来るトランザクションの送信](../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [account_objects メソッド][]
-    - [sign_for メソッド][]
-    - [submit_multisigned メソッド][]
-    - [TicketCreate トランザクション][]
+    - [account_objectsメソッド][]
+    - [sign_forメソッド][]
+    - [submit_multisignedメソッド][]
+    - [TicketCreateトランザクション][]
     - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -45,7 +45,7 @@ labels:
 
 {% /tabs %}
 
-[試してみる>](/resources/dev-tools/websocket-api-tool#account_currencies)
+{% try-it method="account_currencies" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

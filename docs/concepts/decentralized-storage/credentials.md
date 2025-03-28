@@ -1,8 +1,15 @@
+---
+seo:
+    description: Create and manage credentials on the blockchain, which can provide authorization for payments or other features, while respecting privacy and decentralization.
+status: not_enabled
+---
 # Credentials
 
 The Credentials feature is a set of tools for managing authorization and compliance requirements using the XRP Ledger blockchain, while respecting privacy and decentralization. This feature extends and interconnects with other features of the XRP Ledger including [Deposit Authorization](../../concepts/accounts/depositauth.md)). The goal of this feature is to streamline the process of compliance checks such as [KYC (Know Your Customer)](https://en.wikipedia.org/wiki/Know_your_customer) and to enable further trust-based applications within the XRP Ledger ecosystem.
 
 The design of the Credentials standard draws from the [W3C Verifiable Credentials standard](https://www.w3.org/TR/vc-data-model-2.0/). It is intended to be compatible to an extent that makes sense in the context of the XRP Ledger. There are some differences in data structures and formatting: for example, the subject of a credential is identified by an XRP Ledger address rather than a URL.
+
+_(Requires the [Credentials amendment][] {% not-enabled /%})_
 
 ## Overview
 
@@ -45,3 +52,5 @@ All three parties need XRP Ledger accounts. The flow works as follows:
 Importantly, the documents that Alice sends to Isabel can include personally identifiable or private information that's needed to verify Alice's identity, but this information is never published or stored on the blockchain and Verity does not need to see it. Also, other businesses that trust Isabel can accept the same credentials so Alice does not need to repeatedly re-verify for every party she wants to interact with.
 
 To revoke a credential, Isabel can delete it from the ledger. Alice can also delete her own credentials.
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

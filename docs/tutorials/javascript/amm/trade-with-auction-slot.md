@@ -4,7 +4,7 @@ Follow the steps from the [Create an AMM](/docs/tutorials/javascript/amm/create-
 
 This example shows how to:
 
-1. Calculate the exact cost of swapping one token for another in an AMM pool.
+1. Calculate the exact cost of swapping one token for another in an [AMM](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) pool.
 2. Check the difference in trading fees with and without an auction slot.
 3. Bid on an auction slot with LP tokens.
 4. Create an offer to swap tokens with the AMM.

@@ -62,7 +62,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#subscribe)
+{% try-it method="subscribe" /%}
 
 The request includes the following parameters:
 
@@ -182,8 +182,6 @@ The fields from a ledger stream message are as follows:
 
 
 ## Validations Stream
-
-{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" %}New in: rippled 0.29.0{% /badge %}
 
 The validations stream sends messages whenever it receives validation messages, also called validation votes, regardless of whether or not the validation message is from a trusted validator. The message looks like the following:
 

@@ -8,7 +8,7 @@ labels:
 ---
 # TrustSet
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/SetTrust.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetTrust.cpp "Source")
 
 2つのアカウントをリンクする[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)を作成または変更します。
 

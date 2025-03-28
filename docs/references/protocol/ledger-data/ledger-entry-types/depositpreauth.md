@@ -1,15 +1,13 @@
 ---
-html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
-parent: ledger-entry-types.html
 seo:
     description: A record of preauthorization for sending payments to an account that requires authorization.
 labels:
   - Security
 ---
 # DepositPreauth
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L246-L253 "Source")
 
-A `DepositPreauth` entry tracks a preauthorization from one account. You can always create a preauthorization by sending a [DepositPreauth transaction][], but it has no effect unless you are using [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
+A `DepositPreauth` entry tracks a preauthorization from one account. You can create a preauthorization by sending a [DepositPreauth transaction][], but it has no effect unless you are using [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 
 A preauthorization allows specific others to send money directly to you even if you have Deposit Authorization enabled. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
 

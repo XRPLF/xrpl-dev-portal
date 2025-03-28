@@ -28,7 +28,7 @@ export function codeSamples() {
           samples.push({
             path: dirPath,
             title: title || toTitleCase(dirname(dirPath)),
-            description: getInnerText([data.ast.children[1]]).replace(title, '').trim(),
+            description: getInnerText([data.ast.children[1]]).trim(),
             href: joinPath('content', dirPath),
             langs,
           });

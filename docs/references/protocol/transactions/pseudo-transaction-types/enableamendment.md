@@ -1,29 +1,19 @@
 ---
-html: enableamendment.html
-parent: pseudo-transaction-types.html
 seo:
     description: Enable a change in transaction processing.
 labels:
   - Blockchain
 ---
 # EnableAmendment
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Change.cpp "Source")
 
-An `EnableAmendment` pseudo-transaction marks a change in the status of a proposed amendment when it:
+An `EnableAmendment` pseudo-transaction marks a change in the status of a proposed amendment. The possible status changes are:
 
-- Gains supermajority approval from validators.
-- Loses supermajority approval.
-- Is enabled on the XRP Ledger protocol.
+- The amendment gains supermajority approval from validators.
+- The amendment loses supermajority approval.
+- The amendment becomes enabled.
 
-<!-- TODO: Move to propose amendments tutorial.
-
-A server only enables amendments when these conditions are met:
-  
-- A previous ledger includes an `EnableAmendment` pseudo-transaction with the `tfGotMajority` flag enabled.
-- The previous ledger in question is an ancestor of the current ledger.
-- The previous ledger in question has a close time that is at least two weeks before the close time of the latest flag ledger.
-- There are no `EnableAmendment` pseudo-transactions for this amendment with the `tfLostMajority` flag enabled in the consensus ledgers between the `tfGotMajority` pseudo-transaction and the current ledger.
-
--->
+{% admonition type="info" name="Note" %}You cannot send a pseudo-transaction, but you may find one when processing ledgers.{% /admonition %}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -41,7 +31,6 @@ A server only enables amendments when these conditions are met:
 
 
 {% partial file="/docs/_snippets/pseudo-tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|

@@ -7,7 +7,7 @@ labels:
   - Payment Channels
 ---
 # PaymentChannelClaim
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
 _Added by the [PayChan amendment][]._
 
@@ -41,7 +41,7 @@ The **destination address** of a channel can:
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelClaim%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33" /%}
 
 <!--{# TODO: replace the above example with one where the channel, public key, signature, and balance match #}-->
 

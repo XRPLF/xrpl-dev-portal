@@ -223,6 +223,8 @@ ul.nav.navbar-nav {
   --md-list-left-padding: 40px;
   --md-table-header-bg-color: #32343E;
   --md-table-border-color: #32343E;
+  
+  --md-tabs-content-padding: 0;
 }
 
 :root.light {

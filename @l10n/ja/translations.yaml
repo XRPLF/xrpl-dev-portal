@@ -10,7 +10,7 @@ search.keys.navigate: 選択
 search.keys.select: 決定
 search.keys.exit: 閉じる
 feedback.settings.label: 参考になりましたか?
-footer.copyrightText: © 2024 XRP Ledger. オープンソース.
+footer.copyrightText: © 2025 XRP Ledger. オープンソース.
 
 navbar.about: 概要
 navbar.docs: ドキュメント
@@ -117,6 +117,9 @@ footer.community.dev-blog: 開発者ブログ
 footer.community.xrpl-grants: XRPL Grants
 footer.community.github: GitHub
 footer.community.report-a-scam: 詐欺の報告
+
+component.tryit: 試してみる
+component.queryexampletx: トランザクションの例を確認
 
 # index.page.tsx
 home.hero.h1part1: ビジネスのための
@@ -490,6 +493,52 @@ Avg fee per NFT tx: NFTトランザクションごとの平均手数料
 Featured real world projects: 注目の実世界プロジェクト
 Related Articles: 関連記事
 More related articles: 追加の関連記事
+
+# docs/use-cases/tokenization/real-world-assets.page.tsx
+Build Real-World Asset Tokenization Solutions on the XRP Ledger: XRP Ledgerで現物資産のトークン化ソリューションを構築しましょう
+Get Started Now: 今すぐ始める
+Access the blockchain built for business to power financial asset tokenization with decentralized architecture, fast settlement, and institutional-grade tools.: 分散型アーキテクチャ、高速な決済、そして機関レベルのツールを備えたビジネス向けのブロックチェーンにアクセスして、金融資産のトークン化を可能にしましょう。
+XRP Ledger's open-source, decentralized technology is scalable, interoperable and highly efficient—specifically designed to enable tokenization of real-world financial assets.: XRP Ledgerのオープンソースかつ分散型の技術は、スケーラブル、相互運用可能、かつ高度に効率的であり、特に現物金融資産のトークン化に適したように設計されています。
+Benefits of Real-World Asset Tokenization Development on XRP Ledger: XRP Ledgerを使った現物資産のトークン化の利点
+Fast Settlement and Low Fees: 高速な決済と低い手数料
+Leverage transaction finality in 3-5 seconds at fractions of a cent, making XRP Ledger an ideal platform for handling large-scale tokenization with cost-effective, high-speed transactions.: 3-5秒でのトランザクションのファイナリティの特徴から、XRP Ledgerは高コストパフォーマンス、高速なトランザクションを使った大規模なトークン化を処理するための理想的なプラットフォームです。
+Access to Liquidity: 流動性へのアクセス
+Integrate XRP Ledger's native liquidity pools and order books directly into your applications via API. Liquidity is aggregated at the protocol layer, rather than fragmented across various applications, providing developers with seamless access at the core blockchain level.: XRP Ledgerのネイティブの流動性プールとオーダーブックをAPIを通じてアプリケーションに直接統合しましょう。流動性はプロトコルレイヤーで集約され、さまざまなアプリケーション間で断片化されるのではなく、開発者にコアブロックチェーンレベルでのシームレスなアクセスを提供します。
+Full-Stack Tokenization Tools: フルスタックのトークン化ツール
+Issue, manage, and trade real-world assets without needing to build smart contracts. XRP Ledger's built-in functionality and compliance-enabling features allows you to focus on building without additional layers of complexity.: スマートコントラクトを構築することなく、現物資産の発行、管理、および取引を行うことができます。XRP Ledgerのビルトイン機能とコンプライアンスを促進する機能により、追加の複雑さなしに構築できます。
+Best-in-Class On-chain DEX: 最高クラスのオンチェーンDEX
+Utilize XRP Ledger's native decentralized exchange (DEX) with integrated Automated Market Makers (AMM) and on-chain 24/7 order books, providing a developer-friendly environment to create DeFi solutions for traditional finance applications.: XRP Ledgerのネイティブの分散型取引所(DEX)を利用して、統合された自動マーケットメーカーAMMとオンチェーンのオーダーブックを活用し、従来の金融アプリケーションのためのDeFiソリューションを開発しやすい環境を提供します。
+Cross-Chain Interoperability: ブロックチェーン間の相互運用性
+Enable seamless interaction with other blockchains via secure cross-chain bridges, allowing you to expand your project's functionality and liquidity options across ecosystems.: ブロックチェーン間の安全な相互運用性を利用して、他のブロックチェーンとのシームレスな相互作用を可能にし、プロジェクトの機能と流動性オプションをエコシステム間で拡張しましょう。
+Start Building Now: 今すぐ構築を始める
+Explore the companies pioneering tokenization using XRP Ledger: XRP Ledgerを利用してトークン化の最先端を走る企業
+Developer Tools & APIs: 開発者ツールとAPI
+"Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset:": XRP Ledgerの包括的な開発者ツールセットを使って、開発をスムーズにし、強力なRWAトークン化ソリューションを構築しましょう。
+Token Issuance Tutorial: トークン発行のチュートリアル
+DEX Integration: DEXの統合
+Cross-chain Interoperability: クロスチェーンの相互運用性
+Why Developers Choose XRPL for RWA Tokenization: なぜ開発者がXRPLをRWAトークン化に選ぶのか
+A developer-first blockchain for building efficient, scalable tokenization solutions.: 効率的でスケーラブルなトークン化ソリューションを構築するための開発者向けブロックチェーン
+Proven Open-Source Technology: 実績あるオープンソース技術
+XRP Ledger has been a trusted, battle-tested blockchain for over a decade, supported by a global developer community committed to financial innovation.: XRP Ledgerは、10年以上にわたり、金融革新を追求するグローバルな開発者コミュニティによって支持されている信頼できる、実戦テスト済みのブロックチェーンです。
+Purpose-Built for Finance: 金融向けに特化
+XRP Ledger provides out-of-the-box institutional-grade functionality, reducing development overhead and eliminating the need for smart contracts.: XRP Ledgerは、金融向けに特化したビルトイン機能を提供し、開発オーバーヘッドを削減し、スマートコントラクトの必要性を排除します。
+Native Compliance & Security: ネイティブのコンプライアンスとセキュリティ
+Maintain control over tokenized assets and user access with XRP Ledger's asset control features, multi-signature accounts, and built-in compliance tools.: XRP Ledgerの資産管理機能、マルチサインアカウント、およびビルトインのコンプライアンスツールを使って、トークン化された資産とユーザへのアクセスを制御できます。
+Pathfinding & Auto-Bridging for Liquidity: 流動性のためのパスファインディングとオートブリッジ
+Streamline cross-currency transactions and trading with XRP Ledger's auto-bridging and pathfinding features to automatically increase liquidity between issued tokens and XRP.: XRP Ledgerのオートブリッジとパスファインディング機能を使って、発行されたトークンとXRP間の流動性を自動的に増加させ、通貨間の取引と交換をスムーズにしましょう。
+Learn About Auto-bridging: オートブリッジについて
+Explore Pathfinding: パスファインディングについて
+Developer Resources: 開発者リソース
+use-cases.rwa.dev-resources.p1: " "
+use-cases.rwa.dev-resources.p2: 既存のインフラストラクチャ
+use-cases.rwa.dev-resources.p3: に簡単に統合し、開発の旅をサポートするリソースにアクセスできます。プロジェクトの資金調達にはXRPL Grantsを検討してみてください。または、Dev Advocateにご相談ください。
+Apply for XRPL Grants: XRPL Grantsへ応募
+Talk to a Dev Advocate: Dev Advocateへ相談
+Learn & Stay Updated: 知識を深め、最新情報を入手
+Stay ahead of the curve with the latest developments in RWA tokenization on the XRP Ledger by joining the developer Discord and signing up for the XRPL Community Newsletter.: XRPLのコミュニティディスコードとコミュニティニュースレターに参加して、RWAトークン化に関する最新の開発をキャッチアップしましょう。
+Join the Developer Discord: 開発者ディスコードに参加
+Sign up for the Newsletter: ニュースレターに登録
 
 # community/index.page.tsx
 XRPL Community: XRPLコミュニティ

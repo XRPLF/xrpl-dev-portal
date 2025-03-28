@@ -7,7 +7,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 # NFTokenMint
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenMint.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
 
 The `NFTokenMint` transaction creates a non-fungible token and adds it to the relevant [NFTokenPage object][] of the `NFTokenMinter` as an [NFToken][] object. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
 
@@ -38,7 +38,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
@@ -48,7 +48,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 | `Issuer` | String | AccountID | _(Optional)_ The issuer of the token, if the sender of the account is issuing it on behalf of another account. This field must be omitted if the account sending the transaction is the issuer of the `NFToken`. If provided, the issuer's [AccountRoot object][] must have the `NFTokenMinter` field set to the sender of this transaction (this transaction's `Account` field). |
 | `TransferFee` | Number | UInt16 | _(Optional)_ The value specifies the fee charged by the issuer for secondary sales of the `NFToken`, if such sales are allowed. Valid values for this field are between 0 and 50000 inclusive, allowing transfer rates of between 0.00% and 50.00% in increments of 0.001. If this field is provided, the transaction MUST have the [`tfTransferable` flag](#nftokenmint-flags) enabled. |
 | `URI` | String | Blob | _(Optional)_ Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the [`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex) utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is NOT checked for validity. |
-| `Amount`      | [Currency Amount][] | Amount            | _(Optional)_ Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
+| `Amount`      | [Currency Amount][] | Amount            | _(Optional)_ Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
 | `Expiration`  | Number              | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. Results in an error if the `Amount` field is not specified. |
 | `Destination` | String              | AccountID         | _(Optional)_ If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail. Results in an error if the `Amount` field is not specified. |
 

@@ -24,13 +24,13 @@ Para ser eliminada, una cuenta debe cumplir los siguientes requisitos:
     - `RippleState`
     - `Check`
 - La cuenta debe tener menos de 1000 objetos en el ledger.
-- La transacción debe pagar un [coste de transacción][] especial igual al menos a la [reserva de propietario](reserves.md) de un artículo (actualmente 2 XRP).
+- La transacción debe pagar un [coste de transacción][] especial igual al menos a la [reserva de propietario](reserves.md) de un artículo (actualmente {% $env.PUBLIC_OWNER_RESERVE %}).
 
 ## Coste de eliminación
 
 **Atención:** El coste de transacción de la [transacción AccountDelete][] siempre aplica cuando la transacción está incluida en un ledger validado, incluso si la transacción falla porque la cuenta no reune los requisitos para ser eliminada. Para reducir las posibilidades de pagar un coste de transacción alto si la cuenta no puede ser eliminada, utiliza la opción `fail_hard` cuando envíes una transacción AccountDelete.
 
-A diferencia de Bitcoin y muchas otras criptomonedas, cada nueva versión de la cadena del ledger público de XRP Ledger contiene el estado completo del ledger, lo cual incrementa en tamaño con cada cuenta nueva. Por esa razón, no deberías crear nuevas cuentas XRP Ledger si no tienes necesidad. Puedes recuperar parte de los 10 XRP de la cuenta [reserva](reserves.md) eliminado la cuenta, pero destruirás por lo menos 2 XRP haciéndolo.
+A diferencia de Bitcoin y muchas otras criptomonedas, cada nueva versión de la cadena del ledger público de XRP Ledger contiene el estado completo del ledger, lo cual incrementa en tamaño con cada cuenta nueva. Por esa razón, no deberías crear nuevas cuentas XRP Ledger si no tienes necesidad. Puedes recuperar parte de los {% $env.PUBLIC_BASE_RESERVE %} de la cuenta [reserva](reserves.md) eliminado la cuenta, pero destruirás por lo menos {% $env.PUBLIC_OWNER_RESERVE %} haciéndolo.
 
 Instituciones que reciben y envían valor en nombre de muchos usuarios pueden utilizar [**Source Tags** y **Destination Tags**](../transactions/source-and-destination-tags.md) para distinguir pagos desde y para sus clientes usando una (o un puñado) de cuentas en el XRP Ledger.
 

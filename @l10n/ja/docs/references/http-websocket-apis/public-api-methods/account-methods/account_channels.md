@@ -52,7 +52,7 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 
 {% /tabs %}
 
-[試してみる>](/resources/dev-tools/websocket-api-tool#account_channels)
+{% try-it method="account_channels" /%}
 
 
 リクエストには以下のパラメーターが含まれます。

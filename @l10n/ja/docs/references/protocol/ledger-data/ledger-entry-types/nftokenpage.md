@@ -96,10 +96,12 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 | 所有NFTの数  |  最良のケース | 一般 | 最悪のケース |
 |:------------|:----------|:--------|:-----------|
-| 32以下       | 2 XRP     | 2 XRP   | 2 XRP      |
-| 50          | 4 XRP     | 6 XRP   | 8 XRP      |
-| 200         | 14 XRP    | 18 XRP  | 26 XRP     |
-| 1000        | 64 XRP    | 84 XRP  | 126 XRP    |
+| 32以下       | 0.2 XRP   | 0.2 XRP | 0.2 XRP    |
+| 50          | 0.4 XRP   | 0.6 XRP | 0.8 XRP    |
+| 200         | 1.4 XRP   | 1.8 XRP | 2.6 XRP    |
+| 1000        | 6.4 XRP   | 8.4 XRP | 12.6 XRP   |
+
+<!-- RESERVES_REMINDER: update math if reserves change -->
 
 これらの数字は推定であり、実際の数字とは異なる場合があります。
 

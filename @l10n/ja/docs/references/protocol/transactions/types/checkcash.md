@@ -7,7 +7,7 @@ labels:
   - Checks
 ---
 # CheckCash
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CashCheck.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
 
 _（[Checks Amendment][]が必要です）_
 

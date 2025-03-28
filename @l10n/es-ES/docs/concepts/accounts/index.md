@@ -46,7 +46,7 @@ La forma típica de obtener una cuenta en el XRP Ledger es la siguiente:
 
     - Por ejemplo, puedes comprar XRP en un exchange privado, después retirar el XRP del exchange a la dirección que especificaste.
 
-        **Atención:** La primera vez que recibes XRP en tu propia dirección del XRP Ledger, debes pagar la [reserva de la cuenta](reserves.md) (actualmente 10 XRP), lo que bloquea esa cantidad de XRP indefinidamente. En contraste, los exchanges privados suelen almacenar todo el XRP de los clientes en unas pocas cuentas del XRP Ledger compartidas, así los clientes no tienen que pagar la reserva de cuentas individuales en el exchange. Antes de retirar XRP, considera si pagar el precio de tener tu propia cuenta en el XRP Ledger merece la pena.
+        **Atención:** La primera vez que recibes XRP en tu propia dirección del XRP Ledger, debes pagar la [reserva de la cuenta](reserves.md) (actualmente {% $env.PUBLIC_BASE_RESERVE %}), lo que bloquea esa cantidad de XRP indefinidamente. En contraste, los exchanges privados suelen almacenar todo el XRP de los clientes en unas pocas cuentas del XRP Ledger compartidas, así los clientes no tienen que pagar la reserva de cuentas individuales en el exchange. Antes de retirar XRP, considera si pagar el precio de tener tu propia cuenta en el XRP Ledger merece la pena.
 
 
 

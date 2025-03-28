@@ -47,7 +47,7 @@ rippled server_info
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#server_info)
+{% try-it method="server_info" server="xrplcluster" /%}
 
 The request includes the following parameters:
 

@@ -59,7 +59,7 @@ _([AMM amendment][]により追加されました。)_
 
 {% /tabs %}
 
-[試してみる>](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
+{% try-it method="amm_info" server="testnet" /%}
 
 リクエストには以下のパラメーターが含まれます。
 

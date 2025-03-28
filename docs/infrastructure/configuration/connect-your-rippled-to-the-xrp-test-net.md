@@ -109,7 +109,7 @@ Edit your `validators.txt` file. This file is located in the same folder as your
     https://vl.devnet.rippletest.net
 
     [validator_list_keys]
-    EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
+    EDBB54B0D9AEE071BB37784AF5A9E7CC49AC7A0EFCE868C54532BCB966B9CFC13B
     ```
 
     ```{% label="Mainnet" %}
