@@ -27,6 +27,11 @@ button {
   -webkit-text-fill-color: white;
 }
 
+button:hover {
+  background-color: #0555c5;
+  cursor: pointer;
+}
+
 td {
   vertical-align: middle;
 }
