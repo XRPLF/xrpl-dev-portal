@@ -3,7 +3,7 @@
 <head>
     <title>MPT Generator</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <link href="mpt-generator.css" rel="stylesheet">
+    <link href="modular-tutorials.css" rel="stylesheet">
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
 
     <script src='mpt-generator.js'></script>
@@ -31,14 +31,23 @@
                                                 Choose your ledger instance:
                                             </span>
                                             &nbsp;&nbsp;
+                                            <input type="radio" id="dn" name="server"
+                                                value="wss://s.devnet.rippletest.net:51233" checked>
+                                            <label for="devnet">Devnet</label>
+                                            &nbsp;&nbsp;
                                             <input type="radio" id="tn" name="server"
                                                 value="wss://s.altnet.rippletest.net:51233" >
                                             <label for="testnet">Testnet</label>
-                                            &nbsp;&nbsp;
-                                            <input type="radio" id="dn" name="server"
-                                                value="wss://s.devnet.rippletest.net:51233" checked>
-                                            <label for="devnet">Devnet</label><br />
-
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                                                <label for="accountNameField">Account Name</label>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="accountNameField" size="40"></input>
                                         </td>
                                     </tr>
                                     <tr>
@@ -204,12 +213,16 @@
                 <td>
                     <h2>MPToken Create Transaction</h2>
                     <p><button type="button" onclick="generateCode()">Generate Transaction</button>
-                    &nbsp;&nbsp;<button type = "button" onclick="sendTransaction()">Send Transaction</button></p>
-                    <span class="tooltip" tooltip-data="Follow this link to see the MPT Issuance entry on the Explorer.">
-                        Link to Explorer entry for MPT Issuance.
+                    &nbsp;&nbsp;
+                    <button type = "button" onclick="sendTransaction()">Send Transaction</button>
+                    &nbsp;&nbsp;
+                    <button type = "button" onclick="gatherMptInfo()">Gather MPT Information</button>
+                    </p>
+                    <span class="tooltip" tooltip-data="The MPT Issuance ID of your generated MPT.">
+                        MPT Issuance ID
                     </span>
-                    <p><input type="text" id="urlField" size="50"></p>
-                    <textarea id="codeTextArea" rows="25" cols="75"></textarea>
+                    <p><input type="text" id="mptIssuanceIdField" size="50"></p>
+                    <textarea id="resultField" rows="25" cols="75"></textarea>
                 </td>
             </tr>
         </table>

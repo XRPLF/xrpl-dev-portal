@@ -21,13 +21,11 @@ To learn more, see [Multi-purpose Tokens](../../concepts/tokens/fungible-tokens/
 
 ## MPT Generator
 
-The MPT Generator utility embedded on the page below lets you experiment with an MPT configuration in a sandbox environment. When you are satisfied with the settings, you can generate the transaction code required to create your MPT on Mainnet.
-
 ![MPT Generator Utility](../../img/uc-mpt1-mpt-generator-empty-form.png)
 
 You can download a [standalone version of the MPT Generator](../../../_code-samples/mpt-generator/mpt-generator.zip) as sample code<!--, or use the embedded form that follows-->.
 
-In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form below with a new account and the transaction works fine. See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process. The form is populated with sample values, but you can change the parameters for your own experiments. A T-bill is just one example of the many types of asset you can create and trade on the XRP Ledger.
+In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form  with a new, unconfigured account and the transaction works fine.<!--  See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process.The form is populated with sample values, but you can change the parameters for your own experiments.--> A T-bill is one example of the many types of asset you can create and trade on the XRP Ledger.
 
 <!--
 <hr/>
@@ -357,8 +355,6 @@ const transactionJson = {
 
 A US Treasury bill (T-bill) is a short-term debt security issued by the US government. T-bills are considered a safe investment because they're backed by the US government. T-bills are appealing to investors in American states that have high income tax because the interest earned is exempt from state and local taxes. See [Treasury Bills In Depth](https://www.treasurydirect.gov/research-center/history-of-marketable-securities/bills/t-bills-indepth/).
 
-A T-bill is just one of the many asset-backed tokens you can create and trade as an MPT on the XRP Ledger.
-
 ### Creating an Issuing Account
 
 You can use the Account Configurator to experiment with the settings for a T-bill issuing account in a sandbox environment. When you are satisfied with your configuration, you can create an account on XRPL Mainnet to begin trading.
@@ -442,12 +438,14 @@ Once you've set your preferred values, click **Generate Transaction** to see the
 
 ![Generated syntax for MPTokenIssuanceCreate transaction](../../img/uc-mpt1-t-bill-mpt-generator-generate-code.png)
 
-To create your T-bill MPT, click **Send Transaction**. When your transaction succeeds, a link to the record in the XRPL Explorer is displayed in the Code field.
+To create your T-bill MPT, click **Send Transaction**. When your transaction succeeds, a link to the record in the XRPL Explorer is displayed in the result field.
 
 ![Success link appended to the code field.](../../img/uc-mpt1-t-bill-create-success.png)
 
-Be sure to copy and save the **Seed** field and the **MPT Issuance ID** so that you can try transferring the MPT to another account as shown in [Sending an MPT](./send-an-mpt.md).
-
-Follow the link appended to the result field and scroll down to find the `MPTokenIssuanceCreate` transaction for your new T-bill in the Explorer.
+Follow the link and scroll down to find the `MPTokenIssuanceCreate` transaction for your new T-bill in the Explorer.
 
 ![Explorer record of the new T-bill MPT.](../../img/uc-mpt1-t-bill-in-explorer.png)
+
+Click **Gather MPT Information** to copy the account information and MPT Issuance ID to the result field. Copy the information and save it to send the MPT to another account as shown in [Sending MPTs](../../tutorials/javascript/send-payments/sending-mpts.md).
+
+![Account and MPT ID in the result field.](../../img/uc-mpt1-t-bill-gather-mpt-info.png)
