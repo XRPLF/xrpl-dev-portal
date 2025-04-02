@@ -351,7 +351,7 @@ const transactionJson = {
 </div>
 <hr/>
 -->
-## Creating a US Treasury Bill
+## Creating a US Treasury Bill as an MPT
 
 A US Treasury bill (T-bill) is a short-term debt security issued by the US government. T-bills are considered a safe investment because they're backed by the US government. T-bills are appealing to investors in American states that have high income tax because the interest earned is exempt from state and local taxes. See [Treasury Bills In Depth](https://www.treasurydirect.gov/research-center/history-of-marketable-securities/bills/t-bills-indepth/).
 
