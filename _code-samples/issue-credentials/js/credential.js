@@ -107,7 +107,6 @@ function verifyDocuments({documents}) {
     Depending on the type of credentials your service needs, you might
     need to implement different types of checks here.
   */
-  console.log("DOCUMENTS:", documents)
   if (typeof documents !== 'object' || Object.keys(documents).length === 0) {
     throw new ValueError("you must provide a non-empty 'documents' field");
   }
