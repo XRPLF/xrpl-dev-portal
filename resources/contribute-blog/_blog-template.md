@@ -39,11 +39,15 @@ It is recommended to limit your title to under 50 characters and keep it same as
 
 To include an internal link, use a relative path.  For example, to create a link to the Contributing Documentation topic, use the following syntax: 
 
+```
 [Contribute Documentation](../resources/contribute-documentation/index.md).
+```
 
 To include an external link, use the absolute URL instead of a relative path as shown in the following example: 
 
+```
 [Contribute Documentation](https://xrpl.org/resources/contribute-documentation).
+```
 
 **Lists**
 
@@ -62,7 +66,9 @@ To include an ordered list, use the following syntax:
 
 To include an image, use the following syntax:
 
+```
 ![image_description](/blog/img/my_image.png)
+```
 
 It is recommended that you store graphics in the `/blog/img` directory. 
 
