@@ -7,6 +7,8 @@ labels:
 ---
 # Creating an Asset-backed Multi-purpose Token
 
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
+
 _As a financial professional, I want to use multi-purpose tokens to create an asset-backed token in order to profit from resale transactions._
 
 A multi-purpose token (MPT) is a compact and flexible object that offers the best aspects of fungible and non-fungible tokens. It is the next generation of tokenization on the XRPL. Notable features include:
@@ -449,3 +451,5 @@ Follow the link and scroll down to find the `MPTokenIssuanceCreate` transaction 
 Click **Gather MPT Information** to copy the account information and MPT Issuance ID to the result field. Copy the information and save it to send the MPT to another account as shown in [Sending MPTs](../../tutorials/javascript/send-payments/sending-mpts.md).
 
 ![Account and MPT ID in the result field.](../../img/uc-mpt1-t-bill-gather-mpt-info.png)
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

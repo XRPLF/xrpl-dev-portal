@@ -7,7 +7,7 @@ labels:
 ---
 # Sending MPTs
 
-_As an XRPL holder, I want to send multi-purpose tokens to another account in order to complete an offline transaction._
+_(Requires the [MPToken amendment][] {% not-enabled /%})_
 
 To send an MPT to another account, the receiving account must first authorize the receipt of the MPT, based on its MPToken Issuance ID. This is to prevent malicious users from spamming accounts with unwanted tokens that could negatively impact storage and XRP reserves.
 
@@ -820,4 +820,5 @@ async function authorizeMPT() {
 </div>
 <hr/>
 
-==>
+-->
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

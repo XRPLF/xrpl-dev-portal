@@ -55,6 +55,14 @@ MPTs are intended to be complementary to IOUs.  While there might be use cases w
 
 ## See Also
  
+- **Use Case**
+
+[Creating an Asset-backed Multi-purpose Token](../../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md)
+
+- **Tutorial**
+
+[Sending MPTs](../../../tutorials/javascript/send-payments/sending-mpts.md)
+
 - **References:**
     - [MPToken](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md)
     - [MPTokenIssuance](../../../references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md)
