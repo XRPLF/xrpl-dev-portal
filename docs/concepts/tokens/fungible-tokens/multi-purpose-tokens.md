@@ -61,7 +61,7 @@ MPTs are intended to be complementary to IOUs.  While there might be use cases w
 
 - **Tutorial**
 
-[Sending MPTs](../../../tutorials/javascript/send-payments/sending-mpts.md)
+    - [Sending MPTs](../../../tutorials/javascript/send-payments/sending-mpts.md)
 
 - **References:**
     - [MPToken](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md)
