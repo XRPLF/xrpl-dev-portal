@@ -5,7 +5,7 @@ seo:
 ---
 # XRPL.org Privacy Policy
 
-Last updated: Jan 20, 2023
+Last updated: April 04, 2025
 
 Association XRP Ledger Foundation(“Association", "XRPL Foundation”, "XRPLF", “We”, “Our”, “Us”) respects our users’ need for privacy, and this Privacy Policy describes the collection, use and disclosure of Your information when You use this Service.
 
