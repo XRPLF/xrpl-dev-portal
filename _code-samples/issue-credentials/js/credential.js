@@ -1,10 +1,11 @@
 const {
-  isValidClassicAddress,
   strToHex,
   decodeHex,
   datetimeToRippleTime,
   rippleTimeToDatetime,
 } = require("./utils");
+
+const { isValidClassicAddress } = require("xrpl");
 
 const { ValueError } = require("./errors");
 

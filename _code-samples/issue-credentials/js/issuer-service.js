@@ -10,7 +10,7 @@ const {
   serializeCredential,
   parseCredentialFromXrpl,
 } = require("./credential");
-const { XRPLTxError, XRPLLookupError } = require("./errors");
+const { XRPLTxError } = require("./errors");
 const { lookUpCredentials } = require("./look_up_credentials");
 
 dotenv.config();
@@ -70,20 +70,19 @@ async function main() {
   app.get("/admin/credential", async (req, res) => {
     try {
       // ?accepted=yes|no|both query parameter - the default is "both"
-      const filterAccepted = (req.query.accepted || "both").toLowerCase();
-      if (!["yes", "no", "both"].includes(filterAccepted)) {
-        return res.status(400).json({ error: "Invalid 'accepted' filter" });
-      }
+      const query = Object.fromEntries(
+        Object.entries(req.query).map(([k, v]) => [k.toLowerCase(), v])
+      );
+      const filterAccepted = (query.accepted || "both").toLowerCase();
 
-      const credentials = await lookUpCredentials(client, wallet.classicAddress, filterAccepted);
-      console.log(credentials)
-      // const result = credentials.map((entry) =>
-      //   serializeCredential(parseCredentialFromXrpl(entry))
-      // );
+      const credentials = await lookUpCredentials(client, wallet.address, "", filterAccepted);
+      const result = credentials.map((entry) =>
+        serializeCredential(parseCredentialFromXrpl(entry))
+      );
 
-      // return res.json({ credentials: result })
+      return res.status(200).json({ credentials: result });
     } catch (err) {
-      return handleAppError(res, err)
+      return handleAppError(res, err);
     }
   });
 

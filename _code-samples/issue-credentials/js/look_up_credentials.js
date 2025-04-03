@@ -1,40 +1,42 @@
+const { ValueError } = require("./errors");
+const { XRPLLookupError } = require("./errors");
+
 const lsfAccepted = 0x00010000;
 
+/**
+ * Looks up Credentials issued by/to a specified XRPL account, optionally
+ * filtering by accepted status. Handles pagination.
+ */
 async function lookUpCredentials(client, issuer, subject, accepted = "both") {
   const account = issuer || subject;
   if (!account) {
-    throw new Error("Must specify issuer or subject");
+    throw new ValueError("Must specify issuer or subject");
   }
 
   accepted = accepted.toLowerCase();
   if (!["yes", "no", "both"].includes(accepted)) {
-    throw new Error("accepted must be 'yes', 'no', or 'both'");
+    throw new ValueError("accepted must be 'yes', 'no', or 'both'");
   }
 
   const credentials = [];
-  let marker = undefined;
+  let request = {
+    command: "account_objects",
+    account,
+    type: "credential",
+  };
 
-  do {
-    const xrplResponse = await client.request({
-      command: "account_objects",
-      account,
-      type: "credential",
-      marker,
-    });
+  // Fetch first page
+  let response = await client.request(request);
 
-    console.log(xrplResponse);
-    if (xrplResponse.status !== "success") {
-      const err = new Error("XRPL account_objects lookup failed");
-      err.xrpl_response = xrplResponse.result;
-      throw err;
+  while (true) {
+    if (!response.result) {
+      throw new XRPLLookupError(response);
     }
 
-    for (const obj of xrplResponse.result.account_objects) {
-      // Skip credentials that aren't issued to/by the requested address
+    for (const obj of response.result.account_objects) {
       if (issuer && obj.Issuer !== issuer) continue;
       if (subject && obj.Subject !== subject) continue;
 
-      // Skip credentials that don't match the specified accepted status
       const credAccepted = Boolean(obj.Flags & lsfAccepted);
       if (accepted === "yes" && !credAccepted) continue;
       if (accepted === "no" && credAccepted) continue;
@@ -42,8 +44,14 @@ async function lookUpCredentials(client, issuer, subject, accepted = "both") {
       credentials.push(obj);
     }
 
-    marker = xrplResponse.result.marker;
-  } while (marker);
+    if (!response.result.marker) break;
+
+    /** 
+     * If there is marker, request the next page using the convenience function "requestNextPage()".
+     * See https://js.xrpl.org/classes/Client.html#requestnextpage to learn more.
+     **/ 
+    response = await client.requestNextPage(request, response.result);
+  }
 
   return credentials;
 }

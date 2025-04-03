@@ -1,5 +1,3 @@
-const { isValidClassicAddress } = require("xrpl");
-
 // Validate credential type (1–64 ASCII alphanum, underscore, dash, dot)
 function isAllowedCredentialType(credential) {
   const regex = /^[A-Za-z0-9_.-]{1,64}$/;
@@ -15,6 +13,21 @@ function isAllowedUri(uri) {
 // String → hex (uppercase)
 function strToHex(str) {
   return Buffer.from(str, "utf8").toString("hex").toUpperCase();
+}
+
+function decodeHex(sHex) {
+  /**
+   * Try decoding a hex string as ASCII; return the decoded string on success,
+   * or the un-decoded string prefixed by '(BIN) ' on failure.
+   */
+  try {
+    const buffer = Buffer.from(sHex, "hex");
+    return buffer.toString("ascii");
+    // Could use utf-8 instead, but it has more edge cases.
+    // Optionally, sanitize the string for display before returning
+  } catch (err) {
+    return "(BIN) " + sHex;
+  }
 }
 
 // JS Date → Ripple epoch seconds
@@ -36,5 +49,5 @@ module.exports = {
   strToHex,
   datetimeToRippleTime,
   rippleTimeToDatetime,
-  isValidClassicAddress,
+  decodeHex,
 };
