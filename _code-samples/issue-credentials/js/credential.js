@@ -11,18 +11,15 @@ const CREDENTIAL_REGEX = /^[A-Za-z0-9_.-]{1,64}$/;
 const URI_REGEX = /^[A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]{1,256}$/;
 
 /**
- * Validate and parse credential request.
+ * Validate credential request.
  *
  * This function performs parameter validation. Validated fields:
  *   - subject (required): the subject of the credential, as a classic address
  *   - credential (required): the credential type, in human-readable (ASCII) chars
- *   - expiration (optional): time when the credential expires (displayed as an ISO 8601 format string in JSON)
  *   - uri (optional): URI of the credential in human-readable (ASCII) chars
-     - documents (required): 
+ *   - expiration (optional): time when the credential expires (displayed as an ISO 8601 format string in JSON)
  */
-function parseCredentialRequest(data) {
-  const { subject, credential, uri, expiration, documents } = data;
-
+function validateCredentialRequest({ subject, credential, uri, expiration }) {
   // Validate subject
   if (typeof subject !== "string") {
     throw new Error("Must provide a string 'subject' field");
@@ -87,24 +84,21 @@ function parseCredentialRequest(data) {
     }
   }
 
-  /**
-   * As a credential issuer, you typically need to verify some information
-   * about someone before you issue them a credential. For this example,
-   * the user passes relevant information in a documents field of the API request.
-   * The documents are kept confidential, off-chain.
-   */
-  verifyDocuments(documents);
-
   return {
     subject,
     credential,
     uri,
     expiration: parsedExpiration,
-    documents,
   };
 }
 
-function verifyDocuments(documents) {
+/**
+ * As a credential issuer, you typically need to verify some information
+ * about someone before you issue them a credential. For this example,
+ * the user passes relevant information in a documents field of the API request.
+ * The documents are kept confidential, off-chain.
+ */
+function verifyDocuments({documents}) {
   /* 
     This is where you would check the user's documents to see if you
     should issue the requested Credential to them.
@@ -132,7 +126,7 @@ function verifyDocuments(documents) {
  * Credential type and URI are hexadecimal;
  * Expiration, if present, is in seconds since the Ripple Epoch.
  */
-function toXrplFormat(cred) {
+function credentialToXrpl(cred) {
   return {
     subject: cred.subject,
     credential: strToHex(cred.credential),
@@ -175,8 +169,9 @@ function serializeCredential(cred) {
 }
 
 module.exports = {
-  parseCredentialRequest,
-  toXrplFormat,
+  validateCredentialRequest,
+  verifyDocuments,
+  credentialToXrpl,
   parseCredentialFromXrpl,
   serializeCredential,
 };

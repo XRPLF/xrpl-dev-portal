@@ -1,7 +1,8 @@
 const express = require("express");
 const {
   validateCredentialRequest,
-  toXrplFormat,
+  verifyDocuments,
+  credentialToXrpl,
   serializeCredential,
   parseCredentialFromXrpl,
 } = require("./credential");
@@ -14,8 +15,11 @@ function createRoutes(wallet, client) {
   router.post("/credential", async (req, res) => {
     try {
       // validateCredentialRequest() throws if the request is not validly formatted
-      const credRequest = parseCredentialRequest(req.body);
-      const credXrpl = toXrplFormat(credRequest);
+      const credRequest = validateCredentialRequest(req.body);
+      // verifyDocuments() throws if the provided documents don't pass inspection
+      verifyDocuments(req.body)
+      const credXrpl = credentialToXrpl(credRequest);
+
       const tx = {
         TransactionType: "CredentialCreate",
         Account: wallet.classicAddress,
@@ -24,21 +28,18 @@ function createRoutes(wallet, client) {
         URI: credXrpl.uri,
         Expiration: credXrpl.expiration,
       };
+      const ccResponse = await client.submit(tx, { autofill: true, wallet });
 
-      const ccResponse = await client.submitAndWait(tx, { autofill: true, wallet });
       const result = ccResponse.result;
-
-      if (ccResponse.status === "error") {
-        return res.status(400).json({ result });
-      } else if (result.meta.TransactionResult === "tecDUPLICATE") {
-        return res.status(409).json({ result });
-      } else if (result.meta.TransactionResult !== "tesSUCCESS") {
-        return res.status(400).json({ result });
+      if (result.engine_result === "tecDUPLICATE") {
+        return res.status(409).json(result)
+      } else if (result.engine_result !== "tesSUCCESS") {
+        return res.status(400).json(result);
       }
 
       return res.status(201).json(result);
     } catch (err) {
-      return res.status(400).json({ error: err.message });
+      return res.status(400).json({ error: "badRequest", error_message: err.message });
     }
   });
 
