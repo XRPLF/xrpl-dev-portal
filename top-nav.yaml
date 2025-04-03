@@ -129,6 +129,9 @@
         - label: Contribute Documentation
           labelTranslationKey: topnav.resources.contribute-documentation
           href: /resources/contribute-documentation
+        - label: Contribute Blog
+          labelTranslationKey: topnav.resources.contribute-blog
+          href: /resources/contribute-blog
 
 - group: Community
   groupTranslationKey: navbar.community
