@@ -11,20 +11,14 @@ const CREDENTIAL_REGEX = /^[A-Za-z0-9_.-]{1,64}$/;
 const URI_REGEX = /^[A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]{1,256}$/;
 
 /**
- * Validate and parse a credential request.
+ * Validate and parse credential request.
  *
- * This function performs parameter validation. 
- * Validated fields:
-    subject (required): the subject of the credential, as a classic address
-    credential (required): the credential type, in human-readable (ASCII) chars
-    uri (optional): URI of the credential in human-readable (ASCII) chars
-    expiration (optional): time when the credential expires
-                            (displayed as an ISO 8601 format string in JSON)
-    accepted (optional): true if this credential has been accepted
-                               on the XRPL by the subject account.
-                               False if not accepted. 
-                               Omitted for credentials that haven't been 
-                               issued yet.
+ * This function performs parameter validation. Validated fields:
+ *   - subject (required): the subject of the credential, as a classic address
+ *   - credential (required): the credential type, in human-readable (ASCII) chars
+ *   - expiration (optional): time when the credential expires (displayed as an ISO 8601 format string in JSON)
+ *   - uri (optional): URI of the credential in human-readable (ASCII) chars
+     - documents (required): 
  */
 function parseCredentialRequest(data) {
   const { subject, credential, uri, expiration, documents } = data;
@@ -59,7 +53,7 @@ function parseCredentialRequest(data) {
 
   /*
   (Optional) Checks if the specified URI is acceptable for this service.
-
+  
   XRPL Credentials' URI values can be any binary data; this service
   adds any user-requested URI to a Credential as long as the URI
   can be encoded from the characters usually allowed in URIs, namely
@@ -79,13 +73,11 @@ function parseCredentialRequest(data) {
     }
   }
 
-  // Validate expiration (optional)
+  // Validate and parse expiration
   let parsedExpiration;
   if (expiration !== undefined) {
     if (typeof expiration === "string") {
       parsedExpiration = new Date(expiration);
-    } else if (expiration instanceof Date) {
-      parsedExpiration = expiration;
     } else {
       throw new Error(`Unsupported expiration format: ${typeof expiration}`);
     }
@@ -95,24 +87,13 @@ function parseCredentialRequest(data) {
     }
   }
 
-  /* This is where you would check the user's documents to see if you
-    should issue the requested Credential to them.
-    Depending on the type of credentials your service needs, you might
-    need to implement different types of checks here.
-    */
-  if (!documents || typeof documents !== "object") {
-    throw new Error("you must provide a non-empty 'documents' field");
-  }
-
-  // As a placeholder, this example checks that the documents field
-  // contains a string field named "reason" containing the word "please".
-  const reason = documents.reason;
-  if (typeof reason !== "string") {
-    throw new Error("documents must contain a 'reason' string");
-  }
-  if (!reason.toLowerCase().includes("please")) {
-    throw new Error("reason must include 'please'");
-  }
+  /**
+   * As a credential issuer, you typically need to verify some information
+   * about someone before you issue them a credential. For this example,
+   * the user passes relevant information in a documents field of the API request.
+   * The documents are kept confidential, off-chain.
+   */
+  verifyDocuments(documents);
 
   return {
     subject,
@@ -123,8 +104,33 @@ function parseCredentialRequest(data) {
   };
 }
 
+function verifyDocuments(documents) {
+  /* 
+    This is where you would check the user's documents to see if you
+    should issue the requested Credential to them.
+    Depending on the type of credentials your service needs, you might
+    need to implement different types of checks here.
+  */
+  if (!documents || typeof documents !== "object") {
+    throw new Error("you must provide a non-empty 'documents' field");
+  }
+
+  // As a placeholder, this example checks that the documents field
+  // contains a string field named "reason" containing the word "please".
+  const reason = documents.reason;
+  if (typeof reason !== "string") {
+    throw new Error("documents must contain a 'reason' string");
+  }
+
+  if (!reason.toLowerCase().includes("please")) {
+    throw new Error("reason must include 'please'");
+  }
+}
+
 /**
- * Convert a validated credential object into XRPL transaction format
+ * Convert to a Credential object in a format closer to the XRP Ledger representation.
+ * Credential type and URI are hexadecimal;
+ * Expiration, if present, is in seconds since the Ripple Epoch.
  */
 function toXrplFormat(cred) {
   return {
@@ -135,9 +141,7 @@ function toXrplFormat(cred) {
   };
 }
 
-/**
- * Convert an XRPL ledger entry into a usable app credential object
- */
+// Convert an XRPL ledger entry into a usable app credential object
 function parseCredentialFromXrpl(entry) {
   const { Subject, CredentialType, URI, Expiration, Flags } = entry;
 
