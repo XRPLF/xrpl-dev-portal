@@ -54,6 +54,8 @@ links:
     rel: stylesheet
   - href: https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
     rel: stylesheet
+  - href: https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,600,700&display=swap
+    rel: stylesheet
   - href: ./static/css/devportal2024-v1.css
     rel: stylesheet
   - href: ./static/css/font-awesome.min.css
