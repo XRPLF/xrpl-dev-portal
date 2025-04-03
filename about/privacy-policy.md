@@ -7,7 +7,7 @@ seo:
 
 Last updated: April 04, 2025
 
-Association XRP Ledger Foundation(“Association", "XRPL Foundation”, "XRPLF", “We”, “Our”, “Us”) respects our users’ need for privacy, and this Privacy Policy describes the collection, use and disclosure of Your information when You use this Service.
+Association XRP Ledger Foundation (“Association", "XRPL Foundation”, "XRPLF", “We”, “Our”, “Us”) respects our users’ need for privacy, and this Privacy Policy describes the collection, use and disclosure of Your information when You use this Service.
 
 ## Definitions
 
@@ -114,7 +114,9 @@ If you have any questions about this Privacy Policy, You can contact us:
 Association XRP Ledger Foundation
 
 **Regd Office**  
+
 60 Avenue François 1er 
+
 75008 Paris, FRANCE
 
 **By email:** info@xrplf.org
