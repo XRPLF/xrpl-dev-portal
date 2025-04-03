@@ -57,7 +57,7 @@ MPTs are intended to be complementary to IOUs.  While there might be use cases w
  
 - **Use Case**
 
-[Creating an Asset-backed Multi-purpose Token](../../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md)
+    - [Creating an Asset-backed Multi-purpose Token](../../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md)
 
 - **Tutorial**
 
