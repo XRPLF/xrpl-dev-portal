@@ -6,6 +6,8 @@ const {
   rippleTimeToDatetime,
 } = require("./utils");
 
+const { ValueError } = require("./errors");
+
 // Regex constants
 const CREDENTIAL_REGEX = /^[A-Za-z0-9_.-]{1,64}$/;
 const URI_REGEX = /^[A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]{1,256}$/;
@@ -22,15 +24,15 @@ const URI_REGEX = /^[A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]{1,256}$/;
 function validateCredentialRequest({ subject, credential, uri, expiration }) {
   // Validate subject
   if (typeof subject !== "string") {
-    throw new Error("Must provide a string 'subject' field");
+    throw new ValueError("Must provide a string 'subject' field");
   }
   if (!isValidClassicAddress(subject)) {
-    throw new Error(`subject not valid address: '${subject}'`);
+    throw new ValueError(`subject not valid address: '${subject}'`);
   }
 
   // Validate credential
   if (typeof credential !== "string") {
-    throw new Error("Must provide a string 'credential' field");
+    throw new ValueError("Must provide a string 'credential' field");
   }
 
   /* 
@@ -45,7 +47,7 @@ function validateCredentialRequest({ subject, credential, uri, expiration }) {
   use case; for example, you might only issue one specific credential type.
   */
   if (!CREDENTIAL_REGEX.test(credential)) {
-    throw new Error(`credential not allowed: '${credential}'.`);
+    throw new ValueError(`credential not allowed: '${credential}'.`);
   }
 
   /*
@@ -66,7 +68,7 @@ function validateCredentialRequest({ subject, credential, uri, expiration }) {
   */
   if (uri !== undefined) {
     if (typeof uri !== "string" || !URI_REGEX.test(uri)) {
-      throw new Error(`URI isn't valid: ${uri}`);
+      throw new ValueError(`URI isn't valid: ${uri}`);
     }
   }
 
@@ -76,11 +78,11 @@ function validateCredentialRequest({ subject, credential, uri, expiration }) {
     if (typeof expiration === "string") {
       parsedExpiration = new Date(expiration);
     } else {
-      throw new Error(`Unsupported expiration format: ${typeof expiration}`);
+      throw new ValueError(`Unsupported expiration format: ${typeof expiration}`);
     }
 
     if (isNaN(parsedExpiration.getTime())) {
-      throw new Error(`Invalid expiration date: ${expiration}`);
+      throw new ValueError(`Invalid expiration date: ${expiration}`);
     }
   }
 
@@ -105,19 +107,20 @@ function verifyDocuments({documents}) {
     Depending on the type of credentials your service needs, you might
     need to implement different types of checks here.
   */
-  if (!documents || typeof documents !== "object") {
-    throw new Error("you must provide a non-empty 'documents' field");
+  console.log("DOCUMENTS:", documents)
+  if (typeof documents !== 'object' || Object.keys(documents).length === 0) {
+    throw new ValueError("you must provide a non-empty 'documents' field");
   }
 
   // As a placeholder, this example checks that the documents field
   // contains a string field named "reason" containing the word "please".
   const reason = documents.reason;
   if (typeof reason !== "string") {
-    throw new Error("documents must contain a 'reason' string");
+    throw new ValueError("documents must contain a 'reason' string");
   }
 
   if (!reason.toLowerCase().includes("please")) {
-    throw new Error("reason must include 'please'");
+    throw new ValueError("reason must include 'please'");
   }
 }
 

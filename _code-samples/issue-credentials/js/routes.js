@@ -6,6 +6,7 @@ const {
   serializeCredential,
   parseCredentialFromXrpl,
 } = require("./credential");
+const { XRPLTxError, XRPLLookupError } = require("./errors");
 const { lookUpCredentials } = require("./look_up_credentials");
 
 function createRoutes(wallet, client) {
@@ -17,7 +18,7 @@ function createRoutes(wallet, client) {
       // validateCredentialRequest() throws if the request is not validly formatted
       const credRequest = validateCredentialRequest(req.body);
       // verifyDocuments() throws if the provided documents don't pass inspection
-      verifyDocuments(req.body)
+      verifyDocuments(req.body);
       const credXrpl = credentialToXrpl(credRequest);
 
       const tx = {
@@ -32,14 +33,14 @@ function createRoutes(wallet, client) {
 
       const result = ccResponse.result;
       if (result.engine_result === "tecDUPLICATE") {
-        return res.status(409).json(result)
+        throw new XRPLTxError(result, 409);
       } else if (result.engine_result !== "tesSUCCESS") {
-        return res.status(400).json(result);
+        throw new XRPLTxError(result);
       }
 
       return res.status(201).json(result);
     } catch (err) {
-      return res.status(400).json({ error: "badRequest", error_message: err.message });
+      return handleAppError(res, err);
     }
   });
 
@@ -65,6 +66,21 @@ function createRoutes(wallet, client) {
   });
 
   return router;
+}
+
+function handleAppError(res, err) {
+  if (err.name === "ValueError") {
+    return res.status(err.status).json({
+      error: err.type,
+      error_message: err.message,
+    });
+  }
+
+  if (err.name === "XRPLTxError" || err.name === "XRPLLookupError") {
+    return res.status(err.status).json(err.body);
+  }
+
+  return res.status(400).json({ error_message: err.message });
 }
 
 module.exports = createRoutes;
