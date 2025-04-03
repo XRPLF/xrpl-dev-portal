@@ -33,6 +33,7 @@
                 - page: docs/use-cases/tokenization/authorized-minter.md
                 - page: docs/use-cases/tokenization/digital-artist.md
             - page: docs/use-cases/tokenization/real-world-assets.page.tsx
+            - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
         - page: docs/use-cases/defi/index.md
           expanded: false
           items:
@@ -192,6 +193,7 @@
                 - page: docs/tutorials/javascript/send-payments/create-time-based-escrows.md
                 - page: docs/tutorials/javascript/send-payments/create-conditional-escrows.md
                 - page: docs/tutorials/javascript/send-payments/send-and-cash-checks.md
+                - page: docs/tutorials/javascript/send-payments/sending-mpts.md
             - page: docs/tutorials/javascript/nfts/index.md
               expanded: false
               items:
