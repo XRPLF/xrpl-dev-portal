@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   height: $banner-height;
-  background: #D919FF !important;
+  background: #32E685 !important;
   padding: 7px 35px;
   font-family: "Work Sans";
   z-index: 9999;
@@ -17,7 +17,7 @@
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
-  color: $white !important;
+  color: $black !important;
   text-align: center;
   font-family: "Work Sans";
   font-size: 26px; // Further scaled down from 28px
@@ -32,7 +32,7 @@
     left: 0;
     width: 100%; // Full width so that we can scale it
     height: 100%;
-    background-color: #7919FF;
+    background-color: #E0E500;
     z-index: 0;
     transform: scaleX(0);       // Start scaled down to 0
     transform-origin: left;     // Scale from the left edge
