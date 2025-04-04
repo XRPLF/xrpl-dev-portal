@@ -1183,13 +1183,13 @@ export default function Events() {
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRPL Ledger Apex 2025")}
+                  {translate("Apex 2025")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "XRP Ledger Apex, hosted by Ripple is the largest annual summit on the XRPL calendar. It unites developers, businesses, fintechs, VCs and the wider community."
+                  "Apex, hosted by Ripple is the largest annual summit on the XRPL calendar. It unites developers, businesses, fintechs, VCs and the wider community."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
