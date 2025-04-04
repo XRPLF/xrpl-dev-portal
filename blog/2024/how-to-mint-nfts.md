@@ -2,7 +2,7 @@
 category: 2024
 date: 2024-03-08
 seo:
-    title: How to Mint an NFT on XRPL
+    title: How to Mint an NFT
     description: Learn the basics of minting an NFT on XRP Ledger and how you can get started quickly and easily with this step-by-step guide. Get started today!
 labels:
     - Development
