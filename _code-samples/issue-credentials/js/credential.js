@@ -138,7 +138,7 @@ function credentialToXrpl(cred) {
   };
 }
 
-// Convert an XRPL ledger entry into a usable app credential object
+// Convert an XRPL ledger entry into a usable  credential object
 function parseCredentialFromXrpl(entry) {
   const { Subject, CredentialType, URI, Expiration, Flags } = entry;
 

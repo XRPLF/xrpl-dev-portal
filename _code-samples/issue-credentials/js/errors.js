@@ -1,5 +1,3 @@
-// Error handling --------------------------------------------------------------
-
 class ValueError extends Error {
   constructor(message) {
     super(message);
@@ -10,25 +8,15 @@ class ValueError extends Error {
 }
 
 class XRPLTxError extends Error {
-  constructor(xrplResult, status = 400) {
+  constructor(xrplResponse, status = 400) {
     super("XRPL transaction failed");
     this.name = "XRPLTxError";
     this.status = status;
-    this.body = xrplResult;
-  }
-}
-
-class XRPLLookupError extends Error {
-  constructor(xrplResult) {
-    super("XRPL credential lookup failed");
-    this.name = "XRPLLookupError";
-    this.status = 400;
-    this.body = xrplResult;
+    this.body = xrplResponse.result;
   }
 }
 
 module.exports = {
   ValueError,
   XRPLTxError,
-  XRPLLookupError,
 };

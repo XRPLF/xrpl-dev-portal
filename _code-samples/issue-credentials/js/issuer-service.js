@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require('morgan');
 const dotenv = require("dotenv");
-const { Wallet, Client } = require("xrpl");
+const { Wallet, Client, RippledError } = require("xrpl");
 
 const {
   validateCredentialRequest,
@@ -24,7 +24,7 @@ async function main() {
   }
 
   const wallet = Wallet.fromSeed(SEED);
-  console.log("✅ Starting credential issuer with XRPL address", wallet.classicAddress);
+  console.log("✅ Starting credential issuer with XRPL address", wallet.address);
 
   const client = new Client("wss://s.devnet.rippletest.net:51233");
   await client.connect();
@@ -45,7 +45,7 @@ async function main() {
 
       const tx = {
         TransactionType: "CredentialCreate",
-        Account: wallet.classicAddress,
+        Account: wallet.address,
         Subject: credXrpl.subject,
         CredentialType: credXrpl.credential,
         URI: credXrpl.uri,
@@ -53,14 +53,13 @@ async function main() {
       };
       const ccResponse = await client.submit(tx, { autofill: true, wallet });
 
-      const result = ccResponse.result;
-      if (result.engine_result === "tecDUPLICATE") {
-        throw new XRPLTxError(result, 409);
-      } else if (result.engine_result !== "tesSUCCESS") {
-        throw new XRPLTxError(result);
+      if (ccResponse.result.engine_result === "tecDUPLICATE") {
+        throw new XRPLTxError(ccResponse, 409);
+      } else if (ccResponse.result.engine_result !== "tesSUCCESS") {
+        throw new XRPLTxError(ccResponse);
       }
 
-      return res.status(201).json(result);
+      return res.status(201).json(ccResponse.result);
     } catch (err) {
       return handleAppError(res, err);
     }
@@ -86,12 +85,60 @@ async function main() {
     }
   });
 
+  // DELETE /admin/credential - Method for admins to revoke an issued credential ----------------------------
+  app.delete("/admin/credential", async (req, res) => {
+    let delRequest;
+    try {
+      delRequest = validateCredentialRequest(req.body);
+      const { credential } = credentialToXrpl(delRequest);
+
+      // To save on transaction fees, check if the credential exists on ledger before attempting to delete it.
+      // If the credential is not found, a RippledError (`entryNotFound`) is thrown.
+      await client.request({
+        command: "ledger_entry",
+        credential: {
+          subject: delRequest.subject,
+          issuer: wallet.address,
+          credential_type: credential,
+        },
+      });
+
+      const tx = {
+        TransactionType: "CredentialDelete",
+        Account: wallet.address,
+        Subject: delRequest.subject,
+        CredentialType: credential,
+      };
+      const cdResponse = await client.submit(tx, { autofill: true, wallet });
+
+      if (cdResponse.result.engine_result === "tecNO_ENTRY") {
+        // Usually this won't happen since we just checked for the credential,
+        // but it's possible it got deleted since then.
+        throw new XRPLTxError(cdResponse, 404);
+      } else if (cdResponse.result.engine_result !== "tesSUCCESS") {
+        throw new XRPLTxError(cdResponse);
+      }
+
+      return res.status(200).json(cdResponse.result);
+    } catch (err) {
+      if (err instanceof RippledError) {
+        return res.status(404).json({
+          error: err.data.error,
+          error_message: `Credential doesn't exist for subject '${delRequest.subject}' and credential type '${delRequest.credential}'`,
+        });
+      } else {
+        return handleAppError(res, err);
+      }
+    }
+  });
+
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`🔐 Credential issuer service running on port: ${PORT}`);
   });
 }
 
+// Error handling --------------------------------------------------------------
 function handleAppError(res, err) {
   if (err.name === "ValueError") {
     return res.status(err.status).json({
@@ -99,8 +146,8 @@ function handleAppError(res, err) {
       error_message: err.message,
     });
   }
-
-  if (err.name === "XRPLTxError" || err.name === "XRPLLookupError") {
+  
+  if (err.name === "XRPLTxError") {
     return res.status(err.status).json(err.body);
   }
 
@@ -108,7 +155,7 @@ function handleAppError(res, err) {
   return res.status(400).json({ error_message: err.message });
 }
 
-
+// Start the server --------------------------------------------------------------
 main().catch((err) => {
   console.error("❌ Fatal startup error:", err);
   process.exit(1);

@@ -1,5 +1,4 @@
 const { ValueError } = require("./errors");
-const { XRPLLookupError } = require("./errors");
 
 const lsfAccepted = 0x00010000;
 
@@ -29,10 +28,6 @@ async function lookUpCredentials(client, issuer, subject, accepted = "both") {
   let response = await client.request(request);
 
   while (true) {
-    if (!response.result) {
-      throw new XRPLLookupError(response);
-    }
-
     for (const obj of response.result.account_objects) {
       if (issuer && obj.Issuer !== issuer) continue;
       if (subject && obj.Subject !== subject) continue;
