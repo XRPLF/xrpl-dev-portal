@@ -88,7 +88,16 @@ export default function XRPFaucets(): React.JSX.Element {
                 <p>{translate("resources.dev-tool.faucet.content.part1", "These ")}<Link to="../../docs/concepts/networks-and-servers/parallel-networks">{translate("resources.dev-tool.faucet.content.part2", "parallel XRP Ledger test networks")}</Link> {translate("resources.dev-tool.faucet.content.part3", "provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
                 <p>{translate("resources.dev-tool.faucet.content.part4", "These funds are intended for")} <strong>{translate("resources.dev-tool.faucet.content.part5", "testing")}</strong> {translate("resources.dev-tool.faucet.content.part6", "only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
                 <p>{translate("resources.dev-tool.faucet.content.part7", "All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.")}</p>
-
+                <p>
+                  {translate("resources.dev-tool.faucet.content.part8", "The tool below will generate credentials for you and recharge it immediately; if you want to top up an already existing address, you can do it here:")}
+                  {' '}
+                  <a
+                    className="external-link"
+                    href="https://test.xrplexplorer.com/faucet"
+                    target="_blank"
+                   >test.xrplexplorer.com/faucet</a>
+                </p>
+                
                 <h3>{translate("Choose Network:")}</h3>
                 { faucets.map((net) => (
                 <div className="form-check" key={"network-" + net.shortName}>
