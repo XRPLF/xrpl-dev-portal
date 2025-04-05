@@ -57,6 +57,12 @@ To start the issuer microservice in dev mode, run the following command from the
 flask --app issuer_service run
 ```
 
+On macOS, you may need to specify a different port number because the Flask default port, `5000`, is used by the OS's **AirPlay Receiver** service. For example:
+
+```sh
+flask --app issuer_service run --port 5008
+```
+
 It should prompt you for your **issuer account** seed. Input the secret key you saved previously and press Enter.
 
 The output should look like the following:
@@ -82,6 +88,7 @@ To request a credential, make a request such as the following:
 {% tab label="Summary" %}
 * HTTP method: `POST`
 * URL: `http://localhost:5000/credential`
+    {% admonition type="info" name="Note for macOS Users" %}If you specified a different port when starting the service, change `:5000` in this and other examples to match the port you specified.{% /admonition %}
 * Headers:
     * `Content-Type: application/json`
 * Request Body:
