@@ -164,7 +164,7 @@ export default function XrplOverview() {
                 </a>
               )}
               <div className="text-center d-lg-none">
-                <Link className="btn btn-primary btn-arrow mt-5 mb-4" to="docs">
+                <Link className="btn btn-primary btn-arrow mt-5 mb-4" to="/docs">
                   {translate("Read Technical Docs")}
                 </Link>{" "}
                 <a
