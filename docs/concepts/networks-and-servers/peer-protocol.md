@@ -120,7 +120,7 @@ The pros and cons of each configuration are as follows:
     <li><p>Most secure and reliable configuration when implemented effectively.</p></li>
     <li><p>As reliable and as redundant as you make it.</p></li>
     <li><p>Can optimize the private server's performance with <a href="clustering">clustering</a>.</p></li>
-    <li><p>Enables you to create as many direct peer connections as you want. Your private server can <a href="ledger-history.html#fetching-history">fetch history</a> from multiple peers in parallel. Since you run the peers, you also control how much ledger history each peer keeps.</p></li>
+    <li><p>Enables you to create as many direct peer connections as you want. Your private server can <a href="ledger-history#fetching-history">fetch history</a> from multiple peers in parallel. Since you run the peers, you also control how much ledger history each peer keeps.</p></li>
   </ul></td>
   <td><ul>
     <li><p>Higher maintenance burden and cost from running multiple servers.</p></li>
