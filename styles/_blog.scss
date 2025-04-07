@@ -55,6 +55,26 @@
         width: 100%;
       }
     }
+    .label{
+      width: fit-content;
+    }
+  }
+
+  // Add styles to ensure proper wrapping on tablet sizes
+  @media (min-width: 768px) and (max-width: 991px) {
+    #category-list {
+      display: block;
+      
+      img {
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      .label {
+        display: block !important;
+        margin-bottom: 15px;
+      }
+    }
   }
 
   .category_sidebar {
