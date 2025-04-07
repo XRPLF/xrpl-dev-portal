@@ -107,7 +107,7 @@ Los pros y contras de cada configuración son los siguientes:
 <tr><th>Pares descubiertos</th>
   <td><ul>
     <li><p>La configuración más simple, con una carga de mantenimiento baja.</p></li>
-    <li><p>Crea la oportunidad para una gran cantidad de conexiones directas de pares. Tener más pares directos tiene varios beneficios. Tu servidor puede <a href="ledger-history.html#recuperar-el-histórico">recuperar histórico</a> de múltiples pares en paralelo, tanto al sincronizar como al rellenar el histórico. Como no todos los pares mantienen el histórico completo, tener acceso a una gama más amplia de datos históricos.</p></li>
+    <li><p>Crea la oportunidad para una gran cantidad de conexiones directas de pares. Tener más pares directos tiene varios beneficios. Tu servidor puede <a href="ledger-history#recuperar-el-histórico">recuperar histórico</a> de múltiples pares en paralelo, tanto al sincronizar como al rellenar el histórico. Como no todos los pares mantienen el histórico completo, tener acceso a una gama más amplia de datos históricos.</p></li>
     <li><p>Reduce la posibilidad de desconexión de la red porque tu servidor puede reemplazar los pares desconectados con otros nuevos.</p></li>
   </ul></td>
   <td><ul>
@@ -119,8 +119,8 @@ Los pros y contras de cada configuración son los siguientes:
   <td><ul>
     <li><p>Configuración más segura y confiable cuando se implementa correctamente.</p></li>
     <li><p>Tan confiable y redundante como quieras hacerla.</p></li>
-    <li><p>Puedes optimizar el rendimiento del servidor privado con <a href="clustering.html">clustering</a>.</p></li>
-    <li><p>Te permite crear tantas conexiones directas de pares como desees. Tu servidor privado puede <a href="ledger-history.html#recuperar-el-histórico">obtener histórico</a> desde múltipes pares en paralelo. Dado que administras los pares, también puedes controlar cuanto histórico del ledger cada par puede mantener.</p></li>
+    <li><p>Puedes optimizar el rendimiento del servidor privado con <a href="clustering">clustering</a>.</p></li>
+    <li><p>Te permite crear tantas conexiones directas de pares como desees. Tu servidor privado puede <a href="ledger-history#recuperar-el-histórico">obtener histórico</a> desde múltipes pares en paralelo. Dado que administras los pares, también puedes controlar cuanto histórico del ledger cada par puede mantener.</p></li>
   </ul></td>
   <td><ul>
     <li><p>Carga de mantenimiento y costos más altos debido a la ejecución de múltiples servidores.</p></li>

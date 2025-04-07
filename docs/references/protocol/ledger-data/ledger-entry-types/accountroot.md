@@ -77,7 +77,7 @@ In addition, the following special rules apply to an AMM's AccountRoot entry:
 - Users cannot create trust lines to it for anything other than the AMM's LP Tokens. Transactions that would create such trust lines instead fail with result code `tecNO_PERMISSION`. (The AMM does have two trust lines to hold the tokens in its pool, or one trust line if the other asset in its pool is XRP.)
 - If the [Clawback amendment][] is also enabled, the issuer cannot clawback funds from an AMM.
 
-Other than those exceptions, these accounts are like ordinary accounts; the LP Tokens they issue behave like other [tokens](https://xrpl.org/tokens.html) except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.
+Other than those exceptions, these accounts are like ordinary accounts; the LP Tokens they issue behave like other [tokens](../../../../concepts/tokens/index.md) except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.
 
 ## AccountRoot Flags
 
