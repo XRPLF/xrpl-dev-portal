@@ -207,7 +207,7 @@ export default function Index() {
                       className="mb-4"
                     />
                     <div
-                      className={`d-inline-block label blog-category-${card.category_id}`}
+                      className={`d-block label blog-category-${card.category_id}`}
                     >
                       {translate(card.category)}
                     </div>
