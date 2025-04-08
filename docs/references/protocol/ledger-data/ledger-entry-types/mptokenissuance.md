@@ -5,11 +5,11 @@ labels:
 ---
 # MPTokenIssuance
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
 The `MPTokenIssuance` object represents a single MPT issuance and holds data associated with the issuance itself. Token issuances are created using the `MPTokenIssuanceCreate` transaction and can be destroyed by the `MPTokenIssuanceDestroy` transaction.
 
-<!-- _(Added by the [MPTokenV1_1 amendment][].)_ -->
+<!-- _(Added by the [MPTokensV1_1 amendment][].)_ -->
 
 ## Example MPTokenIssuance JSON
 

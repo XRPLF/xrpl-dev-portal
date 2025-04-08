@@ -5,11 +5,11 @@ labels:
 ---
 # MPToken
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
 The `MPToken` object represents a number of tokens held by an account that is not the token issuer. MPTs are acquired via ordinary payment or DEX transactions, and can optionally be redeemed or exchanged using these same types of transactions. The object key of the MPToken is derived from hashing the space key, the holder's address, and the `MPTokenIssuanceID`.
 
-<!-- _(Added by the [MPTokenV1_1 amendment][].)_ -->
+<!-- _(Added by the [MPTokensV1_1 amendment][].)_ -->
 
 ## Example MPToken JSON
 
