@@ -1202,9 +1202,9 @@ export default function Events() {
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://www.xrpledgerapex.com/"
+                  href="https://www.xrpledgerapex.com/?utm_source=xrplwebsite_eventspage&utm_medium=organictraffic&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1&utm_content=cta_button_RegisterNow"
                 >
-                  {translate("Learn More")}
+                  {translate("Register Now")}
                 </a>
               </div>
             </div>
