@@ -7,7 +7,7 @@ const lsfAccepted = 0x00010000;
  * filtering by accepted status. Handles pagination.
  */
 export async function lookUpCredentials(client, issuer, subject, accepted = "both") {
-  const account = issuer || subject;
+  const account = issuer || subject; // Use whichever is specified, issuer if both
   if (!account) {
     throw new ValueError("Must specify issuer or subject");
   }
@@ -42,7 +42,7 @@ export async function lookUpCredentials(client, issuer, subject, accepted = "bot
     if (!response.result.marker) break;
 
     /** 
-     * If there is marker, request the next page using the convenience function "requestNextPage()".
+     * If there is a marker, request the next page using the convenience function "requestNextPage()".
      * See https://js.xrpl.org/classes/Client.html#requestnextpage to learn more.
      **/ 
     response = await client.requestNextPage(request, response.result);
