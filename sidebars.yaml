@@ -211,6 +211,7 @@
                 - page: docs/tutorials/javascript/build-apps/get-started.md
                 - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
                 - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
+                - page: docs/tutorials/javascript/build-apps/credential-issuing-service.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:

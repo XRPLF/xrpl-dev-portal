@@ -4,7 +4,9 @@ import dotenv from "dotenv";
 import inquirer from "inquirer";
 import { Client, Wallet } from "xrpl";
 import { lookUpCredentials } from "./look_up_credentials.js";
-import { decodeHex } from "./utils.js";
+import { decodeHex } from "./decode_hex.js";
+
+const XRPL_SERVER = "wss://s.devnet.rippletest.net:51233"
 
 dotenv.config();
 
@@ -19,7 +21,6 @@ async function initWallet() {
         validate: (input) => (input ? true : "Please specify the subject's master seed"),
       },
     ]);
-
     seed = seedInput;
   }
 
@@ -27,20 +28,20 @@ async function initWallet() {
 }
 
 async function main() {
-  const XRPL_SERVER = "wss://s.devnet.rippletest.net:51233"
   const client = new Client(XRPL_SERVER);
   await client.connect();    
 
   const wallet = await initWallet();
 
-  const pendingCredentials = await lookUpCredentials(client, "", wallet.address, "no");
-  if (pendingCredentials.length === 0) {
-    console.log("No pending credentials to accept");
-    process.exit(0);
-  }
+  const pendingCredentials = await lookUpCredentials(
+    client,
+    "",
+    wallet.address,
+    "no"
+  );
 
   const choices = pendingCredentials.map((cred, i) => ({
-    name: `${i+1})'${decodeHex(cred.CredentialType)}' issued by ${cred.Issuer}`,
+    name: `${i+1}) '${decodeHex(cred.CredentialType)}' issued by ${cred.Issuer}`,
     value: i,
   }));
   choices.unshift({ name: "0) No, quit.", value: -1 });
