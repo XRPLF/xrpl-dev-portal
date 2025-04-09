@@ -21,6 +21,10 @@ const useCases = [
     link: "/docs/use-cases/tokenization/nftoken-marketplace/",
   },
   {
+    description: "Multi-purpose Token Issuer",
+    link: "/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+  },
+  {
     description: "Authorized Minter",
     link: "/docs/use-cases/tokenization/authorized-minter/",
   },

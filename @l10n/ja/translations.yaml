@@ -74,6 +74,7 @@ topnav.resources.explorer: エクスプローラ
 topnav.resources.known-amendments: 既知のAmendment
 topnav.resources.contribute-code: コードへの貢献
 topnav.resources.contribute-documentation: ドキュメントへの貢献
+topnav.resources.contribute-blog: ブログに投稿する
 topnav.community.title: コミュニティ
 topnav.community.description: 話題に加わろう。
 topnav.community.get-involved: 参加する
@@ -832,6 +833,7 @@ resources.dev-tool.faucet.content.part4: これらの資金は
 resources.dev-tool.faucet.content.part5: テストのみ
 resources.dev-tool.faucet.content.part6: を目的としています。テストネットワークの履歴と残高は必要に応じてリセットされます。Devnetは警告なしにリセットされることがあります。
 resources.dev-tool.faucet.content.part7: これらのネットワーク上のすべての残高とXRPは、メインネットとは別のものです。安全のため、テストネットやDevnetの認証情報をメインネットで使用しないでください。
+resources.dev-tool.faucet.content.part8: "以下のツールは、認証情報を生成して即座にチャージします。既存のアドレスにチャージしたい場合は、こちらで行えます:"
 "Choose Network:": "ネットワークを選択:"
 Mainnet-like network for testing applications.: アプリケーションのテスト用のメインネットに似たネットワーク。
 Preview of upcoming amendments.: 今後のAmendmentのプレビューネットワーク。

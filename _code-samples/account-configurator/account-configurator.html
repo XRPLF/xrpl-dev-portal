@@ -1,0 +1,383 @@
+<html>
+<!-- Add Signers list -->
+<head>
+  <title>Account Configurator</title>
+  <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+  <link href="account-configurator.css" rel = 'stylesheet'>
+  
+  <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
+  <script src='account-configurator.js'></script>
+  <script>
+    if (typeof module !== "undefined") {
+      const xrpl = require('xrpl')
+    }
+
+  </script>
+</head>
+
+<!-- ************************************************************** -->
+<!-- ********************** The Form ****************************** -->
+<!-- ************************************************************** -->
+
+<body>
+  <h1>Account Configurator</h1>
+  <form id="theForm">
+    <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+      Choose your ledger instance:
+    </span>
+    &nbsp;&nbsp;
+    <input type="radio" id="mn" name="server" value="wss://xrplcluster.com/">
+    <label for="mainnet">Mainnet</label>
+    &nbsp;&nbsp;
+    <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233" checked>
+    <label for="testnet">Testnet</label>
+    &nbsp;&nbsp;
+    <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233">
+    <label for="devnet">Devnet</label><br />
+    <table>
+      <tr valign="top">
+        <td>
+          <table>
+            <tr valign="top">
+              <td align="right">
+                <span class="tooltip" tooltip-data="Address of your account.">
+                  Account
+                </span>
+              </td>
+              <td>
+                <input type="text" id="accountField" size="40"></input>
+              </td>
+              <td>
+                <button type="button" onClick="getAccount()">Get New Account</button>
+              </td>
+            </tr>
+            <tr>
+              <td align="right">
+                <span class="tooltip" tooltip-data="Seed value of your account.">
+                  Seed
+                </span>
+              </td>
+              <td>
+                <input type="text" id="seedField" size="40"></input>
+              </td>
+              <td>
+                <button type="button" onClick="getAccountFromSeed()">Get Account From Seed</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>           
+              <td>
+                <button type="button" onClick="getAccountInfo()">Get Account Info</button>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                <span class="tooltip" tooltip-data="Preset configurations you can choose for your account.">
+                Account Configuration Templates:
+                </span>
+                &nbsp;&nbsp;
+                <input type="radio" id="hd" name="accountType" value="hd" onclick="setHolder()">
+                <label for="hd" background="green">Holder</label>
+                &nbsp;&nbsp;
+                <input type="radio" id="ex" name="accountType" value="ex" onclick="setExchanger()">
+                <label for="ex">Exchanger</label>
+                &nbsp;&nbsp;
+                <input type="radio" id="is" name="accountType" value="is" onclick="setIssuer()">
+                <label for="issuer">Issuer</label>
+              </td>
+            </tr>
+            <tr>
+              <td align="right"><button type="button" onClick="configureAccount()">Configure Account</button></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div id="issuer_additional_fields">
+      <table>
+        <tr valign="top">
+          <td align="right">
+            <span class="tooltip" tooltip-data="Web address where your TOML file resides.">
+            Domain
+            </span>
+          </td>
+          <td>
+            <input type="text" id="domainField" size="40"></input>
+          </td>
+        </tr>
+        <tr>
+          <td align="right">
+            <span class="tooltip" tooltip-data="A value between 1000000000 and 2000000000, inclusive.">
+              Transfer Rate
+            </span>
+          </td>
+          <td>
+            <input type="text" id="transferRateField" size="40"></input>
+          </td>      
+        </tr>
+        <tr>
+          <td align="right">
+            <span class="tooltip" tooltip-data="Valid values are 3 to 15, inclusive, or 0 to disable.">
+              Tick Size
+            </span>
+          </td>
+          <td>
+            <input type="text" id="tickSizeField" size="40"></input>
+          </td>     
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right">
+            <span class="tooltip" tooltip-data="Signer to authorize account transactions.">
+              Signer1 Account
+            </span>
+          </td>
+          <td>
+            <input type="text" id="signer1AccountField" size="40"></input>
+          </td>
+          <td>
+            <span class="tooltip" tooltip-data="Relative value of the signer's vote on approvals.">
+              Signer1 Weight</span>
+            &nbsp;&nbsp;
+            <input type="text" id="signer1WeightField" size="5"></input>
+          </td>
+          <td>
+            <button type="button" onClick="removeSigners()">Remove Signers</button>
+          </td>      
+        </tr>
+        <tr>
+          <td align="right">
+            <span class="tooltip" tooltip-data="Signer to authorize account transactions.">
+              Signer2 Account
+            </span>
+          </td>
+          <td>
+            <input type="text" id="signer2AccountField" size="40"></input>
+          </td>
+          <td>
+            <span class="tooltip" tooltip-data="Relative value of the signer's vote on approvals.">
+              Signer2 Weight
+            </span>
+            &nbsp;&nbsp;
+            <input type="text" id="signer2WeightField" size="5"></input>
+          </td>        
+        </tr>
+        <tr>
+          <td align="right">
+            <span class="tooltip" tooltip-data="Signer to authorize account transactions.">
+              Signer3 Account
+            </span>
+          <td>
+            <input type="text" id="signer3AccountField" size="40"></input>
+          </td>
+          <td>
+            <span class="tooltip" tooltip-data="Relative value of the signer's vote on approvals.">
+              Signer3 Weight
+            </span>
+            &nbsp;&nbsp;
+            <input type="text" id="signer3WeightField" size="5"></input>
+          </td>        
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <span class="tooltip" tooltip-data="Minimum sum of signer weights required to approve a transaction.">
+              Signer Quorum
+            </span>&nbsp;&nbsp;
+            <input type="text" id="signerQuorumField" size="5"></input>
+          </td>        
+        </tr>
+      </table>
+    </div>
+    <tr>
+    <div id="account_flags">
+    <table>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Allow rippling on trust lines by default.">
+           defaultRipple
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="defaultRipple">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Allow clawback of tokens on trust lines to the account.">
+            allowTrustLineClawback
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="allowTrustLineClawback">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Use Deposit Authorization to deny payments from unknown third parties.">
+            depositAuth
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="depositAuth">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Disable the account master key pair.">
+            disableMasterKey
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disableMasterKey">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Prevent other accounts from sending checks to the account.">
+            disallowIncomingCheck
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingCheck">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>          
+          <span class="tooltip" tooltip-data="Prevent other accounts from sending NFT buy or sell offers to the account.">
+            disallowIncomingNFTokenOffer
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingNFTokenOffer">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Prevent other accounts from creating payment channels to the account.">
+            disallowIncomingPayChan
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingPayChan">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Prevent other accounts from creating trust lines to the account.">
+            disallowIncomingTrustline
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingTrustline">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Prevent other accounts from sending XRP to the account. (This is advisory, and not enforced at the protocol
+          level.)">
+            disallowIncomingXRP
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="disallowIncomingXRP">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Freeze all tokens issued by the account.">
+            globalFreeze
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="globalFreeze">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="Permanently remove the ability to freeze individual trust lines or end a global freeze.">
+            noFreeze
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="noFreeze">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="The account requires authorized trust lines for other accounts to hold tokens it issues.">
+            requireAuthorization
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="requireAuthorization">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="tooltip" tooltip-data="The account requires a destination tag on all payments it receives.">
+            requireDestinationTag
+          </span>
+        </td>
+        <td align="middle">
+          <label class="switch">
+              <input type="checkbox" id="requireDestinationTag">
+              <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    </div>
+    <textarea id="resultField" cols="80" rows="15"></textarea>
+  </form>
+</body>
+</html>

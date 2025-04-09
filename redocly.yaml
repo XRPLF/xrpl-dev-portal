@@ -4,6 +4,7 @@ ignore:
   - _code-samples/*/README.md
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
+  - resources/contribute-blog/_blog-template.md
 l10n:
   defaultLocale: en-US
   locales:
@@ -52,6 +53,8 @@ links:
   - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
     rel: stylesheet
   - href: https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
+    rel: stylesheet
+  - href: https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,600,700&display=swap
     rel: stylesheet
   - href: ./static/css/devportal2024-v1.css
     rel: stylesheet

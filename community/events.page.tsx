@@ -1063,6 +1063,38 @@ const events = [
     image: require("../static/img/events/commons-soiree.png"),
     end_date: "February 12, 2025",
   },
+  {
+    name: "Paris Blockchain Week OnSite Hackathon",
+    description:
+      "Get ready to collaborate, innovate, and shape the future of Web3  at the BizThon x Paris Blockchain Week Onsite Hackathon. This is your chance to turn ideas into real-world blockchain solutions and be part of the next big breakthrough!",
+    type: "hackathon",
+    link: "https://bizthon.com/PBW-hackathon-2025-onsite.html",
+    location: "Paris, France",
+    date: "April 5 - 6, 2025",
+    image:  require('../static/img/events/aquarium.png'),
+    end_date: "April 6, 2025",
+  },
+  {
+    name: "XRPL Town Hall Meeting #3",
+    description: "Join Us for the third XRPL Town Hall Meeting!",
+    type: "info",
+    link: "https://xrpl.at/TownHall-meeting3",
+    location: "Virtual",
+    date: "April 7, 2025",
+    image: townHall,
+    end_date: "April 7, 2025",
+  },
+  {
+    name: "PBW Launch Party at XRPL Commons",
+    description:
+      "Celebrate blockchain's role in social impact with expert panels, pitches from past Aquarium Residency startups, and networking.",
+    type: "meetup",
+    link: "https://xrpl.at/Blockchain-For-Social-Impact",
+    location: "Paris, France",
+    date: "April 8, 2025",
+    image: require("../static/img/events/commons-launch.png"),
+    end_date: "April 8, 2025",
+  },
 ];
 
 
@@ -1151,13 +1183,13 @@ export default function Events() {
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRPL Ledger Apex 2025")}
+                  {translate("Apex 2025")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "XRP Ledger Apex, hosted by Ripple is the largest annual summit on the XRPL calendar. It unites developers, businesses, fintechs, VCs and the wider community."
+                  "Apex, hosted by Ripple is the largest annual summit on the XRPL calendar. It unites developers, businesses, fintechs, VCs and the wider community."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
@@ -1170,9 +1202,9 @@ export default function Events() {
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://www.xrpledgerapex.com/"
+                  href="https://www.xrpledgerapex.com/?utm_source=xrplwebsite_eventspage&utm_medium=organictraffic&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1&utm_content=cta_button_RegisterNow"
                 >
-                  {translate("Learn More")}
+                  {translate("Register Now")}
                 </a>
               </div>
             </div>

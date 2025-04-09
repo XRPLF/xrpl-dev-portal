@@ -9,7 +9,7 @@ labels:
 # MPTokenAuthorize
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "Source")
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
 This transaction enables an account to hold an amount of a particular MPT issuance. When applied successfully, it creates a new `MPToken` object with an initial zero balance, owned by the holder account.
 

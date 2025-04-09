@@ -33,6 +33,7 @@
                 - page: docs/use-cases/tokenization/authorized-minter.md
                 - page: docs/use-cases/tokenization/digital-artist.md
             - page: docs/use-cases/tokenization/real-world-assets.page.tsx
+            - page: docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md
         - page: docs/use-cases/defi/index.md
           expanded: false
           items:
@@ -149,6 +150,7 @@
           expanded: false
           items:
             - page: docs/concepts/accounts/account-types.md
+            - page: docs/concepts/accounts/configuring-accounts.md
             - page: docs/concepts/accounts/deleting-accounts.md
             - page: docs/concepts/accounts/reserves.md
             - page: docs/concepts/accounts/addresses.md
@@ -191,6 +193,7 @@
                 - page: docs/tutorials/javascript/send-payments/create-time-based-escrows.md
                 - page: docs/tutorials/javascript/send-payments/create-conditional-escrows.md
                 - page: docs/tutorials/javascript/send-payments/send-and-cash-checks.md
+                - page: docs/tutorials/javascript/send-payments/sending-mpts.md
             - page: docs/tutorials/javascript/nfts/index.md
               expanded: false
               items:
@@ -525,6 +528,7 @@
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/feature.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
@@ -732,3 +736,4 @@
         - page: resources/contribute-documentation/creating-diagrams.md
         - page: resources/contribute-documentation/tutorial-guidelines.md
         - page: resources/contribute-documentation/tutorial-structure.md
+    - page: resources/contribute-blog/index.md

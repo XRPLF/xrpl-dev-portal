@@ -1,0 +1,232 @@
+<html>
+
+<head>
+    <title>MPT Generator</title>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+
+    <script src='mpt-generator.js'></script>
+    <script>
+     if (typeof module !== "undefined") {
+        const xrpl = require("xrpl")
+       }
+</script>
+
+</head>
+
+<body>
+    <h1>MPT Generator</h1>
+    <form>
+        <table width="100%">
+            <tr>
+                <td valign="top">
+                    <table>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr valign="top">
+                                        <td colspan="3">
+                                            <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+                                                Choose your ledger instance:
+                                            </span>
+                                            &nbsp;&nbsp;
+                                            <input type="radio" id="dn" name="server"
+                                                value="wss://s.devnet.rippletest.net:51233" checked>
+                                            <label for="devnet">Devnet</label>
+                                            &nbsp;&nbsp;
+                                            <input type="radio" id="tn" name="server"
+                                                value="wss://s.altnet.rippletest.net:51233" >
+                                            <label for="testnet">Testnet</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                                                <label for="accountNameField">Account Name</label>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="accountNameField" size="40"></input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <div class="container">
+                                                <span class="tooltip" tooltip-data="The issuing account address.">Account
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                            <input type="text" id="accountField" size="40"></input>
+                                        </td>
+                                        <td>
+                                            <button type="button" onClick="getAccount()">Get New
+                                                Account</button>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <span class="tooltip" tooltip-data="The issuing account seed.">Seed
+                                            </span>
+                                        </td>
+                                        <td>
+
+                                            <input type="text" id="seedField" size="40"></input>
+                                        </td>
+                                        <td>
+                                            <button type="button" onClick="getAccountFromSeed()">Get Account
+                                                From Seed</button>
+                                        </td>
+                                    </tr>
+                                <table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tooltip" tooltip-data="An asset scale is the difference, in orders of magnitude, between a standard unit and a corresponding fractional unit.">
+                                    Asset Scale
+                                </span>
+                            </td>
+                            <td>
+                                <input type="text" size="10" id="assetScaleField" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tooltip" tooltip-data="The maximum number of tokens to be issued.">
+                                    Maximum Tokens
+                                </span>
+                            </td>
+                            <td>
+                                <input type="text" size="10" id="maximumAmountField" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tooltip" tooltip-data="Fee collected when MPT is transferred.">
+                                    Transfer Fee
+                                </span>
+                            </td>
+                            <td>
+                                <input type="text" size="5" id="transferFeeField" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tooltip" tooltip-data="Issuer can claw back value from holders.">
+                                    Clawback
+                                </span>
+                            </td>
+                            <td align="middle">
+                                <label class="switch">
+                                    <input type="checkbox" id="clawbackSlider">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tooltip" tooltip-data="MPT can be locked individually and globally.">
+                                    Lock
+                                </span>
+                            </td>
+                            <td align="middle">
+                                <label class="switch">
+                                    <input type="checkbox" id="lockSlider" name="lockSlider">
+
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tooltip" tooltip-data="Individual holders must be authorized.">
+                                    Require Authorization
+                                </span>
+                            </td>
+                            <td align="middle">
+                                <label class="switch">
+                                    <input type="checkbox" id="authTokensSlider">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tooltip" tooltip-data="MPTs can be transferred to other accounts.">
+                                    Can Transfer
+                                </span>
+                            </td>                            
+                            <td align="middle">
+                                <label class="switch">
+                                    <input type="checkbox" id="txrSlider">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <span class="tooltip" tooltip-data="MPT can be traded.">
+                                Can Trade
+                            </span>
+                            </td>
+                            <td align="middle">
+                                <label class="switch">
+                                    <input type="checkbox" id="tradeSlider">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <span class="tooltip" tooltip-data="MPT can be used in an escrow.">
+                                Can Escrow
+                            </span>
+                            </td>
+                            <td align="middle">
+                                <label class="switch">
+                                    <input type="checkbox" id="escrowSlider">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Token Metadata</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <textarea id="metadataTextArea" rows="25" cols="75"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <h2>MPToken Create Transaction</h2>
+                    <p><button type="button" onclick="generateCode()">Generate Transaction</button>
+                    &nbsp;&nbsp;
+                    <button type = "button" onclick="sendTransaction()">Send Transaction</button>
+                    &nbsp;&nbsp;
+                    <button type = "button" onclick="gatherMptInfo()">Gather MPT Information</button>
+                    </p>
+                    <span class="tooltip" tooltip-data="The MPT Issuance ID of your generated MPT.">
+                        MPT Issuance ID
+                    </span>
+                    <p><input type="text" id="mptIssuanceIdField" size="50"></p>
+                    <textarea id="resultField" rows="25" cols="75"></textarea>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
