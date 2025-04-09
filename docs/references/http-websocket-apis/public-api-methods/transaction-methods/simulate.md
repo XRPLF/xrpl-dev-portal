@@ -72,7 +72,7 @@ The request includes the following parameters:
 | `binary`  | Boolean | No        | The default value is `false`, which returns data and metadata in JSON format. If `true`, returns data and metadata in binary format, serialized to a hexadecimal string. |
 
 - The simulated transaction must be unsigned.
-- The server autofills `Fee`, `Sequence`, `SigningPubKey`, and `NetworkID` fields.
+- If the `Fee`, `Sequence`, `SigningPubKey`, or `NetworkID` fields are provided, they will be used in the transaction. Otherwise, the server will autofill them.
 
 
 ## Response Format
