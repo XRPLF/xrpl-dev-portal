@@ -1,6 +1,7 @@
 ---
 seo:
     description: アカウントに対して暫定的に資格情報を発行します。
+    status: not_enabled
 ---
 
 # CredentialCreate

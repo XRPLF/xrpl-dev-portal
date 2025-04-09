@@ -1,6 +1,7 @@
 ---
 seo:
     description: アカウントに仮発行された資格情報を承認します。
+    status: not_enabled
 ---
 # CredentialAccept
 

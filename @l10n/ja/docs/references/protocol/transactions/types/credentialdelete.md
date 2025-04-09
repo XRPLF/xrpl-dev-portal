@@ -1,6 +1,7 @@
 ---
 seo:
     description: レジャーから認証情報を削除し、事実上失効させます。
+    status: not_enabled
 ---
 # CredentialDelete
 

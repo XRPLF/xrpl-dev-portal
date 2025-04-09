@@ -1,6 +1,7 @@
 ---
 seo:
     description: 支払いの事前承認に使用できる、資格発行者アカウントによる対象アカウントについての証明。
+status: not_enabled
 ---
 # Credential
 
