@@ -56,7 +56,7 @@ A request can include the following parameters:
 | Field          | Type                 | Required? | Description |
 |:---------------|:---------------------|:----------|-------------|
 | `account`      | String - [Address][] | Yes       | Look up Offers placed by this account. |
-| `ledger_hash`  | [Hash][]             | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | [Hash][]             | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | [Ledger Index][]     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Number               | No        | Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. Positive values outside this range are replaced with the closest valid option.The default is 200. |
 | `marker`       | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |

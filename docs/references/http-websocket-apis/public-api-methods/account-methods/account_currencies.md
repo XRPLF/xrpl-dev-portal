@@ -57,7 +57,7 @@ The request includes the following parameters:
 | `Field`        | Type                 | Required? | Description |
 |:---------------|:---------------------|:----------|-------------|
 | `account`      | String - [Address][] | Yes       | Look up currencies this account can send or receive. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}Updated in: rippled 1.11.0{% /badge %} |
-| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | String               | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 The following fields are deprecated and should not be provided: `account_index`, `strict`.

@@ -23,7 +23,7 @@ This method can retrieve several different types of data. You can select which t
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
 | `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Updated in: rippled 1.2.0{% /badge %} |
-| `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`           | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `include_deleted` | Boolean  | _(Optional, Clio servers only)_ If set to _true_ and the queried object has been deleted, return its complete data as it was prior to its deletion. If set to _false_ or not provided, and the queried object has been deleted, return `objectNotFound` (current behavior). |
 
