@@ -12,8 +12,6 @@ labels:
 
 Deliver XRP from an escrow (held payment) to the recipient.
 
-Deliver XRP from an escrow (held payment) to the recipient.
-
 _Added by the [Escrow amendment][]._
 
 

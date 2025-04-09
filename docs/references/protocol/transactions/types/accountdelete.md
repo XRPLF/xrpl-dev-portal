@@ -37,6 +37,7 @@ An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry
 | `Destination`    |  String - [Address][] | AccountID    | Yes       | The address of an account to receive any leftover XRP after deleting the sending account. Must be a funded account in the ledger, and must not be the sending account. |
 | `DestinationTag` | Number           | UInt32            | No        | Arbitrary [destination tag](../../../../concepts/transactions/source-and-destination-tags.md) that identifies a hosted recipient or other information for the recipient of the deleted account's leftover XRP. |
 
+
 ## Special Transaction Cost
 
 As an additional deterrent against ledger spam, the AccountDelete transaction requires a much higher than usual [transaction cost](../../../../concepts/transactions/transaction-cost.md): instead of the standard minimum of 0.00001 XRP, AccountDelete must destroy at least the owner reserve amount, currently {% $env.PUBLIC_OWNER_RESERVE %}. This discourages excessive creation of new accounts because the [reserve requirement](../../../../concepts/accounts/reserves.md) cannot be fully recouped by deleting the account.
