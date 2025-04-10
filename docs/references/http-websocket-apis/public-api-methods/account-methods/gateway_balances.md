@@ -70,7 +70,7 @@ The request includes the following parameters:
 | `account`      | String                     | The [Address][] to check. This should be the [issuing address](../../../../concepts/accounts/account-types.md) |
 | `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
 | `hotwallet`    | String or Array            | _(Optional)_ An [operational address](../../../../concepts/accounts/account-types.md) to exclude from the balances issued, or an array of such addresses. |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 ## Response Format

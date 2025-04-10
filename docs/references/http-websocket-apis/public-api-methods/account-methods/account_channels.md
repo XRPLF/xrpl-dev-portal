@@ -60,7 +60,7 @@ The request includes the following parameters:
 |:----------------------|:---------------------|:----------|-------------|
 | `account`             | String - [Address][] | Yes       | Look up channels where this account is the channel's owner/source. |
 | `destination_account` | String - [Address][] | No        | A second account; if provided, filter results to payment channels whose destination is this account. |
-| `ledger_hash`         | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`         | String               | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`               | Number               | No        | Limit the number of transactions to retrieve. Cannot be less than 10 or more than 400. Positive values outside this range are replaced with the closest valid option. The default is 200. |
 | `marker`              | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |

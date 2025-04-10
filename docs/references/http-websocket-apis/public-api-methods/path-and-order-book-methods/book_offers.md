@@ -73,7 +73,7 @@ The request includes the following parameters:
 |:---------------|:-----------------|:----------|-------------|
 | `taker_gets`   | Object           | Yes       | The asset the account taking the Offer would receive, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 | `taker_pays`   | Object           | Yes       | The asset the account taking the Offer would pay, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | [Hash][]         | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Number           | No        | The maximum number of Offers to return. The response may include fewer results. |
 | `taker`        | String           | No        | The [Address][] of an account to use as a perspective. The response includes this account's Offers even if they are unfunded. (You can use this to see what Offers are above or below yours in the order book.) |

@@ -80,7 +80,7 @@ The request includes the following parameters:
 |:-------------------------|:-----------------|:----------|-------------|
 | `account`                | String           | Yes       | A unique identifier for the account, most commonly the account's [Address][]. |
 | `deletion_blockers_only` | Boolean          | No        | If `true`, the response only includes objects that would block this account from [being deleted](../../../../concepts/accounts/deleting-accounts.md). The default is `false`. |
-| `ledger_hash`            | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`            | [Hash][]         | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`           | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`                  | Number           | No        | The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |

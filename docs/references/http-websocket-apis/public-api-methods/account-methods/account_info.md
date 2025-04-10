@@ -61,7 +61,7 @@ The request contains the following parameters:
 | `Field`        | Type                 | Required? | Description |
 |:---------------|:---------------------|:----------|-------------|
 | `account`      | String - [Address][] | Yes       | The account to look up. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}Updated in: rippled 1.11.0{% /badge %} |
-| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | String               | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `queue`        | Boolean              | No        | If `true`, return stats about [queued transactions](../../../../concepts/transactions/transaction-queue.md) sent by this account. Can only be used when querying for the data from the current open ledger. Not available from servers in [Reporting Mode][]. |
 | `signer_lists` | Boolean              | No        | If `true`, return any [SignerList objects](../../../protocol/ledger-data/ledger-entry-types/signerlist.md) associated with this account. |

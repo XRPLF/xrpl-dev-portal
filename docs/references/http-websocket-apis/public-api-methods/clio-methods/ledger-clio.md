@@ -34,7 +34,7 @@ The request can contain the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | [Hash][]                   | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]). |
+| `ledger_hash`  | [Hash][]                   | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]). |
 | `ledger_index` | [Ledger Index][]           | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `transactions` | Boolean                    | _(Optional)_ If `true`, return information on transactions in the specified ledger version. Defaults to `false`. Ignored if you did not specify a ledger version. |
 | `expand`       | Boolean                    | _(Optional)_ Provide full JSON-formatted information for transaction/account information instead of only hashes. Defaults to `false`. Ignored unless you request transactions. |
