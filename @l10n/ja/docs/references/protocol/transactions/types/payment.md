@@ -41,7 +41,7 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 | フィールド       | JSONの型            | [内部の型][] | 説明 |
 | :--------------- | :------------------ | :----------- | ---- |
 | `Amount`         | [通貨額][]          | Amount       | `DeliverMax`のエイリアス |
-| `CredentialIDs`  | 文字列の配列        | Vector256    | このトランザクションによって作成される入金を承認するための、受取人によって事前承認された資格証明のセット。配列の各メンバは、レジャーのCredentialエントリのレジャーエントリIDでなければなりません。(_[**Credentials** amendment](../../../../concepts/amendments/index.md#credentials)が必要です。_ {% not-enabled /%}) |
+| `CredentialIDs`  | 文字列の配列        | Vector256    | このトランザクションによって作成される入金を承認するための、受取人によって事前承認された資格証明のセット。配列の各メンバは、レジャーのCredentialエントリのレジャーエントリIDでなければなりません。(_[**Credentials** amendment](../../../../../resources/known-amendments.md#credentials)が必要です。_ {% not-enabled /%}) |
 | `DeliverMax`     | [Currency Amount][] | Amount       | [API v2][]: 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}新規: rippled 2.0.0{% /badge %} |
 | `DeliverMin`     | [通貨額][]          | Amount       | _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
 | `Destination`    | 文字列              | AccountID    | 支払いを受取るアカウントの一意アドレス。 |
