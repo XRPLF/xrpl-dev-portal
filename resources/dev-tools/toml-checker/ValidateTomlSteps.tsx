@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from "@redocly/theme/components/Link/Link";
-import axios, { AxiosError } from "axios";
 import { parse } from "smol-toml";
 import { getListEntries } from "./ListTomlFields";
 import { addNewLogEntry, updateLogEntry, LogEntryItem, LogEntryStatus } from "../components/LogEntry";
@@ -236,25 +235,6 @@ async function parseXRPLToml(
     }
 }
 
-/**
- * Convert HTML error odes to status messages to display.
- *
- * @param status - HTML Error code
- * @returns A human readable explanation for the HTML based on error code categories.
- */
-function getHttpErrorCode(status?: number) {
-    let errCode;
-    if(status === 408) {
-        errCode = 'TIMEOUT'
-    } else if(status >= 400 && status < 500) {
-        errCode = 'CLIENT ERROR'
-    } else if (status >= 500 && status < 600) {
-        errCode = 'SERVER ERROR'
-    } else {
-        errCode = 'UNKNOWN'
-    }
-    return errCode
-}
 
 /**
  * Extract and parse a toml file from a url derived via domain. If accountToVerify is
@@ -279,22 +259,26 @@ export async function fetchFile(
     addNewLogEntry(setLogEntries, logEntry)
 
     try {
-    const response = await axios.get(url)
-    const data: string = response.data
-    updateLogEntry(setLogEntries, {...logEntry, status: {
-        icon: {
-            label: "FOUND",
-            type: "SUCCESS",
-        },
-    }})
+        const data = await fetch(url).then( (response) => {
+            if (response.status >= 400) {
+                throw new Error(`Server returned status code ${response.status}`)
+            }
+            return response.text()
+        })
+        updateLogEntry(setLogEntries, {...logEntry, status: {
+            icon: {
+                label: "FOUND",
+                type: "SUCCESS",
+            },
+        }})
 
-    // Continue to the next step of verification
-    parseXRPLToml(setLogEntries, data, accountToVerify, domain)
+        // Continue to the next step of verification
+        parseXRPLToml(setLogEntries, data, accountToVerify, domain)
 
     } catch (e) {
         const errorUpdate: LogEntryItem = {...logEntry, status: {
             icon: {
-                label: getHttpErrorCode((e as AxiosError)?.status),
+                label: e,
                 type: "ERROR",
             },
             followUpMessage: (<p>
