@@ -77,7 +77,7 @@ async function onClickCreateEscrow(
         }
         setEscrowWidthPercent(0)
 
-        if(escrowCreateResponse.result.Sequence === undefined) {
+        if(escrowCreateResponse.result.tx_json.Sequence === undefined) {
             
             errorNotif(submitConstData.alert, 
                 "Error: Unable to get the sequence number from EscrowCreate, so cannot submit an EscrowFinish transaction.")
@@ -95,7 +95,7 @@ async function onClickCreateEscrow(
                 Account: sendingWallet.address,
                 TransactionType: "EscrowFinish",
                 Owner: sendingWallet.address,
-                OfferSequence: escrowCreateResponse.result.Sequence
+                OfferSequence: escrowCreateResponse.result.tx_json.Sequence
             })
         }
     }
