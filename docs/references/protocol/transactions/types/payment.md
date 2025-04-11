@@ -186,7 +186,7 @@ The credentials provided in the `CredentialIDs` field must all be valid, meaning
 
 If you provide credentials even though the destination account does not use Deposit Authorization, the credentials are not needed but they are still checked for validity.
 
-### Special Case for Destination Accounts Below the Reserve
+## Special Case for Destination Accounts Below the Reserve
 
 If an account has Deposit Authorization enabled, but its current XRP balance is less than the [reserve requirement](../../../../concepts/accounts/reserves.md), there is a special exception to Deposit Authorization where anyone can send a Payment transaction, without preauthorization, for up to the base account reserve; this exists as an emergency measure to prevent an account from getting "stuck" without enough XRP to transact. To qualify for this special case, the payment MUST NOT use the `CredentialIDs` field.
 

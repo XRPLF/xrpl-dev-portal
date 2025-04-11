@@ -518,6 +518,7 @@
 [ripple_path_find method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [ripple_path_findメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [seconds since the Ripple Epoch]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
+[リップルエポックからの秒数]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [server_info command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_info method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_infoメソッド]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md

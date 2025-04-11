@@ -37,12 +37,11 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 {% tx-example txid="7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
-
 
 | フィールド       | JSONの型            | [内部の型][] | 説明 |
 | :--------------- | :------------------ | :----------- | ---- |
 | `Amount`         | [通貨額][]          | Amount       | `DeliverMax`のエイリアス |
+| `CredentialIDs`  | 文字列の配列        | Vector256    | このトランザクションによって作成される入金を承認するための、受取人によって事前承認された資格証明のセット。配列の各メンバは、レジャーのCredentialエントリのレジャーエントリIDでなければなりません。(_[**Credentials** amendment](../../../../../resources/known-amendments.md#credentials)が必要です。_ {% not-enabled /%}) |
 | `DeliverMax`     | [Currency Amount][] | Amount       | [API v2][]: 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}新規: rippled 2.0.0{% /badge %} |
 | `DeliverMin`     | [通貨額][]          | Amount       | _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
 | `Destination`    | 文字列              | AccountID    | 支払いを受取るアカウントの一意アドレス。 |
@@ -51,6 +50,7 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 | `Paths`          | パス配列の配列      | PathSet      | （省略可。自動入力可能）このトランザクションに使用される[支払いパス](../../../../concepts/tokens/fungible-tokens/paths.md)の配列。XRP間のトランザクションでは省略する必要があります。 |
 | `SendMax`        | [通貨額][]          | Amount       | _（省略可）_ [送金手数料](../../../../concepts/tokens/transfer-fees.md)、為替レート、[スリッページ](http://en.wikipedia.org/wiki/Slippage_%28finance%29)を含め、このトランザクションに関して支払い元通貨での負担を許容する上限額。[トランザクションの送信コストとしてバーンされるXRP](../../../../concepts/transactions/transaction-cost.md)は含めないでください。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。クロスカレンシー支払いまたは複数のトークンを伴う支払いについては、このフィールドを入力する必要があります。XRP間の支払いでは省略する必要があります。 |
 
+トランザクションを指定する際は、`Amount`または`DeliverMax`のいずれかを指定する必要がありますが、両方を指定することはできません。JSONでトランザクションを表示する場合、API v1では常に`Amount`を使用し、API v2（以降）では常に`DeliverMax`を使用します。
 
 ## Paymentの種類
 
@@ -85,7 +85,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 
 Payment型のトランザクションでは、資金供給のないアドレスに対して十分なXRPを送金することで、XRP Ledgerに新規のアカウントを作成できます。資金供給のないアドレスに対するその他のトランザクションは、常に失敗します。
 
-詳細は、[アカウント](../../../../concepts/accounts/index.md#アカウントの作成)をご覧ください。
+詳細は、[アカウントの作成](../../../../concepts/accounts/index.md#アカウントの作成)をご覧ください。
 
 ## パス
 
@@ -114,7 +114,7 @@ Payment型のトランザクションについては、[`Flags`フィールド](
 
 ## Partial Payments
 
-Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](../../../../concepts/payment-types/bouncing-payments.md)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
+Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](../../../../concepts/payment-types/bouncing-payments.md)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。これらの理由から、API v2以降では、`Amount`フィールドの名前を`DeliverMax`に変更しました。
 
 Partial Paymentsとは、**tfPartialPayment**フラグが有効になっている[Paymentトランザクション][]です。Partial Paymentsは、`SendMax`値を超える金額を送金することなく、`DeliverMin`フィールド以上の正の金額（`DeliverMin`が指定されていない場合、任意の正の金額）を送金する場合に成功します。
 
@@ -167,5 +167,24 @@ MPTokenのバージョン1では、アカウント間の直接支払いのみを
    "Flags": 0,
 }
 ```
+
+## Credential ID
+
+[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用しているアカウントに対して、受取人によって事前承認された資格証明のセットを`CredentialIDs`フィールドで提供することで、そのアカウントに対して送金することができます。資格証明のセットは、[DepositPreauthエントリ](../../ledger-data/ledger-entry-types/depositpreauth.md)と一致していなければなりません。
+
+`CredentialIDs`フィールドで提供された資格証明はすべて有効である必要があります。つまり、以下の条件をすべて満たしている必要があります。
+
+- 提供された資格証明は存在している必要があります。
+- 提供された資格証明は、受取人によって承認されている必要があります。
+- 提供された資格証明は、期限切れではない必要があります。
+- このトランザクションの送信者は、提供された資格証明のすべての受取人である必要があります。
+
+提供された資格証明が、Deposit Authorizationを使用していないアカウントに対して提供されている場合、資格証明は不要ですが、有効性は依然としてチェックされます。
+
+
+## 準備金を下回るアカウントに対する特別な送金のケース
+
+Deposit Authorizationを使用しているアカウントが、そのアカウントの現在のXRP残高が[準備金要件](../../../../concepts/accounts/reserves.md)よりも少ない場合、Deposit Authorizationには、誰でもPaymentトランザクションを送信できる特別な例外があります。これは、アカウントが「取引できない」状態になるのを防ぐための緊急措置です。この特別なケースに該当するには、`CredentialIDs`フィールドを使用してはいけません。
+
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

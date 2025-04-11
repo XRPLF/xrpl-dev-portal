@@ -2,7 +2,7 @@
 html: ledger_entry.html
 parent: ledger-methods.html
 seo:
-    description: XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。
+    description: XRP Ledgerの1つのレジャーエントリを生フォーマットで返します。
 label:
   - ブロックチェーン
   - データ保持
@@ -10,7 +10,7 @@ label:
 # ledger_entry
 [[ソース]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
-`ledger_entry`メソッドは、XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。取得可能な各種オブジェクトについては、[レジャーフォーマット][]をご覧ください。
+`ledger_entry`メソッドは、XRP Ledgerの1つのレジャーエントリを生フォーマットで返します。取得可能な各種エントリについては、[レジャーフォーマット][]をご覧ください。
 
 ## リクエストのフォーマット
 
@@ -22,31 +22,32 @@ label:
 
 | フィールド                | 型                     | 説明                   |
 |:------------------------|:-----------------------|:----------------------|
-| `binary`                | ブール値                 | _（省略可）_ `true`の場合、リクエストしたレジャーオブジェクトの内容がXRP Ledgerの[バイナリ形式](../../../protocol/binary-format.md)の16進数の文字列として返されます。それ以外の場合はデータがJSONフォーマットで返されます。デフォルトは`false`です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}更新: rippled 1.2.0{% /badge %} |
+| `binary`                | ブール値                 | _（省略可）_ `true`の場合、リクエストしたレジャーエントリの内容がXRP Ledgerの[バイナリ形式](../../../protocol/binary-format.md)の16進数の文字列として返されます。それ以外の場合はデータがJSONフォーマットで返されます。デフォルトは`false`です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}更新: rippled 1.2.0{% /badge %} |
 | `ledger_hash`           | 文字列                  | _（省略可）_ 使用するレジャーバージョンの20バイトの16進数の文字列。（[レジャーの指定][]をご覧ください。 |
 | `ledger_index`          | 文字列 または 符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列("validated"や"closed"、"current"など)。（[レジャーの指定][]をご覧ください。 |
 | `include_deleted`       | 真偽値                  | _(省略可, Clioサーバのみ)_ クエリされたオブジェクトが削除されている場合、その完全なデータを削除前の状態で返します。`false`または提供されていない場合、クエリされたオブジェクトが削除されている場合は`objectNotFound`を返します。 |
 
 `generator`と`ledger`パラメータは非推奨であり、予告なく削除される可能性があります。
 
-上記の一般的なフィールドに加えて、オブジェクトを取得するタイプを示すために、以下のフィールドのうち *正確に1つ* を指定する必要があります。有効なフィールドは以下のとおりです。
+上記の一般的なフィールドに加えて、エントリを取得するタイプを示すために、以下のフィールドのうち *正確に1つ* を指定する必要があります。有効なフィールドは以下のとおりです。
 
 - [ledger\_entry](#ledger_entry)
   - [リクエストのフォーマット](#リクエストのフォーマット)
     - [一般的なフィールド](#一般的なフィールド)
-    - [IDからレジャーオブジェクトを取得する](#idからレジャーオブジェクトを取得する)
-    - [AccountRootオブジェクトを取得する](#accountrootオブジェクトを取得する)
-    - [AMMオブジェクトを取得する](#ammオブジェクトを取得する)
-    - [Bridgeオブジェクトを取得する](#bridgeオブジェクトを取得する)
-    - [Directorynodeオブジェクトを取得する](#directorynodeオブジェクトを取得する)
-    - [Offerオブジェクトを取得する](#offerオブジェクトを取得する)
-    - [Oracleオブジェクトを取得する](#oracleオブジェクトを取得する)
-    - [RippleStateオブジェクトを取得する](#ripplestateオブジェクトを取得する)
-    - [Checkオブジェクトを取得する](#checkオブジェクトを取得する)
-    - [Escrowオブジェクトを取得する](#escrowオブジェクトを取得する)
-    - [Paychannelオブジェクトを取得する](#paychannelオブジェクトを取得する)
-    - [DepositPreauthオブジェクトを取得する](#depositpreauthオブジェクトを取得する)
-    - [Ticketオブジェクトを取得する](#ticketオブジェクトを取得する)
+    - [IDからレジャーエントリを取得する](#idからレジャーオントリを取得する)
+    - [AccountRootエントリを取得する](#accountrootエントリを取得する)
+    - [AMMエントリを取得する](#ammエントリを取得する)
+    - [Bridgeエントリを取得する](#bridgeエントリを取得する)
+    - [Credentialエントリを取得する](#credentialエントリを取得する)
+    - [Directorynodeエントリを取得する](#directorynodeエントリを取得する)
+    - [Offerエントリを取得する](#offerエントリを取得する)
+    - [Oracleエントリを取得する](#oracleエントリを取得する)
+    - [RippleStateエントリを取得する](#ripplestateエントリを取得する)
+    - [Checkエントリを取得する](#checkエントリを取得する)
+    - [Escrowエントリを取得する](#escrowエントリを取得する)
+    - [Paychannelエントリを取得する](#paychannelエントリを取得する)
+    - [DepositPreauthエントリを取得する](#depositpreauthエントリを取得する)
+    - [Ticketエントリを取得する](#ticketエントリを取得する)
     - [Nft Pageを取得する](#nft-pageを取得する)
     - [MPT Issuanceオブジェクトを取得する](#mpt-issuanceオブジェクトを取得する)
     - [MPTokenオブジェクトを取得する](#mptokenオブジェクトを取得する)
@@ -56,13 +57,14 @@ label:
 {% admonition type="warning" name="注意" %}リクエストでこれらの型固有のフィールドを1つ以上指定した場合、サーバはそのうちの1つだけの結果を取得します。サーバがどれを選択するかは定義されていないため、こうした指定方法は避けるべきです。{% /admonition %}
 
 
-### IDからレジャーオブジェクトを取得する
+### IDからレジャーエントリを取得する
+<a id="idからレジャーオブジェクトを取得する"></a><!-- legacy ID -->
 
-ユニークな ID を使用して、任意のタイプのレジャーオブジェクトを取得します。
+ユニークな ID を使用して、任意のタイプのレジャーエントリを取得します。
 
 | フィールド | 型     | 説明                                                       |
 |:---------|:-------|:----------------------------------------------------------|
-| `index`  | 文字列  | レジャーから取得する1オブジェクトの[オブジェクトID](../../../protocol/ledger-data/common-fields.md)を、64文字(256ビット)の16進数の文字列。 |
+| `index`  | 文字列  | レジャーから取得する1エントリの[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)を、64文字(256ビット)の16進数の文字列。 |
 
 {% tabs %}
 
@@ -101,7 +103,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 {% try-it method="ledger_entry-by-object-id" /%}
 
 {% admonition type="success" name="ヒント" %}
-このタイプのリクエストは、レジャーデータにシングルトンオブジェクトが存在する場合、そのIDは常に同一であるため、任意のシングルトンオブジェクトを取得するために使用できます。たとえば
+このタイプのリクエストは、レジャーデータにシングルトンエントリが存在する場合、そのIDは常に同一であるため、任意のシングルトンエントリを取得するために使用できます。たとえば
 
 - [`Amendments`](../../../protocol/ledger-data/ledger-entry-types/amendments.md) - `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`
 - [`FeeSettings`](../../../protocol/ledger-data/ledger-entry-types/feesettings.md) - `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`
@@ -111,13 +113,14 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 
 
 
-### AccountRootオブジェクトを取得する
+### AccountRootエントリを取得する
+<a id="accountrootオブジェクトを取得する"></a><!-- legacy ID -->
 
-アドレスから[AccountRootオブジェクト](../../../protocol/ledger-data/ledger-entry-types/accountroot.md)を取得します。これは[account_infoメソッド][]とほぼ同じです。
+アドレスから[AccountRootエントリ](../../../protocol/ledger-data/ledger-entry-types/accountroot.md)を取得します。これは[account_infoメソッド][]とほぼ同じです。
 
 | フィールド       | 型                  | 説明                   |
 |:----------- ---|:--------------------|:----------------------|
-| `account_root` | 文字列 - [アドレス][] | 取得する[AccountRootオブジェクト](../../../protocol/ledger-data/ledger-entry-types/accountroot.md)の標準アドレス。 |
+| `account_root` | 文字列 - [アドレス][] | 取得する[AccountRootエントリ](../../../protocol/ledger-data/ledger-entry-types/accountroot.md)の標準アドレス。 |
 
 {% tabs %}
 
@@ -158,17 +161,18 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 
 
-### AMMオブジェクトを取得する
+### AMMエントリを取得する
+<a id="ammオブジェクトを取得する"></a><!-- legacy ID -->
 
 _([AMM amendment][]により追加されました。)_
 
-レジャーからAutomated Market-Maker(AMM)オブジェクトを取得します。これは[amm_infoメソッド][]と似ていますが、`ledger_entry`は保存されているレジャーエントリのみを返します。
+レジャーからAutomated Market-Maker(AMM)エントリを取得します。これは[amm_infoメソッド][]と似ていますが、`ledger_entry`は保存されているレジャーエントリのみを返します。
 
 | フィールド    | 型                    | 説明                   |
 |:-------------|:---------------------|:----------------------|
-| `amm`        | オブジェクトまたは文字列 | 取得する[AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md)。文字列を指定する場合は、AMMの[オブジェクトID](../../../protocol/ledger-data/common-fields.md)を16進数で指定しなければなりません。オブジェクトを指定する場合は、`asset`と`asset2`のサブフィールドを含む必要があります。 |
-| `amm.asset`  | オブジェクト           | このAMMのプールにある2つの資産のうちのひとつを、[金額なしの通貨オブジェクト](../../../protocol/data-types/currency-formats.md#金額なしでの通貨の指定)として指定します。 |
-| `amm.asset2` | オブジェクト           | このAMMのプールにある2つの資産のうちのもうひとつを、[金額なしの通貨オブジェクト](../../../protocol/data-types/currency-formats.md#金額なしでの通貨の指定)として指定します。 |
+| `amm`        | オブジェクトまたは文字列 | 取得する[AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md)。文字列を指定する場合は、AMMの[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)を16進数で指定しなければなりません。エントリを指定する場合は、`asset`と`asset2`のサブフィールドを含む必要があります。 |
+| `amm.asset`  | オブジェクト           | このAMMのプールにある2つの資産のうちのひとつを、[金額なしの通貨エントリ](../../../protocol/data-types/currency-formats.md#金額なしでの通貨の指定)として指定します。 |
+| `amm.asset2` | オブジェクト           | このAMMのプールにある2つの資産のうちのもうひとつを、[金額なしの通貨エントリ](../../../protocol/data-types/currency-formats.md#金額なしでの通貨の指定)として指定します。 |
 
 {% tabs %}
 
@@ -224,7 +228,8 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 {% try-it method="ledger_entry-amm" server="testnet" /%}
 
 
-### Bridgeオブジェクトを取得する
+### Bridgeエントリを取得する
+<a id="bridgeオブジェクトを取得する"></a><!-- legacy ID -->
 
 _([XChainBridge amendment][]が必要です　{% not-enabled /%})_
 
@@ -294,14 +299,67 @@ rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuq
 {% try-it method="ledger_entry-bridge" server="devnet" /%}
 
 
+### Credentialエントリを取得する
 
-### DirectoryNodeオブジェクトを取得する
+[Credentialエントリ](../../../protocol/ledger-data/ledger-entry-types/credential.md)を取得します。
 
-他のレジャーオブジェクトのリストを含む[DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md)を取得します。文字列(DirectoryのオブジェクトID)またはオブジェクトを指定します。
+| フィールド                   | 型                         | 必須? | 説明 |
+| :--------------------------- | :------------------------- | :---- | ---- |
+| `credential`                 | オブジェクト または 文字列 | はい  | 取得する[Credentialエントリ](../../../protocol/ledger-data/ledger-entry-types/credential.md)を指定します。文字列の場合は、エントリの[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合は、`subject`, `issuer`, `credential_type`のサブフィールドが必要です。 |
+| `credential.subject`         | 文字列 - [Address][]       | はい  | 資格情報の対象となるアカウント。 |
+| `credential.issuer`          | 文字列 -  [Address][]      | はい  | 資格情報を発行したアカウント。 |
+| `credential.credential_type` | 文字列 - 16進数文字列      | はい  | 資格情報の種類。 |
+
+WebSocket:
+
+```json
+{
+  "id": "example_get_credential",
+  "command": "ledger_entry",
+  "credential": {
+    "subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+    "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "credential_type": "6D795F63726564656E7469616C"
+  },
+  "ledger_index": "validated"
+}
+```
+
+JSON-RPC:
+
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "credential": {
+      "subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+      "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "credential_type": "6D795F63726564656E7469616C"
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+
+Commandline:
+
+```bash
+rippled json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8", "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX","credential_type": "6D795F63726564656E7469616C"}, "ledger_index": "validated" }'
+```
+
+<!-- TODO: create working example in tool
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-credential)
+-->
+
+
+### DirectoryNodeエントリを取得する
+<a id="directorynodeオブジェクトを取得する"></a><!-- legacy ID -->
+
+他のレジャーエントリのリストを含む[DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md)を取得します。文字列(DirectoryのレジャーエントリID)またはオブジェクトを指定します。
 
 | フィールド                | 型                         | 説明                   |
 |:------------------------|:---------------------------|:----------------------|
-| `directory`             | オブジェクト または 文字列     | 取得する[DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md)。文字列の場合は、ディレクトリの[オブジェクトID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合は、サブフィールドとして`dir_root`または`owner`が必要で、オプションとして`sub_index`サブフィールドを指定可能です。 |
+| `directory`             | オブジェクト または 文字列     | 取得する[DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md)。文字列の場合は、ディレクトリの[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合は、サブフィールドとして`dir_root`または`owner`が必要で、オプションとして`sub_index`サブフィールドを指定可能です。 |
 | `directory.sub_index`   | 符号なし整数                 | _(省略可)_ 指定された場合、その"ページ"以降の[DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md)にジャンプします。 |
 | `directory.dir_root`    | 文字列                      | _(省略可)_ 取得するディレクトリを表す一意のインデックス。 |
 | `directory.owner`       | 文字列                      | _(省略可)_ このディレクトリに関連付けられているアカウントの一意のアドレス。 |
@@ -351,15 +409,16 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 
 
-### Offerオブジェクトを取得する
+### Offerエントリを取得する
+<a id="offerオブジェクトを取得する"></a><!-- legacy ID -->
 
-通貨交換のオファーを定義した [Offer オブジェクト](../../../protocol/ledger-data/ledger-entry-types/offer.md) を取得します。文字列 (オファーの一意なインデックス) あるいはオブジェクトを指定します。
+通貨交換のオファーを定義した [Offer エントリ](../../../protocol/ledger-data/ledger-entry-types/offer.md) を取得します。文字列 (オファーの一意なインデックス) あるいはオブジェクトを指定します。
 
 | フィールド                | 型                         | 説明                   |
 |:------------------------|:---------------------------|:----------------------|
-| `offer`                 | オブジェクトまたは 文字列      | 取得する[オファーオブジェクト](../../../protocol/ledger-data/ledger-entry-types/offer.md)。文字列の場合、オファーに対する[一意のオブジェクトID](../../../protocol/ledger-data/common-fields.md)を指定します。オブジェクトの場合、オファーを一意に識別するためのサブフィールド`account`と`seq`を指定します。 |
+| `offer`                 | オブジェクトまたは 文字列      | 取得する[オファーエントリ](../../../protocol/ledger-data/ledger-entry-types/offer.md)。文字列の場合、オファーに対する[一意のレジャーエントリID](../../../protocol/ledger-data/common-fields.md)を指定します。レジャーエントリの場合、オファーを一意に識別するためのサブフィールド`account`と`seq`を指定します。 |
 | `offer.account`         | 文字列 - [アドレス][]        | _(`offer`がオブジェクト形式で指定されている場合、必須)_ オファーを作成したアカウント。 |
-| `offer.seq`             | 符号なし整数                 | _(`offer`がオブジェクト形式で指定されている場合、必須)_ オファーオブジェクトを作成したトランザクションの[シーケンス番号][]。 |
+| `offer.seq`             | 符号なし整数                 | _(`offer`がオブジェクト形式で指定されている場合、必須)_ オファーエントリを作成したトランザクションの[シーケンス番号][]。 |
 
 {% tabs %}
 
@@ -404,7 +463,7 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 {% try-it method="ledger_entry-offer" /%}
 
-### Oracleオブジェクトを取得する
+### Oracleエントリを取得する
 
 _([PriceOracle amendment][]が必要です)_
 
@@ -460,15 +519,16 @@ rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4Q
 [試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-oracle)
 
 
-### RippleStateオブジェクトを取得する
+### RippleStateエントリを取得する
+<a id="ripplestateオブジェクトを取得する"></a><!-- legacy ID -->
 
-2つのアカウント間の（XRP以外の）通貨残高を追跡する[RippleStateオブジェクト](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md)を取得します。
+2つのアカウント間の（XRP以外の）通貨残高を追跡する[RippleStateエントリ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md)を取得します。
 
 | フィールド                | 型                         | 説明                   |
 |:------------------------|:---------------------------|:----------------------|
-| `ripple_state`          | オブジェクト                 | 取得するRippleState(trust line)オブジェクトを指定するオブジェクト。取得するRippleStateエントリを一意に指定するには、`accounts`と`currency`のサブフィールドが必要です。 |
-| `ripple_state.accounts` | 配列                        | _(`ripple_state`が指定されている場合、必須)_ この[RippleStateオブジェクト](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md)によってリンクされた2つのアカウントを長さ2の配列で指定します。 |
-| `ripple_state.currency` | 文字列                      | _(`ripple_state`が指定されている場合、必須)_ 取得する[RippleStateオブジェクト](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md)の[通貨コード][]を指定します。 |
+| `ripple_state`          | オブジェクト                 | 取得するRippleState(trust line)エントリを指定するレジャーエントリ。取得するRippleStateエントリを一意に指定するには、`accounts`と`currency`のサブフィールドが必要です。 |
+| `ripple_state.accounts` | 配列                        | _(`ripple_state`が指定されている場合、必須)_ この[RippleStateエントリ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md)によってリンクされた2つのアカウントを長さ2の配列で指定します。 |
+| `ripple_state.currency` | 文字列                      | _(`ripple_state`が指定されている場合、必須)_ 取得する[RippleStateエントリ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md)の[通貨コード][]を指定します。 |
 
 {% tabs %}
 
@@ -519,13 +579,14 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 
 
-### Checkオブジェクトを取得する
+### Checkエントリを取得する
+<a id="checkオブジェクトを取得する"></a><!-- legacy ID -->
 
-[Checkオブジェクト](../../../protocol/ledger-data/ledger-entry-types/check.md)を取得します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}.
+[Checkエントリ](../../../protocol/ledger-data/ledger-entry-types/check.md)を取得します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}.
 
 | フィールド | 型    | 説明                   |
 |:---------|:------|:----------------------|
-| `check`  | 文字列 | 取得する[Checkオブジェクト](../../../protocol/ledger-data/ledger-entry-types/check.md)の[オブジェクトID](../../../protocol/ledger-data/common-fields.md)。 |
+| `check`  | 文字列 | 取得する[Checkエントリ](../../../protocol/ledger-data/ledger-entry-types/check.md)の[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)。 |
 
 {% tabs %}
 
@@ -564,15 +625,16 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 
 
-### Escrowオブジェクトを取得する
+### Escrowエントリを取得する
+<a id="escrowオブジェクトを取得する"></a><!-- legacy ID -->
 
-[Escrowオブジェクト](../../../protocol/ledger-data/ledger-entry-types/escrow.md)を取得します。文字列(エスクローのオブジェクトID)またはオブジェクトとして指定します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}
+[Escrowエントリ](../../../protocol/ledger-data/ledger-entry-types/escrow.md)を取得します。文字列(エスクローのエントリID)またはオブジェクトとして指定します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}
 
 | フィールド                | 型                         | 説明                   |
 |:------------------------|:---------------------------|:----------------------|
-| `escrow`                | オブジェクト または 文字列     | 取得する[Escrowオブジェクト](../../../protocol/ledger-data/ledger-entry-types/escrow.md)を指定します。文字列の場合は、エスクローの[オブジェクトID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合、`owner`と`seq`サブフィールドを指定します。. |
-| `escrow.owner`          | 文字列 - [アドレス][]        | _(`escrow`がオブジェクト形式で指定されている場合、必須)_ Escrowオブジェクトの所有者（送信者）。 |
-| `escrow.seq`            | 符号なし整数                 | _(`escrow`がオブジェクト形式で指定されている場合、必須)_ エスクローオブジェクトを作成したトランザクションの[シーケンス番号][]。 |
+| `escrow`                | オブジェクト または 文字列     | 取得する[Escrowエントリ](../../../protocol/ledger-data/ledger-entry-types/escrow.md)を指定します。文字列の場合は、エスクローの[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合、`owner`と`seq`サブフィールドを指定します。. |
+| `escrow.owner`          | 文字列 - [アドレス][]        | _(`escrow`がオブジェクト形式で指定されている場合、必須)_ Escrowエントリの所有者（送信者）。 |
+| `escrow.seq`            | 符号なし整数                 | _(`escrow`がオブジェクト形式で指定されている場合、必須)_ エスクローエントリを作成したトランザクションの[シーケンス番号][]。 |
 
 {% tabs %}
 
@@ -617,13 +679,13 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 
 
-### PayChannelオブジェクトを取得する
-
-非同期決済用のXRPを保持する[PayChannelオブジェクト](../../../protocol/ledger-data/ledger-entry-types/paychannel.md)を取得します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}.
+### PayChannelエントリを取得する
+<a id="paychannelオブジェクトを取得する"></a><!-- legacy ID -->
+非同期決済用のXRPを保持する[PayChannelエントリ](../../../protocol/ledger-data/ledger-entry-types/paychannel.md)を取得します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}.
 
 | フィールド          | 型     | 説明                                             |
 |:------------------|:-------|:------------------------------------------------|
-| `payment_channel` | 文字列  | 取得する[PayChannelオブジェクト](../../../protocol/ledger-data/ledger-entry-types/paychannel.md)の[オブジェクトID](../../../protocol/ledger-data/common-fields.md)。 |
+| `payment_channel` | 文字列  | 取得する[PayChannelエントリ](../../../protocol/ledger-data/ledger-entry-types/paychannel.md)の[エントリID](../../../protocol/ledger-data/common-fields.md)。 |
 
 {% tabs %}
 
@@ -661,15 +723,24 @@ rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D
 {% try-it method="ledger_entry-paychannel" /%}
 
 
-### DepositPreauthオブジェクトを取得する
+### DepositPreauthエントリを取得する
+<a id="depositpreauthオブジェクトを取得する"></a><!-- legacy ID -->
 
-[DepositPreauthオブジェクト](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md)を取得します。このオブジェクトは、[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を必要とする口座への支払いの事前承認を記録します。文字列（DepositPreauthのオブジェクトID）またはオブジェクトとして指定します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}新規: rippled 1.1.0{% /badge %}.
+[DepositPreauthエントリ](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md)を取得します。このエントリは、[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を必要とする口座への支払いの事前承認を記録します。文字列（DepositPreauthのエントリID）またはオブジェクトとして指定します。
 
-| フィールド                     | 型                     | 説明                    |
-|:-----------------------------|:-----------------------|:-----------------------|
-| `deposit_preauth`            | オブジェクト または 文字列 | 取得する[DepositPreauthオブジェクト](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md)を指定します。文字列の場合、DepositPreauthオブジェクトの[オブジェクトID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合、`owner`と`authorized`のサブフィールドを指定します。 |
-| `deposit_preauth.owner`      | 文字列 - [アドレス][]    | _(`deposit_preauth`がオブジェクト形式で指定されている場合、必須)_ 事前承認を行ったアカウント。 |
-| `deposit_preauth.authorized` | 文字列 - [アドレス][]    | _(`deposit_preauth`がオブジェクト形式で指定されている場合、必須)_ 事前承認を受けたアカウント。 |
+| フィールド                               | 型                         | 必須?  | 説明 |
+| :--------------------------------------- | :------------------------- | :----- | ---- |
+| `deposit_preauth`                        | オブジェクト または 文字列 | はい   | 取得するDepositPreauthを指定します。文字列の場合は、DepositPreauthエントリの[レジャーエントリID][]を16進数で指定する必要があります。オブジェクトの場合は、`owner`サブフィールドと、`authorized`または`authorize_credentials`サブフィールドのいずれかが必要です。 |
+| `deposit_preauth.owner`                  | 文字列 - [アドレス][]      | はい   | 事前承認を行ったアカウント |
+| `deposit_preauth.authorized`             | 文字列 - [アドレス][]      | いいえ | 事前承認を受けたアカウント。 |
+| `deposit_preauth.authorized_credentials` | 配列                       | いいえ | 事前承認を受けた資格情報のセット |
+
+`deposit_preauth.authorized_credentials`配列の各メンバは、提供されている場合、次のネストされたフィールドを含める必要があります。
+
+| フィールド        | 型                    | 必須? | 説明                               |
+| :---------------- | :-------------------- | :---- | :--------------------------------- |
+| `issuer`          | 文字列 - [アドレス][] | はい  | 資格情報の発行アカウントのアドレス |
+| `credential_type` | 文字列 - 16進数       | はい  | 発行された資格情報のタイプ         |
 
 {% tabs %}
 
@@ -713,14 +784,15 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 {% try-it method="ledger_entry-depositpreauth" /%}
 
 
-### Ticketオブジェクトを取得する
+### Ticketエントリを取得する
+<a id="ticketオブジェクトを取得する"></a><!-- legacy ID -->
 
-将来の使用のために確保された[シーケンス番号][]を表す[Ticketオブジェクト](../../../protocol/ledger-data/ledger-entry-types/ticket.md)を取得します。文字列(TicketのオブジェクトID)またはオブジェクトを指定します。 _([TicketBatch amendment][]により追加されました。)_
+将来の使用のために確保された[シーケンス番号][]を表す[Ticketエントリ](../../../protocol/ledger-data/ledger-entry-types/ticket.md)を取得します。文字列(TicketのエントリID)またはオブジェクトを指定します。 _([TicketBatch amendment][]により追加されました。)_
 
 | フィールド            | 型                     | 説明                   |
 |:--------------------|:-----------------------|:----------------------|
-| `ticket`            | オブジェクト または 文字列 | 取得する[Ticketオブジェクト](../../../protocol/ledger-data/ledger-entry-types/ticket.md)。文字列の場合、チケットの[オブジェクトID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合、チケットエントリを一意に指定するために`account`と`ticket_seq`サブフィールドを指定します。 |
-| `ticket.account`    | 文字列 - [アドレス][]    | _(`ticket`がオブジェクト形式で指定されている場合、必須)_ Ticketオブジェクトの所有者を指定します。 |
+| `ticket`            | エントリ または 文字列 | 取得する[Ticketエントリ](../../../protocol/ledger-data/ledger-entry-types/ticket.md)。文字列の場合、チケットの[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)を16進数で指定します。オブジェクトの場合、チケットエントリを一意に指定するために`account`と`ticket_seq`サブフィールドを指定します。 |
+| `ticket.account`    | 文字列 - [アドレス][]    | _(`ticket`がオブジェクト形式で指定されている場合、必須)_ Ticketエントリの所有者を指定します。 |
 | `ticket.ticket_seq` | 数値                   | _(`ticket`がオブジェクト形式で指定されている場合、必須)_ 取得するTicketのTicketシーケンス番号を指定します。 |
 
 {% tabs %}
@@ -766,12 +838,13 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 
 
 ### NFT Pageを取得する
+<a id="nft-pageオブジェクトを取得する"></a><!-- legacy ID -->
 
 NFT ページを生のレジャー形式で取得します。
 
 | フィールド                | 型     | 説明                   |
 |:------------------------|:-------|:----------------------|
-| `nft_page`              | 文字列  | 取得する[NFTページ](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md)の[オブジェクトID](../../../protocol/ledger-data/common-fields.md)。 |
+| `nft_page`              | 文字列  | 取得する[NFTページ](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md)の[レジャーエントリID](../../../protocol/ledger-data/common-fields.md)。 |
 
 {% tabs %}
 
@@ -915,11 +988,12 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4
 
 | フィールド          | 型             | 説明                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `index`        | 文字列           | [レジャーエントリ](../../../protocol/ledger-data/ledger-entry-types/index.md)の一意のID。 |
-| `ledger_index` | 正の整数 | このデータを取得するために使用されたレジャーの[レジャーインデックス][]。 |
-| `node`         | オブジェクト           | _(`"binary": true`の場合省略)_ このレジャーエントリのデータ。[レジャーのフォーマット][]に従っています。 |
-| `node_binary`  | 文字列           | _(`"binary": true`の場合省略)_ レジャーオブジェクトの[バイナリフォーマット](../../../protocol/binary-format.md)。 |
-| `deleted_ledger_index` | String | _(Clioサーバのみ, `include_deleted`パラメータが設定されている場合のみ)_ レジャーエントリオブジェクトが削除された[レジャーインデックス][]。 |
+| `index`        | 文字列            | [レジャーエントリ](../../../protocol/ledger-data/ledger-entry-types/index.md)の一意のID。 |
+| `ledger_index` | 符号なし整数       | このデータを取得する際に使用したレジャーの [レジャーインデックス][]。 |
+| `node`         | オブジェクト       | _(`"binary": true`が指定されている場合、省略)_ [レジャーフォーマット][]に基づいた、このレジャーエントリのデータを含むエントリ。 |
+| `node_binary`  | 文字列            | _(`"binary": true`が指定されていない場合、省略)_ レジャーエントリの[バイナリ形式](../../../protocol/binary-format.md)を16進数で表したもの。 |
+| `deleted_ledger_index` | 文字列 | _(Clioサーバのみ, `include_deleted`パラメータが設定されている場合のみ)_ レジャーエントリオブジェクトが削除された[レジャーインデックス][]。 |
+
 
 成功したレスポンスの例:
 
@@ -1029,7 +1103,7 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4
 
 * いずれかの[汎用エラータイプ][]。
 * `deprecatedFeature` - 削除されたフィールド（`generator`など）がリクエストに指定されていました。
-* `entryNotFound` - リクエストされたレジャーオブジェクトはレジャーに存在しません。
+* `entryNotFound` - リクエストされたレジャーエントリはレジャーに存在しません。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 * `malformedAddress` - リクエストの[アドレス][]フィールドが誤って指定されています。

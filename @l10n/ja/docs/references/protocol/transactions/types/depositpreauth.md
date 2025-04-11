@@ -11,40 +11,83 @@ labels:
 
 _[DepositPreauth Amendment][]により追加されました。_
 
-DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。これは、このトランザクションの送信者が[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用している（または使用する予定がある）場合にのみ有用です。
+DepositPreauthトランザクションは、あなたのアカウントへの支払いを送金するための事前承認を付与します。これは、あなたが[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用している（または使用する予定がある）場合にのみ有用です。
 
-{% admonition type="success" name="ヒント" %}このトランザクションを使用して、Deposit Authorizationを有効にする前に特定の取引相手を事前承認できます。これは、Deposit Authorizationの義務化への円滑な移行に役立ちます。{% /admonition %}
+{% admonition type="success" name="ヒント" %}このトランザクションを使用して、Deposit Authorizationを有効にする前に事前承認できます。これは、Deposit Authorizationの義務化への円滑な移行に役立ちます。{% /admonition %}
 
 ## {% $frontmatter.seo.title %} JSONの例
 
+{% tabs %}
+
+{% tab label="個別アカウントの事前承認" %}
 ```json
 {
- "TransactionType" : "DepositPreauth",
- "Account" : "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
- "Authorize" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
- "Fee" : "10",
- "Flags" : 2147483648,
- "Sequence" : 2
+  "TransactionType" : "DepositPreauth",
+  "Account" : "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+  "Authorize" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+  "Fee" : "10",
+  "Flags" : 2147483648,
+  "Sequence" : 2
 }
 ```
+{% /tab %}
+
+{% tab label="資格情報による事前承認" %}
+```json
+{
+  "TransactionType" : "DepositPreauth",
+  "Account" : "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+  "AuthorizeCredentials": [{
+    "Credential": {
+      "Issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "CredentialType": "6D795F63726564656E7469616C"
+    }
+  }],
+  "Fee" : "10",
+  "Flags": 0,
+  "Sequence": 230984
+}
+```
+{% /tab %}
+{% /tabs %}
+
+[トランザクションを試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_DepositPreauth%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22CB1BF910C93D050254C049E9003DA1A265C107E0C8DE4A7CFF55FADFD39D5656%22%2C%22binary%22%3Afalse%7D)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
+
+| フィールド               | JSONの型              | [内部の型][] | 必須?  | 説明 |
+| :----------------------- | :-------------------- | :----------- | :----- | ---- |
+| `Authorize`              | 文字列 - [アドレス][] | AccountID    | いいえ | 事前承認するアカウント。 |
+| `AuthorizeCredentials`   | 配列                  | STArray      | いいえ | 承認する資格証明書のセット。 _([Credentials amendment][]が必要です。 {% not-enabled /%})_ |
+| `Unauthorize`            | 文字列                | AccountID    | いいえ | 事前承認を取り消すアカウント。 |
+| `UnauthorizeCredentials` | 配列                  | STArray      | いいえ | 事前承認を取り消す資格証明書のセット。 _([Credentials amendment][]が必要です。 {% not-enabled /%})_ |
+
+`Authorize`, `AuthorizeCredentials`, `Unauthorize`, or `UnauthorizeCredentials`の**いずれか**を提供する必要があります。
+
+このトランザクションが成功すると、提供されたフィールドに基づいて、[DepositPreauthエントリ](../../ledger-data/ledger-entry-types/depositpreauth.md)が作成または削除されます。
 
 
-| フィールド         | JSONの型 | [内部の型][] | 説明 |
-|:--------------|:----------|:------------------|:-----|
-| `Authorize`   | 文字列    | AccountID         | _（省略可）_ 事前承認する送信者のXRP Ledgerアドレス。 |
-| `Unauthorize` | 文字列    | AccountID         | _（省略可）_ 事前承認を取り消す必要がある送信者のXRP Ledgerアドレス。 |
+### AuthorizeCredentialsオブジェクト
 
-`Authorize`または`Unauthorize`_のいずれか_ を指定する必要がありますが、両方は指定しないでください。
+提供される場合、`AuthorizeCredentials`フィールドまたは`UnauthorizeCredentials`フィールドの各メンバーは、次のフィールドを持つ内部オブジェクトでなければなりません。
 
-このトランザクションには以下の制限があります。
+| フィールド       | JSONの型              | [内部の型][] | 必須? | 説明                 |
+| :--------------- | :-------------------- | :----------- | :---- | :------------------- |
+| `Issuer`         | 文字列 - [アドレス][] | AccountID    | はい  | 資格証明書の発行者。 |
+| `CredentialType` | 文字列 - 16進数値     | Blob         | はい  | 資格証明書のタイプ。 |
 
-- アカウントはそのアカウント自体のアドレスを事前承認（または承認解除）できません。このような操作をすると、[`temCANNOT_PREAUTH_SELF`](../transaction-results/tem-codes.md)で失敗します。
-- すでに事前承認済みのアカウントを事前承認しようとすると、[`tecDUPLICATE`](../transaction-results/tec-codes.md)で失敗します。
-- 事前承認されていないアカウントを承認解除しようとすると、[`tecNO_ENTRY`](../transaction-results/tec-codes.md)で失敗します。
-- レジャーで資金が供給されていないアドレスを事前承認しようとすると、[`tecNO_TARGET`](../transaction-results/tec-codes.md)で失敗します。
-- 承認を追加すると[DepositPreauthオブジェクト](../../ledger-data/ledger-entry-types/depositpreauth.md)がレジャーに追加されて、[所有者の必要準備金](../../../../concepts/accounts/reserves.md#所有者準備金)に反映されます。トランザクションの送信者に、増額された準備金の支払いに十分なXRPがない場合、トランザクションは[`tecINSUFFICIENT_RESERVE`](../transaction-results/tec-codes.md)で失敗します。アカウントの送信者の所有オブジェクトが最大数に達している場合、トランザクションは[`tecDIR_FULL`](../transaction-results/tec-codes.md)で失敗します。
+## エラーケース
+
+すべてのトランザクションで発生する可能性のあるエラータイプに加えて、DepositPreauthトランザクションは次のエラーコードを生成することがあります。
+
+| エラーコード              | 説明 |
+| :------------------------ | ---- |
+| `tecDUPLICATE`            | トランザクションはすでに存在する事前承認を作成します。 |
+| `tecINSUFFICIENT_RESERVE` | 送信者は[準備金要件](../../../../concepts/accounts/reserves.md)を満たしていません。(DepositPreauthエントリは承認者の所有者準備金に1つのアイテムとしてカウントされます。) |
+| `tecNO_ENTRY`             | トランザクションは存在しない事前承認を取り消そうとしました。 |
+| `tecNO_ISSUER`            | 指定された資格証明書発行者の1つ以上がレジャーに存在しません。 |
+| `tecNO_TARGET`            | トランザクションは、レジャーの資金提供アカウントではないアカウントを承認しようとしました。 |
+| `temCANNOT_PREAUTH_SELF`  | `Authorize`フィールドのアドレスはトランザクションの送信者です。自分自身を事前承認することはできません。 |
+| `temDISABLED`             | 必要なAmendmentが有効になっていません。 |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
