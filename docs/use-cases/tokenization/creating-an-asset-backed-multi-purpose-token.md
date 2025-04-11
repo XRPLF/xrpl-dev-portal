@@ -357,6 +357,8 @@ const transactionJson = {
 
 A US Treasury bill (T-bill) is a short-term debt security issued by the US government. T-bills are considered a safe investment because they're backed by the US government. T-bills are appealing to investors in American states that have high income tax because the interest earned is exempt from state and local taxes. See [Treasury Bills In Depth](https://www.treasurydirect.gov/research-center/history-of-marketable-securities/bills/t-bills-indepth/).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZZ2KZTEJECg?si=IilL9rPrHqsi21Lb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### Creating an Issuing Account
 
 You can use the Account Configurator to experiment with the settings for a T-bill issuing account in a sandbox environment. When you are satisfied with your configuration, you can create an account on XRPL Mainnet to begin trading.
@@ -451,5 +453,9 @@ Follow the link and scroll down to find the `MPTokenIssuanceCreate` transaction 
 Click **Gather MPT Information** to copy the account information and MPT Issuance ID to the result field. Copy the information and save it to send the MPT to another account as shown in [Sending MPTs](../../tutorials/javascript/send-payments/sending-mpts.md).
 
 ![Account and MPT ID in the result field.](../../img/uc-mpt1-t-bill-gather-mpt-info.png)
+
+## See Also:
+
+- [Sending MPTs](../../tutorials/javascript/send-payments/sending-mpts.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
