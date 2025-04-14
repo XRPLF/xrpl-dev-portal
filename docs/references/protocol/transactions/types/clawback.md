@@ -48,6 +48,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 |:-----------|:------------|
 | `temDISABLED` | Occurs if the [Clawback amendment](/resources/known-amendments.md#clawback) is not enabled. |
 | `temBAD_AMOUNT` | Occurs if the holder's balance is 0. It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. Also occurs if the counterparty listed in `Amount` is the same as the `Account` issuing this transaction. |
+| `tecAMM_ACCOUNT` | This operation is not allowed with an AMM account. Use [`AMMClawback`](./ammclawback.md) instead. |
 | `tecNO_LINE` | Occurs there is no trust line with the counterparty or that trust line's balance is 0. |
 | `tecNO_PERMISSION` | Occurs if you attempt to set `lsfAllowTrustlineClawback` while `lsfNoFreeze` is set. Also occurs, conversely, if you try to set `lsfNoFreeze` while `lsfAllowTrustLineClawback` is set.  |
 
