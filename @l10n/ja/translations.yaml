@@ -22,6 +22,9 @@ footer.resources: リソース
 footer.community: コミュニティ
 
 sidebar.docs: ドキュメント
+sidebar.docs.introduction.what-is-xrp: XRPとは？
+sidebar.docs.use-cases.tokenization: Tokenization
+sidebar.docs.concepts.payment-types: 様々なPaymentの種類
 sidebar.docs.tutorials: チュートリアル
 sidebar.docs.references: リファレンス
 sidebars.resources: リソース
