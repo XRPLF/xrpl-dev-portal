@@ -2,9 +2,9 @@
 metadata:
   indexPage: true
 ---
-# Decentralized Storage
+# 分散型ストレージ
 
-The XRP Ledger can store certain information types that originate from offchain.
+XRP Ledgerにオフチェーンからの特定の種類の情報を保存出来ます。
 
 
 {% child-pages /%}
