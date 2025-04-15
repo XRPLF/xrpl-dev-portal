@@ -1,0 +1,18 @@
+{
+    "name": "issuer_service",
+    "version": "1.0.0",
+    "description": "",
+    "main": "verify_credential.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "dependencies": {
+        "commander": "^13.1.0",
+        "winston": "^3.17.0",
+        "xrpl": "^4.2.0"
+    }
+}
