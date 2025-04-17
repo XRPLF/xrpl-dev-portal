@@ -16,7 +16,7 @@
     "@codemirror/view": "^6.22.2",
     "@docsearch/react": "^3.8.0",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/realm": "0.115.0",
+    "@redocly/realm": "0.120.2",
     "@uiw/codemirror-themes": "4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
@@ -29,7 +29,7 @@
     "react18-json-view": "^0.2.6",
     "smol-toml": "^1.3.1",
     "use-query-params": "^2.2.1",
-    "xrpl": "^4.0.0"
+    "xrpl": "^4.2.0"
   },
   "overrides": {
     "react": "^18.2.0",
