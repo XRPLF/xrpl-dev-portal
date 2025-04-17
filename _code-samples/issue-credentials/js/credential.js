@@ -3,13 +3,12 @@ import {
   rippleTimeToISOTime,
   isValidClassicAddress,
 } from "xrpl";
-import { stringToHex } from "@xrplf/isomorphic/dist/utils/index.js";
+import { stringToHex, hexToString } from "@xrplf/isomorphic/dist/utils/index.js";
 
-import { decodeHex } from "./decode_hex.js";
 import { ValueError } from "./errors.js";
 
 // Regex constants
-const CREDENTIAL_REGEX = /^[A-Za-z0-9_.-]{1,64}$/;
+const CREDENTIAL_REGEX = /^[A-Za-z0-9_.-]{1,128}$/;
 const URI_REGEX = /^[A-Za-z0-9\-._~:/?#\[\]@!$&'()*+,;=%]{1,256}$/;
 
 /**
@@ -93,8 +92,8 @@ export function credentialFromXrpl(entry) {
   const { Subject, CredentialType, URI, Expiration, Flags } = entry;
   return {
     subject: Subject,
-    credential: decodeHex(CredentialType),
-    uri: URI ? decodeHex(URI) : undefined,
+    credential: hexToString(CredentialType),
+    uri: URI ? hexToString(URI) : undefined,
     expiration: Expiration ? rippleTimeToISOTime(Expiration) : undefined,
     accepted: Boolean(Flags & 0x00010000), // lsfAccepted
   };

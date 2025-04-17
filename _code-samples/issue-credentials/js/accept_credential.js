@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import inquirer from "inquirer";
 import { Client, Wallet } from "xrpl";
 import { lookUpCredentials } from "./look_up_credentials.js";
-import { decodeHex } from "./decode_hex.js";
+import { hexToString } from "@xrplf/isomorphic/dist/utils/index.js";
 
 const XRPL_SERVER = "wss://s.devnet.rippletest.net:51233"
 
@@ -41,7 +41,7 @@ async function main() {
   );
 
   const choices = pendingCredentials.map((cred, i) => ({
-    name: `${i+1}) '${decodeHex(cred.CredentialType)}' issued by ${cred.Issuer}`,
+    name: `${i+1}) '${hexToString(cred.CredentialType)}' issued by ${cred.Issuer}`,
     value: i,
   }));
   choices.unshift({ name: "0) No, quit.", value: -1 });

@@ -18,7 +18,7 @@ dotenv.config();
 async function initWallet() {
   let seed = process.env.ISSUER_ACCOUNT_SEED;
 
-  if (!seed) {
+  if (!seed || seed.startsWith("<")) {
     const { seedInput } = await inquirer.prompt([
       {
         type: "password",
@@ -89,11 +89,11 @@ async function main() {
         URI: credXrpl.uri,
         Expiration: credXrpl.expiration,
       };
-      const ccResponse = await client.submit(tx, { autofill: true, wallet });
+      const ccResponse = await client.submitAndWait(tx, { autofill: true, wallet });
 
-      if (ccResponse.result.engine_result === "tecDUPLICATE") {
+      if (ccResponse.result.meta.TransactionResult === "tecDUPLICATE") {
         throw new XRPLTxError(ccResponse, 409);
-      } else if (ccResponse.result.engine_result !== "tesSUCCESS") {
+      } else if (ccResponse.result.meta.TransactionResult !== "tesSUCCESS") {
         throw new XRPLTxError(ccResponse);
       }
 
@@ -137,6 +137,7 @@ async function main() {
           issuer: wallet.address,
           credential_type: credential,
         },
+        ledger_index: "validated",
       });
 
       const tx = {
@@ -146,12 +147,12 @@ async function main() {
         CredentialType: credential,
       };
 
-      const cdResponse = await client.submit(tx, { autofill: true, wallet });
-      if (cdResponse.result.engine_result === "tecNO_ENTRY") {
+      const cdResponse = await client.submitAndWait(tx, { autofill: true, wallet });
+      if (cdResponse.result.meta.TransactionResult === "tecNO_ENTRY") {
         // Usually this won't happen since we just checked for the credential,
         // but it's possible it got deleted since then.
         throw new XRPLTxError(cdResponse, 404);
-      } else if (cdResponse.result.engine_result !== "tesSUCCESS") {
+      } else if (cdResponse.result.meta.TransactionResult !== "tesSUCCESS") {
         throw new XRPLTxError(cdResponse);
       }
 

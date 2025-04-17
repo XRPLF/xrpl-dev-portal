@@ -22,6 +22,7 @@ export async function lookUpCredentials(client, issuer, subject, accepted = "bot
     command: "account_objects",
     account,
     type: "credential",
+    ledger_index: "validated",
   };
 
   // Fetch first page

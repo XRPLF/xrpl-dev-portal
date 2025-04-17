@@ -10,6 +10,15 @@ _(Requires the Credentials amendment. {% not-enabled /%})_
 This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Express](https://expressjs.com/) framework for Node.js.
 
 
+## Prerequisites
+
+To complete this tutorial, you should meet the following guidelines:
+
+- You have [Node.js](https://nodejs.org/en/download/) v18 or higher installed.
+- You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](./get-started.md).
+- You have some understanding of the XRP Ledger, its capabilities, and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/).
+
+
 ## Setup
 
 First, download the complete sample code for this tutorial from GitHub:
@@ -78,7 +87,7 @@ To request a credential, make a request such as the following:
 
 {% tab label="Summary" %}
 * HTTP method: `POST`
-* URL: `http://localhost:3000/credential`
+* URL: `http://localhost:3005/credential`
 * Headers:
     * `Content-Type: application/json`
 * Request Body:
@@ -95,7 +104,7 @@ To request a credential, make a request such as the following:
 
 {% tab label="cURL" %}
 ```sh
-curl -H "Content-Type: application/json" -X POST -d '{"subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG", "credential": "TestCredential", "documents": {"reason": "please"}}' http://localhost:3000/credential
+curl -H "Content-Type: application/json" -X POST -d '{"subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG", "credential": "TestCredential", "documents": {"reason": "please"}}' http://localhost:3005/credential
 ```
 {% /tab %}
 
@@ -111,7 +120,7 @@ The parameters of the JSON request body should be as follows:
 | `expiration` | String - ISO8601 Datetime | No | The time after which the credential expires, such as `2025-12-31T00:00:00Z`. |
 | `uri` | String | No | Optional URI data to store with the credential. This data will become public on the XRP Ledger. If provided, this must be a string with minimum length 1 and max length 256, consisting of only characters that are valid in URIs, which are numbers, letters, and the following special characters: `-._~:/?#[]@!$&'()*+,;=%`. Conventionally, it should link to a Verifiable Credential document as defined by the W3C. |
 
-This microservice immediately issues any credential that the user requests. A successful response from the API uses the HTTP status code `201 Created` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` or `ctid` value from the response to look up the transaction using an explorer such as [https://devnet.xrpl.org/](https://devnet.xrpl.org/).
+This microservice immediately issues any credential that the user requests. A successful response from the API uses the HTTP status code `201 Created` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` value from the response to look up the transaction using an explorer such as [https://devnet.xrpl.org/](https://devnet.xrpl.org/).
 
 {% admonition type="warning" name="Differences from Production" %}For a real credential issuer, you would probably check the credential type and only issue specific types of credentials, or maybe even just one type. <br><br> If checking the user's documents requires human intervention or takes longer than the amount of time an API request should wait to respond, you would need to store credential requests to some kind of storage, like a SQL database. You might also want to add a separate method for admins (or automated processes) to reject or issue the credential after checking the documents.{% /admonition %}
 
@@ -123,13 +132,13 @@ To show a list of credentials issued by the issuing account, make the following 
 
 {% tab label="Summary" %}
 * HTTP method: `GET`
-* URL: `http://localhost:3000/admin/credential`
+* URL: `http://localhost:3005/admin/credential`
 * Query parameters (optional): Use `?accepted=yes` to filter results to only credentials that the subject has accepted, or `?accepted=no` for credentials the user has not accepted.
 {% /tab %}
 
 {% tab label="cURL" %}
 ```sh
-curl http://localhost:3000/admin/credential
+curl http://localhost:3005/admin/credential
 ```
 {% /tab %}
 
@@ -183,7 +192,7 @@ To revoke an issued credential, make a request such as the following:
 
 {% tab label="Summary" %}
 * HTTP method: `DELETE`
-* URL: `http://localhost:3000/admin/credential`
+* URL: `http://localhost:3005/admin/credential`
 * Headers:
     * `Content-Type: application/json`
 * Request Body:
@@ -197,7 +206,7 @@ To revoke an issued credential, make a request such as the following:
 
 {% tab label="cURL" %}
 ```sh
-curl -H "Content-Type: application/json" -X DELETE -d '{"subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG", "credential": "TestCredential"}' http://localhost:3000/admin/credential
+curl -H "Content-Type: application/json" -X DELETE -d '{"subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG", "credential": "TestCredential"}' http://localhost:3005/admin/credential
 ```
 {% /tab %}
 
@@ -210,7 +219,7 @@ The parameters of the JSON request body should be as follows:
 | `subject` | String - Address | Yes | The XRPL classic address of the subject of the credential to revoke. |
 | `credential` | String | Yes | The type of credential to revoke. This must match a credential type previously issued. |
 
-A successful response from the API uses the HTTP status code `200 OK` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` or `ctid` value from the response to look up the transaction using an explorer.
+A successful response from the API uses the HTTP status code `200 OK` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` value from the response to look up the transaction using an explorer.
 
 ## Code Walkthrough
 
@@ -223,7 +232,6 @@ The code for this tutorial is divided among the following files:
 | `errors.js` | Custom error classes that standardize how the server reports validation errors and XRPL transaction failures. |
 | `issuer_service.js` | Defines the microservice as an Express app, including API methods and error handling. |
 | `look_up_credentials.js` | A helper function for looking up Credentials tied to an account, including pagination and filtering, used by both the credential issuer and holder. |
-| `decode_hex.js` | A helper function for decoding hexadecimal into human-readable strings, used by both the credential issuer and holder. |
 
 ### accept_credential.js
 
@@ -305,12 +313,6 @@ This code performs [pagination using markers](../../../references/http-websocket
 
 {% code-snippet file="/_code-samples/issue-credentials/js/look_up_credentials.js" language="js" /%}
 
-### decode_hex.js
-
-This file implements conversion of hex strings to human-readable text using ASCII, where possible. If the hex can't be decoded, it returns the original text prefaced with `(BIN) ` as a graceful fallback instead of throwing an error. This is important when reading data from the XRP Ledger because other users and tools can create Credentials with arbitrary binary data which might not decode to actual text at all. Even though the microservice from this tutorial only creates Credentials that use a restricted subset of ASCII characters, it might need to read ledger data that was created with different tools and different rules. You might even want to put more restrictions or checks in place depending on how you use the data; for example, if you output the results to a webpage you should make sure to escape or strip HTML tags to avoid visual glitches or cross-site-scripting attacks.
-
-{% code-snippet file="/_code-samples/issue-credentials/js/decode_hex.js" language="js" /%}
-
 ### credential.js
 
 This file defines a set of helper functions that validate credential related input, verify request data, and convert between the issuer microservice's simplified Credential format and the XRP Ledger object representation. It throws typed errors on invalid input.
@@ -329,7 +331,7 @@ The function `validateCredentialRequest(...)` checks that the user input meets v
 
 The `credentialFromXrpl(...)` function converts an XRPL ledger entry into a usable credential object (for example, converting the credential field from hexadecimal to a native string). The API methods that read data from the XRP Ledger use this function so that their output is formatted the same way as user input in the other API methods.
 
-{% code-snippet file="/_code-samples/issue-credentials/js/credential.js"  from="// Convert an XRPL ledger" before="Convert to an object" language="js" /%}
+{% code-snippet file="/_code-samples/issue-credentials/js/credential.js"  from="// Convert an XRPL ledger" before="// Convert to an object" language="js" /%}
 
 The `credentialToXrpl(...)` function returns an object which is formatted for submitting to the XRP Ledger:
 
