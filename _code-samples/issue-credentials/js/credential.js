@@ -37,7 +37,7 @@ export function validateCredentialRequest({ subject, credential, uri, expiration
      * Checks if the specified credential type is one that this service issues.
      * XRPL credential types can be any binary data; this service issues
      * any credential that can be encoded from the following ASCII chars:
-     * alphanumeric characters, underscore, period, and dash. (min length 1, max 64)
+     * alphanumeric characters, underscore, period, and dash. (min length 1, max 128)
      *
      * You might want to further limit the credential types, depending on your
      * use case; for example, you might only issue one specific credential type.
