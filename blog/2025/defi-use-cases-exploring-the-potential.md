@@ -2,7 +2,7 @@
 category: 2025
 date: 2025-04-18
 seo:
-    description: What is DeFi used for and how is it reshaping industries? Explore the key DeFi use cases that are driving the future of finance.
+    description: What is DeFi used for, and how is it reshaping industries? Explore the key DeFi use cases that are driving the future of finance.
 labels:
     - Development
 markdown:
@@ -28,15 +28,15 @@ Whether it’s programmable financial transactions that automate processes with 
 
 One of the most widely used applications of DeFi protocols is decentralized lending and borrowing. Unlike traditional finance, where banks determine interest rates and creditworthiness, DeFi enables users to borrow funds instantly, using crypto assets as collateral. 
 
-Users enjoy the ability to lend digital assets and earn interest without involving intermediaries. For lenders, the use of overcollateralized loans provides security adding an extra layer of protection for lenders, minimizing their risk in case of default.
+Users enjoy the ability to lend digital assets and earn interest without involving intermediaries. For lenders, the use of over-collateralized loans provides security, adding an extra layer of protection for lenders and minimizing their risk in case of default.
 
 The upcoming XRP Ledger native lending protocol will see these opportunities come to fruition for users. The [XLS-66d](https://github.com/XRPLF/XRPL-Standards/pull/240) specification would introduce the XRP Ledger-native Lending Protocol, which facilitates straightforward, on-chain, uncollateralized fixed-term loans with pre-set interest terms. Loan liquidity is sourced from pooled funds, while the design relies on off-chain underwriting and risk management to assess borrowers’ creditworthiness. In cases of loan default, the First-Loss Capital protection scheme absorbs a portion of losses to protect Vault Depositors. 
 
-The Lending Protocol is represented on the ledger by a LoanBroker entry, created, owned, and managed by the same account as the VaultOwner. Future updates may allow for greater independence and flexibility by decoupling Vault and Lending Protocol components.
+The Lending Protocol is represented on the ledger by a LoanBroker entry created, owned, and managed by the same account as the VaultOwner. Future updates may allow for greater independence and flexibility by decoupling Vault and Lending Protocol components.
 
 ### Yield Farming
 
-Yield farming, or liquidity farming, is a DeFi strategy where cryptocurrency holders earn passive income by providing liquidity to DeFi protocols. Users lock up their assets in liquidity pools, forming trading pairs, and receive liquidity provider (LP) tokens in return. These LP tokens can be staked or deposited into other protocols to earn additional rewards, such as transaction fees and governance tokens. Yield farming carries risks, including impermanent loss and smart contract vulnerabilities, requiring participants to conduct thorough research before engaging in this potentially lucrative but risky activity.
+Yield farming, or liquidity farming, is a DeFi strategy where cryptocurrency holders earn passive income by providing liquidity to DeFi protocols. Users lock up their assets in liquidity pools, forming trading pairs, and receive liquidity provider (LP) tokens in return. These LP tokens can be staked or deposited into other protocols to earn additional rewards such as transaction fees and governance tokens. Yield farming carries risks, including impermanent loss and smart contract vulnerabilities, requiring participants to conduct thorough research before engaging in this potentially lucrative but risky activity.
 
 Established protocols like Yearn.Finance, Balancer, and Curve optimize yield farming strategies for users seeking returns. More is already on the way for the XRPL too! The lending portion of the earlier mentioned XRPL-native [Lending Protocol spec](https://github.com/XRPLF/XRPL-Standards/discussions/190) is built on top of another specification, which brings a [single asset vault](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065d-single-asset-vault) to the XRP Ledger. This will unlock further use cases beyond lending in the future - such as yield farming, escrow, and more!
 
@@ -62,7 +62,7 @@ Ripple envisions a future where regulated, enterprise-grade stablecoins, such as
 
 The DeFi space is extending beyond crypto into real-world assets (RWAs), enabling the fractionalization and tokenization of traditional assets such as treasuries, money market funds, real estate and stocks and bonds.
 
-Creating a token on the XRPL is incredibly simple, tokens are immediately available for trading on its decentralized exchange (DEX) and there is no need for specialized programming languages or complex [smart contracts](https://xrpl.org/docs/use-cases/payments/smart-contracts-uc). The built-in DEX and auto-bridging feature simplify onchain trading, and transactions settle in 3–5 seconds at fractions of a cent.
+Creating a token on the XRPL is incredibly simple. Tokens are immediately available for trading on its decentralized exchange (DEX) and there is no need for specialized programming languages or complex [smart contracts](https://xrpl.org/docs/use-cases/payments/smart-contracts-uc). The built-in DEX and auto-bridging feature simplify onchain trading, and transactions settle in 3–5 seconds at fractions of a cent.
 
 There has already been encouraging movement with tokenized treasuries and money market funds, which are quickly gaining traction, as evidenced by Archax’s use of the XRPL to tokenize part of abrdn’s £3.8 billion US Dollar Liquidity Fund (Lux). These low-risk investment vehicles show promise for higher yields than stablecoins, allowing investors to maximize returns while minimizing risk in their portfolios.
 
