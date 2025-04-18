@@ -7,6 +7,7 @@ labels:
 markdown:
     editPage:
         hide: true
+template: '../../@theme/templates/blogpost'
 ---
 # Introducing XRP Ledger version 2.0.0
 
