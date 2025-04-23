@@ -30,12 +30,11 @@ async function verifyCredential(client, issuer, subject, credentialType, binary=
    * as of the most recently validated ledger.
    * Parameters:
    *  client - Client for interacting with rippled servers.
-   *  issuer - Address of the credential issuer, in base58
-   *  subject - Address of the credential holder/subject, in base58
+   *  issuer - Address of the credential issuer, in base58.
+   *  subject - Address of the credential holder/subject, in base58.
    *  credentialType - Credential type to check for as a string,
    *                   which will be encoded as UTF-8 (1-128 bytes long).
    *  binary - Specifies that the credential type is provided in hexadecimal format.
-   *  verbose - If true, print details to stdout during lookup.
    * You must provide the credential_type as input.
    * Returns True if the account holds the specified, valid credential.
    * Returns False if the credential is missing, expired, or not accepted.
@@ -81,7 +80,7 @@ async function verifyCredential(client, issuer, subject, credentialType, binary=
       logger.info("Credential was not found");
       return false;
     } else {
-      //Other errors, for example invalidly-specified addresses.
+      // Other errors, for example invalidly pecified addresses.
       throw new XRPLLookupError(xrplResponse);
     }
   }
@@ -129,7 +128,7 @@ async function verifyCredential(client, issuer, subject, credentialType, binary=
 
 // Commandline usage -----------------------------------------------------------
 async function main() {
-  // JSON-RPC URLs of public servers
+  // Websocket URLs of public servers
   const NETWORKS = {
     devnet: "wss://s.devnet.rippletest.net:51233",
     testnet: "wss://s.altnet.rippletest.net:51233",
