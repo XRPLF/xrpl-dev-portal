@@ -13,6 +13,6 @@
     "dependencies": {
         "commander": "^13.1.0",
         "winston": "^3.17.0",
-        "xrpl": "^4.2.0"
+        "xrpl": "^4.2.5"
     }
 }
