@@ -306,10 +306,10 @@ However, the amendment was added to `rippled` v0.60.0 before implementation was 
 ### DeepFreeze
 [DeepFreeze]: #deepfreeze
 
-| Amendment    | DeletableAccounts |
+| Amendment    | DeepFreeze |
 |:-------------|:------------------|
 | Amendment ID | DAF3A6EB04FA5DC51E8E4F23E9B7022B693EFA636F23F22664746C77B5786B23 |
-| Status       | Enabled |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
