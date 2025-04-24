@@ -20,49 +20,48 @@ This example shows how to:
 3. Cancel an escrow payment and return the XRP to the sending account.
 
 
-[![Escrow Tester Form](/docs/img/quickstart-escrow1.png)](/docs/img/quickstart-escrow1.png)
+[![Time-based Escrow Form](/docs/img/mt-time-escrow-1-empty-form.png)](/docs/img/mt-time-escrow-1-empty-form.png)
 
 ## Prerequisites
 
-Download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/).
+Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 ## Usage
 
 To get test accounts:
 
-1. Open `8.escrow.html` in a browser
-2. Choose **Testnet** or **Devnet**.
-3. Get test accounts.
-    1. If you have existing account seeds
-        1. Paste account seeds in the **Seeds** field.
-        2. Click **Get Accounts from Seeds**.
-    2. If you do not have account seeds:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
+1. Open `create-time-based-escrows.html` in a browser
+2. Get test accounts.
+    1. If you copied the gathered information from another tutorial:
+        1. Paste the gathered information to the **Result** field.
+        2. Click **Distribute Account Info**.
+    2. If you have an existing account seed:
+        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+    2. If you do not have existing accounts:
+        1. Click **Get New Account 1**.
+        2. Click **Get New Account 2**.
 
-[![Escrow Tester with Account Information](/docs/img/quickstart-escrow2.png)](/docs/img/quickstart-escrow2.png)
+[![Escrow Tester with Account Information](/docs/img/mt-time-escrow-2-form-with-accounts.png)](/docs/img/mt-time-escrow-2-form-with-accounts.png)
 
 ## Create Escrow
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/L-mSItlK36M?si=bltVKY7AtTnG0ucL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
 
 You can create a time-based escrow with a minimum time to finish the escrow and a cancel time after which the funds in escrow are no longer available to the recipient. This is a test harness: while a practical scenario might express time in days or weeks, this form lets you set the finish and cancel times in seconds so that you can quickly run through a variety of scenarios. (There are 86,400 seconds in a day, if you want to play with longer term escrows.)
 
 To create a time-based escrow:
 
-1. Enter an **Amount** to transfer.
-2. Copy the **Operational Account** value.
-3. Paste it in the **Destination Account** field.
-4. Set the **Escrow Finish (seconds)** value. For example, enter _10_.
-5. Set the **Escrow Cancel (seconds)** value. For example, enter _120_.
-6. Click **Create Escrow**.
+1. Enter an **Amount** to transfer. For example, _10_.
+2. Enter the **Destination**. (For example, the Account 2 address.)
+4. Set the **Escrow Finish Time** value, in seconds. For example, enter _10_.
+5. Set the **Escrow Cancel Time** value, in seconds. For example, enter _120_.
+6. Click **Create Time-based Escrow**.
 7. Copy the _Sequence Number_ of the escrow called out in the **Standby Result** field.
 
-The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost. When you create an escrow, capture and save the **Sequence Number** so that you can use it to finish the escrow transaction.
+The escrow is created on the XRP Ledger instance, reserving 10 XRP plus the transaction cost. When you create an escrow, capture and save the **Sequence Number** so that you can use it to finish the escrow transaction.
 
-[![Completed Escrow Transaction](/docs/img/quickstart-escrow3.png)](/docs/img/quickstart-escrow3.png)
+The escrow finish and cancel times are expressed in seconds here to let you experiment with scenarios where the escrows are outside the time constraints. In practice, escrow times might be expressed in days, weeks, months, or years.
+
+[![Completed Escrow Transaction](/docs/img/mt-time-escrow-3-create-escrow.png)](/docs/img/mt-time-escrow-3-create-escrow.png)
 
 ## Finish Escrow
 
@@ -71,11 +70,12 @@ The recipient of the XRP held in escrow can finish the transaction any time with
 To finish a time-based escrow:
 
 1. Paste the sequence number in the Operational account **Escrow Sequence Number** field.
-2. Click **Finish Escrow**.
+2. Copy and paste the address that created the escrow in the **Escrow Owner** field.
+2. Click **Finish Time-based Escrow**.
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
-[![Completed Escrow Transaction](/docs/img/quickstart-escrow4.png)](/docs/img/quickstart-escrow4.png)
+[![Completed Escrow Transaction](/docs/img/mt-time-escrow-4-fulfill-escrow.png)](/docs/img/mt-time-escrow-4-fulfill-escrow.png)
 
 ## Get Escrows
 
@@ -83,9 +83,9 @@ Click **Get Escrows** for either the Standby account or the Operational account 
 
 For the purposes of this tutorial, follow the steps in [Create Escrow](#create-escrow), above, to create a new escrow transaction, perhaps setting **Escrow Cancel (seconds)** field to _600_ seconds to give you extra time to explore. Remember to capture the _Sequence Number_ from the transaction results.
 
-Click **Get Escrows** for both the Standby and the Operational account. The `account_info` request returns the same `account_object` for both accounts, demonstrating the link between the accounts created by the escrow transaction.
+Click **Get Escrows**.
 
-[![Get Escrows results](/docs/img/quickstart-escrow5.png)](/docs/img/quickstart-escrow5.png)
+[![Get Escrows results](/docs/img/mt-time-escrow-5-get-escrows.png)](/docs/img/mt-time-escrow-5-get-escrows.png)
 
 
 ## Cancel Escrow
@@ -96,26 +96,26 @@ You can wait the allotted time for the escrow you created in the previous step, 
 
 To cancel an expired escrow:
 
-1. Enter the sequence number in the Standby **Escrow Sequence Number** field.
+1. Enter the sequence number in the **Escrow Sequence Number** field.
+2. Enter the address of the account that created the escrow in the **Escrow Owner** field.
 2. Click **Cancel Escrow**.
 
-The funds are returned to the Standby account, less the initial transaction fee.
+The funds are returned to the owner account, less the initial transaction fee.
 
-[![Cancel Escrow results](/docs/img/quickstart-escrow6.png)](/docs/img/quickstart-escrow6.png)
+[![Cancel Escrow results](/docs/img/mt-time-escrow-6-cancel-escrow.png)](/docs/img/mt-time-escrow-6-cancel-escrow.png)
 
 ## Oh No! I Forgot to Save the Sequence Number!
 
 If you forget to save the sequence number, you can find it in the escrow transaction record.
 
-1. Create a new escrow as described in [Create Escrow](#create-escrow), above.
+1. If needed, create a new escrow as described in [Create Escrow](#create-escrow), above.
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnID_ value from the results.
-   ![Transaction ID in Get Escrows results](/docs/img/quickstart-escrow7.png)
-4. Paste the _PreviousTxnID_ in the **Transaction to Look Up** field.
-   ![Transaction to Look Up field](/docs/img/quickstart-escrow8.png)
+   [![Previous Transaction ID in Get Escrows results](/docs/img/mt-conditional-escrow-6-get-escrows.png)](/docs/img/mt-conditional-escrow-6-get-escrows.png)
+4. Paste the _PreviousTxnID_ in the **Transaction** field.
 5. Click **Get Transaction**.
-6. Locate the _Sequence_ value in the results.
-   ![Sequence number in results](/docs/img/quickstart-escrow9.png)
+6. Locate the _ModifiedNode.PreviousFields.Sequence_ value in the results.
+   [![Sequence number in results](/docs/img/mt-conditional-escrow-7-sequence-value.png)](/docs/img/mt-conditional-escrow-7-sequence-value.png)
 
 # Code Walkthrough
 
@@ -162,7 +162,7 @@ Return the result.
 ### Create Time-based Escrow
 
 ```javascript
-async function createTimeEscrow() {
+async function createTimeBasedEscrow() {
 ```
 
 Instantiate two new date objects, then set the dates to the current date plus the set number of seconds for the finish and cancel dates.
@@ -174,49 +174,40 @@ Instantiate two new date objects, then set the dates to the current date plus th
   escrow_cancel_date = addSeconds(parseInt(standbyEscrowCancelDateField.value))
 ```
 
-Connect to the ledger.
+Connect to the ledger and get the account wallet.
 
 ```javascript
-  results  = "Connecting to the selected ledger.\n"
-  standbyResultField.value = results
-  let net = getNet()
-  results = "Connecting to " + net + "....\n"
+   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  results  += "Connected. Creating time-based escrow.\n"
-  standbyResultField.value = results
+  let results  = `Connected to ${net}.\nCreating time-based escrow.\n`
+  resultField.value = results
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
-Get the wallet information based on the account seed values.
+Define the transaction object.
 
 ```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const sendAmount = standbyAmountField.value
-  results += "\nstandby_wallet.address: = " + standby_wallet.address
-  standbyResultField.value = results
-```
-
-Define the `EscrowCreate` transaction, automatically filling values in common fields.
-
-```javascript
+  const sendAmount = amountField.value
+  resultField.value = results
   const escrowTx = await client.autofill({
     "TransactionType": "EscrowCreate",
-    "Account": standby_wallet.address,
+    "Account": wallet.address,
     "Amount": xrpl.xrpToDrops(sendAmount),
-    "Destination": standbyDestinationField.value,
+    "Destination": destinationField.value,
     "FinishAfter": escrow_finish_date,
     "CancelAfter": escrow_cancel_date
   })
-```
 
-Sign the escrow transaction definition.
+  ```
+
+  Sign the prepared transaction object.
 
 ```javascript
-  const signed = standby_wallet.sign(escrowTx)
+  const signed = wallet.sign(escrowTx)
 ```
 
-Submit the transaction.
+Submit the signed transaction object and wait for the results.
 
 ```javascript
   const tx = await client.submitAndWait(signed.tx_blob)
@@ -225,20 +216,18 @@ Submit the transaction.
 Report the results.
 
 ```javascript
-  results += "\nSequence Number (Save!): " + JSON.stringify(tx.result.Sequence)
-  results += "\n\nBalance changes: " + 
-  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  standbyResultField.value = results
+  results += "\nSuccess! Save this sequence number: " + tx.result.tx_json.Sequence 
+  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+  resultField.value = results
 ```
 
 Disconnect from the XRP Ledger.
 
 ```javascript
   client.disconnect()
-} // End of createTimeEscrow()
+} // End of createTimeBasedEscrow()
 ```
+
 
 ### Finish Time-based Escrow
 
@@ -246,25 +235,17 @@ Disconnect from the XRP Ledger.
 async function finishEscrow() {
 ```
 
-Connect to the XRP Ledger and get the account wallets.
+Connect to the XRP Ledger and get the account wallet.
 
 ```javascript
-  results  = "Connecting to the selected ledger.\n"
-  operationalResultField.value = results
   let net = getNet()
-  results = 'Connecting to ' + getNet() + '....'
   const client = new xrpl.Client(net)
   await client.connect()
-
-  results  += "\nConnected. Finishing escrow.\n"
-  operationalResultField.value = results
-
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const sendAmount = operationalAmountField.value
-  
-  results += "\noperational_wallet.address: = " + operational_wallet.address
-  operationalResultField.value = results
+  let results = `Connected to ${net}. Finishing escrow....`
+  resultField.value = results
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+  results += "\nwallet.address: = " + wallet.address
+  resultField.value = results
 ```
 
 Define the transaction. The _Owner_ is the account that created the escrow. The _OfferSequence_ is the sequence number of the escrow transaction. Automatically fill in the common fields for the transaction.
@@ -272,22 +253,21 @@ Define the transaction. The _Owner_ is the account that created the escrow. The 
 ```javascript
   const prepared = await client.autofill({
     "TransactionType": "EscrowFinish",
-    "Account": operationalAccountField.value,
-    "Owner": standbyAccountField.value,
-    "OfferSequence": parseInt(operationalEscrowSequenceField.value)
+    "Account": accountAddressField.value,
+    "Owner": escrowOwnerField.value,
+    "OfferSequence": parseInt(escrowSequenceNumberField.value)
   })
 ```
 
 Sign the transaction definition.
 
 ```javascript
-  const signed = operational_wallet.sign(prepared)
+  const signed = wallet.sign(prepared)
 ```
 
 Submit the signed transaction to the XRP ledger.
 
 ```javascript
-
   const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
@@ -296,10 +276,13 @@ Report the results.
 ```javascript
   results  += "\nBalance changes: " + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  operationalResultField.value = results
+  resultField.value = results
+```
 
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+Update the **XRP Balance** field.
+
+```javascript
+  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
 ```
 
 Disconnect from the XRP Ledger.
@@ -309,12 +292,12 @@ Disconnect from the XRP Ledger.
 } // End of finishEscrow()
 ```
 
-### Get Standby Escrows
+### Get  Escrows
 
-Get the escrows associated with the Standby account.
+Get the escrows created by or destined to the current account.
 
 ```javascript
-async function getStandbyEscrows() {
+async function getEscrows() {
 ```
 
 Connect to the network. The information you are looking for is public information, so there is no need to instantiate your wallet.
@@ -322,14 +305,10 @@ Connect to the network. The information you are looking for is public informatio
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-  
+  resultField.value = results
   await client.connect()   
-  results += '\nConnected.'
-  standbyResultField.value = results
-
-  results= "\nGetting standby account escrows...\n"
+  results += `\nConnected to ${net}. Getting account escrows.\n`
+  resultField.value = results
 ```
 
 Create the `account_objects` request. Specify that you want objects of the type _escrow_.
@@ -338,7 +317,7 @@ Create the `account_objects` request. Specify that you want objects of the type 
   const escrow_objects = await client.request({
     "id": 5,
     "command": "account_objects",
-    "account": standbyAccountField.value,
+    "account": accountAddressField.value,
     "ledger_index": "validated",
     "type": "escrow"
   })
@@ -348,63 +327,14 @@ Report the results.
 
 ```javascript
   results += JSON.stringify(escrow_objects.result, null, 2)
-  standbyResultField.value = results
+  resultField.value = results
 ```
 
 Disconnect from the XRP Ledger
 
 ```javascript
   client.disconnect()
-} // End of getStandbyEscrows()
-```
-
-### Get Operational Escrows
-
-This function is the same as `getStandbyEscrows()`, but for the Operational account.
-
-```javascript
-async function getOperationalEscrows() {
-```
-
-Connect to the network. The information you are looking for is public information, so there is no need to instantiate your wallet.
-
-```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  operationalResultField.value = results
-  
-  await client.connect()   
-  results += '\nConnected.'
-  operationalResultField.value = results
-
-  results= "\nGetting operational account escrows...\n"
-```
-
-Create the `account_objects` request. Specify that you want objects of the type _escrow_.
-
-```javascript
-  const escrow_objects = await client.request({
-    "id": 5,
-    "command": "account_objects",
-    "account": operationalAccountField.value,
-    "ledger_index": "validated",
-    "type": "escrow"
-  })
-```
-
-Report the results.
-
-```javascript
-  results += JSON.stringify(escrow_objects.result, null, 2)
-  operationalResultField.value = results
-```
-
-Disconnect from the XRP Ledger instance.
-
-```javascript
-  client.disconnect()
-} // End of getOperationalEscrows()
+} // End of getEscrows()
 ```
 
 ### Get Transaction Info 
@@ -418,14 +348,9 @@ Connect to the XRP Ledger.
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  operationalResultField.value = results
-  
   await client.connect()   
-  results += '\nConnected.'
-  operationalResultField.value = results
-
-  results= "\nGetting transaction information...\n"
+  let results = `\nConnected to ${net}.\nGetting transaction information...\n`
+  resultField.value = results
 ```
   
 Prepare and send the transaction information request. The only required parameter is the transaction ID.
@@ -434,14 +359,14 @@ Prepare and send the transaction information request. The only required paramete
   const tx_info = await client.request({
     "id": 1,
     "command": "tx",
-    "transaction": operationalTransactionField.value,
+    "transaction": transactionField.value,
   })
 ```
 Report the results.
   
 ```javascript
   results += JSON.stringify(tx_info.result, null, 2)
-  operationalResultField.value = results
+  resultField.value = results
 ```
   
 Disconnect from the XRP Ledger instance.  
@@ -453,46 +378,37 @@ Disconnect from the XRP Ledger instance.
 
 ### Cancel Escrow
 
-Cancel an escrow after it passes the expiration date.
+Cancel an escrow after it passes the expiration date and time.
 
 ```javascript
 async function cancelEscrow() {
 ```
 
-Connect to the XRP Ledger instance.
+Connect to the XRP Ledger instance and get the account wallet.
 
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-  
-  await client.connect()   
-  results += '\nConnected.'
-  standbyResultField.value = results
+  await client.connect()
+  let results = `\nConnected to ${net}. Cancelling escrow....`
+  resultField.value = results
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
-Get the account wallets.
-
-```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-```
-
-Prepare the EscrowCancel transaction.
+Prepare the EscrowCancel transaction, passing the escrow owner and offer sequence values.
 
 ```javascript
   const prepared = await client.autofill({
     "TransactionType": "EscrowCancel",
-    "Account": standby_wallet.address,
-    "Owner": standbyAccountField.value,
-    "OfferSequence": parseInt(standbyEscrowSequenceNumberField.value)
+    "Account": wallet.address,
+    "Owner": escrowOwnerField.value,
+    "OfferSequence": parseInt(escrowSequenceNumberField.value)
   })
 ```
 
 Sign the transaction.
 ```javascript
-  const signed = standby_wallet.sign(prepared)
+  const signed = wallet.sign(prepared)
 ```
 
 Submit the transaction and wait for the response.
@@ -506,9 +422,9 @@ Report the results.
 ```javascript
   results  += "\nBalance changes: " + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  standbyResultField.value = results
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+  resultField.value = results
+  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+  ))
 ```
 
 Disconnect from the XRP Ledger instance.
@@ -518,312 +434,276 @@ Disconnect from the XRP Ledger instance.
 }
 ```
 
-## 8.escrow.html
+## create-time-escrow.html
 
 ```html
 <html>
-  <head>
-    <title>Time-based Escrow Test Harness</title>
+<head>
+    <title>Create a Time-based Escrow</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <style>
-       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
-       h1{font-weight: bold;}
-       input, button {padding: 6px;margin-bottom: 8px;}
-       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
-       td{vertical-align: middle;}
-    </style>
-    <script src='https://unpkg.com/xrpl@2.2.3'></script>
-    <script src='ripplex1-send-xrp.js'></script>
-    <script src='ripplex2-send-currency.js'></script>
-    <script src='ripplex8-escrow.js'></script>
-  </head>
-  
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
+    <script src="account-support.js"></script>
+    <script src='create-time-escrow.js'></script>
+    <script>
+        if (typeof module !== "undefined") {
+            const xrpl = require('xrpl')
+        }
+    </script>
+</head>
+
 <!-- ************************************************************** -->
 <!-- ********************** The Form ****************************** -->
 <!-- ************************************************************** -->
 
-  <body>
-    <h1>Time-based Escrow Test Harness</h1>
+<body>
+    <h1>Create a Time-based Escrow</h1>
     <form id="theForm">
-      Choose your ledger instance:  
-      &nbsp;&nbsp;
-      <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233" checked>
-      <label for="tn">Testnet</label>
-      &nbsp;&nbsp;
-      <input type="radio" id="dn" name="server"
-        value="wss://s.devnet.rippletest.net:51233">
-      <label for="dn">Devnet</label>
-      <br/><br/>
-      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
-      <br/>
-      <textarea id="seeds" cols="40" rows= "2"></textarea>
-      <br/><br/>
-      <table>
-        <tr valign="top">
-          <td>
-            <table>
-              <tr valign="top">
+        <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+            Choose your ledger instance:
+        </span>
+        &nbsp;&nbsp;
+        <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233" checked>
+        <label for="dn">Devnet</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233">
+        <label for="tn">Testnet</label>
+        <br /><br />
+        <table>
+            <tr>
                 <td>
-                <td>
-                  <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
-                  <table>
-                    <tr valign="top">
-                      <td align="right">
-                        Standby Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAccountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td align="right">
-                        XRP Balance
-                      </td>
-                      <td>
-                        <input type="text" id="standbyBalanceField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Amount
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAmountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Destination Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyDestinationField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Escrow Finish (seconds)
-                      </td>
-                      <td>
-                        <input type="text" id="standbyEscrowFinishDateField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Escrow Cancel (seconds)
-                      </td>
-                      <td>
-                        <input type="text" id="standbyEscrowCancelDateField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Escrow Sequence Number
-                      </td>
-                      <td>
-                        <input type="text" id="standbyEscrowSequenceNumberField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr valign="top">
-                      <td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
-                      <td>
-                        <input type="checkbox" id="standbyDefault" checked="true"/>
-                        <label for="standbyDefault">Allow Rippling</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Public Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPubKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Private Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPrivKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Seed
-                      </td>
-                      <td>
-                        <input type="text" id="standbySeedField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                  </table>
-                  <p align="left">
-                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
-                  </p>
-                </td>
+                    <button type="button" onClick="getNewAccount1()">Get New Account 1</button>
                 </td>
                 <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="sendXRP()">Send XRP &#62;</button>
-                        <br/><br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>       
-                        <br/>
-                        <button type="button" onClick="createTimeEscrow()">Create Time-based Escrow</button>
-                        <br/>
-                        <button type="button" onClick="getStandbyEscrows()">Get Escrows</button>
-                        <br/>
-                        <button type="button" onClick="cancelEscrow()">Cancel Escrow</button>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                    <button type="button" onClick="getAccountFromSeed1()">Get Account 1 From Seed</button>
                 </td>
-              </tr>
+                <td>
+                    <button type="button" onClick="getNewAccount2()">Get New Account 2</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed2()">Get Account 2 From Seed</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account."><label for="account1name">Account 1 Name</label>
+                        </span>
+                </td>
+                <td>
+                    <input type="text" id="account1name" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                        <label for="account2name">Account 2 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2name" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account1address">Account 1 Address</label>
+                    </span>
+                </td>
+                <td> 
+                    <input type="text" id="account1address" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account2address">Account 2 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2address" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account1seed">Account 1 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1seed" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account2seed">Account 2 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2seed" size="40"></input>
+                </td>
+            </tr>
             </table>
-          </td>
-          <td>
+            <hr />
             <table>
-              <tr>
-                <td>
-                <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
-                        <br/><br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br/>
-                        <button type="button" onClick="finishEscrow()">Finish Time-based Escrow</button>
-                        <br/>
-                        <button type="button" onClick="getOperationalEscrows()">Get Escrows</button>
-                        <br/>
-                        <button type="button" onClick="getTransaction()">Get Transaction</button>
-                      </td>
-                      <td valign="top" align="right">
-                        <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
-                        <table>
-                          <tr valign="top">
-                            <td align="right">
-                              Operational Account
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAccountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td align="right">
-                              XRP Balance
-                            </td>
-                            <td>
-                              <input type="text" id="operationalBalanceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Amount
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAmountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Destination
-                            </td>
-                            <td>
-                              <input type="text" id="operationalDestinationField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                          <tr>
-                            <td align="right">
-                              Escrow Sequence Number
-                            </td>
-                            <td>
-                              <input type="text" id="operationalEscrowSequenceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>                            <td align="right">
-                              Transaction to Look Up
-                            </td>
-                            <td>
-                              <input type="text" id="operationalTransactionField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                          <td>
-                            </td>
-                            <td align="right">
-                            <input type="checkbox" id="operationalDefault" checked="true"/>
-                              <label for="operationalDefault">Allow Rippling</label>
-                              <button type="button" onClick="configureAccount('operational',document.querySelector('#operationalDefault').checked)">Configure Account</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Public Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPubKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Private Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPrivKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Seed
-                            </td>
-                            <td>
-                              <input type="text" id="operationalSeedField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                        </table>
-                        <p align="right">
-                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
-                        </p>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Name of the currently selected account.">
+                        <label for="accountNameField">Account Name</label>
+                    </span>
                 </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+                <td>
+                    <input type="text" id="accountNameField" size="40" readonly></input>
+                    <input type="radio" id="account1" name="accounts" value="account1">
+                    <label for="account1">Account 1</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Address of the currently selected account.">
+                        <label for="accountAddressField">Account Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountAddressField" size="40" readonly></input>
+                    <input type="radio" id="account2" name="accounts" value="account2">
+                    <label for="account2">Account 2</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Seed of the currently selected account.">
+                        <label for="accountSeedField">Account Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountSeedField" size="40" readonly></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="XRP balance for the currently selected account.">
+                        <label for="xrpBalanceField">XRP Balance</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="xrpBalanceField" size="40" readonly></input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Amount of XRP to send.">
+                        <label for="amountField">Amount</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="amountField" size="40"></input>
+                </td>
+            </tr>
+           <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Destination account address where the escrow is sent.">
+                    <lable for="destinationField">Destination</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="destinationField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="createTimeBasedEscrow()">Create Time-based Escrow</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Escrow finish time, in seconds.">
+                    <lable for="escrowFinishTimeField">Escrow Finish Time</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowFinishTimeField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="getEscrows()">Get Escrows</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Escrow cancel time, in seconds.">
+                    <lable for="escrowCancelTimeField">Escrow Cancel Time</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowCancelTimeField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="finishTimeBasedEscrow()">Finish Time-based Escrow</button>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Escrow sequence number, used when finishing the escrow.">
+                    <lable for="escrowSequenceNumberField">Escrow Sequence Number</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowSequenceNumberField" size="40"></input>
+                    <br>
+                </td> 
+                <td>
+                    <button type="button" onClick="cancelEscrow()">Cancel Escrow</button>
+                </td>              
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Escrow owner, the account that created the escrow.">
+                    <lable for="escrowOwnerField">Escrow Owner</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowOwnerField" size="40"></input>
+                    <br>
+                </td> 
+                <td>
+                    <button type="button" onClick="getTransaction()">Get Transaction</button>
+                </td>              
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Transaction number, used with the Get Transaction button.">
+                    <lable for="transactionField">Transaction</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="transactionField" size="40"></input>
+                    <br>
+                </td> 
+                <td>
+                </td>              
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p align="right">
+                        <textarea id="resultField" cols="80" rows="20"></textarea>
+                    </p>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="gatherAccountInfo()">Gather Account Info</button><br/>
+                    <button type="button" onClick="distributeAccountInfo()">Distribute Account Info</button>
+                </td>
+            </tr>
+        </table>
     </form>
-  </body>
+</body>
+<script>
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'account1') {
+                populate1()
+            } else if (this.value === 'account2') {
+                populate2()
+            }
+        });
+    });
+</script>
 </html>
 ```
