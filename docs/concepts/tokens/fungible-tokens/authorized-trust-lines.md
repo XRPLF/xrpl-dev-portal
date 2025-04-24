@@ -13,7 +13,7 @@ The Authorized Trust Lines feature enables issuers to create tokens that can onl
 
 To use the Authorized Trust Lines feature, enable the **Require Auth** flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.
 
-You can authorize a trust line by sending a [TrustSet transaction][] from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization. (You can, however, [freeze](freezes.md) that trust line if you need to.)
+You can authorize a trust line by sending a [TrustSet transaction][] from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization (unless the authorized account deletes the trustline). (You can, however, [freeze](freezes.md) that trust line if you need to.)
 
 The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address.
 
