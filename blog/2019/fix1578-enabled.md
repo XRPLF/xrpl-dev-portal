@@ -2,7 +2,8 @@
 labels:
     - Amendments
 category: 2019
-date: 2019-03-23
+date: "2019-03-23"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

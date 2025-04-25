@@ -1,6 +1,7 @@
 ---
 category: 2025
-date: 2025-01-24
+date: "2025-01-24"
+template: '../../@theme/templates/blogpost'
 seo:
     description: Devnet is scheduled to reset on Monday, February 3, 2025 due to Clio databases nearing capacity. Learn more.
 labels:

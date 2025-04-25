@@ -1,6 +1,7 @@
 ---
 category: 2014
-date: 2014-11-19
+date: "2014-11-19"
+template: '../../@theme/templates/blogpost'
 labels:
     - Release Notes
 markdown:

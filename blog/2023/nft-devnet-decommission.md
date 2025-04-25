@@ -1,6 +1,7 @@
 ---
 category: 2023
-date: 2022-01-27
+date: "2022-01-27"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
 markdown:

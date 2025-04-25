@@ -1,6 +1,7 @@
 ---
 category: 2023
-date: 2023-10-06
+date: "2023-10-06"
+template: '../../@theme/templates/blogpost'
 labels:
     - Developer Reflections
 markdown:

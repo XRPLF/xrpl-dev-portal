@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-08-05
+date: "2024-08-05"
+template: '../../@theme/templates/blogpost'
 seo:
     title: XLS-30 - XRP Ledger Automated Market Maker
     description: The XLS-30 AMM amendment unlocks new liquidity and trading options on the XRP Ledger network. Explore how developers can integrate with AMM.

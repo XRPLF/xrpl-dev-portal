@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-07-08
+date: "2024-07-08"
+template: '../../@theme/templates/blogpost'
 labels:
     - Clio Release Notes
 markdown:

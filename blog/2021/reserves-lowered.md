@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-09-21
+date: "2021-09-21"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
 ---

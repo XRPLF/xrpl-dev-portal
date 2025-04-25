@@ -1,6 +1,7 @@
 ---
 category: 2020
-date: 2020-07-17
+date: "2020-07-17"
+template: '../../@theme/templates/blogpost'
 labels:
     - Developer Reflections
 markdown:

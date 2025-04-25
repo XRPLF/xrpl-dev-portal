@@ -1,5 +1,6 @@
 ---
-date: 2015-08-05
+date: "2015-08-05"
+template: '../../@theme/templates/blogpost'
 category: 2015
 labels:
     - Features

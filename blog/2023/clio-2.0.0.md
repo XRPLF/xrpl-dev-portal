@@ -1,6 +1,7 @@
 ---
 category: 2023
-date: 2023-10-31
+date: "2023-10-31"
+template: '../../@theme/templates/blogpost'
 labels:
     - Clio Release Notes
 markdown:

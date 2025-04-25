@@ -1,5 +1,6 @@
 ---
-date: 2014-10-22
+date: "2014-10-22"
+template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
     - Advisories

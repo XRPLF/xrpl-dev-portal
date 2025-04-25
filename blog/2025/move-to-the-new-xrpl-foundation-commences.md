@@ -1,6 +1,7 @@
 ---
 category: 2025
-date: 2025-02-19
+date: "2025-02-19"
+template: '../../@theme/templates/blogpost'
 seo:
     title: Move to the New Foundation Commences
     description: With the new XRPL Foundation now incorporated in France, the Founding Members are migrating assets from the previous entity. Learn about the Unique Node List (UNL) transition and necessary actions for community members.

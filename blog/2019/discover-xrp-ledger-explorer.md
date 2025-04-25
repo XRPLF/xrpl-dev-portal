@@ -2,7 +2,8 @@
 labels:
     - Features
 category: 2019
-date: 2019-07-03
+date: "2019-07-03"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

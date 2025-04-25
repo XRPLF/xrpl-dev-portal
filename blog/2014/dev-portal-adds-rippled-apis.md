@@ -1,6 +1,7 @@
 ---
 category: 2014
-date: 2014-08-01
+date: "2014-08-01"
+template: '../../@theme/templates/blogpost'
 labels:
     - Development
 markdown:

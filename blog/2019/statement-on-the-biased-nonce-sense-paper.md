@@ -2,7 +2,8 @@
 labels:
     - Security
 category: 2019
-date: 2019-01-14
+date: "2019-01-14"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

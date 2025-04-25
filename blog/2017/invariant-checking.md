@@ -2,7 +2,8 @@
 category: 2017
 labels:
     - Features
-date: 2017-07-19
+date: "2017-07-19"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

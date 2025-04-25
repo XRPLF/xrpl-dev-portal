@@ -1,5 +1,6 @@
 ---
-date: 2018-05-31
+date: "2018-05-31"
+template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
     - Release Notes

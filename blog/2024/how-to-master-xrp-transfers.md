@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-04-15
+date: "2024-04-15"
+template: '../../@theme/templates/blogpost'
 seo:
     title: How to Master XRP Transfers using Python
     description:  Discover how to create and manage accounts on the XRPL Testnet and master the art of transferring XRP using Python.

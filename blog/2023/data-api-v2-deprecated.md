@@ -1,6 +1,7 @@
 ---
 category: 2023
-date: 2023-10-05
+date: "2023-10-05"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
     - Data API

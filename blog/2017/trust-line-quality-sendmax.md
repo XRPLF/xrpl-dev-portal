@@ -1,5 +1,6 @@
 ---
-date: 2017-03-16
+date: "2017-03-16"
+template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
     - Security

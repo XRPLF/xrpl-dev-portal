@@ -1,5 +1,6 @@
 ---
-date: 2018-09-10
+date: "2018-09-10"
+template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
     - Release Notes

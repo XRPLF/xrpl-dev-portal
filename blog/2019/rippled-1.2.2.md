@@ -2,7 +2,8 @@
 labels:
     - Release Notes
 category: 2019
-date: 2019-03-06
+date: "2019-03-06"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true
