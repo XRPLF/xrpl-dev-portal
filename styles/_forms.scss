@@ -30,6 +30,13 @@
   z-index: 1100 !important;
 }
 
+.xrp-ledger-dev-portal {
+  .DocSearch-Modal {
+    top: 85px;
+    background-color: #232325;
+    box-shadow: none;
+  }
+}
 // Algolia Search results --------------------------------------------------
 html {
   // The extra specificity makes this override the default Algolia styles.
