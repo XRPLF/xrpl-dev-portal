@@ -23,6 +23,20 @@ responseHeaders:
   '/@l10n/es-ES/**':     
     - name: X-Robots-Tag
       value: noindex
+search:
+  engine: typesense
+  ai: 
+    hide: false
+    prompt: "How can I help you today?"
+metadataGlobs:
+  'docs/**':
+    redocly_category: Documentation
+  'blog/**':
+    redocly_category: Blog
+  'resources/**':
+    redocly_category: Resources    
+  'community/**':
+    redocly_category: Community    
 seo:
   siteUrl: https://xrpl.org/
 rbac:
@@ -61,8 +75,6 @@ links:
   - href: ./static/css/font-awesome.min.css
     rel: stylesheet
   - href: https://www.unpkg.com/@xrpl/ai-css/xrplai.css
-    rel: stylesheet
-  - href: https://cdn.jsdelivr.net/npm/@docsearch/css@3
     rel: stylesheet
 
 logo:
