@@ -2,7 +2,8 @@
 labels:
     - Features
 category: 2017
-date: 2017-10-02
+date: "2017-10-02"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

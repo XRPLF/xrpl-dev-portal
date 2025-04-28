@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-08-14
+date: "2024-08-14"
+template: '../../@theme/templates/blogpost'
 seo:
     title: Upcoming Testnet Reset Notification
     description: The Testnet reset was completed successfully on Monday, August 19, 2024 to improve stability and reduce the cost of running a Testnet node. Learn more.

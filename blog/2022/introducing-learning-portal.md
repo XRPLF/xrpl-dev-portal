@@ -1,6 +1,7 @@
 ---
 category: 2022
-date: 2022-10-03
+date: "2022-10-03"
+template: '../../@theme/templates/blogpost'
 labels:
     - Features
 markdown:

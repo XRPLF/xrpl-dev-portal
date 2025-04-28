@@ -2,7 +2,8 @@
 category: 2017
 labels:
     - Security
-date: 2017-01-12
+date: "2017-01-12"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

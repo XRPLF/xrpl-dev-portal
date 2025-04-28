@@ -1,6 +1,7 @@
 ---
 category: 2022
-date: 2022-02-08
+date: "2022-02-08"
+template: '../../@theme/templates/blogpost'
 labels:
     - rippled Release Notes
 markdown:

@@ -1,6 +1,7 @@
 ---
 category: 2020
-date: 2021-02-07
+date: "2021-02-07"
+template: '../../@theme/templates/blogpost'
 labels:
     - Features
 markdown:

@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-08-26
+date: "2021-08-26"
+template: '../../@theme/templates/blogpost'
 labels:
     - xrpl.js Release Notes
 ---

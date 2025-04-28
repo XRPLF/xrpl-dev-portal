@@ -1,6 +1,7 @@
 ---
 category: 2014
-date: 2014-07-07
+date: "2014-07-07"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
 markdown:

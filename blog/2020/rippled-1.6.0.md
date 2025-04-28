@@ -1,6 +1,7 @@
 ---
 category: 2020
-date: 2020-08-19
+date: "2020-08-19"
+template: '../../@theme/templates/blogpost'
 labels:
     - rippled Release Notes
 markdown:

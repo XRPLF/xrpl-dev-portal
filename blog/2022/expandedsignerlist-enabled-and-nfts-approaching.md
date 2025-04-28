@@ -1,6 +1,7 @@
 ---
 category: 2022
-date: 2022-10-13
+date: "2022-10-13"
+template: '../../@theme/templates/blogpost'
 labels:
     - Amendments
 markdown:

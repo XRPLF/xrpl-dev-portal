@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-04-14
+date: "2021-04-14"
+template: '../../@theme/templates/blogpost'
 labels:
     - Development
 author: Javier Romero

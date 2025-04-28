@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-04-06
+date: "2021-04-06"
+template: '../../@theme/templates/blogpost'
 labels:
     - xrpl-py Release Notes
 author: Team RippleX

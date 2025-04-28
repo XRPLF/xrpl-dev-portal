@@ -1,5 +1,6 @@
 ---
-date: 2015-09-02
+date: "2015-09-02"
+template: '../../@theme/templates/blogpost'
 category: 2015
 labels:
     - Advisories

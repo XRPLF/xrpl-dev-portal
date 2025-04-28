@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-03-14
+date: "2024-03-14"
+template: '../../@theme/templates/blogpost'
 labels:
     - Developer Reflections
 markdown:

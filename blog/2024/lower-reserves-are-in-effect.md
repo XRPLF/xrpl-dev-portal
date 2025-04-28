@@ -3,7 +3,8 @@ category: 2024
 markdown:
     editPage:
         hide: true
-date: 2024-12-12
+date: "2024-12-12"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
 ---

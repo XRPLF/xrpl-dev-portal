@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-05-20
+date: "2021-05-20"
+template: '../../@theme/templates/blogpost'
 labels:
     - xrpl4j Release Notes
 ---

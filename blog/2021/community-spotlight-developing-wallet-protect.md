@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2020-03-10
+date: "2020-03-10"
+template: '../../@theme/templates/blogpost'
 labels:
     - Developer Reflections
 ---

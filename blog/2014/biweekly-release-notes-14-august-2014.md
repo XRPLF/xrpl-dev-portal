@@ -1,5 +1,6 @@
 ---
-date: 2014-08-14
+date: "2014-08-14"
+template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
     - Release Notes

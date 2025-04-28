@@ -1,5 +1,6 @@
 ---
-date: 2018-01-12
+date: "2018-01-12"
+template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
     - Advisories

@@ -1,6 +1,7 @@
 ---
 category: 2023
-date: 2023-09-11
+date: "2023-09-11"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
 markdown:

@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-12-02
+date: "2021-12-02"
+template: '../../@theme/templates/blogpost'
 labels:
     - rippled Release Notes
 ---

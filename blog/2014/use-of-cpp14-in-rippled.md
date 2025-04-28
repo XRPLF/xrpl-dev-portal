@@ -1,5 +1,6 @@
 ---
-date: 2014-08-19
+date: "2014-08-19"
+template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
     - Development

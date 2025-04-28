@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-07-22
+date: "2024-07-22"
+template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing Clio version 2.2.2
     description: Version 2.2.2 of Clio, the XRP Ledger API server optimized for HTTP and WebSocket calls, is now available. Learn more about this update and bug fixes.

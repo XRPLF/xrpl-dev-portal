@@ -1,6 +1,7 @@
 ---
 category: 2020
-date: 2020-04-10
+date: "2020-04-10"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
 markdown:

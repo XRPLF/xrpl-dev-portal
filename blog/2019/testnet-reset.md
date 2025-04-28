@@ -1,7 +1,8 @@
 ---
 labels:
     - Advisories
-date: 2019-08-30
+date: "2019-08-30"
+template: '../../@theme/templates/blogpost'
 category: 2019
 markdown:
     editPage:

@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-09-03
+date: "2024-09-03"
+template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 2.2.2
     description: rippled version 2.2.2 is now available, addressing a Mainnet issue that caused validators to stall during consensus. Learn more about this release.

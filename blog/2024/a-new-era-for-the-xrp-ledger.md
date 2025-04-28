@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-11-26
+date: "2024-11-26"
+template: '../../@theme/templates/blogpost'
 seo:
     title: The Evolution of the XRPL Foundation - A New Era for XRPL
     description: Discover the latest updates on the new XRPL Foundation’s incorporation, objectives, governance, and structure.

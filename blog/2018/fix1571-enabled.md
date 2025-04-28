@@ -1,5 +1,6 @@
 ---
-date: 2018-06-20
+date: "2018-06-20"
+template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
     - Amendments

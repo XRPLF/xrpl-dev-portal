@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-08-10
+date: "2024-08-10"
+template: '../../@theme/templates/blogpost'
 seo:
     title: Evolving the XRP Ledger Foundation
     description: Discover the latest in the XRPL community, including key organizations' plans to establish a more effective, inclusive, and visible XRPL Foundation with democratic governance.
