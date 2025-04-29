@@ -304,4 +304,8 @@ The response follows the [standard format][], with a successful result containin
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
+{% admonition type="info" name="Note" %}
+Due to a discrepancy in behavior between the Clio server and `rippled`, which was fixed in [Clio version 2.3.1](../../../../../blog/2025/clio-2.3.1.md#bug-fixes), the Clio server returns the `invalidParams` error in API v2 instead of `invalidHotWallet` when the `hotwallet` field is invalid. API v1 returns the `invalidHotWallet` error.
+{% /admonition %}
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
