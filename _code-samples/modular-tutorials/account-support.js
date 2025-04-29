@@ -156,3 +156,14 @@ async function getTokenBalance() {
   client.disconnect()
 } // End of getTokenBalance()
 
+// *******************************************************
+// **************** Scroll Results ***********************
+// *******************************************************
+let results
+
+async function updateResults() {
+  resultField.value += results;
+  resultField.scrollTop = resultField.scrollHeight;
+}
+
+// End of updateResults()

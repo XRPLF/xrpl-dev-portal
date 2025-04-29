@@ -211,6 +211,10 @@
                 - page: docs/tutorials/javascript/build-apps/get-started.md
                 - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
                 - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
+            - page: docs/tutorials/javascript/decentralized-finance/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/javascript/decentralized-finance/create-permissioned-domains.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:
