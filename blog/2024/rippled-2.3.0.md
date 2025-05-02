@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-11-25
+date: "2024-11-25"
+template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 2.3.0
     description: rippled version 2.3.0 is now available. This version introduces new features and stability fixes.

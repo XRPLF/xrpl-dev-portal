@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-03-26
+date: "2024-03-26"
+template: '../../@theme/templates/blogpost'
 labels:
     - Advisories
     - Amendments

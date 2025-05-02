@@ -1,5 +1,6 @@
 ---
-date: 2016-12-20
+date: "2016-12-20"
+template: '../../@theme/templates/blogpost'
 labels:
     - Release Notes
 category: 2016

@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-03-16
+date: "2021-03-16"
+template: '../../@theme/templates/blogpost'
 labels:
     - Development
 author: Gregory Tsipenyuk and Nikolaos D. Bougalis

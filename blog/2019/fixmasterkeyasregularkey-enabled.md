@@ -1,7 +1,8 @@
 ---
 labels:
     - Amendments
-date: 2019-10-02
+date: "2019-10-02"
+template: '../../@theme/templates/blogpost'
 category: 2019
 markdown:
     editPage:

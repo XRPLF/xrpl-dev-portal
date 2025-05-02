@@ -1,6 +1,7 @@
 ---
 category: 2022
-date: 2022-06-29
+date: "2022-06-29"
+template: '../../@theme/templates/blogpost'
 labels:
     - Clio Release Notes
 markdown:

@@ -1,5 +1,6 @@
 ---
-date: 2017-02-22
+date: "2017-02-22"
+template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
     - Amendments

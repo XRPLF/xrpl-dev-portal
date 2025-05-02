@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-03-27
+date: "2024-03-27"
+template: '../../@theme/templates/blogpost'
 labels:
     - rippled Release Notes
 markdown:

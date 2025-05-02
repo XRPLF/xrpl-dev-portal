@@ -1,6 +1,7 @@
 ---
 category: 2023
-date: 2023-06-21
+date: "2023-06-21"
+template: '../../@theme/templates/blogpost'
 labels:
     - rippled Release Notes
     - Amendments

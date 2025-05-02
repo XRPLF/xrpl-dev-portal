@@ -1,5 +1,6 @@
 ---
-date: 2018-02-21
+date: "2018-02-21"
+template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
     - Release Notes

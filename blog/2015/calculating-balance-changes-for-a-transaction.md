@@ -1,5 +1,6 @@
 ---
-date: 2015-02-19
+date: "2015-02-19"
+template: '../../@theme/templates/blogpost'
 category: 2015
 labels:
     - Development

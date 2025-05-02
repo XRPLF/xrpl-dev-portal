@@ -1,6 +1,7 @@
 ---
 category: 2014
-date: 2014-09-22
+date: "2014-09-22"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

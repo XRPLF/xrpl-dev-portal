@@ -1,6 +1,7 @@
 ---
 category: 2022
-date: 2022-12-13
+date: "2022-12-13"
+template: '../../@theme/templates/blogpost'
 labels:
     - xrpl-py Release Notes
 markdown:

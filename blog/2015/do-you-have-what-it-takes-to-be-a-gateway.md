@@ -1,6 +1,7 @@
 ---
 category: 2015
-date: 2015-03-18
+date: "2015-03-18"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

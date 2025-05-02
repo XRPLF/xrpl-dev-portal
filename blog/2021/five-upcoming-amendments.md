@@ -3,7 +3,8 @@ category: 2021
 markdown:
     editPage:
         hide: true
-date: 2021-11-10
+date: "2021-11-10"
+template: '../../@theme/templates/blogpost'
 labels:
     - Amendments
 ---

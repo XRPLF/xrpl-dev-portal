@@ -3,7 +3,8 @@ labels:
     - Features
     - Security
 category: 2019
-date: 2019-04-05
+date: "2019-04-05"
+template: '../../@theme/templates/blogpost'
 markdown:
     editPage:
         hide: true

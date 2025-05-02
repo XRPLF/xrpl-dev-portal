@@ -1,6 +1,7 @@
 ---
 category: 2025
-date: 2025-03-18
+date: "2025-03-18"
+template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing Clio version 2.4.0
     description: Version 2.4.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds bug fixes.
@@ -10,8 +11,7 @@ markdown:
     editPage:
         hide: true
 ---
-
-## Introducing Clio version 2.4.0
+# Introducing Clio version 2.4.0
 
 Version 2.4.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds bug fixes.
 

@@ -1,6 +1,7 @@
 ---
 category: 2022
-date: 2022-12-07
+date: "2022-12-07"
+template: '../../@theme/templates/blogpost'
 labels:
     - Developer Reflections
 markdown:

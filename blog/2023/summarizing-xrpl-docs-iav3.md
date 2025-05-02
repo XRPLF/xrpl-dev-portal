@@ -1,6 +1,7 @@
 ---
 category: 2023
-date: 2023-07-25
+date: "2023-07-25"
+template: '../../@theme/templates/blogpost'
 labels:
     - Features
 markdown:

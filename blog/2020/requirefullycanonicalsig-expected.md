@@ -1,6 +1,7 @@
 ---
 category: 2020
-date: 2020-06-24
+date: "2020-06-24"
+template: '../../@theme/templates/blogpost'
 labels:
     - Amendments
 markdown:

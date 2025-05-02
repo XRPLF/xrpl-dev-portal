@@ -1,6 +1,7 @@
 ---
 category: 2024
-date: 2024-03-21
+date: "2024-03-21"
+template: '../../@theme/templates/blogpost'
 labels:
     - Amendments
 markdown:

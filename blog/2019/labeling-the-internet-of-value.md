@@ -2,7 +2,8 @@
 labels:
     - Features
 category: 2019
-date: 2019-07-12
+date: "2019-07-12"
+template: '../../@theme/templates/blogpost'
 author: Rome Reginelli
 ---
 # Labeling the Internet of Value

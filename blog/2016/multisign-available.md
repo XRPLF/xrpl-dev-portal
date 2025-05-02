@@ -1,5 +1,6 @@
 ---
-date: 2016-06-27
+date: "2016-06-27"
+template: '../../@theme/templates/blogpost'
 labels:
     - Amendments
 category: 2016

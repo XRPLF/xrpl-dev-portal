@@ -1,5 +1,6 @@
 ---
-date: 2014-07-02
+date: "2014-07-02"
+template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
     - Features
