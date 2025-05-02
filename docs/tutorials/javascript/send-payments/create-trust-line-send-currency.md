@@ -1,6 +1,4 @@
 ---
-html: create-trustline-send-currency-using-javascript.html
-parent: send-payments-using-javascript.html
 seo:
     description: Create Trust Lines and send currency.
 labels:

@@ -1,6 +1,4 @@
 ---
-html: create-time-based-escrows-using-javascript.html
-parent: send-payments-using-javascript.html
 seo:
     description: Create, finish, or cancel time-based escrow transactions.
 labels:
