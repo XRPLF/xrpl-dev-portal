@@ -12,7 +12,7 @@ markdown:
         hide: true
 ---
 
-## Introducing Clio version 2.3.0
+# Introducing Clio version 2.3.0
 
 Version 2.3.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds new features and bug fixes.
 

@@ -1,6 +1,7 @@
 ---
 category: 2025
-date: 2025-04-18
+date: "2025-04-18"
+template: '../../@theme/templates/blogpost'
 seo:
     description: What is DeFi used for, and how is it reshaping industries? Explore the key DeFi use cases that are driving the future of finance.
 labels:
