@@ -21,6 +21,7 @@
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
     "clsx": "^2.0.0",
+    "five-bells-condition": "^5.0.1",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
     "node-fetch": "^3.3.2",

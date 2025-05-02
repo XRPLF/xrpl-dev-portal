@@ -13,7 +13,7 @@ labels:
 
 This example shows how to:
 
-1. Create a trust line between the standby account and the operational account.
+1. Create a trust line between two accounts.
 2. Send issued currency between accounts.
 3. Display account balances for all currencies.
 
@@ -99,7 +99,7 @@ There are two asynchronous functions in the send-currency.js file that build on 
 
 A trust line enables two accounts to trade a defined currency up to a set limit. This gives the participants assurance that any exchanges are between known entities at agreed upon maximum amounts.
 
-Connect to the XRPL server and get the account wallet.
+Connect to the XRPL server.
 
 ```javascript
 async function createTrustLine() {
@@ -108,27 +108,28 @@ async function createTrustLine() {
   await client.connect()
   let results = "\nConnected. Creating trust line.\n"
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
 Create a `TrustSet` transaction, passing the currency code, issuer account, and the total value the holder is willing to accept.
 
 ```javascript
-  const trustSet_tx = {
-    "TransactionType": "TrustSet",
-    "Account": accountAddressField.value,
-    "LimitAmount": {
-      "currency": currencyField.value,
-      "issuer": issuerField.value,
-      "value": amountField.value
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const trustSet_tx = {
+      "TransactionType": "TrustSet",
+      "Account": accountAddressField.value,
+      "LimitAmount": {
+        "currency": currencyField.value,
+        "issuer": issuerField.value,
+        "value": amountField.value
+      }
     }
-  }
 ```
 
 Autofill the remaining default transaction parameters.
 
 ```javascript
-  const ts_prepared = await client.autofill(trustSet_tx)
+    const ts_prepared = await client.autofill(trustSet_tx)
 ```
 
 Sign and send the transaction to the XRPL server, then wait for the results.
@@ -142,15 +143,32 @@ Sign and send the transaction to the XRPL server, then wait for the results.
 Report the results of the transaction.
 
 ```javascript
-  if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += '\nTrust line established between account \n' +
-      accountAddressField.value + ' \n and account\n' + issuerField.value + '.'
-    resultField.value = results
-  } else {
-    results += `\nTransaction failed: ${ts_result.result.meta.TransactionResult}`
-    resultField.value = results     
+    if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
+        results += '\n===Trust line established between account \n' +
+        accountAddressField.value + ' \n and account\n' + issuerField.value + '.'
+        resultField.value = results
+    } else {
+        results += `\n===Transaction failed: ${ts_result.result.meta.TransactionResult}`
+        resultField.value = results     
+    }
   }
-} //End of createTrustline()
+```
+
+Catch and report any errors, then disconnect from the XRP Ledger.
+
+```javascript
+  catch (error) {
+    console.error('===Error creating trust line:', error);
+    results += `\n===Error: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
+}
+//End of createTrustline()
 ```
 
 ### sendCurrency()
@@ -167,52 +185,64 @@ async function sendCurrency() {
   await client.connect()
   results += '\nConnected.'
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
 Create a payment transaction to the destination account, specifying the amount using the currency, value, and issuer.
 
 ```javascript
-  const send_currency_tx = {
-    "TransactionType": "Payment",
-    "Account": wallet.address,
-    "Amount": {
-      "currency": currencyField.value,
-      "value": amountField.value,
-      "issuer": issuerField.value
-    },
-    "Destination": destinationField.value
-  }
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const send_currency_tx = {
+      "TransactionType": "Payment",
+      "Account": wallet.address,
+      "Amount": {
+        "currency": currencyField.value,
+        "value": amountField.value,
+        "issuer": issuerField.value
+      },
+      "Destination": destinationField.value
+    }
   ```
 
 Autofill the remaining default transaction parameters.
 
 ```javascript
-  const pay_prepared = await client.autofill(send_currency_tx)
+    const pay_prepared = await client.autofill(send_currency_tx)
 ```
 
 Sign and send the prepared payment transaction to the XRP Ledger, then await and report the results.
 
 ```javascript
-  const pay_signed = wallet.sign(pay_prepared)
-  results += `\n\nSending ${amountField.value} ${currencyField.value} to ${destinationField.value} ...`
- resultField.value = results
-  const pay_result = await client.submitAndWait(pay_signed.tx_blob)
-  if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += 'Transaction succeeded.'
+    const pay_signed = wallet.sign(pay_prepared)
+    results += `\n\n===Sending ${amountField.value} ${currencyField.value} to ${destinationField.value} ...`
     resultField.value = results
-  } else {
-    results += `\nTransaction failed: ${pay_result.result.meta.TransactionResult}`
-    resultField.value = results
+    const pay_result = await client.submitAndWait(pay_signed.tx_blob)
+    if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
+        results += '\n===Transaction succeeded.'
+        resultField.value = results
+    } else {
+        results += `\n===Transaction failed: ${pay_result.result.meta.TransactionResult}`
+        resultField.value = results
+        xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+    }
   }
 ```
 
 Update the XRP value field to reflect the transaction fee.
 
 ```javascript
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-  client.disconnect()
+  catch (error) {
+    console.error('Error sending transaction:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
 } // end of sendCurrency()
+
 ```
 
 ## send-currency.html

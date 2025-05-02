@@ -170,62 +170,69 @@ Instantiate two new date objects, then set the dates to the current date plus th
 ```javascript
   let escrow_finish_date = new Date()
   let escrow_cancel_date = new Date()
-  escrow_finish_date = addSeconds(parseInt(standbyEscrowFinishDateField.value))
-  escrow_cancel_date = addSeconds(parseInt(standbyEscrowCancelDateField.value))
+  escrow_finish_date = addSeconds(parseInt(escrowFinishTimeField.value))
+  escrow_cancel_date = addSeconds(parseInt(escrowCancelTimeField.value))
 ```
 
 Connect to the ledger and get the account wallet.
 
 ```javascript
-   let net = getNet()
+  let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results  = `Connected to ${net}.\nCreating time-based escrow.\n`
+  let results = `===Connected to ${net}.===\n\n===Creating time-based escrow.===\n`
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
 Define the transaction object.
 
 ```javascript
-  const sendAmount = amountField.value
-  resultField.value = results
-  const escrowTx = await client.autofill({
-    "TransactionType": "EscrowCreate",
-    "Account": wallet.address,
-    "Amount": xrpl.xrpToDrops(sendAmount),
-    "Destination": destinationField.value,
-    "FinishAfter": escrow_finish_date,
-    "CancelAfter": escrow_cancel_date
-  })
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const sendAmount = amountField.value
+    const escrowTx = await client.autofill({
+      "TransactionType": "EscrowCreate",
+      "Account": wallet.address,
+      "Amount": xrpl.xrpToDrops(sendAmount),
+      "Destination": destinationField.value,
+      "FinishAfter": escrow_finish_date,
+      "CancelAfter": escrow_cancel_date
+    })
 
   ```
 
   Sign the prepared transaction object.
 
 ```javascript
-  const signed = wallet.sign(escrowTx)
+    const signed = wallet.sign(escrowTx)
+  }
 ```
 
 Submit the signed transaction object and wait for the results.
 
 ```javascript
-  const tx = await client.submitAndWait(signed.tx_blob)
+    const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Report the results.
 
 ```javascript
-  results += "\nSuccess! Save this sequence number: " + tx.result.tx_json.Sequence 
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-  resultField.value = results
+    results += "\n===Success! === *** Save this sequence number: " + tx.result.tx_json.Sequence
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+    resultField.value = results
+  }
 ```
 
-Disconnect from the XRP Ledger.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  client.disconnect()
-} // End of createTimeBasedEscrow()
+  catch (error) {
+    results += "\n===Error: " + error.message
+    resultField.value = results
+  }
+  finally {
+    client.disconnect()
+  }
 ```
 
 
@@ -235,22 +242,20 @@ Disconnect from the XRP Ledger.
 async function finishEscrow() {
 ```
 
-Connect to the XRP Ledger and get the account wallet.
+Connect to the XRP Ledger.
 
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = `Connected to ${net}. Finishing escrow....`
-  resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  results += "\nwallet.address: = " + wallet.address
+  let results = `===Connected to ${net}. Finishing escrow.===\n`
   resultField.value = results
 ```
 
 Define the transaction. The _Owner_ is the account that created the escrow. The _OfferSequence_ is the sequence number of the escrow transaction. Automatically fill in the common fields for the transaction.
 
 ```javascript
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
   const prepared = await client.autofill({
     "TransactionType": "EscrowFinish",
     "Account": accountAddressField.value,
@@ -274,7 +279,7 @@ Submit the signed transaction to the XRP ledger.
 Report the results.
 
 ```javascript
-  results  += "\nBalance changes: " + 
+  results  += "\n===Balance changes===" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
   resultField.value = results
 ```
@@ -285,11 +290,16 @@ Update the **XRP Balance** field.
   xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
 ```
 
-Disconnect from the XRP Ledger.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  client.disconnect()
-} // End of finishEscrow()
+  catch (error) {
+    results += "\n===Error: " + error.message + "==="
+    resultField.value = results
+  }
+  finally {
+    client.disconnect()
+  }
 ```
 
 ### Get  Escrows
@@ -305,36 +315,43 @@ Connect to the network. The information you are looking for is public informatio
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
-  resultField.value = results
-  await client.connect()   
-  results += `\nConnected to ${net}. Getting account escrows.\n`
+  await client.connect()
+  let results = `\n===Connected to ${net}.\nGetting account escrows.===\n`
   resultField.value = results
 ```
 
 Create the `account_objects` request. Specify that you want objects of the type _escrow_.
 
 ```javascript
-  const escrow_objects = await client.request({
-    "id": 5,
-    "command": "account_objects",
-    "account": accountAddressField.value,
-    "ledger_index": "validated",
-    "type": "escrow"
-  })
+  try {
+    const escrow_objects = await client.request({
+      "id": 5,
+      "command": "account_objects",
+      "account": accountAddressField.value,
+      "ledger_index": "validated",
+      "type": "escrow"
+    })
 ```
 
 Report the results.
 
 ```javascript
-  results += JSON.stringify(escrow_objects.result, null, 2)
-  resultField.value = results
+    results += JSON.stringify(escrow_objects.result, null, 2)
+    resultField.value = results
+  }
 ```
+Catch and report any errors, then disconnect from the XRP Ledger.
 
-Disconnect from the XRP Ledger
 
 ```javascript
-  client.disconnect()
-} // End of getEscrows()
+  catch (error) {
+    results += "\nError: " + error.message
+    resultField.value = results
+  }
+  finally {
+    client.disconnect()
+  }
+}
 ```
 
 ### Get Transaction Info 
@@ -348,31 +365,39 @@ Connect to the XRP Ledger.
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
-  await client.connect()   
-  let results = `\nConnected to ${net}.\nGetting transaction information...\n`
+  await client.connect()
+  let results = `\n===Connected to ${net}.===\n===Getting transaction information.===\n`
   resultField.value = results
 ```
   
 Prepare and send the transaction information request. The only required parameter is the transaction ID.
   
 ```javascript
-  const tx_info = await client.request({
-    "id": 1,
-    "command": "tx",
-    "transaction": transactionField.value,
-  })
+  try {
+    const tx_info = await client.request({
+      "id": 1,
+      "command": "tx",
+      "transaction": transactionField.value,
+    })
 ```
 Report the results.
   
 ```javascript
-  results += JSON.stringify(tx_info.result, null, 2)
-  resultField.value = results
+    results += JSON.stringify(tx_info.result, null, 2)
+    resultField.value = results
+  }
 ```
   
-Disconnect from the XRP Ledger instance.  
+Catch and report any errors, then disconnect from the XRP Ledger.  
   
 ```javascript
-  client.disconnect()
+  catch (error) {
+    results += "\nError: " + error.message
+    resultField.value = results
+  }
+  finally {
+    client.disconnect()
+  }
 } // End of getTransaction()
 ```
 
@@ -390,47 +415,55 @@ Connect to the XRP Ledger instance and get the account wallet.
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = `\nConnected to ${net}. Cancelling escrow....`
+  let results = `\n===Connected to ${net}. Cancelling escrow.===`
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
 Prepare the EscrowCancel transaction, passing the escrow owner and offer sequence values.
 
 ```javascript
-  const prepared = await client.autofill({
-    "TransactionType": "EscrowCancel",
-    "Account": wallet.address,
-    "Owner": escrowOwnerField.value,
-    "OfferSequence": parseInt(escrowSequenceNumberField.value)
-  })
+  try {
+    const prepared = await client.autofill({
+      "TransactionType": "EscrowCancel",
+      "Account": accountAddressField.value,
+      "Owner": escrowOwnerField.value,
+      "OfferSequence": parseInt(escrowSequenceNumberField.value)
+    })
 ```
 
 Sign the transaction.
+
 ```javascript
-  const signed = wallet.sign(prepared)
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const signed = wallet.sign(prepared)
 ```
 
 Submit the transaction and wait for the response.
 
 ``` javascript
-  const tx = await client.submitAndWait(signed.tx_blob)
+    const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Report the results.
 
 ```javascript
-  results  += "\nBalance changes: " + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value = results
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-  ))
+    results += "\n===Balance changes: " +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    resultField.value = results
+)
 ```
 
-Disconnect from the XRP Ledger instance.
+Catch and report any errors, then disconnect from the XRP Ledger instance.
 
 ```javascript
-  client.disconnect()
+   }
+  catch (error) {
+    results += "\n===Error: " + error.message
+    resultField.value = results
+  }
+  finally {
+    client.disconnect()
+  }
 }
 ```
 

@@ -34,8 +34,8 @@ To get the accounts:
    [![Gathered information in Result field](../../../img/mt-send-mpt-1-gathered-info.png)](../../../img/mt-send-mpt-1-gathered-info.png)
    2. Cut and paste the MPT Issuance ID to the **MPT Issuance ID** field.
    3. Click **Distribute Account Info** to populate the **Account 1** fields.<br/><br/>
-   (If you did not use the MPT Generator, enter the **Account 1 Name**, **Account 1 Address**, **Account 1 Seed**, and **MPT Issuance ID** in the corresponding fields.)
-4. Click **Get New Account 2**.
+   If you did not use the MPT Generator, enter the **Account 1 Name**, **Account 1 Address**, **Account 1 Seed**, and **MPT Issuance ID** in the corresponding fields.)
+4. Click **Get New Account 2**, or use a seed to **Get Account 2 from Seed**.
 5. Optionally, add the **Account 2 Name**, an arbitrary human-readable name that helps to differentiate the accounts.
 [![Get New Account 2](../../../img/mt-send-mpt-2-account-2.png)](../../../img/mt-send-mpt-2-account-2.png)
 
@@ -79,62 +79,69 @@ The code that supports the MPT features is in the `send-mpt.js` file. Standard s
 
 ### sendMPT()
 
-Connect to the network and instantiate the account wallet.
+Connect to the XRP Ledger.
 
 ```javascript    
 async function sendMPT() {
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = `Connected to ${net}....`
+  let results = `===Connected to ${net}.===\n===Sending MPT.===\n`
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
 Instantiate the parameter variables.
 
 ```javascript
-  const mpt_issuance_id = mptIdField.value
-  const mpt_quantity = amountField.value
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const mpt_issuance_id = mptIdField.value
+    const mpt_quantity = amountField.value
 ```
 
 Create a Payment transaction using the MPT for the Amount.
 
 ```javascript
-  const send_mpt_tx = {
-    "TransactionType": "Payment",
-    "Account": wallet.address,
-    "Amount": {
-      "mpt_issuance_id": mpt_issuance_id,
-      "value": mpt_quantity,
-    },
-    "Destination": destinationField.value,
-  }
+    const send_mpt_tx = {
+      "TransactionType": "Payment",
+      "Account": wallet.address,
+      "Amount": {
+        "mpt_issuance_id": mpt_issuance_id,
+        "value": mpt_quantity,
+      },
+      "Destination": destinationField.value,
+    }
 ```
 
 Prepare and sign the transaction.
 
 ```javascript
-  const pay_prepared = await client.autofill(send_mpt_tx)
-  const pay_signed = wallet.sign(pay_prepared)
+    const pay_prepared = await client.autofill(send_mpt_tx)
+    const pay_signed = wallet.sign(pay_prepared)
 ```
 
 Send the prepared transaction and report the results.
 
 ```javascript
-  results += `\n\nSending ${mpt_quantity} ${mpt_issuance_id} to ${destinationField.value} ...`
-  resultField.value = results
-  const pay_result = await client.submitAndWait(pay_signed.tx_blob)
-  if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
-        results += 'Transaction succeeded.\n\n'
-        results += JSON.stringify(pay_result.result, null, 2)
+    results += `\n===Sending ${mpt_quantity} ${mpt_issuance_id} to ${destinationField.value} ...`
     resultField.value = results
-  } else {
-    results += `\nTransaction failed: ${pay_result.result.meta.TransactionResult}\n\n`
+    const pay_result = await client.submitAndWait(pay_signed.tx_blob)
+    results += '\n\n===Transaction succeeded.\n'
     results += JSON.stringify(pay_result.result, null, 2)
-    resultField.value = results
+    resultField.value += results
   }
-  client.disconnect()
+```
+
+Catch and report any errors, then disconnect from the XRP Ledger.
+
+```javascript
+  catch (error) {
+    results = `Error sending MPT: ${error}`
+    resultField.value += results
+  }
+  finally {
+    client.disconnect()
+  }
 } // end of sendMPT()
 ```
 
@@ -142,7 +149,7 @@ Send the prepared transaction and report the results.
 
 Get all of the MPTs for the selected account by filtering for MPT objects and looping through the array to display them one at a time.
 
-Connect to the XRPL instance and get the account wallet.
+Connect to the XRPL ledger.
 
 ```javascript
 async function getMPTs() {
@@ -150,46 +157,59 @@ async function getMPTs() {
   const client = new xrpl.Client(net)
   await client.connect()
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  let results = `Connected to ${net}....`
-  resultField.value = results
+  let results = ''
+  resultField.value = `===Connected to ${net}. Getting MPTs.===`
 ```
 
-Send an `account_objects` request, specifying the type _mptoken_.
+Send an `account_objects` request, specifying the type _mptoken_. Wait for the results.
 
 ```javascript
-  const mpts = await client.request({
-      command: "account_objects",
-      account: wallet.address,
-      ledger_index: "validated",
-      type: "mptoken"
-    })
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const mpts = await client.request({
+        command: "account_objects",
+        account: wallet.address,
+        ledger_index: "validated",
+        type: "mptoken"
+      })
 ```
 
 Stringify and parse the JSON result string.
 
 ```javascript
-  let JSONString = JSON.stringify(mpts.result, null, 2)
-  let JSONParse = JSON.parse(JSONString)
-  let numberOfMPTs = JSONParse.account_objects.length
+    let JSONString = JSON.stringify(mpts.result, null, 2)
+    let JSONParse = JSON.parse(JSONString)
+    let numberOfMPTs = JSONParse.account_objects.length
 ```
 
 Loop through the filtered array of account_objects to list all of the MPTs held by the account.
 
 ```javascript
-  let x = 0
-  while (x < numberOfMPTs){
-    results += "\n\nMPT Issuance ID: " + JSONParse.account_objects[x].MPTokenIssuanceID
-             + "\nMPT Amount: " + JSONParse.account_objects[x].MPTAmount
-    x++
-  }
+    let x = 0
+    while (x < numberOfMPTs){
+      results += "\n\n===MPT Issuance ID: " + JSONParse.account_objects[x].MPTokenIssuanceID
+              + "\n===MPT Amount: " + JSONParse.account_objects[x].MPTAmount
+      x++
+    }
 ```
 
 Return the parsed results, followed by the raw results.
 
 ```javascript
-  results += "\n\n" + JSONString
-  resultField.value = results
-  client.disconnect()
+    results += "\n\n" + JSONString
+    resultField.value += results
+```
+
+Catch and report any errors, then disconnect from the XRP Ledger.
+
+```javascript
+  } catch (error) {
+    results = `===Error getting MPTs: ${error}`
+    resultField.value += results
+  }
+  finally {
+    client.disconnect()
+  }
 } // End of getMPTs()
 ```
 

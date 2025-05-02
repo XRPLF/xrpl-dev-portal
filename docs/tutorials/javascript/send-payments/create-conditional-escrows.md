@@ -125,7 +125,7 @@ If you forget to save the sequence number, you can find it in the escrow transac
 
 Download the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
-## five-bells.js
+## five-bells.cjs
 
 To generate a condition/fulfillment pair, use Node.js to run the `five-bells.js` script.
 
@@ -165,13 +165,13 @@ Connect to the ledger and get the account wallet.
 
 ```javascript
 async function createConditionalEscrow() {
-  let net = getNet()
+ let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = `Connected to ${net}, creating conditional escrow.\n`
-  resultField.value = results
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
   const sendAmount = amountField.value
+  let results = `===Connected to ${net}===\n===Creating conditional escrow.===\n\n`
+  resultField.value = results
 ```
 
 Prepare the cancel date by adding the number of seconds in the **Escrow Cancel Date** field to the current date and time. In practice, the cancel date might be in days, weeks, months, or years. Using seconds allows you to test scenarios with expired escrows.
@@ -209,18 +209,24 @@ Submit the signed object and wait for the results.
 Report the results, parsing the _Sequence Number_ for later use.
 
 ```javascript
-  results += "\nSequence Number (Save!): " + tx.result.tx_json.Sequence
-  results += "\n\nBalance changes: " +
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-  resultField.value = results
+    results = "\n=== *** Sequence Number (Save!): " + tx.result.tx_json.Sequence 
+    results += "\n\n===Balance changes===\n" + 
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+    resultField.value += results
 ```
 
-Disconnect from the XRP Ledger
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  client.disconnect()
-} // End of createTimeEscrow()
+  catch (error) {
+    results += "\n===Error: " + error.message
+    resultField.value = results
+  }
+  finally {
+    // -------------------------------------------------------- Disconnect
+    client.disconnect()
+  }// End of createTimeEscrow()
 ```
 
 ### finishConditionalEscrow()
@@ -232,7 +238,7 @@ async function finishConditionalEscrow() {
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = `Connected to ${net}, fulfilling conditional escrow.\n`
+  let results = `===Connected to ${net}===\n===Fulfilling conditional escrow.===\n`
   resultField.value = results
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
@@ -265,22 +271,22 @@ Submit the signed transaction and wait for the results.
 Report the results
 
 ```javascript
-  results += "\nBalance changes: " +
+  results = "\n===Balance changes===" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value = results
+  resultField.value += results
 ```
 
-Update the **XRP Balance Field**.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-```
-
-Disconnect from the XRP Ledger.
-
-```javascript
-  client.disconnect()
-} // End of finishEscrow()
+  catch (error) {
+    results += "\n===Error: " + error.message + ".===\n"
+    resultField.value = results
+  }
+  finally {
+    // -------------------------------------------------------- Disconnect
+    client.disconnect()
+  }
 ```
 
 ## create-conditional-escrow.html

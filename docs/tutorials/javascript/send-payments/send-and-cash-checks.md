@@ -90,8 +90,8 @@ To cash a check you have received:
 1. Enter the **Check ID** (**index** value).
 2. Enter the **Amount** you want to collect, up to the full amount of the check.
 3. Enter the currency code.
-   a. If you cashing a check for XRP, enter _XRP_ in the **Currency Code** field.
-	 b. If you are cashing a check for an issued currency token:
+   a. If you are cashing a check for XRP, enter _XRP_ in the **Currency Code** field. 
+   b. If you are cashing a check for an issued currency token:
 	    1. Enter the **Issuer** of the token.
 	    2. Enter the **Currency Code** code for the token.
 4. Click **Cash Check**.
@@ -121,34 +121,35 @@ Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tu
 
 ### sendCheck()
 
-Connect to the XRP ledger and get the account wallet.
+Connect to the XRP ledger.
 
 ```javascript
 async function sendCheck() {
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  results = `\nConnected to ${net}.`
+  results = `\n===Connected to ${net}.===\n===Sending check.===\n`
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
 Prepare the transaction. Set the *check_amount* variable to the value in the **Amount** field.
 
 ```javascript
-  let check_amount = amountField.value
+  try {     
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    let check_amount = amountField.value
 ```
 
  If the currency field is not _XRP_, create an `amount` object with the _currency_, _value_, and _issuer_. Otherwise, use the *check_amount* value as is.
 
  ```javascript
-  if (currencyField.value !=  "XRP") {
-  	check_amount = {
-      "currency": currencyField.value,
-      "value": amountField.value,
-      "issuer": wallet.address  	
-  	}
-  }
+    if (currencyField.value !=  "XRP") {
+      check_amount = {
+        "currency": currencyField.value,
+        "value": amountField.value,
+        "issuer": wallet.address  	
+      }
+    }
   ```
 
   Create the transaction object.
@@ -165,82 +166,87 @@ Prepare the transaction. Set the *check_amount* variable to the value in the **A
 Autofill the remaining values and sign the prepared transaction.
 
 ```javascript
-  const check_prepared = await client.autofill(send_check_tx)
-  const check_signed = wallet.sign(check_prepared)
+    const check_prepared = await client.autofill(send_check_tx)
+    const check_signed = wallet.sign(check_prepared)
 ```
 
 Send the transaction and wait for the results.
 
 ```javascript
-  results += '\nSending ' + amountField.value + ' ' + currencyField.value + ' to ' +
-    destinationField.value + '...\n'
-  resultField.value = results
-  const check_result = await client.submitAndWait(check_signed.tx_blob)
+    results += '\n===Sending ' + amountField.value + ' ' + currencyField.
+     value + ' to ' +  destinationField.value + '.===\n'
+    resultField.value = results
+    const check_result = await client.submitAndWait(check_signed.tx_blob)
 ```
 
 Report the results.
 
 ```javascript
-  if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += 'Transaction succeeded:\n'
-    resultField.value += JSON.stringify(check_result.result, null, 2)
-  } else {
-    results += `Error sending transaction: ${check_result.result.meta.TransactionResult}`
-    resultField.value = results
-  }
+    if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
+      results = '===Transaction succeeded===\n\n'
+      resultField.value += results + JSON.stringify(check_result.result, null, 2)
+    }
 ```
 
 Update the **XRP Balance** field.
 
 ```javascript
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
 ```
 
-Disconnect from the XRP ledger.
+Report any errors, then disconnect from the XRP ledger.
 
 ```javascript
-  client.disconnect()
-} // end of sendCheck()
+  } catch (error) {
+    results = `Error sending transaction: ${error}`
+    resultField.value += results
+  }
+  finally {
+    client.disconnect()
+  }
+}//end of sendCheck()
 ```
 
 ## getChecks()
 
 Connect to the XRP Ledger.
-
 ```javascript
 async function getChecks() {
-  let net = getNet();
-  const client = new xrpl.Client(net);
-  await client.connect();
-```
-Initialize the results string and display the connection status.
-
-```javascript
-  let results = `\nConnected to ${net}.`;
-  resultField.value = results;
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  await client.connect()   
+  let results = `\n===Connected to ${net}.===\n===Getting account checks.===\n\n`
+  resultField.value = results
 ```
 
 Define an `account_objects` query, filtering for the _check_ object type.
 
 ```javascript
-  const check_objects = await client.request({
-    "id": 5,
-    "command": "account_objects",
-    "account": accountAddressField.value,
-    "ledger_index": "validated",
-    "type": "check"
-  });
+  try {
+    const check_objects = await client.request({
+      "id": 5,
+      "command": "account_objects",
+      "account": accountAddressField.value,
+      "ledger_index": "validated",
+      "type": "check"
+    })
 ```
 Display the retrieved `Check` objects in the result field.
 
 ```javascript
-  resultField.value = JSON.stringify(check_objects.result, null, 2);
+    resultField.value += JSON.stringify(check_objects.result, null, 2)
 ```
 
-Disconnect from the XRP Ledger.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  client.disconnect();
+  }  catch (error) {
+    results = `Error getting checks: ${error}`
+    resultField.value += results
+  }
+  finally {
+    client.disconnect()
+  }
 } // End of getChecks()
 ```
 
@@ -250,143 +256,71 @@ Connect to the XRP Ledger and get the account wallet
 
 ```javascript
 async function cashCheck() {
-  let net = getNet();
-  const client = new xrpl.Client(net);
-  await client.connect();
-  results = `\nConnected to ${net}.`;
-  resultField.value = results;
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  await client.connect()
+  results = `\n===Connected to ${net}.===\n===Cashing check.===\n`
+  resultField.value = results
 ```
 
 Set the check amount.
 
 ```javascript
-  let check_amount = amountField.value;
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    let check_amount = amountField.value
 ```
 
 If the currency is not _XRP_, create an `amount` object with _value_, _currency_, and _issuer_.
 
 ```javascript
-  if (currencyField.value != "XRP") {
-    check_amount = {
-      "value": amountField.value,
-      "currency": currencyField.value,
-      "issuer": issuerField.value
-    };
-  }
+    if (currencyField.value !=  "XRP") {
+      check_amount = {
+        "value": amountField.value,
+        "currency": currencyField.value,
+        "issuer": issuerField.value  	
+      }
+    }
 ```
 
 Create the `CheckCash` transaction object.
 
 ```javascript
-  const cash_check_tx = {
-    "TransactionType": "CheckCash",
-    "Account": wallet.address,
-    "Amount": check_amount,
-    "CheckID": checkIdField.value
-  };
+    const cash_check_tx = {
+      "TransactionType": "CheckCash",
+      "Account": wallet.address,
+      "Amount": check_amount,
+      "CheckID": checkIdField.value
+    }
 ```
 
 Autofill the transaction details.
 
 ```javascript
-  const cash_prepared = await client.autofill(cash_check_tx);
+    const cash_prepared = await client.autofill(cash_check_tx)
 ```
 
 Sign the prepared transaction.
 
 ```javascript
-  const cash_signed = wallet.sign(cash_prepared);
-  results += ' Receiving ' + amountField.value + ' ' + currencyField.value + '.\n';
-  resultField.value = results;
+    const cash_signed = wallet.sign(cash_prepared)
+    results = ' Receiving ' + amountField.value + ' ' + currencyField.value + '.\n'
+    resultField.value += results
 ```
 
 Submit the transaction and wait for the result.
 
 ```javascript
-  const check_result = await client.submitAndWait(cash_signed.tx_blob);
-```
+  const check_result = await client.submitAndWait(cash_signed.tx_blob)
+  ```
 
 Report the transaction results.
 
 ```javascript
-  if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += 'Transaction succeeded:\n' + JSON.stringify(check_result.result, null, 2);
-    resultField.value = results;
-  } else {
-    results += `Error sending transaction: ${check_result.result.meta.TransactionResult}`;
-    resultField.value = results;
-  }
-```
-
- Update the XRP Balance field.
-
-```javascript
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address));
-```
-
-Disconnect from the XRP ledger.
-
-```javascript
-  client.disconnect();
-} // end of cashCheck()
-```
-
-## cancelCheck()
-
-Connect to the XRP Ledger and get the account wallet.
-
-```javascript
-async function cancelCheck() {
-  // Connect to the XRP Ledger.
-  let net = getNet();
-  const client = new xrpl.Client(net);
-  await client.connect();
-  results = `\nConnected to ${net}.`;
-  resultField.value = results;
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
-```
-
-Create the CheckCancel transaction object, passing the wallet address and the Check ID value (the _Index_).
-
-```javascript
-  const cancel_check_tx = {
-    "TransactionType": "CheckCancel",
-    "Account": wallet.address,
-    "CheckID": checkIdField.value
-  };
-```
-
-Autofill the transaction details.
-
-```javascript
-  const cancel_prepared = await client.autofill(cancel_check_tx);
-```
-
-Sign the prepared transaction.
-
-```javascript
-  const cancel_signed = wallet.sign(cancel_prepared);
-  results += ' Cancelling check.\n';
-  resultField.value = results;
-```
-
-Submit the transaction and wait for the results.
-
-```javascript
-  const check_result = await client.submitAndWait(cancel_signed.tx_blob);
-```
-
-Report the transaction results.
-
-```javascript
-  if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += `Transaction succeeded: ${check_result.result.meta.TransactionResult}`;
-    resultField.value = results;
-  } else {
-    results += `Error sending transaction: ${check_result.result.meta.TransactionResult}`;
-    resultField.value = results;
-  }
+    if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
+      results = '===Transaction succeeded===\n' + JSON.stringify(check_result.result, null, 2)
+      resultField.value += results
+    }
 ```
 
 Update the XRP Balance field.
@@ -395,10 +329,86 @@ Update the XRP Balance field.
   xrpBalanceField.value = (await client.getXrpBalance(wallet.address));
 ```
 
-Disconnect from the XRP ledger.
+Catch and report any errors, then disconnect from the XRP ledger.
 
 ```javascript
-  client.disconnect();
+  } catch (error) {
+    results = `Error sending transaction: ${error}`
+    resultField.value += results
+  }
+  finally {
+    client.disconnect()
+} // end of cashCheck()
+```
+
+## cancelCheck()
+
+Connect to the XRP Ledger.
+
+```javascript
+async function cancelCheck() {
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  await client.connect()
+  results = `\n===Connected to ${net}.===\n===Cancelling check.===\n`
+  resultField.value = results
+```
+
+Create the CheckCancel transaction object, passing the wallet address and the Check ID value (the _Index_).
+
+```javascript
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const cancel_check_tx = {
+      "TransactionType": "CheckCancel",
+      "Account": wallet.address,
+      "CheckID": checkIdField.value
+    }
+```
+
+Autofill the transaction details.
+
+```javascript
+    const cancel_prepared = await client.autofill(cancel_check_tx)
+```
+
+Sign the prepared transaction.
+
+```javascript
+    const cancel_signed = wallet.sign(cancel_prepared)
+```
+
+Submit the transaction and wait for the results.
+
+```javascript
+    const check_result = await client.submitAndWait(cancel_signed.tx_blob)
+```
+
+Report the transaction results.
+
+```javascript
+    if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
+      results += `===Transaction succeeded===\n${check_result.result.meta.TransactionResult}`
+      resultField.value = results
+    } 
+```
+
+Update the XRP Balance field.
+
+```javascript
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+```
+
+Catch and report any errors, then disconnect from the XRP ledger.
+
+```javascript
+  } catch (error) {
+    results = `Error sending transaction: ${error}`
+    resultField.value += results
+  }
+  finally {
+    client.disconnect()
+  }
 } // end of cancelCheck()
 ```
 

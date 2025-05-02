@@ -103,41 +103,38 @@ Connect to the XRP Ledger and get the account wallet.
 ```javascript
  async function createOffer() {
   let net = getNet()
-  let results = 'Connecting to ' + net + '....\n'
   const client = new xrpl.Client(net)
   await client.connect()
-      
-  results  += "Connected. Getting wallets.\n"
+  let results = `===Connected to ${net}, getting wallet....===\n`
   resultField.value = results
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  results += accountNameField.value + " account address: " + wallet.address + "\n"
-  resultField.value = results
 ```
 
 Gather the information for what the taker pays, and what the taker gets in return. If the **Currency Code** is _XRP_, the amount is equal to the value in the **Amount** field. Otherwise, the `takerGets` parameter is constructed as an array containing the currency code, issuer address, and the value in the amount field.
 
 ```javascript
-  if (getCurrencyField.value == 'XRP') {
-    takerGets = getAmountField.value
-  } else {
-    takerGetsString = '{"currency": "' + getCurrencyField.value +'",\n' +
-        '"issuer": "' + getIssuerField.value + '",\n' +
-        '"value": "' + getAmountField.value + '"}'
-    takerGets = JSON.parse(takerGetsString)
-  }
+  try {
+    if (getCurrencyField.value == 'XRP') {
+        takerGets = getAmountField.value
+    } else {
+        takerGetsString = '{"currency": "' + getCurrencyField.value +'",\n' +
+            '"issuer": "' + getIssuerField.value + '",\n' +
+            '"value": "' + getAmountField.value + '"}'
+        takerGets = JSON.parse(takerGetsString)
+    }
 ```
 
 The same logic is used to create the value for the `takerPays` parameter.
 
 ```javascript
-  if (payCurrencyField.value == 'XRP') {
-    takerPays = payAmountField.value
-  } else {
-    takerPaysString = '{"currency": "' + payCurrencyField.value + '",\n' +
-      '"issuer": "' + payIssuerField.value + '",\n' +
-      '"value": "' + payAmountField.value + '"}'
-    takerPays = JSON.parse(takerPaysString)
-  }
+    if (payCurrencyField.value == 'XRP') {
+      takerPays = xrpl.xrpToDrops(payAmountField.value)
+    } else {
+      takerPaysString = '{"currency": "' + payCurrencyField.value + '",\n' +
+        '"issuer": "' + payIssuerField.value + '",\n' +
+        '"value": "' + payAmountField.value + '"}'
+      takerPays = JSON.parse(takerPaysString)
+    }
  ```
 
 Define the `OfferCreate` transaction, using the `takerPays` and `takerGets` parameters defined above.
@@ -154,18 +151,16 @@ Define the `OfferCreate` transaction, using the `takerPays` and `takerGets` para
 Sign and send the prepared transaction, and wait for the results.
 
 ```javascript
-
-  const signed = wallet.sign(prepared)
-  results += "\nSubmitting transaction...."
-  const tx = await client.submitAndWait(signed.tx_blob)
+    const signed = wallet.sign(prepared)
+    const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Request the token balance changes after the transaction.
 
 ```javascript
-  results  += "\nBalance changes: " + 
-  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value = results
+    results = '\n\n===Offer created===\n\n' +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    resultField.value += results
 ```
 
 Get the new XRP balance, reflecting the payments and transaction fees.
@@ -174,17 +169,24 @@ Get the new XRP balance, reflecting the payments and transaction fees.
   xrpBalanceField.value =  (await client.getXrpBalance(wallet.address))
 ```
 
-Run the getOffers() function to show any remaining available offers.
 
 ```javascript
   getOffers()
 ```
 
-Disconnect from the XRP Ledger.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  client.disconnect()    
-} // End of createOffer()
+  } catch (err) {
+    console.error('Error creating offer:', err);
+    results = `\nError: ${err.message}\n`
+    resultField.value += results
+    throw err; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client          
+    client.disconnect()
+  })
 ```
 
 ### getOffers
@@ -196,12 +198,11 @@ Connect to the XRP Ledger and get the Account wallet.
 ```javascript
 async function getOffers() {
   let net = getNet()
-  let results = 'Connecting to ' + net + '....\n'
   const client = new xrpl.Client(net)
   await client.connect()
-  results  += "Connected.\n"
+  let results = `===Connected to ' + ${net}, getting offers....===\n`
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  results += accountNameField.value + " account: " + wallet.address
+  resultField.value = results
 ```
 
 Send a request for all `account_offers` for the specified account address and report the results.
@@ -209,26 +210,31 @@ Send a request for all `account_offers` for the specified account address and re
 ```javascript
   results += '\n\n*** Offers ***\n'
   let offers
-  try {
-    const offers = await client.request({
+    try {
+    offers = await client.request({
       method: "account_offers",
       account: wallet.address,
       ledger_index: "validated"
     })
-    results += JSON.stringify(offers,null,2)
-  } catch (err) {
-      results += err
-  }
-  resultField.value = results
+    results = JSON.stringify(offers, null, 2)
+    resultField.value += results
 ```
 
-Disconnect from the XRP Ledger.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
+  } catch (err) {
+    console.error('Error getting offers:', err);
+    results = `\nError: ${err.message}\n`
+    resultField.value += results
+    throw err; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    client.disconnect()
+  }
 
-  client.disconnect()
-}// End of getOffers()
 ```
+
 ### cancelOffer()
 
 You can cancel an offer before it is matched with another offer.
@@ -236,28 +242,24 @@ You can cancel an offer before it is matched with another offer.
 Connect to the XRP Ledger and get the account wallet.
 
 ```javascript
-  async function cancelOffer() {
-    let results  = "Connecting to the selected ledger.\n"
-    resultField.value = results
-    let net = getNet()
-    results += 'Connecting to ' + net + '....\n'
-    const client = new xrpl.Client(net)
-    await client.connect()
-    results  += "Connected.\n"
-    resultField.value = results
-    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-    results += "wallet.address: = " + wallet.address
-    resultField.value = results
+async function cancelOffer() {
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  await client.connect()
+  let results = `===Connected to ${net}, canceling offer.===\n`
+  resultField.value = results
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
 Prepare the `OfferCancel` transaction, passing the account address of the account that created the offer and the `Sequence` of the offer.
 
 ```javascript
-  const prepared = await client.autofill({
-  "TransactionType": "OfferCancel",
-  "Account": wallet.address,
-  "OfferSequence": parseInt(offerSequenceField.value)
-  })
+  try {
+    const prepared = await client.autofill({
+      "TransactionType": "OfferCancel",
+      "Account": wallet.address,
+      "OfferSequence": parseInt(offerSequenceField.value)
+    })
 ```
 
 Sign and submit the transaction, then wait for the result.
@@ -270,18 +272,25 @@ Sign and submit the transaction, then wait for the result.
 Report the results.
 
 ```javascript
-  results  += "\nBalance changes: \n" + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value = results
+    results += "\nOffer canceled. Balance changes: \n" +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    resultField.value = results
 ```
 
-Update the XRP Balance field, reflecting the transaction fee.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  xrpBalanceField.value =  (await client.getXrpBalance(wallet.address))
-  client.disconnect()    
-  } // End of cancelOffer()
-
+  }
+  catch (err) {
+    console.error('Error canceling offer:', err);
+    results = `\nError: ${err.message}\n`
+    resultField.value += results
+    throw err; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    client.disconnect()
+  }
+}// End of cancelOffer()
 ```
 
 ## create-offer.html

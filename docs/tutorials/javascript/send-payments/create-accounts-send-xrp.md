@@ -126,18 +126,32 @@ Get the selected network, create a new client, and connect to the XRPL serever.
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = `\nConnected to ${net}.`
+  resultField.value = `===Getting Account===\n\nConnected to ${net}.`
 ```
 
 Request a new wallet funded with play-money XRP for experimentation.
 
 ```javascript
-  let faucetHost = null
-  const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
-  const newAccount = [my_wallet.address, my_wallet.seed]
+  try {
+    let faucetHost = null
+    const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
+    const newAccount = [my_wallet.address, my_wallet.seed]
+    return (newAccount)
+  }
 ```
 
-Disconnect from the XRPL server and return the account address and seed.
+Catch and report any errors.
+
+```javascript
+  catch (error) {
+    console.error('Error getting account:', error);
+    results = `\n===Error: ${error.message}===\n`
+    resultField.value += results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+```
+
+Disconnect from the XRPL server and return the address and seed information.
 
 ```javascript
   client.disconnect()
@@ -151,14 +165,17 @@ These are wrapper functions that call the getAccount() function, then populate t
 
 ```javascript
 async function getNewAccount1() {
-  account1address.value = "Getting new account."
+  account1address.value = "=== Getting new account. ===\n\n"
+  account1seed.value = ""
   const accountInfo= await getAccount()
   account1address.value = accountInfo[0]
   account1seed.value = accountInfo[1]
 }
 
+
 async function getNewAccount2() {
-  account2address.value = "Getting new account."
+  account2address.value = "=== Getting new account. ===\n\n"
+  account2seed.value = ""
   const accountInfo= await getAccount()
   account2address.value = accountInfo[0]
   account2seed.value = accountInfo[1]
@@ -174,12 +191,34 @@ async function getAccountFromSeed(my_seed) {
   const net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = '\nConnected, finding wallet.\n'
+  let results = '===Finding wallet.===\n\n'
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(my_seed)
-  const address = wallet.address
-  client.disconnect()
-  return (address)
+  try {
+    const wallet = xrpl.Wallet.fromSeed(my_seed)
+    const address = wallet.address
+    results += "===Wallet found.===\n\n"
+    results += "Account address: " + address + "\n\n"
+    resultField.value = results
+    return (address)
+  }
+```
+Catch and report any errors.
+
+```javascript
+    catch (error) {
+    console.error('===Error getting account from seed:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  ```
+
+  Disconnect from the XRP Ledger and return the .
+
+  ```javascript
+  finally {
+    await client.disconnect();
+  }
 } // End of getAccountFromSeed()
 ```
 ### getAccountFromSeed1 and getAccountFromSeed2
@@ -210,7 +249,7 @@ function gatherAccountInfo() {
 
 ### distributeAccountInfo()
 
-This local function parses structured account information from the **Result** field and distributes it to the corresponding account fields.
+This local function parses structured account information from the **Result** field and distributes it to the corresponding account fields. It is the counterpart to the gatherAccountInfo() utility. The purpose is to let you continue to use the same accounts in all of the modular examples. If you have information that doesn't perfectly conform, you can still use this utility to populate the fields with the information that does fit the format.
 
 ```javascript
 function distributeAccountInfo() {
@@ -253,9 +292,30 @@ async function getXrpBalance() {
   const net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  xrpBalanceField.value = await client.getXrpBalance(accountAddressField.value)
-  client.disconnect()
-} // End of getXrpBalance()
+  let results = `\n===Getting XRP balance...===\n\n`
+  resultField.value = results
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const balance = await client.getXrpBalance(wallet.address)
+    results += accountNameField.value + " current XRP balance: " + balance + "\n\n"
+    xrpBalanceField.value = await client.getXrpBalance(accountAddressField.value)
+    resultField.value = results
+  }
+  ```
+
+  Catch any errors and disconnect from the XRP Ledger.
+
+  ```javascript
+  catch (error) {
+    console.error('Error getting XRP balance:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
 ```
 ### getTokenBalance()
 
@@ -265,47 +325,47 @@ Get the balance of all tokens for the current active account. This is a function
 async function getTokenBalance() {
 ```
 
-Connect with the network and get the account wallet.
+Connect with the network.
 
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  resultField.value = results
   await client.connect()   
-  results += '\nConnected.'
-  resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+  let results = `===Connected to ${net}.===\n===Getting account token balance...===\n\n`
+  resultField.value += results
 ```
 
 Send a request to get the account balance, then wait for the results.
 
 ```javascript
-  results= "\nGetting account balance...\n"
-  const balance = await client.request({
-    command: "gateway_balances",
-    account: wallet.address,
-    ledger_index: "validated",
-  })
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const balance = await client.request({
+      command: "gateway_balances",
+      account: wallet.address,
+      ledger_index: "validated",
+    })
+    results = accountNameField.value + "\'s token balance(s): " + JSON.stringify(balance.result, null, 2) + "\n"
+    resultField.value += results
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+  }
 ```
 
-Display the results in the **Result** field.
-```javascript
-  results += JSON.stringify(balance.result, null, 2)
-  resultField.value = results
-```
-
-Send a request for the XRP balance and update the **XRP Balance** field.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-```
 
-Disconnect from the XRP Ledger.
-
-```javascript
-  client.disconnect()
-} // End of getTokenBalance()
+  catch (error) {
+    console.error('Error getting token balance:', error);
+    results = `\nError: ${error.message}\n`
+    resultField.value += results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
+} 
 ```
 
 ## base-module.html

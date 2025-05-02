@@ -2,56 +2,54 @@
  *********** Create Offer **********
  **********************************/
 
- async function createOffer() {
+async function createOffer() {
   let net = getNet()
-  let results = 'Connecting to ' + net + '....\n'
   const client = new xrpl.Client(net)
   await client.connect()
-      
-  results  += "Connected. Getting wallets.\n"
+  let results = `===Connected to ${net}, getting wallet....===\n`
   resultField.value = results
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  results += accountNameField.value + " account address: " + wallet.address + "\n"
-  resultField.value = results
-
-
-  if (getCurrencyField.value == 'XRP') {
-    takerGets = getAmountField.value
-  } else {
-    takerGetsString = '{"currency": "' + getCurrencyField.value +'",\n' +
+  try {
+    if (getCurrencyField.value == 'XRP') {
+      takerGets = xrpl.xrpToDrops(getAmountField.value)
+    }
+    else {
+      takerGetsString = '{"currency": "' + getCurrencyField.value + '",\n' +
         '"issuer": "' + getIssuerField.value + '",\n' +
         '"value": "' + getAmountField.value + '"}'
-    takerGets = JSON.parse(takerGetsString)
-  }
+      takerGets = JSON.parse(takerGetsString)
+    }
 
-  if (payCurrencyField.value == 'XRP') {
-    takerPays = payAmountField.value
-  } else {
-    takerPaysString = '{"currency": "' + payCurrencyField.value + '",\n' +
-      '"issuer": "' + payIssuerField.value + '",\n' +
-      '"value": "' + payAmountField.value + '"}'
-    takerPays = JSON.parse(takerPaysString)
+    if (payCurrencyField.value == 'XRP') {
+      takerPays = xrpl.xrpToDrops(payAmountField.value)
+    } else {
+      takerPaysString = '{"currency": "' + payCurrencyField.value + '",\n' +
+        '"issuer": "' + payIssuerField.value + '",\n' +
+        '"value": "' + payAmountField.value + '"}'
+      takerPays = JSON.parse(takerPaysString)
+    }
+    const prepared = await client.autofill({
+      "TransactionType": "OfferCreate",
+      "Account": wallet.address,
+      "TakerGets": takerGets,
+      "TakerPays": takerPays
+    })
+    const signed = wallet.sign(prepared)
+    const tx = await client.submitAndWait(signed.tx_blob)
+    results = '\n\n===Offer created===\n\n' +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    resultField.value += results
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+  } catch (err) {
+    console.error('Error creating offer:', err);
+    results = `\nError: ${err.message}\n`
+    resultField.value += results
+    throw err; // Re-throw the error to be handled by the caller
   }
- 
-   // -------------------------------------------------------- Prepare transaction
-  const prepared = await client.autofill({
-    "TransactionType": "OfferCreate",
-    "Account": wallet.address,
-    "TakerGets": takerGets,
-    "TakerPays": takerPays
-  })   
-  // ------------------------------------------------- Sign prepared instructions
-  const signed = wallet.sign(prepared)
- results += "\nSubmitting transaction...."
-  // -------------------------------------------------------- Submit signed blob
-  const tx = await client.submitAndWait(signed.tx_blob)
-  results  += "\nBalance changes: " + 
-  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value = results
-
-  xrpBalanceField.value =  (await client.getXrpBalance(wallet.address))
-  getOffers()                 
-  client.disconnect()    
+  finally {
+    // Disconnect from the client          
+    client.disconnect()
+  }
 } // End of createOffer()
 
 /***********************************
@@ -60,66 +58,64 @@
 
 async function getOffers() {
   let net = getNet()
-  let results = 'Connecting to ' + net + '....\n'
   const client = new xrpl.Client(net)
   await client.connect()
-  results  += "Connected.\n"
+  let results = `===Connected to ' + ${net}, getting offers....===\n`
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  results += accountNameField.value + " account: " + wallet.address
-// -------------------------------------------------------- Prepare request
-
-  results += '\n\n*** Offers ***\n'
+  resultField.value = results
+  results += '\n\n=== Offers ===\n'
   let offers
   try {
-    const offers = await client.request({
+    offers = await client.request({
       method: "account_offers",
       account: wallet.address,
       ledger_index: "validated"
     })
-    results += JSON.stringify(offers,null,2)
+    results = JSON.stringify(offers, null, 2)
+    resultField.value += results
   } catch (err) {
-      results += err
+    console.error('Error getting offers:', err);
+    results = `\nError: ${err.message}\n`
+    resultField.value += results
+    throw err; // Re-throw the error to be handled by the caller
   }
-  resultField.value = results
-  client.disconnect()
+  finally {
+    client.disconnect()
+  }
 }// End of getOffers()
 
 /***********************************
 *********** Cancel Offer **********
 **********************************/
-
-  async function cancelOffer() {
-    let results  = "Connecting to the selected ledger.\n"
-    resultField.value = results
-    let net = getNet()
-    results += 'Connecting to ' + net + '....\n'
-    const client = new xrpl.Client(net)
-    await client.connect()
-        
-    results  += "Connected.\n"
-    resultField.value = results
-    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-    results += "wallet.address: = " + wallet.address
-    resultField.value = results
-
-  // -------------------------------------------------------- Prepare transaction
-    /* OfferSequence is the Seq value when you getOffers. */
-
-  const prepared = await client.autofill({
-  "TransactionType": "OfferCancel",
-  "Account": wallet.address,
-  "OfferSequence": parseInt(offerSequenceField.value)
-  })
-
-  // ------------------------------------------------- Sign prepared instructions
-  const signed = wallet.sign(prepared)
-
-  // -------------------------------------------------------- Submit signed blob
-  const tx = await client.submitAndWait(signed.tx_blob)
-      
-  results  += "\nBalance changes: \n" + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+async function cancelOffer() {
+  let net = getNet()
+  const client = new xrpl.Client(net)
+  await client.connect()
+  let results = `===Connected to ${net}, canceling offer.===\n`
   resultField.value = results
-  xrpBalanceField.value =  (await client.getXrpBalance(wallet.address))
-  client.disconnect()    
-  } // End of cancelOffer()
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+  try {
+    // OfferSequence is the _seq_ value from getOffers.
+    const prepared = await client.autofill({
+      "TransactionType": "OfferCancel",
+      "Account": wallet.address,
+      "OfferSequence": parseInt(offerSequenceField.value)
+    })
+    const signed = wallet.sign(prepared)
+    const tx = await client.submitAndWait(signed.tx_blob)
+    results += "\nOffer canceled. Balance changes: \n" +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    resultField.value = results
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+  }
+  catch (err) {
+    console.error('Error canceling offer:', err);
+    results = `\nError: ${err.message}\n`
+    resultField.value += results
+    throw err; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    client.disconnect()
+  }
+}// End of cancelOffer()

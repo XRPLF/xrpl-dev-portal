@@ -6,7 +6,6 @@ function getNet() {
   let net
   if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233/"
   if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233/"
-  const client = new xrpl.Client(net)
   return net
 } // End of getNet()
 
@@ -18,23 +17,36 @@ async function getAccount() {
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = `\nConnected to ${net}.`
-  let faucetHost = null
-  const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
-  const newAccount = [my_wallet.address, my_wallet.seed]
-  return (newAccount)
-  client.disconnect()
+  resultField.value = `===Getting Account===\n\nConnected to ${net}.`
+  try {
+    let faucetHost = null
+    const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
+    const newAccount = [my_wallet.address, my_wallet.seed]
+    return (newAccount)
+  }
+  catch (error) {
+    console.error('===Error getting account:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
 } // End of getAccount()
 
 async function getNewAccount1() {
-  account1address.value = "Getting new account."
+  account1address.value = "=== Getting new account. ===\n\n"
+  account1seed.value = ""
   const accountInfo= await getAccount()
   account1address.value = accountInfo[0]
   account1seed.value = accountInfo[1]
 }
 
 async function getNewAccount2() {
-  account2address.value = "Getting new account."
+  account2address.value = "=== Getting new account. ===\n\n"
+  account2seed.value = ""
   const accountInfo= await getAccount()
   account2address.value = accountInfo[0]
   account2seed.value = accountInfo[1]
@@ -48,13 +60,26 @@ async function getAccountFromSeed(my_seed) {
   const net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  let results = '\nConnected, finding wallet.\n'
+  let results = '===Finding wallet.===\n\n'
   resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(my_seed)
-// ----------------------Populate the fields for left and right accounts.
-  const address = wallet.address
-  client.disconnect()
-  return (address)
+  try {
+    const wallet = xrpl.Wallet.fromSeed(my_seed)
+    const address = wallet.address
+    results += "===Wallet found.===\n\n"
+    results += "Account address: " + address + "\n\n"
+    resultField.value = results
+    return (address)
+  }
+  catch (error) {
+    console.error('===Error getting account from seed:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
 } // End of getAccountFromSeed()
 
 // *****************************************************
@@ -120,15 +145,32 @@ function populate2() {
 }
 
 // *******************************************************
-// **************** Get Xrp Balance  *********************
+// **************** Get XRP Balance  *********************
 // *******************************************************
 
 async function getXrpBalance() {
   const net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-  xrpBalanceField.value = await client.getXrpBalance(accountAddressField.value)
-  client.disconnect()
+  let results = `\n===Getting XRP balance...===\n\n`
+  resultField.value = results
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const balance = await client.getXrpBalance(wallet.address)
+    results += accountNameField.value + " current XRP balance: " + balance + "\n\n"
+    xrpBalanceField.value = await client.getXrpBalance(accountAddressField.value)
+    resultField.value = results
+  }
+  catch (error) {
+    console.error('Error getting XRP balance:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
 } // End of getXrpBalance()
 
 // *******************************************************
@@ -138,21 +180,29 @@ async function getXrpBalance() {
 async function getTokenBalance() {
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  resultField.value = results
   await client.connect()   
-  results += '\nConnected.'
-  resultField.value = results
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  results= "\nGetting account balance...\n"
-  const balance = await client.request({
-    command: "gateway_balances",
-    account: wallet.address,
-    ledger_index: "validated",
-  })
-  results += JSON.stringify(balance.result, null, 2)
-  resultField.value = results
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-  client.disconnect()
+  let results = `===Connected to ${net}.===\n===Getting account token balance...===\n\n`
+  resultField.value += results
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const balance = await client.request({
+      command: "gateway_balances",
+      account: wallet.address,
+      ledger_index: "validated",
+    })
+    results = accountNameField.value + "\'s token balance(s): " + JSON.stringify(balance.result, null, 2) + "\n"
+    resultField.value += results
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+  }
+  catch (error) {
+    console.error('Error getting token balance:', error);
+    results = `\nError: ${error.message}\n`
+    resultField.value += results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
 } // End of getTokenBalance()
 
