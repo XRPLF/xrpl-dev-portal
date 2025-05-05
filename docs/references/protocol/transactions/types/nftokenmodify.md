@@ -31,14 +31,17 @@ title:
 | Field             | JSON Type           | [Internal Type][] | Description        |
 |:------------------|:--------------------|:------------------|:-------------------|
 | `TransactionType` | String              | UINT16            | Type is `NFTokenModify`. |
-| `Account`         | String              | AccountID        |  The unique address of either the issuer or an authorized minter of the NFT. |
-| `Owner`           | String              | AccountID        | _(Optional)_ Address of the owner of the NFT. If the `Account` and `Owner` are the same address, omit this field. |
-| `NFTokenID`       | String              | Hash 256         | Composite field that uniquely identifies the token. |
-| `URI`             | String | Blob | _(Optional)_ Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the [`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex) utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is not checked for validity.  If you do not specify a URI, the existing URI is deleted. |
+| `Account`         | String              | AccountID         |  The unique address of either the issuer or an authorized minter of the NFT. |
+| `Owner`           | String              | AccountID         | _(Optional)_ Address of the owner of the NFT. If the `Account` and `Owner` are the same address, omit this field. |
+| `NFTokenID`       | String              | Hash256           | Composite field that uniquely identifies the token. |
+| `URI`             | String              | Blob              | _(Optional)_ Up to 256 bytes of arbitrary data. In JSON, this should be encoded as a string of hexadecimal. You can use the [`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex) utility to convert a URI to its hexadecimal equivalent. This is intended to be a URI that points to the data or metadata associated with the NFT. The contents could decode to an HTTP or HTTPS URL, an IPFS URI, a magnet link, immediate data encoded as an [RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397), or even an issuer-specific encoding. The URI is not checked for validity.  If you do not specify a URI, the existing URI is deleted. |
+
 ## Error Cases
+
 Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code         | Description |
 |:-------------------|:------------|
 | `tecNO_PERMISSION` | The `tfMutable` flag wasn't enabled, so you can't update the `URI` field. You can also receive this error if the `Account` field isn't an issuer or authorized minter of the NFT.  |
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
