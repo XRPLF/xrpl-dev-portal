@@ -130,6 +130,7 @@ The `info` object may have some arrangement of the following fields:
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list expires, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. |
 | `counters`            | Object          | This object contains performance metrics pertaining to the RPC calls (currently executing calls and completed calls) and the JobQueue. It also contains details of the nodestore like `node_writes`, `node_reads_total`, `node_reads_hit`, etc|
 | `current_activity`            | Object          | This field lists the items currently being run in the job queue and contains two arrays for `jobs` and `methods`. |
+| `network_ledger`            | String          | This field contains the value `waiting`, if the rippled server does not have the latest validated ledger. |
 
 {% admonition type="info" name="Note" %}If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.{% /admonition %}
 
