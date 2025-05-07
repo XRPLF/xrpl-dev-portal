@@ -1,6 +1,4 @@
 ---
-html: send-and-cash-checks.html
-parent: send-payments-using-javascript.html
 labels:
   - Accounts
   - Modular Tutorials
