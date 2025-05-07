@@ -3,7 +3,6 @@ seo:
     description: Create, finish, or cancel time-based escrow transactions.
 labels:
   - Accounts
-  - Quickstart
   - Transaction Sending
   - XRP
 ---
@@ -117,7 +116,7 @@ If you forget to save the sequence number, you can find it in the escrow transac
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)in the source repository for this website.
+Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 ## ripple8-escrow.js
 

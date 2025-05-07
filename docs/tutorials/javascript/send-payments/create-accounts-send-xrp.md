@@ -1,11 +1,8 @@
 ---
-html: create-accounts-send-xrp-using-javascript.html
-parent: send-payments-using-javascript.html
 seo:
     description: Create two accounts and transfer XRP between them.
 labels:
   - Accounts
-  - Quickstart
   - Transaction Sending
   - XRP
 ---
