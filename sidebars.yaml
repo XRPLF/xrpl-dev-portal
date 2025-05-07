@@ -645,6 +645,7 @@
               expanded: false
               items:
                 - page: docs/infrastructure/configuration/data-retention/configure-full-history.md
+                - page: docs/infrastructure/configuration/data-retention/get-full-history-data-with-clio.md
                 - page: docs/infrastructure/configuration/data-retention/online-deletion.md
                 - page: docs/infrastructure/configuration/data-retention/configure-online-deletion.md
                 - page: docs/infrastructure/configuration/data-retention/configure-advisory-deletion.md
