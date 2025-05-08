@@ -17,7 +17,7 @@ This tutorial uses sample code in Javascript using the [xrpl-js library](../inde
 
 ## Prerequisites
 
-- You must have Node.js insalled and know how to run Javascript code from the command line. Node.js v18 is required for xrpl.js.
+- You must have Node.js installed and know how to run Javascript code from the command line. Node.js v18 is required for xrpl.js.
 - You should have a basic understanding of the XRP Ledger.
 - The credential you want to verify should exist in the ledger already, and you should know the addresses of both the issuer and the holder, as well as the official credential type you want to check.
     - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md).
@@ -253,7 +253,7 @@ Then it defines a type of exception to throw if something goes wrong when connec
 
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Define an error to throw" before="const CREDENTIAL" /%}
 
-Finally, a regular expression to validate the credential format and the `lsfAccepted` flag are defined as constants for use further on in the code.
+Finally, a regular expression to validate the credential format and the [lsfAccepted](../../../references/protocol/ledger-data/ledger-entry-types/credential.md#credential-flags) flag are defined as constants for use further on in the code.
 
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="const CREDENTIAL" before="async function verifyCredential" /%}
 
@@ -261,19 +261,19 @@ Finally, a regular expression to validate the credential format and the `lsfAcce
 
 The `verifyCredential(...)` function performs the main work for this tutorial. The function definition and comments define the parameters:
 
-{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="async function verifyCredential" before="// Handle function inputs" /%}
+{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="async function verifyCredential" before="// Encode credentialType as uppercase hex" /%}
 
-The first thing the function does is verify that a credential type is provided. The XRP Ledger APIs require the credential type to be hexadecimal, so it converts the user input if necessary:
+The XRP Ledger APIs require the credential type to be hexadecimal, so it converts the user input if necessary:
 
-{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Handle function inputs" before="// Perform XRPL lookup" /%}
+{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Encode credentialType as uppercase hex" before="// Perform XRPL lookup" /%}
 
 Next, it calls the [ledger_entry method](/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-credential-entry) to look up the requested Credential ledger entry:
 
-{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Perform XRPL lookup" before="// Confirm that the credential has been accepted" /%}
+{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Perform XRPL lookup" before="// Check if the credential has been accepted" /%}
 
 If it succeeds in finding the credential, the function continues by checking that the credential has been accepted by its holder. Since anyone can issue a credential to anyone else, a credential is only considered valid if its subject has accepted it.
 
-{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Confirm that the credential has been accepted" before="// Confirm that the credential is not expired" /%}
+{% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="Check if the credential has been accepted" before="// Confirm that the credential is not expired" /%}
 
 Then, if the credential has an expiration time, the function checks that the credential is not expired. If the credential has no expiration, this step can be skipped. A credential is officially considered expired if its expiration time is before the [official close time](/docs/concepts/ledgers/ledger-close-times) of the most recently validated ledger. This is more universal than comparing the expiration to your own local clock. Thus, the code uses the [ledger method][] to look up the most recently validated ledger:
 

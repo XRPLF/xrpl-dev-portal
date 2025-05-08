@@ -14,15 +14,17 @@ const logger = winston.createLogger({
 
 // Define an error to throw when XRPL lookup fails unexpectedly
 class XRPLLookupError extends Error {
-  constructor(xrplResponse) {
+  constructor(error) {
     super("XRPL look up error");
     this.name = "XRPLLookupError";
-    this.body = xrplResponse.result;
+    this.body = error;
   }
 }
 
 const CREDENTIAL_REGEX = /^[0-9A-F]{2,128}$/;
-const LSF_ACCEPTED = 0x00010000;
+// See https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/credential#credential-flags
+// to learn more about the lsfAccepted flag.
+const LSF_ACCEPTED = 0x00010000; 
 
 async function verifyCredential(client, issuer, subject, credentialType, binary=false) {
   /**
@@ -33,17 +35,12 @@ async function verifyCredential(client, issuer, subject, credentialType, binary=
    *  issuer - Address of the credential issuer, in base58.
    *  subject - Address of the credential holder/subject, in base58.
    *  credentialType - Credential type to check for as a string,
-   *                   which will be encoded as UTF-8 (1-128 bytes long).
+   *                   which will be encoded as UTF-8 (1-128 characters long).
    *  binary - Specifies that the credential type is provided in hexadecimal format.
    * You must provide the credential_type as input.
    * Returns True if the account holds the specified, valid credential.
    * Returns False if the credential is missing, expired, or not accepted.
    */
-
-  // Handle function inputs --------------------------------------------------
-  if (!credentialType) {
-    throw new Error("Provide a non-empty credential_type");
-  }
 
   // Encode credentialType as uppercase hex, if needed
   let credentialTypeHex = "";
@@ -56,7 +53,7 @@ async function verifyCredential(client, issuer, subject, credentialType, binary=
 
   if (credentialTypeHex.length % 2 !== 0 || !CREDENTIAL_REGEX.test(credentialTypeHex)) {
     // Hexadecimal is always 2 chars per byte, so an odd length is invalid.
-    throw new Error("Credential type must be 1-128 bytes as hexadecimal.");
+    throw new Error("Credential type must be 128 characters as hexadecimal.");
   }
 
   // Perform XRPL lookup of Credential ledger entry --------------------------
@@ -80,8 +77,8 @@ async function verifyCredential(client, issuer, subject, credentialType, binary=
       logger.info("Credential was not found");
       return false;
     } else {
-      // Other errors, for example invalidly pecified addresses.
-      throw new XRPLLookupError(xrplResponse);
+      // Other errors, for example invalidly specified addresses.
+      throw new XRPLLookupError(err?.data || err);
     }
   }
 
@@ -89,7 +86,7 @@ async function verifyCredential(client, issuer, subject, credentialType, binary=
   logger.info("Found credential:");
   logger.info(JSON.stringify(credential, null, 2));
 
-  // Confirm that the credential has been accepted ---------------------------
+  // Check if the credential has been accepted ---------------------------
   if (!(credential.Flags & LSF_ACCEPTED)) {
     logger.info("Credential is not accepted.");
     return false
