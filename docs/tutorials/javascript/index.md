@@ -27,7 +27,7 @@ To get started:
 
   `npm install xrpl`
 
-- Clone or download the [Sample modules](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/).
+Download and expand the [Payment Modular Tutorial Samples](/_code-samples/modular-tutorials/payment-modular-tutorials.zip) archive.
 
 ## Tutorial Modules
 

@@ -1,0 +1,150 @@
+body {
+  font-family: "Inter", sans-serif;
+  padding: 20px;
+  background: #abe2ff;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+td {
+  padding-left: 25px;
+  vertical-align: top;
+}
+
+input,
+button {
+  padding: 6px;
+  margin-bottom: 8px;
+  border: none
+}
+
+input:read-only {
+  background-color:rgb(11, 96, 132);
+  color:white;
+  border: 0;
+}
+
+button {
+  font-weight: bold;
+  font-family: "Work Sans", sans-serif;
+  background-color: #006aff;
+  -webkit-text-fill-color: white;
+}
+
+button:hover {
+  background-color: #0555c5;
+  cursor: pointer;
+}
+
+td {
+  vertical-align: middle;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 16px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.tooltip {
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip:before {
+  content: attr(tooltip-data); 
+  position: absolute;
+  width: 250px;
+  background-color: #006aff;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  line-height: 1.1;
+  border-radius: 5px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .5s;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  font-size: 0.70em;
+  visibility: hidden;
+}
+
+.tooltip:after {
+  content: "";
+  position: absolute;
+  bottom: 75%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  opacity: 0;
+  transition: opacity .5s;
+  border-color: #000 transparent transparent transparent;
+  visibility: hidden;
+}
+
+.tooltip:hover:before, 
+.tooltip:hover:after {
+  opacity: 1;
+  visibility: visible;
+}

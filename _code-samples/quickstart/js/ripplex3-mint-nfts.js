@@ -27,8 +27,8 @@ async function mintToken() {
   // ----------------------------------------------------- Submit signed blob 
   const tx = await client.submitAndWait(transactionJson, { wallet: standby_wallet} )
   const nfts = await client.request({
-    method: "account_nfts",
-    account: standby_wallet.classicAddress
+    "method": "account_nfts",
+    "account": standby_wallet.classicAddress
   })
 
   // ------------------------------------------------------- Report results

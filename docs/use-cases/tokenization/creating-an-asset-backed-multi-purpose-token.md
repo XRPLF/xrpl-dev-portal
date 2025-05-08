@@ -385,11 +385,12 @@ The form sets the standard flags for an Issuer account and displays additional c
 
 #### Issuer Account Flag Settings
 
-Use the sliders to configure the standard suggested flag settings. Overall, you want holders of your T-bill to be able to trade with other holders, so rippling is an essential function. You want to be careful about what other accounts are able to send to your account, so you should disallow most types of transfers. One exception is trust lines, which you do want other accounts to be able to create to your issuing account.
+Use the sliders to configure the standard suggested flag settings. You want to be careful about what other accounts are able to send to your account, so you should disallow most types of transfers. One exception is trust lines, which you do want other accounts to be able to create to your issuing account.
+
+One difference between an MPT issuer and other tokens is that there is no concern about rippling, since MPTs are self-contained. If the only purpose for this issuing account is to issue MPTs, you do not have to enable rippling by default.
 
 |Flag                          |Purpose                                                                             |
 |------------------------------|------------------------------------------------------------------------------------|
-| defaultRipple                | Allow transfers to third-party holders by default.                                 |
 | depositAuth                  | Require authorization for another account to deposit to this account.              |
 | disallowIncomingCheck        | Prevent other accounts from sending checks to this account.                        |
 | disallowIncomingNFTokenOffer | Prevent other accounts from sending NFTokenOffers to this account.                 |

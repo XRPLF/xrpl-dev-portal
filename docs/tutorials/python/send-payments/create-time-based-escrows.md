@@ -45,7 +45,7 @@ To get test accounts:
         3. Click **Get Operational Account**.
         4. Click **Get Op Account Info**.
 
-[![Escrow Tester with Account Information](/docs/img/quickstart-escrow2.png)](/docs/img/quickstart-py-escrow2.png)
+[![Escrow Tester with Account Information](/docs/img/quickstart-py-escrow2.png)](/docs/img/quickstart-py-escrow2.png)
 
 ## Create Escrow
 
