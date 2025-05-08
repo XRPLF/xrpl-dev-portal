@@ -24,11 +24,11 @@ responseHeaders:
     - name: X-Robots-Tag
       value: noindex
 search:
-  filter:
-    hide: true
   engine: typesense
   ai: 
     hide: true
+  filters: 
+    hide: true    
 metadataGlobs:
   'docs/**':
     redocly_category: Documentation
