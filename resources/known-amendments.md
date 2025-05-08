@@ -18,7 +18,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
-| [DeepFreeze][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
+| [DeepFreeze][]                    | v2.4.0     | {% badge href="https://livenet.xrpl.org/transactions/976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021" %}Enabled: 2025-05-04{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
 | [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
 | [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
@@ -309,7 +309,7 @@ However, the amendment was added to `rippled` v0.60.0 before implementation was 
 | Amendment    | DeepFreeze |
 |:-------------|:------------------|
 | Amendment ID | DAF3A6EB04FA5DC51E8E4F23E9B7022B693EFA636F23F22664746C77B5786B23 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
