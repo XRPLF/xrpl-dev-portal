@@ -25,6 +25,8 @@ responseHeaders:
       value: noindex
 search:
   engine: typesense
+  filter:
+    hide: true
   ai: 
     hide: true
 metadataGlobs:
