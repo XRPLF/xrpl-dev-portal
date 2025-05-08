@@ -24,9 +24,9 @@ responseHeaders:
     - name: X-Robots-Tag
       value: noindex
 search:
-  engine: typesense
   filter:
     hide: true
+  engine: typesense
   ai: 
     hide: true
 metadataGlobs:
