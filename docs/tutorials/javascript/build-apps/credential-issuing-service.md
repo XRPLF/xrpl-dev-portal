@@ -357,8 +357,7 @@ Using this service as a base, you can extend the service with more features, suc
 Alternatively, you can use credentials to for various purposes, such as:
 
 - Define a [Permissioned Domain](/docs/concepts/tokens/decentralized-exchange/permissioned-domains) that uses your credentials to grant access to features on the XRP Ledger.
-<!-- TODO: Uncomment once tutorial is ready. -->
-<!-- - [Verify credentials](../compliance/verify-credential.md) manually to grant access to services that exist off-ledger. -->
+- [Verify credentials](../compliance/verify-credential.md) manually to grant access to services that exist off-ledger.
 
 ## See Also
 
