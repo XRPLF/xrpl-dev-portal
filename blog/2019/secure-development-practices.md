@@ -16,7 +16,7 @@ The primary mission of the C++ team at Ripple is to contribute to `rippled`, the
 
 As a team, our primary focus is on ensuring that the codebase is solid, that the code is robust and that it is well-suited to be the core of the next-generation of financial infrastructure, one which allows value to not only move as fast and as efficiently as information does today, but to move securely as well.
 
-In an [earlier blog post](https://developers.ripple.com/blog/2017/invariant-checking.html), I noted that our existing software development and quality assurance process—honed over several years—places heavy emphasis on correctness and security. I highlighted our use of automated tests and specialized tooling (such as static analyzers) but I also alluded to the human element as well: our rigorous and public code reviews and regular security audits of the codebase by specialists. I’d like to take the opportunity to discuss those practices in greater detail.
+In an [earlier blog post](/blog/2017/invariant-checking.md), I noted that our existing software development and quality assurance process—honed over several years—places heavy emphasis on correctness and security. I highlighted our use of automated tests and specialized tooling (such as static analyzers) but I also alluded to the human element as well: our rigorous and public code reviews and regular security audits of the codebase by specialists. I’d like to take the opportunity to discuss those practices in greater detail.
 
 <!-- BREAK -->
 

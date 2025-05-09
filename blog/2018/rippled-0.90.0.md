@@ -27,7 +27,7 @@ If you operate a `rippled` server, you should upgrade to `rippled` version 0.90.
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to `rippled` version 0.90.0 by **Thursday, 2018-03-15**, when DepositAuth and Checks are expected to be enabled via Amendment, then your rippled server will become [amendment blocked](https://ripple.com/build/amendments/#amendment-blocked), meaning that your server:
+* **If you operate a `rippled` server**, but do not upgrade to `rippled` version 0.90.0 by **Thursday, 2018-03-15**, when DepositAuth and Checks are expected to be enabled via Amendment, then your rippled server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
 * Cannot determine the validity of a ledger
 * Cannot submit or process transactions
@@ -37,21 +37,23 @@ If you operate a `rippled` server, you should upgrade to `rippled` version 0.90.
 
 If the **DepositAuth** and **Checks** Amendments do not get approved, then your `rippled` server will not become Amendment blocked and should continue to operate.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The SHA-256 for the RPM is: `7d6c6d9908289edbf38660f0ab2a233b159ac7abfe502ae774bf9af579270613`
 
 The SHA-256 for the source RPM is: `faf0d669a38b7f97acd2d4b95b48a8c50a9859a6235be2ed289d10c6c5f96a1f`
 
-For other platforms, please compile version 0.90.0 from source. See the [`rippled` source tree](https://github.com/ripple/rippled/tree/develop/Builds) for instructions by platform. For instructions building `rippled` from source on Ubuntu Linux, see [Build and Run `rippled` on Ubuntu](https://ripple.com/build/build-run-rippled-ubuntu/).
+For other platforms, please [compile version 0.90.0 from source](https://github.com/XRPLF/rippled/tree/0.90.0/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 6230204e425f6aef6ec1c0def0bdd1257e1c4c7f
-    Author: Nikolaos D. Bougalis <nikb@bougalis.net>
-    Date:   Tue Feb 20 14:12:03 2018 -0800
+```text
+commit 6230204e425f6aef6ec1c0def0bdd1257e1c4c7f
+Author: Nikolaos D. Bougalis <nikb@bougalis.net>
+Date:   Tue Feb 20 14:12:03 2018 -0800
 
-        Set version to 0.90.0
+    Set version to 0.90.0
+```
 
 ## Action Recommended: Configure History Shards
 
@@ -85,14 +87,14 @@ Other compatible versions differ by platform. Boost 1.58.0 is compatible on Linu
 
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
@@ -104,11 +106,11 @@ If an Escrow has a Destination with the DepositAuth flag set, then the correspon
 
 As an exception, accounts with DepositAuth enabled can receive XRP payment transactions for small amounts of XRP (equal or less than the minimum account reserve) if their current XRP balance is below the account reserve.
 
-For more information, see <https://ripple.com/build/deposit-authorization/>
+For more information, see [Deposit Authorization](/docs/concepts/accounts/depositauth).
 
 ### Checks
 
-The Checks Amendment works similarly to personal paper checks and introduces a new ledger object type ([Check](https://ripple.com/build/ledger-format/#check)), a new transaction result code ([tecEXPIRED](https://ripple.com/build/transactions/#tec-codes)) and three new transaction types ([CheckCreate](https://ripple.com/build/transactions/#checkcreate), [CheckCash](https://ripple.com/build/transactions/#checkcash), [CheckCancel](https://ripple.com/build/transactions/#checkcancel)) to the XRP Ledger.
+The Checks Amendment works similarly to personal paper checks and introduces a new ledger object type ([Check](/docs/references/protocol/ledger-data/ledger-entry-types/check)), a new transaction result code ([tecEXPIRED](/docs/references/protocol/transactions/transaction-results/tec-codes)) and three new transaction types ([CheckCreate](/docs/references/protocol/transactions/types/checkcreate), [CheckCash](/docs/references/protocol/transactions/types/checkcash), [CheckCancel](/docs/references/protocol/transactions/types/checkcancel)) to the XRP Ledger.
 
 The sender signs a CheckCreate transaction to create a Check for a specific maximum amount and specifies a destination account to receive the funds. Later, the destination account can sign a CheckCash transaction to cash the Check and receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. An account with the DepositAuth flag set can receive funds using a CheckCash transaction.
 
@@ -118,7 +120,7 @@ If cashing the Check fails, the Check object remains in the ledger so it may be 
 
 History Sharding allows `rippled` servers to distribute historical ledger data if they agree to keep particular ranges of historical ledgers. This makes it very easy for servers to confirm that they have all the data that they're supposed to have. Further, History Sharding makes it simpler to produce proof trees or ledger deltas and challenge servers to demonstrate they actually hold the data they claim to have.
 
-For more information, see <https://ripple.com/build/history-sharding/>
+_(Update: History sharding was removed in [version 2.3.0](/blog/2024/rippled-2.3.0.md).)_
 
 ### Preferred Ledger by Branch
 
@@ -127,7 +129,7 @@ Preferred Ledger by Branch improves how a `rippled` server decides which ledger 
 Preferred Ledger by Branch leverages the ancestry information of branches to account for common support across validated ledgers and their ancestors, since a validation for some ledger is also a validation for all its ancestors. To find the preferred ledger, a `rippled` server starts at the most recent validated ledger and selects the child ledger with most support based on recent validations, but only selects it if an alternate sibling ledger does not possibly have more support. This process is then repeated starting from the newly chosen ledger until no better ledger exists. Preferred Ledger by Branch is designed to be conservative, only switching when the server sees enough peer validations to know another branch won't become preferred.
 
 ## Upcoming Features
-The [previously announced](https://developers.ripple.com/blog/2017/rippled-0.70.0.html) **FlowCross** Amendment will be enabled on a future date (TBA).
+The [previously announced](/blog/2017/rippled-0.70.0.md) **FlowCross** Amendment will be enabled on a future date (TBA).
 
 Compiling `rippled` with scons is deprecated. Starting in rippled version 1.0, the only supported build will be using CMake.
 

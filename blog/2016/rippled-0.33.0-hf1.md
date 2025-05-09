@@ -20,21 +20,23 @@ Ripple has released `rippled` version 0.33.0-hf1, which fixes a JSON parsing iss
 
 If you operate a `rippled` server and are experiencing a `jsonInvalid` error response to client requests, but don’t upgrade to version 0.33.0-hf1, then your server will continue to experience failing client requests.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The md5sum for the rpm is: f181f1fc801e3387487d246f9a975517
 
 The md5sum for the source rpm is: 7993f125ed05bfeeda4e091761021429
 
-For other platforms, please [compile version 0.33.0-hf1 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.33.0-hf1 from source](https://github.com/XRPLF/rippled/blob/0.33.0-hf1/Builds).
 
 The first log entry should be the change setting the version:
 
-          commit 98f878cf10a32e26021b6a6ed44990bccbbc92c2
-          Author: Vinnie Falco <vinnie.falco@gmail.com>
-          Date:   Sat Oct 1 12:12:34 2016 -0400
+```text
+commit 98f878cf10a32e26021b6a6ed44990bccbbc92c2
+Author: Vinnie Falco <vinnie.falco@gmail.com>
+Date:   Sat Oct 1 12:12:34 2016 -0400
 
-          Set version to 0.33.0-hf1
+Set version to 0.33.0-hf1
+```
 
 ## Bug Fixes
 
@@ -44,11 +46,11 @@ Fix a JSON parsing issue that can fail to parse valid JSON requests when the dat
 The Ripple operations team has deployed version 0.33.0-hf1 to all client facing `rippled` servers under its operational control.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

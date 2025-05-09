@@ -10,15 +10,15 @@ markdown:
 ---
 # TrustSetAuth is Now Available
 
-As [predicted previously](https://developers.ripple.com/blog/2016/trustsetauth-reminder.html), TrustSetAuth became available on the Ripple Consensus Ledger this afternoon (PDT) in ledger 22,721,281 ([2016-07-19T15:10](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF)).
+As [predicted previously](/blog/2016/trustsetauth-reminder.md), TrustSetAuth became available on the Ripple Consensus Ledger this afternoon (PDT) in ledger 22,721,281 ([2016-07-19T15:10](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF)).
 
 This amendment allows pre-authorization of accounting relationships (zero-balance trust lines) when using Authorized Accounts.
 
 ## Action Required
 
-To remain operational, all `rippled` instances running on a version earlier than 0.31.0 must be [upgraded](https://ripple.com/build/rippled-setup/#updating-rippled) to `rippled` server **[version 0.32.0](https://developers.ripple.com/blog/2016/rippled-0.32.0.html)** immediately.
+To remain operational, all `rippled` instances running on a version earlier than 0.31.0 must be [upgraded](/docs/infrastructure/installation/update-rippled-automatically-on-linux) to `rippled` server **[version 0.32.0](/blog/2016/rippled-0.32.0.md)** immediately.
 
-See [Updating `rippled`](https://ripple.com/build/rippled-setup/#updating-rippled) for more information about upgrading `rippled`.
+See [Updating `rippled`](/docs/infrastructure/installation/update-rippled-automatically-on-linux) for more information about upgrading `rippled`.
 
 ## Impact of Not Upgrading
 
@@ -30,10 +30,10 @@ With this amendment enabled, currency issuers can authorize other addresses to h
 
 ## Learn More
 
-For more information, please see the TrustSetAuth documentation in the [Ripple Developer Portal](https://ripple.com/build/):
+For more information, please see the following documentation:
 
-* [Authorized Accounts](https://ripple.com/build/gateway-guide/#authorized-accounts)
+* [Authorized Trust Lines](/docs/concepts/tokens/fungible-tokens/authorized-trust-lines)
 
-* [Amendments](https://ripple.com/build/amendments/#trustsetauth)
+* [TrustSetAuth Amendment](/resources/known-amendments.md#trustsetauth)
 
 To continue receiving updates about the rippled server, please subscribe to the Ripple Server Google Group: https://groups.google.com/forum/#!forum/ripple-server

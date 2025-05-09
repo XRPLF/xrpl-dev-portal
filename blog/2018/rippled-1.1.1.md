@@ -22,13 +22,13 @@ Ripple has released `rippled` version 1.1.1, which improves handling of validato
 
 ## Upgrading
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled`](https://developers.ripple.com/update-rippled.html).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled`](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The SHA-256 for the RPM is: `a833fbaf988d85c985f80ad4dfd46a391cce7e884fba62b2f9b1b87aa41c3cfa`
 
 The SHA-256 for the source RPM is: `a88b538fc3ee0bb5cefe3e96622faebecebcc91e5c530f74283d49c9cfff41d4`
 
-For other platforms, please compile v1.1.1 from source. See the [`rippled` source tree](https://github.com/ripple/rippled/tree/develop/Builds) for instructions by platform. For instructions building `rippled` from source on Ubuntu Linux, see [Install `rippled` on Ubuntu](https://developers.ripple.com/install-rippled.html#installation-on-ubuntu-with-alien).
+For other platforms, please [compile v1.1.1 from source](https://github.com/XRPLF/rippled/tree/1.1.1/Builds).
 
 The first log entry should be the change setting the version:
 
@@ -54,14 +54,14 @@ When compiling `rippled` from source, you must use a compatible version of the B
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Developer Portal](https://developers.ripple.com/), including detailed reference information, tutorials, and web tools.
+Related documentation is available in the [XRP Ledger Developer Portal](/docs/), including detailed reference information, tutorials, and web tools.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 
 
@@ -74,4 +74,4 @@ Other resources:
 - Improve behavior of `rippled` servers when their latest available validator list is past its expiration (RIPD-1661):
     - Report the problem with an ERROR-level log message.
     - Stop sending validation messages for new ledgers until a non-expired validator list is available.
-    - Report the validator list as `expired` in the [server_info method](https://developers.ripple.com/server_info.html) and [server_state method](https://developers.ripple.com/server_state.html).
+    - Report the validator list as `expired` in the [server_info method](/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info) and [server_state method](/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state).

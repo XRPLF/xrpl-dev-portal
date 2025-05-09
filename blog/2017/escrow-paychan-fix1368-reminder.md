@@ -10,7 +10,7 @@ markdown:
 ---
 # Escrow, PayChan, and fix1368 Will Be Available in 3 Days
 
-A majority of `rippled` validators voted to enable the [Escrow](https://ripple.com/build/amendments/#escrow), [PayChan](https://ripple.com/build/amendments/#paychan), and [fix1368](https://ripple.com/build/amendments/#fix1368) Amendments, which are scheduled to become enabled on the network on Thursday, 2017-03-30.
+A majority of `rippled` validators voted to enable the [Escrow](/resources/known-amendments.md#escrow), [PayChan](/resources/known-amendments.md#paychan), and [fix1368](/resources/known-amendments.md#fix1368) Amendments, which are scheduled to become enabled on the network on Thursday, 2017-03-30.
 
 * **Escrow** (previously called SusPay), designed for low volume, high value transactions, permits users to cryptographically escrow XRP on RCL with an expiration date using a [hashlock crypto-condition](https://interledgerjs.github.io/five-bells-condition/jsdoc/).
 
@@ -25,7 +25,7 @@ A majority of `rippled` validators voted to enable the [Escrow](https://ripple.c
 
 ## Impact of Not Upgrading
 
-If you operate a `rippled` server but don’t upgrade to version 0.60.0 by Thursday, 2017-03-30, when **Escrow, PayChan & fix1368** are expected to be activated via Amendment, then your server will become [amendment blocked](https://ripple.com/build/amendments/#amendment-blocked), meaning that your server:
+If you operate a `rippled` server but don’t upgrade to version 0.60.0 by Thursday, 2017-03-30, when **Escrow, PayChan & fix1368** are expected to be activated via Amendment, then your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
 * Cannot determine the validity of a ledger
 * Cannot submit or process transactions
@@ -35,14 +35,14 @@ If you operate a `rippled` server but don’t upgrade to version 0.60.0 by Thurs
 
 If the **Escrow, PayChan & fix1368** amendments do not get approved, then your server will not become amendment blocked and should continue to operate.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

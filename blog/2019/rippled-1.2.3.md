@@ -24,7 +24,7 @@ If you operate an XRP Ledger server, then you should **upgrade to version 1.2.3 
 
 If you operate a rippled server, but do not upgrade to 1.2.3 immediately, then your server may experience restarts or outages.
 
-Additionally, if you are not already running [release 1.2.0](https://developers.ripple.com/blog/2019/rippled-1.2.0.html) or greater, then your server is [amendment blocked](https://developers.ripple.com/amendments.html#amendment-blocked), meaning that it:
+Additionally, if you are not already running [release 1.2.0](/blog/2019/rippled-1.2.0.md) or greater, then your server is [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
 * Cannot determine the validity of a ledger;
 
@@ -38,27 +38,23 @@ Additionally, if you are not already running [release 1.2.0](https://developers.
 
 ### Upgrading
 
-For instructions on updating XRP Ledger on supported platforms, see [Install rippled](https://developers.ripple.com/install-rippled.html).
+For instructions on updating XRP Ledger on supported platforms, see [Install `rippled`](/docs/infrastructure/installation).
 
 The SHA-256 for the RPM is: `8e6c5727c359d0c1d8a7235a149b18ddbad63d18de127b9370c335b1e4bc6775`
 
 The SHA-256 for the source RPM is: `b2664e7e47af0ceefbea3619505f37426f026146690a13565f381c8cb7ca25a6`
 
-For other platforms, please compile version 1.2.3 from source.
-
-* [Ubuntu Linux](https://developers.ripple.com/build-run-rippled-ubuntu.html)
-
-* [macOS](https://developers.ripple.com/build-run-rippled-macos.html)
-
-* [Other platforms](https://github.com/ripple/rippled/tree/master/Builds)
+For other platforms, please [compile version 1.2.3 from source](https://github.com/XRPLF/rippled/tree/1.2.3/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 0329ee236ffe2d7658bbdd1d970bb2af6337a941
-    Author: seelabs <scott.determan@yahoo.com>
-    Date:   Thu Mar 28 16:38:43 2019 -0400
+```text
+commit 0329ee236ffe2d7658bbdd1d970bb2af6337a941
+Author: seelabs <scott.determan@yahoo.com>
+Date:   Thu Mar 28 16:38:43 2019 -0400
 
-    	Set version to 1.2.3
+    Set version to 1.2.3
+```
 
 ## Network Update
 
@@ -66,17 +62,17 @@ The Ripple technical operations team plans to deploy version 1.2.3 to all XRP Le
 
 ## Known Issues
 
-Version 1.2.3 has a bug that can cause the server to stop checking for updates to its configured validator list sites. If this happens, your server may lose sync with the network when its current validator list file expires. You can restore sync by restarting the rippled service. (This issue is related to the issues fixed in the [version 1.1.1 release](https://developers.ripple.com/blog/2018/rippled-1.1.1.html).) A fix for this issue is forthcoming.
+Version 1.2.3 has a bug that can cause the server to stop checking for updates to its configured validator list sites. If this happens, your server may lose sync with the network when its current validator list file expires. You can restore sync by restarting the rippled service. (This issue is related to the issues fixed in the [version 1.1.1 release](/blog/2018/rippled-1.1.1.md).) A fix for this issue is forthcoming.
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
 * Ripple Technical Services: <support@ripple.com>
 

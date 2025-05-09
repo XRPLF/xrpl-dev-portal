@@ -14,7 +14,7 @@ Ripple has released `rippled` version 0.80.0, which introduces several enhanceme
 
 Highlights of this release include:
 
-* The **SortedDirectories** amendment sorts the entries in [`DirectoryNode` ledger objects](https://ripple.com/build/ledger-format/#directorynode). It also corrects a technical flaw that could, in some edge cases, prevent an empty intermediate page from being deleted.
+* The **SortedDirectories** amendment sorts the entries in [`DirectoryNode` ledger objects](/docs/references/protocol/ledger-data/ledger-entry-types/directorynode). It also corrects a technical flaw that could, in some edge cases, prevent an empty intermediate page from being deleted.
 
 Ripple expects the **SortedDirectories** amendment to be enabled on Tuesday, 2017-11-07.
 
@@ -25,7 +25,7 @@ Ripple expects the **SortedDirectories** amendment to be enabled on Tuesday, 201
 
 ## Impact of Not Upgrading
 
-If you operate a `rippled` server but do not upgrade to version 0.80.0 by Tuesday, 2017-11-07, when the **SortedDirectories** Amendment is expected to be activated, then your server will become [amendment blocked](https://ripple.com/build/amendments/#amendment-blocked), meaning that your server:
+If you operate a `rippled` server but do not upgrade to version 0.80.0 by Tuesday, 2017-11-07, when the **SortedDirectories** Amendment is expected to be activated, then your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
 * Cannot determine the validity of a ledger
 * Cannot submit or process transactions
@@ -39,13 +39,13 @@ If the **SortedDirectories** amendment does not get approved, then your `rippled
 
 **If you operate a `rippled` server that uses RocksDB as its data store**, then we recommend removing the RocksDB `file_size_mb` parameter from your `rippled.cfg` config file.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The sha256 for the rpm is: 0f67e8fdc9c555921534b6944ca418df007cee0705ab9e2fc5423963848b2935
 
 The sha256 for the source rpm is: 9c6f5074e1ec3ce6ced27c0da243bb7ed19a32a8bedf2d68809ec37845f42c1b
 
-For other platforms, please [compile version 0.80.0 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.80.0 from source](https://github.com/XRPLF/rippled/tree/0.80.0/Builds).
 
 The first log entry should be the change setting the version:
 
@@ -63,14 +63,14 @@ The Ripple operations team plans to deploy version 0.80.0 to all `rippled` serve
 At that time, `rippled` validators under Ripple’s operational control will begin voting for the **SortedDirectories** amendment.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
@@ -81,11 +81,11 @@ The **SortedDirectories** amendment addresses two distinct issues: First, it cor
 
 ## Upcoming Features
 
-The [previously announced](https://developers.ripple.com/blog/2017/rippled-0.70.0.html) FlowCross Amendment will be enabled on a future date (TBA).
+The [previously announced](/blog/2017/rippled-0.70.0.md) FlowCross Amendment will be enabled on a future date (TBA).
 
-We do not have an update on the [previously announced](https://developers.ripple.com/blog/2016/rippled-0.33.0.html) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](https://ripple.com/build/amendments/#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).
+We do not have an update on the [previously announced](/blog/2016/rippled-0.33.0.md) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](/resources/known-amendments.md#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).
 
-You can [update to the new version](https://ripple.com/build/rippled-setup/#updating-rippled) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/ripple/rippled/tree/master/Builds).
+You can [update to the new version](/docs/infrastructure/installation/update-rippled-automatically-on-linux) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md).
 
 
 ## 0.80.0 Change Log

@@ -72,7 +72,7 @@ On supported platforms, see the [instructions on updating rippled](https://xrpl.
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.7.0-1.el7.x86_64.rpm) | `da32137d460c6c2ce5b7035d82b637f71138fa92564f7ab1fdf04d1e59be8f2a` |
 | [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.7.0-1_amd64.deb) | `1920881caab4fac02a4a99a67bb4f2746b89f7b99f2c28e83832039a2dd5d8a5` |
 
-For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
 commit c0a0b79d2d483b318ce1d82e526bd53df83a4a2c

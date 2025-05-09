@@ -20,7 +20,7 @@ Version 1.2.1 introduces several fixes including:
 
 * A fix for a technical flaw that could cause a server to not properly detect that it had lost connectivity.
 
-Version 1.2.1 also adds [the delivered_amount field](https://developers.ripple.com/partial-payments.html#the-delivered-amount-field) to more responses to simplify the handling of payment or check cashing transactions.
+Version 1.2.1 also adds [the delivered_amount field](/docs/concepts/payment-types/partial-payments#the-delivered_amount-field) to more responses to simplify the handling of payment or check cashing transactions.
 
 <!-- BREAK -->
 
@@ -30,7 +30,7 @@ Version 1.2.1 also adds [the delivered_amount field](https://developers.ripple.c
 
 ### Impact of Not Upgrading
 
-Ripple expects the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendments to become enabled no earlier than Tuesday, 2019-03-12. When this happens, if you are not running release 1.2.0 or greater, your server will become [amendment blocked](https://developers.ripple.com/amendments.html#amendment-blocked), meaning that it:
+Ripple expects the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendments to become enabled no earlier than Tuesday, 2019-03-12. When this happens, if you are not running release 1.2.0 or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
 * Cannot determine the validity of a ledger;
 
@@ -46,19 +46,13 @@ If the **MultisignReserve**, **fixTakerDryOfferRemoval **and** fix1578** Amendme
 
 ### Upgrading
 
-For instructions on updating XRP Ledger on supported platforms, see here: <https://developers.ripple.com/install-rippled.html>.
+For instructions on updating XRP Ledger on supported platforms, see [Installation](/docs/infrastructure/installation).
 
 The SHA-256 for the RPM is: `dafe6dcc93252be317c12637850bd1a1c38a7c8f5db25c4f281c079b4ac3db71`
 
 The SHA-256 for the source RPM is: `699b4b740075ecf72d0ff0ef422e9747745552c4e17c21c28beb48fbb193ba75`
 
-For other platforms, please compile version 1.2.1 from source.
-
-* [Ubuntu Linux](https://developers.ripple.com/build-run-rippled-ubuntu.html)
-
-* [macOS](https://developers.ripple.com/build-run-rippled-macos.html)
-
-* [Other platforms](https://github.com/ripple/rippled/tree/master/Builds)
+For other platforms, please [compile version 1.2.1 from source](https://github.com/XRPLF/rippled/tree/1.2.1/Builds).
 
 The first log entry should be the change setting the version:
 
@@ -76,15 +70,15 @@ The Ripple technical operations team plans to deploy version 1.2.1 to all XRP Le
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the XRP Ledger Dev Portal, including detailed example API calls and web tools for API testing: [https://developers.ripple.com/](https://developers.ripple.com/)
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
 * Ripple Technical Services: <support@ripple.com>
 
-* [XRP Chat Forum](http://www.xrpchat.com/)
+* XRP Chat Forum _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Other Information
 
