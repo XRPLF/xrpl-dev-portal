@@ -27,3 +27,6 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
 .MarkpromptOverlay {
   z-index: 20;
 }
+.MarkpromptContentDialog{
+  z-index: 10000;
+}
