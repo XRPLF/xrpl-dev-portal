@@ -17,13 +17,18 @@ labels:
 
 | 名前                              | 登場       | ステータス                          |
 |:----------------------------------|:-----------|:------------------------------------|
-| [AMMClawback][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}投票中: 2025-03-06{% /badge %} |
+| [DeepFreeze][]                    | v2.4.0     | {% badge href="https://livenet.xrpl.org/transactions/976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021" %}有効: 2025-05-04{% /badge %} |
+| [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}投票中: 2025-03-06{% /badge %} |
+| [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}投票中: 2025-03-06{% /badge %} |
+| [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}投票中: 2025-03-06{% /badge %} |
+| [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}有効: 2025-01-30{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
-| [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
-| [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
-| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
-| [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
-| [fixReducedOffersV2][]            | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
+| [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/71D5031A5BD927BDFE424E51699E69F2784097D615D0852BF20C168BA9B5EA76" %}有効: 2025-01-30{% /badge %} |
+| [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/606FA84C4BA30F67582C11A39BBFC11A9D994E114CD515E9F63FC7D8701A8ED9" %}有効: 2025-01-30{% /badge %} |
+| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge https://livenet.xrpl.org/transactions/426314C8BC64BA339E97E53B278602ADC44F115056274BF7971F694C9A8AF946" %}有効: 2025-01-30{% /badge %} |
+| [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/2D9A29768A7FA4BAC01DF1941380077E304785279E5E49267EC269F53ABADF5A" %}有効: 2025-01-30{% /badge %} |
+| [fixReducedOffersV2][]            | v2.3.0     | {% badge https://livenet.xrpl.org/transactions/6D325D5EFF8230F1FECA3EE6418C9678637F3F56B0CA247013F70B3BDCFE75C8" %}有効: 2025-01-30{% /badge %} |
 | [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
 | [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
@@ -170,7 +175,7 @@ labels:
 | Amendment                      | AMMClawback                                                      |
 | :----------------------------- | :--------------------------------------------------------------- |
 | Amendment ID                   | 726F944886BCDF7433203787E93DD9AA87FAB74DFE3AF4785BA03BEFC97ADA1F |
-| ステータス                     | 投票中                                                           |
+| ステータス                     | 有効                                                           |
 | デフォルトの投票(最新の安定版) | いいえ                                                           |
 | Amendment前の機能は廃止?       | いいえ                                                           |
 
