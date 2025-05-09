@@ -11,9 +11,9 @@ author: Rome Reginelli
 ---
 # Dev Portal Adds rippled APIs
 
-Today, the [Ripple Dev Portal](https://developers.ripple.com/) gets a big boost of content and usability. The new additions to our development portal include thorough and tested documentation of all the public API methods for our core server software, ‘rippled’, alongside a host of improvements in styling and formatting, as well as new introductory material to give you direction in navigating the sea of Ripple technology.
+Today, the Ripple Dev Portal gets a big boost of content and usability. The new additions to our development portal include thorough and tested documentation of all the public API methods for our core server software, ‘rippled’, alongside a host of improvements in styling and formatting, as well as new introductory material to give you direction in navigating the sea of Ripple technology.
 
-This update brings very crucial content into the fold of documentation that's thorough, complete, and software-tested. Today, you can access [full specs and usage information for all 20+ public methods in the rippled WebSocket API](https://developers.ripple.com/rippled-api.html).
+This update brings very crucial content into the fold of documentation that's thorough, complete, and software-tested. Today, you can access [full specs and usage information for all 20+ public methods in the rippled WebSocket API](/docs/references/http-websocket-apis/public-api-methods).
 
 <!-- BREAK -->
 

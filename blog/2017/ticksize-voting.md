@@ -10,7 +10,7 @@ markdown:
 ---
 # TickSize Amendment Open for Voting
 
-Previously [introduced](https://developers.ripple.com/blog/2017/rippled-0.50.0.html) in `rippled` version 0.50.0, the [TickSize amendment](https://ripple.com/build/amendments/#ticksize) to the Ripple Consensus Ledger is now open for voting. The amendment changes the way offers are ranked in the RCL's order books, so that currency issuers can configure how many significant digits are taken into account when ranking offers by exchange rate.
+Previously [introduced](/blog/2017/rippled-0.50.0.md) in `rippled` version 0.50.0, the [TickSize amendment](/resources/known-amendments.md#ticksize) to the Ripple Consensus Ledger is now open for voting. The amendment changes the way offers are ranked in the RCL's order books, so that currency issuers can configure how many significant digits are taken into account when ranking offers by exchange rate.
 
 Ripple expects several benefits to result from adoption of the TickSize amendment, including faster price discovery and deeper liquidity, as well as a reduction in transaction spam and ledger churn on the RCL.
 
@@ -20,11 +20,11 @@ The introduction of TickSize demonstrates Ripple’s continued commitment to sup
 
 1. **If you operate a `rippled` server and accept secure client connections**, then you should upgrade to 0.50.2 immediately. If you operate a rippled server, but do not accept secure client connections then you should upgrade to version 0.50.0 by Tuesday, 2017-02-21, for service continuity.
 
-2. **If you run a gateway that issues currency on the RCL**, then please review [documentation](https://ripple.com/build/transactions/#offer-preference) for the TickSize amendment to determine what tick size is appropriate for your issuing asset.
+2. **If you run a gateway that issues currency on the RCL**, then please review documentation for the TickSize amendment to determine what tick size is appropriate for your issuing asset.
 
-3. **If you trade on the RCL** and have algorithmic trading bots, then please review [documentation](https://ripple.com/build/transactions/#offer-preference) for the TickSize amendment to update your trading system to check the tick size for a given issuer.
+3. **If you trade on the RCL** and have algorithmic trading bots, then please review documentation for the TickSize amendment to update your trading system to check the tick size for a given issuer.
 
-4. **If you have backend software**, which constructs and submits transactions related to the issuing of assets on the Ripple network, then please review [documentation](https://ripple.com/build/transactions/#offer-preference) for the TickSize amendment to adapt it for correct usage.
+4. **If you have backend software**, which constructs and submits transactions related to the issuing of assets on the Ripple network, then please review documentation for the TickSize amendment to adapt it for correct usage.
 
 ## Impact of Not Upgrading
 
@@ -38,17 +38,17 @@ If you operate a `rippled` server but don’t upgrade to version 0.50.0 (or high
 
 If the **TickSize** amendment is vetoed or does not pass, then your server will not become amendment blocked and should continue to operate.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 
 ## TickSize Amendment Overview
@@ -117,8 +117,8 @@ Tick sizes of between four and eight digits are reasonable. Four digits will pro
 
 ## Upcoming Features
 
-The [previously announced](https://developers.ripple.com/blog/2016/rippled-0.40.0.html) Suspended Payments amendment, which introduces new transaction types to the Ripple protocol that will permit users to cryptographically escrow XRP on the RCL, will be re-introduced as an amendment simply called *Escrow*, in the next release scheduled for March.
+The [previously announced](/blog/2016/rippled-0.40.0.md) Suspended Payments amendment, which introduces new transaction types to the Ripple protocol that will permit users to cryptographically escrow XRP on the RCL, will be re-introduced as an amendment simply called *Escrow*, in the next release scheduled for March.
 
 Also, we expect additional support for [crypto-conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), which are signature-like structures that can be used with suspended payments to support ILP integration, to be included in the next rippled release scheduled for March.
 
-Lastly, we do not have an update on the [previously announced](https://developers.ripple.com/blog/2016/rippled-0.33.0.html) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](https://ripple.com/build/amendments/#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).
+Lastly, we do not have an update on the [previously announced](/blog/2016/rippled-0.33.0.md) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](/resources/known-amendments.md#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).

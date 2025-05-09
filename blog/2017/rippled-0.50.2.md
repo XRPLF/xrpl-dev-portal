@@ -21,13 +21,13 @@ The `rippled` team has released 0.50.2, which adjusts the default TLS cipher lis
 
 If you operate a `rippled` server and accept secure client connections, but don’t upgrade to version 0.50.2, then your server may be unable to negotiate SSL connections.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The md5sum for the rpm is: 05cf675685158aabfc3ff6af7b1549d8
 
 The md5sum for the source rpm is: 0a8c93d67e1c27726ee57693177e7745
 
-For other platforms, please [compile version 0.50.2 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.50.2 from source](https://github.com/XRPLF/rippled/tree/0.50.2/Builds).
 
 The first log entry should be the change setting the version:
 
@@ -48,11 +48,11 @@ Adjust the default cipher list and correct a flaw that would not allow an SSL ha
 The Ripple operations team has deployed a configuration-based fix to all client-facing `rippled` servers under its operational control and will not be updating to 0.50.2 at this time.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

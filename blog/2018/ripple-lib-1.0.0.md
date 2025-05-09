@@ -56,14 +56,14 @@ The following changes were introduced in 1.0.0.
 
 ## Learn, ask questions, and discuss
 
-[ripple-lib Documentation](https://developers.ripple.com/rippleapi-reference.html) is available in the XRP Ledger Dev Portal.
+ripple-lib Documentation is available in the XRP Ledger Dev Portal.
 
 Other resources:
 
 * [Full Release History](https://github.com/ripple/ripple-lib/blob/develop/HISTORY.md)
 * [GitHub Issues](https://github.com/ripple/ripple-lib/issues)
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat Forum](http://www.xrpchat.com/)
+* XRP Chat Forum _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Other Information
 

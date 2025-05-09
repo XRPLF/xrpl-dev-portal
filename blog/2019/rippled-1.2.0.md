@@ -12,7 +12,7 @@ markdown:
 
 Ripple is pleased to announce the release of **XRP Ledger (`rippled`) version 1.2.0.**
 
-The XRP Ledger version 1.2.0 release introduces the [MultisignReserve](https://developers.ripple.com/known-amendments.html#multisignreserve) Amendment, which reduces the reserve requirement associated with signer lists for [Multisign](https://developers.ripple.com/set-up-multi-signing.html). This release also includes incremental improvements to the code that handles offers in the decentralized exchange ([fixTakerDryOfferRemoval](https://developers.ripple.com/known-amendments.html#fixtakerdryofferremoval) and [fix1578](https://developers.ripple.com/known-amendments.html#fix1578) Amendments).
+The XRP Ledger version 1.2.0 release introduces the [MultisignReserve](/resources/known-amendments.md#multisignreserve) Amendment, which reduces the reserve requirement associated with signer lists for [Multi-signing](/docs/concepts/accounts/multi-signing). This release also includes incremental improvements to the code that handles offers in the decentralized exchange ([fixTakerDryOfferRemoval](/resources/known-amendments.md#fixtakerdryofferremoval) and [fix1578](/resources/known-amendments.md#fix1578) Amendments).
 
 One of the major benefits of decentralized blockchain technologies, such as the XRP Ledger, is censorship resistance. Already highly resistant to censorship attempts, with the release of version 1.2.0 of the XRP Ledger, servers now have the ability to automatically detect transaction censorship attempts and issue warnings of increasing severity for transactions that a server believes should have been included in a closed ledger after several rounds of consensus.
 
@@ -24,7 +24,7 @@ One of the major benefits of decentralized blockchain technologies, such as the 
 
 ### Impact of Not Upgrading
 
-Ripple expects the **MultisignReserve**, **fixTakerDryOfferRemoval**, and **fix1578** amendments to become enabled no earlier than Wednesday, 2019-02-27. When this happens, if you are not running release 1.2.0 or greater, your server will become [amendment blocked](https://developers.ripple.com/amendments.html#amendment-blocked), meaning that it:
+Ripple expects the **MultisignReserve**, **fixTakerDryOfferRemoval**, and **fix1578** amendments to become enabled no earlier than Wednesday, 2019-02-27. When this happens, if you are not running release 1.2.0 or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
 * Cannot determine the validity of a ledger;
 
@@ -40,27 +40,23 @@ If the **MultisignReserve**, **fixTakerDryOfferRemoval**, and **fix1578** amendm
 
 ### Upgrading
 
-On supported platforms, see the [instructions on updating `rippled`](https://developers.ripple.com/install-rippled.html).
+On supported platforms, see the [instructions on updating `rippled`](/docs/infrastructure/installation).
 
 - The SHA-256 for the RPM is: `a6982002a5e7c3abb0078e9c986e4c28c8310ca67defa5f74a1b3581cc9bc0a4`
 
 - The SHA-256 for the source RPM is: `1927e5411619cc66170730342f1a7c38f6eafae8c4246d68e24cc0ad4fd62b9e`
 
-For other platforms, please compile version 1.2.0 from source.
-
-* [Ubuntu Linux](https://developers.ripple.com/build-run-rippled-ubuntu.html)
-
-* [macOS](https://developers.ripple.com/build-run-rippled-macos.html)
-
-* [Other platforms](https://github.com/ripple/rippled/tree/master/Builds)
+For other platforms, please [compile version 1.2.0 from source](https://github.com/XRPLF/rippled/tree/1.2.0/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 7779dcdda00ea61a976cf5f387bc1f3bb4ebbfdd
-    Author: Mike Ellery <mellery451@gmail.com>
-    Date:   Tue Feb 12 16:41:03 2019 -0800
+```text
+commit 7779dcdda00ea61a976cf5f387bc1f3bb4ebbfdd
+Author: Mike Ellery <mellery451@gmail.com>
+Date:   Tue Feb 12 16:41:03 2019 -0800
 
-        Set version to 1.2.0
+    Set version to 1.2.0
+```
 
 ## Network Update
 
@@ -68,7 +64,7 @@ The Ripple technical operations team plans to deploy version 1.2.0 to all XRP Le
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 

@@ -24,20 +24,22 @@ If you operate a `rippled` server but do not upgrade to version 0.90.1, your ser
 
 ### Upgrading
 
-For instructions on updating `rippled` on supported platforms, see here: [Updating rippled](https://ripple.com/build/rippled-setup/#updating-rippled)
+For instructions on updating `rippled` on supported platforms, see here: [Updating rippled](/docs/infrastructure/installation/update-rippled-automatically-on-linux)
 
-The SHA-256 for the rpm is: a22aff93d3de98ac3e1d775612e75e0e81aa7e6c18187db01efed485f854bab0
+The SHA-256 for the rpm is: `a22aff93d3de98ac3e1d775612e75e0e81aa7e6c18187db01efed485f854bab0`
 
-The SHA-256 for the source rpm is: abaaaba2039c8cd93218fd6a23c79b32bfb6eba92a465b7f9c0716b37fb45795
+The SHA-256 for the source rpm is: `abaaaba2039c8cd93218fd6a23c79b32bfb6eba92a465b7f9c0716b37fb45795`
 
-For other platforms, please compile version 0.90.1 from source. See [rippled Builds](https://github.com/ripple/rippled/tree/master/Builds) for instructions by platform. For instructions building `rippled` from source on Ubuntu Linux, see [Build and Run `rippled` on Ubuntu](https://ripple.com/build/build-run-rippled-ubuntu/).
+For other platforms, please [build version 0.90.1 from source](https://github.com/XRPLF/rippled/tree/0.90.1/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 067dbf299c297a8361e83e2ceaf7b0822ff9a3f5
-    Author: Nikolaos D. Bougalis <nikb@bougalis.net>
-    Date:   Tue Mar 6 16:38:02 2018 -0800
-    	Set version to 0.90.1
+```text
+commit 067dbf299c297a8361e83e2ceaf7b0822ff9a3f5
+Author: Nikolaos D. Bougalis <nikb@bougalis.net>
+Date:   Tue Mar 6 16:38:02 2018 -0800
+    Set version to 0.90.1
+```
 
 ## Network Update
 
@@ -61,13 +63,13 @@ Other compatible versions differ by platform. Boost 1.58.0 is compatible on Linu
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* The Ripple Dev Blog: <https://developers.ripple.com/blog/>
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
 * Ripple Technical Services: <support@ripple.com>
 
@@ -77,7 +79,7 @@ Other resources:
 
 The previously announced DepositAuth, Checks and fix1513 amendments are now open for voting on the XRP Ledger. The DepositAuth Amendment lets an account strictly reject any incoming money from transactions sent by other accounts. The Checks Amendment allows users to create a deferred payment that can be cancelled or cashed by its intended recipient. The fix1513 amendment fixes a minor bug in rounding calculations. Ripple expects the **DepositAuth**, **Checks**, and **fix1513** amendments to be enabled on Thursday, 2018-04-05.
 
-The [previously announced](https://developers.ripple.com/blog/2017/rippled-0.70.0.html) **FlowCross** Amendment will be enabled on a future date (TBA).
+The [previously announced](/blog/2017/rippled-0.70.0.md) **FlowCross** Amendment will be enabled on a future date (TBA).
 
 Compiling `rippled` with scons is deprecated. Starting in `rippled` version 1.0, the only supported build will be using CMake.
 

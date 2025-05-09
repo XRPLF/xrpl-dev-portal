@@ -14,11 +14,11 @@ Ripple has released `rippled` version 0.70.0, which introduces several enhanceme
 
 Highlights of this release include:
 
-* The [**FlowCross** Amendment](https://ripple.com/build/amendments/#flowcross), which streamlines offer crossing and autobrigding logic by leveraging the new “Flow” payment engine in `rippled`.
+* The [**FlowCross** Amendment](/resources/known-amendments.md#flowcross), which streamlines offer crossing and autobrigding logic by leveraging the new “Flow” payment engine in `rippled`.
 
-* The [**EnforceInvariants** Amendment](https://ripple.com/build/amendments/#enforceinvariants), which safeguards the integrity of RCL by introducing code that executes after every transaction and ensures that the execution did not violate key protocol rules.
+* The [**EnforceInvariants** Amendment](/resources/known-amendments.md#enforceinvariants), which safeguards the integrity of RCL by introducing code that executes after every transaction and ensures that the execution did not violate key protocol rules.
 
-* [**fix1373**](https://ripple.com/build/amendments/#fix1373), which addresses an issue that would cause payments with certain path specifications to not be properly parsed.
+* [**fix1373**](/resources/known-amendments.md#fix1373), which addresses an issue that would cause payments with certain path specifications to not be properly parsed.
 
 Ripple expects the **EnforceInvariants** and **fix1373** Amendments to be enabled on Thursday, 2017-06-29. The **FlowCross** Amendment will be enabled on a future date (TBA).
 
@@ -32,7 +32,7 @@ The algorithm that determines how many threads `rippled` uses has been changed w
 
 ## Impact of Not Upgrading
 
-If you operate a `rippled` server but do not upgrade to version 0.70.0 by Thursday, 2017-06-29, when **EnforceInvariants** and **fix1373** are expected to be activated via Amendment, then your server will become [amendment blocked](https://ripple.com/build/amendments/#amendment-blocked), meaning that your server:
+If you operate a `rippled` server but do not upgrade to version 0.70.0 by Thursday, 2017-06-29, when **EnforceInvariants** and **fix1373** are expected to be activated via Amendment, then your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
 * Cannot determine the validity of a ledger
 * Cannot submit or process transactions
@@ -42,21 +42,23 @@ If you operate a `rippled` server but do not upgrade to version 0.70.0 by Thursd
 
 If the **EnforceInvariants** and **fix1373** Amendments do not get approved, then your server will not become amendment blocked and should continue to operate.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The sha256 for the rpm is: 5a617bce531f39c044de535b6bda2a59371829dfc1079b67876b68c9a9748834
 
 The sha256 for the source rpm is: c51212ae374f69ddc10f967409a750834f06195cb384b2af04e4fa0c3fb81a24
 
-For other platforms, please [compile version 0.70.0 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.70.0 from source](https://github.com/XRPLF/rippled/tree/0.70.0/Builds).
 
 The first log entry should be the change setting the version:
 
-        commit 7b0d48281049c3fec7fafcb7ce5cea045367ae1f
-        Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Thu Jun 15 07:34:17 2017 -0700
+```text
+commit 7b0d48281049c3fec7fafcb7ce5cea045367ae1f
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Thu Jun 15 07:34:17 2017 -0700
 
-              Set version to 0.70.0
+    Set version to 0.70.0
+```
 
 ## Network Update
 The Ripple operations team plans to deploy version 0.70.0 to all `rippled` servers under its operational control, including private clusters, starting at 2:00 PM PST on Thursday, 2017-06-15. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
@@ -64,36 +66,36 @@ The Ripple operations team plans to deploy version 0.70.0 to all `rippled` serve
 At that time, `rippled` validators under Ripple’s operational control will begin voting for the **EnforceInvariants** and **fix1737** Amendments.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
 ### FlowCross
 
-Currently, the offer crossing code in `rippled` is independent of the payment flow code in `rippled`. The introduction of the **FlowCross** Amendment ensures that the same logic that drives payments also drives offer crossing. This change streamlines the code base, improves test coverage and is expected to result in some marginal performance benefits in offer crossing. For more information, see [FlowCross](https://ripple.com/build/amendments/#flowcross).
+Currently, the offer crossing code in `rippled` is independent of the payment flow code in `rippled`. The introduction of the **FlowCross** Amendment ensures that the same logic that drives payments also drives offer crossing. This change streamlines the code base, improves test coverage and is expected to result in some marginal performance benefits in offer crossing. For more information, see [FlowCross](/resources/known-amendments.md#flowcross).
 
 ### EnforceInvariants
 
-The introduction of the **EnforceInvariants** Amendment supplements existing safeguards of RCL  integrity. Once the amendment activates, the servers will execute specialized code to check key system invariants after the execution of each transaction. If a transaction fails any of the checks, it will be considered as invalid. For more information, see [EnforceInvariants](https://ripple.com/build/amendments/#enforceinvariants).
+The introduction of the **EnforceInvariants** Amendment supplements existing safeguards of RCL  integrity. Once the amendment activates, the servers will execute specialized code to check key system invariants after the execution of each transaction. If a transaction fails any of the checks, it will be considered as invalid. For more information, see [EnforceInvariants](/resources/known-amendments.md#enforceinvariants).
 
 ### fix1373 Amendment
 
-Version 0.70.0 also introduces the fix1373 Amendment to fix a minor bug in pathfinding that causes strand creation to fail. Specifically, the issue was related to paths that contain path elements where all the path elements types are set (account, currency and issuer). The fix1373 Amendment corrects the issue that caused some strand creation to fail. For more information, see [fix1373](https://ripple.com/build/amendments/#fix1373).
+Version 0.70.0 also introduces the fix1373 Amendment to fix a minor bug in pathfinding that causes strand creation to fail. Specifically, the issue was related to paths that contain path elements where all the path elements types are set (account, currency and issuer). The fix1373 Amendment corrects the issue that caused some strand creation to fail. For more information, see [fix1373](/resources/known-amendments.md#fix1373).
 
 These features underline Ripple’s continued support to improving RCL by making it more stable, secure and efficient for settlement of global payments.
 
 ## Upcoming Features
 
-We do not have an update on the [previously announced](https://developers.ripple.com/blog/2016/rippled-0.33.0.html) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](https://ripple.com/build/amendments/#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).
+We do not have an update on the [previously announced](/blog/2016/rippled-0.33.0.md) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](/resources/known-amendments.md#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).
 
-You can [update to the new version](https://ripple.com/build/rippled-setup/#updating-rippled) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/ripple/rippled/tree/master/Builds).
+You can [update to the new version](/docs/infrastructure/installation/update-rippled-automatically-on-linux) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md).
 
 
 ## 0.70.0 Change Log

@@ -38,7 +38,7 @@ On supported platforms, see the [instructions on installing or updating `rippled
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.9.4-1.el7.x86_64.rpm) | `fa6bbcda7781c6b3680e56849566f27d46df4cce16b1d9ff6432262f634f2970` |
 | [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.9.4-1_amd64.deb) | `2d23b897bc0bd235f2f74cd52eab8d0ac52b416c0294a02112385192285c0169` |
 
-For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
 commit ba3c0e51455a88d76d90b996f20c0f102ac3f5a0

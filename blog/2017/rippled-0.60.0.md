@@ -18,7 +18,7 @@ Highlights of this release include:
 
 * **[Dynamic UNL Lite](https://github.com/ripple/rippled/pull/1842)**, which allows `rippled` to automatically adjust which validators it trusts based on recommended lists from trusted publishers.
 
-Ripple expects Escrow, the [previously announced **Payment Channels**](https://developers.ripple.com/blog/2016/rippled-0.33.0.html), and the new [**fix1368** amendment](#fix1368-amendment) to be enabled via Amendments called [Escrow](https://ripple.com/build/amendments/#escrow), [PayChan](https://ripple.com/build/amendments/#paychan), and `fix1368`, respectively, on Thursday, 2017-03-30.
+Ripple expects Escrow, the [previously announced **Payment Channels**](/blog/2016/rippled-0.33.0.md), and the new [**fix1368** amendment](#fix1368-amendment) to be enabled via Amendments called [Escrow](/resources/known-amendments.md#escrow), [PayChan](/resources/known-amendments.md#paychan), and `fix1368`, respectively, on Thursday, 2017-03-30.
 
 
 ## Action Required
@@ -27,7 +27,7 @@ Ripple expects Escrow, the [previously announced **Payment Channels**](https://d
 
 ## Impact of Not Upgrading
 
-If you operate a `rippled` server but don’t upgrade to version 0.60.0 by Thursday, 2017-03-30, when Escrow and PayChan are expected to be activated via Amendment, then your server will become [amendment blocked](https://ripple.com/build/amendments/#amendment-blocked), meaning that your server:
+If you operate a `rippled` server but don’t upgrade to version 0.60.0 by Thursday, 2017-03-30, when Escrow and PayChan are expected to be activated via Amendment, then your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
 * Cannot determine the validity of a ledger
 * Cannot submit or process transactions
@@ -37,34 +37,36 @@ If you operate a `rippled` server but don’t upgrade to version 0.60.0 by Thurs
 
 If the **Escrow** and **PayChan** amendments do not get approved, then your server will not become amendment blocked and should continue to operate.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The sha256 for the rpm is: 4d2acb2a40e2d18ba1737098efdca54caa823a403ce9562c83e2dd2c9e959588
 
 The sha256 for the source rpm is: 3437a0202e762801869f31bf798417ebdb3717e16c4381dc0e9b02fe75d23024
 
-For other platforms, please [compile version 0.60.0 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.60.0 from source](https://github.com/XRPLF/rippled/tree/0.60.0/Builds).
 
 The first log entry should be the change setting the version:
 
-        commit 0df1b09a731ba0feaa5d60046e1c7dd415f5f7ed
-        Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Thu Mar 16 13:33:29 2017 -0700
+```text
+commit 0df1b09a731ba0feaa5d60046e1c7dd415f5f7ed
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Thu Mar 16 13:33:29 2017 -0700
 
-            Set version to 0.60.0
+    Set version to 0.60.0
+```
 
 ## Network Update
 The Ripple operations team plans to deploy version 0.60.0 to all `rippled` servers under its operational control, including private clusters, starting at 7:00 PM PST on Thursday, 2017-03-16. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
@@ -74,11 +76,11 @@ The rippled version 0.60.0 release includes Escrow, (previously called SusPay), 
 
 ### Payment Channels
 
-The amendment for Payment Channels was originally introduced in version 0.33.0, but is now ready for Payment Channels to be enabled on the production Ripple Consensus Ledger. XRP [Payment Channels](https://ripple.com/build/amendments/#paychan) are intended for high volume, low value payments. They provide a method for scalable, intermittent, off-ledger settlement flowing in a single direction. For bidirectional payment channels, an XRP Payment Channel can be used in each direction. The recipient can claim any unpaid balance at any time before the channel closes. The owner can top off the channel as needed and must wait out a delay to close the channel to give the recipient a chance to supply any claims. The total amount paid increases monotonically as newer claims are issued.
+The amendment for Payment Channels was originally introduced in version 0.33.0, but is now ready for Payment Channels to be enabled on the production Ripple Consensus Ledger. XRP [Payment Channels](/resources/known-amendments.md#paychan) are intended for high volume, low value payments. They provide a method for scalable, intermittent, off-ledger settlement flowing in a single direction. For bidirectional payment channels, an XRP Payment Channel can be used in each direction. The recipient can claim any unpaid balance at any time before the channel closes. The owner can top off the channel as needed and must wait out a delay to close the channel to give the recipient a chance to supply any claims. The total amount paid increases monotonically as newer claims are issued.
 
 ### Dynamic UNL Lite
 
-At the core of RCL is the [consensus process](https://ripple.com/build/ripple-ledger-consensus-process/). Through the consensus process, validating nodes agree on a specific subset of the candidate transactions to be considered for the next ledger. Consensus is an iterative process in which nodes relay proposals, or sets of candidate transactions. Nodes communicate and update proposals until a supermajority of peers agree on the same set of candidate transactions.
+At the core of RCL is the [consensus process](/docs/concepts/consensus-protocol). Through the consensus process, validating nodes agree on a specific subset of the candidate transactions to be considered for the next ledger. Consensus is an iterative process in which nodes relay proposals, or sets of candidate transactions. Nodes communicate and update proposals until a supermajority of peers agree on the same set of candidate transactions.
 
 During consensus, each node evaluates proposals from a specific set of peers, called chosen validators. Chosen validators represent a subset of the network which, when taken collectively, is “trusted” not to collude in an attempt to defraud the node evaluating the proposals. This definition of “trust” does not require that each individual chosen validator is trusted. Rather, validators are chosen based on the expectation they will not collude in a coordinated effort to falsify data relayed to the network.
 
@@ -94,9 +96,9 @@ These features underline Ripple’s continued support to improving RCL by making
 
 ## Upcoming Features
 
-We do not have an update on the [previously announced](https://developers.ripple.com/blog/2016/rippled-0.33.0.html) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](https://ripple.com/build/amendments/#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).
+We do not have an update on the [previously announced](/blog/2016/rippled-0.33.0.md) changes to the hash tree structure that `rippled` uses to represent a ledger, called [SHAMapV2](/resources/known-amendments.md#shamapv2). At the time of activation, this amendment will require brief scheduled allowable unavailability while the changes to the hash tree structure are computed by the network. We will keep the community updated as we progress towards this date (TBA).
 
-You can [update to the new version](https://ripple.com/build/rippled-setup/#updating-rippled) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/ripple/rippled/tree/master/Builds).
+You can [update to the new version](/docs/infrastructure/installation/update-rippled-automatically-on-linux) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md).
 
 
 ## 0.60.0 Change Log

@@ -22,15 +22,15 @@ As long as the amendments continue to have the support of at least 80% of truste
 
 Changes the result codes returned by two transaction types:
 
-- Changes the [OfferCreate transaction](https://developers.ripple.com/offercreate.html) to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
-- Changes the [TrustSet transaction](https://developers.ripple.com/trustset.html) to fail with `tecNO_PERMISSION` if it tries to enable the [NoRipple flag](https://developers.ripple.com/rippling.html#the-noripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the NoRipple flag, but the transaction result is `tesSUCCESS` nonetheless.
+- Changes the [OfferCreate transaction](/docs/references/protocol/transactions/types/offercreate.md) to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
+- Changes the [TrustSet transaction](/docs/references/protocol/transactions/types/trustset.md) to fail with `tecNO_PERMISSION` if it tries to enable the [NoRipple flag](/docs/concepts/tokens/fungible-tokens/rippling#the-no-ripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the NoRipple flag, but the transaction result is `tesSUCCESS` nonetheless.
 
 
 ## fixTakerDryOfferRemoval Summary
 
-Fixes a bug in [auto-bridging](https://developers.ripple.com/autobridging.html) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
+Fixes a bug in [auto-bridging](/docs/concepts/tokens/decentralized-exchange/autobridging) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
 
-Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](https://developers.ripple.com/reserves.html#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
+Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](/docs/concepts/accounts/reserves#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
 
 With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.
 
@@ -53,13 +53,13 @@ If you operate a `rippled` server but don’t upgrade to version 1.2.0 (or highe
 
 If the fix1578 amendment does not become enabled, then your server will not become amendment blocked until the fixTakerDryOfferRemoval amendment becomes enabled on 2019-04-02. If neither amendment becomes enabled, older server versions should continue to operate without becoming amendment blocked. However, it is still recommended that you update to [`rippled` version 1.2.2](https://github.com/ripple/rippled/releases/tag/1.2.2) or higher.
 
-For instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](https://developers.ripple.com/install-rippled.html).
+For instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](/docs/infrastructure/installation).
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
 * [XRP Chat Forum](http://www.xrpchat.com/)

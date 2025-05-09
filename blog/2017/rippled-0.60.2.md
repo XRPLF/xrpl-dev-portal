@@ -10,7 +10,7 @@ markdown:
 ---
 # rippled version 0.60.2
 
-The `rippled` team has released `rippled` version 0.60.2, which further strengthens handling of cases associated with a [previously patched exploit](https://developers.ripple.com/blog/2017/rippled-0.50.3.html), in which `NoRipple` flags were being bypassed by using offers. Ripple requires upgrading to `rippled` version 0.60.2 immediately. There are no new features in the 0.60.2 release. **Note**: This does not affect XRP transactions.
+The `rippled` team has released `rippled` version 0.60.2, which further strengthens handling of cases associated with a [previously patched exploit](/blog/2017/rippled-0.50.3.md), in which `NoRipple` flags were being bypassed by using offers. Ripple requires upgrading to `rippled` version 0.60.2 immediately. There are no new features in the 0.60.2 release. **Note**: This does not affect XRP transactions.
 
 Ripple will be following up with a postmortem, explaining the previosuly patched exploit, the timeline of events and the actions taken in more detail at a later date.
 
@@ -20,7 +20,7 @@ Ripple will be following up with a postmortem, explaining the previosuly patched
 
 **If you are an individual user**, then you should have the `NoRipple` flag enabled by default and set the trust line limit to zero on gateways that you do not trust.
 
-**If you are an individual user**, and you do not have the `NoRipple` flag enabled, and you discover a negative balance owed to an unknown account, then you should [freeze](https://ripple.com/build/freeze/#individual-freeze) that individual trust line.
+**If you are an individual user**, and you do not have the `NoRipple` flag enabled, and you discover a negative balance owed to an unknown account, then you should [freeze](/docs/concepts/tokens/fungible-tokens/freezes#individual-freeze) that individual trust line.
 
 
 ## Impact of Not Upgrading
@@ -29,21 +29,23 @@ Ripple will be following up with a postmortem, explaining the previosuly patched
 
 **If you operate a rippled validating server**, but do not upgrade to `rippled` version 0.60.2, which prevents `NoRipple` flags from being bypassed by using offers, then your server will validate some transactions in a payment path that bypass the blocking effect of the `NoRipple` flag using offers.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The sha256 for the RPM is: 3dc7412bda8986188164f0ff70ff80c351b17521e6943a876d5d3268fa07289d
 
 The sha256 for the source RPM is: f189ba1a8ae2201da47008ff50d027dcf719c7001c9b350b6759db279cbb48c8
 
-For other platforms, please [compile version 0.60.2 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.60.2 from source](https://github.com/XRPLF/rippled/tree/0.60.2/Builds).
 
 The first log entry should be the change setting the version:
 
-        commit 7cd4d7889779e6418270c8af89386194efbef24b
-        Author: seelabs <scott.determan@yahoo.com>
-        Date:   Thu Mar 30 14:25:41 2017 -0400
+```text
+commit 7cd4d7889779e6418270c8af89386194efbef24b
+Author: seelabs <scott.determan@yahoo.com>
+Date:   Thu Mar 30 14:25:41 2017 -0400
 
-        	Set version to 0.60.2
+    Set version to 0.60.2
+```
 
 
 ## Bug Fixes
@@ -56,11 +58,11 @@ The Ripple technical operations team plans to deploy `rippled` version 0.60.2 to
 
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

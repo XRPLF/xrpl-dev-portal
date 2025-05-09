@@ -14,7 +14,9 @@ As `rippled` servers operate, they continually witness data appended onto an eve
 
 As with most blockchains, it is imperative that XRP Ledger historical data remain readily available to participating servers. Therefore, every `rippled` server shares the responsibility of storing some history. But what if keeping the full history of the XRP Ledger starts to exceed the storage facility of most participants? For example, as of this writing, the space required to store full history of the XRP Ledger is over 8 terabytes, a hefty flash sum.
 
-The [history sharding](https://developers.ripple.com/history-sharding.html) feature, enabled in `rippled` version 0.90.0, addresses this issue by distributing history into segments called shards. A shard contains all of the data for a range of ledgers. Using the history sharding feature, individual `rippled` servers can contribute to storing historical data without needing to store the entire history.
+The history sharding feature, enabled in `rippled` version 0.90.0, addresses this issue by distributing history into segments called shards. A shard contains all of the data for a range of ledgers. Using the history sharding feature, individual `rippled` servers can contribute to storing historical data without needing to store the entire history.
+
+> _(Update: History sharding was removed in version 2.3.0.)_
 
 <!-- BREAK -->
 
@@ -24,7 +26,7 @@ Because servers that are configured with history sharding randomly select the sh
 
 ## Shard Store Validation
 
-Beginning with `rippled` version 0.90.0, you can use the [`--validateShards`](https://developers.ripple.com/commandline-usage.html#daemon-mode-options) command to check that shard store data is valid and consistent with network history. For example:
+Beginning with `rippled` version 0.90.0, you can use the `--validateShards` command to check that shard store data is valid and consistent with network history. For example:
 
         ./rippled --validateShards
 
@@ -33,13 +35,13 @@ This operation verifies that all objects stored for every ledger stored in each 
 
 ## Node Store to Shard Store
 
-Beginning with `rippled` version 1.0.0, you can use the [`--nodetoshard'](https://developers.ripple.com/commandline-usage.html#daemon-mode-options) command to import the data from an existing ledger store into a shard store. For example:
+Beginning with `rippled` version 1.0.0, you can use the `--nodetoshard' command to import the data from an existing ledger store into a shard store. For example:
 
         ./rippled --nodetoshard
 
 This command enables you to create shards based on the history you already have. The command creates shards from complete ledger ranges in the ledger store.
 
-The command creates a copy of the data, so your server must have the additional disk space required by the shard maximum disk space setting ([`max_size_gb`](https://developers.ripple.com/history-sharding.html#shard-store-configuration)) in the `rippled.cfg` configuration file.
+The command creates a copy of the data, so your server must have the additional disk space required by the shard maximum disk space setting (`max_size_gb`) in the `rippled.cfg` configuration file.
 
 
 ## Downloadable Shard Archives
@@ -58,4 +60,3 @@ Beginning with `rippled` version 1.1.0, you can use the `download_shard` API met
 
 A shard archive is a [tar](https://en.wikipedia.org/wiki/Tar_(computing)) of a complete shard directory compressed with LZ4. Downloaded archives are checked to be valid and consistent with network history before being imported.
 
-For more information, see [History Sharding](https://developers.ripple.com/history-sharding.html).

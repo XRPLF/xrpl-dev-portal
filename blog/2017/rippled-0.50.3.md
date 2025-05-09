@@ -34,21 +34,23 @@ If you operate a `rippled` server, but don’t upgrade to `rippled` version 0.50
 
 If you operate a `rippled` validating server, but don’t upgrade to `rippled` version 0.50.3, which includes a patch for the reported exploit, then your server will validate some transactions in a payment path that bypass the blocking effect of the `NoRipple` flag.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The sha256 for the rpm is: 2ee3e7e2912b5df9e3f8f88c5f6adfa60afbb37ef08afe50f6147795c5c2abaf
 
 The sha256 for the source rpm is: ada6f9ae8b8136569d28f03a43fef0f828e2c69857c81f230d17cf9f832cce0f
 
-For other platforms, please [compile version 0.50.3 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.50.3 from source](https://github.com/XRPLF/rippled/tree/0.50.3/Builds).
 
 The first log entry should be the change setting the version:
 
-        commit 82de944b30afef7fb6220424b62a79156e93b321
-        Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Mon Mar 13 15:49:21 2017 -0700
+```text
+commit 82de944b30afef7fb6220424b62a79156e93b321
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Mon Mar 13 15:49:21 2017 -0700
 
-        Set version to 0.50.3
+Set version to 0.50.3
+```
 
 ## Bug Fixes
 
@@ -59,11 +61,11 @@ Patch a reported exploit that would allow a combination of trust lines and order
 Ripple engineers have deployed the fix to all `rippled` validating servers under Ripple’s operational control and will not be updating client-facing `rippled` servers to 0.50.3 at this time. _(Editor's note: an earlier version of this post incorrectly stated that the fix was configuration-based. The fix was to update Ripple's validating servers to 0.50.3.)_
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

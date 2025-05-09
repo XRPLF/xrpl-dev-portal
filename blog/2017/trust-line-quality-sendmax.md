@@ -39,6 +39,6 @@ To experiment with the Ripple Consensus Ledger technology without using real mon
 ### Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog: <https://developers.ripple.com/blog/>
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* XRP Chat: <http://www.xrpchat.com>
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

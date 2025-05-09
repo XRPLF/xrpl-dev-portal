@@ -14,9 +14,9 @@ As previously announced, the fix1571 amendment [became enabled on the XRP Ledger
 
 ## Action Required
 
-- If you operate a `rippled` server, you should upgrade to [version 1.0.1](https://developers.ripple.com/blog/2018/rippled-1.0.1.html) (or higher) immediately.
+- If you operate a `rippled` server, you should upgrade to [version 1.0.1](/blog/2018/rippled-1.0.1.md) (or higher) immediately.
 
-For instructions on upgrading `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://developers.ripple.com/update-rippled.html).
+For instructions on upgrading `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 ## Impact of Not Upgrading
 
@@ -32,15 +32,15 @@ If you operate a `rippled` server on a version older than 1.0.0, then your serve
 
 Changes Escrow to fix the following issues:
 
-- Changes the [EscrowCreate transaction](https://developers.ripple.com/escrowcreate.html) to require the `Condition` or `FinishAfter` field (or both). Escrows with neither `Condition` nor `FinishAfter` that were created before this amendment can be finished by anyone at any time before their `CancelAfter` time.
+- Changes the [EscrowCreate transaction](/docs/references/protocol/transactions/types/escrowcreate) to require the `Condition` or `FinishAfter` field (or both). Escrows with neither `Condition` nor `FinishAfter` that were created before this amendment can be finished by anyone at any time before their `CancelAfter` time.
 - Fixes a flaw that incorrectly prevents time-based Escrows from being finished in some circumstances.
 
 ## Learn More
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

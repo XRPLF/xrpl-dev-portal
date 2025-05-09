@@ -24,7 +24,7 @@ If you operate an XRP Ledger server, then you should **upgrade to version 1.2.4 
 
 If you operate a rippled server, but do not upgrade to 1.2.4 immediately, then your server may experience restarts or outages and may be unable to retrieve updated validator lists from the publishers that you have configured.
 
-Additionally, if you are not already running [release 1.2.0](https://developers.ripple.com/blog/2019/rippled-1.2.0.html) or greater, then your server is [amendment blocked](https://developers.ripple.com/amendments.html#amendment-blocked), meaning that it:
+Additionally, if you are not already running [release 1.2.0](/blog/2019/rippled-1.2.0.md) or greater, then your server is [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
 * Cannot determine the validity of a ledger;
 
@@ -38,27 +38,22 @@ Additionally, if you are not already running [release 1.2.0](https://developers.
 
 ### Upgrading
 
-For instructions on updating XRP Ledger on supported platforms, see [Install rippled](https://developers.ripple.com/install-rippled.html).
+For instructions on updating XRP Ledger on supported platforms, see [Install `rippled`](/docs/infrastructure/installation).
 
 The SHA-256 for the RPM is: `63f33ca0fbd089a4d1bf5ca4f5c925087bb33209ccc0f29eba04a8e5de0c501a`
 
 The SHA-256 for the source RPM is: `9b38ee937d19c57d6461d7ed47ae477893ed7d9e23bfc4d867291d5e3b86b7cb`
 
-For other platforms, please compile version 1.2.4 from source.
-
-* [Ubuntu Linux](https://developers.ripple.com/build-run-rippled-ubuntu.html)
-
-* [macOS](https://developers.ripple.com/build-run-rippled-macos.html)
-
-* [Other platforms](https://github.com/ripple/rippled/tree/master/Builds)
+For other platforms, please [compile version 1.2.4 from source](https://github.com/XRPLF/rippled/tree/1.2.4/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 834f545498c0ff8fe22eb4648fe4534dea2ab965
-    Author: Nik Bougalis <nikb@bougalis.net>
-    Date:   Mon Apr 15 12:38:52 2019 -0700
-        Set version to 1.2.4
-
+```text
+commit 834f545498c0ff8fe22eb4648fe4534dea2ab965
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Mon Apr 15 12:38:52 2019 -0700
+    Set version to 1.2.4
+```
 
 ## Network Update
 
@@ -67,13 +62,13 @@ The Ripple technical operations has deployed version 1.2.4 to all XRP Ledger ser
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
 * Ripple Technical Services: <support@ripple.com>
 

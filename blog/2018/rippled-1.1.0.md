@@ -12,7 +12,7 @@ markdown:
 
 Ripple is pleased to announce the release of **XRP Ledger (`rippled`) version 1.1.0.**
 
-The XRP Ledger version 1.1.0 release includes the [DepositPreAuth](https://developers.ripple.com/known-amendments.html#depositpreauth) Amendment, which, combined with the previously released [DepositAuth](https://developers.ripple.com/known-amendments.html#depositauth) Amendment, allows users to pre-authorize incoming transactions to accounts, by whitelisting sender addresses. XRP Ledger version 1.1.0 release also includes incremental improvements to several previously released features ([fix1515](https://developers.ripple.com/known-amendments.html#fix1515) Amendment), deprecates support for the sign and sign_for commands from the rippled API and improves invariant checking for enhanced security.
+The XRP Ledger version 1.1.0 release includes the [DepositPreAuth](/resources/known-amendments.md#depositpreauth) Amendment, which, combined with the previously released [DepositAuth](/resources/known-amendments.md#depositauth) Amendment, allows users to pre-authorize incoming transactions to accounts, by whitelisting sender addresses. XRP Ledger version 1.1.0 release also includes incremental improvements to several previously released features ([fix1515](/resources/known-amendments.md#fix1515) Amendment), deprecates support for the sign and sign_for commands from the rippled API and improves invariant checking for enhanced security.
 
 Ripple recommends that all server operators upgrade to XRP Ledger version 1.1.0 by Thursday, 2018-09-27, to ensure service continuity.
 
@@ -22,7 +22,7 @@ Ripple recommends that all server operators upgrade to XRP Ledger version 1.1.0 
 
 ### Impact of Not Upgrading
 
-Ripple expects the **DepositPreAuth** or **fix1515** amendments to become enabled on or after Thursday, 2018-09-27. When this happens, if you are not running release 1.1.0 or greater, your server will become [amendment blocked](https://ripple.com/build/amendments/#amendment-blocked), meaning that it:
+Ripple expects the **DepositPreAuth** or **fix1515** amendments to become enabled on or after Thursday, 2018-09-27. When this happens, if you are not running release 1.1.0 or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
 * Cannot determine the validity of a ledger;
 
@@ -38,21 +38,23 @@ If the **DepositPreAuth** and **fix1515** Amendments do not become enabled, then
 
 ### Upgrading
 
-For instructions on updating the XRP Ledger server on supported platforms, see here: [Updating `rippled` on Supported Platforms](https://developers.ripple.com/update-rippled.html).
+For instructions on updating the XRP Ledger server on supported platforms, see here: [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 - The SHA-256 for the RPM is: `ec50f3cec7dcbea8aaa2eb9d97c3c1fc02d44ce62203557b4cd213cf1b0fe4b5`
 
 - The SHA-256 for the source RPM is: `936844990e70615183681c41884ea96804ee4130d6f9ec32242fb3a16120824f`
 
-For other platforms, please compile version 1.1.0 from source. See [`rippled` build instructions by platform](https://github.com/ripple/rippled/tree/master/Builds), or [Build and Run `rippled` on Ubuntu Linux](https://ripple.com/build/build-run-rippled-ubuntu/) for further instructions.
+For other platforms, please [compile version 1.1.0 from source](https://github.com/XRPLF/rippled/tree/1.1.0/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 3e22a1e9e8f2de450eded6ca4c2db6411e329b2a
-    Author: Nik Bougalis <nikb@bougalis.net>
-    Date:   Wed Sep 5 18:34:43 2018 -0700
+```text
+commit 3e22a1e9e8f2de450eded6ca4c2db6411e329b2a
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Wed Sep 5 18:34:43 2018 -0700
 
-        Set version to 1.1.0
+    Set version to 1.1.0
+```
 
 ## Network Update
 
@@ -60,12 +62,12 @@ The Ripple technical operations has deployed version 1.1.0 to all XRP Ledger ser
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the XRP Ledger Dev Portal, including detailed example API calls and web tools for API testing: [https://developers.ripple.com/](https://developers.ripple.com/)
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog: <https://developers.ripple.com/blog/>
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
 * XRP Chat: <http://www.xrpchat.com/>
 
@@ -117,7 +119,7 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 * Deprecate the ‘sign’ and ‘sign_for’ APIs ([#2657](https://github.com/ripple/rippled/pull/2657))
 
-* Use liquidity from strands that consume too many offers, which will be enabled on [fix1515](https://developers.ripple.com/known-amendments.html#fix1515) Amendment ([#2546](https://github.com/ripple/rippled/pull/2546))
+* Use liquidity from strands that consume too many offers, which will be enabled on [fix1515](/resources/known-amendments.md#fix1515) Amendment ([#2546](https://github.com/ripple/rippled/pull/2546))
 
 * Fix a corner case when decoding base64 ([#2605](https://github.com/ripple/rippled/pull/2605/commits/0439dcfa7a5215cc74a8e254a28eadace6a524b7))
 

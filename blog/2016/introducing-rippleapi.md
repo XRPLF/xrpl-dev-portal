@@ -12,11 +12,13 @@ markdown:
 
 Ripple is proud to announce an improved, unified interface to the Ripple Consensus Ledger: the new **RippleAPI**! RippleAPI merges ripple-lib and Ripple-REST into a single high-level interface for JavaScript that is fully-documented, fully-tested, schema-validated, stateless, and easier to use.
 
+> _Editor's note: RippleAPI is obsolete. This post has been edited to remove dead links, but otherwise preserved in its original form. For a modern equivalent, see [xrpl.js](https://js.xrpl.org/)._
+
 If you’re excited to get started with the new RippleAPI right away, jump right in with the following resources:
 
-1.  [RippleAPI Beginners Guide](https://ripple.com/build/rippleapi-beginners-guide/) - A tutorial that introduces the basics of RippleAPI, even if you have minimal prior experience writing JavaScript applications.
-2.  [RippleAPI Reference](https://ripple.com/build/rippleapi/) - A thorough reference of all methods and features contained in the new API.
-3.  [Sample Code](https://github.com/ripple/ripple-lib/tree/develop/docs/samples) - Additional code samples for a growing variety of use cases.
+1.  **RippleAPI Beginners Guide** - A tutorial that introduces the basics of RippleAPI, even if you have minimal prior experience writing JavaScript applications.
+2.  **RippleAPI Reference** - A thorough reference of all methods and features contained in the new API.
+3.  **Sample Code** - Additional code samples for a growing variety of use cases.
 4.  [`ripple-lib` on GitHub](https://github.com/ripple/ripple-lib) - The RippleAPI source code is available under an open-source license so you can freely download, modify, and contribute back to the project.
 
 For more information on how and why we built RippleAPI, read on.
@@ -33,7 +35,7 @@ In order to better focus our efforts as a company, as well as providing a better
 
 Unfortunately, all good things come to an end, and this is the end of the line for Ripple-REST. We are no longer developing or supporting Ripple-REST, and we recommend you migrate your applications away from it. Fortunately, RippleAPI also includes an [experimental REST-like HTTP API](https://github.com/ripple/ripple-lib/blob/0.17.1/src/index.js#L7-L8), although this interface is currently unsupported.
 
-Meanwhile, the [`rippled` APIs](https://ripple.com/build/rippled-apis/) continue to provide an alternative method of interacting with the Ripple Consensus Ledger, providing maximum power at a cost of increased complexity, so you can choose the tradeoffs that are best for your use case.
+Meanwhile, the [`rippled` APIs](/docs/references/http-websocket-apis) continue to provide an alternative method of interacting with the Ripple Consensus Ledger, providing maximum power at a cost of increased complexity, so you can choose the tradeoffs that are best for your use case.
 
 ## Source Code Improvements
 

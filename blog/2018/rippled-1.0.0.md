@@ -22,7 +22,7 @@ Ripple recommends that all server operators upgrade to `rippled` v1.0.0 by Thurs
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to version 1.0.0 by Thursday, 2018-06-14--when **[fix1543](https://developers.ripple.com/known-amendments.html#fix1543)**, **[fix1571](https://developers.ripple.com/known-amendments.html#fix1571)** and **[fix1623](https://developers.ripple.com/known-amendments.html#fix1623)** are expected to be enabled via Amendment——then your `rippled` server will become amendment blocked. A server that is amendment blocked:
+* **If you operate a `rippled` server**, but do not upgrade to version 1.0.0 by Thursday, 2018-06-14--when **[fix1543](/resources/known-amendments.md#fix1543)**, **[fix1571](/resources/known-amendments.md#fix1571)** and **[fix1623](/resources/known-amendments.md#fix1623)** are expected to be enabled via Amendment——then your `rippled` server will become amendment blocked. A server that is amendment blocked:
 
 
 * Cannot determine the validity of a ledger
@@ -35,21 +35,22 @@ If the **fix1543**, **fix1571** and **fix1623** Amendments are not enabled, then
 
 ## Upgrading
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled`](https://developers.ripple.com/update-rippled.html).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled`](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The SHA-256 for the RPM is: `100376fbbfdf540264097c333a76b562c742fa5800c65f3c555d16347e23cda3`
 
 The SHA-256 for the source RPM is: `10f472979785db537c4d28bc5a9c71c642cfeac306557368e588d72797439eda`
 
-For other platforms, please compile v1.0.0 from source. See the [`rippled` source tree](https://github.com/ripple/rippled/tree/develop/Builds) for instructions by platform. For instructions building `rippled` from source on Ubuntu Linux, see [Install `rippled` on Ubuntu](https://developers.ripple.com/install-rippled.html#installation-on-ubuntu-with-alien).
+For other platforms, please [compile v1.0.0 from source](https://github.com/XRPLF/rippled/tree/1.0.0/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit f31ca2860fb5f045b618aa05d1e76c7e2e9494ec
-    Author: Nikolaos D. Bougalis <nikb@bougalis.net>
-    Date:   Fri May 11 10:29:41 2018 -0700
-    Set version to 1.0.0
-
+```text
+commit f31ca2860fb5f045b618aa05d1e76c7e2e9494ec
+Author: Nikolaos D. Bougalis <nikb@bougalis.net>
+Date:   Fri May 11 10:29:41 2018 -0700
+Set version to 1.0.0
+```
 
 ## Network Update
 
@@ -58,14 +59,14 @@ The Ripple technical operations team has deployed version 1.0.0 to all `rippled`
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Developer Portal](https://developers.ripple.com/index.html), including detailed reference information, tutorials, and web tools.
+Related documentation is available in the XRP Ledger Developer Portal, including detailed reference information, tutorials, and web tools.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Other Information
 
@@ -115,19 +116,19 @@ For compatibility with other Boost versions, see the following table.
 
 The **XRP Ledger** is a public decentralized cryptographic ledger powered by a global network of peer-to-peer servers. The XRP Ledger is the root ledger of XRP, a digital asset designed to bridge global currencies for payments. As a software company, Ripple contributes to the open source development of the XRP Ledger, in support of the Internet of Value: a world in which money moves the way information does today.
 
-For more information, see [XRP Ledger Overview](https://developers.ripple.com/xrp-ledger-overview.html).
+For more information, see [XRP Ledger Overview](/docs/introduction/what-is-the-xrp-ledger).
 
 #### Consensus
 
 Among the key benefits of the XRP Ledger is a fast and efficient consensus algorithm, which can settle transactions in 4 to 5 seconds, while processing at a throughput of up to 1,500 transactions per second.
 
-The consensus algorithm is [censorship-resistant](https://developers.ripple.com/xrp-ledger-overview.html#censorship-resistant-transaction-processing). Because no single party decides which transactions succeed or fail, no one can "roll back" a transaction after it completes and no one has control over the consensus algorithm. Instead, individual server operators can select a list of validators that they choose to trust not to collude in an attempt to defraud the rest of the network.
+The consensus algorithm is censorship-resistant. Because no single party decides which transactions succeed or fail, no one can "roll back" a transaction after it completes and no one has control over the consensus algorithm. Instead, individual server operators can select a list of validators that they choose to trust not to collude in an attempt to defraud the rest of the network.
 
-For more information on how the XRP Ledger's consensus algorithm works, see [Consensus](https://developers.ripple.com/consensus.html). For background on why the XRP Ledger uses this consensus algorithm, see [Consensus Principles and Rules](https://developers.ripple.com/consensus-principles-and-rules.html).
+For more information on how the XRP Ledger's consensus algorithm works, see [Consensus](/docs/concepts/consensus-protocol). For background on why the XRP Ledger uses this consensus algorithm, see [Consensus Principles and Rules](/docs/concepts/consensus-protocol/consensus-principles-and-rules).
 
 #### Protocol Amendments
 
-The XRP Ledger has integrated support for [amendments](https://developers.ripple.com/amendments.html), which allow for the introduction of new features to the decentralized XRP Ledger network without causing disruptions. Amendments work by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect.
+The XRP Ledger has integrated support for [amendments](/docs/concepts/networks-and-servers/amendments), which allow for the introduction of new features to the decentralized XRP Ledger network without causing disruptions. Amendments work by utilizing the core consensus process of the network to approve any changes by showing continuous support before those changes go into effect.
 
 #### Cryptography
 
@@ -135,31 +136,30 @@ The XRP Ledger relies on industry-standard digital signature systems like ECDSA 
 
 For more information, see:
 
-* [Cryptographic Keys](https://developers.ripple.com/cryptographic-keys.html)  
-* [Multi-signing](https://developers.ripple.com/multi-signing.html)
+* [Cryptographic Keys](/docs/concepts/accounts/cryptographic-keys)  
+* [Multi-signing](/docs/concepts/accounts/multi-signing)
 
 #### Advanced Features
 
 In addition to multi-signing, the XRP Ledger supports other advanced features, such as:
 
-* [Escrow](https://developers.ripple.com/escrow.html)
-* [Checks](https://developers.ripple.com/checks.html)
-* [Deposit Authorization](https://developers.ripple.com/depositauth.html)  
-* [Payment Channels](https://developers.ripple.com/payment-channels.html)  
+* [Escrow]/docs/concepts/payment-types/escrow)
+* [Checks](/docs/concepts/payment-types/checks)
+* [Deposit Authorization](/docs/concepts/accounts/depositauth)  
+* [Payment Channels](/docs/concepts/payment-types/payment-channels)  
 * [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-04)
 
 These features make it possible to implement cutting-edge financial applications or interact with the [Interledger Protocol](https://interledger.org/). This toolbox of advanced features comes with a wide range safety checks that validate all transactions against a list of invariant constraints.
 
 #### Decentralized Exchange
 
-The XRP Ledger also has a fully-functional accounting system for publicly tracking and trading obligations denominated in any way users want, along with a decentralized exchange built into the ledger. The XRP Ledger can settle long, cross-currency [payment paths](https://developers.ripple.com/paths.html) and [exchanges](https://developers.ripple.com/decentralized-exchange.html) of multiple currencies in atomic transactions, bridging gaps of trust with XRP.
+The XRP Ledger also has a fully-functional accounting system for publicly tracking and trading obligations denominated in any way users want, along with a decentralized exchange built into the ledger. The XRP Ledger can settle long, cross-currency [payment paths](/docs/concepts/tokens/fungible-tokens/paths) and exchanges of multiple currencies in atomic transactions, bridging gaps of trust with XRP.
 
 For more information on how the decentralized exchange works, see:
 
-* [On-Ledger Decentralized Exchange](https://developers.ripple.com/xrp-ledger-overview.html#on-ledger-decentralized-exchange)
-* [Decentralized Exchange](https://developers.ripple.com/decentralized-exchange.html)  
-* [Offers](https://developers.ripple.com/offers.html)
-* [Become an XRP Ledger Gateway](https://developers.ripple.com/become-an-xrp-ledger-gateway.html)
+* [Decentralized Exchange](/docs/concepts/tokens/decentralized-exchange)  
+* [Offers](/docs/concepts/tokens/decentralized-exchange/offers)
+* [Stablecoin Issuer](/docs/use-cases/tokenization/stablecoin-issuer)
 
 #### Acknowledgements
 

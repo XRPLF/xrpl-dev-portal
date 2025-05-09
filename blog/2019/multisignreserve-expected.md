@@ -14,21 +14,21 @@ The MultiSignReserve amendment to the XRP Ledger, introduced in [`rippled` v1.2.
 
 ## MultiSignReserve Summary
 
-Reduces the [owner reserve](https://developers.ripple.com/reserves.html#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](https://developers.ripple.com/multi-signing.html) SignerList.
+Reduces the [owner reserve](/docs/concepts/accounts/reserves#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](/docs/concepts/accounts/multi-signing) SignerList.
 
 Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.
 
-With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](https://developers.ripple.com/signerlistset.html) to replace the SignerList after this amendment has been enabled. (The replacement can be identical to the previous version.)
+With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](/docs/references/protocol/transactions/types/signerlistset.md) to replace the SignerList after this amendment has been enabled. (The replacement can be identical to the previous version.)
 
 ## No Action Required
 
-The MultiSignReserve amendment is supported by `rippled` versions 1.2.0 and later, which have been required on the production XRP Ledger since [fix1578 became enabled](https://developers.ripple.com/blog/2019/fix1578-enabled.html) on 2019-03-23. [Version 1.2.3](https://developers.ripple.com/blog/2019/rippled-1.2.3.html) is recommended.
+The MultiSignReserve amendment is supported by `rippled` versions 1.2.0 and later, which have been required on the production XRP Ledger since [fix1578 became enabled](/blog/2019/fix1578-enabled.md) on 2019-03-23. [Version 1.2.3](/blog/2019/rippled-1.2.3.md) is recommended.
 
 If you are already using multi-signing in production, no changes are necessary to continue to use multi-signing after this amendment becomes enabled. If the amendment becomes enabled, you can benefit from the lowered reserve requirement for your account's SignerList by updating or replacing the SignerList. (The replacement can be identical to the previous version.)
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 

@@ -24,7 +24,7 @@ Version 1.2.2 corrects a technical flaw in the fee escalation engine which could
 
 If you operate a rippled server, but do not upgrade to 1.2.2 as soon as possible, then your server may experience restarts or outages.
 
-Additionally, the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendments are expected to become enabled no earlier than Wednesday, 2019-03-20. When this happens, if you are not running [release 1.2.0](https://developers.ripple.com/blog/2019/rippled-1.2.0.html) or greater, your server will become [amendment blocked](https://developers.ripple.com/amendments.html#amendment-blocked), meaning that it:
+Additionally, the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendments are expected to become enabled no earlier than Wednesday, 2019-03-20. When this happens, if you are not running [release 1.2.0](/blog/2019/rippled-1.2.0.md) or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
 * Cannot determine the validity of a ledger;
 
@@ -40,27 +40,23 @@ If the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendme
 
 ### Upgrading
 
-For instructions on updating XRP Ledger on supported platforms, see here: [Install `rippled`](https://developers.ripple.com/install-rippled.html)
+For instructions on updating XRP Ledger on supported platforms, see here: [Install `rippled`](/docs/infrastructure/installation)
 
 The SHA-256 for the RPM is: `e846e864c273593fcfbc9b1f21c7f2cf236454fd88ab8624446f446e9df0a447`
 
 The SHA-256 for the source RPM is: `c8a67054d81fc5d7dfba5b4ebe630f44507886da418c5ba6fb7a245e9d78cd01`
 
-For other platforms, please compile version 1.2.2 from source.
-
-* [Ubuntu Linux](https://developers.ripple.com/build-run-rippled-ubuntu.html)
-
-* [macOS](https://developers.ripple.com/build-run-rippled-macos.html)
-
-* [Other platforms](https://github.com/ripple/rippled/tree/master/Builds)
+For other platforms, please [compile version 1.2.2 from source](https://github.com/XRPLF/rippled/tree/1.2.2/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 0ebed961424d9757f5d26ce7e8b3e5e8d83eb239
-    Author: seelabs <scott.determan@yahoo.com>
-    Date:   Mon Mar 4 11:45:12 2019 -0500
+```text
+commit 0ebed961424d9757f5d26ce7e8b3e5e8d83eb239
+Author: seelabs <scott.determan@yahoo.com>
+Date:   Mon Mar 4 11:45:12 2019 -0500
 
-        Set version to 1.2.2
+    Set version to 1.2.2
+```
 
 ## Network Update
 
@@ -68,13 +64,13 @@ The Ripple technical operations team plans to deploy version 1.2.2 to all XRP Le
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
 * Ripple Technical Services: <support@ripple.com>
 

@@ -10,13 +10,13 @@ markdown:
 ---
 # DepositPreauth is Now Available
 
-The [DepositPreauth](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927) and [fix1515](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF) amendments, [added in `rippled` v1.1.0](https://developers.ripple.com/blog/2018/rippled-1.1.0.html), became enabled on the XRP Ledger today, 2018-10-09.
+The [DepositPreauth](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927) and [fix1515](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF) amendments, [added in `rippled` v1.1.0](/blog/2018/rippled-1.1.0.md), became enabled on the XRP Ledger today, 2018-10-09.
 
 ## Action Required
 
 - If you operate a `rippled` server, you should upgrade to version 1.1.0 (or higher) immediately.
 
-For instructions on upgrading `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://developers.ripple.com/update-rippled.html).
+For instructions on upgrading `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 ## Impact of Not Upgrading
 
@@ -30,7 +30,7 @@ If you operate a `rippled` server on a version older than 1.1.0, then your serve
 
 ## DepositPreauth Summary
 
-The DepositPreauth amendment provides users of [deposit authorization](https://developers.ripple.com/depositauth.html) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
+The DepositPreauth amendment provides users of [deposit authorization](/docs/concepts/accounts/depositauth) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
 
 The amendment adds:
 
@@ -53,11 +53,11 @@ In both cases, transaction processing can still complete by using liquidity from
 
 
 ## Learn More
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

@@ -10,7 +10,7 @@ markdown:
 ---
 # The FlowV2 Amendment is Open for Voting
 
-The [FlowV2 Amendment](https://ripple.com/build/amendments/#flowv2) is now open for voting. This amendment replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old engine. However, the new engine occasionally produces different results due to floating point rounding.
+The [FlowV2 Amendment](/resources/known-amendments.md#flowv2) is now open for voting. This amendment replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old engine. However, the new engine occasionally produces different results due to floating point rounding.
 
 The FlowV2 Engine also makes it easier to improve and expand the payment engine with further Amendments. Ripple’s validators will vote in favor of the FlowV2 amendment. We expect the new feature to become active on Wednesday, 2016-08-24.
 
@@ -24,17 +24,17 @@ If you operate a `rippled` server, you should upgrade to version 0.32.1 by Wedne
 
 If you operate a `rippled` server but don’t upgrade to version 0.32.1 by Wednesday, 2016-08-24 (when FlowV2 is expected to become available via Amendment) then your server will become "amendment blocked" and unable to process transactions or evaluate the validity of ledgers.
 
-For instruction on updating `rippled` on supported platforms, see: <https://ripple.com/build/rippled-setup/#updating-rippled>
+For instruction on updating `rippled` on supported platforms, see: </docs/infrastructure/installation/update-rippled-automatically-on-linux>
 
-For other platforms, please compile version 0.32.1 from source. For details, see <https://github.com/ripple/rippled/tree/master/Builds>
+For other platforms, please [compile version 0.32.1 from source](https://github.com/XRPLF/rippled/tree/0.32.1/Builds).
 
 ## Learn, Ask Questions, and Discuss
 
-Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing: <https://ripple.com/build/>
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 ## Other Resources
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog: <https://developers.ripple.com/blog/>
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* XRP Chat: <http://www.xrpchat.com>
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

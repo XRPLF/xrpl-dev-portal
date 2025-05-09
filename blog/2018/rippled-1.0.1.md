@@ -24,21 +24,23 @@ While these issues can result in a denial of service attack, none affect the int
 
 ## Upgrading
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled`](https://developers.ripple.com/update-rippled.html).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled`](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The SHA-256 for the RPM is: `4bfa27b0e1e1979f2bc042edb9dd11ae4119dac6be087813dadcc67572877189`
 
 The SHA-256 for the source RPM is: `60279abc65476b0a96ddedcd23338ce1c6fb5481ab94fe8b8c856448044e3ebe`
 
-For other platforms, please compile v1.0.1 from source. See the [`rippled` source tree](https://github.com/ripple/rippled/tree/develop/Builds) for instructions by platform. For instructions building `rippled` from source on Ubuntu Linux, see [Install `rippled` on Ubuntu](https://developers.ripple.com/install-rippled.html#installation-on-ubuntu-with-alien).
+For other platforms, please [compile v1.0.1 from source](https://github.com/XRPLF/rippled/tree/1.0.1/Builds).
 
 The first log entry should be the change setting the version:
 
-    commit 8429dd67e60ba360da591bfa905b58a35638fda1
-    Author: Nik Bougalis <nikb@bougalis.net>
-    Date:   Mon Jun 4 16:36:22 2018 -0700
+```text
+commit 8429dd67e60ba360da591bfa905b58a35638fda1
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Mon Jun 4 16:36:22 2018 -0700
 
-          Set version to 1.0.1
+    Set version to 1.0.1
+```
 
 ## Network Update
 
@@ -62,19 +64,19 @@ Other compatible versions differ by platform. Boost 1.58.0 is compatible on Linu
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Developer Portal](https://developers.ripple.com/index.html), including detailed reference information, tutorials, and web tools.
+Related documentation is available in the [XRP Ledger Developer Portal](/docs/), including detailed reference information, tutorials, and web tools.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 
 ## Upcoming Features
 
-The previously [introduced](https://developers.ripple.com/blog/2018/rippled-1.0.0.html) [fix1543](https://developers.ripple.com/known-amendments.html#fix1543), [fix1571](https://developers.ripple.com/known-amendments.html#fix1571) and [fix1623](https://developers.ripple.com/known-amendments.html#fix1623) Amendments in XRP Ledger version 1.0.0 are now open for voting. Ripple expects these amendments to become enabled on Tuesday, 2018-06-19.
+The previously [introduced](/blog/2018/rippled-1.0.0.md) [fix1543](/resources/known-amendments.md#fix1543), [fix1571](/resources/known-amendments.md#fix1571) and [fix1623](/resources/known-amendments.md#fix1623) Amendments in XRP Ledger version 1.0.0 are now open for voting. Ripple expects these amendments to become enabled on Tuesday, 2018-06-19.
 
 An upcoming version of `rippled` will switch to using the **Boost.Beast** library instead of the **Beast** library from the `rippled` source code. As part of this change, the minimum supported version of Boost will change to be a version incorporating Boost.Beast.
 

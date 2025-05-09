@@ -23,8 +23,8 @@ The `rippled` team is proud to announce a bundle of related news items:
 
 We recommend all users, especially validators, upgrade as soon as possible:
 
-* For Red Hat Enterprise Linux 7 or CentOS, you can [update to the new version using `yum`](https://ripple.com/build/rippled-setup/#updating-rippled).
-* For other platforms, please [compile the new version from source](https://github.com/ripple/rippled/tree/master/Builds).
+* For Red Hat Enterprise Linux 7 or CentOS, you can [update to the new version using `yum`](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
+* For other platforms, please [compile the new version from source](https://github.com/XRPLF/rippled/tree/0.31.2/Builds).
 * For more information, see the `rippled` [0.31.2 release notes](https://github.com/ripple/rippled/releases/tag/0.31.2) and [0.31.0 release notes](https://github.com/ripple/rippled/releases/tag/0.31.0) on GitHub.
 
 ## Amendments System ##
@@ -33,11 +33,11 @@ Amendments are a new feature introduced in `rippled` 0.31.0. The Amendments syst
 
 The next amendment, MultiSign, introduces a way to authorize transactions using multiple signatures, for greater security and flexibility.
 
-For more information, see [Amendments in the Ripple Developer Center](https://ripple.com/build/amendments/).
+For more information, see [Amendments](/docs/concepts/networks-and-servers/amendments).
 
 ## Transaction Cost Changes ##
 
-We have brought two significant changes to [transaction costs](https://ripple.com/build/transaction-cost/) in the `rippled` 0.31 releases. First, the FeeEscalation amendment changed the way the network escalates transaction costs under load. Second, `rippled` 0.31.2 has decreased the minimum transaction cost back to its previous value of 0.00001 XRP (10 drops).
+We have brought two significant changes to [transaction costs](/docs/concepts/transactions/transaction-cost) in the `rippled` 0.31 releases. First, the FeeEscalation amendment changed the way the network escalates transaction costs under load. Second, `rippled` 0.31.2 has decreased the minimum transaction cost back to its previous value of 0.00001 XRP (10 drops).
 
 Previously, transaction costs tended to spike rapidly when the network was under load and drop quickly when the backlog was processed, causing network volatility. As a temporary fix, Ripple configured the official validating servers to always report a load multiplier of 1000 or more. This effectively increased transaction costs from 0.00001 XRP to 0.01 XRP.
 
@@ -53,8 +53,9 @@ The `rippled` team is excited to announce that the next feature to be enabled by
 
 Ripple plans to configure its validators to start voting in favor of the MultiSign amendment on 2016-06-13. If the feature maintains a majority for two weeks after that, multi-signing will become an active part of the protocol starting **2016-06-27**.
 
-For more information, see the following articles in the Ripple Developer Center:
+For more information, see the following articles:
 
-* [MultiSign Amendment](https://ripple.com/build/amendments/#multisign)
-* [Multi-Signing transaction reference](https://ripple.com/build/transactions/#multi-signing)
-* [How to Multi-Sign Tutorial](https://ripple.com/build/how-to-multi-sign/)
+* [MultiSign Amendment](/resources/known-amendments.md#multisign)
+* [Multi-Signing Overview](/docs/concepts/accounts/multi-signing)
+* [Tutorial - Set Up Multi-Signing](/docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing)
+* [Tutorial - Send a Multi-Signed Transaction](/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction)

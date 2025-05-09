@@ -26,17 +26,13 @@ If you are not running release 1.1.2 or greater, then your validator server can 
 
 ### Upgrading
 
-For instructions on updating `rippled` on supported platforms, see [Installing rippled](https://developers.ripple.com/install-rippled.html).
+For instructions on updating `rippled` on supported platforms, see [Installation](/docs/infrastructure/installation).
 
 The SHA-256 for the RPM is: `989a679bef72e827f204b394abd3d385f1baae6ad7a94eaf9b759a032bcd0f7e`
 
 The SHA-256 for the source RPM is: `091b60dcf38aea4f9ec252d7b1b72d95ca4f45b3a831fbe97ce8f806f2907cae`
 
-For other platforms, please compile version 1.1.2 from source.
-
-- [Build and Run `rippled` on Ubuntu Linux](https://developers.ripple.com/build-run-rippled-ubuntu.html)
-- [Build and run `rippled` on macOS](https://developers.ripple.com/build-run-rippled-macos.html)
-- See <https://github.com/ripple/rippled/tree/master/Builds> for instructions by platform.
+For other platforms, please [compile version 1.1.2 from source](https://github.com/XRPLF/rippled/tree/1.1.2/Builds).
 
 The first log entry should be the change setting the version:
 
@@ -53,7 +49,7 @@ Ripple plans to deploy version 1.1.2 to all XRP Ledger servers under its operati
 
 ## Learn, ask questions, and discuss
 
-Related documentation is available in the [XRP Ledger Dev Portal](https://developers.ripple.com/), including detailed example API calls and web tools for API testing: <https://developers.ripple.com/>
+Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 

@@ -20,21 +20,23 @@ The `rippled` team has released `rippled` version 0.60.3, which helps to increas
 
 **If you operate a rippled server**, but don’t upgrade to `rippled` version 0.60.3, then your server may experience dropped connections to other servers more frequently.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The sha256 for the RPM is: 3e9c8b421ea0ae6da7ae65524be60408f32ef2bd0bcfea1e1c9fb54eec5fc809
 
 The sha256 for the source RPM is: 9848185e35a21ef41fcea334f8ad224c49e243f64b38dd9311ab898b97ab6c0a
 
-For other platforms, please [compile version 0.60.3 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.60.3 from source](https://github.com/XRPLF/rippled/tree/0.60.3/Builds).
 
 The first log entry should be the change setting the version:
 
-        commit 208028a1420cc187a6b5b9e97846e8cafd54f39f
-        Author: Nik Bougalis <nikb@bougalis.net>
-        Date:   Tue May 9 13:37:49 2017 -0700
+```text
+commit 208028a1420cc187a6b5b9e97846e8cafd54f39f
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Tue May 9 13:37:49 2017 -0700
 
-          Set version to 0.60.3
+    Set version to 0.60.3
+```
 
 ## Change Log
 
@@ -46,11 +48,11 @@ The Ripple technical operations team plans to deploy `rippled` version 0.60.3 to
 
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

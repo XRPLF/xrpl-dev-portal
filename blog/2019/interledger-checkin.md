@@ -16,7 +16,7 @@ Here at Ripple, we've been eagerly following and contributing to the progress of
 
 ## Interledger is for Interoperability
 
-First, some review for those who aren't familiar with Interledger: it's a protocol suite for enabling the Internet of Value. There's no Interledger coin or token, no chain of blocks with a shared set of state and balances, and no company or country who decides what you can do with it. The Interledger project is about taking a step away from the technological race of building [the best ledger](https://developers.ripple.com/xrp-ledger-overview.html), and instead bringing all ledgers together into a single interconnected network—creating an "Interledger" the same way that the Internet connected a bunch of individual networks into one massive "Internet".
+First, some review for those who aren't familiar with Interledger: it's a protocol suite for enabling the Internet of Value. There's no Interledger coin or token, no chain of blocks with a shared set of state and balances, and no company or country who decides what you can do with it. The Interledger project is about taking a step away from the technological race of building [the best ledger](/docs/introduction/what-is-the-xrp-ledger), and instead bringing all ledgers together into a single interconnected network—creating an "Interledger" the same way that the Internet connected a bunch of individual networks into one massive "Internet".
 
 Ripple's own Evan Schwartz provides [a great intro to Interledger's key features and design choices](https://medium.com/xpring/interledger-how-to-interconnect-all-blockchains-and-value-networks-74f432e64543), and a more detailed look at [why Interledger is structured as a layered protocol suite](https://medium.com/xpring/layer-3-is-for-interoperability-ca387fa5f7e2).
 
@@ -26,7 +26,7 @@ When you build a blockchain-connected application or service, you get access to 
 
 ### Production and Testnet
 
-Right now, Interledger is being used in production by a small number of finance tech pioneers, including [Coil][], [Kava](https://kava.io/), [Strata](https://www.stratalabs.io/), and the [XRPTipBot](https://www.xrptipbot.com/). Thanks to these developers and the XRP Ledger's robust [payment channel](http://developers.ripple.com/payment-channels.html) functionality, it's easy to get started sending and receiving XRP through Interledger today.
+Right now, Interledger is being used in production by a small number of finance tech pioneers, including [Coil][], [Kava](https://kava.io/), [Strata](https://www.stratalabs.io/), and the [XRPTipBot](https://www.xrptipbot.com/). Thanks to these developers and the XRP Ledger's robust [payment channel](/docs/concepts/payment-types/payment-channels) functionality, it's easy to get started sending and receiving XRP through Interledger today.
 
 If you're not ready to use real money yet, you can start by [building on the Interledger Testnet using the Moneyd server](https://medium.com/interledger-blog/using-moneyd-to-join-the-ilp-testnet-ba64bd42bb14). Moneyd provides a quick on-ramp as the "home router" of the Interledger, giving apps on your computer access to send and receive money. Although Moneyd can just as easily connect to the production Interledger, it is not currently designed for heavy production use, so it lacks features like budgeting that would let you give apps different spending limits and permissions levels.
 

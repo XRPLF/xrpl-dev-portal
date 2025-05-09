@@ -12,7 +12,7 @@ markdown:
 
 At Ripple Labs, our goal is to expand the size and diversity of the Ripple consensus network by enabling people to easily run rippled validators and understand how those validators perform. We aim to create a network where validating participants are well known and respected by gathering and publicizing identity information of validators in addition to performance statistics.
 
-Today, we are excited to announce the launch of the Ripple Validator Registry at [xrpcharts.ripple.com/#/validators](https://xrpcharts.ripple.com/#/validators). The Validator Registry gathers and publishes data for all network validators, enabling rippled operators to determine which validators to trust. An [http-based API](https://data.ripple.com/v2/network/validators) is also available for dynamically constructing rippled configurations.
+Today, we are excited to announce the launch of the Ripple Validator Registry at `xrpcharts.ripple.com/#/validators`. The Validator Registry gathers and publishes data for all network validators, enabling rippled operators to determine which validators to trust. An http-based API is also available for dynamically constructing rippled configurations. _[2025 Update: See <https://livenet.xrpl.org/network/validators> for the modern equivalent of the validator registry.]_
 
 
 ## Build a UNL
@@ -25,6 +25,6 @@ The Validator Registry provides several metrics for each validator based on upti
 - disagreement - the percentage of ledgers validated by the validator that did not pass consensus
 
 ### Identity
-Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate by following the steps on the [Ripple Dev Portal](https://ripple.com/build/rippled-apis/rippled-setup/#domain-verification). The Validator Registry verifies these domains and lists them with the validators.
+Network participants are unlikely to trust validators without knowing who is operating them. To address this concern, validator operators can associate their validator with a web domain that they operate by following the steps for [Domain Verification](https://xrpl.org/docs/references/xrp-ledger-toml#domain-verification). The Validator Registry verifies these domains and lists them with the validators.
 
 As the consensus network continues to grow, we hope the Validator Registry plays a key role in decentralizing and strengthening the network through open data.
