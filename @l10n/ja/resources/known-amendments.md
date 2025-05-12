@@ -26,9 +26,9 @@ labels:
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
 | [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/71D5031A5BD927BDFE424E51699E69F2784097D615D0852BF20C168BA9B5EA76" %}有効: 2025-01-30{% /badge %} |
 | [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/606FA84C4BA30F67582C11A39BBFC11A9D994E114CD515E9F63FC7D8701A8ED9" %}有効: 2025-01-30{% /badge %} |
-| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge https://livenet.xrpl.org/transactions/426314C8BC64BA339E97E53B278602ADC44F115056274BF7971F694C9A8AF946" %}有効: 2025-01-30{% /badge %} |
+| [fixInnerObjTemplate2][]          | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/426314C8BC64BA339E97E53B278602ADC44F115056274BF7971F694C9A8AF946" %}有効: 2025-01-30{% /badge %} |
 | [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/2D9A29768A7FA4BAC01DF1941380077E304785279E5E49267EC269F53ABADF5A" %}有効: 2025-01-30{% /badge %} |
-| [fixReducedOffersV2][]            | v2.3.0     | {% badge https://livenet.xrpl.org/transactions/6D325D5EFF8230F1FECA3EE6418C9678637F3F56B0CA247013F70B3BDCFE75C8" %}有効: 2025-01-30{% /badge %} |
+| [fixReducedOffersV2][]            | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/6D325D5EFF8230F1FECA3EE6418C9678637F3F56B0CA247013F70B3BDCFE75C8" %}有効: 2025-01-30{% /badge %} |
 | [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
 | [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}投票中: 2024-11-26{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}投票中: 2024-06-04{% /badge %} |
