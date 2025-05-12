@@ -12,7 +12,7 @@ labels:
 The following is a comprehensive list of all known [amendments](../docs/concepts/networks-and-servers/amendments.md) and their status on the production XRP Ledger:
 
 {% admonition type="success" name="Tip" %}
-This list is updated manually. For a live view of amendment voting, see the Amendments Dashboards: [XRPScan](https://xrpscan.com/amendments), [XRPLExplorer](https://xrplexplorer.com/amendments).
+This list is updated manually. For a live view of amendment voting, see the Amendments Dashboards: [XRPScan](https://xrpscan.com/amendments), [Bithomp](https://bithomp.com/en/amendments).
 {% /admonition %}
 
 | Name                              | Introduced | Status                        |
