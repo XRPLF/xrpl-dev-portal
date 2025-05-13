@@ -1,11 +1,8 @@
 ---
-html: create-accounts-send-xrp-using-javascript.html
-parent: send-payments-using-javascript.html
 seo:
     description: Create two accounts and transfer XRP between them.
 labels:
   - Accounts
-  - Quickstart
   - Transaction Sending
   - XRP
 ---
@@ -19,7 +16,7 @@ This example shows how to:
 
 When you create an account, you receive a public/private key pair offline. Your account does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.
 
-[![Token Test Harness](/docs/img/quickstart2.png)](/docs/img/quickstart2.png)
+[![XRPL Base Module](/docs/img/mt-send-xrp-1-xrpl-base-module.png)](/docs/img/mt-send-xrp-1-xrpl-base-module.png)
 
 ## Prerequisites
 
@@ -29,613 +26,549 @@ To get started, create a new folder on your local disk and install the JavaScrip
 npm install xrpl
 ```
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive.
+Download and expand the [Payment Modular Tutorial Samples](/_code-samples/modular-tutorials/payment-modular-tutorials.zip) archive.
 
-{% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
+{% admonition type="info" name="Note" %}Without the Payment Modular Tutorials Samples, you will not be able to try the examples that follow. {% /admonition %}
 
 ## Usage
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YnPccLPa0hc?si=U6uQNXzNRp5G_pri" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
 
 To get test accounts:
 
 1. Open `1.get-accounts-send-xrp.html` in a browser
 2. Choose **Testnet** or **Devnet**.
-3. Click **Get New Standby Account**.
-4. Click **Get New Operational Account.**
-5. Copy and paste the **Seeds** field in a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
+3. Click **Get New Account 1**.
+4. Click **Get New Account 2.**
+5. Optionally fill in **Account 1 Name** and **Account 2 Name**.
 
-[![Standby and Operational Accounts](/docs/img/quickstart3.png)](/docs/img/quickstart3.png)
+The name fields are there for you to create an arbitrary label to make the account easier to recognize when switching back and forth than the 34 character account address. For example, I might name the accounts after my friends _Alfredo_ and _Binti_. The name is a local value that is never sent to the XRPL server.
 
-You can transfer XRP between your new accounts. Each account has its own fields and buttons.
+[![Accounts 1 and 2](/docs/img/mt-send-xrp-2-named-accounts.png)](/docs/img/mt-send-xrp-2-named-accounts.png)
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/l2X7Vso5wWc?si=62bRYEd-pTrfhWbJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
+To transfer XRP from Account 1 to Account 2:
 
-To transfer XRP from the Standby account to the Operational account:
+1. Click the **Account 1** radio button. The information about Account 1 populates the uneditable fields of the form. 
+2. Enter the **Amount** of XRP to send.
+2. Copy and paste the **Account 2 Address** value to the **Destination** field.
+3. Click **Send XRP** to transfer XRP from Account 1 to Account 2.
 
-1. On the Standby (left) side of the form, enter the **Amount** of XRP to send.
-2. Copy and paste the **Operational Account** field to the Standby **Destination** field.
-3. Click **Send XRP>** to transfer XRP from the standby account to the operational account
+The **Results** field shows the change in balance in each of the accounts. Note that sending the XRP cost an additional .000001 XRP as the transfer fee. The transfer fee is small enough to be no burden for legitimate users, but is there to stop spammers from making DDS attacks against the XRP Ledger (sending millions of false transactions will quickly add up to real money).
 
-To transfer XRP from the Operational account to the Standby account:
+[![Transferred XRP](/docs/img/mt-send-xrp-3-transferred-xrp.png)](/docs/img/mt-send-xrp-3-transferred-xrp.png)
 
-1. On the Operational (right) side of the form, enter the **Amount** of XRP to send.
-2. Copy and paste the **Standby Account** field to the Operational **Destination** field.
-3. Click **&lt;Send XRP** to transfer XRP from the Operational account to the Standby account.
+Click **Account 2** to see its XRP balance.
 
-[![Transferred XRP](/docs/img/quickstart4.png)](/docs/img/quickstart4.png)
+To transfer XRP from Account 2 back to Account 1:
+
+1. Click the **Account 2** radio button.
+2. Enter the **Amount** of XRP to send.
+3. Copy and paste the **Account 1 Address** value to the **Destination** field.
+4. Click **Send XRP** to transfer XRP from Account 1 to Account 2.
+5. Click the **Account 1** radio button to see its new XRP balance.
+
+
+[![Transferred XRP from Account 2 to Account 1](/docs/img/mt-send-xrp-4-account2-send-xrp.png)](/docs/img/mt-send-xrp-4-account2-send-xrp.png)
+
+## Gather and Distribute Account Information
+
+For most exercises, it's fine if you want to create a new account. If want to use the same account in another exercise, you can gather the information from both accounts to the **Result** field to paste into the next form.
+
+1. Click **Gather Account Info**.
+2. Copy the name, address, and seed values from the **Result** field.
+
+[![Copy gathered info from the Result field.](/docs/img/mt-send-xrp-5-gather-account-info.png)](/docs/img/mt-send-xrp-5-gather-account-info.png)
+
+3. Go to the next modular tutorial form.
+4. Paste the values in the **Result** field.
+5. Click **Distribute Account Info** to populate all of the Account 1 and Account 2 fields.
+
+## Getting the XRP Balance
+
+The **XRP Balance** field is automatically updated when you choose **Account 1** or **Account 2**. If you send XRP to an account from another application and you want to see the result, you can click **Get XRP Balance** at any time to see the currently available XRP.
+
+## Getting the Token Balance
+
+You can see the balance of all issued currencies, MPTs, and other tokens by clicking **Get Token Balance**. You can issue and send tokens in many of the modular tutorials that build off the XRPL Base Module.
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)in the source repository for this website.
+You can download the [Payment Modular Tutorials](/_code-samples/modular-tutorials/payment-modular-tutorials.zip) from the source repository for this website.
 
-## ripplex-1-send-xrp.js
+## account-support.js
 
-This example can be used with any XRP Ledger network, _Testnet_, or _Devnet_. You can update the code to choose different or additional XRP Ledger networks.
+This file contains the functions all of the modular examples use to create, use, and reuse accounts.
 
 ### getNet()
-<!-- SPELLING_IGNORE: getnet -->
+
+This function can be used with _Testnet_, or _Devnet_. It allows you to select between them with a radio button to set the _net_ variable with the server URL.
 
 ```javascript
-// ******************************************************
-// ************* Get the Preferred Network **************
-// ******************************************************   
-
-    function getNet() {
-```
-
-This function uses brute force `if` statements to discover the selected network instance and return the URI.
-
-```javascript
+function getNet() {
   let net
-  if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
-  if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
+  if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233/"
+  if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233/"
   return net
 } // End of getNet()
 ```
+### getAccount()
 
-### getAccount(type)              
-<!-- SPELLING_IGNORE: getaccount -->
+The `getAccount()` function uses the faucet host to fund a new account wallet
 
 ```javascript
-// *******************************************************
-// ************* Get Account *****************************
-// *******************************************************
-
-async function getAccount(type) {
+async function getAccount() {
 ```
 
-Get the selected ledger.
+Get the selected network, create a new client, and connect to the XRPL serever.
 
 ```javascript
   let net = getNet()
-```
-
-Instantiate a client.
-
-```javascript
   const client = new xrpl.Client(net)
-```
-
-Use the _results_ variable to capture progress information.
-
-```javascript
-  results = 'Connecting to ' + net + '....'
-```
-Use the default faucet using a _null_ value.
-
-```javascript
-  let faucetHost = null
-```
-
-Report progress in the appropriate results field.
-
-```javascript
-  if (type == 'standby') {
-    standbyResultField.value = results
-  } else {
-    operationalResultField.value = results
-  }
-```
-
-Connect to the server.
-
-```javascript
   await client.connect()
-        
-  results += '\nConnected, funding wallet.'
-  if (type == 'standby') {
-    standbyResultField.value = results
-  } else {
-    operationalResultField.value = results
-  }
-
+  resultField.value = `===Getting Account===\n\nConnected to ${net}.`
 ```
 
-Create and fund a test account.
+Request a new wallet funded with play-money XRP for experimentation.
 
 ```javascript
-  const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
-        
-  results += '\nGot a wallet.'
-  if (type == 'standby') {
-    standbyResultField.value = results
-  } else {
-    operationalResultField.value = results
-  }       
-```
-
-Get the current XRP balance for the account.
-
-```javascript
-  const my_balance = (await client.getXrpBalance(my_wallet.address))  
-```
-
-If this is a standby account, populate the standby account fields.
-
-```javascript
-  if (type == 'standby') {
-    standbyAccountField.value = my_wallet.address
-    standbyPubKeyField.value = my_wallet.publicKey
-    standbyPrivKeyField.value = my_wallet.privateKey
-    standbyBalanceField.value = (await client.getXrpBalance(my_wallet.address))
-    standbySeedField.value = my_wallet.seed
-    results += '\nStandby account created.'
-    standbyResultField.value = results
-```
-
-Otherwise, populate the operational account fields.
-
-```javascript
-  } else {
-    operationalAccountField.value = my_wallet.address
-    operationalPubKeyField.value = my_wallet.publicKey
-    operationalPrivKeyField.value = my_wallet.privateKey
-    operationalSeedField.value = my_wallet.seed
-    operationalBalanceField.value = (await client.getXrpBalance(my_wallet.address))
-    results += '\nOperational account created.'
-    operationalResultField.value = results
+  try {
+    let faucetHost = null
+    const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
+    const newAccount = [my_wallet.address, my_wallet.seed]
+    return (newAccount)
   }
 ```
 
-Insert the seed values for both accounts as they are created to the **Seeds** field as a convenience. You can copy the values and store them offline. When you reload this form or another in this tutorial, copy and paste them into the **Seeds** field to retrieve the accounts with the `getAccountsFromSeeds()` function.
+Catch and report any errors.
 
 ```javascript
-  seeds.value = standbySeedField.value + '\n' + operationalSeedField.value
+  catch (error) {
+    console.error('Error getting account:', error);
+    results = `\n===Error: ${error.message}===\n`
+    resultField.value += results
+    throw error; // Re-throw the error to be handled by the caller
+  }
 ```
 
-Disconnect from the XRP ledger. 
+Disconnect from the XRPL server and return the address and seed information.
 
 ```javascript
   client.disconnect()
+  return (newAccount)
 } // End of getAccount()
 ```
 
-### Get Accounts from Seeds
+### getNewAccount1() and getNewAccount2()
+
+These are wrapper functions that call the getAccount() function, then populate the account address and account seed fields for Account1 or Account2, respectively.
 
 ```javascript
-// *******************************************************
-// ********** Get Accounts from Seeds ******************** 
-// *******************************************************
+async function getNewAccount1() {
+  account1address.value = "=== Getting new account. ===\n\n"
+  account1seed.value = ""
+  const accountInfo= await getAccount()
+  account1address.value = accountInfo[0]
+  account1seed.value = accountInfo[1]
+}
 
-async function getAccountsFromSeeds() {
+
+async function getNewAccount2() {
+  account2address.value = "=== Getting new account. ===\n\n"
+  account2seed.value = ""
+  const accountInfo= await getAccount()
+  account2address.value = accountInfo[0]
+  account2seed.value = accountInfo[1]
+}
 ```
 
-Connect to the selected network.
+### getAccountFromSeed()
+
+This function uses an existing seed value to access the client information from the XRP Ledger, then return the account address.
+
+```javascript
+async function getAccountFromSeed(my_seed) {
+  const net = getNet()
+  const client = new xrpl.Client(net)
+  await client.connect()
+  let results = '===Finding wallet.===\n\n'
+  resultField.value = results
+  try {
+    const wallet = xrpl.Wallet.fromSeed(my_seed)
+    const address = wallet.address
+    results += "===Wallet found.===\n\n"
+    results += "Account address: " + address + "\n\n"
+    resultField.value = results
+    return (address)
+  }
+```
+Catch and report any errors.
+
+```javascript
+    catch (error) {
+    console.error('===Error getting account from seed:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  ```
+
+  Disconnect from the XRP Ledger and return the .
+
+  ```javascript
+  finally {
+    await client.disconnect();
+  }
+} // End of getAccountFromSeed()
+```
+### getAccountFromSeed1 and getAccountFromSeed2
+
+These wrapper functions populate the Account1 Address or Account2 address from a seed value, respectively.
+
+```javascript
+async function getAccountFromSeed1() {
+  account1address.value = await getAccountFromSeed(account1seed.value)
+}
+
+async function getAccountFromSeed2() {
+  account2address.value = await getAccountFromSeed(account2seed.value)
+}
+```
+
+### gatherAccountInfo()
+
+This local function copies the name, account, and seed values for Account1 and Account2 and displays the information in the **Result** field. You can then copy the information to reuse in another modular tutorial.
+
+```javascript
+function gatherAccountInfo() {
+  let accountData = account1name.value + "\n" + account1address.value + "\n" + account1seed.value + "\n"
+  accountData += account2name.value + "\n" + account2address.value + "\n" + account2seed.value
+  resultField.value = accountData
+}
+```
+
+### distributeAccountInfo()
+
+This local function parses structured account information from the **Result** field and distributes it to the corresponding account fields. It is the counterpart to the gatherAccountInfo() utility. The purpose is to let you continue to use the same accounts in all of the modular examples. If you have information that doesn't perfectly conform, you can still use this utility to populate the fields with the information that does fit the format.
+
+```javascript
+function distributeAccountInfo() {
+  let accountInfo = resultField.value.split("\n")
+  account1name.value = accountInfo[0]
+  account1address.value = accountInfo[1]
+  account1seed.value = accountInfo[2]
+  account2name.value = accountInfo[3]
+  account2address.value = accountInfo[4]
+  account2seed.value = accountInfo[5]
+}
+```
+
+### populate1() and populate2
+
+These local functions populate the active form fields with values for their correesponding accounts.
+
+```javascript
+function populate1() {
+  accountNameField.value = account1name.value
+  accountAddressField.value = account1address.value
+  accountSeedField.value = account1seed.value
+  getXrpBalance()
+}
+
+function populate2() {
+  accountNameField.value = account2name.value
+  accountAddressField.value = account2address.value
+  accountSeedField.value = account2seed.value
+  getXrpBalance()
+}
+```
+
+### getXrpBalance()
+
+Connect to the XRP Ledger, send a `getXrpBalance()` request for the current acitve account, then display it in the **XRP Balance Field**.
+
+```javascript
+async function getXrpBalance() {
+  const net = getNet()
+  const client = new xrpl.Client(net)
+  await client.connect()
+  let results = `\n===Getting XRP balance...===\n\n`
+  resultField.value = results
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const balance = await client.getXrpBalance(wallet.address)
+    results += accountNameField.value + " current XRP balance: " + balance + "\n\n"
+    xrpBalanceField.value = await client.getXrpBalance(accountAddressField.value)
+    resultField.value = results
+  }
+  ```
+
+  Catch any errors and disconnect from the XRP Ledger.
+
+  ```javascript
+  catch (error) {
+    console.error('Error getting XRP balance:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
+```
+### getTokenBalance()
+
+Get the balance of all tokens for the current active account. This is a function that is used frequently in other modular tutorials that deal with currencies other than XRP.
+
+```javascript
+async function getTokenBalance() {
+```
+
+Connect with the network.
 
 ```javascript
   let net = getNet()
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-  await client.connect()
-  results += '\nConnected, finding wallets.\n'
-  standbyResultField.value = results
+  await client.connect()   
+  let results = `===Connected to ${net}.===\n===Getting account token balance...===\n\n`
+  resultField.value += results
 ```
 
-Parse the **Seeds** field.
+Send a request to get the account balance, then wait for the results.
 
 ```javascript
-  var lines = seeds.value.split('\n')
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const balance = await client.request({
+      command: "gateway_balances",
+      account: wallet.address,
+      ledger_index: "validated",
+    })
+    results = accountNameField.value + "\'s token balance(s): " + JSON.stringify(balance.result, null, 2) + "\n"
+    resultField.value += results
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+  }
 ```
 
-Get the `standby_wallet` based on the seed in the first line. Get the `operational_wallet` based on the seed in the second line.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(lines[0])
-  const operational_wallet = xrpl.Wallet.fromSeed(lines[1])
+
+  catch (error) {
+    console.error('Error getting token balance:', error);
+    results = `\nError: ${error.message}\n`
+    resultField.value += results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
+} 
 ```
 
-Get the current XRP balances for the accounts.
-
-```javascript
-  const standby_balance = (await client.getXrpBalance(standby_wallet.address))  
-  const operational_balance = (await client.getXrpBalance(operational_wallet.address))  
-```
-
-Populate the fields for the standby and operational accounts.
-
-```javascript
-  standbyAccountField.value = standby_wallet.address
-  standbyPubKeyField.value = standby_wallet.publicKey
-  standbyPrivKeyField.value = standby_wallet.privateKey
-  standbySeedField.value = standby_wallet.seed
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-      
-  operationalAccountField.value = operational_wallet.address
-  operationalPubKeyField.value = operational_wallet.publicKey
-  operationalPrivKeyField.value = operational_wallet.privateKey
-  operationalSeedField.value = operational_wallet.seed
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-```
-
-Disconnect from the XRP Ledger.
-
-```javascript
-  client.disconnect()
-} // End of getAccountsFromSeeds()
-```
-
-### Send XRP
-
-```javascript
-// *******************************************************
-// ******************** Send XRP *************************
-// *******************************************************
-
-async function sendXRP() {
-```
-
-Connect to your selected ledger.
-
-```javascript
-  results  = "Connecting to the selected ledger.\n"
-  standbyResultField.value = results
-  let net = getNet()
-  results = 'Connecting to ' + getNet() + '....'
-  const client = new xrpl.Client(net)
-  await client.connect()
-      
-  results  += "\nConnected. Sending XRP.\n"
-  standbyResultField.value = results
-      
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const sendAmount = standbyAmountField.value
-        
-  results += "\nstandby_wallet.address: = " + standby_wallet.address
-  standbyResultField.value = results
-```
-
-Prepare the transaction. This is a Payment transaction from the standby address to the operational address.
-
-The _Payment_ transaction expects the XRP to be expressed in drops, or 1/millionth of an XRP.  You can use the `xrpToDrops()` method to convert the send amount for you (which beats having to type an extra 6 zeroes to send 1 XRP).
-
-```javascript
-  const prepared = await client.autofill({
-    "TransactionType": "Payment",
-    "Account": standby_wallet.address,
-    "Amount": xrpl.xrpToDrops(sendAmount),
-    "Destination": standbyDestinationField.value
-  })
-```
-
-Sign the prepared transaction.
-
-```
-const signed = standby_wallet.sign(prepared)
-```
-
-Submit the transaction and wait for the results.
-
-```
-const tx = await client.submitAndWait(signed.tx_blob)
-```
-
-Request the balance changes caused by the transaction and report the results.
-
-```
-  results  += "\nBalance changes: " + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  standbyResultField.value = results
-
-  standbyBalanceField.value =  (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))                 
-  client.disconnect()    
-} // End of sendXRP()
-```
-
-### Reciprocal Transactions
-
-For each of the transactions, there is an accompanying reciprocal transaction, with the prefix _oP,_ for the operational account. See the corresponding function for the standby account for code commentary.
-
-```javascript
-// **********************************************************************
-// ****** Reciprocal Transactions ***************************************
-// **********************************************************************
-      
-// *******************************************************
-// ********* Send XRP from Operational account ***********
-// *******************************************************
-      
-async function oPsendXRP() {
-
-  results  = "Connecting to the selected ledger.\n"
-  operationalResultField.value = results
-  let net = getNet()
-  results = 'Connecting to ' + getNet() + '....'
-  const client = new xrpl.Client(net)
-  await client.connect()
-      
-  results  += "\nConnected. Sending XRP.\n"
-  operationalResultField.value = results
-      
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const sendAmount = operationalAmountField.value
-        
-  results += "\noperational_wallet.address: = " + operational_wallet.address
-  operationalResultField.value = results
-      
-// ---------------------------------------------------------- Prepare transaction
-  const prepared = await client.autofill({
-    "TransactionType": "Payment",
-    "Account": operational_wallet.address,
-    "Amount": xrpl.xrpToDrops(operationalAmountField.value),
-    "Destination": operationalDestinationField.value
-  })
-
-// ---------------------------------------------------- Sign prepared instructions
-  const signed = operational_wallet.sign(prepared)
-
-// ------------------------------------------------------------ Submit signed blob
-  const tx = await client.submitAndWait(signed.tx_blob)
-      
-  results  += "\nBalance changes: " +
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  operationalResultField.value = results
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))                 
-      
-  client.disconnect()    
-} // End of oPsendXRP()
-```
-
-## 1.get-accounts-send-xrp.html
+## base-module.html
 
 Create a standard HTML form to send transactions and requests, then display the results.  
 
 ```html
 <html>
-  <head>
-    <title>Token Test Harness</title>
+<head>
+    <title>XRPL Base Module</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <style>
-       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
-       h1{font-weight: bold;}
-       input, button {padding: 6px;margin-bottom: 8px;}
-       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
-       td{vertical-align: middle;}
-    </style>
-    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
-    <script src='ripplex1-send-xrp.js'></script>
-    <script>
-      if (typeof module !== "undefined") {
-        const xrpl = require('xrpl')
-      }
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
+    <script src="account-support.js"></script>
+    <script src='send-xrp.js'></script>
+</head>
 
-    </script>
-  </head>
-  
 <!-- ************************************************************** -->
 <!-- ********************** The Form ****************************** -->
 <!-- ************************************************************** -->
 
-  <body>
-    <h1>Token Test Harness</h1>
+<body>
+    <h1>XRPL Base Module</h1>
     <form id="theForm">
-      Choose your ledger instance:  
-      &nbsp;&nbsp;
-      <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233" checked>
-      <label for="testnet">Testnet</label>
-      &nbsp;&nbsp;
-      <input type="radio" id="dn" name="server"
-        value="wss://s.devnet.rippletest.net:51233">
-      <label for="devnet">Devnet</label>
-      <br/><br/>
-      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
-      <br/>
-      <textarea id="seeds" cols="40" rows= "2"></textarea>
-      <br/><br/>
-      <table>
-        <tr valign="top">
-          <td>
-            <table>
-              <tr valign="top">
+        <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+            Choose your ledger instance:
+        </span>
+        &nbsp;&nbsp;
+        <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233" checked>
+        <label for="dn">Devnet</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233">
+        <label for="tn">Testnet</label>
+        <br /><br />
+        <table>
+            <tr>
                 <td>
-                <td>
-                  <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
-                  <table>
-                    <tr valign="top">
-                      <td align="right">
-                        Standby Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAccountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Public Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPubKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Private Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPrivKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Seed
-                      </td>
-                      <td>
-                        <input type="text" id="standbySeedField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        XRP Balance
-                      </td>
-                      <td>
-                        <input type="text" id="standbyBalanceField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Amount
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAmountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                   <tr>
-                      <td align="right">
-                        Destination
-                      </td>
-                      <td>
-                        <input type="text" id="standbyDestinationField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                  </table>
-                  <p align="right">
-                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
-                  </p>
-                </td>
+                    <button type="button" onClick="getNewAccount1()">Get New Account 1</button>
                 </td>
                 <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                    <button type="button" onClick="getAccountFromSeed1()">Get Account 1 From Seed</button>
                 </td>
-              </tr>
+                <td>
+                    <button type="button" onClick="getNewAccount2()">Get New Account 2</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed2()">Get Account 2 From Seed</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account."><label for="account1name">Account 1 Name</label>
+                        </span>
+                </td>
+                <td>
+                    <input type="text" id="account1name" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                        <label for="account2name">Account 2 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2name" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account1address">Account 1 Address</label>
+                    </span>
+                </td>
+                <td> 
+                    <input type="text" id="account1address" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account2address">Account 2 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2address" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account1seed">Account 1 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1seed" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account2seed">Account 2 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2seed" size="40"></input>
+                </td>
+            </tr>
             </table>
-          </td>
-          <td>
+            <hr />
             <table>
-              <tr>
-                <td>
-                  <table>
-                    <tr>
-                      <td align="center" valign="top">
-                        <button type="button" onClick="oPsendXRP()">&#60;Send XRP</button>
-                        </td>
-                        <td align="right">
-                          <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
-                        <table>
-                          <tr valign="top">
-                            <td align="right">
-                              Operational Account
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAccountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Public Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPubKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Private Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPrivKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Seed
-                            </td>
-                            <td>
-                              <input type="text" id="operationalSeedField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              XRP Balance
-                            </td>
-                            <td>
-                              <input type="text" id="operationalBalanceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Amount
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAmountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Destination
-                            </td>
-                            <td>
-                              <input type="text" id="operationalDestinationField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                        </table>
-                        <p align="right">
-                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
-                        </p>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Name of the currently selected account.">
+                        <label for="accountNameField">Account Name</label>
+                    </span>
                 </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+                <td>
+                    <input type="text" id="accountNameField" size="40" readonly></input>
+                    <input type="radio" id="account1" name="accounts" value="account1">
+                    <label for="account1">Account 1</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Address of the currently selected account.">
+                        <label for="accountAddressField">Account Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountAddressField" size="40" readonly></input>
+                    <input type="radio" id="account2" name="accounts" value="account2">
+                    <label for="account2">Account 2</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Seed of the currently selected account.">
+                        <label for="accountSeedField">Account Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountSeedField" size="40" readonly></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="XRP balance for the currently selected account.">
+                        <label for="xrpBalanceField">XRP Balance</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="xrpBalanceField" size="40" readonly></input>
+                </td>
+                <td>
+                    <button type="button" onClick="sendXRP()">Send XRP</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Amount of XRP to send.">
+                        <label for="amountField">Amount</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="amountField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="getXrpBalance()">Get XRP Balance</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Destination account address where XRP is sent.">
+                    <lable for="destinationField">Destination</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="destinationField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="getTokenBalance()">Get Token Balance</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p align="right">
+                        <textarea id="resultField" cols="80" rows="20"></textarea>
+                    </p>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="gatherAccountInfo()">Gather Account Info</button><br/>
+                    <button type="button" onClick="distributeAccountInfo()">Distribute Account Info</button>
+                </td>
+            </tr>
+        </table>
     </form>
-  </body>
+</body>
+<script>
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'account1') {
+                populate1()
+            } else if (this.value === 'account2') {
+                populate2()
+            }
+        });
+    });
+</script>
 </html>
 ```
