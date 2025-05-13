@@ -53,7 +53,7 @@
     "id": "connection-devnet-clio",
     "ws_url": "wss://clio.devnet.rippletest.net:51233/",
     "jsonrpc-url": "https://clio.devnet.rippletest.net:51234/",
-    "shortname": "devnet-clio",
+    "shortname": "Devnet-clio",
     "longname": "clio.devnet.rippletest.net (Devnet Public Cluster with Clio)"
   }
 ]

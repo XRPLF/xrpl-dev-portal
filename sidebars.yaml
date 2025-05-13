@@ -212,6 +212,9 @@
                 - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
                 - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
                 - page: docs/tutorials/javascript/build-apps/credential-issuing-service.md
+            - page: docs/tutorials/javascript/compliance/index.md
+              items:
+                - page: docs/tutorials/javascript/compliance/verify-credential.md                
         - page: docs/tutorials/python/index.md
           expanded: false
           items:

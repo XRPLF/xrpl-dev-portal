@@ -145,7 +145,7 @@ export function Badge(props: {
     }
 }
 
-type TryItServer = 's1' | 's2' | 'xrplcluster' | 'testnet' | 'devnet'
+type TryItServer = 's1' | 's2' | 'xrplcluster' | 'testnet' | 'devnet' | 'testnet-clio' | 'devnet-clio'
 
 export function TryIt(props: {
   method: string,
@@ -164,6 +164,10 @@ export function TryIt(props: {
     use_server = "?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F"
   } else if (props.server == 'testnet') {
     use_server = "?server=wss%3A%2F%2Fs.altnet.rippletest.net%3A51233%2F"
+  } else if (props.server == 'testnet-clio') {
+    use_server = "?server=wss%3A%2F%2Fclio.altnet.rippletest.net%3A51233%2F"
+  } else if (props.server == 'devnet-clio') {
+    use_server = "?server=wss%3A%2F%2Fclio.devnet.rippletest.net%3A51233%2F"
   }
   const to_path = `/resources/dev-tools/websocket-api-tool${use_server}#${props.method}`
   return (
