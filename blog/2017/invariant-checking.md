@@ -17,7 +17,7 @@ But we are also keenly aware of the need for value to also move securely and rel
 
 With the release of rippled 0.70.0, and as part of our long-standing and enduring commitment to a reliable and error-free XRP Ledger, we are going further than before. We are adding code that runs automatically and in real time after each transaction completes, and examines the changes it made for correctness before the results are committed to the ledger.
 
-This is the idea behind the [recently activated](https://xrpcharts.ripple.com/#/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6) [EnforceInvariants amendment](https://ripple.com/build/amendments/#enforceinvariants), which will make it possible to verify that key properties of the system are not violated. The new checks—which we believe will never trigger—help protect the integrity of the XRP Ledger from bugs yet to be discovered, or even created.
+This is the idea behind the [recently activated](https://xrpcharts.ripple.com/#/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6) [EnforceInvariants amendment](/resources/known-amendments.md#enforceinvariants), which will make it possible to verify that key properties of the system are not violated. The new checks—which we believe will never trigger—help protect the integrity of the XRP Ledger from bugs yet to be discovered, or even created.
 
 What’s more, the process is transparent and public: problematic transactions are marked with a **tecINVARIANT_FAILED** result code and are included in the ledger. This broad exposure, coupled with Ripple’s powerful ability to step through the execution of past transactions, makes it possible to quickly identify and fix any logic flaws in the code.
 

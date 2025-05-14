@@ -20,14 +20,14 @@ The Ripple Data team will be running load balancing tests on Ripple Data API sta
 
 If you operate software or services that rely on the Ripple Data API, then you may experience a brief outage and / or inconsistent data, including transaction history and processed analytical data, for a period of approximately 15 mins.
 
-For more information regarding the Ripple Data API, please see [Ripple Data API Documentation](https://ripple.com/build/data-api-v2/).
+For more information regarding the Ripple Data API, please see **Ripple Data API Documentation**.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

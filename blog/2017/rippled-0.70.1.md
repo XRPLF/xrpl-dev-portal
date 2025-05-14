@@ -26,21 +26,23 @@ This announcement now contains corrected SHA-256 values for the RPM and source R
 
 * If you operate a `rippled` validator server, but do not upgrade to `rippled` version 0.70.1, then your `rippled` validator server could experience increased loss of synchronization with the network.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The SHA-256 for the `RPM` is: `23c8ec08d1ca8c8ce6c0602617c7e41b7f2fd249a1417a79a286a3faa5be08eb`
 
 The SHA-256 for the source `RPM` is: `3522546989024e783cfa933218a28ee878dcc3f334749e7456cb04a9cd07d8fc`
 
-For other platforms, please [compile version 0.70.1 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.70.1 from source](https://github.com/XRPLF/rippled/tree/0.70.1/Builds).
 
 The first log entry should be the change setting the version:
 
-      commit 3bfd9de6779994e5bbbba864791429e2f7360947
-      Author: Nik Bougalis <nikb@bougalis.net>
-      Date:   Wed Jun 28 07:15:07 2017 -0700
+```text
+commit 3bfd9de6779994e5bbbba864791429e2f7360947
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Wed Jun 28 07:15:07 2017 -0700
 
-            Set version to 0.70.1
+    Set version to 0.70.1
+```
 
 ## 0.70.1 Change Log
 
@@ -58,11 +60,11 @@ The first log entry should be the change setting the version:
 The Ripple technical operations team deployed `rippled` version 0.70.1 to all `rippled` servers under its operational control, including private clusters, on Sunday, 2017-07-09.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

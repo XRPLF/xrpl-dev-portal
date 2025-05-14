@@ -10,7 +10,7 @@ markdown:
 ---
 # The FlowV2 Amendment Was Vetoed
 
-The `rippled` team found a flaw in FlowV2 while testing. As a result, the Ripple network has [vetoed](https://ripple.com/build/amendments/#amendment-voting) the new payment engine amendment. [Originally](https://developers.ripple.com/blog/2016/rippled-0.32.1.html), the [FlowV2 amendment](https://ripple.com/build/amendments/#flowv2) was planned to replace `rippled`’s payment processing engine with a more robust and efficient implementation. It was previously expected to become active on Wednesday, 2016-08-24.
+The `rippled` team found a flaw in FlowV2 while testing. As a result, the Ripple network has [vetoed](/docs/concepts/networks-and-servers/amendments#amendment-voting) the new payment engine amendment. [Originally](/blog/2016/rippled-0.32.1.md), the [FlowV2 amendment](/resources/known-amendments.md#flowv2) was planned to replace `rippled`’s payment processing engine with a more robust and efficient implementation. It was previously expected to become active on Wednesday, 2016-08-24.
 
 A corrected version of the payment processing engine has been created and is now undergoing further testing. It is scheduled to be included in a future version of `rippled` as an amendment called [Flow](https://github.com/seelabs/rippled/blob/6466629f935821583eeddadbd06fabd9ea0875d0/src/ripple/app/main/Amendments.cpp#L50-L51).
 
@@ -28,11 +28,11 @@ To veto the amendment, add the following, single line, under the `[veto_amendmen
 
 ## Learn, Ask Questions, and Discuss
 
-Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing: <https://ripple.com/build/>
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 ### Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog: <https://developers.ripple.com/blog/>
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* XRP Chat: <http://www.xrpchat.com>
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

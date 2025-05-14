@@ -14,11 +14,11 @@ markdown:
 
 Today, for the first time, Ripple is proud to publicly announce that in recent internal benchmark testing, across 16 geographically distributed validators, the RCL is able to sustain nearly 1000 transactions per second.
 
-For even higher throughput transactions, we recently introduced [XRP payment channels](https://developers.ripple.com/blog/2016/rippled-0.33.0.html), which allow for zero-latency XRP payments. Although payment channels achieve practically infinite scalability by decoupling payment from settlement, they do so without incurring the risk typically associated with delayed settlement.
+For even higher throughput transactions, we recently introduced [XRP payment channels](/blog/2016/rippled-0.33.0.md), which allow for zero-latency XRP payments. Although payment channels achieve practically infinite scalability by decoupling payment from settlement, they do so without incurring the risk typically associated with delayed settlement.
 
 Throughout 2016, the network received upgrades that seamlessly enabled new functionality and significantly improved performance. Fast ledger close times have been the hallmark of RCL since its inception and those were further improved last year. Ledgers now close, on average, every 3.5 seconds - a full 20% faster than they did a year ago.
 
-The new [fee escalation code ](https://ripple.com/build/transaction-cost/)was introduced to constantly monitor network load and adjust (in near real-time) the cost of executing transactions, which makes it more difficult to overload the network and further helps to ensure the long-term health and stability of RCL.
+The new fee escalation code was introduced to constantly monitor network load and adjust (in near real-time) the cost of executing transactions, which makes it more difficult to overload the network and further helps to ensure the long-term health and stability of RCL.
 
 Stability, however, goes beyond improving performance and adding new features. At Ripple we place heavy emphasis on writing code that is secure, solid and robust. This singular focus on code quality has helped the Ripple network achieve availability and reliability well beyond industry standards with no outages.
 

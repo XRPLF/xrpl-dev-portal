@@ -20,7 +20,7 @@ The Data API also includes a lot of new capabilities, including:
 -   a new endpoint to show account balance changes
 -   new metrics in transaction stats
 
-We are making these changes quickly and are focusing our resources on building out and testing new endpoints. Documentation for the Data API will soon be available on [ripple.com/build](http://ripple.com/build). The API will live at [data.ripple.com](http://data.ripple.com). In the meantime, you can look through the [Data API in GitHub](https://github.com/ripple/rippled-historical-database/blob/develop/README.md).
+We are making these changes quickly and are focusing our resources on building out and testing new endpoints. Documentation for the Data API will soon be available on `ripple.com/build`. The API will live at `data.ripple.com`. In the meantime, you can look through the [Data API in GitHub](https://github.com/ripple/rippled-historical-database/blob/develop/README.md).
 
 Because we are pulling all of the data endpoints under one API, we are shutting down some of our underutilized endpoints that are relying on infrastructure we are not moving forward with. The first shutdown will be CouchDB on August 19th, which we used early on for Ripple Charts. We are replacing some of the endpoints that hit CouchDB in the Data API, but other, less frequently used calls are being removed. In the next few months, we will also be shutting down the Ripple Charts API and replacing aspects of that by expanding the Data API. The Historical Database API – version one – will live in parallel to the Data API as we make this transition. It will be deprecated by the end of the year.
 

@@ -51,7 +51,7 @@ For other platforms, please compile version 1.4.0 from source.
 
 * [Build on macOS](https://xrpl.org/build-run-rippled-macos.html)
 
-* [Build on other platforms](https://github.com/ripple/rippled/tree/master/Builds)
+* [Build on other platforms](https://github.com/XRPLF/rippled/blob/master/BUILD.md)
 
 The first log entry should be the change setting the version:
 
