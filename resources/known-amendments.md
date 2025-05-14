@@ -18,23 +18,23 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
-| [DeepFreeze][]                    | v2.4.0     | {% badge href="https://livenet.xrpl.org/transactions/976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021" %}Enabled: 2025-05-04{% /badge %} |
+| [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Expected: 2025-05-15{% /badge %} |
+| [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Expected: 2025-05-15{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
-| [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
-| [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
-| [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}Enabled: 2025-01-30{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
+| [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
+| [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [DeepFreeze][]                    | v2.4.0     | {% badge href="https://livenet.xrpl.org/transactions/976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021" %}Enabled: 2025-05-04{% /badge %} |
+| [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/E74C0196A9D4F193DD2A1DB5CCC5E37D3D43A21E2CB6185F6797E9BF2EDBE36C" %}Enabled: 2025-02-15{% /badge %} |
+| [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}Enabled: 2025-01-30{% /badge %} |
 | [fixAMMv1_2][]                    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/71D5031A5BD927BDFE424E51699E69F2784097D615D0852BF20C168BA9B5EA76" %}Enabled: 2025-01-30{% /badge %} |
 | [fixEnforceNFTokenTrustline][]    | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/606FA84C4BA30F67582C11A39BBFC11A9D994E114CD515E9F63FC7D8701A8ED9" %}Enabled: 2025-01-30{% /badge %} |
 | [fixInnerObjTemplate2][]          | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/426314C8BC64BA339E97E53B278602ADC44F115056274BF7971F694C9A8AF946" %}Enabled: 2025-01-30{% /badge %} |
 | [fixNFTokenPageLinks][]           | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/2D9A29768A7FA4BAC01DF1941380077E304785279E5E49267EC269F53ABADF5A" %}Enabled: 2025-01-30{% /badge %} |
 | [fixReducedOffersV2][]            | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/6D325D5EFF8230F1FECA3EE6418C9678637F3F56B0CA247013F70B3BDCFE75C8" %}Enabled: 2025-01-30{% /badge %} |
-| [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
-| [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
-| [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [PriceOracle][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/05D03F7BF08BF4A915483F7B10EAC7016034656A54A8A6AD4A49A9AD362764A1" %}Enabled: 2024-11-02{% /badge %} |
 | [DID][]                           | v2.0.0     | {% badge href="https://livenet.xrpl.org/transactions/7239CF04E6E1EEC606269135DA3C916B82D4B010F5315E7AEB3D5A3B6B5B343D" %}Enabled: 2024-10-30{% /badge %} |
-| [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
 | [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/A858AE8832981D77A4C5038D633CC9CBD54C9764BD2A3F8CA174E02D1736F472" %}Enabled: 2024-09-27{% /badge %} |
 | [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C7A9804E1F499ABBF38D791BAD25B1479DB1CEA4E9B6C5C08D6D4EF13F41E171" %}Enabled: 2024-09-27{% /badge %} |
 | [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://livenet.xrpl.org/transactions/8C8F5566464097BF1BAF7C645BB9E1762986844A052BBA3B9769F6564EEFAB71" %}Enabled: 2024-09-24{% /badge %} |
@@ -111,8 +111,8 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
-| [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} |  |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
+| [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} |  |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -307,7 +307,7 @@ However, the amendment was added to `rippled` v0.60.0 before implementation was 
 [DeepFreeze]: #deepfreeze
 
 | Amendment    | DeepFreeze |
-|:-------------|:------------------|
+|:-------------|:-----------|
 | Amendment ID | DAF3A6EB04FA5DC51E8E4F23E9B7022B693EFA636F23F22664746C77B5786B23 |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | No |
@@ -428,7 +428,7 @@ Without this amendment, any account can create these objects with any object as 
 [DynamicNFT]: #dynamicnft
 
 | Amendment    | DynamicNFT |
-|:-------------|:-----------------|
+|:-------------|:-----------|
 | Amendment ID | C1CE18F2A268E6A849C27B3DE485006771B4C01B2FCEC4F18356FE92ECD6BB74 |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
@@ -880,7 +880,7 @@ This amendment has no effect unless the [FlowCross][] amendment is enabled.
 | Amendment    | fixFrozenLPTokenTransfer |
 |:-------------|:-------------------------|
 | Amendment ID | 83FD6594FF83C1D105BD2B41D7E242D86ECB4A8220BD9AF4DA35CB0F69E39B2A |
-| Status       | Open for Voting |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -936,13 +936,14 @@ It is believed that this change does not affect transaction processing, but it i
 [fixInvalidTxFlags]: #fixinvalidtxflags
 
 | Amendment    | fixInvalidTxFlags |
-|:-------------|:-------------------------|
-| Amendment ID | 8EC4304A06AF03BE953EA6EDA494864F6F3F30AA002BABA35869FBB8C6AE5D52  |
-| Status       | Open for Voting |
+|:-------------|:------------------|
+| Amendment ID | 8EC4304A06AF03BE953EA6EDA494864F6F3F30AA002BABA35869FBB8C6AE5D52 |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 Adds flag checks for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. With this amendment enabled, these transactions will return a `temINVALID_FLAG` error if they include a flag that doesn't exist, or a contradictory combination of flags.
+
 
 ### fixMasterKeyAsRegularKey
 [fixMasterKeyAsRegularKey]: #fixmasterkeyasregularkey
@@ -1490,7 +1491,7 @@ Implements a "Negative UNL" system, where the network can track which validators
 | Amendment    | NFTokenMintOffer |
 |:-------------|:-----------------|
 | Amendment ID | EE3CF852F0506782D05E65D49E5DCC3D16D50898CD1B646BAE274863401CC3CE |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1598,7 +1599,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 [PermissionedDomains]: #permissioneddomains
 
 | Amendment    | PermissionedDomains |
-|:-------------|:--------|
+|:-------------|:--------------------|
 | Amendment ID | A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849 |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
