@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Configure how far back your server should store transaction history.
+    description: Configure how far back your Clio server should store transaction history.
 labels:
   - Clio Server
   - Data Retention
