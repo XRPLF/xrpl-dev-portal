@@ -942,7 +942,7 @@ It is believed that this change does not affect transaction processing, but it i
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds flag checks for `CredentialCreate`, `CredentialAccept`, `CredentialDelete`, and `SignerLisetSet` transactions. With this amendment enabled, these transactions will return a `temINVALID_FLAG` error if they include a flag that doesn't exist, or a contradictory combination of flags.
+Adds flag checks for `CredentialCreate`, `CredentialAccept`, `CredentialDelete`, and `SignerListSet` transactions. With this amendment enabled, these transactions will return a `temINVALID_FLAG` error if they include a flag that doesn't exist, or a contradictory combination of flags.
 
 ### fixMasterKeyAsRegularKey
 [fixMasterKeyAsRegularKey]: #fixmasterkeyasregularkey
