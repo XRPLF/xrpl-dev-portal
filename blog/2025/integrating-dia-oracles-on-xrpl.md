@@ -12,7 +12,7 @@ markdown:
 ---
 # Integrating DIA Oracles on the XRP Ledger
 
-As institutional DeFi continues to grow on the XRP Ledger (XRPL), access to reliable, decentralized price feeds is becoming increasingly essential. To support this, DIA, a leading open-source oracle platform, is now live on the XRP Ledger, offering robust, customizable oracles across thousands of assets. This blog post walks you through integrating DIA’s oracle service with your XRPL-based application, whether you’re working on DeFi, tokenized assets, or next-gen payments.
+As institutional DeFi continues to grow on the XRP Ledger (XRPL), access to reliable, decentralized price feeds is becoming increasingly essential. To support this, DIA, a leading open-source oracle platform, is now live on the XRPL, offering robust, customizable oracles across thousands of assets. This blog post walks you through integrating DIA’s oracle service with your XRPL-based application, whether you’re working on DeFi, tokenized assets, or next-gen payments.
 
 <!-- BREAK -->
 
