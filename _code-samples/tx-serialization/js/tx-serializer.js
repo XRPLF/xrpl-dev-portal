@@ -92,7 +92,7 @@ class TxSerializer {
     _decodeAddress(address) {
         const decoded = codec.decodeChecked(address)
         if (decoded[0] === 0 && decoded.length === 21) {
-            return decoded.slice(1)
+            return Buffer.from(decoded.slice(1))
         }
 
         throw new Error("Not an AccountID!")
@@ -161,7 +161,7 @@ class TxSerializer {
             const byte2 = this.uint8ToBytes(typeCode)
             const byte3 = this.uint8ToBytes(fieldCode)
 
-            return "" + byte1 + byte2 + byte3 //TODO: bytes is python function
+            return "" + byte1 + byte2 + byte3
         }
     }
 
@@ -681,7 +681,6 @@ class TxSerializer {
                 fieldsAsBytes.push(fieldBytes)
             }
         }
-
         return fieldsAsBytes.join('')
     }
 }
