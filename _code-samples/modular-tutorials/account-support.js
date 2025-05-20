@@ -32,8 +32,9 @@ async function getAccount() {
   }
   finally {
     // Disconnect from the client
-    await client.disconnect();
-  }
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    } }
 } // End of getAccount()
 
 async function getNewAccount1() {
@@ -78,8 +79,9 @@ async function getAccountFromSeed(my_seed) {
   }
   finally {
     // Disconnect from the client
-    await client.disconnect();
-  }
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    }  }
 } // End of getAccountFromSeed()
 
 // *****************************************************
@@ -169,8 +171,9 @@ async function getXrpBalance() {
   }
   finally {
     // Disconnect from the client
-    await client.disconnect();
-  }
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    }  }
 } // End of getXrpBalance()
 
 // *******************************************************
@@ -202,7 +205,8 @@ async function getTokenBalance() {
   }
   finally {
     // Disconnect from the client
-    await client.disconnect();
-  }
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    }  }
 } // End of getTokenBalance()
 
