@@ -78,4 +78,4 @@ SEOに最適化されたタイトルを選びましょう。
 
 ### サブセクション: ブログ記事へ動画を埋め込む方法
 
-動画の埋め込み方法については、[ドキュメントへの貢献](https://xrpl.org/resources/contribute-documentation#videos) の該当セクションをご参照ください。
+動画の埋め込み方法については、[ドキュメントへの貢献](https://xrpl.org/resources/contribute-documentation#videos) の該当セクションをご覧ください。
