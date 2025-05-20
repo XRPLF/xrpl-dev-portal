@@ -1,6 +1,4 @@
 ---
-html: nftokenmint.html
-parent: transaction-types.html
 seo:
     description: NFTokenMintを使用して新規NFTを発行する。
 labels:
@@ -62,6 +60,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 | `tfOnlyXRP`      | `0x00000002` | 2      | 発行された`NFToken`はXRPでのみ売買が可能です。これは、トークンに送金手数料がかかり、発行者がXRP以外のトークンで手数料を受け取りたくない場合に望ましいでしょう。 |
 | `tfTrustLine`    | `0x00000004` | 4      | **非推奨** 発行者が、発行した`NFToken`を転送する際に受け取る手数料を保有するために、自動的に[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md) を作成します。[fixRemoveNFTokenAutoTrustLine Amendment][]により、このフラグの設定は無効となります。 |
 | `tfTransferable` | `0x00000008` | 8      | 発行された`NFToken`は他の人に譲渡することができます。このフラグが _有効でない_ 場合、トークンは _発行者から_ 、または _発行者へ_ のみ転送することができます。 |
+| `tfMutable`      | `0x00000010` | 16     | 発行された`NFToken`の`URI`フィールドは、`NFTokenModify`トランザクションを使用して更新することができます。 |
 
 
 ## 追加情報の埋め込み
