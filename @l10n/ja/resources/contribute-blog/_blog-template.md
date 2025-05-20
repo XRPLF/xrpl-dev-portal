@@ -43,7 +43,7 @@ SEOに最適化されたタイトルを選びましょう。
 [ドキュメントへの貢献](../resources/contribute-documentation/index.md).
 ```
 
-外部リンクを含めるには、相対パスではなく絶対URLを使用してください。以下の例をご参照ください。
+外部リンクを含めるには、相対パスではなく絶対URLを使用してください。以下の例をご覧ください。
 
 ```
 [ドキュメントへの貢献](https://xrpl.org/resources/contribute-documentation).
