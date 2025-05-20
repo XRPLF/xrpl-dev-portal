@@ -19,7 +19,7 @@ markdown:
 <!-- BREAK -->
 
 
-詳しいガイドラインや例については、[ブログ記事を投稿する](https://xrpl.org/resources/contribute-blog/)をご参照ください。
+詳しいガイドラインや例については、[ブログ記事を投稿する](https://xrpl.org/resources/contribute-blog/)をご覧ください。
 
 NOTE: 現在、ブログ記事は英語のみで提供されており、翻訳はまだ行われていません。
 
