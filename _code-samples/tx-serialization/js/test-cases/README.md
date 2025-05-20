@@ -6,7 +6,7 @@ you can use to verify the behavior of the transaction serialization code.
 For example (starting from the `tx-serialization/js/` dir above this one):
 
 ```bash
-$ node index.js -f test-cases/tx2.json | \
+$ node index.js -rf test-cases/tx2.json | \
   diff - test-cases/tx2-binary.txt
 ```
 
@@ -46,7 +46,7 @@ CDC63E1DEE7FE3744630440220143759437C04F7B61F012563AFE90D8DAFC46E86035E1D965A9CED
 For a friendlier display, you could pipe the output of the serializer to a file and use a visual tool like [Meld](http://meldmerge.org/) that shows intra-line differences:
 
 ```bash
-$ cat test-cases/tx1.json | sed -e 's/"Fee": "10"/"Fee": "100"/' | node index.js --stdin > /tmp/tx1-modified.txt && meld /tmp/tx1-modified.txt test-cases/tx1-binary.txt
+$ cat test-cases/tx1.json | sed -e 's/"Fee": "10"/"Fee": "100"/' | node index.js --raw --stdin > /tmp/tx1-modified.txt && meld /tmp/tx1-modified.txt test-cases/tx1-binary.txt
 ```
 
 ![Meld screenshot showing the `0A` / `64` difference](meld-example.png)
