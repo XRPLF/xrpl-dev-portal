@@ -38,8 +38,6 @@ async function createSellOffer() {
         transactionJson.Destination = destination;
       }
 
-      console.log("Creating Sell Offer Transaction:", JSON.stringify(transactionJson, null, 2));
-
       const tx = await client.submitAndWait(transactionJson, { wallet });
       results += `\nSell offer created successfully!\nTransaction Hash: ${tx.result.hash}\nEngine Result: ${tx.result.engine_result}`;
       resultField.value = results;
@@ -69,7 +67,6 @@ async function createBuyOffer() {
   try {
     // Use the external configureAmount() function
     let amount = configureAmount();
-console.log("Amount:", amount);
     // Use the external configureExpiration() function
     let expiration = configureExpiration(); // This will return a number or an empty string from the original logic
 
@@ -83,12 +80,12 @@ console.log("Amount:", amount);
 
     // Only add Amount if it's defined (not undefined or an empty string)
     if (amount !== undefined && amount !== '') {
-        transactionJson.Amount = amount;
+      transactionJson.Amount = amount;
     } else {
-        results += "\nError: Amount field is required for a buy offer.";
-        resultField.value = results;
-        client.disconnect();
-        return;
+      results += "\nError: Amount field is required for a buy offer.";
+      resultField.value = results;
+      client.disconnect();
+      return;
     }
 
     if (destinationField.value !== '') {
@@ -99,8 +96,6 @@ console.log("Amount:", amount);
     if (expiration > 0) {
       transactionJson.Expiration = expiration;
     }
-
-    console.log("Buy Offer Transaction JSON:\n" + JSON.stringify(transactionJson, null, 2));
 
     const tx = await client.submitAndWait(transactionJson, { wallet: wallet });
 
@@ -166,7 +161,7 @@ async function cancelOffer() {
   // Submit transaction --------------------------------------------------------
   const tx = await client.submitAndWait(transactionJson, { wallet })
 
-  results += "\n\n=== Sell Offers===\n"
+  results = "\n\n=== Sell Offers===\n"
   let nftSellOffers
   try {
     nftSellOffers = await client.request({
@@ -174,7 +169,7 @@ async function cancelOffer() {
       nft_id: nftIdField.value
     })
   } catch (err) {
-    nftSellOffers = "=== No sell offers. ==="
+    nftSellOffers = '=== No sell offers. ===\n'
   }
   results += JSON.stringify(nftSellOffers, null, 2)
   results += "\n\n=== Buy Offers ===\n"
@@ -184,18 +179,20 @@ async function cancelOffer() {
       method: "nft_buy_offers",
       nft_id: nftIdField.value
     })
-    results += JSON.stringify(nftBuyOffers, null, 2)
+
   } catch (err) {
     nftBuyOffers = '=== No buy offers. ==='
   }
+  results += JSON.stringify(nftBuyOffers, null, 2)
+  resultField.value += results
 
   // Check transaction results -------------------------------------------------
 
-  results += "\n=== Transaction result:\n" +
+  results = "\n=== Transaction result:\n" +
     JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-  results += "\n=== Balance changes:\n" +
+  results += "\n\n=== Balance changes:\n" +
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value = results
+  resultField.value += results
 
   client.disconnect() // End of cancelOffer()
 }
@@ -209,12 +206,12 @@ async function getOffers() {
   let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
- 
+
   let results = '\nConnected. Getting offers...'
-  resultField.value = results 
+  resultField.value = results
 
   // --- Sell Offers ---
-  results += '\n\n=== Sell Offers ===\n' 
+  results += '\n\n=== Sell Offers ===\n'
   let nftSellOffers
   try {
     nftSellOffers = await client.request({
@@ -225,10 +222,10 @@ async function getOffers() {
     nftSellOffers = 'No sell offers found for this NFT ID.'
   }
   results += JSON.stringify(nftSellOffers, null, 2)
-  resultField.value = results 
+  resultField.value = results
 
   // --- Buy Offers ---
-  results += '\n\n=== Buy Offers ===\n'
+  results = '\n\n=== Buy Offers ===\n'
   let nftBuyOffers
   try {
     nftBuyOffers = await client.request({
@@ -240,7 +237,7 @@ async function getOffers() {
     nftBuyOffers = 'No buy offers found for this NFT ID.' // More descriptive
   }
   results += JSON.stringify(nftBuyOffers, null, 2) // Append the JSON string
-  resultField.value = results // Update the display with buy offers
+  resultField.value += results // Update the display with buy offers
 
   client.disconnect()
 }// End of getOffers()
@@ -253,36 +250,41 @@ async function acceptSellOffer() {
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
-  await client.connect()
-  let results = '\n=== Connected. Accepting sell offer. ===\n\n'
-  resultField.value = results
+  try {
+    await client.connect()
+    let results = '\n=== Connected. Accepting sell offer. ===\n\n'
+    resultField.value = results
 
-  // Prepare transaction -------------------------------------------------------
-  const transactionJson = {
-    "TransactionType": "NFTokenAcceptOffer",
-    "Account": wallet.classicAddress,
-    "NFTokenSellOffer": nftOfferIdField.value,
+    // Prepare transaction -------------------------------------------------------
+    const transactionJson = {
+      "TransactionType": "NFTokenAcceptOffer",
+      "Account": wallet.classicAddress,
+      "NFTokenSellOffer": nftOfferIdField.value,
+    }
+    // Submit transaction --------------------------------------------------------
+    const tx = await client.submitAndWait(transactionJson, { wallet: wallet })
+    const nfts = await client.request({
+      method: "account_nfts",
+      account: wallet.classicAddress
+    })
+
+    // Check transaction results -------------------------------------------------
+
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+
+
+    results += '=== Transaction result:\n'
+    results += JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+    results += '\n=== Balance changes:'
+    results += JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    results += JSON.stringify(nfts, null, 2)
+    resultField.value = results
+  } catch (error) {
+    console.error('Error accepting sell offer:', error)
+    resultField.value = `Error: ${error.message || error}`
+  } finally {
+    client.disconnect()
   }
-  // Submit transaction --------------------------------------------------------
-  const tx = await client.submitAndWait(transactionJson, { wallet: wallet })
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: wallet.classicAddress
-  })
-
-  // Check transaction results -------------------------------------------------
-
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-
-
-  results += '=== Transaction result:\n'
-  results += JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-  results += '\n=== Balance changes:'
-  results += JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  results += JSON.stringify(nfts, null, 2)
-  resultField.value = results
-
-  client.disconnect()
 }// End of acceptSellOffer()
 
 // *******************************************************
