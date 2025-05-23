@@ -1,0 +1,291 @@
+<html>
+
+<head>
+    <title>Broker NFTs</title>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
+    <script src="account-support.js"></script>
+    <script src="transaction-support.js"></script>
+    <script src="mint-nfts.js"></script>
+    <script src="transfer-nfts.js"></script>
+    <script src="broker-nfts.js"></script>
+</head>
+
+<body>
+    <h1>Broker NFTs</h1>
+    <form id="theForm">
+        <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+            Choose your ledger instance:
+        </span>
+        &nbsp;&nbsp;
+        <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233" checked>
+        <label for="dn">Devnet</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233">
+        <label for="tn">Testnet</label>
+        <br /><br />
+        <table>
+            <tr>
+                <td>
+                    <button type="button" onClick="getNewAccount1()">Get New Account 1</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed1()">Get Account 1 From Seed</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getNewAccount2()">Get New Account 2</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed2()">Get Account 2 From Seed</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account."><label
+                            for="account1name">Account 1 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1name" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                        <label for="account2name">Account 2 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2name" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account1address">Account 1 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1address" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account2address">Account 2 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2address" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account1seed">Account 1 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1seed" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account2seed">Account 2 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2seed" size="40"></input>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <table>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Name of the currently selected account.">
+                        <label for="accountNameField">Account Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountNameField" size="40" readonly></input>
+                    <input type="radio" id="account1" name="accounts" value="account1">
+                    <label for="account1">Account 1</label>
+                </td>
+                <td rowspan="4" align="center">
+                    <p>
+                        <img id="nftImage"
+                            src="https://ipfs.io/ipfs/bafybeigjro2d2tc43bgv7e4sxqg7f5jga7kjizbk7nnmmyhmq35dtz6deq"
+                            width="150" height="150">
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Address of the currently selected account.">
+                        <label for="accountAddressField">Account Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountAddressField" size="40" readonly></input>
+                    <input type="radio" id="account2" name="accounts" value="account2">
+                    <label for="account2">Account 2</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Seed of the currently selected account.">
+                        <label for="accountSeedField">Account Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountSeedField" size="40" readonly></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="XRP balance for the currently selected account.">
+                        <label for="xrpBalanceField">XRP Balance</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="xrpBalanceField" size="40" readonly></input>
+                </td>
+            </tr>
+            <tr>
+                 <td>
+                </td>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="URL to the stored NFT.">
+                        <label for="nftURLfield">NFT URL</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftURLfield" size="40"
+                        placeholder="https://ipfs.io/ipfs/bafybeigjro2d2tc43bgv7e4sxqg7f5jga7kjizbk7nnmmyhmq35dtz6deq"></input>
+                    <br />
+                    <p id="error-message"></p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="NFT ID code, used to identify the token after it's minted.">
+                        <label for="nftIdField">NFT ID</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftIdField" size="40"></input>
+                </td>
+            
+                <td align="center" valign="top">
+                    <button type="button" onClick="getNFTs()">Get NFTs</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Account address of the Owner of an NFT offered to sell or buy.">
+                        <label for="nftOwnerField">NFT Owner Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftOwnerField" size="40"></input>
+                </td>
+                <td colspan="2" align="center" valign="top">
+                   <button type="button" onClick="getOffers()" width="40">Get Offers</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Index of the sell offer to broker.">
+                        <label for="nftSellOfferIndexField">Sell Offer Index</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftSellOfferIndexField" size="40"></input>
+                    <br>
+                </td>
+                <td align="middle" valign="top" colspan="2">
+                    <button type="button" onClick="brokerSale()">Broker Sale</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Index of the buy offer to broker.">
+                        <label for="nftBuyOfferIndexField">Buy Offer Index</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftBuyOfferIndexField" size="40"></input>
+                    <br>
+                </td>
+                <td align="middle" valign="top" colspan="2">
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Fee collected by the broker account when the brokered deal is complete.">
+                        <label for="brokerFeeField">Broker Fee</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="brokerFeeField" size="40"></input>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td colspan="2">
+                    <p align="left">
+                        <textarea id="resultField" cols="75" rows="20"></textarea>
+                    </p>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="gatherAccountInfo()">Gather Account Info</button><br />
+                    <button type="button" onClick="distributeAccountInfo()">Distribute Account Info</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const imageURLInput = document.getElementById('nftURLfield'); // Correct ID to nftURLfield
+        const displayImage = document.getElementById('nftImage');
+        const loadButton = document.getElementById('showNFTbutton');
+        const errorMessage = document.getElementById('error-message');
+
+        if (imageURLInput) {
+            imageURLInput.addEventListener('change', () => {
+                const newURL = imageURLInput.value;
+                displayImage.src = ''; // Clear previous image
+                errorMessage.style.display = 'none';
+                try {
+                    new URL(newURL);
+                } catch (_) {
+                    errorMessage.textContent = 'Invalid URL. Please enter a valid URL, including "https://" or "http://".';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                displayImage.onload = () => {
+                    // Image loaded.  You might add a console log here, or update UI.
+                    console.log(`Image loaded from: ${newURL}`);
+                };
+                displayImage.onerror = () => {
+                    errorMessage.textContent = 'Error loading image from the provided URL.';
+                    errorMessage.style.display = 'block';
+                    displayImage.src = ''; // Clear the image on error
+                };
+                displayImage.src = newURL; // Load the image
+            });
+        }
+    });
+
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function () {
+            if (this.value === 'account1') {
+                populate1()
+            } else if (this.value === 'account2') {
+                populate2()
+            }
+        });
+    });
+</script>
+
+</html>

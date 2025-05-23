@@ -1,10 +1,7 @@
 ---
-html: transfer-nfts-using-javascript.html
-parent: nfts-using-javascript.html
 seo:
     description: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
 labels:
-  - Quickstart
   - Tokens
   - Non-fungible Tokens, NFTs
 ---
@@ -19,43 +16,52 @@ This example shows how to:
 5. Get a list of offers for a particular NFT.
 6. Cancel an offer.
 
-[![Quickstart form with NFT transfer fields](/docs/img/quickstart13.png)](/docs/img/quickstart13.png)
+[![Transfer NFTs Test Harness](../../../img/mt-transfer-nft-1-empty-form.png)](../../../img/mt-transfer-nft-1-empty-form.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
+You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try each of the samples in your own browser.
 
 # Usage
 
 ## Get Accounts
 
-1. Open `4.transfer-nfts.html` in a browser.
-2. Choose your ledger instance (**Testnet** or **Devnet**).
+1. Open `transfer-nfts.html` in a browser.
+2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
-    1. If you have existing test account seeds
-        1. Paste account seeds in the **Seeds** field.
-        2. Click **Get Accounts from Seeds**.
-    2. If you do not have test account seeds:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
+    1. If you copied the gathered information from another tutorial:
+        1. Paste the gathered information to the **Result** field.
+        2. Click **Distribute Account Info**.
+    2. If you have an existing account seed:
+        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+    2. If you do not have existing accounts:
+        1. Click **Get New Account 1**.
+        2. Click **Get New Account 2**.
 
-[![Form with account information](/docs/img/quickstart14.png)](/docs/img/quickstart14.png)
+[![Form with account information](../../../img/mt-transfer-nft-2-accounts-loaded.png)](../../../img/mt-transfer-nft-2-accounts-loaded.png)
 
 ## Create a Sell Offer
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/mZlznG9ZJNY?si=TFTtl_MPb7WPtHHV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
+To create an NFT sell offer:
 
-To create a NFT sell offer:
-
-1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
-2. Set the **Flags** field to _1_.
-3. Enter the **NFT ID** of the NFT you want to sell.
-4. Optionally, enter a number of days until **Expiration**.
+1. Enter the **Amount** of the sell offer.
+   1. If using _XRP_, enter the **Amount** in drops (millionths of an XRP; for example, 20000000).
+   2. If using issued currency, enter the **Currency** code, **Issuer** account address, and the **Amount**.
+2. Optionally, include a **Destination** account address. If present, only that account will have permission to accept the sell offer.
+3. Optionally, enter a number of days until **Expiration** of the offer.
+4. Enter the **NFT ID** of the NFT you want to sell.
 5. Click **Create Sell Offer**.
 
-The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
+[![NFT Sell Offer](../../../img/mt-transfer-nfts-3-create-sell-offer.png)](../../../img/mt-transfer-nfts-3-create-sell-offer.png)
 
-[![NFT Sell Offer](/docs/img/quickstart15.png)](/docs/img/quickstart15.png)
+## Get Offers
+
+To list the buy and sell offers associated with an NFT:
+1. Enter the **NFT ID**.
+2. Click **Get Offers**.
+
+The key piece of information is the NFT Offer ID (labeled as `nft_offer_index`), which you use to accept a sell or buy offer. 
+
+[![Get offers](../../../img/mt-transfer-nfts-4-get-offers.png)](../../../img/mt-transfer-nfts-4-get-offers.png)
 
 ## Accept Sell Offer
 
@@ -66,38 +72,32 @@ To accept an available sell offer:
 1. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
 2. Click **Accept Sell Offer**.
 
-[![Accept Sell Offer](/docs/img/quickstart16.png)](/docs/img/quickstart16.png)
+[![Accept Sell Offer](../../../img/mt-transfer-nfts-5-accept-sell-offer.png)](../../../img/mt-transfer-nfts-5-accept-sell-offer.png)
 
 ## Create a Buy Offer
 
-You can offer to buy a NFT from another account.
+You can offer to buy an NFT from another account.
 
-To create an offer to buy a NFT:
+To create an offer to buy an NFT:
 
 1. Enter the **Amount** of your offer.
-2. Enter the **NFT ID**.
-3. Enter the owner’s account string in the **Owner** field.
-4. Optionally enter the number of days until **Expiration**.
+   1. If paying XRP, enter the **Amount** of XRP in drops (1000000 equals 1 XRP).
+   2. If paying an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
+2. Optionally enter the number of days until **Expiration**.
+3. Enter the **NFT ID**.
+4. Enter the owner’s account address in the **NFT Owner Address** field.
 5. Click **Create Buy Offer**.
 
 [![NFT Buy Offer](/docs/img/quickstart17.png)](/docs/img/quickstart17.png)
 
 ## Accept a Buy Offer
 
-To accept an offer to buy a NFT:
+To accept an offer to buy an NFT:
 
 1. Enter the **NFT Offer Index** (the `nft_offer_index` of the NFT buy offer).
 3. Click **Accept Buy Offer**.
 
 [![Accept Buy Offer](/docs/img/quickstart18.png)](/docs/img/quickstart18.png)
-
-## Get Offers
-
-To list the buy and sell offers associated with a NFT:
-1. Enter the **NFT ID**.
-2. Click **Get Offers**.
-
-[![Get offers](/docs/img/quickstart19.png)](/docs/img/quickstart19.png)
 
 ## Cancel Offer
 
