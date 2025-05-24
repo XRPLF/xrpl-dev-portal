@@ -1,275 +1,15 @@
----
-html: assign-an-authorized-minter-using-javascript.html
-parent: nfts-using-javascript.html
-seo:
-    description: Authorize another account to mint NFTs for you.
-labels:
-  - Accounts
-  - Quickstart
-  - XRP
-  - NFTs, NFTokens
----
-# Assign an Authorized Minter Using JavaScript
-
-You can assign another account permission to mint NFTs for you.
-
-This example shows how to:
-
-1. Authorize an account to create NFTs for your account.
-2. Mint an NFT for another account, when authorized.
-
-[![Token Test Harness](../../../img/mt-auth-minter-1-empty-form.png)](../../../img/mt-auth-minter-1-empty-form.png)
-
-# Usage
-
-You can download the [NFT Modular Sam;ples](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try the sample in your own browser.
-
-## Get Accounts
-
-1. Open `authorized-minter.html` in a browser.
-2. Choose your preferred test network (**Devnet** or **Testnet**).
-3. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
-        
-## Authorize an Account to Create NFTs
-
-To authorize another account to create NFTs for your account:
-
-1. Enter the account you want to authorize in the **Authorized Minter** field.
-3. Click **Authorize Minter**.
-
-[![Authorized Minter](../../../img/mt-auth-minter-2-authorize-minter.png)](../../../img/mt-auth-minter-2-authorize-minter.png)
-
-## Mint an NFT for Another Account
-
-To mint a non-fungible token for another account:
-
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
-2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
-5. Enter the account number on whose behalf you are minting the NFT in the **NFT Issuer** field.
-6. Optionally, you can set an expected prices for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
-7. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.
-8. Optionally, you can enter an **Expiration** value in days, after which the offer will no longer be available.
-9. Click **Mint Other**.
-
-[![Minted NFT for Another Account](../../../img/mt-auth-minter-3-mint-other.png)](../../../img/mt-auth-minter-3-mint-other.png)
-
-Once the item is minted, the authorized minter can sell the NFT normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
-
-# Code Walkthrough
-
-You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try each of the samples in your own browser.
-
-## Authorize Minter
-
-This function sets the authorized minter for an account. Each account can have 0 or 1 authorized minter that can mint NFTs in its stead.
-
-```javascript
-// *******************************************************
-// ****************  Authorize Minter  *******************
-// *******************************************************
-
-async function authorizeMinter() {    
-```
-
-Get the account wallet and connect to the XRP Ledger.
-
-```javascript
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
-  const net = getNet();
-  const client = new xrpl.Client(net);
-  let results = `\n=== Connected. Authorizing Minter. ===`;
-  resultField.value = results;
-
-  try {
-    await client.connect();
-```
-
-Create the transaction JSON.
-
-```javascript
-    tx_json = {
-      "TransactionType": "AccountSet",
-      "Account": wallet.address,
-      "NFTokenMinter": authorizedMinterField.value,
-      "SetFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
-    }
-```
-
-Sign and send the prepared transaction, then wait for the results.
-
-```javascript
-    const prepared = await client.autofill(tx_json)
-    const signed = wallet.sign(prepared)
-    const result = await client.submitAndWait(signed.tx_blob)
-```
-
-Report the results.
-
-```javascript
-    results += '\nAccount setting succeeded.\n'
-    results += JSON.stringify(result, null, 2)
-    resultField.value = results
-```
-
-Catch and report any errors.
-
-```javascript
-  } catch (error) {
-    console.error("Error setting minter:", error);
-    results = `\n\n=== Error setting minter: ${error.message}`;
-    resultField.value += results;
-```
-
-Disconnect from the XRP Ledger.
-
-```javascript
-  } finally {
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }
-  }
-```
-
-## Mint Other
-
-This revised mint function allows one account to mint for another issuer.
-
-```javascript
-
-// *******************************************************
-// ****************  Mint Other  *************************
-// *******************************************************
-
-async function mintOther() {
-```
-
-Get the account wallet and connect to the XRP Ledger.
-
-```javascript
-async function mintOther() {
-  let results = 'Connecting to ' + getNet() + '....'
-  resultField.value = results
-  const net = getNet()
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  const client = new xrpl.Client(net)
-
-  try {
-    await client.connect()
-    results += '\nConnected. Minting NFT.'
-    resultField.value = results
-```
-
-Create the JSON transaction object.
-
-```javascript
-    // ------------------------------------------------------------------------
-    const tx_json = {
-      "TransactionType": "NFTokenMint",
-      "Account": wallet.classicAddress,
-      "URI": xrpl.convertStringToHex(nftURLfield.value),
-      "Flags": parseInt(flagsField.value),
-      "TransferFee": parseInt(transferFeeField.value),
-      "Issuer": nftIssuerField.value,
-      "NFTokenTaxon": nftTaxonField.value //Required, but if you have no use for it, set to zero.
-    }
-```
-
-If the **Amount** field is populated, configure and add the expected amount the NFT will sell for.
-
-```javascript
-    if (amountField.value) {
-         tx_json.Amount = configureAmount(amountField.value);
-    }
-```
-
-If the **Expiration (days)** field is populated, configure and add the expiration date.
-
-```javascript
-    if (expirationField.value) {
-       tx_json.Expiration = configureExpiration(expirationField.value);
-    }
-```
-
-If the **Destination** field is populated, add it to the transaction JSON object.
-
-```javascript
-    if (destinationField.value) {
-      tx_json.Destination = destinationField.value;
-    }
-```
-
-Submit the transaction and wait for the result.
-
-```javascript
-    const tx = await client.submitAndWait(tx_json, { wallet: wallet })
-```
-
-Request the list of NFTs for the current account.
-
-```javascript
-    const nfts = await client.request({
-      method: "account_nfts",
-      account: wallet.classicAddress
-    })
-```
-
-Report the results.
-
-```javascript
-    results += '\n\n=== Transaction result: ' + tx.result.meta.TransactionResult
-    results += '\n\n=== NFTs: ' + JSON.stringify(nfts, null, 2)
-    resultField.value = results + (await client.getXrpBalance(wallet.address))
-```
-
-Catch and report any errors.
-
-```javascript
-  } catch (error) {
-    results += '\n\nAn error occurred: ' + error.message
-    console.error(error) // Log the error for debugging
-    resultField.value = results
-```
-
-Disconnect from the XRP Ledger.
-
-```javascript
-  } finally {
-    if (client.isConnected()) { // Check if the client is connected before attempting to disconnect
-      client.disconnect()
-      results += '\nDisconnected from XRPL.'
-      resultField.value = results
-    }
-  }
-} //End of mintOther()
-```
-
-
-## authorized-minter.html
-
-```html
 <html>
 <head>
-    <title>Authorize Minter of NFTs</title>
+    <title>Mint NFTs</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link href="modular-tutorials.css" rel="stylesheet">
     <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
     <script src="account-support.js"></script>
     <script src='transaction-support.js'></script>
     <script src='mint-nfts.js'></script>
-    <script src='authorized-minter.js'></script>
 </head>
 <body>
-    <h1>Authorize Minter of NFTs</h1>
+    <h1>Mint NFTs</h1>
     <form id="theForm">
         <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
             Choose your ledger instance:
@@ -474,15 +214,12 @@ Disconnect from the XRP Ledger.
             </tr>
             <tr>
                 <td align="right">
-                    <span class="tooltip" tooltip-data="Amount of XRP to send.">
+                    <span class="tooltip" tooltip-data="Amount of currency to send. If XRP, you can enter 1 per XRP: the amount is converted to drops for you.">
                         <label for="amountField">Amount</label>
                     </span>
                 </td>
                 <td>
                     <input type="text" id="amountField" size="40"></input>
-                </td>
-                <td>
-                    <button type="button" onClick="authorizeMinter()">Authorize Minter</button>
                 </td>
             </tr>
             <tr>
@@ -494,9 +231,6 @@ Disconnect from the XRP Ledger.
                 <td>
                     <input type="text" id="destinationField" size="40"></input>
                     <br>
-                </td>
-                <td>
-                    <button type="button" onClick="mintOther()">Mint Other</button>
                 </td>
             </tr>
             <tr>
@@ -517,26 +251,6 @@ Disconnect from the XRP Ledger.
                 </td>
                 <td>
                     <input type="text" id="nftIdField" size="40"></input>
-                </td>
-            </tr>
-             <tr>
-                <td align="right">
-                    <span class="tooltip" tooltip-data="Account address that is authorized to mint NFTs for this account.">
-                        <label for="authorizedMinterField">Authorized Minter</label>
-                    </span>
-                </td>
-                <td>
-                    <input type="text" id="authorizedMinterField" size="40"></input>
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <span class="tooltip" tooltip-data="Account that is the original issuer of the NFT.">
-                        <label for="nftIssuerField">NFT Issuer</label>
-                    </span>
-                </td>
-                <td>
-                    <input type="text" id="nftIssuerField" size="40"></input>
                 </td>
             </tr>
             <tr>
@@ -597,4 +311,3 @@ Disconnect from the XRP Ledger.
     });
 </script>
 </html>
-```
