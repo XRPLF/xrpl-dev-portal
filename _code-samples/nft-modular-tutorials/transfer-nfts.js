@@ -278,7 +278,7 @@ async function acceptSellOffer() {
     results += '\n=== Balance changes:'
     results += JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
     results += JSON.stringify(nfts, null, 2)
-    resultField.value = results
+    resultField.value += results
   } catch (error) {
     console.error('Error accepting sell offer:', error)
     resultField.value = `Error: ${error.message || error}`
@@ -292,35 +292,48 @@ async function acceptSellOffer() {
 // *******************************************************
 
 async function acceptBuyOffer() {
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  let results = '\n=== Connected. Accepting buy offer. ==='
-  resultField.value = results
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
+  let net = getNet();
+  const client = new xrpl.Client(net);
+  let results = '\n=== Connected. Accepting buy offer. ==='; // Declare results locally
 
-  // Prepare transaction -------------------------------------------------------
-  const transactionJson = {
-    "TransactionType": "NFTokenAcceptOffer",
-    "Account": wallet.classicAddress,
-    "NFTokenBuyOffer": nftOfferIdField.value
+  try {
+    await client.connect();
+    resultField.value = results; // Update UI after connection
+
+    // Prepare transaction -------------------------------------------------------
+    const transactionJson = {
+      "TransactionType": "NFTokenAcceptOffer",
+      "Account": wallet.classicAddress,
+      "NFTokenBuyOffer": nftOfferIdField.value
+    };
+
+    // Submit transaction --------------------------------------------------------
+    const tx = await client.submitAndWait(transactionJson, { wallet: wallet });
+
+    const nfts = await client.request({
+      method: "account_nfts",
+      account: wallet.classicAddress
+    });
+
+    results += JSON.stringify(nfts, null, 2);
+    resultField.value = results;
+
+    // Check transaction results -------------------------------------------------
+    results += "\n\nTransaction result:\n" +
+      JSON.stringify(tx.result.meta.TransactionResult, null, 2);
+    results += "\nBalance changes:\n" +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2);
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address));
+    resultField.value = results;
+
+  } catch (error) {
+    console.error('Error in acceptBuyOffer:', error); // Log the full error
+    results = `\n=== Error accepting buy offer: ${error.message || 'Unknown error'} ===`; 
+    resultField.value = results;
+  } finally {
+    if (client && client.isConnected()) {
+      client.disconnect();
+    }
   }
-  // Submit transaction --------------------------------------------------------
-  const tx = await client.submitAndWait(transactionJson, { wallet: wallet })
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: wallet.classicAddress
-  })
-  results += JSON.stringify(nfts, null, 2)
-  resultField.value = results
-
-  // Check transaction results -------------------------------------------------
-  results += "\n\nTransaction result:\n" +
-    JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-  results += "\nBalance changes:\n" +
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  xrpBalanceField.value =
-    (await client.getXrpBalance(wallet.address))
-  resultField.value = results
-  client.disconnect()
-}// End of acceptBuyOffer()
+} // End of acceptBuyOffer()

@@ -51,7 +51,6 @@ async function mintOther() {
     results += '\nConnected. Minting NFT.'
     resultField.value = results
 
-    // This version adds the "Issuer" field.
     // ------------------------------------------------------------------------
     const tx_json = {
       "TransactionType": "NFTokenMint",
@@ -59,23 +58,30 @@ async function mintOther() {
       "URI": xrpl.convertStringToHex(nftURLfield.value),
       "Flags": parseInt(flagsField.value),
       "TransferFee": parseInt(transferFeeField.value),
-      "Issuer": issuerField.value,
-      "NFTokenTaxon": 0 //Required, but if you have no use for it, set to zero.
+      "Issuer": nftIssuerField.value,
+      "NFTokenTaxon": nftTaxonField.value //Required, but if you have no use for it, set to zero.
+    }
+    if (amountField.value) {
+         tx_json.Amount = configureAmount(amountField.value);
     }
 
+    if (expirationField.value) {
+       tx_json.Expiration = configureExpiration(expirationField.value);
+    }
+
+    if (destinationField.value) {
+      tx_json.Destination = destinationField.value;
+    }
     // ----------------------------------------------------- Submit transaction
     const tx = await client.submitAndWait(tx_json, { wallet: wallet })
     const nfts = await client.request({
       method: "account_nfts",
       account: wallet.classicAddress
     })
-
     // ------------------------------------------------------- Report results
     results += '\n\n=== Transaction result: ' + tx.result.meta.TransactionResult
     results += '\n\n=== NFTs: ' + JSON.stringify(nfts, null, 2)
     resultField.value = results + (await client.getXrpBalance(wallet.address))
-    // The line below seems redundant if the previous line already updates resultField.value
-    // resultField.value = results
   } catch (error) {
     results += '\n\nAn error occurred: ' + error.message
     console.error(error) // Log the error for debugging

@@ -44,7 +44,10 @@ To mint a non-fungible token object:
 2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
 3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0. If you impose a transfer fee, your NFT can only be traded for tokens for which your account has a trust line. See [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md#trust-lines).
 4. Optionally enter an **NFT Taxon**. This is a required value, but if you are not using the field to create an integer-based taxon entry, you can set the value to 0.
-5. Click **Mint NFT**.
+5. Optionally, you can set an expected prices for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
+6. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.
+7. Optionally, you can enter an **Expiration** value in days, after which the offer will no longer be available.
+8. Click **Mint NFT**.
 
 [![Mint NFT fields](../../../img/mt-mint-token-3-mint-token.png)](../../../img/mt-mint-token-3-mint-token.png)
 
