@@ -51,7 +51,7 @@ labels:
 - **Limit**: 0から[トークンの上限量](../../../references/protocol/data-types/currency-formats.md)の範囲内の数字です。支払いや他のアカウントの操作によって、(このアカウントから見た)トラストラインの残高が限度額を超えることはできません。デフォルトは`0`です。
 - **Authorized**: [Authorized Trust Lines](authorized-trust-lines.md)と併用し、このアカウントが発行するトークンを相手側に保持させることを許可するための値(true/false)です。デフォルトは`false`です。一度`true`に設定すると、元に戻すことはできません。
 - **No Ripple**: トークンがこのトラストラインを通過して[ripple](rippling.md)するかどうかを設定するための値(true/false)です。デフォルトはアカウントの"Default Ripple"設定に依存します。新しいアカウントでは"Default Ripple"はoffで、つまり`true`がNo Rippleのデフォルト値となります。通常、発行者はrippleを許可し、非発行者はコミュニティクレジットのためにトラストラインを使用していない限り、rippleを無効にするべきです。
-- **Freeze**: このトラストラインに[個別の凍結](freezes.md#individual-freeze)が適用されているかどうかを示す値(true/false)です。デフォルトは`false` です。
+- **Freeze**: このトラストラインに[個別のフリーズ](freezes.md#individual-freeze)が適用されているかどうかを示す値(true/false)です。デフォルトは`false` です。
 - **DeepFreeze**: このトラストラインに[ディープフリーズ](deep-freeze.md)が適用されているかどうかを示す値(true/false)です。デフォルトは`false` です。
 - **Quality In** および **Quality Out**: この設定により、このトラストライン上の他のアカウントで発行されたトークンを額面より少なく（または多く）評価することができます。たとえば、ステーブルコインの発行者が、オフレッジャーにある同等の資産に対してトークンの引き出しに3%の手数料を課している場合、この設定を使用して、それらのトークンを額面の97%で評価することが可能です。デフォルトは`0`で、額面価格を表しています。
 

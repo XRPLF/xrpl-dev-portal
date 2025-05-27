@@ -53,8 +53,8 @@ TrustSetタイプのトランザクションについては、[`Flags`フィー�
 | `tfSetfAuth`      | `0x00010000` | 65536         | [このアカウントから発行された通貨](../../../../concepts/tokens/index.md)を相手方に保有させることを許可します。（[*asfRequireAuth* AccountSet フラグ](accountset.md#accountsetのフラグ)を使用しない場合は効果がありません。）設定を解除できません。 |
 | `tfSetNoRipple`   | `0x00020000` | 131072        | 2つのトラストラインの両方でこのフラグが有効になっている場合、同じ通貨のトラストライン間の[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をブロックする No Ripple フラグを有効にします。 |
 | `tfClearNoRipple` | `0x00040000` | 262144        | No Rippleフラグを無効にし、このトラストラインで[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)を許可します。 |
-| `tfSetFreeze`     | `0x00100000` | 1048576       | トラストラインを[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
-| `tfClearFreeze`   | `0x00200000` | 2097152       | トラストラインを[凍結解除](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
+| `tfSetFreeze`     | `0x00100000` | 1048576       | トラストラインを[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
+| `tfClearFreeze`   | `0x00200000` | 2097152       | トラストラインを[フリーズ解除](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
 | `tfSetDeepFreeze` | `0x00400000` | 4194304       | トラストラインを[ディープフリーズ](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) します。 |
 | `tfClearDeepFreeze` | `0x00800000` | 8388608     | トラストラインの[ディープフリーズ](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) を解除します。 |
 
