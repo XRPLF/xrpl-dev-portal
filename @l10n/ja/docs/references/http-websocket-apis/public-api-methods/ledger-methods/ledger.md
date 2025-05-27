@@ -138,7 +138,7 @@ rippled ledger current
 
 | `Field`       | 値  | 説明                                         |
 |:--------------|:-------|:----------------------------------------------------|
-| `owner_funds` | 文字列 | このレジャーのすべてのトランザクションの実行後に、このOfferCreateトランザクションを送信する`Account`が保有する`TakerGets`通貨の額。この通貨額が[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されているかどうかはチェックされません。 |
+| `owner_funds` | 文字列 | このレジャーのすべてのトランザクションの実行後に、このOfferCreateトランザクションを送信する`Account`が保有する`TakerGets`通貨の額。この通貨額が[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されているかどうかはチェックされません。 |
 
 ## 考えられるエラー
 

@@ -223,8 +223,8 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 | `disallowIncomingPayChan` | 真偽値 | `true`の場合、このアカウントは第三者からの[ペイメントチャンネル](../../../../concepts/payment-types/payment-channels.md)の作成を許可していません。 _([DisallowIncoming amendment][]が必要です)_ |
 | `disallowIncomingTrustline` | 真偽値 | `true`の場合、このアカウントは第三者が[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)を作ることを許可していません。 _([DisallowIncoming amendment][]が必要です)_ |
 | `disallowIncomingXRP`  | 真偽値 | `true`の場合、このアカウントは他者からXRPを受け取りたくありません。(これは参考情報であり、プロトコルレベルでは強制されません) |
-| `globalFreeze`         | 真偽値 | `true`の場合、このアカウントによって発行されたすべてのトークンは現在凍結されています。 |
-| `noFreeze`             | 真偽値 | `true`の場合、このアカウントは個々のトラストラインを凍結したり、グローバル凍結を行う機能を永久に放棄しています。詳細は[No Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze)をご覧ください。 |
+| `globalFreeze`         | 真偽値 | `true`の場合、このアカウントによって発行されたすべてのトークンは現在フリーズされています。 |
+| `noFreeze`             | 真偽値 | `true`の場合、このアカウントは個々のトラストラインをフリーズしたり、グローバルフリーズを行う機能を永久に放棄しています。詳細は[No Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze)をご覧ください。 |
 | `passwordSpent`        | 真偽値 | `false`の場合、このアカウントはトランザクションコスト0の特別な[キーリセットトランザクション](../../../../concepts/transactions/transaction-cost.md#key-resetトランザクション)を送信できます。プロトコルはこのフラグを自動的にオン/オフします。 |
 | `requireAuthorization` | 真偽値 | `true`の場合、このアカウントは[認可トラストライン](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使って、発行するトークンを保持できる人を制限しています。 |
 | `requireDestinationTag` | 真偽値 | `true`の場合、このアカウントは受け取るすべての支払いに[宛先タグ](../../../../tutorials/how-tos/manage-account-settings/require-destination-tags.md)をリクエストしています。 |

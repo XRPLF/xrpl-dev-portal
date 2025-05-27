@@ -98,8 +98,8 @@ AccountRootオブジェクトは`Flags`フィールドに以下のフラグを�
 | `lsfDisallowIncomingPayChan`      | `0x10000000` | 268435456  | `asfDisallowIncomingPayChan`      | このアカウントを宛先とするペイメントチャネルの作成をブロックします。 _([DisallowIncoming Amendment][]により追加されました。)_ |
 | `lsfDisallowIncomingTrustline`    | `0x20000000` | 536870912  | `asfDisallowIncomingTrustline`    | このアカウントに対するトラストラインの作成をブロックします。 _([DisallowIncoming Amendment][]により追加されました。)_ |
 | `lsfDisallowXRP`                  | `0x00080000` | 524288     | `asfDisallowXRP`                  | クライアントアプリケーションはこのアカウントにXRPを送金しないでください。`rippled`により強制されるものではありません。 |
-| `lsfGlobalFreeze`                 | `0x00400000` | 4194304    | `asfGlobalFreeze`                 | このアドレスが発行するすべての資産が凍結されます。 |
-| `lsfNoFreeze`                     | `0x00200000` | 2097152    | `asfNoFreeze`                     | このアドレスは、このアドレスに接続しているトラストラインを凍結できません。一度有効にすると、無効にできません。 |
+| `lsfGlobalFreeze`                 | `0x00400000` | 4194304    | `asfGlobalFreeze`                 | このアドレスが発行するすべての資産がフリーズされます。 |
+| `lsfNoFreeze`                     | `0x00200000` | 2097152    | `asfNoFreeze`                     | このアドレスは、このアドレスに接続しているトラストラインをフリーズできません。一度有効にすると、無効にできません。 |
 | `lsfPasswordSpent`                | `0x00010000` | 65536      | （なし）                           | このアカウントは無料のSetRegularKeyトランザクションを使用しています。 |
 | `lsfRequireAuth`                  | `0x00040000` | 262144     | `asfRequireAuth`                  | このアカウントは、他のユーザがこのアカウントのトークンを保有することを個別に承認する必要があります。 |
 | `lsfRequireDestTag`               | `0x00020000` | 131072     | `asfRequireDest`                  | 受信ペイメントには宛先タグの指定が必要です。 |

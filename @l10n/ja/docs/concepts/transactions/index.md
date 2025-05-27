@@ -46,7 +46,7 @@ _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の�
 署名の種類に関係なく、あらゆるタイプのトランザクションを承認できます。ただし、次の例外があります。
 
 * マスター秘密鍵だけが[マスター公開鍵](../../references/protocol/transactions/types/accountset.md)を無効にできます。
-* マスター秘密鍵だけが[凍結機能を永続的に放棄](../tokens/fungible-tokens/freezes.md#no-freeze)できます。
+* マスター秘密鍵だけが[フリーズ機能を永続的に放棄](../tokens/fungible-tokens/freezes.md#no-freeze)できます。
 * アドレスからトランザクションに署名する最後の方法を削除することはできません。
 
 マスターキーとレギュラーキーペアについて詳しくは、[暗号鍵](../accounts/cryptographic-keys.md)をご覧ください。

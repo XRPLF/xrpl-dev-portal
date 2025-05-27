@@ -20,7 +20,7 @@ Checksは[Escrow](escrow.md)と[Payment Channel](../../tutorials/how-tos/use-spe
 
 * Checksではトークンを送金できます。Payment ChannelとEscrowで送金できるのはXRPのみです。
 
-* Checksは資金を凍結しません。Payment ChannelとEscrowでは、送金元が発行したクレームでXRPが清算されるか（Payment Channel）、または有効期限切れまたはCrypto-conditionsによってXRPがリリースされる（Escrow）までは、そのXRPを使用できません。
+* Checksは資金をフリーズしません。Payment ChannelとEscrowでは、送金元が発行したクレームでXRPが清算されるか（Payment Channel）、または有効期限切れまたはCrypto-conditionsによってXRPがリリースされる（Escrow）までは、そのXRPを使用できません。
 
 * EscrowではXRPを自分自身に送金できます。ChecksではXRPを自身に送金することはできません。
 

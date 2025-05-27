@@ -178,7 +178,7 @@ labels:
 
 - **AMMClawback** - トークンにClawbackが有効になっている場合、発行者は、AMMに預けられたトークンをClawbackできるようになります。
 
-AMMDepositトランザクションタイプを修正し、AMMに凍結されたトークンを預けることを防ぎます。
+AMMDepositトランザクションタイプを修正し、AMMにフリーズされたトークンを預けることを防ぎます。
 
 詳細については、[XLS-73: AMMClawback specification](https://github.com/XRPLF/XRPL-Standards/discussions/212)をご覧ください。
 
