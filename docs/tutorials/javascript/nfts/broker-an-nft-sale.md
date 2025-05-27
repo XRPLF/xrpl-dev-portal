@@ -1,12 +1,9 @@
 ---
-html: broker-an-nft-sale-using-javascript.html
-parent: nfts-using-javascript.html
 seo:
     description: Broker a sale between a sell offer and a buy offer.
 labels:
-  - Accounts
-  - Quickstart
   - Broker
+  - NFT
   - XRP
 ---
 # Broker an NFT Sale Using JavaScript
@@ -21,50 +18,36 @@ This example shows how to:
 2. Get a list of offers for the brokered item.
 3. Broker a sale between two different accounts.
 
-[![Quickstart form with Broker Account](/docs/img/quickstart21.png)](/docs/img/quickstart21.png)
+[![Broker Account form](../../../img/mt-broker-nfts-1-empty-form.png)](../../../img/mt-broker-nfts-1-empty-form.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
+You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try each of the samples in your own browser.
+
+## Prerequisites
+
+To create a brokered sale, you need a broker account, a Sell Offer with the broker account as its **Destination**, and one or more Buy Offers for the same NFT.
+
+1. Optionally use the [Account Configurator](../../../../_code-samples/account-configurator/account-configurator.html) to create your Broker account.
+2. Use a different issuer account in the [Mint NFT](../../../../_code-samples/nft-modular-tutorials/mint-nfts.html) form to mint a new NFT to sell.
+3. Use the issuer account in the [Transfer NFTs](../../../../_code-samples/nft-modular-tutorials/transfer-nfts.html) form to create a **Sell Offer** for the NFT with the Broker account as its **Destination**.
+4. Use one or more other accounts to create **Buy Offers** for the NFT.
 
 ## Get Accounts
 
-1. Open `5.broker-nfts.html` in a browser.
-2. Choose your ledger instance.
+1. Open `broker-nfts.html` in a browser.
+2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
-    1. If you have existing account seeds:
-        1. Paste 3 account seeds in the **Seeds** field.
-        2. Click **Get Accounts from Seeds**.
-    2. If you do not have account seeds:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
-        3. Click **Get New Broker Account**
+    1. If you copied the gathered information from another tutorial (in this case, it would be best to load the Broker account and the Issuer account from the Prerequisite step):
+        1. Paste the gathered information to the **Result** field.
+        2. Click **Distribute Account Info**.
+    2. If you have an existing account seed:
+        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+    2. If you do not have existing accounts:
+        1. Click **Get New Account 1**.
+        2. Click **Get New Account 2**.
 
-[![Quickstart form with Account Information](/docs/img/quickstart22.png)](/docs/img/quickstart22.png)
+[![Broker NFTs form with Account Information](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)
 
-## Prepare a Brokered Transaction
-
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Xm-JKplBdSU?si=qOWo7vwhI4GQlErk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
-    1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
-    2. Set the **Flags** field to _1_.
-    3. Enter the **NFT ID** of the NFT you want to sell.
-    4. Optionally, enter a number of days until **Expiration**.
-    5. Enter the Broker account number as the **Destination**.
-    6. Click **Create Sell Offer**.
-
-
-[![Sell Offer with Destination](/docs/img/quickstart23.png)](/docs/img/quickstart23.png)
-
-2. Use the Operational account to create an NFT Buy Offer.
-    1. Enter the **Amount** of your offer.
-    2. Enter the **NFT ID**.
-    3. Enter the owner’s account string in the **Owner** field.
-    4. Optionally enter the number of days until **Expiration**.
-    5. Click **Create Buy Offer**.
-
-[![Buy Offer](/docs/img/quickstart24.png)](/docs/img/quickstart24.png)
 
 ## Get Offers
 
@@ -75,994 +58,392 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Broker the Sale
 
-1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell NFT Offer Index** field.
-2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy NFT Offer Index** field.
+1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell Offer Index** field.
+2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy Offer Index** field.
 3. Enter a **Broker Fee**, in drops.
 4. Click **Broker Sale**.
 
-[![Brokered Sale](/docs/img/quickstart26.png)](/docs/img/quickstart26.png)
+In this example, the sale succeeds with 25 XRP going to the issuer account (Felicia), 30 XRP taken from the buyer account (Unknown 3rd Pary), and 5 XRP minus the transaction cost going to the broker account (Hisham).
+
+[![Brokered Sale](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)
 
 
 ## Cancel Offer
 
-After accepting a buy offer, a best practice for the broker is to cancel all other offers, if the broker has permissions to do so. Use **Get Offers** to get the full list of buy offers. To cancel an offer:
-
-1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFT Offer Index** field.
-2. Click **Cancel Offer**.
-
-[![Cancel Offer](/docs/img/quickstart27.png)](/docs/img/quickstart27.png)
+After accepting a buy offer, a best practice for the broker is to cancel all other offers, if the broker has permissions to do so. Use the [Transfer NFTs](../../../../_code-samples/nft-modular-tutorials/transfer-nfts.html) form to get and cancel any existing Sell or Buy offers.
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to examine the code samples.
+You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try each of the samples in your own browser.
 
-## ripplex5-broker-nfts.js
-<!-- SPELLING_IGNORE: ripplex5 -->
+## broker-nfts.js
 
-This script has new functions for brokered transactions and revised functions to support a third account on the same screen.
+## brokerSale()
 
-## Broker Get Offers
-
-```javascript      
+```javascript    
 // *******************************************************
-// *************** Broker Get Offers *********************
+// ******************* Broker Sale ***********************
 // *******************************************************
-      
-async function brGetOffers() {
-```
 
-Connect to the ledger.
-
-```javascript      
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  brokerResultField.value = results
-  await client.connect()
-  results += '\nConnected. Getting offers...'
-    brokerResultField.value = results
-```
-
-Request the list of sell offers for the token.
-
-```javascript      
-  results += '\n\n***Sell Offers***\n'  
-  let nftSellOffers
-  try {
-    nftSellOffers = await client.request({
-      method: "nft_sell_offers",
-      nft_id: brokerTokenIdField.value  
-    })
-  } catch (err) {
-    nftSellOffers = 'No sell offers.'
-  }
-  results += JSON.stringify(nftSellOffers,null,2)
-    brokerResultField.value = results
-```
-
-Request the list of buy offers for the token.
-
-```javascript      
-  results += '\n\n***Buy Offers***\n'
-  let nftBuyOffers
-  try {
-    nftBuyOffers = await client.request({
-      method: "nft_buy_offers",
-      nft_id: brokerTokenIdField.value 
-    })
-  } catch (err) {
-    nftBuyOffers =  'No buy offers.'
-  }
-  results += JSON.stringify(nftBuyOffers,null,2)    
-    brokerResultField.value = results
-```
-
-Disconnect from the ledger.
-
-```javascript      
-  client.disconnect()  
-}// End of brGetOffers()
-```
-
-## Broker Sale
-
-```javascript      
 async function brokerSale() {
+
 ```
 
-Connect to the ledger and get the accounts.
-
-```javascript      
-    const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-    const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-    const broker_wallet = xrpl.Wallet.fromSeed (brokerSeedField.value)
-    let net = getNet()
-    const client = new xrpl.Client(net)
-    results = 'Connecting to ' + getNet() + '...'
-    brokerResultField.value = results
-    await client.connect()
-    results += '\nConnected. Brokering sale...'
-    brokerResultField.value = results
-```
-
-Prepare the transaction. The difference between a brokered sale and a direct sale is that you provide both a sell offer and a buy offer, with an agreed-upon broker's fee. 
-
-```javascript      
-  const transactionBlob = {
-    "TransactionType": "NFTokenAcceptOffer",
-    "Account": broker_wallet.classicAddress,
-    "NFTokenSellOffer": brokerTokenSellOfferIndexField.value,
-    "NFTokenBuyOffer": brokerTokenBuyOfferIndexField.value,
-    "NFTokenBrokerFee": brokerBrokerFeeField.value
-  }
-```
-  
-  Submit the transaction and wait for the results.
-  
-```javascript      
-  const tx = await client.submitAndWait(transactionBlob,{wallet: broker_wallet}) 
-```
-
-Report the results.
-
-```javascript      
-    results += "\n\nTransaction result:\n" + 
-            JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-    results += "\nBalance changes:\n" +
-            JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-    operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-    standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-    brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
-    brokerResultField.value = results
-```
-
-Disconnect from the ledger.
-
-```javascript      
-  client.disconnect()
-}// End of brokerSale()
-```
-
-## Broker Cancel Offer
+Get the account wallet and connect to the XRP Ledger.
 
 ```javascript
-// *******************************************************
-// ************* Broker Cancel Offer ****************
-// *******************************************************
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
+  const net = getNet();
+  const client = new xrpl.Client(net);
+  let results = `\n=== Connected. Brokering the sale. ===`;
+  resultField.value = results;
 
-
-async function brCancelOffer() {
-```
-
-Get the broker account and connect to the ledger. 
-
-```javascript      
-  const wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
-    let net = getNet()
-    const client = new xrpl.Client(net)
-    results = 'Connecting to ' + getNet() + '...'
-  brokerResultField.value = results
-  await client.connect()
-  results +=  "\nConnected. Cancelling offer..."
-  brokerResultField.value = results
-```
-
-The Token ID must be converted to an array.
-
-```javascript      
-  const tokenOfferIDs = [brokerTokenBuyOfferIndexField.value]
-```
-
-Prepare the transaction.
-
-```javascript      
-  const transactionBlob = {
-    "TransactionType": "NFTokenCancelOffer",
-    "Account": wallet.classicAddress,
-    "NFTokenOffers": tokenOfferIDs
-  }
-```
-
-Submit the transaction and wait for the results.
-
-```javascript      
-  const tx = await client.submitAndWait(transactionBlob,{wallet})
-```
-
-Get the sell offers and report the results.
-
-```javascript      
-  results += "\n\n***Sell Offers***\n"
-  let nftSellOffers
   try {
-    nftSellOffers = await client.request({
-      method: "nft_sell_offers",
-      nft_id: brokerTokenBuyOfferIndexField.value
-    })
-  } catch (err) {
-    nftSellOffers = "No sell offers."
-  }
-  results += JSON.stringify(nftSellOffers,null,2)
+    await client.connect();
 ```
 
-Get the buy offers and report the results.
+Prepare an NFTokenAcceptOffer, passing both the sell offer and the buy offer, and also the broker fee. With the additional arguments, the API interprets this as a brokered sale.
 
-```javascript      
-  results += "\n\n***Buy Offers***\n"
-  let nftBuyOffers
-  try {
-    nftBuyOffers = await client.request({
-      method: "nft_buy_offers",
-      nft_id: brokerTokenBuyOfferIndexField.value })
-  } catch (err) {
-    nftBuyOffers = "No buy offers."
-  }
-  results += JSON.stringify(nftBuyOffers,null,2)
+```javascript
+    const brokerTx = {
+      "TransactionType": "NFTokenAcceptOffer",
+      "Account": wallet.classicAddress,
+      "NFTokenSellOffer": nftSellOfferIndexField.value,
+      "NFTokenBuyOffer": nftBuyOfferIndexField.value,
+      "NFTokenBrokerFee": brokerFeeField.value
+    }
 ```
 
-Report the transaction results.
+Display the transaction object  in the console.
 
-```javascript      
-  results += "\nTransaction result:\n" +
-    JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-  results += "\nBalance changes:\n" + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  document.getElementById('brokerResultField').value = results
+```javascript
+    console.log(JSON.stringify(brokerTx, null, 2));
 ```
 
-Disconnect from the ledger.
+Submit the transaction and report the results.
 
-```javascript      
-  client.disconnect()
-}// End of brCancelOffer()
-```
-## Get Account
+```javascript
+    const tx = await client.submitAndWait(brokerTx, { wallet: wallet })
 
-To accommodate the broker account, override the `getAccount(type)` function to watch for the _broker_ type. 
-
-```javascript      
-// ***************************************************************************
-// ************** Revised Functions ******************************************
-// ***************************************************************************
-
-// *******************************************************
-// ************* Get Account *****************************
-// *******************************************************
-
-
-async function getAccount(type) {
+    results += "\n\nTransaction result:\n" +
+      JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+    results += "\nBalance changes:\n" +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+    resultField.value += results
 ```
 
-Connect to the ledger.
+Catch and report any errors.
 
-```javascript      
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + net + '....'
-```
-
-Get the correct network host.
-
-```javascript      
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + net + '....'
-  
-  let faucetHost = null
-  if (type == 'standby') {
-    standbyResultField.value = results
-  } 
-  if (type == 'operational') {
-    operationalResultField.value = results
-  }
-  if (type == 'broker') {
-    brokerResultField.value = results
+```javascript
+  } catch (error) {
+    console.error("Error in broker sale:", error);
+    results = `\n\n=== Error in broker sale: ${error.message} ===`;
+    resultField.value += results;
   }
 ```
 
-Connect to the ledger.
+Disconnect from the XRP Ledger.
 
-```javascript      
-  await client.connect()
-
-  results += '\nConnected, funding wallet.'
-  if (type == 'standby') {
-    standbyResultField.value = results
-  } 
-  if (type == 'operational') {
-    operationalResultField.value = results
+```javascript
+  finally {
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    }
   }
-  if (type == 'broker') {
-    brokerResultField.value = results
-  }
+}// End of brokerSale()  
 ```
 
-Create and fund a test account and report progress.
-
-```javascript      
-  const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
-
-  results += '\nGot a wallet.'
-  if (type == 'standby') {
-    standbyResultField.value = results
-  } 
-  if (type == 'operational') {
-    operationalResultField.value = results
-  }
-  if (type == 'broker') {
-    brokerResultField.value = results
-  }
-```
-
-Get the XRP balance for the new account.
-
-```javascript      
-  const my_balance = (await client.getXrpBalance(my_wallet.address))  
-```
-
-Populate the form fields for the appropriate account with the new account information.
-
-```javascript      
-  if (type == 'standby') {
-    standbyAccountField.value = my_wallet.address
-    standbyPubKeyField.value = my_wallet.publicKey
-    standbyPrivKeyField.value = my_wallet.privateKey
-    standbyBalanceField.value = (await client.getXrpBalance(my_wallet.address))
-    standbySeedField.value = my_wallet.seed
-    results += '\nStandby account created.'
-    standbyResultField.value = results
-  }
-  if (type == 'operational') {
-    operationalAccountField.value = my_wallet.address
-    operationalPubKeyField.value = my_wallet.publicKey
-    operationalPrivKeyField.value = my_wallet.privateKey
-    operationalSeedField.value = my_wallet.seed
-    operationalBalanceField.value = (await client.getXrpBalance(my_wallet.address))
-    results += '\nOperational account created.'
-    operationalResultField.value = results
-  }
-  if (type == 'broker') {
-    brokerAccountField.value = my_wallet.address
-    brokerPubKeyField.value = my_wallet.publicKey
-    brokerPrivKeyField.value = my_wallet.privateKey
-    brokerSeedField.value = my_wallet.seed
-    brokerBalanceField.value = (await client.getXrpBalance(my_wallet.address))
-    results += '\nBroker account created.'
-    brokerResultField.value = results
-  }
-```
-
-Add the new account seed to corresponding line in the **Account Seeds** field.
-
-```javascript      
-  seeds.value = standbySeedField.value + '\n' + operationalSeedField.value + "\n" +
-    brokerSeedField.value
-```
-
-Disconnect from the ledger.
-
-```javascript      
-  client.disconnect()
-} // End of getAccount()
-```
-
-## Get Accounts from Seeds
-
-Override the `getAccountsFromSeeds()` function to include the broker account fields.
-
-```javascript      
-async function getAccountsFromSeeds() {
-```
-
-Connect to the ledger.
-
-```javascript      
-    let net = getNet()
-    const client = new xrpl.Client(net)
-    results = 'Connecting to ' + getNet() + '....'
-    standbyResultField.value = results
-    await client.connect()
-    results += '\nConnected, finding wallets.\n'
-    standbyResultField.value = results
-```
-
-Use the `split` function to parse the values from the **Seeds** field.
-
-```javascript      
-  var lines = seeds.value.split('\n');
-```
-
-Derive the accounts from the seed values.
-
-```javascript      
-  const standby_wallet = xrpl.Wallet.fromSeed(lines[0])
-  const operational_wallet = xrpl.Wallet.fromSeed(lines[1])
-  const broker_wallet = xrpl.Wallet.fromSeed(lines[2])
-```
-
-Get the XRP balances for the accounts.
-
-```javascript      
-  const standby_balance = (await client.getXrpBalance(standby_wallet.address))  
-  const operational_balance = (await client.getXrpBalance(operational_wallet.address))  
-  const broker_balance = (await client.getXrpBalance(broker_wallet.address))  
-```
-
-Populate the form fields based on the account values. 
-
-```javascript      
-    standbyAccountField.value = standby_wallet.address
-    standbyPubKeyField.value = standby_wallet.publicKey
-    standbyPrivKeyField.value = standby_wallet.privateKey
-    standbySeedField.value = standby_wallet.seed
-    standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-
-    operationalAccountField.value = operational_wallet.address
-    operationalPubKeyField.value = operational_wallet.publicKey
-    operationalPrivKeyField.value = operational_wallet.privateKey
-    operationalSeedField.value = operational_wallet.seed
-    operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-
-    brokerAccountField.value = broker_wallet.address
-    brokerPubKeyField.value = broker_wallet.publicKey
-    brokerPrivKeyField.value = broker_wallet.privateKey
-    brokerSeedField.value = broker_wallet.seed
-    brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
-```
-
-Disconnect from the ledger.
-
-```javascript      
-  client.disconnect()
-```
-
-Use the `getBalances()` function to get the current balances of fiat currency.
-
-```javascript      
-  getBalances()
-    
-} // End of getAccountsFromSeeds()
-```
-
-## Get Balances
-
-Override the `getBalances()` function to include the broker balance.
-
-```javascript      
-// *******************************************************
-// ****************** Get Balances ***********************
-// *******************************************************
-
-async function getBalances() {
-```
-
-Connect with the ledger. 
-
-```javascript      
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
-
-  await client.connect()
-
-  results += '\nConnected.'
-  document.getElementById('standbyResultField').value = results
-```
-
-Derive each of the three accounts.
-
-```javascript      
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const broker_wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
-```
-
-Get and report the Standby account balances.
-
-```javascript      
-  results = "\nGetting standby account balances...\n"
-  const standby_balances = await client.request({
-    command: "gateway_balances",
-    account: standby_wallet.address,
-    ledger_index: "validated",
-    hotwallet: [operational_wallet.address]
-  })
-  results += JSON.stringify(standby_balances.result, null, 2)
-  standbyResultField.value = results
-```
-
-Get and report the Operational account balances.
-
-```javascript      
-  results= "\nGetting operational account balances...\n"
-  const operational_balances = await client.request({
-    command: "account_lines",
-    account: operational_wallet.address,
-    ledger_index: "validated"
-  })
-  results += JSON.stringify(operational_balances.result, null, 2)
-  operationalResultField.value = results
-```
-
-Get and report the Broker account balances.
-
-```javascript      
-  results= "\nGetting broker account balances...\n"
-  const broker_balances = await client.request({
-    command: "account_lines",
-    account: broker_wallet.address,
-    ledger_index: "validated"
-  })
-  results += JSON.stringify(broker_balances.result, null, 2)
-  brokerResultField.value = results
-```
-
-Update the XRP balances for the three accounts.
-
-```javascript      
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
-```
-
-Disconnect from the ledger.
-
-```javascript      
-  client.disconnect()
-} // end of getBalances()
-```
-
-## 5.broker-nfts.html
-
-Revise the HTML form to add a new Broker section at the top.
+## broker-nfts.html
 
 ```html
 <html>
-  <head>
-    <title>Token Test Harness</title>
+<head>
+    <title>Broker NFTs</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <style>
-       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
-       h1{font-weight: bold;}
-       input, button {padding: 6px;margin-bottom: 8px;}
-       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
-       td{vertical-align: middle;}
-    </style>
-    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
-    <script src='ripplex1-send-xrp.js'></script>
-    <script src='ripplex2-send-currency.js'></script>
-    <script src='ripplex3-mint-nfts.js'></script>
-    <script src='ripplex4-transfer-nfts.js'></script>
-    <script src='ripplex5-broker-nfts.js'></script>
-    <script>
-      if (typeof module !== "undefined") {
-        const xrpl = require('xrpl')
-      }
-    </script>
-
-<!-- ************************************************************** -->
-<!-- ********************** The Form ****************************** -->
-<!-- ************************************************************** -->
-
-  <body>
-    <h1>Token Test Harness</h1>
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
+    <script src="account-support.js"></script>
+    <script src="transaction-support.js"></script>
+    <script src="mint-nfts.js"></script>
+    <script src="transfer-nfts.js"></script>
+    <script src="broker-nfts.js"></script>
+</head>
+<body>
+    <h1>Broker NFTs</h1>
     <form id="theForm">
-      Choose your ledger instance:
-      &nbsp;&nbsp;
-      <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233" checked>
-      <label for="testnet">Testnet</label>
-      &nbsp;&nbsp;
-      <input type="radio" id="dn" name="server"
-        value="wss://s.devnet.rippletest.net:51233">
-      <label for="devnet">Devnet</label>
-      <br/><br/>
-      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
-      <br/>
-      <textarea id="seeds" cols="40" rows= "3"></textarea>
-      <br/><br/>
-        <table align="center">
-          <tr valign="top">
-            <td>
-              <button type="button" onClick="getAccount('broker')">Get New Broker Account</button>
-            </td>
-          </tr>
-          <tr valign="top">
-            <td align="right">
-              Broker Account
-            </td>
-            <td>
-              <input type="text" id="brokerAccountField" size="40"></input>
-              <button type="button" id="another" onclick="brokerSale()">Broker Sale</button>
-            </td>
-            <td rowspan="7">
-            <textarea id="brokerResultField" cols="40" rows="12"></textarea>
-            </td>
-          </tr>
-          <tr>
-            <td align="right">
-              Public Key
-            </td>
-            <td>
-              <input type="text" id="brokerPubKeyField" size="40"></input>
-              <button type="button" onClick="brGetOffers()">Get Offers</button>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td align="right">
-              Private Key
-            </td>
-            <td>
-              <input type="text" id="brokerPrivKeyField" size="40"></input>
-              <button type="button" onClick="brCancelOffer()">Cancel Offer</button>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td align="right">
-              Seed
-              <br>
-            </td>
-            <td>
-              <input type="text" id="brokerSeedField" size="40"></input>
-            </td>
-          </tr>
-          <tr>
-            <td align="right">
-              XRP Balance
-            </td>
-            <td>
-              <input type="text" id="brokerBalanceField" size="40"></input>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td align="right">
-              Amount
-            </td>
-            <td>
-              <input type="text" id="brokerAmountField" size="40"></input>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td align="right">NFT ID</td>
-            <td><input type="text" id="brokerTokenIdField" value="" size="80"/></td>
-          </tr>
-          <tr>
-            <td align="right">Sell NFT Offer Index</td>
-            <td><input type="text" id="brokerTokenSellOfferIndexField" value="" size="80"/></td>
-          </tr>
-          <tr>
-            <td align="right">Buy NFT Offer Index</td>
-            <td><input type="text" id="brokerTokenBuyOfferIndexField" value="" size="80"/></td>
-          </tr>
-          <tr>
-            <td align="right">Owner</td>
-            <td><input type="text" id="brokerOwnerField" value="" size="80"/></td>
-          </tr>
-          <tr>
-            <td align="right">Broker Fee</td>
-            <td><input type="text" id="brokerBrokerFeeField" value="" size="80"/></td>
-          </tr>
+        <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+            Choose your ledger instance:
+        </span>
+        &nbsp;&nbsp;
+        <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233" checked>
+        <label for="dn">Devnet</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233">
+        <label for="tn">Testnet</label>
+        <br /><br />
+        <table>
+            <tr>
+                <td>
+                    <button type="button" onClick="getNewAccount1()">Get New Account 1</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed1()">Get Account 1 From Seed</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getNewAccount2()">Get New Account 2</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed2()">Get Account 2 From Seed</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account."><label
+                            for="account1name">Account 1 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1name" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                        <label for="account2name">Account 2 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2name" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account1address">Account 1 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1address" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account2address">Account 2 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2address" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account1seed">Account 1 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1seed" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account2seed">Account 2 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2seed" size="40"></input>
+                </td>
+            </tr>
         </table>
-        <br/><br/>
-      <table>
-        <tr valign="top">
-          <td>
-            <table>
-              <tr valign="top">
-                <td>
-                <td>
-                  <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
-                  <table>
-                    <tr valign="top">
-                      <td align="right">
-                        Standby Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAccountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Public Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPubKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Private Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPrivKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Seed
-                      </td>
-                      <td>
-                        <input type="text" id="standbySeedField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        XRP Balance
-                      </td>
-                      <td>
-                        <input type="text" id="standbyBalanceField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Amount
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAmountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr valign="top">
-                      <td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
-                      <td>
-                        <input type="checkbox" id="standbyDefault" checked="true"/>
-                        <label for="standbyDefault">Allow Rippling</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Currency
-                      </td>
-                      <td>
-                        <input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">NFT URL</td>
-                      <td><input type="text" id="standbyTokenUrlField"
-                        value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">Flags</td>
-                      <td><input type="text" id="standbyFlagsField" value="1" size="10"/></td>
-                    </tr>
-                    <tr>
-                      <td align="right">NFT ID</td>
-                      <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
-                    </tr>
-                    <tr>
-                      <td align="right">NFT Offer Index</td>
-                      <td><input type="text" id="standbyTokenOfferIndexField" value="" size="80"/></td>
-                    </tr>
-                    <tr>
-                      <td align="right">Owner</td>
-                      <td><input type="text" id="standbyOwnerField" value="" size="80"/></td>
-                    </tr>
-                    <tr>
-                      <td align="right">Destination</td>
-                      <td><input type="text" id="standbyDestinationField" value="" size="80"/></td>
-                    </tr>
-                    <tr>
-                      <td align="right">Expiration</td>
-                      <td><input type="text" id="standbyExpirationField" value="" size="80"/></td>
-                    </tr>
-                    <tr>
-                      <td align="right">Transfer Fee</td>
-                      <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-                    </tr>
-                  </table>
-                  <p align="left">
-                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
-                  </p>
-                </td>
+        <hr />
+        <table>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Name of the currently selected account.">
+                        <label for="accountNameField">Account Name</label>
+                    </span>
                 </td>
                 <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
-                        <br/><br/>
-                        <button type="button" onClick="createTrustline()">Create TrustLine</button>
-                        <br/>
-                        <button type="button" onClick="sendCurrency()">Send Currency</button>
-                        <br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br/><br/>
-                        <button type="button" onClick="mintToken()">Mint NFT</button>
-                        <br/>
-                        <button type="button" onClick="getTokens()">Get NFTs</button>
-                        <br/>
-                        <button type="button" onClick="burnToken()">Burn NFT</button>
-                        <br/><br/>
-                        <button type="button" onClick="createSellOffer()">Create Sell Offer</button>
-                        <br/>
-                        <button type="button" onClick="acceptSellOffer()">Accept Sell Offer</button>
-                        <br/>
-                        <button type="button" onClick="createBuyOffer()">Create Buy Offer</button>
-                        <br/>
-                        <button type="button" onClick="acceptBuyOffer()">Accept Buy Offer</button>
-                        <br/>
-                        <button type="button" onClick="getOffers()">Get Offers</button>
-                        <br/>
-                        <button type="button" onClick="cancelOffer()">Cancel Offer</button>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                    <input type="text" id="accountNameField" size="40" readonly></input>
+                    <input type="radio" id="account1" name="accounts" value="account1">
+                    <label for="account1">Account 1</label>
                 </td>
-              </tr>
-            </table>
-          </td>
-          <td>
-            <table>
-              <tr>
-                <td>
-                <td>
-                  <table>
-                    <tr>
-                      <td align="center" valign="top">
-                        <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
-                        <br/><br/>
-                        <button type="button" onClick="oPcreateTrustline()">Create TrustLine</button>
-                        <br/>
-                        <button type="button" onClick="oPsendCurrency()">Send Currency</button>
-                        <br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br/><br/>
-                        <button type="button" onClick="oPmintToken()">Mint NFT</button>
-                        <br/>
-                        <button type="button" onClick="oPgetTokens()">Get NFTs</button>
-                        <br/>
-                        <button type="button" onClick="oPburnToken()">Burn NFT</button>
-                        <br/><br/>
-                        <button type="button" onClick="oPcreateSellOffer()">Create Sell Offer</button>
-                        <br/>
-                        <button type="button" onClick="oPacceptSellOffer()">Accept Sell Offer</button>
-                        <br/>
-                        <button type="button" onClick="oPcreateBuyOffer()">Create Buy Offer</button>
-                        <br/>
-                        <button type="button" onClick="oPacceptBuyOffer()">Accept Buy Offer</button>
-                        <br/>
-                        <button type="button" onClick="oPgetOffers()">Get Offers</button>
-                        <br/>
-                        <button type="button" onClick="oPcancelOffer()">Cancel Offer</button>
-                      </td>
-                      <td valign="top" align="right">
-                        <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
-                        <table>
-                          <tr valign="top">
-                            <td align="right">
-                              Operational Account
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAccountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Public Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPubKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Private Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPrivKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Seed
-                            </td>
-                            <td>
-                              <input type="text" id="operationalSeedField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              XRP Balance
-                            </td>
-                            <td>
-                              <input type="text" id="operationalBalanceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Amount
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAmountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                            </td>
-                            <td align="right">                        <input type="checkbox" id="operationalDefault" checked="true"/>
-                              <label for="operationalDefault">Allow Rippling</label>
-                              <button type="button" onClick="configureAccount('operational',document.querySelector('#operationalDefault').checked)">Configure Account</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Currency
-                            </td>
-                            <td>
-                              <input type="text" id="operationalCurrencyField" size="40" value="USD"></input>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">NFT URL</td>
-                            <td><input type="text" id="operationalTokenUrlField"
-                              value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">Flags</td>
-                            <td><input type="text" id="operationalFlagsField" value="1" size="10"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">NFT ID</td>
-                            <td><input type="text" id="operationalTokenIdField" value="" size="80"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">NFT Offer Index</td>
-                            <td><input type="text" id="operationalTokenOfferIndexField" value="" size="80"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">Owner</td>
-                            <td><input type="text" id="operationalOwnerField" value="" size="80"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">Destination</td>
-                            <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">Expiration</td>
-                            <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">Transfer Fee</td>
-                            <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
-                          </tr>
-                        </table>
-                        <p align="right">
-                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
-                        </p>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                <td rowspan="4" align="center">
+                    <p>
+                        <img id="nftImage"
+                            src="https://ipfs.io/ipfs/bafybeigjro2d2tc43bgv7e4sxqg7f5jga7kjizbk7nnmmyhmq35dtz6deq"
+                            width="150" height="150">
                 </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Address of the currently selected account.">
+                        <label for="accountAddressField">Account Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountAddressField" size="40" readonly></input>
+                    <input type="radio" id="account2" name="accounts" value="account2">
+                    <label for="account2">Account 2</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Seed of the currently selected account.">
+                        <label for="accountSeedField">Account Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountSeedField" size="40" readonly></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="XRP balance for the currently selected account.">
+                        <label for="xrpBalanceField">XRP Balance</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="xrpBalanceField" size="40" readonly></input>
+                </td>
+            </tr>
+            <tr>
+                 <td>
+                </td>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="URL to the stored NFT.">
+                        <label for="nftURLfield">NFT URL</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftURLfield" size="40"
+                        placeholder="https://ipfs.io/ipfs/bafybeigjro2d2tc43bgv7e4sxqg7f5jga7kjizbk7nnmmyhmq35dtz6deq"></input>
+                    <br />
+                    <p id="error-message"></p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="NFT ID code, used to identify the token after it's minted.">
+                        <label for="nftIdField">NFT ID</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftIdField" size="40"></input>
+                </td>
+            
+                <td align="center" valign="top">
+                    <button type="button" onClick="getNFTs()">Get NFTs</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Account address of the Owner of an NFT offered to sell or buy.">
+                        <label for="nftOwnerField">NFT Owner Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftOwnerField" size="40"></input>
+                </td>
+                <td colspan="2" align="center" valign="top">
+                   <button type="button" onClick="getOffers()" width="40">Get Offers</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Index of the sell offer to broker.">
+                        <label for="nftSellOfferIndexField">Sell Offer Index</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftSellOfferIndexField" size="40"></input>
+                    <br>
+                </td>
+                <td align="middle" valign="top" colspan="2">
+                    <button type="button" onClick="brokerSale()">Broker Sale</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Index of the buy offer to broker.">
+                        <label for="nftBuyOfferIndexField">Buy Offer Index</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftBuyOfferIndexField" size="40"></input>
+                    <br>
+                </td>
+                <td align="middle" valign="top" colspan="2">
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Fee collected by the broker account when the brokered deal is complete.">
+                        <label for="brokerFeeField">Broker Fee</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="brokerFeeField" size="40"></input>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td colspan="2">
+                    <p align="left">
+                        <textarea id="resultField" cols="75" rows="20"></textarea>
+                    </p>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="gatherAccountInfo()">Gather Account Info</button><br />
+                    <button type="button" onClick="distributeAccountInfo()">Distribute Account Info</button>
+                </td>
+            </tr>
+        </table>
     </form>
-  </body>
+</body>
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const imageURLInput = document.getElementById('nftURLfield'); // Correct ID to nftURLfield
+        const displayImage = document.getElementById('nftImage');
+        const loadButton = document.getElementById('showNFTbutton');
+        const errorMessage = document.getElementById('error-message');
+
+        if (imageURLInput) {
+            imageURLInput.addEventListener('change', () => {
+                const newURL = imageURLInput.value;
+                displayImage.src = ''; // Clear previous image
+                errorMessage.style.display = 'none';
+                try {
+                    new URL(newURL);
+                } catch (_) {
+                    errorMessage.textContent = 'Invalid URL. Please enter a valid URL, including "https://" or "http://".';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                displayImage.onload = () => {
+                    // Image loaded.  You might add a console log here, or update UI.
+                    console.log(`Image loaded from: ${newURL}`);
+                };
+                displayImage.onerror = () => {
+                    errorMessage.textContent = 'Error loading image from the provided URL.';
+                    errorMessage.style.display = 'block';
+                    displayImage.src = ''; // Clear the image on error
+                };
+                displayImage.src = newURL; // Load the image
+            });
+        }
+    });
+
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function () {
+            if (this.value === 'account1') {
+                populate1()
+            } else if (this.value === 'account2') {
+                populate2()
+            }
+        });
+    });
+</script>
+
 </html>
 ```

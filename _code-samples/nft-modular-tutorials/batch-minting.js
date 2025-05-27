@@ -146,37 +146,18 @@ async function batchMintNFTs() {
         "NFTokenTaxon": nftTaxonField.value,
       };
 
-      if (amountField.value) {
-        const amount = currencyField.value === "XRP" ?
-          xrpl.xrpToDrops(amountField.value) : // Use xrpToDrops for XRP
-          {
-            currency: currencyField.value,
-            issuer: issuerField.value,
-            value: amountField.value,
-          };
-        transactionParams.Amount = amount;
-      }
+     // Add optional fields
+    if (amountField.value) {
+         transactionParams.Amount = configureAmount(amountField.value);
+    }
 
-      if (expirationField.value) {
-        const days = parseInt(expirationField.value, 10);
-        if (isNaN(days) || days <= 0) {
-          results += `\nWarning: Invalid expiration days for NFT ${i+1}. Skipping expiration for this NFT.`;
-          resultField.value = results;
-        } else {
-          const expirationDate = new Date(Date.now() + days * 24 * 60 * 60 * 1000);
-          transactionParams.Expiration = xrpl.isoTimeToRippleTime(expirationDate);
-        }
-      }
+    if (expirationField.value) {
+       transactionParams.Expiration = configureExpiration(expirationField.value);
+    }
 
-      if (destinationField.value) {
-        // Basic XRP address validation
-        if (!xrpl.isValidAddress(destinationField.value)) {
-          results += `\nWarning: Invalid destination address for NFT ${i+1}. Skipping destination for this NFT.`;
-          resultField.value = results;
-        } else {
-          transactionParams.Destination = destinationField.value;
-        }
-      }
+    if (destinationField.value) {
+      transactionParams.Destination = destinationField.value;
+    }
 
       try {
         const mintTx = await client.submit(transactionParams, {
@@ -184,7 +165,6 @@ async function batchMintNFTs() {
         });
         results += `\nNFT ${i+1} minted successfully.`;
         mintedNFTsCount++;
-        console.log(mintTx.result.nfts)
         resultField.value = results;
       } catch (error) {
         console.log(error);
