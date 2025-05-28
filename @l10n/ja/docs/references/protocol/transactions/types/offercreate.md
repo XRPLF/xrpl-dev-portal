@@ -67,7 +67,7 @@ OfferCreate型のトランザクションについては、[`Flags`フィール�
 | `temBAD_CURRENCY`        | トランザクションで通貨コードが"XRP"のトークンが指定された場合に発生します。 |
 | `temBAD_ISSUER`          | トランザクションが無効な`issuer`値を持つトークンを指定した場合に発生します。 |
 | `tecNO_ISSUER`           | トランザクションで、`issuer`の値が台帳の有効化されたアカウントでないトークンを指定した場合に発生します。|
-| `tecFROZEN`              | [凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されたトラストライン(ローカルおよびグローバルの凍結を含む)上のトークンを含むトランザクションの場合に発生します。 |
+| `tecFROZEN`              | [フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されたトラストライン(ローカルおよびグローバルのフリーズを含む)上のトークンを含むトランザクションの場合に発生します。 |
 | `tecUNFUNDED_OFFER`      | トランザクションの送信者が`TakerGets`の通貨を正の値で保有していない場合に発生する。(例外: `TakerGets`にトランザクションの送信者が発行するトークンを指定した場合、トランザクションは成功します)。 |
 | `tecNO_LINE`             | 発行者が[Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使用しているトークンを含むトランザクションで、必要なトラストラインが存在しない場合に発生します。 |
 | `tecNO_AUTH`             | 発行者が[Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使用しているトークンを含むトランザクションで、トークンを受け取るトラストラインが存在するが認証されていない場合に発生します。 |

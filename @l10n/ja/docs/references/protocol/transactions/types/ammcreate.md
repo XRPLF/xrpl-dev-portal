@@ -63,7 +63,7 @@ AMMを表す[AMMエントリ][]と[特殊なAccountRootエントリ](../../ledge
 | `terNO_ACCOUNT`     | リクエストで参照されたいずれかのアカウントが存在しません。|
 | `tecNO_AUTH`        | 送信者は資産（`Amount`または`Amount2`）のいずれかを保有する権限がありません。 |
 | `tecNO_LINE`        | 送信者は資産（`Amount`または`Amount2`）のうちいずれか1つに対するトラストラインを保有していません。 |
-| `tecFROZEN`         | 資産（`Amount`または`Amount2`）の少なくとも1つが現在[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
+| `tecFROZEN`         | 資産（`Amount`または`Amount2`）の少なくとも1つが現在[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
 | `tecUNFUNDED_AMM`   | 送信者は`Amount`と`Amount2`で指定された金額をAMMに入金するための十分な資金を保有していません。 |
 | `tecAMM_EXISTS`     | この通貨ペアを扱っているAMMが既に存在しています。 |
 

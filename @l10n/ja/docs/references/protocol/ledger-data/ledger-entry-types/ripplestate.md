@@ -80,8 +80,8 @@ labels:
 | `lsfHighAuth`     | `0x00080000` | 524288   | `tfSetAuth` | 高位アカウントにより、低位アカウントが高位アカウントのイシュアンスを保有することが承認されています。 |
 | `lsfLowNoRipple`  | `0x00100000` | 1048576  | `tfSetNoRipple` | 低位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](../../../../concepts/tokens/fungible-tokens/rippling.md)。 |
 | `lsfHighNoRipple` | `0x00200000` | 2097152   | `tfSetNoRipple` | 高位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](../../../../concepts/tokens/fungible-tokens/rippling.md)。 |
-| `lsfLowFreeze`    | `0x00400000` | 4194304  | `tfSetFreeze` | 低位アカウントがトラストラインを凍結しており、高位アカウントから資産を移動できません。 |
-| `lsfHighFreeze`   | `0x00800000` | 8388608  | `tfSetFreeze` | 高位アカウントがトラストラインを凍結しており、低位アカウントから資産を移動できません。 |
+| `lsfLowFreeze`    | `0x00400000` | 4194304  | `tfSetFreeze` | 低位アカウントがトラストラインをフリーズしており、高位アカウントから資産を移動できません。 |
+| `lsfHighFreeze`   | `0x00800000` | 8388608  | `tfSetFreeze` | 高位アカウントがトラストラインをフリーズしており、低位アカウントから資産を移動できません。 |
 
 トラストラインによって接続された2つのアカウントは、[TrustSetトランザクション][]を使用して、それぞれの設定を変更することができます。
 

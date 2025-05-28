@@ -211,8 +211,8 @@ _([AMM amendment][]により追加されました。)_
 | `amm_account`   | 文字列      | AMMアカウントの[アドレス][]です。 |
 | `amount`        | [通貨額][]  | AMMのプールにある1つの資産の合計額。(注記:リクエストに指定した`asset` _または_ `asset2`になります。) |
 | `amount2`       | [通貨額][]  | AMMのプール内の他の資産の合計額。(注意:リクエストに指定した`asset` _または_ `asset2`になります。) |
-| `asset_frozen`  | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount`の通貨は現在[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
-| `asset2_frozen` | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount2`の通貨は現在[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
+| `asset_frozen`  | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount`の通貨は現在[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
+| `asset2_frozen` | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount2`の通貨は現在[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
 | `auction_slot`  | オブジェクト | _(省略される場合があります)_ 存在する場合、現在のオークションスロットの所有者を記述した[オークションスロットオブジェクト](#オークションスロットオブジェクト)です。 |
 | `lp_token`      | [通貨額][]  | このAMMのLPトークンの発行残高の合計。リクエスト時に`account`フィールドで流動性プロバイダを指定した場合、その流動性プロバイダが保有するこのAMMのLPトークンの量です。 |
 | `trading_fee`   | 数値        | AMMの現在の取引手数料。単位は1/100,000で、1は0.001%の手数料に相当します。 |
