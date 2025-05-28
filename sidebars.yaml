@@ -214,11 +214,8 @@
                 - page: docs/tutorials/javascript/build-apps/credential-issuing-service.md
             - page: docs/tutorials/javascript/compliance/index.md
               items:
+                - page: docs/tutorials/javascript/compliance/create-permissioned-domains.md
                 - page: docs/tutorials/javascript/compliance/verify-credential.md                
-            - page: docs/tutorials/javascript/decentralized-finance/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/javascript/decentralized-finance/create-permissioned-domains.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:

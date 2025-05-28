@@ -1,7 +1,4 @@
-// *******************************************************
-// *********** Create Credential *************************
-// *******************************************************
-
+/// Create credential function
 async function createCredential() {
 
   let net = getNet()
@@ -12,6 +9,7 @@ async function createCredential() {
   results = `\n\nConnected.`
   updateResults()
 
+  // Gather transaction info
   try {
   
   // Get account wallet from seed
