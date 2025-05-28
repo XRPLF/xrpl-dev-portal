@@ -1,13 +1,12 @@
 ---
-html: create-conditional-escrows-using-javascript.html
-parent: send-payments-using-javascript.html
 seo:
     description: Create, finish, or cancel condition-based escrow transactions.
 labels:
   - Accounts
-  - Quickstart
+  - Modular Tutorials
   - Transaction Sending
   - XRP
+  - Escrow
 ---
 # Create Conditional Escrows Using JavaScript
 
@@ -19,12 +18,12 @@ This example shows how to:
 
 3. Cancel a conditional escrow transaction.
 
-[![Conditional Escrow Tester Form](/docs/img/conditional-escrow1.png)](/docs/img/conditional-escrow1.png)
+[![Conditional Escrow Tester Form](/docs/img/mt-conditional-escrow-1-empty-form.png)](/docs/img/mt-conditional-escrow-1-empty-form.png)
 
 
 ## Prerequisites
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive.
+Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 ## Usage
 
@@ -34,632 +33,543 @@ You  create a condition-based escrow using a fulfillment code associated with a 
 
 Install `five-bells-condition`:
 
-1. In a terminal window, navigate to your local `Quickstart` directory (for convenience).
+1. In a terminal window, navigate to your chosen local directory.
 2. Enter the command `npm install five-bells-condition`.
 
 To create a condition/fulfillment pair:
 
-1. In a terminal window, navigate to your `Quickstart` directory.
+1. In a terminal window, navigate to your chosen local directory.
 2. Enter the command `node getConditionAndFulfillment.js`.
 3. Copy and save the generated Condition and Fulfillment pair.
 
-[![Condition and Fulfillment](/docs/img/conditional-escrow2.png)](/docs/img/conditional-escrow2.png)
+[![Condition and Fulfillment](/docs/img/mt-conditional-escrow-2-getConditionAndFulfillment.png)](/docs/img/mt-conditional-escrow-2-getConditionAndFulfillment.png)
 
 To get test accounts:
  
-1. Open `9.escrow-condition.html` in a browser
-2. Choose **Testnet** or **Devnet**.
-3. Get test accounts.
-    1. If you have existing account seeds
-        1. Paste account seeds in the **Seeds** field.
-        2. Click **Get Accounts from Seeds**.
-    2. If you do not have account seeds:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
+1. Open `create-conditional-escrow.html` in a browser
+2. Get test accounts.
+    1. If you copied the gathered information from another tutorial:
+        1. Paste the gathered information to the **Result** field.
+        2. Click **Distribute Account Info**.
+    2. If you have an existing account seed:
+        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+    2. If you do not have existing accounts:
+        1. Click **Get New Account 1**.
+        2. Click **Get New Account 2**.
 
-[![Escrow Tester with Account Information](/docs/img/conditional-escrow3.png)](/docs/img/conditional-escrow3.png)
+[![Form with Accounts](/docs/img/mt-conditional-escrow-3-form-with-accounts.png)](/docs/img/mt-conditional-escrow-3-form-with-accounts.png)
 
-### Create Conditional Escrow:
+### Create Conditional Escrow
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aUMqCFBsPW4?si=nUC4-yBOweti02be" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
-When you create a conditional escrow, you need to specify the amount you want to reserve and the `Condition` value you generated above. You can also set a cancel date and time, after which the escrow is no longer available.  
+When you create a conditional escrow, you need to specify the amount you want to reserve and the `Condition` value you generated above. You can also set a cancel date and time, after which the escrow is no longer available. For testing, the **Cancel** time is in seconds: in practice, you might set a **Cancel** time in days, weeks, months, or years.
 
 To create a conditional escrow:
 
 1. Enter an **Amount** to transfer.
-2. Copy the **Operational Account** value.
-3. Paste it in the **Destination Account** field.
+3. Enter the **Destination** field (for example, use Account 2 Address).
 4. Enter the **Escrow Condition** value.
-5. Enter the **Escrow Cancel (seconds)** value.
+5. Enter the **Escrow Cancel (seconds)** value. 
 6. Click **Create Escrow**.
-7. Copy and save the _Sequence Number_ of the escrow called out in the **Standby Result** field.
+7. Copy and save the _Sequence Number_ of the escrow called out in the **Results** field.
 
 The escrow is created on the XRP Ledger instance, reserving your requested XRP amount plus the transaction cost.
 
 When you create an escrow, capture and save the _Sequence Number_ so that you can use it to finish the escrow transaction.
 
-[![Created Escrow Transaction](/docs/img/conditional-escrow4.png)](/docs/img/conditional-escrow4.png)
+[![Created Escrow Transaction](/docs/img/mt-conditional-escrow-4-escrow-create.png)](/docs/img/mt-conditional-escrow-4-escrow-create.png)
 
 ## Finish Conditional Escrow
 
 Any account can finish the conditional escrow any time before the _Escrow Cancel_ time. Following on the example above, you can use the _Sequence Number_ to finish the transaction once the Escrow Cancel time has passed.
 
-To finish a time-based escrow:
+To finish a conditional escrow:
 
-1. Paste the sequence number in the Operational account **Escrow Sequence Number** field.
-2. Enter the `Fulfillment` code for the `Condition`.
-3. Click **Finish Conditional Escrow**.
+1. Enter the **Escrow Condition** code for the escrow.
+2. Enter the corresponding **Escrow Fulfillment** code.
+3. Enter the **Escrow Owner** (the account address of the account that created the escrow).
+4. Enter the sequence number in the **Escrow Sequence Number** field.
+5. Click **Finish Escrow**.
 
-The transaction completes and balances are updated for both the Standby and Operational accounts.
+The transaction is completed and balances adjusted for both accounts.
 
-[![Finished Escrow Transaction](/docs/img/conditional-escrow5.png)](/docs/img/conditional-escrow5.png)
+[![Finished Escrow Transaction](/docs/img/mt-conditional-escrow-5-escrow-fulfill.png)](/docs/img/mt-conditional-escrow-5-escrow-fulfill.png)
 
 ## Get Escrows
 
-Click **Get Escrows** for either the Standby account or the Operational account to see their current list of escrows. 
+Click **Get Escrows** to see the current list of escrows generated by or destined for the current account. 
 
 ## Cancel Escrow
 
-When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. Any account can cancel an escrow once the cancel time has elapsed. Accounts that try to cancel the transaction prior to the **Escrow Cancel** time are charged the nominal transaction cost (12 drops), but the actual escrow cannot be cancelled until after the Escrow Cancel time.
+When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. Any account can cancel an escrow once the cancel time has elapsed. Accounts that try to cancel the transaction prior to the **Escrow Cancel** time are charged the nominal transaction cost (typically 12 drops), but the actual escrow cannot be cancelled until after the Escrow Cancel time.
+
+To cancel an expired escrow:
+
+1. Enter the sequence number in the **Escrow Sequence Number** field.
+2. Click **Cancel Escrow**.
 
 ## Oh No! I Forgot to Save the Sequence Number!
 
 If you forget to save the sequence number, you can find it in the escrow transaction record.
 
-1. Create a new escrow as described in [Create Escrow](#create-escrow), above.
+1. If needed, create a new escrow as described in [Create Escrow](#create-escrow), above.
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnID_ value from the results.
-   ![Transaction ID in Get Escrows results](/docs/img/quickstart-escrow7.png)
-4. Paste the _PreviousTxnID_ in the **Transaction to Look Up** field.
-   ![Transaction to Look Up field](/docs/img/quickstart-escrow8.png)
+   [![Previous Transaction ID in Get Escrows results](/docs/img/mt-conditional-escrow-6-get-escrows.png)](/docs/img/mt-conditional-escrow-6-get-escrows.png)
+4. Paste the _PreviousTxnID_ in the **Transaction** field.
 5. Click **Get Transaction**.
-6. Locate the _Sequence_ value in the results.
-   ![Sequence number in results](/docs/img/quickstart-escrow9.png)
+6. Locate the _ModifiedNode.PreviousFields.Sequence_ value in the results.
+   [![Sequence number in results](/docs/img/mt-conditional-escrow-7-sequence-value.png)](/docs/img/mt-conditional-escrow-7-sequence-value.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)in the source repository for this website.
+Download the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
-## getConditionAndFulfillment.js
+## five-bells.cjs
 
-To generate a condition/fulfillment pair, use Node.js to run the `getConditionAndFulfillment.js` script.
-
-```javascript
-function getConditionAndFulfillment() {
-```
-
-Instantiate the `five-bells-condition` and `crypto` libraries.
+To generate a condition/fulfillment pair, use Node.js to run the `five-bells.js` script.
 
 ```javascript
-  const cc = require('five-bells-condition')
-  const crypto = require('crypto')
+const cc = require('five-bells-condition')
+const crypto = require('crypto')
+
+// 1. Generate a random 32-byte seed
+const preimageData = crypto.randomBytes(32)
+
+// 2. Create a PreimageSha256 fulfillment object
+const fulfillment = new cc.PreimageSha256()
+
+// 3. Set the preimage
+fulfillment.setPreimage(preimageData)
+
+// 4. Generate the condition (binary)
+const conditionBinary = fulfillment.getConditionBinary()
+
+// 5. Generate the fulfillment (binary)
+const fulfillmentBinary = fulfillment.serializeBinary()
+
+// Convert to hex for easier use
+const conditionHex = conditionBinary.toString('hex').toUpperCase()
+const fulfillmentHex = fulfillmentBinary.toString('hex').toUpperCase()
+
+console.log('Condition (hex):', conditionHex)
+console.log('Fulfillment (hex):', fulfillmentHex)
 ```
 
-Create a random 32-byte seed string.
-
-```javascript
-  const preimageData = crypto.randomBytes(32)
-```
-
-Create a fulfillment object.
-
-```javascript
-  const fulfillment = new cc.PreimageSha256()
-```
-
-Generate a fulfillment code.
-
-```javascript
-  fulfillment.setPreimage(preimageData)
-```
-
-Generate the condition value based on the fulfillment value.
-
-```javascript
-  const condition = fulfillment.getConditionBinary().toString('hex').toUpperCase()
-```
-
-Return the condition.
-
-```javascript
-  console.log('Condition:', condition)
-```
-
-Convert the fulfillment code to a hexadecimal string.
-
-```javascript
-  const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
-```
-
-Return the fulfillment code. Keep it secret until you want to finish the escrow.
-
-```javascript
-  console.log('Fulfillment:', fulfillment_hex)
-}
-getConditionAndFulfillment()
-```
-
-## ripplex9-escrow-condition.js
+## create-conditional-escrow.js
 
 
-### Create Conditional Escrow 
+### createConditionalEscrow() 
+
+Connect to the ledger and get the account wallet.
 
 ```javascript
 async function createConditionalEscrow() {
-```
-
-Connect to your preferred ledger.
-
-```javascript
-  results  = "Connecting to the selected ledger.\n"
-  standbyResultField.value = results
-  let net = getNet()
-  results = "Connecting to " + net + "....\n"
+ let net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
-
-  results  += "Connected. Creating conditional escrow.\n"
-  standbyResultField.value = results
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+  const sendAmount = amountField.value
+  let results = `===Connected to ${net}===\n===Creating conditional escrow.===\n\n`
+  resultField.value = results
 ```
 
-Instantiate the standby and operational wallets
-
-```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-```
-
-Capture the amount to send in the escrow.
-
-```javascript
-  const sendAmount = standbyAmountField.value
-```
-
-Update the results field.
-
-```javascript 
-  results += "\nstandby_wallet.address: = " + standby_wallet.address
-  standbyResultField.value = results
-```
-
-Create a date value and add your requested number of seconds.
+Prepare the cancel date by adding the number of seconds in the **Escrow Cancel Date** field to the current date and time. In practice, the cancel date might be in days, weeks, months, or years. Using seconds allows you to test scenarios with expired escrows.
 
 ```javascript
   let escrow_cancel_date = new Date()
-  escrow_cancel_date = addSeconds(parseInt(standbyEscrowCancelDateField.value))
+  escrow_cancel_date = addSeconds(parseInt(escrowCancelDateField.value))
 ```
 
-Prepare the `EscrowCreate` transaction.
+Prepare the transaction object.
 
 ```javascript
   const escrowTx = await client.autofill({
     "TransactionType": "EscrowCreate",
-    "Account": standby_wallet.address,
+    "Account": wallet.address,
     "Amount": xrpl.xrpToDrops(sendAmount),
-    "Destination": standbyDestinationField.value,
+    "Destination": destinationField.value,
     "CancelAfter": escrow_cancel_date,
-    "Condition": standbyEscrowConditionField.value
+    "Condition": escrowConditionField.value
   })
 ```
 
-Sign the transaction.
+Sign the prepared transaction object.
 
 ```javascript
-  const signed = standby_wallet.sign(escrowTx)
+  const signed = wallet.sign(escrowTx)
 ```
 
-Submit the transaction and wait for the results.
+Submit the signed object and wait for the results.
 
 ```javascript
   const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
-Report the results and update balance fields.
+Report the results, parsing the _Sequence Number_ for later use.
 
 ```javascript
-  results += "\nSequence Number (Save!): " + JSON.stringify(tx.result.Sequence)
-  results  += "\n\nBalance changes: " + 
-  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  standbyResultField.value = results
+    results = "\n=== *** Sequence Number (Save!): " + tx.result.tx_json.Sequence 
+    results += "\n\n===Balance changes===\n" + 
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+    resultField.value += results
 ```
 
-Disconnect from the XRPL
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-client.disconnect()
-
-} // End of createTimeEscrow()
+  catch (error) {
+    results += "\n===Error: " + error.message
+    resultField.value = results
+  }
+  finally {
+    // -------------------------------------------------------- Disconnect
+    client.disconnect()
+  }// End of createTimeEscrow()
 ```
 
-###  Finish Conditional Escrow 
+### finishConditionalEscrow()
 
-Finish the escrow by submitting the condition and fulfillment codes.
+Connect to the ledger and get the account wallet from the account seed.
 
 ```javascript
 async function finishConditionalEscrow() {
-```
-
-Connect to your preferred XRP Ledger instance.
-
-```javascript
-  results  = "Connecting to the selected ledger.\n"
-  operationalResultField.value = results
   let net = getNet()
-  results += 'Connecting to ' + getNet() + '....'
   const client = new xrpl.Client(net)
   await client.connect()
-  results  += "\nConnected. Finishing escrow.\n"
-  operationalResultField.value = results
+  let results = `===Connected to ${net}===\n===Fulfilling conditional escrow.===\n`
+  resultField.value = results
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
 ```
 
-Get the standby and operational account wallets.
-
-```javascript
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const sendAmount = operationalAmountField.value
-  
-  results += "\noperational_wallet.address: = " + operational_wallet.address
-  operationalResultField.value = results
-```
-
-Prepare the transaction.
+Prepare the transaction object.
 
 ```javascript
   const prepared = await client.autofill({
     "TransactionType": "EscrowFinish",
-    "Account": operationalAccountField.value,
-    "Owner": standbyAccountField.value,
-    "OfferSequence": parseInt(operationalEscrowSequenceField.value),
-    "Condition": standbyEscrowConditionField.value,
-    "Fulfillment": operationalFulfillmentField.value
+    "Account": accountAddressField.value,
+    "Owner": escrowOwnerField.value,
+    "OfferSequence": parseInt(escrowSequenceNumberField.value),
+    "Condition": escrowConditionField.value,
+    "Fulfillment": escrowFulfillmentField.value
   })
 ```
 
-Sign the transaction.
+Sign the prepared transaction object.
 
 ```javascript
-
-  const signed = operational_wallet.sign(prepared)
+  const signed = wallet.sign(prepared)
 ```
 
-Submit the transaction and wait for the results.
+Submit the signed transaction and wait for the results.
 
 ```javascript
   const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
-Report the results.
+Report the results
 
 ```javascript
-  results  += "\nBalance changes: " + 
+  results = "\n===Balance changes===" + 
     JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  operationalResultField.value = results
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+  resultField.value += results
 ```
 
-Disconnect from the XRPL.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  client.disconnect()
-
-} // End of finishEscrow()
+  catch (error) {
+    results += "\n===Error: " + error.message + ".===\n"
+    resultField.value = results
+  }
+  finally {
+    // -------------------------------------------------------- Disconnect
+    client.disconnect()
+  }
 ```
 
-
-## 9.escrow-condition.html
+## create-conditional-escrow.html
 
 ```html
 <html>
-  <head>
-    <title>Conditional Escrow Test Harness</title>
+<head>
+    <title>Create a Conditional Escrow</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <style>
-       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
-       h1{font-weight: bold;}
-       input, button {padding: 6px;margin-bottom: 8px;}
-       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
-       td{vertical-align: middle;}
-    </style>    
-    <script src='https://unpkg.com/xrpl@2.2.3'></script>
-    <script src='ripplex1-send-xrp.js'></script>
-    <script src='ripplex2-send-currency.js'></script>
-    <script src='ripplex8-escrow.js'></script>
-    <script src='ripplex9-escrow-condition.js'></script>
-  </head>
-  
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
+    <script src="account-support.js"></script>
+    <script src="create-time-escrow.js"></script>
+    <script src='create-conditional-escrow.js'></script>
+    <script>
+        if (typeof module !== "undefined") {
+            const xrpl = require('xrpl')
+        }
+    </script>
+</head>
+
 <!-- ************************************************************** -->
 <!-- ********************** The Form ****************************** -->
 <!-- ************************************************************** -->
 
-  <body>
-    <h1>Conditional Escrow Test Harness</h1>
+<body>
+    <h1>Create a Conditional Escrow</h1>
     <form id="theForm">
-      Choose your ledger instance:  
-      &nbsp;&nbsp;
-      <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233" checked>
-      <label for="tn">Testnet</label>
-      &nbsp;&nbsp;
-      <input type="radio" id="dn" name="server"
-        value="wss://s.devnet.rippletest.net:51233">
-      <label for="dn">Devnet</label>
-      <br/><br/>
-      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
-      <br/>
-      <textarea id="seeds" cols="40" rows= "2"></textarea>
-      <br/><br/>
-      <table>
-        <tr valign="top">
-          <td>
-            <table>
-              <tr valign="top">
+        <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+            Choose your ledger instance:
+        </span>
+        &nbsp;&nbsp;
+        <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233" checked>
+        <label for="dn">Devnet</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233">
+        <label for="tn">Testnet</label>
+        <br /><br />
+        <table>
+            <tr>
                 <td>
-                <td>
-                  <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
-                  <table>
-                    <tr valign="top">
-                      <td align="right">
-                        Standby Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAccountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        XRP Balance
-                      </td>
-                      <td>
-                        <input type="text" id="standbyBalanceField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Amount
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAmountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Destination Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyDestinationField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Escrow Condition
-                      </td>
-                      <td>
-                        <input type="text" id="standbyEscrowConditionField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Escrow Cancel (seconds)
-                      </td>
-                      <td>
-                        <input type="text" id="standbyEscrowCancelDateField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Escrow Sequence Number
-                      </td>
-                      <td>
-                        <input type="text" id="standbyEscrowSequenceNumberField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr valign="top">
-                      <td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
-                      <td>
-                        <input type="checkbox" id="standbyDefault" checked="true"/>
-                        <label for="standbyDefault">Allow Rippling</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Public Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPubKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Private Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPrivKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Seed
-                      </td>
-                      <td>
-                        <input type="text" id="standbySeedField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                  </table>
-                  <p align="left">
-                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
-                  </p>
-                </td>
+                    <button type="button" onClick="getNewAccount1()">Get New Account 1</button>
                 </td>
                 <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="sendXRP()">Send XRP &#62;</button>
-                        <br/><br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>       
-                        <br/>
-                        <button type="button" onClick="createConditionalEscrow()">Create Conditional Escrow</button>
-                        <br/>
-                        <button type="button" onClick="getStandbyEscrows()">Get Escrows</button>
-                        <br/>
-                        <button type="button" onClick="cancelEscrow()">Cancel Escrow</button>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                    <button type="button" onClick="getAccountFromSeed1()">Get Account 1 From Seed</button>
                 </td>
-              </tr>
+                <td>
+                    <button type="button" onClick="getNewAccount2()">Get New Account 2</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed2()">Get Account 2 From Seed</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account."><label for="account1name">Account 1 Name</label>
+                        </span>
+                </td>
+                <td>
+                    <input type="text" id="account1name" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                        <label for="account2name">Account 2 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2name" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account1address">Account 1 Address</label>
+                    </span>
+                </td>
+                <td> 
+                    <input type="text" id="account1address" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account2address">Account 2 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2address" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account1seed">Account 1 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1seed" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account2seed">Account 2 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2seed" size="40"></input>
+                </td>
+            </tr>
             </table>
-          </td>
-          <td>
+            <hr />
             <table>
-              <tr>
-                <td>
-                <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
-                        <br/><br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br/>
-                        <button type="button" onClick="finishConditionalEscrow()">Finish Conditional Escrow</button>
-                        <br/>
-                        <button type="button" onClick="getOperationalEscrows()">Get Escrows</button>
-                        <br/>
-                        <button type="button" onClick="getTransaction()">Get Transaction</button>
-                      </td>
-                      <td valign="top" align="right">
-                        <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
-                        <table>
-                          <tr valign="top">
-                            <td align="right">
-                              Operational Account
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAccountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td align="right">
-                              XRP Balance
-                            </td>
-                            <td>
-                              <input type="text" id="operationalBalanceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Amount
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAmountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Fulfillment Code
-                            </td>
-                            <td>
-                              <input type="text" id="operationalFulfillmentField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                          <tr>
-                            <td align="right">
-                              Escrow Sequence Number
-                            </td>
-                            <td>
-                              <input type="text" id="operationalEscrowSequenceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Transaction to Look Up
-                            </td>
-                            <td>
-                              <input type="text" id="operationalTransactionField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                          <td>
-                            </td>
-                            <td align="right">
-                            <input type="checkbox" id="operationalDefault" checked="true"/>
-                              <label for="operationalDefault">Allow Rippling</label>
-                              <button type="button" onClick="configureAccount('operational',document.querySelector('#operationalDefault').checked)">Configure Account</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Public Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPubKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Private Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPrivKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Seed
-                            </td>
-                            <td>
-                              <input type="text" id="operationalSeedField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                        </table>
-                        <p align="right">
-                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
-                        </p>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Name of the currently selected account.">
+                        <label for="accountNameField">Account Name</label>
+                    </span>
                 </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+                <td>
+                    <input type="text" id="accountNameField" size="40" readonly></input>
+                    <input type="radio" id="account1" name="accounts" value="account1">
+                    <label for="account1">Account 1</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Address of the currently selected account.">
+                        <label for="accountAddressField">Account Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountAddressField" size="40" readonly></input>
+                    <input type="radio" id="account2" name="accounts" value="account2">
+                    <label for="account2">Account 2</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Seed of the currently selected account.">
+                        <label for="accountSeedField">Account Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountSeedField" size="40" readonly></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="XRP balance for the currently selected account.">
+                        <label for="xrpBalanceField">XRP Balance</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="xrpBalanceField" size="40" readonly></input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Amount of XRP to send.">
+                        <label for="amountField">Amount</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="amountField" size="40"></input>
+                </td>
+            </tr>
+           <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Destination account address where the escrow is sent.">
+                    <lable for="destinationField">Destination</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="destinationField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="createConditionalEscrow()">Create Escrow</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Condition code used to begin the escrow transaction.">
+                    <lable for="escrowConditionField">Escrow Condition</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowConditionField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="getEscrows()">Get Escrows</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Fullfillment code to complete the escrow transaction.">
+                    <lable for="escrowFulfillmentField">Escrow Fulfillment</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowFulfillmentField" size="40"></input>
+                    <br>
+                </td>
+                <td>
+                    <button type="button" onClick="finishConditionalEscrow()">Finish Escrow</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Escrow cancel time, in seconds.">
+                    <lable for="escrowCancelDateField">Escrow Cancel Time</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowCancelDateField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="cancelEscrow()">Cancel Escrow</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Escrow sequence number, used when finishing the escrow.">
+                    <lable for="escrowSequenceNumberField">Escrow Sequence Number</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowSequenceNumberField" size="40"></input>
+                    <br>
+                </td> 
+                <td>
+                    <button type="button" onClick="getTransaction()">Get Transaction</button>
+                </td>             
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Escrow owner, the account that created the escrow.">
+                    <lable for="escrowOwnerField">Escrow Owner</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="escrowOwnerField" size="40"></input>
+                    <br>
+                </td>             
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Transaction number, used with the Get Transaction button.">
+                    <lable for="transactionField">Transaction</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="transactionField" size="40"></input>
+                    <br>
+                </td> 
+                <td>
+                </td>              
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p align="right">
+                        <textarea id="resultField" cols="80" rows="20"></textarea>
+                    </p>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="gatherAccountInfo()">Gather Account Info</button><br/>
+                    <button type="button" onClick="distributeAccountInfo()">Distribute Account Info</button>
+                </td>
+            </tr>
+        </table>
     </form>
-  </body>
+</body>
+<script>
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'account1') {
+                populate1()
+            } else if (this.value === 'account2') {
+                populate2()
+            }
+        });
+    });
+</script>
 </html>
 ```

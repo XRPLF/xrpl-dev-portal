@@ -1,12 +1,9 @@
 ---
-html: create-trustline-send-currency-using-javascript.html
-parent: send-payments-using-javascript.html
 seo:
     description: Create Trust Lines and send currency.
 labels:
   - Cross-Currency
   - Payments
-  - Quickstart
   - Tokens
 
 ---
@@ -14,797 +11,470 @@ labels:
 
 This example shows how to:
 
-1. Configure accounts to allow transfer of funds to third party accounts.
-2. Set a currency type for transactions.
-3. Create a trust line between the standby account and the operational account.
-4. Send issued currency between accounts.
-5. Display account balances for all currencies.
+1. Create a trust line between two accounts.
+2. Send issued currency between accounts.
+3. Display account balances for all currencies.
 
-[![Test harness with currency transfer](/docs/img/quickstart5.png)](/docs/img/quickstart5.png)
+[![Send Currency test harness](/docs/img/mt-send-currency-1-empty-form-info.png )](/docs/img/mt-send-currency-1-empty-form-info.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
+You can download the [Payment Modular Tutorials](/_code-samples/modular-tutorials/payment-modular-tutorials.zip) from the source repository for this website.
 
-{% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
+{% admonition type="info" name="Note" %}Without the Payment modular tutorials, you will not be able to try the examples that follow. {% /admonition %}
 
 ## Usage
 
-Open the Token Test Harness and get accounts:
+Open the Send Currency test harness and get accounts:
 
-1. Open `2.create-trustline-send-currency.html` in a browser.
+1. Open `send-currency.html` in a browser.
 2. Get test accounts.
-    1. If you have existing account seeds
-        1. Paste account seeds in the **Seeds** field.
-        2. Click **Get Accounts from Seeds**.
-    2. If you do not have account seeds:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
+    1. If you copied the gathered information from another tutorial:
+        1. Paste the gathered information to the **Result** field.
+        2. Click **Distribute Account Info**.
+    2. If you have an existing account seed:
+        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+    2. If you do not have existing accounts:
+        1. Click **Get New Account 1**.
+        2. Click **Get New Account 2**.
+
+[![Distribute Account Information](/docs/img/mt-send-currency-2-distribute-accounts.png)](/docs/img/mt-send-currency-2-distribute-accounts.png)
+
+If you want an account to be able to transfer issued currency to accounts other than the issuer, the issuer account must be configured to allow rippling. See _Issuer_ in the [Configuring Accounts](../../../concepts/accounts/configuring-accounts.md#issuer) topic.
+
+Accounts can always transfer currency tokens back to the original issuer.
 
 ## Create Trust Line
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EP_LOy8kK1U?si=Ulx8vUtil_yRcesd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
+In order to trade standard tokens, you must first establish a trust line from the receiving account to the issuing account.
 
 To create a trust line between accounts:
 
-1. Enter a [currency code](https://www.iban.com/currency-codes) in the **Currency** field.
-2. Enter the maximum transfer limit in the **Amount** field.
-3. Enter the destination account value in the **Destination** field.
-4. Click **Create Trustline**. <!-- SPELLING_IGNORE: trustline --><!--{# TODO: update the test harness to spell trust line as two words #}-->
+1. Click **Account 2** to populate the uneditable fields in the form.
+2. Enter a [currency code](https://www.iban.com/currency-codes) in the **Currency Code** field.
+3. Enter the maximum transfer limit in the **Amount** field.
+4. Copy and paste the **Account 1 Address** value to the **Issuer** field.
+5. Click **Create Trust Line**.
 
-[![Trust line results](/docs/img/quickstart6.png)](/docs/img/quickstart6.png)
+[![Trust line results](/docs/img/mt-send-currency-3-create-trustline.png)](/docs/img/mt-send-currency-3-create-trustline.png)
 
 ## Send an Issued Currency Token
 
 To transfer an issued currency token, once you have created a trust line:
 
-1. Enter the **Amount**.
-2. Enter the **Destination**.
-3. Enter the **Currency** type.
+1. Click **Account 1**.
+3. Enter the **Currency Code**.
+4. Copy and paste the **Account 1 Address** to the **Issuer** field.
+4. Enter the **Amount** of issued currency to send.
+2. Copy and paste the **Account 2 Address** to the **Destination** field.
 4. Click **Send Currency**.
 
-[![Currency transfer](/docs/img/quickstart7.png)](/docs/img/quickstart7.png)
+[![Currency transfer](/docs/img/mt-send-currency-4-send-currency.png)](/docs/img/mt-send-currency-4-send-currency.png)
+
+## Get the Current Token Balance
+
+To see the balances for all issued tokens for an account.
+
+1. Click **Account 1** or **Account 2**.
+2. Click **Get Token Balance**.
+
+The balance for an issuing account is shown as an obligation.
+
+[![Currency transfer](/docs/img/mt-send-currency-5-issuer-token-balance.png)](/docs/img/mt-send-currency-5-issuer-token-balance.png)
+
+The balance for a holder account is shown as an asset.
+
+[![Currency transfer](/docs/img/mt-send-currency-6-holder-token-balance.png)](/docs/img/mt-send-currency-6-holder-token-balance.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try each of the samples in your own browser.
+You can download the [Payment Modular Tutorials](/_code-samples/modular-tutorials/payment-modular-tutorials.zip) from the source repository for this website.
 
-## ripplex2-send-currency.js
-<!-- SPELLING_IGNORE: ripplex2 -->
+## send-currency.js
 
-### Configure Account
-
-When transferring fiat currency, the actual transfer of funds is not simultaneous, as it is with XRP. If currency is transferred to a third party for a different currency, there can be a devaluation of the currency that impacts the originating account. To avoid this situation, this up and down valuation of currency, known as _rippling_, is not allowed by default. Currency transferred from one account can only be transferred back to the same account. To enable currency transfer to third parties, you need to set the `rippleDefault` value to true. The Token Test Harness provides a checkbox to enable or disable rippling.
-
-```javascript
-// *******************************************************
-// **************** Configure Account ********************
-// *******************************************************
-      
-async function configureAccount(type, defaultRippleSetting) {
-```
-
-Connect to the ledger
-
-```javascript
-  let net = getNet()
-  let resultField = 'standbyResultField'
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  await client.connect()
-  results += '\nConnected, finding wallet.'
-```
-
-Get the account wallets.
-
-```
-if (type=='standby') {
-  my_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-} else {
-  my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  resultField = 'operationalResultField'
-}
-results += '\nRipple Default Setting: ' + defaultRippleSetting
-resultField.value = results
-```
-
-Prepare the transaction. If the `rippleDefault` argument is true, set the `asfDefaultRipple` flag. If it is false, clear the `asfDefaultRipple` flag.
-
-```javascript
-  let settings_tx = {}
-  if (defaultRippleSetting) {
-    settings_tx = {
-      "TransactionType": "AccountSet",
-      "Account": my_wallet.address,
-      "SetFlag": xrpl.AccountSetAsfFlags.asfDefaultRipple
-    } 
-    results += '\n Set Default Ripple flag.' 
-    } else {
-      settings_tx = {
-      "TransactionType": "AccountSet",
-      "Account": my_wallet.address,
-      "ClearFlag": xrpl.AccountSetAsfFlags.asfDefaultRipple
-    }
-    results += '\n Clear Default Ripple flag.' 
-  }
-  results += '\nSending account setting.'   
-  resultField.value = results
-```
-
-Auto-fill the default values for the transaction.
-
-```javascript
-  const prepared = await client.autofill(settings_tx)
-```
-
-Sign the transaction.
-
-```javascript
-  const signed = my_wallet.sign(prepared)
-```
-
-Submit the transaction and wait for the result.
-
-```javascript
-  const result = await client.submitAndWait(signed.tx_blob)
-```
-
-Report the result.
-
-```javascript
-  if (result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += '\nAccount setting succeeded.'
-    document.getElementById(resultField).value = results
-  } else {
-    throw 'Error sending transaction: ${result}'
-    results += '\nAccount setting failed.'
-    resultField.value = results
-  }     
-  client.disconnect()
-} // End of configureAccount()
-```
+There are two asynchronous functions in the send-currency.js file that build on the base module to add new behavior for sending issued currency between accounts.
 
 ### Create Trust Line
 
 A trust line enables two accounts to trade a defined currency up to a set limit. This gives the participants assurance that any exchanges are between known entities at agreed upon maximum amounts.
 
+Connect to the XRPL server.
+
 ```javascript
-// *******************************************************
-// ***************** Create TrustLine ********************
-// *******************************************************
-      
-async function createTrustline() {
-  let net = getNet()
+async function createTrustLine() {
+  const net = getNet() 
   const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-
   await client.connect()
-  results += '\nConnected.'
-  standbyResultField.value = results
+  let results = "\nConnected. Creating trust line.\n"
+  resultField.value = results
 ```
 
-Get the standby and operational wallets.
+Create a `TrustSet` transaction, passing the currency code, issuer account, and the total value the holder is willing to accept.
 
 ```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const trustSet_tx = {
+      "TransactionType": "TrustSet",
+      "Account": accountAddressField.value,
+      "LimitAmount": {
+        "currency": currencyField.value,
+        "issuer": issuerField.value,
+        "value": amountField.value
+      }
+    }
 ```
 
-Capture the currency code from the standby currency field.
+Autofill the remaining default transaction parameters.
 
 ```javascript
-  const currency_code = standbyCurrencyField.value
+    const ts_prepared = await client.autofill(trustSet_tx)
 ```
 
-Define the transaction, capturing the currency code and (limit) amount from the form fields.
+Sign and send the transaction to the XRPL server, then wait for the results.
 
 ```javascript
-  const trustSet_tx = {
-    "TransactionType": "TrustSet",
-    "Account": standbyDestinationField.value,
-    "LimitAmount": {
-      "currency": standbyCurrencyField.value,
-      "issuer": standby_wallet.address,
-      "value": standbyAmountField.value
+  const ts_signed = wallet.sign(ts_prepared)
+  resultField.value = results
+  const ts_result = await client.submitAndWait(ts_signed.tx_blob)
+```
+
+Report the results of the transaction.
+
+```javascript
+    if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
+        results += '\n===Trust line established between account \n' +
+        accountAddressField.value + ' \n and account\n' + issuerField.value + '.'
+        resultField.value = results
+    } else {
+        results += `\n===Transaction failed: ${ts_result.result.meta.TransactionResult}`
+        resultField.value = results     
     }
   }
 ```
 
-Prepare the transaction by automatically filling the default parameters.
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
-  const ts_prepared = await client.autofill(trustSet_tx)
-```
-
-
-Sign the transaction.
-
-
-```javascript
-  const ts_signed = operational_wallet.sign(ts_prepared)
-  results += '\nCreating trust line from operational account to standby account...'
-  standbyResultField.value = results
-```
-
-
-Submit the transaction and wait for the results.
-
-
-```javascript
-  const ts_result = await client.submitAndWait(ts_signed.tx_blob)
-```
-
-
-Report the results.
-
-
-```javascript
-  if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += '\nTrustline established between account \n' +
-      standbyDestinationField.value + ' \n and account\n' + standby_wallet.address + '.'
-    standbyResultField.value = results
-  } else {
-    results += '\nTrustLine failed. See JavaScript console for details.'
-    document.getElementById('standbyResultField').value = results     
-    throw 'Error sending transaction: ${ts_result.result.meta.TransactionResult}'
+  catch (error) {
+    console.error('===Error creating trust line:', error);
+    results += `\n===Error: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
   }
-} //End of createTrustline()
-
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
+}
+//End of createTrustline()
 ```
 
-### Send Issued Currency
+### sendCurrency()
+This transaction actually sends a transaction that changes balances on both sides of the trust line.
 
-Once you have created a trust line from an account to your own, you can send issued currency tokens to that account, up to the established limit.
+Connect to the XRP Ledger and get the account wallet.
 
 ```javascript
-// *******************************************************
-// *************** Send Issued Currency ******************
-// *******************************************************
-      
 async function sendCurrency() {
-```
-
-Connect to the ledger.
-
-```javascript
-
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
-  document.getElementById('standbyResultField').value = results
-
-  await client.connect()
-
-  results += '\nConnected.'
-  standbyResultField.value = results
-```
-
-Get the account wallets.
-
-```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const currency_code = standbyCurrencyField.value
-  const issue_quantity = standbyAmountField.value
-        
-  const send_token_tx = {
-    "TransactionType": "Payment",
-    "Account": standby_wallet.address,
-    "Amount": {
-      "currency": standbyCurrencyField.value,
-      "value": standbyAmountField.value,
-      "issuer": standby_wallet.address
-    },
-    "Destination": standbyDestinationField.value
-  }
-```
-
-
-Prepare the transaction by automatically filling default values.
-
-
-```javascript
-  const pay_prepared = await client.autofill(send_token_tx)
-```
-
-
-Sign the transaction.
-
-
-```javascript
-  const pay_signed = standby_wallet.sign(pay_prepared)
-  results += 'Sending ${issue_quantity} ${currency_code} to ' +
-    standbyDestinationField.value + '...'
-  standbyResultField.value = results
-```
-
-
-Submit the transaction and wait for the results.
-
-
-```javascript
-  const pay_result = await client.submitAndWait(pay_signed.tx_blob)
-```
-
-
-Report the results.
-
-
-```javascript
-  if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += 'Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}'
-    standbyResultField.value = results
-  } else {
-    results += 'Transaction failed: See JavaScript console for details.'
-    standbyResultField.value = results
-    throw 'Error sending transaction: ${pay_result.result.meta.TransactionResult}'
-  }
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  getBalances()
-  client.disconnect()
-} // end of sendCurrency()
-```
-
-
-
-### Get Balances
-
-
-```javascript
-// *******************************************************
-// ****************** Get Balances ***********************
-// *******************************************************
-
-async function getBalances() {
-```
-
-Connect to the ledger.
-
-```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-  await client.connect()   
-  results += '\nConnected.'
-  standbyResultField.value = results
-```
-
-Get the account wallets.
-
-```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)   
-  results = "\nGetting standby account balances...\n"
-```
-
-Define and send the request for the standby account, then wait for the results.
-
-```javascript
-  const standby_balances = await client.request({
-    command: "gateway_balances",
-    account: standby_wallet.address,
-    ledger_index: "validated",
-    hotwallet: [operational_wallet.address]
-  })
-```
-
-Report the results.
-
-```javascript
-  results += JSON.stringify(standby_balances.result, null, 2)
-  standbyResultField.value = results
-```
-
-Define and send the request for the operational account, then wait for the results.
-
-```javascript
-  results += "\nGetting operational account balances...\n"
-  const operational_balances = await client.request({
-    command: "gateway_balances",
-    account: operational_wallet.address,
-    ledger_index: "validated"
-  })
-```
-
-Report the results.
-
-```javascript
-  results += JSON.stringify(operational_balances.result, null, 2)
-  operationalResultField.value = results
-```
-
-Update the form with current XRP balances.
-
-```javascript
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  standbyResultField.value = results
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-```
-
-Disconnect from the ledger.
-
-```javascript
-  client.disconnect()
-} // End of getBalances()
-```
-
-### Reciprocal Transactions
-
-For each of the transactions, there is an accompanying reciprocal transaction, with the prefix _oP,_ for the operational account. See the corresponding function for the standby account for code commentary. The `getBalances()` request does not have a reciprocal transaction, because it reports balances for both accounts.
-
-```javascript
-// *******************************************************
-// ************ Create Operational TrustLine *************
-// *******************************************************
-      
-async function oPcreateTrustline() {
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  operationalResultField.value = results
-        
+  resultField.value = results
   await client.connect()
   results += '\nConnected.'
-  operationalResultField.value = results
-          
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const trustSet_tx = {
-    "TransactionType": "TrustSet",
-    "Account": operationalDestinationField.value,
-    "LimitAmount": {
-      "currency": operationalCurrencyField.value,
-      "issuer": operational_wallet.address,
-      "value": operationalAmountField.value
+  resultField.value = results
+```
+
+Create a payment transaction to the destination account, specifying the amount using the currency, value, and issuer.
+
+```javascript
+  try {
+    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+    const send_currency_tx = {
+      "TransactionType": "Payment",
+      "Account": wallet.address,
+      "Amount": {
+        "currency": currencyField.value,
+        "value": amountField.value,
+        "issuer": issuerField.value
+      },
+      "Destination": destinationField.value
+    }
+  ```
+
+Autofill the remaining default transaction parameters.
+
+```javascript
+    const pay_prepared = await client.autofill(send_currency_tx)
+```
+
+Sign and send the prepared payment transaction to the XRP Ledger, then await and report the results.
+
+```javascript
+    const pay_signed = wallet.sign(pay_prepared)
+    results += `\n\n===Sending ${amountField.value} ${currencyField.value} to ${destinationField.value} ...`
+    resultField.value = results
+    const pay_result = await client.submitAndWait(pay_signed.tx_blob)
+    if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
+        results += '\n===Transaction succeeded.'
+        resultField.value = results
+    } else {
+        results += `\n===Transaction failed: ${pay_result.result.meta.TransactionResult}`
+        resultField.value = results
+        xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
     }
   }
-  const ts_prepared = await client.autofill(trustSet_tx)
-  const ts_signed = standby_wallet.sign(ts_prepared)
-  results += '\nCreating trust line from operational account to ' +
-   operationalDestinationField.value + ' account...'
-  operationalResultField.value = results
-  const ts_result = await client.submitAndWait(ts_signed.tx_blob)
-  if (ts_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += '\nTrustline established between account \n' + operational_wallet.address +
-      ' \n and account\n' + operationalDestinationField.value + '.'
-    operationalResultField.value = results
-  } else {
-    results += '\nTrustLine failed. See JavaScript console for details.'
-    operationalResultField.value = results     
-    throw 'Error sending transaction: ${ts_result.result.meta.TransactionResult}'
-  }
-} //End of oPcreateTrustline
-      
-// *******************************************************
-// ************* Operational Send Issued Currency ********
-// *******************************************************
-      
-async function oPsendCurrency() {
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '....'
-  operationalResultField.value = results
-        
-  await client.connect()        
-  results += '\nConnected.'
-  operationalResultField.value = results
-          
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const currency_code = operationalCurrencyField.value
-  const issue_quantity = operationalAmountField.value
-        
-  const send_token_tx = {
-    "TransactionType": "Payment",
-    "Account": operational_wallet.address,
-    "Amount": {
-      "currency": currency_code,
-      "value": issue_quantity,
-      "issuer": operational_wallet.address
-    },
-    "Destination": operationalDestinationField.value
-  }
-      
-  const pay_prepared = await client.autofill(send_token_tx)
-  const pay_signed = operational_wallet.sign(pay_prepared)
-  results += 'Sending ${issue_quantity} ${currency_code} to ' +
-    operationalDestinationField.value + '...'
-  operationalResultField.value = results
-  const pay_result = await client.submitAndWait(pay_signed.tx_blob)
-  if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += 'Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}'
-    operationalResultField.value = results
-  } else {
-    results += 'Transaction failed: See JavaScript console for details.'
-    operationalResultField.value = results
-    throw 'Error sending transaction: ${pay_result.result.meta.TransactionResult}'
-  }
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  getBalances()
-  client.disconnect()
-} // end of oPsendCurrency()
 ```
 
-## 2.create-trustline-send-currency.html
+Update the XRP value field to reflect the transaction fee.
+
+```javascript
+  catch (error) {
+    console.error('Error sending transaction:', error);
+    results += `\nError: ${error.message}\n`
+    resultField.value = results
+    throw error; // Re-throw the error to be handled by the caller
+  }
+  finally {
+    // Disconnect from the client
+    await client.disconnect();
+  }
+} // end of sendCurrency()
+
+```
+
+## send-currency.html
 
 Update the form to support the new functions.
 
 ```html
 <html>
-  <head>
-    <title>Token Test Harness</title>
+<head>
+    <title>Send Currency</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <style>
-       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
-       h1{font-weight: bold;}
-       input, button {padding: 6px;margin-bottom: 8px;}
-       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
-       td{vertical-align: middle;}
-    </style>    
-    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
-    <script src='ripplex1-send-xrp.js'></script>
-    <script src='ripplex2-send-currency.js'></script>
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
+    <script src="account-support.js"></script>
+    <script src='send-xrp.js'></script>
+    <script src='send-currency.js'></script>
     <script>
-      if (typeof module !== "undefined") {
-        const xrpl = require('xrpl')
-      }
+        if (typeof module !== "undefined") {
+            const xrpl = require('xrpl')
+        }
     </script>
-  </head>
-  
+</head>
+
 <!-- ************************************************************** -->
 <!-- ********************** The Form ****************************** -->
 <!-- ************************************************************** -->
 
-  <body>
-    <h1>Token Test Harness</h1>
+<body>
+    <h1>Send Currency</h1>
     <form id="theForm">
-      Choose your ledger instance:  
-      &nbsp;&nbsp;
-      <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233" checked>
-      <label for="testnet">Testnet</label>
-      &nbsp;&nbsp;
-      <input type="radio" id="dn" name="server"
-        value="wss://s.devnet.rippletest.net:51233">
-      <label for="devnet">Devnet</label>
-      <br/><br/>
-      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
-      <br/>
-      <textarea id="seeds" cols="40" rows= "2"></textarea>
-      <br/><br/>
-      <table>
-        <tr valign="top">
-          <td>
-            <table>
-              <tr valign="top">
+        <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+            Choose your ledger instance:
+        </span>
+        &nbsp;&nbsp;
+        <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233" checked>
+        <label for="dn">Devnet</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233">
+        <label for="tn">Testnet</label>
+        <br /><br />
+        <table>
+            <tr>
                 <td>
-                <td>
-                  <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
-                  <table>
-                    <tr valign="top">
-                      <td align="right">
-                        Standby Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAccountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Public Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPubKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Private Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPrivKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Seed
-                      </td>
-                      <td>
-                        <input type="text" id="standbySeedField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        XRP Balance
-                      </td>
-                      <td>
-                        <input type="text" id="standbyBalanceField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Amount
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAmountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Destination
-                      </td>
-                      <td>
-                        <input type="text" id="standbyDestinationField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr valign="top">
-                      <td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
-                      <td>
-                        <input type="checkbox" id="standbyDefault" checked="true"/>
-                        <label for="standbyDefault">Allow Rippling</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Currency
-                      </td>
-                      <td>
-                        <input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
-                      </td>
-                    </tr>
-                  </table>
-                  <p align="left">
-                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
-                  </p>
-                </td>
+                    <button type="button" onClick="getNewAccount1()">Get New Account 1</button>
                 </td>
                 <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
-                        <br/><br/>
-                        <button type="button" onClick="createTrustline()">Create TrustLine</button>
-                        <br/>
-                        <button type="button" onClick="sendCurrency()">Send Currency</button>
-                        <br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                    <button type="button" onClick="getAccountFromSeed1()">Get Account 1 From Seed</button>
                 </td>
-              </tr>
+                <td>
+                    <button type="button" onClick="getNewAccount2()">Get New Account 2</button>
+                </td>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed2()">Get Account 2 From Seed</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account."><label for="account1name">Account 1 Name</label>
+                        </span>
+                </td>
+                <td>
+                    <input type="text" id="account1name" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                        <label for="account2name">Account 2 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2name" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account1address">Account 1 Address</label>
+                    </span>
+                </td>
+                <td> 
+                    <input type="text" id="account1address" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account2address">Account 2 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2address" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account1seed">Account 1 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1seed" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account2seed">Account 2 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2seed" size="40"></input>
+                </td>
+            </tr>
             </table>
-          </td>
-          <td>
+            <hr />
             <table>
-              <tr>
-                <td>
-                <td>
-                  <table>
-                    <tr>
-                      <td align="center" valign="top">
-                        <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
-                        <br/><br/>
-                        <button type="button" onClick="oPcreateTrustline()">Create TrustLine</button>
-                        <br/>
-                        <button type="button" onClick="oPsendCurrency()">Send Currency</button>
-                        <br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                      </td>
-                      <td valign="top" align="right">
-                        <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
-                        <table>
-                          <tr valign="top">
-                            <td align="right">
-                              Operational Account
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAccountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Public Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPubKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Private Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPrivKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Seed
-                            </td>
-                            <td>
-                              <input type="text" id="operationalSeedField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              XRP Balance
-                            </td>
-                            <td>
-                              <input type="text" id="operationalBalanceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Amount
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAmountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Destination
-                            </td>
-                            <td>
-                              <input type="text" id="operationalDestinationField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                            </td>
-                            <td align="right">
-                            <input type="checkbox" id="operationalDefault" checked="true"/>
-                              <label for="operationalDefault">Allow Rippling</label>
-                              <button type="button" onClick="configureAccount('operational',document.querySelector('#operationalDefault').checked)">Configure Account</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Currency
-                            </td>
-                            <td>
-                              <input type="text" id="operationalCurrencyField" size="40" value="USD"></input>
-                            </td>
-                          </tr>
-                        </table>
-                        <p align="right">
-                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
-                        </p>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Name of the currently selected account.">
+                        <label for="accountNameField">Account Name</label>
+                    </span>
                 </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+                <td>
+                    <input type="text" id="accountNameField" size="40" readonly></input>
+                    <input type="radio" id="account1" name="accounts" value="account1">
+                    <label for="account1">Account 1</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Address of the currently selected account.">
+                        <label for="accountAddressField">Account Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountAddressField" size="40" readonly></input>
+                    <input type="radio" id="account2" name="accounts" value="account2">
+                    <label for="account2">Account 2</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Seed of the currently selected account.">
+                        <label for="accountSeedField">Account Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountSeedField" size="40" readonly></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="XRP balance for the currently selected account.">
+                        <label for="xrpBalanceField">XRP Balance</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="xrpBalanceField" size="40" readonly></input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Currency code for the trust line.">
+                    <lable for="currencyField">Currency Code</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="currencyField" size="40"></input>
+                    <br>
+                </td> 
+                <td>
+                    <button type="button" onClick="createTrustLine()">Create Trust Line</button>
+                </td>               
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Issuing account for the currency.">
+                    <lable for="issuerField">Issuer</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="issuerField" size="40"></input>
+                    <br>
+                </td> 
+                <td>
+                    <button type="button" onClick="sendCurrency()">Send Currency</button>
+                </td>              
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Amount of XRP to send.">
+                        <label for="amountField">Amount</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="amountField" size="40"></input>
+                    <br>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="getTokenBalance()">Get Token Balance</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Destination account address where XRP is sent.">
+                    <lable for="destinationField">Destination</lable>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="destinationField" size="40"></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p align="right">
+                        <textarea id="resultField" cols="80" rows="20"></textarea>
+                    </p>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="gatherAccountInfo()">Gather Account Info</button><br/>
+                    <button type="button" onClick="distributeAccountInfo()">Distribute Account Info</button>
+                </td>
+            </tr>
+        </table>
     </form>
-  </body>
+</body>
+<script>
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'account1') {
+                populate1()
+            } else if (this.value === 'account2') {
+                populate2()
+            }
+        });
+    });
+</script>
 </html>
 ```

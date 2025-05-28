@@ -24,7 +24,7 @@ For more information about NFTs on the XRP Ledger, see [NFT Conceptual Overview]
 
 ## Install / Upgrade
 
-On supported platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds).
+On supported platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md).
 
 The most recent commit in the git log should be the change setting the version:
 

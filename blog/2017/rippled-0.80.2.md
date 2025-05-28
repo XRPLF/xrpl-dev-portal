@@ -25,13 +25,13 @@ If you operate a `rippled` server, then you should upgrade to 0.80.2 immediately
 
 * **If you operate a `rippled` server**, but do not upgrade to rippled version 0.80.2, then your `rippled` server will use more resources than necessary and may periodically drop transactions and fall out of sync with the network.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The SHA-256 for the RPM is: `a0f431a55a241770d7496b240e4d2c638f2cadd4126ee621c5ed980b8174223c`
 
 The SHA-256 for the source RPM is: `d25bda2c384c67e48fe6c29250c07039d33c6ed5d280ad19fc246469213fe251`
 
-For other platforms, please [compile version 0.80.2 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.80.2 from source](https://github.com/XRPLF/rippled/tree/0.80.2/Builds).
 
 The first log entry should be the change setting the version:
 
@@ -47,14 +47,14 @@ Date:   Thu Dec 14 15:30:20 2017 -0800
 The Ripple technical operations team will deploy `rippled` version 0.80.2 to all production `rippled` servers under its operational control, on Friday, 12/15/2017.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: <support@ripple.com>
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 
 ## 0.80.2 Change Log

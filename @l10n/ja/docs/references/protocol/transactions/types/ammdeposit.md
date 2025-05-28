@@ -128,7 +128,7 @@ AMMDepositトランザクションは、以下のような[`Flags`フィール�
 | `tecAMM_EMPTY`          | 現在、AMM は資産を保有していないため、通常の入金はできません。代わりに、空のAMMの場合の特殊な入金を行う必要があります。 |
 | `tecAMM_NOT_EMPTY`      | トランザクションで`tfTwoAssetIfEmpty`が指定されましたが、AMMは空ではありませんでした。 |
 | `tecAMM_FAILED`         | 預け入れの条件が成立しませんでした。例えば、`EPrice`フィールドに指定された実効価格が低すぎる場合など。 |
-| `tecFROZEN`             | トランザクションは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されているトークンを預けようとしました。 |
+| `tecFROZEN`             | トランザクションは[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されているトークンを預けようとしました。 |
 | `tecINSUF_RESERVE_LINE` | このトランザクションの送信者は、この処理による[準備金要件](../../../../concepts/accounts/reserves.md)の増加の対象であり、LPトークンを保持するための新しいトラストラインが必要で、そのための追加の所有者準備金分のXRPを保有していないためと思われます。 |
 | `tecUNFUNDED_AMM`       | 送信者の残高が、指定された預け入れを行うのに十分な量ではありません。 |
 | `temBAD_AMOUNT`         | トランザクションで指定された金額が無効です。例えば、金額がマイナスなど。 |

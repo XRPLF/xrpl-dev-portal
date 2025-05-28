@@ -435,8 +435,8 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 | `no_ripple_peer`  | 真偽値      | （省略される場合があります）`true`の場合、ピアアカウントはこのトラストラインで[No Rippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md)を有効にしています。もし`false`なら、このアカウントはNo Rippleフラグを無効にしていますが、このアカウントはDefault Rippleフラグも無効にしているため、[デフォルト値](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md#所有者の準備金への資金供給)とはみなされません。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグが無効で、Default Rippleが有効です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %}  |
 | `authorized`      | 真偽値      | （省略される場合があります）このアカウントが[このトラストラインを承認した](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)場合は、`true`。省略されている場合は、`false`と同じです。 |
 | `peer_authorized` | 真偽値      | （省略される場合があります）ピアアカウントが[このトラストラインを承認した](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)場合は`true`。省略されている場合は、`false`と同じです。 |
-| `freeze`          | 真偽値      | （省略される場合があります）このアカウントがこのトラストラインを[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は`true`。省略されている場合は、`false`と同じです。 |
-| `freeze_peer`     | 真偽値      | （省略される場合があります）ピアアカウントがこのトラストラインを[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は、`true`。省略されている場合は、`false`と同じです。 |
+| `freeze`          | 真偽値      | （省略される場合があります）このアカウントがこのトラストラインを[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は`true`。省略されている場合は、`false`と同じです。 |
+| `freeze_peer`     | 真偽値      | （省略される場合があります）ピアアカウントがこのトラストラインを[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は、`true`。省略されている場合は、`false`と同じです。 |
 
 ## 考えられるエラー
 

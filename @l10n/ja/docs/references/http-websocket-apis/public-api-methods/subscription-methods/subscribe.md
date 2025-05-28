@@ -563,7 +563,7 @@ labels:
 
 | `Field`                   | 値     | 説明 |
 | :------------------------ | :----- | ---- |
-| `transaction.owner_funds` | 文字列 | このOfferCreateトランザクションを送信する`Account`が、このトランザクション実行後に有する`TakerGets`通貨の金額。この通貨額が[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されているかどうかはチェックされません。<br>[API v2][]では`tx_json.owner_funds`に変更されました。 |
+| `transaction.owner_funds` | 文字列 | このOfferCreateトランザクションを送信する`Account`が、このトランザクション実行後に有する`TakerGets`通貨の金額。この通貨額が[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されているかどうかはチェックされません。<br>[API v2][]では`tx_json.owner_funds`に変更されました。 |
 
 
 ## Book Changesストリーム

@@ -32,7 +32,7 @@ On supported platforms, see the [instructions on installing or updating `rippled
 | [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.1.1-1_amd64.deb) | `dee7759d8562c8cc1f98fef4645c3e9c29030b0f1eb4adc4346bcb44e11b22de` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
-For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
 commit 2d1854f354ff8bb2b5671fd51252c5acd837c433

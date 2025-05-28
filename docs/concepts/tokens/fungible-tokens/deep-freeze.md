@@ -11,7 +11,7 @@ Deep Freeze lets token issuers on the XRP Ledger prevent token misuse by frozen 
 
 Deep Freeze impacts trust lines that interact with payments, offers, DEX, and AMM. Issuers can block sending and receiving of funds for holders in deep freeze.
 
-_(Requires the [DeepFreeze amendment][] {% not-enabled /%})_
+_(Requires the [DeepFreeze amendment][] )_
 
 ## Deep Freeze Mechanism
 

@@ -24,7 +24,7 @@ XRP Ledgerには2種類の通貨、XRPと[トークン](../../../concepts/tokens
 | 最小値: `0` (負の値はありません)                             | 最小値: `-9999999999999999e80` ゼロでない絶対値の最小値: `1000000000000000e-96`
 | 最大値 `100000000000` (10<sup>11</sup>) XRP (`100000000000000000` (10<sup>17</sup>) "drops") | 最大値 `9999999999999999e80` |
 | 最小の精度: "drop" (0.000001 XRP)                          | 小数点以下15桁の精度 |
-| [凍結](../../../concepts/tokens/fungible-tokens/freezes.md)できません                            | 発行者は残高を[凍結](../../../concepts/tokens/fungible-tokens/freezes.md)することができます |
+| [フリーズ](../../../concepts/tokens/fungible-tokens/freezes.md)できません                            | 発行者は残高を[フリーズ](../../../concepts/tokens/fungible-tokens/freezes.md)することができます |
 | 送金手数料はかかりません。XRP同士の支払いは常に直接行われます | 間接的な[パス](../../../concepts/tokens/fungible-tokens/paths.md)を取ることができ、各発行者は一定の[送金手数料](../../../concepts/tokens/transfer-fees.md)を請求できます |
 | [ペイメントチャンネル](../../../concepts/payment-types/payment-channels.md)と[エスクロー](../../../concepts/payment-types/escrow.md)で使用できます | ペイメントチャネルやエスクローには対応していません |
 

@@ -104,7 +104,7 @@ XRP Ledgerは、複数の[暗号署名アルゴリズム](#署名アルゴリズ
 
 - マスターキーペアを無効化する。
 
-- [凍結](../tokens/fungible-tokens/freezes.md#no-freeze)の機能を永久に放棄する。
+- [フリーズ](../tokens/fungible-tokens/freezes.md#no-freeze)の機能を永久に放棄する。
 
 - トランザクションコスト0XRPの特別な[キーリセットトランザクション](../transactions/transaction-cost.md#key-resetトランザクション)を送信する。
 

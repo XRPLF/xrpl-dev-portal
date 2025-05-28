@@ -14,9 +14,9 @@ Ripple has released `rippled` version 0.33.0, which introduces several new enhan
 
 Highlights of this release include:
 
-* An improved version of the payment code, which Ripple expects to be available via an [Amendment named "Flow"](https://ripple.com/build/amendments/#flow) on Wednesday, 2016-10-20. See below for details.
-* Payment Channels that permit scalable, off-ledger checkpoints for high volume, low value payments flowing in a single direction, which Ripple expects to be activated via an [Amendment named “PayChan”](https://ripple.com/build/amendments/#paychan) on a future date TBA. See below for details.
-* SHAMapV2 changes the hash tree structure that rippled uses to represent a ledger, which Ripple expects to be activated via an [Amendment named SHAMapV2](https://ripple.com/build/amendments/#shamapv2) on a future date TBA. See below for details.
+* An improved version of the payment code, which Ripple expects to be available via an [Amendment named "Flow"](/resources/known-amendments.md#flow) on Wednesday, 2016-10-20. See below for details.
+* Payment Channels that permit scalable, off-ledger checkpoints for high volume, low value payments flowing in a single direction, which Ripple expects to be activated via an [Amendment named “PayChan”](/resources/known-amendments.md#paychan) on a future date TBA. See below for details.
+* SHAMapV2 changes the hash tree structure that rippled uses to represent a ledger, which Ripple expects to be activated via an [Amendment named SHAMapV2](/resources/known-amendments.md#shamapv2) on a future date TBA. See below for details.
 
 ## Action Required
 
@@ -33,54 +33,56 @@ The Flow amendment is expected to be activated on Wednesday, 2016-10-20. If you 
 
 If the Flow amendment is vetoed or does not pass via majority vote, then your server will not become amendment blocked and should continue to operate.
 
-For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](https://ripple.com/build/rippled-setup/#updating-rippled).
+For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 The md5sum for the rpm is: 5ad8fa43e9acf645a76d0a383eb5600a
 
 The md5sum for the source rpm is: 38fe8c022e2fe5086f71fb9623a18064
 
-For other platforms, please [compile version 0.33.0 from source](https://github.com/ripple/rippled/tree/master/Builds).
+For other platforms, please [compile version 0.33.0 from source](https://github.com/XRPLF/rippled/tree/0.33.0/Builds).
 
 The first log entry should be the change setting the version:
 
-      commit f05321d501002cd7b8e7fba3ef361834689b3c26
-      Author: Nik Bougalis <nikb@bougalis.net>
-      Date:   Thu Sep 29 09:25:46 2016 -0700
+```text
+commit f05321d501002cd7b8e7fba3ef361834689b3c26
+Author: Nik Bougalis <nikb@bougalis.net>
+Date:   Thu Sep 29 09:25:46 2016 -0700
 
-      Set version to 0.33.0
+Set version to 0.33.0
+```
 
 ## Network Update
 The Ripple operations team plans to deploy version 0.33.0 to all rippled servers under its operational control, including private clusters, starting at 2:00 PM PDT on Thursday, 2016-09-29. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
-Related documentation is available in the [Ripple Developer Portal](https://ripple.com/build/), including detailed example API calls and web tools for API testing.
+Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
 * The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://developers.ripple.com/blog/)
+* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 * Ripple Technical Services: support@ripple.com
-* [XRP Chat](http://www.xrpchat.com/)
+* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
 The `rippled` 0.33.0 release includes:
 
-* The  ["Flow"](https://ripple.com/build/amendments/#flow) amendment. Ripple expects this amendment to be on Wednesday, 2016-10-20. 
+* The  ["Flow"](/resources/known-amendments.md#flow) amendment. Ripple expects this amendment to be on Wednesday, 2016-10-20. 
 
-* XRP Payment Channels. Payment channels are a new structure in the ledger designed to support [Interledger Protocol](https://interledger.org/) trust lines as balances get substantial. Ripple expects to be activated via Amendment on a future date (TBA) with the name [“PayChan”](https://ripple.com/build/amendments/#paychan).
+* XRP Payment Channels. Payment channels are a new structure in the ledger designed to support [Interledger Protocol](https://interledger.org/) trust lines as balances get substantial. Ripple expects to be activated via Amendment on a future date (TBA) with the name [“PayChan”](/resources/known-amendments.md#paychan).
 
-* Changes to the hash tree structure, which `rippled` uses hash trees to represent a ledger. Ripple expects these changes expect to be available via Amendment on a future date (TBA) with the name [SHAMapV2](https://ripple.com/build/amendments/#shamapv2).
+* Changes to the hash tree structure, which `rippled` uses hash trees to represent a ledger. Ripple expects these changes expect to be available via Amendment on a future date (TBA) with the name [SHAMapV2](/resources/known-amendments.md#shamapv2).
 
-You can [update to the new version](https://ripple.com/build/rippled-setup/#updating-rippled) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/ripple/rippled/tree/master/Builds).
+You can [update to the new version](/docs/infrastructure/installation/update-rippled-automatically-on-linux) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md).
 
 **New and Updated Features**
 
-A fixed version of the new payment processing engine, which Ripple initially [announced on Friday, 2016-07-29](https://developers.ripple.com/blog/2016/rippled-0.32.1.html), is expected to be available via Amendment on Wednesday, 2016-10-20 with the name ["Flow"](https://ripple.com/build/amendments/#flow). The new payments code adds no new features, but improves efficiency and robustness in payment handling.
+A fixed version of the new payment processing engine, which Ripple initially [announced on Friday, 2016-07-29](/blog/2016/rippled-0.32.1.md), is expected to be available via Amendment on Wednesday, 2016-10-20 with the name ["Flow"](/resources/known-amendments.md#flow). The new payments code adds no new features, but improves efficiency and robustness in payment handling.
 
-Ripple will be introducing changes to the hash tree structure that rippled uses to represent a ledger. Ripple expects these changes to be activated via Amendment on a future date (TBA) with the name [SHAMapV2](https://ripple.com/build/amendments/#shamapv2). The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences. The activation of the SHAMapV2 amendment will require brief scheduled allowable downtime, while the changes to the hash tree structure are propagated by the network. Ripple will keep the community updated as we progress towards this date (TBA).
+Ripple will be introducing changes to the hash tree structure that rippled uses to represent a ledger. Ripple expects these changes to be activated via Amendment on a future date (TBA) with the name [SHAMapV2](/resources/known-amendments.md#shamapv2). The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences. The activation of the SHAMapV2 amendment will require brief scheduled allowable downtime, while the changes to the hash tree structure are propagated by the network. Ripple will keep the community updated as we progress towards this date (TBA).
 
-In an effort to make RCL more scalable and to support [Interledger Protocol](https://interledger.org/) (ILP) trust lines as balances get more substantial, Ripple is introducing XRP Payment Channels, a new structure in the ledger, which we expect to be available via Amendment on a future date (TBA) with the name [“PayChan”](https://ripple.com/build/amendments/#paychan).
+In an effort to make RCL more scalable and to support [Interledger Protocol](https://interledger.org/) (ILP) trust lines as balances get more substantial, Ripple is introducing XRP Payment Channels, a new structure in the ledger, which we expect to be available via Amendment on a future date (TBA) with the name [“PayChan”](/resources/known-amendments.md#paychan).
 
 XRP Payment Channels permit scalable, intermittent, off-ledger settlement of ILP trust lines for high volume, low value payments flowing in a single direction. For bidirectional channels, an XRP Payment Channel can be used in each direction. The recipient can claim any unpaid balance at any time. The owner can top off the channel as needed. The owner must wait out a delay to close the channel to give the recipient a chance to supply any claims. The total amount paid increases monotonically as newer claims are issued.
 

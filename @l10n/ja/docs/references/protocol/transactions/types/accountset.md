@@ -82,8 +82,8 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | `asfDisallowIncomingPayChan`      | 14    | `lsfDisallowIncomingPayChan`      | ペイメントチャネルの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
 | `asfDisallowIncomingTrustline`    | 15    | `lsfDisallowIncomingTrustline`    | トラストラインの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
 | `asfDisallowXRP`                  | 3     | `lsfDisallowXRP`                  | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
-| `asfGlobalFreeze`                 | 7     | `lsfGlobalFreeze`                 | このアカウントによって発行されたすべての資産を[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
-| `asfNoFreeze`                     | 6     | `lsfNoFreeze`                     | [個々のトラストラインの凍結またはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |
+| `asfGlobalFreeze`                 | 7     | `lsfGlobalFreeze`                 | このアカウントによって発行されたすべての資産を[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
+| `asfNoFreeze`                     | 6     | `lsfNoFreeze`                     | [個々のトラストラインのフリーズまたはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |
 | `asfRequireAuth`                  | 2     | `lsfRequireAuth`                  | このアドレスによって発行された残高をユーザが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
 | `asfRequireDest`                  | 1     | `lsfRequireDestTag`               | トランザクションをこのアカウントに送信するための宛先タグを要求します。 |
 

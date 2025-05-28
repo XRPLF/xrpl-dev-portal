@@ -59,14 +59,14 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 | `temBAD_EXPIRATION`              | 指定された`Expiration`は無効です（例：`0`）。 |
 | `tecDIR_FULL`                    | 送信者がレジャーにすでにあまりにも多くのオブジェクトを所有しているか、またはこのトークンの売買のオファーがあまりにも多く存在しています。 |
 | `tecEXPIRED`                     | 指定された`Expiration`の時間は既に経過しています。 |
-| `tecFROZEN`                      | `Amount`はトークンで、このオファーからトークンを受け取るトラストラインは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。これは売却者のトラストラインか、`NFToken`の発行者のトラストライン（`NFToken`に送金手数料がある場合）である可能性があります。 |
+| `tecFROZEN`                      | `Amount`はトークンで、このオファーからトークンを受け取るトラストラインは[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。これは売却者のトラストラインか、`NFToken`の発行者のトラストライン（`NFToken`に送金手数料がある場合）である可能性があります。 |
 | `tecINSUFFICIENT_RESERVE`        | 送信者はこのオファーを提示した後、[所有者準備金](../../../../concepts/accounts/reserves.md)を満たすのに十分なXRPを持っていません。 |
 | `tecNO_DST`                      | `Destination`に指定されたアカウントがレジャーに存在しません。 |
 | `tecNO_ENTRY`                    | `NFToken`フィールドで指定したアカウントは所有していません。 |
 | `tecNO_ISSUER`                   | `Amount`フィールドで指定した発行者が存在しません。 |
 | `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`lsfTrustLine`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効ではありません。 |
 | `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 _([DisallowIncoming amendment][] が必要です。)_
-| `tecUNFUNDED_OFFER`              | 購入オファーの場合、送信者は`Amount`フィールドで指定された通貨を利用可能です。もし`Amount`がXRPである場合、これは準備不足によるものかもしれません。もし`Amount`がトークンである場合、これは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されている可能性があります。 |
+| `tecUNFUNDED_OFFER`              | 購入オファーの場合、送信者は`Amount`フィールドで指定された通貨を利用可能です。もし`Amount`がXRPである場合、これは準備不足によるものかもしれません。もし`Amount`がトークンである場合、これは[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されている可能性があります。 |
 | `tefNFTOKEN_IS_NOT_TRANSFERABLE` | `NFToken`は[`lsfTransferable`フラグ](../../data-types/nftoken.md#nftoken-flags)が無効になっており、このトランザクションでは`NFToken`を発行者に転送したり発行者から転送したりすることはできません。 |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

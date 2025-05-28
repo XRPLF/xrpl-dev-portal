@@ -45,7 +45,7 @@ labels:
 | `tecINVARIANT_FAILED`              | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]により追加されました。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
 | `tecKILLED`                        | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。_（[fix1578 Amendment][]により追加されました。）_ |
 | `tecMAX_SEQUENCE_REACHED`          | 153 | シーケンス番号フィールドはすでに最大値に達しています。これには`MintedNFTokens`フィールドも含まれます。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
-| `tecNEED_MASTER_KEY`               | 142 | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高凍結能力の放棄](../types/accountset.md#accountsetのフラグ)など）を試みました。|
+| `tecNEED_MASTER_KEY`               | 142 | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高フリーズ能力の放棄](../types/accountset.md#accountsetのフラグ)など）を試みました。|
 | `tecNFTOKEN_BUY_SELL_MISMATCH`     | 155 | [NFTokenAcceptOfferトランザクション][]は、非代替性トークンの購入と売却に関する対応しないオファーをマッチングさせようとしました。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
 | `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | 156 | トランザクションで指定されたオファーのうち、1つまたは複数について、オファーの種類が適切ではありませんでした。（例えば、`NFTokenSellOffer`フィールドに購入オファーが指定されていました。） _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
 | `tecNO_ALTERNATIVE_KEY`            | 130 | トランザクションが唯一の[トランザクション承認](../../../../concepts/transactions/index.md#トランザクションの承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`rippled` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |

@@ -478,8 +478,8 @@ Trust Lines: トラストライン
 No spamming of wallets without permission.: 許可なくウォレットにスパムを送信することはありません。
 Authorized Trustlines: 認可トラストライン
 Control who can hold your tokens with allowlisting.: ホワイトリスト形式で誰がトークンを保持できるかを制御します。
-Freeze & Clawbacks: 凍結とクローバック
-Freeze: 凍結
+Freeze & Clawbacks: フリーズとクローバック
+Freeze: フリーズ
 If you see signs of suspicious activity, you can suspend trading of your token while investigating the issue.: 不審な活動の兆候が見られた場合は、問題を調査する間、トークンの取引を停止することができます。
 Clawback: クローバック
 "Recover tokens distributed to accounts in error: for example, reclaim funds sent to an account sanctioned for illegal activity.": 誤ってアカウントに送信されたトークンを回収することができます。たとえば、違法行為に対して制裁を受けたアカウントに送金された資金を回収します。

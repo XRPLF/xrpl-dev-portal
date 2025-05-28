@@ -6,6 +6,7 @@
     - group: '2025'
       expanded: false
       items:
+        - page: 2025/integrating-dia-oracles-on-xrpl.md
         - page: 2025/vulnerabilitydisclosurereport-bug-apr2025.md
         - page: 2025/defi-use-cases-exploring-the-potential.md
         - page: 2025/clio-2.4.0.md
