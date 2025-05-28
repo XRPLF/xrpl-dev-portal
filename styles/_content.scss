@@ -73,7 +73,8 @@
   }
 
   // "Source" links float right
-  a[title="Source"] {
+  a[title="Source"],
+  a[title="ソース"] {
     float: right;
     padding-left: 20px;
   }
