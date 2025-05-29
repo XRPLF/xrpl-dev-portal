@@ -1,13 +1,11 @@
 ---
-html: javascript.html
-parent: tutorials.html
 top_nav_grouping: Article Types
 metadata:
   indexPage: true
 ---
 # JavaScript
 
-You can create your own interface to try out the capabilities and support your specific business needs. These tutorials build a test harness interface to try out features of the XRP Ledger. The harness displays multiple accounts, so that you can transfer tokens from one account to the other and see the results in real time.
+You can create your own interface to try out the capabilities and support your specific business needs. These tutorials use a consistent test harness interface to try out features of the XRP Ledger.
 
 Typically, the example functions involve four steps.
 
@@ -16,9 +14,9 @@ Typically, the example functions involve four steps.
 - Get the state of accounts and tokens on the XRP Ledger using requests.
 - Disconnect from the XRP Ledger.
 
-Each lesson builds the Token Test Harness one section at a time, with complete JavaScript and HTML code samples and a code walkthrough. You can download the source code, manipulate it in a text editor, and run it in your favorite browser. 
+Each lesson features complete JavaScript and HTML code samples and a code walkthrough. You can download the source code, manipulate it in a text editor, and run it in your favorite browser. 
 
-Much of this is “brute force” code that sacrifices conciseness for readability. Each example builds on the previous examples, adding a new JavaScript file and the supporting HTML UI. 
+Much of this is “brute force” code that sacrifices conciseness for readability. Most examples incorporate functions from earlier examples so that any new code is specific to the topic of that tutorial  
 
 Once familiar with the library functions, you can build sample applications in JavaScript. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.
 
