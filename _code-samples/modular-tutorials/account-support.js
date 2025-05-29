@@ -206,3 +206,14 @@ async function getTokenBalance() {
   }
 } // End of getTokenBalance()
 
+// *******************************************************
+// **************** Scroll Results ***********************
+// *******************************************************
+let results
+
+async function updateResults() {
+  resultField.value += results;
+  resultField.scrollTop = resultField.scrollHeight;
+}
+
+// End of updateResults()
