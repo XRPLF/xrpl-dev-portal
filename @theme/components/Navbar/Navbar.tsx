@@ -6,7 +6,7 @@ import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { Search } from "@redocly/theme/components/Search/Search";
 import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
-import moment from "moment";
+import moment from "moment-timezone";
 
 // @ts-ignore
 
@@ -23,11 +23,9 @@ function useCountdown(targetDate: string) {
 
   React.useEffect(() => {
     const calculateTimeLeft = () => {
-      // Target: June 11, 2025 at 8AM Singapore time (GMT+8)
-      // Singapore is UTC+8, so 8AM Singapore = 0AM UTC (midnight UTC)
-      const targetSingaporeTime = moment(targetDate, "YYYY-MM-DD HH:mm:ss");
-      const target = targetSingaporeTime.clone().subtract(8, 'hours').utc();
-      const now = moment().utc();
+      // Create target date in Singapore timezone (Asia/Singapore)
+      const target = moment.tz(targetDate, "YYYY-MM-DD HH:mm:ss", "Asia/Singapore");
+      const now = moment();
       const diff = target.diff(now);
 
       if (diff <= 0) {
