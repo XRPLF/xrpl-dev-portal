@@ -6,6 +6,7 @@ import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { Search } from "@redocly/theme/components/Search/Search";
 import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
+import moment from "moment";
 
 // @ts-ignore
 
@@ -14,12 +15,53 @@ const alertBanner = {
   message: "APEX 2025",
   button: "REGISTER",
   link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner",
-  date: "AGENDA NOW LIVE",
+  targetDate: "2025-06-11 08:00:00", // June 11, 2025 at 8AM Singapore time
 };
-export function AlertBanner({ message, date, button, link, show }) {
+
+function useCountdown(targetDate: string) {
+  const [timeLeft, setTimeLeft] = React.useState("");
+
+  React.useEffect(() => {
+    const calculateTimeLeft = () => {
+      // Target: June 11, 2025 at 8AM Singapore time (GMT+8)
+      // Singapore is UTC+8, so 8AM Singapore = 0AM UTC (midnight UTC)
+      const targetSingaporeTime = moment(targetDate, "YYYY-MM-DD HH:mm:ss");
+      const target = targetSingaporeTime.clone().subtract(8, 'hours').utc();
+      const now = moment().utc();
+      const diff = target.diff(now);
+
+      if (diff <= 0) {
+        setTimeLeft("EVENT STARTED");
+        return;
+      }
+
+      const duration = moment.duration(diff);
+      const days = Math.floor(duration.asDays());
+      const hours = duration.hours();
+      const minutes = duration.minutes();
+      const seconds = duration.seconds();
+
+      const formattedTime = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      setTimeLeft(`IN ${formattedTime}`);
+    };
+
+    // Calculate immediately
+    calculateTimeLeft();
+
+    // Update every second
+    const interval = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  return timeLeft;
+}
+
+export function AlertBanner({ message, button, link, show, targetDate }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const bannerRef = React.useRef(null);
+  const countdown = useCountdown(targetDate);
 
   React.useEffect(() => {
     const banner = bannerRef.current;
@@ -47,7 +89,7 @@ export function AlertBanner({ message, date, button, link, show }) {
       >
         <div className="banner-event-details">
           <div className="event-info">{translate(message)}</div>
-          <div className="event-date">{translate(date)}</div>
+          <div className="event-date">{countdown}</div>
         </div>
         <div className="banner-button">
           <div className="button-text">{translate(button)}</div>
