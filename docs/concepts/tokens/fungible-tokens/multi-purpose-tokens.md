@@ -14,7 +14,7 @@ Multi-purpose tokens (MPTs) are a more compact and flexible type of fungible tok
 
 MPTs let you take advantage of ready-to-use tokenization features with a few lines of code. You can create many token experiences from one token program itself. Notable features include:
 
-- MPTs store their metadata directly on the XRPL blockchain.
+- MPTs store their metadata directly on the XRPL blockchain. Once set, the metadata is immutable. 
 - A 1024-byte URI field provides a metadata pointer that allows you to use an off-chain source for metadata in addition to the on-chain source. This lets your application access necessary information directly from the chain, prompting higher interoperability for tokens, without losing the ability to attach additional information. 
 - MPTs can have a fixed token supply where you set a cap on the maximum number of tokens that can be minted. 
 - You can define MPTs as non-transferable, tokens that can only be transferred back to the issuer, but not among tokenholders. Useful for cases such as issuing airline credits or loyalty rewards.
