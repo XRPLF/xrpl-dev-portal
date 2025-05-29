@@ -44,7 +44,7 @@ To get test accounts:
 
 ## Issue a Credential
 
-1. Click the **Account 1** radial button. This account will the credential issuer.
+1. Click the **Account 1** radial button. This account will be the credential issuer.
 2. Copy the account 2 address into **Subject**.
 3. Enter a **Credential Type**. For example, _KYC_.
 4. Click **Create Credential**.
