@@ -73,7 +73,7 @@ For more information on queued transactions, see [Transaction Queue](transaction
 
 ## Reference Transaction Cost
 
-The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](transaction-cost.md) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](../accounts/multi-signing.md), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.
+The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](transaction-cost.md) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](../accounts/multi-signing.md), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction. 
 
 ### Fee Levels
 
@@ -86,6 +86,7 @@ _Fee levels_ represent the proportional difference between the minimum cost and 
 | [Key reset transaction](transaction-cost.md#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
 | [EscrowFinish transaction](../../references/protocol/transactions/types/escrowfinish.md) with 32-byte preimage. | 350 | 256 | 700 | 512 |
 
+{% admonition type="info" name="Note" %}The standard ledger base fee is typically 10 drops, occasionally increased due to high volume. Should the validators vote to increase or lower the base fee, costs based on the standard fee (for example, the EscrowFinish transaction with Fulfillment) are adjusted accordingly.{% /admonition %}
 
 ## Querying the Transaction Cost
 
