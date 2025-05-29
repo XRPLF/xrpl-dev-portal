@@ -105,7 +105,7 @@ Gather issuer information, credential type, and domain ID. Format the transactio
 
 {% code-snippet file="/_code-samples/modular-tutorials/permissioned-domain-manager.js" language="js" from="// Gather transaction info" before="// Submit transaction" /%}
 
-Submit the `PermissionedDomainSet` transaction and report the results. The metadata is formed differently if a domain ID was included; parse the response accordingly.
+Submit the `PermissionedDomainSet` transaction and report the results. The metadata is formed differently if a domain ID is included; parse the response accordingly.
 
 {% code-snippet file="/_code-samples/modular-tutorials/permissioned-domain-manager.js" language="js" from="// Submit transaction" before="// End create permissioned domain" /%}
 
