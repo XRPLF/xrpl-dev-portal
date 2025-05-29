@@ -32,9 +32,8 @@ async function getAccount() {
   }
   finally {
     // Disconnect from the client
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    } }
+    await client.disconnect();
+  }
 } // End of getAccount()
 
 async function getNewAccount1() {
@@ -79,9 +78,8 @@ async function getAccountFromSeed(my_seed) {
   }
   finally {
     // Disconnect from the client
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+    await client.disconnect();
+  }
 } // End of getAccountFromSeed()
 
 // *****************************************************
@@ -171,9 +169,8 @@ async function getXrpBalance() {
   }
   finally {
     // Disconnect from the client
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+    await client.disconnect();
+  }
 } // End of getXrpBalance()
 
 // *******************************************************
@@ -205,19 +202,6 @@ async function getTokenBalance() {
   }
   finally {
     // Disconnect from the client
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+    await client.disconnect();
+  }
 } // End of getTokenBalance()
-
-// *******************************************************
-// **************** Scroll Results ***********************
-// *******************************************************
-let results
-
-async function updateResults() {
-  resultField.value += results;
-  resultField.scrollTop = resultField.scrollHeight;
-}
-
-// End of updateResults()

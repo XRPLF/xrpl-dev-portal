@@ -28,7 +28,8 @@ Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tu
 To get test accounts:
 
 1. Open `create-offers.html` in a browser.
-2. Get test accounts.
+2. Choose your preferred test network (**Devnet** or **Testnet**).
+3. Get test accounts.
     1. If you copied the gathered information from another tutorial:
         1. Paste the gathered information to the **Result** field.
         2. Click **Distribute Account Info**.
