@@ -13,7 +13,7 @@ _As a financial professional, I want to use multi-purpose tokens to create an as
 
 A multi-purpose token (MPT) is a compact and flexible object that offers the best aspects of fungible and non-fungible tokens. It is the next generation of tokenization on the XRPL. Notable features include:
 
-- MPTs store metadata directly on the XRPL blockchain, with the option of linking to additional off-chain data.
+- MPTs store metadata directly on the XRPL blockchain, with the option of linking to additional off-chain data. Once created, the metadata is immutable.
 - MPTs can have a fixed token supply, with a cap on the maximum number of tokens.
 - MPT issuers can collect transfer fees each time the token is traded.
 - MPTs can be non-transferable, for use cases such as airline credits.
@@ -420,7 +420,7 @@ As an example, you might set the following flags when creating your T-bill MPT.
 
 #### Token Metadata
 
-The metadata you provide is what distinguishes your token from other MPTs. The following JSON definition shows sample configuration information for a T-bill. Copy and paste the data, or your own metadata, into the **Token Metadata** field.
+The metadata you provide is what distinguishes your token from other MPTs. The following JSON definition shows sample configuration information for a T-bill. Copy and paste the data, or your own metadata, into the **Token Metadata** field. Once set, MPT metadata is immutable.
 
 ```json
 {
@@ -439,6 +439,7 @@ The metadata you provide is what distinguishes your token from other MPTs. The f
     "ExternalUrl": "https://example.com/t-bill-token-metadata.json"
   }
 ```
+
 Once you've set your preferred values, click **Generate Transaction** to see the transaction syntax for your settings. The `Flags` field displays the sum of the flags you've selected, and the `MPTokenMetadata` is converted to a hexidecimal string.
 
 ![Generated syntax for MPTokenIssuanceCreate transaction](../../img/uc-mpt1-t-bill-mpt-generator-generate-code.png)
