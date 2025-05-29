@@ -25,7 +25,7 @@ Most publicly available wallets offer the ability to create an account for you a
 
 ## Fund Your Account
 
-An account isn't active on the XRP Ledger until it's been funded and meets the minimum reserve requiremen. See: [Reserves](../../concepts/accounts/reserves.md).
+An account isn't active on the XRP Ledger until it's been funded and meets the minimum reserve requirement. See: [Reserves](../../concepts/accounts/reserves.md).
 
 If the wallet you're using doesn't offer the option to purchase XRP, you'll need to find a third party exchange to do so and send it to your account. Alternatively, someone you know can also send XRP to your account. See: [Payment](../../references/protocol/transactions/types/payment.md).
 
@@ -40,7 +40,7 @@ After funding your account, you should verify on the XRP Ledger itself that your
 
 ### Direct XRP Payments
 
-XRP payments are the simplest way to pay someone on the XRP Ledger. You can use checks or escrows, but these require multiple transactions to complete. A direct XRP payment require only one transaction, making this option great for day-to-day activity. If you're a merchant handling large volumes of transactions, this may be the right choice for you due to it being quick, simple, and having the lowest fees. See: [Direct XRP Payments](../../concepts/payment-types/direct-xrp-payments.md).
+XRP payments are the simplest way to pay someone on the XRP Ledger. You can use checks or escrows, but these require multiple transactions to complete. A direct XRP payment requires only one transaction, making this option great for day-to-day activity. If you're a merchant handling large volumes of transactions, this may be the right choice for you due to it being quick, simple, and having the lowest fees. See: [Direct XRP Payments](../../concepts/payment-types/direct-xrp-payments.md).
 
 To make a direct XRP payment work, you only need to know the address of the receiver.
 
