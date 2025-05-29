@@ -73,7 +73,7 @@ For more information on queued transactions, see [Transaction Queue](transaction
 
 ## Reference Transaction Cost
 
-The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](transaction-cost.md) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](../accounts/multi-signing.md), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.
+The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](transaction-cost.md) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](../accounts/multi-signing.md), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction. 
 
 ### Fee Levels
 
