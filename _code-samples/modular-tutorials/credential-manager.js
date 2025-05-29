@@ -1,4 +1,4 @@
-/// Create credential function
+// Create credential function
 async function createCredential() {
 
   let net = getNet()
