@@ -23,7 +23,6 @@
     "five-bells-condition": "^5.0.1",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
-    "moment-timezone": "^0.6.0",
     "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-alert": "^7.0.3",
