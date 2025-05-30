@@ -6,7 +6,6 @@ import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { Search } from "@redocly/theme/components/Search/Search";
 import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
-import moment from "moment-timezone";
 
 // @ts-ignore
 
@@ -15,63 +14,25 @@ const alertBanner = {
   message: "APEX 2025",
   button: "REGISTER",
   link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner",
-  targetDate: "2025-06-11 08:00:00", // June 11, 2025 at 8AM Singapore time
+  date: "JUNE 10-12",
 };
 
-function useCountdown(targetDate: string) {
-  const [timeLeft, setTimeLeft] = React.useState("");
-
-  React.useEffect(() => {
-    const calculateTimeLeft = () => {
-      // Create target date in Singapore timezone (Asia/Singapore)
-      const target = moment.tz(targetDate, "YYYY-MM-DD HH:mm:ss", "Asia/Singapore");
-      const now = moment();
-      const diff = target.diff(now);
-
-      if (diff <= 0) {
-        setTimeLeft("EVENT STARTED");
-        return;
-      }
-
-      const duration = moment.duration(diff);
-      const days = Math.floor(duration.asDays());
-      const hours = duration.hours();
-      const minutes = duration.minutes();
-      const seconds = duration.seconds();
-
-      const formattedTime = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      setTimeLeft(`IN ${formattedTime}`);
-    };
-
-    // Calculate immediately
-    calculateTimeLeft();
-
-    // Update every second
-    const interval = setInterval(calculateTimeLeft, 1000);
-
-    return () => clearInterval(interval);
-  }, [targetDate]);
-
-  return timeLeft;
-}
-
-export function AlertBanner({ message, button, link, show, targetDate }) {
+export function AlertBanner({ message, button, link, show, date }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const bannerRef = React.useRef(null);
-  const countdown = useCountdown(targetDate);
 
   React.useEffect(() => {
     const banner = bannerRef.current;
     if (!banner) return;
     const handleMouseEnter = () => {
-      banner.classList.add('has-hover');
+      banner.classList.add("has-hover");
     };
     // Attach the event listener
-    banner.addEventListener('mouseenter', handleMouseEnter);
+    banner.addEventListener("mouseenter", handleMouseEnter);
     // Clean up the event listener on unmount
     return () => {
-      banner.removeEventListener('mouseenter', handleMouseEnter);
+      banner.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, []);
 
@@ -87,11 +48,15 @@ export function AlertBanner({ message, button, link, show, targetDate }) {
       >
         <div className="banner-event-details">
           <div className="event-info">{translate(message)}</div>
-          <div className="event-date">{countdown}</div>
+          <div className="event-date">{date}</div>
         </div>
         <div className="banner-button">
           <div className="button-text">{translate(button)}</div>
-          <img className="button-icon" src={arrowUpRight} alt="Get Tickets Icon" />
+          <img
+            className="button-icon"
+            src={arrowUpRight}
+            alt="Get Tickets Icon"
+          />
         </div>
       </a>
     );
@@ -130,7 +95,6 @@ export function Navbar(props) {
       );
     }
   });
-
 
   React.useEffect(() => {
     // Turns out jQuery is necessary for firing events on Bootstrap v4
@@ -179,7 +143,7 @@ export function Navbar(props) {
           <NavItems>
             {navItems}
             <div id="topnav-search" className="nav-item search">
-              <Search className="topnav-search"/>
+              <Search className="topnav-search" />
             </div>
             <div id="topnav-language" className="nav-item">
               <LanguagePicker
