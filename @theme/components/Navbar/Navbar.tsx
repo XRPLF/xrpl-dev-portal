@@ -6,6 +6,7 @@ import { Link } from "@redocly/theme/components/Link/Link";
 import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { Search } from "@redocly/theme/components/Search/Search";
 import arrowUpRight from "../../../static/img/icons/arrow-up-right-custom.svg";
+import moment from "moment-timezone";
 
 // @ts-ignore
 
@@ -13,14 +14,44 @@ const alertBanner = {
   show: true,
   message: "APEX 2025",
   button: "REGISTER",
-  link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner",
-  date: "JUNE 10-12",
+  link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner"
 };
 
-export function AlertBanner({ message, button, link, show, date }) {
+export function AlertBanner({ message, button, link, show }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const bannerRef = React.useRef(null);
+  const [displayDate, setDisplayDate] = React.useState("JUNE 10-12");
+
+  React.useEffect(() => {
+    const calculateCountdown = () => {
+      // Calculate days until June 11, 2025 8AM Singapore time
+      // This will automatically adjust for the user's timezone
+      const target = moment.tz('2025-06-11 08:00:00', 'Asia/Singapore');
+      const now = moment();
+      const daysUntil = target.diff(now, 'days');
+
+      // Show countdown if event is in the future, otherwise show the provided date
+      let newDisplayDate = "JUNE 10-12";
+      if (daysUntil > 0) {
+        newDisplayDate = daysUntil === 1 ? 'IN 1 DAY' : `IN ${daysUntil} DAYS`;
+      } else if (daysUntil === 0) {
+        // Check if it's today
+        const hoursUntil = target.diff(now, 'hours');
+        newDisplayDate = hoursUntil > 0 ? 'TODAY' : "JUNE 10-12";
+      }
+
+      setDisplayDate(newDisplayDate);
+    };
+
+    // Calculate immediately
+    calculateCountdown();
+
+    // Update every hour
+    const interval = setInterval(calculateCountdown, 60 * 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   React.useEffect(() => {
     const banner = bannerRef.current;
@@ -48,7 +79,7 @@ export function AlertBanner({ message, button, link, show, date }) {
       >
         <div className="banner-event-details">
           <div className="event-info">{translate(message)}</div>
-          <div className="event-date">{date}</div>
+          <div className="event-date">{displayDate}</div>
         </div>
         <div className="banner-button">
           <div className="button-text">{translate(button)}</div>
