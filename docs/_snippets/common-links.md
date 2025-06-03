@@ -157,6 +157,10 @@
 [LedgerHashes object]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [LedgerHashesエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [LedgerHashesオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
+[LedgerStateFix transaction]: /docs/references/protocol/transactions/types/ledgerstatefix.md
+[LedgerStateFix transactions]: /docs/references/protocol/transactions/types/ledgerstatefix.md
+[LedgerStateFix]: /docs/references/protocol/transactions/types/ledgerstatefix.md
+[LedgerStateFixトランザクション]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [Marker]: /docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
 [MPTokensV1 amendment]: /resources/known-amendments.md#mptokensv1
 [MultiSign amendment]: /resources/known-amendments.md#multisign
