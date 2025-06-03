@@ -1,6 +1,4 @@
 ---
-html: offercreate.html
-parent: transaction-types.html
 seo:
     description: Submit an order to exchange currency.
 labels:
@@ -61,22 +59,22 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 
 | Error Code               | Description                                       |
 |:-------------------------|:--------------------------------------------------|
-| `temINVALID_FLAG`        | The transaction specifies an invalid flag combination, such as both `tfImmediateOrCancel` and `tfFillOrKill`, or the transaction uses `tfHybrid` but omits the `DomainID` field. |
-| `tecEXPIRED`             | The transaction specifies an `Expiration` time that has already passed. |
-| `tecKILLED`              | The transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment][]_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and executes without moving funds (previously, an Immediate or Cancel offer would return `tesSUCCESS` even if no funds were moved). |
-| `temBAD_EXPIRATION`      | The transaction contains an `Expiration` field that is not validly formatted. |
-| `temBAD_SEQUENCE`        | The transaction contains an `OfferSequence` that is not validly formatted, or is higher than the transaction's own `Sequence` number. |
-| `temBAD_OFFER`           | The offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token. |
-| `temREDUNDANT`           | The transaction specifies a token for the same token (same issuer and currency code). |
-| `temBAD_CURRENCY`        | The transaction specifies a token with the currency code "XRP". |
-| `temBAD_ISSUER`          | The transaction specifies a token with an invalid `issuer` value. |
-| `tecNO_ISSUER`           | The transaction specifies a token whose `issuer` value is not a funded account in the ledger. |
-| `tecNO_PERMISSION`       | The transaction uses a `DomainID` but the sender is not a member of that domain. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
-| `tecFROZEN`              | The transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes). The `TakerPays` (buy amount) token has been deep-frozen by the issuer. |
-| `tecUNFUNDED_OFFER`      | The owner does not hold a positive amount of the `TakerGets` currency. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.) |
-| `tecNO_LINE`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the necessary trust line does not exist. |
-| `tecNO_AUTH`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the the trust line that would receive the tokens exists but has not been authorized. |
-| `tecINSUF_RESERVE_OFFER` | The owner does not have enough XRP to meet the reserve requirement of adding a new Offer object to the ledger, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an Offer object in the ledger for the rest.) |
 | `tecDIR_FULL`            | The owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already. |
+| `tecEXPIRED`             | The transaction specifies an `Expiration` time that has already passed. |
+| `tecFROZEN`              | The transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes). The `TakerPays` (buy amount) token has been deep-frozen by the issuer. |
+| `tecINSUF_RESERVE_OFFER` | The owner does not have enough XRP to meet the reserve requirement of adding a new offer ledger entry, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an offer ledger entry for the remainder.) |
+| `tecKILLED`              | The transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment][]_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and executes without moving funds (previously, an Immediate or Cancel offer would return `tesSUCCESS` even if no funds were moved). |
+| `tecNO_AUTH`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the the trust line that would receive the tokens exists but has not been authorized. |
+| `tecNO_ISSUER`           | The transaction specifies a token whose `issuer` value is not a funded account in the ledger. |
+| `tecNO_LINE`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the necessary trust line does not exist. |
+| `tecNO_PERMISSION`       | The transaction uses a `DomainID` but the sender is not a member of that domain. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `tecUNFUNDED_OFFER`      | The owner does not hold a positive amount of the `TakerGets` currency. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.) |
+| `temBAD_CURRENCY`        | The transaction specifies a fungible token incorrectly, such as a fungible token with the currency code "XRP". |
+| `temBAD_EXPIRATION`      | The transaction contains an `Expiration` field that is not validly formatted. |
+| `temBAD_ISSUER`          | The transaction specifies a token with an invalid `issuer` value. |
+| `temBAD_OFFER`           | The offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token. |
+| `temBAD_SEQUENCE`        | The transaction contains an `OfferSequence` that is not validly formatted, or is higher than the transaction's own `Sequence` number. |
+| `temINVALID_FLAG`        | The transaction specifies an invalid flag combination, such as both `tfImmediateOrCancel` and `tfFillOrKill`, or the transaction uses `tfHybrid` but omits the `DomainID` field. |
+| `temREDUNDANT`           | The transaction would trade a token for the same token (same issuer and currency code). |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
