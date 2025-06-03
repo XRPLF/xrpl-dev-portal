@@ -11,7 +11,7 @@ labels:
 
 _(Added by the [PayChan amendment][] to be enabled.)_
 
-The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
+The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP or fungible tokens from a payment channel.
 
 ## Request Format
 An example of the request format:
@@ -58,8 +58,8 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
-| `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
+| `amount` | Object or String | The amount of [XRP, in drops][], or fungible tokens the provided `signature` authorizes. |
+| `channel_id` | String | The Channel ID of the channel that provides the amount. This is a 64-character hexadecimal string. |
 | `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in hexadecimal or the XRP Ledger's [base58][] format. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}Updated in: rippled 0.90.0{% /badge %} |
 | `signature` | String | The signature to verify, in hexadecimal. |
 
@@ -114,7 +114,7 @@ The response follows the [standard format][], with a successful result containin
 |-------|------|-------------|
 | `signature_verified` | Boolean | If `true`, the signature is valid for the stated amount, channel, and public key. |
 
-{% admonition type="warning" name="Caution" %}This does not indicate check that the channel has enough XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [account_channels method][].{% /admonition %}
+{% admonition type="warning" name="Caution" %}This does not check whether the channel has enough XRP allocated to it. Before considering a claim valid, you should look up the channel in the latest validated ledger and confirm that the channel is open and its `amount` value is equal or greater than the `amount` of the claim. To do so, use the [account_channels method][].{% /admonition %}
 
 ## Possible Errors
 
