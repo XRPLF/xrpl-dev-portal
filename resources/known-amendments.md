@@ -819,7 +819,7 @@ Adds several fixes to Automated Market Maker code, specifically:
 - Add several invariant checks to ensure that AMMs function as designed.
 - Add rounding to AMM deposit and withdraw to ensure that the AMM's balance meets the invariant:
     - On deposit, tokens out are rounded downward and deposit amount is rounded upward.
-    - On withdrawal, tokens in are rounded upward and withdrawal amount is rounded downard.
+    - On withdrawal, tokens in are rounded upward and withdrawal amount is rounded downward.
 - Fix validation of [AMMBid transactions][] to ensure that `AuthAccounts` cannot contain duplicates or the transaction sender.
 
 
@@ -909,8 +909,8 @@ Fixes two bugs relating to the handling of NFT transfer fees and trust lines:
 
 Fix a bug where NFT transfer fees could bypass certain limitations on receiving tokens, specifically:
 
-- Prevent an NFT issuer from receiving fungible tokens as transfer fees if the fungible tokens' issuer uses Authorized Trust Lines and the NFT issuer's trust line is not authorized.
-- Prevent an NFT issuer from receiving fungible tokens as transfer fees on a deep-frozen trust line.
+- Prevent an NFT issuer from receiving fungible tokens as transfer fees if the fungible tokens' issuer uses [authorized trust lines](/docs/concepts/tokens/fungible-tokens/authorized-trust-lines) and the NFT issuer's trust line is not authorized.
+- Prevent an NFT issuer from receiving fungible tokens as transfer fees on a [deep-frozen](/docs/concepts/tokens/fungible-tokens/deep-freeze) trust line.
 
 Without this amendment, NFT transfer fees could be paid to an NFT issuer circumventing these restrictions.
 
@@ -1151,7 +1151,7 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Prevents new payment channels from being created with a `CancelAfter` time that is before the current ledger. Instead, the PaymentChannelCreate transaction fails with the result code `tecEXPIRED`.
+Prevents new payment channels from being created with a `CancelAfter` time that is before the current ledger. Instead, the [PaymentChannelCreate transaction][] fails with the result code `tecEXPIRED`.
 
 Without this amendment, transactions can create a payment channel whose `CancelAfter` time is in the past. This payment channel is automatically removed as expired by the next transaction to affect it.
 

@@ -12,7 +12,7 @@ markdown:
 ---
 # Two Fix Amendments Enabled, dNFTs Expected
 
-Two fixes to the XRP Ledger protocol, [fixFrozenLPTokenTransfer](/resources/known-amendments#fixfrozenlptokentransfer) and [fixInvalidTxFlags](/resources/known-amendments#fixinvalidtxflags), became enabled on 2025-015-15. Additionally, the [DynamicNFT amendment](/resources/known-amendments#dynamicnft) has gained support from a supermajority of validators and will become enabled on 2025-06-11 if it maintains continuous support. The minimum core server version to support these amendments is **v2.4.0**; any servers on older versions are now amendment blocked.
+Two fixes to the XRP Ledger protocol, [fixFrozenLPTokenTransfer](/resources/known-amendments#fixfrozenlptokentransfer) and [fixInvalidTxFlags](/resources/known-amendments#fixinvalidtxflags), became enabled on 2025-05-15. Additionally, the [DynamicNFT amendment](/resources/known-amendments#dynamicnft) has gained support from a supermajority of validators and will become enabled on 2025-06-11 if it maintains continuous support. The minimum core server version to support these amendments is **v2.4.0**; any servers on older versions are now amendment blocked.
 
 <!-- BREAK -->
 
