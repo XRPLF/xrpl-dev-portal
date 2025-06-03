@@ -48,6 +48,7 @@
 [Amendments object]: /docs/concepts/networks-and-servers/amendments.md
 [Amendmentsエントリ]: /docs/concepts/networks-and-servers/amendments.md
 [Amendmentsオブジェクト]: /docs/concepts/networks-and-servers/amendments.md
+[Batch amendment]: /resources/known-amendments.md#batch
 [Check entry]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Check object]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Checkエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
@@ -247,6 +248,8 @@
 [PaymentChannelFundトランザクション]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
 [Paymentトランザクション]: /docs/references/protocol/transactions/types/payment.md
+[PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
+[PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [PermissionedDomainSet transaction]: /docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
 [permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
@@ -280,6 +283,7 @@
 [SignerListSet transactions]: /docs/references/protocol/transactions/types/signerlistset.md
 [SignerListSet]: /docs/references/protocol/transactions/types/signerlistset.md
 [SignerListSetトランザクション]: /docs/references/protocol/transactions/types/signerlistset.md
+[SingleAssetVault amendment]: /resources/known-amendments.md#singleassetvault
 [SortedDirectories amendment]: /resources/known-amendments.md#sorteddirectories
 [Specifying Currency Amounts]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [Specifying Ledgers]: /docs/references/protocol/data-types/basic-data-types.md#specifying-ledgers
@@ -297,6 +301,7 @@
 [TicketCreate]: /docs/references/protocol/transactions/types/ticketcreate.md
 [TicketCreateトランザクション]: /docs/references/protocol/transactions/types/ticketcreate.md
 [Tickets amendment]: /resources/known-amendments.md#tickets
+[TokenEscrow amendment]: /resources/known-amendments.md#tokenescrow
 [Transaction Cost]: /docs/concepts/transactions/transaction-cost.md
 [TrustSet transaction]: /docs/references/protocol/transactions/types/trustset.md
 [TrustSet transactions]: /docs/references/protocol/transactions/types/trustset.md
@@ -410,8 +415,10 @@
 [fix1571 amendment]: /resources/known-amendments.md#fix1571
 [fix1578 amendment]: /resources/known-amendments.md#fix1578
 [fix1623 amendment]: /resources/known-amendments.md#fix1623
+[fixAMMv1_3 amendment]: /resources/known-amendments.md#fixammv1_3
 [fixCheckThreading amendment]: /resources/known-amendments.md#fixcheckthreading
 [fixDisallowIncomingV1 amendment]: /resources/known-amendments.md#fixdisallowincomingv1
+[fixEnforceNFTokenTrustlineV2 amendment]: /resources/known-amendments.md#fixenforcenftokentrustlinev2
 [fixFillOrKill amendment]: /resources/known-amendments.md#fixfillorkill
 [fixFrozenLPTokenTransfer]: /resources/known-amendments.md#fixfrozenlptokentransfer
 [fixInvalidTxFlags amendment]: /resources/known-amendments.md#fixinvalidtxflags
@@ -419,6 +426,7 @@
 [fixNFTokenDirV1 amendment]: /resources/known-amendments.md#fixnftokendirv1
 [fixNFTokenPageLinks amendment]: /resources/known-amendments.md#fixnftokenpagelinks
 [fixNFTokenRemint amendment]: /resources/known-amendments.md#fixnftokenremint
+[fixPayChanCancelAfter amendment]: /resources/known-amendments.md#fixpaychancancelafter
 [fixPayChanRecipientOwnerDir amendment]: /resources/known-amendments.md#fixpaychanrecipientownerdir
 [fixPreviousTxnID amendment]: /resources/known-amendments.md#fixprevioustxnid
 [fixQualityUpperBound amendment]: /resources/known-amendments.md#fixqualityupperbound
