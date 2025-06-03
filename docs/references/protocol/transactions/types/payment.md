@@ -1,6 +1,4 @@
 ---
-html: payment.html
-parent: transaction-types.html
 seo:
     description: Send funds from one account to another.
 labels:
@@ -10,7 +8,7 @@ labels:
   - Tokens
 ---
 # Payment
-[[Source]](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "Source")
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
 
@@ -44,9 +42,10 @@ Payments are also the only way to [create accounts](#creating-accounts).
 | `Amount`         | [Currency Amount][]  | Amount            | API v1: Yes | Alias to `DeliverMax`. |
 | `CredentialIDs`  | Array of Strings     | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. _(Requires the [Credentials amendment][]._ {% not-enabled /%})_ |
 | `DeliverMax`     | [Currency Amount][]  | Amount            | Yes       | [API v2][]: The maximum amount of currency to deliver. [Partial payments](#partial-payments) can deliver less than this amount and still succeed; other payments fail unless they deliver the exact amount. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %} |
-| `DeliverMin`     | [Currency Amount][]  | Amount            | No        | Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](../../../../concepts/payment-types/partial-payments.md). For non-XRP amounts, the nested field names are lower-case. |
+| `DeliverMin`     | [Currency Amount][]  | Amount            | No        | Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). For non-XRP amounts, the nested field names are lower-case. |
 | `Destination`    | String               | AccountID         | Yes       | The unique address of the account receiving the payment. |
 | `DestinationTag` | Number               | UInt32            | No        | Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
+| `DomainID`       | String - [Hash][]    | Hash256           | No        | The ledger entry ID of a permissioned domain. If this is a cross-currency payment, only use the corresponding [permissioned DEX](../permissioned-dexes.md) to convert currency. Both the sender and the recipient must have valid credentials that grant access to the specified domain. This field has no effect if the payment is not cross-currency. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
 | `InvoiceID`      | String               | Hash256           | No        | Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | `Paths`          | Array of path arrays | PathSet           | No        | _(Auto-fillable)_ Array of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
 | `SendMax`        | [Currency Amount][]  | Amount            | No        | Highest amount of source currency this transaction is allowed to cost, including [transfer fees](../../../../concepts/tokens/transfer-fees.md), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](../../../../concepts/transactions/transaction-cost.md). Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
@@ -111,7 +110,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | Flag Name          | Hex Value    | Decimal Value | Description                  |
 |:-------------------|:-------------|:--------------|:-----------------------------|
 | `tfNoRippleDirect` | `0x00010000` | 65536         | Do not use the default path; only use paths included in the `Paths` field. This is intended to force the transaction to take arbitrage opportunities. Most clients do not need this. |
-| `tfPartialPayment` | `0x00020000` | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](../../../../concepts/payment-types/partial-payments.md) for more details. |
+| `tfPartialPayment` | `0x00020000` | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
 | `tfLimitQuality`   | `0x00040000` | 262144        | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 
 ## Partial Payments
