@@ -31,6 +31,7 @@ Some transactions have different transaction costs:
 | [Multi-signed Transaction](../accounts/multi-signing.md) | 10 drops × (1 + Number of Signatures Provided) |
 | [EscrowFinish Transaction with Fulfillment](../../references/protocol/transactions/types/escrowfinish.md) | 10 drops × (33 + (Fulfillment size in bytes ÷ 16)) |
 | [AccountDelete Transaction](../accounts/deleting-accounts.md) | 2,000,000 drops |
+| [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 2,000,000 drops |
 
 
 ## Beneficiaries of the Transaction Cost
