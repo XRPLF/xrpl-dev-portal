@@ -150,6 +150,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/ticksize.md
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
+                - page: docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:

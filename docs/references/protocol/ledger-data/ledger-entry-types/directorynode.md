@@ -97,7 +97,7 @@ All types of directories are automatically updated by the protocol as necessary.
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
-| `DomainID`          | String    | Hash256           | No        | (Offer directories only) The ledger entry ID of a permissioned domain. If present, this order book belongs to the corresponding [Permissioned DEX](../permissioned-dexes.md). Otherwise, this order book is part of the open DEX. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `DomainID`          | String    | Hash256           | No        | (Offer directories only) The ledger entry ID of a permissioned domain. If present, this order book belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). Otherwise, this order book is part of the open DEX. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
 | `ExchangeRate`      | String    | UInt64            | No        | (Offer directories only) **DEPRECATED**. Do not use. |
 | `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DirectoryNode` objects. The value is always `0`. |
 | `Indexes`           | Array     | Vector256         | Yes       | The contents of this directory: an array of IDs of other objects. |
