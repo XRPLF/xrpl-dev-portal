@@ -189,7 +189,7 @@ The credentials provided in the `CredentialIDs` field must all be valid, meaning
 If you provide credentials even though the destination account does not use Deposit Authorization, the credentials are not needed but they are still checked for validity.
 
 {% admonition type="info" name="Note" %}
-The `CredentialIDs` field is only used for deposit authorization, not for trading in a [permissioned DEX](/docs/concepts/tokens/decentralized-exchange/permissioned-dex.md), even though Permissioned DEXes also use credentials to grant access. To trade in a permissioned DEX, you use the `DomainID` field to specify a domain for which you hold valid credentials.
+The `CredentialIDs` field is only used for deposit authorization, not for trading in a [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md), even though Permissioned DEXes also use credentials to grant access. To trade in a permissioned DEX, you use the `DomainID` field to specify a domain for which you hold valid credentials.
 {% /admonition %}
 
 ## Special Case for Destination Accounts Below the Reserve
