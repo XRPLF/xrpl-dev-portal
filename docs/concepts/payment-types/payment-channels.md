@@ -24,14 +24,12 @@ Payment Channels do not intrinsically specify anything about what you can buy an
 - Inexpensive things, where the cost of processing a transaction is a non-trivial part of the price
 - Things normally bought in bulk, where the exact quantity desired is not known in advance
 
-<!--
 ## Payment Channel Lifecycle
 
 The following diagram summarizes the lifecycle of a payment channel:
 
 [{% inline-svg file="/docs/img/paychan-flow.svg" /%}](/docs/img/paychan-flow.svg "Payment Channel Flow Diagram")
 
--->
 ## See Also
 
 - **Related Concepts:**
