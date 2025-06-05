@@ -29,13 +29,13 @@ XRP Ledger開発者ブログへの投稿をご検討いただきありがとう�
 
 1. 作業を始める前に、`xrpl-dev-portal` リポジトリの上流（upstream）`master` ブランチから最新の更新をプルしておいてください。
 
-2. `blog-<short-desc-of-update>` の形式で、新しいブログ記事用のブランチを作成してください。
+2. `blog-{記事の概要}` の形式で、新しいブログ記事用のブランチを作成してください。
 
-3. `blog/_current_year_` フォルダ内に、新しいMarkdownファイルを作成してください。たとえば、以下のようになります：https://github.com/XRPLF/xrpl-dev-portal/tree/master/blog/2025
+3. `blog/{年}` フォルダ内に、新しいMarkdownファイルを作成してください。たとえば、以下のようになります：https://github.com/XRPLF/xrpl-dev-portal/tree/master/blog/2025
 
 4. 下書きのブログ記事は、テンプレートファイル [`_blog_template.md`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/%40l10n/ja/resources/contribute-blog/_blog-template.md) を参考にして作成してください。
 
-5. 新しく作成したファイルを `blog/sidebar.yaml` に追加してください。
+5. 新しく作成したファイルを `blog/sidebars.yaml` に追加してください。
 
 6. 下書きがレビュー可能な状態になったら、内容を保存し、コミットを実行してください。
 

@@ -29,14 +29,14 @@ To create a new post, follow these steps:
 
 1. Before you begin, ensure that you pull the most recent updates from the upstream `master` branch of the `xrpl-dev-portal` repository.
 
-2. Create a new branch for the blog post using the format `blog-<short-desc-of-update>`.
+2. Create a new branch for the blog post using the format `blog-{short-desc-of-update}`.
 
-3. Create a new markdown file in the `blog/_current_year_` folder, for example https://github.com/XRPLF/xrpl-dev-portal/tree/master/blog/2025
+3. Create a new markdown file in the `blog/{YEAR}` folder, for example https://github.com/XRPLF/xrpl-dev-portal/tree/master/blog/2025
 
 4. Refer to the template file [`_blog_template.md`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/resources/contribute-blog/_blog-template.md) to compose your draft blog. 
 
-5. Update the `blog/sidebar.yaml` file to include the newly created file.
+5. Update the `blog/sidebars.yaml` file to include the newly created file.
 
-6. Once the draft is ready for review, save and commit your updates.
+6. When the draft is ready for review, save and commit your updates.
 
 7. Create a new PR to merge your changes to master. 
