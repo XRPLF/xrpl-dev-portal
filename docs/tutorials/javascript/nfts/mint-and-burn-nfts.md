@@ -230,7 +230,7 @@ Disconnect from the XRP Ledger.
 Get the account wallet and connect to the XRP Ledger.
 
 ```javascript
-sync function burnNFT() {
+async function burnNFT() {
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
   const net = getNet();
   const client = new xrpl.Client(net);
