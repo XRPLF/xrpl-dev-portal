@@ -43,7 +43,8 @@ You can download the [NFT Modular Sam;ples](../../../../_code-samples/nft-modula
 
 To authorize another account to create NFTs for your account:
 
-1. Enter the account you want to authorize in the **Authorized Minter** field.
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
+2. Enter the account you want to authorize in the **Authorized Minter** field.
 3. Click **Authorize Minter**.
 
 [![Authorized Minter](../../../img/mt-auth-minter-2-authorize-minter.png)](../../../img/mt-auth-minter-2-authorize-minter.png)
@@ -52,9 +53,10 @@ To authorize another account to create NFTs for your account:
 
 To mint a non-fungible token for another account:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
-2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
+3. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 5. Enter the account number on whose behalf you are minting the NFT in the **NFT Issuer** field.
 6. Optionally, you can set an expected prices for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
 7. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.

@@ -43,13 +43,14 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
 
 To create an NFT sell offer:
 
-1. Enter the **Amount** of the sell offer.
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
+2. Enter the **Amount** of the sell offer.
    1. If using _XRP_, enter the **Amount** in drops (millionths of an XRP; for example, 20000000).
    2. If using issued currency, enter the **Currency** code, **Issuer** account address, and the **Amount**.
-2. Optionally, include a **Destination** account address. If present, only that account will have permission to accept the sell offer.
-3. Optionally, enter a number of days until **Expiration** of the offer.
-4. Enter the **NFT ID** of the NFT you want to sell.
-5. Click **Create Sell Offer**.
+3. Optionally, include a **Destination** account address. If present, only that account will have permission to accept the sell offer.
+4. Optionally, enter a number of days until **Expiration** of the offer.
+5. Enter the **NFT ID** of the NFT you want to sell.
+6. Click **Create Sell Offer**.
 
 [![NFT Sell Offer](../../../img/mt-transfer-nfts-3-create-sell-offer.png)](../../../img/mt-transfer-nfts-3-create-sell-offer.png)
 
@@ -69,8 +70,9 @@ Once a sell offer is available, another account can opt to accept the offer and 
 
 To accept an available sell offer:
 
-1. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
-2. Click **Accept Sell Offer**.
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
+2. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
+3. Click **Accept Sell Offer**.
 
 [![Accept Sell Offer](../../../img/mt-transfer-nfts-5-accept-sell-offer.png)](../../../img/mt-transfer-nfts-5-accept-sell-offer.png)
 
@@ -80,7 +82,7 @@ You can offer to buy an NFT from another account.
 
 To create an offer to buy an NFT:
 
-1. Change to an account other than the NFT owner.
+1. Click the Account 1 or Account 2 radio button to change to an account other than the NFT owner.
 2. Enter the **Amount** of your offer.
    1. If paying XRP, enter the **Amount** of XRP in drops (1000000 equals 1 XRP).
    2. If paying an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
@@ -95,7 +97,7 @@ To create an offer to buy an NFT:
 
 To accept an offer to buy an NFT:
 
-1. Change to the NFT owner account.
+1. Click the Account 1 or Account 2 radio button to change to the NFT owner account.
 2. Use **Get Offers**, above, if needed, to find the `nft_offer_index`.
 3. Enter the `nft_offer_index` in the **NFT Offer ID** field.
 4. Click **Accept Buy Offer**.
@@ -106,8 +108,9 @@ To accept an offer to buy an NFT:
 
 To cancel a buy or sell offer that you have created:
 
-1. Enter the **NFT Offer Index**.
-2. Click **Cancel Offer**.
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
+2. Enter the **NFT Offer Index**.
+3. Click **Cancel Offer**.
 
 [![Cancel offer](../../../img/mt-transfer-nfts-8-cancel-offer.png)](../../../img/mt-transfer-nfts-8-cancel-offer.png)
 

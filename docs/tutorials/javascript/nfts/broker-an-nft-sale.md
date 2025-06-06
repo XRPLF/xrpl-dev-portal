@@ -58,6 +58,7 @@ To create a brokered sale, you need a broker account, a Sell Offer with the brok
 
 ## Broker the Sale
 
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
 1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell Offer Index** field.
 2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy Offer Index** field.
 3. Enter a **Broker Fee**, in drops.

@@ -34,18 +34,19 @@ This example lets you mint multiple NFTs for a single unique item. The NFT might
 
 To batch mint NFTs:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../../../docs/references/protocol/transactions/types/nftokenmint.md) for information about all of the available flags for minting NFTs.
-2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
-3. Set the **NFT Taxon**. If you don't have a use for this field, set it to _0_. 
-3. Enter an **NFT Count** of up to 200 NFTs to create in one batch.
-4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
-5. Click **Batch Mint NFTs**.
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../../../docs/references/protocol/transactions/types/nftokenmint.md) for information about all of the available flags for minting NFTs.
+3. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+4. Set the **NFT Taxon**. If you don't have a use for this field, set it to _0_. 
+5. Enter an **NFT Count** of up to 200 NFTs to create in one batch.
+6. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
+7. Click **Batch Mint NFTs**.
 
 [![Batch Mint](../../../img/mt-batch-mint-2-batch-mint.png)](../../../img/mt-batch-mint-2-batch-mint.png)
 
 ## Get Batch NFTs
 
-Click **Get Batch NFTs** to get the current list of NFTs for your account.
+Click **Get Batch NFTs** to get the current list of NFTs for the selected account.
 
 The difference between this function and the `getTokens()` function used earlier is that it allows for larger lists of tokens, and sends multiple requests if the tokens exceed the number of objects allowed in a single request.
 
