@@ -22,7 +22,7 @@ async function getAccount() {
     let faucetHost = null
     const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
     const newAccount = [my_wallet.address, my_wallet.seed]
-    return (newAccount)
+    return newAccount
   }
   catch (error) {
     console.error('===Error getting account:', error);
