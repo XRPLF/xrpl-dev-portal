@@ -112,7 +112,7 @@ footer:
           labelTranslationKey: footer.about.impact
         - label: XRPL Foundation
           labelTranslationKey: footer.about.xrpl-foundation
-          href: https://foundation.xrpl.org/
+          href: https://xrpl.foundation
           external: true
         - page: about/faq.md
           label: FAQ

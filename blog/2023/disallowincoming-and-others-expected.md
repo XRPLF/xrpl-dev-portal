@@ -96,7 +96,7 @@ To learn more about the XRP Ledger, the amendment process, or other topics, see 
 
 - [XRPL.org](https://xrpl.org) documentation
 - [XRP Ledger Developers on Discord](https://xrpldevs.org/)
-- [XRP Ledger Foundation](https://foundation.xrpl.org/), on various platforms:
+- [XRP Ledger Foundation](https://xrpl.foundation), on various platforms:
     - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
     - [X / Twitter](https://twitter.com/XRPLF/)
     - [GitHub](https://github.com/XRPLF/)
