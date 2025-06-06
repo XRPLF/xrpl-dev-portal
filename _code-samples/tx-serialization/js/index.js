@@ -37,7 +37,11 @@ const args = parseArgs(process.argv.slice(2), {
 
 function _pretty(message, color) {
     if (!args.raw) {
-        console.log(color, message)
+        if (color) {
+            console.log(color,message)
+        } else {
+            console.log(message)
+        }
     }
 }
 

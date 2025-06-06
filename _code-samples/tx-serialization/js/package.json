@@ -7,10 +7,9 @@
     "big-integer": "^1.6.52",
     "buffer": "^6.0.3",
     "decimal.js": "^10.4.3",
-    "fs": "^0.0.1-security",
     "minimist": "^1.2.7",
     "ripple-address-codec": "^5.0.0",
-    "xrpl": "^4.0.0"
+    "xrpl": "^4.2.5"
   },
   "main": "index.js",
   "scripts": {
