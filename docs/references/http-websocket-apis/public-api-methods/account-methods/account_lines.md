@@ -65,6 +65,8 @@ The request accepts the following parameters:
 | `limit`          | Number               | No        | Limit the number of trust lines to retrieve. The server may return less than the specified limit, even if there are more pages of results. Must be within the inclusive range 10 to 400.  Positive values outside this range are replaced with the closest valid option. The default is 200. |
 | `marker`         | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 | `peer`           | String - [Address][] | No        | A second account; if provided, filter results to trust lines connecting the two accounts. |
+| `locked_balance` | Object              | No         | The total amount locked in payment channels or escrow. |
+| `lock_count` | Number | UInt32         | No         | the total number of lock balances on a RippleState ledger object. |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
