@@ -11,6 +11,14 @@ ul.nav.navbar-nav {
   flex-grow: 1;
 }
 
+.draft-banner {
+  background: var(--color-red-4) !important;
+  cursor: auto;
+}
+.draft-banner::after {
+  display: none !important;
+}
+
 :root {
   /* XRPL color palette; match to styles/_colors.scss
     Some colors don't have a 10 equivalent so 9 is repeated.

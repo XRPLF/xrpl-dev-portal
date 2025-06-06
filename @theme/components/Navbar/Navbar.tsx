@@ -10,89 +10,14 @@ import moment from "moment-timezone";
 
 // @ts-ignore
 
-const alertBanner = {
-  show: true,
-  message: "APEX 2025",
-  button: "REGISTER",
-  link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner"
-};
-
-export function AlertBanner({ message, button, link, show }) {
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
-  const bannerRef = React.useRef(null);
-  const [displayDate, setDisplayDate] = React.useState("JUNE 10-12");
-
-  React.useEffect(() => {
-    const calculateCountdown = () => {
-      // Calculate days until June 11, 2025 8AM Singapore time
-      // This will automatically adjust for the user's timezone
-      const target = moment.tz('2025-06-11 08:00:00', 'Asia/Singapore');
-      const now = moment();
-      const daysUntil = target.diff(now, 'days');
-
-      // Show countdown if event is in the future, otherwise show the provided date
-      let newDisplayDate = "JUNE 10-12";
-      if (daysUntil > 0) {
-        newDisplayDate = daysUntil === 1 ? 'IN 1 DAY' : `IN ${daysUntil} DAYS`;
-      } else if (daysUntil === 0) {
-        // Check if it's today
-        const hoursUntil = target.diff(now, 'hours');
-        newDisplayDate = hoursUntil > 0 ? 'TODAY' : "JUNE 10-12";
-      }
-
-      setDisplayDate(newDisplayDate);
-    };
-
-    // Calculate immediately
-    calculateCountdown();
-
-    // Update every hour
-    const interval = setInterval(calculateCountdown, 60 * 60 * 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  React.useEffect(() => {
-    const banner = bannerRef.current;
-    if (!banner) return;
-    const handleMouseEnter = () => {
-      banner.classList.add("has-hover");
-    };
-    // Attach the event listener
-    banner.addEventListener("mouseenter", handleMouseEnter);
-    // Clean up the event listener on unmount
-    return () => {
-      banner.removeEventListener("mouseenter", handleMouseEnter);
-    };
-  }, []);
-
-  if (show) {
-    return (
-      <a
-        href={link}
-        target="_blank"
-        ref={bannerRef}
-        className="top-banner fixed-top web-banner"
-        rel="noopener noreferrer"
-        aria-label="Get Tickets for the APEX 2025 Event"
-      >
-        <div className="banner-event-details">
-          <div className="event-info">{translate(message)}</div>
-          <div className="event-date">{displayDate}</div>
-        </div>
-        <div className="banner-button">
-          <div className="button-text">{translate(button)}</div>
-          <img
-            className="button-icon"
-            src={arrowUpRight}
-            alt="Get Tickets Icon"
-          />
-        </div>
-      </a>
-    );
-  }
-  return null;
+export function AlertBanner() {
+  return (
+    <div
+      className="top-banner fixed-top web-banner draft-banner"
+    >
+      DRAFT PREVIEW DOCUMENTATION
+    </div>
+  );
 }
 export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
@@ -164,8 +89,8 @@ export function Navbar(props) {
 
   return (
     <>
-      <AlertBanner {...alertBanner} />
-      <NavWrapper belowAlertBanner={alertBanner.show}>
+      <AlertBanner />
+      <NavWrapper belowAlertBanner={true}>
         <LogoBlock to={href} img={logo} alt={altText} />
         <NavControls>
           <MobileMenuIcon />

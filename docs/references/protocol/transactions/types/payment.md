@@ -1,6 +1,4 @@
 ---
-html: payment.html
-parent: transaction-types.html
 seo:
     description: Send funds from one account to another.
 labels:
@@ -10,7 +8,7 @@ labels:
   - Tokens
 ---
 # Payment
-[[Source]](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "Source")
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
 
@@ -44,10 +42,11 @@ Payments are also the only way to [create accounts](#creating-accounts).
 | `Amount`         | [Currency Amount][]  | Amount            | API v1: Yes | Alias to `DeliverMax`. |
 | `CredentialIDs`  | Array of Strings     | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. _(Requires the [Credentials amendment][]._ {% not-enabled /%})_ |
 | `DeliverMax`     | [Currency Amount][]  | Amount            | Yes       | [API v2][]: The maximum amount of currency to deliver. [Partial payments](#partial-payments) can deliver less than this amount and still succeed; other payments fail unless they deliver the exact amount. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %} |
-| `DeliverMin`     | [Currency Amount][]  | Amount            | No        | Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](../../../../concepts/payment-types/partial-payments.md). For non-XRP amounts, the nested field names are lower-case. |
-| `Destination`    | String               | AccountID         | Yes       | The unique address of the account receiving the payment. |
+| `DeliverMin`     | [Currency Amount][]  | Amount            | No        | Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). |
+| `Destination`    | String - [Address][] | AccountID         | Yes       | The account receiving the payment. |
 | `DestinationTag` | Number               | UInt32            | No        | Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
-| `InvoiceID`      | String               | Hash256           | No        | Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
+| `DomainID`       | String - [Hash][]    | Hash256           | No        | The ledger entry ID of a permissioned domain. If this is a cross-currency payment, only use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) to convert currency. Both the sender and the recipient must have valid credentials that grant access to the specified domain. This field has no effect if the payment is not cross-currency. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `InvoiceID`      | String - Hexadecimal | Hash256           | No        | Arbitrary 256-bit value representing a specific reason or identifier for this payment. |
 | `Paths`          | Array of path arrays | PathSet           | No        | _(Auto-fillable)_ Array of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
 | `SendMax`        | [Currency Amount][]  | Amount            | No        | Highest amount of source currency this transaction is allowed to cost, including [transfer fees](../../../../concepts/tokens/transfer-fees.md), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](../../../../concepts/transactions/transaction-cost.md). Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
 
@@ -65,7 +64,7 @@ The `Payment` transaction type functions differently depending on how you fill i
 | [Cross-currency Payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Send tokens from one holder to another. The `Amount` or `SendMax` can be XRP or tokens, but can't both be XRP. These payments [ripple through](../../../../concepts/tokens/fungible-tokens/rippling.md) the issuer and can take longer [paths](../../../../concepts/tokens/fungible-tokens/paths.md) through several intermediaries if the transaction specifies a path set. [Transfer fees](../../../../concepts/tokens/transfer-fees.md) set by the issuer(s) apply to this type of transaction. These transactions consume offers in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md) to connect different currencies, or currencies with the same currency code and different issuers. |
 | [Partial payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Sends _up to_ a specific amount of any currency. Uses the [`tfPartialPayment` flag](#payment-flags). May include a `DeliverMin` amount specifying the minimum that the transaction must deliver to be successful; if the transaction does not specify `DeliverMin`, it can succeed by delivering _any positive amount_. |
 | Currency conversion | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. This type of transaction may be classified as an "exchange" and not a "payment". |
-| MPT Payment | Object | Omitted | Omitted | Yes | Send MPTs to a holder. See [MPT Payments](#mpt-payments). | 
+| MPT Payment | Object | Omitted | Omitted | No | Send MPTs to a holder. See [MPT Payments](#mpt-payments). | 
 
 [Direct XRP Payment]: ../../../../concepts/payment-types/direct-xrp-payments.md
 [Creating or redeeming tokens]: ../../../../concepts/tokens/index.md
@@ -77,11 +76,14 @@ The `Payment` transaction type functions differently depending on how you fill i
 
 <!-- SPELLING_IGNORE: sendmax -->
 
-Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates the issuer of a token. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
+Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates the issuer of a token. However, when describing payments, there are special rules for the `issuer` field in the `DeliverMax` (or `Amount`) and `SendMax` fields of a payment.
 
 * There is only ever one balance between two addresses for the same currency code. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty, instead of the address that issued the token.
-* When the `issuer` field of the destination `Amount` field matches the `Destination` address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has trust lines with a positive limit, as well as tokens with the same currency code issued by the destination.
-* When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." This includes creating new tokens on trust lines that other accounts have extended to the source account, and sending tokens the source account holds from other issuers.
+* When the `issuer` field of the destination `DeliverMax` field matches the `Destination` address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has trust lines with a positive limit, as well as tokens issued by the destination itself.
+* When the `issuer` field of the `SendMax` field matches the source account's address, it is treated as a special case meaning "any issuer that the source can use." The payment can send tokens the source account already holds, or issue new tokens to others who have trust lines with the source account.
+
+In all of these cases, the currency code must still match exactly.
+
 
 ## Creating Accounts
 
@@ -111,7 +113,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 | Flag Name          | Hex Value    | Decimal Value | Description                  |
 |:-------------------|:-------------|:--------------|:-----------------------------|
 | `tfNoRippleDirect` | `0x00010000` | 65536         | Do not use the default path; only use paths included in the `Paths` field. This is intended to force the transaction to take arbitrage opportunities. Most clients do not need this. |
-| `tfPartialPayment` | `0x00020000` | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](../../../../concepts/payment-types/partial-payments.md) for more details. |
+| `tfPartialPayment` | `0x00020000` | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](#partial-payments) for more details. |
 | `tfLimitQuality`   | `0x00040000` | 262144        | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 
 ## Partial Payments
@@ -185,6 +187,10 @@ The credentials provided in the `CredentialIDs` field must all be valid, meaning
 - The sender of this transaction must be the subject of each of the credentials.
 
 If you provide credentials even though the destination account does not use Deposit Authorization, the credentials are not needed but they are still checked for validity.
+
+{% admonition type="info" name="Note" %}
+The `CredentialIDs` field is only used for deposit authorization, not for trading in a [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md), even though Permissioned DEXes also use credentials to grant access. To trade in a permissioned DEX, you use the `DomainID` field to specify a domain for which you hold valid credentials.
+{% /admonition %}
 
 ## Special Case for Destination Accounts Below the Reserve
 
