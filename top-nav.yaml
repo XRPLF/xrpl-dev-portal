@@ -37,7 +37,7 @@
       items:
         - label: XRPL Foundation
           labelTranslationKey: topnav.about.xrpl-foundation
-          href: https://foundation.xrpl.org/
+          href: https://xrpl.foundation
           external: true
         - page: ./about/faq.md
           label: FAQ
