@@ -84,7 +84,7 @@ To create an offer to buy an NFT:
 2. Enter the **Amount** of your offer.
    1. If paying XRP, enter the **Amount** of XRP in drops (1000000 equals 1 XRP).
    2. If paying an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
-3. Optionally enter the number of days until **Expiration**.
+3. Optionally, enter the number of days until **Expiration**.
 4. Enter the **NFT ID**.
 5. Enter the owner’s account address in the **NFT Owner Address** field.
 6. Click **Create Buy Offer**.
