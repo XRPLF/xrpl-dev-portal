@@ -32,7 +32,9 @@ async function getAccount() {
   }
   finally {
     // Disconnect from the client
-    await client.disconnect();
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    }
   }
 } // End of getAccount()
 
