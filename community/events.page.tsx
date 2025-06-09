@@ -16,6 +16,7 @@ const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.
 const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
 const decarb = require('../static/img/events/xrpl-decarb.png')
 const townHall = require('../static/img/events/town-hall-meetup.png')
+const devBootcamp = require('../static/img/events/dev-bootcamp.png')
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -1095,6 +1096,62 @@ const events = [
     image: require("../static/img/events/commons-launch.png"),
     end_date: "April 8, 2025",
   },
+  {
+    name: "XRPL Core Dev Bootcamp AMA",
+    description:
+      "Join us on June 16 for an exclusive information session (AMA) about the XRPL Core Dev Bootcamp, a two-week intensive program focused on low-level development on the XRP Ledger.",
+    type: "ama",
+    link: "https://lu.ma/hqvlluce",
+    location: "Virtual",
+    date: "June 16, 2025",  
+    image: devBootcamp,
+    end_date: "June 16, 2025",
+  },
+  {
+    name: "XRPL Townhall Meeting #4",
+    description:
+      "Join Us for a fourth XRPL Town Hall Meeting! Back from APEX",
+    type: "info",
+    link: "https://lu.ma/90qih8kl",
+    location: "Virtual",
+    date: "June 19, 2025",
+    image: require("../static/img/events/commons-orange.png"),
+    end_date: "June 19, 2025",
+  },
+  {
+    name: "XRPL Meetup in Brussels",
+    description:
+      "Calling all blockchain and XRP Ledger enthusiasts in Brussels! Join XRPL  Meetups to share knowledge, build real-life connections, and foster  communities centered around blockchain and XRP Ledger.  We're establishing local “XRPL Hubs” across Europe, and we want you  to be a part of it!",
+    type: "meetup",
+    link: "https://lu.ma/q32897pc",
+    location: "Bruxelles, Belgium",
+    date: "June 24, 2025",
+    image: require("../static/img/events/commons-orange.png"),
+    end_date: "June 24, 2025",
+  },
+  {
+    name: "XRPL Core Dev Bootcamp",
+    description:
+      "Are you an intermediate/advanced C++ dev ready to dive deep into blockchain? Join a 2-week, in-person bootcamp with hands-on training, expert-led sessions, and cohort-based learning focused on XRPL core development.",
+    type: "hackathon",
+    link: "https://www.xrpl-commons.org/build/core-dev-bootcamp",
+    location: "Paris, France",
+    date: "July 11, 2025",
+    image: devBootcamp,
+    end_date: "July 25, 2025",
+  },
+  {
+    name: "XRP Ledger Meetup Cannes",
+    description:
+      "Join us in Cannes for a special evening from 6:00 PM, focused on Bridging the XRPL and EVM Ecosystems.  ​Hosted in collaboration by XRPL Commons, Ripple, and Peersyst, this XRPL meetup brings the community together for insightful conversations and meaningful connections.",
+    type: "meetup",
+    link: "https://lu.ma/q6dar9io",
+    location: "Cannes, France",
+    date: "June 30, 2025",
+    image: require("../static/img/events/commons-cannes.png"),
+    end_date: "June 30, 2025",
+  },
+
 ];
 
 
