@@ -61,7 +61,10 @@ Create a trustline from the operational account to the standby account. In the s
 
 Send issued tokens from the operational account to the standby account. In the operational account fields:
 
-1. Select **Allow Rippling** and click **Configure Account**.
+1. Select **Allow Rippling** and click **Configure Account**. 
+    {% admonition type="info" name="Note" %}
+      This enables the `defaultRipple` flag on the issuing account, which is set to `false` by default. You need to enable this in order to trade tokens issued by the account. See [Configure Issuer Settings](../../how-tos/use-tokens/issue-a-fungible-token#3.-configure-issuer-settings) to learn more.
+    {% /admonition %}
 2. Enter a value in the **Amount** field, up to the maximum transfer amount you set in the trustline.
 3. Enter the standby account address in the **Destination** field.
 4. Enter the currency code from the trustline in the **Currency** field.
@@ -108,7 +111,6 @@ Create a second AMM pool with two issued tokens.
 ## Code Walkthrough
 
 You can open `ripplex11-create-amm.js` from the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) to view the source code.
-
 
 ### Create AMM
 
