@@ -1110,7 +1110,7 @@ const events = [
   {
     name: "XRPL Townhall Meeting #4",
     description:
-      "Join Us for a fourth XRPL Town Hall Meeting! Back from APEX",
+      "Join Us for a fourth XRPL Town Hall Meeting: Back from APEX!",
     type: "info",
     link: "https://lu.ma/90qih8kl",
     location: "Virtual",
@@ -1121,7 +1121,7 @@ const events = [
   {
     name: "XRPL Meetup in Brussels",
     description:
-      "Calling all blockchain and XRP Ledger enthusiasts in Brussels! Join XRPL  Meetups to share knowledge, build real-life connections, and foster  communities centered around blockchain and XRP Ledger.  We're establishing local “XRPL Hubs” across Europe, and we want you  to be a part of it!",
+      "Calling all blockchain and XRP Ledger enthusiasts in Brussels! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local "XRPL Hubs" across Europe, and we want you to be a part of it!",
     type: "meetup",
     link: "https://lu.ma/q32897pc",
     location: "Bruxelles, Belgium",
