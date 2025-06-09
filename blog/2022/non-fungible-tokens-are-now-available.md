@@ -58,7 +58,7 @@ To learn more about the XRP Ledger, non-fungible tokens, the amendment process, 
 
 - [XRPL.org](https://xrpl.org) documentation
 - [XRP Ledger Developers on Discord](https://discord.gg/427qqMYwHh)
-- [XRP Ledger Foundation](https://foundation.xrpl.org/), on various platforms:
+- [XRP Ledger Foundation](https://xrpl.foundation), on various platforms:
     - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
     - [Twitter](https://twitter.com/XRPLF/)
     - [GitHub](https://github.com/XRPLF/)

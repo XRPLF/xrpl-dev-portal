@@ -6,6 +6,7 @@
     - group: '2025'
       expanded: false
       items:
+        - page: 2025/fixes-enabled-dnfts-expected.md
         - page: 2025/clio-2.4.1.md
         - page: 2025/integrating-dia-oracles-on-xrpl.md
         - page: 2025/vulnerabilitydisclosurereport-bug-apr2025.md

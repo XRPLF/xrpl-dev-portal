@@ -17,14 +17,14 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
-| [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Expected: 2025-05-15{% /badge %} |
-| [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Expected: 2025-05-15{% /badge %} |
+| [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/fixes-enabled-dnfts-expected" %}Expected: 2025-06-11{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
 | [MPTokensV1][]                    | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
 | [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [fixFrozenLPTokenTransfer][]      | v2.4.0     | {% badge href="https://livenet.xrpl.org/transactions/34F11D09E15EC3FE78FFB238EB33030A9E2F2B6233716712A4B7A9D13C55C89A" %}Enabled: 2025-05-15{% /badge %} |
+| [fixInvalidTxFlags][]             | v2.4.0     | {% badge href="https://livenet.xrpl.org/transactions/D53E906A53C46A9AACFEB0093DF26EFD8634C3DAF50A18930D7910C51FFE3E9D" %}Enabled: 2025-05-15{% /badge %} |
 | [DeepFreeze][]                    | v2.4.0     | {% badge href="https://livenet.xrpl.org/transactions/976281D793337FF5377A36409F2A1432DADAB64DB5064E12E71B1AC491EA3021" %}Enabled: 2025-05-04{% /badge %} |
 | [NFTokenMintOffer][]              | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/E74C0196A9D4F193DD2A1DB5CCC5E37D3D43A21E2CB6185F6797E9BF2EDBE36C" %}Enabled: 2025-02-15{% /badge %} |
 | [AMMClawback][]                   | v2.3.0     | {% badge href="https://livenet.xrpl.org/transactions/8672DFD11FCF79F8E8F92E300187E8E533899ED8C8CF5AFB1A9C518195C16261" %}Enabled: 2025-01-30{% /badge %} |
@@ -113,6 +113,14 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} |  |
+| [Batch][]                         | {% badge %}In Development: TBD{% /badge %} |  |
+| [fixAMMv1_3][]                    | {% badge %}In Development: TBD{% /badge %} |  |
+| [fixEnforceNFTokenTrustlineV2][]  | {% badge %}In Development: TBD{% /badge %} |  |
+| [fixPayChanCancelAfter][]         | {% badge %}In Development: TBD{% /badge %} |  |
+| [PermissionDelegation][]          | {% badge %}In Development: TBD{% /badge %} |  |
+| [PermissionedDEX][]               | {% badge %}In Development: TBD{% /badge %} |  |
+| [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} |  |
+| [TokenEscrow][]                   | {% badge %}In Development: TBD{% /badge %} |  |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -185,6 +193,19 @@ Allows tokens with clawback enabled to be used in Automated Market Makers (AMMs)
 Also modifies the AMMDeposit transaction type to prevent depositing frozen tokens into the AMM.
 
 For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPLF/XRPL-Standards/discussions/212).
+
+
+### Batch
+[Batch]: #batch
+
+| Amendment    | Batch |
+|:-------------|:------|
+| Amendment ID | 894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56d](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056d-batch)
 
 
 ### CheckCashMakesTrustLine
@@ -360,7 +381,7 @@ Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where
 
 
 ### DepositPreauth
-[DepositPreauth]: #depositpreauth
+[DepositPreauthAmendment]: #depositpreauth
 
 | Amendment    | DepositPreauth |
 |:-------------|:---------------|
@@ -430,7 +451,7 @@ Without this amendment, any account can create these objects with any object as 
 | Amendment    | DynamicNFT |
 |:-------------|:-----------|
 | Amendment ID | C1CE18F2A268E6A849C27B3DE485006771B4C01B2FCEC4F18356FE92ECD6BB74 |
-| Status       | Open for Voting |
+| Status       | Expected |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -783,6 +804,25 @@ Fixes two bugs in Automated Market Maker (AMM) transaction processing:
 - Fixes a bug in payment processing that causes cross-currency payments not to use the full amount of liquidity available from the combination of AMM and order books in some cases.
 
 
+### fixAMMv1_3
+[fixAMMv1_3]: #fixammv1_3
+
+| Amendment    | fixAMMv1_3 |
+|:-------------|:-----------|
+| Amendment ID | 7CA70A7674A26FA517412858659EBC7EDEEF7D2D608824464E6FDEFD06854E14 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adds several fixes to Automated Market Maker code, specifically:
+
+- Add several invariant checks to ensure that AMMs function as designed.
+- Add rounding to AMM deposit and withdraw to ensure that the AMM's balance meets the invariant:
+    - On deposit, tokens out are rounded downward and deposit amount is rounded upward.
+    - On withdrawal, tokens in are rounded upward and withdrawal amount is rounded downward.
+- Fix validation of [AMMBid transactions][] to ensure that `AuthAccounts` cannot contain duplicates or the transaction sender.
+
+
 ### fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
@@ -857,6 +897,23 @@ Fixes two bugs relating to the handling of NFT transfer fees and trust lines:
 - Adjusts a check for the presence of a trust line when the minter of the NFT is also the issuer of the fungible token that would be paid as a transfer fee. Without this amendment, the [NFTokenCreateOffer transaction][] fails with the result code `tecNO_LINE` if the NFT in question has a transfer fee, the offer amount is denominated in fungible tokens issued by the minter, and the account placing the offer does not have a trust line for those tokens. With the amendment, the offer can be created successfully. (For more detail, see [issue #4941](https://github.com/XRPLF/rippled/issues/4941).)
 
 
+### fixEnforceNFTokenTrustlineV2
+[fixEnforceNFTokenTrustlineV2]: #fixenforcenftokentrustlinev2
+
+| Amendment    | fixEnforceNFTokenTrustlineV2 |
+|:-------------|:-----------------------------|
+| Amendment ID | B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fix a bug where NFT transfer fees could bypass certain limitations on receiving tokens, specifically:
+
+- Prevent an NFT issuer from receiving fungible tokens as transfer fees if the fungible tokens' issuer uses [authorized trust lines](/docs/concepts/tokens/fungible-tokens/authorized-trust-lines) and the NFT issuer's trust line is not authorized.
+- Prevent an NFT issuer from receiving fungible tokens as transfer fees on a [deep-frozen](/docs/concepts/tokens/fungible-tokens/deep-freeze) trust line.
+
+Without this amendment, NFT transfer fees could be paid to an NFT issuer circumventing these restrictions.
+
 ### fixFillOrKill
 [fixFillOrKill]: #fixfillorkill
 
@@ -880,7 +937,7 @@ This amendment has no effect unless the [FlowCross][] amendment is enabled.
 | Amendment    | fixFrozenLPTokenTransfer |
 |:-------------|:-------------------------|
 | Amendment ID | 83FD6594FF83C1D105BD2B41D7E242D86ECB4A8220BD9AF4DA35CB0F69E39B2A |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -938,7 +995,7 @@ It is believed that this change does not affect transaction processing, but it i
 | Amendment    | fixInvalidTxFlags |
 |:-------------|:------------------|
 | Amendment ID | 8EC4304A06AF03BE953EA6EDA494864F6F3F30AA002BABA35869FBB8C6AE5D52 |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1004,7 +1061,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 
 This amendment fixes a bug that can cause NFT directories to have missing links in the middle of the directory chain. It also introduces invariant checks that can prevent similar types of corruption from occurring in the future, and introduces a new transaction type:
 
-- **LedgerStateFix transactions** <!-- TODO: link when docs have been added --> can be used to repair corruptions in ledger data. With this amendment enabled, you can use a LedgerStateFix transaction to repair a broken link in NFT directories. In the case that future bugs cause new types of ledger corruption, this transaction type can be extended to repair the other types of corruption as well.
+- **[LedgerStateFix transactions][]** can be used to repair corruptions in ledger data. With this amendment enabled, you can use a LedgerStateFix transaction to repair a broken link in NFT directories. In the case that future bugs cause new types of ledger corruption, this transaction type can be extended to repair the other types of corruption as well.
 
 Without this amendment, it is possible in specific circumstances to delete the last page of an NFT directory, then later create a new last page that is missing a link to the previous page. For a detailed description of the scenario that can cause this problem, see [PR #4945](https://github.com/XRPLF/rippled/pull/4945). With this amendment, the bug that caused that corruption is fixed; additionally, a new invariant check ensures that other bugs cannot remove the last page inappropriately.
 
@@ -1082,6 +1139,21 @@ See [Issue 4374](https://github.com/XRPLF/rippled/issues/4374).
 If you set a destination on an NFT offer, only that destination can settle through brokerage (fix #4373).
 
 See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
+
+
+### fixPayChanCancelAfter
+[fixPayChanCancelAfter]: #fixpaychancancelafter
+
+| Amendment    | fixPayChanCancelAfter |
+|:-------------|:----------------------|
+| Amendment ID | D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Prevents new payment channels from being created with a `CancelAfter` time that is before the current ledger. Instead, the [PaymentChannelCreate transaction][] fails with the result code `tecEXPIRED`.
+
+Without this amendment, transactions can create a payment channel whose `CancelAfter` time is in the past. This payment channel is automatically removed as expired by the next transaction to affect it.
 
 
 ### fixPayChanRecipientOwnerDir
@@ -1595,6 +1667,36 @@ Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelCl
 For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md).
 
 
+### PermissionDelegation
+[PermissionDelegation]: #permissiondelegation
+
+| Amendment    | PermissionDelegation |
+|:-------------|:---------------------|
+| Amendment ID | AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Allows accounts to delegate some permissions to other accounts.
+
+Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075d-permission-delegation).
+
+
+### PermissionedDEX
+[PermissionedDEX]: #permissioneddex
+
+| Amendment    | PermissionedDEX |
+|:-------------|:----------------|
+| Amendment ID | 677E401A423E3708363A36BA8B3A7D019D21AC5ABD00387BDBEA6BDE4C91247E |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Creates Permissioned DEXes, controlled environments for trading within the XRP Ledger's [decentralized exchange (DEX)](/docs/concepts/tokens/decentralized-exchange). Trading in a permissioned DEX works like trading in the open DEX, except that a permissioned domain controls who can place and accept offers.
+
+Specification: [XLS-81](https://github.com/XRPLF/XRPL-Standards/pull/281)
+
+
 ### PermissionedDomains
 [PermissionedDomains]: #permissioneddomains
 
@@ -1657,6 +1759,21 @@ For more information, see [`rippled` issue #3042](https://github.com/XRPLF/rippl
 Changes the hash tree structure that `rippled` uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.
 
 When this amendment is activated, the XRP Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure. <!-- STYLE_OVERRIDE: will -->
+
+
+### SingleAssetVault
+[SingleAssetVault]: #singleassetvault
+
+| Amendment    | SingleAssetVault |
+|:-------------|:-----------------|
+| Amendment ID | 81BD2619B6B3C8625AC5D0BC01DE17F06C3F0AB95C7C87C93715B87A4FD240D8 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Creates a structure for aggregating assets from multiple depositors. This is intended to be used with the proposed on-chain Lending Protocol.
+
+Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065d-single-asset-vault).
 
 
 ### SortedDirectories
@@ -1728,6 +1845,21 @@ This amendment was replaced by the [TicketBatch][] amendment.
 Changes the way [Offers](../docs/concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
 
 Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](../docs/references/protocol/transactions/types/accountset.md). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
+
+
+### TokenEscrow
+[TokenEscrow]: #tokenescrow
+
+| Amendment    | TokenEscrow |
+|:-------------|:------------|
+| Amendment ID | 138B968F25822EFBF54C00F97031221C47B1EAB8321D93C7C2AEAF85F04EC5DF |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Extends the existing Escrow functionality to support escrowing issued tokens or MPTs.
+
+Specification: [XLS-85](https://github.com/XRPLF/XRPL-Standards/pull/272/)
 
 
 ### TrustSetAuth
