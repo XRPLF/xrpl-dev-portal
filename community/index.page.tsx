@@ -333,6 +333,19 @@ const events = [
     start_date: "November 22, 2024",
     end_date: "November 22, 2024",
   },
+  {
+    name: "XRP Ledger Meetup Cannes",
+    description:
+      "Join us in Cannes for a special evening from 6:00 PM, focused on Bridging the XRPL and EVM Ecosystems.  ​Hosted in collaboration by XRPL Commons, Ripple, and Peersyst, this XRPL meetup brings the community together for insightful conversations and meaningful connections.",
+    type: "meetup",
+    link: "https://lu.ma/q6dar9io",
+    location: "Cannes, France",
+    image: require("../static/img/events/commons-cannes.png"),
+    date: "June 30, 2025",
+    start_date: "June 30, 2025",
+    end_date: "June 30, 2025",
+  },
+
 ];
 
 const findNearestUpcomingEvent = (events) => {
