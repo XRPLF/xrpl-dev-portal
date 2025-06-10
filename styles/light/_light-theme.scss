@@ -1242,7 +1242,17 @@ main article .card-grid {
 }
 
 .page-rwa-tokenization {
-
+  .section-title {
+    color: $black;
+  }
+  .utility-card {
+  .utility-title{
+    color: $black;
+  }
+  .utility-description {
+    color: $black;
+  }
+ }
   $icons: (
     'low-fees': '../img/tokenization/lightmode/low-fees.png',
     'access': '../img/tokenization/lightmode/cross-chain.png',
