@@ -1245,10 +1245,9 @@ main article .card-grid {
 
   $icons: (
     'low-fees': '../img/tokenization/lightmode/low-fees.png',
-    'access': '../img/tokenization/lightmode/access.png',
-    'full-stack': '../img/tokenization/lightmode/full-stack.png',
-    'best-in-class': '../img/tokenization/lightmode/best-in-class.png',
-    'cross-chain': '../img/tokenization/lightmode/cross-chain.png',
+    'access': '../img/tokenization/lightmode/cross-chain.png',
+    'native-compliance': '../img/tokenization/lightmode/native-compliance.png',
+    'delegated-token-management': '../img/tokenization/lightmode/delegated-token-management.png',
   );
 
   @each $name, $path in $icons {
@@ -1267,6 +1266,7 @@ main article .card-grid {
     'palisade': '../img/tokenization/lightmode/palisade.png',
     'ripple-logo': '../img/tokenization/lightmode/ripple-logo.png',
     'ondo': '../img/tokenization/lightmode/ondo.png',
+    'hidden-road': '../img/tokenization/lightmode/hidden-road.png',
   );
 
   @each $name, $path in $company-logos-light {
