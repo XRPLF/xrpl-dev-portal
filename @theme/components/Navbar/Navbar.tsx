@@ -11,7 +11,7 @@ import moment from "moment-timezone";
 // @ts-ignore
 
 const alertBanner = {
-  show: true,
+  show: false,
   message: "APEX 2025",
   button: "REGISTER",
   link: "https://www.xrpledgerapex.com/?utm_source=xrplwebsite&utm_medium=direct&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1_xrplwebsite_ari_arp_bf_rsvp&utm_content=cta_btn_english_pencilbanner"
