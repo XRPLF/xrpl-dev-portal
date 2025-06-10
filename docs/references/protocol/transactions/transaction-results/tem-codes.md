@@ -45,7 +45,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temREDUNDANT`                | The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
 | `temREDUNDANT_SEND_MAX`       | {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" %}Removed in: rippled 0.28.0{% /badge %} |
 | `temRIPPLE_EMPTY`             | The [Payment transaction][] includes an empty `Paths` field, but paths are necessary to complete this payment. |
-| `temSEQ_AND_TICKET`           | The transaction contains a TicketSequence and a non-zero Sequence. A transaction cannot include both a ticket and a non-zero sequence number. _(Added by the featureTicketBatch amendment.)_ |
+| `temSEQ_AND_TICKET`           | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction cannot include both. _(Added by the [TicketBatch amendment][].)_ |
 | `temBAD_WEIGHT`               | The [SignerListSet transaction][] includes a `SignerWeight` that is invalid, for example a zero or negative value. |
 | `temBAD_SIGNER`               | The [SignerListSet transaction][] includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
 | `temBAD_QUORUM`               | The [SignerListSet transaction][] has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |
