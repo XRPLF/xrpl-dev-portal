@@ -10,7 +10,7 @@ labels:
   - Smart Contracts
 ---
 # subscribe
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Subscribe.cpp "Source")
 
 The `subscribe` method requests periodic notifications from the server when certain events happen.
 
@@ -66,42 +66,47 @@ An example of the request format:
 
 The request includes the following parameters:
 
-| `Field`             | Type   | Description                                   |
-|:--------------------|:-------|:----------------------------------------------|
-| `streams`           | Array  | _(Optional)_ Array of string names of generic streams to subscribe to, as explained below |
-| `accounts`          | Array  | _(Optional)_ Array with the unique addresses of accounts to monitor for validated transactions. The addresses must be in the XRP Ledger's [base58][] format. The server sends a notification for any transaction that affects at least one of these accounts. |
-| `accounts_proposed` | Array  | _(Optional)_ Like `accounts`, but include transactions that are not yet finalized. |
-| `books`             | Array  | _(Optional)_ Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updates, as detailed below. |
-| `url`               | String | (Optional for Websocket; Required otherwise) URL where the server sends a JSON-RPC callbacks for each event. *Admin-only.* |
-| `url_username`      | String | _(Optional)_ Username to provide for basic authentication at the callback URL. |
-| `url_password`      | String | _(Optional)_ Password to provide for basic authentication at the callback URL. |
+| Field               | Type   | Required? | Description |
+|:--------------------|:-------|:----------|:------------|
+| `streams`           | Array  | No        | Streams to subscribe to, as explained below. Each member of the array must be the string name of a stream. |
+| `accounts`          | Array  | No        | Array with the unique [addresses][Address] of accounts to monitor for validated transactions. The server sends a `transaction` type message whenever a transaction affects at least one of these accounts. |
+| `accounts_proposed` | Array  | No        | Like `accounts`, but include transactions that are not yet finalized. |
+| `books`             | Array  | No        | Order books to monitor for updates. Each member of the array must be a [book object](#book-objects), as defined below. The server sends a `transaction` type message whenever a transaction affects this account. |
+| `url`               | String | Optional for Websocket; Required for JSON-RPC | **(Admin only)** URL where the server sends JSON-RPC callbacks for each event. |
+| `url_username`      | String | No        | Username to provide for basic authentication at the callback URL. |
+| `url_password`      | String | No        | Password to provide for basic authentication at the callback URL. |
 
 The following parameters are deprecated and may be removed without further notice: `user`, `password`, `rt_accounts`.
 
 The `streams` parameter provides access to the following default streams of information:
 
-- `book_changes` - Sends a message with order book changes whenever the consensus process declares a new validated ledger.
-- `consensus` - Sends a message whenever the server changes phase in the consensus cycle.
-- `ledger` - Sends a message whenever the consensus process declares a new validated ledger.
-- `manifests` - Sends a message whenever the server receives an update to a validator's ephemeral signing key.
-- `peer_status` - **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process.
-- `transactions` - Sends a message whenever a transaction is included in a closed ledger.
-- `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
-    {% admonition type="info" name="Note" %}[Even some transactions that don't succeed are included](../../../protocol/transactions/transaction-results/index.md) in validated ledgers, because they take the anti-spam transaction fee.{% /admonition %}
-- `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes.
-- `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
+| Stream Name             | Message Type         | Description |
+|:------------------------|:---------------------|:------------|
+| `book_changes`          | `bookChanges`        | Sends order book changes whenever the consensus process declares a new validated ledger. |
+| `consensus`             | `consensusPhase`     | Sends a message whenever the server changes phase in the consensus cycle. |
+| `ledger`                | `ledgerClosed`       | Sends a message whenever the consensus process declares a new validated ledger. |
+| `manifests`             | `manifestReceived`   | Sends a message whenever the server receives an update to a validator's ephemeral signing key. |
+| `peer_status`           | `peerStatusChange`   | **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process. |
+| `transactions`          | `transaction`        | Sends a message whenever a transaction is included in a closed ledger. |
+| `transactions_proposed` | `transaction`        | Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation. {% admonition type="info" name="Note" %}[Even some transactions that don't succeed are included](../../../protocol/transactions/transaction-results/index.md) in validated ledgers, because they take the anti-spam transaction fee.{% /admonition %} |
+| `server`                | `serverStatus`       | Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes. |
+| `validations`           | `validationReceived` | Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.) |
 
-{% admonition type="info" name="Note" %}The following streams are not available from Clio and `rippled` servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Both will return the `reportingUnsupported` error if you request one of these streams. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %} {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %}{% /admonition %}
+{% admonition type="info" name="Note" %}The following streams are not available from Clio servers: `server`, `peer_status`, `consensus`. If you request one of these streams, Clio returns the error `reportingUnsupported`. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %}{% /admonition %}
+
+### Book Objects
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
-| `Field`      | Type    | Description                                         |
-|:-------------|:--------|:----------------------------------------------------|
-| `taker_gets` | Object  | Specification of which currency the account taking the Offer would receive, as a [currency object with no amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `taker_pays` | Object  | Specification of which currency the account taking the Offer would pay, as a [currency object with no amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `taker`      | String  | Unique [account address](../../../../concepts/accounts/index.md) to use as a perspective for viewing offers, in the XRP Ledger's [base58][] format. (This affects the funding status and fees of [Offers](../../../../concepts/tokens/decentralized-exchange/offers.md).) |
-| `snapshot`   | Boolean | _(Optional)_ If `true`, return the current state of the order book once when you subscribe before sending updates. The default is `false`. |
-| `both`       | Boolean | _(Optional)_ If `true`, return both sides of the order book. The default is `false`. |
+| Field        | Type                 | Required? | Description |
+|:-------------|:---------------------|:----------|:------------|
+| `taker_gets` | Object - Currency    | Yes       | Specification of which currency the account taking the offer would receive, as a [currency object with no amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| `taker_pays` | Object - Currency    | Yes       | Specification of which currency the account taking the offer would pay, as a [currency object with no amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| `both`       | Boolean              | No        | If `true`, return both sides of the order book. The default is `false`. |
+| `domain`     | String - [Hash][]    | No        | The ledger entry ID of a permissioned domain. If provided, subscribe to the order books for the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) instead of the open DEX. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `snapshot`   | Boolean              | No        | If `true`, return the current state of the order book once when you subscribe before sending updates. The default is `false`. |
+| `taker`      | String - [Address][] | No        | The acount to use as a perspective for viewing offers. This affects the funding status and fees of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md). |
+
 
 ## Response Format
 
@@ -167,7 +172,7 @@ The `ledger` stream only sends `ledgerClosed` messages when [the consensus proce
 
 The fields from a ledger stream message are as follows:
 
-| `Field`             | Type                      | Description                |
+| Field               | Type                      | Description                |
 |:--------------------|:--------------------------|:---------------------------|
 | `type`              | String                    | `ledgerClosed` indicates this is from the ledger stream |
 | `fee_base`          | Number                    | The [reference transaction cost](../../../../concepts/transactions/transaction-cost.md#reference-transaction-cost) as of this ledger version, in [drops of XRP][]. If this ledger version includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new transaction cost applies starting with the following ledger version. |
@@ -212,7 +217,7 @@ The validations stream sends messages whenever it receives validation messages, 
 
 The fields from a validations stream message are as follows:
 
-| `Field`                 | Type             | Description                     |
+| Field                   | Type             | Description                     |
 |:------------------------|:-----------------|:--------------------------------|
 | `type`                  | String           | The value `validationReceived` indicates this is from the validations stream. |
 | `amendments`            | Array of Strings | _(May be omitted)_ The [amendments](../../../../concepts/networks-and-servers/amendments.md) this server wants to be added to the protocol. |
@@ -333,7 +338,7 @@ Transaction stream messages have the following fields:
 
 {% tab label="API v2" %}
 
-| `Field`                 | Type                      | Description            |
+| Field                   | Type                      | Description            |
 |:------------------------|:--------------------------|:-----------------------|
 | `close_time_iso`        | String                    | The ledger close time represented in ISO 8601 time format. |
 | `type`                  | String                    | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
@@ -352,7 +357,7 @@ Transaction stream messages have the following fields:
 
 {% tab label="API v1" %}
 
-| `Field`                 | Type                      | Description            |
+| Field                   | Type                      | Description            |
 |:------------------------|:--------------------------|:-----------------------|
 | `type`                  | String                    | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
 | `engine_result`         | String                    | String [Transaction result code](../../../protocol/transactions/transaction-results/index.md) |
@@ -389,7 +394,7 @@ Example of a Peer Status stream message:
 
 Peer Status stream messages represent some event where the status of the peer `rippled` server changed. These messages are JSON objects with the following fields:
 
-| `Field`            | Value  | Description                                    |
+| Field              | Value  | Description                                    |
 |:-------------------|:-------|:-----------------------------------------------|
 | `type`             | String | `peerStatusChange` indicates this comes from the Peer Status stream. |
 | `action`           | String | The type of event that prompted this message. See [Peer Status Events](#peer-status-events) for possible values. |

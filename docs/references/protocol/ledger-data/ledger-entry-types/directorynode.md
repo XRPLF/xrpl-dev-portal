@@ -6,14 +6,14 @@ labels:
   - Decentralized Exchange
 ---
 # DirectoryNode
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L165-L179 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/7e24adbdd0b61fb50967c4c6d4b27cc6d81b33f3/include/xrpl/protocol/detail/ledger_entries.macro#L177-L192 "Source")
 
 The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_ takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](../common-fields.md). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
 
 There are three kinds of directory:
 
 * _Owner directories_ list other entries owned by an account, such as [`RippleState` (trust line)](ripplestate.md) or [`Offer`](offer.md) entries.
-* _Offer directories_ list the offers available in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
+* _Offer directories_ list the offers available in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). A single offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
 * _NFT Offer directories_ list buy and sell offers for NFTs. Each NFT has up to two directories, one for buy offers, the other for sell offers.
 
 All types of directories are automatically updated by the protocol as necessary.
@@ -97,6 +97,7 @@ All types of directories are automatically updated by the protocol as necessary.
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
+| `DomainID`          | String    | Hash256           | No        | (Offer directories only) The ledger entry ID of a permissioned domain. If present, this order book belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). Otherwise, this order book is part of the open DEX. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
 | `ExchangeRate`      | String    | UInt64            | No        | (Offer directories only) **DEPRECATED**. Do not use. |
 | `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DirectoryNode` objects. The value is always `0`. |
 | `Indexes`           | Array     | Vector256         | Yes       | The contents of this directory: an array of IDs of other objects. |
@@ -136,8 +137,8 @@ Owner directories and offer directories for fungible tokens do not use flags; th
 There are three different formulas for creating the ID of a DirectoryNode, depending on which of the following the DirectoryNode represents:
 
 * The first page (also called the root) of an Owner or NFT Offer directory
-* The first page of an Offer directory
-* Later pages of either type
+* The first page of an Offer directory, with variants for the open DEX and permissioned DEX _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_
+* Later pages of any type
 
 The first page of an Owner directory or NFT Offer directory has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
 
@@ -151,6 +152,7 @@ The first page of an Offer directory has a special ID: the higher 192 bits defin
 * The 160-bit currency code from the `TakerGetsCurrency`
 * The AccountID from the `TakerPaysIssuer`
 * The AccountID from the `TakerGetsIssuer`
+* The `DomainID` of the permissioned domain this order book belongs to, if part of a permissioned DEX. Omitted for order books in the open DEX.
 
 The lower 64 bits of an Offer directory's ID represent the `TakerPays` amount divided by `TakerGets` amount from the offer(s) in that directory as a 64-bit number in the XRP Ledger's internal amount format.
 
