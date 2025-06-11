@@ -164,7 +164,7 @@ function RwaTokenizationFeatures() {
       <div className="container max-w-1150">
         <header className="rwa-header">
           <h2 className="rwa-title">
-            {translate("Defining Features on XRPL")}
+            {translate("Key Features for Asset Tokenization and DeFi Development")}
           </h2>
         </header>
         <div className="feature-grid">
@@ -449,7 +449,7 @@ export default function RwaTokenization() {
             <Link
               className="btn btn-primary btn-arrow-out"
               target="_blank"
-              to="/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token"
+              to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
             >
               {translate("Start Building Now")}
             </Link>
