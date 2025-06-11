@@ -148,7 +148,6 @@ function FeatureCard({ title, description }) {
       <header className="feature-header">
         <h2 className="feature-title">
           {translate(title)}
-          <span className="feature-arrow" aria-hidden="true"></span>
         </h2>
       </header>
       <p className="feature-description">{translate(description)}</p>

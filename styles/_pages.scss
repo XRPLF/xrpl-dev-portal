@@ -1942,34 +1942,6 @@ html.light {
       padding-right: 30px;
       justify-content: flex-start;
     }
-    
-    .feature-arrow {
-      display: inline-block;
-      content: '';
-      width: 16px;
-      height: 16px;
-      background-image: url('../img/icons/arrow-right-purple.svg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: left center;
-      flex-shrink: 0;
-      
-      @media (min-width: 1200px) {
-        width: 100%;
-        order: 2;
-        margin-top: 8px;
-        margin-left: 0;
-        background-position: left center;
-        align-self: flex-start;
-      }
-      
-      @media (max-width: 1199px) {
-        position: absolute;
-        right: 0;
-        top: 5px;
-        margin-left: 16px;
-      }
-    }
   }
 
   .feature-icon {
