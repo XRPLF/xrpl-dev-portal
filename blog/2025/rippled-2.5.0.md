@@ -131,7 +131,32 @@ The following amendments are open for voting with this release:
 
 The following people contributed directly to this release:
 
-**TODO: Add contributors**
+- Alex Kremer <akremer@ripple.com>
+- Ayaz Salikhov <asalikhov@ripple.com>
+- Bronek Kozicki <brok@incorrekt.com>
+- Brett Mollin <brett@ripple.com>
+- cyan317 <120398799+cindyyan317@users.noreply.github.com>
+- Denis Angell <dangell@transia.co>
+- David Fuelling <fuelling@ripple.com>
+- Darius Tumas <Tokeiito@users.noreply.github.com>
+- Ed Hennis <ed@ripple.com>
+- Gregory Tsipenyuk <gtsipenyuk@ripple.com>
+- Matt Mankins <mankins@gmail.com>
+- Mark Travis <mtrippled@users.noreply.github.com>
+- Mayukha Vadari <mvadari@gmail.com>
+- Michael Legleux <mlegleux@ripple.com>
+- Oleksandr Pidskopnyi <opidskopnyi@ripple.com>
+- Sergey Kuznetsov <skuznetsov@ripple.com>
+- Vladislav Vysokikh <vvysokikh@gmail.com>
+- Xun Zhao <xzhao@ripple.com>
+- Yinyi Qian <yqian@ripple.com>
+- Jingchen Wu <jingchenw@ripple.com>
+- Bart Thomee <bthomee@users.noreply.github.com>
+- Elliot Lee <github.public@intelliot.com>
+- Valentin Balaschenko <vbalaschenko@ripple.com>
+- Vito Tumas <vtumas@ripple.com>
+- Wietse Wind <w.wind@ipublications.net>
+- Shawn Xie <shawnxie@ripple.com>
 
 
 ## Bug Bounties and Responsible Disclosures
