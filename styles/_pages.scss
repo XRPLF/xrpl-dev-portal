@@ -1587,7 +1587,7 @@ html.light {
       flex-direction: column;
       justify-content: flex-start;
       padding: 40px;
-      height: 430px;
+      height: 310px;
       width: 352px;
     }
 
@@ -1600,10 +1600,9 @@ html.light {
 
     $icons: (
       'low-fees': '../img/tokenization/low-fees.png',
-      'access': '../img/tokenization/access.png',
-      'full-stack': '../img/tokenization/full-stack.png',
-      'best-in-class': '../img/tokenization/best-in-class.png',
-      'cross-chain': '../img/tokenization/cross-chain.png',
+      'access': '../img/tokenization/cross-chain.png',
+      'native-compliance': '../img/tokenization/native-compliance.png',
+      'delegated-token-management': '../img/tokenization/delegated-token-management.png',
     );
 
   @each $name, $path in $icons {
@@ -1656,8 +1655,8 @@ html.light {
 .upcoming-events__logo-container {
   display: flex;
   align-items: center;
-  gap: 35px;
-  justify-content: space-around;
+  gap: 60px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -1715,6 +1714,7 @@ html.light {
     'ondo': '../img/tokenization/ondo.png',
     'meld': '../img/tokenization/meld.png',
     'ripple-logo': '../img/tokenization/ripple-logo.png',
+    'hidden-road': '../img/tokenization/hidden-road.png',
   );
   @each $name, $path in $company-logos {
     .company-logo.#{$name} {
@@ -1732,7 +1732,7 @@ html.light {
 .token-developer-tools-section {
   .developer-tools {
     font-family: 'Work Sans', sans-serif;
-    padding: 100px 0;
+    padding: 180px 0;
     color: #fff;
   }
 
@@ -1835,7 +1835,7 @@ html.light {
   }
 
   .rwa-header {
-    text-align: center;
+    text-align: start;
     margin-bottom: 40px;
   }
 
@@ -1843,18 +1843,11 @@ html.light {
     font-size: 32px;
     font-weight: 700;
     line-height: 38px;
-    margin-bottom: 16px;
-  }
-
-  .rwa-subtitle {
-    font-size: 16px;
-    line-height: 24px;
-    color: #e0e0e1;
   }
 
   .cta-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 24px;
   }
 
@@ -1903,6 +1896,7 @@ html.light {
     flex: 1 0 100%;
     max-width: 100%;
     margin-bottom: 20px;
+    position: relative;
 
     @media (min-width: 768px) {
       flex: 1 0 calc(50% - 40px);
@@ -1923,17 +1917,31 @@ html.light {
 
   .feature-header {
     margin-bottom: 16px;
+    position: relative;
   }
 
   .feature-title {
     display: flex;
-    align-items: start;
-    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
     font-size: 20px;
     font-weight: 700;
     line-height: 26px;
     color: #fff;
-    max-width: 250px;
+    width: 100%;
+    flex-wrap: wrap;
+    
+    @media (max-width: 767px) {
+      padding-right: 30px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+    
+    @media (min-width: 768px) and (max-width: 1199px) {
+      flex-wrap: nowrap;
+      padding-right: 30px;
+      justify-content: flex-start;
+    }
   }
 
   .feature-icon {
@@ -1974,5 +1982,140 @@ html.light {
 
 .card-description {
   min-height: 96px;
+}
+
+// Developer Resources section responsive improvements
+.token-dev-resources-section {
+  .bottom-cards-section.bug-bounty {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 40px !important;
+    justify-content: center !important;
+    max-width: 1280px;
+    margin: 100px auto;
+    padding: 0 40px;
+    
+    @media (max-width: 1199px) {
+      gap: 32px;
+      margin: 80px auto;
+    }
+    
+    @media (max-width: 991px) {
+      gap: 24px;
+      padding: 0 20px;
+      margin: 60px auto;
+    }
+    
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .com-card {
+      flex: 1 1 calc(50% - 20px) !important;
+      min-width: 300px !important;
+      max-width: 600px !important;
+      width: auto !important;
+      height: auto !important;
+      max-height: none !important;
+      margin: 0 !important;
+      
+      @media (max-width: 1199px) {
+        flex: 1 1 100% !important;
+        max-width: 600px !important;
+      }
+      
+      @media (max-width: 991px) {
+        max-width: 500px !important;
+      }
+      
+      @media (max-width: 767px) {
+        min-width: 100% !important;
+        max-width: 100% !important;
+        padding: 32px !important;
+      }
+      
+      .card-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        .card-description {
+          flex-grow: 1;
+          min-height: auto;
+          margin-bottom: 24px;
+        }
+        
+        .card-links {
+          margin-top: auto;
+        }
+      }
+      
+      // Override background image positioning for responsive
+      .top-right-img,
+      .bottom-right-img {
+        @media (max-width: 991px) {
+          height: 250px;
+        }
+        
+        @media (max-width: 767px) {
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+
+.token-utility-section {
+  padding-top: 100px;
+  .section-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38px;
+    text-align: start;
+    margin-bottom: 64px;
+    color: $white;
+  }
+
+  .utility-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+
+    @media (max-width: 1199px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .utility-card {
+
+    .utility-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 26px;
+      margin-bottom: 16px;
+      color: $white;
+    }
+
+    .utility-description {
+      font-size: 16px;
+      line-height: 24px;
+      color: $gray-200;
+
+      a {
+        color: $blue-purple-400;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 }

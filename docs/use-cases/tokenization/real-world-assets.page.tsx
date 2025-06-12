@@ -4,9 +4,9 @@ import { useEffect } from "react";
 
 export const frontmatter = {
   seo: {
-    title: "Real-World Asset Tokenization",
+    title: "RWA Tokenization on XRP Ledger",
     description:
-      "Power blockchain tokenization use cases on the XRP Ledger. Learn how to build RWA tokenization solutions with developer tools and APIs. Get started today.",
+      "Power blockchain tokenization use cases on the XRP Ledger. Learn how to issue tokens or build real-world asset (RWA) tokenization solutions with developer tools and APIs.",
   },
 };
 
@@ -15,31 +15,25 @@ const benefitsData = [
     iconClass: "low-fees",
     title: "Fast Settlement and Low Fees",
     description:
-      "Leverage transaction finality in 3-5 seconds at fractions of a cent, making XRP Ledger an ideal platform for handling large-scale tokenization with cost-effective, high-speed transactions.",
+      "Settle transactions in 3-5 seconds for a fraction of a cent — ideal for large-scale, high-volume RWA tokenization.",
   },
   {
     iconClass: "access",
-    title: "Access to Liquidity",
+    title: "On-Chain Metadata",
     description:
-      "Integrate XRP Ledger's native liquidity pools and order books directly into your applications via API. Liquidity is aggregated at the protocol layer, rather than fragmented across various applications, providing developers with seamless access at the core blockchain level.",
+      "Easily store key asset information or link to off-chain data using simple APIs giving token holders more transparency and functionality.",
   },
   {
-    iconClass: "full-stack",
-    title: "Full-Stack Tokenization Tools",
+    iconClass: "native-compliance",
+    title: "Native Compliance Capabilities",
     description:
-      "Issue, manage, and trade real-world assets without needing to build smart contracts. XRP Ledger's built-in functionality and compliance-enabling features allows you to focus on building without additional layers of complexity.",
+      "Automatically check investor credentials, control who can transfer assets, and keep a full record of every transaction. ",
   },
   {
-    iconClass: "best-in-class",
-    title: "Best-in-Class On-chain DEX",
+    iconClass: "delegated-token-management",
+    title: "Delegated Token Management",
     description:
-      "Utilize XRP Ledger's native decentralized exchange (DEX) with integrated Automated Market Makers (AMM) and on-chain 24/7 order books, providing a developer-friendly environment to create DeFi solutions for traditional finance applications.",
-  },
-  {
-    iconClass: "cross-chain",
-    title: "Cross-Chain Interoperability",
-    description:
-      "Enable seamless interaction with other blockchains via secure cross-chain bridges, allowing you to expand your project's functionality and liquidity options across ecosystems.",
+      "Use a robust permission system to let trusted third parties manage the token on your behalf.",
   },
 ];
 
@@ -92,12 +86,22 @@ const companies = [
     aspectRatio: 0.81,
     link: "https://www.meld.gold/",
   },
+  {
+    className: "hidden-road",
+    alt: "Hidden Road",
+    aspectRatio: 0.81,
+    link: "https://www.hiddenroad.com/",
+  },
 ];
 
 const features = [
   {
-    title: "Token Issuance Tutorial",
-    link: "/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token",
+    title: "Get Started with JavaScript",
+    link: "https://github.com/XRPLF/xrpl.js",
+  },
+  {
+    title: "Get Started with Python",
+    link: "https://github.com/XRPLF/xrpl-py",
   },
   {
     title: "DEX Integration",
@@ -107,30 +111,31 @@ const features = [
     title: "Cross-chain Interoperability",
     link: "https://docs.xrplevm.org/docs/axelar/intro-to-axelar/",
   },
+  
 ];
 const featuresToken = [
   {
     title: "Proven Open-Source Technology",
     description:
-      "XRP Ledger has been a trusted, battle-tested blockchain for over a decade, supported by a global developer community committed to financial innovation.",
+      "With over 3.3B transactions processed, XRP Ledger has been a trusted, battle-tested blockchain for over a decade, supported by a global developer community committed to financial innovation. ",
     number: "01",
   },
   {
     title: "Purpose-Built for Finance",
     description:
-      "XRP Ledger provides out-of-the-box institutional-grade functionality, reducing development overhead and eliminating the need for smart contracts.",
+      "XRP Ledger provides out-of-the-box institutional-grade functionality, reducing development overhead and eliminating the need for smart contracts. ",
     number: "02",
   },
   {
     title: "Native Compliance & Security",
     description:
-      "Maintain control over tokenized assets and user access with XRP Ledger's asset control features, multi-signature accounts, and built-in compliance tools.",
+      "Maintain control over tokenized assets and enforce compliance with precision using XRP Ledger's native tools such as issuer-defined Authorization, onchain Freeze capabilities, detailed metadata for attestations, and multi-signature accounts.",
     number: "03",
   },
   {
     title: "Pathfinding & Auto-Bridging for Liquidity",
     description:
-      "Streamline cross-currency transactions and trading with XRP Ledger's auto-bridging and pathfinding features to automatically increase liquidity between issued tokens and XRP.",
+      "Streamline cross-currency transactions and trading as XRP Ledger’s embedded trading features automatically identify the most efficient routes to enhance liquidity issued tokens and XRP. ",
     number: "04",
   },
 ];
@@ -141,7 +146,9 @@ function FeatureCard({ title, description }) {
   return (
     <article className="feature-card">
       <header className="feature-header">
-        <h2 className="feature-title">{translate(title)}</h2>
+        <h2 className="feature-title">
+          {translate(title)}
+        </h2>
       </header>
       <p className="feature-description">{translate(description)}</p>
     </article>
@@ -156,13 +163,8 @@ function RwaTokenizationFeatures() {
       <div className="container max-w-1150">
         <header className="rwa-header">
           <h2 className="rwa-title">
-            {translate("Why Developers Choose XRPL for RWA Tokenization")}
+            {translate("Key Features for Asset Tokenization and DeFi Development")}
           </h2>
-          <p className="rwa-subtitle">
-            {translate(
-              "A developer-first blockchain for building efficient, scalable tokenization solutions."
-            )}
-          </p>
         </header>
         <div className="feature-grid">
           {featuresToken.map((feature, index) => (
@@ -252,7 +254,7 @@ function CompanyLogo({ className, alt, aspectRatio, link }) {
       className={`company-logo ${className}`}
       role="img"
       aria-label={alt}
-      style={{ "--aspect-ratio": aspectRatio }}
+      style={{ "--aspect-ratio": aspectRatio } as React.CSSProperties}
     />
   );
 }
@@ -270,6 +272,74 @@ function UpcomingEvents() {
         {companies.map((company, index) => (
           <CompanyLogo key={index} {...company} />
         ))}
+      </div>
+    </section>
+  );
+}
+
+const marketIntegrationData = [
+  {
+    title: "Trading",
+    description: (
+      <>
+        Utilize XRP Ledger's native{" "}
+        <Link to="/docs/concepts/tokens/decentralized-exchange">
+          decentralized exchange (DEX)
+        </Link>{" "}
+        with integrated{" "}
+        <Link to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
+          Automated Market Makers (AMM)
+        </Link>{" "}
+        and onchain 24/7 order books, providing a developer-friendly
+        environment to create{" "}
+        <Link to="/docs/use-cases/defi">DeFi solutions</Link> for traditional
+        finance applications.
+      </>
+    ),
+  },
+  {
+    title: "Collateral Mobility",
+    description: (
+      <>
+        Issuers can enable{" "}
+        <Link to="/docs/concepts/payment-types/escrow">
+          escrow functionality
+        </Link>{" "}
+        to lock tokens and facilitate secure, conditional transfers of assets
+        based on time-locks or other conditions to enable automated financial
+        use cases onchain.
+      </>
+    ),
+  },
+  {
+    title: "Delegated Distribution",
+    description:
+      "Token issuers can delegate user onboarding and token movement to distribution specialists, enabling them to scale their distribution network easily with a single transaction, while avoiding complex off-chain development.",
+  },
+  {
+    title: "Cross-Chain Markets",
+    description:
+      "Access cross-chain trading and lending markets to enhance token utility and liquidity across ecosystems.",
+  },
+];
+
+function TokenUtilitySection() {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+  return (
+    <section className="token-utility-section">
+      <div className="container">
+        <h2 className="section-title">
+          {translate("Token Utility and Market Integration")}
+        </h2>
+        <div className="utility-grid">
+          {marketIntegrationData.map((item, index) => (
+            <div key={index} className="utility-card">
+              <h3 className="utility-title">{translate(item.title)}</h3>
+              <p className="utility-description">{item.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -297,11 +367,11 @@ export default function RwaTokenization() {
     script.innerHTML = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "VideoObject",
-      "name": "Tokenization on XRP Ledger",
-      "description": "The XRP Ledger was the first blockchain to support the tokenization of a variety of assets. This includes stablecoins or other forms of value – anything from US dollars, to euros, gold, stocks, and other cryptocurrencies like Bitcoin or Ethereum – and even non-fungible tokens (NFTs) that might represent valuable items like pieces of art or cinema tickets. Tokens are often called issued assets, or IOUs, on the XRPL.",
-      "thumbnailUrl": "https://i.ytimg.com/vi/Oj4cWOiWf4A/hqdefault.jpg",
-      "uploadDate": "2022-01-10",
-      "embedUrl": "https://www.youtube.com/watch?v=Oj4cWOiWf4A"
+      "name": "Generate and Send MPTs",
+      "description": "Use the Account Configurator to create an Issuing account. Use the MPT Generator to create a Multi-purpose Token. Send the MPT from the Issuing account to any account that authorizes receipt of the MPT.",
+      "thumbnailUrl": "https://i.ytimg.com/vi_webp/ZZ2KZTEJECg/sddefault.webp",
+      "uploadDate": "2025-04-11",
+      "embedUrl": "https://www.youtube.com/embed/ZZ2KZTEJECg"
     });
     document.head.appendChild(script);
     // Remove the script from the head when the component unmounts
@@ -321,14 +391,14 @@ export default function RwaTokenization() {
       <div className="token-title-container">
         <h1 className="token-title">
           {translate(
-            "Build Real-World Asset Tokenization Solutions on the XRP Ledger"
+            "Real-World Asset (RWA) Tokenization on the XRP Ledger"
           )}
         </h1>
         <div className="d-lg-block small-100 ">
           <Link
             className="btn btn-primary btn-arrow-out"
             target="_blank"
-            to="/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token"
+            to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
           >
             {translate("Get Started Now")}
           </Link>
@@ -339,20 +409,20 @@ export default function RwaTokenization() {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/Oj4cWOiWf4A"
-            title="YouTube video player"
+            src="https://www.youtube.com/embed/ZZ2KZTEJECg"
+            title="Generate and Send MPTs"
             frameBorder="0"
           ></iframe>
         </div>
         <div className="token-video-text-container">
           <p>
             {translate(
-              "Access the blockchain built for business to power financial asset tokenization with decentralized architecture, fast settlement, and institutional-grade tools."
+              "Issue, manage, and trade real-world assets without needing to build smart contracts."
             )}
           </p>
           <p>
             {translate(
-              "XRP Ledger's open-source, decentralized technology is scalable, interoperable and highly efficient—specifically designed to enable tokenization of real-world financial assets."
+              "XRP Ledger's built-in functionality and compliance-enabling features allow asset tokenization without additional layers of complexity."
             )}
           </p>
         </div>
@@ -363,7 +433,7 @@ export default function RwaTokenization() {
           <div>
             <h2 className="cards-title-token">
               {translate(
-                "Benefits of Real-World Asset Tokenization Development on XRP Ledger"
+                "Why Financial Developers Choose XRPL as an RWA Tokenization Platform"
               )}
             </h2>
           </div>
@@ -378,7 +448,7 @@ export default function RwaTokenization() {
             <Link
               className="btn btn-primary btn-arrow-out"
               target="_blank"
-              to="/docs/tutorials/how-tos/use-tokens/issue-a-fungible-token"
+              to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
             >
               {translate("Start Building Now")}
             </Link>
@@ -388,6 +458,7 @@ export default function RwaTokenization() {
       <div className="token-events-wrapper">
         <UpcomingEvents />
       </div>
+      <TokenUtilitySection />
       <div className="token-developer-tools-section">
         <DeveloperTools />
       </div>
