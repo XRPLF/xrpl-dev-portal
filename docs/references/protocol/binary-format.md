@@ -15,7 +15,7 @@ curated_anchors:
     anchor: "#type-list"
 ---
 # Binary Format
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/SField.h "Source")
 
 This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`rippled` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
@@ -65,15 +65,17 @@ Additionally, many [client libraries](../client-libraries.md) provide serializat
 
 ## Internal Format
 
-Each field has an "internal" binary format used in the `rippled` source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of [`SField.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/SField.cpp). (This file also includes fields other than transaction fields.) The [Transaction Format Reference](transactions/index.md) also lists the internal formats for all transaction fields.
+Each field has an canonical binary format, or _internal format_ used in the XRP Ledger protocol to represent that field in transactions and ledger data. The binary format is needed for signing, but it is also used in peer-to-peer communications, in ledger storage, and in other places. The binary formats for all fields are defined in the source code of [`SField.h`](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/SField.h). The JSON format for transactions and ledger data is standardized for convenience, but JSON is only used in APIs and client libraries: strictly speaking, only the binary format exists at the level of the XRP Ledger protocol.
 
-For example, the `Flags` [common transaction field](transactions/common-fields.md) becomes a UInt32 (32-bit unsigned integer).
+The [Transaction Format Reference](transactions/index.md) and [Ledger Data Reference](ledger-data/index.md) list both the JSON and the internal (binary) formats for all fields. For example, the `Flags` [common transaction field](transactions/common-fields.md) is a Number in JSON and a UInt32 in binary. Even though the JSON representation uses a data type that can contain decimal places or very large values, the field is limited to values that can be represented as a 32-bit unsigned integer.
 
 ### Definitions File
 
 The following JSON file defines the important constants you need for serializing XRP Ledger data to its binary format and deserializing it from binary:
 
 **<https://github.com/XRPLF/xrpl.js/blob/main/packages/ripple-binary-codec/src/enums/definitions.json>**
+
+You can also use the [server_definitions API method](http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md) to get the same data from a server. This can be useful when working with dev networks, in-development features, and sidechains with new fields or data types.
 
 The following table defines the top-level fields from the definitions file:
 
@@ -99,8 +101,8 @@ The field definition objects in the `FIELDS` array have the following fields:
 
 ### Field IDs
 
-[[Source - Encoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L117-L148 "Source")
-[[Source - Decoding]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L484-L509 "Source")
+[[Source - Encoding]](https://github.com/XRPLF/rippled/blob/edb4f0342c65bd739fee60b74566f3e771134c6c/src/libxrpl/protocol/Serializer.cpp#L120-L153 "Source")
+[[Source - Decoding]](https://github.com/XRPLF/rippled/blob/edb4f0342c65bd739fee60b74566f3e771134c6c/src/libxrpl/protocol/Serializer.cpp#L429-L452 "Source")
 
 When you combine a field's type code and field code, you get the field's unique identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
 
@@ -173,38 +175,42 @@ Field codes are reused for fields of different field types, but fields of the sa
 
 ## Type List
 
-Transaction instructions may contain fields of any of the following types:
+Transactions and ledger entries may contain fields of any of the following types:
 
-| Type Name     | Type Code | Bit Length | [Length-prefixed][]? | Description    |
-|:--------------|:----------|:-----------|:---------------------|----------------|
-| [AccountID][] | 8         | 160        | Yes                  | The unique identifier for an [account](../../concepts/accounts/index.md). |
-| [Amount][]    | 6         | 64 or 384  | No                   | An amount of XRP or tokens. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for tokens. |
-| [Blob][]      | 7         | Variable   | Yes                  | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
-| [Hash128][]   | 4         | 128        | No                   | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
-| [Hash160][]   | 17        | 160        | No                   | A 160-bit arbitrary binary value. This may define a currency code or issuer. |
-| [Hash256][]   | 5         | 256        | No                   | A 256-bit arbitrary binary value. This usually represents the "SHA-512Half" hash of a transaction, ledger version, or ledger data object. |
-| [PathSet][]   | 18        | Variable   | No                   | A set of possible [payment paths](../../concepts/tokens/fungible-tokens/paths.md) for a [cross-currency payment](../../concepts/payment-types/cross-currency-payments.md). |
-| [STArray][]   | 15        | Variable   | No                   | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transactions/common-fields.md#memos-field) and lists of signers used in [multi-signing](../../concepts/accounts/multi-signing.md). |
-| [STIssue][]   | 24        | 160 or 320 | No                   | An asset definition, XRP or a token, with no quantity. |
-| [STObject][]  | 14        | Variable   | No                   | An object containing one or more nested fields. |
-| [UInt8][]     | 16        | 8          | No                   | An 8-bit unsigned integer. |
-| [UInt16][]    | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
-| [UInt32][]    | 2         | 32         | No                   | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
-| [XChainBridge][] | 25     | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on both chains. |
+| Type Name        | Type Code | Bit Length | [Length-prefixed][]? | Description    |
+|:-----------------|:----------|:-----------|:---------------------|----------------|
+| [AccountID][]    | 8         | 160        | Yes                  | The unique identifier for an [account](../../concepts/accounts/index.md). |
+| [Amount][]       | 6         | Variable   | No                   | An amount of XRP or tokens. The length of the field is 64 bits for XRP, 384 bits (64+160+160) for fungible tokens, or 264 bits for MPTs. |
+| [Array][]        | 15        | Variable   | No                   | An array containing a variable number of members, which can be different types depending on the field. Two cases of this include [memos](transactions/common-fields.md#memos-field) and lists of signers used in [multi-signing](../../concepts/accounts/multi-signing.md). |
+| [Blob][]         | 7         | Variable   | Yes                  | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
+| [Currency][]     | 26        | 160        | No                   | A currency code, such as one used in [price oracles](../../concepts/decentralized-storage/price-oracles.md). |
+| [Issue][]        | 24        | 160 or 320 | No                   | An asset definition, XRP or a token, with no quantity. |
+| [Object][]       | 14        | Variable   | No                   | An object containing one or more nested fields. These "inner" objects may have additional formatting restrictions. |
+| [PathSet][]      | 18        | Variable   | No                   | A set of possible [payment paths](../../concepts/tokens/fungible-tokens/paths.md) for a [cross-currency payment](../../concepts/payment-types/cross-currency-payments.md). |
+| [UInt8][]        | 16        | 8          | No                   | An 8-bit unsigned integer. |
+| [UInt16][]       | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
+| [UInt32][]       | 2         | 32         | No                   | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
+| [UInt64][]       | 3         | 64         | No                   | A 64-bit unsigned integer. This type does not appear in transaction instructions, but several ledger entries use fields of this type. |
+| [UInt96][]       | 20        | 96         | No                   | **UNUSED.** A 96-bit unsigned integer. |
+| [UInt128][]      | 4         | 128        | No                   | A 128-bit binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
+| [UInt160][]      | 17        | 160        | No                   | A 160-bit binary value. This may define a currency code or issuer. |
+| [UInt192][]      | 21        | 192        | No                   | A 192-bit binary value. This usually represents an MPT issuance. |
+| [UInt256][]      | 5         | 256        | No                   | A 256-bit binary value. This usually represents the hash of a transaction, ledger version, or ledger entry. |
+| [Vector256][]    | 19        | Variable   | Yes                  | A list of 256-bit binary values. This may be a list of ledger entries or other hash values. |
+| [XChainBridge][] | 25        | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on both chains. |
 
 [Length-prefixed]: #length-prefixing
 
+In the `rippled` source code, some types have an "ST" prefix, which stands for "serialized type". This separates the type definition in the XRP Ledger protocol from data types that may be defined at the programming language level such as arrays or objects.
 
 In addition to all of the above field types, the following types may appear in other contexts, such as [ledger objects](ledger-data/ledger-entry-types/index.md) and [transaction metadata](transactions/metadata.md):
 
 | Type Name   | Type Code | [Length-prefixed]? | Description                   |
 |:------------|:----------|:-------------------|:------------------------------|
 | Transaction | 10001     | No                 | A "high-level" type containing an entire [transaction](transactions/index.md). |
-| LedgerEntry | 10002     | No                 | A "high-level" type containing an entire [ledger object](ledger-data/ledger-entry-types/index.md). |
+| LedgerEntry | 10002     | No                 | A "high-level" type containing an entire [ledger entry](ledger-data/ledger-entry-types/index.md). |
 | Validation  | 10003     | No                 | A "high-level" type used in peer-to-peer communications to represent a validation vote in the [consensus process](../../concepts/consensus-protocol/index.md). |
 | Metadata    | 10004     | No                 | A "high-level" type containing [metadata for one transaction](transactions/metadata.md). |
-| [UInt64][]  | 3         | No                 | A 64-bit unsigned integer. This type does not appear in transaction instructions, but several ledger objects use fields of this type. |
-| Vector256   | 19        | Yes                | This type does not appear in transaction instructions, but the [Amendments ledger object](ledger-data/ledger-entry-types/amendments.md)'s `Amendments` field uses this to represent which [amendments](../../concepts/networks-and-servers/amendments.md) are currently enabled. |
 
 
 ### AccountID Fields
@@ -218,23 +224,40 @@ AccountIDs that appear as stand-alone fields (such as `Account` and `Destination
 ### Amount Fields
 [Amount]: #amount-fields
 
-The "Amount" type is a special field type that represents an amount of currency, either XRP or a token. This type consists of two sub-types:
+The _Amount_ type (also called "STAmount") is a special field type that represents an amount of currency or asset. This type consists of three sub-types, which are XRP, fungible tokens, and multi-purpose tokens (MPTs):
 
 - **XRP**
 
-    XRP is serialized as a 64-bit unsigned integer (big-endian order), except that the most significant bit is always 0 to indicate that it's XRP, and the second-most-significant bit is `1` to indicate that it is positive. Since the maximum amount of XRP (10<sup>17</sup> drops) only requires 57 bits, you can calculate XRP serialized format by taking standard 64-bit unsigned integer and performing a bitwise-OR with `0x4000000000000000`.
+    XRP is serialized as a 64-bit unsigned integer (big-endian order), except that the most significant bit is always `0`, the second-most-significant bit is `1` to indicate that it is positive, and the third-most-significant bit is `0` to indicate that it is not an MPT. The remaining 61 bits represent the quantity of XRP. Since the maximum amount of XRP (10<sup>17</sup> drops) only requires 57 bits, you can calculate XRP serialized format by taking standard 64-bit unsigned integer and performing a bitwise-OR with `0x4000000000000000`.
 
-- **Tokens**
+- **Fungible Tokens**
 
-    Tokens consist of three segments in order:
+    Fungible tokens (also called "IOUs") consist of three segments in order:
 
-    1. 64 bits indicating the amount in the [token amount format](#token-amount-format). The first bit is `1` to indicate that this is not XRP.
+    1. 64 bits indicating the amount in the [token amount format](#token-amount-format). The first bit is `1` to indicate that this is not XRP nor an MPT.
     2. 160 bits indicating the [currency code](data-types/currency-formats.md#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](data-types/currency-formats.md#standard-currency-codes), but custom 160-bit codes are also possible.
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](../../concepts/accounts/addresses.md#address-encoding))
 
-You can tell which of the two sub-types it is based on the first bit: `0` for XRP; `1` for tokens.
+- **MPTs**
 
-The following diagram shows the serialization formats for both XRP amounts and token amounts:
+    Multi-Purpose Tokens (MPTs) consist of four segments in order:
+
+    1. 8 bits indicating that this is an MPT. The most significant bit is `0` to indicate that it's not a fungible token. The second bit is `1` to indicate that it is postiive. The third most significant bit is `1` to indicate that it is an MPT. The remaining 5 bits are reserved and must all be `0`.
+    2. 64 bits indicating the quantity of the MPT, as a 64-bit _signed_ integer. (However, in most contexts, negative amounts are not allowed.)
+    3. 32 bits indicating the `Sequence` number of the transaction that created the MPT issuance.
+    4. 160 bits indicating the [AccountID][] of the MPT's issuer.
+
+You can tell which of the three sub-types an amount is based on the first and third most significant bits: 
+
+    - If the first bit is a `1`, it's a fungible token (IOU).
+    - If the first bit and third bit are both `0`, it's XRP.
+    - If the first bit is a `0` and the third bit is a `1`, it's an MPT.
+
+{% admonition type="warning" title="Caution" %}
+Not all types of amount are valid in all places. Some fields can only represent XRP, or XRP and fungible tokens but not MPTs. These limitations are defined by the individual transactions and ledger entries.
+{% /admonition %}
+
+The following diagram shows the serialization formats for both XRP amounts and token amounts: ***TODO: update***
 
 [{% inline-svg file="/docs/img/serialization-amount.svg" /%}](/docs/img/serialization-amount.svg 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Token amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).')
 
@@ -271,11 +294,14 @@ The [`rippled` APIs](../http-websocket-apis/index.md) support a **standard forma
 
 The **nonstandard format** is any 160 bits of data as long as the first 8 bits are not `0x00`.
 
+#### MPT Amount Format
+
+The following diagram shows the amount serialization for MPTs. ***TODO: consolidate or not?***
 
 ### Array Fields
-[STArray]: #array-fields
+[Array]: #array-fields
 
-Some transaction fields, such as `SignerEntries` (in [SignerListSet transactions][]) and [`Memos`](transactions/common-fields.md#memos-field), are arrays of objects (called the "STArray" type).
+Some transaction fields, such as `SignerEntries` (in [SignerListSet transactions][]) and [`Memos`](transactions/common-fields.md#memos-field), are arrays of objects. (Also called the "STArray" type).
 
 Arrays contain several [object fields](#object-fields) in their native binary format in a specific order. In JSON, each array member is a JSON "wrapper" object with a single field, which is the name of the member object field. The value of that field is the ("inner") object itself.
 
@@ -289,25 +315,23 @@ The following example shows the serialization format for an array (the `SignerEn
 ### Blob Fields
 [Blob]: #blob-fields
 
-The Blob type is a [length-prefixed](#length-prefixing) field with arbitrary data. Two common fields that use this type are `SigningPubKey` and `TxnSignature`, which contain (respectively) the public key and signature that authorize a transaction to be executed.
+The _Blob_ type (also called "STBlob") is a [length-prefixed](#length-prefixing) field with arbitrary data. Two common fields that use this type are `SigningPubKey` and `TxnSignature`, which contain (respectively) the public key and signature that authorize a transaction to be executed.
 
 Blob fields have no further structure to their contents, so they consist of exactly the amount of bytes indicated in the variable-length encoding, after the Field ID and length prefixes.
 
 
-### Hash Fields
-[Hash128]: #hash-fields
-[Hash160]: #hash-fields
-[Hash256]: #hash-fields
+### Currency Fields
+[Currency]: #currency-fields
 
-The XRP Ledger has several "hash" types: Hash128, Hash160, and Hash256. These fields contain arbitrary binary data of the given number of bits, which may or may not represent the result of a hash operation.
+Some fields specify a currency code, which could be an a fungible token, the ticker symbol for an off-ledger asset, or some other identifier for a currency. This field type is currently used only in [Price Oracles](../../concepts/decentralized-storage/price-oracles.md).
 
-All such fields are serialized as the specific number of bits, with no length indicator, in big-endian byte order.
+These fields consists of 160 bits of binary data. If the data matches the ["standard" currency code format](#currency-codes), it may be represented as a three-letter currency code string in JSON. Otherwise, it is represented as hexadecimal. Client libraries _may_ attempt to interpret this as a string of ASCII or UTF-8, but it is not guaranteed to be valid.
 
 
 ### Issue Fields
-[STIssue]: #issue-fields
+[Issue]: #issue-fields
 
-Some fields specify a _type_ of asset, which could be XRP or a fungible [token](../../concepts/tokens/index.md), without an amount. These fields have consist of one or two 160-bit segments in order:
+Some fields specify a _type_ of asset, which could be XRP or a fungible [token](../../concepts/tokens/index.md), without an amount. This field is also called "STIssue". These fields have consist of one or two 160-bit segments in order:
 
 1. The first 160 bits are the [currency code](#currency-codes) of the asset. For XRP, this is all 0's.
 2. If the first 160 bits are all 0's (the asset is XRP), the field ends there. Otherwise, the asset is a token and the next 160 bits are the [AccountID of the token issuer](#accountid-fields).
@@ -363,12 +387,23 @@ The following example shows the serialization format for a PathSet:
 [UInt16]: #uint-fields
 [UInt32]: #uint-fields
 [UInt64]: #uint-fields
+[UInt96]: #uint-fields
+[UInt128]: #uint-fields
+[UInt160]: #uint-fields
+[UInt256]: #uint-fields
 
-The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, and UInt64. All of these are standard big-endian binary unsigned integers with the specified number of bits.
+The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, UInt64, UInt128, UInt160, and UInt256. All of these are standard big-endian binary unsigned integers with the specified number of bits. The larger types such as UInt128, UInt160, and UInt256 were previously named Hash128, Hash160, and Hash256 because they often contain hash function outputs.
 
-When representing these fields in JSON objects, most are represented as JSON numbers by default. One exception is UInt64, which is represented as a string because some JSON decoders may try to represent these integers as 64-bit "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision.
+When representing these fields in JSON, these fields may be represented as JSON numbers, strings containing hexadecimal, or as strings containing decimal numbers, depending on the bit size and intended use of the data. UInt64 and up are never converted to JSON numbers, because some JSON decoders may try to represent them as "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision. UInt128 and UInt256 typically represent hash values or arbitrary data, so they are typically represented in JSON as hexadecimal.
 
-Another special case is the `TransactionType` field. In JSON, this field is conventionally represented as a string with the name of the transaction type, but in binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to specific numeric values.
+The `TransactionType` field is a special case. In JSON, this field is conventionally represented as a string with the name of the transaction type. In binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to the numeric values used in the binary format.
+
+### Vector256 Fields
+[Vector256]: #vector256-fields
+
+The _Vector256_ type contains a list of 256-bit values. This field consists of a multiple of 256 bits following the [length prefix](#length-prefixing). Unlike the [Array][] type, which can contain a mix of different nested object types of varying lengths, each member of a Vector256 field is exactly 256 bits with no type prefix.
+
+The members of a Vector256 field may be [ledger entry IDs](protocol/ledger-data/common-fields.md#ledger-entry-id). However, they can also be Amendment IDs, ledger hashes, or other binary data.
 
 
 ### XChainBridge Fields
@@ -379,11 +414,11 @@ Another special case is the `TransactionType` field. In JSON, this field is conv
 The `XChainBridge` field, used in transactions and ledger entries related to [cross-chain bridges](../../concepts/xrpl-sidechains/cross-chain-bridges.md), is the only field of the XChainBridge type. It consists of 4 parts which together define a bridge between blockchains:
 
 - The locking chain door account, a length-prefixed [AccountID][].
-- The locking chain asset type, an [STIssue][].
+- The locking chain asset type, an [Issue][].
 - The issuing chain door account, a length-prefixed [AccountID][].
-- The issuing chain asset type, an [STIssue][].
+- The issuing chain asset type, an [Issue][].
 
-The two nested [STIssue][] types are each either 160 or 320 bits. The STIssue field is 160 bits if the currency code it contains is all 0's, meaning that the bridged asset is the native asset of its respective chain, for example XRP on the XRP Ledger Mainnet. If the currency code is nonzero, then the STIssue field also contains the (non-length-prefixed) AccountID of the token's issuer on its native chain.
+The two nested [Issue][] types are each either 160 or 320 bits. The Issue field is 160 bits if the currency code it contains is all 0's, meaning that the bridged asset is the native asset of its respective chain, for example XRP on the XRP Ledger Mainnet. If the currency code is nonzero, then the Issue field also contains the (non-length-prefixed) AccountID of the token's issuer on its native chain.
 
 {% admonition type="info" name="Note" %}The door AccountID values are length-prefixed, but the issuer AccountID values are not.{% /admonition %}
 
