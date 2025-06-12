@@ -1097,6 +1097,39 @@ const events = [
     end_date: "April 8, 2025",
   },
   {
+    name: "Building on the XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who are curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://xrpl.at/Dev-Training",
+    location: "Paris, France",
+    date: "May 5, 2025",
+    image: require("../static/img/events/commons-france.png"),
+    end_date: "May 6, 2025",
+  },
+  {
+    name: "HAKS Hackathon",
+    description:
+      "HAKS 2025 is a collaborative hackathon sponsored by XRPL Commons bringing together developers and innovators to build impactful AI and blockchain solutions on the XRP Ledger. Thanks to our partner Telecom Sud Paris.",
+    type: "hackathon",
+    link: "https://xrpl.at/HAKS-Hackathon2025",
+    location: "Paris, France",
+    date: "May 16, 2025",
+    image: require("../static/img/events/commons-paris.png"),
+    end_date: "May 18, 2025",
+  },
+  {
+    name: "XRPL Meetup in Dublin",
+    description:
+      "Calling all blockchain and XRP Ledger enthusiasts in Dublin! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+    type: "meetup",
+    link: "https://lu.ma/asp8d2nl",
+    location: "Paris, France",
+    date: "May 26, 2025",
+    image: require("../static/img/events/commons-dublin.png"),
+    end_date: "May 26, 2025",
+  },
+  {
     name: "XRPL Core Dev Bootcamp AMA",
     description:
       "Join us on June 16 for an exclusive information session (AMA) about the XRPL Core Dev Bootcamp, a two-week intensive program focused on low-level development on the XRP Ledger.",
@@ -1104,7 +1137,7 @@ const events = [
     link: "https://lu.ma/hqvlluce",
     location: "Virtual",
     date: "June 16, 2025",  
-    image: devBootcamp,
+    image: require("../static/img/events/commons-bootcamp.png"),
     end_date: "June 16, 2025",
   },
   {
@@ -1126,7 +1159,7 @@ const events = [
     link: "https://lu.ma/q32897pc",
     location: "Bruxelles, Belgium",
     date: "June 24, 2025",
-    image: require("../static/img/events/commons-orange.png"),
+    image: require("../static/img/events/commons-brussels.png"),
     end_date: "June 24, 2025",
   },
   {
