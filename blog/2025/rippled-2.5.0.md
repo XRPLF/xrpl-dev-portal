@@ -133,30 +133,35 @@ The following people contributed directly to this release:
 
 - Alex Kremer <akremer@ripple.com>
 - Ayaz Salikhov <asalikhov@ripple.com>
-- Bronek Kozicki <brok@incorrekt.com>
+- Bart Thomee <bthomee@users.noreply.github.com>
 - Brett Mollin <brett@ripple.com>
-- cyan317 <120398799+cindyyan317@users.noreply.github.com>
-- Denis Angell <dangell@transia.co>
-- David Fuelling <fuelling@ripple.com>
+- Bronek Kozicki <brok@incorrekt.com>
+- Cindy Yan <120398799+cindyyan317@users.noreply.github.com>
 - Darius Tumas <Tokeiito@users.noreply.github.com>
+- David Fuelling <fuelling@ripple.com>
+- Denis Angell <dangell@transia.co>
 - Ed Hennis <ed@ripple.com>
+- Elliot Lee <github.public@intelliot.com>
 - Gregory Tsipenyuk <gtsipenyuk@ripple.com>
-- Matt Mankins <mankins@gmail.com>
+- Jingchen Wu <jingchenw@ripple.com>
+- Luc des Trois Maisons <lmaisons@ripple.com>
+- Mani Mounika Kunasani <mkunasani@ripple.com>
 - Mark Travis <mtrippled@users.noreply.github.com>
+- Matt Mankins <mankins@gmail.com>
 - Mayukha Vadari <mvadari@gmail.com>
 - Michael Legleux <mlegleux@ripple.com>
 - Oleksandr Pidskopnyi <opidskopnyi@ripple.com>
+- Ramkumar SG <rgunasegharan@ripple.com>
+- Scott Determan <scott.determan@yahoo.com>
 - Sergey Kuznetsov <skuznetsov@ripple.com>
-- Vladislav Vysokikh <vvysokikh@gmail.com>
-- Xun Zhao <xzhao@ripple.com>
-- Yinyi Qian <yqian@ripple.com>
-- Jingchen Wu <jingchenw@ripple.com>
-- Bart Thomee <bthomee@users.noreply.github.com>
-- Elliot Lee <github.public@intelliot.com>
+- Sophia Xie <sxie@ripple.com>
+- Shawn Xie <shawnxie@ripple.com>
 - Valentin Balaschenko <vbalaschenko@ripple.com>
 - Vito Tumas <vtumas@ripple.com>
+- Vladislav Vysokikh <vvysokikh@gmail.com>
 - Wietse Wind <w.wind@ipublications.net>
-- Shawn Xie <shawnxie@ripple.com>
+- Xun Zhao <xzhao@ripple.com>
+- Yinyi Qian <yqian@ripple.com>
 
 
 ## Bug Bounties and Responsible Disclosures
