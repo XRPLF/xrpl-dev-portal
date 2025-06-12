@@ -62,7 +62,7 @@ The following amendments are open for voting with this release:
 - **PermissionedDEX (XLS-81)** - Adds permissioned decentralized exchanges that control who can participate, ensuring compliance with financial regulations. ([#5404](https://github.com/XRPLF/rippled/pull/5404))
 - **PermissionDelegation** - Enables account holders to delegate specific permissions to other accounts for flexible account management and automation. ([#5354](https://github.com/XRPLF/rippled/pull/5354))
 - **AMMv1_3** - Adds invariant checking to AMM-related transactions. ([#5203](https://github.com/XRPLF/rippled/pull/5203))
-- **fixNFTTrustlineInteraction** - Fixes issues with NFT interactions bypassing the trustline authorization requirement. ([#5297](https://github.com/XRPLF/rippled/pull/5297))
+- **EnforceNFTokenTrustlineV2** - Fixes issues with NFT interactions bypassing the trustline authorization requirement. ([#5297](https://github.com/XRPLF/rippled/pull/5297))
 
 
 ### New Features
