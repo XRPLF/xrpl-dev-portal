@@ -2,18 +2,18 @@
 html: tec-codes.html
 parent: transaction-results.html
 seo:
-    description: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
+    description: tec codes indicate that the transaction did not succeed, but it deducted the transaction cost and it was applied to a ledger.
 labels:
   - Transaction Sending
 ---
 # tec Codes
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TER.cpp "Source")
 
-These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](../../../../concepts/transactions/transaction-cost.md). They have numerical values in the range 100 to 199. It is recommended to use the text code, not the numeric value.
+These codes indicate that the transaction did not succeed, but it was applied to a ledger to apply the [transaction cost](../../../../concepts/transactions/transaction-cost.md) and may have had other side effects to the ledger. The `tec` codes have numerical values in the range 100 to 199. It is recommended to use the text code, not the numeric value.
 
-Transactions with `tec` codes destroy the XRP paid as a [transaction cost](../../../../concepts/transactions/transaction-cost.md), and consume a [sequence number](../../data-types/basic-data-types.md#account-sequence). For the most part, the transactions take no other action, but there are some exceptions. For example, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer). Always look at the [transaction metadata](../metadata.md) to see precisely what a transaction did.
+Transactions with `tec` codes destroy the XRP paid as a [transaction cost](../../../../concepts/transactions/transaction-cost.md), and consume a [sequence number](../../data-types/basic-data-types.md#account-sequence). Although the transactions did not succeed, they sometimes have some other effect. For example, a transaction that results in `tecOVERSIZE` still cleans up some [unfunded offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer). Always look at the [transaction metadata](../metadata.md) to see precisely what a transaction did.
 
-{% admonition type="warning" name="Caution" %}A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a validated ledger version. For more information, see [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) and [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md).{% /admonition %}
+{% admonition type="warning" name="Caution" %}A transaction that provisionally failed with a `tec` code may still succeed or fail with a different code after being reapplied. The result is final when it appears in a fully validated ledger version. For more information, see [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) and [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md).{% /admonition %}
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
