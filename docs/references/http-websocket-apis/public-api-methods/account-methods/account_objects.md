@@ -79,11 +79,13 @@ The request includes the following parameters:
 | `Field`                  | Type             | Required? | Description |
 |:-------------------------|:-----------------|:----------|-------------|
 | `account`                | String           | Yes       | A unique identifier for the account, most commonly the account's [Address][]. |
+| `amount`                 | Object or String | No        | The amount to be delivered by the held payment. |
 | `deletion_blockers_only` | Boolean          | No        | If `true`, the response only includes objects that would block this account from [being deleted](../../../../concepts/accounts/deleting-accounts.md). The default is `false`. |
 | `ledger_hash`            | [Hash][]         | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`           | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`                  | Number           | No        | The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `transfer_rate`          | Number           | No        | The fee to charge when users finish an escrow, initially set on the creation of an escrow contract, and updated on subsequent finish transactions. |
 | `type`                   | String           | No        | Filter results to a specific type of ledger entry. This field accepts canonical ledger entry names (case insensitive) or short names. |
 
 Valid `type` field values are:
