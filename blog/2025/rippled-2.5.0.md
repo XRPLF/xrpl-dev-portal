@@ -72,6 +72,7 @@ The following amendments are open for voting with this release:
 - Enhanced transaction relay logic. ([#4985](https://github.com/XRPLF/rippled/pull/4985))
 - Enabled passive squelching for validators to accept squelch messages from untrusted validators, reducing duplicate traffic they generate. ([#5358](https://github.com/XRPLF/rippled/pull/5358))
 - Added XRPL Commons as a new Bootstrap Cluster in the `rippled` configuration. ([#5263](https://github.com/XRPLF/rippled/pull/5263))
+- Improved how the `simulate` method handles transactions submitted from a multi-signing account. Also fixed an issue that allowed transactions when both single-signed and multi-signed keys were provided. ([#5479](https://github.com/XRPLF/rippled/pull/5479))
 
 
 ### Bug Fixes
@@ -98,6 +99,7 @@ The following amendments are open for voting with this release:
 - Temporarily disabled unit tests on macOS to investigate delays. ([#5397](https://github.com/XRPLF/rippled/pull/5397))
 - Fixed CTID to use the correct `ledger_index`. ([#5408](https://github.com/XRPLF/rippled/pull/5408))
 - Updated CODEOWNERS path configuration. ([#5440](https://github.com/XRPLF/rippled/pull/5440))
+- Removed unused code. ([#5475](https://github.com/XRPLF/rippled/pull/5475))
 
 
 ### Other Improvements
@@ -125,6 +127,7 @@ The following amendments are open for voting with this release:
 - Improved CI jobs to only run on PRs that have a `DraftRunCI` label. ([#5400](https://github.com/XRPLF/rippled/pull/5400))
 - Updated `validators-example.txt` to fix XRPLF example URL configuration. ([#5384](https://github.com/XRPLF/rippled/pull/5384))
 - Changed ledger close in `env.meta` to be conditionally on, making it easier to debug issues if you closed the ledger outside of the `meta` function. ([#5457](https://github.com/XRPLF/rippled/pull/5457))
+- Collapsed log messages for easier readability. ([#5347](https://github.com/XRPLF/rippled/pull/5347))
 
 
 ## Credits
