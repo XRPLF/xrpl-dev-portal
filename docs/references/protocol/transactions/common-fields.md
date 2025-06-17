@@ -97,7 +97,7 @@ This sample `Delegate` object shows that the _rISAAC_ account has delegated `Tru
     "Authorize": "rKYLIE......",
     "Permissions": [{"Permission": {"PermissionValue": "TrustlineAuthorize"}}],
 }
-```
+``` 
 
 ## Flags Field
 
