@@ -67,12 +67,11 @@ The following amendments are open for voting with this release:
 
 ### New Features
 
-- Improved squelching configuration. ([#5438](https://github.com/XRPLF/rippled/pull/5438))
 - Increased network I/O capacity to handle higher transaction loads. ([#5464](https://github.com/XRPLF/rippled/pull/5464))
 - Enhanced transaction relay logic. ([#4985](https://github.com/XRPLF/rippled/pull/4985))
-- Enabled passive squelching for validators to accept squelch messages from untrusted validators, reducing duplicate traffic they generate. ([#5358](https://github.com/XRPLF/rippled/pull/5358))
 - Added XRPL Commons as a new Bootstrap Cluster in the `rippled` configuration. ([#5263](https://github.com/XRPLF/rippled/pull/5263))
 - Improved how the `simulate` method handles transactions submitted from a multi-signing account. Also fixed an issue that allowed transactions when both single-signed and multi-signed keys were provided. ([#5479](https://github.com/XRPLF/rippled/pull/5479))
+- Updated code reviewers for RPC changes. ([#5266](https://github.com/XRPLF/rippled/pull/5266))
 
 
 ### Bug Fixes
@@ -104,6 +103,8 @@ The following amendments are open for voting with this release:
 
 ### Other Improvements
 
+- Enabled passive squelching for validators to accept squelch messages from untrusted validators, reducing duplicate traffic they generate. ([#5358](https://github.com/XRPLF/rippled/pull/5358))
+- Improved squelching configuration. ([#5438](https://github.com/XRPLF/rippled/pull/5438))
 - Updated CPP reference source. ([#5453](https://github.com/XRPLF/rippled/pull/5453))
 - Added codecov badge and raised coverage thresholds. ([#5428](https://github.com/XRPLF/rippled/pull/5428))
 - Refactored codebase to use east const convention for code consistency. ([#5409](https://github.com/XRPLF/rippled/pull/5409))
@@ -111,7 +112,6 @@ The following amendments are open for voting with this release:
 - Updated build instructions to improve build times. ([#5288](https://github.com/XRPLF/rippled/pull/5288))
 - Updated example keyserver host in `SECURITY.md`. ([#5460](https://github.com/XRPLF/rippled/pull/5460))
 - Implemented `transitive_headers` when building with Conan 2. ([#5462](https://github.com/XRPLF/rippled/pull/5462))
-- Updated code reviewers for RPC changes. ([#5266](https://github.com/XRPLF/rippled/pull/5266))
 - Renamed documentation CI job for clarity. ([#5398](https://github.com/XRPLF/rippled/pull/5398))
 - Clarified the `lsfDefaultRipple` comment for better code documentation. ([#5410](https://github.com/XRPLF/rippled/pull/5410))
 - Cleaned up missing and unused headers. ([#5293](https://github.com/XRPLF/rippled/pull/5293))
