@@ -47,7 +47,7 @@ async function mintNFT() {
     });
 
     // Report results
-    results = `\n\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`;
+    results += `\n\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`;
     results += `\n\n=== NFTs: ${JSON.stringify(nfts, null, 2)} ===`;
     results += `\n\n=== XRP Balance: ${await client.getXrpBalance(wallet.address)} ===`; // Await here
     resultField.value = results;
