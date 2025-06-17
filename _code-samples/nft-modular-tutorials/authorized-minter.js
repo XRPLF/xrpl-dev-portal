@@ -33,7 +33,7 @@ async function authorizeMinter() {
       await client.disconnect();
     }
   }
-} // End of configureAccount()
+} // End of authorizeMinter()
 
 // *******************************************************
 // ****************  Mint Other  *************************
