@@ -76,6 +76,7 @@
         - page: docs/concepts/transactions/index.md
           expanded: false
           items:
+            - page: docs/concepts/transactions/batch-transactions.md
             - page: docs/concepts/transactions/fees.md
             - page: docs/concepts/transactions/reliable-transaction-submission.md
             - page: docs/concepts/transactions/secure-signing.md
@@ -383,6 +384,7 @@
                     - page: docs/references/protocol/transactions/types/ammdeposit.md
                     - page: docs/references/protocol/transactions/types/ammvote.md
                     - page: docs/references/protocol/transactions/types/ammwithdraw.md
+                    - page: docs/references/protocol/transactions/types/batch.md
                     - page: docs/references/protocol/transactions/types/credentialaccept.md
                     - page: docs/references/protocol/transactions/types/credentialcreate.md
                     - page: docs/references/protocol/transactions/types/credentialdelete.md
