@@ -256,7 +256,7 @@ Submit the transaction and wait for the result.
 
 ```javascript
       try {
-        const mintTx = await client.submit(transactionParams, {
+        const mintTx = await client.submitAndWait(transactionParams, {
           wallet: wallet
         });
         results += `\nNFT ${i+1} minted successfully.`;
