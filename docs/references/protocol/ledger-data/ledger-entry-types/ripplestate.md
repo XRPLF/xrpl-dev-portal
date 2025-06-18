@@ -58,6 +58,8 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `HighQualityIn`     | Number    | UInt32        | No        | The inbound quality set by the high account, as an integer in the implied ratio `HighQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
 | `HighQualityOut`    | Number    | UInt32        | No        | The outbound quality set by the high account, as an integer in the implied ratio `HighQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
 | `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0072`, mapped to the string `RippleState`, indicates that this is a RippleState entry. |
+| `LockCount`         | Object or String | Amount | No     | The total number of lock balances on a `RippleState` ledger object. |
+| `LockedBalance`     | Object or String | Amount | No     | The total number of locked tokens on a `RippleState` ledger object. |
 | `LowLimit`          | Object    | Amount        | Yes       | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | `LowNode`           | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `LowQualityIn`      | Number    | UInt32        | No        | The inbound quality set by the low account, as an integer in the implied ratio `LowQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |

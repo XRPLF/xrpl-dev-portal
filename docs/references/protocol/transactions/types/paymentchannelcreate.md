@@ -1,6 +1,4 @@
 ---
-html: paymentchannelcreate.html
-parent: transaction-types.html
 seo:
     description: Open a new payment channel.
 labels:
@@ -36,7 +34,7 @@ Create a [payment channel](../../../../concepts/payment-types/payment-channels.m
 
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amount`         | String    | Amount            | Amount of [XRP, in drops][Currency Amount], to deduct from the sender's balance and set aside in this channel. While the channel is open, the XRP can only go to the `Destination` address. When the channel closes, any unclaimed XRP is returned to the source address's balance. |
+| `Amount`         | Object or String    | Amount            | Amount to deduct from the sender's balance and set aside in this channel. While the channel is open, the amount can only go to the `Destination` address. When the channel closes, any unclaimed amount is returned to the source account's balance.|
 | `Destination`    | String    | AccountID         | Address to receive XRP claims against this channel. This is also known as the "destination address" for the channel. Cannot be the same as the sender (`Account`). |
 | `SettleDelay`    | Number    | UInt32            | Amount of time the source address must wait before closing the channel if it has unclaimed XRP. |
 | `PublicKey`      | String    | Blob              | The 33-byte public key of the key pair the source will use to sign claims against this channel, in hexadecimal. This can be any secp256k1 or Ed25519 public key. For more information on key pairs, see [Key Derivation](../../../../concepts/accounts/cryptographic-keys.md#key-derivation) <!-- STYLE_OVERRIDE: will --> |

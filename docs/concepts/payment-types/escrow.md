@@ -10,7 +10,7 @@ labels:
 
 Traditionally, an escrow is a contract between two parties to facilitate financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
-The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP, which can't be used or destroyed until conditions are met.
+The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP or fungible tokens, which can't be used or destroyed until conditions are met.
 
 ## Types of Escrow
 
@@ -24,15 +24,15 @@ The XRP Ledger supports three types of escrow:
 
 1. The sender creates an escrow using the `EscrowCreate` transaction. This transaction defines:
 
-    - An amount of XRP to lock up.
-    - The conditions to release the XRP.
-    - The recipient of the XRP.
+    - An number of XRP or fungible tokens to lock up.
+    - The conditions to release the XRP or fungible tokens.
+    - The recipient of the XRP or fungible tokens.
 
-2. When the transaction is processed, the XRP Ledger creates an `Escrow` object that holds the escrowed XRP.
+2. When the transaction is processed, the XRP Ledger creates an `Escrow` object that holds the escrowed XRP or fungible token.
 
-3. The recipient sends an `EscrowFinish` transaction to deliver the XRP. If the conditions have been met, this destroys the `Escrow` object and delivers the XRP to the recipient.
+3. The recipient sends an `EscrowFinish` transaction to deliver the XRP or fungible tokens. If the conditions have been met, this destroys the `Escrow` object and delivers the XRP or fungible tokens to the recipient.
 
-    {% admonition type="info" name="Note" %}If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, destroying the `Escrow` object and returning the XRP to the sender.{% /admonition %}
+    {% admonition type="info" name="Note" %}If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, destroying the `Escrow` object and returning the escrowed XRP or fungible tokens to the sender.{% /admonition %}
 
 ## Escrow States
 
@@ -51,7 +51,6 @@ The diagram shows three different cases for three possible combinations of the e
 
 ## Limitations
 
-- Escrow only works with XRP, not tokens.
 - The costs can make it infeasible for small amounts.
     - Escrow requires two transactions: one to create the escrow, and one to finish or cancel it. Crypto-Conditions incur a higher [transaction cost](../transactions/transaction-cost.md) than usual.
     - While the escrow is incomplete, the sender is responsible for the [reserve requirement](../accounts/reserves.md) of the `Escrow` object.
@@ -66,7 +65,7 @@ When using crypto-conditions, the EscrowFinish transaction must pay a [higher tr
 
 The additional transaction cost required is proportional to the size of the fulfillment. If the transaction is [multi-signed](../accounts/multi-signing.md), the cost of multi-signing is added to the cost of the fulfillment.
 
-Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**.
+Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts)** plus 10 drops per 16 bytes in the size of the fulfillment**.
 
 {% admonition type="info" name="Note" %}The above formula is based on the assumption that the reference cost of a transaction is 10 drops of XRP.{% /admonition %}
 
@@ -89,8 +88,5 @@ For more information about Escrow in the XRP Ledger, see the following:
     - [EscrowCancel transaction][]
 - [Ledger Reference](../../references/protocol/ledger-data/index.md)
     - [Escrow object](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
-
-
-For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
