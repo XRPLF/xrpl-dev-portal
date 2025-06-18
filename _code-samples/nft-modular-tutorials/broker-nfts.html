@@ -1,164 +1,5 @@
----
-seo:
-    description: Broker a sale between a sell offer and a buy offer.
-labels:
-  - Broker
-  - NFT
-  - XRP
----
-# Broker an NFT Sale Using JavaScript
-
-Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFT are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFT creators and traders.
-
-# Usage
-
-This example shows how to:
-
-1. Create a brokered sell offer.
-2. Get a list of offers for the brokered item.
-3. Broker a sale between two different accounts.
-
-[![Broker Account form](../../../img/mt-broker-nfts-1-empty-form.png)](../../../img/mt-broker-nfts-1-empty-form.png)
-
-You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try each of the samples in your own browser.
-
-## Prerequisites
-
-To create a brokered sale, you need a broker account, a Sell Offer with the broker account as its **Destination**, and one or more Buy Offers for the same NFT.
-
-1. Optionally use the [Account Configurator](../../../../_code-samples/account-configurator/account-configurator.html) to create your Broker account.
-2. Use a different issuer account in the [Mint NFT](../../../../_code-samples/nft-modular-tutorials/mint-nfts.html) form to mint a new NFT to sell.
-3. Use the issuer account in the [Transfer NFTs](../../../../_code-samples/nft-modular-tutorials/transfer-nfts.html) form to create a **Sell Offer** for the NFT with the Broker account as its **Destination**.
-4. Use one or more other accounts to create **Buy Offers** for the NFT.
-
-## Get Accounts
-
-1. Open `broker-nfts.html` in a browser.
-2. Choose your preferred test network (**Devnet** or **Testnet**).
-3. Get test accounts.
-    1. If you copied the gathered information from another tutorial (in this case, it would be best to load the Broker account and the Issuer account from the Prerequisite step):
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
-
-[![Broker NFTs form with Account Information](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)
-
-
-## Get Offers
-
-1. Enter the **NFT ID**.
-2. Click **Get Offers**.
-
-[![Get Offers](../../../img/mt-broker-nfts-3-get-offers.png)](../../../img/mt-broker-nfts-3-get-offers.png)
-
-## Broker the Sale
-
-1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
-1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell Offer Index** field.
-2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy Offer Index** field.
-3. Enter a **Broker Fee**, in drops.
-4. Click **Broker Sale**.
-
-In this example, the sale succeeds with 25 XRP going to the issuer account (Felicia), 30 XRP taken from the buyer account (Unknown 3rd Pary), and 5 XRP minus the transaction cost going to the broker account (Hisham).
-
-[![Brokered Sale](../../../img/mt-broker-nfts-4-broker-sale.png)](../../../img/mt-broker-nfts-4-broker-sale.png)
-
-
-## Cancel Offer
-
-After accepting a buy offer, a best practice for the broker is to cancel all other offers, if the broker has permissions to do so. Use the [Transfer NFTs](../../../../_code-samples/nft-modular-tutorials/transfer-nfts.html) form to get and cancel any existing Sell or Buy offers.
-
-# Code Walkthrough
-
-You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try each of the samples in your own browser.
-
-## broker-nfts.js
-
-## brokerSale()
-
-```javascript    
-// *******************************************************
-// ******************* Broker Sale ***********************
-// *******************************************************
-
-async function brokerSale() {
-
-```
-
-Get the account wallet and connect to the XRP Ledger.
-
-```javascript
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
-  const net = getNet();
-  const client = new xrpl.Client(net);
-  let results = `\n=== Connected. Brokering the sale. ===`;
-  resultField.value = results;
-
-  try {
-    await client.connect();
-```
-
-Prepare an NFTokenAcceptOffer, passing both the sell offer and the buy offer, and also the broker fee. With the additional arguments, the API interprets this as a brokered sale.
-
-```javascript
-    const brokerTx = {
-      "TransactionType": "NFTokenAcceptOffer",
-      "Account": wallet.classicAddress,
-      "NFTokenSellOffer": nftSellOfferIndexField.value,
-      "NFTokenBuyOffer": nftBuyOfferIndexField.value,
-      "NFTokenBrokerFee": brokerFeeField.value
-    }
-```
-
-Display the transaction object  in the console.
-
-```javascript
-    console.log(JSON.stringify(brokerTx, null, 2));
-```
-
-Submit the transaction and report the results.
-
-```javascript
-    const tx = await client.submitAndWait(brokerTx, { wallet: wallet })
-
-    results += "\n\nTransaction result:\n" +
-      JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-    results += "\nBalance changes:\n" +
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-    resultField.value += results
-```
-
-Catch and report any errors.
-
-```javascript
-  } catch (error) {
-    console.error("Error in broker sale:", error);
-    results = `\n\n=== Error in broker sale: ${error.message} ===`;
-    resultField.value += results;
-  }
-```
-
-Disconnect from the XRP Ledger.
-
-```javascript
-  finally {
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }
-  }
-}// End of brokerSale()  
-```
-
-## broker-nfts.html
-
-```html
 <html>
+
 <head>
     <title>Broker NFTs</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
@@ -170,6 +11,7 @@ Disconnect from the XRP Ledger.
     <script src="transfer-nfts.js"></script>
     <script src="broker-nfts.js"></script>
 </head>
+
 <body>
     <h1>Broker NFTs</h1>
     <form id="theForm">
@@ -447,4 +289,3 @@ Disconnect from the XRP Ledger.
 </script>
 
 </html>
-```

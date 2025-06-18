@@ -22,7 +22,7 @@ async function getAccount() {
     let faucetHost = null
     const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
     const newAccount = [my_wallet.address, my_wallet.seed]
-    return (newAccount)
+    return newAccount
   }
   catch (error) {
     console.error('===Error getting account:', error);
@@ -34,7 +34,8 @@ async function getAccount() {
     // Disconnect from the client
     if (client && client.isConnected()) {
       await client.disconnect();
-    } }
+    }
+  }
 } // End of getAccount()
 
 async function getNewAccount1() {
@@ -79,9 +80,8 @@ async function getAccountFromSeed(my_seed) {
   }
   finally {
     // Disconnect from the client
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+    await client.disconnect();
+  }
 } // End of getAccountFromSeed()
 
 // *****************************************************
@@ -171,9 +171,8 @@ async function getXrpBalance() {
   }
   finally {
     // Disconnect from the client
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+    await client.disconnect();
+  }
 } // End of getXrpBalance()
 
 // *******************************************************
@@ -205,19 +204,6 @@ async function getTokenBalance() {
   }
   finally {
     // Disconnect from the client
-    if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+    await client.disconnect();
+  }
 } // End of getTokenBalance()
-
-// *******************************************************
-// **************** Scroll Results ***********************
-// *******************************************************
-let results
-
-async function updateResults() {
-  resultField.value += results;
-  resultField.scrollTop = resultField.scrollHeight;
-}
-
-// End of updateResults()

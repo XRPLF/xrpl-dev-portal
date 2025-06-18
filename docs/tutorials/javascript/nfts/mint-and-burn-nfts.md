@@ -1,10 +1,7 @@
 ---
-html: mint-and-burn-nfts-using-javascript.html
-parent: nfts-using-javascript.html
 seo:
     description: Mint and burn NFTs.
 labels:
-  - Quickstart
   - Tokens
   - Non-fungible tokens, NFTs
 ---
@@ -16,46 +13,51 @@ This example shows how to:
 2. Get a list of existing NFTs.
 3. Delete (Burn) an NFT.
 
-[![Test harness with mint NFT fields](/docs/img/quickstart8.png)](/docs/img/quickstart8.png)
+[![Mint NFTs Tester](../../../img/mt-mint-token-1-empty-form.png)](../../../img/mt-mint-token-1-empty-form.png)
 
 # Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to try the sample in your own browser.
+You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to try the sample in your own browser.
 
 ## Get Accounts
 
-1. Open `3.mint-nfts.html` in a browser.
-2. Get test accounts.
-    1. If you have existing Testnet account seeds:
-        1. Paste the account seeds in the **Seeds** field.
-        2. Click **Get Accounts from Seeds**.
-    2. If you do not have existing Testnet accounts:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
+1. Open `mint-nfts.html` in a browser.
+2. Choose your preferred test network (**Devnet** or **Testnet**).
+3. Get test accounts.
+    1. If you copied the gathered information from another tutorial:
+        1. Paste the gathered information to the **Result** field.
+        2. Click **Distribute Account Info**.
+    2. If you have an existing account seed:
+        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+    2. If you do not have existing accounts:
+        1. Click **Get New Account 1**.
+        2. Click **Get New Account 2**.
 
-[![Get accounts](/docs/img/quickstart9.png)](/docs/img/quickstart9.png)
+[![Get accounts](../../../img/mt-mint-token-2-accounts.png)](../../../img/mt-mint-token-2-accounts.png)
 
 ## Mint an NFT
 
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oGzKbQJCTJ0?si=kCBG_jJkFAS7_mYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-
 To mint a non-fungible token object:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account.
-2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account.
+2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
 3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0. If you impose a transfer fee, your NFT can only be traded for tokens for which your account has a trust line. See [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md#trust-lines).
-4. Click **Mint NFT**.
+4. Enter an **NFT Taxon**. This is a required value, but if you are not using the field to create an integer-based taxon entry, you can set the value to 0.
+5. (Optional) You can set an expected price for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
+6. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.
+7. Optionally, you can enter an **Expiration** value in days, after which the offer will no longer be available.
+8. Click **Mint NFT**.
 
-[![Mint NFT fields](/docs/img/quickstart10.png)](/docs/img/quickstart10.png)
+[![Mint NFT fields](../../../img/mt-mint-token-3-mint-token.png)](../../../img/mt-mint-token-3-mint-token.png)
 
 
 ## Get Tokens
 
-Click **Get NFTs** to get a list of NFTs owned by the account.
+Click **Get NFTs** to get a list of NFTs owned by the currently selected account.
 
-[![Get NFTs](/docs/img/quickstart11.png)](/docs/img/quickstart11.png)
+[![Get NFTs](../../../img/mt-mint-token-4-get-tokens.png)](../../../img/mt-mint-token-4-get-tokens.png)
 
 ## Burn a Token
 
@@ -63,649 +65,549 @@ The current owner of an NFT can always destroy (or _burn_) an NFT object.
 
 To permanently destroy an NFT:
 
-1. Enter the **Token ID**.
+1. Enter or select the account that owns the NFT.
+2. Enter the **NFT ID**.
 2. Click **Burn NFT**.
 
-[![Burn NFTs](/docs/img/quickstart12.png)](/docs/img/quickstart12.png)
+[![Burn NFTs](../../../img/mt-mint-token-5-burn-token.png)](../../../img/mt-mint-token-5-burn-token.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) archive to examine the code samples.
+You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to examine the code samples.
 
-## ripplex3-mint-nfts.js
+## mint-nfts.js
 <!-- SPELLING_IGNORE: ripplex3 -->
 
-### Mint Token
+### Mint NFT
 
+Get the account wallet and connect to the XRP Ledger.
 ```javascript
-// *******************************************************
-// ********************** Mint Token *********************
-// *******************************************************
-      
-async function mintToken() {
+async function mintNFT() {
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
+  const net = getNet();
+  const client = new xrpl.Client(net);
+  let results = `\n=== Connected. Minting NFT ===`;
+  resultField.value = results;
+
+  try {
+    await client.connect();
 ```
 
-Connect to the ledger and get the account wallets.
+Prepare the  transaction parameters.
 
 ```javascript
-  results = 'Connecting to ' + getNet() + '....'
-  standbyResultField.value = results
-  let net = getNet()
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const client = new xrpl.Client(net)
-  await client.connect()
-  results += '\nConnected. Minting NFT.'
-  standbyResultField.value = results
+    const transactionParams = {
+      TransactionType: "NFTokenMint",
+      Account: wallet.classicAddress,
+      URI: xrpl.convertStringToHex(nftURLfield.value),
+      Flags: parseInt(flagsField.value, 10), // Parse to integer
+      TransferFee: parseInt(transferFeeField.value, 10), // Parse to integer
+      NFTokenTaxon: parseInt(nftTaxonField.value, 10), // Parse to integer
+    };
 ```
 
-Define the transaction.
+Add optional fields.
 
 ```javascript
+    // Add optional fields
+    if (amountField.value) {
+         transactionParams.Amount = configureAmount(amountField.value);
+    }
 
-  const transactionJson = {
-    "TransactionType": "NFTokenMint",
-    "Account": standby_wallet.classicAddress,
+    if (expirationField.value) {
+       transactionParams.Expiration = configureExpiration(expirationField.value);
+    }
+
+    if (destinationField.value) {
+      transactionParams.Destination = destinationField.value;
+    }
 ```
 
-Note that the URI field expects a hexadecimal value rather than the literal URI string. You can use the `convertStringToHex` utility to transform the URI in real time.
+Log the transaction parameters before submission.
 
 ```javascript
-    "URI": xrpl.convertStringToHex(standbyTokenUrlField.value),
+    console.log("Mint NFT Transaction Parameters:", transactionParams);
 ```
 
-If you want the NFT to be transferable to third parties, set the **Flags** field to _8_.
-
+Submit the transaction.
 
 ```javascript
-    "Flags": parseInt(standbyFlagsField.value),
+
+    const tx = await client.submitAndWait(transactionParams, { wallet });
 ```
 
-The Transfer Fee is a value 0 to 50000, used to set a royalty of 0.000% to 50.000% in increments of 0.001. 
+Get the current list of NFTs owned by the account.
 
 ```javascript
-    "TransferFee": parseInt(standbyTransferFeeField.value),
+    const nfts = await client.request({
+      method: "account_nfts",
+      account: wallet.classicAddress,
+    });
 ```
 
-The `TokenTaxon` is a required value. It is an arbitrary value defined by the issuer. If you do not have a use for the field, you can set it to _0_.
-
+Report the results of the transaction.
 
 ```javascript
-    "NFTokenTaxon": 0 //Required, but if you have no use for it, set to zero.
+    results = `\n\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`;
+    results += `\n\n=== NFTs: ${JSON.stringify(nfts, null, 2)} ===`;
+    results += `\n\n=== XRP Balance: ${await client.getXrpBalance(wallet.address)} ===`; // Await here
+    resultField.value = results;
+```
+
+Catch and report any errors.
+
+```javascript
+  } catch (error) {
+    console.error("Error minting NFT:", error);
+    results += `\n\n=== Error minting NFT: ${error.message} ===`; // Use error.message
+    resultField.value = results;
+```
+
+Disconnect from the XRP Ledger.
+
+```javascript
+  } finally {
+    if (client && client.isConnected()) { // Check if connected before disconnecting
+      await client.disconnect();
+    }
   }
+} // End of mintToken()
 ```
 
+### Get NFTs
 
-Send the transaction and wait for the response.
+Get the wallet and connect to the XRP Ledger.
 
 ```javascript
-  const tx = await client.submitAndWait(transactionJson, { wallet: standby_wallet} )
+async function getNFTs() {
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
+  const net = getNet();
+  const client = new xrpl.Client(net);
+  let results = '\n=== Connected. Getting NFTs. ===';
+  resultField.value = results;
+  try {
+    await client.connect();
 ```
 
-Request a list of NFTs owned by the account.
+Prepare and send the `account_nfts` request.
 
 ```javascript
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: standby_wallet.classicAddress
-  })
+
+    const nfts = await client.request({
+      method: "account_nfts",
+      account: wallet.classicAddress,
+    });
 ```
 
 Report the results.
 
 ```javascript
-  results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
-  results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  standbyResultField.value = results    
+    results = '\n=== NFTs:\n ' + JSON.stringify(nfts, null, 2) + ' ===';
+    resultField.value = results;
 ```
 
-Disconnect from the ledger.
+Catch and report any errors.
 
 ```javascript
-  client.disconnect()
-} //End of mintToken()
+  } catch (error) {
+    console.error("Error getting NFTs:", error);
+    results += `\n\n=== Error getting NFTs: ${error.message} ===`;
+    resultField.value = results;
 ```
 
-
-### Get Tokens
-
-```javascript
-// *******************************************************
-// ******************* Get Tokens ************************
-// *******************************************************
-
-async function getTokens() {
-```
-
-Connect to the ledger and get the account.
+Disconnect from the XRP Ledger.
 
 ```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + net + '...'
-  standbyResultField.value = results
-  await client.connect()
-  results += '\nConnected. Getting NFTs...'
-  standbyResultField.value = results
-```
-
-Request a list of NFTs owned by the account.
-
-```javascript
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: standby_wallet.classicAddress
-  })
-```
-
-Report the results.
-
-```javascript
-  results += '\nNFTs:\n ' + JSON.stringify(nfts,null,2)
-  standbyResultField.value = results
-```
-
-Disconnect from the ledger.
-
-```javascript
-  client.disconnect()
-} //End of getTokens()
-```
-
-### Burn Token
-
-```javascript
-// *******************************************************
-// ********************* Burn Token **********************
-// *******************************************************
-      
-async function burnToken() {
-```
-
-Connect to the ledger and get the account wallets.
-
-```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + net + '...'
-  standbyResultField.value = results
-  await client.connect()
-  results += '\nConnected. Burning NFT...'
-  standbyResultField.value = results
-```
-
-Define the transaction.
-
-```javascript
-  const transactionBlob = {
-    "TransactionType": "NFTokenBurn",
-    "Account": standby_wallet.classicAddress,
-    "NFTokenID": standbyTokenIdField.value
+  } finally {
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    }
   }
+} // End of getNFTs()
+```
+
+### Burn NFT
+
+Get the account wallet and connect to the XRP Ledger.
+
+```javascript
+async function burnNFT() {
+  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
+  const net = getNet();
+  const client = new xrpl.Client(net);
+  let results = '\n=== Connected. Burning NFT. ===';
+  resultField.value = results;
+  try {
+    await client.connect();
+```
+
+Prepare the `NFTokenBurn` transaction.
+
+```javascript
+    const transactionBlob = {
+      TransactionType: "NFTokenBurn",
+      Account: wallet.classicAddress,
+      NFTokenID: nftIdField.value,
+    };
+
+    console.log("Burn NFT Transaction Parameters:", transactionBlob); // Log before submit
 ```
 
 Submit the transaction and wait for the results.
 
 ```javascript
-  const tx = await client.submitAndWait(transactionBlob,{wallet: standby_wallet})
+    const tx = await client.submitAndWait(transactionBlob, { wallet });
+    const nfts = await client.request({ // Get nfts after burning.
+      method: "account_nfts",
+      account: wallet.classicAddress,
+    });
 ```
-
-Request a list of NFTs owned by the client.
-
-```javascript
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: standby_wallet.classicAddress
-  })
-```
-
 
 Report the results.
 
-
 ```javascript
-  results += '\nTransaction result: '+ tx.result.meta.TransactionResult
-  results += '\nBalance changes: ' +
-  JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  standbyResultField.value = results
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  results += '\nNFTs: \n' + JSON.stringify(nfts,null,2)
-  standbyResultField.value = results
-  client.disconnect()
-}// End of burnToken()
+    results = `\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`; 
+    results += '\n\n=== Balance changes: ' +
+      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2) + ' ===';
+    results += '\n\n=== NFTs: \n' + JSON.stringify(nfts, null, 2) + ' ==='; 
+    resultField.value = results;
+    xrpBalanceField.value = (await client.getXrpBalance(wallet.address)); // Await
 ```
 
-### Reciprocal Transactions
-
-These transactions are the same as the Standby account transactions, but for the Operational account.
+Catch and report any errors.
 
 ```javascript
-// *******************************************************
-// ************** Operational Mint Token *****************
-// *******************************************************
-      
-async function oPmintToken() {
-  results = 'Connecting to ' + getNet() + '....'
-  operationalResultField.value = results
-  let net = getNet()
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const client = new xrpl.Client(net)
-  await client.connect()
-  results += '\nConnected. Minting NFT.'
-  operationalResultField.value = results
+  } catch (error) {
+    console.error("Error burning NFT:", error);
+    results = `\n\n=== Error burning NFT: ${error.message} ===`; // User friendly
+    resultField.value = results;
+```
 
-  // Note that you must convert the token URL to a hexadecimal 
-  // value for this transaction.
-  // ------------------------------------------------------------------------
-  const transactionBlob = {
-    "TransactionType": 'NFTokenMint',
-    "Account": operational_wallet.classicAddress,
-    "URI": xrpl.convertStringToHex(operationalTokenUrlField.value),
-    "Flags": parseInt(operationalFlagsField.value),
-    "TransferFee": parseInt(operationalTransferFeeField.value),
-    "NFTokenTaxon": 0 //Required, but if you have no use for it, set to zero.
-  }
-      
-  // ----------------------------------------------------- Submit signed blob 
-  const tx = await client.submitAndWait(transactionBlob, { wallet: operational_wallet} )
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: operational_wallet.classicAddress
-  })
-        
-  // ------------------------------------------------------- Report results
-  results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
-  results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  operationalResultField.value = results
-  client.disconnect()
-} //End of oPmintToken
-      
-// *******************************************************
-// ************** Operational Get Tokens *****************
-// *******************************************************
+Disconnect from the XRP Ledger.
 
-async function oPgetTokens() {
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  operationalResultField.value = results
-  await client.connect()
-  results += '\nConnected. Getting NFTs...'
-  operationalResultField.value = results
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: operational_wallet.classicAddress
-  })
-  results += '\nNFTs:\n ' + JSON.stringify(nfts,null,2)
-  operationalResultField.value = results
-  client.disconnect()
-} //End of oPgetTokens
-      
-// *******************************************************
-// ************* Operational Burn Token ******************
-// *******************************************************
-      
-async function oPburnToken() {
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  results = 'Connecting to ' + getNet() + '...'
-  operationalResultField.value = results
-  await client.connect()
-  results += '\nConnected. Burning NFT...'
-  operationalResultField.value = results
-      
-  // ------------------------------------------------------- Prepare transaction
-  const transactionBlob = {
-    "TransactionType": "NFTokenBurn",
-    "Account": operational_wallet.classicAddress,
-    "NFTokenID": operationalTokenIdField.value
+```javascript
+  } finally {
+    if (client && client.isConnected()) {
+      await client.disconnect();
+    }
   }
-      
-  //-------------------------------------------------------- Submit signed blob
-  const tx = await client.submitAndWait(transactionBlob,{wallet: operational_wallet})
-  const nfts = await client.request({
-    method: "account_nfts",
-    account: operational_wallet.classicAddress
-  })
-  results += '\nTransaction result: '+ tx.result.meta.TransactionResult
-  results += '\nBalance changes: ' +
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  operationalResultField.value = results
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  results += '\nNFTs: \n' + JSON.stringify(nfts,null,2)
-  operationalResultField.value = results
-  client.disconnect()
 }
-// End of oPburnToken()
 ```
 
-## 3.mint-nfts.html
+## mint-nfts.html
 
 ```html
 <html>
-  <head>
-    <title>Token Test Harness</title>
+<head>
+    <title>Mint NFTs</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <style>
-       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
-       h1{font-weight: bold;}
-       input, button {padding: 6px;margin-bottom: 8px;}
-       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
-       td{vertical-align: middle;}
-    </style>
-    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
-    <script src='ripplex1-send-xrp.js'></script>
-    <script src='ripplex2-send-currency.js'></script>
-    <script src='ripplex3-mint-nfts.js'></script>
-    <script>
-      if (typeof module !== "undefined") {
-        const xrpl = require('xrpl')
-      }
-    </script>
-  </head>
-  
-<!-- ************************************************************** -->
-<!-- ********************** The Form ****************************** -->
-<!-- ************************************************************** -->
-
-  <body>
-    <h1>Token Test Harness</h1>
+    <link href="modular-tutorials.css" rel="stylesheet">
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
+    <script src="account-support.js"></script>
+    <script src='transaction-support.js'></script>
+    <script src='mint-nfts.js'></script>
+</head>
+<body>
+    <h1>Mint NFTs</h1>
     <form id="theForm">
-      Choose your ledger instance:  
-      &nbsp;&nbsp;
-      <input type="radio" id="tn" name="server"
-        value="wss://s.altnet.rippletest.net:51233" checked>
-      <label for="testnet">Testnet</label>
-      &nbsp;&nbsp;
-      <input type="radio" id="dn" name="server"
-        value="wss://s.devnet.rippletest.net:51233">
-      <label for="devnet">Devnet</label>
-      <br/><br/>
-      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
-      <br/>
-      <textarea id="seeds" cols="40" rows= "2"></textarea>
-      <br/><br/>
-      <table>
-        <tr valign="top">
-          <td>
-            <table>
-              <tr valign="top">
+        <span class="tooltip" tooltip-data="Choose the XRPL host server for your account.">
+            Choose your ledger instance:
+        </span>
+        &nbsp;&nbsp;
+        <input type="radio" id="dn" name="server" value="wss://s.devnet.rippletest.net:51233" checked>
+        <label for="dn">Devnet</label>
+        &nbsp;&nbsp;
+        <input type="radio" id="tn" name="server" value="wss://s.altnet.rippletest.net:51233">
+        <label for="tn">Testnet</label>
+        <br /><br />
+        <table>
+            <tr>
                 <td>
-                <td>
-                  <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
-                  <table>
-                    <tr valign="top">
-                      <td align="right">
-                        Standby Account
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAccountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Public Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPubKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Private Key
-                      </td>
-                      <td>
-                        <input type="text" id="standbyPrivKeyField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Seed
-                      </td>
-                      <td>
-                        <input type="text" id="standbySeedField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        XRP Balance
-                      </td>
-                      <td>
-                        <input type="text" id="standbyBalanceField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Amount
-                      </td>
-                      <td>
-                        <input type="text" id="standbyAmountField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Destination
-                      </td>
-                      <td>
-                        <input type="text" id="standbyDestinationField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
-                    <tr valign="top">
-                      <td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
-                      <td>
-                        <input type="checkbox" id="standbyDefault" checked="true"/>
-                        <label for="standbyDefault">Allow Rippling</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">
-                        Currency
-                      </td>
-                      <td>
-                        <input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">NFT URL</td>
-                      <td><input type="text" id="standbyTokenUrlField"
-                        value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="right">Flags</td>
-                      <td><input type="text" id="standbyFlagsField" value="1" size="10"/></td>
-                    </tr>
-                    <tr>
-                      <td align="right">NFT ID</td>
-                      <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
-                    </tr>
-                            <tr>
-                                <td align="right">Transfer Fee</td>
-                                <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-                            </tr>
-                  </table>
-                  <p align="left">
-                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
-                  </p>
-                </td>
+                    <button type="button" onClick="getNewAccount1()">Get New Account 1</button>
                 </td>
                 <td>
-                  <table>
-                    <tr valign="top">
-                      <td align="center" valign="top">
-                        <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
-                        <br/><br/>
-                        <button type="button" onClick="createTrustline()">Create TrustLine</button>
-                        <br/>
-                        <button type="button" onClick="sendCurrency()">Send Currency</button>
-                        <br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br/><br/>
-                        <button type="button" onClick="mintToken()">Mint NFT</button>
-                        <br/>
-                        <button type="button" onClick="getTokens()">Get NFTs</button>
-                        <br/>
-                        <button type="button" onClick="burnToken()">Burn NFT</button>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                    <button type="button" onClick="getAccountFromSeed1()">Get Account 1 From Seed</button>
                 </td>
-              </tr>
-            </table>
-          </td>
-          <td>
-            <table>
-              <tr>
                 <td>
-                <td>
-                  <table>
-                    <tr>
-                      <td align="center" valign="top">
-                        <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
-                        <br/><br/>
-                        <button type="button" onClick="oPcreateTrustline()">Create TrustLine</button>
-                        <br/>
-                        <button type="button" onClick="oPsendCurrency()">Send Currency</button>
-                        <br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br/><br/>
-                        <button type="button" onClick="oPmintToken()">Mint NFT</button>
-                        <br/>
-                        <button type="button" onClick="oPgetTokens()">Get NFTs</button>
-                        <br/>
-                        <button type="button" onClick="oPburnToken()">Burn NFT</button>
-                      <td valign="top" align="right">
-                        <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
-                        <table>
-                          <tr valign="top">
-                            <td align="right">
-                              Operational Account
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAccountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Public Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPubKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Private Key
-                            </td>
-                            <td>
-                              <input type="text" id="operationalPrivKeyField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Seed
-                            </td>
-                            <td>
-                              <input type="text" id="operationalSeedField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              XRP Balance
-                            </td>
-                            <td>
-                              <input type="text" id="operationalBalanceField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Amount
-                            </td>
-                            <td>
-                              <input type="text" id="operationalAmountField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Destination
-                            </td>
-                            <td>
-                              <input type="text" id="operationalDestinationField" size="40"></input>
-                              <br>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                            </td>
-                            <td align="right">                        <input type="checkbox" id="operationalDefault" checked="true"/>
-                              <label for="operationalDefault">Allow Rippling</label>
-                              <button type="button" onClick="configureAccount('operational',document.querySelector('#operationalDefault').checked)">Configure Account</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">
-                              Currency
-                            </td>
-                            <td>
-                              <input type="text" id="operationalCurrencyField" size="40" value="USD"></input>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">NFT URL</td>
-                            <td><input type="text" id="operationalTokenUrlField"
-                              value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="right">Flags</td>
-                            <td><input type="text" id="operationalFlagsField" value="1" size="10"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">NFT ID</td>
-                            <td><input type="text" id="operationalTokenIdField" value="" size="80"/></td>
-                          </tr>
-                          <tr>
-                            <td align="right">Transfer Fee</td>
-                            <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
-                          </tr>
-                                      </table>
-                        <p align="right">
-                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
-                        </p>
-                      </td>
-                      </td>
-                    </tr>
-                    </td>
-                    </tr>
-                  </table>
+                    <button type="button" onClick="getNewAccount2()">Get New Account 2</button>
                 </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+                <td>
+                    <button type="button" onClick="getAccountFromSeed2()">Get Account 2 From Seed</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account."><label
+                            for="account1name">Account 1 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1name" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Arbitrary human-readable name for the account.">
+                        <label for="account2name">Account 2 Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2name" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account1address">Account 1 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1address" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Identifying address for the account.">
+                        <label for="account2address">Account 2 Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2address" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account1seed">Account 1 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account1seed" size="40"></input>
+                </td>
+                <td>
+                    <span class="tooltip" tooltip-data="Seed for deriving public and private keys for the account.">
+                        <label for="account2seed">Account 2 Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="account2seed" size="40"></input>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <table>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Name of the currently selected account.">
+                        <label for="accountNameField">Account Name</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountNameField" size="40" readonly></input>
+                    <input type="radio" id="account1" name="accounts" value="account1">
+                    <label for="account1">Account 1</label>
+                </td>
+                <td rowspan="4" align="center">
+                    <p>
+                        <img id="nftImage"
+                            src="https://ipfs.io/ipfs/bafybeigjro2d2tc43bgv7e4sxqg7f5jga7kjizbk7nnmmyhmq35dtz6deq"
+                            width="150" height="150">
+                </td>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Address of the currently selected account.">
+                        <label for="accountAddressField">Account Address</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountAddressField" size="40" readonly></input>
+                    <input type="radio" id="account2" name="accounts" value="account2">
+                    <label for="account2">Account 2</label>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Seed of the currently selected account.">
+                        <label for="accountSeedField">Account Seed</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="accountSeedField" size="40" readonly></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="XRP balance for the currently selected account.">
+                        <label for="xrpBalanceField">XRP Balance</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="xrpBalanceField" size="40" readonly></input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="NFT configuration flags.">
+                        <label for="flagsField">Flags</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="flagsField" size="40"></input>
+                </td>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="URL to the stored NFT.">
+                        <label for="nftURLfield">NFT URL</label>
+                    </span>&nbsp;&nbsp;
+                    <input type="text" id="nftURLfield" size="30"
+                        value="https://ipfs.io/ipfs/bafybeigjro2d2tc43bgv7e4sxqg7f5jga7kjizbk7nnmmyhmq35dtz6deq"></input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Percentage of sale price collected by the issuer when the NFT is sold. Enter a value from 0 to 50000, where 1000=1%.">
+                        <label for="transferFeeField">Transfer Fee</label>
+                    </span>
+                    <p id="error-message"></p>
+                </td>
+                <td>
+                    <input type="text" id="transferFeeField" size="40"></input>
+                </td>
+                <td>
+                    <button type="button" onClick="mintNFT()">Mint NFT</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="NFT Taxon. Integer value used to identify NFTs minted in a series or collection. This value is required. Set it to 0 if you have no use for it.">
+                        <label for="nftTaxonField">NFT Taxon</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftTaxonField" size="40" value="0"></input>
+                </td>
+                <td>
+                    <button type="button" onClick="getNFTs()">Get NFTs</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Currency for the offer.">
+                        <label for="currencyField">Currency</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="currencyField" size="40"></input>
+                    <br>
+                </td>
+                <td>
+                    <button type="button" onClick="burnNFT()">Burn NFT</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Issuer of the currency used.">
+                        <label for="issuerField">Issuer</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="issuerField" size="40"></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Amount of currency to send. If XRP, you can enter 1 per XRP: the amount is converted to drops for you.">
+                        <label for="amountField">Amount</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="amountField" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Destination account address where XRP is sent.">
+                        <label for="destinationField">Destination</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="destinationField" size="40"></input>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="Number of days the offer is valid.">
+                        <label for="expirationField">Expiration (days)</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="expirationField" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <span class="tooltip" tooltip-data="NFT ID, used to transfer or burn the NFT after it is created.">
+                        <label for="nftIdField">NFT ID</label>
+                    </span>
+                </td>
+                <td>
+                    <input type="text" id="nftIdField" size="40"></input>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p align="left">
+                        <textarea id="resultField" cols="75" rows="20"></textarea>
+                    </p>
+                </td>
+                <td align="left" valign="top">
+                    <button type="button" onClick="gatherAccountInfo()">Gather Account Info</button><br />
+                    <button type="button" onClick="distributeAccountInfo()">Distribute Account Info</button>
+                </td>
+            </tr>
+        </table>
     </form>
-  </body>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const imageURLInput = document.getElementById('nftURLfield'); // Correct ID to nftURLfield
+        const displayImage = document.getElementById('nftImage');
+        const errorMessage = document.getElementById('error-message');
+
+        if (imageURLInput) {
+            imageURLInput.addEventListener('change', () => {
+                const newURL = imageURLInput.value;
+                displayImage.src = ''; // Clear previous image
+                errorMessage.style.display = 'none';
+                try {
+                    new URL(newURL);
+                } catch (_) {
+                    errorMessage.textContent = 'Invalid URL. Please enter a valid URL, including "https://" or "http://".';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+                displayImage.onload = () => {
+                    // Image loaded.  You might add a console log here, or update UI.
+                    console.log(`Image loaded from: ${newURL}`);
+                };
+                displayImage.onerror = () => {
+                    errorMessage.textContent = 'Error loading image from the provided URL.';
+                    errorMessage.style.display = 'block';
+                    displayImage.src = ''; // Clear the image on error
+                };
+                displayImage.src = newURL; // Load the image
+            });
+        }
+    });
+
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function () {
+            if (this.value === 'account1') {
+                populate1()
+            } else if (this.value === 'account2') {
+                populate2()
+            }
+        });
+    });
+</script>
 </html>
 ```
