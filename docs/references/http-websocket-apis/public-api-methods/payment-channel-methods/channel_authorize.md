@@ -11,7 +11,7 @@ labels:
 
 _(Added by the [PayChan amendment][] to be enabled.)_
 
-The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP from a payment channel.
+The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP or fungible tokens from a payment channel.
 
 ## Request Format
 An example of the request format:
@@ -67,7 +67,7 @@ The request includes the following parameters:
 | `seed_hex`     | String  | _(Optional)_ The secret seed to use to sign the claim. This must be the same key pair as the public key specified in the channel. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
 | `passphrase`   | String  | _(Optional)_ A string passphrase to use to sign the claim. This must be the same key pair as the public key specified in the channel. The [key derived from this passphrase](../../../../concepts/accounts/cryptographic-keys.md#key-derivation) must match the public key specified in the channel. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
 | `key_type` | String | _(Optional)_ The [signing algorithm](../../../../concepts/accounts/cryptographic-keys.md#signing-algorithms) of the cryptographic key pair provided. Valid types are `secp256k1` or `ed25519`. The default is `secp256k1`. |
-| `amount` | String | Cumulative amount of XRP, in drops, to authorize. If the destination has already received a lesser amount of XRP from this channel, the signature created by this method can be redeemed for the difference. |
+| `amount` | Object or String | Cumulative amount of XRP, in drops, or fungible tokens to authorize. If the destination has already received a lesser amount from this channel, the signature created by this method can be redeemed for the difference. |
 
 The request **must** specify exactly one of `secret`, `seed`, `seed_hex`, or `passphrase`.
 
@@ -121,14 +121,14 @@ The response follows the [standard format][], with a successful result containin
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `signature` | String | The signature for this claim, as a hexadecimal value. To process the claim, the destination account of the payment channel must send a [PaymentChannelClaim transaction][] with this signature, the exact Channel ID, XRP amount, and public key of the channel. |
+| `signature` | String | The signature for this claim, as a hexadecimal value. To process the claim, the destination account of the payment channel must send a [PaymentChannelClaim transaction][] with this signature, the exact Channel ID, amount, and public key of the channel. |
 
 ## Possible Errors
 
 * Any of the [universal error types][].
 * `badKeyType` - The `key_type` parameter in the request is not a valid key type. (Valid types are `secp256k1` or `ed25519`.)
 * `badSeed` - The `secret` in the request is not a valid secret key.
-* `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount][XRP, in drops].
+* `channelAmtMalformed` - The `amount` in the request is not a valid amount.
 * `channelMalformed` - The `channel_id` in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
