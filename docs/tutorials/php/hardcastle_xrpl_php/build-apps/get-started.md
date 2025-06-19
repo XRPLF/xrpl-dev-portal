@@ -45,7 +45,7 @@ composer require hardcastle/xrpl_php
 
 ## Start Building
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../../concepts/accounts/index.md), integrating with the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](/docs/concepts/accounts/index.md), integrating with the [decentralized exchange](/docs/concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](/docs/concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
@@ -75,9 +75,9 @@ Note that PHP has no native support for WebSockets, so the Client does not estab
 
 #### Connect to the production XRP Ledger
 
-The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](../../../concepts/networks-and-servers/parallel-networks.md). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
+The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](/docs/concepts/networks-and-servers/parallel-networks.md). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
-* By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+* By [installing the core server](/docs/infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](/docs/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](/docs/concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
     ```
     use XRPL_PHP\Client\JsonRpcClient;
@@ -99,7 +99,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 ### 2. Get account
 
-To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](../../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../../concepts/accounts/index.md#creating-accounts) to meet the [account reserve](../../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](../../../concepts/transactions/secure-signing.md).
+To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](/docs/concepts/accounts/cryptographic-keys.md#key-components) and an [address](/docs/concepts/accounts/addresses.md) that's been [funded with enough XRP](/docs/concepts/accounts/index.md#creating-accounts) to meet the [account reserve](/docs/concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](/docs/concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](/docs/concepts/transactions/secure-signing.md).
 
 To generate a new account, `PHP_XRPL` provides the static `generate()` method in the `Wallet` class:
 
@@ -138,13 +138,13 @@ print_r([
 
 ```
 
-For testing and development purposes, you can use the `fundWallet()` helper function on the XRP Ledger [Testnet](../../../concepts/networks-and-servers/parallel-networks.md):
+For testing and development purposes, you can use the `fundWallet()` helper function on the XRP Ledger [Testnet](/docs/concepts/networks-and-servers/parallel-networks.md):
 
 {% code-snippet file="/_code-samples/get-started/php/get-account-info.php" from="<?php" before="// Create an AccountInfoRequest" language="php" /%}
 
 ### 3. Query the XRP Ledger
 
-You can query the XRP Ledger to get information about [a specific account](../../../references/http-websocket-apis/public-api-methods/account-methods/index.md), [a specific transaction](../../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md), the state of a [current or a historical ledger](../../../references/http-websocket-apis/public-api-methods/ledger-methods/index.md), and [the XRP Ledger's decentralized exchange](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](../../../concepts/transactions/reliable-transaction-submission.md).
+You can query the XRP Ledger to get information about [a specific account](/docs/references/http-websocket-apis/public-api-methods/account-methods/index.md), [a specific transaction](/docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx.md), the state of a [current or a historical ledger](/docs/references/http-websocket-apis/public-api-methods/ledger-methods/index.md), and [the XRP Ledger's decentralized exchange](/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](/docs/concepts/transactions/reliable-transaction-submission.md).
 
 Here, we'll use the [`JsonRpcClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [account we got](#2-get-account) in the previous step.
 
@@ -221,18 +221,18 @@ The response fields contained in `AccountInfoResponse` that you want to inspect 
 
 * `['account_data']['Sequence']` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions.
 
-* `['account_data']['Balance']` — This is the account's balance of XRP, in drops. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
+* `['account_data']['Balance']` — This is the account's balance of XRP, in drops. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](/docs/concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
 
-* `['validated']` — Indicates whether the returned data is from a [validated ledger](../../../concepts/ledgers/open-closed-validated-ledgers.md). When inspecting transactions, it's important to confirm that [the results are final](../../../concepts/transactions/finality-of-results/index.md) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).
+* `['validated']` — Indicates whether the returned data is from a [validated ledger](/docs/concepts/ledgers/open-closed-validated-ledgers.md). When inspecting transactions, it's important to confirm that [the results are final](/docs/concepts/transactions/finality-of-results/index.md) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](/docs/concepts/transactions/reliable-transaction-submission.md).
 
-For a detailed description of every response field, see [account_info](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md#response-format).
+For a detailed description of every response field, see [account_info](/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info.md#response-format).
 
 
 ## Keep on building
 
 Now that you know how to use `XRPL_PHP` to connect to the XRP Ledger, get an account, and look up information about it, you can also use `XRPL_PHP` to:
 
-* [Send XRP](../../how-tos/send-xrp.md).
-* [Set up secure signing](../../../concepts/transactions/secure-signing.md) for your account.
+* [Send XRP](/docs/tutorials/how-tos/send-xrp.md).
+* [Set up secure signing](/docs/concepts/transactions/secure-signing.md) for your account.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
