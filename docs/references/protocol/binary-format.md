@@ -196,6 +196,8 @@ Transactions and ledger entries may contain fields of any of the following types
 | [UInt160][]      | 17        | 160        | No                   | A 160-bit binary value. This may define a currency code or issuer. |
 | [UInt192][]      | 21        | 192        | No                   | A 192-bit binary value. This usually represents an MPT issuance. |
 | [UInt256][]      | 5         | 256        | No                   | A 256-bit binary value. This usually represents the hash of a transaction, ledger version, or ledger entry. |
+| [UInt384][]      | 22        | 384        | No                   | **UNUSED.** A 384-bit binary value. |
+| [UInt512][]      | 23        | 512        | No                   | **UNUSED.** A 512-bit binary value. |
 | [Vector256][]    | 19        | Variable   | Yes                  | A list of 256-bit binary values. This may be a list of ledger entries or other hash values. |
 | [XChainBridge][] | 25        | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on both chains. |
 
@@ -391,10 +393,14 @@ The following example shows the serialization format for a PathSet:
 [UInt128]: #uint-fields
 [UInt160]: #uint-fields
 [UInt256]: #uint-fields
+[UInt384]: #uint-fields
+[UInt512]: #uint-fields
 
-The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, UInt64, UInt128, UInt160, and UInt256. All of these are standard big-endian binary unsigned integers with the specified number of bits. The larger types such as UInt128, UInt160, and UInt256 were previously named Hash128, Hash160, and Hash256 because they often contain hash function outputs.
+The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, UInt64, UInt128, UInt160, and UInt256. All of these are standard big-endian binary unsigned integers with the specified number of bits. The larger types such as UInt128, UInt160, and UInt256 were previously named `Hash128`, `Hash160`, and `Hash256` because they often contain hash function outputs. (These names are still used in the definitions file.)
 
 When representing these fields in JSON, these fields may be represented as JSON numbers, strings containing hexadecimal, or as strings containing decimal numbers, depending on the bit size and intended use of the data. UInt64 and up are never converted to JSON numbers, because some JSON decoders may try to represent them as "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision. UInt128 and UInt256 typically represent hash values or arbitrary data, so they are typically represented in JSON as hexadecimal.
+
+The types UInt96, UInt384, and UInt512 are currently defined but not used.
 
 The `TransactionType` field is a special case. In JSON, this field is conventionally represented as a string with the name of the transaction type. In binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to the numeric values used in the binary format.
 

@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
-# Transaction Serialization Sample Code (Python3 version)
+# Transaction Serialization Sample Code (Python version)
 # Author: rome@ripple.com
-# Copyright Ripple 2018
-# Requires Python 3.5+ because of bytes.hex()
+# Copyright Ripple 2018-2025
 
 import argparse
 import json
@@ -135,9 +134,11 @@ def accountid_to_bytes(address):
 def amount_to_bytes(a):
     """
     Serializes an "Amount" type, which can be either XRP or an issued currency:
-    - XRP: 64 bits; 0, followed by 1 ("is positive"), followed by 62 bit UInt amount
-    - Issued Currency: 64 bits of amount, followed by 160 bit currency code and
+    - XRP: total 64 bits: 0, followed by 1 ("is positive"), then 0, then 61 bit UInt amount
+    - Issued Currency: total 384 bits: 64 bits of amount, followed by 160 bit currency code and
       160 bit issuer AccountID.
+    - MPT: 8-bit header with the binary value 01100000 (0x60), then 64 bit UInt amount,
+      32 bit Sequence number, and 160 bit issuer AccountID.
     """
     if type(a) == str:
         # is XRP
@@ -194,6 +195,13 @@ def blob_to_bytes(field_val):
     vl_contents = bytes.fromhex(field_val)
     return vl_encode(vl_contents)
 
+def currency_to_bytes(currency):
+    """
+    Serializes a Currency-type field, which can be either 3-character string or 
+    160-bit hexadecimal.
+    """
+    return currency_code_to_bytes(currency, xrp_ok=True)
+
 def currency_code_to_bytes(code_string, xrp_ok=False):
     if re.match(r"^[A-Za-z0-9?!@#$%^&*<>(){}\[\]|]{3}$", code_string):
         # ISO 4217-like code
@@ -216,7 +224,7 @@ def currency_code_to_bytes(code_string, xrp_ok=False):
         return b''.join( ( bytes(12), code_ascii, bytes(5) ) )
     elif re.match(r"^[0-9a-fA-F]{40}$", code_string):
         # raw hex code
-        return bytes.fromhex(code_string) # requires Python 3.5+
+        return bytes.fromhex(code_string)
     else:
         raise ValueError("invalid currency code")
 
@@ -224,29 +232,53 @@ def hash128_to_bytes(contents):
     """
     Serializes a hexadecimal string as binary and confirms that it's 128 bits
     """
-    b = hash_to_bytes(contents)
+    b = hex_to_bytes(contents)
     if len(b) != 16: # 16 bytes = 128 bits
         raise ValueError("Hash128 is not 128 bits long")
     return b
 
 def hash160_to_bytes(contents):
-    b = hash_to_bytes(contents)
+    b = hex_to_bytes(contents)
     if len(b) != 20: # 20 bytes = 160 bits
         raise ValueError("Hash160 is not 160 bits long")
     return b
 
 def hash256_to_bytes(contents):
-    b = hash_to_bytes(contents)
+    b = hex_to_bytes(contents)
     if len(b) != 32: # 32 bytes = 256 bits
         raise ValueError("Hash256 is not 256 bits long")
     return b
 
-def hash_to_bytes(contents):
+def hex_to_bytes(contents):
     """
     Helper function; serializes a hash value from a hexadecimal string
     of any length.
     """
     return bytes.fromhex(field_val)
+
+def issue_to_bytes(issue):
+    """
+    Serialize an Issue-type field, which defines a fungible token or XRP
+    without a quantity.
+    """
+    if type(issue) != dict:
+        raise ValueError("Issue field must be provided as dictionary")
+    if len(issue.keys()) == 1 and issue.get("currency") != "XRP":
+        raise ValueError("Issue field must provide currency and issuer unless currency is XRP")
+    elif sorted(issue.keys()) != ["currency", "issuer"]:
+        raise ValueError("Issue field must provide currency and issuer unless currency is XRP")
+    
+    currency_code = currency_code_to_bytes(issue["currency"])
+    address = decode_address(issue["issuer"])
+    return currency_code + address
+
+def number_to_bytes(str_num):
+    """
+    Serialize a Number-type field, which is a stand-alone quantity in the same
+    floating point format as a fungible token amount.
+    """
+    amt = IssuedAmount(str_num)
+    return amt.to_bytes()
 
 def object_to_bytes(obj):
     """
@@ -349,6 +381,18 @@ def uint16_to_bytes(i):
 def uint32_to_bytes(i):
     return i.to_bytes(4, byteorder="big", signed=False)
 
+def uint64_to_bytes(i):
+    # Unlike smaller UInts, UInt64 is serialized as hex in JSON
+    b = hex_to_bytes(i)
+    if len(b) != 8: # 8 bytes = 64 bits
+        raise ValueError("UInt64 is not 64 bits long")
+    return b
+
+def uint384_to_bytes(i):
+    b = hex_to_bytes(i)
+    if len(b) != 8: # 8 bytes = 64 bits
+        raise ValueError("UInt64 is not 64 bits long")
+    return b
 
 # Core serialization logic -----------------------------------------------------
 
@@ -372,15 +416,20 @@ def field_to_bytes(field_name, field_val):
         "AccountID": accountid_to_bytes,
         "Amount": amount_to_bytes,
         "Blob": blob_to_bytes,
-        "Hash128": hash128_to_bytes,
+        "Currency": currency_to_bytes,
+        "Hash128": hash128_to_bytes, # aka UInt128
         "Hash160": hash160_to_bytes,
         "Hash256": hash256_to_bytes,
+        "Issue": issue_to_bytes,
+        "Number": number_to_bytes,
         "PathSet": pathset_to_bytes,
         "STArray": array_to_bytes,
         "STObject": object_to_bytes,
         "UInt8" : uint8_to_bytes,
         "UInt16": uint16_to_bytes,
         "UInt32": uint32_to_bytes,
+        "UInt64": uint64_to_bytes,
+        "UInt384": uint384_to_bytes,
     }
     field_binary = dispatch[field_type](field_val)
     return b''.join( (id_prefix, field_binary) )
