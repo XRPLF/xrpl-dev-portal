@@ -5,13 +5,13 @@ labels:
   - Accounts
   - Permissions
   - Delegate
+status: not_enabled
 ---
 
 # DelegateSet 
-
-{% partial file="../../../../_snippets/permission-delegation-disclaimer.md" /%}
-
 The `DelegateSet` transaction creates, modifies, or deletes a `Delegate` ledger object, thereby granting, changing, or revoking delegated permissions between accounts.
+
+_(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_
 
 ## Example `DelegateSet` JSON
 
@@ -142,3 +142,4 @@ The transactions disabled for delegation include: `AccountSet`, `RegularKeySet`,
 
 - If the Account does not have enough balance to meet the reserve requirement, (because `DelegateSet` will create a ledger object `ltDELEGATE`, whose owner is `Account`), return `tecINSUFFICIENT_RESERVE`.
 
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

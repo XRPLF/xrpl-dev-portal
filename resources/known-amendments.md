@@ -17,6 +17,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [PermissionDelegation][]          | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
 | [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/fixes-enabled-dnfts-expected" %}Expected: 2025-06-11{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
@@ -117,7 +118,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [fixAMMv1_3][]                    | {% badge %}In Development: TBD{% /badge %} |  |
 | [fixEnforceNFTokenTrustlineV2][]  | {% badge %}In Development: TBD{% /badge %} |  |
 | [fixPayChanCancelAfter][]         | {% badge %}In Development: TBD{% /badge %} |  |
-| [PermissionDelegation][]          | {% badge %}In Development: TBD{% /badge %} |  |
 | [PermissionedDEX][]               | {% badge %}In Development: TBD{% /badge %} |  |
 | [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} |  |
 | [TokenEscrow][]                   | {% badge %}In Development: TBD{% /badge %} |  |
@@ -1673,7 +1673,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 | Amendment    | PermissionDelegation |
 |:-------------|:---------------------|
 | Amendment ID | AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 

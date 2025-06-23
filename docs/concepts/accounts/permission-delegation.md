@@ -4,12 +4,12 @@ seo:
 labels:
   - Accounts
   - Permissions
+status: not_enabled
 ---
 # Permission Delegation
-
-{% partial file="../../_snippets/permission-delegation-disclaimer.md" /%}
-
 XRPL accounts can delegate both transaction permissions and granular permissions to other accounts, enhancing flexibility and enabling use cases such as implementing role-based access control. This delegation is managed using the [`DelegateSet`](../../references/protocol/transactions/types/delegateset.md) transaction.
+
+_(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_
 
 ## Assigning Permissions
 
@@ -104,3 +104,5 @@ Any other errors are the same as when the _rDelegatingAccount_ sends transaction
 * The account specified in the `Delegate` field is responsible for paying the transaction fee.
 * A delegated account can only perform actions that have been explicitly permitted.
 {% /admonition %}
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
