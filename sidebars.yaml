@@ -162,6 +162,7 @@
             - page: docs/concepts/accounts/multi-signing.md
             - page: docs/concepts/accounts/depositauth.md
             - page: docs/concepts/accounts/tickets.md
+            - page: docs/concepts/accounts/permission-delegation.md
         - page: docs/concepts/xrpl-sidechains/index.md
           expanded: false
           items:
@@ -393,6 +394,7 @@
                     - page: docs/references/protocol/transactions/types/checkcreate.md
                     - page: docs/references/protocol/transactions/types/clawback.md
                     - page: docs/references/protocol/transactions/types/depositpreauth.md
+                    - page: docs/references/protocol/transactions/types/delegateset.md
                     - page: docs/references/protocol/transactions/types/diddelete.md
                     - page: docs/references/protocol/transactions/types/didset.md
                     - page: docs/references/protocol/transactions/types/escrowcancel.md

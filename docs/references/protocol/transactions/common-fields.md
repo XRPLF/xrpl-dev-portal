@@ -62,7 +62,7 @@ The [`Paths` field](types/payment.md#paths) of the [Payment transaction][] type 
 
 ## Delegate
 
-The `Delegate` ledger object stores a set of permissions that an XRPL account has delegated to another account. You create `Delegate` objects using the [`DelegateSet`](./delegate-set.md) transaction.
+The `Delegate` ledger object stores a set of permissions that an XRPL account has delegated to another account. You create `Delegate` objects using the [`DelegateSet`](./types/delegateset.md) transaction.
 
 ### Structure
 
