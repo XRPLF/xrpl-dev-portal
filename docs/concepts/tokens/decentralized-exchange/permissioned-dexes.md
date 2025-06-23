@@ -40,11 +40,19 @@ _Figure: A permissioned order book, linked to a permissioned domain. Owen is bot
 
 ## Structure
 
-With the permissioned DEXes feature, a trade offer can be _open_, _permissioned_, or _hybrid_. An open offer uses the open DEX and can be matched by anyone else's open offer, an [Automated Market Maker (AMM)](./automated-market-makers.md), or a combination of offers and an AMM. _Open offers_ are unchanged from how the XRPL's DEX works without permissioned DEXes.
+With the permissioned DEXes feature, a trade offer can be _open_, _permissioned_, or _hybrid_. An open offer uses the open DEX and can be matched by anyone else's open offer, hybrid offer, an [Automated Market Maker (AMM)](./automated-market-makers.md), or a combination of offers and an AMM. _Open offers_ are unchanged from how the XRPL's DEX works without permissioned DEXes.
 
 A permissioned offer specifies a domain ID, and is only valid if a permissioned domain with the matching ID exists and the account placing the offer has access to that domain because they hold the correct credentials. Permissioned offers are placed into an order book for the given domain and currency pair, separate from the open DEX's order book for that currency pair. Permissioned offers can only execute by matching other permissioned offers that specify the same domain ID. [Cross-currency payments](../../payment-types/cross-currency-payments.md) can also specify a domain ID, in which case they are restricted to only consuming offers from the corresponding permissioned DEX. Trades in a permissioned DEX can still use [auto-bridging](./autobridging.md) as long as the necessary orders all exist in the same permissioned DEX.
 
 A hybrid offer specifies a domain ID and a flag marking it as hybrid. Like a permissioned offer, it is only valid if the specified permissioned domain exists and the account placing the offer has access to that domain. However, a hybrid offer can match offers in both the specified DEX and the open DEX. Hybrid offers are tracked in both the open DEX order book and the domain-specific order book for their currency pair, and can be consumed by matching offers from either. When placed, they preferentially match offers from the permissioned DEX.
+
+In summary, see the following table summarizing what offers can match:
+
+| Offer/Payment Type | Open Offer | Hybrid Offer | Permissioned Offer | AMM |
+|--------------------|------------|--------------|--------------------|-----|
+| Open               | ✅         | ✅           | ❌                 | ✅  |
+| Hybrid             | ✅         | ✅           | ✅ (same domain)   | ✅  |
+| Permissioned       | ❌         | ❌           | ✅ (same domain)   | ❌  |
 
 There is no single ledger entry to represent a given permissioned DEX: it implicitly exists as all the order books with the same domain ID. Order books with a given domain ID are implicitly created when valid offers are placed using that domain ID, and those order books are automatically deleted when they are empty. A single transaction can use multiple order books with the same domain ID—in other words, different currency pairs in the same permissioned DEX—either as part of a longer cross-currency payment or through auto-bridging. A hybrid offer can match a mix of permissioned and open offers, but a transaction cannot use multiple different domains.
 
