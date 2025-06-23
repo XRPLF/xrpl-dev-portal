@@ -50,6 +50,8 @@ Date:   Wed Jun 4 10:55:23 2025 -0700
     Set version to 2.5.0-rc1
 ```
 
+{% admonition type="info" name="Note" %} After this release, we will no longer support GCC versions older than 12, Clang (including Apple Clang) versions older than 16, or Conan 1. {% /admonition %}
+
 
 ## Full Changelog
 
