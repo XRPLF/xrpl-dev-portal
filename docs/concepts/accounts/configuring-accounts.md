@@ -80,7 +80,7 @@ All of the configuration flags can be helpful for specific use cases. The follow
 
 ## Using the Account Configurator
 
-You can download a copy of the [Account Configurator](../../../_code-samples/account-configurator/account-configurator.zip) from the `_code_samples` directory.
+You can download a copy of the [Account Configurator](../../../_code-samples/account-configurator/js/account-configurator.zip) from the `_code_samples` directory.
 
 Expand the archive and open `account_configurator.html` in a browser window.
 
