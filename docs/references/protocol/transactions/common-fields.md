@@ -75,9 +75,9 @@ A `Delegate` object has the following fields:
 | `Account` | ✔️ | string | AccountID | The account that delegates permissions to another account. |
 | `Authorize` | ✔️ | string | AccountID | The account to which permissions are delegated. |
 | `Permissions` | ✔️ | string | STArray | The transaction permissions that the `Authorize` account has been granted. |
-| `OwnerNode` | ❌ | string | UInt64 | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
-| `PreviousTxnID` | ❌ | string | Hash256 | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeqNumber`| ❌ | number | UInt32 |The index of the ledger that contains the transaction that most recently modified this object. |
+| `OwnerNode` | ✔️ | string | UInt64 | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
+| `PreviousTxnID` | ✔️ | string | Hash256 | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeqNumber`| ✔️ | number | UInt32 |The index of the ledger that contains the transaction that most recently modified this object. |
 
 ### Retrieving Delegate Objects
 
