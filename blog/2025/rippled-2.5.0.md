@@ -37,18 +37,18 @@ On supported platforms, see the [instructions on installing or updating `rippled
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.5.0-1.el7.x86_64.rpm) | `TBD` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.5.0-1_amd64.deb) | `TBD` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.5.0-1.el7.x86_64.rpm) | `7719be1889619a37a83795a9740d803bbc1c08b0bd8c755cbf266aeb68b875b6` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.5.0-1_amd64.deb) | `d935f678624349e422dff1944a40acaf3e287b11244b4f5b5056cb343fc31e9d` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
-commit 11edaa441db07d527fe16c300b822239de7d7012
+commit 1e01cd34f7a216092ed779f291b43324c167167a
 Author: Michael Legleux <mlegleux@ripple.com>
-Date:   Wed Jun 4 10:55:23 2025 -0700
+Date:   Tue Jun 17 10:38:07 2025 -0700
 
-    Set version to 2.5.0-rc1
+    Set version to 2.5.0
 ```
 
 {% admonition type="info" name="Note" %} After this release, we will no longer support GCC versions older than 12, Clang (including Apple Clang) versions older than 16, or Conan 1. {% /admonition %}

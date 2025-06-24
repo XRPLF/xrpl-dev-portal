@@ -17,7 +17,13 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [Batch][]                         | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
 | [PermissionDelegation][]          | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
+| [PermissionedDEX][]               | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
+| [TokenEscrow][]                   | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
+| [fixAMMv1_3][]                    | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
+| [fixEnforceNFTokenTrustlineV2][]  | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
+| [fixPayChanCancelAfter][]         | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
 | [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/fixes-enabled-dnfts-expected" %}Expected: 2025-06-11{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
@@ -114,13 +120,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} |  |
-| [Batch][]                         | {% badge %}In Development: TBD{% /badge %} |  |
-| [fixAMMv1_3][]                    | {% badge %}In Development: TBD{% /badge %} |  |
-| [fixEnforceNFTokenTrustlineV2][]  | {% badge %}In Development: TBD{% /badge %} |  |
-| [fixPayChanCancelAfter][]         | {% badge %}In Development: TBD{% /badge %} |  |
-| [PermissionedDEX][]               | {% badge %}In Development: TBD{% /badge %} |  |
 | [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} |  |
-| [TokenEscrow][]                   | {% badge %}In Development: TBD{% /badge %} |  |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -201,7 +201,7 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 | Amendment    | Batch |
 |:-------------|:------|
 | Amendment ID | 894646DD5284E97DECFE6674A6D6152686791C4A95F8C132CCA9BAF9E5812FB6 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -810,7 +810,7 @@ Fixes two bugs in Automated Market Maker (AMM) transaction processing:
 | Amendment    | fixAMMv1_3 |
 |:-------------|:-----------|
 | Amendment ID | 7CA70A7674A26FA517412858659EBC7EDEEF7D2D608824464E6FDEFD06854E14 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1147,7 +1147,7 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | Amendment    | fixPayChanCancelAfter |
 |:-------------|:----------------------|
 | Amendment ID | D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1688,7 +1688,7 @@ Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-
 | Amendment    | PermissionedDEX |
 |:-------------|:----------------|
 | Amendment ID | 677E401A423E3708363A36BA8B3A7D019D21AC5ABD00387BDBEA6BDE4C91247E |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1853,7 +1853,7 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 | Amendment    | TokenEscrow |
 |:-------------|:------------|
 | Amendment ID | 138B968F25822EFBF54C00F97031221C47B1EAB8321D93C7C2AEAF85F04EC5DF |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
