@@ -51,7 +51,7 @@ Date:   Tue Jun 17 10:38:07 2025 -0700
     Set version to 2.5.0
 ```
 
-{% admonition type="info" name="Note" %} After this release, we will no longer support GCC versions older than 12, Clang (including Apple Clang) versions older than 16, or Conan 1. {% /admonition %}
+{% admonition type="warning" name="Warning" %} After this release, we will no longer support GCC versions older than 12, Clang (including Apple Clang) versions older than 16, or Conan 1. {% /admonition %}
 
 
 ## Full Changelog
@@ -66,7 +66,7 @@ The following amendments are open for voting with this release:
 - **PermissionDelegation (XLS-75)** - Enables account holders to delegate specific permissions to other accounts for flexible account management and automation. ([#5354](https://github.com/XRPLF/rippled/pull/5354))
 - **AMMv1_3** - Adds invariant checking to AMM-related transactions. ([#5203](https://github.com/XRPLF/rippled/pull/5203))
 - **EnforceNFTokenTrustlineV2** - Fixes issues with NFT interactions bypassing the trustline authorization requirement. ([#5297](https://github.com/XRPLF/rippled/pull/5297))
-- **PayChanCancelAfter** - Fixes an issue that makes it possible to create a payment channel when `CancelAfter` is in the past. ([#4717](https://github.com/XRPLF/rippled/pull/4717))
+- **PayChanCancelAfter** - Fixes an issue that made it possible to create a payment channel when `CancelAfter` is in the past. ([#4717](https://github.com/XRPLF/rippled/pull/4717))
 
 
 ### New Features

@@ -17,13 +17,13 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [Batch][]                         | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
-| [PermissionDelegation][]          | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
-| [PermissionedDEX][]               | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
-| [TokenEscrow][]                   | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
-| [fixAMMv1_3][]                    | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
-| [fixEnforceNFTokenTrustlineV2][]  | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
-| [fixPayChanCancelAfter][]         | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-23{% /badge %} |
+| [Batch][]                         | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
+| [PermissionDelegation][]          | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
+| [PermissionedDEX][]               | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
+| [TokenEscrow][]                   | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
+| [fixAMMv1_3][]                    | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
+| [fixEnforceNFTokenTrustlineV2][]  | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
+| [fixPayChanCancelAfter][]         | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
 | [DynamicNFT][]                    | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/fixes-enabled-dnfts-expected" %}Expected: 2025-06-11{% /badge %} |
 | [PermissionedDomains][]           | v2.4.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.4.0" %}Open for Voting: 2025-03-06{% /badge %} |
 | [Credentials][]                   | v2.3.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.3.0" %}Open for Voting: 2024-11-26{% /badge %} |
