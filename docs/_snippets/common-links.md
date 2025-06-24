@@ -254,6 +254,7 @@
 [PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
 [permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
+[MPToken entry]: /docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
 [MPTokensV1_1 amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode
