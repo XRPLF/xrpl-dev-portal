@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: "2025-06-04"
+date: "2025-06-24"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 2.5.0
