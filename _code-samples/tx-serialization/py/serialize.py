@@ -153,6 +153,7 @@ def amount_to_bytes(a):
             xrp_amt = -xrp_amt
         return xrp_amt.to_bytes(8, byteorder="big", signed=False)
     elif type(a) == dict:
+        #TODO: handle mpt amounts
         if sorted(a.keys()) != ["currency", "issuer", "value"]:
             raise ValueError("amount must have currency, value, issuer only (actually had: %s)" %
                     sorted(a.keys()))
@@ -254,7 +255,7 @@ def hex_to_bytes(contents):
     Helper function; serializes a hash value from a hexadecimal string
     of any length.
     """
-    return bytes.fromhex(field_val)
+    return bytes.fromhex(contents)
 
 def issue_to_bytes(issue):
     """
@@ -394,6 +395,16 @@ def uint384_to_bytes(i):
         raise ValueError("UInt64 is not 64 bits long")
     return b
 
+def vector256_to_bytes(strlist):
+    """
+    Serialize a Vector256 type which is a length-prefixed list of arbitrary
+    256-bit values.
+    """
+    binarylist = []
+    for item in strlist:
+        binarylist.append(hash256_to_bytes(item))
+    return vl_encode(b''.join(binarylist))
+
 # Core serialization logic -----------------------------------------------------
 
 def field_to_bytes(field_name, field_val):
@@ -430,6 +441,7 @@ def field_to_bytes(field_name, field_val):
         "UInt32": uint32_to_bytes,
         "UInt64": uint64_to_bytes,
         "UInt384": uint384_to_bytes,
+        "Vector256": vector256_to_bytes,
     }
     field_binary = dispatch[field_type](field_val)
     return b''.join( (id_prefix, field_binary) )
@@ -465,6 +477,12 @@ def serialize_tx(tx, for_signing=False):
       "Sequence": 2
     }
     """
+    # Special case: DeliverMax is an API alias for Amount. De-alias it here.
+    # See also: https://github.com/XRPLF/rippled/issues/5506
+    if "DeliverMax" in tx.keys():
+        tx["Amount"] = tx["DeliverMax"]
+        del tx["DeliverMax"]
+
     field_order = sorted(tx.keys(), key=field_sort_key)
     logger.debug("Canonical field order: %s" % field_order)
 
