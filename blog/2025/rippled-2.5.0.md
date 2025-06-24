@@ -21,6 +21,7 @@ Version 2.5.0 of `rippled`, the reference server implementation of the XRP Ledge
 - `PermissionDelegation`
 - `AMMv1_3`
 - `EnforceNFTokenTrustlineV2`
+- `PayChanCancelAfter`
 
 
 ## Action Required
@@ -65,6 +66,7 @@ The following amendments are open for voting with this release:
 - **PermissionDelegation (XLS-75)** - Enables account holders to delegate specific permissions to other accounts for flexible account management and automation. ([#5354](https://github.com/XRPLF/rippled/pull/5354))
 - **AMMv1_3** - Adds invariant checking to AMM-related transactions. ([#5203](https://github.com/XRPLF/rippled/pull/5203))
 - **EnforceNFTokenTrustlineV2** - Fixes issues with NFT interactions bypassing the trustline authorization requirement. ([#5297](https://github.com/XRPLF/rippled/pull/5297))
+- **PayChanCancelAfter** - Fixes an issue that makes it possible to create a payment channel when `CancelAfter` is in the past. ([#4717](https://github.com/XRPLF/rippled/pull/4717))
 
 
 ### New Features
