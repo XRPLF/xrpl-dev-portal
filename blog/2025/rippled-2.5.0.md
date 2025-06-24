@@ -94,7 +94,7 @@ The following amendments are open for voting with this release:
 - Updated links to the ripple binary codec definitions. ([#5355](https://github.com/XRPLF/rippled/pull/5355))
 - Fixed the consensus logic to prevent a consensus round taking too long to complete. ([#5277](https://github.com/XRPLF/rippled/pull/5277))
 - Fixed `undefined uint128_t` type on non-unity `Windows` builds. ([#5377](https://github.com/XRPLF/rippled/pull/5377))
-- Fixed a `uin128` issue that broke MacOS unity builds. ([#5386](https://github.com/XRPLF/rippled/pull/5386))
+- Fixed a `uint128` issue that broke MacOS unity builds. ([#5386](https://github.com/XRPLF/rippled/pull/5386))
 - Fixed a memory ordering assertion failure. ([#5381](https://github.com/XRPLF/rippled/pull/5381))
 - Disabled `channel_authorize` when `signing_support` is disabled. ([#5385](https://github.com/XRPLF/rippled/pull/5385))
 - Fixed a webhook issue when using the `subscribe` admin RPC. ([#5163](https://github.com/XRPLF/rippled/pull/5163))
