@@ -11,23 +11,23 @@ labels:
 
 _Added by the [PayChan amendment][]._
 
-Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
+Claim XRP or fungible tokens from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 
 The **source address** of a channel can:
 
-- Send XRP from the channel to the destination with _or without_ a signed Claim.
+- Send XRP or fungible tokens from the channel to the destination with _or without_ a signed Claim.
 - Set the channel to expire as soon as the channel's `SettleDelay` has passed.
 - Clear a pending `Expiration` time.
-- Close a channel immediately, with or without processing a claim first. The source address cannot close the channel immediately if the channel has XRP remaining.
+- Close a channel immediately, with or without processing a claim first. The source address cannot close the channel immediately if the channel has any amount remaining.
 
 The **destination address** of a channel can:
 
-- Receive XRP from the channel using a signed Claim.
-- Close the channel immediately after processing a Claim, refunding any unclaimed XRP to the channel's source.
+- Receive XRP or fungible tokens from the channel using a signed Claim.
+- Close the channel immediately after processing a Claim, refunding any unclaimed amount to the channel's source.
 
 **Any address** sending this transaction can:
 
-- Cause a channel to be closed if its `Expiration` or `CancelAfter` time is older than the previous ledger's close time. Any validly-formed PaymentChannelClaim transaction has this effect regardless of the contents of the transaction.
+- Cause a channel to be closed if its `Expiration` or `CancelAfter` time is older than the previous ledger's close time. Any validly formed `PaymentChannelClaim` transaction has this effect, regardless of the contents of the transaction.
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -50,8 +50,8 @@ The **destination address** of a channel can:
 
 | Field       | JSON Type | [Internal Type][] | Required? | Description |
 |:------------|:----------|:------------------|:----------|:------------|
-| `Amount`    | String    | Amount            | No        | The amount of [XRP, in drops][Currency Amount], authorized by the `Signature`. This must match the amount in the signed message. This is the cumulative amount of XRP that can be dispensed by the channel, including XRP previously redeemed. |
-| `Balance`   | String    | Amount            | No        | Total amount of [XRP, in drops][Currency Amount], delivered by this channel after processing this claim. Required to deliver XRP. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
+| `Amount`    | Object or String    | Amount            | No        | The amount of [XRP, in drops][Currency Amount], or fungible tokens authorized by the `Signature`. This must match the amount in the signed message. This is the cumulative amount of XRP and fungible tokens that can be dispensed by the channel, including funds previously redeemed. |
+| `Balance`   | String    | Amount            | No        | Total amount of [XRP, in drops][Currency Amount], or fungible tokens delivered by this channel after processing this claim. Required to deliver XRP or fungible tokens. Must be more than the total amount delivered by the channel so far, but not greater than the `Amount` of the signed claim. Must be provided except when closing the channel. |
 | `Channel`   | String    | Hash256           | Yes       | The unique ID of the channel, as a 64-character hexadecimal string. |
 | `CredentialIDs` | Array of Strings | Vector256  | No    | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. For details, see [Credential IDs](./payment.md#credential-ids). |
 | `PublicKey` | String    | Blob              | No        | The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the public key so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
@@ -62,7 +62,7 @@ If the payment channel was created before the [fixPayChanRecipientOwnerDir amend
 
 ## PaymentChannelClaim Flags
 
-Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
+Transactions of the `PaymentChannelClaim` type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
 
 | Flag Name | Hex Value    | Decimal Value | Description                       |
 |:----------|:-------------|:--------------|:----------------------------------|

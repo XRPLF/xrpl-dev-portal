@@ -76,6 +76,7 @@
         - page: docs/concepts/transactions/index.md
           expanded: false
           items:
+            - page: docs/concepts/transactions/batch-transactions.md
             - page: docs/concepts/transactions/fees.md
             - page: docs/concepts/transactions/reliable-transaction-submission.md
             - page: docs/concepts/transactions/secure-signing.md
@@ -149,6 +150,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/ticksize.md
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
+                - page: docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:
@@ -161,6 +163,7 @@
             - page: docs/concepts/accounts/multi-signing.md
             - page: docs/concepts/accounts/depositauth.md
             - page: docs/concepts/accounts/tickets.md
+            - page: docs/concepts/accounts/permission-delegation.md
         - page: docs/concepts/xrpl-sidechains/index.md
           expanded: false
           items:
@@ -383,6 +386,7 @@
                     - page: docs/references/protocol/transactions/types/ammdeposit.md
                     - page: docs/references/protocol/transactions/types/ammvote.md
                     - page: docs/references/protocol/transactions/types/ammwithdraw.md
+                    - page: docs/references/protocol/transactions/types/batch.md
                     - page: docs/references/protocol/transactions/types/credentialaccept.md
                     - page: docs/references/protocol/transactions/types/credentialcreate.md
                     - page: docs/references/protocol/transactions/types/credentialdelete.md
@@ -391,6 +395,7 @@
                     - page: docs/references/protocol/transactions/types/checkcreate.md
                     - page: docs/references/protocol/transactions/types/clawback.md
                     - page: docs/references/protocol/transactions/types/depositpreauth.md
+                    - page: docs/references/protocol/transactions/types/delegateset.md
                     - page: docs/references/protocol/transactions/types/diddelete.md
                     - page: docs/references/protocol/transactions/types/didset.md
                     - page: docs/references/protocol/transactions/types/escrowcancel.md
