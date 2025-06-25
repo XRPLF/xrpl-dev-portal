@@ -30,7 +30,6 @@ On supported platforms, see the [instructions on installing or updating `rippled
 |:--------|:--------|
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.3.0-1.el7.x86_64.rpm) | `fb74f401e5ba121bbc37e6188aa064488ad78ffef549a1e19bc8b71316d08031` |
 | [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.3.0-1_amd64.deb) | `5d616d53218b47a2f0803c1d37d410f72d19b57cdb9cabdf77b1cf0134cce3ca` |
-| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 {% admonition type="info" name="Note" %}
 The packages in the stable repository were accidentally overwritten with a different build from the same source code as a result of version 2.3.0 being merged to both the `release` and `master` source code branches. This post has been updated with the new package hashes based on the packages currently available in the stable branch of each repository. The previous package hashes, below, are also acceptable, and represent the same release:
