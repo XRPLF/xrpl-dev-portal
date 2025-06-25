@@ -133,12 +133,13 @@ def accountid_to_bytes(address):
 
 def amount_to_bytes(a):
     """
-    Serializes an "Amount" type, which can be either XRP or an issued currency:
+    Serializes an "Amount" type, which can be XRP, an issued currency, or MPT:
     - XRP: total 64 bits: 0, followed by 1 ("is positive"), then 0, then 61 bit UInt amount
-    - Issued Currency: total 384 bits: 64 bits of amount, followed by 160 bit currency code and
-      160 bit issuer AccountID.
-    - MPT: 8-bit header with the binary value 01100000 (0x60), then 64 bit UInt amount,
-      32 bit Sequence number, and 160 bit issuer AccountID.
+    - Issued Currency: total 384 bits: 64 bits of amount, followed by 160 bit
+      currency code and 160 bit issuer AccountID.
+    - MPT: total 264 bits: 8-bit header with the binary value 01100000 (0x60), 
+      then 64 bit amount, 32 bit Sequence number, and 160 bit issuer AccountID.
+      The Sequence and issuer are adjoined as mpt_issuance_id.
     """
     if type(a) == str:
         # is XRP
@@ -153,17 +154,26 @@ def amount_to_bytes(a):
             xrp_amt = -xrp_amt
         return xrp_amt.to_bytes(8, byteorder="big", signed=False)
     elif type(a) == dict:
-        #TODO: handle mpt amounts
-        if sorted(a.keys()) != ["currency", "issuer", "value"]:
+        if sorted(a.keys()) == ["mpt_issuance_id", "value"]:
+            # MPT Amount
+            mpt_prefix = uint8_to_bytes(0x60)
+            mpt_amt = int(a["value"])
+            assert mpt_amt < 2**63 and mpt_amt >= 0
+            mpt_amt_bytes = mpt_amt.to_bytes(8, byteorder="big", signed=False)
+            mpt_issuance_id = uint192_to_bytes(a["mpt_issuance_id"])
+            return mpt_prefix + mpt_amt_bytes + mpt_issuance_id
+
+        elif sorted(a.keys()) != ["currency", "issuer", "value"]:
             raise ValueError("amount must have currency, value, issuer only (actually had: %s)" %
                     sorted(a.keys()))
 
+        # Fungible token amount (non-MPT)
         issued_amt = IssuedAmount(a["value"]).to_bytes()
         logger.debug("Issued amount: %s"%issued_amt.hex())
         currency_code = currency_code_to_bytes(a["currency"])
         return issued_amt + currency_code + decode_address(a["issuer"])
     else:
-        raise ValueError("amount must be XRP string or {currency, value, issuer}")
+        raise ValueError("amount must be XRP string, {currency, value, issuer}, or {mpt_issuance_id, value}")
 
 def array_to_bytes(array):
     """
@@ -389,6 +399,12 @@ def uint64_to_bytes(i):
         raise ValueError("UInt64 is not 64 bits long")
     return b
 
+def uint192_to_bytes(i):
+    b = hex_to_bytes(i)
+    if len(b) != 24: # 24 bytes = 192 bits
+        raise ValueError("UInt192 is not 192 bits long")
+    return b
+
 def uint384_to_bytes(i):
     b = hex_to_bytes(i)
     if len(b) != 8: # 8 bytes = 64 bits
@@ -440,6 +456,7 @@ def field_to_bytes(field_name, field_val):
         "UInt16": uint16_to_bytes,
         "UInt32": uint32_to_bytes,
         "UInt64": uint64_to_bytes,
+        "UInt192": uint192_to_bytes,
         "UInt384": uint384_to_bytes,
         "Vector256": vector256_to_bytes,
     }

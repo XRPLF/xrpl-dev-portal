@@ -244,8 +244,8 @@ The _Amount_ type (also called "STAmount") is a special field type that represen
 
     Multi-Purpose Tokens (MPTs) consist of four segments in order:
 
-    1. 8 bits indicating that this is an MPT. The most significant bit is `0` to indicate that it's not a fungible token. The second bit is `1` to indicate that it is postiive. The third most significant bit is `1` to indicate that it is an MPT. The remaining 5 bits are reserved and must all be `0`.
-    2. 64 bits indicating the quantity of the MPT, as a 64-bit _signed_ integer. (However, in most contexts, negative amounts are not allowed.)
+    1. 8 bits indicating that this is an MPT. The most significant bit is `0` to indicate that it's not a fungible token. The second bit is `1` to indicate that it is postiive. The third most significant bit is `1` to indicate that it is an MPT. The remaining 5 bits are reserved and must all be `0`. In other words, the first byte is `0x60`.
+    2. 64 bits indicating the quantity of the MPT, as a 64-bit unsigned integer. (However, the maximum amount cannot be larger than 2<sup>63</sup>-1.)
     3. 32 bits indicating the `Sequence` number of the transaction that created the MPT issuance.
     4. 160 bits indicating the [AccountID][] of the MPT's issuer.
 
