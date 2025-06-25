@@ -36,7 +36,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
-| `NFTokenID`       | String    | Hash256           | The `NFToken` to be removed by this transaction. |
+| `NFTokenID`       | String    | UInt256           | The `NFToken` to be removed by this transaction. |
 | `Owner`           | String    | AccountID         | _(Optional)_ The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `lsfBurnable` flag enabled. |
 
 

@@ -37,8 +37,8 @@ An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentr
 <!--{# fix md highlighting_ #}-->
 
 
-| Field          | JSON Type           | [Internal Type][] | Description       |
-|:---------------|:--------------------|:------------------|:------------------|
+| Field            | JSON Type           | [Internal Type][] | Description       |
+|:-----------------|:--------------------|:------------------|:------------------|
 | [`Expiration`](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration) | Number | UInt32 | _(Optional)_ Time after which the Offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | `OfferSequence`  | Number              | UInt32            | _(Optional)_ An Offer to delete first, specified in the same way as [OfferCancel][]. |
 | `TakerGets`      | [Currency Amount][] | Amount            | The amount and type of currency being sold. |

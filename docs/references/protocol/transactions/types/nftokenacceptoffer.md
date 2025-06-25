@@ -76,8 +76,8 @@ The transaction fails with a [`tec`-class code](../transaction-results/tec-codes
 
 | Field              | JSON Type           | [Internal Type][] | Description   |
 |:-------------------|:--------------------|:------------------|:--------------|
-| `NFTokenSellOffer` | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
-| `NFTokenBuyOffer`  | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
+| `NFTokenSellOffer` | String              | UInt256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
+| `NFTokenBuyOffer`  | String              | UInt256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
 | `NFTokenBrokerFee` | [Currency Amount][] | Amount            | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the `NFToken` being bought. If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
 
 In direct mode, you must specify **either** the `NFTokenSellOffer` or the `NFTokenBuyOffer` field. In brokered mode, you must specify **both** fields.

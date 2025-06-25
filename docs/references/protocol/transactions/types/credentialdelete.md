@@ -28,11 +28,11 @@ _(Requires the [Credentials amendment][] {% not-enabled /%})_
 
 In addition to the [common fields][], CredentialDelete transactions use the following fields:
 
-| Field            | JSON Type        | [Internal Type][] | Required? | Description |
-|:-----------------|:-----------------|:------------------|:----------|:------------|
-| `CredentialType` | String - Hexadecimal  | Blob | Yes | Arbitrary data defining the type of credential to delete. The minimum length is 1 byte and the maximum length is 256 bytes. |
-| `Subject` | String - [Address][] | AccountID | No | The subject of the credential to delete. If omitted, use the `Account` (sender of the transaction) as the subject of the credential. |
-| `Issuer` |  String - [Address][] | AccountID | No | The issuer of the credential to delete. If omitted, use the `Account` (sender of the transaction) as the issuer of the credential. |
+| Field            | JSON Type            | [Internal Type][] | Required? | Description |
+|:-----------------|:---------------------|:------------------|:----------|:------------|
+| `CredentialType` | String - Hexadecimal | Blob              | Yes       | Arbitrary data defining the type of credential to delete. The minimum length is 1 byte and the maximum length is 256 bytes. |
+| `Subject`        | String - [Address][] | AccountID         | No        | The subject of the credential to delete. If omitted, use the `Account` (sender of the transaction) as the subject of the credential. |
+| `Issuer`         | String - [Address][] | AccountID         | No        | The issuer of the credential to delete. If omitted, use the `Account` (sender of the transaction) as the issuer of the credential. |
 
 You must provide the `Subject` field, `Issuer` field, or both.
 

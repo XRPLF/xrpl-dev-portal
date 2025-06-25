@@ -29,7 +29,7 @@ _（[Checks Amendment][]が必要です）_
 
 | フィールド       | JSONの型 | [内部の型][] | 説明                    |
 |:------------|:----------|:------------------|:-------------------------------|
-| `CheckID`   | 文字列    | Hash256           | 取り消す[Checkレジャーオブジェクト](../../ledger-data/ledger-entry-types/check.md)のID（64文字の16進文字列）。 |
+| `CheckID`   | 文字列    | UInt256           | 取り消す[Checkレジャーオブジェクト](../../ledger-data/ledger-entry-types/check.md)のID（64文字の16進文字列）。 |
 
 ## エラーケース
 
