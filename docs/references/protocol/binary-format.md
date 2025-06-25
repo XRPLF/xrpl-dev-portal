@@ -75,7 +75,7 @@ The following JSON file defines the important constants you need for serializing
 
 **<https://github.com/XRPLF/xrpl.js/blob/main/packages/ripple-binary-codec/src/enums/definitions.json>**
 
-You can also use the [server_definitions API method](http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md) to get the same data from a server. This can be useful when working with dev networks, in-development features, and sidechains with new fields or data types.
+You can also use the [server_definitions API method](../http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md) to get the same data from a server. This can be useful when working with dev networks, in-development features, and sidechains with new fields or data types.
 
 The following table defines the top-level fields from the definitions file:
 
@@ -255,7 +255,7 @@ You can tell which of the three sub-types an amount is based on the first and th
     - If the first bit and third bit are both `0`, it's XRP.
     - If the first bit is a `0` and the third bit is a `1`, it's an MPT.
 
-{% admonition type="warning" title="Caution" %}
+{% admonition type="warning" name="Caution" %}
 Not all types of amount are valid in all places. Some fields can only represent XRP, or XRP and fungible tokens but not MPTs. These limitations are defined by the individual transactions and ledger entries.
 {% /admonition %}
 
@@ -409,7 +409,7 @@ The `TransactionType` field is a special case. In JSON, this field is convention
 
 The _Vector256_ type contains a list of 256-bit values. This field consists of a multiple of 256 bits following the [length prefix](#length-prefixing). Unlike the [Array][] type, which can contain a mix of different nested object types of varying lengths, each member of a Vector256 field is exactly 256 bits with no type prefix.
 
-The members of a Vector256 field may be [ledger entry IDs](protocol/ledger-data/common-fields.md#ledger-entry-id). However, they can also be Amendment IDs, ledger hashes, or other binary data.
+The members of a Vector256 field may be [ledger entry IDs](./ledger-data/common-fields.md#ledger-entry-id), transaction IDs, Amendment IDs, ledger hashes, or other binary data.
 
 
 ### XChainBridge Fields
