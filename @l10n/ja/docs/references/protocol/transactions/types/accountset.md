@@ -70,22 +70,41 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 
 使用できるAccountSetのフラグは、以下のとおりです。
 
-| フラグの名前                        | 10進値 | 対応するレジャーフラグ               | 説明   |
-|:----------------------------------|:------|:----------------------------------|:--------------|
-| `asfAccountTxnID`                 | 5     | （なし）                           | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](../common-fields.md#accounttxnid)については必須です。 |
-| `asfAuthorizedNFTokenMinter`      | 10    | (なし)                            | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
-| `asfDefaultRipple`                | 8     | `lsfDefaultRipple`                | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。 |
-| `asfDepositAuth`                  | 9     | `lsfDepositAuth`                  | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
-| `asfDisableMaster`                | 4     | `lsfDisableMaster`                | マスターキーペアの使用を禁止します。[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)や[署名者リスト](../../../../concepts/accounts/multi-signing.md)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
-| `asfDisallowIncomingCheck`        | 13    | `lsfDisallowIncomingCheck`        | チェックの着信をブロックします。_([DisallowIncoming amendment][] が必要です。)_ |
-| `asfDisallowIncomingNFTokenOffer` | 12    | `lsfDisallowIncomingNFTokenOffer` | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
-| `asfDisallowIncomingPayChan`      | 14    | `lsfDisallowIncomingPayChan`      | ペイメントチャネルの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
-| `asfDisallowIncomingTrustline`    | 15    | `lsfDisallowIncomingTrustline`    | トラストラインの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
-| `asfDisallowXRP`                  | 3     | `lsfDisallowXRP`                  | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
-| `asfGlobalFreeze`                 | 7     | `lsfGlobalFreeze`                 | このアカウントによって発行されたすべての資産を[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
-| `asfNoFreeze`                     | 6     | `lsfNoFreeze`                     | [個々のトラストラインのフリーズまたはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |
-| `asfRequireAuth`                  | 2     | `lsfRequireAuth`                  | このアドレスによって発行された残高をユーザが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
-| `asfRequireDest`                  | 1     | `lsfRequireDestTag`               | トランザクションをこのアカウントに送信するための宛先タグを要求します。 |
+| フラグの名前                        | 10進値 | 説明   |
+|:----------------------------------|:------|:--------------|
+| `asfAccountTxnID`                 | 5     | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](../common-fields.md#accounttxnid)については必須です。 |
+| `asfAuthorizedNFTokenMinter`      | 10    | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
+| `asfDefaultRipple`                | 8     | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。 |
+| `asfDepositAuth`                  | 9     | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
+| `asfDisableMaster`                | 4     | マスターキーペアの使用を禁止します。[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)や[署名者リスト](../../../../concepts/accounts/multi-signing.md)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
+| `asfDisallowIncomingCheck`        | 13    | チェックの着信をブロックします。_([DisallowIncoming amendment][] が必要です。)_ |
+| `asfDisallowIncomingNFTokenOffer` | 12    | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
+| `asfDisallowIncomingPayChan`      | 14    | ペイメントチャネルの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
+| `asfDisallowIncomingTrustline`    | 15    | トラストラインの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
+| `asfDisallowXRP`                  | 3     | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
+| `asfGlobalFreeze`                 | 7     | このアカウントによって発行されたすべての資産を[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
+| `asfNoFreeze`                     | 6     | [個々のトラストラインのフリーズまたはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |
+| `asfRequireAuth`                  | 2     | このアドレスによって発行された残高をユーザが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
+| `asfRequireDest`                  | 1     | トランザクションをこのアカウントに送信するための宛先タグを要求します。 |
+
+参考のため、各AccountSetフラグに対応するレジャーフラグは以下のとおりです。
+
+| AccountSetフラグの名前             | 対応するレジャーフラグ               |
+|:----------------------------------|:----------------------------------|
+| `asfAccountTxnID`                 | （なし）                           |
+| `asfAuthorizedNFTokenMinter`      | (なし)                            |
+| `asfDefaultRipple`                | `lsfDefaultRipple`                |
+| `asfDepositAuth`                  | `lsfDepositAuth`                  |
+| `asfDisableMaster`                | `lsfDisableMaster`                |
+| `asfDisallowIncomingCheck`        | `lsfDisallowIncomingCheck`        |
+| `asfDisallowIncomingNFTokenOffer` | `lsfDisallowIncomingNFTokenOffer` |
+| `asfDisallowIncomingPayChan`      | `lsfDisallowIncomingPayChan`      |
+| `asfDisallowIncomingTrustline`    | `lsfDisallowIncomingTrustline`    |
+| `asfDisallowXRP`                  | `lsfDisallowXRP`                  |
+| `asfGlobalFreeze`                 | `lsfGlobalFreeze`                 |
+| `asfNoFreeze`                     | `lsfNoFreeze`                     |
+| `asfRequireAuth`                  | `lsfRequireAuth`                  |
+| `asfRequireDest`                  | `lsfRequireDestTag`               |
 
 `asfDisableMaster`フラグまたは`asfNoFreeze`フラグを有効にするには、マスターキーペアで署名することによって[トランザクションを承認](../../../../concepts/transactions/index.md#トランザクションの承認)する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、`asfDisableMaster`を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" %}新規: rippled 0.28.0{% /badge %}
 
