@@ -39,7 +39,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `Data`              | String    | Blob              | No        | The public attestations of identity credentials associated with the DID. The `Data` field isn't checked for validity and is limited to a maximum length of 256 bytes. |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0049`, mapped to the string `DID`, indicates that this object is a DID object. |
 | `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnID`     | String    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The index of the ledger that contains the transaction that most recently modified this object. |
 | `URI`               | String    | Blob              | No        | The Universal Resource Identifier that points to the corresponding DID document or the data associated with the DID. This field can be an HTTP(S) URL or IPFS URI. This field isn't checked for validity and is limited to a maximum length of 256 bytes. |
 

@@ -1,6 +1,4 @@
 ---
-html: escrowcreate.html
-parent: transaction-types.html
 seo:
     description: Create an escrowed XRP payment.
 labels:

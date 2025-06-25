@@ -1,6 +1,4 @@
 ---
-html: didset.html
-parent: transaction-types.html
 seo:
     description: Create or update a DID.
 labels:

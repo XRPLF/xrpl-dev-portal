@@ -101,15 +101,15 @@ labels:
 | `IndexNext`         | 数値      | UInt64       | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の次のオブジェクトにリンクし、末尾でラップアラウンドします。 |
 | `IndexPrevious`     | 数値      | UInt64       | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の前のオブジェクトにリンクし、先頭でラップアラウンドします。 |
 | `LedgerEntryType`   | 文字列    | UInt16       | はい   | 値が`0x0064`（文字列`DirectoryNode`にマッピング）の場合は、このオブジェクトがディレクトリの一部であることを示します。 |
-| `NFTokenID`         | 文字列    | Hash256      | いいえ |(NFTオファーディレクトリのみ) 購入または売却オファーに紐づくNFTのID。. |
+| `NFTokenID`         | 文字列    | UInt256      | いいえ |(NFTオファーディレクトリのみ) 購入または売却オファーに紐づくNFTのID。. |
 | `Owner`             | 文字列    | AccountID    | いいえ | （所有者ディレクトリのみ）このディレクトリ内のオブジェクトを所有するアカウントのアドレス。 |
-| `PreviousTxnID`     | 文字列    | Hash256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnID`     | 文字列    | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
 | `PreviousTxnLgrSeq` | 数値      | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
-| `RootIndex`         | 文字列    | Hash256      | はい   | このディレクトリのルートオブジェクトのID。 |
-| `TakerGetsCurrency` | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額の通貨コード。 |
-| `TakerGetsIssuer`   | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額のイシュアー。 |
-| `TakerPaysCurrency` | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額の通貨コード。 |
-| `TakerPaysIssuer`   | 文字列    | Hash160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額のイシュアー。 |
+| `RootIndex`         | 文字列    | UInt256      | はい   | このディレクトリのルートオブジェクトのID。 |
+| `TakerGetsCurrency` | 文字列    | UInt160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額の通貨コード。 |
+| `TakerGetsIssuer`   | 文字列    | UInt160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額のイシュアー。 |
+| `TakerPaysCurrency` | 文字列    | UInt160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額の通貨コード。 |
+| `TakerPaysIssuer`   | 文字列    | UInt160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerPaysの額のイシュアー。 |
 
 
 ## {% $frontmatter.seo.title %}のフラグ

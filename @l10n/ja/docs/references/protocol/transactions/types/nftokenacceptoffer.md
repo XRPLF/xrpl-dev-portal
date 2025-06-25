@@ -76,8 +76,8 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 | フィールド           | JSONの型            | [内部の型][]        | 説明          |
 |:-------------------|:--------------------|:------------------|:--------------|
-| `NFTokenSellOffer` | 文字列              | Hash256           | _(省略可)_ `NFToken`の売却を提案する`NFTokenOffer`の識別情報です。 |
-| `NFTokenBuyOffer`  | 文字列              | Hash256           | _(省略可)_ `NFToken`の購入を提案する`NFTokenOffer`の識別情報です。 |
+| `NFTokenSellOffer` | 文字列              | UInt256           | _(省略可)_ `NFToken`の売却を提案する`NFTokenOffer`の識別情報です。 |
+| `NFTokenBuyOffer`  | 文字列              | UInt256           | _(省略可)_ `NFToken`の購入を提案する`NFTokenOffer`の識別情報です。 |
 | `NFTokenBrokerFee` | [通貨額][] | Amount            | _(省略可)_ このフィールドはブローカーモードでのみ有効であり、2つのオファーをまとめるための手数料としてブローカーが保持する金額を指定します。残りの金額は`NFToken`の販売者に送られます。指定する場合、発行者が課す送金手数料を考慮する前に、販売者が受け取る金額が少なくとも売却オファーで示された金額になるように手数料を設定しなければなりません。 |
 
 ダイレクトモードでは、`NFTokenSellOffer`または`NFTokenBuyOffer`フィールドの**いずれか**を指定する必要があります。ブローカーモードでは、**両方**のフィールドを指定する必要があります。

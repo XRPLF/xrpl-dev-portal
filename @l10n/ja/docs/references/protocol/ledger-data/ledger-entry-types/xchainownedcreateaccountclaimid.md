@@ -59,7 +59,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 | フィールド                          | JSONの型     | [内部の型][]    | 必須? | 説明 |
 |:----------------------------------|:-------------|:--------------|:------|:------------|
 | `Account`                         | 文字列        | Account       | はい  | このオブジェクトを所有するアカウント。 |
-| `LedgerIndex`                     | 文字列        | Hash256       | はい  | レジャーインデックスは、`XChainOwnedCreateAccountClaimID`の一意な接頭辞、`XChainAccountClaimCount`の実際の値、`XChainBridge`のフィールドのハッシュです。 |
+| `LedgerIndex`                     | 文字列        | UInt256       | はい  | レジャーインデックスは、`XChainOwnedCreateAccountClaimID`の一意な接頭辞、`XChainAccountClaimCount`の実際の値、`XChainBridge`のフィールドのハッシュです。 |
 | `XChainAccountCreateCount`        | 数値          | UInt64        | はい  | クロスチェーン送金で作成されたアカウントの実行順序を決める整数。小さい数字は大きい数字より先に実行されなければなりません。 |
 | `XChainBridge`                    | XChainBridge | XChain_Bridge | はい  | このオブジェクトに紐づくブリッジのドアアカウントと資産。 |
 | `XChainCreateAccountAttestations` | 配列          | Array         | はい  | Witnessサーバから収集された証明。これには、署名されたメッセージの再作成に必要なパラメータが含まれます。これには、その署名の量、どのチェーン（ロックまたは発行）、任意の宛先、報酬アカウントなどが含まれます。 |

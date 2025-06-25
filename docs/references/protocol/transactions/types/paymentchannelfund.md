@@ -32,7 +32,7 @@ Example PaymentChannelFund:
 
 | Field        | JSON Type | [Internal Type][] | Description                   |
 |:-------------|:----------|:------------------|:------------------------------|
-| `Channel`    | String    | Hash256           | The unique ID of the channel to fund, as a 64-character hexadecimal string. |
+| `Channel`    | String    | UInt256           | The unique ID of the channel to fund, as a 64-character hexadecimal string. |
 | `Amount`     | String    | Amount            | Amount of [XRP, in drops][Currency Amount] to add to the channel. Must be a positive amount of XRP. |
 | `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in [seconds since the Ripple Epoch][]. This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) For more information, see the [PayChannel ledger object type](../../ledger-data/ledger-entry-types/paychannel.md). |
 

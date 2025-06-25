@@ -1,6 +1,4 @@
 ---
-html: depositpreauth.html
-parent: transaction-types.html
 seo:
     description: Preauthorizes an account to send payments to this one.
 labels:
@@ -59,9 +57,9 @@ A DepositPreauth transaction grants preauthorization to deliver payments to your
 | Field                    | JSON Type            | [Internal Type][] | Required? | Description |
 |:-------------------------|:---------------------|:------------------|:----------|:------------|
 | `Authorize`              | String - [Address][] | AccountID         | No        | An account to preauthorize. |
-| `AuthorizeCredentials`   | Array                | STArray           | No        | A set of credentials to authorize. _(Requires the [Credentials amendment][]. {% not-enabled /%})_ |
+| `AuthorizeCredentials`   | Array                | Array             | No        | A set of credentials to authorize. _(Requires the [Credentials amendment][]. {% not-enabled /%})_ |
 | `Unauthorize`            | String               | AccountID         | No        | An account whose preauthorization should be revoked. |
-| `UnauthorizeCredentials` | Array                | STArray           | No        | A set of credentials whose preauthorization should be revoked. _(Requires the [Credentials amendment][]. {% not-enabled /%})_ |
+| `UnauthorizeCredentials` | Array                | Array             | No        | A set of credentials whose preauthorization should be revoked. _(Requires the [Credentials amendment][]. {% not-enabled /%})_ |
 
 You must provide **exactly one** of `Authorize`, `AuthorizeCredentials`, `Unauthorize`, or `UnauthorizeCredentials`.
 
