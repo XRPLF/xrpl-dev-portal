@@ -9,9 +9,9 @@ labels:
 # PaymentChannelFund
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
-_Added by the [PayChan amendment][]._
-
 Add an additional amount to an open [payment channel](../../../../concepts/payment-types/payment-channels.md), and optionally update the expiration time of the channel. Only the source account of the channel can use this transaction.
+
+_(Added by the [PayChan amendment][].)_
 
 Example PaymentChannelFund:
 
@@ -28,13 +28,12 @@ Example PaymentChannelFund:
 {% tx-example txid="877FA6E2FF8E08597D1F24E30BE8E52D0C9C06F0D620C5721E55622B6A632DFF" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
-| Field        | JSON Type | [Internal Type][] | Description                   |
-|:-------------|:----------|:------------------|:------------------------------|
-| `Channel`    | String    | Hash256           | The unique ID of the channel to fund, as a 64-character hexadecimal string. |
-| `Amount`     | Object or String    | Amount  | Amount to add to the channel. Must be a positive amount. |
-| `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in [seconds since the Ripple Epoch][]. This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) For more information, see the [PayChannel ledger object type](../../ledger-data/ledger-entry-types/paychannel.md). |
+| Field        | JSON Type            | [Internal Type][] | Required? | Description |
+|:-------------|:---------------------|:------------------|:----------|:------------|
+| `Channel`    | String - Hexadecimal | UInt256           | Yes       | The unique ID of the channel to fund. |
+| `Amount`     | [Currency Amount][]  | Amount            | Yes       | Amount to add to the channel. Must be a positive amount. Non-XRP tokens can only be used if the [TokenEscrow amendment][] {% not-enabled %} is enabled. |
+| `Expiration` | Number               | UInt32            | No        | New expiration time to set for the channel, in [seconds since the Ripple Epoch][]. This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) For more information, see the [PayChannel ledger entry type](../../ledger-data/ledger-entry-types/paychannel.md). |
 
 ## Error Cases
 

@@ -44,11 +44,11 @@ _(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
 In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Field                 | JSON Type            | [Internal Type][] | Required? | Description  |
-|:----------------------|:----------|:------------------|:----------|--------------|
+|:----------------------|:---------------------|:------------------|:----------|--------------|
 | `AcceptedCredentials` | Array                | Array             | Yes       | A list of 1 to 10 [Credential](#acceptedcredentials-objects) objects that grant access to this domain. The array is stored sorted by issuer. |
 | `Owner`               | String - [Address][] | AccountID         | Yes       | The address of the account that owns this domain. |
 | `OwnerNode`           | String               | UInt64            | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`       | String - [Hash][]    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnID`       | String - [Hash][]    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq`   | Number               | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `Sequence`            | Number               | UInt32            | Yes       | The `Sequence` value of the transaction that created this entry. |
 

@@ -30,16 +30,18 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 
 | Field            | JSON Type        | [Internal Type][] | Description        |
 |:-----------------|:-----------------|:------------------|:-------------------|
-| [`ClearFlag`](#accountset-flags) | Number | UInt32      | _(Optional)_ Unique identifier of a flag to disable for this account. |
-| [`Domain`](#domain) | String        | Blob              | _(Optional)_ The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
-| `EmailHash`      | String           | Hash128           | _(Optional)_ An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a [Gravatar](http://en.gravatar.com/site/implement/hash/) image. |
-| `MessageKey`     | String           | Blob              | _(Optional)_ Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value. |
-| `NFTokenMinter`  | String           | Blob              | _(Optional)_ Another account that can [mint NFTokens for you](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md). _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
-| [`SetFlag`](#accountset-flags) | Number | UInt32        | _(Optional)_ Integer flag to enable for this account. |
-| [`TransferRate`](#transferrate) | Number | UInt32       | _(Optional)_ The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
+| [`ClearFlag`](#accountset-flags) | Number | UInt32      | Unique identifier of a flag to disable for this account. |
+| [`Domain`](#domain) | String        | Blob              | The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
+| `EmailHash`      | String           | UInt128           | An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a [Gravatar](http://en.gravatar.com/site/implement/hash/) image. |
+| `MessageKey`     | String           | Blob              | Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value. |
+| `NFTokenMinter`  | String - [Address][] | AccountID     | Another account that can [mint NFTokens for you](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md). _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
+| [`SetFlag`](#accountset-flags) | Number | UInt32        | Integer flag to enable for this account. |
+| [`TransferRate`](#transferrate) | Number | UInt32       | The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
 | [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md) | Number | UInt8            | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Added by the [TickSize amendment][])_ |
-| `WalletLocator`    | String           | Hash256           | _(Optional)_ An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements. |
-| `WalletSize`       | Number           | UInt32            | _(Optional)_ Not used. This field is valid in AccountSet transactions but does nothing. |
+| `WalletLocator`    | String           | UInt256         | An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements. |
+| `WalletSize`       | Number           | UInt32          | Not used. This field is valid in AccountSet transactions but does nothing. |
+
+(All fields are optional.)
 
 If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Cancel or Skip a Transaction](../../../../concepts/transactions/finality-of-results/canceling-a-transaction.md) for more details.
 

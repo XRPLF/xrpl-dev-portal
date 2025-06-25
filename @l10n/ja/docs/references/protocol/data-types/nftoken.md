@@ -27,7 +27,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 ## NFTokenID
 
 
-NFTokenID, 任意, 文字列, Hash256
+NFTokenID, 任意, 文字列, UInt256
 
 この複合フィールドは、トークンを一意に識別するものであり、以下のセクションから構成されます。
 

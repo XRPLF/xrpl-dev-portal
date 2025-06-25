@@ -34,8 +34,8 @@ An `EnableAmendment` pseudo-transaction marks a change in the status of a propos
 
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amendment`      | String    | Hash256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Amendments](../../../../concepts/networks-and-servers/amendments.md) for a list of known amendments. |
-| `LedgerSequence` | Number    | UInt32    | The [ledger index][] where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+| `Amendment`      | String    | UInt256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Amendments](../../../../concepts/networks-and-servers/amendments.md) for a list of known amendments. |
+| `LedgerSequence` | Number    | UInt32            | The [ledger index][] where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 ## EnableAmendment Flags
 

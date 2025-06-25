@@ -63,15 +63,15 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field            | JSON Type           | [Internal Type][] | Required? | Description  |
 |:-----------------|:--------------------|:------------------|:----------|--------------|
-| `Asset`          | Object              | STIssue           | Yes       | The definition for one of the two assets this AMM holds. In JSON, this is an object with `currency` and `issuer` fields. |
-| `Asset2`         | Object              | STIssue           | Yes       | The definition for the other asset this AMM holds. In JSON, this is an object with `currency` and `issuer` fields. |
-| `Account`     | String              | AccountID         | Yes       | The address of the [special account](accountroot.md#special-amm-accountroot-entries) that holds this AMM's assets. |
-| `AuctionSlot`    | Object              | STObject          | No        | Details of the current owner of the auction slot, as an [Auction Slot object](#auction-slot-object). |
+| `Asset`          | Object              | Issue             | Yes       | The definition for one of the two assets this AMM holds. In JSON, this is an object with `currency` and `issuer` fields. |
+| `Asset2`         | Object              | Issue             | Yes       | The definition for the other asset this AMM holds. In JSON, this is an object with `currency` and `issuer` fields. |
+| `Account`        | String - [Address][] | AccountID        | Yes       | The address of the [special account](accountroot.md#special-amm-accountroot-entries) that holds this AMM's assets. |
+| `AuctionSlot`    | Object              | Object            | No        | Details of the current owner of the auction slot, as an [Auction Slot object](#auction-slot-object). |
 | `LPTokenBalance` | [Currency Amount][] | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected. |
-| `PreviousTxnID`     | String    | Hash256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
-| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnID`  | String - [Hash][]   | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnLgrSeq` | Number           | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 | `TradingFee`     | Number              | UInt16            | Yes       | The percentage fee to be charged for trades against this AMM instance, in units of 1/100,000. The maximum value is 1000, for a 1% fee. |
-| `VoteSlots`      | Array               | STArray           | No        | A list of vote objects, representing votes on the pool's trading fee. |
+| `VoteSlots`      | Array               | Array             | No        | A list of vote objects, representing votes on the pool's trading fee. |
 
 
 ### Auction Slot Object
@@ -81,7 +81,7 @@ The `AuctionSlot` field contains an object with the following nested fields:
 | Field           | JSON Type           | [Internal Type][] | Required? | Description |
 |:----------------|:--------------------|:------------------|:----------|:--|
 | `Account`       | String - Address    | AccountID         | Yes       | The current owner of this auction slot. |
-| `AuthAccounts`  | Array               | STArray           | No        | A list of at most 4 additional accounts that are authorized to trade at the discounted fee for this AMM instance. |
+| `AuthAccounts`  | Array               | Array           | No        | A list of at most 4 additional accounts that are authorized to trade at the discounted fee for this AMM instance. |
 | `DiscountedFee` | String              | UInt32            | Yes       | The trading fee to be charged to the auction owner, in the same format as `TradingFee`. Normally, this is 1/10 of the normal fee for this AMM. |
 | `Price`         | [Currency Amount][] | Amount            | Yes       | The amount the auction owner paid to win this slot, in LP Tokens. |
 | `Expiration`    | String              | UInt32            | Yes       | The time when this slot expires, in [seconds since the Ripple Epoch][]. |
