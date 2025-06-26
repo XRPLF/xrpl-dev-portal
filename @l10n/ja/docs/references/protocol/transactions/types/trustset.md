@@ -55,6 +55,8 @@ TrustSetタイプのトランザクションについては、[`Flags`フィー�
 | `tfClearNoRipple` | `0x00040000` | 262144        | No Rippleフラグを無効にし、このトラストラインで[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)を許可します。 |
 | `tfSetFreeze`     | `0x00100000` | 1048576       | トラストラインを[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
 | `tfClearFreeze`   | `0x00200000` | 2097152       | トラストラインを[フリーズ解除](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
+| `tfSetDeepFreeze` | `0x00400000` | 4194304       | トラストラインを[ディープフリーズ](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) します。 |
+| `tfClearDeepFreeze` | `0x00800000` | 8388608     | トラストラインの[ディープフリーズ](../../../../concepts/tokens/fungible-tokens/deep-freeze.md) を解除します。 |
 
 トランザクションがNo Rippleを有効にしようとしたができない場合、結果コード `tecNO_PERMISSION` で失敗します。[fix1578 amendment][]が有効になる前は、このようなトランザクションは代わりに`tesSUCCESS`（可能な限りの他の変更を行う）という結果になりました。
 
