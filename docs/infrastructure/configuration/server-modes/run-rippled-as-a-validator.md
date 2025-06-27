@@ -1,4 +1,4 @@
----
+TR-SERVER-VALİDATOR---
 html: run-rippled-as-a-validator.html
 parent: server-modes.html
 seo:
