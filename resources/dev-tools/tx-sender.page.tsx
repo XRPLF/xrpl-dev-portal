@@ -4,12 +4,8 @@ import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
 
 import AlertTemplate from './components/AlertTemplate';
-import {
-    Provider as AlertProvider,
-    transitions,
-    positions,
-    useAlert
-} from 'react-alert/dist/esm/react-alert.js';
+import * as ReactAlert from 'react-alert';
+const { Provider: AlertProvider, transitions, positions, useAlert } = ReactAlert;
 
 import { isoTimeToRippleTime, type Client, type Wallet } from 'xrpl'
 
