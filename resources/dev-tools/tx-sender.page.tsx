@@ -5,7 +5,8 @@ import { Link } from '@redocly/theme/components/Link/Link';
 
 import AlertTemplate from './components/AlertTemplate';
 import * as ReactAlert from 'react-alert';
-const { Provider: AlertProvider, transitions, positions, useAlert } = ReactAlert;
+const AlertProvider = ReactAlert.Provider ?? ReactAlert.default;
+const { transitions, positions, useAlert } = ReactAlert;
 
 import { isoTimeToRippleTime, type Client, type Wallet } from 'xrpl'
 
