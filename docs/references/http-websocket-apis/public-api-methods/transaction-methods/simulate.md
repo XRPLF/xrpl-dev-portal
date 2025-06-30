@@ -42,19 +42,21 @@ An example of the request format:
 {% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "simulate",
-    "params": {
-        "tx_json" : {
-            "TransactionType" : "Payment",
-            "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-            "Amount" : {
-                "currency" : "USD",
-                "value" : "1",
-                "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-            }
+  "method": "simulate",
+  "params": [
+    {
+      "tx_json": {
+        "TransactionType": "Payment",
+        "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+        "Amount": {
+          "currency": "USD",
+          "value": "1",
+          "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
         }
+      }
     }
+  ]
 }
 ```
 {% /tab %}
