@@ -84,7 +84,7 @@ Content-Type: application/json
         "fee_mult_max": 1000
     }]
 }
-```json
+```
 
 Response:
 

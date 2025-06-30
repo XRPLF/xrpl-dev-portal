@@ -299,6 +299,7 @@
                   expanded: false
                   items:
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/create-and-claim-payment-channel.md
                 - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/index.md
                   expanded: false
                   items:
