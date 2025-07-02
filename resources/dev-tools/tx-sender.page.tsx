@@ -3,9 +3,8 @@ import { useState } from 'react'
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
 
+import { toast, Toaster } from 'react-hot-toast';
 import AlertTemplate from './components/AlertTemplate';
-import { transitions, positions, Provider as AlertProvider } from 'react-alert'
-import { useAlert } from 'react-alert'
 
 import { isoTimeToRippleTime, type Client, type Wallet } from 'xrpl'
 
@@ -104,13 +103,11 @@ async function onClickCreateEscrow(
     setEscrowWidthPercent(0)
 }
 
-function TxSenderBody(): React.JSX.Element {
+function TxSenderBody({ alert }: { alert: (message: string, type?: string) => void }): React.JSX.Element {
     const { useTranslate } = useThemeHooks();
     const { translate } = useTranslate();
 
     const [client, setClient] = useState<Client | undefined>(undefined)
-
-    const alert = useAlert()
 
     // Sidebar variables
     const [balance, setBalance] = useState(0)
@@ -426,17 +423,32 @@ function TxSenderBody(): React.JSX.Element {
 
 // Wrapper to allow for dynamic alerts when transactions complete
 export default function TxSender(): React.JSX.Element {
-    
-    const alertOptions = {
-        position: positions.BOTTOM_RIGHT,
-        timeout: 7000,
-        offset: '8px',
-        transition: transitions.FADE
-    }
+    const alert = (message: string, type: string = 'info') => {
+        toast.custom((t) => (
+            <AlertTemplate 
+                message={message}
+                options={{ type }}
+                style={{}}
+                close={() => {
+                    toast.dismiss(t.id);
+                    toast.remove(t.id);
+                }}
+            />
+        ), {
+            duration: 7000,
+            position: 'bottom-right',
+        });
+    };
 
     return (
-        <AlertProvider template={AlertTemplate} {...alertOptions}>
-            <TxSenderBody/>
-        </AlertProvider>
+        <>
+            <TxSenderBody alert={alert} />
+            <Toaster 
+                containerStyle={{
+                    bottom: 8,
+                    right: 8,
+                }}
+            />
+        </>
     )
 }
