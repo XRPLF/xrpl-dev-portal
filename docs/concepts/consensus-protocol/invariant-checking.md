@@ -160,9 +160,9 @@ The XRP Ledger checks all the following invariants on each transaction:
 - **Repository:**
     - [Invariant Check.h](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h)
     - [Invariant Check.cpp](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.cpp)
-    - [System Parameters](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/SystemParameters.h#L43)
+    - [System Parameters](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/SystemParameters.h#L43)
     - [XRP Amount](https://github.com/XRPLF/rippled/blob/develop/src/ripple/basics/XRPAmount.h#L244)
-    - [Ledger Formats](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/protocol/LedgerFormats.h#L36-L94)
+    - [Ledger Formats](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/include/xrpl/protocol/LedgerFormats.h#L36-L94)
 
 
 - **Other:**

@@ -78,8 +78,8 @@ The `preflight` function checks for errors in the transaction itself before acce
     {% admonition type="info" name="Note" %}The `~` symbol returns an optional type.{% /admonition %}
 
 - You can view ledger and transaction schemas here:
-    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
-    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
+    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/LedgerFormats.cpp)
+    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/TxFormats.cpp)
 
 - `rippled` summarizes transaction results with result codes. See: [Transaction Results](../../docs/references/protocol/transactions/transaction-results/index.md)
 
@@ -344,7 +344,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 
 ### `makeTxConsequences`
 
-`rippled` uses a [`TxConsequences`](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/applySteps.h#L41-L44) class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequence numbers are consumed by the transaction. There are three types of consequences:
+`rippled` uses a [`TxConsequences`](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/applySteps.h#L41-L44) class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequence numbers are consumed by the transaction. There are three types of consequences:
 
 - **Normal:** The transactor doesn't affect transaction signing and _only_ consumes an XRP fee. Transactions that spend XRP beyond the fee aren't considered normal.
 - **Blocker:** The transactor affects transaction signing, preventing valid transactions from queueing behind it.

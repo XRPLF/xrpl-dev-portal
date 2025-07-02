@@ -5,7 +5,7 @@ labels:
   - Blockchain
 ---
 # Known Amendments
-[[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
+[[Source]](https://github.com/xrplf/rippled/blob/master/src/libxrpl/protocol/Feature.cpp "Source")
 
 ## Known Amendments on Mainnet
 

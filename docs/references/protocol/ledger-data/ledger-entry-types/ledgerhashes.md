@@ -72,7 +72,7 @@ There are no flags defined for {% code-page-name /%} entries.
 
 
 ## LedgerHashes ID Formats
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Indexes.cpp#L26-L42)
 
 There are two formats for `LedgerHashes` ledger entry IDs, depending on whether the entry is a "recent history" sub-type or a "previous history" sub-type.
 

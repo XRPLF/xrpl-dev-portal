@@ -9,7 +9,7 @@ labels:
   - AMM
 ---
 # amm_info
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AMMInfo.cpp "Source")
 
 The {% code-page-name /%} method gets information about an [Automated Market Maker (AMM)](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) instance.
 
