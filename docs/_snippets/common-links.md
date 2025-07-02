@@ -49,6 +49,9 @@
 [Amendmentsエントリ]: /docs/concepts/networks-and-servers/amendments.md
 [Amendmentsオブジェクト]: /docs/concepts/networks-and-servers/amendments.md
 [Batch amendment]: /resources/known-amendments.md#batch
+[Batch]: /docs/references/protocol/transactions/types/batch.md
+[Batch transaction]: /docs/references/protocol/transactions/types/batch.md
+[Batch transactions]: /docs/references/protocol/transactions/types/batch.md
 [Check entry]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Check object]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Checkエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
