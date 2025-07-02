@@ -207,13 +207,19 @@ This configuration connects your validator to the network using three [public hu
 
 _**To connect your validator to the network using public hubs:**_
 
-1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. The two values, `r.ripple.com 51235`, and `sahyadri.isrdc.in 51235`, are default public hubs. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs.
+1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. The two values, `r.ripple.com 51235`, and `sahyadri.isrdc.in 51235`, are default public hubs. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs. 
 
     ```
     [ips_fixed]
     r.ripple.com 51235
     sahyadri.isrdc.in 51235
+    hubs.xrpkuwait.com 51235
+    hub.xrpl-commons.org 51235
     ```
+
+> **Note:** The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official `rippled-example.cfg` maintained by XRPLF:
+> [https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg)
+
 
     {% admonition type="warning" name="Caution" %}This configuration connects your validator to the network using default public hubs. Because these are the _default_ public hubs, they may sometimes be too busy to provide your validator with a connection to the network. To help avoid this issue, connect to more public hubs and, even better, connect to non-default public hubs.{% /admonition %}
 
