@@ -52,7 +52,7 @@ Some fields can be automatically filled in before a transaction is signed, eithe
 
 * `Fee` - Automatically fill in the [Transaction Cost][] based on the network.
 
-    {% admonition type="info" name="Note" %}When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_div_max` parameters.){% /admonition %}
+    {% admonition type="info" name="Note" %}When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_div_max` parameters.{% /admonition %}
 
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
@@ -117,7 +117,7 @@ The only flags that apply globally to all transactions are as follows:
 | Flag Name             | Hex Value  | Decimal Value | Description               |
 |:----------------------|:-----------|:--------------|:--------------------------|
 | `tfFullyCanonicalSig` | `0x80000000` | 2147483648  | **DEPRECATED** No effect. (If the [RequireFullyCanonicalSig amendment][] is not enabled, this flag enforces a [fully-canonical signature](../../../concepts/transactions/finality-of-results/transaction-malleability.md#alternate-secp256k1-signatures).) |
-| `tfInnerBatchTxn`	| `0x40000000` | 1073741824 | This flag is only used if a transaction is an inner transaction in a Batch transaction. This signifies that the transaction isn't signed. Any normal transaction that includes this flag is rejected. |
+| `tfInnerBatchTxn`	| `0x40000000` | 1073741824 | This flag is only used if a transaction is an inner transaction in a [Batch][] transaction. This signifies that the transaction isn't signed. Any normal transaction that includes this flag is rejected. |
 
 When using the [sign method][] (or [submit method][] in "sign-and-submit" mode), `rippled` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag is not automatically enabled if `Flags` is explicitly specified. The flag is not automatically enabled when using the [sign_for method][] to add a signature to a multi-signed transaction.
 
