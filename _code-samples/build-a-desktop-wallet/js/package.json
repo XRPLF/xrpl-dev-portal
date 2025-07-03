@@ -23,6 +23,6 @@
     "xrpl": "^4.0.0"
   },
   "devDependencies": {
-    "electron": "22.3.25"
+    "electron": "28.3.2"
   }
 }
