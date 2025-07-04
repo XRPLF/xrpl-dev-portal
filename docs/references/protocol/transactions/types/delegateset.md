@@ -16,7 +16,7 @@ _(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_
 ## Example `DelegateSet` JSON
 
 ```json
-tx_json = { 
+{ 
   "TransactionType": "DelegateSet",
   "Account": "rDelegatingAccount",
   "Authorize": "rDelegatedAccount",
