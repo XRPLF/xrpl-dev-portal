@@ -16,7 +16,7 @@ _(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_
 ## Example `DelegateSet` JSON
 
 ```json
-tx_json = { 
+{ 
   "TransactionType": "DelegateSet",
   "Account": "rDelegatingAccount",
   "Authorize": "rDelegatedAccount",
@@ -59,7 +59,7 @@ Permissions are revoked using the `DelegateSet` transaction by specifying only t
 To revoke all permissions, send a `DelegateSet` transaction with an empty `Permissions` array:
 
 ```json
-tx_json = {
+{
   "TransactionType": "DelegateSet",
   "Account": "rDelegatingAccount",
   "Authorize": "rDelegatedAccount",
