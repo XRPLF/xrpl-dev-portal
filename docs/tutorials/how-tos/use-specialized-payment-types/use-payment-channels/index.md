@@ -84,7 +84,7 @@ Content-Type: application/json
         "fee_mult_max": 1000
     }]
 }
-```json
+```
 
 Response:
 
@@ -105,7 +105,6 @@ Response:
     }
 }
 ```
-
 
 The immediate response to the `submit` request contains a _provisional_ result with the transaction's identifying `hash` value. The payer should check the transaction's _final_ result in a validated ledger and get the Channel ID from the metadata. This can be done with the `tx` command:
 

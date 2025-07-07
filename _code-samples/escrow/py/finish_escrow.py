@@ -25,7 +25,13 @@ fulfillment = "A0228020AED2C5FE4D147D310D3CFEBD9BFA81AD0F63CE1ADD92E00379DDDAF8E
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build escrow finish transaction
-finish_txn = EscrowFinish(account=sender_wallet.address, owner=escrow_creator, offer_sequence=escrow_sequence, condition=condition, fulfillment=fulfillment)
+finish_txn = EscrowFinish(
+    account=sender_wallet.address,
+    owner=escrow_creator,
+    offer_sequence=escrow_sequence, # The sequence number of the escrow transaction
+    condition=condition, 
+    fulfillment=fulfillment
+)
 
 # Autofill, sign, then submit transaction and wait for result
 stxn_response = submit_and_wait(finish_txn, client, sender_wallet)

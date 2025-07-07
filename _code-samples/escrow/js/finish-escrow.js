@@ -28,6 +28,7 @@ const main = async () => {
         throw new Error("Please specify the sequence number, condition and fulfillment of the escrow you created");
     };
 
+    // Prepare EscrowFinish transaction ---------------------------------
     const escrowFinishTransaction = {
         "Account": wallet.address,
         "TransactionType": "EscrowFinish",
