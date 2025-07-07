@@ -73,6 +73,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | フラグの名前                        | 10進値 | 説明   |
 |:----------------------------------|:------|:--------------|
 | `asfAccountTxnID`                 | 5     | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](../common-fields.md#accounttxnid)については必須です。 |
+| `asfAllowTrustLineClawback`       | 16      | アカウントの発行したトークンを回収する機能を有効にします。 _（[Clawback Amendment][]により追加されました）。_　所有者ディレクトリが存在する場合はClawback機能を有効にできません。つまり、トラストラインやオファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。このフラグは、有効にした後は無効にできません。|
 | `asfAuthorizedNFTokenMinter`      | 10    | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
 | `asfDefaultRipple`                | 8     | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。 |
 | `asfDepositAuth`                  | 9     | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
@@ -92,7 +93,8 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | AccountSetフラグの名前             | 対応するレジャーフラグ               |
 |:----------------------------------|:----------------------------------|
 | `asfAccountTxnID`                 | （なし）                           |
-| `asfAuthorizedNFTokenMinter`      | (なし)                            |
+| `asfAllowTrustLineClawback` | `lsfAllowTrustlineClawback` |
+| `asfAuthorizedNFTokenMinter`      | （なし）                            |
 | `asfDefaultRipple`                | `lsfDefaultRipple`                |
 | `asfDepositAuth`                  | `lsfDepositAuth`                  |
 | `asfDisableMaster`                | `lsfDisableMaster`                |
