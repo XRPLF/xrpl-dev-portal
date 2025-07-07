@@ -68,23 +68,43 @@ All flags are disabled by default.
 
 The available AccountSet flags are:
 
-| Flag Name                         | Decimal Value | Corresponding Ledger Flag         | Description   |
-|:----------------------------------|:--------------|:----------------------------------|:--------------|
-| `asfAccountTxnID`                 | 5             | (None)                            | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](../common-fields.md#accounttxnid) |
-| `asfAllowTrustLineClawback`                | 16            | `lsfAllowTrustlineClawback`       | Allow account to claw back tokens it has issued. _(Requires the Clawback amendment.)_ Can only be set if the account has an empty owner directory (no trust lines, offers, escrows, payment channels, checks, or signer lists). After you set this flag, it cannot be reverted. The account permanently gains the ability to claw back issued assets on trust lines. |
-| `asfAuthorizedNFTokenMinter`      | 10            | (None)                            | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md) object. To remove an authorized minter, enable this flag and omit the `NFTokenMinter` field. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
-| `asfDefaultRipple`                | 8             | `lsfDefaultRipple`                | Enable [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on this account's trust lines by default. |
-| `asfDepositAuth`                  | 9             | `lsfDepositAuth`                  | Enable [Deposit Authorization](../../../../concepts/accounts/depositauth.md) on this account. _(Added by the [DepositAuth amendment][].)_ |
-| `asfDisableMaster`                | 4             | `lsfDisableMaster`                | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) or a [Signer List](../../../../concepts/accounts/multi-signing.md). |
-| `asfDisallowIncomingCheck`        | 13            | `lsfDisallowIncomingCheck`        | Block incoming Checks. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowIncomingNFTokenOffer` | 12            | `lsfDisallowIncomingNFTokenOffer` | Block incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowIncomingPayChan`      | 14            | `lsfDisallowIncomingPayChan`      | Block incoming Payment Channels. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowIncomingTrustline`    | 15            | `lsfDisallowIncomingTrustline`    | Block incoming trust lines. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowXRP`                  | 3             | `lsfDisallowXRP`                  | XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.) |
-| `asfGlobalFreeze`                 | 7             | `lsfGlobalFreeze`                 | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) all assets issued by this account. |
-| `asfNoFreeze`                     | 6             | `lsfNoFreeze`                     | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). This flag can never be disabled after being enabled. |
-| `asfRequireAuth`                  | 2             | `lsfRequireAuth`                  | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
-| `asfRequireDest`                  | 1             | `lsfRequireDestTag`               | Require a destination tag to send transactions to this account. |
+| Flag Name                         | Decimal Value | Description   |
+|:----------------------------------|:--------------|:--------------|
+| `asfAccountTxnID`                 | 5             | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](../common-fields.md#accounttxnid) |
+| `asfAllowTrustLineClawback`       | 16            | Allow account to claw back tokens it has issued. _(Requires the Clawback amendment.)_ Can only be set if the account has an empty owner directory (no trust lines, offers, escrows, payment channels, checks, or signer lists). After you set this flag, it cannot be reverted. The account permanently gains the ability to claw back issued assets on trust lines. |
+| `asfAuthorizedNFTokenMinter`      | 10            | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md) object. To remove an authorized minter, enable this flag and omit the `NFTokenMinter` field. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
+| `asfDefaultRipple`                | 8             | Enable [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on this account's trust lines by default. |
+| `asfDepositAuth`                  | 9             | Enable [Deposit Authorization](../../../../concepts/accounts/depositauth.md) on this account. _(Added by the [DepositAuth amendment][].)_ |
+| `asfDisableMaster`                | 4             | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) or a [Signer List](../../../../concepts/accounts/multi-signing.md). |
+| `asfDisallowIncomingCheck`        | 13            | Block incoming Checks. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowIncomingNFTokenOffer` | 12            | Block incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowIncomingPayChan`      | 14            | Block incoming Payment Channels. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowIncomingTrustline`    | 15            | Block incoming trust lines. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowXRP`                  | 3             | XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.) |
+| `asfGlobalFreeze`                 | 7             | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) all assets issued by this account. |
+| `asfNoFreeze`                     | 6             | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). This flag can never be disabled after being enabled. |
+| `asfRequireAuth`                  | 2             | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
+| `asfRequireDest`                  | 1             | Require a destination tag to send transactions to this account. |
+
+For reference, here are the corresponding ledger flags for each AccountSet flag:
+
+| AccountSet Flag Name              | Corresponding Ledger Flag         |
+|:----------------------------------|:----------------------------------|
+| `asfAccountTxnID`                 | (None)                            |
+| `asfAllowTrustLineClawback`       | `lsfAllowTrustlineClawback`       |
+| `asfAuthorizedNFTokenMinter`      | (None)                            |
+| `asfDefaultRipple`                | `lsfDefaultRipple`                |
+| `asfDepositAuth`                  | `lsfDepositAuth`                  |
+| `asfDisableMaster`                | `lsfDisableMaster`                |
+| `asfDisallowIncomingCheck`        | `lsfDisallowIncomingCheck`        |
+| `asfDisallowIncomingNFTokenOffer` | `lsfDisallowIncomingNFTokenOffer` |
+| `asfDisallowIncomingPayChan`      | `lsfDisallowIncomingPayChan`      |
+| `asfDisallowIncomingTrustline`    | `lsfDisallowIncomingTrustline`    |
+| `asfDisallowXRP`                  | `lsfDisallowXRP`                  |
+| `asfGlobalFreeze`                 | `lsfGlobalFreeze`                 |
+| `asfNoFreeze`                     | `lsfNoFreeze`                     |
+| `asfRequireAuth`                  | `lsfRequireAuth`                  |
+| `asfRequireDest`                  | `lsfRequireDestTag`               |
 
 To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](../../../../concepts/transactions/index.md#authorizing-transactions) by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable `asfDisableMaster` (that is, re-enable the master key pair) using a regular key pair or multi-signature.
 
