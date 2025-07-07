@@ -407,8 +407,8 @@ def uint192_to_bytes(i):
 
 def uint384_to_bytes(i):
     b = hex_to_bytes(i)
-    if len(b) != 8: # 8 bytes = 64 bits
-        raise ValueError("UInt64 is not 64 bits long")
+    if len(b) != 48: # 48 bytes = 384 bits
+        raise ValueError("UInt384 is not 384 bits long")
     return b
 
 def vector256_to_bytes(strlist):

@@ -236,18 +236,19 @@ The _Amount_ type (also called "STAmount") is a special field type that represen
 
     Fungible tokens (also called "IOUs") consist of three segments in order:
 
-    1. 64 bits indicating the amount in the [token amount format](#token-amount-format). The first bit is `1` to indicate that this is not XRP nor an MPT.
+    1. 64 bits indicating the amount in the [token amount format](#token-amount-format). The first bit is `1` to indicate that this is a fungible token.
     2. 160 bits indicating the [currency code](data-types/currency-formats.md#currency-codes). The standard API converts 3-character codes such as "USD" into 160-bit codes using the [standard currency code format](data-types/currency-formats.md#standard-currency-codes), but custom 160-bit codes are also possible.
     3. 160 bits indicating the issuer's Account ID. (See also: [Account Address Encoding](../../concepts/accounts/addresses.md#address-encoding))
 
 - **MPTs**
 
-    Multi-Purpose Tokens (MPTs) consist of four segments in order:
+    Multi-Purpose Tokens (MPTs) consist of the following segments in order:
 
-    1. 8 bits indicating that this is an MPT. The most significant bit is `0` to indicate that it's not a fungible token. The second bit is `1` to indicate that it is postiive. The third most significant bit is `1` to indicate that it is an MPT. The remaining 5 bits are reserved and must all be `0`. In other words, the first byte is `0x60`.
+    1. 8 bits indicating that this is an MPT. The most significant bit is `0` to indicate that it's not a fungible token. The second bit is `1` to indicate that it is positive. The third most significant bit is `1` to indicate that it is an MPT. The remaining 5 bits are reserved and must all be `0`. In other words, the first byte is `0x60`.
     2. 64 bits indicating the quantity of the MPT, as a 64-bit unsigned integer. (However, the maximum amount cannot be larger than 2<sup>63</sup>-1.)
-    3. 32 bits indicating the `Sequence` number of the transaction that created the MPT issuance.
-    4. 160 bits indicating the [AccountID][] of the MPT's issuer.
+    3. 192 bits for the MPT Issuance ID, which is made of the following parts in order:
+        1. 32 bits indicating the `Sequence` number of the transaction that created the MPT issuance.
+        2. 160 bits indicating the [AccountID][] of the MPT's issuer.
 
 You can tell which of the three sub-types an amount is based on the first and third most significant bits: 
 
@@ -259,9 +260,9 @@ You can tell which of the three sub-types an amount is based on the first and th
 Not all types of amount are valid in all places. Some fields can only represent XRP, or XRP and fungible tokens but not MPTs. These limitations are defined by the individual transactions and ledger entries.
 {% /admonition %}
 
-The following diagram shows the serialization formats for both XRP amounts and token amounts: ***TODO: update***
+The following diagram shows the serialization formats for all three amount formats:
 
-[{% inline-svg file="/docs/img/serialization-amount.svg" /%}](/docs/img/serialization-amount.svg 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Token amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).')
+[{% inline-svg file="/docs/img/serialization-amount.svg" /%}](/docs/img/serialization-amount.svg 'The first bit is an amount type bit (0 = XRP or MPT, 1 = fungible token). XRP has a sign bit (always 1 for positive), an MPT indicator bit (0=XRP) and 61 bits of precision. MPTs have a sign bit (always 1 for positive), an MPT indicator bit (1=MPT), 5 reserved bits, 64 bit integer quantity, and a 192 bit MPT Issuance ID which consists of the 32-bit Sequence number followed by 160-bit issuer AccountID. Fungible Token amounts consist start with an amount type bit of 1, a sign bit which can be 1 or 0, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).')
 
 #### Token Amount Format
 [[Source]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
@@ -296,9 +297,6 @@ The [`rippled` APIs](../http-websocket-apis/index.md) support a **standard forma
 
 The **nonstandard format** is any 160 bits of data as long as the first 8 bits are not `0x00`.
 
-#### MPT Amount Format
-
-The following diagram shows the amount serialization for MPTs. ***TODO: consolidate or not?***
 
 ### Array Fields
 [Array]: #array-fields
@@ -325,9 +323,9 @@ Blob fields have no further structure to their contents, so they consist of exac
 ### Currency Fields
 [Currency]: #currency-fields
 
-Some fields specify a currency code, which could be an a fungible token, the ticker symbol for an off-ledger asset, or some other identifier for a currency. This field type is currently used only in [Price Oracles](../../concepts/decentralized-storage/price-oracles.md).
+Some fields specify a currency code, which could be a fungible token, the ticker symbol for an off-ledger asset, or some other identifier for a currency. This field type is currently used only in [Price Oracles](../../concepts/decentralized-storage/price-oracles.md).
 
-These fields consists of 160 bits of binary data. If the data matches the ["standard" currency code format](#currency-codes), it may be represented as a three-letter currency code string in JSON. Otherwise, it is represented as hexadecimal. Client libraries _may_ attempt to interpret this as a string of ASCII or UTF-8, but it is not guaranteed to be valid.
+These fields consist of 160 bits of binary data. If the data matches the ["standard" currency code format](#currency-codes), it may be represented as a three-letter currency code string in JSON. Otherwise, it is represented as hexadecimal. Client libraries _may_ attempt to interpret this as a string of ASCII or UTF-8, but it is not guaranteed to be valid. The {% repo-link path="_code-samples/normalize-currency-codes/" %}Normalize Currency Codes code sample{% /repo-link %} demonstrates best practices for converting most common formats for this data into a string for humans to read.
 
 
 ### Issue Fields
