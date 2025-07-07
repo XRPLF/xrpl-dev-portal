@@ -1,7 +1,7 @@
 ---
 html: batch.html
 seo:
-    description: 最大8件のトランザクションをまとめて作成・送信し、、それらがすべて成功するか、すべて失敗するようにアトミックに処理されるようにします。
+    description: 最大8件のトランザクションをまとめて作成・送信し、それらがすべて成功するか、すべて失敗するようにアトミックに処理されるようにします。
 labels:
   - Batch
   - Transaction Sending
@@ -22,7 +22,7 @@ status: not_enabled
 {
   "TransactionType": "Batch",
   "Account": "rUserBSM7T3b6nHX3Jjua62wgX9unH8s9b",
-  "Flags": "65536",
+  "Flags": 65536,
   "RawTransactions": [
     {
       "RawTransaction": {
@@ -68,7 +68,7 @@ status: not_enabled
 {
   "TransactionType": "Batch",
   "Account": "rUser1fcu9RJa5W1ncAuEgLJF2oJC6",
-  "Flags": "65536",
+  "Flags": 65536,
   "RawTransactions": [
     {
       "RawTransaction": {
@@ -146,7 +146,7 @@ status: not_enabled
 | `Signers`       | 配列       | STArray    | いいえ    | このトランザクションを承認するマルチシグを表すオブジェクトの配列。         |
 
 {% admonition type="info" name="Note" %}
-`Batch`トランザクションを送信するアカウントが単一署名を使用する場合、`Flags`フィールドと内部トランザクションのハッシュに署名します。この場合、含まれるのは SigningPubKey と TxnSignature のみです。一方で、複数署名を使用する場合は代わりに`Signers`フィールドが使用され、そこに`Flags`フィールドおよび内部トランザクションのハッシュに対する署名が格納されます。
+`Batch`トランザクションを送信するアカウントが単一署名を使用する場合、`Flags`フィールドと内部トランザクションのハッシュに署名します。この場合、含まれるのは`SigningPubKey`と`TxnSignature`のみです。一方で、複数署名を使用する場合は代わりに`Signers`フィールドが使用され、そこに`Flags`フィールドおよび内部トランザクションのハッシュに対する署名が格納されます。
 {% /admonition %}
 
 
