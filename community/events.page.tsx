@@ -1184,6 +1184,17 @@ const events = [
     image: require("../static/img/events/commons-cannes.png"),
     end_date: "June 30, 2025",
   },
+  {
+    name: "Aquarium Demo Day #6",
+    description:
+      "The Aquarium Residency is a 12-week program for entrepreneurs & developers building on the XRP Ledger blockchain.  Join us at our Paris HQ to connect with our 11 residents, discover their projects focused on AI & Blockchain, and engage with the XRPL community.",
+    type: "meetup",
+    link: "https://xrpl.at/AquariumDemoDay6",
+    location: "Paris, France",
+    date: "July 8, 2025",
+    image: require("../static/img/events/demo-day-paris.png"),
+    end_date: "July 8, 2025",
+  },
 
 ];
 
