@@ -10,7 +10,7 @@ labels:
 The `NFTokenAcceptOffer` transaction is used to accept offers to buy or sell an NFT. It has two possible modes:
 
 * In _direct_ mode, a buyer can accept a sell offer directly, or a seller can accept a buy offer directly.
-* In _brokered_ mode, a third party (the _broker_) can match two distinct offers, one buying and one selling. If the buy price is higher than the sell price, the broken can claim the difference as a fee for themself.
+* In _brokered_ mode, a third party (the _broker_) can match two distinct offers, one buying and one selling. If the buy price is higher than the sell price, the broker can claim the difference as a fee for themself.
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
