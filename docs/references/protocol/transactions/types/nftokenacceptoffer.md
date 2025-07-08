@@ -1,18 +1,16 @@
 ---
-html: nftokenacceptoffer.html
-parent: transaction-types.html
 seo:
-    description: Accept an offer to buy or sell an NFToken.
+    description: Accept an offer to buy or sell an NFT.
 labels:
   - NFTs, Non-fungible Tokens
 ---
 # NFTokenAcceptOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "Source")
 
-The `NFTokenAcceptOffer` transaction is used to accept offers to `buy` or `sell` an `NFToken`. It can either:
+The `NFTokenAcceptOffer` transaction is used to accept offers to buy or sell an NFT. It has two possible modes:
 
-* Allow one offer to be accepted. This is called _direct_ mode.
-* Allow two distinct offers, one offering to buy a given `NFToken` and the other offering to sell the same `NFToken`, to be accepted in an atomic fashion. This is called _brokered_ mode.
+* In _direct_ mode, a buyer can accept a sell offer directly, or a seller can accept a buy offer directly.
+* In _brokered_ mode, a third party (the _broker_) can match two distinct offers, one buying and one selling. If the buy price is higher than the sell price, the broken can claim the difference as a fee for themself.
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
@@ -44,9 +42,9 @@ The mode in which the transaction operates depends on the presence of the `NFTok
 
 | `NFTokenSellOffer` | `NFTokenBuyOffer` | Mode     |
 |:-------------------|:------------------|:---------|
-| ✔️                  | ✔️                 | Brokered |
-| ✔️                  | ❌                 | Direct   |
-| ❌                  | ✔️                 | Direct   |
+| ✅                 | ✅                | Brokered |
+| ✅                 | ❌                | Direct   |
+| ❌                 | ✅                | Direct   |
 
 
 If neither of those fields is specified, the transaction is malformed and produces a `tem` class error.
@@ -74,11 +72,11 @@ The transaction fails with a [`tec`-class code](../transaction-results/tec-codes
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field              | JSON Type           | [Internal Type][] | Description   |
-|:-------------------|:--------------------|:------------------|:--------------|
-| `NFTokenSellOffer` | String              | UInt256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
-| `NFTokenBuyOffer`  | String              | UInt256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
-| `NFTokenBrokerFee` | [Currency Amount][] | Amount            | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the `NFToken` being bought. If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
+| Field              | JSON Type           | [Internal Type][] | Required? | Description |
+|:-------------------|:--------------------|:------------------|:----------|:------------|
+| `NFTokenSellOffer` | String - [Hash][]   | UInt256           | No        | Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
+| `NFTokenBuyOffer`  | String - [Hash][]   | UInt256           | No        | Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
+| `NFTokenBrokerFee` | [Currency Amount][] | Amount            | No        | **Brokered mode only.** The amount that the broker keeps as their fee for bringing the two offers together; the remaining amount is sent to the seller of the NFT. If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
 
 In direct mode, you must specify **either** the `NFTokenSellOffer` or the `NFTokenBuyOffer` field. In brokered mode, you must specify **both** fields.
 
