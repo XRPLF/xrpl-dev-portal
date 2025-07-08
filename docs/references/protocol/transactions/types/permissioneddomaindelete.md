@@ -30,7 +30,7 @@ _(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
 
 | Field      | JSON Type         | [Internal Type][] | Required? | Description |
 |:-----------|:------------------|:------------------|:----------|:------------|
-| `DomainID` | String - [Hash][] | Hash256           | Yes       | The ledger entry ID of the Permissioned Domain entry to delete. |
+| `DomainID` | String - [Hash][] | UInt256           | Yes       | The ledger entry ID of the Permissioned Domain entry to delete. |
 
 ## {% $frontmatter.seo.title %} Flags
 

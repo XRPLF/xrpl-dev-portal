@@ -38,11 +38,11 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `Expiration`        | Number               | UInt32            | No        | Time after which the credential is expired, in [seconds since the Ripple Epoch][].
 | `Issuer`            | String - [Address][] | AccountID         | Yes       | The account that issued this credential. |
 | `IssuerNode`        | String               | UInt64            | Yes       | A hint indicating which page of the issuer's directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String - [Hash][]    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnID`     | String - [Hash][]    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number               | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 | `Subject`           | String - [Address][] | AccountID         | Yes       | The account that this credential is for. |
 | `SubjectNode`       | String               | UInt64            | Yes       | A hint indicating which page of the subject's owner directory links to this entry, in case the directory consists of multiple pages. |
-| `URI`               | String - Hexadecimal | Blob | No | Arbitrary additional data about the credential, for example a URL where a W3C-formatted Verifiable Credential can be retrieved. |
+| `URI`               | String - Hexadecimal | Blob              | No        | Arbitrary additional data about the credential, for example a URL where a W3C-formatted Verifiable Credential can be retrieved. |
 
 ## Credential Flags
 

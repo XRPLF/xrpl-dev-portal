@@ -10,7 +10,7 @@ labels:
 
 `LedgerStateFix` is a general purpose transaction used to fix specific issues affecting the XRP ledger. You submit the transaction with the `LedgerFixType` value set to indicate the particular  error state to correct.
 
-_(Added by the [fixNFTokenPageLinks amendment][])_
+_(Added by the [fixNFTokenPageLinks amendment][].)_
 
 
 ## Example {% $frontmatter.seo.title %} JSON
@@ -31,7 +31,7 @@ _(Added by the [fixNFTokenPageLinks amendment][])_
 | Field           | JSON Type            | [Internal Type][] | Required? | Description |
 |:----------------|:---------------------|:------------------|:----------|:------------|
 | `LedgerFixType` | Number               | UInt16            | Yes       | The type of fix to apply. See [LedgerFixType](#ledgerfixtype) for possible values. Currently the only type is `1`, which fixes the NFToken directory for a single account. |
-| `Owner`         | String - [Address][] | Account           | No        | _(Required if `LedgerFixType` is `1`.)_ The account that owns the NFToken directory to fix. Does not need any relationship to the sender of the transaction. |
+| `Owner`         | String - [Address][] | AccountID         | No        | _(Required if `LedgerFixType` is `1`.)_ The account that owns the NFToken directory to fix. Does not need any relationship to the sender of the transaction. |
 
 
 ## LedgerFixType

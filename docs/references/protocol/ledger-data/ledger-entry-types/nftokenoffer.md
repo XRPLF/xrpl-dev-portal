@@ -31,18 +31,17 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ### {% $frontmatter.seo.title %} Fields
 
-| Name                |JSON Type         | [Internal Type][] | Required?   | Description |
-|:--------------------|:-----------------|:------------------|:------------|:-----------|
-| `Amount`            | [Currency Amount][] | AMOUNT            | Yes         | Amount expected or offered for the NFToken. If the token has the `lsfOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
-| `Destination`       | string           | AccountID         | No          | The AccountID for which this offer is intended. If present, only that account can accept the offer. |
-| `Expiration`        | number           | UInt32            | No          | The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch. |
-| `LedgerEntryType`   | string           | UInt16            | Yes         | The value `0x0037`, mapped to the string `NFTokenOffer`, indicates that this is an offer to trade a `NFToken`. |
-| `NFTokenID`         | string           | Hash256           | Yes         | The `NFTokenID` of the NFToken object referenced by this offer. |
-| `NFTokenOfferNode`  | string           | UInt64            | No          | Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers. |
-| `Owner`             | string           | AccountID         | Yes         | Owner of the account that is creating and owns the offer. Only the current Owner of an NFToken can create an offer to sell an NFToken, but any account can create an offer to buy an NFToken. |
-| `OwnerNode`         | string           | UInt64            | No          | Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers. |
-| `PreviousTxnID`     | string           | Hash256           | Yes         | Identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | number           | UInt32            | Yes         | Index of the ledger that contains the transaction that most recently modified this object. |
+| Name                |JSON Type             | [Internal Type][] | Required?   | Description |
+|:--------------------|:---------------------|:------------------|:------------|:-----------|
+| `Amount`            | [Currency Amount][]  | Amount            | Yes         | Amount expected or offered for the NFT. If the token has the `lsfOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
+| `Destination`       | String - [Address][] | AccountID         | No          | The account for which this offer is intended. If present, only that account can accept the offer. |
+| `Expiration`        | Number               | UInt32            | No          | The time after which the offer is no longer active. The value is the number of seconds since the Ripple Epoch. |
+| `NFTokenID`         | String - Hexadecimal | UInt256           | Yes         | The `NFTokenID` of the NFT referenced by this offer. |
+| `NFTokenOfferNode`  | String - Hexadecimal | UInt64            | No          | Internal bookkeeping, indicating the page inside the token buy or sell offer directory, as appropriate, where this token is being tracked. This field allows the efficient deletion of offers. |
+| `Owner`             | String - [Address][] | AccountID         | Yes         | The account that created and owns this offer. Only the current owner of an NFT can create an offer to sell an NFToken, but offers from past owners can remain in the ledger after the NFT has been transferred. Any account can create an offer to buy an NFT. |
+| `OwnerNode`         | String - Hexadecimal | UInt64            | No          | Internal bookkeeping, indicating the page inside the owner directory where this token is being tracked. This field allows the efficient deletion of offers. |
+| `PreviousTxnID`     | String - [Hash][]    | UInt256           | Yes         | Identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeq` | Number               | UInt32            | Yes         | Index of the ledger that contains the transaction that most recently modified this object. |
 
 
 ## {% $frontmatter.seo.title %} Flags

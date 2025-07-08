@@ -41,7 +41,7 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
-| `NFTokenOffers`     | Array     | VECTOR256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](../../ledger-data/common-fields.md) of an [NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md) object; the transaction is invalid if the array contains duplicate entries. |
+| `NFTokenOffers`   | Array     | Vector256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](../../ledger-data/common-fields.md) of an [NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md) object; the transaction is invalid if the array contains duplicate entries. |
 
 The transaction can succeed even if one or more of the IDs in the `NFTokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md) object.
 

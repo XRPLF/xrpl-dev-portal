@@ -1,6 +1,4 @@
 ---
-html: escrowcreate.html
-parent: transaction-types.html
 seo:
     description: Create an escrowed XRP payment.
 labels:
@@ -10,9 +8,9 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-_Added by the [Escrow amendment][]._
-
 Sequester XRP until the escrow process either finishes or is canceled.
+
+_(Added by the [Escrow amendment][].)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 

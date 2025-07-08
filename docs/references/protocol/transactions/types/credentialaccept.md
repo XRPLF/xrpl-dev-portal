@@ -7,7 +7,7 @@ status: not_enabled
 
 A CredentialAccept transaction accepts a credential, which makes the credential valid. Only the subject of the credential can do this.
 
-_(Requires the [Credentials amendment][] {% not-enabled /%})_
+_(Requires the [Credentials amendment][] {% not-enabled /%}.)_
 
 ## Example CredentialAccept JSON
 

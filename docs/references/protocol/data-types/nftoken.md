@@ -27,7 +27,7 @@ Unlike full-fledged [ledger entries](../ledger-data/ledger-entry-types/index.md)
 ## NFTokenID
 <!-- SPELLING_IGNORE: nftokenid -->
 
-`NFTokenID`, optional, string, Hash256
+`NFTokenID`, optional, string, UInt256
 
 This composite field uniquely identifies a token, and consists of the following sections.
 

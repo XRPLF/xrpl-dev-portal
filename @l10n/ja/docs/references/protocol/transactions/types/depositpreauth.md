@@ -58,9 +58,9 @@ DepositPreauthトランザクションは、あなたのアカウントへの支
 | フィールド               | JSONの型              | [内部の型][] | 必須?  | 説明 |
 | :----------------------- | :-------------------- | :----------- | :----- | ---- |
 | `Authorize`              | 文字列 - [アドレス][] | AccountID    | いいえ | 事前承認するアカウント。 |
-| `AuthorizeCredentials`   | 配列                  | STArray      | いいえ | 承認する資格証明書のセット。 _([Credentials amendment][]が必要です。 {% not-enabled /%})_ |
+| `AuthorizeCredentials`   | 配列                  | Array      | いいえ | 承認する資格証明書のセット。 _([Credentials amendment][]が必要です。 {% not-enabled /%})_ |
 | `Unauthorize`            | 文字列                | AccountID    | いいえ | 事前承認を取り消すアカウント。 |
-| `UnauthorizeCredentials` | 配列                  | STArray      | いいえ | 事前承認を取り消す資格証明書のセット。 _([Credentials amendment][]が必要です。 {% not-enabled /%})_ |
+| `UnauthorizeCredentials` | 配列                  | Array      | いいえ | 事前承認を取り消す資格証明書のセット。 _([Credentials amendment][]が必要です。 {% not-enabled /%})_ |
 
 `Authorize`, `AuthorizeCredentials`, `Unauthorize`, or `UnauthorizeCredentials`の**いずれか**を提供する必要があります。
 

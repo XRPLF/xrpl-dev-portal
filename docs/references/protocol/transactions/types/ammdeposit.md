@@ -9,8 +9,6 @@ labels:
 # AMMDeposit
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")
 
-_(Added by the [AMM amendment][])_
-
 Deposit funds into an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
 
 If successful, this transaction creates a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) to the AMM Account (limit 0) to hold the LP Tokens.
@@ -20,6 +18,8 @@ You can't deposit either asset into an AMM if:
 - At least one of the pooled assets is frozen by the token issuer.
 - You aren't authorized to hold at least one of the pooled assets.
 {% /admonition %}
+
+_(Added by the [AMM amendment][].)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -52,8 +52,8 @@ You can't deposit either asset into an AMM if:
 
 | Field         | JSON Type           | [Internal Type][] | Required? | Description |
 |:--------------|:--------------------|:------------------|:----------|:------------|
-| `Asset`       | Object              | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
-| `Asset2`      | Object              | STIssue           | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset`       | Object              | Issue             | Yes       | The definition for one of the assets in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
+| `Asset2`      | Object              | Issue             | Yes       | The definition for the other asset in the AMM's pool. The asset can be XRP, a token, or an MPT (see: [Specifying Without Amounts][]). |
 | `Amount`      | [Currency Amount][] | Amount            | No        | The amount of one asset to deposit to the AMM. If present, this must match the type of one of the assets (tokens or XRP) in the AMM's pool. |
 | `Amount2`     | [Currency Amount][] | Amount            | No        | The amount of another asset to add to the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same asset as `Amount`. |
 | `EPrice`      | [Currency Amount][] | Amount            | No        | The maximum effective price, in the deposit asset, to pay for each LP Token received. |

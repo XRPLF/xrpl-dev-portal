@@ -1,6 +1,4 @@
 ---
-html: mptokenissuanceset.html
-parent: transaction-types.html
 blurb: Set mutable properties for an MPT.
 labels:
  - Multi-purpose Tokens, MPTs
@@ -8,9 +6,9 @@ labels:
 # MPTokenIssuanceSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
+Use this transaction to update a mutable property for a Multi-purpose Token. The transaction flags determine which change(s) to apply.
 
-Use this transaction to update a mutable property for a Multi-purpose Token.
+_(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
 
 ## Example
 
@@ -27,12 +25,10 @@ Use this transaction to update a mutable property for a Multi-purpose Token.
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field              | JSON Type           | [Internal Type][] | Description        |
-|:-------------------|:--------------------|:------------------|:-------------------|
-| `TransactionType`  | string              | UInt16            | Indicates the new transaction type `MPTokenIssuanceSet`. |
-| `MPTokenIssuanceID`| string              | UInt192           | The `MPTokenIssuance` identifier. |
-| `Holder`    | string              | AccountID         | (Optional) XRPL Address of an individual token holder balance to lock/unlock. If omitted, this transaction applies to all any accounts holding MPTs. |
-| `Flag`             | number               | UInt64           | Specifies flags for this transaction. See [MPTokenIssuanceSet Flags](#mptokenissuanceset-flags). |
+| Field               | JSON Type            | [Internal Type][] | Required? | Description |
+|:--------------------|:---------------------|:------------------|:----------|-------------|
+| `MPTokenIssuanceID` | String - Hexadecimal | UInt192           | Yes       | The identifier of the `MPTokenIssuance` to update. |
+| `Holder`            | String - [Address][] | AccountID         | No        | An individual token holder. If provided, apply changes to the given holder's balance of the given MPT issuance. If omitted, apply to all accounts holding the given MPT issuance. |
 
 ### MPTokenIssuanceSet Flags
 
@@ -40,7 +36,7 @@ Transactions of the `MPTokenIssuanceSet` type support additional values in the `
 
 | Flag Name          | Hex Value    | Decimal Value | Description                   |
 |:-------------------|:-------------|:--------------|:------------------------------|
-| `tfMPTLock`        | `0x00000001`     | 1             | If set, indicates that all MPT balances for this asset should be locked. |
-| `tfMPTUnlock`      | `0x00000002`     | 2             | If set, indicates that all MPT balances for this asset should be unlocked. |
+| `tfMPTLock`        | `0x00000001` | 1             | Enable to lock balances of this MPT issuance. |
+| `tfMPTUnlock`      | `0x00000002` | 2             | Enable to unlock balances of this MPT issuance. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

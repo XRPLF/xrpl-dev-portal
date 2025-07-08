@@ -53,15 +53,15 @@ labels:
 | `Amendments`        | 配列     | VECTOR256    | いいえ | _（省略可）_ 現在有効なすべてのAmendmentの256ビット[Amendment ID](../../../../concepts/networks-and-servers/amendments.md)からなる配列。省略されている場合は、有効なAmendmentがありません。 |
 | `Flags`             | 数値     | UInt32       | はい   | ブール値フラグのビットマップ。Amendmentオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`です。 |
 | `LedgerEntryType`   | 文字列   | UInt16       | はい   |  値が`0x0066`（文字列`Amendments`にマッピング）の場合は、このオブジェクトがXRP **Ledgerに対するAmendmentのステータスを記述していることを示します**。 |
-| `Majorities`        | 配列     | STArray      | いいえ | _（省略可）_ 過半数の支持を得ているがまだ有効になっていないAmendmentのステータスを記述するオブジェクトの配列。省略されている場合は、過半数の支持を得ている保留中のAmendmentがありません。 |
-| `PreviousTxnID`     | 文字列   | Hash256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `Majorities`        | 配列     | Array      | いいえ | _（省略可）_ 過半数の支持を得ているがまだ有効になっていないAmendmentのステータスを記述するオブジェクトの配列。省略されている場合は、過半数の支持を得ている保留中のAmendmentがありません。 |
+| `PreviousTxnID`     | 文字列   | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
 | `PreviousTxnLgrSeq` | 数値     | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
 
 `Majorities`フィールドにメンバーが含まれている場合、各メンバーは`Majority`フィールドのみが含まれているオブジェクトです。このフィールドの内容は、以下のフィールドからなるネストオブジェクトです。
 
 | 名前              | JSONの型 | [内部の型][] | 説明 |
 |-------------------|----------|--------------|-------------|
-| `Amendment`       | 文字列   | Hash256      | 保留中のAmendmentのAmendment ID。 |
+| `Amendment`       | 文字列   | UInt256      | 保留中のAmendmentのAmendment ID。 |
 | `CloseTime`       | 数値     | UInt32       | このAmendmentが最後に過半数の支持を得たレジャーバージョンの[`close_time`フィールド](../ledger-header.md)。 |
 
 [Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)では、80%以上のバリデータが新しいAmendmentを支持してバリデータのコンセンサスが得られると、`tfGotMajority`フラグを指定した[EnableAmendment][]疑似トランザクションを使用してこの新しいAmendmentが`Majorities`フィールドに追加されます。保留中のAmendmentの支持が80%を下回ると、`tfLostMajority`フラグが指定された[EnableAmendment][]疑似トランザクションによりそのAmendmentが`Majorities`配列から削除されます。Amendmentが`Majorities`フィールドに含まれている状態が2週間以上継続している場合、フラグが指定されていない[EnableAmendment][]疑似トランザクションによってそのAmendmentは`Majorities`から削除され、`Amendments`フィールドに恒久的に追加されます。

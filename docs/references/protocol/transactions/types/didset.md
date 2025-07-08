@@ -1,6 +1,4 @@
 ---
-html: didset.html
-parent: transaction-types.html
 seo:
     description: Create or update a DID.
 labels:
@@ -10,10 +8,9 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")
 
-_(Requires the [DID amendment][])_
-
 Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or updates the fields of an existing one.
 
+_(Added by the [DID amendment][].)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 

@@ -1,6 +1,4 @@
 ---
-html: escrowcancel.html
-parent: transaction-types.html
 seo:
     description: Reclaim escrowed XRP.
 labels:
@@ -10,9 +8,9 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-_Added by the [Escrow amendment][]._
-
 Return escrowed XRP to the sender.
+
+_(Added by the [Escrow amendment][].)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -30,10 +28,10 @@ Return escrowed XRP to the sender.
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field           | JSON Type | [Internal Type][] | Description                |
-|:----------------|:----------|:------------------|:---------------------------|
-| `Owner`         | String    | AccountID         | Address of the source account that funded the escrow payment. |
-| `OfferSequence` | Number    | UInt32            | Transaction sequence (or [Ticket](../../../../concepts/accounts/tickets.md) number) of [EscrowCreate transaction][] that created the escrow to cancel. |
+| Field           | JSON Type            | [Internal Type][] | Description                |
+|:----------------|:---------------------|:------------------|:---------------------------|
+| `Owner`         | String - [Address][] | AccountID         | The account that funded the escrow payment. |
+| `OfferSequence` | Number               | UInt32            | Transaction sequence (or [Ticket](../../../../concepts/accounts/tickets.md) number) of [EscrowCreate transaction][] that created the escrow to cancel. |
 
 Any account may submit an EscrowCancel transaction.
 
