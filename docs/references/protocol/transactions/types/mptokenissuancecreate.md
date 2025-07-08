@@ -27,19 +27,19 @@ This example assumes that the issuer of the token is the signer of the transacti
   "TransferFee": 314,
   "MaximumAmount": "50000000",
   "Flags": 83659,
-  "MPTokenMetadata": "FOO",
+  "MPTokenMetadata": "F00",
   "Fee": "10"
 }
 ```
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field             | JSON Type           | [Internal Type][] | Required? | Description |
-|:------------------|:--------------------|:------------------|:----------|:------------|
-| `AssetScale`      | number              | UInt8             | No        | An asset scale is the difference, in orders of magnitude, between a standard unit and a corresponding fractional unit. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. For example, a US Dollar Stablecoin will likely have an asset scale of _2_, representing 2 decimal places; 1 unit of this MPToken would equal 0.01 US Dollars. If the fractional unit equals the standard unit, then the asset scale is 0. Note that this value is optional, and will default to 0 if not supplied. |
-| `TransferFee`      | number             | UInt16            | No        | The value specifies the fee to charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 50,000 inclusive, allowing transfer rates of between 0.000% and 50.000% in increments of 0.001. The field _must not_ be present if the tfMPTCanTransfer flag is not set. If it is, the transaction should fail and a fee should be claimed. |
-| `MaximumAmount`   | string              | UInt64            | No        | The maximum asset amount of this token that can ever be issued, as a base-10 number encoded as a string. The current default maximum limit is 9,223,372,036,854,775,807 (2^63-1). _This limit may increase in the future. If an upper limit is required, you must specify this field._ |
-| `MPTokenMetadata` | string              | Blob              | No        | Arbitrary metadata about this issuance, in hex format. The limit for this field is 1024 bytes. |
+| Field             | JSON Type            | [Internal Type][] | Required? | Description |
+|:------------------|:---------------------|:------------------|:----------|:------------|
+| `AssetScale`      | Number               | UInt8             | No        | An asset scale is the difference, in orders of magnitude, between a standard unit and a corresponding fractional unit. More formally, the asset scale is a non-negative integer (0, 1, 2, …) such that one standard unit equals 10^(-scale) of a corresponding fractional unit. For example, a US Dollar Stablecoin will likely have an asset scale of _2_, representing 2 decimal places; 1 unit of this MPToken would equal 0.01 US Dollars. If the fractional unit equals the standard unit, then the asset scale is 0. Note that this value is optional, and will default to 0 if not supplied. |
+| `TransferFee`     | Number               | UInt16            | No        | The value specifies the fee to charged by the issuer for secondary sales of the Token, if such sales are allowed. Valid values for this field are between 0 and 50,000 inclusive, allowing transfer rates of between 0.000% and 50.000% in increments of 0.001. The field _must not_ be present if the tfMPTCanTransfer flag is not set. If it is, the transaction should fail and a fee should be claimed. |
+| `MaximumAmount`   | String - Number      | UInt64            | No        | The maximum asset amount of this token that can ever be issued, as a base-10 number encoded as a string. The current default maximum limit is 9,223,372,036,854,775,807 (2^63-1). _This limit may increase in the future. If an upper limit is required, you must specify this field._ |
+| `MPTokenMetadata` | String - Hexadecimal | Blob              | No        | Arbitrary metadata about this issuance. The limit for this field is 1024 bytes. |
 
 ## MPTokenIssuanceCreate Flags
 
