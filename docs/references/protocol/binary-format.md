@@ -15,7 +15,7 @@ curated_anchors:
     anchor: "#type-list"
 ---
 # Binary Format
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/libxrpl/protocol/STObject.cpp#L696-L718 "Source")
 
 This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`rippled` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
@@ -55,7 +55,7 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 
 The serialization processes described here are implemented in multiple places and programming languages:
 
-- In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
+- In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/develop/src/libxrpl/protocol/STObject.cpp).
 - In JavaScript in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 - In Python 3 in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 
@@ -65,7 +65,7 @@ Additionally, many [client libraries](../client-libraries.md) provide serializat
 
 ## Internal Format
 
-Each field has an "internal" binary format used in the `rippled` source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of [`SField.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/SField.cpp). (This file also includes fields other than transaction fields.) The [Transaction Format Reference](transactions/index.md) also lists the internal formats for all transaction fields.
+Each field has an "internal" binary format used in the `rippled` source code to represent that field when signing (and in most other cases). The internal formats for all fields are defined in the source code of [`SField.cpp`](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SField.cpp). (This file also includes fields other than transaction fields.) The [Transaction Format Reference](transactions/index.md) also lists the internal formats for all transaction fields.
 
 For example, the `Flags` [common transaction field](transactions/common-fields.md) becomes a UInt32 (32-bit unsigned integer).
 

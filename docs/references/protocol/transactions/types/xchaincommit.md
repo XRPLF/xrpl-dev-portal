@@ -8,7 +8,7 @@ labels:
 status: not_enabled
 ---
 # XChainCommit
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L408-L416 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/TxFormats.cpp#L408-L416 "Source")
 
 _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 

@@ -143,7 +143,7 @@ Before you install Clio, you must meet the following requirements.
         You can use multiple `rippled` servers as a data source by adding more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
         {% /admonition %}
 
-        The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
+        The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
 
     2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/rippled.cfg`.
 
