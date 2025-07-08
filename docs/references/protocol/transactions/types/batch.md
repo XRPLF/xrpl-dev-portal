@@ -10,7 +10,7 @@ status: not_enabled
 
 The `Batch` transaction submits up to eight transactions as a single unit. `Batch` transactions are executed atomically in one of four modes: All or Nothing, Only One, Until Failure, and Independent.
 
-_(Requires the [Batch amendment][] {% not-enabled %}.)_
+_(Requires the [Batch amendment][] {% not-enabled /%}.)_
 
 
 ## Example {% $frontmatter.seo.title %} JSON
