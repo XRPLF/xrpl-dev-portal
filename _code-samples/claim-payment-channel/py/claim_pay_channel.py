@@ -13,75 +13,71 @@ from xrpl.transaction import submit, submit_and_wait
 from xrpl.account import get_balance
 
 
-def claim_pay_channel():
-    """The snippet walks us through creating and claiming a Payment Channel."""
+"""The snippet walks us through creating and claiming a Payment Channel."""
 
-    client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
-    
-    # Creating wallets as prerequisite
-    wallet1 = generate_faucet_wallet(client)
-    wallet2 = generate_faucet_wallet(client)
+client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 
-    print("Balances of wallets before Payment Channel is claimed:")
-    print(f"Balance of {wallet1.address} is {get_balance(wallet1.address, client)} XRP")
-    print(f"Balance of {wallet2.address} is {get_balance(wallet2.address, client)} XRP")
+# Creating wallets as prerequisite
+wallet1 = generate_faucet_wallet(client)
+wallet2 = generate_faucet_wallet(client)
 
-    # Create a Payment Channel and submit and wait for tx to be validated
-    payment_channel_create = PaymentChannelCreate(
-        account=wallet1.address,
-        amount="100",  # 10 XRP
-        destination=wallet2.address,
-        settle_delay=86400,  # 1 day in seconds
-        public_key=wallet1.public_key,
-    )
+print("Balances of wallets before Payment Channel is claimed:")
+print(f"Balance of {wallet1.address} is {get_balance(wallet1.address, client)} XRP")
+print(f"Balance of {wallet2.address} is {get_balance(wallet2.address, client)} XRP")
 
-    print("Submitting a PaymentChannelCreate transaction...")
-    payment_channel_response = submit_and_wait(
-        payment_channel_create,
-        client,
-        wallet1
-    )
-    print("PaymentChannelCreate transaction response:")
-    print(payment_channel_response.result)
+# Create a Payment Channel and submit and wait for tx to be validated
+payment_channel_create = PaymentChannelCreate(
+    account=wallet1.address,
+    amount="100",  # 10 XRP
+    destination=wallet2.address,
+    settle_delay=86400,  # 1 day in seconds
+    public_key=wallet1.public_key,
+)
 
-    # Check that the object was actually created
-    account_objects_request = AccountObjects(
-        account=wallet1.address,
-    )
-    account_objects_response = client.request(account_objects_request)
-    account_objects = account_objects_response.result["account_objects"]
+print("Submitting a PaymentChannelCreate transaction...")
+payment_channel_response = submit_and_wait(
+    payment_channel_create,
+    client,
+    wallet1
+)
+print("PaymentChannelCreate transaction response:")
+print(payment_channel_response.result)
 
-    # Find the PayChannel object to get the correct channel ID
-    channel_id = None
-    for obj in account_objects:
-        if obj["LedgerEntryType"] == "PayChannel":
-            channel_id = obj["index"]
-            break
+# Check that the object was actually created
+account_objects_request = AccountObjects(
+    account=wallet1.address,
+)
+account_objects_response = client.request(account_objects_request)
+account_objects = account_objects_response.result["account_objects"]
 
-    if not channel_id:
-        raise Exception("PayChannel not found in account objects")
+# Find the PayChannel object to get the correct channel ID
+channel_id = None
+for obj in account_objects:
+    if obj["LedgerEntryType"] == "PayChannel":
+        channel_id = obj["index"]
+        break
 
-    print(f"PayChannel ID: {channel_id}")
+if not channel_id:
+    raise Exception("PayChannel not found in account objects")
 
-    # Destination claims the Payment Channel and we see the balances to verify.
-    payment_channel_claim = PaymentChannelClaim(
-        account=wallet2.address,
-        channel=channel_id,
-        amount="100",
-    )
+print(f"PayChannel ID: {channel_id}")
 
-    print("Submitting a PaymentChannelClaim transaction...")
-    channel_claim_response = submit_and_wait(
-        payment_channel_claim,
-        client,
-        wallet1,
-    )
-    print("PaymentChannelClaim transaction response:")
-    print(channel_claim_response.result)
-    
-    print("Balances of wallets after Payment Channel is claimed:")
-    print(f"Balance of {wallet1.address} is {get_balance(wallet1.address, client)} XRP")
-    print(f"Balance of {wallet2.address} is {get_balance(wallet2.address, client)} XRP")
-    
-if __name__ == "__main__":
-    claim_pay_channel()
+# Destination claims the Payment Channel and we see the balances to verify.
+payment_channel_claim = PaymentChannelClaim(
+    account=wallet2.address,
+    channel=channel_id,
+    amount="100",
+)
+
+print("Submitting a PaymentChannelClaim transaction...")
+channel_claim_response = submit_and_wait(
+    payment_channel_claim,
+    client,
+    wallet2,
+)
+print("PaymentChannelClaim transaction response:")
+print(channel_claim_response.result)
+
+print("Balances of wallets after Payment Channel is claimed:")
+print(f"Balance of {wallet1.address} is {get_balance(wallet1.address, client)} XRP")
+print(f"Balance of {wallet2.address} is {get_balance(wallet2.address, client)} XRP")
