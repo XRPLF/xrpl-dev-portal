@@ -14,7 +14,11 @@ escrow_sequence = 30215126
 sender_wallet = generate_faucet_wallet(client=client)
 
 # Build escrow cancel transaction
-cancel_txn = EscrowCancel(account=sender_wallet.address, owner=sender_wallet.address, offer_sequence=escrow_sequence)
+cancel_txn = EscrowCancel(
+    account=sender_wallet.address, 
+    owner=sender_wallet.address,
+    offer_sequence=escrow_sequence
+)
 
 # Autofill, sign, then submit transaction and wait for result
 stxn_response = submit_and_wait(cancel_txn, client, sender_wallet)

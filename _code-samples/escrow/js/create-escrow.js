@@ -14,15 +14,6 @@ const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy";
 async function main() {
   try {
 
-    // Construct condition and fulfillment ------------------------------------
-    const preimageData = crypto.randomBytes(32);
-    const myFulfillment = new cc.PreimageSha256();
-    myFulfillment.setPreimage(preimageData);
-    const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase();
-
-    console.log('Condition:', conditionHex);
-    console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase());
-
     // Connect ----------------------------------------------------------------
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
     await client.connect();
@@ -37,6 +28,16 @@ async function main() {
     finishAfter = new Date(finishAfter * 1000);
     console.log("This escrow will finish after: ", finishAfter);
 
+    // Construct condition and fulfillment ------------------------------------
+    const preimageData = crypto.randomBytes(32);
+    const myFulfillment = new cc.PreimageSha256();
+    myFulfillment.setPreimage(preimageData);
+    const conditionHex = myFulfillment.getConditionBinary().toString('hex').toUpperCase();
+
+    console.log('Condition:', conditionHex);
+    console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase());
+
+    // Prepare EscrowCreate transaction ------------------------------------
     const escrowCreateTransaction = {
       "TransactionType": "EscrowCreate",
       "Account": wallet.address,
@@ -46,7 +47,7 @@ async function main() {
       "Condition": conditionHex,
       "Fee": "12",
       "FinishAfter": xrpl.isoTimeToRippleTime(finishAfter.toISOString()),
-  };
+    };
 
     xrpl.validate(escrowCreateTransaction);
 
@@ -54,7 +55,7 @@ async function main() {
     console.log('Signing and submitting the transaction:',
                 JSON.stringify(escrowCreateTransaction, null,  "\t"), "\n"
     );
-    const response  = await client.submitAndWait(escrowCreateTransaction, { wallet });
+    const response = await client.submitAndWait(escrowCreateTransaction, { wallet });
     console.log(`Sequence number: ${response.result.tx_json.Sequence}`);
     console.log(`Finished submitting! ${JSON.stringify(response.result, null, "\t")}`);
 
