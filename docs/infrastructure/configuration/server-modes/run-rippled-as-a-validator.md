@@ -217,8 +217,9 @@ _**To connect your validator to the network using public hubs:**_
     hub.xrpl-commons.org 51235
     ```
 
-> **Note:** The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official `rippled-example.cfg` maintained by XRPLF:
-> [https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg)
+{% admonition type="info" name="Note" %}
+The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official [`rippled-example.cfg`](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) maintained by XRPLF.
+{% /admonition %}
 
 
     {% admonition type="warning" name="Caution" %}This configuration connects your validator to the network using default public hubs. Because these are the _default_ public hubs, they may sometimes be too busy to provide your validator with a connection to the network. To help avoid this issue, connect to more public hubs and, even better, connect to non-default public hubs.{% /admonition %}
