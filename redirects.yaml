@@ -1,3 +1,12 @@
+/docs/infrastructure/installation/rippled-1-3-migration-instructions/:
+    to: /docs/infrastructure/installation/
+    type: 301
+update-rippled-manually-on-centos-rhel/:
+    to: /docs/infrastructure/installation/update-rippled-manually-on-rhel/
+    type: 301
+/docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum/:
+    to: /docs/infrastructure/installation/install-rippled-on-rhel/
+    type: 301
 /docs/concepts/xrpl-sidechains/price-oracles/:
     to: /docs/concepts/decentralized-storage/price-oracles/
     type: 301
