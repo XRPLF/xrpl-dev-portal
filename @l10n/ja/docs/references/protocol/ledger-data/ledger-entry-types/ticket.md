@@ -38,7 +38,7 @@ _([TicketBatch amendment][]が必要です)_
 | `LedgerEntryType`   | 文字列     | UInt16        | はい   | 文字列`Ticket`にマッピングされた値`0x0054`は、このオブジェクトが {% $frontmatter.seo.title %}エントリであることを示しています。 |
 | `OwnerNode`         | 文字列     | UInt64        | はい   | 送金元の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。注記: このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
 | `PreviousTxnID`     | 文字列     | Hash256       | はい   | 最後にこのオブジェクトを変更した[トランザクション](../../../../concepts/transactions/index.md)の識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値       | UInt32        | はい   | 最後にこのオブジェクトを変更したトランザクションを含む[レジャーインデックス][Ledger Index]。 |
+| `PreviousTxnLgrSeq` | 数値       | UInt32        | はい   | 最後にこのオブジェクトを変更したトランザクションを含む[レジャーインデックス][]。 |
 | `TicketSequence`    | 数値       | UInt32        | はい   | 本チケットが設定する[シーケンス番号][]。 |
 
 
@@ -60,4 +60,4 @@ TicketオブジェクトのIDは、以下の値がこの順序で連結されて
 * チケットの所有者のアカウントID
 * チケットの`TicketSequence`
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

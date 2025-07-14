@@ -1112,4 +1112,4 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4
 * `malformedRequest` - リクエストにフィールドが無効な組み合わせで指定されているか、1つ以上のフィールドの型が誤っています。
 * `unknownOption` - リクエストに指定されたフィールドが、予期されるリクエストのフォーマットのいずれにも一致していません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

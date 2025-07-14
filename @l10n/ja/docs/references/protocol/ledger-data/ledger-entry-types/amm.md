@@ -119,4 +119,4 @@ _([AMM amendment][]により追加されました。)_
 
 XRPの場合、トークン・発行者ともに全て0を使用します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

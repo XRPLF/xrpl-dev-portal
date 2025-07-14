@@ -49,4 +49,4 @@ Ripple社は、TestnetとDevnetでメインサーバを運用しています。[
   - [Validatorsメソッド][]
   - [デーモンモードのオプション](../../infrastructure/commandline-usage.md#デーモンモードのオプション)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

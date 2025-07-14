@@ -40,4 +40,4 @@ _([PriceOracle Amendment][])_
 |---------------|-------------|
 | `tecNO_ENTRY` | `Oracle`オブジェクトが存在しません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

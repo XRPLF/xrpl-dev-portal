@@ -126,4 +126,4 @@ Connecting to 127.0.0.1:5005
 * [汎用エラータイプ][]のすべて。
 - `invalidParams` - サーバが[バリデータとして設定されていない](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)場合、サーバはこのエラーを`"error_message" : "not a validator"`と共に返します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

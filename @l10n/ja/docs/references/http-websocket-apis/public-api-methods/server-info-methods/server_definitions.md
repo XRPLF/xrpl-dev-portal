@@ -110,4 +110,4 @@ labels:
 
 いずれかの汎用エラータイプ。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

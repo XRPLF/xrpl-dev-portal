@@ -83,4 +83,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 * オファーを出すアカウントの`AccountID`
 * `NFTokenCreateOffer`トランザクションが生成する`NFTokenCreateOffer`の`Sequence`(または`Ticket`)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

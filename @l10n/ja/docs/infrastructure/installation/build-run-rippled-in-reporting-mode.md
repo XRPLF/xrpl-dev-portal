@@ -368,4 +368,4 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 
 技術的には、データベースに直接アクセスすることも*可能*です。しかし、データはバイナリーBlobとして保存されており、その中のデータにアクセスするにはBlobをデコードしなければなりません。このため、従来のSQLクエリは、データの個々のフィールドを検索したりフィルタリングしたりすることができず、あまり役に立ちません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

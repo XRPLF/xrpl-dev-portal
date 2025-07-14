@@ -189,4 +189,4 @@ labels:
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `transactionSigned` - トランザクションが署名済みです。シミュレーションで使用するトランザクションは、未署名でなければなりません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -67,11 +67,11 @@ _（[Checks Amendment][]が必要です）_
 ## Check IDのフォーマット
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
-`Check`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
+`Check`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Hals][]です。
 
 * Checkスペースキー（`0x0043`）
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]の送信者のAccountID。
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]のシーケンス番号。
     CheckCreateトランザクションが[Ticket](../../../../concepts/accounts/tickets.md)を使用する場合は、代わりに`TicketSequence`値を使用します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

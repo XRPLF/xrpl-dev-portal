@@ -28,4 +28,4 @@ EnableAmendment疑似トランザクションの`Flags`の値は、この疑似�
 | tfGotMajority  | 0x00010000 | 65536         | このレジャーバージョン以降、信頼できるバリデータのAmendment支持率は80%以上に増加しました。 |
 | tfLostMajority | 0x00020000 | 131072        | このレジャーバージョン以降、信頼できるバリデータのAmendment支持率が80%未満に減少しました。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

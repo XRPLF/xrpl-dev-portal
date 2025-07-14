@@ -337,4 +337,4 @@ labels:
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定されたレジャーが存在しないか、存在してもサーバに保存されていません。
 * `lgrIdxsInvalid` - リクエストが`ledger_index_min`よりも前の`ledger_index_max`を指定しているか、サーバが[ネットワークと同期していない](../../../../infrastructure/troubleshooting/server-doesnt-sync.md)ために有効なレジャー範囲を持っていません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

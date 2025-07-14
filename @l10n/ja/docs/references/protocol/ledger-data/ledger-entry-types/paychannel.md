@@ -45,8 +45,8 @@ _（[PayChan Amendment][]により追加されました。）_
 | 名前                | JSONの型   | [内部の型][] | 必須? | 説明 |
 |:--------------------|:---------|:------------|:----- |:-----|
 | `Account`           | 文字列    | AccountID   | はい   | このPayment Channelを所有する支払元アドレス。これは、Channelを作成したトランザクションの送信側アドレスから取得されます。 |
-| `Amount`            | 文字列    | Amount      | はい   | このChannelに割り当てられている [XRP、drop単位][]の合計です。これには宛先アドレスに支払われたXRPも含まれます。最初にChannelを作成したトランザクションにより設定され、支払元アドレスがPaymentChannelFundトランザクションを送信する場合に増加できます。 |
-| `Balance`           | 文字列    | Amount      | はい   | このChannelがすでに支払った[XRP、drop単位][]の合計。この値と`Amount`フィールドの差異は、PaymentChannelClaimトランザクションの宛先アドレスに対して支払うことができるXRPの量を示します。Channelが閉鎖すると、残りの差額は支払元アドレスに返されます。 |
+| `Amount`            | 文字列    | Amount      | はい   | このChannelに割り当てられている [XRPのdrop数][]の合計です。これには宛先アドレスに支払われたXRPも含まれます。最初にChannelを作成したトランザクションにより設定され、支払元アドレスがPaymentChannelFundトランザクションを送信する場合に増加できます。 |
+| `Balance`           | 文字列    | Amount      | はい   | このChannelがすでに支払った[XRPのdrop数][]の合計。この値と`Amount`フィールドの差異は、PaymentChannelClaimトランザクションの宛先アドレスに対して支払うことができるXRPの量を示します。Channelが閉鎖すると、残りの差額は支払元アドレスに返されます。 |
 | `CancelAfter`       | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
 | `Destination`       | 文字列    | AccountID   | はい   | このPayment Channelの宛先アドレス。Payment Channelが開いている場合、このアドレスは、このChannelからXRPを受領できる唯一のアドレスです。これは、Channelを作成したトランザクションの`Destination`フィールドから取得されます。 |
 | `DestinationTag`    | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
@@ -100,11 +100,11 @@ Payment Channelが期限切れになると、新しいトランザクション�
 
 ## PayChannel IDのフォーマット
 
-`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
+`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Hals][]です。
 
 * PayChannelスペースキー（`0x0078`）
 * 支払元アカウントのAccountID
 * 宛先アカウントのAccountID
 * Channelを作成したトランザクションのシーケンス番号
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

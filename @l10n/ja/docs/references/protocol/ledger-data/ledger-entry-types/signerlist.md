@@ -106,4 +106,4 @@ SignerListオブジェクトのIDは、以下の値がこの順序で連結さ�
 * SignerListの所有者のAccountID
 * SignerListID（現時点では常に`0`）
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -111,4 +111,4 @@ _([Credentials amendment][]が必要です。 {% not-enabled /%})_
 * このオブジェクトの所有者(このオブジェクトを作成した[DepositPreauthトランザクション][]の送信者、つまり事前承認を付与したユーザ)のAccountID
 * `AuthorizeCredentials`フィールドの内容
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

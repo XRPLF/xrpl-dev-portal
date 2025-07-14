@@ -14,4 +14,4 @@ Windows、Linux、macOSなど様々なプラットフォームで`rippled`をビ
 
 続きを読むには、[GitHubの最新の`rippled`ビルド手順](https://github.com/XRPLF/rippled/blob/develop/BUILD.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

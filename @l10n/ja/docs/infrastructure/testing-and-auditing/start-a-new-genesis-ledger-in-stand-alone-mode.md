@@ -30,4 +30,4 @@ rippled -a --start --conf=/path/to/rippled.cfg
 
 デフォルトでは、新しいジェネシスレジャーでは[Amendment](../../concepts/networks-and-servers/amendments.md)が有効になっていません。`--start`を使用して新しいジェネシスレジャーを開始する場合、ジェネシスレジャーには、構成ファイルで明示的に無効にされたAmendmentを除き、`rippled`サーバでネイティブにサポートされているすべてのAmendmentを有効にする[EnableAmendment疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/enableamendment.md)が含まれています。これらのAmendmentの効果は、直後のレジャーバージョンから反映されます。（留意事項: スタンドアロンモードでは[レジャーを手動で進める](advance-the-ledger-in-stand-alone-mode.md)必要があります。）{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.50.0" %}新規: rippled 0.50.0{% /badge %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
