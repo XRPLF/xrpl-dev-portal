@@ -54,7 +54,7 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, `AMMClawback` transactions can result in the following [transaction result codes](https://xrpl.org/docs/references/protocol/transactions/transaction-results):
+Besides errors that can occur for all transactions, `AMMClawback` transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code         | Description |
 |:-------------------|:------------|
