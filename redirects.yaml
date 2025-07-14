@@ -1,7 +1,7 @@
 /docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /docs/infrastructure/installation/
     type: 301
-update-rippled-manually-on-centos-rhel/:
+/docs/infrastructure/installation/update-rippled-manually-on-centos-rhel/:
     to: /docs/infrastructure/installation/update-rippled-manually-on-rhel/
     type: 301
 /docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum/:
@@ -1445,7 +1445,7 @@ system-requirements.html:
     to: /docs/infrastructure/installation/system-requirements
     type: 301
 install-rippled-on-centos-rhel-with-yum.html:
-    to: /docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum
+    to: /docs/infrastructure/installation/install-rippled-on-rhel
     type: 301
 install-rippled-on-ubuntu.html:
     to: /docs/infrastructure/installation/install-rippled-on-ubuntu
@@ -1457,7 +1457,7 @@ update-rippled-automatically-on-linux.html:
     to: /docs/infrastructure/installation/update-rippled-automatically-on-linux
     type: 301
 update-rippled-manually-on-centos-rhel.html:
-    to: /docs/infrastructure/installation/update-rippled-manually-on-centos-rhel
+    to: /docs/infrastructure/installation/update-rippled-manually-on-rhel
     type: 301
 update-rippled-manually-on-ubuntu.html:
     to: /docs/infrastructure/installation/update-rippled-manually-on-ubuntu
@@ -2335,6 +2335,15 @@ code_of_conduct.ja:
     type: 301
 
 # Japanese
+/ja/docs/infrastructure/installation/rippled-1-3-migration-instructions/:
+    to: /ja/docs/infrastructure/installation/
+    type: 301
+/ja/docs/infrastructure/installation/update-rippled-manually-on-centos-rhel/:
+    to: /ja/docs/infrastructure/installation/update-rippled-manually-on-rhel/
+    type: 301
+/ja/docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum/:
+    to: /ja/docs/infrastructure/installation/install-rippled-on-rhel/
+    type: 301
 /ja/docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider:
     to: /ja/docs/tutorials/javascript/amm/add-assets-to-amm
     type: 301
@@ -3764,7 +3773,7 @@ code_of_conduct.ja:
     to: /ja/docs/infrastructure/installation/system-requirements
     type: 301
 /ja/install-rippled-on-centos-rhel-with-yum.html:
-    to: /ja/docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum
+    to: /ja/docs/infrastructure/installation/install-rippled-on-rhel
     type: 301
 /ja/install-rippled-on-ubuntu.html:
     to: /ja/docs/infrastructure/installation/install-rippled-on-ubuntu
