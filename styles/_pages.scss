@@ -149,9 +149,11 @@
     #wallet-#{$wallet} {
       content: url("../img/wallets/#{$wallet}.svg");
     }
+  }
 
-    #wallet-bitfrost {
-      content: url("../img/wallets/bitfrost.png");
+  @each $wallet in "bitfrost", "crossmark" {
+    #wallet-#{$wallet} {
+      content: url("../img/wallets/#{$wallet}.png");
     }
   }
 }
