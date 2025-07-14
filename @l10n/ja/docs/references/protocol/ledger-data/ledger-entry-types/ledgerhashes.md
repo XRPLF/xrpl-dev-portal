@@ -69,9 +69,9 @@ labels:
 
 `LedgerHashes`オブジェクトIDには2種類のフォーマットがあります。これは、オブジェクトのサブタイプが「最近の履歴」と「過去の履歴」のいずれであるかに応じて決まります。
 
-**「最近の履歴」** `LedgerHashes`オブジェクトのIDは、`LedgerHashes`スペースキー（`0x0073`）の[SHA-512Hals][]です。つまり「最近の履歴」のIDは常に`B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`です。
+**「最近の履歴」** `LedgerHashes`オブジェクトのIDは、`LedgerHashes`スペースキー（`0x0073`）の[SHA-512Half][]です。つまり「最近の履歴」のIDは常に`B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`です。
 
-**「過去の履歴」**`LedgerHashes`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Hals][]です。
+**「過去の履歴」**`LedgerHashes`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
 
 - `LedgerHashes`スペースキー（`0x0073`）
 - オブジェクトの`Hashes`配列のフラッグレジャーの32ビット[レジャーインデックス][]を65536で割った値。

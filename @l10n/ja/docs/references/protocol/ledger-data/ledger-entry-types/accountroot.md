@@ -112,7 +112,7 @@ AccountRootエントリの[準備金](../../../../concepts/accounts/reserves.md)
 
 ## AccountRoot IDのフォーマット
 
-AccountRootエントリのIDは、以下の値がこの順序で連結されている[SHA-512Hals][]です。
+AccountRootエントリのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
 
 * Accountスペースキー（`0x0061`）
 * アカウントのAccountID

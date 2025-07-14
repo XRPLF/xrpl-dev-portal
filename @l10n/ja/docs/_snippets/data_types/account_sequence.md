@@ -2,7 +2,7 @@
 
 すべての[XRP Ledgerアカウント](../../concepts/accounts/index.md)には、`Sequence`フィールドに1つのシーケンス番号があり、アカウントがトランザクションを送信し、そのトランザクションが[検証済みレジャー](../../concepts/ledgers/index.md)に記録されるたびに、1ずつ増加します。シーケンス番号は各[トランザクション](../../concepts/transactions/index.md)の`Sequence`フィールドにもあり、そのトランザクションが実行される際にアカウントの現在のシーケンス番号と一致している必要があります。各アカウントで、各シーケンス番号は番号順に一度だけ使用できます。
 
-[Tickets](../../concepts/accounts/tickets.md) make some exceptions from these rules so that it is possible to send transactions out of the normal order. Tickets represent sequence numbers reserved for later use; a transaction can use a Ticket instead of a normal sequence number.
+[チケット](../../concepts/accounts/tickets.md) は、通常の順序とは異なるトランザクションを送信できるように、これらのルールにいくつかの例外を設けています。チケットは、後で使用するために予約されたシーケンス番号を表します。トランザクションは、通常のシーケンス番号の代わりにチケットを使用することができます。
 
 [DeletableAccounts Amendment](/resources/known-amendments.md#deletableaccounts) を適用する場合、アカウントの`Sequence`番号の始まりが、アカウントが作成されたレジャーバージョンの[レジャーインデックス][]と一致します。DeletableAccountsを適用しない場合、どのアカウントの`Sequence`番号も1で始まります。
 

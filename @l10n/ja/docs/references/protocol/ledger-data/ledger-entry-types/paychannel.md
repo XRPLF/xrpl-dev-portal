@@ -100,7 +100,7 @@ Payment Channelが期限切れになると、新しいトランザクション�
 
 ## PayChannel IDのフォーマット
 
-`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Hals][]です。
+`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
 
 * PayChannelスペースキー（`0x0078`）
 * 支払元アカウントのAccountID

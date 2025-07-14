@@ -116,7 +116,7 @@ XRP Ledgerは遅延評価を使用して所有者準備金を計算していま�
 
 ## RippleState IDのフォーマット
 
-RippleStateオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Hals][]です。
+RippleStateオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
 
 * RippleStateスペースキー（`0x0072`）
 * 低位アカウントのAccountID
