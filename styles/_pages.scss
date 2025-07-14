@@ -33,10 +33,16 @@
   }
 
   #home-hero-graphic {
-    width: 856px;
+    width: 100%;
+    max-width: 856px;
+    height: auto;
     object-fit: cover;
     content: url("../img/home-hero.svg");
     margin-bottom: 24px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
     @media (min-width: 992px) {
       min-height: 470px;
     }
