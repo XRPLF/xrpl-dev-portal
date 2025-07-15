@@ -99,9 +99,9 @@ async function verify(accountAddress, client) {
     try {
         const response = await client.request(request)
         return await checkDestination(response.result.account_data)
-    } catch {
+    } catch (err) {
         return {
-            domain: 'domain',
+            domain: '',
             verified: false
         }
     }
