@@ -119,8 +119,8 @@ In this example, two users are atomically swapping their tokens: XRP for GKO.
 | Field             | JSON Type | [Internal Type][] | Required? | Description |
 |:------------------|:----------|:------------------|:----------|:------------|
 | `Flags`           | Number    | UInt32            | Yes       | A bit-flag for this transaction. Exactly one must be specified to represent the batch mode of the transaction. See: [Batch Flags](#batch-flags). |
-| `RawTransactions` | Array     | STArray           | Yes       | The list of transactions to apply. |
-| `BatchSigners`    | Array     | STArray           | No        | The signatures authorizing a multi-account `Batch` transaction. |
+| `RawTransactions` | Array     | Array             | Yes       | The list of transactions to apply. |
+| `BatchSigners`    | Array     | Array             | No        | The signatures authorizing a multi-account `Batch` transaction. |
 
 ### RawTransactions
 
@@ -129,7 +129,7 @@ In this example, two users are atomically swapping their tokens: XRP for GKO.
 Each inner transaction:
 
 - Must contain a `tfInnerBatchTxn` (Decimal Value: `1073741824`, or Hex Value: `0x40000000`) flag.
-- Must have a `fee` value of `0`.
+- Must have a `Fee` value of `"0"`.
 - Must not be signed (the global transaction is already signed by all relevant parties). They must instead have an empty string (`""`) in the `SigningPubKey`, and the `TxnSignature` field must be omitted.
 - Must include a `TicketSequence` or `Sequence` value greather than zero.
 
@@ -139,10 +139,10 @@ This field operates similarly to multi-signing on the XRPL. It is only needed if
 
 | Field           | JSON Type | [Internal Type][] | Required? | Description |
 |:----------------|:----------|:------------------|:----------|:------------|
-| `Account`       | String    | STAccount         | Yes       | An account with at least one inner transaction. |
-| `SigningPubKey` | String    | STBlob            | No        | Hex representation of the public key that corresponds to the private key used to sign this transaction. |
-| `TxnSignature`  | String    | STBlob            | No        | The signature that verifies this transaction as originating from the account it says it is from. |
-| `Signers`       | Array     | STArray           | No        | Array of objects that represent a multi-signature which authorizes this transaction. |
+| `Account`       | String    | AccountID         | Yes       | An account with at least one inner transaction. |
+| `SigningPubKey` | String    | Blob              | No        | Hex representation of the public key that corresponds to the private key used to sign this transaction. |
+| `TxnSignature`  | String    | Blob              | No        | The signature that verifies this transaction as originating from the account it says it is from. |
+| `Signers`       | Array     | Array             | No        | Array of objects that represent a multi-signature which authorizes this transaction. |
 
 {% admonition type="info" name="Note" %}
 If the account submitting the `Batch` transaction is signing with a single signature, they sign the `Flags` field and the hashes of the inner transactions. In this case, only `SigningPubKey` and `TxnSignature` are included. Otherwise, the `Signers` field is used instead for multi-signing; this field holds the signatures for the `Flags` field and the hashes of the inner transactions.
@@ -169,3 +169,5 @@ A transaction is considered successful if it receives a `tesSUCCESS` result.
 |:--------------------------|:--------------------------------------------------|
 | `temINVALID_INNER_BATCH`  | An inner transaction is malformed.               |
 | `temSEQ_AND_TICKET`       | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction can't include both fields, but must have at least one. |
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
