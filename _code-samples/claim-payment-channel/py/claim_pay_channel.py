@@ -1,6 +1,6 @@
 """
 Create, claim and verify a Payment Channel.
-Reference: https://xrpl.org/paychannel.html
+Reference: https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/paychannel
 """
 from xrpl.clients import JsonRpcClient
 from xrpl.models import (
@@ -18,6 +18,7 @@ from xrpl.account import get_balance
 client = JsonRpcClient("https://s.altnet.rippletest.net:51234")
 
 # Creating wallets as prerequisite
+print("Setting up wallets...")
 wallet1 = generate_faucet_wallet(client)
 wallet2 = generate_faucet_wallet(client)
 
