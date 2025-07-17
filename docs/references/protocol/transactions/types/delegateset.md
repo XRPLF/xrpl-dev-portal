@@ -11,7 +11,7 @@ status: not_enabled
 # DelegateSet 
 The `DelegateSet` transaction creates, modifies, or deletes a `Delegate` ledger object, thereby granting, changing, or revoking delegated permissions between accounts.
 
-_(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_
+_(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
 
 ## Example `DelegateSet` JSON
 

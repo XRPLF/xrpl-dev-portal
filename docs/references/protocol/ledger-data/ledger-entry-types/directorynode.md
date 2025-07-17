@@ -97,22 +97,22 @@ All types of directories are automatically updated by the protocol as necessary.
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
-| `DomainID`          | String    | Hash256           | No        | (Offer directories only) The ledger entry ID of a permissioned domain. If present, this order book belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). Otherwise, this order book is part of the open DEX. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `DomainID`          | String    | UInt256           | No        | (Offer directories only) The ledger entry ID of a permissioned domain. If present, this order book belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). Otherwise, this order book is part of the open DEX. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
 | `ExchangeRate`      | String    | UInt64            | No        | (Offer directories only) **DEPRECATED**. Do not use. |
 | `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DirectoryNode` objects. The value is always `0`. |
 | `Indexes`           | Array     | Vector256         | Yes       | The contents of this directory: an array of IDs of other objects. |
 | `IndexNext`         | Number    | UInt64            | No        | If this directory consists of multiple pages, this ID links to the next object in the chain, wrapping around at the end. |
 | `IndexPrevious`     | Number    | UInt64            | No        | If this directory consists of multiple pages, this ID links to the previous object in the chain, wrapping around at the beginning. |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0064`, mapped to the string `DirectoryNode`, indicates that this object is part of a directory. |
-| `NFTokenID`         | String    | Hash256           | No        | (NFT offer directories only) ID of the NFT in a buy or sell offer. |
+| `NFTokenID`         | String    | UInt256           | No        | (NFT offer directories only) ID of the NFT in a buy or sell offer. |
 | `Owner`             | String    | AccountID         | No        | (Owner directories only) The address of the account that owns the objects in this directory. |
-| `PreviousTxnID`     | String    | Hash256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnID`     | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
-| `RootIndex`         | String    | Hash256           | Yes       | The ID of root object for this directory. |
-| `TakerGetsCurrency` | String    | Hash160           | No        | (Offer directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
-| `TakerGetsIssuer`   | String    | Hash160           | No        | (Offer directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
-| `TakerPaysCurrency` | String    | Hash160           | No        | (Offer directories only) The currency code of the `TakerPays` amount from the offers in this directory. |
-| `TakerPaysIssuer`   | String    | Hash160           | No        | (Offer directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
+| `RootIndex`         | String    | UInt256           | Yes       | The ID of root object for this directory. |
+| `TakerGetsCurrency` | String    | UInt160           | No        | (Offer directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
+| `TakerGetsIssuer`   | String    | UInt160           | No        | (Offer directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
+| `TakerPaysCurrency` | String    | UInt160           | No        | (Offer directories only) The currency code of the `TakerPays` amount from the offers in this directory. |
+| `TakerPaysIssuer`   | String    | UInt160           | No        | (Offer directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
 
 
 ## {% $frontmatter.seo.title %} Flags

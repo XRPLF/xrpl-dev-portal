@@ -54,7 +54,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
 | `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0053`, mapped to the string `SignerList`, indicates that this is a SignerList ledger entry. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnID`     | String    | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `SignerEntries`     | Array     | Array         | Yes       | An array of Signer Entry objects representing the parties who are part of this signer list. |
 | `SignerListID`      | Number    | UInt32        | Yes       | An ID for this signer list. Currently always set to `0`. If a future [amendment](../../../../concepts/networks-and-servers/amendments.md) allows multiple signer lists for an account, this may change. |
@@ -70,7 +70,7 @@ Each member of the `SignerEntries` field is an object that describes that signer
 |:----------------|:----------|:--------------|:-------------------------------|
 | `Account`       | String    | AccountID     | An XRP Ledger address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger. |
 | `SignerWeight`  | Number    | UInt16        | The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the signer list's `SignerQuorum` value. |
-| `WalletLocator` | String    | Hash256       | _(Optional)_ Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. _(Added by the [ExpandedSignerList amendment][].)_ |
+| `WalletLocator` | String    | UInt256       | _(Optional)_ Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. _(Added by the [ExpandedSignerList amendment][].)_ |
 
 When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot ledger entry](accountroot.md), then only the [master private key](../../../../concepts/accounts/cryptographic-keys.md) associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
 

@@ -51,15 +51,15 @@ In addition to the [common fields](../common-fields.md), the {% code-page-name /
 | `Amendments`        | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](../../../../concepts/networks-and-servers/amendments.md) for all currently enabled amendments. If omitted, there are no enabled amendments. |
 | `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Amendments` objects. The value is always `0`. |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
-| `Majorities`        | Array     | STArray           | No        | Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
-| `PreviousTxnID`     | String    | Hash256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `Majorities`        | Array     | Array           | No        | Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
+| `PreviousTxnID`     | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
 
 Each member of the `Majorities` field, if it is present, is an object with one field, `Majority`, whose contents are a nested object with the following fields:
 
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|-------------------|-------------|
-| `Amendment`       | String    | Hash256           | The Amendment ID of the pending amendment. |
+| `Amendment`       | String    | UInt256           | The Amendment ID of the pending amendment. |
 | `CloseTime`       | Number    | UInt32            | The [`close_time` field](../ledger-header.md) of the ledger version where this amendment most recently gained a majority. |
 
 In the [amendment process](../../../../concepts/networks-and-servers/amendments.md#amendment-process), a consensus of validators adds a new amendment to the `Majorities` field using an [EnableAmendment][] pseudo-transaction with the `tfGotMajority` flag when 80% or more of validators support it. If support for a pending amendment goes below 80%, an [EnableAmendment][] pseudo-transaction with the `tfLostMajority` flag removes the amendment from the `Majorities` array. If an amendment remains in the `Majorities` field for at least 2 weeks, an [EnableAmendment][] pseudo-transaction with no flags removes it from `Majorities` and permanently adds it to the `Amendments` field.

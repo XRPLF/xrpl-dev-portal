@@ -33,7 +33,7 @@ title:
 | `TransactionType` | 文字列   | UINT16       | `NFTokenModify`    |
 | `Account`         | 文字列   | AccountID    | NFTの発行者または許可されたアカウントの一意のアドレス。 |
 | `Owner`           | 文字列   | AccountID    | _(任意)_ NFTの所有者のアドレス。`Account`と`Owner`が同じアドレスの場合、このフィールドは省略します。 |
-| `NFTokenID`       | 文字列   | Hash256      | NFTを識別する一意のID。 |
+| `NFTokenID`       | 文字列   | UInt256      | NFTを識別する一意のID。 |
 | `URI`             | 文字列   | Blob         | _(任意)_ 最大256バイトの任意のデータ。JSONでは、16進数の文字列としてエンコードされます。[`xrpl.convertStringToHex`](https://js.xrpl.org/modules.html#convertStringToHex)ユーティリティメソッドを使用してURIを16進数に変換できます。これは、NFTに関連するデータまたはメタデータを指すURIです。URIはHTTPまたはHTTPS URL、IPFS URI、マグネットリンク、[RFC 2379 "data" URL](https://datatracker.ietf.org/doc/html/rfc2397)としてエンコードされた即値データ、または発行者固有のエンコードをデコードできます。URIは検証されません。URIを指定しない場合、既存のURIは削除されます。 |
 
 ## エラーケース

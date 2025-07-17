@@ -46,10 +46,10 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | Field Name          | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0050`, mapped to the string `NFTokenPage`, indicates that this is a page containing `NFToken` objects.|
-| `NextPageMin`       | String    | Hash256           | No        | The locator of the next page, if any. Details about this field and how it should be used are outlined below. |
+| `NextPageMin`       | String    | UInt256           | No        | The locator of the next page, if any. Details about this field and how it should be used are outlined below. |
 | `NFTokens`          | Array     | Array             | Yes       | The collection of `NFToken` objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects are sorted from low to high with the `NFTokenID` used as the sorting parameter.|
-| `PreviousPageMin`   | String    | Hash256           | No        | The locator of the previous page, if any. Details about this field and how it should be used are outlined below. |
-| `PreviousTxnID`     | String    | Hash256           | No        | Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object. |
+| `PreviousPageMin`   | String    | UInt256           | No        | The locator of the previous page, if any. Details about this field and how it should be used are outlined below. |
+| `PreviousTxnID`     | String    | UInt256           | No        | Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The sequence of the ledger that contains the transaction that most recently modified this NFTokenPage object.|
 
 
