@@ -47,3 +47,7 @@ The XRP Ledger is an opensource project with publicly available client libraries
 
 
 Next: [Transactions and Requests](transactions-and-requests.md)
+
+## See Also
+
+For more information on which wallets are supported on the XRP Ledger, see [Wallets](../../about/xrp#wallets).
