@@ -1,16 +1,16 @@
 ---
-html: system-requirements.html
-parent: install-rippled.html
 seo:
-    description: Hardware and software requirements for running rippled.
+    description: Hardware and software requirements for running rippled or Clio.
 labels:
   - Core Server
 ---
 # System Requirements
 
+The following system requirements apply to both the core XRP Ledger server, `rippled`, and the Clio server for API access.
+
 ## Recommended Specifications
 
-For reliable performance in production environments, it is recommended to run an XRP Ledger (`rippled`) server on bare metal with the following characteristics or better:
+For reliable performance in production environments, it is recommended to run a server on bare metal with the following characteristics or better:
 
 - Operating System: Ubuntu (LTS), Red Hat Enterprise Linux (latest release), or a compatible Linux distribution.
 - CPU: 3+ GHz 64-bit x86_64 processor with 8+ cores.
@@ -28,6 +28,7 @@ For testing purposes, you can run an XRP Ledger server on commodity hardware wit
 
 - Operating System: macOS, Windows (64-bit), or most Linux distributions (Red Hat, Ubuntu, and Debian supported).
 - CPU: 64-bit x86_64, 4+ cores.
+    - For development purposes, it is also possible to compile `rippled` for some Apple Silicon or ARM processors. See the [Build instructions](https://github.com/XRPLF/rippled/blob/develop/BUILD.md) for guidance. However, architectures other than x86_64 are not officially supported and are not recommended for production.
 - Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.
 - RAM: 16 GB+.
 

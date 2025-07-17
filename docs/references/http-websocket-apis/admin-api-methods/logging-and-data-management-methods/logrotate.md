@@ -35,7 +35,7 @@ The following script is a sample that can be created as `/etc/logrotate.d/ripple
 
 You can configure parameters such as `minsize` and `rotate` depending on the amount of logs you keep. Use the `log_level` setting in your `rippled.cfg` file to configure how verbose your server's logs are. This sample script is based on standard `log_level` and stores approximately 2 weeks worth of logs in a compressed format.
 
-The official packages [for CentOS/Red Hat](../../../../infrastructure/installation/install-rippled-on-centos-rhel-with-yum.md) and [Ubuntu or Debian](../../../../infrastructure/installation/install-rippled-on-ubuntu.md) provide the script `/etc/logrotate.d/rippled` by default. You can make modifications to this as required. Your modifications will not be overwritten on package upgrades. <!-- STYLE_OVERRIDE: will -->
+The official packages [for CentOS/Red Hat](../../../../infrastructure/installation/install-rippled-on-rhel.md) and [Ubuntu or Debian](../../../../infrastructure/installation/install-rippled-on-ubuntu.md) provide the script `/etc/logrotate.d/rippled` by default. You can make modifications to this as required. Your modifications will not be overwritten on package upgrades. <!-- STYLE_OVERRIDE: will -->
 
 {% admonition type="info" name="Note" %}You should have only one system log rotation script per application. Please ensure that you do not have any other log rotation that handles the same directory.{% /admonition %}
 
