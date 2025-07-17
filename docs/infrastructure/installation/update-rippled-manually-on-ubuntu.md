@@ -7,7 +7,7 @@ labels:
 ---
 # Update Manually on Ubuntu or Debian
 
-This page describes how to update manually to the latest release of `rippled` on Ubuntu Linux. You can also up [automatic updates](update-rippled-automatically-on-linux.md).
+This page describes how to manually update to the latest release of `rippled` on Ubuntu Linux. You can also set up [automatic updates](update-rippled-automatically-on-linux.md).
 
 These instructions assume you have already [installed `rippled` on a supported version of Ubuntu using Ripple's `deb` package](install-rippled-on-ubuntu.md). If you are upgrading from `rippled` 1.6.x or older, remove it and perform a fresh install instead.
 

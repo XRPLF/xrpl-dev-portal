@@ -28,7 +28,7 @@ For testing purposes, you can run an XRP Ledger server on commodity hardware wit
 
 - Operating System: macOS, Windows (64-bit), or most Linux distributions (Red Hat, Ubuntu, and Debian supported).
 - CPU: 64-bit x86_64, 4+ cores.
-    - For development purposes, is also possible to compile `rippled` for some Apple Silicon or ARM processors. See the [Build instructions](https://github.com/XRPLF/rippled/blob/develop/BUILD.md) for guidance. However, architectures other than x86_64 are not officially supported and are not recommended for production.
+    - For development purposes, it is also possible to compile `rippled` for some Apple Silicon or ARM processors. See the [Build instructions](https://github.com/XRPLF/rippled/blob/develop/BUILD.md) for guidance. However, architectures other than x86_64 are not officially supported and are not recommended for production.
 - Disk: SSD / NVMe (10,000 IOPS sustained - not burst or peak - or better). Minimum 50 GB for the database partition. Do not use Amazon Elastic Block Store (AWS EBS) because its latency is too high to sync reliably.
 - RAM: 16 GB+.
 
