@@ -58,54 +58,11 @@ Response:
 {% /tab %}
 
 {% tab label="Javascript" %}
-```js
-// Prepare EscrowCreate transaction ------------------------------------
-const escrowCreateTransaction = {
-    "TransactionType": "EscrowCreate",
-    "Account": wallet.address,
-    "Destination": wallet.address,
-    "Amount": "6000000", //drops XRP
-    "DestinationTag": 2023,
-    "Fee": "12",
-    "FinishAfter": xrpl.isoTimeToRippleTime(finishAfter.toISOString()),
-};
-
-xrpl.validate(escrowCreateTransaction);
-
-// Sign and submit the transaction ----------------------------------------
-console.log('Signing and submitting the transaction:',
-            JSON.stringify(escrowCreateTransaction, null,  "\t"), "\n"
-);
-const response = await client.submitAndWait(escrowCreateTransaction, { wallet });
-console.log(`Sequence number: ${response.result.tx_json.Sequence}`);
-console.log(`Finished submitting! ${JSON.stringify(response.result, null, "\t")}`);
-```
+{% code-snippet file="/_code-samples/escrow/js/create-escrow.js" language="js" from="// Prepare EscrowCreate" before="await client.disconnect" /%}
 {% /tab %}
 
 {% tab label="Python" %}
-```python
-# Build escrow create transaction
-create_txn = EscrowCreate(
-    account=sender_wallet.address,
-    amount=xrp_to_drops(10.000), 
-    destination=receiver_addr,
-    finish_after=claim_date
-)
-
-# Autofill, sign, then submit transaction and wait for result
-stxn_response = submit_and_wait(create_txn, client, sender_wallet)
-
-# Return result of transaction
-stxn_result = stxn_response.result
-
-
-# Parse result and print out the neccesary info
-print(stxn_result["tx_json"]["Account"])
-print(stxn_result["tx_json"]["Sequence"])
-
-print(stxn_result["meta"]["TransactionResult"])
-print(stxn_result["hash"])
-```
+{% code-snippet file="/_code-samples/escrow/py/create_escrow.py" language="py"  from="# Build escrow create" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -114,7 +71,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 3. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 ## 4. Confirm that the escrow was created
 
@@ -191,44 +148,11 @@ Response:
 {% /tab %}
 
 {% tab label="Javascript" %}
-```js
-// Prepare EscrowFinish transaction ---------------------------------
-const escrowFinishTransaction = {
-    "Account": wallet.address,
-    "TransactionType": "EscrowFinish",
-    "Owner": wallet.address,
-    // This should equal the sequence number of the escrow transaction
-    "OfferSequence": offerSequence,
-};
-
-xrpl.validate(escrowFinishTransaction);
-
-// Sign and submit the transaction ----------------------------------------
-console.log('Signing and submitting the transaction:', JSON.stringify(escrowFinishTransaction, null,  "\t"));
-const response  = await client.submitAndWait(escrowFinishTransaction, { wallet });
-console.log(`Finished submitting! ${JSON.stringify(response.result, null,  "\t")}`);
-```
+{% code-snippet file="/_code-samples/escrow/js/finish-escrow.js" language="js" from="// Prepare EscrowFinish" before="await client.disconnect" /%}
 {% /tab %}
 
 {% tab label="Python" %}
-```python
-# Build escrow finish transaction
-finish_txn = EscrowFinish(
-    account=sender_wallet.address,
-    owner=escrow_creator,
-    offer_sequence=escrow_sequence, # The sequence number of the escrow transaction
-)
-
-# Autofill, sign, then submit transaction and wait for result
-stxn_response = submit_and_wait(finish_txn, client, sender_wallet)
-
-# Parse response and return result
-stxn_result = stxn_response.result
-
-# Parse result and print out the transaction result and transaction hash
-print(stxn_result["meta"]["TransactionResult"])
-print(stxn_result["hash"])
-```
+{% code-snippet file="/_code-samples/escrow/py/finish_escrow.py" language="py"  from="# Build escrow finish" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -237,7 +161,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 7. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 8. Confirm final result
 

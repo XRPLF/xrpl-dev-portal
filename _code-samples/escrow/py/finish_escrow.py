@@ -29,8 +29,8 @@ finish_txn = EscrowFinish(
     account=sender_wallet.address,
     owner=escrow_creator,
     offer_sequence=escrow_sequence, # The sequence number of the escrow transaction
-    condition=condition, 
-    fulfillment=fulfillment
+    condition=condition, # Omit this for time-held escrows
+    fulfillment=fulfillment # Omit this for time-held escrows
 )
 
 # Autofill, sign, then submit transaction and wait for result

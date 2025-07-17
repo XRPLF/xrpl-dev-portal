@@ -118,7 +118,7 @@ Response:
 
 ## 4. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. Confirm that the escrow was created
 
@@ -178,7 +178,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 7. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 8. Confirm final result
 

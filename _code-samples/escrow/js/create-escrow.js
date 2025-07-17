@@ -44,7 +44,7 @@ async function main() {
       "Destination": wallet.address,
       "Amount": "6000000", //drops XRP
       "DestinationTag": 2023,
-      "Condition": conditionHex,
+      "Condition": conditionHex, // Omit this for time-held escrows
       "Fee": "12",
       "FinishAfter": xrpl.isoTimeToRippleTime(finishAfter.toISOString()),
     };

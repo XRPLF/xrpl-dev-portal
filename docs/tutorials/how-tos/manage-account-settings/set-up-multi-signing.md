@@ -160,7 +160,7 @@ Make sure that the [Transaction Result](../../../references/protocol/transaction
 
 ## 4. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 
 ## 5. Confirm the new signer list

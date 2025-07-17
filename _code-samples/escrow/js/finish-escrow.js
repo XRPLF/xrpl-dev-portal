@@ -35,9 +35,11 @@ const main = async () => {
         "Owner": wallet.address,
         // This should equal the sequence number of the escrow transaction
         "OfferSequence": offerSequence,
-        // Crypto condition that must be met before escrow can be completed, passed on escrow creation
+        // Crypto condition that must be met before escrow can be completed, passed on escrow creation.
+        // Omit this for time-held escrows.
         "Condition": condition,
-        // Fulfillment of the condition, passed on escrow creation
+        // Fulfillment of the condition, passed on escrow creation.
+        // Omit this for time-held escrows.
         "Fulfillment": fulfillment,
     };
 

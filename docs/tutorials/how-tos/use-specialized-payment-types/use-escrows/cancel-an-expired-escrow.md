@@ -91,7 +91,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 4. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 ## 5. Confirm final result
 

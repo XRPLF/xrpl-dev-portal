@@ -1,6 +1,6 @@
 /*
  * Create, claim and verify a Payment Channel.
- * Reference: https://xrpl.org/paychannel.html 
+ * Reference: https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/paychannel
  */
 import {
   AccountObjectsRequest,

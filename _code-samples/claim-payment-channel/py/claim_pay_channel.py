@@ -35,7 +35,7 @@ payment_channel_create = PaymentChannelCreate(
     public_key=wallet1.public_key,
 )
 
-print("Submitting a PaymentChannelCreate transaction...")
+print("\nSubmitting a PaymentChannelCreate transaction...")
 payment_channel_response = submit_and_wait(
     payment_channel_create,
     client,
@@ -53,15 +53,16 @@ account_objects = account_objects_response.result["account_objects"]
 
 # Find the PayChannel object to get the correct channel ID
 channel_id = None
-for obj in account_objects:
-    if obj["LedgerEntryType"] == "PayChannel":
-        channel_id = obj["index"]
-        break
+if 'meta' in payment_channel_response.result and 'AffectedNodes' in payment_channel_response.result['meta']:
+    for node in payment_channel_response.result["meta"]["AffectedNodes"]:
+        if 'CreatedNode' in node and node["CreatedNode"]["LedgerEntryType"] == 'PayChannel':
+            channel_id = node['CreatedNode']['LedgerIndex']
+            break
 
 if not channel_id:
-    raise Exception("PayChannel not found in account objects")
+    raise Exception("Payment Channel ID not found in the response.")
 
-print(f"PayChannel ID: {channel_id}")
+print(f"Payment Channel ID: {channel_id}")
 
 # Destination claims the Payment Channel and we see the balances to verify.
 payment_channel_claim = PaymentChannelClaim(
@@ -70,7 +71,7 @@ payment_channel_claim = PaymentChannelClaim(
     amount="100",
 )
 
-print("Submitting a PaymentChannelClaim transaction...")
+print("\nSubmitting a PaymentChannelClaim transaction...")
 channel_claim_response = submit_and_wait(
     payment_channel_claim,
     client,
