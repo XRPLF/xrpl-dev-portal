@@ -163,6 +163,5 @@ An example of the response format:
 - `internal` - The `trim_threshold` setting removed all prices.
 - `objectNotFound` - There are no prices in the dataset.
 - `oracleMalformed` - The `oracles` array is malformed. At least one object field is specified incorrectly or missing, or the number of objects is outside the bounds of 1 to 200.
-- 
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
