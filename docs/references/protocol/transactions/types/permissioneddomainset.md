@@ -48,7 +48,7 @@ There are no flags defined for {% $frontmatter.seo.title %} transactions.
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](https://xrpl.org/docs/references/protocol/transactions/transaction-results):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code                | Description |
 |:--------------------------|:------------|
