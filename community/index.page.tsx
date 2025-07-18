@@ -828,11 +828,9 @@ const CommunityPage: React.FC = () => {
               {translate("RippleX Bug Bounty Program")}
             </h6>
             <h6 className="card-subtitle">
-              {translate(
-                "Contribute to the XRP Ledger's"
-              )}
+              {translate("community.index.security.subtitle-1", "Contribute to the XRP Ledger's")}
               <br/>
-              Security
+              {translate("community.index.security.subtitle-2", "Security")}
             </h6>
             <p className="card-description">
               {translate(
@@ -840,13 +838,16 @@ const CommunityPage: React.FC = () => {
               )}
               <p className="card-description">
                 {
-                  translate("Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to ")
+                  translate("community.index.security.description-1", "Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to ")
                 }
-              <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
-              {
-                translate(" and use the ")
-              }
-              <a href="https://ripple.com/files/bug-bounty.asc">Public Key.</a>
+                <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
+                {
+                  translate("community.index.security.description-2", " and use the ")
+                }
+                <a href="https://ripple.com/files/bug-bounty.asc">{translate("community.index.security.description-3", "Public Key.")}</a>
+                {
+                  translate("community.index.security.description-4", " ")
+                }
               </p>
             </p>
             <div className="card-links">

@@ -178,10 +178,10 @@ Automated Market Makers: 自動マーケットメイカー
 Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.: XRPLに組み込み済みのオーダーブックDEXと相互に補完する、流動性を提供し、通貨交換を促進することで受動的な収入を得るためのスマートコントラクト。
 Enabled: 利用可能
 Non-Fungible Tokens: 非代替性トークン
-# Join the Community: XRPL.orgの
-# at XRPL.org: コミュニティに参加
+"Join the Community ": XRPL.orgの
+" at XRPL.org": コミュニティに参加
 'Connect at XRPL.org, a community by and for the developers ': XRPL.orgは、XRPLを利用する開発者と
-' and entrepeneurs who rely on the XRPL.': 起業家のためのコミュニティです。
+' and entrepreneurs who rely on the XRPL.': 起業家のためのコミュニティです。
 Get Involved: 参加する
 
 # about/index.page.tsx
@@ -571,7 +571,17 @@ Showcase your blockchain project, application, or product: あなたのブロッ
 Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community.: 開発者向けブログやエコシステムのページで紹介され、ブロックチェーンコミュニティ内でのイノベーションを広めましょう。
 Submit Your Projects: プロジェクトを登録
 # TODO: translate project-cards
-View Projects: プロジェクトを見る
+RippleX Bug Bounty Program: RippleXのバグ報奨金プログラム
+community.index.security.subtitle-1: XRP Ledgerのセキュリティへの
+community.index.security.subtitle-2: 貢献
+RippleX’s Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem.: RippleXのバグ報奨金は、Rippleの10億XRPの誓約の一環で、XRP Ledgerのセキュリティを強化し、そのエコシステムをサポートします。
+community.index.security.description-1: このプログラムを利用して RippleX/rippled のバグを報告してください。該当するバグの詳細なレポートを
+community.index.security.description-2: 宛に送信し、
+community.index.security.description-3: 公開鍵
+community.index.security.description-4: を使用してください。
+Report a Scam: 詐欺の報告
+Report Scams to Safeguard Our Community: コミュニティの安全のため、詐欺情報を報告してください
+In an evolving industry where trust and security are critical, scams continue to impede progress in crypto and blockchain. Help mitigate scammers by reporting scams.: 信頼とセキュリティが極めて重要な進化を続ける業界において、詐欺行為は暗号資産やブロックチェーン技術の発展を妨げ続けています。被害を軽減するため、詐欺行為の報告にご協力ください。
 Contribute to Consensus: コンセンサスへの貢献
 Run an XRP Ledger network node: XRP Ledgerのノードを実行する
 Thank you for your interest in contributing to XRP Ledger.: XRP Ledgerへの貢献に興味がありますか？
