@@ -43,4 +43,4 @@ labels:
 | `tfMPTLock`        | `0x00000001` | 1             | 設定された場合、このアセットの全てのMPT残高をロックすることを示します。 |
 | `tfMPTUnlock`      | `0x00000002` | 2             | 設定された場合、このアセットの全てのMPT残高をアンロックすることを示します。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

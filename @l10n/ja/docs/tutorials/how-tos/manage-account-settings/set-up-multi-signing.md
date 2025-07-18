@@ -230,4 +230,4 @@ SignerListが予期した内容で存在していれば、アドレスでマル�
   - [SignerListSetトランザクション][]
   - [SignerListオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

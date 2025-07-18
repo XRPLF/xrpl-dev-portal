@@ -105,4 +105,4 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 * **`owner_info`** - 代わりに[`account_objects`](account-methods/account_objects.md)を使用してください。
 * **[`tx_history`](transaction-methods/tx_history.md)** - 代わりに[`account_tx`](account-methods/account_tx.md)メソッド、または[`ledger`](ledger-methods/ledger.md)メソッドを使用し、`transactions`フィールドを`true`に設定してください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

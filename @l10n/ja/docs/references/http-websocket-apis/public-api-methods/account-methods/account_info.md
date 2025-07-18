@@ -259,4 +259,4 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 [手数料レベル]: ../../../../concepts/transactions/transaction-cost.md#手数料レベル
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

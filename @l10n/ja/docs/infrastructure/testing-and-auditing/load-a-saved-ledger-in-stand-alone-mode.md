@@ -84,4 +84,4 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 - **ユースケース:**
     - [XRP Ledgerへのコードの提供](/resources/contribute-code/index.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

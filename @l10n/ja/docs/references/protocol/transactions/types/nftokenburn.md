@@ -47,4 +47,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 | `tecNO_ENTRY`      | 指定された `TokenID` が見つかりませんでした。                 |
 | `tecNO_PERMISSION` | このアカウントにはトークンをBurnする権限がありません。          |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

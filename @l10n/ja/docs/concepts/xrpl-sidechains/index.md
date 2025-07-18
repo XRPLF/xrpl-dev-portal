@@ -26,4 +26,4 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
   - サイドチェーンは独自のバリデータを使い、メインチェーンの `rippled` UNL とは別のUNLを必要とします。
   - メインチェーンとサイドチェーンのノードはお互いを認識していません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

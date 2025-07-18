@@ -18,4 +18,4 @@ XRP Ledgerの重要かつ意図的な機能の1つに、トランザクション
 
 つまり、オプションが指定されていないAccountSetトランザクションは標準的な「[no-op](http://en.wikipedia.org/wiki/NOP)」トランザクションです。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

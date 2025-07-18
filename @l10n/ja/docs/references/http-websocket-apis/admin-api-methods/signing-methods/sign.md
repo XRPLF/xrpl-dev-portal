@@ -229,4 +229,4 @@ Connecting to 127.0.0.1:5005
 * `tooBusy` - トランザクションにパスが含まれていませんが、サーバがビジーであるため、パス検出処理をすぐに実行できません。管理者として接続している場合は発生しません。
 * `noPath` - トランザクションにパスが含まれておらず、サーバは、このペイメントの発生経路となるパスを検出できませんでした。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

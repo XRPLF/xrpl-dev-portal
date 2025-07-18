@@ -428,7 +428,7 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
 
 その他のほとんどのトランザクションは、特定のタイプのレジャーエントリを作成し、[送金元の所有者準備金と所有者ディレクトリーの調整](#汎用的なブックキーピング)を行います。
 
-- [AccountSetトランザクション][]は、送金元の既存の[AccountRoot object][]を変更し、指定されたとおりに設定とフラグを変更します。
+- [AccountSetトランザクション][]は、送金元の既存の[AccountRootエントリ][]を変更し、指定されたとおりに設定とフラグを変更します。
 - [DepositPreauthトランザクション][]は、特定の送金元の[DepositPreauthオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/depositpreauth.md)を追加または削除します。
 - [SetRegularKeyトランザクション][]は、送金元の[AccountRootオブジェクト][]を変更し、指定されたとおりに`RegularKey`フィールドを変更します。
 - [SignerListSetトランザクション][]は、[SignerListオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)を追加、削除、または置換します。
@@ -452,4 +452,4 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
   - [トランザクションのメタデータ](../../../references/protocol/transactions/metadata.md) - メタデータフォーマットとメタデータに表示されるフィールドの概要
   - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/index.md) - トランザクションのすべての結果コードを掲載した表一覧
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

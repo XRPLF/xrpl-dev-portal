@@ -104,4 +104,4 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 | `LockingChainDoor`  | 文字列    | Account    | はい  | ロックチェーンのドアアカウント。 |
 | `LockingChainIssue` | Issue    | Issue      | はい  | ロックチェーンでロック、アンロックされる資産。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

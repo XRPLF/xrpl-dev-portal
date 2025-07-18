@@ -67,4 +67,4 @@ AMMを表す[AMMエントリ][]と[特殊なAccountRootエントリ](../../ledge
 | `tecUNFUNDED_AMM`   | 送信者は`Amount`と`Amount2`で指定された金額をAMMに入金するための十分な資金を保有していません。 |
 | `tecAMM_EXISTS`     | この通貨ペアを扱っているAMMが既に存在しています。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

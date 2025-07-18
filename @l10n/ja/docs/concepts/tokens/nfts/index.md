@@ -41,4 +41,4 @@ XRP Ledgerでは、容量を節約するために、一つのアカウントで�
 
 `NFToken`オブジェクトの転送に関する詳細は、[XRP Ledger上でNFTokenを売買する](trading.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

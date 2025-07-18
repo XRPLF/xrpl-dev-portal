@@ -69,4 +69,4 @@ rippled feature SHAMapV2 reject
     - [既知のAmendment](/resources/known-amendments.md)
 - [featureメソッド][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

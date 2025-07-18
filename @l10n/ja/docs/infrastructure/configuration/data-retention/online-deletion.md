@@ -60,7 +60,7 @@ labels:
 
 サーバを停止した場合や、オンライン削除の実行中にサーバがクラッシュした場合には、サーバが再起動し、完全に同期されれば、オンライン削除が再開されます。
 
-オンライン削除を一時的に無効にするには、引数`never`を指定した[can_deleteメソッド][]を使用できます。この変更は、[can_delete][can_delete method] をもう一度呼び出してオンライン削除を再度有効にするまで保持されます。オンライン削除の実行時点の制御についての詳細は、[指示による削除](#指示による削除)をご覧ください。
+オンライン削除を一時的に無効にするには、引数`never`を指定した[can_deleteメソッド][]を使用できます。この変更は、[can_delete][can_deleteメソッド] をもう一度呼び出してオンライン削除を再度有効にするまで保持されます。オンライン削除の実行時点の制御についての詳細は、[指示による削除](#指示による削除)をご覧ください。
 
 
 ## 設定
@@ -125,4 +125,4 @@ labels:
 - [指示による削除の設定](configure-advisory-deletion.md)
 - [完全な履歴の設定](configure-full-history.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

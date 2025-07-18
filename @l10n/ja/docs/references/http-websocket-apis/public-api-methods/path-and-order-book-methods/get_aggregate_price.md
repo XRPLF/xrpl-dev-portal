@@ -165,4 +165,4 @@ _([PriceOracle amendment][])_
 - `oracleMalformed` - `oracles`配列が不正。少なくとも1つのオブジェクトフィールドが正しく指定されていないか、オブジェクトの数が1から200の範囲外です。
 - 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -18,4 +18,4 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 
 `rippled`は、レジャーを閉鎖するたびに、確定的だが操作困難なアルゴリズムに基づいてトランザクションを並べ替えます。（トランザクションはネットワークの異なるパスに異なる順序で着信することがあるため、これはコンセンサスの重要な部分です。）スタンドアロンモードで`rippled`を使用するときには、別のアドレスからのトランザクションの結果に依存するトランザクションは、それを送信する前に、レジャーを手動で進める必要があります。このようにしないと、レジャーの閉鎖時に2つのトランザクションが逆の順序で実行される可能性があります。**注記:** 複数のトランザクションを1つのアドレスから1つのレジャーへ安全に送信できます。これは、同じアドレスからのトランザクションは`rippled`により[`Sequence`番号](../../references/protocol/transactions/common-fields.md)の昇順でソートされるためです。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

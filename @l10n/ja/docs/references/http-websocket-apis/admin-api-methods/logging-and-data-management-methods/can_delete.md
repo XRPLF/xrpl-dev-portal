@@ -80,4 +80,4 @@ rippled can_delete 11320417
 - [オンライン削除](../../../../infrastructure/configuration/data-retention/online-deletion.md)
 - [指示による削除の設定](../../../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

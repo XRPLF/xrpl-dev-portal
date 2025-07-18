@@ -121,4 +121,4 @@ AMMWithdrawトランザクションは、以下のように[`Flags`フィール�
 | `temBAD_AMM_TOKENS`      | 例えば、`issuer`がAMMの関連するAccountRootアドレスでない、`currency`がこのAMMのLPトークンの通貨コードでない、またはトランザクションがこのAMMのLPトークンをAssetフィールドの1つに指定した、などです。 |
 | `terNO_AMM`              | トランザクションで指定した資産ペアの自動マーケットメーカーインスタンスが存在しません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

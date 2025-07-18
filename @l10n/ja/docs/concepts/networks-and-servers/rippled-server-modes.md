@@ -92,4 +92,4 @@ XRP Ledgerの堅牢性は、他のバリデータが共謀しないことをそ�
   - [`rippled`の構成](../../infrastructure/configuration/index.md)
   - [スタンドアロンモードでのrippledの使用](../../infrastructure/testing-and-auditing/index.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

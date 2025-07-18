@@ -64,4 +64,4 @@ _([DID Amendment][])_
 1. `DID`のスペースキー(`0x0049`).
 2. DIDを管理するAccountID。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

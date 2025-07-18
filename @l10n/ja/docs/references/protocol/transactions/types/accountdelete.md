@@ -53,4 +53,4 @@ AccountDeleteトランザクションは、XRP Ledgerで[アカウント](../../
 | `tecHAS_OBLIGATIONS` | 削除するアカウントが、レジャーの削除できないオブジェクトに接続されている場合に発生します。([escrow](../../../../concepts/payment-types/escrow.md)など、他のアカウントによって作成されたオブジェクトが含まれます。) |
 | `tefTOO_BIG`         | 送金元アカウントが、レジャーの1,000個を超えるオブジェクトにリンクされている場合に発生します。これらのオブジェクトの一部が先行して個別に削除された場合、トランザクションは再試行で成功する可能性があります。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

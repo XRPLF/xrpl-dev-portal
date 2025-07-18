@@ -124,4 +124,4 @@ HTTPステータスコード200 OKが返されるその他のエラーの場合�
 - `wsTextRequired` -（WebSocketのみ）リクエストの[opcode](https://tools.ietf.org/html/rfc6455#section-5.2)がテキストではありません。
 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

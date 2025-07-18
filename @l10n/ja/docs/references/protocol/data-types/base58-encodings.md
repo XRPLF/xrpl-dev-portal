@@ -30,4 +30,4 @@ XRP Ledgerにより、さまざまなタイプの値をエンコードする前�
 - [wallet_proposeリファレンス][wallet_proposeメソッド] - アカウントキーを生成するためのAPIメソッド
 - [validation_createリファレンス][validation_createメソッド] - バリデータキーを生成するためのAPIメソッド
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

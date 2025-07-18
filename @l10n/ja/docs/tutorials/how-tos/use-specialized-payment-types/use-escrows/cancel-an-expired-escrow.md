@@ -116,4 +116,4 @@ EscrowCancelトランザクションの識別用ハッシュを指定した[tx�
 
 {% admonition type="success" name="ヒント" %}Escrowを実行する[EscrowFinishトランザクション][]で使用する`OfferSequence`が不明な場合は、Escrowの`PreviousTxnID`フィールドのトランザクションの識別用ハッシュを指定した[txメソッド][]を使用して、そのEscrowを作成したトランザクションを検索します。Escrowを終了するときには、そのトランザクションの`Sequence`の値を`OfferSequence`の値として使用します。{% /admonition %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

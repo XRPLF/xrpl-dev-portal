@@ -118,4 +118,4 @@ curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1
 - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
 - [コンセンサス](../../../concepts/consensus-protocol/index.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

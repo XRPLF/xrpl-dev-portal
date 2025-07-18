@@ -22,4 +22,4 @@ labels:
 
 {% admonition type="info" name="注記" %}`full`、`validating`、`proposing`の区別は、グローバルネットワークの他者との同期の状況に基づいていますが、通常サーバの上記の状態は一般的なオペレーションの中で変動します。{% /admonition %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

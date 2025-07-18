@@ -98,7 +98,7 @@ rippled ledger current
 | `Field`                        | 型          | 説明                       |
 |:-------------------------------|:------------|:--------------------------|
 | `ledger`                       | オブジェクト  | このレジャーの完全な[レジャーヘッダのデータ](../../../protocol/ledger-data/ledger-header.md)で、便宜上いくつかのフィールドが追加されています。 |
-| `ledger.account_hash`          | 文字列       | このレジャーのすべてのアカウント状態情報の[ハッシュ][](16進数) |
+| `ledger.account_hash`          | 文字列       | このレジャーのすべてのアカウント状態情報の[ハッシュ][] |
 | `ledger.accountState`          | 配列         | このレジャーのすべての[アカウント状態情報](../../../protocol/ledger-data/index.md)(16進数)。 |
 | `ledger.close_flags`           | 整数         | このレジャーの[クローズに関するフラグ](../../../protocol/ledger-data/ledger-header.md#close-flags)のビットマップ。 |
 | `ledger.close_time`            | 整数         | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数][]）。 |
@@ -132,7 +132,7 @@ rippled ledger current
 | `auth_change`       | 真偽値                | _（省略される場合があります）_ このトランザクションがこのアドレスの[トランザクション承認方法](../../../../concepts/transactions/index.md#トランザクションの承認)を変更するかどうかを示します。 |
 | `fee`               | 文字列                | _（省略される場合があります）_ このトランザクションの[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（[XRPのdrop数][]）。 |
 | `fee_level`         | 文字列                | _（省略される場合があります）_ このタイプのトランザクションの最少コストと比較した、このトランザクションのトランザクションコスト（[手数料レベル][]）。 |
-| `max_spend_drops`   | 文字列                | _（省略される場合があります）_ このトランザクションで送信または消却できる[XRP、drop単位][]の最高額。 |
+| `max_spend_drops`   | 文字列                | _（省略される場合があります）_ このトランザクションで送信または消却できる[XRPのdrop数][]の最高額。 |
 
 リクエストに`"owner_funds": true`が指定されておりトランザクションが展開されている場合、レスポンスには、各[OfferCreateトランザクション][]の`metaData`オブジェクトの`owner_funds`フィールドが含まれています。このフィールドの目的は、新しい検証済みレジャーごとに[オファーの資金化ステータス](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)を容易に追跡できるようにすることです。このフィールドの定義は、[オーダーブックサブスクリプションストリーム](../subscription-methods/subscribe.md#オーダーブックストリーム)でのこのフィールドのバージョンとはわずかに異なります。
 
@@ -151,4 +151,4 @@ rippled ledger current
 <!-- TODO: we should add this fee levels link to rippled-api-links.md. server_state.md is also including this as a one-off.-->
 [手数料レベル]: ../../../../concepts/transactions/transaction-cost.md#手数料レベル
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

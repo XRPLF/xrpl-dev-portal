@@ -120,4 +120,4 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 
 [DepositPreauth Amendment]: /resources/known-amendments.md#depositpreauth
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

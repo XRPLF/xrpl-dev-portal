@@ -12,7 +12,7 @@ labels:
 
 XRP LedgerのChecksでは、別のアカウントが後で支払いを請求することが認められていており、個人用の紙の小切手の仕組みと似ています。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
 
 
 {% child-pages /%}

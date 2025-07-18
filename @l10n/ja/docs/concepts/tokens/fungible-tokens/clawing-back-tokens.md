@@ -37,4 +37,4 @@ Clawback機能はデフォルトで無効になっています。使用するに
 
 このトランザクションが成功した場合、rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9Sが発行し、rsA2LpzuawewSBQXkiju3YQTMzW13pAAdWが保有する最大314.159FOOを回収することになります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

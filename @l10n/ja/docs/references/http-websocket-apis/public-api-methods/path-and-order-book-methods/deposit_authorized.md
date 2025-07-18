@@ -173,4 +173,4 @@ Loading: "/etc/rippled.cfg"
 * `srcActNotFound` - リクエストの`source_account`フィールドがレジャーのアカウントに対応していません。
 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

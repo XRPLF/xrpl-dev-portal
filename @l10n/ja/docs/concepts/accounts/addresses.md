@@ -92,4 +92,4 @@ XRP Ledgerのアドレスは、[base58][]形式の _ディクショナリ_ `rpsh
     // rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN
     ```
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

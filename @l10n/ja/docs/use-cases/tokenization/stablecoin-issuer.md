@@ -214,4 +214,4 @@ _([AMM amendment][]により追加されました。)_
 
 [自動マーケットメーカー](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -114,4 +114,4 @@ XRP Ledgerのサーバにかかる負荷の量は、ネットワークのトラ�
 
 [metrics]: ../../references/http-websocket-apis/peer-port-methods/health-check.md#レスポンスのフォーマット
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

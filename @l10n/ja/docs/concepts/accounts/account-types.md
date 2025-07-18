@@ -80,4 +80,4 @@ labels:
     - [SetRegularKeyトランザクション][]
     - [AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

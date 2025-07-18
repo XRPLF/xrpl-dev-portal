@@ -587,4 +587,4 @@ Pathfindingリクエストが実行中の場合、レスポンスは[`path_find 
 * `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が _ある_ Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
 * `noPathRequest` - Pathfindingリクエストのステータスを確認しようとしましたが、処理中のリクエストがありませんでした。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

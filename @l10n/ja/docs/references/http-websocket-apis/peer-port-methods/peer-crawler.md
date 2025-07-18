@@ -83,4 +83,4 @@ curl --insecure https://localhost:51235/crawl
 - [ピアクローラの設定](../../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
 - [Validator History Service](https://github.com/ripple/validator-history-service)は、検証関連データの取り込み、集計、保存、配布にピアクローラを使用するサービスの一例です。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

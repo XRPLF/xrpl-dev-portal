@@ -46,4 +46,4 @@ rippled -q json ledger_closed '{}'
 
 レスポンスは[標準フォーマット][]に従っており、実行されたコマンドのタイプに対して適切なフィールドが含まれています。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
