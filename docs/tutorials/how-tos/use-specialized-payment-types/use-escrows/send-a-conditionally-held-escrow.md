@@ -96,29 +96,29 @@ print(cancel_after)
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
-Request:
-
 {% tabs %}
 
 {% tab label="Websocket" %}
+Request:
 {% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-condition.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
 
 Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
 {% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
+{% /tab %}
+
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/escrow/js/create-escrow.js" language="js" from="// Prepare EscrowCreate" before="await client.disconnect" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/escrow/py/create_escrow.py" language="py"  from="# Build escrow create" /%}
 {% /tab %}
 
 {% /tabs %}
 
 ## 4. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. Confirm that the escrow was created
 
@@ -157,17 +157,19 @@ If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-es
 {% tabs %}
 
 {% tab label="Websocket" %}
+Request:
 {% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-condition.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
 
 Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
 {% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowfinish-condition.json" language="json" /%}
+{% /tab %}
+
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/escrow/js/finish-escrow.js" language="js" from="// Prepare EscrowFinish" before="await client.disconnect" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/escrow/py/finish_escrow.py" language="py"  from="# Build escrow finish" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -176,7 +178,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 7. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 8. Confirm final result
 

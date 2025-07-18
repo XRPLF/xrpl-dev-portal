@@ -67,22 +67,22 @@ Response:
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
-Request:
-
 {% tabs %}
 
 {% tab label="Websocket" %}
+Request:
 {% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcancel.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
 
 Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
 {% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcancel.json" language="json" /%}
+{% /tab %}
+
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/escrow/js/cancel-escrow.js" language="js" from="const escrowCancelTransaction" before="await client.disconnect" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/escrow/py/cancel_escrow.py" language="py"  from="# Build escrow cancel" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -91,7 +91,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 4. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 ## 5. Confirm final result
 

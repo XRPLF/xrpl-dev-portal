@@ -67,7 +67,9 @@ In this example, the signer list has 3 members, with the weights and quorum set 
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
+{% tabs %}
 
+{% tab label="Commandline" %}
 ```
 $ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
 >     "Flags": 0,
@@ -139,6 +141,17 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
+
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/multisigning/js/multisigning.ts" language="js" from="  const { wallet: wallet1" before="const accountSet:" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/multisigning/py/multisigning.py" language="py" from="master_wallet ="  before="# Now that" /%}
+{% /tab %}
+
+{% /tabs %}
 
 Make sure that the [Transaction Result](../../../references/protocol/transactions/transaction-results/index.md) is [**`tesSUCCESS`**](../../../references/protocol/transactions/transaction-results/tes-success.md). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](../../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md#settings-in-new-genesis-ledgers).
 
@@ -147,7 +160,7 @@ Make sure that the [Transaction Result](../../../references/protocol/transaction
 
 ## 4. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 
 ## 5. Confirm the new signer list

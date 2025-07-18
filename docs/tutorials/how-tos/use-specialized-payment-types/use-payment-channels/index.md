@@ -62,6 +62,9 @@ The following example shows creation of a payment channel by [submitting](../../
 
 {% admonition type="info" name="Note" %}A payment channel counts as one object toward the payer's [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.{% /admonition %}
 
+{% tabs %}
+
+{% tab label="JSON-RPC" %}
 Request:
 
 ```json
@@ -84,7 +87,7 @@ Content-Type: application/json
         "fee_mult_max": 1000
     }]
 }
-```json
+```
 
 Response:
 
@@ -105,7 +108,17 @@ Response:
     }
 }
 ```
+{% /tab %}
 
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/claim-payment-channel/js/claimPayChannel.ts" language="js" from="// Create a Payment"  before="// Check" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/claim-payment-channel/py/claim_pay_channel.py" language="py" from="# Create a Payment" before="# Check" /%}
+{% /tab %}
+
+{% /tabs %}
 
 The immediate response to the `submit` request contains a _provisional_ result with the transaction's identifying `hash` value. The payer should check the transaction's _final_ result in a validated ledger and get the Channel ID from the metadata. This can be done with the `tx` command:
 
@@ -400,6 +413,9 @@ The payee can do this multiple times, to settle partially while still doing busi
 
 Example of claiming XRP from a channel:
 
+{% tabs %}
+
+{% tab label="JSON-RPC" %}
 Request:
 
 ```json
@@ -454,6 +470,17 @@ Response:
     }
 }
 ```
+{% /tab %}
+
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/claim-payment-channel/js/claimPayChannel.ts" language="js" from="// Destination claims"  before="console.log('Balances of" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/claim-payment-channel/py/claim_pay_channel.py" language="py" from="# Destination claims" before="print(\"Balances of" /%}
+{% /tab %}
+
+{% /tabs %}
 
 The payee should confirm that this transaction is successful in a validated ledger. For the full details, see [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md).
 

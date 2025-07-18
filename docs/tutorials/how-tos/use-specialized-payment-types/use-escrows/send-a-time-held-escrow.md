@@ -47,32 +47,31 @@ print(release_date_ripple)
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
+
+{% tabs %}
+
+{% tab label="Websocket" %}
 Request:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
 {% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-time.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
-
 Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
 {% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-time.json" language="json" /%}
 {% /tab %}
 
-{% /tabs %}
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/escrow/js/create-escrow.js" language="js" from="// Prepare EscrowCreate" before="await client.disconnect" /%}
+{% /tab %}
 
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/escrow/py/create_escrow.py" language="py"  from="# Build escrow create" /%}
+{% /tab %}
+
+{% /tabs %}
 
 Take note of the transaction's identifying `hash` value so you can check its final status when it is included in a validated ledger version.
 
 ## 3. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 ## 4. Confirm that the escrow was created
 
@@ -138,22 +137,22 @@ If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-es
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
-Request:
-
 {% tabs %}
 
 {% tab label="Websocket" %}
+Request:
 {% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-time.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
 
 Response:
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-time.json" language="json" /%}
+{% /tab %}
 
-{% tabs %}
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/escrow/js/finish-escrow.js" language="js" from="// Prepare EscrowFinish" before="await client.disconnect" /%}
+{% /tab %}
 
-{% tab label="Websocket" %}
-{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowfinish-time.json" language="json" /%}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/escrow/py/finish_escrow.py" language="py"  from="# Build escrow finish" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -162,7 +161,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 7. Wait for validation
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 8. Confirm final result
 
