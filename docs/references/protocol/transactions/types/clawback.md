@@ -7,11 +7,11 @@ labels:
 # Clawback
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Clawback.cpp "Source")
 
-_(Added by the [Clawback amendment][].)_
-
 Claw back tokens issued by your account.
 
 Clawback is disabled by default. To use clawback, you must send an [AccountSet transaction][] to enable the **Allow Trust Line Clawback** setting. An issuer with any existing tokens cannot enable Clawback. You can only enable **Allow Trust Line Clawback** if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.  After you enable Clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.
+
+_(Added by the [Clawback amendment][].)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -31,8 +31,8 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 
 | Field              | JSON Type | [Internal Type][] | Description       |
 |:-------------------|:----------|:------------------|:------------------|
-| `Amount`           | [Currency Amount][]  | Amount |Indicates the amount being clawed back, as well as the counterparty from which the amount is being clawed back. The quantity to claw back, in the `value` sub-field, must not be zero. If this is more than the current balance, the transaction claws back the entire balance. The sub-field `issuer` within `Amount` represents the token holder's account ID, rather than the issuer's.|
-| `Holder`    | string    | AccountID          | (Optional) Specifies the holder's address from which to claw back. The holder must already own an `MPToken` object with a non-zero balance. _(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_ |
+| `Amount`           | [Currency Amount][]  | Amount | The amount being clawed back, as well as the counterparty from which the amount is being clawed back. The quantity to claw back, in the `value` sub-field, must not be zero. If this is more than the current balance, the transaction claws back the entire balance. The sub-field `issuer` within `Amount` represents the token holder's account ID, rather than the issuer's.|
+| `Holder`           | String    | AccountID          | (Optional) Specifies the holder's address from which to claw back. The holder must already own an `MPToken` object with a non-zero balance. _(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_ |
 
 {% admonition type="info" name="Note" %}For an IOU (trust line) in the XRP Ledger, the party that created a token is called the _issuer_, but trust lines are bidirectional and, under some configurations, both sides can be seen as the issuer. In this transaction, the token issuer's address is in the `Account` field, and the token holder's address is in the `Amount` field's `issuer` sub-field.{% /admonition %}
 

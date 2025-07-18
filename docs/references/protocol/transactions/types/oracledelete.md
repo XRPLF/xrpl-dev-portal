@@ -12,6 +12,8 @@ _(Requires the [PriceOracle amendment][])_
 
 Delete an `Oracle` ledger entry.
 
+_(Added by the [PriceOracle amendment][].)_
+
 
 ## Example OracleDelete JSON
 

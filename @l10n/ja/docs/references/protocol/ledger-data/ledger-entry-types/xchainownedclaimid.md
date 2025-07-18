@@ -74,7 +74,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 | フィールド                  | JSONの型     | [内部の型][]    | 必須? | 説明 |
 |:--------------------------|:-------------|:--------------|:-----|:----|
 | `Account`                 | 文字列        | Account       | はい  | このオブジェクトを所有するアカウント。 |
-| `LedgerIndex`             | 文字列        | Hash256       | はい  | レジャーインデックスは、`XChainOwnedClaimID`の一意な接頭辞、`XChainClaimID`の実際の値、`XChainBridge`のフィールドのハッシュです。 |
+| `LedgerIndex`             | 文字列        | UInt256       | はい  | レジャーインデックスは、`XChainOwnedClaimID`の一意な接頭辞、`XChainClaimID`の実際の値、`XChainBridge`のフィールドのハッシュです。 |
 | `OtherChainSource`        | 文字列        | Account       | はい  | 送信元チェーンで対応する`XChainCommit`を送信する必要があるアカウント。つまり、`OtherChainSource`が指定されていないと、別のアカウントが別の送信先を指定して資金を盗もうとする可能性があるということです。また、どのアカウントが`XChainCommit`トランザクションを送信するのかが分かるので、単一の署名セットのみを追跡することもできます。 |
 | `SignatureReward`         | [通貨額][]    | Amount        | はい  | Witnessサーバに支払う署名報酬の合計額。`Bridge`レジャー帳オブジェクトの`SignatureReward`の値以上でなければなりません。 |
 | `XChainBridge`            | XChainBridge | XChain_Bridge | はい  | このオブジェクトに紐づくブリッジのドアアカウントと資産。 |

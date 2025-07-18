@@ -190,6 +190,10 @@
 [permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [MPToken entry]: /docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
+[MPTokenAuthorize transaction]: /docs/references/protocol/transactions/types/mptokenauthorize.md
+[MPTokenIssuanceCreate transaction]: /docs/references/protocol/transactions/types/mptokenissuancecreate.md
+[MPTokenIssuanceDestroy transaction]: /docs/references/protocol/transactions/types/mptokenissuancedestroy.md
+[MPTokenIssuanceSet transaction]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
 [MPTokensV1_1 amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode

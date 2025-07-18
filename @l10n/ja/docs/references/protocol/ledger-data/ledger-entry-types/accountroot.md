@@ -40,8 +40,8 @@ labels:
 | フィールド                      | JSONの型 | [内部の型][]        | 必須？ | 説明  |
 |:------------------------------|:---------|:------------------|:------|:------|
 | `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](../../../../concepts/accounts/index.md)を識別するための（クラシック）アドレスです。 |
-| `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](../../transactions/common-fields.md#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](../../transactions/types/accountset.md#accountsetのフラグ)を送信してください。 |
-| `AMMID`                       | 文字列    | Hash256           | いいえ | _([AMM amendment][]により追加されました。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
+| `AccountTxnID`                | 文字列    | UInt256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](../../transactions/common-fields.md#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](../../transactions/types/accountset.md#accountsetのフラグ)を送信してください。 |
+| `AMMID`                       | 文字列    | UInt256           | いいえ | _([AMM amendment][]により追加されました。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[XRPのdrop数][]で、文字列で表現されます。 |
 | `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](../../../../concepts/tokens/nfts/index.md) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
 | `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
@@ -52,14 +52,14 @@ labels:
 | `MintedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントによって、またはこのアカウントのためにMintされた[非代替性トークン](../../../../concepts/tokens/nfts/index.md) の合計数。 |
 | `NFTokenMinter`               | 文字列    | AccountID         | いいえ | このアカウントに代わって[非代替性トークン](../../../../concepts/tokens/nfts/index.md)をミントできる別のアカウントを表します。 |
 | `OwnerCount`                  | 数値      | UInt32            | はい   | レジャーでこのアカウントが所有しており、アカウント所有者の準備金に資金を付与するオブジェクトの数。 |
-| `PreviousTxnID`               | 文字列    | Hash256           | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
+| `PreviousTxnID`               | 文字列    | UInt256           | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
 | `PreviousTxnLgrSeq`           | 数値      | UInt32            | はい   | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
 | `RegularKey`                  | 文字列    | AccountID         | いいえ |  このアカウントのトランザクションに署名するときにマスターキーの代わりに使用できる[キーペア](../../../../concepts/accounts/cryptographic-keys.md)のアドレス。この値を変更するには[SetRegularKeyトランザクション][]を使用してください。 |
 | `Sequence`                    | 数値      | UInt32            | はい   | このアカウントの有効な次のトランザクションの[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス) を表します。 |
 | `TicketCount`                 | 数値      | UInt32            | いいえ | このアカウントが台帳に保有する[チケット](../../../../concepts/accounts/tickets.md)の数です。これは、アカウントが一度に250 チケットという上限以内に留まることを保証するために自動的に更新されます。このフィールドは、チケットの数がゼロの場合は省略されます。 _([TicketBatch amendment][]により追加されました)_ |
 | `TickSize`                    | 数値      | UInt8             | いいえ | このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。_（[TickSize Amendment][]により追加されました。）_ |
 | `TransferRate`                | 数値      | UInt32            | いいえ | このアカウントが発行した通貨を他のユーザが相互に送金する際に、これらのユーザに請求する[送金手数料](../../../../concepts/tokens/transfer-fees.md)。 |
-| `WalletLocator`               | 文字列    | Hash256           | いいえ | ユーザが設定できる任意の256bit値。 |
+| `WalletLocator`               | 文字列    | UInt256           | いいえ | ユーザが設定できる任意の256bit値。 |
 | `WalletSize`                  | 数値      | UInt32            | いいえ | 未使用。(コード上ではこのフィールドをサポートしていますが、設定する方法はありません)。 |
 
 ## AMMの特殊なAccountRootエントリ

@@ -9,9 +9,9 @@ labels:
 # CheckCancel
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
 
-_(Added by the [Checks amendment][].)_
-
 Cancels an unredeemed Check, removing it from the ledger without sending any money. The source or the destination of the check can cancel a Check at any time using this transaction type. If the Check has expired, any address can cancel it.
+
+_(Added by the [Checks amendment][].)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -31,7 +31,7 @@ Cancels an unredeemed Check, removing it from the ledger without sending any mon
 
 | Field       | JSON Type | [Internal Type][] | Description                    |
 |:------------|:----------|:------------------|:-------------------------------|
-| `CheckID`   | String    | Hash256           | The ID of the [Check ledger object](../../ledger-data/ledger-entry-types/check.md) to cancel, as a 64-character hexadecimal string. |
+| `CheckID`   | String    | UInt256           | The ID of the [Check ledger object](../../ledger-data/ledger-entry-types/check.md) to cancel, as a 64-character hexadecimal string. |
 
 ## Error Cases
 

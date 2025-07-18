@@ -43,7 +43,7 @@ _([MPTokensV1_1 amendment][]により追加されました。)_
 | `MPTokenIssuanceID` | 文字列    | UInt192   | `MPTokenIssuance`の識別子。 |
 | `MPTAmount`         | 文字列    | UInt64    | この値は、所有者が現在保有しているトークンの正の数量を指定します。このフィールドの有効な値は0x0から0x7FFFFFFFFFFFFFFFの間です。 |
 | `Flags`             | 数値      | UInt32    | (デフォルト) [MPTokenのフラグ](#mptokenのフラグ)をご覧ください。 |
-| `PreviousTxnID`     | 文字列    | Hash256   | このオブジェクトを最後に変更したトランザクションのトランザクションID。 |
+| `PreviousTxnID`     | 文字列    | UInt256   | このオブジェクトを最後に変更したトランザクションのトランザクションID。 |
 | `PreviousTxnLgrSeq` | 数値      | UInt32    | このオブジェクトを最後に変更したトランザクションを含むレジャーのシーケンス番号。 |
 | `OwnerNode`         | 文字列    | UInt64    | (デフォルト) 所有者のディレクトリでこのアイテムが参照されているページ。 |
 

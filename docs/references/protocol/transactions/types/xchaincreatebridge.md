@@ -49,16 +49,16 @@ The complete production-grade setup would also include a `SignerListSet` transac
 |:-------------------------|:--------------------|:------------------|:----------|:------------|
 | `MinAccountCreateAmount` | [Currency Amount][] | Amount            | No        | The minimum amount, in XRP, required for a `XChainAccountCreateCommit` transaction. If this isn't present, the `XChainAccountCreateCommit` transaction will fail. This field can only be present on XRP-XRP bridges. |
 | `SignatureReward`        | [Currency Amount][] | Amount            | Yes       | The total amount to pay the witness servers for their signatures. This amount will be split among the signers. |
-| `XChainBridge`           | XChainBridge        | XChain_Bridge     | Yes       | The bridge (door accounts and assets) to create. |
+| `XChainBridge`           | XChainBridge        | XChainBridge      | Yes       | The bridge (door accounts and assets) to create. |
 
 
 ### XChainBridge Fields
 
 | Field               | JSON Type | [Internal Type][] | Required? | Description     |
 |:--------------------|:----------|:------------------|:----------|:----------------|
-| `IssuingChainDoor`  | String    | Account           | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
+| `IssuingChainDoor`  | String    | AccountID         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
 | `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
-| `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
+| `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
