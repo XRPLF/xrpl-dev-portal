@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from "@redocly/theme/components/Link/Link";
 
 export const frontmatter = {
   seo: {
@@ -192,9 +193,9 @@ export default function DevTools() {
                 <h4> {translate("Explorers")}</h4>
                 <div className="row row-cols-1 row-cols-lg-3 card-deck">
                   {explorers_tools.map((card) => (
-                    <a
+                    <Link
                       className="card"
-                      href={card.href}
+                      to={card.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       id={card.id}
@@ -208,7 +209,7 @@ export default function DevTools() {
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
                       <div className="card-footer">&nbsp;</div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -221,9 +222,9 @@ export default function DevTools() {
                 <h4> {translate("API Access")}</h4>
                 <div className="row row-cols-1 row-cols-lg-3 card-deck">
                   {api_access_tools.map((card) => (
-                    <a
+                    <Link
                       className="card"
-                      href={card.href}
+                      to={card.href}
                       target="_blank"
                       id={card.id}
                       key={card.id}
@@ -238,7 +239,7 @@ export default function DevTools() {
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
                       <div className="card-footer">&nbsp;</div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -251,9 +252,9 @@ export default function DevTools() {
                 <h4> {translate("Other")}</h4>
                 <div className="row row-cols-1 row-cols-lg-3 card-deck">
                   {other.map((card) => (
-                    <a
+                    <Link
                       className="card"
-                      href={card.href}
+                      to={card.href}
                       target="_blank"
                       id={card.id}
                       key={card.id}
@@ -268,7 +269,7 @@ export default function DevTools() {
                         <p className="card-text">{translate(card.description)}</p>
                       </div>
                       <div className="card-footer">&nbsp;</div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

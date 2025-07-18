@@ -24,7 +24,7 @@ const cards = [
     id: 'low-cost',
     title: 'Low Cost',
     description: <>
-      At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of <a href='/about/uses'>blockchain use cases</a>
+      At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of <Link to='/about/uses'>blockchain use cases</Link>
     </>
   },
   {
