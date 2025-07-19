@@ -7,7 +7,7 @@ labels:
   - Payment Channel
 ---
 # account_channels
-[[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/AccountChannels.cpp "Source")
 
 _（[PayChan Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" %}新規: rippled 0.33.0{% /badge %}）_
 

@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMDelete
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")
 
 Delete an empty [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance that could not be fully deleted automatically.
 

@@ -33,7 +33,7 @@ If you haven't done so already, create a new folder on your local disk and insta
     pip3 install xrpl-py
 ```
 
-Clone or download the [Modular Tutorial Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/).
+Clone or download the [Modular Tutorial Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/).
 
 {% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
 
@@ -120,7 +120,7 @@ To cancel a check you have previously sent to another account.
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/) in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) in the source repository for this website.
 
 ## mod10.py
 

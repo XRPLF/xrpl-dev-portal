@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # validators
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Validators.cpp "Source")
 
 `validators`コマンドは、サーバが使用する公開済みの信頼できるバリデータの最新リストに関する情報を、人間が読み取れる形式で返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" %}新規: rippled 0.80.1{% /badge %}
 

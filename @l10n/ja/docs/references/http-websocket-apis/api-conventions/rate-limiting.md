@@ -46,7 +46,7 @@ Server is overloaded
 ```
 
 ## リクエストあたりのレート
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/resource/Fees.h "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/resource/Fees.h "ソース")
 
 サーバは時間の経過とともに行われるリクエストの数に基づいてクライアントの使用率を計算し、サーバがリクエストにレスポンスするためにどれだけの作業をしなければならないかに基づいて、異なるタイプのリクエストに重みをつけます。[subscribeメソッド][]と[path_findメソッド][]に対するサーバからの後続メッセージもクライアントの使用率にカウントされます。
 

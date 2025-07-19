@@ -6,7 +6,7 @@ labels:
   - Decentralized Exchange
 ---
 # DirectoryNode
-[[Source]](https://github.com/XRPLF/rippled/blob/7e24adbdd0b61fb50967c4c6d4b27cc6d81b33f3/include/xrpl/protocol/detail/ledger_entries.macro#L177-L192 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L177-L192 "Source")
 
 The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_ takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](../common-fields.md). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
 

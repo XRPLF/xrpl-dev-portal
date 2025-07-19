@@ -15,7 +15,7 @@ curated_anchors:
     anchor: "#type-list"
 ---
 # Binary Format
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/SField.h "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h "Source")
 
 This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the [peer-to-peer communications between servers](../../concepts/networks-and-servers/peer-protocol.md). The [`rippled` APIs](../http-websocket-apis/index.md) typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.
 
@@ -55,7 +55,7 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 
 The serialization processes described here are implemented in multiple places and programming languages:
 
-- In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
+- In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/STObject.cpp).
 - In JavaScript in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 - In Python 3 in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 
@@ -65,7 +65,7 @@ Additionally, many [client libraries](../client-libraries.md) provide serializat
 
 ## Internal Format
 
-Each field has an canonical binary format, or _internal format_ used in the XRP Ledger protocol to represent that field in transactions and ledger data. The binary format is needed for signing, but it is also used in peer-to-peer communications, in ledger storage, and in other places. The binary formats for all fields are defined in the source code of [`SField.h`](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/SField.h). The JSON format for transactions and ledger data is standardized for convenience, but JSON is only used in APIs and client libraries: strictly speaking, only the binary format exists at the level of the XRP Ledger protocol.
+Each field has an canonical binary format, or _internal format_ used in the XRP Ledger protocol to represent that field in transactions and ledger data. The binary format is needed for signing, but it is also used in peer-to-peer communications, in ledger storage, and in other places. The binary formats for all fields are defined in the source code of [`SField.h`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h). The JSON format for transactions and ledger data is standardized for convenience, but JSON is only used in APIs and client libraries: strictly speaking, only the binary format exists at the level of the XRP Ledger protocol.
 
 The [Transaction Format Reference](transactions/index.md) and [Ledger Data Reference](ledger-data/index.md) list both the JSON and the internal (binary) formats for all fields. For example, the `Flags` [common transaction field](transactions/common-fields.md) is a Number in JSON and a UInt32 in binary. Even though the JSON representation uses a data type that can contain decimal places or very large values, the field is limited to values that can be represented as a 32-bit unsigned integer.
 
@@ -101,8 +101,8 @@ The field definition objects in the `FIELDS` array have the following fields:
 
 ### Field IDs
 
-[[Source - Encoding]](https://github.com/XRPLF/rippled/blob/edb4f0342c65bd739fee60b74566f3e771134c6c/src/libxrpl/protocol/Serializer.cpp#L120-L153 "Source")
-[[Source - Decoding]](https://github.com/XRPLF/rippled/blob/edb4f0342c65bd739fee60b74566f3e771134c6c/src/libxrpl/protocol/Serializer.cpp#L429-L452 "Source")
+[[Source - Encoding]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/Serializer.cpp#L120-L153 "Source")
+[[Source - Decoding]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/Serializer.cpp#L429-L452 "Source")
 
 When you combine a field's type code and field code, you get the field's unique identifier, which is prefixed before the field in the final serialized blob. The size of the Field ID is one to three bytes depending on the type code and field codes it combines. See the following table:
 
@@ -157,17 +157,17 @@ All fields in a transaction are sorted in a specific order based first on the fi
 
 ### Type Codes
 
-Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L60-L98).
+Each field type has an arbitrary type code, with lower codes sorting first. These codes are defined in [`SField.h`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h#L60-L98).
 
-For example, [UInt32 has type code 2](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L67), so all UInt32 fields come before all [Amount fields, which have type code 6](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L71).
+For example, [UInt32 has type code 2](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h#L67), so all UInt32 fields come before all [Amount fields, which have type code 6](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h#L71).
 
 The [definitions file](#definitions-file) lists the type codes for each type in the `TYPES` map.
 
 ### Field Codes
 
-Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`sfields.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro).
+Each field has a field code, which is used to sort fields that have the same type as one another, with lower codes sorting first. These fields are defined in [`sfields.macro`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/sfields.macro).
 
-For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L269), so it comes before the `Destination` field which [has sort code 3](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L271).
+For example, the `Account` field of a [Payment transaction][] [has sort code 1](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/sfields.macro#L269), so it comes before the `Destination` field which [has sort code 3](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/sfields.macro#L271).
 
 Field codes are reused for fields of different field types, but fields of the same type never have the same field code. When you combine the type code with the field code, you get the field's unique [Field ID](#field-ids).
 
@@ -265,7 +265,7 @@ The following diagram shows the serialization formats for all three amount forma
 [{% inline-svg file="/docs/img/serialization-amount.svg" /%}](/docs/img/serialization-amount.svg 'The first bit is an amount type bit (0 = XRP or MPT, 1 = fungible token). XRP has a sign bit (always 1 for positive), an MPT indicator bit (0=XRP) and 61 bits of precision. MPTs have a sign bit (always 1 for positive), an MPT indicator bit (1=MPT), 5 reserved bits, 64 bit integer quantity, and a 192 bit MPT Issuance ID which consists of the 32-bit Sequence number followed by 160-bit issuer AccountID. Fungible Token amounts consist start with an amount type bit of 1, a sign bit which can be 1 or 0, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).')
 
 #### Token Amount Format
-[[Source]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/STAmount.cpp "Source")
 
 [{% inline-svg file="/docs/img/currency-number-format.svg" /%}](/docs/img/currency-number-format.svg "Token Amount Format diagram")
 
@@ -354,12 +354,12 @@ The following example shows the serialization format for an object (a single `Me
 
 The `Paths` field of a cross-currency [Payment transaction][] is a "PathSet", represented in JSON as an array of arrays. For more information on what paths are used for, see [Paths](../../concepts/tokens/fungible-tokens/paths.md).
 
-A PathSet is serialized as **1 to 6** individual paths in sequence[[Source]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36 "Source"). Each complete path is followed by a byte that indicates what comes next:
+A PathSet is serialized as **1 to 6** individual paths in sequence[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Payment.h#L29-L30 "Source"). Each complete path is followed by a byte that indicates what comes next:
 
 - `0xff` indicates another path follows
 - `0x00` indicates the end of the PathSet
 
-Each path consists of **1 to 8** path steps in order[[Source]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L38-L39 "Source"). Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
+Each path consists of **1 to 8** path steps in order[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Payment.h#L38-L39 "Source"). Each step starts with a **type** byte, followed by one or more fields describing the path step. The type indicates which fields are present in that path step through bitwise flags. (For example, the value `0x30` indicates changing both currency and issuer.) If more than one field is present, the fields are always placed in a specific order.
 
 The following table describes the possible fields and the bitwise flags to set in the type byte to indicate them:
 

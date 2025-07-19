@@ -45,7 +45,7 @@ JSONオブジェクトには以下のフィールドがあります。
 | `public_key`     | 文字列 | このバリデータリストのデータを検証するために使用する公開鍵。これは32バイトのEd25519公開鍵で、先頭に`0xED`というバイトが付きます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}新規: rippled 1.7.0{% /badge %}. |
 
 ### マニフェストデータ
-[[ソース]](https://github.com/XRPLF/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/detail/Manifest.cpp#L59-L82 "ソース")
 
 "マニフェスト"には、コンセンサスプロセスに関与する個人または組織（***バリデータ**または**リスト発行者**）を一意に識別する情報が含まれます。バリデータのマニフェストには、その[バリデータのトークン](../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server)の _公開_ 情報が含まれます。リスト発行者のマニフェストはリスト発行者に関する情報を提供します。どちらも通常、XRP Ledgerの標準的な[バイナリフォーマット](../../protocol/binary-format.md)でバイナリにエンコードされます。(マニフェストの標準的なJSON形式はありません)。
 

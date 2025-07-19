@@ -8,7 +8,7 @@ labels:
   - コアサーバ
 ---
 # validation_seed
-[[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/ValidationCreate.cpp "Source")
 
 `validation_seed`コマンドは、rippledが検証の署名に使用するシークレット値を一時的に設定します。サーバを再起動すると、この値は構成ファイルに基づいてリセットされます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.1-rc1" %}rippled 0.29.1 以降では無効{% /badge %}
 

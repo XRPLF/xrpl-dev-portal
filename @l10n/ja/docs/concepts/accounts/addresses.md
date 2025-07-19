@@ -23,7 +23,7 @@ XRP Ledgerでは、特別な意味や歴史的な役割を持つアドレスが�
 |-------------------------------|-----|-----|----------------|
 | `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | 値0を[base58][]形式にエンコードしたXRP Ledgerのアドレス。ピアツーピア通信では、このアドレスは、XRPの発行者として`rippled`で使用されます。 | はい |
 | `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | 値1を[base58][]形式にエンコードしたXRP Ledgerのアドレス。レジャーの[RippleStateエントリ](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)では、このアドレスは、トラストライン残高の発行者のプレースホルダーとして使用されます。 | はい |
-| `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | ジェネシスアカウント | `rippled`で(スタンドアロンモードなど)新しいジェネシスレジャーが一から開始される場合、このアカウントはすべてのXRPを保持します。このアドレスは、シード値`masterpassphrase`から生成されており、この値は[ハードコーディング](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184)されています。 | いいえ |
+| `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | ジェネシスアカウント | `rippled`で(スタンドアロンモードなど)新しいジェネシスレジャーが一から開始される場合、このアカウントはすべてのXRPを保持します。このアドレスは、シード値`masterpassphrase`から生成されており、この値は[ハードコーディング](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/ledger/Ledger.cpp#L184)されています。 | いいえ |
 | `rrrrrrrrrrrrrrrrrNAMEtxvNvQ` | Ripple Namesの登録用ブラックホール | 以前、Ripple社は、Ripple Namesを登録するために、このアカウントにXRPを送金するようユーザに求めていました。| はい |
 | `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | NaNアドレス | 以前のバージョンの[ripple-lib](https://github.com/XRPLF/xrpl.js)では、XRP Ledgerの[base58][]文字列エンコード形式を使用して、値[NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)をエンコードするときにこのアドレスを生成しました。 | はい |
 
@@ -32,7 +32,7 @@ XRP Ledgerでは、特別な意味や歴史的な役割を持つアドレスが�
 
 {% admonition type="success" name="ヒント" %}これらの技術的な詳細は、XRP Ledgerとの互換性を保つために低レベルのライブラリソフトウェアを構築しているユーザのみを対象としています!{% /admonition %}
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/AccountID.cpp#L134-L165 "ソース")
 
 XRP Ledgerのアドレスは、[base58][]形式の _ディクショナリ_ `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイプ接頭辞」（「バージョン接頭辞」とも呼ばれます）を付けます。タイプ接頭辞によりアドレスは通常、base58形式の異なる文字で始まります。
 

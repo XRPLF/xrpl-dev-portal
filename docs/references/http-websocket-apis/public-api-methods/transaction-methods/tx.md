@@ -9,7 +9,7 @@ labels:
 ---
 # tx
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Tx.cpp "Source")
 
 The `tx` method retrieves information on a single [transaction](../../../protocol/transactions/index.md), by its [identifying hash][] or its [CTID](../../api-conventions/ctid.md).
 

@@ -5,7 +5,7 @@ labels:
   - NFTs, Non-fungible Tokens
 ---
 # NFTokenAcceptOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "Source")
 
 The `NFTokenAcceptOffer` transaction is used to accept offers to buy or sell an NFT. It has two possible modes:
 

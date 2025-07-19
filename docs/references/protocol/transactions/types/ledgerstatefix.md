@@ -6,7 +6,7 @@ labels:
   - Troubleshooting
 ---
 # LedgerStateFix
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/LedgerStateFix.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/LedgerStateFix.cpp "Source")
 
 `LedgerStateFix` is a general purpose transaction used to fix specific issues affecting the XRP ledger. You submit the transaction with the `LedgerFixType` value set to indicate the particular  error state to correct.
 

@@ -8,7 +8,7 @@ labels:
   - Data Retention
 ---
 # account_objects
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/AccountObjects.cpp "Source")
 
 The `account_objects` command returns the raw [ledger format][] for all ledger entries owned by an account. For a higher-level view of an account's trust lines and balances, see the [account_lines method][] instead.
 

@@ -7,7 +7,7 @@ labels:
   - 手数料
 ---
 # fee
-[[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Fee1.cpp "Source")
 
 `fee`コマンドは、[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に関するオープンレジャーの要件の現在の状態を報告します。このコマンドを使用するには、[FeeEscalation Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
 

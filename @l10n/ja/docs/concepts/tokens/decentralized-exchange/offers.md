@@ -81,7 +81,7 @@ Offerオブジェクトは、他のオファーやクロスカレンシー決済
 
 台帳内のOfferオブジェクトは取引レートによってグループにまとめられます。取引レートは、`TakerGets`と`TakerPays`の比率として計算されます。取引レートが高いOfferオブジェクトが優先的に処理されます。（つまり、オファーを約定する人は、支払われる通貨額に対して可能な限り多くの額を受領します。）同じ取引レートのオファーは、オファーの作成タイミングを基準にして処理されます。
 
-同じ取引レートのOfferオブジェクトが同じ台帳ブロックに記録されている場合、オファーの処理順序は[レジャーへトランザクションを適用する](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source Code: Applying transactions")ための[正規順序](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp "Source Code: Transaction ordering")によって決定します。この動作は確定的かつ効率的であり、操作することが困難であるように設計されています。
+同じ取引レートのOfferオブジェクトが同じ台帳ブロックに記録されている場合、オファーの処理順序は[レジャーへトランザクションを適用する](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source Code: Applying transactions")ための[正規順序](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/CanonicalTXSet.cpp "Source Code: Transaction ordering")によって決定します。この動作は確定的かつ効率的であり、操作することが困難であるように設計されています。
 
 
 ## オファーの有効期限

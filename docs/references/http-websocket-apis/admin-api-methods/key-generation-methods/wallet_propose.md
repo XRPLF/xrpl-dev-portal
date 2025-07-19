@@ -8,7 +8,7 @@ labels:
   - Accounts
 ---
 # wallet_propose
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/WalletPropose.cpp "Source")
 
 Use the `wallet_propose` method to generate a key pair and XRP Ledger address. This command only generates key and address values, and does not affect the XRP Ledger itself in any way. To become a funded address stored in the ledger, the address must [receive a Payment transaction](../../../../concepts/accounts/index.md#creating-accounts) that provides enough XRP to meet the [reserve requirement](../../../../concepts/accounts/reserves.md).
 

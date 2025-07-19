@@ -113,7 +113,7 @@ NuDBは`rippled`ビルドセットアップの一部としてインストール�
 
 ### 手順
 
-1. [UbuntuまたはmacOS](https://github.com/XRPLF/rippled/blob/release/BUILD.md)のレポートモード用に`rippled`をビルド。
+1. [UbuntuまたはmacOS](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/BUILD.md)のレポートモード用に`rippled`をビルド。
 
     {% tabs %}
 

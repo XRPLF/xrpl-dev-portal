@@ -5,7 +5,7 @@ labels:
   - Security
 ---
 # DepositPreauth
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")
 
 A DepositPreauth transaction grants preauthorization to deliver payments to your account. This is only useful if you are using (or plan to use) [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 

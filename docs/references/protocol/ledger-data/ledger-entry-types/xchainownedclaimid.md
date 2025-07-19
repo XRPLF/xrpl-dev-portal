@@ -6,7 +6,7 @@ labels:
 status: not_enabled
 ---
 # XChainOwnedClaimID
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L259-L269 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L274-L284 "Source")
 
 An `XChainOwnedClaimID` entry represents *one* cross-chain transfer of value and includes information of the account on the source chain that locks or burns the funds on the source chain.
 

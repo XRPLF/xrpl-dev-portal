@@ -7,7 +7,7 @@ labels:
   - セキュリティ
 ---
 # SignerList
-[[ソース]](https://github.com/XRPLF/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L122-L129 "Source")
 
 _（[MultiSign Amendment][]により追加されました。）_
 

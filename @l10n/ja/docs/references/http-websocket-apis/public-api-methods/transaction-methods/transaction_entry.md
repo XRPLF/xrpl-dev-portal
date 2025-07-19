@@ -7,7 +7,7 @@ labels:
   - トランザクション送信
 ---
 # transaction_entry
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/TransactionEntry.cpp "Source")
 
 `transaction_entry`メソッドは、特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。（これに対して、[txメソッド][]はすべてのレジャーから指定のトランザクションを検索します。txメソッドの使用をお勧めします。）
 

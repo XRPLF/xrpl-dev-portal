@@ -7,7 +7,7 @@ labels:
   - Tokens
 ---
 # account_currencies
-[[Source]](https://github.com/XRPLF/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/paths/AccountCurrencies.cpp "Source")
 
 The `account_currencies` command retrieves a list of currencies that an account can send or receive, based on its trust lines. (This is not a thoroughly confirmed list, but it can be used to populate user interfaces.)
 

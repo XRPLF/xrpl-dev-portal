@@ -29,7 +29,7 @@ If your server is vulnerable to this problem, you can detect it two ways:
 
 In both cases, detection of the problem requires access to `rippled`'s server logs.
 
-{% admonition type="success" name="Tip" %}The location of the debug log depends on your `rippled` server's config file. The [default configuration](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg#L1139-L1142) writes the server's debug log to the file `/var/log/rippled/debug.log`.{% /admonition %}
+{% admonition type="success" name="Tip" %}The location of the debug log depends on your `rippled` server's config file. The [default configuration](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg#L1481-L1484) writes the server's debug log to the file `/var/log/rippled/debug.log`.{% /admonition %}
 
 ### Proactive Detection
 

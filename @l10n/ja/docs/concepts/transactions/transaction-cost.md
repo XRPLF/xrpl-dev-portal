@@ -64,7 +64,7 @@ XRP LedgerをスパムやDoS攻撃から守るため、各トランザクショ�
 
 オープンレジャーコストの水準は、絶対的なトランザクションコストではなく[標準的なトランザクションコストに比例](#手数料レベル)しています。標準よりも高い要件を持つトランザクションタイプ（[マルチシグトランザクション](../accounts/multi-signing.md)など）は、オープンレジャーコストを満たすために最低限のトランザクションコスト要件を持つトランザクションよりも多く支払う必要があります。
 
-関連項目: [`rippled`リポジトリー内のFee Escalationの説明](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md)。
+関連項目: [`rippled`リポジトリー内のFee Escalationの説明](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/FeeEscalation.md)。
 
 ### キューに入れられたトランザクション
 

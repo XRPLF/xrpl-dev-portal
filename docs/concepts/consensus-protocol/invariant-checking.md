@@ -38,39 +38,39 @@ To include the transaction in the ledger with a `tec`-class code, some minimal p
 
 The XRP Ledger checks all the following invariants on each transaction:
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L92 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L92 "Source")
 
 - [Transaction Fee Check](#transaction-fee-check)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L118 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L118 "Source")
 
 - [XRP Not Created](#xrp-not-created)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L146 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L146 "Source")
 
 - [Account Roots Not Deleted](#account-roots-not-deleted)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L173 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L203 "Source")
 
 - [XRP Balance Checks](#xrp-balance-checks)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L197 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L227 "Source")
 
 - [Ledger Entry Types Match](#ledger-entry-types-match)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L224 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L254 "Source")
 
 - [No XRP Trust Lines](#no-xrp-trust-lines)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L251 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L389 "Source")
 
 - [No Bad Offers](#no-bad-offers)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L275 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L413 "Source")
 
 - [No Zero Escrow](#no-zero-escrow)
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L300 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h#L438 "Source")
 
 - [Valid New Account Root](#valid-new-account-root)
 
@@ -158,11 +158,11 @@ The XRP Ledger checks all the following invariants on each transaction:
     - [Protecting the Ledger: Invariant Checking](https://xrpl.org/blog/2017/invariant-checking.html)
 
 - **Repository:**
-    - [Invariant Check.h](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h)
-    - [Invariant Check.cpp](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.cpp)
-    - [System Parameters](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/SystemParameters.h#L43)
-    - [XRP Amount](https://github.com/XRPLF/rippled/blob/develop/src/ripple/basics/XRPAmount.h#L244)
-    - [Ledger Formats](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/protocol/LedgerFormats.h#L36-L94)
+    - [Invariant Check.h](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.h)
+    - [Invariant Check.cpp](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/InvariantCheck.cpp)
+    - [System Parameters](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SystemParameters.h#L44)
+    - [XRP Amount](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/XRPAmount.h#L252)
+    - [Ledger Formats](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/LedgerFormats.h#L53-L117)
 
 
 - **Other:**

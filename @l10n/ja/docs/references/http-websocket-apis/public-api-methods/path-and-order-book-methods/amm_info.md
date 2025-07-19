@@ -10,7 +10,7 @@ labels:
   - AMM
 ---
 # amm_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/AMMInfo.cpp "Source")
 
 {% code-page-name /%}メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。
 

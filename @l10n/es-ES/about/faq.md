@@ -130,7 +130,7 @@ Ripple se compromete a monitorear e informar cualquier indicador AML en la red X
 
 #### ¿Cuál es el proceso para revisar las contribuciones de código de terceros?
 
-El proceso de contribución de código comienza cuando un desarrollador abre una [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) a un repositorio de código fuente como el [repositorio `rippled`](https://github.com/xrplf/rippled/), que contiene la implementación de referencia de Ripple del núcleo del servidor y del protocolo de XRP Ledger.
+El proceso de contribución de código comienza cuando un desarrollador abre una [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) a un repositorio de código fuente como el [repositorio `rippled`](https://github.com/XRPLF/rippled/), que contiene la implementación de referencia de Ripple del núcleo del servidor y del protocolo de XRP Ledger.
 
 Este pull request activa pruebas unitarias y de integración automatizadas, así como revisiones de código por parte de varios desarrolladores que, por lo general, tienen experiencia significativa en el área de código a la que afecta al pull request.
 
@@ -141,7 +141,7 @@ Una vez que el pull request pasa las pruebas automatizadas y recibe la aprobaci�
 
 No, Ripple no posee ni controla el XRP Ledger o la red XRP Ledger.
 
-Ripple contribuye a una implementación de referencia del nucleo del servidor de XRP Ledger ([`rippled`](https://github.com/xrplf/rippled)) y emplea un equipo de ingenieros que contribuyen al código base de código abierto. Ripple publica periodicamente paquetes binarios precompilados. Cualquiera puede [descargar y compilar el software desde la fuente](../docs/infrastructure/installation/index.md).
+Ripple contribuye a una implementación de referencia del nucleo del servidor de XRP Ledger ([`rippled`](https://github.com/XRPLF/rippled)) y emplea un equipo de ingenieros que contribuyen al código base de código abierto. Ripple publica periodicamente paquetes binarios precompilados. Cualquiera puede [descargar y compilar el software desde la fuente](../docs/infrastructure/installation/index.md).
 
 Varias entidades publican listas de validadores recomndadados (UNLs). Desde julio de 2023, Ripple mantiene solo uno de los 35 validadores que están en la UNL por defecto.
 

@@ -5,7 +5,7 @@ labels:
   - Fees
 ---
 # SetFee
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Change.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Change.cpp "Source")
 
 A `SetFee` [pseudo-transaction](pseudo-transaction-types.md) marks a change in [transaction cost](../../../../concepts/transactions/transaction-cost.md) or [reserve requirements](../../../../concepts/accounts/reserves.md) as a result of [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md).
 

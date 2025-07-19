@@ -8,7 +8,7 @@ label:
   - データ保持
 ---
 # ledger_entry
-[[ソース]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/LedgerEntry.cpp "Source")
 
 `ledger_entry`メソッドは、XRP Ledgerの1つのレジャーエントリを生フォーマットで返します。取得可能な各種エントリについては、[レジャーフォーマット][]をご覧ください。
 

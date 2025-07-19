@@ -6,7 +6,7 @@ labels:
  - Multi-Purpose Token, MPT
 ---
 # MPTokenIssuanceSet
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "ソース")
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 

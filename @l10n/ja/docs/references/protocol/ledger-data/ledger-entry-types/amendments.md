@@ -7,7 +7,7 @@ labels:
   - ブロックチェーン
 ---
 # Amendments
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L200-L205 "Source")
 
 `Amendments`オブジェクトタイプには、現在アクティブな[Amendment](../../../../concepts/networks-and-servers/amendments.md)のリストが含まれています。各レジャーバージョンには**最大で1つの**`Amendments`オブジェクトが含まれています。
 

@@ -24,7 +24,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 ### Core Servers
 
-The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. The XRP Ledger Foundation publishes a reference implementation of this server software, called [**`rippled`**](../concepts/networks-and-servers/index.md) (pronounced "ripple-dee"). The server is available under [a permissive open-source license](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
+The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. The XRP Ledger Foundation publishes a reference implementation of this server software, called [**`rippled`**](../concepts/networks-and-servers/index.md) (pronounced "ripple-dee"). The server is available under [a permissive open-source license](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/LICENSE.md), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
 
 ![Core Servers](/docs/img/ecosystem-peer-to-peer.svg)
 

@@ -12,7 +12,7 @@ Currently, there are two API versions: `1` and `2` {% badge href="https://github
 
 Separate API requests can use different API versions even on the same persistent connection. For example, if you connect through WebSocket to a server that supports API versions 1 and 2, you can make an `account_tx` request using API version 2 and then make another `account_tx` request using API version 1 from the same connection.
 
-For a full list of the differences between API versions, see [API-CHANGELOG on GitHub](https://github.com/xrplf/rippled/blob/develop/API-CHANGELOG.md).
+For a full list of the differences between API versions, see [API-CHANGELOG on GitHub](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/API-CHANGELOG.md).
 
 
 ## Default API Versions

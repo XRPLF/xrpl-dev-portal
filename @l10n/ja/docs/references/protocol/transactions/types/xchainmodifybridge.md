@@ -8,7 +8,7 @@ labels:
 status: not_enabled
 ---
 # XChainModifyBridge
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/TxFormats.cpp#L390-L397 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/XChainBridge.h#L71 "ソース")
 
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 

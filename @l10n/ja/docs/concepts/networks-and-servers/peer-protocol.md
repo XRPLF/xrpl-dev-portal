@@ -18,11 +18,11 @@ XRP Ledgerのサーバは、XRP Ledgerピアプロトコル（RTXP）を使用�
 - 履歴レジャーへのレジャーデータのリクエスト、またはレジャーデータの提供。
 - コンセンサスのための一連のトランザクションの提示、またはコンセンサストランザクションセットの適用に関する算出結果の共有。
 
-ピアツーピア接続を確立するには、サーバどうしをHTTPSで接続し、一方のサーバはRTXPへの切り替えのために[HTTPアップグレード](https://tools.ietf.org/html/rfc7230#section-6.7)をリクエストします。（詳細は、[`rippled`リポジトリ](https://github.com/XRPLF/rippled)の[Overlay Network](https://github.com/XRPLF/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake)をご覧ください。）
+ピアツーピア接続を確立するには、サーバどうしをHTTPSで接続し、一方のサーバはRTXPへの切り替えのために[HTTPアップグレード](https://tools.ietf.org/html/rfc7230#section-6.7)をリクエストします。（詳細は、[`rippled`リポジトリ](https://github.com/XRPLF/rippled)の[Overlay Network](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/overlay/README.md#handshake)をご覧ください。）
 
 ## ピアの検出
 
-XRP Ledgerでは、「ゴシップ」プロトコルを使用して、XRP Ledgerネットワーク内でサーバが互いを識別できるようにします。サーバは、起動するたびに、以前に接続したその他のあらゆるピアに再接続します。フォールバックとして、[ハードコーディングされた公開ハブ](https://github.com/XRPLF/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525)を使用します。サーバがピアに正常に接続されると、ピアを探している他のXRP Ledgerサーバの接続情報（通常はIPアドレスとポート）をそのピアにリクエストします。その後、サーバはそれらのサーバに接続し、ピア接続するXRP Ledgerサーバの接続情報をさらにリクエストできます。このプロセスにより、サーバは十分なピア接続を確立し、単一のピアへの接続が失われた場合でも、ネットワークの残りの部分にその後も接続されます。
+XRP Ledgerでは、「ゴシップ」プロトコルを使用して、XRP Ledgerネットワーク内でサーバが互いを識別できるようにします。サーバは、起動するたびに、以前に接続したその他のあらゆるピアに再接続します。フォールバックとして、[ハードコーディングされた公開ハブ](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/overlay/detail/OverlayImpl.h#L494-L509)を使用します。サーバがピアに正常に接続されると、ピアを探している他のXRP Ledgerサーバの接続情報（通常はIPアドレスとポート）をそのピアにリクエストします。その後、サーバはそれらのサーバに接続し、ピア接続するXRP Ledgerサーバの接続情報をさらにリクエストできます。このプロセスにより、サーバは十分なピア接続を確立し、単一のピアへの接続が失われた場合でも、ネットワークの残りの部分にその後も接続されます。
 
 通常、サーバが公開ハブに接続する必要があるのは1回のみです。他のピアを見つけるために、短時間のみ接続します。そうすることで、ネットワーク接続の安定性、ハブのビジー状態、およびサーバが検出する他の高品質ピアの数に応じて、ハブにサーバを引き続き接続するかどうかが異なります。サーバでは、これらの他のピアのアドレスを保存するため、ネットワークの停止後または再起動後、それらのピアへの直接再接続を試行できます。
 
@@ -37,7 +37,7 @@ XRP Ledgerに参加するため、`rippled`サーバはピアプロトコルを�
 
 サーバがピアポートで接続を送信 _かつ_ 受信できることが理想的です。`rippled`サーバに、[ファイアウォール経由でピアプロトコルに使用するポートを転送する](../../infrastructure/configuration/peering/forward-ports-for-peering.md)必要があります。
 
-[デフォルトの`rippled`構成ファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)は、すべてのネットワークインターフェイスにおいて、ポート51235で着信ピアプロトコル接続をリッスンします。使用するポートを変更するには、`rippled.cfg`ファイル内の該当するスタンザを編集します。
+[デフォルトの`rippled`構成ファイル](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg)は、すべてのネットワークインターフェイスにおいて、ポート51235で着信ピアプロトコル接続をリッスンします。使用するポートを変更するには、`rippled.cfg`ファイル内の該当するスタンザを編集します。
 
 例:
 

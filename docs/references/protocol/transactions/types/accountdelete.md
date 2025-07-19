@@ -6,7 +6,7 @@ labels:
 ---
 # AccountDelete
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/DeleteAccount.cpp "Source")
 
 An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry-types/accountroot.md) and any objects it owns in the XRP Ledger, if possible, sending the account's remaining XRP to a specified destination account. See [Deleting Accounts](../../../../concepts/accounts/deleting-accounts.md) for the requirements to delete an account.
 
@@ -57,7 +57,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_DST` | Occurs if the `Destination` account is not a funded account in the ledger. |
 | `tecNO_PERMISSION` | Occurs if the `Destination` account requires [deposit authorization](../../../../concepts/accounts/depositauth.md) and the sender is not preauthorized. |
 | `tecTOO_SOON` | Occurs if the sender's `Sequence` number is too high. The transaction's `Sequence` number plus 256 must be less than the current [Ledger Index][]. This prevents replay of old transactions if this account is resurrected after it is deleted. |
-| `tecHAS_OBLIGATIONS` | Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as [escrows](../../../../concepts/payment-types/escrow.md) and for example [NFT's minted](nftokenmint.md), [even if owned by another account](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp#L197).) |
+| `tecHAS_OBLIGATIONS` | Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as [escrows](../../../../concepts/payment-types/escrow.md) and for example [NFT's minted](nftokenmint.md), [even if owned by another account](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/DeleteAccount.cpp#L197).) |
 | `tefTOO_BIG` | Occurs if the sending account is linked to more than 1000 objects in the ledger. The transaction could succeed on retry if some of those objects were deleted separately first. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

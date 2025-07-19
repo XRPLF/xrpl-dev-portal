@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMWithdraw
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
 
 Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 

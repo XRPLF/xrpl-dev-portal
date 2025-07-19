@@ -8,7 +8,7 @@ labels:
 ---
 # SignerListSet
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/SetSignerList.cpp "Source")
 
 The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](../../../../concepts/accounts/multi-signing.md) a transaction. This transaction type was introduced by the [MultiSign amendment][].
 

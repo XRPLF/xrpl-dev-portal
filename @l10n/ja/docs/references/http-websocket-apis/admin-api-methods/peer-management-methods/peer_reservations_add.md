@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # peer_reservations_add
-[[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L36 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Reservations.cpp#L36 "Source")
 
 この{% code-page-name /%}メソッドは、XRP Ledger[ピアツーピアネットワーク](../../../../concepts/networks-and-servers/peer-protocol.md)内の特定のピアサーバの予約済みスロットを追加または更新します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 

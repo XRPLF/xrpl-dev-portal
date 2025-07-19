@@ -7,7 +7,7 @@ labels:
   - Payment Channel
 ---
 # PayChannel
-[[ソース]](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L365-L380 "Source")
 
 _（[PayChan Amendment][]により追加されました。）_
 

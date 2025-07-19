@@ -154,14 +154,14 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
 ここで説明する鍵導出プロセスは、さまざまなプログラミング言語で複数の場所に実装されています。
 
 - C++: `rippled`コードベース:
-    - [シード定義](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
-    - [汎用キー & Ed25519鍵導出](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-    - [secp256k1鍵導出](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+    - [シード定義](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/Seed.h)
+    - [汎用キー & Ed25519鍵導出](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp)
+    - [secp256k1鍵導出](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp)
 - Python 3: {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}このリポジトリのコードサンプルセクション{% /repo-link %}
 - JavaScript: [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs)パッケージ
 
 ### Ed25519鍵導出
-[[ソース]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp#L313 "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.ja.svg" /%}](/docs/img/key-derivation-ed25519.ja.svg "パスフレーズ → シード → 秘密鍵 → プレフィクス + 公開鍵")
 
@@ -182,7 +182,7 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
     バリデータの一時キーにEd25519を使用することはできません。
 
 ### secp256k1鍵導出
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.ja.svg" /%}](/docs/img/key-derivation-secp256k1.ja.svg "パスフレーズ → シード → ルートキーペア → 仲介銀行（機関）キーペア → マスターキーペア")
 

@@ -7,7 +7,7 @@ labels:
   - Non-fungible Tokens, NFTs, NFTokens
 ---
 # nft_sell_offers
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/NFTOffers.cpp "Source")
 
 The `nft_sell_offers` method returns a list of sell offers for a given [NFToken][] object.
 

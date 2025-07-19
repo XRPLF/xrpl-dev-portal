@@ -5,7 +5,7 @@ labels:
   - Blockchain
 ---
 # Known Amendments
-[[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/Feature.cpp "Source")
 
 ## Known Amendments on Mainnet
 
@@ -1679,7 +1679,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 
 Allows accounts to delegate some permissions to other accounts.
 
-Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075d-permission-delegation).
+Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
 
 ### PermissionedDEX
@@ -1773,7 +1773,7 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 
 Creates a structure for aggregating assets from multiple depositors. This is intended to be used with the proposed on-chain Lending Protocol.
 
-Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065d-single-asset-vault).
+Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault).
 
 
 ### SortedDirectories

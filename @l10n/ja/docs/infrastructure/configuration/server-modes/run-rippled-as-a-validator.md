@@ -51,7 +51,7 @@ top_nav_name: UNLに参加しよう
 
     優れたバリデータには、身元が明確な所有者が存在します。[ドメイン検証](#6-ドメイン検証の提供)を提供することは、その第一歩になります。XRP LedgerネットワークのUNLに、多くの法的な管轄域および地域のさまざまな所有者によって運営されているバリデータが含まれていると理想的です。結果として、信頼できるバリデータの公正な運用が地域特有の事象によって損なわれるおそれが低減されます。
 
-運用者は[exampleファイル](https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt)に存在するバリデータリストを使用することを強くお勧めします。
+運用者は[exampleファイル](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/validators-example.txt)に存在するバリデータリストを使用することを強くお勧めします。
 
 
 
@@ -162,7 +162,7 @@ top_nav_name: UNLに参加しよう
 
 この構成では、[検出されたピア](../../../concepts/networks-and-servers/peer-protocol.md#ピアの検出)を使用してバリデータをXRP Ledgerネットワークに接続します。これは`rippled`サーバのデフォルトの動作です。
 
-_**検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、**_ バリデータの`rippled.cfg`ファイルで`[peer_private]`スタンザを省略するか、それを`0`に設定します。この構成の[サンプルのrippled.cfgファイル](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg)が提供されています。
+_**検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、**_ バリデータの`rippled.cfg`ファイルで`[peer_private]`スタンザを省略するか、それを`0`に設定します。この構成の[サンプルのrippled.cfgファイル](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg)が提供されています。
 
 
 ### プロキシを使用した接続

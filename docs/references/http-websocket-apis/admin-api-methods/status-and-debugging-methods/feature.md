@@ -8,7 +8,7 @@ labels:
   - Core Server
 ---
 # feature
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Feature1.cpp "Source")
 
 The `feature` command returns information about [amendments](../../../../concepts/networks-and-servers/amendments.md) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](../../../../concepts/networks-and-servers/amendments.md#amendment-process).
 

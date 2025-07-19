@@ -113,7 +113,7 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
 ### Steps
 
-1. Build `rippled` for reporting mode on [Ubuntu or macOS](https://github.com/XRPLF/rippled/blob/release/BUILD.md).
+1. Build `rippled` for reporting mode on [Ubuntu or macOS](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/BUILD.md).
 
     {% tabs %}
 

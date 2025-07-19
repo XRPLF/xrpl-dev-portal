@@ -63,7 +63,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
     client = JsonRpcClient(JSON_RPC_URL)
     ```
 
-    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+    See the example [core server config file](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg#L1423) for more information about default values.
 
 * By using one of the available [public servers][]:
 

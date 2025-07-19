@@ -7,7 +7,7 @@ labels:
   - 分散型取引所
 ---
 # Offer
-[[ソース]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L242-L255 "Source")
 
 台帳の`Offer`エントリは、XRP Ledgerの[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で通貨を交換する[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は台帳にある他のOfferを全額約定できない場合、台帳に`Offer`エントリを作成します。
 

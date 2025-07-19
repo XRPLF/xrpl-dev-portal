@@ -8,7 +8,7 @@ labels:
   - Blockchain
 ---
 # Ledger Header
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/ledger/ReadView.h#L51 "Source")
 
 Every [ledger version](../../../concepts/ledgers/index.md) has a unique header that describes the contents. You can look up a ledger's header information with the [ledger method][]. The contents of the ledger header are as follows:
 

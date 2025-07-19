@@ -5,7 +5,7 @@ labels:
   - Tokens
 ---
 # RippleState
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L277-L289 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L292-L304 "Source")
 
 A `RippleState` ledger entry represents a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) between two accounts. Each account can change its own limit and other settings, but the balance is a single shared value. A trust line that is entirely in its default state is considered the same as a trust line that does not exist and is automatically deleted. You can create or modify a trust line with a [TrustSet transaction][].
 

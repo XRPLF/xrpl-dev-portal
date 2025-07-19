@@ -8,7 +8,7 @@ labels:
 ---
 # server_definitions
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp#L43 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/ServerInfo.cpp#L43 "ソース")
 
 `server_definitions`コマンドは実行中の`rippled`インスタンスから生成されたSDK互換の`definitions.json`を返します。これを使用してネットワーク上のノードにアクセスし、そのバイナリデータをシリアライズ/デシリアライズするために必要な定義を受け取ることができます。
 

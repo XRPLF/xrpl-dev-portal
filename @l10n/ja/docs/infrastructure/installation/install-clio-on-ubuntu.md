@@ -138,7 +138,7 @@ Clioをインストールする前に、以下の条件を満たしている必�
 
         {% admonition type="info" name="注記" %}`etl_sources`セクションに項目を追加することで、複数の`rippled`サーバをデータソースとして使用することができます。そうすると、Clioはリスト内のすべてのサーバでリクエストを負荷分散し、少なくとも`rippled`サーバの一つが同期している限り、ネットワークに追いつくことができます。{% /admonition %}
 
-        [設定ファイル例](https://github.com/XRPLF/clio/blob/develop/example-config.json)は、ローカルのループバックネットワーク(127.0.0.1)上で動作している`rippled`サーバに、ポート6006のWebSocket(WS)とポート50051のgRPCでアクセスします。
+        [設定ファイル例](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json)は、ローカルのループバックネットワーク(127.0.0.1)上で動作している`rippled`サーバに、ポート6006のWebSocket(WS)とポート50051のgRPCでアクセスします。
 
     2. Clioサーバが接続できるように`rippled`サーバの設定ファイルを更新します。パッケージはこのファイルを`/etc/opt/ripple/rippled.cfg`にインストールします。
 

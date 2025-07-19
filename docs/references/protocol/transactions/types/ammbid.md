@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMMBid
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMBid.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/AMMBid.cpp "Source")
 
 Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains. If the AMM's trading fee is zero, you can still bid, but the auction slot provides no benefit unless the trading fee changes.
 

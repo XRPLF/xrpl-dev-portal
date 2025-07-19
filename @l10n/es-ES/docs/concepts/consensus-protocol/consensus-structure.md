@@ -107,7 +107,7 @@ Cuando el proceso de consenso se completa, cada servidor independientemente comp
 
 2. Colocar el conjunto de transacciones acordado en _orden canónico_ para que cada servidor la procese de la misma forma.
 
-    [Orden canónico](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36) no es el orden de cómo las transacciones fueron recibidas, porque los servidores pueden recibir las mismas transacciones en diferente orden. Para prevenir a los participantes de competir sobre el orden de las trnasacciones, el orden canónico es difícil de manipular.
+    [Orden canónico](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/CanonicalTXSet.cpp#L24-L40) no es el orden de cómo las transacciones fueron recibidas, porque los servidores pueden recibir las mismas transacciones en diferente orden. Para prevenir a los participantes de competir sobre el orden de las trnasacciones, el orden canónico es difícil de manipular.
 
 3. Procesar cada transacción según sus instrucciones, en orden. Actualizar el estado del dato del ledger en consecuencia.
 

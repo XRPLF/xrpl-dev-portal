@@ -85,7 +85,7 @@ Los límites de la trust line te protegen de recibir más de un token como pago 
 
 Las Ofertas existentes se agrupan por tipo de cambio, que se mide como la relación entre `TakerGets` y `TakerPays`. Las Ofertas con un tipo de cambio más alto se toman preferentemente. (Es decir, la persona que acepta la oferta recibe tanto como sea posible por la cantidad de moneda que paga). Las Ofertas con el mismo tipo de cambio se toman en función de cuál se colocó primero.
 
-Cuando las Ofertas se ejecutan en el mismo bloque del ledger, el orden en que se ejecutan se determina por el [orden canónico](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp "Código fuente: Ordenación de transacciones") en el que las transacciones fueron [aplicadas en el ledger](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Código fuente: Aplicando transacciones"). Este comportamiento está diseñado para ser determinista, eficiente y difícil de manipular.
+Cuando las Ofertas se ejecutan en el mismo bloque del ledger, el orden en que se ejecutan se determina por el [orden canónico](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/CanonicalTXSet.cpp "Código fuente: Ordenación de transacciones") en el que las transacciones fueron [aplicadas en el ledger](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Código fuente: Aplicando transacciones"). Este comportamiento está diseñado para ser determinista, eficiente y difícil de manipular.
 
 
 ## Caducidad de la oferta

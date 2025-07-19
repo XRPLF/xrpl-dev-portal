@@ -6,7 +6,7 @@ labels:
   - Permissioned Domains
 ---
 # PermissionedDomain
-[[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/ledger_entries.macro#L451-L461 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L463-L470 "Source")
 
 A `PermissionedDomain` ledger entry describes a single [permissioned domain][] instance. You can create a permissioned domain by sending a [PermissionedDomainSet transaction][].
 

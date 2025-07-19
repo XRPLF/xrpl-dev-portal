@@ -24,7 +24,7 @@ Algunas direcciones tienen un significado especial, o usos históricos, en el XR
 |-------------------------------|--------|-------------|--------------|
 | `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | Una dirección que es la codificación en [base58][] en el XRP Ledger del valor `0`. En comunicaciones peer-to-peer, `rippled` utiliza esta dirección como el emisor de XRP. | Sí |
 | `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | Una dirección que es la codificación en [base58][] en el XRP Ledger del valor `1`. En el ledger, las [entradas RippleState](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) utilizan esta dirección como marcador de posición para el emisor de un balance de una trust line. | Sí |
-| `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | La cuenta génesis | Cuando `rippled` inicia un nuevo ledger génesis desde el principio (por ejemplo, en modo solitario), esta cuenta contiene todo el XRP. Esta cuenta es generada con el valor semilla `masterpassphrase` el cual está [hard-coded](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184). | No |
+| `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | La cuenta génesis | Cuando `rippled` inicia un nuevo ledger génesis desde el principio (por ejemplo, en modo solitario), esta cuenta contiene todo el XRP. Esta cuenta es generada con el valor semilla `masterpassphrase` el cual está [hard-coded](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/ledger/Ledger.cpp#L184). | No |
 | `rrrrrrrrrrrrrrrrrNAMEtxvNvQ` | black hole de reserva de nombre de Ripple | En el pasado, Ripple pedía a los usuarios enviar XRP a esta cuenta para reservar nombres Ripple.| Sí |
 | `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | Dirección NaN | Versiones previas de [ripple-lib](https://github.com/XRPLF/xrpl.js) generaban esta dirección cuando se codificaba el valor [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) utilizan el formato de codificación [base58][] del XRP Ledger. | Sí |
 
@@ -33,7 +33,7 @@ Algunas direcciones tienen un significado especial, o usos históricos, en el XR
 
 **Consejo:** ¡Estos detalles técnicos son solo relevantse para personas que crean librerias de software de bajo nivel para la compatibilidad con el XRP Ledger!
 
-[[Fuente]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "Fuente")
+[[Fuente]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/AccountID.cpp#L134-L165 "Fuente")
 
 Las direcciones XRP Ledger están codificadas utilizando [base58][] con el _diccionario_ `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`. Como el XRP Ledger codifica varios tipos de claves con base58, antepone los datos codificados con un-byte de "prefijo de tipo" (también conocido como "prefijo de versión") para distinguirlos. El prefijo de tipo hace que las direcciones normalmente comiencen con diferentes letras en formato base58.
 
@@ -41,7 +41,7 @@ El siguiente diagrama muestra la relación entre las claves y las direcciones:
 
 [{% inline-svg file="/docs/img/address-encoding.svg" /%}](/docs/img/address-encoding.svg "Clave pública maestra + Prefijo Tipo →  ID de cuenta + Checksum → Dirección")
 
-La fórmula para calcular direcciones XRP Ledger desde una clave pública es la siguiente. Para ver el código de ejemplo completo, consulta [`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js). Para el proceso de derivar la clave pública desde una passphrase a un valor semilla, consulta [Derivación de clave](cryptographic-keys.md#key-derivation).
+La fórmula para calcular direcciones XRP Ledger desde una clave pública es la siguiente. Para ver el código de ejemplo completo, consulta [`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/_code-samples/address_encoding/js/encode_address.js). Para el proceso de derivar la clave pública desde una passphrase a un valor semilla, consulta [Derivación de clave](cryptographic-keys.md#key-derivation).
 
 1. Importa los algoritmos necesarios: SHA-256, RIPEMD160, y base58. Configura el diccionario para base58.
 

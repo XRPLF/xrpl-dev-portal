@@ -7,7 +7,7 @@ labels:
   - 非代替性トークン, NFT, NFToken
 ---
 # nft_buy_offers
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/NFTOffers.cpp "ソース")
 
 `nft_buy_offers`メソッドは、与えられた[NFToken][]オブジェクトに対する購入オファーのリストを返します。
 

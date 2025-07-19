@@ -8,7 +8,7 @@ labels:
   - XRP
 ---
 # account_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/AccountInfo.cpp "Source")
 
 `account_info`コマンドは、アカウントとそのアクティビティおよびXRP残高についての情報を取得します。取得されたすべての情報は、特定バージョンのレジャーに関連付けられています。
 

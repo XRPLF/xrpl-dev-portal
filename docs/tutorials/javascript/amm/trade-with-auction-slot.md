@@ -240,7 +240,7 @@ Save the taker pays and taker gets fields; use these values to get the total amo
         }
 ```
 
-Use [AMM helper functions](https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/impl/AMMHelpers.cpp) to estimate values for:
+Use [AMM helper functions](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/detail/AMMHelpers.cpp) to estimate values for:
 
 - Cost to swap token without an auction slot.
 - Cost to swap token with an auction slot.
@@ -534,7 +534,7 @@ Report the results.
 
 ## Code Walkthrough (ripplex13b-amm-formulas.js) 
 
-You can open `ripplex13b-amm-formulas.js` from the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) to view the source code. This tutorial uses three of the available [AMM helper functions](https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/impl/AMMHelpers.cpp).
+You can open `ripplex13b-amm-formulas.js` from the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) to view the source code. This tutorial uses three of the available [AMM helper functions](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/detail/AMMHelpers.cpp).
 
 
 ### swapOut()

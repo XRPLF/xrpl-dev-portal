@@ -8,7 +8,7 @@ labels:
 status: not_enabled
 ---
 # XChainAddAccountCreateAttestation
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L447-L464 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/XChainBridge.h#L189-L208 "Source")
 
 _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 

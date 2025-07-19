@@ -8,7 +8,7 @@ labels:
 status: not_enabled
 ---
 # XChainCreateClaimID
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L399-L406 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/XChainBridge.h#L141-L158 "ソース")
 
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 

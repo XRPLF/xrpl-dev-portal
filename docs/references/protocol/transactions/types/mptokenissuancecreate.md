@@ -5,7 +5,7 @@ labels:
 ---
 
 # MPTokenIssuanceCreate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp "Source")
 
 The `MPTokenIssuanceCreate` transaction creates an [MPTokenIssuance](../../ledger-data/ledger-entry-types/mptokenissuance.md) object and adds it to the relevant directory node of the creator account. This transaction is the only opportunity an issuer has to specify any token fields that are defined as immutable (for example, MPT Flags).
 

@@ -1,6 +1,6 @@
 # AMMClawback
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMClawback.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/AMMClawback.cpp "Source")
 
 Claw back tokens from a holder who has deposited your issued tokens into an AMM pool.
 

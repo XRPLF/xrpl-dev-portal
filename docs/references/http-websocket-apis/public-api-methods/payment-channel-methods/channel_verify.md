@@ -7,7 +7,7 @@ labels:
   - Payment Channels
 ---
 # channel_verify
-[[Source]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/PayChanClaim.cpp#L111 "Source")
 
 _(Added by the [PayChan amendment][] to be enabled.)_
 

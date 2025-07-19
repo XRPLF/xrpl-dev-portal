@@ -8,7 +8,7 @@ labels:
 ---
 # TrustSet
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetTrust.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/SetTrust.cpp "Source")
 
 Create or modify a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) linking two accounts.
 

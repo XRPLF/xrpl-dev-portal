@@ -10,7 +10,7 @@ status: not_enabled
 # Bridge
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L286-L300 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L225-L236 "ソース")
 
 `Bridge`レジャーエントリは、XRP Ledgerをサイドチェーンなどの別のブロックチェーンと接続し、XRPやその他のトークン(IOU)の形で2つのブロックチェーン間を効率的に移動することを可能にする、1つのクロスチェーンブリッジを表します。
 

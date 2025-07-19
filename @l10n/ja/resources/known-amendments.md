@@ -5,7 +5,7 @@ labels:
   - ブロックチェーン
 ---
 # 既知のAmendment
-[[ソース]](https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/Feature.cpp "Source")
 
 ## メインネットの既知のAmendment
 
@@ -272,7 +272,7 @@ XRP Ledgerを使用して資格情報およびコンプライアンス要件を�
 
 `deposit_authorized` APIメソッドを修正し、Credentialに基づく認証をチェックするようにします。また、`ledger_entry`メソッドを修正し、Credentialエントリの検索を許可します。
 
-詳細については、[XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070d-credentials)をご覧ください。
+詳細については、[XLS-70: Credentials specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0070-credentials)をご覧ください。
 
 
 ### CryptoConditions

@@ -33,7 +33,7 @@ function feeDecimal(tFee) {
 /* Implement the AMM SwapOut formula, as defined in XLS-30 section 2.4 AMM 
  * Swap, formula 10. The asset weights WA/WB are currently always 1/1 so 
  * they're canceled out.
- * C++ source: https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/AMMHelpers.h#L253-L258
+ * C++ source: https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/AMMHelpers.h#L591-L596
  * @param asset_out_bn BigNumber - The target amount to receive from the AMM.
  * @param pool_in_bn BigNumber - The amount of the input asset in the AMM's 
  *                               pool before the swap.
@@ -67,7 +67,7 @@ function solveQuadraticEq(a,b,c) {
 
 /* Implement the AMM single-asset deposit formula to calculate how much to
  * put in so that you receive a specific number of LP Tokens back.
- * C++ source: https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/impl/AMMHelpers.cpp#L55-L83
+ * C++ source: https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/misc/detail/AMMHelpers.cpp#L68-L105
  * @param pool_in string - Quantity of input asset the pool already has
  * @param lpt_balance string - Quantity of LP Tokens already issued by the AMM
  * @param desired_lpt string - Quantity of new LP Tokens you want to receive

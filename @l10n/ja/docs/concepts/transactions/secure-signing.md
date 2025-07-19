@@ -46,7 +46,7 @@ labels:
 
 2. トランザクションに署名する必要がある場合は、`localhost`または`127.0.0.1`のサーバに接続します。シングル署名の場合は[signメソッド][]、マルチシグの場合は[sign_forメソッド][]を使用します。
 
-    [構成ファイルの例](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
+    [構成ファイルの例](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg#L1414-L1448)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
     {% admonition type="warning" name="注意" %}署名に[コマンドラインAPI](../../references/http-websocket-apis/api-conventions/request-formatting.md#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](../../tutorials/http-websocket-apis/build-apps/get-started.md)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。{% /admonition %}
 

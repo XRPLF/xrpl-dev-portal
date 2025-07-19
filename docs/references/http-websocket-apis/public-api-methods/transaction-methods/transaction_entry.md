@@ -7,7 +7,7 @@ labels:
   - Transaction Sending
 ---
 # transaction_entry
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/TransactionEntry.cpp "Source")
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [tx method][], by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)
 

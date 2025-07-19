@@ -8,7 +8,7 @@ labels:
 ---
 # nft_history
 
-[[ソース]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTHistory.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/NFTHistory.cpp "ソース")
 
 `nft_history`コマンドはクエリ対象の[NFT](../../../../concepts/tokens/nfts/index.md)の過去のトランザクションメタデータをClioサーバに問い合わせます。{% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}新規: Clio v1.1.0{% /badge %}
 

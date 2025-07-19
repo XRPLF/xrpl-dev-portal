@@ -7,7 +7,7 @@ labels:
  - Non-fungible Tokens, NFTs
 ---
 # NFTokenCreateOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "Source")
 
 Creates either a new _Sell_ offer for an `NFToken` owned by the account executing the transaction, or a new _Buy_ offer for an `NFToken` owned by another account.
 

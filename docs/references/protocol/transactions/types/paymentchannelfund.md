@@ -7,7 +7,7 @@ labels:
   - Payment Channels
 ---
 # PaymentChannelFund
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
 Add an additional amount to an open [payment channel](../../../../concepts/payment-types/payment-channels.md), and optionally update the expiration time of the channel. Only the source account of the channel can use this transaction.
 
