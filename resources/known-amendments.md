@@ -7,9 +7,11 @@ labels:
 # Known Amendments
 [[Source]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/detail/features.macro "Source")
 
-## Known Amendments on Mainnet
+This page lists all known [amendments](../docs/concepts/networks-and-servers/amendments.md) and their statuses.
 
-The following is a comprehensive list of all known [amendments](../docs/concepts/networks-and-servers/amendments.md) and their status on the production XRP Ledger:
+## Mainnet Status
+
+The following amendments are either already enabled on the XRP Ledger Mainnet or are open for voting and can become enabled if they hold a supermajority for at least two weeks:
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. For a live view of amendment voting, see the Amendments Dashboards: [XRPScan](https://xrpscan.com/amendments), [Bithomp](https://bithomp.com/en/amendments).
@@ -113,7 +115,7 @@ In many cases, an incomplete version of the code for an amendment is present in 
 
 ## Amendments in Development
 
-The following is a list of [amendments](../docs/concepts/networks-and-servers/amendments.md) that are being developed and a private network is available to test the changes.
+The following is a list of [amendments](../docs/concepts/networks-and-servers/amendments.md) that are being actively developed. They can become open for voting on Mainnet if they are included in a stable server release, and they may already be enabled on [other networks](../docs/concepts/networks-and-servers/parallel-networks.md).
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
@@ -129,7 +131,7 @@ This list is updated manually. If you're working on an amendment and have a priv
 
 ## Obsolete Amendments
 
-The following is a list of known [amendments](../docs/concepts/networks-and-servers/amendments.md) that have been removed in a previous version, or are obsolete and have been marked for removal.
+The following is a list of known [amendments](../docs/concepts/networks-and-servers/amendments.md) that have been removed in a previous version of the core server, or are obsolete and have been marked for removal.
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|

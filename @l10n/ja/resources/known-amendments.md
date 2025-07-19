@@ -7,9 +7,11 @@ labels:
 # 既知のAmendment
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/detail/features.macro "Source")
 
-## メインネットの既知のAmendment
+以下に示すのは、XRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
-以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
+## メインネットのステータス
+
+以下のAmendmentは、XRP Ledgerメインネットですでに有効になっているか、投票中であり、2週間にわたって過半数の賛成が得られれば有効になる可能性があります。
 
 {% admonition type="success" name="ヒント" %}
 このリストは手動で更新されています。最新のステータスはAmendmentダッシュボードをご覧下さい：[XRPScan](https://xrpscan.com/amendments)、[Bithomp](https://bithomp.com/en/amendments)。
