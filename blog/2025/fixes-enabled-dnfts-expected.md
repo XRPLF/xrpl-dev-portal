@@ -3,7 +3,7 @@ category: 2025
 date: "2025-06-03"
 template: '../../@theme/templates/blogpost'
 seo:
-    description: 
+    description: Two fix amendments to the XRP Ledger protocol have become enabled, and the DynamicNFT is expect to be enabled soon.
 labels:
     - Amendments
 markdown:
