@@ -4,15 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
 	"github.com/Peersyst/xrpl-go/xrpl/faucet"
 	"github.com/Peersyst/xrpl-go/xrpl/queries/account"
 	"github.com/Peersyst/xrpl-go/xrpl/rpc"
 	"github.com/Peersyst/xrpl-go/xrpl/transaction"
 	"github.com/Peersyst/xrpl-go/xrpl/wallet"
-)
-
-const (
-	WalletSeed = "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"
 )
 
 func main() {
@@ -26,7 +23,7 @@ func main() {
 
 	client := rpc.NewClient(cfg)
 
-	w, err := wallet.FromSeed(WalletSeed, "")
+	w, err := wallet.New(crypto.ED25519())
 	if err != nil {
 		fmt.Println(err)
 		return
