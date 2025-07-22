@@ -19,6 +19,7 @@ func main() {
 
 	client := rpc.NewClient(cfg)
 
+	// Get the latest validated ledger
 	led, err := client.GetLedger(&ledger.Request{
 		Transactions: true,
 		LedgerIndex:  common.Validated,
