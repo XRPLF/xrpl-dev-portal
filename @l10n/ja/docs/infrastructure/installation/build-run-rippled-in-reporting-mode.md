@@ -16,8 +16,6 @@ top_nav_grouping: 人気ページ
 
 そしてAPIコールを効率的に処理し、P2Pモードで動作している`rippled`サーバの負荷を軽減することができます。
 
-[{% inline-svg file="/docs/img/reporting-mode-basic-architecture.svg" /%}](/docs/img/reporting-mode-basic-architecture.svg "図 1: レポートモードでの`rippled`の動作")
-
 `rippled`のレポートモードでは2種類のデータストアを使用します。
 
 * トランザクションのメタデータ、アカウントの状態、レジャーのヘッダーを含む`rippled`のプライマリ永続データストア。プライマリ永続データストアとしてNuDB(ソースに付属)または[Cassandra](https://cassandra.apache.org/)を使用できます。Cassandraを使用する場合、複数のレポートモードサーバが単一のCassandraインスタンスまたはクラスター内のデータへのアクセスを共有できます。
