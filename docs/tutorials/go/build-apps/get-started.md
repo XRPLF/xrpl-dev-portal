@@ -165,7 +165,7 @@ You can use either the Client's `request()` method to access the XRP Ledger's [W
 
 {% code-snippet file="/_code-samples/get-tx/go/main.go" from="// Get the latest validated ledger" language="go" /%}
 
-Or use the [`websocket` or `rpc` packages] getter methods:
+Or use the [`websocket` or `rpc` packages](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket#Client.GetAccountChannels) getter methods:
 
 {% code-snippet file="/_code-samples/get-started/go/get-acc-info/ws/main.go" from="// Get info from" before="// Get info about" language="go" /%}
 
