@@ -61,8 +61,32 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-go`, you have two main options:
 
-1. Via `websocket`: {% code-snippet file="/_code-samples/get-started/go/base/ws/main.go from="// Define the network client" before="// ... custom code goes here" language="go" /%}
-2. Via `RPC`: {% code-snippet file="/_code-samples/get-started/go/base/rpc/main.go from="// Define the network client" before="// Ping the network (used to avoid Go unused variable error, but useful to check connectivity)" language="go" /%}
+1. Via `websocket`:
+    ```go
+	// Define the network client
+	client := websocket.NewClient(websocket.NewClientConfig().
+		WithHost("wss://s.altnet.rippletest.net:51233"))
+    
+	// Disconnect the client when done. (Defer executes at the end of the function)
+	defer client.Disconnect()
+
+	// Connect to the network
+	if err := client.Connect(); err != nil {
+		fmt.Println(err)
+		return
+	}
+    ```
+2. Via `RPC`: 
+    ```go
+    cfg, err := rpc.NewClientConfig("https://s.altnet.rippletest.net:51234/")
+    if err != nil {
+        panic(err)
+      }
+
+    // Initiate the network client
+    client := rpc.NewClient(cfg)
+    ```
+
 
 #### Connect to the production XRP Ledger
 

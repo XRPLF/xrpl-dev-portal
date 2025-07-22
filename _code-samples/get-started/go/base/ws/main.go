@@ -9,7 +9,8 @@ import (
 func main() {
 
 	// Define the network client
-	client := websocket.NewClient(websocket.NewClientConfig().WithHost("wss://s.altnet.rippletest.net:51233"))
+	client := websocket.NewClient(websocket.NewClientConfig().
+		WithHost("wss://s.altnet.rippletest.net:51233"))
 
 	// Disconnect the client when done. (Defer executes at the end of the function)
 	defer client.Disconnect()
