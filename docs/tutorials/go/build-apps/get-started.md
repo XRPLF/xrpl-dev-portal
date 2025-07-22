@@ -27,7 +27,6 @@ In this tutorial, you'll learn:
 - How to connect to the XRP Ledger using `xrpl-go`.
 - How to get an account on the [Testnet](/resources/dev-tools/xrp-faucets) using `xrpl-go`.
 - How to use the `xrpl-go` library to look up information about an account on the XRP Ledger.
-- How to put these steps together to create a Java app.
 
 ## Requirements
 
@@ -73,7 +72,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
   ```go
   import 	"github.com/Peersyst/xrpl-go/xrpl/websocket"
-  const MyServer := "http://localhost:5005/"
+  const MyServer := "ws://localhost:6006/"
   client := websocket.NewClient(websocket.NewClientConfig().WithHost(MyServer))
   ```
 
@@ -89,7 +88,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 ### 2. Get account
 
-In `xrpl-go`, account creation and key management live in the wallet package, and on Testnet you can use the built-in faucet provider on your WebSocket client to fund a brand-new account immediately.
+In `xrpl-go`, account creation and key management live in the wallet package, and on Testnet you can use the built-in faucet provider on your WebSocket (or RPC) client to fund a brand-new account immediately.
 
 Here we spin up a Testnet‐connected WebSocket client, generate a fresh ED25519 wallet, then fund it automatically via the public faucet.
 
