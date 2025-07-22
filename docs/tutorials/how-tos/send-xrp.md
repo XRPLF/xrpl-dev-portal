@@ -533,7 +533,7 @@ $client = new JsonRpcClient("http://localhost:5005");
 ```go
 client := websocket.NewClient(
   websocket.NewClientConfig().
-    WithHost("http://localhost:5005")
+    WithHost("ws://localhost:6006")
 )
 if err := client.Connect(); err != nil {
   fmt.Println(err)
