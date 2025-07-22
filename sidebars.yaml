@@ -699,7 +699,7 @@
       labelTranslationKey: sidebar.resources.codesamples
       page: resources/code-samples.page.tsx
     - group: Dev Tools
-      labelTranslationKey: sidebar.resources.dev-tools
+      groupTranslationKey: sidebar.resources.dev-tools
       page: resources/dev-tools/index.page.tsx
       expanded: false
       items:
