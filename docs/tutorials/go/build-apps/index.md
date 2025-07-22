@@ -1,5 +1,5 @@
 ---
-html: build-apps-with-golang.html
+html: build-apps-in-golang.html
 parent: golang.html
 top_nav_grouping: Article Types
 metadata:

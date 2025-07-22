@@ -21,4 +21,6 @@ func main() {
 		panic(err)
 	}
 
+	// ... custom code goes here
+
 }
