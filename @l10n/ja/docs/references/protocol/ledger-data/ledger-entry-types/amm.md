@@ -7,7 +7,7 @@ labels:
   - AMM
 ---
 # AMM
-[[ソース]](https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L386-L397 "Source")
 
 _([AMM amendment][]により追加されました。)_
 

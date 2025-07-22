@@ -4,7 +4,7 @@ seo:
     description: これらの共通フィールドは、すべてのレジャーエントリの一部です。
 ---
 # Ledger Entryの共通フィールド
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/LedgerFormats.cpp)
 
 [レジャー](../../../concepts/ledgers/index.md)の状態データの各エントリは、同じ共通フィールドのセットと、[レジャーエントリのタイプ](ledger-entry-types/index.md)に基づく追加フィールドを持ちます。フィールド名は大文字と小文字を区別します。すべてのレジャーエントリの共通フィールドは以下の通りです。
 
@@ -19,9 +19,9 @@ seo:
 
 ## Ledger Entry ID
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp)
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/Indexes.cpp)
 
-各レジャーエントリには一意のIDがあります。IDは、エントリの重要な内容と[名前空間識別子](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/LedgerFormats.h)をハッシュすることで得られます。[レジャーエントリのタイプ](ledger-entry-types/index.md)は、使用する名前空間識別子と、ハッシュに含めるコンテンツを決定します。これにより、すべてのIDが一意になります。ハッシュ関数は[SHA-512Half][]です。
+各レジャーエントリには一意のIDがあります。IDは、エントリの重要な内容と[名前空間識別子](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/LedgerFormats.h)をハッシュすることで得られます。[レジャーエントリのタイプ](ledger-entry-types/index.md)は、使用する名前空間識別子と、ハッシュに含めるコンテンツを決定します。これにより、すべてのIDが一意になります。ハッシュ関数は[SHA-512Half][]です。
 
 一般的に、レジャーエントリのIDはJSONの`index`フィールドとして、オブジェクトの内容と同じレベルで返されます。[トランザクションのメタデータ](../transactions/metadata.md)では、JSONにおけるレジャーオブジェクトのIDは`LedgerIndex`です。
 

@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # ping
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Ping.cpp "Source")
 
 `ping`コマンドは確認レスポンスを返します。これにより、クライアントは接続のステータスと遅延をテストできます。
 

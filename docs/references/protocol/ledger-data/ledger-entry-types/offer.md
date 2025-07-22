@@ -5,7 +5,7 @@ labels:
   - Decentralized Exchange
 ---
 # Offer
-[[Source]](https://github.com/XRPLF/rippled/blob/7e24adbdd0b61fb50967c4c6d4b27cc6d81b33f3/include/xrpl/protocol/detail/ledger_entries.macro#L242-L255 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L242-L255 "Source")
 
 An `Offer` ledger entry describes an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to exchange currencies in the XRP Ledger's [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). (In finance, this is more traditionally known as an _order_.) You an create a new offer entry by sending an [OfferCreate transaction][] that is not fully executed immediately.
 

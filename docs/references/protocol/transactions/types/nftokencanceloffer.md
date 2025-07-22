@@ -7,7 +7,7 @@ labels:
   - NFTs, Non-fungible Tokens
 ---
 # NFTokenCancelOffer
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "Source")
 
 The `NFTokenCancelOffer` transaction can be used to cancel existing token offers created using `NFTokenCreateOffer`.
 

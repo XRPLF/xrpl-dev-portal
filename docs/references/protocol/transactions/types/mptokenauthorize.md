@@ -5,7 +5,7 @@ labels:
 ---
 
 # MPTokenAuthorize
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "Source")
 
 An MPTokenAuthorize transaction controls whether an account can hold a given [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). It has several uses:
 

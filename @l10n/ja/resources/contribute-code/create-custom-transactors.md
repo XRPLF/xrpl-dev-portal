@@ -21,8 +21,8 @@ _トランザクタ_ はトランザクションを処理し、XRP Ledgerを変�
 
 このチュートリアルでは、既存の`CreateCheck`トランザクションを例として使用します。ソースファイルはここで確認できます。
 
-- [ヘッダファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.h)
-- [CPPファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp)
+- [ヘッダファイル](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/CreateCheck.h)
+- [CPPファイル](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/CreateCheck.cpp)
 
 
 ## ヘッダファイル
@@ -78,8 +78,8 @@ public:
     {% admonition type="info" name="注記" %}`~`記号は optional型を返します。{% /admonition %}
 
 - レジャーとトランザクションのスキーマはこちらから確認できます。
-    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
-    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
+    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/LedgerFormats.cpp)
+    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/TxFormats.cpp)
 
 -` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/index.md)をご覧ください。
 
@@ -344,7 +344,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 
 ### `makeTxConsequences`
 
-`rippled`は[`TxConsequences`](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/applySteps.h#L41-L44)クラスを使用して、トランザクション適用時のアカウントへの結果を記述します。このクラスは手数料、使用可能な最大XRP、トランザクションによって消費されたシーケンス番号の数を追跡します。結果には次の3つのタイプがあります。
+`rippled`は[`TxConsequences`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/applySteps.h#L54-L57)クラスを使用して、トランザクション適用時のアカウントへの結果を記述します。このクラスは手数料、使用可能な最大XRP、トランザクションによって消費されたシーケンス番号の数を追跡します。結果には次の3つのタイプがあります。
 
 - **ノーマル:**トランザクションは署名に影響を与えず、XRP手数料を消費するのみです。手数料を超えてXRPを消費するトランザクションは正常とはみなされません。
 - **ブロッカー:**トランザクションの署名に影響を与え、有効なトランザクションがその後ろにキューイングされるのを防ぎます。

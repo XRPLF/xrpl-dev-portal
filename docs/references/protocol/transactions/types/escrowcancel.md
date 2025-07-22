@@ -6,7 +6,7 @@ labels:
 ---
 # EscrowCancel
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
 Return escrowed XRP to the sender.
 

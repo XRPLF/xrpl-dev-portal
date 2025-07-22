@@ -7,7 +7,7 @@ labels:
   - データ保持
 ---
 # ledger_request
-[[ソース]](https://github.com/XRPLF/rippled/blob/e980e69eca9ea843d200773eb1f43abe3848f1a0/src/ripple/rpc/handlers/LedgerRequest.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/LedgerRequest.cpp "Source")
 
 `ledger_request`コマンドは、サーバに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。これは、サーバが直接接続しているピアの1つにそのレジャーが存在している場合にのみ機能します。場合によっては、レジャーを完全に取得するにはこのコマンドを繰り返し実行する必要があります。
 

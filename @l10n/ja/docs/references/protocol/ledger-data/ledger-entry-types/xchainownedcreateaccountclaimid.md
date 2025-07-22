@@ -10,7 +10,7 @@ status: not_enabled
 # XChainOwnedCreateAccountClaimID
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
-[[ソース]](https://github.com/seelabs/rippled/blob/xbridge/src/ripple/protocol/impl/LedgerFormats.cpp#L296-L306 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L330-L338 "ソース")
 
 `XChainOwnedCreateAccountClaimID`レジャーオブジェクトは、クロスチェーン送金でアカウントを作成するための証明を収集するために使用されます。
 

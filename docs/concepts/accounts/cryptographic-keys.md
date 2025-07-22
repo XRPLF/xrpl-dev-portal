@@ -154,14 +154,14 @@ The process of deriving a key pair depends on the signing algorithm. In all case
 The key derivation processes described here are implemented in multiple places and programming languages:
 
 - In C++ in the `rippled` code base:
-    - [Seed definition](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
-    - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-    - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+    - [Seed definition](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/Seed.h)
+    - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp)
+    - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp)
 - In Python 3 in {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
-[[Source]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp#L313 "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
@@ -182,7 +182,7 @@ The key derivation processes described here are implemented in multiple places a
     Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SecretKey.cpp "Source")
 
 [{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
 

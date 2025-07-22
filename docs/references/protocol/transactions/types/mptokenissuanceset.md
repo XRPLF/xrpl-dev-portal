@@ -4,7 +4,7 @@ labels:
  - Multi-purpose Tokens, MPTs
 ---
 # MPTokenIssuanceSet
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
 
 Use this transaction to update a mutable property for a Multi-purpose Token. The transaction flags determine which change(s) to apply.
 

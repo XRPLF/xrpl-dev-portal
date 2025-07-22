@@ -53,7 +53,7 @@ The `type` field of `[shard_db]` can be omitted. If present, it _MUST_ be `NuDB`
 
 {% admonition type="warning" name="Caution" %}If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](../../troubleshooting/server-wont-start.md). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.{% /admonition %}
 
-For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg).
+For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg).
 
 ## 3. Restart the server
 

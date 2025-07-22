@@ -7,7 +7,7 @@ labels:
   - 非代替性トークン, NFT
 ---
 # NFTokenCreateOffer
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "ソース")
 
 トランザクションを送信するアカウントが所有する`NFToken`に対する新しい _売却_ オファー、または別のアカウントが所有する`NFToken`に対する新しい _購入_ オファーを作成します。
 

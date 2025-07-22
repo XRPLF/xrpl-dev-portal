@@ -7,7 +7,7 @@ labels:
   - トランザクション送信
 ---
 # sign
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/SignHandler.cpp "ソース")
 
 `sign`メソッドは[JSONフォーマットのトランザクション](../../../protocol/transactions/index.md)と[シード値](../../../../concepts/accounts/cryptographic-keys.md)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチシグトランザクション](../../../../concepts/accounts/multi-signing.md)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
 

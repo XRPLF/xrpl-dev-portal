@@ -8,7 +8,7 @@ labels:
 ---
 # AccountSet
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/SetAccount.cpp "ソース")
 
 AccountSetトランザクションは、[XRP Ledgerのアカウント](../../ledger-data/ledger-entry-types/accountroot.md)のプロパティーを修正します。
 
@@ -33,7 +33,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | フィールド         | JSONの型        | [内部の型][] | 説明        |
 |:-----------------|:-----------------|:------------------|:-------------------|
 | [`ClearFlag`](#accountsetのフラグ)    | 数値           | UInt32            |  _（省略可）_ このアカウントについてオプションを無効にするためのフラグの一意識別子。 |
-| [`Domain`](#domain)       | 文字列           | Blob              |  _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。[256バイトを超える長さは使用できません。](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
+| [`Domain`](#domain)       | 文字列           | Blob              |  _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。[256バイトを超える長さは使用できません。](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/SetAccount.h#L34) |
 | `EmailHash`        | 文字列           | Hash128           |  _（省略可）_ アバターイメージの生成に使用されるメールアドレスのハッシュ。一般的に、クライアントは[Gravatar](http://en.gravatar.com/site/implement/hash/)を使用してこのイメージを表示しています。 |
 | `MessageKey`       | 文字列           | Blob              |  _（省略可）_ 暗号化されたメッセージをこのアカウントに送信するための公開鍵です。キーを設定するには、正確に33バイトである必要があり、最初のバイトはキーの種類を示します。secp256k1鍵の場合は`0x02`または`0x03`、Ed25519鍵の場合は`0xED`です。キーを削除するには、空の値を使用します。 |
 | `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md)ことができる別のアカウント。 _([NonFungibleTokensV1_1 amendment][]により追加されました.)_ |

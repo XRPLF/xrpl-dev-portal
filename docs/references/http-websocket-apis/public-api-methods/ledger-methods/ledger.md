@@ -7,7 +7,7 @@ labels:
   - Blockchain
 ---
 # ledger
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/LedgerHandler.cpp "Source")
 
 Retrieve information about the public [ledger](../../../../concepts/ledgers/index.md).
 

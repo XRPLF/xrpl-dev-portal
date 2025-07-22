@@ -51,7 +51,7 @@ function getTokenName(currencyCode) {
             return text_code;
         }
         // Other hex format, return as-is.
-        // For parsing other rare formats, see https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/normalize-currency-codes/js/normalize-currency-code.js
+        // For parsing other rare formats, see https://github.com/XRPLF/xrpl-dev-portal/blob/master/_code-samples/normalize-currency-codes/js/normalize-currency-code.js
         return currencyCode;
     }
     return "";

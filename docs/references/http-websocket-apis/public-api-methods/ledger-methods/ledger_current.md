@@ -7,7 +7,7 @@ labels:
   - Blockchain
 ---
 # ledger_current
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/LedgerCurrent.cpp "Source")
 
 The `ledger_current` method returns the unique identifiers of the current in-progress [ledger](../../../../concepts/ledgers/index.md). This command is mostly useful for testing, because the ledger returned is still in flux.
 

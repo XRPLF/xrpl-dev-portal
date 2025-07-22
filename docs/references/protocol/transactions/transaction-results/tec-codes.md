@@ -7,7 +7,7 @@ labels:
   - Transaction Sending
 ---
 # tec Codes
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TER.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/TER.cpp "Source")
 
 These codes indicate that the transaction did not succeed, but it was applied to a ledger to apply the [transaction cost](../../../../concepts/transactions/transaction-cost.md) and may have had other side effects to the ledger. The `tec` codes have numerical values in the range 100 to 199. It is recommended to use the text code, not the numeric value.
 

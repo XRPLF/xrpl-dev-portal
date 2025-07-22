@@ -5,7 +5,7 @@ labels:
   - Escrow
 ---
 # Escrow
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L329-L342 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L344-L359 "Source")
 
 An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds XRP until specific conditions are met. You can create an escrow by sending an [EscrowCreate transaction][].
 

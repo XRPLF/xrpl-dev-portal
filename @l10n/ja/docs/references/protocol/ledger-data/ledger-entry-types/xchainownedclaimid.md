@@ -10,7 +10,7 @@ status: not_enabled
 # XChainOwnedClaimID
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
-[[ソース]](https://github.com/seelabs/rippled/blob/xbridge/src/ripple/protocol/impl/LedgerFormats.cpp#L281-L293 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L274-L284 "ソース")
 
 `XChainOwnedClaimID`オブジェクトはクロスチェーンでの価値の移転の*1つ*を表し、送金元チェーン上の資金をロックまたはバーンする送金元チェーン上のアカウントの情報を含みます。
 

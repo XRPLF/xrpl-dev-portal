@@ -9,7 +9,7 @@ labels:
 ---
 # tx
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Tx.cpp "Source")
 
 `tx`メソッドは1つのトランザクションに関する情報を取得します。
 

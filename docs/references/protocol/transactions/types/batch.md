@@ -6,7 +6,7 @@ labels:
 status: not_enabled
 ---
 # Batch
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Batch.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Batch.cpp "Source")
 
 The `Batch` transaction submits up to eight transactions as a single unit. `Batch` transactions are executed atomically in one of four modes: All or Nothing, Only One, Until Failure, and Independent.
 

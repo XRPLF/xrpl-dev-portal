@@ -8,7 +8,7 @@ labels:
   - XRP
 ---
 # AccountRoot
-[[ソース]](https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L147-L170 "Source")
 
 `AccountRoot`オブジェクトタイプは、1つの[アカウント](../../../../concepts/accounts/index.md)、そのアカウントの設定、XRP残高を記述します。
 
@@ -44,7 +44,7 @@ labels:
 | `AMMID`                       | 文字列    | UInt256           | いいえ | _([AMM amendment][]により追加されました。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
 | `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](../../../../concepts/tokens/nfts/index.md) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
-| `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
+| `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/SetAccount.h#L34) |
 | `EmailHash`                   | 文字列    | Hash128           | いいえ | メールアドレスのmd5ハッシュ。クライアントはこれを使用してサービス内で[Gravatar](https://ja.gravatar.com/)などのアバターを検索できます。 |
 | [`Flags`](#accountrootのフラグ) | 数値     | UInt32            | はい   | このアカウントに対して有効になっているブールフラグのビットマップ。 |
 | `LedgerEntryType`             | 文字列    | UInt16            | はい   | 値`0x0061`で文字列`AccountRoot`にマッピングされ、AccountRootオブジェクトであることを示します。 |

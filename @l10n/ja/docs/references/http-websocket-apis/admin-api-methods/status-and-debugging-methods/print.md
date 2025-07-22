@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # print
-[[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Print.cpp "Source")
 
 `print`コマンドは、さまざまな内部サブシステム（ピア、レジャークリーナー、リソースマネージャーなど）の現在の状況を返します。
 

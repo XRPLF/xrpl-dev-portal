@@ -8,7 +8,7 @@ labels:
   - Accounts
 ---
 # account_tx
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/AccountTx.cpp "Source")
 
 The `account_tx` method retrieves a list of validated transactions that involve a given account.
 

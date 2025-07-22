@@ -7,7 +7,7 @@ labels:
 ---
 
 # MPTokenAuthorize
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "ソース")
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
 

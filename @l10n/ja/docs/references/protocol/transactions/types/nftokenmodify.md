@@ -7,7 +7,7 @@ title:
   - NFTokenModify
 ---
 # NFTokenModify
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenModify.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/NFTokenModify.cpp "ソース")
 
 `NFTokenModify`は、NFTの`URI`フィールドを別のURIに変更し、NFTのサポートデータを更新するために使用されます。NFTは、`tfMutable`フラグが設定された状態でミントされている必要があります。[ダイナミックNFT](../../../../concepts/tokens/nfts/dynamic-nfts.md)をご覧ください。
 

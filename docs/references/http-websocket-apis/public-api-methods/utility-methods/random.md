@@ -8,7 +8,7 @@ labels:
 ---
 # random
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Random.cpp "Source")
 
 The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
 

@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # fetch_info
-[[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/FetchInfo.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/FetchInfo.cpp "Source")
 
 `fetch_info`コマンドは、このサーバが現在ネットワークからフェッチしているオブジェクトに関する情報と、その情報を所有しているピアの数を返します。これは現在の取得操作をリセットする場合にも使用できます。
 

@@ -104,7 +104,7 @@ const xrpl = require("xrpl")
     await client.connect()
     ```
 
-    デフォルト値の詳細については、[コアサーバ設定ファイル](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562)の例をご覧ください。
+    デフォルト値の詳細については、[コアサーバ設定ファイル](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg#L1423)の例をご覧ください。
 
 * 利用可能な[公開サーバ][]を利用する:
 

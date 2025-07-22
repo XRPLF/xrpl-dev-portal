@@ -6,7 +6,7 @@ labels:
   - XRP
 ---
 # AccountRoot
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L136-L158 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L147-L170 "Source")
 
 An `AccountRoot` ledger entry type describes a single [account](../../../../concepts/accounts/index.md), its settings, and XRP balance. You can create a new account by sending a [Payment transaction][] with enough XRP to a mathematically-valid address.
 

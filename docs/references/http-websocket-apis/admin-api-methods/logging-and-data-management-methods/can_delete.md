@@ -7,7 +7,7 @@ labels:
   - Data Retention
 ---
 # can_delete
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/CanDelete.cpp "Source")
 
 The `can_delete` method informs the `rippled` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](../../../../infrastructure/configuration/data-retention/online-deletion.md#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
 

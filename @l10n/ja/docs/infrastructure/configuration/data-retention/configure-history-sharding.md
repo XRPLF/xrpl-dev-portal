@@ -46,7 +46,7 @@ max_size_gb=50
 
 {% admonition type="warning" name="注意" %}`rippled`がシャードストアーパスで不適切なデータを検出すると、[起動できない](../../troubleshooting/server-wont-start.md)可能性があります。シャードストアーには新しいフォルダーを使用する必要があります。以前にRocksDBシャードストアー（`rippled` 1.2.x以前）を使用していた場合は、別のパスを使用するか、RocksDBシャードデータを削除します。{% /admonition %}
 
-詳細は、[rippled.cfgの設定例](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)の`[shard_db]`の例をご覧ください。
+詳細は、[rippled.cfgの設定例](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg)の`[shard_db]`の例をご覧ください。
 
 ## 3. サーバの再起動
 

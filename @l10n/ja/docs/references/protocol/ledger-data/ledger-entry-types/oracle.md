@@ -2,7 +2,7 @@
 
 _([PriceOracle Amendment][])_
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L353-L366 "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L385-L395 "ソース")
 
 Oracleのレジャーエントリには、単一資産の価格オラクルオブジェクトに関連するデータが格納されています。
 

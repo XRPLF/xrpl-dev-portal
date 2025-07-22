@@ -6,7 +6,7 @@ labels:
 ---
 # AccountSet
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/SetAccount.cpp "Source")
 
 An AccountSet transaction modifies the properties of an [account in the XRP Ledger](../../ledger-data/ledger-entry-types/accountroot.md).
 

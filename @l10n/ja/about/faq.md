@@ -134,7 +134,7 @@ Rippleは Ledgerネットワーク全体のAMLフラグを監視・報告し、�
 
 #### サードパーティにより提供されたコードは審査プロセスはどのようになっていますか？
 
-コードへの貢献のプロセスは、開発者が[`rippled`リポジトリ](https://github.com/xrplf/rippled/)のようなソースコードリポジトリに[プルリクエスト](https://docs.github.com/ja/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)を行うことから始まります。
+コードへの貢献のプロセスは、開発者が[`rippled`リポジトリ](https://github.com/XRPLF/rippled/)のようなソースコードリポジトリに[プルリクエスト](https://docs.github.com/ja/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)を行うことから始まります。
 
 このプルリクエストは、自動化された単体テストと統合テスト、そしてプルリクエストが影響するコード領域で重要な専門知識を持つ複数の開発者によりコードレビューが行われます。
 
@@ -145,7 +145,7 @@ Rippleは Ledgerネットワーク全体のAMLフラグを監視・報告し、�
 
 いいえ、RippleはXRP LedgerまたはXRP Ledgerネットワークを所有も管理もしていません。
 
-Rippleは、コアとなるXRP Ledgerサーバ（[`rippled`](https://github.com/xrplf/rippled)）のリファレンス実装へ貢献し、オープンソースコードベースに貢献しているエンジニアチームを雇用しています。Rippleはまた、利用可能なソフトウェアのプリコンパイル済みバイナリーパッケージを定期的に公開しています。必要に応じて、誰でも自由に[ソースからソフトウェアをダウンロードしてコンパイル](../docs/infrastructure/installation/index.md)できます。
+Rippleは、コアとなるXRP Ledgerサーバ（[`rippled`](https://github.com/XRPLF/rippled)）のリファレンス実装へ貢献し、オープンソースコードベースに貢献しているエンジニアチームを雇用しています。Rippleはまた、利用可能なソフトウェアのプリコンパイル済みバイナリーパッケージを定期的に公開しています。必要に応じて、誰でも自由に[ソースからソフトウェアをダウンロードしてコンパイル](../docs/infrastructure/installation/index.md)できます。
 
 いくつかの団体が推奨バリデータリスト（UNL）を公開しています。2023年7月現在、RippleはデフォルトのUNLにある35のバリデータのうち1つのみを実行しています。
 

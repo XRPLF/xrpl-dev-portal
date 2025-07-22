@@ -8,7 +8,7 @@ labels:
   - トークン
 ---
 # ripple_path_find
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/RipplePathFind.cpp "Source")
 
 `ripple_path_find`メソッドは、[path_findメソッド][]のシンプルなバージョンであり、すぐに利用できる[ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)を含む1つのレスポンスを返します。WebSocket APIとJSON-RPC APIの両方で使用できます。ただし、結果は時間の経過とともに古くなる傾向にあります。最新の状態を維持するために複数のコールを実行する代わりに、可能な場合には[path_findメソッド][]を使用して、継続的な更新をサブスクライブします。
 

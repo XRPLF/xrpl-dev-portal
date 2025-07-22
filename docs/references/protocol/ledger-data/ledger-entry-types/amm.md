@@ -5,7 +5,7 @@ labels:
   - AMM
 ---
 # AMM
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L369-L380 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L386-L397 "Source")
 
 An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-entries). You can create an AMM by sending an [AMMCreate transaction][].
 

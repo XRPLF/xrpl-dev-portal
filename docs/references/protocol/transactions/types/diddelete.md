@@ -8,7 +8,7 @@ labels:
 ---
 # DIDDelete
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/DID.cpp "Source")
 
 Delete the [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) associated with the specified `Account` field.
 

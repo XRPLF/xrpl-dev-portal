@@ -7,7 +7,7 @@ labels:
   - Escrow
 ---
 # Escrow
-[[ソース]](https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L344-L359 "Source")
 
 _（[Escrow Amendment][]により追加されました。）_
 

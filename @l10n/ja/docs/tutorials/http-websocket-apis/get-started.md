@@ -30,7 +30,7 @@ JSON-RPCとWebSocketはどちらもHTTPベースのプロトコルであり、�
 
 `rippled`サーバの[管理メソッド](../../references/http-websocket-apis/admin-api-methods/index.md)を使用するには、次のように行います。この場合、サーバのバインド用として設定したIPアドレスとポートを使用する必要があります（例えば`127.0.0.1:54321`）。また、管理機能にアクセスするには、構成ファイルで**管理用としてマークされているポートおよびIPアドレス**から接続しなければなりません。
 
-[構成ファイルの例](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
+[構成ファイルの例](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg#L1414-L1448)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
 
 ## WebSocket API

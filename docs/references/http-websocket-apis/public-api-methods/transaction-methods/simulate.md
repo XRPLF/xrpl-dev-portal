@@ -5,7 +5,7 @@ labels:
   - Transaction Sending
 ---
 # simulate
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Simulate.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Simulate.cpp "Source")
 
 The `simulate` method executes a dry run of _any_ transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger. Since this command never submits a transaction to the network, it doesn't incur any fees.
 

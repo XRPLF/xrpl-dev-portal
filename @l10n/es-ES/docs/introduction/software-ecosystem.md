@@ -24,7 +24,7 @@ El XRP Ledger alberga un ecosistema profundo de varias capas de proyectos de sof
 
 ### Servidores principales
 
-La red peer-to-peer en el corazón del XRP Ledger requiere de un servidor altamente confiable y eficiente para hacer cumplir las reglas de consenso y el procesamiento de las transacciones. La Fundación XRP Ledger publica una implementación de referencia de este software de sevidor, llamada [**`rippled`**](../concepts/networks-and-servers/index.md) (pronunciado en inglés como  "ripple-dee"). El servidor está disponible bajo [una licencia permisiva de código abierto](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md), por lo que cualquiera puede inspeccionar y modificar su propia instancia del servidor, y volver a publicar con pocas restricciones.
+La red peer-to-peer en el corazón del XRP Ledger requiere de un servidor altamente confiable y eficiente para hacer cumplir las reglas de consenso y el procesamiento de las transacciones. La Fundación XRP Ledger publica una implementación de referencia de este software de sevidor, llamada [**`rippled`**](../concepts/networks-and-servers/index.md) (pronunciado en inglés como  "ripple-dee"). El servidor está disponible bajo [una licencia permisiva de código abierto](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/LICENSE.md), por lo que cualquiera puede inspeccionar y modificar su propia instancia del servidor, y volver a publicar con pocas restricciones.
 
 ![Servidores principales](/docs/img/ecosystem-peer-to-peer.svg)
 

@@ -8,7 +8,7 @@ labels:
   - データ保持
 ---
 # account_objects
-[[ソース]](https://github.com/XRPLF/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/AccountObjects.cpp "Source")
 
 `account_objects`コマンドは、アカウントが所有するすべてのレジャーエントリの生[レジャーフォーマット][]を返します。アカウントのトラストラインと残高の概要については、[account_linesメソッド][]をご覧ください。
 

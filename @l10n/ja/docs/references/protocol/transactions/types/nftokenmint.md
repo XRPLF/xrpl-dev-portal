@@ -5,7 +5,7 @@ labels:
   - 非代替性トークン, NFT
 ---
 # NFTokenMint
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
 
 `NFTokenMint`トランザクションは非代替性トークンを作成し、`NFTokenMinter`に紐付く[NFTokenPageオブジェクト][]に[NFToken][]オブジェクトとして追加します。このトランザクションは`NFTokenMinter`にとって、不変と定義されているトークンフィールド(例えば`Flags`)を設定することができる唯一の方法です。
 

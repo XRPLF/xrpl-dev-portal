@@ -8,7 +8,7 @@ labels:
 # OracleDelete
 _([PriceOracle Amendment][])_
 
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteOracle.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/DeleteOracle.cpp "ソース")
 
 既存の`Oracle`レジャーエントリを削除します。
 

@@ -7,7 +7,7 @@ labels:
   - 手数料
 ---
 # FeeSettings
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L312-L324 "Source")
 
 `FeeSettings`オブジェク
 トタイプには、現在の基本[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)と、[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)により決定する[準備金の額](../../../../concepts/accounts/reserves.md)が含まれています。各レジャーバージョンには**最大で1つの** `FeeSettings`オブジェクトが含まれています。

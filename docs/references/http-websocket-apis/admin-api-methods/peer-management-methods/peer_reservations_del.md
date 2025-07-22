@@ -7,7 +7,7 @@ labels:
   - Core Server
 ---
 # peer_reservations_del
-[[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Reservations.cpp#L89 "Source")
 
 The {% code-page-name /%} method removes a specific [peer reservation][], if one exists.
 

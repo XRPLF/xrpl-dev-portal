@@ -7,7 +7,7 @@ labels:
   - コアサーバ
 ---
 # server_info (rippled)
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/ServerInfo.cpp "Source")
 
 `server_info`コマンドは、問い合わせ中の`rippled`サーバについての各種情報を、人間が読めるフォーマットでサーバにリクエストします。[Clioサーバ](../../../../concepts/networks-and-servers/the-clio-server.md)については、[`server_info` (Clio)](../clio-methods/server_info-clio.md)をご覧ください。
 

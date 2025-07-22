@@ -8,7 +8,7 @@ labels:
   - Blockchain
 ---
 # validators
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/Validators.cpp "Source")
 
 The `validators` command returns human readable information about the current list of published and [trusted validators](../../../../concepts/consensus-protocol/index.md#trust-based-validation) used by the server.
 

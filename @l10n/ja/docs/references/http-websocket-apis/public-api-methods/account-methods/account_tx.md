@@ -8,7 +8,7 @@ labels:
   - 支払い
 ---
 # account_tx
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/AccountTx.cpp "Source")
 
 `account_tx`メソッドは、指定したアカウントに関連するトランザクションのリストを取得します。
 

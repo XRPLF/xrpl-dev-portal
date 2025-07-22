@@ -7,7 +7,7 @@ labels:
   - ブロックチェーン
 ---
 # LedgerHashes
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L104-L108 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L215-L219 "Source")
 
 （レジャーバージョンを一意に示す[「ledger hash」文字列データ型][ハッシュ]と混同しないでください。このセクションでは、`LedgerHashes`レジャーオブジェクトタイプについて説明します。）
 
@@ -65,7 +65,7 @@ labels:
 「過去の履歴」`LedgerHashes`オブジェクトは[スキップリスト](https://en.wikipedia.org/wiki/Skip_list)として機能するので、任意の履歴フラッグレジャーのハッシュをそのインデックスから取得できます。さらに、フラッグレジャーの「最近の履歴」オブジェクトを使用してその他のレジャーのハッシュを取得できます。
 
 ## LedgerHashes IDのフォーマット
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/Indexes.cpp#L26-L42)
 
 `LedgerHashes`オブジェクトIDには2種類のフォーマットがあります。これは、オブジェクトのサブタイプが「最近の履歴」と「過去の履歴」のいずれであるかに応じて決まります。
 

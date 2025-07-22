@@ -6,7 +6,7 @@ labels:
   - セキュリティ
 ---
 # deposit_authorized
-[[ソース]](https://github.com/XRPLF/rippled/blob/817d2339b8632cb2f97d3edd6f7af33aa7631744/src/ripple/rpc/handlers/DepositAuthorized.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/DepositAuthorized.cpp "Source")
 
 `deposit_authorized`コマンドは、あるアカウントに別のアカウントへ支払を直接送金する権限があるかどうかを示します。アカウントへの送金に承認を義務付ける方法については、[Deposit Authorization](../../../../concepts/accounts/depositauth.md)をご覧ください。
 

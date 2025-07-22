@@ -15,7 +15,7 @@ curated_anchors:
     anchor: "#タイプリスト"
 ---
 # バイナリフォーマット
-[[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h "Source")
 
 このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、[サーバ間のピアツーピア通信](../../concepts/networks-and-servers/peer-protocol.md)を含む他の用途にも使用されます。通常、[`rippled` API](../http-websocket-apis/index.md)は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。
 
@@ -55,7 +55,7 @@ curated_anchors:
 
 ここで説明するシリアル化プロセスは複数の場所にさまざまなプログラミング言語で実装されています。
 
-- C++: [`rippled`コードベース](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp)
+- C++: [`rippled`コードベース](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/STObject.cpp)
 - JavaScript: [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/)パッケージ
 - Python 3: {% repo-link path="_code-samples/tx-serialization/" %}このリポジトリのコードサンプルセクション{% /repo-link %}
 
@@ -65,7 +65,7 @@ curated_anchors:
 
 ## 内部フォーマット
 
-各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、`rippled`ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、[`SField.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/SField.cpp)のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）[トランザクションフォーマットリファレンス](transactions/index.md)にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。
+各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、`rippled`ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、[`SField.cpp`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/SField.cpp)のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）[トランザクションフォーマットリファレンス](transactions/index.md)にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。
 
 たとえば`Flags`[共通トランザクションフィールド](transactions/common-fields.md)はUInt32（32ビット符号なし整数）になります。
 
@@ -99,8 +99,8 @@ curated_anchors:
 
 ### フィールドID
 
-[[ソース - エンコード]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L117-L148 "Source")
-[[ソース - デコード]](https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L484-L509 "Source")
+[[ソース - エンコード]](https://github.com/XRPLF/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L117-L148 "Source")
+[[ソース - デコード]](https://github.com/XRPLF/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L484-L509 "Source")
 
 フィールドのタイプコードとフィールドコードを結合すると、フィールドの一意のIDになります。このIDは、最終的なシリアル化Blobでこのフィールドの前に付加されます。フィールドIDのサイズは、タイプコードとその結合対象のフィールドコードに応じて1～3バイトとなります。以下の表をご覧ください。
 
@@ -155,17 +155,17 @@ curated_anchors:
 
 ### タイプコード
 
-各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは[`SField.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L60-L98)で定義されています。
+各フィールドタイプには任意のタイプコードが含まれており、番号が小さいコードから最初にソートされます。これらのコードは[`SField.h`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h#L60-L98)で定義されています。
 
-たとえば [UInt32のタイプコードが2である](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L67)ので、すべてのUInt32フィールドは、すべての[Amountフィールド（タイプコード6）](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/SField.h#L71)よりも前に位置します。
+たとえば [UInt32のタイプコードが2である](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h#L67)ので、すべてのUInt32フィールドは、すべての[Amountフィールド（タイプコード6）](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/SField.h#L71)よりも前に位置します。
 
 [定義ファイル](#定義ファイル)には、`TYPES`マップの各タイプのタイプコードがリストされています。
 
 ### フィールドコード
 
-各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは[`sfields/macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro)で定義されています。
+各フィールドにはフィールドコードが含まれています。フィールドコードは、同じタイプのフィールドをソートするときに使用され、番号が小さいコードが最初になるようにソートされます。これらのフィールドは[`sfields/macro`](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/sfields.macro)で定義されています。
 
-たとえば[Paymentトランザクション][]の`Account`フィールドの[ソートコードが1である](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L269)場合、このフィールドは`Destination`フィールド（[ソートコードが3である](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/sfields.macro#L271)フィールド）よりも前に位置します。
+たとえば[Paymentトランザクション][]の`Account`フィールドの[ソートコードが1である](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/sfields.macro#L269)場合、このフィールドは`Destination`フィールド（[ソートコードが3である](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/sfields.macro#L271)フィールド）よりも前に位置します。
 
 フィールドコードは異なるフィールドタイプのフィールドで再利用されますが、同じタイプのフィールドに同じフィールドコードが含まれることはありません。タイプコードとフィールドコードを組み合わせると、フィールドの一意の[フィールドID](#フィールドid)になります。
 
@@ -239,7 +239,7 @@ curated_anchors:
 [{% inline-svg file="/docs/img/serialization-amount.ja.svg" /%}](/docs/img/serialization-amount.ja.svg "「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成されるトークンの額。")
 
 #### トークンの数量フォーマット
-[[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/libxrpl/protocol/STAmount.cpp "ソース")
 
 [{% inline-svg file="/docs/img/currency-number-format.ja.svg" /%}](/docs/img/currency-number-format.ja.svg "トークンの数量フォーマットの図")
 
@@ -328,12 +328,12 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 
 クロスカレンシーの[Paymentトランザクション][]の`Paths`フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、[パス](../../concepts/tokens/fungible-tokens/paths.md)をご覧ください。
 
-PathSetは、**1～6**の個別パスとして順序どおりにシリアル化されます[[ソース]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36 "Source")。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。
+PathSetは、**1～6**の個別パスとして順序どおりにシリアル化されます[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Payment.h#L29-L30 "Source")。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。
 
 - `0xff`は別のパスが続くことを示します。
 - `0x00`はPathSetの終わりを示します。
 
-各パスには**1～8**のパスステップがこの順序で含まれています[[ソース]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L38-L39 "Source")。各ステップは**タイプ**を示すバイトで始まり、その後にパスステップを記述する1つ以上のフィールドが続きます。タイプは、ビット単位のフラグを使用してそのパスステップに含まれるフィールドを示します。（たとえば値が`0x30`の場合、通貨とイシュアーの両方が変更されます。）複数のフィールドが含まれている場合、フィールドは常に特定の順序で配置されます。
+各パスには**1～8**のパスステップがこの順序で含まれています[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Payment.h#L38-L39 "Source")。各ステップは**タイプ**を示すバイトで始まり、その後にパスステップを記述する1つ以上のフィールドが続きます。タイプは、ビット単位のフラグを使用してそのパスステップに含まれるフィールドを示します。（たとえば値が`0x30`の場合、通貨とイシュアーの両方が変更されます。）複数のフィールドが含まれている場合、フィールドは常に特定の順序で配置されます。
 
 以下の表に、有効なフィールドと、タイプバイトでフィールドを示すために設定されるビット単位のフラグを示します。
 

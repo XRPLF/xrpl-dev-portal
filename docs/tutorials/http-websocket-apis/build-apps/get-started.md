@@ -30,7 +30,7 @@ Both APIs can be served unencrypted (`http://` and `ws://`) or encrypted using T
 
 The API methods are divided into [Public Methods](../../../references/http-websocket-apis/public-api-methods/index.md) and [Admin Methods](../../../references/http-websocket-apis/admin-api-methods/index.md) so that organizations can offer public servers for the benefit of the community. To access admin methods, or admin functionality of public methods, you must connect to the API on a **port and IP address marked as admin** in the server's config file.
 
-The [example config file](https://github.com/XRPLF/rippled/blob/f00f263852c472938bf8e993e26c7f96f435935c/cfg/rippled-example.cfg#L1154-L1179) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
+The [example config file](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/cfg/rippled-example.cfg#L1414-L1448) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
 
 ## WebSocket API

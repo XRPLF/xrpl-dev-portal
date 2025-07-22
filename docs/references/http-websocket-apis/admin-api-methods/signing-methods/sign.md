@@ -7,7 +7,7 @@ labels:
   - Transaction Sending
 ---
 # sign
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/rpc/handlers/SignHandler.cpp "Source")
 
 The `sign` method takes a [transaction in JSON format](../../../protocol/transactions/index.md) and a [seed value](../../../../concepts/accounts/cryptographic-keys.md), and returns a signed binary representation of the transaction. To contribute one signature to a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md), use the [sign_for method][] instead.
 

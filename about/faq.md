@@ -126,7 +126,7 @@ Ripple is committed to monitoring and reporting any AML flags across the XRP Led
 
 #### What is the process for reviewing third-party code contributions?
 
-The code contribution process starts with a developer opening a [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to a source code repository such as the [`rippled` repository](https://github.com/xrplf/rippled/), which contains Ripple's reference implementation of the core XRP Ledger server and protocol.
+The code contribution process starts with a developer opening a [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to a source code repository such as the [`rippled` repository](https://github.com/XRPLF/rippled/), which contains Ripple's reference implementation of the core XRP Ledger server and protocol.
 
 This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request affects.
 
@@ -137,7 +137,7 @@ Once the pull request passes automated tests and receives approvals from reviewe
 
 No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
 
-Ripple contributes to a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/xrplf/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can [download and compile the software from source](../docs/infrastructure/installation/index.md).
+Ripple contributes to a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/XRPLF/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can [download and compile the software from source](../docs/infrastructure/installation/index.md).
 
 Several entities publish recommended validator lists (UNLs). As of July 2023, Ripple runs only 1 of the 35 validators in the default UNL.
 

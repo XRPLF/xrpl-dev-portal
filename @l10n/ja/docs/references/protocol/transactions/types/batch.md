@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # Batch
-[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Batch.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/src/xrpld/app/tx/detail/Batch.cpp "Source")
 
 `Batch`トランザクションは、最大8つのトランザクションを単一のバッチで送信します。各トランザクションは、4つのモード(全て成功または全て失敗（All or Nothing）、一つのみ成功（Only One）、失敗まで継続（Until Failure）、および独立実行（Independent）)のいずれかでアトミックに実行されます。
 
