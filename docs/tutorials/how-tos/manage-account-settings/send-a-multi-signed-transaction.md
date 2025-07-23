@@ -25,6 +25,9 @@ Keep in mind that the `Fee` for multi-signed transactions is significantly highe
 
 Here's an example transaction ready to be multi-signed:
 
+{% tabs %}
+
+{% tab label="JSON" %}
 ```json
 {
     "TransactionType": "TrustSet",
@@ -42,7 +45,17 @@ Here's an example transaction ready to be multi-signed:
 ```
 
 (This transaction creates an accounting relationship from `rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC` to `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` with a maximum balance of 100 USD.)
+{% /tab %}
 
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/multisigning/js/multisigning.ts" language="js" from="const accountSet: AccountSet = {" before="const { tx_blob" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/multisigning/py/multisigning.py" language="py" from="account_set_tx = AccountSet" before="# Since" /%}
+{% /tab %}
+
+{% /tabs %}
 
 ## 2. Get one signature
 
@@ -185,6 +198,9 @@ If you collected the signatures in serial, the `tx_json` from the last `sign_for
 
 If you collected the signatures in parallel, you must manually construct a `tx_json` object with all the signatures included. Take the `Signers` arrays from all the `sign_for` responses, and combine their contents into a single `Signers` array that has each signature. Add the combined `Signers` array to the original transaction JSON value, and use that as the argument to the [submit_multisigned method][].
 
+{% tabs %}
+
+{% tab label="Commandline" %}
 ```
 $ rippled submit_multisigned '{
 >              "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -256,9 +272,18 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-
 Take note of the `hash` value from the response so you can check the results of the transaction later.  (In this case, the hash is `BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6`.)
+{% /tab %}
 
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/multisigning/js/multisigning.ts" language="js" from="const { tx_blob" before="if (submitResponse" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/multisigning/py/multisigning.py" language="py" from="tx_1 =" before="if multisigned_tx_response" /%}
+{% /tab %}
+
+{% /tabs %}
 
 ## 5. Close the ledger
 
@@ -278,7 +303,6 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-
 ## 6. Confirm transaction results
 
 Use the hash value from the response to the `submit_multisigned` command to look up the transaction using the [tx method][]. In particular, check that the `TransactionResult` is the string `tesSUCCESS`.
@@ -287,6 +311,9 @@ On the live network, you must also confirm that the `validated` field is set to 
 
 In stand-alone mode, the server automatically considers a ledger to be `validated` if it has been manually closed.
 
+{% tabs %}
+
+{% tab label="Commandline" %}
 ```
 $ rippled tx BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6
 Loading: "/etc/opt/ripple/rippled.cfg"
@@ -399,5 +426,17 @@ Connecting to 127.0.0.1:5005
     }
 }
 ```
+{% /tab %}
+
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/multisigning/js/multisigning.ts" language="js" from="if (submitResponse" before="await client.disconnect" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/multisigning/py/multisigning.py" language="py" from="if multisigned_tx_response" /%}
+{% /tab %}
+
+{% /tabs %}
+
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
