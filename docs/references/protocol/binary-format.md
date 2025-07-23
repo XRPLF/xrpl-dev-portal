@@ -338,7 +338,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
 
 ### Object Fields
-[STObject]: #object-fields
+[Object]: #object-fields
 
 Some fields, such as `SignerEntry` (in [SignerListSet transactions][]), and `Memo` (in `Memos` arrays) are objects (called the "STObject" type). The serialization of objects is very similar to that of arrays, with one difference: **object members must be placed in canonical order** within the object field, where array fields have an explicit order already.
 
