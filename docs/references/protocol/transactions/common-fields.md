@@ -62,43 +62,14 @@ The [`Paths` field](types/payment.md#paths) of the [Payment transaction][] type 
 
 ## Delegate
 
-The `Delegate` ledger object stores a set of permissions that an XRPL account has delegated to another account. You create `Delegate` objects using the [`DelegateSet`](./types/delegateset.md) transaction.
+If the `Delegate` field is provided, this transaction is being sent by a different account on behalf of the account in the `Account` field. The account in the `Account` is the _delegating account_ and the account in the `Delegate` field is the _delegate_ account. The transaction functions as if it was sent by the delegating account, with the following exceptions:
 
-### Structure
+- The signature must be valid for the delegate account. (It can by signed with a master key, regular key, or multi-signing list that is authorized by the delegate.)
+- The transaction cost (in the `Fee` field) is paid by the delegate account.
 
-A `Delegate` object has the following fields:
+Sending a transaction this way is only possible if the delegating account has granted the appropriate transaction permissions to the delegate account.
 
-| Field Name | Required? | JSON Type | Internal Type | Description |
-|------------|-----------|-----------|---------------|-------------|
-| `LedgerIndex` |  ✔️ | string | Hash256 | The unique ID of the ledger object. |
-| `LedgerEntryType` | ✔️ | string | UInt16 | The ledger object's type (`Delegate`) |
-| `Account` | ✔️ | string | AccountID | The account that delegates permissions to another account. |
-| `Authorize` | ✔️ | string | AccountID | The account to which permissions are delegated. |
-| `Permissions` | ✔️ | string | STArray | The transaction permissions that the `Authorize` account has been granted. |
-| `OwnerNode` | ✔️ | string | UInt64 | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
-| `PreviousTxnID` | ✔️ | string | Hash256 | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeqNumber`| ✔️ | number | UInt32 |The index of the ledger that contains the transaction that most recently modified this object. |
-
-### Retrieving Delegate Objects
-
-You can retrieve `Delegate` ledger objects using the `ledger_entry` RPC method. The unique ID of a `Delegate` object is a hash of the `Account` and `Authorize` fields, combined with the unique space key for Delegate objects.
-
-### Account Deletion
-
-A `Delegate` object is not a deletion blocker. This means that deleting an account removes any `Delegate` objects associated with it.
-
-### Example Delegate JSON
-
-This sample `Delegate` object shows that the _rISAAC_ account has delegated `TrustLineAuthorize` permission to the _rKYLIE_ account.
-
-```json
-{
-    "LedgerEntryType": "Delegate",
-    "Account": "rISAAC......",
-    "Authorize": "rKYLIE......",
-    "Permissions": [{"Permission": {"PermissionValue": "TrustlineAuthorize"}}],
-}
-``` 
+_(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
 
 ## Flags Field
 

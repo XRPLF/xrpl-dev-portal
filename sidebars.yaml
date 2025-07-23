@@ -350,6 +350,7 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/bridge.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/check.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/credential.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/delegate.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/depositpreauth.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/did.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
