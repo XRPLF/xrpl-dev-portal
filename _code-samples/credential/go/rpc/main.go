@@ -1,109 +1,109 @@
 package main
 
 import (
-	"encoding/hex"
-	"fmt"
-	"time"
+    "encoding/hex"
+    "fmt"
+    "time"
 
-	"github.com/Peersyst/xrpl-go/examples/clients"
-	"github.com/Peersyst/xrpl-go/pkg/crypto"
-	rippleTime "github.com/Peersyst/xrpl-go/xrpl/time"
-	"github.com/Peersyst/xrpl-go/xrpl/transaction"
-	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+    "github.com/Peersyst/xrpl-go/examples/clients"
+    "github.com/Peersyst/xrpl-go/pkg/crypto"
+    rippleTime "github.com/Peersyst/xrpl-go/xrpl/time"
+    "github.com/Peersyst/xrpl-go/xrpl/transaction"
+    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+    "github.com/Peersyst/xrpl-go/xrpl/wallet"
 )
 
 func main() {
-	// As of February 2025, Credential is only available on Devnet.
-	client := clients.GetDevnetRpcClient()
+    // As of February 2025, Credential is only available on Devnet.
+    client := clients.GetDevnetRpcClient()
 
-	// Configure wallets
+    // Configure wallets
 
-	// Issuer
-	fmt.Println("⏳ Setting up credential issuer wallet...")
-	issuer, err := wallet.New(crypto.ED25519())
-	if err != nil {
-		fmt.Printf("❌ Error creating issuer wallet: %s\n", err)
-		return
-	}
+    // Issuer
+    fmt.Println("⏳ Setting up credential issuer wallet...")
+    issuer, err := wallet.New(crypto.ED25519())
+    if err != nil {
+        fmt.Printf("❌ Error creating issuer wallet: %s\n", err)
+        return
+    }
 
-	err = client.FundWallet(&issuer)
-	if err != nil {
-		fmt.Printf("❌ Error funding issuer wallet: %s\n", err)
-		return
-	}
-	fmt.Printf("✅ Issuer wallet funded: %s\n", issuer.ClassicAddress)
+    err = client.FundWallet(&issuer)
+    if err != nil {
+        fmt.Printf("❌ Error funding issuer wallet: %s\n", err)
+        return
+    }
+    fmt.Printf("✅ Issuer wallet funded: %s\n", issuer.ClassicAddress)
 
-	// -----------------------------------------------------
+    // -----------------------------------------------------
 
-	// Subject (destination)
-	fmt.Println("⏳ Setting up Subject wallet...")
-	subjectWallet, err := wallet.New(crypto.ED25519())
-	if err != nil {
-		fmt.Printf("❌ Error creating subject wallet: %s\n", err)
-		return
-	}
+    // Subject (destination)
+    fmt.Println("⏳ Setting up Subject wallet...")
+    subjectWallet, err := wallet.New(crypto.ED25519())
+    if err != nil {
+        fmt.Printf("❌ Error creating subject wallet: %s\n", err)
+        return
+    }
 
-	err = client.FundWallet(&subjectWallet)
-	if err != nil {
-		fmt.Printf("❌ Error funding subject wallet: %s\n", err)
-		return
-	}
-	fmt.Printf("✅ Subject wallet funded: %s\n", subjectWallet.ClassicAddress)
+    err = client.FundWallet(&subjectWallet)
+    if err != nil {
+        fmt.Printf("❌ Error funding subject wallet: %s\n", err)
+        return
+    }
+    fmt.Printf("✅ Subject wallet funded: %s\n", subjectWallet.ClassicAddress)
 
-	// -----------------------------------------------------
+    // -----------------------------------------------------
 
-	// Creating the CredentialCreate transaction
-	fmt.Println("⏳ Creating CredentialCreate transaction...")
+    // Creating the CredentialCreate transaction
+    fmt.Println("⏳ Creating CredentialCreate transaction...")
 
-	expiration, err := rippleTime.IsoTimeToRippleTime(time.Now().Add(time.Hour * 24).Format(time.RFC3339))
-	credentialType := types.CredentialType("6D795F63726564656E7469616C")
+    expiration, err := rippleTime.IsoTimeToRippleTime(time.Now().Add(time.Hour * 24).Format(time.RFC3339))
+    credentialType := types.CredentialType("6D795F63726564656E7469616C")
 
-	if err != nil {
-		fmt.Printf("❌ Error converting expiration to ripple time: %s\n", err)
-		return
-	}
+    if err != nil {
+        fmt.Printf("❌ Error converting expiration to ripple time: %s\n", err)
+        return
+    }
 
-	txn := &transaction.CredentialCreate{
-		BaseTx: transaction.BaseTx{
-			Account: types.Address(issuer.ClassicAddress),
-		},
-		CredentialType: credentialType,
-		Subject:        types.Address(subjectWallet.ClassicAddress),
-		Expiration:     uint32(expiration),
-		URI:            hex.EncodeToString([]byte("https://example.com")),
-	}
+    txn := &transaction.CredentialCreate{
+        BaseTx: transaction.BaseTx{
+            Account: types.Address(issuer.ClassicAddress),
+        },
+        CredentialType: credentialType,
+        Subject:        types.Address(subjectWallet.ClassicAddress),
+        Expiration:     uint32(expiration),
+        URI:            hex.EncodeToString([]byte("https://example.com")),
+    }
 
-	clients.SubmitTxBlobAndWait(client, txn, issuer)
+    clients.SubmitTxBlobAndWait(client, txn, issuer)
 
-	// -----------------------------------------------------
+    // -----------------------------------------------------
 
-	// Creating the CredentialAccept transaction
-	fmt.Println("⏳ Creating CredentialAccept transaction...")
+    // Creating the CredentialAccept transaction
+    fmt.Println("⏳ Creating CredentialAccept transaction...")
 
-	acceptTxn := &transaction.CredentialAccept{
-		BaseTx: transaction.BaseTx{
-			Account: types.Address(subjectWallet.ClassicAddress),
-		},
-		CredentialType: credentialType,
-		Issuer:         types.Address(issuer.ClassicAddress),
-	}
+    acceptTxn := &transaction.CredentialAccept{
+        BaseTx: transaction.BaseTx{
+            Account: types.Address(subjectWallet.ClassicAddress),
+        },
+        CredentialType: credentialType,
+        Issuer:         types.Address(issuer.ClassicAddress),
+    }
 
-	clients.SubmitTxBlobAndWait(client, acceptTxn, subjectWallet)
+    clients.SubmitTxBlobAndWait(client, acceptTxn, subjectWallet)
 
-	// -----------------------------------------------------
+    // -----------------------------------------------------
 
-	// Creating the CredentialDelete transaction
-	fmt.Println("⏳ Creating CredentialDelete transaction...")
+    // Creating the CredentialDelete transaction
+    fmt.Println("⏳ Creating CredentialDelete transaction...")
 
-	deleteTxn := &transaction.CredentialDelete{
-		BaseTx: transaction.BaseTx{
-			Account: types.Address(issuer.ClassicAddress),
-		},
-		CredentialType: credentialType,
-		Issuer:         types.Address(issuer.ClassicAddress),
-		Subject:        types.Address(subjectWallet.ClassicAddress),
-	}
+    deleteTxn := &transaction.CredentialDelete{
+        BaseTx: transaction.BaseTx{
+            Account: types.Address(issuer.ClassicAddress),
+        },
+        CredentialType: credentialType,
+        Issuer:         types.Address(issuer.ClassicAddress),
+        Subject:        types.Address(subjectWallet.ClassicAddress),
+    }
 
-	clients.SubmitTxBlobAndWait(client, deleteTxn, issuer)
+    clients.SubmitTxBlobAndWait(client, deleteTxn, issuer)
 }
