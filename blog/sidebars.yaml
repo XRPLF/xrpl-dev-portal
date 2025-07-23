@@ -7,6 +7,7 @@
       expanded: false
       items:
         - page: 2025/frii-pay-xrpl-case-study-crypto-payment-solution.md
+        - page: 2025/rippled-2.5.0.md
         - page: 2025/fixes-enabled-dnfts-expected.md
         - page: 2025/clio-2.4.1.md
         - page: 2025/integrating-dia-oracles-on-xrpl.md

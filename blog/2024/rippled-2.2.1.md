@@ -33,7 +33,6 @@ On supported platforms, see the [instructions on installing or updating `rippled
 |:--------|:--------|
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.1-1.el7.x86_64.rpm) | `32312c90ac4c685f11b168c5b9ec75aee8f4b2d7bef5dc11b42232679d0cd1f4` |
 | [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.1-1_amd64.deb) | `f696e6898ad64e73d75bb9a1f50fb325b9675b168ffaeeacfce53fbd9e35bbee` |
-| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 

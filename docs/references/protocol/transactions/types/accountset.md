@@ -30,16 +30,18 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 
 | Field            | JSON Type        | [Internal Type][] | Description        |
 |:-----------------|:-----------------|:------------------|:-------------------|
-| [`ClearFlag`](#accountset-flags) | Number | UInt32      | _(Optional)_ Unique identifier of a flag to disable for this account. |
-| [`Domain`](#domain) | String        | Blob              | _(Optional)_ The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
-| `EmailHash`      | String           | Hash128           | _(Optional)_ An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a [Gravatar](http://en.gravatar.com/site/implement/hash/) image. |
-| `MessageKey`     | String           | Blob              | _(Optional)_ Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value. |
-| `NFTokenMinter`  | String           | Blob              | _(Optional)_ Another account that can [mint NFTokens for you](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md). _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
-| [`SetFlag`](#accountset-flags) | Number | UInt32        | _(Optional)_ Integer flag to enable for this account. |
-| [`TransferRate`](#transferrate) | Number | UInt32       | _(Optional)_ The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
+| [`ClearFlag`](#accountset-flags) | Number | UInt32      | Unique identifier of a flag to disable for this account. |
+| [`Domain`](#domain) | String        | Blob              | The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
+| `EmailHash`      | String           | UInt128           | An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a [Gravatar](http://en.gravatar.com/site/implement/hash/) image. |
+| `MessageKey`     | String           | Blob              | Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value. |
+| `NFTokenMinter`  | String - [Address][] | AccountID     | Another account that can [mint NFTokens for you](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md). _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
+| [`SetFlag`](#accountset-flags) | Number | UInt32        | Integer flag to enable for this account. |
+| [`TransferRate`](#transferrate) | Number | UInt32       | The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
 | [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md) | Number | UInt8            | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. _(Added by the [TickSize amendment][])_ |
-| `WalletLocator`    | String           | Hash256           | _(Optional)_ An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements. |
-| `WalletSize`       | Number           | UInt32            | _(Optional)_ Not used. This field is valid in AccountSet transactions but does nothing. |
+| `WalletLocator`    | String           | UInt256         | An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements. |
+| `WalletSize`       | Number           | UInt32          | Not used. This field is valid in AccountSet transactions but does nothing. |
+
+(All fields are optional.)
 
 If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See [Cancel or Skip a Transaction](../../../../concepts/transactions/finality-of-results/canceling-a-transaction.md) for more details.
 
@@ -68,23 +70,43 @@ All flags are disabled by default.
 
 The available AccountSet flags are:
 
-| Flag Name                         | Decimal Value | Corresponding Ledger Flag         | Description   |
-|:----------------------------------|:--------------|:----------------------------------|:--------------|
-| `asfAccountTxnID`                 | 5             | (None)                            | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](../common-fields.md#accounttxnid) |
-| `asfAllowTrustLineClawback`                | 16            | `lsfAllowTrustlineClawback`       | Allow account to claw back tokens it has issued. _(Requires the Clawback amendment.)_ Can only be set if the account has an empty owner directory (no trust lines, offers, escrows, payment channels, checks, or signer lists). After you set this flag, it cannot be reverted. The account permanently gains the ability to claw back issued assets on trust lines. |
-| `asfAuthorizedNFTokenMinter`      | 10            | (None)                            | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md) object. To remove an authorized minter, enable this flag and omit the `NFTokenMinter` field. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
-| `asfDefaultRipple`                | 8             | `lsfDefaultRipple`                | Enable [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on this account's trust lines by default. |
-| `asfDepositAuth`                  | 9             | `lsfDepositAuth`                  | Enable [Deposit Authorization](../../../../concepts/accounts/depositauth.md) on this account. _(Added by the [DepositAuth amendment][].)_ |
-| `asfDisableMaster`                | 4             | `lsfDisableMaster`                | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) or a [Signer List](../../../../concepts/accounts/multi-signing.md). |
-| `asfDisallowIncomingCheck`        | 13            | `lsfDisallowIncomingCheck`        | Block incoming Checks. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowIncomingNFTokenOffer` | 12            | `lsfDisallowIncomingNFTokenOffer` | Block incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowIncomingPayChan`      | 14            | `lsfDisallowIncomingPayChan`      | Block incoming Payment Channels. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowIncomingTrustline`    | 15            | `lsfDisallowIncomingTrustline`    | Block incoming trust lines. _(Requires the [DisallowIncoming amendment][].)_ |
-| `asfDisallowXRP`                  | 3             | `lsfDisallowXRP`                  | XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.) |
-| `asfGlobalFreeze`                 | 7             | `lsfGlobalFreeze`                 | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) all assets issued by this account. |
-| `asfNoFreeze`                     | 6             | `lsfNoFreeze`                     | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). This flag can never be disabled after being enabled. |
-| `asfRequireAuth`                  | 2             | `lsfRequireAuth`                  | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
-| `asfRequireDest`                  | 1             | `lsfRequireDestTag`               | Require a destination tag to send transactions to this account. |
+| Flag Name                         | Decimal Value | Description   |
+|:----------------------------------|:--------------|:--------------|
+| `asfAccountTxnID`                 | 5             | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](../common-fields.md#accounttxnid) |
+| `asfAllowTrustLineClawback`       | 16            | Allow account to claw back tokens it has issued. _(Requires the Clawback amendment.)_ Can only be set if the account has an empty owner directory (no trust lines, offers, escrows, payment channels, checks, or signer lists). After you set this flag, it cannot be reverted. The account permanently gains the ability to claw back issued assets on trust lines. |
+| `asfAuthorizedNFTokenMinter`      | 10            | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md) object. To remove an authorized minter, enable this flag and omit the `NFTokenMinter` field. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
+| `asfDefaultRipple`                | 8             | Enable [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on this account's trust lines by default. |
+| `asfDepositAuth`                  | 9             | Enable [Deposit Authorization](../../../../concepts/accounts/depositauth.md) on this account. _(Added by the [DepositAuth amendment][].)_ |
+| `asfDisableMaster`                | 4             | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) or a [Signer List](../../../../concepts/accounts/multi-signing.md). |
+| `asfDisallowIncomingCheck`        | 13            | Block incoming Checks. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowIncomingNFTokenOffer` | 12            | Block incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowIncomingPayChan`      | 14            | Block incoming Payment Channels. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowIncomingTrustline`    | 15            | Block incoming trust lines. _(Requires the [DisallowIncoming amendment][].)_ |
+| `asfDisallowXRP`                  | 3             | XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.) |
+| `asfGlobalFreeze`                 | 7             | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) all assets issued by this account. |
+| `asfNoFreeze`                     | 6             | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). This flag can never be disabled after being enabled. |
+| `asfRequireAuth`                  | 2             | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
+| `asfRequireDest`                  | 1             | Require a destination tag to send transactions to this account. |
+
+For reference, here are the corresponding ledger flags for each AccountSet flag:
+
+| AccountSet Flag Name              | Corresponding Ledger Flag         |
+|:----------------------------------|:----------------------------------|
+| `asfAccountTxnID`                 | (None)                            |
+| `asfAllowTrustLineClawback`       | `lsfAllowTrustlineClawback`       |
+| `asfAuthorizedNFTokenMinter`      | (None)                            |
+| `asfDefaultRipple`                | `lsfDefaultRipple`                |
+| `asfDepositAuth`                  | `lsfDepositAuth`                  |
+| `asfDisableMaster`                | `lsfDisableMaster`                |
+| `asfDisallowIncomingCheck`        | `lsfDisallowIncomingCheck`        |
+| `asfDisallowIncomingNFTokenOffer` | `lsfDisallowIncomingNFTokenOffer` |
+| `asfDisallowIncomingPayChan`      | `lsfDisallowIncomingPayChan`      |
+| `asfDisallowIncomingTrustline`    | `lsfDisallowIncomingTrustline`    |
+| `asfDisallowXRP`                  | `lsfDisallowXRP`                  |
+| `asfGlobalFreeze`                 | `lsfGlobalFreeze`                 |
+| `asfNoFreeze`                     | `lsfNoFreeze`                     |
+| `asfRequireAuth`                  | `lsfRequireAuth`                  |
+| `asfRequireDest`                  | `lsfRequireDestTag`               |
 
 To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the transaction](../../../../concepts/transactions/index.md#authorizing-transactions) by signing it with the master key pair. You cannot use a regular key pair or a multi-signature. You can disable `asfDisableMaster` (that is, re-enable the master key pair) using a regular key pair or multi-signature.
 

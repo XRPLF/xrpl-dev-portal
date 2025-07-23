@@ -8,7 +8,7 @@ labels:
 ---
 # Install Clio on Ubuntu Linux
 
-This page describes the recommended instructions for installing the latest stable version of Clio on **Ubuntu Linux 20.04 or higher** using the [`apt`](https://ubuntu.com/server/docs) utility.
+This page describes the recommended instructions for installing the latest stable version of Clio on **Ubuntu Linux 22.04 or higher** using the [`apt`](https://ubuntu.com/server/docs) utility.
 
 These instructions install an Ubuntu package that has been compiled and published by Ripple. You can also:
 
@@ -93,11 +93,11 @@ Before you install Clio, you must meet the following requirements.
 5. Add the appropriate Ripple repository for your operating system version:
 
     ```
-    echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
+    echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb noble stable" | \
         sudo tee -a /etc/apt/sources.list.d/ripple.list
     ```
 
-    The above example is appropriate for **Ubuntu 20.04 Focal Fossa**.
+    The above example is appropriate for **Ubuntu 24.04 Noble Numbat**.
 
     If you want access to development or pre-release versions, use one of the following instead of `stable`:
 

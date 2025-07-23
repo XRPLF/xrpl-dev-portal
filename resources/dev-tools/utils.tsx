@@ -10,14 +10,14 @@ export function timeout(ms: number): Promise<void> {
 }
 
 // Displaying transaction data
-export function errorNotif(alert: any, msg: string): void {
-    console.log(msg)
-    alert.error(msg)
+export function errorNotif(alert: (message: string, type?: string) => void, msg: string): void {
+  console.log(msg)
+  alert(msg, 'error');
 }
 
-export function successNotif(alert: any, msg: string): void {
+export function successNotif(alert: (message: string, type?: string) => void, msg: string): void {
     console.log(msg)
-    alert.show(msg, { type: 'success' })
+    alert(msg, 'success')
 }
 
 export function logTx(txName: string, hash: string, finalResult: string, setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>) {
@@ -43,7 +43,7 @@ export interface SubmitConstData {
     client: Client, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
     setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>,
-    alert: any,
+    alert: (message: string, type?: string) => void
 }
 
 export async function submitAndUpdateUI(

@@ -11,7 +11,7 @@ labels:
 
 このページでは、CentOSまたはRed Hat Enterprise Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.md)を設定することが推奨されます。
 
-以下の手順は、[`rippled`がすでに`yum`リポジトリからインストール](install-rippled-on-centos-rhel-with-yum.md)されていることを前提としています。
+以下の手順は、[`rippled`がすでに`yum`リポジトリからインストール](install-rippled-on-rhel.md)されていることを前提としています。
 
 {% admonition type="success" name="ヒント" %}これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。このスクリプトは`sudo`ユーザとして実行する必要があります。{% /admonition %}
 

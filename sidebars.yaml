@@ -76,6 +76,7 @@
         - page: docs/concepts/transactions/index.md
           expanded: false
           items:
+            - page: docs/concepts/transactions/batch-transactions.md
             - page: docs/concepts/transactions/fees.md
             - page: docs/concepts/transactions/reliable-transaction-submission.md
             - page: docs/concepts/transactions/secure-signing.md
@@ -149,6 +150,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/ticksize.md
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
+                - page: docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:
@@ -161,6 +163,7 @@
             - page: docs/concepts/accounts/multi-signing.md
             - page: docs/concepts/accounts/depositauth.md
             - page: docs/concepts/accounts/tickets.md
+            - page: docs/concepts/accounts/permission-delegation.md
         - page: docs/concepts/xrpl-sidechains/index.md
           expanded: false
           items:
@@ -383,6 +386,7 @@
                     - page: docs/references/protocol/transactions/types/ammdeposit.md
                     - page: docs/references/protocol/transactions/types/ammvote.md
                     - page: docs/references/protocol/transactions/types/ammwithdraw.md
+                    - page: docs/references/protocol/transactions/types/batch.md
                     - page: docs/references/protocol/transactions/types/credentialaccept.md
                     - page: docs/references/protocol/transactions/types/credentialcreate.md
                     - page: docs/references/protocol/transactions/types/credentialdelete.md
@@ -391,6 +395,7 @@
                     - page: docs/references/protocol/transactions/types/checkcreate.md
                     - page: docs/references/protocol/transactions/types/clawback.md
                     - page: docs/references/protocol/transactions/types/depositpreauth.md
+                    - page: docs/references/protocol/transactions/types/delegateset.md
                     - page: docs/references/protocol/transactions/types/diddelete.md
                     - page: docs/references/protocol/transactions/types/didset.md
                     - page: docs/references/protocol/transactions/types/escrowcancel.md
@@ -624,16 +629,14 @@
           expanded: false
           items:
             - page: docs/infrastructure/installation/system-requirements.md
-            - page: docs/infrastructure/installation/install-rippled-on-centos-rhel-with-yum.md
+            - page: docs/infrastructure/installation/install-rippled-on-rhel.md
             - page: docs/infrastructure/installation/install-rippled-on-ubuntu.md
             - page: docs/infrastructure/installation/install-clio-on-ubuntu.md
             - page: docs/infrastructure/installation/update-rippled-automatically-on-linux.md
-            - page: docs/infrastructure/installation/update-rippled-manually-on-centos-rhel.md
+            - page: docs/infrastructure/installation/update-rippled-manually-on-rhel.md
             - page: docs/infrastructure/installation/update-rippled-manually-on-ubuntu.md
             - page: docs/infrastructure/installation/build-on-linux-mac-windows.md
-            - page: docs/infrastructure/installation/build-run-rippled-in-reporting-mode.md
             - page: docs/infrastructure/installation/capacity-planning.md
-            - page: docs/infrastructure/installation/rippled-1-3-migration-instructions.md
         - page: docs/infrastructure/configuration/index.md
           expanded: false
           items:
@@ -694,7 +697,7 @@
       labelTranslationKey: sidebar.resources.codesamples
       page: resources/code-samples.page.tsx
     - group: Dev Tools
-      labelTranslationKey: sidebar.resources.dev-tools
+      groupTranslationKey: sidebar.resources.dev-tools
       page: resources/dev-tools/index.page.tsx
       expanded: false
       items:

@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>40</x>
-      <y>270</y>
+      <y>560</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
@@ -16,7 +16,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>70</x>
-      <y>270</y>
+      <y>560</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
@@ -27,7 +27,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>100</x>
-      <y>270</y>
+      <y>560</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -38,7 +38,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>260</x>
-      <y>270</y>
+      <y>560</y>
       <w>190</w>
       <h>30</h>
     </coordinates>
@@ -49,7 +49,7 @@
     <id>Relation</id>
     <coordinates>
       <x>70</x>
-      <y>290</y>
+      <y>580</y>
       <w>50</w>
       <h>60</h>
     </coordinates>
@@ -60,7 +60,7 @@
     <id>Text</id>
     <coordinates>
       <x>100</x>
-      <y>320</y>
+      <y>610</y>
       <w>260</w>
       <h>30</h>
     </coordinates>
@@ -72,12 +72,12 @@ style=wordwrap</panel_attributes>
     <id>Text</id>
     <coordinates>
       <x>80</x>
-      <y>350</y>
+      <y>640</y>
       <w>160</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>"Not XRP" bit
-(0=XRP, 1=not XRP)
+    <panel_attributes>Amount type bit
+(0=XRP or MPT, 1=fungible token)
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -85,7 +85,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>40</x>
-      <y>290</y>
+      <y>580</y>
       <w>50</w>
       <h>90</h>
     </coordinates>
@@ -96,7 +96,7 @@ style=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>460</x>
-      <y>270</y>
+      <y>560</y>
       <w>200</w>
       <h>30</h>
     </coordinates>
@@ -107,18 +107,18 @@ style=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>670</x>
-      <y>270</y>
-      <w>200</w>
+      <y>560</y>
+      <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>issuer AccountID (160 bits)</panel_attributes>
+    <panel_attributes>issuer's AccountID (160 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>40</x>
-      <y>510</y>
+      <y>800</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
@@ -129,7 +129,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>40</x>
-      <y>520</y>
+      <y>810</y>
       <w>60</w>
       <h>70</h>
     </coordinates>
@@ -140,7 +140,7 @@ style=wordwrap</panel_attributes>
     <id>Text</id>
     <coordinates>
       <x>80</x>
-      <y>560</y>
+      <y>850</y>
       <w>300</w>
       <h>40</h>
     </coordinates>
@@ -152,29 +152,29 @@ style=wordwrap</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>70</x>
-      <y>510</y>
+      <y>800</y>
       <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Reserved (88 bits)</panel_attributes>
+    <panel_attributes>reserved (88 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>460</x>
-      <y>510</y>
+      <y>800</y>
       <w>180</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Reserved (40 bits)</panel_attributes>
+    <panel_attributes>reserved (40 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>300</x>
-      <y>510</y>
+      <y>800</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -185,7 +185,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>310</x>
-      <y>530</y>
+      <y>820</y>
       <w>40</w>
       <h>50</h>
     </coordinates>
@@ -196,7 +196,7 @@ style=wordwrap</panel_attributes>
     <id>Text</id>
     <coordinates>
       <x>330</x>
-      <y>550</y>
+      <y>840</y>
       <w>130</w>
       <h>30</h>
     </coordinates>
@@ -207,7 +207,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>20</x>
-      <y>290</y>
+      <y>580</y>
       <w>460</w>
       <h>230</h>
     </coordinates>
@@ -218,7 +218,7 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>640</x>
-      <y>290</y>
+      <y>580</y>
       <w>40</w>
       <h>230</h>
     </coordinates>
@@ -228,7 +228,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
+      <x>30</x>
       <y>60</y>
       <w>20</w>
       <h>30</h>
@@ -239,7 +239,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>70</x>
+      <x>60</x>
       <y>60</y>
       <w>20</w>
       <h>30</h>
@@ -250,8 +250,189 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
+      <x>90</x>
+      <y>120</y>
+      <w>260</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Sign bit (always 1 for positive)
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>80</y>
+      <w>50</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;30.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>70</x>
+      <y>140</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Amount type bit
+(0=XRP or MPT, 1=fungible token)
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>30</x>
+      <y>80</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;40.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>60</y>
+      <w>510</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>integer drops (61 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>50</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>190</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*XRP Amount Format*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>30</x>
+      <y>520</y>
+      <w>310</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Fungible Token Amount Format*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>550</y>
+      <w>870</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>90</x>
+      <y>760</y>
+      <w>240</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Standard Currency Code Format</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>790</y>
+      <w>620</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>20</x>
+      <y>240</y>
+      <w>190</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*MPT Amount Format*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>270</y>
+      <w>670</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>280</y>
+      <w>20</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>80</x>
+      <y>380</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Amount type bit
+(0=XRP or MPT, 1=fungible token)
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>300</y>
+      <w>60</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;40.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
       <x>100</x>
-      <y>110</y>
+      <y>350</y>
       <w>260</w>
       <h>30</h>
     </coordinates>
@@ -263,7 +444,52 @@ style=wordwrap</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>70</x>
-      <y>80</y>
+      <y>300</y>
+      <w>50</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;30.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>280</y>
+      <w>20</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>280</y>
+      <w>20</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>130</x>
+      <y>330</y>
+      <w>260</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>MPT indicator bit (1=MPT, 0=XRP)
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>100</x>
+      <y>300</y>
       <w>50</w>
       <h>60</h>
     </coordinates>
@@ -271,104 +497,136 @@ style=wordwrap</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;30.0;40.0</additional_attributes>
   </element>
   <element>
-    <id>Text</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>140</y>
-      <w>160</w>
-      <h>60</h>
+      <x>90</x>
+      <y>60</y>
+      <w>20</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>"Not XRP" bit
-(0=XRP, 1=not XRP)
-style=wordwrap</panel_attributes>
+    <panel_attributes>0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>40</x>
+      <x>90</x>
       <y>80</y>
       <w>50</w>
-      <h>90</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;30.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;30.0;30.0</additional_attributes>
   </element>
   <element>
-    <id>UMLClass</id>
+    <id>Text</id>
     <coordinates>
-      <x>100</x>
-      <y>60</y>
-      <w>540</w>
+      <x>120</x>
+      <y>100</y>
+      <w>260</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>integer drops (62 bits)</panel_attributes>
+    <panel_attributes>MPT indicator bit (1=MPT, 0=XRP)
+style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>30</x>
-      <y>50</y>
-      <w>620</w>
+      <x>130</x>
+      <y>280</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>reserved (5 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>280</y>
+      <w>190</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>integer quantity (64 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>280</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>MPT issuance ID (192 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>390</y>
+      <w>510</w>
       <h>50</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
   </element>
   <element>
-    <id>Text</id>
+    <id>Relation</id>
     <coordinates>
-      <x>30</x>
-      <y>20</y>
-      <w>160</w>
+      <x>380</x>
+      <y>300</y>
+      <w>120</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;90.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>300</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>190.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>400</y>
+      <w>210</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>XRP Amount Format</panel_attributes>
+    <panel_attributes>Sequence number (32 bits)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>400</y>
+      <w>270</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>issuer's AccountID (160 bits)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>30</x>
-      <y>230</y>
+      <x>430</x>
+      <y>360</y>
       <w>240</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Token Amount Format</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>30</x>
-      <y>260</y>
-      <w>850</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>90</x>
-      <y>470</y>
-      <w>240</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Standard Currency Code Format</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>30</x>
-      <y>500</y>
-      <w>620</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes/>
+    <panel_attributes>MPT Issuance ID Format</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

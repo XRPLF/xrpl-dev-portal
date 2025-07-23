@@ -10,11 +10,11 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")
 
-_(Requires the [DID amendment][])_
-
 Delete the [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) associated with the specified `Account` field.
 
 {% admonition type="info" name="Note" %}This transaction only uses the [common fields][].{% /admonition %}
+
+_(Added by the [DID amendment][].)_
 
 
 ## Example {% $frontmatter.seo.title %} JSON

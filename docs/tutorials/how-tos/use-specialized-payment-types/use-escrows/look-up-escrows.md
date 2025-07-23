@@ -15,29 +15,27 @@ All pending escrows are stored in the ledger as [Escrow objects](../../../../con
 
 Use the [account_objects method][], where the sender or destination address is the `account` value.
 
-Request:
-
 {% tabs %}
 
 {% tab label="Websocket" %}
+Request:
 {% code-snippet file="/_api-examples/escrow/websocket/account_objects-request.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
-
-The response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`, where the sender address is the `Account` value, or the destination address is the `Destination` value.
 
 Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
 {% code-snippet file="/_api-examples/escrow/websocket/account_objects-response.json" language="json" /%}
+
+The response includes all pending escrow objects with `rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`, where the sender address is the `Account` value, or the destination address is the `Destination` value.
+{% /tab %}
+
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/escrow/js/list-escrows.js" language="js" from="const response" before="client.disconnect" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/escrow/py/account_escrows.py" language="py"  from="req =" /%}
 {% /tab %}
 
 {% /tabs %}
-
-
 
 ## See Also
 

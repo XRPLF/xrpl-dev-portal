@@ -10,26 +10,27 @@ labels:
 
 Every transaction has the same set of common fields, plus additional fields based on the [transaction type](types/index.md). Field names are case-sensitive. The common fields for all transactions are:
 
-| Field                | JSON Type        | [Internal Type][] | Description      |
-|:---------------------|:-----------------|:------------------|:-----------------|
-| `Account`            | String           | AccountID         | _(Required)_ The unique address of the [account](../../../concepts/accounts/index.md) that initiated the transaction. |
-| `TransactionType`    | String           | UInt16            | _(Required)_ The type of transaction. Valid [transaction types](types/index.md) include: `Payment`, `OfferCreate`, `TrustSet`, and many others. |
-| `Fee`                | String           | Amount            | _(Required; [auto-fillable][])_ Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements. See [Transaction Cost][] for details. |
-| `Sequence`           | Number           | UInt32            | _(Required; [auto-fillable][])_ The [sequence number](../data-types/basic-data-types.md#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](../../../concepts/accounts/tickets.md) instead _(Added by the [TicketBatch amendment][].)_. |
-| [`AccountTxnID`](#accounttxnid) | String | Hash256          | _(Optional)_ Hash value identifying another transaction. If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
-| [`Flags`](#flags-field) | Number        | UInt32            | _(Optional)_ Set of bit-flags for this transaction. |
-| `LastLedgerSequence` | Number           | UInt32            | _(Optional; strongly recommended)_ Highest ledger index this transaction can appear in. Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected. See [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md) for more details. |
-| [`Memos`](#memos-field) | Array of Objects | Array          | _(Optional)_ Additional arbitrary information used to identify this transaction. |
-| [`NetworkID`](#networkid-field) | Number | UInt32           | _(Network-specific)_ The network ID of the chain this transaction is intended for. **MUST BE OMITTED** for Mainnet and some test networks. **REQUIRED** on chains whose network ID is 1025 or higher. |
-| [`Signers`](#signers-field) | Array     | Array             | _(Optional)_ Array of objects that represent a [multi-signature](../../../concepts/accounts/multi-signing.md) which authorizes this transaction. |
-| `SourceTag`        | Number             | UInt32            | _(Optional)_ Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
-| `SigningPubKey`    | String           | Blob              | _(Automatically added when signing)_ Hex representation of the public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
-| `TicketSequence`   | Number           | UInt32            | _(Optional)_ The sequence number of the [ticket](../../../concepts/accounts/tickets.md) to use in place of a `Sequence` number. If this is provided, `Sequence` must be `0`. Cannot be used with `AccountTxnID`. |
-| `TxnSignature`     | String           | Blob              | _(Automatically added when signing)_ The signature that verifies this transaction as originating from the account it says it is from. |
+| Field                | JSON Type            | [Internal Type][] | Required? | Description |
+|:---------------------|:---------------------|:------------------|:----------|:------------|
+| `Account`            | String - [Address][] | AccountID         | Yes       | The [account](../../../concepts/accounts/index.md) that initiated the transaction. |
+| `TransactionType`    | String               | UInt16            | Yes       | The type of transaction. Valid [transaction types](types/index.md) include: `Payment`, `OfferCreate`, `TrustSet`, and many others. |
+| `Fee`                | String - Number      | Amount            | Yes; [auto-fillable][] | Integer amount of XRP, in drops, to be destroyed as a cost for sending this transaction. Some transaction types have different minimum requirements. See [Transaction Cost][] for details. |
+| `Sequence`           | Number               | UInt32            | Yes; [auto-fillable][] | The [sequence number](../data-types/basic-data-types.md#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](../../../concepts/accounts/tickets.md) instead _(Added by the [TicketBatch amendment][].)_. |
+| [`AccountTxnID`](#accounttxnid) | String - [Hash][] | UInt256   | No        | Hash value identifying another transaction. If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
+| [`Delegate`](#delegate) | String - [Address][] | AccountID      | No        | A delegate account that is sending the transaction on behalf of the `Account`. _(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_ |
+| [`Flags`](#flags-field) | Number            | UInt32            | No        | Set of bit-flags for this transaction. |
+| `LastLedgerSequence` | Number               | UInt32            | No; [auto-fillable][] | Highest ledger index this transaction can appear in. Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected. See [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md) for more details. |
+| [`Memos`](#memos-field) | Array of Objects  | Array             | No        | Additional arbitrary information attached to this transaction. |
+| [`NetworkID`](#networkid-field) | Number    | UInt32            | _Network-specific_ | The network ID of the chain this transaction is intended for. **MUST BE OMITTED** for Mainnet and some test networks. **REQUIRED** on chains whose network ID is 1025 or higher. |
+| [`Signers`](#signers-field) | Array         | Array             | No        | Array of objects that represent a [multi-signature](../../../concepts/accounts/multi-signing.md) which authorizes this transaction. |
+| `SourceTag`        | Number                 | UInt32            | No        | Arbitrary integer used to identify the reason for this payment, or a sender on whose behalf this transaction is made. Conventionally, a refund should specify the initial payment's `SourceTag` as the refund payment's `DestinationTag`. |
+| `SigningPubKey`    | String - Hexadecimal   | Blob              | _Automatically added when signing_ | The public key that corresponds to the private key used to sign this transaction. If an empty string, indicates a multi-signature is present in the `Signers` field instead. |
+| `TicketSequence`   | Number                 | UInt32            | No        | The sequence number of the [ticket](../../../concepts/accounts/tickets.md) to use in place of a `Sequence` number. If this is provided, `Sequence` must be `0`. Cannot be used with `AccountTxnID`. |
+| `TxnSignature`     | String - Hexadecimal   | Blob              | _Automatically added when signing_ | The signature that verifies this transaction as originating from the account it says it is from. |
 
 [auto-fillable]: #auto-fillable-fields
 
-{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" %}Removed in: rippled 0.28.0{% /badge %}: The `PreviousTxnID` field of transactions was replaced by the [`AccountTxnID`](#accounttxnid) field. This String / Hash256 field is present in some historical transactions. This is unrelated to the field also named `PreviousTxnID` in some [ledger objects](../ledger-data/index.md).
+{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" %}Removed in: rippled 0.28.0{% /badge %}: The `PreviousTxnID` field of transactions was replaced by the [`AccountTxnID`](#accounttxnid) field. This String / UInt256 field is present in some historical transactions. This is unrelated to the field also named `PreviousTxnID` in some [ledger objects](../ledger-data/index.md).
 
 
 ## AccountTxnID
@@ -45,14 +46,13 @@ One situation in which this is useful is if you have a primary system for submit
 The `AccountTxnID` field cannot be used on transactions that use [Tickets](../../../concepts/accounts/tickets.md). Transactions that use `AccountTxnID` cannot be placed in the [transaction queue](../../../concepts/transactions/transaction-queue.md).
 
 
-
 ## Auto-fillable Fields
 
 Some fields can be automatically filled in before a transaction is signed, either by a `rippled` server or by a [client library](../../client-libraries.md). Auto-filling values requires an active connection to the XRP Ledger to get the latest state, so it cannot be done offline. The details can vary by library, but auto-filling always provides suitable values for at least the following fields:
 
 * `Fee` - Automatically fill in the [Transaction Cost][] based on the network.
 
-    {% admonition type="info" name="Note" %}When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_div_max` parameters.){% /admonition %}
+    {% admonition type="info" name="Note" %}When using `rippled`'s [sign command][], you can limit the maximum possible auto-filled value, using the `fee_mult_max` and `fee_div_max` parameters.{% /admonition %}
 
 * `Sequence` - Automatically use the next sequence number for the account sending the transaction.
 
@@ -60,6 +60,45 @@ For a production system, we recommend _not_ leaving these fields to be filled by
 
 The [`Paths` field](types/payment.md#paths) of the [Payment transaction][] type can also be automatically filled in.
 
+## Delegate
+
+The `Delegate` ledger object stores a set of permissions that an XRPL account has delegated to another account. You create `Delegate` objects using the [`DelegateSet`](./types/delegateset.md) transaction.
+
+### Structure
+
+A `Delegate` object has the following fields:
+
+| Field Name | Required? | JSON Type | Internal Type | Description |
+|------------|-----------|-----------|---------------|-------------|
+| `LedgerIndex` |  ✔️ | string | Hash256 | The unique ID of the ledger object. |
+| `LedgerEntryType` | ✔️ | string | UInt16 | The ledger object's type (`Delegate`) |
+| `Account` | ✔️ | string | AccountID | The account that delegates permissions to another account. |
+| `Authorize` | ✔️ | string | AccountID | The account to which permissions are delegated. |
+| `Permissions` | ✔️ | string | STArray | The transaction permissions that the `Authorize` account has been granted. |
+| `OwnerNode` | ✔️ | string | UInt64 | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
+| `PreviousTxnID` | ✔️ | string | Hash256 | The identifying hash of the transaction that most recently modified this object. |
+| `PreviousTxnLgrSeqNumber`| ✔️ | number | UInt32 |The index of the ledger that contains the transaction that most recently modified this object. |
+
+### Retrieving Delegate Objects
+
+You can retrieve `Delegate` ledger objects using the `ledger_entry` RPC method. The unique ID of a `Delegate` object is a hash of the `Account` and `Authorize` fields, combined with the unique space key for Delegate objects.
+
+### Account Deletion
+
+A `Delegate` object is not a deletion blocker. This means that deleting an account removes any `Delegate` objects associated with it.
+
+### Example Delegate JSON
+
+This sample `Delegate` object shows that the _rISAAC_ account has delegated `TrustLineAuthorize` permission to the _rKYLIE_ account.
+
+```json
+{
+    "LedgerEntryType": "Delegate",
+    "Account": "rISAAC......",
+    "Authorize": "rKYLIE......",
+    "Permissions": [{"Permission": {"PermissionValue": "TrustlineAuthorize"}}],
+}
+``` 
 
 ## Flags Field
 
@@ -73,11 +112,12 @@ Bits that are not defined as flags MUST be 0. (The [fix1543 amendment][] enforce
 
 ### Global Flags
 
-The only flag that applies globally to all transactions is as follows:
+The only flags that apply globally to all transactions are as follows:
 
 | Flag Name             | Hex Value  | Decimal Value | Description               |
 |:----------------------|:-----------|:--------------|:--------------------------|
 | `tfFullyCanonicalSig` | `0x80000000` | 2147483648  | **DEPRECATED** No effect. (If the [RequireFullyCanonicalSig amendment][] is not enabled, this flag enforces a [fully-canonical signature](../../../concepts/transactions/finality-of-results/transaction-malleability.md#alternate-secp256k1-signatures).) |
+| `tfInnerBatchTxn`	| `0x40000000` | 1073741824 | This flag is only used if a transaction is an inner transaction in a [Batch][] transaction. This signifies that the transaction isn't signed. Any normal transaction that includes this flag is rejected. |
 
 When using the [sign method][] (or [submit method][] in "sign-and-submit" mode), `rippled` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag is not automatically enabled if `Flags` is explicitly specified. The flag is not automatically enabled when using the [sign_for method][] to add a signature to a multi-signed transaction.
 
@@ -94,7 +134,6 @@ A transaction's `Flags` field can contain flags that apply at different levels o
 | Reserved Flags   | `0x0000ffff` | Flags that are not currently defined. A transaction is only valid if these flags are disabled. |
 
 {% admonition type="info" name="Note" %}The [AccountSet transaction][] type has [its own non-bitwise flags](types/accountset.md#accountset-flags), which serve a similar purpose to type-based flags. [Ledger objects](../ledger-data/ledger-entry-types/index.md) also have a `Flags` field with different bitwise flag definitions.{% /admonition %}
-
 
 ## Memos Field
 

@@ -40,7 +40,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | Name                | JSON Type | [Internal Type][] | Required? | Description            |
 |:--------------------|:----------|:------------------|:----------|:-----------------------|
 | `Account`           | String    | AccountID         | Yes       | The address of the owner (sender) of this escrow. This is the account that provided the XRP, and gets it back if the escrow is canceled. |
-| `Amount`            | String    | Amount            | Yes       | The amount of XRP, in drops, currently held in the escrow. |
+| `Amount`            | Object or String    | Amount            | Yes       | The amount to be delivered by the payment is escrow. |
 | `CancelAfter`       | Number    | UInt32            | No        | The escrow can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch][] and it "has passed" if it's earlier than the close time of the previous validated ledger. |
 | `Condition`         | String    | Blob              | No        | A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction][] must contain a fulfillment that satisfies this condition. |
 | `Destination`       | String    | AccountID         | Yes       | The destination address where the XRP is paid if the escrow is successful. |
@@ -49,9 +49,10 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `FinishAfter`       | Number    | UInt32            | No        | The time, in [seconds since the Ripple Epoch][], after which this escrow can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0075`, mapped to the string `Escrow`, indicates that this is an `Escrow` entry. |
 | `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnID`     | String    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 | `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this escrow, such as a hosted recipient at the owner's address. |
+| `TransferRate`      | Number    | UInt32            | No        | The fee to charge when users finish an escrow, initially set on the creation of an escrow contract and updated on subsequent finish transactions. |
 
 
 ## {% $frontmatter.seo.title %} Flags
