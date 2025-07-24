@@ -17,6 +17,7 @@ This list is updated manually. For a live view of amendment voting, see the Amen
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| Test | v2.5.0 | {% get-amendment amendmentID="AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5" /%} |
 | [Batch][]                         | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
 | [PermissionDelegation][]          | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |
 | [PermissionedDEX][]               | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.5.0" %}Open for Voting: 2025-06-24{% /badge %} |

@@ -215,3 +215,15 @@ export const txExample: Schema &  { tagName: string } = {
   render: 'TxExample',
   selfClosing: true
 }
+
+export const getAmendment: Schema & { tagName: string } = {
+  tagName: 'get-amendment',
+  attributes: {
+    amendmentID: {
+      type: 'String',
+      required: true
+    }
+  },
+  render: 'GetAmendment',
+  selfClosing: true
+};
