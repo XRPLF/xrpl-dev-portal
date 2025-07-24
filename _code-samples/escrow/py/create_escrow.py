@@ -34,7 +34,8 @@ create_txn = EscrowCreate(
     destination=receiver_addr,
     finish_after=claim_date, 
     cancel_after=expiry_date,
-    condition=condition)
+    condition=condition # Omit this for time-held escrows
+)
 
 # Autofill, sign, then submit transaction and wait for result
 stxn_response = submit_and_wait(create_txn, client, sender_wallet)

@@ -9,7 +9,6 @@ seo:
 ---
 # Installation
 
-Install and update XRP Ledger servers including the core server, rippled, and API server, Clio.
-
+Install and update the core XRP Ledger server (`rippled`) or the API server (Clio).
 
 {% child-pages /%}

@@ -129,7 +129,7 @@ _Figure 7: An XRP Ledger Server Calculates a Ledger Validation — Each server a
 
 Validators each relay their results in the form of a signed message containing the hash of the ledger version they calculated. These messages, called _validations_, allow each server to compare the ledger it computed with those of its peers.
 
-[{% inline-svg file="/docs/img/consensus-declare-validation.svg" /%}](/docs/img/consensus-declare-validation.svg "Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result Result")
+[{% inline-svg file="/docs/img/consensus-declare-validation.svg" /%}](/docs/img/consensus-declare-validation.svg "Figure 8: Ledger is Validated When Supermajority of Trusted Validators Calculate the Same Result Result")
 
 _Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result — Each server compares its calculated ledger with the hashes received from its chosen validators. If not in agreement, the server must recalculate or retrieve the correct ledger._
 
