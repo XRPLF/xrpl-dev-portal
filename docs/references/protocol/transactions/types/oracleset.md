@@ -45,7 +45,7 @@ _(Added by the [PriceOracle amendment][].)_
 | `OracleDocumentID` | Number    | UInt32        | Yes       | A unique identifier of the price oracle for the `Account`. |
 | `Provider`         | String    | Blob          | Variable  | An arbitrary value that identifies an oracle provider, such as Chainlink, Band, or DIA. This field is a string, up to 256 ASCII hex encoded characters (0x20-0x7E). This field is required when creating a new `Oracle` ledger entry, but is optional for updates. |
 | `URI`              | String    | Blob          | No        | An optional Universal Resource Identifier to reference price data off-chain. This field is limited to 256 bytes. |
-| `LastUpdateTime`   | Number    | UInt32        | Yes       | The time the data was last updated, in seconds since the UNIX Epoch. |
+| `LastUpdateTime`   | Number    | UInt32        | Yes       | The time the data was last updated, in seconds since the [UNIX Epoch](https://en.wikipedia.org/wiki/Unix_time). The value must be within 300 seconds (5 minutes) of the ledger's close time. |
 | `AssetClass`       | String    | Blob          | Variable  | Describes the type of asset, such as "currency", "commodity", or "index". This field is a string, up to 16 ASCII hex encoded characters (0x20-0x7E). This field is required when creating a new `Oracle` ledger entry, but is optional for updates. |
 | `PriceDataSeries`  | Array     | Array         | Yes       | An array of up to 10 `PriceData` objects, each representing the price information for a token pair. More than five `PriceData` objects require two owner reserves. |
 
@@ -66,6 +66,13 @@ _(Added by the [PriceOracle amendment][].)_
 - Token pairs in the transaction with a missing `AssetPrice` field delete corresponding token pairs in the object.
 - Token pairs that only appear in the object have `AssetPrice` and `Scale` removed to signify that the price is outdated.
 
+When updating fewer entries than the existing oracle contains, the `LastUpdateTime` applies to all entries. Entries not included in the update have their prices removed to indicate they are out of date for the given `LastUpdateTime`. To access historical price data for these entries, you can:
+
+- Use the `ledger_entry` method with `PreviousTxnLgrSeq` to traverse previous Oracle objects
+- Use the `tx` method with `PreviousTxnID` to find historical transactions
+
+This design choice saves space by having a single `LastUpdateTime` for all entries rather than tracking update times per token pair.
+
 {% admonition type="info" name="Note" %}
 The order of token pairs in the transaction isn't important because each token pair uniquely identifies the location of the `PriceData` object in the `PriceDataSeries`.
 {% /admonition %}
@@ -79,7 +86,7 @@ Besides errors that can occur for all transactions, `OracleSet` transactions can
 |---------------------------|-------------|
 | `temARRAY_EMPTY`          | The `PriceDataSeries` has no `PriceData` objects. |
 | `tecARRAY_TOO_LARGE`      | The `PriceDataSeries` exceeds the ten `PriceData` objects limit. |
-| `tecINVALID_UPDATE_TIME`  | The `Oracle` object has an invalid `LastUpdateTime` value. |
+| `tecINVALID_UPDATE_TIME`  | The `LastUpdateTime` is invalid. This can occur when the time is more than 300 seconds before or after the ledger close time, or when updating an existing oracle, the new `LastUpdateTime` is not greater than the previous value. |
 | `tecTOKEN_PAIR_NOT_FOUND` | The token pair you're trying to delete doesn't exist in the `Oracle` object. |
 | `tecARRAY_EMPTY`          | The `PriceDataSeries` has no `PriceData` objects. |
 | `temARRAY_TOO_LARGE`      | The `PriceDataSeries` exceeds the ten `PriceData` objects limit. |
