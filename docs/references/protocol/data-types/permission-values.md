@@ -6,10 +6,12 @@ label:
 ---
 # Permission Values
 
-The Permission Delegation amendment {% not-enabled /%} defines permissions that can be granted to other accounts. These permissions fall into the following categories:
+[Permission delegation](/docs/concepts/accounts/permission-delegation.md) defines permissions that can be granted to other accounts. These permissions fall into the following categories:
 
 - **Transaction Type Permissions** - Permission to send transactions with the specified [transaction type](../transactions/types/index.md).
 - **Granular Permissions** - Permission to send transactions with a specific subset of functionality.
+
+_(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
 
 ## Numeric and String Values
 
@@ -21,10 +23,10 @@ When specifying a permission value in JSON, you can use either the numeric value
 Not all client libraries support numeric PermissionValue types. In most cases, you should use the string names of the permissions you want to grant.
 {% /admonition %}
 
-- For *transaction type permissions**, the string is the name of the transaction type exactly (case-sensitive). For example, a permission value of `"PaymentChannelClaim"` grants permission to send [PaymentChannelClaim transactions][].
+- For **transaction type permissions**, the string is the name of the transaction type exactly (case-sensitive). For example, a permission value of `"PaymentChannelClaim"` grants permission to send [PaymentChannelClaim transactions][].
 - For **granular permissions**, the string is the name of the granular permission (case-sensitive). For example, a permission value of `"TrustlineAuthorize"` grants permission to send TrustSet transactions that authorize trust lines (but not ones that modify other settings such as the trust line limit or freeze status).
 
-The numeric value `0` is reserved for "full permissions", meaning permission to send transactions of all types. It is technically possible to send a transaction that grants this permission value. However, delegate accounts cannot use full permissions.
+The numeric value `0` is reserved for "full permissions", meaning permission to send transactions of all types, but it is not possible to delegate full permissions.
 
 ## Transaction Type Permissions
 
@@ -49,6 +51,10 @@ The following permissions cannot be delegated:
 | [EnableAmendment][] | `101` |
 | [SetFee][]          | `102` |
 | [UNLModify][]       | `103` |
+
+{% admonition type="warning" name="Known Issue" %}
+With only the PermissionDelegation amendment, it's possible to assign permissions for transaction types that are reserved, unassigned, or part of amendments that are not currently enabled; it's also possible to assign PermissionValue `0` for full permissions. However, these values do not actually grant any permissions. This is a bug, and a future amendment will prevent assigning values outside of currently-enabled, delegatable transaction types or known granular permissions.
+{% /admonition %}
 
 ## Granular Permissions
 [[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/permissions.macro "Source")
