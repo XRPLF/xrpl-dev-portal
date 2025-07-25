@@ -7,102 +7,53 @@ labels:
 status: not_enabled
 ---
 # Permission Delegation
-XRPL accounts can delegate both transaction permissions and granular permissions to other accounts, enhancing flexibility and enabling use cases such as implementing role-based access control. This delegation is managed using the [`DelegateSet`](../../references/protocol/transactions/types/delegateset.md) transaction.
 
-_(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_
+Permission delegation is the function of granting various permissions to another account to send permissions on behalf of your account. This can be used instead of or alongside techniques such as [multi-signing](./multi-signing.md) to enable flexible security paradigms such as role-based access control.
 
-## Assigning Permissions
+## Background
 
-You can assign permissions to another account by submitting a `DelegateSet` transaction.
+Managing your [cryptographic keys](./cryptographic-keys.md) is one of the more challenging parts of using a blockchain. As part of a defense-in-depth strategy, a secure configuration should limit the damage that can occur if a secret key is compromised. One way to do this is to rotate keys regularly and to keep master keys off of computers that are always connected to the internet and serving user traffic. However, many use cases involve frequently and automatically signing transactions, which typically necessitates having secret keys on an internet-connected server.
 
-```json
-tx_json = {
-  "TransactionType": "DelegateSet",
-  "Account": "rDelegatingAccount",
-  "Authorize": "rDelegatedAccount",
-  "Permissions": [
-    {
-      "Permission": {
-        "PermissionValue": "Payment"
-      } 
-    } 
-  ] 
-} 
-```
+Permission Delegation can help optimize for these sorts of challenges by granting very limited permissions to separate accounts that can have their keys available online, while keeping the master keys for the main account offline and only using them manually in special cases when rare, important tasks like issuing tokens are necessary. This is especially helpful when using compliance features like [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md) that require a stablecoin issuer to individually approve each user after meeting regulatory requirements like Know Your Customer rules. With a proper configuration, the keys that are used to approve users cannot be used to perform other actions like issuing new tokens or rotating the issuer's key pairs.
 
-| Field | Description |
-|-------|-------------|
-| `Account` | The address of the account that is delegating the permission(s). |
-| `Authorize` | The address of the account that is being granted the permission(s). |
-| `Permissions` | An array of permission objects, specifying the permissions to delegate. Each permission is defined within a `Permission` object, using the `PermissionValue` field. See [XLS-74d, Account Permissions] for a complete list of valid `PermissionValues`. |  
 
-## Revoking Permissions
+## How It Works
 
-Permissions can be revoked using the `DelegateSet` transaction. There are two ways to revoke permissions:
+The account on whose behalf transactions are being sent is called the _delegating account_. The account sending the transactions is called the _delegate_.
 
-### Revoke All Permissions
+The delegating account first sends a [DelegateSet transaction][] to designate an account as its delegate and to specify which permissions the delegate has. The delegating account can update or revoke the permissions at any time by sending another DelegateSet transaction.
 
-To revoke all permissions previously granted to a delegated account, send a `DelegateSet` transaction with an empty `Permissions` array:
+The delegate can send transactions that execute as if they were sent by the delegating account. These transactions specify both the delegating account's information as well as the address of the delegate who is sending the transaction. The delegate can sign these transactions with any of the following:
 
-```json
-tx_json = {
-  "TransactionType": "DelegateSet",
-  "Account": "rDelegatingAccount",
-  "Authorize": "rDelegatedAccount",
-  "Permissions": []
-}
-```
+- The delegate's master key pair
+- A regular key pair that the delegate has authorized
+- A multi-signing list that the delegate has authorized
 
-### Revoke Specific Permissions
+The delegate can only send transactions that match the permissions it has. Permissions come in two types:
 
-To revoke specific permissions, send a `DelegateSet` transaction that includes _only_ the permissions that should remain active. Any permissions previously granted to the `Authorize` account that aren't included in the `Permissions` array are revoked.
+- **Transaction Type Permissions** - Permission to send transactions of a specific [transaction type](/docs/references/protocol/transactions/types/index.md). Some types cannot be delegated.
+- **Granular Permissions** - Permission to send transactions with a specific subset of functionality.
 
-## Sending Transactions with Delegated Permissions
+For a complete list of transaction types that can or cannot be delegated as well as a list of granular permissions, see [Permission Values](/docs/references/protocol/data-types/permission-values.md).
 
-When an account has been granted permissions, it can send transactions on behalf of the delegating account using the `Delegate` field.
 
-For example, if `rDelegatingAccount` has delegated the `TrustSet` permission to `rDelegatedAccount`, then `rDelegatedAccount` can submit a `TrustSet` transaction on behalf of `rDelegatingAccount` as follows:
+## Comparison with Multi-Signing
 
-```json
-transaction_json = {
-  "TransactionType": "TrustSet",
-  "Account": "rDelegatingAccount",
-  "Delegate": "rDelegatedAccount",
-  "LimitAmount": {
-    "currency": "USD",
-    "issuer": "rIssuerAccount",
-    "value": "1000"
-  }
-} 
-```
+|                  | Permission Delegation | Multi-Signing |
+|------------------|-----------------------|---------------|
+| Transaction cost | Paid by the delegate | Paid by the account that owns the list |
+| Permission control | Can only send transactions matching specific permissions granted | Can send any transactions except specific cases that require the master key pair |
+| M-of-N permission | Not supported | Configurable quorum and weights with up to 32 signers |
+| Unfunded accounts | Delegates must have funded accounts on ledger | Signers can be funded accounts or key pairs with no account on ledger. |
+| Key management | Delegate manages their own keys, including multi-signing | Signers can manage their own keys but cannot perform nested multi-signing. |
 
-| Field | Description |
-|-------|-------------|
-| `Account` | The address of the account that granted permission for the transaction (the _delegating_ account). |
-| `Delegate` | The address of the account submitting and signing the transaction. This must be the account that was granted permission (the _delegated_ account). |
 
-The account that sends this transaction is _rDelegatedAccount_, although the Account field is the _rDelegatingAccount_. The secret for this transaction is the _rDelegatedAccount_ secret, which means _rDelegatedAccount_ signs the transaction.
+## See Also
 
-## Error Cases
-
-- If the `PermissionDelegation` feature is not enabled, return `temDISABLED`.
-
-- If the _rDelegatedAccount_ is not authorized by the _rDelegatingAccount_ for the transaction type or satisfying the granular permissions given by _rDelegatingAccount_, the transaction returns `tecNO_DELEGATE_PERMISSION`.
-
-- If the _rDelegatedAccount_ does not have enough balance to pay the transaction fee, the transaction returns `terINSUF_FEE_B` . (_rDelegatedAccount_ pays the fee, which is the sender in `Delegate` field, not the `Account` field).
-
-- If the transaction creates a ledger object, but _rDelegatingAccount_ does not have enough balance to cover the reserve, the transaction returns `tecINSUFFICIENT_RESERVE`.
-
-- If the key used to sign this account does not match with _rDelegatedAccount_, the transaction returns `rpcBAD_SECRET`.
-
-- If the `TradingFee` is invalid (non-XRP currency or negative value), return `temBAD_FEE`.
-
-Any other errors are the same as when the _rDelegatingAccount_ sends transaction for itself.
-
-{% admonition type="warning" name="Important" %}
-* Delegating permissions grants significant control. Ensure you trust the delegated account.
-* The account specified in the `Delegate` field is responsible for paying the transaction fee.
-* A delegated account can only perform actions that have been explicitly permitted.
-{% /admonition %}
+- **References:**
+    - [DelegateSet transaction][] - Grant, update, or revoke permissions to a specific delegate.
+    - [Delegate ledger entry][] - Data structure on the ledger that records which permissions have been granted.
+- **Code Samples:**
+    - {% repo-link path="_code-samples/delegate-permissions/" %}**Delegate Permissions**{% /repo-link %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

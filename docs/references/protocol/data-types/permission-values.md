@@ -6,9 +6,8 @@ label:
 ---
 # Permission Values
 
-The Permission Delegation amendment {% not-enabled /%} defines permissions that can be granted to other accounts. These permissions fall into three categories:
+The Permission Delegation amendment {% not-enabled /%} defines permissions that can be granted to other accounts. These permissions fall into the following categories:
 
-- **Full Permissions** - Permission to send transactions of any type.
 - **Transaction Type Permissions** - Permission to send transactions with the specified [transaction type](../transactions/types/index.md).
 - **Granular Permissions** - Permission to send transactions with a specific subset of functionality.
 
@@ -16,13 +15,20 @@ The Permission Delegation amendment {% not-enabled /%} defines permissions that 
 
 In the [canonical binary format](../binary-format.md) for transactions and ledger data, permission values are stored in a numeric form (specifically, as a 32-bit unsigned integer). However, in JSON they can be specified and returned in string format for convenience, similar to how transaction type names (`TransactionType` fields) work.
 
-When specifying a permission value in JSON, you can use either the numeric value or the string value. When serving data, 
+When specifying a permission value in JSON, you can use either the numeric value or the string value. When serving data, the server supplies the string value if it is known, and falls back to the numeric value otherwise.
 
-The numeric value `0` is reserved for "full permissions", meaning permission to send transactions of all types. ***TODO: but can you actually delegate full permissions?***
+{% admonition type="warning" name="Caution" %}
+Not all client libraries support numeric PermissionValue types. In most cases, you should use the string names of the permissions you want to grant.
+{% /admonition %}
+
+- For *transaction type permissions**, the string is the name of the transaction type exactly (case-sensitive). For example, a permission value of `"PaymentChannelClaim"` grants permission to send [PaymentChannelClaim transactions][].
+- For **granular permissions**, the string is the name of the granular permission (case-sensitive). For example, a permission value of `"TrustlineAuthorize"` grants permission to send TrustSet transactions that authorize trust lines (but not ones that modify other settings such as the trust line limit or freeze status).
+
+The numeric value `0` is reserved for "full permissions", meaning permission to send transactions of all types. It is technically possible to send a transaction that grants this permission value. However, delegate accounts cannot use full permissions.
 
 ## Transaction Type Permissions
 
-Transaction Type Permissions have numeric values from 1 to 65536 (2<sup>16</sup>), inclusive. They correspond with known transaction types, except you add 1 when specifying a transaction type as a permission value. For example, the string `"Payment"` corresponds to a `TransactionType` value of `0`, but a `PermissionValue` value of `1`. To grant permissions to make Payment transactions, you can specify either `"PermissionValue": "Payment"` or `"PermissionValue": 1`.
+Transaction Type Permissions have numeric values from 1 to 65536 (that is, 2<sup>16</sup>), inclusive. They correspond with known transaction types, except you add 1 when specifying a transaction type as a permission value. For example, the string `"Payment"` corresponds to a `TransactionType` value of `0`, but a `PermissionValue` value of `1`. To grant permissions to make Payment transactions, you can specify either `"PermissionValue": "Payment"` or `"PermissionValue": 1`.
 
 For a mapping of transaction types known by a server and their corresponding numeric transaction type values, check the `TRANSACTION_TYPES` field in the [server_definitions method][].
 

@@ -15,7 +15,23 @@ _(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
 ## Example {% $frontmatter.seo.title %} JSON
 
 ```json
-TODO
+{
+  "Account": "rG8uoRH9uA6AJ6NRj8P4cJG1HNfYcnMPrt",
+  "Authorize": "r9GAKojMTyexqvy8DXFWYq63Mod5k5wnkT",
+  "Flags": 0,
+  "LedgerEntryType": "Delegate",
+  "OwnerNode": "0",
+  "Permissions": [
+    {
+      "Permission": {
+        "PermissionValue": "AccountDomainSet"
+      }
+    }
+  ],
+  "PreviousTxnID": "08DB1BD6ECFC9E8CBD8D954F4EFF6EFD155A392C5060D767B5621CE18951983A",
+  "PreviousTxnLgrSeq": 4748731,
+  "index": "749D3DCDF9F032DDDB8AC49641BACBFDD398C4B6C231C4AB325B7755962329A2"
+}
 ```
 
 ## {% $frontmatter.seo.title %} Fields
