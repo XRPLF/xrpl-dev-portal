@@ -14,7 +14,7 @@ labels:
 以下のAmendmentは、XRP Ledgerメインネットですでに有効になっているか、投票中であり、2週間にわたって過半数の賛成が得られれば有効になる可能性があります。
 
 {% admonition type="success" name="ヒント" %}
-このリストは手動で更新されています。最新のステータスはAmendmentダッシュボードをご覧下さい：[XRPScan](https://xrpscan.com/amendments)、[Bithomp](https://bithomp.com/en/amendments)。
+このリストは手動で更新されています。最新のステータスはAmendmentダッシュボードをご覧下さい：[XRPScan](https://xrpscan.com/amendments)、[Bithomp](https://bithomp.com/ja/amendments)。
 {% /admonition %}
 
 | 名前                              | 登場       | ステータス                          |
