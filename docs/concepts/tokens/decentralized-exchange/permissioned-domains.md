@@ -33,7 +33,7 @@ Users do not need to apply to join or leave a domain. When a transaction require
 
 Currently, there are no available XRP Ledger features that use permissioned domains. However, amendments that are in development and use domains include:
 
-- Single Asset Vault and Lending Protocol
-- Permissioned DEXes
+- [Single Asset Vault (XLS-65d)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) and [Lending Protocol (XLS-66d)](https://github.com/XRPLF/XRPL-Standards/pull/240)
+- [Permissioned DEXes](./permissioned-dexes.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
