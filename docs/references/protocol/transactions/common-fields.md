@@ -67,7 +67,7 @@ If the `Delegate` field is provided, this transaction is being sent by a differe
 - The signature must be valid for the delegate account. (It can by signed with a master key, regular key, or multi-signing list that is authorized by the delegate.)
 - The transaction cost (in the `Fee` field) is paid by the delegate account.
 
-Sending a transaction this way is only possible if the delegating account has granted the appropriate transaction permissions to the delegate account.
+Sending a transaction this way is only possible if the delegating account has granted the appropriate transaction permissions to the delegate account. For more information, see [Permission Delegation](/docs/concepts/accounts/permission-delegation.md).
 
 _(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
 

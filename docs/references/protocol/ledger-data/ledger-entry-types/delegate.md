@@ -25,19 +25,19 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | Field               | JSON Type            | [Internal Type][] | Required? | Description  |
 |:--------------------|:---------------------|:------------------|:----------|:-------------|
 | `Account`           | String - [Address][] | AccountID         | Yes       | The account delegating permissions to another, also called the _delegating account_. |
-| `Authorize`         | String - [Address][] | AccountID         | Yes       | The account receiving permissions, also called the _delegate account_. |
-| `Permissions`       | Array                | Array             | Yes       | A list of permissions granted, with at least 1 and at most 10 items. Each item in the list is a [Permission Object](#permissions-objects). |
+| `Authorize`         | String - [Address][] | AccountID         | Yes       | The account receiving permissions, also called the _delegate_. |
+| `Permissions`       | Array                | Array             | Yes       | A list of permissions granted, with at least 1 and at most 10 items. Each item in the list is a [Permission Object](#permission-objects). |
 | `OwnerNode`         | String - Hexadecimal | UInt64            | Yes       | A hint indicating which page of the delegating account's owner directory links to this object, in case the directory consists of multiple pages. 
 | `PreviousTxnID`     | String - Hexadecimal | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number               | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 
-### Permissions Objects
+### Permission Objects
 
-Each item in the `Permissions` array is an inner object with the following nested fields:
+Each item in the `Permissions` array is an inner object with the following nested field:
 
 | Field             | JSON Type            | [Internal Type][] | Required? | Description     |
 |:------------------|:---------------------|:------------------|:----------|:----------------|
-| `PermissionValue` | String               | UInt32            | Yes       | A permission that has been delegated to this account, which can be either a transaction type or a granular permission. See ***TODO: link*** for a full list. |
+| `PermissionValue` | String or Number     | UInt32            | Yes       | A permission that has been granted to the delegate, which can be either a transaction type or a granular permission. See [Permission Values](../../data-types/permission-values.md) for a full list. |
 
 ## {% $frontmatter.seo.title %} Flags
 

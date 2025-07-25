@@ -22,7 +22,7 @@ The numeric value `0` is reserved for "full permissions", meaning permission to 
 
 ## Transaction Type Permissions
 
-Transaction Type Permissions have numeric values from 1 to 65536 (2<sup>16</sup>), inclusive. They correspond with known transaction types, except you add 1 when specifying a transaction type as a permission value. For example, the string `"Payment"` corresponds to a `TransactionType` value of `0`, but a `PermissionValue` type of `1`. To grant permissions to make Payment transactions, you can specify either `"PermissionValue": "Payment"` or `"PermissionValue": 1`.
+Transaction Type Permissions have numeric values from 1 to 65536 (2<sup>16</sup>), inclusive. They correspond with known transaction types, except you add 1 when specifying a transaction type as a permission value. For example, the string `"Payment"` corresponds to a `TransactionType` value of `0`, but a `PermissionValue` value of `1`. To grant permissions to make Payment transactions, you can specify either `"PermissionValue": "Payment"` or `"PermissionValue": 1`.
 
 For a mapping of transaction types known by a server and their corresponding numeric transaction type values, check the `TRANSACTION_TYPES` field in the [server_definitions method][].
 
@@ -59,10 +59,14 @@ Granular Permissions have numeric types of 65537 and up, corresponding to specif
 | `65542`       | `AccountMessageKeySet`   | [AccountSet][]         | Can set the `MessageKey` field of the account. |
 | `65543`       | `AccountTransferRateSet` | [AccountSet][]         | Can set the [transfer fee of fungible tokens issued by the account](/docs/concepts/tokens/transfer-fees). |
 | `65544`       | `AccountTickSizeSet`     | [AccountSet][]         | Can set the [tick size of fungible tokens issued by the account](/docs/concepts/tokens/decentralized-exchange/ticksize). |
-| `65545`       | `PaymentMint`            | [Payment][]            | Can send payments that mint new fungible tokens. ***TODO: Or MPTs? What about indirectly?*** |
-| `65546`       | `PaymentBurn`            | [Payment][]            | Can send payments that burn fungible tokens. ***TODO: Or MPTs? More clarification needed.*** |
+| `65545`       | `PaymentMint`            | [Payment][]            | Can send payments that mint new fungible tokens or MPTs. |
+| `65546`       | `PaymentBurn`            | [Payment][]            | Can send payments that burn fungible tokens or MPTs. |
 | `65547`       | `MPTokenIssuanceLock`    | [MPTokenIssuanceSet][] | Can lock the balances of a particular MPT issued by the account. _(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_ |
 | `65548`       | `MPTokenIssuanceUnlock`  | [MPTokenIssuanceSet][] | Can unlock the balances of a particular MPT issued by the account. _(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_ |
+
+### Limitations to Granular Permissions
+
+The set of granular permissions is hard-coded. No custom configurations are allowed. For example, you cannot add permissions based on specific currencies. Adding a new granular permission requires an amendment.
 
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
