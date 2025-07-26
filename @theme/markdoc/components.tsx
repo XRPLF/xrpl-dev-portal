@@ -344,8 +344,8 @@ function AmendmentBadge(props: { amendment: any }) {
 
   // Split the status at the colon to create two-color badge
   const parts = status.split(':');
-  const label = shieldsIoEscape(parts[0] || '');
-  const message = shieldsIoEscape(parts.slice(1).join(':') || '');
+  const label = shieldsIoEscape(parts[0]);
+  const message = shieldsIoEscape(parts.slice(1).join(':'));
   
   const badgeUrl = `https://img.shields.io/badge/${label}-${message}-${color}`;
 
