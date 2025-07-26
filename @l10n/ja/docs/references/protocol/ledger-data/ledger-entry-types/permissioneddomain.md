@@ -45,7 +45,7 @@ _([PermissionedDomains amendment][]が必要です {% not-enabled /%})_
 
 | フィールド            | JSONの型              | [内部の型][] | 必須? | 説明  |
 |:----------------------|:----------------------|:-------------|:------|:------|
-| `AcceptedCredentials` | 配列                  | Array        | はい  | このドメインへのアクセスを許可する1から10個の[Credential](#acceptedcredentialsオブジェクト)オブジェクトのリスト。配列は発行者でソートされて保存されます。 |
+| `AcceptedCredentials` | 配列                  | Array        | はい  | このドメインへのアクセスを許可する1から10個の[AcceptedCredentials](#acceptedcredentialsオブジェクト)オブジェクトのリスト。配列は発行者でソートされて保存されます。 |
 | `Owner`               | 文字列 - [アドレス][] | AccountID    | はい  | このドメインの所有者のアドレス。 |
 | `OwnerNode`           | 文字列               | UInt64        | はい  | 所有者ディレクトリが複数のページで構成されている場合、このエントリにリンクする所有者ディレクトリのページを示すヒント。 |
 | `PreviousTxnID`       | 文字列 - [ハッシュ][]    | Hash256       | はい  | このエントリを最後に変更したトランザクションの識別ハッシュ。 |
