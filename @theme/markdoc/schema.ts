@@ -127,6 +127,10 @@ export const badge: Schema & { tagName: string } = {
       type: 'String',
       required: false
     }
+    amendmentID: { // If provided, fetch live amendment voting data
+      type: 'String',
+      required: false
+    }
   },
   render: 'Badge'
 };
