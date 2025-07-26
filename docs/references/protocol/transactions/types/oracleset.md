@@ -6,11 +6,11 @@ labels:
   - Oracle
 ---
 # OracleSet
-_(Requires the [PriceOracle amendment][])_
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "Source")
 
 Creates a new `Oracle` ledger entry or updates the fields of an existing one, using the Oracle Document ID.
+
+_(Added by the [PriceOracle amendment][].)_
 
 
 ## Example OracleSet JSON

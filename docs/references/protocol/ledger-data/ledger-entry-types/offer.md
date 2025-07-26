@@ -43,13 +43,13 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 |:--------------------|:---------------------|:------------------|:----------|:------------|
 | `Account`           | String - [Address][] | AccountID         | Yes       | The account that owns this offer. |
 | `AdditionalBooks`   | Array                | Array             | No        | A list of additional offer directories that link to this offer. This field is only present if this is a hybrid offer in a [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). The array always contains exactly 1 entry. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
-| `BookDirectory`     | String - [Hash][]    | Hash256           | Yes       | The ID of the [offer directory](directorynode.md) that links to this offer. |
+| `BookDirectory`     | String - [Hash][]    | UInt256           | Yes       | The ID of the [offer directory](directorynode.md) that links to this offer. |
 | `BookNode`          | String               | UInt64            | Yes       | A hint indicating which page of the offer directory links to this entry, in case the directory consists of multiple pages. |
-| `DomainID`          | String - [Hash][]    | Hash256           | No        | The ledger entry ID of a permissioned domain. If present, this offer belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `DomainID`          | String - [Hash][]    | UInt256           | No        | The ledger entry ID of a permissioned domain. If present, this offer belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
 | `Expiration`        | Number               | UInt32            | No        | Indicates the time after which this offer is considered unfunded. See [Specifying Time][] for details. |
 | `LedgerEntryType`   | String               | UInt16            | Yes       | The value `0x006F`, mapped to the string `Offer`, indicates that this is an offer entry. |
 | `OwnerNode`         | String               | UInt64            | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String - [Hash][]    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnID`     | String - [Hash][]    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number               | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `Sequence`          | Number               | UInt32            | Yes       | The `Sequence` value of the [OfferCreate][] transaction that created this offer. Used in combination with the `Account` to identify this offer. |
 | `TakerPays`         | [Currency Amount][]  | Amount            | Yes       | The remaining amount and type of currency requested by the offer creator. |

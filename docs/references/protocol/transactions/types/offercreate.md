@@ -36,7 +36,7 @@ An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentr
 
 | Field            | JSON Type           | [Internal Type][] | Required? | Description |
 |:-----------------|:--------------------|:------------------|:----------|-------------|
-| `DomainID`       | String - [Hash][]   | Hash256           | No        | The ledger entry ID of a permissioned domain. If provided, restrict this offer to the [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) of that domain. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `DomainID`       | String - [Hash][]   | UInt256           | No        | The ledger entry ID of a permissioned domain. If provided, restrict this offer to the [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) of that domain. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
 | [`Expiration`](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration) | Number | UInt32 | No | Time after which the Offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | `OfferSequence`  | Number              | UInt32            | No        | An Offer to delete first, specified in the same way as [OfferCancel][]. |
 | `TakerGets`      | [Currency Amount][] | Amount            | Yes       | The amount and type of currency being sold. |

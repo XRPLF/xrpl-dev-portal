@@ -15,14 +15,14 @@
   },
   "dependencies": {
     "async": "^3.2.4",
-    "fernet": "^0.4.0",
+    "fernet": "=0.3.3",
     "node-fetch": "^2.6.9",
     "pbkdf2-hmac": "^1.1.0",
     "open": "^8.4.0",
     "toml": "^3.0.0",
-    "xrpl": "^4.0.0"
+    "xrpl": "^4.3.0"
   },
   "devDependencies": {
-    "electron": "22.3.25"
+    "electron": "28.3.2"
   }
 }

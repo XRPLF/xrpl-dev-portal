@@ -8,12 +8,12 @@ const prepareTxData = (transactions) => {
         }
 
         return {
-            confirmed: transaction.tx.date,
-            type: transaction.tx.TransactionType,
-            from: transaction.tx.Account,
-            to: transaction.tx.Destination ?? "-",
+            confirmed: transaction.close_time_iso,
+            type: transaction.tx_json.TransactionType,
+            from: transaction.tx_json.Account,
+            to: transaction.tx_json.Destination ?? "-",
             value: tx_value,
-            hash: transaction.tx.hash
+            hash: transaction.hash
         }
     })
 }

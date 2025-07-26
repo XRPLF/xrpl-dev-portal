@@ -56,7 +56,7 @@ const main = async () => {
             const accountData = prepareAccountData(accountInfoResponse.result.account_data)
             appWindow.webContents.send('update-account-data', accountData)
 
-            const transactions = prepareTxData([{tx: transaction.transaction}])
+            const transactions = prepareTxData([transaction])
             appWindow.webContents.send('update-transaction-data', transactions)
         })
 

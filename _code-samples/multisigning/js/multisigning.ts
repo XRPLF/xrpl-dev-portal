@@ -22,6 +22,7 @@ async function multisigning(): Promise<void> {
   const { wallet: wallet1 } = await client.fundWallet()
   const { wallet: wallet2 } = await client.fundWallet()
   const { wallet: walletMaster } = await client.fundWallet()
+
   const signerListSet: SignerListSet = {
     TransactionType: 'SignerListSet',
     Account: walletMaster.classicAddress,
@@ -56,9 +57,14 @@ async function multisigning(): Promise<void> {
   const accountSetTx = await client.autofill(accountSet, 2)
   console.log('AccountSet transaction is ready to be multisigned:')
   console.log(accountSetTx)
+
   const { tx_blob: tx_blob1 } = wallet1.sign(accountSetTx, true)
   const { tx_blob: tx_blob2 } = wallet2.sign(accountSetTx, true)
   const multisignedTx = multisign([tx_blob1, tx_blob2])
+
+  console.log("Successfully multisigned the transaction")
+  console.log(multisignedTx)
+
   const submitResponse = await client.submit(multisignedTx)
 
   if (submitResponse.result.engine_result === 'tesSUCCESS') {

@@ -44,39 +44,17 @@ _(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
 In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Field                 | JSON Type            | [Internal Type][] | Required? | Description  |
-|:----------------------|:----------|:------------------|:----------|--------------|
+|:----------------------|:---------------------|:------------------|:----------|--------------|
 | `AcceptedCredentials` | Array                | Array             | Yes       | A list of 1 to 10 [Credential](#acceptedcredentials-objects) objects that grant access to this domain. The array is stored sorted by issuer. |
 | `Owner`               | String - [Address][] | AccountID         | Yes       | The address of the account that owns this domain. |
 | `OwnerNode`           | String               | UInt64            | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`       | String - [Hash][]    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
+| `PreviousTxnID`       | String - [Hash][]    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq`   | Number               | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `Sequence`            | Number               | UInt32            | Yes       | The `Sequence` value of the transaction that created this entry. |
 
-
 ### AcceptedCredentials Objects
 
-Each member of the `AcceptedCredentials` array is an inner object named `Credential` with the following nested fields:
-
-| Field            | JSON Type            | [Internal Type][] | Required? | Description  |
-|:-----------------|:---------------------|:------------------|:----------|--------------|
-| `Issuer`         | String - [Address][] | AccountID         | Yes       | The issuer of the credential. |
-| `CredentialType` | String               | Blob              | Yes       | The type of credential, as hexadecimal. This is an arbitrary value from 1 to 64 bytes that the issuer sets when they issue a credential. |
-
-{% admonition type="info" name="Note" %}
-In the usual JSON format, inner objects are wrapped in an object with one field, whose name defines the inner object type. In this case, the wrapping field is named `Credential`. For example:
-
-```json
-"AcceptedCredentials": [
-    {
-        "Credential": {
-            "Issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-            "CredentialType": "6D795F63726564656E7469616C"
-        }
-    },
-    // ... additional Credential inner objects ...
-]
-```
-{% /admonition %}
+{% raw-partial file="/docs/_snippets/accepted-credentials-objects.md" /%}
 
 
 ## {% $frontmatter.seo.title %} Flags

@@ -49,8 +49,8 @@ The SignerListSet transaction creates, replaces, or removes a list of signers th
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
-| Field         | JSON Type | [Internal Type][] | Description                  |
-|:--------------|:----------|:------------------|:-----------------------------|
+| Field           | JSON Type | [Internal Type][] | Description                  |
+|:----------------|:----------|:------------------|:-----------------------------|
 | `SignerQuorum`  | Number    | UInt32            | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is greater than or equal to this value. To delete a signer list, use the value `0`. |
 | `SignerEntries` | Array     | Array             | _(Omitted when deleting)_ Array of [`SignerEntry` objects](../../ledger-data/ledger-entry-types/signerlist.md#signer-entry-object), indicating the addresses and weights of signers in this list. This signer list must have at least 1 member and no more than 32 members. No address may appear more than once in the list, nor may the `Account` submitting the transaction appear in the list. _(Updated by the [ExpandedSignerList amendment][].)_ |
 

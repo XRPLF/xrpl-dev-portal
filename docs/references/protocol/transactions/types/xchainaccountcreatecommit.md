@@ -47,7 +47,7 @@ The `XChainAccountCreateCommit` transaction creates a new account for a witness 
 | Field             | JSON Type           | [Internal Type][] | Required? | Description |
 |:------------------|:--------------------|:------------------|:----------| :-----------|
 | `Amount`          | [Currency Amount][] | Amount            | Yes       | The amount, in XRP, to use for account creation. This must be greater than or equal to the `MinAccountCreateAmount` specified in the `Bridge` ledger object. |
-| `Destination`     | String              | Account           | Yes       | The destination account on the destination chain. |
+| `Destination`     | String              | AccountID         | Yes       | The destination account on the destination chain. |
 | `SignatureReward` | [Currency Amount][] | Amount            | No        | The amount, in XRP, to be used to reward the witness servers for providing signatures. This must match the amount on the `Bridge` ledger object. |
 | `XChainBridge`    | XChainBridge        | XChain_Bridge     | Yes       | The bridge to create accounts for. |
 
@@ -56,9 +56,9 @@ The `XChainAccountCreateCommit` transaction creates a new account for a witness 
 
 | Field               | JSON Type | [Internal Type][] | Required? | Description     |
 |:--------------------|:----------|:------------------|:----------|:----------------|
-| `IssuingChainDoor`  | String    | Account           | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
+| `IssuingChainDoor`  | String    | AccountID         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
 | `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
-| `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
+| `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
