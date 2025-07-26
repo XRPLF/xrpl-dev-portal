@@ -212,3 +212,43 @@ export function NotEnabled() {
     <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><i className="fa fa-flask"></i></span>
   )
 }
+
+export function GetAmendment(props: { amendmentID: string }) {
+  const [data, setData] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    async function fetchAmendment() {
+      try {    
+        const apiResponse = await fetch(`https://vhs.prod.ripplex.io/v1/network/amendment/vote/main/${props.amendmentID}`);
+        
+        if (!apiResponse.ok) {
+          throw new Error('Failed to fetch amendment data');
+        }
+
+        const vote = await apiResponse.json();
+        console.log('Amendment data:', vote);
+        setData(vote);
+      } catch (error) {
+        console.error('❌ Error fetching amendment:', error.message);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchAmendment();
+  }, [props.amendmentID]);
+
+  if (loading) return <div>Loading amendment data...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!data) return <div>No amendment data found</div>;
+
+  return (
+    <div>
+      <h4>Amendment Data:</h4>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+}
