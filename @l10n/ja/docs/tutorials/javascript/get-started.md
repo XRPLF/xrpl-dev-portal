@@ -171,4 +171,4 @@ XRP Ledgerの[コンセンサス プロセス](../../concepts/consensus-protocol
         - [base58 エンコード](../../references/protocol/data-types/base58-encodings.md)
     - [トランザクションフォーマット](../../references/protocol/transactions/index.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

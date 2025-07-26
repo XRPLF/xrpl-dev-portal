@@ -46,4 +46,4 @@ $ sudo systemctl restart rippled.service
 - [容量の計画](../../installation/capacity-planning.md)
 - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

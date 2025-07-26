@@ -91,8 +91,8 @@ rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 fals
 | `ctid`        | 文字列 | いいえ | 検索するトランザクションの[コンパクトトランザクション識別子](../../api-conventions/ctid.md)。大文字の16進数のみを使用する必要があります。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}新規: rippled 1.12.0{% /badge %} _(Clio v2.0以前では対応していません)_ |
 | `transaction` | 文字列 | いいえ | 検索するトランザクションの16進数の256ビットハッシュ |
 | `binary`      | 真偽値 | いいえ | `true` の場合、トランザクションデータとメタデータを16進数文字列へのバイナリ[シリアライズ](../../../protocol/binary-format.md)として返します。`false` の場合、トランザクションデータとメタデータを JSON で返します。デフォルトは `false` 。 |
-| `min_ledger`  | 数値   | いいえ | `max_ledger`と一緒に使うことで、このレジャーを起点として最大1000件までの[レジャーインデックス][ledger index]の範囲を指定することができます(自身を含む)。サーバーが[トランザクションを見つけられない](#not-foundレスポンス)場合、この範囲内のいずれのレジャーにも存在しないことになります。 |
-| `max_ledger`  | 数値   | いいえ | `min_ledger`と一緒に使うと、このレジャーで終わる最大1000個の[レジャーインデックス][ledger index]の範囲を指定できます(自身を含む)。サーバーが[トランザクションを見つけられない](#not-foundレスポンス)場合、この範囲内のいずれのレジャーにも存在しないことになります。 |
+| `min_ledger`  | 数値   | いいえ | `max_ledger`と一緒に使うことで、このレジャーを起点として最大1000件までの[レジャーインデックス][]の範囲を指定することができます(自身を含む)。サーバーが[トランザクションを見つけられない](#not-foundレスポンス)場合、この範囲内のいずれのレジャーにも存在しないことになります。 |
+| `max_ledger`  | 数値   | いいえ | `min_ledger`と一緒に使うと、このレジャーで終わる最大1000個の[レジャーインデックス][]の範囲を指定できます(自身を含む)。サーバーが[トランザクションを見つけられない](#not-foundレスポンス)場合、この範囲内のいずれのレジャーにも存在しないことになります。 |
 
 `ctid`または`transaction`のいずれか一方のみを提供する必要があります。
 
@@ -360,4 +360,4 @@ rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 fals
 * `excessiveLgrRange` - リクエストの`min_ledger`と`max_ledger`フィールドの差が1000を超えています。
 * `invalidLgrRange` - 指定された`min_ledger`が`max_ledger`より大きいか、それらのパラメータのいずれかが有効なレジャーインデックスではありません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -15,7 +15,7 @@ labels:
 
 - [sign][signメソッド]
 - [sign_for][sign_forメソッド]
-- [submit][submitメソッド]("sign-and-submit"モード)
+- [submit][submitメソッド]
 
 これらのメソッドを使用するにあたり、管理者接続からパブリック署名を有効にする必要は**ありません**。
 
@@ -44,4 +44,4 @@ labels:
     systemctl restart rippled
     ```
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

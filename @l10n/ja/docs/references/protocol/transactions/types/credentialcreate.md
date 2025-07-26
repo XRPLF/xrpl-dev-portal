@@ -31,7 +31,7 @@ CredentialCreateトランザクションは、レジャーにCredentialを作成
 | :--------------- | :-------------------- | :----------- | :----- | ---- |
 | `Subject`        | 文字列 - [アドレス][] | AccountID    | はい   | 資格情報の対象アカウント。 |
 | `CredentialType` | 文字列 - 16進数       | Blob         | はい   | このエントリが表す資格情報の種類を定義する任意のデータ。最小長は1バイトで、最大長は64バイトです。 |
-| `Expiration`     | 数値                  | UInt32       | いいえ | この資格情報が期限切れとみなされる時間（[リップルエポックからの秒数][]）。 |
+| `Expiration`     | 数値                  | UInt32       | いいえ | この資格情報が期限切れとみなされる時間（[Rippleエポック以降の経過秒数][]）。 |
 | `URI`            | 文字列                | Blob         | いいえ | 関連する検証可能な資格情報ドキュメントを参照できるURLなど、資格情報に関する任意の追加データ。存在する場合、最小長は1バイトで最大は256バイトです。 |
 
 トランザクションの`Account`フィールド(送信者)は、資格情報の発行者です。発行者と対象(Subject)アカウントは同じアカウントでも構いません。
@@ -49,4 +49,4 @@ CredentialCreateトランザクションは、レジャーにCredentialを作成
 | `temINVALID_ACCOUNT_ID` | 提供された`Subject`フィールドが無効です。例えば、[ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#特別なアドレス)が含まれている場合です。 |
 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

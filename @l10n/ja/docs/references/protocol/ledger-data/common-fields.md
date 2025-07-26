@@ -36,4 +36,4 @@ seo:
 
 フラグフィールドに指定できる値は、レジャーエントリのタイプによって異なります。一部のレジャーエントリのタイプでは、フラグが定義されていません。このような場合、`Flags`フィールドは常に値`0`になります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -499,4 +499,4 @@ rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descen
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。[API v1][]では、`ledger_index_min`または`ledger_index_max`にサーバが保有していないレジャーの範囲を指定した場合にこのエラーが発生します。
 * `lgrIdxsInvalid` - リクエストで`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](../../../../infrastructure/troubleshooting/index.md)されていないためにサーバに検証済みレジャーの範囲が存在しません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

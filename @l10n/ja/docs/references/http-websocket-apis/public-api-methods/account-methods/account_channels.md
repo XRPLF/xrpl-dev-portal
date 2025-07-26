@@ -175,8 +175,8 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
 | `account` | 文字列 | Channelの所有者（[アドレス][]として）。 |
-| `amount` | 文字列 | このChannelに割り当てられる[XRP、drop単位][]の合計額。 |
-| `balance` | 文字列 | 使用されているレジャーバージョンにおいて、このChannelから支払われた[XRP、drop単位][]の合計額。（Channelに残っているXRPの額を計算するには、`balance`を`amount`から差し引きます。） |
+| `amount` | 文字列 | このChannelに割り当てられる[XRPのdrop数][]の合計額。 |
+| `balance` | 文字列 | 使用されているレジャーバージョンにおいて、このChannelから支払われた[XRPのdrop数][]の合計額。（Channelに残っているXRPの額を計算するには、`balance`を`amount`から差し引きます。） |
 | `channel_id` | 文字列 | このChannelの一意のID（64文字の16進数文字列）。レジャーの状態データの[channelオブジェクトのID](../../../protocol/ledger-data/ledger-entry-types/paychannel.md#paychannel-idのフォーマット)でもあります。 |
 | `destination_account` | 文字列 | Channelの送金先アカウント（[アドレス][]として）。このアカウントだけが、Channelがオープンしている間にXRPを受領できます。 |
 | `public_key` | 文字列 | _（省略される場合があります）_ XRP Ledgerの[base58][]フォーマットのPayment Channelの公開鍵。このChannelに対する署名付きクレームは、一致するキーペアを使用して清算する必要があります。 |
@@ -194,4 +194,4 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 * `actNotFound` - リクエストの`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

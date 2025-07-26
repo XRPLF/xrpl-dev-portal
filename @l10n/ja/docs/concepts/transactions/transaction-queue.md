@@ -74,4 +74,4 @@ labels:
 - トランザクションコストが設けられている理由と、XRP Ledgerでのトランザクションコストの適用方法については、[トランザクションコスト](transaction-cost.md)をご覧ください。
 - コンセンサスプロセスによるトランザクション承認方法についての詳しい説明は、[コンセンサス](../consensus-protocol/index.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

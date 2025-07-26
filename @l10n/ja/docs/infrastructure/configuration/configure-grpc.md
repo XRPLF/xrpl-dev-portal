@@ -55,4 +55,4 @@ gRPCを有効にするには、次の前提条件を満たす必要がありま�
 - **リファレンス:**
     - [HTTP / WebSocket APIリファレンス](../../references/http-websocket-apis/index.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -136,7 +136,7 @@ HTTP Status: 200 OK
 
 | フィールド            | 型     | 説明                                           |
 |:--------------------|:-------|:----------------------------------------------|
-| `expected_date`     | 数値    | サポートされていない最初のAmendmentが有効になると予想される時刻([リップルエポックからの秒数][])。|
+| `expected_date`     | 数値    | サポートされていない最初のAmendmentが有効になると予想される時刻([Rippleエポック以降の経過秒数][])。|
 | `expected_date_UTC` | 文字列  | サポートされていない最初のAmendmentが有効になると予想される時刻(UTCでのタイムスタンプ)。 |
 
 レジャーのクローズ時間の変動により、これらはおおよその時刻となります。また、指定された時刻までにAmendmentが80%以上のバリデータからサポートされ続けない場合、Amendmentが有効にならず、期待された時刻にAmendmentが有効にならない可能性があります。サポートされていないAmendmentが有効にならない限り、サーバはAmendmentブロックされません。
@@ -195,4 +195,4 @@ HTTP Status: 200 OK
     - [featureメソッド][]
     - [server_infoメソッド][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

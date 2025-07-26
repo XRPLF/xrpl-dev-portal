@@ -37,4 +37,4 @@ labels:
 
 <a id="footnote-2"></a>² `xrpl.ws`は`xrplcluster.com`のエイリアスです。しかし、`.ws` というトップレベルドメインの信頼性は、本番での使用には適さないかもしれません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

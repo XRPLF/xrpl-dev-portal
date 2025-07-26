@@ -35,7 +35,7 @@ XRP Ledgerを動かすサーバソフトウェアは、主に2種類あります
 
 <!-- provided by the auto-generated table of children -->
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
 
 
 {% child-pages /%}

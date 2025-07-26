@@ -90,4 +90,4 @@ DepositPreauthトランザクションは、あなたのアカウントへの支
 | `temCANNOT_PREAUTH_SELF`  | `Authorize`フィールドのアドレスはトランザクションの送信者です。自分自身を事前承認することはできません。 |
 | `temDISABLED`             | 必要なAmendmentが有効になっていません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -47,4 +47,4 @@ CredentialAcceptトランザクションは資格情報を承認し、その資�
 | `temINVALID_ACCOUNT_ID` | 提供された`Issuer`フィールドが無効です。例えば、[ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#特別なアドレス)が含まれている場合など。 |
 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

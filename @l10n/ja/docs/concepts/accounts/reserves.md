@@ -78,4 +78,4 @@ XRP Ledgerには、準備金要件を調整する仕組みがあります。こ�
 - [SetFee疑似トランザクション][]疑似トランザクション
 - [チュートリアル: 必要準備金の計算と表示（Python）](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

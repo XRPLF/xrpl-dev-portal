@@ -279,4 +279,4 @@ NFTを含むトランザクション（`tx`と`account_tx`）はメタデータ�
 
 関連項目: [Partial Payments](../../../concepts/payment-types/partial-payments.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

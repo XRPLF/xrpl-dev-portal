@@ -105,4 +105,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 | `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | `NFTokenBuyOffer`で識別されるオブジェクトが実際には購入オファーでない、または`NFTokenSellOffer`で識別されるオブジェクトが実際には売却オファーでない場合です。|
 | `tecNO_PERMISSION`                 | 販売者が売却する`NFToken`を所有していません。または、マッチングオファーが、オファーを受け入れるアカウントとは異なる`Destination`アカウントを指定しています。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

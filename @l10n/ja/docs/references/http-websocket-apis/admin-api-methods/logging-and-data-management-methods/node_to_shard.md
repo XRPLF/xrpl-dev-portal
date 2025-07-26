@@ -117,4 +117,4 @@ Connecting to 127.0.0.1:5005
 - `notEnabled` - サーバが[履歴シャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)を保存するように環境設定されていない場合。
 - `invalidParams` - 1つ以上の項目が誤って定義されている、もしくは、1つ以上の必須項目が抜けている。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

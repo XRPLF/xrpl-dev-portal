@@ -138,4 +138,4 @@ Connecting to 127.0.0.1:5005
 - `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 - `publicMalformed` - リクエストの`public_key`フィールドが無効です。[base58][]フォーマットの有効なノード公開鍵である必要があります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

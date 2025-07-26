@@ -1463,8 +1463,8 @@ NFTの発行処理を変更し、同時にトークンの売却オファーも�
 
 また、新たに2種類の台帳オブジェクトが追加されます。
 
-- [NFTokenOffer object][]
-- [NFTokenPage object][]
+- [NFTokenOfferオブジェクト][]
+- [NFTokenPageオブジェクト][]
 
 さらに、[AccountRootオブジェクト][]型を変更し、`MintedNFTokens`、`BurnedNFTokens`、`NFTokenMinter`の3つの新しい任意のフィールドを追加しています。
 
@@ -1729,4 +1729,4 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 
 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

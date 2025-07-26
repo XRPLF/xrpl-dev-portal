@@ -242,4 +242,4 @@ Connecting to 127.0.0.1:5005
 * `badSeed` - 指定されたシード値のフォーマットが正しくありません。
 * `badSecret` - 指定されたシークレット値のフォーマットが正しくありません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -105,4 +105,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 これらの数字は推定であり、実際の数字とは異なる場合があります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

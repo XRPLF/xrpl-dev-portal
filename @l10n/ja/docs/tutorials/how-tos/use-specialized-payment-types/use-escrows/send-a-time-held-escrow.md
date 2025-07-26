@@ -43,7 +43,7 @@ print(release_date_ripple)
 
 ## 2.EscrowCreateトランザクションの送信
 
-[EscrowCreateトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`FinishAfter`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Condition`フィールドを省略して、時刻を保留中の支払いをリリースする唯一の条件とします。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。`Amount`を、Escrowする[XRP、drop単位][]の合計額に設定します。
+[EscrowCreateトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`FinishAfter`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Condition`フィールドを省略して、時刻を保留中の支払いをリリースする唯一の条件とします。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。`Amount`を、Escrowする[XRPのdrop数][]の合計額に設定します。
 
 {% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%} 
 
@@ -185,4 +185,4 @@ EscrowFinishトランザクションの識別用ハッシュを指定した[tx�
 
 {% /tabs %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

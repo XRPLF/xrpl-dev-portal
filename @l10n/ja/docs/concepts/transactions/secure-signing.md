@@ -149,4 +149,4 @@ labels:
     - [`xrpl-py`リファレンス](https://xrpl-py.readthedocs.io/)
     - [`xrpl4j` Reference](https://javadoc.io/doc/org.xrpl/)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

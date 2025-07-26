@@ -39,4 +39,4 @@ _([NegativeUNL amendment][]により追加されました)_
 | `UNLModifyDisabling` | 数値     | UInt8       | `1`の場合、この変更はネガティブUNLにバリデータを追加することを意味します。0` の場合、この変更はネガティブ UNL からバリデータを削除することを意味します。(これらの値以外は使用できません) |
 | `UNLModifyValidator` | 文字列   | Blob        | 追加または削除するバリデータであり、そのマスター公開鍵で識別されます。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

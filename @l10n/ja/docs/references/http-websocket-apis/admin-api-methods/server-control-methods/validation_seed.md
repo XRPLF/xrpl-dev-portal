@@ -96,4 +96,4 @@ Connecting to 127.0.0.1:5005
 * [汎用エラータイプ][]のすべて。
 * `badSeed` - リクエストに無効なシークレット値が指定されていました。この場合は通常、シークレット値が異なるフォーマットの有効文字列（アカウントアドレス、検証の公開鍵など）である可能性があります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

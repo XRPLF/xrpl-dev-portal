@@ -47,4 +47,4 @@ Checkに相当する資金があるとは保証されないため、送金元に
 - トランザクションで`Amount`と`DeliverMin`の両方が指定または省略される場合、トランザクションは結果コード`temMALFORMED`で失敗します。
 - `Amount`または`DeliverMin` がCheckの通貨（およびXRP以外の通貨の場合はイシュアー）に一致しない場合、トランザクションは結果コード`temBAD_CURRENCY`で失敗します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

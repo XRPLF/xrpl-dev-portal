@@ -50,8 +50,8 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 | フィールド      | JSONの型     | [内部の型][] | 必須?  | 説明 |
 | :-------------- | :----------- | :----------- | :----- | ---- |
-| `Amount`        | 文字列       | Amount       | いいえ | `Signature`により承認された[XRP、drop単位][通貨額]の額。これは、署名済みメッセージの額に一致している必要があります。これは、Channelが利用できるXRPの累計額であり、以前に精算されたXRPを含みます。 |
-| `Balance`       | 文字列       | Amount       | いいえ | このクレームの処理後にこのChannelから送金される[XRP、drop単位][通貨額]。XRPを送金する場合に必須です。Channelからこれまでに送金された総額よりも大きく、署名済みクレームの`Amount`よりも少ない額である必要があります。Channelを閉鎖する場合を除き、指定する必要があります。 |
+| `Amount`        | 文字列       | Amount       | いいえ | `Signature`により承認された[XRPのdrop数][]の額。これは、署名済みメッセージの額に一致している必要があります。これは、Channelが利用できるXRPの累計額であり、以前に精算されたXRPを含みます。 |
+| `Balance`       | 文字列       | Amount       | いいえ | このクレームの処理後にこのChannelから送金される[XRPのdrop数][]。XRPを送金する場合に必須です。Channelからこれまでに送金された総額よりも大きく、署名済みクレームの`Amount`よりも少ない額である必要があります。Channelを閉鎖する場合を除き、指定する必要があります。 |
 | `Channel`       | 文字列       | UInt256      | はい   | Channelの一意のID(64文字の16進文字列) |
 | `CredentialIDs` | 文字列の配列 | Vector256    | いいえ | このトランザクションによる入金を承認するための資格情報のセット。配列の各要素は、レジャーのCredentialエントリのレジャエントリIDでなければなりません。詳細は、[Credential ID](./payment.md#credential-id)をご覧ください。 |
 | `PublicKey`     | 文字列       | Blob         | いいえ | 署名に使用する公開鍵(16進数)。公開鍵はレジャーに保管されているこのChannelの`PublicKey`と一致している必要があります。トランザクションの送信者がChannelの支払元アドレスでない場合には必須です。また`Signature`フィールドは省略されます。(`rippled`がトランザクションをレジャーに適用する前に署名の有効性をチェックできるように、トランザクションにPubKeyが指定されています。) |
@@ -69,4 +69,4 @@ PaymentChannelClaimタイプのトランザクションについては、[`Flags
 | `tfRenew` | `0x00010000` | 65536    | Channelの`Expiration`時刻をクリアします。(`Expiration`は、Channelの変更できない`CancelAfter`時刻とは異なります。)このフラグは、Payment Channelの支払元アドレスだけが使用できます。 |
 | `tfClose` | `0x00020000` | 131072   | Channelの閉鎖を要求します。このフラグは、Channelの支払元アドレスと宛先アドレスだけが使用できます。このフラグにより、現在のクレームの処理後にChannelにこれ以上のXRPが割り当てられない場合、または宛先アドレスが使用している場合に、Channelが即時に閉鎖されます。XRPがまだChannelに保有されているときに、支払元アドレスがこのフラグを使用した場合、`SettleDelay`秒の経過後にChannelが閉鎖するようにスケジュールされます。(具体的には、Channelの`Expiration`は、前のレジャーの閉鎖時刻にChannelの`SettleDelay`の時間を加算した時刻に設定されます。ただし、Channelにこの時刻よりも早い`Expiration`時刻がすでに設定されている場合を除きます。) XRPがまだChannelに保有されているときに、宛先アドレスがこのフラグを使用した場合、クレーム処理後に残っているXRPはすべて支払元アドレスに返金されます。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

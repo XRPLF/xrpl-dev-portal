@@ -124,4 +124,4 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 * `channelMalformed` - リクエストの`channel_id`フィールドが有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
 * `channelAmtMalformed` - リクエストの`amount`に指定された値が、有効な[XRPの額][XRP、drop単位]ではありませんでした。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

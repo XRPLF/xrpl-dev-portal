@@ -1,4 +1,4 @@
-XRP Ledgerのアカウントは、XRP Ledgerの[base58][]フォーマットのアドレスで識別されます。このアドレスはアカウントのマスター[公開鍵](https://en.wikipedia.org/wiki/Public-key_cryptography)から生成され、マスター公開鍵は秘密鍵から生成されます。アドレスはJSON文字列で記述され、以下の特徴があります。
+XRP Ledgerのアカウントは、XRP Ledgerの[base58](../../references/protocol/data-types/base58-encodings.md)フォーマットのアドレスで識別されます。このアドレスはアカウントのマスター[公開鍵](https://en.wikipedia.org/wiki/Public-key_cryptography)から生成され、マスター公開鍵は秘密鍵から生成されます。アドレスはJSON文字列で記述され、以下の特徴があります。
 
 * 長さは25から35文字
 * 文字`r`から始まる

@@ -61,4 +61,4 @@ $ sudo firewall-cmd --add-forward-port=port=51235:proto=tcp:toport=51235
   - [printメソッド][]
   - [server_infoメソッド][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -71,4 +71,4 @@ labels:
 | `tecUNFUNDED_PAYMENT`              | 104 | 送信側アカウントが準備金を考慮せずに、保有するXRPを超える額の送信を試みたため、トランザクションが失敗しました。([準備金](../../../../concepts/accounts/reserves.md)をご覧ください。) |
 | `tecUNFUNDED_OFFER`                | 103 | [OfferCreateトランザクション][]が失敗しました。オファーの作成元アカウントに`TakerGets`通貨がありません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

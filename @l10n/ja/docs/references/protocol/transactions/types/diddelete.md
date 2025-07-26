@@ -39,4 +39,4 @@ _([DID Amendment][])_
 |:--------------------|:---------------------------------------------|
 | `tecNO_ENTRY`       | アカウントはDIDを保有していません。                |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -350,4 +350,4 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 * `srcCurMalformed` - `source_currencies`フィールドのフォーマットが適切ではありません。
 * `srcIsrMalformed` - リクエストの1つ以上の通貨オブジェクトの`issuer`フィールドが有効ではありません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

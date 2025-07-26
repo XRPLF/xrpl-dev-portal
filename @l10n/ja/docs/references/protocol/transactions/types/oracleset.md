@@ -84,4 +84,4 @@ Oracle Document ID を使用して、新しい`Oracle`レジャーエントリ�
 | `tecARRAY_EMPTY`          | `PriceDataSeries`に`PriceData`オブジェクトがありません。 |
 | `temARRAY_TOO_LARGE`      | `PriceDataSeries`が10個の`PriceData`オブジェクトの制限を超えています。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -52,4 +52,4 @@ Clioサーバは、キャッシュに基づいて情報のリクエストを処�
 
 パブリックClioサーバにアクセスするには、そのURLとClioポート（通常51233）にリクエストを送信します。パブリックClio APIサーバには、SLAも優先的に処理する責任もありません。ビジネスユースケースで継続的な監視や情報リクエストが必要な場合は、独自のClioサーバインスタンスをセットアップすることを検討してください。[UbuntuにClioをインストール](../../../infrastructure/installation/install-clio-on-ubuntu.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -72,7 +72,7 @@ print(cancel_after)
 
 ## 3.EscrowCreateトランザクションの送信
 
-[EscrowCreateトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Condition`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。前の手順で算出した`CancelAfter`または`FinishAfter`の時刻も指定します。`Amount`を、Escrowする[XRP、drop単位][]の合計額に設定します。
+[EscrowCreateトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Condition`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。前の手順で算出した`CancelAfter`または`FinishAfter`の時刻も指定します。`Amount`を、Escrowする[XRPのdrop数][]の合計額に設定します。
 
 {% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%} 
 
@@ -170,4 +170,4 @@ EscrowFinishトランザクションの識別用ハッシュを指定した[tx�
 
 {% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -72,7 +72,7 @@ labels:
 
 ## オファーIDのフォーマット
 
-`Offer`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
+`Offer`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
 
 * Offerスペースキー（`0x006F`）
 * オファーを行うアカウントのAccountID
@@ -80,4 +80,4 @@ labels:
 
     OfferCreateトランザクションが[Ticket](../../../../concepts/accounts/tickets.md)を使用した場合、代わりに`TicketSequence`値を使用します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

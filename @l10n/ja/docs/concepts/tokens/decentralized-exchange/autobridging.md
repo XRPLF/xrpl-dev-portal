@@ -26,4 +26,4 @@ XRP Ledgerの[分散型取引所](index.md)で、XRP以外の2種類の通貨を
 
 - [ペイメントパス](../fungible-tokens/paths.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -213,4 +213,4 @@ XRP Ledgerに送信されたトランザクションはすぐには処理され�
 
 <a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – `rippled`サーバはレジャーの履歴全体がなくてもAPIリクエストにレスポンスすることができます。サービスやネットワーク接続が中断すると、そのサーバのレジャー履歴にレジャーの不足や誤差が生じることがあります。時間の経過とともに、`rippled`によってその誤差は埋まります（そのように設定されている場合）。欠落しているトランザクションを検証する場合は、トランザクションが送信されてからLastLedgerSequenceまでの連続した完全なレジャーを持つサーバに照らして検証することが重要です。特定のサーバで利用できるcomplete_ledgersを判断するには、RPCサーバの状態を使用します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

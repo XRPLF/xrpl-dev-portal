@@ -257,4 +257,4 @@ _([AMM amendment][]により追加されました。)_
  - [AMMBid][] - オークションスロットと入札の仕組みについての詳細はこちら
  - [AMMVote][] - 取引手数料の投票メカニズムの詳細はこちら
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -206,4 +206,4 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
     トランザクションデータベースの一時コピーを保持するために追加のストレージをマウントした場合は、この時点でそのストレージをアンマウントして取り外すことができます。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

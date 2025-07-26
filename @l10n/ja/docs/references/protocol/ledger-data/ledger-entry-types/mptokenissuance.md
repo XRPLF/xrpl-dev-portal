@@ -79,4 +79,4 @@ Flagsは`MPToken`オブジェクトに関連付けられたプロパティまた
 | `lsfMPTCanTransfer` | `0x00000020` | 設定されている場合、非発行者が保有するトークンを他のアカウントに転送できることを示します。設定されていない場合、非発行者が保有するトークンは発行者に返却する以外は転送できないことを示します。これにより、ストアクレジットなどのユースケースが可能になります。 |
 | `lsfMPTCanClawback` | `0x00000040` | 設定されている場合、発行者が`Clawback`トランザクションを使用して個々の保有者から価値を回収できることを示します。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -83,4 +83,4 @@ CEOのウェイトを3、副社長3人のウェイトを各2、取締役3人の�
     - [sign_forメソッド][]
     - [submit_multisignedメソッド][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

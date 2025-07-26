@@ -258,4 +258,4 @@ rippled submit_multisigned '{
 * `srcActMalformed` - `tx_json`の`Account`フィールドが無効または欠落していました。
 * `internal` - 内部エラーが発生しました。これには、指定されているトランザクションJSONに対して署名が無効な場合も含まれます。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

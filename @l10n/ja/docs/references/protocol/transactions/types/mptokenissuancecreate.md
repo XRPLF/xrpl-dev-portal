@@ -61,4 +61,4 @@ MPTokenIssuanceCreateトランザクションでは、[`Flags`フィールド](.
 | `tfMPTCanTransfer` | `0x00000020` | `32`          | 設定されている場合、トークンを発行者以外のアカウントに転送できることを示します。 |
 | `tfMPTCanClawback` | `0x00000040` | `64`          | 設定されている場合、発行者がClawbackトランザクションを使用して個々の保有者から価値を回収できることを示します。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

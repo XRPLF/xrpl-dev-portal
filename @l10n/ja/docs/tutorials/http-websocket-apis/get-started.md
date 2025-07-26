@@ -49,7 +49,7 @@ WebSocket APIによるリクエストの例:
 
 レスポンスには、サーバの現在のステータスが表示されます。
 
-さらに見る: [リクエストのフォーマット >](../../references/http-websocket-apis/api-conventions/request-formatting.md) [レスポンスのフォーマット >](../../references/http-websocket-apis/api-conventions/response-formatting.md) [server_infoメソッドについて >][server_info method]
+さらに見る: [リクエストのフォーマット >](../../references/http-websocket-apis/api-conventions/request-formatting.md) [レスポンスのフォーマット >](../../references/http-websocket-apis/api-conventions/response-formatting.md) [server_infoメソッドについて >][server_infoメソッド]
 
 ## JSON-RPC
 
@@ -73,7 +73,7 @@ Content-Type: application/json
 
 レスポンスには、サーバの現在のステータスが表示されます。
 
-さらに見る: [リクエストのフォーマット >](../../references/http-websocket-apis/api-conventions/request-formatting.md#json-rpcフォーマット) [レスポンスのフォーマット >](../../references/http-websocket-apis/api-conventions/response-formatting.md) [server_infoメソッドについて >][server_info method]
+さらに見る: [リクエストのフォーマット >](../../references/http-websocket-apis/api-conventions/request-formatting.md#json-rpcフォーマット) [レスポンスのフォーマット >](../../references/http-websocket-apis/api-conventions/response-formatting.md) [server_infoメソッドについて >][server_infoメソッド]
 
 ## コマンドライン
 
@@ -110,4 +110,4 @@ APIメソッドの完全なリストについては、こちらをご覧くだ�
 - **リファレンス:**
   - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
