@@ -9,11 +9,11 @@ labels:
 # CheckCash
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
 
-_（[Checks Amendment][]が必要です）_
-
 対応する[CheckCreateトランザクション][]で承認された額まで受領するため、レジャーでCheckオブジェクトの清算を試みます。CheckCashトランザクションでCheckを換金できるのは、Checkの`Destination`アドレスだけです。このCheckの換金方法は、送金先により開始される[Payment][]の実行に似ています。
 
 Checkに相当する資金があるとは保証されないため、送金元に十分な残高がないか、または資金を送金できるだけの十分な流動性がないことが原因で、Checkの清算が失敗することがあります。このような状況が発生した場合、Checkはレジャーに残り、送金先は後でこのCheckの換金を再試行するか、または異なる額で換金を試みることができます。
+
+_（[Checks Amendment][]が必要です）_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -27,8 +27,10 @@ Checkに相当する資金があるとは保証されないため、送金元に
 }
 ```
 
+{% tx-example txid="67B71B13601CDA5402920691841AC27A156463678E106FABD45357175F9FF406" /%}
+
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | フィールド        | JSONの型           | [内部の型][] | 説明         |
 |:-------------|:--------------------|:------------------|:--------------------|

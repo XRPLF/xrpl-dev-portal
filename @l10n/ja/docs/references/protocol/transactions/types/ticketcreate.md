@@ -26,6 +26,8 @@ TicketCreateトランザクションは、1つまたは複数の[シーケンス
 }
 ```
 
+{% tx-example txid="738AEF36B48CA4A2D85C2B74910DC34DDBBCA4C83643F2DB84A58785ED5AD3E3" /%}
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 

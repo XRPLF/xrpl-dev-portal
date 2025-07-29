@@ -9,9 +9,9 @@ labels:
 # CheckCancel
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
 
-_（[Checks Amendment][]が必要です）_
-
 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。Checkの送金元または送金先は、いつでもこのトランザクションタイプを使用してCheckを取り消すことができます。有効期限切れのCheckはすべてのアドレスが取り消すことができます。
+
+_（[Checks Amendment][]が必要です）_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -24,8 +24,10 @@ _（[Checks Amendment][]が必要です）_
 }
 ```
 
+{% tx-example txid="D3328000315C6DCEC1426E4E549288E3672752385D86A40D56856DBD10382953" /%}
+
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | フィールド       | JSONの型 | [内部の型][] | 説明                    |
 |:------------|:----------|:------------------|:-------------------------------|

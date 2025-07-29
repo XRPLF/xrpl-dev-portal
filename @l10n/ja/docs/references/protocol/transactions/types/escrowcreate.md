@@ -1,6 +1,4 @@
 ---
-html: escrowcreate.html
-parent: transaction-types.html
 seo:
     description: Escrowプロセスが終了または取り消されるまでXRPを隔離します。
 labels:
@@ -10,9 +8,9 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-_[Escrow Amendment][]により追加されました。_
-
 Escrowプロセスが終了または取り消されるまでXRPを隔離します。
+
+_[Escrow Amendment][]により追加されました。_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -30,9 +28,10 @@ Escrowプロセスが終了または取り消されるまでXRPを隔離しま�
 }
 ```
 
-{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
+{% tx-example txid="C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7" /%}
 
+
+{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド            | JSONの型 | [内部の型][] | 説明               |
 |:-----------------|:----------|:------------------|:--------------------------|
@@ -43,8 +42,20 @@ Escrowプロセスが終了または取り消されるまでXRPを隔離しま�
 | `Condition`      | 文字列    | Blob              | _（省略可）_[PREIMAGE-SHA-256 Crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1)を表す16進数値。この条件が満たされている場合にのみ、資金を受取人に送金できます。 |
 | `DestinationTag` | 数値    | UInt32            | _（省略可）_ Escrowに留保されている支払いの宛先（宛先アドレスでホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 
-`CancelAfter`と`FinishAfter`のいずれかを指定する必要があります。両方を指定する場合は、`FinishAfter`の時刻が`CancelAfter`の時刻よりも前でなければなりません。
+次のフィールドの組み合わせのいずれかを指定する必要があります。
 
-[fix1571 Amendment][]が有効な場合は、`FinishAfter`、`Condition`のいずれかまたは両方を指定する必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}
+| 概要                              | `FinishAfter` | `Condition` | `CancelAfter` |
+|-----------------------------------|---------------|-------------|---------------|
+| 時刻ベース                        | ✅            |             |               |
+| 有効期限ありの時刻ベース          | ✅            |             | ✅            |
+| 時刻あり条件                      | ✅            | ✅          |               |
+| 有効期限と時刻ありの条件          | ✅            | ✅          | ✅            |
+| 有効期限ありの条件                |               | ✅          | ✅            |
+
+有効期限のない条件付きエスクローを作成することはできませんが、有効期限を非常に遠い将来に指定することはできます。
+
+{% admonition type="info" name="注記" %}
+[fix1571 Amendment][]が有効になる前は、`CancelAfter`のみを指定してエスクローを作成することができました。これらのエスクローは、指定された有効期限より前の任意の時刻に誰でも終了できました。
+{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
