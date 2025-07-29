@@ -219,4 +219,4 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
   - [submitメソッド][]
   - [submit_multisignedメソッド][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

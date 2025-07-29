@@ -188,4 +188,4 @@ Connecting to 127.0.0.1:5005
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。このエラーは、指定したレジャーインデックスが現在進行中のレジャーのインデックス以上である場合にも発生します。
 * `lgrNotFound` - レジャーがまだ利用可能ではない場合。これは、サーバがレジャーの取得を開始していますが、リクエストされたレジャーが接続されたどのピアにもない場合には失敗する可能性があることを意味します。（以前はこのエラーにはコード`ledgerNotFound`が使用されていました。）[更新: rippled 0.30.1][新規: rippled 0.30.1]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

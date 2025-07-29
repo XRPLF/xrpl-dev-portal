@@ -12,4 +12,4 @@ XRP Ledger内のNFTで**Transferable**フラグが無効になっているもの
 
 譲渡不可トークンは、トークンの発行者からまたは発行者へ直接トークンを送信することはできますが、第三者間でトークンを譲渡することはできません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

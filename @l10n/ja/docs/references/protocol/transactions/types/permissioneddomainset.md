@@ -60,4 +60,4 @@ _([PermissionedDomains amendment][]が必要です {% not-enabled /%})_
 | `temDISABLED`             | `PermissionedDomains` amendmentが有効ではないか、または`Credentials` amendmentが有効ではありません。 |
 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

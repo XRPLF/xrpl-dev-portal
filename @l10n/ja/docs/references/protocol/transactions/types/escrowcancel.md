@@ -39,4 +39,4 @@ EscrowCancelトランザクションはどのアカウントからでも送信�
 * 対応する[EscrowCreateトランザクション][]で`CancelAfter`時刻が指定されていない場合、EscrowCancelトランザクションは失敗します。
 * 指定されていても、`CancelAfter`時刻が最後に閉鎖されたレジャーの閉鎖時刻よりも後である場合は、EscrowCancelトランザクションが失敗します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

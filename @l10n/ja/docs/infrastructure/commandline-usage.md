@@ -181,4 +181,4 @@ Longest suite times:
 |:------------------------|:---------------------------------------------------|
 | `--unittest-arg {ARG}`  | 実行される単体テストに引数`{ARG}`を指定します。引数を受け入れる単体テストはそれぞれ、固有の引数形式を定義しています。  |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

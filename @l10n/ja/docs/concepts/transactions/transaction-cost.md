@@ -176,4 +176,4 @@ XRP Ledgerは、XRPの価値が長期的に変化することを見越して、�
   - [FeeSettingsオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)
   - [SetFee疑似トランザクション][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

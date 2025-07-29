@@ -36,4 +36,4 @@ _（[Checks Amendment][]が必要です）_
 - `CheckID`により識別されるオブジェクトが存在していないか、またはCheckではない場合、トランザクションは結果コード`tecNO_ENTRY`で失敗します。
 - Checkが有効期限切れではなく、CheckCancelトランザクションの送信者がCheckの送金元または送金先ではない場合、トランザクションは結果コード`tecNO_PERMISSION`で失敗します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

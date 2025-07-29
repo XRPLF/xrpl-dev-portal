@@ -331,4 +331,4 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 - [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)にトランザクションの結果の詳細がどのように記述されているかを知る
 - escrowやPayment Channelなどの[複雑な支払いタイプ](../../concepts/payment-types/index.md)について調べる
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

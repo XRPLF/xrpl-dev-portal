@@ -87,4 +87,4 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
     - [トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)
     - [account_infoメソッド][] - XRP残高を確認します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
