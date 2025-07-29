@@ -221,3 +221,20 @@ export const amendmentsTable: Schema & { tagName: string } = {
   render: 'AmendmentsTable',
   selfClosing: true
 }
+
+export const amendmentDisclaimer: Schema &  { tagName: string } = {
+  tagName: 'amendment-disclaimer',
+  attributes: {
+    name: {
+      type: 'String',
+      required: true
+    },
+    isVoting: {
+      type: 'Boolean',
+      required: false,
+      default: false
+    }
+  },
+  render: 'AmendmentDisclaimer',
+  selfClosing: true
+}
