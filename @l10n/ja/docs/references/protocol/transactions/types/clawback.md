@@ -53,4 +53,4 @@ Clawback機能はデフォルトで無効になっています。使用するに
 | `tecNO_LINE` | 取引相手とのトラストラインがない、またはトラストラインの残高が0です。 |
 | `tecNO_PERMISSION` | `lsfNoFreeze`が設定されているときに`lsfAllowTrustlineClawback`を設定、または`lsfAllowTrustLineClawback`が設定されているときに`lsfNoFreeze`を設定しようとしています。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

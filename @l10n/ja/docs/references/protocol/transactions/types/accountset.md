@@ -151,4 +151,4 @@ HTTPおよびWebSocketのAPIでは、TransferRate（相手方に10億単位の�
 
 詳細は、[送金手数料](../../../../concepts/tokens/transfer-fees.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -65,4 +65,4 @@ rippledサーバの管理には、以下のメソッドを使用します。
 * `unl_add`、`unl_delete`、`unl_list`、`unl_load`、`unl_network`、`unl_reset`、`unl_score` - 代わりに UNL管理用構成ファイルを使用してください。
 * `wallet_seed` - 代わりに[wallet_proposeメソッド][]を使用してください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

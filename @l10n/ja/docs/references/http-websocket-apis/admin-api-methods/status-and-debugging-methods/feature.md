@@ -199,4 +199,4 @@ Connecting to 127.0.0.1:5005
 * `badFeature` - 指定されている`feature`のフォーマットが正しくないか、サーバがその名前のAmendmentを認識していません。
 - `reportingUnsupported` - ([レポートモード][]サーバのみ) このメソッドはレポートモードでは使用できません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

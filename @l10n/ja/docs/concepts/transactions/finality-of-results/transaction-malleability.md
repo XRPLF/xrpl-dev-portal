@@ -146,4 +146,4 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
     - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/index.md)
     - [シリアル化フォーマット](../../../references/protocol/binary-format.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -40,4 +40,4 @@ Payment Channelでは本来、そこで売買可能なものにいては、一�
 
 - [Escrow](escrow.md): 速度が遅い、条件付きの大量XRP決済のための類似機能。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

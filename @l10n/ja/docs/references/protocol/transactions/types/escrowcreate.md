@@ -36,7 +36,7 @@ Escrowプロセスが終了または取り消されるまでXRPを隔離しま�
 
 | フィールド            | JSONの型 | [内部の型][] | 説明               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてエスクローに留保する[XRP、drop単位][]の額。エスクローに留保されたXRPは`Destination`アドレスに送金されるか（`FinishAfter`時刻の経過後）、または送金元に戻されます（`CancelAfter`時刻の経過後）。 |
+| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてエスクローに留保する[XRPのdrop数][]の額。エスクローに留保されたXRPは`Destination`アドレスに送金されるか（`FinishAfter`時刻の経過後）、または送金元に戻されます（`CancelAfter`時刻の経過後）。 |
 | `Destination`    | 文字列    | AccountID         | エスクローに留保されたXRPを受領するアドレス。 |
 | `CancelAfter`    | 数値    | UInt32            | _（省略可）_ このEscrowの有効期限（[Rippleエポック以降の経過秒数][]）。この値は変更できません。この時刻の経過後にのみ資金を送金元に返金できます。 |
 | `FinishAfter`    | 数値    | UInt32            | _（省略可）_ Escrowに留保されたXRPを受取人に対してリリースできる時刻（[Rippleエポック以降の経過秒数][]）。この値は変更できません。この時刻に達するまでは資金を移動できません。 |
@@ -47,4 +47,4 @@ Escrowプロセスが終了または取り消されるまでXRPを隔離しま�
 
 [fix1571 Amendment][]が有効な場合は、`FinishAfter`、`Condition`のいずれかまたは両方を指定する必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

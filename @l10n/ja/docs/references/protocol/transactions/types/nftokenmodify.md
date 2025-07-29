@@ -44,4 +44,4 @@ title:
 |:-------------------|:-----------|
 | `tecNO_PERMISSION` | `tfMutable`フラグが有効になっていないため、`URI`フィールドを更新できません。また、`Account`フィールドがNFTの発行者または許可された発行者でない場合、このエラーを受け取ることがあります。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

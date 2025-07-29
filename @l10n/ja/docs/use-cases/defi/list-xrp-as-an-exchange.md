@@ -604,4 +604,4 @@ XRPを自身のXRP Ledgerアカウントに保有している顧客は、XRP Led
   </tr>
 </table>
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

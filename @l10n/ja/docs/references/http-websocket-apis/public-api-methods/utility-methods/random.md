@@ -92,4 +92,4 @@ rippled random
 * [汎用エラータイプ][]のすべて。
 * `internal` - 乱数生成機能に関連している可能性がある内部エラーが発生しました。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

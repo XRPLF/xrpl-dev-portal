@@ -50,4 +50,4 @@ _送信元タグ_ と _宛先タグ_ は、XRP Ledgerの[支払い](../payment-t
 - [宛先タグの必須化](../../tutorials/how-tos/manage-account-settings/require-destination-tags.md)
 - [様々なPaymentの種類](../payment-types/index.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

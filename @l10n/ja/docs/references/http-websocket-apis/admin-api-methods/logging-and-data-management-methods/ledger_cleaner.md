@@ -76,4 +76,4 @@ _`ledger_cleaner`メソッドは、権限のないユーザは実行できない
 * いずれかの[汎用エラータイプ][]。
 * `internal`: いずれかのパラメーターが正しく指定されていない場合。（これはバグです。本来のエラーコードは`invalidParams`です。）
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

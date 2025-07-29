@@ -74,4 +74,4 @@ OfferCreate型のトランザクションについては、[`Flags`フィール�
 | `tecINSUF_RESERVE_OFFER` | 所有者が台帳に新しいOfferオブジェクトを追加するための準備要件を満たすのに十分なXRPを持っておらず、トランザクションがどの通貨も変換しなかった場合に発生します。(トランザクションが何らかの金額のトレードに成功した場合、トランザクションは結果コード`tesSUCCESS`で成功しますが、残りは台帳にOfferオブジェクトを作成しません)。 |
 | `tecDIR_FULL`            | トランザクションの送信者が台帳で多くのアイテムを所有している場合、またはオーダーブックに同じ取引レートのオファーがすでに多く含まれている場合に発生します。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

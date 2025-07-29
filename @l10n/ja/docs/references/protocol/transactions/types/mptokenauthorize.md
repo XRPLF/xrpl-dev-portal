@@ -36,4 +36,4 @@ MPTokenAuthorizeタイプのトランザクションは、Flagsフィールド�
 |:-------------------|:-------------|:-------------|:----------------------------|
 | `tfMPTUnauthorize` | `0x00000001` | 1            | 保有者が送信する場合に設定すると、保有者が`MPToken`の保持を望まなくなったことを示し、その結果`MPToken`は削除されます。保有者の`MPToken`の残高がゼロでない状態でこのフラグを設定しようとすると、トランザクションは失敗します。一方、発行者が送信する場合に設定すると、発行者が保有者の承認を取り消したい（アローリストにのみ適用）ことを意味し、`MPToken`の`lsfMPTAuthorized`フラグが解除されます。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

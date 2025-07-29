@@ -678,4 +678,4 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 - [発行アドレスと運用アドレス](../../../concepts/accounts/account-types.md)
 - [取引所としてのXRPの上場](../../../use-cases/defi/list-xrp-as-an-exchange.md)
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

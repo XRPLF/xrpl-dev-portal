@@ -34,4 +34,4 @@ labels:
 | `tefTOO_BIG` | レジャー内にある、トランザクションの影響を受けるオブジェクトが多過ぎます。例えば、これは[AccountDeleteトランザクション][]でしたが、削除されるアカウントのレジャーには1,000個を超えるオブジェクトがあります。 |
 | `tefWRONG_PRIOR` | トランザクションに`AccountTxnID`フィールド（または廃止予定の`PreviousTxnID`フィールド）が含まれていますが、このフィールドに指定されているトランザクションはアカウントの前のトランザクションに一致しません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

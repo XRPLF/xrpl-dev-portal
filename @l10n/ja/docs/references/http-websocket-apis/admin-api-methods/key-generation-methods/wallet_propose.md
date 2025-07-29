@@ -201,4 +201,4 @@ Connecting to 127.0.0.1:5005
 * `invalidParams` - 1つ以上のフィールドが不正に指定されています。
 * `badSeed` - リクエストには、空の文字列やXRP Ledgerアドレスに似た文字列などの許可されないシード値が（`passphrase`、`seed`、または`seed_hex`フィールド内に）指定されています。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

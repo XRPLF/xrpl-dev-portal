@@ -500,4 +500,4 @@ else:
 
 結果が予想と異なる場合は、前の手順で送信したトランザクションが正常に実行されたかどうかを確認してください。それは、その口座のトランザクション履歴（[account_txメソッド][]）の中で最も新しいもので、結果コード `tesSUCCESS` がついているはずです。それ以外の[結果コード](../../../references/protocol/transactions/transaction-results/index.md)が表示された場合、そのトランザクションは正常に実行されませんでした。エラーの原因によっては、これらの手順を最初からやり直した方がよいかもしれません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
