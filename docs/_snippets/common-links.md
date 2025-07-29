@@ -254,8 +254,10 @@
 [PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [PermissionedDomainSet transaction]: /docs/references/protocol/transactions/types/permissioneddomainset.md
+[PermissionedDomainSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
 [permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
+[許可型ドメイン]: /@l10n/ja/docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [MPToken entry]: /docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
 [MPTokenAuthorize transaction]: /docs/references/protocol/transactions/types/mptokenauthorize.md
