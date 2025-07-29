@@ -19,13 +19,21 @@ After an account has been deleted, it can be re-created in the ledger through th
 To be deleted, an account must meet the following requirements:
 
 - The account's `Sequence` number plus 256 must be less than the current [Ledger Index][].
-- The account must not be linked to any of the following types of [ledger entries](../../references/protocol/ledger-data/ledger-entry-types/index.md) (as a sender or receiver):
-    - `Escrow`
-    - `PayChannel`
-    - `RippleState`
-    - `Check`
+- The account must not have any "deletion blockers" in its owner directory. This includes cases where the account is a sender _or_ receiver of funds. See below for a full list of deletion blockers.
 - The account must own fewer than 1000 objects in the ledger.
 - The transaction must pay a special [transaction cost][] equal to at least the [owner reserve](reserves.md) for one item (currently {% $env.PUBLIC_OWNER_RESERVE %}).
+
+### Deletion Blockers
+
+The following [ledger entry types](../../references/protocol/ledger-data/ledger-entry-types/index.md) are deletion blockers:
+
+- `Escrow`
+- `PayChannel`
+- `RippleState` (trust line)
+- `Check`
+- `PermissionedDomain` _(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
+
+Any other types of ledger entries that an account owns are automatically deleted along with the account.
 
 ## Cost of Deleting
 
