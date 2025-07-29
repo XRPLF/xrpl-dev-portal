@@ -1,6 +1,4 @@
 ---
-html: nftokenacceptoffer.html
-parent: transaction-types.html
 seo:
     description: NFTokenの購入または売却のオファーを受け入れる。
 labels:
@@ -36,7 +34,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 }
 ```
 
-{% tx-example txid="BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909" server="s2" /%}
+{% tx-example txid="BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909" /%}
 
 ## ブローカー vs. ダイレクト モード
 

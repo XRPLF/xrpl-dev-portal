@@ -7,9 +7,10 @@ labels:
   - セキュリティ
 ---
 # SignerListSet
-[[ソース]](https://github.com/XRPLF/rippled/blob/ef511282709a6a0721b504c6b7703f9de3eecf38/src/ripple/app/tx/impl/SetSignerList.cpp "Source")
 
-SignerListSetトランザクションは、トランザクションの[マルチシグ](../../../../concepts/accounts/multi-signing.md)に使用できる署名者のリストを作成、置換、削除します。このトランザクションタイプは[MultiSign Amendment][]により導入されました。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "ソース")
+
+SignerListSetトランザクションは、トランザクションの[マルチシグ](../../../../concepts/accounts/multi-signing.md)に使用できる署名者のリストを作成、置換、削除します。このトランザクションタイプは[MultiSign Amendment][]により導入されました。
 
 ## {% $frontmatter.seo.title %}のJSONの例
 
@@ -42,6 +43,8 @@ SignerListSetトランザクションは、トランザクションの[マルチ
    ]
 }
 ```
+
+{% tx-example txid="09A9C86BF20695735AB03620EB1C32606635AC3DA0B70282F37C674FC889EFE7" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->

@@ -1,6 +1,4 @@
 ---
-html: payment.html
-parent: transaction-types.html
 seo:
     description: アカウント間での価値の移動します。
 labels:
@@ -37,6 +35,7 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 {% tx-example txid="7BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
+
 
 | フィールド       | JSONの型            | [内部の型][] | 説明 |
 | :--------------- | :------------------ | :----------- | ---- |
@@ -141,6 +140,8 @@ tfLimitQualityフラグが最も有用となるのは、[Partial Payments](../..
 
 ## MPTの支払い
 
+_([MPTokensV1 amendment][]が必要です。 {% not-enabled /%})_
+
 MPTの支払いを行う場合、_Amount_ フィールドは`mpt_issuance_id`と`value`のみを必要とします。`MPTokenIssuanceID`は、トランザクションのためにMPTを一意に識別するために使用されます。
 
 MPTokenのバージョン1では、アカウント間の直接支払いのみをサポートしています。DEXでは取引できません。
@@ -169,6 +170,8 @@ MPTokenのバージョン1では、アカウント間の直接支払いのみを
 ```
 
 ## Credential ID
+
+_([Credentials amendment][]が必要です。 {% not-enabled /%})_
 
 [Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用しているアカウントに対して、受取人によって事前承認された資格証明のセットを`CredentialIDs`フィールドで提供することで、そのアカウントに対して送金することができます。資格証明のセットは、[DepositPreauthエントリ](../../ledger-data/ledger-entry-types/depositpreauth.md)と一致していなければなりません。
 

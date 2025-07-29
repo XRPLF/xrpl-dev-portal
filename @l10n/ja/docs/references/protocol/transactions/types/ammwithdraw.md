@@ -9,9 +9,9 @@ labels:
 # AMMWithdraw
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")
 
-_([AMM amendment][]により追加されました。)_
-
 AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
+
+_([AMM amendment][]により追加されました。)_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -37,6 +37,8 @@ AMMの流動性プロバイダトークン（LPトークン）を返却するこ
     "TransactionType" : "AMMWithdraw"
 }
 ```
+
+{% tx-example txid="E606F37847E012E0D71267ED18CEA8B235AD9409BB6C2383A7D53ADEC2F314D4" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 

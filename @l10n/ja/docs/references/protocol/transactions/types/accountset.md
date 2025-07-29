@@ -1,6 +1,4 @@
 ---
-html: accountset.html
-parent: transaction-types.html
 seo:
     description: XRP Ledgerのアカウントのプロパティーを修正します。
 labels:
@@ -26,9 +24,9 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 }
 ```
 
-{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
+{% tx-example txid="327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70" /%}
 
+{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド         | JSONの型        | [内部の型][] | 説明        |
 |:-----------------|:-----------------|:------------------|:-------------------|
@@ -42,6 +40,8 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です_（[TickSize Amendment][]により追加されました）。_ |
 | `WalletLocator`    | 文字列           | UInt256           |  _（省略可）_ 任意の256ビット値です。指定された場合、この値はアカウントの設定の一部として保存さ れますが、固有の定義や要件を持ちません。 |
 | `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません |
+
+(全てのフィールドは任意です。)
 
 これらのオプションがいずれも指定されていない場合、AccountSetトランザクションは（取引コストの消却以外に）意味がありません。詳細は、[トランザクションのキャンセルまたはスキップ](../../../../concepts/transactions/finality-of-results/canceling-a-transaction.md)をご覧ください。
 
@@ -150,5 +150,9 @@ TransferRateフィールドは、ユーザの発行する通貨を相手方が�
 HTTPおよびWebSocketのAPIでは、TransferRate（相手方に10億単位の通貨を送金するのに必要な金額）は整数で表現します。例えば、送金手数料が20%である場合、値を`1200000000`と表現します。  値を1000000000未満にすることはできません（この値未満にした場合、トランザクションの送信について金銭の引き渡しが発生することになり、攻撃に利用されるおそれがあります）。`1000000000`の短縮形として、手数料なしを意味する`0`を指定できます。
 
 詳細は、[送金手数料](../../../../concepts/tokens/transfer-fees.md)をご覧ください。
+
+## NFTokenMinter
+
+認可ミンターを削除するには、`ClearFlag`を10（`asfAuthorizedNFTokenMinter`）に設定し、`NFTokenMinter`フィールドを省略します。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

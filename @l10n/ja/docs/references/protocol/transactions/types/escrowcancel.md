@@ -1,6 +1,4 @@
 ---
-html: escrowcancel.html
-parent: transaction-types.html
 seo:
     description: Escrowに留保されているXRPを送金元に返金します。
 labels:
@@ -10,9 +8,9 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-_[Escrow Amendment][]により追加されました。_
-
 Escrowに留保されているXRPを送金元に返金します。
+
+_[Escrow Amendment][]により追加されました。_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -25,9 +23,10 @@ Escrowに留保されているXRPを送金元に返金します。
 }
 ```
 
-{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
+{% tx-example txid="B24B9D7843F99AED7FB8A3929151D0CCF656459AE40178B77C9D44CED64E839B" /%}
 
+
+{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド           | JSONの型 | [内部の型][] | 説明                |
 |:----------------|:----------|:------------------|:---------------------------|

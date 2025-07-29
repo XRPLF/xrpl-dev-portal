@@ -9,9 +9,9 @@ labels:
 # CheckCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")
 
-_（[Checks Amendment][]が必要です）_
-
 レジャーにCheckオブジェクトを作成します。これにより指定の送金先は後日換金することができます。このトランザクションの送信者はCheckの送金元です。
+
+_（[Checks Amendment][]が必要です）_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -28,8 +28,9 @@ _（[Checks Amendment][]が必要です）_
 }
 ```
 
+{% tx-example txid="4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB" /%}
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | フィールド            | JSONの型           | [内部の型][] | 説明     |
 |:-----------------|:--------------------|:------------------|:----------------|

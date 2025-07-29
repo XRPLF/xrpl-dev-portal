@@ -27,6 +27,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 }
 ```
 
+{% tx-example txid="780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 

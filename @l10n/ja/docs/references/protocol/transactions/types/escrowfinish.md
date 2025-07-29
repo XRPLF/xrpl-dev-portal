@@ -1,6 +1,4 @@
 ---
-html: escrowfinish.html
-parent: transaction-types.html
 seo:
     description: エスクローされたXRPを受取人へ送金します。
 labels:
@@ -13,6 +11,7 @@ labels:
 エスクロー(保留中の支払い)から受取人へXRPを送金します。
 
 _[Escrow Amendment][]により追加されました。_
+
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -27,8 +26,10 @@ _[Escrow Amendment][]により追加されました。_
 }
 ```
 
-{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
+{% tx-example txid="317081AF188CDD4DBE55C418F41A90EC3B959CDB3B76105E0CBE6B7A0F56C5F7" /%}
 
+
+{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド      | JSONの型     | [内部の型][] | 必須?  | 説明 |
 | :-------------- | :----------- | :----------- | :----- | ---- |

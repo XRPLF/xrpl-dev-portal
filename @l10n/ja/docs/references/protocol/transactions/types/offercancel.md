@@ -26,9 +26,9 @@ OfferCancelトランザクションは、XRP LedgerからOfferオブジェクト
 }
 ```
 
-{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
+{% tx-example txid="E7697D162A606FCC138C5732BF0D2A4AED49386DC59235FC3E218650AAC19744" /%}
 
+{% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド         | JSONの型 | [内部の型][] | 説明                  |
 |:--------------|:----------|:------------------|:-----------------------------|

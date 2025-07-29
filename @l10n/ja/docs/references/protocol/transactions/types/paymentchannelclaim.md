@@ -9,8 +9,6 @@ labels:
 # PaymentChannelClaim
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
-_[PayChan Amendment][]により追加されました。_
-
 Payment Channelに対しXRPを請求するか、Payment Channelの有効期限を調整するか、またはこの両方の操作を行います。このトランザクションは、指定されたChannelでのトランザクション送信者の役割に応じてさまざまに利用できます。
 
 Channelの**支払元アドレス**は以下の操作を実行できます。
@@ -29,6 +27,9 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 - Channelの`Expiration`または`CancelAfter`の時刻が前のレジャーの閉鎖時刻よりも古い場合にはChannelが閉鎖します。有効な形式のPaymentChannelClaimトランザクションでは、トランザクションの内容に関わらず常にこの効果があります。
 
+_[PayChan Amendment][]により追加されました。_
+
+
 ## {% $frontmatter.seo.title %} JSONの例
 
 ```json
@@ -41,9 +42,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 }
 ```
 
-[トランザクションを取得してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelClaim%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33%22%2C%22binary%22%3Afalse%7D)
-
-<!--{# TODO: replace the above example with one where the channel, pubkey, signature, and balance match #}-->
+{% tx-example txid="C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 

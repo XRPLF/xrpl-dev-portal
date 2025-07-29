@@ -13,7 +13,7 @@ Add an additional amount to an open [payment channel](../../../../concepts/payme
 
 _(Added by the [PayChan amendment][].)_
 
-Example PaymentChannelFund:
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {

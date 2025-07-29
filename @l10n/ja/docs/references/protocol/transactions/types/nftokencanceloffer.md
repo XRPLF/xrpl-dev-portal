@@ -7,8 +7,11 @@ labels:
   - NFT, 非代替性トークン
 ---
 # NFTokenCancelOffer
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "ソース")
 
 `NFTokenCancelOffer`トランザクションは、`NFTokenCreateOffer`を使用して作成した既存のトークンへのオファーをキャンセルするために使用できます。
+
+_([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -22,8 +25,7 @@ labels:
 }
 ```
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
-
+{% tx-example txid="9FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5" /%}
 
 ## アクセス権
 

@@ -1,6 +1,4 @@
 ---
-html: offercreate.html
-parent: transaction-types.html
 seo:
     description: 通貨交換の注文を作成します。
 labels:
@@ -31,8 +29,9 @@ OfferCreateトランザクションは[分散型取引所](../../../../concepts/
 }
 ```
 
+{% tx-example txid="0CD69FD1F0A890CC57CDA430213FD294F7D65FF4A0F379A0D09D07A222D324E6" /%}
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 
 | フィールド         | JSONの型   | [内部の型][] | 説明       |
