@@ -215,3 +215,9 @@ export const txExample: Schema &  { tagName: string } = {
   render: 'TxExample',
   selfClosing: true
 }
+
+export const amendmentsTable: Schema & { tagName: string } = {
+  tagName: 'amendments-table',
+  render: 'AmendmentsTable',
+  selfClosing: true
+}
