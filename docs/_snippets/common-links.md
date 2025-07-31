@@ -192,6 +192,7 @@
 [Payment]: /docs/references/protocol/transactions/types/payment.md
 [PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
+[Permissioned DEXes]: /docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
 [PermissionedDomainSet transaction]: /docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomainSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
