@@ -14,30 +14,32 @@ l10n:
       name: 日本語
 redirects:
   $ref: redirects.yaml
-responseHeaders: 
+  /ja/XRPL_Brand_Kit.zip:
+    to: /XRPL_Brand_Kit.zip
+responseHeaders:
   '**':
     - name: X-Frame-Options
       value: DENY
     - name: Content-Security-Policy
       value: frame-ancestors 'none'
-  '/@l10n/es-ES/**':     
+  '/@l10n/es-ES/**':
     - name: X-Robots-Tag
       value: noindex
 search:
   engine: typesense
-  ai: 
+  ai:
     hide: true
-  filters: 
-    hide: true    
+  filters:
+    hide: true
 metadataGlobs:
   'docs/**':
     redocly_category: Documentation
   'blog/**':
     redocly_category: Blog
   'resources/**':
-    redocly_category: Resources    
+    redocly_category: Resources
   'community/**':
-    redocly_category: Community    
+    redocly_category: Community
 seo:
   siteUrl: https://xrpl.org/
 rbac:
@@ -49,7 +51,7 @@ analytics:
     trackingId: GTM-KCQZ3L8
     defaultDataLayer:
       platform: redocly
-    enableWebVitalsTracking: true 
+    enableWebVitalsTracking: true
 scripts:
   head:
     - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
