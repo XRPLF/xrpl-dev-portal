@@ -125,6 +125,15 @@ footer.community.report-a-scam: 詐欺の報告
 component.tryit: 試してみる
 component.queryexampletx: トランザクションの例を確認
 
+# Amendment tracker translations
+amendment.loading: ロード中Amendments...
+amendment.error: Amendmentsの取得エラー...
+amendment.table.name: 名前
+amendment.table.introduced: 登場
+amendment.table.status: ステータス
+amendment.status.enabled: 有効
+amendment.status.openForVoting: 投票中
+
 # index.page.tsx
 home.hero.h1part1: ビジネスのための
 home.hero.h1part2: ブロックチェーン

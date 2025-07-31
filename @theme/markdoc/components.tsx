@@ -216,11 +216,27 @@ export function NotEnabled() {
   )
 }
 
+// Type definitions for amendments
+type Amendment = {
+  name: string;
+  rippled_version: string;
+  tx_hash?: string;
+  consensus?: string;
+  date?: string;
+  id: string;
+};
+
+type AmendmentsResponse = {
+  amendments: Amendment[];
+};
+
 // Generate amendments table with live mainnet data
 export function AmendmentsTable() {
-  const [amendments, setAmendments] = React.useState<any[]>([]);
+  const [amendments, setAmendments] = React.useState<Amendment[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
 
   React.useEffect(() => {
     const fetchAmendments = async () => {
@@ -232,13 +248,13 @@ export function AmendmentsTable() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const data = await response.json();
+        const data: AmendmentsResponse = await response.json();
         
         // Sort amendments table
         const sortedAmendments = data.amendments
-          .sort((a: any, b: any) => {
+          .sort((a: Amendment, b: Amendment) => {
             // Sort by status priority (lower number = higher priority)
-            const getStatusPriority = (amendment: any) => {
+            const getStatusPriority = (amendment: Amendment): number => {
               if (amendment.consensus) return 1; // Open for Voting
               if (amendment.tx_hash) return 2; // Enabled
             };
@@ -275,9 +291,9 @@ export function AmendmentsTable() {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '2rem' }}>
         <div className="spinner-border text-primary" role="status">
-          <span className="sr-only">Loading amendments...</span>
+          <span className="sr-only">{translate("amendment.loading", "Loading amendments...")}</span>
         </div>
-        <div style={{ marginTop: '1rem' }}>Loading amendments...</div>
+        <div style={{ marginTop: '1rem' }}>{translate("amendment.loading", "Loading amendments...")}</div>
       </div>
     );
   }
@@ -285,7 +301,7 @@ export function AmendmentsTable() {
   if (error) {
     return (
       <div className="alert alert-danger" role="alert">
-        <strong>Error loading amendments:</strong> {error}
+        <strong>{translate("amendment.error", "Error loading amendments:")}:</strong> {error}
       </div>
     );
   }
@@ -296,9 +312,9 @@ export function AmendmentsTable() {
       <table className="md">
         <thead>
           <tr>
-            <th align="left" data-label="Name">Name</th>
-            <th align="left" data-label="Introduced">Introduced</th>
-            <th align="left" data-label="Status">Status</th>
+            <th align="left" data-label="Name">{translate("amendment.table.name", "Name")}</th>
+            <th align="left" data-label="Introduced">{translate("amendment.table.introduced", "Introduced")}</th>
+            <th align="left" data-label="Status">{translate("amendment.table.status", "Status")}</th>
           </tr>
         </thead>
         <tbody>
@@ -319,10 +335,15 @@ export function AmendmentsTable() {
   );
 }
 
-function AmendmentBadge(props: { amendment: any }) {
+function AmendmentBadge(props: { amendment: Amendment }) {
   const [status, setStatus] = React.useState<string>('Loading...');
   const [href, setHref] = React.useState<string | undefined>(undefined);
   const [color, setColor] = React.useState<string>('blue');
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+
+  const enabledLabel = translate("amendment.status.enabled", "Enabled");
+  const votingLabel = translate("amendment.status.openForVoting", "Open for Voting");
 
   React.useEffect(() => {
     const amendment = props.amendment;
@@ -330,17 +351,17 @@ function AmendmentBadge(props: { amendment: any }) {
     // Check if amendment is enabled (has tx_hash)
     if (amendment.tx_hash) {
       const enabledDate = new Date(amendment.date).toISOString().split('T')[0];
-      setStatus(`Enabled: ${enabledDate}`);
+      setStatus(`${enabledLabel}: ${enabledDate}`);
       setColor('green');
       setHref(`https://livenet.xrpl.org/transactions/${amendment.tx_hash}`);
     } 
     // Check if amendment is currently being voted on (has consensus field)
     else if (amendment.consensus) {
-      setStatus(`Open for Voting: ${amendment.consensus}`);
+      setStatus(`${votingLabel}: ${amendment.consensus}`);
       setColor('80d0e0');
       setHref(undefined); // No link for voting amendments
     }
-  }, [props.amendment]);
+  }, [props.amendment, enabledLabel, votingLabel]);
 
   // Split the status at the colon to create two-color badge
   const parts = status.split(':');
