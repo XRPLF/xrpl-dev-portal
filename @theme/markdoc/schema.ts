@@ -215,3 +215,20 @@ export const txExample: Schema &  { tagName: string } = {
   render: 'TxExample',
   selfClosing: true
 }
+
+export const amendmentDisclaimer: Schema &  { tagName: string } = {
+  tagName: 'amendment-disclaimer',
+  attributes: {
+    name: {
+      type: 'String',
+      required: true
+    },
+    isVoting: {
+      type: 'Boolean',
+      required: false,
+      default: false
+    }
+  },
+  render: 'AmendmentDisclaimer',
+  selfClosing: true
+}

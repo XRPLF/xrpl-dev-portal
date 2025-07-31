@@ -212,3 +212,29 @@ export function NotEnabled() {
     <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><i className="fa fa-flask"></i></span>
   )
 }
+
+export function AmendmentDisclaimer(props: {
+  name: string,
+  isVoting: boolean
+}) {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+
+  const link = () => <Link to={`/resources/known-amendments#${props.name.toLowerCase()}`}>{props.name} amendment</Link>
+  
+  return (
+    <div><i>(
+      {
+        props.isVoting ? (
+          <>
+          {translate("component.amendment-status.requires.1", "Requires the ")}{link()}{translate("component.amendment-status.requires.2", ".")}
+          </>
+        ) : (
+            <>
+          {translate("component.amendment-status.added.1", "Added by the ")}{link()}{translate("component.amendment-status.added.2", ".")}
+            </>
+        )
+      }
+    )</i></div>
+  )
+}
