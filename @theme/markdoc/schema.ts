@@ -127,6 +127,10 @@ export const badge: Schema & { tagName: string } = {
       type: 'String',
       required: false
     }
+    amendmentID: { // If provided, fetch live amendment voting data
+      type: 'String',
+      required: false
+    }
   },
   render: 'Badge'
 };
@@ -215,3 +219,15 @@ export const txExample: Schema &  { tagName: string } = {
   render: 'TxExample',
   selfClosing: true
 }
+
+export const getAmendment: Schema & { tagName: string } = {
+  tagName: 'get-amendment',
+  attributes: {
+    amendmentID: {
+      type: 'String',
+      required: true
+    }
+  },
+  render: 'GetAmendment',
+  selfClosing: true
+};
