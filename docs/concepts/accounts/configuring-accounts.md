@@ -31,8 +31,8 @@ If the primary purpose of an account is to facilitate exchange of value between 
 |------|-------------|
 | `defaultRipple` | Allow rippling on trust lines by default. Rippling is necessary in order for accounts to trade tokens you exchange with third-party accounts. See [Rippling](../tokens/fungible-tokens/rippling.md). |
 | `disallowIncomingNFTokenOffer` | Prevent other accounts from sending NFT buy or sell offers to this account. This avoids unsolicited offers unrelated to the primary purpose of the exchanger account. See [Trading NFTs](../tokens/nfts/trading.md). |
-| `disallowIncomingPayChan` | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../payment-types/payment-channels). |
-| `requireDestinationTag` | Require that all incoming payments have a destination tag. Destination tags provide a more lightweight mechanism for sending payments to a specific customer at a general receiver account. See [Source and Destination Tags](../transactions/source-and-destination-tags). |
+| `disallowIncomingPayChan` | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../payment-types/payment-channels.md). |
+| `requireDestinationTag` | Require that all incoming payments have a destination tag. Destination tags provide a more lightweight mechanism for sending payments to a specific customer at a general receiver account. See [Source and Destination Tags](../transactions/source-and-destination-tags.md). |
 
 [![Account Configurator Exchanger Settings](../../img/cpt-account-configurator2.png)](../../img/cpt-account-configurator2.png)
 
@@ -61,7 +61,7 @@ Multi-signing in the XRP Ledger is a method of authorizing transactions by using
 | `disallowIncomingCheck` | Prevent other accounts from sending checks to this account. See [Checks](../payment-types/checks.md).
 | `disallowIncomingNFTokenOffer` | Prevent other accounts from sending NFT buy or sell offers to this account. This avoids unsolicited offers unrelated to the primary purpose of the exchanger account. See [Trading NFTs](../tokens/nfts/trading.md). |
 | `disallowIncomingPayChan` | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../payment-types/payment-channels.md). |
-| `disallowIncomingXRP` | Prevent other accounts from sending XRP to this account. (This is advisory, and not enforced by the protocol). See [Direct XRP Payments](../payment-types/direct-xrp-payments/). |
+| `disallowIncomingXRP` | Prevent other accounts from sending XRP to this account. (This is advisory, and not enforced by the protocol). See [Direct XRP Payments](../payment-types/direct-xrp-payments.md). |
 
 [![Account Configurator Issuer Settings](../../img/cpt-account-configurator3.png)](../../img/cpt-account-configurator3.png)
 
@@ -71,7 +71,7 @@ All of the configuration flags can be helpful for specific use cases. The follow
 
 | Flag | Description |
 |------|-------------|
-| `allowTrustLineClawback` | Allow account to claw back tokens it has issued. See [Clawing Back Tokens](../tokens/fungible-tokens/clawing-back-tokens). |
+| `allowTrustLineClawback` | Allow account to claw back tokens it has issued. See [Clawing Back Tokens](../tokens/fungible-tokens/clawing-back-tokens.md). |
 | `disableMasterKey` | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a regular key or a signer list. See [Master Key Pair](./cryptographic-keys.md#master-key-pair). |
 | `disallowIncomingTrustLine` | Block incoming trust lines. See [Trust Lines](../tokens/fungible-tokens/index.md#trust-lines). |
 | `globalFreeze` | Freeze all tokens issued by this account. See [Global Freeze](../tokens/fungible-tokens/freezes.md#global-freeze).

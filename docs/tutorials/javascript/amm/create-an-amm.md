@@ -63,7 +63,7 @@ Send issued tokens from the operational account to the standby account. In the o
 
 1. Select **Allow Rippling** and click **Configure Account**. 
     {% admonition type="info" name="Note" %}
-      This enables the `defaultRipple` flag on the issuing account, which is set to `false` by default. You need to enable this in order to trade tokens issued by the account. See [Configure Issuer Settings](../../how-tos/use-tokens/issue-a-fungible-token#3.-configure-issuer-settings) to learn more.
+      This enables the `defaultRipple` flag on the issuing account, which is set to `false` by default. You need to enable this in order to trade tokens issued by the account. See [Configure Issuer Settings](../../how-tos/use-tokens/issue-a-fungible-token.md#3-configure-issuer-settings) to learn more.
     {% /admonition %}
 2. Enter a value in the **Amount** field, up to the maximum transfer amount you set in the trustline.
 3. Enter the standby account address in the **Destination** field.
