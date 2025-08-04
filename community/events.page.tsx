@@ -1195,7 +1195,50 @@ const events = [
     image: require("../static/img/events/demo-day-paris.png"),
     end_date: "July 8, 2025",
   },
-
+  {
+    name: "TUM XRPL Blockchain Day",
+    description:
+      "Join us for a focused day of technical learning and academic exchange  around blockchain innovation, hosted by XRPL Commons in collaboration  with the Chair of Network Architectures and Services as a side event  of the TUM Blockchain Conference.",
+    type: "conference",
+    link: "https://lu.ma/f6tyv1y9",
+    location: "Munich, Germany",
+    date: "September 10, 2025",
+    image: require("../static/img/events/commons-tum.png"),
+    end_date: "September 10, 2025",
+  },
+  {
+    name: "XRPL Meetup in Thessaloniki, Greece",
+    description:
+      "Calling all greek blockchain enthusiasts! Join XRPL Meetups to share knowledge,  build real-life connections, and foster communities centered around blockchain  and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want  you to be a part of it!",
+    type: "meetup",
+    link: "https://lu.ma/gnf5r9bi",
+    location: "Thessaloniki, Greece",
+    date: "September 11, 2025",
+    image: require("../static/img/events/commons-cannes.png"),
+    end_date: "September 11, 2025",
+  },
+  {
+    name: "Building on the XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who are  curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://xrpl.at/Dev-Training-Sept",
+    location: "Paris",
+    date: "September 29, 2025",
+    image: require("../static/img/events/building-xrpl.png"),
+    end_date: "September 30, 2025",
+  },
+  {
+    name: "Cryptography at Work for Blockchain",
+    description:
+      "Join Prof. Sala and fellow cryptographers to explore cryptography’s key role in blockchain,  from Bitcoin’s origins to today’s decentralized innovations.  Discover emerging use cases and research shaping its future.",
+    type: "meetup",
+    link: "https://lu.ma/vavn2ymw",
+    location: "Paris, France",
+    date: "October 14, 2025",
+    image: require("../static/img/events/commons-france.png"),
+    end_date: "October 14, 2025",
+  },
 ];
 
 
