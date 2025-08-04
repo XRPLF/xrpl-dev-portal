@@ -1209,7 +1209,7 @@ const events = [
   {
     name: "XRPL Meetup in Thessaloniki, Greece",
     description:
-      "Calling all greek blockchain enthusiasts! Join XRPL Meetups to share knowledge,  build real-life connections, and foster communities centered around blockchain  and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want  you to be a part of it!",
+      "Calling all Greek blockchain enthusiasts! Join XRPL Meetups to share knowledge,  build real-life connections, and foster communities centered around blockchain  and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want  you to be a part of it!",
     type: "meetup",
     link: "https://lu.ma/gnf5r9bi",
     location: "Thessaloniki, Greece",
