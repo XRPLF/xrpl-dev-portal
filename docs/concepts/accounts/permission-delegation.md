@@ -8,24 +8,25 @@ status: not_enabled
 ---
 # Permission Delegation
 
-Permission delegation is the function of granting various permissions to another account to send permissions on behalf of your account. This can be used instead of or alongside techniques such as [multi-signing](./multi-signing.md) to enable flexible security paradigms such as role-based access control.
+Permission delegation is the function of granting various permissions to another account to send permissions on behalf of your account. You can use permission delegation to enable flexible security paradigms such as role-based access control, instead of or alongside techniques such as [multi-signing](./multi-signing.md).
 
 _(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
 
+
 ## Background
 
-Managing your [cryptographic keys](./cryptographic-keys.md) is one of the more challenging parts of using a blockchain. As part of a defense-in-depth strategy, a secure configuration should limit the damage that can occur if a secret key is compromised. One way to do this is to rotate keys regularly and to keep master keys off of computers that are always connected to the internet and serving user traffic. However, many use cases involve frequently and automatically signing transactions, which typically necessitates having secret keys on an internet-connected server.
+Managing your [cryptographic keys](./cryptographic-keys.md) is one of the more challenging parts of using a blockchain. As part of a defense-in-depth strategy, a secure configuration should limit the damage that can occur if a secret key is compromised. One way to do this is to rotate keys regularly and to keep master keys off of computers that are always connected to the internet and serving user traffic. However, many use cases involve frequently and automatically signing transactions, which typically requires having secret keys on an internet-connected server.
 
-Permission Delegation can help optimize for these sorts of challenges by granting very limited permissions to separate accounts that can have their keys available online, while keeping the master keys for the main account offline and only using them manually in special cases when rare, important tasks like issuing tokens are necessary. This is especially helpful when using compliance features like [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md) that require a stablecoin issuer to individually approve each user after meeting regulatory requirements like Know Your Customer rules. With a proper configuration, the keys that are used to approve users cannot be used to perform other actions like issuing new tokens or rotating the issuer's key pairs.
+Permission Delegation can reduce this problem by granting very limited permissions to separate accounts that have their keys available online for day-to-day tasks. Meanwhile, the keys with full control over the account can be kept offline, so that you only use them for special tasks, like issuing tokens. This is especially helpful when using compliance features like [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md) that require a stablecoin issuer to individually approve each user after meeting regulatory requirements like Know Your Customer rules. With a proper configuration, you can minimize the consequences of a delegate's keys being compromized.
 
 
 ## How It Works
 
-The account on whose behalf transactions are being sent is called the _delegating account_. The account sending the transactions is called the _delegate_.
+The account on whose behalf transactions are being sent is called the _delegator_. The account sending the transactions is called the _delegate_.
 
-The delegating account first sends a [DelegateSet transaction][] to designate an account as its delegate and to specify which permissions the delegate has. The delegating account can update or revoke the permissions at any time by sending another DelegateSet transaction. A delegating account can have more than one delegate, and can grant different sets of permissions to each delegate.
+The delegator first sends a [DelegateSet transaction][] to designate an account as its delegate and to specify which permissions the delegate has. The delegator can update or revoke the permissions at any time by sending another DelegateSet transaction. A delegator can have more than one delegate, and can grant different sets of permissions to each delegate.
 
-A delegate can send transactions that execute as if they were sent by the delegating account. These transactions specify both the delegating account's information as well as the address of the delegate who is sending the transaction. The delegate can sign these transactions with any of the following:
+A delegate can send transactions that execute as if they were sent by the delegator. These transactions specify both the delegator's information as well as the address of the delegate who is sending the transaction. The delegate can sign these transactions with any of the following:
 
 - The delegate's master key pair
 - A regular key pair that the delegate has authorized
@@ -40,7 +41,7 @@ For a complete list of transaction types that can or cannot be delegated as well
 
 ### Limitations
 
-The main limiting factor on how many delegates you can have is that you must hold enough XRP to meet the [reserve requirement](./reserves.md). Each delegate's permissions are tracked with a [Delegate ledger entry][], which counts as one item towards the delegating account's owner reserve.
+The main limiting factor on how many delegates you can have is that you must hold enough XRP to meet the [reserve requirement](./reserves.md). Each delegate's permissions are tracked with a [Delegate ledger entry][], which counts as one item towards the delegator's owner reserve.
 
 Each delegate can be granted up to 10 permissions.
 

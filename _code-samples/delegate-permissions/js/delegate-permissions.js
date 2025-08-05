@@ -4,15 +4,21 @@ async function main() {
     const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
     await client.connect()
 
-    console.log("Funding new wallet from faucet...")
-    const { wallet } = await client.fundWallet()
+    console.log("Funding new wallets from faucet...")
+    const delegator_wallet = (await client.fundWallet()).wallet
+    console.log("Delegator account:")
+    console.log("  Address:", delegator_wallet.address)
+    const delegate_wallet = (await client.fundWallet()).wallet
+    console.log("Delegate account:")
+    console.log("  Address:", delegate_wallet.address)
+    console.log("  Seed:", delegate_wallet.seed)
+    console.log("Please note these values for later.")
 
     // Define the transaction
-    const delegate_address = "r9GAKojMTyexqvy8DXFWYq63Mod5k5wnkT"
     const delegateset = {
         "TransactionType": "DelegateSet",
-        "Account": wallet.address, // Delegator address
-        "Authorize": delegate_address,
+        "Account":   delegator_wallet.address,
+        "Authorize": delegate_wallet.address,
         "Permissions": [
             {
                 "Permission": {
@@ -23,9 +29,10 @@ async function main() {
     }
 
     // Prepare, sign, and submit the transaction
-    const prepared = await client.autofill(delegateset)
-    const signed = wallet.sign(prepared)
-    const result = await client.submitAndWait(signed.tx_blob)
+    const result = await client.submitAndWait(delegateset, {
+        wallet: delegator_wallet,
+        autofill: true
+    })
 
     // Check transaction results
     console.log(result)
@@ -36,7 +43,7 @@ async function main() {
     // Confirm presence of Delegate ledger entry using account_objects
     response = await client.request({
         "command": "account_objects",
-        "account": wallet.address,
+        "account": delegator_wallet.address,
         "type": "delegate",
         "ledger_index": "validated"
     })
