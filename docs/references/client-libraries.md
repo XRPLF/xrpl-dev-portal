@@ -8,7 +8,8 @@ seo:
 
 These client libraries simplify some of the common work of accessing and processing XRP Ledger data, and present it in a form that matches with the native conventions of their respective programming languages.
 
-For other programming languages, you can access the XRP Ledger through the [HTTP APIs](http-websocket-apis/index.md).
+- To stay up-to-date on JavaScript/TypeScript and Python library updates, join the [xrpl-announce mailing list](https://groups.google.com/g/xrpl-announce).
+- For other programming languages, you can access the XRP Ledger through the [HTTP APIs](http-websocket-apis/index.md).
 
 | Language                        | Library Name              | Get Started | API Reference | Source Code |
 |---------------------------------|---------------------------|-------------|--------------|-------------|
