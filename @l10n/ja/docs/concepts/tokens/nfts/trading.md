@@ -78,4 +78,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 所有者が他のアカウントで作成した`NFToken`をリセールする場合にも、同じワークフローを使用することができます。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

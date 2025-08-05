@@ -26,4 +26,4 @@ labels:
 | `terRETRY`         | 再試行可能な不明なエラー。                              |
 | `terQUEUED`        | トランザクションは負荷スケーリングされた[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)の要件を満たしているが、オープンレジャーの要件を満たしていなかったため、トランザクションは将来のレジャーのキューに入れられました。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

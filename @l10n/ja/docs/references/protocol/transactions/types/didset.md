@@ -51,4 +51,4 @@ _([DID Amendment][])_
 | `tecEMPTY_DID`      | トランザクションによって空のDIDレジャーエントリを作成しています。更新によって`Data`、`DIDDocument`、`URI`フィールドが削除されていないか確認してください。 |
 | `temEMPTY_DID`      | トランザクションが不正で、DID情報がありません。`Data`、`DIDDocument`、`URI`フィールドのいずれかを含めてください。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

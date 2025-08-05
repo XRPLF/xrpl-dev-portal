@@ -41,4 +41,4 @@ labels:
 
 セキュリティを強化するために[マルチシグ](../../../../concepts/accounts/multi-signing.md)を使用できますが、マルチシグを使用する場合には[トランザクションコスト][]および[準備金](../../../../concepts/accounts/reserves.md)に追加のXRPが必要となります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -101,4 +101,4 @@ labels:
 * `dstIsrMalformed` - リクエストの`books`フィールドの1つ以上の`taker_gets`サブフィールドの`issuer`フィールドが無効です。
 * `badMarket` - `books` フィールドに指定されている1つ以上のオーダーブックが存在していません（ある通貨をその通貨自体と交換するオファーなど）。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

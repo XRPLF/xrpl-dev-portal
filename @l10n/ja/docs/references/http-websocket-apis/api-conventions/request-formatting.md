@@ -99,4 +99,4 @@ APIのメソッド名は、通常の(ダッシュで始まる)コマンドライ
 
 {% admonition type="warning" name="注意" %}コマンドラインインターフェイスは管理目的でのみ使用することを意図しており、_サポートされているAPIではありません_です。新しいバージョンの`rippled`では、警告なしにコマンドラインAPIに破壊的な変更が導入される可能性があります！{% /admonition %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

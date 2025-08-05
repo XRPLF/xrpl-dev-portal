@@ -5,24 +5,26 @@ labels:
   - Blockchain
 ---
 # Known Amendments
-[[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/develop/include/xrpl/protocol/detail/features.macro "Source")
 
-## Known Amendments on Mainnet
+This page lists all known [amendments](../docs/concepts/networks-and-servers/amendments.md) and their statuses.
 
-The following is a comprehensive list of all known [amendments](../docs/concepts/networks-and-servers/amendments.md) and their status on the production XRP Ledger:
+## Mainnet Status
+
+The following amendments are either already enabled on the XRP Ledger Mainnet or are open for voting and can become enabled if they hold a supermajority for at least two weeks:
 
 {% amendments-table /%}
 
 ## Amendments in Development
 
-The following is a list of [amendments](../docs/concepts/networks-and-servers/amendments.md) that are being developed and a private network is available to test the changes.
+The following is a list of [amendments](../docs/concepts/networks-and-servers/amendments.md) that are being actively developed. They can become open for voting on Mainnet if they are included in a stable server release, and they may already be enabled on [other networks](../docs/concepts/networks-and-servers/parallel-networks.md).
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
 | [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} |  |
-| [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} |  |
+| [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -31,7 +33,7 @@ This list is updated manually. If you're working on an amendment and have a priv
 
 ## Obsolete Amendments
 
-The following is a list of known [amendments](../docs/concepts/networks-and-servers/amendments.md) that have been removed in a previous version, or are obsolete and have been marked for removal.
+The following is a list of known [amendments](../docs/concepts/networks-and-servers/amendments.md) that have been removed in a previous version of the core server, or are obsolete and have been marked for removal.
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
@@ -40,9 +42,9 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 | [NonFungibleTokensV1][]           | v1.9.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [CryptoConditionsSuite][]         | v0.60.0    | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [SHAMapV2][]                      | v0.32.1    | {% badge href="https://xrpl.org/blog/2019/rippled-1.4.0.html" %}Obsolete: Removed in v1.4.0{% /badge %} |
-| [FlowV2][]                        | v0.32.1    | {% badge href="https://xrpl.org/blog/2016/flowv2-vetoed.html" %}Obsolete: Removed in v0.33.0{% /badge %} |
-| [SusPay][]                        | v0.31.0    | {% badge href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" %}Obsolete: Removed in v0.60.0{% /badge %} |
 | [Tickets][]                       | v0.30.1    | {% badge href="https://xrpl.org/blog/2018/rippled-0.90.0.html" %}Obsolete: Removed in v0.90.0{% /badge %} |
+| [SusPay][]                        | v0.31.0    | {% badge href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" %}Obsolete: Removed in v0.60.0{% /badge %} |
+| [FlowV2][]                        | v0.32.1    | {% badge href="https://xrpl.org/blog/2016/flowv2-vetoed.html" %}Obsolete: Removed in v0.33.0{% /badge %} |
 
 
 ## Details about Known Amendments
@@ -283,7 +285,7 @@ Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where
 
 
 ### DepositPreauth
-[DepositPreauthAmendment]: #depositpreauth
+[DepositPreauth]: #depositpreauth
 
 | Amendment    | DepositPreauth |
 |:-------------|:---------------|
@@ -353,7 +355,7 @@ Without this amendment, any account can create these objects with any object as 
 | Amendment    | DynamicNFT |
 |:-------------|:-----------|
 | Amendment ID | C1CE18F2A268E6A849C27B3DE485006771B4C01B2FCEC4F18356FE92ECD6BB74 |
-| Status       | Expected |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -805,7 +807,7 @@ Fixes two bugs relating to the handling of NFT transfer fees and trust lines:
 | Amendment    | fixEnforceNFTokenTrustlineV2 |
 |:-------------|:-----------------------------|
 | Amendment ID | B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -815,6 +817,7 @@ Fix a bug where NFT transfer fees could bypass certain limitations on receiving 
 - Prevent an NFT issuer from receiving fungible tokens as transfer fees on a [deep-frozen](/docs/concepts/tokens/fungible-tokens/deep-freeze) trust line.
 
 Without this amendment, NFT transfer fees could be paid to an NFT issuer circumventing these restrictions.
+
 
 ### fixFillOrKill
 [fixFillOrKill]: #fixfillorkill
