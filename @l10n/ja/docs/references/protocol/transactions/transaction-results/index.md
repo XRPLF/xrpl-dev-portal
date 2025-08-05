@@ -50,4 +50,4 @@ labels:
 
 {% admonition type="info" name="注記" %}この段階で成功の結果が表示されたとしても、トランザクションが完全に成功したことを示すわけではありません。ローカルのサーバに保持されている暫定バージョンのレジャーに対して、正常に適用されたにすぎません。この段階での失敗の結果も、暫定的なものであり変化する可能性があります。詳細は、[結果のファイナリティー](../../../../concepts/transactions/finality-of-results/index.md)をご覧ください。{% /admonition %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -14,4 +14,4 @@ labels:
 |:-----------|:----------------------------------------------------------------|
 | `tesSUCCESS` | トランザクションが適用され、他のサーバに転送されました。検証済みレジャーにこのコードが記録されている場合は、トランザクションの成功が最終的な結果となります。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

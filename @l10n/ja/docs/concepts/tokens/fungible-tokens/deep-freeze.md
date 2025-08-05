@@ -89,4 +89,4 @@ _([DeepFreeze amendment][]により追加されました。)_
 
 一方、IOUの場合、通常のフリーズでは送信のみが禁止されます。受信もブロックしたい場合は、発行者がディープフリーズを適用する必要があります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

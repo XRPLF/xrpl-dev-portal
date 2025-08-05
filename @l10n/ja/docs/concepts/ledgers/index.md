@@ -32,4 +32,4 @@ XRP Ledgerは、誰にでも開かれた共有のグローバル台帳(レジャ
 - レジャーヘッダー、レジャーオブジェクトID、レジャーオブジェクトタイプの詳細については、[レジャーのデータ型](../../references/protocol/ledger-data/index.md)をご覧ください。
 - レジャーの状態の変更履歴を追跡する方法については、[レジャーの履歴](../networks-and-servers/ledger-history.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

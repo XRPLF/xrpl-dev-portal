@@ -31,4 +31,4 @@ labels:
 | `telREQUIRES_NETWORK_ID` | トランザクションは[`NetworkID`フィールド](../common-fields.md#networkidフィールド)を指定していません。トランザクションが`NetworkID`を必要とするネットワーク向けであった場合、フィールドを追加して再試行してください。トランザクションが別のネットワーク向けであった場合、正しいネットワークに接続されているサーバに送信してください。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}新規: rippled 1.11.0{% /badge %} |
 | `telWRONG_NETWORK` | トランザクションが現在のネットワークに対して間違った [`NetworkID` 値](../common-fields.md#networkidフィールド) を指定しています。目的のネットワークに対して正しい `NetworkID`値を指定するか、正しいネットワークに接続されているサーバにトランザクションを送信してください。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}新規: rippled 1.11.0{% /badge %} |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

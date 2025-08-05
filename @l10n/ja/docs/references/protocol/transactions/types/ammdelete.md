@@ -53,4 +53,4 @@ AMMCreateトランザクションでは、すべてのトランザクション�
 | `tecINCOMPLETE`     | 関連するレジャーエントリを可能な限り削除しましたが、AMM は完全には削除されませんでした。別の AMMDelete トランザクションを送信して、作業を続行し、完了させることができます。 |
 | `terNO_AMM`         | 指定したAMMが存在しません。(すでに削除されているか、指定したAMMの資産が間違っている可能性があります)。|
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

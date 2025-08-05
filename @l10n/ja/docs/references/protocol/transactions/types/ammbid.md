@@ -142,4 +142,4 @@ R = B × (1 - t)
 | `terNO_ACCOUNT`         | このリクエストで指定されたアカウントのいずれかが存在しません。 |
 | `terNO_AMM`             | このトランザクションの資産ペアの自動マーケットメーカーのインスタンスが存在しません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

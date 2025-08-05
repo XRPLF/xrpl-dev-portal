@@ -2,95 +2,70 @@
 [AMM entry]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
 [AMMClawback amendment]: /resources/known-amendments.md#ammclawback
 [AMM object]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
-[AMMエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
-[AMMオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/amm.md
 [AMMBid transaction]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBid transactions]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMBid]: /docs/references/protocol/transactions/types/ammbid.md
-[AMMBidトランザクション]: /docs/references/protocol/transactions/types/ammbid.md
 [AMMClawback transaction]: /docs/references/protocol/transactions/types/ammclawback.md
 [AMMCreate transaction]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate transactions]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreate]: /docs/references/protocol/transactions/types/ammcreate.md
-[AMMCreateトランザクション]: /docs/references/protocol/transactions/types/ammcreate.md
 [AMMDelete transaction]: /docs/references/protocol/transactions/types/ammdelete.md
 [AMMDelete transactions]: /docs/references/protocol/transactions/types/ammdelete.md
 [AMMDelete]: /docs/references/protocol/transactions/types/ammdelete.md
-[AMMDeleteトランザクション]: /docs/references/protocol/transactions/types/ammdelete.md
 [AMMDeposit transaction]: /docs/references/protocol/transactions/types/ammdeposit.md
 [AMMDeposit transactions]: /docs/references/protocol/transactions/types/ammdeposit.md
 [AMMDeposit]: /docs/references/protocol/transactions/types/ammdeposit.md
-[AMMDepositトランザクション]: /docs/references/protocol/transactions/types/ammdeposit.md
 [AMMVote transaction]: /docs/references/protocol/transactions/types/ammvote.md
 [AMMVote transactions]: /docs/references/protocol/transactions/types/ammvote.md
 [AMMVote]: /docs/references/protocol/transactions/types/ammvote.md
-[AMMVoteトランザクション]: /docs/references/protocol/transactions/types/ammvote.md
 [AMMWithdraw transaction]: /docs/references/protocol/transactions/types/ammwithdraw.md
 [AMMWithdraw transactions]: /docs/references/protocol/transactions/types/ammwithdraw.md
 [AMMWithdraw]: /docs/references/protocol/transactions/types/ammwithdraw.md
-[AMMWithdrawトランザクション]: /docs/references/protocol/transactions/types/ammwithdraw.md
 [API v1]: /docs/references/http-websocket-apis/api-conventions/request-formatting.md#api-versioning
 [API v2]: /docs/references/http-websocket-apis/api-conventions/request-formatting.md#api-versioning
 [AccountDelete transaction]: /docs/references/protocol/transactions/types/accountdelete.md
 [AccountDelete transactions]: /docs/references/protocol/transactions/types/accountdelete.md
 [AccountDelete]: /docs/references/protocol/transactions/types/accountdelete.md
-[AccountDeleteトランザクション]: /docs/references/protocol/transactions/types/accountdelete.md
 [AccountRoot entry]: /docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md
 [AccountRoot object]: /docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md
-[AccountRootエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md
-[AccountRootオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md
 [AccountSet transaction]: /docs/references/protocol/transactions/types/accountset.md
 [AccountSet transactions]: /docs/references/protocol/transactions/types/accountset.md
 [AccountSet]: /docs/references/protocol/transactions/types/accountset.md
-[AccountSetトランザクション]: /docs/references/protocol/transactions/types/accountset.md
 [Address]: /docs/references/protocol/data-types/basic-data-types.md#addresses
 [Amendments entry]: /docs/concepts/networks-and-servers/amendments.md
 [Amendments object]: /docs/concepts/networks-and-servers/amendments.md
-[Amendmentsエントリ]: /docs/concepts/networks-and-servers/amendments.md
-[Amendmentsオブジェクト]: /docs/concepts/networks-and-servers/amendments.md
 [Batch amendment]: /resources/known-amendments.md#batch
 [Batch]: /docs/references/protocol/transactions/types/batch.md
 [Batch transaction]: /docs/references/protocol/transactions/types/batch.md
 [Batch transactions]: /docs/references/protocol/transactions/types/batch.md
 [Check entry]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Check object]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
-[Checkエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
-[Checkオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [CheckCancel transaction]: /docs/references/protocol/transactions/types/checkcancel.md
 [CheckCancel transactions]: /docs/references/protocol/transactions/types/checkcancel.md
 [CheckCancel]: /docs/references/protocol/transactions/types/checkcancel.md
-[CheckCancelトランザクション]: /docs/references/protocol/transactions/types/checkcancel.md
 [CheckCash transaction]: /docs/references/protocol/transactions/types/checkcash.md
 [CheckCash transactions]: /docs/references/protocol/transactions/types/checkcash.md
 [CheckCashMakesTrustLine amendment]: /resources/known-amendments.md#checkcashmakestrustline
 [CheckCash]: /docs/references/protocol/transactions/types/checkcash.md
-[CheckCashトランザクション]: /docs/references/protocol/transactions/types/checkcash.md
 [CheckCreate transaction]: /docs/references/protocol/transactions/types/checkcreate.md
 [CheckCreate transactions]: /docs/references/protocol/transactions/types/checkcreate.md
 [CheckCreate]: /docs/references/protocol/transactions/types/checkcreate.md
-[CheckCreateトランザクション]: /docs/references/protocol/transactions/types/checkcreate.md
 [Checks amendment]: /resources/known-amendments.md#checks
 [Clawback amendment]: /resources/known-amendments.md#clawback
-[Clawbackの修正]: /resources/known-amendments.md#clawback
 [Clawback transaction]: /docs/references/protocol/transactions/types/clawback.md
 [Clawback transactions]: /docs/references/protocol/transactions/types/clawback.md
-[Clawbackトランザクション]: /docs/references/protocol/transactions/types/clawback.md
 [credentials]: /docs/concepts/decentralized-storage/credentials.md
 [Credentials amendment]: /resources/known-amendments.md#credentials
 [CredentialCreate transaction]: /docs/references/protocol/transactions/types/credentialcreate.md
 [CredentialCreate transactions]: /docs/references/protocol/transactions/types/credentialcreate.md
 [CredentialCreate]: /docs/references/protocol/transactions/types/credentialcreate.md
-[CredentialCreateトランザクション]: /docs/references/protocol/transactions/types/credentialcreate.md
 [CredentialAccept transaction]: /docs/references/protocol/transactions/types/credentialaccept.md
 [CredentialAccept transactions]: /docs/references/protocol/transactions/types/credentialaccept.md
 [CredentialAccept]: /docs/references/protocol/transactions/types/credentialaccept.md
-[CredentialAcceptトランザクション]: /docs/references/protocol/transactions/types/credentialaccept.md
 [CredentialDelete transaction]: /docs/references/protocol/transactions/types/credentialdelete.md
 [CredentialDelete transactions]: /docs/references/protocol/transactions/types/credentialdelete.md
 [CredentialDelete]: /docs/references/protocol/transactions/types/credentialdelete.md
-[CredentialDeleteトランザクション]: /docs/references/protocol/transactions/types/credentialdelete.md
 [Credential entry]: /docs/references/protocol/ledger-data/ledger-entry-types/credential
-[Credentialエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/credential
 [Crypto-Conditions Specification]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [CryptoConditions amendment]: /resources/known-amendments.md#cryptoconditions
 [CryptoConditionsSuite amendment]: /resources/known-amendments.md#cryptoconditionssuite
@@ -98,7 +73,6 @@
 [Currency Code]: /docs/references/protocol/data-types/currency-formats.md#currency-codes
 [DID amendment]: /resources/known-amendments.md#did
 [DID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
-[DIDエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DeletableAccounts amendment]: /resources/known-amendments.md#deletableaccounts
 [DeepFreeze amendment]: /resources/known-amendments.md#deepfreeze
 [Delegate ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/delegate.md
@@ -109,50 +83,36 @@
 [DepositPreauth amendment]: /resources/known-amendments.md#depositpreauth
 [DepositPreauth entry]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauth object]: /docs/references/protocol/transactions/types/depositpreauth.md
-[DepositPreauthエントリ]: /docs/references/protocol/transactions/types/depositpreauth.md
-[DepositPreauthオブジェクト]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauth transaction]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauth transactions]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauth]: /docs/references/protocol/transactions/types/depositpreauth.md
-[DepositPreauthトランザクション]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DIDSet transaction]: /docs/references/protocol/transactions/types/didset.md
 [DIDSet transactions]: /docs/references/protocol/transactions/types/didset.md
 [DIDSet]: /docs/references/protocol/transactions/types/didset.md
-[DIDSetトランザクション]: /docs/references/protocol/transactions/types/didset.md
 [DirectoryNode entry]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DirectoryNode object]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
-[DirectoryNodeエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
-[DirectoryNodeオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DisallowIncoming amendment]: /resources/known-amendments.md#disallowincoming
 [DynamicNFT amendment]: /resources/known-amendments.md#dynamicnft
 [EnableAmendment pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnableAmendment]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
-[EnableAmendment疑似トランザクション]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnforceInvariants amendment]: /resources/known-amendments.md#enforceinvariants
 [Escrow amendment]: /resources/known-amendments.md#escrow
 [Escrow entry]: /docs/concepts/payment-types/escrow.md
 [Escrow object]: /docs/concepts/payment-types/escrow.md
-[Escrowエントリ]: /docs/concepts/payment-types/escrow.md
-[Escrowオブジェクト]: /docs/concepts/payment-types/escrow.md
 [EscrowCancel transaction]: /docs/references/protocol/transactions/types/escrowcancel.md
 [EscrowCancel transactions]: /docs/references/protocol/transactions/types/escrowcancel.md
 [EscrowCancel]: /docs/references/protocol/transactions/types/escrowcancel.md
-[EscrowCancelトランザクション]: /docs/references/protocol/transactions/types/escrowcancel.md
 [EscrowCreate transaction]: /docs/references/protocol/transactions/types/escrowcreate.md
 [EscrowCreate transactions]: /docs/references/protocol/transactions/types/escrowcreate.md
 [EscrowCreate]: /docs/references/protocol/transactions/types/escrowcreate.md
-[EscrowCreateトランザクション]: /docs/references/protocol/transactions/types/escrowcreate.md
 [EscrowFinish transaction]: /docs/references/protocol/transactions/types/escrowfinish.md
 [EscrowFinish transactions]: /docs/references/protocol/transactions/types/escrowfinish.md
 [EscrowFinish]: /docs/references/protocol/transactions/types/escrowfinish.md
-[EscrowFinishトランザクション]: /docs/references/protocol/transactions/types/escrowfinish.md
 [ExpandedSignerList amendment]: /resources/known-amendments.md#expandedsignerlist
 [FeeEscalation amendment]: /resources/known-amendments.md#feeescalation
 [FeeSettings entry]: /docs/references/protocol/ledger-data/ledger-entry-types/feesettings.md
 [FeeSettings object]: /docs/references/protocol/ledger-data/ledger-entry-types/feesettings.md
-[FeeSettingsエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/feesettings.md
-[FeeSettingsオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/feesettings.md
 [Flow amendment]: /resources/known-amendments.md#flow
 [FlowCross amendment]: /resources/known-amendments.md#flowcross
 [FlowV2 amendment]: /resources/known-amendments.md#flowv2
@@ -168,7 +128,6 @@
 [LedgerStateFix transaction]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFix transactions]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFix]: /docs/references/protocol/transactions/types/ledgerstatefix.md
-[LedgerStateFixトランザクション]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [Marker]: /docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
 [MPTokenIssuanceSet]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
 [MPTokenIssuanceSet transaction]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
@@ -179,90 +138,65 @@
 [NFTokenAcceptOffer transaction]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
 [NFTokenAcceptOffer transactions]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
 [NFTokenAcceptOffer]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
-[NFTokenAcceptOfferトランザクション]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
 [NFTokenBurn transaction]: /docs/references/protocol/transactions/types/nftokenburn.md
 [NFTokenBurn transactions]: /docs/references/protocol/transactions/types/nftokenburn.md
 [NFTokenBurn]: /docs/references/protocol/transactions/types/nftokenburn.md
-[NFTokenBurnトランザクション]: /docs/references/protocol/transactions/types/nftokenburn.md
 [NFTokenCancelOffer transaction]: /docs/references/protocol/transactions/types/nftokencanceloffer.md
 [NFTokenCancelOffer transactions]: /docs/references/protocol/transactions/types/nftokencanceloffer.md
 [NFTokenCancelOffer]: /docs/references/protocol/transactions/types/nftokencanceloffer.md
-[NFTokenCancelOfferトランザクション]: /docs/references/protocol/transactions/types/nftokencanceloffer.md
 [NFTokenCreateOffer transaction]: /docs/references/protocol/transactions/types/nftokencreateoffer.md
 [NFTokenCreateOffer transactions]: /docs/references/protocol/transactions/types/nftokencreateoffer.md
 [NFTokenCreateOffer]: /docs/references/protocol/transactions/types/nftokencreateoffer.md
-[NFTokenCreateOfferトランザクション]: /docs/references/protocol/transactions/types/nftokencreateoffer.md
 [NFTokenMint transaction]: /docs/references/protocol/transactions/types/nftokenmint.md
 [NFTokenMint transactions]: /docs/references/protocol/transactions/types/nftokenmint.md
 [NFTokenMint]: /docs/references/protocol/transactions/types/nftokenmint.md
-[NFTokenMintトランザクション]: /docs/references/protocol/transactions/types/nftokenmint.md
 [NFTokenOffer entry]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
 [NFTokenOffer object]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
-[NFTokenOfferエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
-[NFTokenOfferオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
 [NFTokenPage entry]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
 [NFTokenPage object]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
-[NFTokenPageエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
-[NFTokenPageオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
 [NFToken]: /docs/references/protocol/data-types/nftoken.md
 [NegativeUNL amendment]: /resources/known-amendments.md#negativeunl
 [NegativeUNL entry]: /docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
 [NegativeUNL object]: /docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
-[NegativeUNLエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
-[NegativeUNLオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
 [NonFungibleTokensV1 amendment]: /resources/known-amendments.md#nonfungibletokensv1
 [NonFungibleTokensV1_1 amendment]: /resources/known-amendments.md#nonfungibletokensv1_1
 [Offer entry]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
 [Offer object]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
-[Offerエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
-[Offerオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
 [OfferCancel transaction]: /docs/references/protocol/transactions/types/offercancel.md
 [OfferCancel transactions]: /docs/references/protocol/transactions/types/offercancel.md
 [OfferCancel]: /docs/references/protocol/transactions/types/offercancel.md
-[OfferCancelトランザクション]: /docs/references/protocol/transactions/types/offercancel.md
 [OfferCreate transaction]: /docs/references/protocol/transactions/types/offercreate.md
 [OfferCreate transactions]: /docs/references/protocol/transactions/types/offercreate.md
 [OfferCreate]: /docs/references/protocol/transactions/types/offercreate.md
-[OfferCreateトランザクション]: /docs/references/protocol/transactions/types/offercreate.md
 [OracleDelete transaction]: /docs/references/protocol/transactions/types/oracledelete.md
-[OracleDeleteトランザクション]: /docs/references/protocol/transactions/types/oracledelete.md
 [OracleDelete transactions]: /docs/references/protocol/transactions/types/oracledelete.md
-[OracleDeleteトランザクション]: /docs/references/protocol/transactions/types/oracledelete.md
 [Oracle entry]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
-[Oracleエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
 [Oracle object]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
-[Oracleオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
 [OracleSet transaction]: /docs/references/protocol/transactions/types/oracleset.md
-[OracleSetトランザクション]: /docs/references/protocol/transactions/types/oracleset.md
 [OracleSet transactions]: /docs/references/protocol/transactions/types/oracleset.md
-[OracleSetトランザクション]: /docs/references/protocol/transactions/types/oracleset.md
 [OwnerPaysFee amendment]: /resources/known-amendments.md#ownerpaysfee
 [PayChan amendment]: /resources/known-amendments.md#paychan
 [PayChannel entry]: /docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md
 [PayChannel object]: /docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md
-[PayChannelエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md
-[PayChannelオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md
 [Payment transaction]: /docs/references/protocol/transactions/types/payment.md
 [Payment transactions]: /docs/references/protocol/transactions/types/payment.md
 [PaymentChannelClaim transaction]: /docs/references/protocol/transactions/types/paymentchannelclaim.md
 [PaymentChannelClaim transactions]: /docs/references/protocol/transactions/types/paymentchannelclaim.md
 [PaymentChannelClaim]: /docs/references/protocol/transactions/types/paymentchannelclaim.md
-[PaymentChannelClaimトランザクション]: /docs/references/protocol/transactions/types/paymentchannelclaim.md
 [PaymentChannelCreate transaction]: /docs/references/protocol/transactions/types/paymentchannelcreate.md
 [PaymentChannelCreate transactions]: /docs/references/protocol/transactions/types/paymentchannelcreate.md
 [PaymentChannelCreate]: /docs/references/protocol/transactions/types/paymentchannelcreate.md
-[PaymentChannelCreateトランザクション]: /docs/references/protocol/transactions/types/paymentchannelcreate.md
 [PaymentChannelFund transaction]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [PaymentChannelFund transactions]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [PaymentChannelFund]: /docs/references/protocol/transactions/types/paymentchannelfund.md
-[PaymentChannelFundトランザクション]: /docs/references/protocol/transactions/types/paymentchannelfund.md
 [Payment]: /docs/references/protocol/transactions/types/payment.md
-[Paymentトランザクション]: /docs/references/protocol/transactions/types/payment.md
 [PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [PermissionedDomainSet transaction]: /docs/references/protocol/transactions/types/permissioneddomainset.md
+[PermissionedDomainSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
 [permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
+[許可型ドメイン]: /@l10n/ja/docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [MPToken entry]: /docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
 [MPTokenAuthorize transaction]: /docs/references/protocol/transactions/types/mptokenauthorize.md
@@ -275,29 +209,20 @@
 [RequireFullyCanonicalSig amendment]: /resources/known-amendments.md#requirefullycanonicalsig
 [RippleState entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [RippleState object]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
-[RippleStateエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
-[RippleStateオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
-[Rippleエポック以降の経過秒数]: /docs/references/protocol/data-types/basic-data-types.md#時間の指定
 [SHA-512Half]: /docs/references/protocol/data-types/basic-data-types.md#hashes
-[SHA-512ハーフ]: /docs/references/protocol/data-types/basic-data-types.md#ハッシュ
 [SHAMapV2 amendment]: /resources/known-amendments.md#shamapv2
 [Sequence Number]: /docs/references/protocol/data-types/basic-data-types.md#account-sequence
 [SetFee pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/setfee.md
 [SetFee pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/setfee.md
 [SetFee]: /docs/references/protocol/transactions/pseudo-transaction-types/setfee.md
-[SetFee疑似トランザクション]: /docs/references/protocol/transactions/pseudo-transaction-types/setfee.md
 [SetRegularKey transaction]: /docs/references/protocol/transactions/types/setregularkey.md
 [SetRegularKey transactions]: /docs/references/protocol/transactions/types/setregularkey.md
 [SetRegularKey]: /docs/references/protocol/transactions/types/setregularkey.md
-[SetRegularKeyトランザクション]: /docs/references/protocol/transactions/types/setregularkey.md
 [SignerList entry]: /docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
 [SignerList object]: /docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
-[SignerListエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
-[SignerListオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
 [SignerListSet transaction]: /docs/references/protocol/transactions/types/signerlistset.md
 [SignerListSet transactions]: /docs/references/protocol/transactions/types/signerlistset.md
 [SignerListSet]: /docs/references/protocol/transactions/types/signerlistset.md
-[SignerListSetトランザクション]: /docs/references/protocol/transactions/types/signerlistset.md
 [SingleAssetVault amendment]: /resources/known-amendments.md#singleassetvault
 [SortedDirectories amendment]: /resources/known-amendments.md#sorteddirectories
 [Specifying Currency Amounts]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
@@ -308,13 +233,10 @@
 [TickSize amendment]: /resources/known-amendments.md#ticksize
 [Ticket entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
 [Ticket object]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
-[Ticketエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
-[Ticketオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
 [TicketBatch amendment]: /resources/known-amendments.md#ticketbatch
 [TicketCreate transaction]: /docs/references/protocol/transactions/types/ticketcreate.md
 [TicketCreate transactions]: /docs/references/protocol/transactions/types/ticketcreate.md
 [TicketCreate]: /docs/references/protocol/transactions/types/ticketcreate.md
-[TicketCreateトランザクション]: /docs/references/protocol/transactions/types/ticketcreate.md
 [Tickets amendment]: /resources/known-amendments.md#tickets
 [TokenEscrow amendment]: /resources/known-amendments.md#tokenescrow
 [Transaction Cost]: /docs/concepts/transactions/transaction-cost.md
@@ -322,102 +244,73 @@
 [TrustSet transactions]: /docs/references/protocol/transactions/types/trustset.md
 [TrustSetAuth amendment]: /resources/known-amendments.md#trustsetauth
 [TrustSet]: /docs/references/protocol/transactions/types/trustset.md
-[TrustSetトランザクション]: /docs/references/protocol/transactions/types/trustset.md
 [UNLModify pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
 [UNLModify pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
 [UNLModify]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
-[UNLModify疑似トランザクション]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
 [XChainAddAccountCreateAttestation transaction]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainAddAccountCreateAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainAddAccountCreateAttestation]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
-[XChainAddAccountCreateAttestationトランザクション]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainAddClaimAttestation transaction]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
 [XChainAddClaimAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
-[XChainAddClaimAttestationトランザクション]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
 [XChainBridge amendment]: /resources/known-amendments.md#xchainbridge
 [XChainCreateBridge transaction]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateBridge transactions]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateBridge]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
-[XChainCreateBridgeトランザクション]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateClaimID transaction]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimID transactions]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimID]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
-[XChainCreateClaimIDトランザクション]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainOwnedClaimID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid
 [XRP, in drops]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [XRPFees amendment]: /resources/known-amendments.md#xrpfees
-[XRP、drop単位]: /docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
-[XRPのdrop数]: /docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
 [account_channels command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
 [account_channels method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
-[account_channelsメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
 [account_currencies command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
 [account_currencies method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
-[account_currenciesメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
 [account_info command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_info.md
 [account_info method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_info.md
-[account_infoメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_info.md
 [account_lines command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
 [account_lines method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
-[account_linesメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
 [account_nfts command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
 [account_nfts method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
-[account_nftsメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
 [account_objects command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
 [account_objects method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
-[account_objectsメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
 [account_offers command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_offers.md
 [account_offers method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_offers.md
-[account_offersメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_offers.md
 [account_tx command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx.md
 [account_tx method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx.md
-[account_txメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx.md
 [admin command]: /docs/references/http-websocket-apis/admin-api-methods/index.md
 [amm_info command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
 [amm_info method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
-[amm_infoメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
 [base58]: /docs/references/protocol/data-types/base58-encodings.md
 [book_offers command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
 [book_offers method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
-[book_offersメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
 [can_delete command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
 [can_delete method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-[can_deleteメソッド]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
 [channel_authorize command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
 [channel_authorize method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
-[channel_authorizeメソッド]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
 [channel_verify command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [channel_verify method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
-[channel_verifyメソッド]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [common fields]: /docs/references/protocol/transactions/common-fields.md
 [connect command]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
 [connect method]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
-[connectメソッド]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
 [consensus_info command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
 [consensus_info method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
-[consensus_infoメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
 [crawl_shards command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
 [crawl_shards method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
-[crawl_shardsメソッド]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [deposit_authorized command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
 [deposit_authorized method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
-[deposit_authorizedメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
 [download_shard command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
 [download_shard method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
-[download_shardメソッド]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
 [drops of XRP]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [feature command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
 [feature method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
-[featureメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
 [fee command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
 [fee levels]: /docs/concepts/transactions/transaction-cost.md#fee-levels
 [fee method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
-[feeメソッド]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
 [fetch_info command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
 [fetch_info method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
-[fetch_infoメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
 [fix1201 amendment]: /resources/known-amendments.md#fix1201
 [fix1368 amendment]: /resources/known-amendments.md#fix1368
 [fix1373 amendment]: /resources/known-amendments.md#fix1373
@@ -449,181 +342,110 @@
 [fixTakerDryOfferRemoval amendment]: /resources/known-amendments.md#fixtakerdryofferremoval
 [fixTrustLinesToSelf amendment]: /resources/known-amendments.md#fixtrustlinestoself
 [get_aggregate_price command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
-[get_aggregate_priceコマンド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
 [get_aggregate_price method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
-[get_aggregate_priceメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
 [gateway_balances command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [gateway_balances method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
-[gateway_balancesメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [get_counts command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
 [get_counts method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
-[get_countsメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 [identifying hash]: /docs/concepts/transactions/index.md#identifying-transactions
 [json command]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md
 [json method]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md
-[jsonメソッド]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md
 [ledger command]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
 [ledger format]: /docs/references/protocol/ledger-data/ledger-entry-types/index.md
 [ledger index]: /docs/references/protocol/data-types/basic-data-types.md#ledger-index
 [ledger method]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
 [ledger_accept command]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
 [ledger_accept method]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
-[ledger_acceptメソッド]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
 [ledger_cleaner command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
 [ledger_cleaner method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
-[ledger_cleanerメソッド]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
 [ledger_closed command]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
 [ledger_closed method]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
-[ledger_closedメソッド]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
 [ledger_current command]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md
 [ledger_current method]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md
-[ledger_currentメソッド]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md
 [ledger_data command]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.md
 [ledger_data method]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.md
-[ledger_dataメソッド]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.md
 [ledger_entry command]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md
 [ledger_entry method]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md
-[ledger_entryメソッド]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md
 [ledger_request command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
 [ledger_request method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
-[ledger_requestメソッド]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
-[ledgerメソッド]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
 [log_level command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
 [log_level method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
-[log_levelメソッド]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
 [logrotate command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
 [logrotate method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
-[logrotateメソッド]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
 [manifest command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
 [manifest method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
-[manifestメソッド]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
 [nft_buy_offers command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
 [nft_buy_offers method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
-[nft_buy_offersメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
 [nft_info command]: /docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
 [nft_info method]: /docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
-[nft_infoメソッド]: /docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
 [nft_sell_offers command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
 [nft_sell_offers method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
-[nft_sell_offersメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
 [node key pair]: /docs/concepts/networks-and-servers/peer-protocol.md#node-key-pair
 [node public key]: /docs/concepts/networks-and-servers/peer-protocol.md#node-key-pair
 [noripple_check command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md
 [noripple_check method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md
-[noripple_checkメソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md
 [path_find command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
 [path_find method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
-[path_findメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
 [peer reservation]: /docs/concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations
 [peer reservations]: /docs/concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations
 [peer_reservations_add command]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md
 [peer_reservations_add method]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md
-[peer_reservations_addメソッド]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md
 [peer_reservations_del command]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md
 [peer_reservations_del method]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md
-[peer_reservations_delメソッド]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md
 [peer_reservations_list command]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md
 [peer_reservations_list method]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md
-[peer_reservations_listメソッド]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md
 [peers command]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md
 [peers method]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md
-[peersメソッド]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md
 [ping command]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/ping.md
 [ping method]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/ping.md
-[pingメソッド]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/ping.md
 [print command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md
 [print method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md
-[printメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md
 [public servers]: /docs/tutorials/public-servers.md
 [random command]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
 [random method]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
-[randomメソッド]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
 [result code]: /docs/references/protocol/transactions/transaction-results/index.md
 [ripple-lib]: https://github.com/XRPLF/xrpl.js
 [ripple_path_find command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [ripple_path_find method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
-[ripple_path_findメソッド]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [seconds since the Ripple Epoch]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
-[リップルエポックからの秒数]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [server_definitions method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
 [server_info command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_info method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
-[server_infoメソッド]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_state command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
 [server_state method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
-[server_stateメソッド]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
 [sign command]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
 [sign method]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
 [sign_for command]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
 [sign_for method]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
-[sign_forメソッド]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
-[signメソッド]: /docs/references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
 [stand-alone mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#stand-alone-mode
 [standard format]: /docs/references/http-websocket-apis/api-conventions/response-formatting.md
 [String Number]: /docs/references/protocol/data-types/currency-formats#string-numbers
 [stop command]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md
 [stop method]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md
-[stopメソッド]: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md
 [submit command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
 [submit method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
 [submit_multisigned command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
 [submit_multisigned method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
-[submit_multisignedメソッド]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
-[submitメソッド]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
 [subscribe command]: /docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md
 [subscribe method]: /docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md
-[subscribeメソッド]: /docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md
 [transaction cost]: /docs/concepts/transactions/transaction-cost.md
 [transaction_entry command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
 [transaction_entry method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
-[transaction_entryメソッド]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
 [tx command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
 [tx method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
 [tx_history command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
 [tx_history method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
-[tx_historyメソッド]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
-[txメソッド]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
 [universal error types]: /docs/references/http-websocket-apis/api-conventions/error-formatting.md#universal-errors
 [unsubscribe command]: /docs/references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md
 [unsubscribe method]: /docs/references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md
-[unsubscribeメソッド]: /docs/references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md
 [validation_create command]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
 [validation_create method]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
-[validation_createメソッド]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
 [validator_info command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
 [validator_info method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
-[validator_infoメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
 [validator_list_sites command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
 [validator_list_sites method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
-[validator_list_sitesメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
 [validators command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
 [validators method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
-[validatorsメソッド]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
 [wallet_propose command]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
 [wallet_propose method]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
-[wallet_proposeメソッド]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
-[アドレス]: /docs/references/protocol/data-types/basic-data-types.md#アドレス
-[シーケンス番号]: /docs/references/protocol/data-types/basic-data-types.md#アカウントシーケンス
-[スタンドアロンモード]: /docs/concepts/networks-and-servers/rippled-server-modes.md#スタンドアロンモード
-[トランザクションコスト]: /docs/concepts/transactions/transaction-cost.md
-[ノードキーペア]: /docs/concepts/networks-and-servers/peer-protocol.md#ノードキーペア
-[ノード公開鍵]: /docs/concepts/networks-and-servers/peer-protocol.md#ノードキーペア
-[ハッシュ]: /docs/references/protocol/data-types/basic-data-types.md#ハッシュ
-[ピアリザベーション]: /docs/concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション
-[マーカー]: /docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
-[レジャーの指定]: /docs/references/protocol/data-types/basic-data-types.md#レジャーの指定
-[レジャーインデックス]: /docs/references/protocol/data-types/basic-data-types.md#レジャーインデックス
-[レジャーフォーマット]: /docs/references/protocol/ledger-data/index.md
-[レポートモード]: /docs/concepts/networks-and-servers/rippled-server-modes.md#レポートモード
-[公開サーバ]: /docs/tutorials/public-servers.md
-[共通フィールド]: /docs/references/protocol/transactions/common-fields.md
-[内部の型]: /docs/references/protocol/binary-format.md
-[手数料レベル]: /docs/concepts/transactions/transaction-cost.md#手数料レベル
-[時間の指定]: /docs/references/protocol/data-types/basic-data-types.md#時間の指定
-[標準フォーマット]: /docs/references/http-websocket-apis/api-conventions/response-formatting.md
-[汎用エラータイプ]: /docs/references/http-websocket-apis/api-conventions/error-formatting.md#汎用エラー
-[識別用ハッシュ]: /docs/concepts/transactions/index.md#トランザクションの識別
-[通貨コード]: /docs/references/protocol/data-types/currency-formats.md#通貨コード
-[通貨額]: /docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
-[通貨額の指定]: /docs/references/protocol/data-types/basic-data-types.md#通貨額の指定

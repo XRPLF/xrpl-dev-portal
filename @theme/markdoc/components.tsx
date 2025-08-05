@@ -202,7 +202,10 @@ export function TxExample(props: {
 }
 
 function shieldsIoEscape(s: string) {
-  return s.trim().replaceAll('-', '--').replaceAll('_', '__')
+  return s.trim()
+    .replace(/-/g, '--')
+    .replace(/_/g, '__')
+    .replace(/%/g, '%25')
 }
 
 export function NotEnabled() {
@@ -211,4 +214,169 @@ export function NotEnabled() {
   return (
     <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><i className="fa fa-flask"></i></span>
   )
+}
+
+// Type definitions for amendments
+type Amendment = {
+  name: string;
+  rippled_version: string;
+  tx_hash?: string;
+  consensus?: string;
+  date?: string;
+  id: string;
+};
+
+type AmendmentsResponse = {
+  amendments: Amendment[];
+};
+
+// Generate amendments table with live mainnet data
+export function AmendmentsTable() {
+  const [amendments, setAmendments] = React.useState<Amendment[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+
+  React.useEffect(() => {
+    const fetchAmendments = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`https://vhs.prod.ripplex.io/v1/network/amendments/vote/main/`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data: AmendmentsResponse = await response.json();
+        
+        // Sort amendments table
+        const sortedAmendments = data.amendments
+          .sort((a: Amendment, b: Amendment) => {
+            // Sort by status priority (lower number = higher priority)
+            const getStatusPriority = (amendment: Amendment): number => {
+              if (amendment.consensus) return 1; // Open for Voting
+              if (amendment.tx_hash) return 2; // Enabled
+            };
+
+            const priorityA = getStatusPriority(a);
+            const priorityB = getStatusPriority(b);
+
+            if (priorityA !== priorityB) {
+              return priorityA - priorityB;
+            }
+
+            // Sort by rippled_version (descending)
+            if (a.rippled_version !== b.rippled_version) {
+              return b.rippled_version.localeCompare(a.rippled_version, undefined, { numeric: true });
+            }
+            
+            // Finally sort by name (ascending)
+            return a.name.localeCompare(b.name);
+          });
+        
+        setAmendments(sortedAmendments);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch amendments');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAmendments();
+  }, []);
+
+  // Fancy schmancy loading icon
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '2rem' }}>
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">{translate("amendment.loading", "Loading amendments...")}</span>
+        </div>
+        <div style={{ marginTop: '1rem' }}>{translate("amendment.loading", "Loading amendments...")}</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        <strong>{translate("amendment.error", "Error loading amendments:")}:</strong> {error}
+      </div>
+    );
+  }
+
+  // Render amendment table
+  return (
+    <div className="md-table-wrapper">
+      <table className="md">
+        <thead>
+          <tr>
+            <th align="left" data-label="Name">{translate("amendment.table.name", "Name")}</th>
+            <th align="left" data-label="Introduced">{translate("amendment.table.introduced", "Introduced")}</th>
+            <th align="left" data-label="Status">{translate("amendment.table.status", "Status")}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {amendments.map((amendment) => (
+            <tr key={amendment.id}>
+              <td align="left">
+                <Link to={`#${amendment.name.toLowerCase()}`}>{amendment.name}</Link>
+              </td>
+              <td align="left">{amendment.rippled_version}</td>
+              <td align="left">
+                <AmendmentBadge amendment={amendment} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function AmendmentBadge(props: { amendment: Amendment }) {
+  const [status, setStatus] = React.useState<string>('Loading...');
+  const [href, setHref] = React.useState<string | undefined>(undefined);
+  const [color, setColor] = React.useState<string>('blue');
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+
+  const enabledLabel = translate("amendment.status.enabled", "Enabled");
+  const votingLabel = translate("amendment.status.openForVoting", "Open for Voting");
+
+  React.useEffect(() => {
+    const amendment = props.amendment;
+    
+    // Check if amendment is enabled (has tx_hash)
+    if (amendment.tx_hash) {
+      const enabledDate = new Date(amendment.date).toISOString().split('T')[0];
+      setStatus(`${enabledLabel}: ${enabledDate}`);
+      setColor('green');
+      setHref(`https://livenet.xrpl.org/transactions/${amendment.tx_hash}`);
+    } 
+    // Check if amendment is currently being voted on (has consensus field)
+    else if (amendment.consensus) {
+      setStatus(`${votingLabel}: ${amendment.consensus}`);
+      setColor('80d0e0');
+      setHref(undefined); // No link for voting amendments
+    }
+  }, [props.amendment, enabledLabel, votingLabel]);
+
+  // Split the status at the colon to create two-color badge
+  const parts = status.split(':');
+  const label = shieldsIoEscape(parts[0]);
+  const message = shieldsIoEscape(parts.slice(1).join(':'));
+  
+  const badgeUrl = `https://img.shields.io/badge/${label}-${message}-${color}`;
+
+  if (href) {
+    return (
+      <Link to={href} target="_blank">
+        <img src={badgeUrl} alt={status} className="shield" />
+      </Link>
+    );
+  }
+
+  return <img src={badgeUrl} alt={status} className="shield" />;
 }

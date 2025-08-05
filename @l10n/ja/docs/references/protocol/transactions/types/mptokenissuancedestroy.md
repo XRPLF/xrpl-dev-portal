@@ -33,4 +33,4 @@ labels:
 | `TransactionType`   | 文字列              | UInt16       | 新しいトランザクションタイプMPTokenIssuanceDestroyを示します。 |
 | `MPTokenIssuanceID` | 文字列              | UInt192      | トランザクションによって削除される`MPTokenIssuance`オブジェクトの識別子。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -112,4 +112,4 @@ Transfer-Encoding: chunked
 
 ヘルスチェックの結果を判断するガイダンスについては、[ヘルスチェックの導入](../../../infrastructure/troubleshooting/health-check-interventions.md)をご覧ください。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

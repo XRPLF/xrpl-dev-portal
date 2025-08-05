@@ -57,4 +57,4 @@ Flagsは`MPToken`オブジェクトに紐付けられたプロパティまたは
 | `lsfMPTLocked`     | `0x00000001` | 有効な場合、このアカウントが所有するMPTが現在ロックされており、発行者への価値の送信以外のXRPトランザクションで使用できないことを示します |
 | `lsfMPTAuthorized` | `0x00000002` | (ホワイトリストの場合のみ適用) 設定されている場合、発行者がそのMPTの保有者を承認したことを示します。このフラグは`MPTokenAuthorize`トランザクションを使用して設定できます。また、`tfMPTUnauthorize`フラグを指定した`MPTokenAuthorize`トランザクションを使用して「解除」することもできます。|
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -239,4 +239,4 @@ Connecting to 127.0.0.1:5005
 
 * [汎用エラータイプ][]のすべて。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

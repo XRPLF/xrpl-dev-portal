@@ -153,4 +153,4 @@ AMMのプールに資産がない間は、誰でも[AMMDeleteトランザクシ�
 
 空のAMMを削除することによる払い戻しやインセンティブはありません。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -119,4 +119,4 @@ _`download_shard`メソッドは、権限のないユーザは実行できない
 - `tooBusy` - サーバはすでに、ピアツーピアネットワークから、または以前の`download_shard`リクエストの結果として、シャードをダウンロード中です。
 - `invalidParams` - リクエストで1つ以上の必須フィールドが省略されていたか、または指定されたフィールドのデータタイプが誤っています。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
