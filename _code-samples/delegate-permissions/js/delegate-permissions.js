@@ -11,7 +11,7 @@ async function main() {
     const delegate_address = "r9GAKojMTyexqvy8DXFWYq63Mod5k5wnkT"
     const delegateset = {
         "TransactionType": "DelegateSet",
-        "Account": wallet.address,
+        "Account": wallet.address, // Delegator address
         "Authorize": delegate_address,
         "Permissions": [
             {

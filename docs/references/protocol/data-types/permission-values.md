@@ -36,7 +36,7 @@ For a mapping of transaction types known by a server and their corresponding num
 
 ### List of Non-Delegatable Permissions
 
-Some transaction types are not delegatable. If you attempt to grant these permissions to a delegate, the transaction fails with a [result code](../transactions/transaction-results/) such as `tecNO_PERMISSION`. This includes all transaction types that can be used to grant other permissions to different key pairs or accounts. Additionally, all [pseudo-transaction types](/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types) are not delegatable since they are not meant to be sent by normal accounts anyway.
+Some transaction types can't be delegated. If you attempt to grant these permissions to a delegate, the transaction fails with a [result code](../transactions/transaction-results/) such as `tecNO_PERMISSION`. This includes all transaction types that can be used to grant other permissions to different key pairs or accounts. Additionally, all [pseudo-transaction types](/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types) can't be delegated since they can't be sent by normal accounts anyway.
 
 The following permissions cannot be delegated:
 
