@@ -27,22 +27,6 @@ The `FeeSettings` entry contains the current base [transaction cost](../../../..
 
 In addition to the [common fields](../common-fields.md), the {% code-page-name /%} ledger entry has the following fields:
 
-| Name                | JSON Type | [Internal Type][] | Required? | Description            |
-|:--------------------|:----------|:------------------|:----------|:-----------------------|
-| `BaseFee`           | String    | UInt64            | Yes       | The [transaction cost](../../../../concepts/transactions/transaction-cost.md) of the "reference transaction" in drops of XRP as hexadecimal. |
-| `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `FeeSettings` objects. The value is always `0`. |
-| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0073`, mapped to the string `FeeSettings`, indicates that this object contains the ledger's fee settings. |
-| `ReferenceFeeUnits` | Number    | UInt32            | Yes       | The `BaseFee` translated into "fee units". |
-| `ReserveBase`       | Number    | UInt32            | Yes       | The [base reserve](../../../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
-| `ReserveIncrement`  | Number    | UInt32            | Yes       | The incremental [owner reserve](../../../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
-| `PreviousTxnID`     | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
-| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
-
-{% admonition type="danger" name="Warning" %}The JSON format for this ledger entry type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP][Currency Amount].{% /admonition %}
-
-
-If the _[XRPFees amendment][]_ is enabled, the `FeeSettings` object has these fields instead:
-
 | Name                    | JSON Type | [Internal Type][] | Required? | Description            |
 |:------------------------|:----------|:------------------|:----------|:-----------------------|
 | `BaseFeeDrops`          | String    | Amount            | Yes       | The [transaction cost](../../../../concepts/transactions/transaction-cost.md) of the "reference transaction" in drops of XRP. |
@@ -50,6 +34,8 @@ If the _[XRPFees amendment][]_ is enabled, the `FeeSettings` object has these fi
 | `LedgerEntryType`       | String    | UInt16            | Yes       | The value `0x0073`, mapped to the string `FeeSettings`, indicates that this object contains the ledger's fee settings. |
 | `ReserveBaseDrops`      | String    | Amount            | Yes       | The [base reserve](../../../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve) for an account in the XRP Ledger, as drops of XRP. |
 | `ReserveIncrementDrops` | String    | Amount            | Yes       | The incremental [owner reserve](../../../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve) for owning objects, as drops of XRP. |
+| `PreviousTxnID`     | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment]
 
 
 ## {% $frontmatter.seo.title %} Flags
