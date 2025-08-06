@@ -9,11 +9,17 @@ labels:
 # AMMDeposit
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")
 
-_([AMM amendment][]により追加されました。)_
-
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)（AMM）インスタンスに資金を預け、AMMの流動性プロバイダートークン（ _LPトークン_ ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。
 
 トランザクションが成功すると、LPトークンを保持するためにAMMアカウント(リミット0)に[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)が作成されます。
+
+{% admonition type="info" name="注記" %}
+次の場合、いずれの資産もAMMに預けることはできません。
+- AMMのプールにある資産の一方または両方がトークン発行者によって[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されている
+- AMMのプールにある資産の一方または両方を保有する権限がない
+{% /admonition %}
+
+_([AMM amendment][]により追加されました。)_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -40,6 +46,8 @@ _([AMM amendment][]により追加されました。)_
 }
 ```
 
+{% tx-example txid="BB00ECE591DFD0F8F410C5C2C639F1C1D1D2EFD92DF567AA226C3BDBE712FDD9" /%}
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド    | JSONの型     | [内部の型][] | 必須?  | 説明 |
@@ -51,6 +59,7 @@ _([AMM amendment][]により追加されました。)_
 | `EPrice`      | [通貨額][]   | Amount       | いいえ | 受け取った各LPトークンに支払う、預け入れ資産の最大有効価格です。 |
 | `LPTokenOut`  | [通貨額][]   | Amount       | いいえ | AMMのLPトークンの購入数量。 |
 | `TradingFee`  | 数値         | UInt16       | いいえ | AMMプールの取引手数料を1/100,000の単位で投票します。1は0.001%に相当します。最大値は1000で、1%の手数料を示します。 |
+
 
 ### AMMDepositモード
 
@@ -131,6 +140,7 @@ AMMDepositトランザクションは、以下のような[`Flags`フィール�
 | `tecFROZEN`             | トランザクションは[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)されているトークンを預けようとしました。 |
 | `tecINSUF_RESERVE_LINE` | このトランザクションの送信者は、この処理による[準備金要件](../../../../concepts/accounts/reserves.md)の増加の対象であり、LPトークンを保持するための新しいトラストラインが必要で、そのための追加の所有者準備金分のXRPを保有していないためと思われます。 |
 | `tecUNFUNDED_AMM`       | 送信者の残高が、指定された預け入れを行うのに十分な量ではありません。 |
+| `temBAD_AMM_TOKENS`     | トランザクションでLPトークンを指定しましたが、`issuer`がAMMに紐づくAccountアドレスではない、または`currency`がこのAMMのLPトークンの通貨コードではない、またはトランザクションでこのAMMのLPトークンをAssetフィールドのいずれかに指定しました。 |
 | `temBAD_AMOUNT`         | トランザクションで指定された金額が無効です。例えば、金額がマイナスなど。 |
 | `temBAD_FEE`            | トランザクションで指定された手数料の値が無効です。例えば、取引手数料が許容範囲外など。 |
 | `temMALFORMED`          | トランザクションで無効なフィールドの組み合わせが指定されました。詳細は、[AMMDepositモード](#ammdepositモード)をご覧ください。 |

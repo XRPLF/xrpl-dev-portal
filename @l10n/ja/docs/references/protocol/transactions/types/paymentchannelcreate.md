@@ -1,6 +1,4 @@
 ---
-html: paymentchannelcreate.html
-parent: transaction-types.html
 seo:
     description: 新しいペイメントチャネルを作成します。
 labels:
@@ -29,8 +27,9 @@ _[PayChan Amendment][]により追加されました。_
 }
 ```
 
+{% tx-example txid="711C4F606C63076137FAE90ADC36379D7066CF551E96DA6FE2BDAB5ECBFACF2B" /%}
+
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 
 | フィールド            | JSONの型 | [内部の型][] | 説明               |

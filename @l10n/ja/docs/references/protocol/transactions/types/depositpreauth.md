@@ -1,6 +1,4 @@
 ---
-html: depositpreauth.html
-parent: transaction-types.html
 seo:
     description: DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。
 labels:
@@ -9,11 +7,12 @@ labels:
 # DepositPreauth
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")
 
-_[DepositPreauth Amendment][]により追加されました。_
 
 DepositPreauthトランザクションは、あなたのアカウントへの支払いを送金するための事前承認を付与します。これは、あなたが[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用している（または使用する予定がある）場合にのみ有用です。
 
 {% admonition type="success" name="ヒント" %}このトランザクションを使用して、Deposit Authorizationを有効にする前に事前承認できます。これは、Deposit Authorizationの義務化への円滑な移行に役立ちます。{% /admonition %}
+
+_[DepositPreauth Amendment][]により追加されました。_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -51,7 +50,8 @@ DepositPreauthトランザクションは、あなたのアカウントへの支
 {% /tab %}
 {% /tabs %}
 
-[トランザクションを試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_DepositPreauth%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22CB1BF910C93D050254C049E9003DA1A265C107E0C8DE4A7CFF55FADFD39D5656%22%2C%22binary%22%3Afalse%7D)
+{% tx-example txid="CB1BF910C93D050254C049E9003DA1A265C107E0C8DE4A7CFF55FADFD39D5656" /%}
+
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
