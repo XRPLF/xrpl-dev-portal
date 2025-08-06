@@ -115,4 +115,4 @@ labels:
 - `rippled`実行可能ファイルが`cron`設定で指定したパスで使用可能であることを確認します。必要に応じて実行可能ファイルの絶対パス（`/opt/ripple/bin/rippled`など）を指定します。
 - `rippled`ログで、`SHAMapStore::WRN`で始まるメッセージを調べます。このメッセージが出力されている場合、サーバがネットワークと同期していない状態になったために[オンライン削除が中断されている](online-deletion.md#オンライン削除の中断)可能性があります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

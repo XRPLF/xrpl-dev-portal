@@ -49,4 +49,4 @@ labels:
 | `temUNKNOWN`                   | 内部使用のみ。通常はこのコードは返されません。 |
 | `temDISABLED`                  | このトランザクションには、無効化されているロジックが必要です。通常これは、現行レジャー向けに有効化されていない[Amendment](../../../../concepts/networks-and-servers/amendments.md)を使用しようとしていることを意味します。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

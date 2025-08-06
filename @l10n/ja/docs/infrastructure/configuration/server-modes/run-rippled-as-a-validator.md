@@ -339,4 +339,4 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
   - [validator_list_sitesメソッド][]
   - [validatorsメソッド][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

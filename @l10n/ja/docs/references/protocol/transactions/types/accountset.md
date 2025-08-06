@@ -155,4 +155,5 @@ HTTPおよびWebSocketのAPIでは、TransferRate（相手方に10億単位の�
 
 認可ミンターを削除するには、`ClearFlag`を10（`asfAuthorizedNFTokenMinter`）に設定し、`NFTokenMinter`フィールドを省略します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

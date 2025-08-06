@@ -110,4 +110,4 @@ labels:
 
     本番環境のXRP Ledgerの履歴で最も古い利用可能なレジャーバージョンは、レジャーインデックス**32570**です。レジャー履歴の最初の約2週間分は、当時のサーバのバグが原因で失われています。Test Netやその他のチェーンでは通常、履歴の最初のバージョンはレジャーインデックス**1**です。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

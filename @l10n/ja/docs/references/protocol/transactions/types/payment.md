@@ -190,4 +190,4 @@ _([Credentials amendment][]が必要です。 {% not-enabled /%})_
 Deposit Authorizationを使用しているアカウントが、そのアカウントの現在のXRP残高が[準備金要件](../../../../concepts/accounts/reserves.md)よりも少ない場合、Deposit Authorizationには、誰でもPaymentトランザクションを送信できる特別な例外があります。これは、アカウントが「取引できない」状態になるのを防ぐための緊急措置です。この特別なケースに該当するには、`CredentialIDs`フィールドを使用してはいけません。
 
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

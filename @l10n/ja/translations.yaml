@@ -21,6 +21,21 @@ footer.docs: ドキュメント
 footer.resources: リソース
 footer.community: コミュニティ
 
+time.past.second: 1秒前
+time.past.seconds: "{{value}}秒前"
+time.past.minute: 1分前
+time.past.minutes: "{{value}}分前"
+time.past.hour: 1時間前
+time.past.hours: "{{value}}時間前"
+time.past.day: 1日前
+time.past.days: "{{value}}日前"
+time.past.week: 1週間前
+time.past.weeks: "{{value}}週間前"
+time.past.month: 1ヶ月前
+time.past.months: "{{value}}ヶ月前"
+time.past.year: 1年前
+time.past.years: "{{value}}年前"
+
 sidebar.docs: ドキュメント
 sidebar.docs.introduction.what-is-xrp: XRPとは？
 sidebar.docs.use-cases.tokenization: Tokenization
@@ -124,6 +139,15 @@ footer.community.report-a-scam: 詐欺の報告
 
 component.tryit: 試してみる
 component.queryexampletx: トランザクションの例を確認
+
+# Amendment tracker translations
+amendment.loading: ロード中Amendments...
+amendment.error: Amendmentsの取得エラー...
+amendment.table.name: 名前
+amendment.table.introduced: 登場
+amendment.table.status: ステータス
+amendment.status.enabled: 有効
+amendment.status.openForVoting: 投票中
 
 # index.page.tsx
 home.hero.h1part1: ビジネスのための

@@ -38,4 +38,4 @@ OfferCancelトランザクションは、XRP LedgerからOfferオブジェクト
 
 OfferCancelメソッドは、一致するシーケンス番号が見つからない場合でも[tesSUCCESS](../transaction-results/tes-success.md)を返します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

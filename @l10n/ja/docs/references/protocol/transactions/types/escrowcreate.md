@@ -35,7 +35,7 @@ _[Escrow Amendment][]により追加されました。_
 
 | フィールド            | JSONの型 | [内部の型][] | 説明               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてエスクローに留保する[XRP、drop単位][]の額。エスクローに留保されたXRPは`Destination`アドレスに送金されるか（`FinishAfter`時刻の経過後）、または送金元に戻されます（`CancelAfter`時刻の経過後）。 |
+| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてエスクローに留保する[XRPのdrop数][]の額。エスクローに留保されたXRPは`Destination`アドレスに送金されるか（`FinishAfter`時刻の経過後）、または送金元に戻されます（`CancelAfter`時刻の経過後）。 |
 | `Destination`    | 文字列    | AccountID         | エスクローに留保されたXRPを受領するアドレス。 |
 | `CancelAfter`    | 数値    | UInt32            | _（省略可）_ このEscrowの有効期限（[Rippleエポック以降の経過秒数][]）。この値は変更できません。この時刻の経過後にのみ資金を送金元に返金できます。 |
 | `FinishAfter`    | 数値    | UInt32            | _（省略可）_ Escrowに留保されたXRPを受取人に対してリリースできる時刻（[Rippleエポック以降の経過秒数][]）。この値は変更できません。この時刻に達するまでは資金を移動できません。 |
@@ -58,4 +58,4 @@ _[Escrow Amendment][]により追加されました。_
 [fix1571 Amendment][]が有効になる前は、`CancelAfter`のみを指定してエスクローを作成することができました。これらのエスクローは、指定された有効期限より前の任意の時刻に誰でも終了できました。
 {% /admonition %}
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

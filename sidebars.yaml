@@ -336,6 +336,7 @@
                 - page: docs/references/protocol/data-types/base58-encodings.md
                 - page: docs/references/protocol/data-types/currency-formats.md
                 - page: docs/references/protocol/data-types/nftoken.md
+                - page: docs/references/protocol/data-types/permission-values.md
             - page: docs/references/protocol/ledger-data/index.md
               expanded: false
               items:
@@ -350,6 +351,7 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/bridge.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/check.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/credential.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/delegate.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/depositpreauth.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/did.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md

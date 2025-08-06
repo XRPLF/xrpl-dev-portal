@@ -722,4 +722,4 @@ labels:
 | `type`      | 文字列 | `consensusPhase`は、このメッセージがコンセンサスストリームからのものであることを示します。 |
 | `consensus` | 文字列 | サーバで実行されている新しいコンセンサスフェーズ。値には、`open`、`establish`、`accepted`などがあります。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

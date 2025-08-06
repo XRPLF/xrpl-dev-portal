@@ -139,4 +139,4 @@ XRPは、XRPの “drop"数を含む整数の文字列として指定され、10
 
 Rippleエポック時間を32ビット変数でUNIXエポック時間に変換しないでください。整数のオーバーフローが発生する恐れがあります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

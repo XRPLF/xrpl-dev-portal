@@ -128,7 +128,7 @@ rippled channel_authorize s█████████████████�
 * いずれかの[汎用エラータイプ][]。
 * `badKeyType` - リクエストの`key_type`パラメーターは、有効なキータイプではありません。(有効なタイプは、`secp256k1`または`ed25519`です。){% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 * `badSeed` - リクエストの`secret`が有効なシークレットキーではありません。
-* `channelAmtMalformed` - リクエストの`amount`が有効な[XRPの額][XRP、drop単位]ではありません。
+* `channelAmtMalformed` - リクエストの`amount`が有効な[XRPの額][XRPのdrop数]ではありません。
 * `channelMalformed` - リクエストの`channel_id`が有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列です。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

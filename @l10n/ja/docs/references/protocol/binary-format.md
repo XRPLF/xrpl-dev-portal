@@ -387,4 +387,4 @@ JSONオブジェクトにこれらのフィールドが含まれている場合�
 
 全体として、XChainBridgeフィールドは常に656、816、または976ビット（82、102、または122バイト）のいずれかになります。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

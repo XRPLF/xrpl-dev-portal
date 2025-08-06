@@ -510,4 +510,4 @@ $("#tx_read").click((event) => {
   - [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md) - メタデータフォーマットとメタデータに表示されるフィールドの概要
   - [トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md) - トランザクションのすべての結果コードを掲載した表一覧
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -213,4 +213,4 @@ AWSインスタンスストア（`ephemeral`ストレージ）では適切なパ
         - [server_infoメソッド][] - 同期の状態や、ディスク上で利用可能なレジャー履歴のバージョン数など、サーバに関する一般的な情報を取得します。
         - [get_countsメソッド][] - 追加のサーバの正常情報、特にRAM内に様々な種類のオブジェクトをいくつ保持しているかを取得します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

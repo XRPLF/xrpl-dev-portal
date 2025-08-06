@@ -51,4 +51,4 @@ _（[Checks Amendment][]が必要です）_
 - Checkの追加後に送金元が[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)条件を満たすのに十分なXRPを保有していない場合、トランザクションは結果コード`tecINSUFFICIENT_RESERVE`で失敗します。
 - Checkの送金元または送金先のいずれかがレジャーでこれ以上のオブジェクトを所有できない場合、トランザクションは結果コード`tecDIR_FULL`で失敗します。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

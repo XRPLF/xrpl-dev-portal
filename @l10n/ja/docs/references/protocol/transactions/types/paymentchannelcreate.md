@@ -34,7 +34,7 @@ _[PayChan Amendment][]により追加されました。_
 
 | フィールド            | JSONの型 | [内部の型][] | 説明               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてこのChannelに留保する[XRP、drop単位][]の額。このChannelのオープン時には、XRPを`Destination`アドレスにのみ移動できます。Channelが閉鎖すると、未請求のXRPは支払元アドレスの残高に戻されます。 |
+| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてこのChannelに留保する[XRPのdrop数][]の額。このChannelのオープン時には、XRPを`Destination`アドレスにのみ移動できます。Channelが閉鎖すると、未請求のXRPは支払元アドレスの残高に戻されます。 |
 | `Destination`    | 文字列    | AccountID         | このChannelに対するXRPクレームを受け取るアドレス。Channelの「宛先アドレス」とも呼ばれます。送金元（`Account`）と同一にはできません。 |
 | `SettleDelay`    | 数値    | UInt32            | Channelに未請求のXRPがある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する時間。 |
 | `PublicKey`      | 文字列    | Blob              | 送信元がこのチャネルに対する請求に使用する鍵ペアの33バイトの公開鍵を16進数で指定します。これはsecp256k1またはEd25519の公開鍵であることができます。キーペアの詳細については、[鍵の導出](../../../../concepts/accounts/cryptographic-keys.md#鍵導出) をご覧ください。 |
@@ -43,4 +43,4 @@ _[PayChan Amendment][]により追加されました。_
 
 `Destination` アカウントがペイメントチャネルの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION` 失敗します。_([DisallowIncoming amendment][] が必要です)_。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

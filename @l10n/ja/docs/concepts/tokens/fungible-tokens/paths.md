@@ -113,4 +113,4 @@ XRPは任意のアドレスに直接送金できるため、[XRP間のトラン�
   - [path_findメソッド][]（WebSocketのみ）
   - [ripple_path_findメソッド][]
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

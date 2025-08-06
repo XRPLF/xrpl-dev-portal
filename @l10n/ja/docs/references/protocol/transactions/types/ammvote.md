@@ -55,4 +55,4 @@ _([AMM amendment][]により追加されました。)_
 | `temBAD_FEE`            | このトランザクションの`TradingFee`は正しくありません。 |
 | `terNO_AMM`             | このトランザクションの資産ペアの自動マーケットメーカー インスタンスが存在しません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

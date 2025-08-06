@@ -49,4 +49,4 @@ _[Escrow Amendment][]により追加されました。_
 
 [本番環境以外のネットワーク](../../../../concepts/networks-and-servers/parallel-networks.md)では、Escrowの送金先アカウントを[削除](../../../../concepts/accounts/deleting-accounts.md)できる場合があります。この場合、 Escrowを終了しようとしても結果`tecNO_TARGET`で失敗しますが、Escrowオブジェクトは通常期限切れになる場合を除き、維持されます。別の支払いで送金先アカウントが再作成された場合、 Escrowは正常に終了できます。Escrowの送金先アカウントは、[fix1523 Amendment](/resources/known-amendments.md#fix1523)が有効になる前にEscrowが作成された場合にのみ削除できます。本番環境の XRP LedgerにはそのようなEscrowは存在しないため、本番環境のXRP Ledgerではこのようなエッジケースには対応できません。また、このエッジケースは、fix1523とEscrowのAmendmentを同時に有効にするテストネットワークでも不可能です。これは、[新しいジェネシスレジャーを開始](../../../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md)するときのデフォルトです。
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
