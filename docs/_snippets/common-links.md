@@ -75,6 +75,10 @@
 [DID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DeletableAccounts amendment]: /resources/known-amendments.md#deletableaccounts
 [DeepFreeze amendment]: /resources/known-amendments.md#deepfreeze
+[Delegate ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/delegate.md
+[DelegateSet]: /docs/references/protocol/transactions/types/delegateset.md
+[DelegateSet transaction]: /docs/references/protocol/transactions/types/delegateset.md
+[DelegateSet transactions]: /docs/references/protocol/transactions/types/delegateset.md
 [DepositAuth amendment]: /resources/known-amendments.md#depositauth
 [DepositPreauth amendment]: /resources/known-amendments.md#depositpreauth
 [DepositPreauth entry]: /docs/references/protocol/transactions/types/depositpreauth.md
@@ -125,6 +129,9 @@
 [LedgerStateFix transactions]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFix]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [Marker]: /docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
+[MPTokenIssuanceSet]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
+[MPTokenIssuanceSet transaction]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
+[MPTokenIssuanceSet transactions]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
 [MPTokensV1 amendment]: /resources/known-amendments.md#mptokensv1
 [MultiSign amendment]: /resources/known-amendments.md#multisign
 [MultiSignReserve amendment]: /resources/known-amendments.md#multisignreserve
@@ -402,6 +409,7 @@
 [ripple_path_find command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [ripple_path_find method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [seconds since the Ripple Epoch]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
+[server_definitions method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
 [server_info command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_info method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
 [server_state command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
