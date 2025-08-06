@@ -99,4 +99,47 @@ The commandline always uses the latest [API version](#api-versioning).
 
 {% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
 
+## API Versioning
+
+The `rippled` server uses a single integer to identify the API version to use. Currently, there are two API versions: `1` and `2` {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %}. The server reports the range of supported API versions in the `version` API method. <!-- TODO: add a link when `version` method is documented. -->
+
+Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make an `account_tx` request using API version 2 and then make another `account_tx` request using API version 1 from the same connection.
+
+### Default API Version
+
+If you do not specify an API version when making a request directly to the server, the server uses API v1. However, some [client libraries](../../client-libraries.md) automatically use a different API version if you do not specify one. The following table shows which API version each library uses when you don't specify which API version to use:
+
+| Client Library | Default API Version |
+|----------------|---------------------|
+| (None - direct WebSocket / JSON-RPC connection) | 1 |
+| xrpl.js 3.x and earlier | 1 |
+| xrpl.js 4.x and later | 2 |
+| xrpl-py 2.x and earlier | 1 |
+| xrpl-py 3.x and later | 2 |
+
+
+### Breaking Changes
+
+New API versions can introduce breaking changes. The following types of changes are **breaking changes**:
+
+- Removing or renaming a field of a request or response.
+- Changing the type of a field of a request or response.
+- Changing the meaning of a field of a request or a response.
+- Changing the order of positional parameters, or adding a new field before other positional parameters.
+- Removing or renaming an API method.
+- Changing the behavior of an API function visible to existing clients.
+
+Any time a full release introduces a breaking change, it introduces a new API version number.
+
+API versions are subject to change until they are included in a stable release of the server. New API versions are expected to experience multiple breaking changes across development, beta, and pre-release software.
+
+### Non-Breaking Changes
+
+The following types of changes are **non-breaking changes** and may occur without a change of API version number:
+
+- Adding a new field to a request or response, not including positional parameters.
+- Adding a new API method.
+- Fixing a bug so that the API matches prior documentation and behavior.
+
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
