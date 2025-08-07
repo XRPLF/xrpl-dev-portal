@@ -380,3 +380,92 @@ function AmendmentBadge(props: { amendment: Amendment }) {
 
   return <img src={badgeUrl} alt={status} className="shield" />;
 }
+
+export function AmendmentDisclaimer(props: {
+  name: string,
+}) {
+  const [amendmentStatus, setStatus] = React.useState<Amendment | null>(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+
+  const link = () => <Link to={`/resources/known-amendments#${props.name.toLowerCase()}`}>{props.name} amendment</Link>
+
+  React.useEffect(() => {
+    const fetchAmendments = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`https://vhs.prod.ripplex.io/v1/network/amendments/vote/main/`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data: AmendmentsResponse = await response.json()
+        console.log("data.amendments is:", data.amendments)
+
+        let found_amendment = false
+        for (const amendment of data.amendments) {
+          if (amendment.name == props.name) {
+            setStatus(amendment)
+            found_amendment = true
+            break
+          }
+        }
+        if (!found_amendment) {
+          throw new Error(`Couldn't find ${props.name} amendment in status table.`)
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch amendments');
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchAmendments()
+  }, [])
+
+  if (loading) {
+    return (
+      <p><em>
+      {translate("component.amendment-status.requires.1", "Requires the ")}{link()}{translate("component.amendment-status.requires.2", ".")}
+      {" "}
+      <span className="spinner-border text-primary" role="status">
+        <span className="sr-only">{translate("amendment.loading_status", "Loading...")}</span>
+      </span>
+      </em></p>
+    )
+  }
+  
+  if (error) {
+    return (
+      <p><em>
+      {translate("component.amendment-status.requires.1", "Requires the ")}{link()}{translate("component.amendment-status.requires.2", ".")}
+      {" "}
+      <span className="alert alert-danger" style={{display: "block"}}>
+        <strong>{translate("amendment.error_status", "Error loading amendment status")}:</strong> {error}
+      </span>
+      </em></p>
+    )
+  }
+  
+  return (
+    <p><em>(
+      {
+        amendmentStatus.date ? (
+          <>
+          {translate("component.amendment-status.added.1", "Added by the ")}{link()}
+          {translate("component.amendment-status.added.2", ".")}
+          {" "}
+          <AmendmentBadge amendment={amendmentStatus} />
+          </>
+        ) : (
+          <>
+          {translate("component.amendment-status.requires.1", "Requires the ")}{link()}
+          {translate("component.amendment-status.requires.2", ".")}
+          {" "}
+          <AmendmentBadge amendment={amendmentStatus} />
+          </>
+        )
+      }
+    )</em></p>
+  )
+}
