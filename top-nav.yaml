@@ -88,6 +88,7 @@
         - page: ./docs/tutorials/python/index.md
         - page: ./docs/tutorials/java/index.md
         - page: ./docs/tutorials/php/index.md
+        - page: ./docs/tutorials/go/index.md
         - page: ./docs/tutorials/http-websocket-apis/index.md
 
 - group: Resources
