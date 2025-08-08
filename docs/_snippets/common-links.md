@@ -21,8 +21,8 @@
 [AMMWithdraw transaction]: /docs/references/protocol/transactions/types/ammwithdraw.md
 [AMMWithdraw transactions]: /docs/references/protocol/transactions/types/ammwithdraw.md
 [AMMWithdraw]: /docs/references/protocol/transactions/types/ammwithdraw.md
-[API v1]: /docs/references/http-websocket-apis/api-conventions/request-formatting.md#api-versioning
-[API v2]: /docs/references/http-websocket-apis/api-conventions/request-formatting.md#api-versioning
+[API v1]: /docs/references/http-websocket-apis/index.md#api-versioning
+[API v2]: /docs/references/http-websocket-apis/index.md#api-versioning
 [AccountDelete transaction]: /docs/references/protocol/transactions/types/accountdelete.md
 [AccountDelete transactions]: /docs/references/protocol/transactions/types/accountdelete.md
 [AccountDelete]: /docs/references/protocol/transactions/types/accountdelete.md
