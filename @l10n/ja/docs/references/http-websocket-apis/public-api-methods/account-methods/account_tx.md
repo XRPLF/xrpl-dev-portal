@@ -81,7 +81,7 @@ rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descen
 | `marker`           | [マーカー][]             | 以前にページネーションされたレスポンスの値。そのレスポンスを停止した箇所からデータの取得を再開します。サーバが使用できるレジャーの範囲に変更があっても、この値は変わりません。 |
 
 - リクエスト内で次の各フィールドのうち1つ以上を使用する必要があります: `ledger_index`、`ledger_hash`、`ledger_index_min`、または`ledger_index_max`。
-- [API v2]： `ledger_index`と`ledger_hash`のどちらかを指定した場合、`ledger_index_min`と`ledger_index_max`を含めると`invalidParams`エラーが返ります。
+- [API v2][]： `ledger_index`と`ledger_hash`のどちらかを指定した場合、`ledger_index_min`と`ledger_index_max`を含めると`invalidParams`エラーが返ります。
 
 
 ### 照会されたデータの繰り返し

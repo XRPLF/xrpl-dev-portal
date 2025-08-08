@@ -14,8 +14,8 @@
 [AMMVoteトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/ammvote.md
 [AMMWithdraw]: /@l10n/ja/docs/references/protocol/transactions/types/ammwithdraw.md
 [AMMWithdrawトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/ammwithdraw.md
-[API v1]: /@l10n/ja/docs/references/http-websocket-apis/api-conventions/request-formatting.md#api-versioning
-[API v2]: /@l10n/ja/docs/references/http-websocket-apis/api-conventions/request-formatting.md#api-versioning
+[API v1]: /@l10n/ja/docs/references/http-websocket-apis/index.md
+[API v2]: /@l10n/ja/docs/references/http-websocket-apis/index.md
 [AccountDelete]: /@l10n/ja/docs/references/protocol/transactions/types/accountdelete.md
 [AccountDeleteトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/accountdelete.md
 [AccountRootエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md

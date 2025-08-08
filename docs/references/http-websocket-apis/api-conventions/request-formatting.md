@@ -1,6 +1,4 @@
 ---
-html: request-formatting.html
-parent: api-conventions.html
 seo:
     description: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
 ---
@@ -13,12 +11,11 @@ seo:
 {% tab label="WebSocket" %}
 ```json
 {
-  "id": 2,
+  "id": "example_ws_request_1",
   "command": "account_info",
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "strict": true,
   "ledger_index": "validated",
-  "api_version": 1
+  "api_version": 2
 }
 ```
 {% /tab %}
@@ -33,9 +30,8 @@ Content-Type: application/json
     "params": [
         {
             "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-            "strict": true,
             "ledger_index": "validated",
-            "api_version": 1
+            "api_version": 2
         }
     ]
 }
@@ -44,7 +40,7 @@ Content-Type: application/json
 
 {% tab label="Commandline" %}
 ```sh
-rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated strict
+rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```
 {% /tab %}
 
@@ -59,7 +55,7 @@ After you open a WebSocket to the `rippled` server, you can send commands as a [
 |:--------------------|:----------|:-------------------------------------------|
 | `command`           | String    | The name of the [API method](../public-api-methods/index.md). |
 | `id`                | (Various) | _(Optional)_ A unique value to identify this request. The response to this request uses the same `id` field. This way, even if responses arrive out of order, you know which request prompted which response. |
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, uses version 1. For details, see [API Versioning](#api-versioning). |
+| `api_version`       | Number    | _(Optional)_ The API version to use. For details, see [API Versioning](../index.md#api-versioning). |
 | (Method Parameters) | (Various) | Provide any parameters to the method at the top level. |
 
 See [Response Formatting](response-formatting.md) for the response from the server.
@@ -84,7 +80,7 @@ The object inside the `params` array can contain the following fields:
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, uses version `1`. For details, see [API Versioning](#api-versioning). |
+| `api_version`       | Number    | _(Optional)_ The API version to use. For details, see [API Versioning](#api-versioning). |
 | (Method Parameters) | (Various) | Provide any parameters to the method here. |
 
 See [Response Formatting](response-formatting.md) for the response from the server.
@@ -95,7 +91,7 @@ Put the API method name after any normal (dash-prefaced) commandline options, fo
 
 The commandline calls JSON-RPC, so its responses always match the JSON-RPC [response format](response-formatting.md).
 
-The commandline always uses the latest [API version](#api-versioning).
+The commandline always uses the latest [API version](./index.md#api-versioning).
 
 {% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
 
