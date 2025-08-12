@@ -71,7 +71,7 @@ In summary, see the following table summarizing what offers can match:
 | Hybrid             | ✅         | ✅           | ✅ (same domain)   | ✅  |
 | Permissioned       | ❌         | ❌           | ✅ (same domain)   | ❌  |
 
-There is no single ledger entry to represent a given permissioned DEX: it implicitly exists as all the order books with the same domain ID. Order books with a given domain ID are implicitly created when valid offers are placed using that domain ID, and those order books are automatically deleted when they are empty. 
+There is no single ledger entry to represent a given permissioned DEX: it implicitly exists as all the order books with the same domain ID. Order books with a given domain ID are created when valid offers are placed using that domain ID, and those order books are automatically deleted when they are empty. 
 
 A single transaction can use multiple order books with the same domain ID—in other words, different currency pairs in the same permissioned DEX—either as part of a longer [cross-currency payment](../../payment-types/cross-currency-payments.md) or through auto-bridging. A hybrid offer can match a mix of permissioned and open offers, but a transaction cannot use multiple different domains.
 
@@ -98,7 +98,7 @@ Like with unfunded offers, it is possible for an offer to become temporarily inv
 
 The permissioned DEXes feature is enabled by the **PermissionedDEX** amendment, and relies on the [Credentials](../../decentralized-storage/credentials.md) and [Permissioned Domains](./permissioned-domains.md) amendments, so it cannot be used until _all_ of those amendments have been enabled.
 
-**Not Compatible with AMMs**
+#### Not Compatible with AMMs
 
 Permissioned DEXes are incompatible with [Automated Market Makers (AMMs)](../../tokens/decentralized-exchange/automated-market-makers.md). Permissioned offers and permissioned payments cannot be filled by AMMs, and access to AMMs cannot be restricted by a permissioned domain. Trades that use the open DEX can sometimes consume a hybrid offer and use an AMM in the same transaction, but transactions that specify a domain cannot use any AMMs.
 
@@ -106,7 +106,7 @@ Permissioned DEXes are incompatible with [Automated Market Makers (AMMs)](../../
 
 Each permissioned DEX is separate, with its own order books and offers. A single transaction cannot trade in multiple permissioned DEXes or aggregate liquidity from multiple permissioned DEXes. Hybrid offers can use a mix of one permissioned DEX and the open DEX, but they cannot use multiple different permissioned DEXes.
 
-**Security Credential Consideration**
+#### Security Considerations for Permissioned DEXes
 
 The security and fairness of a permissioned DEX depend on the owner of the permissioned domain and the issuers of credentials that grant access to it. At a baseline, the definition of each credential and the requirements for getting that credential are defined and enforced by the credential issuer, so the existence of a permissioned domain does not inherently mean anything about who is able to use it in practice. 
 

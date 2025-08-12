@@ -11,7 +11,7 @@ status: not_enabled
 
 _(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
 
-Multi-purpose tokens (MPTs) are a more compact and flexible type of [fungible token](/docs/concepts/tokens/fungible-tokens) on the XRP Ledger.
+Multi-purpose tokens (MPTs) are a more compact and flexible type of [fungible token](./index.md) on the XRP Ledger.
 
 MPTs let you take advantage of ready-to-use tokenization features with a few lines of code. You can create many token experiences from one token program itself. 
 
