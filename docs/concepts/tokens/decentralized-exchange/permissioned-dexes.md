@@ -94,7 +94,7 @@ Reasons a permissioned offer can become invalid include:
 
 Like with unfunded offers, it is possible for an offer to become temporarily invalid and then become valid again. For example, if a trader's credential that grants access to a permissioned domain expires, their offers in the corresponding permissioned DEX would be invalid; but if they get the credential renewed, any offers that hadn't already been removed automatically become valid again.
 
-### Limitations for Permissioned DEXes
+### Limitations of Permissioned DEXes
 
 The permissioned DEXes feature is enabled by the **PermissionedDEX** amendment, and relies on the [Credentials](../../decentralized-storage/credentials.md) and [Permissioned Domains](./permissioned-domains.md) amendments, so it cannot be used until _all_ of those amendments have been enabled.
 
