@@ -14,7 +14,9 @@ There can be multiple permissioned DEXes within the XRP Ledger blockchain. Each 
 
 ## Background: The Need for Permissioned DEXes
 
-The XRP Ledger has had a single, _open DEX_ since it launched. Anyone with an XRPL account can trade in this DEX, and the system automatically executes matching orders, also called offers, with no regard for who placed them. Orders also provide liquidity to cross-currency payments, which can potentially execute several trades as part of one atomic transaction. Since the system inherently knows nothing about the people and organizations behind the accounts, there is no certainty who the counterparties are for any given trade. However, economic sanctions and financial regulations often place strict rules against transacting with criminals, terrorists, or specific countries. Given these limitations, regulated financial institutions may not be willing to take the risk of trading in the open DEX.
+The XRP Ledger has had a single, _open DEX_ since it launched. Anyone with an XRPL account can trade in this DEX, and the system automatically executes matching orders, also called offers, with no regard for who placed them. Orders also provide liquidity to cross-currency payments, which can potentially execute several trades as part of one atomic transaction. 
+
+Since the system inherently knows nothing about the people and organizations behind the accounts, there is no certainty who the counterparties are for any given trade. However, economic sanctions and financial regulations often place strict rules against transacting with criminals, terrorists, or specific countries. Given these limitations, regulated financial institutions may not be willing to take the risk of trading in the open DEX.
 
 More background reading:
 
