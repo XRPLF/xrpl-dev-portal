@@ -221,3 +221,15 @@ export const amendmentsTable: Schema & { tagName: string } = {
   render: 'AmendmentsTable',
   selfClosing: true
 }
+
+export const amendmentDisclaimer: Schema &  { tagName: string } = {
+  tagName: 'amendment-disclaimer',
+  attributes: {
+    name: {
+      type: 'String',
+      required: true
+    },
+  },
+  render: 'AmendmentDisclaimer',
+  selfClosing: true
+}
