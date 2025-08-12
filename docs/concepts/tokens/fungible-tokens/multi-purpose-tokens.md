@@ -74,7 +74,7 @@ On a technical level, MPTs provide a fundamentally different way to represent fu
 The representation of a fungible token as a token object instead of a trustline makes it easier to enable functionality for real-world financial assets on-chain, such as token-level metadata, fixed supply, and fixed-point balance.
 
 **Developer Experience and App Design**
-On a usage level, MPTs provide a straightforward conceptual model compared to [trustlines](/docs/concepts/tokens/fungible-tokens.md#trust-lines) and [rippling](/docs/concepts/tokens/fungible-tokens/rippling). Developers can more easily build web3 applications around `[MPToken](/docs/references/protocol/ledger-data/ledger-entry-types/mptoken)` and `[MPTokenIssuance](/docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance)` objects, with some similarities to the conceptual model of XLS-20 NFTs.  
+On a usage level, MPTs provide a straightforward conceptual model compared to [trustlines](/docs/concepts/tokens/fungible-tokens#trust-lines) and [rippling](/docs/concepts/tokens/fungible-tokens/rippling). Developers can more easily build web3 applications around `[MPToken](/docs/references/protocol/ledger-data/ledger-entry-types/mptoken)` and `[MPTokenIssuance](/docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance)` objects, with some similarities to the conceptual model of XLS-20 NFTs.  
 
 It is also simpler for ordinary users to understand what tokens are available, what tokens they have issued, and what they hold in their wallet.  
 
