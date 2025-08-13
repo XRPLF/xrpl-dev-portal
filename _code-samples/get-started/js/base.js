@@ -1,5 +1,5 @@
 // In browsers, use a <script> tag. In Node.js, uncomment the following line:
-// const xrpl = require('xrpl')
+const xrpl = require('xrpl')
 
 // Wrap code in an async function so we can use await
 async function main() {
