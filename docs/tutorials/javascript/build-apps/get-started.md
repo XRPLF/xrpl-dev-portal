@@ -9,6 +9,16 @@ labels:
   - Development
 showcase_icon: assets/img/logos/javascript.svg
 ---
+
+{% code-walkthrough
+  filesets=[
+    { 
+      "files": [ "/_code-samples/get-started/js/base.html", "/_code-samples/get-started/js/get-acct-info.js"],
+      "downloadAssociatedFiles": ["/_code-samples/get-started/js/*"],
+    }
+  ]
+%}
+
 # Get Started Using JavaScript Library
 
 This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the [`xrpl.js`](https://github.com/XRPLF/xrpl.js/) client library in either Node.js or web browsers.
@@ -32,15 +42,6 @@ In this tutorial, you'll learn:
 To follow this tutorial, you should have some familiarity with writing code in JavaScript and managing small JavaScript projects. In browsers, any modern web browser with JavaScript support should work fine. In Node.js, **version 14** is recommended. Node.js versions 12 and 16 are also regularly tested.
 
 
-## Install with npm
-
-Start a new project by creating an empty folder, then move into that folder and use [NPM](https://www.npmjs.com/) to install the latest version of xrpl.js:
-
-```sh
-npm install xrpl
-```
-
-
 ## Start Building
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../../concepts/accounts/index.md), integrating with the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
@@ -57,48 +58,52 @@ Here are some steps you use in many XRP Ledger projects:
 
 How you load `xrpl.js` into your project depends on your development environment:
 
+{% step id="import-web-tag" %}
 #### Web Browsers
 
-Add a `<script>` tag such as the following to your HTML:
+Add a `<script>` tag such as the following to your HTML.
 
-```html
+<!-- ```html
 <script src="https://unpkg.com/xrpl/build/xrpl-latest-min.js"></script>
-```
+``` -->
 
-You can load the library from a CDN as in the above example, or download a release and host it on your own website.
+You can load the library from a CDN as in the example, or download a release and host it on your own website.
 
 This loads the module into the top level as `xrpl`.
+{% /step %}
 
+{% step id="import-node-tag" %}
 #### Node.js
 
-Add the library using [npm](https://www.npmjs.com/). This updates your `package.json` file, or creates a new one if it didn't already exist:
+Start a new project by creating an empty folder, then move into that folder and use [NPM](https://www.npmjs.com/) to install the latest version of xrpl.js:
 
 ```sh
 npm install xrpl
 ```
+This updates your `package.json` file, or creates a new one if it didn't already exist.
 
-Then import the library:
-
-```js
+Then, import the library in your code.
+<!-- ```js
 const xrpl = require("xrpl")
-```
-
+``` -->
+{% /step %}
 
 ### 2. Connect to the XRP Ledger
 
+{% step id="connect-tag" %}
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl.js`, you create an instance of the `Client` class and use the `connect()` method.
 
 {% admonition type="success" name="Tip" %}Many network functions in `xrpl.js` use [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to return values asynchronously. The code samples here use the [`async/await` pattern](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await) to wait for the actual result of the Promises.{% /admonition %}
 
-{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+<!-- {% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%} -->
 
 #### Connect to the XRP Ledger Mainnet
 
-The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](../../../concepts/networks-and-servers/parallel-networks.md). When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
+The sample code shows you how to connect to the Testnet, which is one of the available [parallel networks](../../../concepts/networks-and-servers/parallel-networks.md). When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
 
 * By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
-    ```
+    ```javascript
     const MY_SERVER = "ws://localhost:6006/"
     const client = new xrpl.Client(MY_SERVER)
     await client.connect()
@@ -108,44 +113,60 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 * By using one of the available [public servers][]:
 
-    ```
+    ```javascript
     const PUBLIC_SERVER = "wss://xrplcluster.com/"
     const client = new xrpl.Client(PUBLIC_SERVER)
     await client.connect()
     ```
-
+{% /step %}
 
 ### 3. Get Account
 
-The `xrpl.js` library has a `Wallet` class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account like this:
+{% step id="get-account-create-wallet-tag" %}
+The `xrpl.js` library has a `Wallet` class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account as shown in the example.
 
-{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Create a wallet" before="// Get info" language="js" /%}
+<!-- {% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Create a wallet" before="// Get info" language="js" /%} -->
+{% /step %}
 
-If you only want to generate keys, you can create a new `Wallet` instance like this:
+{% step id="get-account-create-wallet-b-tag" %}
+If you only want to generate keys, you can alternatively create a new `Wallet` instance.
 
-```js
+<!-- ```js
 const test_wallet = xrpl.Wallet.generate()
-```
+``` -->
+{% /step %}
 
-Or, if you already have a seed encoded in [base58][], you can make a `Wallet` instance from it like this:
+{% step id="get-account-create-wallet-c-tag" %}
+Or, if you already have a seed encoded in [base58][], you can make a `Wallet` instance from it.
 
-```js
+{% input id="wallet-input" label="Your Testnet seed key" placeholder="Enter seed key" /%}
+
+<!-- ```js
 const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // Test secret; don't use for real
-```
+``` -->
+{% /step %}
 
 ### 4. Query the XRP Ledger
 
-Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md). For example:
+{% step id="query-xrpl-tag" %}
+Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md).
 
-{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Get info" before="// Listen to ledger close events" language="js" /%}
-
+<!-- {% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Get info" before="// Listen to ledger close events" language="js" /%} -->
+{% /step %}
 
 ### 5. Listen for Events
 
+{% step id="listen-for-events-tag" %}
 You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](../../../concepts/consensus-protocol/index.md) produces a new [ledger version](../../../concepts/ledgers/index.md). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
 
-{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Listen to ledger close events" before="// Disconnect when done" language="js" /%}
+<!-- {% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Listen to ledger close events" before="// Disconnect when done" language="js" /%} -->
+{% /step %}
 
+### 6. Disconnect
+
+{% step id="disconnect-tag" %}
+Disconnect when done so Node.js can end the process.
+{% /step %}
 
 ## Keep on Building
 
@@ -171,3 +192,5 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an acco
     - [Transaction Formats](../../../references/protocol/transactions/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
+
+{% /code-walkthrough %}
