@@ -365,8 +365,8 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/offer.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
-                    - page: docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
@@ -484,6 +484,7 @@
                 - page: docs/references/http-websocket-apis/api-conventions/rate-limiting.md
                 - page: docs/references/http-websocket-apis/api-conventions/rippled-server-states.md
                 - page: docs/references/http-websocket-apis/api-conventions/ctid.md
+                - page: docs/references/http-websocket-apis/api-conventions/ledger-entry-short-names.md
             - page: docs/references/http-websocket-apis/public-api-methods/index.md
               expanded: false
               items:
