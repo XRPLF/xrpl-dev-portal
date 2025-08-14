@@ -1,3 +1,7 @@
+## Blog sidebar file. Reminder: blogs must use one of the hard-coded categories
+## in their labels frontmatter, or they won't show up in the list below the
+## latest post, and they won't have an image.
+
 - group: Blog
   groupTranslationKey: sidebar.blog
   page: index.page.tsx
