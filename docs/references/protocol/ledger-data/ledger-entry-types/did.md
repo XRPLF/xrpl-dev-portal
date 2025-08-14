@@ -61,4 +61,10 @@ The ID of a `DID` entry is the [SHA-512Half][] of the following values, concaten
 1. The `DID` space key (`0x0049`).
 2. The AccountID that controls the DID.
 
+## See Also
+
+- **Transactions:**
+  - [DIDDelete transaction][]
+  - [DIDSet transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

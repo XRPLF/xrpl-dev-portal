@@ -65,4 +65,9 @@ There are no flags defined for {% code-page-name /%} entries.
 
 {% code-page-name /%} entries are not deletion blockers. If the owner (delegating) account is deleted, all such ledger entries are deleted along with them. However, the `Authorize`
 
+## See Also
+
+- **Transactions:**
+  - [DelegateSet transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

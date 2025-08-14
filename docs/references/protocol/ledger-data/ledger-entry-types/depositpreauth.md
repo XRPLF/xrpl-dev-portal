@@ -109,4 +109,9 @@ In this case, the ID is the [SHA-512Half][] of the following values, concatenate
 * The AccountID of the owner of this object (the sender of the [DepositPreauth transaction][] that created this object; in other words, the one that granted the preauthorization)
 * The contents of the `AuthorizeCredentials` field.
 
+## See Also
+
+- **Transactions**
+  - [DepositPreauth transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
