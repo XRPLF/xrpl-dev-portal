@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Batch allows up to 8 transactions to be submitted as a single unit.
+    description: Discover how XRPL Batch Transactions streamline multiple blockchain operations into a single secure transaction. Learn about batch modes, execution details, and security considerations. 
 labels:
   - Batch
   - Transactions
@@ -8,7 +8,9 @@ status: not_enabled
 ---
 # Batch Transactions
 
-`Batch`  lets you package multiple transactions together and execute them as a single unit. It eliminates the risk of partial completion and unexpected outcomes, giving you a more reliable and predictable experience for complex operations. Up to eight transactions can be submitted in a single batch.
+XRPL Batch Transactions let you package multiple [transactions](/docs/concepts/transactions) together and execute them as a single unit. It eliminates the risk of partial completion and unexpected outcomes, giving you a more reliable and predictable experience for complex operations. Up to eight transactions can be submitted in a single batch.
+
+## XRPL Batch Use Cases
 
 Some potential uses for `Batch` include the following.
 - All or nothing: You can mint an NFT and create an offer for it in one transaction. If the offer creation fails, the NFT mint is reverted as well.
@@ -19,7 +21,11 @@ Some potential uses for `Batch` include the following.
 
 `Batch` transactions are comprised of the _outer transaction_, the wrapper `Batch` transaction itself, and the _inner transactions_, each of which is executed atomically. The precise way that the inner transactions are processed is determined by the batch _mode_.
 
-## Batch Mode
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LsMMXm7jm1k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+## XRPL Batch Transaction Modes
 
 There are four possible batch modes: `ALLORNOTHING`, `ONLYONE`, `UNTILFAILURE`, and `INDEPENDENT`.
 
@@ -39,9 +45,9 @@ In `ALLORNOTHING` mode, all inner transactions must succeed for any one of them 
 
 All transactions are applied, even if one or more of the inner transactions fail.
 
-## Raw Transactions
+## XRPL Raw Transactions Object
 
-The `RawTransactions` object is a container for the list of transactions to be applied. You can include up to eight transactions in a sincle batch. The transactions can come from one account or multiple accounts.
+The `RawTransactions` object is a container for the list of transactions to be applied. You can include up to eight transactions in a single batch. The transactions can come from one account or multiple accounts.
 
 Each inner transaction:
 
@@ -67,6 +73,8 @@ This field is included if the account is signing with multi-sign (as opposed to 
 
 This field must be provided if more than one account has inner transactions included in the Batch. In that case, this field must contain signatures from all accounts whose inner transactions are included, excluding the account signing the outer transaction (if applicable).
 
+#### Fields Used for XRPL Batch Transactions
+
 Each object in this array contains the following fields:
 
 | Field Name	  | Required?	| JSON Type	| Internal Type |
@@ -90,7 +98,7 @@ These fields are included if the account is signing with a single signature (as 
 
 This field is included if the account is signing with multi-sign (as opposed to a single signature). It operates equivalently to the `Signers` field used in standard transaction multi-sign. This field holds the signatures for the `Flags` field and the hashes of the transactions in `RawTransactions`.
 
-## Transaction Fee
+## XRPL Batch Transaction Fees
 
 The fee for the outer transaction is twice the base fee (a total of 20 drops when there is no fee escalation), plus the sum of the transaction fees of all the inner transactions (which incorporates factors like higher fees for `multisign` or `AMMCreate`), plus an additional base fee amount for each additional signature in the transaction (for example, from `BatchSigners`). Expressed as an equation:
 
@@ -124,7 +132,7 @@ There is also a pointer back to the parent outer transaction (`ParentBatchID`).
 
 ## Transaction Common Fields
 
-This standard doesn't add any new fields to the transaction common fields, but it does add another global transaction flag:
+This standard doesn't add any new fields to the [transaction common fields](/docs/references/protocol/transactions/common-fields.md), but it does add another global transaction flag:
 
 | Flag Name	      | Value      |
 |-----------------|------------|
@@ -132,7 +140,7 @@ This standard doesn't add any new fields to the transaction common fields, but i
 
 This flag should be used only if a transaction is an inner transaction in a `Batch` transaction. This signifies that the transaction shouldn't be signed. Any normal transaction that includes this flag should be rejected.
 
-## Security
+## Security for XRPL Batch Transactions
 
 Batch transactions come with additional security considerations.
 

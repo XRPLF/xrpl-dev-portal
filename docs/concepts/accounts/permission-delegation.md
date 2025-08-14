@@ -1,6 +1,6 @@
 ---
 seo:
-    description: XRPL accounts can delegate both transaction permissions and granular permissions to other accounts.
+    description: Learn how XRPL Account Permission Delegation enables secure, granular control over your account transactions. Explore DelegateSet transactions for comprehensive permission and access management on the XRP Ledger.
 labels:
   - Accounts
   - Permissions
@@ -13,14 +13,14 @@ Permission delegation is the function of granting various permissions to another
 _(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
 
 
-## Background
+## Background: The Need for Permission Delegation
 
 Managing your [cryptographic keys](./cryptographic-keys.md) is one of the more challenging parts of using a blockchain. As part of a defense-in-depth strategy, a secure configuration should limit the damage that can occur if a secret key is compromised. One way to do this is to rotate keys regularly and to keep master keys off of computers that are always connected to the internet and serving user traffic. However, many use cases involve frequently and automatically signing transactions, which typically requires having secret keys on an internet-connected server.
 
 Permission Delegation can reduce this problem by granting very limited permissions to separate accounts that have their keys available online for day-to-day tasks. Meanwhile, the keys with full control over the account can be kept offline, so that you only use them for special tasks, like issuing tokens. This is especially helpful when using compliance features like [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md) that require a stablecoin issuer to individually approve each user after meeting regulatory requirements like Know Your Customer rules. With a proper configuration, you can minimize the consequences of a delegate's keys being compromized.
 
 
-## How It Works
+## How Permission Delegation Works
 
 The account on whose behalf transactions are being sent is called the _delegator_. The account sending the transactions is called the _delegate_.
 
@@ -39,7 +39,7 @@ The delegate can only send transactions that match the permissions it has. Permi
 
 For a complete list of transaction types that can or cannot be delegated as well as a list of granular permissions, see [Permission Values](/docs/references/protocol/data-types/permission-values.md).
 
-### Limitations
+### Limitations of Permission Delegation
 
 The main limiting factor on how many delegates you can have is that you must hold enough XRP to meet the [reserve requirement](./reserves.md). Each delegate's permissions are tracked with a [Delegate ledger entry][], which counts as one item towards the delegator's owner reserve.
 

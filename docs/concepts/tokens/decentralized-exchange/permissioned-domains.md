@@ -1,13 +1,13 @@
 ---
 seo:
-    description: The definition and details of a Permissioned Domain instance.
+    description: Learn how Permissioned Domains on the XRP Ledger enable controlled, secure blockchain environments. Explore their role in decentralized exchanges (DEXes) and lending protocols.
 labels:
   - Compliance
   - Permissioned Domains
 ---
 # Permissioned Domains
 
-Permissioned domains are controlled environments within the broader ecosystem of the XRP Ledger blockchain. Domains do nothing on their own, but features such as Permissioned DEXes and Lending Protocols can use domains to restrict access, so that traditional financial institutions can offer services on chain while complying with various compliance rules.
+Permissioned domains are controlled environments within the broader ecosystem of the XRP Ledger blockchain. Domains do nothing on their own, but features such as [Permissioned DEXes][] and Lending Protocols can use domains to restrict and manage access, so traditional financial institutions can offer services on chain while complying with various compliance rules.
 
 The only configurable rule for a domain is the set of accepted [credentials][]. Future amendments may add new and different types of rules to encompass any limits that a financial institution may need to follow to maintain compliance with the laws of the jurisdictions where they do business.
 
@@ -29,7 +29,7 @@ A domain serves as an abstraction layer between credentials and a resource being
 
 Users do not need to apply to join or leave a domain. When a transaction requires access to a resource that is restricted by a domain, the transaction automatically checks if the account holds a credential matching that domain's accepted credentials, and fails if they have none. The user's credential must be accepted and not expired.
 
-## Uses for Domains
+## Uses for Permissioned Domains
 
 Currently, there are no available XRP Ledger features that use permissioned domains. However, amendments that are in development and use domains include:
 
