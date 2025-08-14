@@ -383,6 +383,7 @@ function AmendmentBadge(props: { amendment: Amendment }) {
 
 export function AmendmentDisclaimer(props: {
   name: string,
+  compact: boolean
 }) {
   const [amendmentStatus, setStatus] = React.useState<Amendment | null>(null);
   const [loading, setLoading] = React.useState(true);
@@ -390,7 +391,7 @@ export function AmendmentDisclaimer(props: {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
-  const link = () => <Link to={`/resources/known-amendments#${props.name.toLowerCase()}`}>{props.name} amendment</Link>
+  const link = () => <Link to={`/resources/known-amendments#${props.name.toLowerCase()}`}>{props.name}{ props.compact ? "" : " amendment"}</Link>
 
   React.useEffect(() => {
     const fetchAmendments = async () => {
@@ -444,6 +445,16 @@ export function AmendmentDisclaimer(props: {
         <strong>{translate("amendment.error_status", "Error loading amendment status")}:</strong> {error}
       </span>
       </em></p>
+    )
+  }
+
+  if (props.compact) {
+    return (
+      <>
+        {link()}
+        {" "}
+        <AmendmentBadge amendment={amendmentStatus} />
+      </>
     )
   }
   
