@@ -58,4 +58,8 @@ It is not possible to create a conditional escrow with no expiration, but you ca
 Before the [fix1571 amendment][] became enabled on 2018-06-19, it was possible to create an escrow with `CancelAfter` only. These escrows could be finished by anyone at any time before the specified expiration.
 {% /admonition %}
 
+## See Also
+
+- [Escrow entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

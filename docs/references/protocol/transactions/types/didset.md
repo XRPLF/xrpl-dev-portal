@@ -48,4 +48,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecEMPTY_DID`      | The transaction will create an empty DID ledger entry. Check that your updates don't remove the `Data`, `DIDDocument`, and `URI` fields. |
 | `temEMPTY_DID`      | The transaction is malformed and missing any DID information. Include either the `Data`, `DIDDocument`, or `URI` fields. |
 
+## See Also
+
+- [DID entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

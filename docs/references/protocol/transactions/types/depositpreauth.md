@@ -89,5 +89,8 @@ In addition to error types that can occur for all transactions, DepositPreauth t
 | `temCANNOT_PREAUTH_SELF`  | The address in the `Authorize` field is the sender of the transaction. You cannot preauthorize yourself. |
 | `temDISABLED`             | A required amendment is not enabled. |
 
+## See Also
+
+- [DepositPreauth object][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

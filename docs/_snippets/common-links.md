@@ -82,14 +82,15 @@
 [DelegateSet transactions]: /docs/references/protocol/transactions/types/delegateset.md
 [DepositAuth amendment]: /resources/known-amendments.md#depositauth
 [DepositPreauth amendment]: /resources/known-amendments.md#depositpreauth
-[DepositPreauth entry]: /docs/references/protocol/transactions/types/depositpreauth.md
-[DepositPreauth object]: /docs/references/protocol/transactions/types/depositpreauth.md
+[DepositPreauth entry]: /docs/references/protocol/ledger-data/ledger-entry-types/depositpreauth.md
+[DepositPreauth object]: /docs/references/protocol/ledger-data/ledger-entry-types/depositpreauth.md
 [DepositPreauth transaction]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauth transactions]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DepositPreauth]: /docs/references/protocol/transactions/types/depositpreauth.md
 [DIDSet transaction]: /docs/references/protocol/transactions/types/didset.md
 [DIDSet transactions]: /docs/references/protocol/transactions/types/didset.md
 [DIDSet]: /docs/references/protocol/transactions/types/didset.md
+[DIDDelete transaction]: /docs/references/protocol/transactions/types/diddelete.md
 [DirectoryNode entry]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DirectoryNode object]: /docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md
 [DisallowIncoming amendment]: /resources/known-amendments.md#disallowincoming
@@ -99,8 +100,8 @@
 [EnableAmendment]: /docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
 [EnforceInvariants amendment]: /resources/known-amendments.md#enforceinvariants
 [Escrow amendment]: /resources/known-amendments.md#escrow
-[Escrow entry]: /docs/concepts/payment-types/escrow.md
-[Escrow object]: /docs/concepts/payment-types/escrow.md
+[Escrow entry]: /docs/references/protocol/ledger-data/ledger-entry-types/escrow.md
+[Escrow object]: /docs/references/protocol/ledger-data/ledger-entry-types/escrow.md
 [EscrowCancel transaction]: /docs/references/protocol/transactions/types/escrowcancel.md
 [EscrowCancel transactions]: /docs/references/protocol/transactions/types/escrowcancel.md
 [EscrowCancel]: /docs/references/protocol/transactions/types/escrowcancel.md

@@ -30,4 +30,8 @@ Transactions of the MPTokenAuthorize type support additional values in the `Flag
 |:-------------------|:-------------|:--------------|:------------------------------|
 | `tfMPTUnauthorize` | `0x00000001` | 1             | When the holder enables this flag, if their balance of the given MPT is zero, it revokes their willingness to hold this MPT and deletes their `MPToken` entry. If their balance is non-zero, the transaction fails. When an issuer enables this flag, it revokes permission for the specified holder to hold this MPT; the transaction fails if the MPT does not use allow-listing. |
 
+## See Also
+
+- [MPToken entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
