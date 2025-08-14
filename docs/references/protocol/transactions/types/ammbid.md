@@ -142,4 +142,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `terNO_ACCOUNT`         | One of the accounts specified in this request do not exist. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 
+## See Also
+
+- [AMM entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -49,5 +49,8 @@ This transaction looks for a [Credential ledger entry](../../ledger-data/ledger-
 | `tecNO_ENTRY` | The specified credential does not exist in the ledger. |
 | `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. _(Requires the [fixInvalidTxFlags amendment][] {% not-enabled /%})_ |
 
+## See Also
+
+- [Credential entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

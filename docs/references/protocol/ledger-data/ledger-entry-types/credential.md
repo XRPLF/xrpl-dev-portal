@@ -65,4 +65,11 @@ The unique ID of a Credential entry is the SHA-512Half hash of the following val
 * The `Issuer` field's value; and
 * The `CredentialType` field's value.
 
+## See Also
+
+- **Transactions:**
+  - [CredentialAccept transaction][]
+  - [CredentialCreate transaction][]
+  - [CredentialDelete transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

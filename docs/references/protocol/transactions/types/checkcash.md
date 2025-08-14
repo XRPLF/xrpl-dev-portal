@@ -49,4 +49,8 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 - If the transaction specifies both `Amount` and `DeliverMin`, or omits both, the transaction fails with the result `temMALFORMED`.
 - If the `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check, the transaction fails with the result `temBAD_CURRENCY`.
 
+## See Also
+
+- [Check entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
