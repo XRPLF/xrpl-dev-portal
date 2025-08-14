@@ -55,4 +55,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temBAD_FEE`            | The `TradingFee` from this transaction is not valid. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 
+## See Also
+
+- [AMM entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

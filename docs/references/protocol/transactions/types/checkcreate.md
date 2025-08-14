@@ -51,4 +51,8 @@ _(Added by the [Checks amendment][].)_
 - If the sender does not have enough XRP to meet the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) after adding the Check, the transaction fails with the result `tecINSUFFICIENT_RESERVE`.
 - If either the sender or the destination of the Check cannot own more objects in the ledger, the transaction fails with the result `tecDIR_FULL`.
 
+## See Also
+
+- [Check entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

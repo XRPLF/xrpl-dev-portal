@@ -158,6 +158,10 @@ See [Transfer Fees](../../../../concepts/tokens/transfer-fees.md) for more infor
 
 To remove an authorized minter, set `ClearFlag` to 10 (`asfAuthorizedNFTokenMinter`) and omit the `NFTokenMinter` field.
 
+## See Also
+
+- [AccountRoot entry][]
+
 <!-- SPELLING_IGNORE: TransferRate -->
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

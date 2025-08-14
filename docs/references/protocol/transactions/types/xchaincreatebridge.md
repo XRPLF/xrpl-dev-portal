@@ -61,4 +61,8 @@ The complete production-grade setup would also include a `SignerListSet` transac
 | `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
+## See Also
+
+- [Bridge entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

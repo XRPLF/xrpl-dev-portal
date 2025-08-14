@@ -50,5 +50,8 @@ Besides errors that can occur for all transactions, CredentialCreate transaction
 | `temINVALID_ACCOUNT_ID` | The provided `Subject` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 | `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. _(Requires the [fixInvalidTxFlags amendment][] {% not-enabled /%})_ |
 
+## See Also
+
+- [Credential entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

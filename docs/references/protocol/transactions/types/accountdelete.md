@@ -60,4 +60,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecHAS_OBLIGATIONS` | Occurs if the account to be deleted is connected to objects that cannot be deleted in the ledger. (This includes objects created by other accounts, such as [escrows](../../../../concepts/payment-types/escrow.md) and for example [NFT's minted](nftokenmint.md), [even if owned by another account](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp#L197).) |
 | `tefTOO_BIG` | Occurs if the sending account is linked to more than 1000 objects in the ledger. The transaction could succeed on retry if some of those objects were deleted separately first. |
 
+## See Also
+
+- [AccountRoot entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

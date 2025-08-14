@@ -253,9 +253,12 @@
 [XChainAddClaimAttestation transaction]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
 [XChainAddClaimAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
 [XChainBridge amendment]: /resources/known-amendments.md#xchainbridge
+[Bridge entry]: /docs/references/protocol/ledger-data/ledger-entry-types/bridge.md
 [XChainCreateBridge transaction]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateBridge transactions]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateBridge]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
+[XChainModifyBridge transaction]: /docs/references/protocol/transactions/types/xchainmodifybridge.md
+[XChainModifyBridge transactions]: /docs/references/protocol/transactions/types/xchainmodifybridge.md
 [XChainCreateClaimID transaction]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimID transactions]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimID]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
