@@ -36,33 +36,32 @@
     left: 0px;
   }
 
-  #card-date {
+  .card-date {
     color: $gray-400;
   }
 
-  .post-date {
+  .hero-post-date {
     text-decoration: overline solid #32E685 10%;
   }
 
-  #category-list {
-    @each $category in "general", "developer_reflections", "amendments",
-    "advisories", "release_notes", "development", "gateway_bulletins", "features", "security"
-
-      {
-      ##{$category} {
+  @each $category in "general", "developer_reflections", "amendments", 
+      "case_study", "advisories", "release_notes", "development", 
+      "gateway_bulletins", "features", "security" {
+    .#{$category} .category-list {
+       img {
         content: url("../img/blog/#{$category}.png");
         max-width: 100%;
         width: 100%;
       }
-    }
-    .label{
-      width: fit-content;
+      .label{
+        width: fit-content;
+      }
     }
   }
 
   // Add styles to ensure proper wrapping on tablet sizes
   @media (min-width: 768px) and (max-width: 991px) {
-    #category-list {
+    .category-list {
       display: block;
       
       img {

@@ -11,13 +11,12 @@ export const frontmatter = {
   },
 };
 
-const target = { prefix: "" }; // TODO: fixme
-
 const categories = {
   general: "General",
   release_notes: "Release Notes",
   advisories: "Advisories",
   amendments: "Amendments",
+  case_study: "Case Study",
   development: "Development",
   developer_reflections: "Developer Reflections",
   features: "Features",
@@ -89,7 +88,7 @@ export default function Index() {
             <div className="col">
               <div className="text-bg">
                 <h4 className="mb-3 eyebrow text-uppercase font-weight-light">
-                  <span className="post-date pb-2">
+                  <span className="hero-post-date pb-2">
                     {moment(heroPost.date).format(translate("blog.banner.date.part1","MMM"))}
                   </span>
                   {translate("blog.banner.date.part2", " ")}
@@ -135,14 +134,14 @@ export default function Index() {
                         className={`blog-filter input_${item}`}
                         type="checkbox"
                         name="categories"
-                        id={`input_${item}`}
+                        id={`input_desktop_${item}`}
                         defaultValue={`${item}`}
                         onChange={() => toggleCategory(item)}
                         defaultChecked
                       />
                       <label
                         className="font-weight-bold"
-                        htmlFor={`input_${item}`}
+                        htmlFor={`input_desktop_${item}`}
                       >
                         {translate(categories[item])}
                       </label>
@@ -173,14 +172,14 @@ export default function Index() {
                             className={`blog-filter input_${item}`}
                             type="checkbox"
                             name="categories"
-                            id={`input_${item}`}
+                            id={`input_mobile_${item}`}
                             defaultValue={`${item}`}
                             onChange={() => toggleCategory(item)}
                             defaultChecked
                           />
                           <label
                             className="font-weight-bold"
-                            htmlFor={`input_${item}`}
+                            htmlFor={`input_mobile_${item}`}
                           >
                             {translate(categories[item])}
                           </label>
@@ -200,10 +199,9 @@ export default function Index() {
                   className={`${card.category_id} pb-5 px-lg-4`}
                   id={card.title + i}
                 >
-                  <div className="mb-4" id="category-list">
+                  <div className="mb-4 category-list">
                     <img
-                      alt="card block"
-                      id={`${card.category_id}`}
+                      alt=""
                       className="mb-4"
                     />
                     <div
@@ -213,7 +211,7 @@ export default function Index() {
                     </div>
                   </div>
                   <div>
-                    <p id="card-date" className="mb-0">
+                    <p className="mb-0 card-date">
                       {moment(card.date).format(translate("blog.card.date","MMM DD, YYYY"))}
                       { card.author ? ` by ${card.author}` : ""}
                     </p>
