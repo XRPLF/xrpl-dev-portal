@@ -38,6 +38,7 @@
 [Batch]: /docs/references/protocol/transactions/types/batch.md
 [Batch transaction]: /docs/references/protocol/transactions/types/batch.md
 [Batch transactions]: /docs/references/protocol/transactions/types/batch.md
+[Bridge entry]: /docs/references/protocol/ledger-data/ledger-entry-types/bridge.md
 [Check entry]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [Check object]: /docs/references/protocol/ledger-data/ledger-entry-types/check.md
 [CheckCancel transaction]: /docs/references/protocol/transactions/types/checkcancel.md
@@ -253,7 +254,6 @@
 [XChainAddClaimAttestation transaction]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
 [XChainAddClaimAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddclaimattestation.md
 [XChainBridge amendment]: /resources/known-amendments.md#xchainbridge
-[Bridge entry]: /docs/references/protocol/ledger-data/ledger-entry-types/bridge.md
 [XChainCreateBridge transaction]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateBridge transactions]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
 [XChainCreateBridge]: /docs/references/protocol/transactions/types/xchaincreatebridge.md
