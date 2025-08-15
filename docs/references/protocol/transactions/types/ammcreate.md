@@ -1,6 +1,4 @@
 ---
-html: ammcreate.html
-parent: transaction-types.html
 seo:
     description: Create a new Automated Market Maker for trading a given pair of assets.
 labels:

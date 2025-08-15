@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Delete a Permissioned Domain entry from the ledger.
+    description: Delete a permissioned domain.
 labels:
   - Compliance
   - Permissioned Domains

@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Submit an order to exchange currency.
+    description: Offer to trade currencies in the decentralized exchange; create a limit order.
 labels:
   - Decentralized Exchange
 ---

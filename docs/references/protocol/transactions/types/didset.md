@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Create or update a DID.
+    description: Create or update a Decentralized Identifier.
 labels:
   - DID
 ---

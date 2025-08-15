@@ -1,6 +1,6 @@
 ---
 seo:
-    description: The `XChainOwnedCreateAccountClaimID` ledger object is used to collect attestations for creating an account via a cross-chain transfer. 
+    description: A record of attestations for creating an account via a cross-chain transfer. 
 labels:
   - Interoperability
 status: not_enabled

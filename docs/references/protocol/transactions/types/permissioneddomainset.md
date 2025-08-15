@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Create or update a Permissioned Domain.
+    description: Create or update a permissioned domain.
 labels:
   - Compliance
   - Permissioned Domains

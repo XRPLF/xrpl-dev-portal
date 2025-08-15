@@ -1,6 +1,6 @@
 ---
 seo:
-    description: An `XChainOwnedClaimID` object represents *one* cross-chain transfer of value. 
+    description: A cross-chain transfer of value. 
 labels:
   - Interoperability
 status: not_enabled

@@ -1,7 +1,6 @@
 ---
-html: deleting-accounts.html
-parent: accounts.html
-blurb: Acerca de eliminar una cuenta XRP Ledger.
+seo:
+    description: Acerca de eliminar una cuenta XRP Ledger.
 labels:
   - Cuentas
 ---

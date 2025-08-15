@@ -1,7 +1,6 @@
 ---
-html: consensus-protections.html
-parent: consensus.html
-blurb: Aprende cómo el Protocolo de Consenso del XRP Ledger se protege contra varios problemas y ataques que pueden ocurrir en un sistema financiero descentralizado.
+seo:
+    description: Aprende cómo el Protocolo de Consenso del XRP Ledger se protege contra varios problemas y ataques que pueden ocurrir en un sistema financiero descentralizado.
 labels:
   - Blockchain
 ---

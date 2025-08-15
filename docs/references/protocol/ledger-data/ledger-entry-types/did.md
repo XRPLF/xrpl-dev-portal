@@ -1,6 +1,6 @@
 ---
 seo:
-    description: The definition and details of a Decentralized Identifier (DID).
+    description: A Decentralized Identifier (DID).
 labels:
   - DID
 ---

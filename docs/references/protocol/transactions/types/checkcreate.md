@@ -1,6 +1,4 @@
 ---
-html: checkcreate.html
-parent: transaction-types.html
 seo:
     description: Create a check.
 labels:

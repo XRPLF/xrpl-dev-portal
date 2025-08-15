@@ -1,8 +1,6 @@
 ---
-html: xchainaddaccountcreateattestation.html
-parent: transaction-types.html
 seo:
-    description: The `XChainAddAccountCreateAttestation` transaction provides an attestation from a witness server that a `XChainAccountCreateCommit` transaction occurred on the other chain.
+    description: Provide an attestation that an XChainAccountCreateCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
   - Interoperability
 status: not_enabled
