@@ -59,29 +59,7 @@ A request can include the following fields:
 | `binary`       | Boolean          | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
 | `limit`        | Number           | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). Positive values outside this range are replaced with the closest valid option. The default is the maximum. |
 | `marker`       | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
-| `type`         | String           | No        | Filter results to a specific type of ledger entry. This field accepts canonical ledger entry names (case insensitive) or short names. |
-
-Valid `type` field values are:
-
-| Canonical Name    | Short Name        |
-| ----------------- | ----------------- |
-| `AccountRoot`     | `account`         |
-| `Amendments`      | `amendments`      |
-| `AMM`             | `amm`             |
-| `Check`           | `check`           |
-| `DepositPreauth`  | `deposit_preauth` |
-| `DirectoryNode`   | `directory`       |
-| `Escrow`          | `escrow`          |
-| `FeeSettings`     | `fee`             |
-| `LedgerHashes`    | `hashes`          |
-| `MPToken`         | `mptoken`         |
-| `MPTokenIssuance` | `mpt_issuance`    |
-| `NFTokenOffer `   | `nft_offer`       |
-| `Offer`           | `offer`           |
-| `PayChannel`      | `payment_channel` |
-| `RippleState`     | `state`           |
-| `SignerList`      | `signer_list`     |
-| `Ticket`          | `ticket`          |
+| `type`         | String           | No        | Filter results to a specific type of ledger entry. This field accepts canonical names of [ledger entry types](../../../protocol/ledger-data/ledger-entry-types/index.md) (case insensitive) or [short names](../../api-conventions/ledger-entry-short-names.md). If omitted, return ledger entries of all types. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 

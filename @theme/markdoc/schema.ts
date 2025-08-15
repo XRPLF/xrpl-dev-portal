@@ -229,6 +229,11 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
       type: 'String',
       required: true
     },
+    compact: {
+      type: 'Boolean',
+      required: false,
+      default: false
+    }
   },
   render: 'AmendmentDisclaimer',
   selfClosing: true
