@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Singleton ledger entry with status of enabled and pending amendments.
+    description: The status of enabled and pending amendments.
 labels:
   - Blockchain
 ---

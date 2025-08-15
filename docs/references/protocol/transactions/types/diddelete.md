@@ -1,8 +1,6 @@
 ---
-html: diddelete.html
-parent: transaction-types.html
 seo:
-    description: Delete a DID.
+    description: Delete a Decentralized Identifier.
 labels:
   - DID
 ---

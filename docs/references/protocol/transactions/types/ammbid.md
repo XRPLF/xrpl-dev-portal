@@ -1,6 +1,4 @@
 ---
-html: ammbid.html
-parent: transaction-types.html
 seo:
     description: Bid on an Automated Market Maker's auction slot, which grants a discounted fee.
 labels:

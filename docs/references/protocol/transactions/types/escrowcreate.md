@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Create an escrowed XRP payment.
+    description: Escrow funds, which can be released to the destination after a specific time or condition.
 labels:
   - Escrow
 ---

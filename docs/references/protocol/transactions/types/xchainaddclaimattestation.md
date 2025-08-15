@@ -1,8 +1,6 @@
 ---
-html: xchainaddclaimattestation.html 
-parent: transaction-types.html
 seo:
-    description: Submit proof (attestation) to the destination chain that an event that happened on the source chain.
+    description: Provide an attestation that an XChainCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
   - Interoperability
 status: not_enabled

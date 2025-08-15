@@ -1,6 +1,4 @@
 ---
-html: xchaincreatebridge.html 
-parent: transaction-types.html
 seo:
     description: Create a bridge between two chains.
 labels:

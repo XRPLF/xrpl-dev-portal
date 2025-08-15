@@ -1,6 +1,4 @@
 ---
-html: setregularkey.html
-parent: transaction-types.html
 seo:
     description: Add, remove, or modify an account's regular key pair.
 labels:

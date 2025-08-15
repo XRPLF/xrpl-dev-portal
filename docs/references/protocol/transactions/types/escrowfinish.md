@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Deliver escrowed XRP to recipient.
+    description: Deliver escrowed funds to the intended recipient.
 labels:
   - Escrow
 ---

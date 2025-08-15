@@ -1,8 +1,6 @@
 ---
-html: ammvote.html
-parent: transaction-types.html
 seo:
-    description: Vote on the trading fee for an Automated Market Maker instance.
+    description: Vote on the trading fee for an Automated Market Maker.
 labels:
   - AMM
 ---

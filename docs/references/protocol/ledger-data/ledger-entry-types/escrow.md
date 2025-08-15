@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Contains XRP held for a conditional payment.
+    description: An escrow, which holds funds to be released when certain conditions are met.
 labels:
   - Escrow
 ---

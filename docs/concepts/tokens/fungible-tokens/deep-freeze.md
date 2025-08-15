@@ -1,5 +1,6 @@
 ---
-blurb: Deep Freeze ensures that frozen token holders can neither send nor receive frozen funds until their trust line is unfrozen.
+seo:
+    description: Deep Freeze ensures that frozen token holders can neither send nor receive frozen funds until their trust line is unfrozen.
 labels:
   - Tokens
   - Freeze

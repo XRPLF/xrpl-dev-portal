@@ -1,7 +1,9 @@
 ---
-blurb: Allow an account to hold an amount of a particular MPT.
+seo:
+    description: Set up your account to receive a specific MPT as a holder; or authorize a holder as an MPT issuer.
 labels:
  - Multi-purpose Tokens, MPTs
+status: not_enabled
 ---
 
 # MPTokenAuthorize

@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Ledger structure for recording NFTokens.
+    description: A group of up to 32 NFTs, stored together for efficiency.
 labels:
  - Non-fungible Tokens, NFTs
 ---

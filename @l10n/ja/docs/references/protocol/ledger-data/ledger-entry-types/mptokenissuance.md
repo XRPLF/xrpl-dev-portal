@@ -1,5 +1,6 @@
 ---
-blurb: Introduction to XRPL MPTs.
+seo:
+    description: 単一のMPT Issuanceを表し、Issuance自体に関連するデータを保持します。
 labels:
   - Multi-Purpose Token, MPT, トークン
 ---

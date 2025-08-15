@@ -1,6 +1,4 @@
 ---
-html: signerlistset.html
-parent: transaction-types.html
 seo:
     description: Add, remove, or modify an account's multi-signing list.
 labels:

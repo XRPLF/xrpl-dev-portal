@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Preauthorizes an account to send payments to this one.
+    description: Preauthorize an account to send payments to you.
 labels:
   - Security
 ---

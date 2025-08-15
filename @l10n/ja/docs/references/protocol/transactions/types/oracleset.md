@@ -1,7 +1,6 @@
 ---
-html: OracleSet.html 
-parent: transaction-types.html
-blurb: 価格オラクルを作成または更新します。
+seo:
+    description: 価格オラクルを作成または更新します。
 labels:
   - オラクル
 ---

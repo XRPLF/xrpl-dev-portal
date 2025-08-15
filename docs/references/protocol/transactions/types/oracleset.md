@@ -1,7 +1,6 @@
 ---
-html: OracleSet.html 
-parent: transaction-types.html
-blurb: Create or update an existing price oracle.
+seo:
+    description: Create or update a price oracle.
 labels:
   - Oracle
 ---

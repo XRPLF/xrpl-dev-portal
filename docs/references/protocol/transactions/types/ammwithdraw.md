@@ -1,8 +1,6 @@
 ---
-html: ammwithdraw.html
-parent: transaction-types.html
 seo:
-    description: Return LPTokens into an Automated Market Maker in exchange for a share of the assets the pool holds.
+    description: Return LPTokens to an Automated Market Maker in exchange for a share of the assets the pool holds.
 labels:
   - AMM
 ---

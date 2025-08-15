@@ -1,6 +1,4 @@
 ---
-html: xchaincreateclaimid.html 
-parent: transaction-types.html
 seo:
     description: Create a cross-chain claim ID that is used for a cross-chain transfer.
 labels:

@@ -1,6 +1,6 @@
 ---
-html: ledger-entry-types.html
-parent: ledger-data-formats.html
+seo:
+  description: A list of all types of entry that can exist in the ledger's state data.
 metadata:
   indexPage: true
 ---

@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Singleton object with consensus-approved base transaction cost and reserve requirements.
+    description: The current base transaction cost and reserve requirements.
 labels:
   - Fees
 ---

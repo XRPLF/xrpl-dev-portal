@@ -1,7 +1,6 @@
 ---
-html: get_aggregate_price.html
-parent: ledger-methods.html
-blurb: Calculates the aggregate price of specified Oracle instances.
+seo:
+    description: Calculate the aggregate price of specified Oracle instances.
 labels:
   - Oracle
 ---

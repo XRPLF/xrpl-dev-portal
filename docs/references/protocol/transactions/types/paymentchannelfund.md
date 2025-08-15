@@ -1,8 +1,6 @@
 ---
-html: paymentchannelfund.html
-parent: transaction-types.html
 seo:
-    description: Add more XRP to a payment channel.
+    description: Add more funds to a payment channel.
 labels:
   - Payment Channels
 ---

@@ -1,6 +1,4 @@
 ---
-html: transaction-common-fields.html
-parent: transaction-formats.html
 seo:
     description: These common fields can be provided on any XRP Ledger transaction.
 labels:

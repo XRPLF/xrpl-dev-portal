@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Contains links to other objects.
+    description: A set of links to other ledger entries, either objects owned by an account or trades in the decentralized exchange.
 labels:
   - Data Retention
   - Decentralized Exchange

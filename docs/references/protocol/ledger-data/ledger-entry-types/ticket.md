@@ -1,8 +1,6 @@
 ---
-html: ticket.html
-parent: ledger-entry-types.html
 seo:
-    description: A Ticket tracks an account sequence number that has been set aside for future use.
+    description: A ticket, which sets aside a sequence number for use in a future transaction.
 labels:
   - Transaction Sending
 ---

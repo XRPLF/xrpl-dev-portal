@@ -1,6 +1,4 @@
 ---
-html: trustset.html
-parent: transaction-types.html
 seo:
     description: Add or modify a trust line.
 labels:

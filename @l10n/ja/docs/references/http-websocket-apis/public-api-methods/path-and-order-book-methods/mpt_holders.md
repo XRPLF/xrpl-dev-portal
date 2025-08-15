@@ -1,5 +1,6 @@
 ---
-blurb: 指定された`MPTokenIssuanceID`とledgerシーケンスに対する所有者の情報を取得します。
+seo:
+    description: 指定された`MPTokenIssuanceID`とledgerシーケンスに対する所有者の情報を取得します。
 labels:
   - アカウント
   - XRP

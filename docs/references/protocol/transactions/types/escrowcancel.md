@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Reclaim escrowed XRP.
+    description: Cancel an expired escrow, returning the funds to the sender.
 labels:
   - Escrow
 ---

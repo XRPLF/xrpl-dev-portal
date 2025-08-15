@@ -1,9 +1,11 @@
 ---
-blurb: Get the holders for a given `MPTokenIssuanceID` and ledger sequence.
+seo:
+    description: Get the holders of a given MPT issuance as of a given ledger.
 labels:
   - Accounts
   - XRP
   - Multi Purpose Tokens, MPTs
+stautus: not_enabled
 ---
 
 # mpt_holders

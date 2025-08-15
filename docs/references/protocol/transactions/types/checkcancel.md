@@ -1,6 +1,4 @@
 ---
-html: checkcancel.html
-parent: transaction-types.html
 seo:
     description: Cancel a check.
 labels:

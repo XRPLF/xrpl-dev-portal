@@ -1,7 +1,9 @@
 ---
-blurb: Set mutable properties for an MPT.
+seo:
+    description: Set mutable properties of a Multi-Purpose Token definition.
 labels:
- - Multi-purpose Tokens, MPTs
+  - Multi-purpose Tokens, MPTs
+status: not_enabled
 ---
 # MPTokenIssuanceSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
@@ -14,14 +16,12 @@ _(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
 
 ```json 
 {
-      "TransactionType": "MPTokenIssuanceSet",
-      "Fee": "10",
-      "MPTokenIssuanceID": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000",
-      "Flags": 1
+    "TransactionType": "MPTokenIssuanceSet",
+    "Fee": "10",
+    "MPTokenIssuanceID": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000",
+    "Flags": 1
 }
 ```
-
-<!-- ## MPTokenIssuanceSet Fields -->
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

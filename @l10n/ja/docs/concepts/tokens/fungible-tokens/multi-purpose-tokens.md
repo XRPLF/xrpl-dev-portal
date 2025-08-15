@@ -1,5 +1,6 @@
 ---
-blurb: Multi-Purpose Tokenは、トラストラインよりもコンパクトで柔軟なトークンタイプです。
+seo:
+    description: Multi-Purpose Tokenは、トラストラインよりもコンパクトで柔軟なトークンタイプです。
 labels:
   - トークン
   - MPT

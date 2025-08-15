@@ -1,6 +1,6 @@
 ---
 seo:
-    description: A ledger entry to publish price information about currency pairs.
+    description: A record of price information about currency pairs from an outside source.
 labels:
   - Decentralized Exchange
 ---

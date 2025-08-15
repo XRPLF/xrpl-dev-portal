@@ -1,8 +1,6 @@
 ---
-html: xchainaccountcreatecommit.html 
-parent: transaction-types.html
 seo:
-    description: Create an account on one of the chains that the bridge connects. This account serves as the bridge entrance for that chain.
+    description: Create an account on another chain to serve as a door account for a cross-chain bridge.
 labels:
   - Interoperability
 status: not_enabled

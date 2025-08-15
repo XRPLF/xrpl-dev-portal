@@ -1,6 +1,4 @@
 ---
-html: ammdeposit.html
-parent: transaction-types.html
 seo:
     description: Deposit funds into an Automated Market Maker in exchange for LPTokens.
 labels:

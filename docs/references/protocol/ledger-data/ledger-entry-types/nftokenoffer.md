@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Create offers to buy or sell NFTs.
+    description: An offer to buy or sell an NFT.
 labels:
  - Non-fungible Tokens, NFTs
 ---

@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Repair corruptions to the XRP ledger.
+    description: Repair corruptions to the XRP ledger's state data.
 labels:
   - Utilities
   - Troubleshooting

@@ -1,7 +1,6 @@
 ---
-html: get_aggregate_price.html
-parent: ledger-methods.html
-blurb: 指定されたOracleインスタンスの集計価格を計算します。
+seo:
+    description: 指定されたOracleインスタンスの集計価格を計算します。
 labels:
   - オラクル
 ---

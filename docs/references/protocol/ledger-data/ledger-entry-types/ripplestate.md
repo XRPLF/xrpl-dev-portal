@@ -1,6 +1,6 @@
 ---
 seo:
-    description: This entry represents a trust line, tracking the net balance of tokens between them.
+    description: A trust line, which tracks the net balance of fungible tokens between two accounts.
 labels:
   - Tokens
 ---
