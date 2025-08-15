@@ -1,6 +1,4 @@
 ---
-html: use-escrows.html
-parent: use-specialized-payment-types.html
 metadata:
   indexPage: true
 ---
