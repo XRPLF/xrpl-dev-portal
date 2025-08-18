@@ -97,12 +97,12 @@ XRP LedgerのChecksの詳細は、以下をご覧ください。
     - [CheckCreate][]
     - [CheckCash][]
     - [CheckCancel][]
-- [Checksのチュートリアル](../../tutorials/how-tos/use-specialized-payment-types/use-checks/index.md)
-    - [Checkの送信](../../tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md)
-    - [Checksの検索](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks.md)
-    - [Checkの指定された金額での換金](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
-    - [Checkの変動金額での換金](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
-    - [Checkの取消し](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md)
+- Checksのチュートリアル
+    - [Checkの送信](/docs/tutorials/payments/send-a-check.md)
+    - [Checksの検索](/docs/tutorials/payments/look-up-checks.md)
+    - [Checkの指定された金額での換金](/docs/tutorials/payments/cash-a-check-for-an-exact-amount.md)
+    - [Checkの変動金額での換金](/docs/tutorials/payments/cash-a-check-for-a-flexible-amount.md)
+    - [Checkの取消し](/docs/tutorials/payments/cancel-a-check.md)
 - [Checks Amendment][]
 
 関連機能の詳細については、以下をご覧ください。

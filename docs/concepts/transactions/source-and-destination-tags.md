@@ -42,12 +42,12 @@ Assigning tags in numerical order provides less privacy to customers. Since all 
 
 ## Requiring Tags
 
-For an XRP Ledger address that may receive payments intended for several customer accounts, receiving a payment _without_ a destination tag can be a problem: it is not immediately obvious which customer to credit, which can require a manual intervention and a discussion with the sender to figure out who was the intended recipient. To reduce cases like this, you can [enable the `RequireDest` setting](../../tutorials/how-tos/manage-account-settings/require-destination-tags.md). That way, if a user forgets to include a destination tag in a payment, the XRP Ledger rejects their payment instead of giving you money you don't know what to do with. The user can then send the payment again, using the tag as they should have.
+For an XRP Ledger address that may receive payments intended for several customer accounts, receiving a payment _without_ a destination tag can be a problem: it is not immediately obvious which customer to credit, which can require a manual intervention and a discussion with the sender to figure out who was the intended recipient. To reduce cases like this, you can [enable the `RequireDest` setting](../../tutorials/compliance-features/require-destination-tags.md). That way, if a user forgets to include a destination tag in a payment, the XRP Ledger rejects their payment instead of giving you money you don't know what to do with. The user can then send the payment again, using the tag as they should have.
 
 
 ## See Also
 
-- [Require Destination Tags](../../tutorials/how-tos/manage-account-settings/require-destination-tags.md)
+- [Require Destination Tags](../../tutorials/compliance-features/require-destination-tags.md)
 - [Payment Types](../payment-types/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

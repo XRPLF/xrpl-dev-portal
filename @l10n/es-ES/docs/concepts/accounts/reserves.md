@@ -54,7 +54,7 @@ Las aplicaciones pueden buscar los valores de las reservas base e incremental ac
 
 Para determinar las reservas de propietario de una cuenta, hay que multiplicar la reserva incremental por el número de objetos que la cuenta posee. Para mirar el número de objetos que una cuenta posee, llama al [método account_info][] y toma `account_data.OwnerCount`.
 
-Para calcular el requisito total de direcciones, multiplica `OwnerCount` por `reserve_inc_xrp`, y luego suma `reserve_base_xrp`. [Aquí tienes una demostración](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#codeblock-17) del cálculo en Python.
+Para calcular el requisito total de direcciones, multiplica `OwnerCount` por `reserve_inc_xrp`, y luego suma `reserve_base_xrp`. [Aquí tienes una demostración](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#codeblock-17) del cálculo en Python.
 
 
 ## Quedarse por debajo del requisito de reserva
@@ -76,6 +76,6 @@ El XRP Ledger tiene un mecanismo para ajustar los requisitos de reserva. Estos a
 - [Objeto AccountRoot][]
 - [Votación de Fee](../consensus-protocol/fee-voting.md)
 - [Pseudo-transacción SetFee][]
-- [Tutorial: Calcular y mostrar los requisitos de reserva (Python)](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)
+- [Tutorial: Calcular y mostrar los requisitos de reserva (Python)](/docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

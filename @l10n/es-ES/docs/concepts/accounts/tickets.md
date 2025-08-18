@@ -63,7 +63,7 @@ Cualquier cuenta puede crear y utilizar Tickets en cualquier tipo de transaccion
 - **Conceptos:**
     - [Multi-Signing](multi-signing.md)
 - **Tutoriales:**
-    - [Usar Tickets](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
+    - [Usar Tickets](/docs/tutorials/best-practices/transaction-sending/use-tickets.md)
 - **Referencias:**
     - [Transacción TicketCreate][]
     - [Campos comunes de una transacción](../../references/protocol/transactions/common-fields.md)

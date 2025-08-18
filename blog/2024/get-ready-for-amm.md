@@ -30,9 +30,9 @@ If you run a tool that parses full ledgers or transaction metadata, you need to 
 
 ## Using AMM
 
-If you want to use AMM after the amendment goes live, the first step is to [Create an Automated Maker](../../docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker.md) for the currency pair you want to trade. Only the first user for any given currency pair needs to do this, though; other users can deposit to the existing AMM to get in on the action.
+If you want to use AMM after the amendment goes live, the first step is to [Create an Automated Maker](../../docs/tutorials/dex/create-an-automated-market-maker.md) for the currency pair you want to trade. Only the first user for any given currency pair needs to do this, though; other users can deposit to the existing AMM to get in on the action.
 
-There are no special steps to use an AMM when trading currencies on the XRP Ledger. If you follow the standard steps to [Trade in the DEX](../../docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md), and there's an AMM for the currency pair you're trading, your transaction automatically uses the AMM when doing so produces a better rate than consuming orders from the order book.
+There are no special steps to use an AMM when trading currencies on the XRP Ledger. If you follow the standard steps to [Trade in the DEX](../../docs/tutorials/dex/trade-in-the-decentralized-exchange.md), and there's an AMM for the currency pair you're trading, your transaction automatically uses the AMM when doing so produces a better rate than consuming orders from the order book.
 
 ## Further Reading
 

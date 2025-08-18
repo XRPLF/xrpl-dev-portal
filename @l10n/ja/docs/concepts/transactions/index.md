@@ -207,7 +207,7 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
   - [安全な署名の設定](secure-signing.md)
   - [XRPの送金](../../tutorials/how-tos/send-xrp.md)
   - [トランザクションの結果の確認](finality-of-results/look-up-transaction-results.md)
-  - [WebSocketを使用した着信ペイメントの監視](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+  - [WebSocketを使用した着信ペイメントの監視](/docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md)
   - [トランザクションの取り消しまたはスキップ](finality-of-results/canceling-a-transaction.md)
   - [信頼できるトランザクションの送信](reliable-transaction-submission.md)
 - **リファレンス:**

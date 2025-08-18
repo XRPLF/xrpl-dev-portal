@@ -39,8 +39,8 @@ The basis of any financial system is transferring value. The quickest and simple
 ## See Also
 
 - **Tutorials:**
-    - [Send XRP (Interactive Tutorial)](../../tutorials/how-tos/send-xrp.md)
-    - [Monitor Incoming Payments with WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+    - [Send XRP (Interactive Tutorial)](../../tutorials/payments/send-xrp)
+    - [Monitor Incoming Payments with WebSocket](../../tutorials/advanced-developer-topics/client-library-development//monitor-incoming-payments-with-websocket.md)
 - **References:**
     - [Payment transaction][]
     - [Transaction Results](../../references/protocol/transactions/transaction-results/index.md)

@@ -12,7 +12,7 @@ markdown:
 
 The multi-signing amendment is currently supported by the majority of voting validators on Ripple, and is scheduled to become active on the protocol on Monday, **2016-06-27**. For more information, please see the multi-signing documentation in the Ripple Developer Portal:
 
-* [How to Multi-Sign](/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction)
+* [How to Multi-Sign](/docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md)
 * [MultiSign Amendment Information](/resources/known-amendments.md#multisign)
 
 To continue receiving updates about the `rippled` server, please subscribe to the Ripple Server Google Group:

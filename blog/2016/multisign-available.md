@@ -25,14 +25,14 @@ The Ripple Consensus Ledger's multi-signing feature also allows signers to indep
 
 1. Include the signer's address in your SignerList.
 2. Fund the signer's address in the ledger.
-3. [Assign a Regular Key Pair](/docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair) to the signer's address and disable its master key. (Funded addresses can only sign using their master key pair if it's not disabled.)
+3. [Assign a Regular Key Pair](/docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md) to the signer's address and disable its master key. (Funded addresses can only sign using their master key pair if it's not disabled.)
 4. Have that signer use its regular key pair to contribute to your multi-signatures.
 
 
 ## Further Reading ##
 
 - [Multi-Signing Summary](/docs/concepts/accounts/multi-signing)
-- [How to Multi-Sign](/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction)
+- [How to Multi-Sign](/docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md)
 - [MultiSign Amendment](/resources/known-amendments.md#multisign)
 
 

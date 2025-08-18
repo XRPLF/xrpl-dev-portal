@@ -72,7 +72,7 @@ The legal requirements for trading on a blockchain vary by jurisdiction. In many
 
 ### Placing Trades
 
-Buying and selling _fungible_ tokens and XRP within the XRP Ledger's decentralized exchange typically involves sending [OfferCreate transactions](../../references/protocol/transactions/types/offercreate.md). For a detailed walkthrough of the code and technical steps to place a trade this way, see [Trade in the Decentralized Exchange](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md). It is also possible to exchange currencies using the [Payment transaction type](../../references/protocol/transactions/types/payment.md). You could send a [cross-currency payment](../../concepts/payment-types/cross-currency-payments.md) to another user or even send it back to yourself, using a long [path](../../concepts/tokens/fungible-tokens/paths.md) to link arbitrage opportunities together into a single operation.
+Buying and selling _fungible_ tokens and XRP within the XRP Ledger's decentralized exchange typically involves sending [OfferCreate transactions](../../references/protocol/transactions/types/offercreate.md). For a detailed walkthrough of the code and technical steps to place a trade this way, see [Trade in the Decentralized Exchange](../../tutorials/dex/trade-in-the-decentralized-exchange.md). It is also possible to exchange currencies using the [Payment transaction type](../../references/protocol/transactions/types/payment.md). You could send a [cross-currency payment](../../concepts/payment-types/cross-currency-payments.md) to another user or even send it back to yourself, using a long [path](../../concepts/tokens/fungible-tokens/paths.md) to link arbitrage opportunities together into a single operation.
 
 Non-fungible tokens work differently; for the code and technical steps to trade NFTs, see [Transfer NFTokens Using JavaScript](../../tutorials/javascript/nfts/transfer-nfts.md).
 
@@ -89,7 +89,7 @@ To give yourself as much time as possible to react to profit-taking opportunitie
 The XRP Ledger natively supports Automated Market Makers (AMMs) that work alongside the existing central limit order based (CLOB) decentralized exchange. AMMs are an important factor in trading on the XRP Ledger. You can read more at the following links:
 
 - [Automated Market Makers](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)
-- [Use the AMM Auction Slot for Lower Fees](/docs/tutorials/javascript/amm/trade-with-auction-slot.md)
+- [Use the AMM Auction Slot for Lower Fees](/docs/tutorials/dex/trade-with-auction-slot-in-javascript.md)
 - [XLS-30 Specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#readme)
 
 ## Further Reading

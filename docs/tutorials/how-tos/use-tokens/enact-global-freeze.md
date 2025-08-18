@@ -21,7 +21,7 @@ If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can 
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../get-started/get-started-javascript.md) for setup steps.
 - You don't need to have [issued a token](issue-a-fungible-token.md) in the XRP Ledger to enact a Global Freeze, but the main reason you would do so is if you have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
@@ -276,7 +276,7 @@ After the transaction is validated, you can confirm the status of the Global Fre
 - **Tutorials:**
     - [Enable No Freeze](enable-no-freeze.md)
     - [Freeze a Trust Line](freeze-a-trust-line.md)
-    - [Change or Remove a Regular Key Pair](../manage-account-settings/change-or-remove-a-regular-key-pair.md)
+    - [Change or Remove a Regular Key Pair](../../best-practices/key-management/change-or-remove-a-regular-key-pair.md)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

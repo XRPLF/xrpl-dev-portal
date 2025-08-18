@@ -680,7 +680,7 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
     - [Payment Types](../../../../concepts/payment-types/index.md)
         - [Payment Channels](../../../../concepts/payment-types/payment-channels.md)
 - **Tutorials:**
-    - [Send XRP](../../send-xrp.md)
+    - [Send XRP](../../../payments/send-xrp.md)
     - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
     - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
