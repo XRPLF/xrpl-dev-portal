@@ -170,4 +170,4 @@ status: not_enabled
 | `temINVALID_INNER_BATCH`  | 内部トランザクションの形式が不正です。              |
 | `temSEQ_AND_TICKET`       | トランザクションに`TicketSequence`フィールドと、0以外の`Sequence`フィールドの両方が含まれています。両方を同時に指定することはできませんが、いずれか一方は必須です。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

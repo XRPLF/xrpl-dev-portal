@@ -45,4 +45,4 @@ _([PermissionedDomains amendment][]が必要です {% not-enabled /%})_
 | `tecNO_ENTRY` | `DomainID`フィールドで指定された許可型ドメインがレジャーに存在しません。 |
 | `temDISABLED` | `PermissionedDomains` amendmentが有効ではありません。 |
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

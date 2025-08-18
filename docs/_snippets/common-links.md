@@ -124,8 +124,6 @@
 [Ledger Index]: /docs/references/protocol/data-types/basic-data-types.md#ledger-index
 [LedgerHashes entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [LedgerHashes object]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
-[LedgerHashesエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
-[LedgerHashesオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
 [LedgerStateFix transaction]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFix transactions]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFix]: /docs/references/protocol/transactions/types/ledgerstatefix.md
@@ -195,10 +193,8 @@
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [Permissioned DEXes]: /docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
 [PermissionedDomainSet transaction]: /docs/references/protocol/transactions/types/permissioneddomainset.md
-[PermissionedDomainSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
 [permissioned domain]: /docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
-[許可型ドメイン]: /@l10n/ja/docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [MPToken entry]: /docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
 [MPTokenAuthorize transaction]: /docs/references/protocol/transactions/types/mptokenauthorize.md
