@@ -44,7 +44,7 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 ## XChainModifyBridgeのフィールド
 
 | フィールド                 | JSONの型     | [内部の型][]    | 必須? | 説明 |
-|:-------------------------|:-------------|:-------- -----|:------|-----|
+|:-------------------------|:-------------|:--------------|:------|-----|
 | `Flags`                  | 数値          | UInt32       | はい  | このトランザクションのフラグを指定します。 |
 | `MinAccountCreateAmount` | [通貨額][]    | Amount        | いいえ | `XChainAccountCreateCommit`トランザクションに必要な最小金額。このフィールドが存在しない場合、`XChainAccountCreateCommit`トランザクションは失敗します。このフィールドはXRP-XRPブリッジにのみ存在できます。 |
 | `SignatureReward`        | [通貨額][]    | Amount        | いいえ | Witnessサーバに支払う署名の報酬の合計額。この金額は署名者の間で分配されます。 |

@@ -119,7 +119,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 アドレスから[AccountRootエントリ](../../../protocol/ledger-data/ledger-entry-types/accountroot.md)を取得します。これは[account_infoメソッド][]とほぼ同じです。
 
 | フィールド       | 型                  | 説明                   |
-|:----------- ---|:--------------------|:----------------------|
+|:---------------|:--------------------|:----------------------|
 | `account_root` | 文字列 - [アドレス][] | 取得する[AccountRootエントリ](../../../protocol/ledger-data/ledger-entry-types/accountroot.md)の標準アドレス。 |
 
 {% tabs %}
