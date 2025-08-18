@@ -181,148 +181,102 @@
       expanded: false
       items:
         - page: docs/tutorials/public-servers.md
-        - page: docs/tutorials/javascript/index.md
+        - label: Get Started
           expanded: false
           items:
-            - page: docs/tutorials/javascript/amm/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/javascript/amm/create-an-amm.md
-                - page: docs/tutorials/javascript/amm/add-assets-to-amm.md
-                - page: docs/tutorials/javascript/amm/trade-with-auction-slot.md
-            - page: docs/tutorials/javascript/send-payments/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/javascript/send-payments/create-accounts-send-xrp.md
-                - page: docs/tutorials/javascript/send-payments/create-trust-line-send-currency.md
-                - page: docs/tutorials/javascript/send-payments/create-offers.md
-                - page: docs/tutorials/javascript/send-payments/create-time-based-escrows.md
-                - page: docs/tutorials/javascript/send-payments/create-conditional-escrows.md
-                - page: docs/tutorials/javascript/send-payments/send-and-cash-checks.md
-                - page: docs/tutorials/javascript/send-payments/sending-mpts.md
-            - page: docs/tutorials/javascript/nfts/index.md
+            - page: docs/tutorials/get-started/get-started-javascript.md
+            - page: docs/tutorials/get-started/get-started-python.md
+            - page: docs/tutorials/get-started/get-started-java.md    
+            - page: docs/tutorials/get-started/get-started-php.md  
+            - page: docs/tutorials/get-started/get-started-http-websocket-apis.md  
+        - label: Sample Apps
+          expanded: false
+          items:
+            - page: docs/tutorials/sample-apps/build-a-browser-wallet-in-javascript.md
+            - page: docs/tutorials/sample-apps/build-a-desktop-wallet-in-javascript.md
+            - page: docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md
+            - page: docs/tutorials/sample-apps/credential-issuing-service-in-javascript.md
+            - page: docs/tutorials/sample-apps/credential-issuing-service-in-python.md
+        - label: Payments
+          expanded: false
+          items:                   
+            - page: docs/tutorials/javascript/send-payments/create-accounts-send-xrp.md
+            - page: docs/tutorials/javascript/send-payments/create-trust-line-send-currency.md
+
+        - label: DEX
+          expanded: false
+          items:
+            - page: docs/tutorials/dex/trade-in-the-decentralized-exchange.md
+            - page: docs/tutorials/dex/create-an-automated-market-maker.md
+            - page: docs/tutorials/dex/create-an-amm-in-javascript.md
+            - page: docs/tutorials/dex/add-assets-to-amm-in-javascript.md
+            - page: docs/tutorials/dex/trade-with-auction-slot-in-javascript.md 
+            - page: docs/tutorials/javascript/send-payments/create-offers.md
+        - label: Tokens
+          expanded: false
+          items:
+            - label: NFTs
               expanded: false
               items:
                 - page: docs/tutorials/javascript/nfts/mint-and-burn-nfts.md
                 - page: docs/tutorials/javascript/nfts/transfer-nfts.md
                 - page: docs/tutorials/javascript/nfts/broker-an-nft-sale.md
                 - page: docs/tutorials/javascript/nfts/assign-an-authorized-minter.md
-                - page: docs/tutorials/javascript/nfts/batch-mint-nfts.md
-            - page: docs/tutorials/javascript/build-apps/index.md
+                - page: docs/tutorials/javascript/nfts/batch-mint-nfts.md               
+            - label: Fungible Tokens
               expanded: false
               items:
-                - page: docs/tutorials/javascript/build-apps/get-started.md
-                - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
-                - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
-                - page: docs/tutorials/javascript/build-apps/credential-issuing-service.md
-            - page: docs/tutorials/javascript/compliance/index.md
+                - page: docs/tutorials/javascript/tokens/issue-a-fungible-token.md
+                - page: docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md                
+                - page: docs/tutorials/how-tos/use-tokens/enact-global-freeze.md
+                - page: docs/tutorials/how-tos/use-tokens/enable-no-freeze.md                
+            - label: Multi-Purpose Tokens (Tokens 2.0)
+              expanded: false
               items:
-                - page: docs/tutorials/javascript/compliance/create-permissioned-domains.md
-                - page: docs/tutorials/javascript/compliance/verify-credential.md                
-        - page: docs/tutorials/python/index.md
+                - page: docs/tutorials/javascript/multi-purpose-tokens/issue-a-multi-purpose-token.md
+                - page: docs/tutorials/javascript/send-payments/sending-mpts.md
+        - label: Compliance Features
           expanded: false
           items:
-            - page: docs/tutorials/python/send-payments/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/python/send-payments/create-accounts-send-xrp.md
-                - page: docs/tutorials/python/send-payments/create-trust-line-send-currency.md
-                - page: docs/tutorials/python/send-payments/create-time-based-escrows.md
-                - page: docs/tutorials/python/send-payments/create-conditional-escrows.md
-                - page: docs/tutorials/python/send-payments/send-and-cash-checks.md
-            - page: docs/tutorials/python/nfts/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/python/nfts/mint-and-burn-nfts.md
-                - page: docs/tutorials/python/nfts/transfer-nfts.md
-                - page: docs/tutorials/python/nfts/broker-an-nft-sale.md
-                - page: docs/tutorials/python/nfts/assign-an-authorized-minter.md
-                - page: docs/tutorials/python/nfts/batch-mint-nfts.md
-            - page: docs/tutorials/python/build-apps/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/python/build-apps/get-started.md
-                - page: docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python.md
-                - page: docs/tutorials/python/build-apps/credential-issuing-service.md
-            - page: docs/tutorials/python/compliance/index.md
-              items:
-                - page: docs/tutorials/python/compliance/verify-credential.md
-        - page: docs/tutorials/java/index.md
+            - page: docs/tutorials/javascript/compliance/create-permissioned-domains.md
+            - page: docs/tutorials/javascript/compliance/verify-credential.md
+        - label: Programmability
           expanded: false
           items:
-            - page: docs/tutorials/java/build-apps/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/java/build-apps/get-started.md
-        - page: docs/tutorials/php/index.md
+            - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
+            - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge.md
+            - page: docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction.md            
+        - label: Best Practices
           expanded: false
           items:
-            - page: docs/tutorials/php/build-apps/index.md
+            - label: API Usage
               expanded: false
-              items:
-                - page: docs/tutorials/php/build-apps/get-started.md
-        - page: docs/tutorials/http-websocket-apis/index.md
-          expanded: false
-          items:
-            - page: docs/tutorials/http-websocket-apis/build-apps/index.md
+              items: 
+                - page: docs/tutorials/javascript/compliance/create-permissioned-domains.md             
+            - label: Transaction Sending
               expanded: false
-              items:
-                - page: docs/tutorials/http-websocket-apis/build-apps/get-started.md
-                - page: docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md
-        - page: docs/tutorials/how-tos/index.md
-          expanded: false
-          items:
-            - page: docs/tutorials/how-tos/send-xrp.md
-            - page: docs/tutorials/how-tos/manage-account-settings/index.md
+              items: 
+                - page: docs/tutorials/how-tos/manage-account-settings/use-tickets.md
+            - label: Key Management
               expanded: false
-              items:
+              items: 
+                - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
+                - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md              
                 - page: docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md
                 - page: docs/tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md
-                - page: docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair.md
-                - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
-                - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md
-                - page: docs/tutorials/how-tos/manage-account-settings/require-destination-tags.md
-                - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md
-                - page: docs/tutorials/how-tos/manage-account-settings/use-tickets.md
-            - page: docs/tutorials/how-tos/use-specialized-payment-types/index.md
+                - page: docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair.md  
+                - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md               
+        - label: Advanced Developer Topics
+          expanded: false
+          items:
+            - label: Client Library Development
               expanded: false
-              items:
-                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md
-                  expanded: false
-                  items:
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
-                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md
-                  expanded: false
-                  items:
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md
-                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/index.md
-                  expanded: false
-                  items:
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks.md
-            - page: docs/tutorials/how-tos/use-tokens/index.md
+              items: 
+                - page: docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md    
+            - label: Protocol Development
               expanded: false
-              items:
-                - page: docs/tutorials/how-tos/use-tokens/issue-a-fungible-token.md
-                - page: docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md
-                - page: docs/tutorials/how-tos/use-tokens/enable-no-freeze.md
-                - page: docs/tutorials/how-tos/use-tokens/enact-global-freeze.md
-                - page: docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md
-                - page: docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker.md
-            - page: docs/tutorials/how-tos/use-xrpl-sidechains/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
-                - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge.md
-                - page: docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction.md
-            - page: docs/tutorials/how-tos/testing-devnet-features.md
+              items: 
+                - page: docs/tutorials/how-tos/testing-devnet-features.md            
     - page: docs/references/index.md
       labelTranslationKey: sidebar.docs.references
       expanded: false
