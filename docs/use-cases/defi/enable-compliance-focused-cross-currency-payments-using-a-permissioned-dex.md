@@ -65,7 +65,7 @@ The credential issuer performs identity verification or compliance checks, and i
 For more information, see:
 
 - [Credentials](../../concepts/decentralized-storage/credentials.md)
-- [Become a Credential Issuing Service](../../tutorials/python/build-apps/credential-issuing-service.md)
+- Become a Credential Issuing Service in [JavaScript](../../tutorials/sample-apps/credential-issuing-service-in-javascript.md) and [Python](../../tutorials/sample-apps/credential-issuing-service-in-python.md)
 
 {% admonition type="success" name="Tip" %}
 If you run a credential issuing service, don't forget to issue yourself a credential too, so that you can access the permissioned DEX.
@@ -76,7 +76,7 @@ If you run a credential issuing service, don't forget to issue yourself a creden
 A permissioned domain uses credentials to control who can access a permissioned DEX. As the owner of the permissioned domain, you control which credentials it accepts. A domain can accept one or several credentials, so that anyone who holds any of the specified credentials gains access. For more information, see:
 
 - [Permissioned Domains](../../concepts/tokens/decentralized-exchange/permissioned-domains.md)
-- [Create Permissioned Domains](../../tutorials/javascript/compliance/create-permissioned-domains.md)
+- [Create Permissioned Domains](../../tutorials/compliance-features/create-permissioned-domains-in-javascript.md)
 
 ### Use the permissioned DEX to facilitate payments and offers
 
@@ -90,4 +90,4 @@ For more information, see:
 - [Permissioned DEXes](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md)
 - [Cross-Currency Payments](../../concepts/payment-types/cross-currency-payments.md)
 - [Offers](../../concepts/tokens/decentralized-exchange/offers.md)
-- [Trade in the Decentralized Exchange](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md)
+- [Trade in the Decentralized Exchange](../../tutorials/dex/trade-in-the-decentralized-exchange.md)

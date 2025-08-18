@@ -183,7 +183,7 @@ To ensure a limited supply, you can "black hole" the issuer after issuing tokens
 
 {% admonition type="danger" name="Warning" %}A black hole account has no way to send transactions of any kind, so you cannot update any settings or do any maintenance on the account afterwards!{% /admonition %}
 
-See [Disable Master Key Pair](../../tutorials/how-tos/manage-account-settings/disable-master-key-pair.md).
+See [Disable Master Key Pair](../../tutorials/best-practices/key-management/disable-master-key-pair.md).
 
 ### Reliable Transaction Submission
 

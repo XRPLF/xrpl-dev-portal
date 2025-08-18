@@ -60,7 +60,7 @@ Podría darse el caso donde crees una lista de multi firma como "plan de respald
 
 Para enviar transacciones multi-signed de forma satisfactoria, debes de hacer todo lo siguiente:
 
-* La dirección que envía la transacción (especificada en el campo `Account`) debe tener un [objeto `SignerList` en el ledger ](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md). Para instrucciones de cómo hacer esto, ver [Set Up Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md).
+* La dirección que envía la transacción (especificada en el campo `Account`) debe tener un [objeto `SignerList` en el ledger ](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md). Para instrucciones de cómo hacer esto, ver [Set Up Multi-Signing](/docs/tutorials/best-practices/key-management/set-up-multi-signing.md).
 * La transacción debe incluir el campo `SigningPubKey` como un valor vacío.
 * La transacción debe incluir el [campo `Signers`](../../references/protocol/transactions/common-fields.md#signers-field) conteniendo un array de firmas.
 * Las firmas presentadas en el array `Signers` debe coincidir con los firmantes definidos en la `SignerList`.
@@ -72,8 +72,8 @@ Para enviar transacciones multi-signed de forma satisfactoria, debes de hacer to
 ## Ver también
 
 - **Tutoriales:**
-    - [Configurar Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)
-    - [Envíar una transacción Multi-Signed](../../tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md)
+    - [Configurar Multi-Signing](/docs/tutorials/best-practices/key-management/set-up-multi-signing.md)
+    - [Envíar una transacción Multi-Signed](/docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md)
 - **Conceptos:**
     - [Claves criptográficas](cryptographic-keys.md)
     - [Coste de transacción especial para transacciones Multi-signed](../transactions/transaction-cost.md#special-transaction-costs)

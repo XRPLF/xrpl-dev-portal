@@ -90,7 +90,7 @@ The [wallet_propose method][] is one way of generating a master key pair. The re
 
 {% admonition type="danger" name="Warning" %}If a malicious actor learns your master private key (or seed), they have full control over your account, unless your master key pair is disabled. They can take all the money your account holds and do other irreparable harm. Treat your secret values with care!{% /admonition %}
 
-Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to [keep your master key pair offline](../../tutorials/how-tos/manage-account-settings/offline-account-setup.md) and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.
+Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to [keep your master key pair offline](../../tutorials/best-practices/key-management/offline-account-setup.md) and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.
 
 Keeping your master key pair offline means not putting the secret information (passphrase, seed, or private key) anywhere that malicious actors can get access to it. In general, this means it is not within reach of a computer program that interacts with the internet at large. For example, you could keep it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or have it completely memorized. (Memorization has some drawbacks, though, including making it impossible to pass the key on after you are dead.)
 
@@ -121,7 +121,7 @@ A good security practice is to save your master private key somewhere offline, a
 
 Regular key pairs have the same format as master key pairs. You generate them the same way (for example, using the [wallet_propose method][]). The only difference is that a regular key pair is not intrinsically tied to the account it signs transactions for. It is possible (but not a good idea) to use the master key pair from one account as the regular key pair for another account.
 
-The [SetRegularKey transaction][] assigns or changes the regular key pair for an account. For a tutorial on assigning or changing a regular key pair, see [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md).
+The [SetRegularKey transaction][] assigns or changes the regular key pair for an account. For a tutorial on assigning or changing a regular key pair, see [Assign a Regular Key Pair](../../tutorials/best-practices/key-management/assign-a-regular-key-pair.md).
 
 
 ## Signing Algorithms
@@ -250,8 +250,8 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 - **Concepts:**
     - [Issuing and Operational Addresses](account-types.md)
 - **Tutorials:**
-    - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
-    - [Change or Remove a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+    - [Assign a Regular Key Pair](../../tutorials/best-practices/key-management/assign-a-regular-key-pair.md)
+    - [Change or Remove a Regular Key Pair](../../tutorials/best-practices/key-management/change-or-remove-a-regular-key-pair.md)
 - **References:**
     - [SetRegularKey transaction][]
     - [AccountRoot ledger object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
