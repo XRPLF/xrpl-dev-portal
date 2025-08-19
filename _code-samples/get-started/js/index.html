@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>XRPL.js Base Example</title>
+    <!-- @chunk {"steps": ["import-web-tag"]} -->
+    <script src="https://unpkg.com/xrpl/build/xrpl-latest-min.js"></script>
+    <!-- @chunk-end -->
+  </head>
+  <body>
+    <h1>XRPL.js Get Started</h1>
+    <div id="output"></div>
+
+    <script>
+      (async () => {
+        const output = document.getElementById('output');
+        
+        // @chunk {"steps": ["connect-tag"]}
+        // Define the network client
+        const SERVER_URL = "wss://s.altnet.rippletest.net:51233/"
+        const client = new xrpl.Client(SERVER_URL)
+        await client.connect()
+        output.innerHTML = '<p>Connected to Testnet</p>';
+        // @chunk-end
+
+        // @chunk {"steps": ["get-account-create-wallet-tag"]}
+        // Create a wallet and fund it with the Testnet faucet:
+        output.innerHTML += '<p>Creating a new wallet and funding it with Testnet XRP...</p>';
+        const fund_result = await client.fundWallet()
+        const test_wallet = fund_result.wallet
+        output.innerHTML += `<p>Wallet: ${test_wallet.address}</p>`;
+        output.innerHTML += `<p>Balance: ${fund_result.balance}</p>`;
+        output.innerHTML += `<p>View account on XRPL Testnet Explorer: <a href="https://testnet.xrpl.org/accounts/${test_wallet.address}" target="_blank">${test_wallet.address}</a></p>`;
+        // @chunk-end
+
+        // To generate a wallet without funding it, uncomment the code below
+        // @chunk {"steps": ["get-account-create-wallet-b-tag"]}
+        // const test_wallet = xrpl.Wallet.generate()
+        // @chunk-end
+
+        // To provide your own seed, replace the test_wallet value with the below
+        // @chunk {"steps": ["get-account-create-wallet-c-tag"]}
+        // const test_wallet = xrpl.Wallet.fromSeed("your-seed-key")
+        // @chunk-end
+
+        // @chunk {"steps": ["query-xrpl-tag"]}
+        // Get info from the ledger about the address we just funded
+        output.innerHTML += `<p>Getting account info...</p>`;
+        const response = await client.request({
+          "command": "account_info",
+          "account": test_wallet.address,
+          "ledger_index": "validated"
+        })
+        output.innerHTML += `<pre>${JSON.stringify(response, null, 2)}</pre>`;
+        // @chunk-end
+
+        // @chunk {"steps": ["listen-for-events-tag"]}
+        // Listen to ledger close events
+        output.innerHTML += '<p>Listening for ledger close events...</p>';
+        client.request({
+          "command": "subscribe",
+          "streams": ["ledger"]
+        })
+        client.on("ledgerClosed", async (ledger) => {
+          output.innerHTML += `<p>Ledger #${ledger.ledger_index} validated with ${ledger.txn_count} transactions</p>`;
+        })
+        // @chunk-end
+
+        // @chunk {"steps": ["disconnect-web-tag"]}
+        // Disconnect when done. Delay this by 10 seconds to give the ledger event listener time to
+        // receive and display some ledger events.
+        setTimeout(async () => {
+          await client.disconnect();
+          output.innerHTML += '<p>Disconnected</p>';
+        }, 10000);
+        // @chunk-end
+      })();
+    </script>
+  </body>
+</html>
