@@ -70,4 +70,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecUNFUNDED_OFFER`              | For a buy offer, the sender does have the funds specified in the `Amount` field available. If the `Amount` is XRP, this could be due to the reserve requirement; if the `Amount` is denominated in fungible tokens, this could be because they are [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `tefNFTOKEN_IS_NOT_TRANSFERABLE` | The `NFToken` has the [`lsfTransferable` flag](../../data-types/nftoken.md#nftoken-flags) disabled and this transaction would not transfer the `NFToken` to or from the issuer. |
 
+## See Also
+
+- [NFTokenOffer entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

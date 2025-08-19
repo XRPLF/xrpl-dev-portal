@@ -49,4 +49,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temBAD_AMOUNT`           | The `Amount` field of the transaction is invalid. The amount must either be XRP or fungible tokens and cannot be zero or negative. |
 | `temBAD_EXPIRATION`       | The `Expiration` field is invalid.              |
 
+## See Also
+
+- [PayChannel entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -59,4 +59,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temMALFORMED`     | The transaction was not validly formatted. For example, the `NFTokenOffers` array was empty or contained more than the maximum number of offers that can be canceled at one time. |
 | `tecNO_PERMISSION` | At least one of the IDs in the `NFTokenOffers` field refers to an object that cannot be canceled. For example, the sender of this transaction is not the owner or `Destination` of the offer, or the object was not an `NFTokenOffer` type object. |
 
+## See Also
+
+- [NFTokenOffer entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

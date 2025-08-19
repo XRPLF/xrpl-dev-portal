@@ -202,6 +202,7 @@
 [PriceOracle amendment]: /resources/known-amendments.md#priceoracle
 [MPToken entry]: /docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
 [MPTokenAuthorize transaction]: /docs/references/protocol/transactions/types/mptokenauthorize.md
+[MPTokenIssuance entry]: /docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md
 [MPTokenIssuanceCreate transaction]: /docs/references/protocol/transactions/types/mptokenissuancecreate.md
 [MPTokenIssuanceDestroy transaction]: /docs/references/protocol/transactions/types/mptokenissuancedestroy.md
 [MPTokenIssuanceSet transaction]: /docs/references/protocol/transactions/types/mptokenissuanceset.md

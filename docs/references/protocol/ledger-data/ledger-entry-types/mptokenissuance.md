@@ -74,4 +74,11 @@ The `MPTokenIssuanceID` is a 192-bit integer, concatenated in order:
 - The transaction sequence number.
 - The AccountID of the issuer.
 
+## See Also
+
+- **Transactions:**
+   - [MPTokenIssuanceCreate transaction][]
+   - [MPTokenIssuanceDestroy transaction][]
+   - [MPTokenIssuanceSet transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
