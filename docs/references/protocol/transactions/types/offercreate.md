@@ -77,4 +77,8 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | `temINVALID_FLAG`        | The transaction specifies an invalid flag combination, such as both `tfImmediateOrCancel` and `tfFillOrKill`, or the transaction uses `tfHybrid` but omits the `DomainID` field. |
 | `temREDUNDANT`           | The transaction would trade a token for the same token (same issuer and currency code). |
 
+## See Also
+
+- [Offer entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

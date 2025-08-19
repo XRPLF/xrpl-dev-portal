@@ -90,4 +90,10 @@ The `Currency` field type contains 160 bits of arbitrary data representing a cur
 }
 ```
 
+## See Also
+
+- **Transactions:**
+  - [OracleSet transaction][]
+  - [OracleDelete transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

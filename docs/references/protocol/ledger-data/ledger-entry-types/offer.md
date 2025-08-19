@@ -80,4 +80,10 @@ The ID of an `Offer` entry is the [SHA-512Half][] of the following values, conca
 
     If the OfferCreate transaction used a [ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
 
+## See Also
+
+- **Transactions:**
+  - [OfferCancel transaction][]
+  - [OfferCreate transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

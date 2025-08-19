@@ -82,4 +82,11 @@ The unique ID (`NFTokenOfferID`) of a `NFTokenOffer` object is the result of the
 * The `AccountID` of the account placing the offer; and
 * The `Sequence` (or `Ticket`) of the `NFTokenCreateOffer` transaction that created the `NFTokenOffer`.
 
+## See Also
+
+- **Transactions:**
+  - [NFTokenAcceptOffer transaction][]
+  - [NFTokenCancelOffer transaction][]
+  - [NFTokenCreateOffer transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

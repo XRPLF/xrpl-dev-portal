@@ -41,4 +41,8 @@ Besides errors that can occur for all transactions, `OracleDelete` transactions 
 |---------------|-------------|
 | `tecNO_ENTRY` | The `Oracle` object doesn't exist. |
 
+## See Also
+
+- [Oracle entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
