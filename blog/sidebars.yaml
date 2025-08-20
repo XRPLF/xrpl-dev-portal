@@ -10,6 +10,7 @@
     - group: '2025'
       expanded: false
       items:
+        - page: 2025/bringing-ai-to-xrpl-for-agentic-finance.md
         - page: 2025/coinpayments-xrpl-case-study-payment-processing.md
         - page: 2025/clio-2.5.0.md
         - page: 2025/dynamicnft-enabled.md
