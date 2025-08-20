@@ -45,4 +45,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_ENTRY` | The permissioned domain specified in the `DomainID` field doesn't exist in the ledger. |
 | `temDISABLED` | The `PermissionedDomains` amendment is not enabled. |
 
+## See Also
+
+- [PermissionedDomain entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

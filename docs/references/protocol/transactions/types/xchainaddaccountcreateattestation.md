@@ -78,4 +78,8 @@ Any account can submit signatures.
 | `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
+## See Also
+
+- [XChainOwnedCreateAccountClaimID entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

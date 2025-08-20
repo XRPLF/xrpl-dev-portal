@@ -49,4 +49,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecDIR_FULL`             | This transaction would cause the account to own more than the limit of 250 Tickets at a time, or more than the maximum number of ledger objects in general. |
 | `tecINSUFFICIENT_RESERVE` | The sending account does not have enough XRP to meet the [owner reserve](../../../../concepts/accounts/reserves.md) of all the requested Tickets. |
 
+## See Also
+
+- [Ticket entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
