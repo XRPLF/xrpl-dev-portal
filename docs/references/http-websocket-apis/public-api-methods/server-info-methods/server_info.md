@@ -83,7 +83,7 @@ The `info` object may have some arrangement of the following fields:
 |:------------------------------------|:----------------|:---------------------|
 | `amendment_blocked`                 | Boolean         | _(May be omitted)_ If `true`, this server is [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). If the server is not amendment blocked, the response omits this field. |
 | `build_version`                     | String          | The version number of the running `rippled` server. |
-| `closed_ledger`                     | Object          | _(May be omitted)_ Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. The member fields are the same as the `validated_ledger` field. |
+| `closed_ledger`                     | Object          | _(May be omitted)_ Information on the most recently closed ledger that has not been validated by consensus, as a [Server Ledger Object](#server-ledger-object). If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. |
 | `complete_ledgers`                  | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
 | `git`                               | Object          | _(Admin only)_ The Git details of your `rippled` build. |
 | `git.branch`                        | String          | _(Admin only)_ The Git branch used to build your version of `rippled`. |
@@ -111,28 +111,34 @@ The `info` object may have some arrangement of the following fields:
 | `pubkey_validator`                  | String          | _(Admin only)_ Public key used by this node to sign ledger validations. This _validation key pair_ is derived from the `[validator_token]` or `[validation_seed]` config field. |
 | `server_state`                      | String          | A string indicating to what extent the server is participating in the network. See [Possible Server States](../../api-conventions/rippled-server-states.md) for more details. |
 | `server_state_duration_us`          | Number          | The number of consecutive microseconds the server has been in the current state. |
-| `state_accounting`                  | Object          | A map of various [server states](../../api-conventions/rippled-server-states.md) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. |
-| `state_accounting.*.duration_us`    | String          | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) |
-| `state_accounting.*.transitions`    | String          | The number of times the server has changed into this state. |
-| `time`                              | String          | The current time in UTC, according to the server's clock. |
+| `state_accounting`                  | Object          | A map of various [server states](../../api-conventions/rippled-server-states.md) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. The contents of this field are formatted as [State Accounting Objects](#state-accounting-object). || `time`                              | String          | The current time in UTC, according to the server's clock. |
 | `uptime`                            | Number          | Number of consecutive seconds that the server has been operational. |
-| `validated_ledger`                  | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
-| `validated_ledger.age`              | Number          | The time since the ledger was closed, in seconds. |
-| `validated_ledger.base_fee_xrp`     | Number          | Base fee, in XRP. This may be represented in scientific notation such as `1e-05` for 0.00001. |
-| `validated_ledger.hash`             | String          | Unique hash for the ledger, as hexadecimal. |
-| `validated_ledger.reserve_base_xrp` | Number          | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
-| `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. |
-| `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
+| `validated_ledger`                  | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger, as a [Server Ledger Object](#server-ledger-object). If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list expires, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. |
 | `counters`            | Object          | This object contains performance metrics pertaining to the RPC calls (currently executing calls and completed calls) and the JobQueue. It also contains details of the nodestore like `node_writes`, `node_reads_total`, `node_reads_hit`, etc|
 | `current_activity`            | Object          | This field lists the items currently being run in the job queue and contains two arrays for `jobs` and `methods`. |
 
-{% admonition type="info" name="Note" %}If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.{% /admonition %}
-
-{% partial file="/docs/_snippets/etl-source-object.md" /%}
-
 {% partial file="/docs/_snippets/port-descriptor-object.md" /%}
+
+{% partial file="/docs/_snippets/state-accounting-object.md" /%}
+
+### Server Ledger Object
+
+The response provides either a `validated_ledger` field or a `closed_ledger` field. Either field contains an object with the following fields:
+
+| Field              | Value             | Description |
+|--------------------|-------------------|-------------|
+| `age`              | Number            | The time since the ledger was closed, in seconds. |
+| `base_fee_xrp`     | Number            | Base fee, in XRP (not drops). This may be represented in scientific notation such as `1e-05` for 0.00001. |
+| `hash`             | String - [Hash][] | Unique hash for the ledger, as hexadecimal. |
+| `reserve_base_xrp` | Number            | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
+| `reserve_inc_xrp`  | Number            | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. |
+| `seq`              | Number            | The [ledger index][] of the latest validated ledger. |
+
+Note that the [server_state method][] provides a similar object with slightly different formatting (using drops of XRP instead of decimal XRP, for example).
+
+{% admonition type="info" name="Note" %}If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes up to 15 minutes to sync with the network, depending on your connection speed and hardware specs. See [Server Doesn't Sync](/docs/infrastructure/troubleshooting/server-doesnt-sync.md) for troubleshooting information.{% /admonition %}
 
 ## Possible Errors
 

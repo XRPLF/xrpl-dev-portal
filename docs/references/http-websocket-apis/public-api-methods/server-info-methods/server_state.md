@@ -276,7 +276,7 @@ The `state` object may have some arrangement of the following fields:
 | `amendment_blocked`              | Boolean         | _(May be omitted)_ If `true`, this server is [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). If the server is not amendment blocked, the response omits this field. |
 | `build_version`                  | String          | The version number of the running `rippled` version. |
 | `complete_ledgers`               | String          | Range expression indicating the sequence numbers of the ledger versions the local `rippled` has in its database. It is possible to be a disjoint sequence, e.g. "2500-5000,32570-7695432". If the server does not have any complete ledgers (for example, it recently started syncing with the network), this is the string `empty`. |
-| `closed_ledger`                  | Object          | _(May be omitted)_ Information on the most recently closed ledger that has not been validated by consensus. If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. The member fields are the same as the `validated_ledger` field. |
+| `closed_ledger`                  | Object          | _(May be omitted)_ Information on the most recently closed ledger that has not been validated by consensus, as a [Server Ledger Object](#server-ledger-object). If the most recently validated ledger is available, the response omits this field and includes `validated_ledger` instead. |
 | `io_latency_ms`                  | Number          | Amount of time spent waiting for I/O operations, in milliseconds. If this number is not very, very low, then the `rippled` server is probably having serious load issues. |
 | `jq_trans_overflow`              | String - Number | The number of times this server has had over 250 transactions waiting to be processed at once. A large number here may mean that your server is unable to handle the transaction load of the XRP Ledger network. For detailed recommendations of future-proof server specifications, see [Capacity Planning](../../../../infrastructure/installation/capacity-planning.md). |
 | `last_close`                     | Object          | Information about the last time the server closed a ledger, including the amount of time it took to reach a consensus and the number of trusted validators participating. |
@@ -298,24 +298,32 @@ The `state` object may have some arrangement of the following fields:
 | `pubkey_validator`               | String          | _(Admin only)_ Public key used by this node to sign ledger validations. This _validation key pair_ is derived from the `[validator_token]` or `[validation_seed]` config field. |
 | `server_state`                   | String          | A string indicating to what extent the server is participating in the network. See [Possible Server States](../../api-conventions/rippled-server-states.md) for more details. |
 | `server_state_duration_us`       | Number          | The number of consecutive microseconds the server has been in the current state. |
-| `state_accounting`               | Object          | A map of various [server states](../../api-conventions/rippled-server-states.md) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. |
-| `state_accounting.*.duration_us` | String          | The number of microseconds the server has spent in this state. (This is updated whenever the server transitions into another state.) |
-| `state_accounting.*.transitions` | String          | The number of times the server has changed into this state. |
+| `state_accounting`               | Object          | A map of various [server states](../../api-conventions/rippled-server-states.md) with information about the time the server spends in each. This can be useful for tracking the long-term health of your server's connectivity to the network. The contents of this field are formatted as [State Accounting Objects](#state-accounting-object). |
 | `time`                           | String          | The current time in UTC, according to the server's clock. |
 | `uptime`                         | Number          | Number of consecutive seconds that the server has been operational. |
-| `validated_ledger`               | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
-| `validated_ledger.base_fee`      | Number          | Base fee, in drops of XRP, for propagating a transaction to the network. |
-| `validated_ledger.close_time`    | Number          | Time this ledger was closed, in [seconds since the Ripple Epoch][]. |
-| `validated_ledger.hash`          | String          | Unique hash of this ledger version, as hexadecimal. |
-| `validated_ledger.reserve_base`  | Number          | The minimum [account reserve](../../../../concepts/accounts/reserves.md), as of the most recent validated ledger version. |
-| `validated_ledger.reserve_inc`   | Number          | The [owner reserve](../../../../concepts/accounts/reserves.md) for each item an account owns, as of the most recent validated ledger version. |
-| `validated_ledger.seq`           | Number          | The [ledger index][] of the most recently validated ledger version. |
+| `validated_ledger`               | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger, as a [Server Ledger Object](#server-ledger-object). If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validation_quorum`              | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`         | Number          | _(Admin only)_ When the current validator list expires, in [seconds since the Ripple Epoch][], or 0 if the server has yet to load a published validator list. |
 
-{% partial file="/docs/_snippets/etl-source-object.md" /%}
-
 {% partial file="/docs/_snippets/port-descriptor-object.md" /%}
+
+{% partial file="/docs/_snippets/state-accounting-object.md" /%}
+
+### Server Ledger Object
+
+The response provides either a `validated_ledger` field or a `closed_ledger` field. Either field contains an object with the following fields:
+
+| Field           | Value             | Description |
+|-----------------|-------------------|-------------|
+| `base_fee`      | Number            | The base fee, in drops of XRP, for propagating a transaction to the network, as of this ledger version. |
+| `close_time`    | Number            | The official close time time of this ledger version, in [seconds since the Ripple Epoch][]. This value is rounded; see [Ledger Close Times](../../../../concepts/ledgers/ledger-close-times.md) for details. |
+| `hash`          | String - [Hash][] | The unique hash of this ledger version, as hexadecimal. |
+| `reserve_base`  | Number            | The minimum [account reserve](../../../../concepts/accounts/reserves.md), as of the most recent validated ledger version. |
+| `reserve_inc`   | Number            | The [owner reserve](../../../../concepts/accounts/reserves.md) for each item an account owns, as of the most recent validated ledger version. |
+| `seq`           | Number            | The [ledger index][] of this ledger version. |
+
+Note that the [server_info method][] provides a similar object with slightly different formatting (using decimal XRP instead of drops, for example).
+
 
 ## Possible Errors
 
