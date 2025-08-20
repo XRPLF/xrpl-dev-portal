@@ -51,7 +51,6 @@ Date:   Tue Jun 17 10:38:07 2025 -0700
 ### New Features
 
 - Improved the `account_tx` method to show MPT-related transactions for an issuer. ([#5530](https://github.com/XRPLF/rippled/pull/5530))
-- Added `DomainID` support for the `MPTokenIssuanceCreate` and `MPTokenIssuanceSet` transactions. ([#5509](https://github.com/XRPLF/rippled/pull/5509))
 - Added the `network_id` field to `validations` and `ledger` subscription streams. ([#5579](https://github.com/XRPLF/rippled/pull/5579))
 - Reduced lock contention by moving mutex to partition level. Also removed tight coupling between `LedgerHistory` and `TaggedCache`, improving modularity and testability. ([#5486](https://github.com/XRPLF/rippled/pull/5486))
 - Optimized hash performance. ([#5469](https://github.com/XRPLF/rippled/pull/5469))
@@ -118,26 +117,26 @@ Date:   Tue Jun 17 10:38:07 2025 -0700
 
 ## Credits
 
-The following GitHub users contributed to this release (alphabetical):
+The following GitHub users contributed to this release:
 
-- Ayaz Salikhov <asalikhov@ripple.com>
-- Bart Thomee <bthomee@users.noreply.github.com>
-- Bronek Kozicki <brok@incorrekt.com>
-- Chenna Keshava <ckeshavabs@ripple.com>
-- Denis Angell <dangell@transia.co>
-- Ed Hennis <ed@ripple.com>
-- Elliot Lee <github.public@intelliot.com>
-- Jingchen Wu <jingchenw@ripple.com>
-- Luc des Trois Maisons <lmaisons@ripple.com>
-- Mayukha Vadari <mvadari@gmail.com>
-- Michael Legleux <mlegleux@ripple.com>
-- Oleksandr Hrabar <40630611+Afformativ@users.noreply.github.com>
-- Shawn Xie <shawnxie@ripple.com>
-- tequ <git@tequ.dev>
-- Vito Tumas <vtumas@ripple.com>
-- Valentin Balaschenko <vbalaschenko@ripple.com>
-- Vladislav Vysokikh <vvysokikh@ripple.com>
-- Yinyi Qian <yqian@ripple.com>
+- @Afformativ
+- @a1q123456
+- @Bronek
+- @bthomee
+- @ckeshava
+- @dangell7
+- @intelliot
+- @lmaisons
+- @mathbunnyru
+- @mvadari
+- @oeggert
+- @shawnxie999
+- @Tapanito
+- @tequdev
+- @vlntb
+- @vvysokikh1
+- @ximinez
+- @yinyiqian1
 
 
 ## Bug Bounties and Responsible Disclosures
