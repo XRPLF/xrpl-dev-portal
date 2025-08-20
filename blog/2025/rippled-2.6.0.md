@@ -79,8 +79,8 @@ Date:   Tue Jun 17 10:38:07 2025 -0700
 ### Other Improvements
 
 - Removed release notes from the `rippled` codebase to facilitate more frequent releases. ([#5508](https://github.com/XRPLF/rippled/pull/5508))
-- Removed the obsolete `OwnerPaysFee` amendment. ([#5435](https://github.com/XRPLF/rippled/pull/5435), [#5550](https://github.com/XRPLF/rippled/pull/5550))
-- Removed the obsolete `FlowCross` amendment. ([#5562](https://github.com/XRPLF/rippled/pull/5562), [#5575](https://github.com/XRPLF/rippled/pull/5575))
+- Removed the obsolete `OwnerPaysFee` amendment. It was never enabled. ([#5435](https://github.com/XRPLF/rippled/pull/5435), [#5550](https://github.com/XRPLF/rippled/pull/5550))
+- Retired the `FlowCross` amendment. The functionality is now part of the core protocol unconditionally. ([#5562](https://github.com/XRPLF/rippled/pull/5562), [#5575](https://github.com/XRPLF/rippled/pull/5575))
 - Added an `XRPL_ABANDON` macro for features that were never enabled or implemented. ([#5510](https://github.com/XRPLF/rippled/pull/5510))
 - Switched some unit tests to doctests. ([#5383](https://github.com/XRPLF/rippled/pull/5383))
 - Refactored `CredentialHelpers` and removed unnecessary dependencies. ([#5487](https://github.com/XRPLF/rippled/pull/5487))
