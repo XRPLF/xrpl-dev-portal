@@ -1,4 +1,4 @@
-import { stringToHex } from '@xrplf/isomorphic/dist/utils/index.js'
+import { stringToHex, hexToString } from '@xrplf/isomorphic/dist/utils/index.js'
 import { MPTokenIssuanceCreateFlags, Client } from 'xrpl'
 
 // Connect to network and get a wallet
@@ -55,13 +55,31 @@ const mpt_issuance_create = {
 
 // Prepare, sign, and submit the transaction
 console.log('Sending MPTokenIssuanceCreate transaction...')
-const result = await client.submitAndWait(mpt_issuance_create, { wallet, autofill: true })
+const submit_response = await client.submitAndWait(mpt_issuance_create, { wallet, autofill: true })
 
 // Check transaction results and disconnect
-console.log(JSON.stringify(result, null, 2))
-if (result.result.meta.TransactionResult === 'tesSUCCESS') {
-  const issuance_id = result.result.meta.mpt_issuance_id
-  console.log(`MPToken created successfully with issuance ID ${issuance_id}.`)
+console.log(JSON.stringify(submit_response, null, 2))
+if (submit_response.result.meta.TransactionResult !== 'tesSUCCESS') {
+  const result_code = response.result.meta.TransactionResult
+  console.warn(`Transaction failed with result code ${result_code}.`)
+  process.exit(1)
 }
+
+const issuance_id = submit_response.result.meta.mpt_issuance_id
+console.log(`MPToken created successfully with issuance ID ${issuance_id}.`)
+
+// Look up MPT Issuance entry in the validated ledger
+console.log('Confirming MPT Issuance metadata in the validated ledger.')
+const ledger_entry_response = await client.request({
+  "command": "ledger_entry",
+  "mpt_issuance": issuance_id,
+  "ledger_index": "validated"
+})
+
+// Decode the metadata
+const metadata_blob = ledger_entry_response.result.node.MPTokenMetadata
+const decoded_metadata = JSON.parse(hexToString(metadata_blob))
+console.log('Decoded metadata:', decoded_metadata)
+
 
 client.disconnect()

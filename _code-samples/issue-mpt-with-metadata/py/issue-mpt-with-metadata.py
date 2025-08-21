@@ -1,9 +1,9 @@
 import json
-from xrpl.utils import str_to_hex
+from xrpl.utils import str_to_hex, hex_to_str
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import generate_faucet_wallet
 from xrpl.transaction import submit_and_wait
-from xrpl.models.transactions import MPTokenIssuanceCreate, MPTokenIssuanceCreateFlag
+from xrpl.models import LedgerEntry, MPTokenIssuanceCreate, MPTokenIssuanceCreateFlag
 
 # Set up client and get a wallet
 client = JsonRpcClient("https://s.devnet.rippletest.net:51234")
@@ -60,7 +60,23 @@ print("Sending MPTokenIssuanceCreate transaction...")
 response = submit_and_wait(mpt_issuance_create, client, wallet, autofill=True)
 print(json.dumps(response.result, indent=2))
 
-# Check transaction results and disconnect
-if response.result["meta"]["TransactionResult"] == "tesSUCCESS":
-    issuance_id = response.result["meta"]["mpt_issuance_id"]
-    print(f"MPToken successfully created with issuance ID {issuance_id}")
+# Check transaction results
+result_code = response.result["meta"]["TransactionResult"]
+if result_code != "tesSUCCESS":
+    print(f"Transaction failed with result code {result_code}")
+    exit(1)
+
+issuance_id = response.result["meta"]["mpt_issuance_id"]
+print(f"MPToken successfully created with issuance ID {issuance_id}")
+
+# Look up MPT Issuance entry in the validated ledger
+print("Confirming MPT Issuance metadata in the validated ledger.")
+ledger_entry_response = client.request(LedgerEntry(
+    mpt_issuance=issuance_id,
+    ledger_index="validated"
+))
+
+# Decode the metadata
+metadata_blob = ledger_entry_response.result["node"]["MPTokenMetadata"]
+decoded_metadata = json.loads(hex_to_str(metadata_blob))
+print("Decoded metadata:", decoded_metadata)
