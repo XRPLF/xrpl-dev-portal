@@ -1,9 +1,10 @@
 ---
 seo:
-    description: A PermissionedDomain ledger entry represents a Permissioned Domain, which is used to limit access to other features.
+    description: A permissioned domain, which is used to limit access to other features.
 labels:
   - Compliance
   - Permissioned Domains
+status: not_enabled
 ---
 # PermissionedDomain
 [[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/ledger_entries.macro#L451-L461 "Source")

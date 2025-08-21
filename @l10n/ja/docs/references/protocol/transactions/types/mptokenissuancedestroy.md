@@ -1,7 +1,6 @@
 ---
-html: mptokenissuancedestroy.html
-parent: transaction-types.html
-blurb: レジャーからMulti-Purpose Tokenを削除します。
+seo:
+    description: Multi-Purpose Tokenを削除します。
 labels:
  - Multi-Purpose Token, MPT
 ---

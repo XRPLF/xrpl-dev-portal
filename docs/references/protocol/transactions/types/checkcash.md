@@ -1,6 +1,4 @@
 ---
-html: checkcash.html
-parent: transaction-types.html
 seo:
     description: Redeem a check.
 labels:
