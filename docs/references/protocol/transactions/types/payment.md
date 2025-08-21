@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Send funds from one account to another; or convert funds between currencies, sending to the same account; or create a new account by sending it XRP.
+    description: Send funds to another account, convert between currencies, or create a new account by sending it XRP.
 labels:
   - Payments
   - XRP

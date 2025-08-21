@@ -1,6 +1,6 @@
 ---
 seo:
-  description: A list of all types of entry that can exist in the ledger's state data.
+  description: A list of all entry types that can exist in the ledger's state data.
 metadata:
   indexPage: true
 ---
