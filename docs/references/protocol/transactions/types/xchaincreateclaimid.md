@@ -59,4 +59,8 @@ It also includes the account on the source chain that locks or burns the funds o
 | `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
+## See Also
+
+- [XChainOwnedClaimID entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

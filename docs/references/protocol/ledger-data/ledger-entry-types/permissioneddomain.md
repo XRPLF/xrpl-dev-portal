@@ -77,5 +77,10 @@ The ID of a {% code-page-name /%} entry is the [SHA-512Half][] of the following 
 0. The AccountID of the {% code-page-name /%}'s owner.
 0. The Sequence number of the transaction that created the {% code-page-name /%}.
 
+## See Also
+
+- **Transactions:**
+  - [PermissionedDomainDelete transaction][]
+  - [PermissionedDomainSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

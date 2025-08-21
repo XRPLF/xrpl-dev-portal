@@ -65,4 +65,8 @@ If a transaction tries to enable No Ripple but cannot, it fails with the result 
 
 The Auth flag of a trust line does not determine whether the trust line counts towards its owner's XRP reserve requirement. An issuer can pre-authorize a trust line with the `tfSetfAuth` flag only, even if the limit and balance of the trust line are 0.
 
+## See Also
+
+- [RippleState entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

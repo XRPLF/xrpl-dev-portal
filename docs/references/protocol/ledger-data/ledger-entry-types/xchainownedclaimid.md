@@ -102,4 +102,9 @@ _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 | `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
+## See Also
+
+- **Transactions:**
+  - [XChainCreateClaimID transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

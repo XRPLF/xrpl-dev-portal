@@ -195,6 +195,8 @@
 [PermissionDelegation amendment]: /resources/known-amendments.md#permissiondelegation
 [PermissionedDEX amendment]: /resources/known-amendments.md#permissioneddex
 [Permissioned DEXes]: /docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
+[PermissionedDomain entry]: /docs/references/protocol/ledger-data/ledger-entry-types/permissioneddomain.md
+[PermissionedDomainDelete transaction]: /docs/references/protocol/transactions/types/permissioneddomaindelete.md
 [PermissionedDomainSet transaction]: /docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomainSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/permissioneddomainset.md
 [PermissionedDomains amendment]: /resources/known-amendments.md#permissioneddomains
@@ -264,6 +266,7 @@
 [XChainCreateClaimID transaction]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimID transactions]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
 [XChainCreateClaimID]: /docs/references/protocol/transactions/types/xchaincreateclaimid.md
+[XChainOwnedCreateAccountClaimID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md
 [XChainOwnedClaimID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid
 [XRP, in drops]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [XRPFees amendment]: /resources/known-amendments.md#xrpfees

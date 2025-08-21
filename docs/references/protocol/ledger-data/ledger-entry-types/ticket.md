@@ -60,4 +60,9 @@ The ID of a Ticket object is the SHA-512Half of the following values, concatenat
 * The AccountID of the owner of the Ticket
 * The `TicketSequence` number of the Ticket
 
+## See Also
+
+- **Transactions:**
+  - [TicketCreate transaction][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
