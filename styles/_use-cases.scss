@@ -992,3 +992,75 @@ body,
 .landing.page-uses {
   overflow-x: hidden;
 }
+
+.use-case-payments {
+  margin: 100px 120px;
+
+  &__hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .video-content {
+    width: 50%;
+    display: flex;
+    align-items: stretch;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      max-height: 560px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .text-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    .eyebrow {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+  
+      h2 {
+        font-size: 42px;
+        font-style: normal;
+        font-weight: 700;
+      }
+  
+      p {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+      }
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    margin: 50px 20px;
+
+    &__hero {
+      flex-direction: column;
+      gap: 40px;
+      min-height: auto;
+    }
+
+    .video-content,
+    .text-content {
+      width: 100%;
+    }
+
+    .video-content iframe {
+      min-height: 250px;
+    }
+  }
+}
