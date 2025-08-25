@@ -52,7 +52,6 @@ Date:   Tue Jun 17 10:38:07 2025 -0700
 
 - Improved the `account_tx` method to show MPT-related transactions for an issuer. ([#5530](https://github.com/XRPLF/rippled/pull/5530))
 - Added the `network_id` field to `validations` and `ledger` subscription streams. ([#5579](https://github.com/XRPLF/rippled/pull/5579))
-- Reduced lock contention by moving mutex to partition level. Also removed tight coupling between `LedgerHistory` and `TaggedCache`, improving modularity and testability. ([#5486](https://github.com/XRPLF/rippled/pull/5486))
 - Optimized hash performance. ([#5469](https://github.com/XRPLF/rippled/pull/5469))
 
 
