@@ -3,8 +3,8 @@ metadata:
   indexPage: true
 ---
 
-# Build Applications with GoLang Library
+# Build Applications with Go Library
 
-Build full-featured applications in GoLang.
+Build full-featured applications in Go.
 
 {% child-pages /%}
