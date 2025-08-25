@@ -16,7 +16,9 @@
     - page: docs/use-cases/index.md
       expanded: false
       items:
-        - page: docs/use-cases/payments/index.md
+        - page: docs/use-cases/payments/index.page.tsx
+          label: Payments
+          labelTranslationKey: sidebar.docs.use-cases.payments
           expanded: false
           items:
             - page: docs/use-cases/payments/peer-to-peer-payments-uc.md

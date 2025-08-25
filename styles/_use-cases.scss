@@ -728,55 +728,7 @@ html.light {
     font-weight: 400;
   }
 
-  /* Work-around for border gradient and radius */
-  .security-card {
-    position: relative;
-    border-radius: 0.5rem;
-    background-color: transparent;
-    white-space: normal;
-    box-sizing: border-box;
-  }
 
-  .security-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(90deg, #d91aff 26.41%, #1aa4ff 100.32%);
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    z-index: -1;
-  }
-
-  .security-card p {
-    margin-bottom: 0 !important;
-  }
-
-  .security-card .h6 {
-    @include media-breakpoint-down(sm) {
-      font-size: 1.25rem;
-    }
-  }
-
-  .security-card-grid {
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-
-    @media (min-width: 1200px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
 
   .video-external-link .link-text {
     margin-left: 0.25rem;
@@ -994,7 +946,8 @@ body,
 }
 
 .use-case-payments {
-  margin: 100px 120px;
+  // Reduced margins to account for 284px sidebar
+  margin: 80px 100px;
 
   &__hero {
     display: flex;
@@ -1044,13 +997,39 @@ body,
     }
   }
 
-  // Responsive design
+  // Responsive design accounting for 284px sidebar
+  @media (max-width: 1200px) {
+    margin: 80px 60px;
+
+    &__hero {
+      gap: 60px;
+    }
+
+    .video-content iframe {
+      min-height: 350px;
+      max-height: 450px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin: 60px 40px;
+
+    &__hero {
+      gap: 40px;
+    }
+
+    .video-content iframe {
+      min-height: 300px;
+      max-height: 400px;
+    }
+  }
+
   @media (max-width: 768px) {
-    margin: 50px 20px;
+    margin: 40px 20px;
 
     &__hero {
       flex-direction: column;
-      gap: 40px;
+      gap: 32px;
       min-height: auto;
     }
 
@@ -1061,6 +1040,271 @@ body,
 
     .video-content iframe {
       min-height: 250px;
+      max-height: 350px;
     }
+  }
+
+  @media (max-width: 480px) {
+    margin: 20px 15px;
+
+    &__hero {
+      gap: 24px;
+    }
+
+    .video-content iframe {
+      min-height: 200px;
+      max-height: 280px;
+    }
+
+    .text-content {
+      .eyebrow {
+        font-size: 16px;
+
+        h2 {
+          font-size: 32px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+
+}
+
+/* Shared styles for AdvantagesSection component - used across multiple pages */
+.advantages-section {
+  /* Work-around for border gradient and radius */
+  .security-card {
+    position: relative;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    white-space: normal;
+    box-sizing: border-box;
+  }
+
+  .security-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(90deg, #d91aff 26.41%, #1aa4ff 100.32%);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    z-index: -1;
+  }
+
+  .security-card p {
+    margin-bottom: 0 !important;
+  }
+
+  .security-card .h6 {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .security-card-grid,
+  .security-card-grid-3,
+  .security-card-grid-4 {
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .security-card-grid {
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .security-card-grid-3 {
+    gap: 2.5rem; /* 40px gap for 3-column layout */
+    
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .security-card-grid-4 {
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Bullet point styles for payments page */
+  .advantages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .advantage-item {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 16px;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #7919FF;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #E0E0E1;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+
+    .advantage-description {
+      display: block;
+      color: #E0E0E1;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+  }
+
+  /* Card title typography for bullet version */
+  .security-card .card-title {
+    color: var(--Black-Black-0, #FFF);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%; /* 22.5px */
+  }
+}
+
+/* Specific spacing for payments page between hero and advantages sections */
+.use-case-payments .payments-advantages-spacing {
+  padding-top: 180px;
+  padding-bottom: 20px; /* Keep standard bottom padding */
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+/* Project cards styles for payments page */
+.use-case-payments .payments-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 40px; /* 40px horizontal, 48px vertical */
+  row-gap: 48px;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 32px;
+  }
+}
+
+.use-case-payments .payments-project-card {
+  min-height: 260px;
+  position: relative;
+  padding: 32px;
+  .project-description {
+    padding: 0 1rem;
+    text-align: left; /* Changed from center to left */
+    
+    .first-word {
+      color: #FFF;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px; /* 150% */
+    }
+    
+    .rest-text {
+      color: var(--XRPL-Primary-White, #FFF);
+      font-family: "Work Sans";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+
+  /* Add the top border gradient for payments page */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.25rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  /* Stablecoin images */
+  .project-logo {
+    margin-Bottom: 32px;
+    img.ripple-usd {
+      content: url('../img/uses/payments/rlusd.png');
+      width: 180px;
+      height: 50px;
+    }
+    
+    img.usdc {
+      content: url('../img/uses/payments/usdc.png');
+      width: 50px;
+      height: 50px;
+    }
+    
+    img.usdb {
+      content: url('../img/uses/payments/usdb.png');
+      width: 126px;
+      height: 50px;
+    }
+    
+    img.europ {
+      content: url('../img/uses/payments/eroup.png');
+      width: 147px;
+      height: 50px;
+    }
+    
+    img.xsgd {
+      content: url('../img/uses/payments/XSGD.png');
+      width: 50px;
+      height: 50px;
+    }
+    
+    img.audd {
+      content: url('../img/uses/payments/AUDD.png');
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  /* Alternating gradients for payments page */
+  &.odd::before {
+    background: linear-gradient(90deg, #D91AFF 26.41%, #1AA4FF 100.32%);
+  }
+
+  &.even::before {
+    background: linear-gradient(90deg, #4BB7FF -0.32%, #32E685 30.61%);
   }
 }
