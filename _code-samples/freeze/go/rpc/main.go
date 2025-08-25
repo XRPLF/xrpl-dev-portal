@@ -30,14 +30,12 @@ func main() {
     fmt.Println("Setting up issuer wallet...")
     issuer, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating issuer wallet: %s\n", err)
-        return
+        panic(err)
     }
 
     err = client.FundWallet(&issuer)
     if err != nil {
-        fmt.Printf("Error funding issuer wallet: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Printf("Issuer wallet funded: %s\n", issuer.ClassicAddress)
 
@@ -47,14 +45,12 @@ func main() {
     fmt.Println("Setting up holder 1 wallet...")
     holderWallet1, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating holder wallet 1: %s\n", err)
-        return
+        panic(err)
     }
 
     err = client.FundWallet(&holderWallet1)
     if err != nil {
-        fmt.Printf("Error funding holder wallet 1: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Printf("Holder wallet 1 funded: %s\n", holderWallet1.ClassicAddress)
 
@@ -64,14 +60,12 @@ func main() {
     fmt.Println("Setting up holder 2 wallet...")
     holderWallet2, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating holder wallet 2: %s\n", err)
-        return
+        panic(err)
     }
 
     err = client.FundWallet(&holderWallet2)
     if err != nil {
-        fmt.Printf("Error funding holder wallet 2: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Printf("Holder wallet 2 funded: %s\n", holderWallet2.ClassicAddress)
     fmt.Println()
@@ -322,23 +316,17 @@ func submitAndWait(client *rpc.Client, txn SubmittableTransaction, wallet wallet
 
     err := client.Autofill(&flattenedTx)
     if err != nil {
-        fmt.Printf("Error autofilling %s transaction: %s\n", txn.TxType(), err)
-        fmt.Println()
-        return
+        panic(err)
     }
 
     txBlob, _, err := wallet.Sign(flattenedTx)
     if err != nil {
-        fmt.Printf("Error signing %s transaction: %s\n", txn.TxType(), err)
-        fmt.Println()
-        return
+        panic(err)
     }
 
     response, err := client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Printf("Error submitting %s transaction: %s\n", txn.TxType(), err)
-        fmt.Println()
-        return
+        panic(err)
     }
 
     fmt.Printf("%s transaction submitted\n", txn.TxType())

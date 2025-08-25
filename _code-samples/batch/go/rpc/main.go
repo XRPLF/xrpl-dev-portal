@@ -40,30 +40,25 @@ func main() {
     // Create and fund wallets
     userWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     user2Wallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     receiverWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Funding wallets...")
     if err := client.FundWallet(&userWallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     if err := client.FundWallet(&user2Wallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Wallets funded")
 
@@ -105,8 +100,7 @@ func main() {
     flattenedBatchTx := batchTx.Flatten()
     fmt.Println("Autofilling flattened batch transaction...")
     if err := client.Autofill(&flattenedBatchTx); err != nil {
-        fmt.Println("Autofill error:", err)
-        return
+        panic(err)
     }
 
     fmt.Println("Signing batch transaction...")
@@ -115,8 +109,7 @@ func main() {
         Wallet:   &userWallet,
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Batch transaction submitted")
@@ -165,14 +158,12 @@ func main() {
     flattenedMultiBatchTx := multiBatchTx.Flatten()
     fmt.Println("Autofilling flattened multi batch transaction...")
     if err := client.AutofillMultisigned(&flattenedMultiBatchTx, 1); err != nil {
-        fmt.Println("Autofill error:", err)
-        return
+        panic(err)
     }
 
     fmt.Println("Signing multi batch transaction...")
     if err := wallet.SignMultiBatch(user2Wallet, &flattenedMultiBatchTx, nil); err != nil {
-        fmt.Println("Signing error:", err)
-        return
+        panic(err)
     }
 
     response, err = client.SubmitTxAndWait(flattenedMultiBatchTx, &types.SubmitOptions{
@@ -180,8 +171,7 @@ func main() {
         Wallet:   &userWallet,
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Multisig Batch transaction submitted")

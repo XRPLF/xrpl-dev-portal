@@ -39,14 +39,12 @@ func main() {
 
     wallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Funding wallet...")
     if err := client.FundWallet(&wallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Wallet funded")
@@ -64,8 +62,7 @@ func main() {
         DestinationAmount:  DestinationAmount,
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Printf("Computed paths: %d\n", len(res.Alternatives))
@@ -89,20 +86,17 @@ func main() {
     flatP := p.Flatten()
 
     if err := client.Autofill(&flatP); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, hash, err := wallet.Sign(flatP)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     txRes, err := client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Payment submitted")

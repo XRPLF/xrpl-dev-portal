@@ -25,26 +25,22 @@ func main() {
 
     w, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     receiverWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Setting up wallets...")
     if err := client.FundWallet(&w); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Sender wallet funded!")
 
     if err := client.FundWallet(&receiverWallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Receiver wallet funded!")
@@ -68,20 +64,17 @@ func main() {
     flatCc := cc.Flatten()
 
     if err := client.Autofill(&flatCc); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, _, err := w.Sign(flatCc)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err := client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     if !res.Validated {
@@ -140,20 +133,17 @@ func main() {
     flatCheckCash := checkCash.Flatten()
 
     if err := client.Autofill(&flatCheckCash); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, _, err = receiverWallet.Sign(flatCheckCash)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err = client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Check cashed out!")

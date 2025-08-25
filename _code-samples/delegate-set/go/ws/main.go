@@ -21,31 +21,26 @@ func main() {
     defer client.Disconnect()
 
     if err := client.Connect(); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     // Create and fund wallets
     delegatorWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     delegateeWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Funding wallets...")
     if err := client.FundWallet(&delegatorWallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     if err := client.FundWallet(&delegateeWallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Wallets funded")
 
@@ -81,20 +76,17 @@ func main() {
     // Submit DelegateSet transaction
     flattenedTx := delegateSetTx.Flatten()
     if err := client.Autofill(&flattenedTx); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     txBlob, _, err := delegatorWallet.Sign(flattenedTx)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     response, err := client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("DelegateSet transaction submitted")
@@ -115,20 +107,17 @@ func main() {
     // Submit delegated payment
     flatDelegatedPayment := delegatedPaymentTx.Flatten()
     if err := client.Autofill(&flatDelegatedPayment); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     txBlob2, _, err := delegateeWallet.Sign(flatDelegatedPayment)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     response2, err := client.SubmitTxBlobAndWait(txBlob2, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Delegated payment submitted")

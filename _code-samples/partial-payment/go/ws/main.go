@@ -22,8 +22,7 @@ func main() {
     defer client.Disconnect()
 
     if err := client.Connect(); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     if !client.IsConnected() {
@@ -37,24 +36,20 @@ func main() {
     fmt.Println("Funding wallets...")
     w1, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     w2, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     if err := client.FundWallet(&w1); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Wallet 1 funded")
     if err := client.FundWallet(&w2); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Wallet 2 funded")
@@ -78,20 +73,17 @@ func main() {
 
     err = client.Autofill(&flatTs)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, _, err := w2.Sign(flatTs)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err := client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("TrustSet transaction submitted!")
@@ -116,20 +108,17 @@ func main() {
 
     err = client.Autofill(&flatP)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, _, err = w1.Sign(flatP)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err = client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Payment transaction submitted!")
@@ -156,20 +145,17 @@ func main() {
 
     err = client.Autofill(&flatPP)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, _, err = w2.Sign(flatPP)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err = client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Partial Payment transaction submitted!")

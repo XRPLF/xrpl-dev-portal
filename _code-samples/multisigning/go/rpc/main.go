@@ -28,40 +28,34 @@ func main() {
 
     w1, err := wallet.FromSeed("sEdTtvLmJmrb7GaivhWoXRkvU4NDjVf", "")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     w2, err := wallet.FromSeed("sEdSFiKMQp7RvYLgH7t7FEpwNRWv2Gr", "")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     master, err := wallet.FromSeed("sEdTMm2yv8c8Rg8YHFHQA9TxVMFy1ze", "")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Funding wallets...")
 
     if err := client.FundWallet(&w1); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Wallet 1 funded")
 
     if err := client.FundWallet(&w2); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Wallet 2 funded")
 
     if err := client.FundWallet(&master); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Master wallet funded")
     fmt.Println()
@@ -97,20 +91,17 @@ func main() {
     flatSs := ss.Flatten()
 
     if err := client.Autofill(&flatSs); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, _, err := master.Sign(flatSs)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err := client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("SignerListSet transaction submitted!")
@@ -129,36 +120,31 @@ func main() {
     flatAs := as.Flatten()
 
     if err := client.AutofillMultisigned(&flatAs, 2); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     w1As := maps.Clone(flatAs)
 
     blob1, _, err := w1.Multisign(w1As)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     w2As := maps.Clone(flatAs)
 
     blob2, _, err := w2.Multisign(w2As)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, err = xrpl.Multisign(blob1, blob2)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     mRes, err := client.SubmitMultisigned(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Multisigned transaction submitted!")

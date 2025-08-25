@@ -29,12 +29,10 @@ func main() {
     // Create and fund the nft wallet
     nftWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println("Error creating nft wallet:", err)
-        return
+        panic(err)
     }
     if err := client.FundWallet(&nftWallet); err != nil {
-        fmt.Println("Error funding nft wallet:", err)
-        return
+        panic(err)
     }
     fmt.Println("NFT wallet funded: ", nftWallet.ClassicAddress)
     fmt.Println()
@@ -56,8 +54,7 @@ func main() {
         Wallet:   &nftWallet,
     })
     if err != nil {
-        fmt.Println("Error minting NFT:", err)
-        return
+        panic(err)
     }
     if !responseMint.Validated {
         fmt.Println("NFTokenMint txn is not in a validated ledger", responseMint)
@@ -96,8 +93,7 @@ func main() {
         Wallet:   &nftWallet,
     })
     if err != nil {
-        fmt.Println("Error modifying NFT:", err)
-        return
+        panic(err)
     }
     if !responseModify.Validated {
         fmt.Println("NFTokenModify txn is not in a validated ledger", responseModify)

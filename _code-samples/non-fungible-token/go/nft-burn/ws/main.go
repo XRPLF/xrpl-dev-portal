@@ -23,8 +23,7 @@ func main() {
     defer client.Disconnect()
 
     if err := client.Connect(); err != nil {
-        fmt.Println("Error connecting to devnet:", err)
-        return
+        panic(err)
     }
 
     if !client.IsConnected() {
@@ -40,12 +39,10 @@ func main() {
     // Create and fund the NFT minter wallet
     nftMinter, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println("Error creating NFT minter wallet:", err)
-        return
+        panic(err)
     }
     if err := client.FundWallet(&nftMinter); err != nil {
-        fmt.Println("Error funding NFT minter wallet:", err)
-        return
+        panic(err)
     }
     fmt.Println("NFT minter wallet funded!")
     fmt.Println()
@@ -68,8 +65,7 @@ func main() {
         Wallet:   &nftMinter,
     })
     if err != nil {
-        fmt.Println("Error minting NFT:", err)
-        return
+        panic(err)
     }
     if !responseMint.Validated {
         fmt.Println("NFTokenMint txn is not in a validated ledger", responseMint)
@@ -112,8 +108,7 @@ func main() {
         Wallet:   &nftMinter,
     })
     if err != nil {
-        fmt.Println("Error burning NFT:", err)
-        return
+        panic(err)
     }
     if !responseBurn.Validated {
         fmt.Println("NFTokenBurn transactiob is not in a validated ledger", responseBurn)

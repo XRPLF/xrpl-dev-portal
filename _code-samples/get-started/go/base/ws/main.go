@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/Peersyst/xrpl-go/xrpl/faucet"
 	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
@@ -20,8 +18,7 @@ func main() {
 
     // Connect to the network
     if err := client.Connect(); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     // ... custom code goes here

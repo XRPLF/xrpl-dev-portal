@@ -16,14 +16,12 @@ import (
 func main() {
     w, err := wallet.FromSeed("sEdSMVV4dJ1JbdBxmakRR4Puu3XVZz2", "")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     receiverWallet, err := wallet.FromSeed("sEd7d8Ci9nevdLCeUMctF3uGXp9WQqJ", "")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     client := websocket.NewClient(
@@ -35,8 +33,7 @@ func main() {
 
     fmt.Println("Connecting to server...")
     if err := client.Connect(); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Connected to server")
@@ -48,8 +45,7 @@ func main() {
         fmt.Println("Funding wallet...")
         err = client.FundWallet(&w)
         if err != nil {
-            fmt.Println(err)
-            return
+            panic(err)
         }
         fmt.Println("Wallet funded")
     }
@@ -60,14 +56,12 @@ func main() {
 
     amount, err := currency.XrpToDrops("1")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     amountUint, err := strconv.ParseUint(amount, 10, 64)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Sending payment...")
@@ -99,20 +93,17 @@ func main() {
 
     err = client.Autofill(&flatTx)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     txBlob, _, err := w.Sign(flatTx)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     response, err := client.SubmitTxBlobAndWait(txBlob, true)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Payment submitted")
