@@ -24,14 +24,12 @@ func main() {
     fmt.Println("Setting up credential issuer wallet...")
     issuer, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating credential issuer wallet: %s\n", err)
-        return
+        panic(err)
     }
 
     err = client.FundWallet(&issuer)
     if err != nil {
-        fmt.Printf("Error funding credential issuer wallet: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Printf("Credential issuer wallet funded: %s\n", issuer.ClassicAddress)
 
@@ -41,14 +39,12 @@ func main() {
     fmt.Println("Setting up holder 1 wallet...")
     holderWallet1, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating holder 1 wallet: %s\n", err)
-        return
+        panic(err)
     }
 
     err = client.FundWallet(&holderWallet1)
     if err != nil {
-        fmt.Printf("Error funding holder 1 wallet: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Printf("Holder 1 wallet funded: %s\n", holderWallet1.ClassicAddress)
 
@@ -73,8 +69,7 @@ func main() {
 
     expiration, err := rippletime.IsoTimeToRippleTime(time.Now().Add(time.Hour * 24).Format(time.RFC3339))
     if err != nil {
-        fmt.Printf("Error converting expiration to ripple time: %s\n", err)
-        return
+        panic(err)
     }
     credentialType := types.CredentialType("6D795F63726564656E7469616C") // my_credential
 
@@ -142,8 +137,7 @@ func main() {
 
     objectsResponse, err := client.GetAccountObjects(objectsRequest)
     if err != nil {
-        fmt.Printf("Error getting the credential ID: %s\n", err)
-        return
+        panic(err)
     }
 
     // Check if we have any credential objects

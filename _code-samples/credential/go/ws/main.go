@@ -20,8 +20,7 @@ func main() {
     client := clients.GetDevnetWebsocketClient()
     fmt.Println("Connecting to server...")
     if err := client.Connect(); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Client configured!")
@@ -36,14 +35,12 @@ func main() {
     fmt.Println("Setting up credential issuer wallet...")
     issuer, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating issuer wallet: %s\n", err)
-        return
+        panic(err)
     }
 
     err = client.FundWallet(&issuer)
     if err != nil {
-        fmt.Printf("Error funding issuer wallet: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Printf("Issuer wallet funded: %s\n", issuer.ClassicAddress)
 
@@ -53,14 +50,12 @@ func main() {
     fmt.Println("Setting up Subject wallet...")
     subjectWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating subject wallet: %s\n", err)
-        return
+        panic(err)
     }
 
     err = client.FundWallet(&subjectWallet)
     if err != nil {
-        fmt.Printf("Error funding subject wallet: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Printf("Subject wallet funded: %s\n", subjectWallet.ClassicAddress)
 
@@ -73,8 +68,7 @@ func main() {
     credentialType := types.CredentialType("6D795F63726564656E7469616C")
 
     if err != nil {
-        fmt.Printf("Error converting expiration to ripple time: %s\n", err)
-        return
+        panic(err)
     }
 
     txn := &transaction.CredentialCreate{

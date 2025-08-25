@@ -31,12 +31,10 @@ func main() {
     // Create and fund the NFT minter wallet
     nftMinter, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println("Error creating NFT minter wallet:", err)
-        return
+        panic(err)
     }
     if err := client.FundWallet(&nftMinter); err != nil {
-        fmt.Println("Error funding NFT minter wallet:", err)
-        return
+        panic(err)
     }
     fmt.Println("NFT minter wallet funded!")
 
@@ -58,8 +56,7 @@ func main() {
         Wallet:   &nftMinter,
     })
     if err != nil {
-        fmt.Println("Error minting first NFT:", err)
-        return
+        panic(err)
     }
     if !responseMint.Validated {
         fmt.Println("First NFTokenMint transaction is not in a validated ledger", responseMint)
@@ -105,8 +102,7 @@ func main() {
         Wallet:   &nftMinter,
     })
     if err != nil {
-        fmt.Println("Error minting second NFT:", err)
-        return
+        panic(err)
     }
     if !responseMint.Validated {
         fmt.Println("Second NFTokenMint transaction is not in a validated ledger", responseMint)
@@ -152,8 +148,7 @@ func main() {
         Wallet:   &nftMinter,
     })
     if err != nil {
-        fmt.Println("Error canceling NFT offers:", err)
-        return
+        panic(err)
     }
     if !response.Validated {
         fmt.Println("NFTokenCancelOffer transaction is not in a validated ledger", response)

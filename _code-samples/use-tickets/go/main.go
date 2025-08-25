@@ -25,14 +25,12 @@ func main() {
 
     w, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Funding wallet...")
     if err := client.FundWallet(&w); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Wallet funded")
@@ -42,8 +40,7 @@ func main() {
         Account: w.GetAddress(),
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Current wallet sequence:", info.AccountData.Sequence)
@@ -61,20 +58,17 @@ func main() {
     flatTc := tc.Flatten()
 
     if err := client.Autofill(&flatTc); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     blob, _, err := w.Sign(flatTc)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err := client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("TicketCreate transaction submitted")
@@ -86,16 +80,14 @@ func main() {
         Account: w.GetAddress(),
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Account objects:", objects.AccountObjects[0]["TicketSequence"])
 
     seq, err := objects.AccountObjects[0]["TicketSequence"].(json.Number).Int64()
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Submitting AccountSet transaction...")
@@ -110,22 +102,19 @@ func main() {
     flatAs := as.Flatten()
 
     if err := client.Autofill(&flatAs); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     flatAs["Sequence"] = uint32(0)
 
     blob, _, err = w.Sign(flatAs)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err = client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("AccountSet transaction submitted")

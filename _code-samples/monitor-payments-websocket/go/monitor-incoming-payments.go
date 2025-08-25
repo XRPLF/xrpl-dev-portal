@@ -43,7 +43,7 @@ func main() {
     // make the connection
     c, _, err := websocket.DefaultDialer.Dial(u.String(), nil)
     if err != nil {
-        log.Fatal("dial:", err)
+        panic(err)
     }
     // on exit close
     defer c.Close()
@@ -59,15 +59,13 @@ func main() {
     // write to the websocket
     err = c.WriteMessage(websocket.TextMessage, []byte(string(msg)))
     if err != nil {
-        log.Println("write:", err)
-        return
+        panic(err)
     }
 
     // read from the websocket
     _, message, err := c.ReadMessage()
     if err != nil {
-        log.Println("read:", err)
-        return
+        panic(err)
     }
     // print the response from the XRP Ledger
     log.Printf("recv: %s", message)
@@ -84,8 +82,7 @@ func main() {
             // waiting (with timeout) for the server to close the connection.
             err := c.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""))
             if err != nil {
-                log.Println("write close:", err)
-                return
+                panic(err)
             }
             select {
             case <-done:

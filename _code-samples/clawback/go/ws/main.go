@@ -30,8 +30,7 @@ func main() {
 
     fmt.Println("Connecting to server...")
     if err := client.Connect(); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Connection: ", client.IsConnected())
@@ -42,25 +41,21 @@ func main() {
     fmt.Println("Setting up wallets...")
     coldWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating cold wallet: %s\n", err)
-        return
+        panic(err)
     }
     err = client.FundWallet(&coldWallet)
     if err != nil {
-        fmt.Printf("Error funding cold wallet: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Println("Cold wallet funded!")
 
     hotWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("Error creating hot wallet: %s\n", err)
-        return
+        panic(err)
     }
     err = client.FundWallet(&hotWallet)
     if err != nil {
-        fmt.Printf("Error funding hot wallet: %s\n", err)
-        return
+        panic(err)
     }
     fmt.Println("Hot wallet funded!")
     fmt.Println()
@@ -92,20 +87,17 @@ func main() {
 
     err = client.Autofill(&flattenedTx)
     if err != nil {
-        fmt.Printf("Error autofilling transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     txBlob, _, err := coldWallet.Sign(flattenedTx)
     if err != nil {
-        fmt.Printf("Error signing transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     response, err := client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Printf("Error submitting transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     if !response.Validated {
@@ -137,20 +129,17 @@ func main() {
     flattenedTx = hotColdTrustSet.Flatten()
     err = client.Autofill(&flattenedTx)
     if err != nil {
-        fmt.Printf("Error autofilling transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     txBlob, _, err = hotWallet.Sign(flattenedTx)
     if err != nil {
-        fmt.Printf("Error signing transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     response, err = client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Printf("Error submitting transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     if !response.Validated {
@@ -184,20 +173,17 @@ func main() {
     flattenedTx = coldToHotPayment.Flatten()
     err = client.Autofill(&flattenedTx)
     if err != nil {
-        fmt.Printf("Error autofilling transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     txBlob, _, err = coldWallet.Sign(flattenedTx)
     if err != nil {
-        fmt.Printf("Error signing transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     response, err = client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Printf("Error submitting transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     if !response.Validated {
@@ -230,20 +216,17 @@ func main() {
     flattenedTx = coldWalletClawback.Flatten()
     err = client.Autofill(&flattenedTx)
     if err != nil {
-        fmt.Printf("Error autofilling transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     txBlob, _, err = coldWallet.Sign(flattenedTx)
     if err != nil {
-        fmt.Printf("Error signing transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     response, err = client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Printf("Error submitting transaction: %s\n", err)
-        return
+        panic(err)
     }
 
     if !response.Validated {

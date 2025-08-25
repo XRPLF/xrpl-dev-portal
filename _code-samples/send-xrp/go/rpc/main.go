@@ -34,14 +34,12 @@ func main() {
 
     w, err := wallet.FromSeed(WalletSeed, "")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Funding wallet...")
     if err := client.FundWallet(&w); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Wallet funded")
@@ -49,14 +47,12 @@ func main() {
 
     xrpAmount, err := currency.XrpToDrops("1")
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     xrpAmountInt, err := strconv.ParseInt(xrpAmount, 10, 64)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Sending 1 XRP to rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe...")
@@ -72,20 +68,17 @@ func main() {
     flattenedTx := p.Flatten()
 
     if err := client.Autofill(&flattenedTx); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     txBlob, _, err := w.Sign(flattenedTx)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     res, err := client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Payment submitted")
@@ -101,8 +94,7 @@ func main() {
         Wallet:   &w,
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Payment submitted via SubmitTxAndWait")

@@ -26,24 +26,20 @@ func main() {
     // Create and fund wallets
     delegatorWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     delegateeWallet, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Funding wallets...")
     if err := client.FundWallet(&delegatorWallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     if err := client.FundWallet(&delegateeWallet); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Wallets funded")
 
@@ -82,8 +78,7 @@ func main() {
         Wallet:   &delegatorWallet,
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("DelegateSet transaction submitted")
@@ -107,8 +102,7 @@ func main() {
         Wallet:   &delegateeWallet,
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     fmt.Println("Delegated payment submitted")

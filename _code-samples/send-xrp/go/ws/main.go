@@ -23,8 +23,7 @@ client := websocket.NewClient(
 defer client.Disconnect()
 
 if err := client.Connect(); err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 if !client.IsConnected() {
@@ -39,15 +38,13 @@ fmt.Println()
 const WalletSeed = "sEd7zwWAu7vXMCBkkzokJHEXiKw2B2s"
 w, err := wallet.FromSeed(WalletSeed, "")
 if err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 // Funding the wallet
 fmt.Println("Funding wallet...")
 if err := client.FundWallet(&w); err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 fmt.Println("Wallet funded")
@@ -55,14 +52,12 @@ fmt.Println()
 
 xrpAmount, err := currency.XrpToDrops("1")
 if err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 xrpAmountInt, err := strconv.ParseInt(xrpAmount, 10, 64)
 if err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 // Prepare a payment transaction
@@ -78,22 +73,19 @@ p := &transaction.Payment{
 flattenedTx := p.Flatten()
 
 if err := client.Autofill(&flattenedTx); err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 // Sign the transaction using the wallet
 txBlob, _, err := w.Sign(flattenedTx)
 if err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 // Submit the transaction and wait for the result
 res_blob, err := client.SubmitTxBlobAndWait(txBlob, false)
 if err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 
 // Example with SubmitTxAndWait
@@ -103,8 +95,7 @@ res_flat, err := client.SubmitTxAndWait(flattenedTx2, &wstypes.SubmitOptions{
     Wallet:   &w,
 })
 if err != nil {
-    fmt.Println(err)
-    return
+    panic(err)
 }
 // Wait for validation -------------------------------------------------------
 // SubmitTxBlobAndWait() handles this automatically, but it can take 4-7s.

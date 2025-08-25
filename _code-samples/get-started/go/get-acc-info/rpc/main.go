@@ -26,16 +26,14 @@ func main() {
     // Create a new wallet
     w, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("New wallet created:")
     fmt.Println("Address:", w.ClassicAddress)
 
     // Fund the wallet with testnet XRP
     if err := client.FundWallet(&w); err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
 
     // Get info from the ledger about the address we just funded
@@ -43,8 +41,7 @@ func main() {
         Account: w.GetAddress(),
     })
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Account Balance:", acc_info.AccountData.Balance)
     fmt.Println("Account Sequence:", acc_info.AccountData.Sequence)
@@ -52,8 +49,7 @@ func main() {
     // Get info about the ledger
     ledger, err := client.GetLedger(&ledger.Request{LedgerIndex: common.Current})
     if err != nil {
-        fmt.Println(err)
-        return
+        panic(err)
     }
     fmt.Println("Ledger Index:", ledger.Ledger.LedgerIndex)
 }
