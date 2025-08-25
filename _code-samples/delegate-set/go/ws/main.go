@@ -1,14 +1,14 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    transactions "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	transactions "github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
 
 func main() {
@@ -38,7 +38,7 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Funding wallets...")
+    fmt.Println("Funding wallets...")
     if err := client.FundWallet(&delegatorWallet); err != nil {
         fmt.Println(err)
         return
@@ -47,7 +47,7 @@ func main() {
         fmt.Println(err)
         return
     }
-    fmt.Println("💸 Wallets funded")
+    fmt.Println("Wallets funded")
 
     // Check initial balances
     delegatorBalance, err := client.GetXrpBalance(delegatorWallet.ClassicAddress)
@@ -59,8 +59,8 @@ func main() {
         delegateeBalance = "0"
     }
 
-    fmt.Printf("💳 Delegator initial balance: %s XRP\n", delegatorBalance)
-    fmt.Printf("💳 Delegatee initial balance: %s XRP\n", delegateeBalance)
+    fmt.Printf("Delegator initial balance: %s XRP\n", delegatorBalance)
+    fmt.Printf("Delegatee initial balance: %s XRP\n", delegateeBalance)
     fmt.Println()
 
     // Create DelegateSet transaction
@@ -97,9 +97,9 @@ func main() {
         return
     }
 
-    fmt.Println("✅ DelegateSet transaction submitted")
-    fmt.Printf("🌐 Hash: %s\n", response.Hash)
-    fmt.Printf("🌐 Validated: %t\n", response.Validated)
+    fmt.Println("DelegateSet transaction submitted")
+    fmt.Printf("Hash: %s\n", response.Hash)
+    fmt.Printf("Validated: %t\n", response.Validated)
     fmt.Println()
 
     // Create delegated payment transaction
@@ -131,9 +131,9 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Delegated payment submitted")
-    fmt.Printf("🌐 Hash: %s\n", response2.Hash)
-    fmt.Printf("🌐 Validated: %t\n", response2.Validated)
+    fmt.Println("Delegated payment submitted")
+    fmt.Printf("Hash: %s\n", response2.Hash)
+    fmt.Printf("Validated: %t\n", response2.Validated)
     fmt.Println()
 
     // Check final balances
@@ -146,6 +146,6 @@ func main() {
         finalDelegateeBalance = "0"
     }
 
-    fmt.Printf("💳 Delegator final balance: %s XRP\n", finalDelegatorBalance)
-    fmt.Printf("💳 Delegatee final balance: %s XRP\n", finalDelegateeBalance)
+    fmt.Printf("Delegator final balance: %s XRP\n", finalDelegatorBalance)
+    fmt.Printf("Delegatee final balance: %s XRP\n", finalDelegateeBalance)
 }

@@ -1,17 +1,17 @@
 package main
 
 import (
-    "fmt"
-    "strconv"
+	"fmt"
+	"strconv"
 
-    "github.com/Peersyst/xrpl-go/xrpl/currency"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/queries/transactions"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
-    wstypes "github.com/Peersyst/xrpl-go/xrpl/websocket/types"
+	"github.com/Peersyst/xrpl-go/xrpl/currency"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/transactions"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
+	wstypes "github.com/Peersyst/xrpl-go/xrpl/websocket/types"
 )
 
 func main() {
@@ -28,11 +28,11 @@ if err := client.Connect(); err != nil {
 }
 
 if !client.IsConnected() {
-    fmt.Println("❌ Failed to connect to testnet")
+    fmt.Println("Failed to connect to testnet")
     return
 }
 
-fmt.Println("✅ Connected to testnet")
+fmt.Println("Connected to testnet")
 fmt.Println()
 
 // Example credentials
@@ -44,13 +44,13 @@ if err != nil {
 }
 
 // Funding the wallet
-fmt.Println("⏳ Funding wallet...")
+fmt.Println("Funding wallet...")
 if err := client.FundWallet(&w); err != nil {
     fmt.Println(err)
     return
 }
 
-fmt.Println("💸 Wallet funded")
+fmt.Println("Wallet funded")
 fmt.Println()
 
 xrpAmount, err := currency.XrpToDrops("1")
@@ -110,10 +110,10 @@ if err != nil {
 // SubmitTxBlobAndWait() handles this automatically, but it can take 4-7s.
 
 // Check transaction results -------------------------------------------------
-fmt.Printf("🌐 Hash: %s\n", res_blob.Hash)
-fmt.Printf("🌐 Meta: %t\n", res_blob.Meta)
+fmt.Printf("Hash: %s\n", res_blob.Hash)
+fmt.Printf("Meta: %t\n", res_blob.Meta)
 res, _ := client.Request(&transactions.TxRequest{
     Transaction: res_flat.Hash.String(),
 })
-fmt.Printf("🌐 Result: %s\n", res.Result)
+fmt.Printf("Result: %s\n", res.Result)
 }

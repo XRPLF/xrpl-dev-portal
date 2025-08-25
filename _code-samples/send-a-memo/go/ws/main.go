@@ -1,16 +1,16 @@
 package main
 
 import (
-    "encoding/hex"
-    "fmt"
-    "strconv"
+	"encoding/hex"
+	"fmt"
+	"strconv"
 
-    "github.com/Peersyst/xrpl-go/xrpl/currency"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    transactions "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
+	"github.com/Peersyst/xrpl-go/xrpl/currency"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	transactions "github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
 
 func main() {
@@ -33,30 +33,30 @@ func main() {
     )
     defer client.Disconnect()
 
-    fmt.Println("⏳ Connecting to server...")
+    fmt.Println("Connecting to server...")
     if err := client.Connect(); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("✅ Connected to server")
+    fmt.Println("Connected to server")
     fmt.Println()
 
     balance, err := client.GetXrpBalance(w.GetAddress())
 
     if err != nil || balance == "0" {
-        fmt.Println("⏳ Funding wallet...")
+        fmt.Println("Funding wallet...")
         err = client.FundWallet(&w)
         if err != nil {
             fmt.Println(err)
             return
         }
-        fmt.Println("💸 Wallet funded")
+        fmt.Println("Wallet funded")
     }
 
     balance, _ = client.GetXrpBalance(w.GetAddress())
 
-    fmt.Printf("💸 Balance: %s\n", balance)
+    fmt.Printf("Balance: %s\n", balance)
 
     amount, err := currency.XrpToDrops("1")
     if err != nil {
@@ -70,7 +70,7 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Sending payment...")
+    fmt.Println("Sending payment...")
     payment := transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(w.GetAddress()),
@@ -115,7 +115,7 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Payment submitted")
-    fmt.Printf("🌐 Hash: %s\n", response.Hash.String())
-    fmt.Printf("🌐 Validated: %t\n", response.Validated)
+    fmt.Println("Payment submitted")
+    fmt.Printf("Hash: %s\n", response.Hash.String())
+    fmt.Printf("Validated: %t\n", response.Validated)
 }

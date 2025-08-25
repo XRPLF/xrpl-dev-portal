@@ -1,18 +1,18 @@
 package main
 
 import (
-    "encoding/hex"
-    "fmt"
-    "maps"
-    "strings"
+	"encoding/hex"
+	"fmt"
+	"maps"
+	"strings"
 
-    "github.com/Peersyst/xrpl-go/xrpl"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/ledger-entry-types"
-    "github.com/Peersyst/xrpl-go/xrpl/rpc"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/ledger-entry-types"
+	"github.com/Peersyst/xrpl-go/xrpl/rpc"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
 )
 
 func main() {
@@ -44,28 +44,28 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Funding wallets...")
+    fmt.Println("Funding wallets...")
 
     if err := client.FundWallet(&w1); err != nil {
         fmt.Println(err)
         return
     }
-    fmt.Println("💸 Wallet 1 funded")
+    fmt.Println("Wallet 1 funded")
 
     if err := client.FundWallet(&w2); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("💸 Wallet 2 funded")
+    fmt.Println("Wallet 2 funded")
 
     if err := client.FundWallet(&master); err != nil {
         fmt.Println(err)
         return
     }
-    fmt.Println("💸 Master wallet funded")
+    fmt.Println("Master wallet funded")
     fmt.Println()
-    fmt.Println("⏳ Setting up signer list...")
+    fmt.Println("Setting up signer list...")
 
     ss := &transaction.SignerListSet{
         BaseTx: transaction.BaseTx{
@@ -113,11 +113,11 @@ func main() {
         return
     }
 
-    fmt.Println("✅ SignerListSet transaction submitted!")
-    fmt.Printf("🌐 Hash: %s\n", res.Hash.String())
+    fmt.Println("SignerListSet transaction submitted!")
+    fmt.Printf("Hash: %s\n", res.Hash.String())
     fmt.Println()
 
-    fmt.Println("⏳ Setting up AccountSet multisign transaction...")
+    fmt.Println("Setting up AccountSet multisign transaction...")
 
     as := &transaction.AccountSet{
         BaseTx: transaction.BaseTx{
@@ -161,6 +161,6 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Multisigned transaction submitted!")
-    fmt.Printf("🌐 Result: %s\n", mRes.EngineResult)
+    fmt.Println("Multisigned transaction submitted!")
+    fmt.Printf("Result: %s\n", mRes.EngineResult)
 }

@@ -1,8 +1,9 @@
 package main
 
 import (
-    "github.com/Peersyst/xrpl-go/xrpl/queries/utility"
-    "github.com/Peersyst/xrpl-go/xrpl/rpc"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/utility"
+	"github.com/Peersyst/xrpl-go/xrpl/rpc"
 )
 
 func main() {

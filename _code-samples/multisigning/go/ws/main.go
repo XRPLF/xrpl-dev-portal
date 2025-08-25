@@ -1,22 +1,22 @@
 package main
 
 import (
-    "encoding/hex"
-    "fmt"
-    "maps"
-    "strings"
+	"encoding/hex"
+	"fmt"
+	"maps"
+	"strings"
 
-    "github.com/Peersyst/xrpl-go/xrpl"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/ledger-entry-types"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
+	"github.com/Peersyst/xrpl-go/xrpl"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/ledger-entry-types"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
 
 func main() {
-    fmt.Println("⏳ Connecting to testnet...")
+    fmt.Println("Connecting to testnet...")
     client := websocket.NewClient(
         websocket.NewClientConfig().
             WithHost("wss://s.altnet.rippletest.net:51233").
@@ -30,11 +30,11 @@ func main() {
     }
 
     if !client.IsConnected() {
-        fmt.Println("❌ Failed to connect to testnet")
+        fmt.Println("Failed to connect to testnet")
         return
     }
 
-    fmt.Println("✅ Connected to testnet")
+    fmt.Println("Connected to testnet")
     fmt.Println()
 
     w1, err := wallet.FromSeed("sEdTtvLmJmrb7GaivhWoXRkvU4NDjVf", "")
@@ -55,28 +55,28 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Funding wallets...")
+    fmt.Println("Funding wallets...")
 
     if err := client.FundWallet(&w1); err != nil {
         fmt.Println(err)
         return
     }
-    fmt.Println("💸 Wallet 1 funded")
+    fmt.Println("Wallet 1 funded")
 
     if err := client.FundWallet(&w2); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("💸 Wallet 2 funded")
+    fmt.Println("Wallet 2 funded")
 
     if err := client.FundWallet(&master); err != nil {
         fmt.Println(err)
         return
     }
-    fmt.Println("💸 Master wallet funded")
+    fmt.Println("Master wallet funded")
     fmt.Println()
-    fmt.Println("⏳ Setting up signer list...")
+    fmt.Println("Setting up signer list...")
 
     ss := &transaction.SignerListSet{
         BaseTx: transaction.BaseTx{
@@ -105,34 +105,34 @@ func main() {
         },
     }
 
-    fmt.Println("⏳ Flattening transaction...")
+    fmt.Println("Flattening transaction...")
     flatSs := ss.Flatten()
 
-    fmt.Println("⏳ Autofilling transaction...")
+    fmt.Println("Autofilling transaction...")
     if err := client.Autofill(&flatSs); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("⏳ Signing transaction...")
+    fmt.Println("Signing transaction...")
     blob, _, err := master.Sign(flatSs)
     if err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("⏳ Submitting transaction...")
+    fmt.Println("Submitting transaction...")
     res, err := client.SubmitTxBlobAndWait(blob, false)
     if err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("✅ SignerListSet transaction submitted!")
-    fmt.Printf("🌐 Hash: %s\n", res.Hash.String())
+    fmt.Println("SignerListSet transaction submitted!")
+    fmt.Printf("Hash: %s\n", res.Hash.String())
     fmt.Println()
 
-    fmt.Println("⏳ Setting up AccountSet multisign transaction...")
+    fmt.Println("Setting up AccountSet multisign transaction...")
 
     as := &transaction.AccountSet{
         BaseTx: transaction.BaseTx{
@@ -176,6 +176,6 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Multisigned transaction submitted!")
-    fmt.Printf("🌐 Result: %s\n", mRes.EngineResult)
+    fmt.Println("Multisigned transaction submitted!")
+    fmt.Printf("Result: %s\n", mRes.EngineResult)
 }

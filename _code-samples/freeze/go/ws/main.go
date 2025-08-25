@@ -1,15 +1,15 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/currency"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    transactions "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/currency"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	transactions "github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
 
 const (
@@ -22,7 +22,7 @@ type SubmittableTransaction interface {
 }
 
 func main() {
-    fmt.Println("⏳ Setting up client...")
+    fmt.Println("Setting up client...")
 
     client := getClient()
     fmt.Println("Connecting to server...")
@@ -31,7 +31,7 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Client configured!")
+    fmt.Println("Client configured!")
     fmt.Println()
 
     fmt.Printf("Connection: %t", client.IsConnected())
@@ -40,62 +40,62 @@ func main() {
     // Configure wallets
 
     // Issuer
-    fmt.Println("⏳ Setting up issuer wallet...")
+    fmt.Println("Setting up issuer wallet...")
     issuer, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("❌ Error creating issuer wallet: %s\n", err)
+        fmt.Printf("Error creating issuer wallet: %s\n", err)
         return
     }
 
     err = client.FundWallet(&issuer)
     if err != nil {
-        fmt.Printf("❌ Error funding issuer wallet: %s\n", err)
+        fmt.Printf("Error funding issuer wallet: %s\n", err)
         return
     }
-    fmt.Printf("✅ Issuer wallet funded: %s\n", issuer.ClassicAddress)
+    fmt.Printf("Issuer wallet funded: %s\n", issuer.ClassicAddress)
 
     // -----------------------------------------------------
 
     // Holder 1
-    fmt.Println("⏳ Setting up holder 1 wallet...")
+    fmt.Println("Setting up holder 1 wallet...")
     holderWallet1, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("❌ Error creating holder wallet 1: %s\n", err)
+        fmt.Printf("Error creating holder wallet 1: %s\n", err)
         return
     }
 
     err = client.FundWallet(&holderWallet1)
     if err != nil {
-        fmt.Printf("❌ Error funding holder wallet 1: %s\n", err)
+        fmt.Printf("Error funding holder wallet 1: %s\n", err)
         return
     }
-    fmt.Printf("✅ Holder wallet 1 funded: %s\n", holderWallet1.ClassicAddress)
+    fmt.Printf("Holder wallet 1 funded: %s\n", holderWallet1.ClassicAddress)
 
     // -----------------------------------------------------
 
     // Holder 2
-    fmt.Println("⏳ Setting up holder 2 wallet...")
+    fmt.Println("Setting up holder 2 wallet...")
     holderWallet2, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("❌ Error creating holder wallet 2: %s\n", err)
+        fmt.Printf("Error creating holder wallet 2: %s\n", err)
         return
     }
 
     err = client.FundWallet(&holderWallet2)
     if err != nil {
-        fmt.Printf("❌ Error funding holder wallet 2: %s\n", err)
+        fmt.Printf("Error funding holder wallet 2: %s\n", err)
         return
     }
-    fmt.Printf("✅ Holder wallet 2 funded: %s\n", holderWallet2.ClassicAddress)
+    fmt.Printf("Holder wallet 2 funded: %s\n", holderWallet2.ClassicAddress)
     fmt.Println()
 
-    fmt.Println("✅ Wallets setup complete!")
+    fmt.Println("Wallets setup complete!")
     fmt.Println()
 
     // -----------------------------------------------------
 
     // Configuring Issuing account
-    fmt.Println("⏳ Configuring issuer address settings...")
+    fmt.Println("Configuring issuer address settings...")
     accountSet := &transactions.AccountSet{
         BaseTx: transactions.BaseTx{
             Account: types.Address(issuer.ClassicAddress),
@@ -109,7 +109,7 @@ func main() {
     // -----------------------------------------------------
 
     // Trustline from the holder 1 to the issuer
-    fmt.Println("⏳ Setting up trustline from holder 1 to the issuer...")
+    fmt.Println("Setting up trustline from holder 1 to the issuer...")
     trustSet := &transactions.TrustSet{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet1.ClassicAddress),
@@ -125,7 +125,7 @@ func main() {
     // -----------------------------------------------------
 
     // Trustline from the holder 2 to the issuer
-    fmt.Println("⏳ Setting up trustline from holder 2 to the issuer...")
+    fmt.Println("Setting up trustline from holder 2 to the issuer...")
     trustSet = &transactions.TrustSet{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet2.ClassicAddress),
@@ -142,7 +142,7 @@ func main() {
     // -----------------------------------------------------
 
     // Minting to Holder 1
-    fmt.Println("⏳ Minting to Holder 1...")
+    fmt.Println("Minting to Holder 1...")
     payment := &transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(issuer.ClassicAddress),
@@ -159,7 +159,7 @@ func main() {
     // -----------------------------------------------------
 
     // Minting to Holder 2
-    fmt.Println("⏳ Minting to Holder 2...")
+    fmt.Println("Minting to Holder 2...")
     payment = &transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(issuer.ClassicAddress),
@@ -176,7 +176,7 @@ func main() {
     // -----------------------------------------------------
 
     // Sending payment from Holder 1 to Holder 2
-    fmt.Println("⏳ Sending payment from Holder 1 to Holder 2...")
+    fmt.Println("Sending payment from Holder 1 to Holder 2...")
     payment = &transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet1.ClassicAddress),
@@ -193,7 +193,7 @@ func main() {
     // -----------------------------------------------------
 
     // Freezing and Deep Freezing holder1
-    fmt.Println("⏳ Freezing and Deep Freezing holder 1 trustline...")
+    fmt.Println("Freezing and Deep Freezing holder 1 trustline...")
     trustSet = &transactions.TrustSet{
         BaseTx: transactions.BaseTx{
             Account: types.Address(issuer.ClassicAddress),
@@ -209,10 +209,10 @@ func main() {
 
     submitAndWait(client, trustSet, issuer)
 
-    // ------------------- SHOULD FAIL ⬇️ ------------------
+    // ------------------- SHOULD FAIL ------------------
 
     // Sending payment from Holder 1 to Holder 2 (which should fail), Holder 1 can't decrease its balance
-    fmt.Println("⏳ Sending payment from Holder 1 to Holder 2 (which should fail). Holder 1 can't decrease its balance...")
+    fmt.Println("Sending payment from Holder 1 to Holder 2 (which should fail). Holder 1 can't decrease its balance...")
     payment = &transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet1.ClassicAddress),
@@ -226,10 +226,10 @@ func main() {
     }
     submitAndWait(client, payment, holderWallet1)
 
-    // ------------------- SHOULD FAIL ⬇️ ------------------
+    // ------------------- SHOULD FAIL ------------------
 
     // Sending payment from Holder 2 to Holder 1 (which should fail), Holder 1 can't increase its balance
-    fmt.Println("⏳ Sending payment from Holder 2 to Holder 1 (which should fail). Holder 1 can't increase its balance...")
+    fmt.Println("Sending payment from Holder 2 to Holder 1 (which should fail). Holder 1 can't increase its balance...")
     payment = &transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet2.ClassicAddress),
@@ -243,10 +243,10 @@ func main() {
     }
     submitAndWait(client, payment, holderWallet2)
 
-    // ------------------- SHOULD FAIL ⬇️ ------------------
+    // ------------------- SHOULD FAIL ------------------
 
     // Creating OfferCreate transaction (which should fail), Holder 1 can't create an offer
-    fmt.Println("⏳ Creating OfferCreate transaction (which should fail). Holder 1 can't create an offer...")
+    fmt.Println("Creating OfferCreate transaction (which should fail). Holder 1 can't create an offer...")
     offerCreate := &transactions.OfferCreate{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet1.ClassicAddress),
@@ -263,7 +263,7 @@ func main() {
     // -----------------------------------------------------
 
     // Unfreezing and Deep Unfreezing holder 1
-    fmt.Println("⏳ Unfreezing and Deep Unfreezing holder 1 trustline...")
+    fmt.Println("Unfreezing and Deep Unfreezing holder 1 trustline...")
     trustSet = &transactions.TrustSet{
         BaseTx: transactions.BaseTx{
             Account: types.Address(issuer.ClassicAddress),
@@ -281,7 +281,7 @@ func main() {
     // -----------------------------------------------------
 
     // Sending payment from Holder 1 to Holder 2 (which should succeed), Holder 1 can decrease its balance
-    fmt.Println("⏳ Sending payment from Holder 1 to Holder 2 (which should succeed). Holder 1 can decrease its balance...")
+    fmt.Println("Sending payment from Holder 1 to Holder 2 (which should succeed). Holder 1 can decrease its balance...")
     payment = &transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet1.ClassicAddress),
@@ -298,7 +298,7 @@ func main() {
     // -----------------------------------------------------
 
     // Sending payment from Holder 2 to Holder 1 (which should succeed), Holder 1 can increase its balance
-    fmt.Println("⏳ Sending payment from Holder 2 to Holder 1 (which should succeed). Holder 1 can increase its balance...")
+    fmt.Println("Sending payment from Holder 2 to Holder 1 (which should succeed). Holder 1 can increase its balance...")
     payment = &transactions.Payment{
         BaseTx: transactions.BaseTx{
             Account: types.Address(holderWallet2.ClassicAddress),
@@ -326,32 +326,32 @@ func getClient() *websocket.Client {
 
 // submitAndWait submits a transaction and waits for it to be included in a validated ledger
 func submitAndWait(client *websocket.Client, txn SubmittableTransaction, wallet wallet.Wallet) {
-    fmt.Printf("⏳ Submitting %s transaction...\n", txn.TxType())
+    fmt.Printf("Submitting %s transaction...\n", txn.TxType())
 
     flattenedTx := txn.Flatten()
 
     err := client.Autofill(&flattenedTx)
     if err != nil {
-        fmt.Printf("❌ Error autofilling %s transaction: %s\n", txn.TxType(), err)
+        fmt.Printf("Error autofilling %s transaction: %s\n", txn.TxType(), err)
         fmt.Println()
         return
     }
 
     txBlob, _, err := wallet.Sign(flattenedTx)
     if err != nil {
-        fmt.Printf("❌ Error signing %s transaction: %s\n", txn.TxType(), err)
+        fmt.Printf("Error signing %s transaction: %s\n", txn.TxType(), err)
         fmt.Println()
         return
     }
 
     response, err := client.SubmitTxBlobAndWait(txBlob, false)
     if err != nil {
-        fmt.Printf("❌ Error submitting %s transaction: %s\n", txn.TxType(), err)
+        fmt.Printf("Error submitting %s transaction: %s\n", txn.TxType(), err)
         fmt.Println()
         return
     }
 
-    fmt.Printf("✅ %s transaction submitted\n", txn.TxType())
-    fmt.Printf("🌐 Hash: %s\n", response.Hash.String())
+    fmt.Printf("%s transaction submitted\n", txn.TxType())
+    fmt.Printf("Hash: %s\n", response.Hash.String())
     fmt.Println()
 }

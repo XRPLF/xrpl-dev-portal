@@ -1,18 +1,18 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
 
 func main() {
-    fmt.Println("⏳ Connecting to testnet...")
+    fmt.Println("Connecting to testnet...")
     client := websocket.NewClient(
         websocket.NewClientConfig().
             WithHost("wss://s.altnet.rippletest.net:51233").
@@ -26,11 +26,11 @@ func main() {
     }
 
     if !client.IsConnected() {
-        fmt.Println("❌ Failed to connect to testnet")
+        fmt.Println("Failed to connect to testnet")
         return
     }
 
-    fmt.Println("✅ Connected to testnet")
+    fmt.Println("Connected to testnet")
     fmt.Println()
 
     w1, err := wallet.New(crypto.ED25519())
@@ -51,30 +51,30 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Funding wallets...")
+    fmt.Println("Funding wallets...")
     if err := client.FundWallet(&w1); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("💸 Wallet 1 funded")
+    fmt.Println("Wallet 1 funded")
 
     if err := client.FundWallet(&w2); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("💸 Wallet 2 funded")
+    fmt.Println("Wallet 2 funded")
 
     if err := client.FundWallet(&regularKeyWallet); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("💸 Regular key wallet funded")
+    fmt.Println("Regular key wallet funded")
     fmt.Println()
 
-    fmt.Println("⏳ Setting regular key...")
+    fmt.Println("Setting regular key...")
     rk := &transaction.SetRegularKey{
         BaseTx: transaction.BaseTx{
             Account: w1.GetAddress(),
@@ -102,12 +102,12 @@ func main() {
         return
     }
 
-    fmt.Println("✅ SetRegularKey transaction submitted")
-    fmt.Printf("🌐 Hash: %s\n", res.Hash)
-    fmt.Printf("🌐 Validated: %t\n", res.Validated)
+    fmt.Println("SetRegularKey transaction submitted")
+    fmt.Printf("Hash: %s\n", res.Hash)
+    fmt.Printf("Validated: %t\n", res.Validated)
     fmt.Println()
 
-    fmt.Println("⏳ Checking if regular key is set...")
+    fmt.Println("Checking if regular key is set...")
     p := &transaction.Payment{
         BaseTx: transaction.BaseTx{
             Account: w1.GetAddress(),
@@ -136,7 +136,7 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Payment transaction submitted")
-    fmt.Printf("🌐 Hash: %s\n", res.Hash)
-    fmt.Printf("🌐 Validated: %t\n", res.Validated)
+    fmt.Println("Payment transaction submitted")
+    fmt.Printf("Hash: %s\n", res.Hash)
+    fmt.Printf("Validated: %t\n", res.Validated)
 }

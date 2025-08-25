@@ -1,18 +1,18 @@
 package main
 
 import (
-    "encoding/hex"
-    "fmt"
-    "time"
+	"encoding/hex"
+	"fmt"
+	"time"
 
-    "github.com/Peersyst/xrpl-go/examples/clients"
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/queries/account"
-    "github.com/Peersyst/xrpl-go/xrpl/queries/common"
-    rippletime "github.com/Peersyst/xrpl-go/xrpl/time"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/examples/clients"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/account"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/common"
+	rippletime "github.com/Peersyst/xrpl-go/xrpl/time"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
 )
 
 func main() {
@@ -21,41 +21,41 @@ func main() {
     // Configure wallets
 
     // Issuer
-    fmt.Println("⏳ Setting up credential issuer wallet...")
+    fmt.Println("Setting up credential issuer wallet...")
     issuer, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("❌ Error creating credential issuer wallet: %s\n", err)
+        fmt.Printf("Error creating credential issuer wallet: %s\n", err)
         return
     }
 
     err = client.FundWallet(&issuer)
     if err != nil {
-        fmt.Printf("❌ Error funding credential issuer wallet: %s\n", err)
+        fmt.Printf("Error funding credential issuer wallet: %s\n", err)
         return
     }
-    fmt.Printf("✅ Credential issuer wallet funded: %s\n", issuer.ClassicAddress)
+    fmt.Printf("Credential issuer wallet funded: %s\n", issuer.ClassicAddress)
 
     // -----------------------------------------------------
 
     // Holder 1
-    fmt.Println("⏳ Setting up holder 1 wallet...")
+    fmt.Println("Setting up holder 1 wallet...")
     holderWallet1, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Printf("❌ Error creating holder 1 wallet: %s\n", err)
+        fmt.Printf("Error creating holder 1 wallet: %s\n", err)
         return
     }
 
     err = client.FundWallet(&holderWallet1)
     if err != nil {
-        fmt.Printf("❌ Error funding holder 1 wallet: %s\n", err)
+        fmt.Printf("Error funding holder 1 wallet: %s\n", err)
         return
     }
-    fmt.Printf("✅ Holder 1 wallet funded: %s\n", holderWallet1.ClassicAddress)
+    fmt.Printf("Holder 1 wallet funded: %s\n", holderWallet1.ClassicAddress)
 
     // -----------------------------------------------------
 
     // Enabling DepositAuth on the issuer account with an AccountSet transaction
-    fmt.Println("⏳ Enabling DepositAuth on the issuer account...")
+    fmt.Println("Enabling DepositAuth on the issuer account...")
     accountSetTx := &transaction.AccountSet{
         BaseTx: transaction.BaseTx{
             Account:         issuer.ClassicAddress,
@@ -69,11 +69,11 @@ func main() {
     // -----------------------------------------------------
 
     // Creating the CredentialCreate transaction
-    fmt.Println("⏳ Creating the CredentialCreate transaction...")
+    fmt.Println("Creating the CredentialCreate transaction...")
 
     expiration, err := rippletime.IsoTimeToRippleTime(time.Now().Add(time.Hour * 24).Format(time.RFC3339))
     if err != nil {
-        fmt.Printf("❌ Error converting expiration to ripple time: %s\n", err)
+        fmt.Printf("Error converting expiration to ripple time: %s\n", err)
         return
     }
     credentialType := types.CredentialType("6D795F63726564656E7469616C") // my_credential
@@ -94,7 +94,7 @@ func main() {
     // -----------------------------------------------------
 
     // Creating the CredentialAccept transaction
-    fmt.Println("⏳ Creating the CredentialAccept transaction...")
+    fmt.Println("Creating the CredentialAccept transaction...")
 
     credentialAcceptTx := &transaction.CredentialAccept{
         BaseTx: transaction.BaseTx{
@@ -110,7 +110,7 @@ func main() {
     // -----------------------------------------------------
 
     // Creating the DepositPreauth transaction
-    fmt.Println("⏳ Creating the DepositPreauth transaction using AuthorizeCredentials...")
+    fmt.Println("Creating the DepositPreauth transaction using AuthorizeCredentials...")
 
     depositPreauthTx := &transaction.DepositPreauth{
         BaseTx: transaction.BaseTx{
@@ -132,7 +132,7 @@ func main() {
     // -----------------------------------------------------
 
     // Get the credential ID
-    fmt.Println("⏳ Getting the credential ID from the holder 1 account...")
+    fmt.Println("Getting the credential ID from the holder 1 account...")
 
     objectsRequest := &account.ObjectsRequest{
         Account:     holderWallet1.ClassicAddress,
@@ -142,30 +142,30 @@ func main() {
 
     objectsResponse, err := client.GetAccountObjects(objectsRequest)
     if err != nil {
-        fmt.Printf("❌ Error getting the credential ID: %s\n", err)
+        fmt.Printf("Error getting the credential ID: %s\n", err)
         return
     }
 
     // Check if we have any credential objects
     if len(objectsResponse.AccountObjects) == 0 {
-        fmt.Println("❌ No credential objects found")
+        fmt.Println("No credential objects found")
         return
     }
 
     // Extract the credential ID
     credentialID, ok := objectsResponse.AccountObjects[0]["index"].(string)
     if !ok {
-        fmt.Println("❌ Could not extract credential ID from response")
+        fmt.Println("Could not extract credential ID from response")
         return
     }
 
-    fmt.Printf("✅ Credential ID: %s\n", credentialID)
+    fmt.Printf("Credential ID: %s\n", credentialID)
     fmt.Println()
 
     // -----------------------------------------------------
 
     // Sending XRP to the holder 1 account
-    fmt.Println("⏳ Sending XRP to the issuer account, should succeed...")
+    fmt.Println("Sending XRP to the issuer account, should succeed...")
 
     sendTx := &transaction.Payment{
         BaseTx: transaction.BaseTx{
@@ -182,7 +182,7 @@ func main() {
     // -----------------------------------------------------
 
     // Unauthorizing the holder 1 account
-    fmt.Println("⏳ Unauthorizing the holder 1 account with the DepositPreauth transaction and the UnauthorizeCredentials field...")
+    fmt.Println("Unauthorizing the holder 1 account with the DepositPreauth transaction and the UnauthorizeCredentials field...")
 
     unauthorizeTx := &transaction.DepositPreauth{
         BaseTx: transaction.BaseTx{
@@ -204,7 +204,7 @@ func main() {
     // -----------------------------------------------------
 
     // Sending XRP to the holder 1 account again (which should fail)
-    fmt.Println("⏳ Sending XRP to the issuer account again (which should fail)...")
+    fmt.Println("Sending XRP to the issuer account again (which should fail)...")
 
     sendTx2 := &transaction.Payment{
         BaseTx: transaction.BaseTx{
