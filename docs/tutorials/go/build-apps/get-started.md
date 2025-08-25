@@ -27,7 +27,7 @@ To follow this tutorial, you should have Go version `1.22.0` or later installed.
 
 ## Installation
 
-The [`xrpl-go` library](https://github.com/Peersyst/xrpl-go) is available on
+The [`xrpl-go` library](https://github.com/Peersyst/xrpl-go) is available on [pkg.go.dev](https://pkg.go.dev/github.com/Peersyst/xrpl-go).
 
 Start a new project (or use an existing one) and install the `xrpl-go` library via Go modules:
 
@@ -54,24 +54,12 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-go`, you have two main options:
 
 1. Via WebSocket:
-    ```go
-	// Define the network client
-	client := websocket.NewClient(websocket.NewClientConfig().
-		WithHost("wss://s.altnet.rippletest.net:51233"))
-    
-	// Disconnect the client when done. (Defer executes at the end of the function)
-	defer client.Disconnect()
 
-	// Connect to the network
-	if err := client.Connect(); err != nil {
-		fmt.Println(err)
-		return
-	}
-    ```
+   {% code-snippet file="/_code-samples/get-started/go/base/ws/main.go" from="func main()" language="go" /%}
+
 2. Via RPC:
 
-    {% code-snippet file="/_code-samples/get-started/go/base/rpc/main.go" from="func main()" language="go" /%}
-
+   {% code-snippet file="/_code-samples/get-started/go/base/rpc/main.go" from="func main()" language="go" /%}
 
 #### Connect to the production XRP Ledger
 
@@ -89,6 +77,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
     // ... custom code goes here
   }
+  ```
 
   See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
@@ -104,6 +93,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
     // ... custom code goes here
   }
+  ```
 
 ### 2. Get account
 
