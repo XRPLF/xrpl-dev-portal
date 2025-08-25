@@ -1,12 +1,9 @@
 ---
-html: golang.html
-parent: tutorials.html
-top_nav_grouping: Article Types
 metadata:
   indexPage: true
 ---
 
-# GoLang
+# Go
 
 You can create your own interface to try out the capabilities and support your specific business needs. These tutorials build a test harness interface to try out features of the XRP Ledger.
 
@@ -17,7 +14,7 @@ Typically, the example functions involve four steps.
 - Get the state of accounts and tokens on the XRP Ledger using requests.
 - Disconnect from the XRP Ledger.
 
-Once familiar with the library functions, you can build sample applications in GoLang. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.
+Once familiar with the library functions, you can build sample applications in Go. We anticipate that the applications you build greatly improve upon these examples. Your feedback and contributions are most welcome.
 
 ## Tutorial Modules
 

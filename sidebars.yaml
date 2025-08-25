@@ -476,7 +476,7 @@
             - label: Ruby Client Library
               href: https://www.rubydoc.info/gems/xrbp
               external: true
-            - label: GoLang Client Library
+            - label: Go Client Library
               href: https://pkg.go.dev/github.com/Peersyst/xrpl-go
               external: true
         - page: docs/references/http-websocket-apis/index.md
