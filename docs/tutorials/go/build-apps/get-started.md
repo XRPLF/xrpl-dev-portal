@@ -1,21 +1,13 @@
 ---
-html: get-started-using-golang-library.html
-parent: golang.html
-funnel: Build
-doc_type: Tutorials
-category: Get Started
 seo:
-  description: Build a GoLang application that interacts with the XRP Ledger.
-top_nav_name: GoLang
-top_nav_grouping: Get Started
+  description: Build a Go application that interacts with the XRP Ledger.
 labels:
   - Development
-showcase_icon: assets/img/logos/golang.svg
 ---
 
-# Get Started Using GoLang Library
+# Get Started Using Go Library
 
-This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl-go`](https://github.com/Peersyst/xrpl-go), a pure GoLang library built to interact with the XRP Ledger.
+This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl-go`](https://github.com/Peersyst/xrpl-go), a pure Go library built to interact with the XRP Ledger.
 
 This tutorial is intended for beginners and should take no longer than 30 minutes to complete.
 
@@ -30,8 +22,8 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-Requiring Go version `1.22.0` and later.
-[Download latest Go version](https://go.dev/dl/)
+To follow this tutorial, you should have Go version `1.22.0` or later installed.
+[Download latest Go version](https://go.dev/dl/).
 
 ## Installation
 
@@ -53,15 +45,15 @@ When you're working with the XRP Ledger, there are a few things you'll need to m
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
-1. [Connect to the XRP Ledger.](#1-connect-to-the-xrp-ledger)
-1. [Get an account.](#2-get-account)
-1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
+1. [Connect to the XRP Ledger.](#1.-connect-to-the-xrp-ledger)
+2. [Get an account.](#2.-get-account)
+3. [Query the XRP Ledger.](#3.-query-the-xrp-ledger)
 
 ### 1. Connect to the XRP Ledger
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-go`, you have two main options:
 
-1. Via `websocket`:
+1. Via WebSocket:
     ```go
 	// Define the network client
 	client := websocket.NewClient(websocket.NewClientConfig().
@@ -76,16 +68,9 @@ To make queries and submit transactions, you need to connect to the XRP Ledger. 
 		return
 	}
     ```
-2. Via `RPC`: 
-    ```go
-    cfg, err := rpc.NewClientConfig("https://s.altnet.rippletest.net:51234/")
-    if err != nil {
-        panic(err)
-      }
+2. Via RPC:
 
-    // Initiate the network client
-    client := rpc.NewClient(cfg)
-    ```
+    {% code-snippet file="/_code-samples/get-started/go/base/rpc/main.go" from="func main()" language="go" /%}
 
 
 #### Connect to the production XRP Ledger
@@ -95,40 +80,38 @@ The sample code in the previous section shows you how to connect to the Testnet,
 - By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
   ```go
-  import 	"github.com/Peersyst/xrpl-go/xrpl/websocket"
-  const MyServer := "ws://localhost:6006/"
-  client := websocket.NewClient(websocket.NewClientConfig().WithHost(MyServer))
-  ```
+  import "github.com/Peersyst/xrpl-go/xrpl/websocket"
+
+  const MY_SERVER = "ws://localhost:6006/"
+
+  func main() {
+    client := websocket.NewClient(websocket.NewClientConfig().WithHost(MY_SERVER))
+
+    // ... custom code goes here
+  }
 
   See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
 - By using one of the available [public servers][]:
 
   ```go
-  import 	"github.com/Peersyst/xrpl-go/xrpl/websocket"
-  const PublicServer = "wss://xrplcluster.com/"
-  client := websocket.NewClient(websocket.NewClientConfig().WithHost(PublicServer))
-  ```
+  import "github.com/Peersyst/xrpl-go/xrpl/websocket"
+
+  const PUBLIC_SERVER = "wss://xrplcluster.com/"
+
+  func main() {
+    client := websocket.NewClient(websocket.NewClientConfig().WithHost(PUBLIC_SERVER))
+
+    // ... custom code goes here
+  }
 
 ### 2. Get account
 
-In `xrpl-go`, account creation and key management live in the wallet package, and on Testnet you can use the built-in faucet provider on your WebSocket (or RPC) client to fund a brand-new account immediately.
+In `xrpl-go`, account creation and key management live in the `wallet` package, and on Testnet you can use the built-in faucet provider on your WebSocket (or RPC) client to fund a brand-new account immediately.
 
-Here we spin up a Testnet‐connected WebSocket client, generate a fresh ED25519 wallet, then fund it automatically via the public faucet.
+On Testnet, you can fund a new ED25519 account like this:
 
 ```go
-client := websocket.NewClient(
-	websocket.NewClientConfig().
-		WithHost("wss://s.altnet.rippletest.net:51233").
-		WithFaucetProvider(faucet.NewTestnetFaucetProvider()),
-)
-
-defer client.Disconnect()
-if err := client.Connect(); err != nil {
-	fmt.Println(err)
-	return
-}
-
 w, err := wallet.New(crypto.ED25519())
 if err != nil {
 	fmt.Println(err)
@@ -161,16 +144,18 @@ If you already have a seed encoded in [base58][], you can make a `Wallet` instan
 
 You can query the XRP Ledger to get information about [a specific account](../../../references/http-websocket-apis/public-api-methods/account-methods/index.md), [a specific transaction](../../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md), the state of a [current or a historical ledger](../../../references/http-websocket-apis/public-api-methods/ledger-methods/index.md), and [the XRP Ledger's decentralized exchange](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](../../../concepts/transactions/reliable-transaction-submission.md).
 
-You can use either the Client's `request()` method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md). For example:
+Use the Client's `Request()` method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md). For example:
 
 {% code-snippet file="/_code-samples/get-tx/go/main.go" from="// Get the latest validated ledger" language="go" /%}
 
-Or use the [`websocket` or `rpc` packages](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket#Client.GetAccountChannels) getter methods:
+Or, use the getter methods from the [`websocket`](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket) or [`rpc`](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/rpc) packages:
 
 {% code-snippet file="/_code-samples/get-started/go/get-acc-info/ws/main.go" from="// Get info from" before="// Get info about" language="go" /%}
 
 ## Keep on Building
 
-Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an account, and look up information about it, you can also:
+Now that you know how to use `xrpl-go` to connect to the XRP Ledger, get an account, and look up information about it, you can also:
 
 - [Send XRP](../../how-tos/send-xrp.md).
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

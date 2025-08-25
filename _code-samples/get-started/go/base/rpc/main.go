@@ -7,7 +7,10 @@ import (
 
 func main() {
     // Define the network client configuration
-    cfg, err := rpc.NewClientConfig("https://s.altnet.rippletest.net:51234/")
+    cfg, err := rpc.NewClientConfig(
+        "https://s.altnet.rippletest.net:51234/",
+        rpc.WithFaucetProvider(faucet.NewTestnetFaucetProvider()),
+    )
     if err != nil {
         panic(err)
     }

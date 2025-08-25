@@ -337,17 +337,7 @@ export default function Docs() {
                 <div className="col langs">
                   <Link to="/docs/tutorials/go/">
                     <img
-                      alt="GoLang Logo"
-                      src={require("../static/img/logos/golang.svg")}
-                      className="circled-logo"
-                    />
-                    <h5 className="btn-arrow">{translate("GoLang")}</h5>
-                  </Link>
-                </div>
-                <div className="col langs">
-                  <Link to="/docs/tutorials/go/">
-                    <img
-                      alt="GoLang Logo"
+                      alt="Go Logo"
                       src={require("../static/img/logos/golang.svg")}
                       className="circled-logo"
                     />
