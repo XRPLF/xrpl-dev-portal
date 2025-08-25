@@ -1,15 +1,15 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/rpc"
-    "github.com/Peersyst/xrpl-go/xrpl/rpc/types"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    txnTypes "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/rpc"
+	"github.com/Peersyst/xrpl-go/xrpl/rpc/types"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	txnTypes "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
 )
 
 func main() {
@@ -26,35 +26,35 @@ func main() {
     client := rpc.NewClient(cfg)
 
     // Step 1: Fund wallets
-    fmt.Println("⏳ Funding wallets...")
+    fmt.Println("Funding wallets...")
 
     // Create and fund the NFT minter wallet
     nftMinter, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println("❌ Error creating NFT minter wallet:", err)
+        fmt.Println("Error creating NFT minter wallet:", err)
         return
     }
     if err := client.FundWallet(&nftMinter); err != nil {
-        fmt.Println("❌ Error funding NFT minter wallet:", err)
+        fmt.Println("Error funding NFT minter wallet:", err)
         return
     }
-    fmt.Println("💸 NFT minter wallet funded!")
+    fmt.Println("NFT minter wallet funded!")
 
     // Create and fund the NFT buyer wallet
     nftBuyer, err := wallet.New(crypto.ED25519())
     if err != nil {
-        fmt.Println("❌ Error creating NFT buyer wallet:", err)
+        fmt.Println("Error creating NFT buyer wallet:", err)
         return
     }
     if err := client.FundWallet(&nftBuyer); err != nil {
-        fmt.Println("❌ Error funding NFT buyer wallet:", err)
+        fmt.Println("Error funding NFT buyer wallet:", err)
         return
     }
-    fmt.Println("💸 NFT buyer wallet funded!")
+    fmt.Println("NFT buyer wallet funded!")
     fmt.Println()
 
     // Step 2: Mint an NFT
-    fmt.Println("⏳ Minting NFT...")
+    fmt.Println("Minting NFT...")
 
     nftMint := transaction.NFTokenMint{
         BaseTx: transaction.BaseTx{
@@ -73,36 +73,36 @@ func main() {
         Wallet:   &nftMinter,
     })
     if err != nil {
-        fmt.Println("❌ Error minting NFT:", err)
+        fmt.Println("Error minting NFT:", err)
         return
     }
     if !responseMint.Validated {
-        fmt.Println("❌ NFTokenMint txn is not in a validated ledger", responseMint)
+        fmt.Println("NFTokenMint txn is not in a validated ledger", responseMint)
         return
     }
-    fmt.Println("✅ NFT minted successfully! - 🌎 Hash: ", responseMint.Hash)
+    fmt.Println("NFT minted successfully! - Hash: ", responseMint.Hash)
     fmt.Println()
 
     // Step 3: Retrieve the NFT token offer ID
-    fmt.Println("⏳ Retrieving NFT offer ID...")
+    fmt.Println("Retrieving NFT offer ID...")
 
     metaMap, ok := responseMint.Meta.(map[string]any)
     if !ok {
-        fmt.Println("❌ Meta is not a map[string]any")
+        fmt.Println("Meta is not a map[string]any")
         return
     }
 
     offerID, ok := metaMap["offer_id"].(string)
     if !ok {
-        fmt.Println("❌ offer_id not found or not a string")
+        fmt.Println("offer_id not found or not a string")
         return
     }
 
-    fmt.Println("🌎 offer_id:", offerID)
+    fmt.Println("offer_id:", offerID)
     fmt.Println()
 
     // Step 4: Accept the NFT offer
-    fmt.Println("⏳ Accepting NFT offer...")
+    fmt.Println("Accepting NFT offer...")
 
     nftAccept := transaction.NFTokenAcceptOffer{
         BaseTx: transaction.BaseTx{
@@ -117,12 +117,12 @@ func main() {
         Wallet:   &nftBuyer,
     })
     if err != nil {
-        fmt.Println("❌ Error accepting NFT offer:", err)
+        fmt.Println("Error accepting NFT offer:", err)
         return
     }
     if !response.Validated {
-        fmt.Println("❌ NFTokenAcceptOffer txn is not in a validated ledger", response)
+        fmt.Println("NFTokenAcceptOffer txn is not in a validated ledger", response)
         return
     }
-    fmt.Println("✅ NFT offer accepted successfully! - 🌎 Hash: ", response.Hash)
+    fmt.Println("NFT offer accepted successfully! - Hash: ", response.Hash)
 }

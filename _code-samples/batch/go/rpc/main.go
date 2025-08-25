@@ -1,15 +1,15 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/rpc"
-    "github.com/Peersyst/xrpl-go/xrpl/rpc/types"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    txnTypes "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/rpc"
+	"github.com/Peersyst/xrpl-go/xrpl/rpc/types"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	txnTypes "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
 )
 
 var (
@@ -56,7 +56,7 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Funding wallets...")
+    fmt.Println("Funding wallets...")
     if err := client.FundWallet(&userWallet); err != nil {
         fmt.Println(err)
         return
@@ -65,7 +65,7 @@ func main() {
         fmt.Println(err)
         return
     }
-    fmt.Println("💸 Wallets funded")
+    fmt.Println("Wallets funded")
 
     // Check initial balances
     userBalance, err := client.GetXrpBalance(userWallet.ClassicAddress)
@@ -82,9 +82,9 @@ func main() {
         receiverBalance = "0"
     }
 
-    fmt.Printf("💳 User initial balance: %s XRP\n", userBalance)
-    fmt.Printf("💳 User2 initial balance: %s XRP\n", user2Balance)
-    fmt.Printf("💳 Receiver initial balance: %s XRP\n", receiverBalance)
+    fmt.Printf("User initial balance: %s XRP\n", userBalance)
+    fmt.Printf("User2 initial balance: %s XRP\n", user2Balance)
+    fmt.Printf("Receiver initial balance: %s XRP\n", receiverBalance)
     fmt.Println()
 
     fmt.Printf("Batch transaction test\n")
@@ -103,13 +103,13 @@ func main() {
     batchTx.SetAllOrNothingFlag()
 
     flattenedBatchTx := batchTx.Flatten()
-    fmt.Println("⏳ Autofilling flattened batch transaction...")
+    fmt.Println("Autofilling flattened batch transaction...")
     if err := client.Autofill(&flattenedBatchTx); err != nil {
         fmt.Println("Autofill error:", err)
         return
     }
 
-    fmt.Println("⏳ Signing batch transaction...")
+    fmt.Println("Signing batch transaction...")
     response, err := client.SubmitTxAndWait(flattenedBatchTx, &types.SubmitOptions{
         Autofill: false,
         Wallet:   &userWallet,
@@ -119,9 +119,9 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Batch transaction submitted")
-    fmt.Printf("🌐 Hash: %s\n", response.Hash.String())
-    fmt.Printf("🌐 Validated: %t\n", response.Validated)
+    fmt.Println("Batch transaction submitted")
+    fmt.Printf("Hash: %s\n", response.Hash.String())
+    fmt.Printf("Validated: %t\n", response.Validated)
     fmt.Println()
 
     // Check final balances
@@ -134,9 +134,9 @@ func main() {
         finalReceiverBalance = "0"
     }
 
-    fmt.Printf("💳 User final balance: %s XRP\n", finalUserBalance)
+    fmt.Printf("User final balance: %s XRP\n", finalUserBalance)
 
-    fmt.Printf("💳 Receiver final balance: %s XRP\n", finalReceiverBalance)
+    fmt.Printf("Receiver final balance: %s XRP\n", finalReceiverBalance)
 
     fmt.Println()
     fmt.Printf("Multisig Batch transaction test\n")
@@ -163,13 +163,13 @@ func main() {
     multiBatchTx.SetAllOrNothingFlag()
 
     flattenedMultiBatchTx := multiBatchTx.Flatten()
-    fmt.Println("⏳ Autofilling flattened multi batch transaction...")
+    fmt.Println("Autofilling flattened multi batch transaction...")
     if err := client.AutofillMultisigned(&flattenedMultiBatchTx, 1); err != nil {
         fmt.Println("Autofill error:", err)
         return
     }
 
-    fmt.Println("⏳ Signing multi batch transaction...")
+    fmt.Println("Signing multi batch transaction...")
     if err := wallet.SignMultiBatch(user2Wallet, &flattenedMultiBatchTx, nil); err != nil {
         fmt.Println("Signing error:", err)
         return
@@ -184,9 +184,9 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Multisig Batch transaction submitted")
-    fmt.Printf("🌐 Hash: %s\n", response.Hash.String())
-    fmt.Printf("🌐 Validated: %t\n", response.Validated)
+    fmt.Println("Multisig Batch transaction submitted")
+    fmt.Printf("Hash: %s\n", response.Hash.String())
+    fmt.Printf("Validated: %t\n", response.Validated)
     fmt.Println()
 
     // Check final balances
@@ -202,7 +202,7 @@ func main() {
     if err != nil {
         finalReceiverBalance = "0"
     }
-    fmt.Printf("💳 User final balance: %s XRP\n", finalUserBalance)
-    fmt.Printf("💳 User2 final balance: %s XRP\n", finalUser2Balance)
-    fmt.Printf("💳 Receiver final balance: %s XRP\n", finalReceiverBalance)
+    fmt.Printf("User final balance: %s XRP\n", finalUserBalance)
+    fmt.Printf("User2 final balance: %s XRP\n", finalUser2Balance)
+    fmt.Printf("Receiver final balance: %s XRP\n", finalReceiverBalance)
 }

@@ -1,15 +1,15 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/ledger-entry-types"
-    "github.com/Peersyst/xrpl-go/xrpl/rpc"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/ledger-entry-types"
+	"github.com/Peersyst/xrpl-go/xrpl/rpc"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
 )
 
 func main() {
@@ -35,27 +35,27 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Setting up wallets...")
+    fmt.Println("Setting up wallets...")
     if err := client.FundWallet(&w); err != nil {
         fmt.Println(err)
         return
     }
-    fmt.Println("💸 Sender wallet funded!")
+    fmt.Println("Sender wallet funded!")
 
     if err := client.FundWallet(&receiverWallet); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("💸 Receiver wallet funded!")
+    fmt.Println("Receiver wallet funded!")
     fmt.Println()
 
-    fmt.Println("✅ Wallets setup complete!")
-    fmt.Println("💳 Sender wallet:", w.ClassicAddress)
-    fmt.Println("💳 Receiver wallet:", receiverWallet.ClassicAddress)
+    fmt.Println("Wallets setup complete!")
+    fmt.Println("Sender wallet:", w.ClassicAddress)
+    fmt.Println("Receiver wallet:", receiverWallet.ClassicAddress)
     fmt.Println()
 
-    fmt.Println("⏳ Creating check...")
+    fmt.Println("Creating check...")
     cc := &transaction.CheckCreate{
         BaseTx: transaction.BaseTx{
             Account: w.GetAddress(),
@@ -85,19 +85,19 @@ func main() {
     }
 
     if !res.Validated {
-        fmt.Println("❌ Check creation failed!")
+        fmt.Println("Check creation failed!")
         fmt.Println("Try again!")
         fmt.Println()
         return
     }
 
-    fmt.Println("✅ Check created!")
-    fmt.Printf("🌐 Hash: %s\n", res.Hash.String())
+    fmt.Println("Check created!")
+    fmt.Printf("Hash: %s\n", res.Hash.String())
     fmt.Println()
 
     meta, ok := res.Meta.(map[string]interface{})
     if !ok {
-        fmt.Println("❌ Meta is not of type TxObjMeta")
+        fmt.Println("Meta is not of type TxObjMeta")
         return
     }
 
@@ -108,7 +108,7 @@ func main() {
     for _, node := range affectedNodes {
         affectedNode, ok := node.(map[string]interface{})
         if !ok {
-            fmt.Println("❌ Node is not of type map[string]interface{}")
+            fmt.Println("Node is not of type map[string]interface{}")
             return
         }
 
@@ -128,7 +128,7 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Cashing out check...")
+    fmt.Println("Cashing out check...")
     checkCash := &transaction.CheckCash{
         BaseTx: transaction.BaseTx{
             Account: receiverWallet.GetAddress(),
@@ -156,7 +156,7 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Check cashed out!")
-    fmt.Printf("🌐 Hash: %s\n", res.Hash.String())
+    fmt.Println("Check cashed out!")
+    fmt.Printf("Hash: %s\n", res.Hash.String())
     fmt.Println()
 }

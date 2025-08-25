@@ -1,17 +1,17 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/queries/path"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction"
-    "github.com/Peersyst/xrpl-go/xrpl/transaction/types"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/path"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction"
+	"github.com/Peersyst/xrpl-go/xrpl/transaction/types"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 
-    pathtypes "github.com/Peersyst/xrpl-go/xrpl/queries/path/types"
+	pathtypes "github.com/Peersyst/xrpl-go/xrpl/queries/path/types"
 )
 
 const (
@@ -27,7 +27,7 @@ var (
 )
 
 func main() {
-    fmt.Println("⏳ Connecting to testnet...")
+    fmt.Println("Connecting to testnet...")
     client := websocket.NewClient(
         websocket.NewClientConfig().
             WithHost("wss://s.altnet.rippletest.net:51233").
@@ -41,11 +41,11 @@ func main() {
     }
 
     if !client.IsConnected() {
-        fmt.Println("❌ Failed to connect to testnet")
+        fmt.Println("Failed to connect to testnet")
         return
     }
 
-    fmt.Println("✅ Connected to testnet")
+    fmt.Println("Connected to testnet")
     fmt.Println()
 
     wallet, err := wallet.New(crypto.ED25519())
@@ -54,16 +54,16 @@ func main() {
         return
     }
 
-    fmt.Println("⏳ Funding wallet...")
+    fmt.Println("Funding wallet...")
     if err := client.FundWallet(&wallet); err != nil {
         fmt.Println(err)
         return
     }
 
-    fmt.Println("💸 Wallet funded")
+    fmt.Println("Wallet funded")
     fmt.Println()
 
-    fmt.Println("⏳ Getting paths...")
+    fmt.Println("Getting paths...")
     res, err := client.GetRipplePathFind(&path.RipplePathFindRequest{
         SourceAccount: wallet.GetAddress(),
         SourceCurrencies: []pathtypes.RipplePathFindCurrency{
@@ -79,15 +79,15 @@ func main() {
         return
     }
 
-    fmt.Printf("🌐 Computed paths: %d\n", len(res.Alternatives))
+    fmt.Printf("Computed paths: %d\n", len(res.Alternatives))
     fmt.Println()
 
     if len(res.Alternatives) == 0 {
-        fmt.Println("❌ No alternatives found")
+        fmt.Println("No alternatives found")
         return
     }
 
-    fmt.Println("⏳ Submitting Payment through path: ", res.Alternatives[0].PathsComputed)
+    fmt.Println("Submitting Payment through path: ", res.Alternatives[0].PathsComputed)
     p := &transaction.Payment{
         BaseTx: transaction.BaseTx{
             Account: wallet.GetAddress(),
@@ -116,7 +116,7 @@ func main() {
         return
     }
 
-    fmt.Println("✅ Payment submitted")
-    fmt.Printf("🌐 Hash: %s\n", hash)
-    fmt.Printf("🌐 Validated: %t\n", txRes.Validated)
+    fmt.Println("Payment submitted")
+    fmt.Printf("Hash: %s\n", hash)
+    fmt.Printf("Validated: %t\n", txRes.Validated)
 }

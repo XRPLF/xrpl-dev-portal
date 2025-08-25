@@ -1,15 +1,15 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 
-    "github.com/Peersyst/xrpl-go/pkg/crypto"
-    "github.com/Peersyst/xrpl-go/xrpl/faucet"
-    "github.com/Peersyst/xrpl-go/xrpl/queries/account"
-    "github.com/Peersyst/xrpl-go/xrpl/queries/common"
-    "github.com/Peersyst/xrpl-go/xrpl/queries/ledger"
-    "github.com/Peersyst/xrpl-go/xrpl/wallet"
-    "github.com/Peersyst/xrpl-go/xrpl/websocket"
+	"github.com/Peersyst/xrpl-go/pkg/crypto"
+	"github.com/Peersyst/xrpl-go/xrpl/faucet"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/account"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/common"
+	"github.com/Peersyst/xrpl-go/xrpl/queries/ledger"
+	"github.com/Peersyst/xrpl-go/xrpl/wallet"
+	"github.com/Peersyst/xrpl-go/xrpl/websocket"
 )
 
 func main() {
@@ -31,11 +31,11 @@ func main() {
     }
 
     if !client.IsConnected() {
-        fmt.Println("❌ Failed to connect to testnet")
+        fmt.Println("Failed to connect to testnet")
         return
     }
 
-    fmt.Println("✅ Connected to testnet")
+    fmt.Println("Connected to testnet")
     fmt.Println()
 
     // Create a new wallet
