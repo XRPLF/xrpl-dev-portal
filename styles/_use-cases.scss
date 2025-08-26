@@ -1379,6 +1379,17 @@ body,
 .use-case-payments .payments-integration-section {
   .developer-tools {
     padding: 120px 0; /* Slightly less padding than default 180px */
+    max-width: 1280px;
+    margin: 0 auto;
+    
+    @include media-breakpoint-down(lg) {
+      max-width: 942px;
+    }
+    
+    @include media-breakpoint-down(md) {
+      max-width: 608px;
+    }
+    
     .container{
       padding: 0;
     }
