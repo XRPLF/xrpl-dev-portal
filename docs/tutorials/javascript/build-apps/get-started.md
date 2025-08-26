@@ -12,12 +12,12 @@ showcase_icon: assets/img/logos/javascript.svg
   filesets=[
     { 
       "files": ["/_code-samples/get-started/js/get-acct-info.js"],
-      "downloadAssociatedFiles": ["/_code-samples/get-started/js/package.json", "/_code-samples/get-started/js/get-acct-info.js"],
+      "downloadAssociatedFiles": ["/_code-samples/get-started/js/package.json", "/_code-samples/get-started/js/get-acct-info.js", "/_code-samples/get-started/js/README.md"],
       "when": { "environment": "Node" }
     },
     { 
       "files": ["/_code-samples/get-started/js/index.html"],
-      "downloadAssociatedFiles": ["/_code-samples/get-started/js/index.html"],
+      "downloadAssociatedFiles": ["/_code-samples/get-started/js/index.html", "/_code-samples/get-started/js/README.md"],
       "when": { "environment": "Web" }
     }
   ]
