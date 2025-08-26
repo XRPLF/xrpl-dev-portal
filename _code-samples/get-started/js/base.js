@@ -1,4 +1,4 @@
-// In browsers, use a <script> tag. In Node.js, uncomment the following line:
+// You can also use a <script> tag in browsers or require('xrpl') in Node.js
 import xrpl from 'xrpl'
 
 // Define the network client

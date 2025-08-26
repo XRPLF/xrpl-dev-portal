@@ -66,7 +66,7 @@ Follow the steps to create a simple application with `xrpl.js`.
 
 <!-- Web steps -->
 {% step id="import-web-tag" when={ "environment": "Web" } %}
-To load `xrpl.js` into your project, add a `<script>` tag such as the following to your HTML.
+To load `xrpl.js` into your project, add a `<script>` tag to your HTML.
 
 You can load the library from a CDN as in the example, or download a release and host it on your own website.
 
