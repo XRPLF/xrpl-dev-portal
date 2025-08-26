@@ -16,7 +16,8 @@ const fund_result = await client.fundWallet()
 const test_wallet = fund_result.wallet
 console.log(`Wallet: ${test_wallet.address}`)
 console.log(`Balance: ${fund_result.balance}`)
-console.log(`\nAccount Testnet Explorer URL:\nhttps://testnet.xrpl.org/accounts/${test_wallet.address}`)
+console.log('Account Testnet Explorer URL:')
+console.log(`  https://testnet.xrpl.org/accounts/${test_wallet.address}`)
 // @chunk-end
 
 // To generate a wallet without funding it, uncomment the code below
@@ -48,7 +49,8 @@ client.request({
   "streams": ["ledger"]
 })
 client.on("ledgerClosed", async (ledger) => {
-  console.log(`Ledger #${ledger.ledger_index} validated with ${ledger.txn_count} transactions!`)
+  console.log(`Ledger #${ledger.ledger_index} validated ` +
+              `with ${ledger.txn_count} transactions!`)
 })
 // @chunk-end
 
