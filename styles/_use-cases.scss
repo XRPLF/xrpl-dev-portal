@@ -1218,7 +1218,7 @@ body,
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
-    gap: 32px;
+    gap: 40px;
   }
 }
 
@@ -1322,12 +1322,27 @@ body,
     flex-direction: column;
     
     .project-logo img {
-      /* Placeholder images - use standard sizing */
-      width: 120px;
-      height: 60px;
-      background-color: #333;
-      border-radius: 8px;
-      content: "";
+      /* Battle-tested company logos */
+      
+      &.coinpayments {
+        content: url('../img/uses/payments/coinpayments.png');
+        width: 99px;
+        height: 60px;
+      }
+      
+      &.ripple {
+        content: url('../img/uses/payments/ripple-white.png');
+        width: 100px;
+        height: 30px;
+        margin-bottom: 11px;
+        margin-top: 19px;
+      }
+      
+      &.fiipay {
+        content: url('../img/uses/payments/friipay.png');
+        width: 60px;
+        height: 60px; 
+      }
     }
     
     .project-description {
@@ -1376,6 +1391,118 @@ body,
           outline: none;
         }
       }
+    }
+  }
+}
+
+/* Payments integration section styling */
+.use-case-payments .payments-integration-section {
+  .developer-tools {
+    padding: 120px 0; /* Slightly less padding than default 180px */
+    .container{
+      padding: 0;
+    }
+    .feature-item__title{
+      font-size: 16px;
+      font-weight: 400;
+      color: #FFF
+    }
+  }
+  
+  .developer-tools__header {
+    margin-bottom: 80px;
+    
+    &.text-center {
+      text-align: center;
+    }
+  }
+  
+  .developer-tools__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: left;
+  }
+  
+  /* Two-column layout with 48px gap */
+  .row {
+    gap: 48px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    
+    @media (max-width: 991px) {
+      flex-direction: column;
+      gap: 32px;
+    }
+    
+    .col-lg-6 {
+      padding: 0;
+      flex: 1;
+      
+      @media (max-width: 991px) {
+        flex: none;
+        width: 100%;
+      }
+    }
+  }
+
+  /* Integration column styling */
+  .integration-column {
+    padding: 0px;
+    
+    .integration-column__title {
+      color: #FFF;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .integration-column__subtitle {
+      color: #E0E0E1;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 150%;
+      margin-bottom: 32px;
+    }
+    
+    .developer-tools__list {
+      margin-top: 0;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 991px) {
+    .developer-tools {
+      padding: 80px 0;
+    }
+    
+    .developer-tools__header {
+      margin-bottom: 60px;
+    }
+    
+    .integration-column {
+      padding: 0;
+      margin-bottom: 40px;
+    }
+    
+    .col-lg-6:last-child .integration-column {
+      margin-bottom: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .developer-tools {
+      padding: 60px 20px;
+    }
+    
+    .developer-tools__header {
+      margin-bottom: 40px;
+    }
+    
+    .developer-tools__title {
+      font-size: 24px;
+      text-align: center;
     }
   }
 }

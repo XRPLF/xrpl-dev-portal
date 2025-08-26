@@ -3,6 +3,8 @@ import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { AdvantagesSection } from "shared/components/advantages-section";
 import { ProjectCards } from "shared/components/project-cards";
 import { BenefitsSection } from "shared/components/benefits-section";
+import { DeveloperResourcesSection } from "shared/components/developer-resources-section";
+import { FeatureItem } from "../tokenization/real-world-assets.page";
 
 export const frontmatter = {
   seo: {
@@ -70,37 +72,37 @@ const PaymentsPage: React.FC = () => {
     {
       id: "ripple-usd",
       label: "Ripple USD",
-      url: "#",
+      url: "https://ripple.com/solutions/stablecoin/",
       description: "RLUSD, Ripple's enterprise-grade stablecoin, is live on XRPL and fully backed by USD deposits.",
     },
     {
       id: "usdc", 
       label: "USDC",
-      url: "#",
+      url: "https://www.circle.com/usdc",
       description: "USDC, issued by Circle, is the world's largest regulated dollar stablecoin and now live on XRPL.",
     },
     {
       id: "usdb",
       label: "USDB", 
-      url: "#",
+      url: "https://www.brazabank.com.br/en/usdben/",
       description: "USDB, by Braza Group, is a USD-pegged stablecoin backed by U.S. and Brazilian bonds.",
     },
     {
       id: "europ",
       label: "EUROP",
-      url: "#", 
+      url: "https://schuman.io/europ/", 
       description: "EUROP, issued by Schuman Financial, is the first MiCA-compliant euro stablecoin on XRPL.",
     },
     {
       id: "xsgd",
       label: "XSGD",
-      url: "#",
+      url: "https://www.straitsx.com/xsgd",
       description: "XSGD, from StraitsX, is a Singapore Dollar-backed stablecoin regulated by MAS.",
     },
     {
       id: "audd",
       label: "AUDD", 
-      url: "#",
+      url: "https://www.audd.digital/",
       description: "AUDD, an Australian dollar stablecoin, is live on XRPL and backed 1:1 with AUD.",
     },
   ];
@@ -142,29 +144,68 @@ const PaymentsPage: React.FC = () => {
     {
       id: "coinpayments",
       label: "CoinPayments",
-      url: "#",
+      url: "https://xrpl.org/blog/2025/coinpayments-xrpl-case-study-payment-processing",
       description: "CoinPayments uses XRPL's fast and low-cost payment rails to enable merchants to accept digital assets globally with near-instant settlement and minimal transaction fees.",
       buttonText: "Case Study"
     },
     {
       id: "ripple",
       label: "Ripple",
-      url: "#",
+      url: "https://ripple.com/solutions/cross-border-payments/",
       description: "Ripple Payments enables crypto companies, payment service providers and fintech to facilitate real-time cross-border payments using stablecoins, digital assets and local currencies — with XRPL as a foundational transaction layer.",
       buttonText: "Case Study"
     },
     {
       id: "fiipay",
       label: "FiiPay",
-      url: "#",
+      url: "https://xrpl.org/blog/2025/frii-pay-xrpl-case-study-crypto-payment-solution",
       description: "FiiPay connects XRPL-based crypto wallets to point-of-sale terminals, allowing customers to pay with RLUSD or XRP while helping merchants save costs on card processing fees.",
       buttonText: "Case Study"
     },
   ];
 
+  const integrationFeatures = [
+    {
+      title: "Access open documentation",
+      link: "/docs/"
+    },
+    {
+      title: "Use the Payments APIs + XRPL tooling",
+      link: "/resources/dev-tools"
+    },
+  ];
+
+
+  const paymentsResourcesCards = [
+    {
+      title: "Developer Spotlight",
+      description: "Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?",
+      links: [
+        {
+          text: "Share Your Work",
+          url: "https://discord.gg/sfX3ERAMjH"
+        }
+      ]
+    },
+    {
+      title: "Learn & Stay Updated", 
+      description: "Stay ahead of the curve with the latest developments in XRPL Payments by joining the Developer Discord and signing up for the XRPL Community Newsletter.",
+      links: [
+        {
+          text: "Join the Developer Discord",
+          url: "https://discord.gg/sfX3ERAMjH"
+        },
+        {
+          text: "Sign up for the Newsletter",
+          url: "https://xrplresources.org/subscribe"
+        }
+      ]
+    }
+  ];
+
   return (
     <main className="use-case-payments">
-      <section className="use-case-payments__hero">
+      <section className="use-case-payments__hero container">
           <div className="video-content">
               <iframe
                 width="100%"
@@ -220,7 +261,56 @@ const PaymentsPage: React.FC = () => {
         className="battle-tested-section px-0"
       />
 
+      <section className="payments-integration-section">
+        <div className="developer-tools">
+          <div className="">
+            <header className="developer-tools__header text-center">
+              <h2 className="developer-tools__title">
+                {translate("Flexible Integration: DIY or Partner-Led")}
+              </h2>
+            </header>
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="integration-column">
+                  <h3 className="integration-column__title">
+                    {translate("Build It Yourself")}
+                  </h3>
+                  <p className="integration-column__subtitle">
+                    {translate("Ideal for seasoned teams with crypto experience")}
+                  </p>
+                  <ul className="developer-tools__list">
+                    {integrationFeatures.map((feature, index) => (
+                      <FeatureItem
+                        key={index}
+                        link={feature.link}
+                        title={feature.title}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="col-lg-6">
+                <div className="integration-column">
+                  <h3 className="integration-column__title">
+                    {translate("Work with a Partner")}
+                  </h3>
+                  <p className="integration-column__subtitle">
+                    {translate("Ideal for regulated institutions")}
+                  </p>
+                  <ul className="developer-tools__list">
+                    <FeatureItem
+                      link="https://discord.com/invite/KTNmhJDXqa"
+                      title="Connect with the Community"
+                    />
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
+      <DeveloperResourcesSection cards={paymentsResourcesCards} />
     </main>
   );
 };
