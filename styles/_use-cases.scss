@@ -1083,6 +1083,9 @@ body,
     background-color: transparent;
     white-space: normal;
     box-sizing: border-box;
+    .card-title{
+     margin-bottom: 16px;
+    }
   }
 
   .security-card::before {
@@ -1150,7 +1153,6 @@ body,
     padding: 0;
     margin: 0;
   }
-
   .advantage-item {
     position: relative;
     padding-left: 20px;
@@ -1161,7 +1163,6 @@ body,
       position: absolute;
       left: 0;
       top: 0;
-      color: #7919FF;
       font-weight: bold;
       font-size: 16px;
     }
@@ -1226,7 +1227,6 @@ body,
   position: relative;
   padding: 32px;
   .project-description {
-    padding: 0 1rem;
     text-align: left; /* Changed from center to left */
     
     .first-word {
@@ -1306,5 +1306,76 @@ body,
 
   &.even::before {
     background: linear-gradient(90deg, #4BB7FF -0.32%, #32E685 30.61%);
+  }
+}
+
+/* Battle-tested section styles */
+.use-case-payments .battle-tested-section {
+  h4.eyebrow {
+    font-size: 28px !important;
+  }
+  
+  .payments-project-card {
+    /* Override styles for battle-tested cards */
+    min-height: 384px;
+    display: flex;
+    flex-direction: column;
+    
+    .project-logo img {
+      /* Placeholder images - use standard sizing */
+      width: 120px;
+      height: 60px;
+      background-color: #333;
+      border-radius: 8px;
+      content: "";
+    }
+    
+    .project-description {
+      flex-grow: 1;
+    }
+    
+    .project-button {
+      margin-top: auto;
+      padding-top: 32px;
+      display: flex;
+      justify-content: center;
+      
+      .battle-tested-arrow {
+        color: #9A52FF;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        background: none !important;
+        
+        &::after {
+          position: relative;
+          top: -1px;
+          display: inline-block;
+          content: url('../img/icons/arrow-right-purple.svg');
+          margin-left: 8px;
+          transition: transform 0.3s ease-out;
+          width: 16px;
+          height: 16px;
+        }
+        
+        &:hover {
+          text-decoration: none;
+          background: none !important;
+          
+          &::after {
+            transform: translateX(4px);
+          }
+        }
+        
+        &:focus {
+          background: none !important;
+          outline: none;
+        }
+      }
+    }
   }
 }

@@ -89,6 +89,33 @@
   }
 }
 
+// Payments page specific embedded payments icons
+#embedded-payments-list {
+  #digital-wallets {
+    content: url("../img/uses/payments/digital-wallet.png");
+  }
+  
+  #cross-border-remittance {
+    content: url("../img/uses/payments/cross-border.png");
+  }
+  
+  #regulated-foreign-exchange {
+    content: url("../img/uses/payments/regulated.png");
+  }
+  
+  #merchant-settlement {
+    content: url("../img/uses/payments/merchant-settlement.png");
+  }
+  
+  #b2b-payment-rails {
+    content: url("../img/uses/payments/b2b-payment.png");
+  }
+  
+  #compliance-first-payment-acceptance {
+    content: url("../img/uses/payments/compliance.png");
+  }
+}
+
 .cta {
   position: absolute;
 

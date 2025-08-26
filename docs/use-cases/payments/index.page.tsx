@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { AdvantagesSection } from "shared/components/advantages-section";
 import { ProjectCards } from "shared/components/project-cards";
+import { BenefitsSection } from "shared/components/benefits-section";
 
 export const frontmatter = {
   seo: {
@@ -104,6 +105,63 @@ const PaymentsPage: React.FC = () => {
     },
   ];
 
+  const embeddedPaymentsCards = [
+    {
+      id: 'digital-wallets',
+      title: 'Digital Wallets',
+      description: 'Offer fast, low-fee stablecoin payments between users and applications.',
+    },
+    {
+      id: 'cross-border-remittance',
+      title: 'Cross-Border Remittance',
+      description: 'Use secure payment channels and the most optimal liquidity pathways for global remittances with RLUSD.',
+    },
+    {
+      id: 'regulated-foreign-exchange',
+      title: 'Regulated Foreign Exchange',
+      description: 'Tap into a set of fiat-backed stablecoins, instantaneous swaps for efficient Foreign Exchange.',
+    },
+    {
+      id: 'merchant-settlement',
+      title: 'Merchant Settlement',
+      description: 'Settle daily payments across assets using escrow or checks with compliance-focused features.',
+    },
+    {
+      id: 'b2b-payment-rails',
+      title: 'B2B Payment Rails',
+      description: 'Build programmable payment flows with conditions and real-time data feeds.',
+    },
+    {
+      id: 'compliance-first-payment-acceptance',
+      title: 'Compliance-First Payment Acceptance',
+      description: 'Add Deposit Authorization and whitelisting to comply with AML and KYC workflows.',
+    },
+  ];
+
+  const battleTestedProjects = [
+    {
+      id: "coinpayments",
+      label: "CoinPayments",
+      url: "#",
+      description: "CoinPayments uses XRPL's fast and low-cost payment rails to enable merchants to accept digital assets globally with near-instant settlement and minimal transaction fees.",
+      buttonText: "Case Study"
+    },
+    {
+      id: "ripple",
+      label: "Ripple",
+      url: "#",
+      description: "Ripple Payments enables crypto companies, payment service providers and fintech to facilitate real-time cross-border payments using stablecoins, digital assets and local currencies — with XRPL as a foundational transaction layer.",
+      buttonText: "Case Study"
+    },
+    {
+      id: "fiipay",
+      label: "FiiPay",
+      url: "#",
+      description: "FiiPay connects XRPL-based crypto wallets to point-of-sale terminals, allowing customers to pay with RLUSD or XRP while helping merchants save costs on card processing fees.",
+      buttonText: "Case Study"
+    },
+  ];
+
   return (
     <main className="use-case-payments">
       <section className="use-case-payments__hero">
@@ -140,13 +198,29 @@ const PaymentsPage: React.FC = () => {
         useLinks={false}
         className="payments-advantages-spacing"
       />
-
       <ProjectCards
         title="Enterprise-Grade Stablecoins, Issued Natively on XRPL"
         projects={paymentProjects}
         showCarousel={false}
         className="mt-12 px-0"
       />
+             <BenefitsSection
+         title="Unlock New Business Models with Embedded Payments"
+         description="XRPL Payments supports modern fintech use cases with plug-and-play APIs or partner-led deployments."
+         cards={embeddedPaymentsCards}
+         showImages={true}
+         className="embedded-payments-section px-0"
+         listId="embedded-payments-list"
+       />
+      
+      <ProjectCards
+        title="Payments Solution, Battle-Tested by Industry Leaders"
+        projects={battleTestedProjects}
+        showCarousel={false}
+        className="battle-tested-section px-0"
+      />
+
+      
     </main>
   );
 };

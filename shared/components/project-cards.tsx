@@ -6,6 +6,7 @@ interface Project {
   label: string;
   url: string;
   description?: string; // New optional field for payments page
+  buttonText?: string; // Optional button text for battle-tested cards
 }
 
 interface ProjectCardsProps {
@@ -49,6 +50,11 @@ const ProjectCard = ({ project, index, showCarousel = true }: {
               </>
             );
           })()}
+        </div>
+      )}
+      {!showCarousel && project.buttonText && (
+        <div className="project-button">
+          <a href={project.url} className="btn-arrow battle-tested-arrow">{translate(project.buttonText)}</a>
         </div>
       )}
     </a>
