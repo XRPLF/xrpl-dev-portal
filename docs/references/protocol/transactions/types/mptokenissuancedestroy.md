@@ -32,4 +32,8 @@ _(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
 |:--------------------|:--------------------|:------------------|:-------------------|
 | `MPTokenIssuanceID` | String              | UInt192           | Identifies the `MPTokenIssuance` object to be removed by the transaction. |
 
+## See Also
+
+- [MPTokenIssuance entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
