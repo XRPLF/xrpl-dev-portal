@@ -946,15 +946,36 @@ body,
 }
 
 .use-case-payments {
-  // Reduced margins to account for 284px sidebar
-  margin: 80px 100px;
-
+  padding: 0px 120px;
+  @include media-breakpoint-down(lg) {
+    padding: 0px 16px;
+  }
   &__hero {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 80px;
     align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 0px;
+    
+    @include media-breakpoint-down(lg) {
+      gap: 60px;
+      max-width: 942px;
+      padding: 80px 0px;
+    }
+    
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      gap: 32px;
+      max-width: 608px;
+      padding: 60px 0px;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      padding: 40px 0px;
+    }
   }
 
   .video-content {
@@ -969,6 +990,25 @@ body,
       max-height: 560px;
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      
+      @include media-breakpoint-down(lg) {
+        min-height: 350px;
+        max-height: 450px;
+      }
+      
+      @include media-breakpoint-down(md) {
+        min-height: 300px;
+        max-height: 400px;
+      }
+      
+      @include media-breakpoint-down(sm) {
+        min-height: 250px;
+        max-height: 350px;
+      }
+    }
+    
+    @include media-breakpoint-down(md) {
+      width: 100%;
     }
   }
 
@@ -977,101 +1017,41 @@ body,
     display: flex;
     flex-direction: column;
     justify-content: center;
-  
+
     .eyebrow {
       font-size: 18px;
       font-style: normal;
       font-weight: 700;
-  
+      
+      @include media-breakpoint-down(sm) {
+        font-size: 16px;
+      }
+
       h2 {
         font-size: 42px;
         font-style: normal;
         font-weight: 700;
+        
+        @include media-breakpoint-down(sm) {
+          font-size: 32px;
+        }
       }
-  
+
       p {
         font-size: 24px;
         font-style: normal;
         font-weight: 400;
-      }
-    }
-  }
-
-  // Responsive design accounting for 284px sidebar
-  @media (max-width: 1200px) {
-    margin: 80px 60px;
-
-    &__hero {
-      gap: 60px;
-    }
-
-    .video-content iframe {
-      min-height: 350px;
-      max-height: 450px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin: 60px 40px;
-
-    &__hero {
-      gap: 40px;
-    }
-
-    .video-content iframe {
-      min-height: 300px;
-      max-height: 400px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    margin: 40px 20px;
-
-    &__hero {
-      flex-direction: column;
-      gap: 32px;
-      min-height: auto;
-    }
-
-    .video-content,
-    .text-content {
-      width: 100%;
-    }
-
-    .video-content iframe {
-      min-height: 250px;
-      max-height: 350px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    margin: 20px 15px;
-
-    &__hero {
-      gap: 24px;
-    }
-
-    .video-content iframe {
-      min-height: 200px;
-      max-height: 280px;
-    }
-
-    .text-content {
-      .eyebrow {
-        font-size: 16px;
-
-        h2 {
-          font-size: 32px;
-        }
-
-        p {
+        
+        @include media-breakpoint-down(sm) {
           font-size: 18px;
         }
       }
     }
+    
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
   }
-
-
 }
 
 /* Shared styles for AdvantagesSection component - used across multiple pages */
@@ -1199,7 +1179,7 @@ body,
 
 /* Specific spacing for payments page between hero and advantages sections */
 .use-case-payments .payments-advantages-spacing {
-  padding-top: 180px;
+  padding-top: 80px; /* Reduced since hero now has proper py-20 spacing */
   padding-bottom: 20px; /* Keep standard bottom padding */
   padding-right: 0px;
   padding-left: 0px;

@@ -205,7 +205,7 @@ const PaymentsPage: React.FC = () => {
 
   return (
     <main className="use-case-payments">
-      <section className="use-case-payments__hero container">
+      <section className="use-case-payments__hero">
           <div className="video-content">
               <iframe
                 width="100%"
