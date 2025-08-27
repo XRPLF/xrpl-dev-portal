@@ -345,6 +345,30 @@ const events = [
     start_date: "June 30, 2025",
     end_date: "June 30, 2025",
   },
+  {
+    name: "EasyA x Flare Harvard Hackathon",
+    description:
+      "This is your chance to meet the Flare Networks team and network with some of the brightest minds in blockchain.",
+    type: "hackathon",
+    link: "https://www.easya.io/events/easya-x-flare-harvard-hackathon",
+    location: "Boston, MA",
+    date: "September 20 - 21, 2025",
+    image: hackathon,
+    start_date: "September 20, 2025",
+    end_date: "September 21, 2025",
+  },
+  {
+    name: "XRP Seoul Summit 2025",
+    description:
+      "XRP Seoul 2025 is the largest XRP & Web3 conference in Asia and one of the most influential stages covering the present and future of the industry.",
+    type: "conference",
+    link: "https://xrp-seoul.com/",
+    location: "Seoul, South Korea",
+    date: "September 21, 2025",
+    image: conference,
+    end_date: "September 21, 2025",
+    start_date: "September 21, 2025",
+  },
 
 ];
 

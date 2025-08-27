@@ -1239,6 +1239,28 @@ const events = [
     image: require("../static/img/events/commons-france.png"),
     end_date: "October 14, 2025",
   },
+  {
+    name: "EasyA x Flare Harvard Hackathon",
+    description:
+      "This is your chance to meet the Flare Networks team and network with some of the brightest minds in blockchain.",
+    type: "hackathon",
+    link: "https://www.easya.io/events/easya-x-flare-harvard-hackathon",
+    location: "Boston, MA",
+    date: "September 20 - 21, 2025",
+    image: hackathon,
+    end_date: "September 21, 2025",
+  },
+  {
+    name: "XRP Seoul Summit 2025",
+    description:
+      "XRP Seoul 2025 is the largest XRP & Web3 conference in Asia and one of the most influential stages covering the present and future of the industry.",
+    type: "conference",
+    link: "https://xrp-seoul.com/",
+    location: "Seoul, South Korea",
+    date: "September 21, 2025",
+    image: conference,
+    end_date: "September 21, 2025",
+  },
 ];
 
 
@@ -1320,33 +1342,33 @@ export default function Events() {
             <div className="pr-2 col">
               <img
                 alt="xrp ledger events hero"
-                src={require("../static/img/events/apex-hero.png")}
+                src={require("../static/img/events/xrp-community-night.png")}
                 className="w-100"
               />
             </div>
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("Apex 2025")}
+                  {translate("XRP Community Night NYC")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "Apex, hosted by Ripple is the largest annual summit on the XRPL calendar. It unites developers, businesses, fintechs, VCs and the wider community."
+                  "​Join us for an evening with the XRP community in New York City! Connect with the users, builders and projects innovating with and utilizing XRP and the XRP Ledger."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
-                {translate("Location: Singapore")}
+                {translate("Location: New York, NY")}
               </div>
               <div className="py-2 my-3 event-small-gray">
-                {translate("June 10 - 12, 2025")}
+                {translate("November 5, 2025")}
               </div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://www.xrpledgerapex.com/?utm_source=xrplwebsite_eventspage&utm_medium=organictraffic&utm_campaign=xrpl-event-ho-xrplapex-glb-2025-q1&utm_content=cta_button_RegisterNow"
+                  href="https://lu.ma/g5uja58m?utm_source=xrpleventspage"
                 >
                   {translate("Register Now")}
                 </a>
