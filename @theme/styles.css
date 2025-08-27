@@ -272,6 +272,14 @@ ul.nav.navbar-nav {
   color: var(--text-color);
 }
 
+/* Fix unnecessary horizontal scrolling of tables in Japanese */
+[lang="ja"] table.md {
+  word-break: break-word;
+}
+[lang="ja"] table.md th {
+  min-width: 7em;
+}
+
 [data-component-name="Search/SearchTrigger"] > div {
   justify-content: start;
   width: 100%;
