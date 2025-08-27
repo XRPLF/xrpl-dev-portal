@@ -390,6 +390,7 @@ The following example shows the serialization format for a PathSet:
 [UInt96]: #uint-fields
 [UInt128]: #uint-fields
 [UInt160]: #uint-fields
+[UInt192]: #uint-fields
 [UInt256]: #uint-fields
 [UInt384]: #uint-fields
 [UInt512]: #uint-fields
