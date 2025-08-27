@@ -1,6 +1,6 @@
 # Issue MPT with Metadata (JavaScript)
 
-Creates a sample MPT issuance with metadata encoded as JSON according to the [XLS-89d standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0089d-multi-purpose-token-metadata-schema).
+Creates a sample MPT issuance with metadata encoded as JSON according to the [XLS-89 standard](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0089-multi-purpose-token-metadata-schema).
 
 Quick setup and usage:
 
