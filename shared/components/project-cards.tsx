@@ -54,7 +54,7 @@ const ProjectCard = ({ project, index, showCarousel = true }: {
       )}
       {!showCarousel && project.buttonText && (
         <div className="project-button">
-          <a href={project.url} className="btn-arrow battle-tested-arrow">{translate(project.buttonText)}</a>
+          <span className="btn-arrow battle-tested-arrow">{translate(project.buttonText)}</span>
         </div>
       )}
     </a>
