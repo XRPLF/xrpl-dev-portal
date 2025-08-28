@@ -191,7 +191,7 @@ function FlatCard(props: { href: string; title: string; description: string; lin
   );
 }
 
-export function VideoCard(props: { url: string; title: string; src: string }) {
+function VideoCard(props: { url: string; title: string; src: string }) {
   const { url, title, src } = props;
   return (
     <div className="col float-up-on-hover">
