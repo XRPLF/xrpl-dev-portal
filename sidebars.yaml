@@ -155,6 +155,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
+            - page: docs/concepts/tokens/single-asset-vault.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:
@@ -168,6 +169,7 @@
             - page: docs/concepts/accounts/depositauth.md
             - page: docs/concepts/accounts/tickets.md
             - page: docs/concepts/accounts/permission-delegation.md
+            - page: docs/concepts/accounts/pseudo-accounts.md
         - page: docs/concepts/xrpl-sidechains/index.md
           expanded: false
           items:
@@ -381,6 +383,7 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/signerlist.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/vault.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md
             - page: docs/references/protocol/transactions/index.md
@@ -439,6 +442,12 @@
                     - page: docs/references/protocol/transactions/types/signerlistset.md
                     - page: docs/references/protocol/transactions/types/ticketcreate.md
                     - page: docs/references/protocol/transactions/types/trustset.md
+                    - page: docs/references/protocol/transactions/types/vaultclawback.md
+                    - page: docs/references/protocol/transactions/types/vaultcreate.md
+                    - page: docs/references/protocol/transactions/types/vaultdelete.md
+                    - page: docs/references/protocol/transactions/types/vaultdeposit.md
+                    - page: docs/references/protocol/transactions/types/vaultset.md
+                    - page: docs/references/protocol/transactions/types/vaultwithdraw.md
                     - page: docs/references/protocol/transactions/types/xchainaccountcreatecommit.md
                     - page: docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
                     - page: docs/references/protocol/transactions/types/xchainaddclaimattestation.md
@@ -583,6 +592,12 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md
                     - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/ping.md
                     - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
+
+                - page: docs/references/http-websocket-apis/public-api-methods/vault-methods/index.md
+                  expanded: false
+                  items:
+                    - page: docs/references/http-websocket-apis/public-api-methods/vault-methods/vault_info.md
+
             - page: docs/references/http-websocket-apis/admin-api-methods/index.md
               expanded: false
               items:
