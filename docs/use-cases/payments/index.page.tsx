@@ -156,10 +156,10 @@ const PaymentsPage: React.FC = () => {
       buttonText: "Case Study"
     },
     {
-      id: "fiipay",
-      label: "FiiPay",
+      id: "friipay",
+      label: "FriiPay",
       url: "https://xrpl.org/blog/2025/frii-pay-xrpl-case-study-crypto-payment-solution",
-      description: "FiiPay connects XRPL-based crypto wallets to point-of-sale terminals, allowing customers to pay with RLUSD or XRP while helping merchants save costs on card processing fees.",
+      description: "FriiPay connects XRPL-based crypto wallets to point-of-sale terminals, allowing customers to pay with RLUSD or XRP while helping merchants save costs on card processing fees.",
       buttonText: "Case Study"
     },
   ];
