@@ -97,7 +97,7 @@ const PaymentsPage: React.FC = () => {
       id: "xsgd",
       label: "XSGD",
       url: "https://www.straitsx.com/xsgd",
-      description: "XSGD, from StraitsX, is a Singapore Dollar-backed stablecoin regulated by MAS.",
+      description: "XSGD, from StraitsX, is a Singapore Dollar-backed stablecoin regulated by MAS (Monetary Authority of Singapore).",
     },
     {
       id: "audd",
