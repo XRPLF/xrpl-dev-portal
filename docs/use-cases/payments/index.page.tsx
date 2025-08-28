@@ -89,9 +89,9 @@ const PaymentsPage: React.FC = () => {
     },
     {
       id: "europ",
-      label: "EUROP",
+      label: "EURØP",
       url: "https://schuman.io/europ/", 
-      description: "EUROP, issued by Schuman Financial, is the first MiCA-compliant euro stablecoin on XRPL.",
+      description: "EURØP, issued by Schuman Financial, is the first MiCA-compliant euro stablecoin on XRPL.",
     },
     {
       id: "xsgd",
