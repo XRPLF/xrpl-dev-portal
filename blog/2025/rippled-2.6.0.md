@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: "2025-08-19"
+date: "2025-08-27"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 2.6.0
@@ -22,22 +22,22 @@ If you run an XRP Ledger server, upgrade to version 2.6.0 as soon as possible to
 
 
 ## Install / Upgrade
-**TODO: Update hashes and commit**
+
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.5.0-1.el7.x86_64.rpm) | `7719be1889619a37a83795a9740d803bbc1c08b0bd8c755cbf266aeb68b875b6` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.5.0-1_amd64.deb) | `d935f678624349e422dff1944a40acaf3e287b11244b4f5b5056cb343fc31e9d` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.6.0-1.el9.x86_64.rpm) | `efd0d61ce0906af1862eeb0691717ddc546335294dc2ce8db1d9e243d215846c` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.6.0-1_amd64.deb) | `82570dd0c36d3ce2f79902ae99c44bcfe710d619d806805a5af9d8f56b7dbea1` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
-commit 1e01cd34f7a216092ed779f291b43324c167167a
+commit 2df7dcfdebcb0cdbd030c1f4b09ac748af95659c
 Author: Michael Legleux <mlegleux@ripple.com>
-Date:   Tue Jun 17 10:38:07 2025 -0700
+Date:   Wed Aug 27 10:25:53 2025 -0700
 
-    Set version to 2.5.0
+    Set version to 2.6.0
 ```
 
 
