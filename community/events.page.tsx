@@ -1242,7 +1242,7 @@ const events = [
   {
     name: "EasyA x Flare Harvard Hackathon",
     description:
-      "This is your chance to meet the Flare Networks team and network with some of the brightest minds in blockchain.",
+      "Collaborate, learn, and connect with fellow blockchain innovators and the Flare Networks team at Harvard.",
     type: "hackathon",
     link: "https://www.easya.io/events/easya-x-flare-harvard-hackathon",
     location: "Boston, MA",
@@ -1253,7 +1253,7 @@ const events = [
   {
     name: "XRP Seoul Summit 2025",
     description:
-      "XRP Seoul 2025 is the largest XRP & Web3 conference in Asia and one of the most influential stages covering the present and future of the industry.",
+      "Join XRP Seoul 2025, Asia’s largest XRP & Web3 conference, and explore the future of the industry.",
     type: "conference",
     link: "https://xrp-seoul.com/",
     location: "Seoul, South Korea",
@@ -1355,7 +1355,7 @@ export default function Events() {
               </div>
               <p className="mb-4">
                 {translate(
-                  "​Join us for an evening with the XRP community in New York City! Connect with the users, builders and projects innovating with and utilizing XRP and the XRP Ledger."
+                  "Join the XRP community in NYC—meet builders, users, and projects innovating on the XRP Ledger."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
