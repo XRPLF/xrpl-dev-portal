@@ -52,30 +52,30 @@ Date:   Wed Aug 27 10:25:53 2025 -0700
 
 - Improved the `account_tx` method to show MPT-related transactions for an issuer. ([#5530](https://github.com/XRPLF/rippled/pull/5530))
 - Added the `network_id` field to `validations` and `ledger` subscription streams. ([#5579](https://github.com/XRPLF/rippled/pull/5579))
-- Optimized hash performance. ([#5469](https://github.com/XRPLF/rippled/pull/5469))
+- Added `nftoken_id`, `nftoken_ids`, and `offer_id` to the `meta` field of transaction streams from the `subscribe` method. ([#5230](https://github.com/XRPLF/rippled/pull/5230))
 
 
 ### Bug Fixes
 
-- Added `nftoken_id`, `nftoken_ids`, and `offer_id` to meta field of transaction streams. ([#5230](https://github.com/XRPLF/rippled/pull/5230))
+- Fixed stalled consensus detection to prevent false positives in situations where there were no disputed transactions. ([#5627](https://github.com/XRPLF/rippled/pull/5627))
+- Added the `allowTrustLineLocking` flag as an option for the `account_info` method. ([#5535](https://github.com/XRPLF/rippled/pull/5525))
+- Removed the automatic creation of trust lines to the `Destination` account in `VaultWithdraw` transactions. ([#5572](https://github.com/XRPLF/rippled/pull/5572))
+- Removed the deprecated `type` field from the `ledger` method. ([#4934](https://github.com/XRPLF/rippled/pull/4934))
+- Fixed incorrect error and warning logs for AMM offer retrievals and IOU payment checks. ([#5686](https://github.com/XRPLF/rippled/pull/5686))
 - Fixed a crash when trace-logging in tests. ([#5529](https://github.com/XRPLF/rippled/pull/5529))
 - Removed circular includes in header files. ([#5544](https://github.com/XRPLF/rippled/pull/5544))
 - Fixed Boost Library linking to be explicit. ([#5546](https://github.com/XRPLF/rippled/pull/5546))
-- Added the `allowTrustLineLocking` flag as an option for the `account_info` method. ([#5535](https://github.com/XRPLF/rippled/pull/5525))
 - Silenced a dummy warning in GCC 12. ([#5554](https://github.com/XRPLF/rippled/pull/5554))
-- Removed the automatic creation of trust lines to the `Destination` account in `VaultWithdraw` transactions. ([#5572](https://github.com/XRPLF/rippled/pull/5572))
 - Fixed an issue where the order of `PriceDataSeries` desynced between the time a `PriceOracle` was created and when it was updated. ([#5485](https://github.com/XRPLF/rippled/pull/5485))
-- Fixed stalled consensus detection to prevent false positives in situations where there were no disputed transactions. ([#5627](https://github.com/XRPLF/rippled/pull/5627))
 - Fixed the logging logic to correctly report the specific reason (full or duplicate) for a rejected peer connection. ([#5664](https://github.com/XRPLF/rippled/pull/5664))
 - Added `-Wno-deprecated-declarations` for Clang only. ([#5680](https://github.com/XRPLF/rippled/pull/5680))
-- Fixed incorrect error and warning logs for AMM offer retrievals and IOU payment checks. ([#5686](https://github.com/XRPLF/rippled/pull/5686))
 - Fixed a crash due to a recurrent call to `Slot::deletePeer` when a peer is disconnected at just the wrong moment. ([#5635](https://github.com/XRPLF/rippled/pull/5635))
 - Fixed a MacOS pipeline issue. ([#5585](https://github.com/XRPLF/rippled/pull/5585))
-- Removed the deprecated `type` field from the `ledger` method. ([#4934](https://github.com/XRPLF/rippled/pull/4934))
 
 
 ### Other Improvements
 
+- Optimized hash performance. ([#5469](https://github.com/XRPLF/rippled/pull/5469))
 - Removed release notes from the `rippled` codebase to facilitate more frequent releases. ([#5508](https://github.com/XRPLF/rippled/pull/5508))
 - Removed the obsolete `OwnerPaysFee` amendment. It was never enabled. ([#5435](https://github.com/XRPLF/rippled/pull/5435), [#5550](https://github.com/XRPLF/rippled/pull/5550))
 - Retired the `FlowCross` amendment. The functionality is now part of the core protocol unconditionally. ([#5562](https://github.com/XRPLF/rippled/pull/5562), [#5575](https://github.com/XRPLF/rippled/pull/5575))
