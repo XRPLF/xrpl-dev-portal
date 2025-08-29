@@ -163,6 +163,7 @@ The `ledger` stream only sends `ledgerClosed` messages when [the consensus proce
   "ledger_hash": "687F604EF6B2F67319E8DCC8C66EF49D84D18A1E18F948421FC24D2C7C3DB464",
   "ledger_index": 7125358,
   "ledger_time": 455751310,
+  "network_id": 1,
   "reserve_base": 20000000,
   "reserve_inc": 5000000,
   "txn_count": 7,
@@ -180,6 +181,7 @@ The fields from a ledger stream message are as follows:
 | `ledger_hash`       | String - [Hash][]         | The identifying hash of the ledger version that was closed. |
 | `ledger_index`      | Number - [Ledger Index][] | The ledger index of the ledger that was closed. |
 | `ledger_time`       | Number                    | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
+| `network_id`        | Number                    | The XRPL network of this stream. |
 | `reserve_base`      | Number                    | The minimum [reserve](../../../../concepts/accounts/reserves.md), in [drops of XRP][], that is required for an account. If this ledger version includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new base reserve applies starting with the following ledger version. |
 | `reserve_inc`       | Number                    | The [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) for each object an account owns in the ledger, in [drops of XRP][]. If the ledger includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new owner reserve applies after this ledger. |
 | `txn_count`         | Number                    | Number of new transactions included in this ledger version. |
@@ -207,6 +209,7 @@ The validations stream sends messages whenever it receives validation messages, 
     "ledger_index":"6",
     "load_fee":256000,
     "master_key": "nHUon2tpyJEHHYGmxqeGu37cvPYHzrMtUNQFVdCgGNvEkjmCpTqK",
+    "network_id": 1,
     "reserve_base":20000000,
     "reserve_inc":5000000,
     "signature":"3045022100E199B55643F66BC6B37DBC5E185321CF952FD35D13D9E8001EB2564FFB94A07602201746C9A4F7A93647131A2DEB03B76F05E426EC67A5A27D77F4FF2603B9A528E6",
@@ -229,6 +232,7 @@ The fields from a validations stream message are as follows:
 | `ledger_index`          | String - Number  | The [Ledger Index][] of the proposed ledger. |
 | `load_fee`              | Integer          | _(May be omitted)_ The local load-scaled transaction cost this validator is currently enforcing, in fee units. |
 | `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58][] format. (See also: [Enable Validation on your `rippled` Server](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server).) |
+| `network_id`            | Number           | The [XRPL network](../../../protocol/transactions/common-fields.md#networkid-field) of this stream. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.6.0" %}New in: rippled 2.6.0{% /badge %} |
 | `reserve_base`          | Integer          | _(May be omitted)_ The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md). |
 | `reserve_inc`           | Integer          | _(May be omitted)_ The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md). |
 | `server_version`        | String - Number  | _(May be omitted)_ An 64-bit integer that encodes the version number of the validating server. For example, `"1745990410175512576"`. Only provided once every 256 ledgers. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}New in: rippled 1.8.1{% /badge %} |
