@@ -1,0 +1,26 @@
+#app_root article .code-walkthrough {
+    margin-right: 112px;
+    max-width: calc(100% - 112px);
+    padding-right: 0;
+    grid-template-columns: 5fr 5fr;
+
+    .tag-size-large {
+        margin: var(--spacing-xs);
+    }
+
+    [data-component-name="Markdoc/CodeWalkthrough/CodeFilters"] {
+        padding: var(--spacing-xs) var(--spacing-lg);
+
+        > :first-child > :first-child {
+            margin: auto;
+        }
+    }
+
+    > :first-child > div {
+        margin: auto;
+    }
+
+    [data-line-number]::before {
+        padding-left: 0.8em;
+    }
+}

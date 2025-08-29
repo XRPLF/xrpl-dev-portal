@@ -12,9 +12,11 @@ ul.nav.navbar-nav {
 }
 
 :root {
+  --navbar-height: 80px;
+
   /* XRPL color palette; match to styles/_colors.scss
     Some colors don't have a 10 equivalent so 9 is repeated.
-    
+
     Note, at present these variables are mostly overridden by
     styled-components variables which are in reverse order, so
     we can't actually use these variables as-is.
@@ -42,7 +44,7 @@ ul.nav.navbar-nav {
   --color-red-8: #80003F;
   --color-red-9: #4C0026;
   --color-red-10: #4C0026;
-  
+
   /* color-green = XRPL $green */
   --color-green-1: #D6FAE7;
   --color-green-2: #ADF5CE;
@@ -54,7 +56,7 @@ ul.nav.navbar-nav {
   --color-green-8: #1E8A50;
   --color-green-9: #145C35;
   --color-green-10: #0A2E1B;
-  
+
   /* color-gold = XRPL $yellow */
   --color-gold-1: #FEFFE5;
   --color-gold-2: #FDFFB2;
@@ -66,7 +68,7 @@ ul.nav.navbar-nav {
   --color-gold-8: #7D8000;
   --color-gold-9: #4B4C00;
   --color-gold-10: #4B4C00;
-  
+
   /* color-blue = XRPL $blue */
   --color-blue-1: #E5F5FF;
   --color-blue-2: #B2E0FF;
@@ -78,7 +80,7 @@ ul.nav.navbar-nav {
   --color-blue-8: #004D80;
   --color-blue-9: #002E4C;
   --color-blue-10: #001133;
-  
+
   /* color purple = XRPL $blue-purple */
   --color-purple-1: #F0E5FF;
   --color-purple-2: #D2B2FF;
@@ -90,7 +92,7 @@ ul.nav.navbar-nav {
   --color-purple-8: #350080;
   --color-purple-9: #20004C;
   --color-purple-10: #20004C;
-  
+
   /* color-magenta = XRPL $red-purple */
   --color-magenta-1: #FBE5FF;
   --color-magenta-2: #F2B2FF;
@@ -102,7 +104,7 @@ ul.nav.navbar-nav {
   --color-magenta-8: #6B0080;
   --color-magenta-9: #40004C;
   --color-magenta-10: #40004C;
-  
+
   /* XRPL doesn't have a color-cyan equivalent
   --color-cyan-1: #e6fffb;
   --color-cyan-2: #b5f5ec;
@@ -114,7 +116,7 @@ ul.nav.navbar-nav {
   --color-cyan-8: #006d75;
   --color-cyan-9: #00474f;
   --color-cyan-10: #002329; */
-  
+
   /* color-yellow = XRPL $yellow */
   --color-yellow-1: #FEFFE5;
   --color-yellow-2: #FDFFB2;
@@ -126,7 +128,7 @@ ul.nav.navbar-nav {
   --color-yellow-8: #7D8000;
   --color-yellow-9: #4B4C00;
   --color-yellow-10: #4B4C00;
-  
+
   /* XRPL doesn't have a color-lime equivalent
   --color-lime-1: #fcffe6;
   --color-lime-2: #f4ffb8;
@@ -138,7 +140,7 @@ ul.nav.navbar-nav {
   --color-lime-8: #5b8c00;
   --color-lime-9: #3f6600;
   --color-lime-10: #254000; */
-  
+
   /* XRPL doesn't have a color-geekblue equivalent
   --color-geekblue-1: #f0f5ff;
   --color-geekblue-2: #d6e4ff;
@@ -162,7 +164,7 @@ ul.nav.navbar-nav {
   --color-primary-text-hover: #201dad;
   --color-primary-text: #161087;
   --color-primary-text-active: #0d086e;*/
-  
+
   --link-color-primary: #fff;
   --link-decoration: underline;
   --link-font-weight: var(--font-weight-regular);
@@ -219,12 +221,15 @@ ul.nav.navbar-nav {
   --footer-title-text-color: #A2A2A4;
 
   --menu-item-padding-horizontal: 0px;
-  
+
   --md-list-left-padding: 40px;
   --md-table-header-bg-color: #32343E;
   --md-table-border-color: #32343E;
-  
+
   --md-tabs-content-padding: 0;
+  --md-tabs-tab-wrapper-padding: 0;
+
+  --text-color-helper: #A2A2A4;
 }
 
 :root.light {
@@ -235,7 +240,7 @@ ul.nav.navbar-nav {
   --code-block-controls-bg-color: #E0E0E1;
   --code-block-controls-border: none;
   --md-tabs-active-tab-bg-color: #C1C1C2;
-  
+
   --code-block-tokens-function-color: #B23C00;
   --code-block-tokens-operator-color: #000;
   --code-block-tokens-comment-color: #343437;
@@ -256,15 +261,21 @@ ul.nav.navbar-nav {
 
   --md-table-header-bg-color: var(--color-gray-2);
   --md-table-border-color: var(--color-gray-2);
+
+  --bg-color: var(--color-gray-2);
+  --code-panel-bg-color: var(--color-gray-3);
+
+  --bg-raised-gradient: "";
+  --text-color-helper: var(--color-gray-7);
 }
 
 :root.dark {
   --link-color-primary: #fff;
   --link-color-visited: #fff;
   --link-color-primary-hover: #9a52ff;
-  
+
   --search-highlight-text-color: #4BB7FF; /* color-blue-4 */
-  
+
   --code-block-tokens-comment-color: #C1C1C2; /* color-gray-3 */
 }
 
