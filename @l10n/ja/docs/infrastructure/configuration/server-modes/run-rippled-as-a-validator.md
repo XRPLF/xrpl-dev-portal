@@ -313,9 +313,6 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 4. 記入したGoogleフォームを送信すると、ドメイン検証の成否を通知するメールがXRP Chartsから送信されます。ドメイン検証が成功した場合は、XRP Chartsの[バリデータレジストリー](https://xrpcharts.ripple.com/#/validators)にバリデータとドメインが表示されます。
 
-<!--{ ***TODO: For the future - add a new section or separate document: "Operating a Trusted Validator" -- things that you need to be aware of once your validator has been added to a UNL and is participating in consensus. We should tell the user what to expect once they are listed in a UNL. How to tell if your validator is participating in the consensus process? How to tell if something isn't right with your validator - warning signs that they should look out for? How to tell if your validator has fallen out of agreement - what is the acceptable vs unacceptable threshold? Maybe provide a script that will alert them when something is going wrong.*** }-->
-
-
 
 ## バリデータキーの破棄
 
