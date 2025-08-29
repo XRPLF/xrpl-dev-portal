@@ -68,9 +68,21 @@
     margin: 6px;
     margin-top: 24px;
   }
+  li:first-child {
+    margin-top: 16px;
+  }
   li p {
     margin: 0;
   }
+  [data-component-name="Markdoc/Tabs/Tabs"] li {
+    margin: 0;
+
+    /*button {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }*/
+  }
+
 
   // "Source" links float right
   a[title="Source"],
