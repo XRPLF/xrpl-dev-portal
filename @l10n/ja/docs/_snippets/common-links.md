@@ -4,6 +4,7 @@
 [AMMオブジェクト]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/amm.md
 [AMMBid]: /@l10n/ja/docs/references/protocol/transactions/types/ammbid.md
 [AMMBidトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/ammbid.md
+[AMMClawbackトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/ammclawback.md
 [AMMCreate]: /@l10n/ja/docs/references/protocol/transactions/types/ammcreate.md
 [AMMCreateトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/ammcreate.md
 [AMMDelete]: /@l10n/ja/docs/references/protocol/transactions/types/ammdelete.md
@@ -148,6 +149,7 @@
 [PermissionDelegation amendment]: /@l10n/ja/resources/known-amendments.md#permissiondelegation
 [PermissionedDEX amendment]: /@l10n/ja/resources/known-amendments.md#permissioneddex
 [PermissionedDomains amendment]: /@l10n/ja/resources/known-amendments.md#permissioneddomains
+[PermissionedDomainSetトランザクション]: /@l10n/ja/docs/references/protocol/transactions/types/permissioneddomainset.md
 [許可型ドメイン]: /@l10n/ja/docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
 [PriceOracle amendment]: /@l10n/ja/resources/known-amendments.md#priceoracle
 [MPTokensV1_1 amendment]: /@l10n/ja/resources/known-amendments.md#priceoracle
@@ -173,7 +175,7 @@
 [通貨額の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
 [レジャーの指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#レジャーの指定
 [時間の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#時間の指定
-[Specifying Without Amounts]: /@l10n/ja/docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
+[Amountなしの指定]: /@l10n/ja/docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
 [SusPay amendment]: /@l10n/ja/resources/known-amendments.md#suspay
 [TickSize amendment]: /@l10n/ja/resources/known-amendments.md#ticksize
 [Ticketエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
