@@ -28,7 +28,7 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../python/build-apps/get-started.md) for setup steps.
 - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../java/build-apps/get-started.md) for setup steps.
 - **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](../php/build-apps/get-started.md) for setup steps.
-
+- **Go** with the [xrpl-go library](https://github.com/Peersyst/xrpl-go). See [Get Started Using Go](../go/build-apps/get-started.md) for setup steps.
 
 ## Send a Payment on the Test Net
 
@@ -52,6 +52,10 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 {% tab label="PHP" %}
 {% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Example credentials" before="// Create" language="php" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Example credentials" before="// Funding" language="go" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -85,6 +89,10 @@ The following code connects to a public Testnet servers:
 
 {% tab label="PHP" %}
 {% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Create a client" before="// Transaction definition" language="php" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="func main()" before="if !client.IsConnected() " language="go" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -142,6 +150,10 @@ Here's an example of preparing the above payment:
 {% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Transaction definition" before="// Sign" language="php" /%}
 {% /tab %}
 
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Prepare " before="// Sign" language="go" /%}
+{% /tab %}
+
 {% /tabs %}
 
 {% interactive-block label="Prepare" steps=$frontmatter.steps %}
@@ -172,6 +184,7 @@ Signing a transaction uses your credentials to authorize the transaction on your
 - **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and `Wallet` object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
 - **PHP:** Use a [`sign()` method of a `Wallet` instance](https://alexanderbuzz.github.io/xrpl-php-docs/wallet.html#signing-a-transaction) instance to sign the transaction. The input to this step is a completed array of transaction instructions.
+- **Go:** Use the [`Sign()` method of the `Wallet` package](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/wallet) to sign the transaction. 
 
 {% tabs %}
 
@@ -191,6 +204,10 @@ Signing a transaction uses your credentials to authorize the transaction on your
 {% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Sign" before="// Submit" language="php" /%}
 {% /tab %}
 
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Sign" before="// Submit" language="go" /%}
+{% /tab %}
+
 {% /tabs %}
 
 The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical [binary format](../../references/protocol/binary-format.md), called a "blob".
@@ -199,6 +216,7 @@ The result of the signing operation is a transaction object containing a signatu
 - In `xrpl-py`, you can get the transaction's hash in the response to submitting it in the next step.
 - In xrpl4j, `SignatureService.sign` returns a `SignedTransaction`, which contains the transaction's hash, which you can use to look up the transaction later.
 - In `XRPL_PHP`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
+- In `xrpl-go`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 
 {% interactive-block label="Sign" steps=$frontmatter.steps %}
 
@@ -217,6 +235,7 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 - **Python:** Use the [`xrpl.transaction.submit_and_wait()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) to submit a transaction to the network and wait for a response.
 - **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
 - **PHP:** Use the [`submitAndWait()` method of the Client](https://alexanderbuzz.github.io/xrpl-php-docs/client.html) to submit a transaction to the network and wait for the response.
+- **Go:** Use [`SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods os the Client](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket#Client.SubmitTxAndWait) to submit a transaction to the network and wait for the response.
 
 {% tabs %}
 
@@ -234,6 +253,10 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 
 {% tab label="PHP" %}
 {% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Submit" before="// Wait" language="php" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Submit" before="// Wait" language="go" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -273,6 +296,8 @@ Most transactions are accepted into the next ledger version after they're submit
 
 - **PHP:**  If you used the [`.submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
+- **Go:** If you used the `SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods, the client will handle submission and wait until the transaction is confirmed in a ledger. Internally, these methods use a polling mechanism, querying the transaction status with the client's `Request()` method and a `TxRequest`.
+
 {% tabs %}
 
 {% tab label="JavaScript" %}
@@ -289,6 +314,10 @@ Most transactions are accepted into the next ledger version after they're submit
 
 {% tab label="PHP" %}
 {% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Wait" before="// Check" language="php" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Wait" before="// Check" language="go" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -310,6 +339,8 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 - **PHP:** Use the response from `submitAndWait()` or call the `tx method` using [`$client->syncRequest()`](https://alexanderbuzz.github.io/xrpl-php-docs/client.html).
 
+- **Go:** Use the response from `SubmitTxAndWait()` or `SubmitTxBlobAndWait()`, or manually query the transaction status using a `TxRequest` with the client's `Request()` method.
+
 {% tabs %}
 
 {% tab label="JavaScript" %}
@@ -326,6 +357,10 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 {% tab label="PHP" %}
 {% code-snippet file="/_code-samples/send-xrp/php/send-xrp.php" from="// Check" language="php" /%}
+{% /tab %}
+
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/send-xrp/go/ws/main.go" from="// Check" language="go" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -391,6 +426,16 @@ print_r("Seed: " . $wallet->getSeed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoU
 ```
 {% /tab %}
 
+{% tab label="Go" %}
+
+```go
+wallet, err := wallet.New(crypto.ED25519())
+fmt.Println("Classic Address:", wallet.ClassicAddress) // Example: r9ESeQQswbTxV8neiDTLTHXbXfUwiihyJk
+fmt.Println("Seed:", wallet.Seed) // Example: sEd7XGFGSWteam777HQHvw7vHypEWy2
+
+```
+{% /tab %}
+
 {% /tabs %}
 
 {% admonition type="danger" name="Warning" %}You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.{% /admonition %}
@@ -433,6 +478,20 @@ $client = new JsonRpcClient("https://xrplcluster.com");
 ```
 {% /tab %}
 
+{% tab label="Go" %}
+
+```go
+client := websocket.NewClient(
+  websocket.NewClientConfig().
+    WithHost("wss://xrplcluster.com")
+)
+if err := client.Connect(); err != nil {
+  fmt.Println(err)
+  return
+}
+```
+{% /tab %}
+
 {% /tabs %}
 
 If you [install `rippled`](../../infrastructure/installation/index.md) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has [various benefits](../../concepts/networks-and-servers/index.md). The following example shows how to connect to a server running the default configuration:
@@ -466,6 +525,20 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 use XRPL_PHP\Client\JsonRpcClient;
 
 $client = new JsonRpcClient("http://localhost:5005");
+```
+{% /tab %}
+
+{% tab label="Go" %}
+
+```go
+client := websocket.NewClient(
+  websocket.NewClientConfig().
+    WithHost("ws://localhost:6006")
+)
+if err := client.Connect(); err != nil {
+  fmt.Println(err)
+  return
+}
 ```
 {% /tab %}
 

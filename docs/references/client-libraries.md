@@ -14,6 +14,7 @@ These client libraries simplify some of the common work of accessing and process
 | Language                        | Library Name              | Get Started | API Reference | Source Code |
 |---------------------------------|---------------------------|-------------|--------------|-------------|
 | **Python**                      | `xrpl-py`                 | [Get Started Using Python](../tutorials/python/build-apps/get-started.md) | [API Reference](https://xrpl-py.readthedocs.io/) | [Repo](https://github.com/XRPLF/xrpl-py) |
+| **Go**                      | `xrpl-go`                 | [Get Started Using Go](../tutorials/go/build-apps/get-started.md) | [API Reference](https://pkg.go.dev/github.com/Peersyst/xrpl-go) | [Repo](https://github.com/Peersyst/xrpl-go) |
 | **JavaScript** / **TypeScript** | `xrpl.js`                 | [Get Started](../tutorials/javascript/build-apps/get-started.md) |  [API Reference](https://js.xrpl.org/) | [Repo](https://github.com/XRPLF/xrpl.js) |
 | **JavaScript** / **TypeScript** | `xrpl-client`             | [Get Started](https://jsfiddle.net/WietseWind/35az6p1b/) |  [NPM Reference](https://www.npmjs.com/package/xrpl-client) | [Repo](https://github.com/XRPL-Labs/xrpl-client) |
 | **JavaScript** / **TypeScript** | `xrpl-accountlib`         | [Get Started](https://jsfiddle.net/WietseWind/gkefpnu0/) |  [NPM Reference](https://www.npmjs.com/package/xrpl-accountlib) | [Repo](https://github.com/WietseWind/xrpl-accountlib) |

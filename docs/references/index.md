@@ -16,6 +16,8 @@ Use these libraries to access the XRP Ledger from your programming language of c
 
 {% xrpl-card title="Python" body="xrpl.py - a pure Python library" href="https://xrpl-py.readthedocs.io/" image="/img/logos/python.svg" imageAlt="Python logo" /%}
 
+{% xrpl-card title="Go" body="xrpl.go - a pure Go library" href="https://pkg.go.dev/github.com/Peersyst/xrpl-go" image="/img/logos/golang.svg" imageAlt="Go logo" /%}
+
 {% xrpl-card title="Java" body="xrpl4j - a pure Java library" href="https://javadoc.io/doc/org.xrpl/" image="/img/logos/java.svg" imageAlt="Java logo" /%}
 
 {% /card-grid %}

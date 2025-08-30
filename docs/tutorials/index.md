@@ -16,7 +16,7 @@ These tutorials walk you through the basics of building a very simple XRP Ledger
 
 {% xrpl-card title="Python" body="Using xrpl.py, a pure Python library." href="/docs/tutorials/python/" image="/img/logos/python.svg" imageAlt="Python logo" /%}
 
-<br/>
+{% xrpl-card title="Go" body="Using xrpl-go, a pure Go library." href="/docs/tutorials/go/" image="/img/logos/golang.svg" imageAlt="Go logo" /%}
 
 {% xrpl-card title="Java" body="Using xrpl4j, a pure Java library." href="/docs/tutorials/java/" image="/img/logos/java.svg" imageAlt="Java logo" /%}
 
