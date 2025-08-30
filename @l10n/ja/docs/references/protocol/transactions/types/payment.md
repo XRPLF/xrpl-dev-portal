@@ -8,7 +8,7 @@ labels:
   - トークン
 ---
 # Payment
-[[ソース]](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "ソース")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "ソース")
 
 Paymentトランザクションは、アカウント間での価値の移動を表現するものです(通過するパスによっては、非可分的に発生する追加的な価値交換を伴うことがあります)。このトランザクションタイプはいくつかの[支払いの種類](#paymentの種類)に使用することがでできます。
 
@@ -37,17 +37,18 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 
-| フィールド       | JSONの型            | [内部の型][] | 説明 |
-| :--------------- | :------------------ | :----------- | ---- |
-| `Amount`         | [通貨額][]          | Amount       | `DeliverMax`のエイリアス |
-| `CredentialIDs`  | 文字列の配列        | Vector256    | このトランザクションによって作成される入金を承認するための、受取人によって事前承認された資格証明のセット。配列の各メンバは、レジャーのCredentialエントリのレジャーエントリIDでなければなりません。(_[**Credentials** amendment](../../../../../resources/known-amendments.md#credentials)が必要です。_ {% not-enabled /%}) |
-| `DeliverMax`     | [Currency Amount][] | Amount       | [API v2][]: 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}新規: rippled 2.0.0{% /badge %} |
-| `DeliverMin`     | [通貨額][]          | Amount       | _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
-| `Destination`    | 文字列              | AccountID    | 支払いを受取るアカウントの一意アドレス。 |
-| `DestinationTag` | 数値                | UInt32       | _（省略可）_ 宛先（支払先となる、ホスティングされている受取人）への支払い理由を明確にするための任意のタグ。 |
-| `InvoiceID`      | 文字列              | UInt256      | _（省略可）_ この支払いの具体的な理由または識別子を表現する任意の256ビットハッシュ。 |
-| `Paths`          | パス配列の配列      | PathSet      | （省略可。自動入力可能）このトランザクションに使用される[支払いパス](../../../../concepts/tokens/fungible-tokens/paths.md)の配列。XRP間のトランザクションでは省略する必要があります。 |
-| `SendMax`        | [通貨額][]          | Amount       | _（省略可）_ [送金手数料](../../../../concepts/tokens/transfer-fees.md)、為替レート、[スリッページ](http://en.wikipedia.org/wiki/Slippage_%28finance%29)を含め、このトランザクションに関して支払い元通貨での負担を許容する上限額。[トランザクションの送信コストとしてバーンされるXRP](../../../../concepts/transactions/transaction-cost.md)は含めないでください。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。クロスカレンシー支払いまたは複数のトークンを伴う支払いについては、このフィールドを入力する必要があります。XRP間の支払いでは省略する必要があります。 |
+| フィールド       | JSONの型              | [内部の型][] | 必須?       | 説明 |
+| :--------------- | :-------------------- | :----------- | :---------- | :---- |
+| `Amount`         | [通貨額][]            | Amount       | APIv1: はい | `DeliverMax`のエイリアス |
+| `CredentialIDs`  | 文字列の配列          | Vector256    | いいえ      | このトランザクションによって作成される入金を承認するための、受取人によって事前承認された資格証明のセット。配列の各メンバは、レジャーのCredentialエントリのレジャーエントリIDでなければなりません。(_[**Credentials** amendment](../../../../../resources/known-amendments.md#credentials)が必要です。_ {% not-enabled /%}) |
+| `DeliverMax`     | [通貨額][]            | Amount       | はい        | [API v2][]: 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}新規: rippled 2.0.0{% /badge %} |
+| `DeliverMin`     | [通貨額][]            | Amount       | いいえ      | _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](#partial-payments)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
+| `Destination`    | 文字列 - [アドレス][] | AccountID    | はい        | 支払いを受取るアカウントの一意アドレス。 |
+| `DestinationTag` | 数値                  | UInt32       | いいえ      | 宛先（支払先となる、ホスティングされている受取人）への支払い理由を明確にするための任意のタグ。 |
+| `DomainID`       | String - [Hash][]     | Hash256      | いいえ      | 許可されたドメインのレジャーエントリID。クロスカレンシー支払いの場合は、通貨を変換するために、対応する[許可されたDEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md)のみを使用してください。送信者と受取人の両方が、指定されたドメインへのアクセスを許可する有効な資格証明を持っている必要があります。このフィールドは、クロスカレンシー支払いではない場合は効果がありません。(_[**PermissionedDEX** amendment][]が必要です。_ {% not-enabled /%}) |
+| `InvoiceID`      | 文字列 - 16進文字     | UInt256      | いいえ      | この支払いの具体的な理由または識別子を表現する任意の256ビットハッシュ。 |
+| `Paths`          | パス配列の配列        | PathSet      | いいえ      | _（自動入力可能）_ このトランザクションに使用される[支払いパス](../../../../concepts/tokens/fungible-tokens/paths.md)の配列。XRP間のトランザクションでは省略する必要があります。 |
+| `SendMax`        | [通貨額][]            | Amount       | いいえ      | [送金手数料](../../../../concepts/tokens/transfer-fees.md)、為替レート、[スリッページ](http://en.wikipedia.org/wiki/Slippage_%28finance%29)を含め、このトランザクションに関して支払い元通貨での負担を許容する上限額。[トランザクションの送信コストとしてバーンされるXRP](../../../../concepts/transactions/transaction-cost.md)は含めないでください。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。クロスカレンシー支払いまたは複数のトークンを伴う支払いについては、このフィールドを入力する必要があります。XRP間の支払いでは省略する必要があります。 |
 
 トランザクションを指定する際は、`Amount`または`DeliverMax`のいずれかを指定する必要がありますが、両方を指定することはできません。JSONでトランザクションを表示する場合、API v1では常に`Amount`を使用し、API v2（以降）では常に`DeliverMax`を使用します。
 
@@ -62,7 +63,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 | [クロスカレンシー（通貨間）決済][] | オブジェクト (非XRP) / 文字列 (XRP) | オブジェクト (非XRP) / 文字列 (XRP) | 通常は必須 | いいえ                     | 発行された通貨を保有者から別の保有者に送信します。`Amount`と`SendMax`の両方をXRPにすることはできません。これらの支払いは、発行者を介して[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)し、トランザクションがパスセットを指定した場合、複数の仲介者を介してより長い[パス](../../../../concepts/tokens/fungible-tokens/paths.md)を取ることができます。トランザクション形式には、発行者が設定した[送金手数料](../../../../concepts/tokens/transfer-fees.md) が適用されます。これらのトランザクションは、異なる通貨間や、場合によっては同じ通貨コードで異なる発行者の通貨間を接続するために、[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)のオファーを利用します。 |
 | [Partial payment][]                | オブジェクト (非XRP) / 文字列 (XRP) | オブジェクト (非XRP) / 文字列 (XRP) | 通常は必須 | いいえ                     | 任意の通貨を特定の金額まで送ります。[`tfPartialPayment` フラグ](#paymentのフラグ)を使用します。トランザクションが成功するための最小値を指定する `DeliverMin` 値を含めることができます。トランザクションが `DeliverMin` を指定しない場合、_任意の正の値_ を指定して成功させることができる。 |
 | 通貨変換                           | オブジェクト (非XRP) / 文字列 (XRP) | オブジェクト (非XRP) / 文字列 (XRP) | 必須       | はい                       | [分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)のオファーを消費して、ある通貨を別の通貨に交換し、[裁定取引](https://ja.wikipedia.org/wiki/%E8%A3%81%E5%AE%9A%E5%8F%96%E5%BC%95)の機会を得ることが出来ます。`Amount`と `SendMax` の両方を XRP にすることはできません。[Data API](../../../data-api.md) は、このタイプの取引を "payment" ではなく、"exchange" として追跡しています。 |
-| MPTの支払い                        | オブジェクト                        | 省略                                | 省略       | はい                       | MPTを保有者に送信します。[MPTの支払い](#mpt-payments)をご覧ください。 |
+| MPTの支払い                        | オブジェクト                        | 省略                                | 省略       | いいえ                     | MPTを保有者に送信します。[MPTの支払い](#mpt-payments)をご覧ください。 |
 
 [XRP同士の直接支払い]: ../../../../concepts/payment-types/direct-xrp-payments.md
 [発行通貨の作成・償還]: ../../../../concepts/tokens/index.md
@@ -74,11 +75,11 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 
 
 
-ほとんどの場合、XRP以外の[通貨額][]の`issuer`フィールドは、金融機関の[発行アドレス](../../../../concepts/accounts/account-types.md)を示しています。ただし、支払いを記述するにあたって、支払いの`Amount`フィールドと`SendMax`フィールドにある`issuer`フィールドについては、特殊なルールが存在します。
+ほとんどの場合、XRP以外の[通貨額][]の`issuer`フィールドは、金融機関の[発行アドレス](../../../../concepts/accounts/account-types.md)を示しています。ただし、支払いを記述するにあたって、支払いの`DeliverMax`(または`Amount`)フィールドと`SendMax`フィールドにある`issuer`フィールドについては、特殊なルールが存在します。
 
 * 2つのアドレス間で、同一の通貨に関して存在する残高は常に1つです。つまり、金額の`issuer`フィールドが実際に表しているのは、イシュアンスを作成したアドレスではなく、イシュアンスを換金する相手方であることがあります。
-* 宛先`Amount`フィールドの`issuer`フィールドが`Destination`アドレスと一致している場合、「宛先が受け入れるあらゆるイシュアー」を意味する特殊なケースとして取り扱われます。これには、他のトラストラインで保持されている宛先によって作成されたイシュアンスに加え、宛先が当該アドレスまでトラストラインを延長しているすべてのアドレスが含まれます。
-* `SendMax`フィールドの`issuer`フィールドが送信元アカウントのアドレスと一致している場合、「送信元が使用できるあらゆるイシュアー」を意味する特殊なケースとして取り扱われます。これには、他のアカウントが送信元アカウントまで延長しているトラストラインで新しいイシュアンスを作成すること、送信元アカウントが保持しているイシュアンスを他のイシュアーから送信することが含まれます。
+* 宛先`DeliverMax`フィールドの`issuer`フィールドが`Destination`アドレスと一致している場合、「宛先が受け入れるあらゆるイシュアー」を意味する特殊なケースとして取り扱われます。これには、他のトラストラインで保持されている宛先によって作成されたイシュアンスに加え、宛先が当該アドレスまでトラストラインを延長しているすべてのアドレスが含まれます。
+* `SendMax`フィールドの`issuer`フィールドが送信元アカウントのアドレスと一致している場合、「送信元が使用できるあらゆるイシュアー」を意味する特殊なケースとして取り扱われます。送信元アカウントが既に保有しているトークンを送信するか、送信元アカウントと信頼関係にある他のユーザーに対して新しいトークンを発行することができます。
 
 ## アカウントの作成
 
@@ -108,7 +109,7 @@ Payment型のトランザクションについては、[`Flags`フィールド](
 | フラグの名前       | 16進値       | 10進値 | 説明 |
 | :----------------- | :----------- | :----- | ---- |
 | `tfNoRippleDirect` | `0x00010000` | 65536  | デフォルトパスを使用せず、`Paths`フィールドに含まれているパスのみ使用します。これによりトランザクションは強制的に裁定機会を活用することになります。ほとんどのクライアントでは、これは必要ありません。 |
-| `tfPartialPayment` | `0x00020000` | 131072 | `SendMax`を超えていないのに指定された`Amount`を送金できない場合、即座に失敗とするのではなく、受取られる額を減額します。詳細は、[Partial Payments](../../../../concepts/payment-types/partial-payments.md)をご覧ください。 |
+| `tfPartialPayment` | `0x00020000` | 131072 | `SendMax`を超えていないのに指定された`Amount`を送金できない場合、即座に失敗とするのではなく、受取られる額を減額します。詳細は、[Partial Payments](#partial-payments)をご覧ください。 |
 | `tfLimitQuality`   | `0x00040000` | 262144 | すべての変換で、入力と出力との比率が`Amount`と`SendMax`との比率と同一であるか、さらに有利となるパスのみを採用します。詳細は、[クオリティの制限](#クオリティの制限)をご覧ください。 |
 
 ## Partial Payments
@@ -183,6 +184,10 @@ _([Credentials amendment][]が必要です。 {% not-enabled /%})_
 - このトランザクションの送信者は、提供された資格証明のすべての受取人である必要があります。
 
 提供された資格証明が、Deposit Authorizationを使用していないアカウントに対して提供されている場合、資格証明は不要ですが、有効性は依然としてチェックされます。
+
+{% admonition type="info" name="注記" %}
+`CredentialIDs`フィールドは、デポジットの承認処理にのみ使用され、[許可型DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md)での取引には使用されません。ただし、許可型DEXでもアクセス権限を付与するために認証情報が使用されます。許可型DEXで取引を行うには、`DomainID`フィールドを使用して、有効な資格情報を保持しているドメインを指定する必要があります。
+{% /admonition %}
 
 
 ## 準備金を下回るアカウントに対する特別な送金のケース
