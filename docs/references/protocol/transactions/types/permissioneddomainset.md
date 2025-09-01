@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Create or update a Permissioned Domain.
+    description: Create or update a permissioned domain.
 labels:
   - Compliance
   - Permissioned Domains
@@ -61,5 +61,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_PERMISSION`        | The transaction attempted to modify an existing Domain, but the sender of the transaction is not the owner of the specified Domain. |
 | `temDISABLED`             | Either the `PermissionedDomains` amendment is not enabled, or the `Credentials` amendment is not enabled. |
 
+## See Also
+
+- [PermissionedDomain entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

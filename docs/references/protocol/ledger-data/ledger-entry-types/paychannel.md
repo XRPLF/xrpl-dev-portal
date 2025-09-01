@@ -1,6 +1,6 @@
 ---
 seo:
-    description: A channel for asynchronous XRP payments.
+    description: A payment channel, which allows for rapid, asynchronous payments.
 labels:
   - Payment Channels
 ---

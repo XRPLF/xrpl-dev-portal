@@ -1,7 +1,9 @@
 ---
-blurb: Describes the XRPL multi-purpose token object.
+seo:
+    description: Multi-Purpose Tokens (MPT) of one issuance held by a specific account.
 labels:
   - Multi-purpose Tokens, MPTs, Tokens
+status: not_enabled
 ---
 # MPToken
 
@@ -53,5 +55,9 @@ The ID of an `MPToken` entry is the [SHA-512Half][] of the following values, con
 - The `MPToken` space key (0x0074).
 - The `MPTokenIssuanceID` for the issuance being held.
 - The `AccountID` of the token holder.
+
+## See Also
+
+- [MPTokenAuthorize transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

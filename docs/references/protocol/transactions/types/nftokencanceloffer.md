@@ -1,8 +1,6 @@
 ---
-html: nftokencanceloffer.html
-parent: transaction-types.html
 seo:
-    description: Cancel existing token offers to buy or sell an NFToken.
+    description: Cancel offers to buy or sell an NFT.
 labels:
   - NFTs, Non-fungible Tokens
 ---

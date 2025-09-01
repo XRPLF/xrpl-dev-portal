@@ -1,8 +1,6 @@
 ---
-html: diddelete.html
-parent: transaction-types.html
 seo:
-    description: Delete a DID.
+    description: Delete a Decentralized Identifier.
 labels:
   - DID
 ---
@@ -38,5 +36,9 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | Error Code          | Description                                  |
 |:--------------------|:---------------------------------------------|
 | `tecNO_ENTRY`       | The account doesn't have a DID.              |
+
+## See Also
+
+- [DID entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

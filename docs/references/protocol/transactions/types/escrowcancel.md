@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Reclaim escrowed XRP.
+    description: Cancel an expired escrow, returning the funds to the sender.
 labels:
   - Escrow
 ---
@@ -37,5 +37,9 @@ Any account may submit an EscrowCancel transaction.
 
 * If the corresponding [EscrowCreate transaction][] did not specify a `CancelAfter` time, the EscrowCancel transaction fails.
 * Otherwise the EscrowCancel transaction fails if the `CancelAfter` time is after the close time of the most recently-closed ledger.
+
+## See Also
+
+- [Escrow entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

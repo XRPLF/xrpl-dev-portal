@@ -1,6 +1,6 @@
 ---
 seo:
-    description: The `XChainOwnedCreateAccountClaimID` ledger object is used to collect attestations for creating an account via a cross-chain transfer. 
+    description: A record of attestations for creating an account via a cross-chain transfer. 
 labels:
   - Interoperability
 status: not_enabled
@@ -84,5 +84,10 @@ _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 | `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
 | `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
+
+## See Also
+
+- **Transactions:**
+  - [XChainAddAccountCreateAttestation transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

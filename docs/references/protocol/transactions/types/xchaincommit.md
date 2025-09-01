@@ -1,8 +1,6 @@
 ---
-html: xchaincommit.html 
-parent: transaction-types.html
 seo:
-    description: Initiate a cross-chain transfer of value.
+    description: Start a cross-chain transfer of value.
 labels:
   - Interoperability
 status: not_enabled

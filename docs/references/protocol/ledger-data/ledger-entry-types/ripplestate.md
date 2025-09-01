@@ -1,6 +1,6 @@
 ---
 seo:
-    description: This entry represents a trust line, tracking the net balance of tokens between them.
+    description: A trust line, which tracks the net balance of fungible tokens between two accounts.
 labels:
   - Tokens
 ---
@@ -123,5 +123,10 @@ The ID of a RippleState entry is the [SHA-512Half][] of the following values, co
 * The AccountID of the low account
 * The AccountID of the high account
 * The 160-bit currency code of the trust line(s)
+
+## See Also
+
+- **Transactions:**
+  - [TrustSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

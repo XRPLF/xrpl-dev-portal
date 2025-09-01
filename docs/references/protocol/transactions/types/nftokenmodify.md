@@ -3,8 +3,6 @@ seo:
     description: Modify a dynamic NFT.
 labels:
   - Non-fungible Tokens, NFTs
-title:
-  - NFTokenModify
 ---
 # NFTokenModify
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenModify.cpp "Source")

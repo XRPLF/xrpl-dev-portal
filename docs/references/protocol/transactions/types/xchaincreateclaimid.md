@@ -1,6 +1,4 @@
 ---
-html: xchaincreateclaimid.html 
-parent: transaction-types.html
 seo:
     description: Create a cross-chain claim ID that is used for a cross-chain transfer.
 labels:
@@ -58,5 +56,9 @@ It also includes the account on the source chain that locks or burns the funds o
 | `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
 | `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
+
+## See Also
+
+- [XChainOwnedClaimID entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

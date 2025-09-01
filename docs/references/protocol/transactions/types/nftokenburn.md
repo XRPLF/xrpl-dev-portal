@@ -1,8 +1,6 @@
 ---
-html: nftokenburn.html
-parent: transaction-types.html
 seo:
-    description: Use TokenBurn to permanently destroy NFTs.
+    description: Permanently destroy an NFT.
 labels:
   - Non-fungible Tokens, NFTs
 ---

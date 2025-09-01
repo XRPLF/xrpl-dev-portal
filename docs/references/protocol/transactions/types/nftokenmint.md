@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Use TokenMint to issue new NFTs.
+    description: Mint a Non-Fungible Token (NFT).
 labels:
   - Non-fungible Tokens, NFTs
 ---
