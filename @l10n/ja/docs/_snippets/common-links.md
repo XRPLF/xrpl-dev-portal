@@ -175,7 +175,7 @@
 [通貨額の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#通貨額の指定
 [レジャーの指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#レジャーの指定
 [時間の指定]: /@l10n/ja/docs/references/protocol/data-types/basic-data-types.md#時間の指定
-[Amountなしの指定]: /@l10n/ja/docs/references/protocol/data-types/currency-formats.md#specifying-without-amounts
+[金額なしの指定]: /@l10n/ja/docs/references/protocol/data-types/currency-formats.md#金額なしでの通貨の指定
 [SusPay amendment]: /@l10n/ja/resources/known-amendments.md#suspay
 [TickSize amendment]: /@l10n/ja/resources/known-amendments.md#ticksize
 [Ticketエントリ]: /@l10n/ja/docs/references/protocol/ledger-data/ledger-entry-types/ticket.md
