@@ -7,9 +7,9 @@ labels:
   - 分散型取引所
 ---
 # Offer
-[[ソース]](https://github.com/XRPLF/rippled/blob/7e24adbdd0b61fb50967c4c6d4b27cc6d81b33f3/include/xrpl/protocol/detail/ledger_entries.macro#L242-L255 "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/7e24adbdd0b61fb50967c4c6d4b27cc6d81b33f3/include/xrpl/protocol/detail/ledger_entries.macro#L242-L255 "ソース")
 
-台帳の`Offer`エントリは、XRP Ledgerの[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で通貨を交換する[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は台帳にある他のOfferを全額約定できない場合、台帳にofferエントリを作成します。
+`Offer`レジャーエントリは、XRP Ledgerの[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で通貨を交換する[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は他のOfferを全額約定できない場合、Offerエントリを作成します。
 
 オファーがネットワーク上の他の活動によって資金不足になることはありますが、元帳には残ります。トランザクションを処理する際、ネットワークはトランザクションが見つけた資金不足のオファーを自動的に削除します。( _トランザクションのみ_ が台帳の状態を変更できるため、削除が行われないと資金不足のオファーが残ってしまいます。)
 

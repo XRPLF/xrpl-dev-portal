@@ -37,7 +37,7 @@ OfferCreateトランザクションは[分散型取引所](../../../../concepts/
 | フィールド       | JSONの型              | [内部の型][] | 必須?    | 説明       |
 |:-----------------|:----------------------|:-------------|:---------|:-----------|
 | `DomainID`       | 文字列 - [ハッシュ][] | Hash256      | いいえ   | 許可型DEXのレジャーエントリID。指定された場合、対応する[許可型DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md)のみを使用するパスを返します。([PermissionedDEX amendment][] {% not-enabled /%}が必要です。) |
-| [Expiration](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーの有効期限)   | 整数       | UInt32      | いいえ   | オファーがアクティブでなくなるまでの時間（[Rippleエポック以降の経過秒数][]）。 |
+| [`Expiration`](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーの有効期限)   | 整数       | UInt32      | いいえ   | オファーがアクティブでなくなるまでの時間（[Rippleエポック以降の経過秒数][]）。 |
 | `OfferSequence`  | 整数                  | UInt32       | いいえ   | 最初に削除されるオファー（[OfferCancel][]と同様に指定されます）。 |
 | `TakerGets`      | [通貨額][]            | Amount       | はい     | オファーの作成者によって作成される金額および通貨の種類。 |
 | `TakerPays`      | [通貨額][]            | Amount       | はい     | オファーの作成者によってリクエストされる金額および通貨の種類。 |
