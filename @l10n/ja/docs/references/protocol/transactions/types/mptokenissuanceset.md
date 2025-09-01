@@ -1,7 +1,6 @@
 ---
-html: mptokenissuanceset.html
-parent: transaction-types.html
-blurb: MPTの変更可能なプロパティを設定します。
+seo:
+    description: MPTの変更可能なプロパティを設定します。
 labels:
  - Multi-Purpose Token, MPT
 ---

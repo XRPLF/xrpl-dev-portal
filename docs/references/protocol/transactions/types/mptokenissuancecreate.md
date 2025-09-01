@@ -1,7 +1,9 @@
 ---
-blurb: Issue a new Multi-purpose Token.
+seo:
+  description: Define the properties of a new Multi-Purpose Token (MPT).
 labels:
  - Multi-purpose Tokens, MPTs
+status: not_enabled
 ---
 
 # MPTokenIssuanceCreate

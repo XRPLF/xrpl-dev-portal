@@ -1,6 +1,6 @@
 ---
 seo:
-    description: An attestation about a subject account from a credential issuer account, which can be used to preauthorize payments.
+    description: A credential, which can be used to preauthorize payments or gain access to specific permissioned domains.
 status: not_enabled
 ---
 # Credential

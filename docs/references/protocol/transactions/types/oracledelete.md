@@ -1,7 +1,6 @@
 ---
-html: oracledelete.html 
-parent: transaction-types.html
-blurb: Delete an existing price oracle.
+seo:
+    description: Delete a price oracle.
 labels:
   - Oracle
 ---

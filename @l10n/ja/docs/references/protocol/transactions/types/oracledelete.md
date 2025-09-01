@@ -1,7 +1,6 @@
 ---
-html: oracledelete.html 
-parent: transaction-types.html
-blurb: 既存の価格オラクルを削除します。
+seo:
+    description: 既存の価格オラクルを削除します。
 labels:
   - オラクル
 ---

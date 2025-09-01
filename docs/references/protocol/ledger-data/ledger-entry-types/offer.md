@@ -1,6 +1,6 @@
 ---
 seo:
-    description: An order to make a currency trade.
+    description: An offer (order) to trade currencies in the decentralized exchange.
 labels:
   - Decentralized Exchange
 ---

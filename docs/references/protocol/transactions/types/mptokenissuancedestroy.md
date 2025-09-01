@@ -1,7 +1,9 @@
 ---
-blurb: Remove a Multi-purpose Token from the ledger.
+seo:
+    description: Delete a Multi-Purpose Token definition.
 labels:
  - Multi-purpose Tokens, MPTs
+status: not_enabled
 ---
 # MPTokenIssuanceDestroy
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceDestroy.cpp "Source")

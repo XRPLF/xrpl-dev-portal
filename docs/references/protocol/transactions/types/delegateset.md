@@ -1,6 +1,6 @@
 ---
 seo:
-    description: An transaction that delegates a set of permissions to another account.
+    description: Grant another account permission to send some transactions for you, or revoke that permission.
 labels:
   - Accounts
   - Permissions
@@ -73,5 +73,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temDISABLED`             | The [Permission Delegation amendment][] is not enabled. |
 | `temMALFORMED`            | The transaction was invalid. For example, the `Authorize` account is the same as the sender of the transaction, the `Permissions` list contains duplicate entries, or one of the permissions in the list is not a valid permission. |
 
+## See Also
+
+- [Delegate ledger entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

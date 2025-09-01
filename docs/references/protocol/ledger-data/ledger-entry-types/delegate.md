@@ -4,6 +4,7 @@ seo:
 labels:
   - Accounts
   - Permissions
+status: not_enabled
 ---
 # Delegate
 [[Source]](https://github.com/XRPLF/rippled/blob/1e01cd34f7a216092ed779f291b43324c167167a/include/xrpl/protocol/detail/ledger_entries.macro#L475-L482 "Source")
@@ -64,5 +65,10 @@ There are no flags defined for {% code-page-name /%} entries.
 {% code-page-name /%} entries count as one item towards the owner reserve of the delegating account, as long as the entry is in the ledger, regardless of how many permissions are delegating. Removing all permissions deletes the entry and frees up the reserve.
 
 {% code-page-name /%} entries are not deletion blockers. If the owner (delegating) account is deleted, all such ledger entries are deleted along with them. However, the `Authorize`
+
+## See Also
+
+- **Transactions:**
+  - [DelegateSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

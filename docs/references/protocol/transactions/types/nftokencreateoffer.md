@@ -1,10 +1,8 @@
 ---
-html: nftokencreateoffer.html
-parent: transaction-types.html
 seo:
-    description: Create an offer to buy or sell NFTs.
+    description: Create an offer to buy or sell an NFT.
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
 # NFTokenCreateOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "Source")
@@ -19,11 +17,11 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ```json
 {
-      "TransactionType": "NFTokenCreateOffer",
-      "Account": "rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX",
-      "NFTokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
-      "Amount": "1000000",
-      "Flags": 1
+    "TransactionType": "NFTokenCreateOffer",
+    "Account": "rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX",
+    "NFTokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
+    "Amount": "1000000",
+    "Flags": 1
 }
 ```
 

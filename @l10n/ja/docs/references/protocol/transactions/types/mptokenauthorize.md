@@ -1,7 +1,6 @@
 ---
-html: mptokenauthorize.html
-parent: transaction-types.html
-blurb: アカウントが特定のMPTの残高を保持することを許可します。
+seo:
+    description: アカウントが特定のMPTの残高を保持することを許可します。
 labels:
  - Multi-Purpose Token, MPT
 ---

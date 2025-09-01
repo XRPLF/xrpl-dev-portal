@@ -1,8 +1,6 @@
 ---
-html: xchainaddaccountcreateattestation.html
-parent: transaction-types.html
 seo:
-    description: The `XChainAddAccountCreateAttestation` transaction provides an attestation from a witness server that a `XChainAccountCreateCommit` transaction occurred on the other chain.
+    description: Provide an attestation that an XChainAccountCreateCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
   - Interoperability
 status: not_enabled
@@ -77,5 +75,9 @@ Any account can submit signatures.
 | `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
 | `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
+
+## See Also
+
+- [XChainOwnedCreateAccountClaimID entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

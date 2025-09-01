@@ -1,6 +1,6 @@
 ---
 seo:
-    description: A `bridge` object represents a single cross-chain bridge that connects and enables value to move efficiently between two blockchains. 
+    description: A single cross-chain bridge that connects and enables value to move efficiently between two blockchains. 
 labels:
   - Interoperability
 status: not_enabled

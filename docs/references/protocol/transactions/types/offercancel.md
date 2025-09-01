@@ -1,8 +1,6 @@
 ---
-html: offercancel.html
-parent: transaction-types.html
 seo:
-    description: Withdraw a currency-exchange order.
+    description: Withdraw an offer to trade in the decentralized exchange.
 labels:
   - Decentralized Exchange
 ---

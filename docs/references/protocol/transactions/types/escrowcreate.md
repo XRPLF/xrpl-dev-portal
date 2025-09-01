@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Create an escrowed XRP payment.
+    description: Escrow funds, which can be released to the destination after a specific time or condition.
 labels:
   - Escrow
 ---
@@ -57,5 +57,9 @@ It is not possible to create a conditional escrow with no expiration, but you ca
 {% admonition type="info" name="Note" %}
 Before the [fix1571 amendment][] became enabled on 2018-06-19, it was possible to create an escrow with `CancelAfter` only. These escrows could be finished by anyone at any time before the specified expiration.
 {% /admonition %}
+
+## See Also
+
+- [Escrow entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

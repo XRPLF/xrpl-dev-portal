@@ -1,6 +1,4 @@
 ---
-html: signerlistset.html
-parent: transaction-types.html
 seo:
     description: Add, remove, or modify an account's multi-signing list.
 labels:
@@ -63,5 +61,9 @@ You can create, update, or remove a signer list using the master key, regular ke
 You cannot remove the last method of signing transactions from an account. If an account's master key is disabled (the account has the [`lsfDisableMaster` flag](../../ledger-data/ledger-entry-types/accountroot.md#accountroot-flags) enabled) and the account does not have a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) configured, then you cannot delete the signer list from the account. Instead, the transaction fails with the error [`tecNO_ALTERNATIVE_KEY`](../transaction-results/tec-codes.md).
 
 Creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](../../ledger-data/ledger-entry-types/signerlist.md). Lists that were created before the [MultiSignReserve amendment][] became enabled do not have this flag and have a higher [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). You can decrease the owner reserve for these lists by replacing the list with the same list. For more information, see [SignerList Flags](../../ledger-data/ledger-entry-types/signerlist.md#signerlist-flags).
+
+## See Also
+
+- [SignerList entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
