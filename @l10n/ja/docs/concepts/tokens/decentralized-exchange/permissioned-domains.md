@@ -36,4 +36,4 @@ _([PermissionedDomains amendment][]が必要です {% not-enabled /%})_
 - 単一資産Vaultと貸付プロトコル
 - 許可型DEX
 
-{% raw-partial file="/docs/_snippets/common-links.md" /%}
+{% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
