@@ -1521,44 +1521,80 @@ html.light {
   }
 
   .token-video-container {
-    flex-wrap: wrap;
     padding: 104px 64px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* Center the video and text */
     gap: 48px;
-
+    max-width: 1200px;
+    margin: 0 auto;
+    .__button-container{
+      margin-top: 16px;
+    }
     .token-video {
       width: 50%;
-      /* Adjust width to keep it balanced with the text */
       max-width: 602px;
       height: 372px;
-
-      @include media-breakpoint-down(md) {
-        width: 100%;
-      }
     }
 
     .token-video-text-container {
-      @include media-breakpoint-down(md) {
-        width: 100%;
-      }
-
       max-width: 520px;
       width: 50%;
-      /* Adjust width to keep it balanced with the video */
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       text-align: left;
-      /* Ensure text is aligned correctly */
       gap: 24px;
-      color: #E0E0E1;
-      font-family: "Work Sans";
-      font-size: 24px;
-      line-height: 32px;
+
+      p {
+        color: var(--black-black-10-gray-200, #E0E0E1);
+        font-family: "Work Sans";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 1145px) {
+      flex-direction: column;
+      gap: 40px;
+      padding: 80px 40px;
+      max-width: 800px;
+      
+      .token-video {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+      }
+      
+      .token-video-text-container {
+        width: 100%;
+        max-width: 100%;
+        align-items: flex-start;
+        text-align: left;
+        
+        p {
+          font-size: 22px;
+          line-height: 30px;
+        }
+      }
+    }
+
+    @media (max-width: 767px) {
+      padding: 60px 20px;
+      gap: 32px;
+      max-width: 100%;
+      
+      .token-video-text-container {
+        p {
+          font-size: 18px;
+          line-height: 26px;
+        }
+      }
     }
   }
 
@@ -1583,6 +1619,7 @@ html.light {
       font-style: normal;
       font-weight: 700;
       line-height: 38px;
+      max-width: 780px;
       /* 118.75% */
     }
 
@@ -1606,18 +1643,45 @@ html.light {
 
 
     .benefits-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 40px;
       width: 100%;
       max-width: 1136px;
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: 1399px) {
+      .benefits-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 1145px) {
       .section-title {
         font-size: 28px;
         line-height: 34px;
+      }
+      
+      .benefits-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+      
+      .benefit-card {
+        padding: 24px;
+        min-height: 280px;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .benefits-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .benefit-card {
+        padding: 20px;
+        min-height: 240px;
       }
     }
 
@@ -1627,9 +1691,8 @@ html.light {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      padding: 40px;
-      height: 310px;
-      width: 352px;
+      padding: 32px;
+      min-height: 332px;
     }
 
     .benefit-icon {
@@ -1686,7 +1749,7 @@ html.light {
 }
 
 .upcoming-events__title {
-  max-width: 620px;
+  max-width: 630px;
   align-self: stretch;
   color: #fff;
   font: 700 32px/38px Work Sans, -apple-system, Roboto, Helvetica, sans-serif;
@@ -2023,10 +2086,6 @@ html.light {
   padding: 100px 40px;
 }
 
-.card-description {
-  min-height: 96px;
-}
-
 // Developer Resources Section - Clean, responsive styles with high specificity
 .developer-resources-section {
   .bottom-cards-section.bug-bounty.section-padding {
@@ -2071,6 +2130,20 @@ html.light {
         flex: none !important;
       }
       
+      // Single card layout styles
+      &.single-card {
+        max-height: 288px !important;
+        @media (max-width: 768px) {
+          max-height: 328px !important;
+        }
+        @media (min-width: 768px) {
+          
+          flex: 1 1 100% !important;
+          max-width: 100% !important;
+          min-width: 100% !important;
+        }
+      }
+      
       .card-content {
         display: flex;
         flex-direction: column;
@@ -2079,7 +2152,7 @@ html.light {
         .card-description {
           flex-grow: 1;
           margin-bottom: 24px;
-          
+          max-width: 560px;
           @media (max-width: 767px) {
             margin-bottom: 20px;
           }
@@ -2101,6 +2174,42 @@ html.light {
             }
           }
         }
+      }
+    }
+  }
+  
+  // Single card layout - remove gap and control spacing precisely
+  &.single-card .bottom-cards-section.bug-bounty.section-padding {
+    gap: 0 !important;
+  }
+  
+  // Single card layout - background image full height and spacing
+  .com-card.single-card {
+    .bottom-right-img.bug-bounty-card-bg-2 {
+      height: 714px !important;
+      width: auto !important;
+      object-fit: cover !important;
+      object-position: right bottom !important;
+    }
+    
+    .card-content {
+      gap: 0 !important;
+      
+      .card-title {
+        margin-bottom: 24px !important;
+        margin-top: 0 !important;
+      }
+      
+      .card-description {
+        margin-bottom: 24px !important;
+        margin-top: 0 !important;
+        flex-grow: 0 !important;
+        padding: 0 !important;
+      }
+      
+      .card-links {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
       }
     }
   }

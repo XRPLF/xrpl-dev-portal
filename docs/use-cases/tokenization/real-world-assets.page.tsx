@@ -112,7 +112,6 @@ const features = [
     title: "Cross-chain Interoperability",
     link: "https://docs.xrplevm.org/docs/axelar/intro-to-axelar/",
   },
-  
 ];
 const featuresToken = [
   {
@@ -147,9 +146,7 @@ function FeatureCard({ title, description }) {
   return (
     <article className="feature-card">
       <header className="feature-header">
-        <h2 className="feature-title">
-          {translate(title)}
-        </h2>
+        <h2 className="feature-title">{translate(title)}</h2>
       </header>
       <p className="feature-description">{translate(description)}</p>
     </article>
@@ -160,31 +157,29 @@ function RwaTokenizationFeatures() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
-    <section className="rwa-tokenization">
-      <div className="container max-w-1150">
-        <header className="rwa-header">
-          <h2 className="rwa-title">
-            {translate("Key Features for Asset Tokenization and DeFi Development")}
-          </h2>
-        </header>
-        <div className="feature-grid">
-          {featuresToken.map((feature, index) => (
-            <FeatureCard key={index} {...feature} />
-          ))}
-        </div>
-        <div className="cta-container">
-          <Link
-            to="/docs/concepts/tokens/decentralized-exchange/autobridging"
-            className="btn btn-primary small-100 auto-bridge"
-          >
-            {translate("Learn About Auto-bridging")}
-          </Link>
-          <Link
-            to="/docs/concepts/tokens/fungible-tokens/paths"
-            className="btn btn-link"
-          >
-            {translate("Explore Pathfinding")}
-          </Link>
+    <section className="token-features-section">
+      <div className="rwa-tokenization">
+        <div className="container max-w-1150">
+          <header className="rwa-header">
+            <h2 className="rwa-title">
+              {translate(
+                "Defining Features on XRPL"
+              )}
+            </h2>
+          </header>
+          <div className="feature-grid">
+            {featuresToken.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+          <div className="cta-container">
+            <Link
+              to="/docs/concepts/tokens/decentralized-exchange/autobridging"
+              className="btn btn-primary small-100 auto-bridge"
+            >
+              {translate("Explore Trading on XRPL")}
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -197,11 +192,11 @@ export function FeatureItem({ title, link }) {
   return (
     <li className="feature-item">
       <Link to={link} target="_blank">
-      <div className="feature-item__content">
-        <span className="feature-item__title">{translate(title)}</span>
-        <span className="right-arrow-item"> </span>
-      </div>
-      <div className="feature-item__divider"></div>
+        <div className="feature-item__content">
+          <span className="feature-item__title">{translate(title)}</span>
+          <span className="right-arrow-item"> </span>
+        </div>
+        <div className="feature-item__divider"></div>
       </Link>
     </li>
   );
@@ -211,36 +206,38 @@ function DeveloperTools() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
-    <section className="developer-tools">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <header className="developer-tools__header">
-              <h2 className="developer-tools__title">
-                {translate("Developer Tools & APIs")}
-              </h2>
-              <p className="developer-tools__description">
-                {translate(
-                  "Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset:"
-                )}
-              </p>
-            </header>
-            <ul className="developer-tools__list">
-              {features.map((feature, index) => (
-                <FeatureItem
-                  key={index}
-                  link={feature.link}
-                  title={feature.title}
-                />
-              ))}
-            </ul>
-          </div>
-          <div className="col-lg-6 m-h-300">
-            <div
-              className="developer-tools__image"
-              role="img"
-              aria-label="Developer tools illustration"
-            ></div>
+    <section className="token-developer-tools-section">
+      <div className="developer-tools">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6">
+              <header className="developer-tools__header">
+                <h2 className="developer-tools__title">
+                  {translate("Developer Tools & APIs")}
+                </h2>
+                <p className="developer-tools__description">
+                  {translate(
+                    "Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset:"
+                  )}
+                </p>
+              </header>
+              <ul className="developer-tools__list">
+                {features.map((feature, index) => (
+                  <FeatureItem
+                    key={index}
+                    link={feature.link}
+                    title={feature.title}
+                  />
+                ))}
+              </ul>
+            </div>
+            <div className="col-lg-6 m-h-300">
+              <div
+                className="developer-tools__image"
+                role="img"
+                aria-label="Developer tools illustration"
+              ></div>
+            </div>
           </div>
         </div>
       </div>
@@ -263,16 +260,18 @@ function UpcomingEvents() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
-    <section className="upcoming-events">
-      <h2 className="upcoming-events__title">
-        {translate(
-          "Explore the companies pioneering tokenization using XRP Ledger"
-        )}
-      </h2>
-      <div className="upcoming-events__logo-container">
-        {companies.map((company, index) => (
-          <CompanyLogo key={index} {...company} />
-        ))}
+    <section className="token-events-wrapper">
+      <div className="upcoming-events">
+        <h2 className="upcoming-events__title">
+          {translate(
+            "Trusted by Leaders in Real-World Asset Tokenization"
+          )}
+        </h2>
+        <div className="upcoming-events__logo-container">
+          {companies.map((company, index) => (
+            <CompanyLogo key={index} {...company} />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -291,10 +290,9 @@ const marketIntegrationData = [
         <Link to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
           Automated Market Makers (AMM)
         </Link>{" "}
-        and onchain 24/7 order books, providing a developer-friendly
-        environment to create{" "}
-        <Link to="/docs/use-cases/defi">DeFi solutions</Link> for traditional
-        finance applications.
+        and onchain 24/7 order books, providing a developer-friendly environment
+        to create <Link to="/docs/use-cases/defi">DeFi solutions</Link> for
+        traditional finance applications.
       </>
     ),
   },
@@ -346,6 +344,45 @@ function TokenUtilitySection() {
   );
 }
 
+function TokenVideoSection() {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+  return (
+    <section className="token-video-container">
+      <div className="token-video">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/ZZ2KZTEJECg"
+          title="Generate and Send MPTs"
+          frameBorder="0"
+        ></iframe>
+      </div>
+      <div className="token-video-text-container">
+        <p>
+          {translate(
+            "Issue, manage, and trade real-world assets without needing to build smart contracts."
+          )}
+        </p>
+        <p>
+          {translate(
+            "XRP Ledger's built-in functionality and compliance-enabling features allow asset tokenization without additional layers of complexity."
+          )}
+        </p>
+        <div className="d-lg-block small-100 __button-container">
+          <Link
+            className="btn btn-primary"
+            target="_blank"
+            to="#"
+          >
+            {translate("Download White Paper")}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const BenefitCard = ({ iconClass, title, description }) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
@@ -358,76 +395,11 @@ const BenefitCard = ({ iconClass, title, description }) => {
   );
 };
 
-export default function RwaTokenization() {
+function TokenHeroSection() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  
-  const developerResourcesCards = [
-    {
-      title: "Developer Resources",
-      description: (
-        <>
-          {translate("use-cases.rwa.dev-resources.p1", "Easily integrate with ")}
-          <Link
-            target="_blank"
-            to="/docs/tutorials/public-servers"
-          >
-            {translate("use-cases.rwa.dev-resources.p2", "existing infrastructure ")}
-          </Link>
-          {translate(
-            "use-cases.rwa.dev-resources.p3", 
-            "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
-          )}
-        </>
-      ),
-      links: [
-        {
-          text: "Apply for XRPL Grants",
-          url: "https://xrplgrants.org/"
-        },
-        {
-          text: "Talk to a Dev Advocate", 
-          url: "https://twitter.com/RippleDevRel"
-        }
-      ]
-    },
-    {
-      title: "Learn & Stay Updated",
-      description: "Stay ahead of the curve with the latest developments in RWA tokenization on the XRP Ledger by joining the developer Discord and signing up for the XRPL Community Newsletter.",
-      links: [
-        {
-          text: "Join the Developer Discord",
-          url: "https://discord.gg/sfX3ERAMjH"
-        },
-        {
-          text: "Sign up for the Newsletter",
-          url: "https://xrplresources.org/subscribe"
-        }
-      ]
-    }
-  ];
-  
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.id = 'video-schema'
-    script.type = 'application/ld+json';
-    script.innerHTML = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "VideoObject",
-      "name": "Generate and Send MPTs",
-      "description": "Use the Account Configurator to create an Issuing account. Use the MPT Generator to create a Multi-purpose Token. Send the MPT from the Issuing account to any account that authorizes receipt of the MPT.",
-      "thumbnailUrl": "https://i.ytimg.com/vi_webp/ZZ2KZTEJECg/sddefault.webp",
-      "uploadDate": "2025-04-11",
-      "embedUrl": "https://www.youtube.com/embed/ZZ2KZTEJECg"
-    });
-    document.head.appendChild(script);
-    // Remove the script from the head when the component unmounts
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
   return (
-    <div className="page-rwa-tokenization">
+    <section className="token-hero-section">
       <div className="position-relative d-none-sm">
         <img
           alt="orange waves"
@@ -437,9 +409,7 @@ export default function RwaTokenization() {
       </div>
       <div className="token-title-container">
         <h1 className="token-title">
-          {translate(
-            "Real-World Asset (RWA) Tokenization on the XRP Ledger"
-          )}
+          {translate("Real-World Asset (RWA) Tokenization")}
         </h1>
         <div className="d-lg-block small-100 ">
           <Link
@@ -451,68 +421,125 @@ export default function RwaTokenization() {
           </Link>
         </div>
       </div>
-      <div className="token-video-container">
-        <div className="token-video">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/ZZ2KZTEJECg"
-            title="Generate and Send MPTs"
-            frameBorder="0"
-          ></iframe>
-        </div>
-        <div className="token-video-text-container">
-          <p>
-            {translate(
-              "Issue, manage, and trade real-world assets without needing to build smart contracts."
-            )}
-          </p>
-          <p>
-            {translate(
-              "XRP Ledger's built-in functionality and compliance-enabling features allow asset tokenization without additional layers of complexity."
-            )}
-          </p>
-        </div>
-      </div>
+    </section>
+  );
+}
 
-      <div className="token-cards-wrapper">
-        <div className="token-cards-container">
-          <div>
-            <h2 className="cards-title-token">
-              {translate(
-                "Why Financial Developers Choose XRPL as an RWA Tokenization Platform"
-              )}
-            </h2>
-          </div>
-          <div className="benefits-section">
-            <div className="benefits-container">
-              {benefitsData.map((benefit, index) => (
-                <BenefitCard key={index} {...benefit} />
-              ))}
-            </div>
-          </div>
-          <div className="d-lg-block small-100">
-            <Link
-              className="btn btn-primary btn-arrow-out"
-              target="_blank"
-              to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
-            >
-              {translate("Start Building Now")}
-            </Link>
+function TokenBenefitsSection() {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+  return (
+    <section className="token-cards-wrapper">
+      <div className="token-cards-container">
+        <div>
+          <h2 className="cards-title-token">
+            {translate(
+              "Why Financial Developers Choose XRPL as an RWA Tokenization Platform"
+            )}
+          </h2>
+        </div>
+        <div className="benefits-section">
+          <div className="benefits-container">
+            {benefitsData.map((benefit, index) => (
+              <BenefitCard key={index} {...benefit} />
+            ))}
           </div>
         </div>
+        <div className="d-lg-block small-100">
+          <Link
+            className="btn btn-primary btn-arrow-out"
+            target="_blank"
+            to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+          >
+            {translate("Start Building Now")}
+          </Link>
+        </div>
       </div>
-      <div className="token-events-wrapper">
-        <UpcomingEvents />
-      </div>
+    </section>
+  );
+}
+
+export default function RwaTokenization() {
+  const developerResourcesCards = [
+    // {
+    //   title: "Developer Resources",
+    //   description: (
+    //     <>
+    //       {translate(
+    //         "use-cases.rwa.dev-resources.p1",
+    //         "Easily integrate with "
+    //       )}
+    //       <Link target="_blank" to="/docs/tutorials/public-servers">
+    //         {translate(
+    //           "use-cases.rwa.dev-resources.p2",
+    //           "existing infrastructure "
+    //         )}
+    //       </Link>
+    //       {translate(
+    //         "use-cases.rwa.dev-resources.p3",
+    //         "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
+    //       )}
+    //     </>
+    //   ),
+    //   links: [
+    //     {
+    //       text: "Apply for XRPL Grants",
+    //       url: "https://xrplgrants.org/",
+    //     },
+    //     {
+    //       text: "Talk to a Dev Advocate",
+    //       url: "https://twitter.com/RippleDevRel",
+    //     },
+    //   ],
+    // },
+    {
+      title: "Learn & Stay Updated",
+      description:
+        "Stay ahead of the curve with the latest developments in RWA tokenization on the XRP Ledger by joining the developer Discord and signing up for the XRPL Community Newsletter.",
+      links: [
+        {
+          text: "Join the Developer Discord",
+          url: "https://discord.gg/sfX3ERAMjH",
+        },
+        {
+          text: "Sign up for the Newsletter",
+          url: "https://xrplresources.org/subscribe",
+        },
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.id = "video-schema";
+    script.type = "application/ld+json";
+    script.innerHTML = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: "Generate and Send MPTs",
+      description:
+        "Use the Account Configurator to create an Issuing account. Use the MPT Generator to create a Multi-purpose Token. Send the MPT from the Issuing account to any account that authorizes receipt of the MPT.",
+      thumbnailUrl: "https://i.ytimg.com/vi_webp/ZZ2KZTEJECg/sddefault.webp",
+      uploadDate: "2025-04-11",
+      embedUrl: "https://www.youtube.com/embed/ZZ2KZTEJECg",
+    });
+    document.head.appendChild(script);
+    // Remove the script from the head when the component unmounts
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+  return (
+    <main className="page-rwa-tokenization">
+      <TokenHeroSection />
+      <TokenBenefitsSection />
+      <TokenVideoSection />
+
+      <UpcomingEvents />
       <TokenUtilitySection />
-      <div className="token-developer-tools-section">
-        <DeveloperTools />
-      </div>
-      <div className="token-features-section">
-        <RwaTokenizationFeatures />
-      </div>
+      <DeveloperTools />
+      <RwaTokenizationFeatures />
       <DeveloperResourcesSection cards={developerResourcesCards} />
-    </div>
+    </main>
   );
 }
