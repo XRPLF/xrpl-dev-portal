@@ -714,7 +714,7 @@ Fixes two bugs in Automated Market Maker (AMM) transaction processing:
 | Amendment    | fixAMMv1_3 |
 |:-------------|:-----------|
 | Amendment ID | 7CA70A7674A26FA517412858659EBC7EDEEF7D2D608824464E6FDEFD06854E14 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -807,7 +807,7 @@ Fixes two bugs relating to the handling of NFT transfer fees and trust lines:
 | Amendment    | fixEnforceNFTokenTrustlineV2 |
 |:-------------|:-----------------------------|
 | Amendment ID | B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1052,7 +1052,7 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | Amendment    | fixPayChanCancelAfter |
 |:-------------|:----------------------|
 | Amendment ID | D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
