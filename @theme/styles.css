@@ -11,147 +11,148 @@ ul.nav.navbar-nav {
   flex-grow: 1;
 }
 
-:root {
+:root, :root.dark {
   --navbar-height: 80px;
 
   /* XRPL color palette; match to styles/_colors.scss
     Some colors don't have a 10 equivalent so 9 is repeated.
-
-    Note, at present these variables are mostly overridden by
-    styled-components variables which are in reverse order, so
-    we can't actually use these variables as-is.
+    
+    These are in reverse order of the ones in styles/_colors.scss
+    so that they correspond to the same-named variables provided by
+    styled-components as part of Redocly.
   */
+
   /* Redocly doesn't have vars for grays by default  */
-  --color-gray-1: #F5F5F7;
-  --color-gray-2: #E0E0E1;
-  --color-gray-3: #C1C1C2;
-  --color-gray-4: #A2A2A4;
+  --color-gray-1: #111112;
+  --color-gray-2: #232325;
+  --color-gray-3: #343437;
+  --color-gray-4: #454549;
   --color-gray-5: #838386;
-  --color-gray-6: #454549;
-  --color-gray-7: #343437;
-  --color-gray-8: #232325;
-  --color-gray-9: #111112;
+  --color-gray-6: #A2A2A4;
+  --color-gray-7: #C1C1C2;
+  --color-gray-8: #E0E0E1;
+  --color-gray-9: #F5F5F7;
   --color-gray-10: var(--color-gray-9);
 
   /* color-red = XRPL $magenta */
-  --color-red-1: #FFE5F2;
-  --color-red-2: #FFB2D8;
-  --color-red-3: #FF80BF;
-  --color-red-4: #FF4BA4;
-  --color-red-5: #FF198B;
-  --color-red-6: #E50071;
-  --color-red-7: #B20058;
-  --color-red-8: #80003F;
-  --color-red-9: #4C0026;
-  --color-red-10: #4C0026;
+  --color-red-1: #4C0026;
+  --color-red-2: #4C0026;
+  --color-red-3: #80003F;
+  --color-red-4: #B20058;
+  --color-red-5: #E50071;
+  --color-red-6: #FF198B;
+  --color-red-7: #FF4BA4;
+  --color-red-8: #FF80BF;
+  --color-red-9: #FFB2D8;
+  --color-red-10: #FFE5F2;
 
   /* color-green = XRPL $green */
-  --color-green-1: #D6FAE7;
-  --color-green-2: #ADF5CE;
-  --color-green-3: #84F0B6;
-  --color-green-4: #5BEB9D;
-  --color-green-5: #32E685;
-  --color-green-6: #2DCF78;
-  --color-green-7: #28B86A;
-  --color-green-8: #1E8A50;
-  --color-green-9: #145C35;
-  --color-green-10: #0A2E1B;
+  --color-green-1: #0A2E1B;
+  --color-green-2: #145C35;
+  --color-green-3: #1E8A50;
+  --color-green-4: #28B86A;
+  --color-green-5: #2DCF78;
+  --color-green-6: #32E685;
+  --color-green-7: #5BEB9D;
+  --color-green-8: #84F0B6;
+  --color-green-9: #ADF5CE;
+  --color-green-10: #D6FAE7;
 
   /* color-gold = XRPL $yellow */
-  --color-gold-1: #FEFFE5;
-  --color-gold-2: #FDFFB2;
-  --color-gold-3: #FCFF80;
-  --color-gold-4: #FBFF4C;
-  --color-gold-5: #FAFF19;
-  --color-gold-6: #E0E500;
-  --color-gold-7: #AEB200;
-  --color-gold-8: #7D8000;
-  --color-gold-9: #4B4C00;
-  --color-gold-10: #4B4C00;
+  --color-gold-1: #4B4C00;
+  --color-gold-2: #4B4C00;
+  --color-gold-3: #7D8000;
+  --color-gold-4: #AEB200;
+  --color-gold-5: #E0E500;
+  --color-gold-6: #FAFF19;
+  --color-gold-7: #FBFF4C;
+  --color-gold-8: #FCFF80;
+  --color-gold-9: #FDFFB2;
+  --color-gold-10: #FEFFE5;
 
   /* color-blue = XRPL $blue */
-  --color-blue-1: #E5F5FF;
-  --color-blue-2: #B2E0FF;
-  --color-blue-3: #80CCFF;
-  --color-blue-4: #4BB7FF;
-  --color-blue-5: #19A3FF;
-  --color-blue-6: #008AE5;
-  --color-blue-7: #006BB2;
-  --color-blue-8: #004D80;
-  --color-blue-9: #002E4C;
-  --color-blue-10: #001133;
+  --color-blue-1: #001133;
+  --color-blue-2: #002E4C;
+  --color-blue-3: #004D80;
+  --color-blue-4: #006BB2;
+  --color-blue-5: #008AE5;
+  --color-blue-6: #19A3FF;
+  --color-blue-7: #4BB7FF;
+  --color-blue-8: #80CCFF;
+  --color-blue-9: #B2E0FF;
+  --color-blue-10: #E5F5FF;
 
   /* color purple = XRPL $blue-purple */
-  --color-purple-1: #F0E5FF;
-  --color-purple-2: #D2B2FF;
-  --color-purple-3: #B480FF;
-  --color-purple-4: #9A52FF;
-  --color-purple-5: #7919FF;
-  --color-purple-6: #5F00E5;
-  --color-purple-7: #4A00B2;
-  --color-purple-8: #350080;
-  --color-purple-9: #20004C;
-  --color-purple-10: #20004C;
+  --color-purple-1: #20004C;
+  --color-purple-2: #20004C;
+  --color-purple-3: #350080;
+  --color-purple-4: #4A00B2;
+  --color-purple-5: #5F00E5;
+  --color-purple-6: #7919FF;
+  --color-purple-7: #9A52FF;
+  --color-purple-8: #B480FF;
+  --color-purple-9: #D2B2FF;
+  --color-purple-10: #F0E5FF;
 
   /* color-magenta = XRPL $red-purple */
-  --color-magenta-1: #FBE5FF;
-  --color-magenta-2: #F2B2FF;
-  --color-magenta-3: #EA80FF;
-  --color-magenta-4: #E24CFF;
-  --color-magenta-5: #D919FF;
-  --color-magenta-6: #C000E5;
-  --color-magenta-7: #9500B2;
-  --color-magenta-8: #6B0080;
-  --color-magenta-9: #40004C;
-  --color-magenta-10: #40004C;
+  --color-magenta-1: #40004C;
+  --color-magenta-2: #40004C;
+  --color-magenta-3: #6B0080;
+  --color-magenta-4: #9500B2;
+  --color-magenta-5: #C000E5;
+  --color-magenta-6: #D919FF;
+  --color-magenta-7: #E24CFF;
+  --color-magenta-8: #EA80FF;
+  --color-magenta-9: #F2B2FF;
+  --color-magenta-10: #FBE5FF;
 
-  /* XRPL doesn't have a color-cyan equivalent
-  --color-cyan-1: #e6fffb;
-  --color-cyan-2: #b5f5ec;
-  --color-cyan-3: #87e8de;
-  --color-cyan-4: #5cdbd3;
-  --color-cyan-5: #36cfc9;
-  --color-cyan-6: #13c2c2;
-  --color-cyan-7: #08979c;
-  --color-cyan-8: #006d75;
-  --color-cyan-9: #00474f;
-  --color-cyan-10: #002329; */
+  /* XRPL doesn't have a color-cyan equivalent*
+  --color-cyan-1: #002329;*
+  --color-cyan-2: #00474f;*
+  --color-cyan-3: #006d75;*
+  --color-cyan-4: #08979c;*
+  --color-cyan-5: #13c2c2;*
+  --color-cyan-6: #36cfc9;*
+  --color-cyan-7: #5cdbd3;*
+  --color-cyan-8: #87e8de;*
+  --color-cyan-9: #b5f5ec;*
+  --color-cyan-10: #e6fffb; */
 
   /* color-yellow = XRPL $yellow */
-  --color-yellow-1: #FEFFE5;
-  --color-yellow-2: #FDFFB2;
-  --color-yellow-3: #FCFF80;
-  --color-yellow-4: #FBFF4C;
-  --color-yellow-5: #FAFF19;
-  --color-yellow-6: #E0E500;
-  --color-yellow-7: #AEB200;
-  --color-yellow-8: #7D8000;
-  --color-yellow-9: #4B4C00;
-  --color-yellow-10: #4B4C00;
+  --color-yellow-1: #4B4C00;
+  --color-yellow-2: #4B4C00;
+  --color-yellow-3: #7D8000;
+  --color-yellow-4: #AEB200;
+  --color-yellow-5: #E0E500;
+  --color-yellow-6: #FAFF19;
+  --color-yellow-7: #FBFF4C;
+  --color-yellow-8: #FCFF80;
+  --color-yellow-9: #FDFFB2;
+  --color-yellow-10: #FEFFE5;
 
-  /* XRPL doesn't have a color-lime equivalent
-  --color-lime-1: #fcffe6;
-  --color-lime-2: #f4ffb8;
-  --color-lime-3: #eaff8f;
-  --color-lime-4: #d3f261;
-  --color-lime-5: #bae637;
-  --color-lime-6: #a0d911;
-  --color-lime-7: #7cb305;
-  --color-lime-8: #5b8c00;
-  --color-lime-9: #3f6600;
-  --color-lime-10: #254000; */
+  /* XRPL doesn't have a color-lime equivalent*
+  --color-lime-1: #254000;*
+  --color-lime-2: #3f6600;*
+  --color-lime-3: #5b8c00;*
+  --color-lime-4: #7cb305;*
+  --color-lime-5: #a0d911;*
+  --color-lime-6: #bae637;*
+  --color-lime-7: #d3f261;*
+  --color-lime-8: #eaff8f;*
+  --color-lime-9: #f4ffb8;*
+  --color-lime-10: #fcffe6; */
 
-  /* XRPL doesn't have a color-geekblue equivalent
-  --color-geekblue-1: #f0f5ff;
-  --color-geekblue-2: #d6e4ff;
-  --color-geekblue-3: #adc6ff;
-  --color-geekblue-4: #85a5ff;
-  --color-geekblue-5: #597ef7;
-  --color-geekblue-6: #2f54eb;
-  --color-geekblue-7: #1d39c4;
-  --color-geekblue-8: #10239e;
-  --color-geekblue-9: #061178;
-  --color-geekblue-10: #030852; */
+  /* XRPL doesn't have a color-geekblue equivalent*
+  --color-geekblue-1: #030852;*
+  --color-geekblue-2: #061178;*
+  --color-geekblue-3: #10239e;*
+  --color-geekblue-4: #1d39c4;*
+  --color-geekblue-5: #2f54eb;*
+  --color-geekblue-6: #597ef7;*
+  --color-geekblue-7: #85a5ff;*
+  --color-geekblue-8: #adc6ff;*
+  --color-geekblue-9: #d6e4ff;*
+  --color-geekblue-10: #f0f5ff; */
 
   /* Dark mode colors by default */
   --color-primary-bg: var(--color-gray-10);
@@ -169,7 +170,7 @@ ul.nav.navbar-nav {
   --link-decoration: underline;
   --link-font-weight: var(--font-weight-regular);
 
-  --link-color-primary-hover: #9a52ff;
+  --link-color-primary-hover: var(--color-purple-7)
   --link-decoration-hover: underline;
 
   --link-color-visited: #fff;
@@ -183,11 +184,11 @@ ul.nav.navbar-nav {
   --heading-font-family: var(--font-family-base);
 
   --inline-code-font-family: "Space Mono", monospace;
-  --inline-code-text-color: #5beb9d; /* $green-400 */
-  --inline-code-bg-color: #0a2e1b; /* $green-1000 */
+  --inline-code-text-color: var(--color-green-7);
+  --inline-code-bg-color: var(--color-green-1);
   --inline-code-border-radius: 0;
 
-  --heading-anchor-color: #9a52ff;
+  --heading-anchor-color: var(--color-purple-7);
   --h1-font-size: 3rem;
   --h2-font-size: 2.5rem;
   --h3-font-size: 2.125rem;
@@ -196,6 +197,10 @@ ul.nav.navbar-nav {
   --h4-line-height: 2rem;
   --h5-font-size: 1.25rem;
   --h5-line-height: 1.5rem;
+
+  --menu-container-padding-top: 0;
+  --md-content-padding: 4px 0;
+  --toc-offset-top: 2px;
 
   --sidebar-border-color: transparent;
   --sidebar-bg-color: transparent;
@@ -229,7 +234,16 @@ ul.nav.navbar-nav {
   --md-tabs-content-padding: 0;
   --md-tabs-tab-wrapper-padding: 0;
 
-  --text-color-helper: #A2A2A4;
+  --text-color-helper: var(--color-gray-6);
+  --color-text-primary: white;
+  --button-color-hover: white;
+
+  --text-color-secondary: var(--color-gray-9); /* inherited for adominition text color */
+  --admonition-success-bg-color: var(--color-green-2);
+  --admonition-info-bg-color: var(--color-blue-4);
+  /* none of the yellow shades in the XRPL palette work well with "warning"
+     admonitions, so leave it the default */
+  --admonition-danger-bg-color: var(--color-red-3);
 }
 
 :root.light {
@@ -241,10 +255,6 @@ ul.nav.navbar-nav {
   --code-block-controls-border: none;
   --md-tabs-active-tab-bg-color: #C1C1C2;
 
-  --code-block-tokens-function-color: #B23C00;
-  --code-block-tokens-operator-color: #000;
-  --code-block-tokens-comment-color: #343437;
-  --code-block-tokens-string-color: #145C35;
   --inline-code-bg-color: #E0E0E1;
 
   --search-trigger-bg-color: #E0E0E1;
@@ -259,24 +269,48 @@ ul.nav.navbar-nav {
   --bg-color-raised: var(--color-gray-2);
   --button-content-color-link: #000;
 
-  --md-table-header-bg-color: var(--color-gray-2);
-  --md-table-border-color: var(--color-gray-2);
+  --md-table-header-bg-color: var(--color-gray-8);
+  --md-table-border-color: var(--color-gray-8);
 
   --bg-color: var(--color-gray-2);
-  --code-panel-bg-color: var(--color-gray-3);
+  --code-panel-bg-color: var(--color-blue-7);
+  --layer-color-hover: var(--color-gray-9);
+
+  --code-block-text-color: var(--color-gray-1);
+  --code-block-tokens-comment-color: var(--color-gray-4);
+  --code-block-tokens-constant-color: var(--color-gray-1);
+  --code-block-tokens-function-color: var(--color-red-4);
+  --code-block-tokens-keyword-color: var(--color-magenta-5);
+  --code-block-tokens-operator-color: black;
+  --code-block-tokens-string-color: var(--color-green-3);
 
   --bg-raised-gradient: "";
-  --text-color-helper: var(--color-gray-7);
+  --text-color-helper: var(--color-gray-4);
+  --button-color-hover: black;
+
+  --admonition-success-bg-color: var(--color-green-9);
+  --admonition-info-bg-color: var(--color-blue-9);
+  --admonition-warning-bg-color: var(--color-yellow-9);
+  --admonition-danger-bg-color: var(--color-red-9);
 }
 
 :root.dark {
   --link-color-primary: #fff;
   --link-color-visited: #fff;
-  --link-color-primary-hover: #9a52ff;
+  --link-color-primary-hover: var(--color-purple-7);
 
-  --search-highlight-text-color: #4BB7FF; /* color-blue-4 */
+  --navbar-bg-color: var(--color-gray-2); /* controls search box bg */
+  --modal-bg: var(--color-gray-2); /* controls search modal bg */
+  --search-highlight-text-color: var(--color-blue-7);
 
-  --code-block-tokens-comment-color: #C1C1C2; /* color-gray-3 */
+  --code-block-text-color: var(--color-gray-9);
+  --code-block-tokens-comment-color: var(--color-gray-7);
+  --code-block-tokens-constant-color: var(--color-gray-9);
+  --code-block-tokens-keyword-color: var(--color-magenta-8);
+  --code-block-tokens-string-color: var(--color-blue-8);
+
+  --code-panel-bg-color: var(--color-blue-3);
+  --layer-color-hover: var(--color-gray-3);
 }
 
 :root .form-control-plaintext {
