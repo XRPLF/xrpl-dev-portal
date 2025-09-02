@@ -117,7 +117,7 @@ const featuresToken = [
   {
     title: "Proven Open-Source Technology",
     description:
-      "With over 3.3B transactions processed, XRP Ledger has been a trusted, battle-tested blockchain for over a decade, supported by a global developer community committed to financial innovation. ",
+      "With over 3.9B transactions processed, XRP Ledger has been a trusted, battle-tested blockchain for over a decade, supported by a global developer community committed to financial innovation. ",
     number: "01",
   },
   {
