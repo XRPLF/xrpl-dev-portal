@@ -20,7 +20,7 @@ const benefitsData = [
   },
   {
     iconClass: "access",
-    title: "On-Chain Metadata",
+    title: "Onchain Metadata",
     description:
       "Easily store key asset information or link to off-chain data using simple APIs giving token holders more transparency and functionality.",
   },
@@ -133,7 +133,7 @@ const featuresToken = [
     number: "03",
   },
   {
-    title: "Pathfinding & Auto-Bridging for Liquidity",
+    title: "Optimal Liquidity Pathways",
     description:
       "Streamline cross-currency transactions and trading as XRP Ledger’s embedded trading features automatically identify the most efficient routes to enhance liquidity issued tokens and XRP. ",
     number: "04",
@@ -171,14 +171,6 @@ function RwaTokenizationFeatures() {
             {featuresToken.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
-          </div>
-          <div className="cta-container">
-            <Link
-              to="/docs/concepts/tokens/decentralized-exchange/autobridging"
-              className="btn btn-primary small-100 auto-bridge"
-            >
-              {translate("Explore Trading on XRPL")}
-            </Link>
           </div>
         </div>
       </div>
@@ -283,15 +275,15 @@ const marketIntegrationData = [
     description: (
       <>
         Utilize XRP Ledger's native{" "}
-        <Link to="/docs/concepts/tokens/decentralized-exchange">
+        <Link target="_blank" to="/docs/concepts/tokens/decentralized-exchange">
           decentralized exchange (DEX)
         </Link>{" "}
         with integrated{" "}
-        <Link to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
+        <Link target="_blank" to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
           Automated Market Makers (AMM)
         </Link>{" "}
         and onchain 24/7 order books, providing a developer-friendly environment
-        to create <Link to="/docs/use-cases/defi">DeFi solutions</Link> for
+        to create <Link target="_blank" to="/docs/use-cases/defi">DeFi solutions</Link> for
         traditional finance applications.
       </>
     ),
@@ -301,7 +293,7 @@ const marketIntegrationData = [
     description: (
       <>
         Issuers can enable{" "}
-        <Link to="/docs/concepts/payment-types/escrow">
+        <Link target="_blank" to="/docs/concepts/payment-types/escrow">
           escrow functionality
         </Link>{" "}
         to lock tokens and facilitate secure, conditional transfers of assets
@@ -445,15 +437,6 @@ function TokenBenefitsSection() {
             ))}
           </div>
         </div>
-        <div className="d-lg-block small-100">
-          <Link
-            className="btn btn-primary btn-arrow-out"
-            target="_blank"
-            to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
-          >
-            {translate("Start Building Now")}
-          </Link>
-        </div>
       </div>
     </section>
   );
@@ -461,37 +444,6 @@ function TokenBenefitsSection() {
 
 export default function RwaTokenization() {
   const developerResourcesCards = [
-    // {
-    //   title: "Developer Resources",
-    //   description: (
-    //     <>
-    //       {translate(
-    //         "use-cases.rwa.dev-resources.p1",
-    //         "Easily integrate with "
-    //       )}
-    //       <Link target="_blank" to="/docs/tutorials/public-servers">
-    //         {translate(
-    //           "use-cases.rwa.dev-resources.p2",
-    //           "existing infrastructure "
-    //         )}
-    //       </Link>
-    //       {translate(
-    //         "use-cases.rwa.dev-resources.p3",
-    //         "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
-    //       )}
-    //     </>
-    //   ),
-    //   links: [
-    //     {
-    //       text: "Apply for XRPL Grants",
-    //       url: "https://xrplgrants.org/",
-    //     },
-    //     {
-    //       text: "Talk to a Dev Advocate",
-    //       url: "https://twitter.com/RippleDevRel",
-    //     },
-    //   ],
-    // },
     {
       title: "Learn & Stay Updated",
       description:
