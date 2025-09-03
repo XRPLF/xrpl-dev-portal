@@ -166,18 +166,18 @@ ul.nav.navbar-nav {
   --color-primary-text: #161087;
   --color-primary-text-active: #0d086e;*/
 
-  --link-color-primary: #fff;
+  --link-color-primary: white;
   --link-decoration: underline;
   --link-font-weight: var(--font-weight-regular);
 
   --link-color-primary-hover: var(--color-purple-7)
   --link-decoration-hover: underline;
 
-  --link-color-visited: #fff;
+  --link-color-visited: white;
   --link-visited-decoration: underline;
 
   --bg-color: var(--color-gray-10);
-  --bg-color-raised: var(--color-gray-8);
+  --bg-color-raised: var(--color-gray-2);
   --background-color: var(--bg-color);
 
   --font-family-base: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -208,8 +208,8 @@ ul.nav.navbar-nav {
 
   --border-radius-md: 4px;
 
-  --code-block-bg-color: #232325;
-  --code-block-controls-bg-color: #232325;
+  --code-block-bg-color: var(--color-gray-2);
+  --code-block-controls-bg-color: var(--color-gray-2);
   --code-block-controls-border: none;
   --code-block-padding: 0 2rem 1.5rem 2rem;
 
@@ -223,13 +223,14 @@ ul.nav.navbar-nav {
   --footer-border-color: transparent;
   --footer-title-font-weight: 600;
   --footer-title-font-size: 1rem;
-  --footer-title-text-color: #A2A2A4;
+  --footer-title-text-color: var(--color-gray-6);
 
   --menu-item-padding-horizontal: 0px;
 
   --md-list-left-padding: 40px;
-  --md-table-header-bg-color: #32343E;
-  --md-table-border-color: #32343E;
+  --md-list-margin: 0 0 20px 0;
+  --md-table-header-bg-color: var(--color-gray-3);
+  --md-table-border-color: var(--color-gray-3);
 
   --md-tabs-content-padding: 0;
   --md-tabs-tab-wrapper-padding: 0;
@@ -247,32 +248,33 @@ ul.nav.navbar-nav {
 }
 
 :root.light {
-  --link-color-primary-hover: #4A00B2;
-  --link-color-visited: #000;
-  --text-color-secondary: #000;
-  --code-block-bg-color: #E0E0E1;
-  --code-block-controls-bg-color: #E0E0E1;
+  --link-color-primary-hover: var(--color-purple-4);
+  --link-color-visited: black;
+  --text-color-secondary: black;
+  --code-block-bg-color: var(--color-gray-8);
+  --code-block-controls-bg-color: var(--color-gray-8);
   --code-block-controls-border: none;
-  --md-tabs-active-tab-bg-color: #C1C1C2;
+  --md-tabs-active-tab-bg-color: var(--color-gray-7);
 
-  --inline-code-bg-color: #E0E0E1;
+  --inline-code-bg-color: var(--color-gray-8);
 
-  --search-trigger-bg-color: #E0E0E1;
-  --search-trigger-color: #838386;
+  --search-trigger-bg-color: var(--color-gray-8);
+  --search-trigger-color: var(--color-gray-5);
+  --modal-bg-color: var(--color-gray-9);
 
-  --language-picker-border-color: #C1C1C2;
-  --language-picker-background-color: #E0E0E1;
-  --select-list-bg-color: #E0E0E1;
+  --language-picker-border-color: var(--color-gray-7);
+  --language-picker-background-color: var(--color-gray-8);
+  --select-list-bg-color: var(--color-gray-8);
 
-  --footer-title-text-color: #000;
-  --bg-color: var(--color-gray-1);
-  --bg-color-raised: var(--color-gray-2);
-  --button-content-color-link: #000;
+  --footer-title-text-color: black;
+  --bg-color: var(--color-gray-9);
+  --bg-color-raised: var(--color-gray-8);
+  --button-content-color-link: black;
 
   --md-table-header-bg-color: var(--color-gray-8);
   --md-table-border-color: var(--color-gray-8);
 
-  --bg-color: var(--color-gray-2);
+  --bg-color: var(--color-gray-8);
   --code-panel-bg-color: var(--color-blue-7);
   --layer-color-hover: var(--color-gray-9);
 
@@ -295,12 +297,12 @@ ul.nav.navbar-nav {
 }
 
 :root.dark {
-  --link-color-primary: #fff;
-  --link-color-visited: #fff;
+  --link-color-primary: white;
+  --link-color-visited: white;
   --link-color-primary-hover: var(--color-purple-7);
 
   --navbar-bg-color: var(--color-gray-2); /* controls search box bg */
-  --modal-bg: var(--color-gray-2); /* controls search modal bg */
+  --modal-bg-color: var(--color-gray-2); /* controls search modal bg */
   --search-highlight-text-color: var(--color-blue-7);
 
   --code-block-text-color: var(--color-gray-9);
@@ -311,6 +313,7 @@ ul.nav.navbar-nav {
 
   --code-panel-bg-color: var(--color-blue-3);
   --layer-color-hover: var(--color-gray-3);
+  --bg-raised-gradient: "";
 }
 
 :root .form-control-plaintext {
