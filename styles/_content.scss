@@ -64,11 +64,19 @@
 
   /* Some list items contain <p> tags, some don't. These styles make sure both
    kinds are spaced consistently. */
-  li {
-    margin: 6px;
-    margin-top: 24px;
+  > ul, > ol, .children-display {
+    li {
+      margin: 6px;
+      margin-top: 24px;
+    }
+    li:first-child {
+      margin-top: 16px;
+    }
+    li p {
+      margin: 0;
+    }
   }
-  li p {
+  [data-component-name="Markdoc/Tabs/Tabs"] li {
     margin: 0;
   }
 
