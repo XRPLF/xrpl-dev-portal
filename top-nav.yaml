@@ -72,7 +72,7 @@
     - group: Use Cases
       groupTranslationKey: topnav.docs.use-cases
       items:
-        - page: ./docs/use-cases/payments/index.md
+        - page: ./docs/use-cases/payments/index.page.tsx
           label: Payments
           labelTranslationKey: topnav.docs.payments
         - page: ./docs/use-cases/tokenization/index.page.tsx

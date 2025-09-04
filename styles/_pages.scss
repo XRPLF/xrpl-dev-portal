@@ -89,6 +89,33 @@
   }
 }
 
+// Payments page specific embedded payments icons
+#embedded-payments-list {
+  #digital-wallets {
+    content: url("../img/uses/payments/digital-wallet.png");
+  }
+  
+  #cross-border-remittance {
+    content: url("../img/uses/payments/cross-border.png");
+  }
+  
+  #regulated-foreign-exchange {
+    content: url("../img/uses/payments/regulated.png");
+  }
+  
+  #merchant-settlement {
+    content: url("../img/uses/payments/merchant-settlement.png");
+  }
+  
+  #b2b-payment-rails {
+    content: url("../img/uses/payments/b2b-payment.png");
+  }
+  
+  #compliance-first-payment-acceptance {
+    content: url("../img/uses/payments/compliance.png");
+  }
+}
+
 .cta {
   position: absolute;
 
@@ -1442,8 +1469,14 @@ html.light {
     }
   }
 }
+.page-rwa-tokenization{
+  .developer-tools {
+    padding:180px 0px;
+  }
+}
 
-.page-rwa-tokenization {
+.page-rwa-tokenization,
+.use-case-payments {
 
   .right-arrow-item::after {
     display: inline-block;
@@ -1737,10 +1770,11 @@ html.light {
     height: 100%;
   }
 
-.token-developer-tools-section {
+/* Developer tools styles - shared between tokenization and payments pages */
+.token-developer-tools-section,
+.payments-integration-section {
   .developer-tools {
     font-family: 'Work Sans', sans-serif;
-    padding: 180px 0;
     color: #fff;
   }
 
@@ -1787,7 +1821,6 @@ html.light {
     /* Moves the arrow 4px to the right on hover */
   }
 
-
   .feature-item__title {
     font-size: 16px;
     color: #e0e0e1;
@@ -1805,6 +1838,8 @@ html.light {
     opacity: 0.3;
     background-color: #fff;
   }
+
+
 
   .developer-tools__image {
     width: 110%;
@@ -1992,83 +2027,79 @@ html.light {
   min-height: 96px;
 }
 
-// Developer Resources section responsive improvements
-.token-dev-resources-section {
-  .bottom-cards-section.bug-bounty {
+// Developer Resources Section - Clean, responsive styles with high specificity
+.developer-resources-section {
+  .bottom-cards-section.bug-bounty.section-padding {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 40px !important;
-    justify-content: center !important;
-    max-width: 1280px;
-    margin: 100px auto;
-    padding: 0 40px;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0px;
+    justify-content: center;
     
-    @media (max-width: 1199px) {
-      gap: 32px;
-      margin: 80px auto;
-    }
-    
-    @media (max-width: 991px) {
-      gap: 24px;
-      padding: 0 20px;
-      margin: 60px auto;
+    @media (min-width: 768px) {
+      gap: 40px;
+      justify-content: space-between;
     }
     
     @media (max-width: 767px) {
       flex-direction: column;
-      align-items: center;
-      gap: 24px;
+      gap: 20px;
+      margin: 40px auto;
+      padding: 0px;
     }
     
+    // High specificity to override contribute styles
     .com-card {
-      flex: 1 1 calc(50% - 20px) !important;
-      min-width: 300px !important;
-      max-width: 600px !important;
-      width: auto !important;
-      height: auto !important;
-      max-height: none !important;
+      flex: 1 !important;
+      position: relative;
       margin: 0 !important;
       
-      @media (max-width: 1199px) {
-        flex: 1 1 100% !important;
-        max-width: 600px !important;
-      }
-      
-      @media (max-width: 991px) {
-        max-width: 500px !important;
+      @media (min-width: 768px) {
+        flex: 1 1 calc(50% - 20px) !important;
+        max-width: calc(50% - 20px) !important;
+        min-width: calc(50% - 20px) !important;
+        width: auto !important;
       }
       
       @media (max-width: 767px) {
-        min-width: 100% !important;
+        width: 100% !important;
         max-width: 100% !important;
-        padding: 32px !important;
+        min-width: 100% !important;
+        margin-bottom: 0 !important;
+        flex: none !important;
       }
       
       .card-content {
-        height: 100%;
         display: flex;
         flex-direction: column;
+        height: 100%;
         
         .card-description {
           flex-grow: 1;
-          min-height: auto;
           margin-bottom: 24px;
+          
+          @media (max-width: 767px) {
+            margin-bottom: 20px;
+          }
         }
         
         .card-links {
           margin-top: auto;
-        }
-      }
-      
-      // Override background image positioning for responsive
-      .top-right-img,
-      .bottom-right-img {
-        @media (max-width: 991px) {
-          height: 250px;
-        }
-        
-        @media (max-width: 767px) {
-          height: 200px;
+          
+          @media (max-width: 767px) {
+            margin-top: 16px;
+            
+            .com-card-link {
+              display: block;
+              margin-bottom: 12px;
+              
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
         }
       }
     }

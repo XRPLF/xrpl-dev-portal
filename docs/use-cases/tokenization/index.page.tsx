@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { NavList } from "shared/components/nav-list";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { AdvantagesSection } from "shared/components/advantages-section";
+import { ProjectCards } from "shared/components/project-cards";
 
 export const frontmatter = {
   seo: {
@@ -34,18 +36,7 @@ const useCases = [
   },
 ];
 
-const SecurityAdvantageCard = (securityAdvantageContents) => {
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
-  return securityAdvantageContents.map((content) => (
-    <div key={content.subtitle}>
-      <Link to={content.href}><h5 className="card-subhead">{translate(content.subtitle)}:</h5></Link>
-      <div className="card-text">
-        {translate(content.description)}
-      </div>
-    </div>
-  ))
-}
+
 
 const securityAdvantages = [
   {
@@ -184,70 +175,7 @@ const articles = [
   // TODO: Add more articles that aren't focused on price speculation
 ];
 
-const FeaturedProjects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentIndex < projects.length - 3) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const ProjectCard = ({ project, index }) => (
-    <a
-      className={`col card float-up-on-hover ${
-        index % 2 === 0 ? "even" : "odd"
-      }`}
-      target="_blank"
-      href={project.url}
-    >
-      <div className="project-logo d-flex justify-content-center align-items-center mb-8">
-        <img className={project.id} alt={project.label} />
-      </div>
-      <div className="project-name h5 align-self-center">{project.label}</div>
-    </a>
-  );
-
-  return (
-    <div className="featured-projects">
-      <div className="project-cards-container card-grid card-grid-3xN">
-        <ProjectCard project={projects[currentIndex]} index={currentIndex} />
-        <ProjectCard
-          project={projects[currentIndex + 1]}
-          index={currentIndex + 1}
-        />
-        <ProjectCard
-          project={projects[currentIndex + 2]}
-          index={currentIndex + 2}
-        />
-      </div>
-      <div className="arrow-wrapper d-flex justify-content-center mt-16">
-        <button
-          className={`arrow-button prev ${
-            currentIndex > 0 ? "hover-color" : ""
-          }`}
-          onClick={handlePrev}
-        >
-          <img alt="left arrow" />
-        </button>
-        <button
-          className={`arrow-button next ${
-            currentIndex < projects.length - 3 ? "hover-color" : ""
-          }`}
-          onClick={handleNext}
-        >
-          <img alt="right arrow" />
-        </button>
-      </div>
-    </div>
-  );
-};
 
 export default function Tokenization() {
   const modalRef = useRef(null);
@@ -303,29 +231,12 @@ export default function Tokenization() {
           </div>
         </div>
       </section>
-      <section className="container-new py-20">
-        <div className="d-flex flex-column-reverse">
-          <p className="mb-16">
-            {translate(
-              "Check out the security features you can tap into right from the chain without the hassle of piecing together smart contracts."
-            )}
-          </p>
-          <h4 className="eyebrow mb-8">{translate("Security advantages")}</h4>
-        </div>
-        <div
-          className="security-card-grid nav card-grid"
-          id="security-features"
-        >
-          {securityAdvantages.map((advantage) => (
-            <div className="security-card" key={advantage.id}>
-              <div className="card-body p-6">
-                <h4 className="card-title h6">{translate(advantage.title)}</h4>
-                {SecurityAdvantageCard(advantage.contents)}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <AdvantagesSection
+        title="Security advantages"
+        description="Check out the security features you can tap into right from the chain without the hassle of piecing together smart contracts."
+        advantages={securityAdvantages}
+        useLinks
+      />
 
       <section className="container-new py-20">
         <div className="d-flex flex-column-reverse">
@@ -343,16 +254,11 @@ export default function Tokenization() {
           ))}
         </div>
       </section>
-      <section className="container-new py-20">
-        <div className="d-flex flex-column-reverse">
-          <h4 className="eyebrow mb-16">
-            {translate("Featured real world projects")}
-          </h4>
-        </div>
-        <div className="project-cards">
-          <FeaturedProjects />
-        </div>
-      </section>
+      <ProjectCards
+        title="Featured real world projects"
+        projects={projects}
+        showCarousel={true}
+      />
 
       <section className="container-new py-20">
         <div className="d-flex flex-column-reverse">
