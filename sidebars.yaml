@@ -247,6 +247,13 @@
             - page: docs/tutorials/python/compliance/index.md
               items:
                 - page: docs/tutorials/python/compliance/verify-credential.md
+        - page: docs/tutorials/go/index.md
+          expanded: false
+          items:
+            - page: docs/tutorials/go/build-apps/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/go/build-apps/get-started.md
         - page: docs/tutorials/java/index.md
           expanded: false
           items:
@@ -470,6 +477,9 @@
               external: true
             - label: Ruby Client Library
               href: https://www.rubydoc.info/gems/xrbp
+              external: true
+            - label: Go Client Library
+              href: https://pkg.go.dev/github.com/Peersyst/xrpl-go
               external: true
         - page: docs/references/http-websocket-apis/index.md
           expanded: false
