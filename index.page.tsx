@@ -1,5 +1,6 @@
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
+import { BenefitsSection } from 'shared/components/benefits-section';
 
 export const frontmatter = {
   seo: {
@@ -147,23 +148,12 @@ export default function Index() {
             </p>
           </div>
         </section>
-        <section className="container-new py-26">
-          <div className="d-flex flex-column-reverse col-sm-8 p-0">
-            <h3 className="h4 h2-sm">{translate('Why developers choose the XRP Ledger')}</h3>
-            <h6 className="eyebrow mb-3">{translate('Benefits')}</h6>
-          </div>
-          <ul className="mt-10 card-grid card-grid-3xN" id="benefits-list">
-            {cards.map(card => (
-              <li className="col ls-none" key={card.id}>
-                <img id={card.id} alt={card.title + ' Icon'} />
-                <h4 className="mt-3 mb-0 h5">{translate(card.title)}</h4>
-                <p className="mt-6-until-sm mt-3 mb-0">
-                  {typeof card.description === 'string' ? translate(card.description) : card.description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <BenefitsSection
+          eyebrow="Benefits"
+          title="Why developers choose the XRP Ledger"
+          cards={cards}
+          showImages={true}
+        />
         <section className="container-new py-26">
           <div className="d-flex flex-column-reverse col-sm-8 p-0">
             <h3 className="h4 h2-sm">
