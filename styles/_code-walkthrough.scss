@@ -9,6 +9,19 @@
         max-width: calc(100% - 96px);
     }
 
+    // Wide screens - increase available space
+    @media screen and (min-width: 1600px) {
+        [data-component-name="Markdoc/CodeWalkthrough/CodeFilters"] {
+            margin-left: 96px;
+            max-width: calc(100% - 96px);
+        }
+
+        [class*="CodeWalkthrough__ContentWrapper"] {
+            margin-left: 96px;
+            max-width: calc(100% - 200px);
+        }
+    }
+
     .tag-size-large {
         margin: 0 var(--spacing-xs);
 
