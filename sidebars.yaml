@@ -648,6 +648,7 @@
             - page: docs/infrastructure/installation/update-rippled-automatically-on-linux.md
             - page: docs/infrastructure/installation/update-rippled-manually-on-rhel.md
             - page: docs/infrastructure/installation/update-rippled-manually-on-ubuntu.md
+            - page: docs/infrastructure/installation/downgrade-rippled.md
             - page: docs/infrastructure/installation/build-on-linux-mac-windows.md
             - page: docs/infrastructure/installation/capacity-planning.md
         - page: docs/infrastructure/configuration/index.md
