@@ -10,6 +10,7 @@
     - group: '2025'
       expanded: false
       items:
+        - page: 2025/rippled-2.5.1.md
         - page: 2025/rippled-2.6.0.md
         - page: 2025/coinpayments-xrpl-case-study-payment-processing.md
         - page: 2025/clio-2.5.0.md
