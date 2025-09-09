@@ -12,8 +12,12 @@ markdown:
 ---
 # How XRP Ledger’s MPT Standard Helps FortStock Unlock Trillions in Idle Inventory
 
+Learn how FortStock is using the XRP Ledger’s Multi-Purpose Token (MPT) standard to turn idle warehouse inventory into usable collateral.
+
 Global trade moves over $25 trillion in goods every year. Containers cross oceans, fill warehouses, and wait silently at distribution centers. Yet much of this physical inventory remains frozen in financial terms -  unleveraged, undocumented in capital markets, and untapped as collateral.
+
 This reality is more than a quirk of trade logistics. It creates a multi-trillion-dollar inefficiency. According to the ADB and WTO, the global trade finance gap now stands between $2.5 and $5 trillion - a hole that disproportionately impacts the very economies most dependent on trade: emerging markets.
+
 At FortStock, we believe there is a better way. We’re building an infrastructure where warehouse receipts become programmable financial assets that can be used as collateral for short-term credit. But to do that, we needed more than just tokenization. We needed a token format that could carry real-world logic - not just data. That’s where the XRP Ledger’s [Multi-Purpose Token (MPT) standard](/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token) comes in.
 
 ## Why MPT Is the Missing Link Between Physical Assets and On-Chain Finance
@@ -44,7 +48,7 @@ These are test transactions, but the data is live, open, and verifiable by anyon
 
 * Transfer to another wallet to simulate collateralization
 
-   ![Transfer to simulate collateralization](/blog/img/dev-reflections-how-dia-oracle-works.png)
+   ![Transfer to simulate collateralization](/blog/img/fortstock-mpt-simulate-collateralization.png)
 
 ## The Capital Flows That Follow
 
