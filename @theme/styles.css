@@ -11,6 +11,13 @@ ul.nav.navbar-nav {
   flex-grow: 1;
 }
 
+.clio-only-notice {
+	background-color: var(--admonition-info-bg-color);
+	margin-left: var(--spacing-sm);
+	padding: var(--spacing-xs);
+	border-radius: var(--border-radius);
+}
+
 :root, :root.dark {
   --navbar-height: 80px;
 

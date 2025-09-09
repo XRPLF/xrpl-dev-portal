@@ -1,6 +1,6 @@
+import React, { useRef, useState } from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
-import { useRef, useState } from 'react';
 import { Modal, ModalClipboardBtn, ModalCloseBtn } from '../Modal';
 
 interface CurlButtonProps {
@@ -12,36 +12,18 @@ interface CurlProps extends CurlButtonProps{
   closeCurlModal: () => void;
 }
 
-const getCurl = function (currentBody, selectedConnection: Connection) {
-  let body;
-  try {
-    // change WS to JSON-RPC syntax
-    const params = JSON.parse(currentBody);
-    delete params.id;
-    const method = params.command;
-    delete params.command;
-    const body_json = { method: method, params: [params] };
-    body = JSON.stringify(body_json, null, null);
-  } catch (e) {
-    alert("Can't provide curl format of invalid JSON syntax");
-    return;
-  }
-
-  const server = selectedConnection.jsonrpc_url;
-
-  return `curl -H 'Content-Type: application/json' -d '${body}' ${server}`;
-};
-
 export const CurlModal: React.FC<CurlProps> = ({
-                                                 currentBody,
-                                                 selectedConnection,
+                                                  closeCurlModal,
+                                                  currentBody,
+                                                  selectedConnection,
                                                }) => {
-  const curlRef = useRef(null);
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
+  const curlRef = useRef(null);
+
   const footer = <>
     <ModalClipboardBtn textareaRef={curlRef} />
-    <ModalCloseBtn onClick={() => {}} />
+    <ModalCloseBtn onClick={closeCurlModal} />
   </>
 
   return (
@@ -63,16 +45,16 @@ export const CurlModal: React.FC<CurlProps> = ({
             className="form-control"
             rows={8}
             ref={curlRef}
-          >
-            {getCurl(currentBody, selectedConnection)}
-          </textarea>
+            value={getCurl(selectedConnection, currentBody)}
+            onChange={() => {}}
+          />
         </div>
       </form>
     </Modal>
   );
 };
 
-export const CurlButton = ({selectedConnection, currentBody}: CurlButtonProps) => {
+export function CurlButton ({selectedConnection, currentBody}: CurlButtonProps) {
   const [showCurlModal, setShowCurlModal] = useState(false);
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
@@ -87,10 +69,32 @@ export const CurlButton = ({selectedConnection, currentBody}: CurlButtonProps) =
       >
         <i className="fa fa-terminal"></i>
       </button>
-      {showCurlModal && <CurlModal
-        closeCurlModal={() => setShowCurlModal(false)}
-        currentBody={currentBody}
-        selectedConnection={selectedConnection}
-      />}
+      {showCurlModal && (
+        <CurlModal
+          closeCurlModal={() => setShowCurlModal(false)}
+          currentBody={currentBody}
+          selectedConnection={selectedConnection}
+        />
+      )}
   </>
+}
+
+function getCurl(selectedConnection: Connection, currentBody) {
+  let body : string;
+  try {
+    // change WS to JSON-RPC syntax
+    const params = JSON.parse(currentBody);
+    delete params.id;
+    const method = params.command;
+    delete params.command;
+    const body_json = { method: method, params: [params] };
+    body = JSON.stringify(body_json, null, null);
+  } catch (e) {
+    alert("Can't provide curl format of invalid JSON syntax");
+    return;
+  }
+
+  const server = selectedConnection.jsonrpc_url;
+
+  return `curl -H 'Content-Type: application/json' -d '${body}' ${server}`;
 }

@@ -23,6 +23,7 @@ import { CommandGroup, CommandMethod } from './components/websocket-api/types';
 import commandList from "./components/websocket-api/data/command-list.json";
 import connections from "./components/websocket-api/data/connections.json";
 import XRPLoader from '../../@theme/components/XRPLoader';
+import { ClioOnlyNotice } from './components/websocket-api/ClioOnly';
 
 export const frontmatter = {
   seo: {
@@ -208,10 +209,12 @@ export function WebsocketApiTool() {
               {currentMethod.description && (
                 <p
                   className="blurb"
-                  dangerouslySetInnerHTML={{
-                    __html: currentMethod.description,
-                  }}
-                />
+                >
+                  {currentMethod.description}
+                  {currentMethod.clio_only ? 
+                    <ClioOnlyNotice /> : ""
+                  }
+                </p>
               )}
               {currentMethod.link && (
                 <Link

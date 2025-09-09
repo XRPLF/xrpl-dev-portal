@@ -9,7 +9,7 @@ interface PermaLinkButtonProps {
 }
 
 interface PermaLinkProps extends PermaLinkButtonProps {
-  closePermalinkModal: any;
+  closePermalinkModal: () => void;
 }
 
 const PermalinkModal: React.FC<PermaLinkProps> = ({
@@ -43,6 +43,7 @@ const PermalinkModal: React.FC<PermaLinkProps> = ({
           <textarea
             id="permalink-box-1"
             className="form-control"
+            rows={8}
             ref={permalinkRef}
             value={getPermalink(selectedConnection, currentBody)}
             onChange={() => {}}
@@ -53,15 +54,8 @@ const PermalinkModal: React.FC<PermaLinkProps> = ({
   );
 };
 
-export const PermalinkButton = ({currentBody, selectedConnection}: PermaLinkButtonProps) => {
-  const [isPermalinkModalVisible, setIsPermalinkModalVisible] = useState(false);
-
-  const openPermalinkModal = () => {
-    setIsPermalinkModalVisible(true);
-  };
-  const closePermalinkModal = () => {
-    setIsPermalinkModalVisible(false);
-  };
+export function PermalinkButton ({currentBody, selectedConnection}: PermaLinkButtonProps) {
+  const [showPermalinkModal, setShowPermalinkModal] = useState(false);
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
@@ -71,13 +65,13 @@ export const PermalinkButton = ({currentBody, selectedConnection}: PermaLinkButt
       data-toggle="modal"
       data-target="#wstool-1-permalink"
       title={translate("Permalink")}
-      onClick={openPermalinkModal}
+      onClick={() => setShowPermalinkModal(true)}
     >
       <i className="fa fa-link"></i>
     </button>
-    {isPermalinkModalVisible && (
+    {showPermalinkModal && (
       <PermalinkModal
-        closePermalinkModal={closePermalinkModal}
+        closePermalinkModal={() => setShowPermalinkModal(false)}
         currentBody={currentBody}
         selectedConnection={selectedConnection}
       />
@@ -85,12 +79,12 @@ export const PermalinkButton = ({currentBody, selectedConnection}: PermaLinkButt
   </>
 }
 
-const getPermalink = (selectedConnection, currentBody) => {
+function getPermalink (selectedConnection: Connection, currentBody) {
   const startHref = window.location.origin + window.location.pathname;
   const encodedBody = encodeURIComponent(get_compressed_body(currentBody));
   const encodedServer = encodeURIComponent(selectedConnection.ws_url);
   return `${startHref}?server=${encodedServer}&req=${encodedBody}`;
-};
+}
 
 function get_compressed_body(currentBody) {
   return currentBody.replace("\n", "").trim();

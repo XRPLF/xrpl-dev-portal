@@ -3,6 +3,7 @@ import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from "@redocly/theme/components/Link/Link";
 import { slugify } from "./slugify";
 import { CommandGroup, CommandMethod } from './types';
+import { ClioOnlyIcon } from './ClioOnly';
 
 interface RightSideBarProps {
   commandList: CommandGroup[];
@@ -53,12 +54,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
                     </span>
                   )}
                   {method.clio_only && (
-                    <span
-                      className="status clio_only"
-                      title="This method is only available from the Clio server."
-                    >
-                      <i className="fa fa-exclamation-circle"></i>
-                    </span>
+                    <ClioOnlyIcon />
                   )}
                 </Link>
               </li>
