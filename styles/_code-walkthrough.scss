@@ -1,0 +1,61 @@
+#app_root article .code-walkthrough {
+    margin-right: 112px;
+    max-width: calc(100% - 112px);
+    padding-right: 0;
+    grid-template-columns: 5fr 5fr;
+
+    @media screen and (max-width: 990px) {
+        margin-right: 96px;
+        max-width: calc(100% - 96px);
+    }
+
+    // Wide screens - increase available space
+    @media screen and (min-width: 1600px) {
+        [data-component-name="Markdoc/CodeWalkthrough/CodeFilters"] {
+            margin-left: 96px;
+            max-width: calc(100% - 96px);
+        }
+
+        [class*="CodeWalkthrough__ContentWrapper"] {
+            margin-left: 96px;
+            max-width: calc(100% - 200px);
+        }
+    }
+
+    .tag-size-large {
+        margin: 0 var(--spacing-xs);
+
+        > div {
+            padding: 2px 4px;
+        }
+    }
+
+    [data-component-name="Markdoc/CodeWalkthrough/CodeFilters"] {
+        padding: var(--spacing-xs) var(--spacing-lg);
+
+        > :first-child > :first-child {
+            margin: auto;
+        }
+    }
+
+    [data-component-name="Markdoc/CodeWalkthrough/CodePanel"] {
+        top: var(--navbar-height);
+        border: 0;
+
+        [data-component-name="CodeBlock/CodeBlockContainer"] {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+
+    > :first-child > div {
+        border-radius: var(--border-radius-md);
+    }
+    [data-component-name="Markdoc/CodeWalkthrough/CodeFilters"] {
+        background-color: var(--code-panel-bg-color);
+    }
+
+    [data-line-number]::before {
+        padding-left: 0.8em;
+    }
+}
