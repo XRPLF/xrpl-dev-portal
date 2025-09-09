@@ -6,7 +6,7 @@ export function ClioOnlyIcon () {
   return (
       <span
         className="status clio_only"
-        title={translate("This method is only available from the Clio server.")}
+        title={translate("resources.dev-tools.websocket-api.clio-only-tooltip", "This method is only available from the Clio server.")}
       >
         <i className="fa fa-exclamation-circle"></i>
       </span>
@@ -20,7 +20,7 @@ export function ClioOnlyNotice() {
     <span className="clio-only-notice"
     >
       <ClioOnlyIcon />
-      {translate(" Clio only")}
+      {translate("resources.dev-tools.websocket-api.clio-only-badge", " Clio only")}
     </span>
   )
 }

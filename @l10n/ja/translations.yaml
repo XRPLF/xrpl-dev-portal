@@ -829,6 +829,9 @@ resources.dev-tools.websocket-api.curl.modal.desc.part2: を使用してこれ�
 API Methods: APIメソッド
 Methods: メソッド
 Examples: の例
+# resources/dev-tools/websocket-api/ClioOnly.tsx
+resources.dev-tools.websocket-api.clio-only-badge: Clioのみ
+resources.dev-tools.websocket-api.clio-only-tooltip: このメソッドはClioサーバーからのみ利用可能です。
 
 # resources/dev-tools/xrp-ledger-toml-checker.page.tsx
 resources.dev-tools.toml-checker.p.part1: もしあなたがXRP Ledgerバリデータを運営していたり、XRP Ledgerをビジネスで利用しているのであれば、XRP Ledgerの利用状況に関する情報を、機械読み取り可能な
