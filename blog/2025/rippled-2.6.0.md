@@ -13,7 +13,7 @@ markdown:
 ---
 # Introducing XRP Ledger version 2.6.0
 {% admonition type="danger" name="Warning" %}
-The team is tracking two active issues in rippled 2.6.0—memory usage increases and Boost library upgrade problems. It is recommend that the UNL community roll back to [version 2.5.1](./rippled-2.5.1.md). A hotfix is in development and will be shared when it becomes available.
+The team is tracking two active issues in rippled 2.6.0—memory usage increases and Boost library upgrade problems. It is recommend that the UNL community roll back to [version 2.5.1](./rippled-2.5.1.md), which includes the fix for stalled consensus rounds from this relase. The remaining 2.6.0 changes will be included in a later release, along with fixes for the issues discovered.
 {% /admonition %}
 
 Version 2.6.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds new features and bug fixes.
@@ -21,27 +21,7 @@ Version 2.6.0 of `rippled`, the reference server implementation of the XRP Ledge
 
 ## Action Required
 
-If you run an XRP Ledger server, upgrade to version 2.6.0 as soon as possible to ensure service continuity.
-
-
-## Install / Upgrade
-
-On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
-
-| Package | SHA-256 |
-|:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.6.0-1.el9.x86_64.rpm) | `efd0d61ce0906af1862eeb0691717ddc546335294dc2ce8db1d9e243d215846c` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.6.0-1_amd64.deb) | `82570dd0c36d3ce2f79902ae99c44bcfe710d619d806805a5af9d8f56b7dbea1` |
-
-For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
-
-```text
-commit 2df7dcfdebcb0cdbd030c1f4b09ac748af95659c
-Author: Michael Legleux <mlegleux@ripple.com>
-Date:   Wed Aug 27 10:25:53 2025 -0700
-
-    Set version to 2.6.0
-```
+If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll back to version [2.5.1](./rippled-2.5.1.md) to ensure service continuity.
 
 
 ## Full Changelog
