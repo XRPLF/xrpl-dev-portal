@@ -13,7 +13,7 @@ markdown:
 ---
 # Introducing XRP Ledger version 2.5.1
 
-Version 2.5.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release fixes an issue with stalled consensus rounds.
+Version 2.5.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release was rolled back from version 2.6.0 after issues were discovered, but retains an important fix for stalled consensus rounds.
 
 
 ## Action Required
@@ -22,13 +22,13 @@ If you run an XRP Ledger server, upgrade to version 2.5.1 as soon as possible to
 
 
 ## Install / Upgrade
-**TODO: Upgrade packages**
+
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.6.0-1.el9.x86_64.rpm) | `efd0d61ce0906af1862eeb0691717ddc546335294dc2ce8db1d9e243d215846c` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.6.0-1_amd64.deb) | `82570dd0c36d3ce2f79902ae99c44bcfe710d619d806805a5af9d8f56b7dbea1` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.5.1-1.el7.x86_64.rpm) | `f16da245b417d616033e8fac8190425f1f8778f61c62fd23986e2e496c4fabf4` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.5.1-1_amd64.deb) | `1d3cd06fc08911c5efd1b9a6b1b7d06f42e806e0628df9f0552c9e71daee0af6` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
