@@ -469,18 +469,6 @@
     "group": "Payment Channel Methods",
     "methods": [
       {
-        "name": "channel_authorize",
-        "description": "Creates a signature that can be used to redeem a specific amount of XRP from a payment channel.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize",
-        "body": {
-          "id": "channel_authorize_example_id1",
-          "command": "channel_authorize",
-          "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-          "secret": "s████████████████████████████",
-          "amount": "1000000"
-        }
-      },
-      {
         "name": "channel_verify",
         "description": "Checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify",
