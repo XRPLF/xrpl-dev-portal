@@ -1459,6 +1459,7 @@ main article .card-grid {
 /* Light mode battle-tested company logos */
 .use-case-payments .battle-tested-section {
   .payments-project-card {
+     background: #FFF !important;
     .project-logo img {
       &.coinpayments {
         content: url('../img/uses/lightmode/payments/coinpayments.png');
