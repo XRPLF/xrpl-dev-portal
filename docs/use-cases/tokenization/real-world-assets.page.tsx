@@ -1,6 +1,7 @@
+import React, { useEffect } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
-import { useEffect } from "react";
+import { DeveloperResourcesSection } from "shared/components/developer-resources-section";
 
 export const frontmatter = {
   seo: {
@@ -190,7 +191,7 @@ function RwaTokenizationFeatures() {
   );
 }
 
-function FeatureItem({ title, link }) {
+export function FeatureItem({ title, link }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
@@ -360,6 +361,52 @@ const BenefitCard = ({ iconClass, title, description }) => {
 export default function RwaTokenization() {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
+  
+  const developerResourcesCards = [
+    {
+      title: "Developer Resources",
+      description: (
+        <>
+          {translate("use-cases.rwa.dev-resources.p1", "Easily integrate with ")}
+          <Link
+            target="_blank"
+            to="/docs/tutorials/public-servers"
+          >
+            {translate("use-cases.rwa.dev-resources.p2", "existing infrastructure ")}
+          </Link>
+          {translate(
+            "use-cases.rwa.dev-resources.p3", 
+            "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
+          )}
+        </>
+      ),
+      links: [
+        {
+          text: "Apply for XRPL Grants",
+          url: "https://xrplgrants.org/"
+        },
+        {
+          text: "Talk to a Dev Advocate", 
+          url: "https://twitter.com/RippleDevRel"
+        }
+      ]
+    },
+    {
+      title: "Learn & Stay Updated",
+      description: "Stay ahead of the curve with the latest developments in RWA tokenization on the XRP Ledger by joining the developer Discord and signing up for the XRPL Community Newsletter.",
+      links: [
+        {
+          text: "Join the Developer Discord",
+          url: "https://discord.gg/sfX3ERAMjH"
+        },
+        {
+          text: "Sign up for the Newsletter",
+          url: "https://xrplresources.org/subscribe"
+        }
+      ]
+    }
+  ];
+  
   useEffect(() => {
     const script = document.createElement('script');
     script.id = 'video-schema'
@@ -465,80 +512,7 @@ export default function RwaTokenization() {
       <div className="token-features-section">
         <RwaTokenizationFeatures />
       </div>
-      <div className="token-dev-resources-section page-community">
-        <section className="bottom-cards-section bug-bounty section-padding">
-          <div className="com-card">
-            <img
-              className="top-right-img bug-bounty-card-bg"
-              alt="Top Right Image"
-            />
-            <div className="card-content custom-gap">
-              <h6 className="card-title">{translate("Developer Resources")}</h6>
-              <p className="card-description">
-                {translate("use-cases.rwa.dev-resources.p1", "Easily integrate with ")}
-                <Link
-                  target="_blank"
-                  to="/docs/tutorials/public-servers"
-                >
-                  {translate("use-cases.rwa.dev-resources.p2", "existing infrastructure ")}
-                </Link>
-                {translate(
-                    "use-cases.rwa.dev-resources.p3", 
-                  "and access resources to support your development journey. Fund your project with XRPL Grants or speak to our dev advocates today."
-                )}
-              </p>
-              <div className="card-links">
-                <Link
-                  className="com-card-link mt-16"
-                  target="_blank"
-                  to="https://xrplgrants.org/"
-                >
-                  {translate("Apply for XRPL Grants")}
-                </Link>
-                <Link
-                  className="com-card-link "
-                  target="_blank"
-                  to="https://twitter.com/RippleDevRel"
-                >
-                  {translate("Talk to a Dev Advocate")}
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="com-card">
-            <img
-              className="bottom-right-img bug-bounty-card-bg-2"
-              alt="Bottom Right Image"
-            />
-            <div className="card-content custom-gap">
-              <h6 className="card-title">
-                {translate("Learn & Stay Updated")}
-              </h6>
-              <p className="card-description">
-                {translate(
-                  "Stay ahead of the curve with the latest developments in RWA tokenization on the XRP Ledger by joining the developer Discord and signing up for the XRPL Community Newsletter."
-                )}
-              </p>
-              <div className="card-links">
-                <Link
-                  target="_blank"
-                  className="com-card-link mt-16"
-                  to="https://discord.gg/sfX3ERAMjH"
-                >
-                  {translate("Join the Developer Discord")}
-                </Link>
-                <Link
-                  target="_blank"
-                  className="com-card-link"
-                  to="https://xrplresources.org/subscribe"
-                >
-                  {translate("Sign up for the Newsletter")}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+      <DeveloperResourcesSection cards={developerResourcesCards} />
     </div>
   );
 }

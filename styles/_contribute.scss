@@ -1061,7 +1061,7 @@
                     font-style: normal;
                     font-weight: 600;
                     line-height: 24px;
-
+                    white-space: nowrap;
                     @include media-breakpoint-down(sm) {
                         display: block;
                         width: 100%;

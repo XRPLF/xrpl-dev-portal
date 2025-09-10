@@ -728,55 +728,7 @@ html.light {
     font-weight: 400;
   }
 
-  /* Work-around for border gradient and radius */
-  .security-card {
-    position: relative;
-    border-radius: 0.5rem;
-    background-color: transparent;
-    white-space: normal;
-    box-sizing: border-box;
-  }
 
-  .security-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(90deg, #d91aff 26.41%, #1aa4ff 100.32%);
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    z-index: -1;
-  }
-
-  .security-card p {
-    margin-bottom: 0 !important;
-  }
-
-  .security-card .h6 {
-    @include media-breakpoint-down(sm) {
-      font-size: 1.25rem;
-    }
-  }
-
-  .security-card-grid {
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-
-    @media (min-width: 1200px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
 
   .video-external-link .link-text {
     margin-left: 0.25rem;
@@ -991,4 +943,557 @@ html.light {
 body,
 .landing.page-uses {
   overflow-x: hidden;
+}
+
+.use-case-payments {
+  padding: 0px 120px;
+  @include media-breakpoint-down(lg) {
+    padding: 0px 16px;
+  }
+  &__hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 80px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 0px;
+    
+    @include media-breakpoint-down(lg) {
+      gap: 60px;
+      max-width: 942px;
+      padding: 80px 0px;
+    }
+    
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      gap: 32px;
+      max-width: 608px;
+      padding: 60px 0px;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      padding: 40px 0px;
+    }
+  }
+
+  .video-content {
+    width: 50%;
+    display: flex;
+    align-items: stretch;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      max-height: 560px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      
+      @include media-breakpoint-down(lg) {
+        min-height: 350px;
+        max-height: 450px;
+      }
+      
+      @include media-breakpoint-down(md) {
+        min-height: 300px;
+        max-height: 400px;
+      }
+      
+      @include media-breakpoint-down(sm) {
+        min-height: 250px;
+        max-height: 350px;
+      }
+    }
+    
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+  }
+
+  .text-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .eyebrow {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      
+      @include media-breakpoint-down(sm) {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 42px;
+        font-style: normal;
+        font-weight: 700;
+        
+        @include media-breakpoint-down(sm) {
+          font-size: 32px;
+        }
+      }
+
+      p {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        
+        @include media-breakpoint-down(sm) {
+          font-size: 18px;
+        }
+      }
+    }
+    
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+  }
+}
+
+/* Shared styles for AdvantagesSection component - used across multiple pages */
+.advantages-section {
+  /* Work-around for border gradient and radius */
+  .security-card {
+    position: relative;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    white-space: normal;
+    box-sizing: border-box;
+    .card-title{
+     margin-bottom: 16px;
+    }
+  }
+
+  .security-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(90deg, #d91aff 26.41%, #1aa4ff 100.32%);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    z-index: -1;
+  }
+
+  .security-card p {
+    margin-bottom: 0 !important;
+  }
+
+  .security-card .h6 {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .security-card-grid,
+  .security-card-grid-3,
+  .security-card-grid-4 {
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .security-card-grid {
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .security-card-grid-3 {
+    gap: 2.5rem; /* 40px gap for 3-column layout */
+    
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .security-card-grid-4 {
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Bullet point styles for payments page */
+  .advantages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .advantage-item {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 16px;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #E0E0E1;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+
+    .advantage-description {
+      display: block;
+      color: #E0E0E1;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px; /* 150% */
+    }
+  }
+
+  /* Card title typography for bullet version */
+  .security-card .card-title {
+    color: var(--Black-Black-0, #FFF);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%; /* 22.5px */
+  }
+}
+
+/* Specific spacing for payments page between hero and advantages sections */
+.use-case-payments .payments-advantages-spacing {
+  padding-top: 80px; /* Reduced since hero now has proper py-20 spacing */
+  padding-bottom: 20px; /* Keep standard bottom padding */
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+/* Project cards styles for payments page */
+.use-case-payments .payments-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 40px; /* 40px horizontal, 48px vertical */
+  row-gap: 48px;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+  }
+}
+
+.use-case-payments .payments-project-card {
+  min-height: 260px;
+  position: relative;
+  padding: 32px;
+  .project-description {
+    text-align: left; /* Changed from center to left */
+    
+    .first-word {
+      color: #FFF;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px; /* 150% */
+    }
+    
+    .rest-text {
+      color: var(--XRPL-Primary-White, #FFF);
+      font-family: "Work Sans";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+    }
+  }
+
+  /* Add the top border gradient for payments page */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.25rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  /* Stablecoin images */
+  .project-logo {
+    margin-Bottom: 32px;
+    img.ripple-usd {
+      content: url('../img/uses/payments/rlusd.png');
+      width: 180px;
+      height: 50px;
+    }
+    
+    img.usdc {
+      content: url('../img/uses/payments/usdc.png');
+      width: 50px;
+      height: 50px;
+    }
+    
+    img.usdb {
+      content: url('../img/uses/payments/usdb.png');
+      width: 126px;
+      height: 50px;
+    }
+    
+    img.europ {
+      content: url('../img/uses/payments/eroup.png');
+      width: 147px;
+      height: 50px;
+    }
+    
+    img.xsgd {
+      content: url('../img/uses/payments/XSGD.png');
+      width: 50px;
+      height: 50px;
+    }
+    
+    img.audd {
+      content: url('../img/uses/payments/AUDD.png');
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  /* Alternating gradients for payments page */
+  &.odd::before {
+    background: linear-gradient(90deg, #D91AFF 26.41%, #1AA4FF 100.32%);
+  }
+
+  &.even::before {
+    background: linear-gradient(90deg, #4BB7FF -0.32%, #32E685 30.61%);
+  }
+}
+
+/* Battle-tested section styles */
+.use-case-payments .battle-tested-section {
+  h4.eyebrow {
+    font-size: 28px !important;
+  }
+  
+  .payments-project-card {
+    /* Override styles for battle-tested cards */
+    min-height: 384px;
+    display: flex;
+    flex-direction: column;
+    
+    .project-logo img {
+      /* Battle-tested company logos */
+      
+      &.coinpayments {
+        content: url('../img/uses/payments/coinpayments.png');
+        width: 99px;
+        height: 60px;
+      }
+      
+      &.ripple {
+        content: url('../img/uses/payments/ripple-white.png');
+        width: 100px;
+        height: 26px;
+        margin-bottom: 11px;
+        margin-top: 19px;
+      }
+      
+      &.friipay {
+        content: url('../img/uses/payments/friipay.png');
+        width: 60px;
+        height: 60px; 
+      }
+    }
+    
+    .project-description {
+      flex-grow: 1;
+    }
+    
+    .project-button {
+      margin-top: auto;
+      padding-top: 32px;
+      display: flex;
+      justify-content: center;
+      
+      .battle-tested-arrow {
+        color: #9A52FF;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        background: none !important;
+        
+        &::after {
+          position: relative;
+          top: -1px;
+          display: inline-block;
+          content: url('../img/icons/arrow-right-purple.svg');
+          margin-left: 8px;
+          transition: transform 0.3s ease-out;
+          width: 16px;
+          height: 16px;
+        }
+        
+        &:hover {
+          text-decoration: none;
+          background: none !important;
+          
+          &::after {
+            transform: translateX(4px);
+          }
+        }
+        
+        &:focus {
+          background: none !important;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+/* Payments integration section styling */
+.use-case-payments .payments-integration-section {
+  .developer-tools {
+    padding: 120px 0; /* Slightly less padding than default 180px */
+    max-width: 1280px;
+    margin: 0 auto;
+    
+    @include media-breakpoint-down(lg) {
+      max-width: 942px;
+    }
+    
+    @include media-breakpoint-down(md) {
+      max-width: 608px;
+    }
+    
+    .container{
+      padding: 0;
+    }
+    .feature-item__title{
+      font-size: 16px;
+      font-weight: 400;
+      color: #FFF
+    }
+  }
+  
+  .developer-tools__header {
+    margin-bottom: 80px;
+    
+    &.text-center {
+      text-align: center;
+    }
+  }
+  
+  .developer-tools__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: left;
+  }
+  
+  /* Two-column layout with 48px gap */
+  .row {
+    gap: 48px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    
+    @media (max-width: 991px) {
+      flex-direction: column;
+      gap: 32px;
+    }
+    
+    .col-lg-6 {
+      padding: 0;
+      flex: 1;
+      
+      @media (max-width: 991px) {
+        flex: none;
+        width: 100%;
+      }
+    }
+  }
+
+  /* Integration column styling */
+  .integration-column {
+    padding: 0px;
+    
+    .integration-column__title {
+      color: #FFF;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 0px;
+    }
+    
+    .integration-column__subtitle {
+      color: #E0E0E1;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 150%;
+      margin-bottom: 32px;
+    }
+    
+    .developer-tools__list {
+      margin-top: 0;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 991px) {
+    .developer-tools {
+      padding: 80px 0;
+    }
+    
+    .developer-tools__header {
+      margin-bottom: 60px;
+    }
+    
+    .integration-column {
+      padding: 0;
+      margin-bottom: 40px;
+    }
+    
+    .col-lg-6:last-child .integration-column {
+      margin-bottom: 0;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .developer-tools {
+      padding: 60px 20px;
+    }
+    
+    .developer-tools__header {
+      margin-bottom: 40px;
+    }
+    
+    .developer-tools__title {
+      font-size: 24px;
+      text-align: center;
+    }
+  }
 }

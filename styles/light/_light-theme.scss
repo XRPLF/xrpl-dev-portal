@@ -1367,3 +1367,113 @@ main article .card-grid {
   box-shadow: $light-box-shadow;  
 }
  */
+.use-case-payments {
+  .payments-integration-section{
+  .integration-column__title{
+    color: var(--XRPL-Primary-Black, #000);
+  }
+  .integration-column__subtitle{
+    color: var(--XRPL-Black-Black-80, #232325);
+  }
+  .feature-item__title{
+    color: var(--XRPL-Primary-Black, #000);
+  }
+  .feature-item__divider{
+    background-color: #000;
+  }
+}
+
+  .payments-project-card {
+   background: #FFF;
+   box-shadow: none;
+   .first-word{
+    color: var(--XRPL-Black-Black-80, #232325);
+   }
+   .rest-text{
+    color: var(--XRPL-Black-Black-80, #232325);
+   }
+   
+   /* Light mode payment logos */
+   .project-logo {
+     img.ripple-usd {
+       content: url('../img/uses/lightmode/payments/rlusd.png');
+     }
+     
+     img.usdc {
+       content: url('../img/uses/lightmode/payments/usdc.png');
+     }
+     
+     img.usdb {
+       content: url('../img/uses/lightmode/payments/usdb.png');
+     }
+     
+     img.europ {
+       content: url('../img/uses/lightmode/payments/erop.png');
+     }
+     
+     img.xsgd {
+       content: url('../img/uses/lightmode/payments/xsgd.png');
+     }
+     
+     img.audd {
+       content: url('../img/uses/lightmode/payments/audd.png');
+     }
+   }
+  }
+  .advantages-section {
+    .advantage-item {
+      strong{
+        color: var(--XRPL-Black-Black-80, #232325);
+      }
+    }
+  }
+}
+
+/* Light mode embedded payments icons */
+#embedded-payments-list {
+  #digital-wallets {
+    content: url("../img/uses/lightmode/payments/digital-wallet.png");
+  }
+  
+  #cross-border-remittance {
+    content: url("../img/uses/lightmode/payments/cross-border.png");
+  }
+  
+  #regulated-foreign-exchange {
+    content: url("../img/uses/lightmode/payments/regulated.png");
+  }
+  
+  #merchant-settlement {
+    content: url("../img/uses/lightmode/payments/merchant-settlement.png");
+  }
+  
+  #b2b-payment-rails {
+    content: url("../img/uses/lightmode/payments/b2b-payment.png");
+  }
+  
+  #compliance-first-payment-acceptance {
+    content: url("../img/uses/lightmode/payments/compliance.png");
+  }
+}
+
+/* Light mode battle-tested company logos */
+.use-case-payments .battle-tested-section {
+  .payments-project-card {
+     background: #FFF !important;
+    .project-logo img {
+      &.coinpayments {
+        content: url('../img/uses/lightmode/payments/coinpayments.png');
+      }
+      
+      &.ripple {
+        content: url('../img/uses/lightmode/payments/ripple-black.png');
+      }
+      
+      &.friipay {
+        content: url('../img/uses/lightmode/payments/friipay.png');
+      }
+    }
+  }
+
+
+}
