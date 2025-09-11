@@ -44,4 +44,42 @@ By setting up a permissioned DEX (pDEX) on the XRP Ledger, a payments provider c
 - **Lower Cost Base:** Using a pDEX eliminates trading fees and reduces the onboarding overhead.
 
 
-## How to Set Up a Permissioned DEX
+## How to set up a permissioned DEX
+
+Running a permissioned DEX involves several steps:
+
+1. **Select a credential issuer.**
+2. **Create a permissioned domain.**
+3. **Use the domain ID in payments & offers.**
+
+### Select a credential issuer
+
+The credential issuer performs identity verification or compliance checks, and issues on-chain credentials to users who pass the checks. You can be a credential issuer yourself, or rely on another business to issue credentials that meet your requirements.
+
+{% admonition type="success" name="Tip" %}
+If you run a credential issuing service, don't forget to issue yourself a credential too, so that you can access the permissioned DEX.
+{% /admonition %}
+
+More information:
+
+- [Credentials](../../concepts/decentralized-storage/credentials.md)
+- [Become a Credential Issuing Service](../../tutorials/python/build-apps/credential-issuing-service.md)
+
+### Create a permissioned domain
+
+A permissioned domain uses credentials to control who can access a permissioned DEX. As the owner of the permissioned domain, you control which credentials it accepts.
+
+More information:
+
+- [Permissioned Domains](../../concepts/tokens/decentralized-exchange/permissioned-domains.md)
+- [Create Permissioned Domains](../../tutorials/javascript/compliance/create-permissioned-domains.md)
+
+### Use the domain ID in payments and offers
+
+After setting up the permissioned domain, you specify its ID in your offers and cross-currency payments to restrict them to the permissioned DEX. You need others to place offers in the same pDEX to have something to match, so it's important to make sure that one or more market makers hold the relevant credentials and place offers in the pDEX too. Market makers with different compliance requirements can also place hybrid offers that can use both a pDEX and the open DEX.
+
+More information:
+
+- [Permissioned DEXes](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md)
+- [Cross-Currency Payments](../../concepts/payment-types/cross-currency-payments.md)
+- [Offers](../../concepts/tokens/decentralized-exchange/offers.md)
