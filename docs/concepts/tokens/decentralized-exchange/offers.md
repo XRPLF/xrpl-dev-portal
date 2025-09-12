@@ -98,6 +98,16 @@ This is a consequence of how the network reaches agreement. For the entire peer-
 
 {% admonition type="info" name="Note" %}Expired Offers remain in the ledger data until a transaction removes them. Until then, they can continue to appear in data retrieved from the API (for example, using the [ledger_entry method][]). Transactions automatically delete any expired and unfunded Offers they find, usually while executing Offers or cross-currency payments that would have matched or canceled them. The owner reserve associated with an Offer is only made available again when the Offer is actually deleted.{% /admonition %}
 
+## Permissioned and Hybrid Offers
+
+{% amendment-disclaimer name="PermissionedDEX" /%}
+
+By specifying a valid **permissioned domain ID**, you can place offers into a permissioned DEX instead of using the open DEX. You can only place a _permissioned offer_ if you hold the [credentials](../../decentralized-storage/credentials.md) required by the permissioned domain, and permissioned offers can only match other offers in the same permissioned domain. You can also place a _hybrid offer_ by using a domain ID and the Hybrid flag. Hybrid offers work like permissioned offers except that they can also match offers in the open DEX. Businesses with strict compliance requirements may want to use a permissioned DEX exclusively while traders with more relaxed compliance requirements can use hybrid offers to provide liquidity in more places.
+
+In most ways, permissioned and hybrid offers function like regular offers. They support all the same options, such as Fill-or-Kill, and are subject to the same requirements like the reserve per offer. One difference is that offers in a permissioned DEX can become _invalid_ if the account placing the offer loses access to the permissioned domain, for example because their credentials expired.
+
+For more information, see [Permissioned DEXes](./permissioned-dexes.md).
+
 
 ## See Also
 

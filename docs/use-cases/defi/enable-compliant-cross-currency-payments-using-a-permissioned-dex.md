@@ -1,6 +1,7 @@
 ---
 seo:
     description: Learn how a payments provider business can enable regulation-compliant 24/7 cross-currency payments using a permissioned on-chain decentralized exchange (DEX).
+status: not_enabled
 ---
 # Enable Regulation Compliant Cross-Currency Payments Using a Permissioned DEX
 
@@ -8,6 +9,7 @@ Payments provider businesses today can leverage cryptocurrency to enable low-cos
 
 This page explains how a payments provider can use the features of the XRP Ledger to enable fast, efficient cross-currency payments by creating and managing a permissioned DEX.
 
+{% amendment-disclaimer name="PermissionedDEX" /%}
 
 ## Background: The challenges with other modes of currency exchange
 
@@ -48,38 +50,44 @@ By setting up a permissioned DEX (pDEX) on the XRP Ledger, a payments provider c
 
 Running a permissioned DEX involves several steps:
 
-1. **Select a credential issuer.**
-2. **Create a permissioned domain.**
-3. **Use the domain ID in payments & offers.**
+1. **[Select a credential issuer.](#select-a-credential-issuer)**
+2. **[Create a permissioned domain.](#create-a-permissioned-domain)**
+3. **[Use the domain ID in payments & offers.](#use-the-domain-id-in-payments-and-offers)**
 
 ### Select a credential issuer
 
-The credential issuer performs identity verification or compliance checks, and issues on-chain credentials to users who pass the checks. You can be a credential issuer yourself, or rely on another business to issue credentials that meet your requirements.
+The credential issuer performs identity verification or compliance checks, and issues on-chain credentials to users who pass the checks. You can be a credential issuer yourself, or rely on another business to issue credentials that meet your requirements. Typically, the flow for using credentials involves three steps:
+
+1. The subject of the credential sends their personal documentation confidentially to the issuer, off-chain. The credential issuer has full discretion over which documents they request.
+2. If the subject passes inspection, the credential issuer creates a credential on the XRP Ledger issued to the subject's XRPL account.
+3. The subject needs to accept the credential, using their XRPL account, for it to become valid.
+
+For more information, see:
+
+- [Credentials](../../concepts/decentralized-storage/credentials.md)
+- [Become a Credential Issuing Service](../../tutorials/python/build-apps/credential-issuing-service.md)
 
 {% admonition type="success" name="Tip" %}
 If you run a credential issuing service, don't forget to issue yourself a credential too, so that you can access the permissioned DEX.
 {% /admonition %}
 
-More information:
-
-- [Credentials](../../concepts/decentralized-storage/credentials.md)
-- [Become a Credential Issuing Service](../../tutorials/python/build-apps/credential-issuing-service.md)
-
 ### Create a permissioned domain
 
-A permissioned domain uses credentials to control who can access a permissioned DEX. As the owner of the permissioned domain, you control which credentials it accepts.
-
-More information:
+A permissioned domain uses credentials to control who can access a permissioned DEX. As the owner of the permissioned domain, you control which credentials it accepts. A domain can accept one or several credentials, so that anyone who holds any of the specified credentials gains access. For more information, see:
 
 - [Permissioned Domains](../../concepts/tokens/decentralized-exchange/permissioned-domains.md)
 - [Create Permissioned Domains](../../tutorials/javascript/compliance/create-permissioned-domains.md)
 
-### Use the domain ID in payments and offers
+### Use the permissioned DEX to facilitate payments and offers
 
-After setting up the permissioned domain, you specify its ID in your offers and cross-currency payments to restrict them to the permissioned DEX. You need others to place offers in the same pDEX to have something to match, so it's important to make sure that one or more market makers hold the relevant credentials and place offers in the pDEX too. Market makers with different compliance requirements can also place hybrid offers that can use both a pDEX and the open DEX.
+After setting up a permissioned domain, the permissioned DEX is ready to use. Anyone who has the appropriate credentials automatically has access to trade in the pDEX by specifying its domain ID in their offers and cross-currency payments. Like any exchange, it needs liquidity to function, so this step actually consists of two parts:
 
-More information:
+1. Recruit market makers to place offers in the permissioned DEX. Make sure they have accepted a matching credential and they know what domain ID to use.
+2. Use the permissioned DEX when making your own cross currency payments or offers.
+
+For more information, see:
 
 - [Permissioned DEXes](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md)
 - [Cross-Currency Payments](../../concepts/payment-types/cross-currency-payments.md)
 - [Offers](../../concepts/tokens/decentralized-exchange/offers.md)
+- [Trade in the Decentralized Exchange](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md)
