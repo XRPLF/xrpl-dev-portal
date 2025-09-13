@@ -207,7 +207,6 @@
 [MPTokenIssuanceSet transaction]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
 [MPTokensV1_1 amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
-[Reporting Mode]: /docs/concepts/networks-and-servers/rippled-server-modes.md#reporting-mode
 [RequireFullyCanonicalSig amendment]: /resources/known-amendments.md#requirefullycanonicalsig
 [RippleState entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [RippleState object]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
@@ -300,14 +299,10 @@
 [connect method]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
 [consensus_info command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
 [consensus_info method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
-[crawl_shards command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
-[crawl_shards method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [deposit_authorized command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
 [deposit_authorized method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
-[download_shard command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
-[download_shard method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
 [drops of XRP]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [feature command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
 [feature method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md

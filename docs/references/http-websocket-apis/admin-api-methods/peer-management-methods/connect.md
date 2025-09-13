@@ -102,6 +102,5 @@ The response follows the [standard format][], with a successful result containin
 - Any of the [universal error types][].
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 - Cannot connect in stand-alone mode - Network-related commands are disabled in stand-alone mode.
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

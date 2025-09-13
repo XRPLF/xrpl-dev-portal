@@ -1,6 +1,4 @@
 ---
-html: response-formatting.html
-parent: api-conventions.html
 seo:
     description: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
 ---
@@ -10,16 +8,28 @@ Responses are formatted slightly differently based on whether the method is call
 
 The fields of a successful response include:
 
-| `Field`         | Type     | Description                                     |
-|:----------------|:---------|:------------------------------------------------|
-| `id`            | (Varies) | (WebSocket only) ID provided in the request that prompted this response |
-| `status`        | String   | (WebSocket only) The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](../../client-libraries.md) omit this field on success. |
-| `result.status` | String   | (JSON-RPC and Commandline) The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](../../client-libraries.md) omit this field on success. |
-| `type`          | String   | (WebSocket only) The value `response` indicates a direct response to an API request. [Asynchronous notifications](../public-api-methods/subscription-methods/subscribe.md) use a different value such as `ledgerClosed` or `transaction`. |
-| `result`        | Object   | The result of the query; contents vary depending on the command. |
-| `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.md) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
-| `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). |
-| `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode][] server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
+{% tabs %}
+{% tab label="WebSocket" %}
+| Field           | Type     | Required? | Description |
+|:----------------|:---------|:----------|-------------|
+| `status`        | String   | Yes       | The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](../../client-libraries.md) omit this field on success. |
+| `type`          | String   | Yes       | The value `response` indicates a direct response to an API request. [Asynchronous notifications](../public-api-methods/subscription-methods/subscribe.md) use a different value such as `ledgerClosed` or `transaction`. |
+| `result`        | Object   | Yes       | The result of the query; contents vary depending on the API method. |
+| `id`            | (Varies) | No        | Arbitrary ID provided by the request that prompted this response. Omitted if the request didn't specify an ID. |
+| `warning`       | String   | No        | If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.md) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
+| `warnings`      | Array    | No        | If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). |
+| `forwarded`     | Boolean  | No        | If `true`, this request and response have been forwarded from a Clio server to a P2P Mode server (and back) because the request requires data that is not available from Clio. The default is `false`. |
+{% /tab %}
+{% tab label="JSON-RPC" %}
+| Field           | Type     | Required? | Description |
+|:----------------|:---------|:----------|-------------|
+| `result`        | Object   | Yes       | The result of the query; contents vary depending on the command. |
+| `result.status` | String   | Yes       | The value `success` indicates the request was successfully received and understood by the server. Some [client libraries](../../client-libraries.md) omit this field on success. |
+| `warning`       | String   | No        | If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.md) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
+| `warnings`      | Array    | No        | If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). |
+| `forwarded`     | Boolean  | No        | If `true`, this request and response have been forwarded from a Clio server to a P2P Mode server (and back) because the request requires data that is not available from Clio. The default is `false`. |
+{% /tab %}
+{% /tabs %}
 
 
 ## Example Successful Response
@@ -159,24 +169,24 @@ This warning indicates that the server is [amendment blocked](../../../concepts/
 
 The server administrator must [upgrade `rippled`](../../../infrastructure/installation/index.md) to a version that supports the activated amendments.
 
-### 1003. This is a reporting server
+### 2001. This is a clio server
 
 Example warning:
 
 ```json
-"warnings" : [
+"warnings": [
   {
-    "id" : 1003,
-    "message" : "This is a reporting server. The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+    "id": 2001,
+    "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
   }
 ]
 ```
 
-This warning indicates that the server answering the request is running [Reporting Mode][]. Certain API methods are not available or behave differently because Reporting Mode does not connect to the peer-to-peer network and does not track ledger data that has not yet been validated.
+This warning indicates that the server answering the request a Clio server, which does not have direct access to the peer-to-peer network. Certain API methods behave differently or may have additional information, and requests that require non-validated data are forwarded to a peer-to-peer server.
 
 It is generally safe to ignore this warning.
 
-{% admonition type="warning" name="Caution" %}If you request ledger data without explicitly [specifying a ledger version][Specifying Ledgers], Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.{% /admonition %}
+{% admonition type="warning" name="Caution" %}If you request ledger data without explicitly [specifying a ledger version][Specifying Ledgers], Clio uses the latest validated ledger by default instead of the current in-progress ledger.{% /admonition %}
 
 
 ## See Also

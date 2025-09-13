@@ -165,8 +165,6 @@ XRP Ledgerネットワークの各サーバは、ネットワークのすべて�
 
 一般的なルールとして、実行されていない`rippled`サーバのデータベースファイル（レジャーストアとデータベースの両方）を安全に削除することができます。これにより、サーバに保存されているレジャーの履歴はすべて消去されますが、そのデータをネットワークから再取得することができます。ただし、`[database_path]`にある`wallet.db`ファイルを削除すると、[Amendment 投票](../configuration/configure-amendment-voting.md)や[ピアリザベーション](../configuration/peering/use-a-peer-reservation.md)などのランタイムの設定変更を手動で再適用しなければなりません。
 
-レジャー履歴を格納したくても、全履歴を格納するための十分な容量がない場合には、[履歴シャーディング](../configuration/data-retention/history-sharding.md)機能を使用して個別の共有ストアにランダムな範囲のレジャーを格納できます。履歴シャーディングは、`[shard_db]`節で構成されます。
-
 
 ##### Amazon Web Services
 

@@ -186,32 +186,6 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 `node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](../installation/capacity-planning.md#ノードサイズ)をご覧ください。
 
 
-## シャードパスが欠落している
-
-以下のようなエラーが出力される場合は、`rippled.cfg`の[履歴シャーディング](../configuration/data-retention/history-sharding.md)の設定が不完全です。
-
-```text
-Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
-```
-
-設定に`[shard_db]`スタンザが含まれている場合、このスタンザには`path`フィールドが指定されている必要があります。このフィールドは、`rippled`がシャードストアーのデータを書き込むことができるディレクトリを指しています。このエラーが発生する場合は、`path`フィールドが欠落しているか、誤った位置に指定されています。構成ファイルで余分な空白やスペルミスがないかどうかを確認し、[シャード設定の例](../configuration/data-retention/configure-history-sharding.md#2-rippledcfgの編集)と比較してください。
-
-## サポート対象外のシャードストアータイプ: RocksDB
-
-RocksDBは、[履歴シャーディング](../configuration/data-retention/history-sharding.md)のバックエンドとしてサポートされなくなりました。RocksDBシャードストアーを定義している既存の構成がある場合は、サーバが起動に失敗します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.3.1" %}新規: rippled 1.3.1{% /badge %}
-
-この場合、log startupコマンドの直後にプロセスが終了し、出力ログの早い段階で次のようなメッセージが表示されます。
-
-```text
-ShardStore:ERR Unsupported shard store type: RocksDB
-```
-
-
-この問題を修正するには、以下のいずれかを行ってからサーバを再起動します。
-
-- 代わりにNuDBを使用するようにシャードストアーを変更します。
-- 履歴シャーディングを無効にします。
-
 
 ## 関連項目
 
