@@ -72,7 +72,7 @@ Terminating thread rippled: main: unhandled St13runtime_error
 InboundLedger:WRN 11 timeouts for ledger 8265938
 ```
 
-これは、サーバがそのピアに対して特定のレジャーデータをリクエストする際に問題が発生していることを示しています。[レジャーインデックス](../../references/protocol/data-types/basic-data-types.md#レジャーインデックス)が、[server_infoメソッド][]により報告される最新の検証済みレジャーのインデックスよりもかなり小さい場合は、サーバが[履歴シャード](../configuration/data-retention/history-sharding.md)のダウンロード中である可能性があります。
+これは、サーバがそのピアに対して特定のレジャーデータをリクエストする際に問題が発生していることを示しています。
 
 これは厳密には問題ではありませんが、レジャー履歴を迅速に取得したい場合は、`[ips_fixed]`構成スタンザを追加または編集してからサーバを再起動することで、すべての履歴が記録されたピアに接続するように`rippled`を構成できます。たとえば、すべての履歴が記録されたRippleのサーバに常に接続するには、以下のようにします。
 
@@ -90,7 +90,7 @@ s2.ripple.com 51235
 InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
 ```
 
-これは、サーバの同期中、埋め戻し中、[履歴シャード](../configuration/data-retention/history-sharding.md)のダウンロード中は正常です。
+これは、サーバの同期中、埋め戻し中は正常です。
 
 
 ## LoadMonitor:WRN Job
@@ -116,27 +116,13 @@ InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CD
 
 サーバの起動後5分以上にわたってこれらのメッセージが継続する場合、特に`run`時間が1000msを大きく上回る場合は、**サーバに十分なリソース（ディスクI/O、RAM、CPUなど）がない**可能性があります。この原因として、使用しているハードウェアの性能が不十分であること、または同じハードウェアで実行されている他のプロセスがリソースをめぐって`rippled`と競合していることが考えられます。（`rippled`とリソースをめぐって競合する可能性のある他のプロセスの例としては、スケジュール済みバックアップ、ウィルススキャナー、定期的なデータベースクリーナーなどがあります。）
 
-考えられるもう1つの原因として、回転型ハードディスクでNuDBの使用を試みていることが挙げられます。NuDBはソリッドステートドライブ（SSD）でのみ使用してください。`rippled`のデータベースには常にSSDストレージの使用が推奨されますが、RocksDBを使用する回転型ディスクで`rippled`を正常に稼働できる _可能性があります_ 。回転型ディスクを使用している場合は、`[node_db]`と`[shard_db]`（使用している場合）の両方がRocksDBを使用するように設定されていることを確認してください。例:
+考えられるもう1つの原因として、回転型ハードディスクでNuDBの使用を試みていることが挙げられます。NuDBはソリッドステートドライブ（SSD）でのみ使用してください。`rippled`のデータベースには常にSSDストレージの使用が推奨されますが、RocksDBを使用する回転型ディスクで`rippled`を正常に稼働できる _可能性があります_ 。回転型ディスクを使用している場合は、`[node_db]`がRocksDBを使用するように設定されていることを確認してください。例:
 
 ```
 [node_db]
 type=RocksDB
 # ... more config omitted
-
-[shard_db]
-type=RocksDB
 ```
-
-
-## No hash for fetch pack
-
-以下のようなメッセージは、[履歴シャーディング](../configuration/data-retention/history-sharding.md)のために履歴レジャーをダウンロードする際に、`rippled` v1.1.0以前のバグが原因で発生します。
-
-```text
-2018-Aug-28 22:56:21.397076850 LedgerMaster:ERR No hash for fetch pack. Missing Index 7159808
-```
-
-これらは安全に無視できます。
 
 
 ## Potential Censorship
@@ -155,29 +141,6 @@ LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
 ```
 
-
-## シャード: No such file or directory
-
-`rippled` 1.3.1のバグが原因で、[履歴シャーディング](../configuration/data-retention/history-sharding.md)を有効にしたときに次のようなログメッセージが書き込まれることがあります。
-
-```text
-ShardStore:ERR shard 1804: No such file or directory
-ShardStore:ERR shard 354: No such file or directory
-ShardStore:ERR shard 408: No such file or directory
-ShardStore:ERR shard 2927: No such file or directory
-ShardStore:ERR shard 2731: No such file or directory
-ShardStore:ERR shard 2236: No such file or directory
-```
-
-これは、サーバが新しい履歴シャードの取得を開始しようとしたものの、シャードを格納するための新しいディレクトリーを作成できなかったことを示します。このバグにより、rippled 1.3.1は新しいシャードを取得できません。[修正は近日リリース予定](https://github.com/XRPLF/rippled/pull/3014)です。
-
-このエラーは、上記のバグのほかに、`rippled`が**起動後**に基となるファイルシステムに書き込めなくなった場合にも起こります。考えられる原因は次のとおりです。
-
-- ストレージメディアのハードウェア障害
-- ファイルシステムがアンマウントされた
-- シャードフォルダーが削除された
-
-{% admonition type="success" name="ヒント" %}一般的に、サービスが停止している場合は、`rippled`のデータベースファイルを削除しても安全ですが、サーバの稼働中には決してデータベースファイルを削除しないでください。{% /admonition %}
 
 
 ## Unable to determine hash of ancestor

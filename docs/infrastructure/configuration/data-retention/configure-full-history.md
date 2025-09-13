@@ -21,7 +21,6 @@ Acquiring full history from the peer-to-peer network takes a long time (several 
 
 You do not need a full history server to participate in the network, validate transactions, or know the current state of the network. Full history is only useful for knowing the outcome of transactions that occurred in the past, or the state of the ledger at a given time in the past. To get such information, you must rely on other servers having the history you need.
 
-If you want to contribute to storing the history of the XRP Ledger network without storing the full history, you can [configure history sharding](configure-history-sharding.md) to store randomly-selected chunks of ledger history instead.
 
 ## Configuration Steps
 

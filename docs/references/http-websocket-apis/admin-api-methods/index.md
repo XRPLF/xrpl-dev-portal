@@ -1,6 +1,4 @@
 ---
-html: admin-api-methods.html
-parent: http-websocket-apis.html
 seo:
     description: Administer an XRP Ledger server with these API methods.
 labels:
@@ -26,12 +24,10 @@ Use these methods to generate and manage keys.
 Use these methods to manage log levels and other data, such as ledgers.
 
 * **[`can_delete`](logging-and-data-management-methods/can_delete.md)** - Allow online deletion of ledgers up to a specific ledger.
-* **[`download_shard`](logging-and-data-management-methods/download_shard.md)** - Download a specific shard of ledger history.
 * **[`ledger_cleaner`](logging-and-data-management-methods/ledger_cleaner.md)** - Configure the ledger cleaner service to check for corrupted data.
 * **[`ledger_request`](logging-and-data-management-methods/ledger_request.md)** - Query a peer server for a specific ledger version.
 * **[`log_level`](logging-and-data-management-methods/log_level.md)** - Get or modify log verbosity.
 * **[`logrotate`](logging-and-data-management-methods/logrotate.md)** - Reopen the log file.
-* **[`node_to_shard`](logging-and-data-management-methods/node_to_shard.md)** - Copy data from the ledger store to the shard store.
 
 
 ## [Server Control Methods](server-control-methods/index.md)
@@ -47,6 +43,7 @@ Use these methods to sign transactions.
 
 * **[`sign`](signing-methods/sign.md)** - Cryptographically sign a transaction.
 * **[`sign_for`](signing-methods/sign_for.md)** - Contribute to a multi-signature.
+* **[`channel_authorize`](../public-api-methods/payment-channel-methods/channel_authorize.md)** - Sign a claim for money from a payment channel.
 
 By default, these methods are [admin-only](../../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access). They can be used as public methods if the server admin has [enabled public signing](../../../infrastructure/configuration/enable-public-signing.md).
 

@@ -1,6 +1,4 @@
 ---
-html: peer-crawler.html
-parent: peer-port-methods.html
 seo:
     description: Special API method for sharing network topology and status metrics.
 labels:
@@ -44,7 +42,6 @@ Each member of the `overlay.active` array is an object with the following fields
 | `Field`      | Value                    | Description                        |
 |:-------------|:-------------------------|:-----------------------------------|
 | `complete_ledgers` | String | The range of [ledger versions](../../../concepts/networks-and-servers/ledger-history.md) this peer has available. |
-| `complete_shards` | String | _(May be omitted)_ The range of [ledger history shards](../../../infrastructure/configuration/data-retention/history-sharding.md) this peer has available. |
 | `ip`         | String (IPv4 Address)    | _(May be omitted)_ The IP address of this connected peer. Omitted if the peer is configured as a validator or a [private peer](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}Updated in: rippled 1.2.1{% /badge %} |
 | `port`       | String or Number          | _(May be omitted)_ The port number on the peer server that serves RTXP. This will be a string if outbound and a number otherwise. Typically `51235`. Omitted if the peer is configured as a validator or a [private peer](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}Updated in: rippled 1.2.1{% /badge %} |
 | `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported by the peer server's [server_info method][].) |

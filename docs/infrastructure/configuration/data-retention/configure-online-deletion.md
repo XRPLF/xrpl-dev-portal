@@ -81,7 +81,6 @@ To change the amount of history your server stores, perform the following steps:
         - [Online Deletion](online-deletion.md)
 - **Tutorials:**
     - [Configure Advisory Deletion](configure-advisory-deletion.md)
-    - [Configure History Sharding](configure-history-sharding.md)
     - [Capacity Planning](../../installation/capacity-planning.md)
 - **References:**
     - [server_info method][]

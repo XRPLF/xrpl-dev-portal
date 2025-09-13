@@ -1,6 +1,4 @@
 ---
-html: rippled-server-modes.html
-parent: networks-and-servers.html
 seo:
     description: Learn about rippled server modes, including stock servers, validator servers, and rippled servers run in stand-alone mode.
 labels:
@@ -14,7 +12,6 @@ The `rippled` server software can run in several modes depending on its configur
     - [**Validator**](#validators) - Helps secure the network by participating in consensus.
     - [**API Server**](#api-servers) - Provides [API access](../../tutorials/http-websocket-apis/build-apps/get-started.md) to read data from the shared ledger, submit transactions, and watch activity in the ledger. Optionally, this can be a [**Full History Server**](#full-history-servers), which keeps a complete record of transaction and ledger history.
     - [**Hub Server**](#public-hubs) - Relays messages between many other members of the peer-to-peer network.
-- [**Reporting mode**](#reporting-mode) - A specialized mode for serving API requests from a relational database. It does not participate in the peer-to-peer network, so you need to run a P2P Mode server and connect the reporting mode server using a trusted gRPC connection. 
 - [**Stand-alone mode**](#stand-alone-mode) - An offline mode for testing. Does not connect to the peer-to-peer network or use consensus.
 
 You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](../../references/http-websocket-apis/index.md) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
@@ -66,18 +63,6 @@ Validation uses only a small amount of computing resources, but there is not muc
 You can safely enable validation on a server that is also used for other purposes; this type of configuration is called an _all-purpose server_. Alternatively, you can run a _dedicated validator_ that does not perform other tasks, possibly in a [cluster](clustering.md) with other P2P Mode `rippled` servers.
 
 For more information about running a validator, see [Run `rippled` as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
-
-
-## Reporting Mode
-
-
-Reporting mode is specialized mode for serving API requests more efficiently. In this mode, the server gets the latest validated ledger data over [gRPC](../../infrastructure/configuration/configure-grpc.md) from a separate `rippled` server running in P2P Mode, then loads that data into a relational database ([PostgreSQL](https://www.postgresql.org/)). The reporting mode server does not directly participate in the peer-to-peer network, though it can forward requests such as transaction submission to the P2P Mode server it uses.
-
-Multiple reporting mode servers can share access to a PostgreSQL database and [Apache Cassandra](https://cassandra.apache.org/) cluster to serve a large amount of history without each server needing a redundant copy of all the data. Reporting mode servers provide this data through the same [`rippled` APIs](../../references/http-websocket-apis/index.md) with some slight changes to accommodate for the differences in how they store the underlying data.
-
-Most notably, reporting mode servers do not report pending, non-validated ledger data or transactions. This limitation is relevant to certain use cases that rely on rapid access to in-flux data, such as performing arbitrage in the [decentralized exchange](../tokens/decentralized-exchange/index.md).
-
-<!-- TODO: link setup steps for Reporting Mode when those are ready -->
 
 
 ## Stand-Alone Mode

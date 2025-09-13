@@ -137,7 +137,7 @@ To avoid being dropped by rate limiting on your own server, [connect as an admin
 InboundLedger:WRN 11 timeouts for ledger 8265938
 ```
 
-This indicates that your server is having trouble requesting specific ledger data from its peers. If the [ledger index](../../references/protocol/data-types/basic-data-types.md#ledger-index) is much lower than the most recent validated ledger's index as reported by the [server_info method][], this probably indicates that your server is downloading a [history shard](../configuration/data-retention/history-sharding.md).
+This indicates that your server is having trouble requesting specific ledger data from its peers.
 
 This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `rippled` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
 
@@ -155,7 +155,7 @@ Log messages such as the following indicate that the server is requesting ledger
 InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
 ```
 
-This is normal if your server is syncing, backfilling, or downloading [history shards](../configuration/data-retention/history-sharding.md).
+This is normal if your server is syncing or backfilling.
 
 
 ## LoadMonitor Job
@@ -181,28 +181,13 @@ It is **normal** to display several messages of these types **during the first f
 
 If the messages continue for more than 5 minutes after starting the server, especially if the `run` times are well over 1000 ms, that may indicate that **your server does not have enough disk I/O, RAM, or CPU**. This may be caused by not having powerful enough hardware or because other processes running on the same hardware are competing with `rippled` for resources. (Examples of other processes that may compete with `rippled` for resources include scheduled backups, virus scanners, and periodic database cleaners.)
 
-Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). Ripple recommends always using SSD storage for `rippled`'s databases, but you _may_ be able to run `rippled` successfully on rotational disks using RocksDB. If you are using rotational disks, make sure both the `[node_db]` and the `[shard_db]` (if you have one) are configured to use RocksDB. For example:
+Another possible cause is trying to use NuDB on rotational hard disks; NuDB should only be used with solid state drives (SSDs). It's **not recommended** to use `rippled` with rotational disks, but you _may_ be able to do so using RocksDB. If you are using rotational disks, make sure both `[node_db]` is configured to use RocksDB. For example:
 
 ```
 [node_db]
 type=RocksDB
 # ... more config omitted
-
-[shard_db]
-type=RocksDB
 ```
-
-
-## No hash for fetch pack
-
-Messages such as the following are caused by a bug in `rippled` v1.1.0 and earlier when downloading historical ledgers for [history sharding](../configuration/data-retention/history-sharding.md):
-
-```text
-2018-Aug-28 22:56:21.397076850 LedgerMaster:ERR No hash for fetch pack. Missing Index 7159808
-```
-
-These can be safely ignored.
-
 
 ## Not deleting
 
@@ -262,23 +247,6 @@ SHAMapStore:WRN finished rotation 54635511
 The number at the end of the message is the [ledger index][] of the validated ledger at the time online deletion started, matching the `validatedSeq` value of the "rotating" message. This becomes the `lastRotated` value the next time online deletion runs.
 
 If the server falls out of sync while running online deletion, it interrupts online deletion and writes a ["Not deleting" log message](#not-deleting) instead of a "finished rotation" message.
-
-
-## Shard: No such file or directory
-
-Log messages such as the following can occur when you have [history sharding](../configuration/data-retention/history-sharding.md) enabled:
-
-```text
-ShardStore:ERR shard 1804: No such file or directory
-```
-
-This indicates that the server tried to start acquiring a new history shard, but it cannot write to the underlying file system. Possible causes include:
-
-- Hardware failure of storage media
-- The file system became unmounted
-- The shard folder was deleted
-
-{% admonition type="success" name="Tip" %}It is generally safe to delete `rippled`'s database files when the service is stopped, but you should never delete them while the server is running.{% /admonition %}
 
 
 ## Unable to determine hash of ancestor

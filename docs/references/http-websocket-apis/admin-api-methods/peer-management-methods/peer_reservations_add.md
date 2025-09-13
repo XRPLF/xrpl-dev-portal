@@ -137,6 +137,5 @@ If the `previous` field is provided, it shows the previous status of this peer r
 - Any of the [universal error types][].
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 - `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58][] format.
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

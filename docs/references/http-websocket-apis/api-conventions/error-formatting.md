@@ -110,7 +110,7 @@ For other errors that returned with HTTP status code 200 OK, the responses are f
 All methods can potentially return any of the following values for the `error` code:
 
 - `amendmentBlocked` - The server is [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) and needs to be updated to the latest version to stay synced with the XRP Ledger network.
-- `failedToForward` - ([Reporting Mode][] servers only) The server tried to forward this request to a P2P Mode server, but the connection failed.
+- `failedToForward` - (Clio servers only) The server tried to forward this request to a `rippled` server, but the connection failed.
 - `invalid_API_version` - The server does not support the [API version number](request-formatting.md#api-versioning) from the request.
 - `jsonInvalid` - (WebSocket only) The request is not a proper JSON object.
     - JSON-RPC returns a 400 Bad Request HTTP error in this case instead.

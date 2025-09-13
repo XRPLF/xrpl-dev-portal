@@ -102,6 +102,8 @@ export function Badge(props: {
       "enabled": "green",
       "有効": "green", // ja: enabled
       "obsolete": "red",
+      "removed in": "red",
+      "削除": "red", // ja: removed in
       "廃止": "red", // ja: obsolete
       "撤回": "red", // ja: withdrawn/removed/vetoed
       "new in": "blue",
