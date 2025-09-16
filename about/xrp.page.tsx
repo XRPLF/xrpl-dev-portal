@@ -30,6 +30,7 @@ const softwallets = [
   { href: "https://gemwallet.app/", id: "wallet-gem", alt: "Gem Wallet" },
   { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" },
   { href: "https://crossmark.io/", id: "wallet-crossmark", alt: "Crossmark Wallet" },
+  { href: "https://joeywallet.xyz/", id: "wallet-joey", alt: "Joey Wallet" },
 ];
 
 const hardwallets = [
