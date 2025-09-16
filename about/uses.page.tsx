@@ -244,6 +244,15 @@ const cardsData = [
     link: "https://github.com/crossmarkio",
   },
   {
+    id: "joey-wallet",
+    title: "Joey Wallet",
+    description:
+      "Joey Wallet is a secure, self-custody cryptocurrency wallet and gateway to Web3 decentralized applications (dApps) on the XRP Ledger (XRPL).",
+    category_id: "wallet",
+    category_name: "Wallet",
+    link: "https://joeywallet.xyz/",
+  },
+  {
     id: "Edge",
     title: "Edge",
     description:
