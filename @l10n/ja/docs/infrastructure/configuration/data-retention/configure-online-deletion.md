@@ -78,7 +78,6 @@ labels:
 
 - [オンライン削除](online-deletion.md)
 - [指示による削除の設定](configure-advisory-deletion.md)
-- [履歴シャーディングの設定](configure-history-sharding.md)
 - [完全な履歴の設定](configure-full-history.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

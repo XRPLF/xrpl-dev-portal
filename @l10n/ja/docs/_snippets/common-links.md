@@ -218,11 +218,9 @@
 [共通フィールド]: /@l10n/ja/docs/references/protocol/transactions/common-fields.md
 [connectメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
 [consensus_infoメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
-[crawl_shardsメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
 [crypto-condition]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [crypto-conditions]: https://tools.ietf.org/html/draft-thomas-crypto-conditions-04
 [deposit_authorizedメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
-[download_shardメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
 [featureメソッド]: /@l10n/ja/docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
 [手数料レベル]: /@l10n/ja/docs/concepts/transactions/transaction-cost.md#手数料レベル
 [feeメソッド]: /@l10n/ja/docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md

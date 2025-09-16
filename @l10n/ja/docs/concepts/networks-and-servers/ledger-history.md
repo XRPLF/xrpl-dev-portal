@@ -54,13 +54,6 @@ XRP Ledger財団は、コミュニティメンバーが運営する一連の全�
 
 すべての履歴の設定については、[完全な履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)をご覧ください。
 
-## 履歴シャーディング
-
-XRP Ledgerのすべての履歴を1台の高価なマシンに保管する代わりに、複数のサーバがレジャー履歴の一部分を保管するように構成できます。これは[履歴シャーディング](../../infrastructure/configuration/data-retention/history-sharding.md)機能によって実現します。一定範囲のレジャー履歴が _シャードストアー_ という個別の保管領域に保管されます。ピアサーバから（上記の[履歴の取得](#履歴の取得)で説明したとおり）特定のデータがリクエストされると、サーバはレジャーストアーまたはシャードストアーのデータを使用してレスポンスできます。
-
-オンライン削除ではシャードストアーのデータは削除**されません**。ただし、32768個以上のレジャーバージョンをサーバのレジャーストアーに保持するようにオンライン削除が設定されていれば、レジャーストアーからデータが自動的に削除される前に、サーバはレジャーストアーからシャードストアーにすべてのシャードをコピーできます。
-
-詳細は、[履歴シャーディングの設定](../../infrastructure/configuration/data-retention/configure-history-sharding.md)をご覧ください。
 
 ## 関連項目
 
@@ -71,7 +64,6 @@ XRP Ledgerのすべての履歴を1台の高価なマシンに保管する代わ
     - [`rippled`の設定](../../infrastructure/configuration/index.md)
         - [オンライン削除の設定](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
         - [指示による削除の設定](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
-        - [履歴シャーディングの設定](../../infrastructure/configuration/data-retention/configure-history-sharding.md)
         - [全履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)
 - **リファレンス:**
     - [ledgerメソッド][]

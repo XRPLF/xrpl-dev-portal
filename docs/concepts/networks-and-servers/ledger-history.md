@@ -58,14 +58,6 @@ Providers of Full History servers reserve the right to block access that is foun
 
 For instructions on setting up full history, see [Configure Full History](../../infrastructure/configuration/data-retention/configure-full-history.md).
 
-## History Sharding
-
-An alternative to storing the full history of the XRP Ledger on a single expensive machine is to configure many servers to each store a part of all ledger history. The [History Sharding](../../infrastructure/configuration/data-retention/history-sharding.md) feature makes this possible, storing ranges of ledger history in a separate storage area called the _shard store_. When a peer server asks for specific data (as described in [fetching history](#fetching-history) above), a server can answer using data from either its ledger store or shard store.
-
-Online deletion **does not** delete from the shard store. However, if you configure online deletion to keep at least 32768 ledger versions in your server's ledger store, your server can copy full shards from the ledger store to the shard store before automatically deleting them from the ledger store.
-
-For more information, see [Configure History Sharding](../../infrastructure/configuration/data-retention/configure-history-sharding.md).
-
 
 ## See Also
 
@@ -76,7 +68,6 @@ For more information, see [Configure History Sharding](../../infrastructure/conf
     - [Configure `rippled`](../../infrastructure/configuration/index.md)
         - [Configure Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
         - [Configure Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
-        - [Configure History Sharding](../../infrastructure/configuration/data-retention/configure-history-sharding.md)
         - [Configure Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)
 - **References:**
     - [ledger method][]

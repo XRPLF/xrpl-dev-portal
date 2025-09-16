@@ -148,6 +148,5 @@ Connecting to 127.0.0.1:5005
 
 * いずれかの[汎用エラータイプ][]。
 - `invalidParams` - `public_key`フィールドが見つからないか、正しく指定されていません。
-- `reportingUnsupported` - ([レポートモード][]サーバのみ) このメソッドはレポートモードでは使用できません。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

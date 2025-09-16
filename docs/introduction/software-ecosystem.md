@@ -30,7 +30,7 @@ The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliab
 
 Every core server syncs to the same network (unless it's configured to follow a [test network](../concepts/networks-and-servers/parallel-networks.md)) and has access to all communications across the network. Every server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](../concepts/networks-and-servers/ledger-history.md) and to participate in the consensus process as a [validator](../concepts/networks-and-servers/rippled-server-modes.md#validators).
 
-Core servers expose [HTTP / WebSocket APIs](../references/http-websocket-apis/index.md) for users to look up data, administer the server, and submit transactions. Some servers also serve HTTP / WebSocket APIs but don't connect directly to the peer-to-peer network and don't process transactions or participate in consensus. These servers, such as `rippled` servers running in Reporting Mode and Clio servers, rely on a core server in P2P mode to process transactions.
+Core servers expose [HTTP / WebSocket APIs](../references/http-websocket-apis/index.md) for users to look up data, administer the server, and submit transactions. Clio servers also serve HTTP / WebSocket APIs but they don't connect directly to the peer-to-peer network and don't process transactions or participate in consensus. These servers rely on a core server in P2P mode to process transactions.
 
 
 ### Client Libraries
