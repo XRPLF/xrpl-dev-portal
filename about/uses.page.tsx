@@ -26,7 +26,7 @@ const logos = {
   ],
   developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
   interoperability: ["multichain"],
-  wallet: ["crossmark", "edge", "gem-wallet", "xumm"],
+  wallet: ["crossmark", "edge", "gem-wallet", "xumm", "joey-wallet"],
   nfts: [
     "aesthetes",
     "audiotarky",
@@ -459,7 +459,7 @@ const uses = [
   {
     id: "wallet",
     title: "Wallet",
-    number: 4,
+    number: 5,
     description:
       "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
   },
