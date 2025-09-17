@@ -616,8 +616,7 @@ const CommunityPage: React.FC = () => {
       </section>
       {/* Community Table Section */}
       <section id="community-table" className="hot-topics">
-        <h6 className="eyebrow-convo">{translate("Join the Conversation")}</h6>
-        <h4>{translate("Hot Topics Happening Now")}</h4>
+        <h4>{translate("Join the Conversation")}</h4>
         <table>
           <tbody>
             <tr>
