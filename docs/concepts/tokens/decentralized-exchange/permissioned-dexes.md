@@ -11,6 +11,8 @@ Permissioned DEXes are controlled environments for trading within the XRP Ledger
 
 There can be multiple permissioned DEXes within the XRP Ledger blockchain. Each one is uniquely associated with a permissioned domain, which acts as an allow-list for accessing that DEX. Trades placed within a permissioned DEX can only execute against other trades in the same permissioned DEX. Each permissioned DEX can have order books for any number of currency pairs, as needed.
 
+{% amendment-disclaimer name="PermissionedDEX" /%}
+
 
 ## Background: The Need for Permissioned DEXes
 
