@@ -626,7 +626,7 @@ const CommunityPage: React.FC = () => {
               </td>
               <td>
                 {translate(
-                  "Join the XRPL Discord to connect and network with builders, validators, and cryptocurrency enthusiasts in the community."
+                  "Join the XRPL Discord to connect and network with builders, validators, and cryptocurrency enthusiasts."
                 )}
               </td>
               <td>
