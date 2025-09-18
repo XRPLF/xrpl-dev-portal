@@ -1,11 +1,5 @@
 import xrpl from 'xrpl'
 
-/* Sleep function that can be used with await */
-function sleep (delayInSeconds) {
-  const delayInMs = delayInSeconds * 1000
-  return new Promise((resolve) => setTimeout(resolve, delayInMs))
-}
-
 /* Main function when called as a commandline script */
 async function main () {
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
@@ -13,13 +7,17 @@ async function main () {
 
   console.log('Funding new wallet from faucet...')
   const { wallet } = await client.fundWallet()
+
+  // Define properties of the escrow
   const dest_address = 'rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe' // Testnet faucet
-  const delay = 30
+  const delay = 30 // how long to escrow the funds, in seconds
+  const amount = '12345' // drops of XRP to send in the escrow
 
   const { escrowSeq, finishAfterRippleTime } = await send_timed_escrow(
     client,
     wallet,
     dest_address,
+    amount,
     delay
   )
 
@@ -30,12 +28,13 @@ async function main () {
   client.disconnect()
 }
 
-/*
+/* send_timed_escrow
  * Create a time-based escrow.
  * Parameters:
  *   client (xrpl.Client): network-connected client
  *   wallet (xrpl.Wallet): sender wallet
  *   dest_address (string): receiver address in base58
+ *   amount (string): how many drops of XRP to send in escrow
  *   delay (int): number of seconds until the escrow is mature
  * Returns: object with the following keys
  *   response (xrpl.TxResponse): transaction result from submitAndWait
@@ -43,7 +42,7 @@ async function main () {
  *   finishAfterRippleTime (int): the FinishAfter time of the created escrow,
  *                                in seconds since the Ripple Epoch
  */
-async function send_timed_escrow (client, wallet, dest_address, delay) {
+async function send_timed_escrow (client, wallet, dest_address, amount, delay) {
   // Set the escrow finish time -----------------------------------------------
   const finishAfter = new Date()
   finishAfter.setSeconds(finishAfter.getSeconds() + delay)
@@ -56,7 +55,7 @@ async function send_timed_escrow (client, wallet, dest_address, delay) {
     TransactionType: 'EscrowCreate',
     Account: wallet.address,
     Destination: dest_address,
-    Amount: '12345', // drops of XRP
+    Amount: amount,
     FinishAfter: finishAfterRippleTime
   }
   xrpl.validate(escrowCreate)
@@ -77,7 +76,7 @@ async function send_timed_escrow (client, wallet, dest_address, delay) {
   }
 }
 
-/*
+/* wait_for_escrow
  * Check the ledger close time to see if an escrow can be finished.
  * If it's not ready yet, wait a number of seconds equal to the difference
  * from the latest ledger close time to the escrow's FinishAfter time.
@@ -113,7 +112,13 @@ async function wait_for_escrow (client, finishAfterRippleTime) {
   }
 }
 
-/*
+/* Sleep function that can be used with await */
+function sleep (delayInSeconds) {
+  const delayInMs = delayInSeconds * 1000
+  return new Promise((resolve) => setTimeout(resolve, delayInMs))
+}
+
+/* finish_escrow
  * Finish an escrow that your account owns.
  * Parameters:
  *   client (xrpl.Client): network-connected client
@@ -143,4 +148,5 @@ async function finish_escrow (client, wallet, escrowSeq) {
   }
 }
 
+// Call main function so it runs as a script
 main()

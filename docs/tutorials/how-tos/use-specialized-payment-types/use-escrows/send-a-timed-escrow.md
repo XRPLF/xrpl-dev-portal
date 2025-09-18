@@ -1,15 +1,59 @@
 ---
-html: send-a-time-held-escrow.html
-parent: use-escrows.html
 seo:
-    description: Create an escrow whose only condition for release is that a specific time has passed.
+    description: Send an escrow whose only condition for release is that a specific time has passed.
 labels:
   - Escrow
-  - Smart Contracts
 ---
-# Send a Time-Held Escrow
+# Send a Timed Escrow
 
-The [EscrowCreate transaction][] type can create an escrow whose only condition for release is that a specific time has passed. To do this, use the `FinishAfter` field and omit the `Condition` field.
+This tutorial demonstrates how to send an [escrow](../../../../concepts/payment-types/escrow.md) whose only condition for release is that a specific time has passed. You can use this to set aside money for yourself or others so that it absolutely cannot be used until the specified time.
+
+This tutorial shows how to escrow XRP. If the [TokenEscrow amendment][] is enabled, you can also escrow tokens.
+
+## Goals
+
+By following this tutorial, you should learn how to:
+
+- Convert a timestamp into the XRP Ledger's native format.
+- Create and finish an escrow.
+
+## Prerequisites
+
+To complete this tutorial, you should:
+
+- Have a basic understanding of the XRP Ledger
+- Have an XRP Ledger client library, such as **xrpl.js**, installed.
+
+## Source Code
+
+You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/escrow/send-timed-escrow.js" %}code samples section of this website's repository{% /repo-link %}.
+
+##  Steps
+
+### 1. Install dependencies
+
+{% tabs %}
+{% tab label="JavaScript" %}
+From the code sample folder, use npm to install dependencies:
+
+```sh
+npm i
+```
+{% /tab %}
+{% /tabs %}
+
+### 2. Import dependencies and get accounts
+
+After importing the XRPL client library, the tutorial code gets a new wallet from the testnet faucet and defines the properties of the escrow as hard-coded constants. You can use an existing wallet or modify the constants as desired.
+
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/escrow/js/send-timed-escrow.js" language="js" before="/* send_timed_escrow" /%}
+{% /tab %}
+{% /tabs %}
+
+
 
 ## 1. Calculate release time
 
