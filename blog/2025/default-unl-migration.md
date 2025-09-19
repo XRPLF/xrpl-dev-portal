@@ -3,7 +3,7 @@ category: 2025
 date: "2025-09-18"
 template: '../../@theme/templates/blogpost'
 seo:
-    description: If you run a rippled node that uses the default UNL, you must migrate your configuration to the new XRPL Foundation's list by September 2025-09-30.
+    description: If you run a rippled node that uses the default UNL, you must migrate your configuration to the new XRPL Foundation's list by 2025-09-30.
 labels:
     - Advisories
 markdown:
