@@ -1,9 +1,9 @@
 ---
 seo:
-    description: Learn how a payments provider business can enable regulation-compliant 24/7 cross-currency payments using a permissioned on-chain decentralized exchange (DEX).
+    description: Learn how a payments provider business can enable cross-currency payments using a permissioned on-chain decentralized exchange (DEX).
 status: not_enabled
 ---
-# Enable Regulation Compliant Cross-Currency Payments Using a Permissioned DEX
+# Enable Compliance-Focused Cross-Currency Payments Using a Permissioned DEX
 
 Payments provider businesses today can leverage cryptocurrency to enable low-cost global settlement in a variety of assets. But currency conversion (FX) is still a challenge: it may use off-chain, centralized exchanges (CEX); or it may use an on-chain, open decentralized exchange (DEX). Both of these models come with significant friction, which can be alleviated by instead using an on-chain, permissioned decentralized exchange (pDEX).
 
