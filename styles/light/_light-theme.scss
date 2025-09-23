@@ -573,6 +573,10 @@ pre {
   #wallet-crossmark {
     content: url("../img/wallets/lightmode/crossmark.png");
   }
+
+  #wallet-joey {
+    content: url("../img/wallets/lightmode/joey.svg");
+  }
 }
 
 
@@ -669,6 +673,7 @@ pre {
     'ripples-on-demand-liquidity': 'svg',
     'xumm-wallet': 'svg',
     'sologenic-dex': 'svg',
+    'joey-wallet': 'svg',
     'Crossmark': 'png'
 
   ) {
