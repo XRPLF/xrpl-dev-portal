@@ -26,7 +26,7 @@ const logos = {
   ],
   developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
   interoperability: ["multichain"],
-  wallet: ["crossmark", "edge", "gem-wallet", "xumm"],
+  wallet: ["crossmark", "edge", "gem-wallet", "xumm", "joey-wallet"],
   nfts: [
     "aesthetes",
     "audiotarky",
@@ -244,6 +244,15 @@ const cardsData = [
     link: "https://github.com/crossmarkio",
   },
   {
+    id: "joey-wallet",
+    title: "Joey Wallet",
+    description:
+      "Joey Wallet is a secure, self-custody cryptocurrency wallet and gateway to Web3 decentralized applications (dApps) on the XRP Ledger (XRPL).",
+    category_id: "wallet",
+    category_name: "Wallet",
+    link: "https://joeywallet.xyz/",
+  },
+  {
     id: "Edge",
     title: "Edge",
     description:
@@ -450,7 +459,7 @@ const uses = [
   {
     id: "wallet",
     title: "Wallet",
-    number: 4,
+    number: 5,
     description:
       "Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP."
   },

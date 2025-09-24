@@ -573,6 +573,10 @@ pre {
   #wallet-crossmark {
     content: url("../img/wallets/lightmode/crossmark.png");
   }
+
+  #wallet-joey {
+    content: url("../img/wallets/lightmode/joey.svg");
+  }
 }
 
 
@@ -669,6 +673,7 @@ pre {
     'ripples-on-demand-liquidity': 'svg',
     'xumm-wallet': 'svg',
     'sologenic-dex': 'svg',
+    'joey-wallet': 'svg',
     'Crossmark': 'png'
 
   ) {
@@ -1459,6 +1464,7 @@ main article .card-grid {
 /* Light mode battle-tested company logos */
 .use-case-payments .battle-tested-section {
   .payments-project-card {
+     background: #FFF !important;
     .project-logo img {
       &.coinpayments {
         content: url('../img/uses/lightmode/payments/coinpayments.png');

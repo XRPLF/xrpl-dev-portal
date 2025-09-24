@@ -36,4 +36,8 @@ An OfferCancel transaction removes an Offer object from the XRP Ledger.
 
 The OfferCancel method returns [`tesSUCCESS`](../transaction-results/tes-success.md) even if it did not find an offer with the matching sequence number.
 
+## See Also
+
+- [Offer entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

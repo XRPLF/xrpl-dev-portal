@@ -43,7 +43,7 @@ const PaymentsPage: React.FC = () => {
       title: "Access Reliable Payments Infrastructure",
       contents: [
         {
-          subtitle: "100% uptime since 2012",
+          subtitle: "99.99% uptime since 2012",
           description: "",
         },
         {

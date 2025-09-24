@@ -43,4 +43,8 @@ _(Added by the [PayChan amendment][].)_
 
 If the `Destination` account is blocking incoming payment channels, the transaction fails with result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] )_
 
+## See Also
+
+- [PayChannel entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

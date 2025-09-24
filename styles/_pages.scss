@@ -172,7 +172,7 @@
 }
 
 #wallets {
-  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "towo", "keystone", "dcent", "coin", "gem" {
+  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "towo", "keystone", "dcent", "coin", "gem", "joey" {
     #wallet-#{$wallet} {
       content: url("../img/wallets/#{$wallet}.svg");
     }
@@ -432,6 +432,7 @@
     "ripples-cbdc-platform": "svg",
     "momento": "svg",
     "zerpmon": "png",
+    "joey-wallet": "svg",
     "Crossmark": "png",
     "Edge": "png"
 

@@ -39,4 +39,8 @@ Transactions of the `MPTokenIssuanceSet` type support additional values in the `
 | `tfMPTLock`        | `0x00000001` | 1             | Enable to lock balances of this MPT issuance. |
 | `tfMPTUnlock`      | `0x00000002` | 2             | Enable to unlock balances of this MPT issuance. |
 
+## See Also
+
+- [MPTokenIssuance entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

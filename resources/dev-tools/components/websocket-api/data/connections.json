@@ -45,14 +45,14 @@
   {
     "id": "connection-testnet-clio",
     "ws_url": "wss://clio.altnet.rippletest.net:51233/",
-    "jsonrpc-url": "https://clio.altnet.rippletest.net:51234/",
+    "jsonrpc_url": "https://clio.altnet.rippletest.net:51234/",
     "shortname": "Testnet-clio",
     "longname": "clio.altnet.rippletest.net (Testnet Public Cluster with Clio)"
   },
   {
     "id": "connection-devnet-clio",
     "ws_url": "wss://clio.devnet.rippletest.net:51233/",
-    "jsonrpc-url": "https://clio.devnet.rippletest.net:51234/",
+    "jsonrpc_url": "https://clio.devnet.rippletest.net:51234/",
     "shortname": "Devnet-clio",
     "longname": "clio.devnet.rippletest.net (Devnet Public Cluster with Clio)"
   }

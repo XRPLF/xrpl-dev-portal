@@ -103,4 +103,8 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | The object identified by the `NFTokenBuyOffer` is not actually a buy offer, or the object identified by the `NFTokenSellOffer` is not actually a sell offer. |
 | `tecNO_PERMISSION`                 | The seller does not own the `NFToken` being sold; or the matching offer specifies a different `Destination` account than the account accepting the offer. |
 
+## See Also
+
+- [NFTokenOffer entry][]
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

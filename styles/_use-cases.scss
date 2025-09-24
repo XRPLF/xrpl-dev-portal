@@ -4,7 +4,7 @@
 $infrastructure-logos: "xrp-ledger", "gatehub", "towolabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
 $developer-tooling-logos: "cryptum", "evernode", "threezy", "tokenize";
 $interoperability-logos: "multichain";
-$wallet-logos: "crossmark", "edge", "gem-wallet", "xumm";
+$wallet-logos: "crossmark", "edge", "gem-wallet", "xumm", "joey-wallet";
 $nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
 $exchanges-logos: "sologenic_dex", "xpmarket", "orchestra-finance", "moai-finance", "first-ledger-bot";
 $gaming-logos: "forte", "ledger-city", "futureverse", "zerpmon";
@@ -1446,7 +1446,7 @@ body,
       color: #FFF;
       font-size: 20px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 0px;
     }
     
     .integration-column__subtitle {

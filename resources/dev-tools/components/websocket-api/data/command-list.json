@@ -4,7 +4,7 @@
     "methods": [
       {
         "name": "account_channels",
-        "description": "Returns information about an account's <a href='/docs/concepts/payment-types/payment-channels/'>payment channels</a>.",
+        "description": "Returns information about an account's payment channels.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels",
         "body": {
           "command": "account_channels",
@@ -414,7 +414,7 @@
     "methods": [
       {
         "name": "mpt_holders",
-        "description": "Return all holders of an MPT and their balance (Clio only).",
+        "description": "Return all holders of an MPT and their balance.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/mpt_holders",
         "clio_only": true,
         "body": {
@@ -431,7 +431,7 @@
     "methods": [
       {
         "name": "nft_history",
-        "description": "Get past transaction metadata for an NFT (Clio only).",
+        "description": "Get past transaction metadata for an NFT.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history",
         "clio_only": true,
         "body": {
@@ -442,7 +442,7 @@
       },
       {
         "name": "nft_info",
-        "description": "Get info about an NFT (Clio only).",
+        "description": "Get info about an NFT.",
         "clio_only": true,
         "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info",
         "body": {
@@ -453,7 +453,7 @@
       },
       {
         "name": "nfts_by_issuer",
-        "description": "Get a list of NFTs issued by a specific account, optionally filtered by taxon (Clio only).",
+        "description": "Get a list of NFTs issued by a specific account, optionally filtered by taxon.",
         "clio_only": true,
         "link": "/docs/references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer",
         "body": {
@@ -468,18 +468,6 @@
   {
     "group": "Payment Channel Methods",
     "methods": [
-      {
-        "name": "channel_authorize",
-        "description": "Creates a signature that can be used to redeem a specific amount of XRP from a payment channel.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize",
-        "body": {
-          "id": "channel_authorize_example_id1",
-          "command": "channel_authorize",
-          "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-          "secret": "s████████████████████████████",
-          "amount": "1000000"
-        }
-      },
       {
         "name": "channel_verify",
         "description": "Checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.",

@@ -23,7 +23,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
-| [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} |  |
 | [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="success" name="Tip" %}
@@ -41,6 +40,7 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 | [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [NonFungibleTokensV1][]           | v1.9.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [CryptoConditionsSuite][]         | v0.60.0    | {% badge %}Obsolete: To Be Removed{% /badge %} |
+| [OwnerPaysFee][]                  | v0.33.0    | {% badge href="https://xrpl.org/blog/2017/rippled-0.80.0" %}Obsolete: Removed in v0.80.0{% /badge %} |
 | [SHAMapV2][]                      | v0.32.1    | {% badge href="https://xrpl.org/blog/2019/rippled-1.4.0.html" %}Obsolete: Removed in v1.4.0{% /badge %} |
 | [Tickets][]                       | v0.30.1    | {% badge href="https://xrpl.org/blog/2018/rippled-0.90.0.html" %}Obsolete: Removed in v0.90.0{% /badge %} |
 | [SusPay][]                        | v0.31.0    | {% badge href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" %}Obsolete: Removed in v0.60.0{% /badge %} |
@@ -714,7 +714,7 @@ Fixes two bugs in Automated Market Maker (AMM) transaction processing:
 | Amendment    | fixAMMv1_3 |
 |:-------------|:-----------|
 | Amendment ID | 7CA70A7674A26FA517412858659EBC7EDEEF7D2D608824464E6FDEFD06854E14 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -807,7 +807,7 @@ Fixes two bugs relating to the handling of NFT transfer fees and trust lines:
 | Amendment    | fixEnforceNFTokenTrustlineV2 |
 |:-------------|:-----------------------------|
 | Amendment ID | B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1052,7 +1052,7 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | Amendment    | fixPayChanCancelAfter |
 |:-------------|:----------------------|
 | Amendment ID | D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1544,7 +1544,7 @@ It has no other effects.
 | Amendment    | OwnerPaysFee |
 |:-------------|:-------------|
 | Amendment ID | 9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871 |
-| Status       | In Development |
+| Status       | Obsolete |
 | Default Vote (Latest stable release) | N/A |
 | Pre-amendment functionality retired? | No |
 

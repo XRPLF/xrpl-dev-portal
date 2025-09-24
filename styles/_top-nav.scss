@@ -1,6 +1,6 @@
 /* Top navigation ----------------------------------------------------------- */
 $nav-height: 80px;
-$banner-height: 52px; // Apex 2025 banner is 52px. 0 for no pencil banner.
+$banner-height: 0; // Currently no pencil banner.
 
 [data-component-name="layouts/RootLayout"] {
   padding-top: $nav-height + $banner-height;
@@ -530,7 +530,7 @@ $banner-height: 52px; // Apex 2025 banner is 52px. 0 for no pencil banner.
           display: none;
         }
 
-        #topnav-search, 
+        #topnav-search,
         #topnav-language,
         #topnav-theme {
           // display: none;
