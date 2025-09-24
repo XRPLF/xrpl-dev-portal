@@ -114,7 +114,7 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 - [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md)機能（`RequireAuth`フラグ）により、アカウントが発行したXRP以外の通貨を保有できる取引相手が制限されます。
 - `DisallowXRP`フラグは、アカウントがXRPを受領してはならないことを示します。これはDeposit Authorizationよりもソフトな保護機能であり、XRP Ledgerにより強制されません。（クライアントアプリケーションはこのフラグに従うか、または少なくともこのフラグについて警告します。）
 - 送信トランザクションが[Destinationタグ](../transactions/source-and-destination-tags.md)を指定している場合には、`RequireDest`フラグは、アカウントが通貨額のみを受領できることを示します。これにより、ユーザが支払の目的を指定し忘れることがなくなりますが、恣意的な送金先タグを作成できる不明な送金元から受取人が保護されるわけではありません。
-- [Partial Payment](../payment-types/partial-payments.md)により、アカウントは不要な支払を返金できます。この際、[送金手数料](../tokens/transfer-fees.md)と為替レートは送金額には追加されず、送金された金額から差し引かれます。
+- [Partial Payment](../payment-types/partial-payments.md)により、アカウントは不要な支払を返金できます。この際、[送金手数料](../tokens/fungible-tokens/transfer-fees.md)と為替レートは送金額には追加されず、送金された金額から差し引かれます。
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 

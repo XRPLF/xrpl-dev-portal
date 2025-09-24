@@ -1,3 +1,6 @@
+/docs/concepts/tokens/transfer-fees/:
+    to: /docs/concepts/tokens/fungible-tokens/transfer-fees/
+    type: 301
 /docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /docs/infrastructure/installation/
     type: 301
@@ -2335,6 +2338,9 @@ code_of_conduct.ja:
     type: 301
 
 # Japanese
+/ja/docs/concepts/tokens/transfer-fees/:
+    to: /ja/docs/concepts/tokens/fungible-tokens/transfer-fees/
+    type: 301
 /ja/docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /ja/docs/infrastructure/installation/
     type: 301

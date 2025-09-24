@@ -29,7 +29,7 @@ Unlike trust line tokens, each MPT issuance is uniquely identified by an **MPT I
 
 MPTs are designed decentralized finance, so they are ready to go with settings and features for institutional use cases:
 
-- **On-Chain Metadata:** Each MPT issuance has key properties defined on the ledger, so everyone can look up its data on-chain and the ledger's transaction engine can automatically enforce specific rules. Since MPT settings are defined separately instead of at the account level, you don't have to set up separate accounts to issue tokens with different settings, which also helps minimize your exposure to cyberattacks.
+- **On-Chain Metadata:** Each MPT issuance has key properties defined on the ledger, so everyone can look up its data on-chain and the ledger's transaction engine can automatically enforce specific rules. Since MPT settings are defined per issuance, you don't have to set up separate accounts to issue tokens with different settings, which also helps minimize your exposure to cyberattacks.
 - **Transferability controls:** MPTs can be made non-transferable, or holdable only by approved users.
 - **Supply cap:** MPTs can be configured with a maximum issued quantity, so that the amount in circulation is never more than this number.
 - **Transfer fees:** The issuer can charge a percentage fee for users to transfer the tokens among themselves.

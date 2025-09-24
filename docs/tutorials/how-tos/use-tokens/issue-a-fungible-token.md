@@ -109,7 +109,7 @@ Other settings you may want to, optionally, configure for your cold address (iss
 | [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
 
 [Require Destination Tags]: ../manage-account-settings/require-destination-tags.md
-[Transfer Fee]: ../../../concepts/tokens/transfer-fees.md
+[Transfer Fee]: ../../../concepts/tokens/fungible-tokens/transfer-fees.md
 [Tick Size]: ../../../concepts/tokens/decentralized-exchange/ticksize.md
 [Domain]: ../../../references/protocol/transactions/types/accountset.md#domain
 

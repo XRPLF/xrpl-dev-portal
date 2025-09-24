@@ -41,7 +41,7 @@ Si un actor malicioso descubre la clave secreta de la dirección emisora de una 
 
 ### Múltiples direcciones de emisión
 
-Una institución financiera puede emitir más de un token en el XRP Ledger desde una única dirección de emisión. Sin embargo, hay algunas configuraciones que se aplican por igual a todos los tokens (fungibles) emitidos desde una dirección, incluido el porcentaje de [comisiones de transferencia](../tokens/transfer-fees.md) y el estado [congelación global](../tokens/fungible-tokens/freezes.md). Si la intitución financiera quiere la flexibilidad de manejar las configuraciones de distinta manera para cada token, la institución debe tener múltiples direcciones emisoras.
+Una institución financiera puede emitir más de un token en el XRP Ledger desde una única dirección de emisión. Sin embargo, hay algunas configuraciones que se aplican por igual a todos los tokens (fungibles) emitidos desde una dirección, incluido el porcentaje de [comisiones de transferencia](../tokens/fungible-tokens/transfer-fees.md) y el estado [congelación global](../tokens/fungible-tokens/freezes.md). Si la intitución financiera quiere la flexibilidad de manejar las configuraciones de distinta manera para cada token, la institución debe tener múltiples direcciones emisoras.
 
 
 ## Direcciones operacionales

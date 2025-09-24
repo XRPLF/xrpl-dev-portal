@@ -13,9 +13,9 @@ labels:
 
 For standard tokens, the tokens paid in the transfer fee are burned, and no longer tracked in the XRP Ledger. If the token is backed by off-ledger assets, this reduces the amount of those assets the issuer has to hold in reserve to meet its obligations in the XRP Ledger. Transfer fees are usually not appropriate for tokens that aren't backed with outside assets.
 
-Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](nfts/index.md).
+Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](../nfts/index.md).
 
-The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address](../accounts/account-types.md) to another user.
+The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address](../../accounts/account-types.md) to another user.
 
 XRP never has a transfer fee, because it never has an issuer.
 
@@ -63,20 +63,20 @@ Anyone can check an account's `TransferRate` with the [account_info method][]. I
 
 ## Client Library Support
 
-Some [client libraries](../../references/client-libraries.md) have convenience functions for getting and setting `TransferRate` functions.
+Some [client libraries](../../../references/client-libraries.md) have convenience functions for getting and setting `TransferRate` functions.
 
 **JavaScript:** Use `xrpl.percentToTransferRate()` to convert a percentage transfer fee from a string to the corresponding `TransferRate` value.
 
 ## See Also
 
 - **Concepts:**
-    - [Fees (Disambiguation)](../transactions/fees.md)
-    - [Transaction Cost](../transactions/transaction-cost.md)
-    - [Paths](fungible-tokens/paths.md)
+    - [Fees (Disambiguation)](../../transactions/fees.md)
+    - [Transaction Cost](../../transactions/transaction-cost.md)
+    - [Paths](paths.md)
 - **References:**
     - [account_lines method][]
     - [account_info method][]
     - [AccountSet transaction][]
-    - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -110,7 +110,7 @@ Puedes utilizar el [método deposit_authorized][] para ver si una cuenta esta au
 - La característica [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md) (`RequireAuth` flag) limita que contrapartes pueden poseer divisas no-XRP en la cuenta.
 - El flag `DisallowXRP` indica que una cuenta no puede recibir XRP. Es una protencción más suave que Deposit Authorization, y no la aplica el XRP Ledger. (Las aplicaciones cliente deberían respetar este flag o al menos avisar de ello.)
 - El flag `RequireDest` indica que una cuenta solo puede recibir cantidades de divisas si se especifica un [Destination Tag](../transactions/source-and-destination-tags.md). Esto protege a usuarios de olvidar incluir el propósito del pago, pero no protege a los destinatarios de remitentes desconocidos que pueden añadir destination tags arbitrarios.
-- [Pagos parciales](../payment-types/partial-payments.md) provee una forma para que cuentas puedan devolver pagos no deseados restando los [costes de transferencia](../tokens/transfer-fees.md) y los ratios de exchanges de la cantidad enviada en lugar de sumarlos a la cantidad enviada.
+- [Pagos parciales](../payment-types/partial-payments.md) provee una forma para que cuentas puedan devolver pagos no deseados restando los [costes de transferencia](../tokens/fungible-tokens/transfer-fees.md) y los ratios de exchanges de la cantidad enviada en lugar de sumarlos a la cantidad enviada.
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 

@@ -86,7 +86,7 @@ When users send a token with a transfer fee, the amount of the transfer fee is d
 
 At a protocol level, the transfer fee is defined by the `TransferRate` account setting, which is an integer from 1 billion to 2 billion.
 
-For more information, see [Transfer Fees](../../transfer-fees.md).
+For more information, see [Transfer Fees](../transfer-fees.md).
 
 
 ### Transfer Fees with Operational and Standby Addresses

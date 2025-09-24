@@ -10,7 +10,7 @@ There are two standards for fungible tokens in the XRP Ledger, representing an e
 - **Trust line tokens** are the "version 1" fungible token standard. They are fully available in production on the XRP Ledger, but they have some edge cases that are important to know about before using them.
 - **Multi-Purpose Tokens (MPTs)** are the "version 2" fungible token standard. They are in active development, but do not have full feature parity with trust line tokens. They have been designed for greater efficiency and ease of use based on lessons learned from trust line tokens on the XRP Ledger. {% amendment-disclaimer name="MPTokensV1" /%}
 
-Both types of tokens are built with a range of compliance-focused features such as [freezes](./freezes.md), [clawback](./clawing-back-tokens.md), and [allow-listing](./authorized-trust-lines.md), and are expected to be supported for the foreseeable future.
+Both types of tokens support a compliance-focused features such as [freezes](freezes.md), [clawback](clawing-back-tokens.md), and [allow-listing](authorized-trust-lines.md). The two standards have different strengths, so both are expected to be supported for the foreseeable future.
 
 ## Trust Line Tokens
 
@@ -18,11 +18,11 @@ Trust line tokens are fungible tokens that use a bidirectional trust model where
 
 Trust line tokens have been part of the XRP Ledger since it launched and have grown with amendments to the protocol since then. Trust line tokens can be used for [cross-currency payments](../../payment-types/cross-currency-payments.md) or traded in the [decentralized exchange](../decentralized-exchange/index.md).
 
-Tokens with the same currency code but different issuers can [ripple](./rippling.md), a powerful feature for atomically settling and netting payments involving many different parties. However, when your settings are not configured correctly, rippling can lead to unexpected or undesirable movements between tokens from different issuers that use the same currency code. This feature makes trust line tokens the preferred standard for community credit use cases.
+Tokens with the same currency code but different issuers can [ripple](rippling.md), a powerful feature for atomically settling and netting payments involving many different parties. However, when your settings are not configured correctly, rippling can lead to unexpected or undesirable movements between tokens from different issuers that use the same currency code. This feature makes trust line tokens the preferred standard for community credit use cases.
 
-Many properties of trust line tokens are defined at the account level, meaning that every token issued by the same account must share the same properties. Also, trust line tokens use a floating point representation which supports very large and very small quantities but can lead to suprising rounding effects in edge cases.
+Many properties of trust line tokens are defined at the account level, meaning that every token issued by the same account must share the same properties. Also, trust line tokens use a floating point representation which supports very large and very small quantities but can lead to suprising rounding effects.
 
-See [Trust Lines Tokens](./trust-line-tokens.md) for more details about the properties and usage of trust line tokens.
+See [Trust Lines Tokens](trust-line-tokens.md) for more details about the properties and usage of trust line tokens.
 
 ## Multi-Purpose Tokens
 
@@ -32,7 +32,7 @@ Multi-Purpose Tokens (MPTs) are fungible tokens that use a unidirectional model 
 - **Separate properties per token:** An on-chain MPT issuance definition contains the properties of the token, which can be different from other tokens from the same issuer.
 - **Efficient storage format:** MPTs are designed to require less space in the shared ledger to store and send, so the network can more efficiently process large volumes of transactions.
 
-See [Multi-Purpose Tokens](./multi-purpose-tokens.md) for more details about the properties and usage of MPTs.
+See [Multi-Purpose Tokens](multi-purpose-tokens.md) for more details about the properties and usage of MPTs.
 
 ### Availability of MPT Features
 
@@ -42,8 +42,8 @@ Some notable features and their status:
 
 | MPT Feature | Amendment / Standard |
 |-------------|----------------------|
-| Issuing and direct payments | {% amendment-disclaimer name="MPTokensV1" compact="true" /%} |
-| Escrow | {% amendment-disclaimer name="TokenEscrow" compact="true" /%} (implements escrow for both trust line tokens and MPTs) |
+| Issuing and direct payments | {% amendment-disclaimer name="MPTokensV1" compact=true /%} |
+| Escrow | {% amendment-disclaimer name="TokenEscrow" compact=true /%} (implements escrow for both trust line tokens and MPTs) |
 | Mutable token properties | In development: [XLS-94](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0094-dynamic-MPT) |
 | Confidentiality | Proposed: [XLS-??](https://github.com/XRPLF/XRPL-Standards/discussions/372) |
 | Decentralized exchange (DEX), trading, cross-currency payments, and AMM compatibility | Expected future work |

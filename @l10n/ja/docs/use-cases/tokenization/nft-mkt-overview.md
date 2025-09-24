@@ -99,7 +99,7 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 1. [NFTokenOffer](../../concepts/tokens/nfts/reserve-requirements.md#nftokenoffer-reserve)
 2. NFToken page ([所有者準備金](../../concepts/tokens/nfts/reserve-requirements.md#owner-reserve))
-3. 少額の[取引手数料](../../concepts/tokens/transfer-fees.md)
+3. 少額の[取引手数料](../../concepts/tokens/fungible-tokens/transfer-fees.md)
 
 #### 支払い
 

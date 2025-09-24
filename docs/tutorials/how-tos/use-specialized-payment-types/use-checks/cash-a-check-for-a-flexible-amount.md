@@ -108,6 +108,6 @@ If you are not using `getBalanceChanges()`, the following guidelines should help
 
 - For tokens with a third-party issuer, there are changes to two `RippleState` objects, representing the trust lines connecting the sender to the issuer, and the issuer to the recipient. The `RippleState` object representing the relationship between the Check's sender and the issuer has its `Balance` changed in favor of the issuer, and the `RippleState` object representing the relationship between the issuer and the recipient has its `Balance` changed in favor of the recipient.
 
-    - If the token has a [transfer fee](../../../../concepts/tokens/transfer-fees.md), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
+    - If the token has a [transfer fee](../../../../concepts/tokens/fungible-tokens/transfer-fees.md), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

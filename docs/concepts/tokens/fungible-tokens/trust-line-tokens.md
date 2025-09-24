@@ -58,7 +58,9 @@ Unlike XRP or MPTs, trust line tokens always exist in _trust lines_, and all tra
 
 Anyone can issue trust line tokens by sending a [Payment transaction][] if the necessary trust lines are in place. You can "burn" tokens by sending them back to the issuer. In some cases, cross-currency payments or trades can also create more tokens according to an issuer's settings.
 
-Issuers have options with tokens that are not available with XRP. Issuers can charge a [transfer fee](transfer-fees.md) that is automatically deducted when users transfer their tokens. Issuers can also define a [tick size](decentralized-exchange/ticksize.md) for exchanges rates involving their tokens. Both issuers and regular accounts can [freeze](fungible-tokens/freezes.md) trust lines, which limits how the tokens in those trust lines can be used.
+Issuers have options with tokens that are not available with XRP. Issuers can charge a [transfer fee](transfer-fees.md) that is automatically deducted when users transfer their tokens. Issuers can also define a [tick size](../decentralized-exchange/ticksize.md) for exchanges rates involving their tokens. Both issuers and regular accounts can [freeze](freezes.md) trust lines, which limits how the tokens in those trust lines can be used.
+
+Settings such as the transfer fee, tick size, ability to freeze, and others are defined at the issuer's account level and apply to all trust line tokens they issue. For this reason, it is recommended to use a separate issuing account for each type of trust line token you issue, in case you need different settings.
 
 Trust line tokens use decimal (base-10) math with 15 digits of precision and an exponent that allows them to express very large values (up to 9999999999999999 × 10<sup>80</sup>) and very small values (down to 1.0 × 10<sup>-81</sup>).
 
