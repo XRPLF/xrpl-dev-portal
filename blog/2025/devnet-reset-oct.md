@@ -1,9 +1,9 @@
 ---
 category: 2025
-date: "2025-09-22"
+date: "2025-09-24"
 template: '../../@theme/templates/blogpost'
 seo:
-    description: Devnet is scheduled to reset on Monday, October 6, 2025 to temporarily disable PermissionDelegation and prevent validators from becoming amendment blocked.
+    description: Devnet is scheduled to reset on Friday, October 3, 2025 to prevent validators from becoming amendment blocked when PermissionDelegation is temporarily disabled.
 labels:
     - Advisories
 markdown:
@@ -12,7 +12,7 @@ markdown:
 ---
 # Upcoming Devnet Reset
 
-Devnet is scheduled for a reset on **Monday, October 6, 2025**. The `PermissionDelegation` amendment requires more development and will be set to unsupported in the upcoming release. To prevent validators that upgrade to this version from becoming amendment blocked, Devnet will be reset.
+Devnet is scheduled for a reset on **Friday, October 3, 2025**. The `PermissionDelegation` amendment requires more development and will be set to unsupported in the next rippled release. To prevent validators that upgrade to this version from becoming amendment blocked, Devnet will be reset.
 
 
 ## Background
