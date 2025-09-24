@@ -345,9 +345,11 @@ function TokenVideoSection() {
         <iframe
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/ZZ2KZTEJECg"
-          title="Generate and Send MPTs"
+          src="https://www.youtube.com/embed/oKbf-IgPHho"
+          title="Multi Purpose Tokens (MPTs) on the XRPL"
           frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
         ></iframe>
       </div>
       <div className="token-video-text-container">
