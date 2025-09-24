@@ -9,11 +9,11 @@ labels:
 ---
 # Paths
 
-In the XRP Ledger, paths define a way for [tokens](../index.md) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](../../payment-types/cross-currency-payments.md) by connecting sender and receiver through orders and [automated market makers (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) in the XRP Ledger's [decentralized exchange](../decentralized-exchange/index.md). Paths also enable complex settlement of offsetting debts.
+In the XRP Ledger, paths define a way for [trust line tokens](../trust-line-tokens.md) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](../../payment-types/cross-currency-payments.md) by connecting sender and receiver through orders and [automated market makers (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) in the XRP Ledger's [decentralized exchange](../decentralized-exchange/index.md). Paths also enable complex settlement of offsetting debts.
 
 A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. All paths in a path set must start with the same currency, and must also end with the same currency as each other.
 
-Since XRP can be sent directly to any address, an [XRP-to-XRP transaction](../../payment-types/direct-xrp-payments.md) does not use any paths.
+[XRP-to-XRP transactions](../../payment-types/direct-xrp-payments.md) and MPT transfers are always sent directly, and do not use any paths.
 
 ## Path Steps
 
