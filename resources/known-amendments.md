@@ -1584,7 +1584,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 
 Allows accounts to delegate some permissions to other accounts.
 
-Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075d-permission-delegation).
+Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
 
 ### PermissionedDEX
