@@ -17,7 +17,7 @@ This document describes steps to detect and correct this problem if it occurs.
 
 The capacity of the SQLite database is a result of the database's _page size_ parameter, which cannot be easily changed after the database is created. (For more information on SQLite's internals, see [the official SQLite documentation](https://www.sqlite.org/fileformat.html).) The database can reach its capacity even if there is still free space on the disk and filesystem where it is stored. As described in the [Fix](#fix) below, reconfiguring the page size to avoid this problem requires a somewhat time-consuming migration process. <!-- STYLE_OVERRIDE: easily -->
 
-{% admonition type="success" name="Tip" %}Full history is not necessary for most use cases. Servers with full transaction history may be useful for long-term analysis and archive purposes or as a precaution against disasters. For a less resource-intense way to contribute to the storage of transaction history, see [History Sharding](../configuration/data-retention/history-sharding.md).{% /admonition %}
+{% admonition type="success" name="Tip" %}Full history is not necessary for most use cases. Servers with full transaction history may be useful for long-term analysis and archive purposes or as a precaution against disasters.{% /admonition %}
 
 
 ## Detection

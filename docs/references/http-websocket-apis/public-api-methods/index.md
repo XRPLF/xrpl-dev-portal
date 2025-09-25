@@ -72,9 +72,11 @@ Paths define a way for payments to flow through intermediary steps on their way 
 
 Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels.
 
-* **[`channel_authorize`](payment-channel-methods/channel_authorize.md)** - Sign a claim for money from a payment channel.
 * **[`channel_verify`](payment-channel-methods/channel_verify.md)** - Check a payment channel claim's signature.
 
+By default, the following method is [admin-only](../admin-api-methods/index.md). It can be used as a public method if the server admin has [enabled public signing](../../../infrastructure/configuration/enable-public-signing.md).
+
+* **[`channel_authorize`](payment-channel-methods/channel_authorize.md)** - Sign a claim for money from a payment channel.
 
 ## [Subscription Methods](subscription-methods/index.md)
 

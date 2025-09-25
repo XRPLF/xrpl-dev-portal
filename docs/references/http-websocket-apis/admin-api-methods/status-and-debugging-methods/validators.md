@@ -505,6 +505,5 @@ Each member of the `publisher_lists` array is a **Publisher List** object with t
 ### Possible Errors
 
 - Any of the [universal error types][].
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

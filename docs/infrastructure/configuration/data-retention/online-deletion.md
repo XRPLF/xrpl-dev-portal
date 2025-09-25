@@ -126,7 +126,6 @@ When it comes time for online deletion, the server first walks through the oldes
     - [Configure `rippled`](../index.md)
         - [Configure Online Deletion](configure-online-deletion.md)
         - [Configure Advisory Deletion](configure-advisory-deletion.md)
-        - [Configure History Sharding](configure-history-sharding.md)
         - [Configure Full History](configure-full-history.md)
 - **References:**
     - [ledger method][]
