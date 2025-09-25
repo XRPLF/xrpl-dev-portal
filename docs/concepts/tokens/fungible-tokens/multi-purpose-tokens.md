@@ -27,7 +27,7 @@ Unlike trust line tokens, each MPT issuance is uniquely identified by an **MPT I
 
 ## Key Features of MPTs on XRPL
 
-MPTs are designed decentralized finance, so they are ready to go with settings and features for institutional use cases:
+MPTs are designed for decentralized finance, so they are ready to go with settings and features for institutional use cases:
 
 - **On-Chain Metadata:** Each MPT issuance has key properties defined on the ledger, so everyone can look up its data on-chain and the ledger's transaction engine can automatically enforce specific rules. Since MPT settings are defined per issuance, you don't have to set up separate accounts to issue tokens with different settings, which also helps minimize your exposure to cyberattacks.
 - **Transferability controls:** MPTs can be made non-transferable, or holdable only by approved users.

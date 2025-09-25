@@ -45,14 +45,18 @@ Some notable features and their status:
 | Issuing and direct payments | {% amendment-disclaimer name="MPTokensV1" compact=true /%} |
 | Escrow | {% amendment-disclaimer name="TokenEscrow" compact=true /%} (implements escrow for both trust line tokens and MPTs) |
 | Mutable token properties | In development: [XLS-94](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0094-dynamic-MPT) |
-| Confidentiality | Proposed: [XLS-??](https://github.com/XRPLF/XRPL-Standards/discussions/372) |
+| Confidentiality | [Proposed XLS](https://github.com/XRPLF/XRPL-Standards/discussions/372) |
 | Decentralized exchange (DEX), trading, cross-currency payments, and AMM compatibility | Expected future work |
 
 ## Which Fungible Token Type to Use
 
 If you are creating a new token on the XRP Ledger, it may be confusing that there are two standards to choose from with different properties and strengths. If you aren't sure which one to use, the following summary should help you decide:
 
-- If you need **compatibility with the DEX** or your use case is **community credit**, choose trust line tokens.
-- For most cases, especially new tokens, MPTs are usually preferred.
+- For most new tokens, MPTs are preferred.
+- Specific cases where you might prefer trust line tokens include:
+    - If you need **compatibility with the DEX**. <!-- Note: revisit this when MPT DEX compatibility is closer to being available. -->
+    - Your use case is **community credit**.
+    - You need compatibility with legacy software, such as an integration that already works with trust line tokens.
+    - You need to be able to represent very large and very small quantities of the same token (20 orders of magnitude apart).
 
-There are other strengths and weaknesses of each format, such as trust line tokens' ability to represent very large and very small quantities of the same token (greater than 63 orders of magnitude apart), or compatibility with legacy software.
+This is not an exhaustive list of strengths and weaknesses of each format. If you aren't sure, you can read more about the specific properties of [trust line tokens](trust-line-tokens.md) and [MPTs](multi-purpose-tokens.md) before making a decision.

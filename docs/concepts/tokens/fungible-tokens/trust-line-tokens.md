@@ -56,7 +56,7 @@ In addition to the shared balance, each account has its own settings on the trus
 
 Unlike XRP or MPTs, trust line tokens always exist in _trust lines_, and all transfers move along trust lines. You cannot cause someone else's account to hold more of a token than the _limit_ configured on their trust line. (You _can_ cause your own trust line to go over the limit, for example by buying more of it in the decentralized exchange or by decreasing the limit after you already have a positive balance.)
 
-Anyone can issue trust line tokens by sending a [Payment transaction][] if the necessary trust lines are in place. You can "burn" tokens by sending them back to the issuer. In some cases, cross-currency payments or trades can also create more tokens according to an issuer's settings.
+Anyone can issue trust line tokens by sending a [Payment transaction][] if the necessary trust lines are in place. You can _burn_ (destroy) tokens by sending them back to the issuer. In some cases, cross-currency payments or trades can also create more tokens according to an issuer's settings.
 
 Issuers have options with tokens that are not available with XRP. Issuers can charge a [transfer fee](transfer-fees.md) that is automatically deducted when users transfer their tokens. Issuers can also define a [tick size](../decentralized-exchange/ticksize.md) for exchanges rates involving their tokens. Both issuers and regular accounts can [freeze](freezes.md) trust lines, which limits how the tokens in those trust lines can be used.
 
