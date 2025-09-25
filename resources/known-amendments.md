@@ -109,7 +109,7 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56d](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056d-batch)
+Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
 
 
 ### CheckCashMakesTrustLine
@@ -1584,7 +1584,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 
 Allows accounts to delegate some permissions to other accounts.
 
-Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075d-permission-delegation).
+Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
 
 ### PermissionedDEX
