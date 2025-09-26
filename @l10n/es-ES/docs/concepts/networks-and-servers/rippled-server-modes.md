@@ -14,7 +14,6 @@ El software del servidor `rippled` puede ejecutarse en varios modos dependiendo 
     - [**Validador**](#validadores) - Ayuda a asegurar la red participando en el consenso.
     - [**Servidor API**](#servidores-api) - Proporciona [acceso API](../../tutorials/http-websocket-apis/build-apps/get-started.md) para leer datos del ledger compartido, enviar transacciones, y mirar la actividad en el ledger. Opcionalmente, puede ser un [**servidor full history**](#servidores-full-history), el cual guarda un registro completo de transacciones y el histórico del ledger.
     - [**Servidor hub**](#hubs-públicos) - Transmite mensajes entre muchos otros miembros de la red peer-to-peer.
-- [**Modo Reporting**](#modo-reporting) - Un modo especializado para servir consultas API desde una base de datos relacional. No participa en la red peer-to-peer, por lo que necesitas ejecutar un servidor en modo P2P y conectarle el servidor modo reporting usando una conexión gRPC de confianza. 
 - [**Modo solitario**](#modo-solitario) - Un modo offline para pruebas. No se conecta a la red peer-to-peer ni usa consenso.
 
 Tambien puedes ejecutar el ejecutable `rippled` como una aplicación cliente para acceder [APIs `rippled`](../../references/http-websocket-apis/index.md) localmente. (Dos instancias del mismo binario pueden ejecutarse uno al lado del otro en este caso; uno como un servidor, y el otro ejecutándose brevemente como cliente y luego apagarlo.)
@@ -65,18 +64,6 @@ La validación utiliza solo una pequeña cantidad de recursos informáticos, per
 Puedes habilitar de forma segura la validación en un servidor que también se utiliza para otros fines; este tipo de configuración se llama un _servidor multiuso_. Alternativamente, puedes ejecutar un _validador dedicado_ que no realice otras tareas, posiblemente en un [cluster](clustering.md) con otros servidores `rippled` en Modo P2P.
 
 Para más información sobre como ejecutar un validador, ver [Ejecutar `rippled` como un validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
-
-
-## Modo reporting
-
-
-El modo reporting es un modo especializado para servir solicitudes API de manera más eficiente. En este modo, el servidor obtiene los datos del ledger validados más recientes a través de [gRPC](../../infrastructure/configuration/configure-grpc.md) desde un servidor `rippled` separado en Modo P2P, luego carga esos datos en una base de datos relacional ([PostgreSQL](https://www.postgresql.org/)). El servidor en modo reporting no participa directamente en la red peer-to-peer, aunque puede reenviar solicitudes como el envío de transacciones al servidor en Modo P2P que utiliza.
-
-Varios servidores en modo reporting pueden compartir acceso a una base de datos PostgreSQL y a un clúster [Apache Cassandra](https://cassandra.apache.org/) para servir una gran cantidad de historial sin que cada servidor necesite una copia redundante de todos los datos. Los servidores en modo reporting proporcionan estos datos a través de las mismas [`rippled` APIs](../../references/http-websocket-apis/index.md) con algunos cambios leves para adaptarse a las diferencias en cómo almacenan los datos subyacentes.
-
-Especialmente, los servidores en modo reporting no informan sobre datos pendientes de validación del ledger o transacciones no validadas. Esta limitación es relevante para ciertos casos de uso que dependen de un acceso rápido a datos en flujo, como realizar arbitraje en el [exchange descentralizado](../tokens/decentralized-exchange/index.md).
-
-<!-- TODO: link setup steps for Reporting Mode when those are ready -->
 
 
 ## Modo solitario

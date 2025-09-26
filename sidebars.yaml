@@ -594,13 +594,10 @@
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-                    - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
-                    - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
-                    - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
                 - page: docs/references/http-websocket-apis/admin-api-methods/server-control-methods/index.md
                   expanded: false
                   items:
@@ -668,8 +665,6 @@
                 - page: docs/infrastructure/configuration/data-retention/online-deletion.md
                 - page: docs/infrastructure/configuration/data-retention/configure-online-deletion.md
                 - page: docs/infrastructure/configuration/data-retention/configure-advisory-deletion.md
-                - page: docs/infrastructure/configuration/data-retention/history-sharding.md
-                - page: docs/infrastructure/configuration/data-retention/configure-history-sharding.md
             - page: docs/infrastructure/configuration/peering/index.md
               expanded: false
               items:
