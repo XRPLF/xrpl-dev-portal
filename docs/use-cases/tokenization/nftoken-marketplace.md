@@ -55,11 +55,11 @@ See:
 
 1. [NFTokenOffer](../../concepts/tokens/nfts/reserve-requirements.md#nftokenoffer-reserve)
 2. NFToken page ([Owner reserve](../../concepts/tokens/nfts/reserve-requirements.md#owner-reserve))
-3. Trivial [transfer fees](../../concepts/tokens/transfer-fees.md)
+3. Trivial [transfer fees](../../concepts/tokens/fungible-tokens/transfer-fees.md)
 
 You can learn more about brokered sales in the topic [Trading Tokens on the XRP Ledger](../../concepts/tokens/nfts/trading.md).
 
-Learn more about token transfer fees in the topic [Transfer Fees](../../concepts/tokens/transfer-fees.md).
+Learn more about token transfer fees in the topic [Transfer Fees](../../concepts/tokens/fungible-tokens/transfer-fees.md).
 
 You can get started building a brokered sales marketplace by following the steps in the [Broker a NFToken Sale](../../tutorials/javascript/nfts/broker-an-nft-sale.md).
 

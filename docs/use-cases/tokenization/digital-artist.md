@@ -61,7 +61,7 @@ See:
 
 1. [NFTokenOffer](../../concepts/tokens/nfts/reserve-requirements.md#nftokenoffer-reserve)
 2. NFToken page ([Owner reserve](../../concepts/tokens/nfts/reserve-requirements.md#owner-reserve))
-3. Trivial [transfer fees](../../concepts/tokens/transfer-fees.md)
+3. Trivial [transfer fees](../../concepts/tokens/fungible-tokens/transfer-fees.md)
 
 ### Checkout
 

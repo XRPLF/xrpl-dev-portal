@@ -7,9 +7,11 @@ labels:
 ---
 # Rippling
 
-Rippling is the _indirect movement_ of funds that occurs for any payment of fungible tokens (except when an issuing account exchanges tokens directly with another account). This includes when one holder sends tokens to another holder of the same token.
+Rippling is the _indirect movement_ of funds that occurs for any payment of [trust line tokens](./trust-line-tokens.md) (except when an issuing account exchanges tokens directly with another account). This includes when one holder sends tokens to another holder of the same token.
 
 Rippling can automatically exchange tokens that have the same currency code, even if they have different issuers. This helps to facilitate longer and more complex payments between accounts.
+
+[MPTs](./multi-purpose-tokens.md) intentionally do not support rippling.
 
 ## Example of Rippling
 

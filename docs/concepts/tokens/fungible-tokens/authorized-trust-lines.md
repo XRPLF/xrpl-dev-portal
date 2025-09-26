@@ -9,7 +9,7 @@ labels:
 ---
 # Authorized Trust Lines
 
-The Authorized Trust Lines feature enables issuers to create tokens that can only be held by accounts that the issuer specifically authorizes. This feature only applies to tokens, not XRP.
+The Authorized Trust Lines feature enables issuers to create [trust line tokens](./trust-line-tokens.md) that can only be held by accounts that the issuer specifically authorizes—in other words, allow-listing access to all of an issuer's tokens. This page describes the feature as it applies to trust line tokens, but [multi-purpose tokens](./multi-purpose-tokens.md) have a similar setting on a per-token basis. Allow-listing does not apply to XRP.
 
 To use the Authorized Trust Lines feature, enable the **Require Auth** flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.
 

@@ -11,7 +11,7 @@ labels:
 
 El remitente de cualquier [transacción de pago][] puede habilitar el [flag de"Partial Payment"](../../references/protocol/transactions/types/payment.md#payment-flags) y enviar un pago que entregue menos de lo que indica el campo `Amount`. Al procesar cualquier Pago, utiliza el campo de metadatos `delivered_amount`, no el campo `Amount`. El `delivered_amount` es la cantidad que un pago realmente entregó.
 
-Si un Pago no habilita el flag de Pago Parcial, el campo `Amount` de una [transacción Payment][] en el XRP Ledger especifica la cantidad a entregar después de cobrar por tasas de cambio y [costes de transferencia](../tokens/transfer-fees.md). El flag de Pago Parcial ([`tfPartialPayment`](../../references/protocol/transactions/types/payment.md#payment-flags)) permite que un pago tenga éxito al reducir la cantidad recibida en lugar de aumentar la cantidad enviada. Los pagos parciales son útiles para [devolver pagos](bouncing-payments.md) sin incurrir en costos adicionales para uno mismo.
+Si un Pago no habilita el flag de Pago Parcial, el campo `Amount` de una [transacción Payment][] en el XRP Ledger especifica la cantidad a entregar después de cobrar por tasas de cambio y [costes de transferencia](../tokens/fungible-tokens/transfer-fees.md). El flag de Pago Parcial ([`tfPartialPayment`](../../references/protocol/transactions/types/payment.md#payment-flags)) permite que un pago tenga éxito al reducir la cantidad recibida en lugar de aumentar la cantidad enviada. Los pagos parciales son útiles para [devolver pagos](bouncing-payments.md) sin incurrir en costos adicionales para uno mismo.
 
 La cantidad de XRP utilizada para el [coste de transacción](../transactions/transaction-cost.md) siempre se deduce de la cuenta del remitente, independientemente del tipo de transacción. Este coste de transacción, o comisión, no se incluye en la `Amount`.
 
@@ -29,7 +29,7 @@ En otras palabras:
 Cantidad + (costes) = (cantidad enviada) ≤ SendMax
 ```
 
-En esta fórmula, "costes" o fees se refiere a [costes de transferencia](../tokens/transfer-fees.md) y tipos de cambio de las divisas. La "cantidad enviada" y la cantidad enviada (`Amount`) pueden estar denominadas en distintas divisas y convertirse por la consumición de Ofertas en el exchange descentralizado del XRP Ledger.
+En esta fórmula, "costes" o fees se refiere a [costes de transferencia](../tokens/fungible-tokens/transfer-fees.md) y tipos de cambio de las divisas. La "cantidad enviada" y la cantidad enviada (`Amount`) pueden estar denominadas en distintas divisas y convertirse por la consumición de Ofertas en el exchange descentralizado del XRP Ledger.
 
 **Nota:** El campo `Fee` de la transacción se refiere al [coste de transacción](../transactions/transaction-cost.md) en XRP, que se destruye para enviar la transacción a la red. El coste de transacción exacto especificado se carga siempr al remitente y se separa completamente de los cálculos de costes para cualquier tipo de pago.
 

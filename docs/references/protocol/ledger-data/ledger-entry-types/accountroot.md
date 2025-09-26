@@ -56,7 +56,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `Sequence`                    | Number    | UInt32            | Yes       | The [sequence number](../../data-types/basic-data-types.md#account-sequence) of the next valid transaction for this account. |
 | `TicketCount`                 | Number    | UInt32            | No        | How many [Tickets](../../../../concepts/accounts/tickets.md) this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. _(Added by the [TicketBatch amendment][].)_ |
 | `TickSize`                    | Number    | UInt8             | No        | How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Added by the [TickSize amendment][].)_ |
-| `TransferRate`                | Number    | UInt32            | No        | A [transfer fee](../../../../concepts/tokens/transfer-fees.md) to charge other users for sending currency issued by this account to each other. |
+| `TransferRate`                | Number    | UInt32            | No        | A [transfer fee](../../../../concepts/tokens/fungible-tokens/transfer-fees.md) to charge other users for sending currency issued by this account to each other. |
 | `WalletLocator`               | String    | UInt256           | No        | An arbitrary 256-bit value that users can set. |
 | `WalletSize`                  | Number    | UInt32            | No        | Unused. (The code supports this field but there is no way to set it.) |
 

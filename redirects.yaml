@@ -1,3 +1,6 @@
+/docs/concepts/tokens/transfer-fees/:
+    to: /docs/concepts/tokens/fungible-tokens/transfer-fees/
+    type: 301
 /docs/infrastructure/configuration/data-retention/configure-history-sharding/:
     to: /docs/infrastructure/configuration/data-retention/
     type: 301
@@ -2350,6 +2353,9 @@ code_of_conduct.ja:
     type: 301
 
 # Japanese
+/ja/docs/concepts/tokens/transfer-fees/:
+    to: /ja/docs/concepts/tokens/fungible-tokens/transfer-fees/
+    type: 301
 /ja/docs/infrastructure/configuration/data-retention/configure-history-sharding/:
     to: /ja/docs/infrastructure/configuration/data-retention/
     type: 301

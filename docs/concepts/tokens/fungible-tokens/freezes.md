@@ -1,6 +1,4 @@
 ---
-html: freezes.html
-parent: trust-lines-and-issuing.html
 seo:
     description: Issuers can freeze their issued tokens for compliance purposes.
 labels:
@@ -10,17 +8,20 @@ labels:
 
 Issuers can freeze the tokens they issue in the XRP Ledger. **This does not apply to XRP,** which is the native asset of the XRP Ledger, not an issued token.
 
-In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an exchange or gateway may want to freeze token balances.
+In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an issuer may want to freeze a balance they issue. This page describes the freeze functionality of [trust line tokens](./trust-line-tokens.md).
 
 {% admonition type="success" name="Tip" %}No one can freeze XRP in the XRP Ledger. However, custodial exchanges can always freeze the funds they custody at their own discretion. For more details, see [Common Misunderstandings about Freezes](common-misconceptions-about-freezes.md).{% /admonition %}
 
-There are three settings related to freezes:
+Trust line tokens have these settings related to freezes:
 
-* [**Individual Freeze**](#individual-freeze) - Freeze one counterparty.
+* [**Individual Freeze**](#individual-freeze) - Freeze one counterparty, so they cannot spend tokens.
+* [**Deep Freeze**](./deep-freeze.md) - Further freeze one counterparty, so that they cannot receive those tokens, either.
 * [**Global Freeze**](#global-freeze) - Freeze all counterparties.
 * [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
 
 All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the token issuer or the currency holder can freeze a trust line; however, the effect is minimal when a currency holder enacts a freeze.
+
+[MPTs](./multi-purpose-tokens.md) have similar functionality, but it is called "locking" and individual freezes always function like deep freeze.
 
 
 ## Individual Freeze

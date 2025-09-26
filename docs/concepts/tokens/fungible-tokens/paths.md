@@ -1,6 +1,4 @@
 ---
-html: paths.html
-parent: trust-lines-and-issuing.html
 seo:
     description: Payments of tokens must traverse paths of connected users and order books.
 labels:
@@ -9,11 +7,11 @@ labels:
 ---
 # Paths
 
-In the XRP Ledger, paths define a way for [tokens](../index.md) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](../../payment-types/cross-currency-payments.md) by connecting sender and receiver through orders and [automated market makers (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) in the XRP Ledger's [decentralized exchange](../decentralized-exchange/index.md). Paths also enable complex settlement of offsetting debts.
+In the XRP Ledger, paths define a way for [trust line tokens](trust-line-tokens.md) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](../../payment-types/cross-currency-payments.md) by connecting sender and receiver through orders and [automated market makers (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) in the XRP Ledger's [decentralized exchange](../decentralized-exchange/index.md). Paths also enable complex settlement of offsetting debts.
 
 A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. All paths in a path set must start with the same currency, and must also end with the same currency as each other.
 
-Since XRP can be sent directly to any address, an [XRP-to-XRP transaction](../../payment-types/direct-xrp-payments.md) does not use any paths.
+[XRP-to-XRP transactions](../../payment-types/direct-xrp-payments.md) and MPT transfers are always sent directly, and do not use any paths.
 
 ## Path Steps
 
@@ -26,7 +24,7 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 
 [Trading tokens and possibly XRP](../decentralized-exchange/index.md) involves going to an order book or AMM and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers or AMMs a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available exchange rates at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
-In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](../transfer-fees.md), AMM fees, trust line quality settings, or rounding.
+In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](transfer-fees.md), AMM fees, trust line quality settings, or rounding.
 
 [{% inline-svg file="/docs/img/paths-examples.svg" /%}](/docs/img/paths-examples.svg "Diagram of three example paths")
 

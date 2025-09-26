@@ -8,7 +8,8 @@ redirect_url: https://xpring-eng.github.io/xrp-api/
 nav_omit: true
 filters:
     - xrpapi_readme
-sidebar: ../../sidebars.yaml
+sidebar: 
+    path: ../../sidebars.yaml
 ---
 # XRP-API
 
