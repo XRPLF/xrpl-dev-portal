@@ -151,6 +151,7 @@ amendment.table.name: 名前
 amendment.table.introduced: 登場
 amendment.table.status: ステータス
 amendment.status.enabled: 有効
+amendment.status.eta: 予定
 amendment.status.openForVoting: 投票中
 
 # index.page.tsx

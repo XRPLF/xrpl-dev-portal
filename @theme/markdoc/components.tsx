@@ -229,6 +229,7 @@ type Amendment = {
   consensus?: string;
   date?: string;
   id: string;
+  eta?: string;
 };
 
 type AmendmentsResponse = {
@@ -260,6 +261,7 @@ export function AmendmentsTable() {
           .sort((a: Amendment, b: Amendment) => {
             // Sort by status priority (lower number = higher priority)
             const getStatusPriority = (amendment: Amendment): number => {
+              if (amendment.eta) return 0; // Expected
               if (amendment.consensus) return 1; // Open for Voting
               if (amendment.tx_hash) return 2; // Enabled
             };
@@ -349,6 +351,7 @@ function AmendmentBadge(props: { amendment: Amendment }) {
 
   const enabledLabel = translate("amendment.status.enabled", "Enabled");
   const votingLabel = translate("amendment.status.openForVoting", "Open for Voting");
+  const etaLabel = translate("amendment.status.eta", "Expected");
 
   React.useEffect(() => {
     const amendment = props.amendment;
@@ -360,13 +363,20 @@ function AmendmentBadge(props: { amendment: Amendment }) {
       setColor('green');
       setHref(`https://livenet.xrpl.org/transactions/${amendment.tx_hash}`);
     } 
+    // Check if expected activation is provided (has eta field)
+    else if (amendment.eta) {
+      let etaDate = new Date(amendment.eta).toISOString().split('T')[0];
+      setStatus(`${etaLabel}: ${etaDate}`);
+      setColor('blue');
+      setHref(undefined);
+    }
     // Check if amendment is currently being voted on (has consensus field)
     else if (amendment.consensus) {
       setStatus(`${votingLabel}: ${amendment.consensus}`);
       setColor('80d0e0');
       setHref(undefined); // No link for voting amendments
     }
-  }, [props.amendment, enabledLabel, votingLabel]);
+  }, [props.amendment, enabledLabel, etaLabel, votingLabel]);
 
   // Split the status at the colon to create two-color badge
   const parts = status.split(':');
