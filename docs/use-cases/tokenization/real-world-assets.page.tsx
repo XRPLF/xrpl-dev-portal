@@ -364,13 +364,15 @@ function TokenVideoSection() {
           )}
         </p>
         <div className="d-lg-block small-100 __button-container">
-          <Link
+          <a
             className="btn btn-primary"
+            href="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
             target="_blank"
-            to="#"
+            rel="noopener"
+            download
           >
             {translate("Download White Paper")}
-          </Link>
+          </a>
         </div>
       </div>
     </section>
