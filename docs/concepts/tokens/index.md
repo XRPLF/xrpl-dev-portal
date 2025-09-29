@@ -1,22 +1,19 @@
 ---
-html: tokens.html
-parent: concepts.html
 seo:
-    description: Anyone can make tokens representing digital value on the XRP Ledger.
+    description: Anyone can make tokens representing digital value on the XRP Ledger. Learn about types of tokens and how they are used.
 labels:
   - Tokens
 ---
 # Tokens
 
-All assets other than XRP can be represented in the XRP Ledger as _tokens_.
+All assets other than XRP can be represented in the XRP Ledger as _tokens_. Tokens can be fungible, meaning all units of that token are interchangeable and indistinguishable; or non-fungible, meaning each token is unique and indivisible. The XRP has three token standards to choose from, depending on the type of asset you need:
 
-Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Tokens can be used for [cross-currency payments](../payment-types/cross-currency-payments.md) and can be traded in the [decentralized exchange](decentralized-exchange/index.md).
+- **Trust line tokens** are the "version 1" fungible token standard. They are fully available in production on the XRP Ledger, and can be used for [cross-currency payments](../payment-types/cross-currency-payments.md) or traded in the [decentralized exchange](decentralized-exchange/index.md). However, they have some edge cases that are important to know about before using them.
+    {% admonition type="info" name="Note" %}Trust line tokens on the XRP Ledger have also been called "IOUs" (as in [I-owe-you](https://en.wikipedia.org/wiki/IOU)) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that these tokens can represent. <!-- STYLE_OVERRIDE: ious -->{% /admonition %}
+- **Multi-Purpose Tokens (MPTs)** are the "version 2" fungible token standard. They are in active development, but do not have full feature parity with trust line tokens. They have been designed for greater efficiency and ease of use based on lessons learned from trust line tokens on the XRP Ledger. {% amendment-disclaimer name="MPTokensV1" /%}
+- **[Non-fungible tokens (NFTs)](nfts/index.md)** encode ownership of unique and indivisible tokens, which could represent physical, non-physical, or purely digital goods, such as works of art or in-game items.
 
-{% admonition type="info" name="Note" %}Tokens on the XRP Ledger have also been called "IOUs" (as in [I-owe-you](https://en.wikipedia.org/wiki/IOU)) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that XRP Ledger tokens can represent. <!-- STYLE_OVERRIDE: ious -->{% /admonition %}
-
-Tokens can also be non-fungible. Non-fungible tokens (NFTs) serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
-
-See [Fungible Tokens](fungible-tokens/index.md) and [Non-fungible Tokens](nfts/index.md).
+Anyone can issue any of these types of tokens on the XRP Ledger, for any use case ranging from informal "IOUs" to institutional-grade, fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more.
 
 ## Stablecoins
 
@@ -32,20 +29,20 @@ For more on this type of usage, see [paths](fungible-tokens/paths.md). <!--{# TO
 
 ## Other Tokens
 
-There are other use cases for tokens issued in the XRP Ledger. For example, you can create an "Initial Coin Offering" (ICO) by issuing a fixed amount of currency to a secondary address, then "throwing away the key" to the issuer.
+There are other use cases for tokens issued in the XRP Ledger, including digital-only tokens that are intended for use in various online systems. It is also common for users to create and trade "meme coins" for novelty and speculative purposes, without any more serious use case in mind. Digital first tokens are sometimes distributed with an "Initial Coin Offering" (ICO) where a fixed amount of tokens are initially created and distributed, with the issuer then "throwing away the key" to their account so that no more tokens can be issued later.
 
 {% admonition type="danger" name="Warning" %}ICOs might be [regulated as securities](https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings) in the USA. <!-- SPELLING_IGNORE: ico, icos -->{% /admonition %}
 
 Be sure to research the relevant regulations before engaging in any financial service business.
 
-## Token Properties
+## Differences from XRP
 
-Tokens in the XRP Ledger are fundamentally different than XRP. Tokens always exist in _trust lines_, and all transfers of tokens move along trust lines. You cannot cause someone else's account to hold more of a token than the _limit_ configured on their trust line. (You _can_ cause your own trust line to go over the limit, for example by buying more of it in the decentralized exchange or by decreasing the limit after you already have a positive balance.)
+XRP, the native digital asset of the XRP Ledger, has different technical properties than all other tokens in the XRPL, so it is not typically called a "token" in the context of XRPL. Some notable differences:
 
-Anyone can issue tokens by sending a [Payment transaction][] if the necessary trust lines are in place. You can "burn" tokens by sending them back to the issuer. In some cases, cross-currency payments or trades can also create more tokens according to an issuer's settings.
-
-Issuers have options with tokens that are not available with XRP. Issuers can charge a [transfer fee](transfer-fees.md) that is automatically deducted when users transfer their tokens. Issuers can also define a [tick size](decentralized-exchange/ticksize.md) for exchanges rates involving their tokens. Both issuers and regular accounts can [freeze](fungible-tokens/freezes.md) trust lines, which limits how the tokens in those trust lines can be used.
-
-Tokens use decimal (base-10) math with 15 digits of precision and an exponent that allows them to express very large values (up to 9999999999999999 × 10<sup>80</sup>) and very small values (down to 1.0 × 10<sup>-81</sup>).
+- All accounts _must_ hold at least a small amount of XRP in reserve, and must burn small amounts of XRP as "gas" to pay for sending transactions.
+- XRP is tracked together with accounts on the ledger, and can be sent directly from one account to another with no fees beyond the cost of sending the transaction.
+- All accounts can receive XRP from anyone by default, in contrast to tokens which you can only receive after you have sent a transaction indicating your willingness to hold them.
+- XRP has fixed precision to 6 decimal points, and is represented as integer _drops_ such that 1 million drops equals 1 XRP.
+- All XRP was created along with the ledger itself, and no new XRP can be minted.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

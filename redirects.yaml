@@ -1,3 +1,21 @@
+/docs/concepts/tokens/transfer-fees/:
+    to: /docs/concepts/tokens/fungible-tokens/transfer-fees/
+    type: 301
+/docs/infrastructure/configuration/data-retention/configure-history-sharding/:
+    to: /docs/infrastructure/configuration/data-retention/
+    type: 301
+/docs/infrastructure/configuration/data-retention/history-sharding/:
+    to: /docs/infrastructure/configuration/data-retention/
+    type: 301
+/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard/:
+    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
+    type: 301
+/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards/:
+    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
+    type: 301
+/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard/:
+    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
+    type: 301
 /docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /docs/infrastructure/installation/
     type: 301
@@ -1325,10 +1343,10 @@ can_delete.html:
     to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete
     type: 301
 crawl_shards.html:
-    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards
+    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
     type: 301
 download_shard.html:
-    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard
+    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
     type: 301
 ledger_cleaner.html:
     to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner
@@ -1343,7 +1361,7 @@ logrotate.html:
     to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate
     type: 301
 node_to_shard.html:
-    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard
+    to: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
     type: 301
 server-control-methods.html:
     to: /docs/references/http-websocket-apis/admin-api-methods/server-control-methods/
@@ -2335,6 +2353,24 @@ code_of_conduct.ja:
     type: 301
 
 # Japanese
+/ja/docs/concepts/tokens/transfer-fees/:
+    to: /ja/docs/concepts/tokens/fungible-tokens/transfer-fees/
+    type: 301
+/ja/docs/infrastructure/configuration/data-retention/configure-history-sharding/:
+    to: /ja/docs/infrastructure/configuration/data-retention/
+    type: 301
+/ja/docs/infrastructure/configuration/data-retention/history-sharding/:
+    to: /ja/docs/infrastructure/configuration/data-retention/
+    type: 301
+/ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard/:
+    to: /ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
+    type: 301
+/ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards/:
+    to: /ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
+    type: 301
+/ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard/:
+    to: /ja/docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/
+    type: 301
 /ja/docs/infrastructure/installation/rippled-1-3-migration-instructions/:
     to: /ja/docs/infrastructure/installation/
     type: 301

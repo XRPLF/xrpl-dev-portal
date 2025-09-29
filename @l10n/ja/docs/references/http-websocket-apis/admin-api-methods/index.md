@@ -26,7 +26,6 @@ labels:
 ログレベルとその他のデータ（レジャーなど）の管理には、以下のメソッドを使用します。
 
 * **[`can_delete`](logging-and-data-management-methods/can_delete.md)** - 特定レジャーまでのレジャーのオンライン削除を許可します。
-* **[`download_shard`](logging-and-data-management-methods/download_shard.md)** - レジャー履歴の特定のシャードをダウンロードします。
 * **[`ledger_cleaner`](logging-and-data-management-methods/ledger_cleaner.md)** - レジャークリーナーサービスが破損データを確認するように設定します。
 * **[`ledger_request`](logging-and-data-management-methods/ledger_request.md)** - ピアサーバに対し特定のレジャーバージョンを照会します。
 * **[`log_level`](logging-and-data-management-methods/log_level.md)** - ログの詳細レベルを取得または変更します。

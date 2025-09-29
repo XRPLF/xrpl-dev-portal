@@ -452,7 +452,7 @@ XRP Ledger内のEscrowにXRPの「仮払い」機能を提供します。これ�
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | はい |
 
-[送金手数料](../docs/concepts/tokens/transfer-fees.md)に限度を正しく導入し、100%の料金にします。これは、`TransferRate`値の最大値である`2000000000`を表します。（この場合の100%の料金とは、送信する1ユニットごとに2ユニットのトークンを送信する必要があることを意味します。）この修正を行わない場合、有効な限度は`TransferRate`値の2<sup>32</sup>-1、つまり約329%の料金となります。
+[送金手数料](../docs/concepts/tokens/fungible-tokens/transfer-fees.md)に限度を正しく導入し、100%の料金にします。これは、`TransferRate`値の最大値である`2000000000`を表します。（この場合の100%の料金とは、送信する1ユニットごとに2ユニットのトークンを送信する必要があることを意味します。）この修正を行わない場合、有効な限度は`TransferRate`値の2<sup>32</sup>-1、つまり約329%の料金となります。
 
 この修正を行う場合、[AccountSet][]トランザクションの`TransferRate`を`2000000000`より高く設定すると、トランザクションは結果コード`temBAD_TRANSFER_RATE`にて失敗します。以前のルールに従って高い値が設定されている既存のすべての`TransferRate`には、そのまま高い率が適用されます。
 
@@ -1548,7 +1548,7 @@ NFTの発行処理を変更し、同時にトークンの売却オファーも�
 | デフォルトの投票(最新の安定版) | 非該当 |
 | Amendment前の機能は廃止? | いいえ |
 
-[OfferCreate](../docs/references/protocol/transactions/types/offercreate.md)トランザクションタイプと[Payment](../docs/references/protocol/transactions/types/payment.md)トランザクションタイプで、[送金手数料](../docs/concepts/tokens/transfer-fees.md)の計算方法に相違があるのを修正します。この修正を行わない場合、オファーがオファープレースメントで実行される際にイシュアンスの保有者が送金手数料を支払いますが、トランザクションの最初の送信者は支払い処理の過程で実行されるオファーの送金手数料を支払います。この修正により、オファーがPaymentトランザクションまたはOfferCreateトランザクションの一部として実行されるかどうかにかかわらず、イシュアンスの保有者が常に送金手数料を支払います。支払い以外のオファー処理は影響を受けません。
+[OfferCreate](../docs/references/protocol/transactions/types/offercreate.md)トランザクションタイプと[Payment](../docs/references/protocol/transactions/types/payment.md)トランザクションタイプで、[送金手数料](../docs/concepts/tokens/fungible-tokens/transfer-fees.md)の計算方法に相違があるのを修正します。この修正を行わない場合、オファーがオファープレースメントで実行される際にイシュアンスの保有者が送金手数料を支払いますが、トランザクションの最初の送信者は支払い処理の過程で実行されるオファーの送金手数料を支払います。この修正により、オファーがPaymentトランザクションまたはOfferCreateトランザクションの一部として実行されるかどうかにかかわらず、イシュアンスの保有者が常に送金手数料を支払います。支払い以外のオファー処理は影響を受けません。
 
 この修正については、[Flow Amendment](#flow)を有効にする必要があります。
 

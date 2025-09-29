@@ -152,7 +152,7 @@ The `TransferRate` field specifies a fee to charge whenever counterparties trans
 
 In the HTTP and WebSocket APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify `0` as a shortcut for `1000000000`, meaning no fee.
 
-See [Transfer Fees](../../../../concepts/tokens/transfer-fees.md) for more information.
+See [Transfer Fees](../../../../concepts/tokens/fungible-tokens/transfer-fees.md) for more information.
 
 ## NFTokenMinter
 

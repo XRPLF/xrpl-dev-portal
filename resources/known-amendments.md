@@ -109,7 +109,7 @@ For details, see the [XLS-73: AMMClawback specification](https://github.com/XRPL
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56d](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056d-batch)
+Allows multiple transactions to be bundled into a batch that's processed all together. Standard: [XLS-56](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0056-batch)
 
 
 ### CheckCashMakesTrustLine
@@ -453,7 +453,7 @@ A transaction remains in the queue until one of the following happens:
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Correctly implements a limit on [transfer fees](../docs/concepts/tokens/transfer-fees.md) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
+Correctly implements a limit on [transfer fees](../docs/concepts/tokens/fungible-tokens/transfer-fees.md) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
 
 With this amendment enabled, an [AccountSet][] transaction that attempts to set `TransferRate` higher than `2000000000` fails with the result code `temBAD_TRANSFER_RATE`. Any existing `TransferRate` which was set to a higher value under the previous rules continues to apply at the higher rate.
 
@@ -1548,7 +1548,7 @@ It has no other effects.
 | Default Vote (Latest stable release) | N/A |
 | Pre-amendment functionality retired? | No |
 
-Fixes an inconsistency in the way [transfer fees](../docs/concepts/tokens/transfer-fees.md) are calculated between [OfferCreate](../docs/references/protocol/transactions/types/offercreate.md) and [Payment](../docs/references/protocol/transactions/types/payment.md) transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](../docs/concepts/tokens/fungible-tokens/transfer-fees.md) are calculated between [OfferCreate](../docs/references/protocol/transactions/types/offercreate.md) and [Payment](../docs/references/protocol/transactions/types/payment.md) transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
@@ -1584,7 +1584,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 
 Allows accounts to delegate some permissions to other accounts.
 
-Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075d-permission-delegation).
+Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
 
 ### PermissionedDEX

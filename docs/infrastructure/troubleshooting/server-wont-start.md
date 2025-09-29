@@ -187,33 +187,6 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large`, or `huge`. For more information see [Node Size](../installation/capacity-planning.md#node-size).
 
 
-## Shard path missing
-
-An error such as the following indicates that the `rippled.cfg` has an incomplete [history sharding](../configuration/data-retention/history-sharding.md) configuration:
-
-```text
-Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
-```
-
-If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](../configuration/data-retention/configure-history-sharding.md#2-edit-rippledcfg).
-
-## Unsupported shard store type: RocksDB
-
-RocksDB is no longer supported as a backend for [history sharding](../configuration/data-retention/history-sharding.md). If you have an existing configuration that defines a RocksDB shard store, the server fails to start.
-
-In this case, the process dies shortly after the log startup command, with a message such as the following appearing earlier in the output log:
-
-```text
-ShardStore:ERR Unsupported shard store type: RocksDB
-```
-
-
-To fix this problem, do one of the following, then restart the server:
-
-- Change your shard store to use NuDB instead.
-- Disable history sharding.
-
-
 ## See Also
 
 - **Concepts:**

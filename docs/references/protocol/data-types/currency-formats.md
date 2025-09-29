@@ -28,7 +28,7 @@ The following table summarizes some of the differences XRP, tokens, and MPTs in 
 | Maximum value `100000000000` (10<sup>11</sup>) XRP. That's `100000000000000000` (10<sup>17</sup>) "drops". | Maximum value `9999999999999999e80`. | Maximum value `0x7FFFFFFFFFFFFFFF`. |
 | Precise to the nearest "drop" (0.000001 XRP)             | 15 decimal digits of precision. |
 | Can't be [frozen](../../../concepts/tokens/fungible-tokens/freezes.md).                         | The issuer can [freeze](../../../concepts/tokens/fungible-tokens/freezes.md) balances. | The issuer can lock balances individually and globally. |
-| No transfer fees; XRP-to-XRP payments are always direct. | Can take indirect [paths](../../../concepts/tokens/fungible-tokens/paths.md) with each issuer charging a percentage [transfer fee](../../../concepts/tokens/transfer-fees.md). | Can charge a transfer fee for secondary sales of the token. |
+| No transfer fees; XRP-to-XRP payments are always direct. | Can take indirect [paths](../../../concepts/tokens/fungible-tokens/paths.md) with each issuer charging a percentage [transfer fee](../../../concepts/tokens/fungible-tokens/transfer-fees.md). | Can charge a transfer fee for secondary sales of the token. |
 | Can be used in [Payment Channels](../../../concepts/payment-types/payment-channels.md) and [Escrow](../../../concepts/payment-types/escrow.md). | Not compatible with Payment Channels or Escrow. | Not compatible with Payment Channels or Escrow. |
 
 See [What is XRP?](../../../introduction/what-is-xrp.md), [Tokens](../../../concepts/tokens/index.md), and [Multi-purpose Tokens](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md).

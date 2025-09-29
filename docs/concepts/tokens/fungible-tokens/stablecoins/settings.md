@@ -30,7 +30,7 @@ A transfer fee setting charges users a percentage fee when transferring tokens b
 
 When users send a token with a transfer fee, the amount of the transfer fee is debited from the sending side in addition to the destination amount, but only the destination amount is credited to the recipient. The amount of the fee "vanishes" from the XRP Ledger. As a stablecoin issuer, this means that you gain that much equity in your reserves outside of the XRP Ledger—or, in other words, the amount you need to keep as collateral decreases each time users pay a transfer fee.
 
-For more information, see [Transfer Fees](../../transfer-fees.md).
+For more information, see [Transfer Fees](../transfer-fees.md).
 
 
 ## Set Your Tick Size

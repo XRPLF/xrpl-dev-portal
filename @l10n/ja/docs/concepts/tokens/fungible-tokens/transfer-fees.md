@@ -13,9 +13,9 @@ labels:
 
 標準的なトークンの場合、送金手数料として支払われたトークンはバーンされ、XRP Ledgerでは記録されなくなります。トークンがレジャー外の資産で裏付けされている場合、これは発行者がXRP Ledgerでの債務を果たすために準備金として保有しなければならないそれらの資産の量を減らします。送金手数料は通常、外部資産で裏付けられていないトークンには適切ではありません。
 
-非代替性トークンにも送金手数料がかかりますが、その仕組みは異なります。詳細は[非代替性トークン](nfts/index.md)をご覧ください。
+非代替性トークンにも送金手数料がかかりますが、その仕組みは異なります。詳細は[非代替性トークン](../nfts/index.md)をご覧ください。
 
-送金手数料は、発行アカウントと直接送受信する場合には適用されませんが、[運用アドレス](../accounts/account-types.md)から他のユーザへ送金する場合には適用されます。
+送金手数料は、発行アカウントと直接送受信する場合には適用されませんが、[運用アドレス](../../accounts/account-types.md)から他のユーザへ送金する場合には適用されます。
 
 XRPは発行者が存在しないため、送金手数料がかかることはありません。
 
@@ -59,24 +59,24 @@ XRPは発行者が存在しないため、送金手数料がかかることは�
 
 アカウントの`TransferRate`は[account_infoメソッド][]で誰でも確認できます。もし`TransferRate`が省略されていれば、手数料は無料です。
 
-{% admonition type="info" name="注記" %}`rippled`v0.80.0で導入され2017-11-14に有効となった[fix1201 Amendment](../networks-and-servers/amendments.md)により、最大送金手数料は実効限度である約329%（32ビット整数の最大サイズに基づく）から100%に引き下げられました。送金手数料の設定が100%（`TransferRate`が`2000000000`）を上回るアカウントがレジャーにまだ含まれている可能性があります。すでに設定されている手数料はすべて、規定のレートで引き続き運用されます。{% /admonition %}
+{% admonition type="info" name="注記" %}`rippled`v0.80.0で導入され2017-11-14に有効となった[fix1201 Amendment](../../networks-and-servers/amendments.md)により、最大送金手数料は実効限度である約329%（32ビット整数の最大サイズに基づく）から100%に引き下げられました。送金手数料の設定が100%（`TransferRate`が`2000000000`）を上回るアカウントがレジャーにまだ含まれている可能性があります。すでに設定されている手数料はすべて、規定のレートで引き続き運用されます。{% /admonition %}
 
 ## クライアントライブラリのサポート
 
-いくつかの[クライアントライブラリ](../../references/client-libraries.md)は`TransferRate`を取得・設定するための便利な関数を持っています。
+いくつかの[クライアントライブラリ](../../../references/client-libraries.md)は`TransferRate`を取得・設定するための便利な関数を持っています。
 
 **JavaScript:** `xrpl.percentToTransferRate()`を使うと、文字列からパーセンテージの送金手数料を対応する`TransferRate`値に変換することができます。
 
 ## 関連項目
 
 - **コンセプト:**
-  - [手数料（曖昧さの回避）](../transactions/fees.md)
-  - [トランザクションコスト](../transactions/transaction-cost.md)
-  - [パス](fungible-tokens/paths.md)
+  - [手数料（曖昧さの回避）](../../transactions/fees.md)
+  - [トランザクションコスト](../../transactions/transaction-cost.md)
+  - [パス](paths.md)
 - **リファレンス:**
   - [account_linesメソッド][]
   - [account_infoメソッド][]
   - [AccountSetトランザクション][]
-  - [AccountRootのフラグ](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
+  - [AccountRootのフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

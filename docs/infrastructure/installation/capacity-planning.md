@@ -1,6 +1,4 @@
 ---
-html: capacity-planning.html
-parent: install-rippled.html
 seo:
     description: Plan system specs and tune configuration for rippled in production environments.
 labels:
@@ -159,7 +157,7 @@ The `[database_path]` configures separate bookkeeping databases: these include t
 
 As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for a `rippled` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](../configuration/configure-amendment-voting.md) and [peer reservations](../configuration/peering/use-a-peer-reservation.md).
 
-If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the [History Sharding](../configuration/data-retention/history-sharding.md) feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza.
+If your config file has a `[shard_db]` stanza, you can safely remove it. This section is obsolete and has no effect. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.3.0" %}Removed in: rippled 2.3.0{% /badge %}
 
 
 ##### Amazon Web Services

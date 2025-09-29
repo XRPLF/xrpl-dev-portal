@@ -111,6 +111,8 @@
             - page: docs/concepts/tokens/fungible-tokens/index.md
               expanded: false
               items:
+                - page: docs/concepts/tokens/fungible-tokens/trust-line-tokens.md
+                - page: docs/concepts/tokens/fungible-tokens/multi-purpose-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/authorized-trust-lines.md
                 - page: docs/concepts/tokens/fungible-tokens/stablecoins/index.md
                   expanded: false
@@ -119,7 +121,6 @@
                     - page: docs/concepts/tokens/fungible-tokens/stablecoins/configuration.md
                     - page: docs/concepts/tokens/fungible-tokens/stablecoins/precautions.md
                     - page: docs/concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md
-                - page: docs/concepts/tokens/fungible-tokens/multi-purpose-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md
                 - page: docs/concepts/tokens/fungible-tokens/freezes.md
                   expanded: false
@@ -128,6 +129,7 @@
                     - page: docs/concepts/tokens/fungible-tokens/common-misconceptions-about-freezes.md
                 - page: docs/concepts/tokens/fungible-tokens/paths.md
                 - page: docs/concepts/tokens/fungible-tokens/rippling.md
+                - page: docs/concepts/tokens/fungible-tokens/transfer-fees.md
                 - page: docs/concepts/tokens/fungible-tokens/demurrage.md
             - page: docs/concepts/tokens/nfts/index.md
               expanded: false
@@ -143,7 +145,6 @@
                 - page: docs/concepts/tokens/nfts/nft-apis.md
                 - page: docs/concepts/tokens/nfts/non-transferable-tokens.md
                 - page: docs/concepts/tokens/nfts/dynamic-nfts.md
-            - page: docs/concepts/tokens/transfer-fees.md
             - page: docs/concepts/tokens/decentralized-exchange/index.md
               expanded: false
               items:
@@ -593,13 +594,10 @@
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-                    - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
-                    - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
                     - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
-                    - page: docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
                 - page: docs/references/http-websocket-apis/admin-api-methods/server-control-methods/index.md
                   expanded: false
                   items:
@@ -667,8 +665,6 @@
                 - page: docs/infrastructure/configuration/data-retention/online-deletion.md
                 - page: docs/infrastructure/configuration/data-retention/configure-online-deletion.md
                 - page: docs/infrastructure/configuration/data-retention/configure-advisory-deletion.md
-                - page: docs/infrastructure/configuration/data-retention/history-sharding.md
-                - page: docs/infrastructure/configuration/data-retention/configure-history-sharding.md
             - page: docs/infrastructure/configuration/peering/index.md
               expanded: false
               items:

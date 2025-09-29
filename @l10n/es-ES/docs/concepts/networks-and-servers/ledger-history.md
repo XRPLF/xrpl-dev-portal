@@ -58,14 +58,6 @@ Los proveedores de servidores Full History se reservan el derecho de bloquear ac
 
 Para instrucciones de cómo configurar un servidor full history, consultar [Configurar Full History](../../infrastructure/configuration/data-retention/configure-full-history.md).
 
-## Fragmentación del historial
-
-Una alternativa para almacenar todo el histórico completo del XRP Ledger en una única máquina cara es configurar muchos servidores para que cada uno almacene una parte del histórico completo del ledger. La función [Fragmentación del histórico](../../infrastructure/configuration/data-retention/history-sharding.md) hace esto posible, almacenando rangos del histórico del ledger en áreas de almacenamiento separadas llamadas almacenes de fragmentación o _shard store_. Cuando un servidor par solicita datos específicos (como se describe en [fetching history](#recuperar-el-histórico) arriba), un servidor puede responder usando datos de su ledger store o shard store.
-
-Online deletion **no** borra desde un shard store. Sin embargo, si configuras online deletion para mantener al menos 32768 versiones de ledger en el ledger store de tu servidor, tu servidor puede copiar shards completos desde el ledger store al shard store antes de borrarlos automáticamente del ledger store.
-
-Para más información, ver [Configurar History Sharding](../../infrastructure/configuration/data-retention/configure-history-sharding.md).
-
 
 ## Ver también
 
@@ -76,7 +68,6 @@ Para más información, ver [Configurar History Sharding](../../infrastructure/c
     - [Configurar `rippled`](../../infrastructure/configuration/index.md)
         - [Configurar Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
         - [Configurar Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
-        - [Configurar History Sharding](../../infrastructure/configuration/data-retention/configure-history-sharding.md)
         - [Configurar Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)
 - **Referencias:**
     - [método ledger][]
