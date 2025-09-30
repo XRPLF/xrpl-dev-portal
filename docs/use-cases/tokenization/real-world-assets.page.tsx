@@ -467,6 +467,7 @@ export default function RwaTokenization() {
           url: "https://xrplresources.org/subscribe",
         },
       ],
+      backgroundClass: "learn-stay-updated"
     },
   ];
 

@@ -2135,10 +2135,10 @@ html.light {
       margin: 0 !important;
       
       @media (min-width: 768px) {
-        flex: 1 1 calc(50% - 20px) !important;
-        max-width: calc(50% - 20px) !important;
-        min-width: calc(50% - 20px) !important;
-        width: auto !important;
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+        min-width: calc(50% - 20px);
+        width: auto;
       }
       
       @media (max-width: 767px) {
@@ -2148,19 +2148,22 @@ html.light {
         margin-bottom: 0 !important;
         flex: none !important;
       }
-      
-      // Single card layout styles
-      &.single-card {
-        font-size: 24px;
-        max-height: 288px !important;
-        @media (max-width: 768px) {
-          min-height: 493px !important;
-        }
-        @media (min-width: 768px) {
-          
-          flex: 1 1 100% !important;
-          max-width: 100% !important;
-          min-width: 100% !important;
+
+      &.developer-spotlight {
+        background-image: url(../img/community/bug-bounty-card-bg.png);
+        background-position: top right;
+        background-size: 169px 88px;
+        background-repeat: no-repeat;
+      }
+      &.learn-stay-updated {
+        background-image: url(../img/community/bug-bounty-card-bg-2.png);
+        background-position: bottom right;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @media (max-width: 767px) {
+          background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
+          background-size: 136px 177px;
         }
       }
       
@@ -2204,14 +2207,24 @@ html.light {
   }
   &.single-card {
     .bug-bounty-card-bg-2 {
-    @media (max-width: 767px) {
-      content: url("../img/community/bug-bounty-card-bg-2-mobile.png") !important;
+      @media (max-width: 767px) {
+        content: url("../img/community/bug-bounty-card-bg-2-mobile.png");
+      }
     }
-  }
-  }
-  
-  // Single card layout - background image full height and spacing
-  .com-card.single-card {
+
+    .com-card {
+      font-size: 24px;
+      max-height: 288px !important;
+
+      @media (max-width: 768px) {
+        min-height: 493px !important;
+      }
+      @media (min-width: 768px) {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+      }
+
     .bottom-right-img.bug-bounty-card-bg-2 {
       height: 714px ;
       width: auto;
@@ -2238,6 +2251,7 @@ html.light {
         margin-top: 0;
         margin-bottom: 0;
       }
+    }
     }
   }
 }

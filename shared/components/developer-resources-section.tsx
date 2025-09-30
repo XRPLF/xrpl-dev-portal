@@ -27,14 +27,10 @@ export const DeveloperResourcesSection: React.FC<DeveloperResourcesSectionProps>
   const isSingleCard = cards.length === 1;
 
   return (
-    <div className={` container developer-resources-section page-community ${className} ${isSingleCard ? 'single-card' : ''}`}>
+    <div className={`container developer-resources-section page-community ${className} ${isSingleCard ? 'single-card' : ''}`}>
       <section className="bottom-cards-section bug-bounty section-padding">
         {cards.map((card, index) => (
-          <div key={index} className={`com-card ${isSingleCard ? 'single-card' : ''}`}>
-            <img
-              className={`${isSingleCard ? 'bottom-right-img' : (index === 0 ? 'top-right-img' : 'bottom-right-img')} ${isSingleCard ? 'bug-bounty-card-bg-2' : `bug-bounty-card-bg${index === 0 ? '' : '-2'}`} ${card.backgroundClass || ''}`}
-              alt={`${card.title} Background`}
-            />
+          <div key={index} className={`com-card ${card.backgroundClass || ''}`}>
             <div className="card-content custom-gap">
               <h6 className="card-title">{translate(card.title)}</h6>
               <p className="card-description">
