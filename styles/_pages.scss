@@ -2158,10 +2158,10 @@ html.light {
       &.learn-stay-updated {
         background-image: url(../img/community/bug-bounty-card-bg-2.png);
         background-position: bottom right;
-        background-size: contain;
         background-repeat: no-repeat;
-        background-size: 136px 177px;
+        background-size: contain;
         @media (max-width: 767px) {
+          background-size: 136px 177px;
           background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
         }
       }
