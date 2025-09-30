@@ -275,15 +275,15 @@ const marketIntegrationData = [
     description: (
       <>
         Utilize XRP Ledger's native{" "}
-        <Link target="_blank" to="/docs/concepts/tokens/decentralized-exchange">
+        <Link to="/docs/concepts/tokens/decentralized-exchange">
           decentralized exchange (DEX)
         </Link>{" "}
         with integrated{" "}
-        <Link target="_blank" to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
+        <Link to="/docs/concepts/tokens/decentralized-exchange/automated-market-makers">
           Automated Market Makers (AMM)
         </Link>{" "}
         and onchain 24/7 order books, providing a developer-friendly environment
-        to create <Link target="_blank" to="/docs/use-cases/defi">DeFi solutions</Link> for
+        to create <Link to="/docs/use-cases/defi">DeFi solutions</Link> for
         traditional finance applications.
       </>
     ),
