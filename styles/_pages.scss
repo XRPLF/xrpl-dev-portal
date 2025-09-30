@@ -2213,30 +2213,30 @@ html.light {
   // Single card layout - background image full height and spacing
   .com-card.single-card {
     .bottom-right-img.bug-bounty-card-bg-2 {
-      height: 714px !important;
-      width: auto !important;
-      object-fit: cover !important;
-      object-position: right bottom !important;
+      height: 714px ;
+      width: auto;
+      object-fit: cover;
+      object-position: right bottom;
     }
     
     .card-content {
-      gap: 0 !important;
+      gap: 0;
       
       .card-title {
-        margin-bottom: 24px !important;
-        margin-top: 0 !important;
+        margin-bottom: 24px;
+        margin-top: 0;
       }
       
       .card-description {
-        margin-bottom: 24px !important;
-        margin-top: 0 !important;
-        flex-grow: 0 !important;
-        padding: 0 !important;
+        margin-bottom: 24px;
+        margin-top: 0;
+        flex-grow: 0;
+        padding: 0;
       }
       
       .card-links {
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
+        margin-top: 0;
+        margin-bottom: 0;
       }
     }
   }
