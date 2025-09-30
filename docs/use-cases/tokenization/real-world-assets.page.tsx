@@ -370,7 +370,7 @@ function TokenVideoSection() {
         </p>
         <div className="d-lg-block small-100 __button-container">
           <a
-            className="btn btn-primary"
+            className="btn btn-primary d-block d-md-inline-block small-100"
             href="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
             target="_blank"
             rel="noopener"
