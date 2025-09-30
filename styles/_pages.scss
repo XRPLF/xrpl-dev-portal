@@ -2149,9 +2149,10 @@ html.light {
       
       // Single card layout styles
       &.single-card {
+        font-size: 24px;
         max-height: 288px !important;
         @media (max-width: 768px) {
-          max-height: 375px !important;
+          min-height: 493px !important;
         }
         @media (min-width: 768px) {
           
@@ -2198,6 +2199,13 @@ html.light {
   // Single card layout - remove gap and control spacing precisely
   &.single-card .bottom-cards-section.bug-bounty.section-padding {
     gap: 0 !important;
+  }
+  &.single-card {
+    .bug-bounty-card-bg-2 {
+    @media (max-width: 767px) {
+      content: url("../img/community/bug-bounty-card-bg-2-mobile.png") !important;
+    }
+  }
   }
   
   // Single card layout - background image full height and spacing
