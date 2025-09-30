@@ -1507,14 +1507,16 @@ html.light {
     max-width: 720px;
     z-index: 1;
     @include media-breakpoint-down(md) {
+      line-height: 48px;
       font-size: 42px;
+      text-align: left;
     }
 
   }
 
   .token-title-container {
     gap: 32px;
-    padding: 104px 64px;
+    padding: 104px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
