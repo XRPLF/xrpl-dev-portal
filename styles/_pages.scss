@@ -2160,10 +2160,9 @@ html.light {
         background-position: bottom right;
         background-size: contain;
         background-repeat: no-repeat;
-
+        background-size: 136px 177px;
         @media (max-width: 767px) {
           background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
-          background-size: 136px 177px;
         }
       }
       

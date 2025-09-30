@@ -908,7 +908,6 @@
     .w-222 {
         width: 222px;
     }
-
     .bottom-cards-section .com-card .card-content {
         display: flex;
         flex-direction: column;
@@ -978,10 +977,12 @@
                 content: url(../img/community/card-bg-1.svg);
             }
             .top-right-img.bug-bounty-card-bg {
-                content: url(../img/community/bug-bounty-card-bg.png)
+                content: url(../img/community/bug-bounty-card-bg.png);
+                height: 123px;
             }
             .bottom-right-img.bug-bounty-card-bg-2 {
-                content: url(../img/community/bug-bounty-card-bg-2.png)
+                content: url(../img/community/bug-bounty-card-bg-2.png);
+                height: 123px;
             }
 
             .bottom-right-img {
