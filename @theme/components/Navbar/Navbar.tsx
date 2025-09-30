@@ -145,7 +145,7 @@ export function Navbar(props) {
       const isNavbarCollapsed =
         navbarToggler.getAttribute("aria-expanded") === "true";
       if (isNavbarCollapsed) {
-        navbarToggler.click(); // Simulate click to toggle navbar
+        navbarToggler?.click(); // Simulate click to toggle navbar
       }
     };
 

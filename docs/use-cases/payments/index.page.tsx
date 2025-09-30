@@ -185,7 +185,8 @@ const PaymentsPage: React.FC = () => {
           text: "Share Your Work",
           url: "https://discord.gg/sfX3ERAMjH"
         }
-      ]
+      ],
+      backgroundClass: "developer-spotlight"
     },
     {
       title: "Learn & Stay Updated", 
@@ -199,7 +200,8 @@ const PaymentsPage: React.FC = () => {
           text: "Sign up for the Newsletter",
           url: "https://xrplresources.org/subscribe"
         }
-      ]
+      ],
+      backgroundClass: "learn-stay-updated"
     }
   ];
 

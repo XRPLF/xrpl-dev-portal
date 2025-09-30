@@ -844,7 +844,7 @@ const CommunityPage: React.FC = () => {
       </section>
       {/* Bottom Cards Section 2 cards */}
       <section className="bottom-cards-section bug-bounty">
-        <div className="com-card">
+        <div className="com-card ripplex-bug-bounty">
           <img className="top-right-img bug-bounty-card-bg" alt="Top Right Image" />
           <div className="card-content">
             <h6 className="card-title">
