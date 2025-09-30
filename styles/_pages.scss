@@ -1519,6 +1519,9 @@ html.light {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media (max-width: 767px) {
+      padding-bottom: 0px;
+    }
   }
 
   .token-video-container {
@@ -1530,6 +1533,9 @@ html.light {
     gap: 48px;
     max-width: 1200px;
     margin: 0 auto;
+    @media (max-width: 767px) {
+      padding-bottom: 0px;
+    }
     .__button-container{
       margin-top: 16px;
     }
@@ -1586,7 +1592,7 @@ html.light {
     }
 
     @media (max-width: 767px) {
-      padding: 60px 20px;
+      padding: 60px 40px;
       gap: 32px;
       max-width: 100%;
       
@@ -1612,6 +1618,9 @@ html.light {
     align-items: start;
     gap: 40px;
     max-width: 1280px;
+    @media (max-width: 767px) {
+      padding-bottom: 0px;
+    }
 
     .cards-title-token {
       color: var(--black-black-0-white, #FFF);
@@ -1743,10 +1752,14 @@ html.light {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden; 
   padding: 100px 40px;
   max-width: 1200px;
   width: 100%;
+  @media (max-width: 767px) {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
 }
 
 .upcoming-events__title {
@@ -1755,6 +1768,9 @@ html.light {
   color: #fff;
   font: 700 32px/38px Work Sans, -apple-system, Roboto, Helvetica, sans-serif;
   margin-bottom: 64px;
+  @media (max-width: 767px) {
+   text-align: left;
+  }
 }
 
 .upcoming-events__logo-container {
@@ -1919,7 +1935,7 @@ html.light {
   
   @media (max-width: 991px) {
     .developer-tools {
-      padding: 50px 0;
+      padding: 50px 40px;
     }
 
     .developer-tools__header {
@@ -2135,7 +2151,7 @@ html.light {
       &.single-card {
         max-height: 288px !important;
         @media (max-width: 768px) {
-          max-height: 328px !important;
+          max-height: 375px !important;
         }
         @media (min-width: 768px) {
           
@@ -2217,7 +2233,10 @@ html.light {
 }
 
 .token-utility-section {
-  padding-top: 100px;
+  padding: 100px 40px;
+  @media (max-width: 767px) {
+    padding-bottom: 0px;
+  }
   .section-title {
     font-size: 32px;
     font-weight: 700;

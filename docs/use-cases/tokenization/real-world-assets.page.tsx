@@ -363,6 +363,11 @@ function TokenVideoSection() {
             "XRP Ledger's built-in functionality and compliance-enabling features allow asset tokenization without additional layers of complexity."
           )}
         </p>
+        <p>
+          {translate(
+            "Access the full white paper to learn how XRP Ledger’s new token standard is shaping institutional-grade finance."
+          )}
+        </p>
         <div className="d-lg-block small-100 __button-container">
           <a
             className="btn btn-primary"
