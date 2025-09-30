@@ -2107,6 +2107,11 @@ html.light {
 
 // Developer Resources Section - Clean, responsive styles with high specificity
 .developer-resources-section {
+  &.single-card {
+    .learn-stay-updated {
+      background-size: contain !important;
+    }
+  }
   .bottom-cards-section.bug-bounty.section-padding {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -2155,11 +2160,13 @@ html.light {
         background-size: 169px 88px;
         background-repeat: no-repeat;
       }
+      
+      
       &.learn-stay-updated {
         background-image: url(../img/community/bug-bounty-card-bg-2.png);
         background-position: bottom right;
+        background-size: 636px 727px;
         background-repeat: no-repeat;
-        background-size: contain;
         @media (max-width: 767px) {
           background-size: 136px 177px;
           background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
