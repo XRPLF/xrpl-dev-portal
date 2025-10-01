@@ -1379,7 +1379,7 @@ This amendment adds several new invariants to protect the ledger against bugs in
 | Amendment    | MPTokensV1 |
 |:-------------|:-----------|
 | Amendment ID | 950AE2EA4654E47F04AA8739C0B214E242097E802FD372D24047A89AB1F5EC38 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
