@@ -62,7 +62,7 @@ export function InteractiveBlock(props: {
                 )
             })}
           </ul>
-          </div>
+        </div>
         <div className="interactive-block-ui">{dynamicReact(props.children, React, {})}</div>
       </div>
     </div>
