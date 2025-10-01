@@ -7,7 +7,7 @@ import { useThemeHooks } from '@redocly/theme/core/hooks'
 import { idify } from '../helpers'
 import { Button } from '@redocly/theme/components/Button/Button'
 
-export {default as XRPLoader} from '../components/XRPLoader'
+export { default as XRPLoader } from '../components/XRPLoader'
 export { XRPLCard, CardGrid } from '../components/XRPLCard'
 export { AmendmentsTable, AmendmentDisclaimer, Badge } from '../components/Amendments'
 
@@ -70,18 +70,18 @@ export function InteractiveBlock(props: {
 }
 
 export function RepoLink(props: {
-    children: React.ReactNode
-    path: string
-    github_fork: string
-    github_branch: string
-    }) {
-    const treeblob = props.path.indexOf(".") >= 0 ? "blob/" : "tree/"
-    const sep = props.github_fork[-1] == "/" ? "" : "/"
-    const href = props.github_fork+sep+treeblob+props.github_branch+"/"+props.path
+  children: React.ReactNode
+  path: string
+  github_fork: string
+  github_branch: string
+}) {
+  const treeblob = props.path.indexOf(".") >= 0 ? "blob/" : "tree/"
+  const sep = props.github_fork[-1] == "/" ? "" : "/"
+  const href = props.github_fork+sep+treeblob+props.github_branch+"/"+props.path
 
-    return (
-        <Link to={href}>{dynamicReact(props.children, React, {})}</Link>
-    )
+  return (
+    <Link to={href}>{dynamicReact(props.children, React, {})}</Link>
+  )
 }
 
 export function CodePageName(props: {
