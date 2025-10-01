@@ -1,39 +1,43 @@
-import * as React from 'react';
-import { useLocation } from 'react-router-dom';
+import * as React from 'react'
+import { useLocation } from 'react-router-dom'
 // @ts-ignore
-import dynamicReact from '@markdoc/markdoc/dist/react';
-import { Link } from '@redocly/theme/components/Link/Link';
-import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { idify } from '../helpers';
-import { Button } from '@redocly/theme/components/Button/Button';
+import dynamicReact from '@markdoc/markdoc/dist/react'
+import { Link } from '@redocly/theme/components/Link/Link'
+import { useThemeHooks } from '@redocly/theme/core/hooks'
+import { idify } from '../helpers'
+import { Button } from '@redocly/theme/components/Button/Button'
 
-export {default as XRPLoader} from '../components/XRPLoader';
-export { XRPLCard, CardGrid } from '../components/XRPLCard';
-export * from '../components/Amendments';
+export {default as XRPLoader} from '../components/XRPLoader'
+export { XRPLCard, CardGrid } from '../components/XRPLCard'
+export { AmendmentsTable, AmendmentDisclaimer, Badge } from '../components/Amendments'
 
 export function IndexPageItems() {
-    const { usePageSharedData } = useThemeHooks();
-    const data = usePageSharedData('index-page-items') as any[];
-    return (
-        <div className="children-display">
-            <ul>
-              {data?.map((item: any) => (
-                <li className="level-1" key={item.slug}>
-                  <Link to={item.slug}>{item.title}</Link>
-                  {
-                    item.status === "not_enabled" ? (<NotEnabled />) : ""
-                  }
-                  <p className='class="blurb child-blurb'>{item.seo?.description}</p>
-                </li>
-              ))}
-            </ul>
-        </div>
-  );
+  const { usePageSharedData } = useThemeHooks()
+  const data = usePageSharedData('index-page-items') as any[]
+  return (
+    <div className="children-display">
+      <ul>
+        {data?.map((item: any) => (
+          <li className="level-1" key={item.slug}>
+            <Link to={item.slug}>{item.title}</Link>
+              {
+                item.status === "not_enabled" ? (<NotEnabled />) : ""
+              }
+            <p className="blurb child-blurb">{item.seo?.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
-export function InteractiveBlock(props: { children: React.ReactNode; label: string; steps: string[] }) {
-  const stepId = idify(props.label);
-  const { pathname } = useLocation();
+export function InteractiveBlock(props: {
+  children: React.ReactNode
+  label: string
+  steps: string[]
+}) {
+  const stepId = idify(props.label)
+  const { pathname } = useLocation()
 
   return (
     // add key={pathname} to ensure old step state gets rerendered on page navigation
@@ -47,30 +51,29 @@ export function InteractiveBlock(props: { children: React.ReactNode; label: stri
             data-stepid={stepId}
           >
             {props.steps?.map((step, idx) => {
-              const iterStepId = idify(step).toLowerCase();
-              let className = `breadcrumb-item bc-${iterStepId}`;
-              if (idx > 0) className += ' disabled';
-              if (iterStepId === stepId) className += ' current';
+              const iterStepId = idify(step).toLowerCase()
+              let className = `breadcrumb-item bc-${iterStepId}`
+              if (idx > 0) className += ' disabled'
+              if (iterStepId === stepId) className += ' current'
               return (
                 <li className={className} key={iterStepId}>
                   <a href={`#interactive-${iterStepId}`}>{step}</a>
                 </li>
-                );
+                )
             })}
           </ul>
-        </div>
-
+          </div>
         <div className="interactive-block-ui">{dynamicReact(props.children, React, {})}</div>
       </div>
     </div>
-    );
+  )
 }
 
 export function RepoLink(props: {
-        children: React.ReactNode;
-        path: string;
-        github_fork: string;
-        github_branch: string
+    children: React.ReactNode
+    path: string
+    github_fork: string
+    github_branch: string
     }) {
     const treeblob = props.path.indexOf(".") >= 0 ? "blob/" : "tree/"
     const sep = props.github_fork[-1] == "/" ? "" : "/"
@@ -82,7 +85,7 @@ export function RepoLink(props: {
 }
 
 export function CodePageName(props: {
-    name: string;
+  name: string
 }) {
     return (
         <code>{props.name}</code>
@@ -97,7 +100,7 @@ export function TryIt(props: {
 }) {
   const { useTranslate } = useThemeHooks()
   const { translate } = useTranslate()
-  let use_server = "";
+  let use_server = ""
   if (props.server == "s1") {
     use_server = "?server=wss%3A%2F%2Fs1.ripple.com%2F"
   } else if (props.server == "s2") {
@@ -125,7 +128,7 @@ export function TxExample(props: {
 }) {
   const { useTranslate } = useThemeHooks()
   const { translate } = useTranslate()
-  let use_server = "";
+  let use_server = ""
   if (props.server == "s1") {
     use_server = "&server=wss%3A%2F%2Fs1.ripple.com%2F"
   } else if (props.server == "s2") {
@@ -146,8 +149,8 @@ export function TxExample(props: {
 }
 
 export function NotEnabled() {
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
+  const { useTranslate } = useThemeHooks()
+  const { translate } = useTranslate()
   return (
     <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><i className="fa fa-flask"></i></span>
   )
