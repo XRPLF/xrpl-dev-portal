@@ -48,6 +48,20 @@ Any account may submit an EscrowFinish transaction.
 
 In [non-production networks](../../../../concepts/networks-and-servers/parallel-networks.md), it may be possible [to delete](../../../../concepts/accounts/deleting-accounts.md) the destination account of a pending escrow. In this case, an attempt to finish the escrow fails with the result `tecNO_TARGET`, but the escrow object remains unless it has expired normally. If another payment re-creates the destination account, the escrow can be finished successfully. The destination account of an escrow can only be deleted if the escrow was created before the [fix1523 amendment](/resources/known-amendments.md#fix1523) became enabled. No such escrows exist in the production XRP Ledger, so this edge case is not possible on the production XRP Ledger. This edge case is also not possible in test networks that enable both fix1523 and Escrow amendments at the same time, which is the default when you [start a new genesis ledger](../../../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md).
 
+## Error Cases
+
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
+
+## EscrowFinish Errors
+
+| Error Code                | Description |
+|:------------------------- |:------------|
+| `tecNO_AUTH`              | The transaction failed because authorization requirements were not met. For example, the issuer requires authorization and the destination is not authorized. |
+| `tecNO_LINE`              | The destination account does not have a trust line with the issuer. For Trust Line Tokens only. |
+| `tecNO_ENTRY`             | The destination account does not hold the MPT. |
+| `tecINSUFFICIENT_RESERVE` | Unable to create a trust line or MPToken due to lack of reserves. |
+| `tecFROZEN` | The token is deep frozen (Trust Line Tokens) or locked (for MPTs). |
+
 ## See Also
 
 - [Escrow entry][]

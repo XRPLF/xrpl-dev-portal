@@ -37,6 +37,19 @@ Any account may submit an EscrowCancel transaction.
 * If the corresponding [EscrowCreate transaction][] did not specify a `CancelAfter` time, the EscrowCancel transaction fails.
 * Otherwise the EscrowCancel transaction fails if the `CancelAfter` time is after the close time of the most recently-closed ledger.
 
+## Error Cases
+
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
+
+## EscrowFinish Errors
+
+| Error Code                | Description |
+|:------------------------- |:------------|
+| `tecNO_AUTH`              | The transaction failed because authorization requirements were not met. For example, the issuer requires authorization and the sender is not authorized. |
+| `tecNO_LINE`              | The sender does not have a trust line with the issuer. For Trust Line Tokens only. |
+| `tecNO_ENTRY` | The sender does not hold the MPT. |
+| `tecINSUFFICIENT_RESERVE` | Unable to create a trust line or MPToken due to lack of reserves. |
+
 ## See Also
 
 - [Escrow entry][]
