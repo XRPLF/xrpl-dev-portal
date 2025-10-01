@@ -3,7 +3,7 @@ const xrpl = require("xrpl");
 // The rippled server and its APIs represent time as an unsigned integer.
 // This number measures the number of seconds since the "Ripple Epoch" of
 // January 1, 2000 (00:00 UTC). This is like the way the Unix epoch  works,
-// Reference: https://xrpl.org/basic-data-types.html
+// Reference: https://xrpl.org/docs/references/protocol/data-types/basic-data-types#specifying-time
 const RIPPLE_EPOCH = 946684800;
 
 const prepareAccountData = (rawAccountData) => {

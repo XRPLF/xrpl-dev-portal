@@ -59,28 +59,7 @@ In addition to the above features, you'll also learn a bit about Events, IPC (in
 
 1. To initialize the project, create a file named `package.json` with the following content:
 
-```json
-{
-  "name": "xrpl-javascript-desktop-wallet",
-  "version": "1.0.0",
-  "license": "MIT",
-  "scripts": {
-    "start": "electron ./index.js"
-  },
-  "dependencies": {
-    "async": "^3.2.4",
-    "fernet": "^0.4.0",
-    "node-fetch": "^2.6.9",
-    "pbkdf2-hmac": "^1.1.0",
-    "open": "^8.4.0",
-    "toml": "^3.0.0",
-    "xrpl": "^3.0.0"
-  },
-  "devDependencies": {
-    "electron": "22.3.24"
-  }
-}
-```
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/package.json" language="json" /%}
 
 Here we define the libraries our application will use in the `dependencies` section as well as shortcuts for running our application in the `scripts` section.
 
@@ -94,70 +73,25 @@ application to work.
 
 3. In the root folder, create an `index.js` file with the following content:
 
-```javascript
-const { app, BrowserWindow } = require('electron')
-
-const path = require('path')
-
-/**
- * This is our main function, it creates our application window, preloads the code we will need to communicate
- * between the renderer Process and the main Process, loads a layout and performs the main logic
- */
-const createWindow = () => {
-
-  // Creates the application window
-  const appWindow = new BrowserWindow({
-    width: 1024,
-    height: 768
-  })
-
-  // Loads a layout
-  appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
-
-  return appWindow
-}
-
-// Here we have to wait for the application to signal that it is ready
-// to execute our code. In this case we just create a main window.
-app.whenReady().then(() => {
-  createWindow()
-})
-```
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/0-hello/index.js" language="js" /%}
 
 4. Make a new folder named `view` in the root directory of the project.
 
 5. Now, inside the `view` folder, add a `template.html` file with the following content:
 
-```html
-<!DOCTYPE html>
-<html>
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/0-hello/view/template.html" language="html" /%}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
-</head>
 
-<body>
-
-  <h3>Build a XRPL Wallet</h3>
-  <span>Hello world!</span>
-
-</body>
-
-</html>
-```
 6. Now, start the application with the following command:
 
 ```console
 npm run start
 ```
 
-{% admonition type="success" name="Tip" %}When you need to debug the application, you can open Developer Tools like in Chrome or Firefox by selecting "View / Toggle Developer Tools" from The application Menu or using a Shortcut ("Ctrl+Shift+I" on Windows or Linux, "Option+Command+I on Mac).{% /admonition %}
+{% admonition type="success" name="Tip" %}When you need to debug the application, you can open Developer Tools by selecting "View / Toggle Developer Tools" from the application menu or using a keyboard shortcut (Ctrl+Shift+i on Windows or Linux; Option+Command+i on Mac).{% /admonition %}
 
 You should see a window appear that displays the text "Build a XRPL Wallet" and "Hello world!"
-To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application for this step, run:
 
 ```console
 npm run hello
@@ -166,64 +100,24 @@ npm run hello
 In the next steps we will continually expand on this very basic setup. To better keep track of all the changes that will be made, the files in the {% repo-link path="_code-samples/build-a-desktop-wallet/js/" %}reference section{% /repo-link %} are numbered/prefixed with the respective step number:
 
 **Full code for this step:**
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/0_hello.js" %}`0-hello/0_hello.js`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/0_hello.html" %}`0-hello/view/0_hello.html`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/0-hello/index.js" %}`0-hello/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/0-hello/view/template.html" %}`0-hello/view/template.html`{% /repo-link %},
 
 ### 1. Ledger Index
 
 **Full code for this step:**
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/1_preload.js" %}`1-ledger-index/view/preload.js`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/1_ledger-index.html" %}`1-ledger-index/view/template.html`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/1_renderer.js" %}`1-ledger-index/view/renderer.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/1-ledger-index/index.js" %}`1-ledger-index/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/1-ledger-index/view/preload.js" %}`1-ledger-index/view/preload.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/1-ledger-index/view/template.html" %}`1-ledger-index/view/template.html`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/1-ledger-index/view/renderer.js" %}`1-ledger-index/view/renderer.js`{% /repo-link %}.
 
-Our first step was to have a running "Hello World" application. Now we want to expand on that so that the application can interact on a very basic level with the XRP Ledger and display some information about the current ledger state on the screen. After completing this step, the - for the time being unstyled - application should look like this:
+Our first step was to have a running "Hello World" application. Now we want to expand on that so that the application can interact on a very basic level with the XRP Ledger and display some information about the current ledger state on the screen. After completing this step, the application should look like this:
 
 ![Screenshot: Step 1, hello world equivalent](/docs/img/javascript-wallet-1.png)
 
 1. Update `index.js` by adding the following snippet in the import section at the top of the file below the `path` import:
 
-```javascript
-const { app, BrowserWindow } = require('electron')
-
-const path = require('path')
-
-// Step 3 code additions - start
-const xrpl = require("xrpl")
-
-const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
-
-/**
- * This function creates a WebService client, which connects to the XRPL and fetches the latest ledger index.
- *
- * @returns {Promise<number>}
- */
-const getValidatedLedgerIndex = async () => {
-  const client = new xrpl.Client(TESTNET_URL)
-
-  await client.connect()
-
-  // Reference: https://xrpl.org/ledger.html#ledger
-  const ledgerRequest = {
-    "command": "ledger",
-    "ledger_index": "validated"
-  }
-
-  const ledgerResponse = await client.request(ledgerRequest)
-
-  await client.disconnect()
-
-  return ledgerResponse.result.ledger_index
-}
-// Step 3 code additions - end
-
-
-/**
- * This is our main function, it creates our application window, preloads the code we will need to communicate
- * between the renderer Process and the main Process, loads a layout and performs the main logic
- */
-const createWindow = () => {
-```
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/1-ledger-index/index.js" language="js" from="// Ledger index code additions - start" before="// Ledger index code additions - end" /%}
 
 This helper function does the following: It establishes a WebSocket connection to the XRP Ledger, calls the XRP Ledger API's [ledger method](../../../references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md) and returns the ledger index from the response. We will wire up this function at the end of this step.
 

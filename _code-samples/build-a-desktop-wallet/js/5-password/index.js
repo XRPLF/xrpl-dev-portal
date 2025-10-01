@@ -51,6 +51,9 @@ const main = async () => {
         }
 
         const wallet = xrpl.Wallet.fromSeed(seed)
+        // For compatibility with seeds generated using secp256k1 (the old 
+        // default algorithm), use the following instead:
+        // const wallet = xrpl.Wallet.fromSeed(seed, {algorithm: "secp256k1"})
 
         const client = new xrpl.Client(TESTNET_URL)
 

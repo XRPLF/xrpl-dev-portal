@@ -38,7 +38,7 @@ const main = async () => {
     await client.connect()
 
     // Subscribe client to 'ledger' events
-    // Reference: https://xrpl.org/subscribe.html
+    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe
     await client.request({
         "command": "subscribe",
         "streams": ["ledger"]

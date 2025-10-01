@@ -2,7 +2,7 @@
 
 Build a non-custodial XRP Ledger wallet application in JavaScript that runs on the desktop using Electron.
 
-For the full documentation, refer to the [Build a Wallet in JavaScript tutorial](https://xrpl.org/build-a-wallet-in-javascript.html).
+For the full documentation, refer to the [Build a Desktop Wallet in JavaScript tutorial](https://xrpl.org/docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript).
 
 ## TL;DR
 

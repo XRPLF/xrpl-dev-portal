@@ -14,7 +14,7 @@ const fernet = require("fernet");
  * @returns {Promise<void>}
  */
 const initialize = async (client, wallet, appWindow) => {
-    // Reference: https://xrpl.org/account_info.html
+    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info
     const accountInfoResponse = await client.request({
         "command": "account_info",
         "account": wallet.address,
@@ -23,7 +23,7 @@ const initialize = async (client, wallet, appWindow) => {
     const accountData = prepareAccountData(accountInfoResponse.result.account_data)
     appWindow.webContents.send('update-account-data', accountData)
 
-    // Reference: https://xrpl.org/account_tx.html
+    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx
     const txResponse = await client.request({
         "command": "account_tx",
         "account": wallet.address
@@ -42,14 +42,14 @@ const initialize = async (client, wallet, appWindow) => {
  */
 const subscribe = async (client, wallet, appWindow) => {
 
-    // Reference: https://xrpl.org/subscribe.html
+    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe
     await client.request({
         "command": "subscribe",
         "streams": ["ledger"],
         "accounts": [wallet.address]
     })
 
-    // Reference: https://xrpl.org/subscribe.html#ledger-stream
+    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe#ledger-stream
     client.on("ledgerClosed", async (rawLedgerData) => {
         const ledger = prepareLedgerData(rawLedgerData)
         appWindow.webContents.send('update-ledger-data', ledger)
@@ -57,7 +57,7 @@ const subscribe = async (client, wallet, appWindow) => {
 
     // Wait for transaction on subscribed account and re-request account data
     client.on("transaction", async (transaction) => {
-        // Reference: https://xrpl.org/account_info.html
+        // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info
         const accountInfoRequest = {
             "command": "account_info",
             "account": wallet.address,
