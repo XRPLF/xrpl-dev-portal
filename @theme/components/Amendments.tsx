@@ -58,13 +58,25 @@ function sortAmendments(list: Amendment[]): Amendment[] {
     if (amendment.tx_hash) return 2;      // Enabled
     return 3;                             // Fallback
   };
+
+  const getChronoKey = (amendment: Amendment): number => {
+    const raw = amendment.date || amendment.eta;
+    if (!raw) return 0;
+    const t = Date.parse(raw);
+    return isNaN(t) ? 0 : t;
+  };
+
   return [...list].sort((a, b) => {
-    const priorityA = getStatusPriority(a);
-    const priorityB = getStatusPriority(b);
-    if (priorityA !== priorityB) return priorityA - priorityB;
-    if (a.rippled_version !== b.rippled_version) {
-      return b.rippled_version.localeCompare(a.rippled_version, undefined, { numeric: true });
-    }
+    // 1. Status
+    const statusDiff = getStatusPriority(a) - getStatusPriority(b);
+    if (statusDiff !== 0) return statusDiff;
+
+    // 2. Chronological (most recent first)
+    const chronoA = getChronoKey(a);
+    const chronoB = getChronoKey(b);
+    if (chronoA !== chronoB) return chronoB - chronoA;
+
+    // 3. Alphabetical
     return a.name.localeCompare(b.name);
   });
 }
