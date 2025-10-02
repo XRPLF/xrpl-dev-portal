@@ -10,7 +10,7 @@ status: not_enabled
 
 Use this transaction to update a mutable property for a Multi-purpose Token. The transaction flags determine which change(s) to apply.
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ## Example
 

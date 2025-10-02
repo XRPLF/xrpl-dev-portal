@@ -7,7 +7,7 @@ labels:
 ---
 # Sending MPTs
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 To send an MPT to another account, the receiving account must first authorize the receipt of the MPT, based on its MPToken Issuance ID. This is to prevent malicious users from spamming accounts with unwanted tokens that could negatively impact storage and XRP reserves.
 
