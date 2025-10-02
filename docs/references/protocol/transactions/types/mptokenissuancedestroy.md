@@ -12,7 +12,7 @@ The `MPTokenIssuanceDestroy` transaction is used to remove an `MPTokenIssuance` 
 
 If this operation succeeds, the corresponding `MPTokenIssuance` is removed and the owner’s reserve requirement is reduced by one. This operation must fail if there are any holders of the MPT in question.
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ## Example MPTokenIssuanceDestroy JSON
 

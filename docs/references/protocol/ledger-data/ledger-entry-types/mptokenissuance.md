@@ -9,7 +9,7 @@ status: not_enabled
 
 An `MPTokenIssuance` entry represents a single [MPT](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) issuance and holds data associated with the issuance itself. You can create an `MPTokenIssuance` using an [MPTokenIssuanceCreate transaction][], and can delete it with an [MPTokenIssuanceDestroy transaction][].
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ## Example MPTokenIssuance JSON
 

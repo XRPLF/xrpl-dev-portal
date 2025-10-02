@@ -12,11 +12,11 @@ label:
 
 The XRP Ledger has three kinds of digital asset: XRP, [tokens](../../../concepts/tokens/index.md), and [Multi-purpose Tokens (MPTs)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). All three types have high precision, although their formats are different.
 
-_(Requires the [MPToken amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ## Comparison
 
-The following table summarizes some of the differences XRP, tokens, and MPTs in the XRP Ledger:
+The following table summarizes some of the differences between XRP, tokens, and MPTs in the XRP Ledger:
 
 | XRP                                                      | Tokens            | MPTs                 |
 |:---------------------------------------------------------|:------------------|:---------------------|

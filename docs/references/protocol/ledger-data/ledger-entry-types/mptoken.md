@@ -9,7 +9,7 @@ status: not_enabled
 
 An `MPToken` entry tracks [MPTs](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) held by an account that is not the token issuer. You can create or delete an empty `MPToken` entry by sending an [MPTokenAuthorize transaction][]. You can send and receive MPTs using several other transaction types including [Payment][] and [OfferCreate][] transactions.
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ## Example MPToken JSON
 

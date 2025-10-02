@@ -15,7 +15,7 @@ An MPTokenAuthorize transaction controls whether an account can hold a given [Mu
 - An account revokes their willingness to hold an MPT, deleting the [MPToken entry][]. This can only be done if their balance of the given MPT is zero.
 - For an MPT that uses allow-listing, an issuer grants or revokes permission for another account to hold the given MPT.
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

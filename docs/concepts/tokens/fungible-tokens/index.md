@@ -46,7 +46,7 @@ Some notable features and their status:
 | Escrow | {% amendment-disclaimer name="TokenEscrow" compact=true /%} (implements escrow for both trust line tokens and MPTs) |
 | Mutable token properties | In development: [XLS-94](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0094-dynamic-MPT) |
 | Confidentiality | [Proposed XLS](https://github.com/XRPLF/XRPL-Standards/discussions/372) |
-| Decentralized exchange (DEX), trading, cross-currency payments, and AMM compatibility | Expected future work |
+| Decentralized exchange (DEX), trading, cross-currency payments, and AMM compatibility | [Proposed XLS](https://github.com/XRPLF/XRPL-Standards/discussions/231) |
 
 ## Which Fungible Token Type to Use
 
