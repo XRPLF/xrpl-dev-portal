@@ -97,7 +97,7 @@ All types of directories are automatically updated by the protocol as necessary.
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
-| `DomainID`          | String    | UInt256           | No        | (Offer directories only) The ledger entry ID of a permissioned domain. If present, this order book belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). Otherwise, this order book is part of the open DEX. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `DomainID`          | String    | UInt256           | No        | (Offer directories only) The ledger entry ID of a permissioned domain. If present, this order book belongs to the corresponding [Permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). Otherwise, this order book is part of the open DEX. {% amendment-disclaimer name="PermissionedDEX" /%} |
 | `ExchangeRate`      | String    | UInt64            | No        | (Offer directories only) **DEPRECATED**. Do not use. |
 | `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DirectoryNode` objects. The value is always `0`. |
 | `Indexes`           | Array     | Vector256         | Yes       | The contents of this directory: an array of IDs of other objects. |
@@ -106,8 +106,8 @@ All types of directories are automatically updated by the protocol as necessary.
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0064`, mapped to the string `DirectoryNode`, indicates that this object is part of a directory. |
 | `NFTokenID`         | String    | UInt256           | No        | (NFT offer directories only) ID of the NFT in a buy or sell offer. |
 | `Owner`             | String    | AccountID         | No        | (Owner directories only) The address of the account that owns the objects in this directory. |
-| `PreviousTxnID`     | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
-| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnID`     | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `RootIndex`         | String    | UInt256           | Yes       | The ID of root object for this directory. |
 | `TakerGetsCurrency` | String    | UInt160           | No        | (Offer directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
 | `TakerGetsIssuer`   | String    | UInt160           | No        | (Offer directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
@@ -137,7 +137,7 @@ Owner directories and offer directories for fungible tokens do not use flags; th
 There are three different formulas for creating the ID of a DirectoryNode, depending on which of the following the DirectoryNode represents:
 
 * The first page (also called the root) of an Owner or NFT Offer directory
-* The first page of an Offer directory, with variants for the open DEX and permissioned DEX _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_
+* The first page of an Offer directory, with variants for the open DEX and permissioned DEX {% amendment-disclaimer name="PermissionedDEX" /%}
 * Later pages of any type
 
 The first page of an Owner directory or NFT Offer directory has an ID that is the [SHA-512Half][] of the following values, concatenated in order:

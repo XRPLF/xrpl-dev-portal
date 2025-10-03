@@ -2,7 +2,7 @@
 seo:
     description: Deposit funds into an Automated Market Maker in exchange for LPTokens.
 labels:
-  - AMM
+    - AMM
 ---
 # AMMDeposit
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDeposit.cpp "Source")
@@ -17,7 +17,7 @@ You can't deposit either asset into an AMM if:
 - You aren't authorized to hold at least one of the pooled assets.
 {% /admonition %}
 
-_(Added by the [AMM amendment][].)_
+{% amendment-disclaimer name="AMM" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

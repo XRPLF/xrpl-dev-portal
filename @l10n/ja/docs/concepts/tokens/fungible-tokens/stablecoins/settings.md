@@ -82,12 +82,11 @@ KYC(Know Your Customer)やAML(Anti-Money Laundering)などのコンプライア�
 
 ### Clawbackフラグ
 
-_([Clawback amendment](/resources/known-amendments.md#clawback) が必要です。)_
-
 Clawbackにより、特定の状況下でトラストラインからステーブルコインを回収(クローバック)することができます。これにより、アカウントへのアクセス不能や悪意のある活動などの課題に対応する能力が追加されます。
 
 [Clawback](../../../../references/protocol/transactions/types/clawback.md)をご覧ください。
 
+{% amendment-disclaimer name="Clawback" /%}
 
 ### 固定供給量
 

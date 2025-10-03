@@ -10,7 +10,7 @@ labels:
 
 `NFTokenPage`オブジェクトは、同じアカウントが所有する[NFT](../../../../concepts/tokens/nfts/index.md)のコレクションを表します。一つのアカウントは複数の`NFTokenPage`エントリを持つことができ、それらは双方向リストを形成します。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 
 ## {% $frontmatter.seo.title %}のJSONの例

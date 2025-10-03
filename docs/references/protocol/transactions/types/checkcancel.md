@@ -7,9 +7,9 @@ labels:
 # CheckCancel
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
 
-Cancels an unredeemed Check, removing it from the ledger without sending any money. The source or the destination of the check can cancel a Check at any time using this transaction type. If the Check has expired, any address can cancel it.
+Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), removing it from the ledger without sending any money. The source or the destination of the check can cancel a check at any time. If the check has expired, any address can cancel it.
 
-_(Added by the [Checks amendment][].)_
+{% amendment-disclaimer name="Checks" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

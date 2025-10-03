@@ -12,7 +12,7 @@ stautus: not_enabled
 
 [[Source]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/MPTHolders.cpp "Source")
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all holders of that [MPT](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) and their balance. This method likely returns very large data sets, so you should expect to implement paging via the `marker` field. This API is only available using Clio, not `rippled`. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.3.0" %}New in: Clio v2.3.0{% /badge %}
 

@@ -10,7 +10,7 @@ labels:
 
 `NFToken`オブジェクトは、1つの非代替性トークン(NFT)を表します。単体では保存されず、他の`NFToken`オブジェクトと共に[NFTokenPageオブジェクト][]に格納されます。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました。)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

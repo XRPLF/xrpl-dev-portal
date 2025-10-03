@@ -8,7 +8,7 @@ labels:
 ---
 # Decentralized Identifiers
 
-_(Requires the [DID amendment][])_
+{% amendment-disclaimer name="DID" /%}
 
 A Decentralized Identifier (DID) is a new type of identifier defined by the World Wide Web Consortium (W3C) that enables verifiable, digital identities. DIDs are fully under the control of the DID owner, independent from any centralized registry, identity provider, or certificate authority.
 

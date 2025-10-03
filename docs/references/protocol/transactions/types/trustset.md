@@ -5,7 +5,6 @@ labels:
   - Tokens
 ---
 # TrustSet
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetTrust.cpp "Source")
 
 Create or modify a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) linking two accounts.
@@ -31,7 +30,6 @@ Create or modify a [trust line](../../../../concepts/tokens/fungible-tokens/inde
 {% tx-example txid="8566673ECD0A9731C516906E5D2F47129C5C13713602140733831A56CEAE1A05" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | Field                    | JSON Type | [Internal Type][] | Description       |
 |:-------------------------|:----------|:------------------|:------------------|
@@ -42,7 +40,7 @@ Create or modify a [trust line](../../../../concepts/tokens/fungible-tokens/inde
 | `QualityIn`              | Number    | UInt32            | _(Optional)_ Value incoming balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value. For example, if you set the value to 10,000,000, 1% of incoming funds remain with the sender. If an account sends 100 currency, the sender retains 1 currency unit and the destination receives 99 units. This option is included for parity: in practice, you are much more likely to set a `QualityOut` value. Note that this fee is separate and independent from token transfer fees. |
 | `QualityOut`             | Number    | UInt32            | _(Optional)_ Value outgoing balances on this trust line at the ratio of this number per 1,000,000,000 units. A value of `0` is shorthand for treating balances at face value.  For example, if you set the value to 10,000,000, 1% of outgoing funds would remain with the issuer.  If the sender sends 100 currency units, the issuer retains 1 currency unit and the destination receives 99 units. Note that this fee is separate and independent from token transfer fees. |
 
-If the account specified in `LimitAmount.issuer` is blocking incoming trust lines, the transaction fails with the result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] )_
+If the account specified in `LimitAmount.issuer` is blocking incoming trust lines, the transaction fails with the result code `tecNO_PERMISSION`. {% amendment-disclaimer name="DisallowIncoming" /%}
 
 
 ## TrustSet Flags

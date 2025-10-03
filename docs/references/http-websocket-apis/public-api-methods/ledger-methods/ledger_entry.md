@@ -164,7 +164,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ### Get AMM Entry
 <a id="get-amm-object"></a><!-- legacy ID -->
 
-_(Added by the [AMM amendment][])_
+{% amendment-disclaimer name="AMM" /%}
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 
@@ -231,7 +231,7 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 ### Get Bridge Entry
 <a id="get-bridge-object"></a><!-- legacy ID -->
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 Retrieve a [Bridge entry](../../../protocol/ledger-data/ledger-entry-types/bridge.md), which represents a single cross-chain bridge that connects the XRP Ledger with another blockchain.
 
@@ -467,7 +467,7 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 ### Get Oracle Entry
 <a id="get-oracle-object"></a><!-- legacy ID -->
 
-_(Requires the [PriceOracle amendment][])_
+{% amendment-disclaimer name="PriceOracle" /%}
 
 Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/oracle.md), which represents a single price oracle that can store token prices.
 
@@ -792,7 +792,7 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 ### Get Ticket Entry
 <a id="get-ticket-object"></a><!-- legacy ID -->
 
-Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use. _(Added by the [TicketBatch amendment][])_
+Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use. {% amendment-disclaimer name="TicketBatch" /%}
 
 | Field               | Type                 | Description           |
 |:--------------------|:---------------------|:----------------------|

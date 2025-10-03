@@ -8,7 +8,7 @@ labels:
 ---
 # Set Up an IOU-IOU Bridge
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 Setting up an IOU-IOU bridge enables you to move tokens between chains.
 

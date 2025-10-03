@@ -14,7 +14,7 @@ labels:
 
 {% code-page-name /%}メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 
 ### リクエストのフォーマット

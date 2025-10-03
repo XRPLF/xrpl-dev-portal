@@ -5,13 +5,11 @@ labels:
   - Oracle
 ---
 # OracleDelete
-_(Requires the [PriceOracle amendment][])_
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteOracle.cpp "Source")
 
-Delete an `Oracle` ledger entry.
+Delete a [price oracle](../../../../concepts/decentralized-storage/price-oracles.md). Only the owner of the price oracle can send this transaction.
 
-_(Added by the [PriceOracle amendment][].)_
+{% amendment-disclaimer name="PriceOracle" /%}
 
 
 ## Example OracleDelete JSON
@@ -29,8 +27,7 @@ _(Added by the [PriceOracle amendment][].)_
 
 | Field              | JSON Type | Internal Type | Required? | Description |
 |--------------------|-----------|---------------|-----------|-------------|
-| `Account`          | String    | AccountID     | Yes       | This account must match the account in the `Owner` field of the `Oracle` object. |
-| `OracleDocumentID` | String    | UInt32        | Yes       | A unique identifier of the price oracle for the `Account`. |
+| `OracleDocumentID` | Number    | UInt32        | Yes       | The identifying number of the price oracle, which must be unique per owner. |
 
 
 ## Error Cases

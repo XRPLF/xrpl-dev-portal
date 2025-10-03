@@ -6,12 +6,14 @@ labels:
 status: not_enabled
 ---
 # XChainCommit
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L408-L416 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+Do the second step in a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). This transaciton has two modes:
 
-The `XChainCommit` is the second step in a cross-chain transfer. It puts assets into trust on the locking chain so that they can be wrapped on the issuing chain, or burns wrapped assets on the issuing chain so that they can be returned on the locking chain.
+- Put assets into trust on the locking chain so that they can be wrapped on the issuing chain.
+- Burns wrapped assets on the issuing chain so that they can be returned on the locking chain.
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example XChainCommit JSON
 

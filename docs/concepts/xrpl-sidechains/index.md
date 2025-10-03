@@ -9,7 +9,7 @@ labels:
 ---
 # XRPL Sidechains
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 A sidechain is an independent ledger with its own consensus algorithm, transaction types, rules, and nodes. It acts as its own blockchain, running parallel to the mainchain (XRP Ledger), enabling value to move between the two without compromising the speed, efficiency, and throughput of the mainchain.
 

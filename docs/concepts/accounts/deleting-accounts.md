@@ -1,6 +1,4 @@
 ---
-html: deleting-accounts.html
-parent: accounts.html
 seo:
     description: About deleting an XRP Ledger account.
 labels:
@@ -31,7 +29,7 @@ The following [ledger entry types](../../references/protocol/ledger-data/ledger-
 - `PayChannel`
 - `RippleState` (trust line)
 - `Check`
-- `PermissionedDomain` _(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
+- `PermissionedDomain` {% amendment-disclaimer name="PermissionedDomains" /%}
 
 Any other types of ledger entries that an account owns are automatically deleted along with the account.
 

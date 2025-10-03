@@ -8,9 +8,7 @@ status: not_enabled
 # XChainAddClaimAttestation
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L429-L445 "Source")
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-The `XChainAddClaimAttestation` transaction provides proof from a witness server, attesting to an `XChainCommit` transaction.
+Provide proof from a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) attesting to an `XChainCommit` transaction.
 
 The signature must be from one of the keys on the door's signer list at the time the signature was provided. However, if the signature list changes between the time the signature was submitted and the quorum is reached, the new signature set is used and some of the currently collected signatures may be removed.
 
@@ -18,6 +16,7 @@ Any account can submit signatures.
 
 {% admonition type="info" name="Note" %}The reward is only sent to accounts that have keys on the current list. A quorum of signers need to agree on the `SignatureReward`, the same way they need to agree on the other data. A single witness server can't provide an incorrect value for this in an attempt to collect a larger reward.{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example XChainAddClaimAttestation JSON
 

@@ -9,7 +9,7 @@ labels:
 
 Add an additional amount to an open [payment channel](../../../../concepts/payment-types/payment-channels.md), and optionally update the expiration time of the channel. Only the source account of the channel can use this transaction.
 
-_(Added by the [PayChan amendment][].)_
+{% amendment-disclaimer name="PayChan" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

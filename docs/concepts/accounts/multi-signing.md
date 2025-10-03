@@ -38,7 +38,7 @@ The quorum value of a list is the minimum weight total required to authorize a t
 
 You can also add up to 256 bits of arbitrary data to each signer's entry in the list. This data is not required or used by the network, but can be used by smart contracts or other applications to identify or confirm other data about the signers.
 
-_(Added by the [ExpandedSignerList amendment][].)_
+{% amendment-disclaimer name="ExpandedSignerList" /%}
 
 
 ### Examples Using Signer Weight and Quorum

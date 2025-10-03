@@ -9,7 +9,7 @@ labels:
 # UNLModify
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Change.cpp "Source")
 
-_(Added by the [NegativeUNL amendment][].)_
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 A `UNLModify` [pseudo-transaction](pseudo-transaction-types.md) marks a change to the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), indicating that a trusted validator has gone offline or come back online.
 

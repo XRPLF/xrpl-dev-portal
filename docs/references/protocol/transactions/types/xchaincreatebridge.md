@@ -6,11 +6,9 @@ labels:
 status: not_enabled
 ---
 # XChainCreateBridge
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L381-L388 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-The `XChainCreateBridge` transaction creates a new `Bridge` ledger object and defines a new cross-chain bridge entrance on the chain that the transaction is submitted on. It includes information about door accounts and assets for the bridge. 
+Creates a new [cross-chain bridge](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md) on the chain that the transaction is submitted on, providing information about door accounts and assets for the bridge. 
 
 The transaction must be submitted first by the locking chain door account. To set up a valid bridge, door accounts on both chains must submit this transaction, in addition to setting up witness servers.
 
@@ -18,6 +16,7 @@ The complete production-grade setup would also include a `SignerListSet` transac
 
 {% admonition type="info" name="Note" %}Each door account can only have one bridge. This prevents the creation of duplicate bridges for the same asset, which can cause asset imbalances on either chain.{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example XChainCreateBridge JSON
 

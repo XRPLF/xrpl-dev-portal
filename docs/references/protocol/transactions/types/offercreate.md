@@ -5,10 +5,9 @@ labels:
   - Decentralized Exchange
 ---
 # OfferCreate
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateOffer.cpp "Source")
 
-An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentralized-exchange/offers.md) in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md).
+Place an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to trade in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md).
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -36,7 +35,7 @@ An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentr
 
 | Field            | JSON Type           | [Internal Type][] | Required? | Description |
 |:-----------------|:--------------------|:------------------|:----------|-------------|
-| `DomainID`       | String - [Hash][]   | UInt256           | No        | The ledger entry ID of a permissioned domain. If provided, restrict this offer to the [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) of that domain. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `DomainID`       | String - [Hash][]   | UInt256           | No        | The ledger entry ID of a permissioned domain. If provided, restrict this offer to the [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) of that domain. {% amendment-disclaimer name="PermissionedDEX" /%} |
 | [`Expiration`](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration) | Number | UInt32 | No | Time after which the Offer is no longer active, in [seconds since the Ripple Epoch][]. |
 | `OfferSequence`  | Number              | UInt32            | No        | An Offer to delete first, specified in the same way as [OfferCancel][]. |
 | `TakerGets`      | [Currency Amount][] | Amount            | Yes       | The amount and type of currency being sold. |
@@ -52,7 +51,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | `tfImmediateOrCancel` | `0x00020000` | 131072        | Treat the offer as an [Immediate or Cancel order](http://en.wikipedia.org/wiki/Immediate_or_cancel) and do not place an [Offer entry][] into the order books. The transaction trades as much as it can by consuming existing offers when it's processed. |
 | `tfFillOrKill`        | `0x00040000` | 262144        | Treat the offer as a [Fill or Kill order](http://en.wikipedia.org/wiki/Fill_or_kill), do not place an [Offer entry][] into the order books, and cancel the offer if it cannot be fully filled at the time of execution. By default, this means that the owner must receive the full `TakerPays` amount; if the `tfSell` flag is enabled, the owner must be able to spend the entire `TakerGets` amount instead. |
 | `tfSell`              | `0x00080000` | 524288        | Exchange the entire `TakerGets` amount, even if it means obtaining more than the `TakerPays` amount in exchange. |
-| `tfHybrid`            | `0x00100000` | 1048576       | Make this a hybrid offer that can use both a permissioned DEX and the open DEX. The `DomainID` field must be provided when using this flag. |
+| `tfHybrid`            | `0x00100000` | 1048576       | Make this a hybrid offer that can use both a permissioned DEX and the open DEX. The `DomainID` field must be provided when using this flag. {% amendment-disclaimer name="PermissionedDEX" /%} |
 
 
 ## Error Cases
@@ -67,7 +66,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | `tecNO_AUTH`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the the trust line that would receive the tokens exists but has not been authorized. |
 | `tecNO_ISSUER`           | The transaction specifies a token whose `issuer` value is not a funded account in the ledger. |
 | `tecNO_LINE`             | The transaction involves a token whose issuer uses [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) and the necessary trust line does not exist. |
-| `tecNO_PERMISSION`       | The transaction uses a `DomainID` but the sender is not a member of that domain. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `tecNO_PERMISSION`       | The transaction uses a `DomainID` but the sender is not a member of that domain. {% amendment-disclaimer name="PermissionedDEX" /%} |
 | `tecUNFUNDED_OFFER`      | The owner does not hold a positive amount of the `TakerGets` currency. (Exception: if `TakerGets` specifies a token that the owner issues, the transaction can succeed.) |
 | `temBAD_CURRENCY`        | The transaction specifies a fungible token incorrectly, such as a fungible token with the currency code "XRP". |
 | `temBAD_EXPIRATION`      | The transaction contains an `Expiration` field that is not validly formatted. |

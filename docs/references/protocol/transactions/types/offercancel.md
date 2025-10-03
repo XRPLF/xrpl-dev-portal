@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Withdraw an offer to trade in the decentralized exchange.
+    description: Cancel an offer to trade in the decentralized exchange.
 labels:
   - Decentralized Exchange
 ---
@@ -8,7 +8,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelOffer.cpp "Source")
 
-An OfferCancel transaction removes an Offer object from the XRP Ledger.
+Cancel an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) in the decentralized exchange.
 
 ## Example {% $frontmatter.seo.title %} JSON
 

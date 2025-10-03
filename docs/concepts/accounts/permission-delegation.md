@@ -10,7 +10,7 @@ status: not_enabled
 
 Permission delegation is the function of granting various permissions to another account to send permissions on behalf of your account. You can use permission delegation to enable flexible security paradigms such as role-based access control, instead of or alongside techniques such as [multi-signing](./multi-signing.md).
 
-_(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
+ {% amendment-disclaimer name="PermissionDelegation" /%}
 
 
 ## Background: The Need for Permission Delegation

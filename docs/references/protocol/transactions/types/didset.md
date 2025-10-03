@@ -2,15 +2,14 @@
 seo:
     description: Create or update a Decentralized Identifier.
 labels:
-  - DID
+    - DID
 ---
 # DIDSet
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")
 
-Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or updates the fields of an existing one.
+Create or update a [decentralized identifier (DID)](../../../../concepts/decentralized-storage/decentralized-identifiers.md).
 
-_(Added by the [DID amendment][].)_
+{% amendment-disclaimer name="DID" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

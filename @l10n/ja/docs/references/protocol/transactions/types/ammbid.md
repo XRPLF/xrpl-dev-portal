@@ -9,7 +9,7 @@ labels:
 # AMMBid
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMBid.cpp "Source")
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)のオークションスロットに入札することができます。落札されると、競り落とされるか24時間が経過するまで、割引料金でAMMと取引することができます。24時間が経過する前に競り落とされた場合、残り時間に応じて落札価格の一部が払い戻されます。AMMの取引手数料が0の場合、入札は可能ですが、入札スロットは取引手数料が変更されるまでメリットをもたらしません。
 
