@@ -1,6 +1,6 @@
 {
   "name": "xrpl-javascript-desktop-wallet",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "scripts": {
     "hello": "electron 0-hello/index.js",
@@ -14,15 +14,15 @@
     "domain-verification": "electron 8-domain-verification/index.js"
   },
   "dependencies": {
-    "async": "^3.2.4",
+    "async": "^3.2.6",
     "fernet": "=0.3.3",
-    "node-fetch": "^2.6.9",
-    "pbkdf2-hmac": "^1.1.0",
+    "node-fetch": "^2.7.0",
+    "pbkdf2-hmac": "^1.2.1",
     "open": "^8.4.0",
     "toml": "^3.0.0",
-    "xrpl": "^4.3.0"
+    "xrpl": "^4.4.2"
   },
   "devDependencies": {
-    "electron": "28.3.2"
+    "electron": "38.2.0"
   }
 }

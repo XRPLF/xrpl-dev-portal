@@ -23,6 +23,7 @@ const createWindow = () => {
     return appWindow
 }
 
+// Step 5 - new main function - start
 const main = async () => {
     const appWindow = createWindow()
 
@@ -51,6 +52,9 @@ const main = async () => {
         }
 
         const wallet = xrpl.Wallet.fromSeed(seed)
+        // For compatibility with seeds generated using secp256k1
+        // (the old default algorithm), use the following instead:
+        // const wallet = xrpl.Wallet.fromSeed(seed, {algorithm: "secp256k1"})
 
         const client = new xrpl.Client(TESTNET_URL)
 
@@ -80,5 +84,6 @@ const main = async () => {
         }
     })
 }
+// Step 5 - new main function - end
 
 app.whenReady().then(main)
