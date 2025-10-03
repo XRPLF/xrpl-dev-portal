@@ -17,6 +17,19 @@ An MPTokenAuthorize transaction controls whether an account can hold a given [Mu
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
+## Example MPTokenAuthorize JSON
+
+This example assumes that the transaction is submitted by the holder of the token.
+
+```json
+{
+  "TransactionType": "MPTokenAuthorize",
+  "Account": "rpLxcR2ptLkLV4is3jZc48K4dMpXB9CQBF",
+  "MPTokenIssuanceID": "006616399B81473A2B8F16D149FA244BBAB97E5412D846ED",
+  "Fee": "10"
+}
+```
+
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field               | JSON Type            | [Internal Type][] | Required? | Description |
