@@ -11,7 +11,7 @@ labels:
 
 The XRP Ledger natively supports non-fungible tokens (NFTs, or “nifties” in the vernacular).  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 To represent digital assets similar to these, use the XRP Ledger's Non-Fungible Tokens feature (sometimes referred to by its standards draft number, [XLS-20](https://github.com/XRPLF/XRPL-Standards/discussions/46)).
 

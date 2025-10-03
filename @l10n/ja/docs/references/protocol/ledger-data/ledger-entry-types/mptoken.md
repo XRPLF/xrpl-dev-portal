@@ -10,7 +10,7 @@ labels:
 
 `MPTokenIssuanceID`.`MPToken`オブジェクトは、トークン発行者ではないアカウントが保有する複数のトークンを表します。MPTは通常の支払いやDEXトランザクションを通じて取得され、これらと同じタイプのトランザクションを使用してオプションで償還または交換することができます。MPTokenのオブジェクトキーは、スペースキー、保有者のアドレス、および`MPTokenIssuanceID`をハッシュ化することで生成されます。
 
-_([MPTokensV1_1 amendment][]により追加されました。)_
+{% amendment-disclaimer name="MPTokensV1_1" /%}
 
 ## MPToken JSONの例
 

@@ -7,7 +7,7 @@ status: not_enabled
 
 A `Credential` entry represents a [credential](../../../../concepts/decentralized-storage/credentials.md), which contains an attestation about a _subject_ account from a _credential issuer_ account. The meaning of the attestation is defined by the issuer.
 
-_(Requires the [Credentials amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="Credentials" /%}
 
 ## Example Credential JSON
 

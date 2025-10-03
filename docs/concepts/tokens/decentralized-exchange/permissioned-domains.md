@@ -2,8 +2,9 @@
 seo:
     description: Learn how Permissioned Domains on the XRP Ledger enable controlled, secure blockchain environments. Explore their role in decentralized exchanges (DEXes) and lending protocols.
 labels:
-  - Compliance
-  - Permissioned Domains
+    - Compliance
+    - Permissioned Domains
+status: not_enabled
 ---
 # Permissioned Domains
 

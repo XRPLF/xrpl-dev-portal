@@ -8,7 +8,7 @@ labels:
 ---
 # Set Up an XRP-XRP Bridge
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 Setting up an XRP-XRP bridge enables you to move XRP between chains. The set up requires using the genesis account on the issuing chain as a door account to submit attestations and create transaction submission accounts for witnesses.
 

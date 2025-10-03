@@ -256,7 +256,7 @@ Transactions (`tx` and `account_tx`) involving NFTs can contain the following fi
 | `offer_id`    | String | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction.                                                                                                                                 |
 ## MPT Fields
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ### Synthetic mpt_issuance_id field
 `MPTokenIssuanceID` is an identifier that allows you to specify an `MPTokenIssuance` in RPCs. The server adds a synthetically parsed `mpt_issuance_id` field to API responses to avoid the need for client-side parsing of the `MPTokenIssuanceID`.

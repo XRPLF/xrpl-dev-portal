@@ -74,14 +74,14 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 |:----------------------------------|:------|:--------------|
 | `asfAccountTxnID`                 | 5     | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](../common-fields.md#accounttxnid)については必須です。 |
 | `asfAllowTrustLineClawback`       | 16      | アカウントの発行したトークンを回収する機能を有効にします。 _（[Clawback Amendment][]により追加されました）。_　所有者ディレクトリが存在する場合はClawback機能を有効にできません。つまり、トラストラインやオファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。このフラグは、有効にした後は無効にできません。|
-| `asfAuthorizedNFTokenMinter`      | 10    | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
+| `asfAuthorizedNFTokenMinter`      | 10    | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `asfDefaultRipple`                | 8     | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。 |
 | `asfDepositAuth`                  | 9     | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
 | `asfDisableMaster`                | 4     | マスターキーペアの使用を禁止します。[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)や[署名者リスト](../../../../concepts/accounts/multi-signing.md)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
-| `asfDisallowIncomingCheck`        | 13    | チェックの着信をブロックします。_([DisallowIncoming amendment][] が必要です。)_ |
-| `asfDisallowIncomingNFTokenOffer` | 12    | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
-| `asfDisallowIncomingPayChan`      | 14    | ペイメントチャネルの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
-| `asfDisallowIncomingTrustline`    | 15    | トラストラインの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
+| `asfDisallowIncomingCheck`        | 13    | チェックの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
+| `asfDisallowIncomingNFTokenOffer` | 12    | NFTokenOffersの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
+| `asfDisallowIncomingPayChan`      | 14    | ペイメントチャネルの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
+| `asfDisallowIncomingTrustline`    | 15    | トラストラインの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
 | `asfDisallowXRP`                  | 3     | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
 | `asfGlobalFreeze`                 | 7     | このアカウントによって発行されたすべての資産を[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
 | `asfNoFreeze`                     | 6     | [個々のトラストラインのフリーズまたはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |

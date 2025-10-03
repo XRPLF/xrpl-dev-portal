@@ -3,6 +3,7 @@ seo:
     description: Format for permissions that can be granted to other accounts.
 label:
     - Permissions
+status: not_enabled
 ---
 # Permission Values
 
@@ -11,7 +12,7 @@ label:
 - **Transaction Type Permissions** - Permission to send transactions with the specified [transaction type](../transactions/types/index.md).
 - **Granular Permissions** - Permission to send transactions with a specific subset of functionality.
 
-_(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="PermissionDelegation" /%}
 
 ## Numeric and String Values
 

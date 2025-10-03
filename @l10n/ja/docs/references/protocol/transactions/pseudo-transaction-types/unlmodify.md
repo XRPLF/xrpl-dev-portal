@@ -8,7 +8,7 @@ labels:
 ---
 # UNLModify
 
-_([NegativeUNL amendment][]により追加されました)_
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 `UNLModify`[疑似トランザクション](pseudo-transaction-types.md)は[Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
 

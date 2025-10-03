@@ -14,7 +14,7 @@ NFTokenBurnトランザクションは、`NFToken`オブジェクトを保持し
 
 この操作に成功すると、対応する`NFToken`が削除されます。この操作によって`NFToken`を保持している`NFTokenPage`が空になるか、統合されて`NFTokenPage`が削除されると、所有者準備金が1つ減ります。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 
 ## {% $frontmatter.seo.title %} JSONの例

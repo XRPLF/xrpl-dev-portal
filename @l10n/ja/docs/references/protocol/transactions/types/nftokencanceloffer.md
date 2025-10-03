@@ -11,7 +11,7 @@ labels:
 
 `NFTokenCancelOffer`トランザクションは、`NFTokenCreateOffer`を使用して作成した既存のトークンへのオファーをキャンセルするために使用できます。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

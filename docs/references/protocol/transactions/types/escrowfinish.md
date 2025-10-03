@@ -2,15 +2,14 @@
 seo:
     description: Deliver escrowed funds to the intended recipient.
 labels:
-  - Escrow
+    - Escrow
 ---
 # EscrowFinish
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-Deliver XRP from an escrow (held payment) to the recipient.
+Deliver XRP from an [escrow](../../../../concepts/payment-types/escrow.md) to the recipient.
 
-_(Added by the [Escrow amendment][].)_
+{% amendment-disclaimer name="Escrow" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

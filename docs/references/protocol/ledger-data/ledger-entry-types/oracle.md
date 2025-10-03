@@ -9,7 +9,7 @@ labels:
 
 An `Oracle` ledger entry holds data associated with a single [price oracle](../../../../concepts/decentralized-storage/price-oracles.md), which can store information on up to 10 asset pairs. You can create or modify a price oracle with an [OracleSet transaction][].
 
-_(Added by the [PriceOracle amendment][])_
+{% amendment-disclaimer name="PriceOracle" /%}
 
 ## Example Oracle JSON
 

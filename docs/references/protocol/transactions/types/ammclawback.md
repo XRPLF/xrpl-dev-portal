@@ -2,8 +2,8 @@
 seo:
     description: Claw back tokens from a holder who has deposited your issued tokens into an Automated Market Maker pool.
 labels:
-  - AMM
-  - Tokens
+    - AMM
+    - Tokens
 ---
 # AMMClawback
 
@@ -13,7 +13,7 @@ Claw back tokens from a holder who has deposited your issued tokens into an AMM 
 
 Clawback is disabled by default. To use clawback, you must send an [AccountSet transaction][] to enable the **Allow Trust Line Clawback** setting. An issuer with any existing tokens cannot enable clawback. You can only enable **Allow Trust Line Clawback** if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists. After you enable clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.
 
-_(Added by the [AMMClawback amendment][].)_
+{% amendment-disclaimer name="AMMClawback" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

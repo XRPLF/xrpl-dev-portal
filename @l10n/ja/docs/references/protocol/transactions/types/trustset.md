@@ -44,7 +44,7 @@ labels:
 | `QualityIn`              | 数値    | UInt32            | _（省略可）_ このトラストラインの受入額を、1,000,000,000単位当たりのこの数値の割合で評価。値`0`は、残高を額面価格で扱うことを示す省略表現です。 |
 | `QualityOut`             | 数値    | UInt32            | _（省略可）_ このトラストラインの払出額を、1,000,000,000単位当たりのこの数値の割合で評価。値`0`は、残高を額面価格で扱うことを示す省略表現です。 |
 
-`LimitAmount.issuer`で指定されたアカウントがトラストラインの着信をブロックしている場合、結果コード`tecNO_PERMISSION`でトランザクションが失敗します。 _([DisallowIncoming amendment][] が必要です)_
+`LimitAmount.issuer`で指定されたアカウントがトラストラインの着信をブロックしている場合、結果コード`tecNO_PERMISSION`でトランザクションが失敗します。 {% amendment-disclaimer name="DisallowIncoming" /%}
 
 
 ## TrustSetのフラグ

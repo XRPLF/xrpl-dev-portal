@@ -9,7 +9,7 @@ labels:
 
 An `NFTokenPage` entry represents a collection of [NFTs](../../../../concepts/tokens/nfts/index.md) owned by the same account. An account can have multiple `NFTokenPage` entries, which form a doubly linked list. NFT directories are automatically updated when an account mints, burns, buys, or sells NFTs.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

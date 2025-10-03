@@ -11,7 +11,7 @@ labels:
 
 `nft_buy_offers`メソッドは、与えられた[NFToken][]オブジェクトに対する購入オファーのリストを返します。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました。)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例：

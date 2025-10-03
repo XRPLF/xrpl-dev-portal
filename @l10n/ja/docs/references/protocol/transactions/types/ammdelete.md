@@ -9,7 +9,7 @@ labels:
 # AMMDelete
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 自動で削除しきれなかった空の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを削除します。
 

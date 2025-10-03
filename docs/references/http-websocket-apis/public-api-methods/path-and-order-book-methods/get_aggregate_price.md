@@ -6,7 +6,7 @@ labels:
 ---
 # get_aggregate_price
 
-_(Requires the [PriceOracle amendment][])_
+{% amendment-disclaimer name="PriceOracle" /%}
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/GetAggregatePrice.cpp "Source")
 

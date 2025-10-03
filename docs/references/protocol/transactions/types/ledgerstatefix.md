@@ -2,15 +2,15 @@
 seo:
     description: Repair corruptions to the XRP ledger's state data.
 labels:
-  - Utilities
-  - Troubleshooting
+    - Utilities
+    - Troubleshooting
 ---
 # LedgerStateFix
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/LedgerStateFix.cpp "Source")
 
-`LedgerStateFix` is a general purpose transaction used to fix specific issues affecting the XRP ledger. You submit the transaction with the `LedgerFixType` value set to indicate the particular  error state to correct.
+Repair a specific corruption affecting on-ledger data. This transaction type has a different mode for each type of error state or corruption it can fix.
 
-_(Added by the [fixNFTokenPageLinks amendment][].)_
+{% amendment-disclaimer name="fixNFTokenPageLinks" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

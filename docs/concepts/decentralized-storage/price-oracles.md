@@ -1,19 +1,21 @@
+---
+seo:
+    description: Price oracles gather real-world market prices and record them in the blockchain so that other tools and technology can access this data directly.
+---
 # Price Oracles
 
-_(Requires the [PriceOracle amendment][])_
+Price oracles gather real-world market prices and record them in the blockchain so that other tools and technology can access this data directly.
 
-Blockchains can't inherently interact with and "know" what's happening off the network, but many of its use cases in decentralized finance require this information.
-
-Price oracles solve this problem. An oracle is a service or technology that gathers real-world information, such as market prices, exchange rates, or interest rates, and relays it to the blockchain. Like blockchains, most oracles are also decentralized and validate data through multiple nodes.
+Blockchains can't inherently interact with and "know" what's happening off the network, but many of its use cases in decentralized finance require this information. Price oracles solve this problem by putting the data on-chain where decentralized apps can find it. Like blockchains, most oracles are also decentralized and validate data through multiple nodes.
 
 {% admonition type="info" name="Note" %}
-
-Generally speaking, oracles aren't limited to only providing financial information. They can provide any type of info, such as what sports team won a game, or even the weather. The XRP Ledger's Price Oracle feature, however, is designed specifically for reporting the prices of assets.
-
+Generally speaking, oracles aren't limited to only providing financial information like asset prices, exchange rates, or interest rates. They can provide any type of info, such as what sports team won a game, or even the weather. The XRP Ledger's Price Oracle feature, however, is designed specifically for reporting the prices of assets.
 {% /admonition %}
 
+{% amendment-disclaimer name="PriceOracle" /%}
 
-## How Oracles Works
+
+## How Oracles Work
 
 Most oracle blockchain interactions work like this:
 

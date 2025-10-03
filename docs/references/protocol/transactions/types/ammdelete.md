@@ -2,7 +2,7 @@
 seo:
     description: Delete an Automated Market Maker with an empty asset pool.
 labels:
-  - AMM
+    - AMM
 ---
 # AMMDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")
@@ -11,7 +11,7 @@ Delete an empty [Automated Market Maker](../../../../concepts/tokens/decentraliz
 
 Normally, an [AMMWithdraw transaction][] automatically deletes an AMM and all associated ledger entries when it withdraws all the assets from the AMM's pool. However, if there are too many trust lines to the AMM account to remove in one transaction, it may stop before fully removing the AMM. Similarly, an AMMDelete transaction removes up to a maximum of 512 trust lines; it may take several AMMDelete transactions to delete all the trust lines and the associated AMM. In all cases, only the last such transaction deletes the AMM and AccountRoot ledger entries.
 
-_(Added by the [AMM amendment][].)_
+{% amendment-disclaimer name="AMM" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

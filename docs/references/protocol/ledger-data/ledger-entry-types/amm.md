@@ -9,7 +9,7 @@ labels:
 
 An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-entries). You can create an AMM by sending an [AMMCreate transaction][].
 
-_(Added by the [AMM amendment][])_
+{% amendment-disclaimer name="AMM" /%}
 
 
 ## Example AMM JSON
@@ -68,8 +68,8 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `Account`        | String - [Address][] | AccountID        | Yes       | The address of the [special account](accountroot.md#special-amm-accountroot-entries) that holds this AMM's assets. |
 | `AuctionSlot`    | Object              | Object            | No        | Details of the current owner of the auction slot, as an [Auction Slot object](#auction-slot-object). |
 | `LPTokenBalance` | [Currency Amount][] | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected. |
-| `PreviousTxnID`  | String - [Hash][]   | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
-| `PreviousTxnLgrSeq` | Number           | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnID`  | String - [Hash][]   | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| `PreviousTxnLgrSeq` | Number           | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `TradingFee`     | Number              | UInt16            | Yes       | The percentage fee to be charged for trades against this AMM instance, in units of 1/100,000. The maximum value is 1000, for a 1% fee. |
 | `VoteSlots`      | Array               | Array             | No        | A list of vote objects, representing votes on the pool's trading fee. |
 

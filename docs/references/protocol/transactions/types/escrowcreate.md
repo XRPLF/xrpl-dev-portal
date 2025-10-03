@@ -2,15 +2,14 @@
 seo:
     description: Escrow funds, which can be released to the destination after a specific time or condition.
 labels:
-  - Escrow
+    - Escrow
 ---
 # EscrowCreate
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-Sequester XRP until the escrow process either finishes or is canceled.
+Set aside funds in an [escrow](../../../../concepts/payment-types/escrow.md) that delivers them to a predetermined recipient when certain conditions are met. If the escrow has an expiration, the funds can also be returned to the sender after it expires.
 
-_(Added by the [Escrow amendment][].)_
+{% amendment-disclaimer name="Escrow" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

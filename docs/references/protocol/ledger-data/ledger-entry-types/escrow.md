@@ -9,7 +9,7 @@ labels:
 
 An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds XRP until specific conditions are met. You can create an escrow by sending an [EscrowCreate transaction][].
 
-_(Added by the [Escrow amendment][].)_
+{% amendment-disclaimer name="Escrow" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

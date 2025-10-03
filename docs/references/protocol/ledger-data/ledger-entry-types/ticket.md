@@ -9,7 +9,7 @@ labels:
 
 A `Ticket` entry type represents a [Ticket](../../../../concepts/accounts/tickets.md), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][].
 
-_(Added by the [TicketBatch amendment][].)_
+{% amendment-disclaimer name="TicketBatch" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

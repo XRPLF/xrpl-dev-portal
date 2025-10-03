@@ -9,7 +9,7 @@ labels:
 # AMM
 [[ソース]](https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275 "Source")
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 `AMM`レジャーエントリは、単一の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを表します。これは常に[特殊なAccountRootエントリ](accountroot.md#ammの特殊なaccountrootエントリ)と対になっています。
 

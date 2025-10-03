@@ -10,7 +10,7 @@ labels:
 ---
 # Cross-Chain Bridges
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 Cross-chain bridges enable you to move XRP and tokens between the XRP Ledger and other blockchains. When referring to the blockchains connected by a bridge, one is the locking chain and the other the issuing chain.
 

@@ -11,7 +11,7 @@ labels:
 
 The `nft_buy_offers` method returns a list of buy offers for a given [NFToken][] object.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## Request Format
 An example of the request format:

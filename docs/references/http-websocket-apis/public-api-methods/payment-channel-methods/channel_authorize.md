@@ -1,6 +1,4 @@
 ---
-html: channel_authorize.html
-parent: payment-channel-methods.html
 seo:
     description: Sign a claim for money from a payment channel.
 labels:
@@ -9,9 +7,9 @@ labels:
 # channel_authorize
 [[Source]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
 
-_(Added by the [PayChan amendment][] to be enabled.)_
-
 The `channel_authorize` method creates a signature that can be used to redeem a specific amount of XRP or fungible tokens from a payment channel.
+
+{% amendment-disclaimer name="PayChan" /%}
 
 ## Request Format
 An example of the request format:

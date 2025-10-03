@@ -14,7 +14,7 @@ The `XChainOwnedClaimID` entry must be acquired on the destination chain before 
 
 You can create a new `XChainOwnedClaimID` by sending an [XChainCreateClaimID transaction][]. An `XChainOwnedClaimID` is destroyed when the funds are successfully claimed on the destination chain.
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 
 ## Example XChainOwnedClaimID JSON

@@ -11,7 +11,7 @@ labels:
 
 XRP Ledgerは、非代替性トークン(NFT)をネイティブにサポートしています。 非代替性トークンは、芸術作品やゲーム内アイテムなど、ユニークな物理的、非物理的、あるいは純粋なデジタル商品の所有権を証明する役割を果たします。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました。)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 このようなデジタル資産を表現するには、XRP LedgerのNon-Fungible Tokens機能（スタンダードドラフト番号で[XLS-20](https://github.com/XRPLF/XRPL-Standards/discussions/46)と呼ばれることもあります）を使用します。
 

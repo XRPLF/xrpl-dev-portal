@@ -11,7 +11,7 @@ labels:
 
 `account_nfts`メソッドは、指定したアカウントの`NFToken`オブジェクトの一覧を返します。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました。)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例

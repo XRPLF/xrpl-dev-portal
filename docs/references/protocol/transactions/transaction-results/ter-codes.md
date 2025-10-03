@@ -20,7 +20,7 @@ Transactions with `ter` codes have not been applied to the current ledger and ha
 | `terINSUF_FEE_B` | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
 | `terLAST`        | Used internally only. This code should never be returned. |
 | `terNO_ACCOUNT`  | The address sending the transaction is not funded in the ledger (yet). |
-| `terNO_AMM`      | The AMM-related transaction specifies an asset pair that does not currently have an AMM instance. _(Added by the [AMM amendment][])_ |
+| `terNO_AMM`      | The AMM-related transaction specifies an asset pair that does not currently have an AMM instance. {% amendment-disclaimer name="AMM" /%} |
 | `terNO_AUTH`     | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
 | `terNO_LINE`     | Used internally only. This code should never be returned. |
 | `terNO_RIPPLE`   | The transaction can't succeed because of [rippling settings](/docs/concepts/tokens/fungible-tokens/rippling/). For example, the transaction tried to create an AMM even though the issuer of at least one of the tokens has not enabled the Default Ripple flag. |

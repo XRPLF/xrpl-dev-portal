@@ -2,14 +2,14 @@
 seo:
     description: Modify a dynamic NFT.
 labels:
-  - Non-fungible Tokens, NFTs
+    - Non-fungible Tokens, NFTs
 ---
 # NFTokenModify
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenModify.cpp "Source")
 
-`NFTokenModify` is used to change the `URI` field of an NFT to point to a different URI in order to update the supporting data for the NFT. The NFT must have been minted with the `tfMutable` flag set. See [Dynamic Non-Fungible Tokens](../../../../concepts/tokens/nfts/dynamic-nfts.md).
+Change the `URI` field of a [dynamic NFT](../../../../concepts/tokens/nfts/dynamic-nfts.md) to update the supporting data for the NFT. Only the issuer, or their authorized minter, can modify an NFT, and only if it was minted with the **Mutable** flag enabled.
 
-_(Requires the [DynamicNFT amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="DynamicNFT" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

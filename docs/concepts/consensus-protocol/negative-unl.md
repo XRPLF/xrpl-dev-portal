@@ -1,18 +1,16 @@
 ---
-html: negative-unl.html
-parent: consensus.html
 seo:
     description: Understand how Negative UNL improves the ledger's resilience during partial outages.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # Negative UNL
-
-_Added by the [NegativeUNL Amendment](/resources/known-amendments.md#negativeunl)._
 
 The _Negative UNL_ is a feature of the XRP Ledger [consensus protocol](index.md) that improves _liveness_, the network's ability to make forward progress during a partial outage. Using the Negative UNL, servers adjust their effective UNLs based on which validators are currently online and operational, so that a new [ledger version](../ledgers/index.md) can be declared _validated_ even if several trusted validators are offline.
 
 The Negative UNL has no impact on how the network processes transactions or what transactions' outcomes are, except that it improves the network's ability to declare outcomes final during some types of partial outages.
+
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 ## Background
 

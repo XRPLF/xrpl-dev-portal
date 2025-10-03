@@ -2,14 +2,12 @@
 seo:
     description: Set up your account to receive a specific MPT as a holder; or authorize a holder as an MPT issuer.
 labels:
- - Multi-purpose Tokens, MPTs
-status: not_enabled
+    - Multi-purpose Tokens, MPTs
 ---
-
 # MPTokenAuthorize
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenAuthorize.cpp "Source")
 
-An MPTokenAuthorize transaction controls whether an account can hold a given [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). It has several uses:
+Control whether an account can hold a given [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). This transaction has several uses:
 
 - An account indicates their willingness to hold an MPT. This creates a new [MPToken entry][] with an initial zero balance owned by that account. This is a prerequisite to receive that type of MPT in a payment.
 - An account revokes their willingness to hold an MPT, deleting the [MPToken entry][]. This can only be done if their balance of the given MPT is zero.

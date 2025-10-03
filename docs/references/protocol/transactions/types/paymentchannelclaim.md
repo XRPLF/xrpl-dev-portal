@@ -7,7 +7,7 @@ labels:
 # PaymentChannelClaim
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
-Claim funds from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
+Claim funds from a [payment channel](../../../../concepts/payment-types/payment-channels.md), adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 
 The **source address** of a channel can:
 
@@ -25,7 +25,7 @@ The **destination address** of a channel can:
 
 - Cause a channel to be closed if its `Expiration` or `CancelAfter` time is older than the previous ledger's close time. Any validly formed `PaymentChannelClaim` transaction has this effect, regardless of the contents of the transaction.
 
-_(Added by the [PayChan amendment][].)_
+{% amendment-disclaimer name="PayChan" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

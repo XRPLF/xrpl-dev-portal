@@ -11,7 +11,7 @@ status: not_enabled
 
 A `Delegate` ledger entry stores a set of permissions that an account has delegated to another account. You create a `Delegate` entry by sending a [DelegateSet transaction][].
 
-_(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="PermissionDelegation" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

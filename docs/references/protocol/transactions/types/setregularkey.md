@@ -2,13 +2,13 @@
 seo:
     description: Add, remove, or modify an account's regular key pair.
 labels:
-  - Security
+    - Security
 ---
 # SetRegularKey
 
 [[Source]](https://github.com/XRPLF/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
 
-A `SetRegularKey` transaction assigns, changes, or removes the regular key pair associated with an account.
+Assign, change, or remove the [regular key pair](../../../../concepts/accounts/cryptographic-keys.md) associated with your account.
 
 You can protect your account by assigning a regular key pair to it and using it instead of the master key pair to sign transactions whenever possible. If your regular key pair is compromised, but your master key pair is not, you can use a `SetRegularKey` transaction to regain control of your account.
 
@@ -27,7 +27,6 @@ You can protect your account by assigning a regular key pair to it and using it 
 {% tx-example txid="6AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | Field        | JSON Type | [Internal Type][] | Description                   |
 |:-------------|:----------|:------------------|:------------------------------|

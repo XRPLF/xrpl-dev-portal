@@ -159,7 +159,7 @@ See [Enact Global Freeze](../../tutorials/how-tos/use-tokens/enact-global-freeze
 
 ### Clawback
 
-_(Requires the [Clawback amendment][] )_
+{% amendment-disclaimer name="Clawback" /%}
 
 Clawback is an optional setting that you can choose before you begin to distribute your stablecoin. For regulatory purposes, some issuers _must_ have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
 
@@ -206,7 +206,7 @@ Decentralized exchanges (DEXes) are integral to the decentralized finance ecosys
 
 
 ### List on an AMM
-_(Added by the [AMM amendment][])_
+{% amendment-disclaimer name="AMM" /%}
 
 Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 

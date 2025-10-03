@@ -2,17 +2,16 @@
 seo:
     description: Delete a Decentralized Identifier.
 labels:
-  - DID
+    - DID
 ---
 # DIDDelete
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")
 
-Delete the [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) associated with the specified `Account` field.
+Delete the sender's [decentralized identifier (DID)](../../../../concepts/decentralized-storage/decentralized-identifiers.md).
 
 {% admonition type="info" name="Note" %}This transaction only uses the [common fields][].{% /admonition %}
 
-_(Added by the [DID amendment][].)_
+{% amendment-disclaimer name="DID" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

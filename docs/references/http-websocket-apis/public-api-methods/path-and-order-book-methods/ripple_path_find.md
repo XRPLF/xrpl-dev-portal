@@ -90,7 +90,7 @@ The request includes the following parameters:
 | `source_account`      | String - [Address][] | Yes       | The account that would send funds |
 | `destination_account` | String - [Address][] | Yes       | The account that would receive funds |
 | `destination_amount`  | [Currency Amount][]  | Yes       | How much the destination account would receive. **Special case:** You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for tokens). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `domain`              | String - [Hash][]    | No        | The ledger entry ID of a permissioned domain. If provided, only return paths that use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `domain`              | String - [Hash][]    | No        | The ledger entry ID of a permissioned domain. If provided, only return paths that use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). {% amendment-disclaimer name="PermissionedDEX" /%} |
 | `ledger_hash`         | String - [Hash][]    | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | [Ledger Index][]     | No        | The ledger index of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Cannot be used with `source_currencies`. |

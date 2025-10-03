@@ -11,7 +11,7 @@ Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exc
 
 You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.
 
-_(Added by the [AMM amendment][].)_
+{% amendment-disclaimer name="AMM" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

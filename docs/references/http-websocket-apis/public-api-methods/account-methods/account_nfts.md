@@ -11,7 +11,7 @@ labels:
 
 The `account_nfts` method returns a list of `NFToken` objects for the specified account.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## Request Format
 An example of the request format:

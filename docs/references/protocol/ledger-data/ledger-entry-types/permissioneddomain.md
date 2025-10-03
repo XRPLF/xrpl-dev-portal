@@ -11,7 +11,7 @@ status: not_enabled
 
 A `PermissionedDomain` ledger entry describes a single [permissioned domain][] instance. You can create a permissioned domain by sending a [PermissionedDomainSet transaction][].
 
-_(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="PermissionedDomains" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

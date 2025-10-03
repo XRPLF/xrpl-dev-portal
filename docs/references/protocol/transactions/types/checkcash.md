@@ -7,11 +7,11 @@ labels:
 # CheckCash
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
 
-Attempts to redeem a Check object in the ledger to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a Check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
+Attempts to redeem a [check](../../../../concepts/payment-types/checks.md) to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
 
-Since the funds for a check are not guaranteed, redeeming a Check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the Check remains in the ledger and the destination can try to cash it again later, or for a different amount.
+Since the funds for a check are not guaranteed, redeeming a check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the check remains in the ledger and the destination can try to cash it again later, or for a different amount.
 
-_(Added by the [Checks amendment][].)_
+{% amendment-disclaimer name="Checks" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

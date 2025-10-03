@@ -8,7 +8,7 @@ labels:
 ---
 # NegativeUNL
 
-_([NegativeUNL amendment][]により追加されました。)_
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 `NegativeUNL`オブジェクトタイプは、[ネガティブUNL](../../../../concepts/consensus-protocol/negative-unl.md)の現在の状態、つまり現在オフラインであると考えられる信頼できるバリデーションのリストを含んでいます。
 

@@ -1,19 +1,15 @@
 ---
 seo:
-  description: Define the properties of a new Multi-Purpose Token (MPT).
+    description: Define the properties of a new Multi-Purpose Token (MPT).
 labels:
- - Multi-purpose Tokens, MPTs
-status: not_enabled
+    - Multi-purpose Tokens, MPTs
 ---
-
 # MPTokenIssuanceCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceCreate.cpp "Source")
 
-The `MPTokenIssuanceCreate` transaction creates an [MPTokenIssuance](../../ledger-data/ledger-entry-types/mptokenissuance.md) object and adds it to the relevant directory node of the creator account. This transaction is the only opportunity an issuer has to specify any token fields that are defined as immutable (for example, MPT Flags).
+Creates a new [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) issuance, which defines the properties of those MPTs. This is a prerequisite to actually issuing the tokens.
 
-If the transaction is successful, the newly created token is owned by the account (the creator account) that executed the transaction.
-
-Whenever your query returns an `MPTokenIssuance` transaction response, there will always be an `mpt_issuance_id` field on the Transaction Metadata page.
+If the transaction is successful, it creates an [MPTokenIssuance entry][] where the sender of the transaction is the MPT's issuer.
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 

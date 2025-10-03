@@ -6,16 +6,15 @@ labels:
 status: not_enabled
 ---
 # XChainCreateClaimID
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L399-L406 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-The `XChainCreateClaimID` transaction creates a new cross-chain claim ID that is used for a cross-chain transfer. A cross-chain claim ID represents *one* cross-chain transfer of value. 
+Create a new cross-chain claim ID that is used for a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). A cross-chain claim ID represents *one* cross-chain transfer of value. 
 
 This transaction is the first step of a cross-chain transfer of value and is submitted on the destination chain, not the source chain. 
 
 It also includes the account on the source chain that locks or burns the funds on the source chain.
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example XChainCreateClaimID JSON
 

@@ -9,7 +9,7 @@ labels:
 ---
 # Automated Market Makers
 
-_(Added by the [AMM amendment][])_
+{% amendment-disclaimer name="AMM" /%}
 
 Automated Market Makers (AMMs) provide liquidity in the XRP Ledger's decentralized exchange (DEX). Each AMM holds a pool of two assets. You can swap between the two assets at an exchange rate set by a mathematical formula.
 

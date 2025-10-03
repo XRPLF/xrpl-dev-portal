@@ -101,13 +101,14 @@ In this case, the ID is the [SHA-512Half][] of the following values, concatenate
 * The AccountID in the `Authorize` field
 
 ### Credential Preauthorization
-_(Requires the [Credentials amendment][]. {% not-enabled /%})_
 
 In this case, the ID is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Credential Preauth space key (`0x0050`)
 * The AccountID of the owner of this object (the sender of the [DepositPreauth transaction][] that created this object; in other words, the one that granted the preauthorization)
 * The contents of the `AuthorizeCredentials` field.
+
+{% amendment-disclaimer name="Credentials" /%}
 
 ## See Also
 

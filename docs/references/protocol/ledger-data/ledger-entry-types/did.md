@@ -9,7 +9,7 @@ labels:
 
 A `DID` ledger entry holds references to, or data associated with, a single [Decentralized Identifier (DID)](../../../../concepts/decentralized-storage/decentralized-identifiers.md). You can create or modify a DID by sending a [DIDSet transaction][].
 
-_(Added by the [DID amendment][])_
+{% amendment-disclaimer name="DID" /%}
 
 ## Example DID JSON
 

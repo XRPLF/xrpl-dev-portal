@@ -9,7 +9,7 @@ labels:
 
 A `PayChannel` entry represents a [payment channel](../../../../concepts/payment-types/payment-channels.md). You can create a payment channel with a [PaymentChannelCreate transaction][].
 
-_(Added by the [PayChan amendment][].)_
+{% amendment-disclaimer name="PayChan" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

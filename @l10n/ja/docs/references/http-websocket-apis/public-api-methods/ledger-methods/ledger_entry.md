@@ -164,7 +164,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ### AMMエントリを取得する
 <a id="ammオブジェクトを取得する"></a><!-- legacy ID -->
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 レジャーからAutomated Market-Maker(AMM)エントリを取得します。これは[amm_infoメソッド][]と似ていますが、`ledger_entry`は保存されているレジャーエントリのみを返します。
 
@@ -787,7 +787,7 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 ### Ticketエントリを取得する
 <a id="ticketオブジェクトを取得する"></a><!-- legacy ID -->
 
-将来の使用のために確保された[シーケンス番号][]を表す[Ticketエントリ](../../../protocol/ledger-data/ledger-entry-types/ticket.md)を取得します。文字列(TicketのエントリID)またはオブジェクトを指定します。 _([TicketBatch amendment][]により追加されました。)_
+将来の使用のために確保された[シーケンス番号][]を表す[Ticketエントリ](../../../protocol/ledger-data/ledger-entry-types/ticket.md)を取得します。文字列(TicketのエントリID)またはオブジェクトを指定します。 {% amendment-disclaimer name="TicketBatch" /%}
 
 | フィールド            | 型                     | 説明                   |
 |:--------------------|:-----------------------|:----------------------|

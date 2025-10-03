@@ -12,7 +12,7 @@ labels:
 * 1つのオファーを受け入れます。これは _ダイレクト_ モードと呼ばれます。
 * 2つの異なるオファー(`NFToken`の購入オファーと同じ`NFToken`に対するの売却オファー)をアトミックに受け入れます。これは _ブローカー_ モードと呼ばれます。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## NFTokenAcceptOffer JSONの例
 

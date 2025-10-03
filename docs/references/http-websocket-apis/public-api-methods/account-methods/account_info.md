@@ -216,10 +216,10 @@ The `account_flags` field contains the following nested fields:
 | `defaultRipple`        | Boolean | If `true`, the account allows [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on its trust lines by default. |
 | `depositAuth`          | Boolean | If `true`, the account is using [Deposit Authorization](../../../../concepts/accounts/depositauth.md) and does not accept any payments from unknown parties. |
 | `disableMasterKey`     | Boolean | If `true`, the account's [master key pair](../../../../concepts/accounts/cryptographic-keys.md) is disabled. |
-| `disallowIncomingCheck` | Boolean | If `true`, the account does not allow others to send [Checks](../../../../concepts/payment-types/checks.md) to it. _(Requires the [DisallowIncoming amendment][])_ |
-| `disallowIncomingNFTokenOffer` | Boolean | If `true`, the account does not allow others to make [NFT buy or sell offers](../../../../concepts/tokens/nfts/trading.md) to it. _(Requires the [DisallowIncoming amendment][])_ |
-| `disallowIncomingPayChan` | Boolean | If `true`, the account does not allow others to make [Payment Channels](../../../../concepts/payment-types/payment-channels.md) to it. _(Requires the [DisallowIncoming amendment][])_ |
-| `disallowIncomingTrustline` | Boolean | If `true`, the account does not allow others to make [trust lines](../../../../concepts/tokens/fungible-tokens/index.md) to it. _(Requires the [DisallowIncoming amendment][])_ |
+| `disallowIncomingCheck` | Boolean | If `true`, the account does not allow others to send [Checks](../../../../concepts/payment-types/checks.md) to it. {% amendment-disclaimer name="DisallowIncoming" /%} |
+| `disallowIncomingNFTokenOffer` | Boolean | If `true`, the account does not allow others to make [NFT buy or sell offers](../../../../concepts/tokens/nfts/trading.md) to it. {% amendment-disclaimer name="DisallowIncoming" /%} |
+| `disallowIncomingPayChan` | Boolean | If `true`, the account does not allow others to make [Payment Channels](../../../../concepts/payment-types/payment-channels.md) to it. {% amendment-disclaimer name="DisallowIncoming" /%} |
+| `disallowIncomingTrustline` | Boolean | If `true`, the account does not allow others to make [trust lines](../../../../concepts/tokens/fungible-tokens/index.md) to it. {% amendment-disclaimer name="DisallowIncoming" /%} |
 | `disallowIncomingXRP`  | Boolean | If `true`, the account does not want to receive XRP from others. (This is advisory, and not enforced at a protocol level.) |
 | `globalFreeze`         | Boolean | If `true`, all tokens issued by the account are currently frozen. |
 | `noFreeze`             | Boolean | If `true`, the account has permanently given up the abilities to freeze individual trust lines or end a global freeze. See [No Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze) for details. |

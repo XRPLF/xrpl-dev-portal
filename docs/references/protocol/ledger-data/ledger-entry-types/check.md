@@ -9,7 +9,7 @@ labels:
 
 A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender. You can create a check by sending a [CheckCreate transaction][].
 
-_(Added by the [Checks amendment][].)_
+{% amendment-disclaimer name="Checks" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

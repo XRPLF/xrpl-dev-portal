@@ -1,6 +1,4 @@
 ---
-html: clawback.html
-parent: transaction-types.html
 seo:
     description: 発行したトークンを取り戻します。
 labels:
@@ -10,11 +8,11 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Clawback.cpp "ソース")
 
-{% partial file="/@l10n/ja/docs/_snippets/clawback-disclaimer.md" /%}
-
 あなたのアカウントが発行したトークンを回収します。
 
 Clawback機能はデフォルトで無効になっています。使用するには、[AccountSetトランザクション][]を送信して**Allow Trust Line Clawback**設定を有効にする必要があります。既存のトークンを持つ発行者はClawback機能を有効にできません。つまり、トラストライン、オファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。Clawback機能を有効にした後、元に戻すことはできません：アカウントは永久にトラストラインで発行された資産を回収する権限を得ます。
+
+{% amendment-disclaimer name="Clawback" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

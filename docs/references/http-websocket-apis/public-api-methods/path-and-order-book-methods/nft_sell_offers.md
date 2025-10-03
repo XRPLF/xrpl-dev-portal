@@ -11,7 +11,7 @@ labels:
 
 The `nft_sell_offers` method returns a list of sell offers for a given [NFToken][] object.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## Request Format
 An example of the request format:

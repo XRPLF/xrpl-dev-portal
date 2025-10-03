@@ -1,6 +1,4 @@
 ---
-html: tef-codes.html
-parent: transaction-results.html
 seo:
     description: tef codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger.
 labels:
@@ -26,10 +24,10 @@ These codes indicate that the transaction failed and was not included in a ledge
 | `tefEXCEPTION`           | While processing the transaction, the server entered an unexpected state. This may be caused by unexpected inputs, for example if the binary data for the transaction is grossly malformed. If you can reproduce this error, please [report an issue](https://github.com/XRPLF/rippled/issues) to get it fixed. |
 | `tefFAILURE`             | Unspecified failure in applying the transaction.    |
 | `tefINTERNAL`            | When trying to apply the transaction, the server entered an unexpected state. If you can reproduce this error, please [report an issue](https://github.com/XRPLF/rippled/issues) to get it fixed. |
-| `tefINVARIANT_FAILED`   | An invariant check failed when trying to claim the [transaction cost](../../../../concepts/transactions/transaction-cost.md). Added by the [EnforceInvariants amendment][]. If you can reproduce this error, please [report an issue](https://github.com/XRPLF/rippled/issues). |
+| `tefINVARIANT_FAILED`   | An invariant check failed when trying to claim the [transaction cost](../../../../concepts/transactions/transaction-cost.md). If you can reproduce this error, please [report an issue](https://github.com/XRPLF/rippled/issues). {% amendment-disclaimer name="EnfroceInvariants" /%} |
 | `tefMASTER_DISABLED`    | The transaction was signed with the account's master key, but the account has the `lsfDisableMaster` field set. |
 | `tefMAX_LEDGER`         | The transaction included a [`LastLedgerSequence`](../../../../concepts/transactions/reliable-transaction-submission.md#lastledgersequence) parameter, but the current ledger's sequence number is already higher than the specified value. |
-| `tefNFTOKEN_IS_NOT_TRANSFERABLE` | The transaction attempted to send a [non-fungible token](../../../../concepts/tokens/nfts/index.md) to another account, but the `NFToken` has the `lsfTransferable` flag disabled and the transfer would not be to or from the issuer. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
+| `tefNFTOKEN_IS_NOT_TRANSFERABLE` | The transaction attempted to send a [non-fungible token](../../../../concepts/tokens/nfts/index.md) to another account, but the `NFToken` has the `lsfTransferable` flag disabled and the transfer would not be to or from the issuer. {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `tefNO_AUTH_REQUIRED`  | The [TrustSet transaction][] tried to mark a trust line as authorized, but the `lsfRequireAuth` flag is not enabled for the corresponding account, so authorization is not necessary. |
 | `tefNO_TICKET`         | The transaction attempted to use a [Ticket](../../../../concepts/accounts/tickets.md), but the specified `TicketSequence` number does not exist in the ledger, and cannot be created in the future because it is earlier than the sender's current sequence number. |
 | `tefNOT_MULTI_SIGNING` | The transaction was [multi-signed](../../../../concepts/accounts/multi-signing.md), but the sending account has no SignerList defined. |

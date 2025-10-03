@@ -3,7 +3,6 @@ html: decentralized-identifiers.html
 parent: accounts.html
 seo:
     description: Los identificadores decentralizados permiten identidades digitales decentralizadas verificables.
-status: not_enabled
 labels:
   - DID
 ---
