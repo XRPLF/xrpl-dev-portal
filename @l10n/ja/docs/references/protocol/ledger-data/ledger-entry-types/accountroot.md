@@ -55,7 +55,7 @@ labels:
 | `RegularKey`                  | 文字列    | AccountID         | いいえ |  このアカウントのトランザクションに署名するときにマスターキーの代わりに使用できる[キーペア](../../../../concepts/accounts/cryptographic-keys.md)のアドレス。この値を変更するには[SetRegularKeyトランザクション][]を使用してください。 |
 | `Sequence`                    | 数値      | UInt32            | はい   | このアカウントの有効な次のトランザクションの[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス) を表します。 |
 | `TicketCount`                 | 数値      | UInt32            | いいえ | このアカウントが台帳に保有する[チケット](../../../../concepts/accounts/tickets.md)の数です。これは、アカウントが一度に250 チケットという上限以内に留まることを保証するために自動的に更新されます。このフィールドは、チケットの数がゼロの場合は省略されます。 {% amendment-disclaimer name="TicketBatch" /%} |
-| `TickSize`                    | 数値      | UInt8             | いいえ | このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。_（[TickSize Amendment][]により追加されました。）_ |
+| `TickSize`                    | 数値      | UInt8             | いいえ | このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。{% amendment-disclaimer name="TickSize" /%} |
 | `TransferRate`                | 数値      | UInt32            | いいえ | このアカウントが発行した通貨を他のユーザが相互に送金する際に、これらのユーザに請求する[送金手数料](../../../../concepts/tokens/fungible-tokens/transfer-fees.md)。 |
 | `WalletLocator`               | 文字列    | UInt256           | いいえ | ユーザが設定できる任意の256bit値。 |
 | `WalletSize`                  | 数値      | UInt32            | いいえ | 未使用。(コード上ではこのフィールドをサポートしていますが、設定する方法はありません)。 |

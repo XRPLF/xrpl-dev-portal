@@ -8,7 +8,7 @@ status: not_enabled
 # XChainCreateBridge
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
-Creates a new [cross-chain bridge](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md) on the chain that the transaction is submitted on, providing information about door accounts and assets for the bridge. 
+Create a new [cross-chain bridge](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md) on the chain that the transaction is submitted on, providing information about door accounts and assets for the bridge.
 
 The transaction must be submitted first by the locking chain door account. To set up a valid bridge, door accounts on both chains must submit this transaction, in addition to setting up witness servers.
 
