@@ -7,7 +7,7 @@ labels:
 # EscrowCancel
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-Return funds from an expired [escrow](../../../../concepts/payment-types/escrow.md) to it sender.
+Return funds from an expired [escrow](../../../../concepts/payment-types/escrow.md) to its sender.
 
 {% amendment-disclaimer name="Escrow" /%}
 

@@ -7,7 +7,7 @@ labels:
 # NFTokenBurn
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenBurn.cpp "Source")
 
-Burn (destroy) a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). The NFT's current holder can always burn it, and if the token's "Burnable" flag is enabled, the issuer and their authorized minter (if they have one) can also burn the NFT.
+Burn (destroy) a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). The NFT's current holder can always burn it, and if the token's **Burnable** flag is enabled, the issuer and their authorized minter (if they have one) can also burn the NFT.
 
 If the transaction succeeds, it removes the corresponding [NFToken][] object from the [NFTokenPage entry][] that was storing it. This can cause the pages of an NFT directory to be consolidated.
 

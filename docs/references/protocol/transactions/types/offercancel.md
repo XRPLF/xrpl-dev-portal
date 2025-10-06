@@ -8,7 +8,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelOffer.cpp "Source")
 
-Cancel an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) in the decentralized exchange.
+Cancel an [offer](../../../../concepts/tokens/decentralized-exchange/offers.md) to trade in the decentralized exchange.
 
 ## Example {% $frontmatter.seo.title %} JSON
 

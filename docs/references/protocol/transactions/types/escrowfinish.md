@@ -7,7 +7,7 @@ labels:
 # EscrowFinish
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-Deliver XRP from an [escrow](../../../../concepts/payment-types/escrow.md) to the recipient.
+Deliver funds from an [escrow](../../../../concepts/payment-types/escrow.md) to the recipient.
 
 {% amendment-disclaimer name="Escrow" /%}
 
