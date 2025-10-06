@@ -2,14 +2,14 @@
 seo:
     description: 新しいペイメントチャネルを作成します。
 labels:
-  - Payment Channel
+    - Payment Channel
 ---
 # PaymentChannelCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "ソース")
 
-_[PayChan Amendment][]により追加されました。_
-
 [ペイメントチャンネル](../../../../concepts/payment-types/payment-channels.md)を作成し、XRPで資金を供給します。このトランザクションを送信するアドレスが、ペイメントチャネルの「送信元アドレス」となります。
+
+{% amendment-disclaimer name="PayChan" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

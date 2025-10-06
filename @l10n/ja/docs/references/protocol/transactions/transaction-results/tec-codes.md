@@ -1,10 +1,8 @@
 ---
-html: tec-codes.html
-parent: transaction-results.html
 seo:
     description: tecコードは、トランザクションは失敗したものの、トランザクションコストを適用するために、このトランザクションがレジャーに適用されたことを示します。
 labels:
-  - トランザクション送信
+    - トランザクション送信
 ---
 # tecコード
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TER.cpp "ソース")
@@ -30,7 +28,7 @@ labels:
 | `tecDIR_FULL`                      | 121 | トランザクションがアカウントの所有者ディレクトリにオブジェクト（トラストライン、Check、Escrow、Payment Channelなど）を追加しようと試みましたが、このアカウントはレジャーにこれ以上のオブジェクトを所有できません。 |
 | `tecDUPLICATE`                     | 149 | トランザクションが、すでに存在するオブジェクト（[DepositPreauth][]の承認など）を作成しようとしました。 |
 | `tecDST_TAG_NEEDED`                | 143 | [Paymentトランザクション][]の宛先タグが省略されましたが、支払先アカウントでは`lsfRequireDestTag`フラグが有効になっています。 |
-| `tecEMPTY_DID`                     | 187 | トランザクションが[DIDエントリ](../../ledger-data/ledger-entry-types/did.md)を作成しようとしましたが、内容が空でした。DIDは空にできません。 _([DID amendment][] {% not-enabled /%}により追加されました。)_ |
+| `tecEMPTY_DID`                     | 187 | トランザクションが[DIDエントリ](../../ledger-data/ledger-entry-types/did.md)を作成しようとしましたが、内容が空でした。DIDは空にできません。 {% amendment-disclaimer name="DID" /%} |
 | `tecEXPIRED`                       | 148 | トランザクションがオブジェクト（OfferやCheckなど）を作成しようとしましたが、そのオブジェクトで指定された有効期限がすでに経過しています。 |
 | `tecFAILED_PROCESSING`             | 105 | トランザクションの処理中に不明なエラーが発生しました。 |
 | `tecFROZEN`                        | 137 | [OfferCreateトランザクション][]が失敗しました。関係する1つまたは両方の資産が[Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md)の対象となっています。 |
@@ -42,8 +40,8 @@ labels:
 | `tecINSUFFICIENT_PAYMENT`          | 161 | 指定された金額は、トランザクションに関わるすべての料金を支払うには十分ではありません。例えば、非代替性トークンを取引する場合、購入金額はブローカー手数料と販売金額の両方を支払うには不十分である可能性があります。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `tecINSUFFICIENT_RESERVE`          | 141 | トランザクションによって[必要準備金](../../../../concepts/accounts/reserves.md)が増加し、送信側アカウントの残高を超える可能性があります。[SignerListSet][]、[PaymentChannelCreate][]、[PaymentChannelFund][]、および[EscrowCreate][]からこのエラーコードが返されることがあります。詳細は、[SignerListと準備金](../../ledger-data/ledger-entry-types/signerlist.md#signerlistと準備金)をご覧ください。 |
 | `tecINTERNAL`                      | 144 | 不明な内部エラーが発生し、トランザクションコストは適用されました。通常はこのエラーは返されません。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
-| `tecINVARIANT_FAILED`              | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]により追加されました。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
-| `tecKILLED`                        | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。_（[fix1578 Amendment][]により追加されました。）_ |
+| `tecINVARIANT_FAILED`              | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。{% amendment-disclaimer name="EnforceInvariants" /%} |
+| `tecKILLED`                        | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。{% amendment-disclaimer name="fix1578" /%} |
 | `tecMAX_SEQUENCE_REACHED`          | 153 | シーケンス番号フィールドはすでに最大値に達しています。これには`MintedNFTokens`フィールドも含まれます。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `tecNEED_MASTER_KEY`               | 142 | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高フリーズ能力の放棄](../types/accountset.md#accountsetのフラグ)など）を試みました。|
 | `tecNFTOKEN_BUY_SELL_MISMATCH`     | 155 | [NFTokenAcceptOfferトランザクション][]は、非代替性トークンの購入と売却に関する対応しないオファーをマッチングさせようとしました。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |

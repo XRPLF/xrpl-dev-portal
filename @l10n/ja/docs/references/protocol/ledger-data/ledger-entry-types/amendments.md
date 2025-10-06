@@ -1,10 +1,8 @@
 ---
-html: amendments-object.html #amendments.html is taken by the concept page
-parent: ledger-entry-types.html
 seo:
     description: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
 labels:
-  - ブロックチェーン
+    - ブロックチェーン
 ---
 # Amendments
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
@@ -54,8 +52,8 @@ labels:
 | `Flags`             | 数値     | UInt32       | はい   | ブール値フラグのビットマップ。Amendmentオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`です。 |
 | `LedgerEntryType`   | 文字列   | UInt16       | はい   |  値が`0x0066`（文字列`Amendments`にマッピング）の場合は、このオブジェクトがXRP **Ledgerに対するAmendmentのステータスを記述していることを示します**。 |
 | `Majorities`        | 配列     | Array      | いいえ | _（省略可）_ 過半数の支持を得ているがまだ有効になっていないAmendmentのステータスを記述するオブジェクトの配列。省略されている場合は、過半数の支持を得ている保留中のAmendmentがありません。 |
-| `PreviousTxnID`     | 文字列   | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
-| `PreviousTxnLgrSeq` | 数値     | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnID`     | 文字列   | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| `PreviousTxnLgrSeq` | 数値     | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
 
 `Majorities`フィールドにメンバーが含まれている場合、各メンバーは`Majority`フィールドのみが含まれているオブジェクトです。このフィールドの内容は、以下のフィールドからなるネストオブジェクトです。
 

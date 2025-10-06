@@ -1,10 +1,8 @@
 ---
-html: paymentchannelclaim.html
-parent: transaction-types.html
 seo:
     description: Payment Channelに対しXRPを請求します。
 labels:
-  - Payment Channel
+    - Payment Channel
 ---
 # PaymentChannelClaim
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
@@ -27,7 +25,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 - Channelの`Expiration`または`CancelAfter`の時刻が前のレジャーの閉鎖時刻よりも古い場合にはChannelが閉鎖します。有効な形式のPaymentChannelClaimトランザクションでは、トランザクションの内容に関わらず常にこの効果があります。
 
-_[PayChan Amendment][]により追加されました。_
+{% amendment-disclaimer name="PayChan" /%}
 
 
 ## {% $frontmatter.seo.title %} JSONの例

@@ -2,15 +2,14 @@
 seo:
     description: Escrowプロセスが終了または取り消されるまでXRPを隔離します。
 labels:
-  - Escrow
+    - Escrow
 ---
 # EscrowCreate
-
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
 Escrowプロセスが終了または取り消されるまでXRPを隔離します。
 
-_[Escrow Amendment][]により追加されました。_
+{% amendment-disclaimer name="Escrow" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

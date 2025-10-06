@@ -12,7 +12,7 @@ DepositPreauthトランザクションは、あなたのアカウントへの支
 
 {% admonition type="success" name="ヒント" %}このトランザクションを使用して、Deposit Authorizationを有効にする前に事前承認できます。これは、Deposit Authorizationの義務化への円滑な移行に役立ちます。{% /admonition %}
 
-_[DepositPreauth Amendment][]により追加されました。_
+{% amendment-disclaimer name="DepositPreauth" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 
