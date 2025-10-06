@@ -118,32 +118,13 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
 
 The following GitHub users contributed to this release:
 
+- RippleX Engineering
+- RippleX Docs
+- RippleX Product
 - @Afformativ
-- @a1q123456
-- @Bronek
-- @bthomee
-- @ckeshava
 - @dangell7
 - @hgandhi-perfx
-- @intelliot
-- @kennyzlei
-- @lmaisons
-- @mathbunnyru
-- @mounikakun
-- @mvadari
-- @oeggert
-- @q73zhao
-- @rrmanukyan
-- @sgramkumar
-- @shawnxie999
-- @shichengripple001
-- @Tapanito
 - @tequdev
-- @Vjkhannaripple
-- @vlntb
-- @vvysokikh1
-- @ximinez
-- @yinyiqian1
 
 
 ## Bug Bounties and Responsible Disclosures
