@@ -2,12 +2,12 @@
 seo:
     description: Change global reserve and transaction cost settings.
 labels:
-  - Fees
+    - Fees
 ---
 # SetFee
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Change.cpp "Source")
 
-A `SetFee` [pseudo-transaction](pseudo-transaction-types.md) marks a change in [transaction cost](../../../../concepts/transactions/transaction-cost.md) or [reserve requirements](../../../../concepts/accounts/reserves.md) as a result of [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md).
+A `SetFee` [pseudo-transaction](./index.md) marks a change in [transaction cost](../../../../concepts/transactions/transaction-cost.md) or [reserve requirements](../../../../concepts/accounts/reserves.md) as a result of [fee voting](../../../../concepts/consensus-protocol/fee-voting.md).
 
 {% admonition type="info" name="Note" %}You cannot send a pseudo-transaction, but you may find one when processing ledgers.{% /admonition %}
 
@@ -58,7 +58,7 @@ This transaction has two formats, depending on whether the [XRPFees amendment][]
 
 ## {% $frontmatter.seo.title %} Fields
 
-The fields of a SetFee pseudo-transaction depend on whether the [XRPFees amendment][] was enabled at the time. In addition to the [common fields](./pseudo-transaction-types.md), they can use the following:
+The fields of a SetFee pseudo-transaction depend on whether the [XRPFees amendment][] was enabled at the time. In addition to the [common fields](./index.md), they can use the following:
 
 {% tabs %}
 {% tab label="Current Format" %}

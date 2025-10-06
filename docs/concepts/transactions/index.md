@@ -9,7 +9,7 @@ labels:
 ---
 # Transactions
 
-A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the [consensus process](../consensus-protocol/index.md). Some ledger rules also generate _[pseudo-transactions](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost][].
+A _Transaction_ is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the [consensus process](../consensus-protocol/index.md). Some ledger rules also generate _[pseudo-transactions](../../references/protocol/transactions/pseudo-transaction-types/index.md)_, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam [transaction cost][].
 
 Transactions can do more than send money. In addition to supporting various [Payment Types](../payment-types/index.md), transactions in the XRP Ledger are also used to rotate [cryptographic keys](../accounts/cryptographic-keys.md), manage other settings, and trade in the XRP Ledger's [decentralized exchange](../tokens/decentralized-exchange/index.md). The [`rippled` API reference](../../references/http-websocket-apis/index.md) has a complete [list of transaction types](../../references/protocol/transactions/types/index.md).
 

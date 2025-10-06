@@ -1,14 +1,12 @@
 ---
-html: enableamendment.html
-parent: pseudo-transaction-types.html
 seo:
     description: トランザクション処理を変更するAmendmentプロセスの進行状況を追跡します。
 labels:
-  - ブロックチェーン
+    - ブロックチェーン
 ---
 # EnableAmendment
 
-トランザクション処理を変更する[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)の進行状況を追跡します。この疑似トランザクションは、提案されたAmendmentが多数の承認を獲得したか否かや、Amendmentの有効化の状況を示します。
+`EnableAmendment`[疑似トランザクション](./index.md)はトランザクション処理を変更する[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)の進行状況を追跡します。この疑似トランザクションは、提案されたAmendmentが多数の承認を獲得したか否かや、Amendmentの有効化の状況を示します。
 
 {% admonition type="info" name="注記" %}疑似トランザクションは送信できませんが、レジャーの処理時に疑似トランザクションが見つかることがあります。{% /admonition %}
 

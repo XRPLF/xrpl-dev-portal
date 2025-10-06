@@ -9,7 +9,7 @@ labels:
 ---
 # トランザクション
 
-_トランザクション（取引）_ は、XRP Ledgerを変更する唯一の方法です。[コンセンサスプロセス](../consensus-protocol/index.md)に従って署名され、送信され、検証済みのレジャーバージョンに承認された場合にのみ、トランザクションは最終的なものになります。レジャーのルールによっては、_[疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)_ も生成されます。このトランザクションは署名も送信もされませんが、コンセンサスによって承認されなければならないことは同様です。失敗したトランザクションであっても、スパム対策の[トランザクションコスト][]を支払のためXRPの残高が変わるため、レジャーに記録されます。
+_トランザクション（取引）_ は、XRP Ledgerを変更する唯一の方法です。[コンセンサスプロセス](../consensus-protocol/index.md)に従って署名され、送信され、検証済みのレジャーバージョンに承認された場合にのみ、トランザクションは最終的なものになります。レジャーのルールによっては、_[疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/index.md)_ も生成されます。このトランザクションは署名も送信もされませんが、コンセンサスによって承認されなければならないことは同様です。失敗したトランザクションであっても、スパム対策の[トランザクションコスト][]を支払のためXRPの残高が変わるため、レジャーに記録されます。
 
 トランザクションで行えることは、送金だけではありません。XRP Ledgerのトランザクションは、さまざまな[支払いタイプ](../payment-types/index.md)に対応しているだけでなく、[暗号鍵](../accounts/cryptographic-keys.md)のローテーション、その他の設定の管理、およびXRP Ledgerの[分散型取引所](../tokens/decentralized-exchange/index.md)での取引にも使用されます。[トランザクションタイプの詳細なリスト](../../references/protocol/transactions/types/index.md)については、[`rippled` APIリファレンス](../../references/http-websocket-apis/index.md)をご覧ください。
 

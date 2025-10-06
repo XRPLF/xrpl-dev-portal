@@ -74,7 +74,7 @@ En cada flag ledger, se aplican todos los siguientes cambios:
 
 1. Los cambios la UNL negativa que se programaron en el flag ledger anterior entran en vigencia para la siguiente versión del ledger. El proceso de consenso para validar este flag ledger en sí mismo no utiliza el cambio programado.
 
-    **Nota:** Esto es uno de los únicos momentos en los que el estado de datos del ledger se modifica sin una [transacción](../transactions/index.md) o [pseudo-transacción](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md).
+    **Nota:** Esto es uno de los únicos momentos en los que el estado de datos del ledger se modifica sin una [transacción](../transactions/index.md) o [pseudo-transacción](../../references/protocol/transactions/pseudo-transaction-types/index.md).
 
 2. Si la UNL negativa no está llena, cada servidor propone añadir **hasta 1** validador a la UNL negativa entre sus validadores confiables con una fiabilidad inferior al 50%.
 3. Si la UNL negativa no está vacía, cada servidor propone eliminar **hasta 1** validador de la UNL negativa. Un servidor puede proponer eliminar un validador de la UNL negativa por dos motivos:
@@ -82,7 +82,7 @@ En cada flag ledger, se aplican todos los siguientes cambios:
     - No tiene a ese validador en su UNL. (Si un validador deja de funcionar permanentemente, esta regla garantiza que se elimine de la UNL negativa en el ledger después de que se haya eliminado de las UNL configuradas de los servidores).
 4. Si un cambio propuesto a la UNL negativa logra un consenso, el cambio se programa para entrar en vigencia en el siguiente flag ledger. Se puede programar hasta una adición y una eliminación de esta manera.
 
-Las propuestas para agregar y eliminar validadores de la UNL negativa toman la forma de [pseudo-transacciones de UNLModify][]. El proceso de consenso determina si cada pseudo-transacción logra un consenso o se descarta, de la misma manera que otras [pseudo-transacciones](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md). En otras palabras, para que un validador en particular se agregue o elimine a la UNL negativa, se debe lograr un consenso de servidores sobre el mismo cambio.
+Las propuestas para agregar y eliminar validadores de la UNL negativa toman la forma de [pseudo-transacciones de UNLModify][]. El proceso de consenso determina si cada pseudo-transacción logra un consenso o se descarta, de la misma manera que otras [pseudo-transacciones](../../references/protocol/transactions/pseudo-transaction-types/index.md). En otras palabras, para que un validador en particular se agregue o elimine a la UNL negativa, se debe lograr un consenso de servidores sobre el mismo cambio.
 
 Los cambios programados y efectivos de la UNL negativa se rastrean en el [objeto NegativeUNL](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md) en los datos de estado del ledger.
 

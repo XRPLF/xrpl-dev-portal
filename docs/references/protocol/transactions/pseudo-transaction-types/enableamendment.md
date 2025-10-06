@@ -2,12 +2,12 @@
 seo:
     description: Enable a change in transaction processing.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # EnableAmendment
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Change.cpp "Source")
 
-An `EnableAmendment` pseudo-transaction marks a change in the status of a proposed amendment. The possible status changes are:
+An `EnableAmendment` [pseudo-transaction](./index.md) marks a change in the status of a proposed [amendment to the protocol](../../../../concepts/networks-and-servers/amendments.md). The possible status changes are:
 
 - The amendment gains supermajority approval from validators.
 - The amendment loses supermajority approval.
@@ -34,7 +34,7 @@ An `EnableAmendment` pseudo-transaction marks a change in the status of a propos
 
 | Field            | JSON Type | [Internal Type][] | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amendment`      | String    | UInt256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Amendments](../../../../concepts/networks-and-servers/amendments.md) for a list of known amendments. |
+| `Amendment`      | String    | UInt256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Known Amendments](../../../../../resources/known-amendments.md) for a list of known amendments. |
 | `LedgerSequence` | Number    | UInt32            | The [ledger index][] where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 ## EnableAmendment Flags

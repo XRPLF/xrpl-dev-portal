@@ -1,6 +1,4 @@
 ---
-html: setfee.html
-parent: pseudo-transaction-types.html
 seo:
     description: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
 labels:
@@ -8,7 +6,7 @@ labels:
 ---
 # SetFee
 
-[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)の結果として[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)または[アカウント準備金](../../../../concepts/accounts/reserves.md)の要件が変更されます。
+`SetFee`[疑似トランザクション](./index.md)は[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)の結果として[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)または[アカウント準備金](../../../../concepts/accounts/reserves.md)の要件が変更されます。
 
 {% admonition type="info" name="注記" %}疑似トランザクションは送信できませんが、レジャーの処理時に疑似トランザクションが見つかることがあります。{% /admonition %}
 
