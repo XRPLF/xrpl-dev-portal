@@ -16,7 +16,7 @@ markdown:
 The team discovered two issues in rippled 2.6.0—memory usage increases and Boost library upgrade problems. It's recommended that the UNL community upgrade to [version 2.6.1](./rippled-2.6.1.md), which addresses these issues and includes the 2.6.0 changes.
 {% /admonition %}
 
-Version 2.6.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds new features and bug fixes.
+Version 2.6.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is no longer available.
 
 
 ## Action Required
