@@ -342,6 +342,12 @@ ul.nav.navbar-nav {
 
 [data-component-name="Markdown/Markdown"] {
   --md-table-font-size: 14px;
+  --md-table-line-height: 1.5;
+}
+
+[data-component-name="Markdown/Markdown"] td p {
+  font-size: var(--md-table-font-size);
+  line-height: var(--md-table-line-height);
 }
 
 @media screen and (min-width: 990px) {

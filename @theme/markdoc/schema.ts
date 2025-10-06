@@ -233,6 +233,11 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
       type: 'Boolean',
       required: false,
       default: false
+    },
+    mode: {
+      type: 'String',
+      required: false,
+      default: '' // empty string for "Requires ... / Added by ..."
     }
   },
   render: 'AmendmentDisclaimer',

@@ -1,6 +1,4 @@
 ---
-html: multi-signing.html
-parent: accounts.html
 seo:
     description: Use multi-signing for greater security sending transactions.
 labels:
@@ -23,7 +21,7 @@ Before you can multi-sign, you must create a list of which addresses can sign fo
 
 The [SignerListSet transaction][] defines a _signer list_, a set of addresses that can authorize transactions from your address. You can include 1 to 32 addresses in a signer list. The list cannot include your address and there can be no duplicate entries. You can control how many signatures are needed, in which combinations, by using the _Signer Weight_ and _Quorum_ settings in the list.
 
-_(Updated by the [ExpandedSignerList amendment][].)_
+{% amendment-disclaimer name="ExpandedSignerList" mode="updated" /%}
 
 ### Signer Weight
 
