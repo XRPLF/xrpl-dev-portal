@@ -2,16 +2,16 @@
 seo:
     description: Issue an asset-backed token such as a US Treasury bill using multi-purpose tokens.
 labels:
-  - Tokens
-  - MPT
+    - Tokens
+    - MPT
 ---
 # Sending MPTs
-
-{% amendment-disclaimer name="MPTokensV1" /%}
 
 To send an MPT to another account, the receiving account must first authorize the receipt of the MPT, based on its MPToken Issuance ID. This is to prevent malicious users from spamming accounts with unwanted tokens that could negatively impact storage and XRP reserves.
 
 Once an account receives an MPT, it can send the MPT to another account, provided the MPT was created with the _Can Transfer_ flag set, and the receiving account authorizes the MPT.
+
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ## Send MPT Utility
 

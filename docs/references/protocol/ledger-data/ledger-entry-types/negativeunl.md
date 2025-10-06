@@ -2,16 +2,16 @@
 seo:
     description: List of validators currently believed to be offline.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # NegativeUNL
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L85-L91 "Source")
 
-{% amendment-disclaimer name="NegativeUNL" /%}
-
 The `NegativeUNL` ledger entry type contains the current status of the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), a list of trusted validators currently believed to be offline.
 
 Each ledger version contains **at most one** `NegativeUNL` entry. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
+
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

@@ -175,8 +175,6 @@ Version 1 MPTokens only support direct MPT payment between accounts. They cannot
 ```
 ## Credential IDs
 
-{% amendment-disclaimer name="Credentials" /%}
-
 You can send money to an account that uses [Deposit Authorization](../../../../concepts/accounts/depositauth.md) by providing the `CredentialIDs` field with an exact set of credentials that are preauthorized by the recipient. The set of credentials must match a [DepositPreauth entry](../../ledger-data/ledger-entry-types/depositpreauth.md) in the ledger.
 
 The credentials provided in the `CredentialIDs` field must all be valid, meaning:
@@ -191,6 +189,8 @@ If you provide credentials even though the destination account does not use Depo
 {% admonition type="info" name="Note" %}
 The `CredentialIDs` field is only used for deposit authorization, not for trading in a [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md), even though Permissioned DEXes also use credentials to grant access. To trade in a permissioned DEX, you use the `DomainID` field to specify a domain for which you hold valid credentials.
 {% /admonition %}
+
+{% amendment-disclaimer name="Credentials" /%}
 
 ## Special Case for Destination Accounts Below the Reserve
 

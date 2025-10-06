@@ -887,9 +887,9 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 ### Get MPT Issuance Object
 
-{% amendment-disclaimer name="MPTokensV1" /%}
-
 Return an `MPTokenIssuance` object.
+
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 | Field          | Type   | Description           |
 |:---------------|:-------|:----------------------|
@@ -933,9 +933,9 @@ rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577
 
 ### Get MPToken Object
 
-{% amendment-disclaimer name="MPTokensV1" /%}
-
 Return an `MPToken` object.
+
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 | Field                     | Type             | Description |
 |:--------------------------|:-----------------|:------------|

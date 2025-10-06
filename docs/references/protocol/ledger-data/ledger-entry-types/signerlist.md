@@ -76,22 +76,22 @@ When processing a multi-signed transaction, the server looks up the `Account` va
 
 ## {% $frontmatter.seo.title %} Flags
 
-{% amendment-disclaimer name="MultiSignReserve" /%}
-
 SignerList entries can have the following value in the `Flags` field:
 
 | Flag Name          | Hex Value    | Decimal Value | Description              |
 |:-------------------|:-------------|:--------------|:-------------------------|
 | `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. |
 
+{% amendment-disclaimer name="MultiSignReserve" /%}
+
 
 ## Signer Lists and Reserves
 
 A signer list contributes to its owner's [reserve requirement](../../../../concepts/accounts/reserves.md). Removing the signer list frees up the reserve.
 
-The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is {% $env.PUBLIC_OWNER_RESERVE %}.
+{% amendment-disclaimer name="MultiSignReserve" compact=true /%} made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is {% $env.PUBLIC_OWNER_RESERVE %}.
 
-A signer list created before the [MultiSignReserve amendment][] itself counts as two items towards the owner reserve, and each member of the list counts as one. As a result, the total owner reserve associated with an old signer list is anywhere from 3 times to 10 times as much as a new signer list. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction][].
+A signer list created before the MultiSignReserve amendment counts as two items towards the owner reserve, plus one for each member of the list. As a result, the total owner reserve associated with an old signer list is anywhere from 3 times to 10 times as much as a new signer list. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction][].
 
 
 ## SignerList ID Format

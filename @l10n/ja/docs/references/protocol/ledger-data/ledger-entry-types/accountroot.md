@@ -62,8 +62,6 @@ labels:
 
 ## AMMの特殊なAccountRootエントリ
 
-{% amendment-disclaimer name="AMM" /%}
-
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)は、AMMの詳細の一部を追跡するための[AMMレジャーエントリ](amm.md)に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootレジャーエントリを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。
 
 - `lsfDisableMaster` **有効** : トランザクションへ署名する手段はありません。これにより、誰もそのアカウントを直接操作することができず、トランザクションを送信することができなくなります。
@@ -78,6 +76,8 @@ labels:
 - [Clawback Amendment][]も有効になっている場合においても、トークンの発行者はAMMから資金を回収することはできません。
 
 LPトークンは他の[トークン](../../../../concepts/tokens/index.md)と同様に動作しますが、これらのトークンはAMM関連のトランザクションでも使用することができます。AMMの残高や、AMMに影響を与えたトランザクションの履歴は、通常のアカウントと同じように確認することができます。
+
+{% amendment-disclaimer name="AMM" /%}
 
 ## AccountRootのフラグ
 

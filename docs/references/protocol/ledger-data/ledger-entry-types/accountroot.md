@@ -62,8 +62,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 ## Special AMM AccountRoot Entries
 
-{% amendment-disclaimer name="AMM" /%}
-
 Automated Market Makers use an AccountRoot ledger entry to issue their LP Tokens and hold the assets in the AMM pool, and an [AMM ledger entry](amm.md) for tracking some of the details of the AMM. The address of an AMM's AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:
 
 - `lsfDisableMaster` **enabled** and no means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.
@@ -78,6 +76,8 @@ In addition, the following special rules apply to an AMM's AccountRoot entry:
 - If the [Clawback amendment][] is also enabled, the issuer cannot clawback funds from an AMM.
 
 Other than those exceptions, these accounts are like ordinary accounts; the LP Tokens they issue behave like other [tokens](../../../../concepts/tokens/index.md) except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.
+
+{% amendment-disclaimer name="AMM" /%}
 
 ## AccountRoot Flags
 

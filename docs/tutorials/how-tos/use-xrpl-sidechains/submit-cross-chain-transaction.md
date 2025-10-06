@@ -1,16 +1,14 @@
 ---
-html: submit-cross-chain-transactions.html
-parent: use-xrpl-sidechains.html
 seo:
     description: Steps to submit a cross-chain transaction, using a bridge.
 labels:
-  - Interoperability
+    - Interoperability
 ---
 # Submit Cross-chain Transactions
 
-{% amendment-disclaimer name="XChainBridge" /%}
-
 This tutorial explains how to create a test account on a locking chain (_Devent_), and transfer XRP to an issuing chain (_Sidechain-Devnet_), using a supported [client library](../../../references/client-libraries.md) to query and submit transactions. Witness servers are already set up to monitor the XRP-XRP bridge and submit attestations.
+
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Prerequisites
 
