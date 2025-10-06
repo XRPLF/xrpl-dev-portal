@@ -2,7 +2,7 @@
 seo:
     description: Complete a cross-chain transfer of value by claiming the value on the destination chain.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainClaim
@@ -37,7 +37,7 @@ If the transaction succeeds in moving funds, the referenced `XChainOwnedClaimID`
 ```
 
 
-## XChainClaim Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                   | JSON Type           | [Internal Type][] | Required? | Description |
 |:------------------------|:--------------------|:------------------|:----------|-------------|

@@ -2,7 +2,7 @@
 seo:
     description: Create a cross-chain claim ID that is used for a cross-chain transfer.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainCreateClaimID
@@ -38,7 +38,7 @@ It also includes the account on the source chain that locks or burns the funds o
 ```
 
 
-## XChainCreateClaimID Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type            | [Internal Type][] | Required? | Description |
 |:-------------------|:---------------------|:------------------|:----------|-------------|

@@ -23,8 +23,7 @@ Accept a [credential](../../../../concepts/decentralized-storage/credentials.md)
 }
 ```
 
-
-## CredentialAccept Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 In addition to the [common fields][], CredentialAccept transactions use the following fields:
 

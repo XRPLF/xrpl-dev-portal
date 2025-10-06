@@ -23,8 +23,7 @@ Remove a [credential](../../../../concepts/decentralized-storage/credentials.md)
 }
 ```
 
-
-## CredentialDelete Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 In addition to the [common fields][], CredentialDelete transactions use the following fields:
 

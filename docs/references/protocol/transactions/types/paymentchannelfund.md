@@ -2,7 +2,7 @@
 seo:
     description: Add more funds to a payment channel.
 labels:
-  - Payment Channels
+    - Payment Channels
 ---
 # PaymentChannelFund
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")

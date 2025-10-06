@@ -2,7 +2,7 @@
 seo:
     description: Provide an attestation that an XChainAccountCreateCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainAddAccountCreateAttestation
@@ -49,7 +49,7 @@ Any account can submit signatures.
 ```
 
 
-## XChainAddAccountCreateAttestation Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                      | JSON Type           | [Internal Type][] | Required? | Description |
 |:---------------------------|:--------------------|:------------------|:----------|:------------|

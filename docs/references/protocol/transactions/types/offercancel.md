@@ -2,7 +2,7 @@
 seo:
     description: Cancel an offer to trade in the decentralized exchange.
 labels:
-  - Decentralized Exchange
+    - Decentralized Exchange
 ---
 # OfferCancel
 

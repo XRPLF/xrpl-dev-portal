@@ -2,7 +2,7 @@
 seo:
     description: Start a cross-chain transfer of value.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainCommit
@@ -37,7 +37,7 @@ Do the second step in a [cross-chain transfer](../../../../concepts/xrpl-sidecha
 ```
 
 
-## XChainCommit Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                   | JSON Type           | [Internal Type][] | Required? | Description |
 |:------------------------|:--------------------|:------------------|:----------|-------------|

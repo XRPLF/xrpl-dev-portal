@@ -2,7 +2,7 @@
 seo:
     description: Redeem a check.
 labels:
-  - Checks
+    - Checks
 ---
 # CheckCash
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
@@ -26,7 +26,6 @@ Since the funds for a check are not guaranteed, redeeming a check can fail becau
 ```
 
 {% tx-example txid="67B71B13601CDA5402920691841AC27A156463678E106FABD45357175F9FF406" /%}
-
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

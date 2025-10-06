@@ -2,7 +2,7 @@
 seo:
     description: Preauthorize an account to send payments to you.
 labels:
-  - Security
+    - Security
 ---
 # DepositPreauth
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")
@@ -50,7 +50,6 @@ Grant preauthorization to send payments to your account. This is only useful if 
 {% /tabs %}
 
 {% tx-example txid="CB1BF910C93D050254C049E9003DA1A265C107E0C8DE4A7CFF55FADFD39D5656" /%}
-
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

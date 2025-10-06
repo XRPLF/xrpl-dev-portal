@@ -2,7 +2,7 @@
 seo:
     description: Accept an offer to buy or sell an NFT.
 labels:
-  - NFTs, Non-fungible Tokens
+    - NFTs, Non-fungible Tokens
 ---
 # NFTokenAcceptOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "Source")

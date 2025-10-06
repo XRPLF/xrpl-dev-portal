@@ -2,7 +2,7 @@
 seo:
     description: Delete a price oracle.
 labels:
-  - Oracle
+    - Oracle
 ---
 # OracleDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteOracle.cpp "Source")
@@ -22,8 +22,7 @@ Delete a [price oracle](../../../../concepts/decentralized-storage/price-oracles
 }
 ```
 
-
-## OracleDelete Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type | Internal Type | Required? | Description |
 |--------------------|-----------|---------------|-----------|-------------|

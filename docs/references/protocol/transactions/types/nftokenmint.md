@@ -2,7 +2,7 @@
 seo:
     description: Mint a Non-Fungible Token (NFT).
 labels:
-  - Non-fungible Tokens, NFTs
+    - Non-fungible Tokens, NFTs
 ---
 # NFTokenMint
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")

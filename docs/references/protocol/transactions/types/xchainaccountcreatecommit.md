@@ -2,7 +2,7 @@
 seo:
     description: Create an account on another chain to serve as a door account for a cross-chain bridge.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainAccountCreateCommit
@@ -38,7 +38,7 @@ Create a new account for a [witness server](../../../../concepts/xrpl-sidechains
 ```
 
 
-## XChainAccountCreateCommit Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field             | JSON Type           | [Internal Type][] | Required? | Description |
 |:------------------|:--------------------|:------------------|:----------| :-----------|

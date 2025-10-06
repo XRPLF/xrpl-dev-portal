@@ -23,8 +23,7 @@ Provisionally issue a [credential](../../../../concepts/decentralized-storage/cr
 }
 ```
 
-
-## CredentialCreate Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 In addition to the [common fields][], CredentialCreate transactions use the following fields:
 

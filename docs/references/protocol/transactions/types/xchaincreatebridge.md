@@ -2,7 +2,7 @@
 seo:
     description: Create a bridge between two chains.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainCreateBridge
@@ -40,7 +40,7 @@ The complete production-grade setup would also include a `SignerListSet` transac
 ```
 
 
-## XChainCreateBridge Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                    | JSON Type           | [Internal Type][] | Required? | Description |
 |:-------------------------|:--------------------|:------------------|:----------|:------------|

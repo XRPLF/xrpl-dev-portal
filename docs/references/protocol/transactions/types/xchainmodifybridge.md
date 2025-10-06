@@ -2,7 +2,7 @@
 seo:
     description: Modify the parameters of a cross-chain bridge.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainModifyBridge
@@ -38,7 +38,7 @@ This transaction must be sent by the door account and requires the entities that
 ```
 
 
-## XChainModifyBridge Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                    | JSON Type           | [Internal Type][] | Required? | Description |
 |:-------------------------|:--------------------|:------------------|:----------|-------------|

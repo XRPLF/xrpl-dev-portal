@@ -2,7 +2,7 @@
 seo:
     description: Create and submit a batch of up to 8 transactions that succeed or fail atomically.
 labels:
-  - Transaction Sending
+    - Transaction Sending
 status: not_enabled
 ---
 # Batch

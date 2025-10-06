@@ -2,7 +2,7 @@
 seo:
     description: Set options on an account.
 labels:
-  - Accounts
+    - Accounts
 ---
 # AccountSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")

@@ -2,7 +2,7 @@
 seo:
     description: Cancel a check.
 labels:
-  - Checks
+    - Checks
 ---
 # CheckCancel
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
@@ -23,7 +23,6 @@ Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), rem
 ```
 
 {% tx-example txid="D3328000315C6DCEC1426E4E549288E3672752385D86A40D56856DBD10382953" /%}
-
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

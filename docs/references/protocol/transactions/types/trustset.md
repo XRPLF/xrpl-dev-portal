@@ -2,7 +2,7 @@
 seo:
     description: Add or modify a trust line.
 labels:
-  - Tokens
+    - Tokens
 ---
 # TrustSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetTrust.cpp "Source")
