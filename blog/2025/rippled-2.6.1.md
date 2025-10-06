@@ -1,34 +1,51 @@
 ---
 category: 2025
-date: "2025-08-27"
+date: "2025-10-06"
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 2.6.0
-    description: rippled version 2.6.0 is now available. This version contains various bug fixes and minor improvements.
+    title: Introducing XRP Ledger version 2.6.1
+    description: rippled version 2.6.1 is now available. This version contains various bug fixes and minor improvements.
 labels:
     - rippled Release Notes
 markdown:
     editPage:
         hide: true
 ---
-# Introducing XRP Ledger version 2.6.0
-{% admonition type="danger" name="Warning" %}
-The team discovered two issues in rippled 2.6.0—memory usage increases and Boost library upgrade problems. It's recommended that the UNL community upgrade to [version 2.6.1](./rippled-2.6.1.md), which addresses these issues and includes the 2.6.0 changes.
-{% /admonition %}
+# Introducing XRP Ledger version 2.6.1
 
-Version 2.6.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is no longer available.
+Version 2.6.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release supersedes version 2.6.0, adding new features and bug fixes.
 
 
 ## Action Required
 
-If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll back to version [2.5.1](./rippled-2.5.1.md) to ensure service continuity.
+If you run an XRP Ledger server, upgrade to version 2.6.1 as soon as possible to ensure service continuity.
+
+
+## Install / Upgrade
+
+On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
+
+| Package | SHA-256 |
+|:--------|:--------|
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.6.1-1.el9.x86_64.rpm) | `0fbbff570e962fea4df4d604cb848976fc9af9ebc34512a1002eb4866549850d` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.6.1-1_amd64.deb) | `de3bfdae5fb95d922a4b5bffa5bc9441f1bc4bac15bd7b83f77f14166c65bb7e` |
+
+For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
+
+```text
+commit 70d5c624e8cf732a362335642b2f5125ce4b43c1
+Author: Ed Hennis <ed@ripple.com>
+Date:   Tue Sep 30 16:09:11 2025 -0400
+
+    Set version to 2.6.1
+```
 
 
 ## Full Changelog
 
 ### Amendments
 
-- None
+- **PermissionDelegation (XLS-75)** - A bug was discovered in `PermissionDelegation`, and the amendment was disabled. The fix for this feature will be included in a future release as `PermissionDelegationV1_1`. ([#5805](https://github.com/XRPLF/rippled/pull/5805))
 
 
 ### New Features
@@ -78,7 +95,7 @@ If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll bac
 - Renamed the `libxrpl` profile to `default`, making it more usable. ([#5599](https://github.com/XRPLF/rippled/pull/5599))
 - Switched instrumentation workflow to use dependencies. ([#5607](https://github.com/XRPLF/rippled/pull/5607))
 - Updated RocksDB to its latest version. ([#5568](https://github.com/XRPLF/rippled/pull/5568))
-- Updates Boost to version 1.86.0. ([#5264](https://github.com/XRPLF/rippled/pull/5264))
+- Downgraded Boost to version 1.83.0. ([#5759](https://github.com/XRPLF/rippled/pull/5759))
 - Removed old build options. ([#5581](https://github.com/XRPLF/rippled/pull/5581))
 - Updated Conan dependencies to temporarily build from source. ([#5623](https://github.com/XRPLF/rippled/pull/5623))
 - Added MacOS build instructions for specific versions of AppleClang. ([#5645](https://github.com/XRPLF/rippled/pull/5645))
@@ -101,32 +118,13 @@ If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll bac
 
 The following GitHub users contributed to this release:
 
+- RippleX Engineering
+- RippleX Docs
+- RippleX Product
 - @Afformativ
-- @a1q123456
-- @Bronek
-- @bthomee
-- @ckeshava
 - @dangell7
 - @hgandhi-perfx
-- @intelliot
-- @kennyzlei
-- @lmaisons
-- @mathbunnyru
-- @mounikakun
-- @mvadari
-- @oeggert
-- @q73zhao
-- @rrmanukyan
-- @sgramkumar
-- @shawnxie999
-- @shichengripple001
-- @Tapanito
 - @tequdev
-- @Vjkhannaripple
-- @vlntb
-- @vvysokikh1
-- @ximinez
-- @yinyiqian1
 
 
 ## Bug Bounties and Responsible Disclosures
