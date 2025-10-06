@@ -14,6 +14,10 @@ markdown:
 
 Devnet is scheduled for a reset on **Friday, October 3, 2025**. The `PermissionDelegation` amendment requires more development and will be set to unsupported in the next rippled release. To prevent validators that upgrade to this version from becoming amendment blocked, Devnet will be reset.
 
+{% admonition type="success" name="Update" %}
+The reset has completed successfully. Devnet is online and fully operational.
+{% /admonition %}
+
 
 ## Background
 
