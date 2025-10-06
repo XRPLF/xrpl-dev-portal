@@ -2,7 +2,7 @@
 seo:
     description: Create a new Automated Market Maker for trading a given pair of assets.
 labels:
-  - AMM
+    - AMM
 ---
 # AMMCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")
@@ -13,7 +13,7 @@ Creates both an [AMM entry][] and a [special AccountRoot entry](../../ledger-dat
 
 {% admonition type="warning" name="Caution" %}When you create the AMM, you should fund it with (approximately) equal-value amounts of each asset. Otherwise, other users can profit at your expense by trading with this AMM ([performing arbitrage](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage)). The currency risk that liquidity providers take on increases with the volatility (potential for imbalance) of the asset pair. The higher the trading fee, the more it offsets this risk, so it's best to set the trading fee based on the volatility of the asset pair.{% /admonition %}
 
-_(Added by the [AMM amendment][].)_
+{% amendment-disclaimer name="AMM" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

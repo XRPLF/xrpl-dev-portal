@@ -1,10 +1,8 @@
 ---
-html: tem-codes.html
-parent: transaction-results.html
 seo:
     description: tem codes indicate that the transaction was malformed, and cannot succeed according to the XRP Ledger protocol.
 labels:
-  - Transaction Sending
+    - Transaction Sending
 ---
 # tem Codes
 
@@ -14,7 +12,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 | Code                          | Explanation                                   |
 |:------------------------------|:----------------------------------------------|
-| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. _(Added by the [AMM amendment][])_  |
+| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. {% amendment-disclaimer name="AMM" /%}  |
 | `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment][]) was invalid, possibly because it was a negative number. |
 | `temBAD_AUTH_MASTER`          | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) set. |
 | `temBAD_CURRENCY`             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |
@@ -22,7 +20,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temBAD_FEE`                  | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
 | `temBAD_ISSUER`               | The transaction improperly specified the `issuer` field of some currency included in the request. |
 | `temBAD_LIMIT`                | The [TrustSet transaction][] improperly specified the `LimitAmount` value of a trust line. |
-| `temBAD_NFTOKEN_TRANSFER_FEE` | The [NFTokenMint transaction][] improperly specified the `TransferFee` field of the transaction. _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
+| `temBAD_NFTOKEN_TRANSFER_FEE` | The [NFTokenMint transaction][] improperly specified the `TransferFee` field of the transaction. {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `temBAD_OFFER`                | The [OfferCreate transaction][] specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
 | `temBAD_PATH`                 | The [Payment transaction][] specifies one or more [Paths](../../../../concepts/tokens/fungible-tokens/paths.md) improperly, for example including an issuer for XRP, or specifying an account differently. |
 | `temBAD_PATH_LOOP`            | One of the [Paths](../../../../concepts/tokens/fungible-tokens/paths.md) in the [Payment transaction][] was flagged as a loop, so it cannot be processed in a bounded amount of time. |
@@ -45,7 +43,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temREDUNDANT`                | The transaction would do nothing; for example, it is sending a payment directly to the sending account, or creating an offer to buy and sell the same currency from the same issuer. |
 | `temREDUNDANT_SEND_MAX`       | {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" %}Removed in: rippled 0.28.0{% /badge %} |
 | `temRIPPLE_EMPTY`             | The [Payment transaction][] includes an empty `Paths` field, but paths are necessary to complete this payment. |
-| `temSEQ_AND_TICKET`           | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction cannot include both. _(Added by the [TicketBatch amendment][].)_ |
+| `temSEQ_AND_TICKET`           | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction cannot include both. {% amendment-disclaimer name="TicketBatch" /%} |
 | `temBAD_WEIGHT`               | The [SignerListSet transaction][] includes a `SignerWeight` that is invalid, for example a zero or negative value. |
 | `temBAD_SIGNER`               | The [SignerListSet transaction][] includes a signer who is invalid. For example, there may be duplicate entries, or the owner of the SignerList may also be a member. |
 | `temBAD_QUORUM`               | The [SignerListSet transaction][] has an invalid `SignerQuorum` value. Either the value is not greater than zero, or it is more than the sum of all signers in the list. |

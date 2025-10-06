@@ -1,16 +1,12 @@
 ---
-html: depositauth.html
-parent: accounts.html
 seo:
     description: DepositAuth設定をすると、アカウントは着信ペイメントをデフォルトでブロックします。
 labels:
-  - セキュリティ
-  - 支払い
+    - セキュリティ
+    - 支払い
 outdated_translation: true　
 ---
 # Deposit Authorization
-
-_（[DepositAuth Amendment][]により追加されました。）_
 
 Deposit Authorizationは、XRP Ledgerの[アカウント](index.md)のオプション機能です。Deposit Authorizationが有効な場合、トランザクションはそのトランザクションの送信者がアカウント自体でない限り、アカウントへはどのような資産も送信できません。Deposit Authorizationのアカウントは、次の2つの方法でのみ入金することができます。
 
@@ -18,6 +14,8 @@ Deposit Authorizationは、XRP Ledgerの[アカウント](index.md)のオプシ�
 - トランザクションを送信して資金を受け取ることにより。例えば、Deposit Authorizationが設定されたアカウントは、他のアカウントによって開始された[エスクロー](../payment-types/escrow.md)を完了することができます。
 
 デフォルトでは、新しいアカウントではDepositAuthが無効になっています。
+
+{% amendment-disclaimer name="DepositAuth" /%}
 
 ## 背景
 
@@ -27,7 +25,7 @@ Deposit Authorizationフラグにより、XRP Ledgerを使用するユーザが�
 
 Deposit Authorizationを有効にすると、[Checks](/resources/known-amendments.md#checks)、[Escrow](../payment-types/escrow.md)、および[Payment Channel](/resources/known-amendments.md#paychan)から資金を受領できます。このような「二段階」トランザクションモデルでは、最初に送金元は資金の送金を承認するトランザクションを送信し、次に送金先は資金受領を承認するトランザクションを送信します。
 
-Deposit Authorizationが有効になっている場合に[Paymentトランザクション][]から資金を受領するには、このような支払の送金元を[事前承認](#事前承認)する必要があります。_（[DepositPreauth Amendment][]により追加されました。）_
+Deposit Authorizationが有効になっている場合に[Paymentトランザクション][]から資金を受領するには、このような支払の送金元を[事前承認](#事前承認)する必要があります。{% amendment-disclaimer name="DepositPreauth" /%}
 
 ## 推奨される使い方
 
@@ -42,15 +40,15 @@ Deposit Authorizationを最大限に活用するため、以下の実施を推�
 Deposit Authorizationが有効化されているアカウントの特徴は次のとおりです。
 
 - [Paymentトランザクション][]の送信先には**できません**。ただし**以下の例外**は除きます。
-    - 送金先により、支払の送金元が[事前承認](#事前承認)されている場合。_（[DepositPreauth Amendment][]により追加されました。）_
+    - 送金先により、支払の送金元が[事前承認](#事前承認)されている場合。{% amendment-disclaimer name="DepositPreauth" /%}
     - アカウントのXRP残高がアカウントの最低[必要準備金](reserves.md)以下で、XRP PaymentのAmountがアカウントの最低準備金（現時点では10XRP）以下である場合は、このアカウントを送金先に指定できます。これにより、アカウントがトランザクションを送信することも、XRPを受領することもできずに操作不可能な状態になるのを防ぎます。この場合、アカウントの所有者の準備金は関係ありません。
 - **以下に該当する場合にのみ**[PaymentChannelClaimトランザクション][]からXRPを受領できます。
     - PaymentChannelClaimトランザクションの送金元がPayment Channelの送金先である場合。
-    - PaymentChannelClaimトランザクションの送金先がPaymentChannelClaimの送金元を[事前承認している](#事前承認)場合。_（[DepositPreauth Amendment][]により追加されました。）_
+    - PaymentChannelClaimトランザクションの送金先がPaymentChannelClaimの送金元を[事前承認している](#事前承認)場合。{% amendment-disclaimer name="DepositPreauth" /%}
 - **以下に該当する場合にのみ**[EscrowFinishトランザクション][]からXRPを受領できます。
     - EscrowFinishトランザクションの送金元がEscrowの送金先である場合。
-    - EscrowFinishトランザクションの送金先がEscrowFinishの送金元を[事前承認している](#事前承認)場合。_（[DepositPreauth Amendment][]により追加されました。）_
-- [CheckCash][]トランザクションを送信してXRPまたはトークンを受領**できます**。 _（[Checks Amendment][]により追加されました。）_
+    - EscrowFinishトランザクションの送金先がEscrowFinishの送金元を[事前承認している](#事前承認)場合。{% amendment-disclaimer name="DepositPreauth" /%}
+- [CheckCash][]トランザクションを送信してXRPまたはトークンを受領**できます**。 {% amendment-disclaimer name="Checks" /%}
 - [OfferCreateトランザクション][]を送信してXRPまたはトークンを受領**できます**。
     - 即時には完全に実行されないOfferCreateトランザクションがアカウントから送信される場合、このアカウントは、後でオファーが他のアカウントの[Payment][]トランザクションと[OfferCreate][]トランザクションによって消費される時点で、注文済みXRPとトークンのリマインダーを受信する**ことがあります**。
 - アカウントが[NoRippleフラグ](../tokens/fungible-tokens/rippling.md)を有効にせずにトラストラインを作成している場合、またはDefaultRippleフラグを有効にして通貨を発行した場合は、アカウントはRipplingの結果として、[Paymentトランザクション][]でそれらのトラストラインのトークンを受領**できます**。このようなトランザクションの送金先にすることはできません。
@@ -80,8 +78,6 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 
 ## 事前承認
 
-_（[DepositPreauth Amendment][]により追加されました。）_
-
 DepositAuthが有効なアカウントは、特定の送金元を _事前承認_ することにより、DepositAuthが有効になっていても、これらの送金元からの支払を受領することができます。これにより、特定の送金元からの資金の直接送金が可能となり、受取人はトランザクションごとに個別にアクションを実行する必要がなくなります。事前承認はDepositAuthの使用にあたり必須の要件ではありませんが、事前承認により特定の操作を実行しやすくなります。
 
 事前承認は通貨に依存しません。特定の通貨のみについてアカウントを事前承認することはできません。
@@ -97,6 +93,8 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 - [PaymentChannelClaim][]
 
 事前承認は、DepositAuthが有効なアカウントへのその他の送金方法には影響しません。詳しいルールについては、[詳細なセマンティクス](#詳細なセマンティクス)をご覧ください。
+
+{% amendment-disclaimer name="DepositPreauth" /%}
 
 ### 承認の確認
 

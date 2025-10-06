@@ -2,14 +2,14 @@
 seo:
     description: 新しいペイメントチャネルを作成します。
 labels:
-  - Payment Channel
+    - Payment Channel
 ---
 # PaymentChannelCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "ソース")
 
-_[PayChan Amendment][]により追加されました。_
-
 [ペイメントチャンネル](../../../../concepts/payment-types/payment-channels.md)を作成し、XRPで資金を供給します。このトランザクションを送信するアドレスが、ペイメントチャネルの「送信元アドレス」となります。
+
+{% amendment-disclaimer name="PayChan" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -41,6 +41,6 @@ _[PayChan Amendment][]により追加されました。_
 | `CancelAfter`    | 数値    | UInt32            | _（省略可）_ このChannelの有効期限（[Rippleエポック以降の経過秒数][]）。この時刻の経過後にトランザクションがこのChannelを変更しようとすると、このChannelは閉鎖し、Channelは変更されません。この値は変更できません。Channelはこの時刻よりも早い時点で閉鎖できますが、この時刻の経過後にもオープンしたままにすることはできません。 |
 | `DestinationTag` | 数値    | UInt32            | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 
-`Destination` アカウントがペイメントチャネルの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION` 失敗します。_([DisallowIncoming amendment][] が必要です)_。
+`Destination` アカウントがペイメントチャネルの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION` 失敗します。{% amendment-disclaimer name="DisallowIncoming" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

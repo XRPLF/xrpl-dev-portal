@@ -1,18 +1,15 @@
 ---
-html: paychannel.html
-parent: ledger-entry-types.html
 seo:
     description: 非同期XRP支払い用のチャネルです。
 labels:
-  - Payment Channel
+    - Payment Channel
 ---
 # PayChannel
 [[ソース]](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
 
-_（[PayChan Amendment][]により追加されました。）_
-
 `PayChannel`エントリは1つの[支払いチャネル](../../../../concepts/payment-types/payment-channels.md)を表します。
 
+{% amendment-disclaimer name="PayChan" /%}
 
 ## {% $frontmatter.seo.title %}のJSONの例
 

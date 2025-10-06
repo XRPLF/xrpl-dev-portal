@@ -1,19 +1,17 @@
 ---
-html: unlmodify.html
-parent: pseudo-transaction-types.html
 seo:
     description: Change the list of trusted validators currently considered offline.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # UNLModify
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Change.cpp "Source")
 
-_(Added by the [NegativeUNL amendment][].)_
-
-A `UNLModify` [pseudo-transaction](pseudo-transaction-types.md) marks a change to the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), indicating that a trusted validator has gone offline or come back online.
+A `UNLModify` [pseudo-transaction](./index.md) marks a change to the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), indicating that a trusted validator has gone offline or come back online.
 
 {% admonition type="info" name="Note" %}You cannot send a pseudo-transaction, but you may find one when processing ledgers.{% /admonition %}
+
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -31,7 +29,6 @@ A `UNLModify` [pseudo-transaction](pseudo-transaction-types.md) marks a change t
 ```
 
 {% partial file="/docs/_snippets/pseudo-tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | Name                 | JSON Type | [Internal Type][] | Description           |
 |:---------------------|:----------|:------------------|:----------------------|

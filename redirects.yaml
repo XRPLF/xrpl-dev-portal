@@ -1,3 +1,6 @@
+/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types/:
+    to: /docs/references/protocol/transactions/pseudo-transaction-types/
+    type: 301
 /docs/concepts/tokens/transfer-fees/:
     to: /docs/concepts/tokens/fungible-tokens/transfer-fees/
     type: 301
@@ -2353,6 +2356,9 @@ code_of_conduct.ja:
     type: 301
 
 # Japanese
+/ja/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types/:
+    to: /ja/docs/references/protocol/transactions/pseudo-transaction-types/
+    type: 301
 /ja/docs/concepts/tokens/transfer-fees/:
     to: /ja/docs/concepts/tokens/fungible-tokens/transfer-fees/
     type: 301

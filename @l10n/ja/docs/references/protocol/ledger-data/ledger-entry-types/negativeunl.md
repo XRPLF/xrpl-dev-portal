@@ -1,18 +1,16 @@
 ---
-html: negativeunl.html
-parent: ledger-entry-types.html
 seo:
     description: 現在オフラインと思われるバリデータの一覧を表します。
 labels:
-  - ブロックチェーン
+    - ブロックチェーン
 ---
 # NegativeUNL
-
-_([NegativeUNL amendment][]により追加されました。)_
 
 `NegativeUNL`オブジェクトタイプは、[ネガティブUNL](../../../../concepts/consensus-protocol/negative-unl.md)の現在の状態、つまり現在オフラインであると考えられる信頼できるバリデーションのリストを含んでいます。
 
 各台帳のバージョンには、**最大1つの**`NegativeUNL`オブジェクトが含まれます。無効になっているか、無効になる予定のバリデータがない場合、台帳には`NegativeUNL`オブジェクトは存在しません。
+
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -42,8 +40,8 @@ _([NegativeUNL amendment][]により追加されました。)_
 | `DisabledValidators`  | 配列     | Array        | いいえ | `DisabledValidator`オブジェクト(下記参照)は、現在無効になっている信頼できるバリデータを表すリストです。 |
 | `Flags`               | 数値     | UInt32       | はい   | 真偽値フラグのビットマップ。NegativeUNLオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`となります。 |
 | `LedgerEntryType`     | 文字列   | UInt16       | はい   | `0x004E`は文字列`NegativeUNL`に対応し、このオブジェクトがNegativeUNLであることを意味します。 |
-| `PreviousTxnID`       | 文字列   | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
-| `PreviousTxnLgrSeq`   | 数値     | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnID`       | 文字列   | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| `PreviousTxnLgrSeq`   | 数値     | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `ValidatorToDisable`  | 文字列   | Blob         | いいえ | 次回のフラグレジャーで無効化される予定の信頼できるバリデータの公開鍵を表します。 |
 | `ValidatorToReEnable` | 文字列   | Blob         | いいえ | 次回のフラグレジャーで再有効化される予定のネガティブUNLの信頼できるバリデータの公開鍵を表します。 |
 

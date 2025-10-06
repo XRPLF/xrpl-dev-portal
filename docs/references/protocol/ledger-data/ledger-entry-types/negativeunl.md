@@ -2,16 +2,16 @@
 seo:
     description: List of validators currently believed to be offline.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # NegativeUNL
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L85-L91 "Source")
 
-_(Added by the [NegativeUNL amendment][].)_
-
 The `NegativeUNL` ledger entry type contains the current status of the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), a list of trusted validators currently believed to be offline.
 
 Each ledger version contains **at most one** `NegativeUNL` entry. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
+
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -41,8 +41,8 @@ In addition to the [common fields](../common-fields.md), the {% code-page-name /
 |:----------------------|:----------|:------------------|:----------|:---------------------|
 | `DisabledValidators`  | Array     | Array             | No        | A list of `DisabledValidator` objects (see below), each representing a trusted validator that is currently disabled. |
 | `LedgerEntryType`     | String    | UInt16            | Yes       | The value `0x004E`, mapped to the string `NegativeUNL`, indicates that this entry is the Negative UNL. |
-| `PreviousTxnID`       | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
-| `PreviousTxnLgrSeq`   | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. _(Added by the [fixPreviousTxnID amendment][].)_ |
+| `PreviousTxnID`       | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| `PreviousTxnLgrSeq`   | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `ValidatorToDisable`  | String    | Blob              | No        | The public key of a trusted validator that is scheduled to be disabled in the next flag ledger. |
 | `ValidatorToReEnable` | String    | Blob              | No        | The public key of a trusted validator in the Negative UNL that is scheduled to be re-enabled in the next flag ledger. |
 

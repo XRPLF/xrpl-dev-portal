@@ -1,17 +1,15 @@
 ---
-html: tickets.html
-parent: accounts.html
 seo:
     description: トランザクションを非連続的な順序で送信する
 labels:
-  - アカウント
-  - トランザクション送信
+    - アカウント
+    - トランザクション送信
 ---
 # Ticket
 
-_([TicketBatch amendment][]により追加されました。)_
-
 XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引のために[シーケンス番号][]を確保する方法です。チケットを使うことで、通常の順序以外で取引を送信することができます。この使用例としては、必要な署名を集めるのに時間がかかるような[マルチサイン取引](multi-signing.md)などが挙げられます。
+
+{% amendment-disclaimer name="TicketBatch" /%}
 
 ## 背景
 

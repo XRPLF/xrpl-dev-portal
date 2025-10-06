@@ -1,14 +1,10 @@
 ---
-html: decentralized-identifiers.html
-parent: accounts.html
 seo:
     description: Decentralized identifiers enable verifiable, decentralized digital identities.
 labels:
-  - DID
+    - DID
 ---
 # Decentralized Identifiers
-
-_(Requires the [DID amendment][])_
 
 A Decentralized Identifier (DID) is a new type of identifier defined by the World Wide Web Consortium (W3C) that enables verifiable, digital identities. DIDs are fully under the control of the DID owner, independent from any centralized registry, identity provider, or certificate authority.
 
@@ -23,6 +19,8 @@ The key principles of a DID are:
 - **Interoperability:** DIDs are open to any solution that recognizes the W3C DID standard. This means a DID can be used to authenticate and establish trust in various digital transactions and interactions.
 
 {% admonition type="info" name="Note" %}The implementation of DIDs on the XRP Ledger conforms to the requirements in the [DID v1.0 specification](https://www.w3.org/TR/did-core/).{% /admonition %}
+
+{% amendment-disclaimer name="DID" /%}
 
 
 ## How It Works

@@ -1,17 +1,15 @@
 ---
-html: paymentchannelfund.html
-parent: transaction-types.html
 seo:
     description: Payment ChannelにXRPを追加します。
 labels:
-  - Payment Channel
+    - Payment Channel
 ---
 # PaymentChannelFund
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
 Payment ChannelにXRPを追加する、有効期限の更新も可能。このトランザクションは、Channelの支払元アドレスだけが使用できます。
 
-_[PayChan Amendment][]により追加されました。_
+{% amendment-disclaimer name="PayChan" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

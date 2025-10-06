@@ -1,17 +1,15 @@
 ---
-html: account_channels.html
-parent: account-methods.html
 seo:
     description: Get a list of payment channels where the account is the source of the channel.
 labels:
-  - Payment Channels
+    - Payment Channels
 ---
 # account_channels
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
-_(Added by the [PayChan amendment][].)_
-
 The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
+
+{% amendment-disclaimer name="PayChan" /%}
 
 ## Request Format
 An example of the request format:

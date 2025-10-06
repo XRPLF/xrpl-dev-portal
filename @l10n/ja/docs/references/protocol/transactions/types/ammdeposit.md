@@ -19,7 +19,7 @@ labels:
 - AMMのプールにある資産の一方または両方を保有する権限がない
 {% /admonition %}
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

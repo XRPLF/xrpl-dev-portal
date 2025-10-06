@@ -1,18 +1,15 @@
 ---
-html: signerlist.html
-parent: ledger-entry-types.html
 seo:
     description: マルチシグトランザクションのアドレスのリストです。
 labels:
-  - セキュリティ
+    - セキュリティ
 ---
 # SignerList
 [[ソース]](https://github.com/XRPLF/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
-_（[MultiSign Amendment][]により追加されました。）_
-
 `SignerList`オブジェクトタイプは、個別アカウントの代わりにグループとしてトランザクション署名をすることが承認されている署名者のリストです。[SignerListSetトランザクション][]を使用して、SignerListを作成、置き換え、または削除できます。
 
+{% amendment-disclaimer name="MultiSign" /%}
 
 ## {% $frontmatter.seo.title %}のJSONの例
 
@@ -74,7 +71,7 @@ _（[MultiSign Amendment][]により追加されました。）_
 |:---------------|:----------|:--------------|:--------------------------------|
 | `Account`      | 文字列    | AccountID     | 署名がマルチシグに提供されるXRP Ledgerアドレス。レジャーの資金供給のあるアドレスである必要はありません。 |
 | `SignerWeight` | 数値    | UInt16        | この署名者による署名の重み。マルチシグは、付与された署名の重みの合計がSignerListの`SignerQuorum`値を超えている場合にのみ有効となります。 |
-| `WalletLocator` | 文字列    | UInt256       | （省略可）任意の16進数データ。これは署名者を識別するため、または他の関連する目的のために使用することができます。[ExpandedSignerList amendment][]により追加されました。 |
+| `WalletLocator` | 文字列    | UInt256       | （省略可）任意の16進数データ。これは署名者を識別するため、または他の関連する目的のために使用することができます。{% amendment-disclaimer name="ExpandedSignerList" /%} |
 
 マルチシグトランザクションを処理する際に、サーバはトランザクション実行時にレジャーに関する`Account`値を間接参照します。アドレスが資金供給のある[AccountRootオブジェクト](accountroot.md)に対応して _いない_ 場合、そのアドレスに関連付けられているマスターシークレットによってのみ有効な署名を生成できます。アカウントがレジャーに _確かに_ 存在している場合は、アカウントの状態により異なります。アカウントにレギュラーキーが設定されている場合はレギュラーキーを使用できます。アカウントのマスターキーが無効化されていない場合に限り、アカウントのマスターキーを使用できます。マルチシグを別のマルチシグの一部として使用することはできません。
 

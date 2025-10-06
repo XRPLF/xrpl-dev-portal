@@ -1,19 +1,16 @@
 ---
-html: set-up-xrp-xrp-bridge.html
-parent: use-xrpl-sidechains.html
 seo:
     description: Steps to create an XRP-XRP bridge with a new sidechain.
 labels:
-  - Interoperability
+    - Interoperability
 ---
 # Set Up an XRP-XRP Bridge
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
 Setting up an XRP-XRP bridge enables you to move XRP between chains. The set up requires using the genesis account on the issuing chain as a door account to submit attestations and create transaction submission accounts for witnesses.
 
-**Note**: The code samples on this page illustrate how a bridge was set up between *Devnet* and *Sidechain-Devnet*, using a supported [client library](/docs/references/client-libraries.md) to query and submit transactions. This bridge is already created, so the process can't be reproduced on these networks.
+{% admonition type="info" name="Note" %}The code samples on this page illustrate how a bridge was set up between *Devnet* and *Sidechain-Devnet*, using a supported [client library](/docs/references/client-libraries.md) to query and submit transactions. This bridge is already created, so the process can't be reproduced on these networks.{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Prerequisites
 

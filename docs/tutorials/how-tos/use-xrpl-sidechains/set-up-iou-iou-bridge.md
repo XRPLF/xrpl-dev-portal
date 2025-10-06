@@ -1,18 +1,16 @@
 ---
-html: set-up-iou-iou-bridge.html
-parent: use-xrpl-sidechains.html
 seo:
     description: Steps to set up an IOU-IOU bridge.
 labels:
-  - Interoperability
+    - Interoperability
 ---
 # Set Up an IOU-IOU Bridge
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
 Setting up an IOU-IOU bridge enables you to move tokens between chains.
 
-**Note**: The code samples on this page illustrate how to bridge a hypotethical "TST" token from *Devnet* to *Sidechain-Devnet*, using a supported [client library](/docs/references/client-libraries.md) to query and submit transactions.
+{% admonition type="info" name="Note" %}The code samples on this page illustrate how to bridge a hypotethical "TST" token from *Devnet* to *Sidechain-Devnet*, using a supported [client library](/docs/references/client-libraries.md) to query and submit transactions.{% /admonition %}
+
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Prerequisites
 

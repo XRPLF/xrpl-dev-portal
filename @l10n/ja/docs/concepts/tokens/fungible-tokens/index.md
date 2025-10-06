@@ -41,7 +41,7 @@ labels:
 
 1. [トレード](../decentralized-exchange/index.md)によって、限度額以上のトークンを取得した場合
 2. プラスの残高があるトラストラインの限度額を減らした場合
-3. [チェックの現金化](../../payment-types/checks.md)によって、トークンを限度額以上取得する場合 (_[CheckCashMakesTrustLine amendment][]により追加されました。_)
+3. [チェックの現金化](../../payment-types/checks.md)によって、トークンを限度額以上取得する場合 {% amendment-disclaimer name="CheckCashMakesTrustLine" /%}
 
 
 ## トラストラインの設定

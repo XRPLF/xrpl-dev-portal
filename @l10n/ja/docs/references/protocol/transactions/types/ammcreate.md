@@ -9,7 +9,7 @@ labels:
 # AMMCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMCreate.cpp "Source")
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 資産（[代替可能トークン](../../../../concepts/tokens/index.md)または[XRP](../../../../introduction/what-is-xrp.md)）のペアを取引するための新しい[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを作成します。
 

@@ -9,7 +9,7 @@ labels:
 
 An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](../../../../concepts/tokens/nfts/index.md). You can create an NFT buy or sell offer by sending an [NFTokenCreateOffer transaction][].
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

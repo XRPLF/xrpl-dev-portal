@@ -2,13 +2,15 @@
 seo:
     description: Add, remove, or modify an account's multi-signing list.
 labels:
-  - Security
+    - Security
 ---
 # SignerListSet
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "Source")
 
-The SignerListSet transaction creates, replaces, or removes a list of signers that can be used to [multi-sign](../../../../concepts/accounts/multi-signing.md) a transaction. This transaction type was introduced by the [MultiSign amendment][].
+Create, replace, or remove a list of signers that can be used to [multi-sign](../../../../concepts/accounts/multi-signing.md) a transaction.
+
+{% amendment-disclaimer name="MultiSign" /%}
+
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -45,7 +47,6 @@ The SignerListSet transaction creates, replaces, or removes a list of signers th
 {% tx-example txid="09A9C86BF20695735AB03620EB1C32606635AC3DA0B70282F37C674FC889EFE7" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
 
 | Field           | JSON Type | [Internal Type][] | Description                  |
 |:----------------|:----------|:------------------|:-----------------------------|

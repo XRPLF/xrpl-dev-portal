@@ -2,16 +2,16 @@
 seo:
     description: Create an offer to buy or sell an NFT.
 labels:
-  - Non-fungible Tokens, NFTs
+    - Non-fungible Tokens, NFTs
 ---
 # NFTokenCreateOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "Source")
 
-Creates either a new _Sell_ offer for an `NFToken` owned by the account executing the transaction, or a new _Buy_ offer for an `NFToken` owned by another account.
+Create a new offer to either buy or sell a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). You can only offer to sell NFTs you own or buy NFTs you don't own.
 
-If successful, the transaction creates a [NFTokenOffer object][]. Each offer counts as one object towards the [owner reserve](../../../../concepts/accounts/reserves.md) of the account that placed the offer.
+If successful, the transaction creates a [NFTokenOffer object][]. To complete the sale and change ownership of the NFT, the offer must be accepted using an [NFTokenAcceptOffer transaction][].
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -64,7 +64,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_ENTRY`                    | The `NFToken` is not owned by the expected account. |
 | `tecNO_ISSUER`                   | The issuer specified in the `Amount` field does not exist. |
 | `tecNO_LINE`                     | The `Amount` field is denominated in fungible tokens, but the `NFToken`'s issuer does not have a trust line for those tokens and the `NFToken` does not have the [`lsfTrustLine` flag](../../data-types/nftoken.md#nftoken-flags) enabled. |
-| `tecNO_PERMISSION`               | The `Destination` account blocks incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][] )_
+| `tecNO_PERMISSION`               | The `Destination` account blocks incoming NFTokenOffers. {% amendment-disclaimer name="DisallowIncoming" /%}
 | `tecUNFUNDED_OFFER`              | For a buy offer, the sender does have the funds specified in the `Amount` field available. If the `Amount` is XRP, this could be due to the reserve requirement; if the `Amount` is denominated in fungible tokens, this could be because they are [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `tefNFTOKEN_IS_NOT_TRANSFERABLE` | The `NFToken` has the [`lsfTransferable` flag](../../data-types/nftoken.md#nftoken-flags) disabled and this transaction would not transfer the `NFToken` to or from the issuer. |
 

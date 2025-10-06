@@ -1,18 +1,16 @@
 ---
-html: negative-unl.html
-parent: consensus.html
 seo:
     description: Understand how Negative UNL improves the ledger's resilience during partial outages.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # Negative UNL
-
-_Added by the [NegativeUNL Amendment](/resources/known-amendments.md#negativeunl)._
 
 The _Negative UNL_ is a feature of the XRP Ledger [consensus protocol](index.md) that improves _liveness_, the network's ability to make forward progress during a partial outage. Using the Negative UNL, servers adjust their effective UNLs based on which validators are currently online and operational, so that a new [ledger version](../ledgers/index.md) can be declared _validated_ even if several trusted validators are offline.
 
 The Negative UNL has no impact on how the network processes transactions or what transactions' outcomes are, except that it improves the network's ability to declare outcomes final during some types of partial outages.
+
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 ## Background
 
@@ -74,7 +72,7 @@ Each flag ledger, all of the following changes apply:
 
 1. Changes to the Negative UNL that were scheduled in the previous flag ledger go into effect for the following ledger version. The consensus process for validating this flag ledger itself does not use the scheduled change.
 
-    {% admonition type="info" name="Note" %} This is one of the only times a ledger's state data is modified without a [transaction](../transactions/index.md) or [pseudo-transaction](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md).{% /admonition %}
+    {% admonition type="info" name="Note" %} This is one of the only times a ledger's state data is modified without a [transaction](../transactions/index.md) or [pseudo-transaction](../../references/protocol/transactions/pseudo-transaction-types/index.md).{% /admonition %}
 
 2. If the Negative UNL is not full, each server proposes adding **up to 1** validator to the Negative UNL from among its trusted validators with less than 50% reliability.
 3. If the Negative UNL is not empty, each server proposes removing **up to 1** validator from the Negative UNL. A server can propose removing a validator from the Negative UNL for two reasons:
@@ -82,7 +80,7 @@ Each flag ledger, all of the following changes apply:
     - It does not have that validator in its UNL. (If a validator goes down permanently, this rule ensures that it gets removed from the on-ledger Negative UNL after it has been removed from servers' configured UNLs.)
 4. If a proposed change to the Negative UNL achieves a consensus, the change is scheduled to go into effect in the following flag ledger. Up to one addition and one removal can be scheduled this way.
 
-The proposals to add and remove validators from the Negative UNL take the form of [UNLModify pseudo-transactions][]. The consensus process determines whether each pseudo-transaction achieves a consensus or gets thrown out, in the same way as other [pseudo-transactions](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md). In other words, for a particular validator to be added or removed from the Negative UNL, a consensus of servers must propose the same change.
+The proposals to add and remove validators from the Negative UNL take the form of [UNLModify pseudo-transactions][]. The consensus process determines whether each pseudo-transaction achieves a consensus or gets thrown out, in the same way as other [pseudo-transactions](../../references/protocol/transactions/pseudo-transaction-types/index.md). In other words, for a particular validator to be added or removed from the Negative UNL, a consensus of servers must propose the same change.
 
 Scheduled and effective changes to the Negative UNL are tracked in the [NegativeUNL object](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md) in the ledger's state data.
 

@@ -80,12 +80,11 @@ See [Freezing Tokens](../freezes.md).
 
 ### Clawback Flags
 
-_(Requires the [Clawback amendment](/resources/known-amendments.md#clawback))_
-
 Clawback allows you to retrieve, or _clawback_, stablecoins from a trust line under specific circumstances. This gives you added ability to respond to challenges such as lost account access or malicious activity.
 
 See [Clawback](../../../../references/protocol/transactions/types/clawback.md).
 
+{% amendment-disclaimer name="Clawback" /%}
 
 ### Fixed Supply
 

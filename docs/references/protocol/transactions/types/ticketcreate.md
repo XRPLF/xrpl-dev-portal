@@ -2,15 +2,14 @@
 seo:
     description: Set aside one or more sequence numbers as tickets.
 labels:
-  - Transaction Sending
+    - Transaction Sending
 ---
 # TicketCreate
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateTicket.cpp "Source")
 
-_(Added by the [TicketBatch amendment][].)_
+Set aside one or more [sequence numbers][Sequence Number] as [tickets](../../../../concepts/accounts/tickets.md).
 
-A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Number] as [Tickets](../../../../concepts/accounts/tickets.md).
+{% amendment-disclaimer name="TicketBatch" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

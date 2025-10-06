@@ -159,13 +159,13 @@ _No Freeze_ 設定を有効にしない場合、アカウントが疑わしい�
 
 ### Clawback
 
-_([Clawback amendment][])_
-
 Clawbackは、ステーブルコインの配布を開始する前に選択できるオプション設定です。規制上の目的から、発行者の中には発行されたトークンをアカウントに配布した後に回収する能力を持たなければならない場合があります。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を回収することができます。
 
 [Clawback](../../references/protocol/transactions/types/clawback.md)をご覧ください。
 
 ![Clawback](/docs/img/uc-stablecoin-clawback.png)
+
+{% amendment-disclaimer name="Clawback" /%}
 
 ### 部分支払い
 
@@ -206,12 +206,13 @@ Clawbackは、ステーブルコインの配布を開始する前に選択でき
 
 
 ### AMMへのリスト
-_([AMM amendment][]により追加されました。)_
 
 自動マーケットメイカー(AMM)は、XRP Ledgerの分散型取引所で流動性を提供するスマートコントラクトです。各AMMは2つの資産のプールを保有し、計算式で設定された取引レートでユーザがそれらの間でスワップを行うことを可能にします。
 
 どの資産ペアに対しても、レジャーには最大1つのAMMが存在します。資産ペアのAMMがまだ存在しない場合は、新しいトークンでAMMを作成するか、別の既存のAMMに預けることができます。AMMに資産を預ける人は、流動性提供者(LP)と呼ばれ、AMMからLPトークンを受け取ります。
 
 [自動マーケットメーカー](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)をご覧ください。
+
+{% amendment-disclaimer name="AMM" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

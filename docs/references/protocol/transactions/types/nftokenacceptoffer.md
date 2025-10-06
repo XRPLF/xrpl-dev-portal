@@ -2,17 +2,17 @@
 seo:
     description: Accept an offer to buy or sell an NFT.
 labels:
-  - NFTs, Non-fungible Tokens
+    - NFTs, Non-fungible Tokens
 ---
 # NFTokenAcceptOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenAcceptOffer.cpp "Source")
 
-The `NFTokenAcceptOffer` transaction is used to accept offers to buy or sell an NFT. It has two possible modes:
+Accept an offer to buy or sell a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). This transaction has two modes:
 
 * In _direct_ mode, a buyer can accept a sell offer directly, or a seller can accept a buy offer directly.
 * In _brokered_ mode, a third party (the _broker_) can match two distinct offers, one buying and one selling. If the buy price is higher than the sell price, the broker can claim the difference as a fee for themself.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## Example NFTokenAcceptOffer JSON
 

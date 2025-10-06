@@ -92,7 +92,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 ほとんどのメタデータは、[`AffectedNodes`配列](../../../references/protocol/transactions/metadata.md#affectednodes)に含まれています。この配列で探す対象は、トランザクションのタイプによって異なります。ほぼすべてのトランザクションが、送金元の[AccountRootオブジェクト][]を変更してXRP[トランザクションコスト](../transaction-cost.md)を消却し、[アカウントのシーケンス番号](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を増やします。
 
-**情報:** このルールの例外として[疑似トランザクション](../../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)があります。このトランザクションは実在するアカウントから送信されないため、AccountRootオブジェクトを変更しません。その他の例外として、AccountRootオブジェクトの`Balance`フィールドを変更せずに、AccountRootオブジェクトを変更するトランザクションがあります。[Free Key Resetトランザクション](../transaction-cost.md#key-resetトランザクション)の場合、送金元のXRP残高は変わりません。トランザクションによって消却される金額と同額のXRPをアカウントが受け取る場合（ただし、このようなことはほとんどありません）、そのアカウントの正味残高は変わりません。（XRPを受領したアカウントに関係なくトランザクションコストはメタデータの別の場所に反映されます。）
+**情報:** このルールの例外として[疑似トランザクション](../../../references/protocol/transactions/pseudo-transaction-types/index.md)があります。このトランザクションは実在するアカウントから送信されないため、AccountRootオブジェクトを変更しません。その他の例外として、AccountRootオブジェクトの`Balance`フィールドを変更せずに、AccountRootオブジェクトを変更するトランザクションがあります。[Free Key Resetトランザクション](../transaction-cost.md#key-resetトランザクション)の場合、送金元のXRP残高は変わりません。トランザクションによって消却される金額と同額のXRPをアカウントが受け取る場合（ただし、このようなことはほとんどありません）、そのアカウントの正味残高は変わりません。（XRPを受領したアカウントに関係なくトランザクションコストはメタデータの別の場所に反映されます。）
 
 以下は、上記のステップ1からのレスポンス全文例です。レジャーに対して行われた変更を把握できるか確認してください。
 
@@ -435,7 +435,7 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
 
 ### 疑似トランザクション
 
-[疑似トランザクション](../../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)にもメタデータがありますが、これらのトランザクションは通常のトランザクションのすべてのルールに従うとは限りません。これらのトランザクションは、実在のアカウントには関連付けられていないため（この`Account`の値は、[base58エンコード形式の数字の0](../../accounts/addresses.md#特別なアドレス)です）、レジャーのAccountRootオブジェクトを変更して`Sequence`シーケンス番号を増やしたり、XRPを消却したりしません。疑似トランザクションは、特別なレジャーオブジェクトに対して特定の変更のみを行います。
+[疑似トランザクション](../../../references/protocol/transactions/pseudo-transaction-types/index.md)にもメタデータがありますが、これらのトランザクションは通常のトランザクションのすべてのルールに従うとは限りません。これらのトランザクションは、実在のアカウントには関連付けられていないため（この`Account`の値は、[base58エンコード形式の数字の0](../../accounts/addresses.md#特別なアドレス)です）、レジャーのAccountRootオブジェクトを変更して`Sequence`シーケンス番号を増やしたり、XRPを消却したりしません。疑似トランザクションは、特別なレジャーオブジェクトに対して特定の変更のみを行います。
 
 - [EnableAmendment疑似トランザクション][]は、[Amendmentレジャーオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/amendments.md)を変更して、有効なAmendment、過半数の支持を得ている保留中のAmendment、および保留中の期間を追跡します。
 - [SetFee疑似トランザクション][]は、[FeeSettingsレジャーオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)を変更して、[トランザクションコスト](../transaction-cost.md)および[必要準備金](../../accounts/reserves.md)のベースレベルを変更します。

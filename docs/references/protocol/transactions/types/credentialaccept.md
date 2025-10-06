@@ -1,13 +1,13 @@
 ---
 seo:
     description: Accept a credential provisionally issued to your account.
-status: not_enabled
 ---
 # CredentialAccept
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")
 
-A CredentialAccept transaction accepts a credential, which makes the credential valid. Only the subject of the credential can do this.
+Accept a [credential](../../../../concepts/decentralized-storage/credentials.md), which makes the credential valid. Only the subject of the credential can do this.
 
-_(Requires the [Credentials amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="Credentials" /%}
 
 ## Example CredentialAccept JSON
 
@@ -23,8 +23,7 @@ _(Requires the [Credentials amendment][] {% not-enabled /%}.)_
 }
 ```
 
-
-## CredentialAccept Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 In addition to the [common fields][], CredentialAccept transactions use the following fields:
 
@@ -46,7 +45,7 @@ The combination of `Account`, `Issuer`, and `CredentialType` must match a `Crede
 | `tecNO_ENTRY` | The credential uniquely identified by the `Account`, `Issuer`, and `CredentialType` fields of the transaction does not exist in the ledger. |
 | `temDISABLED` | The related amendment is not enabled. |
 | `temINVALID_ACCOUNT_ID` | The provided `Issuer` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
-| `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. _(Requires the [fixInvalidTxFlags amendment][] {% not-enabled /%})_ |
+| `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. {% amendment-disclaimer name="fixInvalidTxFlags" /%} |
 
 ## See Also
 

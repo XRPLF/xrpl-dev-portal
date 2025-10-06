@@ -2,14 +2,14 @@
 seo:
     description: Open a new payment channel.
 labels:
-  - Payment Channels
+    - Payment Channels
 ---
 # PaymentChannelCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
 Create a [payment channel](../../../../concepts/payment-types/payment-channels.md) and fund it. The address sending this transaction becomes the "source address" of the payment channel.
 
-_(Added by the [PayChan amendment][].)_
+{% amendment-disclaimer name="PayChan" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -41,7 +41,7 @@ _(Added by the [PayChan amendment][].)_
 | `CancelAfter`    | Number               | UInt32            | No        | The time, in [seconds since the Ripple Epoch][], when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
 | `DestinationTag` | Number               | UInt32            | No        | Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
 
-If the `Destination` account is blocking incoming payment channels, the transaction fails with result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] )_
+If the `Destination` account is blocking incoming payment channels, the transaction fails with result code `tecNO_PERMISSION`. {% amendment-disclaimer name="DisallowIncoming" /%}
 
 ## See Also
 

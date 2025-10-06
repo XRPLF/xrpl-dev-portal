@@ -2,16 +2,16 @@
 seo:
     description: Preauthorize an account to send payments to you.
 labels:
-  - Security
+    - Security
 ---
 # DepositPreauth
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")
 
-A DepositPreauth transaction grants preauthorization to deliver payments to your account. This is only useful if you are using (or plan to use) [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
+Grant preauthorization to send payments to your account. This is only useful if you are using (or plan to use) [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 
 {% admonition type="success" name="Tip" %}You can use this transaction before you enable Deposit Authorization. This may be useful to ensure a smooth transition from not requiring deposit authorization to requiring it.{% /admonition %}
 
-_(Added by the [DepositPreauth amendment][].)_
+{% amendment-disclaimer name="DepositPreauth" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -51,15 +51,14 @@ _(Added by the [DepositPreauth amendment][].)_
 
 {% tx-example txid="CB1BF910C93D050254C049E9003DA1A265C107E0C8DE4A7CFF55FADFD39D5656" /%}
 
-
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                    | JSON Type            | [Internal Type][] | Required? | Description |
 |:-------------------------|:---------------------|:------------------|:----------|:------------|
 | `Authorize`              | String - [Address][] | AccountID         | No        | An account to preauthorize. |
-| `AuthorizeCredentials`   | Array                | Array             | No        | A set of credentials to authorize. _(Requires the [Credentials amendment][]. {% not-enabled /%})_ |
+| `AuthorizeCredentials`   | Array                | Array             | No        | A set of credentials to authorize. {% amendment-disclaimer name="Credentials" /%} |
 | `Unauthorize`            | String               | AccountID         | No        | An account whose preauthorization should be revoked. |
-| `UnauthorizeCredentials` | Array                | Array             | No        | A set of credentials whose preauthorization should be revoked. _(Requires the [Credentials amendment][]. {% not-enabled /%})_ |
+| `UnauthorizeCredentials` | Array                | Array             | No        | A set of credentials whose preauthorization should be revoked. {% amendment-disclaimer name="Credentials" /%} |
 
 You must provide **exactly one** of `Authorize`, `AuthorizeCredentials`, `Unauthorize`, or `UnauthorizeCredentials`.
 

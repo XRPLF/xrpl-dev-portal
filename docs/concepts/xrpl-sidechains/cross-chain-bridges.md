@@ -1,16 +1,12 @@
 ---
-html: cross-chain-bridges.html
-parent: xrpl-sidechains.html
 seo:
     description: Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains.
 status: not_enabled
 labels:
-  - Blockchain
-  - Interoperability
+    - Blockchain
+    - Interoperability
 ---
 # Cross-Chain Bridges
-
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
 Cross-chain bridges enable you to move XRP and tokens between the XRP Ledger and other blockchains. When referring to the blockchains connected by a bridge, one is the locking chain and the other the issuing chain.
 
@@ -21,6 +17,8 @@ An issuing chain is an independent ledger with its own consensus algorithm and t
 {% admonition type="info" name="Note" %}Bridges utilize special _door accounts_ when moving assets cross-chain. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain is used to issue wrapped assets. {% /admonition %}
 
 Both the locking and issuing chains operate as parallel networks with independent nodes and validators. They rely on independent [witness servers](witness-servers.md) to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.
+
+{% amendment-disclaimer name="XChainBridge" /%}
 
 
 ## How Do Bridges Work?

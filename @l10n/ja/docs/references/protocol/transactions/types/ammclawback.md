@@ -14,7 +14,7 @@ labels:
 Clawbackはデフォルトで無効です。Clawbackを使用するには、[AccountSetトランザクション][]を送信して、**Allow Trust Line Clawback**設定を有効にする必要があります。すでにトークンが発行済みである発行者はClawbackを有効にできません。**Allow Trust Line Clawback**を有効にするには、トラストライン、オファー、エスクロー、ペイメントチャネル、チェック、署名者リストを設定する前に、所有者ディレクトリを完全に空にする必要があります。Clawbackを有効にした後は、元に戻すことはできません。つまり発行者アカウントは、トラストラインの発行済みトークンを回収できる権利を永続的に得ます。
 
 
-_([AMMClawback amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMMClawback" /%}
 
 
 ## {% $frontmatter.seo.title %} JSONの例

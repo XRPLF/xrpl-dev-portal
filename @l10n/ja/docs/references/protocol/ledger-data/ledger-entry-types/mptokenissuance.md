@@ -10,7 +10,7 @@ labels:
 
 `MPTokenIssuance`オブジェクトは、単一のMPT Issuanceを表し、Issuance自体に関連するデータを保持します。このIssuanceは`MPTokenIssuanceCreate`トランザクションを使用して作成され、`MPTokenIssuanceDestroy`トランザクションによって破棄することができます。
 
-_([MPTokensV1_1 amendment][]により追加されました。)_
+{% amendment-disclaimer name="MPTokensV1_1" /%}
 
 ## MPTokenIssuance JSONの例
 

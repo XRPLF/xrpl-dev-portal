@@ -10,7 +10,7 @@ status: not_enabled
 
 The `Bridge` ledger entry represents a single cross-chain bridge that connects the XRP Ledger with another blockchain, such as its sidechain, and enables value in the form of XRP and other tokens (IOUs) to move efficiently between the two blockchains. You can create a bridge by sending an [XChainCreateBridge transaction][].
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example Bridge JSON
 

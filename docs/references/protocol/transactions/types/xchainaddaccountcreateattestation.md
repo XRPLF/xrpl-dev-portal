@@ -2,15 +2,13 @@
 seo:
     description: Provide an attestation that an XChainAccountCreateCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainAddAccountCreateAttestation
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L447-L464 "Source")
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-The `XChainAddAccountCreateAttestation` transaction provides an attestation from a witness server that an `XChainAccountCreateCommit` transaction occurred on the other chain.
+Provide an attestation from a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) that an `XChainAccountCreateCommit` transaction occurred on the other chain.
 
 The signature must be from one of the keys on the door's signer list at the time the signature was provided. If the signature list changes between the time the signature was submitted and the quorum is reached, the new signature set is used and some of the currently collected signatures may be removed.
 
@@ -18,6 +16,7 @@ Any account can submit signatures.
 
 {% admonition type="info" name="Note" %}The reward is only sent to accounts that have keys on the current list. A quorum of signers need to agree on the `SignatureReward`, the same way they need to agree on the other data. A single witness server can't provide an incorrect value for this in an attempt to collect a larger reward.{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example XChainAddAccountCreateAttestation JSON
 
@@ -50,7 +49,7 @@ Any account can submit signatures.
 ```
 
 
-## XChainAddAccountCreateAttestation Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                      | JSON Type           | [Internal Type][] | Required? | Description |
 |:---------------------------|:--------------------|:------------------|:----------|:------------|

@@ -2,16 +2,14 @@
 seo:
     description: エスクローされたXRPを受取人へ送金します。
 labels:
-  - Escrow
+    - Escrow
 ---
 # EscrowFinish
-
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
 エスクロー(保留中の支払い)から受取人へXRPを送金します。
 
-_[Escrow Amendment][]により追加されました。_
-
+{% amendment-disclaimer name="Escrow" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

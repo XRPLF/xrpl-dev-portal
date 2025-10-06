@@ -1,17 +1,15 @@
 ---
-html: escrow-object.html #escrow.html is taken by the concept page
-parent: ledger-entry-types.html
 seo:
     description: 条件付き決済のために保有されているXRPを含みます。
 labels:
-  - Escrow
+    - Escrow
 ---
 # Escrow
 [[ソース]](https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
 
-_（[Escrow Amendment][]により追加されました。）_
-
 `Escrow`レジャーエントリは特定の条件が満たされるまでXRPを保持する1つの[エスクロー](../../../../concepts/payment-types/escrow.md)を表します。
+
+{% amendment-disclaimer name="Escrow" /%}
 
 ## {% $frontmatter.seo.title %}のJSONの例
 

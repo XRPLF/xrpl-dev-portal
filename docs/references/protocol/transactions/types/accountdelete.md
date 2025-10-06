@@ -2,15 +2,14 @@
 seo:
     description: Delete an account.
 labels:
-  - Accounts
+    - Accounts
 ---
 # AccountDelete
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp "Source")
 
 An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry-types/accountroot.md) and any objects it owns in the XRP Ledger, if possible, sending the account's remaining XRP to a specified destination account. See [Deleting Accounts](../../../../concepts/accounts/deleting-accounts.md) for the requirements to delete an account.
 
-_(Added by the [DeletableAccounts amendment][].)_
+{% amendment-disclaimer name="DeletableAccounts" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

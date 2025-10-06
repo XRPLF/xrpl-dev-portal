@@ -2,15 +2,15 @@
 seo:
     description: Send funds to another account, convert between currencies, or create a new account by sending it XRP.
 labels:
-  - Payments
-  - XRP
-  - Cross-Currency
-  - Tokens
+   - Payments
+   - XRP
+   - Cross-Currency
+   - Tokens
 ---
 # Payment
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Payment.cpp "Source")
 
-A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
+Send value to an account. (Depending on the path taken, this can involve exchanges of several types of funds, all of which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
 
 Payments are also the only way to [create accounts](#creating-accounts).
 
@@ -40,12 +40,12 @@ Payments are also the only way to [create accounts](#creating-accounts).
 | Field            | JSON Type            | [Internal Type][] | Required? | Description |
 |:-----------------|:---------------------|:------------------|:----------|:------------|
 | `Amount`         | [Currency Amount][]  | Amount            | API v1: Yes | Alias to `DeliverMax`. |
-| `CredentialIDs`  | Array of Strings     | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. _(Requires the [Credentials amendment][]._ {% not-enabled /%})_ |
+| `CredentialIDs`  | Array of Strings     | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. {% amendment-disclaimer name="Credentials" /%} |
 | `DeliverMax`     | [Currency Amount][]  | Amount            | Yes       | [API v2][]: The maximum amount of currency to deliver. [Partial payments](#partial-payments) can deliver less than this amount and still succeed; other payments fail unless they deliver the exact amount. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" %}New in: rippled 2.0.0{% /badge %} |
 | `DeliverMin`     | [Currency Amount][]  | Amount            | No        | Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](#partial-payments). |
 | `Destination`    | String - [Address][] | AccountID         | Yes       | The account receiving the payment. |
 | `DestinationTag` | Number               | UInt32            | No        | Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
-| `DomainID`       | String - [Hash][]    | UInt256           | No        | The ledger entry ID of a permissioned domain. If this is a cross-currency payment, only use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) to convert currency. Both the sender and the recipient must have valid credentials that grant access to the specified domain. This field has no effect if the payment is not cross-currency. _(Requires the [PermissionedDEX amendment][] {% not-enabled /%})_ |
+| `DomainID`       | String - [Hash][]    | UInt256           | No        | The ledger entry ID of a permissioned domain. If this is a cross-currency payment, only use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md) to convert currency. Both the sender and the recipient must have valid credentials that grant access to the specified domain. This field has no effect if the payment is not cross-currency. {% amendment-disclaimer name="PermissionedDEX" %/} |
 | `InvoiceID`      | String - Hexadecimal | UInt256           | No        | Arbitrary 256-bit value representing a specific reason or identifier for this payment. |
 | `Paths`          | Array of path arrays | PathSet           | No        | _(Auto-fillable)_ Array of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
 | `SendMax`        | [Currency Amount][]  | Amount            | No        | Highest amount of source currency this transaction is allowed to cost, including [transfer fees](../../../../concepts/tokens/fungible-tokens/transfer-fees.md), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](../../../../concepts/transactions/transaction-cost.md). Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
@@ -145,11 +145,11 @@ In the above example with a ¥95/$15 offer and a ¥5/$2 offer, the situation is 
 
 ## MPT Payments
 
-_(Requires the [MPTokensV1 amendment][] {% not-enabled /%})_
-
 When you send a payment using [MPTs](/docs/concepts/tokens/fungible-tokens/multi-purpose-tokens), the _Amount_ field requires only the `mpt_issuance_id` and the `value`. The `MPTokenIssuanceID` is used to uniquely identify the MPT for the transaction.
 
 Version 1 MPTokens only support direct MPT payment between accounts. They cannot be traded in the decentralized exchange.
+
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ### Sample MPT Payment transaction
 
@@ -175,8 +175,6 @@ Version 1 MPTokens only support direct MPT payment between accounts. They cannot
 ```
 ## Credential IDs
 
-_(Requires the [Credentials amendment][] {% not-enabled /%})_
-
 You can send money to an account that uses [Deposit Authorization](../../../../concepts/accounts/depositauth.md) by providing the `CredentialIDs` field with an exact set of credentials that are preauthorized by the recipient. The set of credentials must match a [DepositPreauth entry](../../ledger-data/ledger-entry-types/depositpreauth.md) in the ledger.
 
 The credentials provided in the `CredentialIDs` field must all be valid, meaning:
@@ -191,6 +189,8 @@ If you provide credentials even though the destination account does not use Depo
 {% admonition type="info" name="Note" %}
 The `CredentialIDs` field is only used for deposit authorization, not for trading in a [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md), even though Permissioned DEXes also use credentials to grant access. To trade in a permissioned DEX, you use the `DomainID` field to specify a domain for which you hold valid credentials.
 {% /admonition %}
+
+{% amendment-disclaimer name="Credentials" /%}
 
 ## Special Case for Destination Accounts Below the Reserve
 

@@ -1,15 +1,10 @@
 ---
-html: decentralized-identifiers.html
-parent: accounts.html
 seo:
     description: 分散型IDは、検証可能な分散型デジタルIDを可能にします。
-status: not_enabled
 labels:
   - DID
 ---
 # 分散型ID
-
-_([DID Amendment][] {% not-enabled /%} が必要です。)_
 
 分散型ID(DID)は、検証可能なデジタルIDを可能にするWorld Wide Web Consortium(W3C)によって定義された新しいタイプの識別子です。DIDはDID所有者の完全な管理下にあり、中央管理レジストリ、IDプロバイダ、認証局から独立しています。
 
@@ -25,6 +20,7 @@ DIDの主な基本原則は以下の通りです。
 
 {% admonition type="info" name="注記" %}XRP LedgerにおけるDIDの実装は、[DID v1.0仕様](https://www.w3.org/TR/did-core/)の仕様に準拠しています。{% /admonition %}
 
+{% amendment-disclaimer name="DID" /%}
 
 ## 仕組み
 

@@ -2,13 +2,12 @@
 seo:
     description: Set mutable properties of a Multi-Purpose Token definition.
 labels:
-  - Multi-purpose Tokens, MPTs
-status: not_enabled
+    - Multi-purpose Tokens, MPTs
 ---
 # MPTokenIssuanceSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
 
-Use this transaction to update a mutable property for a Multi-purpose Token. The transaction flags determine which change(s) to apply.
+Update a mutable property of a [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md) issuance, including locking (freezing) or unlocking the tokens globally or for an individual holder.
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 

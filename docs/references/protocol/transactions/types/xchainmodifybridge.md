@@ -2,20 +2,19 @@
 seo:
     description: Modify the parameters of a cross-chain bridge.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainModifyBridge
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/TxFormats.cpp#L390-L397 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-The `XChainModifyBridge` transaction allows bridge managers to modify the parameters of the bridge. They can only change the `SignatureReward` and the `MinAccountCreateAmount`.
+Modify the parameters of a [cross-chain bridge](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). Only managers can send this transaction, and they can only change the `SignatureReward` and the `MinAccountCreateAmount`.
 
 This transaction must be sent by the door account and requires the entities that control the witness servers to coordinate and provide the signatures for this transaction. This coordination happens outside the ledger.
 
 {% admonition type="info" name="Note" %}You can't modify the signer list for the bridge with this transaction. The signer list is on the door account itself and is changed in the same way signer lists are changed on accounts (via a `SignerListSet` transaction).{% /admonition %}
 
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example XChainModifyBridge JSON
 
@@ -39,7 +38,7 @@ This transaction must be sent by the door account and requires the entities that
 ```
 
 
-## XChainModifyBridge Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field                    | JSON Type           | [Internal Type][] | Required? | Description |
 |:-------------------------|:--------------------|:------------------|:----------|-------------|

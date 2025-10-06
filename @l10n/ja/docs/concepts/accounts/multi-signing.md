@@ -24,7 +24,7 @@ labels:
 
 [SignerListSetトランザクション][]は、_署名者リスト_（自分のアドレスからのトランザクションを承認できるアドレスのセット）を定義します。署名者リストには、1～32のアドレスを含めることができます。このリストには、自分のアドレスを含めることはできず、重複して登録することはできません。リストの _Signer Weight_ と _Quorum_ の設定を使用することで、どのような組み合わせでどれだけの署名が必要かを制御することができます。
 
-_([ExpandedSignerList amendment][]により更新されました。)_
+{% amendment-disclaimer name="ExpandedSignerList" mode="updated" /%}
 
 ### Signer Weight
 
@@ -38,7 +38,7 @@ _([ExpandedSignerList amendment][]により更新されました。)_
 
 また、リスト内の各署名者のエントリに最大256ビットの任意のデータを追加することができます。このデータはネットワークで必要とされたり使用されたりすることはありませんが、スマートコントラクトや他のアプリケーションが署名者に関する他のデータを特定したり確認したりするために使用することができます。
 
-_([ExpandedSignerList amendment][]により追加されました。)_
+{% amendment-disclaimer name="ExpandedSignerList" /%}
 
 ### Signer WeightとQuorumの使用例
 

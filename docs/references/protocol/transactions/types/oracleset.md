@@ -2,14 +2,14 @@
 seo:
     description: Create or update a price oracle.
 labels:
-  - Oracle
+    - Oracle
 ---
 # OracleSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "Source")
 
-Creates a new `Oracle` ledger entry or updates the fields of an existing one, using the Oracle Document ID.
+Create or update a [price oracle](../../../../concepts/decentralized-storage/price-oracles.md). Only the owner of an existing price oracle can update it.
 
-_(Added by the [PriceOracle amendment][].)_
+{% amendment-disclaimer name="PriceOracle" /%}
 
 
 ## Example OracleSet JSON
@@ -40,9 +40,8 @@ _(Added by the [PriceOracle amendment][].)_
 
 | Field              | JSON Type | Internal Type | Required? | Description |
 |--------------------|-----------|---------------|-----------|-------------|
-| `Account`          | String    | AccountID     | Yes       | This account must match the account in the `Owner` field of the `Oracle` object. |
-| `OracleDocumentID` | Number    | UInt32        | Yes       | A unique identifier of the price oracle for the `Account`. |
-| `Provider`         | String    | Blob          | Variable  | An arbitrary value that identifies an oracle provider, such as Chainlink, Band, or DIA. This field is a string, up to 256 ASCII hex encoded characters (0x20-0x7E). This field is required when creating a new `Oracle` ledger entry, but is optional for updates. |
+| `OracleDocumentID` | Number    | UInt32        | Yes       | The identifying number of the price oracle, which must be unique per owner. |
+| `Provider`         | String    | Blob          | Variable  | An arbitrary value that identifies an oracle provider, such as Chainlink, Band, or DIA. This field is a string, up to 256 ASCII hex encoded characters (0x20-0x7E). This field is required when creating a new price oracle, but is optional for updates. |
 | `URI`              | String    | Blob          | No        | An optional Universal Resource Identifier to reference price data off-chain. This field is limited to 256 bytes. |
 | `LastUpdateTime`   | Number    | UInt32        | Yes       | The time the data was last updated, in seconds since the [UNIX Epoch](https://en.wikipedia.org/wiki/Unix_time). The value must be within 300 seconds (5 minutes) of the ledger's close time. |
 | `AssetClass`       | String    | Blob          | Variable  | Describes the type of asset, such as "currency", "commodity", or "index". This field is a string, up to 16 ASCII hex encoded characters (0x20-0x7E). This field is required when creating a new `Oracle` ledger entry, but is optional for updates. |

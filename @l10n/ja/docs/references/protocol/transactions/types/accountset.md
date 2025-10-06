@@ -34,10 +34,10 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | [`Domain`](#domain)       | 文字列           | Blob              |  _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。[256バイトを超える長さは使用できません。](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
 | `EmailHash`        | 文字列           | Hash128           |  _（省略可）_ アバターイメージの生成に使用されるメールアドレスのハッシュ。一般的に、クライアントは[Gravatar](http://en.gravatar.com/site/implement/hash/)を使用してこのイメージを表示しています。 |
 | `MessageKey`       | 文字列           | Blob              |  _（省略可）_ 暗号化されたメッセージをこのアカウントに送信するための公開鍵です。キーを設定するには、正確に33バイトである必要があり、最初のバイトはキーの種類を示します。secp256k1鍵の場合は`0x02`または`0x03`、Ed25519鍵の場合は`0xED`です。キーを削除するには、空の値を使用します。 |
-| `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md)ことができる別のアカウント。 _([NonFungibleTokensV1_1 amendment][]により追加されました.)_ |
+| `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md)ことができる別のアカウント。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | [`SetFlag`](#accountsetのフラグ)      | 数値           | UInt32            |  _（省略可）_ このアカウントについてオプションを有効にするための整数フラグ。 |
 | [`TransferRate`](#transferrate) | 符号なし整数 | UInt32            |  _（省略可）_ ユーザがこのアカウントのトークンを送金するときに請求される手数料。通貨単位の10億分の1で表現されます。手数料なしを意味する特殊なケースの`0`を除いて、`2000000000`より大きくしたり、`1000000000`より小さくしたりすることはできません。 |
-| [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です_（[TickSize Amendment][]により追加されました）。_ |
+| [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です{% amendment-disclaimer name="TickSize" /%} |
 | `WalletLocator`    | 文字列           | UInt256           |  _（省略可）_ 任意の256ビット値です。指定された場合、この値はアカウントの設定の一部として保存さ れますが、固有の定義や要件を持ちません。 |
 | `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません |
 
@@ -73,15 +73,15 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | フラグの名前                        | 10進値 | 説明   |
 |:----------------------------------|:------|:--------------|
 | `asfAccountTxnID`                 | 5     | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](../common-fields.md#accounttxnid)については必須です。 |
-| `asfAllowTrustLineClawback`       | 16      | アカウントの発行したトークンを回収する機能を有効にします。 _（[Clawback Amendment][]により追加されました）。_　所有者ディレクトリが存在する場合はClawback機能を有効にできません。つまり、トラストラインやオファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。このフラグは、有効にした後は無効にできません。|
-| `asfAuthorizedNFTokenMinter`      | 10    | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_ |
+| `asfAllowTrustLineClawback`       | 16      | アカウントの発行したトークンを回収する機能を有効にします。 {% amendment-disclaimer name="Clawback" /%}　所有者ディレクトリが存在する場合はClawback機能を有効にできません。つまり、トラストラインやオファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。このフラグは、有効にした後は無効にできません。|
+| `asfAuthorizedNFTokenMinter`      | 10    | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `asfDefaultRipple`                | 8     | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。 |
-| `asfDepositAuth`                  | 9     | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
+| `asfDepositAuth`                  | 9     | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします {% amendment-disclaimer name="DepositAuth" /%}  |
 | `asfDisableMaster`                | 4     | マスターキーペアの使用を禁止します。[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)や[署名者リスト](../../../../concepts/accounts/multi-signing.md)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
-| `asfDisallowIncomingCheck`        | 13    | チェックの着信をブロックします。_([DisallowIncoming amendment][] が必要です。)_ |
-| `asfDisallowIncomingNFTokenOffer` | 12    | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
-| `asfDisallowIncomingPayChan`      | 14    | ペイメントチャネルの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
-| `asfDisallowIncomingTrustline`    | 15    | トラストラインの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
+| `asfDisallowIncomingCheck`        | 13    | チェックの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
+| `asfDisallowIncomingNFTokenOffer` | 12    | NFTokenOffersの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
+| `asfDisallowIncomingPayChan`      | 14    | ペイメントチャネルの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
+| `asfDisallowIncomingTrustline`    | 15    | トラストラインの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
 | `asfDisallowXRP`                  | 3     | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
 | `asfGlobalFreeze`                 | 7     | このアカウントによって発行されたすべての資産を[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
 | `asfNoFreeze`                     | 6     | [個々のトラストラインのフリーズまたはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |

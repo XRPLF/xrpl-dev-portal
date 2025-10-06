@@ -73,7 +73,7 @@ V<sub>a</sub>は、サーバ側のコンセンサス見解と一致した過去2
 
 1. 前のフラグレジャーで予定されていたネガティブUNLの変更は、次のレジャーバージョンから有効となる。このフラグレジャーの検証のための合意プロセスそのものは、予定されていた変更を利用しない。
 
-    {% admonition type="info" name="注記" %}これは、[トランザクション](../transactions/index.md)や[疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)を行わずにレジャーの状態データを変更する唯一の機会です。{% /admonition %}
+    {% admonition type="info" name="注記" %}これは、[トランザクション](../transactions/index.md)や[疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/index.md)を行わずにレジャーの状態データを変更する唯一の機会です。{% /admonition %}
 
 2. ネガティブUNLが満杯でない場合、各サーバは信頼度50%未満のバリデータの中から、**最大1つ**のバリデータをネガティブUNLに追加することを提案する。
 3. ネガティブUNLが空でない場合、各サーバはネガティブUNLから**最大1つ**のバリデータを削除することを提案する。サーバがバリデータをネガティブUNLから削除することを提案できる理由は2つある。
@@ -81,7 +81,7 @@ V<sub>a</sub>は、サーバ側のコンセンサス見解と一致した過去2
     - 自身のUNLにそのバリデータを持たない。(バリデータが永久に停止した場合、このルールは、サーバの設定済みUNLからバリデータが削除された後に、オンレジャーのネガティブUNLからバリデータが削除されることを確実にする)。
 4. ネガティブUNLの変更案がコンセンサスに達した場合、その変更は次のフラグレジャーから適用される予定である。この方法で最大1つの追加と1つの削除をスケジュールすることができる。
 
-ネガティブUNLにバリデータを追加したり削除したりする提案は[UNLModify pseudo-transactions][]の形式を取る。それぞれの擬似トランザクションは他の[擬似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)と同じように合意形成プロセスによって合意を得るか捨てられるかが決定される。言い換えると、あるバリデータがネガティブUNLに追加されたり削除されたりするためには、サーバの総意として同じ変更を提案する必要がある。
+ネガティブUNLにバリデータを追加したり削除したりする提案は[UNLModify pseudo-transactions][]の形式を取る。それぞれの擬似トランザクションは他の[擬似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/index.md)と同じように合意形成プロセスによって合意を得るか捨てられるかが決定される。言い換えると、あるバリデータがネガティブUNLに追加されたり削除されたりするためには、サーバの総意として同じ変更を提案する必要がある。
 
 ネガティブUNLの予定された有効な変更は、レジャーの状態データの中の[ネガティブUNLオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)に追跡される。
 

@@ -13,7 +13,7 @@ labels:
 
 The {% code-page-name /%} method gets information about an [Automated Market Maker (AMM)](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) instance.
 
-_(Added by the [AMM amendment][])_
+{% amendment-disclaimer name="AMM" /%}
 
 
 ### Request Format

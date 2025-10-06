@@ -13,9 +13,9 @@ Every transaction has the same set of common fields, plus additional fields base
 | `Account`            | String - [Address][] | AccountID         | Yes       | The [account](../../../concepts/accounts/index.md) that initiated the transaction. |
 | `TransactionType`    | String               | UInt16            | Yes       | The type of transaction. Valid [transaction types](types/index.md) include: `Payment`, `OfferCreate`, `TrustSet`, and many others. |
 | `Fee`                | String - Number      | Amount            | Yes; [auto-fillable][] | Integer amount of XRP, in drops, to be destroyed as a cost for sending this transaction. Some transaction types have different minimum requirements. See [Transaction Cost][] for details. |
-| `Sequence`           | Number               | UInt32            | Yes; [auto-fillable][] | The [sequence number](../data-types/basic-data-types.md#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](../../../concepts/accounts/tickets.md) instead _(Added by the [TicketBatch amendment][].)_. |
+| `Sequence`           | Number               | UInt32            | Yes; [auto-fillable][] | The [sequence number](../data-types/basic-data-types.md#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](../../../concepts/accounts/tickets.md) instead {% amendment-disclaimer name="TicketBatch" /%}. |
 | [`AccountTxnID`](#accounttxnid) | String - [Hash][] | UInt256   | No        | Hash value identifying another transaction. If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
-| [`Delegate`](#delegate) | String - [Address][] | AccountID      | No        | A delegate account that is sending the transaction on behalf of the `Account`. _(Requires the [PermissionDelegation amendment][] {% not-enabled /%})_ |
+| [`Delegate`](#delegate) | String - [Address][] | AccountID      | No        | A delegate account that is sending the transaction on behalf of the `Account`. {% amendment-disclaimer name="PermissionDelegation" /%} |
 | [`Flags`](#flags-field) | Number            | UInt32            | No        | Set of bit-flags for this transaction. |
 | `LastLedgerSequence` | Number               | UInt32            | No; [auto-fillable][] | Highest ledger index this transaction can appear in. Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected. See [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md) for more details. |
 | [`Memos`](#memos-field) | Array of Objects  | Array             | No        | Additional arbitrary information attached to this transaction. |
@@ -67,7 +67,7 @@ If the `Delegate` field is provided, this transaction is being sent by a differe
 
 Sending a transaction this way is only possible if the delegating account has granted the appropriate transaction permissions to the delegate account. For more information, see [Permission Delegation](/docs/concepts/accounts/permission-delegation.md).
 
-_(Requires the [PermissionDelegation amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="PermissionDelegation" /%}
 
 ## Flags Field
 

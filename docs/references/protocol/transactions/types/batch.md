@@ -2,15 +2,15 @@
 seo:
     description: Create and submit a batch of up to 8 transactions that succeed or fail atomically.
 labels:
-  - Transaction Sending
+    - Transaction Sending
 status: not_enabled
 ---
 # Batch
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Batch.cpp "Source")
 
-The `Batch` transaction submits up to eight transactions as a single unit. `Batch` transactions are executed atomically in one of four modes: All or Nothing, Only One, Until Failure, and Independent.
+Submit up to eight transactions as a single [batch](../../../../concepts/transactions/batch-transactions.md). The transactions in the batch are executed atomically in one of four modes: All or Nothing, Only One, Until Failure, or Independent.
 
-_(Requires the [Batch amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="Batch" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

@@ -104,8 +104,8 @@ labels:
 | `LedgerEntryType`   | 文字列    | UInt16       | はい   | 値が`0x0064`（文字列`DirectoryNode`にマッピング）の場合は、このオブジェクトがディレクトリの一部であることを示します。 |
 | `NFTokenID`         | 文字列    | UInt256      | いいえ |(NFTオファーディレクトリのみ) 購入または売却オファーに紐づくNFTのID。. |
 | `Owner`             | 文字列    | AccountID    | いいえ | （所有者ディレクトリのみ）このディレクトリ内のオブジェクトを所有するアカウントのアドレス。 |
-| `PreviousTxnID`     | 文字列    | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
-| `PreviousTxnLgrSeq` | 数値      | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnID`     | 文字列    | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| `PreviousTxnLgrSeq` | 数値      | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `RootIndex`         | 文字列    | UInt256      | はい   | このディレクトリのルートオブジェクトのID。 |
 | `TakerGetsCurrency` | 文字列    | UInt160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額の通貨コード。 |
 | `TakerGetsIssuer`   | 文字列    | UInt160      | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額のイシュアー。 |

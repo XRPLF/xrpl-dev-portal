@@ -33,7 +33,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `Account`           | String - [Address][] | AccountID     | Yes       | The owner (holder) of these MPTs. |
 | `MPTokenIssuanceID` | String - Hexadecimal | UInt192       | Yes       | The `MPTokenIssuance` identifier. |
 | `MPTAmount`         | String - Number      | UInt64        | Yes       | The amount of tokens currently held by the owner. The minimum is 0 and the maximum is 2<sup>63</sup>-1. |
-| `LockedAmount`      | String - Number      | UInt64        | No        | The amount of tokens currently locked up (for example, in escrow or payment channels). _(Requires the [TokenEscrow amendment][] {% not-enabled /%}.)_ |
+| `LockedAmount`      | String - Number      | UInt64        | No        | The amount of tokens currently locked up (for example, in escrow). {% amendment-disclaimer name="TokenEscrow" /%} |
 | `PreviousTxnID`     | String - [Hash][]    | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number               | UInt32        | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
 | `OwnerNode`         | String               | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |

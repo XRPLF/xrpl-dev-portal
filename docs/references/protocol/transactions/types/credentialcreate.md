@@ -1,13 +1,13 @@
 ---
 seo:
     description: Provisionally issue a credential to a subject account.
-status: not_enabled
 ---
 # CredentialCreate
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")
 
-A CredentialCreate transaction creates a credential in the ledger. The issuer of the credential uses this transaction to provisionally issue a credential. The credential is not valid until the subject of the credential accepts it with a [CredentialAccept transaction][].
+Provisionally issue a [credential](../../../../concepts/decentralized-storage/credentials.md) in the ledger. The credential is not valid until the subject of the credential accepts it with a [CredentialAccept transaction][].
 
-_(Requires the [Credentials amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="Credentials" /%}
 
 ## Example CredentialCreate JSON
 
@@ -23,8 +23,7 @@ _(Requires the [Credentials amendment][] {% not-enabled /%}.)_
 }
 ```
 
-
-## CredentialCreate Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 In addition to the [common fields][], CredentialCreate transactions use the following fields:
 
@@ -48,7 +47,7 @@ Besides errors that can occur for all transactions, CredentialCreate transaction
 | `tecNO_TARGET` | The account specified in the `Subject` field is not a funded account in the ledger. |
 | `temDISABLED` | The related amendment is not enabled. |
 | `temINVALID_ACCOUNT_ID` | The provided `Subject` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
-| `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. _(Requires the [fixInvalidTxFlags amendment][] {% not-enabled /%})_ |
+| `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. {% amendment-disclaimer name="fixInvalidTxFlags" /%} |
 
 ## See Also
 

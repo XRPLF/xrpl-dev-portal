@@ -1,7 +1,6 @@
 ---
 seo:
     description: Create and manage credentials on the blockchain, which can provide authorization for payments or other features, while respecting privacy and decentralization.
-status: not_enabled
 ---
 # Credentials
 

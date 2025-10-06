@@ -226,7 +226,8 @@ function AmendmentBadge(props: { amendment: Amendment }) {
 
 export function AmendmentDisclaimer(props: {
   name: string,
-  compact: boolean
+  compact: boolean,
+  mode: string
 }) {
   const [amendmentStatus, setStatus] = React.useState<Amendment | null>(null)
   const [loading, setLoading] = React.useState(true)
@@ -308,6 +309,30 @@ export function AmendmentDisclaimer(props: {
         {" "}
         <AmendmentBadge amendment={amendmentStatus} />
       </>
+    )
+  }
+
+  if (props.mode === "updated") {
+    return (
+      <p><em>(
+        {
+          amendmentStatus.date ? (
+            <>
+            {translate("component.amendment-status.updated.1", "Updated by the ")}{link()}
+            {translate("component.amendment-status.updated.2", ".")}
+            {" "}
+            <AmendmentBadge amendment={amendmentStatus} />
+            </>
+          ) : (
+            <>
+            {translate("component.amendment-status.updates.1", "The ")}{link()}
+            {translate("component.amendment-status.updates.2", "updates this.")}
+            {" "}
+            <AmendmentBadge amendment={amendmentStatus} />
+            </>
+          )
+        }
+      )</em></p>
     )
   }
   

@@ -1,17 +1,13 @@
 ---
-html: witness-servers.html
-parent: xrpl-sidechains.html
 seo:
     description: A witness server is a light-weight server that witnesses and signs transactions between the XRP Ledger and another chain.
 status: not_enabled
 labels:
-  - Blockchain
-  - Interoperability
+    - Blockchain
+    - Interoperability
 ---
 # Witness Servers
 [[Source]](https://github.com/seelabs/xbridge_witness "Source")
-
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
 A _witness server_ acts as a neutral witness for transactions between a locking chain and an issuing chain. It listens to the door accounts on both sides of a bridge and signs attestations that confirm a transaction occurred. They are essentially acting as an oracle to “prove” that value was locked or burned on a source account, which allows the recipient to then claim (via minting or unlocking) the equivalent funds on the destination account.
 
@@ -23,6 +19,8 @@ The bridge between the locking chain and the issuing chain includes the followin
 Anyone can run a witness server. However, the burden is on the participants of the issuing chain to evaluate the reliability of witness servers. If you run a witness server, you must also run a `rippled` node and sync it to the chain the witness server needs access to.
 
 {% admonition type="info" name="Note" %}Issuing chains may choose to configure a bridge with only one witness server initially and run the witness server itself. This strategy is helpful in the initial period, when the issuing chain hasn't established itself yet in the marketplace.{% /admonition %}
+
+{% amendment-disclaimer name="XChainBridge" /%}
 
 
 ## Witness Server Configuration

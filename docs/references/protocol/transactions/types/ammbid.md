@@ -2,7 +2,7 @@
 seo:
     description: Bid on an Automated Market Maker's auction slot, which grants a discounted fee.
 labels:
-  - AMM
+    - AMM
 ---
 # AMMBid
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMBid.cpp "Source")
@@ -11,7 +11,7 @@ Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exc
 
 You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.
 
-_(Added by the [AMM amendment][].)_
+{% amendment-disclaimer name="AMM" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

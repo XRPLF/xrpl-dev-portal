@@ -10,7 +10,7 @@ labels:
 
 The `NFToken` object represents a single non-fungible token (NFT). It is not stored on its own, but is contained in a [NFTokenPage object][] alongside other `NFToken` objects.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

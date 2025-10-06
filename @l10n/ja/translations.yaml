@@ -143,6 +143,8 @@ component.amendment-status.requires.1: " "
 component.amendment-status.requires.2: が必要です。
 component.amendment-status.added.1: " "
 component.amendment-status.added.2: により追加されました。
+component.amendment-status.updated.1: " "
+component.amendment-status.updated.2: により更新されました。
 
 # Amendment tracker translations
 amendment.loading: ロード中Amendments...

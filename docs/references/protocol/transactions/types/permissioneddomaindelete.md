@@ -2,15 +2,16 @@
 seo:
     description: Delete a permissioned domain.
 labels:
-  - Compliance
-  - Permissioned Domains
+    - Compliance
+    - Permissioned Domains
+status: not_enabled
 ---
 # PermissionedDomainDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp "Source")
 
 Delete a [permissioned domain][] that you own.
 
-_(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="PermissionedDomains" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

@@ -2,14 +2,14 @@
 seo:
     description: Add more funds to a payment channel.
 labels:
-  - Payment Channels
+    - Payment Channels
 ---
 # PaymentChannelFund
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PayChan.cpp "Source")
 
 Add an additional amount to an open [payment channel](../../../../concepts/payment-types/payment-channels.md), and optionally update the expiration time of the channel. Only the source account of the channel can use this transaction.
 
-_(Added by the [PayChan amendment][].)_
+{% amendment-disclaimer name="PayChan" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

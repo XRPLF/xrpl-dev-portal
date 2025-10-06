@@ -1,13 +1,13 @@
 ---
 seo:
     description: Remove a credential from the ledger, effectively revoking it.
-status: not_enabled
 ---
 # CredentialDelete
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")
 
-A CredentialDelete transaction removes a credential from the ledger, effectively revoking it. Users may also want to delete an unwanted credential to reduce their [reserve requirement](../../../../concepts/accounts/reserves.md).
+Remove a [credential](../../../../concepts/decentralized-storage/credentials.md) from the ledger, effectively revoking it. Users may also want to delete an unwanted credential to reduce their [reserve requirement](../../../../concepts/accounts/reserves.md).
 
-_(Requires the [Credentials amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="Credentials" /%}
 
 ## Example CredentialDelete JSON
 
@@ -23,8 +23,7 @@ _(Requires the [Credentials amendment][] {% not-enabled /%}.)_
 }
 ```
 
-
-## CredentialDelete Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 In addition to the [common fields][], CredentialDelete transactions use the following fields:
 
@@ -47,7 +46,7 @@ This transaction looks for a [Credential ledger entry](../../ledger-data/ledger-
 | `temINVALID_ACCOUNT_ID` | A provided `Subject` or `Issuer` field is invalid. For example, it contains [ACCOUNT_ZERO](../../../../concepts/accounts/addresses.md#special-addresses). |
 | `tecNO_PERMISSION` | The sender is neither the issuer nor subject of the credential, and the credential is not expired. |
 | `tecNO_ENTRY` | The specified credential does not exist in the ledger. |
-| `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. _(Requires the [fixInvalidTxFlags amendment][] {% not-enabled /%})_ |
+| `temINVALID_FLAG` | The transaction includes a [Flag](../common-fields.md#flags-field) that does not exist, or includes a contradictory combination of flags. {% amendment-disclaimer name="fixInvalidTxFlags" /%} |
 
 ## See Also
 

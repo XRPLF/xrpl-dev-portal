@@ -2,14 +2,16 @@
 seo:
     description: Mint a Non-Fungible Token (NFT).
 labels:
-  - Non-fungible Tokens, NFTs
+    - Non-fungible Tokens, NFTs
 ---
 # NFTokenMint
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
 
-The `NFTokenMint` transaction creates a non-fungible token and adds it to the relevant [NFTokenPage object][] of the `NFTokenMinter` as an [NFToken][] object. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
+Create a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). This is the only opportunity the minter has to specify any token fields and flags that are immutable. This transaction can be sent by the NFT's issuer or by an [authorized minter](../../../../concepts/tokens/nfts/authorizing-another-minter.md).
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+If successful, the transaction adds an [NFToken][] object to one of the minter's [NFTokenPage ledger entries][NFTokenPage entry].
+
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

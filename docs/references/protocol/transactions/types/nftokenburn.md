@@ -2,18 +2,16 @@
 seo:
     description: Permanently destroy an NFT.
 labels:
-  - Non-fungible Tokens, NFTs
+    - Non-fungible Tokens, NFTs
 ---
 # NFTokenBurn
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenBurn.cpp "Source")
 
-The `NFTokenBurn` transaction is used to remove a `NFToken` object from the `NFTokenPage` in which it is being held, effectively removing the token from the ledger (_burning_ it).
+Burn (destroy) a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). The NFT's current holder can always burn it, and if the token's **Burnable** flag is enabled, the issuer and their authorized minter (if they have one) can also burn the NFT.
 
-The sender of this transaction must be the owner of the `NFToken` to burn; or, if the `NFToken` has the `lsfBurnable` flag enabled, can be the issuer or the issuer's authorized `NFTokenMinter` account instead.
+If the transaction succeeds, it removes the corresponding [NFToken][] object from the [NFTokenPage entry][] that was storing it. This can cause the pages of an NFT directory to be consolidated.
 
-If this operation succeeds, the corresponding `NFToken` is removed. If this operation empties the `NFTokenPage` holding the `NFToken` or results in consolidation, thus removing a `NFTokenPage`, the owner’s reserve requirement is reduced by one.
-
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+{% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

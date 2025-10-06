@@ -2,15 +2,16 @@
 seo:
     description: Create or update a permissioned domain.
 labels:
-  - Compliance
-  - Permissioned Domains
+    - Compliance
+    - Permissioned Domains
+status: not_enabled
 ---
 # PermissionedDomainSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainSet.cpp "Source")
 
 Create a [permissioned domain][], or modify one that you own.
 
-_(Requires the [PermissionedDomains amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="PermissionedDomains" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

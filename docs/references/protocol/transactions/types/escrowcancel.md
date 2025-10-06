@@ -2,15 +2,14 @@
 seo:
     description: Cancel an expired escrow, returning the funds to the sender.
 labels:
-  - Escrow
+    - Escrow
 ---
 # EscrowCancel
-
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
-Return escrowed XRP to the sender.
+Return funds from an expired [escrow](../../../../concepts/payment-types/escrow.md) to its sender.
 
-_(Added by the [Escrow amendment][].)_
+{% amendment-disclaimer name="Escrow" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

@@ -11,7 +11,7 @@ labels:
 
 AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
 
-_([AMM amendment][]により追加されました。)_
+{% amendment-disclaimer name="AMM" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

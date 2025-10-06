@@ -1,18 +1,15 @@
 ---
-html: amm.html
-parent: ledger-entry-types.html
 seo:
     description: 自動マーケットメーカー（AMM）インスタンスの定義と詳細。
 labels:
-  - AMM
+    - AMM
 ---
 # AMM
 [[ソース]](https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275 "Source")
 
-_([AMM amendment][]により追加されました。)_
-
 `AMM`レジャーエントリは、単一の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを表します。これは常に[特殊なAccountRootエントリ](accountroot.md#ammの特殊なaccountrootエントリ)と対になっています。
 
+{% amendment-disclaimer name="AMM" /%}
 
 ## AMMのJSONの例
 
@@ -70,8 +67,8 @@ _([AMM amendment][]により追加されました。)_
 | `Account`           | 文字列       | AccountID    | はい   | このAMMの資産を保有する[特殊なアカウント](accountroot.md#ammの特殊なaccountrootエントリ)のアドレス。 |
 | `AuctionSlot`       | オブジェクト | Object     | いいえ | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
 | `LPTokenBalance`    | [通貨額][]   | Amount       | はい   | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
-| `PreviousTxnID`     | 文字列       | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
-| `PreviousTxnLgrSeq` | 数値         | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。_（[fixPreviousTxnID amendment][]により追加されました。）_ |
+| `PreviousTxnID`     | 文字列       | UInt256      | いいえ | このエントリを最後に変更したトランザクションの識別ハッシュ。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| `PreviousTxnLgrSeq` | 数値         | UInt32       | いいえ | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `TradingFee`        | 数値         | UInt16       | はい   | AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。 |
 | `VoteSlots`         | 配列         | Array      | いいえ | プールの取引手数料に関する投票を表す、投票オブジェクトのリスト。|
 

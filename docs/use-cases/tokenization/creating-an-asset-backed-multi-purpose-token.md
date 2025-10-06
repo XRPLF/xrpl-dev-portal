@@ -2,12 +2,10 @@
 seo:
     description: Issue an asset-backed token such as a US Treasury bill using multi-purpose tokens.
 labels:
-  - Tokens
-  - MPT
+    - Tokens
+    - MPT
 ---
 # Creating an Asset-backed Multi-purpose Token
-
-{% amendment-disclaimer name="MPTokensV1" /%}
 
 _As a financial professional, I want to use multi-purpose tokens to create an asset-backed token in order to profit from resale transactions._
 
@@ -20,6 +18,8 @@ A multi-purpose token (MPT) is a compact and flexible object that offers the bes
 - MPTs also allow advanced compliance features.
 
 To learn more, see [Multi-purpose Tokens](../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md).
+
+{% amendment-disclaimer name="MPTokensV1" /%}
 
 ## MPT Generator
 

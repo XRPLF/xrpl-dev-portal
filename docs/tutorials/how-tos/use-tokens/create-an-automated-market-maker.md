@@ -1,22 +1,20 @@
 ---
-parent: use-tokens.html
 seo:
     description: Set up an Automated Market Maker (AMM)
 embed_xrpl_js: true
-status: not_enabled
 filters:
   - interactive_steps
 labels:
-  - Decentralized Exchange
-  - Tokens
-  - AMM
+    - Decentralized Exchange
+    - Tokens
+    - AMM
 steps: ['Connect', 'Generate', 'Acquire tokens', 'Check for AMM', 'Look up AMMCreate cost', 'Create AMM', 'Check AMM info', 'Check trust lines']
 ---
 # Create an Automated Market Maker
 
-_(Added by the [AMM amendment][])_
-
 An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
+
+{% amendment-disclaimer name="AMM" /%}
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>

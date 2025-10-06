@@ -14,7 +14,7 @@ You can create a new `XChainOwnedCreateAccountClaimID` entry by sending an [XCha
 
 An `XChainOwnedCreateAccountClaimID` ledger entry is destroyed when all the attestations have been received and the funds have transferred to the new account.
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="XChainBridge" /%}
 
 
 ## Example XChainOwnedCreateAccountClaimID JSON

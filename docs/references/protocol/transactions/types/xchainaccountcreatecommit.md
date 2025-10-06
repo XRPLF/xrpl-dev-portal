@@ -2,20 +2,18 @@
 seo:
     description: Create an account on another chain to serve as a door account for a cross-chain bridge.
 labels:
-  - Interoperability
+    - Interoperability
 status: not_enabled
 ---
 # XChainAccountCreateCommit
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L466-L474 "Source")
 
-_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
-
-This transaction can only be used for XRP-XRP bridges.
-
-The `XChainAccountCreateCommit` transaction creates a new account for a witness server to submit transactions on an issuing chain.
+Create a new account for a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) to submit transactions on an issuing chain. This transaction can only be used for XRP-XRP bridges.
 
 {% admonition type="danger" name="Warning" %}This transaction should only be executed if the witness attestations will be reliably delivered to the destination chain. If the signatures aren't delivered, then account creation will be blocked until attestations are received. This can be used maliciously; to disable this transaction on XRP-XRP bridges, omit the bridge's `MinAccountCreateAmount` field.{% /admonition %}
 
+
+{% amendment-disclaimer name="XChainBridge" /%}
 
 ## Example XChainAccountCreateCommit JSON
 
@@ -40,7 +38,7 @@ The `XChainAccountCreateCommit` transaction creates a new account for a witness 
 ```
 
 
-## XChainAccountCreateCommit Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field             | JSON Type           | [Internal Type][] | Required? | Description |
 |:------------------|:--------------------|:------------------|:----------| :-----------|

@@ -447,7 +447,7 @@
                     - page: docs/references/protocol/transactions/types/xchaincreatebridge.md
                     - page: docs/references/protocol/transactions/types/xchaincreateclaimid.md
                     - page: docs/references/protocol/transactions/types/xchainmodifybridge.md
-                - page: docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md
+                - page: docs/references/protocol/transactions/pseudo-transaction-types/index.md
                   expanded: false
                   items:
                     - page: docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md

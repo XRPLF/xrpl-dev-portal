@@ -1,18 +1,16 @@
 ---
-html: unlmodify.html
-parent: pseudo-transaction-types.html
 seo:
     description: 現在オフラインとみなされている信頼できるバリデータのリストを変更します。
 labels:
-  - ブロックチェーン
+    - ブロックチェーン
 ---
 # UNLModify
 
-_([NegativeUNL amendment][]により追加されました)_
-
-`UNLModify`[疑似トランザクション](pseudo-transaction-types.md)は[Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
+`UNLModify`[疑似トランザクション](./index.md)は[Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
 
 {% admonition type="info" name="注記" %}擬似トランザクションを送信することはできませんが、台帳を処理する際に擬似トランザクションを発見することがあります。{% /admonition %}
+
+{% amendment-disclaimer name="NegativeUNL" /%}
 
 ## {% $frontmatter.seo.title %} JSONの例
 
