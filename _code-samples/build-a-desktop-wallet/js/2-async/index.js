@@ -27,7 +27,7 @@ const createWindow = () => {
 // Step 2 changes - main whenReady function - start
 /**
  * Create an XRPL client, subscribe to 'ledger' events, and broadcast those by
- * dispatching an 'update-ledger-data' event to the frontend
+ * dispatching an 'update-ledger-data' event to the frontend.
  *
  * @returns {Promise<void>}
  */

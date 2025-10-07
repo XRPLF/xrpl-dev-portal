@@ -22,7 +22,7 @@ You can find the complete source code for all of this tutorial's examples in the
 
 ## Rationale
 
-This tutorial will take you through the process of creating a XRP Wallet application from scratch. It begins with a "Hello World"-like example with minimal functionality, and adds more features in each step.
+This tutorial takes you through the process of creating an XRP Wallet application from scratch. It begins with a "Hello World"-like example with minimal functionality, and adds more features in each step.
 
 ## Goals
 

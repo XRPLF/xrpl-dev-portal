@@ -5,7 +5,7 @@ const path = require('path')
 /**
  * Main function: create application window, preload the code to communicate
  * between the renderer Process and the main Process, load a layout,
- * and perform the main logic
+ * and perform the main logic.
  */
 const createWindow = () => {
     // Create the application window
