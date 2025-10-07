@@ -60,12 +60,6 @@ scripts:
     - src: ./static/vendor/bootstrap.min.js
     - src: ./static/js/osano.js
       type: text/javascript
-  body:
-    - src: ./static/js/xrplai-config.js
-      id: xrplai-options
-    - src: https://www.unpkg.com/@xrpl/ai-web/dist/init.js
-      type: module
-      id: initjs
 links:
   - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
     rel: stylesheet
@@ -76,8 +70,6 @@ links:
   - href: ./static/css/devportal2024-v1.css
     rel: stylesheet
   - href: ./static/css/font-awesome.min.css
-    rel: stylesheet
-  - href: https://www.unpkg.com/@xrpl/ai-css/xrplai.css
     rel: stylesheet
 
 logo:
