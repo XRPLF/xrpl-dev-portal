@@ -1261,6 +1261,28 @@ const events = [
     image: conference,
     end_date: "September 21, 2025",
   },
+  {
+    name: "IXH25 - Italian XRPL Hackathon 2025",
+    description:
+      "A 3-day hackathon in Rome on cryptography and blockchain, featuring tracks on advanced cryptography and XRPL applications. Organized by XRPL Commons and partners, the event offers a €10,000 prize pool, includes seminars, coding and pitch sessions, and provides support for students.",
+    type: "hackathon",
+    link: "https://luma.com/llwjrmcx",
+    location: "Rome, Italy",
+    date: "November 07, 2025",
+    image: hackathon,
+    end_date: "November 08, 2025",
+  },
+  {
+    name: "Vega House Hackathon",
+    description:
+      "The Vega House XRPL Hackathon is calling all developers, designers, and innovators to create incredible solutions on the XRP Ledger (XRPL).",
+    type: "hackathon",
+    link: "https://xrpl.vegahacks.xyz/",
+    location: "Virtual",
+    date: "October 01, 2025",
+    image: hackathon,
+    end_date: "November 14, 2025",
+  },
 ];
 
 
