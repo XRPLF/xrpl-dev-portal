@@ -9,7 +9,7 @@ const xrpl = require("xrpl");
  * @returns {Promise<*>}
  */
 const sendXrp = async (paymentData, client, wallet) => {
-    // Reference: https://xrpl.org/submit.html#request-format-1
+    // Reference: https://xrpl.org/docs/references/protocol/transactions/types/payment
     const paymentTx = {
         "TransactionType": "Payment",
         "Account": wallet.address,

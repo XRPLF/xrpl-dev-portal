@@ -24,9 +24,10 @@ const createWindow = () => {
     return appWindow
 }
 
+// Step 2 changes - main whenReady function - start
 /**
- * This function creates a XRPL client, subscribes to 'ledger' events from the XRPL and broadcasts those by
- * dispatching the 'update-ledger-data' event which will be picked up by the frontend
+ * Create an XRPL client, subscribe to 'ledger' events, and broadcast those by
+ * dispatching an 'update-ledger-data' event to the frontend.
  *
  * @returns {Promise<void>}
  */
@@ -38,7 +39,7 @@ const main = async () => {
     await client.connect()
 
     // Subscribe client to 'ledger' events
-    // Reference: https://xrpl.org/subscribe.html
+    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe
     await client.request({
         "command": "subscribe",
         "streams": ["ledger"]
@@ -51,3 +52,4 @@ const main = async () => {
 }
 
 app.whenReady().then(main)
+// Step 2 changes - main whenReady function - end

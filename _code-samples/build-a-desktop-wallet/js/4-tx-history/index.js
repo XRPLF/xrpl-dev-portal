@@ -30,14 +30,14 @@ const main = async () => {
 
         await client.connect()
 
-        // Reference: https://xrpl.org/subscribe.html
+        // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe
         await client.request({
             "command": "subscribe",
             "streams": ["ledger"],
             "accounts": [address]
         })
 
-        // Reference: https://xrpl.org/subscribe.html#ledger-stream
+        // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/subscription-methods/subscribe#ledger-stream
         client.on("ledgerClosed", async (rawLedgerData) => {
             const ledger = prepareLedgerData(rawLedgerData)
             appWindow.webContents.send('update-ledger-data', ledger)
@@ -45,7 +45,7 @@ const main = async () => {
 
         // Wait for transaction on subscribed account and re-request account data
         client.on("transaction", async (transaction) => {
-            // Reference: https://xrpl.org/account_info.html
+            // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info
             const accountInfoRequest = {
                 "command": "account_info",
                 "account": address,
@@ -61,7 +61,7 @@ const main = async () => {
         })
 
         // Initial Account Request -> Get account details on startup
-        // Reference: https://xrpl.org/account_info.html
+        // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info
         const accountInfoResponse = await client.request({
             "command": "account_info",
             "account": address,
@@ -71,7 +71,7 @@ const main = async () => {
         appWindow.webContents.send('update-account-data', accountData)
 
         // Initial Transaction Request -> List account transactions on startup
-        // Reference: https://xrpl.org/account_tx.html
+        // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx
         const txResponse = await client.request({
             "command": "account_tx",
             "account": address

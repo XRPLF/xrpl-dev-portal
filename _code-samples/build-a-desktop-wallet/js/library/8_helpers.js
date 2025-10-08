@@ -39,7 +39,7 @@ async function checkDestination(accountData) {
 
 /**
  * Verify an account using a xrp-ledger.toml file.
- * https://xrpl.org/xrp-ledger-toml.html#xrp-ledgertoml-file
+ * https://xrpl.org/docs/references/xrp-ledger-toml
  *
  * @param accountData
  * @returns {Promise<{domain: string, verified: boolean}>}
@@ -89,7 +89,7 @@ async function verifyAccountDomain(accountData) {
  * @returns {Promise<{domain: string, verified: boolean}>}
  */
 async function verify(accountAddress, client) {
-    // Reference: https://xrpl.org/account_info.html
+    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info
     const request = {
         "command": "account_info",
         "account": accountAddress,
