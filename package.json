@@ -15,7 +15,7 @@
     "@codemirror/state": "6.5.2",
     "@codemirror/view": "^6.22.2",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/realm": "0.122.3",
+    "@redocly/realm": "0.126.0",
     "@uiw/codemirror-themes": "4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
