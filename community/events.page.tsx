@@ -26,8 +26,8 @@ export const frontmatter = {
 };
 export const sortEvents = (arr, asc = true) => {
   return arr.sort((a, b) => {
-    const dateA = moment(a.end_date, "MMMM D, YYYY");
-    const dateB = moment(b.end_date, "MMMM D, YYYY");
+    const dateA = moment(a.date, "MMMM D, YYYY");
+    const dateB = moment(b.date, "MMMM D, YYYY");
     return asc ? dateB.diff(dateA) : dateA.diff(dateB); // Returns a negative value if dateA is before dateB, positive if after, and 0 if the same
   });
 };
