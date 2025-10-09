@@ -1,3 +1,7 @@
+---
+seo:
+    description: Read about all the Markdoc tags commonly used in XRPL documentation, including custom tags.
+---
 # Markdoc Tags
 
 This page serves as a reference of the [Markdoc tags](https://redocly.com/docs/realm/content/markdoc-tags/tag-library) used in XRPL documentation. These extensions of Markdown syntax allow for stylized and dynamic contents.

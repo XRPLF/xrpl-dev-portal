@@ -1,6 +1,6 @@
 ---
-html: contribute-documentation.html
-parent: resources.html
+metadata:
+    indexPage: true
 seo:
     description: Contribution guides for XRP Ledger documentation.
 ---
@@ -346,5 +346,7 @@ renders as
 ## Markdoc Tags
 
 The files are processed with [Markdoc](https://markdoc.dev/), which means they can contain special tags in `{% ... %}` syntax. In addition to Redocly's built-in tags, this repository has some custom tags. For details on markdoc tags and their usage, see [Markdoc Tags](./markdoc-tags.md).
+
+## More Contributor Documentation
 
 {% child-pages /%}
