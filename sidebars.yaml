@@ -757,6 +757,7 @@
           external: true
         - page: resources/contribute-documentation/documentation-translations.md
         - page: resources/contribute-documentation/creating-diagrams.md
+        - page: resources/contribute-documentation/markdoc-tags.md
         - page: resources/contribute-documentation/tutorial-guidelines.md
         - page: resources/contribute-documentation/tutorial-structure.md
     - page: resources/contribute-blog/index.md
