@@ -384,7 +384,7 @@ const events = [
   {
     name: "Vega House Hackathon",
     description:
-      "The Vega House XRPL Hackathon is calling all developers, designers, and innovators to create incredible solutions on the XRP Ledger (XRPL).",
+      "Vega House Hackathon: Compete in two XRPL tracks—Ledger Track to build MVP financial services using payments, tokenization, RLUSD, or AMM/DEX flows, and Exploration Track to create innovative apps leveraging XRPL features and upcoming amendments. Prizes total $25,000, including track awards and bounties for best use of new XRPL features.",
     type: "hackathon",
     link: "https://xrpl.vegahacks.xyz/",
     location: "Virtual",
