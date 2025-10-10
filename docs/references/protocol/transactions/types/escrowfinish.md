@@ -52,8 +52,6 @@ In [non-production networks](../../../../concepts/networks-and-servers/parallel-
 
 Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
-## EscrowFinish Errors
-
 | Error Code                | Description |
 |:------------------------- |:------------|
 | `tecNO_AUTH`              | The transaction failed because authorization requirements were not met. For example, the issuer requires authorization and the destination is not authorized. |

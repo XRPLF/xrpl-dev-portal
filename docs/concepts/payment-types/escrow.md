@@ -19,9 +19,9 @@ The [TokenEscrow amendment][] extends escrow functionality to fungible tokens, w
 
 For Trust Line Tokens to be held in escrow, the issuing account must have the **Allow Trust Line Locking** flag enabled, which allows tokens issued by the account to be held in escrow. For MPTs, the issuer needs to enable the **Can Escrow** and **Can Transfer** flags when creating the token issuance, so that the tokens can be held in escrow and transferred.
 
-While issuers can't create escrows with their own issued tokens, they can serve as recipients. When an issuer receives escrowed tokens, this effectively functions as a redemption process, allowing tokens to return to their source.
+While issuers can't create escrows with their own issued tokens, they can serve as recipients. When an issuer receives escrowed tokens, the process works the same way as a direct payment.
 
-If a token requires authorization, both the sender and recipient must be pre-authorized by the issuer to hold the token before creating or finishing an escrow, respectively.
+If a token requires authorization, the sender must be pre-authorized by the issuer before creating an escrow and must also be authorized to receive the tokens back when an expired escrow is canceled, regardless of who submits the cancellation transaction. The recipient must be pre-authorized before the escrow can be finished.
 
 ## Types of Escrow
 
@@ -77,10 +77,7 @@ While XRP escrows can sometimes exist without an expiration time, token escrows 
 - You can't create an escrow with past time values.
 - Timed releases and expirations resolve according to [ledger close times](../ledgers/ledger-close-times.md). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
 - The only supported crypto-condition type is PREIMAGE-SHA-256.
-- If a token holder is deep frozen (Trust Line Tokens) or locked (MPTs), they cannot finish an escrow to receive tokens, but they can still cancel an escrow to return tokens to the sender.
-     {% admonition type="info" name="Note" %}
-     Individual or global freezes for Trust Line Tokens don't prevent escrow completion.
-     {% /admonition %}
+- If a token holder is deep frozen (Trust Line Tokens) or locked (MPTs), they cannot finish an escrow to receive tokens, but they can still cancel an escrow to return tokens to the sender. Individual or global freezes for Trust Line Tokens don't prevent escrow completion.
 
 - For tokens requiring authorization, both sender and recipient must be pre-authorized by the issuer before creating or finishing the escrow, respectively. Authorization cannot be granted during the escrow completion process.
 
