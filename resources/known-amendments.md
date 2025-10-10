@@ -1762,10 +1762,23 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Extends the existing Escrow functionality to support escrowing issued tokens or MPTs.
+Extends escrow functionality to fungible tokens, enabling Trust Line Tokens and Multi-Purpose Tokens (MPTs) to be held in escrow. Issuers can control whether their tokens can be escrowed through flags. To issue Trust Line Tokens, issuers must enable the **Allow TrustLine Locking** flag on their account, or the **Can Escrow** and **Can Transfer** flags for an MPT issuance.
 
-Specification: [XLS-85](https://github.com/XRPLF/XRPL-Standards/pull/272/)
+Modifies existing transactions:
 
+- EscrowCreate - Can now escrow fungible tokens in addition to XRP.
+- EscrowFinish - Can now deliver escrowed fungible tokens to recipients.
+- EscrowCancel - Can now return escrowed fungible tokens to senders.
+- AccountSet - Can now enable the **Allow Trust Line Locking** flag to allow Trust Line Tokens issued by an account to be escrowed.
+
+Updates existing ledger entry types:
+
+- Escrow - Adds support for fungible token amounts and two new fields; `TransferRate` and `IssuerNode`.
+- MPToken - Adds optional `LockedAmount` field to track tokens in escrow.
+- MPTokenIssuance - Adds optional `LockedAmount` field to track tokens in escrow.
+- AccountRoot - Adds **Allow Trust Line Locking** flag.
+
+Specification: [XLS-85](https://xls.xrpl.org/xls/XLS-0085-token-escrow.html)
 
 ### TrustSetAuth
 [TrustSetAuth]: #trustsetauth

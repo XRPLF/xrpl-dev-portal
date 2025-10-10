@@ -5,7 +5,7 @@ labels:
     - Payment Channels
 ---
 # account_channels
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountChannels.cpp "Source")
 
 The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
 
@@ -57,14 +57,11 @@ The request includes the following parameters:
 | Field                 | Type                 | Required? | Description |
 |:----------------------|:---------------------|:----------|-------------|
 | `account`             | String - [Address][] | Yes       | Look up channels where this account is the channel's owner/source. |
-| `amount`              | Object or String     | No        | The total amount allocated to this channel. |
-| `balance`             | Object or String     | No        | The total amount paid out from this channel, as of the ledger version used. (You can calculate the amount left in the channel by subtracting `balance` from `amount`). |
 | `destination_account` | String - [Address][] | No        | A second account; if provided, filter results to payment channels whose destination is this account. |
 | `ledger_hash`         | String               | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`               | Number               | No        | Limit the number of transactions to retrieve. Cannot be less than 10 or more than 400. Positive values outside this range are replaced with the closest valid option. The default is 200. |
 | `marker`              | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
-| `transfer_rate`       | Number               | No        | The fee to charge when users make claims on a payment channel, initially set on the creation of a payment channel and updated on subsequent funding or claim transactions. |
 
 ## Response Format
 
@@ -175,8 +172,6 @@ Each Channel Object has the following fields:
 | Field                 | Type             | Description                       |
 |:----------------------|:-----------------|:----------------------------------|
 | `account`             | String           | The owner of the channel, as an [Address][]. |
-| `amount`              | Object or String | The total amount of [XRP, in drops][] or fungible tokens allocated to this channel. |
-| `balance`             | String           | The total amount of [XRP, in drops][] or fungible tokens paid out from this channel, as of the ledger version used. (You can calculate the amount left in the channel by subtracting `balance` from `amount`.) |
 | `channel_id`          | String           | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [ID of the channel object](../../../protocol/ledger-data/ledger-entry-types/paychannel.md#paychannel-id-format) in the ledger's state data. |
 | `destination_account` | String           | The destination account of the channel, as an [Address][]. Only this account can receive the `amount` in the channel while it is open. |
 | `settle_delay`        | Unsigned Integer | The number of seconds the payment channel must stay open after the owner of the channel requests to close it. |
