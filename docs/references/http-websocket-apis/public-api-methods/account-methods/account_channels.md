@@ -57,8 +57,6 @@ The request includes the following parameters:
 | Field                 | Type                 | Required? | Description |
 |:----------------------|:---------------------|:----------|-------------|
 | `account`             | String - [Address][] | Yes       | Look up channels where this account is the channel's owner/source. |
-| `amount`              | Object or String     | No        | The total amount of XRP, in drops, allocated to this channel. |
-| `balance`             | Object or String     | No        | The total amount of XRP, in drops, paid out from this channel, as of the ledger version used. (You can calculate the amount left in the channel by subtracting `balance` from `amount`). |
 | `destination_account` | String - [Address][] | No        | A second account; if provided, filter results to payment channels whose destination is this account. |
 | `ledger_hash`         | String               | No        | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
