@@ -48,7 +48,7 @@ The lifecycle of an escrow is as follows:
 3. The recipient sends an `EscrowFinish` transaction to deliver the funds. If the conditions are met, this destroys the `Escrow` object and delivers the funds to the recipient. Additionally, any missing trust lines or MPT entries may be auto-created for recipients if authorization isn't required.
 
     {% admonition type="info" name="Note" %}
-    If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, destroying the `Escrow` object and returning the escrowed funds to the sender.
+    If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, returning the escrowed funds to the sender.
     {% /admonition %}
 
 ## Escrow States
