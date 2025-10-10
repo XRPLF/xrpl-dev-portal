@@ -42,10 +42,14 @@ npm i
 {% /tab %}
 {% /tabs %}
 
-### 2. Import dependencies and get accounts
+### 2. Import dependencies and define main function
 
-After importing the XRPL client library, the tutorial code gets a new wallet from the testnet faucet and defines the properties of the escrow as hard-coded constants. You can use an existing wallet or modify the constants as desired.
+After importing the XRPL client library, the tutorial code defines the main function which controls the flow of the script. This function does several things:
 
+1. Connect to the network and get a new wallet from the testnet faucet.
+2. Define the properties of the escrow as hard-coded constants.
+3. Use helper functions to create the escrow, wait for it to be ready, and then finish it. These functions are defined later in the file.
+4. Disconnect from the network when done.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -53,181 +57,56 @@ After importing the XRPL client library, the tutorial code gets a new wallet fro
 {% /tab %}
 {% /tabs %}
 
+### 3. Create the escrow
 
+Next, the `send_timed_escrow(...)` function implements the following:
 
-## 1. Calculate release time
-
-You must specify the time as whole **[seconds since the Ripple Epoch][]**, which is 946684800 seconds after the UNIX epoch. For example, to release funds at midnight UTC on November 13, 2017:
+1. Calculate the maturity time of the escrow (when it should be possible to finish it), and convert it to the correct format ([seconds since the Ripple Epoch][]).
+    {% admonition type="danger" name="Warning" %}If you use a UNIX time in the `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!{% /admonition %}
+2. Construct an [EscrowCreate transaction][].
+    {% admonition type="info" name="Note" %}If you are sending a token escrow, you must also add an expiration time in the `CancelAfter` field, in the same time format. This time must be after the maturity time.{% /admonition %}
+3. Submit the transaction to the network and wait for it to be validated by consensus.
+4. Return the details of the escrow, particularly the autofilled sequence number. You need this sequence number to identify the escrow in later transactions.
 
 {% tabs %}
-
 {% tab label="JavaScript" %}
-```js
-// JavaScript Date() is natively expressed in milliseconds; convert to seconds
-const release_date_unix = Math.floor( new Date("2017-11-13T00:00:00Z") / 1000 );
-const release_date_ripple = release_date_unix - 946684800;
-console.log(release_date_ripple);
-// 563846400
-```
+{% code-snippet file="/_code-samples/escrow/js/send-timed-escrow.js" language="js" from="/* send_timed_escrow" before="/* wait_for_escrow" /%}
 {% /tab %}
-
-{% tab label="Python 3" %}
-```python
-import datetime
-release_date_utc = datetime.datetime(2017,11,13,0,0,0,tzinfo=datetime.timezone.utc)
-release_date_ripple = int(release_date_utc.timestamp()) - 946684800
-print(release_date_ripple)
-# 563846400
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% admonition type="danger" name="Warning" %}If you use a UNIX time in the `FinishAfter` field without converting to the equivalent Ripple time first, that sets the unlock time to an extra **30 years** in the future!{% /admonition %}
-
-## 2. Submit EscrowCreate transaction
-
-[Sign and submit](../../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
-
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
-
-
-{% tabs %}
-
-{% tab label="Websocket" %}
-Request:
-{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-time.json" language="json" /%}
-Response:
-{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-time.json" language="json" /%}
-{% /tab %}
-
-{% tab label="Javascript" %}
-{% code-snippet file="/_code-samples/escrow/js/create-escrow.js" language="js" from="// Prepare EscrowCreate" before="await client.disconnect" /%}
-{% /tab %}
-
-{% tab label="Python" %}
-{% code-snippet file="/_code-samples/escrow/py/create_escrow.py" language="py"  from="# Build escrow create" /%}
-{% /tab %}
-
-{% /tabs %}
-
-Take note of the transaction's identifying `hash` value so you can check its final status when it is included in a validated ledger version.
-
-## 3. Wait for validation
-
-{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
-
-## 4. Confirm that the escrow was created
-
-Use the [tx method][] with the transaction's identifying hash to check its final status. Look for a `CreatedNode` in the transaction metadata to indicate that it created an [Escrow ledger object](../../../../concepts/payment-types/escrow.md).
-
-Request:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
-{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcreate-time.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
-
-Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
-{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcreate-time.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
-
-## 5. Wait for the release time
-
-Held payments with a `FinishAfter` time cannot be finished until a ledger has already closed with a [`close_time` header field](../../../../references/protocol/ledger-data/ledger-header.md) that is later than the Escrow node's `FinishAfter` time.
-
-You can check the close time of the most recently-validated ledger with the [ledger method][]:
-
-Request:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
-{% code-snippet file="/_api-examples/escrow/websocket/ledger-request.json" language="json" /%}
-{% /tab %}
-
-{% /tabs %}
-
-Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
-{% code-snippet file="/_api-examples/escrow/websocket/ledger-response.json" language="json" /%}
-{% /tab %}
-
 {% /tabs %}
 
 
-## 6. Submit EscrowFinish transaction
+### 4. Wait for the escrow
 
-[Sign and submit](../../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
+The `wait_for_escrow(...)` function implements the following:
 
-{% admonition type="success" name="Tip" %}
-The EscrowFinish transaction is necessary because the XRP Ledger's state can only be modified by transactions. The sender of this transaction may be the recipient of the escrow, the original sender of the escrow, or any other XRP Ledger address.
-{% /admonition %}
-
-If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.md) instead.
-
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+1. Check the official close time of the most recent validated ledger.
+2. Wait a number of seconds based on the difference between that close time and the time when the escrow is ready to be finished.
+3. Repeat until the escrow is ready. The actual, official close time of ledgers [is rounded](../../../../concepts/ledgers/ledger-close-times.md) by up to 10 seconds, so there is some variance in how long it actually takes for an escrow to be ready.
 
 {% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/escrow/js/send-timed-escrow.js" language="js" from="/* wait_for_escrow" before="/* Sleep function" /%}
 
-{% tab label="Websocket" %}
-Request:
-{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-time.json" language="json" /%}
+Additionally, since JavaScript doesn't have a native `sleep(...)` function, the sample code implements one to be used with `await`, as a convenience:
 
-Response:
-{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-time.json" language="json" /%}
+{% code-snippet file="/_code-samples/escrow/js/send-timed-escrow.js" language="js" from="/* Sleep function" before="/* finish_escrow" /%}
+
 {% /tab %}
-
-{% tab label="Javascript" %}
-{% code-snippet file="/_code-samples/escrow/js/finish-escrow.js" language="js" from="// Prepare EscrowFinish" before="await client.disconnect" /%}
-{% /tab %}
-
-{% tab label="Python" %}
-{% code-snippet file="/_code-samples/escrow/py/finish_escrow.py" language="py"  from="# Build escrow finish" /%}
-{% /tab %}
-
 {% /tabs %}
 
-Take note of the transaction's identifying `hash` value so you can check its final status when it is included in a validated ledger version.
+### 5. Finish the escrow
 
-## 7. Wait for validation
+The `finish_escrow(...)` function implements the following:
 
-{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
-
-## 8. Confirm final result
-
-Use the [tx method][] with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a `ModifiedNode` of type `AccountRoot` for the destination of the escrowed payment. The `FinalFields` of the object should show the increase in XRP in the `Balance` field.
-
-Request:
+1. Construct an [EscrowFinish transaction][], using the sequence number recorded when the escrow was created.
+    {% admonition type="success" name="Tip" %}Anyone can finish a timed escrow when it is ready. Regardless of who does so—the sender, receiver, or even a third party—the escrow delivers the funds to its intended recipient.{% /admonition %}
+2. Submit the transaction to the network and wait for it to be validated by consensus.
+3. Display the details of the validated transaction.
 
 {% tabs %}
-
-{% tab label="Websocket" %}
-{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowfinish-time.json" language="json" /%}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/escrow/js/send-timed-escrow.js" language="js" from="/* finish_escrow" /%}
 {% /tab %}
-
-{% /tabs %}
-
-Response:
-
-{% tabs %}
-
-{% tab label="Websocket" %}
-{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-time.json" language="json" /%}
-{% /tab %}
-
 {% /tabs %}
 
 

@@ -1,6 +1,7 @@
 import xrpl from 'xrpl'
 
-/* Main function when called as a commandline script */
+/* Main function when called as a commandline script ------------------------*/
+main()
 async function main () {
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   await client.connect()
@@ -43,14 +44,14 @@ async function main () {
  *                                in seconds since the Ripple Epoch
  */
 async function send_timed_escrow (client, wallet, dest_address, amount, delay) {
-  // Set the escrow finish time -----------------------------------------------
+  // Set the escrow finish time
   const finishAfter = new Date()
   finishAfter.setSeconds(finishAfter.getSeconds() + delay)
   console.log('This escrow will finish after:', finishAfter)
   // Convert finishAfter to seconds since the Ripple Epoch:
   const finishAfterRippleTime = xrpl.isoTimeToRippleTime(finishAfter.toISOString())
 
-  // Send EscrowCreate transaction --------------------------------------------
+  // Construct the EscrowCreate transaction
   const escrowCreate = {
     TransactionType: 'EscrowCreate',
     Account: wallet.address,
@@ -60,12 +61,15 @@ async function send_timed_escrow (client, wallet, dest_address, amount, delay) {
   }
   xrpl.validate(escrowCreate)
 
+  // Send the transaction
   console.log('Signing and submitting the transaction:',
     JSON.stringify(escrowCreate, null, 2))
   const response = await client.submitAndWait(escrowCreate, {
     wallet,
     autofill: true
   })
+  
+  // Display the transaction results & return them
   console.log(JSON.stringify(response.result, null, 2))
   const escrowSeq = response.result.tx_json.Sequence
   console.log(`Escrow sequence is ${escrowSeq}.`)
@@ -76,7 +80,7 @@ async function send_timed_escrow (client, wallet, dest_address, amount, delay) {
   }
 }
 
-/* wait_for_escrow
+/* wait_for_escrow ------------------------------------------------------------
  * Check the ledger close time to see if an escrow can be finished.
  * If it's not ready yet, wait a number of seconds equal to the difference
  * from the latest ledger close time to the escrow's FinishAfter time.
@@ -87,7 +91,7 @@ async function send_timed_escrow (client, wallet, dest_address, amount, delay) {
  * Returns: null
  */
 async function wait_for_escrow (client, finishAfterRippleTime) {
-  // Check if escrow can be finished -------------------------------------------
+  // Check if escrow can be finished
   let escrowReady = false
   while (!escrowReady) {
     // Check the close time of the latest validated ledger.
@@ -118,7 +122,7 @@ function sleep (delayInSeconds) {
   return new Promise((resolve) => setTimeout(resolve, delayInMs))
 }
 
-/* finish_escrow
+/* finish_escrow --------------------------------------------------------------
  * Finish an escrow that your account owns.
  * Parameters:
  *   client (xrpl.Client): network-connected client
@@ -127,7 +131,7 @@ function sleep (delayInSeconds) {
  * Returns: null
  */
 async function finish_escrow (client, wallet, escrowSeq) {
-  // Send EscrowFinish transaction --------------------------------------------
+  // Construct the EscrowFinish transaction
   const escrowFinish = {
     TransactionType: 'EscrowFinish',
     Account: wallet.address,
@@ -136,17 +140,17 @@ async function finish_escrow (client, wallet, escrowSeq) {
   }
   xrpl.validate(escrowFinish)
 
+  // Send the transaction
   console.log('Signing and submitting the transaction:',
     JSON.stringify(escrowFinish, null, 2))
   const response2 = await client.submitAndWait(escrowFinish, {
     wallet,
     autofill: true
   })
+  
+  // Display the transaction results
   console.log(JSON.stringify(response2.result, null, 2))
   if (response2.result.meta.TransactionResult === 'tesSUCCESS') {
     console.log('Escrow finished successfully.')
   }
 }
-
-// Call main function so it runs as a script
-main()
