@@ -9,7 +9,7 @@ labels:
 
 Set aside funds in an [escrow](../../../../concepts/payment-types/escrow.md) that delivers them to a predetermined recipient when certain conditions are met. If the escrow has an expiration, the funds can also be returned to the sender after it expires.
 
-{% admonition type="info" name="Fungible Tokens" %}
+{% admonition type="info" name="Note" %}
 To escrow fungible tokens you must take note of the following:
 
 - Trust Line Tokens must have the **Allow Trust Line Locking** flag enabled on their account.
@@ -18,7 +18,6 @@ To escrow fungible tokens you must take note of the following:
 - If the token requires **authorization**, both sender and recipient must be pre-authorized by the issuer.
 {% /admonition %}
 
-{% amendment-disclaimer name="Escrow" /%}
 {% amendment-disclaimer name="TokenEscrow" mode="updated" /%}
 
 

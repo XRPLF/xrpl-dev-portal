@@ -9,9 +9,6 @@ labels:
 
 Deliver funds from an [escrow](../../../../concepts/payment-types/escrow.md) to the recipient.
 
-{% amendment-disclaimer name="Escrow" /%}
-
-
 ## Example {% $frontmatter.seo.title %} JSON
 
 ```json

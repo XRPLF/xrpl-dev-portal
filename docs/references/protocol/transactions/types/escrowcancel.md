@@ -9,8 +9,6 @@ labels:
 
 Return funds from an expired [escrow](../../../../concepts/payment-types/escrow.md) to its sender.
 
-{% amendment-disclaimer name="Escrow" /%}
-
 ## Example {% $frontmatter.seo.title %} JSON
 
 ```json

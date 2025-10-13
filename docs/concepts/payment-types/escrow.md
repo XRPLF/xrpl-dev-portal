@@ -8,9 +8,8 @@ labels:
 
 Traditionally, an escrow is a contract between two parties to facilitate financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
 
-The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP or fungible tokens ([see Token Escrow](#token-escrow)), which can't be used or destroyed until conditions are met.
+The XRP Ledger takes escrow a step further, replacing the third party with an automated system built into the ledger. An escrow locks up XRP or fungible tokens, which can't be used or destroyed until conditions are met.
 
-{% amendment-disclaimer name="Escrow" /%}
 {% amendment-disclaimer name="TokenEscrow" mode="updated" /%}
 
 ## Token Escrow
