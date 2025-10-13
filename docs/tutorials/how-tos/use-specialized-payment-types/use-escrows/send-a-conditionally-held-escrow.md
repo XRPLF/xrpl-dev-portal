@@ -106,15 +106,13 @@ Response:
 {% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
-{% tab label="Javascript" %}
-{% code-snippet file="/_code-samples/escrow/js/create-escrow.js" language="js" from="// Prepare EscrowCreate" before="await client.disconnect" /%}
-{% /tab %}
-
 {% tab label="Python" %}
 {% code-snippet file="/_code-samples/escrow/py/create_escrow.py" language="py"  from="# Build escrow create" /%}
 {% /tab %}
 
 {% /tabs %}
+
+<!-- TODO: re-add a working JS example. Removed the old one due to the sample code being refactored -->
 
 ## 4. Wait for validation
 
