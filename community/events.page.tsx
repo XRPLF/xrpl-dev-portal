@@ -17,6 +17,7 @@ const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.
 const decarb = require('../static/img/events/xrpl-decarb.png')
 const townHall = require('../static/img/events/town-hall-meetup.png')
 const devBootcamp = require('../static/img/events/dev-bootcamp.png')
+const italyHackathon = require("../static/img/events/italy-hackathon.png");
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -1279,9 +1280,31 @@ const events = [
     type: "hackathon",
     link: "https://xrpl.vegahacks.xyz/",
     location: "Virtual",
-    date: "October 01, 2025",
-    image: hackathon,
+    date: "Oct 01 - Nov 14, 2025",
+    image: italyHackathon,
     end_date: "November 14, 2025",
+  },
+  {
+    name: "XRPL Town Hall Meeting #5",
+    description:
+      "Join Us for the 5th XRPL Town Hall Meeting!",
+    type: "info",
+    link: "https://luma.com/wo0g0fpv",
+    location: "Virtual",
+    date: "October 16, 2025",
+    image: require("../static/img/events/townhall-5.png"),
+    end_date: "October 16, 2025",    
+  },
+  {
+    name: "XRPL Aquarium Residency Demo Day #7",
+    description:
+      "The Aquarium Residency is a 12-week program for entrepreneurs & developers building on the XRP Ledger blockchain.  Join us at our Paris HQ to connect with our 11 residents, discover their projects focused on DeFi II, and engage with the XRPL community.",
+    type: "meetup",
+    link: "https://luma.com/mnby11vr",
+    location: "Paris, France",
+    image: require("../static/img/events/aquarium-residency.png"),
+    date: "December 10, 2025",
+    end_date: "December 10, 2025",
   },
 ];
 

@@ -20,6 +20,7 @@ const brazil = require("../static/img/events/event-meetup-brazil.png");
 const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.png");
 const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
 const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
+const italyHackathon = require("../static/img/events/italy-hackathon.png");
 const events = [
   {
     name: "New Horizon: Innovate Without Limits: New Horizons Await",
@@ -377,7 +378,7 @@ const events = [
     link: "https://luma.com/llwjrmcx",
     location: "Rome, Italy",
     date: "November 07, 2025",
-    image: hackathon,
+    image: italyHackathon,
     end_date: "November 08, 2025",
     start_date: "November 07, 2025",
   },
@@ -388,7 +389,7 @@ const events = [
     type: "hackathon",
     link: "https://xrpl.vegahacks.xyz/",
     location: "Virtual",
-    date: "October 01, 2025",
+    date: "October 01 - November 14, 2025",
     image: hackathon,
     end_date: "November 14, 2025",
     start_date: "October 01, 2025",
