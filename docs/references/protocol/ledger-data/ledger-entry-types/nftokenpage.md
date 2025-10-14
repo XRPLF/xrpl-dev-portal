@@ -2,7 +2,7 @@
 seo:
     description: A group of up to 32 NFTs, stored together for efficiency.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFTokenPage
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L97-L103 "Source")

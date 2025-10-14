@@ -2,7 +2,7 @@
 seo:
     description: Delete a price oracle.
 labels:
-    - Oracle
+    - Oracles
 ---
 # OracleDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteOracle.cpp "Source")

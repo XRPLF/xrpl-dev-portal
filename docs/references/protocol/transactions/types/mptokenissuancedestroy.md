@@ -2,7 +2,7 @@
 seo:
     description: Delete a Multi-Purpose Token definition.
 labels:
-    - Multi-purpose Tokens, MPTs
+    - MPTs
 ---
 # MPTokenIssuanceDestroy
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceDestroy.cpp "Source")
@@ -13,7 +13,7 @@ Delete a [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens
 
 ## Example MPTokenIssuanceDestroy JSON
 
-```json 
+```json
 {
     "TransactionType": "MPTokenIssuanceDestroy",
     "Fee": "10",

@@ -4,7 +4,7 @@ parent: ledger-entry-types.html
 seo:
     description: NFTを売買するオファーを作成する。
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFTokenOffer
 

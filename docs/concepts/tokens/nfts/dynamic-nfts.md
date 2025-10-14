@@ -2,7 +2,7 @@
 seo:
     description: Create NFTs with the option of changing the URI to update its referenced data object.
 labels:
-  - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # Dynamic Non-Fungible Tokens (dNFTs)
 

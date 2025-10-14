@@ -1,8 +1,8 @@
 ---
 seo:
-    description: A cross-chain transfer of value. 
+    description: A cross-chain transfer of value.
 labels:
-  - Interoperability
+  - Sidechains
 status: not_enabled
 ---
 # XChainOwnedClaimID

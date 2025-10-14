@@ -2,7 +2,7 @@
 seo:
     description: Permanently destroy an NFT.
 labels:
-    - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFTokenBurn
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenBurn.cpp "Source")

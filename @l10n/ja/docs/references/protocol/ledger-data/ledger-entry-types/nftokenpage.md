@@ -4,7 +4,7 @@ parent: ledger-entry-types.html
 seo:
     description: NFTokenを記録するためのレジャー構造。
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFTokenPage
 

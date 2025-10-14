@@ -2,7 +2,7 @@
 seo:
     description: Cancel offers to buy or sell an NFT.
 labels:
-    - NFTs, Non-fungible Tokens
+    - NFTs
 ---
 # NFTokenCancelOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCancelOffer.cpp "Source")

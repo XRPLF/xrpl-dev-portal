@@ -4,7 +4,7 @@ parent: path-and-order-book-methods.html
 seo:
     description: Get a list of all sell offers for a NFToken.
 labels:
-  - Non-fungible Tokens, NFTs, NFTokens
+    - NFTs, NFTokens
 ---
 # nft_sell_offers
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp "Source")

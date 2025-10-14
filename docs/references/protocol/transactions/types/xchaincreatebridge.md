@@ -2,7 +2,7 @@
 seo:
     description: Create a bridge between two chains.
 labels:
-    - Interoperability
+    - Sidechains
 status: not_enabled
 ---
 # XChainCreateBridge

@@ -4,7 +4,7 @@ parent: non-fungible-tokens.html
 seo:
     description: Trading NFTs in direct or brokered mode.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 
 # Trading NFTs

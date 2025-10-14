@@ -4,16 +4,16 @@ seo:
 status: not_enabled
 labels:
     - Blockchain
-    - Interoperability
+    - Sidechains
 ---
 # Witness Servers
 [[Source]](https://github.com/seelabs/xbridge_witness "Source")
 
 A _witness server_ acts as a neutral witness for transactions between a locking chain and an issuing chain. It listens to the door accounts on both sides of a bridge and signs attestations that confirm a transaction occurred. They are essentially acting as an oracle to “prove” that value was locked or burned on a source account, which allows the recipient to then claim (via minting or unlocking) the equivalent funds on the destination account.
 
-The bridge between the locking chain and the issuing chain includes the following information in its configuration: 
+The bridge between the locking chain and the issuing chain includes the following information in its configuration:
 
-* Witness servers that monitor transactions on the bridge. You can choose one or more witness servers. 
+* Witness servers that monitor transactions on the bridge. You can choose one or more witness servers.
 * Fee for witness servers for their service.
 
 Anyone can run a witness server. However, the burden is on the participants of the issuing chain to evaluate the reliability of witness servers. If you run a witness server, you must also run a `rippled` node and sync it to the chain the witness server needs access to.
@@ -92,7 +92,7 @@ The witness server takes a JSON configuration file, specified using the `--conf`
 | [`IssuingChain`](#issuingchain-and-lockingchain-fields) | Object         | Yes       | The parameters for interacting with the issuing chain. |
 | [`LockingChain`](#issuingchain-and-lockingchain-fields) | Object         | Yes       | The parameters for interacting with the locking chain. |
 | `RPCEndpoint`    | Object         | Yes       | The endpoint for RPC requests to the witness server. |
-| `LogFile`        | String         | Yes       | The location of the log file. | 
+| `LogFile`        | String         | Yes       | The location of the log file. |
 | `LogLevel`       | String         | Yes       | The level of logs to store in the log file. The options are `All`, `Trace`, `Debug`, `Info`, `Warning`, `Error`, `Fatal`, `Disabled`, and `None`. |
 | `DBDir`          | String         | Yes       | The location of the directory where the databases are stored. |
 | `SigningKeySeed` | String         | Yes       | The seed that the witness server should use to sign its attestations. |

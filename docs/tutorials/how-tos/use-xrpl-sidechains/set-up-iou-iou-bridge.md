@@ -2,7 +2,7 @@
 seo:
     description: Steps to set up an IOU-IOU bridge.
 labels:
-    - Interoperability
+    - Sidechains
 ---
 # Set Up an IOU-IOU Bridge
 
@@ -81,7 +81,7 @@ Don't include a `MinAccountCreateAmount` value.
     "TransactionType": "SignerListSet",
     "Account": wallet_lockingchain.address,
     "Fee": "12",
-    "SignerQuorum": 2,    
+    "SignerQuorum": 2,
     // Use the witness servers' submitting accounts on the locking chain.
     "SignerEntries": [
         {
@@ -131,7 +131,7 @@ Don't include a `MinAccountCreateAmount` value.
     "TransactionType": "SignerListSet",
     "Account": wallet_issuingchain.address,
     "Fee": "12",
-    "SignerQuorum": 2,    
+    "SignerQuorum": 2,
     // Use the witness servers' submitting accounts on the issuing chain.
     "SignerEntries": [
         {

@@ -2,7 +2,7 @@
 seo:
     description: Steps to submit a cross-chain transaction, using a bridge.
 labels:
-    - Interoperability
+    - Sidechains
 ---
 # Submit Cross-chain Transactions
 

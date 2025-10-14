@@ -2,7 +2,7 @@
 seo:
     description: Complete a cross-chain transfer of value by claiming the value on the destination chain.
 labels:
-    - Interoperability
+    - Sidechains
 status: not_enabled
 ---
 # XChainClaim

@@ -4,7 +4,7 @@ parent: non-fungible-tokens.html
 seo:
     description: You can assign another account to mint NFTs in your stead.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # Running an NFT Auction
 

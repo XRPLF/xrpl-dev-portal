@@ -2,7 +2,7 @@
 seo:
     description: Create an offer to buy or sell an NFT.
 labels:
-    - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFTokenCreateOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenCreateOffer.cpp "Source")

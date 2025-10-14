@@ -2,7 +2,7 @@
 seo:
     description: Multi-Purpose Tokens (MPT) of one issuance held by a specific account.
 labels:
-  - Multi-purpose Tokens, MPTs, Tokens
+  - MPTs, Tokens
 status: not_enabled
 ---
 # MPToken

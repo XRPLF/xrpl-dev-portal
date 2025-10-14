@@ -2,7 +2,7 @@
 seo:
     description: Modify the parameters of a cross-chain bridge.
 labels:
-    - Interoperability
+    - Sidechains
 status: not_enabled
 ---
 # XChainModifyBridge

@@ -1,8 +1,8 @@
 ---
 seo:
-    description: A single cross-chain bridge that connects and enables value to move efficiently between two blockchains. 
+    description: A single cross-chain bridge that connects and enables value to move efficiently between two blockchains.
 labels:
-  - Interoperability
+  - Sidechains
 status: not_enabled
 ---
 # Bridge

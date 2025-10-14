@@ -2,7 +2,7 @@
 seo:
     description: Mint a Non-Fungible Token (NFT).
 labels:
-    - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFTokenMint
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenMint.cpp "Source")
@@ -62,7 +62,7 @@ Transactions of the NFTokenMint type support additional values in the [`Flags` f
 | `tfOnlyXRP` | `0x00000002` | 2 | The minted `NFToken` can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies. |
 | `tfTrustLine` | `0x00000004` | 4 | **DEPRECATED** Automatically create [trust lines](../../../../concepts/tokens/fungible-tokens/index.md) from the issuer to hold transfer fees received from transferring the minted `NFToken`. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to set this flag. |
 | `tfTransferable` | `0x00000008` | 8 | The minted `NFToken` can be transferred to others. If this flag is _not_ enabled, the token can still be transferred _from_ or _to_ the issuer, but a transfer to the issuer must be made based on a buy offer from the issuer and not a sell offer from the NFT holder. |
-| `tfMutable`  | `0x00000010` | 16 | The `URI` field of the minted `NFToken` can be updated using the `NFTokenModify` transaction. | 
+| `tfMutable`  | `0x00000010` | 16 | The `URI` field of the minted `NFToken` can be updated using the `NFTokenModify` transaction. |
 
 
 ## Embedding additional information

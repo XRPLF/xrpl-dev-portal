@@ -2,15 +2,15 @@
 seo:
     description: Create a cross-chain claim ID that is used for a cross-chain transfer.
 labels:
-    - Interoperability
+    - Sidechains
 status: not_enabled
 ---
 # XChainCreateClaimID
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
-Create a new cross-chain claim ID that is used for a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). A cross-chain claim ID represents *one* cross-chain transfer of value. 
+Create a new cross-chain claim ID that is used for a [cross-chain transfer](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md). A cross-chain claim ID represents *one* cross-chain transfer of value.
 
-This transaction is the first step of a cross-chain transfer of value and is submitted on the destination chain, not the source chain. 
+This transaction is the first step of a cross-chain transfer of value and is submitted on the destination chain, not the source chain.
 
 It also includes the account on the source chain that locks or burns the funds on the source chain.
 

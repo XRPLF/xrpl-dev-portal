@@ -2,7 +2,7 @@
 seo:
     description: Start a cross-chain transfer of value.
 labels:
-    - Interoperability
+    - Sidechains
 status: not_enabled
 ---
 # XChainCommit

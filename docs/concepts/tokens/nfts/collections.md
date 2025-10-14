@@ -4,7 +4,7 @@ parent: non-fungible-tokens.html
 seo:
     description: You can mint NFTs as collections using the NFT Taxon field.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # Minting NFTs into Collections
 

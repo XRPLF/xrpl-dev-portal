@@ -4,7 +4,7 @@ parent: account-methods.html
 seo:
     description: Get a list of all NFTs for an account.
 labels:
-  - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # account_nfts
 [[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")

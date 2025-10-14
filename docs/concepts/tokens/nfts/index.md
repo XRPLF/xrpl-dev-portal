@@ -4,7 +4,7 @@ parent: tokens.html
 seo:
     description: Introduction to XRPL NFTs.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 
 # Non-Fungible Tokens

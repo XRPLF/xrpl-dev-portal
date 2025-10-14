@@ -4,7 +4,7 @@ parent: clio-methods.html
 seo:
     description: Retrieve the history of ownership and transfers for the specified NFT using Clio server's `nft_history` API.
 labels:
-  - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # nfts_by_issuer
 

@@ -2,7 +2,7 @@
 seo:
     description: Create or update a price oracle.
 labels:
-    - Oracle
+    - Oracles
 ---
 # OracleSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetOracle.cpp "Source")

@@ -4,7 +4,7 @@ parent: non-fungible-tokens.html
 seo:
     description: Storage options for the payload of your NFT.
 labels:
-  - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFT Payload Storage
 

@@ -2,7 +2,7 @@
 seo:
     description: Steps to create an XRP-XRP bridge with a new sidechain.
 labels:
-    - Interoperability
+    - Sidechains
 ---
 # Set Up an XRP-XRP Bridge
 
@@ -79,7 +79,7 @@ main()
     "TransactionType": "SignerListSet",
     "Account": wallet_lockingchain.address,
     "Fee": "12",
-    "SignerQuorum": 2,    
+    "SignerQuorum": 2,
     // Use the witness servers' submitting accounts on the locking chain.
     "SignerEntries": [
         {
@@ -197,7 +197,7 @@ Use the `XChainAddAccountCreateAttestation` transaction to submit each attestati
     "TransactionType": "SignerListSet",
     "Account": wallet_issuingchain.address,
     "Fee": "12",
-    "SignerQuorum": 2,    
+    "SignerQuorum": 2,
     // Use the witness servers' submitting accounts on the issuing chain created in step 7
     "SignerEntries": [
         {

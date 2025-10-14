@@ -4,7 +4,7 @@ parent: non-fungible-tokens.html
 seo:
     description: Specialized APIs let you access useful NFT metadata.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFT APIs
 

@@ -2,7 +2,7 @@
 seo:
     description: Definition of a Multi-Purpose Token (MPT) issuance.
 labels:
-  - Multi-purpose Tokens, MPTs, Tokens
+  - MPTs, Tokens
 status: not_enabled
 ---
 # MPTokenIssuance

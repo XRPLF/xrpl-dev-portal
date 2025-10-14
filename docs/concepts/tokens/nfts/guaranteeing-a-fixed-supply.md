@@ -4,7 +4,7 @@ parent: non-fungible-tokens.html
 seo:
     description: Use a new account to mint a fixed number of NFTs, then black hole the account.
 labels:
-  - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # Guaranteeing a Fixed Supply of NFTs
 

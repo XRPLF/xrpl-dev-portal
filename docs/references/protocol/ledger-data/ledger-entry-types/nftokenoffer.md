@@ -2,7 +2,7 @@
 seo:
     description: An offer to buy or sell an NFT.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # NFTokenOffer
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L34-L44 "Source")

@@ -2,7 +2,7 @@
 seo:
     description: Create NFTs that can't be traded among users.
 labels:
-  - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # Non-Transferable Tokens
 

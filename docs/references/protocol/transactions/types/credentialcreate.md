@@ -1,6 +1,8 @@
 ---
 seo:
     description: Provisionally issue a credential to a subject account.
+labels:
+    - Credentials
 ---
 # CredentialCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")

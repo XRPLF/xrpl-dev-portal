@@ -2,7 +2,7 @@
 seo:
     description: Provide an attestation that an XChainCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
-    - Interoperability
+    - Sidechains
 status: not_enabled
 ---
 # XChainAddClaimAttestation

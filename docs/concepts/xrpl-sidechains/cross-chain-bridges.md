@@ -4,7 +4,7 @@ seo:
 status: not_enabled
 labels:
     - Blockchain
-    - Interoperability
+    - Sidechains
 ---
 # Cross-Chain Bridges
 

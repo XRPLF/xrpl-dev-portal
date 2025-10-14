@@ -4,7 +4,7 @@ parent: clio-methods.html
 seo:
     description: Retrieve information about the specified NFT using Clio server's `nft_info` API.
 labels:
-  - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 # nft_info
 [[Source]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp "Source")

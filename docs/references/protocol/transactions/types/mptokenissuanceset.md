@@ -2,7 +2,7 @@
 seo:
     description: Set mutable properties of a Multi-Purpose Token definition.
 labels:
-    - Multi-purpose Tokens, MPTs
+    - MPTs
 ---
 # MPTokenIssuanceSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceSet.cpp "Source")
@@ -13,7 +13,7 @@ Update a mutable property of a [Multi-purpose Token (MPT)](../../../../concepts/
 
 ## Example
 
-```json 
+```json
 {
     "TransactionType": "MPTokenIssuanceSet",
     "Fee": "10",

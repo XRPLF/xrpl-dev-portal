@@ -4,7 +4,7 @@ parent: non-fungible-tokens.html
 seo:
     description: Minting NFTs in batches.
 labels:
- - Non-fungible Tokens, NFTs
+    - NFTs
 ---
 
 # Batch Minting
