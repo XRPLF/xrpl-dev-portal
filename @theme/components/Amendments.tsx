@@ -326,7 +326,7 @@ export function AmendmentDisclaimer(props: {
           ) : (
             <>
             {translate("component.amendment-status.updates.1", "The ")}{link()}
-            {translate("component.amendment-status.updates.2", "updates this.")}
+            {translate("component.amendment-status.updates.2", " updates this.")}
             {" "}
             <AmendmentBadge amendment={amendmentStatus} />
             </>

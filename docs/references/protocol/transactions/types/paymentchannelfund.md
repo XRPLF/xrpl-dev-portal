@@ -30,7 +30,7 @@ Add an additional amount to an open [payment channel](../../../../concepts/payme
 | Field        | JSON Type            | [Internal Type][] | Required? | Description |
 |:-------------|:---------------------|:------------------|:----------|:------------|
 | `Channel`    | String - Hexadecimal | UInt256           | Yes       | The unique ID of the channel to fund. |
-| `Amount`     | [Currency Amount][]  | Amount            | Yes       | Amount to add to the channel. Must be a positive amount. Non-XRP tokens can only be used if the [TokenEscrow amendment][] {% not-enabled /%} is enabled. |
+| `Amount`     | [Currency Amount][]  | Amount            | Yes       | Amount of XRP, in drops, to add to the channel. Must be a positive amount of XRP. |
 | `Expiration` | Number               | UInt32            | No        | New expiration time to set for the channel, in [seconds since the Ripple Epoch][]. This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) For more information, see the [PayChannel ledger entry type](../../ledger-data/ledger-entry-types/paychannel.md). |
 
 ## Error Cases

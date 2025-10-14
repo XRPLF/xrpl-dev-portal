@@ -5,11 +5,11 @@ labels:
   - Escrow
 ---
 # Escrow
-[[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L329-L342 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/ledger_entries.macro#L344-L359 "Source")
 
-An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds XRP until specific conditions are met. You can create an escrow by sending an [EscrowCreate transaction][].
+An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds funds until specific conditions are met. You can create an escrow by sending an [EscrowCreate transaction][].
 
-{% amendment-disclaimer name="Escrow" /%}
+{% amendment-disclaimer name="TokenEscrow" mode="updated" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -39,8 +39,8 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description            |
 |:--------------------|:----------|:------------------|:----------|:-----------------------|
-| `Account`           | String    | AccountID         | Yes       | The address of the owner (sender) of this escrow. This is the account that provided the XRP, and gets it back if the escrow is canceled. |
-| `Amount`            | Object or String    | Amount            | Yes       | The amount to be delivered by the payment is escrow. |
+| `Account`           | String    | AccountID         | Yes       | The address of the owner (sender) of this escrow. This is the account that provided the funds, and gets it back if the escrow is canceled. |
+| `Amount`            | Object or String    | Amount            | Yes       | The amount to be delivered by the payment in escrow. The amount can be XRP, or with the TokenEscrow amendment, a fungible token. {% amendment-disclaimer name="TokenEscrow" mode="updated" /%} |
 | `CancelAfter`       | Number    | UInt32            | No        | The escrow can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch][] and it "has passed" if it's earlier than the close time of the previous validated ledger. |
 | `Condition`         | String    | Blob              | No        | A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction][] must contain a fulfillment that satisfies this condition. |
 | `Destination`       | String    | AccountID         | Yes       | The destination address where the XRP is paid if the escrow is successful. |
@@ -52,7 +52,8 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `PreviousTxnID`     | String    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 | `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this escrow, such as a hosted recipient at the owner's address. |
-| `TransferRate`      | Number    | UInt32            | No        | The fee to charge when users finish an escrow, initially set on the creation of an escrow contract and updated on subsequent finish transactions. |
+| `TransferRate`      | Number    | UInt32            | No        | The transfer rate or fee to charge when users finish an escrow, locked at the creation of an escrow contract and used during settlement. Applicable to Trust Line Tokens and MPTs only. {% amendment-disclaimer name="TokenEscrow" /%} |
+| `IssuerNode`        | Number    | UInt64            | No        | The ledger index of the issuer's directory node associated with the `Escrow`. Used when the issuer is neither the source nor destination account. {% amendment-disclaimer name="TokenEscrow" /%} |
 
 
 ## {% $frontmatter.seo.title %} Flags
