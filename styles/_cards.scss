@@ -320,3 +320,74 @@ main article .card-grid {
   margin-bottom: 0.25rem;
   margin-top: 0.5rem;
 }
+
+[data-component-name="Markdown/Markdown"] .nav-card {
+  // NavCard markdoc tag
+  ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 1.5rem;
+
+    &::before {
+      display: none;
+    }
+  }
+  .nav {
+    .nav-item {
+      border-bottom: 1px solid $gray-600;
+    }
+
+    .blurb {
+      font-size: .75rem;
+    }
+
+    .nav-link {
+      padding: 1rem 2rem 1rem 0;
+      color: $gray-200;
+      border-bottom: 0;
+      position: relative;
+
+      &:hover {
+        color: $purple;
+      }
+
+      &:not(.external-link)::after {
+        content: " ";
+        background-image: url(../img/icons/arrow-right-purple.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 1rem;
+        position: absolute;
+        right: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: all .2s ease;
+      }
+      &:not(.external-link):hover::after {
+        animation: arrowDance2 1.2s infinite;
+      }
+
+      &.external-link::after {
+        content: " ";
+        background-image: url(../img/icons/arrow-up-right.svg);
+        background-repeat: no-repeat;
+        position: absolute;
+        background-position: center;
+        background-size: .75rem;
+        right: 7px;
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: all .2s ease;
+      }
+
+      &.external-link:hover::after {
+        animation: arrowDanceDiag 1.2s infinite;
+      }
+    }
+  }
+}
