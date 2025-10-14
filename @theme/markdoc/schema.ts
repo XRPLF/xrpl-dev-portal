@@ -182,6 +182,18 @@ export const cardGrid: Schema & { tagName: string } = {
   render: 'CardGrid'
 }
 
+export const navCard: Schema & { tagName: string } = {
+  tagName: 'nav-card',
+  attributes: {
+    label: {
+      type: 'String',
+      required: true
+    }
+  },
+  render: 'NavCard',
+  selfClosing: true
+}
+
 export const tryIt: Schema &  { tagName: string } = {
   tagName: 'try-it',
   attributes: {

@@ -8,7 +8,7 @@ import { idify } from '../helpers'
 import { Button } from '@redocly/theme/components/Button/Button'
 
 export { default as XRPLoader } from '../components/XRPLoader'
-export { XRPLCard, CardGrid } from '../components/XRPLCard'
+export { XRPLCard, CardGrid, NavCard } from '../components/XRPLCard'
 export { AmendmentsTable, AmendmentDisclaimer, Badge } from '../components/Amendments'
 
 export function IndexPageItems() {
@@ -140,7 +140,7 @@ export function TxExample(props: {
   } else if (props.server == 'testnet') {
     use_server = "&server=wss%3A%2F%2Fs.altnet.rippletest.net%3A51233%2F"
   }
-  
+
   const ws_req = `req=%7B%22id%22%3A%22example_tx_lookup%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22${props.txid}%22%2C%22binary%22%3Afalse%2C%22api_version%22%3A2%7D`
   const to_path = `/resources/dev-tools/websocket-api-tool?${ws_req}${use_server}`
   return (
