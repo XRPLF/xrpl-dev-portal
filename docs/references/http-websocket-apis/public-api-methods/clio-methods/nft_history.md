@@ -24,7 +24,7 @@ An example of the request format:
 {
   "id": 1,
   "command": "nft_history",
-  "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
+  "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9"
 }
 ```
 {% /tab %}
@@ -35,7 +35,7 @@ An example of the request format:
     "method": "nft_history",
     "params": [
       {
-          "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
+          "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9"
       }
     ]
 }
@@ -48,17 +48,17 @@ An example of the request format:
 
 The request contains the following parameters:
 
-| `Field`        | Type                       | Description                    |
-|:---------------|:---------------------------|:-------------------------------|
-| `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer                | _(Optional)_ Use to specify the earliest ledger from which to include NFTs. A value of `-1` instructs the server to use the earliest validated ledger version available.  |
-| `ledger_index_max` | Integer                | _(Optional)_ Use to specify the most recent ledger to include NFTs from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`   | String                      | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_history` API is not available on `rippled`. (See [Specifying Ledgers][]) |
-| `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
-| `forward`          | Boolean                 | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
-| `limit`        | UInt32 | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
-| `marker`       | Marker | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging. |
+| `Field`            | Type                       | Description |
+|:-------------------|:---------------------------|:------------|
+| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT). |
+| `ledger_index_min` | Integer                    | _(Optional)_ Use to specify the earliest ledger from which to include NFTs. A value of `-1` instructs the server to use the earliest validated ledger version available. |
+| `ledger_index_max` | Integer                    | _(Optional)_ Use to specify the most recent ledger to include NFTs from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
+| `ledger_hash`      | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index`     | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_history` API is not available on `rippled`. (See [Specifying Ledgers][]) |
+| `binary`           | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
+| `forward`          | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
+| `limit`            | UInt32                     | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
+| `marker`           | Marker                     | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging. |
 
 {% admonition type="info" name="Note" %}If you do not specify a ledger version, Clio uses the latest validated ledger.{% /admonition %}
 
@@ -71,78 +71,221 @@ An example of a successful response:
 {% tab label="WebSocket" %}
 ```json
 {
-  "id": 0,
-  "type": "response",
   "result": {
-    "ledger_index_min": 21377274,
-    "ledger_index_max": 27876163,
+    "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+    "ledger_index_min": 32570,
+    "ledger_index_max": 99409949,
     "transactions": [
       {
         "meta": {
           "AffectedNodes": [
             {
-              "CreatedNode": {
-                "LedgerEntryType": "NFTokenPage",
-                "LedgerIndex": "97707A94B298B50334C39FB46E245D4744C0F5B5FFFFFFFFFFFFFFFFFFFFFFFF",
-                "NewFields": {
-                  "NFTokens": [
-                    {
-                      "NFToken": {
-                        "NFTokenID": "0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B00000000",
-                        "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"
-                      }
-                    }
-                  ]
-                }
+              "DeletedNode": {
+                "FinalFields": {
+                  "Flags": 2,
+                  "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+                  "PreviousTxnID": "FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A5619",
+                  "PreviousTxnLgrSeq": 92840801,
+                  "RootIndex": "1C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "1C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D"
+              }
+            },
+            {
+              "ModifiedNode": {
+                "LedgerEntryType": "AccountRoot",
+                "LedgerIndex": "587E28972F3B63D2260C0671E59593EE6C4D27AB857D1AF230F5CAA959BB3EAC",
+                "PreviousTxnID": "15DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A",
+                "PreviousTxnLgrSeq": 93800929
+              }
+            },
+            {
+              "DeletedNode": {
+                "FinalFields": {
+                  "Amount": "3000000",
+                  "Destination": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
+                  "Flags": 1,
+                  "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+                  "NFTokenOfferNode": "0",
+                  "Owner": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+                  "OwnerNode": "a3",
+                  "PreviousTxnID": "FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A5619",
+                  "PreviousTxnLgrSeq": 92840801
+                },
+                "LedgerEntryType": "NFTokenOffer",
+                "LedgerIndex": "6267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8"
               }
             },
             {
               "ModifiedNode": {
                 "FinalFields": {
-                  "Account": "rNoj836fhDm1eXaHHefPKs7iDb4gwzS7nc",
-                  "Balance": "999999988",
+                  "Account": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+                  "Balance": "270183296",
+                  "BurnedNFTokens": 72,
+                  "FirstNFTokenSequence": 66004341,
                   "Flags": 0,
-                  "MintedNFTokens": 1,
-                  "OwnerCount": 1,
-                  "Sequence": 27876155
+                  "MintedNFTokens": 111,
+                  "OwnerCount": 1204,
+                  "Sequence": 66025366
                 },
                 "LedgerEntryType": "AccountRoot",
-                "LedgerIndex": "AC0A2AD29B67B5E6DA1C5DE696440F59BCD8DEA0A4CF7AFD683D1489AAB1ED24",
+                "LedgerIndex": "993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019",
                 "PreviousFields": {
-                  "Balance": "1000000000",
-                  "OwnerCount": 0,
-                  "Sequence": 27876154
+                  "Balance": "270183308",
+                  "OwnerCount": 1205,
+                  "Sequence": 66025365
                 },
-                "PreviousTxnID": "B483F0F7100658380E42BCF1B15AD59B71C4082635AD53B78D08A5198BBB6939",
-                "PreviousTxnLgrSeq": 27876154
+                "PreviousTxnID": "15DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A",
+                "PreviousTxnLgrSeq": 93800929
+              }
+            },
+            {
+              "ModifiedNode": {
+                "FinalFields": {
+                  "Flags": 0,
+                  "IndexNext": "a6",
+                  "IndexPrevious": "a2",
+                  "Owner": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+                  "RootIndex": "FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD7140"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "D397E071F0DE6F26875FA9ABD92FAFC13B1CE6E6A612DD9FDB1EF4FA2D79B0B6",
+                "PreviousTxnID": "15DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A",
+                "PreviousTxnLgrSeq": 93800929
               }
             }
           ],
-          "TransactionIndex": 0,
+          "TransactionIndex": 98,
           "TransactionResult": "tesSUCCESS"
         },
         "tx": {
-          "Account": "rNoj836fhDm1eXaHHefPKs7iDb4gwzS7nc",
+          "Account": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+          "Fee": "12",
+          "LastLedgerSequence": 93800952,
+          "NFTokenOffers": [
+            "6267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8"
+          ],
+          "Sequence": 66025365,
+          "SigningPubKey": "03F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D4",
+          "SourceTag": 101102979,
+          "TransactionType": "NFTokenCancelOffer",
+          "TxnSignature": "30450221009897AFA16980838EAB0DD819E199E77E80879AA303DAEFF36FB970406715050402205892143D89D07CBD95CA101B2DE561465615A05E670A0A7A15209A0EFC52FE44",
+          "hash": "324EA92E3B2FD79B53655682045667BA7B683D5FB1051BF33BDDA982F21CB531",
+          "ledger_index": 93800934,
+          "date": 791530220
+        },
+        "validated": true
+      }
+      // ... Additional Metadata omitted for brevity
+      },
+      {
+        "meta": {
+          "AffectedNodes": [
+            {
+              "ModifiedNode": {
+                "FinalFields": {
+                  "Flags": 0,
+                  "NFTokens": [
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816B4066980521CFFD",
+                        "URI": "697066733A2F2F516D577335764370506278664A48466351514335385534585778614536446E68376E36414457516F517154714364"
+                      }
+                    },
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816BABD2130521D078",
+                        "URI": "697066733A2F2F516D50363735763661326A5379316263656D70444D355A70365638683842685677594E77737A667053417439394A"
+                      }
+                    }
+                    // ... Additional NFToken entries omitted for brevity
+                  ],
+                  "NextPageMin": "6807BF848FACD972F2F617E27003D75B2CAAC9812CAAC9818A6641830521CFE8",
+                  "PreviousPageMin": "6807BF848FACD972F2F617E27003D75B2CAAC9812CAAC9816B4066980521CFFD"
+                },
+                "LedgerEntryType": "NFTokenPage",
+                "LedgerIndex": "6807BF848FACD972F2F617E27003D75B2CAAC9812CAAC98179E62DAF0521D014",
+                "PreviousFields": {
+                  "NFTokens": [
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816B4066980521CFFD",
+                        "URI": "697066733A2F2F516D577335764370506278664A48466351514335385534585778614536446E68376E36414457516F517154714364"
+                      }
+                    },
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816BABD2130521D078",
+                        "URI": "697066733A2F2F516D50363735763661326A5379316263656D70444D355A70365638683842685677594E77737A667053417439394A"
+                      }
+                    }
+                    // ... Additional NFToken entries omitted for brevity
+                  ]
+                },
+                "PreviousTxnID": "75036C0D3740CEBF1A45E1EAA080F434E8CE865375A962D9F809A92B79ABBBBE",
+                "PreviousTxnLgrSeq": 86769021
+              }
+            },
+            {
+              "ModifiedNode": {
+                "FinalFields": {
+                  "Account": "rwVhZJLcdtioxdETLq31Ne2K97xm4zA8Jv",
+                  "Balance": "62592375",
+                  "BurnedNFTokens": 129,
+                  "FirstNFTokenSequence": 86101877,
+                  "Flags": 0,
+                  "MintedNFTokens": 629,
+                  "OwnerCount": 20,
+                  "Sequence": 86102636
+                },
+                "LedgerEntryType": "AccountRoot",
+                "LedgerIndex": "DD1EBD4FBD7B5FD90A271F416083636046FBEA37342114A0026C444F95FFE1F3",
+                "PreviousFields": {
+                  "Balance": "62592387",
+                  "MintedNFTokens": 628,
+                  "Sequence": 86102635
+                },
+                "PreviousTxnID": "C43C70DD5921EAFEFDC2EDC43DF83FF0FE74FB796D9E3F32EA4BFAF890968876",
+                "PreviousTxnLgrSeq": 86774497
+              }
+            }
+          ],
+          "TransactionIndex": 3,
+          "TransactionResult": "tesSUCCESS"
+        },
+        "tx": {
+          "Account": "rwVhZJLcdtioxdETLq31Ne2K97xm4zA8Jv",
           "Fee": "12",
           "Flags": 8,
-          "LastLedgerSequence": 27876176,
+          "LastLedgerSequence": 86774537,
+          "Memos": [
+            {
+              "Memo": {
+                "MemoData": "43726561746564206F6E206E66742E6F6E7872702E636F6D"
+              }
+            }
+          ],
           "NFTokenTaxon": 0,
-          "Sequence": 27876154,
-          "SigningPubKey": "EDDC20C6791F9FB13AFDCE2C717BE8779DD451BB556243F1FDBAA3CD159D68A9F6",
+          "Sequence": 86102635,
+          "SigningPubKey": "027A4E42790158269E1FAD03364B5A365C26D1C686DEA1A22BFE889AC0C759B2CD",
+          "SourceTag": 69420589,
           "TransactionType": "NFTokenMint",
           "TransferFee": 10000,
-          "TxnSignature": "EF657AB47E86FDC112BA054D90587DFE64A61604D9EDABAA7B01B61B56433E3C2AC5BF5AD2E8F5D2A9EAC22778F289094AC383A3F172B2304157A533E0C79802",
-          "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469",
-          "hash": "E0774E1B8628E397C6E88F67D4424E55E4C81324607B19318255310A6FBAA4A2",
-          "ledger_index": 27876158,
-          "date": 735167200
+          "TxnSignature": "3045022100B6AD2D48CFBBA1700A45853D779CEA05A4E438F0B98A6BEDB2200ABEA1D9F87902207E5879CDE873807B945344D2C872632103989097AE3660DEEAD52D84640C414D",
+          "URI": "697066733A2F2F516D57515A4167695A337041327065654A4D7441703663326A394151666E78706A754E62674D5A505748617A3267",
+          "hash": "FB9F697C4C9C7E8248BA63E7EDB4435B3CC12AF0BF426E618B184B76B7F94D28",
+          "ledger_index": 86774529,
+          "date": 764373881
         },
         "validated": true
       }
     ],
-    "nft_id": "0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B00000000",
     "validated": true
   },
+  "id": "example_nft_history",
+  "status": "success",
+  "type": "response",
   "warnings": [
     {
       "id": 2001,
@@ -157,74 +300,216 @@ An example of a successful response:
 ```json
 {
   "result": {
-    "ledger_index_min": 21377274,
-    "ledger_index_max": 27876163,
+    "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+    "ledger_index_min": 32570,
+    "ledger_index_max": 99413196,
     "transactions": [
       {
         "meta": {
           "AffectedNodes": [
             {
-              "CreatedNode": {
-                "LedgerEntryType": "NFTokenPage",
-                "LedgerIndex": "97707A94B298B50334C39FB46E245D4744C0F5B5FFFFFFFFFFFFFFFFFFFFFFFF",
-                "NewFields": {
-                  "NFTokens": [
-                    {
-                      "NFToken": {
-                        "NFTokenID": "0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B00000000",
-                        "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"
-                      }
-                    }
-                  ]
-                }
+              "DeletedNode": {
+                "FinalFields": {
+                  "Flags": 2,
+                  "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+                  "PreviousTxnID": "FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A5619",
+                  "PreviousTxnLgrSeq": 92840801,
+                  "RootIndex": "1C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "1C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D"
+              }
+            },
+            {
+              "ModifiedNode": {
+                "LedgerEntryType": "AccountRoot",
+                "LedgerIndex": "587E28972F3B63D2260C0671E59593EE6C4D27AB857D1AF230F5CAA959BB3EAC",
+                "PreviousTxnID": "15DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A",
+                "PreviousTxnLgrSeq": 93800929
+              }
+            },
+            {
+              "DeletedNode": {
+                "FinalFields": {
+                  "Amount": "3000000",
+                  "Destination": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
+                  "Flags": 1,
+                  "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+                  "NFTokenOfferNode": "0",
+                  "Owner": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+                  "OwnerNode": "a3",
+                  "PreviousTxnID": "FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A5619",
+                  "PreviousTxnLgrSeq": 92840801
+                },
+                "LedgerEntryType": "NFTokenOffer",
+                "LedgerIndex": "6267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8"
               }
             },
             {
               "ModifiedNode": {
                 "FinalFields": {
-                  "Account": "rNoj836fhDm1eXaHHefPKs7iDb4gwzS7nc",
-                  "Balance": "999999988",
+                  "Account": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+                  "Balance": "270183296",
+                  "BurnedNFTokens": 72,
+                  "FirstNFTokenSequence": 66004341,
                   "Flags": 0,
-                  "MintedNFTokens": 1,
-                  "OwnerCount": 1,
-                  "Sequence": 27876155
+                  "MintedNFTokens": 111,
+                  "OwnerCount": 1204,
+                  "Sequence": 66025366
                 },
                 "LedgerEntryType": "AccountRoot",
-                "LedgerIndex": "AC0A2AD29B67B5E6DA1C5DE696440F59BCD8DEA0A4CF7AFD683D1489AAB1ED24",
+                "LedgerIndex": "993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019",
                 "PreviousFields": {
-                  "Balance": "1000000000",
-                  "OwnerCount": 0,
-                  "Sequence": 27876154
+                  "Balance": "270183308",
+                  "OwnerCount": 1205,
+                  "Sequence": 66025365
                 },
-                "PreviousTxnID": "B483F0F7100658380E42BCF1B15AD59B71C4082635AD53B78D08A5198BBB6939",
-                "PreviousTxnLgrSeq": 27876154
+                "PreviousTxnID": "15DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A",
+                "PreviousTxnLgrSeq": 93800929
+              }
+            },
+            {
+              "ModifiedNode": {
+                "FinalFields": {
+                  "Flags": 0,
+                  "IndexNext": "a6",
+                  "IndexPrevious": "a2",
+                  "Owner": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+                  "RootIndex": "FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD7140"
+                },
+                "LedgerEntryType": "DirectoryNode",
+                "LedgerIndex": "D397E071F0DE6F26875FA9ABD92FAFC13B1CE6E6A612DD9FDB1EF4FA2D79B0B6",
+                "PreviousTxnID": "15DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A",
+                "PreviousTxnLgrSeq": 93800929
               }
             }
           ],
-          "TransactionIndex": 0,
+          "TransactionIndex": 98,
           "TransactionResult": "tesSUCCESS"
         },
         "tx": {
-          "Account": "rNoj836fhDm1eXaHHefPKs7iDb4gwzS7nc",
+          "Account": "rBodLLeMx7mqEBv4B2BsaWeTJYnALQddd6",
+          "Fee": "12",
+          "LastLedgerSequence": 93800952,
+          "NFTokenOffers": [
+            "6267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8"
+          ],
+          "Sequence": 66025365,
+          "SigningPubKey": "03F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D4",
+          "SourceTag": 101102979,
+          "TransactionType": "NFTokenCancelOffer",
+          "TxnSignature": "30450221009897AFA16980838EAB0DD819E199E77E80879AA303DAEFF36FB970406715050402205892143D89D07CBD95CA101B2DE561465615A05E670A0A7A15209A0EFC52FE44",
+          "hash": "324EA92E3B2FD79B53655682045667BA7B683D5FB1051BF33BDDA982F21CB531",
+          "ledger_index": 93800934,
+          "date": 791530220
+        },
+        "validated": true
+      }
+      // ... Additional metadata entries omitted for brevity
+      {
+        "meta": {
+          "AffectedNodes": [
+            {
+              "ModifiedNode": {
+                "FinalFields": {
+                  "Flags": 0,
+                  "NFTokens": [
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816B4066980521CFFD",
+                        "URI": "697066733A2F2F516D577335764370506278664A48466351514335385534585778614536446E68376E36414457516F517154714364"
+                      }
+                    },
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816BABD2130521D078",
+                        "URI": "697066733A2F2F516D50363735763661326A5379316263656D70444D355A70365638683842685677594E77737A667053417439394A"
+                      }
+                    }
+                    // ... Additional NFToken entries omitted for brevity
+                  ],
+                  "NextPageMin": "6807BF848FACD972F2F617E27003D75B2CAAC9812CAAC9818A6641830521CFE8",
+                  "PreviousPageMin": "6807BF848FACD972F2F617E27003D75B2CAAC9812CAAC9816B4066980521CFFD"
+                },
+                "LedgerEntryType": "NFTokenPage",
+                "LedgerIndex": "6807BF848FACD972F2F617E27003D75B2CAAC9812CAAC98179E62DAF0521D014",
+                "PreviousFields": {
+                  "NFTokens": [
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816B4066980521CFFD",
+                        "URI": "697066733A2F2F516D577335764370506278664A48466351514335385534585778614536446E68376E36414457516F517154714364"
+                      }
+                    },
+                    {
+                      "NFToken": {
+                        "NFTokenID": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816BABD2130521D078",
+                        "URI": "697066733A2F2F516D50363735763661326A5379316263656D70444D355A70365638683842685677594E77737A667053417439394A"
+                      }
+                    }
+                    // ... Additional NFToken entries omitted for brevity
+                  ]
+                },
+                "PreviousTxnID": "75036C0D3740CEBF1A45E1EAA080F434E8CE865375A962D9F809A92B79ABBBBE",
+                "PreviousTxnLgrSeq": 86769021
+              }
+            },
+            {
+              "ModifiedNode": {
+                "FinalFields": {
+                  "Account": "rwVhZJLcdtioxdETLq31Ne2K97xm4zA8Jv",
+                  "Balance": "62592375",
+                  "BurnedNFTokens": 129,
+                  "FirstNFTokenSequence": 86101877,
+                  "Flags": 0,
+                  "MintedNFTokens": 629,
+                  "OwnerCount": 20,
+                  "Sequence": 86102636
+                },
+                "LedgerEntryType": "AccountRoot",
+                "LedgerIndex": "DD1EBD4FBD7B5FD90A271F416083636046FBEA37342114A0026C444F95FFE1F3",
+                "PreviousFields": {
+                  "Balance": "62592387",
+                  "MintedNFTokens": 628,
+                  "Sequence": 86102635
+                },
+                "PreviousTxnID": "C43C70DD5921EAFEFDC2EDC43DF83FF0FE74FB796D9E3F32EA4BFAF890968876",
+                "PreviousTxnLgrSeq": 86774497
+              }
+            }
+          ],
+          "TransactionIndex": 3,
+          "TransactionResult": "tesSUCCESS"
+        },
+        "tx": {
+          "Account": "rwVhZJLcdtioxdETLq31Ne2K97xm4zA8Jv",
           "Fee": "12",
           "Flags": 8,
-          "LastLedgerSequence": 27876176,
+          "LastLedgerSequence": 86774537,
+          "Memos": [
+            {
+              "Memo": {
+                "MemoData": "43726561746564206F6E206E66742E6F6E7872702E636F6D"
+              }
+            }
+          ],
           "NFTokenTaxon": 0,
-          "Sequence": 27876154,
-          "SigningPubKey": "EDDC20C6791F9FB13AFDCE2C717BE8779DD451BB556243F1FDBAA3CD159D68A9F6",
+          "Sequence": 86102635,
+          "SigningPubKey": "027A4E42790158269E1FAD03364B5A365C26D1C686DEA1A22BFE889AC0C759B2CD",
+          "SourceTag": 69420589,
           "TransactionType": "NFTokenMint",
           "TransferFee": 10000,
-          "TxnSignature": "EF657AB47E86FDC112BA054D90587DFE64A61604D9EDABAA7B01B61B56433E3C2AC5BF5AD2E8F5D2A9EAC22778F289094AC383A3F172B2304157A533E0C79802",
-          "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469",
-          "hash": "E0774E1B8628E397C6E88F67D4424E55E4C81324607B19318255310A6FBAA4A2",
-          "ledger_index": 27876158,
-          "date": 735167200
+          "TxnSignature": "3045022100B6AD2D48CFBBA1700A45853D779CEA05A4E438F0B98A6BEDB2200ABEA1D9F87902207E5879CDE873807B945344D2C872632103989097AE3660DEEAD52D84640C414D",
+          "URI": "697066733A2F2F516D57515A4167695A337041327065654A4D7441703663326A394151666E78706A754E62674D5A505748617A3267",
+          "hash": "FB9F697C4C9C7E8248BA63E7EDB4435B3CC12AF0BF426E618B184B76B7F94D28",
+          "ledger_index": 86774529,
+          "date": 764373881
         },
         "validated": true
       }
     ],
-    "nft_id": "0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B00000000",
-    "validated": true
+    "validated": true,
+    "status": "success"
   },
   "warnings": [
     {
@@ -240,28 +525,56 @@ An example of a successful response:
 
 With the `binary` parameter set to _true_, you receive a compact response that uses hex strings. It's not human readable, but much more concise.
 
+{% admonition type="info" name="Note" %}
+The example response below uses `api_version: 2`.
+{% /admonition %}
+
 {% tabs %}
 
 {% tab label="WebSocket" %}
 ```json
 {
-  "id": 0,
-  "type": "response",
   "result": {
-    "ledger_index_min": 21377274,
-    "ledger_index_max": 27876275,
+    "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+    "ledger_index_min": 32570,
+    "ledger_index_max": 99435937,
     "transactions": [
       {
-        "meta": "201C00000000F8E31100505697707A94B298B50334C39FB46E245D4744C0F5B5FFFFFFFFFFFFFFFFFFFFFFFFE8FAEC5A0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B000000007542697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469E1F1E1E1E51100612501A95B3A55B483F0F7100658380E42BCF1B15AD59B71C4082635AD53B78D08A5198BBB693956AC0A2AD29B67B5E6DA1C5DE696440F59BCD8DEA0A4CF7AFD683D1489AAB1ED24E62401A95B3A2D0000000062400000003B9ACA00E1E722000000002401A95B3B2D00000001202B0000000162400000003B9AC9F4811497707A94B298B50334C39FB46E245D4744C0F5B5E1E1F1031000",
-        "tx_blob": "12001914271022000000082401A95B3A201B01A95B50202A0000000068400000000000000C7321EDDC20C6791F9FB13AFDCE2C717BE8779DD451BB556243F1FDBAA3CD159D68A9F67440EF657AB47E86FDC112BA054D90587DFE64A61604D9EDABAA7B01B61B56433E3C2AC5BF5AD2E8F5D2A9EAC22778F289094AC383A3F172B2304157A533E0C798027542697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469811497707A94B298B50334C39FB46E245D4744C0F5B5",
-        "ledger_index": 27876158,
-        "date": 735167200,
+        "meta_blob": "201C00000062F8E4110064561C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231DE72200000002250588A36155FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A5619581C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E511006125059749E15515DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A56587E28972F3B63D2260C0671E59593EE6C4D27AB857D1AF230F5CAA959BB3EACE1E4110037566267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8E72200000001250588A3613400000000000000A33C000000000000000055FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A56195A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000002DC6C082147682B8C119F94724861D13A4B5307CBFABB669DD83141565EED165BA79999425204A8491C73B1301E34FE1E1E511006125059749E15515DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A56993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019E62403EF77952D000004B56240000000101AAB8CE1E722000000002403EF77962D000004B4202B0000006F202C00000048203203EF25756240000000101AAB8081147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E511006425059749E15515DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A56D397E071F0DE6F26875FA9ABD92FAFC13B1CE6E6A612DD9FDB1EF4FA2D79B0B6E722000000003100000000000000A63200000000000000A258FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD714082147682B8C119F94724861D13A4B5307CBFABB669DDE1E1F1031000",
+        "tx_blob": "12001C230606B5832403EF7795201B059749F868400000000000000C732103F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D4744730450221009897AFA16980838EAB0DD819E199E77E80879AA303DAEFF36FB970406715050402205892143D89D07CBD95CA101B2DE561465615A05E670A0A7A15209A0EFC52FE4481147682B8C119F94724861D13A4B5307CBFABB669DD0413206267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8",
+        "ledger_index": 93800934,
+        "date": 791530220,
+        "validated": true
+      },
+      {
+        "meta_blob": "201C0000004BF8E3110064561C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231DE82200000002581C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E5110061250588A35E55A1525FDCD490BD83BB936612B5C76D52507E40CB8384223AAC95E9ECDDD816BD56587E28972F3B63D2260C0671E59593EE6C4D27AB857D1AF230F5CAA959BB3EACE1E3110037566267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8E822000000013400000000000000A35A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000002DC6C082147682B8C119F94724861D13A4B5307CBFABB669DD83141565EED165BA79999425204A8491C73B1301E34FE1E1E5110061250588A35D554489CBBC591F7828A27B281FE513CDFC1E032ECF9483F01530404D3C29DDE5DC56993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019E62403EF5AB42D00000A1A62400000003AD61EBEE1E722000000002403EF5AB52D00000A1B202B0000006F202C00000048203203EF257562400000003AD61EB281147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E5110064250588A35D554489CBBC591F7828A27B281FE513CDFC1E032ECF9483F01530404D3C29DDE5DC56D397E071F0DE6F26875FA9ABD92FAFC13B1CE6E6A612DD9FDB1EF4FA2D79B0B6E722000000003200000000000000A258FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD714082147682B8C119F94724861D13A4B5307CBFABB669DDE1E1F1031000",
+        "tx_blob": "12001B2200000001230606B5832403EF5AB4201B0588A3735A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000002DC6C068400000000000000C732103F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D474473045022100F9AD1F24218A86E0C4ED87D7A80D30E64BED3158F369383EE2DAF8F215779C7C0220059A7B626D7F38E352BCCA7F45D3B4C10726BA2CAE64F8147089CF057297062281147682B8C119F94724861D13A4B5307CBFABB669DD83141565EED165BA79999425204A8491C73B1301E34F",
+        "ledger_index": 92840801,
+        "date": 787788902,
+        "validated": true
+      },
+      {
+        "meta_blob": "201C00000001F8E311003756417A1F7087351FF2F091149125B8537A08561DAA07B35399943DC4A3B1E591DAE83400000000000000185A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001EBF1882147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E5110064566400E79FD76837F48323E54A66DA168891E601EBDBF0BA3F9AD6A334784407ABE7220000000032000000000000001758FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD714082147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E311006456889A03272E16CBCA081FF39EE838C3A217485670113019DAA4A84932AEFC7F02E8220000000158889A03272E16CBCA081FF39EE838C3A217485670113019DAA4A84932AEFC7F025A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E511006125052C7E41558176DA2BA3363B0901379B292270CA089EDE39A255D4A8F0224C86483467BCEA56993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019E62403EF20182D0000017A6240000000E53A6064E1E722000000002403EF20192D0000017B6240000000E53A605881147682B8C119F94724861D13A4B5307CBFABB669DDE1E1F1031000",
+        "tx_blob": "12001B230423462D2403EF2018201B052C7E635A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001EBF1868400000000000000C732103F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D474473045022100991746A6AD5FC763B658D592AE6301AB19504C8032C97538AFE938FA375EBE8A0220200F7848848653D59151F432D6C6374C4838EE1373F7EFAA5C1EF4570B5FFBFA81147682B8C119F94724861D13A4B5307CBFABB669DD82146807BF848FACD972F2F617E27003D75B2CAAC981F9EA7D1843726561746564206F6E206E66742E6F6E7872702E636F6DE1F1",
+        "ledger_index": 86802011,
+        "date": 764479561,
+        "validated": true
+      },
+      {
+        "meta_blob": "201C0000000EF8E3110064561C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231DE82200000002581C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E5110064566096E1D8134722843D499E983F3A092D9B74AD2039F7F4FC3C17587B34DAFA24E7220000000032000000000000000D58830BE57DF6ED1C3103070BF1968CEFB15ADE866418A1B176E9B188ECE82BC63382146807BF848FACD972F2F617E27003D75B2CAAC981E1E1E511006125052C1F3F558DA0521A7779A7F845981EA94D551062C611F492F60F9ECEF53978340A63E32B56CD3CA85955F9B786BAD89F9125200EB9BCBEE5DCC996CC71A565FAA876CD1ACCE1E311003756D8C83BE4736E856BD18F92FC9A4ABD45641313508E5412D6ACACB90A82F948F5E8220000000134000000000000000E5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001E848082146807BF848FACD972F2F617E27003D75B2CAAC9818314112DE2804BD473EB8A77E01E1C43A9CDC79A6EBFE1E1E511006125052C1F3F558DA0521A7779A7F845981EA94D551062C611F492F60F9ECEF53978340A63E32B56DD1EBD4FBD7B5FD90A271F416083636046FBEA37342114A0026C444F95FFE1F3E6240521D44B2D000001EB62400000003C5AD883E1E72200000000240521D44C2D000001EC202B00000275202C0000008120320521CF7562400000003C5AD87781146807BF848FACD972F2F617E27003D75B2CAAC981E1E1F1031000",
+        "tx_blob": "12001B2200000001230423462D240521D44B201B052C1F4A5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001E848068400000000000000C7321027A4E42790158269E1FAD03364B5A365C26D1C686DEA1A22BFE889AC0C759B2CD7447304502210084109EB534DC4C45F5CA0AA10C08E396FDC1A84925B20B4188426EA0E56090CD02203555F331713600C91C09E72EFAC8BCC594A95561C16880866735F62D1DB0794381146807BF848FACD972F2F617E27003D75B2CAAC9818314112DE2804BD473EB8A77E01E1C43A9CDC79A6EBFF9EA7D1843726561746564206F6E206E66742E6F6E7872702E636F6DE1F1",
+        "ledger_index": 86777666,
+        "date": 764385850,
         "validated": true
       }
+      // ... Additional metadata omitted for brevity
     ],
-    "nft_id": "0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B00000000",
     "validated": true
   },
+  "id": "example_nft_history",
+  "api_version": 2,
+  "status": "success",
+  "type": "response",
   "warnings": [
     {
       "id": 2001,
@@ -276,19 +589,42 @@ With the `binary` parameter set to _true_, you receive a compact response that u
 ```json
 {
   "result": {
-    "ledger_index_min": 21377274,
-    "ledger_index_max": 27876275,
+    "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9",
+    "ledger_index_min": 32570,
+    "ledger_index_max": 99435993,
     "transactions": [
       {
-        "meta": "201C00000000F8E31100505697707A94B298B50334C39FB46E245D4744C0F5B5FFFFFFFFFFFFFFFFFFFFFFFFE8FAEC5A0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B000000007542697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469E1F1E1E1E51100612501A95B3A55B483F0F7100658380E42BCF1B15AD59B71C4082635AD53B78D08A5198BBB693956AC0A2AD29B67B5E6DA1C5DE696440F59BCD8DEA0A4CF7AFD683D1489AAB1ED24E62401A95B3A2D0000000062400000003B9ACA00E1E722000000002401A95B3B2D00000001202B0000000162400000003B9AC9F4811497707A94B298B50334C39FB46E245D4744C0F5B5E1E1F1031000",
-        "tx_blob": "12001914271022000000082401A95B3A201B01A95B50202A0000000068400000000000000C7321EDDC20C6791F9FB13AFDCE2C717BE8779DD451BB556243F1FDBAA3CD159D68A9F67440EF657AB47E86FDC112BA054D90587DFE64A61604D9EDABAA7B01B61B56433E3C2AC5BF5AD2E8F5D2A9EAC22778F289094AC383A3F172B2304157A533E0C798027542697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469811497707A94B298B50334C39FB46E245D4744C0F5B5",
-        "ledger_index": 27876158,
-        "date": 735167200,
+        "meta_blob": "201C00000062F8E4110064561C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231DE72200000002250588A36155FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A5619581C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E511006125059749E15515DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A56587E28972F3B63D2260C0671E59593EE6C4D27AB857D1AF230F5CAA959BB3EACE1E4110037566267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8E72200000001250588A3613400000000000000A33C000000000000000055FD779D4C51C30730EB3EC7B20D07CDB0BC5A259D165F29C8CFDE86752D5A56195A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000002DC6C082147682B8C119F94724861D13A4B5307CBFABB669DD83141565EED165BA79999425204A8491C73B1301E34FE1E1E511006125059749E15515DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A56993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019E62403EF77952D000004B56240000000101AAB8CE1E722000000002403EF77962D000004B4202B0000006F202C00000048203203EF25756240000000101AAB8081147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E511006425059749E15515DF0F4622A6BBA7051D029A1ED16930DB3D476D2B29CDF63FFDA5B320BF385A56D397E071F0DE6F26875FA9ABD92FAFC13B1CE6E6A612DD9FDB1EF4FA2D79B0B6E722000000003100000000000000A63200000000000000A258FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD714082147682B8C119F94724861D13A4B5307CBFABB669DDE1E1F1031000",
+        "tx_blob": "12001C230606B5832403EF7795201B059749F868400000000000000C732103F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D4744730450221009897AFA16980838EAB0DD819E199E77E80879AA303DAEFF36FB970406715050402205892143D89D07CBD95CA101B2DE561465615A05E670A0A7A15209A0EFC52FE4481147682B8C119F94724861D13A4B5307CBFABB669DD0413206267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8",
+        "ledger_index": 93800934,
+        "date": 791530220,
+        "validated": true
+      },
+      {
+        "meta_blob": "201C0000004BF8E3110064561C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231DE82200000002581C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E5110061250588A35E55A1525FDCD490BD83BB936612B5C76D52507E40CB8384223AAC95E9ECDDD816BD56587E28972F3B63D2260C0671E59593EE6C4D27AB857D1AF230F5CAA959BB3EACE1E3110037566267FBBCE11EEFB9931BFD2BB7E2D4455A60CBA6DE60830266DA4C1C7966D2A8E822000000013400000000000000A35A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000002DC6C082147682B8C119F94724861D13A4B5307CBFABB669DD83141565EED165BA79999425204A8491C73B1301E34FE1E1E5110061250588A35D554489CBBC591F7828A27B281FE513CDFC1E032ECF9483F01530404D3C29DDE5DC56993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019E62403EF5AB42D00000A1A62400000003AD61EBEE1E722000000002403EF5AB52D00000A1B202B0000006F202C00000048203203EF257562400000003AD61EB281147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E5110064250588A35D554489CBBC591F7828A27B281FE513CDFC1E032ECF9483F01530404D3C29DDE5DC56D397E071F0DE6F26875FA9ABD92FAFC13B1CE6E6A612DD9FDB1EF4FA2D79B0B6E722000000003200000000000000A258FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD714082147682B8C119F94724861D13A4B5307CBFABB669DDE1E1F1031000",
+        "tx_blob": "12001B2200000001230606B5832403EF5AB4201B0588A3735A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000002DC6C068400000000000000C732103F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D474473045022100F9AD1F24218A86E0C4ED87D7A80D30E64BED3158F369383EE2DAF8F215779C7C0220059A7B626D7F38E352BCCA7F45D3B4C10726BA2CAE64F8147089CF057297062281147682B8C119F94724861D13A4B5307CBFABB669DD83141565EED165BA79999425204A8491C73B1301E34F",
+        "ledger_index": 92840801,
+        "date": 787788902,
+        "validated": true
+      },
+      {
+        "meta_blob": "201C00000001F8E311003756417A1F7087351FF2F091149125B8537A08561DAA07B35399943DC4A3B1E591DAE83400000000000000185A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001EBF1882147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E5110064566400E79FD76837F48323E54A66DA168891E601EBDBF0BA3F9AD6A334784407ABE7220000000032000000000000001758FF1CF158ED5CE0E41E954B6CD1C3B5ECF1D4A3901113F1E2B9DCBF9532FD714082147682B8C119F94724861D13A4B5307CBFABB669DDE1E1E311006456889A03272E16CBCA081FF39EE838C3A217485670113019DAA4A84932AEFC7F02E8220000000158889A03272E16CBCA081FF39EE838C3A217485670113019DAA4A84932AEFC7F025A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E511006125052C7E41558176DA2BA3363B0901379B292270CA089EDE39A255D4A8F0224C86483467BCEA56993F123FC11F0FDD065FB33C99007369E4768994C03936C67B92C44F47DE5019E62403EF20182D0000017A6240000000E53A6064E1E722000000002403EF20192D0000017B6240000000E53A605881147682B8C119F94724861D13A4B5307CBFABB669DDE1E1F1031000",
+        "tx_blob": "12001B230423462D2403EF2018201B052C7E635A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001EBF1868400000000000000C732103F314C754C26C0B9A859693C57CFCE464A14E86ADA0CAA174817A637E828E64D474473045022100991746A6AD5FC763B658D592AE6301AB19504C8032C97538AFE938FA375EBE8A0220200F7848848653D59151F432D6C6374C4838EE1373F7EFAA5C1EF4570B5FFBFA81147682B8C119F94724861D13A4B5307CBFABB669DD82146807BF848FACD972F2F617E27003D75B2CAAC981F9EA7D1843726561746564206F6E206E66742E6F6E7872702E636F6DE1F1",
+        "ledger_index": 86802011,
+        "date": 764479561,
+        "validated": true
+      },
+      {
+        "meta_blob": "201C0000000EF8E3110064561C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231DE82200000002581C7421BF3CBA58699FF855EFF8BB68E63B843B17442FEED9CF3FDB5F497C231D5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9E1E1E5110064566096E1D8134722843D499E983F3A092D9B74AD2039F7F4FC3C17587B34DAFA24E7220000000032000000000000000D58830BE57DF6ED1C3103070BF1968CEFB15ADE866418A1B176E9B188ECE82BC63382146807BF848FACD972F2F617E27003D75B2CAAC981E1E1E511006125052C1F3F558DA0521A7779A7F845981EA94D551062C611F492F60F9ECEF53978340A63E32B56CD3CA85955F9B786BAD89F9125200EB9BCBEE5DCC996CC71A565FAA876CD1ACCE1E311003756D8C83BE4736E856BD18F92FC9A4ABD45641313508E5412D6ACACB90A82F948F5E8220000000134000000000000000E5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001E848082146807BF848FACD972F2F617E27003D75B2CAAC9818314112DE2804BD473EB8A77E01E1C43A9CDC79A6EBFE1E1E511006125052C1F3F558DA0521A7779A7F845981EA94D551062C611F492F60F9ECEF53978340A63E32B56DD1EBD4FBD7B5FD90A271F416083636046FBEA37342114A0026C444F95FFE1F3E6240521D44B2D000001EB62400000003C5AD883E1E72200000000240521D44C2D000001EC202B00000275202C0000008120320521CF7562400000003C5AD87781146807BF848FACD972F2F617E27003D75B2CAAC981E1E1F1031000",
+        "tx_blob": "12001B2200000001230423462D240521D44B201B052C1F4A5A000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E96140000000001E848068400000000000000C7321027A4E42790158269E1FAD03364B5A365C26D1C686DEA1A22BFE889AC0C759B2CD7447304502210084109EB534DC4C45F5CA0AA10C08E396FDC1A84925B20B4188426EA0E56090CD02203555F331713600C91C09E72EFAC8BCC594A95561C16880866735F62D1DB0794381146807BF848FACD972F2F617E27003D75B2CAAC9818314112DE2804BD473EB8A77E01E1C43A9CDC79A6EBFF9EA7D1843726561746564206F6E206E66742E6F6E7872702E636F6DE1F1",
+        "ledger_index": 86777666,
+        "date": 764385850,
         "validated": true
       }
+      // ... Additional metadata omitted for brevity
     ],
-    "nft_id": "0008271097707A94B298B50334C39FB46E245D4744C0F5B50000099B00000000",
-    "validated": true
+    "validated": true,
+    "status": "success"
   },
   "warnings": [
     {
@@ -297,7 +633,6 @@ With the `binary` parameter set to _true_, you receive a compact response that u
     }
   ]
 }
-
 ```
 {% /tab %}
 
@@ -319,13 +654,14 @@ The response follows the [standard format][], with a successful result containin
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
-| `Field`        | Type                             | Description              |
-|:---------------|:---------------------------------|:-------------------------|
-| `ledger_index` | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
-| `meta`         | Object (JSON) or String (Binary) | If `binary` is True, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
-| `tx`           | Object                           | (JSON mode only) JSON object defining the transaction |
-| `tx_blob`      | String                           | (Binary mode only) Unique hashed String representing the transaction. |
-| `validated`    | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
+| `Field`         | Type                             | Description              |
+|:----------------|:---------------------------------|:-------------------------|
+| `ledger_index`  | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
+| `meta` (API v1) | Object (JSON) or String (Binary) | If `binary` is true, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
+| `meta_blob` (API v2) | String (Binary) | If `binary` is true, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included as `meta` in JSON format. |
+| `tx`            | Object                           | (JSON mode only) JSON object defining the transaction |
+| `tx_blob`       | String                           | (Binary mode only) Unique hashed String representing the transaction. |
+| `validated`     | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
 
 For definitions of the fields returned in the `tx` object, see [Transaction Metadata](../../../protocol/transactions/metadata.md).
 
