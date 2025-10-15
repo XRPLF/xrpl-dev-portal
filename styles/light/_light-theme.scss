@@ -453,6 +453,17 @@ aside .card {
     color: $green-600;
   }
 }
+// Custom Markdoc Tags
+[data-component-name="Markdown/Markdown"] {
+  .nav-card {
+    .nav .nav-link {
+      color: $gray-800;
+      &:hover {
+        color: $blue-purple-500;
+      }
+    }
+  }
+}
 
 // Code ------------------------------------------------------------------------
 // Inline code font

@@ -321,6 +321,10 @@ main article .card-grid {
   margin-top: 0.5rem;
 }
 
+[data-component-name="Markdown/Markdown"] .card-grid-2xN {
+  grid-gap: 40px;
+}
+
 [data-component-name="Markdown/Markdown"] .nav-card {
   // NavCard markdoc tag
   ul {
@@ -338,8 +342,14 @@ main article .card-grid {
     }
   }
   .nav {
+    display: block;
+
     .nav-item {
       border-bottom: 1px solid $gray-600;
+
+      &:last-child {
+        border-bottom-width: 0;
+      }
     }
 
     .blurb {
@@ -348,9 +358,11 @@ main article .card-grid {
 
     .nav-link {
       padding: 1rem 2rem 1rem 0;
+      font-size: 15px;
       color: $gray-200;
       border-bottom: 0;
       position: relative;
+      text-decoration: none;
 
       &:hover {
         color: $purple;
@@ -366,10 +378,12 @@ main article .card-grid {
         right: 0;
         width: 1.5rem;
         height: 1.5rem;
-        transition: all .2s ease;
+        transition: all .6s ease;
+        animation-play-state: paused;
       }
       &:not(.external-link):hover::after {
         animation: arrowDance2 1.2s infinite;
+        animation-play-state: running;
       }
 
       &.external-link::after {
@@ -382,7 +396,7 @@ main article .card-grid {
         right: 7px;
         width: 1.5rem;
         height: 1.5rem;
-        transition: all .2s ease;
+        transition: all .5s ease;
       }
 
       &.external-link:hover::after {
