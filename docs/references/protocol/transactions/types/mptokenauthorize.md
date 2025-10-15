@@ -22,11 +22,15 @@ This example assumes that the transaction is submitted by the holder of the toke
 ```json
 {
   "TransactionType": "MPTokenAuthorize",
-  "Account": "rpLxcR2ptLkLV4is3jZc48K4dMpXB9CQBF",
-  "MPTokenIssuanceID": "006616399B81473A2B8F16D149FA244BBAB97E5412D846ED",
-  "Fee": "10"
+  "Account": "rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP",
+  "MPTokenIssuanceID": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+  "Fee": "10",
+  "Flags": 0,
+  "Sequence": 99537811
 }
 ```
+
+{% tx-example txid="9C19FBB8C0C92C17B11DF626A94303776D44AC36D7A760863FF3585532C38230" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
