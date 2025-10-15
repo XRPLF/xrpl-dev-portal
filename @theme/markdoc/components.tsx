@@ -8,7 +8,7 @@ import { idify } from '../helpers'
 import { Button } from '@redocly/theme/components/Button/Button'
 
 export { default as XRPLoader } from '../components/XRPLoader'
-export { XRPLCard, CardGrid, NavCard } from '../components/XRPLCard'
+export { XRPLCard, CardGrid, NavCard, LabelGrid } from '../components/XRPLCard'
 export { AmendmentsTable, AmendmentDisclaimer, Badge } from '../components/Amendments'
 
 export function IndexPageItems() {

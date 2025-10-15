@@ -194,6 +194,18 @@ export const navCard: Schema & { tagName: string } = {
   selfClosing: true
 }
 
+export const labelGrid: Schema & { tagName: string } = {
+  tagName: 'label-grid',
+  attributes: {
+    category: {
+      type: 'String',
+      required: true
+    }
+  },
+  render: 'LabelGrid',
+  selfClosing: true
+}
+
 export const tryIt: Schema &  { tagName: string } = {
   tagName: 'try-it',
   attributes: {

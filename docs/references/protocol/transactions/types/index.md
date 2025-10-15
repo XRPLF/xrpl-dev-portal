@@ -16,21 +16,38 @@ All transactions have certain fields in common:
 
 Each transaction type has additional fields relevant to the type of action it causes.
 
+## Payments
+{% label-grid category="Payments" /%}
+
+## Trading
+{% label-grid category="Trading" /%}
+
+## Tokens
+{% label-grid category="Tokens" /%}
+
+## Settings
+{% label-grid category="Settings" /%}
+
+## Other
+{% label-grid category="Other" /%}
+
+<!--
+## Manual card grid below (ignore)
+
 {% card-grid layout="2xN" %}
 {% nav-card label="AMM" /%}
 {% nav-card label="Credentials" /%}
 {% nav-card label="Tokens" /%}
 {% nav-card label="Transaction Sending" /%}
 {% nav-card label="DID" /%}
-{% nav-card label="Escrow" /%}
 {% nav-card label="MPTs" /%}
 {% nav-card label="NFTs" /%}
 {% nav-card label="Decentralized Exchange" /%}
 {% nav-card label="Oracles" /%}
 {% nav-card label="Sidechains" /%}
 {% nav-card label="Permissioned Domains" /%}
-{% nav-card label="Payment Channels" /%}
-{% nav-card label="Checks" /%}
 {% /card-grid %}
 
+## All Transaction Types Alphabetically
 {% child-pages /%}
+-->

@@ -32,19 +32,46 @@ export function XRPLCard(props: XRPLCardProps) {
     )
 }
 
-export function NavCard(props: {
-  label: string
+export function LabelGrid(props: {
+  category: string
 }) {
   const { usePageSharedData } = useThemeHooks()
   const data = usePageSharedData('index-page-items') as any[]
-  //console.log(data)//TODO:remove
-  const matchingPages = data.filter((page) => {return page.labels?.includes(props.label)})
-  console.log(matchingPages)
+  const matchingPages = data.filter((page) => {return page.category === props.category})
+  const labelsInCategory = []
+  const unlabeled = []
+  for (const page of matchingPages) {
+    if (page.labels) {
+      for (const label of page.labels) {
+        if (!labelsInCategory.includes(label)) {
+          labelsInCategory.push(label)
+        }
+      }
+    } else {
+      unlabeled.push(page)
+    }
+  }
+  labelsInCategory.sort()
   return (
-    <div className="card nav-card">
-      <h3 className="card-title">{props.label}</h3>
+    <div className="card-grid card-grid-2xN">
+      {labelsInCategory.map( (label) => (
+          RawNavCard(label, matchingPages.filter((page) => {return page.labels?.includes(label)})
+        ) )
+      )}
+      { unlabeled.length ? (
+        RawNavCard("Unlabeled", unlabeled)
+      ) : ""}
+    </div>
+  )
+}
+
+
+function RawNavCard(label: string, pages: any[]) {
+  return (
+    <div className="card nav-card" key={label}>
+      <h3 className="card-title">{label}</h3>
       <ul className="nav">
-        {matchingPages?.map((page: any) => (
+        {pages?.map((page: any) => (
           <li className="nav-item" key={page.slug}>
             <Link className="nav-link" to={page.slug}>{
                 page.status === "not_enabled" ? (<>
@@ -52,12 +79,25 @@ export function NavCard(props: {
                   {" "}
                 </>) : ""
               }{page.title}</Link>
-            <p className="blurb child-blurb">{page.seo?.description}</p>
+            {
+              // To add page descriptions to the cards, uncomment:
+              //<p className="blurb child-blurb">{page.seo?.description}</p>
+            }
           </li>
         ))}
       </ul>
     </div>
   )
+}
+
+export function NavCard(props: {
+  label: string
+}) {
+  const { usePageSharedData } = useThemeHooks()
+  const data = usePageSharedData('index-page-items') as any[]
+  const matchingPages = data.filter((page) => {return page.labels?.includes(props.label)})
+
+  return RawNavCard(props.label, matchingPages)
 }
 
 export function CardGrid(props) {
