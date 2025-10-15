@@ -3,6 +3,7 @@ seo:
     description: Redeem a check.
 labels:
     - Checks
+category: Payments
 ---
 # CheckCash
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")

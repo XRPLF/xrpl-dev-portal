@@ -3,6 +3,7 @@ seo:
     description: Accept a credential provisionally issued to your account.
 labels:
     - Credentials
+category: Settings
 ---
 # CredentialAccept
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Credentials.cpp "Source")

@@ -3,6 +3,7 @@ seo:
     description: Claw back tokens you've issued.
 labels:
     - Tokens
+category: Payments
 ---
 # Clawback
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Clawback.cpp "Source")

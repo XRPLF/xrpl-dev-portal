@@ -3,6 +3,7 @@ seo:
     description: Create or update a Decentralized Identifier.
 labels:
     - DID
+category: Other
 ---
 # DIDSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DID.cpp "Source")

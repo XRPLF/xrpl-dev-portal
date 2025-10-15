@@ -3,6 +3,7 @@ seo:
     description: Delete an Automated Market Maker with an empty asset pool.
 labels:
     - AMM
+category: Trading
 ---
 # AMMDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMDelete.cpp "Source")

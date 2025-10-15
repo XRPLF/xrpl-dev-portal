@@ -2,9 +2,9 @@
 seo:
     description: Delete a permissioned domain.
 labels:
-    - Compliance
-    - Permissioned Domains
+    - Permissions
 status: not_enabled
+category: Settings
 ---
 # PermissionedDomainDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp "Source")

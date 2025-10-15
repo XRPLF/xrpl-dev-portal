@@ -3,7 +3,7 @@ seo:
     description: Claw back tokens from a holder who has deposited your issued tokens into an Automated Market Maker pool.
 labels:
     - AMM
-    - Tokens
+category: Trading
 ---
 # AMMClawback
 

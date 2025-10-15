@@ -3,6 +3,7 @@ seo:
     description: Start a cross-chain transfer of value.
 labels:
     - Sidechains
+category: Other
 status: not_enabled
 ---
 # XChainCommit

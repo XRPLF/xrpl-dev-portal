@@ -3,6 +3,7 @@ seo:
     description: Provide an attestation that an XChainAccountCreateCommit transaction occurred on another chain, for a cross-chain bridge.
 labels:
     - Sidechains
+category: Other
 status: not_enabled
 ---
 # XChainAddAccountCreateAttestation

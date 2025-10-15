@@ -3,6 +3,7 @@ seo:
     description: Escrow funds, which can be released to the destination after a specific time or condition.
 labels:
     - Escrow
+category: Payments
 ---
 # EscrowCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")

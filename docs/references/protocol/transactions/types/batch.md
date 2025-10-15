@@ -4,6 +4,7 @@ seo:
 labels:
     - Transaction Sending
 status: not_enabled
+category: Other
 ---
 # Batch
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Batch.cpp "Source")

@@ -3,6 +3,7 @@ seo:
     description: Create a check.
 labels:
     - Checks
+category: Payments
 ---
 # CheckCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")

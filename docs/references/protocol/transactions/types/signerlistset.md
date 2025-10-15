@@ -3,6 +3,7 @@ seo:
     description: Add, remove, or modify an account's multi-signing list.
 labels:
     - Transaction Sending
+category: Settings
 ---
 # SignerListSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "Source")

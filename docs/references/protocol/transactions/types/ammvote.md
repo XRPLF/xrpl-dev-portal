@@ -3,6 +3,7 @@ seo:
     description: Vote on the trading fee for an Automated Market Maker.
 labels:
     - AMM
+category: Trading
 ---
 # AMMVote
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMVote.cpp "Source")

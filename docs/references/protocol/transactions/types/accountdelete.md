@@ -3,6 +3,7 @@ seo:
     description: Delete an account.
 labels:
     - Accounts
+category: Settings
 ---
 # AccountDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DeleteAccount.cpp "Source")

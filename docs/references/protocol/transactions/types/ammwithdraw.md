@@ -3,6 +3,7 @@ seo:
     description: Return LPTokens to an Automated Market Maker in exchange for a share of the assets the pool holds.
 labels:
     - AMM
+category: Trading
 ---
 # AMMWithdraw
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/AMMWithdraw.cpp "Source")

@@ -3,6 +3,7 @@ seo:
     description: Set options on an account.
 labels:
     - Accounts
+category: Settings
 ---
 # AccountSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")

@@ -2,9 +2,9 @@
 seo:
     description: Create or update a permissioned domain.
 labels:
-    - Compliance
-    - Permissioned Domains
+    - Permissions
 status: not_enabled
+category: Settings
 ---
 # PermissionedDomainSet
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainSet.cpp "Source")

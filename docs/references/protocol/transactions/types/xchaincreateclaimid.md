@@ -3,6 +3,7 @@ seo:
     description: Create a cross-chain claim ID that is used for a cross-chain transfer.
 labels:
     - Sidechains
+category: Other
 status: not_enabled
 ---
 # XChainCreateClaimID

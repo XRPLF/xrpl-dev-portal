@@ -3,6 +3,7 @@ seo:
     description: Create an account on another chain to serve as a door account for a cross-chain bridge.
 labels:
     - Sidechains
+category: Other
 status: not_enabled
 ---
 # XChainAccountCreateCommit

@@ -3,6 +3,7 @@ seo:
     description: Preauthorize an account to send payments to you.
 labels:
     - Permissions
+category: Settings
 ---
 # DepositPreauth
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/DepositPreauth.cpp "Source")

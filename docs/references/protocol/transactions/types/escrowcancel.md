@@ -3,6 +3,7 @@ seo:
     description: Cancel an expired escrow, returning the funds to the sender.
 labels:
     - Escrow
+category: Payments
 ---
 # EscrowCancel
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")

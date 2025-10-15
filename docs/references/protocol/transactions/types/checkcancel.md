@@ -3,6 +3,7 @@ seo:
     description: Cancel a check.
 labels:
     - Checks
+category: Payments
 ---
 # CheckCancel
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")

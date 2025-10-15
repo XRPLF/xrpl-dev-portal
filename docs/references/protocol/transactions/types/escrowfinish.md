@@ -3,6 +3,7 @@ seo:
     description: Deliver escrowed funds to the intended recipient.
 labels:
     - Escrow
+category: Payments
 ---
 # EscrowFinish
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")

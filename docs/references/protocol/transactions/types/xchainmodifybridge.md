@@ -3,6 +3,7 @@ seo:
     description: Modify the parameters of a cross-chain bridge.
 labels:
     - Sidechains
+category: Other
 status: not_enabled
 ---
 # XChainModifyBridge

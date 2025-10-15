@@ -4,7 +4,7 @@ seo:
 labels:
   - Accounts
   - Permissions
-  - Delegate
+category: Settings
 status: not_enabled
 ---
 # DelegateSet
