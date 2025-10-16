@@ -802,6 +802,30 @@
           },
           "ledger_index": "validated"
         }
+      },
+      {
+        "name": "ledger_entry - MPTokenIssuance",
+        "description": "Returns an MPTokenIssuance object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-mpt-issuance-entry",
+        "body": {
+          "id": "example_get_mpt_issuance",
+          "command": "ledger_entry",
+          "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - MPToken",
+        "description": "Returns an MPToken object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-mptoken-entry",
+        "body": {
+          "id": "example_get_mpt",
+          "command": "ledger_entry",
+          "mptoken": {
+            "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+            "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
+          }
+        }
       }
     ]
   }
