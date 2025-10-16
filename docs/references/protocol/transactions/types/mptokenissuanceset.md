@@ -11,16 +11,22 @@ Update a mutable property of a [Multi-purpose Token (MPT)](../../../../concepts/
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
-## Example
+## Example MPTokenIssuanceSet JSON
 
-```json 
+This example locks the balances of all holders of the specified MPT issuance.
+
+```json
 {
     "TransactionType": "MPTokenIssuanceSet",
+    "Account": "rNFta7UKwcoiCpxEYbhH2v92numE3cceB6",
+    "MPTokenIssuanceID": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
     "Fee": "10",
-    "MPTokenIssuanceID": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000",
-    "Flags": 1
+    "Flags": 1,
+    "Sequence": 99536577
 }
 ```
+
+{% tx-example txid="5DB41F975E3AC04DD4AE9E93764AFBBABB0E4C7322B2D6F2E84B253FAA170BF3" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
