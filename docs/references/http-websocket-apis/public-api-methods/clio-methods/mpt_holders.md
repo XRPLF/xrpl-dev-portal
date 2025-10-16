@@ -46,7 +46,7 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
 
 {% /tabs %}
 
-{% try-it method="mpt_holders" server="s1" /%}
+{% try-it method="mpt_holders" /%}
 
 The request contains the following parameters:
 
