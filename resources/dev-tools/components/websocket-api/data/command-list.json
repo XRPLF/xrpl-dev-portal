@@ -420,7 +420,7 @@
         "body": {
           "id": "example_mpt_holders",
           "command": "mpt_holders",
-          "mpt_issuance_id": "0024D204E07DDDFBCD83B1649C07FE27FD536A3A32E6FDD8",
+          "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
           "ledger_index": "validated"
         }
       }
