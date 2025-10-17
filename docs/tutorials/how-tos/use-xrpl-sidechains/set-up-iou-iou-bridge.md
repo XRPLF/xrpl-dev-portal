@@ -26,7 +26,7 @@ Setting up an IOU-IOU bridge enables you to move tokens between chains.
 const xrpl = require('xrpl')
 
 const WS_URL_lockingchain = 'wss://s.devnet.rippletest.net:51233/' // Locking chain
-const WS_URL_issuingchain = 'wss://sidechain-net2.devnet.rippletest.net:51233/' // Issuing chain
+const WS_URL_issuingchain = 'wss://example-sidechain.net:12345/' // Issuing chain
 
 // Define the XChainBridge, using the "TST" token.
 const xchainbridge = {
