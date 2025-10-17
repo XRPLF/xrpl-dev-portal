@@ -245,7 +245,7 @@ Depending on the length of the [paths](../../tokens/fungible-tokens/paths.md), t
 
 #### Using AMM Liquidity
 
-You can tell if an AMM was involved in a transaction by looking for [RippleState entries](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) that belong to an AMM. Check the `Flags` value of each `RippleState` entry in the `AffectedNodes` array; if the [`lsfAMMNode` flag](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags) is enabled, then that trust line is connected to an AMM. (As a reminder, flags are combined using bitwise operations: to check if `lsfAMMNode` is enabled, you use a bitwise-AND operator, like in the following pseudo-code:
+You can tell if an AMM was involved in a transaction by looking for [RippleState entries](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) that belong to an AMM. Check the `Flags` value of each `RippleState` entry in the `AffectedNodes` array; if the [`lsfAMMNode` flag](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags) is enabled, then that trust line is connected to an AMM. Flags are combined using bitwise operations. To check if `lsfAMMNode` is enabled, use a bitwise-AND operator, like the following pseudo-code:
 
 ```
 isEnabled = RippleState.Flags & lsfAMMNode
