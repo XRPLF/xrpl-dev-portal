@@ -24,7 +24,7 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
 ```json
 {
   "command": "mpt_holders",
-  "mpt_issuance_id": "0024D204E07DDDFBCD83B1649C07FE27FD536A3A32E6FDD8",
+  "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
   "ledger_index": "validated"
 }
 ```
@@ -36,7 +36,7 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
   "method": "mpt_holders",
   "params": [
     {
-      "mpt_issuance_id": "0024D204E07DDDFBCD83B1649C07FE27FD536A3A32E6FDD8",
+      "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
       "ledger_index": "validated"
     }
   ]
@@ -46,7 +46,7 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
 
 {% /tabs %}
 
-{% try-it method="mpt_holders" server="devnet-clio" /%}
+{% try-it method="mpt_holders" /%}
 
 The request contains the following parameters:
 
@@ -65,19 +65,20 @@ The request contains the following parameters:
 ```json
 {
   "result": {
-    "mpt_issuance_id": "0024D204E07DDDFBCD83B1649C07FE27FD536A3A32E6FDD8",
+    "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
     "limit": 50,
-    "ledger_index": 2414929,
+    "ledger_index": 99563041,
     "mptokens": [
       {
-        "account": "rfyWeQpYM3vCXRHA9cMLs2ZEdZv1F1jzm9",
+        "account": "rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP",
         "flags": 0,
-        "mpt_amount": "200",
-        "mptoken_index": "22F99DCD55BCCF3D68DC3E4D6CF12602006A7563A6BE93FC57FD63298BCCEB13"
+        "mpt_amount": "100",
+        "mptoken_index": "081078D38E9C36647B4AD95ECB476F434B817753AD4F6B4B5EE0ED4C3185C80F"
       }
     ],
     "validated": true
   },
+  "id": "example_mpt_holders",
   "status": "success",
   "type": "response",
   "warnings": [
@@ -96,15 +97,15 @@ The request contains the following parameters:
 
 {
   "result": {
-    "mpt_issuance_id": "0024D204E07DDDFBCD83B1649C07FE27FD536A3A32E6FDD8",
+    "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
     "limit": 50,
-    "ledger_index": 2415033,
+    "ledger_index": 99563067,
     "mptokens": [
       {
-        "account": "rfyWeQpYM3vCXRHA9cMLs2ZEdZv1F1jzm9",
+        "account": "rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP",
         "flags": 0,
-        "mpt_amount": "200",
-        "mptoken_index": "22F99DCD55BCCF3D68DC3E4D6CF12602006A7563A6BE93FC57FD63298BCCEB13"
+        "mpt_amount": "100",
+        "mptoken_index": "081078D38E9C36647B4AD95ECB476F434B817753AD4F6B4B5EE0ED4C3185C80F"
       }
     ],
     "validated": true,
