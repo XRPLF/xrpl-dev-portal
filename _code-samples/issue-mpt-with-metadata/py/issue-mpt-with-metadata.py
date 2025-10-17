@@ -12,26 +12,26 @@ wallet = generate_faucet_wallet(client, debug=True)
 
 # Define metadata as JSON
 mpt_metadata = {
-    "ticker": "TBILL",
-    "name": "T-Bill Yield Token",
-    "desc": "A yield-bearing stablecoin backed by short-term U.S. Treasuries and money market instruments.",
-    "icon": "https://example.org/tbill-icon.png",
-    "asset_class": "rwa",
-    "asset_subclass": "treasury",
-    "issuer_name": "Example Yield Co.",
-    "urls": [
+    "t": "TBILL",
+    "n": "T-Bill Yield Token",
+    "d": "A yield-bearing stablecoin backed by short-term U.S. Treasuries and money market instruments.",
+    "i": "example.org/tbill-icon.png",
+    "ac": "rwa",
+    "as": "treasury",
+    "in": "Example Yield Co.",
+    "us": [
         {
-            "url": "https://exampleyield.co/tbill",
-            "type": "website",
-            "title": "Product Page"
+            "u": "exampleyield.co/tbill",
+            "c": "website",
+            "t": "Product Page"
         },
         {
-            "url": "https://exampleyield.co/docs",
-            "type": "docs",
-            "title": "Yield Token Docs"
+            "u": "exampleyield.co/docs",
+            "c": "docs",
+            "t": "Yield Token Docs"
         }
     ],
-    "additional_info": {
+    "ai": {
         "interest_rate": "5.00%",
         "interest_type": "variable",
         "yield_source": "U.S. Treasury Bills",
