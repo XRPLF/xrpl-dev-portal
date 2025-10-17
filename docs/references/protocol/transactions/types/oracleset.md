@@ -16,27 +16,79 @@ Create or update a [price oracle](../../../../concepts/decentralized-storage/pri
 
 ```json
 {
-  "TransactionType": "OracleSet",
-  "Account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
-  "OracleDocumentID": 34,
-  "Provider": "70726F7669646572",
-  "LastUpdateTime": 1724871860,
+  "Account": "roosteri9aGNFRXZrJNYQKVBfxHiE5abg",
   "AssetClass": "63757272656E6379",
+  "Fee": "12",
+  "LastUpdateTime": 1760397040,
+  "OracleDocumentID": 3,
   "PriceDataSeries": [
     {
       "PriceData": {
+        "AssetPrice": "267e",
         "BaseAsset": "XRP",
-        "QuoteAsset": "USD",
-        "AssetPrice": 740,
+        "QuoteAsset": "SAR",
         "Scale": 3
       }
+    },
+    {
+      "PriceData": {
+        "AssetPrice": "214a",
+        "BaseAsset": "XRP",
+        "QuoteAsset": "THB",
+        "Scale": 2
+      }
+    },
+    {
+      "PriceData": {
+        "AssetPrice": "1abc8",
+        "BaseAsset": "XRP",
+        "QuoteAsset": "TRY",
+        "Scale": 3
+      }
+    },
+    {
+      "PriceData": {
+        "AssetPrice": "13b19",
+        "BaseAsset": "XRP",
+        "QuoteAsset": "TWD",
+        "Scale": 3
+      }
+    },
+    {
+      "PriceData": {
+        "AssetPrice": "686e090",
+        "BaseAsset": "XRP",
+        "QuoteAsset": "UAH",
+        "Scale": 6
+      }
+    },
+    {
+      "PriceData": {
+        "AssetPrice": "a34",
+        "BaseAsset": "XRP",
+        "QuoteAsset": "USD",
+        "Scale": 3
+      }
+    },
+    {
+      "PriceData": {
+        "AssetPrice": "11d9",
+        "BaseAsset": "XRP",
+        "QuoteAsset": "ZAR",
+        "Scale": 2
+      }
     }
-  ]
+  ],
+  "Provider": "7468726565787270",
+  "Sequence": 95076881,
+  "TransactionType": "OracleSet",
+  "URI": "68747470733A2F2F6174746573746174696F6E2E74687265657872702E6465762F63757272656E63793A39393530323934303A39353037363838313A33"
 }
 ```
 
+{% tx-example txid="11449FDBDF40345F08B2E1537EA9590369B5A662CDEB3DB71F9A2CC04E1012C1" /%}
 
-## OracleSet Fields
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type | Internal Type | Required? | Description |
 |--------------------|-----------|---------------|-----------|-------------|
