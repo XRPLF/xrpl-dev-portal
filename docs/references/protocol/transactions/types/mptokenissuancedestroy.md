@@ -13,14 +13,18 @@ Delete a [Multi-purpose Token (MPT)](../../../../concepts/tokens/fungible-tokens
 
 ## Example MPTokenIssuanceDestroy JSON
 
-```json 
+```json
 {
     "TransactionType": "MPTokenIssuanceDestroy",
+    "Account": "rNFta7UKwcoiCpxEYbhH2v92numE3cceB6",
+    "MPTokenIssuanceID": "05EECEBC97A7D635DE2393068691A015FED5A89AD203F5AA",
     "Fee": "10",
-    "MPTokenIssuanceID": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000"
+    "Flags": 0,
+    "Sequence": 99536573
 }
 ```
 
+{% tx-example txid="B270DEE7D229D626699935B7B3CC37A1BAD3E832044CE5129722C2965D3EB228" /%}
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 

@@ -15,6 +15,23 @@ Control whether an account can hold a given [Multi-purpose Token (MPT)](../../..
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
+## Example MPTokenAuthorize JSON
+
+This example assumes that the transaction is submitted by the holder of the token.
+
+```json
+{
+  "TransactionType": "MPTokenAuthorize",
+  "Account": "rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP",
+  "MPTokenIssuanceID": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+  "Fee": "10",
+  "Flags": 0,
+  "Sequence": 99537811
+}
+```
+
+{% tx-example txid="9C19FBB8C0C92C17B11DF626A94303776D44AC36D7A760863FF3585532C38230" /%}
+
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field               | JSON Type            | [Internal Type][] | Required? | Description |
