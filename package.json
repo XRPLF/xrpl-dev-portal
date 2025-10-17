@@ -37,7 +37,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "bootstrap": "^4.6.2",
+    "bootstrap": "^5.3.3",
     "htmltojsx": "^0.3.0",
     "sass": "1.26.10"
   }

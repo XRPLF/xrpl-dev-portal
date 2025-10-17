@@ -352,7 +352,7 @@ export default function XrpOverview() {
                       <span className="d-inline-flex">
                         <img
                           id="xrp-mark-overview"
-                          className="mw-100 invertible-img mr-2"
+                          className="mw-100 invertible-img me-2"
                           src={require("../static/img/logos/xrp-mark.svg")}
                           alt="XRP Logo Mark"
                         />
@@ -494,7 +494,7 @@ export default function XrpOverview() {
                         href={exch.href}
                         target="_blank"
                       >
-                        <span className="longform mr-3">{i+1}</span>
+                        <span className="longform me-3">{i+1}</span>
                         <img className="mw-100" id={exch.id} alt={exch.alt} />
                       </a>
                     </li>

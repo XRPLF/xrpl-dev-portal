@@ -618,7 +618,7 @@ const CommunityPage: React.FC = () => {
           />
         </div>
 
-        <div className="mx-auto text-left col-lg-6 text-md-center hero-title">
+        <div className="mx-auto text-start col-lg-6 text-md-center hero-title">
           <div className="d-flex flex-column-reverse align-items-center sm-align-items-start">
             <img
               src={require("../static/img/icons/arrow-down.svg")}

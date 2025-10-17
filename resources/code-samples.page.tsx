@@ -86,8 +86,8 @@ export default function CodeSamples() {
                 {translate('Help the XRPL community by submitting your own code samples')}
               </h6>
             </div>
-            <div className="row pl-4">
-              <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_1">
+            <div className="row ps-4">
+              <div className=" col-lg-3 ps-4 ps-lg-0 pe-4 contribute  dot contribute_1">
                 <span className="dot" />
                 <h5 className="pb-4 pt-md-5">{translate('Fork and clone')}</h5>
                 <p className="pb-4">
@@ -98,7 +98,7 @@ export default function CodeSamples() {
                   {translate('resources.contribute.1.part3', '. Using git, clone the fork to your computer.')}
                 </p>
               </div>
-              <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_2">
+              <div className=" col-lg-3 ps-4 ps-lg-0 pe-4 contribute  dot contribute_2">
                 <span className="dot" />
                 <h5 className="pb-4 pt-md-5">{translate('Add to folder')}</h5>
                 <p className="pb-4">

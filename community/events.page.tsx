@@ -1384,14 +1384,14 @@ export default function Events() {
         </section>
         <section className="container-new py-26">
           <div className="event-hero card-grid card-grid-2xN">
-            <div className="pr-2 col">
+            <div className="pe-2 col">
               <img
                 alt="xrp ledger events hero"
                 src={require("../static/img/events/xrp-community-night.png")}
                 className="w-100"
               />
             </div>
-            <div className="pt-5 pr-2 col">
+            <div className="pt-5 pe-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
                   {translate("XRP Community Night NYC")}

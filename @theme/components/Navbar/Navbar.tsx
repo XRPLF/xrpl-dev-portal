@@ -128,22 +128,31 @@ export function Navbar(props) {
   });
 
   React.useEffect(() => {
-    // Turns out jQuery is necessary for firing events on Bootstrap v4
-    // dropdowns. These events set classes so that the search bar and other
+    // Bootstrap 5 uses vanilla JavaScript API instead of jQuery
+    // These events set classes so that the search bar and other
     // submenus collapse on mobile when you expand one submenu.
-    const dds = $("#topnav-pages .dropdown");
+    const dropdowns = document.querySelectorAll("#topnav-pages .dropdown");
     const top_main_nav = document.querySelector("#top-main-nav");
-    dds.on("show.bs.dropdown", (evt) => {
-      top_main_nav.classList.add("submenu-expanded");
+    
+    const handleDropdownShow = () => {
+      top_main_nav?.classList.add("submenu-expanded");
+    };
+    
+    const handleDropdownHidden = () => {
+      top_main_nav?.classList.remove("submenu-expanded");
+    };
+    
+    // Attach Bootstrap 5 dropdown events
+    dropdowns.forEach((dropdown) => {
+      dropdown.addEventListener("show.bs.dropdown", handleDropdownShow);
+      dropdown.addEventListener("hidden.bs.dropdown", handleDropdownHidden);
     });
-    dds.on("hidden.bs.dropdown", (evt) => {
-      top_main_nav.classList.remove("submenu-expanded");
-    });
+    
     // Close navbar on .dropdown-item click
     const toggleNavbar = () => {
       const navbarToggler = document.querySelector(".navbar-toggler");
       const isNavbarCollapsed =
-        navbarToggler.getAttribute("aria-expanded") === "true";
+        navbarToggler?.getAttribute("aria-expanded") === "true";
       if (isNavbarCollapsed) {
         navbarToggler?.click(); // Simulate click to toggle navbar
       }
@@ -156,6 +165,10 @@ export function Navbar(props) {
 
     // Cleanup function to remove event listeners
     return () => {
+      dropdowns.forEach((dropdown) => {
+        dropdown.removeEventListener("show.bs.dropdown", handleDropdownShow);
+        dropdown.removeEventListener("hidden.bs.dropdown", handleDropdownHidden);
+      });
       dropdownItems.forEach((item) => {
         item.removeEventListener("click", toggleNavbar);
       });
@@ -300,7 +313,7 @@ export function NavDropdown(props) {
         href="#"
         id={toggler_id}
         role="button"
-        data-toggle="dropdown"
+        data-bs-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
       >
@@ -329,8 +342,8 @@ export function NavControls(props) {
     <button
       className="navbar-toggler collapsed"
       type="button"
-      data-toggle="collapse"
-      data-target="#top-main-nav"
+      data-bs-toggle="collapse"
+      data-bs-target="#top-main-nav"
       aria-controls="navbarHolder"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -422,19 +435,19 @@ export class ThemeToggle extends React.Component {
       <div className="nav-item" id="topnav-theme">
         <form className="form-inline">
           <div
-            className="custom-control custom-theme-toggle form-inline-item"
+            className="form-check form-check-inline form-switch custom-theme-toggle"
             title=""
-            data-toggle="tooltip"
-            data-placement="left"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
             data-original-title="Toggle Dark Mode"
           >
             <input
               type="checkbox"
-              className="custom-control-input"
+              className="form-check-input"
               id="css-toggle-btn"
               onClick={this.user_choose_theme}
             />
-            <label className="custom-control-label" htmlFor="css-toggle-btn">
+            <label className="form-check-label" htmlFor="css-toggle-btn">
               <span className="d-lg-none">Light/Dark Theme</span>
             </label>
           </div>

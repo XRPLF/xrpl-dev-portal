@@ -220,7 +220,7 @@ export default function Tokenization() {
                 {translate("Quick Start")}
               </Link>{" "}
               <a
-                className="ml-4 video-external-link btn-none"
+                className="ms-4 video-external-link btn-none"
                 target="_blank"
                 href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
               >

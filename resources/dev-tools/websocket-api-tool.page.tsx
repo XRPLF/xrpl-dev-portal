@@ -238,7 +238,7 @@ export function WebsocketApiTool() {
                 className="btn-toolbar justify-content-between pt-4"
                 role="toolbar"
               >
-                <div className="btn-group mr-3" role="group">
+                <div className="btn-group me-3" role="group">
                   <button
                     className="btn btn-outline-secondary send-request"
                     onClick={() => sendWebSocketMessage(currentBody)}
@@ -259,8 +259,8 @@ export function WebsocketApiTool() {
                       connected ? "btn-success" : "btn-outline-secondary"
                     } ${connectionError ?? "btn-danger"}`}
                     onClick={openConnectionModal}
-                    data-toggle="modal"
-                    data-target="#wstool-1-connection-settings"
+                    data-bs-toggle="modal"
+                    data-bs-target="#wstool-1-connection-settings"
                   >
                     {`${selectedConnection.shortname}${
                       connected ? ` (${translate('Connected')})` : ` (${translate('Not Connected')})`
