@@ -227,15 +227,15 @@ If the payment contains a `CreatedNode` with `"LedgerEntryType": "AccountRoot"`,
 
 #### Token Payments
 
-Payments involving tokens are a bit more complicated.
+Payments involving [trust line tokens](../../tokens/fungible-tokens/trust-line-tokens.md) are a bit more complicated.
 
-All changes in token balances are reflected in [RippleState objects](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md), which represent [trust lines](../../tokens/fungible-tokens/index.md). An increase to one party's balance on a trust line is considered to decrease the counterparty's balance by equal amount; in the metadata, this is only recorded as a single change to the shared `Balance` for the RippleState object. Whether this change is recorded as an "increase" or "decrease" depends on which account has the numerically higher address.
+All changes to trust line token balances are reflected in [RippleState entries](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md), which represent [trust lines](../../tokens/fungible-tokens/index.md). An increase to one party's balance on a trust line is considered to decrease the counterparty's balance by equal amount; transaction metadata records only a single net change to the shared `Balance` of a `RippleState` entry. Whether this change is recorded as an "increase" or "decrease" depends on which account has the numerically higher address.
 
-A single payment may go across a long [path](../../tokens/fungible-tokens/paths.md) consisting of several trust lines and order books. The process of changing the balances on several trust lines to connect parties indirectly is called [rippling](../../tokens/fungible-tokens/rippling.md). Depending on the `issuer` specified in the transaction's `Amount` field, it is also possible that the amount delivered may be split between several trust lines (`RippleState` accounts) connected to the destination account.
+A single payment may go across a long [path](../../tokens/fungible-tokens/paths.md) consisting of several trust lines and order books. The process of changing the balances on several trust lines to connect parties indirectly is called [rippling](../../tokens/fungible-tokens/rippling.md). Depending on the `issuer` specified in the transaction's `Amount` field, it is also possible that the amount delivered may be split between several trust lines (separate RippleState entries) connected to the destination account.
 
 {% admonition type="success" name="Tip" %}The order that modified objects are presented in the metadata does not necessarily match the order those objects were visited while processing a payment. To better understand payment execution, it may help to reorder `AffectedNodes` members to reconstruct the paths the funds took through the ledger.{% /admonition %}
 
-Cross-currency payments consume [Offers](../../../references/protocol/ledger-data/ledger-entry-types/offer.md) in part or entirely to change between different currency codes and issuers. If a transaction shows `DeletedNode` objects for `Offer` types, that can indicate an Offer that was fully consumed, or an Offer that was found to be [expired or unfunded](../../tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) at the time of processing. If a transaction shows a `ModifiedNode` of type `Offer`, that indicates an Offer that was partially consumed.
+Cross-currency payments use [offers](../../tokens/decentralized-exchange/offers.md) and [AMMs](../../tokens/decentralized-exchange/automated-market-makers.md) to convert between different currency codes and issuers. Offers can be partially or fully consumed. If a transaction shows `DeletedNode` objects for `Offer` types, that can indicate an offer that was fully consumed, or an offer that was found to be [expired or unfunded](../../tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) at the time of processing. If a transaction shows a `ModifiedNode` of type `Offer`, that indicates an offer that was partially consumed.
 
 The [`QualityIn` and `QualityOut` settings of trust lines](../../../references/protocol/transactions/types/trustset.md) can affect how one side of a trust line values the token, so that the numeric change in balances is different from how the sender values that token. The `delivered_amount` shows how much was delivered as valued by the recipient.
 
@@ -243,9 +243,17 @@ If the amount to be sent or received is outside of the [token precision](../../.
 
 Depending on the length of the [paths](../../tokens/fungible-tokens/paths.md), the metadata for cross-currency payments can be _long_. For example, [transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B) delivered 2.788 GCB issued by `rHaaans...`, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from `r9ZoLsJ...` to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb -->
 
+#### Using AMM Liquidity
+
+You can tell if an AMM was involved in a transaction by looking for [RippleState entries](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) that belong to an AMM. Check the `Flags` value of each `RippleState` entry in the `AffectedNodes` array; if the [`lsfAMMNode` flag](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags) is enabled, then that trust line is connected to an AMM. Flags are combined using bitwise operations. To check if `lsfAMMNode` is enabled, use a bitwise-AND operator, like the following pseudo-code:
+
+```
+isEnabled = RippleState.Flags & lsfAMMNode
+```
+
 ### Offers
 
-An [OfferCreate transaction][] may or may not create an object in the ledger, depending on how much was matched and whether the transaction used flags such as `tfImmediateOrCancel`. Look for a `CreatedNode` entry with `"LedgerEntryType": "Offer"` to see if the transaction added a new Offer to the ledger's order books. For example:
+An [OfferCreate transaction][] may or may not create an object in the ledger, depending on how much was matched and whether the transaction used flags such as `tfImmediateOrCancel`. Look for a `CreatedNode` entry with `"LedgerEntryType": "Offer"` to see if the transaction added a new Offer entry to the ledger's order books. For example:
 
 ```json
 {
@@ -268,11 +276,11 @@ An [OfferCreate transaction][] may or may not create an object in the ledger, de
 }
 ```
 
-A `ModifiedNode` of type `Offer` indicates an Offer that was matched and partially consumed. A single transaction can consume a large number of Offers. An Offer to trade two tokens might also consume Offers to trade XRP because of [auto-bridging](../../tokens/decentralized-exchange/autobridging.md). All or part of an exchange can be auto-bridged.
+A `ModifiedNode` of type `Offer` indicates an offer that was matched and partially consumed. A single transaction can consume a large number of offers. An offer to trade two tokens might also consume offers to trade XRP because of [auto-bridging](../../tokens/decentralized-exchange/autobridging.md). All or part of an exchange can be auto-bridged. Offers can also use AMMs to convert currency; you can recognize when this happens by [checking for a `RippleState` entry with the `lsfAMMNode` flag](#using-amm-liquidity) in the `AffectedNodes` array.
 
-A `DeletedNode` of type `Offer` can indicate a matching Offer that was fully consumed, an Offer that was found to be [expired or unfunded](../../tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) at the time of processing, or an Offer that was canceled as part of placing a new Offer. You can recognize a canceled Offer because the `Account` that placed it is the sender of the transaction that deleted it.
+A `DeletedNode` of type `Offer` can indicate a matching offer that was fully consumed, an offer that was found to be [expired or unfunded](../../tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) at the time of processing, or an offer that was canceled as part of placing a new offer. You can recognize a canceled offer because the `Account` that placed it is the sender of the transaction that deleted it.
 
-Example of a deleted Offer:
+Example of a deleted offer:
 
 ```json
 {
@@ -300,11 +308,11 @@ Example of a deleted Offer:
 }
 ```
 
-Offers can create, delete, and modify both types of [DirectoryNode objects](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md), to keep track of who placed which Offers and which Offers are available at which exchange rates. Generally, users don't need to pay close attention to this bookkeeping.
+Offers can create, delete, and modify [DirectoryNode entries](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md), both to keep track of who placed which offers and which offers are available at which exchange rates. Generally, users don't need to pay close attention to this bookkeeping.
 
-An [OfferCancel transaction][] may have the code `tesSUCCESS` even if there was no Offer to delete. Look for a `DeletedNode` of type `Offer` to confirm that the transaction actually deleted an Offer. If not, the Offer may already have been removed by a previous transaction, or the OfferCancel transaction may have used the wrong sequence number in the `OfferSequence` field.
+An [OfferCancel transaction][] may have the code `tesSUCCESS` even if there was no offer to delete. Look for a `DeletedNode` of type `Offer` to confirm that the transaction actually deleted an offer. If not, the offer may already have been removed by a previous transaction, or the OfferCancel transaction may have used the wrong sequence number in the `OfferSequence` field.
 
-If an OfferCreate transaction shows a `CreatedNode` of type `RippleState`, that indicates that [the Offer created a trust line](../../tokens/decentralized-exchange/offers.md#offers-and-trust) to hold a token received in the trade.
+If an OfferCreate transaction shows a `CreatedNode` of type `RippleState`, that indicates that [the offer created a trust line](../../tokens/decentralized-exchange/offers.md#offers-and-trust) to hold a token received in the trade.
 
 ### Escrows
 
