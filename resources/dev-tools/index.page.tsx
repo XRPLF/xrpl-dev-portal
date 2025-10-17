@@ -146,8 +146,8 @@ export default function DevTools() {
                   <button
                     className="nav-link active dev-tools-tab"
                     id="explorers-tab"
-                    data-toggle="tab"
-                    data-target="#explorers"
+                    data-bs-toggle="tab"
+                    data-bs-target="#explorers"
                     role="tab"
                     aria-controls="explorers"
                     aria-selected="true"
@@ -159,8 +159,8 @@ export default function DevTools() {
                   <button
                     className="nav-link  dev-tools-tab"
                     id="api-access-tab"
-                    data-toggle="tab"
-                    data-target="#api-access"
+                    data-bs-toggle="tab"
+                    data-bs-target="#api-access"
                     role="tab"
                     aria-controls="api-access"
                     aria-selected="false"
@@ -172,8 +172,8 @@ export default function DevTools() {
                   <button
                     className="nav-link  dev-tools-tab"
                     id="other-tab"
-                    data-toggle="tab"
-                    data-target="#other"
+                    data-bs-toggle="tab"
+                    data-bs-target="#other"
                     role="tab"
                     aria-controls="other"
                     aria-selected="false"

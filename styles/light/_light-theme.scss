@@ -15,7 +15,7 @@ body {
 }
 
 #topnav-theme .custom-theme-toggle {
-  .custom-control-label::before {
+  .form-check-input {
     background-color: transparent;
     background-position: bottom right;
     transform: rotate(-15deg);

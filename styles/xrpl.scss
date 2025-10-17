@@ -17,9 +17,11 @@ $enable-shadows: true;
 $dropdown-box-shadow: 0px 5px 40px $black;
 $card-spacer-x: 2rem;
 $card-spacer-y: 2rem;
+// $card-deck-margin is deprecated in Bootstrap 5 - card-deck no longer exists
+// Define custom variable for backward compatibility
 $card-deck-margin: 1.25rem;
 $card-border-radius: $border-radius-lg;
-$card-columns-gap: 2rem;
+// $card-columns-gap is deprecated in Bootstrap 5 - use grid system instead
 $caret-width: 0.4em;
 
 $input-btn-padding-y: 1rem;

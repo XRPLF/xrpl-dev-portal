@@ -133,7 +133,7 @@ export default function XrplOverview() {
                   {translate("Read Technical Docs")}
                 </Link>{" "}
                 <a
-                  className="ml-4 video-external-link"
+                  className="ms-4 video-external-link"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
@@ -168,7 +168,7 @@ export default function XrplOverview() {
                   {translate("Read Technical Docs")}
                 </Link>{" "}
                 <a
-                  className="ml-4 video-external-link"
+                  className="ms-4 video-external-link"
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
@@ -287,7 +287,7 @@ export default function XrplOverview() {
           </div>
         </section>
         <section className="container-new py-26">
-          <div className="d-flex flex-column-reverse col-xl-6 mb-lg-4 pl-0 ">
+          <div className="d-flex flex-column-reverse col-xl-6 mb-lg-4 ps-0 ">
             <h2 className="h4 h2-sm">
               {translate(
                 "Watch the explainer video series to learn more about the XRP Ledger"
@@ -407,7 +407,7 @@ export default function XrplOverview() {
         </section>
         <section className="container-new py-26">
           <div
-            className="col-md-6 offset-md-3 w-100 pl-0 pr-0 mini-faq"
+            className="col-md-6 offset-md-3 w-100 ps-0 pe-0 mini-faq"
             id="minifaq-accordion"
           >
             {faqs.map((faq, index) => (
@@ -415,8 +415,8 @@ export default function XrplOverview() {
                 <a
                   href={`#heading${index + 1}`}
                   className="expander collapsed"
-                  data-toggle="collapse"
-                  data-target={`#answer${index + 1}`}
+                  data-bs-toggle="collapse"
+                  data-bs-target={`#answer${index + 1}`}
                   aria-expanded="false"
                   aria-controls={`answer${index + 1}`}
                 >
