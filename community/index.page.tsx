@@ -390,7 +390,7 @@ const events = [
     link: "https://xrpl.vegahacks.xyz/",
     location: "Virtual",
     date: "October 01 - November 14, 2025",
-    image: hackathon,
+    image: italyHackathon,
     end_date: "November 14, 2025",
     start_date: "October 01, 2025",
   },
@@ -402,7 +402,7 @@ const events = [
     link: "https://luma.com/ypj8ecj0",
     location: "Online (with demos at IIT Bombay)",
     date: "November 14 - December 06, 2025",
-    image: italyHackathon, //placeholder awaiting new image
+    image: require("../static/img/events/hackathon-kaigi.png"),
     start_date: "November 14, 2025",
     end_date: "December 06, 2025",
   },

@@ -1314,7 +1314,7 @@ const events = [
     link: "https://luma.com/ypj8ecj0",
     location: "Online (with demos at IIT Bombay)",
     date: "Nov 14 - Dec 06, 2025",
-    image: italyHackathon,
+    image: require("../static/img/events/hackathon-kaigi.png"),
     end_date: "December 06, 2025",
   },
 ];
