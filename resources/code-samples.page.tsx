@@ -53,12 +53,11 @@ export default function CodeSamples() {
               {translate('Browse sample code for building common use cases on the XRP Ledger')}
             </h3>
           </div>
-          <div className="row col-12  card-deck mt-10" id="code-samples-deck">
-            <div className="row col-md-12 px-0" id="code_samples_list">
-              {codeSamples.map(card => (
+          <div className="row gx-4 gy-5 mt-10 mb-20" id="code-samples-deck">
+            {codeSamples.map(card => (
+              <div key={card.href} className="col-12 col-lg-6 mb-4">
                 <a
-                  key={card.href}
-                  className={`card cardtest col-12 col-lg-5 ${card.langs.join(' ')}`}
+                  className={`card cardtest h-100 ${card.langs.join(' ')}`}
                   href={target.github_forkurl + `/tree/${target.github_branch}/${card.href}`.replace('/content','')}
                 >
                   <div className="card-header">
@@ -74,8 +73,8 @@ export default function CodeSamples() {
                   </div>
                   <div className="card-footer">&nbsp;</div>
                 </a>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
         <section className="container-new py-26">

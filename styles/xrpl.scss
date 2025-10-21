@@ -17,6 +17,9 @@ $enable-shadows: true;
 $dropdown-box-shadow: 0px 5px 40px $black;
 $card-spacer-x: 2rem;
 $card-spacer-y: 2rem;
+// Bootstrap 5 uses separate variables for card header/footer
+$card-cap-padding-y: 2rem;
+$card-cap-padding-x: 2rem;
 // $card-deck-margin is deprecated in Bootstrap 5 - card-deck no longer exists
 // Define custom variable for backward compatibility
 $card-deck-margin: 1.25rem;
@@ -44,7 +47,6 @@ $line-height-base: 1.5;
 @import "../node_modules/bootstrap/scss/variables-dark";
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/utilities";
 
 // Layout & components we actually use
 @import "../node_modules/bootstrap/scss/root";
@@ -64,6 +66,9 @@ $line-height-base: 1.5;
 @import "../node_modules/bootstrap/scss/modal";
 @import "../node_modules/bootstrap/scss/transitions";
 @import "../node_modules/bootstrap/scss/helpers";
+
+// Import utilities LAST so they have highest specificity
+@import "../node_modules/bootstrap/scss/utilities";
 @import "../node_modules/bootstrap/scss/utilities/api";
 
 // Import site styles
