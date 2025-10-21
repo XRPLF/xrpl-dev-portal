@@ -26,7 +26,7 @@ const ProjectCard = ({ project, index, showCarousel = true }: {
 
   return (
     <a
-      className={`col card float-up-on-hover ${
+      className={`col card float-up-on-hover text-decoration-none ${
         showCarousel 
           ? (index % 2 === 0 ? "even" : "odd") 
           : `payments-project-card ${index % 2 === 0 ? "odd" : "even"}`

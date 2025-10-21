@@ -526,9 +526,9 @@ $banner-height: 0; // Currently no pencil banner.
       &.submenu-expanded {
         padding-top: 0;
 
-        .dropdown:not(.show) .dropdown-toggle {
-          display: none;
-        }
+        // .dropdown:not(.show) .dropdown-toggle {
+        //   display: none;
+        // }
 
         #topnav-search,
         #topnav-language,
