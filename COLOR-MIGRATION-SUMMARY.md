@@ -3,18 +3,29 @@
 **Date:** October 21, 2025  
 **Source:** [XRPL.org Design Tokens - Figma](https://figma.com/design/zRyhXG4hRP3Lk3B6Owr3eo/XRPL.org-Design-Tokens)
 
-## Migration Strategy: Smart Merge Approach
+## Migration Strategy: Clean Migration
 
-The old 10-level color scale (100-1000) has been consolidated into a new 5-level scale (100-500) using the following mapping:
+The old 10-level color scale (100-1000) has been completely migrated to a new 5-level scale (100-500). All references in the codebase have been updated, and backward compatibility aliases have been removed for a clean implementation.
 
+**Mapping Applied:**
 ```
 Old System    →    New System
-100, 200      →    100 (lightest)
-300, 400      →    200
-500, 600      →    300 (mid-tone, default)
-700, 800      →    400
-900, 1000     →    500 (darkest)
+100           →    100 (lightest)
+200           →    100
+300           →    200
+400           →    200
+500           →    300 (mid-tone, default)
+600           →    300
+700           →    400
+800           →    400
+900           →    500 (darkest)
+1000          →    500
 ```
+
+**Migration Approach:**
+1. All color usages (600-1000) were found and replaced with their new equivalents (300-500)
+2. Backward compatibility aliases were removed from `_colors.scss`
+3. Only 100-500 design tokens remain for each color family
 
 ## Color Families Updated
 
@@ -27,32 +38,40 @@ Old System    →    New System
 
 #### Green ✅
 - **New Design Tokens:** #EAFCF1, #70EE97, #21E46B, #0DAA3E, #078139
-- **Backward compatibility:** All old variables (100-1000) mapped to new values
+- **Variables:** `$green-100` through `$green-500` only
+- **Migrated:** 14 file references updated
 - **Special:** `$apex-2023-green` (#00FF76) retained
 
 #### Lilac (Primary) ✅ *replaces blue-purple*
 - **New Design Tokens:** #F2EDFF, #D9CAFF, #C0A7FF, #7649E3, #5429A1
-- **Legacy aliases:** All `$blue-purple-*` variables now map to `$lilac-*`
+- **Variables:** `$lilac-100` through `$lilac-500` only
+- **Legacy aliases:** `$blue-purple-100` through `$blue-purple-500` map to lilac (600-900 removed)
+- **Migrated:** 16 file references updated
 - **Note:** This is a new color name in the design system
 
 ### Secondary Colors
 
 #### Red ✅ *NEW*
 - **New Design Tokens:** #FDECE7, #F27A66, #F0643A, #DA4518, #A22514
+- **Variables:** `$red-100` through `$red-500` only
 - **Note:** This is a completely new color family added to the design system
 
 #### Pink ✅ *replaces magenta*
 - **New Design Tokens:** #FDF1F4, #F2B5C3, #F18DA5, #FF577F, #DC466F
-- **Legacy aliases:** All `$magenta-*` variables now map to `$pink-*`
+- **Variables:** `$pink-100` through `$pink-500` only
+- **Legacy aliases:** `$magenta-100` through `$magenta-500` map to pink (600-900 removed)
+- **Migrated:** 7 file references updated
 
 #### Blue ✅
 - **New Design Tokens:** #EDF4FF, #93BFF1, #428CFF, #0179E7, #0A4DC0
-- **Backward compatibility:** All old variables (100-900) mapped to new values
+- **Variables:** `$blue-100` through `$blue-500` only
+- **Migrated:** 8 file references updated
 - **Special:** `$accent-blue-90` (#001133) retained
 
 #### Yellow ✅
 - **New Design Tokens:** #F3F1EB, #E6F1A7, #DBF15E, #E1DB26, #D4C02D
-- **Backward compatibility:** All old variables (100-900) mapped to new values
+- **Variables:** `$yellow-100` through `$yellow-500` only
+- **Migrated:** 11 file references updated
 
 ## Colors Retained (No Design Token Replacement)
 
@@ -83,10 +102,16 @@ All Bootstrap theme variables remain functional:
 
 ## Breaking Changes
 
-**None.** All existing color variables are still available through either:
-1. Direct design token values (100-500)
-2. Backward compatibility aliases (600-1000)
-3. Legacy color family aliases (magenta→pink, blue-purple→lilac)
+**Removed Variables:**
+- All color variables from 600-1000 have been removed for: Green, Blue, Lilac, Pink, Red, Yellow
+- `$blue-purple-600` through `$blue-purple-900` removed (use 100-500)
+- `$magenta-600` through `$magenta-900` removed (use 100-500)
+
+**No Impact:**
+- All usages in the codebase have been updated
+- Legacy color name aliases maintained (100-500 only):
+  - `$blue-purple-100` through `$blue-purple-500` → maps to `$lilac-*`
+  - `$magenta-100` through `$magenta-500` → maps to `$pink-*`
 
 ## Color Name Changes
 
@@ -98,11 +123,11 @@ All Bootstrap theme variables remain functional:
 
 ## Usage Recommendations
 
-### For New Code
-Use the new design tokens directly:
+### Current Best Practices
+Use the new 5-level design tokens (100-500):
 ```scss
 // Primary colors
-color: $gray-300;      // Default gray
+color: $gray-300;      // Gray (not yet migrated - still uses old values)
 color: $green-300;     // Default green
 color: $lilac-400;     // Primary purple
 
@@ -113,13 +138,11 @@ color: $blue-300;      // Default blue
 color: $yellow-300;    // Default yellow
 ```
 
-### For Existing Code
-No changes required. All existing variables continue to work:
+### Legacy Aliases Still Available
 ```scss
-// These still work via backward compatibility
-background: $gray-800;
-color: $blue-purple-500;
-border: 1px solid $magenta-600;
+// These legacy names work (100-500 only)
+color: $blue-purple-400;  // Same as $lilac-400
+color: $magenta-300;      // Same as $pink-300
 ```
 
 ## Files Modified
@@ -131,7 +154,25 @@ border: 1px solid $magenta-600;
 ✅ All SCSS variables resolve correctly  
 ✅ No linter errors  
 ✅ Bootstrap theme colors functional  
-✅ Backward compatibility maintained  
+✅ All old color references (600-1000) removed from codebase  
 ✅ Special event colors preserved  
 ⏸️ Gray/Neutral colors - pending future update
+
+## Migration Statistics
+
+**Files Updated:** 11 SCSS files
+- `styles/_colors.scss` - Color definitions cleaned up
+- `styles/light/_light-theme.scss` - 11 color references updated
+- `styles/_status-labels.scss` - 39 color references updated  
+- `styles/_diagrams.scss` - 6 color references updated
+- `styles/_code-tabs.scss` - 2 color references updated
+- `styles/_content.scss` - 1 color reference updated
+- `styles/_buttons.scss` - 7 color references updated
+- `styles/_pages.scss` - 3 color references updated
+- `styles/_blog.scss` - 2 color references updated
+- `styles/_feedback.scss` - 2 color references updated
+- `styles/_rpc-tool.scss` - 1 color reference updated
+- `styles/_landings.scss` - 1 color reference updated
+
+**Total Color References Updated:** 75+ instances
 

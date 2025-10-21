@@ -32,14 +32,6 @@ $green-200: #70EE97;  // New design token
 $green-300: #21E46B;  // New design token (default)
 $green-400: #0DAA3E;  // New design token
 $green-500: #078139;  // New design token
-
-// Green - Backward compatibility aliases (smart merge mapping)
-$green-600: $green-300;  // Maps to 300
-$green-700: $green-400;  // Maps to 400
-$green-800: $green-400;  // Maps to 400
-$green-900: $green-500;  // Maps to 500
-$green-1000: $green-500; // Maps to 500
-
 $green: $green-500;
 $apex-2023-green: #00FF76;  // Special event color - preserved
 $token-2049-purple: #410bb9; // Special event color - preserved
@@ -50,28 +42,15 @@ $blue-200: #93BFF1;  // New design token
 $blue-300: #428CFF;  // New design token (default)
 $blue-400: #0179E7;  // New design token
 $blue-500: #0A4DC0;  // New design token
-
-// Blue - Backward compatibility aliases (smart merge mapping)
-$blue-600: $blue-300;  // Maps to 300
-$blue-700: $blue-400;  // Maps to 400
-$blue-800: $blue-400;  // Maps to 400
-$blue-900: $blue-500;  // Maps to 500
-
 $blue: $blue-500;
 $accent-blue-90: #001133; // Special event color - preserved
 
 // Lilac (Primary) - New Design Tokens (replaces blue-purple)
-$lilac-100: #F2EDFF;  // New design token (was F2EDFE in Figma, adjusted)
+$lilac-100: #F2EDFF;  // New design token
 $lilac-200: #D9CAFF;  // New design token
 $lilac-300: #C0A7FF;  // New design token (default)
 $lilac-400: #7649E3;  // New design token
 $lilac-500: #5429A1;  // New design token
-
-// Lilac - Backward compatibility aliases (smart merge mapping)
-$lilac-600: $lilac-300;  // Maps to 300
-$lilac-700: $lilac-400;  // Maps to 400
-$lilac-800: $lilac-400;  // Maps to 400
-$lilac-900: $lilac-500;  // Maps to 500
 
 // Legacy blue-purple aliases (map to new lilac)
 $blue-purple-100: $lilac-100;
@@ -79,10 +58,6 @@ $blue-purple-200: $lilac-200;
 $blue-purple-300: $lilac-300;
 $blue-purple-400: $lilac-400;
 $blue-purple-500: $lilac-500;
-$blue-purple-600: $lilac-600;
-$blue-purple-700: $lilac-700;
-$blue-purple-800: $lilac-800;
-$blue-purple-900: $lilac-900;
 $purple: $lilac-400;
 
 // Red-purple - Legacy (no design token replacement)
@@ -103,22 +78,12 @@ $pink-300: #F18DA5;  // New design token (default)
 $pink-400: #FF577F;  // New design token
 $pink-500: #DC466F;  // New design token
 
-// Pink - Backward compatibility aliases (smart merge mapping)
-$pink-600: $pink-300;  // Maps to 300
-$pink-700: $pink-400;  // Maps to 400
-$pink-800: $pink-400;  // Maps to 400
-$pink-900: $pink-500;  // Maps to 500
-
 // Legacy magenta aliases (map to new pink)
 $magenta-100: $pink-100;
 $magenta-200: $pink-200;
 $magenta-300: $pink-300;
 $magenta-400: $pink-400;
 $magenta-500: $pink-500;
-$magenta-600: $pink-600;
-$magenta-700: $pink-700;
-$magenta-800: $pink-800;
-$magenta-900: $pink-900;
 $magenta: $pink-500;
 $pink: $pink-500;
 
@@ -128,13 +93,6 @@ $red-200: #F27A66;  // New design token
 $red-300: #F0643A;  // New design token (default)
 $red-400: #DA4518;  // New design token
 $red-500: #A22514;  // New design token
-
-// Red - Backward compatibility aliases (smart merge mapping)
-$red-600: $red-300;  // Maps to 300
-$red-700: $red-400;  // Maps to 400
-$red-800: $red-400;  // Maps to 400
-$red-900: $red-500;  // Maps to 500
-
 $red: $red-500;
 
 // Orange - Legacy (no design token replacement)
@@ -155,13 +113,6 @@ $yellow-200: #E6F1A7;  // New design token
 $yellow-300: #DBF15E;  // New design token (default)
 $yellow-400: #E1DB26;  // New design token
 $yellow-500: #D4C02D;  // New design token
-
-// Yellow - Backward compatibility aliases (smart merge mapping)
-$yellow-600: $yellow-300;  // Maps to 300
-$yellow-700: $yellow-400;  // Maps to 400
-$yellow-800: $yellow-400;  // Maps to 400
-$yellow-900: $yellow-500;  // Maps to 500
-
 $yellow: $yellow-500;
 
 // Common colors & colors used in Bootstrap ------------------------------------

@@ -365,7 +365,7 @@
     padding: 2px 16px;
     width: 24px;
     height: 16px;
-    background: $blue-purple-800;
+    background: $blue-purple-400;
     border-radius: 100px;
 
     font-weight: 600;
@@ -850,6 +850,11 @@
     font-size: 16px;
   }
 
+  // Add spacing to filter checkboxes to match Bootstrap 4
+  .form-check-inline {
+    margin-right: 2rem;
+  }
+
   .events-filter {
     height: 20px;
     width: 20px;
@@ -915,7 +920,7 @@
     background-position: center;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 
@@ -930,7 +935,7 @@
     border: none;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 }
