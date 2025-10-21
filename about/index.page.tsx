@@ -407,7 +407,7 @@ export default function XrplOverview() {
         </section>
         <section className="container-new py-26">
           <div
-            className="col-md-6 offset-md-3 w-100 ps-0 pe-0 mini-faq"
+            className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 ps-0 pe-0 mini-faq"
             id="minifaq-accordion"
           >
             {faqs.map((faq, index) => (

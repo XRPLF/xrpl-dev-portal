@@ -46,9 +46,8 @@ module.exports = {
             },
 
             // Safelist - classes that should never be removed
-            // BE VERY CONSERVATIVE - only add classes that are truly dynamic
             safelist: {
-              // Standard safelist - only truly dynamic state classes
+              // Standard safelist - dynamic state classes
               standard: [
                 'html',
                 'body',
@@ -61,6 +60,25 @@ module.exports = {
                 'open',
                 'collapsed',
                 'collapsing',
+                // Common Bootstrap utility patterns that should always be kept
+                /^container/, // All container classes
+                /^row$/, // Row class
+                /^col-/, // Column classes
+                /^g-/, // Gap utilities
+                /^p-/, // Padding utilities
+                /^m-/, // Margin utilities  
+                /^px-/, /^py-/, /^pt-/, /^pb-/, /^ps-/, /^pe-/, // Directional padding
+                /^mx-/, /^my-/, /^mt-/, /^mb-/, /^ms-/, /^me-/, // Directional margin
+                /^d-/, // Display utilities
+                /^flex-/, // Flexbox utilities
+                /^justify-/, // Justify content
+                /^align-/, // Align items
+                /^w-/, // Width utilities
+                /^h-/, // Height utilities
+                /^text-/, // Text utilities
+                /^bg-/, // Background utilities
+                /^border/, // Border utilities
+                /^rounded/, // Border radius
               ],
               
               // Deep safelist - MINIMAL - only truly dynamic components
