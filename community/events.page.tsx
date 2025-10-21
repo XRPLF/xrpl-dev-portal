@@ -1270,7 +1270,7 @@ const events = [
     link: "https://luma.com/llwjrmcx",
     location: "Rome, Italy",
     date: "November 07, 2025",
-    image: hackathon,
+    image: italyHackathon,
     end_date: "November 08, 2025",
   },
   {
@@ -1305,6 +1305,17 @@ const events = [
     image: require("../static/img/events/aquarium-residency.png"),
     date: "December 10, 2025",
     end_date: "December 10, 2025",
+  },
+  {
+    name: "XRPL Hackathon @ Blockchain Kaigi 2025",
+    description:
+      "This is a 3-week online hackathon culminating in demos and an awards ceremony to be held in conjunction with Blockchain Kaigi 2025 in Mumbai, India.",
+    type: "hackathon",
+    link: "https://luma.com/ypj8ecj0",
+    location: "Online (with demos at IIT Bombay)",
+    date: "Nov 14 - Dec 06, 2025",
+    image: require("../static/img/events/hackathon-kaigi.png"),
+    end_date: "December 06, 2025",
   },
 ];
 
