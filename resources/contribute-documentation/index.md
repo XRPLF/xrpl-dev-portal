@@ -23,7 +23,7 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 
 - `_api-examples/` - Sample API requests and responses, especially ones used in the documentation.
 - `_code-samples/` - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
-- `@l10n` - Translations into languages other than English. Currently, Japanese is deployed and Spanish is incomplete (unused).
+- `@l10n` - Translations into languages other than English. See [Documentation Translations](./documentation-translations.md) for details.
 - `@theme` - Overrides and custom components used in Markdoc contents as well as custom React pages.
 - `about/` - Source files for the About section's pages.
 - `blog/` - Source files for the XRPL Dev Blog.
@@ -99,6 +99,22 @@ These types of documents serve people with different roles, or sometimes the sam
 
 Some pages, like **Use Cases**, don't fit cleanly into these categories. It is OK to have exceptions where justified.
 
+### Interlinking
+
+Linking is useful for readers, who may arrive at any page in any order, without full context. Links in the body text help humans navigate through the site, since it's common to end up on a page that does not actually have the information you are looking for, but is related in some way to the page that does; links can send people to the right place while also building an understanding of the relationship between pieces of the whole. Frequent usage of links also helps machines point people at the right place, both in terms of search engine optimization and generative engine (AI) optimization.
+
+Links commonly fall into these categories:
+
+- _external links_ go to other sites. These should be used sparingly and clearly indicated; otherwise, suddenly ending up on a different site can be jarring. External links may open in a new tab or window; non-external links should always stay within the same tab.
+- _deep links_ go into greater detail than the current page, explaining a topic or option with more specifics. They are called "deep" links because the pages they link to typically exist at a level that is deeper into the site's hierarchical navigation and information architecture. Deep links are commonly introduced with a phrase such as, "For more information about {topic}," or placed in a "See Also" section at the bottom of a page, but that is not always necessary.
+- _backlinks_ provide background information or context for understanding the current page. They are called "back" links because they typically send readers "back" to shallower levels of the information architecture instead of following the typical progression of knowledge.
+
+Links can and should be used regularly, but without going overboard. Some additional guidelines:
+
+- In the first paragraph or even first sentence of any reference page, include a backlink to a concept page that provides more context about when and why that reference may be used.
+- When using a keyword that may need some explanation, to link the first instance of that keyword back to a concept page that explains it. Don't make every instance of the keyword into a link, which is overkill and distracting, but you may want to link it again if it comes up again in a separate section of the same page, especially if readers are likely to jump ahead to a specific section rather than reading straight through from the first mention to the later one.
+- On concept pages that are in the shallower parts of the information architecture, use caution when putting deep links into the text body. Readers may interpret these as backlinks, implying that they need additional background reading to understand the current section, interrupting the flow of information from simpler to more advanced. It is OK to use deep links in concepts when introduced with a warning phrase such as "For more information," or when context makes it clear that it is a deep link—for example, when saying that users can use a particular transaction type to accomplish a certain goal, it is appropriate to use a deep link to the transaction type reference documentation.
+
 ## Conventions
 
 Use the following conventions when creating a page:
@@ -154,11 +170,12 @@ metadata:
     indexPage: true # Use if you want to use the {% child-pages /%} macro to display a list of page children
 seo:
     description: Transact with confidence using the XRP Ledger's suite of compliance features for following government regulations and security practices.
-    title: Compliance Features
 ---
 ```
 
 Some pages in the site have leftover metadata from the previous (Dactyl) toolchain, such as `html`, `parent`, or `targets` fields. These fields have no effect and can be removed. For a reference of frontmatter fields that are supported by the current (Redocly) toolchain, see [Front matter configuration options (Realm docs)](https://redocly.com/docs/realm/config/front-matter-config).
+
+Usually, you should not specify a title in the frontmatter, but you might use the `seo` field's `title` sub-field (see below) for non-Markdown pages or when recommended for search engine optimization.
 
 ### seo.title, default title, and sidebar label
 
@@ -195,7 +212,7 @@ For reference, here's the hierarchy that determines which title gets used where:
 | Location | Which title it uses |
 |----------|---------------------|
 | `<title>` element (the text that displays in the tab name and the title bar of your browser, if it has one) | `seo.title`, falling back to md h1 |
-| `<meta name="title" ...>`, `<meta name="og:title" ...>`, `<meta name="twitter:title" ...>` and so on in the `<head>` of the page, which are used when "unfurling" a link (showing a preview) in various chat and social media apps like Facebook or Slack | `seo.title`, falling back to md h1 |
+| `<meta name="title" ...>`, `<meta name="og:title" ...>`, `<meta name="twitter:title" ...>` and so on in the `<head>` of the page, which are used when "unfurling" a link (showing a preview) in various chat and social media apps like Discord, Slack, or X (Twitter) | `seo.title`, falling back to md h1 |
 | Sidebar navigation | `label` from `sidebars.yaml`, then `seo.title`, and finally md h1 |
 | In-page header, that is, the big text in the center column | md h1 only |
 

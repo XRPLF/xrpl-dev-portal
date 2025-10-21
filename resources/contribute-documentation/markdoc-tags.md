@@ -6,7 +6,7 @@ seo:
 
 This page serves as a reference of the [Markdoc tags](https://redocly.com/docs/realm/content/markdoc-tags/tag-library) used in XRPL documentation. These extensions of Markdown syntax allow for stylized and dynamic contents.
 
-When using self-closing tags, be sure to include the closing slash in the tag definition. Otherwise, the unclosed tag may accidentally hide all contents of the page after it.
+When using self-closing tags, be sure to include the closing slash in the tag definition. Otherwise, content after the unclosed tag will not be displayed.
 
 ## Redocly Built-In Tags
 
