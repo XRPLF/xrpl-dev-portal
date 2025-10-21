@@ -32,7 +32,6 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 | Ripple[¹][]   | Testnet (Clio) | `https://clio.altnet.rippletest.net:51234/`	| `wss://clio.altnet.rippletest.net:51233/` | Testnet public server with Clio |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet public server |
 | Ripple[¹][]   | Devnet (Clio)  | `https://clio.devnet.rippletest.net:51234/`	| `wss://clio.devnet.rippletest.net:51233/` | Devnet public server with Clio |
-| Ripple[¹][]   | Sidechain-Devnet | `https://sidechain-net2.devnet.rippletest.net:51234/` | `wss://sidechain-net2.devnet.rippletest.net:51233/` | Sidechain Devnet to test cross-chain bridge features. Devnet serves as the locking chain while this sidechain serves as the issuing chain. |
 | XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooks-enabled](https://hooks.xrpl.org/) Xahau Testnet |
 
 
