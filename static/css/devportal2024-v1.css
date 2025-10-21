@@ -280,7 +280,7 @@
   --bs-link-hover-color-rgb: 173, 146, 238;
   --bs-code-color: rgb(236.4, 236.4, 237);
   --bs-highlight-color: #C1C1C2;
-  --bs-highlight-bg: #E1DB26;
+  --bs-highlight-bg: rgb(84.8, 76.8, 18);
   --bs-border-color: #343437;
   --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
   --bs-form-valid-color: #21E46B;
@@ -10529,10 +10529,6 @@ section {
     padding: 40px;
   }
 }
-.card-grid .card .card-body {
-  padding: 8px;
-  padding-bottom: 24px;
-}
 .card-grid .card .card-body .card-icon-container {
   width: 50px;
   height: 50px;
@@ -17051,6 +17047,9 @@ html.light .label.label-fees:hover .badge-pill, html.light .label.label-payments
 }
 .page-events .events-filter h6, .page-events .events-filter .h6 {
   font-size: 16px;
+}
+.page-events .form-check-inline {
+  margin-right: 2rem;
 }
 .page-events .events-filter {
   height: 20px;
