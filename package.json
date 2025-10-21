@@ -5,8 +5,10 @@
   "type": "module",
   "description": "The XRP Ledger Dev Portal is the authoritative source for XRP Ledger documentation, including the `rippled` server, client libraries, and other open-source XRP Ledger software.",
   "scripts": {
-    "build-css": "sass --load-path styles/scss styles/xrpl.scss ./static/css/devportal2024-v1.css --style compressed --no-source-map",
-    "build-css-watch": "sass --watch --load-path styles/scss styles/xrpl.scss ./static/css/devportal2024-v1.css --style compressed --no-source-map",
+    "analyze-css": "node scripts/analyze-css.js",
+    "build-css": "sass --load-path styles/scss styles/xrpl.scss ./static/css/devportal2024-v1.tmp.css && NODE_ENV=production postcss ./static/css/devportal2024-v1.tmp.css -o ./static/css/devportal2024-v1.css && rm -f ./static/css/devportal2024-v1.tmp.css",
+    "build-css:dev": "sass --load-path styles/scss styles/xrpl.scss ./static/css/devportal2024-v1.tmp.css --source-map && postcss ./static/css/devportal2024-v1.tmp.css -o ./static/css/devportal2024-v1.css && rm -f ./static/css/devportal2024-v1.tmp.css",
+    "build-css:watch": "sass --watch --load-path styles/scss styles/xrpl.scss ./static/css/devportal2024-v1.css --source-map",
     "start": "realm develop"
   },
   "keywords": [],
@@ -37,8 +39,13 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "autoprefixer": "^10.4.21",
     "bootstrap": "^5.3.3",
+    "cssnano": "^7.1.1",
     "htmltojsx": "^0.3.0",
-    "sass": "1.26.10"
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.93.2"
   }
 }
