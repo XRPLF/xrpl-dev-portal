@@ -2,7 +2,7 @@
 seo:
     description: A trust line, which tracks the net balance of fungible tokens between two accounts.
 labels:
-  - Tokens
+    - Tokens
 ---
 # RippleState
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L277-L289 "Source")
@@ -69,19 +69,19 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 `RippleState` entries can have the following flags combined into the `Flags` field:
 
-| Flag Name         | Hex Value    | Decimal Value | Corresponding [TrustSet Flag](../../transactions/types/trustset.md#trustset-flags) | Description |
-|-------------------|--------------|---------------|-----------------|---------|
-| `lsfAMMNode`      | `0x01000000` | 16777216      | (None)          | This entry consumed AMM liquidity to complete a [`Payment`](../../transactions/types/payment.md) transaction. |
-| `lsfLowReserve`   | `0x00010000` | 65536         | (None)          | This entry [contributes to the low account's owner reserve](#ripplestate-reserve). |
-| `lsfHighReserve`  | `0x00020000` | 131072        | (None)          | This entry [contributes to the high account's owner reserve](#ripplestate-reserve). |
-| `lsfLowAuth`      | `0x00040000` | 262144        | `tfSetAuth`     | The low account has authorized the high account to hold tokens issued by the low account. |
-| `lsfHighAuth`     | `0x00080000` | 524288        | `tfSetAuth`     | The high account has authorized the low account to hold tokens issued by the high account. |
-| `lsfLowNoRipple`  | `0x00100000` | 1048576       | `tfSetNoRipple` | The low account [has disabled rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) from this trust line. |
-| `lsfHighNoRipple` | `0x00200000` | 2097152       | `tfSetNoRipple` | The high account [has disabled rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) from this trust line. |
-| `lsfLowFreeze`    | `0x00400000` | 4194304       | `tfSetFreeze`   | The low account has frozen the trust line, preventing the high account from transferring the asset. |
-| `lsfHighFreeze`   | `0x00800000` | 8388608       | `tfSetFreeze`   | The high account has frozen the trust line, preventing the low account from transferring the asset. |
-| `lsfLowDeepFreeze` | `0x02000000` | 33554432 |`tfSetLowDeepFreeze` | The low account has deep-frozen the trust line, preventing the high account from sending and receiving the asset. |
-| `lsfHighDeepFreeze` | `0x04000000` | 67108864 | `tfSetHighDeepFreeze` | The high account has deep-frozen the trust line, preventing the low account from sending and receiving the asset. |
+| Flag Name           | Hex Value    | Decimal Value | Corresponding [TrustSet Flag](../../transactions/types/trustset.md#trustset-flags) | Description |
+|---------------------|--------------|---------------|-----------------------|---------|
+| `lsfLowReserve`     | `0x00010000` | 65536         | (None)                | This entry [contributes to the low account's owner reserve](#ripplestate-reserve). |
+| `lsfHighReserve`    | `0x00020000` | 131072        | (None)                | This entry [contributes to the high account's owner reserve](#ripplestate-reserve). |
+| `lsfLowAuth`        | `0x00040000` | 262144        | `tfSetAuth`           | The low account has authorized the high account to hold tokens issued by the low account. |
+| `lsfHighAuth`       | `0x00080000` | 524288        | `tfSetAuth`           | The high account has authorized the low account to hold tokens issued by the high account. |
+| `lsfLowNoRipple`    | `0x00100000` | 1048576       | `tfSetNoRipple`       | The low account [has disabled rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) from this trust line. |
+| `lsfHighNoRipple`   | `0x00200000` | 2097152       | `tfSetNoRipple`       | The high account [has disabled rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) from this trust line. |
+| `lsfLowFreeze`      | `0x00400000` | 4194304       | `tfSetFreeze`         | The low account has frozen the trust line, preventing the high account from transferring the asset. |
+| `lsfHighFreeze`     | `0x00800000` | 8388608       | `tfSetFreeze`         | The high account has frozen the trust line, preventing the low account from transferring the asset. |
+| `lsfAMMNode`        | `0x01000000` | 16777216      | (None)                | This trust line holds one of the assets in an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s pool; one of this trust line's accounts is the AMM, and the other is the issuer of the token. {% amendment-disclaimer name="AMM" /%} |
+| `lsfLowDeepFreeze`  | `0x02000000` | 33554432      |`tfSetLowDeepFreeze`   | The low account has deep-frozen the trust line, preventing the high account from sending and receiving the asset. {% amendment-disclaimer name="DeepFreeze" /%} |
+| `lsfHighDeepFreeze` | `0x04000000` | 67108864      | `tfSetHighDeepFreeze` | The high account has deep-frozen the trust line, preventing the low account from sending and receiving the asset. {% amendment-disclaimer name="DeepFreeze" /%} |
 
 The two accounts connected by the trust line can each change their own settings with a [TrustSet transaction][].
 
