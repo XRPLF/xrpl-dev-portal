@@ -1,11 +1,9 @@
 ---
-html: invariant-checking.html
-parent: consensus.html
 seo:
     description: Understand what invariant checking is, why it exists, how it works, and what invariant checks are active.
 labels:
-  - Blockchain
-  - Security
+    - Blockchain
+    - Security
 ---
 # Invariant Checking
 
@@ -29,49 +27,25 @@ The processing of incorrect transaction would undermine the value of trust in th
 
 ## How it Works
 
-The invariant checker is a second layer of code that runs automatically in real-time after each transaction. Before the transaction's results are committed to the ledger, the invariant checker examines those changes for correctness. If the transaction's results would break one of the XRP Ledger's strict rules, the invariant checker rejects the transaction. Transactions that are rejected this way have the result code `tecINVARIANT_FAILED` and are included in the ledger with no effects.
+The invariant checker is a second layer of code that runs automatically in real-time after each transaction. Before the transaction's results are committed to the ledger, the invariant checker examines those changes for correctness. If the transaction's results would break one of the XRP Ledger's strict rules, the invariant checker rejects the transaction. Transactions that are rejected this way have the [result code](../../references/protocol/transactions/transaction-results/index.md) `tecINVARIANT_FAILED` and are included in the ledger with no effects.
 
 To include the transaction in the ledger with a `tec`-class code, some minimal processing is necessary. If this minimal processing still breaks an invariant, the transaction fails with the code `tefINVARIANT_FAILED` instead, and is not included in the ledger at all.
 
 
 ## Active Invariants
 
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/InvariantCheck.h "Source")
+
 The XRP Ledger checks all the following invariants on each transaction:
 
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L92 "Source")
-
 - [Transaction Fee Check](#transaction-fee-check)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L118 "Source")
-
 - [XRP Not Created](#xrp-not-created)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L146 "Source")
-
 - [Account Roots Not Deleted](#account-roots-not-deleted)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L173 "Source")
-
 - [XRP Balance Checks](#xrp-balance-checks)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L197 "Source")
-
 - [Ledger Entry Types Match](#ledger-entry-types-match)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L224 "Source")
-
 - [No XRP Trust Lines](#no-xrp-trust-lines)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L251 "Source")
-
 - [No Bad Offers](#no-bad-offers)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L275 "Source")
-
 - [No Zero Escrow](#no-zero-escrow)
-
-[[Source]](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L300 "Source")
-
 - [Valid New Account Root](#valid-new-account-root)
 
 
@@ -97,7 +71,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### XRP Balance Checks
 
 - **Invariant Condition(s):**
-    - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than 100 billion XRP exactly.
+    - An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than [100 billion XRP exactly](https://github.com/XRPLF/rippled/blob/a7792ebcae63db64e9ae3d7704576252837c2512/include/xrpl/protocol/SystemParameters.h#L44-L51).
 
 
 ### Ledger Entry Types Match
@@ -155,18 +129,12 @@ The XRP Ledger checks all the following invariants on each transaction:
 ## See Also
 
 - **Blog:**
-    - [Protecting the Ledger: Invariant Checking](https://xrpl.org/blog/2017/invariant-checking.html)
+    - [Protecting the Ledger: Invariant Checking](/blog/2017/invariant-checking.md)
 
 - **Repository:**
-    - [Invariant Check.h](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h)
-    - [Invariant Check.cpp](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.cpp)
-    - [System Parameters](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/SystemParameters.h#L43)
-    - [XRP Amount](https://github.com/XRPLF/rippled/blob/develop/src/ripple/basics/XRPAmount.h#L244)
-    - [Ledger Formats](https://github.com/XRPLF/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/protocol/LedgerFormats.h#L36-L94)
+    - [`InvariantCheck.h`](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/InvariantCheck.h)
+    - [`InvariantCheck.cpp`](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/InvariantCheck.cpp)
+    - [`XRPAmount.h`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/XRPAmount.h)
 
-
-- **Other:**
-    - [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md)
-    - [Calculating Balance Changes for a Transaction](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,10 +1,8 @@
 ---
-html: understanding-log-messages.html
-parent: troubleshoot-the-rippled-server.html
 seo:
     description: Interpret and respond to warning and error messages in the debug log.
 labels:
-  - Core Server
+    - Core Server
 ---
 # Understanding Log Messages
 
@@ -125,7 +123,7 @@ The following log message indicates that a client to the server's public API has
 Resource:WRN Consumer entry 169.55.164.21 dropped with balance 15970 at or above drop threshold 15000
 ```
 
-The entry contains the IP address of the client that exceeded its rate limit, and the client's "balance", which is a score estimating the rate at which the client has been using the API. The threshold for dropping a client is [hardcoded to a score of 15000](https://github.com/XRPLF/rippled/blob/06c371544acc3b488b9d9c057cee4e51f6bef7a2/src/ripple/resource/impl/Tuning.h#L34-L35).
+The entry contains the IP address of the client that exceeded its rate limit, and the client's "balance", which is a score estimating the rate at which the client has been using the API. The threshold for dropping a client is [hardcoded to a score of 25000](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/include/xrpl/resource/detail/Tuning.h#L35). {% badge href="https://xrpl.org/blog/2025/rippled-2.3.1" %}Updated in: rippled 2.3.1{% /badge %}
 
 If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)
 
