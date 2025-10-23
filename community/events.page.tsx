@@ -1395,14 +1395,14 @@ export default function Events() {
         </section>
         <section className="container-new py-26">
           <div className="event-hero card-grid card-grid-2xN">
-            <div className="pr-2 col">
+            <div className="pe-2 col">
               <img
                 alt="xrp ledger events hero"
                 src={require("../static/img/events/xrp-community-night.png")}
                 className="w-100"
               />
             </div>
-            <div className="pt-5 pr-2 col">
+            <div className="pt-5 pe-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
                   {translate("XRP Community Night NYC")}
@@ -1540,15 +1540,14 @@ export default function Events() {
             </div>
           </div>
           {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info  */}
-          <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
+          <div className="row row-cols-1 row-cols-lg-3 g-4 mt-2">
             {filteredUpcoming.map((event, i) => (
-              <a
-                key={event.name + i}
-                className={`event-card ${event.type}`}
-                href={event.link}
-                style={{}}
-                target="_blank"
-              >
+              <div key={event.name + i} className="col">
+                <a
+                  className={`event-card ${event.type} h-100`}
+                  href={event.link}
+                  target="_blank"
+                >
                 <div
                   className="event-card-header"
                   style={{
@@ -1569,6 +1568,7 @@ export default function Events() {
                   <span className="d-flex icon icon-date">{event.date}</span>
                 </div>
               </a>
+            </div>
             ))}
           </div>
         </section>
@@ -1675,34 +1675,35 @@ export default function Events() {
               </div>
             </div>
           </div>
-          <div className="mt-2 mb-0 row row-cols-1 row-cols-lg-3 card-deck ">
+          <div className="row row-cols-1 row-cols-lg-3 g-4 mt-2 mb-0">
             {filteredPast.map((event, i) => (
-              <a
-                key={event.name + i}
-                className="event-card {event.type}"
-                href={event.link}
-                target="_blank"
-              >
-                <div
-                  className="event-card-header"
-                  style={{
-                    background: `url(${event.image}) no-repeat`,
-                  }}
+              <div key={event.name + i} className="col">
+                <a
+                  className={`event-card ${event.type} h-100`}
+                  href={event.link}
+                  target="_blank"
                 >
-                  <div className="event-card-title">
-                    {translate(event.name)}
+                  <div
+                    className="event-card-header"
+                    style={{
+                      background: `url(${event.image}) no-repeat`,
+                    }}
+                  >
+                    <div className="event-card-title">
+                      {translate(event.name)}
+                    </div>
                   </div>
-                </div>
-                <div className="event-card-body">
-                  <p>{translate(event.description)}</p>
-                </div>
-                <div className="mt-lg-auto event-card-footer d-flex flex-column">
-                  <span className="mb-2 d-flex icon icon-location">
-                    {event.location}
-                  </span>
+                  <div className="event-card-body">
+                    <p>{translate(event.description)}</p>
+                  </div>
+                  <div className="mt-lg-auto event-card-footer d-flex flex-column">
+                    <span className="mb-2 d-flex icon icon-location">
+                      {event.location}
+                    </span>
                   <span className="d-flex icon icon-date">{event.date}</span>
                 </div>
               </a>
+              </div>
             ))}
           </div>
         </section>

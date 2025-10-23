@@ -184,7 +184,7 @@ function TestCredentials({selectedFaucet, translate}) {
                 setBalance, 
                 setSequence,
                 translate)
-            } className="btn btn-primary mr-2 mb-2">
+            } className="btn btn-primary me-2 mb-2">
               {`${translate('resources.dev-tools.faucet.cred-btn.part1', 'Generate ')}${selectedFaucet.shortName}${translate('resources.dev-tools.faucet.cred-btn.part2', ' credentials')}`}
           </button>
         </div>

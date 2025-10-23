@@ -207,7 +207,7 @@ html:not(.light) article {
 
       // Primary Blue Side gradient: change to green
       stop[stop-color="#29a1da"] {
-        stop-color: $green-600;
+        stop-color: $green-300;
       }
       stop[stop-color="#2789b9"] {
         stop-color: $green-400;
@@ -247,7 +247,7 @@ html.light {
   svg[fill="black"] {
 
     g[fill="blue"] {
-      fill: $blue-700;
+      fill: $blue-400;
     }
     g[stroke="blue"] {
       stroke: $blue-500;
@@ -271,7 +271,7 @@ html.light {
       fill: $blue-500;
     }
     g[stroke="rgb(29,180,255)"] {
-      stroke: $blue-700;
+      stroke: $blue-400;
     }
     rect[stroke="rgb(245,247,249)"] { // old off-white.
       stroke: $gray-050;
@@ -282,7 +282,7 @@ html.light {
     }
     g[stroke="lime"] ,
     g[stroke="rgb(0,255,0)"]{
-      stroke: $green-700; // darken strokes
+      stroke: $green-400; // darken strokes
     }
     g[fill="yellow"],
     g[fill="rgb(255,255,0)"] {
@@ -325,7 +325,7 @@ html.light {
     }
     path[stroke="#FF198B"] {
       // slightly darken up this magenta for more contrast in light mode
-      stroke: $magenta-700;
+      stroke: $magenta-400;
     }
 
     linearGradient stop[stop-color="#F5F5F7"] {

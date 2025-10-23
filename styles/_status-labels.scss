@@ -95,61 +95,61 @@
   }
 
   @mixin chip-indigo {
-    background-color: $blue-purple-900;
+    background-color: $blue-purple-500;
     color: $blue-purple-300;
     .badge-pill {
-      color: $blue-purple-900;
+      color: $blue-purple-500;
       background-color: $blue-purple-300;
     }
     &:hover {
-      background-color: $blue-purple-800;
+      background-color: $blue-purple-400;
       color: $blue-purple-200;
       .badge-pill {
-        color: $blue-purple-800;
+        color: $blue-purple-400;
         background-color: $blue-purple-200;
       }
     }
 
     html.light & {
       background-color: $blue-purple-200;
-      color: $blue-purple-800;
+      color: $blue-purple-400;
       .badge-pill {
         color: $blue-purple-200;
-        background-color: $blue-purple-800;
+        background-color: $blue-purple-400;
       }
       &:hover {
         background-color: $blue-purple-300;
-        color: $blue-purple-900;
+        color: $blue-purple-500;
         .badge-pill {
           color: $blue-purple-300;
-          background-color: $blue-purple-900;
+          background-color: $blue-purple-500;
         }
       }
     }
   }
 
   @mixin chip-green {
-    background-color: $green-900;
+    background-color: $green-500;
     color: $green-300;
     .badge-pill {
       background-color: $green-300;
-      color: $green-900;
+      color: $green-500;
     }
     &:hover {
-      background-color: $green-800;
+      background-color: $green-400;
       color: $green-200;
       .badge-pill {
         background-color: $green-200;
-        color: $green-800;
+        color: $green-400;
       }
     }
 
     html.light & {
       background-color: $green-200;
-      color: $green-900;
+      color: $green-500;
       .badge-pill {
         color: $green-200;
-        background-color: $green-900;
+        background-color: $green-500;
       }
       &:hover {
         background-color: $green-300;
@@ -197,68 +197,68 @@
   }
 
   @mixin chip-yellow {
-    background-color: $yellow-900;
+    background-color: $yellow-500;
     color: $yellow-300;
     .badge-pill {
       background-color: $yellow-300;
-      color: $yellow-900;
+      color: $yellow-500;
     }
     &:hover {
-      background-color: $yellow-800;
+      background-color: $yellow-400;
       color: $yellow-200;
       .badge-pill {
         background-color: $yellow-200;
-        color: $yellow-800;
+        color: $yellow-400;
       }
     }
 
     html.light & {
       background-color: $yellow-200;
-      color: $yellow-900;
+      color: $yellow-500;
       .badge-pill {
         color: $yellow-200;
-        background-color: $yellow-900;
+        background-color: $yellow-500;
       }
       &:hover {
         background-color: $yellow-300;
-        color: $yellow-900;
+        color: $yellow-500;
         .badge-pill {
           color: $yellow-300;
-          background-color: $yellow-900;
+          background-color: $yellow-500;
         }
       }
     }
   }
 
   @mixin chip-blue {
-    background-color: $blue-900;
+    background-color: $blue-500;
     color: $blue-300;
     .badge-pill {
       background-color: $blue-300;
-      color: $blue-900;
+      color: $blue-500;
     }
     &:hover {
-      background-color: $blue-800;
+      background-color: $blue-400;
       color: $blue-200;
       .badge-pill {
         background-color: $blue-200;
-        color: $blue-800;
+        color: $blue-400;
       }
     }
 
     html.light & {
       background-color: $blue-200;
-      color: $blue-800;
+      color: $blue-400;
       .badge-pill {
         color: $blue-200;
-        background-color: $blue-800;
+        background-color: $blue-400;
       }
       &:hover {
         background-color: $blue-300;
-        color: $blue-900;
+        color: $blue-500;
         .badge-pill {
           color: $blue-300;
-          background-color: $blue-900;
+          background-color: $blue-500;
         }
       }
     }
@@ -299,34 +299,34 @@
   }
 
   @mixin chip-magenta {
-    background-color: $magenta-900;
+    background-color: $magenta-500;
     color: $magenta-300;
     .badge-pill {
       background-color: $magenta-300;
-      color: $magenta-900;
+      color: $magenta-500;
     }
     &:hover {
-      background-color: $magenta-800;
+      background-color: $magenta-400;
       color: $magenta-200;
       .badge-pill {
         background-color: $magenta-200;
-        color: $magenta-800;
+        color: $magenta-400;
       }
     }
 
     html.light & {
       background-color: $magenta-200;
-      color: $magenta-800;
+      color: $magenta-400;
       .badge-pill {
         color: $magenta-200;
-        background-color: $magenta-800;
+        background-color: $magenta-400;
       }
       &:hover {
         background-color: $magenta-300;
-        color: $magenta-900;
+        color: $magenta-500;
         .badge-pill {
           color: $magenta-300;
-          background-color: $magenta-900;
+          background-color: $magenta-500;
         }
       }
     }

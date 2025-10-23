@@ -11,3 +11,4 @@ _code-samples/*/js/package-lock.json
 
 # PHP
 composer.lock
+.cursor/
