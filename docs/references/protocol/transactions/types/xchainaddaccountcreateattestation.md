@@ -6,7 +6,7 @@ labels:
 status: not_enabled
 ---
 # XChainAddAccountCreateAttestation
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L447-L464 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/tx/detail/XChainBridge.h#L189 "Source")
 
 Provide an attestation from a [witness server](../../../../concepts/xrpl-sidechains/witness-servers.md) that an `XChainAccountCreateCommit` transaction occurred on the other chain.
 

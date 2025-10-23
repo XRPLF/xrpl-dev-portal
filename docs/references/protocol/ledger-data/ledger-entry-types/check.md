@@ -64,7 +64,7 @@ There are no flags defined for {% code-page-name /%} entries.
 
 
 ## Check ID Format
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/Indexes.cpp#L335-L339 "Source")
 
 The ID of a `Check` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
