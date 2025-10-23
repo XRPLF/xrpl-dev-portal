@@ -18,7 +18,7 @@ rippled -a --start --conf=/path/to/rippled.cfg
 
 For more information on the options you can use when starting `rippled` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](../commandline-usage.md#stand-alone-mode-options).
 
-In a genesis ledger, the [genesis address](../../concepts/accounts/addresses.md#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184) as follows:
+In a genesis ledger, the [genesis address](../../concepts/accounts/addresses.md#special-addresses) holds all 100 billion XRP. The keys of the genesis address are [hardcoded](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/ledger/Ledger.cpp#L184) as follows:
 
 **Address:** `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh`
 
