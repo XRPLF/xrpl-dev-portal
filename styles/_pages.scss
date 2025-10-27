@@ -1514,17 +1514,63 @@ html.light {
 
   }
 
-  .token-title-container {
-    gap: 32px;
-    padding: 104px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    @media (max-width: 767px) {
-      padding-bottom: 0px;
+    .token-title-container {
+      gap: 32px;
+      padding: 104px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  
+      .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+        align-items: center;
+  
+        .internal-link {
+            color: #9a52ff;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            background: none !important;
+            &::after {
+              content: url('../img/icons/arrow-right-purple.svg') !important;
+              position: relative;
+              top: 3px;
+              vertical-align: middle;
+              padding-left: 8px;
+              transition: transform 0.3s ease-out;
+            }
+          }
+  
+        @media (max-width: 767px) {
+          padding-bottom: 0px;
+          gap: 16px;
+          flex-direction: column;
+          width: 100%;
+          
+          .btn-primary.p-12 {
+            width: 100%;
+          }
+          
+          .internal-link {
+            width: 100%;
+            text-align: center;
+            white-space: normal;
+          }
+        }
+  
+        .btn-primary.p-12 {
+          padding: 12px;
+        }
+      }
     }
-  }
 
   .token-video-container {
     padding: 104px 64px;
