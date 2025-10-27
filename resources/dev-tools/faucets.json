@@ -31,6 +31,14 @@
             "faucetHost": "batch.faucet.nerdnest.xyz",
             "shortName": "Batch-Devnet",
             "desc": "Preview of XLS-56d Batch transactions."
-        }   
+        },
+        {
+            "id": "faucet-select-lending-devnet",
+            "wsUrl": "wss://lend.devnet.rippletest.net:51233/",
+            "jsonRpcUrl": "https://lend.devnet.rippletest.net:51234/",
+            "faucetHost": "lend-faucet.devnet.rippletest.net",
+            "shortName": "Lending-Devnet",
+            "desc": "Preview of XLS-66d Lending Protocol."
+        }
     ]
 }
