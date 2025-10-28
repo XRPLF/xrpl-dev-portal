@@ -64,7 +64,7 @@ For each new ledger version, the server picks a soft limit on the number of tran
 
 The open ledger cost requirement is [proportional to the normal cost of the transaction](#fee-levels), not the absolute transaction cost. Transaction types that have a higher-than-normal requirement, such as [multi-signed transactions](../accounts/multi-signing.md) must pay more to meet the open ledger cost than transactions which have minimum transaction cost requirements.
 
-See also: [Fee Escalation explanation in `rippled` repository](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md).
+See also: [Fee Escalation explanation in `rippled` repository](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/FeeEscalation.md).
 
 ### Queued Transactions
 
