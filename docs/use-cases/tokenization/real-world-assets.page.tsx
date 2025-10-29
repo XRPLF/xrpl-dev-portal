@@ -409,15 +409,15 @@ function TokenHeroSection() {
           {translate("Real-World Asset (RWA) Tokenization")}
         </h1>
         <div className="button-container">
-          <a
+          <Link
             className="btn btn-primary p-12"
             target="_blank"
-            href="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
+            to="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
           >
             {translate("Get Started Now")}
-          </a>
+          </Link>
           <Link
-            className="internal-link btn-arrow"
+            className="internal-link"
             to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
           >
             {translate("Explore Institutional Solutions")}

@@ -1539,14 +1539,6 @@ html.light {
             display: inline-flex;
             align-items: center;
             background: none !important;
-            &::after {
-              content: url('../img/icons/arrow-right-purple.svg') !important;
-              position: relative;
-              top: 3px;
-              vertical-align: middle;
-              padding-left: 8px;
-              transition: transform 0.3s ease-out;
-            }
           }
   
         @media (max-width: 767px) {
