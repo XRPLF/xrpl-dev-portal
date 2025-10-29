@@ -162,9 +162,7 @@ function RwaTokenizationFeatures() {
         <div className="container max-w-1150">
           <header className="rwa-header">
             <h2 className="rwa-title">
-              {translate(
-                "Defining Features on XRPL"
-              )}
+              {translate("Defining Features on XRPL")}
             </h2>
           </header>
           <div className="feature-grid">
@@ -239,8 +237,10 @@ function DeveloperTools() {
 
 function CompanyLogo({ className, alt, aspectRatio, link }) {
   return (
-    <div
-      onClick={() => window.open(link, "_blank")}
+    <Link
+      to={link}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`company-logo ${className}`}
       role="img"
       aria-label={alt}
@@ -255,9 +255,7 @@ function UpcomingEvents() {
     <section className="token-events-wrapper">
       <div className="upcoming-events">
         <h2 className="upcoming-events__title">
-          {translate(
-            "Trusted by Leaders in Real-World Asset Tokenization"
-          )}
+          {translate("Trusted by Leaders in Real-World Asset Tokenization")}
         </h2>
         <div className="upcoming-events__logo-container">
           {companies.map((company, index) => (
@@ -412,13 +410,19 @@ function TokenHeroSection() {
         <h1 className="token-title">
           {translate("Real-World Asset (RWA) Tokenization")}
         </h1>
-        <div className="d-lg-block small-100 ">
+        <div className="button-container">
           <Link
-            className="btn btn-primary btn-arrow-out"
+            className="btn btn-primary p-12 btn-arrow-out"
             target="_blank"
-            to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+            to="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
           >
             {translate("Get Started Now")}
+          </Link>
+          <Link
+            className="internal-link"
+            to="/docs/use-cases/tokenization/creating-an-asset-backed-multi-purpose-token"
+          >
+            {translate("Explore Institutional Solutions")}
           </Link>
         </div>
       </div>
@@ -467,7 +471,7 @@ export default function RwaTokenization() {
           url: "https://xrplresources.org/subscribe",
         },
       ],
-      backgroundClass: "learn-stay-updated"
+      backgroundClass: "learn-stay-updated",
     },
   ];
 
