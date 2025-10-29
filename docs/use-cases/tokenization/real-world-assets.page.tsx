@@ -412,7 +412,7 @@ function TokenHeroSection() {
         </h1>
         <div className="button-container">
           <Link
-            className="btn btn-primary p-12"
+            className="btn btn-primary p-12 btn-arrow-out"
             target="_blank"
             to="/static/pdf/Whitepaper_the_future_of_asset_tokenization.pdf"
           >
