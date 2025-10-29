@@ -237,8 +237,10 @@ function DeveloperTools() {
 
 function CompanyLogo({ className, alt, aspectRatio, link }) {
   return (
-    <div
-      onClick={() => window.open(link, "_blank")}
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`company-logo ${className}`}
       role="img"
       aria-label={alt}
