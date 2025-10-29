@@ -237,8 +237,8 @@ function DeveloperTools() {
 
 function CompanyLogo({ className, alt, aspectRatio, link }) {
   return (
-    <a
-      href={link}
+    <Link
+      to={link}
       target="_blank"
       rel="noopener noreferrer"
       className={`company-logo ${className}`}
