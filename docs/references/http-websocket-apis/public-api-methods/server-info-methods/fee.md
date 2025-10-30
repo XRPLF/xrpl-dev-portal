@@ -1,13 +1,11 @@
 ---
-html: fee.html
-parent: server-info-methods.html
 seo:
     description: Get information about transaction cost.
 labels:
-  - Fees
+    - Fees
 ---
 # fee
-[[Source]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Fee1.cpp "Source")
 
 The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](../../../../concepts/transactions/transaction-cost.md). This requires the [FeeEscalation amendment][] to be enabled.
 

@@ -1,13 +1,11 @@
 ---
-html: transaction_entry.html
-parent: transaction-methods.html
 seo:
     description: Retrieve info about a transaction from a particular ledger version.
 labels:
-  - Transaction Sending
+    - Transaction Sending
 ---
 # transaction_entry
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/TransactionEntry.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/TransactionEntry.cpp "Source")
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [tx method][], by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)
 

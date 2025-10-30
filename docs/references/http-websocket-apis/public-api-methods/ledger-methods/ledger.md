@@ -1,13 +1,11 @@
 ---
-html: ledger.html # Watch carefully for clashes w/ this filename
-parent: ledger-methods.html
 seo:
     description: Get info about a ledger version.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # ledger
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerHandler.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerHandler.cpp "Source")
 
 Retrieve information about the public [ledger](../../../../concepts/ledgers/index.md).
 

@@ -2,11 +2,11 @@
 seo:
     description: Get information on order book changes
 labels:
-  - Decentralized Exchange
-  - Cross-Currency
+    - Decentralized Exchange
+    - Cross-Currency
 ---
 # book_changes
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/BookChanges.h "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/BookChanges.h "Source")
 
 The {% code-page-name /%} method reports information about changes to the order books in the [decentralized exchange (DEX)](../../../../concepts/tokens/decentralized-exchange/index.md) compared with the previous ledger version. This may be useful for building "candlestick" charts.
 

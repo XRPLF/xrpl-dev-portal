@@ -1,13 +1,11 @@
 ---
-html: account_nfts.html
-parent: account-methods.html
 seo:
     description: Get a list of all NFTs for an account.
 labels:
-  - Non-fungible Tokens, NFTs
+    - Non-fungible Tokens, NFTs
 ---
 # account_nfts
-[[Source]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountObjects.cpp "Source")
 
 The `account_nfts` method returns a list of `NFToken` objects for the specified account.
 

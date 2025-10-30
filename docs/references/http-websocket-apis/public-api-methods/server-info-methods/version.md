@@ -2,11 +2,11 @@
 seo:
     description: Retrieve API version information.
 labels:
-  - Core Server
+    - Core Server
 ---
 # version
 
-[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/beast/core/SemanticVersion.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Version.h "Source")
 
 The `version` command retrieves the API version information for the rippled server. For `Clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
 
