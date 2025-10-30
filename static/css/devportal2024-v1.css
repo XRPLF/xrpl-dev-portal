@@ -17113,14 +17113,6 @@ html.light .label.label-fees:hover .badge-pill, html.light .label.label-payments
   margin-bottom: 2.5rem;
 }
 
-.page-faq::before {
-  background-image: url(../img/backgrounds/faq-bg.svg);
-}
-@media (min-width: 768px) {
-  .page-faq::before {
-    background-size: contain;
-  }
-}
 @media (min-width: 992px) {
   .page-faq article {
     max-width: 704px;
@@ -18358,27 +18350,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
     min-width: 100% !important;
     margin-bottom: 0 !important;
     flex: none !important;
-  }
-}
-.page-rwa-tokenization .developer-resources-section .bottom-cards-section.bug-bounty.section-padding .com-card.developer-spotlight,
-.use-case-payments .developer-resources-section .bottom-cards-section.bug-bounty.section-padding .com-card.developer-spotlight {
-  background-image: url(../img/community/bug-bounty-card-bg.png);
-  background-position: top right;
-  background-size: 169px 88px;
-  background-repeat: no-repeat;
-}
-.page-rwa-tokenization .developer-resources-section .bottom-cards-section.bug-bounty.section-padding .com-card.learn-stay-updated,
-.use-case-payments .developer-resources-section .bottom-cards-section.bug-bounty.section-padding .com-card.learn-stay-updated {
-  background-image: url(../img/community/bug-bounty-card-bg-2.png);
-  background-position: bottom right;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-size: 136px 177px;
-}
-@media (max-width: 767px) {
-  .page-rwa-tokenization .developer-resources-section .bottom-cards-section.bug-bounty.section-padding .com-card.learn-stay-updated,
-  .use-case-payments .developer-resources-section .bottom-cards-section.bug-bounty.section-padding .com-card.learn-stay-updated {
-    background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
   }
 }
 .page-rwa-tokenization .developer-resources-section .bottom-cards-section.bug-bounty.section-padding .com-card .card-content,
