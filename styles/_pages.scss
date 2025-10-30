@@ -967,14 +967,6 @@
 }
 
 .page-faq {
-  &::before {
-    background-image: url(../img/backgrounds/faq-bg.svg);
-
-    @include media-breakpoint-up(md) {
-      background-size: contain;
-    }
-  }
-
   article {
     @include media-breakpoint-up(lg) {
       max-width: 704px;
@@ -2134,23 +2126,6 @@ html.light {
         min-width: 100% !important;
         margin-bottom: 0 !important;
         flex: none !important;
-      }
-
-      &.developer-spotlight {
-        background-image: url(../img/community/bug-bounty-card-bg.png);
-        background-position: top right;
-        background-size: 169px 88px;
-        background-repeat: no-repeat;
-      }
-      &.learn-stay-updated {
-        background-image: url(../img/community/bug-bounty-card-bg-2.png);
-        background-position: bottom right;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-size: 136px 177px;
-        @media (max-width: 767px) {
-          background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
-        }
       }
       
       .card-content {
