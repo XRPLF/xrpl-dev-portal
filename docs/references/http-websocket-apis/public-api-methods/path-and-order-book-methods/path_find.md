@@ -59,9 +59,8 @@ The request includes the following parameters:
 | `destination_account` | String - [Address][] | Yes       | The account to find a path to. (In other words, the account that would receive a payment.) |
 | `destination_amount`  | [Currency Amount][]  | Yes       | How much the destination account would receive. **Special case:** You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for tokens). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
 | `domain`              | String - [Hash][]    | No        | The ledger entry ID of a permissioned domain. If provided, only return paths that use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). {% amendment-disclaimer name="PermissionedDEX" /%} |
-| `paths`               | Array                | No        | Array of arrays of objects, representing [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to check. 
-| `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Not compatible with `source_currencies`. |
-You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+| `paths`               | Array                | No        | Array of arrays of objects, representing [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+| `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Not compatible with `source_currencies`.  |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
@@ -79,21 +78,21 @@ An example of a successful response:
 
 The initial response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
-| Field                 | Type             | Description                       |
-|:----------------------|:-----------------|:----------------------------------|
-| `alternatives`        | Array            | Array of objects with suggested [paths](../../../../concepts/tokens/fungible-tokens/paths.md) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
-| `destination_account` | String           | Unique address of the account that would receive a transaction. |
-| `destination_amount`  | String or Object | [Currency Amount][] that the destination would receive in a transaction. |
-| `source_account`      | String           | Unique address that would send a transaction. |
-| `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. |
+| Field                 | Type                 | Description                       |
+|:----------------------|:---------------------|:----------------------------------|
+| `alternatives`        | Array                | Array of objects with suggested [paths](../../../../concepts/tokens/fungible-tokens/paths.md) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
+| `destination_account` | String - [Address][] | The account that would receive a transaction. |
+| `destination_amount`  | [Currency Amount][]  | How much the destination would receive in a transaction. |
+| `source_account`      | String - [Address][] | The account that would send a transaction. |
+| `full_reply`          | Boolean              | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
-| Field                | Type             | Description                            |
-|:---------------------|:-----------------|:---------------------------------------|
-| `paths_computed`     | Array            | Array of arrays of objects defining [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) |
-| `source_amount`      | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount. |
-| `destination_amount` | String or Object | _(May be omitted)_ [Currency Amount][] that the destination would receive along this path. Only included if the `destination_amount` from the request was the "-1" special case. |
+| Field                | Type                | Description                            |
+|:---------------------|:--------------------|:---------------------------------------|
+| `paths_computed`     | Array               | Array of arrays of objects defining [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) |
+| `source_amount`      | [Currency Amount][] | How much the source would have to send along this path for the destination to receive the desired amount. |
+| `destination_amount` | [Currency Amount][] | _(May be omitted)_ How much the destination would receive along this path. Only included if the `destination_amount` from the request was the "-1" special case. |
 
 ### Possible Errors
 
@@ -112,22 +111,7 @@ Here is an example of an asynchronous follow-up from a path_find create request:
 {% tabs %}
 
 {% tab label="WebSocket" %}
-```json
-{
-    "id": 1,
-    "type": "path_find",
-    "alternatives": [
-        /* paths omitted from this example; same format as the initial response */
-    ],
-    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "destination_amount": {
-        "currency": "USD",
-        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-        "value": "0.001"
-    },
-    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-}
-```
+{% code-snippet file="/_api-examples/path_find/create-followup.json" /%}
 {% /tab %}
 
 {% /tabs %}
