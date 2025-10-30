@@ -1,14 +1,12 @@
 ---
-html: account_tx.html
-parent: account-methods.html
 seo:
     description: Get a list of transactions affecting an account.
 labels:
-  - Payments
-  - Accounts
+    - Payments
+    - Accounts
 ---
 # account_tx
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountTx.cpp "Source")
 
 The `account_tx` method retrieves a list of validated transactions that involve a given account.
 

@@ -1,15 +1,13 @@
 ---
-html: tx.html
-parent: transaction-methods.html
 seo:
     description: Retrieve info about a transaction from all the ledgers on hand.
 labels:
-  - Transaction Sending
-  - Payments
+   - Transaction Sending
+   - Payments
 ---
 # tx
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Tx.cpp "Source")
 
 The `tx` method retrieves information on a single [transaction](../../../protocol/transactions/index.md), by its [identifying hash][] or its [CTID](../../api-conventions/ctid.md).
 

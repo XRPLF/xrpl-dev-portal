@@ -1,13 +1,11 @@
 ---
-html: ping.html
-parent: utility-methods.html
 seo:
     description: Confirm connectivity with the server.
 labels:
-  - Core Server
+    - Core Server
 ---
 # ping
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Ping.cpp "Source")
 
 The `ping` command returns an acknowledgement, so that clients can test the connection status and latency.
 

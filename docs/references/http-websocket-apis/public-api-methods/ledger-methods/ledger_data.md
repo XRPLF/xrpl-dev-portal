@@ -1,14 +1,12 @@
 ---
-html: ledger_data.html
-parent: ledger-methods.html
 seo:
     description: Get the raw contents of a ledger version.
 labels:
-  - Blockchain
-  - Data Retention
+    - Blockchain
+    - Data Retention
 ---
 # ledger_data
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerData.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerData.cpp "Source")
 
 The `ledger_data` method retrieves contents of the specified ledger. You can iterate through several calls to retrieve the entire contents of a single ledger version.
 

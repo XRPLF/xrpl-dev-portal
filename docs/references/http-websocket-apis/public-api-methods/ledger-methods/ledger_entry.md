@@ -1,14 +1,12 @@
 ---
-html: ledger_entry.html
-parent: ledger-methods.html
 seo:
     description: Get one element from a ledger version.
 labels:
-  - Blockchain
-  - Data Retention
+    - Blockchain
+    - Data Retention
 ---
 # ledger_entry
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerEntry.cpp "Source")
 
 The `ledger_entry` method returns a single ledger entry from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of entries you can retrieve.
 

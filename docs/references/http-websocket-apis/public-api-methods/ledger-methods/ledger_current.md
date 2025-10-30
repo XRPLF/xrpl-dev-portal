@@ -1,13 +1,11 @@
 ---
-html: ledger_current.html
-parent: ledger-methods.html
 seo:
     description: Get the current working ledger version.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # ledger_current
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerCurrent.cpp "Source")
 
 The `ledger_current` method returns the unique identifiers of the current in-progress [ledger](../../../../concepts/ledgers/index.md). This command is mostly useful for testing, because the ledger returned is still in flux.
 
