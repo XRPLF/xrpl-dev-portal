@@ -40,13 +40,6 @@ export default function CodeSamples() {
             {/* <a className="mt-12 btn btn-primary btn-arrow">Submit Code Samples</a> */}
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require('../static/img/backgrounds/xrpl-overview-orange.svg')}
-            id="xrpl-overview-orange"
-          />
-        </div>
         <section className="container-new py-26">
           <div className="d-flex flex-column col-sm-8 p-0">
             <h3 className="h4 h2-sm">

@@ -34,10 +34,8 @@ $input-btn-line-height: 1.25;
 $input-font-size: 1rem;
 
 // @import "_font-face.scss";
-$font-family-monospace: "Tobias", monospace;
-$font-family-sans-serif: "Booton", -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
-  sans-serif;
+$font-family-monospace: "Tobias", "Noto Serif", monospace;
+$font-family-sans-serif: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 $base-size: 16px;
 $line-height-base: 1.5;
 

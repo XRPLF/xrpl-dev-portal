@@ -178,8 +178,8 @@
   --bs-dark-border-subtle: #838386;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
-  --bs-font-sans-serif: "Booton", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --bs-font-monospace: "Tobias", monospace;
+  --bs-font-sans-serif: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --bs-font-monospace: "Tobias", "Noto Serif", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-body-font-size: 1rem;
@@ -10147,14 +10147,17 @@ p {
 
 /* Japanese language font override ------------------------------------------ */
 .lang-ja {
-  font-family: "Work Sans", "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
 }
 .lang-ja h1, .lang-ja .h1, .lang-ja h2, .lang-ja .h2, .lang-ja h3, .lang-ja .h3, .lang-ja h4, .lang-ja .h4, .lang-ja h5, .lang-ja .h5,
 .lang-ja .navbar .navbar-nav .nav-link,
 .lang-ja article .children-display li a,
 .lang-ja .right-sidebar .level-1 a,
 .lang-ja .right-sidebar .separator {
-  font-family: "Work Sans", "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+}
+.lang-ja pre, .lang-ja code {
+  font-family: "Noto Serif", "Noto Serif JP", monospace;
 }
 
 .search .input-group-text {
@@ -11434,7 +11437,7 @@ aside .active-parent > a {
 }
 
 .stat-highlight {
-  color: #078139;
+  color: #0DAA3E;
 }
 
 /* ETC */
@@ -12266,7 +12269,6 @@ html.light .bitgo {
 }
 
 .section-text-title {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -12277,7 +12279,6 @@ html.light .bitgo {
 
 .section-text-description {
   max-width: 320px;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -12290,7 +12291,6 @@ html.light .bitgo {
   position: relative;
   top: 17px;
   left: 50px;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -12311,7 +12311,6 @@ html.light .bitgo {
 }
 
 .explore-projects {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -12468,7 +12467,6 @@ html.light .bitgo {
 }
 
 .circle-text {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 700;
   white-space: nowrap;
@@ -12501,7 +12499,6 @@ html.light .bitgo {
   display: block;
   width: 100%;
   text-align: left;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
@@ -12539,7 +12536,6 @@ html.light .apps-built {
   position: relative;
   top: 17px;
   left: 50px;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -12550,7 +12546,6 @@ html.light .colorful-join-text {
   display: block;
   width: 100%;
   text-align: left;
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
@@ -12586,7 +12581,6 @@ html.light .colorful-join-text {
 }
 
 .pill-number {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 22.1452px;
@@ -13166,7 +13160,6 @@ body,
 }
 .use-case-payments .payments-project-card .project-description .rest-text {
   color: var(--XRPL-Primary-White, #FFF);
-  font-family: "Work Sans";
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -13967,9 +13960,15 @@ article h1:first-of-type:before, article .h1:first-of-type:before {
   height: 0;
   background: #32E685 !important;
   padding: 7px 35px;
-  font-family: "Space Grotesk";
+  font-family: "Tobias", "Noto Serif", monospace;
   z-index: 10;
   cursor: pointer;
+  color: #000000 !important;
+  text-align: center;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.32px;
 }
 .web-banner:hover {
   text-decoration: none;
@@ -13978,15 +13977,6 @@ article h1:first-of-type:before, article .h1:first-of-type:before {
 .web-banner:hover .button-icon {
   animation: iconJitter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.web-banner {
-  color: #000000 !important;
-  text-align: center;
-  font-family: "Space Grotesk";
-  font-size: 26px;
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: -0.32px;
 }
 .web-banner::after {
   content: "";
@@ -14121,12 +14111,6 @@ article h1:first-of-type:before, article .h1:first-of-type:before {
 /* Content text styling (applies mostly to Markdown-generated content)------- */
 [data-component-name="Markdown/Markdown"] article {
   padding-bottom: 50px;
-}
-[data-component-name="Markdown/Markdown"] article p code,
-[data-component-name="Markdown/Markdown"] article table code,
-[data-component-name="Markdown/Markdown"] article li > code {
-  background-color: #078139;
-  color: #0DAA3E;
 }
 [data-component-name="Markdown/Markdown"] article a {
   text-decoration: underline;
@@ -14388,7 +14372,7 @@ pre code {
 .codehilite .sr,
 .codehilite .ss,
 .codehilite .sx {
-  color: #0DAA3E;
+  color: #70EE97;
 }
 .codehilite {
   background: transparent;
@@ -14645,10 +14629,10 @@ html:not(.light) article svg[fill=none] linearGradient stop[stop-color="#29a1da"
   stop-color: #21E46B;
 }
 html:not(.light) article svg[fill=none] linearGradient stop[stop-color="#2789b9"] {
-  stop-color: #0DAA3E;
+  stop-color: #70EE97;
 }
 html:not(.light) article svg[fill=none] linearGradient stop[stop-color="#6bc1ec"] {
-  stop-color: #70EE97;
+  stop-color: #EAFCF1;
 }
 html:not(.light) article svg[fill=none] linearGradient stop[stop-color="#8ad6f4"] {
   stop-color: #21E46B;
@@ -14823,14 +14807,6 @@ html.light svg[fill=none] linearGradient stop[stop-color="#C1C1C2"] {
 }
 [data-component-name="Footer/Footer"] {
   padding: 7.5rem 2rem;
-}
-@media (min-width: 992px) {
-  [data-component-name="Footer/Footer"] {
-    background-image: url(../img/backgrounds/footer.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom right;
-  }
 }
 @media (max-width: 767.98px) {
   [data-component-name="Footer/Footer"] .col-lg:not(:first-child) {
@@ -15423,6 +15399,8 @@ main article .card-grid.card-grid-3xN:nth-of-type(3) .card:nth-child(9) .card-fo
   text-decoration: underline;
 }
 .landing section:first-of-type h1:first-child, .landing section:first-of-type .h1:first-child {
+  font-family: "Tobias", "Noto Serif", monospace;
+  font-weight: 400;
   margin-top: 0;
   line-height: 1.2;
 }
@@ -15742,34 +15720,34 @@ html.light .label.label-accounts:hover .badge-pill, html.light .label.label-paym
 }
 .label.label-blockchain, .label.label-xrp, .label.label-ブロックチェーン, .label.label-non-fungible-tokens-nfts, .label.label-use-nfts, .label.blog-category-release_notes, .label.blog-category-features, .label.chip-green {
   background-color: #078139;
-  color: #21E46B;
+  color: #70EE97;
 }
 .label.label-blockchain .badge-pill, .label.label-xrp .badge-pill, .label.label-ブロックチェーン .badge-pill, .label.label-non-fungible-tokens-nfts .badge-pill, .label.label-use-nfts .badge-pill, .label.blog-category-release_notes .badge-pill, .label.blog-category-features .badge-pill, .label.chip-green .badge-pill {
-  background-color: #21E46B;
+  background-color: #70EE97;
   color: #078139;
 }
 .label.label-blockchain:hover, .label.label-xrp:hover, .label.label-ブロックチェーン:hover, .label.label-non-fungible-tokens-nfts:hover, .label.label-use-nfts:hover, .label.blog-category-release_notes:hover, .label.blog-category-features:hover, .label.chip-green:hover {
   background-color: #0DAA3E;
-  color: #70EE97;
+  color: #EAFCF1;
 }
 .label.label-blockchain:hover .badge-pill, .label.label-xrp:hover .badge-pill, .label.label-ブロックチェーン:hover .badge-pill, .label.label-non-fungible-tokens-nfts:hover .badge-pill, .label.label-use-nfts:hover .badge-pill, .label.blog-category-release_notes:hover .badge-pill, .label.blog-category-features:hover .badge-pill, .label.chip-green:hover .badge-pill {
-  background-color: #70EE97;
+  background-color: #EAFCF1;
   color: #0DAA3E;
 }
 html.light .label.label-blockchain, html.light .label.label-xrp, html.light .label.label-ブロックチェーン, html.light .label.label-non-fungible-tokens-nfts, html.light .label.label-use-nfts, html.light .label.blog-category-release_notes, html.light .label.blog-category-features, html.light .label.chip-green {
-  background-color: #70EE97;
+  background-color: #EAFCF1;
   color: #078139;
 }
 html.light .label.label-blockchain .badge-pill, html.light .label.label-xrp .badge-pill, html.light .label.label-ブロックチェーン .badge-pill, html.light .label.label-non-fungible-tokens-nfts .badge-pill, html.light .label.label-use-nfts .badge-pill, html.light .label.blog-category-release_notes .badge-pill, html.light .label.blog-category-features .badge-pill, html.light .label.chip-green .badge-pill {
-  color: #70EE97;
+  color: #EAFCF1;
   background-color: #078139;
 }
 html.light .label.label-blockchain:hover, html.light .label.label-xrp:hover, html.light .label.label-ブロックチェーン:hover, html.light .label.label-non-fungible-tokens-nfts:hover, html.light .label.label-use-nfts:hover, html.light .label.blog-category-release_notes:hover, html.light .label.blog-category-features:hover, html.light .label.chip-green:hover {
-  background-color: #21E46B;
+  background-color: #70EE97;
   color: #000000;
 }
 html.light .label.label-blockchain:hover .badge-pill, html.light .label.label-xrp:hover .badge-pill, html.light .label.label-ブロックチェーン:hover .badge-pill, html.light .label.label-non-fungible-tokens-nfts:hover .badge-pill, html.light .label.label-use-nfts:hover .badge-pill, html.light .label.blog-category-release_notes:hover .badge-pill, html.light .label.blog-category-features:hover .badge-pill, html.light .label.chip-green:hover .badge-pill {
-  color: #21E46B;
+  color: #70EE97;
   background-color: #000000;
 }
 .label.label-checks, .label.label-core-server, .label.label-コアサーバ, .label.label-use-interoperability, .label.label-use-web_monetization, .label.blog-category-gateway_bulletins, .label.chip-purple {
@@ -16091,18 +16069,6 @@ html.light .label.label-fees:hover .badge-pill, html.light .label.label-payments
   }
 }
 /* HOME STYLINGS */
-#home-purple {
-  position: absolute;
-  left: 0;
-  top: -400px;
-}
-
-#home-green {
-  position: absolute;
-  right: -3px;
-  top: 60px;
-}
-
 .sidelinks:hover {
   color: #7649E3;
 }
@@ -17660,7 +17626,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .use-case-payments .token-title {
   color: var(--black-black-0-white, #FFF);
   text-align: center;
-  font-family: "Work Sans";
   font-size: 62px;
   font-style: normal;
   font-weight: 700;
@@ -17732,7 +17697,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .page-rwa-tokenization .token-video-container .token-video-text-container p,
 .use-case-payments .token-video-container .token-video-text-container p {
   color: var(--black-black-10-gray-200, #E0E0E1);
-  font-family: "Work Sans";
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -17804,7 +17768,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .page-rwa-tokenization .token-cards-container .cards-title-token,
 .use-case-payments .token-cards-container .cards-title-token {
   color: var(--black-black-0-white, #FFF);
-  font-family: "Work Sans";
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -17817,7 +17780,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Work Sans", sans-serif;
   overflow: hidden;
 }
 .page-rwa-tokenization .token-cards-container .section-title,
@@ -18064,7 +18026,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .page-rwa-tokenization .payments-integration-section .developer-tools,
 .use-case-payments .token-developer-tools-section .developer-tools,
 .use-case-payments .payments-integration-section .developer-tools {
-  font-family: "Work Sans", sans-serif;
   color: #fff;
 }
 .page-rwa-tokenization .token-developer-tools-section .developer-tools__header,
@@ -18184,7 +18145,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-rwa-tokenization .token-features-section .rwa-tokenization,
 .use-case-payments .token-features-section .rwa-tokenization {
-  font-family: "Work Sans", sans-serif;
   padding: 100px 40px;
   padding-top: 0px;
   color: #fff;
@@ -18742,7 +18702,7 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 
 .json-view {
-  font-family: "Tobias", monospace;
+  font-family: "Tobias", "Noto Serif", monospace;
   padding: 1em;
   background: #232325;
   overflow: hidden;
@@ -18789,7 +18749,7 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 
 .json-view--number {
-  color: #21E46B !important;
+  color: #70EE97 !important;
 }
 
 .json-view--string {
@@ -19320,7 +19280,7 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   color: var(--black-black-0, #FFF);
   text-align: center;
   /* Desktop / H1 */
-  font-family: Work Sans;
+  font-family: "Tobias", "Noto Serif", monospace;
   font-size: 62px;
   font-style: normal;
   font-weight: 700;
@@ -19384,7 +19344,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .eyebrow-convo {
   text-align: start;
-  font-family: Work Sans;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -19398,7 +19357,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .page-community #community-table h4, .page-community #community-table .h4 {
   text-align: start;
   margin: 10px 0;
-  font-family: Work Sans;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -19492,15 +19450,12 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   }
 }
 .page-community .funding-text {
-  color: var(#FFFFFF);
   /* Desktop/H6 */
-  font-family: Work Sans;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 44px;
   padding-bottom: 4px;
-  /* 130% */
 }
 .page-community .xrpl-events-section {
   padding: 50px 40px;
@@ -19525,14 +19480,14 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   }
   .page-community .xrpl-events-section .header h6, .page-community .xrpl-events-section .header .h6 {
     margin-bottom: 0.5rem;
-    font-family: Work Sans;
+    font-family: "Tobias", "Noto Serif", monospace;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: 28px;
   }
   .page-community .xrpl-events-section .header h4, .page-community .xrpl-events-section .header .h4 {
-    font-family: Work Sans;
+    font-family: "Tobias", "Noto Serif", monospace;
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
@@ -19541,7 +19496,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   .page-community .xrpl-events-section .description {
     text-align: start;
     margin-top: 2rem;
-    font-family: Work Sans;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -19565,7 +19519,7 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .xrpl-events-section .header h6, .page-community .xrpl-events-section .header .h6 {
   padding-left: 1.5px;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Tobias", "Noto Serif", monospace;
   font-size: 20px;
   font-weight: 700;
   color: var(--black-black-0, #FFF);
@@ -19573,13 +19527,12 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .xrpl-events-section .header h4, .page-community .xrpl-events-section .header .h4 {
   text-align: start;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Tobias", "Noto Serif", monospace;
   font-size: 32px;
   font-weight: 700;
   color: var(--black-black-0, #FFF);
 }
 .page-community .xrpl-events-section .description {
-  font-family: "Work Sans", sans-serif;
   font-size: 20px;
   font-weight: 500;
   max-width: 444px;
@@ -19597,7 +19550,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .page-community .xrpl-events-section .upcoming-event .upcoming-label {
   position: relative;
   top: 7px;
-  font-family: "Work Sans", sans-serif;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -19627,14 +19579,13 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   display: inline-block;
 }
 .page-community .xrpl-events-section .upcoming-event h5, .page-community .xrpl-events-section .upcoming-event .h5 {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Tobias", "Noto Serif", monospace;
   font-size: 16px;
   font-weight: 700;
   color: var(--black-black-10, #F5F5F7);
 }
 .page-community .xrpl-events-section .upcoming-event .event-details,
 .page-community .xrpl-events-section .upcoming-event .event-location {
-  font-family: "Work Sans", sans-serif;
   font-size: 12px;
   font-weight: 600;
   color: var(--black-black-30, #C1C1C2);
@@ -19656,7 +19607,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .small-text {
   color: var(--black-black-30, #C1C1C2);
-  font-family: Work Sans;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
@@ -19852,7 +19802,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .event-info span {
   color: #FFF;
-  font-family: Work Sans;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
@@ -19861,7 +19810,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .page-community .event-info .name {
   padding-bottom: 5px;
   color: var(--black-black-10, #F5F5F7);
-  font-family: Work Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -19935,7 +19883,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 .page-community .spotlight-title,
 .page-community .project-title {
   color: var(--black-black-10, #F5F5F7);
-  font-family: Work Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -19944,7 +19891,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .spotlight-subtitle {
   color: var(--black-black-10, #F5F5F7);
-  font-family: Work Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -19953,7 +19899,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .project-description {
   color: var(--black-black-30, #C1C1C2);
-  font-family: Work Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -19970,7 +19915,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .view-project {
   color: var(--blue-purple-blue-purple-50, #7919FF);
-  font-family: Work Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -20118,8 +20062,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   margin-bottom: 0px !important;
   color: var(--black-black-0-white, #FFF);
   white-space: nowrap;
-  /* Desktop/H6 */
-  font-family: Work Sans;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -20128,7 +20070,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .bottom-cards-section .com-card .card-content .card-subtitle {
   color: var(--black-black-0, #FFF);
-  font-family: Work Sans;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -20138,7 +20079,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 .page-community .bottom-cards-section .com-card .card-content .card-description {
   color: var(--black-black-20, #E0E0E1);
-  font-family: Work Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -20159,7 +20099,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   text-decoration: none;
   cursor: pointer;
   color: #9A52FF;
-  font-family: Work Sans;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -20346,7 +20285,6 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
 }
 
 .faded-text {
-  font-family: "Work Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 15.5667px;

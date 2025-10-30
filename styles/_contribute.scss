@@ -108,7 +108,7 @@
         text-align: center;
 
         /* Desktop / H1 */
-        font-family: Work Sans;
+        font-family: $font-family-monospace;
         font-size: 62px;
         font-style: normal;
         font-weight: 700;
@@ -178,7 +178,6 @@
 
     .eyebrow-convo {
         text-align: start;
-        font-family: Work Sans;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -194,7 +193,6 @@
     #community-table h4 {
         text-align: start;
         margin: 10px 0;
-        font-family: Work Sans;
         font-size: 32px;
         font-style: normal;
         font-weight: 700;
@@ -312,15 +310,12 @@
     }
 
     .funding-text {
-        color: var($white);
         /* Desktop/H6 */
-        font-family: Work Sans;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
         line-height: 44px;
         padding-bottom: 4px;
-        /* 130% */
     }
 
     .xrpl-events-section {
@@ -348,7 +343,7 @@
 
                 h6 {
                     margin-bottom: 0.5rem;
-                    font-family: Work Sans;
+                    font-family: $font-family-monospace;
                     font-size: 20px;
                     font-style: normal;
                     font-weight: 700;
@@ -356,7 +351,7 @@
                 }
 
                 h4 {
-                    font-family: Work Sans;
+                    font-family: $font-family-monospace;
                     font-size: 28px;
                     font-style: normal;
                     font-weight: 700;
@@ -367,7 +362,6 @@
             .description {
                 text-align: start;
                 margin-top: 2rem;
-                font-family: Work Sans;
                 font-size: 24px;
                 font-style: normal;
                 font-weight: 500;
@@ -397,7 +391,7 @@
         .header {
             h6 {
                 padding-left: 1.5px;
-                font-family: 'Work Sans', sans-serif;
+                font-family: $font-family-monospace;
                 font-size: 20px;
                 font-weight: 700;
                 color: var(--black-black-0, #FFF);
@@ -406,7 +400,7 @@
 
             h4 {
                 text-align: start;
-                font-family: 'Work Sans', sans-serif;
+                font-family: $font-family-monospace;
                 font-size: 32px;
                 font-weight: 700;
                 color: var(--black-black-0, #FFF);
@@ -414,7 +408,6 @@
         }
 
         .description {
-            font-family: 'Work Sans', sans-serif;
             font-size: 20px;
             font-weight: 500;
             max-width: 444px;
@@ -434,7 +427,6 @@
             .upcoming-label {
                 position: relative;
                 top: 7px;
-                font-family: 'Work Sans', sans-serif;
                 font-size: 12px;
                 font-weight: 600;
                 text-transform: uppercase;
@@ -468,7 +460,7 @@
             }
 
             h5 {
-                font-family: 'Work Sans', sans-serif;
+                font-family: $font-family-monospace;
                 font-size: 16px;
                 font-weight: 700;
                 color: var(--black-black-10, #F5F5F7);
@@ -476,7 +468,6 @@
 
             .event-details,
             .event-location {
-                font-family: 'Work Sans', sans-serif;
                 font-size: 12px;
                 font-weight: 600;
                 color: var(--black-black-30, #C1C1C2);
@@ -503,7 +494,6 @@
 
     .small-text {
         color: var(--black-black-30, #C1C1C2);
-        font-family: Work Sans;
         font-size: 12px;
         font-style: normal;
         font-weight: 600;
@@ -711,7 +701,6 @@
         }
         span {
             color: #FFF;
-            font-family: Work Sans;
             font-size: 12px;
             font-style: normal;
             font-weight: 600;
@@ -721,7 +710,6 @@
         .name {
             padding-bottom: 5px;
             color: var(--black-black-10, #F5F5F7);
-            font-family: Work Sans;
             font-size: 16px;
             font-style: normal;
             font-weight: 700;
@@ -811,7 +799,6 @@
     .spotlight-title,
     .project-title {
         color: var(--black-black-10, #F5F5F7);
-        font-family: Work Sans;
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -821,7 +808,6 @@
 
     .spotlight-subtitle {
         color: var(--black-black-10, #F5F5F7);
-        font-family: Work Sans;
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -832,7 +818,6 @@
 
     .project-description {
         color: var(--black-black-30, #C1C1C2);
-        font-family: Work Sans;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -851,7 +836,6 @@
 
     .view-project {
         color: var(--blue-purple-blue-purple-50, #7919FF);
-        font-family: Work Sans;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -1012,8 +996,6 @@
                     margin-bottom: 0px !important;
                     color: var(--black-black-0-white, #FFF);
                     white-space: nowrap;
-                    /* Desktop/H6 */
-                    font-family: Work Sans;
                     font-size: 20px;
                     font-style: normal;
                     font-weight: 700;
@@ -1023,7 +1005,6 @@
 
                 .card-subtitle {
                     color: var(--black-black-0, #FFF);
-                    font-family: Work Sans;
                     font-size: 24px;
                     font-style: normal;
                     font-weight: 700;
@@ -1034,7 +1015,6 @@
 
                 .card-description {
                     color: var(--black-black-20, #E0E0E1);
-                    font-family: Work Sans;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 400;
@@ -1057,7 +1037,6 @@
                     text-decoration: none;
                     cursor: pointer;
                     color: #9A52FF;
-                    font-family: Work Sans;
                     font-size: 16px;
                     font-style: normal;
                     font-weight: 600;

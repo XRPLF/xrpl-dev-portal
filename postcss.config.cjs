@@ -60,6 +60,8 @@ module.exports = {
                 'open',
                 'collapsed',
                 'collapsing',
+                'lang-ja', // Japanese language class
+                /^lang-/, // All language classes
                 // Common Bootstrap utility patterns that should always be kept
                 /^container/, // All container classes
                 /^row$/, // Row class
