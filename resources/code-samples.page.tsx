@@ -64,7 +64,6 @@ export default function CodeSamples() {
                     <h4 className="card-title h5">{card.title}</h4>
                     <p className="card-text">{card.description}</p>
                   </div>
-                  <div className="card-footer">&nbsp;</div>
                 </a>
               </div>
             ))}
