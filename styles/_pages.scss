@@ -1,16 +1,4 @@
 /* HOME STYLINGS */
-#home-purple {
-  position: absolute;
-  left: 0;
-  top: -400px;
-}
-
-#home-green {
-  position: absolute;
-  right: -3px;
-  top: 60px;
-}
-
 .sidelinks {
   &:hover {
     color: $blue-purple-400;
@@ -1503,7 +1491,6 @@ html.light {
   .token-title {
     color: var(--black-black-0-white, #FFF);
     text-align: center;
-    font-family: "Work Sans";
     font-size: 62px;
     font-style: normal;
     font-weight: 700;
@@ -1563,7 +1550,6 @@ html.light {
 
       p {
         color: var(--black-black-10-gray-200, #E0E0E1);
-        font-family: "Work Sans";
         font-size: 24px;
         font-style: normal;
         font-weight: 400;
@@ -1631,7 +1617,6 @@ html.light {
 
     .cards-title-token {
       color: var(--black-black-0-white, #FFF);
-      font-family: "Work Sans";
       font-size: 32px;
       font-style: normal;
       font-weight: 700;
@@ -1644,7 +1629,6 @@ html.light {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-family: 'Work Sans', sans-serif;
       overflow: hidden;
     }
 
@@ -1861,7 +1845,6 @@ html.light {
 .token-developer-tools-section,
 .payments-integration-section {
   .developer-tools {
-    font-family: 'Work Sans', sans-serif;
     color: #fff;
   }
 
@@ -1953,7 +1936,6 @@ html.light {
 
 .token-features-section {
   .rwa-tokenization {
-    font-family: 'Work Sans', sans-serif;
     padding: 100px 40px;
     padding-top: 0px;
     color: #fff;

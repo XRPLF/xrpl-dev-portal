@@ -401,13 +401,6 @@ function TokenHeroSection() {
   const { translate } = useTranslate();
   return (
     <section className="token-hero-section">
-      <div className="position-relative d-none-sm">
-        <img
-          alt="orange waves"
-          src={require("./../../../static/img/backgrounds/events-orange.svg")}
-          id="events-orange"
-        />
-      </div>
       <div className="token-title-container">
         <h1 className="token-title">
           {translate("Real-World Asset (RWA) Tokenization")}

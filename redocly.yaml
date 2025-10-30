@@ -61,11 +61,7 @@ scripts:
     - src: ./static/js/osano.js
       type: text/javascript
 links:
-  - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
-    rel: stylesheet
-  - href: https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
-    rel: stylesheet
-  - href: https://fonts.googleapis.com/css?family=Space+Grotesk:300,400,600,700&display=swap
+  - href: https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap
     rel: stylesheet
   - href: ./static/css/devportal2024-v1.css
     rel: stylesheet

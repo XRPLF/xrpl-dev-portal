@@ -130,32 +130,32 @@
 
   @mixin chip-green {
     background-color: $green-500;
-    color: $green-300;
+    color: $green-200;
     .badge-pill {
-      background-color: $green-300;
+      background-color: $green-200;
       color: $green-500;
     }
     &:hover {
       background-color: $green-400;
-      color: $green-200;
+      color: $green-100;
       .badge-pill {
-        background-color: $green-200;
+        background-color: $green-100;
         color: $green-400;
       }
     }
 
     html.light & {
-      background-color: $green-200;
+      background-color: $green-100;
       color: $green-500;
       .badge-pill {
-        color: $green-200;
+        color: $green-100;
         background-color: $green-500;
       }
       &:hover {
-        background-color: $green-300;
+        background-color: $green-200;
         color: $black;
         .badge-pill {
-          color: $green-300;
+          color: $green-200;
           background-color: $black;
         }
       }

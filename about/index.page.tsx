@@ -78,14 +78,6 @@ export default function XrplOverview() {
             />
           </div>
         </div>
-        <div className="position-relative">
-          <img
-            alt="purple waves"
-            src={require("../static/img/backgrounds/xrpl-overview-purple.svg")}
-            className="landing-bg"
-            id="xrpl-overview-purple"
-          />
-        </div>
         <section className="py-26 text-center">
           <div className="col-lg-5 mx-auto text-center">
             <div className="d-flex flex-column-reverse">
@@ -100,13 +92,6 @@ export default function XrplOverview() {
             </div>
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require("../static/img/backgrounds/xrpl-overview-orange.svg")}
-            id="xrpl-overview-orange"
-          />
-        </div>
         <section className="container-new py-26">
           <div className="card-grid card-grid-2xN">
             <div className="col">
@@ -221,11 +206,6 @@ export default function XrplOverview() {
         </section>
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="green waves"
-              src={require("../static/img/backgrounds/cta-xrpl-overview-green.svg")}
-              className="cta cta-bottom-right"
-            />
             <div className="z-index-1 position-relative">
               <h2 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("A Sustainable Blockchain")}
@@ -375,11 +355,6 @@ export default function XrplOverview() {
         </section>
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="orange waves"
-              src={require("../static/img/backgrounds/cta-xrpl-overview-orange.svg")}
-              className="cta cta-bottom-right"
-            />
             <div className="z-index-1 position-relative">
               <h4 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("Tomorrow’s Blockchain Starts With You")}

@@ -8,13 +8,6 @@
   }
   padding: 7.5rem 2rem;
 
-  @include media-breakpoint-up(lg) {
-    background-image: url(../img/backgrounds/footer.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom right;
-  }
-
   @include media-breakpoint-down(md) {
     .col-lg:not(:first-child) {
       margin-top: 4rem;
