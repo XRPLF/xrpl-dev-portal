@@ -42,8 +42,8 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({
         {cards.map(card => (
           <li className="col ls-none" key={card.id}>
             {showImages && <img id={card.id} alt={card.title + ' Icon'} />}
-            <h4 className="mt-3 mb-0 h5">{translate(card.title)}</h4>
-            <p className="mt-6-until-sm mt-3 mb-0">
+            <h4 className="sh-md-l">{translate(card.title)}</h4>
+            <p className="body-l mt-3">
               {typeof card.description === 'string' ? translate(card.description) : card.description}
             </p>
           </li>
