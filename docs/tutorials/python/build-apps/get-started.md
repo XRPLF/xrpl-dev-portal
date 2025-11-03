@@ -47,9 +47,9 @@ Click **Download** on the top right of the code preview panel to download the so
 
 Follow the steps to create a simple application with `xrpl-py`.
 
+{% step id="import-tag" %}
 ### 1. Install Dependencies
 
-{% step id="import-tag" %}
 Start a new project by creating an empty folder, then move into that folder and set up a Python virtual environment with the necessary dependencies:
 
 ```sh
@@ -75,7 +75,11 @@ pip install -r requirements.txt
 {% step id="connect-tag" %}
 #### Connect to the XRP Ledger Testnet
 
-To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
+To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html).
+
+{% admonition type="info" name="Note" %}
+The standard approach with `xrpl-py` is to use the JSON-RPC client. While a WebSocket client is available, it requires you to use `async`/`await` throughout your code. For most use cases, stick with JSON-RPC to avoid the complexity of asynchronous programming.
+{% /admonition %}
 
 The sample code shows you how to connect to the Testnet, which is one of the available [parallel networks](../../../concepts/networks-and-servers/parallel-networks.md).
 {% /step %}
@@ -104,10 +108,8 @@ The sample code in the previous section shows you how to connect to the Testnet,
     ```
 {% /step %}
 
-### 3. Get account
-
 {% step id="get-account-create-wallet-tag" %}
-#### Create and Fund a Wallet
+### 3. Get account
 
 To store value and execute transactions on the XRP Ledger, you need an account: a [set of keys](../../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../../concepts/accounts/index.md#creating-accounts) to meet the [account reserve](../../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger.
 
@@ -118,60 +120,46 @@ For testing and development purposes, you can use the [XRP Faucets](/resources/d
 To create and fund an account on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method. This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet).
 {% /step %}
 
-{% step id="get-account-x-address-tag" %}
-#### Derive an X-Address
-
-You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html) module to derive an [X-address](https://xrpaddress.info/) from the `Wallet.address` field.
-
-The X-address format [packs the address and destination tag](https://github.com/XRPLF/XRPL-Standards/issues/6) into a more user-friendly value.
-{% /step %}
-
+{% step id="query-xrpl-tag" %}
 ### 4. Query the XRP Ledger
 
-{% step id="query-xrpl-tag" %}
 You can query the XRP Ledger to get information about [a specific account](../../../references/http-websocket-apis/public-api-methods/account-methods/index.md), [a specific transaction](../../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md), the state of a [current or a historical ledger](../../../references/http-websocket-apis/public-api-methods/ledger-methods/index.md), and [the XRP Ledger's decentralized exchange](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](../../../concepts/transactions/reliable-transaction-submission.md).
 
-Here, we use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the account we got in the previous step.
+Use the [account_info method][] to look up information about the account you got in the previous step. Use a request model like `AccountInfo` to validate the request format and catch errors sooner.
 {% /step %}
 
+{% step id="run-app-tag" %}
 ### 5. Run the Application
 
-{% step id="run-app-tag" %}
 Finally, in your terminal, run the application like so:
 
 ```sh
-python3 get-acct-info.py
+python get-acct-info.py
 ```
 
 You should see output similar to this example:
 
 ```sh
-Connected to Testnet
-
 Creating a new wallet and funding it with Testnet XRP...
-Attempting to fund address ranrY8twgDvEGjk8NnC8QsZY1NNyyDV2TZ
+Attempting to fund address ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
 Faucet fund successful.
-Wallet: ranrY8twgDvEGjk8NnC8QsZY1NNyyDV2TZ
+Wallet: ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
 Account Testnet Explorer URL: 
- https://testnet.xrpl.org/accounts/ranrY8twgDvEGjk8NnC8QsZY1NNyyDV2TZ
-
-Generating an x-address from the classic address...
-Classic address: ranrY8twgDvEGjk8NnC8QsZY1NNyyDV2TZ
-X-address: T7CbHsaEVahiEif6dANCuF9WjZNPJi9K3QSnGAfeAyXGEeH
+ https://testnet.xrpl.org/accounts/ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
 
 Getting account info...
 Response Status:  ResponseStatus.SUCCESS
 {
     "account_data": {
-        "Account": "ranrY8twgDvEGjk8NnC8QsZY1NNyyDV2TZ",
-        "Balance": "10000000",
+        "Account": "ravbHNootpSNQkxyEFCWevSkHsFGDHfyop",
+        "Balance": "100000000",
         "Flags": 0,
         "LedgerEntryType": "AccountRoot",
         "OwnerCount": 0,
-        "PreviousTxnID": "E509DE6E6DDE8DB14CE22E289B4AE31570040F0A9A8ACE5346B0B7C78C7F55CF",
-        "PreviousTxnLgrSeq": 10564855,
-        "Sequence": 10564855,
-        "index": "C1AC96672DA422C2A68E51DCC158CDF8083898424051B583AC37788FF916CDE3"
+        "PreviousTxnID": "3DACF2438AD39F294C4EFF6132D5D88BCB65D2F2261C7650F40AC1F6A54C83EA",
+        "PreviousTxnLgrSeq": 12039759,
+        "Sequence": 12039759,
+        "index": "148E6F4B8E4C14018D679A2526200C292BDBC5AB77611BC3AE0CB97CD2FB84E5"
     },
     "account_flags": {
         "allowTrustLineClawback": false,
@@ -189,15 +177,13 @@ Response Status:  ResponseStatus.SUCCESS
         "requireAuthorization": false,
         "requireDestinationTag": false
     },
-    "ledger_hash": "E83D8A31D66ABBFB435BB899B1A21448A2BCE66BB22B47F065EF713A2305820C",
-    "ledger_index": 10564855,
+    "ledger_hash": "CA624D717C4FCDD03BAD8C193F374A77A14F7D2566354A4E9617A8DAD896DE71",
+    "ledger_index": 12039759,
     "validated": true
 }
 ```
 
 The response fields that you want to inspect in most cases are:
-
-- `account_data.Sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions. With `xrpl-py`, you can use the [`get_next_valid_seq_number`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html#xrpl.account.get_next_valid_seq_number) to get this automatically from the XRP Ledger. See an example of this usage in the project [README](https://github.com/XRPLF/xrpl-py#serialize-and-sign-transactions).
 
 - `account_data.Balance` — This is the account's balance of [XRP, in drops][]. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
 

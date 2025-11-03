@@ -8,7 +8,6 @@ import json
 
 JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
 client = JsonRpcClient(JSON_RPC_URL)
-print("Connected to Testnet")
 # @chunk-end
 
 
@@ -21,20 +20,6 @@ test_account = test_wallet.classic_address
 print(f"Wallet: {test_account}")
 print(f"Account Testnet Explorer URL: ")
 print(f" https://testnet.xrpl.org/accounts/{test_account}")
-# @chunk-end
-
-
-# @chunk {"steps": ["get-account-x-address-tag"]}
-# Derive an x-address from the classic address:
-# https://xrpaddress.info/
-print("\nGenerating an x-address from the classic address...")
-test_xaddress = addresscodec.classic_address_to_xaddress(
-    test_account,
-    tag=12345,
-    is_test_network=True
-)
-print(f"Classic address: {test_account}")
-print(f"X-address: {test_xaddress}")
 # @chunk-end
 
 

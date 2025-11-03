@@ -18,32 +18,26 @@ python ./get-acct-info.py
 You should see output similar to the following:
 
 ```sh
-Connected to Testnet
-
 Creating a new wallet and funding it with Testnet XRP...
-Attempting to fund address rLq4G7esPJ4ma7iBsXCtTLx4d8fcsQkHd
+Attempting to fund address ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
 Faucet fund successful.
-Wallet: rLq4G7esPJ4ma7iBsXCtTLx4d8fcsQkHd
-Account Testnet Explorer URL:
- https://testnet.xrpl.org/accounts/rLq4G7esPJ4ma7iBsXCtTLx4d8fcsQkHd
-
-Generating an x-address from the classic address...
-Classic address: rLq4G7esPJ4ma7iBsXCtTLx4d8fcsQkHd
-X-address: T7QB1hKGbzTLnGWvuXbmQQ6q2AvjnGSBULJE2gNEVWnbGEc
+Wallet: ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
+Account Testnet Explorer URL: 
+ https://testnet.xrpl.org/accounts/ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
 
 Getting account info...
 Response Status:  ResponseStatus.SUCCESS
 {
     "account_data": {
-        "Account": "rLq4G7esPJ4ma7iBsXCtTLx4d8fcsQkHd",
-        "Balance": "10000000",
+        "Account": "ravbHNootpSNQkxyEFCWevSkHsFGDHfyop",
+        "Balance": "100000000",
         "Flags": 0,
         "LedgerEntryType": "AccountRoot",
         "OwnerCount": 0,
-        "PreviousTxnID": "24825D7C3CA2541899928CD4D5489151BF8ABD848E3F4F08186369E5FF7335B2",
-        "PreviousTxnLgrSeq": 10569458,
-        "Sequence": 10569458,
-        "index": "24C7EB6F9A736270ED5A0A8FD12D01C91DF41E7A7D385E2A19A3D263CE0EF208"
+        "PreviousTxnID": "3DACF2438AD39F294C4EFF6132D5D88BCB65D2F2261C7650F40AC1F6A54C83EA",
+        "PreviousTxnLgrSeq": 12039759,
+        "Sequence": 12039759,
+        "index": "148E6F4B8E4C14018D679A2526200C292BDBC5AB77611BC3AE0CB97CD2FB84E5"
     },
     "account_flags": {
         "allowTrustLineClawback": false,
@@ -61,8 +55,8 @@ Response Status:  ResponseStatus.SUCCESS
         "requireAuthorization": false,
         "requireDestinationTag": false
     },
-    "ledger_hash": "BC2570097583BAAC1DD2DFA107B06291DF579CD46248E10C27377FB3F4317A7D",
-    "ledger_index": 10569458,
+    "ledger_hash": "CA624D717C4FCDD03BAD8C193F374A77A14F7D2566354A4E9617A8DAD896DE71",
+    "ledger_index": 12039759,
     "validated": true
 }
 ```
