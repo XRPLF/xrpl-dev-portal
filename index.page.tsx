@@ -1,6 +1,7 @@
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
 import { BenefitsSection } from 'shared/components/benefits-section';
+import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/page-grid';
 
 export const frontmatter = {
   seo: {
@@ -117,7 +118,7 @@ export default function Index() {
           </div>
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
-              <h1 className="mb-10">
+              <h1 className="display-lg mb-10">
                 {translate('home.hero.h1part1', 'The Blockchain')}
                 <br className="until-sm" />
                 {translate('home.hero.h1part2', 'Built for Business')}
@@ -129,8 +130,8 @@ export default function Index() {
             </Link>
           </div>
         </section>
-        <section className="container-new py-26">
-          <div className="col-lg-6 offset-lg-3 pl-0-sm pr-0-sm p-8-sm p-10-until-sm">
+        <PageGrid className="py-26">
+          <PageGrid.Col span={{ base: 12, lg: 6 }} offset={{ lg: 3 }}>
             <h2 className="h4 mb-8 h2-sm">{translate('The XRP Ledger: The Blockchain Built for Business')}</h2>
             <h6 className="longform mb-10">
               {translate(
@@ -142,8 +143,8 @@ export default function Index() {
                 'Proven reliable over more than a decade of error-free functioning, the XRPL offers streamlined development, low transaction costs, high performance, and sustainability. So you can build with confidence–and move your most critical projects forward.'
               )}
             </p>
-          </div>
-        </section>
+          </PageGrid.Col>
+        </PageGrid>
         <BenefitsSection
           eyebrow="Benefits"
           title="Why developers choose the XRP Ledger"

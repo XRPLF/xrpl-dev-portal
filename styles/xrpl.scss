@@ -17,6 +17,7 @@ $enable-shadows: true;
 $dropdown-box-shadow: 0px 5px 40px $black;
 $card-spacer-x: 2rem;
 $card-spacer-y: 2rem;
+$spacer: 0.5rem;
 // Bootstrap 5 uses separate variables for card header/footer
 $card-cap-padding-y: 2rem;
 $card-cap-padding-x: 2rem;
@@ -38,6 +39,14 @@ $font-family-monospace: "Tobias", "Noto Serif", monospace;
 $font-family-sans-serif: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 $base-size: 16px;
 $line-height-base: 1.5;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 576px,
+  lg: 992px,
+  xl: 1280px
+);
 
 // Bootstrap v5 - Import only what we need
 @import "../node_modules/bootstrap/scss/functions";
@@ -83,6 +92,7 @@ $line-height-base: 1.5;
 @import "_top-nav.scss";
 @import "_top-banner.scss";
 @import "_content.scss";
+@import "_xrpl-grid.scss";
 @import "_code-tabs.scss";
 @import "_code-walkthrough.scss";
 @import "_diagrams.scss";

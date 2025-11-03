@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
+import { PageGrid, PageGridCol, PageGridRow } from "shared/components/page-grid";
 
 export const frontmatter = {
   seo: {
@@ -163,9 +164,9 @@ export default function XrplOverview() {
             </div>
           </div>
         </section>
-        <section className="container-new py-26">
-          <div className="card-grid card-grid-2xN">
-            <div className="col">
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 h2-sm mb-8">
                   {translate("How the Consensus Protocol works")}
@@ -192,20 +193,23 @@ export default function XrplOverview() {
               <p className="mb-0">
                 {translate('about.index.consensus.ppart1', 'Currently, over 120 ')}
                 <a href="https://livenet.xrpl.org/network/validators" target="_blank">{translate('about.index.consensus.ppart2', 'validators')}</a>
-                   {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
+                    {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
               </p>
-            </div>
-            <div className="col mb-16-sm">
-              <img
-                className="mw-100"
-                id="validator-graphic"
-                alt="(Graphic: Validators in Consensus)"
-              />
-            </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
+            </PageGrid.Col>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
+              <div className="col mb-16-sm">
+                <img
+                  className="mw-100"
+                  id="validator-graphic"
+                  alt="(Graphic: Validators in Consensus)"
+                />
+              </div>
+              </PageGrid.Col>
+            </PageGridRow>
+        </PageGrid>
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }} offset={{ lg: 3 }} className="p-6-sm p-10-until-sm br-8 cta-card">
             <div className="z-index-1 position-relative">
               <h2 className="h4 mb-10-until-sm mb-8-sm">
                 {translate("A Sustainable Blockchain")}
@@ -219,11 +223,13 @@ export default function XrplOverview() {
                 {translate("Learn More")}
               </a>
             </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="card-grid card-grid-2xN">
-            <div className="col">
+            </PageGrid.Col>
+          </PageGridRow>
+        </PageGrid>
+        
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h4 className="h4 h2-sm mb-8">
                   {translate("Building with confidence on ")}
@@ -245,8 +251,8 @@ export default function XrplOverview() {
               <a className="btn btn-primary btn-arrow mb-10-sm" href="/about/uses">
                 {translate("Explore More")}
               </a>
-            </div>
-            <div className="col mb-0">
+            </PageGrid.Col>
+            <PageGrid.Col span={{ base: 4, lg: 6 }}>
               <div className="d-flex flex-column-reverse">
                 <h4 className="h4 h2-sm mb-8">
                   {translate("Creating new value for long-term growth")}
@@ -263,9 +269,9 @@ export default function XrplOverview() {
                   "Significant investment in development, along with low transaction costs and energy usage, is fueling growth and opening up a wide variety of use cases at scale."
                 )}
               </p>
-            </div>
-          </div>
-        </section>
+            </PageGrid.Col>
+          </PageGridRow>
+        </PageGrid>
         <section className="container-new py-26">
           <div className="d-flex flex-column-reverse col-xl-6 mb-lg-4 ps-0 ">
             <h2 className="h4 h2-sm">

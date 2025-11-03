@@ -1,0 +1,116 @@
+// XRPL Grid
+// -----------------------------------------------------------------------------
+// A namespaced grid layer that reuses Bootstrap's grid mixins while providing
+// XRPL-specific gutters and container padding.
+
+$xrpl-grid-gutter: 8px;
+
+@mixin xrpl-grid-generate-cols($columns, $suffix: null) {
+  @for $i from 1 through $columns {
+    $selector: if($suffix, ".xrpl-grid__col-#{$suffix}-#{$i}", ".xrpl-grid__col-#{$i}");
+
+    #{$selector} {
+      @include make-col($i, $columns);
+    }
+  }
+}
+
+@mixin xrpl-grid-generate-auto($suffix: null) {
+  $selector: if($suffix, ".xrpl-grid__col-#{$suffix}-auto", ".xrpl-grid__col-auto");
+
+  #{$selector} {
+    @include make-col-auto();
+  }
+}
+
+@mixin xrpl-grid-generate-fill($suffix: null) {
+  $selector: if($suffix, ".xrpl-grid__col-#{$suffix}", ".xrpl-grid__col");
+
+  #{$selector} {
+    flex: 1 0 0;
+  }
+}
+
+@mixin xrpl-grid-generate-offsets($columns, $suffix: null) {
+  @for $i from 0 through ($columns - 1) {
+    $selector: if($suffix, ".xrpl-grid__offset-#{$suffix}-#{$i}", ".xrpl-grid__offset-#{$i}");
+
+    #{$selector} {
+      @include make-col-offset($i, $columns);
+    }
+  }
+}
+
+.xrpl-grid {
+  &__container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    box-sizing: border-box;
+
+    @include media-breakpoint-up(sm) {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-right: 32px;
+      padding-left: 32px;
+    }
+
+    @media (min-width: 1280px) {
+      padding-right: 112px;
+      padding-left: 112px;
+      max-width: 1440px;
+    }
+  }
+
+  &__row {
+    @include make-row($xrpl-grid-gutter);
+  }
+
+  &__col {
+    @include make-col-ready();
+  }
+}
+
+// Base (0 - 575px) — 4-column grid
+@include xrpl-grid-generate-fill();
+@include xrpl-grid-generate-cols(4);
+@include xrpl-grid-generate-auto();
+@include xrpl-grid-generate-offsets(4);
+
+// Tablet (≥576px) — maintain 8-column grid across sm/md ranges
+@include media-breakpoint-up(sm) {
+  @include xrpl-grid-generate-fill('sm');
+  @include xrpl-grid-generate-cols(8, 'sm');
+  @include xrpl-grid-generate-auto('sm');
+  @include xrpl-grid-generate-offsets(8, 'sm');
+}
+
+@include media-breakpoint-up(md) {
+  @include xrpl-grid-generate-fill('md');
+  @include xrpl-grid-generate-cols(8, 'md');
+  @include xrpl-grid-generate-auto('md');
+  @include xrpl-grid-generate-offsets(8, 'md');
+}
+
+// Large (≥992px) — 12-column grid
+@include media-breakpoint-up(lg) {
+  @include xrpl-grid-generate-fill('lg');
+  @include xrpl-grid-generate-cols(12, 'lg');
+  @include xrpl-grid-generate-auto('lg');
+  @include xrpl-grid-generate-offsets(12, 'lg');
+}
+
+// XL (≥1280px) — retain 12-column grid with wider margins
+@include media-breakpoint-up(xl) {
+  @include xrpl-grid-generate-fill('xl');
+  @include xrpl-grid-generate-cols(12, 'xl');
+  @include xrpl-grid-generate-auto('xl');
+  @include xrpl-grid-generate-offsets(12, 'xl');
+}
+
+
