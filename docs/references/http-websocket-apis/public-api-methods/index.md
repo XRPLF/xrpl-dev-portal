@@ -115,6 +115,11 @@ Use these methods to perform convenient tasks, such as ping and random number ge
 * **[`ping`](utility-methods/ping.md)** - Confirm connectivity with the server.
 * **[`random`](utility-methods/random.md)** - Generate a random number.
 
+## [Vault Methods](vault-methods/index.md)
+
+Use these methods to retrieve vault information.
+
+* **[`vault_info`](vault-methods/vault_info.md)** - Get information about a specific vault.
 
 ## Deprecated Methods
 
