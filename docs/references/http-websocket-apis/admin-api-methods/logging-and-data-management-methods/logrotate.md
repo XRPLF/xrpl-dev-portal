@@ -1,13 +1,11 @@
 ---
-html: logrotate.html
-parent: logging-and-data-management-methods.html
 seo:
-    description: Reopen the log file.
+   description: Reopen the log file.
 labels:
-  - Data Retention
+   - Data Retention
 ---
 # logrotate
-[[Source]](https://github.com/XRPLF/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LogRotate.cpp "Source")
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
 
@@ -49,8 +47,8 @@ An example of the request format:
 {% tab label="WebSocket" %}
 ```json
 {
-    "id": "lr1",
-    "command": "logrotate"
+   "id": "lr1",
+   "command": "logrotate"
 }
 ```
 {% /tab %}

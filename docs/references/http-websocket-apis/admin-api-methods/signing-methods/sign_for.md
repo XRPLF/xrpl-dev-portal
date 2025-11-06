@@ -1,20 +1,15 @@
 ---
-html: sign_for.html
-parent: signing-methods.html
 seo:
     description: Contribute to a multi-signature.
 labels:
-  - Transaction Sending
+    - Transaction Sending
 ---
 # sign_for
-[[Source]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SignFor.cpp "Source")
 
 The `sign_for` command provides one signature for a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md).
 
 {% partial file="/docs/_snippets/public-signing-note.md" /%}
-
-
-This command requires the [MultiSign amendment][] to be enabled.
 
 ## Request Format
 An example of the request format:
@@ -157,33 +152,33 @@ An example of a successful response:
 200 OK
 
 {
-   "result" : {
-      "status" : "success",
-      "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1",
-      "tx_json" : {
-         "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-         "Fee" : "30000",
-         "Flags" : 262144,
-         "LimitAmount" : {
-            "currency" : "USD",
-            "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-            "value" : "100"
-         },
-         "Sequence" : 2,
-         "Signers" : [
-            {
-               "Signer" : {
-                  "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-                  "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-                  "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
-               }
-            }
-         ],
-         "SigningPubKey" : "",
-         "TransactionType" : "TrustSet",
-         "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
-      }
-   }
+  "result" : {
+    "status" : "success",
+    "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1",
+    "tx_json" : {
+        "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+        "Fee" : "30000",
+        "Flags" : 262144,
+        "LimitAmount" : {
+          "currency" : "USD",
+          "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+          "value" : "100"
+        },
+        "Sequence" : 2,
+        "Signers" : [
+          {
+              "Signer" : {
+                "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+              }
+          }
+        ],
+        "SigningPubKey" : "",
+        "TransactionType" : "TrustSet",
+        "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
+    }
+  }
 }
 ```
 {% /tab %}
@@ -194,33 +189,33 @@ Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 
 {
-   "result" : {
-      "status" : "success",
-      "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1",
-      "tx_json" : {
-         "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-         "Fee" : "30000",
-         "Flags" : 262144,
-         "LimitAmount" : {
-            "currency" : "USD",
-            "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-            "value" : "100"
-         },
-         "Sequence" : 2,
-         "Signers" : [
-            {
-               "Signer" : {
-                  "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-                  "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
-                  "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
-               }
-            }
-         ],
-         "SigningPubKey" : "",
-         "TransactionType" : "TrustSet",
-         "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
-      }
-   }
+  "result" : {
+    "status" : "success",
+    "tx_blob" : "1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1",
+    "tx_json" : {
+        "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+        "Fee" : "30000",
+        "Flags" : 262144,
+        "LimitAmount" : {
+          "currency" : "USD",
+          "issuer" : "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+          "value" : "100"
+        },
+        "Sequence" : 2,
+        "Signers" : [
+          {
+              "Signer" : {
+                "Account" : "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SigningPubKey" : "02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",
+                "TxnSignature" : "30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"
+              }
+          }
+        ],
+        "SigningPubKey" : "",
+        "TransactionType" : "TrustSet",
+        "hash" : "A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"
+    }
+  }
 }
 ```
 {% /tab %}
