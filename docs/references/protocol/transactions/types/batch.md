@@ -169,6 +169,7 @@ A transaction is considered successful if it receives a `tesSUCCESS` result.
 
 | Error Code                | Description                                       |
 |:--------------------------|:--------------------------------------------------|
+| `temARRAY_EMPTY`          | The batch transaction contains zero or one inner transaction. You must submit at least two inner transactions. |
 | `temINVALID_INNER_BATCH`  | An inner transaction is malformed.               |
 | `temSEQ_AND_TICKET`       | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction can't include both fields, but must have at least one. |
 
