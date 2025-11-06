@@ -169,7 +169,7 @@ See [Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md) f
 | Amendment    | Credentials |
 |:-------------|:------------|
 | Amendment ID | 1CB67D082CF7D9102412D34258CEDB400E659352D3B207348889297A6D90F5EF |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -1093,6 +1093,21 @@ Ledger entries that were created before this amendment was enabled will get the 
 Without this amendment, some types of ledger entries don't have those fields, which makes it harder to trace the history of modifications to those ledger entries.
 
 
+### fixPriceOracleOrder
+[fixPriceOracleOrder]: #fixpriceoracleorder
+
+| Amendment    | fixPriceOracleOrder |
+|:-------------|:--------------------|
+| Amendment ID | TBD |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fixes an issue where the order of asset pair data is different from when a price oracle is created versus when it is updated.
+
+This amendment ensures asset pairs follow a canonical order at all times.
+
+
 ### fixQualityUpperBound
 [fixQualityUpperBound]: #fixqualityupperbound
 
@@ -1208,6 +1223,21 @@ Fixes a bug in [auto-bridging](../docs/concepts/tokens/decentralized-exchange/au
 Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](../docs/concepts/accounts/reserves.md#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
 
 With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.
+
+
+### fixTokenEscrowV1
+[fixTokenEscrowV1]: #fixtokenescrowv1
+
+| Amendment    | fixTokenEscrowV1 |
+|:-------------|:-----------------|
+| Amendment ID | TBD |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fixes an accounting error in MPT escrows. Specifically, when an escrow unlocks MPTs that have a transfer fee, the system incorrectly reduces the MPT issuer's locked token balance by the gross amount (without fees) rather than the net amount (with fees). This leads to discrepancies in the token's total supply accounting.
+
+This amendment ensures that when escrowed MPTs are unlocked, the issuer's locked amount is reduced by the net amount, and the total supply is reduced by the transfer fees.
 
 
 ### fixTrustLinesToSelf
