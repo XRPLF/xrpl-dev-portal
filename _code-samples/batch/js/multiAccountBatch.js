@@ -53,6 +53,7 @@ const batchTx = {
   TransactionType: "Batch",
   Account: thirdPartyWallet.address,
   Flags: BatchFlags.tfAllOrNothing, // tfAllOrNothing: All inner transactions must succeed
+  // Must include a minimum of 2 transactions and a maximum of 8 transactions.
   RawTransactions: [
     { RawTransaction: charliePayment },
     { RawTransaction: bobPayment },

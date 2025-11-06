@@ -51,6 +51,7 @@ const batchTx = {
   TransactionType: "Batch",
   Account: sender.address,
   Flags: BatchFlags.tfAllOrNothing, // tfAllOrNothing: All inner transactions must succeed
+  // Must include a minimum of 2 transactions and a maximum of 8 transactions.
   RawTransactions: [
     { RawTransaction: payment1 }, 
     { RawTransaction: payment2 }
