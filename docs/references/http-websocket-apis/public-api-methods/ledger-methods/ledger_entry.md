@@ -984,6 +984,41 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4
  -->
 
 
+### Get Vault Entry
+
+Retrieve a `Vault` object from the ledger. This is similar to the [vault_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
+
+_(Added by the [SingleAssetVault amendment][])_
+
+| Field        | Type             | Description           |
+|:-------------|:-----------------|:----------------------|
+| ``        | Object or String | The [AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md) to retrieve. If you specify a string, it must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry ''
+```
+{% /tab %}
+
+{% /tabs %}
+
+<!-- TODO: Add when deployed to Devnet/Testnet -->
+<!-- {% try-it method="ledger_entry-single-asset-vault" server="testnet" /%} -->
+
 ## Response Format
 
 The response follows the [standard format][], with a successful result containing the following fields:

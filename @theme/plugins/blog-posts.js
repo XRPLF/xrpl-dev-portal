@@ -47,6 +47,7 @@ export function blogPosts() {
         actions.createSharedData('blog-posts', { blogPosts: sortedPosts });
         actions.addRouteSharedData('/blog/', 'blog-posts', 'blog-posts');
         actions.addRouteSharedData('/ja/blog/', 'blog-posts', 'blog-posts');
+        actions.addRouteSharedData('/es-es/blog/', 'blog-posts', 'blog-posts');
       } catch (e) {
         console.log(e);
       }

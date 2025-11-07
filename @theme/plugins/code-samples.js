@@ -44,6 +44,7 @@ export function codeSamples() {
         });
         actions.addRouteSharedData('/resources/code-samples/', 'code-samples', 'code-samples');
         actions.addRouteSharedData('/ja/resources/code-samples/', 'code-samples', 'code-samples');
+        actions.addRouteSharedData('/es-es/resources/code-samples/', 'code-samples', 'code-samples');
       } catch (e) {
         console.log(e);
       }
