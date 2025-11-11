@@ -1098,7 +1098,7 @@ Without this amendment, some types of ledger entries don't have those fields, wh
 
 | Amendment    | fixPriceOracleOrder |
 |:-------------|:--------------------|
-| Amendment ID | TBD |
+| Amendment ID | FF2D1E13CF6D22427111B967BD504917F63A900CECD320D6FD3AC9FA90344631 |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
