@@ -1230,7 +1230,7 @@ With this amendment enabled, the XRP Ledger removes these dry offers when they'r
 
 | Amendment    | fixTokenEscrowV1 |
 |:-------------|:-----------------|
-| Amendment ID | TBD |
+| Amendment ID | 32B8614321F7E070419115ABEAB1742EA20F3E3AF34432B5E2F474F8083260DC |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
