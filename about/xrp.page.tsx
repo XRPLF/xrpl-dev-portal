@@ -401,7 +401,7 @@ export default function XrpOverview() {
                   </li>
                 ))}
               </ul>
-              <p className="fs-3 mt-10">
+              <p className="label-l mt-10">
                 {translate(
                   "Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices."
                 )}
@@ -481,7 +481,7 @@ export default function XrpOverview() {
                   </li>
                 ))}
               </ul>
-              <p className="fs-3 mt-10 mb-0">
+              <p className="label-l mt-10 mb-0">
                 {translate(
                   "Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices."
                 )}

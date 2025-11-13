@@ -870,7 +870,6 @@ const CommunityPage: React.FC = () => {
       {/* Bottom Cards Section 2 cards */}
       <section className="bottom-cards-section bug-bounty">
         <div className="com-card ripplex-bug-bounty">
-          <img className="top-right-img bug-bounty-card-bg" alt="Top Right Image" />
           <div className="card-content">
             <h6 className="card-title">
               {translate("RippleX Bug Bounty Program")}
@@ -910,7 +909,6 @@ const CommunityPage: React.FC = () => {
           </div>
         </div>
         <div className="com-card">
-          <img className="bottom-right-img bug-bounty-card-bg-2" alt="Bottom Right Image" />
           <div className="card-content">
             <h6 className="card-title">{translate("Report a Scam")}</h6>
             <h6 className="card-subtitle pr-bt28">
@@ -938,7 +936,6 @@ const CommunityPage: React.FC = () => {
       {/* Bottom Cards Section */}
       <section className="bottom-cards-section">
         <div className="com-card">
-          <img className="top-left-img" alt="Top Left Image" />
           <div className="card-content">
             <h6 className="card-title">
               {translate("Contribute to Consensus")}
@@ -984,7 +981,6 @@ const CommunityPage: React.FC = () => {
           </div>
         </div>
         <div className="com-card">
-          <img className="bottom-right-img" alt="Bottom Right Image" />
           <div className="card-content">
             <h6 className="card-title">{translate("XRPL Careers")}</h6>
             <h6 className="card-subtitle pr-bt16">
@@ -1009,7 +1005,6 @@ const CommunityPage: React.FC = () => {
           </div>
         </div>
         <div className="com-card">
-          <img className="top-right-img" alt="Top Right Image" />
           <div className="card-content">
             <h6 className="card-title">
               {translate("Contribute to XRPL.org")}
