@@ -114,7 +114,7 @@ To check the result of the Batch transaction submission:
 
 {% tabs %}
 {% tab label="Javascript" %}
-{% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Check Batch transaction" before="// Verify balances after transaction" /%}
+{% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Check Batch transaction" before="// Calculate and verify" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -126,15 +126,29 @@ A `tesSUCCESS` result indicates that the Batch transaction was processed success
 For example, see the [following transaction on the XRPL Explorer](https://devnet.xrpl.org/transactions/20CFCE5CF75E93E6D1E9C1E42F8E8C8C4CB1786A65BE23D2EA77EAAB65A455C5/simple).
 {% /admonition %}
 
-To verify that the inner transactions have been successful, check the account balances to confirm the expected changes.
+Because the Batch transaction is configured with a `tfAllOrNothing` flag, if any inner transaction fails, **all** inner transactions wil fail, and only the Batch transaction fee is deducted from the **third-party wallet**.
+
+### 7. Verify inner transactions
+
+Since there is no way to check the status of inner transactions in the Batch transaction result, you need to calculate the inner transaction hashes and look them up on the ledger:
+
+{% tabs %}
+{% tab label="Javascript" %}
+{% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Calculate and verify" before="// Verify balances after transaction" /%}
+{% /tab %}
+{% /tabs %}
+
+The code extracts the actual inner transactions from the batch response, calculates the hash of each inner transaction and looks up each transaction on the ledger using its hash.
+
+### 8. Verify balances
+
+You can also verify that the inner transactions executed successfully by checking the account balances to confirm the expected changes.
 
 {% tabs %}
 {% tab label="Javascript" %}
 {% code-snippet file="/_code-samples/batch/js/singleAccountBatch.js" language="js" from="// Verify balances after transaction" /%}
 {% /tab %}
 {% /tabs %}
-
-Because the Batch transaction is configured with a `tfAllOrNothing` flag, if any inner transaction fails, **all** inner transactions wil fail, and only the Batch transaction fee is deducted from the **sender**.
 
 ## See Also
 
