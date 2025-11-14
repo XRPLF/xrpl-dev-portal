@@ -14,7 +14,7 @@ const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233/")
 await client.connect()
 
 // Create and fund wallets
-console.log("Funding new wallets from faucet...")
+console.log("=== Funding new wallets from faucet... ===")
 const { wallet: alice } = await client.fundWallet()
 const { wallet: bob } = await client.fundWallet()
 const { wallet: charlie } = await client.fundWallet()
@@ -48,7 +48,7 @@ const bobPayment = {
 }
 
 // Send Batch transaction --------------------------------------------
-console.log("\nCreating batch transaction:")
+console.log("\n=== Creating batch transaction ===")
 const batchTx = {
   TransactionType: "Batch",
   Account: thirdPartyWallet.address,
@@ -83,7 +83,7 @@ signMultiBatch(bob, bobBatch)
 const combinedSignedTx = combineBatchSigners([charlieBatch, bobBatch])
 
 // Submit the signed blob with the third-party's wallet
-console.log("\nSubmitting batch transaction...")
+console.log("\n=== Submitting batch transaction ===")
 const submitResponse = await client.submitAndWait(combinedSignedTx, 
   { wallet: thirdPartyWallet }
 )
@@ -98,14 +98,35 @@ if (submitResponse.result.meta.TransactionResult !== "tesSUCCESS") {
 console.log("\nBatch transaction submitted successfully!")
 console.log("Result:\n", JSON.stringify(submitResponse.result, null, 2))
 
+// Calculate and verify inner transaction hashes --------------------------------------------
+console.log("\n=== Verifying Inner Transactions ===")
+
+// Get the actual inner transactions from the batch response
+const rawTransactions = submitResponse.result.tx_json.RawTransactions
+
+for (let i = 0; i < rawTransactions.length; i++) {
+  const innerTx = rawTransactions[i].RawTransaction
+  const hash = xrpl.hashes.hashSignedTx(xrpl.encode(innerTx))
+  
+  console.log(`\nTransaction ${i + 1} Hash: ${hash}`)
+
+  try {
+    const tx = await client.request({ command: 'tx', transaction: hash })
+    console.log(` - Status: ${tx.result.meta?.TransactionResult} (Ledger ${tx.result.ledger_index})`)
+    console.log(` - Transaction URL: https://devnet.xrpl.org/transactions/${hash}`)
+  } catch (error) {
+    console.log(`✗ Not found: ${error.message}`)
+  }
+}
+
 // Verify balances after transaction
-console.log("\nFinal balances after batch transaction:")
+console.log("\n=== Final Balances ===")
 console.log(`Alice: ${alice.address}, Balance: ${await client.getXrpBalance(alice.address)} XRP`)
 console.log(`Bob: ${bob.address}, Balance: ${await client.getXrpBalance(bob.address)} XRP`)
 console.log(`Charlie: ${charlie.address}, Balance: ${await client.getXrpBalance(charlie.address)} XRP`)
 console.log(`Third-party wallet: ${thirdPartyWallet.address}, Balance: ${await client.getXrpBalance(thirdPartyWallet.address)} XRP`)
 
 // View the transaction on the XRPL Explorer 
-console.log(`\nTransaction URL:\nhttps://devnet.xrpl.org/transactions/${submitResponse.result.hash}`)
+console.log(`\nBatch Transaction URL:\nhttps://devnet.xrpl.org/transactions/${submitResponse.result.hash}`)
 
 await client.disconnect()

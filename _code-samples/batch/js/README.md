@@ -16,22 +16,22 @@ node singleAccountBatch.js
 The script should output the following:
 
 ```sh
-Funding new wallets from faucet...
-Sender: raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e, Balance: 100 XRP
-Wallet1: r4JMmKToZRMVT3mGWPnKHFEHsSMQEWigLC, Balance: 100 XRP
-Wallet2: rKfPgHASYuttoF1HfU56V31WbJvZn3w8xn, Balance: 100 XRP
+=== Funding new wallets from faucet... ===
+Sender: r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya, Balance: 100 XRP
+Wallet1: rw744uE8PveVqU2KGyFkUNW4qGYxeK2QZM, Balance: 100 XRP
+Wallet2: rhcxDdw7VFEPEFkWrZ3G6NSEKhWUXoaQNJ, Balance: 100 XRP
 
-Creating batch transaction:
+=== Creating batch transaction ===
 {
   "TransactionType": "Batch",
-  "Account": "raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e",
+  "Account": "r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya",
   "Flags": 65536,
   "RawTransactions": [
     {
       "RawTransaction": {
         "TransactionType": "Payment",
-        "Account": "raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e",
-        "Destination": "r4JMmKToZRMVT3mGWPnKHFEHsSMQEWigLC",
+        "Account": "r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya",
+        "Destination": "rw744uE8PveVqU2KGyFkUNW4qGYxeK2QZM",
         "Amount": "2000000",
         "Flags": 1073741824
       }
@@ -39,8 +39,8 @@ Creating batch transaction:
     {
       "RawTransaction": {
         "TransactionType": "Payment",
-        "Account": "raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e",
-        "Destination": "rKfPgHASYuttoF1HfU56V31WbJvZn3w8xn",
+        "Account": "r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya",
+        "Destination": "rhcxDdw7VFEPEFkWrZ3G6NSEKhWUXoaQNJ",
         "Amount": "5000000",
         "Flags": 1073741824
       }
@@ -48,90 +48,100 @@ Creating batch transaction:
   ]
 }
 
-Submitting batch transaction...
+=== Submitting batch transaction ===
 
 Batch transaction submitted successfully!
 Result:
  {
-  "close_time_iso": "2025-11-03T14:16:21Z",
-  "ctid": "C00D458B00020002",
-  "hash": "A93D3C2BDB5D600E592B64B84E66D789237D029267129EBC659EE483E532DD95",
-  "ledger_hash": "BE6B7C12E551305F09E942D6FA3FC8546F024AE5C53FC495DA6ABF78461E7019",
-  "ledger_index": 869771,
+  "close_time_iso": "2025-11-14T17:46:50Z",
+  "ctid": "C01205F300000002",
+  "hash": "723254589441AA19ACE9B07FFEA161EDCD6DD58DFDF230FAECE1477CF71117C5",
+  "ledger_hash": "24B4EDFC1A0B3F951A536950BA397A8EF49212C882A9268B878885EA8A285EE5",
+  "ledger_index": 1181171,
   "meta": {
     "AffectedNodes": [
       {
         "ModifiedNode": {
           "FinalFields": {
-            "Account": "raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e",
+            "Account": "r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya",
             "Balance": "99999996",
             "Flags": 0,
             "OwnerCount": 0,
-            "Sequence": 869767
+            "Sequence": 1181168
           },
           "LedgerEntryType": "AccountRoot",
-          "LedgerIndex": "6238B6901FEBD1492C03546C7965A01F184C4E37B696304B86F78F4ADB7831B1",
+          "LedgerIndex": "C9C50B88095FBD2D78D0D2693F1C38738AD108D3EE6AB5491547A5FCFE62A236",
           "PreviousFields": {
             "Balance": "100000000",
-            "Sequence": 869766
+            "Sequence": 1181167
           },
-          "PreviousTxnID": "559F102041D84FF9DA17483355C3C96A0F8923D9C9C7971BBB15C972DD1F37D6",
-          "PreviousTxnLgrSeq": 869766
+          "PreviousTxnID": "C5FFDF7016A8102250F4F8CB12F964573A95FA7CC1706C072A4F244F1A81C3B3",
+          "PreviousTxnLgrSeq": 1181167
         }
       }
     ],
-    "TransactionIndex": 2,
+    "TransactionIndex": 0,
     "TransactionResult": "tesSUCCESS"
   },
   "tx_json": {
-    "Account": "raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e",
+    "Account": "r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya",
     "Fee": "4",
     "Flags": 65536,
-    "LastLedgerSequence": 869789,
+    "LastLedgerSequence": 1181189,
     "RawTransactions": [
       {
         "RawTransaction": {
-          "Account": "raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e",
+          "Account": "r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya",
           "Amount": "2000000",
-          "Destination": "r4JMmKToZRMVT3mGWPnKHFEHsSMQEWigLC",
+          "Destination": "rw744uE8PveVqU2KGyFkUNW4qGYxeK2QZM",
           "Fee": "0",
           "Flags": 1073741824,
-          "Sequence": 869767,
+          "Sequence": 1181168,
           "SigningPubKey": "",
           "TransactionType": "Payment"
         }
       },
       {
         "RawTransaction": {
-          "Account": "raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e",
+          "Account": "r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya",
           "Amount": "5000000",
-          "Destination": "rKfPgHASYuttoF1HfU56V31WbJvZn3w8xn",
+          "Destination": "rhcxDdw7VFEPEFkWrZ3G6NSEKhWUXoaQNJ",
           "Fee": "0",
           "Flags": 1073741824,
-          "Sequence": 869768,
+          "Sequence": 1181169,
           "SigningPubKey": "",
           "TransactionType": "Payment"
         }
       }
     ],
-    "Sequence": 869766,
-    "SigningPubKey": "EDFECFB87A29F93E52BBA0BA5A14A59B520BB0E39F33943A2FDC1101D34349270D",
+    "Sequence": 1181167,
+    "SigningPubKey": "EDB16F0756C88AA0E541EFBB602B7992E6BA13CFB3E1BD3D699D4DB91BAD9043D0",
     "TransactionType": "Batch",
-    "TxnSignature": "E08E300BDE1700C7CC27F3DA9B784907F637518E1C7E0978E57BFE5D1511A3B6A4269235FC2D9EAA550182A5F2B59415A442CE59555B9B9A0A79AB4030C9F701",
-    "ctid": "C00D458B00020002",
-    "date": 815494581,
-    "ledger_index": 869771
+    "TxnSignature": "C141A9C5253C940D9B85847FF1F8BF1AB9D0B63707DD8BD06204BD58AC64F8019BC52F9D8D2B1B7D889CBF081211D0A4DCAFFC87D716D795B4FCE38F23F91008",
+    "ctid": "C01205F300000002",
+    "date": 816457610,
+    "ledger_index": 1181171
   },
   "validated": true
 }
 
-Final balances after batch transaction:
-Sender: raNwujquxJ7QTLhfbkKN6sZa7RBPHV671e, Balance: 92.999996 XRP
-Wallet1: r4JMmKToZRMVT3mGWPnKHFEHsSMQEWigLC, Balance: 102 XRP
-Wallet2: rKfPgHASYuttoF1HfU56V31WbJvZn3w8xn, Balance: 105 XRP
+=== Verifying Inner Transactions ===
 
-Transaction URL:
-https://devnet.xrpl.org/transactions/A93D3C2BDB5D600E592B64B84E66D789237D029267129EBC659EE483E532DD95
+Transaction 1 Hash: 4CFD3BB085E09C70D22F6199CAEB4281C3D1DF0824E2AACA2E4463A2799F7FE7
+ - Status: tesSUCCESS (Ledger 1181171)
+ - Transaction URL: https://devnet.xrpl.org/transactions/4CFD3BB085E09C70D22F6199CAEB4281C3D1DF0824E2AACA2E4463A2799F7FE7
+
+Transaction 2 Hash: 9B794797A80013977FCFCF44389807E08F1B2B2957E2F8EBE9D5F0F4209F7285
+ - Status: tesSUCCESS (Ledger 1181171)
+ - Transaction URL: https://devnet.xrpl.org/transactions/9B794797A80013977FCFCF44389807E08F1B2B2957E2F8EBE9D5F0F4209F7285
+
+=== Final Balances ===
+Sender: r3y1GdzaPVcaLUaTKvq1iqNzT9EjKLvnya, Balance: 92.999996 XRP
+Wallet1: rw744uE8PveVqU2KGyFkUNW4qGYxeK2QZM, Balance: 102 XRP
+Wallet2: rhcxDdw7VFEPEFkWrZ3G6NSEKhWUXoaQNJ, Balance: 105 XRP
+
+Batch Transaction URL:
+https://devnet.xrpl.org/transactions/723254589441AA19ACE9B07FFEA161EDCD6DD58DFDF230FAECE1477CF71117C5
 ```
 
 ## Multi-Account Batch Transaction
@@ -144,23 +154,23 @@ node multiAccountBatch.js
 The script should output the following:
 
 ```sh
-Funding new wallets from faucet...
-Alice: rfCBfRGpcGJLwdbfz1M6HYoAL8nZyHRHHa, Balance: 100 XRP
-Bob: rKPUDuS2jQNpAMhkNncqC9rKJDpL2gXDN7, Balance: 100 XRP
-Charlie: rnz3Da7phfR6tgTZoPYF5psYTiHTshTB8K, Balance: 100 XRP
-Third-party wallet: rU8LsCmVjSdf7hSmiGBtBDtt2WhHxp7Zpc, Balance: 100 XRP
+=== Funding new wallets from faucet... ===
+Alice: r9quQTwuBWQC1SDjPA3CzXi3V6vcKdUUkU, Balance: 100 XRP
+Bob: rLegReLGMVh3b8acEu6NJ16GFYVSrq7DFt, Balance: 100 XRP
+Charlie: rEMtU7B5e7Q347HSWwaMiqTk2mJytBTMRT, Balance: 100 XRP
+Third-party wallet: rKeZvnQ6pusBV6u1TREqJESgQR2mfpb4G2, Balance: 100 XRP
 
-Creating batch transaction:
+=== Creating batch transaction ===
 {
   "TransactionType": "Batch",
-  "Account": "rU8LsCmVjSdf7hSmiGBtBDtt2WhHxp7Zpc",
+  "Account": "rKeZvnQ6pusBV6u1TREqJESgQR2mfpb4G2",
   "Flags": 65536,
   "RawTransactions": [
     {
       "RawTransaction": {
         "TransactionType": "Payment",
-        "Account": "rnz3Da7phfR6tgTZoPYF5psYTiHTshTB8K",
-        "Destination": "rfCBfRGpcGJLwdbfz1M6HYoAL8nZyHRHHa",
+        "Account": "rEMtU7B5e7Q347HSWwaMiqTk2mJytBTMRT",
+        "Destination": "r9quQTwuBWQC1SDjPA3CzXi3V6vcKdUUkU",
         "Amount": "50000000",
         "Flags": 1073741824
       }
@@ -168,8 +178,8 @@ Creating batch transaction:
     {
       "RawTransaction": {
         "TransactionType": "Payment",
-        "Account": "rKPUDuS2jQNpAMhkNncqC9rKJDpL2gXDN7",
-        "Destination": "rfCBfRGpcGJLwdbfz1M6HYoAL8nZyHRHHa",
+        "Account": "rLegReLGMVh3b8acEu6NJ16GFYVSrq7DFt",
+        "Destination": "r9quQTwuBWQC1SDjPA3CzXi3V6vcKdUUkU",
         "Amount": "50000000",
         "Flags": 1073741824
       }
@@ -177,35 +187,35 @@ Creating batch transaction:
   ]
 }
 
-Submitting batch transaction...
+=== Submitting batch transaction ===
 
 Batch transaction submitted successfully!
 Result:
  {
-  "close_time_iso": "2025-11-03T14:15:00Z",
-  "ctid": "C00D457000000002",
-  "hash": "8CBCCD88B8ABC248797B84ABB92066961C1CB5FE75ACE2115ADCA6B74C85993A",
-  "ledger_hash": "2217A0DBB38B870187B412533B939724095359A050B21E071A2A114BF57CFB60",
-  "ledger_index": 869744,
+  "close_time_iso": "2025-11-14T17:47:52Z",
+  "ctid": "C012060900000002",
+  "hash": "C6EF3F55749ED51BCF33D657BCB37B8221B317E9ED9D55CA1CF9454BD54D697E",
+  "ledger_hash": "19F9DB9DF2F3978C11B5853BAAF463E370C319E3F8DEFA19A0A7EED832CC5ACE",
+  "ledger_index": 1181193,
   "meta": {
     "AffectedNodes": [
       {
         "ModifiedNode": {
           "FinalFields": {
-            "Account": "rU8LsCmVjSdf7hSmiGBtBDtt2WhHxp7Zpc",
+            "Account": "rKeZvnQ6pusBV6u1TREqJESgQR2mfpb4G2",
             "Balance": "99999994",
             "Flags": 0,
             "OwnerCount": 0,
-            "Sequence": 869743
+            "Sequence": 1181193
           },
           "LedgerEntryType": "AccountRoot",
-          "LedgerIndex": "1E9BA043B9C6518582D0FF73A08DCD8B6958195735086CF7295E5EB6433FB453",
+          "LedgerIndex": "94CD9B687558DF03CC9110EC1A7CACADAEFC76AEA6C31FA784D00F979864D5AE",
           "PreviousFields": {
             "Balance": "100000000",
-            "Sequence": 869742
+            "Sequence": 1181192
           },
-          "PreviousTxnID": "F7019BC55D80438FDDB01C2549CCC3F7DAF9791F8645E0269D63979EAEC5BBA6",
-          "PreviousTxnLgrSeq": 869742
+          "PreviousTxnID": "5331D0494C42726FDF52F8F0C34A9BBE0BCAF6ABD45AF2A76CB00CF8B2B3A761",
+          "PreviousTxnLgrSeq": 1181192
         }
       }
     ],
@@ -213,69 +223,79 @@ Result:
     "TransactionResult": "tesSUCCESS"
   },
   "tx_json": {
-    "Account": "rU8LsCmVjSdf7hSmiGBtBDtt2WhHxp7Zpc",
+    "Account": "rKeZvnQ6pusBV6u1TREqJESgQR2mfpb4G2",
     "BatchSigners": [
       {
         "BatchSigner": {
-          "Account": "rnz3Da7phfR6tgTZoPYF5psYTiHTshTB8K",
-          "SigningPubKey": "EDC566D7DA8186BBD30DDAE1FB770FCE7F248949194E1A2E70B18CFA060B140B59",
-          "TxnSignature": "31639BFA1359DD24345776EAEEACCF61C1CDC792988679263D113E80A22D837E20ACD2B25E482FCA769990C004D747836370C6BAD14524559639BBEBA5813002"
+          "Account": "rEMtU7B5e7Q347HSWwaMiqTk2mJytBTMRT",
+          "SigningPubKey": "EDA4DB81B1ABAF32E608731E3D0A867D8DA47C6500E6F1C7AB0E51FE93F619FFE3",
+          "TxnSignature": "D84E96B16D51EB2E5959F55F046167013F625C33CEC99D19FEF934D02F0F8FC1906FAAE7413652A25B5724935E94B30B9F5C114E0AC77B8D8E61DAEDA96F6405"
         }
       },
       {
         "BatchSigner": {
-          "Account": "rKPUDuS2jQNpAMhkNncqC9rKJDpL2gXDN7",
-          "SigningPubKey": "EDEF1966B325000407940E4C0792E3CCC3E27F51D132BDC53DCC2B1998E7C32A34",
-          "TxnSignature": "6BF9860B0E2E134FB302329D711BAA7B6314395D39523982DBBC037E84FB17AB5E8E736DB3DB0019B4477686AF2D91E5D2B49409698A95219376B2E318D3E501"
+          "Account": "rLegReLGMVh3b8acEu6NJ16GFYVSrq7DFt",
+          "SigningPubKey": "ED9D4F21B59366032AE70C8FBA9BB58852A3455326E52F2A5CAFA4F045FA9AE3AB",
+          "TxnSignature": "EBA9C89F9A7F2DC7B4E0F41351C50AEA500D203075F6D7662DA1605229F30A99080409A482F96DC1851A5A3E82895395509E640B6959798DB97445FEFB959009"
         }
       }
     ],
     "Fee": "6",
     "Flags": 65536,
-    "LastLedgerSequence": 869762,
+    "LastLedgerSequence": 1181212,
     "RawTransactions": [
       {
         "RawTransaction": {
-          "Account": "rnz3Da7phfR6tgTZoPYF5psYTiHTshTB8K",
+          "Account": "rEMtU7B5e7Q347HSWwaMiqTk2mJytBTMRT",
           "Amount": "50000000",
-          "Destination": "rfCBfRGpcGJLwdbfz1M6HYoAL8nZyHRHHa",
+          "Destination": "r9quQTwuBWQC1SDjPA3CzXi3V6vcKdUUkU",
           "Fee": "0",
           "Flags": 1073741824,
-          "Sequence": 869740,
+          "Sequence": 1181191,
           "SigningPubKey": "",
           "TransactionType": "Payment"
         }
       },
       {
         "RawTransaction": {
-          "Account": "rKPUDuS2jQNpAMhkNncqC9rKJDpL2gXDN7",
+          "Account": "rLegReLGMVh3b8acEu6NJ16GFYVSrq7DFt",
           "Amount": "50000000",
-          "Destination": "rfCBfRGpcGJLwdbfz1M6HYoAL8nZyHRHHa",
+          "Destination": "r9quQTwuBWQC1SDjPA3CzXi3V6vcKdUUkU",
           "Fee": "0",
           "Flags": 1073741824,
-          "Sequence": 869738,
+          "Sequence": 1181190,
           "SigningPubKey": "",
           "TransactionType": "Payment"
         }
       }
     ],
-    "Sequence": 869742,
-    "SigningPubKey": "ED2B56D6FB4E8C236A6B07E8D8AD9A4938606144E31779918F99525CA6B3C56664",
+    "Sequence": 1181192,
+    "SigningPubKey": "ED447F3C2BFE7653F74FC02E4B6BF5CD42FFBA139B372A59D555957C8C2DB93DCD",
     "TransactionType": "Batch",
-    "TxnSignature": "9C51C1F2CB0E8BCEA1FADD3992249DE72AC46FC86AB2FB023A597FBD5C4CCB3337967E9AAFFB5F1C0CBC91128F3FD194F78F207E461BE1FF906C496B94EC410E",
-    "ctid": "C00D457000000002",
-    "date": 815494500,
-    "ledger_index": 869744
+    "TxnSignature": "5FA929144AF5092CA033ED9938F7D01D177DE7D0DB3D1440138125610ED43533E72A00FF0D826899D2DE39CE901B6C9EF7D5322DF4D5C2415D5728E60AE97D0E",
+    "ctid": "C012060900000002",
+    "date": 816457672,
+    "ledger_index": 1181193
   },
   "validated": true
 }
 
-Final balances after batch transaction:
-Alice: rfCBfRGpcGJLwdbfz1M6HYoAL8nZyHRHHa, Balance: 200 XRP
-Bob: rKPUDuS2jQNpAMhkNncqC9rKJDpL2gXDN7, Balance: 50 XRP
-Charlie: rnz3Da7phfR6tgTZoPYF5psYTiHTshTB8K, Balance: 50 XRP
-Third-party wallet: rU8LsCmVjSdf7hSmiGBtBDtt2WhHxp7Zpc, Balance: 99.999994 XRP
+=== Verifying Inner Transactions ===
 
-Transaction URL:
-https://devnet.xrpl.org/transactions/8CBCCD88B8ABC248797B84ABB92066961C1CB5FE75ACE2115ADCA6B74C85993A
+Transaction 1 Hash: 3E375463F8CCA03E9C4533DC91ED9F17D30E2968DB7D46053011DBB7F79E26DD
+ - Status: tesSUCCESS (Ledger 1181193)
+ - Transaction URL: https://devnet.xrpl.org/transactions/3E375463F8CCA03E9C4533DC91ED9F17D30E2968DB7D46053011DBB7F79E26DD
+
+Transaction 2 Hash: BCBBC9B3A5912B496AB2BFF25DD45C634946832307BA284A53D6EBA81E68B8B4
+ - Status: tesSUCCESS (Ledger 1181193)
+ - Transaction URL: https://devnet.xrpl.org/transactions/BCBBC9B3A5912B496AB2BFF25DD45C634946832307BA284A53D6EBA81E68B8B4
+
+=== Final Balances ===
+Alice: r9quQTwuBWQC1SDjPA3CzXi3V6vcKdUUkU, Balance: 200 XRP
+Bob: rLegReLGMVh3b8acEu6NJ16GFYVSrq7DFt, Balance: 50 XRP
+Charlie: rEMtU7B5e7Q347HSWwaMiqTk2mJytBTMRT, Balance: 50 XRP
+Third-party wallet: rKeZvnQ6pusBV6u1TREqJESgQR2mfpb4G2, Balance: 99.999994 XRP
+
+Batch Transaction URL:
+https://devnet.xrpl.org/transactions/C6EF3F55749ED51BCF33D657BCB37B8221B317E9ED9D55CA1CF9454BD54D697E
 ```
