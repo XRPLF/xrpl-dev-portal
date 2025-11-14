@@ -742,6 +742,19 @@ Changes the way Checks transactions affect account metadata, so that Checks are 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
 
+### fixDirectoryLimit
+[fixDirectoryLimit]: #fixdirectorylimit
+
+| Amendment    | fixdirecotrylimit |
+|:-------------|:----------------------|
+| Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
+| Status       | Enabled |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue with approving trustlines after a user enables the `lsfDisallowIncomingTrustline` flag on their account.
+
+
 ### fixDisallowIncomingV1
 [fixDisallowIncomingV1]: #fixdisallowincomingv1
 
