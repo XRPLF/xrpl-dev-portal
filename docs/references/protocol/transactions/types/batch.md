@@ -121,12 +121,12 @@ In this example, two users are atomically swapping their tokens: XRP for GKO.
 | Field             | JSON Type | [Internal Type][] | Required? | Description |
 |:------------------|:----------|:------------------|:----------|:------------|
 | `Flags`           | Number    | UInt32            | Yes       | A bit-flag for this transaction. Exactly one must be specified to represent the batch mode of the transaction. See: [Batch Flags](#batch-flags). |
-| `RawTransactions` | Array     | Array             | Yes       | The list of transactions to apply. |
+| `RawTransactions` | Array     | Array             | Yes       | The list of transactions to apply. See [RawTransactions](#rawtransactions). |
 | `BatchSigners`    | Array     | Array             | No        | The signatures authorizing a multi-account `Batch` transaction. |
 
 ### RawTransactions
 
-`RawTransactions` contains the list of inner transactions to be applied. There can be up to 8 transactions included. These transactions can come from one account or multiple accounts.
+`RawTransactions` contains the list of inner transactions to be applied. There must be a minimum of **2** transactions and a maximum of **8** transactions. These transactions can come from one account or multiple accounts.
 
 Each inner transaction:
 
@@ -169,6 +169,7 @@ A transaction is considered successful if it receives a `tesSUCCESS` result.
 
 | Error Code                | Description                                       |
 |:--------------------------|:--------------------------------------------------|
+| `temARRAY_EMPTY`          | The batch transaction contains zero or one inner transaction. You must submit at least two inner transactions. |
 | `temINVALID_INNER_BATCH`  | An inner transaction is malformed.               |
 | `temSEQ_AND_TICKET`       | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction can't include both fields, but must have at least one. |
 

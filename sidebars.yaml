@@ -295,6 +295,11 @@
                 - page: docs/tutorials/how-tos/manage-account-settings/require-destination-tags.md
                 - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md
                 - page: docs/tutorials/how-tos/manage-account-settings/use-tickets.md
+            - page: docs/tutorials/how-tos/use-batch-transactions/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/how-tos/use-batch-transactions/send-a-single-account-batch-transaction.md
+                - page: docs/tutorials/how-tos/use-batch-transactions/send-a-multi-account-batch-transaction.md
             - page: docs/tutorials/how-tos/use-specialized-payment-types/index.md
               expanded: false
               items:
