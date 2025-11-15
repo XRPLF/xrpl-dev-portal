@@ -62,10 +62,10 @@ Click **Download** on the top right of the code preview panel to download the so
 
 Follow the steps to create a simple application with `xrpl.js`.
 
-### 1. Install Dependencies
-
 <!-- Web steps -->
 {% step id="import-web-tag" when={ "environment": "Web" } %}
+### 1. Install Dependencies
+
 To load `xrpl.js` into your project, add a `<script>` tag to your HTML.
 
 You can load the library from a CDN as in the example, or download a release and host it on your own website.
@@ -74,7 +74,8 @@ This loads the module into the top level as `xrpl`.
 {% /step %}
 
 <!-- Node.js steps -->
-{% step id="install-node-tag" when={ "environment": "Node" } %}
+{% step id="import-node-tag" when={ "environment": "Node" } %}
+### 1. Install Dependencies
 
 Start a new project by creating an empty folder, then move into that folder and use [NPM](https://www.npmjs.com/) to install the latest version of xrpl.js:
 
@@ -145,31 +146,32 @@ If you want to generate a wallet without funding it, you can create a new `Walle
 To use an existing wallet seed encoded in [base58][], you can create a `Wallet` instance from it.
 {% /step %}
 
+{% step id="query-xrpl-tag" %}
 ### 4. Query the XRP Ledger
 
-{% step id="query-xrpl-tag" %}
 Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md).
 {% /step %}
 
+{% step id="listen-for-events-tag" %}
 ### 5. Listen for Events
 
-{% step id="listen-for-events-tag" %}
 You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](../../../concepts/consensus-protocol/index.md) produces a new [ledger version](../../../concepts/ledgers/index.md). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
 {% /step %}
 
+{% step id="disconnect-node-tag" when={ "environment": "Node" } %}
 ### 6. Disconnect
 
-{% step id="disconnect-node-tag" when={ "environment": "Node" } %}
 Disconnect when done so Node.js can end the process. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
 {% /step %}
 
 {% step id="disconnect-web-tag" when={ "environment": "Web" } %}
+### 6. Disconnect
 Disconnect from the ledger when done. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
 {% /step %}
 
+{% step id="run-app-node-tag" when={ "environment": "Node" } %}
 ### 7. Run the Application
 
-{% step id="run-app-node-tag" when={ "environment": "Node" } %}
 Finally, in your terminal, run the application like so:
 
 ```sh
