@@ -1678,8 +1678,7 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 
 Creates a structure for aggregating assets from multiple depositors. This is intended to be used with the proposed on-chain Lending Protocol.
 
-Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065d-single-asset-vault).
-
+Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault).
 
 ### SortedDirectories
 [SortedDirectories]: #sorteddirectories
