@@ -745,14 +745,14 @@ Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and
 ### fixDirectoryLimit
 [fixDirectoryLimit]: #fixdirectorylimit
 
-| Amendment    | fixdirecotrylimit |
+| Amendment    | fixdirectorylimit |
 |:-------------|:----------------------|
-| Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
-| Status       | Enabled |
+| Amendment ID | 41765F664A8D67FF03DDB1C1A893DE6273690BA340A6C2B07C8D29D0DD013D3A |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment fixes an issue with approving trustlines after a user enables the `lsfDisallowIncomingTrustline` flag on their account.
+This amendment removes the directory page limit. Object reserve requirements provide enough incentive to avoid creating unnecessary objects on the XRP Ledger.
 
 
 ### fixDisallowIncomingV1
