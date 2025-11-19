@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: "2025-11-12"
+date: "2025-11-19"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 2.6.2
@@ -22,8 +22,6 @@ If you run an XRP Ledger server, upgrade to version 2.6.2 as soon as possible to
 
 
 ## Install / Upgrade
-
-**TODO**: Update packages hashes and commit message.
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
@@ -49,11 +47,11 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
 
 The following amendment is open for voting with this release:
 
-- **fixDirectoryLimit** - Removes directory page limits. ([#5935](https://github.com/XRPLF/rippled/pull/5935))
+- **fixDirectoryLimit** - Removes directory page limits. Object reserve requirements provide enough incentive to avoid creating unnecessary objects on the XRP Ledger. ([#5935](https://github.com/XRPLF/rippled/pull/5935))
 
 ### Bug Fixes
 
-- Fixed an assertion failure when all the inner transactions of a `Batch` transaction are invalid. ([#5670](https://github.com/XRPLF/rippled/pull/5670))
+- Fixed an assertion failure when all the inner transactions of a `Batch` transaction were invalid. ([#5670](https://github.com/XRPLF/rippled/pull/5670))
 
 
 ## Credits
