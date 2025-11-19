@@ -14,10 +14,13 @@ const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233/")
 await client.connect()
 
 // Create and fund wallets
-console.log("=== Funding new wallets from faucet... ===")
-const { wallet: sender } = await client.fundWallet()
-const { wallet: wallet1 } = await client.fundWallet()
-const { wallet: wallet2 } = await client.fundWallet()
+console.log("=== Funding new wallets from faucet... ===");
+const [{ wallet: sender }, { wallet: wallet1 }, { wallet: wallet2 }] =
+  await Promise.all([
+    client.fundWallet(),
+    client.fundWallet(),
+    client.fundWallet(),
+  ]);
 
 console.log(`Sender: ${sender.address}, Balance: ${await client.getXrpBalance(sender.address)} XRP`)
 console.log(`Wallet1: ${wallet1.address}, Balance: ${await client.getXrpBalance(wallet1.address)} XRP`)
@@ -25,7 +28,7 @@ console.log(`Wallet2: ${wallet2.address}, Balance: ${await client.getXrpBalance(
 
 // Create inner transactions  --------------------------------------------
 // REQUIRED: Inner transactions MUST have the tfInnerBatchTxn flag (0x40000000).
-// This marks them as part of a batch (allows Fee: 0 and empty SigningPubKey).
+// This marks them as part of a batch (requires Fee: 0 and empty SigningPubKey).
 
 // Transaction 1
 const payment1 = {
@@ -66,7 +69,7 @@ xrpl.validate(batchTx)
 console.log("\n=== Submitting Batch transaction... ===")
 const submitResponse = await client.submitAndWait(batchTx, {
   wallet: sender,
-  // "autofill" will automatically add Fee: "0" and SigningPubKey: "".
+  // "autofill" will automatically add Fee: "0" and SigningPubKey: "" to inner transactions.
   autofill: true
 })
 
@@ -74,6 +77,7 @@ const submitResponse = await client.submitAndWait(batchTx, {
 if (submitResponse.result.meta.TransactionResult !== "tesSUCCESS") {
   const resultCode = submitResponse.result.meta.TransactionResult
   console.warn(`\nTransaction failed with result code ${resultCode}`)
+  await client.disconnect()
   process.exit(1)
 }
 console.log("\nBatch transaction submitted successfully!")
@@ -103,6 +107,7 @@ for (let i = 0; i < rawTransactions.length; i++) {
 }
 if (hasFailure) {
   console.error("\n--- Error: One or more inner transactions failed. ---")
+  await client.disconnect()
   process.exit(1)
 }
 

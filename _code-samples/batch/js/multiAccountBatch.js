@@ -13,11 +13,18 @@ const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233/")
 await client.connect()
 
 // Create and fund wallets
-console.log("=== Funding new wallets from faucet... ===")
-const { wallet: alice } = await client.fundWallet()
-const { wallet: bob } = await client.fundWallet()
-const { wallet: charlie } = await client.fundWallet()
-const { wallet: thirdPartyWallet } = await client.fundWallet()
+console.log("=== Funding new wallets from faucet... ===");
+const [
+  { wallet: alice },
+  { wallet: bob },
+  { wallet: charlie },
+  { wallet: thirdPartyWallet },
+] = await Promise.all([
+  client.fundWallet(),
+  client.fundWallet(),
+  client.fundWallet(),
+  client.fundWallet(),
+]);
 
 console.log(`Alice: ${alice.address}, Balance: ${await client.getXrpBalance(alice.address)} XRP`)
 console.log(`Bob: ${bob.address}, Balance: ${await client.getXrpBalance(bob.address)} XRP`)
@@ -26,7 +33,7 @@ console.log(`Third-party wallet: ${thirdPartyWallet.address}, Balance: ${await c
 
 // Create inner transactions  --------------------------------------------
 // REQUIRED: Inner transactions MUST have the tfInnerBatchTxn flag (0x40000000).
-// This marks them as part of a batch (allows Fee: 0 and empty SigningPubKey).
+// This marks them as part of a batch (requires Fee: 0 and empty SigningPubKey).
 
 // Transaction 1: Charlie pays Alice
 const charliePayment = {
@@ -63,8 +70,8 @@ console.log(JSON.stringify(batchTx, null, 2))
 // Validate the transaction structure
 xrpl.validate(batchTx)
 
-// Set the expected number of signers for this transaction.
-// "autofill" will automatically add Fee: "0" and SigningPubKey: "".
+// Set the expected number of signers, which is 2 (Bob and Charlie) in this case, for this transaction. 
+// "autofill" will automatically add Fee: "0" and SigningPubKey: "" to inner transactions.
 const autofilledBatchTx = await client.autofill(batchTx, 2)
 
 // Gather batch signatures --------------------------------
@@ -91,6 +98,7 @@ const submitResponse = await client.submitAndWait(combinedSignedTx,
 if (submitResponse.result.meta.TransactionResult !== "tesSUCCESS") {
   const resultCode = submitResponse.result.meta.TransactionResult
   console.warn(`\nTransaction failed with result code ${resultCode}`)
+  await client.disconnect()
   process.exit(1)
 }
 
@@ -121,6 +129,7 @@ for (let i = 0; i < rawTransactions.length; i++) {
 }
 if (hasFailure) {
   console.error("\n--- Error: One or more inner transactions failed. ---")
+  await client.disconnect()
   process.exit(1)
 }
 
