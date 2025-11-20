@@ -1,13 +1,11 @@
 ---
-html: log_level.html
-parent: logging-and-data-management-methods.html
 seo:
-    description: Get or modify log verbosity.
+   description: Get or modify log verbosity.
 labels:
-  - Data Retention
+   - Data Retention
 ---
 # log_level
-[[Source]](https://github.com/XRPLF/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LogLevel.cpp "Source")
 
 The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 
@@ -21,10 +19,10 @@ An example of the request format:
 {% tab label="WebSocket" %}
 ```json
 {
-    "id": "ll1",
-    "command": "log_level",
-    "severity": "debug",
-    "partition": "PathRequest"
+   "id": "ll1",
+   "command": "log_level",
+   "severity": "debug",
+   "partition": "PathRequest"
 }
 ```
 {% /tab %}

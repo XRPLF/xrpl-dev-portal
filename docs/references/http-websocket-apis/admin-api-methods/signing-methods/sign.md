@@ -1,13 +1,11 @@
 ---
-html: sign.html # watch for clashes w/ this filename
-parent: signing-methods.html
 seo:
     description: Cryptographically sign a transaction.
 labels:
-  - Transaction Sending
+    - Transaction Sending
 ---
 # sign
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SignHandler.cpp "Source")
 
 The `sign` method takes a [transaction in JSON format](../../../protocol/transactions/index.md) and a [seed value](../../../../concepts/accounts/cryptographic-keys.md), and returns a signed binary representation of the transaction. To contribute one signature to a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md), use the [sign_for method][] instead.
 

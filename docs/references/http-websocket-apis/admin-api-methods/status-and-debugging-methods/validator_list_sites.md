@@ -1,14 +1,12 @@
 ---
-html: validator_list_sites.html
-parent: status-and-debugging-methods.html
 seo:
     description: Get information about sites that publish validator lists.
 labels:
-  - Core Server
-  - Blockchain
+    - Core Server
+    - Blockchain
 ---
 # validator_list_sites
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidatorListSites.cpp "Source")
 
 The `validator_list_sites` command returns status information of sites serving validator lists.
 
