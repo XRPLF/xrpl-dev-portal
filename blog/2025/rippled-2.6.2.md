@@ -4,7 +4,7 @@ date: "2025-11-19"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 2.6.2
-    description: rippled version 2.6.2 is now available. This version contains a new amendment and critical bug fix.
+    description: rippled version 2.6.2 is now available. This version contains a new amendment and a critical bug fix.
 labels:
     - rippled Release Notes
 markdown:
