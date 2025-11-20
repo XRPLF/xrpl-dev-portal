@@ -65,7 +65,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code                | Description |
 |:--------------------------|:------------|
-| `tecDIR_FULL`             | The sender owns too many items in the ledger already. |
+| `tecDIR_FULL`             | The sender owns too many items in the ledger already.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecINSUFFICIENT_RESERVE` | The sender does not have enough XRP to meet the [reserve requirement](/docs/concepts/accounts/reserves.md) of creating a new Delegate ledger entry. |
 | `tecNO_PERMISSION`        | At least one permission in the `Permissions` list is not delegatable. See [Permission Values](../../data-types/permission-values.md) for which permissions are not delegatable. |
 | `tecNO_TARGET`            | The account specified in the `Authorize` field does not exist in the ledger. |

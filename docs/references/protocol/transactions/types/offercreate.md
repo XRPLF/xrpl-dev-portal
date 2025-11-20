@@ -58,7 +58,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 
 | Error Code               | Description                                       |
 |:-------------------------|:--------------------------------------------------|
-| `tecDIR_FULL`            | The owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already. |
+| `tecDIR_FULL`            | The owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecEXPIRED`             | The transaction specifies an `Expiration` time that has already passed. |
 | `tecFROZEN`              | The transaction involves a token on a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) trust line (including local and global freezes). The `TakerPays` (buy amount) token has been deep-frozen by the issuer. |
 | `tecINSUF_RESERVE_OFFER` | The owner does not have enough XRP to meet the reserve requirement of adding a new offer ledger entry, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an offer ledger entry for the remainder.) |

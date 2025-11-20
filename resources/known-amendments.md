@@ -742,6 +742,19 @@ Changes the way Checks transactions affect account metadata, so that Checks are 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
 
+### fixDirectoryLimit
+[fixDirectoryLimit]: #fixdirectorylimit
+
+| Amendment    | fixdirectorylimit |
+|:-------------|:----------------------|
+| Amendment ID | 41765F664A8D67FF03DDB1C1A893DE6273690BA340A6C2B07C8D29D0DD013D3A |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment removes the directory page limit. Object reserve requirements provide enough incentive to avoid creating unnecessary objects on the XRP Ledger.
+
+
 ### fixDisallowIncomingV1
 [fixDisallowIncomingV1]: #fixdisallowincomingv1
 
