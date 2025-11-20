@@ -13,7 +13,7 @@ markdown:
 ---
 # Introducing XRP Ledger version 2.6.2
 
-Version 2.6.2 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds a new `fixDirectoryLimit` amendment and critical bug fix.
+Version 2.6.2 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds a new `fixDirectoryLimit` amendment and a critical bug fix.
 
 
 ## Action Required
