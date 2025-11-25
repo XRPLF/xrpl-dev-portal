@@ -924,6 +924,19 @@ Without this fix, a user can unintentionally "black hole" their account by setti
 With this amendment enabled, a SetRegularKey transaction cannot set the regular key to match the master key; such a transaction results in the transaction code `temBAD_REGKEY`. Additionally, this amendment changes the signature verification code so that accounts which _already_ have their regular key set to match their master key can send transactions successfully using the key pair.
 
 
+### fixMPTDeliveredAmount
+[fixMPTDeliveredAmount]: #fixmptdeliveredamount
+
+| Amendment    | fixMPTDeliveredAmount |
+|:-------------|:----------------|
+| Amendment ID | AB8D932A5F338903FE5BCBD80B611FFED70839ABA3170E9CE01D947C0EDEDCF2 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adds missing `DeliveredAmount` or `delivered_amount` metadata fields from direct MPT `Payment` transactions.
+
+
 ### fixNFTokenDirV1
 [fixNFTokenDirV1]: #fixnftokendirv1
 
