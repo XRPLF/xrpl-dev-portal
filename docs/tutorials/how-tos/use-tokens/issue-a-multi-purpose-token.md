@@ -96,7 +96,7 @@ The metadata you provide is what distinguishes your token from other MPTs. Defin
 
 {% /tabs %}
 
-The metadata schema defined in XLS-89 supports both long field names (`ticker`, `name`, `desc`) and compact short keys (`t`, `n`, `d`). To save space on the ledger, it’s recommended to use short key names. The MPT metadata field has a 1024-byte limit, so using compact keys allows you to include more information.
+The metadata schema supports both long field names (`ticker`, `name`, `desc`) and compact short keys (`t`, `n`, `d`). To save space on the ledger, it’s recommended to use short key names. This is because the metadata field has a 1024-byte limit, so using compact keys allows you to include more information.
 
 The SDK libraries provide utility functions to encode or decode the metadata for you, so you don't have to. If long field names are provided in the JSON, the **encoding utility function** automatically shortens them to their compact key equivalents before encoding. Similarly, when decoding, the **decoding utility function** converts the short keys back to their respective long names.
 
@@ -126,9 +126,9 @@ To issue the MPT, create an `MPTokenIssuanceCreate` transaction object with the 
 |:------------------- |:------ |
 | `TransactionType`   | The type of transaction, in this case `MPTokenIssuanceCreate`. |
 | `Account`           | The wallet address of the account that is issuing the MPT, in this case the `issuer`. |
-| `AssetScale`        | The number of decimal places for the token (for example, `4` means amounts are divided by `10,000`). |
+| `AssetScale`        | Where to put the decimal place when displaying amounts of this MPT. This is set to `4` for this example. |
 | `MaximumAmount`     | The maximum supply of the token to be issued. |
-| `TransferFee`       | The transfer fee (if any) to charge for token transfers. In this example it is set to `0`. |
+| `TransferFee`       | The transfer fee to charge for transferring the token. In this example it is set to `0`. |
 | `Flags`             | Flags to set token permissions. For this example, the following flags are configured: <ul><li>**Can Transfer**: A holder can transfer the T-bill MPT to another account.</li><li>**Can Trade**: A holder can trade the T-bill MPT with another account.</li></ul>See [MPTokenIssuanceCreate Flags](../../../references/protocol/transactions/types/mptokenissuancecreate.md#mptokenissuancecreate-flags) for all available flags. |
 | `MPTokenMetadata`   | The hex-encoded metadata for the token. |
 
