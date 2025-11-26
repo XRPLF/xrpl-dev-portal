@@ -221,7 +221,7 @@ const PaymentsPage: React.FC = () => {
             
           </div>
           <div className="text-content">
-            <h6 className="eyebrow mb-3 text-large">
+            <h6 className="eyebrow mb-3 subhead-sm-r">
               {translate("Payments")}
             </h6>
             <h2 className="h4 h2-sm mb-10">

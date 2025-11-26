@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Link } from '@redocly/theme/components/Link/Link';
-import { PageGrid, PageGridCol, PageGridRow } from "shared/components/page-grid";
+import { PageGrid, PageGridCol, PageGridRow } from "shared/components/PageGrid/page-grid";
 
 export const frontmatter = {
   seo: {
