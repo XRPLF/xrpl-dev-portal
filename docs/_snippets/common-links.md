@@ -248,6 +248,13 @@
 [UNLModify pseudo-transaction]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
 [UNLModify pseudo-transactions]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
 [UNLModify]: /docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
+[Vault entry]: /docs/references/protocol/ledger-data/ledger-entry-types/vault.md
+[VaultCreate transaction]: /docs/references/protocol/transactions/types/vaultcreate.md
+[VaultDelete transaction]: /docs/references/protocol/transactions/types/vaultdelete.md
+[VaultDeposit transaction]: /docs/references/protocol/transactions/types/vaultdeposit.md
+[VaultSet transaction]: /docs/references/protocol/transactions/types/vaultset.md
+[VaultWithdraw transaction]: /docs/references/protocol/transactions/types/vaultwithdraw.md
+[VaultClawback transaction]: /docs/references/protocol/transactions/types/vaultclawback.md
 [XChainAddAccountCreateAttestation transaction]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainAddAccountCreateAttestation transactions]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
 [XChainAddAccountCreateAttestation]: /docs/references/protocol/transactions/types/xchainaddaccountcreateattestation.md
@@ -447,5 +454,7 @@
 [validator_list_sites method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
 [validators command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
 [validators method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
+[vault_info command]: /docs/references/http-websocket-apis/public-api-methods/vault-methods/vault_info.md
+[vault_info method]: /docs/references/http-websocket-apis/public-api-methods/vault-methods/vault_info.md
 [wallet_propose command]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
 [wallet_propose method]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md

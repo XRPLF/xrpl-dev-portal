@@ -984,6 +984,54 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4
  -->
 
 
+### Get Vault Entry
+
+Retrieve a `Vault` object from the ledger. This is similar to the [vault_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
+
+_(Requires the [SingleAssetVault amendment][] {% not-enabled /%}.)_
+
+| Field        | Type             | Description           |
+|:-------------|:-----------------|:----------------------|
+| `vault`      | String           | The [ledger entry ID](../../../protocol/ledger-data/common-fields.md#ledger-entry-id) of a [Vault](../../../protocol/ledger-data/ledger-entry-types/vault.md) object to retrieve. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_vault_entry",
+    "command": "ledger_entry",
+    "vault": "45E6742527EDE6A2B537AE8A77B8D8CCFEFE115A22B3BF664A39407631F9A166",
+    "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "vault": "45E6742527EDE6A2B537AE8A77B8D8CCFEFE115A22B3BF664A39407631F9A166",
+            "ledger_index": "validated"
+        }
+    ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "vault": "45E6742527EDE6A2B537AE8A77B8D8CCFEFE115A22B3BF664A39407631F9A166", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+<!-- TODO: Add when deployed to Devnet/Testnet -->
+<!-- {% try-it method="ledger_entry-single-asset-vault" server="testnet" /%} -->
+
 ## Response Format
 
 The response follows the [standard format][], with a successful result containing the following fields:

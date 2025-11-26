@@ -39,7 +39,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 |:------------------------------|:----------|:------------------|:----------|:-------------|
 | `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this [account](../../../../concepts/accounts/index.md). |
 | `AccountTxnID`                | String    | UInt256           | No        | The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the [`AccountTxnID` transaction field](../../transactions/common-fields.md#accounttxnid). To enable it, send an [AccountSet transaction with the `asfAccountTxnID` flag enabled](../../transactions/types/accountset.md#accountset-flags). |
-| `AMMID`                       | String    | UInt256           | No        | {% amendment-disclaimer name="AMM" /%} The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM AccountRoot; always omitted on non-AMM accounts. |
+| `AMMID`                       | String    | UInt256           | No        | {% amendment-disclaimer name="AMM" /%} The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md) AccountRoot; always omitted on non-AMM accounts. |
 | `Balance`                     | String    | Amount            | No        | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |
 | `BurnedNFTokens`              | Number    | UInt32            | No        | How many total of this account's issued [non-fungible tokens](../../../../concepts/tokens/nfts/index.md) have been burned. This number is always equal or less than `MintedNFTokens`. |
 | `Domain`                      | String    | Blob              | No        | A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/include/xrpl/protocol/Protocol.h#L98) |
@@ -54,15 +54,18 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `PreviousTxnLgrSeq`           | Number    | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `RegularKey`                  | String    | AccountID         | No        | The address of a [key pair](../../../../concepts/accounts/cryptographic-keys.md) that can be used to sign transactions for this account instead of the master key. Use a [SetRegularKey transaction][] to change this value. |
 | `Sequence`                    | Number    | UInt32            | Yes       | The [sequence number](../../data-types/basic-data-types.md#account-sequence) of the next valid transaction for this account. |
-| `TicketCount`                 | Number    | UInt32            | No        | How many [Tickets](../../../../concepts/accounts/tickets.md) this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. {% amendment-disclaimer name="TicketBatch" /%} |
-| `TickSize`                    | Number    | UInt8             | No        | How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. {% amendment-disclaimer name="TickSize" /%} |
+| `TicketCount`                 | Number    | UInt32            | No        | How many [Tickets](../../../../concepts/accounts/tickets.md) this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. _(Added by the [TicketBatch amendment][].)_ |
+| `TickSize`                    | Number    | UInt8             | No        | How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Added by the [TickSize amendment][].)_ |
 | `TransferRate`                | Number    | UInt32            | No        | A [transfer fee](../../../../concepts/tokens/fungible-tokens/transfer-fees.md) to charge other users for sending currency issued by this account to each other. |
+| `VaultID`                     | String    | UInt256           | No        | _(Requires the [SingleAssetVault amendment][] {% not-enabled /%}.)_ The ID of the `Vault` entry associated with this account. Set during account creation; cannot be modified. If present, indicates that this is a special Vault [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md) AccountRoot; always omitted on non-Vault accounts. |
 | `WalletLocator`               | String    | UInt256           | No        | An arbitrary 256-bit value that users can set. |
 | `WalletSize`                  | Number    | UInt32            | No        | Unused. (The code supports this field but there is no way to set it.) |
 
-## Special AMM AccountRoot Entries
+## Special AMM AccountRoot (Pseudo-Account)
 
-Automated Market Makers use an AccountRoot ledger entry to issue their LP Tokens and hold the assets in the AMM pool, and an [AMM ledger entry](amm.md) for tracking some of the details of the AMM. The address of an AMM's AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:
+{% amendment-disclaimer name="AMM" /%}
+
+Automated Market Makers use an AccountRoot ledger entry (pseudo-account) to issue their LP Tokens and hold the assets in the AMM pool, and an [AMM ledger entry](amm.md) for tracking some of the details of the AMM. The address of an AMM's AccountRoot is randomized so that users cannot identify and fund the address in advance of the AMM being created. Unlike normal accounts, AMM AccountRoot objects are created with the following settings:
 
 - `lsfDisableMaster` **enabled** and no means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.
 - `lsfDepositAuth` **enabled** and no accounts preauthorized. This ensures that the only way to add money to the AMM Account is using the [AMMDeposit transaction][].
@@ -77,7 +80,21 @@ In addition, the following special rules apply to an AMM's AccountRoot entry:
 
 Other than those exceptions, these accounts are like ordinary accounts; the LP Tokens they issue behave like other [tokens](../../../../concepts/tokens/index.md) except that those tokens can also be used in AMM-related transactions. You can check an AMM's balances and the history of transactions that affected it the same way you would with a regular account.
 
-{% amendment-disclaimer name="AMM" /%}
+## Special Vault AccountRoot (Pseudo-Account)
+
+_(Requires the [SingleAssetVault amendment][] {% not-enabled /%}.)_
+
+Vaults use an AccountRoot ledger entry (pseudo-account) to issue their shares and hold the assets deposited into the vault, and a [Vault entry][] for tracking the vault's configuration and state. The address of a vault's AccountRoot is randomized so that users cannot identify and fund the address in advance of the vault being created. Unlike normal accounts, vault AccountRoot objects are created with the following settings:
+
+- `lsfDisableMaster` **enabled** and no means of authorizing transactions. This ensures no one can control the account directly, and it cannot send transactions.
+- `lsfDepositAuth` **enabled** and no accounts pre-authorized. This ensures that the only way to add money to the vault's AccountRoot is using the [VaultDeposit transaction][].
+- `lsfDefaultRipple` **enabled**. This enables rippling for the vault's pseudo-account.
+
+In addition, the following special rules apply to a Vault's AccountRoot entry:
+
+- The vault owner account must pay one [incremental owner reserve](../../../../concepts/accounts/reserves#base-reserve-and-owner-reserve) (currently {% $env.PUBLIC_OWNER_RESERVE %}) when creating the vault to cover the pseudo-account.
+- The `Sequence` number is always `0` and never changes, preventing the pseudo-account from submitting transactions.
+- A pseudo-account is automatically deleted when the vault is deleted, and cannot exist independently of a Vault entry.
 
 ## AccountRoot Flags
 
@@ -105,7 +122,7 @@ AccountRoot objects can have the following flags combined in the `Flags` field:
 
 ## {% $frontmatter.seo.title %} Reserve
 
-The [reserve](../../../../concepts/accounts/reserves.md) for an AccountRoot entry is the base reserve, currently {% $env.PUBLIC_BASE_RESERVE %}, except in the case of a special AMM AccountRoot.
+The [reserve](../../../../concepts/accounts/reserves.md) for an AccountRoot entry is the base reserve, currently {% $env.PUBLIC_BASE_RESERVE %}, except in the case of a special AMM or Vault AccountRoot.
 
 This XRP cannot be sent to others but it can be burned as part of the [transaction cost][].
 
@@ -117,6 +134,9 @@ The ID of an AccountRoot entry is the [SHA-512Half][] of the following values, c
 * The AccountID of the account
 
 ## See Also
+
+- **Concepts:**
+  - [Pseudo-Accounts](../../../../concepts/accounts/pseudo-accounts.md)
 
 - **Transactions:**
   - [AccountSet transaction][]
