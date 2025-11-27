@@ -229,7 +229,7 @@ export default function XrpOverview() {
                     className="mw-100 mb-2 invertible-img"
                     src={briefcaseIcon}
                   />
-                  <h6 className="fs-4-5">
+                  <h6 className="subhead-sm-r">
                     {translate("Financial Institutions")}
                   </h6>
                   <p className="">
@@ -244,7 +244,7 @@ export default function XrpOverview() {
                     className="mw-100 mb-2 invertible-img"
                     src={userIcon}
                   />
-                  <h6 className="fs-4-5">
+                  <h6 className="subhead-sm-r">
                     {translate("Individual Consumers")}
                   </h6>
                   <p>
@@ -361,7 +361,7 @@ export default function XrpOverview() {
               </h5>
               <ul className={`nav nav-grid-lg cols-of-${totalCols}`} id="wallets">
                 <li className="nav-item nav-grid-head">
-                  <h6 className="fs-4-5">{translate("Software Wallets")}</h6>
+                  <h6 className="subhead-sm-r">{translate("Software Wallets")}</h6>
                 </li>
                 {softwallets.map((wallet) => (
                   <li key={wallet.id} className="nav-item">
@@ -381,7 +381,7 @@ export default function XrpOverview() {
                   </li>
                 ))}
                 <li className="nav-item nav-grid-head">
-                  <h6 className="fs-4-5">{translate("Hardware Wallets")}</h6>
+                  <h6 className="subhead-sm-r">{translate("Hardware Wallets")}</h6>
                 </li>
                 {hardwallets.map((wallet) => (
                   <li className="nav-item" key={wallet.id}>
@@ -423,7 +423,7 @@ export default function XrpOverview() {
               </p>
               <div className="card-grid card-grid-2xN mb-10">
                 <div>
-                  <h6 className="fs-4-5">{translate("Spot Exchanges")}</h6>
+                  <h6 className="subhead-sm-r">{translate("Spot Exchanges")}</h6>
                   <p className="mb-0">
                     {translate(
                       "Spot exchanges allow people to buy and sell cryptocurrencies at current (spot) market rates."
@@ -431,7 +431,7 @@ export default function XrpOverview() {
                   </p>
                 </div>
                 <div>
-                  <h6 className="fs-4-5">
+                  <h6 className="subhead-sm-r">
                     {translate("Futures, Options and Swap Exchanges")}
                   </h6>
                   <p className="mb-0">
@@ -441,7 +441,7 @@ export default function XrpOverview() {
                   </p>
                 </div>
                 <div>
-                  <h6 className="fs-4-5">
+                  <h6 className="subhead-sm-r">
                     {translate("Custodial Exchanges")}
                   </h6>
                   <p className="mb-0">
@@ -451,7 +451,7 @@ export default function XrpOverview() {
                   </p>
                 </div>
                 <div>
-                  <h6 className="fs-4-5">
+                  <h6 className="subhead-sm-r">
                     {translate("Non-Custodial Exchanges")}
                   </h6>
                   <p className="mb-0">

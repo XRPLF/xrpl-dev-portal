@@ -9250,60 +9250,6 @@ p {
   line-height: 24px;
 }
 
-.fs-base {
-  font-size: 1rem;
-}
-
-.fs-3 {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-.fs-4-5 {
-  font-size: 1.125rem;
-}
-
-.fs-5 {
-  font-size: 1.25rem;
-}
-
-.fs-5-5 {
-  font-size: 1.375rem;
-}
-
-.fs-6 {
-  font-size: 1.5rem;
-}
-
-.normal {
-  font-weight: normal;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.text-largest {
-  font-size: 1.5rem;
-  font-weight: normal;
-}
-
-.text-large {
-  font-size: 1.125rem;
-}
-
-.text-small {
-  font-size: 0.875rem;
-}
-
-.text-smaller {
-  font-size: 0.75rem;
-}
-
-.text-smallest {
-  font-size: 0.625rem;
-}
-
 /* STYLIZED LINKS */
 .arrow-link {
   text-decoration: none;
@@ -11197,74 +11143,6 @@ button[disabled=disabled] {
   position: absolute;
   top: 0;
   right: 0;
-}
-
-/* TABLE STYLING */
-article table {
-  clear: right;
-  margin-bottom: 48px;
-}
-article table code {
-  word-break: normal;
-  white-space: nowrap;
-  overflow-wrap: normal;
-}
-article table th {
-  border-bottom: 2px solid #E0E0E1;
-}
-article table tr {
-  border-bottom: 1px solid #E0E0E1;
-}
-article table th, article table td {
-  padding: 0.2em;
-  vertical-align: text-top;
-}
-article table td:nth-child(1) {
-  font-weight: bold;
-}
-
-.landing-table th, .landing-table tr {
-  border-bottom: 2px solid #454549;
-}
-.landing-table td {
-  width: 33.33%;
-  padding: 16px 40px 16px 0;
-}
-.landing-table td:nth-child(1) {
-  font-weight: normal;
-}
-@media (max-width: 575.98px) {
-  .landing-table td {
-    font-size: 0.875rem;
-  }
-}
-.landing-table tr:last-child {
-  border-bottom: none;
-}
-.landing-table tbody td {
-  color: #E0E0E1;
-}
-
-.dblue {
-  color: #454549;
-}
-
-#overview-table td:nth-child(1) {
-  width: 40%;
-}
-#overview-table td:nth-child(2) {
-  width: 30%;
-}
-#overview-table tbody td {
-  padding: 2rem 0.75rem;
-}
-@media (max-width: 575.98px) {
-  #overview-table {
-    font-size: 0.875rem;
-  }
-  #overview-table thead .h4 {
-    font-size: 1.125rem;
-  }
 }
 
 /* TABLE STYLING */
@@ -15380,12 +15258,6 @@ main article .card-grid.card-grid-3xN:nth-of-type(3) .card:nth-child(9) .card-fo
 .landing article .children-display li a:hover,
 .landing article .curated-links li a:hover {
   text-decoration: underline;
-}
-.landing section:first-of-type h1:first-child, .landing section:first-of-type .h1:first-child {
-  font-family: "Tobias", "Noto Serif", monospace;
-  font-weight: 400;
-  margin-top: 0;
-  line-height: 1.2;
 }
 .landing .level-1,
 .landing .level-2 {
