@@ -1,18 +1,16 @@
 ---
-html: feature.html
-parent: status-and-debugging-methods.html
 seo:
     description: Get information about protocol amendments.
 labels:
-  - Blockchain
-  - Core Server
+    - Blockchain
+    - Core Server
 ---
 # feature
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Feature1.cpp "Source")
 
 The `feature` command returns information about [amendments](../../../../concepts/networks-and-servers/amendments.md) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](../../../../concepts/networks-and-servers/amendments.md#amendment-process).
 
-You can use the `feature` command to configure the server to vote against or in favor of an amendment. This change persists even if you restart the server. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}Updated in: rippled 1.7.0{% /badge %}
+You can use the `feature` command to configure the server to vote against or in favor of an amendment. This change persists even if you restart the server.
 
 _The `feature` method documented on this page is an [admin method](../index.md). For the non-admin version, see the [`feature` public API method](../../public-api-methods/server-info-methods/feature.md)._
 

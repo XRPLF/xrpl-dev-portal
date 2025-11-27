@@ -1,13 +1,11 @@
 ---
-html: peer_reservations_list.html
-parent: peer-management-methods.html
 seo:
     description: List reserved slots for specific peer servers.
 labels:
-  - Core Server
+    - Core Server
 ---
 # peer_reservations_list
-[[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
 
 The {% code-page-name /%} method lists [peer reservations][].
 
@@ -32,7 +30,7 @@ An example of the request format:
 {% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{% $frontmatter.seo.title %}"
+  "method": "{% $frontmatter.seo.title %}"
 }
 ```
 {% /tab %}

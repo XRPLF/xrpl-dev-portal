@@ -1,13 +1,11 @@
 ---
-html: get_counts.html
-parent: status-and-debugging-methods.html
 seo:
     description: Get statistics about the server's internals and memory usage.
 labels:
-  - Core Server
+    - Core Server
 ---
 # get_counts
-[[Source]](https://github.com/XRPLF/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/GetCounts.cpp "Source")
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 

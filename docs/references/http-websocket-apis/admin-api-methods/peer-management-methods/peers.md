@@ -1,13 +1,11 @@
 ---
-html: peers.html
-parent: peer-management-methods.html
 seo:
     description: Get information about the peer servers connected.
 labels:
-  - Core Server
+    - Core Server
 ---
 # peers
-[[Source]](https://github.com/XRPLF/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Peers.cpp "Source")
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one over the [Peer Protocol](../../../../concepts/networks-and-servers/peer-protocol.md), including information on their connection and sync status.
 
@@ -183,90 +181,90 @@ An example of a successful response:
 {% tab label="JSON-RPC" %}
 ```json
 {
-   "result" : {
-      "cluster" : {},
-      "peers" : [
-         {
-            "address" : "50.22.123.222:51235",
-            "complete_ledgers" : "32570 - 51815097",
-            "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-            "load" : 7,
-            "metrics" : {
-               "avg_bps_recv" : "1152",
-               "avg_bps_sent" : "332",
-               "total_bytes_recv" : "96601",
-               "total_bytes_sent" : "45322"
-            },
-            "public_key" : "n9LbkoB9ReSbaA9SGL317fm6CvjLcFG8hGoierLYfwiCDsEXHcP3",
-            "uptime" : 1,
-            "version" : "rippled-1.3.1"
-         },
-         {
-            "address" : "212.83.147.67:51235",
-            "complete_ledgers" : "51815014 - 51815040",
-            "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-            "load" : 1,
-            "metrics" : {
-               "avg_bps_recv" : "0",
-               "avg_bps_sent" : "1490",
-               "total_bytes_recv" : "18348",
-               "total_bytes_sent" : "46013"
-            },
-            "public_key" : "n94s5V53w1g4HdEdHdUU1FVrqHTVDbcb7bt44ib9JcM3c281LoDr",
-            "sanity" : "unknown",
-            "uptime" : 2,
-            "version" : "rippled-1.3.1"
-         },
-         {
-            "address" : "158.69.24.50:51235",
-            "complete_ledgers" : "51478098 - 51815098",
-            "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-            "load" : 55,
-            "metrics" : {
-               "avg_bps_recv" : "88080",
-               "avg_bps_sent" : "2703",
-               "total_bytes_recv" : "2786780",
-               "total_bytes_sent" : "89368"
-            },
-            "public_key" : "n9KfEhmmdxmjJdpbpRHGJ9ezoNzdyUepA11cT71jmq1fMDsZAcSh",
-            "uptime" : 3,
-            "version" : "rippled-1.3.1"
-         },
-         {
-            "address" : "[::ffff:174.64.99.193]:51235",
-            "complete_ledgers" : "51813091 - 51815091",
-            "latency" : 16000,
-            "ledger" : "CF72319DC762355C92BDD29E4CE066CEB03FF2A077A511D586B9FD7B74F55D94",
-            "load" : 325,
-            "metrics" : {
-               "avg_bps_recv" : "19012",
-               "avg_bps_sent" : "52053",
-               "total_bytes_recv" : "586809",
-               "total_bytes_sent" : "1678192"
-            },
-            "public_key" : "n9MH4Xu8FYPPoUFs679NQp7F6epFznM7x6bF4sAJWQvKkPBUHgd3",
-            "uptime" : 26,
-            "version" : "rippled-1.4.0-b8"
-         },
-         {
-            "address" : "[::ffff:94.237.45.66]:51235",
-            "complete_ledgers" : "51814966 - 51815093",
-            "latency" : 8773,
-            "ledger" : "61CF015A709122917B001367EE81E5E0D56E485A0BCAB53785A1CB830E0F9589",
-            "load" : 3522,
-            "metrics" : {
-               "avg_bps_recv" : "368875",
-               "avg_bps_sent" : "59308",
-               "total_bytes_recv" : "11558753",
-               "total_bytes_sent" : "2257872"
-            },
-            "public_key" : "n9Lg83FYh8YDivG9TcgXhq5Y3PwunmRqVfvibd19Ko9uu3DtqLBM",
-            "uptime" : 37,
-            "version" : "rippled-1.3.1"
-         }
-      ],
-      "status" : "success"
-   }
+  "result" : {
+    "cluster" : {},
+    "peers" : [
+        {
+          "address" : "50.22.123.222:51235",
+          "complete_ledgers" : "32570 - 51815097",
+          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+          "load" : 7,
+          "metrics" : {
+              "avg_bps_recv" : "1152",
+              "avg_bps_sent" : "332",
+              "total_bytes_recv" : "96601",
+              "total_bytes_sent" : "45322"
+          },
+          "public_key" : "n9LbkoB9ReSbaA9SGL317fm6CvjLcFG8hGoierLYfwiCDsEXHcP3",
+          "uptime" : 1,
+          "version" : "rippled-1.3.1"
+        },
+        {
+          "address" : "212.83.147.67:51235",
+          "complete_ledgers" : "51815014 - 51815040",
+          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+          "load" : 1,
+          "metrics" : {
+              "avg_bps_recv" : "0",
+              "avg_bps_sent" : "1490",
+              "total_bytes_recv" : "18348",
+              "total_bytes_sent" : "46013"
+          },
+          "public_key" : "n94s5V53w1g4HdEdHdUU1FVrqHTVDbcb7bt44ib9JcM3c281LoDr",
+          "sanity" : "unknown",
+          "uptime" : 2,
+          "version" : "rippled-1.3.1"
+        },
+        {
+          "address" : "158.69.24.50:51235",
+          "complete_ledgers" : "51478098 - 51815098",
+          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+          "load" : 55,
+          "metrics" : {
+              "avg_bps_recv" : "88080",
+              "avg_bps_sent" : "2703",
+              "total_bytes_recv" : "2786780",
+              "total_bytes_sent" : "89368"
+          },
+          "public_key" : "n9KfEhmmdxmjJdpbpRHGJ9ezoNzdyUepA11cT71jmq1fMDsZAcSh",
+          "uptime" : 3,
+          "version" : "rippled-1.3.1"
+        },
+        {
+          "address" : "[::ffff:174.64.99.193]:51235",
+          "complete_ledgers" : "51813091 - 51815091",
+          "latency" : 16000,
+          "ledger" : "CF72319DC762355C92BDD29E4CE066CEB03FF2A077A511D586B9FD7B74F55D94",
+          "load" : 325,
+          "metrics" : {
+              "avg_bps_recv" : "19012",
+              "avg_bps_sent" : "52053",
+              "total_bytes_recv" : "586809",
+              "total_bytes_sent" : "1678192"
+          },
+          "public_key" : "n9MH4Xu8FYPPoUFs679NQp7F6epFznM7x6bF4sAJWQvKkPBUHgd3",
+          "uptime" : 26,
+          "version" : "rippled-1.4.0-b8"
+        },
+        {
+          "address" : "[::ffff:94.237.45.66]:51235",
+          "complete_ledgers" : "51814966 - 51815093",
+          "latency" : 8773,
+          "ledger" : "61CF015A709122917B001367EE81E5E0D56E485A0BCAB53785A1CB830E0F9589",
+          "load" : 3522,
+          "metrics" : {
+              "avg_bps_recv" : "368875",
+              "avg_bps_sent" : "59308",
+              "total_bytes_recv" : "11558753",
+              "total_bytes_sent" : "2257872"
+          },
+          "public_key" : "n9Lg83FYh8YDivG9TcgXhq5Y3PwunmRqVfvibd19Ko9uu3DtqLBM",
+          "uptime" : 37,
+          "version" : "rippled-1.3.1"
+        }
+    ],
+    "status" : "success"
+  }
 }
 
 ```
@@ -278,90 +276,90 @@ Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 
 {
-   "result" : {
-      "cluster" : {},
-      "peers" : [
-         {
-            "address" : "50.22.123.222:51235",
-            "complete_ledgers" : "32570 - 51815097",
-            "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-            "load" : 7,
-            "metrics" : {
-               "avg_bps_recv" : "1152",
-               "avg_bps_sent" : "332",
-               "total_bytes_recv" : "96601",
-               "total_bytes_sent" : "45322"
-            },
-            "public_key" : "n9LbkoB9ReSbaA9SGL317fm6CvjLcFG8hGoierLYfwiCDsEXHcP3",
-            "uptime" : 1,
-            "version" : "rippled-1.3.1"
-         },
-         {
-            "address" : "212.83.147.67:51235",
-            "complete_ledgers" : "51815014 - 51815040",
-            "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-            "load" : 1,
-            "metrics" : {
-               "avg_bps_recv" : "0",
-               "avg_bps_sent" : "1490",
-               "total_bytes_recv" : "18348",
-               "total_bytes_sent" : "46013"
-            },
-            "public_key" : "n94s5V53w1g4HdEdHdUU1FVrqHTVDbcb7bt44ib9JcM3c281LoDr",
-            "sanity" : "unknown",
-            "uptime" : 2,
-            "version" : "rippled-1.3.1"
-         },
-         {
-            "address" : "158.69.24.50:51235",
-            "complete_ledgers" : "51478098 - 51815098",
-            "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-            "load" : 55,
-            "metrics" : {
-               "avg_bps_recv" : "88080",
-               "avg_bps_sent" : "2703",
-               "total_bytes_recv" : "2786780",
-               "total_bytes_sent" : "89368"
-            },
-            "public_key" : "n9KfEhmmdxmjJdpbpRHGJ9ezoNzdyUepA11cT71jmq1fMDsZAcSh",
-            "uptime" : 3,
-            "version" : "rippled-1.3.1"
-         },
-         {
-            "address" : "[::ffff:174.64.99.193]:51235",
-            "complete_ledgers" : "51813091 - 51815091",
-            "latency" : 16000,
-            "ledger" : "CF72319DC762355C92BDD29E4CE066CEB03FF2A077A511D586B9FD7B74F55D94",
-            "load" : 325,
-            "metrics" : {
-               "avg_bps_recv" : "19012",
-               "avg_bps_sent" : "52053",
-               "total_bytes_recv" : "586809",
-               "total_bytes_sent" : "1678192"
-            },
-            "public_key" : "n9MH4Xu8FYPPoUFs679NQp7F6epFznM7x6bF4sAJWQvKkPBUHgd3",
-            "uptime" : 26,
-            "version" : "rippled-1.4.0-b8"
-         },
-         {
-            "address" : "[::ffff:94.237.45.66]:51235",
-            "complete_ledgers" : "51814966 - 51815093",
-            "latency" : 8773,
-            "ledger" : "61CF015A709122917B001367EE81E5E0D56E485A0BCAB53785A1CB830E0F9589",
-            "load" : 3522,
-            "metrics" : {
-               "avg_bps_recv" : "368875",
-               "avg_bps_sent" : "59308",
-               "total_bytes_recv" : "11558753",
-               "total_bytes_sent" : "2257872"
-            },
-            "public_key" : "n9Lg83FYh8YDivG9TcgXhq5Y3PwunmRqVfvibd19Ko9uu3DtqLBM",
-            "uptime" : 37,
-            "version" : "rippled-1.3.1"
-         }
-      ],
-      "status" : "success"
-   }
+  "result" : {
+    "cluster" : {},
+    "peers" : [
+        {
+          "address" : "50.22.123.222:51235",
+          "complete_ledgers" : "32570 - 51815097",
+          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+          "load" : 7,
+          "metrics" : {
+              "avg_bps_recv" : "1152",
+              "avg_bps_sent" : "332",
+              "total_bytes_recv" : "96601",
+              "total_bytes_sent" : "45322"
+          },
+          "public_key" : "n9LbkoB9ReSbaA9SGL317fm6CvjLcFG8hGoierLYfwiCDsEXHcP3",
+          "uptime" : 1,
+          "version" : "rippled-1.3.1"
+        },
+        {
+          "address" : "212.83.147.67:51235",
+          "complete_ledgers" : "51815014 - 51815040",
+          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+          "load" : 1,
+          "metrics" : {
+              "avg_bps_recv" : "0",
+              "avg_bps_sent" : "1490",
+              "total_bytes_recv" : "18348",
+              "total_bytes_sent" : "46013"
+          },
+          "public_key" : "n94s5V53w1g4HdEdHdUU1FVrqHTVDbcb7bt44ib9JcM3c281LoDr",
+          "sanity" : "unknown",
+          "uptime" : 2,
+          "version" : "rippled-1.3.1"
+        },
+        {
+          "address" : "158.69.24.50:51235",
+          "complete_ledgers" : "51478098 - 51815098",
+          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+          "load" : 55,
+          "metrics" : {
+              "avg_bps_recv" : "88080",
+              "avg_bps_sent" : "2703",
+              "total_bytes_recv" : "2786780",
+              "total_bytes_sent" : "89368"
+          },
+          "public_key" : "n9KfEhmmdxmjJdpbpRHGJ9ezoNzdyUepA11cT71jmq1fMDsZAcSh",
+          "uptime" : 3,
+          "version" : "rippled-1.3.1"
+        },
+        {
+          "address" : "[::ffff:174.64.99.193]:51235",
+          "complete_ledgers" : "51813091 - 51815091",
+          "latency" : 16000,
+          "ledger" : "CF72319DC762355C92BDD29E4CE066CEB03FF2A077A511D586B9FD7B74F55D94",
+          "load" : 325,
+          "metrics" : {
+              "avg_bps_recv" : "19012",
+              "avg_bps_sent" : "52053",
+              "total_bytes_recv" : "586809",
+              "total_bytes_sent" : "1678192"
+          },
+          "public_key" : "n9MH4Xu8FYPPoUFs679NQp7F6epFznM7x6bF4sAJWQvKkPBUHgd3",
+          "uptime" : 26,
+          "version" : "rippled-1.4.0-b8"
+        },
+        {
+          "address" : "[::ffff:94.237.45.66]:51235",
+          "complete_ledgers" : "51814966 - 51815093",
+          "latency" : 8773,
+          "ledger" : "61CF015A709122917B001367EE81E5E0D56E485A0BCAB53785A1CB830E0F9589",
+          "load" : 3522,
+          "metrics" : {
+              "avg_bps_recv" : "368875",
+              "avg_bps_sent" : "59308",
+              "total_bytes_recv" : "11558753",
+              "total_bytes_sent" : "2257872"
+          },
+          "public_key" : "n9Lg83FYh8YDivG9TcgXhq5Y3PwunmRqVfvibd19Ko9uu3DtqLBM",
+          "uptime" : 37,
+          "version" : "rippled-1.3.1"
+        }
+    ],
+    "status" : "success"
+  }
 }
 ```
 {% /tab %}
