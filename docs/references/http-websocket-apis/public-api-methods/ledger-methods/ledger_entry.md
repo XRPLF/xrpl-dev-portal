@@ -47,8 +47,8 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
     - [Get DepositPreauth Entry](#get-depositpreauth-entry)
     - [Get Ticket Entry](#get-ticket-entry)
     - [Get NFT Page](#get-nft-page)
-    - [Get MPT Issuance Object](#get-mpt-issuance-object)
-    - [Get MPToken Object](#get-mptoken-object)
+    - [Get MPT Issuance Entry](#get-mpt-issuance-entry)
+    - [Get MPToken Entry](#get-mptoken-entry)
   - [Response Format](#response-format)
   - [Possible Errors](#possible-errors)
 
@@ -883,7 +883,7 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 {% try-it method="ledger_entry-nft-page" /%}
 
-### Get MPT Issuance Object
+### Get MPT Issuance Entry
 
 Return an `MPTokenIssuance` object.
 
@@ -900,7 +900,7 @@ Return an `MPTokenIssuance` object.
 {
     "id": "example_get_mpt_issuance",
     "command": "ledger_entry",
-    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
     "ledger_index": "validated"
 }
 ```
@@ -911,7 +911,7 @@ Return an `MPTokenIssuance` object.
 {
   "method": "ledger_entry",
   "params": [{
-    "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E",
+    "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
     "ledger_index": "validated"
   }]
 }
@@ -920,16 +920,14 @@ Return an `MPTokenIssuance` object.
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "mpt_issuance": "000004C463C52827307480341125DA0577DEFC38405B0E3E", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "ledger_index": "validated" }'
 ```
 {% /tab %}
 {% /tabs %}
 
-<!-- TODO: add try-it for MPT issuance
-{% try-it method="ledger_entry-mpt_issuance" /%}
--->
+{% try-it method="ledger_entry-mptokenissuance" /%}
 
-### Get MPToken Object
+### Get MPToken Entry
 
 Return an `MPToken` object.
 
@@ -946,11 +944,11 @@ Return an `MPToken` object.
 {% tab label="WebSocket" %}
 ```json
 {
-    "id": "example_get_mpt_issuance",
+    "id": "example_get_mpt",
     "command": "ledger_entry",
     "mptoken": {
-      "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
-      "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
+      "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+      "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
     }
 }
 ```
@@ -963,8 +961,8 @@ Return an `MPToken` object.
     "params": [
         {
             "mptoken":{
-                "mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D",
-                "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"
+                "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+                "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
             } 
         }
     ]
@@ -974,15 +972,12 @@ Return an `MPToken` object.
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "000002DFA4D893CFBC4DC6AE877EB585F90A3B47528B958D", "account":"r33kves44ksufkHSGg3M6GPPAsoVHEN8C1"} }'
+rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"} }'
 ```
 {% /tab %}
 {% /tabs %}
 
-<!-- TODO: make a try-it link for MPT object
 {% try-it method="ledger_entry-mptoken" /%}
- -->
-
 
 ## Response Format
 
