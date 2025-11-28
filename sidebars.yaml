@@ -327,6 +327,7 @@
               expanded: false
               items:
                 - page: docs/tutorials/how-tos/use-tokens/issue-a-fungible-token.md
+                - page: docs/tutorials/how-tos/use-tokens/issue-a-multi-purpose-token.md
                 - page: docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md
                 - page: docs/tutorials/how-tos/use-tokens/enable-no-freeze.md
                 - page: docs/tutorials/how-tos/use-tokens/enact-global-freeze.md
