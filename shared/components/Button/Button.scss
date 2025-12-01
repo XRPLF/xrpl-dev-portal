@@ -720,9 +720,8 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
 // =============================================================================
-// Dark Mode Styles - Primary Button Only
+// Dark Mode Styles - Primary and Secondary Buttons
 // =============================================================================
-// All styles remain the same as light mode EXCEPT focus state uses white outline
 
 html.dark {
   .bds-btn--primary {
@@ -755,6 +754,134 @@ html.dark {
         outline: $bds-btn-focus-border-width solid $white;
         outline-offset: 2px;
         padding: 8px 16px;
+      }
+    }
+  }
+
+  // =============================================================================
+  // Dark Mode Styles - Secondary Button (Green variant only)
+  // =============================================================================
+  // Based on Figma design: Enabled (Green 300), Hover/Focus (Green 200 text, Green 500 bg, Green 200 border),
+  // Active (Green 300), Disabled (Gray 400)
+  // Note: Black variant (.bds-btn--black.bds-btn--secondary) uses its own styles defined above
+
+  .bds-btn--secondary:not(.bds-btn--black) {
+    // ---------------------------------------------------------------------------
+    // Enabled State - Desktop
+    // ---------------------------------------------------------------------------
+    color: $green-300;              // Green 300 - Text
+    border-color: $green-300;       // Green 300 - Border
+
+    // Set hover background color for ::before pseudo-element
+    &::before {
+      background-color: $green-500; // Green 500 - Hover/Focus background
+    }
+
+    // ---------------------------------------------------------------------------
+    // Hover State - Desktop
+    // ---------------------------------------------------------------------------
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      border-color: $green-200;     // Green 200 - Border
+      padding: 6px 11px 6px 18px;
+      gap: 22px;
+      // Background animation handled by shared ::before in base class
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      border-color: $green-200;     // Green 200 - Border
+    }
+
+    // ---------------------------------------------------------------------------
+    // Focus State (keyboard navigation) - Desktop
+    // ---------------------------------------------------------------------------
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      border: none;
+      outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border, maintain hover padding
+      padding: 6px 13px 6px 20px;
+      gap: 22px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      border: none;
+      outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border
+      padding: 6px 20px;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Active State (being pressed) - Desktop
+    // ---------------------------------------------------------------------------
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-300;            // Green 300 - Text
+      border-color: $green-300;     // Green 300 - Border
+      padding: 6px 17px 6px 18px;
+      gap: 16px;
+      // Background reset handled by shared ::before in base class
+    }
+
+    // ---------------------------------------------------------------------------
+    // Disabled State
+    // ---------------------------------------------------------------------------
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Gray 400 - Text
+      background-color: transparent;
+      border-color: $gray-400;      // Gray 400 - Border
+      cursor: not-allowed;
+      pointer-events: none;
+
+      // Disable background animation on disabled
+      &::before {
+        display: none;
+      }
+    }
+
+    // ---------------------------------------------------------------------------
+    // Tablet & Mobile Responsive Styles (≤1023px)
+    // ---------------------------------------------------------------------------
+    @media (max-width: 1023px) {
+      // Hover state - smaller screens (with icon)
+      &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        border-color: $green-200;   // Green 200 - Border
+        padding: 6px 8px 6px 14px;
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (with icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        border: none;
+        outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+        outline-offset: 2px;
+        // Add 2px padding to compensate for removed border, maintain hover padding
+        padding: 6px 10px 6px 16px;
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (no icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        color: $green-200;          // Green 200 - Text
+        border: none;
+        outline: $bds-btn-focus-border-width solid $white; // White - Outline (per Figma design)
+        outline-offset: 2px;
+        // Add 2px padding to compensate for removed border
+        padding: 6px 16px;
+      }
+
+      // Active state - smaller screens (maintains default padding)
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $green-300;          // Green 300 - Text
+        border-color: $green-300;   // Green 300 - Border
+        padding: 6px 13px 6px 14px;
+        gap: 16px;
       }
     }
   }
