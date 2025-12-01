@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from 'shared/components/Button';
-import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/page-grid';
+import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 
 export const frontmatter = {
   seo: {
@@ -11,16 +11,8 @@ export const frontmatter = {
 
 export default function ButtonShowcase() {
   const [clickCount, setClickCount] = React.useState(0);
-  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleClick = () => {
-    setClickCount((prev) => prev + 1);
-  };
-
-  const handleAsyncClick = async () => {
-    setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsLoading(false);
     setClickCount((prev) => prev + 1);
   };
 
@@ -96,13 +88,93 @@ export default function ButtonShowcase() {
             <Button variant="primary" onClick={handleClick} className="me-4 mb-4">
               Hover Me
             </Button>
-            <Button variant="primary" onClick={handleClick} className="me-4 mb-4">
+            <Button variant="primary" onClick={handleClick} className="mb-4">
               Focus Me (Tab)
             </Button>
-            <Button variant="primary" onClick={handleClick} className="mb-4">
-              Active State (Click)
+          </div>
+        </div>
+      </section>
+
+      {/* Black Color Variant */}
+      <section className="container-new py-26">
+        <div className="d-flex flex-column-reverse">
+          <h2 className="h4 mb-8">Black Color Variant</h2>
+          <h6 className="eyebrow mb-3">Color Theme</h6>
+        </div>
+        <p className="mb-4 text-muted">
+          Primary buttons can use a black color theme for dark backgrounds or alternative styling needs.
+        </p>
+        <div className="d-flex flex-wrap align-items-center">
+          <Button variant="primary" color="black" onClick={handleClick} className="me-4 mb-4">
+            Black Primary
+          </Button>
+          <Button variant="primary" color="black" onClick={handleClick} className="me-4 mb-4">
+            Dark Button
+          </Button>
+          <Button variant="primary" color="black" onClick={handleClick} className="mb-4">
+            Get Started
+          </Button>
+        </div>
+      </section>
+
+      {/* Black Variant States */}
+      <section className="container-new py-26">
+        <div className="d-flex flex-column-reverse">
+          <h2 className="h4 mb-8">Black Variant States</h2>
+          <h6 className="eyebrow mb-3">Interactive States</h6>
+        </div>
+        <PageGrid>
+          <PageGridRow>
+            <PageGridCol span={{ base: 4, lg: 6 }}>
+              <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
+                <h5 className="mb-4">Enabled State</h5>
+                <p className="mb-4 text-muted">Black background with white text.</p>
+                <Button variant="primary" color="black" onClick={handleClick}>
+                  Enabled Button
+                </Button>
+              </div>
+            </PageGridCol>
+            <PageGridCol span={{ base: 4, lg: 6 }}>
+              <div className="p-6-sm p-10-until-sm br-8" style={{ backgroundColor: '#f5f5f7' }}>
+                <h5 className="mb-4">Disabled State</h5>
+                <p className="mb-4 text-muted">Same disabled styling as green variant.</p>
+                <Button variant="primary" color="black" disabled>
+                  Disabled Button
+                </Button>
+              </div>
+            </PageGridCol>
+          </PageGridRow>
+        </PageGrid>
+        <div className="mt-10">
+          <h5 className="mb-4">Hover & Focus States</h5>
+          <p className="mb-4 text-muted">
+            Hover over the buttons or use Tab to focus them. Notice the background darkens slightly on hover.
+          </p>
+          <div className="d-flex flex-wrap">
+            <Button variant="primary" color="black" onClick={handleClick} className="me-4 mb-4">
+              Hover Me
+            </Button>
+            <Button variant="primary" color="black" onClick={handleClick} className="mb-4">
+              Focus Me (Tab)
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Green vs Black Comparison */}
+      <section className="container-new py-26">
+        <div className="d-flex flex-column-reverse">
+          <h2 className="h4 mb-8">Green vs Black Comparison</h2>
+          <h6 className="eyebrow mb-3">Color Themes</h6>
+        </div>
+        <p className="mb-4 text-muted">Compare the green (default) and black color themes side by side.</p>
+        <div className="d-flex flex-wrap align-items-center">
+          <Button variant="primary" color="green" onClick={handleClick} className="me-4 mb-4">
+            Green Primary
+          </Button>
+          <Button variant="primary" color="black" onClick={handleClick} className="mb-4">
+            Black Primary
+          </Button>
         </div>
       </section>
 
@@ -147,23 +219,6 @@ export default function ButtonShowcase() {
             Regular Button
           </Button>
         </form>
-      </section>
-
-      {/* Loading State Simulation */}
-      <section className="container-new py-26">
-        <div className="d-flex flex-column-reverse">
-          <h2 className="h4 mb-8">Async Actions</h2>
-          <h6 className="eyebrow mb-3">Loading States</h6>
-        </div>
-        <p className="mb-4 text-muted">
-          Example of handling async actions. The button is disabled during the async operation.
-        </p>
-        <Button variant="primary" disabled={isLoading} onClick={handleAsyncClick}>
-          {isLoading ? 'Loading...' : 'Async Action'}
-        </Button>
-        {clickCount > 0 && (
-          <p className="mt-4 text-muted">Async action completed {clickCount} time{clickCount !== 1 ? 's' : ''}</p>
-        )}
       </section>
 
       {/* Responsive Behavior */}
@@ -252,9 +307,14 @@ export default function ButtonShowcase() {
           <pre style={{ margin: 0, overflow: 'auto' }}>
             <code>{`import { Button } from 'shared/components/Button';
 
-// Basic usage
+// Basic usage (green theme - default)
 <Button variant="primary" onClick={handleClick}>
   Get Started
+</Button>
+
+// Black color theme
+<Button variant="primary" color="black" onClick={handleClick}>
+  Dark Button
 </Button>
 
 // Disabled state
@@ -305,49 +365,90 @@ export default function ButtonShowcase() {
           </PageGridRow>
         </PageGrid>
         <div className="mt-10">
-          <h5 className="mb-4">State Colors</h5>
-          <table className="table" style={{ width: '100%' }}>
-            <thead>
-              <tr>
-                <th>State</th>
-                <th>Text Color</th>
-                <th>Background Color</th>
-                <th>Border</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Enabled</td>
-                <td>#141414 (Neutral Black)</td>
-                <td>#21E46B (Green 300)</td>
-                <td>None</td>
-              </tr>
-              <tr>
-                <td>Hover</td>
-                <td>#141414 (Neutral Black)</td>
-                <td>#70EE97 (Green 200)</td>
-                <td>None</td>
-              </tr>
-              <tr>
-                <td>Focus</td>
-                <td>#141414 (Neutral Black)</td>
-                <td>#70EE97 (Green 200)</td>
-                <td>2px solid #141414</td>
-              </tr>
-              <tr>
-                <td>Active</td>
-                <td>#141414 (Neutral Black)</td>
-                <td>#21E46B (Green 300)</td>
-                <td>None</td>
-              </tr>
-              <tr>
-                <td>Disabled</td>
-                <td>#838386 (Gray 500)</td>
-                <td>#E0E0E1 (Gray 200)</td>
-                <td>None</td>
-              </tr>
-            </tbody>
-          </table>
+          <h5 className="mb-4">State Colors - Green Theme</h5>
+          <div style={{ width: '100%', backgroundColor: '#FFFFFF' }}>
+            {/* Header */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '2px solid #E0E0E1' }}>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>State</div>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>Text Color</div>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>Background Color</div>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>Border</div>
+            </div>
+            {/* Rows */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Enabled</div>
+              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
+              <div style={{ padding: '12px' }}>#21E46B (Green 300)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Hover</div>
+              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
+              <div style={{ padding: '12px' }}>#70EE97 (Green 200)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Focus</div>
+              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
+              <div style={{ padding: '12px' }}>#70EE97 (Green 200)</div>
+              <div style={{ padding: '12px' }}>2px solid #141414</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Active</div>
+              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
+              <div style={{ padding: '12px' }}>#21E46B (Green 300)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+              <div style={{ padding: '12px' }}>Disabled</div>
+              <div style={{ padding: '12px' }}>#838386 (Gray 500)</div>
+              <div style={{ padding: '12px' }}>#E0E0E1 (Gray 200)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-10">
+          <h5 className="mb-4">State Colors - Black Theme</h5>
+          <div style={{ width: '100%', backgroundColor: '#FFFFFF' }}>
+            {/* Header */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '2px solid #E0E0E1' }}>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>State</div>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>Text Color</div>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>Background Color</div>
+              <div style={{ padding: '12px', fontWeight: 'bold' }}>Border</div>
+            </div>
+            {/* Rows */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Enabled</div>
+              <div style={{ padding: '12px' }}>#FFFFFF (White)</div>
+              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Hover</div>
+              <div style={{ padding: '12px' }}>#FFFFFF (White)</div>
+              <div style={{ padding: '12px' }}>rgba(20, 20, 20, 0.8) (80% Black)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Focus</div>
+              <div style={{ padding: '12px' }}>#FFFFFF (White)</div>
+              <div style={{ padding: '12px' }}>rgba(20, 20, 20, 0.8) (80% Black)</div>
+              <div style={{ padding: '12px' }}>2px solid #141414</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderBottom: '1px solid #E0E0E1' }}>
+              <div style={{ padding: '12px' }}>Active</div>
+              <div style={{ padding: '12px' }}>#FFFFFF (White)</div>
+              <div style={{ padding: '12px' }}>#141414 (Neutral Black)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+              <div style={{ padding: '12px' }}>Disabled</div>
+              <div style={{ padding: '12px' }}>#838386 (Gray 500)</div>
+              <div style={{ padding: '12px' }}>#E0E0E1 (Gray 200)</div>
+              <div style={{ padding: '12px' }}>None</div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -2,13 +2,16 @@
 // Brand Design System - Scalable button component
 // 
 // Naming Convention: BEM with 'bds' namespace
-// .bds-btn              - Base button
-// .bds-btn--primary     - Primary variant modifier
-// .bds-btn--secondary   - (Future) Secondary variant
+// .bds-btn              - Base button (shared layout, typography, icon animation)
+// .bds-btn--primary     - Primary variant (solid background)
+// .bds-btn--secondary   - Secondary variant (outline style)
+// .bds-btn--green       - Green color theme (default)
+// .bds-btn--black       - Black color theme
 // .bds-btn--tertiary    - (Future) Tertiary variant
 // .bds-btn__label       - Label element
-// .bds-btn__icon        - Icon element
+// .bds-btn__icon        - Icon element (inherits color via currentColor)
 // .bds-btn--disabled    - Disabled state modifier
+// .bds-btn--no-icon     - No icon modifier
 
 @import "../../../styles/colors";
 
@@ -16,27 +19,58 @@
 // Design Tokens
 // =============================================================================
 
-// Colors - Primary Button
+// Neutral Black (used across variants)
+$bds-btn-neutral-black: #141414;
+$bds-btn-neutral-black-80: rgba(20, 20, 20, 0.8);    // 80% black for hover
+$bds-btn-neutral-black-15: rgba(20, 20, 20, 0.15);   // 15% black for secondary hover
+
+// Colors - Green Primary Button
 $bds-btn-primary-bg: $green-300;           // #21E46B - Enabled
 $bds-btn-primary-bg-hover: $green-200;     // #70EE97 - Hover/Focus
-$bds-btn-primary-text: #141414;            // Neutral Black
-$bds-btn-primary-focus-border: #141414;    // Black focus ring
+$bds-btn-primary-text: $bds-btn-neutral-black;
+$bds-btn-primary-focus-border: $bds-btn-neutral-black;
 
-// Colors - Disabled State
+// Colors - Black Primary Button
+$bds-btn-primary-black-bg: $bds-btn-neutral-black;
+$bds-btn-primary-black-bg-hover: $bds-btn-neutral-black-80;
+$bds-btn-primary-black-text: $white;
+
+// Colors - Disabled State (shared)
 $bds-btn-disabled-bg: $gray-200;           // #E0E0E1
 $bds-btn-disabled-text: $gray-500;         // #838386
+
+// Colors - Green Secondary Button
+$bds-btn-secondary-text: $green-400;              // #0DAA3E - Enabled
+$bds-btn-secondary-text-hover: $green-500;        // #078139 - Hover/Focus
+$bds-btn-secondary-bg: transparent;
+$bds-btn-secondary-bg-hover: $green-100;          // #EAFCF1 - Hover/Focus fill
+$bds-btn-secondary-border: $green-400;            // #0DAA3E - Enabled
+$bds-btn-secondary-border-hover: $green-500;      // #078139 - Hover/Focus
+$bds-btn-secondary-disabled-text: $gray-400;      // Disabled text
+$bds-btn-secondary-disabled-border: $gray-400;    // Disabled border
+
+// Colors - Black Secondary Button
+$bds-btn-secondary-black-text: $bds-btn-neutral-black;
+$bds-btn-secondary-black-bg-hover: $bds-btn-neutral-black-15;
+$bds-btn-secondary-black-border: $bds-btn-neutral-black;
 
 // Spacing
 $bds-btn-border-radius: 100px;
 $bds-btn-focus-border-width: 2px;
 
 // Transitions
+// Motion: Duration 150ms, Custom bezier for smooth in-out feel
 $bds-btn-transition-duration: 150ms;
-$bds-btn-transition-timing: ease-in-out;
+$bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 // =============================================================================
 // Base Button Styles
 // =============================================================================
+// 
+// SHARED HOVER ANIMATION:
+// - Background fills from bottom-to-top using ::before pseudo-element
+// - On unhover: background empties top-to-bottom
+// - Each variant defines its own ::before background-color
 
 .bds-btn {
   // Layout
@@ -44,6 +78,7 @@ $bds-btn-transition-timing: ease-in-out;
   align-items: center;
   justify-content: center;
   max-height: 40px;
+  
   // Typography - Label R token
   font-family: 'Booton', sans-serif;
   font-size: 16px;
@@ -59,14 +94,55 @@ $bds-btn-transition-timing: ease-in-out;
   // Interaction
   cursor: pointer;
   
-  // Transitions
-  transition-property: background-color, border-color, transform, padding, gap;
-  transition-duration: $bds-btn-transition-duration;
-  transition-timing-function: $bds-btn-transition-timing;
+  // Required for pseudo-element background animation (shared)
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  
+  // Transitions (shared)
+  transition: color $bds-btn-transition-duration $bds-btn-transition-timing,
+              border-color $bds-btn-transition-duration $bds-btn-transition-timing,
+              padding $bds-btn-transition-duration $bds-btn-transition-timing,
+              gap $bds-btn-transition-duration $bds-btn-transition-timing,
+              transform $bds-btn-transition-duration $bds-btn-transition-timing;
+
+  // Background fill pseudo-element (shared structure)
+  // Each variant sets its own background-color
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    
+    // Start scaled to 0 from bottom - fills bottom-to-top on hover
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform $bds-btn-transition-duration $bds-btn-transition-timing;
+  }
+
+  // Hover/Focus state - animate background fill (shared)
+  &:hover:not(:disabled):not(.bds-btn--disabled),
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+    &::before {
+      transform: scaleY(1);
+    }
+  }
+
+  // Active state - reset background (shared)
+  &:active:not(:disabled):not(.bds-btn--disabled) {
+    &::before {
+      transform: scaleY(0);
+    }
+  }
 
   // Label element
   &__label {
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
   }
 
   // Icon element (SVG container)
@@ -77,6 +153,8 @@ $bds-btn-transition-timing: ease-in-out;
     transition: opacity $bds-btn-transition-duration $bds-btn-transition-timing;
     color: currentColor;
     overflow: visible;
+    position: relative;
+    z-index: 1;
   }
 
   // Arrow horizontal line - shrinks on hover/focus
@@ -104,11 +182,17 @@ $bds-btn-transition-timing: ease-in-out;
 // =============================================================================
 // Primary Variant
 // =============================================================================
+// HOVER ANIMATION: Background fills bottom-to-top (Green 300 → Green 200)
 
 .bds-btn--primary {
   // Default/Enabled state colors
   color: $bds-btn-primary-text;
   background-color: $bds-btn-primary-bg;
+
+  // Set the hover background color for ::before pseudo-element
+  &::before {
+    background-color: $bds-btn-primary-bg-hover;
+  }
 
   // Desktop padding and gap (default - ≥1024px)
   padding: 8px 19px 8px 20px;
@@ -123,51 +207,44 @@ $bds-btn-transition-timing: ease-in-out;
   // Hover State (with icon)
   // ---------------------------------------------------------------------------
   &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
-    background-color: $bds-btn-primary-bg-hover;
-    // Adjust padding to compensate for icon gap change (maintains button width)
+    // Background animation handled by shared ::before pseudo-element
     padding: 8px 13px 8px 20px;
     gap: 22px;
   }
 
-  // Hover State (no icon) - only change background, keep padding stable
-  &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-    background-color: $bds-btn-primary-bg-hover;
-  }
+  // Hover State (no icon) - background animation only
+  // (no padding/gap changes needed)
 
   // ---------------------------------------------------------------------------
   // Focus State (keyboard navigation) - with icon
   // ---------------------------------------------------------------------------
   &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
-    background-color: $bds-btn-primary-bg-hover;
-    border: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
-    outline: none;
-    // Compensate for 2px border on all sides
-    padding: 6px 11px 6px 18px;
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    padding: 8px 13px 8px 20px;
     gap: 22px;
   }
 
-  // Focus State (no icon) - only change background and add border
+  // Focus State (no icon) - only add outline
   &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-    background-color: $bds-btn-primary-bg-hover;
-    border: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
-    outline: none;
-    // Compensate for 2px border but keep symmetric padding
-    padding: 6px 17px 6px 18px;
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    padding: 8px 20px;
   }
 
   // ---------------------------------------------------------------------------
   // Active State (being pressed)
   // ---------------------------------------------------------------------------
   &:active:not(:disabled):not(.bds-btn--disabled) {
-    background-color: $bds-btn-primary-bg;
-    transform: scale(0.98);
     // Maintains default padding and gap
     padding: 8px 19px 8px 20px;
     gap: 16px;
+    // Background reset handled by shared ::before in base class
   }
 
   // ---------------------------------------------------------------------------
   // Disabled State
+  // Note: Icon is hidden via component logic when disabled
   // ---------------------------------------------------------------------------
   &:disabled,
   &.bds-btn--disabled {
@@ -176,8 +253,9 @@ $bds-btn-transition-timing: ease-in-out;
     cursor: not-allowed;
     pointer-events: none;
 
-    .bds-btn__icon {
-      opacity: 0.5;
+    // Disable background animation on disabled
+    &::before {
+      display: none;
     }
   }
 
@@ -200,20 +278,19 @@ $bds-btn-transition-timing: ease-in-out;
       gap: 21px;
     }
 
-    // Hover state - smaller screens (no icon)
-    &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-      background-color: $bds-btn-primary-bg-hover;
-    }
-
     // Focus state - smaller screens (with icon)
     &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
-      padding: 6px 8px 6px 14px;
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      padding: 8px 10px 8px 16px;
       gap: 21px;
     }
 
     // Focus state - smaller screens (no icon)
     &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-      padding: 6px 13px 6px 14px;
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      padding: 8px 16px;
     }
 
     // Active state - smaller screens (maintains default padding)
@@ -225,13 +302,228 @@ $bds-btn-transition-timing: ease-in-out;
 }
 
 // =============================================================================
+// Secondary Variant
+// =============================================================================
+// HOVER ANIMATION: Background fills bottom-to-top (Transparent → Green 100)
+// Text/arrow color fades from green-400 to green-500 via currentColor
+// Animation structure inherited from base .bds-btn class
+
+.bds-btn--secondary {
+  // Default/Enabled state
+  color: $bds-btn-secondary-text;
+  background-color: transparent;
+  border: 2px solid $bds-btn-secondary-border;
+
+  // Set the hover background color for ::before pseudo-element
+  &::before {
+    background-color: $bds-btn-secondary-bg-hover;
+  }
+
+  // Desktop padding and gap (≥1024px) - compensate for 2px border
+  padding: 6px 17px 6px 18px;
+  gap: 16px;
+
+  // No icon - symmetric padding
+  &.bds-btn--no-icon {
+    padding: 6px 18px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Hover State
+  // ---------------------------------------------------------------------------
+  &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-secondary-text-hover;
+    border-color: $bds-btn-secondary-border-hover;
+    padding: 6px 11px 6px 18px;
+    gap: 22px;
+    // Background animation handled by shared ::before in base class
+  }
+
+  &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-secondary-text-hover;
+    border-color: $bds-btn-secondary-border-hover;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Focus State (keyboard navigation)
+  // ---------------------------------------------------------------------------
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    color: $bds-btn-secondary-text-hover;
+    border: none;
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    // Add 2px padding to compensate for removed border, maintain hover padding
+    padding: 6px 13px 6px 20px;
+    gap: 22px;
+  }
+
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    color: $bds-btn-secondary-text-hover;
+    border: none;
+    outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline-offset: 2px;
+    // Add 2px padding to compensate for removed border
+    padding: 6px 20px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Active State (being pressed)
+  // ---------------------------------------------------------------------------
+  &:active:not(:disabled):not(.bds-btn--disabled) {
+    color: $bds-btn-secondary-text;
+    border-color: $bds-btn-secondary-border;
+    padding: 6px 17px 6px 18px;
+    gap: 16px;
+    // Background reset handled by shared ::before in base class
+  }
+
+  // ---------------------------------------------------------------------------
+  // Disabled State
+  // Note: Icon is hidden via component logic when disabled
+  // ---------------------------------------------------------------------------
+  &:disabled,
+  &.bds-btn--disabled {
+    color: $bds-btn-secondary-disabled-text;
+    background-color: transparent;
+    border-color: $bds-btn-secondary-disabled-border;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    // Disable background animation on disabled
+    &::before {
+      display: none;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tablet & Mobile Responsive Styles (≤1023px)
+  // ---------------------------------------------------------------------------
+  @media (max-width: 1023px) {
+    padding: 6px 13px 6px 14px;
+    gap: 16px;
+
+    &.bds-btn--no-icon {
+      padding: 6px 14px;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      padding: 6px 8px 6px 14px;
+      gap: 21px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      border: none;
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border, maintain hover padding
+      padding: 6px 10px 6px 16px;
+      gap: 21px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      border: none;
+      outline: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+      outline-offset: 2px;
+      // Add 2px padding to compensate for removed border
+      padding: 6px 16px;
+    }
+
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      padding: 6px 13px 6px 14px;
+      gap: 16px;
+    }
+  }
+}
+
+// =============================================================================
+// Color Themes
+// =============================================================================
+// Green theme (.bds-btn--green) is the default - no overrides needed.
+// Black theme (.bds-btn--black) overrides colors for both variants.
+
+// Black theme - overrides colors for primary and secondary variants
+.bds-btn--black {
+  // ---------------------------------------------------------------------------
+  // Black Primary Button
+  // ---------------------------------------------------------------------------
+  &.bds-btn--primary {
+    color: $bds-btn-primary-black-text;
+    background-color: $bds-btn-primary-black-bg;
+
+    // Set hover background for ::before pseudo-element
+    &::before {
+      background-color: $bds-btn-primary-black-bg-hover;
+    }
+
+    // Hover state - background animates, colors stay same
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text;
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text;
+      outline: $bds-btn-focus-border-width solid $bds-btn-neutral-black;
+      outline-offset: 2px;
+    }
+
+    // Active state
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text;
+    }
+
+    // Disabled state - same as green disabled
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $bds-btn-disabled-text;
+      background-color: $bds-btn-disabled-bg;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Black Secondary Button
+  // ---------------------------------------------------------------------------
+  &.bds-btn--secondary {
+    color: $bds-btn-secondary-black-text;
+    border-color: $bds-btn-secondary-black-border;
+
+    // Set hover background for ::before pseudo-element
+    &::before {
+      background-color: $bds-btn-secondary-black-bg-hover;
+    }
+
+    // Hover state - text stays black, background fills with 15% black
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-secondary-black-text;
+      border-color: $bds-btn-secondary-black-border;
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-secondary-black-text;
+      border: none;
+      outline: $bds-btn-focus-border-width solid $bds-btn-neutral-black;
+      outline-offset: 2px;
+    }
+
+    // Active state
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-secondary-black-text;
+      border-color: $bds-btn-secondary-black-border;
+    }
+
+    // Disabled state
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $bds-btn-disabled-text;
+      border-color: $bds-btn-secondary-disabled-border;
+    }
+  }
+}
+
+// =============================================================================
 // Future Variants (Placeholder structure for scalability)
 // =============================================================================
-
-// .bds-btn--secondary {
-//   // Outline style: green stroke, transparent fill
-//   // States: enabled, hover, focus, active, disabled
-// }
 
 // .bds-btn--tertiary {
 //   // Text-only style: green text, no border/fill

@@ -11159,29 +11159,52 @@ button[disabled=disabled] {
   border: none;
   border-radius: 100px;
   cursor: pointer;
-  transition-property: background-color, border-color, transform, padding, gap;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in-out;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98), border-color 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98), padding 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98), gap 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98), transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+}
+.bds-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+}
+.bds-btn:hover:not(:disabled):not(.bds-btn--disabled)::before, .bds-btn:focus-visible:not(:disabled):not(.bds-btn--disabled)::before {
+  transform: scaleY(1);
+}
+.bds-btn:active:not(:disabled):not(.bds-btn--disabled)::before {
+  transform: scaleY(0);
 }
 .bds-btn__label {
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 .bds-btn__icon {
   width: 15px;
   height: 14px;
   flex-shrink: 0;
-  transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
   color: currentColor;
   overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 .bds-btn__icon-line {
   transform-box: fill-box;
   transform-origin: right center;
   transform: scaleX(1);
-  transition: transform 150ms ease-in-out;
+  transition: transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 .bds-btn__icon-chevron {
-  transition: transform 150ms ease-in-out;
+  transition: transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 .bds-btn:hover:not(:disabled):not(.bds-btn--disabled) .bds-btn__icon-line, .bds-btn:focus-visible:not(:disabled):not(.bds-btn--disabled) .bds-btn__icon-line {
   transform: scaleX(0);
@@ -11190,6 +11213,11 @@ button[disabled=disabled] {
 .bds-btn--primary {
   color: #141414;
   background-color: #21E46B;
+}
+.bds-btn--primary::before {
+  background-color: #70EE97;
+}
+.bds-btn--primary {
   padding: 8px 19px 8px 20px;
   gap: 16px;
 }
@@ -11197,29 +11225,21 @@ button[disabled=disabled] {
   padding: 8px 20px;
 }
 .bds-btn--primary:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
-  background-color: #70EE97;
   padding: 8px 13px 8px 20px;
   gap: 22px;
 }
-.bds-btn--primary:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-  background-color: #70EE97;
-}
 .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
-  background-color: #70EE97;
-  border: 2px solid #141414;
-  outline: none;
-  padding: 6px 11px 6px 18px;
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+  padding: 8px 13px 8px 20px;
   gap: 22px;
 }
 .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-  background-color: #70EE97;
-  border: 2px solid #141414;
-  outline: none;
-  padding: 6px 17px 6px 18px;
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+  padding: 8px 20px;
 }
 .bds-btn--primary:active:not(:disabled):not(.bds-btn--disabled) {
-  background-color: #21E46B;
-  transform: scale(0.98);
   padding: 8px 19px 8px 20px;
   gap: 16px;
 }
@@ -11229,8 +11249,8 @@ button[disabled=disabled] {
   cursor: not-allowed;
   pointer-events: none;
 }
-.bds-btn--primary:disabled .bds-btn__icon, .bds-btn--primary.bds-btn--disabled .bds-btn__icon {
-  opacity: 0.5;
+.bds-btn--primary:disabled::before, .bds-btn--primary.bds-btn--disabled::before {
+  display: none;
 }
 @media (max-width: 1023px) {
   .bds-btn--primary {
@@ -11244,20 +11264,156 @@ button[disabled=disabled] {
     padding: 8px 10px 8px 16px;
     gap: 21px;
   }
-  .bds-btn--primary:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-    background-color: #70EE97;
-  }
   .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
-    padding: 6px 8px 6px 14px;
+    outline: 2px solid #141414;
+    outline-offset: 2px;
+    padding: 8px 10px 8px 16px;
     gap: 21px;
   }
   .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
-    padding: 6px 13px 6px 14px;
+    outline: 2px solid #141414;
+    outline-offset: 2px;
+    padding: 8px 16px;
   }
   .bds-btn--primary:active:not(:disabled):not(.bds-btn--disabled) {
     padding: 8px 15px 8px 16px;
     gap: 16px;
   }
+}
+
+.bds-btn--secondary {
+  color: #0DAA3E;
+  background-color: transparent;
+  border: 2px solid #0DAA3E;
+}
+.bds-btn--secondary::before {
+  background-color: #EAFCF1;
+}
+.bds-btn--secondary {
+  padding: 6px 17px 6px 18px;
+  gap: 16px;
+}
+.bds-btn--secondary.bds-btn--no-icon {
+  padding: 6px 18px;
+}
+.bds-btn--secondary:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+  color: #078139;
+  border-color: #078139;
+  padding: 6px 11px 6px 18px;
+  gap: 22px;
+}
+.bds-btn--secondary:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+  color: #078139;
+  border-color: #078139;
+}
+.bds-btn--secondary:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+  color: #078139;
+  border: none;
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+  padding: 6px 13px 6px 20px;
+  gap: 22px;
+}
+.bds-btn--secondary:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+  color: #078139;
+  border: none;
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+  padding: 6px 20px;
+}
+.bds-btn--secondary:active:not(:disabled):not(.bds-btn--disabled) {
+  color: #0DAA3E;
+  border-color: #0DAA3E;
+  padding: 6px 17px 6px 18px;
+  gap: 16px;
+}
+.bds-btn--secondary:disabled, .bds-btn--secondary.bds-btn--disabled {
+  color: #A2A2A4;
+  background-color: transparent;
+  border-color: #A2A2A4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.bds-btn--secondary:disabled::before, .bds-btn--secondary.bds-btn--disabled::before {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .bds-btn--secondary {
+    padding: 6px 13px 6px 14px;
+    gap: 16px;
+  }
+  .bds-btn--secondary.bds-btn--no-icon {
+    padding: 6px 14px;
+  }
+  .bds-btn--secondary:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    padding: 6px 8px 6px 14px;
+    gap: 21px;
+  }
+  .bds-btn--secondary:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    border: none;
+    outline: 2px solid #141414;
+    outline-offset: 2px;
+    padding: 6px 10px 6px 16px;
+    gap: 21px;
+  }
+  .bds-btn--secondary:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    border: none;
+    outline: 2px solid #141414;
+    outline-offset: 2px;
+    padding: 6px 16px;
+  }
+  .bds-btn--secondary:active:not(:disabled):not(.bds-btn--disabled) {
+    padding: 6px 13px 6px 14px;
+    gap: 16px;
+  }
+}
+
+.bds-btn--black.bds-btn--primary {
+  color: #FFFFFF;
+  background-color: #141414;
+}
+.bds-btn--black.bds-btn--primary::before {
+  background-color: rgba(20, 20, 20, 0.8);
+}
+.bds-btn--black.bds-btn--primary:hover:not(:disabled):not(.bds-btn--disabled) {
+  color: #FFFFFF;
+}
+.bds-btn--black.bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+  color: #FFFFFF;
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+}
+.bds-btn--black.bds-btn--primary:active:not(:disabled):not(.bds-btn--disabled) {
+  color: #FFFFFF;
+}
+.bds-btn--black.bds-btn--primary:disabled, .bds-btn--black.bds-btn--primary.bds-btn--disabled {
+  color: #838386;
+  background-color: #E0E0E1;
+}
+.bds-btn--black.bds-btn--secondary {
+  color: #141414;
+  border-color: #141414;
+}
+.bds-btn--black.bds-btn--secondary::before {
+  background-color: rgba(20, 20, 20, 0.15);
+}
+.bds-btn--black.bds-btn--secondary:hover:not(:disabled):not(.bds-btn--disabled) {
+  color: #141414;
+  border-color: #141414;
+}
+.bds-btn--black.bds-btn--secondary:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+  color: #141414;
+  border: none;
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+}
+.bds-btn--black.bds-btn--secondary:active:not(:disabled):not(.bds-btn--disabled) {
+  color: #141414;
+  border-color: #141414;
+}
+.bds-btn--black.bds-btn--secondary:disabled, .bds-btn--black.bds-btn--secondary.bds-btn--disabled {
+  color: #838386;
+  border-color: #A2A2A4;
 }
 
 /* TABLE STYLING */
