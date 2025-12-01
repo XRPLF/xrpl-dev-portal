@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from 'shared/components/Button';
-import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/page-grid';
+import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 
 export const frontmatter = {
   seo: {

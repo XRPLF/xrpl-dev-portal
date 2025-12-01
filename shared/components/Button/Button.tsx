@@ -2,7 +2,9 @@ import React from 'react';
 
 export interface ButtonProps {
   /** Button variant - determines visual style */
-  variant?: 'primary'; // Extensible: | 'secondary' | 'tertiary'
+  variant?: 'primary' | 'secondary';
+  /** Color theme - green (default) or black */
+  color?: 'green' | 'black';
   /** Button content/label */
   children: React.ReactNode;
   /** Click handler */
@@ -59,13 +61,16 @@ const ArrowIcon: React.FC = () => (
  * BDS Button Component
  * 
  * A scalable button component following the XRPL Brand Design System.
- * Currently supports the Primary variant with plans for Secondary and Tertiary.
+ * Supports Primary and Secondary variants with green (default) or black color themes.
  * 
  * @example
  * <Button variant="primary" onClick={handleClick}>Get Started</Button>
+ * <Button variant="secondary" onClick={handleClick}>Learn More</Button>
+ * <Button variant="primary" color="black" onClick={handleClick}>Dark Button</Button>
  */
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
+  color = 'green',
   children,
   onClick,
   disabled = false,
@@ -73,12 +78,16 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   showIcon = true,
 }) => {
+  // Hide icon when disabled (per design spec)
+  const shouldShowIcon = showIcon && !disabled;
+
   // Build class names using BEM with bds namespace
   const classNames = [
     'bds-btn',
     `bds-btn--${variant}`,
+    `bds-btn--${color}`,
     disabled ? 'bds-btn--disabled' : '',
-    !showIcon ? 'bds-btn--no-icon' : '',
+    !shouldShowIcon ? 'bds-btn--no-icon' : '',
     className,
   ]
     .filter(Boolean)
@@ -93,7 +102,7 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled}
     >
       <span className="bds-btn__label">{children}</span>
-      {showIcon && <ArrowIcon />}
+      {shouldShowIcon && <ArrowIcon />}
     </button>
   );
 };
