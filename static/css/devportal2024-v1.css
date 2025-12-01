@@ -11541,6 +11541,31 @@ button[disabled=disabled] {
   }
 }
 
+html.dark .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+  padding: 8px 13px 8px 20px;
+  gap: 22px;
+}
+html.dark .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+  padding: 8px 20px;
+}
+@media (max-width: 1023px) {
+  html.dark .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 2px;
+    padding: 8px 10px 8px 16px;
+    gap: 21px;
+  }
+  html.dark .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 2px;
+    padding: 8px 16px;
+  }
+}
+
 /* TABLE STYLING */
 article table {
   clear: right;

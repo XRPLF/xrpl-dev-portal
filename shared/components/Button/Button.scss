@@ -718,3 +718,44 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
     }
   }
 }
+
+// =============================================================================
+// Dark Mode Styles - Primary Button Only
+// =============================================================================
+// All styles remain the same as light mode EXCEPT focus state uses white outline
+
+html.dark {
+  .bds-btn--primary {
+    // Focus State (keyboard navigation) - with icon - Desktop
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      padding: 8px 13px 8px 20px;
+      gap: 22px;
+    }
+
+    // Focus State (no icon) - Desktop
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      padding: 8px 20px;
+    }
+
+    // Focus State (keyboard navigation) - with icon - Tablet & Mobile (≤1023px)
+    @media (max-width: 1023px) {
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        outline: $bds-btn-focus-border-width solid $white;
+        outline-offset: 2px;
+        padding: 8px 10px 8px 16px;
+        gap: 21px;
+      }
+
+      // Focus State (no icon) - Tablet & Mobile
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        outline: $bds-btn-focus-border-width solid $white;
+        outline-offset: 2px;
+        padding: 8px 16px;
+      }
+    }
+  }
+}
