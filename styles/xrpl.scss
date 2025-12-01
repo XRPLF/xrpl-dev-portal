@@ -85,6 +85,7 @@ $grid-breakpoints: (
 @import "_side-nav.scss";
 @import "_helpers.scss";
 @import "_buttons.scss";
+@import "../shared/components/Button/Button.scss";
 @import "_tables.scss";
 @import "_tables.scss";
 @import "_use-cases.scss";

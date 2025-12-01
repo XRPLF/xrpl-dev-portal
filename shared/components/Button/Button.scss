@@ -1,0 +1,239 @@
+// BDS Button Component Styles
+// Brand Design System - Scalable button component
+// 
+// Naming Convention: BEM with 'bds' namespace
+// .bds-btn              - Base button
+// .bds-btn--primary     - Primary variant modifier
+// .bds-btn--secondary   - (Future) Secondary variant
+// .bds-btn--tertiary    - (Future) Tertiary variant
+// .bds-btn__label       - Label element
+// .bds-btn__icon        - Icon element
+// .bds-btn--disabled    - Disabled state modifier
+
+@import "../../../styles/colors";
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Colors - Primary Button
+$bds-btn-primary-bg: $green-300;           // #21E46B - Enabled
+$bds-btn-primary-bg-hover: $green-200;     // #70EE97 - Hover/Focus
+$bds-btn-primary-text: #141414;            // Neutral Black
+$bds-btn-primary-focus-border: #141414;    // Black focus ring
+
+// Colors - Disabled State
+$bds-btn-disabled-bg: $gray-200;           // #E0E0E1
+$bds-btn-disabled-text: $gray-500;         // #838386
+
+// Spacing
+$bds-btn-border-radius: 100px;
+$bds-btn-focus-border-width: 2px;
+
+// Transitions
+$bds-btn-transition-duration: 150ms;
+$bds-btn-transition-timing: ease-in-out;
+
+// =============================================================================
+// Base Button Styles
+// =============================================================================
+
+.bds-btn {
+  // Layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 40px;
+  // Typography - Label R token
+  font-family: 'Booton', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.2px;
+  letter-spacing: 0px;
+  white-space: nowrap;
+  
+  // Border
+  border: none;
+  border-radius: $bds-btn-border-radius;
+  
+  // Interaction
+  cursor: pointer;
+  
+  // Transitions
+  transition-property: background-color, border-color, transform, padding, gap;
+  transition-duration: $bds-btn-transition-duration;
+  transition-timing-function: $bds-btn-transition-timing;
+
+  // Label element
+  &__label {
+    flex-shrink: 0;
+  }
+
+  // Icon element (SVG container)
+  &__icon {
+    width: 15px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: opacity $bds-btn-transition-duration $bds-btn-transition-timing;
+    color: currentColor;
+    overflow: visible;
+  }
+
+  // Arrow horizontal line - shrinks on hover/focus
+  &__icon-line {
+    transform-box: fill-box; // Makes transform-origin relative to element's bounding box
+    transform-origin: right center;
+    transform: scaleX(1);
+    transition: transform $bds-btn-transition-duration $bds-btn-transition-timing;
+  }
+
+  // Arrow chevron - stays visible, shifts via gap change
+  &__icon-chevron {
+    transition: transform $bds-btn-transition-duration $bds-btn-transition-timing;
+  }
+
+  // Hover state - shrink line for all button variants
+  &:hover:not(:disabled):not(.bds-btn--disabled),
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+    .bds-btn__icon-line {
+      transform: scaleX(0);
+    }
+  }
+}
+
+// =============================================================================
+// Primary Variant
+// =============================================================================
+
+.bds-btn--primary {
+  // Default/Enabled state colors
+  color: $bds-btn-primary-text;
+  background-color: $bds-btn-primary-bg;
+
+  // Desktop padding and gap (default - ≥1024px)
+  padding: 8px 19px 8px 20px;
+  gap: 16px;
+
+  // No icon - symmetric padding
+  &.bds-btn--no-icon {
+    padding: 8px 20px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Hover State (with icon)
+  // ---------------------------------------------------------------------------
+  &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    background-color: $bds-btn-primary-bg-hover;
+    // Adjust padding to compensate for icon gap change (maintains button width)
+    padding: 8px 13px 8px 20px;
+    gap: 22px;
+  }
+
+  // Hover State (no icon) - only change background, keep padding stable
+  &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    background-color: $bds-btn-primary-bg-hover;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Focus State (keyboard navigation) - with icon
+  // ---------------------------------------------------------------------------
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+    background-color: $bds-btn-primary-bg-hover;
+    border: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline: none;
+    // Compensate for 2px border on all sides
+    padding: 6px 11px 6px 18px;
+    gap: 22px;
+  }
+
+  // Focus State (no icon) - only change background and add border
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+    background-color: $bds-btn-primary-bg-hover;
+    border: $bds-btn-focus-border-width solid $bds-btn-primary-focus-border;
+    outline: none;
+    // Compensate for 2px border but keep symmetric padding
+    padding: 6px 17px 6px 18px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Active State (being pressed)
+  // ---------------------------------------------------------------------------
+  &:active:not(:disabled):not(.bds-btn--disabled) {
+    background-color: $bds-btn-primary-bg;
+    transform: scale(0.98);
+    // Maintains default padding and gap
+    padding: 8px 19px 8px 20px;
+    gap: 16px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Disabled State
+  // ---------------------------------------------------------------------------
+  &:disabled,
+  &.bds-btn--disabled {
+    color: $bds-btn-disabled-text;
+    background-color: $bds-btn-disabled-bg;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .bds-btn__icon {
+      opacity: 0.5;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Tablet & Mobile Responsive Styles (≤1023px)
+  // ---------------------------------------------------------------------------
+  @media (max-width: 1023px) {
+    // Default/Enabled padding for smaller screens
+    padding: 8px 15px 8px 16px;
+    gap: 16px;
+
+    // No icon - symmetric padding for smaller screens
+    &.bds-btn--no-icon {
+      padding: 8px 16px;
+    }
+
+    // Hover state - smaller screens (with icon)
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      padding: 8px 10px 8px 16px;
+      gap: 21px;
+    }
+
+    // Hover state - smaller screens (no icon)
+    &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      background-color: $bds-btn-primary-bg-hover;
+    }
+
+    // Focus state - smaller screens (with icon)
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      padding: 6px 8px 6px 14px;
+      gap: 21px;
+    }
+
+    // Focus state - smaller screens (no icon)
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      padding: 6px 13px 6px 14px;
+    }
+
+    // Active state - smaller screens (maintains default padding)
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      padding: 8px 15px 8px 16px;
+      gap: 16px;
+    }
+  }
+}
+
+// =============================================================================
+// Future Variants (Placeholder structure for scalability)
+// =============================================================================
+
+// .bds-btn--secondary {
+//   // Outline style: green stroke, transparent fill
+//   // States: enabled, hover, focus, active, disabled
+// }
+
+// .bds-btn--tertiary {
+//   // Text-only style: green text, no border/fill
+//   // States: enabled, hover (underline), focus, active, disabled
+// }
