@@ -640,7 +640,7 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
     border-radius: 0; // Square corners for focus outline
     outline: 2px solid $bds-btn-tertiary-focus-outline;
     outline-offset: -2px; // Negative offset brings outline closer to content
-    padding: 0 8px 0 9px; // Reduced left padding by 5px (was 14px)
+    padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
     gap: 22px;
   }
 
@@ -650,7 +650,7 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
     border-radius: 0; // Square corners for focus outline
     outline: 2px solid $bds-btn-tertiary-focus-outline;
     outline-offset: -2px; // Negative offset brings outline closer to content
-    padding: 0 9px; // Reduced left padding by 5px (was 14px)
+    padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
   }
 
   // ---------------------------------------------------------------------------
@@ -698,18 +698,22 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
     }
 
     &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $bds-btn-tertiary-text-hover;
+      text-decoration: underline;
       border-radius: 0; // Square corners for focus outline
       outline: 2px solid $bds-btn-tertiary-focus-outline;
       outline-offset: -2px; // Negative offset brings outline closer to content
-      padding: 0 5px 0 2px; // Reduced left padding by 5px (was 10px)
+      padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
       gap: 21px;
     }
 
     &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $bds-btn-tertiary-text-hover;
+      text-decoration: underline;
       border-radius: 0; // Square corners for focus outline
       outline: 2px solid $bds-btn-tertiary-focus-outline;
       outline-offset: -2px; // Negative offset brings outline closer to content
-      padding: 0 2px; // Reduced left padding by 5px (was 10px)
+      padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
     }
 
     &:active:not(:disabled):not(.bds-btn--disabled) {
@@ -881,6 +885,121 @@ html.dark {
         color: $green-300;          // Green 300 - Text
         border-color: $green-300;   // Green 300 - Border
         padding: 6px 13px 6px 14px;
+        gap: 16px;
+      }
+    }
+  }
+
+  // =============================================================================
+  // Dark Mode Styles - Tertiary Button (Green variant only)
+  // =============================================================================
+  // Based on Figma design: Enabled (Green 300), Hover (Green 200), Focus (Green 200 text, Green 200 outline),
+  // Active (Green 300), Disabled (Gray 400)
+  // Note: Black variant (.bds-btn--black.bds-btn--tertiary) uses its own styles defined above
+
+  .bds-btn--tertiary:not(.bds-btn--black) {
+    // ---------------------------------------------------------------------------
+    // Enabled State - Desktop
+    // ---------------------------------------------------------------------------
+    color: $green-300;              // Green 300 - Text
+
+    // ---------------------------------------------------------------------------
+    // Hover State - Desktop
+    // ---------------------------------------------------------------------------
+    &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+      padding: 8px 14px 8px 20px;
+      gap: 22px;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Focus State (keyboard navigation) - Desktop
+    // ---------------------------------------------------------------------------
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+      border-radius: 0; // Square corners for focus outline
+      outline: 2px solid $white; // White - Outline (per Figma design)
+      outline-offset: -2px; // Negative offset brings outline closer to content
+      padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
+      gap: 22px;
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+      color: $green-200;            // Green 200 - Text
+      text-decoration: underline;
+      border-radius: 0; // Square corners for focus outline
+      outline: 2px solid $white; // White - Outline (per Figma design)
+      outline-offset: -2px; // Negative offset brings outline closer to content
+      padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
+    }
+
+    // ---------------------------------------------------------------------------
+    // Active State (being pressed) - Desktop
+    // ---------------------------------------------------------------------------
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-300;            // Green 300 - Text
+      text-decoration: underline;
+      padding: 8px 20px;
+      gap: 16px;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Disabled State
+    // ---------------------------------------------------------------------------
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Gray 400 - Text
+      background-color: transparent;
+      text-decoration: none;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Tablet & Mobile Responsive Styles (≤1023px)
+    // ---------------------------------------------------------------------------
+    @media (max-width: 1023px) {
+      // Hover state - smaller screens (with icon)
+      &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        text-decoration: underline;
+        padding: 8px 11px 8px 16px;
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (with icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
+        color: $green-200;          // Green 200 - Text
+        text-decoration: underline;
+        border-radius: 0; // Square corners for focus outline
+        outline: 2px solid $white; // White - Outline (per Figma design)
+        outline-offset: -2px; // Negative offset brings outline closer to content
+        padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
+        gap: 21px;
+      }
+
+      // Focus state - smaller screens (no icon)
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled).bds-btn--no-icon {
+        color: $green-200;          // Green 200 - Text
+        text-decoration: underline;
+        border-radius: 0; // Square corners for focus outline
+        outline: 2px solid $white; // White - Outline (per Figma design)
+        outline-offset: -2px; // Negative offset brings outline closer to content
+        padding: 5px 2px 2px; // Top: 5px, Left/Right: 2px, Bottom: 2px
+      }
+
+      // Active state - smaller screens (maintains default padding)
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $green-300;          // Green 300 - Text
+        text-decoration: underline;
+        padding: 8px 16px;
         gap: 16px;
       }
     }
