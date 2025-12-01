@@ -49,6 +49,7 @@ $grid-breakpoints: (
 );
 
 // Bootstrap v5 - Import only what we need
+// Note: Bootstrap still uses @import internally, so we use @import for Bootstrap
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/variables-dark";
@@ -87,13 +88,12 @@ $grid-breakpoints: (
 @import "_buttons.scss";
 @import "../shared/components/Button/Button.scss";
 @import "_tables.scss";
-@import "_tables.scss";
 @import "_use-cases.scss";
 @import "_github-edit.scss";
 @import "_top-nav.scss";
 @import "_top-banner.scss";
 @import "_content.scss";
-@import "_xrpl-grid.scss";
+@import "../shared/components/PageGrid/page-grid";
 @import "_code-tabs.scss";
 @import "_code-walkthrough.scss";
 @import "_diagrams.scss";
@@ -115,6 +115,7 @@ $grid-breakpoints: (
 @import "_contribute.scss";
 @import "_docs-landing.scss";
 @import "_osano.scss";
+
 // Light/Dark theme settings ---------------------------------------------------
 // Option to only change theme on user system settings.  No toggle.
 

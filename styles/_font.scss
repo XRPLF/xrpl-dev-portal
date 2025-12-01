@@ -13,11 +13,6 @@ pre, code {
   font-variant-ligatures: none;
 }
 
-// h1, h2, h3, h4, h5, h6,
-// .h1, .h2, .h3, .h4, .h5, .h6 {
-//   font-weight: bold;
-// }
-
 .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: $font-family-monospace;
   font-weight: 400;
@@ -106,49 +101,6 @@ h6, .h6 {
 p {
   font-size: 1rem;
   line-height: 24px;
-}
-
-.fs-base {
-  font-size: $base-size;
-}
-.fs-3 {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-.fs-4-5 {
-  font-size: 1.125rem;
-}
-.fs-5 {
-  font-size: 1.25rem;
-}
-.fs-5-5 {
-  font-size: 1.375rem;
-}
-.fs-6 {
-  font-size: 1.5rem;
-}
-.normal {
-  font-weight: normal;
-}
-.bold {
-  font-weight: bold;
-}
-
-.text-largest {
-  font-size: 1.5rem;
-  font-weight: normal;
-}
-.text-large {
-  font-size: 1.125rem;
-}
-.text-small {
-  font-size: 0.875rem;
-}
-.text-smaller {
-  font-size: 0.75rem;
-}
-.text-smallest {
-  font-size: 0.625rem;
 }
 
 /* STYLIZED LINKS */
