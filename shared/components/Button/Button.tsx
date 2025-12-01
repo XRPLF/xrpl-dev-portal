@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface ButtonProps {
   /** Button variant - determines visual style */
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'tertiary';
   /** Color theme - green (default) or black */
   color?: 'green' | 'black';
   /** Button content/label */
@@ -61,11 +61,12 @@ const ArrowIcon: React.FC = () => (
  * BDS Button Component
  * 
  * A scalable button component following the XRPL Brand Design System.
- * Supports Primary and Secondary variants with green (default) or black color themes.
+ * Supports Primary, Secondary, and Tertiary variants with green (default) or black color themes.
  * 
  * @example
  * <Button variant="primary" onClick={handleClick}>Get Started</Button>
  * <Button variant="secondary" onClick={handleClick}>Learn More</Button>
+ * <Button variant="tertiary" onClick={handleClick}>View Details</Button>
  * <Button variant="primary" color="black" onClick={handleClick}>Dark Button</Button>
  */
 export const Button: React.FC<ButtonProps> = ({
