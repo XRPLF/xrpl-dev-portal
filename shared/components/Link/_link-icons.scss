@@ -1,0 +1,124 @@
+// Link Arrow Icon Styles and Animations
+// -----------------------------------------------------------------------------
+// Styles for link arrow icons with hover animations that transform arrow to chevron
+// Animation: 150ms with custom cubic-bezier per Figma specs
+
+@import "../../../styles/_colors.scss";
+
+// Animation timing per Figma
+$bds-link-transition-duration: 150ms;
+$bds-link-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// Base styles for link icons
+.bds-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    display: block;
+
+    path {
+      stroke: currentColor; // Inherits color from parent link
+    }
+
+    .arrow-horizontal {
+      transition: transform $bds-link-transition-duration $bds-link-transition-timing;
+    }
+  }
+}
+
+// Internal arrow: horizontal line shrinks from left toward right (toward the chevron)
+.bds-link-icon--internal svg .arrow-horizontal {
+  transform-origin: right center;
+}
+
+// External arrow: diagonal line shrinks toward top-right corner (leaving just the bracket)
+.bds-link-icon--external svg .arrow-horizontal {
+  transform-origin: 19px 2px; // Top-right corner where diagonal starts
+}
+
+// Hover state - shrink/hide the horizontal line to create chevron effect
+// Applies to both internal and external icons when not disabled
+
+// Internal: scale the horizontal line from right
+a:hover .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+a:focus .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal {
+  transform: scaleX(0);
+}
+
+// External: scale the diagonal line toward the corner (uniform scale for diagonal)
+a:hover .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+a:focus .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal {
+  transform: scale(0);
+}
+
+// Disabled state
+.bds-link-icon--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  
+  svg {
+    path {
+      // Disabled icons use gray color from theme
+      stroke: currentColor;
+    }
+    
+    .arrow-horizontal {
+      transition: none; // Disable animation when disabled
+    }
+  }
+}
+
+// Theme-specific disabled colors
+html.light,
+.light {
+  .bds-link-icon--disabled svg path {
+    stroke: $gray-400;
+  }
+}
+
+html.dark,
+.dark,
+html:not(.light) {
+  .bds-link-icon--disabled svg path {
+    stroke: $gray-500;
+  }
+}
+
+// Size variants for internal arrows (wider aspect ratio)
+.bds-link-icon--internal {
+  &.bds-link-icon--small {
+    width: 15px;
+    height: 14px;
+  }
+
+  &.bds-link-icon--medium {
+    width: 17px;
+    height: 16px;
+  }
+
+  &.bds-link-icon--large {
+    width: 26px;
+    height: 22px;
+  }
+}
+
+// Size variants for external arrows (square aspect ratio)
+.bds-link-icon--external {
+  &.bds-link-icon--small {
+    width: 14px;
+    height: 14px;
+  }
+
+  &.bds-link-icon--medium {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.bds-link-icon--large {
+    width: 21px;
+    height: 21px;
+  }
+}
