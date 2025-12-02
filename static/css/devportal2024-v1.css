@@ -14144,16 +14144,33 @@ html:not(.light) .bds-link-icon--disabled svg path {
 }
 
 .bds-link-icon--internal.bds-link-icon--small {
-  width: 15px;
-  height: 14px;
+  width: 14px;
+  height: 13px;
+}
+@media (min-width: 1280px) {
+  .bds-link-icon--internal.bds-link-icon--small {
+    width: 15px;
+    height: 14px;
+  }
 }
 .bds-link-icon--internal.bds-link-icon--medium {
   width: 17px;
-  height: 16px;
+  height: 14px;
+}
+@media (min-width: 1280px) {
+  .bds-link-icon--internal.bds-link-icon--medium {
+    height: 16px;
+  }
 }
 .bds-link-icon--internal.bds-link-icon--large {
-  width: 26px;
-  height: 22px;
+  width: 20px;
+  height: 16px;
+}
+@media (min-width: 1280px) {
+  .bds-link-icon--internal.bds-link-icon--large {
+    width: 26px;
+    height: 22px;
+  }
 }
 
 .bds-link-icon--external.bds-link-icon--small {
@@ -14165,8 +14182,14 @@ html:not(.light) .bds-link-icon--disabled svg path {
   height: 16px;
 }
 .bds-link-icon--external.bds-link-icon--large {
-  width: 21px;
-  height: 21px;
+  width: 17px;
+  height: 17px;
+}
+@media (min-width: 1280px) {
+  .bds-link-icon--external.bds-link-icon--large {
+    width: 21px;
+    height: 21px;
+  }
 }
 
 .bds-link {
@@ -14188,20 +14211,43 @@ html:not(.light) .bds-link-icon--disabled svg path {
 
 .bds-link--small {
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 20.1px;
+  letter-spacing: 0;
   gap: 6px;
+}
+@media (min-width: 1280px) {
+  .bds-link--small {
+    font-size: 16px;
+    line-height: 23.2px;
+    gap: 8px;
+  }
 }
 
 .bds-link--medium {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 23.2px;
+  letter-spacing: 0;
   gap: 8px;
+}
+@media (min-width: 1280px) {
+  .bds-link--medium {
+    font-size: 18px;
+    line-height: 26.1px;
+    letter-spacing: -0.5px;
+  }
 }
 
 .bds-link--large {
-  font-size: 20px;
-  line-height: 1.5;
-  gap: 10px;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.5px;
+  gap: 24px;
+}
+@media (min-width: 1280px) {
+  .bds-link--large {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
 }
 
 a.bds-link,
