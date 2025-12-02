@@ -67,8 +67,8 @@
     }
   }
 
-  p a,
-  h5 a {
+  p a:not(.bds-link),
+  h5 a:not(.bds-link) {
     color: $blue-purple-400;
     font-weight: 600;
     &:hover {

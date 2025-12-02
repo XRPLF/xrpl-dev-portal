@@ -123,9 +123,9 @@ h6,
 
 // Navigation ------------------------------------------------------------------
 
-a,
-nav a,
-a:not([role="button"]) {
+a:not(.bds-link),
+nav a:not(.bds-link),
+a:not([role="button"]):not(.bds-link) {
   color: $light-fg;
 
   &.btn-primary {
@@ -429,8 +429,8 @@ aside .card {
     }
   }
 
-  p a,
-  .longform a {
+  p a:not(.bds-link),
+  .longform a:not(.bds-link) {
     color: $light-link-hover-color;
   }
 }
