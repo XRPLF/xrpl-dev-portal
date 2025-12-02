@@ -12,8 +12,9 @@
 // .bds-btn__icon        - Icon element (inherits color via currentColor)
 // .bds-btn--disabled    - Disabled state modifier
 // .bds-btn--no-icon     - No icon modifier
-
-@import "../../../styles/colors";
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
 
 // =============================================================================
 // Design Tokens
@@ -188,6 +189,15 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
       transform: scaleX(0);
     }
   }
+
+  // ---------------------------------------------------------------------------
+  // Responsive Typography (<xl breakpoint)
+  // ---------------------------------------------------------------------------
+  @include media-breakpoint-down(xl) {
+    // Typography - Label R token (smaller screens)
+    font-size: 14px;
+    line-height: 20.1px;
+  }
 }
 
 // =============================================================================
@@ -271,9 +281,9 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   }
 
   // ---------------------------------------------------------------------------
-  // Tablet & Mobile Responsive Styles (≤1023px)
+  // Tablet & Mobile Responsive Styles (<xl breakpoint)
   // ---------------------------------------------------------------------------
-  @media (max-width: 1023px) {
+  @include media-breakpoint-down(xl) {
     // Default/Enabled padding for smaller screens
     padding: 8px 15px 8px 16px;
     gap: 16px;
@@ -407,9 +417,9 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   }
 
   // ---------------------------------------------------------------------------
-  // Tablet & Mobile Responsive Styles (≤1023px)
+  // Tablet & Mobile Responsive Styles (<xl breakpoint)
   // ---------------------------------------------------------------------------
-  @media (max-width: 1023px) {
+  @include media-breakpoint-down(xl) {
     padding: 6px 13px 6px 14px;
     gap: 16px;
 
@@ -573,7 +583,7 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
     }
 
     // Responsive hover states - ensure black color on mobile too
-    @media (max-width: 1023px) {
+    @include media-breakpoint-down(xl) {
       &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
         color: $bds-btn-tertiary-black-text !important;
         padding: 8px 11px 8px 16px; // Match base tertiary mobile hover padding
@@ -682,9 +692,14 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   }
 
   // ---------------------------------------------------------------------------
-  // Tablet & Mobile Responsive Styles (≤1023px)
+  // Tablet & Mobile Responsive Styles (<xl breakpoint)
   // ---------------------------------------------------------------------------
-  @media (max-width: 1023px) {
+  @include media-breakpoint-down(xl) {
+    // Typography - Body R token (smaller screens)
+    font-size: 16px;
+    line-height: 23.2px;
+    letter-spacing: 0px;
+
     padding: 8px 16px;
     gap: 16px;
 
@@ -745,7 +760,7 @@ html.dark {
     }
 
     // Focus State (keyboard navigation) - with icon - Tablet & Mobile (≤1023px)
-    @media (max-width: 1023px) {
+    @include media-breakpoint-down(xl) {
       &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
         outline: $bds-btn-focus-border-width solid $white;
         outline-offset: 2px;
@@ -848,9 +863,9 @@ html.dark {
     }
 
     // ---------------------------------------------------------------------------
-    // Tablet & Mobile Responsive Styles (≤1023px)
+    // Tablet & Mobile Responsive Styles (<xl breakpoint)
     // ---------------------------------------------------------------------------
-    @media (max-width: 1023px) {
+    @include media-breakpoint-down(xl) {
       // Hover state - smaller screens (with icon)
       &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
         color: $green-200;          // Green 200 - Text
@@ -963,9 +978,9 @@ html.dark {
     }
 
     // ---------------------------------------------------------------------------
-    // Tablet & Mobile Responsive Styles (≤1023px)
+    // Tablet & Mobile Responsive Styles (<xl breakpoint)
     // ---------------------------------------------------------------------------
-    @media (max-width: 1023px) {
+    @include media-breakpoint-down(xl) {
       // Hover state - smaller screens (with icon)
       &:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
         color: $green-200;          // Green 200 - Text
