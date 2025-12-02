@@ -88,37 +88,70 @@ html:not(.light) {
 }
 
 // Size variants for internal arrows (wider aspect ratio)
+// Responsive: Mobile/Tablet (xs-md, lg) → Desktop (xl)
+// Breakpoints reference: $grid-breakpoints in styles/xrpl.scss (xl: 1280px)
 .bds-link-icon--internal {
   &.bds-link-icon--small {
-    width: 15px;
-    height: 14px;
+    // Mobile/Tablet: 14x13
+    width: 14px;
+    height: 13px;
+
+    // Desktop (xl): 15x14
+    @include media-breakpoint-up(xl) {
+      width: 15px;
+      height: 14px;
+    }
   }
 
   &.bds-link-icon--medium {
+    // Mobile/Tablet: 17x14
     width: 17px;
-    height: 16px;
+    height: 14px;
+
+    // Desktop (xl): 17x16
+    @include media-breakpoint-up(xl) {
+      height: 16px;
+    }
   }
 
   &.bds-link-icon--large {
-    width: 26px;
-    height: 22px;
+    // Mobile/Tablet: 20x16
+    width: 20px;
+    height: 16px;
+
+    // Desktop (xl): 26x22
+    @include media-breakpoint-up(xl) {
+      width: 26px;
+      height: 22px;
+    }
   }
 }
 
 // Size variants for external arrows (square aspect ratio)
+// Responsive: Mobile/Tablet (xs-md, lg) → Desktop (xl)
+// Breakpoints reference: $grid-breakpoints in styles/xrpl.scss (xl: 1280px)
 .bds-link-icon--external {
   &.bds-link-icon--small {
+    // Same at all breakpoints
     width: 14px;
     height: 14px;
   }
 
   &.bds-link-icon--medium {
+    // Same at all breakpoints
     width: 16px;
     height: 16px;
   }
 
   &.bds-link-icon--large {
-    width: 21px;
-    height: 21px;
+    // Mobile/Tablet: 17x17
+    width: 17px;
+    height: 17px;
+
+    // Desktop (xl): 21x21
+    @include media-breakpoint-up(xl) {
+      width: 21px;
+      height: 21px;
+    }
   }
 }

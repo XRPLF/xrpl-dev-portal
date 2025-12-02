@@ -30,23 +30,52 @@
   }
 }
 
-// Size variants
+// Size variants - Mobile First (xs-md base)
+// Typography specs from Figma: Desktop (xl), Tablet (lg), Mobile (xs-md)
+// Breakpoints reference: $grid-breakpoints in styles/xrpl.scss (xl: 1280px)
+
 .bds-link--small {
+  // Mobile/Tablet: 14px/20.1px
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 20.1px;
+  letter-spacing: 0;
   gap: 6px;
+
+  // Desktop (xl): 16px/23.2px
+  @include media-breakpoint-up(xl) {
+    font-size: 16px;
+    line-height: 23.2px;
+    gap: 8px;
+  }
 }
 
 .bds-link--medium {
+  // Mobile/Tablet: 16px/23.2px
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 23.2px;
+  letter-spacing: 0;
   gap: 8px;
+
+  // Desktop (xl): 18px/26.1px
+  @include media-breakpoint-up(xl) {
+    font-size: 18px;
+    line-height: 26.1px;
+    letter-spacing: -0.5px;
+  }
 }
 
 .bds-link--large {
-  font-size: 20px;
-  line-height: 1.5;
-  gap: 10px;
+  // Mobile/Tablet: 18px/30px
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.5px;
+  gap: 24px;
+
+  // Desktop (xl): 24px/30px
+  @include media-breakpoint-up(xl) {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
 }
 
 // Link color states (Light Mode - per Figma specs)
