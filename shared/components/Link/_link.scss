@@ -39,13 +39,12 @@
   font-size: 14px;
   line-height: 20.1px;
   letter-spacing: 0;
-  gap: 6px;
+  gap: 16px;
 
   // Desktop (xl): 16px/23.2px
   @include media-breakpoint-up(xl) {
     font-size: 16px;
     line-height: 23.2px;
-    gap: 8px;
   }
 }
 
@@ -54,7 +53,7 @@
   font-size: 16px;
   line-height: 23.2px;
   letter-spacing: 0;
-  gap: 8px;
+  gap: 16px;
 
   // Desktop (xl): 18px/26.1px
   @include media-breakpoint-up(xl) {
