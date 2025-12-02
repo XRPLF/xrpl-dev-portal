@@ -14213,13 +14213,12 @@ html:not(.light) .bds-link-icon--disabled svg path {
   font-size: 14px;
   line-height: 20.1px;
   letter-spacing: 0;
-  gap: 6px;
+  gap: 16px;
 }
 @media (min-width: 1280px) {
   .bds-link--small {
     font-size: 16px;
     line-height: 23.2px;
-    gap: 8px;
   }
 }
 
@@ -14227,7 +14226,7 @@ html:not(.light) .bds-link-icon--disabled svg path {
   font-size: 16px;
   line-height: 23.2px;
   letter-spacing: 0;
-  gap: 8px;
+  gap: 16px;
 }
 @media (min-width: 1280px) {
   .bds-link--medium {
