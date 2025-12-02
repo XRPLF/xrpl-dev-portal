@@ -23,6 +23,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
+| [LendingProtocol][]               | {% badge %}In Development: TBD{% /badge %} | [Lending Protocol (Ripple Opensource)](https://opensource.ripple.com/docs/xls-66d-lending-protocol) |
 | [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="success" name="Tip" %}
@@ -934,7 +935,7 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment adds missing `DeliveredAmount` or `delivered_amount` metadata fields from direct MPT `Payment` transactions.
+This amendment adds missing `DeliveredAmount` and `delivered_amount` metadata fields from direct MPT `Payment` transactions.
 
 
 ### fixNFTokenDirV1
@@ -1414,6 +1415,21 @@ Without this amendment, "Immediate or Cancel" Offers that failed to move any fun
 This amendment adds several new invariants to protect the ledger against bugs in transaction processing. The developers intend to set it as open for voting after a set of several invariants are implemented. The invariants included are as follows:
 
 - When deleting an account, ensure that certain types of ledger entries are also deleted, including that account's `DirectoryNode`, `SignerList`, `NFTokenPage`, and `AMM` directories, if any, are deleted with it.
+
+
+### LendingProtocol
+[LendingProtocol]: #lendingprotocol
+
+| Amendment    | LendingProtocol |
+|:-------------|:-----------------|
+| Amendment ID | 565B90CA1AB2B9D42208ED10884188C64F9E19083DECB9634AAF06EB03299509 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
+
+Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066d-lending-protocol).
 
 
 ### MPTokensV1
