@@ -11209,6 +11209,12 @@ button[disabled=disabled] {
 .bds-btn:hover:not(:disabled):not(.bds-btn--disabled) .bds-btn__icon-line, .bds-btn:focus-visible:not(:disabled):not(.bds-btn--disabled) .bds-btn__icon-line {
   transform: scaleX(0);
 }
+@media (max-width: 1279.98px) {
+  .bds-btn {
+    font-size: 14px;
+    line-height: 20.1px;
+  }
+}
 
 .bds-btn--primary {
   color: #141414;
@@ -11252,7 +11258,7 @@ button[disabled=disabled] {
 .bds-btn--primary:disabled::before, .bds-btn--primary.bds-btn--disabled::before {
   display: none;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279.98px) {
   .bds-btn--primary {
     padding: 8px 15px 8px 16px;
     gap: 16px;
@@ -11337,7 +11343,7 @@ button[disabled=disabled] {
 .bds-btn--secondary:disabled::before, .bds-btn--secondary.bds-btn--disabled::before {
   display: none;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279.98px) {
   .bds-btn--secondary {
     padding: 6px 13px 6px 14px;
     gap: 16px;
@@ -11442,7 +11448,7 @@ button[disabled=disabled] {
 .bds-btn--black.bds-btn--tertiary:disabled, .bds-btn--black.bds-btn--tertiary.bds-btn--disabled {
   color: #838386;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279.98px) {
   .bds-btn--black.bds-btn--tertiary:hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
     color: #141414 !important;
     padding: 8px 11px 8px 16px;
@@ -11510,8 +11516,11 @@ button[disabled=disabled] {
 .bds-btn--tertiary:disabled::before, .bds-btn--tertiary.bds-btn--disabled::before {
   display: none;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279.98px) {
   .bds-btn--tertiary {
+    font-size: 16px;
+    line-height: 23.2px;
+    letter-spacing: 0px;
     padding: 8px 16px;
     gap: 16px;
   }
@@ -11556,7 +11565,7 @@ html.dark .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled)
   outline-offset: 2px;
   padding: 8px 20px;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279.98px) {
   html.dark .bds-btn--primary:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
     outline: 2px solid #FFFFFF;
     outline-offset: 2px;
@@ -11617,7 +11626,7 @@ html.dark .bds-btn--secondary:not(.bds-btn--black):disabled, html.dark .bds-btn-
 html.dark .bds-btn--secondary:not(.bds-btn--black):disabled::before, html.dark .bds-btn--secondary:not(.bds-btn--black).bds-btn--disabled::before {
   display: none;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279.98px) {
   html.dark .bds-btn--secondary:not(.bds-btn--black):hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
     color: #70EE97;
     border-color: #70EE97;
@@ -11689,7 +11698,7 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   cursor: not-allowed;
   pointer-events: none;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1279.98px) {
   html.dark .bds-btn--tertiary:not(.bds-btn--black):hover:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {
     color: #70EE97;
     text-decoration: underline;

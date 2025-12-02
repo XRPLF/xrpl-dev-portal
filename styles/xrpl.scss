@@ -40,13 +40,7 @@ $font-family-sans-serif: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFon
 $base-size: 16px;
 $line-height-base: 1.5;
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 576px,
-  lg: 992px,
-  xl: 1280px
-);
+@import "_breakpoints.scss";
 
 // Bootstrap v5 - Import only what we need
 // Note: Bootstrap still uses @import internally, so we use @import for Bootstrap
