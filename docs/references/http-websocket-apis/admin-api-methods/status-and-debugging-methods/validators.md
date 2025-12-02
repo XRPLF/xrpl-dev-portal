@@ -1,14 +1,12 @@
 ---
-html: validators.html
-parent: status-and-debugging-methods.html
 seo:
     description: Get information about the current validators.
 labels:
-  - Core Server
-  - Blockchain
+    - Core Server
+    - Blockchain
 ---
 # validators
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Validators.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Validators.cpp "Source")
 
 The `validators` command returns human readable information about the current list of published and [trusted validators](../../../../concepts/consensus-protocol/index.md#trust-based-validation) used by the server.
 
