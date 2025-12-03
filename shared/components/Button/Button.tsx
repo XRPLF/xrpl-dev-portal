@@ -17,6 +17,8 @@ export interface ButtonProps {
   className?: string;
   /** Whether to show the arrow icon */
   showIcon?: boolean;
+  /** Accessibility label - defaults to button text if not provided */
+  ariaLabel?: string;
 }
 
 /**
@@ -69,6 +71,25 @@ const ArrowIcon: React.FC = () => (
  * <Button variant="tertiary" onClick={handleClick}>View Details</Button>
  * <Button variant="primary" color="black" onClick={handleClick}>Dark Button</Button>
  */
+/**
+ * Helper function to extract text content from ReactNode
+ */
+const getTextFromChildren = (children: React.ReactNode): string => {
+  if (typeof children === 'string' || typeof children === 'number') {
+    return String(children);
+  }
+  if (Array.isArray(children)) {
+    return children.map(getTextFromChildren).join('');
+  }
+  if (React.isValidElement(children)) {
+    const props = children.props as { children?: React.ReactNode };
+    if (props.children) {
+      return getTextFromChildren(props.children);
+    }
+  }
+  return '';
+};
+
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   color = 'green',
@@ -78,9 +99,13 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   className = '',
   showIcon = true,
+  ariaLabel,
 }) => {
   // Hide icon when disabled (per design spec)
   const shouldShowIcon = showIcon && !disabled;
+
+  // Default ariaLabel to button text if not provided
+  const buttonAriaLabel = ariaLabel || getTextFromChildren(children);
 
   // Build class names using BEM with bds namespace
   const classNames = [
@@ -101,6 +126,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       aria-disabled={disabled}
+      aria-label={buttonAriaLabel}
     >
       <span className="bds-btn__label">{children}</span>
       {shouldShowIcon && <ArrowIcon />}
