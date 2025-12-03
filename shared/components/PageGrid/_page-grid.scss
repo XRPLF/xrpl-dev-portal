@@ -36,10 +36,11 @@ $xrpl-grid-gutter: 8px;
 }
 
 @mixin xrpl-grid-generate-fill($suffix: null) {
-  $selector: if($suffix, ".xrpl-grid__col-#{$suffix}", ".xrpl-grid__col");
+  $selector: if($suffix, ".xrpl-grid__col-#{$suffix}-fill", ".xrpl-grid__col-fill");
 
   #{$selector} {
     flex: 1 0 0;
+    width: auto;
   }
 }
 
@@ -125,6 +126,7 @@ $xrpl-grid-gutter: 8px;
 
   &__col {
     box-sizing: border-box;
+    flex: auto;
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
@@ -170,5 +172,3 @@ $xrpl-grid-gutter: 8px;
   @include xrpl-grid-generate-auto('xl');
   @include xrpl-grid-generate-offsets(12, 'xl');
 }
-
-
