@@ -88,6 +88,8 @@ export default function GridShowcase() {
                 <PageGridRow>
                   <BorderedCol span={6}>span={6}</BorderedCol>
                   <BorderedCol span={6}>span={6}</BorderedCol>
+                  <BorderedCol>test</BorderedCol>
+                  <BorderedCol>test</BorderedCol>
                 </PageGridRow>
               </PageGrid>
             </GridDemo>

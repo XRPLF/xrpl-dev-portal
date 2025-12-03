@@ -13715,13 +13715,15 @@ h1:hover .hover_anchor, .h1:hover .hover_anchor, h2:hover .hover_anchor, .h2:hov
 }
 .xrpl-grid__col {
   box-sizing: border-box;
+  flex: auto;
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
 }
 
-.xrpl-grid__col {
+.xrpl-grid__col-fill {
   flex: 1 0 0;
+  width: auto;
 }
 
 .xrpl-grid__col-1 {
@@ -14022,8 +14024,9 @@ h1:hover .hover_anchor, .h1:hover .hover_anchor, h2:hover .hover_anchor, .h2:hov
 }
 
 @media (min-width: 576px) {
-  .xrpl-grid__col-sm {
+  .xrpl-grid__col-sm-fill {
     flex: 1 0 0;
+    width: auto;
   }
   .xrpl-grid__col-sm-1 {
     flex: 0 0 auto;
@@ -14087,8 +14090,9 @@ h1:hover .hover_anchor, .h1:hover .hover_anchor, h2:hover .hover_anchor, .h2:hov
   }
 }
 @media (min-width: 576px) {
-  .xrpl-grid__col-md {
+  .xrpl-grid__col-md-fill {
     flex: 1 0 0;
+    width: auto;
   }
   .xrpl-grid__col-md-1 {
     flex: 0 0 auto;
@@ -14152,8 +14156,9 @@ h1:hover .hover_anchor, .h1:hover .hover_anchor, h2:hover .hover_anchor, .h2:hov
   }
 }
 @media (min-width: 992px) {
-  .xrpl-grid__col-lg {
+  .xrpl-grid__col-lg-fill {
     flex: 1 0 0;
+    width: auto;
   }
   .xrpl-grid__col-lg-1 {
     flex: 0 0 auto;
@@ -14245,8 +14250,9 @@ h1:hover .hover_anchor, .h1:hover .hover_anchor, h2:hover .hover_anchor, .h2:hov
   }
 }
 @media (min-width: 1280px) {
-  .xrpl-grid__col-xl {
+  .xrpl-grid__col-xl-fill {
     flex: 1 0 0;
+    width: auto;
   }
   .xrpl-grid__col-xl-1 {
     flex: 0 0 auto;

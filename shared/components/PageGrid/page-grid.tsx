@@ -40,10 +40,9 @@ const classForSpan = (prefix: string | null, value: PageGridSpanValue): string =
   }
 
   if (value === "fill") {
-    // Generates xrpl-grid__col or xrpl-grid__col-md (based on documentation)
-    // Note: The documentation states 'xrpl-grid__col' for fill, and 'xrpl-grid__col-{breakpoint}' for fill
-    // The implementation below aligns with the documentation's example logic:
-    return prefix ? `xrpl-grid__col${prefixStr}` : "xrpl-grid__col";
+    // Generates xrpl-grid__col-fill or xrpl-grid__col-md-fill
+    // This allows us to distinguish between "no span" and "span='fill'" in CSS
+    return `xrpl-grid__col${prefixStr}-fill`;
   }
 
   // Generates xrpl-grid__col-6 or xrpl-grid__col-md-6
