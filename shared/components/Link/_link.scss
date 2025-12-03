@@ -1,0 +1,271 @@
+// Link Component Styles
+// -----------------------------------------------------------------------------
+// Styles for the Link component with support for sizes, states, and themes
+// Light mode colors per Figma: Enabled=green-400, Hover/Focus=green-500+underline,
+// Active=green-400+underline, Visited=lilac-400, Disabled=gray-400
+// Dark mode colors per Figma: Enabled=green-300, Hover/Focus=green-200+underline,
+// Active=green-300+underline, Visited=lilac-300, Disabled=gray-500
+
+@import "../../../styles/_colors.scss";
+
+// Base link styles
+.bds-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  cursor: pointer;
+  
+  // Focus styles for accessibility (outline color set per theme below)
+  &:focus-visible {
+    outline: 2px solid $white; // Default to white (dark mode)
+    outline-offset: 2px;
+  }
+  
+  // Icon spacing
+  .bds-link-icon {
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+}
+
+// Size variants - Mobile First (xs-md base)
+// Typography specs from Figma: Desktop (xl), Tablet (lg), Mobile (xs-md)
+// Breakpoints reference: $grid-breakpoints in styles/xrpl.scss (xl: 1280px)
+
+.bds-link--small {
+  // Mobile/Tablet: 14px/20.1px
+  font-size: 14px;
+  line-height: 20.1px;
+  letter-spacing: 0;
+  gap: 16px;
+
+  // Desktop (xl): 16px/23.2px
+  @include media-breakpoint-up(xl) {
+    font-size: 16px;
+    line-height: 23.2px;
+  }
+}
+
+.bds-link--medium {
+  // Mobile/Tablet: 16px/23.2px
+  font-size: 16px;
+  line-height: 23.2px;
+  letter-spacing: 0;
+  gap: 16px;
+
+  // Desktop (xl): 18px/26.1px
+  @include media-breakpoint-up(xl) {
+    font-size: 18px;
+    line-height: 26.1px;
+    letter-spacing: -0.5px;
+  }
+}
+
+.bds-link--large {
+  // Mobile/Tablet: 18px/30px
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.5px;
+  gap: 24px;
+
+  // Desktop (xl): 24px/30px
+  @include media-breakpoint-up(xl) {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+}
+
+// Link color states (Light Mode - per Figma specs)
+// Use element + class selector for higher specificity to override html.light a rules
+a.bds-link,
+.bds-link {
+  // Enabled state: Green 400
+  color: $green-400;
+  text-decoration: none;
+  
+  // Hover state: Green 500 + underline
+  &:hover:not(.bds-link--disabled) {
+    color: $green-500;
+    text-decoration: underline;
+  }
+  
+  // Focus state: Green 500 + underline
+  &:focus:not(.bds-link--disabled) {
+    color: $green-500;
+    text-decoration: underline;
+  }
+  
+  // Active state: Green 400 + underline
+  &:active:not(.bds-link--disabled) {
+    color: $green-400;
+    text-decoration: underline;
+  }
+  
+  // Visited state: Lilac 400 (purple)
+  &:visited:not(.bds-link--disabled) {
+    color: $purple;
+  }
+}
+
+// Light theme overrides - BDS links are excluded from general light theme rules
+// so these rules will apply naturally without needing !important
+html.light {
+  a.bds-link,
+  nav a.bds-link {
+    // Enabled state: Green 400
+    color: $green-400;
+    text-decoration: none;
+    
+    // Focus outline: Black for light mode
+    &:focus-visible {
+      outline-color: $black;
+    }
+    
+    // Hover state: Green 500 + underline
+    &:hover:not(.bds-link--disabled) {
+      color: $green-500;
+      text-decoration: underline;
+    }
+    
+    // Focus state: Green 500 + underline
+    &:focus:not(.bds-link--disabled) {
+      color: $green-500;
+      text-decoration: underline;
+    }
+    
+    // Active state: Green 400 + underline
+    &:active:not(.bds-link--disabled) {
+      color: $green-400;
+      text-decoration: underline;
+    }
+    
+    // Visited state: Lilac 400 (purple)
+    &:visited:not(.bds-link--disabled) {
+      color: $purple;
+    }
+    
+    // Disabled state - needs to be here for specificity
+    &.bds-link--disabled {
+      color: $gray-400;
+      cursor: not-allowed;
+      pointer-events: none;
+      text-decoration: none;
+      
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited {
+        color: $gray-400;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Dark theme styles (per Figma specs)
+html.dark {
+  a.bds-link,
+  nav a.bds-link {
+    // Enabled state: Green 300
+    color: $green-300;
+    text-decoration: none;
+    
+    // Focus outline: White for dark mode
+    &:focus-visible {
+      outline-color: $white;
+    }
+    
+    // Hover state: Green 200 + underline
+    &:hover:not(.bds-link--disabled) {
+      color: $green-200;
+      text-decoration: underline;
+    }
+    
+    // Focus state: Green 200 + underline
+    &:focus:not(.bds-link--disabled) {
+      color: $green-200;
+      text-decoration: underline;
+    }
+    
+    // Active state: Green 300 + underline
+    &:active:not(.bds-link--disabled) {
+      color: $green-300;
+      text-decoration: underline;
+    }
+    
+    // Visited state: Lilac 300
+    &:visited:not(.bds-link--disabled) {
+      color: $lilac-300;
+    }
+    
+    // Disabled state - needs to be here for specificity
+    &.bds-link--disabled {
+      color: $gray-500;
+      cursor: not-allowed;
+      pointer-events: none;
+      text-decoration: none;
+      
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited {
+        color: $gray-500;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Disabled state (base/dark theme)
+// Use element + class selector for higher specificity
+a.bds-link.bds-link--disabled,
+.bds-link.bds-link--disabled {
+  color: $gray-400;
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+  
+  .bds-link-icon {
+    opacity: 0.5;
+  }
+  
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: $gray-400;
+    text-decoration: none;
+  }
+}
+
+// Dark theme adjustments for disabled (fallback for non-html.dark contexts)
+html.dark,
+.dark,
+html:not(.light) {
+  a.bds-link.bds-link--disabled,
+  .bds-link.bds-link--disabled {
+    color: $gray-500;
+    
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      color: $gray-500;
+    }
+  }
+}
+
+// Inline variant (no icon spacing adjustment needed)
+.bds-link--inline {
+  display: inline;
+  gap: 0;
+  
+  .bds-link-icon {
+    display: none;
+  }
+}
+
+// Standalone variants (internal/external)
+// These variants use icons, spacing is handled by gap property in .bds-link

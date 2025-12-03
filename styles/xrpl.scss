@@ -93,6 +93,8 @@ $grid-breakpoints: (
 @import "_top-banner.scss";
 @import "_content.scss";
 @import "../shared/components/PageGrid/page-grid";
+@import "../shared/components/Link/_link-icons.scss";
+@import "../shared/components/Link/_link.scss";
 @import "_code-tabs.scss";
 @import "_code-walkthrough.scss";
 @import "_diagrams.scss";
