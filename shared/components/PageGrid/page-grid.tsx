@@ -35,18 +35,18 @@ const classForSpan = (prefix: string | null, value: PageGridSpanValue): string =
   const prefixStr = prefix ? `-${prefix}` : "";
 
   if (value === "auto") {
-    // Generates xrpl-grid__col-auto or xrpl-grid__col-md-auto
-    return `xrpl-grid__col${prefixStr}-auto`;
+    // Generates bds-grid__col-auto or bds-grid__col-md-auto
+    return `bds-grid__col${prefixStr}-auto`;
   }
 
   if (value === "fill") {
-    // Generates xrpl-grid__col-fill or xrpl-grid__col-md-fill
+    // Generates bds-grid__col-fill or bds-grid__col-md-fill
     // This allows us to distinguish between "no span" and "span='fill'" in CSS
-    return `xrpl-grid__col${prefixStr}-fill`;
+    return `bds-grid__col${prefixStr}-fill`;
   }
 
-  // Generates xrpl-grid__col-6 or xrpl-grid__col-md-6
-  return `xrpl-grid__col${prefixStr}-${value}`;
+  // Generates bds-grid__col-6 or bds-grid__col-md-6
+  return `bds-grid__col${prefixStr}-${value}`;
 };
 
 /**
@@ -58,15 +58,15 @@ const classForSpan = (prefix: string | null, value: PageGridSpanValue): string =
  */
 const classForOffset = (prefix: string | null, value: PageGridOffsetValue): string => {
   const prefixStr = prefix ? `-${prefix}` : "";
-  // Generates xrpl-grid__offset-2 or xrpl-grid__offset-md-2
-  return `xrpl-grid__offset${prefixStr}-${value}`;
+  // Generates bds-grid__offset-2 or bds-grid__offset-md-2
+  return `bds-grid__offset${prefixStr}-${value}`;
 };
 
 
 // --- PageGrid Root Component ---
 const PageGridRoot = React.forwardRef<HTMLDivElement, PageGridProps>(
   ({ className, ...rest }, ref) => (
-    <div ref={ref} className={clsx("xrpl-grid__container", className)} {...rest} />
+    <div ref={ref} className={clsx("bds-grid__container", className)} {...rest} />
   )
 );
 
@@ -76,7 +76,7 @@ PageGridRoot.displayName = "PageGrid";
 // --- PageGrid.Row Component ---
 const PageGridRow = React.forwardRef<HTMLDivElement, PageGridRowProps>(
   ({ className, ...rest }, ref) => (
-    <div ref={ref} className={clsx("xrpl-grid__row", className)} {...rest} />
+    <div ref={ref} className={clsx("bds-grid__row", className)} {...rest} />
   )
 );
 
@@ -109,7 +109,7 @@ const PageGridCol = React.forwardRef<HTMLDivElement, PageGridColProps>((props, r
       const value = span[key];
 
       if (value) {
-        // Generates classes like xrpl-grid__col-md-6
+        // Generates classes like bds-grid__col-md-6
         spanClasses.push(classForSpan(key, value));
       }
     });
@@ -132,7 +132,7 @@ const PageGridCol = React.forwardRef<HTMLDivElement, PageGridColProps>((props, r
       const value = offset[key];
 
       if (value !== undefined) {
-        // Generates classes like xrpl-grid__offset-md-3
+        // Generates classes like bds-grid__offset-md-3
         offsetClasses.push(classForOffset(key, value));
       }
     });
@@ -142,8 +142,8 @@ const PageGridCol = React.forwardRef<HTMLDivElement, PageGridColProps>((props, r
   return (
     <div
       ref={ref}
-      // Note: Added "xrpl-grid__col" base class for consistent column initialization
-      className={clsx("xrpl-grid__col", className, spanClasses, offsetClasses)} 
+      // Note: Added "bds-grid__col" base class for consistent column initialization
+      className={clsx("bds-grid__col", className, spanClasses, offsetClasses)} 
       {...rest}
     />
   );

@@ -3,10 +3,10 @@
 // A namespaced grid layer that reuses Bootstrap's grid mixins while providing
 // XRPL-specific gutters and container padding.
 
-$xrpl-grid-gutter: 8px;
+$bds-grid-gutter: 8px;
 
 // Custom mixin that accounts for gap spacing in width calculations
-@mixin xrpl-make-col($size, $columns) {
+@mixin bds-make-col($size, $columns) {
   flex: 0 0 auto;
   // Calculate width accounting for gap spacing
   // Formula: width per column * span + gap spacing between spanned columns
@@ -14,29 +14,29 @@ $xrpl-grid-gutter: 8px;
   // Total available width: 100% - (gap * total gaps)
   // Width per column: available width / columns
   // For span of $size: (width per column * size) + (gap * (size - 1))
-  width: calc(((100% - (#{$xrpl-grid-gutter} * (#{$columns} - 1))) / #{$columns}) * #{$size} + (#{$xrpl-grid-gutter} * (#{$size} - 1)));
+  width: calc(((100% - (#{$bds-grid-gutter} * (#{$columns} - 1))) / #{$columns}) * #{$size} + (#{$bds-grid-gutter} * (#{$size} - 1)));
 }
 
-@mixin xrpl-grid-generate-cols($columns, $suffix: null) {
+@mixin bds-grid-generate-cols($columns, $suffix: null) {
   @for $i from 1 through $columns {
-    $selector: if($suffix, ".xrpl-grid__col-#{$suffix}-#{$i}", ".xrpl-grid__col-#{$i}");
+    $selector: if($suffix, ".bds-grid__col-#{$suffix}-#{$i}", ".bds-grid__col-#{$i}");
 
     #{$selector} {
-      @include xrpl-make-col($i, $columns);
+      @include bds-make-col($i, $columns);
     }
   }
 }
 
-@mixin xrpl-grid-generate-auto($suffix: null) {
-  $selector: if($suffix, ".xrpl-grid__col-#{$suffix}-auto", ".xrpl-grid__col-auto");
+@mixin bds-grid-generate-auto($suffix: null) {
+  $selector: if($suffix, ".bds-grid__col-#{$suffix}-auto", ".bds-grid__col-auto");
 
   #{$selector} {
     @include make-col-auto();
   }
 }
 
-@mixin xrpl-grid-generate-fill($suffix: null) {
-  $selector: if($suffix, ".xrpl-grid__col-#{$suffix}-fill", ".xrpl-grid__col-fill");
+@mixin bds-grid-generate-fill($suffix: null) {
+  $selector: if($suffix, ".bds-grid__col-#{$suffix}-fill", ".bds-grid__col-fill");
 
   #{$selector} {
     flex: 1 0 0;
@@ -44,9 +44,9 @@ $xrpl-grid-gutter: 8px;
   }
 }
 
-@mixin xrpl-grid-generate-offsets($columns, $suffix: null) {
+@mixin bds-grid-generate-offsets($columns, $suffix: null) {
   @for $i from 0 through ($columns - 1) {
-    $selector: if($suffix, ".xrpl-grid__offset-#{$suffix}-#{$i}", ".xrpl-grid__offset-#{$i}");
+    $selector: if($suffix, ".bds-grid__offset-#{$suffix}-#{$i}", ".bds-grid__offset-#{$i}");
 
     #{$selector} {
       @include make-col-offset($i, $columns);
@@ -55,43 +55,43 @@ $xrpl-grid-gutter: 8px;
 }
 
 // Mixin to generate responsive base column classes (1-12) with built-in breakpoint behavior
-@mixin xrpl-grid-generate-responsive-base-cols() {
+@mixin bds-grid-generate-responsive-base-cols() {
   @for $i from 1 through 12 {
-    .xrpl-grid__col-#{$i} {
+    .bds-grid__col-#{$i} {
       // Base breakpoint (4 columns): if span > 4, clamp to 4 (which gives 4/4 = 100%)
       @if $i > 4 {
-        @include xrpl-make-col(4, 4);
+        @include bds-make-col(4, 4);
       } @else {
-        @include xrpl-make-col($i, 4);
+        @include bds-make-col($i, 4);
       }
 
       // SM breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
       @include media-breakpoint-up(sm) {
         @if $i > 8 {
-          @include xrpl-make-col(8, 8);
+          @include bds-make-col(8, 8);
         } @else {
-          @include xrpl-make-col($i, 8);
+          @include bds-make-col($i, 8);
         }
       }
 
       // MD breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
       @include media-breakpoint-up(md) {
         @if $i > 8 {
-          @include xrpl-make-col(8, 8);
+          @include bds-make-col(8, 8);
         } @else {
-          @include xrpl-make-col($i, 8);
+          @include bds-make-col($i, 8);
         }
       }
 
       // LG+ breakpoints (12 columns): always calculate based on 12 cols
       @include media-breakpoint-up(lg) {
-        @include xrpl-make-col($i, 12);
+        @include bds-make-col($i, 12);
       }
     }
   }
 }
 
-.xrpl-grid {
+.bds-grid {
   &__container {
     width: 100%;
     margin-right: auto;
@@ -121,7 +121,7 @@ $xrpl-grid-gutter: 8px;
     display: flex;
     flex-wrap: wrap;
     // Use gap for spacing - works with our calc-based column widths
-    gap: $xrpl-grid-gutter;
+    gap: $bds-grid-gutter;
   }
 
   &__col {
@@ -137,38 +137,38 @@ $xrpl-grid-gutter: 8px;
 }
 
 // Base (0 - 575px) — 4-column grid with responsive behavior built-in
-@include xrpl-grid-generate-fill();
-@include xrpl-grid-generate-responsive-base-cols();
-@include xrpl-grid-generate-auto();
-@include xrpl-grid-generate-offsets(4);
+@include bds-grid-generate-fill();
+@include bds-grid-generate-responsive-base-cols();
+@include bds-grid-generate-auto();
+@include bds-grid-generate-offsets(4);
 
 // Tablet (≥576px) — maintain 8-column grid across sm/md ranges
 @include media-breakpoint-up(sm) {
-  @include xrpl-grid-generate-fill('sm');
-  @include xrpl-grid-generate-cols(8, 'sm');
-  @include xrpl-grid-generate-auto('sm');
-  @include xrpl-grid-generate-offsets(8, 'sm');
+  @include bds-grid-generate-fill('sm');
+  @include bds-grid-generate-cols(8, 'sm');
+  @include bds-grid-generate-auto('sm');
+  @include bds-grid-generate-offsets(8, 'sm');
 }
 
 @include media-breakpoint-up(md) {
-  @include xrpl-grid-generate-fill('md');
-  @include xrpl-grid-generate-cols(8, 'md');
-  @include xrpl-grid-generate-auto('md');
-  @include xrpl-grid-generate-offsets(8, 'md');
+  @include bds-grid-generate-fill('md');
+  @include bds-grid-generate-cols(8, 'md');
+  @include bds-grid-generate-auto('md');
+  @include bds-grid-generate-offsets(8, 'md');
 }
 
 // Large (≥992px) — 12-column grid
 @include media-breakpoint-up(lg) {
-  @include xrpl-grid-generate-fill('lg');
-  @include xrpl-grid-generate-cols(12, 'lg');
-  @include xrpl-grid-generate-auto('lg');
-  @include xrpl-grid-generate-offsets(12, 'lg');
+  @include bds-grid-generate-fill('lg');
+  @include bds-grid-generate-cols(12, 'lg');
+  @include bds-grid-generate-auto('lg');
+  @include bds-grid-generate-offsets(12, 'lg');
 }
 
 // XL (≥1280px) — retain 12-column grid with wider margins
 @include media-breakpoint-up(xl) {
-  @include xrpl-grid-generate-fill('xl');
-  @include xrpl-grid-generate-cols(12, 'xl');
-  @include xrpl-grid-generate-auto('xl');
-  @include xrpl-grid-generate-offsets(12, 'xl');
+  @include bds-grid-generate-fill('xl');
+  @include bds-grid-generate-cols(12, 'xl');
+  @include bds-grid-generate-auto('xl');
+  @include bds-grid-generate-offsets(12, 'xl');
 }

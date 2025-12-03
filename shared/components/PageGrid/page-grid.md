@@ -228,22 +228,22 @@ Center content or create spacing with offsets:
 The component generates the following CSS classes:
 
 ### Container
-- `xrpl-grid__container`
+- `bds-grid__container`
 
 ### Row
-- `xrpl-grid__row`
+- `bds-grid__row`
 
 ### Column Spans
-- `xrpl-grid__col-{number}` (e.g., `xrpl-grid__col-6`)
-- `xrpl-grid__col-auto`
-- `xrpl-grid__col` (for fill)
-- `xrpl-grid__col-{breakpoint}-{number}` (e.g., `xrpl-grid__col-md-6`)
-- `xrpl-grid__col-{breakpoint}-auto`
-- `xrpl-grid__col-{breakpoint}` (for fill)
+- `bds-grid__col-{number}` (e.g., `bds-grid__col-6`)
+- `bds-grid__col-auto`
+- `bds-grid__col` (for fill)
+- `bds-grid__col-{breakpoint}-{number}` (e.g., `bds-grid__col-md-6`)
+- `bds-grid__col-{breakpoint}-auto`
+- `bds-grid__col-{breakpoint}` (for fill)
 
 ### Column Offsets
-- `xrpl-grid__offset-{number}` (e.g., `xrpl-grid__offset-2`)
-- `xrpl-grid__offset-{breakpoint}-{number}` (e.g., `xrpl-grid__offset-md-2`)
+- `bds-grid__offset-{number}` (e.g., `bds-grid__offset-2`)
+- `bds-grid__offset-{breakpoint}-{number}` (e.g., `bds-grid__offset-md-2`)
 
 ## TypeScript Types
 
