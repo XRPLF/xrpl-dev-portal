@@ -5,12 +5,24 @@
 
 $xrpl-grid-gutter: 8px;
 
+// Custom mixin that accounts for gap spacing in width calculations
+@mixin xrpl-make-col($size, $columns) {
+  flex: 0 0 auto;
+  // Calculate width accounting for gap spacing
+  // Formula: width per column * span + gap spacing between spanned columns
+  // Total gaps in grid: ($columns - 1)
+  // Total available width: 100% - (gap * total gaps)
+  // Width per column: available width / columns
+  // For span of $size: (width per column * size) + (gap * (size - 1))
+  width: calc(((100% - (#{$xrpl-grid-gutter} * (#{$columns} - 1))) / #{$columns}) * #{$size} + (#{$xrpl-grid-gutter} * (#{$size} - 1)));
+}
+
 @mixin xrpl-grid-generate-cols($columns, $suffix: null) {
   @for $i from 1 through $columns {
     $selector: if($suffix, ".xrpl-grid__col-#{$suffix}-#{$i}", ".xrpl-grid__col-#{$i}");
 
     #{$selector} {
-      @include make-col($i, $columns);
+      @include xrpl-make-col($i, $columns);
     }
   }
 }
@@ -37,6 +49,43 @@ $xrpl-grid-gutter: 8px;
 
     #{$selector} {
       @include make-col-offset($i, $columns);
+    }
+  }
+}
+
+// Mixin to generate responsive base column classes (1-12) with built-in breakpoint behavior
+@mixin xrpl-grid-generate-responsive-base-cols() {
+  @for $i from 1 through 12 {
+    .xrpl-grid__col-#{$i} {
+      // Base breakpoint (4 columns): if span > 4, clamp to 4 (which gives 4/4 = 100%)
+      @if $i > 4 {
+        @include xrpl-make-col(4, 4);
+      } @else {
+        @include xrpl-make-col($i, 4);
+      }
+
+      // SM breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
+      @include media-breakpoint-up(sm) {
+        @if $i > 8 {
+          @include xrpl-make-col(8, 8);
+        } @else {
+          @include xrpl-make-col($i, 8);
+        }
+      }
+
+      // MD breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
+      @include media-breakpoint-up(md) {
+        @if $i > 8 {
+          @include xrpl-make-col(8, 8);
+        } @else {
+          @include xrpl-make-col($i, 8);
+        }
+      }
+
+      // LG+ breakpoints (12 columns): always calculate based on 12 cols
+      @include media-breakpoint-up(lg) {
+        @include xrpl-make-col($i, 12);
+      }
     }
   }
 }
@@ -68,17 +117,26 @@ $xrpl-grid-gutter: 8px;
   }
 
   &__row {
-    @include make-row($xrpl-grid-gutter);
+    display: flex;
+    flex-wrap: wrap;
+    // Use gap for spacing - works with our calc-based column widths
+    gap: $xrpl-grid-gutter;
   }
 
   &__col {
-    @include make-col-ready();
+    box-sizing: border-box;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    // No padding/margin for gutters - spacing handled by gap on row
+    // Column widths are calculated to account for gap spacing
+    // Padding can be added via style prop without affecting grid spacing
   }
 }
 
-// Base (0 - 575px) — 4-column grid
+// Base (0 - 575px) — 4-column grid with responsive behavior built-in
 @include xrpl-grid-generate-fill();
-@include xrpl-grid-generate-cols(4);
+@include xrpl-grid-generate-responsive-base-cols();
 @include xrpl-grid-generate-auto();
 @include xrpl-grid-generate-offsets(4);
 
