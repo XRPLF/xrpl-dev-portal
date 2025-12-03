@@ -99,6 +99,10 @@ const PageGridCol = React.forwardRef<HTMLDivElement, PageGridColProps>((props, r
 
     if (baseSpan) {
       spanClasses.push(classForSpan(null, baseSpan));
+    } else {
+      // If no base span is provided, default to full width (4 columns for base breakpoint)
+      // This ensures columns are full width on mobile when only larger breakpoints are specified
+      spanClasses.push(classForSpan(null, 4));
     }
 
     // Handles sm, md, lg, xl breakpoints (with prefix)
