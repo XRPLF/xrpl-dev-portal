@@ -15125,6 +15125,84 @@ html:not(.light) .bds-link.bds-link--disabled:visited {
   display: none;
 }
 
+hr.bds-divider,
+.bds-divider {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;
+  opacity: 1;
+  color: transparent;
+  background-color: #454549;
+}
+
+.bds-divider--horizontal {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+}
+
+.bds-divider--vertical {
+  display: block;
+  height: auto;
+  min-height: 1px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.bds-divider--thin.bds-divider--horizontal {
+  height: 0.5px;
+}
+.bds-divider--thin.bds-divider--vertical {
+  width: 0.5px;
+}
+
+.bds-divider--regular.bds-divider--horizontal {
+  height: 1px;
+}
+.bds-divider--regular.bds-divider--vertical {
+  width: 1px;
+}
+
+.bds-divider--strong.bds-divider--horizontal {
+  height: 2px;
+}
+.bds-divider--strong.bds-divider--vertical {
+  width: 2px;
+}
+
+hr.bds-divider--gray,
+.bds-divider--gray {
+  background-color: #454549;
+}
+
+hr.bds-divider--base,
+.bds-divider--base {
+  background-color: #FFFFFF;
+}
+
+hr.bds-divider--green,
+.bds-divider--green {
+  background-color: #21E46B;
+}
+
+html.light hr.bds-divider--gray,
+html.light .bds-divider--gray {
+  background-color: #C1C1C2;
+}
+html.light hr.bds-divider--base,
+html.light .bds-divider--base {
+  background-color: #111112;
+}
+html.light hr.bds-divider--green,
+html.light .bds-divider--green {
+  background-color: #21E46B;
+}
+
 pre {
   color: #FFFFFF;
   background-color: #232325;
