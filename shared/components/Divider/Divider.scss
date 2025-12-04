@@ -77,10 +77,11 @@ hr.bds-divider,
 
 // Vertical divider - spans full height, uses width for stroke
 .bds-divider--vertical {
-  display: inline-block;
-  height: 100%;
-  min-height: 100%;
-  vertical-align: middle;
+  display: block;
+  height: auto;
+  min-height: 1px; // Fallback minimum
+  align-self: stretch; // Stretch to fill flex container height
+  flex-shrink: 0; // Prevent collapsing in flex layouts
   
   // Width set by weight modifier
 }
