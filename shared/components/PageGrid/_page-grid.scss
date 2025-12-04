@@ -65,16 +65,7 @@ $bds-grid-gutter: 8px;
         @include bds-make-col($i, 4);
       }
 
-      // SM breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
-      @include media-breakpoint-up(sm) {
-        @if $i > 8 {
-          @include bds-make-col(8, 8);
-        } @else {
-          @include bds-make-col($i, 8);
-        }
-      }
-
-      // MD breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
+      // SM / MD breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
       @include media-breakpoint-up(md) {
         @if $i > 8 {
           @include bds-make-col(8, 8);
@@ -143,13 +134,6 @@ $bds-grid-gutter: 8px;
 @include bds-grid-generate-offsets(4);
 
 // Tablet (≥576px) — maintain 8-column grid across sm/md ranges
-@include media-breakpoint-up(sm) {
-  @include bds-grid-generate-fill('sm');
-  @include bds-grid-generate-cols(8, 'sm');
-  @include bds-grid-generate-auto('sm');
-  @include bds-grid-generate-offsets(8, 'sm');
-}
-
 @include media-breakpoint-up(md) {
   @include bds-grid-generate-fill('md');
   @include bds-grid-generate-cols(8, 'md');
