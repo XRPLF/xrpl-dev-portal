@@ -9,7 +9,7 @@
 // .bds-divider--regular     - Regular stroke weight (1px, default)
 // .bds-divider--strong      - Strong stroke weight (2px)
 // .bds-divider--gray        - Gray color variant (default)
-// .bds-divider--black       - Black color variant
+// .bds-divider--base        - Base color variant (high contrast, adapts to theme)
 // .bds-divider--green       - Green color variant
 //
 // Note: This file is imported within xrpl.scss after Bootstrap and project
@@ -27,7 +27,7 @@ $bds-divider-strong: 2px;
 // Colors - Dark Mode (default, mapped from _colors.scss)
 // Site defaults to dark mode, uses html.light for light mode
 $bds-divider-gray-dark: $gray-600;    // #454549 - visible on dark backgrounds
-$bds-divider-black-dark: $white;      // #FFFFFF - inverted for dark mode
+$bds-divider-base-dark: $white;       // #FFFFFF - high contrast for dark mode
 $bds-divider-green-dark: $green-300;  // #21E46B - brand color stays same
 
 // Colors - Light Mode (mapped from _colors.scss)
@@ -35,7 +35,7 @@ $bds-divider-green-dark: $green-300;  // #21E46B - brand color stays same
 // Figma Black (#141414) → closest match: $gray-900
 // Figma Green 300 (#21E46B) → exact match: $green-300
 $bds-divider-gray-light: $gray-300;   // #C1C1C2
-$bds-divider-black-light: $gray-900;  // #111112
+$bds-divider-base-light: $gray-900;   // #111112 - high contrast for light mode
 $bds-divider-green-light: $green-300; // #21E46B
 
 // =============================================================================
@@ -135,10 +135,10 @@ hr.bds-divider--gray,
   background-color: $bds-divider-gray-dark;
 }
 
-// Black variant - uses white for contrast on dark backgrounds
-hr.bds-divider--black,
-.bds-divider--black {
-  background-color: $bds-divider-black-dark;
+// Base variant - high contrast, adapts to theme (white in dark mode, black in light mode)
+hr.bds-divider--base,
+.bds-divider--base {
+  background-color: $bds-divider-base-dark;
 }
 
 // Green variant - branded, accent separation
@@ -159,10 +159,10 @@ html.light {
     background-color: $bds-divider-gray-light;
   }
   
-  // Black variant in light mode - use dark color for contrast
-  hr.bds-divider--black,
-  .bds-divider--black {
-    background-color: $bds-divider-black-light;
+  // Base variant in light mode - use dark color for contrast
+  hr.bds-divider--base,
+  .bds-divider--base {
+    background-color: $bds-divider-base-light;
   }
   
   // Green variant stays the same in light mode (brand color)

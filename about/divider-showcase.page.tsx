@@ -38,7 +38,7 @@ export default function DividerShowcase() {
                     <h6 className="mb-0">Gray</h6>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <h6 className="mb-0">Black</h6>
+                    <h6 className="mb-0">Base</h6>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
                     <h6 className="mb-0">Green</h6>
@@ -56,7 +56,7 @@ export default function DividerShowcase() {
                     <Divider weight="thin" color="gray" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Divider weight="thin" color="black" />
+                    <Divider weight="thin" color="base" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
                     <Divider weight="thin" color="green" />
@@ -74,7 +74,7 @@ export default function DividerShowcase() {
                     <Divider weight="regular" color="gray" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Divider weight="regular" color="black" />
+                    <Divider weight="regular" color="base" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
                     <Divider weight="regular" color="green" />
@@ -92,7 +92,7 @@ export default function DividerShowcase() {
                     <Divider weight="strong" color="gray" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Divider weight="strong" color="black" />
+                    <Divider weight="strong" color="base" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
                     <Divider weight="strong" color="green" />
@@ -118,7 +118,7 @@ export default function DividerShowcase() {
                     <h6 className="mb-0">Gray</h6>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <h6 className="mb-0">Black</h6>
+                    <h6 className="mb-0">Base</h6>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
                     <h6 className="mb-0">Green</h6>
@@ -138,7 +138,7 @@ export default function DividerShowcase() {
                     <Divider orientation="vertical" weight="thin" color="gray" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }} className="d-flex justify-content-center">
-                    <Divider orientation="vertical" weight="thin" color="black" />
+                    <Divider orientation="vertical" weight="thin" color="base" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }} className="d-flex justify-content-center">
                     <Divider orientation="vertical" weight="thin" color="green" />
@@ -158,7 +158,7 @@ export default function DividerShowcase() {
                     <Divider orientation="vertical" weight="regular" color="gray" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }} className="d-flex justify-content-center">
-                    <Divider orientation="vertical" weight="regular" color="black" />
+                    <Divider orientation="vertical" weight="regular" color="base" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }} className="d-flex justify-content-center">
                     <Divider orientation="vertical" weight="regular" color="green" />
@@ -178,7 +178,7 @@ export default function DividerShowcase() {
                     <Divider orientation="vertical" weight="strong" color="gray" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }} className="d-flex justify-content-center">
-                    <Divider orientation="vertical" weight="strong" color="black" />
+                    <Divider orientation="vertical" weight="strong" color="base" />
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }} className="d-flex justify-content-center">
                     <Divider orientation="vertical" weight="strong" color="green" />
@@ -236,7 +236,7 @@ export default function DividerShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '40px', height: '40px', backgroundColor: '#FFFFFF', borderRadius: '4px', flexShrink: 0, border: '1px solid var(--bs-border-color, #dee2e6)' }}></div>
                       <div>
-                        <strong>Black:</strong> <code>$white</code>
+                        <strong>Base:</strong> <code>$white</code>
                         <br />
                         <small className="text-muted">#FFFFFF</small>
                       </div>
@@ -267,7 +267,7 @@ export default function DividerShowcase() {
                     <div className="d-flex flex-row align-items-center gap-3">
                       <div style={{ width: '40px', height: '40px', backgroundColor: '#111112', borderRadius: '4px', flexShrink: 0, border: '1px solid var(--bs-border-color, #dee2e6)' }}></div>
                       <div>
-                        <strong>Black:</strong> <code>$gray-900</code>
+                        <strong>Base:</strong> <code>$gray-900</code>
                         <br />
                         <small className="text-muted">#111112</small>
                       </div>
@@ -290,8 +290,8 @@ export default function DividerShowcase() {
                   <Divider color="gray" weight="regular" />
                 </div>
                 <div>
-                  <h6 className="mb-3">Black - High contrast separation</h6>
-                  <Divider color="black" weight="regular" />
+                  <h6 className="mb-3">Base - High contrast separation (adapts to theme)</h6>
+                  <Divider color="base" weight="regular" />
                 </div>
                 <div>
                   <h6 className="mb-3">Green - Brand accent separation</h6>
@@ -433,7 +433,7 @@ export default function DividerShowcase() {
                 {/* color */}
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>color</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>'gray' | 'black' | 'green'</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>'gray' | 'base' | 'green'</code></div>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>'gray'</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>Sets the divider color</div>
                 </div>
