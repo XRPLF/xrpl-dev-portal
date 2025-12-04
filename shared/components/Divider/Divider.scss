@@ -1,0 +1,165 @@
+// BDS Divider Component Styles
+// Brand Design System - Visual separator component
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-divider              - Base divider (removes default hr styling)
+// .bds-divider--horizontal  - Horizontal orientation (default)
+// .bds-divider--vertical    - Vertical orientation
+// .bds-divider--thin        - Thin stroke weight (0.5px)
+// .bds-divider--regular     - Regular stroke weight (1px, default)
+// .bds-divider--strong      - Strong stroke weight (2px)
+// .bds-divider--gray        - Gray color variant (default)
+// .bds-divider--black       - Black color variant
+// .bds-divider--green       - Green color variant
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Stroke Weights (from Figma design spec)
+$bds-divider-thin: 0.5px;
+$bds-divider-regular: 1px;
+$bds-divider-strong: 2px;
+
+// Colors - Dark Mode (default, mapped from _colors.scss)
+// Site defaults to dark mode, uses html.light for light mode
+$bds-divider-gray-dark: $gray-600;    // #454549 - visible on dark backgrounds
+$bds-divider-black-dark: $white;      // #FFFFFF - inverted for dark mode
+$bds-divider-green-dark: $green-300;  // #21E46B - brand color stays same
+
+// Colors - Light Mode (mapped from _colors.scss)
+// Figma Neutral300 (#CAD4DF) → closest match: $gray-300
+// Figma Black (#141414) → closest match: $gray-900
+// Figma Green 300 (#21E46B) → exact match: $green-300
+$bds-divider-gray-light: $gray-300;   // #C1C1C2
+$bds-divider-black-light: $gray-900;  // #111112
+$bds-divider-green-light: $green-300; // #21E46B
+
+// =============================================================================
+// Base Divider Styles
+// =============================================================================
+
+// Use more specific selector to override Bootstrap hr styles
+// hr.bds-divider has higher specificity than just hr
+hr.bds-divider,
+.bds-divider {
+  // Reset default <hr> styles and override Bootstrap/global hr styles
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;
+  opacity: 1; // Override Bootstrap's hr opacity: 0.25
+  color: transparent; // Override inherited color
+  
+  // Default to gray color (dark mode default)
+  background-color: $bds-divider-gray-dark;
+}
+
+// =============================================================================
+// Orientation Modifiers
+// =============================================================================
+
+// Horizontal divider - spans full width, uses height for stroke
+.bds-divider--horizontal {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  
+  // Height set by weight modifier
+}
+
+// Vertical divider - spans full height, uses width for stroke
+.bds-divider--vertical {
+  display: inline-block;
+  height: 100%;
+  min-height: 100%;
+  vertical-align: middle;
+  
+  // Width set by weight modifier
+}
+
+// =============================================================================
+// Weight Modifiers
+// =============================================================================
+
+// Thin weight (0.5px)
+.bds-divider--thin {
+  &.bds-divider--horizontal {
+    height: $bds-divider-thin;
+  }
+  
+  &.bds-divider--vertical {
+    width: $bds-divider-thin;
+  }
+}
+
+// Regular weight (1px) - default
+.bds-divider--regular {
+  &.bds-divider--horizontal {
+    height: $bds-divider-regular;
+  }
+  
+  &.bds-divider--vertical {
+    width: $bds-divider-regular;
+  }
+}
+
+// Strong weight (2px)
+.bds-divider--strong {
+  &.bds-divider--horizontal {
+    height: $bds-divider-strong;
+  }
+  
+  &.bds-divider--vertical {
+    width: $bds-divider-strong;
+  }
+}
+
+// =============================================================================
+// Color Modifiers - Dark Mode (Default)
+// =============================================================================
+// Site defaults to dark mode, so base styles are for dark backgrounds
+
+// Gray variant (default) - subtle, neutral separation
+.bds-divider--gray {
+  background-color: $bds-divider-gray-dark;
+}
+
+// Black variant - uses white for contrast on dark backgrounds
+.bds-divider--black {
+  background-color: $bds-divider-black-dark;
+}
+
+// Green variant - branded, accent separation
+.bds-divider--green {
+  background-color: $bds-divider-green-dark;
+}
+
+// =============================================================================
+// Light Mode Styles
+// =============================================================================
+// Site uses html.light class for light mode
+
+html.light {
+  // Gray variant in light mode
+  .bds-divider--gray {
+    background-color: $bds-divider-gray-light;
+  }
+  
+  // Black variant in light mode - use dark color for contrast
+  .bds-divider--black {
+    background-color: $bds-divider-black-light;
+  }
+  
+  // Green variant stays the same in light mode (brand color)
+  .bds-divider--green {
+    background-color: $bds-divider-green-light;
+  }
+}
