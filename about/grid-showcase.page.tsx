@@ -81,6 +81,8 @@ export default function GridShowcase() {
   <PageGrid.Row>
     <PageGrid.Col span={6}>Column 1</PageGrid.Col>
     <PageGrid.Col span={6}>Column 2</PageGrid.Col>
+    <PageGrid.Col>[No span set]</PageGrid.Col>
+    <PageGrid.Col>[No span set]</PageGrid.Col>
   </PageGrid.Row>
 </PageGrid>`}
             >
@@ -88,8 +90,8 @@ export default function GridShowcase() {
                 <PageGridRow>
                   <BorderedCol span={6}>span={6}</BorderedCol>
                   <BorderedCol span={6}>span={6}</BorderedCol>
-                  <BorderedCol>test</BorderedCol>
-                  <BorderedCol>test</BorderedCol>
+                  <BorderedCol>[No span set]</BorderedCol>
+                  <BorderedCol>[No span set]</BorderedCol>
                 </PageGridRow>
               </PageGrid>
             </GridDemo>
