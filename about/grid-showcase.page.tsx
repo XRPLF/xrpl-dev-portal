@@ -1,4 +1,3 @@
-import { RFC_2822 } from "moment";
 import * as React from "react";
 import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";
 
