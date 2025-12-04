@@ -15175,24 +15175,30 @@ hr.bds-divider,
   width: 2px;
 }
 
+hr.bds-divider--gray,
 .bds-divider--gray {
   background-color: #454549;
 }
 
+hr.bds-divider--black,
 .bds-divider--black {
   background-color: #FFFFFF;
 }
 
+hr.bds-divider--green,
 .bds-divider--green {
   background-color: #21E46B;
 }
 
+html.light hr.bds-divider--gray,
 html.light .bds-divider--gray {
   background-color: #C1C1C2;
 }
+html.light hr.bds-divider--black,
 html.light .bds-divider--black {
   background-color: #111112;
 }
+html.light hr.bds-divider--green,
 html.light .bds-divider--green {
   background-color: #21E46B;
 }

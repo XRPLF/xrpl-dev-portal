@@ -127,18 +127,22 @@ hr.bds-divider,
 // Color Modifiers - Dark Mode (Default)
 // =============================================================================
 // Site defaults to dark mode, so base styles are for dark backgrounds
+// Use hr.bds-divider--* for higher specificity to override base hr.bds-divider
 
 // Gray variant (default) - subtle, neutral separation
+hr.bds-divider--gray,
 .bds-divider--gray {
   background-color: $bds-divider-gray-dark;
 }
 
 // Black variant - uses white for contrast on dark backgrounds
+hr.bds-divider--black,
 .bds-divider--black {
   background-color: $bds-divider-black-dark;
 }
 
 // Green variant - branded, accent separation
+hr.bds-divider--green,
 .bds-divider--green {
   background-color: $bds-divider-green-dark;
 }
@@ -150,16 +154,19 @@ hr.bds-divider,
 
 html.light {
   // Gray variant in light mode
+  hr.bds-divider--gray,
   .bds-divider--gray {
     background-color: $bds-divider-gray-light;
   }
   
   // Black variant in light mode - use dark color for contrast
+  hr.bds-divider--black,
   .bds-divider--black {
     background-color: $bds-divider-black-light;
   }
   
   // Green variant stays the same in light mode (brand color)
+  hr.bds-divider--green,
   .bds-divider--green {
     background-color: $bds-divider-green-light;
   }
