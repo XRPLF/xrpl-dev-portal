@@ -5,8 +5,8 @@ export interface DividerProps {
   orientation?: 'horizontal' | 'vertical';
   /** Stroke weight - controls visual thickness */
   weight?: 'thin' | 'regular' | 'strong';
-  /** Color variant - gray (default), black for stronger contrast, green for brand emphasis */
-  color?: 'gray' | 'black' | 'green';
+  /** Color variant - gray (default), base for high contrast (adapts to theme), green for brand emphasis */
+  color?: 'gray' | 'base' | 'green';
   /** Additional CSS classes */
   className?: string;
   /** Whether the divider is purely decorative (hides from screen readers) */
@@ -29,8 +29,8 @@ export interface DividerProps {
  * // Strong green divider for emphasis
  * <Divider weight="strong" color="green" />
  * 
- * // Thin black divider
- * <Divider weight="thin" color="black" />
+ * // Thin base divider (high contrast - adapts to theme)
+ * <Divider weight="thin" color="base" />
  */
 export const Divider: React.FC<DividerProps> = ({
   orientation = 'horizontal',

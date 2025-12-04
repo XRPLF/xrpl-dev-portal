@@ -15180,8 +15180,8 @@ hr.bds-divider--gray,
   background-color: #454549;
 }
 
-hr.bds-divider--black,
-.bds-divider--black {
+hr.bds-divider--base,
+.bds-divider--base {
   background-color: #FFFFFF;
 }
 
@@ -15194,8 +15194,8 @@ html.light hr.bds-divider--gray,
 html.light .bds-divider--gray {
   background-color: #C1C1C2;
 }
-html.light hr.bds-divider--black,
-html.light .bds-divider--black {
+html.light hr.bds-divider--base,
+html.light .bds-divider--base {
   background-color: #111112;
 }
 html.light hr.bds-divider--green,

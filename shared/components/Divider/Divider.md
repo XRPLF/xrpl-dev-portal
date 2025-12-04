@@ -8,7 +8,7 @@ The Divider component is a visual separator that creates clear boundaries betwee
 
 - **Two Orientations**: Horizontal (default) and Vertical
 - **Three Stroke Weights**: Thin (0.5px), Regular (1px), Strong (2px)
-- **Three Color Variants**: Gray (default), Black, Green
+- **Three Color Variants**: Gray (default), Base (adapts to theme), Green
 - **Theme Support**: Automatic light/dark mode adaptation
 - **Accessibility**: Configurable for decorative or semantic use
 - **Flexible Sizing**: Inherits width/height from parent container
@@ -21,8 +21,8 @@ interface DividerProps {
   orientation?: 'horizontal' | 'vertical';
   /** Stroke weight - controls visual thickness */
   weight?: 'thin' | 'regular' | 'strong';
-  /** Color variant - gray (default), black for stronger contrast, green for brand emphasis */
-  color?: 'gray' | 'black' | 'green';
+  /** Color variant - gray (default), base for high contrast (adapts to theme), green for brand emphasis */
+  color?: 'gray' | 'base' | 'green';
   /** Additional CSS classes */
   className?: string;
   /** Whether the divider is purely decorative (hides from screen readers) */
@@ -136,18 +136,18 @@ Neutral, subtle separation that works in most contexts without drawing attention
 <Divider />
 ```
 
-### Black
+### Base
 
-High-contrast separation for maximum visibility. In dark mode, this renders as white for proper contrast.
+High-contrast separation that adapts to the theme - renders as white in dark mode and black in light mode.
 
 **Best For:**
-- When stronger contrast is needed
-- Light backgrounds where gray may be too subtle
+- When maximum contrast is needed
 - Important structural boundaries
+- Universal high-visibility dividers
 
 **Usage:**
 ```tsx
-<Divider color="black" />
+<Divider color="base" />
 ```
 
 ### Green
@@ -297,7 +297,7 @@ Dividers are non-interactive elements and do not receive focus.
 ### Color Contrast
 
 - **Gray variant**: Meets contrast requirements on dark backgrounds; may need weight adjustment on light backgrounds
-- **Black variant**: High contrast in both themes (renders as white in dark mode)
+- **Base variant**: High contrast in both themes (adapts to theme - white in dark, black in light)
 - **Green variant**: Brand color provides good contrast in both themes
 
 ## Best Practices
@@ -312,7 +312,7 @@ Dividers are non-interactive elements and do not receive focus.
 
 5. **Maintain alignment** - Dividers should align with content; avoid full-width dividers in padded containers
 
-6. **Use color purposefully** - Reserve green for branded emphasis; gray for most cases; black for high contrast needs
+6. **Use color purposefully** - Reserve green for branded emphasis; gray for most cases; base for high contrast needs
 
 7. **Test in both themes** - Verify dividers are visible and appropriate in both light and dark modes
 
@@ -325,7 +325,7 @@ The component automatically adapts colors for light and dark modes:
 | Color | Dark Mode (Default) | Light Mode |
 |-------|---------------------|------------|
 | Gray | `$gray-600` (#454549) | `$gray-300` (#C1C1C2) |
-| Black | `$white` (#FFFFFF) | `$gray-900` (#111112) |
+| Base | `$white` (#FFFFFF) | `$gray-900` (#111112) |
 | Green | `$green-300` (#21E46B) | `$green-300` (#21E46B) |
 
 ## Related Components
