@@ -23,6 +23,7 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
+| [LendingProtocol][]               | {% badge %}In Development: TBD{% /badge %} | [Lending Protocol (Ripple Opensource)](https://opensource.ripple.com/docs/xls-66d-lending-protocol) |
 | [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="success" name="Tip" %}
@@ -169,7 +170,7 @@ See [Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md) f
 | Amendment    | Credentials |
 |:-------------|:------------|
 | Amendment ID | 1CB67D082CF7D9102412D34258CEDB400E659352D3B207348889297A6D90F5EF |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -867,6 +868,22 @@ With this amendment enabled, if an LP token is associated with a liquidity pool 
 2. The holder can receive frozen LP tokens, but can't send them out (similar to frozen trust lines).
 
 
+### fixIncludeKeyletFields
+[fixIncludeKeyletFields]: #fixincludekeyletfields
+
+| Amendment    | fixIncludeKeyletFields |
+|:-------------|:--------------------|
+| Amendment ID | 6143A27B71F7DAF9330ECA7C5EC3D54C8083A4FDEF7016737EEC06AB61E82EE0 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adds missing keylet fields to these ledger entries:
+  - `Sequence` to `Escrow` and `PayChannel`.
+  - `Owner` to `SignerList`.
+  - `OracleDocumentID` to `Oracle`.
+
+
 ### fixInnerObjTemplate
 [fixInnerObjTemplate]: #fixinnerobjtemplate
 
@@ -935,6 +952,19 @@ Fixes a bug where accounts can set their regular key pair to match their master 
 Without this fix, a user can unintentionally "black hole" their account by setting the regular key to match the master key, then disabling the master key. The network rejects transactions signed with the both-master-and-regular key pair because the code interprets them as being signed with the disabled master key before it recognizes that they are signed by the currently-enabled regular key.
 
 With this amendment enabled, a SetRegularKey transaction cannot set the regular key to match the master key; such a transaction results in the transaction code `temBAD_REGKEY`. Additionally, this amendment changes the signature verification code so that accounts which _already_ have their regular key set to match their master key can send transactions successfully using the key pair.
+
+
+### fixMPTDeliveredAmount
+[fixMPTDeliveredAmount]: #fixmptdeliveredamount
+
+| Amendment    | fixMPTDeliveredAmount |
+|:-------------|:----------------|
+| Amendment ID | AB8D932A5F338903FE5BCBD80B611FFED70839ABA3170E9CE01D947C0EDEDCF2 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adds missing `DeliveredAmount` and `delivered_amount` metadata fields from direct MPT `Payment` transactions.
 
 
 ### fixNFTokenDirV1
@@ -1106,6 +1136,21 @@ Ledger entries that were created before this amendment was enabled will get the 
 Without this amendment, some types of ledger entries don't have those fields, which makes it harder to trace the history of modifications to those ledger entries.
 
 
+### fixPriceOracleOrder
+[fixPriceOracleOrder]: #fixpriceoracleorder
+
+| Amendment    | fixPriceOracleOrder |
+|:-------------|:--------------------|
+| Amendment ID | FF2D1E13CF6D22427111B967BD504917F63A900CECD320D6FD3AC9FA90344631 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fixes an issue where the order of asset pair data is different from when a price oracle is created versus when it is updated.
+
+This amendment ensures asset pairs follow a canonical order at all times.
+
+
 ### fixQualityUpperBound
 [fixQualityUpperBound]: #fixqualityupperbound
 
@@ -1221,6 +1266,21 @@ Fixes a bug in [auto-bridging](../docs/concepts/tokens/decentralized-exchange/au
 Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](../docs/concepts/accounts/reserves.md#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
 
 With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.
+
+
+### fixTokenEscrowV1
+[fixTokenEscrowV1]: #fixtokenescrowv1
+
+| Amendment    | fixTokenEscrowV1 |
+|:-------------|:-----------------|
+| Amendment ID | 32B8614321F7E070419115ABEAB1742EA20F3E3AF34432B5E2F474F8083260DC |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fixes an accounting error in MPT escrows. Specifically, when an escrow unlocks MPTs that have a transfer fee, the system incorrectly reduces the MPT issuer's locked token balance by the gross amount (without fees) rather than the net amount (with fees). This leads to discrepancies in the token's total supply accounting.
+
+This amendment ensures that when escrowed MPTs are unlocked, the issuer's locked amount is reduced by the net amount, and the total supply is reduced by the transfer fees.
 
 
 ### fixTrustLinesToSelf
@@ -1384,6 +1444,21 @@ Without this amendment, "Immediate or Cancel" Offers that failed to move any fun
 This amendment adds several new invariants to protect the ledger against bugs in transaction processing. The developers intend to set it as open for voting after a set of several invariants are implemented. The invariants included are as follows:
 
 - When deleting an account, ensure that certain types of ledger entries are also deleted, including that account's `DirectoryNode`, `SignerList`, `NFTokenPage`, and `AMM` directories, if any, are deleted with it.
+
+
+### LendingProtocol
+[LendingProtocol]: #lendingprotocol
+
+| Amendment    | LendingProtocol |
+|:-------------|:-----------------|
+| Amendment ID | 565B90CA1AB2B9D42208ED10884188C64F9E19083DECB9634AAF06EB03299509 |
+| Status       | In Development |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
+
+Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066d-lending-protocol).
 
 
 ### MPTokensV1
