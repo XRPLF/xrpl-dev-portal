@@ -9,13 +9,14 @@
 $white:    #FFFFFF;
 $black:    #141414;
 
-// Gray (Neutral) - Original values (design tokens not ready)
 $gray-050: #FCFCFD;
-$gray-100: #F5F5F7;
-$gray-200: #E0E0E1;
-$gray-300: #C1C1C2;
-$gray-400: #A2A2A4;
-$gray-500: #838386;
+// Gray (Neutral) - New Design Tokens
+$gray-100: #F0F3F7;  // New design token
+$gray-200: #E6EAF0;  // New design token
+$gray-300: #CAD4DF;  // New design token (default)
+$gray-400: #8A919A;  // New design token
+$gray-500: #72777E;  // New design token
+// Legacy gray values (600-900 for dark mode)
 $gray-600: #454549;
 $gray-700: #343437;
 $gray-800: #232325;
@@ -190,4 +191,4 @@ $light-fg-disabled: $gray-400;
 $light-form-bg: $gray-200;
 $light-box-shadow: 0px 5px 20px 0px $gray-300;
 $light-link-hover-color: $blue-purple-500;
-$light-standout-bg: $gray-050;
+$light-standout-bg: $gray-100;
