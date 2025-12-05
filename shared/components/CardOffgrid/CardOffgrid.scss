@@ -1,0 +1,376 @@
+// BDS CardOffgrid Component Styles
+// Brand Design System - Feature card with icon, title, and description
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-card-offgrid                  - Base card (resets button/anchor styles)
+// .bds-card-offgrid--neutral         - Neutral gray color variant (default)
+// .bds-card-offgrid--green           - Green color variant
+// .bds-card-offgrid--disabled        - Disabled state
+// .bds-card-offgrid__overlay         - Hover gradient overlay
+// .bds-card-offgrid__icon-container  - Icon wrapper (84x84px)
+// .bds-card-offgrid__icon-image      - Image icon styling
+// .bds-card-offgrid__content         - Title and description wrapper
+// .bds-card-offgrid__title           - Card title (32px)
+// .bds-card-offgrid__description     - Card description (18px)
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
+//
+// Theme: Site defaults to DARK mode. Light mode uses html.light selector.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Dimensions (from Figma design spec)
+$bds-card-offgrid-width: 400px;
+$bds-card-offgrid-height: 480px;
+$bds-card-offgrid-padding: 24px;
+$bds-card-offgrid-icon-container: 84px;
+$bds-card-offgrid-icon-size: 68px;
+$bds-card-offgrid-content-gap: 40px;
+
+// Animation (from Figma design spec)
+$bds-card-offgrid-transition-duration: 200ms;
+$bds-card-offgrid-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// Typography - Title
+$bds-card-offgrid-title-size: 32px;
+$bds-card-offgrid-title-line-height: 40px;
+$bds-card-offgrid-title-letter-spacing: -1px;
+
+// Typography - Description
+$bds-card-offgrid-desc-size: 18px;
+$bds-card-offgrid-desc-line-height: 26.1px;
+$bds-card-offgrid-desc-letter-spacing: -0.5px;
+
+// -----------------------------------------------------------------------------
+// Dark Mode Colors (Default)
+// -----------------------------------------------------------------------------
+
+// Neutral variant - Dark Mode
+$bds-card-offgrid-neutral-default-dark: $gray-500;       // #72777E
+$bds-card-offgrid-neutral-hover-dark: $gray-400;         // #8A919A
+$bds-card-offgrid-neutral-pressed-dark: rgba($gray-500, 0.7); // 70% opacity
+$bds-card-offgrid-neutral-text-dark: $white;             // #FFFFFF
+
+// Green variant - Dark Mode
+$bds-card-offgrid-green-default-dark: $green-300;        // #21E46B
+$bds-card-offgrid-green-hover-dark: $green-200;          // #70EE97
+$bds-card-offgrid-green-pressed-dark: $green-400;        // #0DAA3E
+$bds-card-offgrid-green-text-dark: $black;               // #000000
+
+// Disabled - Dark Mode (30% opacity on gray-500)
+$bds-card-offgrid-disabled-opacity-dark: 0.3;
+$bds-card-offgrid-disabled-text-dark: $white;            // #FFFFFF
+
+// Focus ring - Dark Mode
+$bds-card-offgrid-focus-color-dark: $white;              // #FFFFFF
+
+// -----------------------------------------------------------------------------
+// Light Mode Colors
+// -----------------------------------------------------------------------------
+
+// Neutral variant - Light Mode
+$bds-card-offgrid-neutral-default-light: $gray-200;      // #E6EAF0
+$bds-card-offgrid-neutral-hover-light: $gray-300;        // #CAD4DF
+$bds-card-offgrid-neutral-pressed-light: $gray-400;      // #8A919A
+$bds-card-offgrid-neutral-text-light: $gray-900;         // #111112
+$bds-card-offgrid-neutral-text-hover-light: $black;      // #000000
+
+// Green variant - Light Mode
+$bds-card-offgrid-green-default-light: $green-200;       // #70EE97
+$bds-card-offgrid-green-hover-light: $green-300;         // #21E46B
+$bds-card-offgrid-green-pressed-light: $green-400;       // #0DAA3E
+$bds-card-offgrid-green-text-light: $black;              // #000000
+
+// Disabled - Light Mode
+$bds-card-offgrid-disabled-bg-light: $gray-100;          // #F0F3F7
+$bds-card-offgrid-disabled-text-light: $gray-500;        // #72777E
+
+// Focus ring - Light Mode
+$bds-card-offgrid-focus-color-light: $gray-900;          // #111112
+
+// =============================================================================
+// Base Card Styles
+// =============================================================================
+
+.bds-card-offgrid {
+  // Reset button/anchor styles
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+  
+  // Card layout
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: $bds-card-offgrid-width;
+  height: $bds-card-offgrid-height;
+  padding: $bds-card-offgrid-padding;
+  overflow: hidden;
+  
+  // Animation
+  transition: background-color $bds-card-offgrid-transition-duration $bds-card-offgrid-transition-timing,
+              opacity $bds-card-offgrid-transition-duration $bds-card-offgrid-transition-timing;
+  
+  // Focus styles - Dark Mode (default)
+  // 1px gap between card and focus ring
+  &:focus {
+    outline: 2px solid $bds-card-offgrid-focus-color-dark;
+    outline-offset: 1px;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $bds-card-offgrid-focus-color-dark;
+    outline-offset: 2px;
+  }
+}
+
+// =============================================================================
+// Overlay (Color wipe animation - "Window Shade" effect)
+// =============================================================================
+// Hover in: shade rises from bottom to top (reveals)
+// Hover out: shade falls from top to bottom (hides)
+
+.bds-card-offgrid__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  
+  // Default: hidden (shade is "rolled up" at bottom, top is 100% clipped)
+  // When transitioning TO this state, the top inset increases = shade falls down
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path $bds-card-offgrid-transition-duration $bds-card-offgrid-transition-timing;
+}
+
+// Hovered state: shade fully raised (visible)
+// When transitioning TO this state, the top inset decreases = shade rises up
+.bds-card-offgrid--hovered .bds-card-offgrid__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+// =============================================================================
+// Icon Container
+// =============================================================================
+
+.bds-card-offgrid__icon-container {
+  position: relative;
+  z-index: 1; // Above overlay
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $bds-card-offgrid-icon-container;
+  height: $bds-card-offgrid-icon-container;
+  flex-shrink: 0;
+  
+  // Icon sizing
+  > * {
+    max-width: $bds-card-offgrid-icon-size;
+    max-height: $bds-card-offgrid-icon-size;
+  }
+}
+
+.bds-card-offgrid__icon-image {
+  width: auto;
+  height: auto;
+  max-width: $bds-card-offgrid-icon-size;
+  max-height: $bds-card-offgrid-icon-size;
+  object-fit: contain;
+}
+
+// =============================================================================
+// Content (Title + Description)
+// =============================================================================
+
+.bds-card-offgrid__content {
+  position: relative;
+  z-index: 1; // Above overlay
+  display: flex;
+  flex-direction: column;
+  gap: $bds-card-offgrid-content-gap;
+}
+
+.bds-card-offgrid__title {
+  font-size: $bds-card-offgrid-title-size;
+  font-weight: 300; // Light
+  line-height: $bds-card-offgrid-title-line-height;
+  letter-spacing: $bds-card-offgrid-title-letter-spacing;
+  white-space: pre-wrap;
+}
+
+.bds-card-offgrid__description {
+  font-size: $bds-card-offgrid-desc-size;
+  font-weight: 300; // Light
+  line-height: $bds-card-offgrid-desc-line-height;
+  letter-spacing: $bds-card-offgrid-desc-letter-spacing;
+}
+
+// =============================================================================
+// DARK MODE (Default)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Neutral Variant - Dark Mode
+// -----------------------------------------------------------------------------
+
+.bds-card-offgrid--neutral {
+  background-color: $bds-card-offgrid-neutral-default-dark;
+  color: $bds-card-offgrid-neutral-text-dark;
+  
+  // Overlay color for hover wipe
+  .bds-card-offgrid__overlay {
+    background-color: $bds-card-offgrid-neutral-hover-dark;
+  }
+  
+  // Pressed state
+  &:active:not(.bds-card-offgrid--disabled) {
+    .bds-card-offgrid__overlay {
+      background-color: $bds-card-offgrid-neutral-pressed-dark;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Green Variant - Dark Mode
+// -----------------------------------------------------------------------------
+
+.bds-card-offgrid--green {
+  background-color: $bds-card-offgrid-green-default-dark;
+  color: $bds-card-offgrid-green-text-dark;
+  
+  // Overlay color for hover wipe
+  .bds-card-offgrid__overlay {
+    background-color: $bds-card-offgrid-green-hover-dark;
+  }
+  
+  // Pressed state
+  &:active:not(.bds-card-offgrid--disabled) {
+    .bds-card-offgrid__overlay {
+      background-color: $bds-card-offgrid-green-pressed-dark;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Disabled State - Dark Mode
+// -----------------------------------------------------------------------------
+
+.bds-card-offgrid--disabled {
+  background-color: $bds-card-offgrid-neutral-default-dark;
+  color: $bds-card-offgrid-disabled-text-dark;
+  opacity: $bds-card-offgrid-disabled-opacity-dark;
+  cursor: not-allowed;
+  
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+// =============================================================================
+// LIGHT MODE (html.light)
+// =============================================================================
+
+html.light {
+  // Focus styles - Light Mode
+  .bds-card-offgrid {
+    &:focus {
+      outline-color: $bds-card-offgrid-focus-color-light;
+    }
+    
+    &:focus-visible {
+      outline-color: $bds-card-offgrid-focus-color-light;
+    }
+  }
+  
+  // ---------------------------------------------------------------------------
+  // Neutral Variant - Light Mode
+  // ---------------------------------------------------------------------------
+  
+  .bds-card-offgrid--neutral {
+    background-color: $bds-card-offgrid-neutral-default-light;
+    color: $bds-card-offgrid-neutral-text-light;
+    
+    // Overlay color for hover wipe
+    .bds-card-offgrid__overlay {
+      background-color: $bds-card-offgrid-neutral-hover-light;
+    }
+    
+    // Text color on hover
+    &.bds-card-offgrid--hovered {
+      color: $bds-card-offgrid-neutral-text-hover-light;
+    }
+    
+    // Pressed state
+    &:active:not(.bds-card-offgrid--disabled) {
+      .bds-card-offgrid__overlay {
+        background-color: $bds-card-offgrid-neutral-pressed-light;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+  
+  // ---------------------------------------------------------------------------
+  // Green Variant - Light Mode
+  // ---------------------------------------------------------------------------
+  
+  .bds-card-offgrid--green {
+    background-color: $bds-card-offgrid-green-default-light;
+    color: $bds-card-offgrid-green-text-light;
+    
+    // Overlay color for hover wipe
+    .bds-card-offgrid__overlay {
+      background-color: $bds-card-offgrid-green-hover-light;
+    }
+    
+    // Pressed state
+    &:active:not(.bds-card-offgrid--disabled) {
+      .bds-card-offgrid__overlay {
+        background-color: $bds-card-offgrid-green-pressed-light;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+  
+  // ---------------------------------------------------------------------------
+  // Disabled State - Light Mode
+  // ---------------------------------------------------------------------------
+  
+  .bds-card-offgrid--disabled {
+    background-color: $bds-card-offgrid-disabled-bg-light;
+    color: $bds-card-offgrid-disabled-text-light;
+    opacity: 1; // Reset opacity, use background color instead
+    
+    .bds-card-offgrid__icon-container {
+      opacity: 0.5;
+    }
+  }
+}
+
+// =============================================================================
+// Responsive Styles
+// =============================================================================
+
+@media (max-width: 767px) {
+  .bds-card-offgrid {
+    width: 100%;
+    min-height: $bds-card-offgrid-height;
+    height: auto;
+  }
+}
