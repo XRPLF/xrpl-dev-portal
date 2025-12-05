@@ -855,6 +855,22 @@ With this amendment enabled, if an LP token is associated with a liquidity pool 
 2. The holder can receive frozen LP tokens, but can't send them out (similar to frozen trust lines).
 
 
+### fixIncludeKeyletFields
+[fixIncludeKeyletFields]: #fixincludekeyletfields
+
+| Amendment    | fixIncludeKeyletFields |
+|:-------------|:--------------------|
+| Amendment ID | 6143A27B71F7DAF9330ECA7C5EC3D54C8083A4FDEF7016737EEC06AB61E82EE0 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adds missing keylet fields to these ledger entries:
+  - `Sequence` to `Escrow` and `PayChannel`.
+  - `Owner` to `SignerList`.
+  - `OracleDocumentID` to `Oracle`.
+
+
 ### fixInnerObjTemplate
 [fixInnerObjTemplate]: #fixinnerobjtemplate
 
