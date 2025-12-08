@@ -119,8 +119,9 @@ export default function CardStatShowcase() {
       </PageGrid>
 
       {/* With Single Button */}
-      <section className="py-26">
-        <div className="d-flex flex-column-reverse">
+      <PageGrid className="py-26">
+        <PageGridRow>
+        <div className="d-flex flex-column-reverse w-full">
           <h2 className="h4 mb-8">With Primary Button</h2>
           <h6 className="eyebrow mb-3">Single CTA</h6>
         </div>
@@ -128,60 +129,60 @@ export default function CardStatShowcase() {
           Add a primary button for a main call-to-action. Buttons use the black variant for proper
           contrast on colored backgrounds.
         </p>
-        <PageGrid>
-          <PageGridRow>
-            <PageGridCol span={{ base: 4, md: 4, lg: 6 }}>
-              <CardStat 
-                statistic="6 Million" 
-                superscript="+"
-                label="Active wallets"
-                variant="lilac"
-                primaryButton={{
-                  label: "Explore",
-                  onClick: () => handleClick('explore-1')
-                }}
-              />
-              {clickCount['explore-1'] > 0 && (
-                <p className="mt-4 text-muted">Clicked {clickCount['explore-1']} time{clickCount['explore-1'] !== 1 ? 's' : ''}</p>
-              )}
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 6 }}>
-              <CardStat 
-                statistic="$1 Trillion" 
-                superscript="+"
-                label="Value moved"
-                variant="green"
-                primaryButton={{
-                  label: "Learn More",
-                  onClick: () => handleClick('learn-1')
-                }}
-              />
-              {clickCount['learn-1'] > 0 && (
-                <p className="mt-4 text-muted">Clicked {clickCount['learn-1']} time{clickCount['learn-1'] !== 1 ? 's' : ''}</p>
-              )}
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 12 }}>
-              <CardStat 
-                statistic="12" 
-                superscript="+"
-                label="Continuous uptime years"
-                variant="light-gray"
-                primaryButton={{
-                  label: "View Details",
-                  onClick: () => handleClick('view-1')
-                }}
-              />
-              {clickCount['view-1'] > 0 && (
-                <p className="mt-4 text-muted">Clicked {clickCount['view-1']} time{clickCount['view-1'] !== 1 ? 's' : ''}</p>
-              )}
-            </PageGridCol>
-          </PageGridRow>
-        </PageGrid>
-      </section>
+        </PageGridRow>
+        <PageGridRow>
+          <PageGridCol span={{ base: 4, md: 4, lg: 6 }}>
+            <CardStat 
+              statistic="6 Million" 
+              superscript="+"
+              label="Active wallets"
+              variant="lilac"
+              primaryButton={{
+                label: "Explore",
+                onClick: () => handleClick('explore-1')
+              }}
+            />
+            {clickCount['explore-1'] > 0 && (
+              <p className="mt-4 text-muted">Clicked {clickCount['explore-1']} time{clickCount['explore-1'] !== 1 ? 's' : ''}</p>
+            )}
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 4, lg: 6 }}>
+            <CardStat 
+              statistic="$1 Trillion" 
+              superscript="+"
+              label="Value moved"
+              variant="green"
+              primaryButton={{
+                label: "Learn More",
+                onClick: () => handleClick('learn-1')
+              }}
+            />
+            {clickCount['learn-1'] > 0 && (
+              <p className="mt-4 text-muted">Clicked {clickCount['learn-1']} time{clickCount['learn-1'] !== 1 ? 's' : ''}</p>
+            )}
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 4, lg: 12 }}>
+            <CardStat 
+              statistic="12" 
+              superscript="+"
+              label="Continuous uptime years"
+              variant="light-gray"
+              primaryButton={{
+                label: "View Details",
+                onClick: () => handleClick('view-1')
+              }}
+            />
+            {clickCount['view-1'] > 0 && (
+              <p className="mt-4 text-muted">Clicked {clickCount['view-1']} time{clickCount['view-1'] !== 1 ? 's' : ''}</p>
+            )}
+          </PageGridCol>
+        </PageGridRow>
+      </PageGrid>
 
       {/* With Two Buttons */}
-      <section className="py-26">
-        <div className="d-flex flex-column-reverse">
+      <PageGrid className="py-26">
+        <PageGridRow>
+        <div className="d-flex flex-column-reverse w-full">
           <h2 className="h4 mb-8">With Two Buttons</h2>
           <h6 className="eyebrow mb-3">Multiple CTAs</h6>
         </div>
@@ -189,227 +190,227 @@ export default function CardStatShowcase() {
           Include both primary and secondary buttons for multiple action options. Buttons wrap responsively
           and maintain consistent spacing.
         </p>
-        <PageGrid>
-          <PageGridRow>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
-              <CardStat 
-                statistic="6 Million" 
-                superscript="+"
-                label="Active wallets"
-                variant="lilac"
-                primaryButton={{
-                  label: "Learn More",
-                  onClick: () => handleClick('primary-1')
-                }}
-                secondaryButton={{
-                  label: "Get Started",
-                  onClick: () => handleClick('secondary-1')
-                }}
-              />
-              {(clickCount['primary-1'] > 0 || clickCount['secondary-1'] > 0) && (
-                <p className="mt-4 text-muted">
-                  Primary: {clickCount['primary-1'] || 0}, Secondary: {clickCount['secondary-1'] || 0}
-                </p>
-              )}
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
-              <CardStat 
-                statistic="$1 Trillion" 
-                superscript="+"
-                label="Value moved"
-                variant="green"
-                primaryButton={{
-                  label: "Explore",
-                  onClick: () => handleClick('primary-2')
-                }}
-                secondaryButton={{
-                  label: "View Stats",
-                  onClick: () => handleClick('secondary-2')
-                }}
-              />
-              {(clickCount['primary-2'] > 0 || clickCount['secondary-2'] > 0) && (
-                <p className="mt-4 text-muted">
-                  Primary: {clickCount['primary-2'] || 0}, Secondary: {clickCount['secondary-2'] || 0}
-                </p>
-              )}
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
-              <CardStat 
-                statistic="12" 
-                superscript="+"
-                label="Continuous uptime years"
-                variant="light-gray"
-                primaryButton={{
-                  label: "Read More",
-                  onClick: () => handleClick('primary-3')
-                }}
-                secondaryButton={{
-                  label: "Try It",
-                  onClick: () => handleClick('secondary-3')
-                }}
-              />
-              {(clickCount['primary-3'] > 0 || clickCount['secondary-3'] > 0) && (
-                <p className="mt-4 text-muted">
-                  Primary: {clickCount['primary-3'] || 0}, Secondary: {clickCount['secondary-3'] || 0}
-                </p>
-              )}
-            </PageGridCol>
-          </PageGridRow>
-        </PageGrid>
-      </section>
+        </PageGridRow>
+      <PageGridRow>
+        <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+          <CardStat 
+            statistic="6 Million" 
+            superscript="+"
+            label="Active wallets"
+            variant="lilac"
+            primaryButton={{
+              label: "Learn More",
+              onClick: () => handleClick('primary-1')
+            }}
+            secondaryButton={{
+              label: "Get Started",
+              onClick: () => handleClick('secondary-1')
+            }}
+          />
+          {(clickCount['primary-1'] > 0 || clickCount['secondary-1'] > 0) && (
+            <p className="mt-4 text-muted">
+              Primary: {clickCount['primary-1'] || 0}, Secondary: {clickCount['secondary-1'] || 0}
+            </p>
+          )}
+        </PageGridCol>
+        <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+          <CardStat 
+            statistic="$1 Trillion" 
+            superscript="+"
+            label="Value moved"
+            variant="green"
+            primaryButton={{
+              label: "Explore",
+              onClick: () => handleClick('primary-2')
+            }}
+            secondaryButton={{
+              label: "View Stats",
+              onClick: () => handleClick('secondary-2')
+            }}
+          />
+          {(clickCount['primary-2'] > 0 || clickCount['secondary-2'] > 0) && (
+            <p className="mt-4 text-muted">
+              Primary: {clickCount['primary-2'] || 0}, Secondary: {clickCount['secondary-2'] || 0}
+            </p>
+          )}
+        </PageGridCol>
+        <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+          <CardStat 
+            statistic="12" 
+            superscript="+"
+            label="Continuous uptime years"
+            variant="light-gray"
+            primaryButton={{
+              label: "Read More",
+              onClick: () => handleClick('primary-3')
+            }}
+            secondaryButton={{
+              label: "Try It",
+              onClick: () => handleClick('secondary-3')
+            }}
+          />
+          {(clickCount['primary-3'] > 0 || clickCount['secondary-3'] > 0) && (
+            <p className="mt-4 text-muted">
+              Primary: {clickCount['primary-3'] || 0}, Secondary: {clickCount['secondary-3'] || 0}
+            </p>
+          )}
+        </PageGridCol>
+      </PageGridRow>
+    </PageGrid>
 
-      {/* Responsive Behavior */}
-      <section className="py-26">
-        <div className="d-flex flex-column-reverse">
-          <h2 className="h4 mb-8">Responsive Layout</h2>
-          <h6 className="eyebrow mb-3">Adaptive Grid</h6>
-        </div>
-        <p className="mb-8">
-          Cards adapt to different screen sizes. On mobile (base), cards stack vertically. On tablet (md),
-          they can be arranged in 2 columns. On desktop (lg+), up to 3-4 columns are supported.
-        </p>
-        <PageGrid>
-          <PageGridRow>
-            <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>
-              <CardStat 
-                statistic="1M" 
-                superscript="+"
-                label="Transactions daily"
-                variant="lilac"
-              />
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>
-              <CardStat 
-                statistic="150" 
-                superscript="+"
-                label="Countries"
-                variant="green"
-              />
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>  
-              <CardStat 
-                statistic="99.9" 
-                superscript="%"
-                label="Uptime"
-                variant="light-gray"
-              />
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>
-              <CardStat 
-                statistic="24/7" 
-                label="Support"
-                variant="dark-gray"
-              />
-            </PageGridCol>
-          </PageGridRow>
-        </PageGrid>
-      </section>
+    {/* Responsive Behavior */}
+    <PageGrid className="py-26">
+      <PageGridRow>
+      <div className="d-flex flex-column-reverse w-full">
+        <h2 className="h4 mb-8">Responsive Layout</h2>
+        <h6 className="eyebrow mb-3">Adaptive Grid</h6>
+      </div>
+      <p className="mb-8">
+        Cards adapt to different screen sizes. On mobile (base), cards stack vertically. On tablet (md),
+        they can be arranged in 2 columns. On desktop (lg+), up to 3-4 columns are supported.
+      </p>
+      </PageGridRow>
+        <PageGridRow>
+          <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>
+            <CardStat 
+              statistic="1M" 
+              superscript="+"
+              label="Transactions daily"
+              variant="lilac"
+            />
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>
+            <CardStat 
+              statistic="150" 
+              superscript="+"
+              label="Countries"
+              variant="green"
+            />
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>  
+            <CardStat 
+              statistic="99.9" 
+              superscript="%"
+              label="Uptime"
+              variant="light-gray"
+            />
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 4, lg: 3 }}>
+            <CardStat 
+              statistic="24/7" 
+              label="Support"
+              variant="dark-gray"
+            />
+          </PageGridCol>
+        </PageGridRow>
+      </PageGrid>
 
       {/* Mixed Configurations */}
-      <section className="py-26">
-        <div className="d-flex flex-column-reverse">
-          <h2 className="h4 mb-8">Mixed Configurations</h2>
-          <h6 className="eyebrow mb-3">Flexible Usage</h6>
-        </div>
-        <p className="mb-8">
-          Mix and match cards with different button configurations in the same layout.
-        </p>
-        <PageGrid>
-          <PageGridRow>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
-              <CardStat 
-                statistic="6 Million" 
-                superscript="+"
-                label="Active wallets"
-                variant="lilac"
-              />
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
-              <CardStat 
-                statistic="$1 Trillion" 
-                superscript="+"
-                label="Value moved"
-                variant="green"
-                primaryButton={{
-                  label: "Learn More",
-                  onClick: () => handleClick('mixed-1')
-                }}
-              />
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
-              <CardStat 
-                statistic="12" 
-                superscript="+"
-                label="Continuous uptime years"
-                variant="light-gray"
-                primaryButton={{
-                  label: "Explore",
-                  onClick: () => handleClick('mixed-2')
-                }}
-                secondaryButton={{
-                  label: "Get Started",
-                  onClick: () => handleClick('mixed-3')
-                }}
-              />
-            </PageGridCol>
-          </PageGridRow>
-        </PageGrid>
-      </section>
+      <PageGrid className="py-26">
+        <PageGridRow>
+          <div className="d-flex flex-column-reverse w-100">
+            <h2 className="h4 mb-8">Mixed Configurations</h2>
+            <h6 className="eyebrow mb-3">Flexible Usage</h6>
+          </div>
+          <p className="mb-8">
+            Mix and match cards with different button configurations in the same layout.
+          </p>
+        </PageGridRow>
+        <PageGridRow>
+          <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+            <CardStat 
+              statistic="6 Million" 
+              superscript="+"
+              label="Active wallets"
+              variant="lilac"
+            />
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+            <CardStat 
+              statistic="$1 Trillion" 
+              superscript="+"
+              label="Value moved"
+              variant="green"
+              primaryButton={{
+                label: "Learn More",
+                onClick: () => handleClick('mixed-1')
+              }}
+            />
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+            <CardStat 
+              statistic="12" 
+              superscript="+"
+              label="Continuous uptime years"
+              variant="light-gray"
+              primaryButton={{
+                label: "Explore",
+                onClick: () => handleClick('mixed-2')
+              }}
+              secondaryButton={{
+                label: "Get Started",
+                onClick: () => handleClick('mixed-3')
+              }}
+            />
+          </PageGridCol>
+        </PageGridRow>
+      </PageGrid>
 
       {/* Wide Layout */}
-      <section className="py-26">
-        <div className="d-flex flex-column-reverse">
+      <PageGrid className="py-26">
+        <PageGridRow>
+        <div className="d-flex flex-column-reverse w-100">
           <h2 className="h4 mb-8">Wide Card Layout</h2>
           <h6 className="eyebrow mb-3">Larger Spans</h6>
         </div>
         <p className="mb-8">
           Cards can span multiple columns for wider layouts on larger screens.
         </p>
-        <PageGrid>
-          <PageGridRow>
-            <PageGridCol span={{ base: 4, md: 8, lg: 6 }}>
-              <CardStat 
-                statistic="6 Million" 
-                superscript="+"
-                label="Active wallets using XRPL"
-                variant="lilac"
-                primaryButton={{
-                  label: "Explore Wallets",
-                  onClick: () => handleClick('wide-1')
-                }}
-                secondaryButton={{
-                  label: "Get Started",
-                  onClick: () => handleClick('wide-2')
-                }}
-              />
-            </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 8, lg: 6 }}>
-              <CardStat 
-                statistic="$1 Trillion" 
-                superscript="+"
-                label="Total value moved on the network"
-                variant="green"
-                primaryButton={{
-                  label: "View Statistics",
-                  onClick: () => handleClick('wide-3')
-                }}
-                secondaryButton={{
-                  label: "Learn More",
-                  onClick: () => handleClick('wide-4')
-                }}
-              />
-            </PageGridCol>
-          </PageGridRow>
-        </PageGrid>
-      </section>
+        </PageGridRow>
+        <PageGridRow>
+          <PageGridCol span={{ base: 4, md: 8, lg: 6 }}>
+            <CardStat 
+              statistic="6 Million" 
+              superscript="+"
+              label="Active wallets using XRPL"
+              variant="lilac"
+              primaryButton={{
+                label: "Explore Wallets",
+                onClick: () => handleClick('wide-1')
+              }}
+              secondaryButton={{
+                label: "Get Started",
+                onClick: () => handleClick('wide-2')
+              }}
+            />
+          </PageGridCol>
+          <PageGridCol span={{ base: 4, md: 8, lg: 6 }}>
+            <CardStat 
+              statistic="$1 Trillion" 
+              superscript="+"
+              label="Total value moved on the network"
+              variant="green"
+              primaryButton={{
+                label: "View Statistics",
+                onClick: () => handleClick('wide-3')
+              }}
+              secondaryButton={{
+                label: "Learn More",
+                onClick: () => handleClick('wide-4')
+              }}
+            />
+          </PageGridCol>
+        </PageGridRow>
+      </PageGrid>
 
       {/* Usage Guidelines */}
-      <section className="py-26">
-        <div className="d-flex flex-column-reverse">
+      <PageGrid className="py-26">
+        <PageGridRow>
+        <div className="d-flex flex-column-reverse w-100">
           <h2 className="h4 mb-8">Usage Guidelines</h2>
           <h6 className="eyebrow mb-3">Best Practices</h6>
         </div>
-        <div className="col-lg-8 mx-auto">
+        <div className="col-lg-8 mx-auto w-100">
           <h5 className="mb-4">When to Use</h5>
           <ul className="mb-8">
             <li><strong>Key metrics</strong> - Highlight important numbers prominently</li>
@@ -442,11 +443,13 @@ export default function CardStatShowcase() {
             <li>Limit buttons to essential actions</li>
           </ul>
         </div>
-      </section>
+      </PageGridRow>
+    </PageGrid>
 
       {/* Implementation Examples */}
-      <section className="py-26">
-        <div className="d-flex flex-column-reverse">
+      <PageGrid className="py-26">
+        <PageGridRow>
+        <div className="col-lg-10 mx-auto d-flex flex-column-reverse">
           <h2 className="h4 mb-8">Code Examples</h2>
           <h6 className="eyebrow mb-3">Implementation</h6>
         </div>
@@ -525,7 +528,8 @@ export default function CardStatShowcase() {
 </PageGrid>`}</pre>
           </div>
         </div>
-      </section>
+      </ PageGridRow>
+    </ PageGrid>
     </div>
   );
 }
