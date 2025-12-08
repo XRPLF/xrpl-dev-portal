@@ -15376,7 +15376,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
     height: auto;
   }
 }
-.tile-logo {
+.bds-tile-logo {
   appearance: none;
   border: none;
   background: none;
@@ -15395,52 +15395,52 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   cursor: pointer;
   transition: background-color 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98), opacity 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
-.tile-logo:focus {
+.bds-tile-logo:focus {
   outline: 2px solid #FFFFFF;
   outline-offset: 1px;
 }
-.tile-logo:focus:not(:focus-visible) {
+.bds-tile-logo:focus:not(:focus-visible) {
   outline: none;
 }
-.tile-logo:focus-visible {
+.bds-tile-logo:focus-visible {
   outline: 2px solid #FFFFFF;
   outline-offset: 2px;
 }
 
-.tile-logo--square {
+.bds-tile-logo--square {
   aspect-ratio: 1;
   padding: 36px 20px;
 }
 @media (min-width: 576px) {
-  .tile-logo--square {
+  .bds-tile-logo--square {
     padding: 40px 24px;
   }
 }
 @media (min-width: 992px) {
-  .tile-logo--square {
+  .bds-tile-logo--square {
     padding: 72px 48px;
   }
 }
 
-.tile-logo--rectangle {
+.bds-tile-logo--rectangle {
   height: 96px;
   padding: 20px 36px;
   width: calc((100% - 8px * 3) / 4 * 2 + 8px * 1);
 }
 @media (min-width: 576px) {
-  .tile-logo--rectangle {
+  .bds-tile-logo--rectangle {
     width: calc((100% - 8px * 7) / 8 * 4 + 8px * 3);
   }
 }
 @media (min-width: 992px) {
-  .tile-logo--rectangle {
+  .bds-tile-logo--rectangle {
     height: 160px;
     padding: 32px 64px;
     width: calc((100% - 8px * 11) / 12 * 4 + 8px * 3);
   }
 }
 
-.tile-logo__overlay {
+.bds-tile-logo__overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -15449,11 +15449,11 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   transition: clip-path 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
-.tile-logo--hovered .tile-logo__overlay {
+.bds-tile-logo--hovered .bds-tile-logo__overlay {
   clip-path: inset(0 0 0 0);
 }
 
-.tile-logo__image {
+.bds-tile-logo__image {
   position: relative;
   z-index: 1;
   max-width: 100%;
@@ -15463,105 +15463,105 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   object-fit: contain;
 }
 
-.tile-logo--neutral {
+.bds-tile-logo--neutral {
   background-color: #E6EAF0;
 }
-.tile-logo--neutral .tile-logo__overlay {
+.bds-tile-logo--neutral .bds-tile-logo__overlay {
   background-color: #CAD4DF;
 }
-.tile-logo--neutral:active:not(.tile-logo--disabled) .tile-logo__overlay {
+.bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: #8A919A;
   clip-path: inset(0 0 0 0);
 }
 
-.tile-logo--green {
+.bds-tile-logo--green {
   background-color: #70EE97;
 }
-.tile-logo--green .tile-logo__overlay {
+.bds-tile-logo--green .bds-tile-logo__overlay {
   background-color: #21E46B;
 }
-.tile-logo--green:active:not(.tile-logo--disabled) .tile-logo__overlay {
+.bds-tile-logo--green:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: #0DAA3E;
   clip-path: inset(0 0 0 0);
 }
 
-.tile-logo--disabled {
+.bds-tile-logo--disabled {
   background-color: #F0F3F7;
   cursor: not-allowed;
   pointer-events: none;
 }
-.tile-logo--disabled:focus, .tile-logo--disabled:focus-visible {
+.bds-tile-logo--disabled:focus, .bds-tile-logo--disabled:focus-visible {
   outline: none;
 }
-.tile-logo--disabled .tile-logo__image {
+.bds-tile-logo--disabled .bds-tile-logo__image {
   opacity: 0.5;
 }
 
-html.dark .tile-logo:focus {
+html.dark .bds-tile-logo:focus {
   outline-color: #FFFFFF;
 }
-html.dark .tile-logo:focus-visible {
+html.dark .bds-tile-logo:focus-visible {
   outline-color: #FFFFFF;
 }
-html.dark .tile-logo--neutral {
+html.dark .bds-tile-logo--neutral {
   background-color: #72777E;
 }
-html.dark .tile-logo--neutral .tile-logo__overlay {
+html.dark .bds-tile-logo--neutral .bds-tile-logo__overlay {
   background-color: #8A919A;
 }
-html.dark .tile-logo--neutral:active:not(.tile-logo--disabled) .tile-logo__overlay {
+html.dark .bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: rgba(114, 119, 126, 0.7);
   clip-path: inset(0 0 0 0);
 }
-html.dark .tile-logo--green {
+html.dark .bds-tile-logo--green {
   background-color: #70EE97;
 }
-html.dark .tile-logo--green .tile-logo__overlay {
+html.dark .bds-tile-logo--green .bds-tile-logo__overlay {
   background-color: #21E46B;
 }
-html.dark .tile-logo--green:active:not(.tile-logo--disabled) .tile-logo__overlay {
+html.dark .bds-tile-logo--green:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: #0DAA3E;
   clip-path: inset(0 0 0 0);
 }
-html.dark .tile-logo--disabled {
+html.dark .bds-tile-logo--disabled {
   background-color: rgba(114, 119, 126, 0.3);
   opacity: 1;
 }
-html.dark .tile-logo--disabled .tile-logo__image {
+html.dark .bds-tile-logo--disabled .bds-tile-logo__image {
   opacity: 0.5;
 }
 
-html.light .tile-logo:focus {
+html.light .bds-tile-logo:focus {
   outline-color: #000000;
 }
-html.light .tile-logo:focus-visible {
+html.light .bds-tile-logo:focus-visible {
   outline-color: #000000;
 }
-html.light .tile-logo--neutral {
+html.light .bds-tile-logo--neutral {
   background-color: #E6EAF0;
 }
-html.light .tile-logo--neutral .tile-logo__overlay {
+html.light .bds-tile-logo--neutral .bds-tile-logo__overlay {
   background-color: #CAD4DF;
 }
-html.light .tile-logo--neutral:active:not(.tile-logo--disabled) .tile-logo__overlay {
+html.light .bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: #8A919A;
   clip-path: inset(0 0 0 0);
 }
-html.light .tile-logo--green {
+html.light .bds-tile-logo--green {
   background-color: #70EE97;
 }
-html.light .tile-logo--green .tile-logo__overlay {
+html.light .bds-tile-logo--green .bds-tile-logo__overlay {
   background-color: #21E46B;
 }
-html.light .tile-logo--green:active:not(.tile-logo--disabled) .tile-logo__overlay {
+html.light .bds-tile-logo--green:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
   background-color: #0DAA3E;
   clip-path: inset(0 0 0 0);
 }
-html.light .tile-logo--disabled {
+html.light .bds-tile-logo--disabled {
   background-color: #F0F3F7;
   opacity: 1;
 }
-html.light .tile-logo--disabled .tile-logo__image {
+html.light .bds-tile-logo--disabled .bds-tile-logo__image {
   opacity: 0.5;
 }
 

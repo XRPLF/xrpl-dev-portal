@@ -77,11 +77,11 @@ export const TileLogo: React.FC<TileLogoProps> = ({
 
   // Build class names using BEM convention
   const classNames = [
-    'tile-logo',
-    `tile-logo--${shape}`,
-    `tile-logo--${variant}`,
-    disabled ? 'tile-logo--disabled' : '',
-    isHovered && !disabled ? 'tile-logo--hovered' : '',
+    'bds-tile-logo',
+    `bds-tile-logo--${shape}`,
+    `bds-tile-logo--${variant}`,
+    disabled ? 'bds-tile-logo--disabled' : '',
+    isHovered && !disabled ? 'bds-tile-logo--hovered' : '',
     className,
   ]
     .filter(Boolean)
@@ -95,11 +95,11 @@ export const TileLogo: React.FC<TileLogoProps> = ({
   const content = (
     <>
       {/* Hover overlay for window shade animation */}
-      <div className="tile-logo__overlay" aria-hidden="true" />
+      <div className="bds-tile-logo__overlay" aria-hidden="true" />
       <img
         src={logo}
         alt={alt}
-        className="tile-logo__image"
+        className="bds-tile-logo__image"
         aria-hidden="false"
       />
     </>
