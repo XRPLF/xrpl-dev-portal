@@ -1,16 +1,16 @@
-// TileLogo Component Styles
+// BDS TileLogo Component Styles
 // Brand Design System - Logo tile/card component
 //
-// Naming Convention: BEM with 'tile-logo' namespace
-// .tile-logo              - Base tile (shared layout, transitions)
-// .tile-logo--square      - Square shape variant (1:1 aspect ratio, default)
-// .tile-logo--rectangle   - Rectangle shape variant (fixed height)
-// .tile-logo--neutral     - Neutral variant (gray tones)
-// .tile-logo--green       - Green variant (brand green tones)
-// .tile-logo--hovered     - Hovered state (triggers overlay animation)
-// .tile-logo--disabled    - Disabled state modifier
-// .tile-logo__overlay     - Hover gradient overlay (window shade animation)
-// .tile-logo__image       - Logo image element
+// Naming Convention: BEM with 'bds' namespace
+// .bds-tile-logo              - Base tile (shared layout, transitions)
+// .bds-tile-logo--square      - Square shape variant (1:1 aspect ratio, default)
+// .bds-tile-logo--rectangle   - Rectangle shape variant (fixed height)
+// .bds-tile-logo--neutral     - Neutral variant (gray tones)
+// .bds-tile-logo--green       - Green variant (brand green tones)
+// .bds-tile-logo--hovered     - Hovered state (triggers overlay animation)
+// .bds-tile-logo--disabled    - Disabled state modifier
+// .bds-tile-logo__overlay     - Hover gradient overlay (window shade animation)
+// .bds-tile-logo__image       - Logo image element
 
 @import '../../../styles/breakpoints';
 
@@ -22,36 +22,36 @@ $bds-grid-gutter: 8px;
 // =============================================================================
 
 // Focus border colors
-$tile-logo-focus-border-light: $black;
-$tile-logo-focus-border-dark: $white;
+$bds-tile-logo-focus-border-light: $black;
+$bds-tile-logo-focus-border-dark: $white;
 
 // Focus border width
-$tile-logo-focus-border-width: 2px;
+$bds-tile-logo-focus-border-width: 2px;
 
 // Animation (matching CardOffgrid)
-$tile-logo-transition-duration: 200ms;
-$tile-logo-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+$bds-tile-logo-transition-duration: 200ms;
+$bds-tile-logo-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 // -----------------------------------------------------------------------------
 // Shape Tokens - Square (1:1 aspect ratio)
 // -----------------------------------------------------------------------------
-$tile-logo-square-padding-sm: 36px 20px; // SM: vertical 36px, horizontal 20px
-$tile-logo-square-padding-md: 40px 24px; // MD: vertical 40px, horizontal 24px
-$tile-logo-square-padding-lg: 72px 48px; // LG: vertical 72px, horizontal 48px
+$bds-tile-logo-square-padding-sm: 36px 20px; // SM: vertical 36px, horizontal 20px
+$bds-tile-logo-square-padding-md: 40px 24px; // MD: vertical 40px, horizontal 24px
+$bds-tile-logo-square-padding-lg: 72px 48px; // LG: vertical 72px, horizontal 48px
 
 // -----------------------------------------------------------------------------
 // Shape Tokens - Rectangle (fixed height)
 // -----------------------------------------------------------------------------
-$tile-logo-rect-height-sm: 96px;
-$tile-logo-rect-height-lg: 160px;
-$tile-logo-rect-padding-sm: 20px 36px; // SM/MD: vertical 20px, horizontal 36px
-$tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
+$bds-tile-logo-rect-height-sm: 96px;
+$bds-tile-logo-rect-height-lg: 160px;
+$bds-tile-logo-rect-padding-sm: 20px 36px; // SM/MD: vertical 20px, horizontal 36px
+$bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 
 // =============================================================================
 // Base Tile Styles
 // =============================================================================
 
-.tile-logo {
+.bds-tile-logo {
   // Reset button/anchor styles
   appearance: none;
   border: none;
@@ -78,12 +78,12 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 
   // Transitions
   transition:
-    background-color $tile-logo-transition-duration $tile-logo-transition-timing,
-    opacity $tile-logo-transition-duration $tile-logo-transition-timing;
+    background-color $bds-tile-logo-transition-duration $bds-tile-logo-transition-timing,
+    opacity $bds-tile-logo-transition-duration $bds-tile-logo-transition-timing;
 
   // Focus styles - Dark Mode (default)
   &:focus {
-    outline: $tile-logo-focus-border-width solid $tile-logo-focus-border-dark;
+    outline: $bds-tile-logo-focus-border-width solid $bds-tile-logo-focus-border-dark;
     outline-offset: 1px;
   }
 
@@ -92,7 +92,7 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
   }
 
   &:focus-visible {
-    outline: $tile-logo-focus-border-width solid $tile-logo-focus-border-dark;
+    outline: $bds-tile-logo-focus-border-width solid $bds-tile-logo-focus-border-dark;
     outline-offset: 2px;
   }
 }
@@ -104,16 +104,16 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // -----------------------------------------------------------------------------
 // Square Shape (default) - 1:1 aspect ratio with responsive padding
 // -----------------------------------------------------------------------------
-.tile-logo--square {
+.bds-tile-logo--square {
   aspect-ratio: 1;
-  padding: $tile-logo-square-padding-sm;
+  padding: $bds-tile-logo-square-padding-sm;
 
   @media (min-width: map-get($grid-breakpoints, md)) {
-    padding: $tile-logo-square-padding-md;
+    padding: $bds-tile-logo-square-padding-md;
   }
 
   @media (min-width: map-get($grid-breakpoints, lg)) {
-    padding: $tile-logo-square-padding-lg;
+    padding: $bds-tile-logo-square-padding-lg;
   }
 }
 
@@ -122,9 +122,9 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // Respects PageGrid column widths: SM (2/4), MD (4/8), LG (4/12)
 // Formula: ((100% - (gap * (columns - 1))) / columns) * span + (gap * (span - 1))
 // -----------------------------------------------------------------------------
-.tile-logo--rectangle {
-  height: $tile-logo-rect-height-sm;
-  padding: $tile-logo-rect-padding-sm;
+.bds-tile-logo--rectangle {
+  height: $bds-tile-logo-rect-height-sm;
+  padding: $bds-tile-logo-rect-padding-sm;
   // SM breakpoint: 2 columns out of 4-column grid
   // calc(((100% - (8px * (4 - 1))) / 4) * 2 + (8px * (2 - 1)))
   width: calc(((100% - (#{$bds-grid-gutter} * 3)) / 4) * 2 + (#{$bds-grid-gutter} * 1));
@@ -136,8 +136,8 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
   }
 
   @media (min-width: map-get($grid-breakpoints, lg)) {
-    height: $tile-logo-rect-height-lg;
-    padding: $tile-logo-rect-padding-lg;
+    height: $bds-tile-logo-rect-height-lg;
+    padding: $bds-tile-logo-rect-padding-lg;
     // LG breakpoint: 4 columns out of 12-column grid
     // calc(((100% - (8px * (12 - 1))) / 12) * 4 + (8px * (4 - 1)))
     width: calc(((100% - (#{$bds-grid-gutter} * 11)) / 12) * 4 + (#{$bds-grid-gutter} * 3));
@@ -150,7 +150,7 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // Hover in: shade rises from bottom to top (reveals)
 // Hover out: shade falls from top to bottom (hides)
 
-.tile-logo__overlay {
+.bds-tile-logo__overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -159,12 +159,12 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
   // Default: hidden (shade is "rolled up" at bottom, top is 100% clipped)
   // When transitioning TO this state, the top inset increases = shade falls down
   clip-path: inset(100% 0 0 0);
-  transition: clip-path $tile-logo-transition-duration $tile-logo-transition-timing;
+  transition: clip-path $bds-tile-logo-transition-duration $bds-tile-logo-transition-timing;
 }
 
 // Hovered state: shade fully raised (visible)
 // When transitioning TO this state, the top inset decreases = shade rises up
-.tile-logo--hovered .tile-logo__overlay {
+.bds-tile-logo--hovered .bds-tile-logo__overlay {
   clip-path: inset(0 0 0 0);
 }
 
@@ -172,7 +172,7 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // Logo Image
 // =============================================================================
 
-.tile-logo__image {
+.bds-tile-logo__image {
   position: relative;
   z-index: 1; // Above overlay
   max-width: 100%;
@@ -189,17 +189,17 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // -----------------------------------------------------------------------------
 // Neutral Variant - Light Mode
 // -----------------------------------------------------------------------------
-.tile-logo--neutral {
+.bds-tile-logo--neutral {
   background-color: $gray-200;
 
   // Overlay color for hover wipe
-  .tile-logo__overlay {
+  .bds-tile-logo__overlay {
     background-color: $gray-300;
   }
 
   // Pressed state
-  &:active:not(.tile-logo--disabled) {
-    .tile-logo__overlay {
+  &:active:not(.bds-tile-logo--disabled) {
+    .bds-tile-logo__overlay {
       background-color: $gray-400;
       clip-path: inset(0 0 0 0);
     }
@@ -209,17 +209,17 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // -----------------------------------------------------------------------------
 // Green Variant - Light Mode
 // -----------------------------------------------------------------------------
-.tile-logo--green {
+.bds-tile-logo--green {
   background-color: $green-200;
 
   // Overlay color for hover wipe
-  .tile-logo__overlay {
+  .bds-tile-logo__overlay {
     background-color: $green-300;
   }
 
   // Pressed state
-  &:active:not(.tile-logo--disabled) {
-    .tile-logo__overlay {
+  &:active:not(.bds-tile-logo--disabled) {
+    .bds-tile-logo__overlay {
       background-color: $green-400;
       clip-path: inset(0 0 0 0);
     }
@@ -229,7 +229,7 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // -----------------------------------------------------------------------------
 // Disabled State - Light Mode
 // -----------------------------------------------------------------------------
-.tile-logo--disabled {
+.bds-tile-logo--disabled {
   background-color: $gray-100;
   cursor: not-allowed;
   pointer-events: none;
@@ -239,7 +239,7 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
     outline: none;
   }
 
-  .tile-logo__image {
+  .bds-tile-logo__image {
     opacity: 0.5;
   }
 }
@@ -250,30 +250,30 @@ $tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 
 html.dark {
   // Focus styles - Dark Mode
-  .tile-logo {
+  .bds-tile-logo {
     &:focus {
-      outline-color: $tile-logo-focus-border-dark;
+      outline-color: $bds-tile-logo-focus-border-dark;
     }
 
     &:focus-visible {
-      outline-color: $tile-logo-focus-border-dark;
+      outline-color: $bds-tile-logo-focus-border-dark;
     }
   }
 
   // ---------------------------------------------------------------------------
   // Neutral Variant - Dark Mode
   // ---------------------------------------------------------------------------
-  .tile-logo--neutral {
+  .bds-tile-logo--neutral {
     background-color: $gray-500;
 
     // Overlay color for hover wipe
-    .tile-logo__overlay {
+    .bds-tile-logo__overlay {
       background-color: $gray-400;
     }
 
     // Pressed state
-    &:active:not(.tile-logo--disabled) {
-      .tile-logo__overlay {
+    &:active:not(.bds-tile-logo--disabled) {
+      .bds-tile-logo__overlay {
         background-color: rgba($gray-500, 0.7);
         clip-path: inset(0 0 0 0);
       }
@@ -283,17 +283,17 @@ html.dark {
   // ---------------------------------------------------------------------------
   // Green Variant - Dark Mode
   // ---------------------------------------------------------------------------
-  .tile-logo--green {
+  .bds-tile-logo--green {
     background-color: $green-200;
 
     // Overlay color for hover wipe
-    .tile-logo__overlay {
+    .bds-tile-logo__overlay {
       background-color: $green-300;
     }
 
     // Pressed state
-    &:active:not(.tile-logo--disabled) {
-      .tile-logo__overlay {
+    &:active:not(.bds-tile-logo--disabled) {
+      .bds-tile-logo__overlay {
         background-color: $green-400;
         clip-path: inset(0 0 0 0);
       }
@@ -303,11 +303,11 @@ html.dark {
   // ---------------------------------------------------------------------------
   // Disabled State - Dark Mode
   // ---------------------------------------------------------------------------
-  .tile-logo--disabled {
+  .bds-tile-logo--disabled {
     background-color: rgba($gray-500, 0.3);
     opacity: 1; // Reset opacity, use background color instead
 
-    .tile-logo__image {
+    .bds-tile-logo__image {
       opacity: 0.5;
     }
   }
@@ -319,28 +319,28 @@ html.dark {
 
 html.light {
   // Focus styles - Light Mode
-  .tile-logo {
+  .bds-tile-logo {
     &:focus {
-      outline-color: $tile-logo-focus-border-light;
+      outline-color: $bds-tile-logo-focus-border-light;
     }
 
     &:focus-visible {
-      outline-color: $tile-logo-focus-border-light;
+      outline-color: $bds-tile-logo-focus-border-light;
     }
   }
 
   // ---------------------------------------------------------------------------
   // Neutral Variant - Light Mode (explicit for html.light)
   // ---------------------------------------------------------------------------
-  .tile-logo--neutral {
+  .bds-tile-logo--neutral {
     background-color: $gray-200;
 
-    .tile-logo__overlay {
+    .bds-tile-logo__overlay {
       background-color: $gray-300;
     }
 
-    &:active:not(.tile-logo--disabled) {
-      .tile-logo__overlay {
+    &:active:not(.bds-tile-logo--disabled) {
+      .bds-tile-logo__overlay {
         background-color: $gray-400;
         clip-path: inset(0 0 0 0);
       }
@@ -350,15 +350,15 @@ html.light {
   // ---------------------------------------------------------------------------
   // Green Variant - Light Mode (explicit for html.light)
   // ---------------------------------------------------------------------------
-  .tile-logo--green {
+  .bds-tile-logo--green {
     background-color: $green-200;
 
-    .tile-logo__overlay {
+    .bds-tile-logo__overlay {
       background-color: $green-300;
     }
 
-    &:active:not(.tile-logo--disabled) {
-      .tile-logo__overlay {
+    &:active:not(.bds-tile-logo--disabled) {
+      .bds-tile-logo__overlay {
         background-color: $green-400;
         clip-path: inset(0 0 0 0);
       }
@@ -368,11 +368,11 @@ html.light {
   // ---------------------------------------------------------------------------
   // Disabled State - Light Mode
   // ---------------------------------------------------------------------------
-  .tile-logo--disabled {
+  .bds-tile-logo--disabled {
     background-color: $gray-100;
     opacity: 1;
 
-    .tile-logo__image {
+    .bds-tile-logo__image {
       opacity: 0.5;
     }
   }
