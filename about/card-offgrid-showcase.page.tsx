@@ -373,44 +373,6 @@ export default function CardOffgridShowcase() {
           </PageGridRow>
         </PageGrid>
 
-        {/* Link vs Button */}
-        <PageGrid className="py-26">
-          <PageGridRow>
-            <PageGridCol span={12}>
-              <h2 className="h4 mb-6">Link vs Button Rendering</h2>
-              <p className="mb-6">The component renders as an <code>&lt;a&gt;</code> tag when <code>href</code> is provided, otherwise as a <code>&lt;button&gt;</code>.</p>
-              
-              <div className="d-flex flex-row gap-6 mb-6" style={{ flexWrap: 'wrap' }}>
-                <div>
-                  <h6 className="mb-3">As Button (onClick)</h6>
-                  <CardOffgrid
-                    variant="neutral"
-                    icon={<SampleIcon />}
-                    title={"Click Me"}
-                    description="This card renders as a button element and triggers an onClick handler."
-                    onClick={() => handleCardClick('button-demo')}
-                  />
-                  {clickedCard === 'button-demo' && (
-                    <p className="mt-2 text-success">✓ Button clicked!</p>
-                  )}
-                </div>
-                
-                <div>
-                  <h6 className="mb-3">As Link (href)</h6>
-                  <CardOffgrid
-                    variant="green"
-                    icon={<SampleIcon />}
-                    title={"Navigate"}
-                    description="This card renders as an anchor element and navigates to the specified href."
-                    href="#link-demo"
-                  />
-                  <p className="mt-2 text-muted">↑ Click to navigate to #link-demo</p>
-                </div>
-              </div>
-            </PageGridCol>
-          </PageGridRow>
-        </PageGrid>
-
         {/* Dimensions */}
         <PageGrid className="py-26">
           <PageGridRow>
@@ -638,7 +600,7 @@ export default function CardOffgridShowcase() {
         </PageGrid>
 
         {/* Figma References */}
-        <PageGrid className="py-26" id="link-demo">
+        <PageGrid className="py-26">
           <PageGridRow>
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Figma References</h2>
