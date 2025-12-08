@@ -78,7 +78,7 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
 
 ### Refactors
 
-- Refactor `ledger_entry` RPC source code and tests, improving readability and maintainability. ([#5237](https://github.com/XRPLF/rippled/pull/5237))
+- Refactored `ledger_entry` RPC source code and tests, improving readability and maintainability. ([#5237](https://github.com/XRPLF/rippled/pull/5237))
 - Decoupled net module from xrpld and moved RPC related classes to the rpc folder. ([#5477](https://github.com/XRPLF/rippled/pull/5477))
 - Moved ledger component to `libxrpl` as part of modularization effort. ([#5493](https://github.com/XRPLF/rippled/pull/5493))
 - Refactored code in preparation for `LendingProtocol`. ([#5590](https://github.com/XRPLF/rippled/pull/5590))
