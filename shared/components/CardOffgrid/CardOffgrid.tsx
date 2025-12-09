@@ -123,10 +123,10 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
       </span>
       
       <span className="bds-card-offgrid__content">
-        <span className="bds-card-offgrid__title">
+        <span className="bds-card-offgrid__title subhead-lg-l">
           {renderTitle()}
         </span>
-        <span className="bds-card-offgrid__description">
+        <span className="bds-card-offgrid__description body-l">
           {description}
         </span>
       </span>

@@ -15281,18 +15281,7 @@ html.light .bds-divider--green {
 }
 
 .bds-card-offgrid__title {
-  font-size: 32px;
-  font-weight: 300;
-  line-height: 40px;
-  letter-spacing: -1px;
   white-space: pre-wrap;
-}
-
-.bds-card-offgrid__description {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 26.1px;
-  letter-spacing: -0.5px;
 }
 
 .bds-card-offgrid--neutral {

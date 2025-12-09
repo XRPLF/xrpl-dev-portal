@@ -10,8 +10,8 @@
 // .bds-card-offgrid__icon-container  - Icon wrapper (84x84px)
 // .bds-card-offgrid__icon-image      - Image icon styling
 // .bds-card-offgrid__content         - Title and description wrapper
-// .bds-card-offgrid__title           - Card title (32px)
-// .bds-card-offgrid__description     - Card description (18px)
+// .bds-card-offgrid__title           - Card title (uses .subhead-lg-l)
+// .bds-card-offgrid__description     - Card description (uses .body-l)
 //
 // Note: This file is imported within xrpl.scss after Bootstrap and project
 // variables are loaded, so $grid-breakpoints, colors, and mixins are available.
@@ -34,15 +34,8 @@ $bds-card-offgrid-content-gap: 40px;
 $bds-card-offgrid-transition-duration: 200ms;
 $bds-card-offgrid-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
-// Typography - Title
-$bds-card-offgrid-title-size: 32px;
-$bds-card-offgrid-title-line-height: 40px;
-$bds-card-offgrid-title-letter-spacing: -1px;
-
-// Typography - Description
-$bds-card-offgrid-desc-size: 18px;
-$bds-card-offgrid-desc-line-height: 26.1px;
-$bds-card-offgrid-desc-letter-spacing: -0.5px;
+// Typography - Title (now using .subhead-lg-l from _font.scss)
+// Typography - Description (now using .body-l from _font.scss)
 
 // -----------------------------------------------------------------------------
 // Dark Mode Colors (Default)
@@ -205,18 +198,12 @@ $bds-card-offgrid-focus-color-light: $gray-900;          // #111112
 }
 
 .bds-card-offgrid__title {
-  font-size: $bds-card-offgrid-title-size;
-  font-weight: 300; // Light
-  line-height: $bds-card-offgrid-title-line-height;
-  letter-spacing: $bds-card-offgrid-title-letter-spacing;
+  // Typography handled by .subhead-lg-l class from _font.scss
   white-space: pre-wrap;
 }
 
 .bds-card-offgrid__description {
-  font-size: $bds-card-offgrid-desc-size;
-  font-weight: 300; // Light
-  line-height: $bds-card-offgrid-desc-line-height;
-  letter-spacing: $bds-card-offgrid-desc-letter-spacing;
+  // Typography handled by .body-l class from _font.scss
 }
 
 // =============================================================================
