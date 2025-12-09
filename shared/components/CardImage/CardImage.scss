@@ -1,0 +1,352 @@
+// BDS CardImage Component Styles
+// Brand Design System - Responsive card with image, title, subtitle, and CTA button
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-card-image                    - Base card container
+// .bds-card-image--hovered           - Hover state (triggers button animation)
+// .bds-card-image--disabled          - Disabled state
+// .bds-card-image__image-container   - Gray background image wrapper
+// .bds-card-image__image             - The actual image element
+// .bds-card-image__content           - Title/subtitle/button wrapper
+// .bds-card-image__text              - Title and subtitle wrapper
+// .bds-card-image__title             - Card title (uses .sh-md-l)
+// .bds-card-image__subtitle          - Card subtitle (uses .body-l)
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+
+// Card dimensions - LG (Large) variant (default, ≥992px)
+$bds-card-image-height-lg: 620px;
+$bds-card-image-image-height-lg: 400px;
+
+// Card dimensions - MD (Medium) variant (576px - 991px)
+$bds-card-image-height-md: 560px;
+$bds-card-image-image-height-md: 280px;
+
+// Card dimensions - SM (Small) variant (<576px)
+$bds-card-image-height-sm: 536px;
+$bds-card-image-image-height-sm: 268px;
+
+// Spacing
+$bds-card-image-gap: 24px;              // Gap between image and content
+$bds-card-image-title-gap: 12px;        // Gap between title and subtitle
+$bds-card-image-content-padding: 8px;   // Horizontal padding for content
+$bds-card-image-button-margin: 30px;    // Margin above button
+
+// Colors
+$bds-card-image-bg: $white;
+$bds-card-image-image-bg: $gray-100;
+$bds-card-image-text-color: #141414;    // Neutral black from Figma
+
+// Animation
+$bds-card-image-transition-duration: 150ms;
+$bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// =============================================================================
+// Base Card Styles
+// =============================================================================
+
+.bds-card-image {
+  // Card container
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 400px; // Don't grow, don't shrink, fixed 400px width
+  max-width: 400px; // Hard cap at 400px
+  height: $bds-card-image-height-lg;
+  background-color: $bds-card-image-bg;
+  overflow: hidden;
+  cursor: pointer;
+
+  // When inside a grid column, allow flex but still cap at 400px
+  .bds-grid__col & {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  // Focus styles
+  &:focus {
+    outline: 2px solid $bds-card-image-text-color;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $bds-card-image-text-color;
+    outline-offset: 2px;
+  }
+}
+
+// =============================================================================
+// Image Container
+// =============================================================================
+// Image container has fixed height per breakpoint.
+// Image within maintains its aspect ratio using object-fit: contain.
+
+.bds-card-image__image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: $bds-card-image-image-height-lg;
+  background-color: $bds-card-image-image-bg;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bds-card-image__image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; // Maintain image aspect ratio (1:1 for this design)
+  object-position: center;
+}
+
+// =============================================================================
+// Content Area
+// =============================================================================
+
+.bds-card-image__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: $bds-card-image-gap $bds-card-image-content-padding 0;
+  min-height: 0; // Allow flex shrinking
+}
+
+.bds-card-image__text {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-card-image-title-gap;
+}
+
+.bds-card-image__title {
+  // Typography handled by .sh-md-l class from _font.scss
+  color: $bds-card-image-text-color;
+  margin: 0;
+  // Title should be 1 line only
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bds-card-image__subtitle {
+  // Typography handled by .body-l class from _font.scss
+  color: $bds-card-image-text-color;
+  margin: 0;
+  // Subtitle max 3 lines
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// =============================================================================
+// Button Positioning
+// =============================================================================
+
+.bds-card-image__content .bds-btn {
+  margin-top: auto;
+  margin-bottom: $bds-card-image-button-margin;
+  align-self: flex-start;
+}
+
+// =============================================================================
+// Hover State - Trigger Button Animation
+// =============================================================================
+// When the card is hovered, trigger the button's hover animation styles
+
+.bds-card-image--hovered:not(.bds-card-image--disabled),
+.bds-card-image:hover:not(.bds-card-image--disabled) {
+  // Trigger button background fill animation
+  .bds-btn--primary::before {
+    transform: scaleY(1);
+  }
+
+  // Trigger arrow icon line shrink animation
+  .bds-btn__icon-line {
+    transform: scaleX(0);
+  }
+
+  // Apply hover padding and gap changes (with icon)
+  .bds-btn--primary:not(.bds-btn--no-icon) {
+    padding: 8px 13px 8px 20px;
+    gap: 22px;
+  }
+}
+
+// =============================================================================
+// Focus State
+// =============================================================================
+
+.bds-card-image:focus-visible:not(.bds-card-image--disabled) {
+  // Trigger button focus styles
+  .bds-btn--primary::before {
+    transform: scaleY(1);
+  }
+
+  .bds-btn__icon-line {
+    transform: scaleX(0);
+  }
+
+  .bds-btn--primary:not(.bds-btn--no-icon) {
+    padding: 8px 13px 8px 20px;
+    gap: 22px;
+  }
+}
+
+// =============================================================================
+// Disabled State
+// =============================================================================
+
+.bds-card-image--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+
+  .bds-card-image__title,
+  .bds-card-image__subtitle {
+    color: $gray-500;
+  }
+}
+
+// =============================================================================
+// Responsive Styles - MD (Medium) Variant
+// =============================================================================
+
+@include media-breakpoint-down(lg) {
+  .bds-card-image {
+    height: $bds-card-image-height-md;
+  }
+
+  .bds-card-image__image-container {
+    height: $bds-card-image-image-height-md;
+  }
+
+  // Adjust hover padding for tablet breakpoint
+  .bds-card-image--hovered:not(.bds-card-image--disabled),
+  .bds-card-image:hover:not(.bds-card-image--disabled) {
+    .bds-btn--primary:not(.bds-btn--no-icon) {
+      padding: 8px 10px 8px 16px;
+      gap: 21px;
+    }
+  }
+
+  .bds-card-image:focus-visible:not(.bds-card-image--disabled) {
+    .bds-btn--primary:not(.bds-btn--no-icon) {
+      padding: 8px 10px 8px 16px;
+      gap: 21px;
+    }
+  }
+}
+
+// =============================================================================
+// Responsive Styles - SM (Small) Variant
+// =============================================================================
+
+@include media-breakpoint-down(sm) {
+  .bds-card-image {
+    height: $bds-card-image-height-sm;
+  }
+
+  .bds-card-image__image-container {
+    height: $bds-card-image-image-height-sm;
+  }
+
+  .bds-card-image__content {
+    padding: 16px $bds-card-image-content-padding 0;
+  }
+
+  .bds-card-image__content .bds-btn {
+    margin-bottom: 35px;
+  }
+}
+
+// =============================================================================
+// Light Mode Styles
+// =============================================================================
+
+html.light {
+  .bds-card-image {
+    &:focus {
+      outline-color: $bds-card-image-text-color;
+    }
+
+    &:focus-visible {
+      outline-color: $bds-card-image-text-color;
+    }
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles (from Figma design tokens)
+// =============================================================================
+// Design tokens:
+// - Card background: neutral/black (#141414) → $gray-900
+// - Image container: neutral/500 (#72777E) → $gray-500
+// - Title: neutral/white (#FFFFFF) → $white
+// - Subtitle: neutral/200 (#E6EAF0) → $gray-200
+// - Focus outline: neutral/white (#FFFFFF) → $white
+// - Hover overlay: 15% black (rgba(114,119,126,0.15))
+// - Pressed overlay: 45% black (rgba(114,119,126,0.45))
+// - Disabled button bg: neutral/500 (#72777E) → $gray-500
+// - Disabled button text: neutral/300 (#CAD4DF) → $gray-300
+
+html.dark {
+  .bds-card-image {
+    background-color: $gray-900;
+    border-color: $gray-900; // Border blends with background in dark mode
+
+    // Focus styles - white outline
+    &:focus {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+    }
+  }
+
+  // Image container - neutral/500 (#72777E)
+  .bds-card-image__image-container {
+    background-color: $gray-500;
+  }
+
+  // Title - neutral/white (#FFFFFF)
+  .bds-card-image__title {
+    color: $white;
+  }
+
+  // Subtitle - neutral/200 (#E6EAF0)
+  .bds-card-image__subtitle {
+    color: $gray-200;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Dark Mode - Disabled State
+  // ---------------------------------------------------------------------------
+  .bds-card-image--disabled {
+    // Text colors remain but muted
+    .bds-card-image__title {
+      color: $white;
+    }
+
+    .bds-card-image__subtitle {
+      color: $gray-200;
+    }
+
+    // Button in disabled state uses gray-500 bg and gray-300 text
+    // (handled by Button component's disabled styles)
+  }
+}

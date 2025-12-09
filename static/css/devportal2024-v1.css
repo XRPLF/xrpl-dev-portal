@@ -15365,6 +15365,192 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
     height: auto;
   }
 }
+.bds-card-image {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 400px;
+  max-width: 400px;
+  height: 620px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  cursor: pointer;
+}
+.bds-grid__col .bds-card-image {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 400px;
+}
+.bds-card-image:focus {
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+}
+.bds-card-image:focus:not(:focus-visible) {
+  outline: none;
+}
+.bds-card-image:focus-visible {
+  outline: 2px solid #141414;
+  outline-offset: 2px;
+}
+
+.bds-card-image__image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+  background-color: #F0F3F7;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bds-card-image__image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.bds-card-image__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 24px 8px 0;
+  min-height: 0;
+}
+
+.bds-card-image__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bds-card-image__title {
+  color: #141414;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bds-card-image__subtitle {
+  color: #141414;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bds-card-image__content .bds-btn {
+  margin-top: auto;
+  margin-bottom: 30px;
+  align-self: flex-start;
+}
+
+.bds-card-image--hovered:not(.bds-card-image--disabled) .bds-btn--primary::before,
+.bds-card-image:hover:not(.bds-card-image--disabled) .bds-btn--primary::before {
+  transform: scaleY(1);
+}
+.bds-card-image--hovered:not(.bds-card-image--disabled) .bds-btn__icon-line,
+.bds-card-image:hover:not(.bds-card-image--disabled) .bds-btn__icon-line {
+  transform: scaleX(0);
+}
+.bds-card-image--hovered:not(.bds-card-image--disabled) .bds-btn--primary:not(.bds-btn--no-icon),
+.bds-card-image:hover:not(.bds-card-image--disabled) .bds-btn--primary:not(.bds-btn--no-icon) {
+  padding: 8px 13px 8px 20px;
+  gap: 22px;
+}
+
+.bds-card-image:focus-visible:not(.bds-card-image--disabled) .bds-btn--primary::before {
+  transform: scaleY(1);
+}
+.bds-card-image:focus-visible:not(.bds-card-image--disabled) .bds-btn__icon-line {
+  transform: scaleX(0);
+}
+.bds-card-image:focus-visible:not(.bds-card-image--disabled) .bds-btn--primary:not(.bds-btn--no-icon) {
+  padding: 8px 13px 8px 20px;
+  gap: 22px;
+}
+
+.bds-card-image--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.bds-card-image--disabled .bds-card-image__title,
+.bds-card-image--disabled .bds-card-image__subtitle {
+  color: #72777E;
+}
+
+@media (max-width: 991.98px) {
+  .bds-card-image {
+    height: 560px;
+  }
+  .bds-card-image__image-container {
+    height: 280px;
+  }
+  .bds-card-image--hovered:not(.bds-card-image--disabled) .bds-btn--primary:not(.bds-btn--no-icon),
+  .bds-card-image:hover:not(.bds-card-image--disabled) .bds-btn--primary:not(.bds-btn--no-icon) {
+    padding: 8px 10px 8px 16px;
+    gap: 21px;
+  }
+  .bds-card-image:focus-visible:not(.bds-card-image--disabled) .bds-btn--primary:not(.bds-btn--no-icon) {
+    padding: 8px 10px 8px 16px;
+    gap: 21px;
+  }
+}
+@media (max-width: 575.98px) {
+  .bds-card-image {
+    height: 536px;
+  }
+  .bds-card-image__image-container {
+    height: 268px;
+  }
+  .bds-card-image__content {
+    padding: 16px 8px 0;
+  }
+  .bds-card-image__content .bds-btn {
+    margin-bottom: 35px;
+  }
+}
+html.light .bds-card-image:focus {
+  outline-color: #141414;
+}
+html.light .bds-card-image:focus-visible {
+  outline-color: #141414;
+}
+
+html.dark .bds-card-image {
+  background-color: #111112;
+  border-color: #111112;
+}
+html.dark .bds-card-image:focus {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+html.dark .bds-card-image:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+html.dark .bds-card-image__image-container {
+  background-color: #72777E;
+}
+html.dark .bds-card-image__title {
+  color: #FFFFFF;
+}
+html.dark .bds-card-image__subtitle {
+  color: #E6EAF0;
+}
+html.dark .bds-card-image--disabled .bds-card-image__title {
+  color: #FFFFFF;
+}
+html.dark .bds-card-image--disabled .bds-card-image__subtitle {
+  color: #E6EAF0;
+}
+
 .bds-tile-logo {
   appearance: none;
   border: none;
