@@ -1,0 +1,161 @@
+// BDS CardStat Component Styles
+// Brand Design System - Statistics card component
+// 
+// Naming Convention: BEM with 'bds' namespace
+// .bds-card-stat              - Base card
+// .bds-card-stat--lilac       - Lilac variant
+// .bds-card-stat--green       - Green variant
+// .bds-card-stat--light-gray  - Light gray variant
+// .bds-card-stat--dark-gray   - Dark gray variant
+// .bds-card-stat__content     - Inner content wrapper
+// .bds-card-stat__text        - Text section
+// .bds-card-stat__statistic   - Large statistic text
+// .bds-card-stat__label       - Descriptive label
+// .bds-card-stat__buttons     - Button container
+// .bds-card-stat__button-link - Link wrapper for buttons
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Color variants
+$bds-card-stat-lilac-bg: $lilac-300;
+$bds-card-stat-green-bg: $green-300;   // #EAFCF1
+$bds-card-stat-light-gray-bg: #E6EAF0;       // Light gray
+$bds-card-stat-dark-gray-bg: #CAD4DF;     // Dark gray
+
+// Text colors
+$bds-card-stat-text: $black;          // Neutral black
+
+// Spacing
+$bds-card-stat-gap: 8px;
+
+// Transitions
+$bds-card-stat-transition-duration: 150ms;
+$bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// =============================================================================
+// Base Card Styles
+// =============================================================================
+
+.bds-card-stat {
+  // Layout
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px;
+  
+  // Visual
+  background-color: $bds-card-stat-lilac-bg; // Default
+  
+  // Typography
+  color: $bds-card-stat-text;
+  
+  // Transitions
+  transition: transform $bds-card-stat-transition-duration $bds-card-stat-transition-timing;
+  
+  // Content wrapper
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding: 8px;
+    gap: 4px;
+    
+    // Tablet (md) breakpoint
+    @include media-breakpoint-up(md) {
+      padding: 12px;
+    }
+    
+    // Desktop (lg+) breakpoint
+    @include media-breakpoint-up(lg) {
+      padding: 16px;
+    }
+  }
+  
+  // Text section
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  // Statistic (large number)
+  &__statistic {
+    @include type(display-lg);
+    margin-bottom: 0;
+    sup {
+      top: -1rem;
+    }
+  }
+  
+  // Buttons section
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $bds-card-stat-gap;
+    align-items: flex-start;
+  }
+}
+
+// =============================================================================
+// Color Variants
+// =============================================================================
+
+// Lilac variant (default)
+.bds-card-stat--lilac {
+  background-color: $bds-card-stat-lilac-bg;
+}
+
+// Green variant
+.bds-card-stat--green {
+  background-color: $bds-card-stat-green-bg;
+}
+
+// Light gray variant
+.bds-card-stat--light-gray {
+  background-color: $bds-card-stat-light-gray-bg;
+}
+
+// Dark gray variant
+.bds-card-stat--dark-gray {
+  background-color: $bds-card-stat-dark-gray-bg;
+}
+
+// =============================================================================
+// Dark Mode Styles
+// =============================================================================
+
+html.dark {
+  .bds-card-stat {
+    // Light gray variant gets dark-gray background in dark mode
+    &--light-gray {
+      background-color: $bds-card-stat-dark-gray-bg; // Darker gray for dark mode
+    }
+    
+    // Dark gray variant gets darker gray background in dark mode
+    &--dark-gray {
+      background-color: #8A919A; // Darker gray for dark mode
+    }
+  }
+}
+
+// =============================================================================
+// Responsive Height Adjustments
+// =============================================================================
+
+.bds-card-stat {
+  // Base (mobile) - ~200px height
+  min-height: 200px;
+  
+  // Tablet (md) - ~208px height
+  @include media-breakpoint-up(md) {
+    min-height: 208px;
+  }
+  
+  // Desktop (lg+) - ~298px height (more vertical space)
+  @include media-breakpoint-up(lg) {
+    min-height: 298px;
+  }
+}
