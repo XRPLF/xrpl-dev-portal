@@ -129,9 +129,9 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 html.dark {
   .bds-card-stat {
-    // Dark gray variant gets darker background in dark mode
+    // Light gray variant gets dark-gray background in dark mode
     &--light-gray {
-      background-color: $bds-card-stat-light-gray-bg; // Darker gray for dark mode
+      background-color: $bds-card-stat-dark-gray-bg; // Darker gray for dark mode
     }
     
     // Dark gray variant gets darker background in dark mode
