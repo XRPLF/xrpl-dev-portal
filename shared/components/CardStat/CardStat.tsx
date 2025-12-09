@@ -14,7 +14,7 @@ export interface CardStatProps {
   /** The main statistic to display (e.g., "6 Million+") */
   statistic: string;
   /** Superscript text for the statistic */
-  superscript?: string;
+  superscript?: '*' | '+' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0';
   /** Descriptive label for the statistic */
   label: string;
   /** Background color variant
@@ -87,7 +87,7 @@ export const CardStat: React.FC<CardStatProps> = ({
           <div className="bds-card-stat__buttons">
             {primaryButton && (
               primaryButton.href ? (
-                <a href={primaryButton.href} className="bds-card-stat__button-link">
+                <a href={primaryButton.href}>
                   <Button variant="primary" color="black">
                     {primaryButton.label}
                   </Button>
@@ -104,7 +104,7 @@ export const CardStat: React.FC<CardStatProps> = ({
             )}
             {secondaryButton && (
               secondaryButton.href ? (
-                <a href={secondaryButton.href} className="bds-card-stat__button-link">
+                <a href={secondaryButton.href}>
                   <Button variant="secondary" color="black">
                     {secondaryButton.label}
                   </Button>

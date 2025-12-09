@@ -21,8 +21,8 @@
 // Color variants
 $bds-card-stat-lilac-bg: $lilac-300;
 $bds-card-stat-green-bg: $green-300;   // #EAFCF1
-$bds-card-stat-light-gray-bg: #CAD4DF;       // Light gray
-$bds-card-stat-dark-gray-bg: #8A919A;     // Dark gray
+$bds-card-stat-light-gray-bg: #E6EAF0;       // Light gray
+$bds-card-stat-dark-gray-bg: #CAD4DF;     // Dark gray
 
 // Text colors
 $bds-card-stat-text: $black;          // Neutral black
@@ -84,17 +84,10 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   // Statistic (large number)
   &__statistic {
     @include type(display-lg);
-    word-break: break-word;
     margin-bottom: 0;
     sup {
       top: -1rem;
     }
-  }
-  
-  // Label (description)
-  &__label {
-    @include type(display-lg);
-    word-break: break-word;
   }
   
   // Buttons section
@@ -103,17 +96,6 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
     flex-wrap: wrap;
     gap: $bds-card-stat-gap;
     align-items: flex-start;
-  }
-  
-  // Button link wrapper (removes default link styling)
-  &__button-link {
-    text-decoration: none;
-    display: inline-block;
-    
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
   }
 }
 
@@ -147,13 +129,14 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 html.dark {
   .bds-card-stat {
-    // Adjust colors for dark mode if needed
-    color: $bds-card-stat-text; // Keep black text on colored backgrounds
+    // Dark gray variant gets darker background in dark mode
+    &--light-gray {
+      background-color: $bds-card-stat-light-gray-bg; // Darker gray for dark mode
+    }
     
     // Dark gray variant gets darker background in dark mode
     &--dark-gray {
-      background-color: $gray-400; // Darker gray for dark mode
-      color: $white; // White text on dark background
+      background-color: #8A919A; // Darker gray for dark mode
     }
   }
 }
