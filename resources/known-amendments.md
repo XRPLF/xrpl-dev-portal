@@ -677,7 +677,7 @@ Without this amendment, the minimum threshold for amendment activation is any va
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Fixes a rounding error that can occur in the `LPTokenBalance` of an AMM when performing an `AMMClawback` transaction.
+Fixes an accounting error that can occur when performing an `AMMClawback` transaction on the last LP token holder. Due to rounding errors, the AMMs `LPTokenBalance` may not match the holder's trust line balance. This amendment adjusts the `LPTokenBalance` to match the trust line balance before the clawback, so invariant checks pass without errors.
 
 
 ### fixAMMOverflowOffer
@@ -878,10 +878,14 @@ With this amendment enabled, if an LP token is associated with a liquidity pool 
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment adds missing keylet fields to these ledger entries:
-  - `Sequence` to `Escrow` and `PayChannel`.
-  - `Owner` to `SignerList`.
-  - `OracleDocumentID` to `Oracle`.
+This amendment adds fields to ledger entries in cases where those fields are part of the identifying information that forms their ledger entry ID:
+  - Add a `Sequence` field to `Escrow` and `PayChannel` entries.
+  - Add an `Owner` field to `SignerList` entries.
+  - Add an `OracleDocumentID` field to `Oracle` entries.
+
+Without this amendment, some ledger entries do not store all the data that was used to create their ledger entry ID. After this amendment is enabled, ledger entries of those types have those fields added when the ledger entry is created or modified. Ledger entries that were created before the amendment are not changed until a transaction modifies them.
+
+The presence of a `Sequence` field on Escrow ledger entries is especially useful since you need that value to finish or cancel the escrow, and you otherwise might have to look up the sequence number of the transaction that created the escrow.
 
 
 ### fixInnerObjTemplate
@@ -964,7 +968,7 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment adds missing `DeliveredAmount` and `delivered_amount` metadata fields from direct MPT `Payment` transactions.
+This amendment adds missing `DeliveredAmount` and `delivered_amount` metadata fields from direct MPT `Payment` transactions. Without this amendment, direct MPT payments deliver the full amount but do not have the metadata fields to summarize how much was delivered.
 
 
 ### fixNFTokenDirV1
@@ -1148,7 +1152,7 @@ Without this amendment, some types of ledger entries don't have those fields, wh
 
 Fixes an issue where the order of asset pair data is different from when a price oracle is created versus when it is updated.
 
-This amendment ensures asset pairs follow a canonical order at all times.
+This amendment ensures asset pairs follow a canonical order at all times, so you can predictably look up asset prices.
 
 
 ### fixQualityUpperBound
@@ -1353,7 +1357,7 @@ The Flow Engine also makes it easier to improve and expand the payment engine wi
 | Amendment ID | 3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC |
 | Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
+| Pre-amendment functionality retired? | Yes |
 
 Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange. Uses the updated code from the [Flow](#flow) amendment to power offer crossing, so [OfferCreate transactions][] and [Payment transactions][] share more code. This has subtle differences in how offers are processed:
 
