@@ -27,17 +27,17 @@ On supported platforms, see the [instructions on installing or updating `rippled
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.6.1-1.el9.x86_64.rpm) | `0fbbff570e962fea4df4d604cb848976fc9af9ebc34512a1002eb4866549850d` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.6.1-1_amd64.deb) | `de3bfdae5fb95d922a4b5bffa5bc9441f1bc4bac15bd7b83f77f14166c65bb7e` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-3.0.0-1.el9.x86_64.rpm) | `2e181c8e966e043e10e32f3b0e30184014b88c2b5b9513d07c0e13c605edf050` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_3.0.0-1_amd64.deb) | `efbce53f39e2d94d74c3cfdb049758f8826aa5e0a2a246cd9b19e9246e7b4172` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
 ```text
-commit 70d5c624e8cf732a362335642b2f5125ce4b43c1
+commit 7527e35379a78901320b17a9a26c618e4384b1f6
 Author: Ed Hennis <ed@ripple.com>
-Date:   Tue Sep 30 16:09:11 2025 -0400
+Date:   Tue Dec 9 12:11:16 2025 -0500
 
-    Set version to 2.6.1
+    Set version to 3.0.0
 ```
 
 
