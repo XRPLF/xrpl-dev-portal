@@ -44,8 +44,9 @@ const mpt_metadata = {
 };
 
 // Encode the metadata.
-// The encodeMPTokenMetadata function converts the JSON metadata object into
-// a compact, hex-encoded string, following the XLS-89 standard.
+// The encodeMPTokenMetadata function shortens standard MPTokenMetadata
+// field names to a compact key, then converts the JSON metadata object into a
+// hex-encoded string, following the XLS-89 standard.
 // https://xls.xrpl.org/xls/XLS-0089-multi-purpose-token-metadata-schema.html
 console.log("\n=== Encoding metadata...===");
 const mpt_metadata_hex = encodeMPTokenMetadata(mpt_metadata);

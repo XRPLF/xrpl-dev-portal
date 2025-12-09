@@ -18,7 +18,7 @@ This tutorial shows you how to issue an MPT with on-chain metadata such as the t
 
 By the end of this tutorial, you will be able to:
 
-- Issue a new MPToken on the XRP Ledger.
+- Issue a new MPT on the XRP Ledger.
 - Encode and decode token metadata according to the XLS-89 standard.
 
 ## Prerequisites
@@ -124,8 +124,8 @@ To issue the MPT, create an `MPTokenIssuanceCreate` transaction object with the 
 
 | Field               | Value  |
 |:------------------- |:------ |
-| `TransactionType`   | The type of transaction, in this case `MPTokenIssuanceCreate`. |
-| `Account`           | The wallet address of the account that is issuing the MPT, in this case the `issuer`. |
+| `TransactionType`   | The type of transaction. In this case, `MPTokenIssuanceCreate`. |
+| `Account`           | The wallet address of the account that is issuing the MPT. In this case, the `issuer`. |
 | `AssetScale`        | Where to put the decimal place when displaying amounts of this MPT. This is set to `4` for this example. |
 | `MaximumAmount`     | The maximum supply of the token to be issued. |
 | `TransferFee`       | The transfer fee to charge for transferring the token. In this example it is set to `0`. |
