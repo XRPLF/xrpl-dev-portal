@@ -667,6 +667,19 @@ Fixes a bug that could cause an amendment to achieve a majority and later activa
 Without this amendment, the minimum threshold for amendment activation is any value that rounds to 204/256 of trusted validators, which depends on the number of trusted validators at the time. For example, an amendment could activate with exactly 28 out of 36 validators (approximately 77.8%). With this amendment, the actual minimum number of validators needed is never less than 80% of trusted validators.
 
 
+### fixAMMClawbackRounding
+[fixAMMClawbackRounding]: #fixammclawbackrounding
+
+| Amendment    | fixAMMClawbackRounding |
+|:-------------|:-------------------------|
+| Amendment ID | 5E9586DB3D765B4C5794658FB6BB385071E9838DF4016027E6E26820C8526724 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Fixes a rounding error that can occur in the `LPTokenBalance` of an AMM when performing an `AMMClawback` transaction.
+
+
 ### fixAMMOverflowOffer
 [fixAMMOverflowOffer]: #fixammoverflowoffer
 
