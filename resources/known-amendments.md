@@ -677,7 +677,7 @@ Without this amendment, the minimum threshold for amendment activation is any va
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Fixes an accounting error that can occur when performing an `AMMClawback` transaction on the last LP token holder. Due to rounding errors, the AMMs `LPTokenBalance` may not match the holder's trust line balance. This amendment adjusts the `LPTokenBalance` to match the trust line balance before the clawback, so invariant checks pass without errors.
+Fixes an accounting error that can occur when performing an `AMMClawback` transaction on the last LP token holder. Due to rounding errors, the `LPTokenBalance` of the AMM may not match the holder's trust line balance. This amendment adjusts the `LPTokenBalance` to match the trust line balance before the clawback, so invariant checks pass without errors.
 
 
 ### fixAMMOverflowOffer
