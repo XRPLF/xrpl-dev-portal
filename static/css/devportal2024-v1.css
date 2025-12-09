@@ -15365,6 +15365,195 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
     height: auto;
   }
 }
+.bds-tile-logo {
+  appearance: none;
+  border: none;
+  background: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98), opacity 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+}
+.bds-tile-logo:focus {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 1px;
+}
+.bds-tile-logo:focus:not(:focus-visible) {
+  outline: none;
+}
+.bds-tile-logo:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+.bds-tile-logo--square {
+  aspect-ratio: 1;
+  padding: 36px 20px;
+}
+@media (min-width: 576px) {
+  .bds-tile-logo--square {
+    padding: 40px 24px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-tile-logo--square {
+    padding: 72px 48px;
+  }
+}
+
+.bds-tile-logo--rectangle {
+  height: 96px;
+  padding: 20px 36px;
+  width: calc((100% - 8px * 3) / 4 * 2 + 8px * 1);
+}
+@media (min-width: 576px) {
+  .bds-tile-logo--rectangle {
+    width: calc((100% - 8px * 7) / 8 * 4 + 8px * 3);
+  }
+}
+@media (min-width: 992px) {
+  .bds-tile-logo--rectangle {
+    height: 160px;
+    padding: 32px 64px;
+    width: calc((100% - 8px * 11) / 12 * 4 + 8px * 3);
+  }
+}
+
+.bds-tile-logo__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+}
+
+.bds-tile-logo--hovered .bds-tile-logo__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+.bds-tile-logo__image {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.bds-tile-logo--neutral {
+  background-color: #E6EAF0;
+}
+.bds-tile-logo--neutral .bds-tile-logo__overlay {
+  background-color: #CAD4DF;
+}
+.bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  background-color: #8A919A;
+  clip-path: inset(0 0 0 0);
+}
+
+.bds-tile-logo--green {
+  background-color: #70EE97;
+}
+.bds-tile-logo--green .bds-tile-logo__overlay {
+  background-color: #21E46B;
+}
+.bds-tile-logo--green:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  background-color: #0DAA3E;
+  clip-path: inset(0 0 0 0);
+}
+
+.bds-tile-logo--disabled {
+  background-color: #F0F3F7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.bds-tile-logo--disabled:focus, .bds-tile-logo--disabled:focus-visible {
+  outline: none;
+}
+.bds-tile-logo--disabled .bds-tile-logo__image {
+  opacity: 0.5;
+}
+
+html.dark .bds-tile-logo:focus {
+  outline-color: #FFFFFF;
+}
+html.dark .bds-tile-logo:focus-visible {
+  outline-color: #FFFFFF;
+}
+html.dark .bds-tile-logo--neutral {
+  background-color: #72777E;
+}
+html.dark .bds-tile-logo--neutral .bds-tile-logo__overlay {
+  background-color: #8A919A;
+}
+html.dark .bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  background-color: rgba(114, 119, 126, 0.7);
+  clip-path: inset(0 0 0 0);
+}
+html.dark .bds-tile-logo--green {
+  background-color: #70EE97;
+}
+html.dark .bds-tile-logo--green .bds-tile-logo__overlay {
+  background-color: #21E46B;
+}
+html.dark .bds-tile-logo--green:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  background-color: #0DAA3E;
+  clip-path: inset(0 0 0 0);
+}
+html.dark .bds-tile-logo--disabled {
+  background-color: rgba(114, 119, 126, 0.3);
+  opacity: 1;
+}
+html.dark .bds-tile-logo--disabled .bds-tile-logo__image {
+  opacity: 0.5;
+}
+
+html.light .bds-tile-logo:focus {
+  outline-color: #000000;
+}
+html.light .bds-tile-logo:focus-visible {
+  outline-color: #000000;
+}
+html.light .bds-tile-logo--neutral {
+  background-color: #E6EAF0;
+}
+html.light .bds-tile-logo--neutral .bds-tile-logo__overlay {
+  background-color: #CAD4DF;
+}
+html.light .bds-tile-logo--neutral:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  background-color: #8A919A;
+  clip-path: inset(0 0 0 0);
+}
+html.light .bds-tile-logo--green {
+  background-color: #70EE97;
+}
+html.light .bds-tile-logo--green .bds-tile-logo__overlay {
+  background-color: #21E46B;
+}
+html.light .bds-tile-logo--green:active:not(.bds-tile-logo--disabled) .bds-tile-logo__overlay {
+  background-color: #0DAA3E;
+  clip-path: inset(0 0 0 0);
+}
+html.light .bds-tile-logo--disabled {
+  background-color: #F0F3F7;
+  opacity: 1;
+}
+html.light .bds-tile-logo--disabled .bds-tile-logo__image {
+  opacity: 0.5;
+}
+
 pre {
   color: #FFFFFF;
   background-color: #232325;
