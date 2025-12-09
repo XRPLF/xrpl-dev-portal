@@ -62,6 +62,11 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
 - Added `STInt32` as a new `SType` to support negative 32-bit integer fields. ([#5788](https://github.com/XRPLF/rippled/pull/5788))
 
 
+### Breaking Changes
+
+- Updated the `ledger_entry` API method to return an `invalidParams` error if you specify multiple entries. Previously, the method would return information for only one entry selected at random. This change enforces a single entry lookup per request. ([#5237](https://github.com/XRPLF/rippled/pull/5237))
+
+
 ### Bug Fixes
 
 - Fixed consensus stall detection to not flag prematurely. ([#5658](https://github.com/XRPLF/rippled/pull/5658))
@@ -78,7 +83,6 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
 
 ### Refactors
 
-- Refactored `ledger_entry` RPC source code and tests, improving readability and maintainability. ([#5237](https://github.com/XRPLF/rippled/pull/5237))
 - Decoupled net module from xrpld and moved RPC related classes to the rpc folder. ([#5477](https://github.com/XRPLF/rippled/pull/5477))
 - Moved ledger component to `libxrpl` as part of modularization effort. ([#5493](https://github.com/XRPLF/rippled/pull/5493))
 - Refactored code in preparation for `LendingProtocol`. ([#5590](https://github.com/XRPLF/rippled/pull/5590))
