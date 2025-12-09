@@ -42,9 +42,6 @@ metadataGlobs:
     redocly_category: Community
 seo:
   siteUrl: https://xrpl.org/
-rbac:
-  reunite:
-    xrpl-org-editors: maintain
 analytics:
   gtm:
     includeInDevelopment: true

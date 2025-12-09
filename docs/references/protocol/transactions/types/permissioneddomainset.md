@@ -55,7 +55,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code                | Description |
 |:--------------------------|:------------|
-| `tecDIR_FULL`             | The transaction would create a new PermissionedDomain, but the sender's owner directory is full. |
+| `tecDIR_FULL`             | The transaction would create a new PermissionedDomain, but the sender's owner directory is full.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecINSUFFICIENT_RESERVE` | The transaction would create a new PermissionedDomain, but the sender does not have enough XRP to meet the increased owner reserve. |
 | `tecNO_ENTRY`             | The transaction attempted to modify a Domain that does not exist. Check the `DomainID` field of the transaction. |
 | `tecNO_ISSUER`            | At least one of the issuers specified in the `AcceptedCredentials` field is does not exist in the XRP Ledger. Check the `Issuer` field of each member of the array. |
