@@ -11787,51 +11787,16 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   }
 }
 .bds-card-stat__statistic {
-  word-break: break-word;
   margin-bottom: 0;
 }
 .bds-card-stat__statistic sup {
   top: -1rem;
-}
-.bds-card-stat__label {
-  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 300;
-  font-size: 64px;
-  line-height: 70.4px;
-  letter-spacing: -4.5px;
-  margin-bottom: 32px;
-}
-@media (min-width: media-breakpoint-up(md)) {
-  .bds-card-stat__label {
-    font-size: 72px;
-    line-height: 70.4px;
-    letter-spacing: -5px;
-    margin-bottom: 32px;
-  }
-}
-@media (min-width: media-breakpoint-up(lg)) {
-  .bds-card-stat__label {
-    font-size: 112px;
-    line-height: 112px;
-    letter-spacing: -7px;
-    margin-bottom: 32px;
-  }
-}
-.bds-card-stat__label {
-  word-break: break-word;
 }
 .bds-card-stat__buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: flex-start;
-}
-.bds-card-stat__button-link {
-  text-decoration: none;
-  display: inline-block;
-}
-.bds-card-stat__button-link:hover, .bds-card-stat__button-link:focus {
-  text-decoration: none;
 }
 
 .bds-card-stat--lilac {
@@ -11843,19 +11808,18 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
 }
 
 .bds-card-stat--light-gray {
-  background-color: #CAD4DF;
+  background-color: #E6EAF0;
 }
 
 .bds-card-stat--dark-gray {
-  background-color: #8A919A;
+  background-color: #CAD4DF;
 }
 
-html.dark .bds-card-stat {
-  color: #141414;
+html.dark .bds-card-stat--light-gray {
+  background-color: #E6EAF0;
 }
 html.dark .bds-card-stat--dark-gray {
-  background-color: #A2A2A4;
-  color: #FFFFFF;
+  background-color: #8A919A;
 }
 
 .bds-card-stat {

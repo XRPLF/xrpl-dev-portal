@@ -46,6 +46,7 @@ export default function CardStatShowcase() {
           <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
             <CardStat 
               statistic="6 Million"
+              superscript="2"
               label="Active wallets"
               variant="lilac"
             />
@@ -53,6 +54,7 @@ export default function CardStatShowcase() {
           <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
             <CardStat 
               statistic="$1 Trillion"
+              superscript="*"
               label="Value moved"
               variant="green"
             />
