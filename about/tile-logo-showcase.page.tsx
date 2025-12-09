@@ -49,8 +49,8 @@ export default function TileLogoShowcase() {
                   <p className="mb-4 text-muted">
                     Maintains a 1:1 aspect ratio. Padding adjusts responsively: SM (36px/20px), MD (40px/24px), LG (72px/48px).
                   </p>
-                  <div className="d-flex flex-row flex-wrap gap-4">
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                  <PageGridRow>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo
                         shape="square"
                         variant="neutral"
@@ -58,8 +58,8 @@ export default function TileLogoShowcase() {
                         alt="Square Shape Example"
                         onClick={() => handleClick('square')}
                       />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo
                         shape="square"
                         variant="green"
@@ -67,8 +67,8 @@ export default function TileLogoShowcase() {
                         alt="Square Shape Green"
                         onClick={() => handleClick('square-green')}
                       />
-                    </div>
-                  </div>
+                    </PageGridCol>
+                  </PageGridRow>
                 </div>
 
                 {/* Rectangle Shape */}
@@ -112,37 +112,39 @@ export default function TileLogoShowcase() {
                 TileLogo comes in two color variants to support different visual hierarchies and use cases.
               </p>
 
-              <div className="d-flex flex-row flex-wrap gap-6 mb-10">
-                {/* Neutral Variant */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="neutral"
-                    logo={sampleLogo}
-                    alt="Sample Partner Logo"
-                    onClick={() => handleClick('neutral')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Neutral</strong>
-                    <br />
-                    <small className="text-muted">General purpose, subtle presentation</small>
+              <PageGridRow>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="neutral"
+                      logo={sampleLogo}
+                      alt="Sample Partner Logo"
+                      onClick={() => handleClick('neutral')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Neutral</strong>
+                      <br />
+                      <small className="text-muted">General purpose, subtle presentation</small>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
-                {/* Green Variant */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="green"
-                    logo={sampleLogo}
-                    alt="Sample Partner Logo"
-                    onClick={() => handleClick('green')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Green</strong>
-                    <br />
-                    <small className="text-muted">Featured, primary highlights</small>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="green"
+                      logo={sampleLogo}
+                      alt="Sample Partner Logo"
+                      onClick={() => handleClick('green')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Green</strong>
+                      <br />
+                      <small className="text-muted">Featured, primary highlights</small>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </PageGridCol>
+              </PageGridRow>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
@@ -157,82 +159,92 @@ export default function TileLogoShowcase() {
                 Use Tab key to see focus states.
               </p>
 
-              <div className="d-flex flex-row flex-wrap gap-4 mb-10">
+              <PageGridRow>
                 {/* Default */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="neutral"
-                    logo={sampleLogo}
-                    alt="Default State"
-                    onClick={() => handleClick('neutral-default')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Default</strong>
-                    <br />
-                    <code className="small">$gray-200</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="neutral"
+                      logo={sampleLogo}
+                      alt="Default State"
+                      onClick={() => handleClick('neutral-default')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Default</strong>
+                      <br />
+                      <code className="small">$gray-200</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Hover - Note: This shows the default, users hover to see state */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="neutral"
-                    logo={sampleLogo}
-                    alt="Hover State - hover to see"
-                    onClick={() => handleClick('neutral-hover')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Hover</strong>
-                    <br />
-                    <code className="small">$gray-300</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="neutral"
+                      logo={sampleLogo}
+                      alt="Hover State - hover to see"
+                      onClick={() => handleClick('neutral-hover')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Hover</strong>
+                      <br />
+                      <code className="small">$gray-300</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Focus - Users tab to see */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="neutral"
-                    logo={sampleLogo}
-                    alt="Focus State - tab to see"
-                    onClick={() => handleClick('neutral-focus')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Focused</strong>
-                    <br />
-                    <code className="small">$gray-300 + border</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="neutral"
+                      logo={sampleLogo}
+                      alt="Focus State - tab to see"
+                      onClick={() => handleClick('neutral-focus')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Focused</strong>
+                      <br />
+                      <code className="small">$gray-300 + border</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Pressed - Users click to see */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="neutral"
-                    logo={sampleLogo}
-                    alt="Pressed State - click to see"
-                    onClick={() => handleClick('neutral-pressed')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Pressed</strong>
-                    <br />
-                    <code className="small">$gray-400</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="neutral"
+                      logo={sampleLogo}
+                      alt="Pressed State - click to see"
+                      onClick={() => handleClick('neutral-pressed')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Pressed</strong>
+                      <br />
+                      <code className="small">$gray-400</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Disabled */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="neutral"
-                    logo={sampleLogo}
-                    alt="Disabled State"
-                    disabled
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Disabled</strong>
-                    <br />
-                    <code className="small">$gray-100</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="neutral"
+                      logo={sampleLogo}
+                      alt="Disabled State"
+                      disabled
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Disabled</strong>
+                      <br />
+                      <code className="small">$gray-100</code>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </PageGridCol>
+              </PageGridRow>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
@@ -246,82 +258,92 @@ export default function TileLogoShowcase() {
                 The green variant follows the same interaction pattern but uses the brand green color palette.
               </p>
 
-              <div className="d-flex flex-row flex-wrap gap-4 mb-10">
+              <PageGridRow>
                 {/* Default */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="green"
-                    logo={sampleLogo}
-                    alt="Default State"
-                    onClick={() => handleClick('green-default')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Default</strong>
-                    <br />
-                    <code className="small">$green-200</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="green"
+                      logo={sampleLogo}
+                      alt="Default State"
+                      onClick={() => handleClick('green-default')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Default</strong>
+                      <br />
+                      <code className="small">$green-200</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Hover */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="green"
-                    logo={sampleLogo}
-                    alt="Hover State - hover to see"
-                    onClick={() => handleClick('green-hover')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Hover</strong>
-                    <br />
-                    <code className="small">$green-300</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="green"
+                      logo={sampleLogo}
+                      alt="Hover State - hover to see"
+                      onClick={() => handleClick('green-hover')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Hover</strong>
+                      <br />
+                      <code className="small">$green-300</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Focus */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="green"
-                    logo={sampleLogo}
-                    alt="Focus State - tab to see"
-                    onClick={() => handleClick('green-focus')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Focused</strong>
-                    <br />
-                    <code className="small">$green-300 + border</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="green"
+                      logo={sampleLogo}
+                      alt="Focus State - tab to see"
+                      onClick={() => handleClick('green-focus')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Focused</strong>
+                      <br />
+                      <code className="small">$green-300 + border</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Pressed */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="green"
-                    logo={sampleLogo}
-                    alt="Pressed State - click to see"
-                    onClick={() => handleClick('green-pressed')}
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Pressed</strong>
-                    <br />
-                    <code className="small">$green-400</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="green"
+                      logo={sampleLogo}
+                      alt="Pressed State - click to see"
+                      onClick={() => handleClick('green-pressed')}
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Pressed</strong>
+                      <br />
+                      <code className="small">$green-400</code>
+                    </div>
                   </div>
-                </div>
+                </PageGridCol>
 
                 {/* Disabled */}
-                <div className="d-flex flex-column align-items-center">
-                  <TileLogo
-                    variant="green"
-                    logo={sampleLogo}
-                    alt="Disabled State"
-                    disabled
-                  />
-                  <div className="mt-3 text-center">
-                    <strong>Disabled</strong>
-                    <br />
-                    <code className="small">$gray-100</code>
+                <PageGridCol span={{ base: 4, sm: 4, lg: 2 }}>
+                  <div className="d-flex flex-column align-items-center">
+                    <TileLogo
+                      variant="green"
+                      logo={sampleLogo}
+                      alt="Disabled State"
+                      disabled
+                    />
+                    <div className="mt-3 text-center">
+                      <strong>Disabled</strong>
+                      <br />
+                      <code className="small">$gray-100</code>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </PageGridCol>
+              </PageGridRow>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
@@ -463,20 +485,20 @@ export default function TileLogoShowcase() {
                 <div>
                   <h6 className="mb-4">Partner Logo Grid (Square Shape)</h6>
                   <p className="mb-4 text-muted">Use square shape with neutral variant for general partner showcases in grid layouts.</p>
-                  <div className="d-flex flex-row flex-wrap gap-4">
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                  <PageGridRow>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 1" onClick={() => handleClick('partner-1')} />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 2" onClick={() => handleClick('partner-2')} />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 3" onClick={() => handleClick('partner-3')} />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 4" onClick={() => handleClick('partner-4')} />
-                    </div>
-                  </div>
+                    </PageGridCol>
+                  </PageGridRow>
                 </div>
 
                 {/* Partner Logo Grid - Rectangle */}
@@ -498,14 +520,14 @@ export default function TileLogoShowcase() {
                 <div>
                   <h6 className="mb-4">Featured Partners</h6>
                   <p className="mb-4 text-muted">Use green variant to highlight featured or primary partners. Works with both shape variants.</p>
-                  <div className="d-flex flex-row flex-wrap gap-4 mb-4">
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Featured Partner 1" onClick={() => handleClick('featured-1')} />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Featured Partner 2" onClick={() => handleClick('featured-2')} />
-                    </div>
-                  </div>
+                    </PageGridCol>
+                  </PageGridRow>
                   <PageGridRow>
                     <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
                       <div className="d-flex flex-column gap-4">
@@ -519,20 +541,20 @@ export default function TileLogoShowcase() {
                 <div>
                   <h6 className="mb-4">Mixed Grid (Featured + Regular)</h6>
                   <p className="mb-4 text-muted">Combine variants and shapes to create visual hierarchy in partner showcases.</p>
-                  <div className="d-flex flex-row flex-wrap gap-4 mb-4">
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Primary Partner" onClick={() => handleClick('primary')} />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner A" onClick={() => handleClick('partner-a')} />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner B" onClick={() => handleClick('partner-b')} />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner C" onClick={() => handleClick('partner-c')} />
-                    </div>
-                  </div>
+                    </PageGridCol>
+                  </PageGridRow>
                   <PageGridRow>
                     <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
                       <div className="d-flex flex-column gap-4">
@@ -547,14 +569,14 @@ export default function TileLogoShowcase() {
                 <div>
                   <h6 className="mb-4">Linked Partner Tiles</h6>
                   <p className="mb-4 text-muted">Use href prop to navigate to partner pages. Works with both shape variants.</p>
-                  <div className="d-flex flex-row flex-wrap gap-4 mb-4">
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner with link" href="#partner-page" />
-                    </div>
-                    <div style={{ width: '200px', maxWidth: '100%' }}>
+                    </PageGridCol>
+                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Featured partner with link" href="#featured-partner" />
-                    </div>
-                  </div>
+                    </PageGridCol>
+                  </PageGridRow>
                   <PageGridRow>
                     <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
                       <div className="d-flex flex-column gap-4">
