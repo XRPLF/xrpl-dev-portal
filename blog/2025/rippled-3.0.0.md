@@ -1,6 +1,6 @@
 ---
 category: 2025
-date: "2025-12-08"
+date: "2025-12-09"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing XRP Ledger version 3.0.0
