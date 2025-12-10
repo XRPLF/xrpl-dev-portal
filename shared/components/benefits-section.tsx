@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 
 export interface BenefitCard {
@@ -30,7 +31,7 @@ export const BenefitsSection: React.FC<BenefitsSectionProps> = ({
   const { translate } = useTranslate();
 
   return (
-    <section className={`container-new py-26 ${className}`}>
+    <section className={clsx("container-new", "py-26", className)}>
       <div className="d-flex flex-column-reverse col-lg-10 col-sm-8 p-0">
         <h3 className="h4 h2-sm">{translate(title)}</h3>
         {eyebrow && <h6 className="eyebrow mb-3">{translate(eyebrow)}</h6>}

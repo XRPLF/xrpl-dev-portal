@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 interface Project {
@@ -26,11 +27,22 @@ const ProjectCard = ({ project, index, showCarousel = true }: {
 
   return (
     <a
-      className={`col card float-up-on-hover text-decoration-none ${
-        showCarousel 
-          ? (index % 2 === 0 ? "even" : "odd") 
-          : `payments-project-card ${index % 2 === 0 ? "odd" : "even"}`
-      }`}
+      className={clsx(
+        "col",
+        "card",
+        "float-up-on-hover",
+        "text-decoration-none",
+        showCarousel
+          ? {
+              "even": index % 2 === 0,
+              "odd": index % 2 !== 0,
+            }
+          : {
+              "payments-project-card": true,
+              "odd": index % 2 === 0,
+              "even": index % 2 !== 0,
+            }
+      )}
       target="_blank"
       href={project.url}
     >
@@ -91,17 +103,17 @@ const FeaturedProjectsCarousel = ({ projects }: { projects: Project[] }) => {
       </div>
       <div className="arrow-wrapper d-flex justify-content-center mt-16">
         <button
-          className={`arrow-button prev ${
-            currentIndex > 0 ? "hover-color" : ""
-          }`}
+          className={clsx("arrow-button", "prev", {
+            "hover-color": currentIndex > 0,
+          })}
           onClick={handlePrev}
         >
           <img alt="left arrow" />
         </button>
         <button
-          className={`arrow-button next ${
-            currentIndex < projects.length - 3 ? "hover-color" : ""
-          }`}
+          className={clsx("arrow-button", "next", {
+            "hover-color": currentIndex < projects.length - 3,
+          })}
           onClick={handleNext}
         >
           <img alt="right arrow" />
@@ -136,7 +148,7 @@ export const ProjectCards: React.FC<ProjectCardsProps> = ({
   const { translate } = useTranslate();
 
   return (
-    <section className={`container-new py-20 ${className}`}>
+    <section className={clsx("container-new", "py-20", className)}>
       <div className="d-flex flex-column-reverse">
         <h4 className="eyebrow mb-16">
           {translate(title)}

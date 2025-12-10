@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 export interface DividerProps {
   /** Divider orientation - horizontal separates vertical content, vertical separates horizontal content */
@@ -40,15 +41,13 @@ export const Divider: React.FC<DividerProps> = ({
   decorative = true,
 }) => {
   // Build class names using BEM with bds namespace
-  const classNames = [
+  const classNames = clsx(
     'bds-divider',
     `bds-divider--${orientation}`,
     `bds-divider--${weight}`,
     `bds-divider--${color}`,
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    className
+  );
 
   return (
     <hr
