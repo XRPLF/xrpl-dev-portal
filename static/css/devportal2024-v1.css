@@ -15428,6 +15428,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   justify-content: space-between;
   flex: 1;
   padding: 0 8px;
+  padding-bottom: 8px;
   min-height: 0;
 }
 

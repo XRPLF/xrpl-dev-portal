@@ -147,6 +147,7 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   justify-content: space-between; // Distribute space between text and button
   flex: 1;
   padding: 0 $bds-card-image-content-padding; // Horizontal padding only
+  padding-bottom: $bds-card-image-content-padding;
   min-height: 0; // Allow flex shrinking
 }
 
