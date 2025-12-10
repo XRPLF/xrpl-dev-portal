@@ -1,4 +1,4 @@
-# Link Component
+# BdsLink Component
 
 A comprehensive, accessible link component from the XRPL.org Brand Design System (BDS). Supports multiple variants, sizes, and automatic theme-aware color states with animated arrow icons.
 
@@ -21,9 +21,9 @@ A comprehensive, accessible link component from the XRPL.org Brand Design System
 ## Installation
 
 ```tsx
-import { Link } from 'shared/components/Link';
+import { BdsLink } from 'shared/components/Link';
 // or
-import { Link } from 'shared/components/Link/Link';
+import { BdsLink } from 'shared/components/Link/Link';
 ```
 
 ---
@@ -32,16 +32,16 @@ import { Link } from 'shared/components/Link/Link';
 
 ```tsx
 // Internal link (default)
-<Link href="/docs">View Documentation</Link>
+<BdsLink href="/docs">View Documentation</BdsLink>
 
 // External link
-<Link href="https://example.com" variant="external" target="_blank" rel="noopener noreferrer">
+<BdsLink href="https://example.com" variant="external" target="_blank" rel="noopener noreferrer">
   External Resource
-</Link>
+</BdsLink>
 
 // Inline link (no icon)
 <p>
-  Learn more about <Link href="/about" variant="inline">our mission</Link>.
+  Learn more about <BdsLink href="/about" variant="inline">our mission</BdsLink>.
 </p>
 ```
 
@@ -69,9 +69,9 @@ import { Link } from 'shared/components/Link/Link';
 For navigation within the same website. Displays a horizontal arrow (→) that animates to a chevron (>) on hover.
 
 ```tsx
-<Link href="/docs" variant="internal">
+<BdsLink href="/docs" variant="internal">
   Internal Documentation
-</Link>
+</BdsLink>
 ```
 
 ### External
@@ -79,14 +79,14 @@ For navigation within the same website. Displays a horizontal arrow (→) that a
 For links to external websites. Displays a diagonal arrow with corner bracket (↗) that animates on hover. Always use with `target="_blank"` and `rel="noopener noreferrer"` for security.
 
 ```tsx
-<Link 
+<BdsLink 
   href="https://github.com/XRPLF" 
   variant="external" 
   target="_blank" 
   rel="noopener noreferrer"
 >
   GitHub Repository
-</Link>
+</BdsLink>
 ```
 
 ### Inline
@@ -96,7 +96,7 @@ For links embedded within body text. No icon is displayed, making the link flow 
 ```tsx
 <p>
   The XRP Ledger is a decentralized blockchain. You can{" "}
-  <Link href="/docs" variant="inline">read the documentation</Link>{" "}
+  <BdsLink href="/docs" variant="inline">read the documentation</BdsLink>{" "}
   to learn more.
 </p>
 ```
@@ -112,9 +112,9 @@ For links embedded within body text. No icon is displayed, making the link flow 
 | `large` | 20px | 1.5 | 10px |
 
 ```tsx
-<Link href="/docs" size="small">Small Link</Link>
-<Link href="/docs" size="medium">Medium Link</Link>
-<Link href="/docs" size="large">Large Link</Link>
+<BdsLink href="/docs" size="small">Small Link</BdsLink>
+<BdsLink href="/docs" size="medium">Medium Link</BdsLink>
+<BdsLink href="/docs" size="large">Large Link</BdsLink>
 ```
 
 ---
@@ -196,13 +196,13 @@ The Link component follows accessibility best practices:
 
 ```tsx
 // Good - Descriptive link text
-<Link href="/pricing">View pricing plans</Link>
+<BdsLink href="/pricing">View pricing plans</BdsLink>
 
 // Bad - Non-descriptive
-<Link href="/pricing">Click here</Link>
+<BdsLink href="/pricing">Click here</BdsLink>
 
 // External with screen reader context
-<Link 
+<BdsLink 
   href="https://example.com" 
   variant="external" 
   target="_blank"
@@ -210,7 +210,7 @@ The Link component follows accessibility best practices:
   aria-label="GitHub Repository (opens in new tab)"
 >
   GitHub Repository
-</Link>
+</BdsLink>
 ```
 
 ---
@@ -222,39 +222,39 @@ The Link component follows accessibility best practices:
 1. **Use appropriate variants**
    ```tsx
    // Internal navigation
-   <Link href="/about" variant="internal">About Us</Link>
+   <BdsLink href="/about" variant="internal">About Us</BdsLink>
    
    // External sites
-   <Link href="https://github.com" variant="external" target="_blank" rel="noopener noreferrer">
+   <BdsLink href="https://github.com" variant="external" target="_blank" rel="noopener noreferrer">
      GitHub
-   </Link>
+   </BdsLink>
    
    // Within paragraphs
-   <p>Learn about <Link href="/xrp" variant="inline">XRP</Link> today.</p>
+   <p>Learn about <BdsLink href="/xrp" variant="inline">XRP</BdsLink> today.</p>
    ```
 
 2. **Match size to context**
    ```tsx
    // Navigation/CTA - use large
-   <Link href="/get-started" size="large">Get Started</Link>
+   <BdsLink href="/get-started" size="large">Get Started</BdsLink>
    
    // Body content - use medium
-   <Link href="/docs" size="medium">Documentation</Link>
+   <BdsLink href="/docs" size="medium">Documentation</BdsLink>
    
    // Footnotes/captions - use small
-   <Link href="/terms" size="small">Terms of Service</Link>
+   <BdsLink href="/terms" size="small">Terms of Service</BdsLink>
    ```
 
 3. **Always use security attributes for external links**
    ```tsx
-   <Link 
+   <BdsLink 
      href="https://external-site.com" 
      variant="external"
      target="_blank"
      rel="noopener noreferrer"
    >
      External Site
-   </Link>
+   </BdsLink>
    ```
 
 ### Don'ts
@@ -262,28 +262,28 @@ The Link component follows accessibility best practices:
 1. **Don't use disabled for navigation prevention** - Use proper routing instead
    ```tsx
    // Bad - Using disabled for auth gate
-   <Link href="/dashboard" disabled={!isAuthenticated}>Dashboard</Link>
+   <BdsLink href="/dashboard" disabled={!isAuthenticated}>Dashboard</BdsLink>
    
    // Good - Handle in onClick or router
-   <Link href="/dashboard" onClick={handleAuthCheck}>Dashboard</Link>
+   <BdsLink href="/dashboard" onClick={handleAuthCheck}>Dashboard</BdsLink>
    ```
 
 2. **Don't mix variants inappropriately**
    ```tsx
    // Bad - External link with internal variant
-   <Link href="https://example.com" variant="internal">External Site</Link>
+   <BdsLink href="https://example.com" variant="internal">External Site</BdsLink>
    
    // Good
-   <Link href="https://example.com" variant="external">External Site</Link>
+   <BdsLink href="https://example.com" variant="external">External Site</BdsLink>
    ```
 
 3. **Don't use inline variant for standalone links**
    ```tsx
    // Bad - Standalone inline link
-   <Link href="/docs" variant="inline">Documentation</Link>
+   <BdsLink href="/docs" variant="inline">Documentation</BdsLink>
    
    // Good - Use internal for standalone
-   <Link href="/docs" variant="internal">Documentation</Link>
+   <BdsLink href="/docs" variant="internal">Documentation</BdsLink>
    ```
 
 ---
@@ -294,10 +294,10 @@ The Link component follows accessibility best practices:
 
 ```tsx
 <nav className="d-flex flex-column gap-3">
-  <Link href="/docs" size="medium">Documentation</Link>
-  <Link href="/tutorials" size="medium">Tutorials</Link>
-  <Link href="/api" size="medium">API Reference</Link>
-  <Link 
+  <BdsLink href="/docs" size="medium">Documentation</BdsLink>
+  <BdsLink href="/tutorials" size="medium">Tutorials</BdsLink>
+  <BdsLink href="/api" size="medium">API Reference</BdsLink>
+  <BdsLink 
     href="https://github.com/XRPLF" 
     variant="external" 
     size="medium"
@@ -305,7 +305,7 @@ The Link component follows accessibility best practices:
     rel="noopener noreferrer"
   >
     GitHub
-  </Link>
+  </BdsLink>
 </nav>
 ```
 
@@ -313,12 +313,12 @@ The Link component follows accessibility best practices:
 
 ```tsx
 <div className="d-flex flex-column gap-4">
-  <Link href="/get-started" size="large">
+  <BdsLink href="/get-started" size="large">
     Get Started with XRPL
-  </Link>
-  <Link href="/use-cases" size="large">
+  </BdsLink>
+  <BdsLink href="/use-cases" size="large">
     Explore Use Cases
-  </Link>
+  </BdsLink>
 </div>
 ```
 
@@ -328,24 +328,24 @@ The Link component follows accessibility best practices:
 <article>
   <p>
     The XRP Ledger (XRPL) is a decentralized, public blockchain led by a{" "}
-    <Link href="/community" variant="inline">global community</Link>{" "}
+    <BdsLink href="/community" variant="inline">global community</BdsLink>{" "}
     of businesses and developers. It supports a wide variety of{" "}
-    <Link href="/use-cases" variant="inline">use cases</Link>{" "}
+    <BdsLink href="/use-cases" variant="inline">use cases</BdsLink>{" "}
     including payments, tokenization, and DeFi.
   </p>
   
   <p>
     To learn more, check out the{" "}
-    <Link href="/docs" variant="inline">official documentation</Link>{" "}
+    <BdsLink href="/docs" variant="inline">official documentation</BdsLink>{" "}
     or visit the{" "}
-    <Link 
+    <BdsLink 
       href="https://github.com/XRPLF" 
       variant="inline"
       target="_blank"
       rel="noopener noreferrer"
     >
       GitHub repository
-    </Link>.
+    </BdsLink>.
   </p>
 </article>
 ```
@@ -354,9 +354,9 @@ The Link component follows accessibility best practices:
 
 ```tsx
 <div className="d-flex flex-column gap-3">
-  <Link href="/premium" size="medium" disabled>
+  <BdsLink href="/premium" size="medium" disabled>
     Premium Features (Coming Soon)
-  </Link>
+  </BdsLink>
   <span className="text-muted">This feature is not yet available.</span>
 </div>
 ```
