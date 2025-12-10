@@ -18,39 +18,18 @@ This method can retrieve several different types of data. You can select which t
 
 ### General Fields
 
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Updated in: rippled 1.2.0{% /badge %} |
-| `ledger_hash`           | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `include_deleted` | Boolean  | _(Optional, Clio servers only)_ If set to _true_ and the queried object has been deleted, return its complete data as it was prior to its deletion. If set to _false_ or not provided, and the queried object has been deleted, return `objectNotFound` (current behavior). |
+| Field             | Type                       | Required | Description           |
+|:------------------|:---------------------------|:---------|:----------------------|
+| `binary`          | Boolean                    | No       | If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Updated in: rippled 1.2.0{% /badge %} |
+| `ledger_hash`     | String                     | No       | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index`    | String or Unsigned Integer | No       | The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `include_deleted` | Boolean                    | No       | _(Clio servers only)_ If set to _true_ and the queried object has been deleted, return its complete data as it was prior to its deletion. If set to _false_ or not provided, and the queried object has been deleted, return `objectNotFound` (current behavior). |
 
+{% admonition type="warning" name="Caution" %}
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
+{% /admonition %}
 
-In addition to the general fields above, you must specify *exactly 1* of the following fields to indicate what type of entry to retrieve, along with its sub-fields as appropriate. The valid fields are:
-
-- [ledger\_entry](#ledger_entry)
-  - [Request Format](#request-format)
-    - [General Fields](#general-fields)
-    - [Get Ledger Entry by ID](#get-ledger-entry-by-id)
-    - [Get AccountRoot Entry](#get-accountroot-entry)
-    - [Get AMM Entry](#get-amm-entry)
-    - [Get Bridge Entry](#get-bridge-entry)
-    - [Get Credential Entry](#get-credential-entry)
-    - [Get DirectoryNode Entry](#get-directorynode-entry)
-    - [Get Offer Entry](#get-offer-entry)
-    - [Get Oracle Entry](#get-oracle-entry)
-    - [Get RippleState Entry](#get-ripplestate-entry)
-    - [Get Check Entry](#get-check-entry)
-    - [Get Escrow Entry](#get-escrow-entry)
-    - [Get PayChannel Entry](#get-paychannel-entry)
-    - [Get DepositPreauth Entry](#get-depositpreauth-entry)
-    - [Get Ticket Entry](#get-ticket-entry)
-    - [Get NFT Page](#get-nft-page)
-    - [Get MPT Issuance Entry](#get-mpt-issuance-entry)
-    - [Get MPToken Entry](#get-mptoken-entry)
-  - [Response Format](#response-format)
-  - [Possible Errors](#possible-errors)
+In addition to the general fields above, you must specify _exactly 1_ of the following fields to indicate what type of entry to retrieve:
 
 
 ### Get Ledger Entry by ID
@@ -60,7 +39,7 @@ Retrieve any type of ledger entry by its unique ID.
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `index` | String | The [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
+| `index` | String | The [ledger entry ID][] of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
 
 {% tabs %}
 
@@ -106,7 +85,6 @@ You can use this type of request to get any singleton ledger entry, if it exists
 - [Recent History `LedgerHashes`](../../../protocol/ledger-data/ledger-entry-types/ledgerhashes.md) - `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`
 - [`NegativeUNL`](../../../protocol/ledger-data/ledger-entry-types/negativeunl.md) - `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`
 {% /admonition %}
-
 
 
 ### Get AccountRoot Entry
@@ -155,6 +133,49 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% try-it method="ledger_entry-accountroot" /%}
 
+
+### Get Amendments Entry
+
+Retrieve the [Amendments entry][], which contains a list of all enabled amendments on the network.
+
+| Field        | Type   | Required | Description |
+|--------------|--------|----------|-------------|
+| `amendments` | String | Yes      | The `Amendments` entry. This value must be `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_amendments",
+  "command": "ledger_entry",
+  "amendments": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "amendments": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "amendments": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-amendments" server="testnet" /%}
 
 
 ### Get AMM Entry
@@ -348,6 +369,50 @@ rippled json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4
 -->
 
 
+### Get DID Entry
+
+Retrieve a [DID entry][], which holds references to, or data associated with, a single Decentralized Identifier.
+
+| Field | Type     | Required | Description |
+|-------|----------|----------|-------------|
+| `did` | String   | Yes      | The account that controls the DID. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_did",
+  "command": "ledger_entry",
+  "did": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "did": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa",
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "did": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-did" server="testnet" /%}
+
+
 ### Get DirectoryNode Entry
 <a id="get-directorynode-object"></a><!-- legacy ID -->
 
@@ -404,6 +469,93 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 {% try-it method="ledger_entry-directorynode" /%}
 
 
+### Get FeeSettings Entry
+
+Retrieve the [FeeSettings entry][], which contains the current base [transaction cost][] and [reserves][] determined by [fee voting][].
+
+| Field | Type   | Required | Description |
+|-------|--------|----------|-------------|
+| `fee` | String | Yes      | The `FeeSettings` entry. This value must be `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_feesettings",
+  "command": "ledger_entry",
+  "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651",
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-feesettings" server="testnet" /%}
+
+
+### Get LedgerHashes Entry
+
+Retrieve the [LedgerHashes entry][], which contains a history of prior ledgers that led up to this ledger version, in the form of their hashes.
+
+| Field    | Type   | Required | Description |
+|----------|--------|----------|-------------|
+| `hashes` | String | Yes      | The `LedgerHashes` entry. This value must be `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_ledgerhashes",
+  "command": "ledger_entry",
+  "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B",
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-ledgerhashes" server="testnet" /%}
+
 
 ### Get Offer Entry
 <a id="get-offer-object"></a><!-- legacy ID -->
@@ -412,7 +564,7 @@ Retrieve an [Offer entry](../../../protocol/ledger-data/ledger-entry-types/offer
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `offer`                 | Object or String           | If a string, interpret as [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of the Offer to retrieve. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| `offer`                 | Object or String           | If a string, interpret as [ledger entry ID][] of the Offer to retrieve. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
 | `offer.account`         | String - [Address][]       | _(Required if `offer` is specified as an object)_ The account that placed the offer. |
 | `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number][] of the transaction that created the Offer entry. |
 
@@ -792,7 +944,7 @@ Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticke
 
 | Field               | Type                 | Description           |
 |:--------------------|:---------------------|:----------------------|
-| `ticket`            | Object or String     | The Ticket to retrieve. If a string, must be the [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of the Ticket, as hexadecimal. If an object, the `account` and `ticket_seq` sub-fields are required to uniquely specify the Ticket entry. |
+| `ticket`            | Object or String     | The Ticket to retrieve. If a string, must be the [ledger entry ID][] of the Ticket, as hexadecimal. If an object, the `account` and `ticket_seq` sub-fields are required to uniquely specify the Ticket entry. |
 | `ticket.account`    | String - [Address][] | _(Required if `ticket` is specified as an object)_ The owner of the Ticket. |
 | `ticket.ticket_seq` | Number               | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket to retrieve. |
 
@@ -844,7 +996,7 @@ Return an NFT Page in its raw ledger format.
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `nft_page`              | String | The [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
+| `nft_page`              | String | The [ledger entry ID][] of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
 
 {% tabs %}
 

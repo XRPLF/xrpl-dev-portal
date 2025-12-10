@@ -628,6 +628,17 @@
         }
       },
       {
+        "name": "ledger_entry - Amendments",
+        "description": "Returns the Amendments object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-amendments-object",
+        "body": {
+          "id": "example_get_amendments",
+          "command": "ledger_entry",
+          "amendments": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4",
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - AMM",
         "description": "Returns a single Automated Market Maker object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-amm-object",
@@ -669,6 +680,17 @@
         }
       },
       {
+        "name": "ledger_entry - DID",
+        "description": "Returns a single DID object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-did-object",
+        "body": {
+          "id": "example_get_did",
+          "command": "ledger_entry",
+          "did": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa",
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - DirectoryNode",
         "description": "Returns a directory object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-directorynode-object",
@@ -679,6 +701,28 @@
             "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
             "sub_index": 0
           },
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - FeeSettings",
+        "description": "Returns the FeeSettings object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-feesettings-object",
+        "body": {
+          "id": "example_get_feesettings",
+          "command": "ledger_entry",
+          "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651",
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - LedgerHashes",
+        "description": "Returns the LedgerHashes object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-ledgerhashes-object",
+        "body": {
+          "id": "example_get_ledgerhashes",
+          "command": "ledger_entry",
+          "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B",
           "ledger_index": "validated"
         }
       },
