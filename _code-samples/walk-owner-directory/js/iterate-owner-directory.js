@@ -8,8 +8,8 @@ import xrpl from 'xrpl'
 const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
 await client.connect()
 
-const owner = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" // Testnet faucet
-// const owner = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" // TST issuer
+const OWNER = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" // Testnet faucet
+// const OWNER = "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" // TST issuer
 
 // Set initial values for iterating
 let sub_index = 0 // Directory root
@@ -19,11 +19,11 @@ let ledger_index = "validated"
 console.log("Page #\t\t\tEntry count")
 console.log("-----------------------------------")
 while (true) {
-    // console.log(`Getting directory page ${sub_index}`)
+    // console.log(`Getting directory page ${sub_index}...`)
     const resp = await client.request({
         "command": "ledger_entry",
         "directory": {
-            "owner": owner,
+            "owner": OWNER,
             "sub_index": sub_index
         },
         "ledger_index": ledger_index
