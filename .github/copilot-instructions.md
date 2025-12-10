@@ -154,6 +154,54 @@ npm start
 ```
 Opens dev server on `http://localhost:3000` with hot reload. No separate build step needed.
 
+## Extending the Realm Theme
+
+When modifying or extending the theme:
+
+1. **Component Lifecycle**: Realm loads `@theme/plugin.js` first, then theme components. Changes require `npm start` restart.
+2. **React Hooks**: Use `@redocly/theme/core/hooks` utilities (`useThemeHooks`, `useLocation`) for Realm integration.
+3. **Styling Precedence**: Component-level `className` → `@theme/styles.css` → `static/css/devportal2024-v1.css`. Sass values override inline styles.
+4. **TypeScript**: `tsconfig.json` configured for JSX + bundler module resolution. Type-check with IDE; Realm doesn't enforce at build time.
+5. **Markdoc Tags**: Define in `schema.ts` as block/inline, then export handler from `components.tsx`. Example: `<InteractiveBlock>` uses custom `steps` prop.
+6. **Testing Components**: Modify a test `.page.tsx` file locally, run `npm start`, and check `http://localhost:3000`—no rebuild needed due to hot reload.
+
+## Deployment & Hosting
+
+This is a **static site** generated during build; no serverless compute required:
+
+- **Build Process**: `realm develop` (dev) or `realm build` (production) generates static HTML/JS in `dist/`
+- **Hosting**: Published to xrpl.org via GitHub Actions (see `.github/workflows/` if present)
+- **Preview Deploys**: Typically generated per PR; check GitHub Actions logs
+- **Internationalization Builds**: `redocly.yaml` automatically generates separate static outputs for each locale (`/en-US/`, `/ja/`, `/es-ES/`)
+- **Redirects**: Map old URLs to new paths in `redirects.yaml`; Realm handles 301s at deployment
+- **Cache Busting**: Static assets in `static/` are versioned (e.g., `devportal2024-v1.css`); update version in `redocly.yaml` `<link>` tag when releasing CSS changes
+
+## Common Debugging Steps
+
+**"Plugin not found" or content not displaying**:
+1. Verify plugin is exported from `@theme/plugin.js` and registered in the default export
+2. Check `redocly.yaml` includes the plugin in `plugins:` array
+3. Stop dev server (`Ctrl+C`), run `npm start` again—plugins only load on startup
+
+**"Page not found" after adding sidebar entry**:
+1. Verify the `page:` path in `sidebars.yaml` matches actual file (case-sensitive on Linux)
+2. Ensure markdown file includes YAML frontmatter with `html:` metadata
+3. Check file isn't in `redocly.yaml` `ignore:` list (e.g., template files)
+
+**CSS changes not appearing**:
+1. If using watch mode (`npm run build-css-watch`), verify output file `static/css/devportal2024-v1.css` was updated
+2. Hard-refresh browser (`Ctrl+Shift+R`) to bypass cache
+3. Confirm Sass syntax is valid—`sass` CLI will error on bad SCSS
+
+**Missing translations**:
+1. If content appears in English but not another locale, create matching file in `@l10n/{locale}/` with identical relative path
+2. Fallback is automatic; Realm won't error if translation is missing
+
+**TypeScript/import errors in `.page.tsx` files**:
+1. Check import paths use absolute imports from project root (e.g., `@theme/`, `shared/`)
+2. Verify exported component is default export or matches Realm's expected signature
+3. Realm's bundler is lenient; errors appear in dev console, not build failure
+
 ## Important Notes
 
 - **No serverless functions**: This is a static/SSG site—no backend API routes
