@@ -6,7 +6,7 @@ export type LinkVariant = 'internal' | 'external' | 'inline';
 export type LinkSize = 'small' | 'medium' | 'large';
 export type LinkIconType = 'arrow' | 'external' | null;
 
-export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface BdsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
    * Link variant - internal, external, or inline
    * @default 'internal'
@@ -45,7 +45,7 @@ export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>
 }
 
 /**
- * Link Component
+ * BdsLink Component
  * 
  * A comprehensive link component supporting multiple sizes, icon types, and states.
  * Arrow icons animate to chevron shape on hover.
@@ -73,27 +73,27 @@ export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>
  * @example
  * ```tsx
  * // Basic internal link (arrow animates to chevron on hover)
- * <Link href="/docs" size="medium">
+ * <BdsLink href="/docs" size="medium">
  *   View documentation
- * </Link>
+ * </BdsLink>
  * 
  * // External link
- * <Link href="https://example.com" variant="external" size="large">
+ * <BdsLink href="https://example.com" variant="external" size="large">
  *   External resource
- * </Link>
+ * </BdsLink>
  * 
  * // Disabled link
- * <Link href="#" disabled>
+ * <BdsLink href="#" disabled>
  *   Coming soon
- * </Link>
+ * </BdsLink>
  * 
  * // Inline link (no icon)
- * <Link href="/docs" variant="inline">
+ * <BdsLink href="/docs" variant="inline">
  *   Learn more
- * </Link>
+ * </BdsLink>
  * ```
  */
-export const Link: React.FC<LinkProps> = ({
+export const BdsLink: React.FC<BdsLinkProps> = ({
   variant = 'internal',
   size = 'medium',
   icon = null,
@@ -165,4 +165,4 @@ export const Link: React.FC<LinkProps> = ({
   );
 };
 
-Link.displayName = 'Link';
+BdsLink.displayName = 'BdsLink';

@@ -15910,14 +15910,14 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
   text-decoration: none;
 }
 .bds-card-icon:focus {
-  outline: 2px solid #000000;
+  outline: 2px solid #141414;
   outline-offset: 1px;
 }
 .bds-card-icon:focus:not(:focus-visible) {
   outline: none;
 }
 .bds-card-icon:focus-visible {
-  outline: 2px solid #000000;
+  outline: 2px solid #141414;
   outline-offset: 2px;
 }
 
@@ -15976,7 +15976,7 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
 .bds-card-icon__label {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 400;
-  color: #000000;
+  color: #141414;
   margin-bottom: 0;
   font-size: 16px;
   line-height: 26.1px;
@@ -15992,7 +15992,7 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
 
 .bds-card-icon__arrow {
   flex-shrink: 0;
-  color: #000000;
+  color: #141414;
 }
 
 .bds-card-icon:hover .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
@@ -16082,7 +16082,7 @@ html.dark .bds-card-icon--green {
 }
 html.dark .bds-card-icon--green .bds-card-icon__label,
 html.dark .bds-card-icon--green .bds-card-icon__arrow {
-  color: #000000;
+  color: #141414;
 }
 html.dark .bds-card-icon--green .bds-card-icon__overlay {
   background-color: #70EE97;
@@ -16116,17 +16116,17 @@ html.dark .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-img
 }
 
 html.light .bds-card-icon:focus {
-  outline-color: #000000;
+  outline-color: #141414;
 }
 html.light .bds-card-icon:focus-visible {
-  outline-color: #000000;
+  outline-color: #141414;
 }
 html.light .bds-card-icon--neutral {
   background-color: #E6EAF0;
 }
 html.light .bds-card-icon--neutral .bds-card-icon__label,
 html.light .bds-card-icon--neutral .bds-card-icon__arrow {
-  color: #000000;
+  color: #141414;
 }
 html.light .bds-card-icon--neutral .bds-card-icon__overlay {
   background-color: #CAD4DF;
@@ -16140,7 +16140,7 @@ html.light .bds-card-icon--green {
 }
 html.light .bds-card-icon--green .bds-card-icon__label,
 html.light .bds-card-icon--green .bds-card-icon__arrow {
-  color: #000000;
+  color: #141414;
 }
 html.light .bds-card-icon--green .bds-card-icon__overlay {
   background-color: #21E46B;
