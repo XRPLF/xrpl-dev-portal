@@ -52,8 +52,6 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
   - [Response Format](#response-format)
   - [Possible Errors](#possible-errors)
 
-{% admonition type="warning" name="Caution" %}If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.{% /admonition %}
-
 
 ### Get Ledger Entry by ID
 <a id="get-ledger-object-by-id"></a><!-- legacy ID -->
@@ -1100,7 +1098,9 @@ An example of a successful response:
 * Any of the [universal error types][].
 * `deprecatedFeature` - The request specified a removed field, such as `generator`.
 * `entryNotFound` - The requested ledger entry does not exist in the ledger.
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+* `invalidParams`
+  - One or more fields are specified incorrectly or missing.
+  - The request specified more than one ledger entry. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.0.0" %}New in: rippled 3.0.0{% /badge %}
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `malformedAddress` - The request improperly specified an [Address][] field.
 * `malformedCurrency` - The request improperly specified a [Currency Code][] field.
