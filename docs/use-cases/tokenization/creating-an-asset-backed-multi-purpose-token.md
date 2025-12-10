@@ -9,7 +9,7 @@ labels:
 
 _As a financial professional, I want to use multi-purpose tokens to create an asset-backed token in order to profit from resale transactions._
 
-A multi-purpose token (MPT) is a compact and flexible object that offers the best aspects of fungible and non-fungible tokens. It is the next generation of tokenization on the XRPL. Notable features include:
+A Multi-Purpose Token (MPT) is a compact and flexible object that offers the best aspects of fungible and non-fungible tokens. It is the next generation of tokenization on the XRPL. Notable features include:
 
 - MPTs store metadata directly on the XRPL blockchain, with the option of linking to additional off-chain data. Once created, the metadata is immutable.
 - MPTs can have a fixed token supply, with a cap on the maximum number of tokens.
@@ -17,9 +17,20 @@ A multi-purpose token (MPT) is a compact and flexible object that offers the bes
 - MPTs can be non-transferable, for use cases such as airline credits.
 - MPTs also allow advanced compliance features.
 
-To learn more, see [Multi-purpose Tokens](../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md).
-
 {% amendment-disclaimer name="MPTokensV1" /%}
+
+## Intended Audience
+
+This page is written for product managers, business stakeholders, and non-technical users who want a high-level use case and an easy way to generate an MPT using the downloadable MPT Generator utility.
+
+To learn about MPTs in general, go to the **Concept** page. For developer-focused content and code examples go to the **Tutorial**.
+
+{% card-grid %}
+
+{% xrpl-card title="Concept: Multi‑Purpose Tokens" body="Read the concept documentation to learn more about Multi-Purpose Tokens." href="docs/concepts/tokens/fungible-tokens/multi-purpose-tokens/" /%}
+{% xrpl-card title="Tutorial: Issue a Multi‑Purpose Token" body="Step‑by‑step, hands‑on tutorial to issue an MPT using the XRP Ledger SDKs." href="docs/tutorials/how-tos/use-tokens/issue-a-multi-purpose-token/" /%}
+{% xrpl-card title="MPT Generator" body="Download the MPT Generator and learn how to create an asset-backed Treasury bill." href="#mpt-generator"/%}
+{% /card-grid %}
 
 ## MPT Generator
 
@@ -364,6 +375,7 @@ A US Treasury bill (T-bill) is a short-term debt security issued by the US gover
 You can use the Account Configurator to experiment with the settings for a T-bill issuing account in a sandbox environment. When you are satisfied with your configuration, you can create an account on XRPL Mainnet to begin trading.
 
 To create a new MPT Issuer account:
+
 - In the Account Configurator utility, choose ledger instance **Devnet**.
 - Click **Get New Account**.
 - Choose account configuration template **Issuer**.
@@ -424,20 +436,33 @@ The metadata you provide is what distinguishes your token from other MPTs. The f
 
 ```json
 {
-    "Name": "US Treasury Bill Token",
-    "Identifier": "USTBT",
-    "Issuer": "US Treasury",
-    "IssueDate": "2024-03-25",
-    "MaturityDate": "2025-03-25",
-    "FaceValue": 1000,
-    "InterestRate": 2.5,
-    "InterestFrequency": "Quarterly",
-    "Collateral": "US Government",
-    "Jurisdiction": "United States",
-    "RegulatoryCompliance": "SEC Regulations",
-    "SecurityType": "Treasury Bill",
-    "ExternalUrl": "https://example.com/t-bill-token-metadata.json"
+  "ticker": "TBILL",
+  "name": "T-Bill Yield Token",
+  "desc": "A yield-bearing stablecoin backed by short-term U.S. Treasuries and money market instruments.",
+  "icon": "https://example.org/tbill-icon.png",
+  "asset_class": "rwa",
+  "asset_subclass": "treasury",
+  "issuer_name": "Example Yield Co.",
+  "uris": [
+      {
+          "uri": "https://exampleyield.co/tbill",
+          "category": "website",
+          "title": "Product Page"
+      },
+      {
+          "uri": "https://exampleyield.co/docs",
+          "category": "docs",
+          "title": "Yield Token Docs"
+      }
+  ],
+  "additional_info": {
+    "interest_rate": "5.00%",
+    "interest_type": "variable",
+    "yield_source": "U.S. Treasury Bills",
+    "maturity_date": "2045-06-30",
+    "cusip": "912796RX0"
   }
+}
 ```
 
 Once you've set your preferred values, click **Generate Transaction** to see the transaction syntax for your settings. The `Flags` field displays the sum of the flags you've selected, and the `MPTokenMetadata` is converted to a hexidecimal string.
@@ -456,8 +481,9 @@ Click **Gather MPT Information** to copy the account information and MPT Issuanc
 
 ![Account and MPT ID in the result field.](../../img/uc-mpt1-t-bill-gather-mpt-info.png)
 
-## See Also:
+## See Also
 
+- [Issue a Multi-Purpose Token (MPT)](../../tutorials/how-tos/use-tokens/issue-a-multi-purpose-token.md)
 - [Sending MPTs](../../tutorials/javascript/send-payments/sending-mpts.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -83,7 +83,7 @@ async function sendTransaction() {
   const my_wallet = xrpl.Wallet.fromSeed(seedField.value)
   const client = new xrpl.Client(net)
   await client.connect()
-  const metadataHexString = xrpl.convertStringToHex(metadataTextArea.value)
+  const metadataHexString = xrpl.encodeMPTokenMetadata(JSON.parse(metadataTextArea.value))
   const transactionJson = {
     "TransactionType": "MPTokenIssuanceCreate",
     "Account": accountField.value,
