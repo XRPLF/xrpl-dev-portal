@@ -175,7 +175,7 @@ rippled json ledger_entry '{ "amendments": "7DB0788C020F02780A673DC74757F23823FA
 
 {% /tabs %}
 
-{% try-it method="ledger_entry-amendments" server="testnet" /%}
+{% try-it method="ledger_entry-amendments" /%}
 
 
 ### Get AMM Entry
@@ -510,7 +510,7 @@ rippled json ledger_entry '{ "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1
 
 {% /tabs %}
 
-{% try-it method="ledger_entry-feesettings" server="testnet" /%}
+{% try-it method="ledger_entry-feesettings" /%}
 
 
 ### Get LedgerHashes Entry
@@ -554,7 +554,7 @@ rippled json ledger_entry '{ "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA87
 
 {% /tabs %}
 
-{% try-it method="ledger_entry-ledgerhashes" server="testnet" /%}
+{% try-it method="ledger_entry-ledgerhashes" /%}
 
 
 ### Get Offer Entry
