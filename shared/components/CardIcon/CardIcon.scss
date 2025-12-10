@@ -1,0 +1,511 @@
+// BDS CardIcon Component Styles
+// Brand Design System - Icon card component with responsive sizing
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-card-icon              - Base card (responsive layout)
+// .bds-card-icon--neutral     - Neutral color variant (gray tones)
+// .bds-card-icon--green       - Green color variant
+// .bds-card-icon--hovered     - Hovered state (triggers overlay animation)
+// .bds-card-icon--disabled    - Disabled state modifier
+// .bds-card-icon__overlay     - Hover gradient overlay (window shade animation)
+// .bds-card-icon__icon        - Icon container (responsive size)
+// .bds-card-icon__icon-img    - Icon image element
+// .bds-card-icon__content     - Bottom content row
+// .bds-card-icon__label       - Text label
+// .bds-card-icon__arrow       - Arrow icon wrapper
+
+@import '../../../styles/breakpoints';
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Focus border
+$bds-card-icon-focus-border-color: $black;
+$bds-card-icon-focus-border-width: 2px;
+
+// Animation (matching TileLogo/CardOffgrid)
+$bds-card-icon-transition-duration: 200ms;
+$bds-card-icon-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// -----------------------------------------------------------------------------
+// Responsive Size Tokens
+// -----------------------------------------------------------------------------
+
+// SM breakpoint (mobile - default)
+$bds-card-icon-height-sm: 136px;
+$bds-card-icon-padding-sm: 8px;
+$bds-card-icon-icon-size-sm: 56px;
+
+// MD breakpoint (tablet)
+$bds-card-icon-height-md: 140px;
+$bds-card-icon-padding-md: 12px;
+$bds-card-icon-icon-size-md: 60px;
+
+// LG breakpoint (desktop)
+$bds-card-icon-height-lg: 144px;
+$bds-card-icon-padding-lg: 16px;
+$bds-card-icon-icon-size-lg: 64px;
+
+// =============================================================================
+// Base Card Styles
+// =============================================================================
+
+.bds-card-icon {
+  // Reset button/anchor styles
+  appearance: none;
+  border: none;
+  background: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  text-align: left;
+
+  // Layout
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+
+  // Responsive sizing - SM (mobile-first)
+  height: $bds-card-icon-height-sm;
+  padding: $bds-card-icon-padding-sm;
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    height: $bds-card-icon-height-md;
+    padding: $bds-card-icon-padding-md;
+  }
+
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    height: $bds-card-icon-height-lg;
+    padding: $bds-card-icon-padding-lg;
+  }
+
+  // Interaction
+  cursor: pointer;
+
+  // Transitions
+  transition:
+    background-color $bds-card-icon-transition-duration $bds-card-icon-transition-timing,
+    opacity $bds-card-icon-transition-duration $bds-card-icon-transition-timing;
+
+  // Hover styles - prevent text underline
+  &:hover {
+    text-decoration: none;
+  }
+
+  // Focus styles
+  &:focus {
+    outline: $bds-card-icon-focus-border-width solid $bds-card-icon-focus-border-color;
+    outline-offset: 1px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: $bds-card-icon-focus-border-width solid $bds-card-icon-focus-border-color;
+    outline-offset: 2px;
+  }
+}
+
+// =============================================================================
+// Overlay (Color wipe animation - "Window Shade" effect)
+// =============================================================================
+
+.bds-card-icon__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  // Default: hidden (shade is "rolled up" at bottom)
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path $bds-card-icon-transition-duration $bds-card-icon-transition-timing;
+}
+
+// Hovered state: shade fully raised (visible)
+.bds-card-icon--hovered .bds-card-icon__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+// =============================================================================
+// Icon Container
+// =============================================================================
+
+.bds-card-icon__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Responsive icon size - SM
+  width: $bds-card-icon-icon-size-sm;
+  height: $bds-card-icon-icon-size-sm;
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    width: $bds-card-icon-icon-size-md;
+    height: $bds-card-icon-icon-size-md;
+  }
+
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    width: $bds-card-icon-icon-size-lg;
+    height: $bds-card-icon-icon-size-lg;
+  }
+}
+
+.bds-card-icon__icon-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+// =============================================================================
+// Content Row (Bottom)
+// =============================================================================
+
+.bds-card-icon__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bds-card-icon__label {
+  // Typography from Figma - Body R token
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+  color: $black;
+  margin-bottom: 0;
+
+  // SM/MD breakpoint (mobile-first)
+  font-size: 16px;
+  line-height: 26.1px;
+  letter-spacing: 0px;
+
+  // LG breakpoint (desktop)
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    font-size: 18px;
+    line-height: 26.1px;
+    letter-spacing: -0.5px;
+  }
+}
+
+.bds-card-icon__arrow {
+  flex-shrink: 0;
+  color: $black;
+}
+
+// Arrow animation on hover - works for both <a> and <button> elements
+.bds-card-icon:hover .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon:focus .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon--hovered .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal {
+  transform: scaleX(0);
+}
+
+.bds-card-icon:hover .bds-card-icon__arrow .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon:focus .bds-card-icon__arrow .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon--hovered .bds-card-icon__arrow .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal {
+  transform: scale(0);
+}
+
+// =============================================================================
+// Neutral Variant
+// =============================================================================
+
+.bds-card-icon--neutral {
+  background-color: $gray-200;
+
+  // Overlay color for hover wipe
+  .bds-card-icon__overlay {
+    background-color: $gray-300;
+  }
+
+  // Pressed state
+  &:active:not(.bds-card-icon--disabled) {
+    .bds-card-icon__overlay {
+      background-color: $gray-400;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+// =============================================================================
+// Green Variant
+// =============================================================================
+
+.bds-card-icon--green {
+  background-color: $green-200;
+
+  // Overlay color for hover wipe
+  .bds-card-icon__overlay {
+    background-color: $green-300;
+  }
+
+  // Pressed state
+  &:active:not(.bds-card-icon--disabled) {
+    .bds-card-icon__overlay {
+      background-color: $green-400;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+// =============================================================================
+// Disabled State
+// =============================================================================
+
+.bds-card-icon--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  // Neutral disabled
+  &.bds-card-icon--neutral {
+    background-color: $gray-100;
+
+    .bds-card-icon__label,
+    .bds-card-icon__arrow {
+      color: $gray-400;
+    }
+
+    .bds-card-icon__icon-img {
+      opacity: 0.5;
+    }
+  }
+
+  // Green disabled
+  &.bds-card-icon--green {
+    background-color: $green-100;
+
+    .bds-card-icon__label,
+    .bds-card-icon__arrow {
+      color: $gray-400;
+    }
+
+    .bds-card-icon__icon-img {
+      opacity: 0.5;
+    }
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles (html.dark)
+// =============================================================================
+// Dark mode uses different color palette per Figma specs:
+// - Neutral: gray-500 base with white text
+// - Green: green-300 base with black text
+// - Focus border: white
+// - Pressed: 70% opacity
+// - Disabled: 30% opacity
+
+html.dark {
+  // Focus styles - white border in dark mode
+  .bds-card-icon {
+    &:focus {
+      outline-color: $white;
+    }
+
+    &:focus-visible {
+      outline-color: $white;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Neutral Variant - Dark Mode
+  // Default: gray-500, Hover: gray-400, Pressed: 70% gray-500, Disabled: 30% opacity
+  // ---------------------------------------------------------------------------
+  .bds-card-icon--neutral {
+    background-color: $gray-500;
+
+    .bds-card-icon__label,
+    .bds-card-icon__arrow {
+      color: $white;
+    }
+
+    // Overlay color for hover wipe
+    .bds-card-icon__overlay {
+      background-color: $gray-400;
+    }
+
+    // Pressed state - 70% opacity background
+    &:active:not(.bds-card-icon--disabled) {
+      .bds-card-icon__overlay {
+        background-color: rgba($gray-500, 0.7);
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Green Variant - Dark Mode
+  // Default: green-300, Hover: green-200, Pressed: green-400, Disabled: 30% gray-500
+  // ---------------------------------------------------------------------------
+  .bds-card-icon--green {
+    background-color: $green-300;
+
+    .bds-card-icon__label,
+    .bds-card-icon__arrow {
+      color: $black;
+    }
+
+    // Overlay color for hover wipe
+    .bds-card-icon__overlay {
+      background-color: $green-200;
+    }
+
+    // Pressed state
+    &:active:not(.bds-card-icon--disabled) {
+      .bds-card-icon__overlay {
+        background-color: $green-400;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Disabled State - Dark Mode
+  // Both variants: 30% opacity with white text
+  // ---------------------------------------------------------------------------
+  .bds-card-icon--disabled {
+    opacity: 0.3;
+
+    &.bds-card-icon--neutral {
+      background-color: $gray-500;
+
+      .bds-card-icon__label,
+      .bds-card-icon__arrow {
+        color: $white;
+      }
+
+      .bds-card-icon__icon-img {
+        opacity: 1; // Reset since parent has opacity
+      }
+    }
+
+    &.bds-card-icon--green {
+      background-color: $gray-500;
+
+      .bds-card-icon__label,
+      .bds-card-icon__arrow {
+        color: $white;
+      }
+
+      .bds-card-icon__icon-img {
+        opacity: 1; // Reset since parent has opacity
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Light Mode Styles (html.light)
+// =============================================================================
+// Light mode matches the default styles (mobile-first approach)
+// Explicitly defined for specificity when html.light class is present
+
+html.light {
+  // Focus styles - black border in light mode
+  .bds-card-icon {
+    &:focus {
+      outline-color: $black;
+    }
+
+    &:focus-visible {
+      outline-color: $black;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Neutral Variant - Light Mode
+  // ---------------------------------------------------------------------------
+  .bds-card-icon--neutral {
+    background-color: $gray-200;
+
+    .bds-card-icon__label,
+    .bds-card-icon__arrow {
+      color: $black;
+    }
+
+    .bds-card-icon__overlay {
+      background-color: $gray-300;
+    }
+
+    &:active:not(.bds-card-icon--disabled) {
+      .bds-card-icon__overlay {
+        background-color: $gray-400;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Green Variant - Light Mode
+  // ---------------------------------------------------------------------------
+  .bds-card-icon--green {
+    background-color: $green-200;
+
+    .bds-card-icon__label,
+    .bds-card-icon__arrow {
+      color: $black;
+    }
+
+    .bds-card-icon__overlay {
+      background-color: $green-300;
+    }
+
+    &:active:not(.bds-card-icon--disabled) {
+      .bds-card-icon__overlay {
+        background-color: $green-400;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Disabled State - Light Mode
+  // ---------------------------------------------------------------------------
+  .bds-card-icon--disabled {
+    opacity: 1; // Reset opacity for light mode
+
+    &.bds-card-icon--neutral {
+      background-color: $gray-100;
+
+      .bds-card-icon__label,
+      .bds-card-icon__arrow {
+        color: $gray-400;
+      }
+
+      .bds-card-icon__icon-img {
+        opacity: 0.5;
+      }
+    }
+
+    &.bds-card-icon--green {
+      background-color: $green-100;
+
+      .bds-card-icon__label,
+      .bds-card-icon__arrow {
+        color: $gray-400;
+      }
+
+      .bds-card-icon__icon-img {
+        opacity: 0.5;
+      }
+    }
+  }
+}

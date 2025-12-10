@@ -15660,6 +15660,308 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
   opacity: 0.5;
 }
 
+.bds-card-icon {
+  appearance: none;
+  border: none;
+  background: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  text-align: left;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: 136px;
+  padding: 8px;
+}
+@media (min-width: 576px) {
+  .bds-card-icon {
+    height: 140px;
+    padding: 12px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-icon {
+    height: 144px;
+    padding: 16px;
+  }
+}
+.bds-card-icon {
+  cursor: pointer;
+  transition: background-color 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98), opacity 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+}
+.bds-card-icon:hover {
+  text-decoration: none;
+}
+.bds-card-icon:focus {
+  outline: 2px solid #000000;
+  outline-offset: 1px;
+}
+.bds-card-icon:focus:not(:focus-visible) {
+  outline: none;
+}
+.bds-card-icon:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.bds-card-icon__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+}
+
+.bds-card-icon--hovered .bds-card-icon__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+.bds-card-icon__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+}
+@media (min-width: 576px) {
+  .bds-card-icon__icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-icon__icon {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.bds-card-icon__icon-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.bds-card-icon__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bds-card-icon__label {
+  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 26.1px;
+  letter-spacing: 0px;
+}
+@media (min-width: 992px) {
+  .bds-card-icon__label {
+    font-size: 18px;
+    line-height: 26.1px;
+    letter-spacing: -0.5px;
+  }
+}
+
+.bds-card-icon__arrow {
+  flex-shrink: 0;
+  color: #000000;
+}
+
+.bds-card-icon:hover .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon:focus .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon--hovered .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal {
+  transform: scaleX(0);
+}
+
+.bds-card-icon:hover .bds-card-icon__arrow .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon:focus .bds-card-icon__arrow .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-card-icon--hovered .bds-card-icon__arrow .bds-link-icon--external:not(.bds-link-icon--disabled) svg .arrow-horizontal {
+  transform: scale(0);
+}
+
+.bds-card-icon--neutral {
+  background-color: #E6EAF0;
+}
+.bds-card-icon--neutral .bds-card-icon__overlay {
+  background-color: #CAD4DF;
+}
+.bds-card-icon--neutral:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
+  background-color: #8A919A;
+  clip-path: inset(0 0 0 0);
+}
+
+.bds-card-icon--green {
+  background-color: #70EE97;
+}
+.bds-card-icon--green .bds-card-icon__overlay {
+  background-color: #21E46B;
+}
+.bds-card-icon--green:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
+  background-color: #0DAA3E;
+  clip-path: inset(0 0 0 0);
+}
+
+.bds-card-icon--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.bds-card-icon--disabled:focus, .bds-card-icon--disabled:focus-visible {
+  outline: none;
+}
+.bds-card-icon--disabled.bds-card-icon--neutral {
+  background-color: #F0F3F7;
+}
+.bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__label,
+.bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__arrow {
+  color: #8A919A;
+}
+.bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__icon-img {
+  opacity: 0.5;
+}
+.bds-card-icon--disabled.bds-card-icon--green {
+  background-color: #EAFCF1;
+}
+.bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__label,
+.bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__arrow {
+  color: #8A919A;
+}
+.bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-img {
+  opacity: 0.5;
+}
+
+html.dark .bds-card-icon:focus {
+  outline-color: #FFFFFF;
+}
+html.dark .bds-card-icon:focus-visible {
+  outline-color: #FFFFFF;
+}
+html.dark .bds-card-icon--neutral {
+  background-color: #72777E;
+}
+html.dark .bds-card-icon--neutral .bds-card-icon__label,
+html.dark .bds-card-icon--neutral .bds-card-icon__arrow {
+  color: #FFFFFF;
+}
+html.dark .bds-card-icon--neutral .bds-card-icon__overlay {
+  background-color: #8A919A;
+}
+html.dark .bds-card-icon--neutral:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
+  background-color: rgba(114, 119, 126, 0.7);
+  clip-path: inset(0 0 0 0);
+}
+html.dark .bds-card-icon--green {
+  background-color: #21E46B;
+}
+html.dark .bds-card-icon--green .bds-card-icon__label,
+html.dark .bds-card-icon--green .bds-card-icon__arrow {
+  color: #000000;
+}
+html.dark .bds-card-icon--green .bds-card-icon__overlay {
+  background-color: #70EE97;
+}
+html.dark .bds-card-icon--green:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
+  background-color: #0DAA3E;
+  clip-path: inset(0 0 0 0);
+}
+html.dark .bds-card-icon--disabled {
+  opacity: 0.3;
+}
+html.dark .bds-card-icon--disabled.bds-card-icon--neutral {
+  background-color: #72777E;
+}
+html.dark .bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__label,
+html.dark .bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__arrow {
+  color: #FFFFFF;
+}
+html.dark .bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__icon-img {
+  opacity: 1;
+}
+html.dark .bds-card-icon--disabled.bds-card-icon--green {
+  background-color: #72777E;
+}
+html.dark .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__label,
+html.dark .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__arrow {
+  color: #FFFFFF;
+}
+html.dark .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-img {
+  opacity: 1;
+}
+
+html.light .bds-card-icon:focus {
+  outline-color: #000000;
+}
+html.light .bds-card-icon:focus-visible {
+  outline-color: #000000;
+}
+html.light .bds-card-icon--neutral {
+  background-color: #E6EAF0;
+}
+html.light .bds-card-icon--neutral .bds-card-icon__label,
+html.light .bds-card-icon--neutral .bds-card-icon__arrow {
+  color: #000000;
+}
+html.light .bds-card-icon--neutral .bds-card-icon__overlay {
+  background-color: #CAD4DF;
+}
+html.light .bds-card-icon--neutral:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
+  background-color: #8A919A;
+  clip-path: inset(0 0 0 0);
+}
+html.light .bds-card-icon--green {
+  background-color: #70EE97;
+}
+html.light .bds-card-icon--green .bds-card-icon__label,
+html.light .bds-card-icon--green .bds-card-icon__arrow {
+  color: #000000;
+}
+html.light .bds-card-icon--green .bds-card-icon__overlay {
+  background-color: #21E46B;
+}
+html.light .bds-card-icon--green:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
+  background-color: #0DAA3E;
+  clip-path: inset(0 0 0 0);
+}
+html.light .bds-card-icon--disabled {
+  opacity: 1;
+}
+html.light .bds-card-icon--disabled.bds-card-icon--neutral {
+  background-color: #F0F3F7;
+}
+html.light .bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__label,
+html.light .bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__arrow {
+  color: #8A919A;
+}
+html.light .bds-card-icon--disabled.bds-card-icon--neutral .bds-card-icon__icon-img {
+  opacity: 0.5;
+}
+html.light .bds-card-icon--disabled.bds-card-icon--green {
+  background-color: #EAFCF1;
+}
+html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__label,
+html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__arrow {
+  color: #8A919A;
+}
+html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-img {
+  opacity: 0.5;
+}
+
 pre {
   color: #FFFFFF;
   background-color: #232325;
