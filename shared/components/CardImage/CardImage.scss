@@ -9,7 +9,7 @@
 // .bds-card-image__image             - The actual image element
 // .bds-card-image__content           - Title/subtitle/button wrapper
 // .bds-card-image__text              - Title and subtitle wrapper
-// .bds-card-image__title             - Card title (uses .sh-md-l)
+// .bds-card-image__title             - Card title (uses .sh-md-r)
 // .bds-card-image__subtitle          - Card subtitle (uses .body-l)
 //
 // Note: This file is imported within xrpl.scss after Bootstrap and project
@@ -31,11 +31,21 @@ $bds-card-image-image-height-md: 280px;
 $bds-card-image-height-sm: 536px;
 $bds-card-image-image-height-sm: 268px;
 
-// Spacing
-$bds-card-image-gap: 24px;              // Gap between image and content
-$bds-card-image-title-gap: 12px;        // Gap between title and subtitle
-$bds-card-image-content-padding: 8px;   // Horizontal padding for content
-$bds-card-image-button-margin: 30px;    // Margin above button
+// Spacing - LG (Large) variant (default, ≥992px)
+$bds-card-image-gap-lg: 24px;              // Gap between image and title
+$bds-card-image-title-gap-lg: 12px;        // Gap between title and subtitle
+$bds-card-image-content-padding: 8px;      // Horizontal padding for content (same for all)
+$bds-card-image-button-margin-lg: 30px;    // Margin above button
+
+// Spacing - MD (Medium) variant (576px - 991px)
+$bds-card-image-gap-md: 20px;              // Gap between image and title
+$bds-card-image-title-gap-md: 8px;         // Gap between title and subtitle
+$bds-card-image-button-margin-md: 34px;    // Margin above button
+
+// Spacing - SM (Small) variant (<576px)
+$bds-card-image-gap-sm: 16px;              // Gap between image and title
+$bds-card-image-title-gap-sm: 4px;         // Gap between title and subtitle
+$bds-card-image-button-margin-sm: 35px;    // Margin above button
 
 // Colors
 $bds-card-image-bg: $white;
@@ -54,6 +64,7 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   // Card container
   display: flex;
   flex-direction: column;
+  gap: $bds-card-image-gap-lg; // Gap between image container and content
   flex: 0 0 400px; // Don't grow, don't shrink, fixed 400px width
   max-width: 400px; // Hard cap at 400px
   height: $bds-card-image-height-lg;
@@ -96,7 +107,7 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   justify-content: center;
   width: 100%;
   height: $bds-card-image-image-height-lg;
-  background-color: $bds-card-image-image-bg;
+  background-color: var(--bds-card-image-bg, $bds-card-image-image-bg);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -108,6 +119,22 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   height: auto;
   object-fit: contain; // Maintain image aspect ratio (1:1 for this design)
   object-position: center;
+  transition: transform $bds-card-image-transition-duration $bds-card-image-transition-timing;
+}
+
+// =============================================================================
+// Full Bleed Modifier
+// =============================================================================
+// When fullBleed is true, image fills entire container with object-fit: cover
+
+.bds-card-image--full-bleed {
+  .bds-card-image__image {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+  }
 }
 
 // =============================================================================
@@ -117,22 +144,24 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 .bds-card-image__content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; // Distribute space between text and button
   flex: 1;
-  padding: $bds-card-image-gap $bds-card-image-content-padding 0;
+  padding: 0 $bds-card-image-content-padding; // Horizontal padding only
   min-height: 0; // Allow flex shrinking
 }
 
 .bds-card-image__text {
   display: flex;
   flex-direction: column;
-  gap: $bds-card-image-title-gap;
+  gap: $bds-card-image-title-gap-lg;
+  flex-shrink: 0; // Don't shrink text container
 }
 
 .bds-card-image__title {
-  // Typography handled by .sh-md-l class from _font.scss
+  // Typography handled by .sh-md-r class from _font.scss
   color: $bds-card-image-text-color;
   margin: 0;
+  text-align: left; // Always left-align, regardless of parent
   // Title should be 1 line only
   overflow: hidden;
   text-overflow: ellipsis;
@@ -143,6 +172,7 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   // Typography handled by .body-l class from _font.scss
   color: $bds-card-image-text-color;
   margin: 0;
+  text-align: left; // Always left-align, regardless of parent
   // Subtitle max 3 lines
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -156,9 +186,9 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 // =============================================================================
 
 .bds-card-image__content .bds-btn {
-  margin-top: auto;
-  margin-bottom: $bds-card-image-button-margin;
   align-self: flex-start;
+  flex-shrink: 0; // Don't shrink button
+  // Button positioned at bottom via justify-content: space-between on parent
 }
 
 // =============================================================================
@@ -168,6 +198,11 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 .bds-card-image--hovered:not(.bds-card-image--disabled),
 .bds-card-image:hover:not(.bds-card-image--disabled) {
+  // Scale image by 10% on hover
+  .bds-card-image__image {
+    transform: scale(1.1);
+  }
+
   // Trigger button background fill animation
   .bds-btn--primary::before {
     transform: scaleY(1);
@@ -226,11 +261,21 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 @include media-breakpoint-down(lg) {
   .bds-card-image {
     height: $bds-card-image-height-md;
+    gap: $bds-card-image-gap-md; // Gap between image container and content for MD
   }
 
   .bds-card-image__image-container {
     height: $bds-card-image-image-height-md;
   }
+
+  .bds-card-image__content {
+    padding: 0 $bds-card-image-content-padding; // Horizontal padding only
+  }
+
+  .bds-card-image__text {
+    gap: $bds-card-image-title-gap-md;
+  }
+
 
   // Adjust hover padding for tablet breakpoint
   .bds-card-image--hovered:not(.bds-card-image--disabled),
@@ -256,6 +301,7 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 @include media-breakpoint-down(sm) {
   .bds-card-image {
     height: $bds-card-image-height-sm;
+    gap: $bds-card-image-gap-sm; // Gap between image container and content for SM
   }
 
   .bds-card-image__image-container {
@@ -263,12 +309,13 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   }
 
   .bds-card-image__content {
-    padding: 16px $bds-card-image-content-padding 0;
+    padding: 0 $bds-card-image-content-padding; // Horizontal padding only
   }
 
-  .bds-card-image__content .bds-btn {
-    margin-bottom: 35px;
+  .bds-card-image__text {
+    gap: $bds-card-image-title-gap-sm;
   }
+
 }
 
 // =============================================================================
@@ -320,7 +367,7 @@ html.dark {
 
   // Image container - neutral/500 (#72777E)
   .bds-card-image__image-container {
-    background-color: $gray-500;
+    background-color: var(--bds-card-image-bg, $gray-500);
   }
 
   // Title - neutral/white (#FFFFFF)

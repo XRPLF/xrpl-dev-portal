@@ -13,6 +13,9 @@ export const frontmatter = {
 // Sample image URL for demonstration (1:1 ratio image)
 const SAMPLE_IMAGE = "/img/cards/card-image-showcase.png";
 
+// Image from Figma Image Scaling spec (node 4171-104)
+const IMAGE_SCALING_DEMO = "/img/cards/card-image-scaling-demo.png";
+
 export default function CardImageShowcase() {
   const [clickedCard, setClickedCard] = React.useState<string | null>(null);
 
@@ -87,7 +90,7 @@ export default function CardImageShowcase() {
               </p>
               
               <PageGridRow>
-                <PageGridCol span={{ base: 4, sm: 4, lg: 4 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
                   <h6 className="mb-3">With Link (href)</h6>
                   <CardImage
                     image={SAMPLE_IMAGE}
@@ -99,7 +102,7 @@ export default function CardImageShowcase() {
                   />
                 </PageGridCol>
                 
-                <PageGridCol span={{ base: 4, sm: 4, lg: 4 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
                   <h6 className="mb-3">With Click Handler</h6>
                   <CardImage
                     image={SAMPLE_IMAGE}
@@ -129,7 +132,7 @@ export default function CardImageShowcase() {
               </p>
               
               <PageGridRow>
-                <PageGridCol span={{ base: 4, sm: 4, lg: 4 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
                   <div className="text-center">
                     <small className="d-block mb-2 text-muted">Default / Hover</small>
                     <CardImage
@@ -146,7 +149,7 @@ export default function CardImageShowcase() {
                   </div>
                 </PageGridCol>
                 
-                <PageGridCol span={{ base: 4, sm: 4, lg: 4 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
                   <div className="text-center">
                     <small className="d-block mb-2 text-muted">Disabled</small>
                     <CardImage
@@ -177,7 +180,7 @@ export default function CardImageShowcase() {
           </PageGridRow>
           
           <PageGridRow>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
               <CardImage
                 image={SAMPLE_IMAGE}
                 imageAlt="Card 1"
@@ -187,7 +190,7 @@ export default function CardImageShowcase() {
                 href="#"
               />
             </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
               <CardImage
                 image={SAMPLE_IMAGE}
                 imageAlt="Card 2"
@@ -197,7 +200,7 @@ export default function CardImageShowcase() {
                 href="#"
               />
             </PageGridCol>
-            <PageGridCol span={{ base: 4, md: 8, lg: 4 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
               <CardImage
                 image={SAMPLE_IMAGE}
                 imageAlt="Card 3"
@@ -428,6 +431,85 @@ export default function CardImageShowcase() {
                     <li><strong>Lines:</strong> Max 3 (truncated)</li>
                   </ul>
                 </div>
+              </div>
+            </PageGridCol>
+          </PageGridRow>
+        </PageGrid>
+
+        {/* Image Scaling Animation */}
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGridCol span={12}>
+              <h2 className="h4 mb-6">Image Scaling Animation</h2>
+              <p className="mb-6">
+                On hover, focus, and pressed states, the image inside the card scales up by <strong>10%</strong> while 
+                the image container remains fixed. This creates a subtle zoom effect that enhances interactivity without 
+                disrupting the card layout.
+              </p>
+              
+              <div className="d-flex flex-row gap-6 mb-6" style={{ flexWrap: 'wrap' }}>
+                <div style={{ flex: '1 1 300px' }}>
+                  <h6 className="mb-3">Container Behavior</h6>
+                  <ul className="mb-0">
+                    <li><strong>Image box:</strong> Does NOT increase</li>
+                    <li><strong>Overflow:</strong> Hidden (clips scaled content)</li>
+                    <li><strong>Background:</strong> Remains visible at edges</li>
+                  </ul>
+                </div>
+                <div style={{ flex: '1 1 300px' }}>
+                  <h6 className="mb-3">Image Behavior</h6>
+                  <ul className="mb-0">
+                    <li><strong>Scale:</strong> 110% (1.1x) on interaction</li>
+                    <li><strong>Transform origin:</strong> Center</li>
+                    <li><strong>Transition:</strong> 150ms cubic-bezier</li>
+                  </ul>
+                </div>
+                <div style={{ flex: '1 1 300px' }}>
+                  <h6 className="mb-3">Trigger States</h6>
+                  <ul className="mb-0">
+                    <li>Hover (mouse over card)</li>
+                    <li>Focus (keyboard navigation)</li>
+                    <li>Pressed (active click)</li>
+                  </ul>
+                </div>
+              </div>
+            </PageGridCol>
+          </PageGridRow>
+          
+          <PageGridRow>
+            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+              <div className="text-center">
+                <small className="d-block mb-2 text-muted">Hover to see image zoom (fullBleed)</small>
+                <CardImage
+                  image={IMAGE_SCALING_DEMO}
+                  imageAlt="3D metallic cubes illustration"
+                  title="Documentation"
+                  subtitle="Access everything you need to get started working with the XRPL. Line 3"
+                  buttonLabel="Medium Link"
+                  onClick={() => handleCardClick('image-scale')}
+                  fullBleed
+                />
+                {clickedCard === 'image-scale' && (
+                  <p className="mt-2 text-success">✓ Card clicked!</p>
+                )}
+              </div>
+            </PageGridCol>
+            
+            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+              <div className="text-center">
+                <small className="d-block mb-2 text-muted">Custom backgroundColor</small>
+                <CardImage
+                  image={SAMPLE_IMAGE}
+                  imageAlt="Sample illustration"
+                  title="Custom Background"
+                  subtitle="This card has a custom background color set via the backgroundColor prop."
+                  buttonLabel="Medium Link"
+                  onClick={() => handleCardClick('custom-bg')}
+                  backgroundColor="#1a1a2e"
+                />
+                {clickedCard === 'custom-bg' && (
+                  <p className="mt-2 text-success">✓ Card clicked!</p>
+                )}
               </div>
             </PageGridCol>
           </PageGridRow>
@@ -683,6 +765,11 @@ import { CardImage } from 'shared/components/CardImage';
                 <li>
                   <a href="https://www.figma.com/design/3KewCK6ylLtHm9Yd3eSZqs/Card---Image?node-id=4139-245&m=dev" target="_blank" rel="noopener noreferrer">
                     Dark Mode Design States
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.figma.com/design/3KewCK6ylLtHm9Yd3eSZqs/Card---Image?node-id=4171-104&m=dev" target="_blank" rel="noopener noreferrer">
+                    Image Scaling Animation Spec
                   </a>
                 </li>
               </ul>

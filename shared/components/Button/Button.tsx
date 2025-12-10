@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 export interface ButtonProps {
   /** Button variant - determines visual style */
@@ -108,16 +109,16 @@ export const Button: React.FC<ButtonProps> = ({
   const buttonAriaLabel = ariaLabel || getTextFromChildren(children);
 
   // Build class names using BEM with bds namespace
-  const classNames = [
+  const classNames = clsx(
     'bds-btn',
     `bds-btn--${variant}`,
     `bds-btn--${color}`,
-    disabled ? 'bds-btn--disabled' : '',
-    !shouldShowIcon ? 'bds-btn--no-icon' : '',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    {
+      'bds-btn--disabled': disabled,
+      'bds-btn--no-icon': !shouldShowIcon,
+    },
+    className
+  );
 
   return (
     <button

@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import clsx from 'clsx';
 import { Button } from '../Button';
 
 export interface CardImageProps {
@@ -20,6 +21,10 @@ export interface CardImageProps {
   disabled?: boolean;
   /** Optional className for custom styling */
   className?: string;
+  /** When true, image fills entire container with object-fit: cover (no visible background) */
+  fullBleed?: boolean;
+  /** Custom background color for image container (defaults to gray-100) */
+  backgroundColor?: string;
 }
 
 /**
@@ -65,6 +70,8 @@ export const CardImage: React.FC<CardImageProps> = ({
   onClick,
   disabled = false,
   className = '',
+  fullBleed = false,
+  backgroundColor,
 }) => {
   // Track hover state for button animation
   const [isHovered, setIsHovered] = useState(false);
@@ -82,14 +89,13 @@ export const CardImage: React.FC<CardImageProps> = ({
   }, [disabled]);
 
   // Build class names using BEM with bds namespace
-  const classNames = [
+  const classNames = clsx(
     'bds-card-image',
     disabled && 'bds-card-image--disabled',
     isHovered && 'bds-card-image--hovered',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    fullBleed && 'bds-card-image--full-bleed',
+    className
+  );
 
   // Handle card click for linked cards
   const handleCardClick = useCallback(
@@ -114,11 +120,16 @@ export const CardImage: React.FC<CardImageProps> = ({
     }
   }, [href, onClick]);
 
+  // Build inline style for image container background color
+  const imageContainerStyle = backgroundColor
+    ? { '--bds-card-image-bg': backgroundColor } as React.CSSProperties
+    : undefined;
+
   // Common content structure
   const content = (
     <>
-      {/* Image container with gray background */}
-      <div className="bds-card-image__image-container">
+      {/* Image container with customizable background */}
+      <div className="bds-card-image__image-container" style={imageContainerStyle}>
         <img
           src={image}
           alt={imageAlt}
@@ -129,7 +140,7 @@ export const CardImage: React.FC<CardImageProps> = ({
       {/* Content area: title, subtitle, and button */}
       <div className="bds-card-image__content">
         <div className="bds-card-image__text">
-          <h3 className="bds-card-image__title sh-md-l">{title}</h3>
+          <h3 className="bds-card-image__title sh-md-r">{title}</h3>
           <p className="bds-card-image__subtitle body-l">{subtitle}</p>
         </div>
 
