@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import clsx from 'clsx';
 
 export interface TileLogoProps {
   /** Shape variant: 'square' (default) or 'rectangle' */
@@ -76,16 +77,16 @@ export const TileLogo: React.FC<TileLogoProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   // Build class names using BEM convention
-  const classNames = [
+  const classNames = clsx(
     'bds-tile-logo',
     `bds-tile-logo--${shape}`,
     `bds-tile-logo--${variant}`,
-    disabled ? 'bds-tile-logo--disabled' : '',
-    isHovered && !disabled ? 'bds-tile-logo--hovered' : '',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    {
+      'bds-tile-logo--disabled': disabled,
+      'bds-tile-logo--hovered': isHovered && !disabled,
+    },
+    className
+  );
 
   // Hover handlers
   const handleMouseEnter = () => !disabled && setIsHovered(true);

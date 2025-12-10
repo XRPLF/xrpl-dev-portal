@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { Link } from "@redocly/theme/components/Link/Link";
 
@@ -27,10 +28,10 @@ export const DeveloperResourcesSection: React.FC<DeveloperResourcesSectionProps>
   const isSingleCard = cards.length === 1;
 
   return (
-    <div className={`container developer-resources-section page-community ${className} ${isSingleCard ? 'single-card' : ''}`}>
+    <div className={clsx("container", "developer-resources-section", "page-community", className, { "single-card": isSingleCard })}>
       <section className="bottom-cards-section bug-bounty section-padding">
         {cards.map((card, index) => (
-          <div key={index} className={`com-card ${card.backgroundClass || ''}`}>
+          <div key={index} className={clsx("com-card", card.backgroundClass)}>
             <div className="card-content custom-gap">
               <h6 className="card-title">{translate(card.title)}</h6>
               <p className="card-description">
@@ -40,7 +41,7 @@ export const DeveloperResourcesSection: React.FC<DeveloperResourcesSectionProps>
                 {card.links.map((link, linkIndex) => (
                   <Link
                     key={linkIndex}
-                    className={`com-card-link ${linkIndex === 0 ? 'mt-16' : ''}`}
+                    className={clsx("com-card-link", { "mt-16": linkIndex === 0 })}
                     target={link.target || "_blank"}
                     to={link.url}
                   >

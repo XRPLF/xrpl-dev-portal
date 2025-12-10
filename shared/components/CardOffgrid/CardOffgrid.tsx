@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import clsx from 'clsx';
 
 export interface CardOffgridProps {
   /** Color variant of the card */
@@ -76,15 +77,15 @@ export const CardOffgrid: React.FC<CardOffgridProps> = ({
   }, [disabled]);
 
   // Build class names using BEM with bds namespace
-  const classNames = [
+  const classNames = clsx(
     'bds-card-offgrid',
     `bds-card-offgrid--${variant}`,
-    disabled && 'bds-card-offgrid--disabled',
-    isHovered && 'bds-card-offgrid--hovered',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    {
+      'bds-card-offgrid--disabled': disabled,
+      'bds-card-offgrid--hovered': isHovered,
+    },
+    className
+  );
 
   // Render icon - supports both React nodes and image URLs
   const renderIcon = () => {
