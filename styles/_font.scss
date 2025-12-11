@@ -155,12 +155,12 @@ p {
   @include _type-step(map-get($t, mobile));
 
   // tablet
-  @media (min-width: media-breakpoint-up(md)) {
+  @include media-breakpoint-up(md) {
     @include _type-step(map-get($t, tablet));
   }
 
   // desktop
-  @media (min-width: media-breakpoint-up(lg)) {
+  @include media-breakpoint-up(lg) {
     @include _type-step(map-get($t, desktop));
   }
 }
@@ -273,15 +273,15 @@ $type-scale: (
   body-r: (
     font: $font-family-sans-serif,
     weight: 400,
-    mobile:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 18px),
-    tablet:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 18px),
-    desktop: (size: 18px, line: 26.1px, letter: -0.5px,pspace: 18px)
+    mobile:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
+    tablet:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
+    desktop: (size: 18px, line: 26.1px, letter: -0.5px,pspace: 16px)
   ),
   body-l: (
     font: $font-family-sans-serif,
     weight: 300,
-    mobile:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 16px),
-    tablet:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 16px),
+    mobile:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
+    tablet:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
     desktop: (size: 18px, line: 26.1px, letter: -0.5px,pspace: 16px)
   ),
 
@@ -289,8 +289,8 @@ $type-scale: (
   label-r: (
     font: $font-family-sans-serif,
     weight: 400,
-    mobile:  (size: 14px, line: 23.2px, letter: 0px, pspace: 18px),
-    tablet:  (size: 14px, line: 23.2px, letter: 0px, pspace: 18px),
+    mobile:  (size: 14px, line: 20.1px, letter: 0px, pspace: 18px),
+    tablet:  (size: 14px, line: 20.1px, letter: 0px, pspace: 18px),
     desktop: (size: 16px, line: 23.2px, letter: 0px, pspace: 18px)
   ),
   label-l: (

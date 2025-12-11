@@ -9291,7 +9291,7 @@ p {
   letter-spacing: -4.5px;
   margin-bottom: 32px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .display-lg {
     font-size: 72px;
     line-height: 70.4px;
@@ -9299,7 +9299,7 @@ p {
     margin-bottom: 32px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .display-lg {
     font-size: 112px;
     line-height: 112px;
@@ -9316,7 +9316,7 @@ p {
   letter-spacing: -2px;
   margin-bottom: 32px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .display-md {
     font-size: 60px;
     line-height: 52.8px;
@@ -9324,7 +9324,7 @@ p {
     margin-bottom: 32px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .display-md {
     font-size: 72px;
     line-height: 76.8px;
@@ -9341,7 +9341,7 @@ p {
   letter-spacing: -1px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .display-sm {
     font-size: 56px;
     line-height: 46px;
@@ -9349,7 +9349,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .display-sm {
     font-size: 64px;
     line-height: 70.4px;
@@ -9366,7 +9366,7 @@ p {
   letter-spacing: -0.25px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .h-lg {
     font-size: 42px;
     line-height: 41.4px;
@@ -9374,7 +9374,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .h-lg {
     font-size: 48px;
     line-height: 52.8px;
@@ -9391,7 +9391,7 @@ p {
   letter-spacing: 0px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .h-md {
     font-size: 36px;
     line-height: 40px;
@@ -9399,7 +9399,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .h-md {
     font-size: 40px;
     line-height: 48px;
@@ -9416,7 +9416,7 @@ p {
   letter-spacing: 0.25px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .h-sm {
     font-size: 28px;
     line-height: 35px;
@@ -9424,7 +9424,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .h-sm {
     font-size: 32px;
     line-height: 40px;
@@ -9441,7 +9441,7 @@ p {
   letter-spacing: -1px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .sh-lg-r {
     font-size: 28px;
     line-height: 35px;
@@ -9449,7 +9449,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .sh-lg-r {
     font-size: 32px;
     line-height: 40px;
@@ -9466,7 +9466,7 @@ p {
   letter-spacing: -1px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .sh-lg-l {
     font-size: 28px;
     line-height: 35px;
@@ -9474,7 +9474,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .sh-lg-l {
     font-size: 32px;
     line-height: 40px;
@@ -9491,7 +9491,7 @@ p {
   letter-spacing: -1px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .sh-md-r {
     font-size: 26px;
     line-height: 35px;
@@ -9499,7 +9499,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .sh-md-r {
     font-size: 28px;
     line-height: 35px;
@@ -9516,7 +9516,7 @@ p {
   letter-spacing: -1px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .sh-md-l {
     font-size: 26px;
     line-height: 35px;
@@ -9524,7 +9524,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .sh-md-l {
     font-size: 26px;
     line-height: 35px;
@@ -9541,7 +9541,7 @@ p {
   letter-spacing: -0.5px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .sh-sm-r {
     font-size: 18px;
     line-height: 30px;
@@ -9549,7 +9549,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .sh-sm-r {
     font-size: 24px;
     line-height: 30px;
@@ -9566,7 +9566,7 @@ p {
   letter-spacing: -0.5px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .sh-sm-l {
     font-size: 18px;
     line-height: 30px;
@@ -9574,7 +9574,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .sh-sm-l {
     font-size: 24px;
     line-height: 30px;
@@ -9587,24 +9587,24 @@ p {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 26.1px;
+  line-height: 23.2px;
   letter-spacing: 0px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .body-r {
     font-size: 16px;
-    line-height: 26.1px;
+    line-height: 23.2px;
     letter-spacing: 0px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .body-r {
     font-size: 18px;
     line-height: 26.1px;
     letter-spacing: -0.5px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 }
 
@@ -9612,19 +9612,19 @@ p {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 300;
   font-size: 16px;
-  line-height: 26.1px;
+  line-height: 23.2px;
   letter-spacing: 0px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .body-l {
     font-size: 16px;
-    line-height: 26.1px;
+    line-height: 23.2px;
     letter-spacing: 0px;
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .body-l {
     font-size: 18px;
     line-height: 26.1px;
@@ -9637,19 +9637,19 @@ p {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 400;
   font-size: 14px;
-  line-height: 23.2px;
+  line-height: 20.1px;
   letter-spacing: 0px;
   margin-bottom: 18px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .label-r {
     font-size: 14px;
-    line-height: 23.2px;
+    line-height: 20.1px;
     letter-spacing: 0px;
     margin-bottom: 18px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .label-r {
     font-size: 16px;
     line-height: 23.2px;
@@ -9666,7 +9666,7 @@ p {
   letter-spacing: 0px;
   margin-bottom: 16px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .label-l {
     font-size: 14px;
     line-height: 23.2px;
@@ -9674,7 +9674,7 @@ p {
     margin-bottom: 16px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .label-l {
     font-size: 16px;
     line-height: 23.2px;
@@ -11770,7 +11770,7 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   letter-spacing: -4.5px;
   margin-bottom: 32px;
 }
-@media (min-width: media-breakpoint-up(md)) {
+@media (min-width: 576px) {
   .bds-card-stat__statistic {
     font-size: 72px;
     line-height: 70.4px;
@@ -11778,7 +11778,7 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
     margin-bottom: 32px;
   }
 }
-@media (min-width: media-breakpoint-up(lg)) {
+@media (min-width: 992px) {
   .bds-card-stat__statistic {
     font-size: 112px;
     line-height: 112px;
@@ -11790,7 +11790,8 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   margin-bottom: 0;
 }
 .bds-card-stat__statistic sup {
-  top: -1rem;
+  top: -0.4em;
+  font-size: 0.7em;
 }
 .bds-card-stat__buttons {
   display: flex;
@@ -11833,6 +11834,14 @@ html.dark .bds-card-stat--dark-gray {
 @media (min-width: 992px) {
   .bds-card-stat {
     min-height: 298px;
+  }
+}
+
+@media (min-width: 992px) {
+  .bds-grid__col-lg-3 .bds-card-stat {
+    aspect-ratio: 1/1;
+    min-height: unset;
+    height: auto;
   }
 }
 
@@ -15910,14 +15919,14 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
   text-decoration: none;
 }
 .bds-card-icon:focus {
-  outline: 2px solid #000000;
+  outline: 2px solid #141414;
   outline-offset: 1px;
 }
 .bds-card-icon:focus:not(:focus-visible) {
   outline: none;
 }
 .bds-card-icon:focus-visible {
-  outline: 2px solid #000000;
+  outline: 2px solid #141414;
   outline-offset: 2px;
 }
 
@@ -15976,7 +15985,7 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
 .bds-card-icon__label {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 400;
-  color: #000000;
+  color: #141414;
   margin-bottom: 0;
   font-size: 16px;
   line-height: 26.1px;
@@ -15992,7 +16001,7 @@ html.light .bds-tile-logo--disabled .bds-tile-logo__image {
 
 .bds-card-icon__arrow {
   flex-shrink: 0;
-  color: #000000;
+  color: #141414;
 }
 
 .bds-card-icon:hover .bds-card-icon__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
@@ -16082,7 +16091,7 @@ html.dark .bds-card-icon--green {
 }
 html.dark .bds-card-icon--green .bds-card-icon__label,
 html.dark .bds-card-icon--green .bds-card-icon__arrow {
-  color: #000000;
+  color: #141414;
 }
 html.dark .bds-card-icon--green .bds-card-icon__overlay {
   background-color: #70EE97;
@@ -16116,17 +16125,17 @@ html.dark .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-img
 }
 
 html.light .bds-card-icon:focus {
-  outline-color: #000000;
+  outline-color: #141414;
 }
 html.light .bds-card-icon:focus-visible {
-  outline-color: #000000;
+  outline-color: #141414;
 }
 html.light .bds-card-icon--neutral {
   background-color: #E6EAF0;
 }
 html.light .bds-card-icon--neutral .bds-card-icon__label,
 html.light .bds-card-icon--neutral .bds-card-icon__arrow {
-  color: #000000;
+  color: #141414;
 }
 html.light .bds-card-icon--neutral .bds-card-icon__overlay {
   background-color: #CAD4DF;
@@ -16140,7 +16149,7 @@ html.light .bds-card-icon--green {
 }
 html.light .bds-card-icon--green .bds-card-icon__label,
 html.light .bds-card-icon--green .bds-card-icon__arrow {
-  color: #000000;
+  color: #141414;
 }
 html.light .bds-card-icon--green .bds-card-icon__overlay {
   background-color: #21E46B;
