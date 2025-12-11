@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>20</x>
+      <y>300</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Escrow ledger entry
+--
+Account
+PreviousTxnID
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>330</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+look up transaction
+by Previous TxnID</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>360</x>
+      <y>300</y>
+      <w>160</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Transaction
+--
+tx_json
+    TransactionType
+    Sequence
+    ...
+meta
+    AffectedNodes
+    	...
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>420</x>
+      <y>520</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>430</y>
+      <w>270</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Is TransactionType == EscrowCreate?</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>520</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Yes</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>610</x>
+      <y>880</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=final
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>520</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+No</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>160</x>
+      <y>490</y>
+      <w>150</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Check metadata for the same Escrow.
+
+Get the prior PreviousTxnID.
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>340</y>
+      <w>30</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>430</x>
+      <y>740</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Use the escrow's Account and this transaction's Sequence number to finish or cancel the escrow.
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>830</y>
+      <w>130</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>80</x>
+      <y>110</y>
+      <w>790</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r2=No, or yes but this escrow is from before that</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;20.0;770.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>860</x>
+      <y>20</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>type=initial</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>600</x>
+      <y>640</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>550</x>
+      <y>500</y>
+      <w>150</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>This is the transaction that created the escrow.
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>580</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Is Sequence == 0?</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>640</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r2=No</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>640</x>
+      <y>740</y>
+      <w>170</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Use the escrow's Account and this transaction's TicketSequence number to finish or cancel the escrow.
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>640</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r2=Yes</panel_attributes>
+    <additional_attributes>100.0;100.0;100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>620</x>
+      <y>840</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;110.0;50.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>190</y>
+      <w>30</w>
+      <h>740</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;720.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>850</x>
+      <y>110</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>bg=green
+type=decision</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>30</y>
+      <w>340</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Is the IncludeKeyletFields amendment enabled?
+(new in rippled 3.0.0)
+
+</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>90</y>
+      <w>250</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r2=Yes, and this escrow was \ncreated after it went live</panel_attributes>
+    <additional_attributes>230.0;200.0;230.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>1030</x>
+      <y>290</y>
+      <w>160</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Escrow ledger entry
+--
+Account
+Sequence
+PreviousTxnID
+...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1030</x>
+      <y>460</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Use the escrow's Account and Sequence fields to finish or cancel the escrow.
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1100</x>
+      <y>380</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
