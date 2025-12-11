@@ -2,5 +2,8 @@
     "python.analysis.extraPaths": [
         "c:\\Users\\BFina\\.vscode\\extensions\\ms-security.ms-sentinel-1.1.1\\python"
     ],
-    "sarif-viewer.connectToGithubCodeScanning": "off"
+    "sarif-viewer.connectToGithubCodeScanning": "off",
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "master"
+    ]
 }
