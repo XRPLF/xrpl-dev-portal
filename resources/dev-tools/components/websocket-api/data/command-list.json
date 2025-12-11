@@ -630,7 +630,7 @@
       {
         "name": "ledger_entry - Amendments",
         "description": "Returns the Amendments object in its raw ledger format.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-amendments-object",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-amendments-entry",
         "body": {
           "id": "example_get_amendments",
           "command": "ledger_entry",
@@ -682,7 +682,7 @@
       {
         "name": "ledger_entry - DID",
         "description": "Returns a single DID object in its raw ledger format.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-did-object",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-did-entry",
         "body": {
           "id": "example_get_did",
           "command": "ledger_entry",
@@ -707,7 +707,7 @@
       {
         "name": "ledger_entry - FeeSettings",
         "description": "Returns the FeeSettings object in its raw ledger format.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-feesettings-object",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-feesettings-entry",
         "body": {
           "id": "example_get_feesettings",
           "command": "ledger_entry",
@@ -718,11 +718,22 @@
       {
         "name": "ledger_entry - LedgerHashes",
         "description": "Returns the LedgerHashes object in its raw ledger format.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-ledgerhashes-object",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-ledgerhashes-entry",
         "body": {
           "id": "example_get_ledgerhashes",
           "command": "ledger_entry",
           "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B",
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - NFTokenOffer",
+        "description": "Returns an NFTokenOffer object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-nftokenoffer-entry",
+        "body": {
+          "id": "example_get_nftokenoffer",
+          "command": "ledger_entry",
+          "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
           "ledger_index": "validated"
         }
       },

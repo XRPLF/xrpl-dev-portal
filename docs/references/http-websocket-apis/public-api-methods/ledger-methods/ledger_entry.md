@@ -175,7 +175,7 @@ rippled json ledger_entry '{ "amendments": "7DB0788C020F02780A673DC74757F23823FA
 
 {% /tabs %}
 
-{% try-it method="ledger_entry-amendments" /%}
+{% try-it method="ledger_entry-amendments" server="testnet" /%}
 
 
 ### Get AMM Entry
@@ -187,7 +187,7 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
 
 | Field        | Type             | Description           |
 |:-------------|:-----------------|:----------------------|
-| `amm`        | Object or String | The [AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md) to retrieve. If you specify a string, it must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
+| `amm`        | Object or String | The [AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md) to retrieve. If you specify a string, it must be the [ledger entry ID][] of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
 | `amm.asset`  | Object           | One of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 | `amm.asset2` | Object           | The other of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 
@@ -510,7 +510,7 @@ rippled json ledger_entry '{ "fee": "4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1
 
 {% /tabs %}
 
-{% try-it method="ledger_entry-feesettings" /%}
+{% try-it method="ledger_entry-feesettings" server="testnet" /%}
 
 
 ### Get LedgerHashes Entry
@@ -554,7 +554,7 @@ rippled json ledger_entry '{ "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA87
 
 {% /tabs %}
 
-{% try-it method="ledger_entry-ledgerhashes" /%}
+{% try-it method="ledger_entry-ledgerhashes" server="testnet" /%}
 
 
 ### Get Offer Entry
@@ -738,7 +738,7 @@ Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `check` | String | The [object ID](../../../protocol/ledger-data/common-fields.md) of a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md) to retrieve. |
+| `check` | String | The [ledger entry ID][] of a [Check entry][] to retrieve. |
 
 {% tabs %}
 
@@ -988,6 +988,50 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 {% /tabs %}
 
 {% try-it method="ledger_entry-ticket" /%}
+
+
+### Get NFTokenOffer Entry
+
+Retrieve an [NFTokenOffer entry][], which represents an offer to buy, sell, or transfer an [NFT][].
+
+| Field       | Type   | Required | Description |
+|-------------|--------|----------|-------------|
+| `nft_offer` | String | Yes      | The [ledger entry ID][] of an NFT offer to retrieve. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_nftokenoffer",
+    "command": "ledger_entry",
+    "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
+    "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-nftokenoffer" server="testnet" /%}
 
 
 ### Get NFT Page

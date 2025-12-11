@@ -135,6 +135,7 @@
 [MPTokensV1 amendment]: /resources/known-amendments.md#mptokensv1
 [MultiSign amendment]: /resources/known-amendments.md#multisign
 [MultiSignReserve amendment]: /resources/known-amendments.md#multisignreserve
+[NFT]: /docs/references/protocol/data-types/nftoken.md
 [NFTokenAcceptOffer transaction]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
 [NFTokenAcceptOffer transactions]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
 [NFTokenAcceptOffer]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
