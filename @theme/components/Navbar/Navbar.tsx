@@ -222,7 +222,7 @@ export function NavDropdown(props) {
         //conditional specific for brand kit
         if (item2.link === "/XRPL_Brand_Kit.zip") {
           return (
-            <a key={index2} href="/XRPL_Brand_Kit.zip" className={cls2}>
+            <a target="_blank" key={index2} href="/XRPL_Brand_Kit.zip" className={cls2}>
               {translate(item2.labelTranslationKey, item2.label)}
             </a>
           );
