@@ -8,6 +8,7 @@ The Button component is a scalable, accessible button implementation following t
 
 - **Three Variants**: Primary (solid), Secondary (outline), Tertiary (text-only)
 - **Two Color Themes**: Green (default) and Black
+- **Link Support**: Can render as anchor elements for navigation via `href` prop
 - **Animated Arrow Icon**: Optional icon with smooth hover animations
 - **Full State Support**: Enabled, Hover, Focus, Active, and Disabled states
 - **Responsive Design**: Adaptive padding and spacing across breakpoints
@@ -34,6 +35,12 @@ interface ButtonProps {
   className?: string;
   /** Whether to show the arrow icon */
   showIcon?: boolean;
+  /** Accessibility label - defaults to button text if not provided */
+  ariaLabel?: string;
+  /** URL to navigate to - renders as a Link instead of button */
+  href?: string;
+  /** Link target - only applies when href is provided */
+  target?: '_self' | '_blank';
 }
 ```
 
@@ -45,6 +52,9 @@ interface ButtonProps {
 - `type`: `'button'`
 - `className`: `''`
 - `showIcon`: `true`
+- `ariaLabel`: (derived from children text)
+- `href`: `undefined`
+- `target`: `'_self'`
 
 ## Variants
 
@@ -119,6 +129,91 @@ The black theme provides an alternative color scheme:
 ```tsx
 <Button variant="primary" color="black" onClick={handleClick}>
   Dark Button
+</Button>
+```
+
+## Link Buttons
+
+The Button component can render as an anchor element for navigation by passing the `href` prop. When `href` is provided, the button is wrapped in a Redocly `Link` component for proper routing support within the application.
+
+### How It Works
+
+- When `href` is provided and button is not disabled, renders as `<Link>` (anchor element)
+- When `href` is not provided or button is disabled, renders as `<button>` element
+- All visual styles and animations remain identical regardless of element type
+- The Redocly Link component handles internal routing and external link handling
+
+### Internal Navigation
+
+For navigating within the application:
+
+```tsx
+<Button variant="primary" href="/docs">
+  View Documentation
+</Button>
+
+<Button variant="secondary" href="/about">
+  About Us
+</Button>
+```
+
+### External Links
+
+For external URLs, use `target="_blank"` to open in a new tab:
+
+```tsx
+<Button variant="primary" href="https://xrpl.org" target="_blank">
+  Visit XRPL.org
+</Button>
+```
+
+### Link with Click Handler
+
+You can combine `href` with `onClick` for tracking or additional logic:
+
+```tsx
+<Button 
+  variant="primary" 
+  href="/signup" 
+  onClick={() => trackEvent('signup_click')}
+>
+  Sign Up
+</Button>
+```
+
+### Disabled Link Buttons
+
+When `disabled={true}` and `href` is provided, the component renders as a `<button>` element instead of a link to prevent navigation:
+
+```tsx
+<Button variant="primary" href="/checkout" disabled>
+  Checkout (Unavailable)
+</Button>
+```
+
+### All Variants as Links
+
+All button variants support link functionality:
+
+```tsx
+{/* Primary link button */}
+<Button variant="primary" href="/get-started">
+  Get Started
+</Button>
+
+{/* Secondary link button */}
+<Button variant="secondary" href="/learn-more">
+  Learn More
+</Button>
+
+{/* Tertiary link button */}
+<Button variant="tertiary" href="/view-details">
+  View Details
+</Button>
+
+{/* Black theme link button */}
+<Button variant="primary" color="black" href="/dashboard">
+  Dashboard
 </Button>
 ```
 
@@ -323,6 +418,34 @@ import { Button } from 'shared/components/Button';
 </Button>
 ```
 
+### Link Buttons
+
+```tsx
+{/* Internal navigation */}
+<Button variant="primary" href="/docs">
+  View Documentation
+</Button>
+
+{/* External link (opens in new tab) */}
+<Button variant="primary" href="https://xrpl.org" target="_blank">
+  Visit XRPL.org
+</Button>
+
+{/* Link with click tracking */}
+<Button 
+  variant="secondary" 
+  href="/signup"
+  onClick={() => analytics.track('signup_button')}
+>
+  Sign Up
+</Button>
+
+{/* Black theme link button */}
+<Button variant="primary" color="black" href="/dashboard">
+  Go to Dashboard
+</Button>
+```
+
 ### Visual Hierarchy
 
 ```tsx
@@ -350,10 +473,11 @@ import { Button } from 'shared/components/Button';
 
 ### Screen Reader Support
 
-- Semantic `<button>` element
-- Button label announced
+- Semantic `<button>` element (or `<a>` for link buttons)
+- Button label announced via `aria-label` attribute
 - `aria-disabled` attribute for disabled state
 - Icon marked with `aria-hidden="true"`
+- Link buttons use proper anchor semantics for navigation
 
 ### Color Contrast
 
@@ -397,6 +521,9 @@ The component uses design tokens from the XRPL Brand Design System:
 6. **Handle disabled states**: Always provide feedback when actions are unavailable
 7. **Test keyboard navigation**: Ensure all buttons are accessible via keyboard
 8. **Consider context**: Choose color theme based on background and design context
+9. **Use `href` for navigation**: When the button navigates to a new page, use the `href` prop instead of `onClick` with router navigation
+10. **Use `target="_blank"` for external links**: Always open external URLs in a new tab for better UX
+11. **Combine `href` with `onClick` for tracking**: When you need both navigation and analytics tracking
 
 ## Implementation Details
 
@@ -425,12 +552,40 @@ The icon is automatically hidden when:
 
 This ensures disabled buttons don't show interactive elements.
 
+### Link Rendering Logic
+
+The component conditionally renders as different elements:
+
+```typescript
+// Render as Link when href is provided and not disabled
+if (href && !disabled) {
+  return (
+    <Link to={href} target={target} className={classNames}>
+      {content}
+    </Link>
+  );
+}
+
+// Otherwise render as button
+return (
+  <button type={type} className={classNames} disabled={disabled}>
+    {content}
+  </button>
+);
+```
+
+This ensures:
+- Link buttons use proper anchor semantics for navigation
+- Disabled state always renders as a button to prevent navigation
+- Visual styles remain consistent across both element types
+
 ### State Management
 
 The component manages states through CSS classes and props:
 - **Disabled**: Controlled via `disabled` prop and `aria-disabled` attribute
 - **Hover/Focus**: Handled by CSS `:hover` and `:focus-visible` pseudo-classes
 - **Active**: Handled by CSS `:active` pseudo-class
+- **Link vs Button**: Determined by presence of `href` prop
 
 ## Browser Support
 

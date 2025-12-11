@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export interface ButtonProps {
   /** Button variant - determines visual style */
@@ -20,6 +21,10 @@ export interface ButtonProps {
   showIcon?: boolean;
   /** Accessibility label - defaults to button text if not provided */
   ariaLabel?: string;
+  /** URL to navigate to - renders as a Link instead of button */
+  href?: string;
+  /** Link target - only applies when href is provided */
+  target?: '_self' | '_blank';
 }
 
 /**
@@ -101,6 +106,8 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   showIcon = true,
   ariaLabel,
+  href,
+  target = '_self',
 }) => {
   // Hide icon when disabled (per design spec)
   const shouldShowIcon = showIcon && !disabled;
@@ -120,6 +127,29 @@ export const Button: React.FC<ButtonProps> = ({
     className
   );
 
+  // Inner content shared between button and link
+  const content = (
+    <>
+      <span className="bds-btn__label">{children}</span>
+      {shouldShowIcon && <ArrowIcon />}
+    </>
+  );
+
+  // Render as Link when href is provided
+  if (href && !disabled) {
+    return (
+      <Link
+        to={href}
+        target={target}
+        className={classNames}
+        onClick={onClick}
+        aria-label={buttonAriaLabel}
+      >
+        {content}
+      </Link>
+    );
+  }
+
   return (
     <button
       type={type}
@@ -129,8 +159,7 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled}
       aria-label={buttonAriaLabel}
     >
-      <span className="bds-btn__label">{children}</span>
-      {shouldShowIcon && <ArrowIcon />}
+      {content}
     </button>
   );
 };

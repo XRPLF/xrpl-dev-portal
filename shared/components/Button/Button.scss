@@ -84,6 +84,141 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 // - On unhover: background empties top-to-bottom
 // - Each variant defines its own ::before background-color
 
+// Anchor reset for link-based buttons
+// Override global anchor styles (e.g., html.light a:not(.bds-link))
+// Using !important to ensure button styles win over global anchor rules
+// that are loaded later in the CSS cascade
+html.light,
+html.dark {
+  a.bds-btn {
+    text-decoration: none !important;
+    
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:active,
+    &:visited {
+      text-decoration: none !important;
+    }
+
+    // Primary green link button - ensure correct text color and background
+    &.bds-btn--primary.bds-btn--green {
+      color: $bds-btn-primary-text !important;
+      background-color: $bds-btn-primary-bg !important;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-text !important;
+        background-color: $bds-btn-primary-bg !important;
+      }
+    }
+
+    // Primary black link button - ensure white text and icon
+    &.bds-btn--primary.bds-btn--black {
+      color: $bds-btn-primary-black-text !important;
+      background-color: $bds-btn-primary-black-bg !important;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-black-text !important;
+        stroke: $bds-btn-primary-black-text !important;
+      }
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-black-text !important;
+        background-color: $bds-btn-primary-black-bg !important;
+        
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-primary-black-text !important;
+          stroke: $bds-btn-primary-black-text !important;
+        }
+      }
+    }
+
+    // Secondary green link button
+    &.bds-btn--secondary.bds-btn--green {
+      color: $bds-btn-secondary-text !important;
+      background-color: $bds-btn-secondary-bg !important;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $bds-btn-secondary-text-hover !important;
+        background-color: $bds-btn-secondary-bg-hover !important;
+      }
+      
+      &:active,
+      &:visited {
+        color: $bds-btn-secondary-text !important;
+        background-color: $bds-btn-secondary-bg !important;
+      }
+    }
+
+    // Secondary black link button
+    &.bds-btn--secondary.bds-btn--black {
+      color: $bds-btn-secondary-black-text !important;
+      background-color: transparent !important;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-secondary-black-text !important;
+        background-color: $bds-btn-secondary-black-bg-hover !important;
+      }
+      
+      &:active,
+      &:visited {
+        background-color: transparent !important;
+      }
+    }
+
+    // Tertiary green link button
+    &.bds-btn--tertiary.bds-btn--green {
+      color: $bds-btn-tertiary-text !important;
+      background-color: $bds-btn-tertiary-bg !important;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $bds-btn-tertiary-text-hover !important;
+      }
+      
+      &:active,
+      &:visited {
+        color: $bds-btn-tertiary-text !important;
+        background-color: $bds-btn-tertiary-bg !important;
+      }
+    }
+
+    // Tertiary black link button
+    &.bds-btn--tertiary.bds-btn--black {
+      color: $bds-btn-tertiary-black-text !important;
+      background-color: transparent !important;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-tertiary-black-text !important;
+        background-color: transparent !important;
+      }
+    }
+  }
+}
+
 .bds-btn {
   // Layout
   display: inline-flex;
@@ -743,6 +878,39 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 // =============================================================================
 
 html.dark {
+  // Anchor link button color overrides for dark mode
+  a.bds-btn {
+    // Secondary green link button - dark mode
+    &.bds-btn--secondary.bds-btn--green {
+      color: $green-300;
+      
+      &:hover,
+      &:focus {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+      }
+    }
+
+    // Tertiary green link button - dark mode
+    &.bds-btn--tertiary.bds-btn--green {
+      color: $green-300;
+      
+      &:hover,
+      &:focus {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+      }
+    }
+  }
+
   .bds-btn--primary {
     // Focus State (keyboard navigation) - with icon - Desktop
     &:focus-visible:not(:disabled):not(.bds-btn--disabled):not(.bds-btn--no-icon) {

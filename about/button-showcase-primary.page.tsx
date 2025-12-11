@@ -178,6 +178,28 @@ export default function ButtonShowcase() {
         </div>
       </section>
 
+      {/* Link Buttons */}
+      <section className="container-new py-26">
+        <div className="d-flex flex-column-reverse">
+          <h2 className="h4 mb-8">Link Buttons</h2>
+          <h6 className="eyebrow mb-3">Navigation</h6>
+        </div>
+        <p className="mb-4 text-muted">
+          Buttons can function as links by passing an <code>href</code> prop. They render as anchor elements wrapped in a Redocly Link component for routing support.
+        </p>
+        <div className="d-flex flex-wrap align-items-center">
+          <Button variant="primary" href="/docs" className="me-4 mb-4">
+            View Documentation
+          </Button>
+          <Button variant="primary" href="https://xrpl.org" target="_blank" className="me-4 mb-4">
+            Visit XRPL.org
+          </Button>
+          <Button variant="primary" color="black" href="/about" className="mb-4">
+            About Us
+          </Button>
+        </div>
+      </section>
+
       {/* Without Icon */}
       <section className="container-new py-26">
         <div className="d-flex flex-column-reverse">
@@ -330,6 +352,16 @@ export default function ButtonShowcase() {
 // Form integration
 <Button variant="primary" type="submit">
   Submit Form
+</Button>
+
+// Link button (internal navigation)
+<Button variant="primary" href="/docs">
+  View Documentation
+</Button>
+
+// Link button (external, opens in new tab)
+<Button variant="primary" href="https://xrpl.org" target="_blank">
+  Visit XRPL.org
 </Button>`}</code>
           </pre>
         </div>
