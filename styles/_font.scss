@@ -163,6 +163,13 @@ p {
   @include media-breakpoint-up(lg) {
     @include _type-step(map-get($t, desktop));
   }
+
+  // xl (optional - only if defined for this type)
+  @if map-has-key($t, xl) {
+    @include media-breakpoint-up(xl) {
+      @include _type-step(map-get($t, xl));
+    }
+  }
 }
 
 // ---------------------------------------
@@ -181,7 +188,8 @@ $type-scale: (
     weight: 300,
     mobile:  (size: 64px,  line: 70.4px, letter: -4.5px, pspace: 32px),
     tablet:  (size: 72px,  line: 70.4px, letter: -5px,   pspace: 32px),
-    desktop: (size: 112px, line: 112px,  letter: -7px,   pspace: 32px)
+    desktop: (size: 92px, line: 112px,  letter: -6px,   pspace: 32px),
+    xl:      (size: 112px, line: 112px,  letter: -7px,   pspace: 32px)
   ),
   display-md: (
     font: $font-family-monospace,

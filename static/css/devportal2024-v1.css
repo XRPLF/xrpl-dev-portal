@@ -9301,6 +9301,14 @@ p {
 }
 @media (min-width: 992px) {
   .display-lg {
+    font-size: 92px;
+    line-height: 112px;
+    letter-spacing: -6px;
+    margin-bottom: 32px;
+  }
+}
+@media (min-width: 1280px) {
+  .display-lg {
     font-size: 112px;
     line-height: 112px;
     letter-spacing: -7px;
@@ -11779,6 +11787,14 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   }
 }
 @media (min-width: 992px) {
+  .bds-card-stat__statistic {
+    font-size: 92px;
+    line-height: 112px;
+    letter-spacing: -6px;
+    margin-bottom: 32px;
+  }
+}
+@media (min-width: 1280px) {
   .bds-card-stat__statistic {
     font-size: 112px;
     line-height: 112px;
