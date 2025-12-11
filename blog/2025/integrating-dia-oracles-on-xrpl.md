@@ -29,16 +29,16 @@ The providers to fetch data from:
 
 Each oracle document contains real-time pricing data for key assets—including XRP, RLUSD, and more — making it simple for developers to retrieve trusted market prices directly from the ledger.
 
-### 1.2 Account Funding for Transaction Fees
+### 1.2 Oracle Accounts
 
-To ensure uninterrupted oracle operation when pushing data to your contracts, it is crucial to maintain a sufficient XRP balance in the relevant XRPL account. This balance must cover the XRP reserve requirements for the account and the minor transaction fees incurred with each transaction. You can monitor the accounts listed below to ensure they remain adequately funded at all times.
+DIA uses the following accounts to publish oracle price data to the XRPL:
 
 | Network      | Account       |
-|:-------------|:------------------|
-| XRPL Mainnet | [rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7](https://livenet.xrpl.org/accounts/rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7) | 
+|:-------------|:--------------|
+| XRPL Mainnet | [rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7](https://livenet.xrpl.org/accounts/rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7) |
 | XRPL Testnet | [r3U1mL5u2SCPr4mApqYyF96nvwvKoGf7aH](https://testnet.xrpl.org/accounts/r3U1mL5u2SCPr4mApqYyF96nvwvKoGf7aH) |
 
-You can monitor these wallets on-chain for transparency and operational assurance.
+You can monitor these accounts on-chain to verify oracle updates and ensure operational continuity.
 
 ### 1.3 Oracle Configuration
 
