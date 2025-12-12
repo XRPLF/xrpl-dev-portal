@@ -86,7 +86,8 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
     @include type(display-lg);
     margin-bottom: 0;
     sup {
-      top: -1rem;
+      top: -0.4em;
+      font-size: 0.7em;
     }
   }
   
@@ -153,9 +154,18 @@ html.dark {
   @include media-breakpoint-up(md) {
     min-height: 208px;
   }
-  
   // Desktop (lg+) - ~298px height (more vertical space)
   @include media-breakpoint-up(lg) {
     min-height: 298px;
+  }
+}
+
+.bds-grid__col-lg-3 {
+  .bds-card-stat {
+    @include media-breakpoint-up(lg) {
+      aspect-ratio: 1 / 1;
+      min-height: unset;
+      height: auto;
+    }
   }
 }
