@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "m365agentstoolkit": {
+      "command": "npx",
+      "args": [
+        "@microsoft/m365agentstoolkit-mcp@latest",
+        "server",
+        "start"
+      ]
+    }
+  }
+}
