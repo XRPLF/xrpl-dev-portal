@@ -1,0 +1,37 @@
+{
+  "name": "Souldier Coin Tuskegee #0001 — Shadow Realm",
+  "description": "Shadow Realm Souldier Coin honoring the unseen courage of Tuskegee Airmen. Shadow represents night sorties, stealth, and silent protection.",
+  "image": "ipfs://SHADOW_IMAGE_CID",
+  "animation_url": "ipfs://SHADOW_AUDIO_OR_VIDEO_CID",
+  "external_url": "https://salutetosouldiers.blockchain/coins/shadow/0001",
+  "attributes": [
+    {
+      "trait_type": "Project",
+      "value": "Souldier Coin Tuskegee"
+    },
+    {
+      "trait_type": "Realm",
+      "value": "Shadow"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Vanguard"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "0001"
+    },
+    {
+      "trait_type": "Aircraft",
+      "value": "P-51 Mustang"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Shadow"
+    }
+  ],
+  "global_coin_id": "SCT-SHADOW-0001",
+  "realm": "Shadow",
+  "chain_origin": "XRPL-Testnet",
+  "project": "Souldier Coin Tuskegee"
+}

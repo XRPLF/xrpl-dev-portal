@@ -1,0 +1,37 @@
+{
+  "name": "Souldier Coin Tuskegee #0001 — Aurora Realm",
+  "description": "A prestige Souldier Coin honoring the Tuskegee Airmen. Aurora Realm represents vision, hope, and first light over the horizon.",
+  "image": "ipfs://AURORA_IMAGE_CID",
+  "animation_url": "ipfs://AURORA_AUDIO_OR_VIDEO_CID",
+  "external_url": "https://salutetosouldiers.blockchain/coins/aurora/0001",
+  "attributes": [
+    {
+      "trait_type": "Project",
+      "value": "Souldier Coin Tuskegee"
+    },
+    {
+      "trait_type": "Realm",
+      "value": "Aurora"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Founders"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "0001"
+    },
+    {
+      "trait_type": "Aircraft",
+      "value": "P-51 Mustang"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Light"
+    }
+  ],
+  "global_coin_id": "SCT-AURORA-0001",
+  "realm": "Aurora",
+  "chain_origin": "XRPL-Testnet",
+  "project": "Souldier Coin Tuskegee"
+}

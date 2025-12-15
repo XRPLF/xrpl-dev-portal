@@ -1,0 +1,33 @@
+{
+  "name": "Souldier Coin Tuskegee #0004 \u2014 Shadow Realm",
+  "description": "Shadow Realm Souldier Coin from the Souldier Coin Tuskegee collection.",
+  "image": "https://metadata.salutetosouldiers.blockchain/shadow/0004/image.webp",
+  "animation_url": "https://metadata.salutetosouldiers.blockchain/shadow/0004/animation.mp4",
+  "external_url": "https://salutetosouldiers.blockchain/coins/shadow/0004",
+  "attributes": [
+    {
+      "trait_type": "Project",
+      "value": "Souldier Coin Tuskegee"
+    },
+    {
+      "trait_type": "Realm",
+      "value": "Shadow"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Vanguard"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "0004"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Shadow"
+    }
+  ],
+  "global_coin_id": "SCT-SHADOW-0004",
+  "realm": "Shadow",
+  "chain_origin": "XRPL-Testnet",
+  "project": "Souldier Coin Tuskegee"
+}

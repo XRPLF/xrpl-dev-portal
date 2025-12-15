@@ -1,0 +1,37 @@
+{
+  "name": "Souldier Coin Tuskegee #0001 — Prime Realm",
+  "description": "Prime Realm Souldier Coin honoring the combat excellence of Tuskegee Airmen. Prime represents mastery, precision, and top performance.",
+  "image": "ipfs://PRIME_IMAGE_CID",
+  "animation_url": "ipfs://PRIME_AUDIO_OR_VIDEO_CID",
+  "external_url": "https://salutetosouldiers.blockchain/coins/prime/0001",
+  "attributes": [
+    {
+      "trait_type": "Project",
+      "value": "Souldier Coin Tuskegee"
+    },
+    {
+      "trait_type": "Realm",
+      "value": "Prime"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Elite"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "0001"
+    },
+    {
+      "trait_type": "Aircraft",
+      "value": "P-51 Mustang"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Precision"
+    }
+  ],
+  "global_coin_id": "SCT-PRIME-0001",
+  "realm": "Prime",
+  "chain_origin": "XRPL-Testnet",
+  "project": "Souldier Coin Tuskegee"
+}

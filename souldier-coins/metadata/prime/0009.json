@@ -1,0 +1,33 @@
+{
+  "name": "Souldier Coin Tuskegee #0009 \u2014 Prime Realm",
+  "description": "Prime Realm Souldier Coin from the Souldier Coin Tuskegee collection.",
+  "image": "https://metadata.salutetosouldiers.blockchain/prime/0009/image.webp",
+  "animation_url": "https://metadata.salutetosouldiers.blockchain/prime/0009/animation.mp4",
+  "external_url": "https://salutetosouldiers.blockchain/coins/prime/0009",
+  "attributes": [
+    {
+      "trait_type": "Project",
+      "value": "Souldier Coin Tuskegee"
+    },
+    {
+      "trait_type": "Realm",
+      "value": "Prime"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "Elite"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "0009"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Precision"
+    }
+  ],
+  "global_coin_id": "SCT-PRIME-0009",
+  "realm": "Prime",
+  "chain_origin": "XRPL-Testnet",
+  "project": "Souldier Coin Tuskegee"
+}
