@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "network": "XRPL-Testnet",
+  "issuer": null,
+  "treasury": null,
+  "hot_wallets": [],
+  "test_addresses": [
+    "rn472ZcnJRHbLho4vHL5wUyrqtECTXd",
+    "rNJRxVZ9QNLUEnoE7f7tQ4KPgL2tPHF2WX",
+    "r9JH1aQui9mdRKRKJR4gpBbrgDW4vnKNe"
+  ]
+}
