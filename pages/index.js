@@ -58,6 +58,12 @@ export default function Home() {
       </button>
 
       {nfts.length > 0 && (
+        <div style={{ marginTop: 16 }}>
+          <h2>Prestige Score: {prestige}</h2>
+        </div>
+      )}
+
+      {nfts.length > 0 && (
         <div style={{ marginTop: 24 }}>
           {nfts.map((n, i) => (
             <div key={i} style={{ border: "1px solid #444", borderRadius: 12, padding: 16, marginBottom: 12 }}>
