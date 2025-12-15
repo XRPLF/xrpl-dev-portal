@@ -17,6 +17,7 @@ export default function Home() {
   const [address, setAddress] = useState("");
   const [nfts, setNfts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [prestige, setPrestige] = useState(0);
 
   const fetchNfts = async () => {
     setLoading(true);
@@ -37,6 +38,8 @@ export default function Home() {
       })
     );
     setNfts(enriched);
+    const prestige = computePrestigeScore(enriched);
+    setPrestige(prestige);
     setLoading(false);
   };
 
