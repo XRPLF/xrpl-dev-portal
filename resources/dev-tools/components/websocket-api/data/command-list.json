@@ -680,6 +680,21 @@
         }
       },
       {
+        "name": "ledger_entry - Credential",
+        "description": "Returns a Credential object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-credential-entry",
+        "body": {
+          "id": "example_get_credential",
+          "command": "ledger_entry",
+          "credential": {
+            "subject": "rNnsnWZCsakxyMz5GzFrbbMpUnSmiDeKTW",
+            "issuer": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa",
+            "credential_type": "746573742D63726564656E7469616C"
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - DID",
         "description": "Returns a single DID object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-did-entry",

@@ -327,46 +327,48 @@ Retrieve a [Credential entry][], which represents an attestation by one account 
 | `credential.issuer` | String -  [Address][] | Yes | The account that issued the credential. |
 | `credential.credential_type` | String - Hexadecimal | Yes | The type of the credential, as issued. |
 
-WebSocket:
+{% tabs %}
 
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_credential",
   "command": "ledger_entry",
   "credential": {
-    "subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
-    "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-    "credential_type": "6D795F63726564656E7469616C"
+    "subject": "rNnsnWZCsakxyMz5GzFrbbMpUnSmiDeKTW",
+    "issuer": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa",
+    "credential_type": "746573742D63726564656E7469616C"
   },
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-JSON-RPC:
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
   "params": [{
     "credential": {
-      "subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
-      "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-      "credential_type": "6D795F63726564656E7469616C"
+      "subject": "rNnsnWZCsakxyMz5GzFrbbMpUnSmiDeKTW",
+      "issuer": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa",
+      "credential_type": "746573742D63726564656E7469616C"
     },
     "ledger_index": "validated"
   }]
 }
 ```
+{% /tab %}
 
-Commandline:
-
+{% tab label="Commandline" %}
 ```bash
-rippled json ledger_entry '{ "credential": {"subject": "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8", "issuer": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX","credential_type": "6D795F63726564656E7469616C"}, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "credential": {"subject": "rNnsnWZCsakxyMz5GzFrbbMpUnSmiDeKTW", "issuer": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa", "credential_type": "746573742D63726564656E7469616C"}, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- TODO: create working example in tool
-{% try-it method="ledger_entry-credential" /%}
--->
+{% /tabs %}
+
+{% try-it method="ledger_entry-credential" server="testnet" /%}
 
 
 ### Get DID Entry
@@ -730,7 +732,6 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 {% try-it method="ledger_entry-ripplestate" /%}
 
 
-
 ### Get Check Entry
 <a id="get-check-object"></a><!-- legacy ID -->
 
@@ -774,7 +775,6 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 {% /tabs %}
 
 {% try-it method="ledger_entry-check" /%}
-
 
 
 ### Get Escrow Entry
