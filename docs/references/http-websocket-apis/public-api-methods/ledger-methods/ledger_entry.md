@@ -1173,6 +1173,51 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2
 
 {% try-it method="ledger_entry-mptoken" /%}
 
+
+### Get NegativeUNL Entry
+
+Retrieve the [NegativeUNL entry][], which contains the current status of the [Negative UNL][]. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
+
+| Field  | Type   | Required | Description |
+|--------|--------|----------|-------------|
+| `nunl` | String | Yes      | The `NegativeUNL` entry. This value must be `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_negativeunl",
+  "command": "ledger_entry",
+  "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-negativeunl" server="testnet" /%}
+
+
 ## Response Format
 
 The response follows the [standard format][], with a successful result containing the following fields:

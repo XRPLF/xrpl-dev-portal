@@ -881,6 +881,17 @@
             "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
           }
         }
+      },
+      {
+        "name": "ledger_entry - NegativeUNL",
+        "description": "Returns the NegativeUNL object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-negativeunl-entry",
+        "body": {
+          "id": "example_get_negativeunl",
+          "command": "ledger_entry",
+          "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+          "ledger_index": "validated"
+        }
       }
     ]
   }
