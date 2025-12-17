@@ -671,6 +671,60 @@ rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4Q
 {% try-it method="ledger_entry-oracle" server="devnet" /%}
 
 
+### Get PermissionedDomain Entry
+
+{% amendment-disclaimer name="PermissionedDomains" /%}
+
+Retrieve a [PermissionedDomain entry][], which describes a single [permissioned domain][] instance. 
+
+| Field                         | Type                 | Required? | Description |
+|:------------------------------|:---------------------|:----------|-------------|
+| `permissioned_domain`         | Object or String     | Yes       | Specify the `PermissionedDomain` to retrieve. If a string, must be the [ledger entry ID][] of the entry, as hexadecimal. If an object, requires `account` and `seq` sub-fields. |
+| `permissioned_domain.account` | String - [Address][] | Yes       | The account that own the `PermissionedDomain`. |
+| `permissioned_domain.seq`     | Number               | Yes       | The sequence number of the transaction that created the `PermissionedDomain`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_permissioneddomain",
+  "command": "ledger_entry",
+  "permissioned_domain": {
+    "account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+    "seq": 2093655
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "permissioned_domain": {
+      "account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+      "seq": 2093655
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```bash
+rippled json ledger_entry '{ "permissioned_domain": { "account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "seq": 2093655 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-permissioneddomain" server="devnet" /%}
+
+
 ### Get RippleState Entry
 <a id="get-ripplestate-object"></a><!-- legacy ID -->
 

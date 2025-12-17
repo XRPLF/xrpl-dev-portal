@@ -792,6 +792,21 @@
         }
       },
       {
+        "name": "ledger_entry - PermissionedDomain",
+        "description": "Returns a PermissionedDomain object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-permissioneddomain-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_permissioneddomain",
+          "command": "ledger_entry",
+          "permissioned_domain": {
+            "account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+            "seq": 2093655
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - RippleState",
         "description": "Returns a RippleState object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-ripplestate-object",
