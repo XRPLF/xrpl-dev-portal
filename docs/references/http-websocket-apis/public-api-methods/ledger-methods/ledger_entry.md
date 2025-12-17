@@ -1272,6 +1272,50 @@ rippled json ledger_entry '{ "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D7
 {% try-it method="ledger_entry-negativeunl" server="testnet" /%}
 
 
+### Get SignerList Entry
+
+Retrieve a [SignerList entry][], which contains a list of accounts that, as a group, are authorized to sign a transaction in place of an individual account by multi-signing.
+
+| Field         | Type   | Required | Description |
+|---------------|--------|----------|-------------|
+| `signer_list` | String | Yes      | The [ledger entry ID][] of the `SignerList`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_signerlist",
+  "command": "ledger_entry",
+  "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-signerlist" /%}
+
+
 ## Response Format
 
 The response follows the [standard format][], with a successful result containing the following fields:

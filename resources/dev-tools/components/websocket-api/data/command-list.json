@@ -921,6 +921,17 @@
           "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
           "ledger_index": "validated"
         }
+      },
+      {
+        "name": "ledger_entry - SignerList",
+        "description": "Returns a SignerList object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-signerlist-entry",
+        "body": {
+          "id": "example_get_signerlist",
+          "command": "ledger_entry",
+          "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
+          "ledger_index": "validated"
+        }
       }
     ]
   }
