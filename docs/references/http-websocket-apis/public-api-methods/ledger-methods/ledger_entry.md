@@ -246,17 +246,20 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 
 
 ### Get Bridge Entry
-<a id="get-bridge-object"></a><!-- legacy ID -->
 
 {% amendment-disclaimer name="XChainBridge" /%}
 
-Retrieve a [Bridge entry](../../../protocol/ledger-data/ledger-entry-types/bridge.md), which represents a single cross-chain bridge that connects the XRP Ledger with another blockchain.
+Retrieve a [Bridge entry][], which represents a single cross-chain bridge that connects the XRP Ledger with another blockchain.
 
-| Field            | Type   | Description           |
-|:-----------------|:-------|:----------------------|
-| `bridge_account` | String | The account that submitted the `XChainCreateBridge` transaction on the blockchain. |
-| `bridge`         | Object | The [Bridge](../../../protocol/ledger-data/ledger-entry-types/bridge.md) to retrieve. Includes the door accounts and assets on the issuing and locking chain. |
-
+| Field                      | Type                 | Required? | Description |
+|:---------------------------|:---------------------|:----------|:------------|
+| `index`                    | String               | Yes       | The [ledger entry ID][] of the `Bridge`, as hexadecimal. If specified, no other fields are necessary. |
+| `bridge`                   | Object               | Yes       | The `Bridge` entry to retrieve. If specified:<br>- Omit `index`<br>- Include `bridge_account`<br>- Include `IssuingChainDoor`, `IssuingChainIssue`, `LockingChainDoor`, and `LockingChainIssue` sub-fields. |
+| `bridge.IssuingChainDoor`  | String - [Address][] | No        | The door account on the issuing chain. |
+| `bridge.IssuingChainIssue` | Object               | No        | The asset that is minted and burned on the issuing chain. |
+| `bridge.LockingChainDoor`  | String - [Address][] | No        | The door account on the locking chain. |
+| `bridge.LockingChainIssue` | Object               | No        | The asset that is locked and unlocked on the locking chain. |
+| `bridge_account`           | String - [Address][] | No        | The account that submitted the `XChainCreateBridge` transaction on the blockchain. |
 
 {% tabs %}
 
@@ -265,13 +268,13 @@ Retrieve a [Bridge entry](../../../protocol/ledger-data/ledger-entry-types/bridg
 {
   "id": "example_get_bridge",
   "command": "ledger_entry",
-  "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+  "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
   "bridge": {
     "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
     "IssuingChainIssue": {
       "currency": "XRP"
     },
-    "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+    "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
     "LockingChainIssue": {
       "currency": "XRP"
     }
@@ -284,30 +287,30 @@ Retrieve a [Bridge entry](../../../protocol/ledger-data/ledger-entry-types/bridg
 {% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "ledger_entry",
-    "params": [
-        {
-            "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
-            "bridge": {
-                "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-                "IssuingChainIssue": {
-                    "currency": "XRP"
-                },
-                "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
-                "LockingChainIssue": {
-                    "currency": "XRP"
-                }
-            },
-            "ledger_index": "validated"
-        }
-    ]
+  "method": "ledger_entry",
+  "params": [
+      {
+          "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+          "bridge": {
+              "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+              "IssuingChainIssue": {
+                  "currency": "XRP"
+              },
+              "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+              "LockingChainIssue": {
+                  "currency": "XRP"
+              }
+          },
+          "ledger_index": "validated"
+      }
+  ]
 }
 ```
 {% /tab %}
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
@@ -322,7 +325,7 @@ Retrieve a [Credential entry][], which represents an attestation by one account 
 
 | Field                        | Type                 | Required? | Description |
 |:-----------------------------|:---------------------|:----------|-------------|
-| `credential` | Object or String | Yes | Specify the Credential to retrieve. If a string, must be the [ledger entry ID][] of the entry, as hexadecimal. If an object, requires `subject`, `issuer`, and `credential_type` sub-fields. |
+| `credential` | Object or String | Yes | Specify the `Credential` to retrieve. If a string, must be the [ledger entry ID][] of the entry, as hexadecimal. If an object, requires `subject`, `issuer`, and `credential_type` sub-fields. |
 | `credential.subject` | String - [Address][] | Yes | The account that is the subject of the credential. |
 | `credential.issuer` | String -  [Address][] | Yes | The account that issued the credential. |
 | `credential.credential_type` | String - Hexadecimal | Yes | The type of the credential, as issued. |

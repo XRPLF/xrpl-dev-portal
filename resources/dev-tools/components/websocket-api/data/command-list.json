@@ -660,18 +660,18 @@
       {
         "name": "ledger_entry - Bridge",
         "description": "Returns a single Bridge object in its raw ledger format.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-bridge-object",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-bridge-entry",
         "status": "not_enabled",
         "body": {
           "id": "example_get_bridge",
           "command": "ledger_entry",
-          "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+          "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
           "bridge": {
             "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
             "IssuingChainIssue": {
               "currency": "XRP"
             },
-            "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+            "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
             "LockingChainIssue": {
               "currency": "XRP"
             }
