@@ -932,6 +932,28 @@
           "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
           "ledger_index": "validated"
         }
+      },
+      {
+        "name": "ledger_entry - XChainOwnedClaimID",
+        "description": "Returns a single XChainOwnedClaimID object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-xchainownedclaimid-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_xchainownedclaimid",
+          "command": "ledger_entry",
+          "xchain_owned_claim_id": {
+            "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "IssuingChainIssue": {
+              "currency": "XRP"
+            },
+            "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+            "LockingChainIssue": {
+              "currency": "XRP"
+            },
+            "xchain_owned_claim_id": 1
+          },
+          "ledger_index": "validated"
+        }
       }
     ]
   }

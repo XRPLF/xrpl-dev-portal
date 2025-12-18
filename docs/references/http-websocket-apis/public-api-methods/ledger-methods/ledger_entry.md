@@ -288,20 +288,20 @@ Retrieve a [Bridge entry][], which represents a single cross-chain bridge that c
 {
   "method": "ledger_entry",
   "params": [
-      {
-          "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
-          "bridge": {
-              "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-              "IssuingChainIssue": {
-                  "currency": "XRP"
-              },
-              "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
-              "LockingChainIssue": {
-                  "currency": "XRP"
-              }
-          },
-          "ledger_index": "validated"
-      }
+    {
+      "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+      "bridge": {
+        "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "IssuingChainIssue": {
+          "currency": "XRP"
+        },
+        "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+        "LockingChainIssue": {
+          "currency": "XRP"
+        }
+      },
+      "ledger_index": "validated"
+    }
   ]
 }
 ```
@@ -1316,6 +1316,79 @@ rippled json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B0
 {% /tabs %}
 
 {% try-it method="ledger_entry-signerlist" /%}
+
+
+### Get XChainOwnedClaimID Entry
+
+{% amendment-disclaimer name="XChainBridge" /%}
+
+Retrieve an [XChainOwnedClaimID entry][], which represents one transfer of value between blockchains.
+
+| Field                                         | Type                 | Required? | Description |
+|:----------------------------------------------|:---------------------|:----------|:------------|
+| `xchain_owned_claim_id`                       | Object or String     | Yes       | The `XChainOwnedClaimID` entry to retrieve. If a string, must be the [ledger entry ID][], as hexadecimal. If an object, requires `IssuingChainDoor`, `IssuingChainIssue`, `LockingChainDoor`, `LockingChainIssue`, and `xchain_owned_claim_id` sub-fields. |
+| `xchain_owned_claim_id.IssuingChainDoor`      | String - [Address][] | No        | The door account on the issuing chain. |
+| `xchain_owned_claim_id.IssuingChainIssue`     | Object               | No        | The asset that is minted and burned on the issuing chain. |
+| `xchain_owned_claim_id.LockingChainDoor`      | String - [Address][] | No        | The door account on the locking chain. |
+| `xchain_owned_claim_id.LockingChainIssue`     | Object               | No        | The asset that is locked and unlocked on the locking chain. |
+| `xchain_owned_claim_id.xchain_owned_claim_id` | Number               | No        | The `XChainClaimID` number that identifies this specific claim. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_xchainownedclaimid",
+  "command": "ledger_entry",
+  "xchain_owned_claim_id": {
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    },
+    "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    },
+    "xchain_owned_claim_id": 1
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [
+    {
+      "xchain_owned_claim_id": {
+        "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+        "IssuingChainIssue": {
+          "currency": "XRP"
+        },
+        "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+        "LockingChainIssue": {
+          "currency": "XRP"
+        },
+        "xchain_owned_claim_id": 1
+      },
+      "ledger_index": "validated"
+    }
+  ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "xchain_owned_claim_id": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR", "LockingChainIssue": { "currency": "XRP" }, "xchain_owned_claim_id": 1 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-xchainownedclaimid" server="devnet" /%}
 
 
 ## Response Format
