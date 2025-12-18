@@ -253,13 +253,12 @@ Retrieve a [Bridge entry][], which represents a single cross-chain bridge that c
 
 | Field                      | Type                 | Required? | Description |
 |:---------------------------|:---------------------|:----------|:------------|
-| `index`                    | String               | Yes       | The [ledger entry ID][] of the `Bridge`, as hexadecimal. If specified, no other fields are necessary. |
-| `bridge`                   | Object               | Yes       | The `Bridge` entry to retrieve. If specified:<br>- Omit `index`<br>- Include `bridge_account`<br>- Include `IssuingChainDoor`, `IssuingChainIssue`, `LockingChainDoor`, and `LockingChainIssue` sub-fields. |
-| `bridge.IssuingChainDoor`  | String - [Address][] | No        | The door account on the issuing chain. |
-| `bridge.IssuingChainIssue` | Object               | No        | The asset that is minted and burned on the issuing chain. |
-| `bridge.LockingChainDoor`  | String - [Address][] | No        | The door account on the locking chain. |
-| `bridge.LockingChainIssue` | Object               | No        | The asset that is locked and unlocked on the locking chain. |
-| `bridge_account`           | String - [Address][] | No        | The account that submitted the `XChainCreateBridge` transaction on the blockchain. |
+| `bridge`                   | Object               | Yes       | The `Bridge` entry to retrieve. |
+| `bridge.IssuingChainDoor`  | String - [Address][] | Yes       | The door account on the issuing chain. |
+| `bridge.IssuingChainIssue` | Object               | Yes       | The asset that is minted and burned on the issuing chain. |
+| `bridge.LockingChainDoor`  | String - [Address][] | Yes       | The door account on the locking chain. |
+| `bridge.LockingChainIssue` | Object               | Yes       | The asset that is locked and unlocked on the locking chain. |
+| `bridge_account`           | String - [Address][] | Yes       | The account that submitted the `XChainCreateBridge` transaction on the blockchain. |
 
 {% tabs %}
 
