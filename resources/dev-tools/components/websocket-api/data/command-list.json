@@ -954,6 +954,28 @@
           },
           "ledger_index": "validated"
         }
+      },
+      {
+        "name": "ledger_entry - XChainOwnedCreateAccountClaimID",
+        "description": "Returns a single XChainOwnedCreateAccountClaimID object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-xchainownedcreateaccountclaimid-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_xchainownedcreateaccountclaimid",
+          "command": "ledger_entry",
+          "xchain_owned_create_account_claim_id": {
+            "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "IssuingChainIssue": {
+              "currency": "XRP"
+            },
+            "LockingChainDoor": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMFpR",
+            "LockingChainIssue": {
+              "currency": "XRP"
+            },
+            "xchain_owned_create_account_claim_id": 1
+          },
+          "ledger_index": "validated"
+        }
       }
     ]
   }
