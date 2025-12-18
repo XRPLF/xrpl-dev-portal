@@ -1586,14 +1586,16 @@ An example of a successful response:
 * Any of the [universal error types][].
 * `deprecatedFeature` - The request specified a removed field, such as `generator`.
 * `entryNotFound` - The requested ledger entry does not exist in the ledger.
-* `invalidParams`
-  - One or more fields are specified incorrectly or missing.
+* `invalidParams` [API v2][]
+  - The fields provided in the request did not match any of the expected request formats.
   - The request specified more than one ledger entry. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.0.0" %}New in: rippled 3.0.0{% /badge %}
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `malformedAddress` - The request improperly specified an [Address][] field.
 * `malformedCurrency` - The request improperly specified a [Currency Code][] field.
+* `malformedDocumentID` - The request improperly specified the `oracle.oracle_document_id` sub-field.
 * `malformedOwner` - The request improperly specified the `escrow.owner` sub-field.
 * `malformedRequest` - The request provided an invalid combination of fields, or provided the wrong type for one or more fields.
-* `unknownOption` - The fields provided in the request did not match any of the expected request formats.
+* `unexpectedLedgerType` - The request specified a query parameter, but provided a [ledger entry ID][] that doesn't match the expected ledger entry type.
+* `unknownOption` [API v1][] - The fields provided in the request did not match any of the expected request formats.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
