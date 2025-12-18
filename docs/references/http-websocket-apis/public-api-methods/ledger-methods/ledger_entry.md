@@ -318,6 +318,51 @@ rippled json ledger_entry '{ "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMF
 {% try-it method="ledger_entry-bridge" server="devnet" /%}
 
 
+### Get Check Entry
+<a id="get-check-object"></a><!-- legacy ID -->
+
+Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md), which is a potential payment that can be cashed by its recipient.
+
+| Field   | Type   | Description                                               |
+|:--------|:-------|:----------------------------------------------------------|
+| `check` | String | The [ledger entry ID][] of a [Check entry][] to retrieve. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_check",
+  "command": "ledger_entry",
+  "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-check" /%}
+
+
 ### Get Credential Entry
 
 Retrieve a [Credential entry][], which represents an attestation by one account about another account. 
@@ -371,6 +416,67 @@ rippled json ledger_entry '{ "credential": {"subject": "rNnsnWZCsakxyMz5GzFrbbMp
 {% /tabs %}
 
 {% try-it method="ledger_entry-credential" server="testnet" /%}
+
+
+### Get DepositPreauth Entry
+<a id="get-depositpreauth-object"></a><!-- legacy ID -->
+
+Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
+
+| Field                        | Type                 | Required? | Description |
+|:-----------------------------|:---------------------|:----------|-------------|
+| `deposit_preauth`            | Object or String     | Yes       | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID][] of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` sub-field and either `authorized` or `authorize_credentials` sub-field. |
+| `deposit_preauth.owner`      | String - [Address][] | Yes       | The account that provided the preauthorization. |
+| `deposit_preauth.authorized` | String - [Address][] | No        | The account that received the preauthorization. |
+| `deposit_preauth.authorized_credentials` | Array    | No        | A set of credentials that received the preauthorization. |
+
+Each member of the `deposit_preauth.authorized_credentials` array, if provided, must include the following nested fields:
+
+| Field             | Type                 | Required? | Description |
+|:------------------|:---------------------|:----------|:------------|
+| `issuer`          | String - [Address][] | Yes       | The address of the account that issued the credential. |
+| `credential_type` | String - Hexadecimal | Yes       | The type of the credential, as issued. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_deposit_preauth",
+  "command": "ledger_entry",
+  "deposit_preauth": {
+    "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "deposit_preauth": {
+      "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-depositpreauth" /%}
 
 
 ### Get DID Entry
@@ -473,6 +579,59 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 {% try-it method="ledger_entry-directorynode" /%}
 
 
+### Get Escrow Entry
+<a id="get-escrow-object"></a><!-- legacy ID -->
+
+Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escrow.md), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object.
+
+| Field                   | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `escrow`                | Object or String           | The Escrow to retrieve. If a string, must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
+| `escrow.owner`          | String - [Address][]       | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
+| `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The [Sequence Number][] of the transaction that created the Escrow object. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_escrow",
+  "command": "ledger_entry",
+  "escrow": {
+    "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+    "seq": 126
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "escrow": {
+      "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
+      "seq": 126
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-escrow" /%}
+
+
 ### Get FeeSettings Entry
 
 Retrieve the [FeeSettings entry][], which contains the current base [transaction cost][] and [reserves][] determined by [fee voting][].
@@ -559,6 +718,236 @@ rippled json ledger_entry '{ "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA87
 {% /tabs %}
 
 {% try-it method="ledger_entry-ledgerhashes" server="testnet" /%}
+
+
+### Get MPToken Entry
+
+Return an `MPToken` object.
+
+{% amendment-disclaimer name="MPTokensV1" /%}
+
+| Field                     | Type             | Description |
+|:--------------------------|:-----------------|:------------|
+| `mptoken`                 | ️Object or String | If a string, interpret as ledger entry ID of the MPToken to retrieve. If an object, requires the sub-fields `account` and `mpt_issuance_id` to uniquely identify the MPToken. |
+| `mptoken.mpt_issuance_id` | String           | (Required if the `MPToken` is specified as an object) The 192-bit MPTokenIssuanceID that's associated with the MPTokenIssuance. |
+| `mptoken.account` ️        | String           | (Required if the `MPToken` is specified as an object) The account that owns the MPToken. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_mpt",
+    "command": "ledger_entry",
+    "mptoken": {
+      "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+      "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
+    }
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "mptoken":{
+                "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+                "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
+            } 
+        }
+    ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"} }'
+```
+{% /tab %}
+{% /tabs %}
+
+{% try-it method="ledger_entry-mptoken" /%}
+
+
+### Get MPTokenIssuance Entry
+
+Return an `MPTokenIssuance` object.
+
+{% amendment-disclaimer name="MPTokensV1" /%}
+
+| Field          | Type   | Description           |
+|:---------------|:-------|:----------------------|
+| `mpt_issuance` | String | The 192-bit `MPTokenIssuanceID` that's associated with the MPTokenIssuance, as hexadecimal. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_mpt_issuance",
+    "command": "ledger_entry",
+    "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+    "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "ledger_index": "validated" }'
+```
+{% /tab %}
+{% /tabs %}
+
+{% try-it method="ledger_entry-mptokenissuance" /%}
+
+
+### Get NegativeUNL Entry
+
+Retrieve the [NegativeUNL entry][], which contains the current status of the [Negative UNL][]. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
+
+| Field  | Type   | Required | Description |
+|--------|--------|----------|-------------|
+| `nunl` | String | Yes      | The `NegativeUNL` entry. This value must be `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_negativeunl",
+  "command": "ledger_entry",
+  "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+      "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
+      "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-negativeunl" server="testnet" /%}
+
+
+### Get NFT Page
+
+Return an NFT Page in its raw ledger format.
+
+| Field                   | Type                       | Description           |
+|:------------------------|:---------------------------|:----------------------|
+| `nft_page`              | String | The [ledger entry ID][] of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_nft_page",
+    "command": "ledger_entry",
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
+    "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-nft-page" /%}
+
+
+### Get NFTokenOffer Entry
+
+Retrieve an [NFTokenOffer entry][], which represents an offer to buy, sell, or transfer an [NFT][].
+
+| Field       | Type   | Required | Description |
+|-------------|--------|----------|-------------|
+| `nft_offer` | String | Yes      | The [ledger entry ID][] of an NFT offer to retrieve. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_nftokenoffer",
+    "command": "ledger_entry",
+    "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
+    "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-nftokenoffer" server="testnet" /%}
 
 
 ### Get Offer Entry
@@ -671,6 +1060,51 @@ rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4Q
 {% /tabs %}
 
 {% try-it method="ledger_entry-oracle" server="devnet" /%}
+
+
+### Get PayChannel Entry
+<a id="get-paychannel-object"></a><!-- legacy ID -->
+
+Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/paychannel.md), which holds XRP for asynchronous payments.
+
+| Field             | Type   | Description                                     |
+|:------------------|:-------|:------------------------------------------------|
+| `payment_channel` | String | The [object ID](../../../protocol/ledger-data/common-fields.md) of the PayChannel to retrieve. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_paychannel",
+  "command": "ledger_entry",
+  "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params": [{
+    "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-paychannel" /%}
 
 
 ### Get PermissionedDomain Entry
@@ -788,23 +1222,22 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 {% try-it method="ledger_entry-ripplestate" /%}
 
 
-### Get Check Entry
-<a id="get-check-object"></a><!-- legacy ID -->
+### Get SignerList Entry
 
-Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md), which is a potential payment that can be cashed by its recipient.
+Retrieve a [SignerList entry][], which contains a list of accounts that, as a group, are authorized to sign a transaction in place of an individual account by multi-signing.
 
-| Field   | Type   | Description                                               |
-|:--------|:-------|:----------------------------------------------------------|
-| `check` | String | The [ledger entry ID][] of a [Check entry][] to retrieve. |
+| Field         | Type   | Required | Description |
+|---------------|--------|----------|-------------|
+| `signer_list` | String | Yes      | The [ledger entry ID][] of the `SignerList`. |
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
 ```json
 {
-  "id": "example_get_check",
+  "id": "example_get_signerlist",
   "command": "ledger_entry",
-  "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
+  "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
   "ledger_index": "validated"
 }
 ```
@@ -814,9 +1247,9 @@ Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.
 ```json
 {
   "method": "ledger_entry",
-  "params": [{
-    "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB",
-    "ledger_index": "validated"
+  "params" : [{
+      "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
+      "ledger_index": "validated"
   }]
 }
 ```
@@ -824,173 +1257,13 @@ Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
 {% /tabs %}
 
-{% try-it method="ledger_entry-check" /%}
-
-
-### Get Escrow Entry
-<a id="get-escrow-object"></a><!-- legacy ID -->
-
-Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escrow.md), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object.
-
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `escrow`                | Object or String           | The Escrow to retrieve. If a string, must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
-| `escrow.owner`          | String - [Address][]       | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
-| `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The [Sequence Number][] of the transaction that created the Escrow object. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "id": "example_get_escrow",
-  "command": "ledger_entry",
-  "escrow": {
-    "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
-    "seq": 126
-  },
-  "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params": [{
-    "escrow": {
-      "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK",
-      "seq": 126
-    },
-    "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% try-it method="ledger_entry-escrow" /%}
-
-
-
-### Get PayChannel Entry
-<a id="get-paychannel-object"></a><!-- legacy ID -->
-
-Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/paychannel.md), which holds XRP for asynchronous payments.
-
-| Field             | Type   | Description                                     |
-|:------------------|:-------|:------------------------------------------------|
-| `payment_channel` | String | The [object ID](../../../protocol/ledger-data/common-fields.md) of the PayChannel to retrieve. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "id": "example_get_paychannel",
-  "command": "ledger_entry",
-  "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
-  "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params": [{
-    "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7",
-    "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% try-it method="ledger_entry-paychannel" /%}
-
-
-### Get DepositPreauth Entry
-<a id="get-depositpreauth-object"></a><!-- legacy ID -->
-
-Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
-
-| Field                        | Type                 | Required? | Description |
-|:-----------------------------|:---------------------|:----------|-------------|
-| `deposit_preauth`            | Object or String     | Yes       | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID][] of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` sub-field and either `authorized` or `authorize_credentials` sub-field. |
-| `deposit_preauth.owner`      | String - [Address][] | Yes       | The account that provided the preauthorization. |
-| `deposit_preauth.authorized` | String - [Address][] | No        | The account that received the preauthorization. |
-| `deposit_preauth.authorized_credentials` | Array    | No        | A set of credentials that received the preauthorization. |
-
-Each member of the `deposit_preauth.authorized_credentials` array, if provided, must include the following nested fields:
-
-| Field             | Type                 | Required? | Description |
-|:------------------|:---------------------|:----------|:------------|
-| `issuer`          | String - [Address][] | Yes       | The address of the account that issued the credential. |
-| `credential_type` | String - Hexadecimal | Yes       | The type of the credential, as issued. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "id": "example_get_deposit_preauth",
-  "command": "ledger_entry",
-  "deposit_preauth": {
-    "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
-  },
-  "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params": [{
-    "deposit_preauth": {
-      "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
-    },
-    "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% try-it method="ledger_entry-depositpreauth" /%}
+{% try-it method="ledger_entry-signerlist" /%}
 
 
 ### Get Ticket Entry
@@ -1044,278 +1317,6 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 {% /tabs %}
 
 {% try-it method="ledger_entry-ticket" /%}
-
-
-### Get NFTokenOffer Entry
-
-Retrieve an [NFTokenOffer entry][], which represents an offer to buy, sell, or transfer an [NFT][].
-
-| Field       | Type   | Required | Description |
-|-------------|--------|----------|-------------|
-| `nft_offer` | String | Yes      | The [ledger entry ID][] of an NFT offer to retrieve. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-    "id": "example_get_nftokenoffer",
-    "command": "ledger_entry",
-    "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
-    "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params": [{
-    "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
-    "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14", "ledger_index": "validated" }'
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% try-it method="ledger_entry-nftokenoffer" server="testnet" /%}
-
-
-### Get NFT Page
-
-Return an NFT Page in its raw ledger format.
-
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `nft_page`              | String | The [ledger entry ID][] of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-    "id": "example_get_nft_page",
-    "command": "ledger_entry",
-    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
-    "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params": [{
-    "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
-    "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% try-it method="ledger_entry-nft-page" /%}
-
-### Get MPT Issuance Entry
-
-Return an `MPTokenIssuance` object.
-
-{% amendment-disclaimer name="MPTokensV1" /%}
-
-| Field          | Type   | Description           |
-|:---------------|:-------|:----------------------|
-| `mpt_issuance` | String | The 192-bit `MPTokenIssuanceID` that's associated with the MPTokenIssuance, as hexadecimal. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-    "id": "example_get_mpt_issuance",
-    "command": "ledger_entry",
-    "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
-    "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params": [{
-    "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
-    "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "ledger_index": "validated" }'
-```
-{% /tab %}
-{% /tabs %}
-
-{% try-it method="ledger_entry-mptokenissuance" /%}
-
-### Get MPToken Entry
-
-Return an `MPToken` object.
-
-{% amendment-disclaimer name="MPTokensV1" /%}
-
-| Field                     | Type             | Description |
-|:--------------------------|:-----------------|:------------|
-| `mptoken`                 | ️Object or String | If a string, interpret as ledger entry ID of the MPToken to retrieve. If an object, requires the sub-fields `account` and `mpt_issuance_id` to uniquely identify the MPToken. |
-| `mptoken.mpt_issuance_id` | String           | (Required if the `MPToken` is specified as an object) The 192-bit MPTokenIssuanceID that's associated with the MPTokenIssuance. |
-| `mptoken.account` ️        | String           | (Required if the `MPToken` is specified as an object) The account that owns the MPToken. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-    "id": "example_get_mpt",
-    "command": "ledger_entry",
-    "mptoken": {
-      "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
-      "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
-    }
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-    "method": "ledger_entry",
-    "params": [
-        {
-            "mptoken":{
-                "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
-                "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
-            } 
-        }
-    ]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA", "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"} }'
-```
-{% /tab %}
-{% /tabs %}
-
-{% try-it method="ledger_entry-mptoken" /%}
-
-
-### Get NegativeUNL Entry
-
-Retrieve the [NegativeUNL entry][], which contains the current status of the [Negative UNL][]. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
-
-| Field  | Type   | Required | Description |
-|--------|--------|----------|-------------|
-| `nunl` | String | Yes      | The `NegativeUNL` entry. This value must be `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "id": "example_get_negativeunl",
-  "command": "ledger_entry",
-  "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
-  "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params" : [{
-      "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244",
-      "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244", "ledger_index": "validated" }'
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% try-it method="ledger_entry-negativeunl" server="testnet" /%}
-
-
-### Get SignerList Entry
-
-Retrieve a [SignerList entry][], which contains a list of accounts that, as a group, are authorized to sign a transaction in place of an individual account by multi-signing.
-
-| Field         | Type   | Required | Description |
-|---------------|--------|----------|-------------|
-| `signer_list` | String | Yes      | The [ledger entry ID][] of the `SignerList`. |
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "id": "example_get_signerlist",
-  "command": "ledger_entry",
-  "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
-  "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "method": "ledger_entry",
-  "params" : [{
-      "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7",
-      "ledger_index": "validated"
-  }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B093FA58A0F2D80026FCC4CD932DDC7", "ledger_index": "validated" }'
-```
-{% /tab %}
-
-{% /tabs %}
-
-{% try-it method="ledger_entry-signerlist" /%}
 
 
 ### Get XChainOwnedClaimID Entry
