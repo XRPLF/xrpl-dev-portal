@@ -1,6 +1,4 @@
 ---
-html: escrow-uc.html
-parent: payments-uc.html
 seo:
     description: Transactions allow accounts to modify the XRP Ledger.
 labels:
@@ -45,7 +43,7 @@ The oracle gives the condition hex value to the escrow creator, enabling them to
 
 After the oracle's programming detects the conditions are met, it gives the fulfillment hex value to the escrow recipient. It does nothing else after this point, such as finishing the escrow. The recipient of the escrow would most likely finish the escrow.
 
-See: [Generate a condition and fulfillment](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md#1-generate-condition-and-fulfillment).
+See: [Send a conditional escrow](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow.md).
 
 ## Examples
 
