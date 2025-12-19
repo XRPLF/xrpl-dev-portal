@@ -18,7 +18,7 @@ This method can retrieve several different types of data. You can select which t
 
 ### General Fields
 
-| Field             | Type                       | Required | Description           |
+| Field             | Type                       | Required? | Description           |
 |:------------------|:---------------------------|:---------|:----------------------|
 | `binary`          | Boolean                    | No       | If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Updated in: rippled 1.2.0{% /badge %} |
 | `ledger_hash`     | String                     | No       | The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
