@@ -24,7 +24,7 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an XRP Ledger client library, such as **xrpl.js**, installed.
+- Have an XRP Ledger client library, such as [xrpl.js](../build-apps/get-started.md), installed.
 - Know the issuer, subject, and credential type of the credential you want to verify. For purposes of this tutorial, you can use sample values of data that exists in the public network.
     - For information on how to create your own credentials, see the [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md) tutorial.
 
@@ -45,6 +45,7 @@ npm i
 ```
 {% /tab %}
 
+<!-- re-add Python tab when merging the tutorials
 {% tab label="Python" %}
 From the code sample folder, set up a virtual environment and use `pip` to install dependencies:
 
@@ -54,6 +55,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 {% /tab %}
+-->
 {% /tabs %}
 
 ### 2. Set up client and define constants
