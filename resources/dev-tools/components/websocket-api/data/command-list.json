@@ -159,10 +159,11 @@
         "description": "Retrieves contents of the specified ledger.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data",
         "body": {
-          "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+          "id": "example_ledger_data",
           "command": "ledger_data",
+          "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",          
           "limit": 5,
-          "binary": true
+          "api_version": 2
         }
       },
       {
