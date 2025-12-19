@@ -52,12 +52,10 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | Name                | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:--------------|:----------|:------------|
 | `Balance`           | Object    | Amount        | Yes       | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the high account holds tokens issued by the low account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](../../../../concepts/accounts/addresses.md#special-addresses). |
-| `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean options enabled for this entry. |
 | `HighLimit`         | Object    | Amount        | Yes       | The limit that the high account has set on the trust line. The `issuer` is the address of the high account that set this limit. |
 | `HighNode`          | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the high account's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `HighQualityIn`     | Number    | UInt32        | No        | The inbound quality set by the high account, as an integer in the implied ratio `HighQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
 | `HighQualityOut`    | Number    | UInt32        | No        | The outbound quality set by the high account, as an integer in the implied ratio `HighQualityOut`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |
-| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0072`, mapped to the string `RippleState`, indicates that this is a RippleState entry. |
 | `LowLimit`          | Object    | Amount        | Yes       | The limit that the low account has set on the trust line. The `issuer` is the address of the low account that set this limit. |
 | `LowNode`           | String    | UInt64        | Yes       | (Omitted in some historical ledgers) A hint indicating which page of the low account's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `LowQualityIn`      | Number    | UInt32        | No        | The inbound quality set by the low account, as an integer in the implied ratio `LowQualityIn`:1,000,000,000. As a special case, the value 0 is equivalent to 1 billion, or face value. |

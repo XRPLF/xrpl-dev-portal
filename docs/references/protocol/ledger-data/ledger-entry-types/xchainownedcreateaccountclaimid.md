@@ -57,7 +57,6 @@ An `XChainOwnedCreateAccountClaimID` ledger entry is destroyed when all the atte
 | Field                             | JSON Type    | [Internal Type][] | Required? | Description |
 |:----------------------------------|:-------------|:------------------|:----------|:------------|
 | `Account`                         | String       | AccountID         | Yes       | The account that owns this object. |
-| `LedgerIndex`                     | String       | UInt256           | Yes       | The ledger index is a hash of a unique prefix for `XChainOwnedCreateAccountClaimID`s, the actual `XChainAccountClaimCount` value, and the fields in `XChainBridge`. |
 | `XChainAccountCreateCount`        | Number       | UInt64            | Yes       | An integer that determines the order that accounts created through cross-chain transfers must be performed. Smaller numbers must execute before larger numbers. |
 | `XChainBridge`                    | XChainBridge | XChainBridge      | Yes       | The door accounts and assets of the bridge this object correlates to. |
 | `XChainCreateAccountAttestations` | Array        | Array             | Yes       | Attestations collected from the witness servers. This includes the parameters needed to recreate the message that was signed, including the amount, destination, signature reward amount, and reward account for that signature. With the exception of the reward account, all signatures must sign the message created with common parameters. |
