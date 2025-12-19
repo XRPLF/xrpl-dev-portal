@@ -97,9 +97,9 @@ To send the escrow, construct an [EscrowCreate transaction][] and then submit it
 {% /tab %}
 {% /tabs %}
 
-{% admonition type="info" name="Note" %}To give the escrow an expiration time, add a `CancelAfter` field to the transaction. An expiration time is optional for timed XRP escrows but required for token escrows. This time must be after the maturity time.{% /admonition %}
+{% admonition type="info" name="Note" %}To give the escrow an expiration time, add a `CancelAfter` field to the transaction. An expiration time is optional for timed XRP escrows but required for token escrows. This time must be after the maturity time (`FinishAfter`).{% /admonition %}
 
-Save the sequence number of the EscrowCreate transaction. (In this example, the sequence number is autofilled.) You need this sequence number to identify the escrow when you want to finish (or cancel) it later.
+Save the sequence number of the `EscrowCreate` transaction. You need this sequence number to identify the escrow when you want to finish (or cancel) it later. In this example, the sequence number is autofilled.
 
 {% tabs %}
 {% tab label="JavaScript" %}

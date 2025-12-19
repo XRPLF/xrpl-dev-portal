@@ -27,7 +27,7 @@ To complete this tutorial, you should:
 
 You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/escrow/" %}code samples section of this website's repository{% /repo-link %}.
 
-##  Steps
+## Steps
 
 ### 1. Install dependencies
 
@@ -66,7 +66,7 @@ To get started, import the client library and instantiate an API client. For thi
 
 ### 3. Create an escrow
 
-For purposes of this tutorial, you need an escrow to cancel, so create one that won't be finished before it expires. The sample code uses a conditional escrow with a made-up condition full of zeroes, so nobody knows the fulfillment, and an expiration time 30 seconds into the future. A timed escrow could also work, but it's possible someone else would finish the escrow between its maturity and expiration time.
+For the purposes of this tutorial, you need an escrow to cancel, so create one that won't be finished before it expires. The sample code uses a conditional escrow with a made-up condition full of zeroes, so nobody knows the fulfillment, and an expiration time 30 seconds into the future. A timed escrow could also work, but it's possible someone else would finish the escrow between its maturity and expiration time.
 
 Anyone can cancel _any_ expired escrow; you don't have to be the sender or receiver. That said, the sender has the most financial incentive to do so, since they get the funds back.
 
