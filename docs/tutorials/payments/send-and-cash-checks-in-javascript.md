@@ -17,7 +17,7 @@ This example shows how to:
 
 Checks offer another option for transferring funds between accounts. Checks have two particular advantages.
 
-1. You can use a check to send [tokens](../../../concepts/tokens/index.md) to someone who has not already created a trust line. The trust line is created automatically when the receiver chooses to accept the funds.
+1. You can use a check to send [tokens](../../concepts/tokens/index.md) to someone who has not already created a trust line. The trust line is created automatically when the receiver chooses to accept the funds.
 2. The receiver can choose to accept less than the full amount of the check. This allows you to authorize a maximum amount when the actual cost is not finalized. 
 
 
@@ -25,7 +25,7 @@ Checks offer another option for transferring funds between accounts. Checks have
 
 ## Prerequisites
 
-Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
+Download and expand the [Modular Tutorials](../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 {% admonition type="info" name="Note" %}
 Without the Modular Tutorial Samples, you will not be able to try the examples that follow.
@@ -113,7 +113,7 @@ To cancel a check you have previously sent to another account.
 
 # Code Walkthrough
 
-Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
+Download and expand the [Modular Tutorials](../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 ## send-checks.js
 

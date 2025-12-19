@@ -18,7 +18,7 @@ To complete this tutorial, you should meet the following guidelines:
 
 1. You have [Node.js](https://nodejs.org/en/download/) v14 or higher installed.
 2. You have [Yarn](https://yarnpkg.com/en/docs/install) (v1.17.3 or higher) installed.
-3. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](./get-started.md) tutorial.
+3. You are somewhat familiar with coding with JavaScript and have completed the [Get Started Using JavaScript](../get-started/get-started-javascript.md) tutorial.
 
 ## Source Code
 
@@ -34,8 +34,8 @@ This application can:
 
 - Show updates to the XRP Ledger in real-time.
 - View any XRP Ledger account's activity, including showing how much XRP was delivered by each transaction.
-- Show how much XRP is set aside for the account's [reserve requirement](../../../concepts/accounts/reserves.md).
-- Send [direct XRP payments](../../../concepts/payment-types/direct-xrp-payments.md), and provide feedback about the intended destination address, including:
+- Show how much XRP is set aside for the account's [reserve requirement](../../concepts/accounts/reserves.md).
+- Send [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md), and provide feedback about the intended destination address, including:
     - Displaying your account's available balance
     - Verifying that the destination address is valid
     - Validating the account has enough XRP to send
@@ -114,11 +114,11 @@ This basic setup creates a homepage and applies some visual styles. The goal is 
 
 To make that happen, we need to connect to the XRP Ledger and look up the account and the latest validated ledger.
 
-5. In the `src/` directory, make a new folder named `helpers`. Create a new file there named `get-wallet-details.js` and define a function named `getWalletDetails` there. This function uses the [account_info method](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) to fetch account details and the [server_info method](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md) to calculate the current [reserves](../../../concepts/accounts/reserves.md). The code to do all this is as follows:
+5. In the `src/` directory, make a new folder named `helpers`. Create a new file there named `get-wallet-details.js` and define a function named `getWalletDetails` there. This function uses the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) to fetch account details and the [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md) to calculate the current [reserves](../../concepts/accounts/reserves.md). The code to do all this is as follows:
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/src/helpers/get-wallet-details.js" language="js" /%}
 
-6. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#ledger-stream) to listen for ledger close events.
+6. Now, let's add the code to `index.js` file to fetch the account and ledger details and display them on the home page. Copy the code written below to the `index.js` file. Here we render the wallet details using the function we defined in `get-wallet-details.js`. In order to make sure we have up to date ledger data, we are using the [ledger stream](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#ledger-stream) to listen for ledger close events.
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/index.js" language="js" /%}
 
@@ -150,7 +150,7 @@ Now that we've created the home page, we can move on to the "Send XRP" page. Thi
 
 3. Copy the contents of the {% repo-link path="_code-samples/build-a-browser-wallet/js/src/send-xrp/send-xrp.html" %}send-xrp.html{% /repo-link %} file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
-4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about [signing](../../../references/http-websocket-apis/admin-api-methods/signing-methods/sign.md) a transaction.
+4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about [signing](../../references/http-websocket-apis/admin-api-methods/signing-methods/sign.md) a transaction.
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/src/helpers/submit-transaction.js" language="js" /%}
 
@@ -179,7 +179,7 @@ Now that we have created the home page and the send XRP page, let's create the t
   - Delivered amount: The amount of XRP or tokens delivered by the transaction, if applicable.
   - Link: A link to the transaction on the XRP Ledger Explorer.
 
-{% admonition type="warning" name="Caution" %}When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](../../../concepts/payment-types/partial-payments.md) can deliver much less than the stated `Amount` and still be successful.{% /admonition %}
+{% admonition type="warning" name="Caution" %}When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](../../concepts/payment-types/partial-payments.md) can deliver much less than the stated `Amount` and still be successful.{% /admonition %}
 
 ![Transactions Page Screenshot](/docs/img/js-wallet-transaction.png)
 
@@ -188,23 +188,23 @@ Now that we have created the home page and the send XRP page, let's create the t
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/src/transaction-history/transaction-history.js" language="js" /%}
 
-This code uses [account_tx](../../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
+This code uses [account_tx](../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
 
 3. Create a file named `transaction-history.html` and copy the code from {% repo-link path="_code-samples/build-a-browser-wallet/js/src/transaction-history/transaction-history.html" %}transaction-history.html{% /repo-link %} into it.
 
 `transaction-history.html` defines a table which displays the fields mentioned above.
 
-You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. [TrustSet](../../../references/protocol/transactions/types/trustset.md)). If you want inspiration for how to handle this, you can check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
+You can use this code as a starting point for displaying your account's transaction history. If you want an additional challenge, try expanding it to support different transaction types (e.g. [TrustSet](../../references/protocol/transactions/types/trustset.md)). If you want inspiration for how to handle this, you can check out the [XRP Ledger Explorer](https://livenet.xrpl.org/) to see how the transaction details are displayed.
 
 ## Next Steps
 
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
-- You could support more of the XRP Ledger's [transaction types](../../../references/protocol/transactions/types/index.md) including [tokens](../../../concepts/tokens/index.md) and [cross-currency payments](../../../concepts/payment-types/cross-currency-payments.md)
+- You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](../../concepts/tokens/index.md) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
 - You could add support for displaying multiple tokens, beyond just XRP
-- You could support creating [offers](../../../concepts/tokens/decentralized-exchange/offers.md) in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md)
+- You could support creating [offers](../../concepts/tokens/decentralized-exchange/offers.md) in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md)
 - You could add new ways to request payments, such as with QR codes or URIs that open in your wallet.
-- You could support better account security including allowing users to set [regular key pairs](../../../concepts/accounts/cryptographic-keys.md#regular-key-pair) or handle [multi-signing](../../../concepts/accounts/multi-signing.md).
+- You could support better account security including allowing users to set [regular key pairs](../../concepts/accounts/cryptographic-keys.md#regular-key-pair) or handle [multi-signing](../../concepts/accounts/multi-signing.md).
 - Or you could take your code to production by following the [Building for Production with Vite](https://vitejs.dev/guide/build.html#public-base-path) guide.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

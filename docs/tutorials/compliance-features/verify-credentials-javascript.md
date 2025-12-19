@@ -7,10 +7,10 @@ labels:
 
 # Verify Credentials in Javascript
 
-This tutorial describes how to verify that an account holds a valid [credential](/docs/concepts/decentralized-storage/credentials) on the XRP Ledger, which has different use cases depending on the type of credential and the meaning behind it. A few possible reasons to verify a credential include:
+This tutorial describes how to verify that an account holds a valid [credential](../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, which has different use cases depending on the type of credential and the meaning behind it. A few possible reasons to verify a credential include:
 
 - Confirming that a recipient has passed a background check before sending a payment.
-- Checking a person's professional certifications, after verifying their identity with a [DID](/docs/concepts/decentralized-storage/decentralized-identifiers).
+- Checking a person's professional certifications, after verifying their identity with a [DID](../../concepts/decentralized-storage/decentralized-identifiers.md).
 - Displaying a player's achievements in a blockchain-connected game.
 
 This tutorial uses sample code in Javascript using the [xrpl-js library](../index.md).
@@ -20,7 +20,7 @@ This tutorial uses sample code in Javascript using the [xrpl-js library](../inde
 - You must have Node.js installed and know how to run Javascript code from the command line. Node.js v18 is required for xrpl.js.
 - You should have a basic understanding of the XRP Ledger.
 - The credential you want to verify should exist in the ledger already, and you should know the addresses of both the issuer and the holder, as well as the official credential type you want to check.
-    - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md).
+    - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../sample-apps/credential-issuing-service-in-javascript.md).
 
 
 ## Setup
@@ -253,7 +253,7 @@ Then it defines a type of exception to throw if something goes wrong when connec
 
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Define an error to throw" before="const CREDENTIAL" /%}
 
-Finally, a regular expression to validate the credential format and the [lsfAccepted](../../../references/protocol/ledger-data/ledger-entry-types/credential.md#credential-flags) flag are defined as constants for use further on in the code.
+Finally, a regular expression to validate the credential format and the [lsfAccepted](../../references/protocol/ledger-data/ledger-entry-types/credential.md#credential-flags) flag are defined as constants for use further on in the code.
 
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="const CREDENTIAL" before="async function verifyCredential" /%}
 
@@ -310,11 +310,11 @@ Finally, the code runs the `main()` function:
 
 Now that you know how to use `xrpl.js` to verify credentials, you can try building this or related steps together into a bigger project. For example:
 
-- Incorporate credential verification into a [wallet application](../build-apps/build-a-desktop-wallet-in-javascript.md).
-- Issue your own credentials with a [credential issuing service](../build-apps/credential-issuing-service.md).
+- Incorporate credential verification into a [wallet application](../sample-apps/build-a-desktop-wallet-in-javascript.md).
+- Issue your own credentials with a [credential issuing service](../sample-apps/credential-issuing-service-in-javascript.md).
 
 ## See Also
 
-- [Verify Credentials in Python](../../python/compliance/verify-credential.md)
+- [Verify Credentials in Python](./verify-credentials-in-python.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

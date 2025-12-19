@@ -19,7 +19,7 @@ This example shows how to:
 
 [![Offer Create Token Test Harness](/docs/img/mt-create-offers-1-empty-form-info.png)](/docs/img/mt-create-offers-1-empty-form-info.png)
 
-Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
+Download and expand the [Modular Tutorials](../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 **Note:** Without the Modular Tutorial Samples, you will not be able to try the examples that follow. 
 

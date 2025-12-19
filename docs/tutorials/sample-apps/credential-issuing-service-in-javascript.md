@@ -7,7 +7,7 @@ seo:
 
 _(Requires the Credentials amendment. {% not-enabled /%})_
 
-This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Express](https://expressjs.com/) framework for Node.js.
+This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Express](https://expressjs.com/) framework for Node.js.
 
 
 ## Prerequisites
@@ -15,7 +15,7 @@ This tutorial demonstrates how to build and use a microservice that issues [Cred
 To complete this tutorial, you should meet the following guidelines:
 
 - You have [Node.js](https://nodejs.org/en/download/) v18 or higher installed.
-- You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](./get-started.md).
+- You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](../get-started/get-started-javascript.md).
 - You have some understanding of the XRP Ledger, its capabilities, and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/).
 
 
@@ -57,7 +57,7 @@ The other files contain helper code that is used by one or both tools.
 
 ### 1. Get Accounts
 
-To use the credential issuing service, you need two accounts on the Devnet, where the Credentials amendment is already enabled. Go to the [XRP Faucets page](../../../../resources/dev-tools/xrp-faucets.page.tsx) and select **Devnet**. Then, click the button to Generate credentials, saving the key pair (address and secret), twice. You will use one of these accounts as a **credential issuer** and the other account as the **credential subject** (holder), so make a note of which is which.
+To use the credential issuing service, you need two accounts on the Devnet, where the Credentials amendment is already enabled. Go to the [XRP Faucets page](../../../resources/dev-tools/xrp-faucets.page.tsx) and select **Devnet**. Then, click the button to Generate credentials, saving the key pair (address and secret), twice. You will use one of these accounts as a **credential issuer** and the other account as the **credential subject** (holder), so make a note of which is which.
 
 ### 2. Start Issuer Service
 
@@ -285,7 +285,7 @@ Next, it creates the Express app:
 
 {% code-snippet file="/_code-samples/issue-credentials/js/issuer_service.js" language="js" from="// Define Express app" before="// POST /credential" /%}
 
-After that come the definitions for the three API methods, starting with `POST /credential`. Users call this method to request a credential from the service. This method parses the request body as JSON and validates it. If this succeeds, it uses the data to fill out a `CredentialCreate` transaction. Finally, it checks the transaction's [result](../../../references/protocol/transactions/transaction-results/index.md) to decide which HTTP response code to use:
+After that come the definitions for the three API methods, starting with `POST /credential`. Users call this method to request a credential from the service. This method parses the request body as JSON and validates it. If this succeeds, it uses the data to fill out a `CredentialCreate` transaction. Finally, it checks the transaction's [result](../../references/protocol/transactions/transaction-results/index.md) to decide which HTTP response code to use:
 
 {% code-snippet file="/_code-samples/issue-credentials/js/issuer_service.js" language="js" from="// POST /credential" before="// GET /admin/credential" /%}
 
@@ -309,7 +309,7 @@ Finally, the code runs the `main()` function:
 
 This file implements lookup of Credentials. Both the issuer code and the subject code use this function to look up their own credentials.
 
-This code performs [pagination using markers](../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) to get all the results from the ledger. It also filters results based on the issuer/subject account, so that lookup by issuer, for example, doesn't include credentials that someone else issued _to_ the issuer account. Finally, it can optionally check the accepted status of the Credentials and only include ones that are or aren't accepted.
+This code performs [pagination using markers](../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) to get all the results from the ledger. It also filters results based on the issuer/subject account, so that lookup by issuer, for example, doesn't include credentials that someone else issued _to_ the issuer account. Finally, it can optionally check the accepted status of the Credentials and only include ones that are or aren't accepted.
 
 {% code-snippet file="/_code-samples/issue-credentials/js/look_up_credentials.js" language="js" /%}
 
@@ -357,10 +357,10 @@ Using this service as a base, you can extend the service with more features, suc
 Alternatively, you can use credentials to for various purposes, such as:
 
 - Define a [Permissioned Domain](/docs/concepts/tokens/decentralized-exchange/permissioned-domains) that uses your credentials to grant access to features on the XRP Ledger.
-- [Verify credentials](../compliance/verify-credential.md) manually to grant access to services that exist off-ledger.
+- [Verify credentials](../compliance-features/verify-credentials-javascript.md) manually to grant access to services that exist off-ledger.
 
 ## See Also
 
-- [Python: Build a Credential Issuing Service](../../python/build-apps/credential-issuing-service.md)
+- [Python: Build a Credential Issuing Service](../sample-apps/credential-issuing-service-in-javascript.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

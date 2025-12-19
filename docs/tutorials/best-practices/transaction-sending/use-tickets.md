@@ -20,7 +20,7 @@ steps: ['Generate', 'Connect', 'Check Sequence', 'Prepare & Sign', 'Submit', 'Wa
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript" src="/js/tutorials/use-tickets.js"></script>
 
-This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup instructions.
+This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](../../get-started/get-started-javascript.md) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 
@@ -251,7 +251,7 @@ Ticketed transactions go through the consensus process the same way that Sequenc
 
 One of the main use cases for Tickets is to be able to collect signatures for several [multi-signed transactions](../../../concepts/accounts/multi-signing.md) in parallel. By using a Ticket, you can send a multi-signed transaction as soon as it is fully signed and ready to go, without worrying about which one will be ready first. <!-- STYLE_OVERRIDE: will -->
 
-In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-transaction) is slightly different. Instead of preparing and signing all at once, you would follow the steps for [sending any multi-signed transaction](send-a-multi-signed-transaction.md): first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.
+In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-transaction) is slightly different. Instead of preparing and signing all at once, you would follow the steps for [sending any multi-signed transaction](../../best-practices/key-management/send-a-multi-signed-transaction.md): first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.
 
 You could do this in parallel for several different potential transactions as long as each one uses a different Ticket.
 
@@ -262,7 +262,7 @@ You could do this in parallel for several different potential transactions as lo
     - [Tickets](../../../concepts/accounts/tickets.md)
     - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
 - **Tutorials:**
-    - [Set Up Multi-Signing](set-up-multi-signing.md)
+    - [Set Up Multi-Signing](../../best-practices/key-management/set-up-multi-signing.md)
     - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
     - [account_objects method][]

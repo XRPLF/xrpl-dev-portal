@@ -12,7 +12,7 @@ steps: ['Generate', 'Connect', 'Send AccountSet', 'Wait', 'Confirm Settings', 'T
 ---
 # Require Destination Tags
 
-The Require Destination Tag setting is designed for addresses that host balances for multiple people or purposes, to prevent people from sending money and forgetting to use a [destination tag](../../../concepts/transactions/source-and-destination-tags.md) to identify whom to credit. When this setting is enabled on your address, the XRP Ledger rejects [any payment](../../../concepts/payment-types/index.md) to your address if it does not specify a destination tag.
+The Require Destination Tag setting is designed for addresses that host balances for multiple people or purposes, to prevent people from sending money and forgetting to use a [destination tag](../../concepts/transactions/source-and-destination-tags.md) to identify whom to credit. When this setting is enabled on your address, the XRP Ledger rejects [any payment](../../concepts/payment-types/index.md) to your address if it does not specify a destination tag.
 
 This tutorial demonstrates how to enable the Require Destination Tag flag on your account.
 
@@ -23,8 +23,8 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
 - You need a funded XRP Ledger account, with an address, secret key, and some XRP. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed.
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../get-started/get-started-javascript.md) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../get-started/get-started-python.md) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
@@ -45,11 +45,11 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 {% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
-When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
 ### 2. Connect to the Network
 
-You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../../references/client-libraries.md):
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md):
 
 {% tabs %}
 
@@ -69,7 +69,7 @@ For this tutorial, click the following button to connect:
 
 ### 3. Send AccountSet Transaction
 
-To enable the `RequireDest` flag, set the [`asfRequireDest` value (`1`)](../../../references/protocol/transactions/types/accountset.md#accountset-flags) in the `SetFlag` field of an [AccountSet transaction][]. To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
+To enable the `RequireDest` flag, set the [`asfRequireDest` value (`1`)](../../references/protocol/transactions/types/accountset.md#accountset-flags) in the `SetFlag` field of an [AccountSet transaction][]. To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
 
 For example:
 
@@ -98,7 +98,7 @@ For example:
 
 ### 4. Wait for Validation
 
-Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
@@ -131,7 +131,7 @@ After the transaction is validated, you can check your account's settings to con
 
 {% /interactive-block %}
 
-For further confirmation, you can send test transactions (from a different address) to confirm that the setting is working as you expect it to. If you a payment with a destination tag, it should succeed, and if you send one _without_ a destination tag, it should fail with the error code [`tecDST_TAG_NEEDED`](../../../references/protocol/transactions/transaction-results/tec-codes.md).
+For further confirmation, you can send test transactions (from a different address) to confirm that the setting is working as you expect it to. If you a payment with a destination tag, it should succeed, and if you send one _without_ a destination tag, it should fail with the error code [`tecDST_TAG_NEEDED`](../../references/protocol/transactions/transaction-results/tec-codes.md).
 
 {% interactive-block label="Test Payments" steps=$frontmatter.steps %}
 
@@ -148,13 +148,13 @@ For further confirmation, you can send test transactions (from a different addre
 ## See Also
 
 - **Concepts:**
-    - [Accounts](../../../concepts/accounts/index.md)
-    - [Source and Destination Tags](../../../concepts/transactions/source-and-destination-tags.md)
-    - [Transaction Cost](../../../concepts/transactions/transaction-cost.md)
-    - [Payment Types](../../../concepts/payment-types/index.md)
+    - [Accounts](../../concepts/accounts/index.md)
+    - [Source and Destination Tags](../../concepts/transactions/source-and-destination-tags.md)
+    - [Transaction Cost](../../concepts/transactions/transaction-cost.md)
+    - [Payment Types](../../concepts/payment-types/index.md)
 - **References:**
     - [account_info method][]
     - [AccountSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+    - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

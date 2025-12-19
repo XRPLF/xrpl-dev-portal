@@ -6,7 +6,7 @@ metadata:
 ---
 # HTTP / WebSocket APIs
 
-You can communicate directly with the XRP Ledger through HTTP-based APIs provided by the core `rippled` server as well as the Clio server. Both types of server provide JSON-RPC and WebSocket APIs with mostly the same functionality. JSON-RPC uses a strict request-response paradigm similar to a REST API, but WebSocket uses a single persistent connection where the server can push messages to the client asynchronously. For more information, see [Get Started Using HTTP / WebSocket APIs](../../tutorials/http-websocket-apis/build-apps/get-started.md).
+You can communicate directly with the XRP Ledger through HTTP-based APIs provided by the core `rippled` server as well as the Clio server. Both types of server provide JSON-RPC and WebSocket APIs with mostly the same functionality. JSON-RPC uses a strict request-response paradigm similar to a REST API, but WebSocket uses a single persistent connection where the server can push messages to the client asynchronously. For more information, see [Get Started Using HTTP / WebSocket APIs](../../tutorials/get-started/get-started-http-websocket-apis.md).
 
 [{% inline-svg file="/docs/img/api-functionality-venn-diagram.svg" /%}](/docs/img/api-functionality-venn-diagram.svg "Diagram: Most API methods are provided by both rippled and Clio servers. The rippled server provides admin methods, provides pending/unvalidated data including transaction queue, and has a live view of consensus and peer-to-peer network. The Clio server scales efficiently, provides additional methods nft_history, nft_info, nfts_by_issuer, and mpt_holders, and serves rippled-exclusive API requests by forwarding.")
 

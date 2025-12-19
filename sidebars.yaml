@@ -43,8 +43,7 @@
           items:
             - page: docs/use-cases/defi/algorithmic-trading.md
             - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
-            - page: docs/use-cases/defi/enable-compliance-focused-cross-currency-payments-using-a-permissioned-dex.md
-        
+            - page: docs/use-cases/defi/enable-compliance-focused-cross-currency-payments-using-a-permissioned-dex.md 
     - page: docs/concepts/index.md
       expanded: false
       items:
@@ -191,6 +190,7 @@
             - page: docs/tutorials/get-started/get-started-javascript.md
             - page: docs/tutorials/get-started/get-started-python.md
             - page: docs/tutorials/get-started/get-started-java.md    
+            - page: docs/tutorials/get-started/get-started-go.md
             - page: docs/tutorials/get-started/get-started-php.md  
             - page: docs/tutorials/get-started/get-started-http-websocket-apis.md  
         - label: Sample Apps
@@ -200,23 +200,40 @@
             - page: docs/tutorials/sample-apps/build-a-desktop-wallet-in-javascript.md
             - page: docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md
             - page: docs/tutorials/sample-apps/credential-issuing-service-in-javascript.md
-            - page: docs/tutorials/sample-apps/credential-issuing-service-in-python.md
-        - label: Payments
-          expanded: false
-          items:                   
-            - page: docs/tutorials/javascript/send-payments/create-accounts-send-xrp.md
-            - page: docs/tutorials/javascript/send-payments/create-trust-line-send-currency.md
-
+            - page: docs/tutorials/sample-apps/credential-issuing-service-in-python.md 
         - label: DEX
           expanded: false
           items:
             - page: docs/tutorials/dex/trade-in-the-decentralized-exchange.md
             - page: docs/tutorials/dex/create-an-automated-market-maker.md
+            - page: docs/tutorials/payments/create-offers-in-javascript.md
             - page: docs/tutorials/dex/create-an-amm-in-javascript.md
             - page: docs/tutorials/dex/add-assets-to-amm-in-javascript.md
             - page: docs/tutorials/dex/trade-with-auction-slot-in-javascript.md 
-            - page: docs/tutorials/javascript/send-payments/create-offers.md
-        - label: Tokens
+            - page: docs/tutorials/javascript/send-payments/create-offers.md 
+        - label: Payments
+          expanded: false
+          items:    
+            - page: docs/tutorials/payments/create-accounts-send-xrp-in-javascript.md
+            - page: docs/tutorials/payments/create-accounts-send-xrp-in-python.md
+            - page: docs/tutorials/payments/create-trust-line-send-currency-in-javascript.md
+            - page: docs/tutorials/payments/create-trust-line-send-currency-in-python.md
+            - page: docs/tutorials/payments/send-xrp.md
+            - page: docs/tutorials/payments/send-and-cash-checks-in-javascript.md
+            - page: docs/tutorials/payments/send-and-cash-checks-in-python.md
+            - page: docs/tutorials/payments/send-a-check.md
+            - page: docs/tutorials/payments/cancel-a-check.md
+            - page: docs/tutorials/payments/cash-a-check-for-an-exact-amount.md
+            - page: docs/tutorials/payments/cash-a-check-for-a-flexible-amount.md
+            - page: docs/tutorials/payments/look-up-checks.md
+            - page: docs/tutorials/payments/create-conditional-escrows-in-javascript.md
+            - page: docs/tutorials/payments/create-conditional-escrows-in-python.md
+            - page: docs/tutorials/payments/create-time-based-escrows-in-javascript.md
+            - page: docs/tutorials/payments/create-time-based-escrows-in-python.md
+            - page: docs/tutorials/payments/cancel-an-expired-escrow.md
+            - page: docs/tutorials/payments/look-up-escrows.md
+            - page: docs/tutorials/payments/use-an-escrow-as-a-smart-contract.md
+        - label: Tokens 
           expanded: false
           items:
             - label: NFTs
@@ -237,60 +254,32 @@
             - label: Multi-Purpose Tokens (Tokens 2.0)
               expanded: false
               items:
-                - page: docs/tutorials/javascript/multi-purpose-tokens/issue-a-multi-purpose-token.md
-                - page: docs/tutorials/javascript/send-payments/sending-mpts.md
+                - page: docs/tutorials/tokens/issue-a-multi-purpose-token.md
+                - page: docs/tutorials/tokens/sending-mpts-in-javascript.md
         - label: Compliance Features
           expanded: false
           items:
-            - page: docs/tutorials/python/send-payments/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/python/send-payments/create-accounts-send-xrp.md
-                - page: docs/tutorials/python/send-payments/create-trust-line-send-currency.md
-                - page: docs/tutorials/python/send-payments/create-time-based-escrows.md
-                - page: docs/tutorials/python/send-payments/create-conditional-escrows.md
-                - page: docs/tutorials/python/send-payments/send-and-cash-checks.md
-            - page: docs/tutorials/python/nfts/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/python/nfts/mint-and-burn-nfts.md
-                - page: docs/tutorials/python/nfts/transfer-nfts.md
-                - page: docs/tutorials/python/nfts/broker-an-nft-sale.md
-                - page: docs/tutorials/python/nfts/assign-an-authorized-minter.md
-                - page: docs/tutorials/python/nfts/batch-mint-nfts.md
-            - page: docs/tutorials/python/build-apps/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/python/build-apps/get-started.md
-                - page: docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python.md
-                - page: docs/tutorials/python/build-apps/credential-issuing-service.md
-            - page: docs/tutorials/python/compliance/index.md
-              items:
-                - page: docs/tutorials/python/compliance/verify-credential.md
-        - page: docs/tutorials/go/index.md
+            - page: docs/tutorials/compliance-features/require-destination-tags.md
+            - page: docs/tutorials/compliance-features/verify-credentials-in-javascript.md
+            - page: docs/tutorials/compliance-features/verify-credentials-in-python.md
+            - page: docs/tutorials/compliance-features/create-permissioned-domains-in-javascript.md
+        - label: Programmability
           expanded: false
           items:
-            - page: docs/tutorials/go/build-apps/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/go/build-apps/get-started.md
-        - page: docs/tutorials/java/index.md
-          expanded: false
-          items:
-            - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
-            - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge.md
-            - page: docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction.md            
+            - page: docs/tutorials/programmability/set-up-xrp-xrp-bridge.md
+            - page: docs/tutorials/programmability/set-up-iou-iou-bridge.md
+            - page: docs/tutorials/programmability/submit-cross-chain-transaction.md            
         - label: Best Practices
           expanded: false
           items:
             - label: API Usage
-              expanded: false
-              items: 
-                - page: docs/tutorials/javascript/compliance/create-permissioned-domains.md             
+              expanded: false            
             - label: Transaction Sending
               expanded: false
               items: 
-                - page: docs/tutorials/how-tos/manage-account-settings/use-tickets.md
+                - page: docs/tutorials/best-practices/transaction-sending/use-tickets.md
+                - page: docs/tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction.md
+                - page: docs/tutorials/best-practices/transaction-sending/send-a-multi-account-batch-transaction.md
             - label: Key Management
               expanded: false
               items: 
@@ -300,23 +289,16 @@
                 - page: docs/tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md
                 - page: docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair.md
                 - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
-                - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md
-                - page: docs/tutorials/how-tos/manage-account-settings/require-destination-tags.md
-                - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md
-                - page: docs/tutorials/how-tos/manage-account-settings/use-tickets.md
-            - page: docs/tutorials/how-tos/use-batch-transactions/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/how-tos/use-batch-transactions/send-a-single-account-batch-transaction.md
-                - page: docs/tutorials/how-tos/use-batch-transactions/send-a-multi-account-batch-transaction.md
-            - page: docs/tutorials/how-tos/use-specialized-payment-types/index.md
+                - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md 
+                - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md 
+            - label: Client Library Development
               expanded: false
               items: 
-                - page: docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md    
+                - page: docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md   
             - label: Protocol Development
               expanded: false
               items: 
-                - page: docs/tutorials/how-tos/testing-devnet-features.md            
+                - page: docs/tutorials/advanced-developer-topics/protocol-development/testing-devnet-features.md           
     - page: docs/references/index.md
       labelTranslationKey: sidebar.docs.references
       expanded: false

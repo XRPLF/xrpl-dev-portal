@@ -12,14 +12,14 @@ steps: ['Connect', 'Generate', 'Look Up Offers',' Send OfferCreate', 'Wait', 'Ch
 ---
 # Trade in the Decentralized Exchange
 
-This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md) (DEX).
+This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md) (DEX).
 
 ## Prerequisites
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../get-started/get-started-javascript.md) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../get-started/get-started-python.md) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
@@ -45,7 +45,7 @@ This tutorial demonstrates how to buy a fungible token in the decentralized exch
 
 ### 1. Connect to Network
 
-You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may find in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../../references/client-libraries.md) with the appropriate dependencies.
+You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may find in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md) with the appropriate dependencies.
 
 {% tabs %}
 
@@ -67,11 +67,11 @@ For this tutorial, click the following button to connect:
 
 ### 2. Get Credentials
 
-To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development purposes, you can get these on the [Testnet](../../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
+To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development purposes, you can get these on the [Testnet](../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
 
 {% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
-When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md). The following code shows how to create a `Wallet` instance to use your keys:
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md). The following code shows how to create a `Wallet` instance to use your keys:
 
 {% tabs %}
 
@@ -105,7 +105,7 @@ The following code shows how to look up existing Offers and compare them to a pr
 
 {% /tabs %}
 
-{% admonition type="info" name="Note" %}Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is [final](../../../concepts/transactions/finality-of-results/index.md).{% /admonition %}
+{% admonition type="info" name="Note" %}Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is [final](../../concepts/transactions/finality-of-results/index.md).{% /admonition %}
 
 The following block demonstrates these calculations in action:
 
@@ -193,14 +193,14 @@ You can use this interface to send the transaction specified by the amounts in t
 
 ### 5. Wait for Validation
 
-Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 
 ### 6. Check Metadata
 
-You can use the validated transaction's [metadata](../../../references/protocol/transactions/metadata.md) to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](../../../concepts/transactions/finality-of-results/index.md), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
+You can use the validated transaction's [metadata](../../references/protocol/transactions/metadata.md) to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](../../concepts/transactions/finality-of-results/index.md), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
 
 - Some or all of the Offer may have been filled by matching with existing Offers in the ledger.
 - The unmatched remainder, if any, has been placed into the ledger to await new matching Offers. <!-- STYLE_OVERRIDE: remainder -->

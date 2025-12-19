@@ -12,7 +12,7 @@ steps: ['Connect', 'Generate', 'Acquire tokens', 'Check for AMM', 'Look up AMMCr
 ---
 # Create an Automated Market Maker
 
-An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
+An [Automated Market Maker (AMM)](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
 
 {% amendment-disclaimer name="AMM" /%}
 
@@ -24,10 +24,10 @@ An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchang
 
 - You must have an XRP Ledger address and some XRP. For development and testing purposes, you can get these from a [Faucet](/resources/dev-tools/xrp-faucets).
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.11.0 or later**. See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.11.0 or later**. See [Get Started Using JavaScript](../get-started/get-started-javascript.md) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
-- You should have a basic understanding of how [tokens](../../../concepts/tokens/index.md) work in the XRP Ledger.
-- You may want to read about [Automated Market Makers in the XRP Ledger](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) first.
+- You should have a basic understanding of how [tokens](../../concepts/tokens/index.md) work in the XRP Ledger.
+- You may want to read about [Automated Market Makers in the XRP Ledger](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) first.
 
 
 ## Example Code
@@ -41,7 +41,7 @@ Complete sample code for all of the steps of these tutorials is available under 
 
 ### 1. Connect to the network
 
-You must be connected to the network to query it and submit transactions. The following code shows how to connect to a public {{use_network}} server using a supported [client library](../../../references/client-libraries.md):
+You must be connected to the network to query it and submit transactions. The following code shows how to connect to a public {{use_network}} server using a supported [client library](../../references/client-libraries.md):
 
 {% tabs %}
 
@@ -57,11 +57,11 @@ For this tutorial, click the following button to connect:
 
 ### 2. Get credentials
 
-To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development and testing purposes, you can get these on the [{{use_network}}](../../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
+To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development and testing purposes, you can get these on the [{{use_network}}](../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
 
 {% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
-When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md). The following code shows how to get a `Wallet` instance using either the faucet or a seed provided by environment variable:
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md). The following code shows how to get a `Wallet` instance using either the faucet or a seed provided by environment variable:
 
 {% tabs %}
 
@@ -76,7 +76,7 @@ When you're building production-ready software, you should use an existing accou
 
 As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's crucial to choose assets carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.
 
-You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, as long as they meet the [restrictions on AMM assets](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md#restrictions-on-assets).
+You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, as long as they meet the [restrictions on AMM assets](../../concepts/tokens/decentralized-exchange/automated-market-makers.md#restrictions-on-assets).
 
 For each of the two assets, you need to know its currency code and issuer; as an exception, XRP has no issuer. For each of the assets, you must hold a balance of the asset (or _be_ the issuer). The following sample code acquires two assets, "TST" (which it buys using XRP) and "FOO" (which it receives from the issuer).
 
@@ -88,9 +88,9 @@ For each of the two assets, you need to know its currency code and issuer; as an
 
 {% /tabs %}
 
-This tutorial includes some example code to issue FOO tokens from a second test address. This is not realistic for a production scenario, because tokens do not inherently have value, but it makes it possible to demonstrate creating a new AMM for a unique currency pair. In production, you would acquire a second token in some other way, such as making an off-ledger deposit with the [stablecoin issuer](../../../use-cases/tokenization/stablecoin-issuer.md), or buying it in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md).
+This tutorial includes some example code to issue FOO tokens from a second test address. This is not realistic for a production scenario, because tokens do not inherently have value, but it makes it possible to demonstrate creating a new AMM for a unique currency pair. In production, you would acquire a second token in some other way, such as making an off-ledger deposit with the [stablecoin issuer](../../use-cases/tokenization/stablecoin-issuer.md), or buying it in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md).
 
-The helper function for issuing follows an abbreviated version of the steps in the [Issue a Fungible Token](issue-a-fungible-token.md) tutorial:
+The helper function for issuing follows an abbreviated version of the steps in the [Issue a Fungible Token](../how-tos/use-tokens/issue-a-fungible-token.md) tutorial:
 
 {% tabs %}
 
@@ -137,7 +137,7 @@ If the AMM does already exist, you should double-check that you specified the ri
 
 ### 5. Look up the AMMCreate transaction cost
 
-Creating an AMM has a special [transaction cost][] to prevent spam: since it creates objects in the ledger that no one owns, you must burn at least one [owner reserve increment](../../../concepts/accounts/reserves.md) of XRP to send the AMMCreate transaction. The exact value can change due to [fee voting](https://xrpl.org/fee-voting.html), so you should look up the current incremental reserve value using the [server_state method][].
+Creating an AMM has a special [transaction cost][] to prevent spam: since it creates objects in the ledger that no one owns, you must burn at least one [owner reserve increment](../../concepts/accounts/reserves.md) of XRP to send the AMMCreate transaction. The exact value can change due to [fee voting](https://xrpl.org/fee-voting.html), so you should look up the current incremental reserve value using the [server_state method][].
 
 It is also a good practice to display this value and give a human operator a chance to stop before you send the transaction. Burning an owner reserve is typically a much higher cost than sending a normal transaction, so you don't want it to be a surprise. (Currently, on both Mainnet and Devnet, the cost of sending a typical transaction is 0.000010 XRP but the cost of AMMCreate is {% $env.PUBLIC_OWNER_RESERVE %}.)
 
@@ -260,7 +260,7 @@ You can also use the [account_lines method][] to get an updated view of your tok
 
 {% /tabs %}
 
-The `account_lines` response shows only the tokens held by the account you looked up (probably yours). If you have a lot of tokens, you may want to specify the AMM address as the `peer` in the request so you don't have to [paginate](../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) over multiple requests to find the AMM's LP Tokens. In this tutorial, your account probably only holds the three different tokens, so you can see all three in the same response.
+The `account_lines` response shows only the tokens held by the account you looked up (probably yours). If you have a lot of tokens, you may want to specify the AMM address as the `peer` in the request so you don't have to [paginate](../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) over multiple requests to find the AMM's LP Tokens. In this tutorial, your account probably only holds the three different tokens, so you can see all three in the same response.
 
 {% admonition type="success" name="Tip" %}If one of the assets in the AMM's pool is XRP, you need to call the [account_info method][] on your account to see the difference in your balance (the `Balance` field of the account object).{% /admonition %}
 

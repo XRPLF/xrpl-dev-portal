@@ -16,7 +16,7 @@ markdown:
 
 If you are already using multi-signing, no changes are necessary to continue using it. Optionally, you can now benefit from the reduced reserve requirements by replacing your existing SignerList with an identical or updated one.
 
-If you are not using multi-signing yet, feel free to take this opportunity to [Set Up Multi-Signing](/docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing) with the reduced reserve requirements.
+If you are not using multi-signing yet, feel free to take this opportunity to [Set Up Multi-Signing](/docs/tutorials/best-practices/key-management/set-up-multi-signing.md) with the reduced reserve requirements.
 
 
 ## MultiSignReserve Summary

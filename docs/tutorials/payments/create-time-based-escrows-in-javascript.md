@@ -21,7 +21,7 @@ This example shows how to:
 
 ## Prerequisites
 
-Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
+Download and expand the [Modular Tutorials](../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 ## Usage
 
@@ -116,7 +116,7 @@ If you forget to save the sequence number, you can find it in the escrow transac
 
 # Code Walkthrough
 
-Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
+Download and expand the [Modular Tutorials](../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
 ## ripple8-escrow.js
 

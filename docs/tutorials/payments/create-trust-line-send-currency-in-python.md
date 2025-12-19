@@ -221,7 +221,7 @@ Return the result.
 
 ### configure_account
 
-This example shows how to set and clear configuration flags using the `AccountSet` method. The `ASF_DEFAULT_RIPPLE` flag is pertinent to experimentation with transfer of issued currencies to third-party accounts, so it is demonstrated here. You can set any of the configuration flags using the same structure, substituting the particular flags you want to set. See [AccountSet Flags](../../../references/protocol/transactions/types/accountset.md#accountset-flags).
+This example shows how to set and clear configuration flags using the `AccountSet` method. The `ASF_DEFAULT_RIPPLE` flag is pertinent to experimentation with transfer of issued currencies to third-party accounts, so it is demonstrated here. You can set any of the configuration flags using the same structure, substituting the particular flags you want to set. See [AccountSet Flags](../../references/protocol/transactions/types/accountset.md#accountset-flags).
 
 Send the account seed and a Boolean value for whether to enable or disable rippling.
 ```python

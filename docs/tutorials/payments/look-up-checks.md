@@ -6,11 +6,11 @@ labels:
 ---
 # Look Up Checks
 
-This tutorial shows how to look up [Checks](../../../../concepts/payment-types/checks.md) by their sender or recipient, in JavaScript.
+This tutorial shows how to look up [Checks](../../concepts/payment-types/checks.md) by their sender or recipient, in JavaScript.
 
 ## Prerequisites
 
-- You should be familiar with the basics of using the [xrpl.js client library](../../../javascript/build-apps/get-started.md).
+- You should be familiar with the basics of using the [xrpl.js client library](../get-started/get-started-javascript.md).
 - To get any results, the addresses you're looking up must have at least one Check entry in the ledger. See also: [Send a Check](./send-a-check.md).
 
 ## Source Code
@@ -23,7 +23,7 @@ The complete source code for this tutorial is available in the source repository
 
 ### 1. Look up all Checks for the address
 
-To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command and set the `type` field of the request to `checks`. You may need to make multiple requests if the result is [paginated](../../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md).
+To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command and set the `type` field of the request to `checks`. You may need to make multiple requests if the result is [paginated](../../references/http-websocket-apis/api-conventions/markers-and-pagination.md).
 
 {% code-snippet file="/_code-samples/checks/js/get-checks.js" from="// Loop through account objects" before="// Filter results" /%}
 

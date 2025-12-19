@@ -473,7 +473,7 @@ $("#tx_read").click((event) => {
 ## Next Steps
 
 - [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md) to see exactly what a transaction did, and build your software to react appropriately.
-- Try [Sending XRP](../../how-tos/send-xrp.md) from your own address.
+- Try [Sending XRP](../../payments/send-xrp) from your own address.
 - Try monitoring for transactions of advanced types like [Escrows](../../../concepts/payment-types/escrow.md), [Checks](../../../concepts/payment-types/checks.md), or [Payment Channels](../../../concepts/payment-types/payment-channels.md), and responding to incoming notifications.
 <!--{# TODO: uncomment when it's ready. - To more robustly handle internet instability, [Follow a Transaction Chain](follow-a-transaction-chain.html) to detect if you missed a notification. #}-->
 

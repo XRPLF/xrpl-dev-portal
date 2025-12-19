@@ -47,7 +47,7 @@ In this configuration, you run `rippled` on the machine that generates the trans
 
     The [example config file](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
 
-    {% admonition type="warning" name="Caution" %}Using the [commandline API](../../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](../../tutorials/http-websocket-apis/build-apps/get-started.md) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plain text.{% /admonition %}
+    {% admonition type="warning" name="Caution" %}Using the [commandline API](../../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for signatures is less secure than [using the Websocket or JSON-RPC APIs](../../tutorials/get-started/get-started-http-websocket-apis.md) through non-commandline clients. When using the commandline syntax, your secret key may be visible to other users in the system's process listing, and your shell history may save the key in plain text.{% /admonition %}
 
 3. Maintain the server to keep it running, updated, and in sync with the network while you're using it.
 
@@ -140,7 +140,7 @@ To use this configuration, follow the steps for [running `rippled` on a private 
     - [Multi-Signing](../accounts/multi-signing.md)
 - **Tutorials:**
     - [Install rippled](../../infrastructure/installation/index.md)
-    - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
+    - [Assign a Regular Key Pair](../../tutorials/best-practices/key-management/assign-a-regular-key-pair.md)
     - [Reliable Transaction Submission](reliable-transaction-submission.md)
     - [Enable Public Signing](../../infrastructure/configuration/enable-public-signing.md)
 - **References:**

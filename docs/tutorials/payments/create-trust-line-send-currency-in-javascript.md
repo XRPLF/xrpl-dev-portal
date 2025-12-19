@@ -39,7 +39,7 @@ Open the Send Currency test harness and get accounts:
 
 [![Distribute Account Information](/docs/img/mt-send-currency-2-distribute-accounts.png)](/docs/img/mt-send-currency-2-distribute-accounts.png)
 
-If you want an account to be able to transfer issued currency to accounts other than the issuer, the issuer account must be configured to allow rippling. See _Issuer_ in the [Configuring Accounts](../../../concepts/accounts/configuring-accounts.md#issuer) topic.
+If you want an account to be able to transfer issued currency to accounts other than the issuer, the issuer account must be configured to allow rippling. See _Issuer_ in the [Configuring Accounts](../../concepts/accounts/configuring-accounts.md#issuer) topic.
 
 Accounts can always transfer currency tokens back to the original issuer.
 

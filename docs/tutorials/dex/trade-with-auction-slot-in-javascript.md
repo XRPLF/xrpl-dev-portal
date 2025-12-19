@@ -1,10 +1,10 @@
 # Trade with an AMM Auction Slot
 
-Follow the steps from the [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm/) tutorial before proceeding.
+Follow the steps from the [Create an AMM](./create-an-amm-in-javascript.md) tutorial before proceeding.
 
 This example shows how to:
 
-1. Calculate the exact cost of swapping one token for another in an [AMM](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) pool.
+1. Calculate the exact cost of swapping one token for another in an [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers) pool.
 2. Check the difference in trading fees with and without an auction slot.
 3. Bid on an auction slot with LP tokens.
 4. Create an offer to swap tokens with the AMM.
@@ -37,9 +37,9 @@ Without the Quickstart Samples, you will not be able to try the examples that fo
 
 ### Get the AMM
 
-Use the information from either the XRP/Token or Token/Token AMM you created in [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm/#create-an-xrp/token-amm).
+Use the information from either the XRP/Token or Token/Token AMM you created in [Create an AMM](create-an-amm-in-javascript.md#create-an-xrp/token-amm).
 
-1. Enter a [currency code](/docs/references/protocol/data-types/currency-formats.md#currency-codes) in the **Asset 1 Currency** field. For example, `XRP`.
+1. Enter a [currency code](../../references/protocol/data-types/currency-formats.md#currency-codes) in the **Asset 1 Currency** field. For example, `XRP`.
 2. Enter a second currency code in the **Asset 2 Currency** field. For example, `TST`.
 3. Enter the operational account address in the **Asset 2 Issuer** field.
 4. Click **Check AMM**.

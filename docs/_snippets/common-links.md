@@ -208,6 +208,7 @@
 [MPTokensV1_1 amendment]: /resources/known-amendments.md#priceoracle
 [RFC-1751]: https://tools.ietf.org/html/rfc1751
 [RequireFullyCanonicalSig amendment]: /resources/known-amendments.md#requirefullycanonicalsig
+[Require Destination Tag]: docs/tutorials/compliance-features/require-destination-tags.md
 [RippleState entry]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [RippleState object]: /docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md
 [SHA-512Half]: /docs/references/protocol/data-types/basic-data-types.md#hashes

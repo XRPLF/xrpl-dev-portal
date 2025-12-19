@@ -24,11 +24,11 @@ This tutorial explains how to send a direct XRP Payment using `xrpl.js` for Java
 
 To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:
 
-- **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../javascript/build-apps/get-started.md) for setup steps.
-- **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../python/build-apps/get-started.md) for setup steps.
-- **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../java/build-apps/get-started.md) for setup steps.
-- **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](../php/build-apps/get-started.md) for setup steps.
-- **Go** with the [xrpl-go library](https://github.com/Peersyst/xrpl-go). See [Get Started Using Go](../go/build-apps/get-started.md) for setup steps.
+- **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../get-started/get-started-javascript.md) for setup steps.
+- **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../get-started/get-started-python.md) for setup steps.
+- **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../get-started/get-started-java.md) for setup steps.
+- **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](../get-started/get-started-php.md) for setup steps.
+- **Go** with the [xrpl-go library](https://github.com/Peersyst/xrpl-go). See [Get Started Using Go](../get-started/get-started-go.md) for setup steps.
 
 ## Send a Payment on the Test Net
 
@@ -551,7 +551,7 @@ if err := client.Connect(); err != nil {
 After completing this tutorial, you may want to try the following:
 
 - [Issue a token](../how-tos/use-tokens/issue-a-fungible-token.md) on the XRP Ledger Testnet.
-- [Trade in the Decentralized Exchange](../how-tos/use-tokens/trade-in-the-decentralized-exchange.md).
+- [Trade in the Decentralized Exchange](../dex/trade-in-the-decentralized-exchange.md).
 - Build [Reliable transaction submission](../../concepts/transactions/reliable-transaction-submission.md) for production systems.
 - Check your [client library](../../references/client-libraries.md)'s API reference for the full range of XRP Ledger functionality.
 - Customize your [Account Settings](../how-tos/manage-account-settings/index.md).

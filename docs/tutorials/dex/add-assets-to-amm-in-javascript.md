@@ -1,10 +1,10 @@
 # Add Assets to an AMM
 
-Follow the steps from the [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm/) tutorial before proceeding.
+Follow the steps from the [Create an AMM](./create-an-amm-in-javascript.md) tutorial before proceeding.
 
 This example shows how to:
 
-1. Deposit assets to an existing [AMM](/docs/concepts/tokens/decentralized-exchange/automated-market-makers) and receive LP tokens.
+1. Deposit assets to an existing [AMM](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) and receive LP tokens.
 2. Vote on AMM trading fees.
 3. Check the value of your LP tokens.
 4. Redeem LP tokens for assets in the AMM pair.
@@ -37,7 +37,7 @@ Without the Quickstart Samples, you will not be able to try the examples that fo
 
 ### Get the AMM
 
-Use the information from either the XRP/Token or Token/Token AMM you created in [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm/#create-an-xrp/token-amm).
+Use the information from either the XRP/Token or Token/Token AMM you created in [Create an AMM](./create-an-amm-in-javascript.md#create-an-xrp/token-amm).
 
 1. Enter a [currency code](/docs/references/protocol/data-types/currency-formats.md#currency-codes) in the **Asset 1 Currency** field. For example, `XRP`.
 2. Enter a second currency code in the **Asset 2 Currency** field. For example, `TST`.

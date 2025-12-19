@@ -15,15 +15,15 @@ Once an account receives an MPT, it can send the MPT to another account, provide
 
 ## Send MPT Utility
 
-The Send MPT utility <!-- embedded below -->lets you create an account, authorize it to receive a specific MPT issuance, then send it the authorized MPT from an issuer or holder account. (You can issue an MPT using the [MPT Generator](../../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md) utility.)
+The Send MPT utility <!-- embedded below -->lets you create an account, authorize it to receive a specific MPT issuance, then send it the authorized MPT from an issuer or holder account. (You can issue an MPT using the [MPT Generator](../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md) utility.)
 
-[![MPT Sender Utility](../../../img/mt-send-mpt-0-empty-form.png)](../../../img/mt-send-mpt-0-empty-form.png)
+[![MPT Sender Utility](../../img/mt-send-mpt-0-empty-form.png)](../../img/mt-send-mpt-0-empty-form.png)
 
-You can download a [standalone version of the MPT Sender](../../../../_code-samples/mpt-sender/send-mpt.zip) as sample code<!--, or use the embedded form that follows-->.
+You can download a [standalone version of the MPT Sender](../../../_code-samples/mpt-sender/send-mpt.zip) as sample code<!--, or use the embedded form that follows-->.
 
 ## Get Accounts
 
-To send an MPT, you need the **Seed** value for the MPT issuer to retrieve its account, then you need either a new account or an account seed for the target account. You can use the [MPT Generator](../../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md) to create a new MPT for transfer.
+To send an MPT, you need the **Seed** value for the MPT issuer to retrieve its account, then you need either a new account or an account seed for the target account. You can use the [MPT Generator](../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md) to create a new MPT for transfer.
 
 To get the accounts:
 
@@ -31,13 +31,13 @@ To get the accounts:
 2. Choose your ledger instance (**Devnet** or **Testnet**).
 3. If you used the MPT Generator:
    1. Paste the gathered info in the **Result** field.
-   [![Gathered information in Result field](../../../img/mt-send-mpt-1-gathered-info.png)](../../../img/mt-send-mpt-1-gathered-info.png)
+   [![Gathered information in Result field](../../img/mt-send-mpt-1-gathered-info.png)](../../img/mt-send-mpt-1-gathered-info.png)
    2. Cut and paste the MPT Issuance ID to the **MPT Issuance ID** field.
    3. Click **Distribute Account Info** to populate the **Account 1** fields.<br/><br/>
    If you did not use the MPT Generator, enter the **Account 1 Name**, **Account 1 Address**, **Account 1 Seed**, and **MPT Issuance ID** in the corresponding fields.)
 4. Click **Get New Account 2**, or use a seed to **Get Account 2 from Seed**.
 5. Optionally, add the **Account 2 Name**, an arbitrary human-readable name that helps to differentiate the accounts.
-[![Get New Account 2](../../../img/mt-send-mpt-2-account-2.png)](../../../img/mt-send-mpt-2-account-2.png)
+[![Get New Account 2](../../img/mt-send-mpt-2-account-2.png)](../../img/mt-send-mpt-2-account-2.png)
 
 ## Authorize MPT
 
@@ -48,7 +48,7 @@ To authorize Account 2 to accept MPTs:
 1. Click the **Account 2** radio button.
 2. Enter an **Amount**, the maximum number of MPTs the account will accept.
 2. Click **Authorize MPTs**.
-[![Authorize MPTs](../../../img/mt-send-mpt-2-authorize-mpt.png)](../../../img/mt-send-mpt-2-authorize-mpt.png)
+[![Authorize MPTs](../../img/mt-send-mpt-2-authorize-mpt.png)](../../img/mt-send-mpt-2-authorize-mpt.png)
 
 ## Send MPT
 
@@ -59,7 +59,7 @@ To send an MPT:
 2. Enter an **Amount** of MPTs to send.
 3. Enter the **Destination** (likely the value in the **Account 2 Address** field, but it can be any account on the same ledger instance).
 4. Click **Send MPT**.
-[![Send MPTs](../../../img/mt-send-mpt-3-send-mpt.png)](../../../img/mt-send-mpt-3-send-mpt.png)
+[![Send MPTs](../../img/mt-send-mpt-3-send-mpt.png)](../../img/mt-send-mpt-3-send-mpt.png)
 
 ## Get MPTs
 
@@ -67,11 +67,11 @@ To verify receipt of the MPTs:
 
 1. Click the **Account 2** radio button.
 2. Click **Get MPTs**.
-[![Get MPTs](../../../img/mt-send-mpt-4-get-mpts.png)](../../../img/mt-send-mpt-4-get-mpts.png)
+[![Get MPTs](../../img/mt-send-mpt-4-get-mpts.png)](../../img/mt-send-mpt-4-get-mpts.png)
 
 # Code Walkthrough
 
-You can download a [standalone version of the MPT Sender](../../../../_code-samples/mpt-sender/send-mpt.zip) as sample code.
+You can download a [standalone version of the MPT Sender](../../../_code-samples/mpt-sender/send-mpt.zip) as sample code.
 
 ## send-mpt.js
 

@@ -5,7 +5,7 @@ seo:
 # Build a Credential Issuing Service
 _(Requires the Credentials amendment. {% not-enabled /%})_
 
-This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Flask](https://flask.palletsprojects.com/) framework for Python.
+This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Flask](https://flask.palletsprojects.com/) framework for Python.
 
 ## Setup
 
@@ -47,7 +47,7 @@ The other files contain helper code that is used by one or both tools.
 
 ### 1. Get Accounts
 
-To use the credential issuing service, you need two accounts on the Devnet, where the Credentials amendment is already enabled. Go to the [XRP Faucets page](../../../../resources/dev-tools/xrp-faucets.page.tsx) and select **Devnet**. Then, click the button to Generate credentials, saving the key pair (address and secret), twice. You will use one of these accounts as a **credential issuer** and the other account as the **credential subject** (holder), so make a note of which is which.
+To use the credential issuing service, you need two accounts on the Devnet, where the Credentials amendment is already enabled. Go to the [XRP Faucets page](../../../resources/dev-tools/xrp-faucets.page.tsx) and select **Devnet**. Then, click the button to Generate credentials, saving the key pair (address and secret), twice. You will use one of these accounts as a **credential issuer** and the other account as the **credential subject** (holder), so make a note of which is which.
 
 ### 2. Start Issuer Service
 
@@ -268,7 +268,7 @@ Next, it creates the Flask app:
 
 {% code-snippet file="/_code-samples/issue-credentials/py/issuer_service.py" language="py" from="# Define Flask app" before="# Method for users" /%}
 
-After that come the definitions for the three API methods, starting with `POST /credential`. Users call this method to request a credential from the service. This method parses the request body as JSON and instantiates a `CredentialRequest` object—one of the data models defined in `credential_model.py`. If this succeeds, it uses the data to fill out a CredentialCreate transaction. Finally, it checks the transaction's [result code](../../../references/protocol/transactions/transaction-results/index.md) to decide which HTTP response code to use:
+After that come the definitions for the three API methods, starting with `POST /credential`. Users call this method to request a credential from the service. This method parses the request body as JSON and instantiates a `CredentialRequest` object—one of the data models defined in `credential_model.py`. If this succeeds, it uses the data to fill out a CredentialCreate transaction. Finally, it checks the transaction's [result code](../../references/protocol/transactions/transaction-results/index.md) to decide which HTTP response code to use:
 
 {% code-snippet file="/_code-samples/issue-credentials/py/issuer_service.py" language="py" from="# Method for users to request a credential from the service" before="# Method for admins to look up all credentials issued" /%}
 
@@ -288,7 +288,7 @@ Finally, the file ends by adding error handlers for a variety of errors that can
 
 This file implements lookup of Credentials. Both the issuer code and the subject code use this function to look up their own credentials.
 
-This code performs [pagination using markers](../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) to get all the results from the ledger. It also filters results based on the issuer/subject account, so that lookup by issuer, for example, doesn't include credentials that someone else issued _to_ the issuer account. Finally, it can optionally check the accepted status of the Credentials and only include ones that are or aren't accepted.
+This code performs [pagination using markers](../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) to get all the results from the ledger. It also filters results based on the issuer/subject account, so that lookup by issuer, for example, doesn't include credentials that someone else issued _to_ the issuer account. Finally, it can optionally check the accepted status of the Credentials and only include ones that are or aren't accepted.
 
 {% code-snippet file="/_code-samples/issue-credentials/py/look_up_credentials.py" language="py" /%}
 
@@ -352,6 +352,6 @@ Using this service as a base, you can extend the service with more features, suc
 Alternatively, you can use credentials to for various purposes, such as:
 
 - Define a [Permissioned Domain](/docs/concepts/tokens/decentralized-exchange/permissioned-domains) that uses your credentials to grant access to features on the XRP Ledger.
-- [Verify credentials](../compliance/verify-credential.md) manually to grant access to services that exist off-ledger.
+- [Verify credentials](../compliance-features/verify-credentials-in-python.md) manually to grant access to services that exist off-ledger.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -14,7 +14,7 @@ This tutorial demonstrates how to build a desktop wallet for the XRP Ledger usin
 To complete this tutorial, you should meet the following guidelines:
 
 - You have Python 3.7 or higher installed.
-- You are somewhat familiar with object-oriented programming in Python and have completed the [Get Started Using Python tutorial](./get-started.md).
+- You are somewhat familiar with object-oriented programming in Python and have completed the [Get Started Using Python tutorial](../get-started/get-started-python.md).
 - You have some understanding of what the XRP Ledger can do and of cryptocurrency in general. You don't need to be an expert.
 
 ## Source Code
@@ -31,13 +31,13 @@ The exact look and feel of the user interface depend on your computer's operatin
 
 - Shows updates to the XRP Ledger in real-time.
 - Can view any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
-- Shows how much XRP is set aside for the account's [reserve requirement](../../../concepts/accounts/reserves.md).
-- Can send [direct XRP payments](../../../concepts/payment-types/direct-xrp-payments.md), and provides feedback about the intended destination address, including:
+- Shows how much XRP is set aside for the account's [reserve requirement](../../concepts/accounts/reserves.md).
+- Can send [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md), and provides feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
     - If the address doesn't want to receive XRP (**Disallow XRP** flag enabled).
-    - If the address has a [verified domain name](../../../references/xrp-ledger-toml.md#account-verification) associated with it.
+    - If the address has a [verified domain name](../../references/xrp-ledger-toml.md#account-verification) associated with it.
 
-The application in this tutorial _doesn't_ have the ability to send or trade [tokens](../../../concepts/tokens/index.md) or use other [payment types](../../../concepts/payment-types/index.md) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
+The application in this tutorial _doesn't_ have the ability to send or trade [tokens](../../concepts/tokens/index.md) or use other [payment types](../../concepts/payment-types/index.md) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
 
 Other topics mentioned in this tutorial include graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
 
@@ -136,7 +136,7 @@ The part that builds the GUI has been moved to a separate method, `build_ui(self
 
 There's a new helper method, `run_bg_job()`, which runs an asynchronous function (defined with `async def`) in the worker thread. Use this method any time you want the worker thread to interact with the XRP Ledger network.
 
-Instead of a `get_validated_ledger()` method, the GUI class now has an `update_ledger()` method, which takes an object in the format of a [ledger stream message](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#ledger-stream) and displays some of that information to the user. The worker thread calls this method using `wx.CallAfter()` whenever it gets a `ledgerClosed` event from the ledger.
+Instead of a `get_validated_ledger()` method, the GUI class now has an `update_ledger()` method, which takes an object in the format of a [ledger stream message](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#ledger-stream) and displays some of that information to the user. The worker thread calls this method using `wx.CallAfter()` whenever it gets a `ledgerClosed` event from the ledger.
 
 Finally, change the code to start the app (at the end of the file) slightly:
 
@@ -144,7 +144,7 @@ Finally, change the code to start the app (at the end of the file) slightly:
 
 Since the app uses a WebSocket client instead of the JSON-RPC client now, the code has to use a WebSocket URL to connect.
 
-{% admonition type="success" name="Tip" %}If you [run your own `rippled` server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](../../public-servers.md) to connect to the Mainnet or other test networks.{% /admonition %}
+{% admonition type="success" name="Tip" %}If you [run your own `rippled` server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server) you can connect to it using `ws://localhost:6006` as the URL. You can also use the WebSocket URLs of [public servers](../public-servers.md) to connect to the Mainnet or other test networks.{% /admonition %}
 
 #### Troubleshooting SSL Certificate Errors
 
@@ -163,7 +163,7 @@ On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then clos
 
 **Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/3_account.py" %}`3_account.py`{% /repo-link %}
 
-Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](../../../concepts/accounts/reserves.md).
+Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](../../concepts/accounts/reserves.md).
 
 The prompt is in a pop-up dialog like this:
 
@@ -181,7 +181,7 @@ In the `XRPLMonitorThread` class, rename and update the `watch_xrpl()` method as
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/3_account.py" from="async def watch_xrpl" before="async def on_connected" language="py" /%}
 
-The newly renamed `watch_xrpl_account()` method now takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for [transaction stream messages](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams). When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the [account_info method][]. When _that_ response arrives, the worker passes the account data to the GUI for display.
+The newly renamed `watch_xrpl_account()` method now takes an address and optional wallet and saves them for later. (The GUI thread provides these based on user input.) This method also adds a new case for [transaction stream messages](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams). When it sees a new transaction, the worker does not yet do anything with the transaction itself, but it uses that as a trigger to get the account's latest XRP balance and other info using the [account_info method][]. When _that_ response arrives, the worker passes the account data to the GUI for display.
 
 Still in the `XRPLMonitorThread` class, update the `on_connected()` method as follows:
 
@@ -203,7 +203,7 @@ Update the `build_ui()` method definition as follows:
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/3_account.py" from="def build_ui(self):" before="def run_bg_job(self, job):" language="py" /%}
 
-This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with several new widgets, then uses the `AutoGridBagSizer` (defined above) to lay them out in 2×4 grid within the box. These new widgets are all static text to display [details of the account](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md), though some of them start with placeholder text. (Since they require data from the ledger, you have to wait for the worker thread to send that data back.)
+This adds a [`wx.StaticBox`](https://docs.wxpython.org/wx.StaticBox.html) with several new widgets, then uses the `AutoGridBagSizer` (defined above) to lay them out in 2×4 grid within the box. These new widgets are all static text to display [details of the account](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md), though some of them start with placeholder text. (Since they require data from the ledger, you have to wait for the worker thread to send that data back.)
 
 {% admonition type="warning" name="Caution" %}You may notice that even though the constructor for this class sees the `wallet` variable, it does not save it as a property of the object. This is because the wallet mostly needs to be managed by the worker thread, not the GUI thread, and updating it in both places might not be thread-safe.{% /admonition %}
 
@@ -211,7 +211,7 @@ Add a new `prompt_for_account()` method to the `TWaXLFrame` class:
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/3_account.py" from="def prompt_for_account" before="def update_ledger" language="py" /%}
 
-The constructor calls this method to prompt the user for their [address](../../../concepts/accounts/addresses.md) or [master seed](../../../concepts/accounts/cryptographic-keys.md#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
+The constructor calls this method to prompt the user for their [address](../../concepts/accounts/addresses.md) or [master seed](../../concepts/accounts/cryptographic-keys.md#seed), then processes the user input to decode whatever value the user put in, and use it accordingly. With wxPython, you usually follow this pattern with dialog boxes:
 
 1. Create a new instance of a dialog class, such as a [`wx.TextEntryDialog`](https://docs.wxpython.org/wx.TextEntryDialog.html).
 2. Use `showModal()` to display it to the user and get a return code based on which button the user clicked.
@@ -285,7 +285,7 @@ Have the worker use the [account_tx method][] to look up the account's transacti
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/4_tx_history.py" from="# Get the first page of the account's transaction history" before="class AutoGridBagSizer" language="py" /%}
 
-{% admonition type="info" name="Note" %}You may have to [paginate](../../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) across multiple [account_tx][account_tx method] requests and responses if you want the _complete_ list of transactions that affected an account since its creation. This example does not show pagination, so the app only displays the most recent transactions to affect the account.{% /admonition %}
+{% admonition type="info" name="Note" %}You may have to [paginate](../../references/http-websocket-apis/api-conventions/markers-and-pagination.md) across multiple [account_tx][account_tx method] requests and responses if you want the _complete_ list of transactions that affected an account since its creation. This example does not show pagination, so the app only displays the most recent transactions to affect the account.{% /admonition %}
 
 Now, edit the `build_ui()` method of the `TWaXLFrame` class. **Update the beginning of the method** to add a new [`wx.Notebook`](https://docs.wxpython.org/wx.Notebook.html), which makes a "tabs" interface, and make the `main_panel` into the first tab, as follows:
 
@@ -301,7 +301,7 @@ Add the following helper method to the `TWaXLFrame` class:
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/4_tx_history.py" from="def displayable_amount" before="def add_tx_row" language="py" /%}
 
-This method takes a [currency amount](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) and converts it into a string for display to a human. Since it's used with the [`delivered_amount` field](../../../references/protocol/transactions/metadata.md#delivered_amount) in particular, it also handles the special case for pre-2014 partial payments where the delivered amount is unavailable.
+This method takes a [currency amount](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) and converts it into a string for display to a human. Since it's used with the [`delivered_amount` field](../../references/protocol/transactions/metadata.md#delivered_amount) in particular, it also handles the special case for pre-2014 partial payments where the delivered amount is unavailable.
 
 After that, add another helper method to the `TWaXLFrame` class:
 
@@ -324,7 +324,7 @@ As before, you can test your wallet app with your own test account if you use th
 
 **Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" %}`5_send_xrp.py`{% /repo-link %}
 
-Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to sending [direct XRP payments](../../../concepts/payment-types/direct-xrp-payments.md) because there are more complexities involved in sending [issued tokens](../../../concepts/tokens/index.md).
+Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to sending [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md) because there are more complexities involved in sending [issued tokens](../../concepts/tokens/index.md).
 
 The main window gets a new "Send XRP" button:
 
@@ -346,13 +346,13 @@ Add a new method to the `XRPLMonitorThread` class to send an XRP payment based o
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" from="def send_xrp" before="class AutoGridBagSizer" language="py" /%}
 
-In this flow, the app sends the transaction without waiting for it to be confirmed by the consensus process. You should be careful to mark any results from the initial submission as "pending" or "tentative" since the actual result of the transaction [isn't final until it's confirmed](../../../concepts/transactions/finality-of-results/index.md). Since the app is also subscribed to the account's transactions, it automatically gets notified when the transaction is confirmed.
+In this flow, the app sends the transaction without waiting for it to be confirmed by the consensus process. You should be careful to mark any results from the initial submission as "pending" or "tentative" since the actual result of the transaction [isn't final until it's confirmed](../../concepts/transactions/finality-of-results/index.md). Since the app is also subscribed to the account's transactions, it automatically gets notified when the transaction is confirmed.
 
 Now, create a custom dialog for the user to input the necessary details for the payment:
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" from="class SendXRPDialog" before="def on_to_edit" language="py" /%}
 
-This subclass of [`wx.Dialog`](https://docs.wxpython.org/wx.Dialog.html) has several custom widgets, which are laid out using the `GridBagSizer` defined earlier. Notably, it has text boxes for the "To" address, the amount of XRP, and the [destination tag](../../../concepts/transactions/source-and-destination-tags.md) to use, if any. (A destination tag is kind of like a phone extension for an XRP Ledger address: for addresses owned by individuals, you don't need it, but if the destination address has many users then you need to specify it so that the destination knows which recipient you intended. It's common to need a destination tag to deposit at a cryptocurrency exchange.) The dialog also has **OK** and **Cancel** buttons, which automatically function to cancel or complete the dialog, although the "OK" button is labeled "Send" instead to make it clearer what the app does when the user clicks it.
+This subclass of [`wx.Dialog`](https://docs.wxpython.org/wx.Dialog.html) has several custom widgets, which are laid out using the `GridBagSizer` defined earlier. Notably, it has text boxes for the "To" address, the amount of XRP, and the [destination tag](../../concepts/transactions/source-and-destination-tags.md) to use, if any. (A destination tag is kind of like a phone extension for an XRP Ledger address: for addresses owned by individuals, you don't need it, but if the destination address has many users then you need to specify it so that the destination knows which recipient you intended. It's common to need a destination tag to deposit at a cryptocurrency exchange.) The dialog also has **OK** and **Cancel** buttons, which automatically function to cancel or complete the dialog, although the "OK" button is labeled "Send" instead to make it clearer what the app does when the user clicks it.
 
 The `SendXRPDialog` constructor also binds two event handlers for when the user inputs text in the "to" and "destination tag" fields, so you need the definitions for those handlers to the same class. First, add `on_to_edit()`:
 
@@ -430,7 +430,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 3. Open your wallet app and provide a **Secret** (seed) value from an already-funded address, such as one you got from the [Testnet Faucet](/resources/dev-tools/xrp-faucets).
 
-4. Send at least the [base reserve](../../../concepts/accounts/reserves.md) (currently {% $env.PUBLIC_BASE_RESERVE %}) to the brand-new classic address you generated in the Python interpreter.
+4. Send at least the [base reserve](../../concepts/accounts/reserves.md) (currently {% $env.PUBLIC_BASE_RESERVE %}) to the brand-new classic address you generated in the Python interpreter.
 
 5. Wait for the transaction to be confirmed, then close your wallet app.
 
@@ -445,7 +445,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and [DeFi scams](https://learn.xrpl.org/safeguarding-your-crypto-wallet-your-essential-checklist-against-defi-scams/). These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
-One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, you could show it like this:
+One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, you could show it like this:
 
 ![Screenshot: domain verified destination](/docs/img/python-wallet-6.png)
 
@@ -467,7 +467,7 @@ In the `XRPLMonitorThread` class, add a new `check_destination()` method to chec
 
 This code uses [`xrpl.asyncio.account.get_account_info()`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.asyncio.account.html#xrpl.asyncio.account.get_account_info) to look up the account in the ledger; unlike using the client's `request()` method, `get_account_info()` raises an exception if the account is not found.
 
-If the account _does_ exist, the code checks for the [`lsfDisallowXRP` flag](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags). Note that this is an `lsf` (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
+If the account _does_ exist, the code checks for the [`lsfDisallowXRP` flag](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags). Note that this is an `lsf` (ledger state flag) value because this is an object from the ledger state data; these are different than the flag values the [AccountSet transaction][] uses to configure the same settings.
 
 Finally, the code decodes the account's `Domain` field, if present, and performs domain verification using the method imported above.
 
@@ -522,7 +522,7 @@ Finally, calculate the maximum amount the user can send and provide it to the Se
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py" from="xrp_bal = Decimal" before="dlg.CenterOnScreen()" language="py" /%}
 
-The formula this code uses to calculate the maximum amount the user can send is the account's XRP balance, minus its [reserve](../../../concepts/accounts/reserves.md) and minus the [transaction cost](../../../concepts/transactions/transaction-cost.md). The calculation uses the `Decimal` class to avoid rounding errors, but ultimately it has to be converted down to a `float` because that's what wxPython's [`wx.SpinCtrlDouble`](https://docs.wxpython.org/wx.SpinCtrlDouble.html) accepts for minimum and maximum values. Still there is less opportunity for floating-point rounding errors to occur if the conversion happens _after_ the other calculations.
+The formula this code uses to calculate the maximum amount the user can send is the account's XRP balance, minus its [reserve](../../concepts/accounts/reserves.md) and minus the [transaction cost](../../concepts/transactions/transaction-cost.md). The calculation uses the `Decimal` class to avoid rounding errors, but ultimately it has to be converted down to a `float` because that's what wxPython's [`wx.SpinCtrlDouble`](https://docs.wxpython.org/wx.SpinCtrlDouble.html) accepts for minimum and maximum values. Still there is less opportunity for floating-point rounding errors to occur if the conversion happens _after_ the other calculations.
 
 Test your wallet app the same way you did in the previous steps. To test domain verification, try entering the following addresses in the "To" box of the Send XRP dialog:
 
@@ -546,10 +546,10 @@ To test X-addresses, try the following addresses:
 
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
-- You could support more of the XRP Ledger's [transaction types](../../../references/protocol/transactions/types/index.md) including [tokens](../../../concepts/tokens/index.md) and [cross-currency payments](../../../concepts/payment-types/cross-currency-payments.md)
+- You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](../../concepts/tokens/index.md) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
     - Example code for displaying token balances and other objects: {% repo-link path="_code-samples/build-a-desktop-wallet/py/7_owned_objects.py" %}`7_owned_objects.py`{% /repo-link %}
-- Allow the user to trade in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md)
+- Allow the user to trade in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
-- Support better account security including [regular key pairs](../../../concepts/accounts/cryptographic-keys.md#regular-key-pair) or [multi-signing](../../../concepts/accounts/multi-signing.md).
+- Support better account security including [regular key pairs](../../concepts/accounts/cryptographic-keys.md#regular-key-pair) or [multi-signing](../../concepts/accounts/multi-signing.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

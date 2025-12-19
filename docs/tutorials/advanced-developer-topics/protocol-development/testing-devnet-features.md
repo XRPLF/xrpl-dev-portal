@@ -10,13 +10,13 @@ labels:
 ---
 # Test Pre-Release Transaction Types
 
-_(Requires cloning and modifying XRPL core repositories and understanding of XRPL [transaction serialization](../../references/protocol/binary-format.md))._
+_(Requires cloning and modifying XRPL core repositories and understanding of XRPL [transaction serialization](../../../references/protocol/binary-format.md))._
 
-Pre-release transactions are [amendments](../../concepts/networks-and-servers/amendments.md) that represent new features or other changes to transaction processing. Features are typically released to the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md) for early testing.
+Pre-release transactions are [amendments](../../../concepts/networks-and-servers/amendments.md) that represent new features or other changes to transaction processing. Features are typically released to the [XRPL Devnet](../../../concepts/networks-and-servers/parallel-networks.md) for early testing.
 
-This guide walks through the steps to test transaction types in development using either JavaScript with `xrpl.js` or Python with `xrpl-py`. This approach is typically only necessary for pre-release amendments that are available on the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md) for early testing.
+This guide walks through the steps to test transaction types in development using either JavaScript with `xrpl.js` or Python with `xrpl-py`. This approach is typically only necessary for pre-release amendments that are available on the [XRPL Devnet](../../../concepts/networks-and-servers/parallel-networks.md) for early testing.
 
-**Note**: The code samples below illustrate how to prepare your development environment and modify the XRPL to support custom transaction types, using the respective [client library](../../references/client-libraries.md).
+**Note**: The code samples below illustrate how to prepare your development environment and modify the XRPL to support custom transaction types, using the respective [client library](../../../references/client-libraries.md).
 
 ## Prerequisites
 
@@ -52,9 +52,9 @@ pip install xrpl-py
 
 ### 2. Generate Definitions File
 
-Utilize the [server_definitions](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md) command to retrieve the definitions.json content.
+Utilize the [server_definitions](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md) command to retrieve the definitions.json content.
 
-{% admonition type="info" name="Note" %}Any [parallel test network](../../concepts/networks-and-servers/parallel-networks.md) may be used instead of Devnet.{% /admonition %}
+{% admonition type="info" name="Note" %}Any [parallel test network](../../../concepts/networks-and-servers/parallel-networks.md) may be used instead of Devnet.{% /admonition %}
 
 {% tabs %}
 
@@ -196,6 +196,6 @@ send_reliable_submission(custom_tx, client, wallet)
 
 - **Testing**: Utilize the XRPL Testnet or Devnet for testing new transaction types.
 - **Updates**: Regularly update your `rippled` and XRPL library clones to include the latest features and fixes.
-- **Custom Types and Serialization**: If your transaction involves new data structures, ensure they are correctly defined and serialized according to [XRPL standards](../../references/protocol/transactions/index.md).
+- **Custom Types and Serialization**: If your transaction involves new data structures, ensure they are correctly defined and serialized according to [XRPL standards](../../../references/protocol/transactions/index.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

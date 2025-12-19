@@ -6,13 +6,13 @@ labels:
 ---
 # Cancel a Check
 
-This tutorial shows how to cancel a [Check](../../../../concepts/payment-types/checks.md), which removes the [Check entry](../../../../references/protocol/ledger-data/ledger-entry-types/check.md) from the ledger without sending money.
+This tutorial shows how to cancel a [Check](../../concepts/payment-types/checks.md), which removes the [Check entry](../../references/protocol/ledger-data/ledger-entry-types/check.md) from the ledger without sending money.
 
-You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) back.
+You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their [owner reserve](../../concepts/accounts/reserves.md#owner-reserves) back.
 
 ## Prerequisites
 
-- You should be familiar with the basics of using the [xrpl.js client library](../../../javascript/build-apps/get-started.md).
+- You should be familiar with the basics of using the [xrpl.js client library](../get-started/get-started-javascript.md).
 - You need an XRP Ledger account including its secret key. (You can get one on Testnet for free.) See also: [XRP Faucets](/resources/dev-tools/xrp-faucets).
 - You need the ID of a Check ledger entry that you are either the sender or recipient of. See also: [Send a Check](./send-a-check.md).
 
@@ -26,7 +26,7 @@ The complete source code for this tutorial is available in the source repository
 
 ### 1. Prepare the CheckCancel transaction
 
-Figure out the values of the [CheckCancel transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCancel transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
 | Field             | Value            | Description                           |
 |:------------------|:-----------------|:--------------------------------------|

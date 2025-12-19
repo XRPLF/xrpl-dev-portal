@@ -81,15 +81,15 @@ To make queries and submit transactions, you need to connect to the XRP Ledger. 
 The standard approach with `xrpl-py` is to use the JSON-RPC client. While a WebSocket client is available, it requires you to use `async`/`await` throughout your code. For most use cases, stick with JSON-RPC to avoid the complexity of asynchronous programming.
 {% /admonition %}
 
-The sample code shows you how to connect to the Testnet, which is one of the available [parallel networks](../../../concepts/networks-and-servers/parallel-networks.md).
+The sample code shows you how to connect to the Testnet, which is one of the available [parallel networks](../../concepts/networks-and-servers/parallel-networks.md).
 {% /step %}
 
 {% step id="connect-mainnet-tag"%}
 #### Connect to the XRP Ledger Mainnet
 
-The sample code in the previous section shows you how to connect to the Testnet, which is a [parallel network](../../../concepts/networks-and-servers/parallel-networks.md) for testing where the money has no real value. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
+The sample code in the previous section shows you how to connect to the Testnet, which is a [parallel network](../../concepts/networks-and-servers/parallel-networks.md) for testing where the money has no real value. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
-- By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+- By [installing the core server](../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
     ```python
     from xrpl.clients import JsonRpcClient
@@ -111,10 +111,10 @@ The sample code in the previous section shows you how to connect to the Testnet,
 {% step id="get-account-create-wallet-tag" %}
 ### 3. Get account
 
-To store value and execute transactions on the XRP Ledger, you need an account: a [set of keys](../../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../../concepts/accounts/index.md#creating-accounts) to meet the [account reserve](../../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger.
+To store value and execute transactions on the XRP Ledger, you need an account: a [set of keys](../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../concepts/accounts/index.md#creating-accounts) to meet the [account reserve](../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger.
 
 {% admonition type="success" name="Tip" %}
-For testing and development purposes, you can use the [XRP Faucets](/resources/dev-tools/xrp-faucets) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](../../../concepts/transactions/secure-signing.md). Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.
+For testing and development purposes, you can use the [XRP Faucets](/resources/dev-tools/xrp-faucets) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](../../concepts/transactions/secure-signing.md). Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.
 {% /admonition %}
 
 To create and fund an account on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method. This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet).
@@ -123,7 +123,7 @@ To create and fund an account on the Testnet, `xrpl-py` provides the [`generate_
 {% step id="query-xrpl-tag" %}
 ### 4. Query the XRP Ledger
 
-You can query the XRP Ledger to get information about [a specific account](../../../references/http-websocket-apis/public-api-methods/account-methods/index.md), [a specific transaction](../../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md), the state of a [current or a historical ledger](../../../references/http-websocket-apis/public-api-methods/ledger-methods/index.md), and [the XRP Ledger's decentralized exchange](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](../../../concepts/transactions/reliable-transaction-submission.md).
+You can query the XRP Ledger to get information about [a specific account](../../references/http-websocket-apis/public-api-methods/account-methods/index.md), [a specific transaction](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md), the state of a [current or a historical ledger](../../references/http-websocket-apis/public-api-methods/ledger-methods/index.md), and [the XRP Ledger's decentralized exchange](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](../../concepts/transactions/reliable-transaction-submission.md).
 
 Use the [account_info method][] to look up information about the account you got in the previous step. Use a request model like `AccountInfo` to validate the request format and catch errors sooner.
 {% /step %}
@@ -185,28 +185,28 @@ Response Status:  ResponseStatus.SUCCESS
 
 The response fields that you want to inspect in most cases are:
 
-- `account_data.Balance` — This is the account's balance of [XRP, in drops][]. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
+- `account_data.Balance` — This is the account's balance of [XRP, in drops][]. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
 
-- `validated` — Indicates whether the returned data is from a [validated ledger](../../../concepts/ledgers/open-closed-validated-ledgers.md). When inspecting transactions, it's important to confirm that [the results are final](../../../concepts/transactions/finality-of-results/index.md) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).
+- `validated` — Indicates whether the returned data is from a [validated ledger](../../concepts/ledgers/open-closed-validated-ledgers.md). When inspecting transactions, it's important to confirm that [the results are final](../../concepts/transactions/finality-of-results/index.md) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
-For a detailed description of every response field, see [account_info](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md#response-format).
+For a detailed description of every response field, see [account_info](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md#response-format).
 {% /step %}
 
 ## See Also
 
 - **Concepts:**
     - [XRP Ledger Overview](/about/)
-    - [Client Libraries](../../../references/client-libraries.md)
+    - [Client Libraries](../../references/client-libraries.md)
 - **Tutorials:**
-    - [Send XRP](../../how-tos/send-xrp.md)
-    - [Issue a Fungible Token](../../how-tos/use-tokens/issue-a-fungible-token.md)
-    - [Set up Secure Signing](../../../concepts/transactions/secure-signing.md)
+    - [Send XRP](../payments/send-xrp)
+    - [Issue a Fungible Token](../how-tos/use-tokens/issue-a-fungible-token.md)
+    - [Set up Secure Signing](../../concepts/transactions/secure-signing.md)
 - **References:**
     - [`xrpl-py` Reference](https://xrpl-py.readthedocs.io/en/latest/)
-    - [Public API Methods](../../../references/http-websocket-apis/public-api-methods/index.md)
-    - [API Conventions](../../../references/http-websocket-apis/api-conventions/index.md)
-        - [base58 Encodings](../../../references/protocol/data-types/base58-encodings.md)
-    - [Transaction Formats](../../../references/protocol/transactions/index.md)
+    - [Public API Methods](../../references/http-websocket-apis/public-api-methods/index.md)
+    - [API Conventions](../../references/http-websocket-apis/api-conventions/index.md)
+        - [base58 Encodings](../../references/protocol/data-types/base58-encodings.md)
+    - [Transaction Formats](../../references/protocol/transactions/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
 

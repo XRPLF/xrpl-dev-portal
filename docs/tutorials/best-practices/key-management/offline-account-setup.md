@@ -18,7 +18,7 @@ A highly secure [signing configuration](../../../concepts/transactions/secure-si
 To use offline signing, you must meet the following prerequisites:
 
 - You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](../../../infrastructure/installation/system-requirements.md). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
-- You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](../../http-websocket-apis/build-apps/get-started.md).
+- You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](../../get-started/get-started-http-websocket-apis.md).
 - You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.
     - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)
     - Another way is to copy files from the offline machine to an online machine using physical media. If you use this method, be sure not to use physical media that could infect your offline machine with malicious software. (For example, do not reuse the same USB drive on both online and offline machines.)
@@ -143,7 +143,7 @@ Optionally, save the current ledger index to the offline machine. You can use th
 On the offline machine, prepare and sign transactions for configuring your account. The details depend on how you intend to use your account. Some examples of things you might want to do include:
 
 - [Assign a regular key pair](assign-a-regular-key-pair.md) that you can rotate regularly.
-- [Require destination tags](require-destination-tags.md) so that users can't send you payments without tagging the reason they sent it or the customer it's intended for.
+- [Require destination tags](../../compliance-features/require-destination-tags.md) so that users can't send you payments without tagging the reason they sent it or the customer it's intended for.
 - [Set Up Multi-Signing](set-up-multi-signing.md) for a higher bar of account security.
 - [Enable DepositAuth](../../../concepts/accounts/depositauth.md) so you can only receive payments you've explicitly accepted or from parties you've pre-approved.
 - [Require Auth](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#enabling-require-auth) so that users can't open [trust lines](../../../concepts/tokens/fungible-tokens/index.md) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or [token](../../../concepts/tokens/index.md) features, you may want to do this as a precaution.

@@ -6,10 +6,10 @@ labels:
 ---
 # Verify Credentials in Python
 
-This tutorial describes how to verify that an account holds a valid [credential](/docs/concepts/decentralized-storage/credentials) on the XRP Ledger, which has different use cases depending on the type of credential and the meaning behind it. A few possible reasons to verify a credential include:
+This tutorial describes how to verify that an account holds a valid [credential](../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, which has different use cases depending on the type of credential and the meaning behind it. A few possible reasons to verify a credential include:
 
 - Confirming that a recipient has passed a background check before sending a payment.
-- Checking a person's professional certifications, after verifying their identity with a [DID](/docs/concepts/decentralized-storage/decentralized-identifiers).
+- Checking a person's professional certifications, after verifying their identity with a [DID](../../concepts/decentralized-storage/decentralized-identifiers.md).
 - Displaying a player's achievements in a blockchain-connected game.
 
 This tutorial uses sample code in Python using the [xrpl-py library](../index.md).
@@ -19,7 +19,7 @@ This tutorial uses sample code in Python using the [xrpl-py library](../index.md
 - You must have Python installed and know how to run Python code from the command line. Python 3.8 or later is required for xrpl-py.
 - You should have a basic understanding of the XRP Ledger.
 - The credential you want to verify should exist in the ledger already, and you should know the addresses of both the issuer and the holder, as well as the official credential type you want to check.
-     - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md).
+     - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../sample-apps/credential-issuing-service-in-python.md).
 
 ## Setup
 
@@ -175,7 +175,7 @@ The first thing the function does is verify that the user provided a credential 
 
 {% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Handle function inputs" before="# Perform XRPL lookup" /%}
 
-Next, it calls the [ledger_entry method](/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-credential-entry) to look up the requested Credential ledger entry:
+Next, it calls the [ledger_entry method](../../references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md#get-credential-entry) to look up the requested Credential ledger entry:
 
 {% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Perform XRPL lookup" before="# Confirm that the credential has been accepted" /%}
 
@@ -183,7 +183,7 @@ If it succeeds in finding the credential, the function continues by checking tha
 
 {% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Confirm that the credential has been accepted" before="# Confirm that the credential is not expired" /%}
 
-Then, if the credential has an expiration time, the function checks that the credential is not expired. If the credential has no expiration, this step can be skipped. A credential is officially considered expired if its expiration time is before the [official close time](/docs/concepts/ledgers/ledger-close-times) of the most recently validated ledger. This is more universal than comparing the expiration to your own local clock. Thus, the code uses the [ledger method][] to look up the most recently validated ledger:
+Then, if the credential has an expiration time, the function checks that the credential is not expired. If the credential has no expiration, this step can be skipped. A credential is officially considered expired if its expiration time is before the [official close time](../../concepts/ledgers/ledger-close-times.md) of the most recently validated ledger. This is more universal than comparing the expiration to your own local clock. Thus, the code uses the [ledger method][] to look up the most recently validated ledger:
 
 {% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Confirm that the credential is not expired" before="# Credential has passed all checks" /%}
 
@@ -215,7 +215,7 @@ Otherwise, the code exits as normal, which returns a successful exit code of `0`
 
 Now that you know how to use `xrpl-py` to verify credentials, you can try building this or related steps together into a bigger project. For example:
 
-- Incorporate credential verification into a [wallet application](../build-apps/build-a-desktop-wallet-in-python.md).
-- Issue your own credentials with a [credential issuing service](../build-apps/credential-issuing-service.md).
+- Incorporate credential verification into a [wallet application](../sample-apps/build-a-desktop-wallet-in-python.md).
+- Issue your own credentials with a [credential issuing service](../sample-apps/credential-issuing-service-in-python.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

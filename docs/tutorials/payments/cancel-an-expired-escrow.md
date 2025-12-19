@@ -123,19 +123,19 @@ In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the 
 ## See Also
 
 - **Concepts:**
-    - [What is XRP?](../../../../introduction/what-is-xrp.md)
-    - [Payment Types](../../../../concepts/payment-types/index.md)
-        - [Escrow](../../../../concepts/payment-types/escrow.md)
+    - [What is XRP?](../../introduction/what-is-xrp.md)
+    - [Payment Types](../../concepts/payment-types/index.md)
+        - [Escrow](../../concepts/payment-types/escrow.md)
 - **Tutorials:**
-    - [Send XRP](../../send-xrp.md)
-    - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
-    - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
+    - [Send XRP](send-xrp.md)
+    - [Look Up Transaction Results](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+    - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
     - [EscrowCancel transaction][]
     - [EscrowCreate transaction][]
     - [EscrowFinish transaction][]
     - [account_objects method][]
     - [tx method][]
-    - [Escrow ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+    - [Escrow ledger object](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -13,7 +13,7 @@ You can also [cash a check for an exact amount](cash-a-check-for-a-flexible-amou
 
 ## Prerequisites
 
-- You should be familiar with the basics of using the [xrpl.js client library](../../../javascript/build-apps/get-started.md).
+- You should be familiar with the basics of using the [xrpl.js client library](../get-started/get-started-javascript.md).
 - You need an XRP Ledger account including its secret key. (You can get one on Testnet for free.) See also: [XRP Faucets](/resources/dev-tools/xrp-faucets).
 - You need the ID of a Check ledger entry that you are the recipient of. See also: [Send a Check](./send-a-check.md) and [Look Up Checks](./look-up-checks.md).
 
@@ -28,7 +28,7 @@ The complete source code for this tutorial is available in the source repository
 ## Steps
 ### 1. Prepare the CheckCash transaction
 
-Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
 | Field             | Value                | Description                  |
 |:------------------|:---------------------|:-----------------------------|
@@ -69,7 +69,7 @@ The metadata shows the net balance changes as the result of all of the transacti
 
 If you are not using `getBalanceChanges()`, the following guidelines should help with parsing the metadata:
 
-- For XRP, the `AccountRoot` object of the Check's sender has its XRP `Balance` field debited. The `AccountRoot` object of the Check's recipient (the one who sent the CheckCash transaction) has its XRP `Balance` credited for at least the `DeliverMin` of the CheckCash transaction minus the [transaction cost](../../../../concepts/transactions/transaction-cost.md) of sending the transaction.
+- For XRP, the `AccountRoot` object of the Check's sender has its XRP `Balance` field debited. The `AccountRoot` object of the Check's recipient (the one who sent the CheckCash transaction) has its XRP `Balance` credited for at least the `DeliverMin` of the CheckCash transaction minus the [transaction cost](../../concepts/transactions/transaction-cost.md) of sending the transaction.
 
     For example, the following `ModifiedNode` shows that the account `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`, the Check's recipient and the sender of this CheckCash transaction, had its XRP balance change from `9999999970` drops to `10099999960` drops, meaning the recipient was credited a _net_ of 99.99999 XRP as a result of processing the transaction.
 
@@ -108,6 +108,6 @@ If you are not using `getBalanceChanges()`, the following guidelines should help
 
 - For tokens with a third-party issuer, there are changes to two `RippleState` objects, representing the trust lines connecting the sender to the issuer, and the issuer to the recipient. The `RippleState` object representing the relationship between the Check's sender and the issuer has its `Balance` changed in favor of the issuer, and the `RippleState` object representing the relationship between the issuer and the recipient has its `Balance` changed in favor of the recipient.
 
-    - If the token has a [transfer fee](../../../../concepts/tokens/fungible-tokens/transfer-fees.md), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
+    - If the token has a [transfer fee](../../concepts/tokens/fungible-tokens/transfer-fees.md), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

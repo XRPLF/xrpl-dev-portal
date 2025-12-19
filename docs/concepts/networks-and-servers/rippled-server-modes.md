@@ -10,7 +10,7 @@ The `rippled` server software can run in several modes depending on its configur
 
 - [**P2P Mode**](#p2p-mode) - This is the main mode of the server: it follows the peer-to-peer network, processes transactions, and maintains some amount of [ledger history](ledger-history.md). This mode can be configured to do any or all of the following roles:
     - [**Validator**](#validators) - Helps secure the network by participating in consensus.
-    - [**API Server**](#api-servers) - Provides [API access](../../tutorials/http-websocket-apis/build-apps/get-started.md) to read data from the shared ledger, submit transactions, and watch activity in the ledger. Optionally, this can be a [**Full History Server**](#full-history-servers), which keeps a complete record of transaction and ledger history.
+    - [**API Server**](#api-servers) - Provides [API access](../../tutorials/get-started/get-started-http-websocket-apis.md) to read data from the shared ledger, submit transactions, and watch activity in the ledger. Optionally, this can be a [**Full History Server**](#full-history-servers), which keeps a complete record of transaction and ledger history.
     - [**Hub Server**](#public-hubs) - Relays messages between many other members of the peer-to-peer network.
 - [**Stand-alone mode**](#stand-alone-mode) - An offline mode for testing. Does not connect to the peer-to-peer network or use consensus.
 

@@ -16,7 +16,7 @@ Setting up an IOU-IOU bridge enables you to move tokens between chains.
 
 - An XRP-XRP bridge must be set up between the locking and issuing chain.
 - Ensure the witnesses' transaction submission accounts are funded on the locking and issuing chains.
-- Set up an issuer on the issuing chain to mint and burn a wrapped version of the token you want to bridge. See: [Issue a Fungible Token](../use-tokens/issue-a-fungible-token.md)
+- Set up an issuer on the issuing chain to mint and burn a wrapped version of the token you want to bridge. See: [Issue a Fungible Token](../how-tos/use-tokens/issue-a-fungible-token.md)
 
 ## Steps
 
