@@ -25,7 +25,7 @@ To complete this tutorial, you should:
 - Have a basic understanding of the XRP Ledger.
 - Have an XRP Ledger client library, such as **xrpl.js**, installed.
 
-##  Steps
+## Steps
 
 ### 1. Install dependencies
 
@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 ### 2. Set up client and account
 
-To get started, import the client library and instantiate an API client. For this tutorial, you also need the address of an account that has one or more pending escrows. The sample code uses a mainnet address that has been set up with at least one incoming and one outgoing escrow that should remain in place until 2035 at least.
+To get started, import the client library and instantiate an API client. For this tutorial, you also need the address of an account that has one or more pending escrows. The sample code uses a Mainnet address that has been set up with at least one incoming and one outgoing escrow that should remain in place until 2035 at least.
 
 {% tabs %}
 {% tab label="JavaScript" %}
