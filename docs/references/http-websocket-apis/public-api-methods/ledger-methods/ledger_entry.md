@@ -1116,7 +1116,7 @@ Retrieve a [PermissionedDomain entry][], which describes a single [permissioned 
 | Field                         | Type                 | Required? | Description |
 |:------------------------------|:---------------------|:----------|-------------|
 | `permissioned_domain`         | Object or String     | Yes       | Specify the `PermissionedDomain` to retrieve. If a string, must be the [ledger entry ID][] of the entry, as hexadecimal. If an object, requires `account` and `seq` sub-fields. |
-| `permissioned_domain.account` | String - [Address][] | Yes       | The account that own the `PermissionedDomain`. |
+| `permissioned_domain.account` | String - [Address][] | Yes       | The account that owns the `PermissionedDomain`. |
 | `permissioned_domain.seq`     | Number               | Yes       | The sequence number of the transaction that created the `PermissionedDomain`. |
 
 {% tabs %}
