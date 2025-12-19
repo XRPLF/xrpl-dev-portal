@@ -80,8 +80,9 @@
         "description": "Retrieves a list of transactions that affected the specified account.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
         "body": {
+          "id": "example_account_tx",
           "command": "account_tx",
-          "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
           "ledger_index_min": -1,
           "ledger_index_max": -1,
           "binary": false,

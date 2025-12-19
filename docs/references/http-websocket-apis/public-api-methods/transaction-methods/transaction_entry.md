@@ -448,7 +448,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`          | Type                      | Description                     |
 |:-----------------|:--------------------------|:--------------------------------|
-| `close_time_iso` | String                    | The ledger close time represented in ISO 8601 time format. |
+| `close_time_iso` | String                    | The ledger close time represented in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. |
 | `hash`           | String                    | The unique hash identifier of the transaction. |
 | `ledger_index`   | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
 | `ledger_hash`    | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
