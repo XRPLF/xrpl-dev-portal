@@ -6,7 +6,8 @@
             "transactions": false,
             "expand": false,
             "owner_funds": false,
-            "diff": false
+            "diff": false,
+            "api_version": 2
         }
     ]
 }
