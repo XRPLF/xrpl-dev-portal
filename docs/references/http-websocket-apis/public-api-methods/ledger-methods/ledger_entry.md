@@ -321,7 +321,7 @@ rippled json ledger_entry '{ "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMF
 ### Get Check Entry
 <a id="get-check-object"></a><!-- legacy ID -->
 
-Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md), which is a potential payment that can be cashed by its recipient.
+Retrieve a [Check entry][], which is a potential payment that can be cashed by its recipient.
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
