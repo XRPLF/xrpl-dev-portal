@@ -249,9 +249,10 @@
         "description": "Retrieves information on a single transaction from a specific ledger version.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry",
         "body": {
+          "id": "example_transaction_entry",
           "command": "transaction_entry",
-          "tx_hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
-          "ledger_index": 348734,
+          "tx_hash": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
+          "ledger_index": 56865245,
           "api_version": 2
         }
       },
