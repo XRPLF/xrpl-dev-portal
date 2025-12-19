@@ -1172,7 +1172,6 @@ Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance betw
 | `ripple_state`          | Object                     | Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
 | `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address][]es, defining the two accounts linked by this RippleState entry. |
 | `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the RippleState entry to retrieve. |
-| `state`                 | Object                     | Alias to `ripple_state`. |
 
 {% tabs %}
 
