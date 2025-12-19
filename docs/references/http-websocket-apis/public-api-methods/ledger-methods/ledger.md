@@ -22,7 +22,8 @@ An example of the request format:
     "ledger_index": "validated",
     "transactions": false,
     "expand": false,
-    "owner_funds": false
+    "owner_funds": false,
+    "api_version": 2
 }
 ```
 {% /tab %}
@@ -36,7 +37,8 @@ An example of the request format:
             "ledger_index": "validated",
             "transactions": false,
             "expand": false,
-            "owner_funds": false
+            "owner_funds": false,
+            "api_version": 2
         }
     ]
 }
@@ -54,7 +56,7 @@ rippled ledger validated
 
 {% /tabs %}
 
-{% try-it method="ledger" server="xrplcluster" /%}
+{% try-it method="ledger" /%}
 
 The request can contain the following parameters:
 
@@ -86,7 +88,7 @@ An example of a successful response:
 {% /tab %}
 
 {% tab label="Commandline" %}
-{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2023-Nov-01 21:38:14.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -100,6 +102,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger.close_flags`           | Number  | A bit-map of [flags relating to the closing of this ledger](../../../protocol/ledger-data/ledger-header.md#close-flags). |
 | `ledger.close_time`            | Number  | The time this ledger was closed, in [seconds since the Ripple Epoch][]. |
 | `ledger.close_time_human`      | String  | The time this ledger was closed, in human-readable format. Always uses the UTC time zone. |
+| `ledger.close_time_iso`        | String  | The time this ledger was closed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. |
 | `ledger.close_time_resolution` | Number  | Ledger close times are rounded to within this many seconds. |
 | `ledger.closed`                | Boolean | Whether or not this ledger has been closed. |
 | `ledger.ledger_hash`           | String  | Unique identifying hash of the entire ledger. |
