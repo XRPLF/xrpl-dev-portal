@@ -128,6 +128,7 @@
         "description": "Retrieves information about the public ledger.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger",
         "body": {
+          "id": "example_ledger_req",
           "command": "ledger",
           "ledger_index": "validated",
           "transactions": false,
@@ -258,8 +259,9 @@
         "description": "Retrieves information on a single transaction.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx",
         "body": {
+          "id": "example_tx_hash",
           "command": "tx",
-          "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+          "transaction": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
           "binary": false,
           "api_version": 2
         }
