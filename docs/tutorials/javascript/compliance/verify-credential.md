@@ -70,7 +70,7 @@ To get started, import the client library and instantiate an API client. You als
 
 Use the [ledger_entry method][] to request the credential, using the latest validated ledger version. The response includes the [Credential entry][] as it is stored in the ledger.
 
-If the request fails with an `entryNotFound` error, then the specified credential doesn't exist in the ledger—maybe you got one of the values wrong or maybe the credential has been deleted.
+If the request fails with an `entryNotFound` error, then the specified credential doesn't exist in the ledger. This could mean you got one of the values wrong or the credential has been deleted.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -129,7 +129,7 @@ Now that you know how to use `xrpl.js` to verify credentials, you can try buildi
     - API methods:
         - [ledger_entry method][]
         - [ledger method][]
-    - Ledger entries
+    - Ledger entries:
         - [Credential entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

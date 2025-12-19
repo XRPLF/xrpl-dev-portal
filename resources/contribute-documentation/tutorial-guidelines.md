@@ -120,7 +120,7 @@ For example:
     - README.md
 ```
 
-This information is used to populate the [Code Samples](/resources/code-samples/) page. The outer readme's header is the title of the code sample on that page, and the first paragraph is the description.
+This information is used to populate the [Code Samples](/resources/code-samples/) page. The outer README's header is the title of the code sample on that page, and the first paragraph is the description.
 
 ### Comments
 

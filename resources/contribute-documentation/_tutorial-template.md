@@ -35,7 +35,7 @@ You can find the complete source code for this tutorial's examples in the {% rep
 
 ## Steps
 
-### 1️1. Install dependencies
+### 1. Install dependencies
 
 {% tabs %}
 {% tab label="JavaScript" %}
