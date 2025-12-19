@@ -72,7 +72,6 @@ You can create a new `XChainOwnedClaimID` by sending an [XChainCreateClaimID tra
 | Field                     | JSON Type           | [Internal Type][] | Required? | Description     |
 |:--------------------------|:--------------------|:------------------|:----------|:----------------|
 | `Account`                 | String - [Address][]| AccountID         | Yes       | The account that owns this object. |
-| `LedgerIndex`             | String              | UInt256           | Yes       | The ledger index is a hash of a unique prefix for `XChainOwnedClaimID`s, the actual `XChainClaimID` value, and the fields in `XChainBridge`. |
 | `OtherChainSource`        | String              | AccountID         | Yes       | The account that must send the corresponding `XChainCommit` on the source chain. The destination may be specified in the `XChainCommit` transaction, which means that if the `OtherChainSource` isn't specified, another account can try to specify a different destination and steal the funds. This also allows tracking only a single set of signatures, since we know which account will send the `XChainCommit` transaction. |
 | `SignatureReward`         | [Currency Amount][] | Amount            | Yes       | The total amount to pay the witness servers for their signatures. It must be at least the value of `SignatureReward` in the `Bridge` ledger object. |
 | `XChainBridge`            | XChainBridge        | XChainBridge      | Yes       | The door accounts and assets of the bridge this object correlates to. |
