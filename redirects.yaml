@@ -1,3 +1,6 @@
+/resources/contribute-documentation/tutorial-structure/:
+    to: /resources/contribute-documentation/tutorial-guidelines/
+    type: 301
 /docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types/:
     to: /docs/references/protocol/transactions/pseudo-transaction-types/
     type: 301
@@ -1667,7 +1670,7 @@ tutorial-guidelines.html:
     to: /resources/contribute-documentation/tutorial-guidelines
     type: 301
 tutorial-structure.html:
-    to: /resources/contribute-documentation/tutorial-structure
+    to: /resources/contribute-documentation/tutorial-guidelines
     type: 301
 report-a-scam.html:
     to: /contributing/report-a-scam
@@ -2356,6 +2359,9 @@ code_of_conduct.ja:
     type: 301
 
 # Japanese
+/ja/resources/contribute-documentation/tutorial-structure/:
+    to: /ja/resources/contribute-documentation/tutorial-guidelines/
+    type: 301
 /ja/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types/:
     to: /ja/docs/references/protocol/transactions/pseudo-transaction-types/
     type: 301
@@ -4016,7 +4022,7 @@ code_of_conduct.ja:
     to: /ja/resources/contribute-documentation/tutorial-guidelines
     type: 301
 /ja/tutorial-structure.html:
-    to: /ja/resources/contribute-documentation/tutorial-structure
+    to: /ja/resources/contribute-documentation/tutorial-guidelines
     type: 301
 /ja/report-a-scam.html:
     to: /ja/contributing/report-a-scam
