@@ -6,7 +6,7 @@ metadata:
 ---
 # リソース
 
-XRP Ledgerの理解や開発ためのリソース。Other resources to help understand the XRPL and develop on it.
+XRP Ledgerの理解や開発ためのリソース。
 
 
 {% child-pages /%}
