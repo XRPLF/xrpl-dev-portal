@@ -68,7 +68,7 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 
 [認可Minter](../../concepts/tokens/nfts/authorizing-another-minter.md)をご覧ください。
 
-ミント済みのNFTは、`NFTokenPage`に記録されます。アカウント上の`NFTokenPage`1つにつき2XRPの準備金が必要です。[NFT準備金](../../concepts/tokens/nfts/reserve-requirements.md)をご覧ください。
+ミント済みのNFTは、`NFTokenPage`に記録されます。アカウント上の`NFTokenPage`1つにつき{% $env.PUBLIC_OWNER_RESERVE %}の準備金が必要です。[NFT準備金](../../concepts/tokens/nfts/reserve-requirements.md)をご覧ください。
 
 各「NFTokenPage」は16～32個のNFTを保持します。大量のNFTをミントすると、あなたのXRPを大量に準備金としてロックすることになります。オンデマンドミント（または _遅延ミント_ ）を行うことで、XRPを柔軟に維持することができます。[遅延ミント](../../concepts/tokens/nfts/batch-minting.md#mint-on-demand-lazy-minting)と[スクリプトミント](../../concepts/tokens/nfts/batch-minting.md#scripted-minting)をご覧下さい。
 
@@ -89,9 +89,9 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 #### 準備金要件
 
-販売用のNFTをミントする際には、XRPの準備金が必要となります。各NFTokenページには、2XRPの準備金が必要です。NFTokenページは16～32個のNFTを保管することができます。
+販売用のNFTをミントする際には、XRPの準備金が必要となります。各NFTokenページには、{% $env.PUBLIC_OWNER_RESERVE %}の準備金が必要です。NFTokenページは16～32個のNFTを保管することができます。
 
-各`NFTokenOffer`オブジェクトは、2XRPの準備金が必要です。
+各`NFTokenOffer`オブジェクトは、{% $env.PUBLIC_OWNER_RESERVE %}の準備金が必要です。
 
 `NFTokenOffer`を作成したり、NFTを売却したりする際には、些細な送金手数料（およそ6000ドロップ、または0.006 XRP）が発生します。大量に販売する場合、こうした少額の手数料はすぐにかさみますので、ビジネスのコストとして考慮する必要があります。
 
