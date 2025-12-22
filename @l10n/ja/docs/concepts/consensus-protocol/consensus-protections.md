@@ -2,7 +2,7 @@
 html: consensus-protections.html
 parent: consensus.html
 seo:
-    description: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system. #TODO: translate
+    description: 分散型金融システムで発生する可能性のあるさまざまな問題や攻撃から、XRP Ledgerコンセンサスプロトコルがどのように保護されているかを学びます。
 labels:
   - ブロックチェーン
 ---
