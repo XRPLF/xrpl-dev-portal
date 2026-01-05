@@ -90,7 +90,7 @@ export default function CardImageShowcase() {
               </p>
               
               <PageGridRow>
-                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
                   <h6 className="mb-3">With Link (href)</h6>
                   <CardImage
                     image={SAMPLE_IMAGE}
@@ -102,7 +102,7 @@ export default function CardImageShowcase() {
                   />
                 </PageGridCol>
                 
-                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
                   <h6 className="mb-3">With Click Handler</h6>
                   <CardImage
                     image={SAMPLE_IMAGE}
@@ -132,7 +132,7 @@ export default function CardImageShowcase() {
               </p>
               
               <PageGridRow>
-                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
                   <div className="text-center">
                     <small className="d-block mb-2 text-muted">Default / Hover</small>
                     <CardImage
@@ -149,7 +149,7 @@ export default function CardImageShowcase() {
                   </div>
                 </PageGridCol>
                 
-                <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+                <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
                   <div className="text-center">
                     <small className="d-block mb-2 text-muted">Disabled</small>
                     <CardImage
@@ -174,13 +174,13 @@ export default function CardImageShowcase() {
               <h2 className="h4 mb-6">Responsive Grid Layout</h2>
               <p className="mb-6">
                 CardImage is designed to work with the PageGrid system. Resize your browser to see
-                the responsive behavior: 3-column on desktop (LG), 2-column on tablet (MD), 1-column on mobile (SM).
+                the responsive behavior: 4-column on desktop (LG), 2-column on tablet (MD), 1-column on mobile (SM).
               </p>
             </PageGridCol>
           </PageGridRow>
           
           <PageGridRow>
-            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
               <CardImage
                 image={SAMPLE_IMAGE}
                 imageAlt="Card 1"
@@ -190,7 +190,7 @@ export default function CardImageShowcase() {
                 href="#"
               />
             </PageGridCol>
-            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
               <CardImage
                 image={SAMPLE_IMAGE}
                 imageAlt="Card 2"
@@ -200,7 +200,7 @@ export default function CardImageShowcase() {
                 href="#"
               />
             </PageGridCol>
-            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
               <CardImage
                 image={SAMPLE_IMAGE}
                 imageAlt="Card 3"
@@ -337,7 +337,7 @@ export default function CardImageShowcase() {
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
                   <div style={{ width: '180px', flexShrink: 0 }}><strong>LG (Large)</strong></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>≥992px</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>3-column width</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>4-column width</div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><code>620px</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><code>1:1</code></div>
                 </div>
@@ -477,7 +477,7 @@ export default function CardImageShowcase() {
           </PageGridRow>
           
           <PageGridRow>
-            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
               <div className="text-center">
                 <small className="d-block mb-2 text-muted">Hover to see image zoom (fullBleed)</small>
                 <CardImage
@@ -495,7 +495,7 @@ export default function CardImageShowcase() {
               </div>
             </PageGridCol>
             
-            <PageGridCol span={{ base: 12, md: 6, lg: 3 }}>
+            <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
               <div className="text-center">
                 <small className="d-block mb-2 text-muted">Custom backgroundColor</small>
                 <CardImage
@@ -690,14 +690,14 @@ export default function CardImageShowcase() {
 
                 {/* In PageGrid */}
                 <div className="card p-4">
-                  <h6 className="mb-3">With PageGrid (Responsive 3-Column)</h6>
+                  <h6 className="mb-3">With PageGrid (Responsive 4-Column)</h6>
                   <pre className="mb-0" style={{ backgroundColor: 'var(--bs-gray-800)', padding: '1rem', borderRadius: '4px', overflow: 'auto' }}>
 {`import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
 import { CardImage } from 'shared/components/CardImage';
 
 <PageGrid>
   <PageGridRow>
-    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+    <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
       <CardImage
         image="/images/card1.png"
         imageAlt="Card 1"
@@ -707,7 +707,7 @@ import { CardImage } from 'shared/components/CardImage';
         href="/docs"
       />
     </PageGridCol>
-    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
+    <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
       <CardImage
         image="/images/card2.png"
         imageAlt="Card 2"
@@ -717,7 +717,7 @@ import { CardImage } from 'shared/components/CardImage';
         href="/tutorials"
       />
     </PageGridCol>
-    <PageGridCol span={{ base: 4, md: 8, lg: 4 }}>
+    <PageGridCol span={{ base: 12, md: 6, lg: 4 }}>
       <CardImage
         image="/images/card3.png"
         imageAlt="Card 3"
