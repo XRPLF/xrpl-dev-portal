@@ -4,7 +4,7 @@
 // Naming Convention: BEM with 'bds' namespace
 // .bds-tile-logo              - Base tile (shared layout, transitions)
 // .bds-tile-logo--square      - Square shape variant (1:1 aspect ratio, default)
-// .bds-tile-logo--rectangle   - Rectangle shape variant (fixed height)
+// .bds-tile-logo--rectangle   - Rectangle shape variant (9:5 aspect ratio)
 // .bds-tile-logo--neutral     - Neutral variant (gray tones)
 // .bds-tile-logo--green       - Green variant (brand green tones)
 // .bds-tile-logo--hovered     - Hovered state (triggers overlay animation)
@@ -40,10 +40,8 @@ $bds-tile-logo-square-padding-md: 40px 24px; // MD: vertical 40px, horizontal 24
 $bds-tile-logo-square-padding-lg: 72px 48px; // LG: vertical 72px, horizontal 48px
 
 // -----------------------------------------------------------------------------
-// Shape Tokens - Rectangle (fixed height)
+// Shape Tokens - Rectangle (9:5 aspect ratio)
 // -----------------------------------------------------------------------------
-$bds-tile-logo-rect-height-sm: 96px;
-$bds-tile-logo-rect-height-lg: 160px;
 $bds-tile-logo-rect-padding-sm: 20px 36px; // SM/MD: vertical 20px, horizontal 36px
 $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 
@@ -102,11 +100,16 @@ $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // =============================================================================
 
 // -----------------------------------------------------------------------------
-// Square Shape (default) - 1:1 aspect ratio with responsive padding
+// Square Shape (default) - 1:1 aspect ratio, width controlled by parent container
+// Use PageGridCol with appropriate span to control width:
+// - SM: span 2 (of 4 columns)
+// - MD: span 2 (of 8 columns)
+// - LG: span 3 (of 12 columns)
 // -----------------------------------------------------------------------------
 .bds-tile-logo--square {
   aspect-ratio: 1;
   padding: $bds-tile-logo-square-padding-sm;
+  flex-shrink: 0; // Prevent shrinking in flex containers
 
   @media (min-width: map-get($grid-breakpoints, md)) {
     padding: $bds-tile-logo-square-padding-md;
@@ -118,29 +121,20 @@ $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 }
 
 // -----------------------------------------------------------------------------
-// Rectangle Shape - fixed height with responsive sizing
-// Respects PageGrid column widths: SM (2/4), MD (4/8), LG (4/12)
-// Formula: ((100% - (gap * (columns - 1))) / columns) * span + (gap * (span - 1))
+// Rectangle Shape - 9:5 aspect ratio, width controlled by parent container
+// Use PageGridCol with appropriate span to control width:
+// - SM: span 2 (of 4 columns)
+// - MD: span 2 (of 8 columns)
+// - LG: span 3 (of 12 columns)
 // -----------------------------------------------------------------------------
 .bds-tile-logo--rectangle {
-  height: $bds-tile-logo-rect-height-sm;
+  aspect-ratio: 9 / 5;
+  width: 100%; // Fill parent container width
   padding: $bds-tile-logo-rect-padding-sm;
-  // SM breakpoint: 2 columns out of 4-column grid
-  // calc(((100% - (8px * (4 - 1))) / 4) * 2 + (8px * (2 - 1)))
-  width: calc(((100% - (#{$bds-grid-gutter} * 3)) / 4) * 2 + (#{$bds-grid-gutter} * 1));
-
-  @media (min-width: map-get($grid-breakpoints, md)) {
-    // MD breakpoint: 4 columns out of 8-column grid
-    // calc(((100% - (8px * (8 - 1))) / 8) * 4 + (8px * (4 - 1)))
-    width: calc(((100% - (#{$bds-grid-gutter} * 7)) / 8) * 4 + (#{$bds-grid-gutter} * 3));
-  }
+  flex-shrink: 0; // Prevent shrinking in flex containers
 
   @media (min-width: map-get($grid-breakpoints, lg)) {
-    height: $bds-tile-logo-rect-height-lg;
     padding: $bds-tile-logo-rect-padding-lg;
-    // LG breakpoint: 4 columns out of 12-column grid
-    // calc(((100% - (8px * (12 - 1))) / 12) * 4 + (8px * (4 - 1)))
-    width: calc(((100% - (#{$bds-grid-gutter} * 11)) / 12) * 4 + (#{$bds-grid-gutter} * 3));
   }
 }
 

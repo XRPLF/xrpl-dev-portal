@@ -36,9 +36,10 @@ $bds-btn-primary-black-bg: $bds-btn-neutral-black;
 $bds-btn-primary-black-bg-hover: $bds-btn-neutral-black-80;
 $bds-btn-primary-black-text: $white;
 
-// Colors - Disabled State (shared)
-$bds-btn-disabled-bg: $gray-200;           // #E0E0E1
-$bds-btn-disabled-text: $gray-500;         // #838386
+// Colors - Disabled State (Light Mode)
+// Note: Dark mode uses different colors - see html.dark section
+$bds-btn-disabled-bg: $gray-200;           // #E6EAF0 (Light mode)
+$bds-btn-disabled-text: $gray-500;         // #72777E
 
 // Colors - Green Secondary Button
 $bds-btn-secondary-text: $green-400;              // #0DAA3E - Enabled
@@ -85,47 +86,49 @@ $bds-btn-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 // - Each variant defines its own ::before background-color
 
 // Anchor reset for link-based buttons
-// Override global anchor styles (e.g., html.light a:not(.bds-link))
-// Using !important to ensure button styles win over global anchor rules
-// that are loaded later in the CSS cascade
-html.light,
-html.dark {
-  a.bds-btn {
-    text-decoration: none !important;
+// Override global anchor styles using selector chaining for specificity
+// Chaining .bds-btn.bds-btn increases specificity without !important
+
+// =============================================================================
+// Light Mode - Anchor Button Overrides
+// =============================================================================
+html.light {
+  a.bds-btn.bds-btn {
+    text-decoration: none;
     
     &:hover,
     &:focus,
     &:focus-visible,
     &:active,
     &:visited {
-      text-decoration: none !important;
+      text-decoration: none;
     }
 
-    // Primary green link button - ensure correct text color and background
+    // Primary green link button
     &.bds-btn--primary.bds-btn--green {
-      color: $bds-btn-primary-text !important;
-      background-color: $bds-btn-primary-bg !important;
+      color: $bds-btn-primary-text;
+      background-color: $bds-btn-primary-bg;
       
       &:hover,
       &:focus,
       &:focus-visible,
       &:active,
       &:visited {
-        color: $bds-btn-primary-text !important;
-        background-color: $bds-btn-primary-bg !important;
+        color: $bds-btn-primary-text;
+        background-color: $bds-btn-primary-bg;
       }
     }
 
-    // Primary black link button - ensure white text and icon
+    // Primary black link button
     &.bds-btn--primary.bds-btn--black {
-      color: $bds-btn-primary-black-text !important;
-      background-color: $bds-btn-primary-black-bg !important;
+      color: $bds-btn-primary-black-text;
+      background-color: $bds-btn-primary-black-bg;
       
       .bds-btn__icon,
       .bds-btn__icon-line,
       .bds-btn__icon-chevron {
-        color: $bds-btn-primary-black-text !important;
-        stroke: $bds-btn-primary-black-text !important;
+        color: $bds-btn-primary-black-text;
+        stroke: $bds-btn-primary-black-text;
       }
       
       &:hover,
@@ -133,87 +136,474 @@ html.dark {
       &:focus-visible,
       &:active,
       &:visited {
-        color: $bds-btn-primary-black-text !important;
-        background-color: $bds-btn-primary-black-bg !important;
+        color: $bds-btn-primary-black-text;
+        background-color: $bds-btn-primary-black-bg;
         
         .bds-btn__icon,
         .bds-btn__icon-line,
         .bds-btn__icon-chevron {
-          color: $bds-btn-primary-black-text !important;
-          stroke: $bds-btn-primary-black-text !important;
+          color: $bds-btn-primary-black-text;
+          stroke: $bds-btn-primary-black-text;
         }
       }
     }
 
     // Secondary green link button
     &.bds-btn--secondary.bds-btn--green {
-      color: $bds-btn-secondary-text !important;
-      background-color: $bds-btn-secondary-bg !important;
+      color: $bds-btn-secondary-text;
+      background-color: $bds-btn-secondary-bg;
       
       &:hover,
       &:focus,
       &:focus-visible {
-        color: $bds-btn-secondary-text-hover !important;
-        background-color: $bds-btn-secondary-bg-hover !important;
+        color: $bds-btn-secondary-text-hover;
+        background-color: $bds-btn-secondary-bg-hover;
       }
       
       &:active,
       &:visited {
-        color: $bds-btn-secondary-text !important;
-        background-color: $bds-btn-secondary-bg !important;
+        color: $bds-btn-secondary-text;
+        background-color: $bds-btn-secondary-bg;
       }
     }
 
     // Secondary black link button
     &.bds-btn--secondary.bds-btn--black {
-      color: $bds-btn-secondary-black-text !important;
-      background-color: transparent !important;
+      color: $bds-btn-secondary-black-text;
+      background-color: transparent;
       
       &:hover,
       &:focus,
-      &:focus-visible,
-      &:active,
-      &:visited {
-        color: $bds-btn-secondary-black-text !important;
-        background-color: $bds-btn-secondary-black-bg-hover !important;
+      &:focus-visible {
+        color: $bds-btn-secondary-black-text;
+        background-color: $bds-btn-secondary-black-bg-hover;
       }
       
       &:active,
       &:visited {
-        background-color: transparent !important;
+        color: $bds-btn-secondary-black-text;
+        background-color: transparent;
       }
     }
 
     // Tertiary green link button
     &.bds-btn--tertiary.bds-btn--green {
-      color: $bds-btn-tertiary-text !important;
-      background-color: $bds-btn-tertiary-bg !important;
+      color: $bds-btn-tertiary-text;
+      background-color: $bds-btn-tertiary-bg;
       
       &:hover,
       &:focus,
       &:focus-visible {
-        color: $bds-btn-tertiary-text-hover !important;
+        color: $bds-btn-tertiary-text-hover;
       }
       
       &:active,
       &:visited {
-        color: $bds-btn-tertiary-text !important;
-        background-color: $bds-btn-tertiary-bg !important;
+        color: $bds-btn-tertiary-text;
+        background-color: $bds-btn-tertiary-bg;
       }
     }
 
     // Tertiary black link button
     &.bds-btn--tertiary.bds-btn--black {
-      color: $bds-btn-tertiary-black-text !important;
-      background-color: transparent !important;
+      color: $bds-btn-tertiary-black-text;
+      background-color: transparent;
       
       &:hover,
       &:focus,
       &:focus-visible,
       &:active,
       &:visited {
-        color: $bds-btn-tertiary-black-text !important;
-        background-color: transparent !important;
+        color: $bds-btn-tertiary-black-text;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Dark Mode - Anchor Button Overrides
+// =============================================================================
+html.dark {
+  a.bds-btn.bds-btn {
+    text-decoration: none;
+    
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+
+    // Primary green link button
+    &.bds-btn--primary.bds-btn--green {
+      color: $bds-btn-primary-text;
+      background-color: $bds-btn-primary-bg;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-text;
+        background-color: $bds-btn-primary-bg;
+      }
+    }
+
+    // Primary black link button - uses GREEN colors in dark mode
+    &.bds-btn--primary.bds-btn--black {
+      color: $bds-btn-primary-text;           // Black text (same as green)
+      background-color: $bds-btn-primary-bg;  // Green 300 (same as green)
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-text;
+        stroke: $bds-btn-primary-text;
+      }
+      
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-text;
+        background-color: $bds-btn-primary-bg;
+        
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-primary-text;
+          stroke: $bds-btn-primary-text;
+        }
+      }
+    }
+
+    // Secondary green link button - dark mode uses different green shades
+    &.bds-btn--secondary.bds-btn--green {
+      color: $green-300;                    // Green 300 in dark mode
+      border-color: $green-300;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;                  // Green 200 in dark mode
+        border-color: $green-200;
+        background-color: $green-500;       // Green 500 background
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+        border-color: $green-300;
+        background-color: transparent;
+      }
+    }
+
+    // Secondary black link button - uses GREEN colors in dark mode
+    &.bds-btn--secondary.bds-btn--black {
+      color: $green-300;                    // Green 300 text
+      border-color: $green-300;             // Green 300 border
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;                  // Green 200 text
+        border-color: $green-200;           // Green 200 border
+        background-color: $green-500;       // Green 500 background
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+        border-color: $green-300;
+        background-color: transparent;
+      }
+    }
+
+    // Tertiary green link button - dark mode uses different green shades
+    &.bds-btn--tertiary.bds-btn--green {
+      color: $green-300;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+        background-color: transparent;
+      }
+    }
+
+    // Tertiary black link button - uses GREEN colors in dark mode
+    &.bds-btn--tertiary.bds-btn--black {
+      color: $green-300;
+      background-color: transparent;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: $green-200;
+      }
+      
+      &:active,
+      &:visited {
+        color: $green-300;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Dark Mode - Button Element Overrides (non-anchor)
+// =============================================================================
+// Per Figma design (dark mode):
+// BLACK variant in dark mode uses GREEN colors (same as green variant)
+// - Enabled: Text = Neutral Black (#141414), Background = Green 300 (#21E46B)
+// - Hover: Text = Neutral Black (#141414), Background = Green 200 (#70EE97)
+// - Focus: Text = Neutral Black (#141414), Background = Green 200 (#70EE97)
+// - Active: Text = Neutral Black (#141414), Background = Green 300 (#21E46B)
+// - Disabled: Text = Neutral 500 (#72777E), Background = Neutral 300 (#CAD4DF)
+html.dark {
+  // Primary Black Button - Dark Mode uses GREEN colors
+  .bds-btn.bds-btn.bds-btn--primary.bds-btn--primary.bds-btn--black {
+    // Enabled state - GREEN colors (black text on green background)
+    color: $bds-btn-primary-text;              // #141414 - Neutral Black
+    background-color: $bds-btn-primary-bg;     // Green 300
+
+    // Hover background for ::before pseudo-element
+    &::before {
+      background-color: $bds-btn-primary-bg-hover; // Green 200
+    }
+
+    // Icon colors - black to match text
+    .bds-btn__icon,
+    .bds-btn__icon-line,
+    .bds-btn__icon-chevron {
+      color: $bds-btn-primary-text;
+      stroke: $bds-btn-primary-text;
+    }
+
+    // Hover state
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-text;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-text;
+        stroke: $bds-btn-primary-text;
+      }
+    }
+
+    // Focus state - white outline for dark mode
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-text;
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-text;
+        stroke: $bds-btn-primary-text;
+      }
+    }
+
+    // Active state
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-text;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-text;
+        stroke: $bds-btn-primary-text;
+      }
+    }
+
+    // Disabled state - Dark Mode specific colors
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-500;             // #72777E - Neutral 500
+      background-color: $gray-300;  // #CAD4DF - Neutral 300
+      cursor: not-allowed;
+      pointer-events: none;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  // Secondary Black Button - Dark Mode uses GREEN colors
+  // Per Figma design (dark mode):
+  // - Enabled: Text = Green 300, Stroke = Green 300, Background = transparent
+  // - Hover: Text = Green 200, Stroke = Green 200, Background = Green 500
+  // - Focus: Text = Green 200, Stroke = Green 200, Background = Green 500
+  // - Active: Text = Green 300, Stroke = Green 300, Background = transparent
+  // - Disabled: Text = Neutral 400, Stroke = Neutral 400, Background = transparent
+  .bds-btn.bds-btn.bds-btn--secondary.bds-btn--secondary.bds-btn--black {
+    // Enabled state - GREEN colors
+    color: $green-300;
+    border-color: $green-300;
+    background-color: transparent;
+
+    // Hover background for ::before pseudo-element
+    &::before {
+      background-color: $green-500;
+    }
+
+    // Icon colors
+    .bds-btn__icon,
+    .bds-btn__icon-line,
+    .bds-btn__icon-chevron {
+      color: $green-300;
+      stroke: $green-300;
+    }
+
+    // Hover state
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200;
+      border-color: $green-200;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $green-200;
+        stroke: $green-200;
+      }
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200;
+      border-color: $green-200;
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $green-200;
+        stroke: $green-200;
+      }
+    }
+
+    // Active state
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-300;
+      border-color: $green-300;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $green-300;
+        stroke: $green-300;
+      }
+    }
+
+    // Disabled state
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Neutral 400
+      border-color: $gray-400;
+      background-color: transparent;
+      cursor: not-allowed;
+      pointer-events: none;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $gray-400;
+        stroke: $gray-400;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  // Tertiary Black Button - Dark Mode uses GREEN colors
+  // Per Figma design (dark mode):
+  // - Enabled: Text = Green 300, Background = transparent
+  // - Hover: Text = Green 200, Background = transparent
+  // - Focus: Text = Green 200, Background = transparent
+  // - Active: Text = Green 300, Background = transparent
+  // - Disabled: Text = Neutral 400, Background = transparent
+  .bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black {
+    // Enabled state - GREEN colors
+    color: $green-300;
+    background-color: transparent;
+
+    // Icon colors
+    .bds-btn__icon,
+    .bds-btn__icon-line,
+    .bds-btn__icon-chevron {
+      color: $green-300;
+      stroke: $green-300;
+    }
+
+    // Hover state
+    &:hover:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $green-200;
+        stroke: $green-200;
+      }
+    }
+
+    // Focus state
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-200;
+      outline: $bds-btn-focus-border-width solid $white;
+      outline-offset: 2px;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $green-200;
+        stroke: $green-200;
+      }
+    }
+
+    // Active state
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $green-300;
+      
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $green-300;
+        stroke: $green-300;
+      }
+    }
+
+    // Disabled state
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-400;             // Neutral 400
+      background-color: transparent;
+      cursor: not-allowed;
+      pointer-events: none;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $gray-400;
+        stroke: $gray-400;
       }
     }
   }
@@ -878,6 +1268,16 @@ html.dark {
 // =============================================================================
 
 html.dark {
+  // =============================================================================
+  // Dark Mode Styles - Primary Button (Green variant)
+  // =============================================================================
+  // Based on Figma design (dark mode):
+  // - Enabled: Text = Neutral Black (#141414), Background = Green 300 (#21E46B)
+  // - Hover: Text = Neutral Black (#141414), Background = Green 200 (#70EE97)
+  // - Focus: Text = Neutral Black (#141414), Background = Green 200 (#70EE97)
+  // - Active: Text = Neutral Black (#141414), Background = Green 300 (#21E46B)
+  // - Disabled: Text = Neutral 500 (#72777E), Background = Neutral 300 (#CAD4DF)
+
   // Anchor link button color overrides for dark mode
   a.bds-btn {
     // Secondary green link button - dark mode
@@ -925,6 +1325,23 @@ html.dark {
       outline: $bds-btn-focus-border-width solid $white;
       outline-offset: 2px;
       padding: 8px 20px;
+    }
+
+    // ---------------------------------------------------------------------------
+    // Disabled State - Dark Mode
+    // Per Figma: Text = Neutral 500 (#72777E), Background = Neutral 300 (#CAD4DF)
+    // ---------------------------------------------------------------------------
+    &:disabled,
+    &.bds-btn--disabled {
+      color: $gray-500;             // #72777E - Neutral 500
+      background-color: $gray-300;  // #CAD4DF - Neutral 300
+      cursor: not-allowed;
+      pointer-events: none;
+
+      // Disable background animation on disabled
+      &::before {
+        display: none;
+      }
     }
 
     // Focus State (keyboard navigation) - with icon - Tablet & Mobile (≤1023px)

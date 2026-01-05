@@ -199,6 +199,7 @@ $bds-card-offgrid-focus-color-light: $gray-900;          // #111112
 
 .bds-card-offgrid__title {
   // Typography handled by .subhead-lg-l class from _font.scss
+  margin-bottom: 0;
   white-space: pre-wrap;
 }
 

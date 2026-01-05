@@ -65,18 +65,16 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   display: flex;
   flex-direction: column;
   gap: $bds-card-image-gap-lg; // Gap between image container and content
-  flex: 0 0 400px; // Don't grow, don't shrink, fixed 400px width
-  max-width: 400px; // Hard cap at 400px
+  width: 100%; // Fill available width (4-column span on LG+)
   height: $bds-card-image-height-lg;
   background-color: $bds-card-image-bg;
   overflow: hidden;
   cursor: pointer;
 
-  // When inside a grid column, allow flex but still cap at 400px
+  // When inside a grid column, fill the column width
   .bds-grid__col & {
     flex: 1 1 auto;
     width: 100%;
-    max-width: 400px;
   }
 
   // Focus styles
