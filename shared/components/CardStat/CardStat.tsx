@@ -14,7 +14,7 @@ export interface CardStatProps {
   /** The main statistic to display (e.g., "6 Million+") */
   statistic: string;
   /** Superscript text for the statistic */
-  superscript?: '*' | '+' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0';
+  superscript?: '*' | '+' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0';
   /** Descriptive label for the statistic */
   label: string;
   /** Background color variant
