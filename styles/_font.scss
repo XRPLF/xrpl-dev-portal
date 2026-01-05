@@ -297,9 +297,9 @@ $type-scale: (
   label-r: (
     font: $font-family-sans-serif,
     weight: 400,
-    mobile:  (size: 14px, line: 20.1px, letter: 0px, pspace: 18px),
-    tablet:  (size: 14px, line: 20.1px, letter: 0px, pspace: 18px),
-    desktop: (size: 16px, line: 23.2px, letter: 0px, pspace: 18px)
+    mobile:  (size: 14px, line: 20.1px, letter: 0px, pspace: 16px),
+    tablet:  (size: 14px, line: 20.1px, letter: 0px, pspace: 16px),
+    desktop: (size: 16px, line: 23.2px, letter: 0px, pspace: 16px)
   ),
   label-l: (
     font: $font-family-sans-serif,
