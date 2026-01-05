@@ -15592,7 +15592,7 @@ html.dark nav a.bds-link:visited:not(.bds-link--disabled) {
 }
 html.dark a.bds-link.bds-link--disabled,
 html.dark nav a.bds-link.bds-link--disabled {
-  color: #72777E;
+  color: #8A919A;
   cursor: not-allowed;
   pointer-events: none;
   text-decoration: none;
@@ -15602,7 +15602,7 @@ html.dark nav a.bds-link.bds-link--disabled:hover,
 html.dark nav a.bds-link.bds-link--disabled:focus,
 html.dark nav a.bds-link.bds-link--disabled:active,
 html.dark nav a.bds-link.bds-link--disabled:visited {
-  color: #72777E;
+  color: #8A919A;
   text-decoration: none;
 }
 
@@ -15632,7 +15632,7 @@ html.dark .bds-link.bds-link--disabled,
 .dark .bds-link.bds-link--disabled,
 html:not(.light) a.bds-link.bds-link--disabled,
 html:not(.light) .bds-link.bds-link--disabled {
-  color: #72777E;
+  color: #8A919A;
 }
 html.dark a.bds-link.bds-link--disabled:hover, html.dark a.bds-link.bds-link--disabled:focus, html.dark a.bds-link.bds-link--disabled:active, html.dark a.bds-link.bds-link--disabled:visited,
 html.dark .bds-link.bds-link--disabled:hover,
@@ -15655,7 +15655,7 @@ html:not(.light) .bds-link.bds-link--disabled:hover,
 html:not(.light) .bds-link.bds-link--disabled:focus,
 html:not(.light) .bds-link.bds-link--disabled:active,
 html:not(.light) .bds-link.bds-link--disabled:visited {
-  color: #72777E;
+  color: #8A919A;
 }
 
 .bds-link--inline {
