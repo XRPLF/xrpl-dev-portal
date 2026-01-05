@@ -1,6 +1,6 @@
 import * as React from "react";
 import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";
-import { Link } from "shared/components/Link/Link";
+import { BdsLink } from "shared/components/Link/Link";
 
 export const frontmatter = {
   seo: {
@@ -49,19 +49,19 @@ export default function LinkShowcase() {
                     <strong>Small</strong>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="/docs" variant="internal" size="small">
+                    <BdsLink href="/docs" variant="internal" size="small">
                       Small Internal Link
-                    </Link>
+                    </BdsLink>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="https://example.com" variant="external" size="small" target="_blank" rel="noopener noreferrer">
+                    <BdsLink href="https://example.com" variant="external" size="small" target="_blank" rel="noopener noreferrer">
                       Small External Link
-                    </Link>
+                    </BdsLink>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="#" variant="internal" size="small" disabled>
+                    <BdsLink href="#" variant="internal" size="small" disabled>
                       Disabled Internal Link
-                    </Link>
+                    </BdsLink>
                   </div>
                 </div>
                 {/* Medium Row */}
@@ -70,19 +70,19 @@ export default function LinkShowcase() {
                     <strong>Medium</strong>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="/docs" variant="internal" size="medium">
+                    <BdsLink href="/docs" variant="internal" size="medium">
                       Medium Internal Link
-                    </Link>
+                    </BdsLink>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="https://example.com" variant="external" size="medium" target="_blank" rel="noopener noreferrer">
+                    <BdsLink href="https://example.com" variant="external" size="medium" target="_blank" rel="noopener noreferrer">
                       Medium External Link
-                    </Link>
+                    </BdsLink>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="#" variant="external" size="medium" disabled>
+                    <BdsLink href="#" variant="external" size="medium" disabled>
                       Disabled External Link
-                    </Link>
+                    </BdsLink>
                   </div>
                 </div>
                 {/* Large Row */}
@@ -91,19 +91,19 @@ export default function LinkShowcase() {
                     <strong>Large</strong>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="/docs" variant="internal" size="large">
+                    <BdsLink href="/docs" variant="internal" size="large">
                       Large Internal Link
-                    </Link>
+                    </BdsLink>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="https://example.com" variant="external" size="large" target="_blank" rel="noopener noreferrer">
+                    <BdsLink href="https://example.com" variant="external" size="large" target="_blank" rel="noopener noreferrer">
                       Large External Link
-                    </Link>
+                    </BdsLink>
                   </div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>
-                    <Link href="#" variant="internal" size="large" disabled>
+                    <BdsLink href="#" variant="internal" size="large" disabled>
                       Disabled Internal Link
-                    </Link>
+                    </BdsLink>
                   </div>
                 </div>
               </div>
@@ -118,21 +118,21 @@ export default function LinkShowcase() {
               <div className="d-flex flex-column gap-4 mb-10">
                 <div>
                   <h6 className="mb-3">Small</h6>
-                  <Link href="/docs" size="small">
+                  <BdsLink href="/docs" size="small">
                     Small Link
-                  </Link>
+                  </BdsLink>
                 </div>
                 <div>
                   <h6 className="mb-3">Medium</h6>
-                  <Link href="/docs" size="medium">
+                  <BdsLink href="/docs" size="medium">
                     Medium Link
-                  </Link>
+                  </BdsLink>
                 </div>
                 <div>
                   <h6 className="mb-3">Large</h6>
-                  <Link href="/docs" size="large">
+                  <BdsLink href="/docs" size="large">
                     Large Link
-                  </Link>
+                  </BdsLink>
                 </div>
               </div>
             </PageGridCol>
@@ -176,15 +176,15 @@ export default function LinkShowcase() {
               <div className="d-flex flex-column gap-4 mb-10">
                 <div>
                   <h6 className="mb-3">Default (hover to see state changes and arrow animation)</h6>
-                  <Link href="/docs" size="medium">
+                  <BdsLink href="/docs" size="medium">
                     Default Link
-                  </Link>
+                  </BdsLink>
                 </div>
                 <div>
                   <h6 className="mb-3">Disabled</h6>
-                  <Link href="#" size="medium" disabled>
+                  <BdsLink href="#" size="medium" disabled>
                     Disabled Link
-                  </Link>
+                  </BdsLink>
                 </div>
               </div>
             </PageGridCol>
@@ -199,23 +199,23 @@ export default function LinkShowcase() {
               <div className="d-flex flex-column gap-4 mb-10">
                 <div>
                   <h6 className="mb-3">Arrow (Internal) - animates to chevron on hover</h6>
-                  <Link href="/docs" size="medium" icon="arrow">
+                  <BdsLink href="/docs" size="medium" icon="arrow">
                     Arrow Link
-                  </Link>
+                  </BdsLink>
                 </div>
                 <div>
                   <h6 className="mb-3">External</h6>
-                  <Link href="https://example.com" size="medium" variant="external" target="_blank" rel="noopener noreferrer">
+                  <BdsLink href="https://example.com" size="medium" variant="external" target="_blank" rel="noopener noreferrer">
                     External Link
-                  </Link>
+                  </BdsLink>
                 </div>
                 <div>
                   <h6 className="mb-3">Inline (No Icon)</h6>
                   <p>
                     This is a paragraph with an{" "}
-                    <Link href="/docs" variant="inline">
+                    <BdsLink href="/docs" variant="inline">
                       inline link
-                    </Link>{" "}
+                    </BdsLink>{" "}
                     embedded within the text.
                   </p>
                 </div>
@@ -231,23 +231,23 @@ export default function LinkShowcase() {
               <div className="d-flex flex-column gap-4 mb-10">
                 <div>
                   <h6 className="mb-3">Internal</h6>
-                  <Link href="/docs" variant="internal" size="medium">
+                  <BdsLink href="/docs" variant="internal" size="medium">
                     Internal Link
-                  </Link>
+                  </BdsLink>
                 </div>
                 <div>
                   <h6 className="mb-3">External</h6>
-                  <Link href="https://example.com" variant="external" size="medium" target="_blank" rel="noopener noreferrer">
+                  <BdsLink href="https://example.com" variant="external" size="medium" target="_blank" rel="noopener noreferrer">
                     External Link
-                  </Link>
+                  </BdsLink>
                 </div>
                 <div>
                   <h6 className="mb-3">Inline</h6>
                   <p>
                     This is a paragraph with an{" "}
-                    <Link href="/docs" variant="inline">
+                    <BdsLink href="/docs" variant="inline">
                       inline link
-                    </Link>{" "}
+                    </BdsLink>{" "}
                     that appears within the text flow.
                   </p>
                 </div>
@@ -264,40 +264,40 @@ export default function LinkShowcase() {
                 <div>
                   <h6 className="mb-4">Navigation Links</h6>
                   <div className="d-flex flex-column gap-3">
-                    <Link href="/docs" size="medium">
+                    <BdsLink href="/docs" size="medium">
                       View Documentation
-                    </Link>
-                    <Link href="/about" size="medium">
+                    </BdsLink>
+                    <BdsLink href="/about" size="medium">
                       Learn More About XRPL
-                    </Link>
-                    <Link href="https://github.com/XRPLF/xrpl-dev-portal" variant="external" size="medium" target="_blank" rel="noopener noreferrer">
+                    </BdsLink>
+                    <BdsLink href="https://github.com/XRPLF/xrpl-dev-portal" variant="external" size="medium" target="_blank" rel="noopener noreferrer">
                       GitHub Repository
-                    </Link>
+                    </BdsLink>
                   </div>
                 </div>
                 <div>
                   <h6 className="mb-4">Inline Text Links</h6>
                   <p className="longform">
                     The XRP Ledger is a decentralized public blockchain. You can{" "}
-                    <Link href="/docs" variant="inline">
+                    <BdsLink href="/docs" variant="inline">
                       read the technical documentation
-                    </Link>{" "}
+                    </BdsLink>{" "}
                     to learn more about how it works. The network is maintained by a{" "}
-                    <Link href="/about" variant="inline">
+                    <BdsLink href="/about" variant="inline">
                       global community
-                    </Link>{" "}
+                    </BdsLink>{" "}
                     of developers and validators.
                   </p>
                 </div>
                 <div>
                   <h6 className="mb-4">Call-to-Action Links</h6>
                   <div className="d-flex flex-column gap-3">
-                    <Link href="/docs" size="large">
+                    <BdsLink href="/docs" size="large">
                       Get Started with XRPL
-                    </Link>
-                    <Link href="/about/uses" size="large">
+                    </BdsLink>
+                    <BdsLink href="/about/uses" size="large">
                       Explore Use Cases
-                    </Link>
+                    </BdsLink>
                   </div>
                 </div>
               </div>
