@@ -155,13 +155,20 @@ p {
   @include _type-step(map-get($t, mobile));
 
   // tablet
-  @media (min-width: media-breakpoint-up(md)) {
+  @include media-breakpoint-up(md) {
     @include _type-step(map-get($t, tablet));
   }
 
   // desktop
-  @media (min-width: media-breakpoint-up(lg)) {
+  @include media-breakpoint-up(lg) {
     @include _type-step(map-get($t, desktop));
+  }
+
+  // xl (optional - only if defined for this type)
+  @if map-has-key($t, xl) {
+    @include media-breakpoint-up(xl) {
+      @include _type-step(map-get($t, xl));
+    }
   }
 }
 
@@ -179,22 +186,23 @@ $type-scale: (
   display-lg: (
     font: $font-family-sans-serif,
     weight: 300,
-    mobile:  (size: 64px,  line: 70.4px, letter: -4.5px, pspace: 32px),
-    tablet:  (size: 72px,  line: 70.4px, letter: -5px,   pspace: 32px),
-    desktop: (size: 112px, line: 112px,  letter: -7px,   pspace: 32px)
+    mobile:  (size: 64px,  line: 71px, letter: -4.5px, pspace: 32px),
+    tablet:  (size: 72px,  line: 79px, letter: -5px,   pspace: 32px),
+    desktop: (size: 92px, line: 112px,  letter: -6px,   pspace: 32px),
+    xl:      (size: 112px, line: 112px,  letter: -7px,   pspace: 32px)
   ),
   display-md: (
     font: $font-family-monospace,
     weight: 300,
-    mobile:  (size: 48px,  line: 52.8px, letter: -2px, pspace: 32px),
-    tablet:  (size: 60px,  line: 52.8px, letter: -2px, pspace: 32px),
-    desktop: (size: 72px,  line: 76.8px, letter: -3px, pspace: 32px)
+    mobile:  (size: 48px,  line: 53px, letter: -2px, pspace: 32px),
+    tablet:  (size: 60px,  line: 66px, letter: -2px, pspace: 32px),
+    desktop: (size: 72px,  line: 75.6px, letter: -3px, pspace: 32px)
   ),
   display-sm: (
     font: $font-family-monospace,
     weight: 300,
     mobile:  (size: 40px,  line: 46px,   letter: -1px,  pspace: 16px),
-    tablet:  (size: 56px,  line: 46px,   letter: -1px,  pspace: 16px),
+    tablet:  (size: 56px,  line: 64px,   letter: -1px,  pspace: 16px),
     desktop: (size: 64px,  line: 70.4px, letter: -1.5px,pspace: 32px)
   ),
 
@@ -202,21 +210,21 @@ $type-scale: (
   heading-lg: (
     font: $font-family-monospace,
     weight: 300,
-    mobile:  (size: 36px, line: 41.4px, letter: -0.25px, pspace: 16px),
-    tablet:  (size: 42px, line: 41.4px, letter: -0.5px,  pspace: 16px),
+    mobile:  (size: 36px, line: 41px, letter: -0.25px, pspace: 16px),
+    tablet:  (size: 42px, line: 48px, letter: -0.5px,  pspace: 16px),
     desktop: (size: 48px, line: 52.8px, letter: -1px,    pspace: 32px)
   ),
   heading-md: (
     font: $font-family-monospace,
     weight: 300,
     mobile:  (size: 32px, line: 40px, letter: 0px,   pspace: 16px),
-    tablet:  (size: 36px, line: 40px, letter: -0.5px,pspace: 16px),
-    desktop: (size: 40px, line: 48px, letter: -1px, pspace: 16px)
+    tablet:  (size: 36px, line: 45px, letter: -0.5px,pspace: 16px),
+    desktop: (size: 40px, line: 46px, letter: -1px, pspace: 16px)
   ),
   heading-sm: (
     font: $font-family-monospace,
     weight: 300,
-    mobile:  (size: 24px, line: 35px, letter: 0.25px, pspace: 16px),
+    mobile:  (size: 24px, line: 35px, letter: -0.25px, pspace: 16px),
     tablet:  (size: 28px, line: 35px, letter: -0.25px,pspace: 16px),
     desktop: (size: 32px, line: 40px, letter: -0.5px, pspace: 16px)
   ),
@@ -242,30 +250,30 @@ $type-scale: (
     font: $font-family-sans-serif,
     weight: 400,
     mobile:  (size: 24px, line: 30px, letter: -1px, pspace: 16px),
-    tablet:  (size: 26px, line: 35px, letter: -1px, pspace: 16px),
+    tablet:  (size: 26px, line: 33px, letter: -1px, pspace: 16px),
     desktop: (size: 28px, line: 35px, letter: -1px, pspace: 16px)
   ),
   subhead-md-l: (
     font: $font-family-sans-serif,
     weight: 300,
     mobile:  (size: 24px, line: 30px, letter: -1px, pspace: 16px),
-    tablet:  (size: 26px, line: 35px, letter: -1px, pspace: 16px),
-    desktop: (size: 26px, line: 35px, letter: -1px, pspace: 16px)
+    tablet:  (size: 26px, line: 33px, letter: -1px, pspace: 16px),
+    desktop: (size: 28px, line: 35px, letter: -1px, pspace: 16px)
   ),
 
   // Subheads SM
   subhead-sm-r: (
     font: $font-family-sans-serif,
     weight: 400,
-    mobile:  (size: 18px, line: 30px, letter: -0.5px, pspace: 16px),
-    tablet:  (size: 18px, line: 30px, letter: -0.5px, pspace: 16px),
+    mobile:  (size: 18px, line: 23px, letter: -0.5px, pspace: 16px),
+    tablet:  (size: 18px, line: 23px, letter: -0.5px, pspace: 16px),
     desktop: (size: 24px, line: 30px, letter: -1px,   pspace: 16px)
   ),
   subhead-sm-l: (
     font: $font-family-sans-serif,
     weight: 300,
-    mobile:  (size: 18px, line: 30px, letter: -0.5px, pspace: 16px),
-    tablet:  (size: 18px, line: 30px, letter: -0.5px, pspace: 16px),
+    mobile:  (size: 18px, line: 23px, letter: -0.5px, pspace: 16px),
+    tablet:  (size: 18px, line: 23px, letter: -0.5px, pspace: 16px),
     desktop: (size: 24px, line: 30px, letter: -1px,   pspace: 16px)
   ),
 
@@ -273,15 +281,15 @@ $type-scale: (
   body-r: (
     font: $font-family-sans-serif,
     weight: 400,
-    mobile:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 18px),
-    tablet:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 18px),
-    desktop: (size: 18px, line: 26.1px, letter: -0.5px,pspace: 18px)
+    mobile:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
+    tablet:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
+    desktop: (size: 18px, line: 26.1px, letter: -0.5px,pspace: 16px)
   ),
   body-l: (
     font: $font-family-sans-serif,
     weight: 300,
-    mobile:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 16px),
-    tablet:  (size: 16px, line: 26.1px, letter: 0px,   pspace: 16px),
+    mobile:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
+    tablet:  (size: 16px, line: 23.2px, letter: 0px,   pspace: 16px),
     desktop: (size: 18px, line: 26.1px, letter: -0.5px,pspace: 16px)
   ),
 
@@ -289,15 +297,15 @@ $type-scale: (
   label-r: (
     font: $font-family-sans-serif,
     weight: 400,
-    mobile:  (size: 14px, line: 23.2px, letter: 0px, pspace: 18px),
-    tablet:  (size: 14px, line: 23.2px, letter: 0px, pspace: 18px),
+    mobile:  (size: 14px, line: 20.1px, letter: 0px, pspace: 18px),
+    tablet:  (size: 14px, line: 20.1px, letter: 0px, pspace: 18px),
     desktop: (size: 16px, line: 23.2px, letter: 0px, pspace: 18px)
   ),
   label-l: (
     font: $font-family-sans-serif,
     weight: 300,
-    mobile:  (size: 14px, line: 23.2px, letter: 0px, pspace: 16px),
-    tablet:  (size: 14px, line: 23.2px, letter: 0px, pspace: 16px),
+    mobile:  (size: 14px, line: 20.1px, letter: 0px, pspace: 16px),
+    tablet:  (size: 14px, line: 20.1px, letter: 0px, pspace: 16px),
     desktop: (size: 16px, line: 23.2px, letter: 0px, pspace: 16px)
   )
 );
