@@ -9287,14 +9287,14 @@ p {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 300;
   font-size: 64px;
-  line-height: 70.4px;
+  line-height: 71px;
   letter-spacing: -4.5px;
   margin-bottom: 32px;
 }
 @media (min-width: 576px) {
   .display-lg {
     font-size: 72px;
-    line-height: 70.4px;
+    line-height: 79px;
     letter-spacing: -5px;
     margin-bottom: 32px;
   }
@@ -9320,14 +9320,14 @@ p {
   font-family: "Tobias", "Noto Serif", monospace;
   font-weight: 300;
   font-size: 48px;
-  line-height: 52.8px;
+  line-height: 53px;
   letter-spacing: -2px;
   margin-bottom: 32px;
 }
 @media (min-width: 576px) {
   .display-md {
     font-size: 60px;
-    line-height: 52.8px;
+    line-height: 66px;
     letter-spacing: -2px;
     margin-bottom: 32px;
   }
@@ -9335,7 +9335,7 @@ p {
 @media (min-width: 992px) {
   .display-md {
     font-size: 72px;
-    line-height: 76.8px;
+    line-height: 75.6px;
     letter-spacing: -3px;
     margin-bottom: 32px;
   }
@@ -9352,7 +9352,7 @@ p {
 @media (min-width: 576px) {
   .display-sm {
     font-size: 56px;
-    line-height: 46px;
+    line-height: 64px;
     letter-spacing: -1px;
     margin-bottom: 16px;
   }
@@ -9370,14 +9370,14 @@ p {
   font-family: "Tobias", "Noto Serif", monospace;
   font-weight: 300;
   font-size: 36px;
-  line-height: 41.4px;
+  line-height: 41px;
   letter-spacing: -0.25px;
   margin-bottom: 16px;
 }
 @media (min-width: 576px) {
   .h-lg {
     font-size: 42px;
-    line-height: 41.4px;
+    line-height: 48px;
     letter-spacing: -0.5px;
     margin-bottom: 16px;
   }
@@ -9402,7 +9402,7 @@ p {
 @media (min-width: 576px) {
   .h-md {
     font-size: 36px;
-    line-height: 40px;
+    line-height: 45px;
     letter-spacing: -0.5px;
     margin-bottom: 16px;
   }
@@ -9410,7 +9410,7 @@ p {
 @media (min-width: 992px) {
   .h-md {
     font-size: 40px;
-    line-height: 48px;
+    line-height: 46px;
     letter-spacing: -1px;
     margin-bottom: 16px;
   }
@@ -9421,7 +9421,7 @@ p {
   font-weight: 300;
   font-size: 24px;
   line-height: 35px;
-  letter-spacing: 0.25px;
+  letter-spacing: -0.25px;
   margin-bottom: 16px;
 }
 @media (min-width: 576px) {
@@ -9502,7 +9502,7 @@ p {
 @media (min-width: 576px) {
   .sh-md-r {
     font-size: 26px;
-    line-height: 35px;
+    line-height: 33px;
     letter-spacing: -1px;
     margin-bottom: 16px;
   }
@@ -9527,14 +9527,14 @@ p {
 @media (min-width: 576px) {
   .sh-md-l {
     font-size: 26px;
-    line-height: 35px;
+    line-height: 33px;
     letter-spacing: -1px;
     margin-bottom: 16px;
   }
 }
 @media (min-width: 992px) {
   .sh-md-l {
-    font-size: 26px;
+    font-size: 28px;
     line-height: 35px;
     letter-spacing: -1px;
     margin-bottom: 16px;
@@ -9545,14 +9545,14 @@ p {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 23px;
   letter-spacing: -0.5px;
   margin-bottom: 16px;
 }
 @media (min-width: 576px) {
   .sh-sm-r {
     font-size: 18px;
-    line-height: 30px;
+    line-height: 23px;
     letter-spacing: -0.5px;
     margin-bottom: 16px;
   }
@@ -9570,14 +9570,14 @@ p {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 300;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 23px;
   letter-spacing: -0.5px;
   margin-bottom: 16px;
 }
 @media (min-width: 576px) {
   .sh-sm-l {
     font-size: 18px;
-    line-height: 30px;
+    line-height: 23px;
     letter-spacing: -0.5px;
     margin-bottom: 16px;
   }
@@ -9670,14 +9670,14 @@ p {
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 300;
   font-size: 14px;
-  line-height: 23.2px;
+  line-height: 20.1px;
   letter-spacing: 0px;
   margin-bottom: 16px;
 }
 @media (min-width: 576px) {
   .label-l {
     font-size: 14px;
-    line-height: 23.2px;
+    line-height: 20.1px;
     letter-spacing: 0px;
     margin-bottom: 16px;
   }
@@ -11774,14 +11774,14 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 300;
   font-size: 64px;
-  line-height: 70.4px;
+  line-height: 71px;
   letter-spacing: -4.5px;
   margin-bottom: 32px;
 }
 @media (min-width: 576px) {
   .bds-card-stat__statistic {
     font-size: 72px;
-    line-height: 70.4px;
+    line-height: 79px;
     letter-spacing: -5px;
     margin-bottom: 32px;
   }
