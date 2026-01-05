@@ -11508,12 +11508,32 @@ html.dark .bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black.bd
   align-items: center;
   justify-content: center;
   max-height: 40px;
-  font-family: "Booton", sans-serif;
-  font-size: 16px;
+  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 400;
-  line-height: 23.2px;
+  font-size: 14px;
+  line-height: 20.1px;
   letter-spacing: 0px;
+  margin-bottom: 18px;
+}
+@media (min-width: 576px) {
+  .bds-btn {
+    font-size: 14px;
+    line-height: 20.1px;
+    letter-spacing: 0px;
+    margin-bottom: 18px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-btn {
+    font-size: 16px;
+    line-height: 23.2px;
+    letter-spacing: 0px;
+    margin-bottom: 18px;
+  }
+}
+.bds-btn {
   white-space: nowrap;
+  margin-bottom: 0;
   border: none;
   border-radius: 100px;
   cursor: pointer;
@@ -11566,12 +11586,6 @@ html.dark .bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black.bd
 }
 .bds-btn:hover:not(:disabled):not(.bds-btn--disabled) .bds-btn__icon-line, .bds-btn:focus-visible:not(:disabled):not(.bds-btn--disabled) .bds-btn__icon-line {
   transform: scaleX(0);
-}
-@media (max-width: 1279.98px) {
-  .bds-btn {
-    font-size: 14px;
-    line-height: 20.1px;
-  }
 }
 
 .bds-btn--primary {
@@ -11819,9 +11833,31 @@ html.dark .bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black.bd
   background-color: transparent;
   border: none;
   text-decoration: none;
-  font-size: 18px;
-  line-height: 26.1px;
-  letter-spacing: -0.5px;
+  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.2px;
+  letter-spacing: 0px;
+  margin-bottom: 16px;
+}
+@media (min-width: 576px) {
+  .bds-btn--tertiary {
+    font-size: 16px;
+    line-height: 23.2px;
+    letter-spacing: 0px;
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-btn--tertiary {
+    font-size: 18px;
+    line-height: 26.1px;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+}
+.bds-btn--tertiary {
+  margin-bottom: 0;
   padding: 8px 20px;
   gap: 16px;
 }
@@ -11876,9 +11912,6 @@ html.dark .bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black.bd
 }
 @media (max-width: 1279.98px) {
   .bds-btn--tertiary {
-    font-size: 16px;
-    line-height: 23.2px;
-    letter-spacing: 0px;
     padding: 8px 16px;
     gap: 16px;
   }
