@@ -65,7 +65,7 @@ export interface BdsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEleme
  * - Hover/Focus: Green 200 (#70EE97) + underline + arrow animates to chevron
  * - Active: Green 300 (#21E46B) + underline
  * - Visited: Lilac 300 (#C0A7FF)
- * - Disabled: Gray 500 (#838386)
+ * - Disabled: #8A919A
  * - Focus outline: White (#FFFFFF)
  * 
  * @see Link.md for full documentation

@@ -4,7 +4,7 @@
 // Light mode colors per Figma: Enabled=green-400, Hover/Focus=green-500+underline,
 // Active=green-400+underline, Visited=lilac-400, Disabled=gray-400
 // Dark mode colors per Figma: Enabled=green-300, Hover/Focus=green-200+underline,
-// Active=green-300+underline, Visited=lilac-300, Disabled=gray-500
+// Active=green-300+underline, Visited=lilac-300, Disabled=gray-400 (#8A919A)
 
 @import "../../../styles/_colors.scss";
 
@@ -202,7 +202,7 @@ html.dark {
     
     // Disabled state - needs to be here for specificity
     &.bds-link--disabled {
-      color: $gray-500;
+      color: $gray-400;
       cursor: not-allowed;
       pointer-events: none;
       text-decoration: none;
@@ -211,7 +211,7 @@ html.dark {
       &:focus,
       &:active,
       &:visited {
-        color: $gray-500;
+        color: $gray-400;
         text-decoration: none;
       }
     }
@@ -246,13 +246,13 @@ html.dark,
 html:not(.light) {
   a.bds-link.bds-link--disabled,
   .bds-link.bds-link--disabled {
-    color: $gray-500;
+    color: $gray-400;
     
     &:hover,
     &:focus,
     &:active,
     &:visited {
-      color: $gray-500;
+      color: $gray-400;
     }
   }
 }
