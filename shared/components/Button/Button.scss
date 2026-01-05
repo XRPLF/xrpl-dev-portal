@@ -616,13 +616,12 @@ html.dark {
   justify-content: center;
   max-height: 40px;
   
-  // Typography - Label R token
-  font-family: 'Booton', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 23.2px;
-  letter-spacing: 0px;
+  // Typography - Label R token (responsive)
+  // - Desktop (lg+): 16px / 23.2px
+  // - Mobile/Tablet: 14px / 20.1px
+  @include type(label-r);
   white-space: nowrap;
+  margin-bottom: 0; // Reset paragraph spacing from type mixin
   
   // Border
   border: none;
@@ -715,14 +714,6 @@ html.dark {
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // Responsive Typography (<xl breakpoint)
-  // ---------------------------------------------------------------------------
-  @include media-breakpoint-down(xl) {
-    // Typography - Label R token (smaller screens)
-    font-size: 14px;
-    line-height: 20.1px;
-  }
 }
 
 // =============================================================================
@@ -1132,10 +1123,11 @@ html.dark {
   border: none;
   text-decoration: none;
 
-  // Typography - Body R token (different from Primary/Secondary)
-  font-size: 18px;
-  line-height: 26.1px;
-  letter-spacing: -0.5px;
+  // Typography - Body R token (responsive)
+  // - Desktop (lg+): 18px / 26.1px / -0.5px letter-spacing
+  // - Mobile/Tablet: 16px / 23.2px / 0px letter-spacing
+  @include type(body-r);
+  margin-bottom: 0; // Reset paragraph spacing from type mixin
 
   // Desktop padding and gap (≥1024px)
   padding: 8px 20px;
@@ -1220,11 +1212,6 @@ html.dark {
   // Tablet & Mobile Responsive Styles (<xl breakpoint)
   // ---------------------------------------------------------------------------
   @include media-breakpoint-down(xl) {
-    // Typography - Body R token (smaller screens)
-    font-size: 16px;
-    line-height: 23.2px;
-    letter-spacing: 0px;
-
     padding: 8px 16px;
     gap: 16px;
 
