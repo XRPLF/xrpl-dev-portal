@@ -54,7 +54,7 @@ export default function CardIconShowcase() {
                   <div style={{ flex: '1 1 300px', minWidth: '280px' }}>
                     <h6 className="mb-3">LG Breakpoint (≥992px)</h6>
                     <ul className="mb-0">
-                      <li><strong>Column width:</strong> 3 columns</li>
+                      <li><strong>Column width:</strong> 4 columns</li>
                       <li><strong>Card height:</strong> 144px</li>
                       <li><strong>Icon bounding box:</strong> 64×64 (1:1 ratio)</li>
                       <li><strong>Padding:</strong> 16px</li>
@@ -63,7 +63,7 @@ export default function CardIconShowcase() {
                   <div style={{ flex: '1 1 300px', minWidth: '280px' }}>
                     <h6 className="mb-3">MD Breakpoint (576px–991px)</h6>
                     <ul className="mb-0">
-                      <li><strong>Column width:</strong> 2 columns</li>
+                      <li><strong>Column width:</strong> 4 columns</li>
                       <li><strong>Card height:</strong> 140px</li>
                       <li><strong>Icon bounding box:</strong> 60×60 (1:1 ratio)</li>
                       <li><strong>Padding:</strong> 12px</li>
@@ -72,7 +72,7 @@ export default function CardIconShowcase() {
                   <div style={{ flex: '1 1 300px', minWidth: '280px' }}>
                     <h6 className="mb-3">SM Breakpoint (&lt;576px)</h6>
                     <ul className="mb-0">
-                      <li><strong>Column width:</strong> 2 columns</li>
+                      <li><strong>Column width:</strong> 4 columns</li>
                       <li><strong>Card height:</strong> 136px</li>
                       <li><strong>Icon bounding box:</strong> 56×56 (1:1 ratio)</li>
                       <li><strong>Padding:</strong> 8px</li>
@@ -92,7 +92,7 @@ export default function CardIconShowcase() {
               </div>
 
               <PageGridRow>
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <CardIcon
                     variant="neutral"
                     icon={jsIconBlack}
@@ -101,7 +101,7 @@ export default function CardIconShowcase() {
                     onClick={() => handleClick('responsive-demo')}
                   />
                 </PageGridCol>
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <CardIcon
                     variant="green"
                     icon={jsIconBlack}
@@ -125,7 +125,7 @@ export default function CardIconShowcase() {
               </p>
 
               <PageGridRow>
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="neutral"
@@ -142,7 +142,7 @@ export default function CardIconShowcase() {
                   </div>
                 </PageGridCol>
 
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="green"
@@ -175,7 +175,7 @@ export default function CardIconShowcase() {
 
               <PageGridRow>
                 {/* Default */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="neutral"
@@ -193,7 +193,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Hover */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="neutral"
@@ -211,7 +211,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Focus */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="neutral"
@@ -229,7 +229,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Pressed */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="neutral"
@@ -247,7 +247,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Disabled */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="neutral"
@@ -279,7 +279,7 @@ export default function CardIconShowcase() {
 
               <PageGridRow>
                 {/* Default */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="green"
@@ -297,7 +297,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Hover */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="green"
@@ -315,7 +315,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Focus */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="green"
@@ -333,7 +333,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Pressed */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="green"
@@ -351,7 +351,7 @@ export default function CardIconShowcase() {
                 </PageGridCol>
 
                 {/* Disabled */}
-                <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                   <div className="d-flex flex-column align-items-center">
                     <CardIcon
                       variant="green"
@@ -510,16 +510,16 @@ export default function CardIconShowcase() {
                   <h6 className="mb-4">Language Tutorial Cards</h6>
                   <p className="mb-4 text-muted">Use CardIcon for quick-access language tutorials in documentation.</p>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={jsIconBlack} iconAlt="JavaScript" label="JavaScript Tutorial" href="#javascript" />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={pythonIcon} iconAlt="Python" label="Python Tutorial" href="#python" />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={goIcon} iconAlt="Go" label="Go Tutorial" href="#go" />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={rustIcon} iconAlt="Rust" label="Rust Tutorial" href="#rust" />
                     </PageGridCol>
                   </PageGridRow>
@@ -530,16 +530,16 @@ export default function CardIconShowcase() {
                   <h6 className="mb-4">Featured Content</h6>
                   <p className="mb-4 text-muted">Use green variant to highlight featured or recommended content.</p>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="green" icon={jsIconBlack} iconAlt="JavaScript" label="Quick Start Guide" onClick={() => handleClick('featured-quickstart')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="green" icon={pythonIcon} iconAlt="Python" label="Build Your First App" onClick={() => handleClick('featured-first-app')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={goIcon} iconAlt="Go" label="Advanced Topics" onClick={() => handleClick('advanced')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={rustIcon} iconAlt="Rust" label="API Reference" onClick={() => handleClick('api-ref')} />
                     </PageGridCol>
                   </PageGridRow>
@@ -550,10 +550,10 @@ export default function CardIconShowcase() {
                   <h6 className="mb-4">Linked Cards</h6>
                   <p className="mb-4 text-muted">Use href prop to navigate to other pages. Cards render as anchor elements.</p>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={jsIconBlack} iconAlt="JavaScript" label="View Documentation" href="#documentation" />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="green" icon={pythonIcon} iconAlt="Python" label="Get Started Now" href="#get-started" />
                     </PageGridCol>
                   </PageGridRow>
@@ -564,10 +564,10 @@ export default function CardIconShowcase() {
                   <h6 className="mb-4">Coming Soon / Unavailable</h6>
                   <p className="mb-4 text-muted">Use disabled state for content that's not yet available.</p>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="neutral" icon={jsIconBlack} iconAlt="Coming Soon" label="Coming Soon" disabled />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 2, md: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 4, md: 4, lg: 4 }}>
                       <CardIcon variant="green" icon={pythonIcon} iconAlt="Unavailable" label="Currently Unavailable" disabled />
                     </PageGridCol>
                   </PageGridRow>
