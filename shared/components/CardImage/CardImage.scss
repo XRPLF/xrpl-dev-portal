@@ -191,9 +191,9 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
 // =============================================================================
-// Hover State - Trigger Button Animation
+// Hover State - Image Animation Only
 // =============================================================================
-// When the card is hovered, trigger the button's hover animation styles
+// When the card is hovered, scale the image (button hover state is independent)
 
 .bds-card-image--hovered:not(.bds-card-image--disabled),
 .bds-card-image:hover:not(.bds-card-image--disabled) {
@@ -201,43 +201,13 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   .bds-card-image__image {
     transform: scale(1.1);
   }
-
-  // Trigger button background fill animation
-  .bds-btn--primary::before {
-    transform: scaleY(1);
-  }
-
-  // Trigger arrow icon line shrink animation
-  .bds-btn__icon-line {
-    transform: scaleX(0);
-  }
-
-  // Apply hover padding and gap changes (with icon)
-  .bds-btn--primary:not(.bds-btn--no-icon) {
-    padding: 8px 13px 8px 20px;
-    gap: 22px;
-  }
 }
 
 // =============================================================================
 // Focus State
 // =============================================================================
-
-.bds-card-image:focus-visible:not(.bds-card-image--disabled) {
-  // Trigger button focus styles
-  .bds-btn--primary::before {
-    transform: scaleY(1);
-  }
-
-  .bds-btn__icon-line {
-    transform: scaleX(0);
-  }
-
-  .bds-btn--primary:not(.bds-btn--no-icon) {
-    padding: 8px 13px 8px 20px;
-    gap: 22px;
-  }
-}
+// Focus styles are handled by base card styles (outline)
+// Button focus state is independent
 
 // =============================================================================
 // Disabled State
@@ -273,23 +243,6 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
   .bds-card-image__text {
     gap: $bds-card-image-title-gap-md;
-  }
-
-
-  // Adjust hover padding for tablet breakpoint
-  .bds-card-image--hovered:not(.bds-card-image--disabled),
-  .bds-card-image:hover:not(.bds-card-image--disabled) {
-    .bds-btn--primary:not(.bds-btn--no-icon) {
-      padding: 8px 10px 8px 16px;
-      gap: 21px;
-    }
-  }
-
-  .bds-card-image:focus-visible:not(.bds-card-image--disabled) {
-    .bds-btn--primary:not(.bds-btn--no-icon) {
-      padding: 8px 10px 8px 16px;
-      gap: 21px;
-    }
   }
 }
 
