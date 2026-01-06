@@ -3,7 +3,7 @@
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-card-image                    - Base card container
-// .bds-card-image--hovered           - Hover state (triggers button animation)
+// .bds-card-image--hovered           - Hover state (scales image only)
 // .bds-card-image--disabled          - Disabled state
 // .bds-card-image__image-container   - Gray background image wrapper
 // .bds-card-image__image             - The actual image element
@@ -65,18 +65,16 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   display: flex;
   flex-direction: column;
   gap: $bds-card-image-gap-lg; // Gap between image container and content
-  flex: 0 0 400px; // Don't grow, don't shrink, fixed 400px width
-  max-width: 400px; // Hard cap at 400px
+  width: 100%; // Fill available width (4-column span on LG+)
   height: $bds-card-image-height-lg;
   background-color: $bds-card-image-bg;
   overflow: hidden;
   cursor: pointer;
 
-  // When inside a grid column, allow flex but still cap at 400px
+  // When inside a grid column, fill the column width
   .bds-grid__col & {
     flex: 1 1 auto;
     width: 100%;
-    max-width: 400px;
   }
 
   // Focus styles
@@ -193,9 +191,9 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
 // =============================================================================
-// Hover State - Trigger Button Animation
+// Hover State - Image Animation Only
 // =============================================================================
-// When the card is hovered, trigger the button's hover animation styles
+// When the card is hovered, scale the image (button hover state is independent)
 
 .bds-card-image--hovered:not(.bds-card-image--disabled),
 .bds-card-image:hover:not(.bds-card-image--disabled) {
@@ -203,43 +201,13 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   .bds-card-image__image {
     transform: scale(1.1);
   }
-
-  // Trigger button background fill animation
-  .bds-btn--primary::before {
-    transform: scaleY(1);
-  }
-
-  // Trigger arrow icon line shrink animation
-  .bds-btn__icon-line {
-    transform: scaleX(0);
-  }
-
-  // Apply hover padding and gap changes (with icon)
-  .bds-btn--primary:not(.bds-btn--no-icon) {
-    padding: 8px 13px 8px 20px;
-    gap: 22px;
-  }
 }
 
 // =============================================================================
 // Focus State
 // =============================================================================
-
-.bds-card-image:focus-visible:not(.bds-card-image--disabled) {
-  // Trigger button focus styles
-  .bds-btn--primary::before {
-    transform: scaleY(1);
-  }
-
-  .bds-btn__icon-line {
-    transform: scaleX(0);
-  }
-
-  .bds-btn--primary:not(.bds-btn--no-icon) {
-    padding: 8px 13px 8px 20px;
-    gap: 22px;
-  }
-}
+// Focus styles are handled by base card styles (outline)
+// Button focus state is independent
 
 // =============================================================================
 // Disabled State
@@ -275,23 +243,6 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
   .bds-card-image__text {
     gap: $bds-card-image-title-gap-md;
-  }
-
-
-  // Adjust hover padding for tablet breakpoint
-  .bds-card-image--hovered:not(.bds-card-image--disabled),
-  .bds-card-image:hover:not(.bds-card-image--disabled) {
-    .bds-btn--primary:not(.bds-btn--no-icon) {
-      padding: 8px 10px 8px 16px;
-      gap: 21px;
-    }
-  }
-
-  .bds-card-image:focus-visible:not(.bds-card-image--disabled) {
-    .bds-btn--primary:not(.bds-btn--no-icon) {
-      padding: 8px 10px 8px 16px;
-      gap: 21px;
-    }
   }
 }
 

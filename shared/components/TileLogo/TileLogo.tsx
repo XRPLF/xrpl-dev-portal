@@ -32,8 +32,8 @@ export interface TileLogoProps {
  * bottom to top on mouse enter, and top to bottom on mouse leave.
  *
  * Shape sizes are responsive and change based on breakpoints:
- * - Square: 1:1 aspect ratio with responsive padding
- * - Rectangle: Fixed height (96px SM/MD, 160px LG) with responsive padding
+ * - Square: 1:1 aspect ratio, width controlled by parent (use PageGridCol with span 2/2/3)
+ * - Rectangle: 9:5 aspect ratio, width controlled by parent (use PageGridCol with span 2/2/3)
  *
  * @example
  * // Basic usage with link (square shape - default)

@@ -47,10 +47,10 @@ export default function TileLogoShowcase() {
                 <div>
                   <h6 className="mb-4">Square Shape (Default)</h6>
                   <p className="mb-4 text-muted">
-                    Maintains a 1:1 aspect ratio. Padding adjusts responsively: SM (36px/20px), MD (40px/24px), LG (72px/48px).
+                    1:1 aspect ratio, width controlled by parent PageGridCol. Use span 2 (SM/MD) or span 3 (LG). Padding: SM (36px/20px), MD (40px/24px), LG (72px/48px).
                   </p>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo
                         shape="square"
                         variant="neutral"
@@ -59,7 +59,7 @@ export default function TileLogoShowcase() {
                         onClick={() => handleClick('square')}
                       />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo
                         shape="square"
                         variant="green"
@@ -75,26 +75,28 @@ export default function TileLogoShowcase() {
                 <div>
                   <h6 className="mb-4">Rectangle Shape</h6>
                   <p className="mb-4 text-muted">
-                    Fixed height with responsive column widths: 2 columns (SM), 4 columns (MD/LG). Height: 96px (SM/MD), 160px (LG). Padding: SM/MD (20px/36px), LG (32px/64px).
+                    9:5 aspect ratio, width controlled by parent PageGridCol. Use span 2 (SM/MD) or span 3 (LG). Padding: SM/MD (20px/36px), LG (32px/64px).
                   </p>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo
+                        shape="rectangle"
+                        variant="neutral"
+                        logo={sampleLogo}
+                        alt="Rectangle Shape Example"
+                        onClick={() => handleClick('rectangle')}
+                      />
+                    </PageGridCol>
+                  </PageGridRow>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
-                      <div className="d-flex flex-column gap-4">
-                        <TileLogo
-                          shape="rectangle"
-                          variant="neutral"
-                          logo={sampleLogo}
-                          alt="Rectangle Shape Example"
-                          onClick={() => handleClick('rectangle')}
-                        />
-                        <TileLogo
-                          shape="rectangle"
-                          variant="green"
-                          logo={sampleLogo}
-                          alt="Rectangle Shape Green"
-                          onClick={() => handleClick('rectangle-green')}
-                        />
-                      </div>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo
+                        shape="rectangle"
+                        variant="green"
+                        logo={sampleLogo}
+                        alt="Rectangle Shape Green"
+                        onClick={() => handleClick('rectangle-green')}
+                      />
                     </PageGridCol>
                   </PageGridRow>
                 </div>
@@ -113,7 +115,7 @@ export default function TileLogoShowcase() {
               </p>
 
               <PageGridRow>
-                <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                   <div className="d-flex flex-column align-items-center">
                     <TileLogo
                       variant="neutral"
@@ -129,7 +131,7 @@ export default function TileLogoShowcase() {
                   </div>
                 </PageGridCol>
 
-                <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                   <div className="d-flex flex-column align-items-center">
                     <TileLogo
                       variant="green"
@@ -486,16 +488,16 @@ export default function TileLogoShowcase() {
                   <h6 className="mb-4">Partner Logo Grid (Square Shape)</h6>
                   <p className="mb-4 text-muted">Use square shape with neutral variant for general partner showcases in grid layouts.</p>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 1" onClick={() => handleClick('partner-1')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 2" onClick={() => handleClick('partner-2')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 3" onClick={() => handleClick('partner-3')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner 4" onClick={() => handleClick('partner-4')} />
                     </PageGridCol>
                   </PageGridRow>
@@ -505,13 +507,19 @@ export default function TileLogoShowcase() {
                 <div>
                   <h6 className="mb-4">Partner Logo Grid (Rectangle Shape)</h6>
                   <p className="mb-4 text-muted">Use rectangle shape for horizontal layouts or featured partner banners.</p>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Partner A" onClick={() => handleClick('partner-a')} />
+                    </PageGridCol>
+                  </PageGridRow>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Partner B" onClick={() => handleClick('partner-b')} />
+                    </PageGridCol>
+                  </PageGridRow>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
-                      <div className="d-flex flex-column gap-4">
-                        <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Partner A" onClick={() => handleClick('partner-a')} />
-                        <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Partner B" onClick={() => handleClick('partner-b')} />
-                        <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Partner C" onClick={() => handleClick('partner-c')} />
-                      </div>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Partner C" onClick={() => handleClick('partner-c')} />
                     </PageGridCol>
                   </PageGridRow>
                 </div>
@@ -521,18 +529,16 @@ export default function TileLogoShowcase() {
                   <h6 className="mb-4">Featured Partners</h6>
                   <p className="mb-4 text-muted">Use green variant to highlight featured or primary partners. Works with both shape variants.</p>
                   <PageGridRow className="mb-4">
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Featured Partner 1" onClick={() => handleClick('featured-1')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Featured Partner 2" onClick={() => handleClick('featured-2')} />
                     </PageGridCol>
                   </PageGridRow>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
-                      <div className="d-flex flex-column gap-4">
-                        <TileLogo shape="rectangle" variant="green" logo={sampleLogo} alt="Featured Partner Banner" onClick={() => handleClick('featured-banner')} />
-                      </div>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="green" logo={sampleLogo} alt="Featured Partner Banner" onClick={() => handleClick('featured-banner')} />
                     </PageGridCol>
                   </PageGridRow>
                 </div>
@@ -542,25 +548,27 @@ export default function TileLogoShowcase() {
                   <h6 className="mb-4">Mixed Grid (Featured + Regular)</h6>
                   <p className="mb-4 text-muted">Combine variants and shapes to create visual hierarchy in partner showcases.</p>
                   <PageGridRow className="mb-4">
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Primary Partner" onClick={() => handleClick('primary')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner A" onClick={() => handleClick('partner-a')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner B" onClick={() => handleClick('partner-b')} />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner C" onClick={() => handleClick('partner-c')} />
                     </PageGridCol>
                   </PageGridRow>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="green" logo={sampleLogo} alt="Featured Banner" onClick={() => handleClick('featured-banner')} />
+                    </PageGridCol>
+                  </PageGridRow>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
-                      <div className="d-flex flex-column gap-4">
-                        <TileLogo shape="rectangle" variant="green" logo={sampleLogo} alt="Featured Banner" onClick={() => handleClick('featured-banner')} />
-                        <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Regular Banner" onClick={() => handleClick('regular-banner')} />
-                      </div>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Regular Banner" onClick={() => handleClick('regular-banner')} />
                     </PageGridCol>
                   </PageGridRow>
                 </div>
@@ -570,19 +578,21 @@ export default function TileLogoShowcase() {
                   <h6 className="mb-4">Linked Partner Tiles</h6>
                   <p className="mb-4 text-muted">Use href prop to navigate to partner pages. Works with both shape variants.</p>
                   <PageGridRow className="mb-4">
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="neutral" logo={sampleLogo} alt="Partner with link" href="#partner-page" />
                     </PageGridCol>
-                    <PageGridCol span={{ base: 4, sm: 4, lg: 3 }}>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
                       <TileLogo shape="square" variant="green" logo={sampleLogo} alt="Featured partner with link" href="#featured-partner" />
                     </PageGridCol>
                   </PageGridRow>
+                  <PageGridRow className="mb-4">
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Rectangle partner with link" href="#partner-page" />
+                    </PageGridCol>
+                  </PageGridRow>
                   <PageGridRow>
-                    <PageGridCol span={{ base: 4, sm: 8, lg: 12 }}>
-                      <div className="d-flex flex-column gap-4">
-                        <TileLogo shape="rectangle" variant="neutral" logo={sampleLogo} alt="Rectangle partner with link" href="#partner-page" />
-                        <TileLogo shape="rectangle" variant="green" logo={sampleLogo} alt="Rectangle featured partner with link" href="#featured-partner" />
-                      </div>
+                    <PageGridCol span={{ base: 2, md: 2, lg: 3 }}>
+                      <TileLogo shape="rectangle" variant="green" logo={sampleLogo} alt="Rectangle featured partner with link" href="#featured-partner" />
                     </PageGridCol>
                   </PageGridRow>
                 </div>
@@ -610,7 +620,7 @@ export default function TileLogoShowcase() {
                   <div style={{ width: '100px', flexShrink: 0 }}><code>shape</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><code>'square' | 'rectangle'</code></div>
                   <div style={{ width: '100px', flexShrink: 0 }}><code>'square'</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Shape variant - square maintains 1:1 aspect ratio, rectangle has fixed height</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Shape variant - square maintains 1:1 aspect ratio, rectangle has 9:5 aspect ratio (width from parent)</div>
                 </div>
                 
                 {/* variant */}
