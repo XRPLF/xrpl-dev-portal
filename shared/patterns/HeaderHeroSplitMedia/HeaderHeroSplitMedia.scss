@@ -63,14 +63,14 @@
 // Design Tokens
 // =============================================================================
 
-// Colors
+// Colors - using design tokens from _colors.scss
 $bds-hero-accent-bg: $green-200;           // #70EE97 - Accent surface background
 $bds-hero-light-bg: $white;                // Light theme background
-$bds-hero-dark-bg: #141414;                // Dark theme background (neutral/black)
-$bds-hero-title-color: #141414;            // Title text color (neutral/black)
-$bds-hero-title-color-dark: $white;        // Title text color in dark mode
-$bds-hero-description-light: #72777e;      // Description text - light mode (neutral/500)
-$bds-hero-description-dark: #e6eaf0;       // Description text - dark mode (neutral/200)
+$bds-hero-dark-bg: $black;                 // #141414 - Dark theme background (neutral/black)
+$bds-hero-title-color: $black;             // #141414 - Title text color (neutral/black)
+$bds-hero-title-color-dark: $white;        // #FFFFFF - Title text color in dark mode
+$bds-hero-description-light: $gray-500;    // #72777E - Description text in light mode (neutral/500)
+$bds-hero-description-dark: $gray-200;     // #E6EAF0 - Description text in dark mode (neutral/200)
 
 // Spacing - Desktop (≥992px)
 $bds-hero-desktop-container-py: 40px;
@@ -353,10 +353,26 @@ html.dark {
     }
   }
 
-  // Title and subtitle always use dark text on accent surface
+  // Title and subtitle always use dark text on accent surface (light mode)
   .bds-hero-split-media__title,
   .bds-hero-split-media__subtitle {
     color: $bds-hero-title-color;
+  }
+}
+
+// Accent surface in dark mode - ensure black text on green background
+// Higher specificity needed to override html.dark rules
+html.dark .bds-hero-split-media--accent {
+  .bds-hero-split-media__title,
+  .bds-hero-split-media__subtitle {
+    color: $bds-hero-title-color; // #141414 - always black on green accent
+  }
+}
+
+html.light .bds-hero-split-media--accent {
+  .bds-hero-split-media__title,
+  .bds-hero-split-media__subtitle {
+    color: $bds-hero-title-color; // #141414 - always black on green accent
   }
 }
 

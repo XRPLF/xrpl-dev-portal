@@ -16501,7 +16501,7 @@ html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-im
   }
 }
 .bds-hero-split-media__description {
-  color: #72777e;
+  color: #72777E;
   font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 300;
   font-size: 16px;
@@ -16590,7 +16590,7 @@ html.light .bds-hero-split-media__title, html.light .bds-hero-split-media__subti
   color: #141414;
 }
 html.light .bds-hero-split-media__description {
-  color: #72777e;
+  color: #72777E;
 }
 
 html.dark .bds-hero-split-media {
@@ -16600,7 +16600,7 @@ html.dark .bds-hero-split-media__title, html.dark .bds-hero-split-media__subtitl
   color: #FFFFFF;
 }
 html.dark .bds-hero-split-media__description {
-  color: #e6eaf0;
+  color: #E6EAF0;
 }
 
 .bds-hero-split-media--accent .bds-hero-split-media__title-surface {
@@ -16619,6 +16619,16 @@ html.dark .bds-hero-split-media__description {
 }
 .bds-hero-split-media--accent .bds-hero-split-media__title,
 .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
+  color: #141414;
+}
+
+html.dark .bds-hero-split-media--accent .bds-hero-split-media__title,
+html.dark .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
+  color: #141414;
+}
+
+html.light .bds-hero-split-media--accent .bds-hero-split-media__title,
+html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
   color: #141414;
 }
 
