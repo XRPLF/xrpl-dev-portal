@@ -74,9 +74,9 @@ DIA offers highly customizable oracles that are individually tailored to each dA
 - Update triggers (deviation thresholds or time-based)
 - Asset coverage (any of 20,000+ supported assets)
 
-These custom oracle feeds are completely free for dApps to set up and use, and are designed to support everything from DeFi and RWAs to advanced financial applications.
+These custom oracle feeds are designed to support everything from DeFi and RWAs to advanced financial applications, and are available for free for dApps to set up and use.
 
-Builders can reach out to the [DIA team](https://www.diadata.org/docs/guides/how-to-guides/request-a-custom-oracle) to request and deploy oracles that match their specific protocol requirements.
+You can reach out to the [DIA team](https://www.diadata.org/docs/guides/how-to-guides/request-a-custom-oracle) to request and deploy oracles that match their specific protocol requirements.
 
 ## How the Oracle Works
 
