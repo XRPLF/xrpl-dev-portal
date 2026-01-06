@@ -83,14 +83,19 @@ $bds-hero-desktop-cta-gap: 24px;
 $bds-hero-desktop-content-gap: 8px;
 
 // Spacing - Tablet (576px - 991px)
+// Base values for DEFAULT surface
 $bds-hero-tablet-container-py: 32px;
 $bds-hero-tablet-title-surface-pt: 16px;
 $bds-hero-tablet-title-surface-px: 16px;
 $bds-hero-tablet-title-surface-pb: 24px;
-$bds-hero-tablet-title-gap: 16px;
-$bds-hero-tablet-description-gap: 24px;
-$bds-hero-tablet-cta-gap: 24px;
-$bds-hero-tablet-content-gap: 32px;
+$bds-hero-tablet-title-gap: 8px;           // Default: 8px, Accent: 16px
+$bds-hero-tablet-description-gap: 32px;    // Default: 32px, Accent: 24px
+$bds-hero-tablet-cta-gap: 16px;            // Both: 16px
+$bds-hero-tablet-content-gap: 32px;        // Default: 32px, Accent: 40px
+// Accent-specific tablet spacing
+$bds-hero-tablet-accent-title-gap: 16px;
+$bds-hero-tablet-accent-description-gap: 24px;
+$bds-hero-tablet-accent-content-gap: 40px;
 
 // Spacing - Mobile (<576px)
 $bds-hero-mobile-container-py: 24px;
@@ -214,12 +219,13 @@ $bds-hero-mobile-content-gap: 32px;
 
     @include media-breakpoint-up(md) {
       gap: $bds-hero-tablet-description-gap;
-      margin-top: 0;
+      margin-top: $bds-hero-tablet-content-gap; // Gap between title and description on tablet
       justify-content: flex-end;
     }
 
     @include media-breakpoint-up(lg) {
       gap: $bds-hero-desktop-description-gap;
+      margin-top: 0; // Desktop uses space-between, no explicit margin needed
     }
   }
 
@@ -357,6 +363,29 @@ html.dark {
   .bds-hero-split-media__title,
   .bds-hero-split-media__subtitle {
     color: $bds-hero-title-color;
+  }
+
+  // Accent surface has different spacing on tablet
+  .bds-hero-split-media__title-group {
+    @include media-breakpoint-up(md) {
+      gap: $bds-hero-tablet-accent-title-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-hero-desktop-title-gap;
+    }
+  }
+
+  .bds-hero-split-media__description-group {
+    @include media-breakpoint-up(md) {
+      gap: $bds-hero-tablet-accent-description-gap;
+      margin-top: $bds-hero-tablet-accent-content-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-hero-desktop-description-gap;
+      margin-top: 0;
+    }
   }
 }
 
