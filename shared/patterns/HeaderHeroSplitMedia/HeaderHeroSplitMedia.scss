@@ -1,0 +1,389 @@
+// HeaderHeroSplitMedia Pattern Styles
+// =============================================================================
+// A page-level hero pattern with split content and media layout.
+// Supports theme (light/dark), surface (default/accent), and layout variants.
+
+// Helper mixin to combine typography properties from two tokens
+// Uses font-size from $size-token, line-height and letter-spacing from $spacing-token
+@mixin _type-mixed($size-token, $spacing-token) {
+  $size-t: map-get($type-scale, $size-token);
+  $spacing-t: map-get($type-scale, $spacing-token);
+  
+  font-family: map-get($spacing-t, font);
+  font-weight: map-get($spacing-t, weight);
+  
+  // Mobile
+  $size-mobile: map-get($size-t, mobile);
+  $spacing-mobile: map-get($spacing-t, mobile);
+  font-size: map-get($size-mobile, size);
+  line-height: map-get($spacing-mobile, line);
+  letter-spacing: map-get($spacing-mobile, letter);
+  
+  // Tablet
+  @include media-breakpoint-up(md) {
+    $size-tablet: map-get($size-t, tablet);
+    $spacing-tablet: map-get($spacing-t, tablet);
+    font-size: map-get($size-tablet, size);
+    line-height: map-get($spacing-tablet, line);
+    letter-spacing: map-get($spacing-tablet, letter);
+  }
+  
+  // Desktop
+  @include media-breakpoint-up(lg) {
+    $size-desktop: map-get($size-t, desktop);
+    $spacing-desktop: map-get($spacing-t, desktop);
+    font-size: map-get($size-desktop, size);
+    line-height: map-get($spacing-desktop, line);
+    letter-spacing: map-get($spacing-desktop, letter);
+  }
+}
+//
+// BEM Naming Convention:
+// .bds-hero-split-media              - Root element
+// .bds-hero-split-media--default     - Default surface (no background)
+// .bds-hero-split-media--accent      - Accent surface (green background on title)
+// .bds-hero-split-media--content-left  - Content on left, media on right
+// .bds-hero-split-media--content-right - Content on right, media on left
+// .bds-hero-split-media__container   - PageGrid container with vertical padding
+// .bds-hero-split-media__row         - PageGrid.Row with custom gap spacing
+// .bds-hero-split-media__content-col - PageGrid.Col wrapper for content
+// .bds-hero-split-media__content     - Content column (title + description)
+// .bds-hero-split-media__title-surface - Optional accent background wrapper
+// .bds-hero-split-media__title-group - Title + subtitle container
+// .bds-hero-split-media__title       - Main heading (display-md)
+// .bds-hero-split-media__subtitle    - Subtitle text (sh-sm-l)
+// .bds-hero-split-media__description-group - Description + CTA container
+// .bds-hero-split-media__description - Body text (body-l)
+// .bds-hero-split-media__cta         - CTA buttons container
+// .bds-hero-split-media__media-col   - PageGrid.Col wrapper for media
+// .bds-hero-split-media__media       - Media column
+// .bds-hero-split-media__media-img   - Media image
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Colors
+$bds-hero-accent-bg: $green-200;           // #70EE97 - Accent surface background
+$bds-hero-light-bg: $white;                // Light theme background
+$bds-hero-dark-bg: #141414;                // Dark theme background (neutral/black)
+$bds-hero-title-color: #141414;            // Title text color (neutral/black)
+$bds-hero-title-color-dark: $white;        // Title text color in dark mode
+$bds-hero-description-light: #72777e;      // Description text - light mode (neutral/500)
+$bds-hero-description-dark: #e6eaf0;       // Description text - dark mode (neutral/200)
+
+// Spacing - Desktop (≥992px)
+$bds-hero-desktop-container-py: 40px;
+$bds-hero-desktop-title-surface-pt: 16px;
+$bds-hero-desktop-title-surface-px: 16px;
+$bds-hero-desktop-title-surface-pb: 24px;
+$bds-hero-desktop-title-gap: 16px;
+$bds-hero-desktop-description-gap: 40px;
+$bds-hero-desktop-cta-gap: 24px;
+$bds-hero-desktop-content-gap: 8px;
+
+// Spacing - Tablet (576px - 991px)
+$bds-hero-tablet-container-py: 32px;
+$bds-hero-tablet-title-surface-pt: 16px;
+$bds-hero-tablet-title-surface-px: 16px;
+$bds-hero-tablet-title-surface-pb: 24px;
+$bds-hero-tablet-title-gap: 16px;
+$bds-hero-tablet-description-gap: 24px;
+$bds-hero-tablet-cta-gap: 24px;
+$bds-hero-tablet-content-gap: 32px;
+
+// Spacing - Mobile (<576px)
+$bds-hero-mobile-container-py: 24px;
+$bds-hero-mobile-title-surface-pt: 8px;
+$bds-hero-mobile-title-surface-px: 8px;
+$bds-hero-mobile-title-surface-pb: 16px;
+$bds-hero-mobile-title-gap: 8px;
+$bds-hero-mobile-description-gap: 24px;
+$bds-hero-mobile-cta-gap: 16px;
+$bds-hero-mobile-content-gap: 32px;
+
+// =============================================================================
+// Base Styles
+// =============================================================================
+
+.bds-hero-split-media {
+  width: 100%;
+
+  // Container - uses PageGrid container, adds vertical padding
+  &__container {
+    // Mobile vertical padding
+    padding-top: $bds-hero-mobile-container-py;
+    padding-bottom: $bds-hero-mobile-container-py;
+
+    // Tablet vertical padding
+    @include media-breakpoint-up(md) {
+      padding-top: $bds-hero-tablet-container-py;
+      padding-bottom: $bds-hero-tablet-container-py;
+    }
+
+    // Desktop vertical padding
+    @include media-breakpoint-up(lg) {
+      padding-top: $bds-hero-desktop-container-py;
+      padding-bottom: $bds-hero-desktop-container-py;
+    }
+  }
+
+  // Row - uses PageGrid.Row, override gap for custom spacing
+  &__row {
+    // Override PageGrid default gap with custom spacing
+    gap: $bds-hero-mobile-content-gap;
+
+    // Tablet gap
+    @include media-breakpoint-up(md) {
+      gap: $bds-hero-tablet-content-gap;
+    }
+
+    // Desktop gap
+    @include media-breakpoint-up(lg) {
+      gap: $bds-hero-desktop-content-gap;
+    }
+  }
+
+  // Content column wrapper - uses PageGrid.Col
+  &__content-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Content column
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 100%;
+
+    // Tablet & Desktop - match media height
+    @include media-breakpoint-up(md) {
+      min-height: 100%;
+    }
+  }
+
+  // Title surface - wrapper for accent background
+  // Default surface has no background or padding (see .bds-hero-split-media--accent modifier)
+  // Styles are applied via .bds-hero-split-media--accent modifier only
+
+  // Title group - contains title and subtitle
+  // Text width constraints: 4/4 mobile, 6/8 tablet, 5/12 desktop
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-hero-mobile-title-gap;
+    // Mobile: full width (4/4)
+    max-width: 100%;
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-hero-tablet-title-gap;
+      // Tablet: 6/8 of grid, column is 8/8 (full width), so text = 6/8 = 75%
+      max-width: 75%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-hero-desktop-title-gap;
+      // Desktop: 5/12 of grid, column is 6/12, so text = 5/6 of column
+      max-width: calc(5 / 6 * 100%);
+    }
+  }
+
+  // Title - main heading
+  &__title {
+    color: $bds-hero-title-color;
+    @include type(display-md);
+    margin: 0; // Override mixin's margin-bottom from pspace
+  }
+
+  // Subtitle
+  // Uses font-size from subhead-sm-r, line-height and letter-spacing from subhead-sm-l
+  &__subtitle {
+    color: $bds-hero-title-color;
+    @include _type-mixed(subhead-sm-r, subhead-sm-l);
+    margin: 0; // Override mixin's margin-bottom from pspace
+  }
+
+  // Description group - contains body text and CTA
+  &__description-group {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-hero-mobile-description-gap;
+    margin-top: $bds-hero-mobile-content-gap;
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-hero-tablet-description-gap;
+      margin-top: 0;
+      justify-content: flex-end;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-hero-desktop-description-gap;
+    }
+  }
+
+  // Description text
+  // Text width constraints: 4/4 mobile, 6/8 tablet, 5/12 desktop
+  &__description {
+    color: $bds-hero-description-light;
+    @include type(body-l);
+    margin: 0; // Override mixin's margin-bottom from pspace
+    // Mobile: full width (4/4)
+    max-width: 100%;
+
+    @include media-breakpoint-up(md) {
+      // Tablet: 6/8 of grid, column is 8/8 (full width), so text = 6/8 = 75%
+      max-width: 75%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      // Desktop: 5/12 of grid, column is 6/12, so text = 5/6 of column
+      max-width: calc(5 / 6 * 100%);
+    }
+  }
+
+  // CTA buttons container
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; // Prevent buttons from stretching to full width on mobile
+    gap: $bds-hero-mobile-cta-gap;
+
+    // Tablet & Desktop - horizontal layout
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      align-items: center;
+      gap: $bds-hero-tablet-cta-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-hero-desktop-cta-gap;
+    }
+  }
+
+  // Media column wrapper - uses PageGrid.Col
+  &__media-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Media column
+  &__media {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    // Tablet - 2:1 aspect ratio
+    @include media-breakpoint-up(md) {
+      aspect-ratio: 2 / 1;
+    }
+
+    // Desktop - 1:1 aspect ratio
+    @include media-breakpoint-up(lg) {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  // Media image
+  &__media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+// =============================================================================
+// Theme Styles (controlled by html.light/html.dark classes)
+// =============================================================================
+
+// Light theme (default)
+html.light {
+  .bds-hero-split-media {
+    background-color: $bds-hero-light-bg;
+
+    &__title,
+    &__subtitle {
+      color: $bds-hero-title-color;
+    }
+
+    &__description {
+      color: $bds-hero-description-light;
+    }
+  }
+}
+
+// Dark theme
+html.dark {
+  .bds-hero-split-media {
+    background-color: $bds-hero-dark-bg;
+
+    &__title,
+    &__subtitle {
+      color: $bds-hero-title-color-dark;
+    }
+
+    &__description {
+      color: $bds-hero-description-dark;
+    }
+  }
+}
+
+// =============================================================================
+// Surface Modifiers
+// =============================================================================
+
+// Accent surface - green background on title section
+.bds-hero-split-media--accent {
+  .bds-hero-split-media__title-surface {
+    background-color: $bds-hero-accent-bg;
+
+    // Mobile padding
+    padding: $bds-hero-mobile-title-surface-pt $bds-hero-mobile-title-surface-px $bds-hero-mobile-title-surface-pb;
+
+    // Tablet padding
+    @include media-breakpoint-up(md) {
+      padding: $bds-hero-tablet-title-surface-pt $bds-hero-tablet-title-surface-px $bds-hero-tablet-title-surface-pb;
+    }
+
+    // Desktop padding
+    @include media-breakpoint-up(lg) {
+      padding: $bds-hero-desktop-title-surface-pt $bds-hero-desktop-title-surface-px $bds-hero-desktop-title-surface-pb;
+    }
+  }
+
+  // Title and subtitle always use dark text on accent surface
+  .bds-hero-split-media__title,
+  .bds-hero-split-media__subtitle {
+    color: $bds-hero-title-color;
+  }
+}
+
+// =============================================================================
+// Layout Modifiers
+// =============================================================================
+
+// Content right layout - order is handled by component JSX
+// No CSS needed as column order is controlled by React component order
+
+// =============================================================================
+// Optional Content Modifiers
+// =============================================================================
+
+// Title only - no description or CTAs
+// When there's no description group content, the title section should expand
+.bds-hero-split-media--title-only {
+  .bds-hero-split-media__content {
+    justify-content: center;
+  }
+}
+
+// No description but has CTAs
+// CTAs should be positioned closer to title without extra gap
+.bds-hero-split-media--no-description {
+  .bds-hero-split-media__description-group {
+    // Remove the gap since there's no description text
+    gap: 0;
+  }
+}
