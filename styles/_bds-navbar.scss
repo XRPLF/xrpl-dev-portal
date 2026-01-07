@@ -1,0 +1,968 @@
+// BDS Navbar Styles - Phase 1 (Light Mode Only)
+// Uses color variables from _colors.scss
+// Follows breakpoints from _breakpoints.scss
+
+$bds-navbar-height-desktop: 80px;
+$bds-navbar-height-tablet: 56px;
+$bds-navbar-height-mobile: 56px;
+$bds-navbar-padding-desktop: 0 32px;
+$bds-navbar-padding-tablet: 0 32px;
+$bds-navbar-padding-mobile: 0 20px;
+
+// Main navbar container
+.bds-navbar {
+  position: relative;
+  width: 100%;
+  height: $bds-navbar-height-mobile;
+  margin: 0;
+  padding: 0;
+  background-color: $white;
+  border-bottom: none; // Remove border, submenu has its own styling
+  box-sizing: border-box;
+  z-index: 1000;
+
+  // Tablet
+  @include media-breakpoint-up(md) {
+    height: $bds-navbar-height-tablet;
+  }
+
+  // Desktop
+  @include media-breakpoint-up(lg) {
+    height: $bds-navbar-height-desktop;
+  }
+
+  // Content wrapper - flex container
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: $bds-navbar-padding-mobile;
+    max-width: 100%;
+    margin: 0 auto;
+
+    // Tablet
+    @include media-breakpoint-up(md) {
+      padding: $bds-navbar-padding-tablet;
+    }
+
+    // Desktop
+    @include media-breakpoint-up(lg) {
+      padding: $bds-navbar-padding-desktop;
+    }
+  }
+
+  // Logo container
+  &__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    // Symbol logo (all breakpoints - mobile, tablet, desktop)
+    &-symbol {
+      display: block;
+      width: 33px;
+      height: 28px;
+
+      // Tablet
+      @include media-breakpoint-up(md) {
+        width: 33px;
+        height: 28px;
+      }
+
+      // Desktop
+      @include media-breakpoint-up(lg) {
+        width: 37px;
+        height: 32px;
+      }
+    }
+
+    // Full logotype - hidden for now (same logo across all breakpoints)
+    &-full {
+      display: none;
+    }
+  }
+
+  // Navigation items container - centered
+  &__items {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+
+    // Tablet - show nav items
+    @include media-breakpoint-up(md) {
+      display: flex;
+      font-size: 14px;
+      line-height: 20.1px;
+      gap: 24px;
+    }
+
+    // Desktop - larger font and gap
+    @include media-breakpoint-up(lg) {
+      font-size: 16px;
+      line-height: 23.2px;
+      gap: 32px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  // Individual nav item
+  &__item {
+    color: $black;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 4px 0;
+
+    &:hover,
+    &--active {
+      color: $green-400;
+    }
+
+    &:focus {
+      outline: none;
+      color: $green-400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+  }
+
+  // Right side controls container
+  &__controls {
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    flex-shrink: 0;
+
+    // Tablet - show controls
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+  }
+
+  // Icon buttons (search, mode toggle)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    // Desktop - larger icons
+    @include media-breakpoint-up(lg) {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Language selector pill button
+  &__lang-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 8px 9px 8px 8px;
+    background: transparent;
+    border: 1px solid $black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20.1px;
+    color: $black;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    // Desktop - larger pill
+    @include media-breakpoint-up(lg) {
+      height: 32px;
+      padding: 8px 13px 8px 12px;
+      border-width: 1.3px;
+      gap: 8px;
+      font-size: 16px;
+      line-height: 23.2px;
+    }
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+
+      @include media-breakpoint-up(lg) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &-text {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    &-chevron {
+      width: 8px;
+      height: 13px;
+      transform: rotate(90deg);
+      flex-shrink: 0;
+    }
+  }
+
+  // Hamburger menu button (mobile only)
+  &__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    // Hide on tablet and desktop
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// When alert banner is shown, add margin to navbar
+.bds-navbar--with-banner {
+  margin-top: 52px;
+}
+
+// Override old top-nav padding when using new BDS navbar
+// The _top-nav.scss adds padding-top: 80px to RootLayout for old fixed navbar
+// We need to reset this for the new non-fixed navbar
+[data-component-name="layouts/RootLayout"]:has(.bds-navbar) {
+  padding-top: 0 !important;
+}
+
+// Additional override with body context for higher specificity
+body [data-component-name="layouts/RootLayout"]:has(> .bds-navbar),
+body [data-component-name="layouts/RootLayout"]:has(header.bds-navbar) {
+  padding-top: 0 !important;
+}
+
+// Ensure full-width layout when BDS navbar is present
+html:has(.bds-navbar) {
+  overflow-x: hidden;
+}
+
+body:has(.bds-navbar) {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+[data-component-name="layouts/RootLayout"]:has(.bds-navbar) {
+  width: 100%;
+  max-width: none;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+// Style scrollbar to match navbar background (light mode)
+html.light:has(.bds-navbar) {
+  // Webkit browsers (Chrome, Safari, Edge)
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: $white;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray-300;
+    border-radius: 6px;
+    border: 3px solid $white;
+
+    &:hover {
+      background-color: $gray-400;
+    }
+  }
+
+  // Firefox
+  scrollbar-color: $gray-300 $white;
+  scrollbar-width: thin;
+}
+
+// =============================================================================
+// Submenu Backdrop Blur Overlay
+// Blurs the page content when submenu is open
+// =============================================================================
+
+.bds-submenu-backdrop {
+  display: none;
+  position: fixed;
+  top: $bds-navbar-height-desktop; // Start below navbar
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999; // Below navbar (1000) and submenu (1001)
+  pointer-events: none;
+  opacity: 0;
+  background-color: rgba($gray-200, 0.65); // Semi-transparent gray
+  backdrop-filter: blur(17.5px);
+  -webkit-backdrop-filter: blur(17.5px);
+  transition: opacity 300ms ease-out;
+
+  // Only show on tablet and desktop
+  @include media-breakpoint-up(md) {
+    display: block;
+    top: $bds-navbar-height-tablet;
+  }
+
+  @include media-breakpoint-up(lg) {
+    top: $bds-navbar-height-desktop;
+  }
+
+  // Active state
+  &--active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// =============================================================================
+// Desktop Submenu Styles
+// Two-column layout with sequential animation
+// Matches Figma design: 612px wide, 390px tall, gray background container
+// Animation: Open = left drops down from top, then right slides out from left
+//            Close = right slides back left, then left slides up (reverse)
+// =============================================================================
+
+.bds-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  pointer-events: none;
+  overflow: hidden; // Clip content during animation
+  opacity: 0; // Hidden by default
+  visibility: hidden; // Prevent interaction when hidden
+  
+  // Container with gray background
+  width: 612px;
+  height: 390px;
+  padding: 8px;
+  gap: 8px;
+  background-color: $gray-200; // #E6EAF0 - Neutral 200
+  
+  // On close: wait for column animations (300ms + 200ms delay), then hide container
+  transition: opacity 100ms ease-out 400ms, visibility 0ms linear 500ms;
+
+  // Only show on tablet and desktop
+  @include media-breakpoint-up(md) {
+    display: flex;
+  }
+
+  // Active state - triggered by hover
+  &--active {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    // On open: show immediately
+    transition: opacity 0ms, visibility 0ms;
+
+    .bds-submenu__left {
+      transform: translateY(0);
+      opacity: 1;
+      // On open: left drops down first (no delay)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+                  opacity 150ms ease-out;
+    }
+
+    .bds-submenu__right {
+      transform: translateX(0);
+      opacity: 1;
+      // On open: right slides out second (delayed by 200ms)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
+                  opacity 150ms ease-out 200ms;
+    }
+  }
+  
+  // Wrapper to bridge gap between nav item and submenu
+  &-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding-top: 0; // No gap - submenu starts right at navbar bottom
+  }
+
+  // Left column - slides down from top (starts completely above)
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 298px;
+    height: 374px; // Fixed height to match design
+    transform: translateY(-100%); // Start completely above (hidden)
+    opacity: 0;
+    background-color: $gray-200; // Background on column so it animates with content
+    // On close: left animates second (delayed), slides back up
+    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
+                opacity 150ms ease-in 350ms;
+  }
+
+  // Right column - slides from left (starts completely to the left)
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 290px;
+    height: 374px; // Fixed height to match design
+    transform: translateX(-100%); // Start completely to the left (hidden behind left column)
+    opacity: 0;
+    background-color: $gray-200; // Background on column so it animates with content
+    // On close: right animates first (no delay), slides back left
+    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+                opacity 150ms ease-in 150ms;
+  }
+
+  // Section card (white background)
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 0 0;
+    min-height: 1px;
+    min-width: 1px;
+    padding: 16px 24px;
+    background-color: $white;
+  }
+
+  // Tier 1 item (main item with icon)
+  &__tier1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  // Tier 2 list (sub-items)
+  &__tier2 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  // Icon container (SVGs have background colors built in)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Main link item (Tier 1)
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.2px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $green-400;
+
+      .bds-submenu__arrow {
+        transform: translateX(2px);
+      }
+    }
+
+    // Bold style for main items
+    &--bold {
+      font-weight: 500;
+    }
+  }
+
+  // Sub-link item (Tier 2)
+  &__sublink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 23.2px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $green-400;
+    }
+
+    // Active state (green with arrow)
+    &--active {
+      color: $green-400;
+      font-weight: 400;
+
+      .bds-submenu__arrow {
+        display: inline-flex;
+      }
+    }
+  }
+
+  // Arrow icon for links
+  &__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Hide arrow by default on sub-links (shown on active)
+  &__sublink &__arrow {
+    display: none;
+  }
+}
+
+// Nav item wrapper (no longer used for submenu positioning)
+.bds-navbar__item-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+// =============================================================================
+// Mobile Menu Styles
+// Full-screen accordion menu for mobile devices
+// =============================================================================
+
+.bds-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $white;
+  z-index: 1002;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 300ms ease-out;
+
+  // Only show on mobile (below tablet breakpoint)
+  @include media-breakpoint-down(sm) {
+    display: flex;
+  }
+
+  // Open state
+  &--open {
+    transform: translateX(0);
+  }
+
+  // Mobile menu header
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 24px;
+    background-color: $white;
+    border-bottom: 1px solid $gray-200;
+    flex-shrink: 0;
+  }
+
+  // Close button (X icon)
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    img, svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Menu content area
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 343px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  // Accordion item container
+  &__accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  // Accordion item header (clickable)
+  &__accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 8px;
+    background-color: $white;
+    border: none;
+    border-bottom: 1px solid $gray-300;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.1px;
+    color: $black;
+    text-align: left;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+
+  // Accordion chevron
+  &__chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13px;
+    height: 8px;
+    transition: transform 200ms ease;
+
+    img, svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    // Expanded state - rotate chevron
+    &--expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Accordion content (collapsible)
+  &__accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease-out;
+    background-color: $white;
+    border-bottom: 1px solid $gray-300;
+
+    // Expanded state
+    &--expanded {
+      max-height: 600px;
+    }
+  }
+
+  // Tier list inside accordion
+  &__tier-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px 8px 16px 8px;
+  }
+
+  // Tier 1 item (main item with icon)
+  &__tier1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  // Tier 2 list (sub-items)
+  &__tier2 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    padding-left: 26px; // Indent for sub-items (icon width + gap)
+  }
+
+  // Mobile icon container (smaller than desktop, SVGs have background colors built in)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Mobile link item
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.1px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $green-400;
+    }
+
+    // Bold style for main items
+    &--bold {
+      font-weight: 500;
+    }
+  }
+
+  // Mobile sub-link item
+  &__sublink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20.1px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $green-400;
+    }
+
+    // Active state (green with arrow)
+    &--active {
+      color: $green-400;
+      font-weight: 400;
+
+      .bds-mobile-menu__arrow {
+        display: inline-flex;
+      }
+    }
+  }
+
+  // Mobile arrow icon
+  &__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 13px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Hide arrow by default on sub-links
+  &__sublink &__arrow {
+    display: none;
+  }
+
+  // Mobile menu footer
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background-color: $white;
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+
+  // Footer language pill (smaller version)
+  &__lang-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 8px 9px 8px 8px;
+    background: transparent;
+    border: 1px solid $black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20.1px;
+    color: $black;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+
+  &__lang-pill-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  &__lang-pill-text {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__lang-pill-chevron {
+    width: 8px;
+    height: 13px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+  }
+
+  // Footer icon buttons
+  &__footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    img, svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+// Body scroll lock when mobile menu is open
+body.bds-mobile-menu-open {
+  overflow: hidden;
+}
+
+// Body scroll lock when desktop submenu is open
+body.bds-submenu-open {
+  overflow: hidden;
+}
+
