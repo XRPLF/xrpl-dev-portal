@@ -57,15 +57,16 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
   // Layout
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; // Changed to row since this is a PageGridRow
   width: 100%;
   box-sizing: border-box;
   min-height: 280px;
-  height: auto; 
+  align-items: stretch; // Force children (PageGridCol) to stretch to full height
   
   // Ensure PageGridCol stretches to full height
   > [class*="bds-grid__col"] {
-    height: 100%;
+    display: flex; // Make column a flex container
+    flex-direction: column; // Stack content vertically
   }
   
   // Background positioning for image variant
