@@ -225,7 +225,7 @@ The `account_flags` field contains the following nested fields:
 | `noFreeze`             | Boolean | If `true`, the account has permanently given up the abilities to freeze individual trust lines or end a global freeze. See [No Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze) for details. |
 | `passwordSpent`        | Boolean | If `false`, the account can send a special [key reset transaction](../../../../concepts/transactions/transaction-cost.md#key-reset-transaction) with a transaction cost of 0. The protocol turns this flag on and off automatically; it is not controlled by a user-facing setting. |
 | `requireAuthorization` | Boolean | If `true`, the account is using [Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) to limit who can hold the tokens it issues. |
-| `requireDestinationTag` | Boolean | If `true`, the account [requires a destination tag](../../../../tutorials/best-practices/key-management/require-destination-tags.md) on all payments it receives. |
+| `requireDestinationTag` | Boolean | If `true`, the account [requires a destination tag](../../../../tutorials/compliance-features/require-destination-tags.md) on all payments it receives. |
 
 The `queue_data` field, if present, contains the following nested fields:
 

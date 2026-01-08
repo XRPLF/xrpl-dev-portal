@@ -57,5 +57,5 @@ For more information, see the following articles:
 
 * [MultiSign Amendment](/resources/known-amendments.md#multisign)
 * [Multi-Signing Overview](/docs/concepts/accounts/multi-signing)
-* [Tutorial - Set Up Multi-Signing](/docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing)
-* [Tutorial - Send a Multi-Signed Transaction](/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction)
+* [Tutorial - Set Up Multi-Signing](/docs/tutorials/best-practices/key-management/set-up-multi-signing.md)
+* [Tutorial - Send a Multi-Signed Transaction](/docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md)

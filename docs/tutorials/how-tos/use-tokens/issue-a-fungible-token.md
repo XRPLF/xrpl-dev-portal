@@ -108,7 +108,7 @@ Other settings you may want to, optionally, configure for your cold address (iss
 | [Tick Size][]                | 5                   | Limit the number of decimal places in exchange rates for your token in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). A tick size of 5-6 reduces churn of almost-equivalent offers and speeds up price discovery compared to the default of 15. |
 | [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
 
-[Require Destination Tags]: ../manage-account-settings/require-destination-tags.md
+[Require Destination Tags]: ../../compliance-features/require-destination-tags.md
 [Transfer Fee]: ../../../concepts/tokens/fungible-tokens/transfer-fees.md
 [Tick Size]: ../../../concepts/tokens/decentralized-exchange/ticksize.md
 [Domain]: ../../../references/protocol/transactions/types/accountset.md#domain

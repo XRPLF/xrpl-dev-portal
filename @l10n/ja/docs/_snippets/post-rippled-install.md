@@ -2,7 +2,7 @@
 
 `rippled`ログメッセージの詳細は、[ログメッセージについて](../infrastructure/troubleshooting/understanding-log-messages.md)をご覧ください。
 
-`rippled`が残りのネットワークと同期されたら、ストック`rippled`サーバが完全に機能するようになります。このサーバを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。`rippled`サーバがネットワークと同期されているかどうかを判別するには、[`rippled`サーバの状況](../references/http-websocket-apis/api-conventions/rippled-server-states.md)を使用します。[`rippled`のコマンドラインインターフェイス](../tutorials/http-websocket-apis/build-apps/get-started.md#コマンドライン)を使用すれば、これを迅速にテストできます。
+`rippled`が残りのネットワークと同期されたら、ストック`rippled`サーバが完全に機能するようになります。このサーバを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。`rippled`サーバがネットワークと同期されているかどうかを判別するには、[`rippled`サーバの状況](../references/http-websocket-apis/api-conventions/rippled-server-states.md)を使用します。[`rippled`のコマンドラインインターフェイス](../tutorials/http-websocket-apis/get-started.md#コマンドライン)を使用すれば、これを迅速にテストできます。
 
 ```sh
 rippled server_info

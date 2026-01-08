@@ -88,7 +88,7 @@ El [metodo wallet_propose][] es una forma de generar el par de claves maestras. 
 
 **Atención:** Si un actor malicioso conoce tu clave privada maestra (o semilla), tendrá control completo sobre tu cuenta, a no ser que tu par de claves maestras se inhabilite. Puedes tomar todo tu dinero de la cuenta posee y causar un daño irreparable. ¡Trata tus valores secretos con cuidado!
 
-Dado que cambiar el par de claves maestras es imposible, debes cuidarlo en proporción al valor de lo que posea. Una buena práctica es [guardar tu par de claves maestras offline](../../tutorials/how-tos/manage-account-settings/offline-account-setup.md) y configurar un par de claves normales para firmar transacciones en tu cuenta. Al mantener el par de claves maestras activadas pero offline, puedes estar razonablemente seguro de que nadie puede acceder a él a través de Internet, pero aun así deberías encontrarlo en caso de una emergencia.
+Dado que cambiar el par de claves maestras es imposible, debes cuidarlo en proporción al valor de lo que posea. Una buena práctica es [guardar tu par de claves maestras offline](/docs/tutorials/best-practices/key-management/offline-account-setup.md) y configurar un par de claves normales para firmar transacciones en tu cuenta. Al mantener el par de claves maestras activadas pero offline, puedes estar razonablemente seguro de que nadie puede acceder a él a través de Internet, pero aun así deberías encontrarlo en caso de una emergencia.
 
 Mantener tu par de claves maestras offline significa no colocar tu información secreta (passphrase, semilla, or clave privada) en cualquier sitio en que los actores maliciosos puedan tener acceso a él. En general, esto quiere decir que no está al alcance de un programa inofrmático que interactúe con Internet. Por ejemplo, puedes guardarlo en un equipo que no se conecta nunca a Internet, en un trozo de papel guardado en una caja fuerte, o tenerla completamente memorizada. (Memorizarla tiene algunos puntos inconvenientes, incluido ser imposible pasar la clave una vez muerto.)
 
@@ -119,7 +119,7 @@ Una buena práctica de seguridad es guardar tu clave privada maestra en algun si
 
 El par de claves normales tiene el mismo formato que el par de claves maestras. Las generas de la misma forma (por ejemplo, usando el [método wallet_propose][]). La única diferencia es que el par de claves normales es que el par no está intrínsicamente vinculado a la cuenta para la que firma transacciones. Es posible (pero no es buena idea) utilizar el par de claves maestras de una cuenta como lel par de claves normales para otra cuenta.
 
-La [transacción SetRegularKey][] asigna o cambia el par de claves normales de una cuenta. Para un tutorial de asignación o cambio de un par de claves normales, ver [Asignar par de claves normales](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md).
+La [transacción SetRegularKey][] asigna o cambia el par de claves normales de una cuenta. Para un tutorial de asignación o cambio de un par de claves normales, ver [Asignar par de claves normales](/docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md).
 
 
 ## Algorítmos de firma
@@ -248,8 +248,8 @@ Los pasos para derivar par de claves de cuenta XRP Ledger secp256k1 desde un val
 - **Conceptos:**
     - [Direcciones de emisión y operacionales](account-types.md)
 - **Tutoriales:**
-    - [Asignación de par de claves normales](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
-    - [Cambiar o eliminar par de claves normales](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+    - [Asignación de par de claves normales](/docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md)
+    - [Cambiar o eliminar par de claves normales](/docs/tutorials/best-practices/key-management/change-or-remove-a-regular-key-pair.md)
 - **Referencias:**
     - [Transacción SetRegularKey][]
     - [Objeto de ledger AccountRoot](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
