@@ -87,8 +87,8 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
     : {};
 
   return (
-    <PageGrid containerWide={true}>
-      <PageGridRow className={classNames}>
+    <PageGrid containerWide={true} >
+      <PageGridRow className={classNames} style={inlineStyle}>
         <PageGridCol span={{base: 4, md: 6, lg: 8}}>
           <div className="bds-callout-media-banner__content">
             {/* Text Content */}
