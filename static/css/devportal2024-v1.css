@@ -14537,7 +14537,7 @@ article h1:first-of-type:before, article .h1:first-of-type:before {
 .bds-navbar {
   position: relative;
   width: 100%;
-  height: 56px;
+  height: 80px;
   margin: 0;
   padding: 0;
   background-color: #FFFFFF;
@@ -14547,7 +14547,7 @@ article h1:first-of-type:before, article .h1:first-of-type:before {
 }
 @media (min-width: 576px) {
   .bds-navbar {
-    height: 56px;
+    height: 80px;
   }
 }
 @media (min-width: 992px) {
@@ -14856,7 +14856,7 @@ html.light:has(.bds-navbar) {
 @media (min-width: 576px) {
   .bds-submenu-backdrop {
     display: block;
-    top: 56px;
+    top: 80px;
   }
 }
 @media (min-width: 992px) {
