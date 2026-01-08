@@ -9,7 +9,7 @@ export interface CalloutMediaBannerProps {
   /** Background image URL - overrides variant color when provided */
   backgroundImage?: string;
   /** Main heading text */
-  heading: string;
+  heading?: string;
   /** Subheading/description text */
   subheading: string;
   /** Primary button configuration */
@@ -88,43 +88,43 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
 
   return (
     <PageGrid containerWide={true}>
-    <PageGridRow className={classNames}>
-      <PageGridCol span={{base: 4, md: 6, lg: 8}}>
-        <div className="bds-callout-media-banner__content">
-          {/* Text Content */}
-          <div className="bds-callout-media-banner__text">
-            <h2 className="bds-callout-media-banner__heading">{heading}</h2>
-            <p className="bds-callout-media-banner__subheading">{subheading}</p>
-          </div>
-
-          {/* Buttons */}
-          {(primaryButton || tertiaryButton) && (
-            <div className="bds-callout-media-banner__actions">
-              {primaryButton && (
-                <Button
-                  variant="primary"
-                  color={buttonColor}
-                  href={primaryButton.href}
-                  onClick={primaryButton.onClick}
-                >
-                  {primaryButton.label}
-                </Button>
-              )}
-              {tertiaryButton && (
-                <Button
-                  variant="tertiary"
-                  color={buttonColor}
-                  href={tertiaryButton.href}
-                  onClick={tertiaryButton.onClick}
-                >
-                  {tertiaryButton.label}
-                </Button>
-              )}
+      <PageGridRow className={classNames}>
+        <PageGridCol span={{base: 4, md: 6, lg: 8}}>
+          <div className="bds-callout-media-banner__content">
+            {/* Text Content */}
+            <div className="bds-callout-media-banner__text">
+              {heading && <h2 className="bds-callout-media-banner__heading">{heading}</h2>}
+              <p className="bds-callout-media-banner__subheading">{subheading}</p>
             </div>
-          )}
-        </div>
-      </PageGridCol>
-    </PageGridRow>
+
+            {/* Buttons */}
+            {(primaryButton || tertiaryButton) && (
+              <div className="bds-callout-media-banner__actions">
+                {primaryButton && (
+                  <Button
+                    variant="primary"
+                    color={buttonColor}
+                    href={primaryButton.href}
+                    onClick={primaryButton.onClick}
+                  >
+                    {primaryButton.label}
+                  </Button>
+                )}
+                {tertiaryButton && (
+                  <Button
+                    variant="tertiary"
+                    color={buttonColor}
+                    href={tertiaryButton.href}
+                    onClick={tertiaryButton.onClick}
+                  >
+                    {tertiaryButton.label}
+                  </Button>
+                )}
+              </div>
+            )}
+          </div>
+        </PageGridCol>
+      </PageGridRow>
     </PageGrid>
   );
 };

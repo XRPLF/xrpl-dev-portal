@@ -312,18 +312,17 @@ export default function CalloutMediaBannerShowcase() {
             <PageGridRow>
               <PageGridCol span={12}>
                 <div className="mb-3">
-                  <strong>Tertiary Button Only</strong>
+                  <strong>No buttons</strong>
                   <br />
-                  <small className="text-muted">Softer, secondary action.</small>
+                  <small className="text-muted">Informational banner without call-to-action.</small>
                 </div>
               </PageGridCol>
             </PageGridRow>
           </PageGrid>
           <CalloutMediaBanner
             variant="lilac"
-            heading="Explore More"
-            subheading="Discover additional resources and information."
-            tertiaryButton={{ label: "Browse Resources", href: "#resources" }}
+            heading="The Compliant Ledger Protocol"
+            subheading="A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance."
           />
         </div>
 
@@ -333,17 +332,18 @@ export default function CalloutMediaBannerShowcase() {
             <PageGridRow>
               <PageGridCol span={12}>
                 <div className="mb-3">
-                  <strong>No Buttons</strong>
+                  <strong>No heading, buttons</strong>
                   <br />
-                  <small className="text-muted">Informational banner without call-to-action.</small>
+                  <small className="text-muted">Alternative informational banner without call-to-action.</small>
                 </div>
               </PageGridCol>
             </PageGridRow>
           </PageGrid>
           <CalloutMediaBanner
             variant="green"
-            heading="System Announcement"
             subheading="Important information or announcement without requiring user action."
+            primaryButton={{ label: "Take Action", href: "#action" }}
+            tertiaryButton={{ label: "Learn More", href: "#learn" }}
           />
         </div>
 
