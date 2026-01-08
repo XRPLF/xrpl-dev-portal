@@ -466,6 +466,7 @@ html.light:has(.bds-navbar) {
     pointer-events: auto;
     opacity: 1;
     visibility: visible;
+    z-index: 1003; // Higher z-index to appear above closing/inactive submenus
     // On open: show immediately
     transition: opacity 0ms, visibility 0ms;
 
@@ -490,6 +491,7 @@ html.light:has(.bds-navbar) {
   // Uses keyframe animations for different exit paths
   &--closing {
     pointer-events: none;
+    z-index: 1002; // Lower than active, but above default to ensure exit animation is visible
     // Container fades out after columns animate (300ms animation)
     transition: opacity 100ms ease-out 250ms, visibility 0ms linear 350ms;
 
