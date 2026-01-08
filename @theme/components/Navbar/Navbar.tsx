@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useThemeConfig, useThemeHooks } from "@redocly/theme/core/hooks";
-import { Link } from "@redocly/theme/components/Link/Link";
+import { BdsLink } from "../../../shared/components/Link/Link";
 import moment from "moment-timezone";
 
 // Icons
@@ -20,6 +20,10 @@ import yellowWallet from "../../../static/img/navbar/yellow-wallet.svg";
 import pinkWallet from "../../../static/img/navbar/pink-wallet.svg";
 import blueWallet from "../../../static/img/navbar/blue-wallet.svg";
 
+// Network submenu pattern images
+import resourcesPurplePattern from "../../../static/img/navbar/resources-purple.svg";
+import insightsGreenPattern from "../../../static/img/navbar/insights-green.svg";
+
 // Alert Banner Configuration
 const alertBanner = {
   show: false,
@@ -31,9 +35,9 @@ const alertBanner = {
 // Nav items with submenu support
 const navItems = [
   { label: "Develop", labelTranslationKey: "navbar.develop", href: "/docs", hasSubmenu: true },
-  { label: "Use Cases", labelTranslationKey: "navbar.usecases", href: "/about/uses", hasSubmenu: false },
-  { label: "Community", labelTranslationKey: "navbar.community", href: "/community", hasSubmenu: false },
-  { label: "Network", labelTranslationKey: "navbar.network", href: "/docs/concepts/networks-and-servers", hasSubmenu: false },
+  { label: "Use Cases", labelTranslationKey: "navbar.usecases", href: "/about/uses", hasSubmenu: true },
+  { label: "Community", labelTranslationKey: "navbar.community", href: "/community", hasSubmenu: true },
+  { label: "Network", labelTranslationKey: "navbar.network", href: "/docs/concepts/networks-and-servers", hasSubmenu: true },
 ];
 
 // Wallet icon mapping
@@ -81,7 +85,7 @@ const developSubmenuData: {
       icon: "pink",
       children: [
         { label: "API Reference", href: "/docs/references" },
-        { label: "Tutorials", href: "/docs/tutorials", active: true },
+        { label: "Tutorials", href: "/docs/tutorials" },
         { label: "Concepts", href: "/docs/concepts" },
         { label: "Infrastructure", href: "/docs/infrastructure" },
       ],
@@ -100,23 +104,190 @@ const developSubmenuData: {
   ],
 };
 
-// Arrow Icon Component for submenu links
+// Use Cases submenu data structure
+const useCasesSubmenuData: {
+  left: SubmenuItemWithChildren[];
+  right: SubmenuItemWithChildren[];
+} = {
+  left: [
+    {
+      label: "Payments",
+      href: "/about/uses/payments",
+      icon: "green",
+      children: [
+        { label: "Direct XRP Payments", href: "/about/uses/direct-xrp-payments" },
+        { label: "Cross-currency Payments", href: "/about/uses/cross-currency-payments" },
+        { label: "Escrow", href: "/about/uses/escrow" },
+        { label: "Checks", href: "/about/uses/checks" },
+      ],
+    },
+    {
+      label: "Tokenization",
+      href: "/about/uses/tokenization",
+      icon: "pink",
+      children: [
+        { label: "Stablecoin", href: "/about/uses/stablecoin" },
+        { label: "NFT", href: "/about/uses/nft" },
+      ],
+    },
+  ],
+  right: [
+    {
+      label: "Credit",
+      href: "/about/uses/credit",
+      icon: "lilac",
+      children: [
+        { label: "Lending", href: "/about/uses/lending" },
+        { label: "Collateralization", href: "/about/uses/collateralization" },
+        { label: "Sustainability", href: "/about/uses/sustainability" },
+      ],
+    },
+    {
+      label: "Trading",
+      href: "/about/uses/trading",
+      icon: "yellow",
+      children: [
+        { label: "DEX", href: "/about/uses/dex" },
+        { label: "Permissioned Trading", href: "/about/uses/permissioned-trading" },
+        { label: "AMM", href: "/about/uses/amm" },
+      ],
+    },
+  ],
+};
+
+// Community submenu data structure
+// Mixed layout: some sections have children, some don't
+const communitySubmenuData: {
+  left: SubmenuItem[];
+  right: SubmenuItem[];
+} = {
+  left: [
+    {
+      label: "Community",
+      href: "/community",
+      icon: "pink",
+      children: [
+        { label: "Events", href: "/community/events" },
+        { label: "News", href: "/blog", active: true },
+        { label: "Blog", href: "/blog" },
+        { label: "Marketplace", href: "/community/marketplace" },
+        { label: "Partner Connect", href: "/community/partner-connect" },
+      ],
+    },
+    { label: "Funding", href: "/community/developer-funding", icon: "yellow" },
+  ],
+  right: [
+    {
+      label: "Contribute",
+      href: "/resources/contribute-documentation",
+      icon: "blue",
+      children: [
+        { label: "Ecosystem Map", href: "/community/ecosystem-map" },
+        { label: "Bug Bounty", href: "/community/bug-bounty" },
+        { label: "Research", href: "/community/research" },
+      ],
+    },
+    { label: "Creators", href: "/community/ambassadors", icon: "green" },
+  ],
+};
+
+// Network submenu data structure - interface for sections with decorative images
+interface NetworkSubmenuSection {
+  label: string;
+  href: string;
+  icon: string;
+  children: SubmenuChild[];
+  patternColor: 'lilac' | 'green';
+}
+
+// Network submenu data - 2 sections side by side with decorative images
+const networkSubmenuData: NetworkSubmenuSection[] = [
+  {
+    label: "Resources",
+    href: "/docs/concepts/networks-and-servers",
+    icon: "pink",
+    children: [
+      { label: "Validators", href: "/docs/concepts/networks-and-servers/validators" },
+      { label: "Governance", href: "/docs/concepts/networks-and-servers/governance", active: true },
+      { label: "XRPL Roadmap", href: "/docs/concepts/networks-and-servers/xrpl-roadmap" },
+    ],
+    patternColor: 'lilac',
+  },
+  {
+    label: "Insights",
+    href: "/docs/concepts/networks-and-servers/insights",
+    icon: "green",
+    children: [
+      { label: "Explorer", href: "https://livenet.xrpl.org" },
+      { label: "Data Dashboard", href: "/docs/concepts/networks-and-servers/data-dashboard" },
+      { label: "Amendment Voting Status", href: "/docs/concepts/networks-and-servers/amendments" },
+    ],
+    patternColor: 'green',
+  },
+];
+
+// Internal Arrow Icon Component for submenu parent links
+// Uses same pattern as LinkArrow: chevron (static) + horizontal line (animates away on hover)
 function SubmenuArrow({ className, color = "currentColor" }: { className?: string; color?: string }) {
   return (
     <svg
       className={className}
       width="15"
       height="14"
-      viewBox="0 0 15 14"
+      viewBox="0 0 26 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
+      {/* Chevron part (static) */}
       <path
-        d="M1 13L13 1M13 1H3M13 1V11"
+        d="M14.0019 1.00191L24.0015 11.0015L14.0019 21.001"
         stroke={color}
-        strokeWidth="1.5"
+        strokeWidth="2"
+        strokeMiterlimit="10"
         strokeLinecap="round"
-        strokeLinejoin="round"
+      />
+      {/* Horizontal line (animates away on hover) */}
+      <path
+        d="M23.999 10.999H0"
+        stroke={color}
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        className="arrow-horizontal"
+      />
+    </svg>
+  );
+}
+
+// Full Arrow for submenu child links (no animation, just show/hide)
+// Shows full arrow (→) not just chevron (>)
+function SubmenuChildArrow({ className, color = "currentColor" }: { className?: string; color?: string }) {
+  return (
+    <svg
+      className={className}
+      width="15"
+      height="14"
+      viewBox="0 0 26 22"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {/* Chevron part */}
+      <path
+        d="M14.0019 1.00191L24.0015 11.0015L14.0019 21.001"
+        stroke={color}
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+      />
+      {/* Horizontal line */}
+      <path
+        d="M23.999 10.999H0"
+        stroke={color}
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
       />
     </svg>
   );
@@ -191,7 +362,7 @@ export function AlertBanner({ message, button, link, show }) {
 // Logo Component - Shows symbol on desktop/mobile, full logotype on tablet
 function NavLogo() {
   return (
-    <Link to="/" className="bds-navbar__logo" aria-label="XRP Ledger Home">
+    <BdsLink href="/" className="bds-navbar__logo" aria-label="XRP Ledger Home" variant="inline">
       <img
         src={xrpSymbolBlack}
         alt="XRP Ledger"
@@ -202,7 +373,7 @@ function NavLogo() {
         alt="XRP Ledger"
         className="bds-navbar__logo-full"
       />
-    </Link>
+    </BdsLink>
   );
 }
 
@@ -214,17 +385,17 @@ function DevelopSubmenu({ isActive }: { isActive: boolean }) {
       <div className="bds-submenu__left">
         {developSubmenuData.left.map((item) => (
           <div key={item.label} className="bds-submenu__section">
-            <div className="bds-submenu__tier1">
+            <a href={item.href} className="bds-submenu__tier1 bds-submenu__parent-link">
               <span className="bds-submenu__icon">
                 <img src={walletIcons[item.icon]} alt="" />
               </span>
-              <Link to={item.href} className="bds-submenu__link bds-submenu__link--bold">
+              <span className="bds-submenu__link bds-submenu__link--bold">
                 {item.label}
                 <span className="bds-submenu__arrow">
                   <SubmenuArrow />
                 </span>
-              </Link>
-            </div>
+              </span>
+            </a>
           </div>
         ))}
       </div>
@@ -233,32 +404,30 @@ function DevelopSubmenu({ isActive }: { isActive: boolean }) {
       <div className="bds-submenu__right">
         {developSubmenuData.right.map((section) => (
           <div key={section.label} className="bds-submenu__section">
-            <div className="bds-submenu__tier1">
+            <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">
               <span className="bds-submenu__icon">
                 <img src={walletIcons[section.icon]} alt="" />
               </span>
-              <Link to={section.href} className="bds-submenu__link bds-submenu__link--bold">
+              <span className="bds-submenu__link bds-submenu__link--bold">
                 {section.label}
                 <span className="bds-submenu__arrow">
                   <SubmenuArrow />
                 </span>
-              </Link>
-            </div>
+              </span>
+            </a>
             {section.children && (
               <div className="bds-submenu__tier2">
                 {section.children.map((child) => (
-                  <Link
+                  <a
                     key={child.label}
-                    to={child.href}
-                    className={`bds-submenu__sublink ${child.active ? 'bds-submenu__sublink--active' : ''}`}
+                    href={child.href}
+                    className={`bds-submenu__sublink`}
                   >
                     {child.label}
-                    {child.active && (
-                      <span className="bds-submenu__arrow">
-                        <SubmenuArrow color="#0DAA3E" />
-                      </span>
-                    )}
-                  </Link>
+                    <span className="bds-submenu__sublink-arrow">
+                      <SubmenuChildArrow />
+                    </span>
+                  </a>
                 ))}
               </div>
             )}
@@ -269,10 +438,222 @@ function DevelopSubmenu({ isActive }: { isActive: boolean }) {
   );
 }
 
+// Desktop Use Cases Submenu Component
+function UseCasesSubmenu({ isActive }: { isActive: boolean }) {
+  return (
+    <div className={`bds-submenu bds-submenu--use-cases ${isActive ? 'bds-submenu--active' : ''}`}>
+      {/* Left Column */}
+      <div className="bds-submenu__left">
+        {useCasesSubmenuData.left.map((section) => (
+          <div key={section.label} className="bds-submenu__section">
+            <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">
+              <span className="bds-submenu__icon">
+                <img src={walletIcons[section.icon]} alt="" />
+              </span>
+              <span className="bds-submenu__link bds-submenu__link--bold">
+                {section.label}
+                <span className="bds-submenu__arrow">
+                  <SubmenuArrow />
+                </span>
+              </span>
+            </a>
+            <div className="bds-submenu__tier2">
+              {section.children.map((child) => (
+                <a
+                  key={child.label}
+                  href={child.href}
+                  className={`bds-submenu__sublink`}
+                >
+                  {child.label}
+                  <span className="bds-submenu__sublink-arrow">
+                    <SubmenuChildArrow />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Right Column */}
+      <div className="bds-submenu__right">
+        {useCasesSubmenuData.right.map((section) => (
+          <div key={section.label} className="bds-submenu__section">
+            <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">
+              <span className="bds-submenu__icon">
+                <img src={walletIcons[section.icon]} alt="" />
+              </span>
+              <span className="bds-submenu__link bds-submenu__link--bold">
+                {section.label}
+                <span className="bds-submenu__arrow">
+                  <SubmenuArrow />
+                </span>
+              </span>
+            </a>
+            <div className="bds-submenu__tier2">
+              {section.children.map((child) => (
+                <a
+                  key={child.label}
+                  href={child.href}
+                  className={`bds-submenu__sublink`}
+                >
+                  {child.label}
+                  <span className="bds-submenu__sublink-arrow">
+                    <SubmenuChildArrow />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Desktop Community Submenu Component
+// Mixed layout: some sections have children, some are header-only
+function CommunitySubmenu({ isActive }: { isActive: boolean }) {
+  return (
+    <div className={`bds-submenu bds-submenu--community ${isActive ? 'bds-submenu--active' : ''}`}>
+      {/* Left Column */}
+      <div className="bds-submenu__left">
+        {communitySubmenuData.left.map((item) => (
+          <div key={item.label} className="bds-submenu__section">
+            <a href={item.href} className="bds-submenu__tier1 bds-submenu__parent-link">
+              <span className="bds-submenu__icon">
+                <img src={walletIcons[item.icon]} alt="" />
+              </span>
+              <span className="bds-submenu__link bds-submenu__link--bold">
+                {item.label}
+                <span className="bds-submenu__arrow">
+                  <SubmenuArrow />
+                </span>
+              </span>
+            </a>
+            {hasChildren(item) && (
+              <div className="bds-submenu__tier2">
+                {item.children.map((child) => (
+                  <a
+                    key={child.label}
+                    href={child.href}
+                    className={`bds-submenu__sublink`}
+                  >
+                    {child.label}
+                    <span className="bds-submenu__sublink-arrow">
+                      <SubmenuChildArrow />
+                    </span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Right Column */}
+      <div className="bds-submenu__right">
+        {communitySubmenuData.right.map((item) => (
+          <div key={item.label} className="bds-submenu__section">
+            <a href={item.href} className="bds-submenu__tier1 bds-submenu__parent-link">
+              <span className="bds-submenu__icon">
+                <img src={walletIcons[item.icon]} alt="" />
+              </span>
+              <span className="bds-submenu__link bds-submenu__link--bold">
+                {item.label}
+                <span className="bds-submenu__arrow">
+                  <SubmenuArrow />
+                </span>
+              </span>
+            </a>
+            {hasChildren(item) && (
+              <div className="bds-submenu__tier2">
+                {item.children.map((child) => (
+                  <a
+                    key={child.label}
+                    href={child.href}
+                    className={`bds-submenu__sublink`}
+                  >
+                    {child.label}
+                    <span className="bds-submenu__sublink-arrow">
+                      <SubmenuChildArrow />
+                    </span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Desktop Network Submenu Component
+// Two sections side by side with decorative images at bottom
+function NetworkSubmenu({ isActive }: { isActive: boolean }) {
+  // Pattern image mapping
+  const patternImages: Record<'lilac' | 'green', string> = {
+    lilac: resourcesPurplePattern,
+    green: insightsGreenPattern,
+  };
+
+  return (
+    <div className={`bds-submenu bds-submenu--network ${isActive ? 'bds-submenu--active' : ''}`}>
+      {networkSubmenuData.map((section) => (
+        <div key={section.label} className="bds-submenu__section">
+          {/* Header */}
+          <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">
+            <span className="bds-submenu__icon">
+              <img src={walletIcons[section.icon]} alt="" />
+            </span>
+            <span className="bds-submenu__link bds-submenu__link--bold">
+              {section.label}
+              <span className="bds-submenu__arrow">
+                <SubmenuArrow />
+              </span>
+            </span>
+          </a>
+          
+          {/* Content area with links and pattern */}
+          <div className="bds-submenu__network-content">
+            {/* Links list */}
+            <div className="bds-submenu__tier2">
+              {section.children.map((child) => (
+                <a
+                  key={child.label}
+                  href={child.href}
+                  className={`bds-submenu__sublink`}
+                  target={child.href.startsWith('http') ? '_blank' : undefined}
+                  rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {child.label}
+                  <span className="bds-submenu__sublink-arrow">
+                    <SubmenuChildArrow />
+                  </span>
+                </a>
+              ))}
+            </div>
+            
+            {/* Decorative pattern */}
+            <div className="bds-submenu__pattern-container">
+              <img 
+                src={patternImages[section.patternColor]} 
+                alt="" 
+                className="bds-submenu__pattern"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // Nav Items Component - Centered navigation links with submenu support
-function NavItems({ submenuActive, onSubmenuEnter }: { 
-  submenuActive: boolean; 
-  onSubmenuEnter: () => void;
+function NavItems({ activeSubmenu, onSubmenuEnter }: { 
+  activeSubmenu: string | null; 
+  onSubmenuEnter: (itemLabel: string) => void;
 }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
@@ -281,7 +662,7 @@ function NavItems({ submenuActive, onSubmenuEnter }: {
   const handleMouseEnter = (itemLabel: string, hasSubmenu: boolean) => {
     setActiveItem(itemLabel);
     if (hasSubmenu) {
-      onSubmenuEnter();
+      onSubmenuEnter(itemLabel);
     }
   };
 
@@ -292,12 +673,12 @@ function NavItems({ submenuActive, onSubmenuEnter }: {
     // Don't close submenu on leave - let the parent Navbar handle that
   };
 
-  // Sync activeItem with submenuActive state
+  // Sync activeItem with activeSubmenu state
   React.useEffect(() => {
-    if (!submenuActive) {
+    if (!activeSubmenu) {
       setActiveItem(null);
     }
-  }, [submenuActive]);
+  }, [activeSubmenu]);
 
   return (
     <nav className="bds-navbar__items" aria-label="Main navigation">
@@ -305,7 +686,7 @@ function NavItems({ submenuActive, onSubmenuEnter }: {
         item.hasSubmenu ? (
           <span
             key={item.label}
-            className={`bds-navbar__item ${activeItem === item.label || submenuActive ? 'bds-navbar__item--active' : ''}`}
+            className={`bds-navbar__item ${activeItem === item.label || activeSubmenu === item.label ? 'bds-navbar__item--active' : ''}`}
             onMouseEnter={() => handleMouseEnter(item.label, true)}
             onMouseLeave={() => handleMouseLeave(true)}
             style={{ cursor: 'pointer' }}
@@ -313,15 +694,16 @@ function NavItems({ submenuActive, onSubmenuEnter }: {
             {translate(item.labelTranslationKey, item.label)}
           </span>
         ) : (
-          <Link
+          <BdsLink
             key={item.label}
-            to={item.href}
+            href={item.href}
             className={`bds-navbar__item ${activeItem === item.label ? 'bds-navbar__item--active' : ''}`}
             onMouseEnter={() => handleMouseEnter(item.label, false)}
             onMouseLeave={() => handleMouseLeave(false)}
+            variant="inline"
           >
             {translate(item.labelTranslationKey, item.label)}
-          </Link>
+          </BdsLink>
         )
       ))}
     </nav>
@@ -470,36 +852,168 @@ function MobileMenuDevelopContent() {
     <div className="bds-mobile-menu__tier-list">
       {mobileItems.map((item) => (
         <React.Fragment key={item.label}>
-          <div className="bds-mobile-menu__tier1">
+          <a href={item.href} className="bds-mobile-menu__tier1 bds-mobile-menu__parent-link">
             <span className="bds-mobile-menu__icon">
               <img src={walletIcons[item.icon]} alt="" />
             </span>
-            <Link to={item.href} className="bds-mobile-menu__link bds-mobile-menu__link--bold">
+            <span className="bds-mobile-menu__link bds-mobile-menu__link--bold">
               {item.label}
               <span className="bds-mobile-menu__arrow">
                 <SubmenuArrow />
               </span>
-            </Link>
-          </div>
+            </span>
+          </a>
           {/* Show children if they exist (for Docs and Client Libraries) */}
           {hasChildren(item) && (
             <div className="bds-mobile-menu__tier2">
               {item.children.map((child) => (
-                <Link
+                <a
                   key={child.label}
-                  to={child.href}
-                  className={`bds-mobile-menu__sublink ${child.active ? 'bds-mobile-menu__sublink--active' : ''}`}
+                  href={child.href}
+                  className={`bds-mobile-menu__sublink`}
+                  target={child.href.startsWith('http') ? '_blank' : undefined}
+                  rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
                   {child.label}
-                  {child.active && (
-                    <span className="bds-mobile-menu__arrow">
-                      <SubmenuArrow color="#0DAA3E" />
-                    </span>
-                  )}
-                </Link>
+                  <span className="bds-mobile-menu__sublink-arrow">
+                    <SubmenuChildArrow />
+                  </span>
+                </a>
               ))}
             </div>
           )}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+// Mobile Menu Use Cases Content (Accordion content for Use Cases section)
+function MobileMenuUseCasesContent() {
+  // Flatten the submenu data for mobile single-column layout
+  const mobileItems: SubmenuItemWithChildren[] = [
+    ...useCasesSubmenuData.left,
+    ...useCasesSubmenuData.right,
+  ];
+
+  return (
+    <div className="bds-mobile-menu__tier-list">
+      {mobileItems.map((item) => (
+        <React.Fragment key={item.label}>
+          <a href={item.href} className="bds-mobile-menu__tier1 bds-mobile-menu__parent-link">
+            <span className="bds-mobile-menu__icon">
+              <img src={walletIcons[item.icon]} alt="" />
+            </span>
+            <span className="bds-mobile-menu__link bds-mobile-menu__link--bold">
+              {item.label}
+              <span className="bds-mobile-menu__arrow">
+                <SubmenuArrow />
+              </span>
+            </span>
+          </a>
+          {/* All Use Cases items have children */}
+          <div className="bds-mobile-menu__tier2">
+            {item.children.map((child) => (
+              <a
+                key={child.label}
+                href={child.href}
+                className={`bds-mobile-menu__sublink`}
+              >
+                {child.label}
+                <span className="bds-mobile-menu__sublink-arrow">
+                  <SubmenuChildArrow />
+                </span>
+              </a>
+            ))}
+          </div>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+// Mobile Menu Community Content (Accordion content for Community section)
+function MobileMenuCommunityContent() {
+  // Flatten the submenu data for mobile single-column layout
+  const mobileItems: SubmenuItem[] = [
+    ...communitySubmenuData.left,
+    ...communitySubmenuData.right,
+  ];
+
+  return (
+    <div className="bds-mobile-menu__tier-list">
+      {mobileItems.map((item) => (
+        <React.Fragment key={item.label}>
+          <a href={item.href} className="bds-mobile-menu__tier1 bds-mobile-menu__parent-link">
+            <span className="bds-mobile-menu__icon">
+              <img src={walletIcons[item.icon]} alt="" />
+            </span>
+            <span className="bds-mobile-menu__link bds-mobile-menu__link--bold">
+              {item.label}
+              <span className="bds-mobile-menu__arrow">
+                <SubmenuArrow />
+              </span>
+            </span>
+          </a>
+          {/* Show children if they exist */}
+          {hasChildren(item) && (
+            <div className="bds-mobile-menu__tier2">
+              {item.children.map((child) => (
+                <a
+                  key={child.label}
+                  href={child.href}
+                  className={`bds-mobile-menu__sublink`}
+                  target={child.href.startsWith('http') ? '_blank' : undefined}
+                  rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {child.label}
+                  <span className="bds-mobile-menu__sublink-arrow">
+                    <SubmenuChildArrow />
+                  </span>
+                </a>
+              ))}
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+// Mobile Menu Network Content (Accordion content for Network section)
+function MobileMenuNetworkContent() {
+  return (
+    <div className="bds-mobile-menu__tier-list">
+      {networkSubmenuData.map((section) => (
+        <React.Fragment key={section.label}>
+          <a href={section.href} className="bds-mobile-menu__tier1 bds-mobile-menu__parent-link">
+            <span className="bds-mobile-menu__icon">
+              <img src={walletIcons[section.icon]} alt="" />
+            </span>
+            <span className="bds-mobile-menu__link bds-mobile-menu__link--bold">
+              {section.label}
+              <span className="bds-mobile-menu__arrow">
+                <SubmenuArrow />
+              </span>
+            </span>
+          </a>
+          {/* Network sections always have children */}
+          <div className="bds-mobile-menu__tier2">
+            {section.children.map((child) => (
+              <a
+                key={child.label}
+                href={child.href}
+                className={`bds-mobile-menu__sublink`}
+                target={child.href.startsWith('http') ? '_blank' : undefined}
+                rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {child.label}
+                <span className="bds-mobile-menu__sublink-arrow">
+                  <SubmenuChildArrow />
+                </span>
+              </a>
+            ))}
+          </div>
         </React.Fragment>
       ))}
     </div>
@@ -548,9 +1062,9 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     <div className={`bds-mobile-menu ${isOpen ? 'bds-mobile-menu--open' : ''}`}>
       {/* Header */}
       <div className="bds-mobile-menu__header">
-        <Link to="/" className="bds-navbar__logo" aria-label="XRP Ledger Home" onClick={onClose}>
+        <BdsLink href="/" className="bds-navbar__logo" aria-label="XRP Ledger Home" onClick={onClose} variant="inline">
           <img src={xrpSymbolBlack} alt="XRP Ledger" style={{ width: 33, height: 28 }} />
-        </Link>
+        </BdsLink>
         <button
           type="button"
           className="bds-mobile-menu__close"
@@ -578,9 +1092,10 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                     <ChevronIcon expanded={expandedItem === item.label} />
                   </>
                 ) : (
-                  <Link
-                    to={item.href}
+                  <BdsLink
+                    href={item.href}
                     onClick={onClose}
+                    variant="inline"
                     style={{ 
                       display: 'flex', 
                       width: '100%', 
@@ -592,7 +1107,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                   >
                     <span>{translate(item.labelTranslationKey, item.label)}</span>
                     <ChevronIcon expanded={false} />
-                  </Link>
+                  </BdsLink>
                 )}
               </button>
               {item.hasSubmenu && (
@@ -601,7 +1116,10 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                     expandedItem === item.label ? 'bds-mobile-menu__accordion-content--expanded' : ''
                   }`}
                 >
-                  <MobileMenuDevelopContent />
+                  {item.label === 'Develop' && <MobileMenuDevelopContent />}
+                  {item.label === 'Use Cases' && <MobileMenuUseCasesContent />}
+                  {item.label === 'Community' && <MobileMenuCommunityContent />}
+                  {item.label === 'Network' && <MobileMenuNetworkContent />}
                 </div>
               )}
             </React.Fragment>
@@ -642,7 +1160,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 // Main Navbar Component
 export function Navbar(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const [submenuActive, setSubmenuActive] = React.useState(false);
+  const [activeSubmenu, setActiveSubmenu] = React.useState<string | null>(null);
   const submenuTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const handleHamburgerClick = () => {
@@ -653,23 +1171,23 @@ export function Navbar(props) {
     setMobileMenuOpen(false);
   };
 
-  const handleSubmenuMouseEnter = () => {
+  const handleSubmenuMouseEnter = (itemLabel: string) => {
     if (submenuTimeoutRef.current) {
       clearTimeout(submenuTimeoutRef.current);
       submenuTimeoutRef.current = null;
     }
-    setSubmenuActive(true);
+    setActiveSubmenu(itemLabel);
   };
 
   const handleSubmenuMouseLeave = () => {
     submenuTimeoutRef.current = setTimeout(() => {
-      setSubmenuActive(false);
+      setActiveSubmenu(null);
     }, 150);
   };
 
   // Handle scroll lock when submenu is open
   React.useEffect(() => {
-    if (submenuActive) {
+    if (activeSubmenu) {
       document.body.classList.add('bds-submenu-open');
     } else {
       document.body.classList.remove('bds-submenu-open');
@@ -677,7 +1195,7 @@ export function Navbar(props) {
     return () => {
       document.body.classList.remove('bds-submenu-open');
     };
-  }, [submenuActive]);
+  }, [activeSubmenu]);
 
   React.useEffect(() => {
     return () => {
@@ -697,8 +1215,8 @@ export function Navbar(props) {
       <AlertBanner {...alertBanner} />
       {/* Backdrop blur overlay when submenu is open */}
       <div 
-        className={`bds-submenu-backdrop ${submenuActive ? 'bds-submenu-backdrop--active' : ''}`}
-        onClick={() => setSubmenuActive(false)}
+        className={`bds-submenu-backdrop ${activeSubmenu ? 'bds-submenu-backdrop--active' : ''}`}
+        onClick={() => setActiveSubmenu(null)}
       />
       <header 
         className={navbarClasses}
@@ -706,13 +1224,16 @@ export function Navbar(props) {
       >
         <div className="bds-navbar__content">
           <NavLogo />
-          <NavItems submenuActive={submenuActive} onSubmenuEnter={handleSubmenuMouseEnter} />
+          <NavItems activeSubmenu={activeSubmenu} onSubmenuEnter={handleSubmenuMouseEnter} />
           <NavControls />
           <HamburgerButton onClick={handleHamburgerClick} />
         </div>
-        {/* Submenu positioned relative to navbar */}
-        <div onMouseEnter={handleSubmenuMouseEnter}>
-          <DevelopSubmenu isActive={submenuActive} />
+        {/* Submenus positioned relative to navbar */}
+        <div onMouseEnter={() => activeSubmenu && handleSubmenuMouseEnter(activeSubmenu)}>
+          <DevelopSubmenu isActive={activeSubmenu === 'Develop'} />
+          <UseCasesSubmenu isActive={activeSubmenu === 'Use Cases'} />
+          <CommunitySubmenu isActive={activeSubmenu === 'Community'} />
+          <NetworkSubmenu isActive={activeSubmenu === 'Network'} />
         </div>
       </header>
       <MobileMenu isOpen={mobileMenuOpen} onClose={handleMobileMenuClose} />
