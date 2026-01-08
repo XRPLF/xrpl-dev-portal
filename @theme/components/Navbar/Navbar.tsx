@@ -380,9 +380,15 @@ function NavLogo() {
 }
 
 // Desktop Develop Submenu Component
-function DevelopSubmenu({ isActive }: { isActive: boolean }) {
+function DevelopSubmenu({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
+  const classNames = [
+    'bds-submenu',
+    isActive ? 'bds-submenu--active' : '',
+    isClosing ? 'bds-submenu--closing' : '',
+  ].filter(Boolean).join(' ');
+  
   return (
-    <div className={`bds-submenu ${isActive ? 'bds-submenu--active' : ''}`}>
+    <div className={classNames}>
       {/* Left Column */}
       <div className="bds-submenu__left">
         {developSubmenuData.left.map((item) => (
@@ -441,9 +447,16 @@ function DevelopSubmenu({ isActive }: { isActive: boolean }) {
 }
 
 // Desktop Use Cases Submenu Component
-function UseCasesSubmenu({ isActive }: { isActive: boolean }) {
+function UseCasesSubmenu({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
+  const classNames = [
+    'bds-submenu',
+    'bds-submenu--use-cases',
+    isActive ? 'bds-submenu--active' : '',
+    isClosing ? 'bds-submenu--closing' : '',
+  ].filter(Boolean).join(' ');
+  
   return (
-    <div className={`bds-submenu bds-submenu--use-cases ${isActive ? 'bds-submenu--active' : ''}`}>
+    <div className={classNames}>
       {/* Left Column */}
       <div className="bds-submenu__left">
         {useCasesSubmenuData.left.map((section) => (
@@ -515,9 +528,16 @@ function UseCasesSubmenu({ isActive }: { isActive: boolean }) {
 
 // Desktop Community Submenu Component
 // Mixed layout: some sections have children, some are header-only
-function CommunitySubmenu({ isActive }: { isActive: boolean }) {
+function CommunitySubmenu({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
+  const classNames = [
+    'bds-submenu',
+    'bds-submenu--community',
+    isActive ? 'bds-submenu--active' : '',
+    isClosing ? 'bds-submenu--closing' : '',
+  ].filter(Boolean).join(' ');
+  
   return (
-    <div className={`bds-submenu bds-submenu--community ${isActive ? 'bds-submenu--active' : ''}`}>
+    <div className={classNames}>
       {/* Left Column */}
       <div className="bds-submenu__left">
         {communitySubmenuData.left.map((item) => (
@@ -593,15 +613,22 @@ function CommunitySubmenu({ isActive }: { isActive: boolean }) {
 
 // Desktop Network Submenu Component
 // Two sections side by side with decorative images at bottom
-function NetworkSubmenu({ isActive }: { isActive: boolean }) {
+function NetworkSubmenu({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
   // Pattern image mapping
   const patternImages: Record<'lilac' | 'green', string> = {
     lilac: resourcesPurplePattern,
     green: insightsGreenPattern,
   };
 
+  const classNames = [
+    'bds-submenu',
+    'bds-submenu--network',
+    isActive ? 'bds-submenu--active' : '',
+    isClosing ? 'bds-submenu--closing' : '',
+  ].filter(Boolean).join(' ');
+
   return (
-    <div className={`bds-submenu bds-submenu--network ${isActive ? 'bds-submenu--active' : ''}`}>
+    <div className={classNames}>
       {networkSubmenuData.map((section) => (
         <div key={section.label} className="bds-submenu__section">
           {/* Header */}
@@ -1163,7 +1190,9 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 export function Navbar(props) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [activeSubmenu, setActiveSubmenu] = React.useState<string | null>(null);
+  const [closingSubmenu, setClosingSubmenu] = React.useState<string | null>(null);
   const submenuTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const closingTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const handleHamburgerClick = () => {
     setMobileMenuOpen(true);
@@ -1174,22 +1203,39 @@ export function Navbar(props) {
   };
 
   const handleSubmenuMouseEnter = (itemLabel: string) => {
+    // Clear any pending close/closing timeouts
     if (submenuTimeoutRef.current) {
       clearTimeout(submenuTimeoutRef.current);
       submenuTimeoutRef.current = null;
     }
+    if (closingTimeoutRef.current) {
+      clearTimeout(closingTimeoutRef.current);
+      closingTimeoutRef.current = null;
+    }
+    // Cancel closing state and activate the new submenu
+    setClosingSubmenu(null);
     setActiveSubmenu(itemLabel);
   };
 
   const handleSubmenuMouseLeave = () => {
     submenuTimeoutRef.current = setTimeout(() => {
-      setActiveSubmenu(null);
+      // Start closing animation
+      const currentSubmenu = activeSubmenu;
+      if (currentSubmenu) {
+        setClosingSubmenu(currentSubmenu);
+        setActiveSubmenu(null);
+        
+        // After animation completes (300ms), clear closing state
+        closingTimeoutRef.current = setTimeout(() => {
+          setClosingSubmenu(null);
+        }, 350); // Slightly longer than animation to ensure completion
+      }
     }, 150);
   };
 
-  // Handle scroll lock when submenu is open
+  // Handle scroll lock when submenu is open or closing
   React.useEffect(() => {
-    if (activeSubmenu) {
+    if (activeSubmenu || closingSubmenu) {
       document.body.classList.add('bds-submenu-open');
     } else {
       document.body.classList.remove('bds-submenu-open');
@@ -1197,12 +1243,15 @@ export function Navbar(props) {
     return () => {
       document.body.classList.remove('bds-submenu-open');
     };
-  }, [activeSubmenu]);
+  }, [activeSubmenu, closingSubmenu]);
 
   React.useEffect(() => {
     return () => {
       if (submenuTimeoutRef.current) {
         clearTimeout(submenuTimeoutRef.current);
+      }
+      if (closingTimeoutRef.current) {
+        clearTimeout(closingTimeoutRef.current);
       }
     };
   }, []);
@@ -1215,9 +1264,9 @@ export function Navbar(props) {
   return (
     <>
       <AlertBanner {...alertBanner} />
-      {/* Backdrop blur overlay when submenu is open */}
+      {/* Backdrop blur overlay when submenu is open or closing */}
       <div 
-        className={`bds-submenu-backdrop ${activeSubmenu ? 'bds-submenu-backdrop--active' : ''}`}
+        className={`bds-submenu-backdrop ${activeSubmenu || closingSubmenu ? 'bds-submenu-backdrop--active' : ''}`}
         onClick={() => setActiveSubmenu(null)}
       />
       <header 
@@ -1232,10 +1281,10 @@ export function Navbar(props) {
         </div>
         {/* Submenus positioned relative to navbar */}
         <div onMouseEnter={() => activeSubmenu && handleSubmenuMouseEnter(activeSubmenu)}>
-          <DevelopSubmenu isActive={activeSubmenu === 'Develop'} />
-          <UseCasesSubmenu isActive={activeSubmenu === 'Use Cases'} />
-          <CommunitySubmenu isActive={activeSubmenu === 'Community'} />
-          <NetworkSubmenu isActive={activeSubmenu === 'Network'} />
+          <DevelopSubmenu isActive={activeSubmenu === 'Develop'} isClosing={closingSubmenu === 'Develop'} />
+          <UseCasesSubmenu isActive={activeSubmenu === 'Use Cases'} isClosing={closingSubmenu === 'Use Cases'} />
+          <CommunitySubmenu isActive={activeSubmenu === 'Community'} isClosing={closingSubmenu === 'Community'} />
+          <NetworkSubmenu isActive={activeSubmenu === 'Network'} isClosing={closingSubmenu === 'Network'} />
         </div>
       </header>
       <MobileMenu isOpen={mobileMenuOpen} onClose={handleMobileMenuClose} />

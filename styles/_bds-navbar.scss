@@ -407,8 +407,32 @@ html.light:has(.bds-navbar) {
 // Two-column layout with sequential animation
 // Matches Figma design: 612px wide, 390px tall, gray background container
 // Animation: Open = left drops down from top, then right slides out from left
-//            Close = right slides back left, then left slides up (reverse)
+//            Close = left goes straight up, right snaps diagonally to origin
 // =============================================================================
+
+// Keyframes for diagonal exit animation (right column)
+@keyframes submenu-right-exit-diagonal {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, -100%);
+    opacity: 0;
+  }
+}
+
+// Keyframes for left column exit (straight up)
+@keyframes submenu-left-exit-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
 
 .bds-submenu {
   display: none;
@@ -461,6 +485,22 @@ html.light:has(.bds-navbar) {
                   opacity 150ms ease-out 200ms;
     }
   }
+
+  // Closing state - triggered when submenu is closing
+  // Uses keyframe animations for different exit paths
+  &--closing {
+    pointer-events: none;
+    // Container fades out after columns animate (300ms animation)
+    transition: opacity 100ms ease-out 250ms, visibility 0ms linear 350ms;
+
+    .bds-submenu__left {
+      animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+    }
+
+    .bds-submenu__right {
+      animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+    }
+  }
   
   // Wrapper to bridge gap between nav item and submenu
   &-wrapper {
@@ -481,9 +521,9 @@ html.light:has(.bds-navbar) {
     transform: translateY(-100%); // Start completely above (hidden)
     opacity: 0;
     background-color: $gray-200; // Background on column so it animates with content
-    // On close: left animates second (delayed), slides back up
-    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
-                opacity 150ms ease-in 350ms;
+    // On close: left slides back up immediately (no delay)
+    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+                opacity 150ms ease-in;
   }
 
   // Right column - slides from left (starts completely to the left)
@@ -996,9 +1036,9 @@ html.light .bds-submenu {
     &:nth-child(1) {
       transform: translateY(-100%);
       opacity: 0;
-      // On close: animates second (delayed), slides back up
-      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
-                  opacity 150ms ease-in 350ms;
+      // On close: slides back up immediately (no delay)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+                  opacity 150ms ease-in;
     }
     
     // Second section (Insights) - slides from left like right column
@@ -1027,6 +1067,17 @@ html.light .bds-submenu {
       // On open: slides out second (delayed by 200ms)
       transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
                   opacity 150ms ease-out 200ms;
+    }
+  }
+
+  // Closing state animations for sections (diagonal exit for second section)
+  &.bds-submenu--closing {
+    .bds-submenu__section:nth-child(1) {
+      animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+    }
+    
+    .bds-submenu__section:nth-child(2) {
+      animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
     }
   }
   
