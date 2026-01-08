@@ -97,6 +97,7 @@ export const SmallTilesSection = forwardRef<
 
   // Early return for empty cards array
   if (cardsCount === 0) {
+    console.warn("SmallTilesSection: No cards provided");
     return null;
   }
 
