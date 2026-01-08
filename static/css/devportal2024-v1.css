@@ -14916,6 +14916,7 @@ html.light:has(.bds-navbar) {
   pointer-events: auto;
   opacity: 1;
   visibility: visible;
+  z-index: 1003;
   transition: opacity 0ms, visibility 0ms;
 }
 .bds-submenu--active .bds-submenu__left {
@@ -14930,6 +14931,7 @@ html.light:has(.bds-navbar) {
 }
 .bds-submenu--closing {
   pointer-events: none;
+  z-index: 1002;
   transition: opacity 100ms ease-out 250ms, visibility 0ms linear 350ms;
 }
 .bds-submenu--closing .bds-submenu__left {
