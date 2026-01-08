@@ -56,7 +56,7 @@ interface CalloutMediaBannerProps {
   /** Background image URL - overrides variant color when provided */
   backgroundImage?: string;
   /** Main heading text */
-  heading: string;
+  heading?: string;
   /** Subheading/description text */
   subheading: string;
   /** Primary button configuration */
