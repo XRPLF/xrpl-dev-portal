@@ -521,6 +521,14 @@ html.light:has(.bds-navbar) {
     width: 100%;
   }
 
+  // Center left column items vertically in Develop submenu (no modifier class)
+  // Target base .bds-submenu (Develop) but not --use-cases or --community
+  &:not(.bds-submenu--use-cases):not(.bds-submenu--community) {
+    .bds-submenu__left .bds-submenu__section {
+      justify-content: center; // Center vertically within section
+    }
+  }
+
   // Tier 2 list (sub-items)
   &__tier2 {
     display: flex;
@@ -546,7 +554,8 @@ html.light:has(.bds-navbar) {
     }
   }
 
-  // Main link item (Tier 1)
+  // Main link item (Tier 1) - text span inside parent link
+  // Hover states are controlled by the parent &__parent-link styles
   &__link {
     display: flex;
     align-items: center;
@@ -560,21 +569,15 @@ html.light:has(.bds-navbar) {
     white-space: nowrap;
     transition: color 0.2s ease;
 
-    &:hover {
-      color: $green-400;
-
-      .bds-submenu__arrow {
-        transform: translateX(2px);
-      }
-    }
-
     // Bold style for main items
     &--bold {
       font-weight: 500;
     }
   }
 
-  // Sub-link item (Tier 2)
+  // Sub-link item (Tier 2) - Child links in submenu
+  // Styled according to Figma: Behavior-Links (child)
+  // States: Enabled (black, regular, no arrow) → Hover (green-400, arrow shows) → Active (green-500) → Focused (outline)
   &__sublink {
     display: flex;
     align-items: center;
@@ -583,27 +586,153 @@ html.light:has(.bds-navbar) {
     text-decoration: none;
     font-family: $font-family-sans-serif;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400; // Regular weight by default
     line-height: 23.2px;
     white-space: nowrap;
     transition: color 0.2s ease;
 
-    &:hover {
-      color: $green-400;
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
     }
 
-    // Active state (green with arrow)
-    &--active {
+    // Hover state - green text, arrow appears
+    &:hover {
       color: $green-400;
-      font-weight: 400;
+      text-decoration: none;
 
-      .bds-submenu__arrow {
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Active/Pressed state - darker green
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Focus state
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
         display: inline-flex;
       }
     }
   }
 
-  // Arrow icon for links
+  // Sublink arrow (chevron, hidden by default, shown on hover)
+  &__sublink-arrow {
+    display: none; // Hidden by default
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 14px;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    // Arrow inherits color from parent link via currentColor
+    svg path {
+      stroke: currentColor;
+    }
+  }
+}
+
+// =============================================================================
+// Light Mode Overrides for Submenu Links
+// Higher specificity to override global html.light a:not(.bds-link) styles
+// =============================================================================
+html.light .bds-submenu {
+  a.bds-submenu__sublink:not(.bds-link) {
+    color: $black;
+    font-weight: 400;
+    text-decoration: none;
+
+    &:visited {
+      color: $black;
+      font-weight: 400;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-submenu__parent-link:not(.bds-link) {
+    text-decoration: none;
+
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-submenu__link {
+      color: $black;
+      text-decoration: none;
+    }
+
+    &:hover .bds-submenu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:active .bds-submenu__link {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-submenu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
+}
+
+// Continue .bds-submenu styles
+.bds-submenu {
+  // Arrow icon for parent links
   &__arrow {
     display: inline-flex;
     align-items: center;
@@ -619,9 +748,112 @@ html.light:has(.bds-navbar) {
     }
   }
 
-  // Hide arrow by default on sub-links (shown on active)
-  &__sublink &__arrow {
-    display: none;
+  // =============================================================================
+  // Parent Link Styles (for tier1 items with icons)
+  // Styled according to Figma design: Behavior-Links
+  // States: Enabled (black) → Hover (green-400) → Active/Pressed (green-500) → Focused (outline)
+  // Animation: Internal arrow horizontal line shrinks to chevron on hover
+  // =============================================================================
+  
+  // Animation timing (same as Link component)
+  $bds-submenu-transition-duration: 150ms;
+  $bds-submenu-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+  &__parent-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+    
+    // Enabled state (default)
+    .bds-submenu__link {
+      color: $black;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      .bds-submenu__arrow svg path {
+        stroke: $black;
+        transition: stroke 0.2s ease;
+      }
+      
+      // Internal arrow horizontal line animation setup
+      .bds-submenu__arrow svg .arrow-horizontal {
+        transform-origin: right center;
+        transition: transform $bds-submenu-transition-duration $bds-submenu-transition-timing;
+      }
+    }
+
+    // Hover state - Green text and arrow animates to chevron
+    &:hover {
+      text-decoration: none;
+      
+      .bds-submenu__link {
+        color: $green-400;
+        text-decoration: none;
+        
+        .bds-submenu__arrow svg path {
+          stroke: $green-400;
+        }
+        
+        // Animate horizontal line to shrink (show chevron only)
+        .bds-submenu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Active/Pressed state - Darker green text and arrow
+    &:active {
+      text-decoration: none;
+      
+      .bds-submenu__link {
+        color: $green-500;
+        text-decoration: none;
+        
+        .bds-submenu__arrow svg path {
+          stroke: $green-500;
+        }
+        
+        .bds-submenu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Focus state - Outline around entire link
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      text-decoration: none;
+      
+      .bds-submenu__link {
+        color: $green-400;
+        text-decoration: none;
+        
+        .bds-submenu__arrow svg path {
+          stroke: $green-400;
+        }
+        
+        .bds-submenu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
   }
 }
 
@@ -630,6 +862,210 @@ html.light:has(.bds-navbar) {
   position: relative;
   display: inline-flex;
   align-items: center;
+}
+
+// =============================================================================
+// Use Cases Submenu Modifier
+// Adjustments for 4-section layout (2x2 grid) vs Develop's 5-section layout
+// =============================================================================
+
+.bds-submenu--use-cases {
+  // Same width as Develop submenu
+  width: 612px;
+  // Let height be determined by content (4 sections with children)
+  height: auto;
+  min-height: 390px;
+
+  .bds-submenu__left,
+  .bds-submenu__right {
+    // Let columns grow based on content
+    height: auto;
+    min-height: 374px;
+  }
+
+  // All sections in Use Cases have children, so adjust spacing
+  .bds-submenu__section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px; // Space between tier1 header and tier2 list
+  }
+}
+
+// =============================================================================
+// Community Submenu Modifier
+// Mixed layout: some sections have children (Community, Contribute), 
+// some are header-only (Funding, Creators)
+// Exact dimensions from Figma: 612px total width, specific section heights
+// Left: Community (270px) + Funding (96px) = 366px + 8px gap + 8px padding = 382px
+// Right: Contribute (270px) + Creators (96px) = 366px + 8px gap + 8px padding = 382px
+// =============================================================================
+
+.bds-submenu--community {
+  // Container dimensions from Figma
+  width: 612px;
+  height: 398px; // 8px padding * 2 + 382px content height
+  
+  .bds-submenu__left {
+    width: 290px;
+    height: 382px;
+  }
+  
+  .bds-submenu__right {
+    width: 298px;
+    height: 382px;
+  }
+
+  // Override flex for all sections in community menu
+  .bds-submenu__section {
+    flex: none !important; // Override the flex: 1 from base styles
+  }
+
+  // Left column sections
+  .bds-submenu__left {
+    // First section (Community) - 270px with children
+    .bds-submenu__section:nth-child(1) {
+      height: 270px;
+      justify-content: space-between;
+    }
+    
+    // Second section (Funding) - 96px header only, vertically centered
+    .bds-submenu__section:nth-child(2) {
+      height: 96px;
+      justify-content: center;
+    }
+  }
+  
+  // Right column sections
+  .bds-submenu__right {
+    // First section (Contribute) - 270px with children
+    .bds-submenu__section:nth-child(1) {
+      height: 270px;
+      justify-content: space-between;
+    }
+    
+    // Second section (Creators) - 96px header only, vertically centered
+    .bds-submenu__section:nth-child(2) {
+      height: 96px;
+      justify-content: center;
+    }
+  }
+  
+  // Tier2 list styling - 4px gap between items, aligned to bottom
+  .bds-submenu__tier2 {
+    margin-top: auto;
+    gap: 4px;
+  }
+}
+
+// =============================================================================
+// Network Submenu Modifier
+// Two sections side by side with decorative images at bottom
+// Container: 604px wide, 390px tall
+// Each section: 290px wide, 374px tall
+// Header at top (y=16), content block at y=148 (list + pattern image)
+// Animation: First section drops down, second section slides from left
+// =============================================================================
+
+.bds-submenu--network {
+  // Container dimensions from Figma
+  width: 604px;
+  height: 390px;
+  gap: 8px;
+  
+  // Network doesn't use left/right columns - sections are direct children
+  // Remove flex column direction, use row
+  flex-direction: row;
+
+  // Override column styles - sections are direct children, not in columns
+  .bds-submenu__left,
+  .bds-submenu__right {
+    display: none; // Not used in Network submenu
+  }
+  
+  // Section styling - 290px wide, 374px tall
+  .bds-submenu__section {
+    flex: none !important;
+    width: 290px;
+    height: 374px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 0; // Control spacing manually
+    
+    // First section (Resources) - drops down from top like left column
+    &:nth-child(1) {
+      transform: translateY(-100%);
+      opacity: 0;
+      // On close: animates second (delayed), slides back up
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
+                  opacity 150ms ease-in 350ms;
+    }
+    
+    // Second section (Insights) - slides from left like right column
+    &:nth-child(2) {
+      transform: translateX(-100%);
+      opacity: 0;
+      // On close: animates first (no delay), slides back left
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+                  opacity 150ms ease-in 150ms;
+    }
+  }
+  
+  // Active state animations for sections
+  &.bds-submenu--active {
+    .bds-submenu__section:nth-child(1) {
+      transform: translateY(0);
+      opacity: 1;
+      // On open: drops down first (no delay)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+                  opacity 150ms ease-out;
+    }
+    
+    .bds-submenu__section:nth-child(2) {
+      transform: translateX(0);
+      opacity: 1;
+      // On open: slides out second (delayed by 200ms)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
+                  opacity 150ms ease-out 200ms;
+    }
+  }
+  
+  // Tier 1 (header) - positioned at top
+  .bds-submenu__tier1 {
+    flex-shrink: 0;
+  }
+  
+  // Network content wrapper - contains list and pattern
+  .bds-submenu__network-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 108px; // Position at y=148 from section top (148 - 16 padding - 24 header area)
+    width: 242px;
+    height: 210px;
+  }
+  
+  // Tier 2 (links list) - 80px height, 4px gap
+  .bds-submenu__tier2 {
+    flex-shrink: 0;
+    height: 80px;
+    margin-top: 0;
+    gap: 4px;
+  }
+  
+  // Pattern container - 242px x 114px, positioned below links with 16px gap
+  .bds-submenu__pattern-container {
+    margin-top: 16px;
+    width: 242px;
+    height: 114px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  // Pattern SVG
+  .bds-submenu__pattern {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 // =============================================================================
@@ -807,7 +1243,8 @@ html.light:has(.bds-navbar) {
     }
   }
 
-  // Mobile link item
+  // Mobile link item - text span inside parent link
+  // Hover states are controlled by the parent &__parent-link styles
   &__link {
     display: flex;
     align-items: center;
@@ -821,17 +1258,15 @@ html.light:has(.bds-navbar) {
     white-space: nowrap;
     transition: color 0.2s ease;
 
-    &:hover {
-      color: $green-400;
-    }
-
     // Bold style for main items
     &--bold {
       font-weight: 500;
     }
   }
 
-  // Mobile sub-link item
+  // Mobile sub-link item - Child links in mobile menu
+  // Styled according to Figma: Behavior-Links (child)
+  // States: Enabled (black, regular, no arrow) → Hover (green-400, arrow shows) → Active (green-500) → Focused (outline)
   &__sublink {
     display: flex;
     align-items: center;
@@ -840,27 +1275,78 @@ html.light:has(.bds-navbar) {
     text-decoration: none;
     font-family: $font-family-sans-serif;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 300; // Light weight by default
     line-height: 20.1px;
     white-space: nowrap;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, font-weight 0.2s ease;
 
-    &:hover {
-      color: $green-400;
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
     }
 
-    // Active state (green with arrow)
-    &--active {
+    // Hover state - green text, arrow appears
+    &:hover {
       color: $green-400;
-      font-weight: 400;
+      text-decoration: none;
 
-      .bds-mobile-menu__arrow {
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Active/Pressed state - darker green
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Focus state
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
         display: inline-flex;
       }
     }
   }
 
-  // Mobile arrow icon
+  // Mobile sublink arrow (chevron, hidden by default, shown on hover)
+  &__sublink-arrow {
+    display: none; // Hidden by default
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 13px;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    // Arrow inherits color from parent link via currentColor
+    svg path {
+      stroke: currentColor;
+    }
+  }
+
+  // Mobile arrow icon (for parent links)
   &__arrow {
     display: inline-flex;
     align-items: center;
@@ -876,9 +1362,112 @@ html.light:has(.bds-navbar) {
     }
   }
 
-  // Hide arrow by default on sub-links
-  &__sublink &__arrow {
-    display: none;
+  // =============================================================================
+  // Mobile Parent Link Styles (for tier1 items with icons)
+  // Styled according to Figma design: Behavior-Links
+  // States: Enabled (black) → Hover (green-400) → Active/Pressed (green-500) → Focused (outline)
+  // Animation: Internal arrow horizontal line shrinks to chevron on hover
+  // =============================================================================
+  
+  // Animation timing (same as Link component)
+  $bds-mobile-transition-duration: 150ms;
+  $bds-mobile-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+  &__parent-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+    
+    // Enabled state (default)
+    .bds-mobile-menu__link {
+      color: $black;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      .bds-mobile-menu__arrow svg path {
+        stroke: $black;
+        transition: stroke 0.2s ease;
+      }
+      
+      // Internal arrow horizontal line animation setup
+      .bds-mobile-menu__arrow svg .arrow-horizontal {
+        transform-origin: right center;
+        transition: transform $bds-mobile-transition-duration $bds-mobile-transition-timing;
+      }
+    }
+
+    // Hover state - Green text and arrow animates to chevron
+    &:hover {
+      text-decoration: none;
+      
+      .bds-mobile-menu__link {
+        color: $green-400;
+        text-decoration: none;
+        
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-400;
+        }
+        
+        // Animate horizontal line to shrink (show chevron only)
+        .bds-mobile-menu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Active/Pressed state - Darker green text and arrow
+    &:active {
+      text-decoration: none;
+      
+      .bds-mobile-menu__link {
+        color: $green-500;
+        text-decoration: none;
+        
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-500;
+        }
+        
+        .bds-mobile-menu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Focus state - Outline around entire link
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      text-decoration: none;
+      
+      .bds-mobile-menu__link {
+        color: $green-400;
+        text-decoration: none;
+        
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-400;
+        }
+        
+        .bds-mobile-menu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
   }
 
   // Mobile menu footer
@@ -964,5 +1553,77 @@ body.bds-mobile-menu-open {
 // Body scroll lock when desktop submenu is open
 body.bds-submenu-open {
   overflow: hidden;
+}
+
+// =============================================================================
+// Light Mode Overrides for Mobile Menu Links
+// Higher specificity to override global html.light a:not(.bds-link) styles
+// =============================================================================
+html.light .bds-mobile-menu {
+  a.bds-mobile-menu__sublink:not(.bds-link) {
+    color: $black;
+    font-weight: 300;
+    text-decoration: none;
+
+    &:visited {
+      color: $black;
+      font-weight: 300;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-mobile-menu__parent-link:not(.bds-link) {
+    text-decoration: none;
+
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-mobile-menu__link {
+      color: $black;
+      text-decoration: none;
+    }
+
+    &:hover .bds-mobile-menu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:active .bds-mobile-menu__link {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-mobile-menu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
 }
 
