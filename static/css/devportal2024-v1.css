@@ -16882,14 +16882,15 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 .bds-callout-media-banner {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   box-sizing: border-box;
   min-height: 280px;
-  height: auto;
+  align-items: stretch;
 }
 .bds-callout-media-banner > [class*=bds-grid__col] {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .bds-callout-media-banner {
   background-size: cover;
