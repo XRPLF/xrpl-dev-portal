@@ -14869,6 +14869,26 @@ html.light:has(.bds-navbar) {
   pointer-events: auto;
 }
 
+@keyframes submenu-right-exit-diagonal {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, -100%);
+    opacity: 0;
+  }
+}
+@keyframes submenu-left-exit-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
 .bds-submenu {
   display: none;
   position: absolute;
@@ -14908,6 +14928,16 @@ html.light:has(.bds-navbar) {
   opacity: 1;
   transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, opacity 150ms ease-out 200ms;
 }
+.bds-submenu--closing {
+  pointer-events: none;
+  transition: opacity 100ms ease-out 250ms, visibility 0ms linear 350ms;
+}
+.bds-submenu--closing .bds-submenu__left {
+  animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+}
+.bds-submenu--closing .bds-submenu__right {
+  animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+}
 .bds-submenu-wrapper {
   position: absolute;
   top: 100%;
@@ -14924,7 +14954,7 @@ html.light:has(.bds-navbar) {
   transform: translateY(-100%);
   opacity: 0;
   background-color: #E6EAF0;
-  transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, opacity 150ms ease-in 350ms;
+  transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), opacity 150ms ease-in;
 }
 .bds-submenu__right {
   display: flex;
@@ -15265,7 +15295,7 @@ html.light .bds-submenu a.bds-submenu__parent-link:not(.bds-link):focus-visible 
 .bds-submenu--network .bds-submenu__section:nth-child(1) {
   transform: translateY(-100%);
   opacity: 0;
-  transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, opacity 150ms ease-in 350ms;
+  transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), opacity 150ms ease-in;
 }
 .bds-submenu--network .bds-submenu__section:nth-child(2) {
   transform: translateX(-100%);
@@ -15281,6 +15311,12 @@ html.light .bds-submenu a.bds-submenu__parent-link:not(.bds-link):focus-visible 
   transform: translateX(0);
   opacity: 1;
   transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, opacity 150ms ease-out 200ms;
+}
+.bds-submenu--network.bds-submenu--closing .bds-submenu__section:nth-child(1) {
+  animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+}
+.bds-submenu--network.bds-submenu--closing .bds-submenu__section:nth-child(2) {
+  animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
 }
 .bds-submenu--network .bds-submenu__tier1 {
   flex-shrink: 0;
