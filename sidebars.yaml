@@ -253,7 +253,6 @@
             - group: MPTs
               expanded: false
               items:
-                - page: docs/tutorials/tokens/issue-a-multi-purpose-token.md
                 - page: docs/tutorials/tokens/sending-mpts-in-javascript.md
         - group: Compliance Features
           expanded: false
@@ -274,8 +273,8 @@
             - group: API Usage
               expanded: false  
               items: 
-                - page: _code-samples/markers-and-pagination/README.md
-                - page: _code-samples/normalize-currency-codes/README.md          
+                - link: _code-samples/markers-and-pagination/README.md
+                - link: _code-samples/normalize-currency-codes/README.md          
             - group: Transaction Sending
               expanded: false
               items: 
@@ -285,14 +284,14 @@
             - group: Key Management
               expanded: false
               items: 
-                - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
-                - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md              
-                - page: docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md
-                - page: docs/tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md
-                - page: docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair.md
-                - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
-                - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md 
-                - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md 
+                - page: docs/tutorials/best-practices/key-management/set-up-multi-signing.md
+                - page: docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md              
+                - page: docs/tutorials/best-practices/key-management/assign-a-regular-key-pair.md
+                - page: docs/tutorials/best-practices/key-management/change-or-remove-a-regular-key-pair.md
+                - page: docs/tutorials/best-practices/key-management/disable-master-key-pair.md
+                - page: docs/tutorials/best-practices/key-management/set-up-multi-signing.md
+                - page: docs/tutorials/best-practices/key-management/send-a-multi-signed-transaction.md 
+                - page: docs/tutorials/best-practices/key-management/offline-account-setup.md 
         - group: Advanced Developer Topics
           expanded: false
           items:
