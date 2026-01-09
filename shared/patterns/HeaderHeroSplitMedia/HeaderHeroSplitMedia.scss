@@ -254,17 +254,11 @@ $bds-hero-mobile-content-gap: 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; // Prevent buttons from stretching to full width on mobile
-    gap: $bds-hero-mobile-cta-gap;
 
     // Tablet & Desktop - horizontal layout
     @include media-breakpoint-up(md) {
       flex-direction: row;
       align-items: center;
-      gap: $bds-hero-tablet-cta-gap;
-    }
-
-    @include media-breakpoint-up(lg) {
-      gap: $bds-hero-desktop-cta-gap;
     }
   }
 
