@@ -20,7 +20,7 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an XRP Ledger client library, such as [xrpl.js](../build-apps/get-started.md), installed.
+- Have an [XRP Ledger client library](../../../../references/client-libraries.md), such as **xrpl.js**, installed.
 - Already know how to send a [timed](./send-a-timed-escrow.md) or [conditional](./send-a-conditional-escrow.md) escrow.
 
 ## Source Code
@@ -130,7 +130,7 @@ To cancel an escrow, you need to know its owner and the sequence number of the t
 
 The `PreviousTxnID` field contains the identifying hash of the last transaction to modify the escrow. Generally, this is the EscrowCreate transaction, so you can look up that transaction, using the [tx method][] to get the sequence number from the `Sequence` field. If the transaction used a [Ticket](../../../../concepts/accounts/tickets.md), then the `Sequence` field has a value of `0` and you need to use value of the `TicketSequence` field instead.
 
-{% admonition type="success" name="Tip" %}The `IncludeKeyletFields` amendment, expected to be released in `rippled` 3.0.0, adds a `Sequence` field to new Escrow ledger entries. For any escrow created after that amendment goes live, you can get the sequence number directly from that field.{% /admonition %}
+{% admonition type="success" name="Tip" %}The {% amendment-disclaimer name="fixIncludeKeyletFields" compact=true /%} adds a `Sequence` field to new Escrow ledger entries. For any escrow created after that amendment goes live, you can get the sequence number directly from that field.{% /admonition %}
 
 In the case that the previous transaction is not an EscrowCreate transaction, you can use _that_ transaction's metadata to find the prior value of the same escrow's `PreviousTxnID`, and repeat the process until you find the actual EscrowCreate. In the current XRP Ledger protocol (as of late 2025), this case is extremely rare to impossible, so the sample code does not demonstrate this process.
 

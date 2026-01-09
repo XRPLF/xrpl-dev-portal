@@ -40,6 +40,7 @@ if (escrowCreateResultCode === 'tesSUCCESS') {
   console.log('Escrow created successfully.')
 } else {
   console.error(`EscrowCreate failed with code ${escrowCreateResultCode}.`)
+  client.disconnect()
   process.exit(1)
 }
 

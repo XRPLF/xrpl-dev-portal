@@ -22,13 +22,13 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an XRP Ledger client library, such as [xrpl.js](../build-apps/get-started.md), installed.
+- Have an [XRP Ledger client library](../../../../references/client-libraries.md), such as **xrpl.js**, installed.
 
 ## Source Code
 
 You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/escrow/" %}code samples section of this website's repository{% /repo-link %}.
 
-##  Steps
+## Steps
 
 ### 1. Install dependencies
 

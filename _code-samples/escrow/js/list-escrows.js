@@ -13,6 +13,7 @@ const ledger = await client.request({
 })
 if (ledger.error) {
   console.error(`Error looking up validated ledger: ${ledger.error}`)
+  client.disconnect()
   process.exit(1)
 }
 const close_time = ledger.result.ledger.close_time
@@ -35,6 +36,7 @@ while (true) {
   })
   if (resp.error) {
     console.error('account_objects failed with error', resp)
+    client.disconnect()
     process.exit(1)
   }
 
@@ -68,6 +70,7 @@ function display_amount (amount) {
     return `${amount.value} ${amount.currency} issued by ${amount.issuer}`
   }
   console.error(`Unexpected type of amount: ${amount}`)
+  client.disconnect()
   process.exit(1)
 }
 

@@ -38,6 +38,7 @@ console.log(JSON.stringify(response.result, null, 2))
 const escrowCreateResultCode = response.result.meta.TransactionResult
 if (escrowCreateResultCode !== 'tesSUCCESS') {
   console.error(`EscrowCreate failed with code ${escrowCreateResultCode}.`)
+  client.disconnect()
   process.exit(1)
 }
 
@@ -60,6 +61,7 @@ const ledger = await client.request({
 })
 if (ledger.error) {
   console.error(`Error looking up validated ledger: ${ledger.error}`)
+  client.disconnect()
   process.exit(1)
 }
 const closeTime = ledger.result.ledger.close_time
@@ -82,6 +84,7 @@ while (true) {
   })
   if (resp.error) {
     console.error('account_objects failed with error', resp)
+    client.disconnect()
     process.exit(1)
   }
 
@@ -126,6 +129,7 @@ const txResp = await client.request({
 if (txResp.error) {
   console.error("Couldn't get transaction. Maybe this server doesn't have",
     'enough transaction history available?')
+  client.disconnect()
   process.exit(1)
 }
 
@@ -138,6 +142,7 @@ if (txResp.result.tx_json.TransactionType === 'EscrowCreate') {
   }
 } else {
   console.error("This escrow's previous transaction wasn't EscrowCreate!")
+  client.disconnect()
   process.exit(1)
 }
 
@@ -159,6 +164,7 @@ console.log(JSON.stringify(cancelResponse.result, null, 2))
 const cancelResultCode = cancelResponse.result.meta.TransactionResult
 if (cancelResultCode !== 'tesSUCCESS') {
   console.error(`EscrowCancel failed with result code ${cancelResultCode}`)
+  client.disconnect()
   process.exit(1)
 }
 
