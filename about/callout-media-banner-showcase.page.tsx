@@ -14,8 +14,11 @@ export default function CalloutMediaBannerShowcase() {
     console.log(`CalloutMediaBanner button clicked: ${message}`);
   };
 
-  // Sample background image (placeholder)
-  const sampleBackgroundImage = "data:image/svg+xml,%3Csvg width='1280' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2321E46B;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%230DAA3E;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1280' height='400' fill='url(%23grad)' /%3E%3C/svg%3E";
+  // Sample background images (placeholders)
+  // To load an image from the `public` folder in Next.js (or Create React App), use the path relative to the `public` directory, starting with a slash.
+  // For example, if you have `/public/backgrounds/Callout.jpg`, use:
+  const sampleBackgroundImage = "/img/backgrounds/Callout.jpg";
+  const sampleLightBackgroundImage = "data:image/svg+xml,%3Csvg width='1280' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2370EE97;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23C0A7FF;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1280' height='400' fill='url(%23grad)' /%3E%3C/svg%3E";
 
   return (
     <div className="landing">
@@ -218,6 +221,7 @@ export default function CalloutMediaBannerShowcase() {
               <p className="mb-4">
                 When <code>backgroundImage</code> is provided, it overrides the <code>variant</code> prop.
                 The component automatically adds a gradient overlay to ensure text remains readable.
+                You can also specify <code>textColor</code> to fix the text color across both light and dark modes.
               </p>
 
               <div className="p-4 mb-6" style={{ backgroundColor: 'rgba(114, 119, 126, 0.1)', borderRadius: '8px' }}>
@@ -226,26 +230,63 @@ export default function CalloutMediaBannerShowcase() {
                   <li><strong>If backgroundImage is provided:</strong> Image is used, variant color is ignored</li>
                   <li><strong>If only variant is provided:</strong> Solid color background is applied</li>
                   <li><strong>If neither:</strong> Defaults to white background (default variant)</li>
-                  <li><strong>Text color:</strong> Always white when using background image for readability</li>
+                  <li><strong>Text color:</strong> Defaults to white, or set to black via <code>textColor="black"</code></li>
+                  <li><strong>Fixed text color:</strong> Text color remains consistent across light and dark modes</li>
+                  <li><strong>Overlay gradient:</strong> Dark overlay for white text, light overlay for black text</li>
                 </ul>
               </div>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
 
-        <CalloutMediaBanner
-          backgroundImage={sampleBackgroundImage}
-          heading="Build the Future of Finance"
-          subheading="Create powerful decentralized applications with XRPL's fast, efficient, and sustainable blockchain technology."
-          primaryButton={{ label: "Start Building", onClick: () => handleClick('image-primary') }}
-          tertiaryButton={{ label: "Explore Features", onClick: () => handleClick('image-tertiary') }}
-        />
+        {/* White Text Example */}
+        <div className="mb-5">
+          <PageGrid>
+            <PageGridRow>
+              <PageGridCol span={12}>
+                <div className="mb-3">
+                  <strong>White Text (Default)</strong> - <code>textColor="white"</code>
+                  <br />
+                  <small className="text-muted">Best for dark or colorful images. Includes dark overlay gradient.</small>
+                </div>
+              </PageGridCol>
+            </PageGridRow>
+          </PageGrid>
+          <CalloutMediaBanner
+            backgroundImage={sampleBackgroundImage}
+            subheading="A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance."
+            primaryButton={{ label: "Start Building", onClick: () => handleClick('image-white-primary') }}
+          />
+        </div>
+
+        {/* Black Text Example */}
+        <div className="mb-5">
+          <PageGrid>
+            <PageGridRow>
+              <PageGridCol span={12}>
+                <div className="mb-3">
+                  <strong>Black Text</strong> - <code>textColor="black"</code>
+                  <br />
+                  <small className="text-muted">Best for light or bright images. Includes light overlay gradient. Text remains black in both light and dark modes.</small>
+                </div>
+              </PageGridCol>
+            </PageGridRow>
+          </PageGrid>
+          <CalloutMediaBanner
+            backgroundImage={sampleLightBackgroundImage}
+            textColor="black"
+            heading="Build the Future of Finance"
+            subheading="Create powerful decentralized applications with XRPL's fast, efficient, and sustainable blockchain technology."
+            primaryButton={{ label: "Start Building", onClick: () => handleClick('image-black-primary') }}
+            tertiaryButton={{ label: "Explore Features", onClick: () => handleClick('image-black-tertiary') }}
+          />
+        </div>
 
         <PageGrid className="mb-5">
           <PageGridRow>
             <PageGridCol span={12}>
               <p className="text-muted small">
-                <em>Note: The image variant includes an automatic gradient overlay (dark to light) to maintain text legibility.</em>
+                <em>Note: The image variant includes an automatic gradient overlay. White text gets a dark overlay, black text gets a light overlay. Text colors remain fixed across both light and dark modes.</em>
               </p>
             </PageGridCol>
           </PageGridRow>
@@ -497,6 +538,14 @@ export default function CalloutMediaBannerShowcase() {
                   <div style={{ flex: '1 1 0', minWidth: 0 }}><code>string</code></div>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>undefined</code></div>
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>Background image URL - overrides variant color</div>
+                </div>
+
+                {/* textColor */}
+                <div className="d-flex flex-row py-3" style={{ gap: '1rem', borderBottom: '1px solid var(--bs-border-color, #dee2e6)' }}>
+                  <div style={{ width: '140px', flexShrink: 0 }}><code>textColor</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>'white' | 'black'</code></div>
+                  <div style={{ width: '120px', flexShrink: 0 }}><code>'white'</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Text color for image variant - fixed across light/dark modes (only used when backgroundImage is provided)</div>
                 </div>
 
                 {/* heading */}

@@ -34,7 +34,8 @@ The component automatically adapts its spacing and typography based on viewport 
 | `lilac` | Lilac 300 (#C0A7FF) | Black (#141414) | Black |
 | `green` | Green 200 (#70EE97) | Black (#141414) | Black |
 | `gray` | Gray 300 (#CAD4DF) | Black (#141414) | Black |
-| `image` | Background Image | White (#FFFFFF) | Green |
+| `image` (textColor='white') | Background Image | White (#FFFFFF) | Green |
+| `image` (textColor='black') | Background Image | Black (#141414) | Green |
 
 ### Dark Mode
 
@@ -45,7 +46,8 @@ The component automatically adapts its spacing and typography based on viewport 
 | `lilac` | Lilac 400 (#7649E3) | White (#FFFFFF) | Black |
 | `green` | Green 300 (#21E46B) | Black (#141414) | Black |
 | `gray` | Gray 600 (#454549) | White (#FFFFFF) | Black |
-| `image` | Background Image | White (#FFFFFF) | Green |
+| `image` (textColor='white') | Background Image | White (#FFFFFF) | Green |
+| `image` (textColor='black') | Background Image | Black (#141414) | Green |
 
 ## Props API
 
@@ -55,6 +57,8 @@ interface CalloutMediaBannerProps {
   variant?: 'default' | 'light-gray' | 'lilac' | 'green' | 'gray';
   /** Background image URL - overrides variant color when provided */
   backgroundImage?: string;
+  /** Text color for image variant - fixes text color across light/dark modes (only applicable when backgroundImage is provided) */
+  textColor?: 'white' | 'black';
   /** Main heading text */
   heading?: string;
   /** Subheading/description text */
@@ -80,6 +84,7 @@ interface CalloutMediaBannerProps {
 
 - `variant`: `'default'`
 - `backgroundImage`: `undefined`
+- `textColor`: `'white'` (only used when `backgroundImage` is provided)
 - `primaryButton`: `undefined`
 - `tertiaryButton`: `undefined`
 - `className`: `''`
@@ -100,13 +105,25 @@ import { CalloutMediaBanner } from 'shared/patterns/CalloutMediaBanner';
 />
 ```
 
-### With Background Image
+### With Background Image (White Text - Default)
 
 ```tsx
 <CalloutMediaBanner
   backgroundImage="/images/hero-bg.jpg"
   heading="Build on XRPL"
   subheading="Start building your next project on the XRP Ledger."
+  primaryButton={{ label: "Start Building", onClick: handleClick }}
+/>
+```
+
+### With Background Image (Black Text)
+
+```tsx
+<CalloutMediaBanner
+  backgroundImage="/images/light-hero-bg.jpg"
+  textColor="black"
+  heading="Build on XRPL"
+  subheading="Start building your next project on the XRP Ledger with black text that remains consistent across light and dark modes."
   primaryButton={{ label: "Start Building", onClick: handleClick }}
 />
 ```
@@ -154,8 +171,9 @@ import { CalloutMediaBanner } from 'shared/patterns/CalloutMediaBanner';
 When `backgroundImage` is provided, it **overrides** the `variant` prop:
 - ✅ Image is used as background
 - ✅ No solid color background is applied
-- ✅ Text color is always white for readability
-- ✅ Gradient overlay is automatically added
+- ✅ Text color defaults to white (can be set to black via `textColor` prop)
+- ✅ Text color remains fixed across both light and dark modes
+- ✅ Gradient overlay is automatically added (dark overlay for white text, light overlay for black text)
 
 ### Button Color Logic
 
@@ -194,19 +212,20 @@ The component **already wraps content in PageGrid structure**. Do not nest it in
 ### BEM Class Structure
 
 ```scss
-.bds-callout-media-banner                // Base banner
-.bds-callout-media-banner--default       // White background variant
-.bds-callout-media-banner--light-gray    // Light gray variant
-.bds-callout-media-banner--lilac         // Lilac variant
-.bds-callout-media-banner--green         // Green variant
-.bds-callout-media-banner--gray          // Gray variant
-.bds-callout-media-banner--image         // Background image variant
-.bds-callout-media-banner--no-actions    // No buttons modifier
-.bds-callout-media-banner__content       // Content wrapper
-.bds-callout-media-banner__text          // Text container
-.bds-callout-media-banner__heading       // Heading element
-.bds-callout-media-banner__subheading    // Subheading element
-.bds-callout-media-banner__actions       // Button container
+.bds-callout-media-banner                    // Base banner
+.bds-callout-media-banner--default           // White background variant
+.bds-callout-media-banner--light-gray        // Light gray variant
+.bds-callout-media-banner--lilac             // Lilac variant
+.bds-callout-media-banner--green             // Green variant
+.bds-callout-media-banner--gray              // Gray variant
+.bds-callout-media-banner--image             // Background image variant (white text)
+.bds-callout-media-banner--image-text-black  // Background image with black text (fixed across modes)
+.bds-callout-media-banner--centered          // Centered content modifier
+.bds-callout-media-banner__content           // Content wrapper
+.bds-callout-media-banner__text              // Text container
+.bds-callout-media-banner__heading           // Heading element
+.bds-callout-media-banner__subheading        // Subheading element
+.bds-callout-media-banner__actions           // Button container
 ```
 
 ### Typography Tokens
@@ -271,8 +290,12 @@ $gray-600     // Gray (dark)
 
 - Minimum recommended resolution: 1920x600px for sharp display
 - Use images with clear focal points on the left/center
-- Ensure sufficient contrast for white text readability
-- Test with the automatic gradient overlay
+- **Text Color Selection**:
+  - Use `textColor="white"` (default) for dark or colorful images
+  - Use `textColor="black"` for light or bright images
+  - Text color remains fixed across both light and dark modes
+- Ensure sufficient contrast between image and text
+- Test with the automatic gradient overlay (dark for white text, light for black text)
 
 ## Files
 
