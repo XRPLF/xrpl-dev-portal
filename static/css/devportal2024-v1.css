@@ -16903,7 +16903,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
     padding: 24px;
   }
 }
-@media (min-width: 1280px) {
+@media (min-width: 992px) {
   .bds-callout-media-banner {
     padding: 40px 32px;
     min-height: 360px;
@@ -16978,7 +16978,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 }
 .bds-callout-media-banner__heading {
   margin: 0;
-  color: inherit;
+  color: inherit !important;
 }
 
 .bds-callout-media-banner__subheading {
@@ -17012,10 +17012,17 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 
 .bds-callout-media-banner__actions {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
+  flex-direction: column;
+  align-items: flex-start;
   flex-wrap: wrap;
+  gap: 8px;
+}
+@media (min-width: 576px) {
+  .bds-callout-media-banner__actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 0px;
+  }
 }
 
 .bds-callout-media-banner--default {
@@ -17052,8 +17059,12 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
   z-index: 0;
   pointer-events: none;
 }
-.bds-callout-media-banner--image .bds-callout-media-banner__text {
-  color: #FFFFFF;
+
+.bds-callout-media-banner--image-text-black::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 100%);
+}
+.bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
+  color: #141414 !important;
 }
 
 html.dark .bds-callout-media-banner--default {
@@ -17089,6 +17100,9 @@ html.dark .bds-callout-media-banner--gray .bds-callout-media-banner__text {
 html.dark .bds-callout-media-banner--image .bds-callout-media-banner__text {
   color: #FFFFFF;
 }
+html.dark .bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
+  color: #141414 !important;
+}
 
 html.light .bds-callout-media-banner--default {
   background-color: #FFFFFF;
@@ -17122,6 +17136,9 @@ html.light .bds-callout-media-banner--gray .bds-callout-media-banner__text {
 }
 html.light .bds-callout-media-banner--image .bds-callout-media-banner__text {
   color: #FFFFFF;
+}
+html.light .bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
+  color: #141414 !important;
 }
 
 pre {
