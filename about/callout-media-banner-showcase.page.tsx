@@ -17,8 +17,8 @@ export default function CalloutMediaBannerShowcase() {
   // Sample background images (placeholders)
   // To load an image from the `public` folder in Next.js (or Create React App), use the path relative to the `public` directory, starting with a slash.
   // For example, if you have `/public/backgrounds/Callout.jpg`, use:
-  const sampleBackgroundImage = "/img/backgrounds/Callout.jpg";
-  const sampleLightBackgroundImage = "data:image/svg+xml,%3Csvg width='1280' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2370EE97;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23C0A7FF;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1280' height='400' fill='url(%23grad)' /%3E%3C/svg%3E";
+  const sampleBackgroundImage = "/img/backgrounds/callout.jpg";
+  const sampleLightBackgroundImage = "/img/backgrounds/callout-light.jpg";
 
   return (
     <div className="landing">
