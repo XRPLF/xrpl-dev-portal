@@ -130,7 +130,7 @@ HTTP Status: 200 OK
 
 この警告は、XRP Ledgerプロトコルの1つ以上の[Amendment](../../../concepts/networks-and-servers/amendments.md)が有効になる予定であるが、現在のサーバにはそれらのAmendmentの実装がないことを示しています。これらのAmendmentが有効になると、現在のサーバは[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers)されるため、できるだけ早く[最新の`rippled`バージョンにアップグレード](../../../infrastructure/installation/index.md)する必要があります。
 
-サーバは、この警告を送信するのは、クライアントが[管理者として接続している](../../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access)場合のみです。
+サーバは、この警告を送信するのは、クライアントが[管理者として接続している](/docs/tutorials/get-started/get-started-http-websocket-apis.md#admin-access)場合のみです。
 
 この警告には、以下のフィールドを含む`details`フィールドが含まれます。
 
@@ -189,7 +189,7 @@ HTTP Status: 200 OK
     - [Amendment](../../../concepts/networks-and-servers/amendments.md)
         - [既知のAmendment](/resources/known-amendments.md)
 - **チュートリアル:**
-    - [XRP LedgerのAPIを触ってみよう](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
+    - [XRP LedgerのAPIを触ってみよう](/docs/tutorials/get-started/get-started-http-websocket-apis.md)
     - [`rippled`のインストールと更新](../../../infrastructure/installation/index.md)
 - **リファレンス:**
     - [featureメソッド][]

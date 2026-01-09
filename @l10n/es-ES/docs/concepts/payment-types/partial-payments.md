@@ -128,7 +128,7 @@ Utilizar [el campo `delivered_amount`](#the-delivered_amount-field) al procesar 
     - [Transacciones](../transactions/index.md)
 - **Tutoriales:**
     - [Buscar resultados de transacciones](../transactions/finality-of-results/look-up-transaction-results.md)
-    - [Monitorear pagos recibidos con WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+    - [Monitorear pagos recibidos con WebSocket](/docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md)
     - [Usar tipos de pagos especializados](../../tutorials/how-tos/use-specialized-payment-types/index.md)
     - [Listar XRP en un Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **Referencias:**
