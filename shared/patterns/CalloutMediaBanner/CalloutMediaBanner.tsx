@@ -8,6 +8,8 @@ export interface CalloutMediaBannerProps {
   variant?: 'default' | 'light-gray' | 'lilac' | 'green' | 'gray';
   /** Background image URL - overrides variant color when provided */
   backgroundImage?: string;
+  /** Text color for image variant - fixes text color across light/dark modes (only applicable when backgroundImage is provided) */
+  textColor?: 'white' | 'black';
   /** Main heading text */
   heading?: string;
   /** Subheading/description text */
@@ -45,9 +47,19 @@ export interface CalloutMediaBannerProps {
  * />
  * 
  * @example
- * // With background image
+ * // With background image (white text - default)
  * <CalloutMediaBanner
  *   backgroundImage="/images/hero-bg.jpg"
+ *   heading="Build on XRPL"
+ *   subheading="Start building your next project"
+ *   primaryButton={{ label: "Start Building", onClick: handleClick }}
+ * />
+ * 
+ * @example
+ * // With background image and black text (fixed across light/dark modes)
+ * <CalloutMediaBanner
+ *   backgroundImage="/images/light-hero-bg.jpg"
+ *   textColor="black"
  *   heading="Build on XRPL"
  *   subheading="Start building your next project"
  *   primaryButton={{ label: "Start Building", onClick: handleClick }}
@@ -56,6 +68,7 @@ export interface CalloutMediaBannerProps {
 export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   variant = 'default',
   backgroundImage,
+  textColor = 'white',
   heading,
   subheading,
   primaryButton,
@@ -79,6 +92,8 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
     !backgroundImage && `bds-callout-media-banner--${variant}`,
     // Add image class when backgroundImage is provided
     backgroundImage && 'bds-callout-media-banner--image',
+    // Add text color modifier for image variant
+    backgroundImage && textColor === 'black' && 'bds-callout-media-banner--image-text-black',
     // Add centered class when content should be centered
     shouldCenter && 'bds-callout-media-banner--centered',
     className
