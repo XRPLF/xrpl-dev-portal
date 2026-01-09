@@ -16931,7 +16931,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
   }
 }
 
-.bds-callout-media-banner--no-actions .bds-callout-media-banner__content {
+.bds-callout-media-banner--centered .bds-callout-media-banner__content {
   justify-content: center;
 }
 

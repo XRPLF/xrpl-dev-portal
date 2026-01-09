@@ -64,6 +64,9 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
 }) => {
   // Check if there are any buttons
   const hasButtons = !!(primaryButton || tertiaryButton);
+  
+  // Check if we should center content: no buttons OR (no heading but has buttons)
+  const shouldCenter = !hasButtons || (!heading && hasButtons);
 
   // Determine button color: black for all variants except 'default' and 'image'
   const buttonColor: 'green' | 'black' = 
@@ -76,8 +79,8 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
     !backgroundImage && `bds-callout-media-banner--${variant}`,
     // Add image class when backgroundImage is provided
     backgroundImage && 'bds-callout-media-banner--image',
-    // Add no-actions class when there are no buttons
-    !hasButtons && 'bds-callout-media-banner--no-actions',
+    // Add centered class when content should be centered
+    shouldCenter && 'bds-callout-media-banner--centered',
     className
   );
 

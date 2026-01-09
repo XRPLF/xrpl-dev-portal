@@ -9,7 +9,7 @@
 // .bds-callout-media-banner--green         - Green variant
 // .bds-callout-media-banner--gray          - Gray variant
 // .bds-callout-media-banner--image         - Background image variant
-// .bds-callout-media-banner--no-actions    - No buttons modifier (vertically centers text)
+// .bds-callout-media-banner--centered      - Centered content modifier (no buttons or no heading)
 // .bds-callout-media-banner__content       - Content wrapper
 // .bds-callout-media-banner__text          - Text content container
 // .bds-callout-media-banner__heading       - Heading element
@@ -118,8 +118,8 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
   }
 }
 
-// When there are no action buttons, vertically center the text content
-.bds-callout-media-banner--no-actions {
+// When there are no action buttons OR no heading, vertically center the content
+.bds-callout-media-banner--centered {
   .bds-callout-media-banner__content {
     justify-content: center;
   }
