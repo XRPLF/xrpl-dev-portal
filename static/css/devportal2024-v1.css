@@ -16544,18 +16544,11 @@ html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-im
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
 }
 @media (min-width: 576px) {
   .bds-hero-split-media__cta {
     flex-direction: row;
     align-items: center;
-    gap: 16px;
-  }
-}
-@media (min-width: 992px) {
-  .bds-hero-split-media__cta {
-    gap: 24px;
   }
 }
 .bds-hero-split-media__media-col {
