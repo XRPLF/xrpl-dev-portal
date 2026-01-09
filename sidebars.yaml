@@ -184,7 +184,7 @@
       expanded: false
       items:
         - page: docs/tutorials/public-servers.md
-        - label: Get Started
+        - group: Get Started
           expanded: false
           items:
             - page: docs/tutorials/get-started/get-started-javascript.md
@@ -193,7 +193,7 @@
             - page: docs/tutorials/get-started/get-started-go.md
             - page: docs/tutorials/get-started/get-started-php.md  
             - page: docs/tutorials/get-started/get-started-http-websocket-apis.md  
-        - label: Sample Apps
+        - group: Sample Apps
           expanded: false
           items:
             - page: docs/tutorials/sample-apps/build-a-browser-wallet-in-javascript.md
@@ -201,7 +201,7 @@
             - page: docs/tutorials/sample-apps/build-a-desktop-wallet-in-python.md
             - page: docs/tutorials/sample-apps/credential-issuing-service-in-javascript.md
             - page: docs/tutorials/sample-apps/credential-issuing-service-in-python.md 
-        - label: DEX
+        - group: DEX
           expanded: false
           items:
             - page: docs/tutorials/dex/trade-in-the-decentralized-exchange.md
@@ -210,7 +210,7 @@
             - page: docs/tutorials/dex/create-an-amm-in-javascript.md
             - page: docs/tutorials/dex/add-assets-to-amm-in-javascript.md
             - page: docs/tutorials/dex/trade-with-auction-slot-in-javascript.md 
-        - label: Payments
+        - group: Payments
           expanded: false
           items:    
             - page: docs/tutorials/payments/create-accounts-send-xrp-in-javascript.md
@@ -232,10 +232,10 @@
             - page: docs/tutorials/payments/cancel-an-expired-escrow.md
             - page: docs/tutorials/payments/look-up-escrows.md
             - page: docs/tutorials/payments/use-an-escrow-as-a-smart-contract.md
-        - label: Tokens 
+        - group: Tokens 
           expanded: false
           items:
-            - label: NFTs
+            - group: NFTs
               expanded: false
               items:
                 - page: docs/tutorials/javascript/nfts/mint-and-burn-nfts.md
@@ -243,46 +243,46 @@
                 - page: docs/tutorials/javascript/nfts/broker-an-nft-sale.md
                 - page: docs/tutorials/javascript/nfts/assign-an-authorized-minter.md
                 - page: docs/tutorials/javascript/nfts/batch-mint-nfts.md               
-            - label: Fungible Tokens
+            - group: Fungible Tokens
               expanded: false
               items:
-                - page: docs/tutorials/javascript/tokens/issue-a-fungible-token.md
+                - page: docs/tutorials/how-tos/use-tokens/issue-a-fungible-token.md
                 - page: docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md                
                 - page: docs/tutorials/how-tos/use-tokens/enact-global-freeze.md
                 - page: docs/tutorials/how-tos/use-tokens/enable-no-freeze.md                
-            - label: MPTs
+            - group: MPTs
               expanded: false
               items:
                 - page: docs/tutorials/tokens/issue-a-multi-purpose-token.md
                 - page: docs/tutorials/tokens/sending-mpts-in-javascript.md
-        - label: Compliance Features
+        - group: Compliance Features
           expanded: false
           items:
             - page: docs/tutorials/compliance-features/require-destination-tags.md
-            - page: docs/tutorials/compliance-features/verify-credentials-in-javascript.md
+            - page: docs/tutorials/compliance-features/verify-credentials-javascript.md
             - page: docs/tutorials/compliance-features/verify-credentials-in-python.md
             - page: docs/tutorials/compliance-features/create-permissioned-domains-in-javascript.md
-        - label: Programmability
+        - group: Programmability
           expanded: false
           items:
             - page: docs/tutorials/programmability/set-up-xrp-xrp-bridge.md
             - page: docs/tutorials/programmability/set-up-iou-iou-bridge.md
             - page: docs/tutorials/programmability/submit-cross-chain-transaction.md            
-        - label: Best Practices
+        - group: Best Practices
           expanded: false
           items:
-            - label: API Usage
+            - group: API Usage
               expanded: false  
               items: 
                 - page: _code-samples/markers-and-pagination/README.md
                 - page: _code-samples/normalize-currency-codes/README.md          
-            - label: Transaction Sending
+            - group: Transaction Sending
               expanded: false
               items: 
                 - page: docs/tutorials/best-practices/transaction-sending/use-tickets.md
                 - page: docs/tutorials/best-practices/transaction-sending/send-a-single-account-batch-transaction.md
                 - page: docs/tutorials/best-practices/transaction-sending/send-a-multi-account-batch-transaction.md
-            - label: Key Management
+            - group: Key Management
               expanded: false
               items: 
                 - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
@@ -293,14 +293,14 @@
                 - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
                 - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md 
                 - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md 
-        - label: Advanced Developer Topics
+        - group: Advanced Developer Topics
           expanded: false
           items:
-            - label: Client Library Development
+            - group: Client Library Development
               expanded: false  
               items: 
                 - page: docs/tutorials/advanced-developer-topics/client-library-development/monitor-incoming-payments-with-websocket.md            
-            - label: Protocol Development
+            - group: Protocol Development
               expanded: false
               items: 
                 - page: docs/tutorials/advanced-developer-topics/protocol-development/testing-devnet-features.md           
