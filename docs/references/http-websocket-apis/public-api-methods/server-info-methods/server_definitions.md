@@ -39,7 +39,11 @@ An example of the request format:
 
 {% try-it method="server_definitions" /%}
 
-The request does not take any parameters.
+The request includes the following parameters:
+
+| Field             | Type   | Required? | Description |
+|:------------------|:-------|:----------|-------------|
+| `hash`            | String | No        | If included and the hash matches the server's hash, the full set of definitions will not be returned. |
 
 
 ## Response Format
