@@ -1089,6 +1089,7 @@ html.dark:has(.bds-navbar) {
   // Left column - slides down from top (starts completely above)
   &__left {
     position: relative;
+    z-index: 2; // Higher z-index so right column slides from underneath
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -1118,6 +1119,7 @@ html.dark:has(.bds-navbar) {
   // Right column - slides from left (starts completely to the left)
   &__right {
     position: relative;
+    z-index: 1; // Lower z-index so it slides from underneath the left column
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -1542,18 +1544,18 @@ html.light .bds-submenu {
 // =============================================================================
 
 .bds-submenu--community {
-  // Container dimensions from Figma
+  // Container dimensions - same as other submenus
   width: 612px;
-  height: 398px; // 8px padding * 2 + 382px content height
-  
+  height: 390px; // 8px padding * 2 + 374px content height
+
   .bds-submenu__left {
     width: 290px;
-    height: 382px;
+    height: 374px; // Match other submenus
   }
-  
+
   .bds-submenu__right {
     width: 298px;
-    height: 382px;
+    height: 374px; // Match other submenus
   }
 
   // Override flex for all sections in community menu
@@ -1568,14 +1570,14 @@ html.light .bds-submenu {
       height: 270px;
       justify-content: space-between;
     }
-    
+
     // Second section (Funding) - 96px header only, vertically centered
     .bds-submenu__section:nth-child(2) {
       height: 96px;
       justify-content: center;
     }
   }
-  
+
   // Right column sections
   .bds-submenu__right {
     // First section (Contribute) - 270px with children
@@ -1583,7 +1585,7 @@ html.light .bds-submenu {
       height: 270px;
       justify-content: space-between;
     }
-    
+
     // Second section (Creators) - 96px header only, vertically centered
     .bds-submenu__section:nth-child(2) {
       height: 96px;
@@ -1628,6 +1630,7 @@ html.light .bds-submenu {
   // Section styling - 290px wide, 374px tall
   // Use box-shadow to create the gray frame that moves with the card
   .bds-submenu__section {
+    position: relative;
     flex: none !important;
     width: 290px;
     height: 374px;
@@ -1642,6 +1645,7 @@ html.light .bds-submenu {
 
     // First section (Resources) - drops down from top like left column
     &:nth-child(1) {
+      z-index: 2; // Higher z-index so second section slides from underneath
       width: 298px; // 290px + 8px to cover gap
       padding-right: 32px; // 24px + 8px for the gap coverage
       transform: translateY(-100%);
@@ -1654,6 +1658,7 @@ html.light .bds-submenu {
 
     // Second section (Insights) - slides from left like right column
     &:nth-child(2) {
+      z-index: 1; // Lower z-index so it slides from underneath the first section
       transform: translateX(-100%);
       opacity: 0;
       // On close: animates first (no delay), slides back left
