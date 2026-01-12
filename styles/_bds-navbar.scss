@@ -1,7 +1,9 @@
 // BDS Navbar Styles - Phase 1 (Light Mode Only)
 // Uses color variables from _colors.scss
 // Follows breakpoints from _breakpoints.scss
-
+// Animation timing (same as Link component)
+$bds-submenu-transition-duration: 150ms;
+$bds-submenu-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 $bds-navbar-height-desktop: 80px;
 $bds-navbar-height-tablet: 80px;
 $bds-navbar-height-mobile: 80px;
@@ -965,17 +967,17 @@ html.dark:has(.bds-navbar) {
     .bds-submenu__left {
       transform: translateY(0);
       opacity: 1;
-      // On open: left drops down first (no delay)
-      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
-                  opacity 150ms ease-out;
+      // On open: left drops down first (delayed by 100ms)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 100ms,
+                  opacity 150ms ease-out 100ms;
     }
 
     .bds-submenu__right {
       transform: translateX(0);
       opacity: 1;
-      // On open: right slides out second (delayed by 200ms)
-      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
-                  opacity 150ms ease-out 200ms;
+      // On open: right slides out second (delayed by 300ms)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 300ms,
+                  opacity 150ms ease-out 300ms;
     }
   }
 
@@ -1087,10 +1089,6 @@ html.dark:has(.bds-navbar) {
       height: 100%;
     }
   }
-
-  // Animation timing (same as Link component)
-  $bds-submenu-transition-duration: 150ms;
-  $bds-submenu-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
   // Main link item (Tier 1) - text span inside parent link
   // Hover states are controlled by the parent &__parent-link styles
