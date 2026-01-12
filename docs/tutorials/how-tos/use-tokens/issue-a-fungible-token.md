@@ -1,12 +1,26 @@
 ---
 seo:
-    description: Create your own token and issue it on the XRP Ledger Testnet.
+  description: Create your own token and issue it on the XRP Ledger Testnet.
 filters:
   - interactive_steps
 labels:
   - Tokens
-steps: ['Generate', 'Connect', 'Configure Issuer', 'Wait (Issuer Setup)', 'Configure Hot Address', 'Wait (Hot Address Setup)', 'Make Trust Line', 'Wait (TrustSet)', 'Send Token', 'Wait (Payment)', 'Confirm Balances']
+steps:
+  [
+    'Generate',
+    'Connect',
+    'Configure Issuer',
+    'Wait (Issuer Setup)',
+    'Configure Hot Address',
+    'Wait (Hot Address Setup)',
+    'Make Trust Line',
+    'Wait (TrustSet)',
+    'Send Token',
+    'Wait (Payment)',
+    'Confirm Balances',
+  ]
 ---
+
 # Issue a Fungible Token
 
 Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial shows the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](../../../concepts/tokens/index.md); for more on the business decisions involved in issuing a stablecoin, see [Stablecoin Issuer](../../../use-cases/tokenization/stablecoin-issuer.md). <!-- STYLE_OVERRIDE: ious -->
@@ -14,13 +28,13 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
 ## Prerequisites
 
 - You need two funded XRP Ledger accounts, each with an address, secret key, and some XRP. For this tutorial, you can generate new test credentials as needed.
-    - Each address needs enough XRP to satisfy the [reserve requirement](../../../concepts/accounts/reserves.md) including the additional reserve for a trust line.
+  - Each address needs enough XRP to satisfy the [reserve requirement](../../../concepts/accounts/reserves.md) including the additional reserve for a trust line.
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
-    - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../../java/build-apps/get-started.md) for setup steps.
-    - You can also read along and use the interactive steps in your browser without any setup.
+  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+  - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
+  - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../../java/build-apps/get-started.md) for setup steps.
+  - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
@@ -58,7 +72,6 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md).
 
-
 ### 2. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server with a supported [client library](../../../references/client-libraries.md):
@@ -79,13 +92,11 @@ You must be connected to the network to submit transactions to it. The following
 
 {% /tabs %}
 
-
 {% admonition type="info" name="Note" %}The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.{% /admonition %}
 
 For this tutorial, click the following button to connect:
 
 {% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
-
 
 ### 3. Configure Issuer Settings
 
@@ -93,20 +104,20 @@ First, configure the settings for your cold address (which will become the issue
 
 - [Default Ripple][]: **This setting is required** so that users can send your token to each other. It's best to enable it _before_ setting up any trust lines or issuing any tokens.
 - [Authorized Trust Lines][]: (Optional) This setting (also called "Require Auth") limits your tokens to being held _only_ by accounts you've explicitly approved. You cannot enable this setting if you already have any trust lines or offers for _any_ token.
-    {% admonition type="info" name="Note" %}To use authorized trust lines, you must perform additional steps that are not shown in this tutorial.{% /admonition %}
+  {% admonition type="info" name="Note" %}To use authorized trust lines, you must perform additional steps that are not shown in this tutorial.{% /admonition %}
 
 [Default Ripple]: ../../../concepts/tokens/fungible-tokens/rippling.md
 [Authorized Trust Lines]: ../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md
 
 Other settings you may want to, optionally, configure for your cold address (issuer):
 
-| Setting                      | Recommended Value   | Summary                 |
-|:-----------------------------|:--------------------|:------------------------|
-| [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.) |
-| Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments. |
-| [Transfer Fee][]             | 0–1%                | Charge a percentage fee when users send your token to each other. |
+| Setting                      | Recommended Value   | Summary                                                                                                                                                                                                                                                                                  |
+| :--------------------------- | :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.)                                                                                                                                                                           |
+| Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments.                                                                                                                                                                                                                              |
+| [Transfer Fee][]             | 0–1%                | Charge a percentage fee when users send your token to each other.                                                                                                                                                                                                                        |
 | [Tick Size][]                | 5                   | Limit the number of decimal places in exchange rates for your token in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). A tick size of 5-6 reduces churn of almost-equivalent offers and speeds up price discovery compared to the default of 15. |
-| [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
+| [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts.                                                                                                |
 
 [Require Destination Tags]: ../manage-account-settings/require-destination-tags.md
 [Transfer Fee]: ../../../concepts/tokens/fungible-tokens/transfer-fees.md
@@ -118,7 +129,6 @@ You can change these settings later as well.
 {% admonition type="info" name="Note" %}Many issuing settings apply equally to all tokens issued by an address, regardless of the currency code. If you want to issue multiple types of tokens in the XRP Ledger with different settings, you should use a different address to issue each different token.{% /admonition %}
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended cold address settings:
-
 
 {% tabs %}
 
@@ -210,17 +220,16 @@ The code samples in this tutorial use helper functions to wait for validation wh
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Issuer Setup)"} /%}
 
-
 ### 5. Configure Hot Address Settings
 
 The hot address does not strictly require any settings changes from the default, but the following are recommended as best practices:
 
-| Setting                      | Recommended Value   | Summary                 |
-|:-----------------------------|:--------------------|:------------------------|
-| [Default Ripple][]           | Disabled            | Leave this setting **disabled.** (This is the default.) |
-| [Authorized Trust Lines][]   | Enabled             | Enable this setting on the hot address—and never approve any trust lines to the hot address—to prevent accidentally issuing tokens from the wrong address. (Optional, but recommended.) |
-| [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.) |
-| Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments. |
+| Setting                      | Recommended Value   | Summary                                                                                                                                                                                   |
+| :--------------------------- | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Default Ripple][]           | Disabled            | Leave this setting **disabled.** (This is the default.)                                                                                                                                   |
+| [Authorized Trust Lines][]   | Enabled             | Enable this setting on the hot address—and never approve any trust lines to the hot address—to prevent accidentally issuing tokens from the wrong address. (Optional, but recommended.)   |
+| [Require Destination Tags][] | Enabled or Disabled | Enable if you process withdrawals of your token to outside systems. (For example, your token is a stablecoin.)                                                                            |
+| Disallow XRP                 | Enabled or Disabled | Enable if this address isn't meant to process XRP payments.                                                                                                                               |
 | [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
 
 The following code sample shows how to send an [AccountSet transaction][] to enable the recommended hot address settings:
@@ -298,7 +307,6 @@ As before, wait for the previous transaction to be validated by consensus before
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Hot Address Setup)"} /%}
 
-
 ### 7. Create Trust Line from Hot to Cold Address
 
 Before you can receive tokens, you need to create a [trust line](../../../concepts/tokens/fungible-tokens/index.md) to the token issuer. This trust line is specific to the [currency code](../../../references/protocol/data-types/currency-formats.md#currency-codes) of the token you want to issue, such as USD or FOO. You can choose any currency code you want; each issuer's tokens are treated as separate in the XRP Ledger protocol. However, users' balances of tokens with the same currency code can [ripple](../../../concepts/tokens/fungible-tokens/rippling.md) between different issuers if the users enable rippling settings.
@@ -309,14 +317,14 @@ The hot address needs a trust line like this before it can receive tokens from t
 
 To create a trust line, send a [TrustSet transaction][] from the **hot address** with the following fields:
 
-| Field                  | Value                                               |
-|:-----------------------|:----------------------------------------------------|
-| `TransactionType`      | `"TrustSet"`                                        |
-| `Account`              | The hot address. (More generally, this is the account that wants to receive the token.) |
+| Field                  | Value                                                                                      |
+| :--------------------- | :----------------------------------------------------------------------------------------- |
+| `TransactionType`      | `"TrustSet"`                                                                               |
+| `Account`              | The hot address. (More generally, this is the account that wants to receive the token.)    |
 | `LimitAmount`          | An object specifying how much, of which token, from which issuer, you are willing to hold. |
-| `LimitAmount.currency` | The currency code of the token.                     |
-| `LimitAmount.issuer`   | The cold address.             |
-| `LimitAmount.value`    | The maximum amount of the token you are willing to hold. |
+| `LimitAmount.currency` | The currency code of the token.                                                            |
+| `LimitAmount.issuer`   | The cold address.                                                                          |
+| `LimitAmount.value`    | The maximum amount of the token you are willing to hold.                                   |
 
 The following code sample shows how to send a [TrustSet transaction][] from the hot address, trusting the issuing address for a limit of 1 billion FOO:
 
@@ -375,30 +383,28 @@ The following code sample shows how to send a [TrustSet transaction][] from the 
 
 {% admonition type="info" name="Note" %}If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#authorizing-trust-lines).{% /admonition %}
 
-
 ### 8. Wait for Validation
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (TrustSet)"} /%}
 
-
 ### 9. Send Token
 
 Now you can create tokens by sending a [Payment transaction][] from the cold address to the hot address. This transaction should have the following attributes (dot notation indicates nested fields):
 
-| Field | Value |
-|---|---|
-| `TransactionType` | `"Payment"` |
-| `Account` | The cold address issuing the token. |
-| `Amount` | An [token amount](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) specifying how much of which token to create. |
-| `Amount.currency` | The currency code of the token. |
-| `Amount.value` | Decimal amount of the token to issue, as a string. |
-| `Amount.issuer` | The cold address issuing the token. |
-| `Destination` | The hot address (or other account receiving the token) |
-| `Paths` | Omit this field when issuing tokens. |
-| `SendMax` | Omit this field when issuing tokens. |
-| `DestinationTag` | Any whole number from 0 to 2<sup>32</sup>-1. You must specify _something_ here if you enabled [Require Destination Tags][] on the hot address. |
+| Field             | Value                                                                                                                                                    |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TransactionType` | `"Payment"`                                                                                                                                              |
+| `Account`         | The cold address issuing the token.                                                                                                                      |
+| `Amount`          | An [token amount](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) specifying how much of which token to create. |
+| `Amount.currency` | The currency code of the token.                                                                                                                          |
+| `Amount.value`    | Decimal amount of the token to issue, as a string.                                                                                                       |
+| `Amount.issuer`   | The cold address issuing the token.                                                                                                                      |
+| `Destination`     | The hot address (or other account receiving the token)                                                                                                   |
+| `Paths`           | Omit this field when issuing tokens.                                                                                                                     |
+| `SendMax`         | Omit this field when issuing tokens.                                                                                                                     |
+| `DestinationTag`  | Any whole number from 0 to 2<sup>32</sup>-1. You must specify _something_ here if you enabled [Require Destination Tags][] on the hot address.           |
 
 You can use [auto-filled values](../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) for all other required fields.
 
@@ -452,13 +458,11 @@ The following code sample shows how to send a [Payment transaction][] to issue 8
 
 {% /interactive-block %}
 
-
 ### 10. Wait for Validation
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Payment)"} /%}
-
 
 ### 11. Confirm Token Balances
 
@@ -498,7 +502,6 @@ The following code sample shows how to use both methods:
 
 {% /interactive-block %}
 
-
 ### Next Steps
 
 Now that you've created the token, you can explore how it fits into features of the XRP Ledger:
@@ -508,7 +511,6 @@ Now that you've created the token, you can explore how it fits into features of 
 - Monitor for incoming payments of your token.
 - Create an [xrp-ledger.toml file](../../../references/xrp-ledger-toml.md) and set up domain verification for your token's issuer.
 - Learn about other [features of XRP Ledger tokens](../../../concepts/tokens/index.md).
-
 
 ## Footnotes
 

@@ -2,11 +2,13 @@
 html: checkcash.html
 parent: transaction-types.html
 seo:
-    description: レジャーでCheckオブジェクトの清算を試みます。
+  description: レジャーでCheckオブジェクトの清算を試みます。
 labels:
   - Checks
 ---
+
 # CheckCash
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
 
 対応する[CheckCreateトランザクション][]で承認された額まで受領するため、レジャーでCheckオブジェクトの清算を試みます。CheckCashトランザクションでCheckを換金できるのは、Checkの`Destination`アドレスだけです。このCheckの換金方法は、送金先により開始される[Payment][]の実行に似ています。
@@ -19,24 +21,23 @@ _（[Checks Amendment][]が必要です）_
 
 ```json
 {
-   "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-   "TransactionType": "CheckCash",
-   "Amount": "100000000",
-   "CheckID": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
-   "Fee": "12"
+  "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "TransactionType": "CheckCash",
+  "Amount": "100000000",
+  "CheckID": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
+  "Fee": "12"
 }
 ```
 
 {% tx-example txid="67B71B13601CDA5402920691841AC27A156463678E106FABD45357175F9FF406" /%}
 
-
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド        | JSONの型           | [内部の型][] | 説明         |
-|:-------------|:--------------------|:------------------|:--------------------|
-| `CheckID`    | 文字列              | UInt256           | 換金する[Checkレジャーオブジェクト](../../ledger-data/ledger-entry-types/check.md)のID（64文字の16進文字列）。 |
-| `Amount`     | [通貨額][] | Amount            | _（省略可）_ 可能であればCheckを厳密にこの額で清算します。通貨は対応するCheckCreateトランザクションの`SendMax`の通貨と一致している必要があります。このフィールドまたは`DeliverMin`のいずれかを指定する必要があります。 |
-| `DeliverMin` | [通貨額][] | Amount            | _（省略可）_ Checkをこの額以上の可能な限りの額で清算します。通貨は対応するCheckCreateトランザクションの`SendMax`の通貨と一致している必要があります。このフィールドまたは`Amount`のいずれかを指定する必要があります。 |
+| フィールド   | JSONの型   | [内部の型][] | 説明                                                                                                                                                                                                                   |
+| :----------- | :--------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CheckID`    | 文字列     | UInt256      | 換金する[Checkレジャーオブジェクト](../../ledger-data/ledger-entry-types/check.md)のID（64文字の16進文字列）。                                                                                                         |
+| `Amount`     | [通貨額][] | Amount       | _（省略可）_ 可能であればCheckを厳密にこの額で清算します。通貨は対応するCheckCreateトランザクションの`SendMax`の通貨と一致している必要があります。このフィールドまたは`DeliverMin`のいずれかを指定する必要があります。 |
+| `DeliverMin` | [通貨額][] | Amount       | _（省略可）_ Checkをこの額以上の可能な限りの額で清算します。通貨は対応するCheckCreateトランザクションの`SendMax`の通貨と一致している必要があります。このフィールドまたは`Amount`のいずれかを指定する必要があります。   |
 
 `Amount`または`DeliverMin`のいずれかを指定する***必要があります***が、両方は指定しないでください。
 

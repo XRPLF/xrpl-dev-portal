@@ -1,13 +1,14 @@
 ---
-date: "2017-09-21"
+date: '2017-09-21'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.70.2
 
 The `rippled` team has released `rippled` version 0.70.2, which corrects an emergent behavior that resulted in high transaction costs and fewer transactions in validated ledgers over the past few days. The problematic behavior involved large numbers of transactions being stuck in different `rippled` instances' open ledgers without being consistently relayed to validators. The large number of "stuck" transactions filled the transaction queue and caused a dramatic increase in the open ledger cost.
@@ -44,18 +45,19 @@ Date:   Tue Sep 19 14:26:06 2017 -0400
 
 ## Bug Fixes
 
-* Recover old open ledger transactions to the queue [(#2231)](https://github.com/ripple/rippled/pull/2231)
+- Recover old open ledger transactions to the queue [(#2231)](https://github.com/ripple/rippled/pull/2231)
 
 ## Network Update
 
 The Ripple operations team plans to deploy version 0.70.2 to all `rippled` servers under its operational control, including private clusters, starting at 4:00 PM PT on Thursday, 2017-09-21. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

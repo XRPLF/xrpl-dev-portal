@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Verify that an account holds a valid credential on the XRP Ledger.
+  description: Verify that an account holds a valid credential on the XRP Ledger.
 labels:
-    - Credentials
+  - Credentials
 ---
+
 # Verify Credentials
 
 This tutorial describes how to verify that an account holds a valid [credential](/docs/concepts/decentralized-storage/credentials) on the XRP Ledger, which has different use cases depending on the type of credential and the meaning behind it. A few possible reasons to verify a credential include:
@@ -26,7 +27,7 @@ To complete this tutorial, you should:
 - Have a basic understanding of the XRP Ledger.
 - Have an XRP Ledger client library, such as [xrpl.js](../build-apps/get-started.md), installed.
 - Know the issuer, subject, and credential type of the credential you want to verify. For purposes of this tutorial, you can use sample values of data that exists in the public network.
-    - For information on how to create your own credentials, see the [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md) tutorial.
+  - For information on how to create your own credentials, see the [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md) tutorial.
 
 ## Source Code
 
@@ -43,6 +44,7 @@ From the code sample folder, use `npm` to install dependencies:
 ```sh
 npm i
 ```
+
 {% /tab %}
 
 <!-- re-add Python tab when merging the tutorials
@@ -56,6 +58,7 @@ pip install -r requirements.txt
 ```
 {% /tab %}
 -->
+
 {% /tabs %}
 
 ### 2. Set up client and define constants
@@ -116,7 +119,6 @@ If the credential has passed all checks to this point, it is valid. In summary, 
 {% /tab %}
 {% /tabs %}
 
-
 ## Next Steps
 
 Now that you know how to use `xrpl.js` to verify credentials, you can try building this or related steps together into a bigger project. For example:
@@ -128,10 +130,10 @@ Now that you know how to use `xrpl.js` to verify credentials, you can try buildi
 
 - [Verify Credentials in Python](../../python/compliance/verify-credential.md)
 - **References:**
-    - API methods:
-        - [ledger_entry method][]
-        - [ledger method][]
-    - Ledger entries:
-        - [Credential entry][]
+  - API methods:
+    - [ledger_entry method][]
+    - [ledger method][]
+  - Ledger entries:
+    - [Credential entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

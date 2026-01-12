@@ -2,11 +2,12 @@
 html: ticksize.html
 parent: decentralized-exchange.html
 seo:
-    description: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
+  description: Issuers can set custom tick sizes for currencies to reduce churn in order books over miniscule differences in exchange rates.
 labels:
   - Decentralized Exchange
   - Tokens
 ---
+
 # Tick Size
 
 When an Offer is placed into an order book, its exchange rate is truncated based on the `TickSize` values set by the issuers of the currencies involved in the Offer. When trading XRP and a token, the `TickSize` from the token's issuer applies. When trading two tokens, the Offer uses the smaller `TickSize` value (that is, the one with fewer significant digits). If neither token has a `TickSize` set, the default behavior applies.
@@ -21,8 +22,8 @@ When an issuer enables, disables, or changes the `TickSize`, Offers that were pl
 
 - [Dev Blog: Introducing the TickSize Amendment](https://xrpl.org/blog/2017/ticksize-voting.html#ticksize-amendment-overview)
 - **References:**
-    - [AccountSet transaction][]
-    - [book_offers method][]
-    - [OfferCreate transaction][]
+  - [AccountSet transaction][]
+  - [book_offers method][]
+  - [OfferCreate transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

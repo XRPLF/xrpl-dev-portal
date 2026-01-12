@@ -2,14 +2,14 @@
 html: what-is-the-xrp-ledger.html
 parent: introduction.html
 seo:
-    description: Aprende sobre la blockchain XRP Ledger (XRPL).
+  description: Aprende sobre la blockchain XRP Ledger (XRPL).
 labels:
   - Blockchain
 ---
+
 # ¿Qué es el XRP Ledger?
 
 El XRP Ledger es una blockchain descentralizada que usa su propia moneda digital para procesar y registrar transacciones financieras.
-
 
 ## ¿Qué es una blockchain?
 
@@ -45,7 +45,7 @@ Por diseño, las blockchains son resistentes a la modificación de datos. Cada n
 
 ![Dos validadores con copias idénticas de la blockchain](/docs/img/introduction9-2-sets-of-3.png)
 
-Esto crea un libro contable (ledger) abierto y distribuido que registra las transacciones entre partes de manera eficiente, verificable y permanente. 
+Esto crea un libro contable (ledger) abierto y distribuido que registra las transacciones entre partes de manera eficiente, verificable y permanente.
 
 Una vez registrados, los datos de cualquier bloque no se pueden modificar retroactivamente, a no ser que la mayoría de validadores se pongan de acuerdo en el cambio. Si es así, todo los bloques posteriores se modifican de la misma manera (un hecho muy raro y extremo).
 

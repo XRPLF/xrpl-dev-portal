@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-03-22"
+date: '2022-03-22'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Clio Release Notes
+  - Clio Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing Clio, an XRP Ledger API server, now in Beta
 
 Today, RippleX and the XRP Ledger Foundation (XRPLF) are pleased to announce the first beta release for Clio, an XRP Ledger API server optimized for WebSocket or HTTP API calls.
@@ -16,11 +17,11 @@ Today, RippleX and the XRP Ledger Foundation (XRPLF) are pleased to announce the
 
 A Clio server does not connect to the peer-to-peer network. Instead, it extracts data from a specified `rippled` server which is connected to the P2P network. By handling API calls efficiently, Clio servers can help reduce the load on `rippled` servers running in P2P mode.
 
-Clio stores validated historical ledger and transaction data in a space efficient format, using up to 4 times less space than `rippled`.  Clio uses Cassandra or ScyllaDB, allowing for scalable read throughput. Multiple Clio servers can share access to the same dataset, thereby enabling you to build a highly available cluster of Clio servers without the need for redundant data storage or computation.  
+Clio stores validated historical ledger and transaction data in a space efficient format, using up to 4 times less space than `rippled`. Clio uses Cassandra or ScyllaDB, allowing for scalable read throughput. Multiple Clio servers can share access to the same dataset, thereby enabling you to build a highly available cluster of Clio servers without the need for redundant data storage or computation.
 
 Clio requires access to a `rippled` server and the `rippled` need not be running on the same machine as Clio.
 
-While Clio offers the complete `rippled` API, by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the `rippled` server on the P2P network and passes the response back to the requestor.  
+While Clio offers the complete `rippled` API, by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the `rippled` server on the P2P network and passes the response back to the requestor.
 
 This beta release of Clio has been built and tested on Ubuntu 20.04 Focal Fossa.
 

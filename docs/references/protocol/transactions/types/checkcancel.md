@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Cancel a check.
+  description: Cancel a check.
 labels:
-    - Checks
+  - Checks
 ---
+
 # CheckCancel
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
 
 Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), removing it from the ledger without sending any money. The source or the destination of the check can cancel a check at any time. If the check has expired, any address can cancel it.
@@ -15,10 +17,10 @@ Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), rem
 
 ```json
 {
-    "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-    "TransactionType": "CheckCancel",
-    "CheckID": "49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0",
-    "Fee": "12"
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "TransactionType": "CheckCancel",
+  "CheckID": "49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0",
+  "Fee": "12"
 }
 ```
 
@@ -26,9 +28,9 @@ Cancels an unredeemed [check](../../../../concepts/payment-types/checks.md), rem
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field       | JSON Type | [Internal Type][] | Description                    |
-|:------------|:----------|:------------------|:-------------------------------|
-| `CheckID`   | String    | UInt256           | The ID of the [Check ledger object](../../ledger-data/ledger-entry-types/check.md) to cancel, as a 64-character hexadecimal string. |
+| Field     | JSON Type | [Internal Type][] | Description                                                                                                                         |
+| :-------- | :-------- | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| `CheckID` | String    | UInt256           | The ID of the [Check ledger object](../../ledger-data/ledger-entry-types/check.md) to cancel, as a 64-character hexadecimal string. |
 
 ## Error Cases
 

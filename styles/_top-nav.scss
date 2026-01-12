@@ -2,7 +2,7 @@
 $nav-height: 80px;
 $banner-height: 0; // Currently no pencil banner.
 
-[data-component-name="layouts/RootLayout"] {
+[data-component-name='layouts/RootLayout'] {
   padding-top: $nav-height + $banner-height;
 }
 
@@ -14,8 +14,12 @@ $banner-height: 0; // Currently no pencil banner.
   .navbar-brand {
     text-decoration: none;
     white-space: pre;
-    -webkit-transition: opacity 0.2s ease, color 0.2s ease;
-    transition: opacity 0.2s ease, color 0.2s ease;
+    -webkit-transition:
+      opacity 0.2s ease,
+      color 0.2s ease;
+    transition:
+      opacity 0.2s ease,
+      color 0.2s ease;
     padding-left: 2rem;
 
     .logo {
@@ -347,7 +351,7 @@ $banner-height: 0; // Currently no pencil banner.
         &::before,
         div {
           position: absolute;
-          content: " ";
+          content: ' ';
           background-color: $gray-100;
           display: block;
           width: 100%;
@@ -389,7 +393,7 @@ $banner-height: 0; // Currently no pencil banner.
       }
 
       #topnav-search {
-        [data-component-name="Search/SearchTrigger"] {
+        [data-component-name='Search/SearchTrigger'] {
           cursor: pointer;
         }
       }
@@ -441,18 +445,15 @@ $banner-height: 0; // Currently no pencil banner.
           }
 
           // "Docs" dropdown placement (mobile)
-          .col-for-document_types
-          {
+          .col-for-document_types {
             grid-column: 1;
             grid-row: 2;
           }
-          .col-for-use_cases
-          {
+          .col-for-use_cases {
             grid-column: 2;
             grid-row: 2;
           }
-          .col-for-get_started
-          {
+          .col-for-get_started {
             grid-column: 1 / 3;
             grid-row: 4;
             margin: -1px;
@@ -490,12 +491,12 @@ $banner-height: 0; // Currently no pencil banner.
       }
 
       &::before {
-        content: "\f053"; // < chevron
+        content: '\f053'; // < chevron
         display: inline-block;
         margin-bottom: -5px; // fix weird placement on Chrome
       }
       &::after {
-        content: "\f054"; // > chevron
+        content: '\f054'; // > chevron
         position: absolute;
         right: 2rem;
       }
@@ -570,7 +571,6 @@ $banner-height: 0; // Currently no pencil banner.
       right: 26px;
     }
   } // end mobile specific styles ----------------------------------------------
-
 }
 
 // Fix so anchors don't jump under the fixed header ----------------------------
@@ -582,7 +582,7 @@ article h5:before,
 article h6:before,
 .interactive-block:before {
   display: block;
-  content: " ";
+  content: ' ';
   margin-top: -24px;
   height: 60px;
   visibility: hidden;

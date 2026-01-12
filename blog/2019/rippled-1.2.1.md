@@ -1,24 +1,25 @@
 ---
 labels:
-    - Release Notes
+  - Release Notes
 category: 2019
-date: "2019-02-26"
+date: '2019-02-26'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.2.1
 
 Ripple has released **version 1.2.1 of `rippled`**, our reference implementation of the core XRP Ledger server.
 
 Version 1.2.1 introduces several fixes including:
 
-* A change in the information reported via the enhanced crawl functionality introduced in version 1.2.0.
+- A change in the information reported via the enhanced crawl functionality introduced in version 1.2.0.
 
-* A fix for a potential race condition when processing a status message for a peer.
+- A fix for a potential race condition when processing a status message for a peer.
 
-* A fix for a technical flaw that could cause a server to not properly detect that it had lost connectivity.
+- A fix for a technical flaw that could cause a server to not properly detect that it had lost connectivity.
 
 Version 1.2.1 also adds [the delivered_amount field](/docs/concepts/payment-types/partial-payments#the-delivered_amount-field) to more responses to simplify the handling of payment or check cashing transactions.
 
@@ -32,15 +33,15 @@ Version 1.2.1 also adds [the delivered_amount field](/docs/concepts/payment-type
 
 Ripple expects the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendments to become enabled no earlier than Tuesday, 2019-03-12. When this happens, if you are not running release 1.2.0 or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
-* Cannot determine the validity of a ledger;
+- Cannot determine the validity of a ledger;
 
-* Cannot submit or process transactions;
+- Cannot submit or process transactions;
 
-* Cannot participate in the consensus process;
+- Cannot participate in the consensus process;
 
-* Cannot vote on future amendments; and
+- Cannot vote on future amendments; and
 
-* Could rely on potentially invalid data.
+- Could rely on potentially invalid data.
 
 If the **MultisignReserve**, **fixTakerDryOfferRemoval **and** fix1578** Amendments do not become enabled, then your XRP Ledger server will not become Amendment blocked and should continue to operate.
 
@@ -74,11 +75,11 @@ Related documentation is available in the [XRP Ledger Dev Portal](/docs/), inclu
 
 Other resources:
 
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
-* Ripple Technical Services: <support@ripple.com>
+- Ripple Technical Services: <support@ripple.com>
 
-* XRP Chat Forum _(Shut down. Formerly `www.xrpchat.com`)_
+- XRP Chat Forum _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Other Information
 
@@ -94,17 +95,17 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 ### Config Changes
 
-* Make validators opt out of crawl ([b335adb](https://github.com/ripple/rippled/commit/b335adb674ec6042c8d52c3d50fb2e3cec6f5e79))
+- Make validators opt out of crawl ([b335adb](https://github.com/ripple/rippled/commit/b335adb674ec6042c8d52c3d50fb2e3cec6f5e79))
 
 ### Bug Fixes
 
-* Fix a race condition during TMStatusChange handling ([9dbf849](https://github.com/ripple/rippled/commit/9dbf8495eed1f8e862fe69869bba56a694e00815))
+- Fix a race condition during TMStatusChange handling ([9dbf849](https://github.com/ripple/rippled/commit/9dbf8495eed1f8e862fe69869bba56a694e00815))
 
-* Properly transition state to disconnected ([2529edd](https://github.com/ripple/rippled/commit/2529edd2b6d107256170ddcc1045f69a29a0d954))
+- Properly transition state to disconnected ([2529edd](https://github.com/ripple/rippled/commit/2529edd2b6d107256170ddcc1045f69a29a0d954))
 
-* Display validator status only in response to admin requests ([c6ab880](https://github.com/ripple/rippled/commit/c6ab880c030bb7492002b843247030e15f9b89a6))
+- Display validator status only in response to admin requests ([c6ab880](https://github.com/ripple/rippled/commit/c6ab880c030bb7492002b843247030e15f9b89a6))
 
-* Add the delivered_amount to more RPC commands ([c5d215d](https://github.com/ripple/rippled/commit/c5d215d901d25b1ea18bf0e96529799b1b5158cc))
+- Add the delivered_amount to more RPC commands ([c5d215d](https://github.com/ripple/rippled/commit/c5d215d901d25b1ea18bf0e96529799b1b5158cc))
 
 ## Contributions
 

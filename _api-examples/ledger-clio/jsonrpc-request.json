@@ -1,13 +1,13 @@
 {
-    "method": "ledger",
-    "params": [
-        {
-            "ledger_index": "validated",
-            "transactions": false,
-            "expand": false,
-            "owner_funds": false,
-            "diff": false,
-            "api_version": 2
-        }
-    ]
+  "method": "ledger",
+  "params": [
+    {
+      "ledger_index": "validated",
+      "transactions": false,
+      "expand": false,
+      "owner_funds": false,
+      "diff": false,
+      "api_version": 2
+    }
+  ]
 }

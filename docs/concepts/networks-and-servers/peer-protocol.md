@@ -1,10 +1,11 @@
 ---
 seo:
-    description: The peer protocol specifies the language rippled servers speak to each other.
+  description: The peer protocol specifies the language rippled servers speak to each other.
 labels:
-    - Core Server
-    - Blockchain
+  - Core Server
+  - Blockchain
 ---
+
 # Peer Protocol
 
 Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol.
@@ -27,7 +28,6 @@ Typically, a server needs to connect to a public hub only once, for a short amou
 The [peers method][] shows a list of peers your server is currently connected to.
 
 For certain high-value servers (such as important [validators](rippled-server-modes.md#rippled-server-modes)) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use [private peers](#private-peers) only.
-
 
 ## Peer Protocol Port
 
@@ -56,7 +56,6 @@ The node key pair is saved in the database and reused when the server restarts. 
 
 The node key pair also identifies other servers for purposes of [clustering](clustering.md) or [reserving peer slots](#fixed-peers-and-peer-reservations). If you have a cluster of servers, you should configure each server in the cluster with a unique `[node_seed]` setting. For more information on setting up a cluster, see [Cluster `rippled` Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md).
 
-
 ## Fixed Peers and Peer Reservations
 
 Normally, a `rippled` server attempts to maintain a healthy number of peers, and automatically connects to untrusted peers up to a maximum number. You can configure a `rippled` server to remain connected to specific peer servers in several ways:
@@ -68,7 +67,6 @@ In the following cases, a `rippled` server does not connect to untrusted peers:
 
 - If the server is configured as a [private peer](#private-peers), it connects _only_ to its fixed peers.
 - If the server is running in [stand-alone mode][] it does not connect to _any_ peers.
-
 
 ## Private Peers
 
@@ -82,9 +80,9 @@ Configuring a server as a private server has several effects:
 - The server does not accept incoming connections from other servers unless it has been explicitly configured to accept connections from those servers.
 - The server asks its direct peers not to reveal its IP address in untrusted communications, including the [peer crawler API response](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md). This does not affect trusted communications such as the [peers admin method][peers method].
 
-    Validators always ask their peers to hide the validators' IP addresses, regardless of the private server settings. This helps protect validators from being overloaded by denial of service attacks.
+  Validators always ask their peers to hide the validators' IP addresses, regardless of the private server settings. This helps protect validators from being overloaded by denial of service attacks.
 
-    {% admonition type="warning" name="Caution" %}It is possible to modify a server's source code so that it ignores this request and shares its immediate peers' IP addresses anyway. You should configure your private server to connect only to servers that you know are not modified in this way.{% /admonition %}
+  {% admonition type="warning" name="Caution" %}It is possible to modify a server's source code so that it ignores this request and shares its immediate peers' IP addresses anyway. You should configure your private server to connect only to servers that you know are not modified in this way.{% /admonition %}
 
 ### Pros and Cons of Peering Configurations
 
@@ -95,7 +93,6 @@ To be part of the XRP Ledger, a `rippled` server must be connected to the rest o
 - As a **private server using public hubs**. This is similar to using proxies, but it relies on specific third parties.
 
 The pros and cons of each configuration are as follows:
-
 
 <table>
 <thead><tr>
@@ -146,27 +143,26 @@ The pros and cons of each configuration are as follows:
 
 To configure your server as a private server, set the `[peer_private]` setting to `1` in the config file. For detailed instructions, see [Configure a Private Server](../../infrastructure/configuration/peering/configure-a-private-server.md).
 
-
 ## See Also
 
 - **Concepts:**
-    - [Consensus](../consensus-protocol/index.md)
-    - [Parallel Networks](parallel-networks.md)
+  - [Consensus](../consensus-protocol/index.md)
+  - [Parallel Networks](parallel-networks.md)
 - **Tutorials:**
-    - [Cluster rippled Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
-    - [Configure a Private Server](../../infrastructure/configuration/peering/configure-a-private-server.md)
-    - [Configure the Peer Crawler](../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
-    - [Forward Ports for Peering](../../infrastructure/configuration/peering/forward-ports-for-peering.md)
-    - [Manually Connect to a Specific Peer](../../infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md)
-    - [Set Maximum Number of Peers](../../infrastructure/configuration/peering/set-max-number-of-peers.md)
-    - [Use a Peer Reservation](../../infrastructure/configuration/peering/use-a-peer-reservation.md)
+  - [Cluster rippled Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
+  - [Configure a Private Server](../../infrastructure/configuration/peering/configure-a-private-server.md)
+  - [Configure the Peer Crawler](../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
+  - [Forward Ports for Peering](../../infrastructure/configuration/peering/forward-ports-for-peering.md)
+  - [Manually Connect to a Specific Peer](../../infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md)
+  - [Set Maximum Number of Peers](../../infrastructure/configuration/peering/set-max-number-of-peers.md)
+  - [Use a Peer Reservation](../../infrastructure/configuration/peering/use-a-peer-reservation.md)
 - **References:**
-    - [peers method][]
-    - [peer_reservations_add method][]
-    - [peer_reservations_del method][]
-    - [peer_reservations_list method][]
-    - [connect method][]
-    - [fetch_info method][]
-    - [Peer Crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
+  - [peers method][]
+  - [peer_reservations_add method][]
+  - [peer_reservations_del method][]
+  - [peer_reservations_list method][]
+  - [connect method][]
+  - [fetch_info method][]
+  - [Peer Crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

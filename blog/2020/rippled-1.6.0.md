@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-08-19"
+date: '2020-08-19'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.6.0
 
 **XRP Ledger (`rippled` server) version 1.6.0** has been released. This release introduces several new features including changes to the XRP Ledger's consensus mechanism to make it even more robust in adverse conditions, as well as numerous bug fixes and optimizations. _(This post has been updated with recommendations for upgrading.)_
@@ -30,18 +31,18 @@ For instructions on updating XRP Ledger on supported platforms, see here:
 
 The SHA-256 hashes for the official packages are as follows:
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.6.0-1.el7.x86_64.rpm) | `894d1a7a4713bfbf16264dbef9e0958a25572e0f1fce588d5a8c00452fb68115` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.6.0-1_amd64.deb) | `1d29124623bd81ba6eaf8a74bf7e14a18c511312d29213bfa6dc3351d30eedba` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.6.0-1_amd64.deb)  | `1d29124623bd81ba6eaf8a74bf7e14a18c511312d29213bfa6dc3351d30eedba` |
 
 For other platforms, please compile version 1.6.0 from source.
 
-* [Build on Ubuntu Linux](https://xrpl.org/build-run-rippled-ubuntu.html)
+- [Build on Ubuntu Linux](https://xrpl.org/build-run-rippled-ubuntu.html)
 
-* [Build on macOS](https://xrpl.org/build-run-rippled-macos.html)
+- [Build on macOS](https://xrpl.org/build-run-rippled-macos.html)
 
-* [Build on other platforms](https://github.com/XRPLF/rippled/blob/master/BUILD.md)
+- [Build on other platforms](https://github.com/XRPLF/rippled/blob/master/BUILD.md)
 
 The first log entry should be the change setting the version:
 
@@ -75,12 +76,11 @@ Date:   Tue Aug 18 15:32:50 2020 -0700
 
 - **Default Port:** In the config file, the `[ips_fixed]` and `[ips]` stanzas now use the [IANA-assigned port](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459) for the XRP Ledger protocol (2459) when no port is specified. The `connect` API method also uses the same port by default. [[#2861](https://github.com/ripple/rippled/pull/2861)].
 
-- **Improve proposal and validation relaying**. The peer-to-peer protocol always relays trusted proposals and validations (as part of the [consensus process](https://xrpl.org/consensus.html)), but only relays _untrusted_ proposals and validations in certain circumstances. This update adds configuration options so server operators can fine-tune how their server handles untrusted proposals and validations, and changes the default behavior to prioritize untrusted validations higher than untrusted proposals.  [[#3391](https://github.com/ripple/rippled/pull/3391)]
+- **Improve proposal and validation relaying**. The peer-to-peer protocol always relays trusted proposals and validations (as part of the [consensus process](https://xrpl.org/consensus.html)), but only relays _untrusted_ proposals and validations in certain circumstances. This update adds configuration options so server operators can fine-tune how their server handles untrusted proposals and validations, and changes the default behavior to prioritize untrusted validations higher than untrusted proposals. [[#3391](https://github.com/ripple/rippled/pull/3391)]
 
 - **Various Build and CI Improvements** including updates to RocksDB 6.7.3 [[#3356](https://github.com/ripple/rippled/pull/3356)], NuDB 2.0.3 [[#3437](https://github.com/ripple/rippled/pull/3437)], adjusting CMake settings so that rippled can be built as a submodule [[#3449](https://github.com/ripple/rippled/pull/3449)], and adding Travis CI settings for Ubuntu Bionic Beaver [[#3319](https://github.com/ripple/rippled/pull/3319)].
 
 - **Better documentation in the config file** for online deletion and database tuning. [[#3429](https://github.com/ripple/rippled/pull/3429)]
-
 
 ### Bug Fixes
 
@@ -96,12 +96,9 @@ Date:   Tue Aug 18 15:32:50 2020 -0700
 - Add the `ledger_cleaner` command to rippled command line help [[#3305](https://github.com/ripple/rippled/pull/3305)]
 - Various typo and comments fixes.
 
-
-
-
 ## New Commits in This Release
 
-- [`2b4486837`](https://github.com/ripple/rippled/commit/2b448683736398faa4e58d8f386c32356ad1d3c2)  Set version to 1.6.0-rc3
+- [`2b4486837`](https://github.com/ripple/rippled/commit/2b448683736398faa4e58d8f386c32356ad1d3c2) Set version to 1.6.0-rc3
 - [`f79a4a8cd`](https://github.com/ripple/rippled/commit/f79a4a8cdb6ede5dea2753129586fb78307a5f80) Revert "Remove CryptoConditionsSuite stub amendment:"
 - [`7bb6b75f3`](https://github.com/ripple/rippled/commit/7bb6b75f3c8b31d00b4800b880c90ce63c287f54) Use the correct root hash for the tx tree
 - [`e5d17a945`](https://github.com/ripple/rippled/commit/e5d17a945213eb154912cfe4d8ea2417ea87f03a) Set version to 1.6.0-rc2
@@ -142,7 +139,7 @@ Date:   Tue Aug 18 15:32:50 2020 -0700
 - [`93bf77bde`](https://github.com/ripple/rippled/commit/93bf77bdec1321d99a52042bb53cced186421d83) Unit tests for database shards
 - [`728651b5d`](https://github.com/ripple/rippled/commit/728651b5d57d8b2c6c7e7c5dbbd5768f8d3a8556) Use LZ4_decompress_safe
 - [`fb74eefa9`](https://github.com/ripple/rippled/commit/fb74eefa9edff66d002beb00fce07fcbf740f32d) Update LZ4 library to 1.9.2
-- [`853c96419`](https://github.com/ripple/rippled/commit/853c964194eab29781827100a0d05541b66df73e) Fix a build issue caused by the latest Docker version:  * The latest docker version is not supported by    artifactory causing the package build to fail.    Setting the docker version to 19.03.8 to fix the build.
+- [`853c96419`](https://github.com/ripple/rippled/commit/853c964194eab29781827100a0d05541b66df73e) Fix a build issue caused by the latest Docker version: \* The latest docker version is not supported by artifactory causing the package build to fail. Setting the docker version to 19.03.8 to fix the build.
 - [`645c06764`](https://github.com/ripple/rippled/commit/645c06764b84b8c02ea0449c92e9e2ead15f18d5) Update the default port for [ips] and [ips_fixed]:
 - [`2d23e7bd1`](https://github.com/ripple/rippled/commit/2d23e7bd18f179844b838b01783307994f603a85) Use std::size in place of std::extent
 - [`0290d0b82`](https://github.com/ripple/rippled/commit/0290d0b82c3dcd190d2ce9dad4985ee33d1f845a) Create health_check rpc
@@ -239,6 +236,7 @@ Date:   Tue Aug 18 15:32:50 2020 -0700
 ## Contributions
 
 ### GitHub
+
 [![GitHub: Stars](https://img.shields.io/github/stars/ripple/rippled.svg)](https://img.shields.io/github/stars/ripple/rippled.svg)
 [![GitHub: Watchers](https://img.shields.io/github/watchers/ripple/rippled.svg)](https://img.shields.io/github/watchers/ripple/rippled.svg)
 

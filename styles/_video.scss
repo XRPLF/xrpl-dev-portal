@@ -11,15 +11,15 @@
 }
 
 #video-overlay {
-  position:fixed;
-  top:0;
-  left:0;
-   z-index:1190;
-  height:100%;
-  width:100%;
-  background:#ffffff;
-  opacity:0.6;
-  display:none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1190;
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  opacity: 0.6;
+  display: none;
 }
 
 #video {
@@ -70,7 +70,7 @@
   font-weight: 600;
 
   &::after {
-    content: "\00a0";
+    content: '\00a0';
     background-image: url(../img/icons/arrow-up-right.svg);
     background-repeat: no-repeat;
     display: inline-block;
@@ -86,7 +86,7 @@
   }
 }
 
-.video-title{
+.video-title {
   line-height: 1.2;
 
   @include media-breakpoint-up(md) {

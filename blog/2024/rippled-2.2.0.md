@@ -1,13 +1,14 @@
 ---
 category: 2024
-date: "2024-06-04"
+date: '2024-06-04'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 2.2.0
 
 Version 2.2.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds performance optimizations, several bug fixes, and introduces the `featurePriceOracle`, `fixEmptyDID`, `fixXChainRewardRounding`, `fixPreviousTxnID`, and `fixAMMv1_1` amendments.
@@ -28,10 +29,10 @@ If you operate a Clio server, Clio needs to be updated to 2.1.2 before updating 
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.0-1.el7.x86_64.rpm) | `aeee54f2cafb651c42d12791ea62ebd20786b94165723ae5f405a089f7eec80a` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.0-1_amd64.deb) | `1bd26cea8e289e40368542eb370cec95b42905855f9ada8ece361a43134834c9` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.0-1_amd64.deb)  | `1bd26cea8e289e40368542eb370cec95b42905855f9ada8ece361a43134834c9` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -43,25 +44,26 @@ Date:   Mon Jun 3 21:48:05 2024 -0400
     Set version to 2.2.0
 ```
 
-
 ## Changelog
 
 ### Amendments and New Features
+
 (These are changes which may impact or be useful to end users. For example, you may be able to update your code/workflow to take advantage of these changes.)
 
-- **featurePriceOracle** amendment: Implements a price oracle as defined in the [XLS-0047](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md) spec. A Price Oracle is used to bring real-world data, such as market prices, onto the blockchain, enabling dApps to access and utilize information that resides outside the blockchain. [#4789](https://github.com/XRPLF/rippled/pull/4789) 
+- **featurePriceOracle** amendment: Implements a price oracle as defined in the [XLS-0047](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0047-PriceOracles/README.md) spec. A Price Oracle is used to bring real-world data, such as market prices, onto the blockchain, enabling dApps to access and utilize information that resides outside the blockchain. [#4789](https://github.com/XRPLF/rippled/pull/4789)
 
 - **fixEmptyDID** amendment: Modifies the behavior of the DID amendment: adds an additional check to ensure that DIDs are non-empty when created, and returns a `tecEMPTY_DID` error if the DID would be empty. [#4950](https://github.com/XRPLF/rippled/pull/4950)
 
 - **fixXChainRewardRounding** amendment: Modifies the behavior of the XChainBridge amendment: fixes rounding so reward shares are always rounded down, even when the `fixUniversalNumber` amendment is active. [#4933](https://github.com/XRPLF/rippled/pull/4933)
 
-- **fixPreviousTxnID** amendment: Adds `PreviousTxnID` and `PreviousTxnLgrSequence` as fields to all ledger entries that did not already have them included (`DirectoryNode`, `Amendments`, `FeeSettings`, `NegativeUNL`, and `AMM`). Existing ledger entries will gain the fields whenever transactions modify those entries. [#4751](https://github.com/XRPLF/rippled/pull/4751). 
+- **fixPreviousTxnID** amendment: Adds `PreviousTxnID` and `PreviousTxnLgrSequence` as fields to all ledger entries that did not already have them included (`DirectoryNode`, `Amendments`, `FeeSettings`, `NegativeUNL`, and `AMM`). Existing ledger entries will gain the fields whenever transactions modify those entries. [#4751](https://github.com/XRPLF/rippled/pull/4751).
 
 - **fixAMMv1_1** amendment: Fixes AMM offer rounding and low quality order book offers from blocking the AMM. [#4983](https://github.com/XRPLF/rippled/pull/4983)
 
 - Add a non-admin version of `feature` API method. [#4781](https://github.com/XRPLF/rippled/pull/4781)
 
 ### Bug Fixes and Performance Improvements
+
 (These are behind-the-scenes improvements, such as internal changes to the code, which are not expected to impact end users.)
 
 - Optimize the base58 encoder and decoder. The algorithm is now about 10 times faster for encoding and 15 times faster for decoding. [#4327](https://github.com/XRPLF/rippled/pull/4327)
@@ -87,7 +89,6 @@ Date:   Mon Jun 3 21:48:05 2024 -0400
 The public source code repository for `rippled` is [hosted on GitHub](https://github.com/XRPLF/rippled).
 
 We welcome all contributions and invite everyone to join the community of XRP Ledger developers to help build the Internet of Value.
-
 
 ## Credits
 

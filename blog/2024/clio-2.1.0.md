@@ -1,12 +1,12 @@
 ---
 category: 2024
-date: "2024-02-14"
+date: '2024-02-14'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Clio Release Notes
+  - Clio Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
 
 # Introducing Clio version 2.1.0
@@ -24,7 +24,7 @@ Version 2.1.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket
 
 ## Amendment Support
 
-The following amendments have been introduced since Clio 2.0.0 and have transaction model changes.  Clio 2.1.0 is built with `libxrpl` 2.0.0, which supports these amendments.
+The following amendments have been introduced since Clio 2.0.0 and have transaction model changes. Clio 2.1.0 is built with `libxrpl` 2.0.0, which supports these amendments.
 
 - [XChainBridge](https://xrpl.org/known-amendments.html#xchainbridge)
 - [DID](https://xrpl.org/known-amendments.html#did)
@@ -39,8 +39,8 @@ If you are currently running Clio 1.0.4 or earlier and upgrading, you must perfo
 
 ## Install / Upgrade
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                             | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [Ubuntu Deb (x86_64)](https://github.com/XRPLF/clio/releases/download/2.1.0/clio_2.1.0-1_amd64.deb) | `7a145b6685f1126dcbb540142453f6d24fa4edb9d017f3083f159c1dcabf2691` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/clio/releases/tag/2.1.0). The most recent commit in the git log should be:

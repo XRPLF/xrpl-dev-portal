@@ -5,6 +5,7 @@ top_nav_grouping: Article Types
 metadata:
   indexPage: true
 ---
+
 # Python
 
 You can create your own interface to try out the capabilities and support your specific business needs. These tutorials build a test harness interface to try out features of the XRP Ledger. The harness displays multiple accounts, so that you can transfer tokens from one account to the other and see the results in real time.
@@ -23,14 +24,13 @@ Once familiar with the library functions, you can build sample applications in P
 To get started:
 
 - Create a new folder on your local disk and install the Python library (xrpl-py) using pip.
-<br/><br/>
-   `pip3 install xrpl-py`
+  <br/><br/>
+  `pip3 install xrpl-py`
 
 - Clone or download the [Sample modules](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/).
 
 **Note**: Without the sample modules, you won't be able to try the examples that follow.
 
 ## Tutorial Modules
- 
-{% child-pages /%}
 
+{% child-pages /%}

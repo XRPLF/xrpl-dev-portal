@@ -2,16 +2,16 @@
 html: server-wont-start.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: A collection of problems that would cause a rippled server not to start, and how to fix them.
+  description: A collection of problems that would cause a rippled server not to start, and how to fix them.
 labels:
   - Core Server
 ---
+
 # rippled Server Won't Start
 
 This page explains possible reasons [the `rippled` server](../../concepts/networks-and-servers/index.md) does not start and how to fix them.
 
 These instructions assume you have [installed `rippled`](../installation/index.md) on a supported platform.
-
 
 ## File Descriptors Limit
 
@@ -26,31 +26,30 @@ This occurs because the system has a security limit on the number of files a sin
 
 1. Add the following lines to the end of your `/etc/security/limits.conf` file:
 
-    ```
-    *                soft    nofile          65536
-    *                hard    nofile          65536
-    ```
+   ```
+   *                soft    nofile          65536
+   *                hard    nofile          65536
+   ```
 
 2. Check that the [hard limit on number of files that can be opened](https://ss64.com/bash/ulimit.html) is now `65536`:
 
-    ```
-    ulimit -Hn
-    ```
+   ```
+   ulimit -Hn
+   ```
 
-    The command should output `65536`.
+   The command should output `65536`.
 
 3. Try starting `rippled` again.
 
-    ```
-    systemctl start rippled
-    ```
+   ```
+   systemctl start rippled
+   ```
 
 4. If `rippled` still does not start, open `/etc/sysctl.conf` and append the following kernel-level setting:
 
-    ```
-    fs.file-max = 65536
-    ```
-
+   ```
+   fs.file-max = 65536
+   ```
 
 ## Failed to open /etc/opt/ripple/rippled.cfg
 
@@ -69,7 +68,7 @@ Possible solutions:
 
 - Create a config file that can be read by the `rippled` user at `$HOME/.config/ripple/rippled.cfg` (where `$HOME` points to the `rippled` user's home directory).
 
-    {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
+  {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
 - Specify the path to your preferred config file using the `--conf` [commandline option](../commandline-usage.md).
 
@@ -87,20 +86,19 @@ Possible solutions:
 
 - Check that the `validators.txt` file exists and the `rippled` user has permissions to read it.
 
-    {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `validators.txt` file](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
+  {% admonition type="success" name="Tip" %}The `rippled` repository contains [an example `validators.txt` file](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt) which is provided as the default config when you do an installation from a binary package. If you do not have the file, you can copy it from there.{% /admonition %}
 
 - Edit your `rippled.cfg` file and modify the `[validators_file]` setting to have the correct path to your `validators.txt` (or equivalent) file. Check for extra whitespace before or after the filename.
 
 - Edit your `rippled.cfg` file and remove the `[validators_file]` setting. Add validator settings directly to your `rippled.cfg` file. For example:
 
-    ```
-    [validator_list_sites]
-    https://vl.ripple.com
+  ```
+  [validator_list_sites]
+  https://vl.ripple.com
 
-    [validator_list_keys]
-    ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-    ```
-
+  [validator_list_keys]
+  ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+  ```
 
 ## Cannot create database path
 
@@ -121,7 +119,6 @@ Possible solutions:
 - Edit your `rippled.cfg` file and change the `[database_path]` setting to use a path that the `rippled` user has write permissions to.
 
 - Grant the `rippled` user write permissions to the configured database path.
-
 
 ## State DB Error
 
@@ -162,7 +159,6 @@ path=/var/lib/rippled/custom_nudb_path
 /var/lib/rippled/custom_sqlite_db_path
 ```
 
-
 ## Online Delete is Less Than Ledger History
 
 An error message such as the following indicates that the `rippled.cfg` file has contradictory values for `[ledger_history]` and `online_delete`.
@@ -175,7 +171,6 @@ The `[ledger_history]` setting represents how many ledgers of history the server
 
 To fix the problem, edit the `rippled.cfg` file and change or remove either the `[ledger_history]` or `online_delete` options. (If you omit `[ledger_history]`, it uses a default of 256 ledger versions. If you specify the `online_delete` field, it must be larger than 256. If you omit `online_delete`, it disables automatic deletion of old ledger versions.)
 
-
 ## Bad node_size value
 
 An error such as the following indicates that the `rippled.cfg` file has an improper value for the `node_size` setting:
@@ -186,19 +181,18 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 
 Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large`, or `huge`. For more information see [Node Size](../installation/capacity-planning.md#node-size).
 
-
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Technical FAQ](/about/faq.md)
+  - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+  - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
-    - [Understanding Log Messages](understanding-log-messages.md)
-    - [Capacity Planning](../installation/capacity-planning.md)
+  - [Understanding Log Messages](understanding-log-messages.md)
+  - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
-        - [server_info method][]
+  - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [server_info method][]
 
 <!-- SPELLING_IGNORE: cfg, node_size -->
 

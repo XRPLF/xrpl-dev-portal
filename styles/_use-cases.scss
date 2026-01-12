@@ -1,18 +1,18 @@
 /* Use Cases ---------------------------------------------------------------- */
 
 // Define each category's logos
-$infrastructure-logos: "xrp-ledger", "gatehub", "towolabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
-$developer-tooling-logos: "cryptum", "evernode", "threezy", "tokenize";
-$interoperability-logos: "multichain";
-$wallet-logos: "crossmark", "edge", "gem-wallet", "xumm", "joey-wallet";
-$nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
-$exchanges-logos: "sologenic_dex", "xpmarket", "orchestra-finance", "moai-finance", "first-ledger-bot";
-$gaming-logos: "forte", "ledger-city", "futureverse", "zerpmon";
-$security-logos: "anchain";
-$payments-logos: "ripple", "supermojo";
-$cbdc-logos: "ripple";
-$carbon-markets-logos: "carbonland-trust";
-$custody-logos: "gatehub", "bitgo";
+$infrastructure-logos: 'xrp-ledger', 'gatehub', 'towolabs', 'xrpscan', 'xrp-toolkit', 'bithomp', 'onthedex';
+$developer-tooling-logos: 'cryptum', 'evernode', 'threezy', 'tokenize';
+$interoperability-logos: 'multichain';
+$wallet-logos: 'crossmark', 'edge', 'gem-wallet', 'xumm', 'joey-wallet';
+$nfts-logos: 'aesthetes', 'audiotarky', 'nftmaster', 'peerkat', 'sologenic_dex', 'xrp-cafe', 'xrp-oval';
+$exchanges-logos: 'sologenic_dex', 'xpmarket', 'orchestra-finance', 'moai-finance', 'first-ledger-bot';
+$gaming-logos: 'forte', 'ledger-city', 'futureverse', 'zerpmon';
+$security-logos: 'anchain';
+$payments-logos: 'ripple', 'supermojo';
+$cbdc-logos: 'ripple';
+$carbon-markets-logos: 'carbonland-trust';
+$custody-logos: 'gatehub', 'bitgo';
 
 // Create a mixin to handle the common logic
 @mixin create-logo-classes($logo-list) {
@@ -48,19 +48,19 @@ $custody-logos: "gatehub", "bitgo";
     min-height: 100px !important;
     position: relative;
     bottom: 20px;
-    content: url("../img/uses/first-ledger-bot.svg");
+    content: url('../img/uses/first-ledger-bot.svg');
   }
 
   .orchestra-finance {
     min-height: 56px !important;
-    content: url("../img/uses/orchestra-finance.svg");
+    content: url('../img/uses/orchestra-finance.svg');
   }
 
   .moai-finance {
     min-height: 100px !important;
     position: relative;
     bottom: 20px;
-    content: url("../img/uses/moai-finance.svg");
+    content: url('../img/uses/moai-finance.svg');
   }
 
   .ledger-city {
@@ -77,7 +77,7 @@ $custody-logos: "gatehub", "bitgo";
     min-height: 84px;
     position: relative;
     bottom: 13px;
-    content: url("../img/uses/zerpmon.png") !important;
+    content: url('../img/uses/zerpmon.png') !important;
   }
 }
 
@@ -85,10 +85,9 @@ $custody-logos: "gatehub", "bitgo";
   #threezy {
     .biz-logo {
       max-height: 40px;
-      content: url("../img/uses/modallogos/threezy.png");
+      content: url('../img/uses/modallogos/threezy.png');
     }
   }
-
 }
 
 html.light {
@@ -226,18 +225,13 @@ html.light {
 }
 
 .modal-content-uses::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg,
-      #b480ff -0.32%,
-      #5f00e6 32.7%,
-      #1aa4ff 61.53%,
-      #19ff83 100.32%,
-      #19ff83 100.32%);
+  background: linear-gradient(90deg, #b480ff -0.32%, #5f00e6 32.7%, #1aa4ff 61.53%, #19ff83 100.32%, #19ff83 100.32%);
 }
 
 .content-section {
@@ -253,7 +247,7 @@ html.light {
 }
 
 .section-text-title {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -264,7 +258,7 @@ html.light {
 
 .section-text-description {
   max-width: 320px;
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -277,7 +271,7 @@ html.light {
   position: relative;
   top: 17px;
   left: 50px;
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -298,7 +292,7 @@ html.light {
 }
 
 .explore-projects {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -450,7 +444,7 @@ html.light {
 }
 
 .circle-text {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 700;
   white-space: nowrap;
@@ -484,16 +478,12 @@ html.light {
   display: block;
   width: 100%;
   text-align: left;
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
   line-height: 38px;
-  background: linear-gradient(90deg,
-      #feff01 0%,
-      #ff2d9a 30.82%,
-      #e24cff 64.01%,
-      #9a52ff 100%);
+  background: linear-gradient(90deg, #feff01 0%, #ff2d9a 30.82%, #e24cff 64.01%, #9a52ff 100%);
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -533,7 +523,7 @@ html.light {
     position: relative;
     top: 17px;
     left: 50px;
-    font-family: "Work Sans";
+    font-family: 'Work Sans';
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -545,16 +535,12 @@ html.light {
     display: block;
     width: 100%;
     text-align: left;
-    font-family: "Work Sans";
+    font-family: 'Work Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
     line-height: 38px;
-    background: linear-gradient(90deg,
-        #b480ff -0.32%,
-        #5f00e6 32.7%,
-        #1aa4ff 61.53%,
-        #19ff83 100.32%);
+    background: linear-gradient(90deg, #b480ff -0.32%, #5f00e6 32.7%, #1aa4ff 61.53%, #19ff83 100.32%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -588,7 +574,7 @@ html.light {
 }
 
 .pill-number {
-  font-family: "Work Sans";
+  font-family: 'Work Sans';
   font-style: normal;
   font-weight: 600;
   font-size: 22.1452px;
@@ -640,7 +626,7 @@ html.light {
 }
 
 .related-tasks-links a::after {
-  content: " ➝";
+  content: ' ➝';
   padding-left: 0;
   transition: all 0.2s ease-in-out;
 }
@@ -688,7 +674,7 @@ html.light {
     width: 100%;
     height: 250px;
     border-radius: 8px;
-    background: linear-gradient(88deg, #9A52FF -14.32%, #32E685 45.35%, #19A3FF 100.76%);
+    background: linear-gradient(88deg, #9a52ff -14.32%, #32e685 45.35%, #19a3ff 100.76%);
     padding: 4rem 2rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -712,7 +698,6 @@ html.light {
       padding-top: 2rem;
       border-bottom: 2px solid black;
     }
-
   }
 
   .stat-container:last-child {
@@ -728,8 +713,6 @@ html.light {
     font-weight: 400;
   }
 
-
-
   .video-external-link .link-text {
     margin-left: 0.25rem;
   }
@@ -742,7 +725,7 @@ html.light {
     align-self: stretch;
     height: 0.25rem;
     border-radius: 2rem;
-    background: var(--Gradient-3, linear-gradient(90deg, #FEFF01 0%, #FF2D9A 30.82%, #E24CFF 64.01%, #9A52FF 100%));
+    background: var(--Gradient-3, linear-gradient(90deg, #feff01 0%, #ff2d9a 30.82%, #e24cff 64.01%, #9a52ff 100%));
   }
 
   .project-cards-container {
@@ -773,11 +756,11 @@ html.light {
   }
 
   .project-cards .col.odd::before {
-    background: linear-gradient(90deg, #D91AFF 26.41%, #1AA4FF 100.32%);
+    background: linear-gradient(90deg, #d91aff 26.41%, #1aa4ff 100.32%);
   }
 
   .project-cards .col.even::before {
-    background: linear-gradient(90deg, #4BB7FF -0.32%, #32E685 30.61%);
+    background: linear-gradient(90deg, #4bb7ff -0.32%, #32e685 30.61%);
   }
 
   .project-cards .project-logo {
@@ -795,47 +778,47 @@ html.light {
   }
 
   .amy {
-    content: url("../img/logos/amy.svg");
+    content: url('../img/logos/amy.svg');
   }
 
   .carbonland {
-    content: url("../img/logos/carbonland.svg");
+    content: url('../img/logos/carbonland.svg');
   }
 
   .evernode {
-    content: url("../img/logos/evernode.svg");
+    content: url('../img/logos/evernode.svg');
   }
 
   .nautilus {
-    content: url("../img/logos/nautilus.svg");
+    content: url('../img/logos/nautilus.svg');
   }
 
   .onXRP {
-    content: url("../img/logos/onXRP.svg");
+    content: url('../img/logos/onXRP.svg');
   }
 
   .raised-in-space {
-    content: url("../img/logos/raised-in-space.svg");
+    content: url('../img/logos/raised-in-space.svg');
   }
 
   .sologenic {
-    content: url("../img/logos/sologenic.svg");
+    content: url('../img/logos/sologenic.svg');
   }
 
   .xaman {
-    content: url("../img/logos/xaman-labs.svg");
+    content: url('../img/logos/xaman-labs.svg');
   }
 
   .xrpcafe {
-    content: url("../img/logos/xrpcafe.svg");
+    content: url('../img/logos/xrpcafe.svg');
   }
 
   .prev img {
-    content: url("../img/icons/prev.svg");
+    content: url('../img/icons/prev.svg');
   }
 
   .next img {
-    content: url("../img/icons/prev.svg");
+    content: url('../img/icons/prev.svg');
     transform: scaleX(-1);
   }
 
@@ -851,12 +834,12 @@ html.light {
   }
 
   .next.hover-color:hover img {
-    content: url("../img/icons/next-purple.svg");
+    content: url('../img/icons/next-purple.svg');
     transform: scaleX(1);
   }
 
   .prev.hover-color:hover img {
-    content: url("../img/icons/next-purple.svg");
+    content: url('../img/icons/next-purple.svg');
     transform: scaleX(-1);
   }
 
@@ -882,7 +865,7 @@ html.light {
     left: 0;
     width: 50px;
     height: 4px;
-    background-color: #32E685;
+    background-color: #32e685;
   }
 
   .project-cards a,
@@ -907,15 +890,15 @@ html.light {
     width: 100%;
 
     &:nth-child(1) .article-card-background {
-      background-image: linear-gradient(86deg, #B20058 -21.16%, #E24CFF 31.78%, #9A52FF 101.64%);
+      background-image: linear-gradient(86deg, #b20058 -21.16%, #e24cff 31.78%, #9a52ff 101.64%);
     }
 
     &:nth-child(2) .article-card-background {
-      background-image: linear-gradient(22deg, #B480FF -6.54%, #5F00E5 50.87%, #1AA4FF 114.16%);
+      background-image: linear-gradient(22deg, #b480ff -6.54%, #5f00e5 50.87%, #1aa4ff 114.16%);
     }
 
     &:nth-child(3) .article-card-background {
-      background-image: linear-gradient(162deg, #B480FF -11.11%, #1AA4FF 56.26%, #2DCF78 112.84%);
+      background-image: linear-gradient(162deg, #b480ff -11.11%, #1aa4ff 56.26%, #2dcf78 112.84%);
     }
   }
 
@@ -959,20 +942,20 @@ body,
     max-width: 1280px;
     margin: 0 auto;
     padding: 80px 0px;
-    
+
     @include media-breakpoint-down(lg) {
       gap: 60px;
       max-width: 942px;
       padding: 80px 0px;
     }
-    
+
     @include media-breakpoint-down(md) {
       flex-direction: column;
       gap: 32px;
       max-width: 608px;
       padding: 60px 0px;
     }
-    
+
     @include media-breakpoint-down(sm) {
       padding: 40px 0px;
     }
@@ -990,23 +973,23 @@ body,
       max-height: 560px;
       border-radius: 12px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      
+
       @include media-breakpoint-down(lg) {
         min-height: 350px;
         max-height: 450px;
       }
-      
+
       @include media-breakpoint-down(md) {
         min-height: 300px;
         max-height: 400px;
       }
-      
+
       @include media-breakpoint-down(sm) {
         min-height: 250px;
         max-height: 350px;
       }
     }
-    
+
     @include media-breakpoint-down(md) {
       width: 100%;
     }
@@ -1022,7 +1005,7 @@ body,
       font-size: 18px;
       font-style: normal;
       font-weight: 700;
-      
+
       @include media-breakpoint-down(sm) {
         font-size: 16px;
       }
@@ -1031,7 +1014,7 @@ body,
         font-size: 42px;
         font-style: normal;
         font-weight: 700;
-        
+
         @include media-breakpoint-down(sm) {
           font-size: 32px;
         }
@@ -1041,13 +1024,13 @@ body,
         font-size: 24px;
         font-style: normal;
         font-weight: 400;
-        
+
         @include media-breakpoint-down(sm) {
           font-size: 18px;
         }
       }
     }
-    
+
     @include media-breakpoint-down(md) {
       width: 100%;
     }
@@ -1063,8 +1046,8 @@ body,
     background-color: transparent;
     white-space: normal;
     box-sizing: border-box;
-    .card-title{
-     margin-bottom: 16px;
+    .card-title {
+      margin-bottom: 16px;
     }
   }
 
@@ -1115,7 +1098,7 @@ body,
 
   .security-card-grid-3 {
     gap: 2.5rem; /* 40px gap for 3-column layout */
-    
+
     @media (min-width: 1200px) {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -1150,7 +1133,7 @@ body,
     strong {
       display: block;
       margin-bottom: 4px;
-      color: #E0E0E1;
+      color: #e0e0e1;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
@@ -1159,7 +1142,7 @@ body,
 
     .advantage-description {
       display: block;
-      color: #E0E0E1;
+      color: #e0e0e1;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
@@ -1169,7 +1152,7 @@ body,
 
   /* Card title typography for bullet version */
   .security-card .card-title {
-    color: var(--Black-Black-0, #FFF);
+    color: var(--Black-Black-0, #fff);
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -1208,18 +1191,18 @@ body,
   padding: 32px;
   .project-description {
     text-align: left; /* Changed from center to left */
-    
+
     .first-word {
-      color: #FFF;
+      color: #fff;
       font-size: 16px;
       font-style: normal;
       font-weight: 700;
       line-height: 24px; /* 150% */
     }
-    
+
     .rest-text {
-      color: var(--XRPL-Primary-White, #FFF);
-      font-family: "Work Sans";
+      color: var(--XRPL-Primary-White, #fff);
+      font-family: 'Work Sans';
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
@@ -1241,37 +1224,37 @@ body,
 
   /* Stablecoin images */
   .project-logo {
-    margin-Bottom: 32px;
+    margin-bottom: 32px;
     img.ripple-usd {
       content: url('../img/uses/payments/rlusd.png');
       width: 180px;
       height: 50px;
     }
-    
+
     img.usdc {
       content: url('../img/uses/payments/usdc.png');
       width: 50px;
       height: 50px;
     }
-    
+
     img.usdb {
       content: url('../img/uses/payments/usdb.png');
       width: 126px;
       height: 50px;
     }
-    
+
     img.europ {
       content: url('../img/uses/payments/eroup.png');
       width: 147px;
       height: 50px;
     }
-    
+
     img.xsgd {
       content: url('../img/uses/payments/XSGD.png');
       width: 50px;
       height: 50px;
     }
-    
+
     img.audd {
       content: url('../img/uses/payments/AUDD.png');
       width: 50px;
@@ -1281,11 +1264,11 @@ body,
 
   /* Alternating gradients for payments page */
   &.odd::before {
-    background: linear-gradient(90deg, #D91AFF 26.41%, #1AA4FF 100.32%);
+    background: linear-gradient(90deg, #d91aff 26.41%, #1aa4ff 100.32%);
   }
 
   &.even::before {
-    background: linear-gradient(90deg, #4BB7FF -0.32%, #32E685 30.61%);
+    background: linear-gradient(90deg, #4bb7ff -0.32%, #32e685 30.61%);
   }
 }
 
@@ -1294,22 +1277,22 @@ body,
   h4.eyebrow {
     font-size: 28px !important;
   }
-  
+
   .payments-project-card {
     /* Override styles for battle-tested cards */
     min-height: 384px;
     display: flex;
     flex-direction: column;
-    
+
     .project-logo img {
       /* Battle-tested company logos */
-      
+
       &.coinpayments {
         content: url('../img/uses/payments/coinpayments.png');
         width: 99px;
         height: 60px;
       }
-      
+
       &.ripple {
         content: url('../img/uses/payments/ripple-white.png');
         width: 100px;
@@ -1317,26 +1300,26 @@ body,
         margin-bottom: 11px;
         margin-top: 19px;
       }
-      
+
       &.friipay {
         content: url('../img/uses/payments/friipay.png');
         width: 60px;
-        height: 60px; 
+        height: 60px;
       }
     }
-    
+
     .project-description {
       flex-grow: 1;
     }
-    
+
     .project-button {
       margin-top: auto;
       padding-top: 32px;
       display: flex;
       justify-content: center;
-      
+
       .battle-tested-arrow {
-        color: #9A52FF;
+        color: #9a52ff;
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -1345,7 +1328,7 @@ body,
         display: inline-flex;
         align-items: center;
         background: none !important;
-        
+
         &::after {
           position: relative;
           top: -1px;
@@ -1356,16 +1339,16 @@ body,
           width: 16px;
           height: 16px;
         }
-        
+
         &:hover {
           text-decoration: none;
           background: none !important;
-          
+
           &::after {
             transform: translateX(4px);
           }
         }
-        
+
         &:focus {
           background: none !important;
           outline: none;
@@ -1381,56 +1364,56 @@ body,
     padding: 120px 0; /* Slightly less padding than default 180px */
     max-width: 1280px;
     margin: 0 auto;
-    
+
     @include media-breakpoint-down(lg) {
       max-width: 942px;
     }
-    
+
     @include media-breakpoint-down(md) {
       max-width: 608px;
     }
-    
-    .container{
+
+    .container {
       padding: 0;
     }
-    .feature-item__title{
+    .feature-item__title {
       font-size: 16px;
       font-weight: 400;
-      color: #FFF
+      color: #fff;
     }
   }
-  
+
   .developer-tools__header {
     margin-bottom: 80px;
-    
+
     &.text-center {
       text-align: center;
     }
   }
-  
+
   .developer-tools__title {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 0;
     text-align: left;
   }
-  
+
   /* Two-column layout with 48px gap */
   .row {
     gap: 48px;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    
+
     @media (max-width: 991px) {
       flex-direction: column;
       gap: 32px;
     }
-    
+
     .col-lg-6 {
       padding: 0;
       flex: 1;
-      
+
       @media (max-width: 991px) {
         flex: none;
         width: 100%;
@@ -1441,56 +1424,56 @@ body,
   /* Integration column styling */
   .integration-column {
     padding: 0px;
-    
+
     .integration-column__title {
-      color: #FFF;
+      color: #fff;
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 0px;
     }
-    
+
     .integration-column__subtitle {
-      color: #E0E0E1;
+      color: #e0e0e1;
       font-size: 16px;
       font-weight: 400;
       line-height: 150%;
       margin-bottom: 32px;
     }
-    
+
     .developer-tools__list {
       margin-top: 0;
     }
   }
-  
+
   /* Responsive adjustments */
   @media (max-width: 991px) {
     .developer-tools {
       padding: 80px 0;
     }
-    
+
     .developer-tools__header {
       margin-bottom: 60px;
     }
-    
+
     .integration-column {
       padding: 0;
       margin-bottom: 40px;
     }
-    
+
     .col-lg-6:last-child .integration-column {
       margin-bottom: 0;
     }
   }
-  
+
   @media (max-width: 767px) {
     .developer-tools {
       padding: 60px 20px;
     }
-    
+
     .developer-tools__header {
       margin-bottom: 40px;
     }
-    
+
     .developer-tools__title {
       font-size: 24px;
       text-align: center;

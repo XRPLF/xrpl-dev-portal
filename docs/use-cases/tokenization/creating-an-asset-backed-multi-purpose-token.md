@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Issue an asset-backed token such as a US Treasury bill using multi-purpose tokens.
+  description: Issue an asset-backed token such as a US Treasury bill using multi-purpose tokens.
 labels:
-    - Tokens
-    - MPT
+  - Tokens
+  - MPT
 ---
+
 # Creating an Asset-backed Multi-purpose Token
 
 _As a financial professional, I want to use multi-purpose tokens to create an asset-backed token in order to profit from resale transactions._
@@ -38,13 +39,13 @@ To learn about MPTs in general, go to the **Concept** page. For developer-focuse
 
 You can download a [standalone version of the MPT Generator](../../../_code-samples/mpt-generator/mpt-generator.zip) as sample code<!--, or use the embedded form that follows-->.
 
-In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form  with a new, unconfigured account and the transaction works fine.<!--  See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process.The form is populated with sample values, but you can change the parameters for your own experiments.--> A T-bill is one example of the many types of asset you can create and trade on the XRP Ledger.
+In practice, you want to use an Issuer account configuration to issue an MPT, but you can try the form with a new, unconfigured account and the transaction works fine.<!--  See [Creating a US Treasury Bill](#creating-a-us-treasury-bill) for a full description of the issuance process.The form is populated with sample values, but you can change the parameters for your own experiments.--> A T-bill is one example of the many types of asset you can create and trade on the XRP Ledger.
 
 <!--
 <hr/>
 <div>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         getNewAccountButton.addEventListener("click", getAccount)
@@ -57,7 +58,7 @@ function getNet() {
     if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
     if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
     return net
-  } // End of getNet()           
+  } // End of getNet()
   // *******************************************************
   // ************* Get Account *****************************
   // *******************************************************
@@ -75,7 +76,7 @@ function getNet() {
     const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
     results += '\nGot a wallet.'
   // ------------------------------------------------------Get the current balance.
-    const my_balance = (await client.getXrpBalance(my_wallet.address))  
+    const my_balance = (await client.getXrpBalance(my_wallet.address))
     accountField.value = my_wallet.address
     seedField.value = my_wallet.seed
     results += '\nAccount created.'
@@ -93,11 +94,11 @@ function getNet() {
     await client.connect()
     results += '\nConnected, finding wallets.\n'
     console.log(results)
-  // --------------------------------------------------Find the test account wallet.    
-    const my_wallet = xrpl.Wallet.fromSeed(seedField.value)    
+  // --------------------------------------------------Find the test account wallet.
+    const my_wallet = xrpl.Wallet.fromSeed(seedField.value)
   // -------------------------------------------------------Get the current balance.
     accountField.value = my_wallet.address
-    seedField.value = my_wallet.seed      
+    seedField.value = my_wallet.seed
     client.disconnect()
   } // End of getAccountFromSeed()
   function generateCode() {
@@ -157,7 +158,7 @@ const transactionJson = {
 <div>
 <form>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
     <!-- Required meta tags - - >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -308,7 +309,7 @@ const transactionJson = {
       </div>
     <div class="row">
       <div class="col align-self-start">
-          <textarea class="form-contol" id="metadataTextArea" rows="18" cols="40" 
+          <textarea class="form-contol" id="metadataTextArea" rows="18" cols="40"
             value='{
     "Name": "US Treasury Bill Token",
     "Identifier": "USTBT",
@@ -364,6 +365,7 @@ const transactionJson = {
 </div>
 <hr/>
 -->
+
 ## Creating a US Treasury Bill as an MPT
 
 A US Treasury bill (T-bill) is a short-term debt security issued by the US government. T-bills are considered a safe investment because they're backed by the US government. T-bills are appealing to investors in American states that have high income tax because the interest earned is exempt from state and local taxes. See [Treasury Bills In Depth](https://www.treasurydirect.gov/research-center/history-of-marketable-securities/bills/t-bills-indepth/).
@@ -384,14 +386,14 @@ The form sets the standard flags for an Issuer account and displays additional c
 
 ![T-bill Issuer Account Configuration](../../img/uc-mpt1-t-bill-account-configuration.png)
 
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| **Domain** | _TOML domain_ | URL to the server where your TOML file is stored. For an experimental account, you can enter any URL. When you configure the account, the domain is automatically converted to a hexidecimal string. If you reconfigure the account, you need to enter the original domain again. |
-| **Transfer Rate** | 1005000000 | A value between 1000000000 and 2000000000 representing the percentage value you collect when a holder transfers one of your issued tokens. A Transfer Rate of 1005000000 returns .5% of the transfer value to this account. See [Transfer Rate](../../references/protocol/transactions/types/accountset.md#transferrate). |
-| **Tick Size** | 5 | Round offers to this many significant digits. Valid values are 3 to 15, or 0 to disable. |
-| **Signer Accounts** | _account addresses_ | Accounts that have a vote regarding approval of transactions for this account. |
-| **Signer Weights** | _int_ | The weight of each signer's signature, relative to other signers. |
-| **Signer Quorum**  | _int_ | The required minimum value of signer weights to approve a transaction. |
+| Parameter           | Value               | Description                                                                                                                                                                                                                                                                                                               |
+| ------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Domain**          | _TOML domain_       | URL to the server where your TOML file is stored. For an experimental account, you can enter any URL. When you configure the account, the domain is automatically converted to a hexidecimal string. If you reconfigure the account, you need to enter the original domain again.                                         |
+| **Transfer Rate**   | 1005000000          | A value between 1000000000 and 2000000000 representing the percentage value you collect when a holder transfers one of your issued tokens. A Transfer Rate of 1005000000 returns .5% of the transfer value to this account. See [Transfer Rate](../../references/protocol/transactions/types/accountset.md#transferrate). |
+| **Tick Size**       | 5                   | Round offers to this many significant digits. Valid values are 3 to 15, or 0 to disable.                                                                                                                                                                                                                                  |
+| **Signer Accounts** | _account addresses_ | Accounts that have a vote regarding approval of transactions for this account.                                                                                                                                                                                                                                            |
+| **Signer Weights**  | _int_               | The weight of each signer's signature, relative to other signers.                                                                                                                                                                                                                                                         |
+| **Signer Quorum**   | _int_               | The required minimum value of signer weights to approve a transaction.                                                                                                                                                                                                                                                    |
 
 {% admonition type="info" name="Note" %}In practice, configuring signers for your issuing account is a best practice. To reduce complexity, this example does not use signer configuration.{% /admonition %}
 
@@ -401,13 +403,13 @@ Use the sliders to configure the standard suggested flag settings. You want to b
 
 One difference between an MPT issuer and other tokens is that there is no concern about rippling, since MPTs are self-contained. If the only purpose for this issuing account is to issue MPTs, you do not have to enable rippling by default.
 
-|Flag                          |Purpose                                                                             |
-|------------------------------|------------------------------------------------------------------------------------|
-| depositAuth                  | Require authorization for another account to deposit to this account.              |
-| disallowIncomingCheck        | Prevent other accounts from sending checks to this account.                        |
-| disallowIncomingNFTokenOffer | Prevent other accounts from sending NFTokenOffers to this account.                 |
-| disallowIncomingPayChan      | Prevent other accounts from creating Payment Channels to this account.             |
-| disallowIncomingXRP          | Prevent other accounts from sending XRP to this account.                           |
+| Flag                         | Purpose                                                                |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| depositAuth                  | Require authorization for another account to deposit to this account.  |
+| disallowIncomingCheck        | Prevent other accounts from sending checks to this account.            |
+| disallowIncomingNFTokenOffer | Prevent other accounts from sending NFTokenOffers to this account.     |
+| disallowIncomingPayChan      | Prevent other accounts from creating Payment Channels to this account. |
+| disallowIncomingXRP          | Prevent other accounts from sending XRP to this account.               |
 
 Once you've set your preferred values in the account configurator, click **Configure Account** to finish preparing your account to issue T-bills.
 
@@ -417,18 +419,18 @@ You can represent a US Treasury Bill (T-bill) on the XRPL by creating a multi-pu
 
 ![MPT Generator Example](../../img/uc-mpt1-t-bill-mpt-generator.png)
 
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| Asset Scale | 2 | The difference, in orders of magnitude, between a standard T-bill unit and the corresponding fractional unit. |
-| Maximum Tokens | 500000 | The maximum number of this T-bill MPT that will ever be issued by this account. |
-| Transfer Fee   | 314    | Fee collected when the T-bill MPT is transferred to another account.            |
+| Parameter      | Value  | Description                                                                                                   |
+| -------------- | ------ | ------------------------------------------------------------------------------------------------------------- |
+| Asset Scale    | 2      | The difference, in orders of magnitude, between a standard T-bill unit and the corresponding fractional unit. |
+| Maximum Tokens | 500000 | The maximum number of this T-bill MPT that will ever be issued by this account.                               |
+| Transfer Fee   | 314    | Fee collected when the T-bill MPT is transferred to another account.                                          |
 
 As an example, you might set the following flags when creating your T-bill MPT.
 
-| Flag | Description |
-|------|-------------|
+| Flag         | Description                                              |
+| ------------ | -------------------------------------------------------- |
 | Can Transfer | A holder can transfer the T-bill MPT to another account. |
-| Can Trade    | A holder can trade the T-bill MPT with another account. |
+| Can Trade    | A holder can trade the T-bill MPT with another account.  |
 
 #### Token Metadata
 
@@ -444,16 +446,16 @@ The metadata you provide is what distinguishes your token from other MPTs. The f
   "asset_subclass": "treasury",
   "issuer_name": "Example Yield Co.",
   "uris": [
-      {
-          "uri": "https://exampleyield.co/tbill",
-          "category": "website",
-          "title": "Product Page"
-      },
-      {
-          "uri": "https://exampleyield.co/docs",
-          "category": "docs",
-          "title": "Yield Token Docs"
-      }
+    {
+      "uri": "https://exampleyield.co/tbill",
+      "category": "website",
+      "title": "Product Page"
+    },
+    {
+      "uri": "https://exampleyield.co/docs",
+      "category": "docs",
+      "title": "Yield Token Docs"
+    }
   ],
   "additional_info": {
     "interest_rate": "5.00%",

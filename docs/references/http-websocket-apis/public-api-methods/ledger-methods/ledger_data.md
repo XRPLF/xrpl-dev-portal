@@ -1,16 +1,19 @@
 ---
 seo:
-    description: Get the raw contents of a ledger version.
+  description: Get the raw contents of a ledger version.
 labels:
-    - Blockchain
-    - Data Retention
+  - Blockchain
+  - Data Retention
 ---
+
 # ledger_data
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerData.cpp "Source")
 
 The `ledger_data` method retrieves contents of the specified ledger. You can iterate through several calls to retrieve the entire contents of a single ledger version.
 
 ## Request Format
+
 An example of the request format:
 
 {% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
@@ -18,30 +21,34 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-   "id": "example_ledger_data",
-   "command": "ledger_data",
-   "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",   
-   "limit": 5,
-   "api_version": 2
+  "id": "example_ledger_data",
+  "command": "ledger_data",
+  "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+  "limit": 5,
+  "api_version": 2
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "ledger_data",
-    "params": [
-        {
-            "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
-            "limit": 5,
-            "api_version": 2
-        }
-    ]
+  "method": "ledger_data",
+  "params": [
+    {
+      "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+      "limit": 5,
+      "api_version": 2
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -50,19 +57,18 @@ An example of the request format:
 
 A request can include the following fields:
 
-| `Field`        | Type             | Required? | Description    |
-|:---------------|:-----------------|:----------|----------------|
-| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `binary`       | Boolean          | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
-| `limit`        | Number           | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). Positive values outside this range are replaced with the closest valid option. The default is the maximum. |
-| `marker`       | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `Field`        | Type             | Required? | Description                                                                                                                                                                                                                                                                                                      |
+| :------------- | :--------------- | :-------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string identifying the ledger version to use.                                                                                                                                                                                                                                                      |
+| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][])                                                                                                                                                                                   |
+| `binary`       | Boolean          | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`.                                                                                                                                                                                                                 |
+| `limit`        | Number           | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). Positive values outside this range are replaced with the closest valid option. The default is the maximum.             |
+| `marker`       | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off.                                                                                                                                                                                                                   |
 | `type`         | String           | No        | Filter results to a specific type of ledger entry. This field accepts canonical names of [ledger entry types](../../../protocol/ledger-data/ledger-entry-types/index.md) (case insensitive) or [short names](../../api-conventions/ledger-entry-short-names.md). If omitted, return ledger entries of all types. |
 
 {% admonition type="warning" name="Caution" %}
 The `ledger` request parameter is deprecated and may be removed without further notice. Use `ledger_hash` or `ledger_index` instead.
 {% /admonition %}
-
 
 ## Response Format
 
@@ -71,6 +77,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket (binary:false)" %}
+
 ```json
 {
   "result": {
@@ -184,9 +191,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="WebSocket (binary:true)" %}
+
 ```json
 {
   "result": {
@@ -227,9 +236,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC (binary:true)" %}
+
 ```json
 200 OK
 
@@ -269,35 +280,36 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`        | Type                                | Description           |
-|:---------------|:------------------------------------|:----------------------|
-| `ledger`       | Object                              | The complete [ledger header data](../../../protocol/ledger-data/ledger-header.md) for this ledger version. |
-| `ledger_index` | Unsigned Integer - [Ledger Index][] | The ledger index of this ledger version. |
-| `ledger_hash`  | String - [Hash][]                   | Unique identifying hash of this ledger version. |
-| `state`        | Array                               | Array of JSON objects containing data from the ledger's state tree, as defined below. |
+| `Field`        | Type                                | Description                                                                                                               |
+| :------------- | :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `ledger`       | Object                              | The complete [ledger header data](../../../protocol/ledger-data/ledger-header.md) for this ledger version.                |
+| `ledger_index` | Unsigned Integer - [Ledger Index][] | The ledger index of this ledger version.                                                                                  |
+| `ledger_hash`  | String - [Hash][]                   | Unique identifying hash of this ledger version.                                                                           |
+| `state`        | Array                               | Array of JSON objects containing data from the ledger's state tree, as defined below.                                     |
 | `marker`       | [Marker][]                          | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 
 If a `type` field is mentioned in the request, the `state` array will be empty if the first set of array objects does not match the type requested. In such cases, you can use the `marker` from this response to paginate and retrieve further data.
 
 The format of each object in the `state` array depends on whether `binary` was set to true or not in the request. Each `state` object may include the following fields:
 
-| `Field`             | Type      | Description                                |
-|:--------------------|:----------|:-------------------------------------------|
-| `data`              | String    | _(Only included if `"binary":true`)_ Hex representation of the requested data |
+| `Field`             | Type      | Description                                                                                                                                                                                                        |
+| :------------------ | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`              | String    | _(Only included if `"binary":true`)_ Hex representation of the requested data                                                                                                                                      |
 | `LedgerEntryType`   | String    | _(Only included if `"binary":false`)_ String indicating what type of ledger object this object represents. See [ledger object types](../../../protocol/ledger-data/ledger-entry-types/index.md) for the full list. |
-| (Additional fields) | (Various) | _(Only included if `"binary":false`)_ Additional fields describing this object, depending on which [ledger object type](../../../protocol/ledger-data/ledger-entry-types/index.md) it is. |
-| `index`             | String    | Unique identifier for this ledger entry, as hex. |
+| (Additional fields) | (Various) | _(Only included if `"binary":false`)_ Additional fields describing this object, depending on which [ledger object type](../../../protocol/ledger-data/ledger-entry-types/index.md) it is.                          |
+| `index`             | String    | Unique identifier for this ledger entry, as hex.                                                                                                                                                                   |
 
 ## Possible Errors
 
-* Any of the [universal error types][]
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+- Any of the [universal error types][]
+- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+- `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

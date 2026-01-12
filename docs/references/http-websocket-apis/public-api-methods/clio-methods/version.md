@@ -1,37 +1,41 @@
 ---
 seo:
-    description: Retrieve API version information.
+  description: Retrieve API version information.
 labels:
   - Core Server
 ---
+
 # version
+
 [[Source]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/VersionHandler.hpp "Source")
 
 The `version` command retrieves the API version information of the [Clio server](../../../../concepts/networks-and-servers/the-clio-server.md). For `rippled` servers, see [`version` (`rippled`)](../server-info-methods/version.md) instead. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.0.0" %}New in: Clio v2.0.0{% /badge %}
 
-
 ## Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "command": "version"
+  "command": "version"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "version",
-    "params": [
-        {}
-    ]
+  "method": "version",
+  "params": [{}]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -47,6 +51,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -66,9 +71,11 @@ An example of a successful response:
   ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -90,6 +97,7 @@ An example of a successful response:
     ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -98,14 +106,14 @@ The response follows the [standard format][], with a successful result containin
 
 The `version` object returns some arrangement of the following fields:
 
-| `Field`  | Type    | Description                   |
-|:---------|:--------|:------------------------------|
-| `first`  | Integer | Lowest supported API release  |
-| `last`   | Integer | Highest supported API release |
-| `good`   | Integer | Default API if none specified |
+| `Field` | Type    | Description                   |
+| :------ | :------ | :---------------------------- |
+| `first` | Integer | Lowest supported API release  |
+| `last`  | Integer | Highest supported API release |
+| `good`  | Integer | Default API if none specified |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

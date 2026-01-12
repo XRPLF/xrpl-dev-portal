@@ -1,13 +1,14 @@
 ---
-date: "2017-10-17"
+date: '2017-10-17'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Decentralization Strategy Update
 
 As Ripple progresses towards further decentralizing the XRP Ledger, we want to make server operators and members of the XRP Ledger community aware of a few upcoming changes to help ensure the reliability and stability of the network as it transitions to a distributed architecture with fully decentralized validators.
@@ -20,7 +21,7 @@ Ripple chose deliberately to be the most trusted validator operator in the netwo
 
 Since inception, the XRP Ledger has closed over 33 million ledgers, processed over 600 million transactions amounting to more than $15 billion in transaction volume, with no major issues or network forks.
 
-At present, the XRP Ledger can natively scale to 1,500 transactions per second. With Payment Channels, XRP can theoretically scale to tens of thousands of transactions per second—throughput levels comparable to VISA.  
+At present, the XRP Ledger can natively scale to 1,500 transactions per second. With Payment Channels, XRP can theoretically scale to tens of thousands of transactions per second—throughput levels comparable to VISA.
 
 With the security, stability, and throughput of the XRP Ledger thoroughly proven, Ripple feels that now is the time for a crucial next step in decentralization, while continuing to improve all aspects of the XRP Ledger software.
 

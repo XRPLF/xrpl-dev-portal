@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-10-13"
+date: '2022-10-13'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # ExpandedSignerList Enabled and NFTs Approaching
 
 The ExpandedSignerList amendment [became enabled on the XRP Ledger](https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87) on 2022-10-13, allowing multi-signing lists to support up to 32 entries (up from 8) and additional metadata on each signer. Additionally, the fixRemoveNFTokenAutoTrustLine amendment has gained support from over 80% of trusted validators, which puts XLS-20 Non-Fungible Token (NFT) support on track for becoming enabled on the XRP Ledger Mainnet in the near future. All XRP Ledger users should upgrade to [**version 1.9.4**](https://xrpl.org/blog/2022/rippled-1.9.4.html) of the core XRP Ledger server for service continuity.
@@ -19,21 +20,19 @@ The ExpandedSignerList amendment [became enabled on the XRP Ledger](https://live
 
 For instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](https://xrpl.org/install-rippled.html).
 
-
 ## Impact of Not Upgrading
 
 If you operate a `rippled` server on a version older than 1.9.1, then your server is now amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 After 2022-10-27, if the fixRemoveNFTokenAutoTrustLine amendment becomes enabled as expected, server versions 1.9.1, 1.9.2, and 1.9.3 will also become amendment blocked. If it does not, these versions should continue to be compatible with the XRP Ledger Mainnet. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network, following the [amendment process](https://xrpl.org/amendments.html).
 
 All operators are encouraged to **[upgrade as soon as possible](https://xrpl.org/install-rippled.html) to version 1.9.4** which is compatible with all released amendments and has several other minor improvements.
-
 
 ## ExpandedSignerList Summary
 
@@ -51,7 +50,6 @@ To use the new features added by the ExpandedSignerList amendment, you must upda
 - [xrpl-py 1.7.0](https://github.com/XRPLF/xrpl-py/releases/tag/v1.7.0) for Python
 - xrpl4j support for Java is forthcoming. (Current releases support more than 8 signers and signatures, but don't support additional data in the `WalletLocator` field)
 
-
 ## fixRemoveNFTokenAutoTrustLine and NFT Status
 
 The **fixRemoveNFTokenAutoTrustLine** amendment disables a minor feature from the original XLS-20 specification for Non-Fungible Tokens on the XRP Ledger because it was demonstrated that the feature in question could be abused to perform a denial-of-service attack on NFT issuers. This amendment does nothing on its own, since it modifies the functionality of the **NonFungibleTokensV1_1** amendment. However, the fixRemoveNFTokenAutoTrustLine is a pre-requisite to safely enabling Non-Fungible Tokens support on the XRP Ledger.
@@ -60,7 +58,6 @@ The **NonFungibleTokensV1_1** amendment remains open for voting, and can be enab
 
 For more information about Non-Fungible Tokens, see the [NFT Conceptual Overview](https://xrpl.org/non-fungible-tokens.html).
 
-
 ## Learn, ask questions, and discuss
 
 To learn more about the XRP Ledger, non-fungible tokens, the amendment process, or other topics, see the following resources:
@@ -68,6 +65,6 @@ To learn more about the XRP Ledger, non-fungible tokens, the amendment process, 
 - [XRPL.org](https://xrpl.org) documentation
 - [XRP Ledger Developers on Discord](https://discord.gg/427qqMYwHh)
 - [XRP Ledger Foundation](https://xrpl.foundation), on various platforms:
-    - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
-    - [Twitter](https://twitter.com/XRPLF/)
-    - [GitHub](https://github.com/XRPLF/)
+  - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
+  - [Twitter](https://twitter.com/XRPLF/)
+  - [GitHub](https://github.com/XRPLF/)

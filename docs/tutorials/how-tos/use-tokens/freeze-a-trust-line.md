@@ -2,34 +2,43 @@
 html: freeze-a-trust-line.html
 parent: use-tokens.html
 seo:
-    description: Freeze an individual holder of a token.
+  description: Freeze an individual holder of a token.
 embed_xrpl_js: true
 filters:
   - interactive_steps
 labels:
   - Tokens
   - Security
-steps: ['Generate', 'Connect', 'Choose Trust Line', 'Send TrustSet to Freeze', 'Wait', 'Check Freeze Status', 'Send TrustSet to End Freeze', 'Wait (again)']
+steps:
+  [
+    'Generate',
+    'Connect',
+    'Choose Trust Line',
+    'Send TrustSet to Freeze',
+    'Wait',
+    'Check Freeze Status',
+    'Send TrustSet to End Freeze',
+    'Wait (again)',
+  ]
 ---
+
 # Freeze a Trust Line
 
 This tutorial shows the steps to [freeze an individual trust line](../../../concepts/tokens/fungible-tokens/freezes.md#individual-freeze). The issuer of a token in the XRP Ledger may freeze the trust line to a particular counterparty if that account is engaged in suspicious activity.
 
 {% admonition type="success" name="Tip" %}As a reminder, freezes only apply to issued tokens, not XRP.{% /admonition %}
 
-
 ## Prerequisites
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
 - This tutorial assumes **you have already [issued a token](issue-a-fungible-token.md)** in the XRP Ledger.
 - You **cannot** have enabled the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze), which gives up your ability to freeze individual trust lines.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript" src="/js/tutorials/freeze-individual-line.js"></script>
-
 
 ## Example Code
 
@@ -56,9 +65,11 @@ You must be connected to the network to submit transactions to it. The following
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```
 (Connect to wss:// URL of an XRP Ledger server using your preferred client.)
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -66,7 +77,6 @@ You must be connected to the network to submit transactions to it. The following
 For purposes of this tutorial, use the following interface to connect and perform setup:
 
 {% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
-
 
 ### 3. Choose Trust Line
 
@@ -85,6 +95,7 @@ There can be multiple [trust lines](../../../concepts/tokens/fungible-tokens/ind
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 Example Request:
 
@@ -121,6 +132,7 @@ Example Request:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -137,20 +149,19 @@ For purposes of this tutorial, a second test address has created a trust line to
 
 {% /interactive-block %}
 
-
 ### 4. Send TrustSet Transaction to Freeze the Trust Line
 
 To enable or disable an Individual Freeze on a specific trust line, send a [TrustSet transaction][] with the [`tfSetFreeze` flag enabled](../../../references/protocol/transactions/types/trustset.md#trustset-flags). The fields of the transaction should be as follows:
 
-| Field                    | Value  | Description |
-|--------------------------|--------|-------------|
-| `Account`                | String | Your issuing account's address. |
-| `TransactionType`        | String | `TrustSet` |
-| `LimitAmount`            | Object | Object defining the trust line to freeze. |
-| `LimitAmount`.`currency` | String | Currency of the trust line (cannot be XRP) |
-| `LimitAmount`.`issuer`   | String | The XRP Ledger address of the counterparty to freeze |
+| Field                    | Value  | Description                                                                                                                    |
+| ------------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `Account`                | String | Your issuing account's address.                                                                                                |
+| `TransactionType`        | String | `TrustSet`                                                                                                                     |
+| `LimitAmount`            | Object | Object defining the trust line to freeze.                                                                                      |
+| `LimitAmount`.`currency` | String | Currency of the trust line (cannot be XRP)                                                                                     |
+| `LimitAmount`.`issuer`   | String | The XRP Ledger address of the counterparty to freeze                                                                           |
 | `LimitAmount`.`value`    | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. As an issuer, this is typically `"0"`. |
-| `Flags`                  | Number | To enable a freeze, turn on the `tfSetFreeze` bit (`0x00100000`). |
+| `Flags`                  | Number | To enable a freeze, turn on the `tfSetFreeze` bit (`0x00100000`).                                                              |
 
 As always, to send a transaction, you _prepare_ it by filling in all the necessary fields, _sign_ it with your cryptographic keys, and _submit_ it to the network. For example:
 
@@ -161,6 +172,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "example_freeze_individual_line",
@@ -181,6 +193,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
   "secret": "s████████████████████████████"
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -197,7 +210,6 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 {% admonition type="info" name="Note" %}If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each trust line. It is possible to send several transactions in a single ledger if you use a different [sequence number](../../../references/protocol/data-types/basic-data-types.md#account-sequence) for each transaction. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->{% /admonition %}
 
-
 ### 5. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
@@ -209,7 +221,7 @@ Most transactions are accepted into the next ledger version after they're submit
 At this point, the trust line from the counterparty should be frozen. You can check the freeze status of any trust line using the [account_lines method][] with the following fields:
 
 | Field     | Value  | Description                                        |
-|:----------|:-------|:---------------------------------------------------|
+| :-------- | :----- | :------------------------------------------------- |
 | `account` | String | Your address. (In this case, the issuing address.) |
 | `peer`    | String | The address of the counterparty.                   |
 
@@ -224,6 +236,7 @@ In the response, the field `"freeze": true` indicates that the account from the 
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 Example Request:
 
@@ -258,6 +271,7 @@ Example Response:
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -272,20 +286,19 @@ Example Response:
 
 {% /interactive-block %}
 
-
 ### 7. (Optional) Send TrustSet Transaction to End the Freeze
 
 If you decide that the trust line no longer needs to be frozen (for example, you investigated and decided that the suspicious activity was benign), you can end the individual freeze in almost the same way that you froze the trust line in the first place. To end an individual freeze, send a [TrustSet transaction][] with the [`tfClearFreeze` flag enabled](../../../references/protocol/transactions/types/trustset.md#trustset-flags). The other fields of the transaction should be the same as when you froze the trust line:
 
-| Field                    | Value  | Description |
-|--------------------------|--------|-------------|
-| `Account`                | String | Your issuing account's address. |
-| `TransactionType`        | String | `TrustSet` |
-| `LimitAmount`            | Object | Object defining the trust line to unfreeze. |
-| `LimitAmount`.`currency` | String | Currency of the trust line (cannot be XRP) |
-| `LimitAmount`.`issuer`   | String | The XRP Ledger address of the counterparty to unfreeze |
+| Field                    | Value  | Description                                                                                                                    |
+| ------------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `Account`                | String | Your issuing account's address.                                                                                                |
+| `TransactionType`        | String | `TrustSet`                                                                                                                     |
+| `LimitAmount`            | Object | Object defining the trust line to unfreeze.                                                                                    |
+| `LimitAmount`.`currency` | String | Currency of the trust line (cannot be XRP)                                                                                     |
+| `LimitAmount`.`issuer`   | String | The XRP Ledger address of the counterparty to unfreeze                                                                         |
 | `LimitAmount`.`value`    | String | The amount of currency you trust this counterparty to issue to you, as a quoted number. As an issuer, this is typically `"0"`. |
-| `Flags`                  | Number | To end an individual freeze, turn on the `tfClearFreeze` bit (`0x00200000`) |
+| `Flags`                  | Number | To end an individual freeze, turn on the `tfClearFreeze` bit (`0x00200000`)                                                    |
 
 As always, to send a transaction, you _prepare_ it by filling in all the necessary fields, _sign_ it with your cryptographic keys, and _submit_ it to the network. For example:
 
@@ -296,6 +309,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "example_end_individual_freeze",
@@ -316,6 +330,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
   "secret": "s████████████████████████████"
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -330,30 +345,27 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 {% /interactive-block %}
 
-
 ### 8. Wait for Validation
 
 As before, wait for the transaction to be validated by consensus.
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
 
-
-
 ## See Also
 
 - **Concepts:**
-    - [Freezing Issued Currencies](../../../concepts/tokens/fungible-tokens/freezes.md)
-    - [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md)
+  - [Freezing Issued Currencies](../../../concepts/tokens/fungible-tokens/freezes.md)
+  - [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md)
 - **Tutorials:**
-    - [Enable No Freeze](enable-no-freeze.md)
-    - [Enact Global Freeze](enact-global-freeze.md)
-    - [Change or Remove a Regular Key Pair](../manage-account-settings/change-or-remove-a-regular-key-pair.md)
+  - [Enable No Freeze](enable-no-freeze.md)
+  - [Enact Global Freeze](enact-global-freeze.md)
+  - [Change or Remove a Regular Key Pair](../manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
-    - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
+  - [account_lines method][]
+  - [account_info method][]
+  - [AccountSet transaction][]
+  - [TrustSet transaction][]
+  - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+  - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,19 +1,19 @@
 // @chunk {"steps": ["import-node-tag"]}
 // Import the library
-import xrpl from "xrpl"
+import xrpl from 'xrpl'
 // @chunk-end
 
 // @chunk {"steps": ["connect-tag"]}
 // Define the network client
-const SERVER_URL = "wss://s.altnet.rippletest.net:51233/"
+const SERVER_URL = 'wss://s.altnet.rippletest.net:51233/'
 const client = new xrpl.Client(SERVER_URL)
 await client.connect()
-console.log("Connected to Testnet")
+console.log('Connected to Testnet')
 // @chunk-end
 
 // @chunk {"steps": ["get-account-create-wallet-tag"]}
 // Create a wallet and fund it with the Testnet faucet:
-console.log("\nCreating a new wallet and funding it with Testnet XRP...")
+console.log('\nCreating a new wallet and funding it with Testnet XRP...')
 const fund_result = await client.fundWallet()
 const test_wallet = fund_result.wallet
 console.log(`Wallet: ${test_wallet.address}`)
@@ -34,25 +34,24 @@ console.log(`  https://testnet.xrpl.org/accounts/${test_wallet.address}`)
 
 // @chunk {"steps": ["query-xrpl-tag"]}
 // Get info from the ledger about the address we just funded
-console.log("\nGetting account info...")
+console.log('\nGetting account info...')
 const response = await client.request({
-  "command": "account_info",
-  "account": test_wallet.address,
-  "ledger_index": "validated"
+  command: 'account_info',
+  account: test_wallet.address,
+  ledger_index: 'validated',
 })
 console.log(JSON.stringify(response, null, 2))
 // @chunk-end
 
 // @chunk {"steps": ["listen-for-events-tag"]}
 // Listen to ledger close events
-console.log("\nListening for ledger close events...")
+console.log('\nListening for ledger close events...')
 client.request({
-  "command": "subscribe",
-  "streams": ["ledger"]
+  command: 'subscribe',
+  streams: ['ledger'],
 })
-client.on("ledgerClosed", async (ledger) => {
-  console.log(`Ledger #${ledger.ledger_index} validated ` +
-              `with ${ledger.txn_count} transactions!`)
+client.on('ledgerClosed', async (ledger) => {
+  console.log(`Ledger #${ledger.ledger_index} validated ` + `with ${ledger.txn_count} transactions!`)
 })
 // @chunk-end
 
@@ -61,7 +60,7 @@ client.on("ledgerClosed", async (ledger) => {
 // Delay this by 10 seconds to give the ledger event listener time to receive
 // and display some ledger events.
 setTimeout(async () => {
-  await client.disconnect();
-  console.log('\nDisconnected');
-}, 10000);
+  await client.disconnect()
+  console.log('\nDisconnected')
+}, 10000)
 // @chunk-end

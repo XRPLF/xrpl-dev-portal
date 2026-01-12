@@ -1,13 +1,14 @@
 ---
-date: "2017-03-30"
+date: '2017-03-30'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.60.2
 
 The `rippled` team has released `rippled` version 0.60.2, which further strengthens handling of cases associated with a [previously patched exploit](/blog/2017/rippled-0.50.3.md), in which `NoRipple` flags were being bypassed by using offers. Ripple requires upgrading to `rippled` version 0.60.2 immediately. There are no new features in the 0.60.2 release. **Note**: This does not affect XRP transactions.
@@ -21,7 +22,6 @@ Ripple will be following up with a postmortem, explaining the previosuly patched
 **If you are an individual user**, then you should have the `NoRipple` flag enabled by default and set the trust line limit to zero on gateways that you do not trust.
 
 **If you are an individual user**, and you do not have the `NoRipple` flag enabled, and you discover a negative balance owed to an unknown account, then you should [freeze](/docs/concepts/tokens/fungible-tokens/freezes#individual-freeze) that individual trust line.
-
 
 ## Impact of Not Upgrading
 
@@ -47,7 +47,6 @@ Date:   Thu Mar 30 14:25:41 2017 -0400
     Set version to 0.60.2
 ```
 
-
 ## Bug Fixes
 
 Prevent the ability to bypass `NoRipple` flags using offers [(#7cd4d78)](https://github.com/ripple/rippled/commit/4ff40d4954dfaa237c8b708c2126cb39566776da)
@@ -56,13 +55,13 @@ Prevent the ability to bypass `NoRipple` flags using offers [(#7cd4d78)](https:/
 
 The Ripple technical operations team plans to deploy `rippled` version 0.60.2 to all `rippled` servers under its operational control, including private clusters, starting at 2:00 PM PDT on Thursday, 2017-03-30. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
-
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

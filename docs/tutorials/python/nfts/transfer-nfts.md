@@ -2,7 +2,7 @@
 html: py-transfer-nfts.html
 parent: nfts-using-python.html
 seo:
-    description: Use a Python test harness to create and accept NFT buy and sell offers.
+  description: Use a Python test harness to create and accept NFT buy and sell offers.
 labels:
   - Quickstart
   - Tokens
@@ -31,18 +31,18 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 1. Open `4.transfer-nfts.html` in a browser.
 2. Choose your ledger instance (**Testnet** or **Devnet**).
 3. Get test accounts.
-    1. If you have existing test account seeds
-        1. Paste account seed in the **Standby Seed** field.
-        2. Click **Get Standby Account**.
-        3. Click **Get Standby Account Info**.
-        4. Paste account seed in the **Operational Seed** field.
-        5. Click **Get Operational Account**.
-        6. Click **Get Operational Account Info**.
-    2. If you do not have test account seeds:
-        1. Click **Get Standby Account**.
-        2. Click **Get Standby Account Info**.
-        3. Click **Get Operational Account**.
-        4. Click **Get Get Op Account Info**.
+   1. If you have existing test account seeds
+      1. Paste account seed in the **Standby Seed** field.
+      2. Click **Get Standby Account**.
+      3. Click **Get Standby Account Info**.
+      4. Paste account seed in the **Operational Seed** field.
+      5. Click **Get Operational Account**.
+      6. Click **Get Operational Account Info**.
+   2. If you do not have test account seeds:
+      1. Click **Get Standby Account**.
+      2. Click **Get Standby Account Info**.
+      3. Click **Get Operational Account**.
+      4. Click **Get Get Op Account Info**.
 
 [![Form with account information](/docs/img/quickstart-py16.png)](/docs/img/quickstart-py16.png)
 
@@ -128,6 +128,7 @@ To cancel a buy or sell offer that you have created:
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to try each of the samples in your own browser.
 
 ## mod4.py
+
 This module contains the new methods `create_sell_offer`, `create_buy_offer`, `accept_sell_offer`, `accept_buy_offer`, `get_offers`, and `cancel_offer`.
 
 Import dependencies.
@@ -190,6 +191,7 @@ If the expiration date is present, include the `expiration` argument.
 ```python
         expiration=expiration_date if expiration != '' else None,
 ```
+
 Set the `flags` value to _1_, indicating that this is a sell offer.
 
 ```python
@@ -260,7 +262,7 @@ Submit the transaction and report the results.
 
 ## Create Buy Offer
 
-Pass the buyer _seed_,  _amount_, _NFT ID_, _owner_, _expiration_ (in seconds, optional), and _destination_ account (optional).
+Pass the buyer _seed_, _amount_, _NFT ID_, _owner_, _expiration_ (in seconds, optional), and _destination_ account (optional).
 
 ```python
 def create_buy_offer(seed, amount, nft_id, owner, expiration, destination):
@@ -326,7 +328,7 @@ Submit the transaction and report the results.
 
 ## Accept Buy Offer
 
-Pass the buyer's _seed_ value and the NFT _offer___index_.
+Pass the buyer's _seed_ value and the NFT \_offer*\_\_index*.
 
 ```python
 def accept_buy_offer(seed, offer_index):
@@ -772,7 +774,7 @@ lbl_standby_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_standby_nft_id = tk.Entry(master=frm_form, width="50")
 ```
 
-Add fields for the *NFT Offer Index*, *Owner*, *Expiration*, and *Transfer Fee*.
+Add fields for the _NFT Offer Index_, _Owner_, _Expiration_, and _Transfer Fee_.
 
 ```python
 lbl_standby_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")
@@ -851,7 +853,7 @@ lbl_operational_nft_id = tk.Label(master=frm_form, text="NFT ID")
 ent_operational_nft_id = tk.Entry(master=frm_form, width="50")
 ```
 
-Add fields for *NFT Offer Index*, *Owner*, *Expiration*, and *Transfer Fee*.
+Add fields for _NFT Offer Index_, _Owner_, _Expiration_, and _Transfer Fee_.
 
 ```python
 lbl_operational_nft_offer_index = tk.Label(master=frm_form, text="NFT Offer Index")

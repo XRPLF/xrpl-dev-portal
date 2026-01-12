@@ -1,13 +1,14 @@
 ---
-date: "2017-03-29"
+date: '2017-03-29'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.60.1
 
 The `rippled` team has released `rippled` version 0.60.1, which corrects a technical flaw that resulted from using 32-bit space identifiers instead of the protocol-defined 16-bit values for Escrow and Payment Channel ledger entries. `rippled` version 0.60.1 also fixes a problem where the websocket timeout timer would not be cancelled when certain errors occurred during subscription streams. **Ripple strongly recommends upgrading to `rippled` version 0.60.1 immediately.**
@@ -20,9 +21,9 @@ Ripple expects the [`Escrow`](/resources/known-amendments.md#escrow) and [`PayCh
 
 ## Impact of Not Upgrading
 
-* If you operate a `rippled` server, but do not upgrade to `rippled` version 0.60.1, then your `rippled` server will lose sync when processing Payment Channel or Escrow transactions. The `Escrow` and `PayChan` amendments are expected to be enabled via amendment vote around 11:26 PM PDT on Thursday, 2017-03-30.
+- If you operate a `rippled` server, but do not upgrade to `rippled` version 0.60.1, then your `rippled` server will lose sync when processing Payment Channel or Escrow transactions. The `Escrow` and `PayChan` amendments are expected to be enabled via amendment vote around 11:26 PM PDT on Thursday, 2017-03-30.
 
-* If you operate a `rippled` server, but do not upgrade to version 0.60.1, then client websocket connections to your `rippled` server may continue to disconnect during subscription streams.
+- If you operate a `rippled` server, but do not upgrade to version 0.60.1, then client websocket connections to your `rippled` server may continue to disconnect during subscription streams.
 
 For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
@@ -53,11 +54,12 @@ Fix a problem where the WebSocket timeout timer would not be cancelled when cert
 The Ripple technical operations team plans to deploy `rippled` version 0.60.1 to all `rippled` servers under its operational control, including private clusters, starting at 11:00 AM PDT on Thursday, 2017-03-30. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

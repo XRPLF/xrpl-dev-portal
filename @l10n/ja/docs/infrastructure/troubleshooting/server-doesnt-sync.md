@@ -2,16 +2,16 @@
 html: server-doesnt-sync.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
+  description: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
 labels:
   - コアサーバ
 ---
+
 # rippledサーバが同期しない
 
 このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)のままになっている場合の原因について説明します。（サーバが起動中または起動直後にクラッシュした場合は、[サーバが起動しない](server-wont-start.md)をご覧ください。）
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
-
 
 ## 通常の同期動作
 
@@ -25,7 +25,6 @@ labels:
 
 サーバがこれらのタスクを行うときにネットワークに同調して対応できなかった場合は、サーバはネットワークと同期しない状態になります。
 
-
 ## 最初のステップ: 再起動
 
 多くの同期の問題は、サーバを再起動することで解決できます。最初に同期が失敗した原因がどのようなものであっても、2回目では成功する場合があります。
@@ -34,17 +33,15 @@ labels:
 
 問題が解決しない場合は、このページに記載されている他の原因を確認してください。いずれも当てはまらないと思われる場合は、[`rippled`リポジトリに問題を登録](https://github.com/XRPLF/rippled/issues)し、「Syncing issue」ラベルを追加します。
 
-
 ## 同期の問題のよくある原因
 
 同期の問題の原因として最もよくあるのは、[システム要件](../installation/system-requirements.md)を満たしていないことです。要件を満たせない主な原因は次の3つです。
 
--  **低速なディスク。** 安定して高速な性能を発揮するソリッドステートディスク（SSD）が必要です。AWSなどのクラウドプロバイダーはディスク性能を保証しておらず、ハードウェアを共有する他のユーザの影響を受ける可能性があります。
--  **不十分なRAM。** メモリー要件はさまざまな要因に大きく左右されます。例えば、ネットワークの負荷やXRP Ledgerがどのように使われるかなど、予測しづらい要因もあるため、念のため最小システム要件よりも大きいメモリーを用意することをお勧めします。
--  **品質の悪いネットワーク接続。** ネットワーク要件は、主にXRP Ledgerをユーザがどのよう使うかによって左右されますが、接続が低速または不安定な場合、XRP Ledgerに追加された新しいトランザクションやデータとの同期がとれなくなる可能性があります。
+- **低速なディスク。** 安定して高速な性能を発揮するソリッドステートディスク（SSD）が必要です。AWSなどのクラウドプロバイダーはディスク性能を保証しておらず、ハードウェアを共有する他のユーザの影響を受ける可能性があります。
+- **不十分なRAM。** メモリー要件はさまざまな要因に大きく左右されます。例えば、ネットワークの負荷やXRP Ledgerがどのように使われるかなど、予測しづらい要因もあるため、念のため最小システム要件よりも大きいメモリーを用意することをお勧めします。
+- **品質の悪いネットワーク接続。** ネットワーク要件は、主にXRP Ledgerをユーザがどのよう使うかによって左右されますが、接続が低速または不安定な場合、XRP Ledgerに追加された新しいトランザクションやデータとの同期がとれなくなる可能性があります。
 
 同期の問題が解消されない場合は、サーバがシステム要件を満たしているかもう一度確認してください。サーバの使用方法によっては、「最小」要件よりも高い「推奨」要件を満たす必要があります。「推奨」要件を満たしていても、まだ同期ができない場合は、このページの他の原因を試してみてください。
-
 
 ## バリデータリストを読み込めない
 
@@ -56,13 +53,11 @@ labels:
 
 <!-- TODO: create a tutorial for how to sideload a validator list from file and link it here -->
 
-
 ## 十分な数のピアがない
 
 サーバが十分な数の[ピアサーバ](../../concepts/networks-and-servers/peer-protocol.md)に接続していない場合、サーバは十分なデータをダウンロードできず、ネットワークが新しいトランザクションを処理するときに同期がとれなくなる可能性があります。この問題は、ネットワーク接続の信頼性が低い場合や、十分な数の信頼できる固定ピアを追加せずにサーバを[プライベートサーバ](../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)として構成している場合に起こる可能性があります。
 
 [peersメソッド][]を使用して、サーバの現在のピアについての情報を取得します。ピアの数が10または11の場合、ファイアウォールが着信ピア接続をブロックしていることを示しています。[ポートフォワーディングを設定](../configuration/peering/forward-ports-for-peering.md)して、より多くの着信接続を許可します。サーバがプライベートサーバとして構成されている場合は、構成ファイルの`[ips_fixed]`スタンザの内容と構文を再度確認し、可能であればプロキシと公開ハブをさらに追加します。
-
 
 ## データベースの破損
 
@@ -74,52 +69,51 @@ labels:
 
 1. `rippled`サーバが稼働中の場合は停止します。
 
-    ```
-    $ sudo systemctl stop rippled
-    ```
+   ```
+   $ sudo systemctl stop rippled
+   ```
 
 2. 新しいデータベースを格納するための新しい空のフォルダーを作成します。
 
-    ```
-    $ mkdir /var/lib/rippled/db_new/
-    $ mkdir /var/lib/rippled/db_new/nudb
-    ```
+   ```
+   $ mkdir /var/lib/rippled/db_new/
+   $ mkdir /var/lib/rippled/db_new/nudb
+   ```
 
 3. 新しいパスを使用するように構成ファイルを編集します。`[node_db]`スタンザの`path`フィールド**と**`[database_path]`スタンザの値を変更します。
 
-    ```
-    [node_db]
-    type=NuDB
-    path=/var/lib/rippled/db_new/nudb
+   ```
+   [node_db]
+   type=NuDB
+   path=/var/lib/rippled/db_new/nudb
 
-    [database_path]
-     /var/lib/rippled/db_new
-    ```
+   [database_path]
+    /var/lib/rippled/db_new
+   ```
 
-    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
+   {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
 4. `rippled`サーバを再起動します。
 
-    ```
-    $ sudo systemctl start rippled
-    ```
+   ```
+   $ sudo systemctl start rippled
+   ```
 
    新しいデータベースを使用してサーバが同期に成功したら、以前のデータベースを格納していたフォルダーを削除できます。また、ハードウェア障害、特にディスクとRAMの障害を確認することもお勧めします。
-
 
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
-    - [ピアプロトコル](../../concepts/networks-and-servers/peer-protocol.md)
-    - [技術に関するよくある質問](/about/faq.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+  - [ピアプロトコル](../../concepts/networks-and-servers/peer-protocol.md)
+  - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
-    - [ログメッセージについて](understanding-log-messages.md)
-    - [容量の計画](../installation/capacity-planning.md)
+  - [ログメッセージについて](understanding-log-messages.md)
+  - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [peersメソッド][]
-      - [server_infoメソッド][]
-      - [validator_list_sitesメソッド][]
+  - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+    - [peersメソッド][]
+    - [server_infoメソッド][]
+    - [validator_list_sitesメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

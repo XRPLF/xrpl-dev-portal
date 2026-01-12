@@ -1,13 +1,14 @@
 ---
-date: "2016-08-18"
+date: '2016-08-18'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 category: 2016
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # The FlowV2 Amendment Was Vetoed
 
 The `rippled` team found a flaw in FlowV2 while testing. As a result, the Ripple network has [vetoed](/docs/concepts/networks-and-servers/amendments#amendment-voting) the new payment engine amendment. [Originally](/blog/2016/rippled-0.32.1.md), the [FlowV2 amendment](/resources/known-amendments.md#flowv2) was planned to replace `rippled`’s payment processing engine with a more robust and efficient implementation. It was previously expected to become active on Wednesday, 2016-08-24.
@@ -32,7 +33,7 @@ Related documentation is available in the Ripple Developer Portal, including det
 
 ### Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

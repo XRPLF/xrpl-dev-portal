@@ -2,10 +2,11 @@
 html: nft-storage.html
 parent: non-fungible-tokens.html
 seo:
-    description: Storage options for the payload of your NFT.
+  description: Storage options for the payload of your NFT.
 labels:
   - Non-fungible Tokens, NFTs
 ---
+
 # NFT Payload Storage
 
 NFTs are created on the blockchain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on the XRP Ledger; decentralized, off the XRP Ledger; and centralized, off the XRP Ledger.

@@ -1,6 +1,8 @@
 // Button styling --------------------------------------------------------------
 
-.btn, article a.button, article .btn {
+.btn,
+article a.button,
+article .btn {
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
@@ -10,15 +12,15 @@
 }
 
 article a.button {
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   display: inline-block;
 }
 
 .btn.disabled,
 button.disabled,
-.btn[disabled="disabled"],
-button[disabled="disabled"] {
+.btn[disabled='disabled'],
+button[disabled='disabled'] {
   cursor: not-allowed;
 }
 
@@ -38,7 +40,7 @@ button[disabled="disabled"] {
   }
 
   &.disabled,
-  &[disabled="disabled"] {
+  &[disabled='disabled'] {
     background: $blue-purple-700;
 
     &:hover {
@@ -80,7 +82,7 @@ button[disabled="disabled"] {
 
 .btn-arrow-out::after {
   background-position: left 0px bottom 0px;
-  content: "\00a0";
+  content: '\00a0';
   background-image: url(../img/icons/arrow-up-right-white.svg);
   background-repeat: no-repeat;
   display: inline-block;
@@ -152,5 +154,4 @@ button[disabled="disabled"] {
     top: 0;
     right: 0;
   }
-
 }

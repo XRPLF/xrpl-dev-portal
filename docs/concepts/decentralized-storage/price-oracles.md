@@ -1,7 +1,8 @@
 ---
 seo:
-    description: Price oracles gather real-world market prices and record them in the blockchain so that other tools and technology can access this data directly.
+  description: Price oracles gather real-world market prices and record them in the blockchain so that other tools and technology can access this data directly.
 ---
+
 # Price Oracles
 
 Price oracles gather real-world market prices and record them in the blockchain so that other tools and technology can access this data directly.
@@ -14,7 +15,6 @@ Generally speaking, oracles aren't limited to only providing financial informati
 
 {% amendment-disclaimer name="PriceOracle" /%}
 
-
 ## How Oracles Work
 
 Most oracle blockchain interactions work like this:
@@ -25,7 +25,6 @@ Most oracle blockchain interactions work like this:
 
 This process can also work in reverse, pushing transaction information to external systems.
 
-
 ## Price Oracles on the XRP Ledger
 
 XRPL price oracles are a native, on-chain oracle, enhancing the native DeFi functionality of the XRP Ledger. Off-chain price oracles send their data to XRPL oracles, which store that information on-chain. Decentralized apps can then query the XRPL oracles for price data; multiple XRPL oracles can be queried to minimize risk and inaccuracies.
@@ -35,9 +34,9 @@ By standardizing price feeds in this manner, all XRPL apps can access a dependab
 ## See Also
 
 - **References:**
-    - [get_aggregate_price method][]
-    - [Oracle entry][]
-    - [OracleDelete transaction][]
-    - [OracleSet transaction][]
+  - [get_aggregate_price method][]
+  - [Oracle entry][]
+  - [OracleDelete transaction][]
+  - [OracleSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

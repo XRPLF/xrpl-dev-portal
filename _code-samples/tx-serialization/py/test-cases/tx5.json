@@ -1,19 +1,19 @@
 {
-    "TransactionType": "OracleSet",
-    "Account": "rfmDuhDyLGgx94qiwf3YF8BUV5j6KSvE8",
-    "OracleDocumentID": 1234,
-    "LastUpdateTime": 4294967295,
-    "PriceDataSeries": [
-        {
-            "PriceData": {
-                "BaseAsset": "XRP",
-                "QuoteAsset": "USD",
-                "AssetPrice": "00000000000001E2",
-                "Scale": 3
-            }
-        }
-    ],
-    "Provider": "70726F7669646572",
-    "URI": "6469645F6578616D706C65",
-    "AssetClass": "63757272656E6379"
+  "TransactionType": "OracleSet",
+  "Account": "rfmDuhDyLGgx94qiwf3YF8BUV5j6KSvE8",
+  "OracleDocumentID": 1234,
+  "LastUpdateTime": 4294967295,
+  "PriceDataSeries": [
+    {
+      "PriceData": {
+        "BaseAsset": "XRP",
+        "QuoteAsset": "USD",
+        "AssetPrice": "00000000000001E2",
+        "Scale": 3
+      }
+    }
+  ],
+  "Provider": "70726F7669646572",
+  "URI": "6469645F6578616D706C65",
+  "AssetClass": "63757272656E6379"
 }

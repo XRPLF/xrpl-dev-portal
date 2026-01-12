@@ -2,18 +2,19 @@
 html: py-create-accounts-send-xrp.html
 parent: send-payments-using-python.html
 seo:
-    description: Create two accounts and transfer XRP between them using Python.
+  description: Create two accounts and transfer XRP between them using Python.
 labels:
   - Accounts
   - Quickstart
   - Transaction Sending
   - XRP
 ---
+
 # Create Accounts and Send XRP Using Python
 
 This example shows how to:
 
-1. Create accounts on the Testnet, funded with 10000 test XRP with no actual value. 
+1. Create accounts on the Testnet, funded with 10000 test XRP with no actual value.
 2. Retrieve the accounts from seed values.
 3. Transfer XRP between accounts.
 
@@ -34,6 +35,7 @@ Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-p
 {% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
 
 ## Usage
+
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YnPccLPa0hc?si=t-CqrLYmCCHSaZhB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
@@ -45,7 +47,7 @@ To get test accounts:
 3. Click **Get Operational Account**.
 4. Click **Get Standby Account Info**.
 5. Click **Get Operational Account Info**.
-5. Copy and paste the **Standby Seed** and **Operational Seed** fields to a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
+6. Copy and paste the **Standby Seed** and **Operational Seed** fields to a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
 
 [![Standby and Operational Accounts](/docs/img/quickstart-py3.png)](/docs/img/quickstart-py3.png)
 
@@ -84,11 +86,10 @@ import xrpl
 
 ```
 
- Create a variable for the server URI. This example uses the _Testnet_ ledger. You can update the URI to choose a different XRP Ledger instance.
+Create a variable for the server URI. This example uses the _Testnet_ ledger. You can update the URI to choose a different XRP Ledger instance.
 
- 
- ```python
- testnet_url = "https://s.altnet.rippletest.net:51234/"
+```python
+testnet_url = "https://s.altnet.rippletest.net:51234/"
 ```
 
 ### get_account
@@ -127,13 +128,13 @@ def get_account_info(accountId):
     """get_account_info"""
 ```
 
-Get a client instance from Testnet. 
+Get a client instance from Testnet.
 
 ```python
     client = xrpl.clients.JsonRpcClient(testnet_url)
 ```
 
-Create the account info request, passing the account ID and the ledger index (in this case, the latest validated ledger). 
+Create the account info request, passing the account ID and the ledger index (in this case, the latest validated ledger).
 
 ```python
     acct_info = xrpl.models.requests.account_info.AccountInfo(
@@ -182,9 +183,9 @@ Create a transaction request, passing the sending account, amount, and destinati
 Submit the transaction and return the response. If the transaction fails, return the error message.
 
 ```python
-    try:    
-        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)    
-    except xrpl.transaction.XRPLReliableSubmissionException as e:    
+    try:
+        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)
+    except xrpl.transaction.XRPLReliableSubmissionException as e:
         response = f"Submit failed: {e}"
     return response
 ```
@@ -203,7 +204,7 @@ import json
 
 Import the methods from mod1.py.
 
-```python    
+```python
 from .mod1 import get_account, get_account_info, send_xrp
 ```
 
@@ -286,7 +287,7 @@ Use `get_standby_account_info()` and `get_operational_account_info()` to update 
 ### Reciprocal Transactions and Requests
 
 The following four methods are the same as the previous standby transactions, but for the operational account.
-    
+
 ```python
 def get_operational_account():
     new_wallet = get_account(ent_operational_seed.get())
@@ -412,7 +413,7 @@ Create the operational account buttons and add them to the grid.
 btn_get_operational_account = tk.Button(master=frm_form, text="Get Operational Account",
                                         command = get_operational_account)
 btn_get_operational_account.grid(row=0, column=3, sticky = "nsew")
-btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info", 
+btn_get_op_account_info = tk.Button(master=frm_form, text="Get Op Account Info",
                                     command = get_operational_account_info)
 btn_get_op_account_info.grid(row=1, column=3, sticky = "nsew")
 btn_op_send_xrp = tk.Button(master=frm_form, text="< Send XRP",

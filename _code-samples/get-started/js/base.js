@@ -2,7 +2,7 @@
 import xrpl from 'xrpl'
 
 // Define the network client
-const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233")
+const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
 await client.connect()
 
 // ... custom code goes here

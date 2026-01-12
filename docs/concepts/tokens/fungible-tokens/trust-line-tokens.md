@@ -1,13 +1,13 @@
 ---
 seo:
-    description: Learn about the properties and rationale of trust lines and fungible tokens.
+  description: Learn about the properties and rationale of trust lines and fungible tokens.
 labels:
   - Tokens
 ---
+
 # Trust Line Tokens
 
 Trust lines tokens are a type of [fungible token](../index.md) in the XRP Ledger. They are tracked in trust lines, which enforce the rule that you cannot cause someone else to hold a token they don't want. This is the original token standard of the XRP Ledger, in contrast to [Multi-Purpose Tokens](./multi-purpose-tokens.md).
-
 
 ## Structure
 
@@ -15,21 +15,19 @@ A trust line is recorded in the ledger as a [RippleState entry][]. Each trust li
 
 - The identifiers for the two [accounts](../../accounts/index.md) that the trust line connects.
 - A single, shared balance, which is positive from the perspective of one account and negative from the other perspective.
-    - The account with a negative balance is generally considered the "issuer" of the tokens. However, in the [APIs](../../../references/http-websocket-apis/index.md), the name `issuer` can refer to either side.
+  - The account with a negative balance is generally considered the "issuer" of the tokens. However, in the [APIs](../../../references/http-websocket-apis/index.md), the name `issuer` can refer to either side.
 - Various settings and metadata. _Each_ of the two accounts can control its own settings on the trust line.
-    - Most importantly, each side sets a limit on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except [through that account's own actions](#going-above-the-limit).
+  - Most importantly, each side sets a limit on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except [through that account's own actions](#going-above-the-limit).
 
 Each trust line is specific to a given [currency code][]. Two accounts can have any number of trust lines between them for different currency codes, but only one shared trust line for any particular currency code.
 
 The balance on a trust line is negative or positive depending on which side you view it from. The side with the negative balance is called the "issuer" and can control some properties of how those tokens behave. When you send tokens to another account that isn't the issuer, those tokens "ripple" through the issuer and possibly other accounts using the same currency code. This is useful in some cases, but can cause unexpected and undesirable behavior in others. You can use the [No Ripple flag](rippling.md) on trust lines to prevent those trust lines from rippling.
-
 
 ## Creation
 
 Any account can unilaterally "trust" another account to issue a token by sending a [TrustSet transaction][] with a nonzero limit and their own settings. This creates a line with a zero balance, and sets the other side's settings to the default.
 
 Trust lines can be implicitly created by some transactions, such as when you buy a token in the [decentralized exchange](../decentralized-exchange/index.md). In this case, the trust line uses entirely default settings.
-
 
 ## Going Above the Limit
 
@@ -38,7 +36,6 @@ There are three cases where you can hold a balance that is _greater_ than your l
 1. When you acquire more of that token through [trading](../decentralized-exchange/index.md).
 2. When you decrease the limit on a trust line that has a positive balance.
 3. When you acquire more of that token by [cashing a Check](../../payment-types/checks.md). {% amendment-disclaimer name="CheckCashMakesTrustLine" /%}
-
 
 ## Trust Line Settings
 
@@ -50,7 +47,6 @@ In addition to the shared balance, each account has its own settings on the trus
 - **Freeze**: A true/false value indicating whether an [individual freeze](freezes.md#individual-freeze) is in effect on this trust line. The default is `false`.
 - **DeepFreeze**: A true/false value indicating whether a [deep freeze](deep-freeze.md) is in effect on this trust line. The default is `false`.
 - **Quality In** and **Quality Out** settings, which allow the account to value tokens issued by the other account on this trust line at less (or more) than face value. For example, if a stablecoin issuer charges a 3% fee for withdrawing tokens for the equivalent off-ledger assets, you could use these settings to value those tokens at 97% of face value. The default, `0`, represents face value.
-
 
 ## Properties
 
@@ -80,6 +76,7 @@ If your balance is negative (you are the issuer) or the other side's settings ar
 Since the **Authorized** setting cannot be turned off after it has been turned on, it does not count toward the trust line's default state.
 
 ### Free Trust Lines
+
 [[Source]](https://github.com/XRPLF/rippled/blob/2df7dcfdebcb0cdbd030c1f4b09ac748af95659c/src/xrpld/app/tx/detail/SetTrust.cpp#L387-L407 "Source")
 
 Since trust lines are a powerful feature of the XRP Ledger, there is a special feature to make an account's first two trust lines "free".
@@ -88,16 +85,15 @@ When an account creates a new trust line, if the account owns at most 2 items in
 
 When an account owns 3 or more objects in the ledger, the full owner reserve applies.
 
-
 ## See Also
 
 - **Concepts:**
-    - [Decentralized Exchange](../decentralized-exchange/index.md)
-    - [Rippling](rippling.md)
+  - [Decentralized Exchange](../decentralized-exchange/index.md)
+  - [Rippling](rippling.md)
 - **References:**
-    - [account_lines method][] - Look up trust lines attached to a given account
-    - [gateway_balances method][] - Look up an issuer's total balance issued
-    - [RippleState object](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) - The data format for trust lines in the ledger's state data.
-    - [TrustSet transaction][] - The transaction to create or modify trust lines.
+  - [account_lines method][] - Look up trust lines attached to a given account
+  - [gateway_balances method][] - Look up an issuer's total balance issued
+  - [RippleState object](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) - The data format for trust lines in the ledger's state data.
+  - [TrustSet transaction][] - The transaction to create or modify trust lines.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

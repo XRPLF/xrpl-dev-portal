@@ -1,7 +1,8 @@
 ---
 seo:
-    description: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
+  description: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
 ---
+
 # Request Formatting
 
 ## Example Request
@@ -9,6 +10,7 @@ seo:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "example_ws_request_1",
@@ -18,9 +20,11 @@ seo:
   "api_version": 2
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 POST http://s1.ripple.com:51234/
 Content-Type: application/json
@@ -36,27 +40,29 @@ Content-Type: application/json
     ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
-
-## WebSocket Format  
+## WebSocket Format
 
 After you open a WebSocket to the `rippled` server, you can send commands as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following fields:
 
-| Field               | Type      | Description                                |
-|:--------------------|:----------|:-------------------------------------------|
-| `command`           | String    | The name of the [API method](../public-api-methods/index.md). |
+| Field               | Type      | Description                                                                                                                                                                                                   |
+| :------------------ | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `command`           | String    | The name of the [API method](../public-api-methods/index.md).                                                                                                                                                 |
 | `id`                | (Various) | _(Optional)_ A unique value to identify this request. The response to this request uses the same `id` field. This way, even if responses arrive out of order, you know which request prompted which response. |
-| `api_version`       | Number    | _(Optional)_ The API version to use. For details, see [API Versioning](../index.md#api-versioning). |
-| (Method Parameters) | (Various) | Provide any parameters to the method at the top level. |
+| `api_version`       | Number    | _(Optional)_ The API version to use. For details, see [API Versioning](../index.md#api-versioning).                                                                                                           |
+| (Method Parameters) | (Various) | Provide any parameters to the method at the top level.                                                                                                                                                        |
 
 See [Response Formatting](response-formatting.md) for the response from the server.
 
@@ -70,18 +76,17 @@ If you plan on making multiple requests, use [Keep-Alives](http://tools.ietf.org
 
 Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with the following fields:
 
-
-| Field               | Type      | Description                                |
-|:--------------------|:----------|:-------------------------------------------|
-| `method`            | String    | The name of the [API method](../public-api-methods/index.md). |
-| `params`            | Array     | _(Optional)_ A **one-item array** containing a nested JSON object with the parameters to this method. You may omit this field if the method does not require any parameters. |
+| Field    | Type   | Description                                                                                                                                                                  |
+| :------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `method` | String | The name of the [API method](../public-api-methods/index.md).                                                                                                                |
+| `params` | Array  | _(Optional)_ A **one-item array** containing a nested JSON object with the parameters to this method. You may omit this field if the method does not require any parameters. |
 
 The object inside the `params` array can contain the following fields:
 
-| Field               | Type      | Description                                |
-|:--------------------|:----------|:-------------------------------------------|
+| Field               | Type      | Description                                                                              |
+| :------------------ | :-------- | :--------------------------------------------------------------------------------------- |
 | `api_version`       | Number    | _(Optional)_ The API version to use. For details, see [API Versioning](#api-versioning). |
-| (Method Parameters) | (Various) | Provide any parameters to the method here. |
+| (Method Parameters) | (Various) | Provide any parameters to the method here.                                               |
 
 See [Response Formatting](response-formatting.md) for the response from the server.
 

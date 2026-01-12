@@ -1,56 +1,50 @@
 ---
 seo:
-    description: A group of up to 32 NFTs, stored together for efficiency.
+  description: A group of up to 32 NFTs, stored together for efficiency.
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
+
 # NFTokenPage
+
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L97-L103 "Source")
 
 An `NFTokenPage` entry represents a collection of [NFTs](../../../../concepts/tokens/nfts/index.md) owned by the same account. An account can have multiple `NFTokenPage` entries, which form a doubly linked list. NFT directories are automatically updated when an account mints, burns, buys, or sells NFTs.
 
 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
-
 ## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
   "LedgerEntryType": "NFTokenPage",
-  "PreviousPageMin":
-    "8A244DD75DAF4AC1EEF7D99253A7B83D2297818B2297818B70E264D2000002F2",
-  "NextPageMin":
-    "8A244DD75DAF4AC1EEF7D99253A7B83D2297818B2297818BE223B0AE0000010B",
-  "PreviousTxnID":
-    "95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822",
-  "PreviousTxnLgrSeq":
-    42891441,
+  "PreviousPageMin": "8A244DD75DAF4AC1EEF7D99253A7B83D2297818B2297818B70E264D2000002F2",
+  "NextPageMin": "8A244DD75DAF4AC1EEF7D99253A7B83D2297818B2297818BE223B0AE0000010B",
+  "PreviousTxnID": "95C8761B22894E328646F7A70035E9DFBECC90EDD83E43B7B973F626D21A0822",
+  "PreviousTxnLgrSeq": 42891441,
   "NFTokens": [
     {
       "NFToken": {
-        "NFTokenID":
-          "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
+        "NFTokenID": "000B013A95F14B0044F78A264E41713C64B5F89242540EE208C3098E00000D65",
         "URI": "697066733A2F2F62616679626569676479727A74357366703775646D37687537367568377932366E6634646675796C71616266336F636C67747179353566627A6469"
       }
-    },
+    }
     /* potentially more objects */
   ]
 }
 ```
 
-
 ## {% $frontmatter.seo.title %} Fields
 
 In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
-| Field Name          | JSON Type | [Internal Type][] | Required? | Description |
-|:--------------------|:----------|:------------------|:----------|:------------|
-| `NextPageMin`       | String    | UInt256           | No        | The locator of the next page, if any. Details about this field and how it should be used are outlined below. |
-| `NFTokens`          | Array     | Array             | Yes       | The collection of `NFToken` objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects are sorted from low to high with the `NFTokenID` used as the sorting parameter.|
-| `PreviousPageMin`   | String    | UInt256           | No        | The locator of the previous page, if any. Details about this field and how it should be used are outlined below. |
-| `PreviousTxnID`     | String    | UInt256           | No        | Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object. |
-| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The sequence of the ledger that contains the transaction that most recently modified this NFTokenPage object.|
-
+| Field Name          | JSON Type | [Internal Type][] | Required? | Description                                                                                                                                                                                                                                |
+| :------------------ | :-------- | :---------------- | :-------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NextPageMin`       | String    | UInt256           | No        | The locator of the next page, if any. Details about this field and how it should be used are outlined below.                                                                                                                               |
+| `NFTokens`          | Array     | Array             | Yes       | The collection of `NFToken` objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects are sorted from low to high with the `NFTokenID` used as the sorting parameter. |
+| `PreviousPageMin`   | String    | UInt256           | No        | The locator of the previous page, if any. Details about this field and how it should be used are outlined below.                                                                                                                           |
+| `PreviousTxnID`     | String    | UInt256           | No        | Identifies the transaction ID of the transaction that most recently modified this NFTokenPage object.                                                                                                                                      |
+| `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The sequence of the ledger that contains the transaction that most recently modified this NFTokenPage object.                                                                                                                              |
 
 ### NFTokenPage ID Format
 
@@ -64,21 +58,17 @@ This uses a function `low96(x)` which returns the low 96 bits of a 256-bit value
 
 This design allows for efficient lookups of individual `NFToken` objects without needing to check each `NFTokenPage` in a list.
 
-
 ### Finding NFTokens
 
 To find a specific `NFToken`, you need to know its `NFTokenID` and current owner. Compute the `NFTokenPage` ID as described above. Search for a ledger entry whose identifier is less than or equal to that value. If that entry does not exist or is not an `NFTokenPage`, that account does not own that `NFToken`.
-
 
 ### Adding NFTokens
 
 To add an `NFToken`, find the `NFTokenPage` it should be in (using the same technique as searching for an `NFToken` object) and add it to that page. If the `NFTokenPage` is already full, find the previous and next pages (if any) and balance those three pages, inserting a new `NFTokenPage` as needed.
 
-
 ### Removing NFTokens
 
 Removing `NFToken` objects works like adding them. If the number of `NFToken` objects in the page goes below a certain threshold, the ledger combines the page with a previous or next page if possible.
-
 
 ## {% $frontmatter.seo.title %} Reserve
 
@@ -93,7 +83,7 @@ Because of the way splitting and combining pages works, the actual number of `NF
 Currently, the reserve per item is {% $env.PUBLIC_OWNER_RESERVE %}. The table below shows how much the **total owner reserve** is for various numbers of NFTs owned under various scenarios:
 
 | NFTs Owned  | Best Case | Typical | Worst Case |
-|:------------|:----------|:--------|:-----------|
+| :---------- | :-------- | :------ | :--------- |
 | 32 or fewer | 0.2 XRP   | 0.2 XRP | 0.2 XRP    |
 | 50          | 0.4 XRP   | 0.6 XRP | 0.8 XRP    |
 | 200         | 1.4 XRP   | 1.8 XRP | 2.6 XRP    |

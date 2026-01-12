@@ -1,21 +1,22 @@
 ---
 labels:
-    - Features
-date: "2019-10-02"
+  - Features
+date: '2019-10-02'
 template: '../../@theme/templates/blogpost'
 category: 2019
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Discover Upcoming XRP Ledger Amendments and Features with Devnet!
 
 A new XRP Ledger Devnet is now available for developers to access upcoming features of XRPL on beta build versions of `rippled`, the C++ reference implementation of the XRP Ledger.
 
 Previously, developers could only access the latest stable version of rippled on either of the following:
 
-* XRP Ledger Testnet, a test network
-* XRP Ledger Mainnet, the production network
+- XRP Ledger Testnet, a test network
+- XRP Ledger Mainnet, the production network
 
 The launch of XRPL Devnet helps promote more developer engagement and experimentation of new use cases on XRP Ledger.
 

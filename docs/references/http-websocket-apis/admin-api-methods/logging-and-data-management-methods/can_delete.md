@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Allow online deletion of ledgers up to a specific ledger.
+  description: Allow online deletion of ledgers up to a specific ledger.
 labels:
-    - Data Retention
+  - Data Retention
 ---
+
 # can_delete
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/CanDelete.cpp "Source")
 
 The `can_delete` method informs the `rippled` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](../../../../infrastructure/configuration/data-retention/online-deletion.md#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
@@ -18,6 +20,7 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": 2,
@@ -25,42 +28,47 @@ An example of the request format:
   "can_delete": 11320417
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "can_delete",
-    "params": [
-        {
-            "can_delete": 11320417
-        }
-    ]
+  "method": "can_delete",
+  "params": [
+    {
+      "can_delete": 11320417
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: can_delete [<ledger_index>|<ledger_hash>|now|always|never]
 rippled can_delete 11320417
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The request accepts the following parameter:
 
-| `Field`      | Type              | Description                               |
-|:-------------|:------------------|:------------------------------------------|
+| `Field`      | Type              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| :----------- | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `can_delete` | String or Integer | _(Optional)_ The [Ledger Index][] of the maximum ledger version to allow to be deleted. The special case `never` disables online deletion. The special case `always` enables automatic online deletion as if advisory deletion was disabled. The special case `now` allows online deletion one time at the next validated ledger that meets or exceeds the configured `online_delete` value. If omitted, the server makes no changes (but still replies with the current `can_delete` value). |
 
 ### Response Format
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`      | Type    | Description                                         |
-|:-------------|:--------|:----------------------------------------------------|
+| `Field`      | Type    | Description                                                                  |
+| :----------- | :------ | :--------------------------------------------------------------------------- |
 | `can_delete` | Integer | The maximum ledger index that may be removed by the online deletion routine. |
 
 Use this command with no parameter to query the existing `can_delete` setting.

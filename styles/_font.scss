@@ -6,19 +6,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-pre, code {
+pre,
+code {
   /* Disable ligatures on code-font, so, for example,
   </ doesn't become a diagonal arrow. */
-  font-feature-settings: "liga" 0;
+  font-feature-settings: 'liga' 0;
   font-variant-ligatures: none;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-weight: bold;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   font-size: 3.875rem;
   line-height: 70px;
   @media (max-width: 480px) {
@@ -26,7 +38,8 @@ h1, .h1 {
     line-height: 48px;
   }
 }
-h2, .h2 {
+h2,
+.h2 {
   font-size: 3.5rem;
   line-height: 62px;
   @include media-breakpoint-down(sm) {
@@ -40,7 +53,8 @@ h2, .h2 {
     }
   }
 }
-h3, .h3 {
+h3,
+.h3 {
   font-size: 3rem;
   line-height: 52px;
   @include media-breakpoint-down(sm) {
@@ -54,7 +68,8 @@ h3, .h3 {
     }
   }
 }
-h4, .h4 {
+h4,
+.h4 {
   font-size: 2rem;
   line-height: 38px;
   @include media-breakpoint-down(sm) {
@@ -62,7 +77,8 @@ h4, .h4 {
     line-height: 26px;
   }
 }
-h5, .h5 {
+h5,
+.h5 {
   font-size: 1.5rem;
   line-height: 32px;
   @include media-breakpoint-down(sm) {
@@ -70,7 +86,8 @@ h5, .h5 {
     line-height: 26px;
   }
 }
-h6, .h6 {
+h6,
+.h6 {
   font-size: 1.25rem;
   line-height: 26px;
   @include media-breakpoint-down(sm) {
@@ -154,7 +171,7 @@ p {
   content: url(../img/icon-long-arrow.svg);
   width: 28px;
   padding-left: 7px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   display: inline-block;
   text-decoration: none;
 }
@@ -166,12 +183,15 @@ p {
 
 .lang-ja {
   font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
-  h1, h2, h3, h4, h5,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
   .navbar .navbar-nav .nav-link,
   article .children-display li a,
   .right-sidebar .level-1 a,
   .right-sidebar .separator {
     font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
   }
-
 }

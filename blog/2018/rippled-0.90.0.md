@@ -1,13 +1,14 @@
 ---
-date: "2018-02-21"
+date: '2018-02-21'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled Version 0.90.0
 
 Ripple has released `rippled` version 0.90.0, which introduces several enhancements that improve the reliability, scalability and security of the XRP Ledger. Ripple recommends that all server operators upgrade to version 0.90.0 by Thursday, 2018-03-15, for service continuity.
@@ -27,13 +28,13 @@ If you operate a `rippled` server, you should upgrade to `rippled` version 0.90.
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to `rippled` version 0.90.0 by **Thursday, 2018-03-15**, when DepositAuth and Checks are expected to be enabled via Amendment, then your rippled server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
+- **If you operate a `rippled` server**, but do not upgrade to `rippled` version 0.90.0 by **Thursday, 2018-03-15**, when DepositAuth and Checks are expected to be enabled via Amendment, then your rippled server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If the **DepositAuth** and **Checks** Amendments do not get approved, then your `rippled` server will not become Amendment blocked and should continue to operate.
 
@@ -69,6 +70,7 @@ Example snippet:
 Ripple recommends storing history shards only on non-validator servers to reduce overhead for validators.
 
 ## Network Update
+
 The Ripple operations team plans to deploy version 0.90.0 to all `rippled` servers under its operational control, including private clusters, starting at 2:00 PM PST on Wednesday, **2018-02-21**. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Other Information
@@ -78,23 +80,25 @@ The Ripple operations team plans to deploy version 0.90.0 to all `rippled` serve
 Ripple thanks Guido Vranken for responsibly disclosing a potential vulnerability in the parsing code handling nested JSON objects. The issue could be exploited under some circumstances to mount a denial of service attack. It was addressed with pull request [#2326](https://github.com/ripple/rippled/pull/2326).
 
 ### Bug Bounties and Responsible Disclosures
+
 We welcome reviews of the `rippled` codebase and urge reviewers to responsibly disclose any issues that they may find. For more on Ripple's Bug Bounty program, please visit <https://ripple.com/bug-bounty/>.
 
 ### Boost Compatibility
+
 When compiling `rippled` from source, you must use a compatible version of the Boost library. Ripple recommends Boost 1.64.0 for all platforms.
 
 Other compatible versions differ by platform. Boost 1.58.0 is compatible on Linux but not on Windows. On macOS, Boost 1.58.0 is not compatible with the Clang compiler version 4.0+. On all platforms, Boost 1.66.0 compatibility in rippled 0.90.0 is experimental.
 
-
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
@@ -129,6 +133,7 @@ Preferred Ledger by Branch improves how a `rippled` server decides which ledger 
 Preferred Ledger by Branch leverages the ancestry information of branches to account for common support across validated ledgers and their ancestors, since a validation for some ledger is also a validation for all its ancestors. To find the preferred ledger, a `rippled` server starts at the most recent validated ledger and selects the child ledger with most support based on recent validations, but only selects it if an alternate sibling ledger does not possibly have more support. This process is then repeated starting from the newly chosen ledger until no better ledger exists. Preferred Ledger by Branch is designed to be conservative, only switching when the server sees enough peer validations to know another branch won't become preferred.
 
 ## Upcoming Features
+
 The [previously announced](/blog/2017/rippled-0.70.0.md) **FlowCross** Amendment will be enabled on a future date (TBA).
 
 Compiling `rippled` with scons is deprecated. Starting in rippled version 1.0, the only supported build will be using CMake.

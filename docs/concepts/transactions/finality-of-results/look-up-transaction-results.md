@@ -2,11 +2,12 @@
 html: look-up-transaction-results.html
 parent: finality-of-results.html
 seo:
-    description: Find the results of previously-submitted transactions.
+  description: Find the results of previously-submitted transactions.
 labels:
   - Payments
   - Development
 ---
+
 # Look Up Transaction Results
 
 To use the XRP Ledger effectively, you need to be able to understand [transaction](../index.md) outcomes: did the transaction succeed? What did it do? If it failed, why?
@@ -21,11 +22,10 @@ To understand the outcome of a transaction as described in these instructions, y
 
 - Know which transaction you want to understand. If you know the transaction's [identifying hash][], you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.
 - Have access to a `rippled` server that provides reliable information and has the necessary history for when the transaction was submitted.
-    - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.
-    - For outcomes of older transactions, you may want to use a [full-history server](../../networks-and-servers/ledger-history.md#full-history).
+  - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.
+  - For outcomes of older transactions, you may want to use a [full-history server](../../networks-and-servers/ledger-history.md#full-history).
 
 {% admonition type="success" name="Tip" %}There are other ways of querying for data on transactions from the XRP Ledger, including the [Data API](../../../references/data-api.md) and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the `rippled` API directly, for the most direct and authoritative results possible.{% /admonition %}
-
 
 ## 1. Get Transaction Status
 
@@ -38,8 +38,8 @@ To know whether a transaction was included in a validated ledger, you usually ne
 
 - If the result does not have `"validated": true`, then the result may be tentative and you must wait for the ledger to be validated to know if the transaction's outcome is final.
 - If the result does not contain the transaction in question, or returns the error `txnNotFound`, then the transaction is not in any ledger that the server has in its available history. This may or may not mean that the transaction failed, depending on whether the transaction could be in a validated ledger version that the server does not have and whether it could be included in a future validated ledger. You can constrain the range of ledgers a transaction can be in by knowing:
-    - The earliest ledger the transaction could be in, which is the **first ledger to be validated _after_ the transaction was first submitted**.
-    - The last ledger the transaction could be in, which is defined by the transaction's `LastLedgerSequence` field.
+  - The earliest ledger the transaction could be in, which is the **first ledger to be validated _after_ the transaction was first submitted**.
+  - The last ledger the transaction could be in, which is defined by the transaction's `LastLedgerSequence` field.
 
 The following example shows a successful transaction, as returned by the [tx method][], which is in a validated ledger version. The order of the fields in the JSON response has been rearranged, with some parts omitted, to make it easier to understand:
 
@@ -65,13 +65,11 @@ The following example shows a successful transaction, as returned by the [tx met
 
 This example shows an [AccountSet transaction][] sent by the [account](../../accounts/index.md) with address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](../../../references/protocol/transactions/transaction-results/index.md) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
 
-
 ### Case: Not Included in a Validated Ledger
 
 **If a transaction is not included in a validated ledger, it cannot possibly have had _any_ effect on the shared XRP Ledger state.** If the transaction's failure to be included in a ledger is [_final_](index.md), then it cannot have any future effect, either.
 
 If the transaction's failure is not final, it may still become included in a _future_ validated ledger. You can use the provisional results of applying the transaction to the current open ledger as a preview of the likely effects the transaction may have in a final ledger, but those results can change due to [many factors](index.md#how-can-non-final-results-change).
-
 
 ### Case: Included in a Validated Ledger
 
@@ -83,12 +81,11 @@ If the transaction _is_ included in a validated ledger, then the [transaction me
 
 The result code is only a summary of the transaction's outcome. To understand in more detail what the transaction did, you must read the rest of the metadata in context of the transaction's instructions and the ledger state before the transaction executed.
 
-
 ## 2. Interpret Metadata
 
 Transaction metadata describes _exactly_ how the transaction was applied to the ledger, including the following fields:
 
-{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%} 
+{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%}
 
 Most of the metadata is contained in [the `AffectedNodes` array](../../../references/protocol/transactions/metadata.md#affectednodes). What to look for in this array depends on the type of transaction. Almost every transaction modifies the sender's [AccountRoot object][] to destroy the XRP [transaction cost](../transaction-cost.md) and increase the [account's Sequence number](../../../references/protocol/data-types/basic-data-types.md#account-sequence).
 
@@ -155,7 +152,7 @@ The _only_ changes made by this [no-op transaction](canceling-a-transaction.md) 
 
 - The previous transaction to affect this account was the transaction `E710CADE7FE9C26C51E8630138322D80926BE91E46D69BF2F36E6E4598D6D0CF`, which executed in ledger version 46447387, as specified in the `PreviousTxnID` and `PreviousTxnLgrSeq` fields. (This may be useful if you want to walk backwards through the account's transaction history.)
 
-    {% admonition type="info" name="Note" %}Although the metadata does not explicitly show it, any time a transaction modifies a ledger object, it updates that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields with the current transaction's information. If the same sender has multiple transactions in a single ledger version, each one after the first provides a `PreviousTxnLgrSeq` whose value is the [ledger index](../../../references/protocol/data-types/basic-data-types.md#ledger-index) of the ledger version that included all those transactions.{% /admonition %}
+  {% admonition type="info" name="Note" %}Although the metadata does not explicitly show it, any time a transaction modifies a ledger object, it updates that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields with the current transaction's information. If the same sender has multiple transactions in a single ledger version, each one after the first provides a `PreviousTxnLgrSeq` whose value is the [ledger index](../../../references/protocol/data-types/basic-data-types.md#ledger-index) of the ledger version that included all those transactions.{% /admonition %}
 
 Since the `ModifiedNode` entry for `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`'s account is the only object in the `AffectedNodes` array, no other changes were made to the ledger as a result of this transaction.
 
@@ -372,7 +369,7 @@ Look for a `CreatedNode` of type `PayChannel` when creating a payment channel. Y
 
 The metadata also lists the newly-created payment channel in the destination's [owner directory](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md). This prevents an account from [being deleted](../../accounts/deleting-accounts.md) if it is the destination of an open payment channel. (This behavior was added by the [fixPayChanRecipientOwnerDir amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir).)
 
-There are several ways to request to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a `ModifiedNode` entry of type `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
+There are several ways to request to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is a `ModifiedNode` entry of type `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
 
 ```json
 {
@@ -405,7 +402,7 @@ TrustSet transactions create, modify, or delete [trust lines](../../tokens/fungi
 The following example shows a new trust line, where **`rf1BiG...`** is willing to hold up to 110 USD issued by **`rsA2Lp...`**:
 
 ```json
- {
+{
   "CreatedNode": {
     "LedgerEntryType": "RippleState",
     "LedgerIndex": "9CA88CDEDFF9252B3DE183CE35B038F57282BC9503CDFA1923EF9A95DF0D6F7B",
@@ -431,7 +428,6 @@ The following example shows a new trust line, where **`rf1BiG...`** is willing t
 }
 ```
 
-
 ### Other Transactions
 
 Most other transactions create a specific type of ledger entry and [adjust the sender's owner reserve and owner directory](#general-purpose-bookkeeping):
@@ -451,13 +447,13 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 ## See Also
 
 - **Concepts:**
-    - [Finality of Results](index.md)
-    - [Reliable Transaction Submission](../reliable-transaction-submission.md)
+  - [Finality of Results](index.md)
+  - [Reliable Transaction Submission](../reliable-transaction-submission.md)
 - **Tutorials:**
-    - [Monitor Incoming Payments with WebSocket](../../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+  - [Monitor Incoming Payments with WebSocket](../../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
 - **References:**
-    - [Ledger Entry Types Reference](../../../references/protocol/ledger-data/ledger-entry-types/index.md) - All possible fields of all types of ledger entries
-    - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
-    - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md) - Tables of all possible result codes for transactions.
+  - [Ledger Entry Types Reference](../../../references/protocol/ledger-data/ledger-entry-types/index.md) - All possible fields of all types of ledger entries
+  - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
+  - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md) - Tables of all possible result codes for transactions.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

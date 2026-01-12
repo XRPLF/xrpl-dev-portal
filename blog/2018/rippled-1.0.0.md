@@ -1,13 +1,14 @@
 ---
-date: "2018-05-31"
+date: '2018-05-31'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled Version 1.0.0
 
 Today, after almost 6 years of hard work, Ripple is very pleased to announce the release of `rippled` version 1.0.0.
@@ -22,14 +23,13 @@ Ripple recommends that all server operators upgrade to `rippled` v1.0.0 by Thurs
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to version 1.0.0 by Thursday, 2018-06-14--when **[fix1543](/resources/known-amendments.md#fix1543)**, **[fix1571](/resources/known-amendments.md#fix1571)** and **[fix1623](/resources/known-amendments.md#fix1623)** are expected to be enabled via Amendment——then your `rippled` server will become amendment blocked. A server that is amendment blocked:
+- **If you operate a `rippled` server**, but do not upgrade to version 1.0.0 by Thursday, 2018-06-14--when **[fix1543](/resources/known-amendments.md#fix1543)**, **[fix1571](/resources/known-amendments.md#fix1571)** and **[fix1623](/resources/known-amendments.md#fix1623)** are expected to be enabled via Amendment——then your `rippled` server will become amendment blocked. A server that is amendment blocked:
 
-
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Cannot rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Cannot rely on potentially invalid data
 
 If the **fix1543**, **fix1571** and **fix1623** Amendments are not enabled, then your `rippled` server will not become amendment blocked and should continue to operate.
 
@@ -56,17 +56,16 @@ Set version to 1.0.0
 
 The Ripple technical operations team has deployed version 1.0.0 to all `rippled` servers under its operational control, including private clusters.
 
-
 ## Learn, ask questions, and discuss
 
 Related documentation is available in the XRP Ledger Developer Portal, including detailed reference information, tutorials, and web tools.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Other Information
 
@@ -80,30 +79,25 @@ When compiling `rippled` from source, you must use a compatible version of the B
 
 For compatibility with other Boost versions, see the following table.
 
-
-| Boost Version | Compatible Platforms | Incompatible Platforms |
-|:-------------:|:--------:|:----------:|
-| 1.67.0        | Experimental on all platforms | None |
-| 1.64.0        | All platforms | None |
-| 1.58.0.       | Linux, macOS (with Clang compiler version 4.0+) | Windows |
-
-
-
+| Boost Version |              Compatible Platforms               | Incompatible Platforms |
+| :-----------: | :---------------------------------------------: | :--------------------: |
+|    1.67.0     |          Experimental on all platforms          |          None          |
+|    1.64.0     |                  All platforms                  |          None          |
+|    1.58.0.    | Linux, macOS (with Clang compiler version 4.0+) |        Windows         |
 
 ## 1.0.0 Change Log
 
-* Improve history sharding to now use the shard store to satisfy ledger requests  
+- Improve history sharding to now use the shard store to satisfy ledger requests
 
-* Change permessage-deflate and compress defaults [(#2372)](https://github.com/ripple/rippled/pull/2372)
+- Change permessage-deflate and compress defaults [(#2372)](https://github.com/ripple/rippled/pull/2372)
 
-* Update validations on UNL change [(#2393)](https://github.com/ripple/rippled/pull/2393)
+- Update validations on UNL change [(#2393)](https://github.com/ripple/rippled/pull/2393)
 
 ### Bug Fixes
 
-* Clarify Escrow Semantics [(#2419)](https://github.com/ripple/rippled/pull/2419)
+- Clarify Escrow Semantics [(#2419)](https://github.com/ripple/rippled/pull/2419)
 
-* Add check, escrow, and pay_chan to ledger_entry [(#2455)](https://github.com/ripple/rippled/pull/2455)
-
+- Add check, escrow, and pay_chan to ledger_entry [(#2455)](https://github.com/ripple/rippled/pull/2455)
 
 ### `rippled` Retrospective
 
@@ -112,7 +106,6 @@ For compatibility with other Boost versions, see the following table.
 `rippled` is the C++ reference implementation of the decentralized XRP Ledger. It is open source and permissively licensed under the ISC.
 
 #### What is the XRP Ledger?
-
 
 The **XRP Ledger** is a public decentralized cryptographic ledger powered by a global network of peer-to-peer servers. The XRP Ledger is the root ledger of XRP, a digital asset designed to bridge global currencies for payments. As a software company, Ripple contributes to the open source development of the XRP Ledger, in support of the Internet of Value: a world in which money moves the way information does today.
 
@@ -136,18 +129,18 @@ The XRP Ledger relies on industry-standard digital signature systems like ECDSA 
 
 For more information, see:
 
-* [Cryptographic Keys](/docs/concepts/accounts/cryptographic-keys)  
-* [Multi-signing](/docs/concepts/accounts/multi-signing)
+- [Cryptographic Keys](/docs/concepts/accounts/cryptographic-keys)
+- [Multi-signing](/docs/concepts/accounts/multi-signing)
 
 #### Advanced Features
 
 In addition to multi-signing, the XRP Ledger supports other advanced features, such as:
 
-* [Escrow]/docs/concepts/payment-types/escrow)
-* [Checks](/docs/concepts/payment-types/checks)
-* [Deposit Authorization](/docs/concepts/accounts/depositauth)  
-* [Payment Channels](/docs/concepts/payment-types/payment-channels)  
-* [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-04)
+- [Escrow]/docs/concepts/payment-types/escrow)
+- [Checks](/docs/concepts/payment-types/checks)
+- [Deposit Authorization](/docs/concepts/accounts/depositauth)
+- [Payment Channels](/docs/concepts/payment-types/payment-channels)
+- [Crypto-Conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-04)
 
 These features make it possible to implement cutting-edge financial applications or interact with the [Interledger Protocol](https://interledger.org/). This toolbox of advanced features comes with a wide range safety checks that validate all transactions against a list of invariant constraints.
 
@@ -157,9 +150,9 @@ The XRP Ledger also has a fully-functional accounting system for publicly tracki
 
 For more information on how the decentralized exchange works, see:
 
-* [Decentralized Exchange](/docs/concepts/tokens/decentralized-exchange)  
-* [Offers](/docs/concepts/tokens/decentralized-exchange/offers)
-* [Stablecoin Issuer](/docs/use-cases/tokenization/stablecoin-issuer)
+- [Decentralized Exchange](/docs/concepts/tokens/decentralized-exchange)
+- [Offers](/docs/concepts/tokens/decentralized-exchange/offers)
+- [Stablecoin Issuer](/docs/use-cases/tokenization/stablecoin-issuer)
 
 #### Acknowledgements
 

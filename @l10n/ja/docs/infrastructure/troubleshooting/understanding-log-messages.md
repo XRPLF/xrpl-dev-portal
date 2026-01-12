@@ -2,10 +2,11 @@
 html: understanding-log-messages.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
+  description: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
 labels:
   - コアサーバ
 ---
+
 # ログメッセージについて
 
 以下のセクションでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)のデバッグログに出力される最も一般的なログメッセージタイプとその解釈を説明します。
@@ -34,7 +35,6 @@ Terminating thread rippled: main: unhandled St13runtime_error
 
 上記のいずれにも該当しない場合は、その問題をセキュリティ上重要なバグとしてRippleに報告してください。Rippleでクラッシュを再現できる場合は、報奨を受領できる可能性があります。詳細は<https://ripple.com/bug-bounty/>をご覧ください。
 
-
 ## Already validated sequence at or past
 
 以下のようなログメッセージが出力される場合は、サーバが異なるレジャーインデックスの検証を順不同で受信しています。
@@ -48,7 +48,6 @@ Terminating thread rippled: main: unhandled St13runtime_error
 - メッセージを書き込むサーバにネットワークの問題がある。
 - メッセージに表示されているバリデータにネットワークの問題がある。
 - メッセージに表示されているバリデータが悪意のある振る舞いをしている。
-
 
 ## Connection reset by peer
 
@@ -65,7 +64,6 @@ Terminating thread rippled: main: unhandled St13runtime_error
 - 1つ以上の特定のピアへのインターネット接続が切断されている。
 - サーバからのリクエストでピアに過剰な負担がかかり、ピアがサーバをドロップした。
 
-
 ## InboundLedger 11 timeouts for ledger
 
 ```text
@@ -81,7 +79,6 @@ InboundLedger:WRN 11 timeouts for ledger 8265938
 s2.ripple.com 51235
 ```
 
-
 ## InboundLedger Want hash
 
 以下のようなログメッセージは、サーバが他のサーバにレジャーデータをリクエストしていることを示しています。
@@ -91,7 +88,6 @@ InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CD
 ```
 
 これは、サーバの同期中、埋め戻し中は正常です。
-
 
 ## LoadMonitor:WRN Job
 
@@ -124,7 +120,6 @@ type=RocksDB
 # ... more config omitted
 ```
 
-
 ## Potential Censorship
 
 XRP Ledgerが取引検閲の可能性を検出すると、以下のようなログメッセージが出力されます。ログメッセージと取引検閲検出機能の詳細は、[取引検閲の検知](../../concepts/networks-and-servers/transaction-censorship-detection.md)をご覧ください。
@@ -141,8 +136,6 @@ LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
 ```
 
-
-
 ## Unable to determine hash of ancestor
 
 以下のようなログメッセージは、サーバがピアからの検証メッセージを認識するけれども、サーバが基盤としている親レジャーバージョンを認識しない場合に発生します。これは、サーバがネットワークの他の部分と同期していない場合に発生することがあります。
@@ -152,8 +145,6 @@ LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 ```
 
 {% partial file="/@l10n/ja/docs/_snippets/unsynced_warning_logs.md" /%}
-
-
 
 ## View of consensus changed during open
 
@@ -167,8 +158,6 @@ LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 
 {% partial file="/@l10n/ja/docs/_snippets/unsynced_warning_logs.md" /%}
 
-
-
 ## We are not running on the consensus ledger
 
 ```text
@@ -177,19 +166,17 @@ NetworkOPs:WRN We are not running on the consensus ledger
 
 {% partial file="/@l10n/ja/docs/_snippets/unsynced_warning_logs.md" /%}
 
-
-
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
-    - [技術に関するよくある質問](/about/faq.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+  - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
-    - [問題の診断](diagnosing-problems.md)
-    - [容量の計画](../installation/capacity-planning.md)
+  - [問題の診断](diagnosing-problems.md)
+  - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
-      - [server_infoメソッド][]
+  - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+    - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

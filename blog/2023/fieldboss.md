@@ -1,13 +1,14 @@
 ---
 category: 2023
-date: "2023-06-28"
+date: '2023-06-28'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: FieldBoss
 
 This week on Developer Reflections, we’re proud to highlight [FieldBoss](https://github.com/BlockLagoon/FieldBoss), a mapping application that merges blockchain technology with popular open source Geographic Information Systems (GIS) mapping tools through the use of geo-located XRP Ledger NFTs.
@@ -20,11 +21,10 @@ FieldBoss is built utilizing xrpl.js, Leaflet, Ceramic and Node.js. The app is a
 
 ![Screenshot of FieldBoss tool showing a GeoToken with metadata located at a highlighted area of an aerial photo](/blog/img/dev-reflections-fieldboss.jpg)
 
-
 ## Why XRP Ledger?
 
-The team has already begun to receive positive feedback from environmental consultants regarding the potential use of FieldBoss for their field inspections. The XLS-20 protocol makes it easy for the FieldBoss team to mint and manage NFTs on the XRP Ledger, and enables the real-time tokenization of spatial geometries quickly and seamlessly. 
+The team has already begun to receive positive feedback from environmental consultants regarding the potential use of FieldBoss for their field inspections. The XLS-20 protocol makes it easy for the FieldBoss team to mint and manage NFTs on the XRP Ledger, and enables the real-time tokenization of spatial geometries quickly and seamlessly.
 
-Check out the [Github repo](https://github.com/BlockLagoon/FieldBoss) to learn more.  
+Check out the [Github repo](https://github.com/BlockLagoon/FieldBoss) to learn more.
 
 Want to be featured in the Developer Reflections series? [Submit your project today](https://xrpl.org/contribute.html#xrpl-blog), and join the [developer Discord channel](https://discord.gg/sfX3ERAMjH) to connect with other members of the XRP Ledger community.

@@ -1,13 +1,14 @@
 ---
 labels:
-    - Release Notes
+  - Release Notes
 category: 2019
-date: "2019-04-17"
+date: '2019-04-17'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.2.4
 
 Ripple has released **version 1.2.4 of rippled**, the reference implementation of the core XRP Ledger protocol.
@@ -26,15 +27,15 @@ If you operate a rippled server, but do not upgrade to 1.2.4 immediately, then y
 
 Additionally, if you are not already running [release 1.2.0](/blog/2019/rippled-1.2.0.md) or greater, then your server is [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
-* Cannot determine the validity of a ledger;
+- Cannot determine the validity of a ledger;
 
-* Cannot submit or process transactions;
+- Cannot submit or process transactions;
 
-* Cannot participate in the consensus process;
+- Cannot participate in the consensus process;
 
-* Cannot vote on future amendments; and
+- Cannot vote on future amendments; and
 
-* Could rely on potentially invalid data.
+- Could rely on potentially invalid data.
 
 ### Upgrading
 
@@ -59,20 +60,19 @@ Date:   Mon Apr 15 12:38:52 2019 -0700
 
 The Ripple technical operations has deployed version 1.2.4 to all XRP Ledger servers under its operational control, including private clusters.
 
-
 ## Learn, ask questions, and discuss
 
 Related documentation is available in the [XRP Ledger Dev Portal](/docs/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
-* Ripple Technical Services: <support@ripple.com>
+- Ripple Technical Services: <support@ripple.com>
 
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [XRP Chat Forum](http://www.xrpchat.com/)
 
 ## Other Information
 
@@ -90,7 +90,6 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 - Corrects a technical flaw that improves the way that shard crawl requests are verified and routed
 - Fixes an issue where the component that would check for updated validator list could become blocked for an indefinite amount of time by imposing a 20 second timeout
-
 
 ## Contributions
 

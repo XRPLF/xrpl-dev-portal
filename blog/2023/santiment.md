@@ -1,16 +1,17 @@
 ---
 category: 2023
-date: "2023-10-06"
+date: '2023-10-06'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: Santiment - Uncovering XRPL Metrics for Developers
 
-In this edition of Developer Reflections, we check out [Santiment](https://santiment.net/), a market intelligence platform with a focus on providing reliable data feeds, low-latency signals, and custom market analysis for the cryptocurrency space. 
+In this edition of Developer Reflections, we check out [Santiment](https://santiment.net/), a market intelligence platform with a focus on providing reliable data feeds, low-latency signals, and custom market analysis for the cryptocurrency space.
 
 Santiment's offerings are designed to provide practical insights to developers, traders, and investors, particularly those interested in the [XRP Ledger](https://xrpl.org/) (XRPL). Let's explore how Santiment's platform equips developers with the tools and data-driven knowledge needed for navigating the world of cryptocurrencies.
 
@@ -41,4 +42,3 @@ As an example, Santiment responded to the community's request by implementing XR
 In the cryptocurrency space, access to reliable data and practical metrics is crucial. Whether you're working on XRPL projects or seeking to stay informed about XRP Ledger developments, Santiment's platform offers a source of knowledge and tools for informed decision-making.
 
 Want to be featured in the Developer Reflections series? [Submit your project](https://xrpl.org/contribute.html#xrpl-blog) today, and join the [developer Discord channel](https://xrpldevs.org/) to connect with other members of the XRP Ledger community.
-

@@ -1,5 +1,5 @@
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   padding: 20px;
   background: #abe2ff;
 }
@@ -17,12 +17,12 @@ input,
 button {
   padding: 6px;
   margin-bottom: 8px;
-  border: none
+  border: none;
 }
 
 button {
   font-weight: bold;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   background-color: #006aff;
   -webkit-text-fill-color: white;
 }
@@ -60,31 +60,31 @@ td {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 13px;
   width: 13px;
   left: 4px;
   bottom: 2px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
-  background-color: #2196F3;
+input:checked + .slider {
+  background-color: #2196f3;
 }
 
-input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateX(13px);
   -ms-transform: translateX(13px);
   transform: translateX(13px);
@@ -104,7 +104,7 @@ input:checked+.slider:before {
 }
 
 .tooltip:before {
-  content: attr(tooltip-data); 
+  content: attr(tooltip-data);
   position: absolute;
   width: 250px;
   background-color: #006aff;
@@ -115,16 +115,16 @@ input:checked+.slider:before {
   border-radius: 5px;
   z-index: 1;
   opacity: 0;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
-  font-size: 0.70em;
+  font-size: 0.7em;
   visibility: hidden;
 }
 
 .tooltip:after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 75%;
   left: 50%;
@@ -132,12 +132,12 @@ input:checked+.slider:before {
   border-width: 5px;
   border-style: solid;
   opacity: 0;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
   border-color: #000 transparent transparent transparent;
   visibility: hidden;
 }
 
-.tooltip:hover:before, 
+.tooltip:hover:before,
 .tooltip:hover:after {
   opacity: 1;
   visibility: visible;

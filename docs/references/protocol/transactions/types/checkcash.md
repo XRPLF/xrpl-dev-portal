@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Redeem a check.
+  description: Redeem a check.
 labels:
-    - Checks
+  - Checks
 ---
+
 # CheckCash
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CashCheck.cpp "Source")
 
 Attempts to redeem a [check](../../../../concepts/payment-types/checks.md) to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
@@ -17,11 +19,11 @@ Since the funds for a check are not guaranteed, redeeming a check can fail becau
 
 ```json
 {
-    "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
-    "TransactionType": "CheckCash",
-    "Amount": "100000000",
-    "CheckID": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
-    "Fee": "12"
+  "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "TransactionType": "CheckCash",
+  "Amount": "100000000",
+  "CheckID": "838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334",
+  "Fee": "12"
 }
 ```
 
@@ -29,13 +31,13 @@ Since the funds for a check are not guaranteed, redeeming a check can fail becau
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field        | JSON Type           | [Internal Type][] | Description         |
-|:-------------|:--------------------|:------------------|:--------------------|
-| `CheckID`    | String              | UInt256           | The ID of the [Check ledger object](../../ledger-data/ledger-entry-types/check.md) to cash, as a 64-character hexadecimal string. |
-| `Amount`     | [Currency Amount][] | Amount            | _(Optional)_ Redeem the Check for exactly this amount, if possible. The currency must match that of the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `DeliverMin`. |
+| Field        | JSON Type           | [Internal Type][] | Description                                                                                                                                                                                                                     |
+| :----------- | :------------------ | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `CheckID`    | String              | UInt256           | The ID of the [Check ledger object](../../ledger-data/ledger-entry-types/check.md) to cash, as a 64-character hexadecimal string.                                                                                               |
+| `Amount`     | [Currency Amount][] | Amount            | _(Optional)_ Redeem the Check for exactly this amount, if possible. The currency must match that of the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `DeliverMin`.             |
 | `DeliverMin` | [Currency Amount][] | Amount            | _(Optional)_ Redeem the Check for at least this amount and for as much as possible. The currency must match that of the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `Amount`. |
 
-The transaction ***must*** include either `Amount` or `DeliverMin`, but not both.
+The transaction **_must_** include either `Amount` or `DeliverMin`, but not both.
 
 ## Error Cases
 

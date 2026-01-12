@@ -1,13 +1,14 @@
 ---
-date: "2017-03-16"
+date: '2017-03-16'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Security
+  - Security
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Gateway Bulletin: Setting Trust Line Quality with SendMax
 
 When you build an automated system to send payments into the Ripple Consensus Ledger (RCL) for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find flaws in a system implementation that pays them more money than it should.
@@ -20,17 +21,17 @@ Note: This system implementation flaw does not affect XRP balances.
 
 The [recommended setup](https://xrpl.org/become-an-xrp-ledger-gateway.html#sending-payments-to-customers) is to use either of the following rules:
 
-* Setting the `SendMax` value equal to the Amount * (1 + transfer rate); or
-* Setting the `SendMax` value as low as possible and only leaving space for slippage to buffer the transaction from failing
+- Setting the `SendMax` value equal to the Amount \* (1 + transfer rate); or
+- Setting the `SendMax` value as low as possible and only leaving space for slippage to buffer the transaction from failing
 
 A malicious user can make trust line quality changes in the ledger between when you prepare a transaction and when it is validated in the ledger. To ensure that these changes cannot cause a transaction to cost you more than you expected, it is vital to set the `SendMax` no higher than the maximum amount you are willing to send.
 
 To reduce the chance of sending a transaction that fails, add the following checks to any transaction that delivers issued currency on a trust line:
 
-* Does the trust line exist?
-* Is the trust line’s limit sufficient?
-* Are optional incoming balances on this trust line valued at the appropriate ratio?
-* Did the user freeze the trust line?
+- Does the trust line exist?
+- Is the trust line’s limit sufficient?
+- Are optional incoming balances on this trust line valued at the appropriate ratio?
+- Did the user freeze the trust line?
 
 ## Learn, Ask Questions, and Discuss
 
@@ -38,7 +39,7 @@ To experiment with the Ripple Consensus Ledger technology without using real mon
 
 ### Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

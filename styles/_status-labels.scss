@@ -19,7 +19,7 @@
 
 .labels-wrap {
   ul::before {
-    content: "\f02c";
+    content: '\f02c';
     font-family: FontAwesome;
     font-size: 1.5rem;
   }
@@ -31,7 +31,7 @@
   color: $gray-400;
 
   &::after {
-    content: "\f105"; /* fontawesome angle-right */
+    content: '\f105'; /* fontawesome angle-right */
     font-family: FontAwesome;
     padding-left: 5px;
   }
@@ -40,7 +40,7 @@
 .label {
   border-radius: 100px;
   border-width: 0;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-weight: bold;
   text-decoration: none !important;
   text-align: center;
@@ -361,7 +361,7 @@
   &.label-use-interoperability,
   &.label-use-web_monetization,
   &.blog-category-gateway_bulletins,
-  &.chip-purple  {
+  &.chip-purple {
     @include chip-purple;
   }
 

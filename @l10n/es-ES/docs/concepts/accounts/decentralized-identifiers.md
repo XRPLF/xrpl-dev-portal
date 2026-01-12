@@ -2,10 +2,11 @@
 html: decentralized-identifiers.html
 parent: accounts.html
 seo:
-    description: Los identificadores decentralizados permiten identidades digitales decentralizadas verificables.
+  description: Los identificadores decentralizados permiten identidades digitales decentralizadas verificables.
 labels:
   - DID
 ---
+
 # Identificadores descentralizados
 
 _(REquiere de la [enmienda DID][] {% not-enabled /%})_
@@ -22,17 +23,15 @@ Los principios clave de un DID son:
 
 **Nota:** La implementación de DIDs en el XRP Ledger cumple con los requisitos de la [especificación DID v1.0](https://www.w3.org/TR/did-core/).
 
-
 ## Cómo funciona
 
 1. El dueño de una cuenta XRPL genera un DID que es controlado por la cuenta.
 2. El DID se asocia a un documento DID definido por la especificaciones W3C.
 3. El DID es usado para las siguientes tareas digitales como:
-    - Firmar documentos digitales.
-    - Realizar transacciones en linea seguras.
-    - Iniciar sesión en sitios web.
+   - Firmar documentos digitales.
+   - Realizar transacciones en linea seguras.
+   - Iniciar sesión en sitios web.
 4. El verificador resuelve el DID a su docuemnto para verificar la identidad del sujeto.
-
 
 ## Documentos DID
 
@@ -44,30 +43,28 @@ En el XRP Ledger, hay numerosas formas de asociar un DID a un documento DID:
 
 1. Almacenar una referencia al documento en el campo `URI` del objeto `DID`, que apunta al documento almacenado en otra red de almacenamiento descentralizado, como es IPFS o STORJ.
 2. Almacenar un documento DID mínimo en el campo `DIDDocument` del objeto `DID`.
-3. Utilizar un documento DID _implicito_ generado  a partir del DID y otra información pública disponible.
-    **Nota:** Los casos de uso más simples pueden solo necesitar firmas y rokens de autorización simples. En casos donde no haya un documento DID explicitamente en el ledger, un documento implicito es utilizado en su lugar. Por ejemplo, el documento DID de `did:xrpl:1:0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` habilita solo la clave única `0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` para autorizar cambios en el documento DID o firmar credenciales en nombre del DID.
-
+3. Utilizar un documento DID _implicito_ generado a partir del DID y otra información pública disponible.
+   **Nota:** Los casos de uso más simples pueden solo necesitar firmas y rokens de autorización simples. En casos donde no haya un documento DID explicitamente en el ledger, un documento implicito es utilizado en su lugar. Por ejemplo, el documento DID de `did:xrpl:1:0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` habilita solo la clave única `0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` para autorizar cambios en el documento DID o firmar credenciales en nombre del DID.
 
 ### Ejemplo de documento DID XRPL
 
 ```json
 {
-    "@context": "https://w3id.org/did/v1",
-    "id": "did:xrpl:1:rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "publicKey": [
-        {
-            "id": "did:xrpl:1:rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn#keys-1",
-            "type": ["CryptographicKey", "EcdsaKoblitzPublicKey"],
-            "curve": "secp256k1",
-            "expires": 15674657,
-            "publicKeyHex": "04f42987b7faee8b95e2c3a3345224f00e00dfc67ba882..."
-        }
-    ]
+  "@context": "https://w3id.org/did/v1",
+  "id": "did:xrpl:1:rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "publicKey": [
+    {
+      "id": "did:xrpl:1:rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn#keys-1",
+      "type": ["CryptographicKey", "EcdsaKoblitzPublicKey"],
+      "curve": "secp256k1",
+      "expires": 15674657,
+      "publicKeyHex": "04f42987b7faee8b95e2c3a3345224f00e00dfc67ba882..."
+    }
+  ]
 }
 ```
 
 Para aprender más sobre las propiedades principales de un documento DID, ver: [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/#core-properties).
-
 
 ## Precauciones de privacidad y seguridad
 

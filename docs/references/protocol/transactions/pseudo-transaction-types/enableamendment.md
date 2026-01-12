@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Enable a change in transaction processing.
+  description: Enable a change in transaction processing.
 labels:
-    - Blockchain
+  - Blockchain
 ---
+
 # EnableAmendment
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Change.cpp "Source")
 
 An `EnableAmendment` [pseudo-transaction](./index.md) marks a change in the status of a proposed [amendment to the protocol](../../../../concepts/networks-and-servers/amendments.md). The possible status changes are:
@@ -26,16 +28,15 @@ An `EnableAmendment` [pseudo-transaction](./index.md) marks a change in the stat
   "Sequence": 0,
   "SigningPubKey": "",
   "TransactionType": "EnableAmendment"
-}  
+}
 ```
-
 
 {% partial file="/docs/_snippets/pseudo-tx-fields-intro.md" /%}
 
-| Field            | JSON Type | [Internal Type][] | Description               |
-|:-----------------|:----------|:------------------|:--------------------------|
+| Field            | JSON Type | [Internal Type][] | Description                                                                                                                                                                                   |
+| :--------------- | :-------- | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Amendment`      | String    | UInt256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Known Amendments](../../../../../resources/known-amendments.md) for a list of known amendments. |
-| `LedgerSequence` | Number    | UInt32            | The [ledger index][] where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+| `LedgerSequence` | Number    | UInt32            | The [ledger index][] where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change.                                              |
 
 ## EnableAmendment Flags
 
@@ -43,9 +44,9 @@ The `Flags` value of the EnableAmendment pseudo-transaction indicates the status
 
 A `Flags` value of `0` (no flags) or an omitted `Flags` field indicates that the amendment has been enabled, and applies to all ledgers afterward. Other `Flags` values are as follows:
 
-| Flag Name        | Hex Value    | Decimal Value | Description                |
-|:-----------------|:-------------|:--------------|:---------------------------|
-| `tfGotMajority`  | `0x00010000` | 65536         | Support for this amendment increased to at least 80% of trusted validators starting with this ledger version. |
+| Flag Name        | Hex Value    | Decimal Value | Description                                                                                                    |
+| :--------------- | :----------- | :------------ | :------------------------------------------------------------------------------------------------------------- |
+| `tfGotMajority`  | `0x00010000` | 65536         | Support for this amendment increased to at least 80% of trusted validators starting with this ledger version.  |
 | `tfLostMajority` | `0x00020000` | 131072        | Support for this amendment decreased to less than 80% of trusted validators starting with this ledger version. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

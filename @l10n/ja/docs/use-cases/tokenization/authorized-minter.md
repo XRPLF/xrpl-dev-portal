@@ -2,10 +2,11 @@
 html: authorized-minter.html
 parent: nft-mkt-overview.html
 seo:
-    description: 他のアカウントのためにNFTをミントし、販売する。
+  description: 他のアカウントのためにNFTをミントし、販売する。
 labels:
   - Tokenization
 ---
+
 # 認可Minter
 
 _私は認可Minterとして、トークン発行者のために合意されたレートでトークンをミントし、トークンを売却して利益を得て、ロイヤリティを発行者に還元したいのです。_
@@ -14,7 +15,7 @@ _私は認可Minterとして、トークン発行者のために合意された�
 
 詳しくは、チュートリアル[認可Minterの割り当て](../../tutorials/javascript/nfts/assign-an-authorized-minter.md)をご覧ください。
 
-[![認可Minterのフロー](/docs/img/nft-mkt-auth-minter.png "認可Minterのフロー")](/docs/img/nft-mkt-auth-minter.png)
+[![認可Minterのフロー](/docs/img/nft-mkt-auth-minter.png '認可Minterのフロー')](/docs/img/nft-mkt-auth-minter.png)
 
 ## rippledインスタンスのセットアップ
 
@@ -36,10 +37,10 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 
 最も気になるであろう留意点：
 
-* [コレクションとしてNFTをミントする](../../concepts/tokens/nfts/collections.md)
-TokenTaxonフィールドを使用して、特定のテーマや目的に基づいたNFTセットを作成可能。
-* [NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)
-また、「使い捨て」アカウントでNFTを作成し、別のアカウントで一定数のNFTを取得した後、ミントに使用した「使い捨て」アカウントを削除することで、作成したNFTの希少性を確保することができます。[NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)をご覧ください。
+- [コレクションとしてNFTをミントする](../../concepts/tokens/nfts/collections.md)
+  TokenTaxonフィールドを使用して、特定のテーマや目的に基づいたNFTセットを作成可能。
+- [NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)
+  また、「使い捨て」アカウントでNFTを作成し、別のアカウントで一定数のNFTを取得した後、ミントに使用した「使い捨て」アカウントを削除することで、作成したNFTの希少性を確保することができます。[NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)をご覧ください。
 
 ## NFTの取引
 

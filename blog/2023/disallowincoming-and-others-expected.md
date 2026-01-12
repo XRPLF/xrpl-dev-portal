@@ -1,13 +1,14 @@
 ---
 category: 2023
-date: "2023-08-07"
+date: '2023-08-07'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # DisallowIncoming and Others Expected 2023-08-21
 
 Five amendments to the XRP Ledger protocol, all introduced in [`rippled` v1.10.0](https://github.com/ripple/rippled/releases/tag/1.10.0), have gained support from a majority of validators:
@@ -31,16 +32,15 @@ Each amendment that maintains greater than 80% support continuously will become 
 
 If you operate a `rippled` server but don’t upgrade by 2023-08-21, when these amendments are expected to become enabled, then your server will become amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If none of the amendments become enabled, then your server will not become amendment blocked and should continue to operate.
 
 For instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](https://xrpl.org/install-rippled.html).
-
 
 ## Amendment Summaries
 
@@ -65,12 +65,11 @@ This amendment is a combination of bug fixes to NFT functionality:
 
 - Fix an issue where NFTs could not be burned if there were over 500 offers to buy/sell that NFT. Change NFTokenBurn transactions to remove 500 offers if there are too many, so you can try again and eventually successfully burn the NFT. ([PR 4346](https://github.com/XRPLF/rippled/pull/4346))
 - Fix issues around accepting NFT trade offers. ([PR 4380](https://github.com/XRPLF/rippled/pull/4380)) These include:
-    - Fix a bug where brokering a trade could incorrectly result in an insufficient funds error.
-    - Fix a bug that could debit the buyer for more than their (fungible token) balance when they have exactly enough to pay the buy price but not the transfer fee.
-    - Fix a bug that prevented fungible token issuers from buying NFTs using their own tokens. Allow issuers to pay for an NFT by issuing new fungible tokens.
+  - Fix a bug where brokering a trade could incorrectly result in an insufficient funds error.
+  - Fix a bug that could debit the buyer for more than their (fungible token) balance when they have exactly enough to pay the buy price but not the transfer fee.
+  - Fix a bug that prevented fungible token issuers from buying NFTs using their own tokens. Allow issuers to pay for an NFT by issuing new fungible tokens.
 - Fix an issue where, in certain circumstances, brokers could sell an NFT to an account that already owns it. ([Issue 4374](https://github.com/XRPLF/rippled/issues/4374))
 - Fix a bug that allowed anyone to broker an NFT offer with a fixed destination, instead of only the specified destination. ([Issue 4373](https://github.com/XRPLF/rippled/issues/4373))
-
 
 ### fixTrustLinesToSelf
 
@@ -97,6 +96,6 @@ To learn more about the XRP Ledger, the amendment process, or other topics, see 
 - [XRPL.org](https://xrpl.org) documentation
 - [XRP Ledger Developers on Discord](https://xrpldevs.org/)
 - [XRP Ledger Foundation](https://xrpl.foundation), on various platforms:
-    - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
-    - [X / Twitter](https://twitter.com/XRPLF/)
-    - [GitHub](https://github.com/XRPLF/)
+  - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
+  - [X / Twitter](https://twitter.com/XRPLF/)
+  - [GitHub](https://github.com/XRPLF/)

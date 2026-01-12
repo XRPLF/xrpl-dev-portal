@@ -1,27 +1,27 @@
 ---
 seo:
-    description: Create offers to exchange issued currencies and XRP.
+  description: Create offers to exchange issued currencies and XRP.
 labels:
   - Accounts
   - Transaction Sending
   - XRP
   - Issued Currencies
 ---
+
 # Create Offers
 
 This example shows how to:
 
-1. Create currency offers. 
+1. Create currency offers.
 2. Retrieve active offers.
 3. Match a currency offer to exchange tokens.
 4. Cancel an unsettled offer.
-
 
 [![Offer Create Token Test Harness](/docs/img/mt-create-offers-1-empty-form-info.png)](/docs/img/mt-create-offers-1-empty-form-info.png)
 
 Download and expand the [Modular Tutorials](../../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
 
-**Note:** Without the Modular Tutorial Samples, you will not be able to try the examples that follow. 
+**Note:** Without the Modular Tutorial Samples, you will not be able to try the examples that follow.
 
 ## Usage
 
@@ -30,15 +30,15 @@ To get test accounts:
 1. Open `create-offers.html` in a browser.
 2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   1. If you copied the gathered information from another tutorial:
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
 
 [![Created Accounts](/docs/img/mt-create-offers-2-form-with-account-info.png)](/docs/img/mt-create-offers-2-form-with-account-info.png)
 
@@ -50,11 +50,11 @@ To create an offer to exchange XRP for an issued currency:
 
 1. Click **Account 1** or **Account 2**.
 2. Enter _XRP_ as the Taker Pays **Currency Code**.
-2. Enter the Taker Pays **Amount** in drops. For example, _50000000_.
-3. Enter the Taker Gets **Currency**. For example, _USD_.
-4. Copy the current **Account Address** and paste it in the Taker Gets **Issuer** field.
-5. Enter the Taker Gets **Amount**. For example, _50_.
-6. Click **Create Offer**.
+3. Enter the Taker Pays **Amount** in drops. For example, _50000000_.
+4. Enter the Taker Gets **Currency**. For example, _USD_.
+5. Copy the current **Account Address** and paste it in the Taker Gets **Issuer** field.
+6. Enter the Taker Gets **Amount**. For example, _50_.
+7. Click **Create Offer**.
 
 [![Created an offer for XRP and USD](/docs/img/mt-create-offers-3-xrp-for-usd-offer.png)](/docs/img/mt-create-offers-3-xrp-for-usd-offer.png)
 
@@ -69,11 +69,10 @@ Click **Get Offers** to get a list of offers issued by the corresponding account
 1. Choose an account other than the Issuer. For example, **Account 2**.
 2. Enter _XRP_ as the Taker Gets **Currency Code**.
 3. Enter the Taker Gets **Amount**. For example, _50000000_.
-3. Enter the Taker Pays **Currency Code**, for example _USD_.
-4. Enter the Taker Pays **Issuer**. For example, the **Account 1 Address**.
-5. Enter the Taker Pays **Amount** For example, _50_.
-6. Click **Create Offer**.
-
+4. Enter the Taker Pays **Currency Code**, for example _USD_.
+5. Enter the Taker Pays **Issuer**. For example, the **Account 1 Address**.
+6. Enter the Taker Pays **Amount** For example, _50_.
+7. Click **Create Offer**.
 
 [![Results of matching offers for XRP and USD](/docs/img/mt-create-offers-4-matching-offer.png)](/docs/img/mt-create-offers-4-matching-offer.png)
 
@@ -97,7 +96,7 @@ You can download the [Payment Modular Tutorials](/_code-samples/modular-tutorial
 
 The functions in create-offer.html leverage functions from the base module. The functions that follow are solely focused on creating and handling offers.
 
-### Create Offer 
+### Create Offer
 
 Connect to the XRP Ledger and get the account wallet.
 
@@ -128,51 +127,48 @@ Gather the information for what the taker pays, and what the taker gets in retur
 The same logic is used to create the value for the `takerPays` parameter.
 
 ```javascript
-    if (payCurrencyField.value == 'XRP') {
-      takerPays = xrpl.xrpToDrops(payAmountField.value)
-    } else {
-      takerPaysString = '{"currency": "' + payCurrencyField.value + '",\n' +
-        '"issuer": "' + payIssuerField.value + '",\n' +
-        '"value": "' + payAmountField.value + '"}'
-      takerPays = JSON.parse(takerPaysString)
-    }
- ```
+if (payCurrencyField.value == 'XRP') {
+  takerPays = xrpl.xrpToDrops(payAmountField.value)
+} else {
+  takerPaysString =
+    '{"currency": "' + payCurrencyField.value + '",\n' + '"issuer": "' + payIssuerField.value + '",\n' + '"value": "' + payAmountField.value + '"}'
+  takerPays = JSON.parse(takerPaysString)
+}
+```
 
 Define the `OfferCreate` transaction, using the `takerPays` and `takerGets` parameters defined above.
 
- ```javascript
-  const prepared = await client.autofill({
-    "TransactionType": "OfferCreate",
-    "Account": wallet.address,
-    "TakerGets": takerGets,
-    "TakerPays": takerPays
-  })
+```javascript
+const prepared = await client.autofill({
+  TransactionType: 'OfferCreate',
+  Account: wallet.address,
+  TakerGets: takerGets,
+  TakerPays: takerPays,
+})
 ```
 
 Sign and send the prepared transaction, and wait for the results.
 
 ```javascript
-    const signed = wallet.sign(prepared)
-    const tx = await client.submitAndWait(signed.tx_blob)
+const signed = wallet.sign(prepared)
+const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Request the token balance changes after the transaction.
 
 ```javascript
-    results = '\n\n===Offer created===\n\n' +
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-    resultField.value += results
+results = '\n\n===Offer created===\n\n' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+resultField.value += results
 ```
 
 Get the new XRP balance, reflecting the payments and transaction fees.
 
 ```javascript
-  xrpBalanceField.value =  (await client.getXrpBalance(wallet.address))
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
 ```
 
-
 ```javascript
-  getOffers()
+getOffers()
 ```
 
 Catch and report any errors, then disconnect from the XRP Ledger.
@@ -185,7 +181,7 @@ Catch and report any errors, then disconnect from the XRP Ledger.
     throw err; // Re-throw the error to be handled by the caller
   }
   finally {
-    // Disconnect from the client          
+    // Disconnect from the client
     client.disconnect()
   })
 ```
@@ -266,16 +262,15 @@ Prepare the `OfferCancel` transaction, passing the account address of the accoun
 Sign and submit the transaction, then wait for the result.
 
 ```javascript
-  const signed = wallet.sign(prepared)
-  const tx = await client.submitAndWait(signed.tx_blob)
+const signed = wallet.sign(prepared)
+const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Report the results.
 
 ```javascript
-    results += "\nOffer canceled. Balance changes: \n" +
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-    resultField.value = results
+results += '\nOffer canceled. Balance changes: \n' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+resultField.value = results
 ```
 
 Catch and report any errors, then disconnect from the XRP Ledger.
@@ -368,7 +363,7 @@ Catch and report any errors, then disconnect from the XRP Ledger.
                         <label for="account1address">Account 1 Address</label>
                     </span>
                 </td>
-                <td> 
+                <td>
                     <input type="text" id="account1address" size="40"></input>
                 </td>
                 <td>
@@ -468,11 +463,11 @@ Catch and report any errors, then disconnect from the XRP Ledger.
                 </td>
                 <td>
                     <input type="text" id="getCurrencyField" size="40"></input>
-                </td> 
-                <td>          
+                </td>
+                <td>
                     <button type="button" onClick="createOffer()">Create Offer</button>
-                </td>   
-            </tr> 
+                </td>
+            </tr>
             <tr>
                 <td align="right">
                     <span class="tooltip" tooltip-data="Issuers of the offered currencies.">
@@ -481,14 +476,14 @@ Catch and report any errors, then disconnect from the XRP Ledger.
                 </td>
                 <td>
                     <input type="text" id="payIssuerField" size="40"></input>&nbsp;&nbsp;
-                </td>  
+                </td>
                 <td>
                     <input type="text" id="getIssuerField" size="40"></input>&nbsp;&nbsp;
                 </td>
                 <td>
                     <button type="button" onClick="getOffers()">Get Offers</button>
                 </td>
-            </tr>    
+            </tr>
             <tr>
                 <td align="right">
                     <span class="tooltip" tooltip-data="Amounts of offered currencies.">
@@ -497,7 +492,7 @@ Catch and report any errors, then disconnect from the XRP Ledger.
                 </td>
                 <td>
                     <input type="text" id="payAmountField" size="40"></input>
-                </td> 
+                </td>
                 <td>
                     <input type="text" id="getAmountField" size="40"></input>
                 </td>
@@ -513,12 +508,12 @@ Catch and report any errors, then disconnect from the XRP Ledger.
                 </td>
                 <td>
                     <input type="text" id="offerSequenceField" size="40"></input>
-                </td> 
+                </td>
                 <td></td>
                 <td>
                     <button type="button" onClick="getTokenBalance()">Get Token Balance</button>
                 </td>
-            </tr>  
+            </tr>
             <tr>
                 <td colspan="3">
                     <p align="right">
@@ -547,5 +542,3 @@ Catch and report any errors, then disconnect from the XRP Ledger.
 </script>
 </html>
 ```
-
-

@@ -2,10 +2,11 @@
 html: system-requirements.html
 parent: install-rippled.html
 seo:
-    description: rippledのハードウェアやソフトウェアのシステム要件
+  description: rippledのハードウェアやソフトウェアのシステム要件
 labels:
   - コアサーバ
 ---
+
 # システム要件
 
 ## 推奨される仕様
@@ -31,28 +32,24 @@ labels:
 - ディスク: SSD / NVMe (バーストや ピーク時ではなく、10,000 IOPSの維持が望ましい)。データベースパーティションとして最低50GB。Amazon Elastic Block Store(AWS EBS)はレイテンシが高すぎて確実に同期できないので使用しないでください。
 - RAM: 16GB以上
 
-
-
 作業負荷によっては、Amazon EC2の`i3.2xlarge`のVMサイズが適切な場合があります。高速のネットワーク接続が望ましいです。サーバのクライアント処理負荷が増加すると、必要なリソースも増加します。
-
 
 ## システム時刻
 
 `rippled`サーバは、正確な時刻が維持されていることを前提としています。`ntpd`や`chrony`などのデーモンで、ネットワークタイムプロトコル（NTP）を使用してシステムの時刻を同期することを推奨します。
 
-
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
-    - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+  - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [容量の計画](capacity-planning.md) - 本番環境向けの推奨仕様および計画についての詳細情報
-    - [`rippled`のインストール](index.md)
-    - [rippledのトラブルシューティング](../troubleshooting/index.md)
+  - [容量の計画](capacity-planning.md) - 本番環境向けの推奨仕様および計画についての詳細情報
+  - [`rippled`のインストール](index.md)
+  - [rippledのトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
-      - [server_infoメソッド][]
+  - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+    - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

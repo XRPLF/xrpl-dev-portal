@@ -4,11 +4,12 @@ parent: references.html
 metadata:
   indexPage: true
 ---
+
 # HTTP / WebSocket APIs
 
 You can communicate directly with the XRP Ledger through HTTP-based APIs provided by the core `rippled` server as well as the Clio server. Both types of server provide JSON-RPC and WebSocket APIs with mostly the same functionality. JSON-RPC uses a strict request-response paradigm similar to a REST API, but WebSocket uses a single persistent connection where the server can push messages to the client asynchronously. For more information, see [Get Started Using HTTP / WebSocket APIs](../../tutorials/http-websocket-apis/build-apps/get-started.md).
 
-[{% inline-svg file="/docs/img/api-functionality-venn-diagram.svg" /%}](/docs/img/api-functionality-venn-diagram.svg "Diagram: Most API methods are provided by both rippled and Clio servers. The rippled server provides admin methods, provides pending/unvalidated data including transaction queue, and has a live view of consensus and peer-to-peer network. The Clio server scales efficiently, provides additional methods nft_history, nft_info, nfts_by_issuer, and mpt_holders, and serves rippled-exclusive API requests by forwarding.")
+[{% inline-svg file="/docs/img/api-functionality-venn-diagram.svg" /%}](/docs/img/api-functionality-venn-diagram.svg 'Diagram: Most API methods are provided by both rippled and Clio servers. The rippled server provides admin methods, provides pending/unvalidated data including transaction queue, and has a live view of consensus and peer-to-peer network. The Clio server scales efficiently, provides additional methods nft_history, nft_info, nfts_by_issuer, and mpt_holders, and serves rippled-exclusive API requests by forwarding.')
 
 ## API Versioning
 
@@ -27,13 +28,12 @@ Separate API requests can use different API versions even on the same persistent
 
 If you do not specify an API version when making a request directly to the server, the server uses API v1. However, some [client libraries](../client-libraries.md) automatically use a different API version if you do not specify one. The following table shows which API version each library uses when you don't specify which API version to use:
 
-| Client Library                                | API Version | Additional Notes |
-|-----------------------------------------------|-------------|------------------|
-| None - direct WebSocket / JSON-RPC connection | 1           | |
+| Client Library                                | API Version | Additional Notes                                  |
+| --------------------------------------------- | ----------- | ------------------------------------------------- |
+| None - direct WebSocket / JSON-RPC connection | 1           |                                                   |
 | None - `rippled` Commandline                  | 2           | The commandline only uses the latest API version. |
-| [xrpl.js](https://github.com/XRPLF/xrpl.js)   | 2           | Versions 3.x and older use API v1 by default. |
-| [xrpl-py](https://github.com/XRPLF/xrpl-py)   | 2           | Versions 2.x and older use API v1 by default. |
-
+| [xrpl.js](https://github.com/XRPLF/xrpl.js)   | 2           | Versions 3.x and older use API v1 by default.     |
+| [xrpl-py](https://github.com/XRPLF/xrpl-py)   | 2           | Versions 2.x and older use API v1 by default.     |
 
 ### Breaking Changes
 
@@ -61,6 +61,5 @@ The following types of changes are **non-breaking changes** and may occur withou
 ## API Method References
 
 {% child-pages /%}
-
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

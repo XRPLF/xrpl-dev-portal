@@ -2,10 +2,11 @@
 html: what-is-xrp.html
 parent: introduction.html
 seo:
-    description: XRP Ledgerで取引される暗号通貨、XRPについてご紹介します。
+  description: XRP Ledgerで取引される暗号通貨、XRPについてご紹介します。
 labels:
   - ブロックチェーン
 ---
+
 # XRPとは?
 
 XRPはXRP Ledgerにて使用可能な暗号通貨です。
@@ -44,7 +45,6 @@ XRPはXRP Ledgerにて使用可能な暗号通貨です。
 
 暗号通貨の価値は、保有者が通貨に寄せる信頼から生まれます。記録が分散していることや、資金を保護するための暗号的セキュリティ対策を考えると、暗号通貨は従来の不換紙幣よりもはるかに堅牢で安全、かつ便利な通貨形態と考えることができるのではないでしょうか。
 
-
 ## 暗号通貨であるXRPL
 
 XRP Ledgerは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Britto、David Schwartzによって開発されました。2012年9月、JedとArthurはChris LarsenとともにRippleと名の会社（当時はOpenCoin Inc.という会社）を設立し、Ripple社がXRP Ledger上で開発を行う代わりに、800億XRPをRipple社へ譲渡することを決定しました。
@@ -59,15 +59,14 @@ XRP Ledgerは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Br
 
 元々、XRP Ledgerは、その技術が[複数のホップと通貨を通じて波及(ripple)する](../concepts/tokens/fungible-tokens/rippling.md)支払いを可能にする方法から「リップル」と呼ばれていました。Ledgerに組み込まれたネイティブアセットについて、クリエイターたちは「リップルクレジット」または「リップル」という用語と、[ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)標準の非国家通貨を表すX接頭辞から「XRP」というティッカーシンボルを選びました。同社は「Ripple Labs」として登録。「XRP」という名称は、技術や会社の類似した名称との混同を避けるため、あらゆる文脈で資産を指すために使用されるようになり、最終的に同社は自らの名称を「Ripple」に短縮しました。2018年5月、[コミュニティは、それまで会社とデジタル資産の両方に使用されていたトリスケリオンのロゴと区別するために、XRPを表す新しい「X」のシンボル](https://twitter.com/xrpsymbol/status/1006925937571713025)を選択しました。
 
-| XRPの"X"ロゴ                          | Ripple社のトリスケリオン                      |
-|:-------------------------------------|:-------------------------------------------|
+| XRPの"X"ロゴ                    | Ripple社のトリスケリオン                           |
+| :------------------------------ | :------------------------------------------------- |
 | !["X"ロゴ](/img/xrp-x-logo.png) | ![トリスケリオン](/docs/img/ripple-triskelion.png) |
-
 
 ### 商標
 
 「XRP」は、米国や中国、エストニアなどの国々におけるXRPL財団の登録商標です。
 
 この商標出願は2013年に米国特許商標庁（USPTO）に登録され、OpenCoin IncとRipple Labs Incが譲受人となっています。2022年に商標の譲渡が更新され、現在はMITTETULUNDUSÜHING XRP LEDGER TRUST（「XRPLF」）に譲渡されています。
- 
+
 次のページ: [暗号通貨のウォレット](crypto-wallets.md)

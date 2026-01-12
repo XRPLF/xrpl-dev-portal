@@ -1,34 +1,27 @@
-import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Connection } from './types';
-import { ChangeEvent } from 'react';
-import { Modal } from '../Modal';
+import { useThemeHooks } from '@redocly/theme/core/hooks'
+import { Connection } from './types'
+import { ChangeEvent } from 'react'
+import { Modal } from '../Modal'
 
 interface ConnectionButtonProps {
-  selectedConnection: Connection;
-  setSelectedConnection: (value: Connection) => void;
-  connections: Connection[];
+  selectedConnection: Connection
+  setSelectedConnection: (value: Connection) => void
+  connections: Connection[]
 }
 
 interface ConnectionProps extends ConnectionButtonProps {
-  closeConnectionModal: any;
+  closeConnectionModal: any
 }
 
-export const ConnectionModal: React.FC<ConnectionProps> = ({
-                                                             selectedConnection,
-                                                             setSelectedConnection,
-                                                             closeConnectionModal,
-                                                             connections,
-                                                           }) => {
-  const { useTranslate } = useThemeHooks();                                                  
-  const { translate } = useTranslate();
+export const ConnectionModal: React.FC<ConnectionProps> = ({ selectedConnection, setSelectedConnection, closeConnectionModal, connections }) => {
+  const { useTranslate } = useThemeHooks()
+  const { translate } = useTranslate()
   const handleConnectionChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedValue = event.target.value;
-    const foundConnection = connections.find(
-      (conn) => conn.id === selectedValue
-    );
+    const selectedValue = event.target.value
+    const foundConnection = connections.find((conn) => conn.id === selectedValue)
 
-    setSelectedConnection(foundConnection);
-  };
+    setSelectedConnection(foundConnection)
+  }
 
   return (
     <Modal id="wstool-1-connection-settings" title={translate('Connection Settings')} onClose={closeConnectionModal}>
@@ -49,6 +42,5 @@ export const ConnectionModal: React.FC<ConnectionProps> = ({
         </div>
       ))}
     </Modal>
-  );
-};
-
+  )
+}

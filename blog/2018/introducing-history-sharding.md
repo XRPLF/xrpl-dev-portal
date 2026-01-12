@@ -1,13 +1,14 @@
 ---
-date: "2018-11-07"
+date: '2018-11-07'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing History Sharding
 
 As `rippled` servers operate, they continually witness data appended onto an ever-growing blockchain. This data becomes the history that the network agrees upon and that constitutes everything about the XRP Ledger.
@@ -32,7 +33,6 @@ Beginning with `rippled` version 0.90.0, you can use the `--validateShards` comm
 
 This operation verifies that all objects stored for every ledger stored in each shard are valid and consistent with the network. Run this command only when you start the server and note that it may take a while to complete.
 
-
 ## Node Store to Shard Store
 
 Beginning with `rippled` version 1.0.0, you can use the `--nodetoshard' command to import the data from an existing ledger store into a shard store. For example:
@@ -42,7 +42,6 @@ Beginning with `rippled` version 1.0.0, you can use the `--nodetoshard' command 
 This command enables you to create shards based on the history you already have. The command creates shards from complete ledger ranges in the ledger store.
 
 The command creates a copy of the data, so your server must have the additional disk space required by the shard maximum disk space setting (`max_size_gb`) in the `rippled.cfg` configuration file.
-
 
 ## Downloadable Shard Archives
 
@@ -58,5 +57,4 @@ Beginning with `rippled` version 1.1.0, you can use the `download_shard` API met
            ]
         }
 
-A shard archive is a [tar](https://en.wikipedia.org/wiki/Tar_(computing)) of a complete shard directory compressed with LZ4. Downloaded archives are checked to be valid and consistent with network history before being imported.
-
+A shard archive is a [tar](<https://en.wikipedia.org/wiki/Tar_(computing)>) of a complete shard directory compressed with LZ4. Downloaded archives are checked to be valid and consistent with network history before being imported.

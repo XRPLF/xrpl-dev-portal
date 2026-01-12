@@ -36,12 +36,12 @@ txHistoryButton.addEventListener('click', () => {
         });
 
         // Fetch the wallet details
-        let wallet_details
+        let wallet_details;
         try {
-            wallet_details = await getWalletDetails({ client })
-        } catch(error) {
-            alert(`Error loading wallet: ${error}.\n\nMake sure you set the SEED in your .env file.`)
-            return
+            wallet_details = await getWalletDetails({ client });
+        } catch (error) {
+            alert(`Error loading wallet: ${error}.\n\nMake sure you set the SEED in your .env file.`);
+            return;
         }
         const { account_data, accountReserve, xAddress, address } = wallet_details;
         walletElement.querySelector('.wallet_address').textContent = `Wallet Address: ${account_data.Account}`;
@@ -53,9 +53,8 @@ txHistoryButton.addEventListener('click', () => {
         walletElement.querySelector('#view_more_button').addEventListener('click', () => {
             window.open(`https://${process.env.EXPLORER_NETWORK}.xrpl.org/accounts/${address}`, '_blank');
         });
-        
-        walletLoadingDiv.style.display = 'none';
 
+        walletLoadingDiv.style.display = 'none';
 
         // Fetch the latest ledger details
         client.on('ledgerClosed', (ledger) => {
@@ -67,7 +66,6 @@ txHistoryButton.addEventListener('click', () => {
             ledgerHash.textContent = `Ledger Hash: ${ledger.ledger_hash}`;
             closeTime.textContent = `Close Time: ${rippleTimeToISOTime(ledger.ledger_time)}`;
         });
-        
     } catch (error) {
         await client.disconnect();
         console.log(error);

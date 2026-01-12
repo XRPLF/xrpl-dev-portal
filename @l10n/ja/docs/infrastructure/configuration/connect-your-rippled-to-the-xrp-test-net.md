@@ -2,12 +2,13 @@
 html: connect-your-rippled-to-the-xrp-test-net.html
 parent: configure-rippled.html
 seo:
-    description: rippledサーバをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
+  description: rippledサーバをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
 labels:
   - コアサーバ
   - ブロックチェーン
   - 開発
 ---
+
 # rippledを並列ネットワークに接続
 
 様々な[テスト用・開発用の代替ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)が存在しており、開発者は実際の資金をリスクにさらすことなく、アプリのテストや機能の実験を行うことができます。**これらのネットワークで使用される資金は実際の資金ではなく、テスト専用です。**あなたの[`rippled`サーバ](../../concepts/networks-and-servers/index.md)をこれらのテストネットワークのいずれかに接続することができます。
@@ -23,61 +24,62 @@ labels:
 `rippled.cfg`ファイルを編集します。
 
 {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
+
 <!--{_ }-->
 
 1. `[ips]`に接続したいネットワークのハブを設定します。
 
-    {% tabs %}
+   {% tabs %}
 
-    ```{% label="Testnet" %}
-    [ips]
-    s.altnet.rippletest.net 51235
-    ```
+   ```{% label="Testnet" %}
+   [ips]
+   s.altnet.rippletest.net 51235
+   ```
 
-    ```{% label="Devnet" %}
-    [ips]
-    s.devnet.rippletest.net 51235
-    ```
+   ```{% label="Devnet" %}
+   [ips]
+   s.devnet.rippletest.net 51235
+   ```
 
-    ```{% label="Mainnet" %}
-    # No [ips] stanza. Use the default hubs to connect to Mainnet.
-    ```
+   ```{% label="Mainnet" %}
+   # No [ips] stanza. Use the default hubs to connect to Mainnet.
+   ```
 
-    {% /tabs %}
+   {% /tabs %}
 
 2. 以前の `[ips]`があれば、コメントアウトしてください。
 
-    ```
-    # [ips]
-    # r.ripple.com 51235
-    # zaphod.alloy.ee 51235
-    # sahyadri.isrdc.in 51235
-    ```
+   ```
+   # [ips]
+   # r.ripple.com 51235
+   # zaphod.alloy.ee 51235
+   # sahyadri.isrdc.in 51235
+   ```
 
 3. `[network_id]`に適切な値を追加します。
 
-    {% tabs %}
+   {% tabs %}
 
-    ```{% label="Testnet" %}
-    [network_id]
-    testnet
-    ```
+   ```{% label="Testnet" %}
+   [network_id]
+   testnet
+   ```
 
-    ```{% label="Devnet" %}
-    [network_id]
-    devnet
-    ```
+   ```{% label="Devnet" %}
+   [network_id]
+   devnet
+   ```
 
-    ```{% label="Mainnet" %}
-    [network_id]
-    main
-    ```
+   ```{% label="Mainnet" %}
+   [network_id]
+   main
+   ```
 
-    {% /tabs %}
+   {% /tabs %}
 
-    カスタムネットワークの場合、そのネットワークに接続する全員が、そのネットワークに固有の値を使用する必要があります。新しいネットワークを作成するときは、ネットワークIDを11から4,294,967,295までの整数からランダムに選択します。
+   カスタムネットワークの場合、そのネットワークに接続する全員が、そのネットワークに固有の値を使用する必要があります。新しいネットワークを作成するときは、ネットワークIDを11から4,294,967,295までの整数からランダムに選択します。
 
-    {% admonition type="info" name="注記" %}この設定はサーバが同じネットワーク上にいる仲間を見つけるのに役立ちますが、サーバがどのネットワークに従うかを厳密に制御するものではありません。UNL/信頼できるバリデータの設定(次のステップ)はサーバが従うネットワークを定義するものです。{% /admonition %}
+   {% admonition type="info" name="注記" %}この設定はサーバが同じネットワーク上にいる仲間を見つけるのに役立ちますが、サーバがどのネットワークに従うかを厳密に制御するものではありません。UNL/信頼できるバリデータの設定(次のステップ)はサーバが従うネットワークを定義するものです。{% /admonition %}
 
 ## 2. 信頼できるバリデータリストの設定
 
@@ -85,57 +87,57 @@ labels:
 
 1. 接続したいネットワークの`[validator_list_sites]`と`[validator_list_keys]`コメントを解除するか、追加します。
 
-    {% tabs %}
+   {% tabs %}
 
-    ```{% label="Testnet" %}
-    [validator_list_sites]
-    https://vl.altnet.rippletest.net
+   ```{% label="Testnet" %}
+   [validator_list_sites]
+   https://vl.altnet.rippletest.net
 
-    [validator_list_keys]
-    ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
-    ```
+   [validator_list_keys]
+   ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
+   ```
 
-    ```{% label="Devnet" %}
-    [validator_list_sites]
-    https://vl.devnet.rippletest.net
+   ```{% label="Devnet" %}
+   [validator_list_sites]
+   https://vl.devnet.rippletest.net
 
-    [validator_list_keys]
-    EDBB54B0D9AEE071BB37784AF5A9E7CC49AC7A0EFCE868C54532BCB966B9CFC13B
-    ```
+   [validator_list_keys]
+   EDBB54B0D9AEE071BB37784AF5A9E7CC49AC7A0EFCE868C54532BCB966B9CFC13B
+   ```
 
-    ```{% label="Mainnet" %}
-    [validator_list_sites]
-    https://vl.ripple.com
+   ```{% label="Mainnet" %}
+   [validator_list_sites]
+   https://vl.ripple.com
 
-    [validator_list_keys]
-    ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-    ```
+   [validator_list_keys]
+   ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+   ```
 
-    {% /tabs %}
+   {% /tabs %}
 
-    {% admonition type="success" name="ヒント" %}プレビュー版パッケージには必要な項目があらかじめ設定されている場合がありますが、念のため確認してください。{% /admonition %}
+   {% admonition type="success" name="ヒント" %}プレビュー版パッケージには必要な項目があらかじめ設定されている場合がありますが、念のため確認してください。{% /admonition %}
 
 2. 以前の`[validator_list_sites]`,`[validator_list_keys]`,または`[validators]`をコメントアウトします。
 
-    例えば:
+   例えば:
 
-    ```
-    # [validator_list_sites]
-    # https://vl.ripple.com
-    #
-    # [validator_list_keys]
-    # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+   ```
+   # [validator_list_sites]
+   # https://vl.ripple.com
+   #
+   # [validator_list_keys]
+   # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
-    # Old hard-coded List of Devnet Validators
-    # [validators]
-    # n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c
-    # n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B
-    # n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD
-    # n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U
-    # n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd
-    # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
-    # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
-    ```
+   # Old hard-coded List of Devnet Validators
+   # [validators]
+   # n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c
+   # n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B
+   # n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD
+   # n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U
+   # n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd
+   # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
+   # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
+   ```
 
 ## 3. 機能を有効化(無効化)する
 
@@ -144,24 +146,30 @@ labels:
 {% tabs %}
 
 {% tab label="Testnet" %}
+
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Testnet.
 ```
+
 {% /tab %}
 
 {% tab label="Devnet" %}
+
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Devnet.
 ```
+
 {% /tab %}
 
 {% tab label="Mainnet" %}
+
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Mainnet.
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -188,21 +196,19 @@ rippled server_info | grep seq
 
 WebSocketツールの[server_info](/resources/dev-tools/websocket-api-tool#server_info)を使って、対象のネットワーク上の最新のレジャーインデックス(`seq`)を調べることができます。
 
-
-
 ## 関連項目
 
 - **ツール:**
-    - [XRP Faucets](/resources/dev-tools/xrp-faucets)
-    - [WebSocket APIツール](/resources/dev-tools/websocket-api-tool) - 接続オプションで「Testnet Public Server」または「Devnet Public Server」を選択します。
+  - [XRP Faucets](/resources/dev-tools/xrp-faucets)
+  - [WebSocket APIツール](/resources/dev-tools/websocket-api-tool) - 接続オプションで「Testnet Public Server」または「Devnet Public Server」を選択します。
 - **コンセプト:**
-    - [並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)
-    - [コンセンサス](../../concepts/consensus-protocol/index.md)
+  - [並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)
+  - [コンセンサス](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてのrippledの実行](server-modes/run-rippled-as-a-validator.md)
-    - [オフラインで`rippled`をスタンドアロンモードでテストする](../testing-and-auditing/index.md)
-    - [`rippled`のトラブルシューティング](../troubleshooting/index.md)
+  - [バリデータとしてのrippledの実行](server-modes/run-rippled-as-a-validator.md)
+  - [オフラインで`rippled`をスタンドアロンモードでテストする](../testing-and-auditing/index.md)
+  - [`rippled`のトラブルシューティング](../troubleshooting/index.md)
 - **References:**
-    - [server_infoメソッド][]
+  - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

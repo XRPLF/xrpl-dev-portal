@@ -2,15 +2,26 @@
 html: enact-global-freeze.html
 parent: use-tokens.html
 seo:
-    description: Freeze all tokens issued by your address.
+  description: Freeze all tokens issued by your address.
 embed_xrpl_js: true
 filters:
   - interactive_steps
 labels:
   - Tokens
   - Security
-steps: ['Generate', 'Connect', 'Send AccountSet (Start Freeze)', 'Wait', 'Confirm Settings', 'Send AccountSet (End Freeze)', 'Wait (again)', 'Confirm Settings (After Freeze)']
+steps:
+  [
+    'Generate',
+    'Connect',
+    'Send AccountSet (Start Freeze)',
+    'Wait',
+    'Confirm Settings',
+    'Send AccountSet (End Freeze)',
+    'Wait (again)',
+    'Confirm Settings (After Freeze)',
+  ]
 ---
+
 # Enact Global Freeze
 
 If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can enact a [Global Freeze](../../../concepts/tokens/fungible-tokens/freezes.md#global-freeze) to prevent users from sending your tokens to each other and trading your token in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity related to your issuing address in the ledger, or to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze).
@@ -21,7 +32,7 @@ If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can 
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
 - You don't need to have [issued a token](issue-a-fungible-token.md) in the XRP Ledger to enact a Global Freeze, but the main reason you would do so is if you have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
@@ -48,7 +59,6 @@ For this tutorial, you can get credentials from the following interface:
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md).
 
-
 ### 2. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../../references/client-libraries.md):
@@ -65,7 +75,6 @@ For this tutorial, click the following button to connect:
 
 {% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
-
 ### 3. Send AccountSet Transaction to Start the Freeze
 
 To enable the Global Freeze setting, send an [AccountSet transaction][] with a `SetFlag` field containing the [`asfGlobalFreeze` value (`7`)](../../../references/protocol/transactions/types/accountset.md#accountset-flags). To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
@@ -81,6 +90,7 @@ For example:
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "example_enable_global_freeze",
@@ -97,6 +107,7 @@ For example:
   "secret": "s████████████████████████████"
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -111,7 +122,6 @@ For example:
 
 {% /interactive-block %}
 
-
 ### 4. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
@@ -121,7 +131,6 @@ Most transactions are accepted into the next ledger version after they're submit
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 {% /interactive-block %}
-
 
 ### 5. Confirm Account Settings
 
@@ -134,6 +143,7 @@ After the transaction is validated, you can check your issuing account's setting
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 Request:
 
@@ -174,6 +184,7 @@ Response:
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -188,7 +199,6 @@ Response:
 
 {% /interactive-block %}
 
-
 ### Intermission: While Frozen
 
 At this point all token issued by your address are frozen. During this time, you may want to investigate the potential security breach or take a snapshot of the balances of your token, depending on your reasons for enacting the global freeze.
@@ -200,7 +210,6 @@ If you use a [hot wallet or operational address](../../../concepts/accounts/acco
 If you use the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze) then the Global Freeze continues forever. If you want to resume issuing tokens, you must create a new account and start over from there.
 
 Otherwise, you can continue to the next step whenever you're ready.
-
 
 ### 6. Send AccountSet Transaction to End the Freeze
 
@@ -215,6 +224,7 @@ For example:
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "example_disable_global_freeze",
@@ -231,6 +241,7 @@ For example:
   "secret": "s████████████████████████████"
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -245,13 +256,11 @@ For example:
 
 {% /interactive-block %}
 
-
 ### 7. Wait for Validation
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
-
 
 ### 8. Confirm Account Settings
 
@@ -267,22 +276,21 @@ After the transaction is validated, you can confirm the status of the Global Fre
 
 {% /interactive-block %}
 
-
 ## See Also
 
 - **Concepts:**
-    - [Freezing Issued Currencies](../../../concepts/tokens/fungible-tokens/freezes.md)
-    - [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md)
+  - [Freezing Issued Currencies](../../../concepts/tokens/fungible-tokens/freezes.md)
+  - [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md)
 - **Tutorials:**
-    - [Enable No Freeze](enable-no-freeze.md)
-    - [Freeze a Trust Line](freeze-a-trust-line.md)
-    - [Change or Remove a Regular Key Pair](../manage-account-settings/change-or-remove-a-regular-key-pair.md)
+  - [Enable No Freeze](enable-no-freeze.md)
+  - [Freeze a Trust Line](freeze-a-trust-line.md)
+  - [Change or Remove a Regular Key Pair](../manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
-    - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
+  - [account_lines method][]
+  - [account_info method][]
+  - [AccountSet transaction][]
+  - [TrustSet transaction][]
+  - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+  - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

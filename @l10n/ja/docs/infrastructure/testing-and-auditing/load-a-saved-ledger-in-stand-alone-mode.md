@@ -2,10 +2,11 @@
 html: load-a-saved-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
 seo:
-    description: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
+  description: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
 labels:
   - コアサーバ
 ---
+
 # スタンドアロンモードでの保存済みレジャーの読み込み
 
 以前にディスクに保存していた[履歴レジャーバージョン](../../concepts/ledgers/index.md)を使用して、`rippled`サーバを[スタンドアロンモード](../../concepts/networks-and-servers/rippled-server-modes.md)で起動できます。例えば、以前に`rippled`サーバをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](../../concepts/networks-and-servers/parallel-networks.md)）と同期していた場合は、過去にサーバで使用できていた任意のレジャーバージョンを読み込むことができます。
@@ -24,9 +25,9 @@ rippled --conf=/path/to/rippled.cfg
 
 [server_infoメソッド][]を使用して、ネットワークに対するサーバの状態を確認します。`server_state`に以下のいずれかの値が示される場合は、サーバは同期しています。
 
-* `full`
-* `proposing`
-* `validating`
+- `full`
+- `proposing`
+- `validating`
 
 詳細は、[考えられるサーバの状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)をご覧ください。
 
@@ -73,15 +74,15 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
-      - [`rippled`サーバのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
-    - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
-    - [Amendment](../../concepts/networks-and-servers/amendments.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+    - [`rippled`サーバのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
+  - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
+  - [Amendment](../../concepts/networks-and-servers/amendments.md)
 - **リファレンス:**
-    - [ledger_acceptメソッド][]
-    - [server_infoメソッド][]
-    - [`rippled`コマンドラインの使用](../commandline-usage.md)
+  - [ledger_acceptメソッド][]
+  - [server_infoメソッド][]
+  - [`rippled`コマンドラインの使用](../commandline-usage.md)
 - **ユースケース:**
-    - [XRP Ledgerへのコードの提供](/resources/contribute-code/index.md)
+  - [XRP Ledgerへのコードの提供](/resources/contribute-code/index.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

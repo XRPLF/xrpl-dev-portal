@@ -1,11 +1,12 @@
 ---
 seo:
-    description: Learn how Permissioned Domains on the XRP Ledger enable controlled, secure blockchain environments. Explore their role in decentralized exchanges (DEXes) and lending protocols.
+  description: Learn how Permissioned Domains on the XRP Ledger enable controlled, secure blockchain environments. Explore their role in decentralized exchanges (DEXes) and lending protocols.
 labels:
-    - Compliance
-    - Permissioned Domains
+  - Compliance
+  - Permissioned Domains
 status: not_enabled
 ---
+
 # Permissioned Domains
 
 Permissioned domains are controlled environments within the broader ecosystem of the XRP Ledger blockchain. Domains do nothing on their own, but features such as [Permissioned DEXes][] and Lending Protocols can use domains to restrict and manage access, so traditional financial institutions can offer services on chain while complying with various compliance rules.

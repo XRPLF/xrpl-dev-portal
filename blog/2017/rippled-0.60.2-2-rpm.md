@@ -1,13 +1,14 @@
 ---
-date: "2017-05-03"
+date: '2017-05-03'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled RPM version 0.60.2-2
 
 Ripple has released a new `rippled` 0.60.2-2 RPM that contains an update to the [validator-keys](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#validator-keys) key generation and management tool. The latest version of validator-keys allows validator operators to [sign data with their validator key](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#signing).
@@ -20,7 +21,7 @@ There are no changes to `rippled` with this version.
 
 ## Impact of Not Upgrading
 
-**If you operate a `rippled` validator server but you don’t update to the `rippled` 0.60.2-2 RPM**, then your `rippled` instance will continue to operate normally. 
+**If you operate a `rippled` validator server but you don’t update to the `rippled` 0.60.2-2 RPM**, then your `rippled` instance will continue to operate normally.
 
 **If you operate a `rippled` validator server that was set up using validator-keys but don’t update to the `rippled` 0.60.2-2 RPM**, then you will be unable to sign data using your validator key.
 
@@ -42,13 +43,13 @@ Date:   Thu Mar 30 14:25:41 2017 -0400
     Set version to 0.60.2
 ```
 
-
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

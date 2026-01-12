@@ -2,17 +2,17 @@
 html: transactions.html
 parent: concepts.html
 seo:
-    description: トランザクションは、XRP Ledgerの変更を可能にする唯一の手段です。トランザクションの形態とその使用方法について説明します。
+  description: トランザクションは、XRP Ledgerの変更を可能にする唯一の手段です。トランザクションの形態とその使用方法について説明します。
 labels:
   - トランザクション送信
   - 支払い
 ---
+
 # トランザクション
 
 _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の方法です。[コンセンサスプロセス](../consensus-protocol/index.md)に従って署名され、送信され、検証済みのレジャーバージョンに承認された場合にのみ、トランザクションは最終的なものになります。レジャーのルールによっては、_[疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/index.md)_ も生成されます。このトランザクションは署名も送信もされませんが、コンセンサスによって承認されなければならないことは同様です。失敗したトランザクションであっても、スパム対策の[トランザクションコスト][]を支払のためXRPの残高が変わるため、レジャーに記録されます。
 
 トランザクションで行えることは、送金だけではありません。XRP Ledgerのトランザクションは、さまざまな[支払いタイプ](../payment-types/index.md)に対応しているだけでなく、[暗号鍵](../accounts/cryptographic-keys.md)のローテーション、その他の設定の管理、およびXRP Ledgerの[分散型取引所](../tokens/decentralized-exchange/index.md)での取引にも使用されます。[トランザクションタイプの詳細なリスト](../../references/protocol/transactions/types/index.md)については、[`rippled` APIリファレンス](../../references/http-websocket-apis/index.md)をご覧ください。
-
 
 ### トランザクションの識別 <a id="identifying-transactions"></a>
 
@@ -22,16 +22,13 @@ _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の�
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/setfee_uniqueness_note.md" /%}
 
-
-
 ## 請求コストの正当化
 
 失敗したトランザクションに対しても[トランザクションコスト](transaction-cost.md)が発生するのは不公平に思えるかもしれませんが、正当な理由から`tec`クラスのエラーが存在します。
 
-* 失敗したトランザクションの後に送信するトランザクションでは、シーケンス値の番号を変更する必要はありません。失敗したトランザクションをレジャーに組み込むと、トランザクションのシーケンス番号が順に使われ予想される順序が保持されます。
-* ネットワーク全体にトランザクションを拡散されられると、ネットワークの負荷が増大します。トランザクションコストを強制することにより、攻撃者が失敗したトランザクションでネットワークを乱用することが難しくなります。
-* トランザクションコストは実際には非常に少額であるため、大量のトランザクションを送信している場合を除き、ユーザに害を及ぼすことはありません。
-
+- 失敗したトランザクションの後に送信するトランザクションでは、シーケンス値の番号を変更する必要はありません。失敗したトランザクションをレジャーに組み込むと、トランザクションのシーケンス番号が順に使われ予想される順序が保持されます。
+- ネットワーク全体にトランザクションを拡散されられると、ネットワークの負荷が増大します。トランザクションコストを強制することにより、攻撃者が失敗したトランザクションでネットワークを乱用することが難しくなります。
+- トランザクションコストは実際には非常に少額であるため、大量のトランザクションを送信している場合を除き、ユーザに害を及ぼすことはありません。
 
 ## トランザクションの承認
 
@@ -39,20 +36,19 @@ _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の�
 
 トランザクションは、次のいずれかの署名によって承認できます。
 
-* 送信元アドレスと数学的に関連付けられている、マスター秘密鍵による単一の署名。[AccountSetトランザクション][]を使用して、マスターキーペアを無効または有効にできます。
-* アドレスに関連付けられているレギュラー秘密鍵と一致する単一の署名。[SetRegularKeyトランザクション][]を使用して、レギュラーキーペアを追加、削除、または置き換えることができます。
-* アドレスが所有する署名者のリストと一致する[マルチシグ](../accounts/multi-signing.md)。[SignerListSetトランザクション][]を使用して、署名者のリストを追加、削除、または置換することができます。
+- 送信元アドレスと数学的に関連付けられている、マスター秘密鍵による単一の署名。[AccountSetトランザクション][]を使用して、マスターキーペアを無効または有効にできます。
+- アドレスに関連付けられているレギュラー秘密鍵と一致する単一の署名。[SetRegularKeyトランザクション][]を使用して、レギュラーキーペアを追加、削除、または置き換えることができます。
+- アドレスが所有する署名者のリストと一致する[マルチシグ](../accounts/multi-signing.md)。[SignerListSetトランザクション][]を使用して、署名者のリストを追加、削除、または置換することができます。
 
 署名の種類に関係なく、あらゆるタイプのトランザクションを承認できます。ただし、次の例外があります。
 
-* マスター秘密鍵だけが[マスター公開鍵](../../references/protocol/transactions/types/accountset.md)を無効にできます。
-* マスター秘密鍵だけが[フリーズ機能を永続的に放棄](../tokens/fungible-tokens/freezes.md#no-freeze)できます。
-* アドレスからトランザクションに署名する最後の方法を削除することはできません。
+- マスター秘密鍵だけが[マスター公開鍵](../../references/protocol/transactions/types/accountset.md)を無効にできます。
+- マスター秘密鍵だけが[フリーズ機能を永続的に放棄](../tokens/fungible-tokens/freezes.md#no-freeze)できます。
+- アドレスからトランザクションに署名する最後の方法を削除することはできません。
 
 マスターキーとレギュラーキーペアについて詳しくは、[暗号鍵](../accounts/cryptographic-keys.md)をご覧ください。
 
 <!--{# Add this reference after signatures concept doc is published. For more information about signatures, see [Understanding Signatures](concept-signatures.html). #}-->
-
 
 ## トランザクションへの署名とトランザクションの送信
 
@@ -67,24 +63,23 @@ XRP Ledgerにトランザクションを送信するには、いくつかの手�
 
 XRP決済の送信に関する対話型チュートリアルについては、[Send XRP](../../tutorials/how-tos/send-xrp.md)をご覧ください。
 
-
 ### 未署名のトランザクションの例
 
 JSON形式の未署名の[Paymentトランザクション][]の例を次に示します。
 
 ```json
 {
-  "TransactionType" : "Payment",
-  "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-  "Amount" : {
-     "currency" : "USD",
-     "value" : "1",
-     "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+  "TransactionType": "Payment",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+  "Amount": {
+    "currency": "USD",
+    "value": "1",
+    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
   },
   "Fee": "12",
   "Flags": 2147483648,
-  "Sequence": 2,
+  "Sequence": 2
 }
 ```
 
@@ -98,7 +93,7 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
 {
   "id": 2,
   "command": "submit",
-  "tx_blob" : "120000240000000461D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000F732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74483046022100982064CDD3F052D22788DB30B52EEA8956A32A51375E72274E417328EBA31E480221008F522C9DB4B0F31E695AA013843958A10DE8F6BA7D6759BEE645F71A7EB240BE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
+  "tx_blob": "120000240000000461D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000F732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74483046022100982064CDD3F052D22788DB30B52EEA8956A32A51375E72274E417328EBA31E480221008F522C9DB4B0F31E695AA013843958A10DE8F6BA7D6759BEE645F71A7EB240BE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
 }
 ```
 
@@ -197,7 +192,6 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
   }
 }
 ```
-
 
 ## 関連項目
 

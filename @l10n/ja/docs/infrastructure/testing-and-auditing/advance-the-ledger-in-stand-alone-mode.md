@@ -2,10 +2,11 @@
 html: advance-the-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
 seo:
-    description: レジャーを手動で閉鎖して、スタンドアロンモードでの処理を進めます。
+  description: レジャーを手動で閉鎖して、スタンドアロンモードでの処理を進めます。
 labels:
   - コアサーバ
 ---
+
 # スタンドアロンモードでレジャーを進める
 
 スタンドアロンモードでは`rippled`はピアツーピアネットワークの他のメンバーと通信せず、またコンセンサスプロセスに参加しません。このため、[ledger_acceptメソッド][]を使用してレジャーインデックスを手動で進める必要があります。

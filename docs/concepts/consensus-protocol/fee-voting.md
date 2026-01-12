@@ -1,10 +1,11 @@
 ---
 seo:
-    description: How validators vote on fees (transaction cost and reserve requirements).
+  description: How validators vote on fees (transaction cost and reserve requirements).
 labels:
   - Fees
   - XRP
 ---
+
 # Fee Voting
 
 Fee voting is a system for adjusting the fees of using the XRP Ledger, specifically the base [transaction cost](../transactions/transaction-cost.md) and [reserve requirements](../accounts/reserves.md). The purpose of the fees is to protect the network from spam, so fee voting decisions must weigh competing priorities of making the network accessible to more users and use cases versus protecting the network from misuse or overuse. Changes must be made periodically to adjust to long-term changes in the value of XRP and the costs and capabilities of network nodes.
@@ -15,11 +16,11 @@ Fee voting is a system for adjusting the fees of using the XRP Ledger, specifica
 
 The parameters you can set are as follows:
 
-| Parameter | Description | Recommended Value |
-|-----------|-------------|-------------------|
-| `reference_fee` | The **reference transaction cost.** This is the amount of XRP, in _drops_ (1 XRP = 1 million drops.), that must be destroyed to send the reference transaction, the cheapest possible transaction. The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers. | `10` (0.00001 XRP) |
-| `account_reserve` | The **base account reserve.** This is the minimum amount of XRP, in _drops_, that an account must hold in reserve, which is also the minimum requirement to fund a new account. | `1000000` ({% $env.PUBLIC_BASE_RESERVE %}) |
-| `owner_reserve` | The **owner reserve increment.** This is how much more XRP, in _drops_, that an account must hold for _each_ object it owns in the ledger. | `200000` ({% $env.PUBLIC_OWNER_RESERVE %}) |
+| Parameter         | Description                                                                                                                                                                                                                                                                                                             | Recommended Value                          |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `reference_fee`   | The **reference transaction cost.** This is the amount of XRP, in _drops_ (1 XRP = 1 million drops.), that must be destroyed to send the reference transaction, the cheapest possible transaction. The actual transaction cost is a multiple of this value, scaled dynamically based on the load of individual servers. | `10` (0.00001 XRP)                         |
+| `account_reserve` | The **base account reserve.** This is the minimum amount of XRP, in _drops_, that an account must hold in reserve, which is also the minimum requirement to fund a new account.                                                                                                                                         | `1000000` ({% $env.PUBLIC_BASE_RESERVE %}) |
+| `owner_reserve`   | The **owner reserve increment.** This is how much more XRP, in _drops_, that an account must hold for _each_ object it owns in the ledger.                                                                                                                                                                              | `200000` ({% $env.PUBLIC_OWNER_RESERVE %}) |
 
 <!-- RESERVES_REMINDER: update recommendations in drops if reserves change -->
 
@@ -44,36 +45,36 @@ After counting the votes of other validators, each validator attempts to comprom
 
 In short:
 
-* **Flag ledger -1**: Validators submit votes.
-* **Flag ledger**: Validators tally votes and decide what SetFee to include, if any.
-* **Flag ledger +1**: Validators insert SetFee pseudo-transaction into their proposed ledgers.
-* **Flag ledger +2**: New settings take effect, if a SetFee pseudo-transaction achieved consensus.
+- **Flag ledger -1**: Validators submit votes.
+- **Flag ledger**: Validators tally votes and decide what SetFee to include, if any.
+- **Flag ledger +1**: Validators insert SetFee pseudo-transaction into their proposed ledgers.
+- **Flag ledger +2**: New settings take effect, if a SetFee pseudo-transaction achieved consensus.
 
 ## Maximum Fee Values
 
 Before the [XRPFees amendment][], the maximum possible values for the fees was limited based on the internal data type of the legacy [FeeSettings ledger entry](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md) format. These values are as follows:
 
-| Parameter | Maximum Value (drops) | Maximum Value (XRP)
-|-----------|-----------------------|----|
-| `reference_fee` | 2<sup>64</sup> | (More XRP than has ever existed.) |
-| `account_reserve` | 2<sup>32</sup> drops | Approximately 4294 XRP |
-| `owner_reserve` | 2<sup>32</sup> drops | Approximately 4294 XRP |
+| Parameter         | Maximum Value (drops) | Maximum Value (XRP)               |
+| ----------------- | --------------------- | --------------------------------- |
+| `reference_fee`   | 2<sup>64</sup>        | (More XRP than has ever existed.) |
+| `account_reserve` | 2<sup>32</sup> drops  | Approximately 4294 XRP            |
+| `owner_reserve`   | 2<sup>32</sup> drops  | Approximately 4294 XRP            |
 
 On Mainnet and any other networks with the XRPFees amendment enabled, all three fees can now be set to any valid amount of XRP.
 
 ## See Also
 
 - **Concepts:**
-    - [Amendments](../networks-and-servers/amendments.md)
-    - [Transaction Cost](../transactions/transaction-cost.md)
-    - [Reserves](../accounts/reserves.md)
-    - [Transaction Queue](../transactions/transaction-queue.md)
+  - [Amendments](../networks-and-servers/amendments.md)
+  - [Transaction Cost](../transactions/transaction-cost.md)
+  - [Reserves](../accounts/reserves.md)
+  - [Transaction Queue](../transactions/transaction-queue.md)
 - **Tutorials:**
-    - [Configure `rippled`](../../infrastructure/configuration/index.md)
+  - [Configure `rippled`](../../infrastructure/configuration/index.md)
 - **References:**
-    - [fee method][]
-    - [server_info method][]
-    - [FeeSettings object](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)
-    - [SetFee pseudo-transaction][]
+  - [fee method][]
+  - [server_info method][]
+  - [FeeSettings object](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)
+  - [SetFee pseudo-transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -2,11 +2,12 @@
 html: autobridging.html
 parent: decentralized-exchange.html
 seo:
-    description: オートブリッジングは、コストが下がる場合はXRPを仲介として使用してオーダーブックを自動的に接続します。
+  description: オートブリッジングは、コストが下がる場合はXRPを仲介として使用してオーダーブックを自動的に接続します。
 labels:
   - XRP
   - 分散型取引所
 ---
+
 # オートブリッジング
 
 XRP Ledgerの[分散型取引所](index.md)で、XRP以外の2種類の通貨を交換する[オファー](offers.md)があった場合、合成されたオーダーブックで[XRP](../../../introduction/what-is-xrp.md)が中間通貨として使用されることがあります。これは _オートブリッジング_ によるものです。この機能は、通貨を直接交換するよりも安く済む場合にXRPを使用し、あらゆる通貨ペアの流動性を向上させる役割を担います。XRP Ledgerのネイティブ暗号資産であるというXRPの特性によりこのように機能します。オファーを実行する際は、直接オファーとオートブリッジングオファーを組み合わせることで全体として最良の為替レートを実現できます。
@@ -16,7 +17,6 @@ XRP Ledgerの[分散型取引所](index.md)で、XRP以外の2種類の通貨を
 オートブリッジングは、あらゆる[OfferCreateトランザクション][]で自動的に行われます。[Paymentトランザクション](../../../references/protocol/transactions/types/payment.md)ではオートブリッジングはデフォルトでは _行われません_ が、path-findingにより同様の効果のある[パス](../fungible-tokens/paths.md)を検索できます。
 
 [![オートブリッジングによる直接注文と合成注文の組み合わせを示す図](/docs/img/autobridging.png)](/docs/img/autobridging.png)
-
 
 ## 関連項目
 

@@ -2,11 +2,12 @@
 html: use-payment-channels.html
 parent: use-specialized-payment-types.html
 seo:
-    description: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
+  description: Payment Channels are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the JSON-RPC API of a local rippled server.
 labels:
   - Payment Channels
   - Smart Contracts
 ---
+
 # Use Payment Channels
 
 [Payment Channels](../../../../concepts/payment-types/payment-channels.md) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](../../../../references/http-websocket-apis/index.md) of a local [`rippled` server](../../../../concepts/networks-and-servers/index.md).
@@ -17,12 +18,12 @@ Ideally, to step through this tutorial, you would have two people, each with the
 
 The example addresses used in this tutorial are:
 
-| | |
-|--|--|
-| **Payer's address** | `rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH` |
-| **Public key used for channel (in the XRP Ledger's [base58][] encoded string format)** | `aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3`
-| **Public key used for channel (in hex)** | `023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6` |
-| **Payee's address** | `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` |
+|                                                                                        |                                                                      |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **Payer's address**                                                                    | `rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH`                                 |
+| **Public key used for channel (in the XRP Ledger's [base58][] encoded string format)** | `aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3`               |
+| **Public key used for channel (in hex)**                                               | `023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6` |
+| **Payee's address**                                                                    | `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`                                 |
 
 {% admonition type="success" name="Tip" %}In this example, the channel's public key is the public key from the payer's master key pair. This is perfectly safe and valid. It is also perfectly safe and valid to use a different key pair, as long as only the payer knows the public and secret keys for that key pair. <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->{% /admonition %}
 
@@ -33,6 +34,7 @@ To test without transferring real XRP, you can use [XRP Ledger Testnet](/resourc
 You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (`100000000` drops) in a payment channel for at least 1 day.
 
 ## Flow Diagram
+
 [flow diagram]: #flow-diagram
 
 The following diagram summarizes the lifecycle of a payment channel:
@@ -108,6 +110,7 @@ Response:
     }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Javascript" %}
@@ -185,8 +188,7 @@ In the response from the JSON-RPC, the payer should look for the following:
 - In the transaction's `meta` field, confirm that the `TransactionResult` is `tesSUCCESS`.
 - Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](../../../../concepts/transactions/finality-of-results/index.md) if it appears in a validated ledger version.)
 - In the `AffectedNodes` array of the transaction's `meta` field, look for a `CreatedNode` object with the `LedgerEntryType` of `PayChannel`. The `LedgerIndex` field of the `CreatedNode` object indicates the Channel ID. (In the above example, this is a hex string starting with "`5DB0`...") The Channel ID is necessary later to sign claims.
-    For more information on the PayChannel ledger object type, see [PayChannel ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md).
-
+  For more information on the PayChannel ledger object type, see [PayChannel ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md).
 
 ## 2. The payee checks specifics of the payment channel.
 
@@ -242,7 +244,6 @@ The payee should check that the parameters of the payment channel are suitable f
 
 Since there can be multiple channels between the same two parties, it is important for the payee to check the qualities of the correct channel. If there is any chance of confusion, the payer should clarify the Channel ID (`channel_id`) of the channel to use.
 
-
 ## 3. The payer creates one or more signed _claims_ for the XRP in the channel.
 
 The amounts of these claims depends on the specific goods or services the payer wants to pay for.
@@ -271,13 +272,12 @@ Response:
 
 ```json
 {
-    "result": {
-        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
-        "status": "success"
-    }
+  "result": {
+    "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+    "status": "success"
+  }
 }
 ```
-
 
 ## 4. The payer sends a claim to the payee as payment for goods or services.
 
@@ -285,10 +285,10 @@ This communication happens "off-ledger" in any communication system the payer an
 
 The exact format of the claim is not important as long as it communicates the following information:
 
-| Field                   | Example                                            |
-|:------------------------|:---------------------------------------------------|
-| Channel ID              | `5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3` |
-| Amount of XRP, in drops | `1000000`                                          |
+| Field                   | Example                                                                                                                                                                                                                |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Channel ID              | `5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3`                                                                                                                                                     |
+| Amount of XRP, in drops | `1000000`                                                                                                                                                                                                              |
 | Signature               | `304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A` <br/> `400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064` _(Note: this long string has been broken to fit on one line.)_ |
 
 The payee also needs to know the Public Key associated with the channel, which is the same throughout the channel's life.
@@ -377,22 +377,20 @@ The payee should check the following:
 - Confirm that the `expiration` (mutable expiration) of the channel, if present, is not too soon. The payee must redeem claims before this time.
 - Confirm that the `amount` of the claim is equal or less than the `amount` of the channel. If the `amount` of the claim is higher, the claim cannot be redeemed unless the payer uses a [PaymentChannelFund transaction][] to increase the total amount of XRP available to the channel.
 - Confirm that the `balance` of the channel matches the amount the payee expects to have already received from the channel. If these do not match up, the payee should double-check the channel's transaction history. Some possible explanations for a mismatch include:
-    - The payer used a [PaymentChannelClaim][] transaction to deliver XRP from the channel to the payee, but the payee did not notice and record the incoming transaction.
-    - The payee's records include transactions that are "in flight" or have not yet been included in the latest validated ledger version. The payee can use the [tx method][] to look up the state of individual transactions to check this.
-    - The `account_channels` request did not specify the correct ledger version. (Use `"ledger_index": "validated"` to get the latest validated ledger version)
-    - The payee previously redeemed XRP but forgot to record it.
-    - The payee attempted to redeem XRP and recorded the tentative result, but the transaction's final validated result was not the same and the payee neglected to record the final validated result.
-    - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [server_info method][] to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/XRPLF/rippled/issues/).)
+  - The payer used a [PaymentChannelClaim][] transaction to deliver XRP from the channel to the payee, but the payee did not notice and record the incoming transaction.
+  - The payee's records include transactions that are "in flight" or have not yet been included in the latest validated ledger version. The payee can use the [tx method][] to look up the state of individual transactions to check this.
+  - The `account_channels` request did not specify the correct ledger version. (Use `"ledger_index": "validated"` to get the latest validated ledger version)
+  - The payee previously redeemed XRP but forgot to record it.
+  - The payee attempted to redeem XRP and recorded the tentative result, but the transaction's final validated result was not the same and the payee neglected to record the final validated result.
+  - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [server_info method][] to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/XRPLF/rippled/issues/).)
 
 After confirming both the signature and the current state of the payment channel, the payee has not yet received the XRP, but is certain that he or she _can_ redeem the XRP as long as the transaction to do so is processed before the channel expires.
-
 
 ## 6. Payee provides goods or services.
 
 At this point, the payee can provide goods and services to the payer, knowing that payment is already assured.
 
 For purposes of this tutorial, the payee can give the payer a high-five or equivalent online message as the "goods and services".
-
 
 ## 7. Repeat steps 3-6 as desired.
 
@@ -401,7 +399,6 @@ The payer and payee can repeat steps 3 through 6 (creating, transmitting, and ve
 - The amount of XRP in the payment channel. (If necessary, the payer can send a [PaymentChannelFund transaction][] to increase the total amount of XRP available to the channel.)
 
 - The immutable expiration of the payment channel, if one is set. (The `cancel_after` field in the response to the [account_channels method][] shows this.)
-
 
 ## 8. When ready, the payee redeems a claim for the authorized amount.
 
@@ -470,6 +467,7 @@ Response:
     }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Javascript" %}
@@ -500,17 +498,19 @@ Example of [submitting a transaction](../../../../references/http-websocket-apis
 
 ```json
 {
-    "method": "submit",
-    "params": [{
-        "secret": "s████████████████████████████",
-        "tx_json": {
-            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "TransactionType": "PaymentChannelClaim",
-            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "Flags": 2147614720
-        },
-        "fee_mult_max": 1000
-    }]
+  "method": "submit",
+  "params": [
+    {
+      "secret": "s████████████████████████████",
+      "tx_json": {
+        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "TransactionType": "PaymentChannelClaim",
+        "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "Flags": 2147614720
+      },
+      "fee_mult_max": 1000
+    }
+  ]
 }
 ```
 
@@ -520,24 +520,24 @@ Example `account_channels` response:
 
 ```json
 {
-    "result": {
+  "result": {
+    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+    "channels": [
+      {
         "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-        "channels": [
-            {
-                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "amount": "100000000",
-                "balance": "1000000",
-                "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "destination_tag": 20170428,
-                "expiration": 547073182,
-                "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-                "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "settle_delay": 86400
-            }
-        ],
-        "status": "success"
-    }
+        "amount": "100000000",
+        "balance": "1000000",
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "destination_tag": 20170428,
+        "expiration": 547073182,
+        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+        "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+        "settle_delay": 86400
+      }
+    ],
+    "status": "success"
+  }
 }
 ```
 
@@ -557,17 +557,19 @@ Example of [submitting](../../../../references/http-websocket-apis/public-api-me
 
 ```json
 {
-    "method": "submit",
-    "params": [{
-        "secret": "s████████████████████████████",
-        "tx_json": {
-            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "TransactionType": "PaymentChannelClaim",
-            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "Flags": 2147614720
-        },
-        "fee_mult_max": 1000
-    }]
+  "method": "submit",
+  "params": [
+    {
+      "secret": "s████████████████████████████",
+      "tx_json": {
+        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "TransactionType": "PaymentChannelClaim",
+        "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "Flags": 2147614720
+      },
+      "fee_mult_max": 1000
+    }
+  ]
 }
 ```
 
@@ -577,87 +579,87 @@ Example response from using the [tx method][] to look up the transaction from th
 
 ```json
 {
-    "result": {
-        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-        "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-        "Fee": "5606",
-        "Flags": 2147614720,
-        "Sequence": 41,
-        "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-        "TransactionType": "PaymentChannelClaim",
-        "TxnSignature": "3044022008922FEB6F7D35D42006685BCBB007103D2A40AFAA69A7CFC10DF529F94BB6A402205D67816F50BBAEE0A2709AA3A93707304EC21133550FD2FF7436AD0C3CA6CE27",
-        "date": 547091262,
-        "hash": "9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33",
-        "inLedger": 29480670,
-        "ledger_index": 29480670,
-        "meta": {
-            "AffectedNodes": [
-                {
-                    "ModifiedNode": {
-                        "LedgerEntryType": "AccountRoot",
-                        "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-                        "PreviousTxnID": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB",
-                        "PreviousTxnLgrSeq": 29385089
-                    }
-                },
-                {
-                    "DeletedNode": {
-                        "FinalFields": {
-                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                            "Amount": "100000000",
-                            "Balance": "1000000",
-                            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                            "DestinationTag": 20170428,
-                            "Expiration": 547073182,
-                            "Flags": 0,
-                            "OwnerNode": "0000000000000000",
-                            "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
-                            "PreviousTxnLgrSeq": 29451256,
-                            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                            "SettleDelay": 86400
-                        },
-                        "LedgerEntryType": "PayChannel",
-                        "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "FinalFields": {
-                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                            "Balance": "1041862844",
-                            "Flags": 0,
-                            "OwnerCount": 2,
-                            "Sequence": 42
-                        },
-                        "LedgerEntryType": "AccountRoot",
-                        "LedgerIndex": "B1CB040A17F9469BC00376EC8719535655824AD16CB5F539DD5765FEA88FDBE3",
-                        "PreviousFields": {
-                            "Balance": "942868450",
-                            "OwnerCount": 3,
-                            "Sequence": 41
-                        },
-                        "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
-                        "PreviousTxnLgrSeq": 29451256
-                    }
-                },
-                {
-                    "ModifiedNode": {
-                        "FinalFields": {
-                            "Flags": 0,
-                            "Owner": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                            "RootIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
-                        },
-                        "LedgerEntryType": "DirectoryNode",
-                        "LedgerIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
-                    }
-                }
-            ],
-            "TransactionIndex": 7,
-            "TransactionResult": "tesSUCCESS"
+  "result": {
+    "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+    "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+    "Fee": "5606",
+    "Flags": 2147614720,
+    "Sequence": 41,
+    "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+    "TransactionType": "PaymentChannelClaim",
+    "TxnSignature": "3044022008922FEB6F7D35D42006685BCBB007103D2A40AFAA69A7CFC10DF529F94BB6A402205D67816F50BBAEE0A2709AA3A93707304EC21133550FD2FF7436AD0C3CA6CE27",
+    "date": 547091262,
+    "hash": "9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33",
+    "inLedger": 29480670,
+    "ledger_index": 29480670,
+    "meta": {
+      "AffectedNodes": [
+        {
+          "ModifiedNode": {
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+            "PreviousTxnID": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB",
+            "PreviousTxnLgrSeq": 29385089
+          }
         },
-        "status": "success",
-        "validated": true
-    }
+        {
+          "DeletedNode": {
+            "FinalFields": {
+              "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+              "Amount": "100000000",
+              "Balance": "1000000",
+              "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+              "DestinationTag": 20170428,
+              "Expiration": 547073182,
+              "Flags": 0,
+              "OwnerNode": "0000000000000000",
+              "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+              "PreviousTxnLgrSeq": 29451256,
+              "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+              "SettleDelay": 86400
+            },
+            "LedgerEntryType": "PayChannel",
+            "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+              "Balance": "1041862844",
+              "Flags": 0,
+              "OwnerCount": 2,
+              "Sequence": 42
+            },
+            "LedgerEntryType": "AccountRoot",
+            "LedgerIndex": "B1CB040A17F9469BC00376EC8719535655824AD16CB5F539DD5765FEA88FDBE3",
+            "PreviousFields": {
+              "Balance": "942868450",
+              "OwnerCount": 3,
+              "Sequence": 41
+            },
+            "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+            "PreviousTxnLgrSeq": 29451256
+          }
+        },
+        {
+          "ModifiedNode": {
+            "FinalFields": {
+              "Flags": 0,
+              "Owner": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+              "RootIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+            },
+            "LedgerEntryType": "DirectoryNode",
+            "LedgerIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+          }
+        }
+      ],
+      "TransactionIndex": 7,
+      "TransactionResult": "tesSUCCESS"
+    },
+    "status": "success",
+    "validated": true
+  }
 }
 ```
 
@@ -668,7 +670,6 @@ In the transaction's metadata, look for the following:
 
 Those fields indicate that the payment channel is closed.
 
-
 ## Conclusion
 
 This concludes the tutorial of Payment Channel usage. Ripple encourages users to find unique and interesting use cases to take full advantage of the speed and convenience of payment channels.
@@ -676,19 +677,19 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
 ## See Also
 
 - **Concepts:**
-    - [What is XRP?](../../../../introduction/what-is-xrp.md)
-    - [Payment Types](../../../../concepts/payment-types/index.md)
-        - [Payment Channels](../../../../concepts/payment-types/payment-channels.md)
+  - [What is XRP?](../../../../introduction/what-is-xrp.md)
+  - [Payment Types](../../../../concepts/payment-types/index.md)
+    - [Payment Channels](../../../../concepts/payment-types/payment-channels.md)
 - **Tutorials:**
-    - [Send XRP](../../send-xrp.md)
-    - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
-    - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Send XRP](../../send-xrp.md)
+  - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+  - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [PaymentChannelClaim transaction][]
-    - [PaymentChannelCreate transaction][]
-    - [PaymentChannelFund transaction][]
-    - [channel_authorize method][]
-    - [channel_verify method][]
-    - [PayChannel ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)
+  - [PaymentChannelClaim transaction][]
+  - [PaymentChannelCreate transaction][]
+  - [PaymentChannelFund transaction][]
+  - [channel_authorize method][]
+  - [channel_verify method][]
+  - [PayChannel ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

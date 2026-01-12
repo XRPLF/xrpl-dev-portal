@@ -1,14 +1,6 @@
-type TypeofType =
-  | 'bigint'
-  | 'boolean'
-  | 'function'
-  | 'number'
-  | 'object'
-  | 'string'
-  | 'undefined'
+type TypeofType = 'bigint' | 'boolean' | 'function' | 'number' | 'object' | 'string' | 'undefined'
 
 type TypeCheckFn = (thing: unknown) => boolean
-
 
 /**
  * Curried function for creating typeof checker functions.

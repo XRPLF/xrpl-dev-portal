@@ -99,10 +99,7 @@
           "id": "example_gateway_balances_1",
           "command": "gateway_balances",
           "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-          "hotwallet": [
-            "rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ",
-            "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"
-          ],
+          "hotwallet": ["rKm4uWpg9tfwbVSeATv4KxDe6mpE9yPkgJ", "ra7JkEzrgeKHdzKgo4EUUVBnxggY4z37kt"],
           "ledger_index": "validated"
         }
       },
@@ -161,7 +158,7 @@
         "body": {
           "id": "example_ledger_data",
           "command": "ledger_data",
-          "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",          
+          "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
           "limit": 5,
           "api_version": 2
         }
@@ -188,11 +185,11 @@
         "body": {
           "id": "example_simulate",
           "command": "simulate",
-          "tx_json" : {
-              "TransactionType" : "Payment",
-              "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-              "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-              "Amount" : "1000000"
+          "tx_json": {
+            "TransactionType": "Payment",
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+            "Amount": "1000000"
           }
         }
       },
@@ -497,12 +494,8 @@
         "body": {
           "id": "Example watch one account and all new ledgers",
           "command": "subscribe",
-          "streams": [
-            "ledger"
-          ],
-          "accounts": [
-            "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"
-          ]
+          "streams": ["ledger"],
+          "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
         }
       },
       {
@@ -512,12 +505,8 @@
         "body": {
           "id": "Example stop watching one account and new ledgers",
           "command": "unsubscribe",
-          "streams": [
-            "ledger"
-          ],
-          "accounts": [
-            "rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"
-          ]
+          "streams": ["ledger"],
+          "accounts": ["rrpNnNLKrartuEqfJGpqyDwPj1AFPg9vn1"]
         }
       }
     ]
@@ -720,9 +709,9 @@
         "body": {
           "id": "example_get_oracle",
           "command": "ledger_entry",
-          "oracle" : {
+          "oracle": {
             "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
-            "oracle_document_id":  34
+            "oracle_document_id": 34
           },
           "ledger_index": "validated"
         }
@@ -735,10 +724,7 @@
           "id": "example_get_ripplestate",
           "command": "ledger_entry",
           "ripple_state": {
-            "accounts": [
-              "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-              "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"
-            ],
+            "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"],
             "currency": "USD"
           },
           "ledger_index": "validated"
@@ -828,7 +814,7 @@
           "command": "ledger_entry",
           "mptoken": {
             "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
-            "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
+            "account": "rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
           }
         }
       }

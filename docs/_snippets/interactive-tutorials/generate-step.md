@@ -2,6 +2,7 @@
 
 <button id="generate-creds-button" class="btn btn-primary" data-fauceturl="https://faucet.altnet.rippletest.net/accounts">Get Testnet credentials</button>
 {% loading-icon message="Generating Keys..." /%}
+
 <div class="output-area"></div>
 
 {% /interactive-block %}

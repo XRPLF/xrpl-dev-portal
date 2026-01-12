@@ -1,9 +1,9 @@
 {
-    "name": "verify_credentials",
-    "version": "2.0.0",
-    "description": "Sample code showing how to check if a credential on the XRPL exists and is valid.",
-    "type": "module",
-    "dependencies": {
-        "xrpl": "^4.2.5"
-    }
+  "name": "verify_credentials",
+  "version": "2.0.0",
+  "description": "Sample code showing how to check if a credential on the XRPL exists and is valid.",
+  "type": "module",
+  "dependencies": {
+    "xrpl": "^4.2.5"
+  }
 }

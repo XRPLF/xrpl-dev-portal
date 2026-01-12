@@ -2,12 +2,13 @@
 html: testing-devnet-features.html
 parent: how-tos.html
 seo:
-    description: Guide on using pre-release transaction types on the XRP Ledger for developers.
+  description: Guide on using pre-release transaction types on the XRP Ledger for developers.
 labels:
   - Development
   - Customization
   - Devnet
 ---
+
 # Test Pre-Release Transaction Types
 
 _(Requires cloning and modifying XRPL core repositories and understanding of XRPL [transaction serialization](../../references/protocol/binary-format.md))._
@@ -124,32 +125,32 @@ Copy the generated `definitions.json` to your XRPL library installation.
 {% tab label="JavaScript" %}
 
 ```javascript
-const { Client, Wallet } = require('xrpl');
-const { encode } = require('ripple-binary-codec');
+const { Client, Wallet } = require('xrpl')
+const { encode } = require('ripple-binary-codec')
 
 async function main() {
-  const client = new Client("wss://s.devnet.rippletest.net:51233");
-  await client.connect();
+  const client = new Client('wss://s.devnet.rippletest.net:51233')
+  await client.connect()
 
-  const wallet = Wallet.fromSeed('sYOURSEEDHERE');
+  const wallet = Wallet.fromSeed('sYOURSEEDHERE')
 
   const customTx = {
     TransactionType: 'NewTransactionType',
     Account: wallet.address,
     // additional fields for the new transaction
-  };
+  }
 
   // If using Typescript, you will need to encode to allow typechecks to function
   // or just us @ts-expect-error when calling submit
   //   const encodedTransaction = encode(customTx);
 
-  await client.submitAndWait(customTx, { wallet });
+  await client.submitAndWait(customTx, { wallet })
   // If using typescript, you should pass the encoded string of the transaction or us @ts-expect-error
   //   await client.submitAndWait(encodedTransaction, { wallet });
   // await client.disconnect();
 }
 
-main();
+main()
 // Or call await main(); if your nodejs versions supports top level await
 ```
 

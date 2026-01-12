@@ -2,10 +2,11 @@
 html: bouncing-payments.html
 parent: payment-types.html
 seo:
-    description: Cuando el propósito de un pago no esté claro, devuélvelo al remitente.
+  description: Cuando el propósito de un pago no esté claro, devuélvelo al remitente.
 labels:
   - Tokens
 ---
+
 # Devolver pagos
 
 Cuando una de tus direcciones recibe un pago cuyo propósito no está claro, te recomendamos que intentes devolver el dinero a su remitente. Si bien esto requiere más trabajo que quedarse con el dinero, demuestra buena fe hacia los clientes. Puedes hacer que un operador rechace los pagos manualmente o crear un sistema para hacerlo automáticamente.

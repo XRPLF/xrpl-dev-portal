@@ -2,11 +2,12 @@
 html: disable-master-key-pair.html
 parent: manage-account-settings.html
 seo:
-    description: アドレスに数学的に関連付けられたマスターキーを無効にする。
+  description: アドレスに数学的に関連付けられたマスターキーを無効にする。
 labels:
   - セキュリティ
   - アカウント
 ---
+
 # マスターキーペアの無効化
 
 このページでは、[アカウント](../../../concepts/accounts/index.md)のアドレスに数学的に関連付けられた[マスターキーペア](../../../concepts/accounts/cryptographic-keys.md)を無効化する方法について説明します。あなたのアカウントのマスターキーペアが漏洩した可能性がある場合、または[マルチシグ](../../../concepts/accounts/multi-signing.md)をあなたのアカウントからトランザクションを送信する _唯一_ の方法としたい場合、これを行う必要があります。
@@ -21,11 +22,11 @@ labels:
 アカウントのマスターキーペアを無効にするには、次の前提条件を満たしている必要があります。
 
 - XRP Ledger[アカウント](../../../concepts/accounts/index.md)を持ち、そのアカウントからマスターキーペアを用いてトランザクションの署名と提出ができることが必要です。[安全な署名の設定](../../../concepts/transactions/secure-signing.md) をご覧ください。これには2つの一般的な方法があります。
-    - アカウントのマスターシード値を知っている。シード値は一般的に `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`のような "s" で始まる [base58][] 値で表されます。
-    - あるいは、シード値を知る必要がなく、安全に保存する[専用の署名デバイス](../../../concepts/transactions/secure-signing.md#専用の署名デバイスを使用する) を使用します
+  - アカウントのマスターシード値を知っている。シード値は一般的に `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`のような "s" で始まる [base58][] 値で表されます。
+  - あるいは、シード値を知る必要がなく、安全に保存する[専用の署名デバイス](../../../concepts/transactions/secure-signing.md#専用の署名デバイスを使用する) を使用します
 - あなたのアカウントには、マスターキーペア以外のトランザクションを認証する方法が少なくとも1つ必要です。つまり、以下のいずれか、または両方を行う必要があります。
-    - [レギュラーキーペアを割り当てる](assign-a-regular-key-pair.md).
-    - [マルチシグの設定](set-up-multi-signing.md).
+  - [レギュラーキーペアを割り当てる](assign-a-regular-key-pair.md).
+  - [マルチシグの設定](set-up-multi-signing.md).
 
 ## 手順
 
@@ -54,6 +55,7 @@ labels:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "command": "sign",
@@ -65,31 +67,36 @@ labels:
   "secret": "s████████████████████████████"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-   "method": "sign",
-   "params": [
-      {
-         "tx_json": {
-           "TransactionType": "AccountSet",
-           "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-           "SetFlag": 4
-         },
-         "secret": "s████████████████████████████"
-      }
-   ]
+  "method": "sign",
+  "params": [
+    {
+      "tx_json": {
+        "TransactionType": "AccountSet",
+        "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "SetFlag": 4
+      },
+      "secret": "s████████████████████████████"
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 $ rippled sign s████████████████████████████ '{"TransactionType":"AccountSet",
     "Account":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "SetFlag":4}'
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -99,6 +106,7 @@ $ rippled sign s█████████████████████�
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -120,33 +128,36 @@ $ rippled sign s█████████████████████�
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "result": {
-        "deprecated": "This command has been deprecated and will be removed in a future version of the server. Please migrate to a standalone signing tool.",
-        "status": "success",
-        "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-        "tx_json": {
-            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Fee": "10",
-            "Flags": 2147483648,
-            "Sequence": 380,
-            "SetFlag": 4,
-            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-            "TransactionType": "AccountSet",
-            "TxnSignature": "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-            "hash": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
-        }
+  "result": {
+    "deprecated": "This command has been deprecated and will be removed in a future version of the server. Please migrate to a standalone signing tool.",
+    "status": "success",
+    "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+    "tx_json": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 380,
+      "SetFlag": 4,
+      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+      "TransactionType": "AccountSet",
+      "TxnSignature": "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
+      "hash": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
     }
+  }
 }
-
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:13:24.783570867 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -170,6 +181,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -190,31 +202,37 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "command": "submit",
-    "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
+  "command": "submit",
+  "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-   "method":"submit",
-   "params": [
-      {
-         "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
-      }
-   ]
+  "method": "submit",
+  "params": [
+    {
+      "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -224,57 +242,62 @@ $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103A
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
-    "engine_result" : "tesSUCCESS",
-    "engine_result_code" : 0,
-    "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-    "tx_blob" : "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-    "tx_json" : {
-      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Fee" : "10",
-      "Flags" : 2147483648,
-      "Sequence" : 380,
-      "SetFlag" : 4,
-      "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-      "TransactionType" : "AccountSet",
-      "TxnSignature" : "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-      "hash" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+    "tx_json": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 380,
+      "SetFlag": 4,
+      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+      "TransactionType": "AccountSet",
+      "TxnSignature": "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
+      "hash": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
     }
   },
   "status": "success",
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-  "result" : {
-    "engine_result" : "tesSUCCESS",
-    "engine_result_code" : 0,
-    "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-    "status" : "success",
-    "tx_blob" : "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-    "tx_json" : {
-      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Fee" : "10",
-      "Flags" : 2147483648,
-      "Sequence" : 380,
-      "SetFlag" : 4,
-      "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-      "TransactionType" : "AccountSet",
-      "TxnSignature" : "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-      "hash" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
+  "result": {
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "status": "success",
+    "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+    "tx_json": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 380,
+      "SetFlag": 4,
+      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+      "TransactionType": "AccountSet",
+      "TxnSignature": "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
+      "hash": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
     }
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:25:49.361743460 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -300,24 +323,24 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 トランザクションが `tecNO_ALTERNATIVE_KEY` という結果で失敗した場合、あなたのアカウントでは現在トランザクションを認証するための別の方法が有効になっていません。[レギュラーキーペアを割り当てる](assign-a-regular-key-pair.md)か [マルチシグを設定](set-up-multi-signing.md) した後、再度マスターキーペアの無効化を試してみてください。
 
-
 ### 4. 検証の待機
 
-{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%}
 
 ### 5. アカウントフラグの確認
 
 [account_infoメソッド][]で、アカウントのマスターキーが無効になっていることを確認します。以下のパラメータを必ず指定してください。
 
-| フィールド       | 値                                                                           |
-|:---------------|:-----------------------------------------------------------------------------|
-| `account`      | アカウントのアドレス                                                            |
+| フィールド     | 値                                                                                       |
+| :------------- | :--------------------------------------------------------------------------------------- |
+| `account`      | アカウントのアドレス                                                                     |
 | `ledger_index` | `"validated"` とすると、検証済みの最新バージョンのレジャーから結果を得ることができます。 |
 
 #### リクエストの例
@@ -325,6 +348,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "command": "account_info",
@@ -332,34 +356,41 @@ Loading: "/etc/opt/ripple/rippled.cfg"
   "ledger_index": "validated"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "account_info",
-    "params": [{
-        "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "ledger_index": "validated"
-    }]
+  "method": "account_info",
+  "params": [
+    {
+      "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "ledger_index": "validated"
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 #### レスポンスの例
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -389,9 +420,11 @@ rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "result": {
@@ -420,9 +453,11 @@ rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:41:38.642710734 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -454,10 +489,10 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 レスポンスの `account_data` オブジェクトで、 `Flags` フィールドと `lsfDisableMaster` フラグの値 (16 進数では `0x00100000`、10 進数では `1048576`) を ビット論理積 (ほとんどのプログラミング言語では `&` オペレーター) で比較します。
 
@@ -466,19 +501,22 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 // 上記のJSON-RPCレスポンスがaccount_info_responseとして保存されていると仮定します。
-const lsfDisableMaster = 0x00100000;
-let acct_flags = account_info_response.result.account_data.Flags;
+const lsfDisableMaster = 0x00100000
+let acct_flags = account_info_response.result.account_data.Flags
 if ((lsfDisableMaster & acct_flags) === lsfDisableMaster) {
-  console.log("マスターキーペアが無効化されています");
+  console.log('マスターキーペアが無効化されています')
 } else {
-  console.log("マスターキーペアが使用可能です");
+  console.log('マスターキーペアが使用可能です')
 }
 ```
+
 {% /tab %}
 
 {% tab label="Python" %}
+
 ```python
 # 上記のJSON-RPCレスポンスがJSONから解析され、
 # 変数account_info_responseとして保存されたと仮定すると、以下のようになります。
@@ -489,6 +527,7 @@ if lsfDisableMaster & acct_flags == lsfDisableMaster:
 else:
   console.log("マスターキーペアが使用可能です");
 ```
+
 {% /tab %}
 
 {% /tabs %}

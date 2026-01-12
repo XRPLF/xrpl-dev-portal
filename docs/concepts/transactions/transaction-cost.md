@@ -2,17 +2,17 @@
 html: transaction-cost.html
 parent: transactions.html
 seo:
-    description: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
+  description: The transaction cost is a small amount of XRP destroyed to send a transaction, which protects the ledger from spam. Learn how the transaction cost applies.
 labels:
   - Fees
   - Transaction Sending
 ---
+
 # Transaction Cost
 
 To protect the XRP Ledger from being disrupted by spam and denial-of-service attacks, each transaction must destroy a small amount of [XRP](../../introduction/what-is-xrp.md). This _transaction cost_ is designed to increase along with the load on the network, making it very expensive to deliberately or inadvertently overload the network.
 
 Every transaction must [specify how much XRP to destroy](#specifying-the-transaction-cost) to pay the transaction cost.
-
 
 ## Current Transaction Cost
 
@@ -24,15 +24,14 @@ You can also [query `rippled` for the current transaction cost](#querying-the-tr
 
 Some transactions have different transaction costs:
 
-| Transaction           | Cost Before Load Scaling |
-|-----------------------|--------------------------|
-| [Reference Transaction](#reference-transaction-cost) (Most transactions) | 10 drops |
-| [Key Reset Transaction](#key-reset-transaction) | 0 |
-| [Multi-signed Transaction](../accounts/multi-signing.md) | 10 drops × (1 + Number of Signatures Provided) |
+| Transaction                                                                                               | Cost Before Load Scaling                           |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| [Reference Transaction](#reference-transaction-cost) (Most transactions)                                  | 10 drops                                           |
+| [Key Reset Transaction](#key-reset-transaction)                                                           | 0                                                  |
+| [Multi-signed Transaction](../accounts/multi-signing.md)                                                  | 10 drops × (1 + Number of Signatures Provided)     |
 | [EscrowFinish Transaction with Fulfillment](../../references/protocol/transactions/types/escrowfinish.md) | 10 drops × (33 + (Fulfillment size in bytes ÷ 16)) |
-| [AccountDelete Transaction](../accounts/deleting-accounts.md) | 2,000,000 drops |
-| [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md) | 2,000,000 drops |
-
+| [AccountDelete Transaction](../accounts/deleting-accounts.md)                                             | 2,000,000 drops                                    |
+| [AMMCreate Transaction](../tokens/decentralized-exchange/automated-market-makers.md)                      | 2,000,000 drops                                    |
 
 ## Beneficiaries of the Transaction Cost
 
@@ -42,15 +41,14 @@ The transaction cost is not paid to any party: the XRP is irrevocably destroyed.
 
 There are two thresholds for the transaction cost:
 
-* If the transaction cost does not meet a `rippled` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely.
-* If the transaction cost does not meet a `rippled` server's [open ledger cost threshold](#open-ledger-cost), the server queues the transaction for a later ledger.
+- If the transaction cost does not meet a `rippled` server's [load-based transaction cost threshold](#local-load-cost), the server ignores the transaction completely.
+- If the transaction cost does not meet a `rippled` server's [open ledger cost threshold](#open-ledger-cost), the server queues the transaction for a later ledger.
 
 This divides transactions into roughly three categories:
 
-* Transactions that specify a transaction cost so low that they get rejected by the load-based transaction cost.
-* Transactions that specify a transaction cost high enough to be included in the current open ledger.
-* Transactions in between, which get [queued for a later ledger version](#queued-transactions).
-
+- Transactions that specify a transaction cost so low that they get rejected by the load-based transaction cost.
+- Transactions that specify a transaction cost high enough to be included in the current open ledger.
+- Transactions in between, which get [queued for a later ledger version](#queued-transactions).
 
 ## Local Load Cost
 
@@ -74,18 +72,18 @@ For more information on queued transactions, see [Transaction Queue](transaction
 
 ## Reference Transaction Cost
 
-The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](transaction-cost.md) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](../accounts/multi-signing.md), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction. 
+The "Reference Transaction" is the cheapest (non-free) transaction, in terms of the necessary [transaction cost](transaction-cost.md) before load scaling. Most transactions have the same cost as the reference transaction. Some transactions, such as [multi-signed transactions](../accounts/multi-signing.md), require a multiple of this cost instead. When the open ledger cost escalates, the requirement is proportional to the basic cost of the transaction.
 
 ### Fee Levels
 
 _Fee levels_ represent the proportional difference between the minimum cost and the actual cost of a transaction. The [Open Ledger Cost](#open-ledger-cost) is measured in fee levels instead of absolute cost. See the following table for a comparison:
 
-| Transaction | Minimum cost in drops | Minimum cost in Fee levels | Double cost in drops | Double cost in fee levels |
-|-------------|-----------------------|----------------------------|----------------------|---------------------------|
-| Reference transaction (most transactions) | 10 | 256 | 20 | 512 |
-| [Multi-signed transaction](../accounts/multi-signing.md) with 4 signatures | 50 | 256 | 100 | 512 |
-| [Key reset transaction](transaction-cost.md#key-reset-transaction) | 0 | (Effectively infinite) | N/A | (Effectively infinite) |
-| [EscrowFinish transaction](../../references/protocol/transactions/types/escrowfinish.md) with 32-byte preimage. | 350 | 256 | 700 | 512 |
+| Transaction                                                                                                     | Minimum cost in drops | Minimum cost in Fee levels | Double cost in drops | Double cost in fee levels |
+| --------------------------------------------------------------------------------------------------------------- | --------------------- | -------------------------- | -------------------- | ------------------------- |
+| Reference transaction (most transactions)                                                                       | 10                    | 256                        | 20                   | 512                       |
+| [Multi-signed transaction](../accounts/multi-signing.md) with 4 signatures                                      | 50                    | 256                        | 100                  | 512                       |
+| [Key reset transaction](transaction-cost.md#key-reset-transaction)                                              | 0                     | (Effectively infinite)     | N/A                  | (Effectively infinite)    |
+| [EscrowFinish transaction](../../references/protocol/transactions/types/escrowfinish.md) with 32-byte preimage. | 350                   | 256                        | 700                  | 512                       |
 
 {% admonition type="info" name="Note" %}The standard ledger base fee is typically 10 drops, occasionally increased due to high volume. Should the validators vote to increase or lower the base fee, costs based on the standard fee (for example, the EscrowFinish transaction with Fulfillment) are adjusted accordingly.{% /admonition %}
 
@@ -101,14 +99,11 @@ The [server_info method][] reports the unscaled minimum XRP cost, as of the prev
 
 **Current Transaction Cost in XRP = `base_fee_xrp` × `load_factor`**
 
-
 ### server_state
 
 The [server_state method][] returns a direct representation of `rippled`'s internal load calculations. In this case, the effective load rate is the ratio of the current `load_factor` to the `load_base`. The `validated_ledger.base_fee` parameter reports the minimum transaction cost in [drops of XRP](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts). This design enables `rippled` to calculate the transaction cost using only integer math, while still allowing a reasonable amount of fine-tuning for server load. The actual calculation of the transaction cost is as follows:
 
 **Current Transaction Cost in Drops = (`base_fee` × `load_factor`) ÷ `load_base`**
-
-
 
 ## Specifying the Transaction Cost
 
@@ -118,18 +113,16 @@ As a rule, the XRP Ledger executes transactions _exactly_ as they are signed. (T
 
 Before signing a transaction, we recommend [looking up the current load-based transaction cost](#querying-the-transaction-cost). If the transaction cost is high due to load scaling, you may want to wait for it to decrease. If you do not plan on submitting the transaction immediately, we recommend specifying a slightly higher transaction cost to account for future load-based fluctuations in the transaction cost.
 
-
 ### Automatically Specifying the Transaction Cost
 
 The `Fee` field is one of the things that can be [auto-filled](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when creating a transaction. In this case, the auto-filling software provides a suitable `Fee` value based on the current load in the peer-to-peer network. However, there are several drawbacks and limitations to automatically filling in the transaction cost in this manner:
 
 - If the network's transaction cost goes up between auto-filling and submitting the transaction, the transaction may not be confirmed.
-    - To prevent a transaction from getting stuck in a state of being neither definitively confirmed or rejected, be sure to provide a `LastLedgerSequence` parameter so it eventually expires. Alternatively, you can try to [cancel a stuck transaction](finality-of-results/canceling-a-transaction.md) by reusing the same `Sequence` number. See [reliable transaction submission](reliable-transaction-submission.md) for best practices.
+  - To prevent a transaction from getting stuck in a state of being neither definitively confirmed or rejected, be sure to provide a `LastLedgerSequence` parameter so it eventually expires. Alternatively, you can try to [cancel a stuck transaction](finality-of-results/canceling-a-transaction.md) by reusing the same `Sequence` number. See [reliable transaction submission](reliable-transaction-submission.md) for best practices.
 - You have to be careful that the automatically provided value isn't too high. You don't want to burn a large fee to send a small transaction.
-    - If you are using `rippled`, you can also use the `fee_mult_max` and `fee_div_max` parameters of the [sign method][] to set a limit to the load scaling you are willing to sign.
-    - Some client libraries (like [xrpl.js](https://js.xrpl.org/) and [xrpl-py](https://xrpl-py.readthedocs.io/)) have configurable maximum `Fee` values, and raise an error instead of signing a transaction whose `Fee` value is higher than the maximum.
+  - If you are using `rippled`, you can also use the `fee_mult_max` and `fee_div_max` parameters of the [sign method][] to set a limit to the load scaling you are willing to sign.
+  - Some client libraries (like [xrpl.js](https://js.xrpl.org/) and [xrpl-py](https://xrpl-py.readthedocs.io/)) have configurable maximum `Fee` values, and raise an error instead of signing a transaction whose `Fee` value is higher than the maximum.
 - You cannot auto-fill from an offline machine nor when [multi-signing](../accounts/multi-signing.md).
-
 
 ## Transaction Costs and Failed Transactions
 
@@ -145,7 +138,6 @@ When a `rippled` server initially evaluates a transaction, it rejects the transa
 
 When a transaction has already been distributed to the network, but the account does not have enough XRP to pay the transaction cost, the result code `tecINSUFF_FEE` occurs instead. In this case, the account pays all the XRP it can, ending with 0 XRP. This can occur because `rippled` decides whether to relay the transaction to the network based on its in-progress ledger, but transactions may be dropped or reordered when building the consensus ledger.
 
-
 ## Key Reset Transaction
 
 As a special case, an account can send a [SetRegularKey](../../references/protocol/transactions/types/setregularkey.md) transaction with a transaction cost of `0`, as long as the account's [`lsfPasswordSpent` flag](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) is disabled. This transaction must be signed by the account's _master key pair_. Sending this transaction enables the `lsfPasswordSpent` flag.
@@ -156,24 +148,22 @@ The [`lsfPasswordSpent` flag](../../references/protocol/ledger-data/ledger-entry
 
 `rippled` prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
-
 ## Changing the Transaction Cost
 
 The XRP Ledger has a mechanism for changing the minimum transaction cost to account for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See [Fee Voting](../consensus-protocol/fee-voting.md) for more information.
 
-
 ## See Also
 
 - **Concepts:**
-    - [Reserves](../accounts/reserves.md)
-    - [Fee Voting](../consensus-protocol/fee-voting.md)
-    - [Transaction Queue](transaction-queue.md)
+  - [Reserves](../accounts/reserves.md)
+  - [Fee Voting](../consensus-protocol/fee-voting.md)
+  - [Transaction Queue](transaction-queue.md)
 - **Tutorials:**
-    - [Reliable Transaction Submission](reliable-transaction-submission.md)
+  - [Reliable Transaction Submission](reliable-transaction-submission.md)
 - **References:**
-    - [fee method][]
-    - [server_info method][]
-    - [FeeSettings object](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)
-    - [SetFee pseudo-transaction][]
+  - [fee method][]
+  - [server_info method][]
+  - [FeeSettings object](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)
+  - [SetFee pseudo-transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

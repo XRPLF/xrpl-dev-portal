@@ -2,10 +2,11 @@
 html: use-a-peer-reservation.html
 parent: configure-peering.html
 seo:
-    description: Set up a more reliable connection to a specific peer using a peer reservation.
+  description: Set up a more reliable connection to a specific peer using a peer reservation.
 labels:
   - Core Server
 ---
+
 # Use a Peer Reservation
 
 A [peer reservation][] is a setting that makes a `rippled` server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.
@@ -40,49 +41,49 @@ If you have already configured your server with a permanent node key pair value,
 
 1. Generate a new, random key pair using the [validation_create method][]. (Omit the `secret` value.)
 
-    For example:
+   For example:
 
-    ```
-    rippled validation_create
+   ```
+   rippled validation_create
 
-    Loading: "/etc/rippled.cfg"
-    Connecting to 127.0.0.1:5005
-    {
-       "result" : {
-          "status" : "success",
-          "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
-          "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
-          "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
-       }
-    }
-    ```
+   Loading: "/etc/rippled.cfg"
+   Connecting to 127.0.0.1:5005
+   {
+      "result" : {
+         "status" : "success",
+         "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
+         "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
+         "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
+      }
+   }
+   ```
 
-    Save the `validation_seed` (your node seed value) and the `validation_public_key` value (your node public key )
+   Save the `validation_seed` (your node seed value) and the `validation_public_key` value (your node public key )
 
 2. Edit your `rippled`'s config file.
 
-    ```
-    vim /etc/opt/ripple/rippled.cfg
-    ```
+   ```
+   vim /etc/opt/ripple/rippled.cfg
+   ```
 
-    {% partial file="/docs/_snippets/conf-file-location.md" /%}
+   {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 3. Add a `[node_seed]` stanza using the `validation_seed` value you generated earlier.
 
-    For example:
+   For example:
 
-    ```
-    [node_seed]
-    ssZkdwURFMBXenJPbrpE14b6noJSu
-    ```
+   ```
+   [node_seed]
+   ssZkdwURFMBXenJPbrpE14b6noJSu
+   ```
 
-    {% admonition type="danger" name="Warning" %}All servers should have unique `[node_seed]` values. If you copy your config file to another server, be sure to remove or change the `[node_seed]` value. Keep your `[node_seed]` secret; if a malicious actor gains access to this value, they could use it to impersonate your server in XRP Ledger peer-to-peer communications.{% /admonition %}
+   {% admonition type="danger" name="Warning" %}All servers should have unique `[node_seed]` values. If you copy your config file to another server, be sure to remove or change the `[node_seed]` value. Keep your `[node_seed]` secret; if a malicious actor gains access to this value, they could use it to impersonate your server in XRP Ledger peer-to-peer communications.{% /admonition %}
 
 4. Restart your `rippled` server:
 
-    ```
-    systemctl restart rippled
-    ```
+   ```
+   systemctl restart rippled
+   ```
 
 ### 2. Communicate the stock server's node public key
 
@@ -122,6 +123,7 @@ Use the [connect method][] to connect your server to the hub server. For example
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
     "command": "connect",
@@ -129,9 +131,11 @@ Use the [connect method][] to connect your server to the hub server. For example
     "port": 51235
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {
     "method": "connect",
@@ -143,18 +147,20 @@ Use the [connect method][] to connect your server to the hub server. For example
     ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```
 rippled connect 169.54.2.151 51235
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 If the hub server's administrator has set up the peer reservation as described in the previous steps, this should automatically connect and remain connected as long as possible.
-
 
 ## Next Steps
 
@@ -167,23 +173,22 @@ As a server administrator, you can manage the reservations your server has for o
 
 {% admonition type="success" name="Tip" %}Although there is no API method to immediately disconnect from an unwanted peer, you can use a software firewall such as `firewalld` to block an unwanted peer from connecting to your server. For examples, see the community-contributed [rbh script](https://github.com/gnanderson/rbh). <!-- SPELLING_IGNORE: rbh -->{% /admonition %}
 
-
 ## See Also
 
 - **Concepts:**
-    - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
-    - [Consensus](../../../concepts/consensus-protocol/index.md)
-    - [Parallel Networks](../../../concepts/networks-and-servers/parallel-networks.md)
+  - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
+  - [Consensus](../../../concepts/consensus-protocol/index.md)
+  - [Parallel Networks](../../../concepts/networks-and-servers/parallel-networks.md)
 - **Tutorials:**
-    - [Capacity Planning](../../installation/capacity-planning.md)
-    - [Troubleshooting `rippled`](../../troubleshooting/index.md)
+  - [Capacity Planning](../../installation/capacity-planning.md)
+  - [Troubleshooting `rippled`](../../troubleshooting/index.md)
 - **References:**
-    - [peers method][]
-    - [peer_reservations_add method][]
-    - [peer_reservations_del method][]
-    - [peer_reservations_list method][]
-    - [connect method][]
-    - [fetch_info method][]
-    - [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
+  - [peers method][]
+  - [peer_reservations_add method][]
+  - [peer_reservations_del method][]
+  - [peer_reservations_list method][]
+  - [connect method][]
+  - [fetch_info method][]
+  - [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

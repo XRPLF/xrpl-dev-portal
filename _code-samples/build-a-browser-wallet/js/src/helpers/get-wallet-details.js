@@ -30,10 +30,10 @@ export default async function getWalletDetails({ client }) {
 
     console.log('Got wallet details!');
 
-    return { 
-        account_data, 
-        accountReserve, 
+    return {
+        account_data,
+        accountReserve,
         xAddress: classicAddressToXAddress(wallet.address, false, false),
-        address: wallet.address 
+        address: wallet.address,
     };
 }

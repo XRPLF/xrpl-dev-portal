@@ -1,36 +1,36 @@
-import { Schema, Tag } from '@markdoc/markdoc';
+import { Schema, Tag } from '@markdoc/markdoc'
 
 export const indexPageList: Schema & { tagName: string } = {
   tagName: 'child-pages',
   render: 'IndexPageItems',
   selfClosing: true,
-};
+}
 
 export const repoLink: Schema & { tagName: string } = {
-    tagName: 'repo-link',
-    attributes: {
-      path: {
-        type: 'String',
-        required: true,
-      },
-      github_fork: {
-        type: 'String',
-        required: false,
-      },
-      github_branch: {
-        type: 'String',
-        required: false,
-      },
+  tagName: 'repo-link',
+  attributes: {
+    path: {
+      type: 'String',
+      required: true,
     },
-    transform(node, config) {
-        const attributes = node.transformAttributes(config);
-        attributes["github_fork"] = attributes["github_fork"] || config.variables.env.PUBLIC_GITHUB_FORK;
-        attributes["github_branch"] = attributes["github_branch"] || config.variables.env.PUBLIC_GITHUB_BRANCH;
-        const children = node.transformChildren(config);
-        return new Tag(this.render, attributes, children);
+    github_fork: {
+      type: 'String',
+      required: false,
     },
-    render: 'RepoLink',
-};
+    github_branch: {
+      type: 'String',
+      required: false,
+    },
+  },
+  transform(node, config) {
+    const attributes = node.transformAttributes(config)
+    attributes['github_fork'] = attributes['github_fork'] || config.variables.env.PUBLIC_GITHUB_FORK
+    attributes['github_branch'] = attributes['github_branch'] || config.variables.env.PUBLIC_GITHUB_BRANCH
+    const children = node.transformChildren(config)
+    return new Tag(this.render, attributes, children)
+  },
+  render: 'RepoLink',
+}
 
 export const codePageName: Schema & { tagName: string } = {
   tagName: 'code-page-name',
@@ -41,13 +41,13 @@ export const codePageName: Schema & { tagName: string } = {
     },
   },
   transform(node, config) {
-    const attributes = node.transformAttributes(config);
-    attributes["name"] = config.variables.frontmatter.seo.title;
-    return new Tag(this.render, attributes);
+    const attributes = node.transformAttributes(config)
+    attributes['name'] = config.variables.frontmatter.seo.title
+    return new Tag(this.render, attributes)
   },
   render: 'CodePageName',
   selfClosing: true,
-};
+}
 
 export const interactiveBlock: Schema & { tagName: string } = {
   tagName: 'interactive-block',
@@ -64,38 +64,38 @@ export const interactiveBlock: Schema & { tagName: string } = {
       type: 'Object',
       required: false,
       default: {
-        name: "Testnet",
-        websocket: "wss://s.altnet.rippletest.net:51233",
-        explorer: "https://testnet.xrpl.org",
-        faucet: "https://faucet.altnet.rippletest.net/accounts",
-      }
-    }
+        name: 'Testnet',
+        websocket: 'wss://s.altnet.rippletest.net:51233',
+        explorer: 'https://testnet.xrpl.org',
+        faucet: 'https://faucet.altnet.rippletest.net/accounts',
+      },
+    },
   },
   transform(node, config) {
-    const attributes = node.transformAttributes(config);
-    const children = replaceHtmlAttributeValuesVariables(node.transformChildren(config), config.variables.env);
-    return new Tag(this.render, attributes, children);
+    const attributes = node.transformAttributes(config)
+    const children = replaceHtmlAttributeValuesVariables(node.transformChildren(config), config.variables.env)
+    return new Tag(this.render, attributes, children)
   },
   render: 'InteractiveBlock',
-};
+}
 
 function replaceHtmlAttributeValuesVariables(nodes, variables) {
   for (const n of nodes) {
     if (n.attributes) {
       for (const attribName of Object.keys(n.attributes)) {
-        const v = n.attributes[attribName];
-        if (typeof v !== 'string') continue;
+        const v = n.attributes[attribName]
+        if (typeof v !== 'string') continue
         n.attributes[attribName] = v.replace(/{%\s*\$env.([\w_\d]+)\s*%}/g, (_, name) => {
-          return variables[name];
-        });
+          return variables[name]
+        })
       }
     }
     if (n.children) {
-      replaceHtmlAttributeValuesVariables(n.children, variables);
+      replaceHtmlAttributeValuesVariables(n.children, variables)
     }
   }
 
-  return nodes;
+  return nodes
 }
 
 export const xrpLoader: Schema & { tagName: string } = {
@@ -104,12 +104,12 @@ export const xrpLoader: Schema & { tagName: string } = {
     message: {
       type: 'String',
       required: false,
-      default: "...",
+      default: '...',
     },
   },
   render: 'XRPLoader',
   selfClosing: true,
-};
+}
 
 export const badge: Schema & { tagName: string } = {
   tagName: 'badge',
@@ -117,57 +117,59 @@ export const badge: Schema & { tagName: string } = {
     color: {
       type: 'String',
       required: false,
-      default: ""
+      default: '',
     },
     href: {
       type: 'String',
-      required: false
+      required: false,
     },
-    date: { // Not displayed, but useful for knowing how old an 'updated' badge is
+    date: {
+      // Not displayed, but useful for knowing how old an 'updated' badge is
       type: 'String',
-      required: false
-    }
+      required: false,
+    },
   },
-  render: 'Badge'
-};
+  render: 'Badge',
+}
 
 export const notEnabled: Schema & { tagName: string } = {
   tagName: 'not-enabled',
   render: 'NotEnabled',
   selfClosing: true,
-};
+}
 
 export const xrplCard: Schema & { tagName: string } = {
   tagName: 'xrpl-card',
   attributes: {
     title: {
       type: 'String',
-      required: true
+      required: true,
     },
     href: {
       type: 'String',
-      required: true
+      required: true,
     },
     body: {
       type: 'String',
-      required: false
+      required: false,
     },
     image: {
       type: 'String',
-      required: false
+      required: false,
     },
     imageAlt: {
       type: 'String',
-      required: false
+      required: false,
     },
-    external: { // Not actually implemented (yet)
+    external: {
+      // Not actually implemented (yet)
       type: 'Boolean',
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
   render: 'XRPLCard',
-  selfClosing: true
+  selfClosing: true,
 }
 
 export const cardGrid: Schema & { tagName: string } = {
@@ -176,70 +178,70 @@ export const cardGrid: Schema & { tagName: string } = {
     layout: {
       type: 'String',
       required: false,
-      default: '3xN'
-    }
+      default: '3xN',
+    },
   },
-  render: 'CardGrid'
+  render: 'CardGrid',
 }
 
-export const tryIt: Schema &  { tagName: string } = {
+export const tryIt: Schema & { tagName: string } = {
   tagName: 'try-it',
   attributes: {
     method: {
       type: 'String',
-      required: true
+      required: true,
     },
     server: {
       type: 'String',
       required: false,
-      default: ""
-    }
+      default: '',
+    },
   },
   render: 'TryIt',
-  selfClosing: true
+  selfClosing: true,
 }
 
-export const txExample: Schema &  { tagName: string } = {
+export const txExample: Schema & { tagName: string } = {
   tagName: 'tx-example',
   attributes: {
     txid: {
       type: 'String',
-      required: true
+      required: true,
     },
     server: {
       type: 'String',
       required: false,
-      default: ""
-    }
+      default: '',
+    },
   },
   render: 'TxExample',
-  selfClosing: true
+  selfClosing: true,
 }
 
 export const amendmentsTable: Schema & { tagName: string } = {
   tagName: 'amendments-table',
   render: 'AmendmentsTable',
-  selfClosing: true
+  selfClosing: true,
 }
 
-export const amendmentDisclaimer: Schema &  { tagName: string } = {
+export const amendmentDisclaimer: Schema & { tagName: string } = {
   tagName: 'amendment-disclaimer',
   attributes: {
     name: {
       type: 'String',
-      required: true
+      required: true,
     },
     compact: {
       type: 'Boolean',
       required: false,
-      default: false
+      default: false,
     },
     mode: {
       type: 'String',
       required: false,
-      default: '' // empty string for "Requires ... / Added by ..."
-    }
+      default: '', // empty string for "Requires ... / Added by ..."
+    },
   },
   render: 'AmendmentDisclaimer',
-  selfClosing: true
+  selfClosing: true,
 }

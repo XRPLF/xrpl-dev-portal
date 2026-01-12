@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-12-20"
+  editPage:
+    hide: true
+date: '2021-12-20'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 ---
+
 # Introducing XRP Ledger version 1.8.2
 
 Version 1.8.2 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release addresses the full transaction queues and elevated transaction fees issue observed on the XRP ledger, and also provides some optimizations and small fixes to improve the server's performance overall.

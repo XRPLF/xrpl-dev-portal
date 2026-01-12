@@ -2,21 +2,21 @@
 html: restricting-deposits-uc.html
 parent: payments-uc.html
 seo:
-    description: Checks enable users to create deferred payments similar to personal paper checks.
+  description: Checks enable users to create deferred payments similar to personal paper checks.
 labels:
   - Transactions
 ---
+
 # Restricting Deposits
 
 To comply with banking regulations, financial institutions must provide documentation about the sources of funds they receive. These regulations seek to prevent illicit activity by requiring institutions to track the source and destination of all payments they process. On the XRP Ledger, payments can be sent and received without any interaction from the receiver. This default behavior can be problematic, but you can enable deposit authorization so you only receive funds you explicitly approve.
 
 Accounts with deposit authorization enabled can only receive funds through:
 
-  - Preauthorized Accounts
-  - Checks
-  - Escrow
+- Preauthorized Accounts
+- Checks
+- Escrow
 <!-- - Payment Channels -->
-
 
 ## Set Up Deposit Authorization
 
@@ -30,11 +30,9 @@ Preauthorized accounts are currency-agnostic, meaning you can't specify which cu
 
 See: [DepositPreauth](../../references/protocol/transactions/types/depositpreauth.md).
 
-
 ## Accepting Deposits from Unauthorized Accounts
 
 You can still work with unauthorized accounts, even after enabling deposit authorization. There are several payment methods that enable you to do so.
-
 
 ### Checks
 
@@ -44,13 +42,11 @@ While this method is the simplest, it doesn't guarantee the funds. Checks are de
 
 See: [Use Checks](../../tutorials/how-tos/use-specialized-payment-types/use-checks/index.md).
 
-
 ### Escrow
 
 If you require a guarantee of funds at the time of deposit, another option is to have deposits made with an escrow. Like regular escrows, a sender sets aside funds on the ledger, effectively locking them up until certain conditions are met. This guarantees the funds will be available when you close the escrow to release the funds.
 
 See: [Use Escrows](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md).
-
 
 <!-- Need a better understanding of Payment Channels use cases.
 

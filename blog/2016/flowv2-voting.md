@@ -1,13 +1,14 @@
 ---
-date: "2016-08-10"
+date: '2016-08-10'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 category: 2016
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # The FlowV2 Amendment is Open for Voting
 
 The [FlowV2 Amendment](/resources/known-amendments.md#flowv2) is now open for voting. This amendment replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old engine. However, the new engine occasionally produces different results due to floating point rounding.
@@ -34,7 +35,7 @@ Related documentation is available in the Ripple Developer Portal, including det
 
 ## Other Resources
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

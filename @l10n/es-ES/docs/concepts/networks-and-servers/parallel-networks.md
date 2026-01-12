@@ -2,26 +2,26 @@
 html: parallel-networks.html
 parent: networks-and-servers.html
 seo:
-    description: Entender cómo las redes de prueba (test) y cadenas ledger alternativas se relacionan con el XRP Ledger en producción.
+  description: Entender cómo las redes de prueba (test) y cadenas ledger alternativas se relacionan con el XRP Ledger en producción.
 labels:
   - Blockchain
 ---
+
 # Redes paralelas
 
 Existe una red peer-to-peer en producción del XRP Ledger, y todos los negocios que tienen lugar en el XRP Ledger ocurren dentro de la red de producción: la Mainnet.
 
 Para ayudar a miembros de la comunidad del XRP Ledger a interactuar con la tecnología sin afectar nada a la Mainnet, hay redes alternativas, o altnets. Aquí hay un desglose de algunas altnets públicas:
 
-| Red | Cadencia de actualización | Descripción                                      |
-|:--------|:----------------|:-------------------------------------------------|
-| Mainnet | Lanzamientos estables | _El_ [XRP Ledger](/about/), un libro contable criptográfico descentralizado impulsado por una red de servidores peer-to-peer y el hogar de [XRP](../../introduction/what-is-xrp.md). |
-| Testnet | Lanzamientos estables | Una red de "universo alternativo" que actua como un campo de pruebas para el software construido en el XRP Ledger, sin impactar a los usuarios del XRP Ledger de producción y sin arriesgar dinero real. El [estado de enmienda](/resources/known-amendments.md) de Testnet está destinado a reflejar de cerca el de la Mainnet, aunque pueden ocurrir ligeras variaciones en el tiempo debido a la naturaleza impredecible de los sistemas descentralizados. |
-| Devnet  | Lanzamientos Beta   | Una vista previa de las próximas atracciones, donde cambios inestables en el software principal de XRP Ledger se pueden probar. Los desarrolladores pueden utilizar esta altnet para interactuar y aprender sobre funcionalidades nuevas planficiadas para el XRP Ledger y enmiendas que no están habilitadas en la Mainnet. |
+| Red     | Cadencia de actualización | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| :------ | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Mainnet | Lanzamientos estables     | _El_ [XRP Ledger](/about/), un libro contable criptográfico descentralizado impulsado por una red de servidores peer-to-peer y el hogar de [XRP](../../introduction/what-is-xrp.md).                                                                                                                                                                                                                                                                          |
+| Testnet | Lanzamientos estables     | Una red de "universo alternativo" que actua como un campo de pruebas para el software construido en el XRP Ledger, sin impactar a los usuarios del XRP Ledger de producción y sin arriesgar dinero real. El [estado de enmienda](/resources/known-amendments.md) de Testnet está destinado a reflejar de cerca el de la Mainnet, aunque pueden ocurrir ligeras variaciones en el tiempo debido a la naturaleza impredecible de los sistemas descentralizados. |
+| Devnet  | Lanzamientos Beta         | Una vista previa de las próximas atracciones, donde cambios inestables en el software principal de XRP Ledger se pueden probar. Los desarrolladores pueden utilizar esta altnet para interactuar y aprender sobre funcionalidades nuevas planficiadas para el XRP Ledger y enmiendas que no están habilitadas en la Mainnet.                                                                                                                                  |
 
 Cada altnet tiene su propia distribución separada de XRP de prueba, que se [regala gratis](/resources/dev-tools/xrp-faucets) a partes interesadas en experimentar con el XRP Ledger y desarrollar aplicaciones e integraciones. El XRP test no tiene valor en el mundo real y se pierde cuando la red se reinicia.
 
 **Atención:** A diferencia de la Mainnet del XRP Ledger, las redes de prueba suelen ser _centralizadas_ y no hay garantías sobre la estabilidad y disponibilidad de estas redes. Han sido y siguen siendo utilizadas para probar diversas propiedades de la configuración del servidor, la topología de la red y el rendimiento de la red.
-
 
 ## Redes paralelas y consenso
 
@@ -29,22 +29,21 @@ El factor principal en determinar qué red sigue un servidor es su UNL configura
 
 Ripple ejecuta los servidores principales en la Testnet y Devnet; también puedes [conectar tu propio servidor `rippled` para estas redes](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). La Testnet y Devnet no utilizan conjuntos de validadores diversos y resistentes a la censura. Esto hace posible que Ripple reinicie la Testnet o Devnet en cualquier momento.
 
-
 ## Ver también
 
 - **Herramientas:**
-    - [XRP Testnet Faucet](/resources/dev-tools/xrp-faucets)
+  - [XRP Testnet Faucet](/resources/dev-tools/xrp-faucets)
 - **Conceptos:**
-    - [Consenso](../consensus-protocol/index.md)
-    - [Enmiendas](amendments.md)
+  - [Consenso](../consensus-protocol/index.md)
+  - [Enmiendas](amendments.md)
 - **Tutoriales:**
-    - [Conectar tu `rippled` en laTestnet XRP](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
-    - [Usar rippled en modo Stand-Alone](../../infrastructure/testing-and-auditing/index.md)
+  - [Conectar tu `rippled` en laTestnet XRP](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
+  - [Usar rippled en modo Stand-Alone](../../infrastructure/testing-and-auditing/index.md)
 - **Referencias:**
-    - [método server_info][]
-    - [método consensus_info][]
-    - [método validator_list_sites][]
-    - [método validators][]
-    - [Opciones modo Daemon](../../infrastructure/commandline-usage.md#daemon-mode-options)
+  - [método server_info][]
+  - [método consensus_info][]
+  - [método validator_list_sites][]
+  - [método validators][]
+  - [Opciones modo Daemon](../../infrastructure/commandline-usage.md#daemon-mode-options)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

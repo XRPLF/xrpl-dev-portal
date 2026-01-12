@@ -1,7 +1,8 @@
 ---
 seo:
-    description: Learn how this site's tutorials are structured and guidelines for contributing quality tutorials.
+  description: Learn how this site's tutorials are structured and guidelines for contributing quality tutorials.
 ---
+
 # Tutorial Guidelines
 
 We are creating a repository of tutorials and functional code samples that show how various features of the XRP Ledger work. Developers and large language models (LLMs) can use these tutorials and their associated code samples to learn about business solutions, and copy or adapt the scripts for use in their own applications.
@@ -33,7 +34,7 @@ The prerequisites help readers recognize when they are in the right place and pr
 
 - Knowledge and learning background, especially tutorials that this one builds on top of.
 - Dev environment setup, especially basic depedencies such as your xrpl client library.
-    - Do not include dependencies that are specific to this tutorial here, because people tend to skim/gloss over this section. For dependencies specific to this tutorial, include them in the steps later.
+  - Do not include dependencies that are specific to this tutorial here, because people tend to skim/gloss over this section. For dependencies specific to this tutorial, include them in the steps later.
 - Specific on-chain structures that need to be in place in advance. For example, to trade against an AMM, the AMM must exist in the ledger.
 - Amendments that need to be enabled for this tutorial. Use an amendment disclaimer component to show the Mainnet status of the amendment.
 
@@ -82,7 +83,7 @@ Use `{% code-snippet ... %}` tags instead of copy-paste to display the code samp
 
 If a script depends on certain ledger data already existing (for example, you are supposed to create it with a different script), the script should have an explicit step to check for the existence of that data. You should also mention the requirement in the [**Prerequisites**](#prerequisites) section.
 
-Each step should directly continue the code sample from the previous step without skipping anything, to the extent possible. 
+Each step should directly continue the code sample from the previous step without skipping anything, to the extent possible.
 
 Optionally, you can provide additional text after the code snippet, such as an explanation of the expected output from this step, or details that you should note down for later.
 
@@ -91,7 +92,6 @@ If the code snippet calls an API method, link to the relevant reference document
 ### See Also
 
 At the end of the tutorial, provide links to additional resources that would be a sensible next step in the learning journey. This could be more tutorials, use cases, or other pages. It's also a good idea to add links here to reference documentation for any API methods, transaction types, and ledger entries used in the tutorial—even though those links should be redundant with links scattered throughout the text of the tutorial.
-
 
 ## Sample Code Guidelines
 
@@ -154,13 +154,13 @@ If you do have good reason to provide commandline, WebSocket, or JSON-RPC exampl
 
 ### Dependencies
 
-Dependencies can be a source of maintenance burden, because you need to stay up-to-date with security fixes and breaking changes to the dependencies. On the other hand, reimplementing common utilities in every code sample is its own maintenance burden, and it's even worse to "roll your own" security-sensitive code. Some users may be working on codebases that are locked into competing/incompatible dependencies, which can make it harder to adapt your code to their situation; the more dependencies you have, the more likely this is to occur. 
+Dependencies can be a source of maintenance burden, because you need to stay up-to-date with security fixes and breaking changes to the dependencies. On the other hand, reimplementing common utilities in every code sample is its own maintenance burden, and it's even worse to "roll your own" security-sensitive code. Some users may be working on codebases that are locked into competing/incompatible dependencies, which can make it harder to adapt your code to their situation; the more dependencies you have, the more likely this is to occur.
 
 Some guidelines:
 
 1. Prefer standard library functions to third-party libraries, even if they're not quite as convenient to use.
-    - Use third-party libraries when they're _significantly_ more convenient than the standard library. For example, [even Python's official documentation recommends using the Requests lib instead of `urllib.request`](https://docs.python.org/3/library/urllib.request.html#module-urllib.request).
-    - When updating old code samples, look for cases where dependencies can be eliminated because the standard library has grown to encompass functionality that previously needed a library.
+   - Use third-party libraries when they're _significantly_ more convenient than the standard library. For example, [even Python's official documentation recommends using the Requests lib instead of `urllib.request`](https://docs.python.org/3/library/urllib.request.html#module-urllib.request).
+   - When updating old code samples, look for cases where dependencies can be eliminated because the standard library has grown to encompass functionality that previously needed a library.
 2. Implement your own functions when they're small and not security-sensitive; use libraries for complex or security-sensitive functions.
 3. Prefer widely-used, actively maintained libraries.
 
@@ -169,9 +169,9 @@ Some guidelines:
 The following guidelines apply for XRP Ledger code samples regardless of language:
 
 - Don't hardcode secret keys, even example keys that don't hold real money. Instead, do any of the following:
-    - Fund a new account using the faucet.
-    - Prompt the user to paste the seed of the account they want to use.
-    - Read the secret key from an environment variable.
+  - Fund a new account using the faucet.
+  - Prompt the user to paste the seed of the account they want to use.
+  - Read the secret key from an environment variable.
 - Use `client` as the name for the API client instance.
 - Print output to the console, especially before doing any network operations such as calling API methods or submitting transactions.
 - Use the client library's "submit and wait" function when sending transactions. Autofill, sign, and submit the transaction all in one call.
@@ -191,9 +191,9 @@ JavaScript code samples should:
 - Use `await` instead of `.done(...)` or `.then(...)`
 - Follow [**JavaScript Standard Style**](https://standardjs.com).
 - Be compatible with Node.js versions that are currently in maintenance (security) support.
-    - Preferably, be compatible with most widely-used web browsers too.
+  - Preferably, be compatible with most widely-used web browsers too.
 - When writing JSON objects to the console, use `JSON.stringify(example_object, null, 2)` so that Node.js doesn't skip the interesting inner parts of the object.
-{% /tab %}
+  {% /tab %}
 
 {% tab label="Python" %}
 Python code samples should:
@@ -203,6 +203,6 @@ Python code samples should:
 - Use the `JsonRpcClient` unless asynchronous functionality is needed.
 - Follow [**Black Style**](https://black.readthedocs.io/en/stable/).
 - Be compatible with Python versions that are currently in maintenance (security) support.
-{% /tab %}
+  {% /tab %}
 
 {% /tabs %}

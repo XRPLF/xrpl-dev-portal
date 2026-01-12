@@ -1,14 +1,15 @@
 ---
 category: 2017
 labels:
-    - Features
-date: "2017-07-19"
+  - Features
+date: '2017-07-19'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 author: Nik Bougalis
 ---
+
 # Protecting the Ledger: Invariant Checking
 
 At Ripple, we have been developing next-generation financial infrastructure with an eye towards making value move as fast and as efficiently as information does today.

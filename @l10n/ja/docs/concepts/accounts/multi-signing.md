@@ -2,21 +2,22 @@
 html: multi-signing.html
 parent: accounts.html
 seo:
-    description: マルチシグを使用することで、トランザクション送信時のセキュリティが強化されます。
+  description: マルチシグを使用することで、トランザクション送信時のセキュリティが強化されます。
 labels:
   - スマートコントラクト
   - セキュリティ
 ---
+
 # マルチシグ
 
 マルチシグは、複数のシークレットキーを組み合わせて使用してXRP Ledgerの[トランザクションを承認する](../transactions/index.md#トランザクションの承認)手法です。アドレスで有効な承認手法（マルチシグ、[マスターキーペア](cryptographic-keys.md#マスターキーペア)、[レギュラーキーペア](cryptographic-keys.md#レギュラーキーペア)など）を自由に組み合わせて使用できます。（唯一の要件は、 _少なくとも1つの_ 手法を有効にする必要があることです。）
 
 マルチシグには次のメリットがあります。
 
-* 複数のデバイスからのキーを要求できます。これにより、不正使用者があなたの代わりにトランザクションを送信するには複数のマシンを悪用しなければならなくなります。
-* 複数のユーザ間で1つのアドレスの管理を共有できます。この場合、各ユーザが、そのアドレスからトランザクションを送信する際に必要な複数のキーのいずれか1つだけを所有します。
-* あなたのアドレスからトランザクションを送信できる権限を、複数ユーザのグループに委任できます。委任を受けた各ユーザは、あなたが通常の方法で署名できない場合にあなたのアドレスを制御できます。
-* その他のメリットもあります。
+- 複数のデバイスからのキーを要求できます。これにより、不正使用者があなたの代わりにトランザクションを送信するには複数のマシンを悪用しなければならなくなります。
+- 複数のユーザ間で1つのアドレスの管理を共有できます。この場合、各ユーザが、そのアドレスからトランザクションを送信する際に必要な複数のキーのいずれか1つだけを所有します。
+- あなたのアドレスからトランザクションを送信できる権限を、複数ユーザのグループに委任できます。委任を受けた各ユーザは、あなたが通常の方法で署名できない場合にあなたのアドレスを制御できます。
+- その他のメリットもあります。
 
 ## 署名者リスト
 
@@ -58,29 +59,29 @@ CEOのウェイトを3、副社長3人のウェイトを各2、取締役3人の�
 
 マルチシグトランザクションを正常に送信するには、以下のすべての条件を満たす必要があります。
 
-* トランザクションを送信するアドレス（`Account`に指定されるアドレス）は、[レジャーに`SignerList`](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)を所有する必要があります。この方法については、[マルチシグを設定する](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)をご覧ください。
-* トランザクションに`SigningPubKey`フィールドを空の文字列として含める必要があります。
-* トランザクションに、署名の配列が指定されている[`Signers`フィールド](../../references/protocol/transactions/common-fields.md#signersフィールド)を含める必要があります。
-* `Signers`配列に含まれている署名は、`SignerList`で定義されている署名と一致している必要があります。
-* 指定された署名で、これらの署名者に関連付けられている`weight`の合計が、`SignerList`の`quorum`以上である必要があります。
-* [トランザクションコスト](../transactions/transaction-cost.md)（`Fee`フィールドで指定）は、通常のトランザクションコストの（N+1）倍以上である必要があります。このNは、指定される署名の数です。
-* トランザクションのすべてのフィールドは、署名収集前に定義する必要があります。フィールドの[自動入力](../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)は実行できません。
-* `Signers`配列がバイナリ形式で指定される場合、この配列は署名者アドレスの数値に基づいて、低い値から順にソートされている必要があります。（JSONとして提出される場合は、[submit_multisignedメソッド][]がこの処理を自動的に実行します。）
+- トランザクションを送信するアドレス（`Account`に指定されるアドレス）は、[レジャーに`SignerList`](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)を所有する必要があります。この方法については、[マルチシグを設定する](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)をご覧ください。
+- トランザクションに`SigningPubKey`フィールドを空の文字列として含める必要があります。
+- トランザクションに、署名の配列が指定されている[`Signers`フィールド](../../references/protocol/transactions/common-fields.md#signersフィールド)を含める必要があります。
+- `Signers`配列に含まれている署名は、`SignerList`で定義されている署名と一致している必要があります。
+- 指定された署名で、これらの署名者に関連付けられている`weight`の合計が、`SignerList`の`quorum`以上である必要があります。
+- [トランザクションコスト](../transactions/transaction-cost.md)（`Fee`フィールドで指定）は、通常のトランザクションコストの（N+1）倍以上である必要があります。このNは、指定される署名の数です。
+- トランザクションのすべてのフィールドは、署名収集前に定義する必要があります。フィールドの[自動入力](../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)は実行できません。
+- `Signers`配列がバイナリ形式で指定される場合、この配列は署名者アドレスの数値に基づいて、低い値から順にソートされている必要があります。（JSONとして提出される場合は、[submit_multisignedメソッド][]がこの処理を自動的に実行します。）
 
 詳細は、[マルチシグの設定](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)をご覧ください。
 
 ## 関連項目
 
 - **チュートリアル:**
-    - [マルチシグを設定する](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)
-    - [マルチシグトランザクションを送信する](../../tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md)
+  - [マルチシグを設定する](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)
+  - [マルチシグトランザクションを送信する](../../tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md)
 - **コンセプト:**
-    - [暗号鍵](cryptographic-keys.md)
-    - [マルチシグトランザクションの特別なトランザクションコスト](../transactions/transaction-cost.md#特別なトランザクションコスト)
+  - [暗号鍵](cryptographic-keys.md)
+  - [マルチシグトランザクションの特別なトランザクションコスト](../transactions/transaction-cost.md#特別なトランザクションコスト)
 - **リファレンス:**
-    - [SignerListSetトランザクション][]
-    - [SignerListオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
-    - [sign_forメソッド][]
-    - [submit_multisignedメソッド][]
+  - [SignerListSetトランザクション][]
+  - [SignerListオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
+  - [sign_forメソッド][]
+  - [submit_multisignedメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

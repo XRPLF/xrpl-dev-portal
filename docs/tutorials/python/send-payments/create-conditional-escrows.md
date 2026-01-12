@@ -2,13 +2,14 @@
 html: py-create-conditional-escrows.html
 parent: send-payments-using-python.html
 seo:
-    description: Create, finish, or cancel condition-based escrow transactions.
+  description: Create, finish, or cancel condition-based escrow transactions.
 labels:
   - Accounts
   - Quickstart
   - Transaction Sending
   - XRP
 ---
+
 # Create Conditional Escrows Using Python
 
 This example shows how to:
@@ -20,7 +21,6 @@ This example shows how to:
 3. Cancel a conditional escrow transaction.
 
 [![Conditional Escrow Tester Form](/docs/img/quickstart-py-conditional-escrow-1.png)](/docs/img/quickstart-py-conditional-escrow-1.png)
-
 
 ## Prerequisites
 
@@ -39,27 +39,27 @@ pip install cryptoconditions
 ### Get Test Accounts
 
 To get test accounts:
- 
+
 1. Open and run `lesson9-conditional-escrow.py`.
 2. Get test accounts.
-    1. If you have existing account seeds
-        1. Paste Standby account seed in the **Standby Seed** field.
-        2. Click **Get Standby Account**.
-        3. Click **Get Standby Account Info**.
-        4. Paste Operational account seed in the **Operational Seed** field.
-        5. Click **Get Operational Account**.
-        6. Click **Get Op Account Info**.
-    2. If you do not have account seeds:
-        1. Click **Get Standby Account**.
-        2. Click **Get Standby Account Info**.
-        3. Click **Get Operational Account**.
-        4. Click **Get Op Account Info**.
+   1. If you have existing account seeds
+      1. Paste Standby account seed in the **Standby Seed** field.
+      2. Click **Get Standby Account**.
+      3. Click **Get Standby Account Info**.
+      4. Paste Operational account seed in the **Operational Seed** field.
+      5. Click **Get Operational Account**.
+      6. Click **Get Op Account Info**.
+   2. If you do not have account seeds:
+      1. Click **Get Standby Account**.
+      2. Click **Get Standby Account Info**.
+      3. Click **Get Operational Account**.
+      4. Click **Get Op Account Info**.
 
 [![Escrow Example with Account Information](/docs/img/quickstart-py-conditional-escrow-2.png)](/docs/img/quickstart-py-conditional-escrow-2.png)
 
 #### Get a Condition and Fulfillment
 
-Click **Get Condition** to generate a condition/fulfillment pair and populate the fields on the form. You can copy the values and store them in a text file for safe keeping. 
+Click **Get Condition** to generate a condition/fulfillment pair and populate the fields on the form. You can copy the values and store them in a text file for safe keeping.
 
 [![Escrow Example with Condition and Fulfillment](/docs/img/quickstart-py-conditional-escrow-3.png)](/docs/img/quickstart-py-conditional-escrow-3.png)
 
@@ -69,7 +69,7 @@ Click **Get Condition** to generate a condition/fulfillment pair and populate th
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IUfSX5RKahs?si=7kV0T2NTtqsZfpvX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-When you create a conditional escrow, you need to specify the `Condition` value you generated above. You must also set a cancel date and time, after which the escrow is no longer available.  
+When you create a conditional escrow, you need to specify the `Condition` value you generated above. You must also set a cancel date and time, after which the escrow is no longer available.
 
 To create a conditional escrow:
 
@@ -97,7 +97,7 @@ To finish a conditional escrow:
 3. Enter the **Escrow Fulfillment** code for the `Condition`.
 4. Copy the **Standby Account** value.
 5. Paste it into the **Escrow Owner** field.
-4. Click **Finish Conditional Escrow**.
+6. Click **Finish Conditional Escrow**.
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
@@ -105,7 +105,7 @@ The transaction completes and balances are updated for both the Standby and Oper
 
 ## Get Escrows
 
-Click **Get Escrows** for either the Standby account or the Operational account to see their current list of escrows. 
+Click **Get Escrows** for either the Standby account or the Operational account to see their current list of escrows.
 
 ## Cancel Escrow
 
@@ -227,7 +227,7 @@ Instantiate a wallet and connect to Testnet.
     client=JsonRpcClient(testnet_url)
 ```
 
-Create a *cancel_date* variable, adding your specified number of seconds to the current Ripple epoch date.
+Create a _cancel_date_ variable, adding your specified number of seconds to the current Ripple epoch date.
 
 ```python
     cancel_date = add_seconds(cancel)
@@ -242,7 +242,7 @@ Define the transaction with your provided values.
         destination=destination,
         cancel_after=cancel_date,
         condition=condition
-    ) 
+    )
 ```
 
 Submit the transaction and return the results.
@@ -259,7 +259,7 @@ Submit the transaction and return the results.
 
 ### finish_conditional_escrow
 
-At any time prior to the cancel date, the destination account can fulfill the escrow. 
+At any time prior to the cancel date, the destination account can fulfill the escrow.
 
 Pass the _seed_ for the receiving account, the _owner_ (sending account), the _sequence_ number for the escrow, the _condition_ value, and the matching _fulfillment_ value.
 
@@ -327,7 +327,7 @@ def get_condition():
     ent_standby_escrow_condition.insert(0, results[0])
     ent_operational_escrow_fulfillment.delete(0, tk.END)
     ent_operational_escrow_fulfillment.insert(0, results[1])
-    
+
 def standby_create_conditional_escrow():
     results = create_conditional_escrow(
         ent_standby_seed.get(),
@@ -365,12 +365,12 @@ def standby_cancel_time_escrow():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
-    
+
 def operational_get_transaction():
     results = get_transaction(ent_operational_account.get(),
                               ent_operational_look_up.get())
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 ## Mod 1 Handlers
 
@@ -457,7 +457,7 @@ ent_standby_escrow_cancel = tk.Entry(master=frm_form, width=50)
 lbl_standby_escrow_sequence_number = tk.Label(master=frm_form, text="Sequence Number")
 ent_standby_escrow_sequence_number = tk.Entry(master=frm_form, width=50)
 lbl_standby_escrow_owner = tk.Label(master=frm_form, text="Escrow Owner")
-ent_standby_escrow_owner = tk.Entry(master=frm_form, width=50)                    
+ent_standby_escrow_owner = tk.Entry(master=frm_form, width=50)
 lbl_standby_results = tk.Label(master=frm_form, text="Results")
 text_standby_results = tk.Text(master=frm_form, height = 20, width = 65)
 

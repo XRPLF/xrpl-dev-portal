@@ -2,12 +2,13 @@
 html: monitor-incoming-payments-with-websocket.html
 parent: http-websocket-apis-tutorials.html
 seo:
-    description: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
+  description: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
 filters:
   - interactive_steps
 labels:
   - 支払い
 ---
+
 # WebSocketを使用した着信ペイメントの監視
 
 このチュートリアルでは、[WebSocket `rippled` API](../../references/http-websocket-apis/index.md)を使用して、着信[ペイメント](../../concepts/payment-types/index.md)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
@@ -47,10 +48,10 @@ function writeToConsole(console_selector, message) {
 const socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
 socket.addEventListener('open', (event) => {
   // This callback runs when the connection is open
-  console.log("Connected!")
+  console.log('Connected!')
   const command = {
-    "id": "on_open_ping_1",
-    "command": "ping"
+    id: 'on_open_ping_1',
+    command: 'ping',
   }
   socket.send(JSON.stringify(command))
 })
@@ -79,6 +80,7 @@ const socket = new WebSocket('ws://localhost:6006')
 <button id="connect-socket-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
+
 <h5>Console:</h5>
 <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
 
@@ -113,13 +115,11 @@ $("#connect-socket-button").click((event) => {
 })
 </script>
 
-
 ## 2. ハンドラーへの着信メッセージのディスパッチ
 
 WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、リクエストとレスポンスの間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
 
 - クライアント側からのリクエストへの直接のレスポンスとなるメッセージの場合、`type`は文字列の`response`です。この場合、サーバは以下も提供します。
-
   - このレスポンスに対するリクエストで指定された`id`に一致する`id`フィールド（レスポンスが順序どおりに到着しない可能性があるため、これは重要です）。
 
   - APIがリクエストの処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功したレスポンス](../../references/http-websocket-apis/api-conventions/response-formatting.md)を示します。文字列値`error`は、[エラー](../../references/http-websocket-apis/api-conventions/error-formatting.md)を示します。
@@ -134,41 +134,41 @@ WebSocket接続では、複数のメッセージをどちらの方向にも送�
 
 ```js
 const AWAITING = {}
-const handleResponse = function(data) {
-  if (!data.hasOwnProperty("id")) {
-    console.error("Got response event without ID:", data)
+const handleResponse = function (data) {
+  if (!data.hasOwnProperty('id')) {
+    console.error('Got response event without ID:', data)
     return
   }
   if (AWAITING.hasOwnProperty(data.id)) {
     AWAITING[data.id].resolve(data)
   } else {
-    console.error("Response to un-awaited request w/ ID " + data.id)
+    console.error('Response to un-awaited request w/ ID ' + data.id)
   }
 }
 
 let autoid_n = 0
 function api_request(options) {
-  if (!options.hasOwnProperty("id")) {
-    options.id = "autoid_" + (autoid_n++)
+  if (!options.hasOwnProperty('id')) {
+    options.id = 'autoid_' + autoid_n++
   }
 
-  let resolveHolder;
+  let resolveHolder
   AWAITING[options.id] = new Promise((resolve, reject) => {
     // Save the resolve func to be called by the handleResponse function later
     resolveHolder = resolve
     try {
       // Use the socket opened in the previous example...
       socket.send(JSON.stringify(options))
-    } catch(error) {
+    } catch (error) {
       reject(error)
     }
   })
-  AWAITING[options.id].resolve = resolveHolder;
+  AWAITING[options.id].resolve = resolveHolder
   return AWAITING[options.id]
 }
 
 const WS_HANDLERS = {
-  "response": handleResponse
+  response: handleResponse,
   // Fill this out with your handlers in the following format:
   // "type": function(event) { /* handle event of this type */ }
 }
@@ -178,15 +178,15 @@ socket.addEventListener('message', (event) => {
     // Call the mapped handler
     WS_HANDLERS[parsed_data.type](parsed_data)
   } else {
-    console.log("Unhandled message from server", event)
+    console.log('Unhandled message from server', event)
   }
 })
 
 // Demonstrate api_request functionality
 async function pingpong() {
-  console.log("Ping...")
-  const response = await api_request({command: "ping"})
-  console.log("Pong!", response)
+  console.log('Ping...')
+  const response = await api_request({ command: 'ping' })
+  console.log('Pong!', response)
 }
 pingpong()
 ```
@@ -195,6 +195,7 @@ pingpong()
 
 <button id="enable_dispatcher" class="btn btn-primary" disabled="disabled">Enable Dispatcher</button>
 <button id="dispatch_ping" class="btn btn-primary" disabled="disabled">Ping!</button>
+
 <h5>Responses</h5>
 <div class="ws-console" id="monitor-console-ping"><span class="placeholder">(Log is empty)</span></div>
 
@@ -273,25 +274,31 @@ $("#dispatch_ping").click((event) => {
 ```js
 async function do_subscribe() {
   const sub_response = await api_request({
-    command:"subscribe",
-    accounts: ["rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM"]
+    command: 'subscribe',
+    accounts: ['rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM'],
   })
-  if (sub_response.status === "success") {
-    console.log("Successfully subscribed!")
+  if (sub_response.status === 'success') {
+    console.log('Successfully subscribed!')
   } else {
-    console.error("Error subscribing: ", sub_response)
+    console.error('Error subscribing: ', sub_response)
   }
 }
 do_subscribe()
 
-const log_tx = function(tx) {
-  console.log(tx.transaction.TransactionType + " transaction sent by " +
-              tx.transaction.Account +
-              "\n  Result: " + tx.meta.TransactionResult +
-              " in ledger " + tx.ledger_index +
-              "\n  Validated? " + tx.validated)
+const log_tx = function (tx) {
+  console.log(
+    tx.transaction.TransactionType +
+      ' transaction sent by ' +
+      tx.transaction.Account +
+      '\n  Result: ' +
+      tx.meta.TransactionResult +
+      ' in ledger ' +
+      tx.ledger_index +
+      '\n  Validated? ' +
+      tx.validated,
+  )
 }
-WS_HANDLERS["transaction"] = log_tx
+WS_HANDLERS['transaction'] = log_tx
 ```
 
 以下の例では、別のウィンドウまたは別のデバイスで[Transaction Sender](/resources/dev-tools/tx-sender)を開くことと、サブスクライブしているアドレスへのトランザクションの送信を試みます。
@@ -301,6 +308,7 @@ WS_HANDLERS["transaction"] = log_tx
 <label for="subscribe_address">Test Net Address:</label>
 <input type="text" class="form-control" id="subscribe_address" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM">
 <button id="tx_subscribe" class="btn btn-primary" disabled="disabled">Subscribe</button>
+
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-subscribe"><span class="placeholder">(Log is empty)</span></div>
 
@@ -348,7 +356,6 @@ WS_HANDLERS["transaction"] = log_tx
 - **`transaction.Account`** フィールドはトランザクションの送信元です。他の人が送信したトランザクションのみを探している場合は、このフィールドがあなたのアドレスと一致するトランザクションを無視できます（自身に対するクロスカレンシー支払いが _可能である_ 点に注意してください）。
 
 - **`transaction.TransactionType`フィールド**はトランザクションのタイプです。アカウントに通貨を送金できる可能性があるトランザクションのタイプは以下のとおりです。
-
   - **[Paymentトランザクション][]** はXRPまたは[トークン](../../concepts/tokens/index.md)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)。
 
     {% admonition type="danger" name="警告" %}代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](../../concepts/payment-types/partial-payments.md#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。{% /admonition %}
@@ -372,6 +379,7 @@ WS_HANDLERS["transaction"] = log_tx
 {% interactive-block label="Read Payments" steps=$frontmatter.steps %}
 
 <button id="tx_read" class="btn btn-primary" disabled="disabled">Start Reading</button>
+
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-read"><span class="placeholder">(Log is empty)</span></div>
 

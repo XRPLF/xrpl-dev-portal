@@ -1,28 +1,28 @@
 ---
 category: 2025
-date: "2025-08-27"
+date: '2025-08-27'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 2.6.0
-    description: rippled version 2.6.0 is now available. This version contains various bug fixes and minor improvements.
+  title: Introducing XRP Ledger version 2.6.0
+  description: rippled version 2.6.0 is now available. This version contains various bug fixes and minor improvements.
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 2.6.0
+
 {% admonition type="danger" name="Warning" %}
 The team discovered two issues in rippled 2.6.0—memory usage increases and Boost library upgrade problems. It's recommended that the UNL community upgrade to [version 2.6.1](./rippled-2.6.1.md), which addresses these issues and includes the 2.6.0 changes.
 {% /admonition %}
 
 Version 2.6.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is no longer available.
 
-
 ## Action Required
 
 If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll back to version [2.5.1](./rippled-2.5.1.md) to ensure service continuity.
-
 
 ## Full Changelog
 
@@ -30,13 +30,11 @@ If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll bac
 
 - None
 
-
 ### New Features
 
 - Improved the `account_tx` method to show MPT-related transactions for an issuer. ([#5530](https://github.com/XRPLF/rippled/pull/5530))
 - Added the `network_id` field to `validations` and `ledger` subscription streams. ([#5579](https://github.com/XRPLF/rippled/pull/5579))
 - Added `nftoken_id`, `nftoken_ids`, and `offer_id` to the `meta` field of transaction streams from the `subscribe` method. ([#5230](https://github.com/XRPLF/rippled/pull/5230))
-
 
 ### Bug Fixes
 
@@ -54,7 +52,6 @@ If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll bac
 - Added `-Wno-deprecated-declarations` for Clang only. ([#5680](https://github.com/XRPLF/rippled/pull/5680))
 - Fixed a crash due to a recurrent call to `Slot::deletePeer` when a peer is disconnected at just the wrong moment. ([#5635](https://github.com/XRPLF/rippled/pull/5635))
 - Fixed a MacOS pipeline issue. ([#5585](https://github.com/XRPLF/rippled/pull/5585))
-
 
 ### Other Improvements
 
@@ -96,7 +93,6 @@ If you run an XRP Ledger server and recently upgraded to version 2.6.0, roll bac
 - Updated the list of maintainers and common code reviewers. ([#5687](https://github.com/XRPLF/rippled/pull/5687))
 - Reverted to `std::shared_mutex` from `boost::shared_mutex`. ([#5576](https://github.com/XRPLF/rippled/pull/5576))
 
-
 ## Credits
 
 The following GitHub users contributed to this release:
@@ -127,7 +123,6 @@ The following GitHub users contributed to this release:
 - @vvysokikh1
 - @ximinez
 - @yinyiqian1
-
 
 ## Bug Bounties and Responsible Disclosures
 

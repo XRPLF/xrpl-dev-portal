@@ -1,24 +1,23 @@
 ---
 seo:
-    description: Learn how XRPL Account Permission Delegation enables secure, granular control over your account transactions. Explore DelegateSet transactions for comprehensive permission and access management on the XRP Ledger.
+  description: Learn how XRPL Account Permission Delegation enables secure, granular control over your account transactions. Explore DelegateSet transactions for comprehensive permission and access management on the XRP Ledger.
 labels:
   - Accounts
   - Permissions
 status: not_enabled
 ---
+
 # Permission Delegation
 
 Permission delegation is the function of granting various permissions to another account to send permissions on behalf of your account. You can use permission delegation to enable flexible security paradigms such as role-based access control, instead of or alongside techniques such as [multi-signing](./multi-signing.md).
 
- {% amendment-disclaimer name="PermissionDelegation" /%}
-
+{% amendment-disclaimer name="PermissionDelegation" /%}
 
 ## Background: The Need for Permission Delegation
 
 Managing your [cryptographic keys](./cryptographic-keys.md) is one of the more challenging parts of using a blockchain. As part of a defense-in-depth strategy, a secure configuration should limit the damage that can occur if a secret key is compromised. One way to do this is to rotate keys regularly and to keep master keys off of computers that are always connected to the internet and serving user traffic. However, many use cases involve frequently and automatically signing transactions, which typically requires having secret keys on an internet-connected server.
 
 Permission Delegation can reduce this problem by granting very limited permissions to separate accounts that have their keys available online for day-to-day tasks. Meanwhile, the keys with full control over the account can be kept offline, so that you only use them for special tasks, like issuing tokens. This is especially helpful when using compliance features like [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md) that require a stablecoin issuer to individually approve each user after meeting regulatory requirements like Know Your Customer rules. With a proper configuration, you can minimize the consequences of a delegate's keys being compromized.
-
 
 ## How Permission Delegation Works
 
@@ -53,21 +52,20 @@ The available set of granular permissions is hard-coded, and the permissions can
 
 Permission delegation is similar to multi-signing in that it allows other key pairs to sign transactions that "come from" your account. However, there are key differences in functionality between the two, as summarized in the following table:
 
-|                  | Permission Delegation | Multi-Signing |
-|------------------|-----------------------|---------------|
-| Transaction cost | Paid by the delegate | Paid by the account that owns the list |
+|                    | Permission Delegation                                            | Multi-Signing                                                                                                                   |
+| ------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Transaction cost   | Paid by the delegate                                             | Paid by the account that owns the list                                                                                          |
 | Permission control | Can only send transactions matching specific permissions granted | Can send any transactions except [specific cases that require the master key pair](./cryptographic-keys.md#special-permissions) |
-| M-of-N permission | Not supported | Configurable quorum and weights with up to 32 signers |
-| Unfunded accounts | Delegates must have funded accounts on ledger | Signers can be funded accounts or key pairs with no account on ledger. |
-| Key management | Delegate manages their own keys, including multi-signing | Signers with funded accounts can manage their own keys but cannot perform nested multi-signing. |
-
+| M-of-N permission  | Not supported                                                    | Configurable quorum and weights with up to 32 signers                                                                           |
+| Unfunded accounts  | Delegates must have funded accounts on ledger                    | Signers can be funded accounts or key pairs with no account on ledger.                                                          |
+| Key management     | Delegate manages their own keys, including multi-signing         | Signers with funded accounts can manage their own keys but cannot perform nested multi-signing.                                 |
 
 ## See Also
 
 - **References:**
-    - [DelegateSet transaction][] - Grant, update, or revoke permissions to a specific delegate.
-    - [Delegate ledger entry][] - Data structure on the ledger that records which permissions have been granted.
+  - [DelegateSet transaction][] - Grant, update, or revoke permissions to a specific delegate.
+  - [Delegate ledger entry][] - Data structure on the ledger that records which permissions have been granted.
 - **Code Samples:**
-    - {% repo-link path="_code-samples/delegate-permissions/" %}**Delegate Permissions**{% /repo-link %}
+  - {% repo-link path="_code-samples/delegate-permissions/" %}**Delegate Permissions**{% /repo-link %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

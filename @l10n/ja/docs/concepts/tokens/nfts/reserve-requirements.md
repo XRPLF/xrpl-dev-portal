@@ -2,10 +2,11 @@
 html: nft-reserve-requirements.html
 parent: non-fungible-tokens.html
 seo:
-    description: NFTのMintと保有に必要な準備金について学びましょう。
+  description: NFTのMintと保有に必要な準備金について学びましょう。
 labels:
- - 非代替性トークン, NFT
+  - 非代替性トークン, NFT
 ---
+
 # NFTの準備金要件
 
 NFTをミントし、保有し、販売するためには、XRPを準備金として保有しておく必要があります。準備金の額は急激に膨れ上がる可能性があります。準備金の要件を理解することは、ビジネスケースに最適なアプローチを選択するのに役立ちます。
@@ -27,12 +28,12 @@ NFTの場合、 _オブジェクト_ はそれぞれのNFTを指すのではな�
 
 NFTの保有枚数や保有ページ数によって、所有者準備金の総額がどの程度になるか、次の表に例を示します。
 
-| NFTの保有数  | 最良のケース    | 標準的なケース | 最悪のケース |
-|:------------|:----------|:-------------|:-----------|
-| 32以下       | 0.2 XRP   | 0.2 XRP      | 0.2 XRP    |
-| 50          | 0.4 XRP   | 0.6 XRP      | 0.8 XRP    |
-| 200         | 1.4 XRP   | 1.8 XRP      | 2.6 XRP    |
-| 1000        | 6.4 XRP   | 8.4 XRP      | 12.6 XRP   |
+| NFTの保有数 | 最良のケース | 標準的なケース | 最悪のケース |
+| :---------- | :----------- | :------------- | :----------- |
+| 32以下      | 0.2 XRP      | 0.2 XRP        | 0.2 XRP      |
+| 50          | 0.4 XRP      | 0.6 XRP        | 0.8 XRP      |
+| 200         | 1.4 XRP      | 1.8 XRP        | 2.6 XRP      |
+| 1000        | 6.4 XRP      | 8.4 XRP        | 12.6 XRP     |
 
 <!-- RESERVES_REMINDER: update math if reserves change -->
 
@@ -46,22 +47,22 @@ NFTをミントし、保有し、売買のオファーをする場合、必要�
 
 新しいアカウントを作成し、NFTをミントし、XRP Ledgerに`NFTokenSellOffer`を作成する場合、最低14XRPが準備金として必要です。
 
-| 準備金の種類          | 準備金の額 |
-|:--------------------|--------:|
-| 基本                 | {% $env.PUBLIC_BASE_RESERVE %} |
-| NFTokenページ        | {% $env.PUBLIC_OWNER_RESERVE %} |
-| NFTokenオファー       | {% $env.PUBLIC_OWNER_RESERVE % |
-| 合計                 | 1.4 XRP |
+| 準備金の種類    |                      準備金の額 |
+| :-------------- | ------------------------------: |
+| 基本            |  {% $env.PUBLIC_BASE_RESERVE %} |
+| NFTokenページ   | {% $env.PUBLIC_OWNER_RESERVE %} |
+| NFTokenオファー |  {% $env.PUBLIC_OWNER_RESERVE % |
+| 合計            |                         1.4 XRP |
 
 {% admonition type="info" name="注記" %}準備金要件ではありませんが、ミントと売却のプロセスにおけるトランザクションの些細な手数料（通常12drops、または.000012XRP）を負担するために、少なくとも必要準備金より1XRPより多く用意しておきくべきです。{% /admonition %}
 
 仮に200個のNFTをミントし、それぞれに「NFTokenSellOffer」を作成すると、436XRPもの準備金が必要になります。
 
-| 準備金の種類          | 準備金の額 |
-|:--------------------|--------:|
-| 基本                 | {% $env.PUBLIC_BASE_RESERVE %}  |
-| NFTokenページ        | 2.6 XRP |
-| NFTokenオファー      | 40 XRP |
-| 合計                 | 43.6 XRP |
+| 準備金の種類    |                     準備金の額 |
+| :-------------- | -----------------------------: |
+| 基本            | {% $env.PUBLIC_BASE_RESERVE %} |
+| NFTokenページ   |                        2.6 XRP |
+| NFTokenオファー |                         40 XRP |
+| 合計            |                       43.6 XRP |
 
 必要準備金の額が余裕を持って確保できる額を超える場合は、オンデマンドミントモデルを使用して、一度に保有するNFTとオファーの数を減らすことを検討してください。[オンデマンドMint](batch-minting.md#オンデマンドmint-遅延minting)をご覧ください。

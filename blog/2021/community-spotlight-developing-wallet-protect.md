@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2020-03-10"
+  editPage:
+    hide: true
+date: '2020-03-10'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 ---
+
 # Community Spotlight: Developing Wallet Protect
 
 GateHub started in 2013 with an idea: _What if there was a wallet that could hold any type of asset, have an integrated exchange built-in and provide the ability to send and receive assets across any payment network instantly?_

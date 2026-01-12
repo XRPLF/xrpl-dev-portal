@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Cash a Check for any exact amount up to the amount it specifies.
+  description: Cash a Check for any exact amount up to the amount it specifies.
 labels:
   - Checks
 ---
+
 # Cash a Check for an Exact Amount
 
 This tutorial shows how to cash a [Check](/docs/concepts/payment-types/checks.md) for an exact amount. As long as the Check is not expired, the specified recipient can cash it to receive any exact amount up to the amount specified. You would cash a Check this way if you want to receive a specific amount, for example to pay off an invoice or bill exactly. If the sender does not have enough money, cashing the check fails but you can try again later.
@@ -23,15 +24,16 @@ The complete source code for this tutorial is available in the source repository
 {% repo-link path="_code-samples/checks/js/" %}Checks sample code{% /repo-link %}
 
 ## Steps
+
 ### 1. Prepare the CheckCash transaction
 
 Figure out the values of the [CheckCash transaction][] fields. You also need to create a `Wallet` instance for your account's key pair. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
-| Field             | Value                | Description                  |
-|:------------------|:---------------------|:-----------------------------|
-| `TransactionType` | String               | The value `CheckCash` indicates this is a CheckCash transaction. |
-| `Account`         | String - [Address][] | The address of the sender who is cashing the Check. (In other words, your address.) |
-| `CheckID`         | String               | The ID of the Check to cash. You can get this information from the person who sent you the Check, or by [looking up checks](./look-up-checks.md) where your account is the destination. |
+| Field             | Value                | Description                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| :---------------- | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TransactionType` | String               | The value `CheckCash` indicates this is a CheckCash transaction.                                                                                                                                                                                                                                                                                                                                                             |
+| `Account`         | String - [Address][] | The address of the sender who is cashing the Check. (In other words, your address.)                                                                                                                                                                                                                                                                                                                                          |
+| `CheckID`         | String               | The ID of the Check to cash. You can get this information from the person who sent you the Check, or by [looking up checks](./look-up-checks.md) where your account is the destination.                                                                                                                                                                                                                                      |
 | `Amount`          | [Currency Amount][]  | The amount to receive. The type of currency (token or XRP) must match the Check object. The quantity in the `value` field must be less than or equal to the amount in the Check object. (For currencies with transfer fees, you must cash the Check for less than its `SendMax` so the transfer fee can be paid by the `SendMax`.) For more information on specifying currency amounts, see [Specifying Currency Amounts][]. |
 
 In the sample code, these values are hard-coded, so you should edit them to match your case:
@@ -42,13 +44,11 @@ Then, you use these parameters to fill out the transaction. For example:
 
 {% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" language="js" from="// Prepare the transaction" before="// Submit the transaction" /%}
 
-
 ### 2. Submit the transaction
 
 Send the transaction and wait for it to be validated by the consensus process, as normal:
 
 {% code-snippet file="/_code-samples/checks/js/cash-check-exact.js" from="// Submit" before="// Confirm" /%}
-
 
 ### 3. Confirm transaction result
 

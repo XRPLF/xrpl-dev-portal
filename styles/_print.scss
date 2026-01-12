@@ -1,6 +1,6 @@
 /* Print styles ------------------------------------------------------------- */
 @media print {
-    /* undo code tabs */
+  /* undo code tabs */
   .multicode > div {
     display: block !important;
   }
@@ -27,19 +27,33 @@
   }
   pre code {
     white-space: pre-wrap !important;
-    color: #22252B !important;
+    color: #22252b !important;
   }
   code {
     white-space: pre-wrap !important;
-    color: #22252B !important;
+    color: #22252b !important;
   }
 
-  .codehilite .n, .codehilite .na, .codehilite .nb, .codehilite .nc, .codehilite .nd, .codehilite .ne, .codehilite .nf, .codehilite .ni, .codehilite .nl, .codehilite .nn, .codehilite .nt, .codehilite .nv, .codehilite .nx, .codehilite .bp, .codehilite .fm, .codehilite .py {
-    color: #22252B;
-}
+  .codehilite .n,
+  .codehilite .na,
+  .codehilite .nb,
+  .codehilite .nc,
+  .codehilite .nd,
+  .codehilite .ne,
+  .codehilite .nf,
+  .codehilite .ni,
+  .codehilite .nl,
+  .codehilite .nn,
+  .codehilite .nt,
+  .codehilite .nv,
+  .codehilite .nx,
+  .codehilite .bp,
+  .codehilite .fm,
+  .codehilite .py {
+    color: #22252b;
+  }
 
-
-  article a[title="Source"] {
+  article a[title='Source'] {
     float: none;
   }
   /* Drop header, footer, sidebars */
@@ -52,26 +66,38 @@
     display: none !important;
   }
   /* Full-width content body */
-  article, #main_content_body {
+  article,
+  #main_content_body {
     position: static;
     display: block;
     width: auto;
     height: auto;
-    color:black !important;
+    color: black !important;
     max-width: 100%;
     overflow: visible !important;
   }
 
-  body {  
-    overflow: visible; 
+  body {
+    overflow: visible;
     background: #fff;
   }
-  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
     color: black;
   }
 
   .interactive-block {
-    display:none;
+    display: none;
   }
 
   .container {

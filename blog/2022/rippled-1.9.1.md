@@ -1,19 +1,19 @@
 ---
 category: 2022
-date: "2022-05-23"
+date: '2022-05-23'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.9.1
 
 Version 1.9.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes several important fixes, including a fix for a syncing issue from 1.9.0, a new fix amendment to correct a bug in the new Non-Fungible Tokens (NFTs) code, and a new amendment to allow multi-signing by up to 32 signers.
 
 <!-- BREAK -->
-
 
 ## Action Required
 
@@ -29,10 +29,10 @@ The **ExpandedSignerList** amendment extends the ledger's built-in multi-signing
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.9.1-1.el7.x86_64.rpm) | `c7885668f1cc47a86a12b73a37f1b060ed9cb08acb9d512804cbea23dd08ea2f` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.9.1-1_amd64.deb) | `5e233e89e61271d2a6c0a282d303a9726896c20d64886b22f698598982fe399b` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.9.1-1_amd64.deb)  | `5e233e89e61271d2a6c0a282d303a9726896c20d64886b22f698598982fe399b` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -56,7 +56,6 @@ This release contains the following features and improvements.
 
 - **Pause online deletion rather than canceling it if the server fails health check** - The server stops performing online deletion of old ledger history if the server fails its internal health check during this time. Online deletion can now resume after the server recovers, rather than having to start over. ([#4139](https://github.com/ripple/rippled/pull/4139))
 
-
 ## Bug Fixes and Performance Improvements
 
 - **Fix performance issues introduced in 1.9.0** - Readjusts some parameters of the ledger acquisition engine to revert some changes introduced in 1.9.0 that had adverse effects on some systems, including causing some systems to fail to sync to the network. ([#4152](https://github.com/ripple/rippled/pull/4152))
@@ -73,7 +72,6 @@ This release contains the following features and improvements.
 
 - **Refactor relational database interface** - Improves code comments, naming, and organization of the module that interfaces with relational databases (such as the SQLite database used for tracking transaction history). ([#3965](https://github.com/ripple/rippled/pull/3965))
 
-
 ## Contributions
 
 ### GitHub
@@ -81,7 +79,6 @@ This release contains the following features and improvements.
 The public source code repository for `rippled` is hosted on GitHub at <https://github.com/ripple/rippled>.
 
 We welcome contributions, big and small, and invite everyone to join the community of XRP Ledger developers and help us build the Internet of Value.
-
 
 ### Credits
 

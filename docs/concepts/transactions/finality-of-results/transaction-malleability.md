@@ -2,11 +2,12 @@
 html: transaction-malleability.html
 parent: finality-of-results.html
 seo:
-    description: Be aware of ways transactions could be changed to have a different hash than expected.
+  description: Be aware of ways transactions could be changed to have a different hash than expected.
 labels:
   - Security
   - Transaction Sending
 ---
+
 # Transaction Malleability
 
 A transaction is "malleable" if it can be changed in any way after being signed, without the keys to sign it. In the XRP Ledger, the **functionality** of a signed transaction cannot change, but in some circumstances a third party _could_ change the signature and identifying hash of a transaction.
@@ -16,8 +17,6 @@ If vulnerable software submits malleable transactions and assumes they can only 
 On the XRP Ledger mainnet, only **multi-signed transactions** can be malleable, if they have more signatures than necessary, or if an authorized signer provides an additional signature beyond what is necessary. Good operational security can protect against these problems. See [Mitigations for Multi-Signature Malleability](#mitigations-for-multi-signature-malleability) for guidelines.
 
 Before 2014, single-signed transactions could be malleable due to properties of the default signing algorithm, ECDSA with the secp256k1 curve. For compatibility with legacy signing tools, it was possible to create and submit malleable single-signed transactions until the [RequireFullyCanonicalSig amendment][] became enabled on 2020-07-03. (Transactions [signed with Ed25519 keys](../../accounts/cryptographic-keys.md#signing-algorithms) were never vulnerable to this problem.)
-
-
 
 ## Background
 
@@ -49,7 +48,6 @@ With the [RequireFullyCanonicalSig amendment][] (enabled in 2020), all transacti
 
 Between 2014 and 2020, the XRP Ledger was compatible with legacy software that did not always generate fully canonical signatures, but used a flag on transactions called [**`tfFullyCanonicalSig`**](../../../references/protocol/transactions/common-fields.md#global-flags) to protect compatible software from transaction malleability. This flag, which compatible signing software enables by default, required that the transaction use a _fully-canonical_ signature to be valid. Now that the [RequireFullyCanonicalSig amendment][] is enabled, the flag is no longer necessary, but there is no harm in enabling it anyway.
 
-
 ### Malleability with Multi-Signatures
 
 An important, explicit feature of multi-signing is that multiple different possible configurations can make a transaction valid. For example, an account can be configured so that signatures from any three of five signers could authorize a transaction. However, this inherently means that there can be several different variations of a valid transaction, each with a different identifying hash.
@@ -76,7 +74,6 @@ Even if your authorized signers are not intentionally malicious, confusion or po
 
 For greater security, these guidelines provide multiple layers of protection.
 
-
 ## Exploit With Malleable Transactions
 
 If the software you use to interface with the XRP Ledger sends malleable transactions, a malicious actor may be able to trick your software into losing track of a transaction's final outcome and potentially (in the worst case) sending equivalent payments multiple times.
@@ -89,7 +86,7 @@ The process to exploit a vulnerable system follows a series of steps like the fo
 
 1. The vulnerable system constructs a multi-signed transaction and collects more than the necessary number of signatures.
 
-    If an authorized signer is malicious or irresponsible, the transaction could also be vulnerable if that signer's signature is not included but could be added.
+   If an authorized signer is malicious or irresponsible, the transaction could also be vulnerable if that signer's signature is not included but could be added.
 
 2. The system notes the identifying hash of the vulnerable transaction, submits it to the XRP Ledger network, then begins monitoring for that hash to be included in a validated ledger version.
 
@@ -97,53 +94,52 @@ The process to exploit a vulnerable system follows a series of steps like the fo
 
 4. The malicious actor removes an extra signature from the vulnerable transaction.
 
-    Unlike creating a signature for different transaction instructions, this does not require a large amount of computational work. It can be done in much less time than it takes to generate a signature in the first place.
+   Unlike creating a signature for different transaction instructions, this does not require a large amount of computational work. It can be done in much less time than it takes to generate a signature in the first place.
 
-    Alternatively, an authorized signer whose signature is not already part of the transaction could add their signature to the vulnerable transaction's list of signatures. Depending on the sender's multi-signing settings, this can be instead of or in addition to removing other signatures from the transaction.
+   Alternatively, an authorized signer whose signature is not already part of the transaction could add their signature to the vulnerable transaction's list of signatures. Depending on the sender's multi-signing settings, this can be instead of or in addition to removing other signatures from the transaction.
 
-    The modified list of signatures results in a different identifying hash. (You do not have to calculate the hash before you submit to the network, but knowing the hash makes it easier to check the transaction's status later.)
+   The modified list of signatures results in a different identifying hash. (You do not have to calculate the hash before you submit to the network, but knowing the hash makes it easier to check the transaction's status later.)
 
 5. The malicious actor submits the modified transaction to the network.
 
-    This creates a "race" between the transaction as originally submitted and the modified version submitted by the malicious actor. The two transactions are mutually exclusive. Both are valid, but they have the same exact transaction data, including the `Sequence` number, so at most one of them can ever be included in a validated ledger.
+   This creates a "race" between the transaction as originally submitted and the modified version submitted by the malicious actor. The two transactions are mutually exclusive. Both are valid, but they have the same exact transaction data, including the `Sequence` number, so at most one of them can ever be included in a validated ledger.
 
-    Servers in the peer-to-peer network have no way of knowing which one "came first" or was intended by its original sender. Delays or other coincidences in network connectivity could result in validators seeing only one or the other by the time they finalize their consensus proposals, so either one could "win the race".
+   Servers in the peer-to-peer network have no way of knowing which one "came first" or was intended by its original sender. Delays or other coincidences in network connectivity could result in validators seeing only one or the other by the time they finalize their consensus proposals, so either one could "win the race".
 
-    A malicious actor could increase the chances of getting non-canonical transactions confirmed if they controlled some number of well-connected servers in the peer-to-peer network, even if those servers are not trusted as validators.
+   A malicious actor could increase the chances of getting non-canonical transactions confirmed if they controlled some number of well-connected servers in the peer-to-peer network, even if those servers are not trusted as validators.
 
-    If the malicious actor controls the only server to which the vulnerable system submitted the transaction, the malicious actor can easily control which version is distributed to the rest of the network.
+   If the malicious actor controls the only server to which the vulnerable system submitted the transaction, the malicious actor can easily control which version is distributed to the rest of the network.
 
 6. The malicious actor's version of the transaction achieves consensus and becomes included in a validated ledger.
 
-    At this point, the transaction has executed and cannot be reversed. Its effects (such as sending XRP) are final. The original version of the transaction is no longer valid because its `Sequence` number has been used.
+   At this point, the transaction has executed and cannot be reversed. Its effects (such as sending XRP) are final. The original version of the transaction is no longer valid because its `Sequence` number has been used.
 
-    The effects of the transaction in the XRP Ledger are exactly the same as if the original version had executed.
+   The effects of the transaction in the XRP Ledger are exactly the same as if the original version had executed.
 
 7. The vulnerable system does not see the transaction hash it is expecting, and erroneously concludes that the transaction did not execute.
 
-    If the transaction included the `LastLedgerSequence` field, this would occur after the specified ledger index has passed.
+   If the transaction included the `LastLedgerSequence` field, this would occur after the specified ledger index has passed.
 
-    If the transaction omitted the `LastLedgerSequence` field, this could be wrong in another way: if no other transaction from the same sender uses the same `Sequence` number, then the transaction could theoretically succeed later regardless of how much time has passed. (See [Reliable Transaction Submission](../reliable-transaction-submission.md) for details.)
+   If the transaction omitted the `LastLedgerSequence` field, this could be wrong in another way: if no other transaction from the same sender uses the same `Sequence` number, then the transaction could theoretically succeed later regardless of how much time has passed. (See [Reliable Transaction Submission](../reliable-transaction-submission.md) for details.)
 
 8. The vulnerable system takes action assuming that the transaction has failed.
 
-    For example, it may refund (or not debit) a customer's balance in its own system, to account for the funds that it thinks have not been sent in the XRP Ledger.
+   For example, it may refund (or not debit) a customer's balance in its own system, to account for the funds that it thinks have not been sent in the XRP Ledger.
 
-    Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
-
+   Worse, the vulnerable system might construct a new transaction to replace the transaction, picking new `Sequence`, `LastLedgerSequence`, and `Fee` parameters based on the current state of the network, but keeping the rest of the transaction the same as the original. If this new transaction is also malleable, the system could be exploited in the same way an indefinite number of times.
 
 ## See Also
 
 - **Concepts:**
-    - [Transactions](../index.md)
-    - [Finality of Results](index.md)
+  - [Transactions](../index.md)
+  - [Finality of Results](index.md)
 - **Tutorials:**
-    - [Look Up Transaction Results](look-up-transaction-results.md)
-    - [Reliable Transaction Submission](../reliable-transaction-submission.md)
+  - [Look Up Transaction Results](look-up-transaction-results.md)
+  - [Reliable Transaction Submission](../reliable-transaction-submission.md)
 - **References:**
-    - [Basic Data Types - Hashes](../../../references/protocol/data-types/basic-data-types.md#hashes)
-    - [Transaction Common Fields - Global Flags](../../../references/protocol/transactions/common-fields.md#global-flags)
-    - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md)
-    - [Serialization Format](../../../references/protocol/binary-format.md)
+  - [Basic Data Types - Hashes](../../../references/protocol/data-types/basic-data-types.md#hashes)
+  - [Transaction Common Fields - Global Flags](../../../references/protocol/transactions/common-fields.md#global-flags)
+  - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md)
+  - [Serialization Format](../../../references/protocol/binary-format.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

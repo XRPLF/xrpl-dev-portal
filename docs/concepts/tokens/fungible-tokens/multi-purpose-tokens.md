@@ -1,12 +1,13 @@
 ---
 seo:
-    description: Learn about multi-purpose tokens (MPTs) on XRP Ledger. MPTs are a flexible way to issue fungible tokens with built-in metadata, compliance, and transfer controls. 
+  description: Learn about multi-purpose tokens (MPTs) on XRP Ledger. MPTs are a flexible way to issue fungible tokens with built-in metadata, compliance, and transfer controls.
 labels:
   - Tokens
   - MPTs
   - Multi-purpose Tokens
 status: not_enabled
 ---
+
 # Multi-Purpose Tokens
 
 Multi-Purpose Tokens (MPTs) are a form of [fungible token](./index.md) on the XRP Ledger. They have been designed for greater efficiency and ease of use based on lessons learned from [trust line tokens](./trust-line-tokens.md) on the XRP Ledger.
@@ -49,54 +50,54 @@ After the MPT is issued, the on-chain data cannot be changed. However, the propo
 
 To fit within the 1024-byte limit, MPT metadata must use compressed JSON keys. The following table describes these keys and their corresponding fields:
 
-| Field Name      | Key  | Type             | Required? | Description |
-|:--------------- |:---- |:---------------- |---------- |-------------|
-| ticker          | `t`  | String           | Yes       | The ticker symbol used to represent the token. Must be uppercase letters (A-Z) and digits (0-9) only. A maximum of 6 characters is recommended. |
-| name            | `n`  | String           | Yes       | The display name of the token. Any UTF-8 string is permitted.  |
-| desc            | `d`  | String           | No        | A short description of the token. Any UTF-8 string is permitted. |
-| icon            | `i`  | String           | Yes       | The URI to the token icon. Can be `hostname/path` (HTTPS is assumed), or full URI for other protocols. |
-| asset_class     | `ac` | String           | Yes️       | Categorizes tokens by their primary purpose and backing. See [Asset Class](#asset-class) for more details. |
-| asset_subclass  | `as` | String           | No        | An optional subcategory that is only required if the `asset_class` is `rwa`. See [Asset Subclass](#asset-subclass) for more details. |
-| issuer_name     | `in` | String           | Yes       | Name of the entity issuing the token. Any UTF-8 string is permitted. |
-| uris            | `us` | Array            | No        | The list of related URIs such as website, documentation, and social media. See [URIs](#uris) for more details.|
+| Field Name      | Key  | Type             | Required? | Description                                                                                                                                               |
+| :-------------- | :--- | :--------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ticker          | `t`  | String           | Yes       | The ticker symbol used to represent the token. Must be uppercase letters (A-Z) and digits (0-9) only. A maximum of 6 characters is recommended.           |
+| name            | `n`  | String           | Yes       | The display name of the token. Any UTF-8 string is permitted.                                                                                             |
+| desc            | `d`  | String           | No        | A short description of the token. Any UTF-8 string is permitted.                                                                                          |
+| icon            | `i`  | String           | Yes       | The URI to the token icon. Can be `hostname/path` (HTTPS is assumed), or full URI for other protocols.                                                    |
+| asset_class     | `ac` | String           | Yes️       | Categorizes tokens by their primary purpose and backing. See [Asset Class](#asset-class) for more details.                                                |
+| asset_subclass  | `as` | String           | No        | An optional subcategory that is only required if the `asset_class` is `rwa`. See [Asset Subclass](#asset-subclass) for more details.                      |
+| issuer_name     | `in` | String           | Yes       | Name of the entity issuing the token. Any UTF-8 string is permitted.                                                                                      |
+| uris            | `us` | Array            | No        | The list of related URIs such as website, documentation, and social media. See [URIs](#uris) for more details.                                            |
 | additional_info | `ai` | Object or String | No        | Freeform field for key token details like interest rate, maturity date, term, or other relevant info. Any valid JSON object or UTF-8 string is permitted. |
 
 ##### Asset Class
 
 The `asset_class` field categorizes tokens by their primary purpose and backing. These categories help applications understand the nature of the token and its intended use case.
 
-| Category | Definition |
-|----------|------------|
-| `rwa` | Tokens representing real-world assets (RWAs), which derive value from legally enforceable claims on physical or off-chain financial assets. |
-| `memes` | Community-driven tokens without intrinsic backing or utility claims, primarily driven by internet culture or speculation. |
-| `wrapped` | Tokens representing assets from other blockchains, typically backed 1:1 by bridges or custodians. |
-| `gaming` | Tokens used in games or virtual worlds, often representing in-game currency, assets, or rewards. |
-| `defi` | Tokens native to or used within DeFi protocols, including governance tokens, DEX tokens, and lending assets. |
-| `other` | Tokens that do not clearly fit into the defined categories. This may include experimental, test, or tokens with unique use cases not covered elsewhere. |
+| Category  | Definition                                                                                                                                              |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rwa`     | Tokens representing real-world assets (RWAs), which derive value from legally enforceable claims on physical or off-chain financial assets.             |
+| `memes`   | Community-driven tokens without intrinsic backing or utility claims, primarily driven by internet culture or speculation.                               |
+| `wrapped` | Tokens representing assets from other blockchains, typically backed 1:1 by bridges or custodians.                                                       |
+| `gaming`  | Tokens used in games or virtual worlds, often representing in-game currency, assets, or rewards.                                                        |
+| `defi`    | Tokens native to or used within DeFi protocols, including governance tokens, DEX tokens, and lending assets.                                            |
+| `other`   | Tokens that do not clearly fit into the defined categories. This may include experimental, test, or tokens with unique use cases not covered elsewhere. |
 
 ##### Asset Subclass
 
 When `asset_class` is set to `rwa`, an `asset_subclass` can be specified to provide more granular categorization. This describes what type of real-world asset backs the token and what legal or regulatory framework might apply.
 
-| Subclass | Definition |
-|----------|------------|
-| `stablecoin` | Tokens pegged to a stable value, typically fiat currencies like USD, which are backed by reserves like cash, treasuries, or crypto collateral. |
-| `commodity` | Tokens that represent physical commodities like gold, silver, or oil, often redeemable or legally linked to off-chain reserves. |
-| `real_estate` | Tokens representing ownership or claims on real estate, including fractionalized property shares or REIT-like instruments. |
-| `private_credit` | Tokens representing debt obligations from private entities, such as loans, invoices, or receivables. |
-| `equity` | Tokens representing ownership shares in companies, similar to traditional stock or equity instruments. |
-| `treasury` | Tokens backed by government debt instruments, such as U.S. Treasury bills or bonds. |
-| `other` | Tokens that do not fit into the predefined categories, including experimental, hybrid, or emerging real-world asset types. |
+| Subclass         | Definition                                                                                                                                     |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `stablecoin`     | Tokens pegged to a stable value, typically fiat currencies like USD, which are backed by reserves like cash, treasuries, or crypto collateral. |
+| `commodity`      | Tokens that represent physical commodities like gold, silver, or oil, often redeemable or legally linked to off-chain reserves.                |
+| `real_estate`    | Tokens representing ownership or claims on real estate, including fractionalized property shares or REIT-like instruments.                     |
+| `private_credit` | Tokens representing debt obligations from private entities, such as loans, invoices, or receivables.                                           |
+| `equity`         | Tokens representing ownership shares in companies, similar to traditional stock or equity instruments.                                         |
+| `treasury`       | Tokens backed by government debt instruments, such as U.S. Treasury bills or bonds.                                                            |
+| `other`          | Tokens that do not fit into the predefined categories, including experimental, hybrid, or emerging real-world asset types.                     |
 
 ##### URIs
 
 The `us` array contains a list of URI objects, each with a URI link, category, and human-readable title.
 
-| Field Name | Key | Type   | Required?  | Description |
-|:---------- |:--- |:------ |:--------- |:-------------|
-| uri        | `u` | String | Yes️       |`hostname/path` or full URI link to the related resource. |
+| Field Name | Key | Type   | Required? | Description                                                                                  |
+| :--------- | :-- | :----- | :-------- | :------------------------------------------------------------------------------------------- |
+| uri        | `u` | String | Yes️       | `hostname/path` or full URI link to the related resource.                                    |
 | category   | `c` | String | Yes       | The category of the link provided. Allowed values are: `website`, `social`, `docs`, `other`. |
-| title      | `t` | String | Yes       | Human-readable label for the link. |
+| title      | `t` | String | Yes       | Human-readable label for the link.                                                           |
 
 #### Example JSON Metadata
 
@@ -177,7 +178,6 @@ Each MPT issuance is totally separate and there is no rippling between tokens, o
 
 MPTs _do_ still support [partial payments](../../payment-types/partial-payments.md), so it is still necessary to avoid the related pitfalls when processing MPT payments.
 
-
 ## Limits on Issuing
 
 There is not intended to be a limit on how many MPT issuances you can create, but the technology does impose some hard and soft limits indirectly:
@@ -187,23 +187,20 @@ There is not intended to be a limit on how many MPT issuances you can create, bu
 
 The data type that holds MPT balances has a valid range of **0** to **2<sup>63</sup>-1** (inclusive) in integer increments, so no more than that amount can exist in any one place. However, it is possible for multiple holders to each hold up to that amount at the same time, so that the total amount in circulation is higher. An MPT issuance's supply cap, if configured, is also limited by this range.
 
-
 ## See Also
- 
-- **Use Case**
 
-    - [Creating an Asset-backed Multi-purpose Token](../../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md)
+- **Use Case**
+  - [Creating an Asset-backed Multi-purpose Token](../../../use-cases/tokenization/creating-an-asset-backed-multi-purpose-token.md)
 
 - **Tutorial**
-
-    - [Sending MPTs](../../../tutorials/javascript/send-payments/sending-mpts.md)
+  - [Sending MPTs](../../../tutorials/javascript/send-payments/sending-mpts.md)
 
 - **References:**
-    - [MPToken](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md)
-    - [MPTokenIssuance](../../../references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md)
-    - [MPTokenAuthorize](../../../references/protocol/transactions/types/mptokenauthorize.md)
-    - [MPTokenIssuanceCreate](../../../references/protocol/transactions/types/mptokenissuancecreate.md)
-    - [MPTokenIssuanceDestroy](../../../references/protocol/transactions/types/mptokenissuancedestroy.md)
-    - [MPTokenIssuanceSet](../../../references/protocol/transactions/types/mptokenissuanceset.md)
+  - [MPToken](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md)
+  - [MPTokenIssuance](../../../references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md)
+  - [MPTokenAuthorize](../../../references/protocol/transactions/types/mptokenauthorize.md)
+  - [MPTokenIssuanceCreate](../../../references/protocol/transactions/types/mptokenissuancecreate.md)
+  - [MPTokenIssuanceDestroy](../../../references/protocol/transactions/types/mptokenissuancedestroy.md)
+  - [MPTokenIssuanceSet](../../../references/protocol/transactions/types/mptokenissuanceset.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

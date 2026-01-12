@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Create NFTs that can't be traded among users.
+  description: Create NFTs that can't be traded among users.
 labels:
   - Non-fungible Tokens, NFTs
 ---
+
 # Non-Transferable Tokens
 
 The XRP Ledger supports non-transferable tokens (NTTs), sometimes called soulbound tokens, as a specific class of [non-fungible tokens](./index.md). Non-transferable tokens may be used for certifications and identity tokens, achievements in games, or other cases where the purpose of the token is limited to one person specifically.

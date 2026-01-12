@@ -2,11 +2,12 @@
 html: cancel-an-expired-escrow.html
 parent: use-escrows.html
 seo:
-    description: 有効期限切れのEscrowを取り消します。
+  description: 有効期限切れのEscrowを取り消します。
 labels:
   - Escrow
   - スマートコントラクト
 ---
+
 # 有効期限切れEscrowの取消し
 
 ## 1.有効期限切れEscrowの確認
@@ -32,7 +33,6 @@ XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の
 {% /tab %}
 
 {% /tabs %}
-
 
 [account_objectsメソッド][]を使用してEscrowを検索し、`CancelAfter`の時刻と比較できます。
 
@@ -60,7 +60,7 @@ XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の
 
 XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送信する](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)ことで、***誰でも***有効期限切れのEscrowを取り消すことができます。トランザクションの`Owner`フィールドを、そのEscrowを作成した`EscrowCreate`トランザクションの`Account`に設定します。`OfferSequence`フィールドを、`EscrowCreate`トランザクションの`Sequence`に設定します。
 
-{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 リクエスト:
 
@@ -86,7 +86,7 @@ XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送�
 
 ## 3.検証の待機
 
-{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%}
 
 ## 4.最終結果の確認
 

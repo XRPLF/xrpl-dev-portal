@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Issue an asset-backed token such as a US Treasury bill using multi-purpose tokens.
+  description: Issue an asset-backed token such as a US Treasury bill using multi-purpose tokens.
 labels:
-    - Tokens
-    - MPT
+  - Tokens
+  - MPT
 ---
+
 # Sending MPTs
 
 To send an MPT to another account, the receiving account must first authorize the receipt of the MPT, based on its MPToken Issuance ID. This is to prevent malicious users from spamming accounts with unwanted tokens that could negatively impact storage and XRP reserves.
@@ -31,13 +32,13 @@ To get the accounts:
 2. Choose your ledger instance (**Devnet** or **Testnet**).
 3. If you used the MPT Generator:
    1. Paste the gathered info in the **Result** field.
-   [![Gathered information in Result field](../../../img/mt-send-mpt-1-gathered-info.png)](../../../img/mt-send-mpt-1-gathered-info.png)
+      [![Gathered information in Result field](../../../img/mt-send-mpt-1-gathered-info.png)](../../../img/mt-send-mpt-1-gathered-info.png)
    2. Cut and paste the MPT Issuance ID to the **MPT Issuance ID** field.
    3. Click **Distribute Account Info** to populate the **Account 1** fields.<br/><br/>
-   If you did not use the MPT Generator, enter the **Account 1 Name**, **Account 1 Address**, **Account 1 Seed**, and **MPT Issuance ID** in the corresponding fields.)
+      If you did not use the MPT Generator, enter the **Account 1 Name**, **Account 1 Address**, **Account 1 Seed**, and **MPT Issuance ID** in the corresponding fields.)
 4. Click **Get New Account 2**, or use a seed to **Get Account 2 from Seed**.
 5. Optionally, add the **Account 2 Name**, an arbitrary human-readable name that helps to differentiate the accounts.
-[![Get New Account 2](../../../img/mt-send-mpt-2-account-2.png)](../../../img/mt-send-mpt-2-account-2.png)
+   [![Get New Account 2](../../../img/mt-send-mpt-2-account-2.png)](../../../img/mt-send-mpt-2-account-2.png)
 
 ## Authorize MPT
 
@@ -47,19 +48,19 @@ To authorize Account 2 to accept MPTs:
 
 1. Click the **Account 2** radio button.
 2. Enter an **Amount**, the maximum number of MPTs the account will accept.
-2. Click **Authorize MPTs**.
-[![Authorize MPTs](../../../img/mt-send-mpt-2-authorize-mpt.png)](../../../img/mt-send-mpt-2-authorize-mpt.png)
+3. Click **Authorize MPTs**.
+   [![Authorize MPTs](../../../img/mt-send-mpt-2-authorize-mpt.png)](../../../img/mt-send-mpt-2-authorize-mpt.png)
 
 ## Send MPT
 
 To send an MPT:
 
 1. Click the **Account 1** radio button.
-3. Enter the **MPT Issuance ID**.
-2. Enter an **Amount** of MPTs to send.
-3. Enter the **Destination** (likely the value in the **Account 2 Address** field, but it can be any account on the same ledger instance).
-4. Click **Send MPT**.
-[![Send MPTs](../../../img/mt-send-mpt-3-send-mpt.png)](../../../img/mt-send-mpt-3-send-mpt.png)
+2. Enter the **MPT Issuance ID**.
+3. Enter an **Amount** of MPTs to send.
+4. Enter the **Destination** (likely the value in the **Account 2 Address** field, but it can be any account on the same ledger instance).
+5. Click **Send MPT**.
+   [![Send MPTs](../../../img/mt-send-mpt-3-send-mpt.png)](../../../img/mt-send-mpt-3-send-mpt.png)
 
 ## Get MPTs
 
@@ -67,7 +68,7 @@ To verify receipt of the MPTs:
 
 1. Click the **Account 2** radio button.
 2. Click **Get MPTs**.
-[![Get MPTs](../../../img/mt-send-mpt-4-get-mpts.png)](../../../img/mt-send-mpt-4-get-mpts.png)
+   [![Get MPTs](../../../img/mt-send-mpt-4-get-mpts.png)](../../../img/mt-send-mpt-4-get-mpts.png)
 
 # Code Walkthrough
 
@@ -81,7 +82,7 @@ The code that supports the MPT features is in the `send-mpt.js` file. Standard s
 
 Connect to the XRP Ledger.
 
-```javascript    
+```javascript
 async function sendMPT() {
   let net = getNet()
   const client = new xrpl.Client(net)
@@ -102,22 +103,22 @@ Instantiate the parameter variables.
 Create a Payment transaction using the MPT for the Amount.
 
 ```javascript
-    const send_mpt_tx = {
-      "TransactionType": "Payment",
-      "Account": wallet.address,
-      "Amount": {
-        "mpt_issuance_id": mpt_issuance_id,
-        "value": mpt_quantity,
-      },
-      "Destination": destinationField.value,
-    }
+const send_mpt_tx = {
+  TransactionType: 'Payment',
+  Account: wallet.address,
+  Amount: {
+    mpt_issuance_id: mpt_issuance_id,
+    value: mpt_quantity,
+  },
+  Destination: destinationField.value,
+}
 ```
 
 Prepare and sign the transaction.
 
 ```javascript
-    const pay_prepared = await client.autofill(send_mpt_tx)
-    const pay_signed = wallet.sign(pay_prepared)
+const pay_prepared = await client.autofill(send_mpt_tx)
+const pay_signed = wallet.sign(pay_prepared)
 ```
 
 Send the prepared transaction and report the results.
@@ -177,27 +178,27 @@ Send an `account_objects` request, specifying the type _mptoken_. Wait for the r
 Stringify and parse the JSON result string.
 
 ```javascript
-    let JSONString = JSON.stringify(mpts.result, null, 2)
-    let JSONParse = JSON.parse(JSONString)
-    let numberOfMPTs = JSONParse.account_objects.length
+let JSONString = JSON.stringify(mpts.result, null, 2)
+let JSONParse = JSON.parse(JSONString)
+let numberOfMPTs = JSONParse.account_objects.length
 ```
 
 Loop through the filtered array of account_objects to list all of the MPTs held by the account.
 
 ```javascript
-    let x = 0
-    while (x < numberOfMPTs){
-      results += "\n\n===MPT Issuance ID: " + JSONParse.account_objects[x].MPTokenIssuanceID
-              + "\n===MPT Amount: " + JSONParse.account_objects[x].MPTAmount
-      x++
-    }
+let x = 0
+while (x < numberOfMPTs) {
+  results +=
+    '\n\n===MPT Issuance ID: ' + JSONParse.account_objects[x].MPTokenIssuanceID + '\n===MPT Amount: ' + JSONParse.account_objects[x].MPTAmount
+  x++
+}
 ```
 
 Return the parsed results, followed by the raw results.
 
 ```javascript
-    results += "\n\n" + JSONString
-    resultField.value += results
+results += '\n\n' + JSONString
+resultField.value += results
 ```
 
 Catch and report any errors, then disconnect from the XRP Ledger.
@@ -232,27 +233,27 @@ async function authorizeMPT() {
 Capture the MPT issuance ID in a variable.
 
 ```javascript
-  const mpt_issuance_id = mptIdField.value
+const mpt_issuance_id = mptIdField.value
 ```
 
 Create the MPTokenAuthorize transaction, passing the target account's address and the MPT Issuance ID.
 
 ```javascript
-  const auth_mpt_tx = {
-    "TransactionType": "MPTokenAuthorize",
-    "Account": wallet.address,
-    "MPTokenIssuanceID": mpt_issuance_id,
-  }
+const auth_mpt_tx = {
+  TransactionType: 'MPTokenAuthorize',
+  Account: wallet.address,
+  MPTokenIssuanceID: mpt_issuance_id,
+}
 ```
 
 Prepare, sign, and send the transaction.
 
 ```javascript
-  const auth_prepared = await client.autofill(auth_mpt_tx)
-  const auth_signed = wallet.sign(auth_prepared)
-  results += `\n\nSending authorization...`
-  resultField.value = results
-  const auth_result = await client.submitAndWait(auth_signed.tx_blob)
+const auth_prepared = await client.autofill(auth_mpt_tx)
+const auth_signed = wallet.sign(auth_prepared)
+results += `\n\nSending authorization...`
+resultField.value = results
+const auth_result = await client.submitAndWait(auth_signed.tx_blob)
 ```
 
 Report the results.
@@ -343,7 +344,7 @@ Report the results.
                         <label for="account1address">Account 1 Address</label>
                     </span>
                 </td>
-                <td> 
+                <td>
                     <input type="text" id="account1address" size="40"></input>
                 </td>
                 <td>
@@ -430,10 +431,10 @@ Report the results.
                 <td>
                     <input type="text" id="mptIdField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
                     <button type="button" onClick="authorizeMPT()">Authorize MPT</button>
-                </td>               
+                </td>
             </tr>
             <tr>
                 <td align="right">
@@ -447,7 +448,7 @@ Report the results.
                 </td>
                 <td>
                     <button type="button" onClick="sendMPT()">Send MPT</button>
-                </td>  
+                </td>
 
             </tr>
             <tr>
@@ -492,10 +493,11 @@ Report the results.
 </script>
 </html>
 ```
+
 <!--
 <div>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
 <script>
     if (typeof module !== "undefined") {
     const xrpl = require("xrpl")
@@ -513,7 +515,7 @@ function getNet() {
     if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
     if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
     return net
-  } // End of getNet()           
+  } // End of getNet()
   // *******************************************************
   // ************* Get Account *****************************
   // *******************************************************
@@ -547,11 +549,11 @@ function getNet() {
     await client.connect()
     results += '\nConnected, finding wallets.\n'
     console.log(results)
-  // --------------------------------------------------Find the test account wallet.    
-    const my_wallet = xrpl.Wallet.fromSeed(holderSeedField.value)    
+  // --------------------------------------------------Find the test account wallet.
+    const my_wallet = xrpl.Wallet.fromSeed(holderSeedField.value)
   // -------------------------------------------------------Get the current balance.
     holderAccountField.value = my_wallet.address
-    holderSeedField.value = my_wallet.seed      
+    holderSeedField.value = my_wallet.seed
     client.disconnect()
   } // End of getHolderFromSeed()
 // **********************************************************
@@ -565,12 +567,12 @@ function getNet() {
     await client.connect()
     results += '\nConnected, finding wallets.\n'
     resultsArea.value = results
-  // --------------------------------------------------Find the test account wallet.    
-    const my_wallet = xrpl.Wallet.fromSeed(receiverSeedField.value)    
+  // --------------------------------------------------Find the test account wallet.
+    const my_wallet = xrpl.Wallet.fromSeed(receiverSeedField.value)
   // -------------------------------------------------------Get the current balance.
     receiverAccountField.value = my_wallet.address
-    receiverSeedField.value = my_wallet.seed 
-    resultsArea.value = results     
+    receiverSeedField.value = my_wallet.seed
+    resultsArea.value = results
     client.disconnect()
   } // End of getReceiverFromSeed()
   // *******************************************************
@@ -583,7 +585,7 @@ async function sendMPT() {
   resultsArea.value = results
   await client.connect()
   results += '\nConnected.'
-  resultsArea.value = results  
+  resultsArea.value = results
   const holder_wallet = xrpl.Wallet.fromSeed(holderSeedField.value)
   const mpt_issuance_id = mptIssuanceIDField.value
   const mpt_quantity = quantityField.value
@@ -678,7 +680,7 @@ async function authorizeMPT() {
 <div>
 <form>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+    <script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
 <!-- Required meta tags - - >
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -841,4 +843,5 @@ async function authorizeMPT() {
 <hr/>
 
 -->
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

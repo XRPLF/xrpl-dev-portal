@@ -2,28 +2,26 @@
 html: set-up-multi-signing.html
 parent: manage-account-settings.html
 seo:
-    description: Add a signer list to your account to enable multi-signing.
+  description: Add a signer list to your account to enable multi-signing.
 labels:
   - Security
 ---
+
 # Set Up Multi-Signing
 
 [Multi-signing](../../../concepts/accounts/multi-signing.md) is one of three ways to authorize [transactions](../../../concepts/transactions/index.md) for the XRP Ledger, alongside signing with [regular keys and master keys](../../../concepts/accounts/cryptographic-keys.md). You can configure your [address](../../../concepts/accounts/index.md) to allow any combination of the three methods to authorize transactions.
 
 This tutorial demonstrates how to enable multi-signing for an address.
 
-
 ## Prerequisites
 
 - You must have a funded XRP Ledger [address](../../../concepts/accounts/index.md) with enough spare XRP to send transactions and meet the [reserve requirement](../../../concepts/accounts/reserves.md) of a new signer list.
+  - With the [MultiSignReserve amendment][] enabled, multi-signing requires {% $env.PUBLIC_OWNER_RESERVE %} for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
 
-    - With the [MultiSignReserve amendment][] enabled, multi-signing requires {% $env.PUBLIC_OWNER_RESERVE %} for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
-
-    - If you are on a test network that does not have the [MultiSignReserve amendment][] enabled, multi-signing requires more than the usual amount of XRP for the [account reserve](../../../concepts/accounts/reserves.md), increasing with the number of signers in the list.
+  - If you are on a test network that does not have the [MultiSignReserve amendment][] enabled, multi-signing requires more than the usual amount of XRP for the [account reserve](../../../concepts/accounts/reserves.md), increasing with the number of signers in the list.
 
 - You must have access to a tool that can generate key pairs in the XRP Ledger format. If you are using a `rippled` server for this, you must have admin access because the [wallet_propose method][] is admin-only.
-
-    - Alternatively, if you are authorizing others who already have XRP Ledger addresses to be signers for your address, you only need to know the account addresses of those people or entities.
+  - Alternatively, if you are authorizing others who already have XRP Ledger addresses to be signers for your address, you only need to know the account addresses of those people or entities.
 
 - Multi-signing must be available. (The MultiSign amendment has been enabled in the production XRP Ledger since **2016-06-27**.)
 
@@ -31,10 +29,9 @@ This tutorial demonstrates how to enable multi-signing for an address.
 
 Decide how many signers you want to include (up to 32). Choose a quorum number for your signer list and weights for your signers based on how many signatures you want to require for a given transaction. For a straightforward "M-of-N" signing setup, assign each signer weight **`1`** and set your list's quorum to be "M", the number of signatures to require.
 
-
 ## 2. Prepare member keys
 
-You need one or more validly-formed XRP Ledger addresses to include as members of  your signer list. You or your chosen signers must know the secret keys associated with these addresses. The addresses can be funded accounts that exist in the ledger, but they do not need to be.
+You need one or more validly-formed XRP Ledger addresses to include as members of your signer list. You or your chosen signers must know the secret keys associated with these addresses. The addresses can be funded accounts that exist in the ledger, but they do not need to be.
 
 You can generate new addresses using the [wallet_propose method][]. For example:
 
@@ -58,7 +55,6 @@ Connecting to 127.0.0.1:5005
 
 Take note of the `account_id` (XRP Ledger Address) and `master_seed` (secret key) for each one you generate.
 
-
 ## 3. Send SignerListSet transaction
 
 [Sign and submit](../../../concepts/transactions/index.md#signing-and-submitting-transactions) a [SignerListSet transaction][] in the normal (single-signature) way. This associates a signer list with your XRP Ledger address, so that a combination of signatures from the members of that signer list can multi-sign later transactions on your behalf.
@@ -70,6 +66,7 @@ In this example, the signer list has 3 members, with the weights and quorum set 
 {% tabs %}
 
 {% tab label="Commandline" %}
+
 ```
 $ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq '{
 >     "Flags": 0,
@@ -141,6 +138,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Javascript" %}
@@ -157,11 +155,9 @@ Make sure that the [Transaction Result](../../../references/protocol/transaction
 
 {% admonition type="info" name="Note" %}Without the [MultiSignReserve amendment][], the more members in the signer list, the more XRP your address must have for purposes of the [owner reserve](../../../concepts/accounts/reserves.md#owner-reserves). If your address does not have enough XRP, the transaction fails with [`tecINSUFFICIENT_RESERVE`](../../../references/protocol/transactions/transaction-results/tec-codes.md). With the [MultiSignReserve amendment][] enabled, the XRP your address must have for purposes of the [owner reserve](../../../concepts/accounts/reserves.md#owner-reserves) is 5 XRP, regardless of the number of members in the signer list. See also: [Signer Lists and Reserves](../../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signer-lists-and-reserves).{% /admonition %}
 
-
 ## 4. Wait for validation
 
 {% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
-
 
 ## 5. Confirm the new signer list
 
@@ -222,25 +218,25 @@ If the signer list is present with the expected contents, then your address is r
 
 At this point, your address is ready to [send a multi-signed transaction](send-a-multi-signed-transaction.md). You may also want to:
 
-* [Disable the address's master key pair](disable-master-key-pair.md).
-* [Remove the address's regular key pair](change-or-remove-a-regular-key-pair.md) (if you previously set one) by sending a [SetRegularKey transaction][].
+- [Disable the address's master key pair](disable-master-key-pair.md).
+- [Remove the address's regular key pair](change-or-remove-a-regular-key-pair.md) (if you previously set one) by sending a [SetRegularKey transaction][].
 
 ## See Also
 
 - **Concepts:**
-    - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
-    - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
+  - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
+  - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
 - **Tutorials:**
-    - [Install rippled](../../../infrastructure/installation/index.md)
-    - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
-    - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
-    - [Enable Public Signing](../../../infrastructure/configuration/enable-public-signing.md)
+  - [Install rippled](../../../infrastructure/installation/index.md)
+  - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
+  - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Enable Public Signing](../../../infrastructure/configuration/enable-public-signing.md)
 - **References:**
-    - [wallet_propose method][]
-    - [account_objects method][]
-    - [sign_for method][]
-    - [submit_multisigned method][]
-    - [SignerListSet transaction][]
-    - [SignerList object](../../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
+  - [wallet_propose method][]
+  - [account_objects method][]
+  - [sign_for method][]
+  - [submit_multisigned method][]
+  - [SignerListSet transaction][]
+  - [SignerList object](../../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

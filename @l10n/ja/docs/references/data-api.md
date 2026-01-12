@@ -2,10 +2,11 @@
 html: data-api.html
 parent: references.html
 seo:
-    description: (非推奨)XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。
+  description: (非推奨)XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。
 status: removed
 nav_omit: true
 ---
+
 # Ripple Data API v2
 
 {% admonition type="danger" name="警告" %}Ripple Data API v2は非推奨となりました。代わりに[HTTP / WebSocket API](http-websocket-apis/index.md)を使って下さい。{% /admonition %}

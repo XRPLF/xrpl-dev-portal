@@ -2,18 +2,18 @@
 html: consensus-structure.html
 parent: consensus.html
 seo:
-    description: Entender el rol del consenso en el XRP Ledger.
+  description: Entender el rol del consenso en el XRP Ledger.
 labels:
   - Blockchain
 ---
+
 # Estructura de consenso
 
-Escrito por Dave Cohen, David Schwartz, y Arthur Britto._
+Escrito por Dave Cohen, David Schwartz, y Arthur Britto.\_
 
 Este artículo proporciona una visión a alto nivel del XRP Ledger, la información que almacena, y cómo las [transacciones](../../references/protocol/transactions/index.md) dan como resultado cambios en el ledger.
 
 Al crear aplicaciones en el XRP Ledger, es importante entender el proceso, para no sorprenderse por el comportamiento de las APIs de XRP Ledger y sus efectos.
-
 
 ## Introducción
 
@@ -27,13 +27,13 @@ La red peer-to-peer XRP Ledger proporciona un libro de contabilidad (ledger) com
 
 Para una descripción técnica completa de todos los datos que se incluyen en una versión de un ledger, ver la [Referencia de formato de ledger](../../references/protocol/ledger-data/index.md).
 
-[{% inline-svg file="/docs/img/anatomy-of-a-ledger-complete.svg" /%}](/docs/img/anatomy-of-a-ledger-complete.svg "Figura 1: Elementos del XRP Ledger")
+[{% inline-svg file="/docs/img/anatomy-of-a-ledger-complete.svg" /%}](/docs/img/anatomy-of-a-ledger-complete.svg 'Figura 1: Elementos del XRP Ledger')
 
 _Figura 1: Elementos del XRP Ledger_
 
 El XRP Ledger tiene una nueva versión de un ledger cada ciertos segundos. Cuando la red acuerda el contenido de una nueva versión del ledger, la versión del ledger es _validado_, y sus contenidos no se pueden cambiar nunca. Las versiones validadadas de ledgers que precedieron forman el histórico del ledger. Incluso el ledger validado más reciente es parte del histórico, ya que representa el estado de la red hasta hace poco tiempo. En la actualidad, la red está evaluando transacciones que pueden aplicarse y finalizarse en la próxima versión del ledger. Mientras la evaluación está ocurriendo, la red tiene versiones de ledger que aun no están validadas.
 
-[{% inline-svg file="/docs/img/ledger-history.svg" /%}](/docs/img/ledger-history.svg "Figura 2: Histórico del XRP Ledger")
+[{% inline-svg file="/docs/img/ledger-history.svg" /%}](/docs/img/ledger-history.svg 'Figura 2: Histórico del XRP Ledger')
 
 _Figure 2: Histórico del XRP Ledger_
 
@@ -45,13 +45,13 @@ Los cambios a nivel de usuario son el resultado de transacciones. Ejemplos de [t
 
 Cada versión del ledger también contiene un conjunto de transacciones y metadata sobre esas transacciones. Las transacciones que incluye son solo aquellas que han sido aplicadas para la anterior versión del ledger para crear la nueva versión del ledger. Los metadatos o metadata se registran a los mismos efectos en el estado del dato del ledger.
 
-[{% inline-svg file="/docs/img/ledger-changes.svg" /%}](/docs/img/ledger-changes.svg "Figura 3: Transacciones aplicadas a la versión del ledger")
+[{% inline-svg file="/docs/img/ledger-changes.svg" /%}](/docs/img/ledger-changes.svg 'Figura 3: Transacciones aplicadas a la versión del ledger')
 
 _Figure 3: Transacciones aplicadas a la versión del ledger_
 
 El conjunto de transacciones incluidas en una instancia ledger se guardan en ese ledger y permite auditorías de la historia del XRP Ledger. Si un balance de cuenta es diferente en un ledger N+1 respecto al ledger N, entonces el ledger N+1 contiene las transacciones responsables del cambio.
 
-Las transacciones que aparecen en un ledger validado pueden haber logrado cambiar el ledger, o pueden haberse procesado sin haber realizado la acción requerida. Las transacciones exitosas tienen el [código resultado](../../references/protocol/transactions/transaction-results/index.md) **`tesSUCCESS`**  el cual indica los cambios solicitados para aplicar en el ledger. Las transacciones fallidas en el ledger tienen el código de resultado de clase **`tec`**.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
+Las transacciones que aparecen en un ledger validado pueden haber logrado cambiar el ledger, o pueden haberse procesado sin haber realizado la acción requerida. Las transacciones exitosas tienen el [código resultado](../../references/protocol/transactions/transaction-results/index.md) **`tesSUCCESS`** el cual indica los cambios solicitados para aplicar en el ledger. Las transacciones fallidas en el ledger tienen el código de resultado de clase **`tec`**.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
 
 Todas las transacciones incluidas en un ledger destruyen algo de XRP como un [coste de transacción](../transactions/transaction-cost.md), sin importar si tenían un código **`tes`** o **`tec`**. La cantidad exacta de XRP destruido es definido por las instrucciones de transacción firmadas.
 
@@ -59,13 +59,13 @@ Hay otras clases de códigos de resultado además de **`tes`** y **`tec`**. Cual
 
 Cuando se trabaja con [APIs del XRP Ledger](../../references/http-websocket-apis/index.md), las aplicaciones deben distinguir entre transacciones candidatas propuestas para la inclusión en un ledger y transacciones validadas que están incluidas en un ledger. Solo los resultados de transacciones encontrados en un ledger validado son inmutables. Una transacción candidata puede eventualmente estar incluida en un leger validado, o puede que no.
 
-Importante: Algunas [APIs `rippled`](../../references/http-websocket-apis/index.md) proporcionan resultados provisionales, basados en transacciones candidatas <a href="#footnote_2" id="from_footnote_2"><sup>2</sup></a>. Las aplicaciones nunca deben  basarse en resultados provisionales para determinar el resultado final de una transacción. La única forma de conocer si finalmente una transacción se ha realizado correctamente, es comprobar el estado de la transacción hasta que esté en un ledger validado y además tenga el código de resultado `tesSUCCESS`. Si la transacción está en un ledger validado con otro código de resultado, ha fallado. Si el ledger especificado en [`LastLedgerSequence`](../../references/protocol/transactions/common-fields.md) en una transacción ha sido validado, pero la transacción no aparece en ese ledger o en alguno anterior, entonces esa transacción ha fallado y nunca aparecerá en ningún ledger. Un resultado es definitivo solo para transacciones en un ledger validado o nunca podrán aparecer por las restricciones de `LastLedgerSequence` explicadas más adelante en este documento.
+Importante: Algunas [APIs `rippled`](../../references/http-websocket-apis/index.md) proporcionan resultados provisionales, basados en transacciones candidatas <a href="#footnote_2" id="from_footnote_2"><sup>2</sup></a>. Las aplicaciones nunca deben basarse en resultados provisionales para determinar el resultado final de una transacción. La única forma de conocer si finalmente una transacción se ha realizado correctamente, es comprobar el estado de la transacción hasta que esté en un ledger validado y además tenga el código de resultado `tesSUCCESS`. Si la transacción está en un ledger validado con otro código de resultado, ha fallado. Si el ledger especificado en [`LastLedgerSequence`](../../references/protocol/transactions/common-fields.md) en una transacción ha sido validado, pero la transacción no aparece en ese ledger o en alguno anterior, entonces esa transacción ha fallado y nunca aparecerá en ningún ledger. Un resultado es definitivo solo para transacciones en un ledger validado o nunca podrán aparecer por las restricciones de `LastLedgerSequence` explicadas más adelante en este documento.
 
 ## El protocolo XRP Ledger – Consenso y validación
 
 La red peer-to-peer XRP Ledger consiste en muchos servidores independientes XRP Ledger (normalmente ejecutando [`rippled`](../networks-and-servers/index.md)) que aceptan y procesan transacciones. Las aplicaciones cliente firman y envían transacciones a servidores XRP Ledger, que transmiten estas transacciones candidatas a través de la red de procesamiento. Ejemplos de aplicaciones cliente incluyen carteras web y móvil, conexiones con instituciones financieras, y plataformas de trading electrónicas.
 
-[{% inline-svg file="/docs/img/xrp-ledger-network.svg" /%}](/docs/img/xrp-ledger-network.svg "Figura 4: Participantes en el Protocolo XRP Ledger")
+[{% inline-svg file="/docs/img/xrp-ledger-network.svg" /%}](/docs/img/xrp-ledger-network.svg 'Figura 4: Participantes en el Protocolo XRP Ledger')
 
 _Figura 4: Participantes en el Protocolo XRP Ledger_
 
@@ -79,7 +79,7 @@ Los servidores de la red comparten información sobre transacciones candidatas. 
 
 Durante el consenso, cada servidor evalúa propuestas de un específico grupo de servidores, conocidos como validadores confiables por ese servidor, o _Unique Node List (UNL)_.<a href="#footnote_5" id="from_footnote_5"><sup>5</sup></a> Los validadores confiables representan un subconjunto de la red la cual, en conjunto, es "confiable" para no confabular en un intento de defraudar al servidor que evalúa las propuestas. Esta definición de "confianza" no requiere que se confie en cada validador individual elegido. Más bien, los validadores son elegidos en base a la expectativa de que no confabularán en un esfuerzo coordinado para falsificar los datos transmitidos en la red <a href="#footnote_6" id="from_footnote_6"><sup>6</sup></a>. <!-- STYLE_OVERRIDE: will -->
 
-[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg "Figura 5: Los validadores proponen y revisar conjuntos de transacciones")
+[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg 'Figura 5: Los validadores proponen y revisar conjuntos de transacciones')
 
 _Figura 5: Validadores proponen y revisan conjuntos de transacciones — Al comienzo del consenso, los validadores pueden tener un conjunto distinto de transacciones. En siguientes rondas, los servidores modificarán sus propuestas para coincidir con las propuestas de sus validadores confiables. Este proceso determina qué transacciones deberían aplicar a la versión del ledger que se está actualmente debatiendo, y cuales deberían posponerse para próximas versiones del ledger._
 
@@ -98,7 +98,6 @@ La validación puede dividirse en aproximadamente dos partes:
 
 Cada servidor en la red realiza una validación separada y local.
 
-
 #### Calcular y compartir validaciones
 
 Cuando el proceso de consenso se completa, cada servidor independientemente computa un nuevo ledger a partir del conjunto de transacciones acordado. Cada servidor calcula los resultados siguiendo las mismas reglas, las cuales pueden ser resumidas de la siguiente manera:
@@ -107,21 +106,21 @@ Cuando el proceso de consenso se completa, cada servidor independientemente comp
 
 2. Colocar el conjunto de transacciones acordado en _orden canónico_ para que cada servidor la procese de la misma forma.
 
-    [Orden canónico](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36) no es el orden de cómo las transacciones fueron recibidas, porque los servidores pueden recibir las mismas transacciones en diferente orden. Para prevenir a los participantes de competir sobre el orden de las trnasacciones, el orden canónico es difícil de manipular.
+   [Orden canónico](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36) no es el orden de cómo las transacciones fueron recibidas, porque los servidores pueden recibir las mismas transacciones en diferente orden. Para prevenir a los participantes de competir sobre el orden de las trnasacciones, el orden canónico es difícil de manipular.
 
 3. Procesar cada transacción según sus instrucciones, en orden. Actualizar el estado del dato del ledger en consecuencia.
 
-    Si la transacción no puede ser ejecutada exitósamente, incluye la transacción con un [código de resultado de clase `tec`](../../references/protocol/transactions/transaction-results/tec-codes.md).<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
+   Si la transacción no puede ser ejecutada exitósamente, incluye la transacción con un [código de resultado de clase `tec`](../../references/protocol/transactions/transaction-results/tec-codes.md).<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
 
-    Para ciertos fallos de transacciones "recuperables", se mueve la transacción al final del orden canónico para volver a intentarla después de que se hayan ejecutado otras transacciones del mismo ledger.
+   Para ciertos fallos de transacciones "recuperables", se mueve la transacción al final del orden canónico para volver a intentarla después de que se hayan ejecutado otras transacciones del mismo ledger.
 
 4. Actualizar la cabecera del ledger con el apropiado metadata.
 
-    Esto incluye datos tales como el ledger index o índice del ledger, el hash identificativo del ledger previo validado (el "padre" de este), la hora de cierre aproximada de esta versión del ledger, y los hashes criptográficos de los contenidos de este ledger.
+   Esto incluye datos tales como el ledger index o índice del ledger, el hash identificativo del ledger previo validado (el "padre" de este), la hora de cierre aproximada de esta versión del ledger, y los hashes criptográficos de los contenidos de este ledger.
 
 5. Calcular el hash identificativo de la nueva versión del ledger.
 
-[{% inline-svg file="/docs/img/consensus-calculate-validation.svg" /%}](/docs/img/consensus-calculate-validation.svg "Figura 7: Un servidor XRP Ledger calcula la validación de un ledger")
+[{% inline-svg file="/docs/img/consensus-calculate-validation.svg" /%}](/docs/img/consensus-calculate-validation.svg 'Figura 7: Un servidor XRP Ledger calcula la validación de un ledger')
 
 _Figura 7: Un servidor XRP Ledger calcula la validación de un ledger — Cada servidor aplica transacciones acordadas por el anterior ledger validado. Los validadores envían sus resultados a toda la red._
 
@@ -129,7 +128,7 @@ _Figura 7: Un servidor XRP Ledger calcula la validación de un ledger — Cada s
 
 Cada validador transmite sus resultados en forma de un mensaje firmado que contiene el hash de la versión de ledger calculada. Estos mensajes, llamados _validaciones_, permiten a cada servidor comparar el ledger que calculó con el de sus pares.
 
-[{% inline-svg file="/docs/img/consensus-declare-validation.svg" /%}](/docs/img/consensus-declare-validation.svg "Figura 8: El ledger es validado cuando la supermayoría de pares calcula el mismo resultado")
+[{% inline-svg file="/docs/img/consensus-declare-validation.svg" /%}](/docs/img/consensus-declare-validation.svg 'Figura 8: El ledger es validado cuando la supermayoría de pares calcula el mismo resultado')
 
 _Figura 8: El ledger es validado cuando la supermayoría de pares calcula el mismo resultado - Cada servidor compara su su ledger calculado con los hashes recibidos de sus validadores elegidos. Si no hay acuerdo, el servidor debe recaluclar o recuperar el ledger correcto._
 
@@ -141,7 +140,6 @@ Si la red no logra un acuerdo de supermayoría sobre las validaciones, esto impl
 
 Una vez que alcanzan supermayoría en el acuerdo de las validaciones, los servidores trabajan con el nuevo ledger validado, ledger index N+1. El consenso y el proceso de validación se repite <a href="#footnote_9" id="from_footnote_9"><sup>9</sup></a>, considerando transacciones candidatas que no fueron incluidas en la última ronda junto con nuevas transacciones presentadas mientras tanto.
 
-
 ## Conclusiones claves
 
 Las transacciones enviadas al XRP Ledger no son procesadas inmediatamente. Durante un periodo de tiempo, cada transacciones permanece como candidata.
@@ -150,12 +148,12 @@ El ciclo de vida de una sola transacción es el siguiente:
 
 - Una transacción es creada y firmada por un dueño de una cuenta.
 - La transacción es enviada a la red.
-    - Transacciones mal formadas podrán ser rechazadas inmediatamente.
-    - Transacciones bien formadas pueden ser provisionalmente exitosas, y luego fallar.
-    - Transacciones bien formadas pueden provisionalmente fallar, y luego fallar.
+  - Transacciones mal formadas podrán ser rechazadas inmediatamente.
+  - Transacciones bien formadas pueden ser provisionalmente exitosas, y luego fallar.
+  - Transacciones bien formadas pueden provisionalmente fallar, y luego fallar.
 - Durante el consenso, la transacción es incluida en el ledger.
-    - El resultado de un consenso exitoso es un ledger validado.
-    - Si una ronda de consenso falla, el proceso de consenso se repita hasta que es exitoso.
+  - El resultado de un consenso exitoso es un ledger validado.
+  - Si una ronda de consenso falla, el proceso de consenso se repita hasta que es exitoso.
 - El ledger validado incluye la transacción y esta afecta al estado del ledger.
 
 Las aplicaciones deben solo confiar en información de ledgers validados, no en resultados provisionales de transacciones candidatas. Algunas [APIs de `rippled`](../../references/http-websocket-apis/index.md) devuelven inicialmente unos resultados provisionales para las transacciones. Los resultados de una transacción se convierten en inmutables solo si la transacción es incluida en un ledger validado, o la transacción incluye `LastLedgerSequence` y no aparece en ningún ledger validado con ese ledger index o menor.
@@ -164,31 +162,27 @@ Buenas prácticas para aplicaciones enviando transsacciones incluyen:
 
 - Utilizar el parámetro `LastLedgerSequence` para asegurar que las transacciones se validen o fallen de forma determinista y rápida.
 - Comprobar los resultados de transacciones en ledgers validados.
-    - Hasta que el ledger que contiene la transacción es validado, o haya pasado `LastLedgerSequence`, los resultados son provisionales.
-    - Transacciones con el código resultado **`tesSUCCESS`** y `"validated": true` se han realizado correctamente de forma inmutable.
-    - Transacciones con otro código resultado y `"validated": true` han fallado de forma inmutable.
-    - Transacciones que no aparecen en ningún ledger validado, incluido el ledger validado identificado por el `LastLedgerSequence` de la transacción ha fallado de forma inmutable.
-        - Tener cuidado de usar un servidor con un histórico de ledger continuo para detectar este caso <a href="#footnote_10" id="from_footnote_10"><sup>10</sup></a>.
-    - Puede ser necesario comprobar el estado de una transacción repetidamente hasta que el identificado por `LastLedgerSequence` es validado.
+  - Hasta que el ledger que contiene la transacción es validado, o haya pasado `LastLedgerSequence`, los resultados son provisionales.
+  - Transacciones con el código resultado **`tesSUCCESS`** y `"validated": true` se han realizado correctamente de forma inmutable.
+  - Transacciones con otro código resultado y `"validated": true` han fallado de forma inmutable.
+  - Transacciones que no aparecen en ningún ledger validado, incluido el ledger validado identificado por el `LastLedgerSequence` de la transacción ha fallado de forma inmutable.
+    - Tener cuidado de usar un servidor con un histórico de ledger continuo para detectar este caso <a href="#footnote_10" id="from_footnote_10"><sup>10</sup></a>.
+  - Puede ser necesario comprobar el estado de una transacción repetidamente hasta que el identificado por `LastLedgerSequence` es validado.
 
 ## Ver también
 
 - **Conceptos:**
-    - [Investigación del consenso](consensus-research.md)
-    - [El mecanismo del consenso (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
+  - [Investigación del consenso](consensus-research.md)
+  - [El mecanismo del consenso (YouTube)](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutoriales:**
-    - [Envío de transacciones de forma correcta](../transactions/reliable-transaction-submission.md)
-    - [Ejecutar `rippled` como un validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+  - [Envío de transacciones de forma correcta](../transactions/reliable-transaction-submission.md)
+  - [Ejecutar `rippled` como un validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
 - **Referencias:**
-    - [Referencia del fromato del ledger](../../references/protocol/ledger-data/index.md)
-    - [Referencia del formato de la transacción](../../references/protocol/transactions/index.md)
-    - [método consensus_info][]
-    - [método validator_list_sites][]
-    - [método validators][]
-
-
-
-
+  - [Referencia del fromato del ledger](../../references/protocol/ledger-data/index.md)
+  - [Referencia del formato de la transacción](../../references/protocol/transactions/index.md)
+  - [método consensus_info][]
+  - [método validator_list_sites][]
+  - [método validators][]
 
 ## Pies de notas
 
@@ -202,7 +196,7 @@ Buenas prácticas para aplicaciones enviando transsacciones incluyen:
 
 <a href="#from_footnote_5" id="footnote_5"><sup>5</sup></a> – Cada servidor define su propios validadores confiables, pero la consistencia de la red depende en diferentes servidores eligiendo listas que tienen un mayor grado de superposición. Por esta razón, Ripple publica una lista de validadores recomendados.
 
-<a href="#from_footnote_6" id="footnote_6"><sup>6</sup></a> – Si las propuestas de  todos los validadores fueron evaluadas, en lugar de exclusivamente por los validadores elegidos para no confabular, un atacante malicioso podría ejecutar más validadores para ganar poder desproporcionado sobre el proceso de validación, así podrían introducir transacciones inválidas u omitir transacciones válidas de las propuestas. La lista de validadores elegida [defiende de ataques Sybil](consensus-protections.md#ataques-sybil).
+<a href="#from_footnote_6" id="footnote_6"><sup>6</sup></a> – Si las propuestas de todos los validadores fueron evaluadas, en lugar de exclusivamente por los validadores elegidos para no confabular, un atacante malicioso podría ejecutar más validadores para ganar poder desproporcionado sobre el proceso de validación, así podrían introducir transacciones inválidas u omitir transacciones válidas de las propuestas. La lista de validadores elegida [defiende de ataques Sybil](consensus-protections.md#ataques-sybil).
 
 <a href="#from_footnote_7" id="footnote_7"><sup>7</sup></a> – El umbral de supermayoría, a partir de noviembre del 2014, requiere que al menos el 80% de pares deben estar de acuerdo en un ledger para ser validado. Est el mismo porcentaje necesario para una ronda de consenso. Ambos umbrales están sujetos a cambio y no necesitan ser iguales.
 

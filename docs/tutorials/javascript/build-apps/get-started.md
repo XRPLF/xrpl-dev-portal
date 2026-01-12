@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Build an entry-level JavaScript application for querying the XRP Ledger.
+  description: Build an entry-level JavaScript application for querying the XRP Ledger.
 top_nav_name: JavaScript
 top_nav_grouping: Get Started
 labels:
@@ -10,12 +10,12 @@ showcase_icon: assets/img/logos/javascript.svg
 
 {% code-walkthrough
   filesets=[
-    { 
+    {
       "files": ["/_code-samples/get-started/js/get-acct-info.js"],
       "downloadAssociatedFiles": ["/_code-samples/get-started/js/package.json", "/_code-samples/get-started/js/get-acct-info.js", "/_code-samples/get-started/js/README.md"],
       "when": { "environment": "Node" }
     },
-    { 
+    {
       "files": ["/_code-samples/get-started/js/index.html"],
       "downloadAssociatedFiles": ["/_code-samples/get-started/js/index.html", "/_code-samples/get-started/js/README.md"],
       "when": { "environment": "Web" }
@@ -63,7 +63,9 @@ Click **Download** on the top right of the code preview panel to download the so
 Follow the steps to create a simple application with `xrpl.js`.
 
 <!-- Web steps -->
+
 {% step id="import-web-tag" when={ "environment": "Web" } %}
+
 ### 1. Install Dependencies
 
 To load `xrpl.js` into your project, add a `<script>` tag to your HTML.
@@ -74,7 +76,9 @@ This loads the module into the top level as `xrpl`.
 {% /step %}
 
 <!-- Node.js steps -->
+
 {% step id="import-node-tag" when={ "environment": "Node" } %}
+
 ### 1. Install Dependencies
 
 Start a new project by creating an empty folder, then move into that folder and use [NPM](https://www.npmjs.com/) to install the latest version of xrpl.js:
@@ -93,6 +97,7 @@ Your `package.json` file should look something like this:
 ### 2. Connect to the XRP Ledger
 
 {% step id="connect-tag" %}
+
 #### Connect to the XRP Ledger Testnet
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl.js`, you create an instance of the [`Client`](https://js.xrpl.org/classes/Client.html) class and use the [`connect()`](https://js.xrpl.org/classes/Client.html#connect) method.
@@ -103,74 +108,84 @@ The sample code shows you how to connect to the Testnet, which is one of the ava
 {% /step %}
 
 {% step id="connect-mainnet-tag"%}
+
 #### Connect to the XRP Ledger Mainnet
 
- When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
+When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
 
 - By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
-    ```javascript
-    const MY_SERVER = "ws://localhost:6006/"
-    const client = new xrpl.Client(MY_SERVER)
-    await client.connect()
-    ```
+  ```javascript
+  const MY_SERVER = 'ws://localhost:6006/'
+  const client = new xrpl.Client(MY_SERVER)
+  await client.connect()
+  ```
 
-    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+  See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
 - By using one of the available [public servers][]:
 
-    ```javascript
-    const PUBLIC_SERVER = "wss://xrplcluster.com/"
-    const client = new xrpl.Client(PUBLIC_SERVER)
-    await client.connect()
-    ```
-{% /step %}
+      ```javascript
+      const PUBLIC_SERVER = "wss://xrplcluster.com/"
+      const client = new xrpl.Client(PUBLIC_SERVER)
+      await client.connect()
+      ```
+
+  {% /step %}
 
 ### 3. Get Account
 
 {% step id="get-account-create-wallet-tag" %}
+
 #### Create and Fund a Wallet
 
 The `xrpl.js` library has a [`Wallet`](https://js.xrpl.org/classes/Wallet.html) class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account as shown in the example.
 {% /step %}
 
 {% step id="get-account-create-wallet-b-tag" %}
+
 #### (Optional) Generate a Wallet Only
 
 If you want to generate a wallet without funding it, you can create a new [`Wallet`](https://js.xrpl.org/classes/Wallet.html) instance. Keep in mind that you need to send XRP to the wallet for it to be a valid account on the ledger.
 {% /step %}
 
 {% step id="get-account-create-wallet-c-tag" %}
+
 #### (Optional) Use Your Own Wallet Seed
 
 To use an existing wallet seed encoded in [base58][], you can create a [`Wallet`](https://js.xrpl.org/classes/Wallet.html) instance from it.
 {% /step %}
 
 {% step id="query-xrpl-tag" %}
+
 ### 4. Query the XRP Ledger
 
 Use the Client's [`request()`](https://js.xrpl.org/classes/Client.html#request) method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md).
 {% /step %}
 
 {% step id="listen-for-events-tag" %}
+
 ### 5. Listen for Events
 
 You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](../../../concepts/consensus-protocol/index.md) produces a new [ledger version](../../../concepts/ledgers/index.md). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the [`on(eventType, callback)`](https://js.xrpl.org/classes/Client.html#on) method of the client.
 {% /step %}
 
 {% step id="disconnect-node-tag" when={ "environment": "Node" } %}
+
 ### 6. Disconnect
 
 Call the [`disconnect()`](https://js.xrpl.org/classes/Client.html#disconnect) function so Node.js can end the process. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
 {% /step %}
 
 {% step id="disconnect-web-tag" when={ "environment": "Web" } %}
+
 ### 6. Disconnect
 
 Call the [`disconnect()`](https://js.xrpl.org/classes/Client.html#disconnect) function to disconnect from the ledger when done. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
 {% /step %}
 
 {% step id="run-app-node-tag" when={ "environment": "Node" } %}
+
 ### 7. Run the Application
 
 Finally, in your terminal, run the application like so:
@@ -188,7 +203,7 @@ Creating a new wallet and funding it with Testnet XRP...
 Wallet: rMnXR9p2sZT9iZ6ew3iEqvBMyPts1ADc4i
 Balance: 10
 
-Account Testnet Explorer URL: 
+Account Testnet Explorer URL:
 https://testnet.xrpl.org/accounts/rMnXR9p2sZT9iZ6ew3iEqvBMyPts1ADc4i
 
 Getting account info...
@@ -237,9 +252,11 @@ Ledger #9949271 validated with 0 transactions!
 
 Disconnected
 ```
+
 {% /step %}
 
 {% step id="run-app-web-tag" when={ "environment": "Web" } %}
+
 ### 7. Run the Application
 
 Open the `index.html` file in a web browser.
@@ -299,23 +316,24 @@ Ledger #9949613 validated with 0 transactions
 
 Disconnected
 ```
+
 {% /step %}
 
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](/about/)
-    - [Client Libraries](../../../references/client-libraries.md)
+  - [XRP Ledger Overview](/about/)
+  - [Client Libraries](../../../references/client-libraries.md)
 - **Tutorials:**
-    - [Send XRP](../../how-tos/send-xrp.md)
-    - [Issue a Fungible Token](../../how-tos/use-tokens/issue-a-fungible-token.md)
-    - [Set up Secure Signing](../../../concepts/transactions/secure-signing.md)
+  - [Send XRP](../../how-tos/send-xrp.md)
+  - [Issue a Fungible Token](../../how-tos/use-tokens/issue-a-fungible-token.md)
+  - [Set up Secure Signing](../../../concepts/transactions/secure-signing.md)
 - **References:**
-    - [`xrpl.js` Reference](https://js.xrpl.org/)
-    - [Public API Methods](../../../references/http-websocket-apis/public-api-methods/index.md)
-    - [API Conventions](../../../references/http-websocket-apis/api-conventions/index.md)
-        - [base58 Encodings](../../../references/protocol/data-types/base58-encodings.md)
-    - [Transaction Formats](../../../references/protocol/transactions/index.md)
+  - [`xrpl.js` Reference](https://js.xrpl.org/)
+  - [Public API Methods](../../../references/http-websocket-apis/public-api-methods/index.md)
+  - [API Conventions](../../../references/http-websocket-apis/api-conventions/index.md)
+    - [base58 Encodings](../../../references/protocol/data-types/base58-encodings.md)
+  - [Transaction Formats](../../../references/protocol/transactions/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
 

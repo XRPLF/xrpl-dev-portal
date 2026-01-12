@@ -2,9 +2,10 @@
 html: demurrage.html
 parent: trust-lines-and-issuing.html
 seo:
-    description: (廃止) 一部の古いXRP Ledgerツールは、組み込み金利やマイナス金利を持つ通貨コードをサポートしていました。.
+  description: (廃止) 一部の古いXRP Ledgerツールは、組み込み金利やマイナス金利を持つ通貨コードをサポートしていました。.
 status: removed
 ---
+
 # デマレージ
 
 {% admonition type="warning" name="注意" %}デマレージは非推奨の機能であり、継続的なサポートはありません。このページでは、旧バージョンのXRP Ledgerソフトウェアの過去の動作について説明します。{% /admonition %}
@@ -40,10 +41,9 @@ D = A × ( e ^ (t ÷ τ) )
 
 1. `( e ^ (t ÷ τ) )`の値を計算する。この数値を「デマレージ係数」と呼ぶ。デマレージ係数は常に現在時刻など特定の時刻からの相対値である。
 2. 変換する量に適用します。
-    - レジャー値を表示値に変換する場合は、デマレージ係数を乗じる。
-    - 表示値をレジャー値に変換する場合は、デマレージ係数で割ってください。
+   - レジャー値を表示値に変換する場合は、デマレージ係数を乗じる。
+   - 表示値をレジャー値に変換する場合は、デマレージ係数で割ってください。
 3. 必要であれば、結果値が望ましい精度で表現できるように調整する。XRP Ledgerの[発行通貨形式](../../../references/protocol/data-types/currency-formats.md#トークンの精度)により、レジャー値の精度は小数点以下15桁までとされています。
-
 
 ## 利子付き通貨コードフォーマット
 
@@ -53,7 +53,7 @@ D = A × ( e ^ (t ÷ τ) )
 
 1. 最初の8ビットは `0x01` でなければなりません。
 2. 次の24ビットはASCIIの3文字を表します。
-    これはISO 4217のコードと予想されます。標準フォーマットのASCII文字と同じ文字をサポートしています。
+   これはISO 4217のコードと予想されます。標準フォーマットのASCII文字と同じ文字をサポートしています。
 3. 次の24ビットはすべて「0」でなければなりません。
 4. 次の64ビットは通貨の金利で、IEEE754ダブルフォーマットで「[e-folding time](http://en.wikipedia.org/wiki/E-folding)」と表現される。
 5. 次の24ビットは予約されており，すべて`0`でなければなりません
@@ -93,14 +93,13 @@ D = A × ( e ^ (t ÷ τ) )
 // デマレージ通貨の表示金額を表す Amount オブジェクトを作成し、
 // 現在の日付を表すreference_dateを渡します。
 // (この場合、2017-11-04T00:07:50Zに、年0.5%の脱税で台帳値10 XAU。)。
-var demAmount = ripple.Amount.from_human('10 0158415500000000C1F76FF6ECB0BAC600000000',
-                                  {reference_date:563069270});
+var demAmount = ripple.Amount.from_human('10 0158415500000000C1F76FF6ECB0BAC600000000', { reference_date: 563069270 })
 
 // 発行者を設定します
-demAmount.set_issuer("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh");
+demAmount.set_issuer('rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh')
 
 // get the JSON format for the ledger amount
-console.log(demAmount.to_json());
+console.log(demAmount.to_json())
 
 // { "value": "10.93625123082769",
 //   "currency": "0158415500000000C1F76FF6ECB0BAC600000000",
@@ -112,14 +111,15 @@ console.log(demAmount.to_json());
 ```js
 // レジャー値を持つ Amount オブジェクトを作成します。
 ledgerAmount = ripple.Amount.from_json({
-  "currency": "015841551A748AD2C1F76FF6ECB0CCCD00000000",
-  "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-  "value": "10.93625123082769"})
+  currency: '015841551A748AD2C1F76FF6ECB0CCCD00000000',
+  issuer: 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh',
+  value: '10.93625123082769',
+})
 
 // 表示金額を得るために現在時刻までの利息を適用する
-var displayAmount = demAmount.applyInterest(new Date());
+var displayAmount = demAmount.applyInterest(new Date())
 
-console.log(displayAmount.to_json());
+console.log(displayAmount.to_json())
 
 // { "value": "9.999998874657716",
 //   "currency": "0158415500000000C1F76FF6ECB0BAC600000000",

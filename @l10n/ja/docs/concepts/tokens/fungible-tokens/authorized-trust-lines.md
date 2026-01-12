@@ -2,11 +2,12 @@
 html: authorized-trust-lines.html
 parent: trust-lines-and-issuing.html
 seo:
-    description: 認可トラストラインとは、トークンを保有できる人を制限するための設定です。
+  description: 認可トラストラインとは、トークンを保有できる人を制限するための設定です。
 labels:
   - トークン
   - セキュリティ
 ---
+
 # 認可トラストライン
 
 XRP Ledgerの認可トラストライン機能により、発行者は、発行者が許可したアカウントのみが保有できるトークンを作成することができます。認可トラストライン機能はトークンにのみ適用され、XRPには影響しません。
@@ -35,6 +36,7 @@ XRP Ledger上のステーブルコインと認可トラストラインの使用�
 認可トラストラインを使用するつもりがない場合でも、[運用アカウントと予備アカウント](../../accounts/account-types.md)のRequire Auth設定を有効にし、これらのアカウントにトラストラインを認可させないようにすることができます。これは、これらのアカウントが誤ってトークンを発行することを防止します（たとえば、ユーザが誤って間違ったアドレスをトラストしてしまった場合など）。これはあくまで予防措置であり、運用アカウントと予備アカウントが意図したとおりに _発行者の_ トークンを転送することを止めるものではありません。
 
 ## 技術情報
+
 <!--{# TODO: split these off into one or more tutorials on using authorized trust lines, preferably with both JavaScript and Python code samples. #}-->
 
 ### RequireAuthの有効化
@@ -63,7 +65,6 @@ POST http://localhost:5005/
 ```
 
 {% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
-
 
 ## アカウントのRequireAuthの有効化の確認
 
@@ -106,7 +107,6 @@ POST http://localhost:8088/
 
 {% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
 
-
 ## トラストラインの認可状況の確認
 
 トラストラインの認可状況を確認するには、[account_linesメソッド][]を使用してトラストラインを調べます。レスポンスの`account`フィールドに顧客のアドレスを指定し、`peer`フィールドに発行者のアドレスを指定します。
@@ -116,14 +116,14 @@ POST http://localhost:8088/
 ## 関連項目
 
 - **コンセプト:**
-    - [Deposit Authorization](../../accounts/depositauth.md)
-    - [トークンのフリーズ](freezes.md)
+  - [Deposit Authorization](../../accounts/depositauth.md)
+  - [トークンのフリーズ](freezes.md)
 - **リファレンス:**
-    - [account_linesメソッド][]
-    - [account_infoメソッド][]
-    - [AccountSetトランザクション][]
-    - [TrustSetトランザクション][]
-    - [AccountRootフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
-    - [RippleState (トラストライン) フラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)
+  - [account_linesメソッド][]
+  - [account_infoメソッド][]
+  - [AccountSetトランザクション][]
+  - [TrustSetトランザクション][]
+  - [AccountRootフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
+  - [RippleState (トラストライン) フラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

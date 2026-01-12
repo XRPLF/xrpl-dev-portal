@@ -2,7 +2,7 @@
 html: require-destination-tags.html
 parent: manage-account-settings.html
 seo:
-    description: Require users to specify a destination tag when sending to your address.
+  description: Require users to specify a destination tag when sending to your address.
 embed_xrpl_js: true
 filters:
   - interactive_steps
@@ -10,6 +10,7 @@ labels:
   - Accounts
 steps: ['Generate', 'Connect', 'Send AccountSet', 'Wait', 'Confirm Settings', 'Test Payments']
 ---
+
 # Require Destination Tags
 
 The Require Destination Tag setting is designed for addresses that host balances for multiple people or purposes, to prevent people from sending money and forgetting to use a [destination tag](../../../concepts/transactions/source-and-destination-tags.md) to identify whom to credit. When this setting is enabled on your address, the XRP Ledger rejects [any payment](../../../concepts/payment-types/index.md) to your address if it does not specify a destination tag.
@@ -23,9 +24,9 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
 - You need a funded XRP Ledger account, with an address, secret key, and some XRP. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed.
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
-    - You can also read along and use the interactive steps in your browser without any setup.
+  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+  - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
+  - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
@@ -95,18 +96,15 @@ For example:
 
 {% /interactive-block %}
 
-
 ### 4. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
-
 ### 5. Confirm Account Settings
 
 After the transaction is validated, you can check your account's settings to confirm that the Require Destination Tag flag is enabled.
-
 
 {% tabs %}
 
@@ -119,7 +117,6 @@ After the transaction is validated, you can check your account's settings to con
 {% /tab %}
 
 {% /tabs %}
-
 
 {% interactive-block label="Confirm Settings" steps=$frontmatter.steps %}
 
@@ -144,17 +141,16 @@ For further confirmation, you can send test transactions (from a different addre
 
 {% /interactive-block %}
 
-
 ## See Also
 
 - **Concepts:**
-    - [Accounts](../../../concepts/accounts/index.md)
-    - [Source and Destination Tags](../../../concepts/transactions/source-and-destination-tags.md)
-    - [Transaction Cost](../../../concepts/transactions/transaction-cost.md)
-    - [Payment Types](../../../concepts/payment-types/index.md)
+  - [Accounts](../../../concepts/accounts/index.md)
+  - [Source and Destination Tags](../../../concepts/transactions/source-and-destination-tags.md)
+  - [Transaction Cost](../../../concepts/transactions/transaction-cost.md)
+  - [Payment Types](../../../concepts/payment-types/index.md)
 - **References:**
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+  - [account_info method][]
+  - [AccountSet transaction][]
+  - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -24,314 +24,334 @@ article {
   }
 }
 
-
 html:not(.light) article {
-
   // Recolor UMLet diagrams for dark theme -------------------------------------
-  svg[fill="black"] {
+  svg[fill='black'] {
     fill: $white;
     stroke: $white;
 
-    *[fill="white"] {
+    *[fill='white'] {
       fill: $black;
     }
-    *[stroke="white"] {
+    *[stroke='white'] {
       stroke: $black;
     }
-    *[fill="black"] {
+    *[fill='black'] {
       fill: $white;
     }
-    *[stroke="black"] {
+    *[stroke='black'] {
       stroke: $white;
     }
 
-    g[fill="blue"] {
+    g[fill='blue'] {
       fill: $blue-500;
     }
-    g[stroke="blue"] {
+    g[stroke='blue'] {
       stroke: $blue-500;
     }
-    g[fill="rgb(120,120,120)"] {
+    g[fill='rgb(120,120,120)'] {
       fill: $gray-200;
     }
-    g[stroke="rgb(120,120,120)"] {
+    g[stroke='rgb(120,120,120)'] {
       stroke: $gray-200;
     }
-    g[fill="rgb(200,200,200)"] {
+    g[fill='rgb(200,200,200)'] {
       fill: $gray-700;
     }
-    g[fill="rgb(70,70,70)"] {
+    g[fill='rgb(70,70,70)'] {
       fill: $gray-500;
     }
-    g[stroke="rgb(70,70,70)"] {
+    g[stroke='rgb(70,70,70)'] {
       stroke: $gray-500;
     }
-    g[fill="rgb(29,180,255)"] { // old Ripple blue. Change to green.
+    g[fill='rgb(29,180,255)'] {
+      // old Ripple blue. Change to green.
       fill: $primary;
     }
-    g[stroke="rgb(29,180,255)"] {
+    g[stroke='rgb(29,180,255)'] {
       stroke: $primary;
     }
-    rect[stroke="rgb(245,247,249)"] { // old off-white. change to black.
+    rect[stroke='rgb(245,247,249)'] {
+      // old off-white. change to black.
       stroke: $black;
     }
-    g[fill="lime"],
-    g[fill="rgb(0,255,0)"] { // standard green. change to primary green.
+    g[fill='lime'],
+    g[fill='rgb(0,255,0)'] {
+      // standard green. change to primary green.
       fill: $primary;
     }
-    g[stroke="lime"] ,
-    g[stroke="rgb(0,255,0)"]{
+    g[stroke='lime'],
+    g[stroke='rgb(0,255,0)'] {
       stroke: $primary;
     }
-    g[fill="yellow"],
-    g[fill="rgb(255,255,0)"] {
+    g[fill='yellow'],
+    g[fill='rgb(255,255,0)'] {
       fill: $yellow-500;
 
       // nested stroke should remain black so it's visible over yellow
-      path[stroke="black"] {
+      path[stroke='black'] {
         stroke: $black;
       }
     }
-    g[fill="red"],
-    g[fill="rgb(255,255,0)"] { // magenta-500 is our closest shade to pure red
+    g[fill='red'],
+    g[fill='rgb(255,255,0)'] {
+      // magenta-500 is our closest shade to pure red
       fill: $magenta-500;
     }
-    g[stroke="red"],
-    g[stroke="rgb(255,255,0)"] {
+    g[stroke='red'],
+    g[stroke='rgb(255,255,0)'] {
       stroke: $magenta-500;
     }
-    g[fill="yellow"] + g text,
-    g[fill="rgb(255,255,0)"] + g text { // On yellow notes, use black text
+    g[fill='yellow'] + g text,
+    g[fill='rgb(255,255,0)'] + g text {
+      // On yellow notes, use black text
       fill: $black;
     }
-    g[fill="lime"] + g text { // same for green
+    g[fill='lime'] + g text {
+      // same for green
       fill: $black;
     }
   }
 
   // Recolor Google Draw diagrams for dark theme, including ones using
   // old Ripple color schemes. -------------------------------------------------
-  svg[fill="none"] {
-    path[fill="#000000"] { // white on black instead of black on white
+  svg[fill='none'] {
+    path[fill='#000000'] {
+      // white on black instead of black on white
       fill: $white;
     }
-    path[stroke="#000000"] {
+    path[stroke='#000000'] {
       stroke: $white;
     }
-    path[fill="#ffffff"] {
+    path[fill='#ffffff'] {
       fill: $black;
     }
-    path[stroke="#ffffff"] {
+    path[stroke='#ffffff'] {
       stroke: $black;
     }
-    path[fill="#23292f"],
-    path[fill="#23282f"] { // old XRP off-blacks: invert to white
+    path[fill='#23292f'],
+    path[fill='#23282f'] {
+      // old XRP off-blacks: invert to white
       fill: $white;
     }
-    path[stroke="#23292f"],
-    path[stroke="#23282f"] {
+    path[stroke='#23292f'],
+    path[stroke='#23282f'] {
       stroke: $white;
     }
-    path[fill="#2c3e50"],
-    path[fill="#2b3e51"] { // old dark blue-grays: change to light gray
+    path[fill='#2c3e50'],
+    path[fill='#2b3e51'] {
+      // old dark blue-grays: change to light gray
       fill: $secondary;
     }
-    path[stroke="#2c3e50"],
-    path[stroke="#2b3e51"] {
+    path[stroke='#2c3e50'],
+    path[stroke='#2b3e51'] {
       stroke: $secondary;
     }
-    path[fill="#1c2835"] { // old 90% gray; change to 10%
+    path[fill='#1c2835'] {
+      // old 90% gray; change to 10%
       fill: $gray-100;
     }
-    path[stroke="#1c2835"] {
+    path[stroke='#1c2835'] {
       stroke: $gray-100;
     }
-    path[fill="#21aa47"] { // old green
+    path[fill='#21aa47'] {
+      // old green
       fill: $green;
     }
-    path[stroke="#21aa47"] {
+    path[stroke='#21aa47'] {
       stroke: $green;
     }
-    path[fill="#e64b3b"] { // old red
+    path[fill='#e64b3b'] {
+      // old red
       fill: $red;
     }
-    path[stroke="#e64b3b"] {
+    path[stroke='#e64b3b'] {
       stroke: $red;
     }
-    path[stroke="#27a2db"],
-    path[stroke="#00aae4"] { // old primary blues: change to primary green
+    path[stroke='#27a2db'],
+    path[stroke='#00aae4'] {
+      // old primary blues: change to primary green
       stroke: $primary;
     }
-    path[fill="#27a2db"],
-    path[fill="#00aae4"] {
+    path[fill='#27a2db'],
+    path[fill='#00aae4'] {
       fill: $primary;
     }
-    path[fill="#e6e7e8"] { // old light gray: change to dark
+    path[fill='#e6e7e8'] {
+      // old light gray: change to dark
       fill: $gray-800;
     }
-    path[stroke="#e6e7e8"] {
+    path[stroke='#e6e7e8'] {
       stroke: $gray-800;
     }
-    path[stroke="#ffbf27"] {   // old yellow-orange: change to red-purple
+    path[stroke='#ffbf27'] {
+      // old yellow-orange: change to red-purple
       stroke: $red-purple-500; // (to complement green instead of blue)
     }
-    path[fill="#00ff00"] { // standard "green"
+    path[fill='#00ff00'] {
+      // standard "green"
       fill: $green;
     }
-    path[stroke="#00ff00"] {
+    path[stroke='#00ff00'] {
       stroke: $green;
     }
-    path[fill="#ff00ff"] { // standard "magenta"
+    path[fill='#ff00ff'] {
+      // standard "magenta"
       fill: $magenta;
     }
-    path[stroke="#ff00ff"] {
+    path[stroke='#ff00ff'] {
       stroke: $magenta;
     }
 
     linearGradient {
       // White Box Top gradient: darken to dark gray
-      stop[stop-color="#ffffff"] {
+      stop[stop-color='#ffffff'] {
         stop-color: $gray-700;
       }
-      stop[stop-color="#e6e7e8"] { // old gray-100
+      stop[stop-color='#e6e7e8'] {
+        // old gray-100
         stop-color: $gray-800;
       }
 
       // White Box Side gradient: darken to near black
-      stop[stop-color="#dbdcdd"] { // old gray-200
+      stop[stop-color='#dbdcdd'] {
+        // old gray-200
         stop-color: $black;
       }
-      stop[stop-color="#b1b3b5"] { // old gray-300
+      stop[stop-color='#b1b3b5'] {
+        // old gray-300
         stop-color: $gray-900;
       }
 
       // Primary Blue Side gradient: change to green
-      stop[stop-color="#29a1da"] {
+      stop[stop-color='#29a1da'] {
         stop-color: $green-600;
       }
-      stop[stop-color="#2789b9"] {
+      stop[stop-color='#2789b9'] {
         stop-color: $green-400;
       }
 
       // Primary Blue Top gradient: change to green
-      stop[stop-color="#6bc1ec"] {
+      stop[stop-color='#6bc1ec'] {
         stop-color: $green-200;
       }
-      stop[stop-color="#8ad6f4"] {
+      stop[stop-color='#8ad6f4'] {
         stop-color: $green-300;
       }
 
       // Secondary Y-O Top gradient: change to red-purple
-      stop[stop-color="#fab913"] {
+      stop[stop-color='#fab913'] {
         stop-color: $red-purple-200;
       }
-      stop[stop-color="#fad26b"] {
+      stop[stop-color='#fad26b'] {
         stop-color: $red-purple-300;
       }
 
       // Secondary Y-O Side gradient: change to red-purple
-      stop[stop-color="#f8a136"] {
+      stop[stop-color='#f8a136'] {
         stop-color: $red-purple-400;
       }
-      stop[stop-color="#f7931a"] {
+      stop[stop-color='#f7931a'] {
         stop-color: $red-purple-600;
       }
     }
   }
-
 }
 
 // Less significant tweaks to color schemes for diagrams in light mode
 // Recolor UMLet diagrams for dark theme -------------------------------------
 html.light {
-  svg[fill="black"] {
-
-    g[fill="blue"] {
+  svg[fill='black'] {
+    g[fill='blue'] {
       fill: $blue-700;
     }
-    g[stroke="blue"] {
+    g[stroke='blue'] {
       stroke: $blue-500;
     }
-    g[fill="rgb(120,120,120)"] {
+    g[fill='rgb(120,120,120)'] {
       fill: $gray-700;
     }
-    g[stroke="rgb(120,120,120)"] {
+    g[stroke='rgb(120,120,120)'] {
       stroke: $gray-700;
     }
-    g[fill="rgb(200,200,200)"] {
+    g[fill='rgb(200,200,200)'] {
       fill: $gray-400;
     }
-    g[fill="rgb(70,70,70)"] {
+    g[fill='rgb(70,70,70)'] {
       fill: $gray-700;
     }
-    g[stroke="rgb(70,70,70)"] {
+    g[stroke='rgb(70,70,70)'] {
       stroke: $gray-700;
     }
-    g[fill="rgb(29,180,255)"] { // old Ripple blue.
+    g[fill='rgb(29,180,255)'] {
+      // old Ripple blue.
       fill: $blue-500;
     }
-    g[stroke="rgb(29,180,255)"] {
+    g[stroke='rgb(29,180,255)'] {
       stroke: $blue-700;
     }
-    rect[stroke="rgb(245,247,249)"] { // old off-white.
+    rect[stroke='rgb(245,247,249)'] {
+      // old off-white.
       stroke: $gray-050;
     }
-    g[fill="lime"],
-    g[fill="rgb(0,255,0)"] { // standard green.
+    g[fill='lime'],
+    g[fill='rgb(0,255,0)'] {
+      // standard green.
       fill: $green-400; // lighten backgrounds a little
     }
-    g[stroke="lime"] ,
-    g[stroke="rgb(0,255,0)"]{
+    g[stroke='lime'],
+    g[stroke='rgb(0,255,0)'] {
       stroke: $green-700; // darken strokes
     }
-    g[fill="yellow"],
-    g[fill="rgb(255,255,0)"] {
+    g[fill='yellow'],
+    g[fill='rgb(255,255,0)'] {
       fill: $yellow-300; // lighten up yellow BGs a little
     }
-    g[fill="red"],
-    g[fill="rgb(255,255,0)"] { // magenta-500 is our closest shade to pure red
+    g[fill='red'],
+    g[fill='rgb(255,255,0)'] {
+      // magenta-500 is our closest shade to pure red
       fill: $magenta-400; // ... but let's lighten it a little as a bg
     }
-    g[stroke="red"],
-    g[stroke="rgb(255,255,0)"] {
+    g[stroke='red'],
+    g[stroke='rgb(255,255,0)'] {
       stroke: $magenta-500;
     }
   }
 
   // Recolor Figma diagrams for light mode ------------------------------------
-  svg[fill="none"] {
-    rect[fill="#111112"] {
+  svg[fill='none'] {
+    rect[fill='#111112'] {
       fill: $light-bg;
     }
-    path[fill="white"] {
+    path[fill='white'] {
       fill: $black;
     }
-    path[fill="#343437"] {
+    path[fill='#343437'] {
       fill: $gray-300;
     }
-    path[fill="#A2A2A4"],
-    rect[fill="#A2A2A4"],
-    ellipse[fill="#A2A2A4"] {
+    path[fill='#A2A2A4'],
+    rect[fill='#A2A2A4'],
+    ellipse[fill='#A2A2A4'] {
       fill: $gray-600;
     }
-    path[fill="#232325"] {
+    path[fill='#232325'] {
       fill: $gray-200;
     }
-    path[fill="#F5F5F7"] {
+    path[fill='#F5F5F7'] {
       fill: $gray-900;
     }
-    path[stroke="#F5F5F7"] {
+    path[stroke='#F5F5F7'] {
       stroke: $gray-900;
     }
-    path[stroke="#FF198B"] {
+    path[stroke='#FF198B'] {
       // slightly darken up this magenta for more contrast in light mode
       stroke: $magenta-700;
     }
 
-    linearGradient stop[stop-color="#F5F5F7"] {
+    linearGradient stop[stop-color='#F5F5F7'] {
       stop-color: $gray-900;
     }
-    linearGradient stop[stop-color="#C1C1C2"] {
+    linearGradient stop[stop-color='#C1C1C2'] {
       stop-color: $gray-700;
     }
   }

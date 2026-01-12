@@ -1,7 +1,8 @@
 ---
 seo:
-    description: Create and manage credentials on the blockchain, which can provide authorization for payments or other features, while respecting privacy and decentralization.
+  description: Create and manage credentials on the blockchain, which can provide authorization for payments or other features, while respecting privacy and decentralization.
 ---
+
 # Credentials
 
 The Credentials feature is a set of tools for managing authorization and compliance requirements using the XRP Ledger blockchain, while respecting privacy and decentralization. Credentials can be used for [Deposit Authorization](../accounts/depositauth.md) as well as [permissioned domains](../tokens/decentralized-exchange/permissioned-domains.md). Credentials can streamline the process of compliance checks such as [KYC (Know Your Customer)](https://en.wikipedia.org/wiki/Know_your_customer) and to enable further trust-based applications within the XRP Ledger ecosystem.
@@ -36,9 +37,9 @@ Credentials stored in the XRP Ledger can also be used to authorize off-ledger ac
 
 A typical flow to use Credentials involves three parties with different roles, as described in the following example:
 
-* Verity is a regulated business that wants to interact only with properly KYC'd accounts, to ensure legal compliance. This makes Verity an _authorizer_ because they configure which accounts are allowed (authorized) to interact with them.
-* Isabel is a credential issuer who vets accounts and issues credentials attesting that the accounts are who they say they are.
-* Alice is a user who wants to interact with Verity.
+- Verity is a regulated business that wants to interact only with properly KYC'd accounts, to ensure legal compliance. This makes Verity an _authorizer_ because they configure which accounts are allowed (authorized) to interact with them.
+- Isabel is a credential issuer who vets accounts and issues credentials attesting that the accounts are who they say they are.
+- Alice is a user who wants to interact with Verity.
 
 All three parties need XRP Ledger accounts. The flow works as follows:
 

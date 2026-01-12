@@ -2,10 +2,11 @@
 html: ctid.html
 parent: api-conventions.html
 seo:
-    description: A Compact Transaction Identifier (CTID) is a short string that uniquely identifies a validated transaction across any chain.
+  description: A Compact Transaction Identifier (CTID) is a short string that uniquely identifies a validated transaction across any chain.
 labels:
   - Development
 ---
+
 # Compact Transaction Identifier
 
 A Compact Transaction Identifier (CTID) is a unique identifier for a validated transaction that applies across any [network](../../../concepts/networks-and-servers/parallel-networks.md), not just the XRP Ledger Mainnet.

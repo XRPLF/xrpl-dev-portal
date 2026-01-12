@@ -1,7 +1,8 @@
 ---
 seo:
-    description: XRP LedgerプロトコルやAPIメソッドなどのリファレンスドキュメント
+  description: XRP LedgerプロトコルやAPIメソッドなどのリファレンスドキュメント
 ---
+
 # リファレンス
 
 XRP LedgerリファレンスはXRP LedgerプロトコルやAPIメソッドなどのドキュメントです。

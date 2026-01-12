@@ -2,11 +2,12 @@
 html: offline-account-setup.html
 parent: manage-account-settings.html
 seo:
-    description: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys.
+  description: Set up an XRP Ledger account using an air-gapped, offline machine to store its cryptographic keys.
 labels:
   - Accounts
   - Security
 ---
+
 # Offline Account Setup Tutorial
 
 A highly secure [signing configuration](../../../concepts/transactions/secure-signing.md) involves keeping an XRP Ledger [account](../../../concepts/accounts/index.md)'s [cryptographic keys](../../../concepts/accounts/cryptographic-keys.md) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
@@ -20,10 +21,9 @@ To use offline signing, you must meet the following prerequisites:
 - You must have one computer to use as an offline machine. This machine must be set up with a [supported operating system](../../../infrastructure/installation/system-requirements.md). See your operating system's support for offline setup instructions. (For example, [Red Hat Enterprise Linux DVD ISO installation instructions](https://access.redhat.com/solutions/7227).) Be sure that the software and physical media you use are not infected with malware.
 - You must have a separate computer to use as an online machine. This machine does not need to run `rippled` but it must be able to connect to the XRP Ledger network and receive information about the state of the shared ledger. For example, you can use a [WebSocket connection to a public server](../../http-websocket-apis/build-apps/get-started.md).
 - You must have a secure way to transfer signed transaction binary data from the offline machine to the online machine.
-    - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)
-    - Another way is to copy files from the offline machine to an online machine using physical media. If you use this method, be sure not to use physical media that could infect your offline machine with malicious software. (For example, do not reuse the same USB drive on both online and offline machines.)
-    - You _could_ manually type the data onto the online machine, but doing so would be tedious and error-prone.
-
+  - One way to do this is with a QR code generator on the offline machine, and a QR code scanner on the online machine. (In this case, your "online machine" could be a handheld device such as a smartphone.)
+  - Another way is to copy files from the offline machine to an online machine using physical media. If you use this method, be sure not to use physical media that could infect your offline machine with malicious software. (For example, do not reuse the same USB drive on both online and offline machines.)
+  - You _could_ manually type the data onto the online machine, but doing so would be tedious and error-prone.
 
 ## Steps
 
@@ -39,7 +39,6 @@ Software options for signing on the XRP Ledger include:
 
 You may want to set up custom software to help construct transaction instructions on the offline machine. For example, your software may track what [sequence number][] to use next, or contain preset templates for certain types of transactions you expect to send.
 
-
 ### 2. Generate cryptographic keys
 
 On the **offline machine**, generate a pair of [cryptographic keys](../../../concepts/accounts/cryptographic-keys.md) to be used with your account. Be sure to generate the keys with a securely random procedure, not from a short passphrase or some other source that does not have enough entropy. For example, you can use the [wallet_propose method][] of `rippled`:
@@ -47,6 +46,7 @@ On the **offline machine**, generate a pair of [cryptographic keys](../../../con
 {% tabs %}
 
 {% tab label="rippled Commandline" %}
+
 ```sh
 $ ./rippled wallet_propose
 Loading: "/etc/opt/ripple/rippled.cfg"
@@ -65,6 +65,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -79,15 +80,11 @@ Take note of the following values:
 
 <!-- SPELLING_IGNORE: diceware -->
 
-
-
 ### 3. Fund the new address
 
 From an online machine, send enough XRP to the **account address** you noted in step 1. For more information, see [Creating Accounts](../../../concepts/accounts/index.md#creating-accounts).
 
 {% admonition type="success" name="Tip" %}For testing purposes, you can use the [Testnet Faucet](/resources/dev-tools/xrp-faucets) to get a new account with Test XRP, then use that account to fund the address you generated offline.{% /admonition %}
-
-
 
 ### 4. Confirm account details
 
@@ -100,6 +97,7 @@ The `Sequence` number of a newly-funded account matches the [ledger index][] whe
 {% tabs %}
 
 {% tab label="rippled Commandline" %}
+
 ```sh
 $ ./rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn
 
@@ -124,6 +122,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -136,8 +135,6 @@ You can prepare several transactions in advance this way, then transfer the sign
 
 Optionally, save the current ledger index to the offline machine. You can use this value to choose an appropriate `LastLedgerSequence` value for upcoming transactions.
 
-
-
 ### 6. Sign initial setup transactions, if any.
 
 On the offline machine, prepare and sign transactions for configuring your account. The details depend on how you intend to use your account. Some examples of things you might want to do include:
@@ -148,8 +145,8 @@ On the offline machine, prepare and sign transactions for configuring your accou
 - [Enable DepositAuth](../../../concepts/accounts/depositauth.md) so you can only receive payments you've explicitly accepted or from parties you've pre-approved.
 - [Require Auth](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#enabling-require-auth) so that users can't open [trust lines](../../../concepts/tokens/fungible-tokens/index.md) to you without your permission. If you don't plan to use the XRP Ledger's decentralized exchange or [token](../../../concepts/tokens/index.md) features, you may want to do this as a precaution.
 - [Token Issuers](../../../use-cases/tokenization/stablecoin-issuer.md) may have additional setup, such as:
-    - Set a Transfer Fee for users transferring your tokens.
-    - Disallow XRP payments if you plan to use this address for tokens only.
+  - Set a Transfer Fee for users transferring your tokens.
+  - Disallow XRP payments if you plan to use this address for tokens only.
 
 At this stage, you are only signing the transactions, not submitting them. For each transaction, you must provide all fields, including fields that are normally auto-fillable such as the `Fee` ([transaction cost](../../../concepts/transactions/transaction-cost.md)) and `Sequence` ([sequence number][]). If you prepare multiple transactions at the same time, you must use sequentially increasing `Sequence` numbers in the order you want the transactions to execute.
 
@@ -158,6 +155,7 @@ Example (enable Require Auth):
 {% tabs %}
 
 {% tab label="rippled Commandline" %}
+
 ```sh
 $ rippled sign sn3nxiW7v8KXzPzAqzyHXbSSKNuN9 '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Fee": "12", "Sequence": 1, "TransactionType": "AccountSet", "SetFlag": 2}' offline
 
@@ -182,18 +180,16 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 To ensure _all_ transactions have a final outcome within a limited amount of time, provide a [`LastLedgerSequence`](../../../concepts/transactions/reliable-transaction-submission.md#lastledgersequence) field. This value should be based on the current ledger index (which you must look up from an online machine) and the amount of time you want the transaction to remain valid. Be sure to set a large enough `LastLedgerSequence` value to allow for time spent switching from the online machine to the offline machine and back. For example, a value 256 higher than the current ledger index means that the transaction is valid for about 15 minutes. For more information, see [Finality of Results](../../../concepts/transactions/finality-of-results/index.md) and [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).
 
-
 ### 7. Copy transactions to online machine.
 
 After you have signed the transactions, the next step is to get the signed transaction data to your online machine. See [Prerequisites](#prerequisites) for some examples of how to do this.
-
-
 
 ### 8. Submit setup transactions.
 
@@ -204,6 +200,7 @@ Example of transaction submission:
 {% tabs %}
 
 {% tab label="rippled Commandline" %}
+
 ```sh
 $ rippled submit 1200032280000000240000000120210000000268400000000000000C7321039543A0D3004CDA0904A09FB3710251C652D69EA338589279BC849D47A7B019A174473045022100D5C92D7705036CD7EBB601C8DFCD90927FA591A62AF832C489E9C898EC8E2FA0022052F1819340EB73E9749B8930A6935727362B8E141D1B2E246B49F912223FFD4381144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
 
@@ -232,6 +229,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -247,6 +245,7 @@ For each transaction you submitted, note the transaction's [final outcome](../..
 {% tabs %}
 
 {% tab label="rippled Commandline" %}
+
 ```sh
 $ ./rippled tx F81C34E7F05423DC1C973CB5008CA41AE984DE142EAA3975A749FABF0D08FA63
 
@@ -297,6 +296,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -311,8 +311,6 @@ For any transactions that failed, you should decide what to do:
 
 For any transactions you decide to adjust or replace, note the details for when you return to the offline machine.
 
-
-
 ### 10. Reconcile offline machine status.
 
 Return to the offline machine and apply any necessary changes to your custom server's saved settings, such as:
@@ -323,23 +321,21 @@ Return to the offline machine and apply any necessary changes to your custom ser
 
 Then adjust and sign any replacement transactions for transactions that failed in the previous step. Repeat the previous steps for constructing transactions on the offline machine, transferring them, and submitting them from the online machine.
 
-
-
 ## See Also
 
 - **Concepts:**
-    - [Accounts](../../../concepts/accounts/index.md)
-    - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
+  - [Accounts](../../../concepts/accounts/index.md)
+  - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
 - **Tutorials:**
-    - [Set Up Secure Signing](../../../concepts/transactions/secure-signing.md)
-    - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
-    - [Set Up Multi-Signing](set-up-multi-signing.md)
+  - [Set Up Secure Signing](../../../concepts/transactions/secure-signing.md)
+  - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
+  - [Set Up Multi-Signing](set-up-multi-signing.md)
 - **References:**
-    - [Basic Data Types: Account Sequence](../../../references/protocol/data-types/basic-data-types.md#account-sequence)
-    - [account_info method][]
-    - [sign method][]
-    - [submit method][]
-    - [tx method][]
-    - [AccountSet transaction][]
+  - [Basic Data Types: Account Sequence](../../../references/protocol/data-types/basic-data-types.md#account-sequence)
+  - [account_info method][]
+  - [sign method][]
+  - [submit method][]
+  - [tx method][]
+  - [AccountSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

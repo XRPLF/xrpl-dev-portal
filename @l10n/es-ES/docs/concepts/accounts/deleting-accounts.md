@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Acerca de eliminar una cuenta XRP Ledger.
+  description: Acerca de eliminar una cuenta XRP Ledger.
 labels:
   - Cuentas
 ---
+
 # Eliminar Cuentas
 
 El dueño de una cuenta puede enviar una [transacción AccountDelete][] para eliminar la cuenta y las entradas relativas del ledger, enviando la mayoría del XRP en balance restante a otra cuenta. Para evitar la creación y eliminación de cuentas sin sentido, eliminar una cuenta requiere quemar una cantidad superior a la usual utilizada como [coste de transacción](../transactions/transaction-cost.md).
@@ -18,10 +19,10 @@ Para ser eliminada, una cuenta debe cumplir los siguientes requisitos:
 
 - El número de `Sequence` de la cuenta más 256 debe ser menor que el [Índice del ledger][] actual.
 - La cuenta no debe estar enlazada a de los siguientes tipos de [entradas del ledger](../../references/protocol/ledger-data/ledger-entry-types/index.md) (como remitente o destinatario):
-    - `Escrow`
-    - `PayChannel`
-    - `RippleState`
-    - `Check`
+  - `Escrow`
+  - `PayChannel`
+  - `RippleState`
+  - `Check`
 - La cuenta debe tener menos de 1000 objetos en el ledger.
 - La transacción debe pagar un [coste de transacción][] especial igual al menos a la [reserva de propietario](reserves.md) de un artículo (actualmente {% $env.PUBLIC_OWNER_RESERVE %}).
 
@@ -34,4 +35,5 @@ A diferencia de Bitcoin y muchas otras criptomonedas, cada nueva versión de la 
 Instituciones que reciben y envían valor en nombre de muchos usuarios pueden utilizar [**Source Tags** y **Destination Tags**](../transactions/source-and-destination-tags.md) para distinguir pagos desde y para sus clientes usando una (o un puñado) de cuentas en el XRP Ledger.
 
 <!--{# common link defs #}-->
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

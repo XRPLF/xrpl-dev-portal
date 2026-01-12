@@ -1,34 +1,33 @@
 ---
 category: 2025
-date: "2025-12-09"
+date: '2025-12-09'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 3.0.0
-    description: rippled version 3.0.0 is now available. This version introduces new amendments and bug fixes.
+  title: Introducing XRP Ledger version 3.0.0
+  description: rippled version 3.0.0 is now available. This version introduces new amendments and bug fixes.
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 3.0.0
 
 Version 3.0.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release introduces new amendments and bug fixes.
-
 
 ## Action Required
 
 If you run an XRP Ledger server, upgrade to version 3.0.0 as soon as possible to ensure service continuity.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-3.0.0-1.el9.x86_64.rpm) | `2e181c8e966e043e10e32f3b0e30184014b88c2b5b9513d07c0e13c605edf050` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_3.0.0-1_amd64.deb) | `efbce53f39e2d94d74c3cfdb049758f8826aa5e0a2a246cd9b19e9246e7b4172` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_3.0.0-1_amd64.deb)  | `efbce53f39e2d94d74c3cfdb049758f8826aa5e0a2a246cd9b19e9246e7b4172` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -40,32 +39,27 @@ Date:   Tue Dec 9 12:11:16 2025 -0500
     Set version to 3.0.0
 ```
 
-
 ## Full Changelog
-
 
 ### Amendments
 
 - **fixTokenEscrowV1**: Fixes an accounting error in MPT escrows. Specifically, when an escrow unlocks MPTs that have a transfer fee, the system incorrectly reduces the MPT issuer's locked token balance by the gross amount (without fees) rather than the net amount (with fees). This leads to discrepancies in the token's total supply accounting. ([#5571](https://github.com/XRPLF/rippled/pull/5571))
 - **fixIncludeKeyletFields**: Adds missing keylet fields to these ledger entries:
-    - `Sequence` to `Escrow` and `PayChannel`.
-    - `Owner` to `SignerList`.
-    - `OracleDocumentID` to `Oracle`. ([#5646](https://github.com/XRPLF/rippled/pull/5646))
+  - `Sequence` to `Escrow` and `PayChannel`.
+  - `Owner` to `SignerList`.
+  - `OracleDocumentID` to `Oracle`. ([#5646](https://github.com/XRPLF/rippled/pull/5646))
 - **fixPriceOracleOrder**: Fixes an issue where the order of asset pair data is different from when a price oracle is created versus when it is updated. ([#5485](https://github.com/XRPLF/rippled/pull/5485))
 - **fixAMMClawbackRounding**: Fixes a rounding error that can occur in the `LPTokenBalance` of an AMM when performing an `AMMClawback` transaction. ([#5750](https://github.com/XRPLF/rippled/pull/5750))
 - **fixMPTDeliveredAmount**: This amendment adds missing `DeliveredAmount` and `delivered_amount` metadata fields from direct MPT `Payment` transactions. ([#5569](https://github.com/XRPLF/rippled/pull/5569))
-
 
 ### Features
 
 - Added `delivered_amount`, `nftoken_id`, `nftoken_ids`, `offer_id`, and `mpt_issuance_id` metadata fields to the `simulate` API method. ([#5754](https://github.com/XRPLF/rippled/pull/5754))
 - Added `STInt32` as a new `SType` to support negative 32-bit integer fields. ([#5788](https://github.com/XRPLF/rippled/pull/5788))
 
-
 ### Breaking Changes
 
 - Updated the `ledger_entry` API method to return an `invalidParams` error if you specify multiple entries. Previously, the method would return information for only one entry selected at random. This change enforces a single entry lookup per request. ([#5237](https://github.com/XRPLF/rippled/pull/5237))
-
 
 ### Bug Fixes
 
@@ -79,7 +73,6 @@ Date:   Tue Dec 9 12:11:16 2025 -0500
 - Fixed transaction signature checking functions to accept only required parameters instead of full `PreclaimContext`. ([#5829](https://github.com/XRPLF/rippled/pull/5829))
 - Fixed an issue where the `sfSubjectNode` wasn't populated by the `CredentialCreate` transaction for self-issued credentials. ([#5936](https://github.com/XRPLF/rippled/pull/5936))
 - Fixed domain order books not populating during node startup. ([#5998](https://github.com/XRPLF/rippled/pull/5998))
-
 
 ### Refactors
 
@@ -98,7 +91,6 @@ Date:   Tue Dec 9 12:11:16 2025 -0500
 - Added a `paychan` namespace to the TestHelpers and implementation files, improving organization and clarity. ([#5840](https://github.com/XRPLF/rippled/pull/5840))
 - Improved and refactored txset handling. ([#5951](https://github.com/XRPLF/rippled/pull/5951))
 
-
 ### Documentation
 
 - Updated old links and descriptions in `README.md`. ([#4701](https://github.com/XRPLF/rippled/pull/4701))
@@ -110,7 +102,6 @@ Date:   Tue Dec 9 12:11:16 2025 -0500
 - Fixed typos in code comments. ([#6040](https://github.com/XRPLF/rippled/pull/6040))
 - Removed accidental copyright notice from `NetworkOps_test.cpp`. ([#6066](https://github.com/XRPLF/rippled/pull/6066))
 
-
 ### Testing
 
 - Migrated json unit tests to use doctest framework. ([#5533](https://github.com/XRPLF/rippled/pull/5533))
@@ -120,7 +111,6 @@ Date:   Tue Dec 9 12:11:16 2025 -0500
 - Added additional tests for `simulate` RPC metadata. ([#5827](https://github.com/XRPLF/rippled/pull/5827))
 - Updated unit test summary to count crashed tests as failures. ([#5924](https://github.com/XRPLF/rippled/pull/5924))
 - Fixed CI to upload all test binaries. ([#5932](https://github.com/XRPLF/rippled/pull/5932))
-
 
 ### CI/Build
 
@@ -206,7 +196,6 @@ Date:   Tue Dec 9 12:11:16 2025 -0500
 - Removed missing commits check. ([#6077](https://github.com/XRPLF/rippled/pull/6077))
 - Updated CI to trigger Clio pipeline on PRs targeting any `release` branches. ([#6080](https://github.com/XRPLF/rippled/pull/6080))
 
-
 ## Credits
 
 The following GitHub users contributed to this release:
@@ -218,7 +207,6 @@ The following GitHub users contributed to this release:
 - @tequdev
 - @tzchenxixi
 - @wojake
-
 
 ## Bug Bounties and Responsible Disclosures
 

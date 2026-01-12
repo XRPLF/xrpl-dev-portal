@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Build a credential issuing microservice with Javascript and Node.js.
+  description: Build a credential issuing microservice with Javascript and Node.js.
 ---
 
 # Build a Credential Issuing Service
@@ -9,7 +9,6 @@ _(Requires the Credentials amendment. {% not-enabled /%})_
 
 This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Express](https://expressjs.com/) framework for Node.js.
 
-
 ## Prerequisites
 
 To complete this tutorial, you should meet the following guidelines:
@@ -17,7 +16,6 @@ To complete this tutorial, you should meet the following guidelines:
 - You have [Node.js](https://nodejs.org/en/download/) v18 or higher installed.
 - You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](./get-started.md).
 - You have some understanding of the XRP Ledger, its capabilities, and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/).
-
 
 ## Setup
 
@@ -35,23 +33,21 @@ This should install appropriate versions of Express, xrpl.js and a few other dep
 
 To use the API that this microservice provides, you also need an HTTP client such as [Postman](https://www.postman.com/downloads/), [RESTED](https://github.com/RESTEDClient/RESTED), or [cURL](https://curl.se/).
 
-
 ## Overview
 
 The Credential Issuer microservice, mostly implemented in `issuer_service.js`, provides a RESTlike API with the following methods:
 
-| Method | Description |
-|---|----|
-| `POST /credential` | Request that the issuer issue a specific credential to a specific account. |
-| `GET /admin/credential` | List all credentials issued by the issuer's address, optionally filtering only for credentials that have or have not been accepted by their subject. |
-| `DELETE /admin/credential` | Delete a specific credential from the XRP Ledger, which revokes it. |
+| Method                     | Description                                                                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `POST /credential`         | Request that the issuer issue a specific credential to a specific account.                                                                           |
+| `GET /admin/credential`    | List all credentials issued by the issuer's address, optionally filtering only for credentials that have or have not been accepted by their subject. |
+| `DELETE /admin/credential` | Delete a specific credential from the XRP Ledger, which revokes it.                                                                                  |
 
 {% admonition type="info" name="Note" %}Some of the methods have `/admin` in the path because they are intended to be used by the microservice's administrator. However, the sample code does not implement any authentication.{% /admonition %}
 
 The sample code also contains a simple commmandline interface for a user account to accept a credential issued to it, as `accept_credential.js`.
 
 The other files contain helper code that is used by one or both tools.
-
 
 ## Usage
 
@@ -86,12 +82,13 @@ To request a credential, make a request such as the following:
 {% tabs %}
 
 {% tab label="Summary" %}
-* HTTP method: `POST`
-* URL: `http://localhost:3005/credential`
-* Headers:
-    * `Content-Type: application/json`
-* Request Body:
-    ```json
+
+- HTTP method: `POST`
+- URL: `http://localhost:3005/credential`
+- Headers:
+  - `Content-Type: application/json`
+- Request Body:
+  `json
     {
         "subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG",
         "credential": "TestCredential",
@@ -99,26 +96,28 @@ To request a credential, make a request such as the following:
             "reason": "please"
         }
     }
-    ```
-{% /tab %}
+    `
+  {% /tab %}
 
 {% tab label="cURL" %}
+
 ```sh
 curl -H "Content-Type: application/json" -X POST -d '{"subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG", "credential": "TestCredential", "documents": {"reason": "please"}}' http://localhost:3005/credential
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The parameters of the JSON request body should be as follows:
 
-| Field | Type | Required? | Description |
-|---|---|---|---|
-| `subject` | String - Address | Yes | The XRPL classic address of the subject of the credential. Set this to the address that you generated at the start of this tutorial for the credential holder account. |
-| `credential` | String | Yes | The type of credential to issue. The example microservice accepts any string consisting of alphanumeric characters as well as the special characters underscore (`_`), dash (`-`), and period (`.`), with a minimum length of 1 and a maximum length of 64 characters. |
-| `documents` | Object | Yes | As a credential issuer, you typically need to verify some confidential information about someone before you issue them a credential. As a placeholder, the sample code checks for a nested field named `reason` that contains the string `please`. |
-| `expiration` | String - ISO8601 Datetime | No | The time after which the credential expires, such as `2025-12-31T00:00:00Z`. |
-| `uri` | String | No | Optional URI data to store with the credential. This data will become public on the XRP Ledger. If provided, this must be a string with minimum length 1 and max length 256, consisting of only characters that are valid in URIs, which are numbers, letters, and the following special characters: `-._~:/?#[]@!$&'()*+,;=%`. Conventionally, it should link to a Verifiable Credential document as defined by the W3C. |
+| Field        | Type                      | Required? | Description                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------ | ------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `subject`    | String - Address          | Yes       | The XRPL classic address of the subject of the credential. Set this to the address that you generated at the start of this tutorial for the credential holder account.                                                                                                                                                                                                                                                    |
+| `credential` | String                    | Yes       | The type of credential to issue. The example microservice accepts any string consisting of alphanumeric characters as well as the special characters underscore (`_`), dash (`-`), and period (`.`), with a minimum length of 1 and a maximum length of 64 characters.                                                                                                                                                    |
+| `documents`  | Object                    | Yes       | As a credential issuer, you typically need to verify some confidential information about someone before you issue them a credential. As a placeholder, the sample code checks for a nested field named `reason` that contains the string `please`.                                                                                                                                                                        |
+| `expiration` | String - ISO8601 Datetime | No        | The time after which the credential expires, such as `2025-12-31T00:00:00Z`.                                                                                                                                                                                                                                                                                                                                              |
+| `uri`        | String                    | No        | Optional URI data to store with the credential. This data will become public on the XRP Ledger. If provided, this must be a string with minimum length 1 and max length 256, consisting of only characters that are valid in URIs, which are numbers, letters, and the following special characters: `-._~:/?#[]@!$&'()*+,;=%`. Conventionally, it should link to a Verifiable Credential document as defined by the W3C. |
 
 This microservice immediately issues any credential that the user requests. A successful response from the API uses the HTTP status code `201 Created` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` value from the response to look up the transaction using an explorer such as [https://devnet.xrpl.org/](https://devnet.xrpl.org/).
 
@@ -131,15 +130,18 @@ To show a list of credentials issued by the issuing account, make the following 
 {% tabs %}
 
 {% tab label="Summary" %}
-* HTTP method: `GET`
-* URL: `http://localhost:3005/admin/credential`
-* Query parameters (optional): Use `?accepted=yes` to filter results to only credentials that the subject has accepted, or `?accepted=no` for credentials the user has not accepted.
-{% /tab %}
+
+- HTTP method: `GET`
+- URL: `http://localhost:3005/admin/credential`
+- Query parameters (optional): Use `?accepted=yes` to filter results to only credentials that the subject has accepted, or `?accepted=no` for credentials the user has not accepted.
+  {% /tab %}
 
 {% tab label="cURL" %}
+
 ```sh
 curl http://localhost:3005/admin/credential
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -148,7 +150,7 @@ A response could look like the following:
 
 ```json
 {
- "credentials": [
+  "credentials": [
     {
       "subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG",
       "credential": "TstCredential",
@@ -191,33 +193,36 @@ To revoke an issued credential, make a request such as the following:
 {% tabs %}
 
 {% tab label="Summary" %}
-* HTTP method: `DELETE`
-* URL: `http://localhost:3005/admin/credential`
-* Headers:
-    * `Content-Type: application/json`
-* Request Body:
-    ```json
+
+- HTTP method: `DELETE`
+- URL: `http://localhost:3005/admin/credential`
+- Headers:
+  - `Content-Type: application/json`
+- Request Body:
+  `json
     {
         "subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG",
         "credential": "TestCredential"
     }
-    ```
-{% /tab %}
+    `
+  {% /tab %}
 
 {% tab label="cURL" %}
+
 ```sh
 curl -H "Content-Type: application/json" -X DELETE -d '{"subject": "rBqPPjAW6ubfFdmwERgajvgP5LtM4iQSQG", "credential": "TestCredential"}' http://localhost:3005/admin/credential
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The parameters of the JSON request body should be as follows:
 
-| Field | Type | Required? | Description |
-|---|---|---|---|
-| `subject` | String - Address | Yes | The XRPL classic address of the subject of the credential to revoke. |
-| `credential` | String | Yes | The type of credential to revoke. This must match a credential type previously issued. |
+| Field        | Type             | Required? | Description                                                                            |
+| ------------ | ---------------- | --------- | -------------------------------------------------------------------------------------- |
+| `subject`    | String - Address | Yes       | The XRPL classic address of the subject of the credential to revoke.                   |
+| `credential` | String           | Yes       | The type of credential to revoke. This must match a credential type previously issued. |
 
 A successful response from the API uses the HTTP status code `200 OK` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` value from the response to look up the transaction using an explorer.
 
@@ -225,17 +230,17 @@ A successful response from the API uses the HTTP status code `200 OK` and has a 
 
 The code for this tutorial is divided among the following files:
 
-| File | Purpose |
-|---|---|
-| `accept_credential.js` | Commandline interface for a credential subject to look up and accept Credentials. |
-| `credential.js` | Provides functions that validate credential input, verify supporting documents, and convert between the microservice’s simplified Credential format and the full XRPL representation of Credentials. |
-| `errors.js` | Custom error classes that standardize how the server reports validation errors and XRPL transaction failures. |
-| `issuer_service.js` | Defines the microservice as an Express app, including API methods and error handling. |
-| `look_up_credentials.js` | A helper function for looking up Credentials tied to an account, including pagination and filtering, used by both the credential issuer and holder. |
+| File                     | Purpose                                                                                                                                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accept_credential.js`   | Commandline interface for a credential subject to look up and accept Credentials.                                                                                                                    |
+| `credential.js`          | Provides functions that validate credential input, verify supporting documents, and convert between the microservice’s simplified Credential format and the full XRPL representation of Credentials. |
+| `errors.js`              | Custom error classes that standardize how the server reports validation errors and XRPL transaction failures.                                                                                        |
+| `issuer_service.js`      | Defines the microservice as an Express app, including API methods and error handling.                                                                                                                |
+| `look_up_credentials.js` | A helper function for looking up Credentials tied to an account, including pagination and filtering, used by both the credential issuer and holder.                                                  |
 
 ### accept_credential.js
 
-This file is meant to be run as a commandline tool so it starts with a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)), followed by dependencies grouped by type: external packages (Node.js modules) first, and local modules last.
+This file is meant to be run as a commandline tool so it starts with a [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>), followed by dependencies grouped by type: external packages (Node.js modules) first, and local modules last.
 
 {% code-snippet file="/_code-samples/issue-credentials/js/accept_credential.js" language="js" before="const XRPL_SERVER =" /%}
 
@@ -321,7 +326,7 @@ The file starts with importing dependencies, grouped into external packages and 
 
 {% code-snippet file="/_code-samples/issue-credentials/js/credential.js" before="// Regex constants" language="js" /%}
 
-It then defines regular expression constants that are used further on in the code to validate  the credential and uri:
+It then defines regular expression constants that are used further on in the code to validate the credential and uri:
 
 {% code-snippet file="/_code-samples/issue-credentials/js/credential.js"  from="// Regex constants" before="/**" language="js" /%}
 

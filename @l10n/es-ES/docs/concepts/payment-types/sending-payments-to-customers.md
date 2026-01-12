@@ -2,10 +2,11 @@
 html: sending-payments-to-customers.html
 parent: payment-types.html
 seo:
-    description: Construye los pagos con cuidado para frustrar a los actores maliciosos.
+  description: Construye los pagos con cuidado para frustrar a los actores maliciosos.
 labels:
   - Tokens
 ---
+
 # Enviar pagos a clientes
 
 Cuando construyes un sistema automatizado para enviar pagos al XRP Ledger para tus clientes, debes asegurarte de que construyes los pagos cuidadosamente. Los actores maliciosos están constantemente tratando de encontrar formas de engañar a un sistema para que les pague más dinero del que debería.

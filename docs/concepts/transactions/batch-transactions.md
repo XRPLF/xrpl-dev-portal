@@ -1,11 +1,12 @@
 ---
 seo:
-    description: Discover how XRPL Batch Transactions streamline multiple blockchain operations into a single secure transaction. Learn about batch modes, execution details, and security considerations. 
+  description: Discover how XRPL Batch Transactions streamline multiple blockchain operations into a single secure transaction. Learn about batch modes, execution details, and security considerations.
 labels:
   - Batch
   - Transactions
 status: not_enabled
 ---
+
 # Batch Transactions
 
 XRPL Batch Transactions let you package multiple [transactions](/docs/concepts/transactions) together and execute them as a single unit. It eliminates the risk of partial completion and unexpected outcomes, giving you a more reliable and predictable experience for complex operations. Up to eight transactions can be submitted in a single batch.
@@ -13,6 +14,7 @@ XRPL Batch Transactions let you package multiple [transactions](/docs/concepts/t
 ## XRPL Batch Use Cases
 
 Some potential uses for `Batch` include the following.
+
 - All or nothing: You can mint an NFT and create an offer for it in one transaction. If the offer creation fails, the NFT mint is reverted as well.
 - Trying out a few offers: Submit multiple offers with different amounts of slippage, but only one will succeed.
 - Platform fees: Package platform fees within the transaction itself, simplifying the process.
@@ -61,9 +63,9 @@ A transaction is considered a failure if it receives any result that is not `tes
 
 `Batch` adds a global transaction flag.
 
-| Flag Name         |	Value      |
-|-------------------|------------|
-| `tfInnerBatchTxn`	| 0x40000000 |
+| Flag Name         | Value      |
+| ----------------- | ---------- |
+| `tfInnerBatchTxn` | 0x40000000 |
 
 This flag is only used if a transaction is an inner transaction in a Batch transaction. This signifies that the transaction isn't signed. Any normal transaction that includes this flag is rejected.
 
@@ -77,12 +79,12 @@ This field must be provided if more than one account has inner transactions incl
 
 Each object in this array contains the following fields:
 
-| Field Name	  | Required?	| JSON Type	| Internal Type |
-|---------------|-----------|-----------|---------------|
-| Account	      | yes       |	string	  | STAccount     |
-| SigningPubKey	|	no        | string    | STBlob        |
+| Field Name    | Required? | JSON Type | Internal Type |
+| ------------- | --------- | --------- | ------------- |
+| Account       | yes       | string    | STAccount     |
+| SigningPubKey | no        | string    | STBlob        |
 | TxnSignature  | no        | string    | STBlob        |
-| Signers		    | no        | array	    | STArray       |
+| Signers       | no        | array     | STArray       |
 
 Either the `SigningPubKey` and `TxnSignature` fields must be included, or the `Signers` field.
 
@@ -102,7 +104,7 @@ This field is included if the account is signing with multi-sign (as opposed to 
 
 The fee for the outer transaction is twice the base fee (a total of 20 drops when there is no fee escalation), plus the sum of the transaction fees of all the inner transactions (which incorporates factors like higher fees for `multisign` or `AMMCreate`), plus an additional base fee amount for each additional signature in the transaction (for example, from `BatchSigners`). Expressed as an equation:
 
-2 * (Base Fee) + SUM(Inner Transaction Fees) + An additional Base Fee for each additional signature
+2 \* (Base Fee) + SUM(Inner Transaction Fees) + An additional Base Fee for each additional signature
 
 The fees for the individual inner transactions are paid in the outer transaction rather than the inner transactions themselves, to ensure that fee escalation is calculated on the total cost of the batch transaction and not just the overhead.
 
@@ -134,9 +136,9 @@ There is also a pointer back to the parent outer transaction (`ParentBatchID`).
 
 This standard doesn't add any new fields to the [transaction common fields](/docs/references/protocol/transactions/common-fields.md), but it does add another global transaction flag:
 
-| Flag Name	      | Value      |
-|-----------------|------------|
-| tfInnerBatchTxn	| 0x40000000 |
+| Flag Name       | Value      |
+| --------------- | ---------- |
+| tfInnerBatchTxn | 0x40000000 |
 
 This flag should be used only if a transaction is an inner transaction in a `Batch` transaction. This signifies that the transaction shouldn't be signed. Any normal transaction that includes this flag should be rejected.
 
@@ -154,7 +156,7 @@ In the single account case, the single account must approve all of the transacti
 
 #### Multi Account
 
-The multi-account case is a bit more complicated and is best illustrated with an example. 
+The multi-account case is a bit more complicated and is best illustrated with an example.
 
 Alice and Bob are conducting a trustless swap via a multi-account `Batch`, with Alice providing 1000 XRP and Bob providing 1000 USD. Bob submits the `Batch` transaction, so Alice must provide her part of the swap to him.
 
@@ -163,6 +165,7 @@ If Alice provides a fully autofilled and signed transaction to Bob, Bob can subm
 If Alice just signs her part of the Batch transaction, Bob can modify his transaction to only provide 1 USD instead, thereby getting his 1000 XRP at a much cheaper rate. Therefore, the entire Batch transaction (and all its inner transactions) must be signed by all parties.
 
 ### Inner Transaction Safety
+
 An inner batch transaction is a special case. It doesn't include a signature or a fee (since those are both included in the outer transaction). Therefore, they must be handled carefully to ensure that someone can't somehow directly submit an inner `Batch` transaction without it being included in an outer transaction.
 
 Inner transactions cannot be broadcast (and won't be accepted if they happen to be broadcast, for example, from a malicious node). They must be generated from the `Batch` outer transaction instead. Inner transactions cannot be directly submitted via the submit RPC.

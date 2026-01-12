@@ -2,11 +2,12 @@
 html: what-is-xrp.html
 parent: introduction.html
 seo:
-    title: ¿Qué es XRP y por qué es valioso?
-    description: XRP, la criptomoneda respaldada por el XRP Ledger (XRPL), permite transacciones más rápidas y económicas. Descubre cómo opera XRP en una blockchain de código abierto.
+  title: ¿Qué es XRP y por qué es valioso?
+  description: XRP, la criptomoneda respaldada por el XRP Ledger (XRPL), permite transacciones más rápidas y económicas. Descubre cómo opera XRP en una blockchain de código abierto.
 labels:
   - Blockchain
 ---
+
 # ¿Qué es XRP?
 
 XRP es la criptomoneda respaldada por el XRP Ledger.
@@ -45,31 +46,28 @@ Aunque puede parecer mucho más seguro tener algo "real en la mano, muchas perso
 
 El valor de las criptomonedas proviene de la confianza que sus poseedores depositan en la moneda. Debido a la naturaleza distribuida de los registros y la protección criptográfica para asegurar los fondos, las criptomonedas podrían considerarse mucho más robustas, seguras, y convenientes que las monedas fiduciarias tradicionales.
 
-
 ## XRP es una criptomoneda
 
 El XRP Ledger fue construido entre 2011 y principios de 2012 por Jed McCaleb, Arthur Britto y David Schwartz. En el momento de su creación, había 100 mil millones de XRP. En septiembre de 2012, Jed y Arthur, junto con Chris Larsen formaron Ripple (la compañía, llamada en ese momento OpenCoin Inc.) y decidieron donar 80 mil millones XRP a Ripple a cambio de que Ripple desarrollase en el XRP Ledger.
 
 ![Cien mil millones con "M"](/docs/img/introduction14-hundred-billion.png)
 
-Desde entonces, la compañía ha vendido XRP regularmente, lo ha utilizado para fortalecer los mercados de XRP y mejorar la liquidez de la red, e incentivar el desarrollo del ecosistema. En 2017, la compañía colocó [55 mil millones de XRP en escrow](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  para asegurar que la cantidad que entra al suministro general [crece de manera predecible](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  en el futuro inmediato,. Ripple [sitio de rendimiento del mercado XRP](https://ripple.com/xrp/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993) informa cuánto XRP tiene la compañía disponible y cuanto tiene bloqueado en escrow en la actualidad.
+Desde entonces, la compañía ha vendido XRP regularmente, lo ha utilizado para fortalecer los mercados de XRP y mejorar la liquidez de la red, e incentivar el desarrollo del ecosistema. En 2017, la compañía colocó [55 mil millones de XRP en escrow](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993) para asegurar que la cantidad que entra al suministro general [crece de manera predecible](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993) en el futuro inmediato,. Ripple [sitio de rendimiento del mercado XRP](https://ripple.com/xrp/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993) informa cuánto XRP tiene la compañía disponible y cuanto tiene bloqueado en escrow en la actualidad.
 
 ![Hombre con un XRP](/docs/img/introduction13-x-prefix.png)
-
 
 ### El nombre
 
 Originalmente, el XRP Ledger se llamaba "Ripple" por la forma en que la tecnología permitía que los pagos [se propagaran a través de múltiples saltos y monedas](../concepts/tokens/fungible-tokens/rippling.md). Para el activo nativo construido dentro del ledger, los creadores eligieron las siglas "XRP" del término "créditos ripple" o "ripples" y el prefijo X por ser una moneda no nacional según el estandar de la [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). La compañía se registró como "Ripple Labs". El nombre "XRP" empezó a usarse para referirse al activo en todos los contextos, para evitar confusiones con nombres similares de la tecnología y la compañía, y finalmente la empresa acortó su propio nombre a "Ripple". En mayo de 2018, [la comunidad seleccionó un nuevo símbolo "X"](https://twitter.com/xrpsymbol/status/1006925937571713025) para representar XRP y diferenciarlo del logotipo triskelion con el que se conocía anteriormente tanto a la empresa como al activo digital
 
-| XRP "X" Logo                           | Ripple triskelion                   |
-|:---------------------------------------|:------------------------------------|
+| XRP "X" Logo                     | Ripple triskelion                              |
+| :------------------------------- | :--------------------------------------------- |
 | !["X" logo](/img/xrp-x-logo.png) | ![Triskelion](/docs/img/ripple-triskelion.png) |
-
 
 ### Marca comercial
 
 "XRP" es una marca registrada de la XRPL Foundation en EE.UU. y otros países como China y Estonia.
 
 La solicitud de marca se registró en la Oficina de Patentes y Marcas de los Estados Unidos (USPTO) en 2013 con OpenCoin Inc y Ripple Labs Inc como cesionarios. En 2022, la asignación de marca fue actualizada y ahora está asignada a MITTETULUNDUSÜHING XRP LEDGER TRUST (“XRPLF”).
- 
+
 Siguiente: [Carteras Cripto](crypto-wallets.md)

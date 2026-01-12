@@ -1,11 +1,11 @@
 ---
 seo:
-    description: Overview of NFT Marketplace use cases.
+  description: Overview of NFT Marketplace use cases.
 labels:
   - Tokenization
 ---
-# NFT Marketplace Overview
 
+# NFT Marketplace Overview
 
 ## Key Features
 
@@ -34,7 +34,7 @@ There are 4 essential areas of preparation for starting your NFT business.
 3. Indexing required NFT information
 4. Determining your permanent storage strategy to cache your NFTs
 
-[![NFT Marketplace Flow](/docs/img/nft-mkt-overview.png "NFT Marketplace Flow")](/docs/img/nft-mkt-overview.png)
+[![NFT Marketplace Flow](/docs/img/nft-mkt-overview.png 'NFT Marketplace Flow')](/docs/img/nft-mkt-overview.png)
 
 ## Connect to XRPL
 
@@ -44,7 +44,7 @@ If you want to set up a larger site with high volume, it might be worth investin
 
 See also:
 
-* [Pros and cons of running your own server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server).
+- [Pros and cons of running your own server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server).
 
 ## Set Up Basic Blockchain Functions
 
@@ -71,7 +71,6 @@ See [Authorized Minter](../../concepts/tokens/nfts/authorizing-another-minter.md
 Minted NFTs are listed on a `NFTokenPage`. There is a reserve requirement of {% $env.PUBLIC_OWNER_RESERVE %} for every `NFTokenPage` on your account. See [NFT Reserve Requirements](../../concepts/tokens/nfts/reserve-requirements.md).
 
 Each `NFTokenPage` holds 16-32 NFTs. Minting a large number of NFTs can tie up a great deal of your XRP. You can keep your XRP liquid by minting on demand (or _lazy minting_). For details of different approaches, see [Batch minting](../../concepts/tokens/nfts/batch-minting.md).
-
 
 ### Setting up a wallet
 
@@ -133,7 +132,6 @@ See:
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
-
 <!--
 Sorting and filtering [No link]
     Creator - nft_info (issuer field)
@@ -153,11 +151,13 @@ Supplement Information [No link]
  -->
 
 ## NFT Caching
+
 <!--
 
 Image optimization for web experience [No link]
 
  -->
+
 NFTs that are created in the crypto space are expected to store metadata, including media, attributes, and so on. Currently most are stored on IPFS or Arweave to avoid centralization.
 
 <!--  We can't use this example.

@@ -1,11 +1,13 @@
 ---
 seo:
-    description: Get a list of transactions affecting an account.
+  description: Get a list of transactions affecting an account.
 labels:
-    - Payments
-    - Accounts
+  - Payments
+  - Accounts
 ---
+
 # account_tx
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/AccountTx.cpp "Source")
 
 The `account_tx` method retrieves a list of validated transactions that involve a given account.
@@ -17,6 +19,7 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "example_account_tx",
@@ -30,33 +33,38 @@ An example of the request format:
   "api_version": 2
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "account_tx",
-    "params": [
-        {
-            "account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
-            "binary": false,
-            "forward": false,
-            "ledger_index_max": -1,
-            "ledger_index_min": -1,
-            "limit": 2,
-            "api_version": 2
-        }
-    ]
+  "method": "account_tx",
+  "params": [
+    {
+      "account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
+      "binary": false,
+      "forward": false,
+      "ledger_index_max": -1,
+      "ledger_index_min": -1,
+      "limit": 2,
+      "api_version": 2
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 # Syntax: account_tx account [ledger_index_min [ledger_index_max]] [limit] [offset] [binary] [count] [descending]
 # For binary/count/descending, use the parameter name for true and omit for false.
 rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descending
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -65,21 +73,20 @@ rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descen
 
 The request includes the following parameters:
 
-| `Field`            | Type                                       | Description |
-|:-------------------|:-------------------------------------------|:-----------|
-| `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
-| `tx_type`          | String                                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. See [Transaction Types](../../../../references//protocol/transactions/types/index.md#transaction-types). [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") [AMM support since: Clio v2.1.0](https://github.com/XRPLF/clio/releases/tag/2.1.0 "BADGE_GREEN") |
-| `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
-| `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
-| `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
-| `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
-| `forward`          | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
-| `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
+| `Field`            | Type                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :----------------- | :------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `account`          | String                     | A unique identifier for the account, most commonly the account's address.                                                                                                                                                                                                                                                                                                                                                                        |
+| `tx_type`          | String                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. See [Transaction Types](../../../../references//protocol/transactions/types/index.md#transaction-types). [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 'BADGE_BLUE') [AMM support since: Clio v2.1.0](https://github.com/XRPLF/clio/releases/tag/2.1.0 'BADGE_GREEN') |
+| `ledger_index_min` | Integer                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available.                                                                                                                                                                                                                                                                       |
+| `ledger_index_max` | Integer                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available.                                                                                                                                                                                                                                                                 |
+| `ledger_hash`      | String                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].)                                                                                                                                                                                                                                                                                                                                               |
+| `ledger_index`     | String or Unsigned Integer | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].)                                                                                                                                                                                                                                                                                                                                               |
+| `binary`           | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON.                                                                                                                                                                                                                                                                                                                                         |
+| `forward`          | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.)                                                                                                                                                                               |
+| `limit`            | Integer                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value.                                                                                                                                                                                                                                                                                                                       |
+| `marker`           | [Marker][]                 | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers.                                                                                                                                                                                                                                                        |
 
 - [API v2]: If you specify either `ledger_index` or `ledger_hash`, including `ledger_index_min` and `ledger_index_max` returns an `invalidParams` error.
-
 
 ### Iterating over queried data
 
@@ -94,6 +101,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -326,9 +334,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -560,9 +570,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/opt/ripple/rippled.cfg"
 2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -795,6 +807,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -805,57 +818,57 @@ The response follows the [standard format][], with a successful result containin
 
 {% tab label="API v2" %}
 
-| `Field`            | Type                       | Description                |
-|:-------------------|:---------------------------|:---------------------------|
-| `account`          | String                     | Unique [Address][] identifying the related account |
-| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
-| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
-| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
+| `Field`            | Type                       | Description                                                                                                                                             |
+| :----------------- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `account`          | String                     | Unique [Address][] identifying the related account                                                                                                      |
+| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions.                                                                             |
+| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions.                                                                          |
+| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.)                                            |
+| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off.                               |
+| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below.                                                                              |
 | `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 {% admonition type="info" name="Note" %}The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.{% /admonition %}
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
-| `Field`          | Type            | Description              |
-|:-----------------|:----------------|:-------------------------|
-| `close_time_iso` | String          | The time the ledger containing this transaction was closed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. |
-| `hash`           | String          | The unique hash identifier of the transaction. |
-| `ledger_hash`    | String          | A hex string of the ledger version that included this transaction. |
-| `ledger_index`   | Integer         | The [ledger index][] of the ledger version that included this transaction. |
-| `tx_json`        | Object (JSON)   | (JSON mode) JSON object defining the transaction. |
-| `tx_blob`        | String (Binary) | (Binary mode) A unique hex string defining the transaction. |
-| `meta`           | Object (JSON)   | (JSON mode) The transaction results metadata in JSON. |
-| `meta_blob`      | String (Binary) | (Binary mode) The transaction results metadata as a hex string. |
+| `Field`          | Type            | Description                                                                                                                           |
+| :--------------- | :-------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| `close_time_iso` | String          | The time the ledger containing this transaction was closed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.             |
+| `hash`           | String          | The unique hash identifier of the transaction.                                                                                        |
+| `ledger_hash`    | String          | A hex string of the ledger version that included this transaction.                                                                    |
+| `ledger_index`   | Integer         | The [ledger index][] of the ledger version that included this transaction.                                                            |
+| `tx_json`        | Object (JSON)   | (JSON mode) JSON object defining the transaction.                                                                                     |
+| `tx_blob`        | String (Binary) | (Binary mode) A unique hex string defining the transaction.                                                                           |
+| `meta`           | Object (JSON)   | (JSON mode) The transaction results metadata in JSON.                                                                                 |
+| `meta_blob`      | String (Binary) | (Binary mode) The transaction results metadata as a hex string.                                                                       |
 | `validated`      | Boolean         | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
 
 {% /tab %}
 
 {% tab label="API v1" %}
 
-| `Field`            | Type                       | Description                |
-|:-------------------|:---------------------------|:---------------------------|
-| `account`          | String                     | Unique [Address][] identifying the related account |
-| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
-| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
-| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
+| `Field`            | Type                       | Description                                                                                                                                             |
+| :----------------- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `account`          | String                     | Unique [Address][] identifying the related account                                                                                                      |
+| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions.                                                                             |
+| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions.                                                                          |
+| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.)                                            |
+| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off.                               |
+| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below.                                                                              |
 | `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 {% admonition type="info" name="Note" %}The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.{% /admonition %}
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
-| `Field`        | Type                             | Description              |
-|:---------------|:---------------------------------|:-------------------------|
-| `ledger_index` | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
-| `tx`           | Object                           | (JSON mode) JSON object defining the transaction. |
-| `tx_blob`      | String                           | (Binary mode) Hex string representing the transaction. |
+| `Field`        | Type                             | Description                                                                                                                                                   |
+| :------------- | :------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ledger_index` | Integer                          | The [ledger index][] of the ledger version that included this transaction.                                                                                    |
+| `tx`           | Object                           | (JSON mode) JSON object defining the transaction.                                                                                                             |
+| `tx_blob`      | String                           | (Binary mode) Hex string representing the transaction.                                                                                                        |
 | `meta`         | Object (JSON) or String (Binary) | If `binary` is `true`, then this is a hex string of the transaction results metadata. Otherwise, the transaction results metadata is included in JSON format. |
-| `validated`    | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
+| `validated`    | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change.                         |
 
 {% /tab %}
 
@@ -863,12 +876,12 @@ Each transaction object includes the following fields, depending on whether it w
 
 ## Possible Errors
 
-* Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. In [API v1][], you won't receive this error if you specify:
-  * `ledger_index_min` or `ledger_index_max`, but also try to specify `ledger_index` or `ledger_hash`.
-  * A non-boolean value for the `binary` or `forward` fields.
-* `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
-* `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist the server does not have it. In [API v1][], you won't receive this error if you specify a `ledger_index_min` or `ledger_index_max` value beyond the range of ledgers that the server has.
-* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).
+- Any of the [universal error types][].
+- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. In [API v1][], you won't receive this error if you specify:
+  - `ledger_index_min` or `ledger_index_max`, but also try to specify `ledger_index` or `ledger_hash`.
+  - A non-boolean value for the `binary` or `forward` fields.
+- `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
+- `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist the server does not have it. In [API v1][], you won't receive this error if you specify a `ledger_index_min` or `ledger_index_max` value beyond the range of ledgers that the server has.
+- `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

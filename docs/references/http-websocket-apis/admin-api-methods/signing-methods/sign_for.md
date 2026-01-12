@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Contribute to a multi-signature.
+  description: Contribute to a multi-signature.
 labels:
-    - Transaction Sending
+  - Transaction Sending
 ---
+
 # sign_for
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/SignFor.cpp "Source")
 
 The `sign_for` command provides one signature for a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md).
@@ -12,62 +14,70 @@ The `sign_for` command provides one signature for a [multi-signed transaction](.
 {% partial file="/docs/_snippets/public-signing-note.md" /%}
 
 ## Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": "sign_for_example",
-    "command": "sign_for",
-    "account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
-    "seed": "s████████████████████████████",
-    "key_type": "ed25519",
-    "tx_json": {
+  "id": "sign_for_example",
+  "command": "sign_for",
+  "account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
+  "seed": "s████████████████████████████",
+  "key_type": "ed25519",
+  "tx_json": {
+    "TransactionType": "TrustSet",
+    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+    "Flags": 262144,
+    "LimitAmount": {
+      "currency": "USD",
+      "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+      "value": "100"
+    },
+    "Sequence": 2,
+    "SigningPubKey": "",
+    "Fee": "30000"
+  }
+}
+```
+
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+
+```json
+{
+  "method": "sign_for",
+  "params": [
+    {
+      "account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
+      "seed": "s████████████████████████████",
+      "key_type": "ed25519",
+      "tx_json": {
         "TransactionType": "TrustSet",
         "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
         "Flags": 262144,
         "LimitAmount": {
-            "currency": "USD",
-            "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-            "value": "100"
+          "currency": "USD",
+          "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+          "value": "100"
         },
         "Sequence": 2,
         "SigningPubKey": "",
         "Fee": "30000"
+      }
     }
+  ]
 }
 ```
-{% /tab %}
 
-{% tab label="JSON-RPC" %}
-```json
-{
-    "method": "sign_for",
-    "params": [{
-        "account": "rLFd1FzHMScFhLsXeaxStzv3UC97QHGAbM",
-        "seed": "s████████████████████████████",
-        "key_type": "ed25519",
-        "tx_json": {
-            "TransactionType": "TrustSet",
-            "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-            "Flags": 262144,
-            "LimitAmount": {
-                "currency": "USD",
-                "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-                "value": "100"
-            },
-            "Sequence": 2,
-            "SigningPubKey": "",
-            "Fee": "30000"
-        }
-    }]
-}
-```
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: rippled sign_for <signer_address> <signer_secret> [offline]
 rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
@@ -84,26 +94,27 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
     "Fee": "30000"
 }'
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The request includes the following parameters:
 
-| `Field`      | Type                 | Description                            |
-|:-------------|:---------------------|:---------------------------------------|
-| `account`    | String - [Address][] | The address which is providing the signature. |
+| `Field`      | Type                 | Description                                                                                                                                                                                                                                                                                                                                                               |
+| :----------- | :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `account`    | String - [Address][] | The address which is providing the signature.                                                                                                                                                                                                                                                                                                                             |
 | `tx_json`    | Object               | The [Transaction](../../../protocol/transactions/index.md) to sign. Unlike using the [sign method][], all fields of the transaction must be provided, including `Fee` and `Sequence`. The transaction must include the field `SigningPubKey` with an empty string as the value. The object may optionally contain a `Signers` array with previously-collected signatures. |
-| `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
-| `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
-| `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
-| `passphrase`   | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
-| `key_type`     | String  | _(Optional)_ Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
+| `secret`     | String               | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`.                                                                                                                            |
+| `seed`       | String               | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`.                                                                                                                           |
+| `seed_hex`   | String               | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`.                                                                                                                                               |
+| `passphrase` | String               | _(Optional)_ Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`.                                                                                                                                                        |
+| `key_type`   | String               | _(Optional)_ Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental.                                                                                                                                                           |
 
 You must provide **exactly 1 field** with the secret key, which can be either of the following:
 
-* Provide a `secret` value and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
-* Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
+- Provide a `secret` value and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+- Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
 
 ## Response Format
 
@@ -112,6 +123,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "sign_for_example",
@@ -145,9 +157,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -181,9 +195,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -218,24 +234,25 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`   | Type   | Description                                             |
-|:----------|:-------|:--------------------------------------------------------|
+| `Field`   | Type   | Description                                                                                                                                                                                                                                              |
+| :-------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `tx_blob` | String | Hexadecimal representation of the signed transaction, including the newly-added signature. If it has enough signatures, you can [submit this string using the `submit` method](../../public-api-methods/transaction-methods/submit.md#submit-only-mode). |
-| `tx_json` | Object | The [transaction specification](../../../protocol/transactions/index.md) in JSON format, with the newly-added signature in the `Signers` array. If it has enough signatures, you can submit this object using the [submit_multisigned method][]. |
+| `tx_json` | Object | The [transaction specification](../../../protocol/transactions/index.md) in JSON format, with the newly-added signature in the `Signers` array. If it has enough signatures, you can submit this object using the [submit_multisigned method][].         |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `srcActNotFound` - If the `Account` from the transaction is not a funded address in the ledger.
-* `srcActMalformed` - If the signing address (`account` field) from the request is not validly formed.
-* `badSeed` - The seed value supplied was invalidly-formatted.
-* `badSecret` - The secret value supplied was invalidly-formatted.
+- Any of the [universal error types][].
+- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+- `srcActNotFound` - If the `Account` from the transaction is not a funded address in the ledger.
+- `srcActMalformed` - If the signing address (`account` field) from the request is not validly formed.
+- `badSeed` - The seed value supplied was invalidly-formatted.
+- `badSecret` - The secret value supplied was invalidly-formatted.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

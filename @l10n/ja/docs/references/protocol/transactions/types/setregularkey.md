@@ -2,10 +2,11 @@
 html: setregularkey.html
 parent: transaction-types.html
 seo:
-    description: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
+  description: アカウントに関連付けられているレギュラーキーペアの割り当て、変更、削除を行います。
 labels:
   - セキュリティ
 ---
+
 # SetRegularKey
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
@@ -18,22 +19,23 @@ labels:
 
 ```json
 {
-    "Flags": 0,
-    "TransactionType": "SetRegularKey",
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "12",
-    "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+  "Flags": 0,
+  "TransactionType": "SetRegularKey",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Fee": "12",
+  "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
 }
 ```
 
 {% tx-example txid="6AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
+
 <!--{# fix md highlighting_ #}-->
 
-| フィールド    | JSONの型  | [内部の型][]       | 説明                          |
-|:-------------|:----------|:------------------|:------------------------------|
-| `RegularKey` | 文字列 | AccountID | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス][]。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。アドレスのマスターキーペアと一致してはなりません。 |
+| フィールド   | JSONの型 | [内部の型][] | 説明                                                                                                                                                                                                                     |
+| :----------- | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RegularKey` | 文字列   | AccountID    | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス][]。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。アドレスのマスターキーペアと一致してはなりません。 |
 
 ## 関連項目
 

@@ -2,10 +2,11 @@
 html: bouncing-payments.html
 parent: payment-types.html
 seo:
-    description: When the purpose of a payment is unclear, return it to the sender.
+  description: When the purpose of a payment is unclear, return it to the sender.
 labels:
   - Tokens
 ---
+
 # Bouncing Payments
 
 When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.

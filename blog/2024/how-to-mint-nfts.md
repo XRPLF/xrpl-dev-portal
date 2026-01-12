@@ -1,19 +1,20 @@
 ---
 category: 2024
-date: "2024-03-08"
+date: '2024-03-08'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: How to Mint an NFT
-    description: Learn the basics of minting an NFT on XRP Ledger and how you can get started quickly and easily with this step-by-step guide. Get started today!
+  title: How to Mint an NFT
+  description: Learn the basics of minting an NFT on XRP Ledger and how you can get started quickly and easily with this step-by-step guide. Get started today!
 labels:
-    - Development
+  - Development
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # How to Mint an NFT: A Simple Step-by-Step Guide
 
-The first in a broader series dedicated to making your XRP Ledger building journey an altogether smoother experience is here! In this piece we cover how you can begin to shape your very own NFT collection on the XRP Ledger today. 
+The first in a broader series dedicated to making your XRP Ledger building journey an altogether smoother experience is here! In this piece we cover how you can begin to shape your very own NFT collection on the XRP Ledger today.
 
 Navigating the exciting realm of [Non-fungible Tokens (NFTs)](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger can seem daunting at first. However, with the right tools and a bit of JavaScript or Python, minting, managing, and burning NFTs becomes a straightforward process. This blog demystifies the process, providing a clear step-by-step guide on how to create, view, and destroy NFTs on this innovative platform.
 
@@ -21,29 +22,28 @@ Navigating the exciting realm of [Non-fungible Tokens (NFTs)](https://xrpl.org/d
 
 ## What is an NFT?
 
-A Non-Fungible Token (NFT) is a unique digital asset that represents ownership or proof of authenticity of a specific item, such as digital art, collectibles, music, in-game assets, or even tokenized real-world assets. 
+A Non-Fungible Token (NFT) is a unique digital asset that represents ownership or proof of authenticity of a specific item, such as digital art, collectibles, music, in-game assets, or even tokenized real-world assets.
 
 Unlike fungible tokens such as XRP, which are interchangeable and hold the same value, NFTs are distinct and cannot be exchanged on a one-to-one basis. Each NFT carries unique metadata stored on the blockchain, ensuring verifiable provenance and scarcity. On the XRP Ledger (XRPL), NFTs benefit from low transaction costs, high-speed settlements, and built-in royalty enforcement, making them an efficient and scalable option for creators and businesses looking to tokenize assets.
-
 
 ## How Much Does it Cost to Mint an NFT?
 
 Minting, holding, and offering NFTs for sale requires XRP held in reserve. The reserve charges can add up quickly, so understanding the reserve requirements can help you choose the best approach for your business case.
 
-For each object you own on the XRP Ledger, there is an owner reserve, currently 2 XRP. This is to discourage users from spamming the ledger with unnecessary data, and to encourage them to clean up any data that is no longer necessary. The owner reserve amount is subject to change. See Base Reserve and Owner Reserve. 
+For each object you own on the XRP Ledger, there is an owner reserve, currently 2 XRP. This is to discourage users from spamming the ledger with unnecessary data, and to encourage them to clean up any data that is no longer necessary. The owner reserve amount is subject to change. See Base Reserve and Owner Reserve.
 
-For NFTs, the object does not refer to the individual NFTs, but to the NFTokenPage objects owned by the account. NFTokenPage objects can store up to 32 NFTs. 
+For NFTs, the object does not refer to the individual NFTs, but to the NFTokenPage objects owned by the account. NFTokenPage objects can store up to 32 NFTs.
 
-However, NFTs are not packed into pages to minimize space used. If you have 64 NFTs, it's not necessarily true that you have only 2 NFTokenPage objects. 
+However, NFTs are not packed into pages to minimize space used. If you have 64 NFTs, it's not necessarily true that you have only 2 NFTokenPage objects.
 
 The following table provides examples of how much the total owner reserve might be, depending on the number of NFTs owned and the number of pages holding them.
 
-| NFTs Owned | Best Case | Typical Case | Worst Case |
-|:-----------|:----------|:-------------|:-----------|
-|  32 or fewer| 2 XRP | 2 XRP | 2 XRP |
-| 50 | 4 XRP | 6 XRP | 8 XRP |
-| 200 | 14 XRP | 18 XRP | 26 XRP |
-| 1000 | 64 XRP | 84 XRP | 126 XRP |
+| NFTs Owned  | Best Case | Typical Case | Worst Case |
+| :---------- | :-------- | :----------- | :--------- |
+| 32 or fewer | 2 XRP     | 2 XRP        | 2 XRP      |
+| 50          | 4 XRP     | 6 XRP        | 8 XRP      |
+| 200         | 14 XRP    | 18 XRP       | 26 XRP     |
+| 1000        | 64 XRP    | 84 XRP       | 126 XRP    |
 
 ## NFT Minting: Getting Started
 
@@ -51,11 +51,11 @@ Before diving into how to mint an NFT, ensure you have access to test accounts o
 
 1. Open the `3.mint-nfts.html` file in a browser to initiate.
 2. Obtain test accounts:
-  - If you already possess Testnet account seeds, input them into the Seeds field and click **Get Accounts from Seeds**.
-  - Otherwise, click **Get New Standby Account** and **Get New Operational Account** to generate new accounts.
+
+- If you already possess Testnet account seeds, input them into the Seeds field and click **Get Accounts from Seeds**.
+- Otherwise, click **Get New Standby Account** and **Get New Operational Account** to generate new accounts.
 
 ![Screenshot: Token Test Harness to mint and burn NFTs](/blog/img/devblog-how-to-mint-nfts-token-test-harness.png)
-
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oGzKbQJCTJ0?si=opmCEOjqZgTmCm1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -91,7 +91,6 @@ To view a list of NFTs associated with your account, simply click **Get NFTs**. 
 
 1. Enter the Token ID of the NFT you wish to destroy.
 2. Click **Burn NFT** to remove it permanently from the ledger.
-
 
 ## Behind the Scenes: Code Walkthrough
 

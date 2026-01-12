@@ -2,11 +2,12 @@
 html: send-a-time-held-escrow.html
 parent: use-escrows.html
 seo:
-    description: 指定した時間が経過することがリリースの唯一の条件であるEscrowを作成します。
+  description: 指定した時間が経過することがリリースの唯一の条件であるEscrowを作成します。
 labels:
   - Escrow
   - スマートコントラクト
 ---
+
 # 時間に基づくEscrowの送信
 
 [EscrowCreateトランザクション][]タイプでは、リリースの唯一の条件が特定時刻を経過することであるEscrowを作成できます。このためには、`FinishAfter`フィールドを使用し、`Condition`フィールドを省略します。
@@ -18,16 +19,19 @@ labels:
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 // JavaScript Date() is natively expressed in milliseconds; convert to seconds
-const release_date_unix = Math.floor( new Date("2017-11-13T00:00:00Z") / 1000 );
-const release_date_ripple = release_date_unix - 946684800;
-console.log(release_date_ripple);
+const release_date_unix = Math.floor(new Date('2017-11-13T00:00:00Z') / 1000)
+const release_date_ripple = release_date_unix - 946684800
+console.log(release_date_ripple)
 // 563846400
 ```
+
 {% /tab %}
 
 {% tab label="Python 3" %}
+
 ```python
 import datetime
 release_date_utc = datetime.datetime(2017,11,13,0,0,0,tzinfo=datetime.timezone.utc)
@@ -35,6 +39,7 @@ release_date_ripple = int(release_date_utc.timestamp()) - 946684800
 print(release_date_ripple)
 # 563846400
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -45,7 +50,7 @@ print(release_date_ripple)
 
 [EscrowCreateトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`FinishAfter`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Condition`フィールドを省略して、時刻を保留中の支払いをリリースする唯一の条件とします。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。`Amount`を、Escrowする[XRPのdrop数][]の合計額に設定します。
 
-{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 リクエスト:
 
@@ -67,12 +72,11 @@ print(release_date_ripple)
 
 {% /tabs %}
 
-
 トランザクションの識別用`hash`値をメモしておきます。これにより、検証済みレジャーバージョンに記録されるときにその最終ステータスを確認できます。
 
 ## 3.検証の待機
 
-{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%}
 
 ## 4.Escrowが作成されたことの確認
 
@@ -124,7 +128,6 @@ print(release_date_ripple)
 
 {% /tabs %}
 
-
 ## 6.EscrowFinishトランザクションの送信
 
 `FinishAfter`の時刻が経過した後で資金のリリースを実行する[EscrowFinishトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Owner`フィールドにEscrowCreateトランザクションの`Account`アドレスを設定し、`OfferSequence` にEscrowCreateトランザクションの`Sequence`番号を設定します。時刻のみに基づいて保留されているEscrowの場合は、`Condition`フィールドと`Fulfillment`フィールドを省略します。
@@ -133,7 +136,7 @@ print(release_date_ripple)
 
 Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired-escrow.md)だけが可能です。
 
-{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 リクエスト:
 
@@ -159,7 +162,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 ## 7.検証の待機
 
-{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%}
 
 ## 8.最終結果の確認
 

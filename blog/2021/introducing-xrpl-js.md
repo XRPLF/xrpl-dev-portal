@@ -1,14 +1,15 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-10-20"
+  editPage:
+    hide: true
+date: '2021-10-20'
 template: '../../@theme/templates/blogpost'
 labels:
-    - xrpl.js Release Notes
+  - xrpl.js Release Notes
 author: Team RippleX
 ---
+
 # Introducing xrpl.js
 
 [RippleX](https://ripple.com/ripplex/) and the [XRP Ledger Foundation (XRPLF)](https://xrplf.org/) are excited to announce xrpl.js **version 2.0.0**, a JavaScript/TypeScript library for interacting with the XRP Ledger (XRPL). Formerly known as ripple-lib, the library was renamed to better represent its role in the XRPL ecosystem and overhauled to take advantage of modern JavaScript features.

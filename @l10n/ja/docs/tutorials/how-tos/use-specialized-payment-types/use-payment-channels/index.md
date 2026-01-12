@@ -2,11 +2,12 @@
 html: use-payment-channels.html
 parent: use-specialized-payment-types.html
 seo:
-    description: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバのJSON-RPC APIを使用する例を使って説明します。
+  description: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバのJSON-RPC APIを使用する例を使って説明します。
 labels:
   - Payment Channel
   - スマートコントラクト
 ---
+
 # Payment Channelの使用
 
 Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的な[Payment Channel](../../../../concepts/payment-types/payment-channels.md)の使用方法を、ローカル`rippled`サーバの[JSON-RPC API](../../../../references/http-websocket-apis/index.md)を使用する例を使って説明します。
@@ -17,12 +18,12 @@ Payment Channelは、少額の単位に分割可能な「非同期」のXRPペ�
 
 このチュートリアルでは、例として以下のアドレスを使用します。
 
-| | |
-|--|--|
-| **支払人のアドレス** | rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH |
-| **Channelに使用する公開鍵（XRP Ledgerの[base58][]エンコード文字列フォーマット）** | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3
-| **Channelに使用する公開鍵（16進数）** | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
-| **受取人のアドレス** | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn |
+|                                                                                   |                                                                    |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **支払人のアドレス**                                                              | rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH                                 |
+| **Channelに使用する公開鍵（XRP Ledgerの[base58][]エンコード文字列フォーマット）** | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3               |
+| **Channelに使用する公開鍵（16進数）**                                             | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
+| **受取人のアドレス**                                                              | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn                                 |
 
 {% admonition type="success" name="ヒント" %}この例では、Channelの公開鍵は支払人のマスターキーペアの公開鍵です。これは完全に安全であり有効です。また、支払人のみが異なるキーペアの公開鍵と秘密鍵を把握している場合に限り、そのキーペアを使用することも完全に安全であり有効です。 <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->{% /admonition %}
 
@@ -33,6 +34,7 @@ Payment Channelは、少額の単位に分割可能な「非同期」のXRPペ�
 Payment Channelに使用できるXRPの額に制限はありません。このチュートリアルで使用されているサンプルの値では、Payment Channelで100 XRP（`100000000` drop）が少なくとも1日間は確保されます。
 
 ## フローチャート
+
 [フローチャート]: #フローチャート
 
 次の図は、Payment Channelのライフサイクルの概要を示します。
@@ -106,7 +108,6 @@ Content-Type: application/json
 }
 ```
 
-
 `submit`リクエストに対する直接のレスポンスには、トランザクションを識別する`hash`値を含む _暫定的な_ 結果が含まれています。支払人は、検証済みレジャーでトランザクションの _最終_ 結果を確認し、メタデータからChannel IDを取得する必要があります。この処理は`tx`コマンドを使用して実行できます。
 
 リクエスト:
@@ -172,8 +173,7 @@ Content-Type: application/json
 - トランザクションの`meta`フィールドで、`TransactionResult`が`tesSUCCESS`であることを確認します。
 - データが検証済みレジャーのデータであることを示す`"validated":true`がレスポンスに含まれていることを確認します。（結果`tesSUCCESS`は、検証済みレジャーバージョンに記録されている場合にのみ[最終的な](../../../../concepts/transactions/finality-of-results/index.md)結果です。）
 - トランザクションの`meta`フィールドの`AffectedNodes`配列で、`LedgerEntryType`が`PayChannel`である`CreatedNode`オブジェクトを検索します。`CreatedNode`オブジェクトの`LedgerIndex`フィールドはChannel IDを示します。（上記の例では、これは「5DB0...」で始まる16進文字列です。）Channel IDは、後でクレームに署名する際に必要です。
-    PayChannelレジャーオブジェクトタイプの詳細については、[PayChannelレジャーオブジェクト](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)をご覧ください。
-
+  PayChannelレジャーオブジェクトタイプの詳細については、[PayChannelレジャーオブジェクト](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)をご覧ください。
 
 ## 2. 受取人がPayment Channelの特性を確認します。
 
@@ -229,7 +229,6 @@ Content-Type: application/json
 
 2名の当事者間に複数のChannelが存在している可能性があるため、受取人が正しいChannelのクオリティを確認することが重要です。混乱する場合は、使用するChannelのChannel ID（`channel_id`）を支払人が明確にする必要があります。
 
-
 ## 3. 支払人がChannelのXRPに対して1つ以上の署名付き _クレーム_ を作成します。
 
 これらのクレームの額は、支払人が購入する具体的な商品またはサービスに応じて異なります。
@@ -265,18 +264,17 @@ Content-Type: application/json
 }
 ```
 
-
 ## 4. 支払人が、商品またはサービスに対する支払いとしてクレームを受取人に送信します。
 
 この通信は、支払人と受取人が合意できる通信システムで「レジャー外」で行われます。これには安全な通信を使用する必要がありますが、必須ではありません。Channelの支払人または受取人がそのChannelに対するクレームを清算できます。
 
 クレームで以下の情報が伝達される限り、クレームの厳密なフォーマットは重要ではありません。
 
-| フィールド                   | 例                                            |
-|:------------------------|:---------------------------------------------------|
-| Channel ID              | `5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3` |
-| XRPの額（drop単位） | `1000000`                                          |
-| 署名               | `304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A` <br/> `400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064` _（注記: この長い文字列は1行に収まるように改行されています）_ |
+| フィールド          | 例                                                                                                                                                                                                                    |
+| :------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Channel ID          | `5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3`                                                                                                                                                    |
+| XRPの額（drop単位） | `1000000`                                                                                                                                                                                                             |
+| 署名                | `304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A` <br/> `400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064` _（注記: この長い文字列は1行に収まるように改行されています）_ |
 
 受取人は、Channelに関連付けられている公開鍵も把握する必要があります。この鍵は、Channelの存続期間中変更されることはありません。
 
@@ -364,22 +362,20 @@ Content-Type: application/json
 - Channelの`expiration`（変更可能な有効期限）がある場合は、この期限が早過ぎないことを確認します。受取人はこの期限の前にクレームを清算する必要があります。
 - クレームの`amount`がChannelの`amount`以下であることを確認します。クレームの`amount`の方が大きい場合、支払人が[PaymentChannelFundトランザクション][]を使用してChannelで使用可能なXRPの合計額を増加しない限り、クレームを清算できません。
 - Channelの`balance`が、受取人がすでにChannelから受領していると予測している額と一致していることを確認します。これらの金額が一致しない場合、受取人はChannelのトランザクション履歴を再度確認する必要があります。不一致の原因として以下のものが考えられます。
-    - 支払人が[PaymentChannelClaim][]トランザクションを使用してChannelから受取人にXRPを送金したところ、受取人がこれに気付かず、着信トランザクションを記録していなかった。
-    - 受取人のレコードに、「処理中」のトランザクションや、最新の検証済みレジャーバージョンにはまだ記録されていないトランザクションが含まれていた。受取人は[txメソッド][]を使用して個々のトランザクションの状態を調べ、この点を確認できます。
-    - `account_channels`リクエストに正しいレジャーバージョンが指定されていなかった。（最新の検証済みバージョンを確認するには、`"ledger_index":"validated”`を使用します）
-    - 受取人は以前にXRPを清算したものの、記録し忘れていた。
-    - 受取人がXRPの清算を試行し、暫定的な結果を記録したが、トランザクションの最終的な検証済みの結果がこれとは異なり、受取人はこの最終検証済み結果を記録し忘れていた。
-    - 受取人が照会した`rippled`サーバが、ネットワークの他の部分と同期していない状態であったか、または不明なバグが発生した。サーバの状態を確認するには、[server_infoメソッド][]を使用します。（この状況を再現できる場合は、[問題を報告してください](https://github.com/XRPLF/rippled/issues/)。）
+  - 支払人が[PaymentChannelClaim][]トランザクションを使用してChannelから受取人にXRPを送金したところ、受取人がこれに気付かず、着信トランザクションを記録していなかった。
+  - 受取人のレコードに、「処理中」のトランザクションや、最新の検証済みレジャーバージョンにはまだ記録されていないトランザクションが含まれていた。受取人は[txメソッド][]を使用して個々のトランザクションの状態を調べ、この点を確認できます。
+  - `account_channels`リクエストに正しいレジャーバージョンが指定されていなかった。（最新の検証済みバージョンを確認するには、`"ledger_index":"validated”`を使用します）
+  - 受取人は以前にXRPを清算したものの、記録し忘れていた。
+  - 受取人がXRPの清算を試行し、暫定的な結果を記録したが、トランザクションの最終的な検証済みの結果がこれとは異なり、受取人はこの最終検証済み結果を記録し忘れていた。
+  - 受取人が照会した`rippled`サーバが、ネットワークの他の部分と同期していない状態であったか、または不明なバグが発生した。サーバの状態を確認するには、[server_infoメソッド][]を使用します。（この状況を再現できる場合は、[問題を報告してください](https://github.com/XRPLF/rippled/issues/)。）
 
 受取人がPayment Channelの署名と現行状態の両方を確認した後で、XRPをまだ受領していない場合、XRPを清算するトランザクションがChannelの有効期限より前に処理される限り、XRPを確実に清算 _できます_ 。
-
 
 ## 6. 受取人が商品またはサービスを提供します。
 
 この時点で受取人は支払がすでに保証されていることを把握しているので、商品またはサービスを支払人に提供できます。
 
 このチュートリアルに関して、受取人は支払人に「商品およびサービス」としてハイタッチまたは同等のオンラインメッセージを送信できます。
-
 
 ## 7. 必要に応じてステップ3～6を繰り返します。
 
@@ -388,7 +384,6 @@ Content-Type: application/json
 - Payment ChannelのXRPの額。（支払人は必要に応じて[PaymentChannelFundトランザクション][]を送信し、Channelで使用可能なXRPの合計額を増加できます。）
 
 - Payment Channelの変更可能な有効期限（設定されている場合）。（これは[account_channelsメソッド][]に対するレスポンスの`cancel_after`フィールドに表示されます。）
-
 
 ## 8. 準備が完了すれば、受取人は承認された額のクレームを清算します。
 
@@ -638,7 +633,6 @@ Channelは期限切れ状態で永久にレジャーに残ることがありま�
 - `"LedgerEntryType": "AccountRoot"`が指定された`ModifiedNode`。`PreviousFields`と`FinalFields`の`Balance`フィールドの変化は、支払人に返金される未使用のXRPを反映しています。
 
 これらのフィールドは、Payment Channelが閉鎖したことを示しています。
-
 
 ## 結論
 

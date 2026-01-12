@@ -2,17 +2,18 @@
 html: peer_reservations_add.html
 parent: peer-management-methods.html
 seo:
-    description: 特定のピアサーバ用の予約済みスロットを追加します。
+  description: 特定のピアサーバ用の予約済みスロットを追加します。
 labels:
   - コアサーバ
 ---
+
 # peer_reservations_add
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L36 "Source")
 
 この{% code-page-name /%}メソッドは、XRP Ledger[ピアツーピアネットワーク](../../../../concepts/networks-and-servers/peer-protocol.md)内の特定のピアサーバの予約済みスロットを追加または更新します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
 _{% code-page-name /%}メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
-
 
 ### リクエストのフォーマット
 
@@ -21,45 +22,51 @@ _{% code-page-name /%}メソッドは、権限のないユーザは実行でき�
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": "peer_reservations_add_example_1",
-    "command": "{% $frontmatter.seo.title %}",
-    "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
-    "description": "Ripple s1 server 'WOOL'"
+  "id": "peer_reservations_add_example_1",
+  "command": "{% $frontmatter.seo.title %}",
+  "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
+  "description": "Ripple s1 server 'WOOL'"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "{% $frontmatter.seo.title %}",
-    "params": [{
+  "method": "{% $frontmatter.seo.title %}",
+  "params": [
+    {
       "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
       "description": "Ripple s1 server 'WOOL'"
-    }]
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 #Syntax: {% $frontmatter.seo.title %} <public_key> [<description>]
 rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
-| `Field`       | 型     | 説明                                                |
-|:--------------|:-------|:----------------------------------------------------|
-| `public_key` | 文字列 | [base58][]での予約を追加するピアリザベーションの[ノード公開鍵][] 。 |
+| `Field`       | 型     | 説明                                                                                                                  |
+| :------------ | :----- | :-------------------------------------------------------------------------------------------------------------------- |
+| `public_key`  | 文字列 | [base58][]での予約を追加するピアリザベーションの[ノード公開鍵][] 。                                                   |
 | `description` | 文字列 | _(省略可)_ ピアリザベーションに関するカスタムの説明。64文字を超える部分は、再起動時にサーバによって切り捨てられます。 |
-
-
 
 ### レスポンスのフォーマット
 
@@ -68,6 +75,7 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "peer_reservations_add_example_1",
@@ -81,9 +89,11 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "result": {
@@ -95,9 +105,11 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -112,14 +124,15 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
-| `Field`    | 型     | 説明                                                   |
-|:-----------|:-------|:-------------------------------------------------------|
+| `Field`    | 型           | 説明                                                                                                                                                                                                                                  |
+| :--------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `previous` | オブジェクト | _（省略される場合があります）_ 同じ[ノード公開鍵][]の以前のエントリ（同じノード公開鍵を使用した予約がすでに存在する場合）。以下で説明するように、このオブジェクトは、**ピアリザベーションオブジェクト**というフォーマットになります。 |
 
 同じ[ノード公開鍵][]に以前のエントリがなかった場合、`result`オブジェクトは空です。
@@ -129,8 +142,6 @@ Connecting to 127.0.0.1:5005
 `previous`フィールドが指定されている場合は、このピアリザベーションの以前のステータスが次のフィールドとともに表示されます。
 
 {% partial file="/@l10n/ja/docs/_snippets/peer_reservation_object.md" /%}
-
-
 
 ### 考えられるエラー
 

@@ -2,10 +2,11 @@
 html: ledger-close-times.html
 parent: ledgers.html
 seo:
-    description: Cómo el XRP Ledger calcula el valor de tiempo de cierre para cada versión del ledger.
+  description: Cómo el XRP Ledger calcula el valor de tiempo de cierre para cada versión del ledger.
 labels:
   - Blockchain
 ---
+
 # Tiempos de cierre del ledger
 
 La hora exacta en la que la versión del ledger se ha cerrado se queda guardada en el campo `close_time` de la cabecera del ledger o [ledger header](../../references/protocol/ledger-data/ledger-header.md). Para hacer más facil a la red llegar a un consenso en un tiempo de cierre exacto, este valor es redondeado a un número de segundos basado en el momento de resolución del cierre, actualmente 10 segundos. Si redondear causase a un tiempo de cierre ser igual que (o anterior) a su ledger padre, el ledger hijo tendrá su tiempo de cierre igual al tiempo de cierre del ledger padre más 1. Esto garantiza que los tiempos de cierre de los ledgers validados son estríctamente incrementales. <!-- STYLE_OVERRIDE: a number of -->

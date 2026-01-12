@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Permanently destroy an NFT.
+  description: Permanently destroy an NFT.
 labels:
-    - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
+
 # NFTokenBurn
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/NFTokenBurn.cpp "Source")
 
 Burn (destroy) a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/index.md). The NFT's current holder can always burn it, and if the token's **Burnable** flag is enabled, the issuer and their authorized minter (if they have one) can also burn the NFT.
@@ -12,7 +14,6 @@ Burn (destroy) a [non-fungible token (NFT)](../../../../concepts/tokens/nfts/ind
 If the transaction succeeds, it removes the corresponding [NFToken][] object from the [NFTokenPage entry][] that was storing it. This can cause the pages of an NFT directory to be consolidated.
 
 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
-
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -30,19 +31,18 @@ If the transaction succeeds, it removes the corresponding [NFToken][] object fro
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field             | JSON Type | [Internal Type][] | Description              |
-|:------------------|:----------|:------------------|:-------------------------|
-| `NFTokenID`       | String    | UInt256           | The `NFToken` to be removed by this transaction. |
-| `Owner`           | String    | AccountID         | _(Optional)_ The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `lsfBurnable` flag enabled. |
-
+| Field       | JSON Type | [Internal Type][] | Description                                                                                                                                                                                                                                |
+| :---------- | :-------- | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NFTokenID` | String    | UInt256           | The `NFToken` to be removed by this transaction.                                                                                                                                                                                           |
+| `Owner`     | String    | AccountID         | _(Optional)_ The owner of the `NFToken` to burn. Only used if that owner is different than the account sending this transaction. The issuer or authorized minter can use this field to burn NFTs that have the `lsfBurnable` flag enabled. |
 
 ## Error Cases
 
 Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code         | Description                                             |
-|:-------------------|:--------------------------------------------------------|
-| `temDISABLED`      | The [NonFungibleTokensV1 amendment][] is not enabled. |
+| :----------------- | :------------------------------------------------------ |
+| `temDISABLED`      | The [NonFungibleTokensV1 amendment][] is not enabled.   |
 | `tecNO_ENTRY`      | The specified `TokenID` was not found.                  |
 | `tecNO_PERMISSION` | The account does not have permission to burn the token. |
 

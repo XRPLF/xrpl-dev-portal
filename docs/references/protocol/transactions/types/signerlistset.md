@@ -1,46 +1,47 @@
 ---
 seo:
-    description: Add, remove, or modify an account's multi-signing list.
+  description: Add, remove, or modify an account's multi-signing list.
 labels:
-    - Security
+  - Security
 ---
+
 # SignerListSet
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "Source")
 
 Create, replace, or remove a list of signers that can be used to [multi-sign](../../../../concepts/accounts/multi-signing.md) a transaction.
 
 {% amendment-disclaimer name="MultiSign" /%}
 
-
 ## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
-    "Flags": 0,
-    "TransactionType": "SignerListSet",
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "12",
-    "SignerQuorum": 3,
-    "SignerEntries": [
-        {
-            "SignerEntry": {
-                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-                "SignerWeight": 2
-            }
-        },
-        {
-            "SignerEntry": {
-                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-                "SignerWeight": 1
-            }
-        },
-        {
-            "SignerEntry": {
-                "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
-                "SignerWeight": 1
-            }
-        }
-    ]
+  "Flags": 0,
+  "TransactionType": "SignerListSet",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Fee": "12",
+  "SignerQuorum": 3,
+  "SignerEntries": [
+    {
+      "SignerEntry": {
+        "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "SignerWeight": 2
+      }
+    },
+    {
+      "SignerEntry": {
+        "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+        "SignerWeight": 1
+      }
+    },
+    {
+      "SignerEntry": {
+        "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+        "SignerWeight": 1
+      }
+    }
+  ]
 }
 ```
 
@@ -48,9 +49,9 @@ Create, replace, or remove a list of signers that can be used to [multi-sign](..
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field           | JSON Type | [Internal Type][] | Description                  |
-|:----------------|:----------|:------------------|:-----------------------------|
-| `SignerQuorum`  | Number    | UInt32            | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is greater than or equal to this value. To delete a signer list, use the value `0`. |
+| Field           | JSON Type | [Internal Type][] | Description                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| :-------------- | :-------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `SignerQuorum`  | Number    | UInt32            | A target number for the signer weights. A multi-signature from this list is valid only if the sum weights of the signatures provided is greater than or equal to this value. To delete a signer list, use the value `0`.                                                                                                                                                                                                                                |
 | `SignerEntries` | Array     | Array             | _(Omitted when deleting)_ Array of [`SignerEntry` objects](../../ledger-data/ledger-entry-types/signerlist.md#signer-entry-object), indicating the addresses and weights of signers in this list. This signer list must have at least 1 member and no more than 32 members. No address may appear more than once in the list, nor may the `Account` submitting the transaction appear in the list. _(Updated by the [ExpandedSignerList amendment][].)_ |
 
 A successful SignerListSet transaction replaces the account's [`SignerList` object](../../ledger-data/ledger-entry-types/signerlist.md) in the ledger, or adds one if it did not exist before. An account may not have more than one signer list. To delete a signer list, you must set `SignerQuorum` to `0` _and_ omit the `SignerEntries` field. Otherwise, the transaction fails with the error [`temMALFORMED`](../transaction-results/tem-codes.md). A transaction to delete a signer list is considered successful even if there was no signer list to delete.

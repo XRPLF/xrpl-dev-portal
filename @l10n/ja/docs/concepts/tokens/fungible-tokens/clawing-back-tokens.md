@@ -1,9 +1,10 @@
 ---
 seo:
-    description: 発行者は、トークンを発行する前にClawback機能を有効にすると、規制遵守の目的でトークンを取り戻すことができます。
+  description: 発行者は、トークンを発行する前にClawback機能を有効にすると、規制遵守の目的でトークンを取り戻すことができます。
 labels:
   - トークン
 ---
+
 # トークンの回収
 
 規制上の目的から、トークンがアカウントに送信された後にトークンを回収する機能を必要とする発行者が存在します。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を「回収」することができます。
@@ -26,10 +27,10 @@ Clawback機能はデフォルトで無効になっています。使用するに
   "TransactionType": "Clawback",
   "Account": "rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S",
   "Amount": {
-      "currency": "FOO",
-      "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-      "value": "314.159"
-    }
+    "currency": "FOO",
+    "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "value": "314.159"
+  }
 }
 ```
 

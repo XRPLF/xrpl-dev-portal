@@ -1,11 +1,12 @@
 ---
 seo:
-    description: Deep Freeze ensures that frozen token holders can neither send nor receive frozen funds until their trust line is unfrozen.
+  description: Deep Freeze ensures that frozen token holders can neither send nor receive frozen funds until their trust line is unfrozen.
 labels:
   - Tokens
   - Freeze
   - Deep Freeze
 ---
+
 # Deep Freeze
 
 Deep Freeze lets token issuers on the XRP Ledger prevent token misuse by frozen account holders. It enhances interactions between frozen assets and payments, ensuring that frozen token holders cannot receive funds until or unless their trust line is unfrozen. These changes enable token issuers to more easily comply with regulations on the XRPL. For example, it prevents tokens from flowing to wallets identified on sanctions lists, thereby enhancing regulatory compliance for use cases such as regulated stablecoins and real-world assets (RWA).
@@ -34,10 +35,10 @@ An individual address can deep freeze its trust line to an issuer or financial i
 
 Deep Freeze introduces two flags, `lsfLowDeepFreeze` and `lsfHighDeepFreeze`, in the `RippleState` (trust line) object.
 
-| Flag Name	| Flag Value	| Description |
-|-----------|-------------|-------------|
-| `lsfLowDeepFreeze`	| `0x02000000`	| The low account has deep-frozen the trust line, preventing the high account from sending and receiving the asset. |
-| `lsfHighDeepFreeze`	| `0x04000000`	| The high account has deep-frozen the trust line, preventing the low account from sending and receiving the asset. |
+| Flag Name           | Flag Value   | Description                                                                                                       |
+| ------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `lsfLowDeepFreeze`  | `0x02000000` | The low account has deep-frozen the trust line, preventing the high account from sending and receiving the asset. |
+| `lsfHighDeepFreeze` | `0x04000000` | The high account has deep-frozen the trust line, preventing the low account from sending and receiving the asset. |
 
 See [High vs. Low Account](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#high-vs-low-account).
 
@@ -45,10 +46,10 @@ See [High vs. Low Account](../../../references/protocol/ledger-data/ledger-entry
 
 Deep Freeze introduces two flags, `tfSetDeepFreeze` and `tfClearDeepFreeze`, in the `TrustSet` transaction.
 
-| Flag Name	| Flag Value	| Description |
-|-----------|-------------|-------------|
-| `tfSetDeepFreeze`	| `0x00400000`	| Deep freeze the trust line. |
-| `tfClearDeepFreeze`	| `0x00800000` | Clear a deep-freeze on the trust line. |
+| Flag Name           | Flag Value   | Description                            |
+| ------------------- | ------------ | -------------------------------------- |
+| `tfSetDeepFreeze`   | `0x00400000` | Deep freeze the trust line.            |
+| `tfClearDeepFreeze` | `0x00800000` | Clear a deep-freeze on the trust line. |
 
 A `TrustSet` transaction trying to set `tfSetDeepFreeze` succeeds if and only if one of the following is true:
 

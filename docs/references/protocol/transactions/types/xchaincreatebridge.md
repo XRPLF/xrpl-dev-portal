@@ -1,11 +1,13 @@
 ---
 seo:
-    description: Create a bridge between two chains.
+  description: Create a bridge between two chains.
 labels:
-    - Interoperability
+  - Interoperability
 status: not_enabled
 ---
+
 # XChainCreateBridge
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/XChainBridge.cpp "Source")
 
 Create a new [cross-chain bridge](../../../../concepts/xrpl-sidechains/cross-chain-bridges.md) on the chain that the transaction is submitted on, providing information about door accounts and assets for the bridge.
@@ -39,24 +41,22 @@ The complete production-grade setup would also include a `SignerListSet` transac
 }
 ```
 
-
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field                    | JSON Type           | [Internal Type][] | Required? | Description |
-|:-------------------------|:--------------------|:------------------|:----------|:------------|
+| Field                    | JSON Type           | [Internal Type][] | Required? | Description                                                                                                                                                                                                          |
+| :----------------------- | :------------------ | :---------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `MinAccountCreateAmount` | [Currency Amount][] | Amount            | No        | The minimum amount, in XRP, required for a `XChainAccountCreateCommit` transaction. If this isn't present, the `XChainAccountCreateCommit` transaction will fail. This field can only be present on XRP-XRP bridges. |
-| `SignatureReward`        | [Currency Amount][] | Amount            | Yes       | The total amount to pay the witness servers for their signatures. This amount will be split among the signers. |
-| `XChainBridge`           | XChainBridge        | XChainBridge      | Yes       | The bridge (door accounts and assets) to create. |
-
+| `SignatureReward`        | [Currency Amount][] | Amount            | Yes       | The total amount to pay the witness servers for their signatures. This amount will be split among the signers.                                                                                                       |
+| `XChainBridge`           | XChainBridge        | XChainBridge      | Yes       | The bridge (door accounts and assets) to create.                                                                                                                                                                     |
 
 ### XChainBridge Fields
 
-| Field               | JSON Type | [Internal Type][] | Required? | Description     |
-|:--------------------|:----------|:------------------|:----------|:----------------|
+| Field               | JSON Type | [Internal Type][] | Required? | Description                                                                                                                                                                                    |
+| :------------------ | :-------- | :---------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `IssuingChainDoor`  | String    | AccountID         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
-| `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
-| `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
-| `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
+| `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues.                |
+| `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain.                                                                                                                                                         |
+| `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain.                                                                                                                                    |
 
 ## See Also
 

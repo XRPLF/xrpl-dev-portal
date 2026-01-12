@@ -2,7 +2,7 @@
 html: txn-and-requests.html
 parent: intro-to-xrpl.html
 seo:
-    description: レジャーとのやりとりは、すべてトランザクションかリクエストで行われます。
+  description: レジャーとのやりとりは、すべてトランザクションかリクエストで行われます。
 labels:
   - ブロックチェーン
 ---
@@ -110,6 +110,7 @@ ClioサーバはXRPL上の他のrippledサーバの負荷の一部を軽減し�
     }
 }
 ```
+
 Accountのフィールドについては、[アカウント](../concepts/accounts/index.md)をご覧ください。
 
 次のページ: [ソフトウェアエコシステム](software-ecosystem.md)

@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-12-02"
+  editPage:
+    hide: true
+date: '2021-12-02'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 ---
+
 # Introducing XRP Ledger version 1.8.1
 
 Version 1.8.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release contains several improvements and optimizations to improve stability and performance under load, along with other features and fixes including deterministic history shards, default amendment votes, and the CheckCashMakesTrustLine amendment.
@@ -26,15 +27,14 @@ Additionally, version 1.8.1 is highly recommended because the performance optimi
 
 If you issue currency in the XRP Ledger, you can use this new behavior to simplify the process of issuing tokens after the amendment becomes enabled. See the [CheckCashMakesTrustLine description](https://xrpl.org/known-amendments.html#checkcashmakestrustline) for details.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.8.1-1.el7.x86_64.rpm) | `be092bcb02f8118121f6303ede4f109601f797cd02a1ddaf237604fd54e0237b` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.8.1-1_amd64.deb) | `b95772f59cfcd0fb2318ad908ab00421bcbd46c430c12371c0fc9d6003ed06b3` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.8.1-1_amd64.deb)  | `b95772f59cfcd0fb2318ad908ab00421bcbd46c430c12371c0fc9d6003ed06b3` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -55,7 +55,6 @@ sudo systemctl restart rippled.service
 ```
 
 This change is intended to decrease the chances that multiple important servers (including validators, hubs, and public API servers) go offline to restart and re-sync at the same time. However, automatic upgrades _to_ version 1.8.1 still restart the server automatically (after a randomized delay).
-
 
 ## Changelog
 

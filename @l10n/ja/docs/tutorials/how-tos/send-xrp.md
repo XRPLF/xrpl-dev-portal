@@ -2,17 +2,18 @@
 html: send-xrp.html
 parent: tasks.html
 seo:
-    description: Test Netを使用してXRPの送金をテストします。
+  description: Test Netを使用してXRPの送金をテストします。
 cta_text: XRPを送金しよう
 embed_xrpl_js: true
 filters:
-    - interactive_steps
+  - interactive_steps
 labels:
   - 支払い
   - XRP
 top_nav_grouping: 人気ページ
 steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 ---
+
 # XRPの送金
 
 このチュートリアルでは、xrpl.jsを使用してシンプルなXRP送金を行う方法について説明します。まずは、XRP Testnetを使用してプロセスを順に進めます。次に、そのプロセスと、本番で同様の処理を行う場合に発生する追加要件とを比較します。
@@ -53,11 +54,9 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 
 {% /tabs %}
 
-
 このチュートリアルでは、以下のボタンをクリックすることでブラウザーから直接接続できます。
 
 {% partial file="/@l10n/ja/docs/_snippets/interactive-tutorials/connect-step.md" /%}
-
 
 ### 2. トランザクションの準備
 
@@ -135,7 +134,6 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 {% /tabs %}
 
-
 署名処理の結果は、署名を含むトランザクションオブジェクトになります。通常、XRP Ledger APIは、署名済みトランザクションがトランザクションの正規の[バイナリーフォーマット](../../references/protocol/binary-format.md)（「ブロブ」と呼ばれる）の16進数表現になることを想定しています。
 
 署名APIは、トランザクションのID、つまり識別用ハッシュを返します。この識別用ハッシュは、後でトランザクションを検索する際に使用します。識別用ハッシュは、このトランザクションに固有の64文字の16進文字列です。
@@ -143,10 +141,10 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 {% interactive-block label="Sign" steps=$frontmatter.steps %}
 
 <button id="sign-button" class="btn btn-primary previous-steps-required">サンプルトランザクションに署名する</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ### 4. 署名済みブロブの送信
 
@@ -168,7 +166,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 {% /tabs %}
 
-このメソッドは、ローカルでトランザクションを適用しようと試みたときの**一時的な**結果を返します。この結果は、トランザクションが検証済みレジャーに含まれた時点で変わる_可能性があります_。当初は成功していたトランザクションが最終的に失敗となったり、当初失敗していたトランザクションが最終的に成功する場合があります。しかしながら、一時的な結果はほとんどの場合は最終結果と一致するため、ここで`tesSUCCESS`が表示されたらひとまず安心しても問題ありません。😁
+このメソッドは、ローカルでトランザクションを適用しようと試みたときの**一時的な**結果を返します。この結果は、トランザクションが検証済みレジャーに含まれた時点で変わる*可能性があります*。当初は成功していたトランザクションが最終的に失敗となったり、当初失敗していたトランザクションが最終的に成功する場合があります。しかしながら、一時的な結果はほとんどの場合は最終結果と一致するため、ここで`tesSUCCESS`が表示されたらひとまず安心しても問題ありません。😁
 
 他の結果が表示された場合は、以下の点を確認します。
 
@@ -211,7 +209,6 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 {% partial file="/@l10n/ja/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
-
 ### 6. トランザクションステータスの確認
 
 トランザクションが行った内容を正確に把握するために、トランザクションが検証済みレジャーバージョンに記録されたときにトランザクションの結果を調べる必要があります。例えば、[txメソッド][]を使用して、トランザクションのステータスを確認できます。
@@ -232,16 +229,15 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 {% /tabs %}
 
-
 {% admonition type="warning" name="注意" %}APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)をご覧ください。{% /admonition %}
 
 {% interactive-block label="Check" steps=$frontmatter.steps %}
 
 <button id="get-tx-button" class="btn btn-primary previous-steps-required">トランザクションステータスを確認する</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ## 本番環境の場合の相違点
 
@@ -257,23 +253,28 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const wallet = new xrpl.Wallet()
 console.log(wallet.address) // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 console.log(wallet.seed) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+
 {% /tab %}
 
 {% tab label="Python" %}
+
 ```py
 from xrpl.wallet import Wallet
 my_wallet = Wallet.create()
 print(my_wallet.address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 print(my_wallet.seed)            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+
 {% /tab %}
 
 {% tab label="Java" %}
+
 ```java
 WalletFactory walletFactory = DefaultWalletFactory.getInstance();
 SeedWalletGenerationResult generationResult = walletFactory.randomWallet(false);
@@ -281,6 +282,7 @@ Wallet wallet = generationResult.wallet();
 System.out.println(wallet.classicAddress()); // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -296,25 +298,31 @@ XRP Ledgerと同期しているサーバを指定する必要があります。�
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const xrpl = require('xrpl')
 const api = new xrpl.Client('wss://xrplcluster.com')
 api.connect()
 ```
+
 {% /tab %}
 
 {% tab label="Python" %}
+
 ```py
 from xrpl.clients import JsonRpcClient
 client = JsonRpcClient("https://xrplcluster.com")
 ```
+
 {% /tab %}
 
 {% tab label="Java" %}
+
 ```java
 final HttpUrl rippledUrl = HttpUrl.get("https://xrplcluster.com");
 XrplClient xrplClient = new XrplClient(rippledUrl);
 ```
+
 {% /tab %}
 
 {% /tabs %}

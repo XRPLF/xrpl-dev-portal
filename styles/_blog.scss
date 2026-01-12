@@ -41,19 +41,19 @@
   }
 
   .hero-post-date {
-    text-decoration: overline solid #32E685 10%;
+    text-decoration: overline solid #32e685 10%;
   }
 
-  @each $category in "general", "developer_reflections", "amendments", 
-      "case_study", "advisories", "release_notes", "development", 
-      "gateway_bulletins", "features", "security" {
+  @each $category in 'general', 'developer_reflections', 'amendments', 'case_study', 'advisories', 'release_notes', 'development',
+    'gateway_bulletins', 'features', 'security'
+  {
     .#{$category} .category-list {
-       img {
-        content: url("../img/blog/#{$category}.png");
+      img {
+        content: url('../img/blog/#{$category}.png');
         max-width: 100%;
         width: 100%;
       }
-      .label{
+      .label {
         width: fit-content;
       }
     }
@@ -63,12 +63,12 @@
   @media (min-width: 768px) and (max-width: 991px) {
     .category-list {
       display: block;
-      
+
       img {
         display: block;
         margin-bottom: 10px;
       }
-      
+
       .label {
         display: block !important;
         margin-bottom: 15px;
@@ -104,7 +104,7 @@
     padding-right: 10px;
 
     img {
-      content: url("../img/icons/chevron-arrow-down.svg");
+      content: url('../img/icons/chevron-arrow-down.svg');
       width: 10px;
       height: 13px;
       padding: 8px;
@@ -144,13 +144,13 @@
     font-size: 16px;
   }
 
-  .blog-filter[type="checkbox"]::before {
+  .blog-filter[type='checkbox']::before {
     position: relative;
     display: block;
     width: 20px;
     height: 20px;
 
-    content: "";
+    content: '';
     background: $gray-900;
 
     border-radius: 4px;
@@ -159,7 +159,7 @@
     border-color: $gray-400;
   }
 
-  .blog-filter[type="checkbox"]::after {
+  .blog-filter[type='checkbox']::after {
     position: relative;
     display: block;
 
@@ -167,7 +167,7 @@
     width: 20px;
     height: 20px;
 
-    content: "";
+    content: '';
 
     background-repeat: no-repeat;
     background-position: center;
@@ -177,13 +177,13 @@
     border-color: $gray-400;
   }
 
-  .blog-filter[type="checkbox"]:checked::before {
+  .blog-filter[type='checkbox']:checked::before {
     background: $gray-900;
     border: none;
     border-radius: 0;
   }
 
-  .blog-filter[type="checkbox"]:checked::after {
+  .blog-filter[type='checkbox']:checked::after {
     background-image: url(../img/blog/blog-check.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -194,7 +194,7 @@
     border-radius: 4px;
   }
 
-  .blog-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+  .blog-filter[type='checkbox']:not(:disabled):checked:hover::after {
     background-image: url(../img/blog/blog-check.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -204,13 +204,13 @@
     border-radius: 4px;
   }
 
-  .blog-filter[type="checkbox"]:not(:disabled):hover::before {
+  .blog-filter[type='checkbox']:not(:disabled):hover::before {
     background: $gray-900;
     border: none;
     border-radius: 0;
   }
 
-  .blog-filter[type="checkbox"]:not(:disabled):hover::after {
+  .blog-filter[type='checkbox']:not(:disabled):hover::after {
     background: $gray-900;
     border: none;
     border-width: 2px;

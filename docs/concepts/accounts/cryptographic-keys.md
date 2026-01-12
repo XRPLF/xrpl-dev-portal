@@ -2,11 +2,12 @@
 html: cryptographic-keys.html
 parent: accounts.html
 seo:
-    description: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
+  description: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
 labels:
   - Smart Contracts
   - Security
 ---
+
 # Cryptographic Keys
 
 In the XRP Ledger, a digital signature _authorizes_ a [transaction](../transactions/index.md) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
@@ -21,14 +22,13 @@ Many [client libraries](../../references/client-libraries.md) and applications c
 
 Note: Different tools have different defaults. Many client libraries (such as xrpl.js) use Ed25519 as the default cryptographic algorithm, but `rippled`'s [wallet_propose](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) admin RPC command uses secp256k1 as the default. This means that you may get a different address if you instantiate a wallet from the same seed using a different tool, unless you specify the algorithm explicitly.
 
-
 ## Key Components
 
 A cryptographic key pair is a **private key** and a **public key** that are connected mathematically through a key derivation process. Each key is a number; the private key should be chosen using a strong source of randomness. The [cryptographic signing algorithm](#signing-algorithms) defines the key derivation process and sets constraints on the numbers that can be cryptographic keys.
 
 When dealing with the XRP Ledger, you may also use some related values such as a passphrase, seed, account ID, or address.
 
-[{% inline-svg file="/docs/img/cryptographic-keys.svg" /%}](/docs/img/cryptographic-keys.svg "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address")
+[{% inline-svg file="/docs/img/cryptographic-keys.svg" /%}](/docs/img/cryptographic-keys.svg 'Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address')
 _Figure: A simplified view of the relationship between cryptographic key values._
 
 The passphrase, seed, and private key are **secrets**: if you know any of these values for an account, you can make valid signatures and you have full control over that account. If you own an account, be **very careful** with your account's secret information. If you don't have it, you can't use your account. If someone else can access it, they can take control of your account.
@@ -39,7 +39,7 @@ For more technical details of how key derivation works, see [Key Derivation](#ke
 
 ### Passphrase
 
-You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person [to solve a puzzle](https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/); he used the puzzle's solution as the passphrase to an account holding the prize XRP.)  <!-- SPELLING_IGNORE: xrpuzzler -->
+You can, optionally, use a passphrase or some other input as a way of choosing a seed or private key. This is less secure than choosing the seed or private key completely at random, but there are some rare cases where you want to do this. (For example, in 2018 "XRPuzzler" gave away XRP to the first person [to solve a puzzle](https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/); he used the puzzle's solution as the passphrase to an account holding the prize XRP.) <!-- SPELLING_IGNORE: xrpuzzler -->
 
 The passphrase is secret information, so you must protect it very carefully. Anyone who knows an address's passphrase has effectively full control over the address.
 
@@ -61,7 +61,6 @@ The _public key_ is the value used to verify the authenticity of a digital signa
 
 Transactions in the XRP Ledger must include the public keys so that the network can verify the transactions' signatures. The public key cannot be used to create valid signatures, so it is safe to share publicly.
 
-
 ### Account ID and Address
 
 The **Account ID** is the core identifier for an [account](index.md) or a key pair. It is derived from the public key. In the XRP Ledger protocol, the Account ID is 20 bytes of binary data. Most XRP Ledger APIs represent the Account ID as an address, in one of two formats:
@@ -81,7 +80,6 @@ The XRP Ledger supports more than one [cryptographic signing algorithm](#signing
 
 The `key_type` field in the [wallet_propose method][] refers to the cryptographic signing algorithm to use.
 
-
 ## Master Key Pair
 
 The master key pair consists of a private key and a public key. The address of an account is derived from the account's master key pair, so they are intrinsically related. You cannot change or remove the master key pair, but you can disable it.
@@ -93,8 +91,6 @@ The [wallet_propose method][] is one way of generating a master key pair. The re
 Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to [keep your master key pair offline](../../tutorials/how-tos/manage-account-settings/offline-account-setup.md) and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.
 
 Keeping your master key pair offline means not putting the secret information (passphrase, seed, or private key) anywhere that malicious actors can get access to it. In general, this means it is not within reach of a computer program that interacts with the internet at large. For example, you could keep it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or have it completely memorized. (Memorization has some drawbacks, though, including making it impossible to pass the key on after you are dead.)
-
-
 
 ### Special Permissions
 
@@ -110,7 +106,6 @@ Keeping your master key pair offline means not putting the secret information (p
 
 A regular key or [multi-signature](multi-signing.md) can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also [delete an account](deleting-accounts.md) if it meets the requirements for deletion.
 
-
 ## Regular Key Pair
 
 An XRP Ledger account can authorize a secondary key pair, called a _regular key pair_. After doing so, you can use either the [master key pair](#master-key-pair) or the regular key to authorize transactions. You can remove or replace your regular key pair at any time without changing the rest of your account.
@@ -123,27 +118,24 @@ Regular key pairs have the same format as master key pairs. You generate them th
 
 The [SetRegularKey transaction][] assigns or changes the regular key pair for an account. For a tutorial on assigning or changing a regular key pair, see [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md).
 
-
 ## Signing Algorithms
 
 Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the secret key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a secret key to calculate a matching public key, but it is effectively impossible to compute a matching secret key by starting from a public key. <!-- STYLE_OVERRIDE: easy -->
 
 The XRP Ledger supports the following cryptographic signing algorithms:
 
-| Key Type    | Algorithm | Description |
-|-------------|-----------|---|
-| `secp256k1` | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) using the elliptic curve [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | This is the same scheme Bitcoin uses. The XRP Ledger uses these key types by default. |
-| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) using the elliptic curve [Ed25519](https://ed25519.cr.yp.to/) | This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, `rippled` prefixes Ed25519 public keys with the byte `0xED` so both types of public key are 33 bytes. |
+| Key Type    | Algorithm                                                                                                                                                    | Description                                                                                                                                                                                                                                                       |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `secp256k1` | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) using the elliptic curve [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | This is the same scheme Bitcoin uses. The XRP Ledger uses these key types by default.                                                                                                                                                                             |
+| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) using the elliptic curve [Ed25519](https://ed25519.cr.yp.to/)                                                   | This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, `rippled` prefixes Ed25519 public keys with the byte `0xED` so both types of public key are 33 bytes. |
 
 When you generate a key pair with the [wallet_propose method][], you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
 
 The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](addresses.md#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
 
-
 ### Future Algorithms
 
 In the future, it is likely that the XRP Ledger will need new cryptographic signing algorithms to keep up with developments in cryptography. For example, if quantum computers using [Shor's algorithm](https://en.wikipedia.org/wiki/Shor's_algorithm) (or something similar) will soon be practical enough to break elliptic curve cryptography, XRP Ledger developers can add a cryptographic signing algorithm that isn't easily broken. As of mid 2020, there's no clear first choice "quantum-resistant" signing algorithm and quantum computers are not yet practical enough to be a threat, so there are no immediate plans to add any specific algorithms. <!-- STYLE_OVERRIDE: will, easily -->
-
 
 ## Key Derivation
 
@@ -154,37 +146,39 @@ The process of deriving a key pair depends on the signing algorithm. In all case
 The key derivation processes described here are implemented in multiple places and programming languages:
 
 - In C++ in the `rippled` code base:
-    - [Seed definition](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Seed.cpp)
-    - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
-    - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
+  - [Seed definition](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Seed.cpp)
+  - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
+  - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp)
 - In Python 3 in {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
+
 [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/SecretKey.cpp#L311-L317 "Source")
 
-[{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
+[{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg 'Passphrase → Seed → Secret Key → Prefix + Public Key')
 
 1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte secret key.
 
-    {% admonition type="success" name="Tip" %}All 32-byte numbers are valid Ed25519 secret keys. However, only numbers that are chosen randomly enough are secure enough to be used as secret keys.{% /admonition %}
+   {% admonition type="success" name="Tip" %}All 32-byte numbers are valid Ed25519 secret keys. However, only numbers that are chosen randomly enough are secure enough to be used as secret keys.{% /admonition %}
 
 2. To calculate an Ed25519 public key, use the standard public key derivation for [Ed25519](https://ed25519.cr.yp.to/software.html) to derive the 32-byte public key.
 
-    {% admonition type="warning" name="Caution" %}As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.{% /admonition %}
+   {% admonition type="warning" name="Caution" %}As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.{% /admonition %}
 
 3. Prefix the 32-byte public key with the single byte `0xED` to indicate an Ed25519 public key, resulting in 33 bytes.
 
-    If you are implementing code to sign transactions, remove the `0xED` prefix and use the 32-byte key for the actual signing process.
+   If you are implementing code to sign transactions, remove the `0xED` prefix and use the 32-byte key for the actual signing process.
 
 4. When serializing an account public key to [base58][], use the account public key prefix `0x23`.
 
-    Validator ephemeral keys cannot be Ed25519.
+   Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/SecretKey.cpp "Source")
 
-[{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
+[{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg 'Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair')
 
 Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
 
@@ -194,68 +188,64 @@ Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed
 The steps to derive the XRP Ledger's secp256k1 account key pair from a seed value are as follows:
 
 1. Calculate a "root key pair" from the seed value, as follows:
+   1. Concatenate the following in order, for a total of 20 bytes:
+      - The seed value (16 bytes)
+      - A "root sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the root sequence.
 
-    1. Concatenate the following in order, for a total of 20 bytes:
-        - The seed value (16 bytes)
-        - A "root sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the root sequence.
+   2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
 
-    2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
+   3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/SecretKey.cpp#L103-L114 "Source")
 
-    3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/SecretKey.cpp#L103-L114 "Source")
+      A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 
-        A valid secp256k1 key must not be zero, and it must be numerically less than the _secp256k1 group order_. The secp256k1 group order is the constant value `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
+   4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 
-    4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
-
-    {% admonition type="success" name="Tip" %}Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58][] serialization for validator public keys uses the prefix `0x1c`.{% /admonition %}
+   {% admonition type="success" name="Tip" %}Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58][] serialization for validator public keys uses the prefix `0x1c`.{% /admonition %}
 
 2. Convert the root public key to its 33-byte compressed form.
 
-    The uncompressed form of any ECDSA public key consists of a pair of 32-byte integers: an X coordinate, and a Y coordinate. The compressed form is the X coordinate and a one-byte prefix: `0x02` if the Y coordinate is even, or `0x03` if the Y coordinate is odd.
+   The uncompressed form of any ECDSA public key consists of a pair of 32-byte integers: an X coordinate, and a Y coordinate. The compressed form is the X coordinate and a one-byte prefix: `0x02` if the Y coordinate is even, or `0x03` if the Y coordinate is odd.
 
-    You can convert an uncompressed public key to the compressed form with the `openssl` commandline tool. For example, if the uncompressed public key is in the file `ec-pub.pem`, you can output the compressed form like this:
+   You can convert an uncompressed public key to the compressed form with the `openssl` commandline tool. For example, if the uncompressed public key is in the file `ec-pub.pem`, you can output the compressed form like this:
 
-    ```
-    $ openssl ec -in ec-pub.pem -pubin -text -noout -conv_form compressed
-    ```
+   ```
+   $ openssl ec -in ec-pub.pem -pubin -text -noout -conv_form compressed
+   ```
 
 3. Derive an "intermediate key pair" from the compressed root public key you, as follows:
+   1. Concatenate the following in order, for a total of 41 bytes:
+      - The compressed root public key (33 bytes)
+      - `0x00000000000000000000000000000000` (4 bytes of zeroes). (This value was intended to be used to derive different members of the same family, but in practice only the value 0 is used.)
+      - A "key sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the key sequence.
 
-    1. Concatenate the following in order, for a total of 41 bytes:
-        - The compressed root public key (33 bytes)
-        - `0x00000000000000000000000000000000` (4 bytes of zeroes). (This value was intended to be used to derive different members of the same family, but in practice only the value 0 is used.)
-        - A "key sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the key sequence.
+   2. Calculate the [SHA-512Half][] of the concatenated value.
 
-    2. Calculate the [SHA-512Half][] of the concatenated value.
+   3. If the result is not a valid secp256k1 secret key, increment the key sequence by 1 and restart deriving the account's intermediate key pair.
 
-    3. If the result is not a valid secp256k1 secret key, increment the key sequence by 1 and restart deriving the account's intermediate key pair.
-
-    4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the intermediate public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
+   4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the intermediate public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 
 4. Derive the master public key pair by adding the intermediate public key to the root public key. Similarly, derive the secret key by adding the intermediate secret key to the root secret key.
+   - An ECDSA secret key is a very large integer, so you can calculate the sum of two secret keys by summing them modulo the secp256k1 group order.
 
-    - An ECDSA secret key is a very large integer, so you can calculate the sum of two secret keys by summing them modulo the secp256k1 group order.
-
-    - An ECDSA public key is a point on the elliptic curve, so you should use elliptic curve math to sum the points.
+   - An ECDSA public key is a point on the elliptic curve, so you should use elliptic curve math to sum the points.
 
 5. Convert the master public key to its 33-byte compressed form, as before.
 
 6. When serializing an account's public key to its [base58][] format, use the account public key prefix, `0x23`.
 
-    See [Address Encoding](addresses.md#address-encoding) for information and sample code to convert from an account's public key to its address.
-
+   See [Address Encoding](addresses.md#address-encoding) for information and sample code to convert from an account's public key to its address.
 
 ## See Also
 
 - **Concepts:**
-    - [Issuing and Operational Addresses](account-types.md)
+  - [Issuing and Operational Addresses](account-types.md)
 - **Tutorials:**
-    - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
-    - [Change or Remove a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+  - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
+  - [Change or Remove a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
-    - [SetRegularKey transaction][]
-    - [AccountRoot ledger object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
-    - [wallet_propose method][]
-    - [account_info method][]
+  - [SetRegularKey transaction][]
+  - [AccountRoot ledger object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
+  - [wallet_propose method][]
+  - [account_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -2,9 +2,9 @@
 html: nftoken-batch-minting.html
 parent: non-fungible-tokens.html
 seo:
-    description: NFTokenオブジェクトを一括でMintする。
+  description: NFTokenオブジェクトを一括でMintする。
 labels:
- - 非代替性トークン, NFT
+  - 非代替性トークン, NFT
 ---
 
 # NFTのバッチMint
@@ -17,8 +17,8 @@ NFTokenオブジェクトを一括でMintする方法には、一般的に、オ
 
 ### メリット
 
-* 売れ残りのNFTokenオブジェクトを保有するための準備金が発生しません。
-* 売れると分かった時点でリアルタイムにNFTokenオブジェクトをMintします。 <!-- STYLE_OVERRIDE: will -->
+- 売れ残りのNFTokenオブジェクトを保有するための準備金が発生しません。
+- 売れると分かった時点でリアルタイムにNFTokenオブジェクトをMintします。 <!-- STYLE_OVERRIDE: will -->
 
 ### デメリット
 
@@ -32,8 +32,8 @@ NFTokenオブジェクトの初回販売以前の市場活動は、XRP Ledgerに
 
 ### メリット
 
-* NFToken オブジェクトは事前にMintされます。
-* NFTokenオブジェクトの初回販売の市場活動は台帳に記録されます。
+- NFToken オブジェクトは事前にMintされます。
+- NFTokenオブジェクトの初回販売の市場活動は台帳に記録されます。
 
 ### デメリット
 

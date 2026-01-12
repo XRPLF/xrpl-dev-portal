@@ -2,10 +2,11 @@
 html: rate-limiting.html
 parent: api-conventions.html
 seo:
-    description: Information on how public APIs limit clients from making too many requests.
+  description: Information on how public APIs limit clients from making too many requests.
 labels:
   - Core Server
 ---
+
 # Rate Limiting
 
 The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
@@ -23,8 +24,8 @@ For the WebSocket API, the server closes the connection and provides a close mes
 ```js
 const WebSocket = require('ws')
 const ws = new WebSocket('ws://localhost:6007/')
-ws.on('close', (code,reason) => {
-  console.log("Disconnected. \ncode: ", code, "\nreason: ", reason)
+ws.on('close', (code, reason) => {
+  console.log('Disconnected. \ncode: ', code, '\nreason: ', reason)
 })
 
 // If rate limited, prints:
@@ -46,6 +47,7 @@ Server is overloaded
 ```
 
 ## Rate Per Request
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/resource/Fees.cpp "Source")
 
 The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the [subscribe method][] and [path_find method][] also count towards a client's usage rate.
@@ -55,13 +57,13 @@ The usage rate drops off exponentially over time, so a client that does not make
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
-    - [Software Ecosystem](../../../introduction/software-ecosystem.md)
+  - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+  - [Software Ecosystem](../../../introduction/software-ecosystem.md)
 - **Tutorials:**
-    - [Getting Started with XRP Ledger APIs](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
-    - [Troubleshooting rippled](../../../infrastructure/troubleshooting/index.md)
+  - [Getting Started with XRP Ledger APIs](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
+  - [Troubleshooting rippled](../../../infrastructure/troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../index.md)
-        - [Error Formatting](error-formatting.md)
+  - [rippled API Reference](../index.md)
+    - [Error Formatting](error-formatting.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

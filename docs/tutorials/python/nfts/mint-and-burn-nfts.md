@@ -2,7 +2,7 @@
 html: py-mint-and-burn-nfts.html
 parent: nfts-using-python.html
 seo:
-    description: Mint and burn NFTs.
+  description: Mint and burn NFTs.
 labels:
   - Quickstart
   - Tokens
@@ -27,16 +27,16 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 1. Open and run `lesson3-mint-token.py`.
 2. Get test accounts.
-    1. If you have existing Testnet account seeds:
-        1. Paste the standby account seed in the **Standby Seed** field.
-        2. Click **Get Standby Account**.
-        3. Paste the operational account seed in the **Operational Seed** field.
-        4. Click **Get Operational Account**.
-    2. If you do not have existing Testnet accounts:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
-    3. Click **Get Standby Account Info**.
-    4. Click **Get Op Account Info**.
+   1. If you have existing Testnet account seeds:
+      1. Paste the standby account seed in the **Standby Seed** field.
+      2. Click **Get Standby Account**.
+      3. Paste the operational account seed in the **Operational Seed** field.
+      4. Click **Get Operational Account**.
+   2. If you do not have existing Testnet accounts:
+      1. Click **Get New Standby Account**.
+      2. Click **Get New Operational Account**.
+   3. Click **Get Standby Account Info**.
+   4. Click **Get Op Account Info**.
 
 [![Get accounts](/docs/img/quickstart-py11.png)](/docs/img/quickstart-py11.png)
 
@@ -52,10 +52,9 @@ To mint a non-fungible token object:
 2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.
 3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Optionally a **Taxon** value as an integer. If you choose not to use a taxon, enter _0_.
-4. Click **Mint NFT**.
+5. Click **Mint NFT**.
 
 [![Mint NFT fields](/docs/img/quickstart-py12.png)](/docs/img/quickstart-py12.png)
-
 
 ## Get Tokens
 
@@ -161,7 +160,7 @@ Send the request and return the result.
     return response.result
 ```
 
-## burn_token 
+## burn_token
 
 Pass the owner's seed value and the NFT ID.
 
@@ -182,7 +181,7 @@ Define the NFTokenBurn transaction.
 ```python
     burn_tx=xrpl.models.transactions.NFTokenBurn(
         account=owner_wallet.address,
-        nftoken_id=nftoken_id    
+        nftoken_id=nftoken_id
     )
 ```
 
@@ -199,6 +198,7 @@ Submit the transaction and return results.
 ```
 
 ## lesson3-mint-token.py
+
 <!-- SPELLING_IGNORE: lesson3 -->
 
 This module builds on `lesson2-create-trustline-send-currency.py`. Changes are noted below.
@@ -619,6 +619,7 @@ btn_op_configure_account = tk.Button(master=frm_form, text="Configure Account",
                                      command = operational_configure_account)
 btn_op_configure_account.grid(row=7,column=4, sticky = "nsew")
 ```
+
 Add buttons for **Mint NFT**, **Get NFTs**, and **Burn NFT**.
 
 ```python

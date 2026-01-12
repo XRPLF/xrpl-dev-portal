@@ -2,10 +2,11 @@
 html: server-wont-start.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: rippledサーバが起動しない原因となると思われる問題とその解決方法です。
+  description: rippledサーバが起動しない原因となると思われる問題とその解決方法です。
 labels:
   - コアサーバ
 ---
+
 # rippledサーバが起動しない
 
 このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が起動しない際に考えられる原因とその修正方法を説明します。
@@ -25,31 +26,30 @@ limit the number of simultaneous connections.
 
 1. 次の行を`/etc/security/limits.conf`ファイルの終わりに追加します。
 
-    ```
-    *                soft    nofile          65536
-    *                hard    nofile          65536
-    ```
+   ```
+   *                soft    nofile          65536
+   *                hard    nofile          65536
+   ```
 
 2. [開くことができるファイルの数のハード制限](https://ss64.com/bash/ulimit.html)が現在`65536`であることを確認します。
 
-    ```
-    ulimit -Hn
-    ```
+   ```
+   ulimit -Hn
+   ```
 
    このコマンドの出力は`65536`になるはずです。
 
 3. `rippled`をもう一度起動します。
 
-    ```
-    systemctl start rippled
-    ```
+   ```
+   systemctl start rippled
+   ```
 
 4. それでも`rippled`が起動しない場合は、`/etc/sysctl.conf`を開き、以下のカーネルレベル設定を付加します。
 
-    ```
-    fs.file-max = 65536
-    ```
-
+   ```
+   fs.file-max = 65536
+   ```
 
 ## /etc/opt/ripple/rippled.cfgを開くことができない
 
@@ -68,7 +68,7 @@ Aborted (core dumped)
 
 - `rippled`ユーザが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザのホームディレクトリを指しています）。
 
-    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
+  {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `--conf`[コマンドラインオプション](../commandline-usage.md)を使用して、使用する構成ファイルのパスを指定します。
 
@@ -86,20 +86,19 @@ Aborted (core dumped)
 
 - `validators.txt`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
 
-    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
+  {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、パケージのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を削除します。バリデータ設定を`rippled.cfg`ファイルに直接追加します。例:
 
-    ```
-    [validator_list_sites]
-    https://vl.ripple.com
+  ```
+  [validator_list_sites]
+  https://vl.ripple.com
 
-    [validator_list_keys]
-    ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-    ```
-
+  [validator_list_keys]
+  ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+  ```
 
 ## データベースパスを作成できない
 
@@ -120,7 +119,6 @@ Aborted (core dumped)
 - `rippled.cfg`ファイルを編集し、`[database_path]`設定を変更して、`rippled`ユーザに書き込み権限があるパスを使用します。
 
 - `rippled`ユーザに対し、設定されているデータベースパスへの書き込み権限を付与します。
-
 
 ## 状態DBエラー
 
@@ -161,7 +159,6 @@ path=/var/lib/rippled/custom_nudb_path
 /var/lib/rippled/custom_sqlite_db_path
 ```
 
-
 ## オンライン削除の値がレジャー履歴の値よりも少ない
 
 以下のようなエラーメッセージが出力される場合、`rippled.cfg`ファイルの`[ledger_history]`と`online_delete`に矛盾する値が指定されています。
@@ -174,7 +171,6 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 
 この問題を修正するには、`rippled.cfg`ファイルを編集し、`[ledger_history]`オプションまたは`online_delete`オプションのいずれかを変更または削除します。（`[ledger_history]`を省略すると、デフォルトの256レジャーバージョンに設定されるので、`online_delete`を残して指定する場合は256よりも大きな値にする必要があります。`online_delete`を省略すると、古いレジャーバージョンの自動削除が無効になります。）
 
-
 ## node_sizeの値が正しくない
 
 以下のようなエラーが出力される場合は、`rippled.cfg`ファイルの`node_size`設定の値が誤っています。
@@ -185,19 +181,17 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 
 `node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](../installation/capacity-planning.md#ノードサイズ)をご覧ください。
 
-
-
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
-    - [技術に関するよくある質問](/about/faq.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+  - [技術に関するよくある質問](/about/faq.md)
 - **チュートリアル:**
-    - [ログメッセージについて](understanding-log-messages.md)
-    - [容量の計画](../installation/capacity-planning.md)
+  - [ログメッセージについて](understanding-log-messages.md)
+  - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
-      - [server_infoメソッド][]
+  - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+    - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

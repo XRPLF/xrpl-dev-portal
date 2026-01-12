@@ -1,13 +1,14 @@
 ---
-date: "2014-07-28"
+date: '2014-07-28'
 template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
-    - Development
+  - Development
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # XRP Giveaway for Developers
 
 Ripple Labs has partnered with [Assembla](https://www.assembla.com/home) to send qualified developers 1,000 XRP to their Ripple Trade account. To apply for this giveaway please fill out and submit [the application form](https://www.assembla.com/ripple). If you’re interested in developing on Ripple please check out the [Primer](https://ripple.com/ripple_primer.pdf) for a high level overview. From there you can dive into different layers of the Ripple ecosystem.

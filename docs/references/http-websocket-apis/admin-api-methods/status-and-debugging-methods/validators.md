@@ -1,47 +1,54 @@
 ---
 seo:
-    description: Get information about the current validators.
+  description: Get information about the current validators.
 labels:
-    - Core Server
-    - Blockchain
+  - Core Server
+  - Blockchain
 ---
+
 # validators
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Validators.cpp "Source")
 
 The `validators` command returns human readable information about the current list of published and [trusted validators](../../../../concepts/consensus-protocol/index.md#trust-based-validation) used by the server.
 
-*The `validators` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
+_The `validators` method is an [admin method](../index.md) that cannot be run by unprivileged users!_
 
 ### Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "validators_example",
   "command": "validators"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "validators",
-    "params": [
-        {}
-    ]
+  "method": "validators",
+  "params": [{}]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: validators
 rippled validators
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -55,6 +62,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "validators_example",
@@ -192,9 +200,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -332,9 +342,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -473,32 +485,33 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`                  | Type   | Description                              |
-|:-------------------------|:-------|:-----------------------------------------|
-| `local_static_keys`      | Array  | Array of public keys for validators explicitly trusted in the config file. |
-| `publisher_lists`        | Array  | Array of **Publisher List** objects. (See below for details.) |
-| `signing_keys`           | Object | Mapping from master public key to current ephemeral public key for all currently-trusted validators. Excludes validators that don't use an ephemeral signing key. |
-| `trusted_validator_keys` | Array  | Array of master public keys of all currently trusted validators. |
-| `validation_quorum`      | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
-| `validator_list.expiration` | String | The human readable time when the current validator list expires. There are two special cases: the string `unknown` if the server has not yet loaded a published validator list, or the string `never` if the server uses a static validator list. |
-| `validator_list.validator_list_threshold` | Number | The threshold number of UNL publisher lists a validator must be one for the server to use it. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.4.0" %}New in: rippled 2.4.0{% /badge %} |
+| `Field`                                   | Type   | Description                                                                                                                                                                                                                                       |
+| :---------------------------------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `local_static_keys`                       | Array  | Array of public keys for validators explicitly trusted in the config file.                                                                                                                                                                        |
+| `publisher_lists`                         | Array  | Array of **Publisher List** objects. (See below for details.)                                                                                                                                                                                     |
+| `signing_keys`                            | Object | Mapping from master public key to current ephemeral public key for all currently-trusted validators. Excludes validators that don't use an ephemeral signing key.                                                                                 |
+| `trusted_validator_keys`                  | Array  | Array of master public keys of all currently trusted validators.                                                                                                                                                                                  |
+| `validation_quorum`                       | Number | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations.                                                                                                 |
+| `validator_list.expiration`               | String | The human readable time when the current validator list expires. There are two special cases: the string `unknown` if the server has not yet loaded a published validator list, or the string `never` if the server uses a static validator list. |
+| `validator_list.validator_list_threshold` | Number | The threshold number of UNL publisher lists a validator must be one for the server to use it. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.4.0" %}New in: rippled 2.4.0{% /badge %}                                             |
 
 Each member of the `publisher_lists` array is a **Publisher List** object with the following fields:
 
-| `Field`            | Type             | Description                          |
-|:-------------------|:-----------------|:-------------------------------------|
+| `Field`            | Type             | Description                                                                            |
+| :----------------- | :--------------- | :------------------------------------------------------------------------------------- |
 | `available`        | Boolean          | If `false`, the validator keys in `list` may no longer be supported by this publisher. |
-| `expiration`       | String           | The human readable time when this published list is scheduled to expire. |
-| `list`             | Array            | Array of published validator keys in the list.   |
-| `pubkey_publisher` | String           | Ed25519 or ECDSA public key of the list publisher, as hexadecimal. |
-| `seq`              | Unsigned Integer | The sequence number of this published list. |
-| `version`          | Unsigned Integer | The version of the list format.      |
+| `expiration`       | String           | The human readable time when this published list is scheduled to expire.               |
+| `list`             | Array            | Array of published validator keys in the list.                                         |
+| `pubkey_publisher` | String           | Ed25519 or ECDSA public key of the list publisher, as hexadecimal.                     |
+| `seq`              | Unsigned Integer | The sequence number of this published list.                                            |
+| `version`          | Unsigned Integer | The version of the list format.                                                        |
 
 ### Possible Errors
 

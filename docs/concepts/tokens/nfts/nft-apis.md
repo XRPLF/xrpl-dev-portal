@@ -2,10 +2,11 @@
 html: nft-apis.html
 parent: non-fungible-tokens.html
 seo:
-    description: Specialized APIs let you access useful NFT metadata.
+  description: Specialized APIs let you access useful NFT metadata.
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
+
 # NFT APIs
 
 This page lists the transactions and requests associated with NFTs as a handy reference.
@@ -14,8 +15,8 @@ This page lists the transactions and requests associated with NFTs as a handy re
 
 - [NFToken][] data type - The NFT object stored on the ledger.
 - Ledger Entries
-    - [NFTokenOffer entry][] - An offer to buy or sell an NFT.
-    - [NFTokenPage entry][] - An NFT page holds a maximum of 32 NFTs. In practice, each NFT page typically holds 16-24 NFTs.
+  - [NFTokenOffer entry][] - An offer to buy or sell an NFT.
+  - [NFTokenPage entry][] - An NFT page holds a maximum of 32 NFTs. In practice, each NFT page typically holds 16-24 NFTs.
 
 ## NFT Transactions
 

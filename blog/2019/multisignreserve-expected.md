@@ -1,13 +1,14 @@
 ---
 labels:
-    - Amendments
+  - Amendments
 category: 2019
-date: "2019-04-04"
+date: '2019-04-04'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # The MultiSignReserve Amendment is Expected 2019-04-17
 
 The MultiSignReserve amendment to the XRP Ledger, introduced in [`rippled` v1.2.0](https://github.com/ripple/rippled/releases/tag/1.2.0), has [gained support from a majority of trusted validators](https://xrpcharts.ripple.com/#/transactions/E394F1DA552936FD26E5BBE6BF57B27869CA897EB4AF082AD22FFE7A259FED2B). Currently, it is expected to become enabled on 2019-04-17. As long as the MultiSignReserve amendment continues to have the support of at least 80% of trusted validators continuously, it will become enabled on the scheduled date.
@@ -32,7 +33,7 @@ Related documentation is available in the [XRP Ledger Dev Portal](/docs/), inclu
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* [The Ripple Dev Blog](https://ripple.com/dev-blog/)
-* Ripple Technical Services: <support@ripple.com>
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- [The Ripple Dev Blog](https://ripple.com/dev-blog/)
+- Ripple Technical Services: <support@ripple.com>
+- [XRP Chat Forum](http://www.xrpchat.com/)

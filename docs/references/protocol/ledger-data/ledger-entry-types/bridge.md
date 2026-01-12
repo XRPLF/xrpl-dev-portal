@@ -1,11 +1,13 @@
 ---
 seo:
-    description: A single cross-chain bridge that connects and enables value to move efficiently between two blockchains. 
+  description: A single cross-chain bridge that connects and enables value to move efficiently between two blockchains.
 labels:
   - Interoperability
 status: not_enabled
 ---
+
 # Bridge
+
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L212-L223 "Source")
 
 The `Bridge` ledger entry represents a single cross-chain bridge that connects the XRP Ledger with another blockchain, such as its sidechain, and enables value in the form of XRP and other tokens (IOUs) to move efficiently between the two blockchains. You can create a bridge by sending an [XChainCreateBridge transaction][].
@@ -41,30 +43,28 @@ The `Bridge` ledger entry represents a single cross-chain bridge that connects t
 }
 ```
 
-
 ## Bridge Fields
 
 In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
-| Field                      | JSON Type           | Internal Type     | Required? | Description |
-|:---------------------------|:--------------------|:------------------|:----------|:------------|
-| `Account`                  | String              | Account           | Yes       | The account that submitted the `XChainCreateBridge` transaction on the blockchain. |
-| `MinAccountCreateAmount`   | [Currency Amount][] | Amount            | No        | The minimum amount, in XRP, required for an `XChainAccountCreateCommit` transaction. If this isn't present, the `XChainAccountCreateCommit` transaction will fail. This field can only be present on XRP-XRP bridges. |
-| `SignatureReward`          | [Currency Amount][] | Amount            | Yes       | The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers. |
-| `XChainAccountClaimCount`  | Number              | UInt64            | Yes       | A counter used to order the execution of account create transactions. It is incremented every time a `XChainAccountCreateCommit` transaction is "claimed" on the destination chain. When the "claim" transaction is run on the destination chain, the `XChainAccountClaimCount` must match the value that the `XChainAccountCreateCount` had at the time the `XChainAccountClaimCount` was run on the source chain. This orders the claims so that they run in the same order that the `XChainAccountCreateCommit` transactions ran on the source chain, to prevent transaction replay. |
-| `XChainAccountCreateCount` | Number              | UInt64            | Yes       | A counter used to order the execution of account create transactions. It is incremented every time a successful `XChainAccountCreateCommit` transaction is run for the source chain. |
-| `XChainBridge`             | XChainBridge        | XChain_Bridge     | Yes       | The door accounts and assets of the bridge this object correlates to. |
-| `XChainClaimID`            | Number              | UInt64            | Yes       | The value of the next `XChainClaimID` to be created. |
-
+| Field                      | JSON Type           | Internal Type | Required? | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| :------------------------- | :------------------ | :------------ | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Account`                  | String              | Account       | Yes       | The account that submitted the `XChainCreateBridge` transaction on the blockchain.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `MinAccountCreateAmount`   | [Currency Amount][] | Amount        | No        | The minimum amount, in XRP, required for an `XChainAccountCreateCommit` transaction. If this isn't present, the `XChainAccountCreateCommit` transaction will fail. This field can only be present on XRP-XRP bridges.                                                                                                                                                                                                                                                                                                                                                                   |
+| `SignatureReward`          | [Currency Amount][] | Amount        | Yes       | The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `XChainAccountClaimCount`  | Number              | UInt64        | Yes       | A counter used to order the execution of account create transactions. It is incremented every time a `XChainAccountCreateCommit` transaction is "claimed" on the destination chain. When the "claim" transaction is run on the destination chain, the `XChainAccountClaimCount` must match the value that the `XChainAccountCreateCount` had at the time the `XChainAccountClaimCount` was run on the source chain. This orders the claims so that they run in the same order that the `XChainAccountCreateCommit` transactions ran on the source chain, to prevent transaction replay. |
+| `XChainAccountCreateCount` | Number              | UInt64        | Yes       | A counter used to order the execution of account create transactions. It is incremented every time a successful `XChainAccountCreateCommit` transaction is run for the source chain.                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `XChainBridge`             | XChainBridge        | XChain_Bridge | Yes       | The door accounts and assets of the bridge this object correlates to.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `XChainClaimID`            | Number              | UInt64        | Yes       | The value of the next `XChainClaimID` to be created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ### XChainBridge Fields
 
-| Field               | JSON Type | Internal Type     | Required? | Description     |
-|:--------------------|:----------|:------------------|:----------|:----------------|
-| `IssuingChainDoor`  | String    | Account           | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
-| `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
-| `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
-| `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
+| Field               | JSON Type | Internal Type | Required? | Description                                                                                                                                                                                    |
+| :------------------ | :-------- | :------------ | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `IssuingChainDoor`  | String    | Account       | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
+| `IssuingChainIssue` | Issue     | Issue         | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues.                |
+| `LockingChainDoor`  | String    | Account       | Yes       | The door account on the locking chain.                                                                                                                                                         |
+| `LockingChainIssue` | Issue     | Issue         | Yes       | The asset that is locked and unlocked on the locking chain.                                                                                                                                    |
 
 ## See Also
 

@@ -2,21 +2,21 @@
 html: account-types.html
 parent: accounts.html
 seo:
-    description: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
+  description: Businesses sending transactions on the XRP Ledger automatically should set up separate addresses for different purposes to minimize risk.
 labels:
   - Tokens
   - Security
 ---
+
 # Account Types
 
 {% partial file="/docs/_snippets/issuing-and-operational-addresses-intro.md" /%}
-
 
 ## Funds Lifecycle
 
 When a token issuer follows this separation of roles, funds tend to flow in specific directions, as in the following diagram:
 
-[{% inline-svg file="/docs/img/issued-currency-funds-flow.svg" /%}](/docs/img/issued-currency-funds-flow.svg "Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.")
+[{% inline-svg file="/docs/img/issued-currency-funds-flow.svg" /%}](/docs/img/issued-currency-funds-flow.svg 'Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.')
 
 The issuing address creates tokens by sending payments to standby addresses. These tokens have negative value from the perspective of the issuing address, since they (often) represent obligations. The same tokens have positive value from other perspectives, including from the perspective of a standby address.
 
@@ -27,7 +27,6 @@ Operational addresses, which are operated by automated systems, send payments to
 As always, token payments must "ripple through" the issuer across trust lines.
 
 Eventually, someone sends tokens back to the issuer. This destroys those tokens, reducing the issuer's obligations in the XRP Ledger. If the token is a stablecoin, this is the first step of redeeming the tokens for the corresponding off-ledger assets.
-
 
 ## Issuing Address
 
@@ -43,7 +42,6 @@ If a malicious actor learns the secret key behind a institution's issuing addres
 
 A financial institution can issue more than one type of token in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all (fungible) tokens issued from an address, including the percentage for [transfer fees](../tokens/fungible-tokens/transfer-fees.md) and the [global freeze](../tokens/fungible-tokens/freezes.md) status. If the financial institution wants the flexibility to manage settings differently for each type of token, the institution must multiple issuing addresses.
 
-
 ## Operational Addresses
 
 An operational address is like a cash register. It makes payments on behalf of the institution by transferring tokens to customers and partners. To sign transactions automatically, the secret key for an operational address must be stored on a server that is connected to the internet. (The secret key can be stored encrypted, but the server must decrypt it to sign transactions.) Customers and partners do not, and should not, create trust lines to an operational address.
@@ -53,7 +51,6 @@ Each operational address has a limited balance of tokens and XRP. When the balan
 ### Operational Address Compromise
 
 If a malicious actor learns the secret key behind an operational address, the financial institution can only lose as much as that operational address holds. The institution can switch to a new operational address with no action from customers and partners.
-
 
 ## Standby Addresses
 
@@ -67,18 +64,17 @@ As with operational addresses, a standby address must have an accounting relatio
 
 If a standby address is compromised, the consequences are like an operational address being compromised. A malicious actor can steal any balances possessed by the standby address, and the financial institution can change to a new standby address with no action from customers and partners.
 
-
 ## See Also
 
 - **Concepts:**
-    - [Accounts](index.md)
-    - [Cryptographic Keys](cryptographic-keys.md)
+  - [Accounts](index.md)
+  - [Cryptographic Keys](cryptographic-keys.md)
 - **Tutorials:**
-    - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
-    - [Change or Remove a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+  - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
+  - [Change or Remove a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
-    - [account_info method][]
-    - [SetRegularKey transaction][]
-    - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
+  - [account_info method][]
+  - [SetRegularKey transaction][]
+  - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

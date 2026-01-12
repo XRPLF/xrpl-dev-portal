@@ -2,14 +2,28 @@
 html: use-tickets.html
 parent: manage-account-settings.html
 seo:
-    description: Use Tickets to send a transaction outside of normal Sequence order.
+  description: Use Tickets to send a transaction outside of normal Sequence order.
 embed_xrpl_js: true
 filters:
   - interactive_steps
 labels:
   - Accounts
-steps: ['Generate', 'Connect', 'Check Sequence', 'Prepare & Sign', 'Submit', 'Wait', 'Intermission', 'Check Tickets', 'Prepare Ticketed Tx', 'Submit Ticketed Tx', 'Wait Again']
+steps:
+  [
+    'Generate',
+    'Connect',
+    'Check Sequence',
+    'Prepare & Sign',
+    'Submit',
+    'Wait',
+    'Intermission',
+    'Check Tickets',
+    'Prepare Ticketed Tx',
+    'Submit Ticketed Tx',
+    'Wait Again',
+  ]
 ---
+
 # Use Tickets
 
 [Tickets](../../../concepts/accounts/tickets.md) provide a way to send transactions out of the normal order. This tutorial walks through the steps of creating a Ticket, then using it to send another transaction.
@@ -23,8 +37,6 @@ steps: ['Generate', 'Connect', 'Check Sequence', 'Prepare & Sign', 'Submit', 'Wa
 This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
-
-
 
 ## Steps
 
@@ -43,7 +55,6 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md).
 
-
 ### 2. Connect to Network
 
 You must be connected to the network to submit transactions to it. Since Tickets are only available on Devnet so far, you should connect to a Devnet server. For example:
@@ -61,7 +72,6 @@ You must be connected to the network to submit transactions to it. Since Tickets
 For this tutorial, click the following button to connect:
 
 {% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
-
 
 ### 3. Check Sequence Number
 
@@ -85,8 +95,6 @@ Before you create any Tickets, you should check what [Sequence Number][] your ac
 
 {% /interactive-block %}
 
-
-
 ### 4. Prepare and Sign TicketCreate
 
 Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, to prepare a transaction that would make 10 Tickets:
@@ -101,15 +109,13 @@ Construct a [TicketCreate transaction][] using the sequence number you determine
 
 Record the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](../../../concepts/transactions/reliable-transaction-submission.md) later.
 
-
 {% interactive-block label="Prepare & Sign" steps=$frontmatter.steps %}
 
 <button id="prepare-and-sign" class="btn btn-primary previous-steps-required">Prepare & Sign</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
-
 
 ### 5. Submit TicketCreate
 
@@ -133,7 +139,6 @@ Submit the signed transaction blob that you created in the previous step. For ex
 
 {% /interactive-block %}
 
-
 ### 6. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
@@ -148,7 +153,6 @@ Most transactions are accepted into the next ledger version after they're submit
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
-
 ### (Optional) Intermission
 
 The power of Tickets is that you can carry on with your account's business as usual while you are getting Ticketed transactions ready. When you want to send a transaction using a Ticket, you can do that in parallel with other sending transactions, including ones using different Tickets, and submit a Ticketed transaction at any time. The only constraint is that each Ticket can only be used once.
@@ -160,11 +164,10 @@ The power of Tickets is that you can carry on with your account's business as us
 <button id="intermission-payment" class="btn btn-primary previous-steps-required">Payment</button>
 <button id="intermission-escrowcreate" class="btn btn-primary previous-steps-required">EscrowCreate</button>
 <button id="intermission-accountset" class="btn btn-primary previous-steps-required">AccountSet</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
-
 
 ### 7. Check Available Tickets
 
@@ -178,10 +181,10 @@ When you want to send a Ticketed transaction, you need to know what Ticket Seque
 
 {% /tabs %}
 
-
 {% interactive-block label="Check Tickets" steps=$frontmatter.steps %}
 
 <button id="check-tickets" class="btn btn-primary previous-steps-required">Check Tickets</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
@@ -207,7 +210,7 @@ If you don't plan to submit the TicketCreate transaction right away, you should 
 
 - **xrpl.js:** Specify `"LastLedgerSequence": null` when auto-filling the transaction.
 - **`rippled`:** Omit `LastLedgerSequence` from the prepared instructions. The server does not provide a value by default.
-{% /admonition %}
+  {% /admonition %}
 
 {% interactive-block label="Prepare Ticketed Tx" steps=$frontmatter.steps %}
 
@@ -219,7 +222,6 @@ If you don't plan to submit the TicketCreate transaction right away, you should 
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ### 9. Submit Ticketed Transaction
 
@@ -236,10 +238,10 @@ Submit the signed transaction blob that you created in the previous step. For ex
 {% interactive-block label="Submit Ticketed Tx" steps=$frontmatter.steps %}
 
 <button id="ticketedtx-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob_t" data-wait-step-name="Wait Again">Submit</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ### 10. Wait for Validation
 
@@ -255,20 +257,19 @@ In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-t
 
 You could do this in parallel for several different potential transactions as long as each one uses a different Ticket.
 
-
 ## See Also
 
 - **Concepts:**
-    - [Tickets](../../../concepts/accounts/tickets.md)
-    - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
+  - [Tickets](../../../concepts/accounts/tickets.md)
+  - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
 - **Tutorials:**
-    - [Set Up Multi-Signing](set-up-multi-signing.md)
-    - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Set Up Multi-Signing](set-up-multi-signing.md)
+  - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [account_objects method][]
-    - [sign_for method][]
-    - [submit_multisigned method][]
-    - [TicketCreate transaction][]
-    - [Transaction Common Fields](../../../references/protocol/transactions/common-fields.md)
+  - [account_objects method][]
+  - [sign_for method][]
+  - [submit_multisigned method][]
+  - [TicketCreate transaction][]
+  - [Transaction Common Fields](../../../references/protocol/transactions/common-fields.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

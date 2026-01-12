@@ -1,13 +1,14 @@
 ---
-date: "2017-01-11"
+date: '2017-01-11'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.40.1
 
 The `rippled` team has released version 0.40.1, which increases SQLite database limits in all `rippled` full-history servers. Ripple recommends upgrading to 0.40.1 only if server operators are running `rippled` servers with full-history of the ledger. There are no new or updated features in the 0.40.1 release.
@@ -39,17 +40,20 @@ Set version to 0.40.1
 ```
 
 ## Bug Fixes
+
 Increase SQLite database limits to prevent full-history servers from crashing when restarting. [(#1961)](https://github.com/ripple/rippled/commit/610e51a162a6ef06accf8733b3b35b492963a78b)
 
 ## Network Update
+
 The Ripple operations team has deployed version 0.40.1 to all full-history `rippled` servers under its operational control.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

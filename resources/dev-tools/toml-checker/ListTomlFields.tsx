@@ -1,14 +1,14 @@
 import { clsx } from 'clsx'
 import { Client } from 'xrpl'
-import React = require("react");
-import { CLASS_GOOD } from "../components/LogEntry";
-import { AccountFields } from "./XrplToml";
+import React = require('react')
+import { CLASS_GOOD } from '../components/LogEntry'
+import { AccountFields } from './XrplToml'
 
 // Decode a hexadecimal string into a regular string, assuming 8-bit characters.
 // Not proper unicode decoding, but it'll work for domains which are supposed
 // to be a subset of ASCII anyway.
 function decodeHex(hex) {
-  let str = '';
+  let str = ''
   for (let i = 0; i < hex.length; i += 2) {
     str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
   }
@@ -17,13 +17,13 @@ function decodeHex(hex) {
 
 function getWsUrlForNetwork(net: string) {
   let wsNetworkUrl: string
-  if (net === "main") {
+  if (net === 'main') {
     wsNetworkUrl = 'wss://s1.ripple.com:51233'
-  } else if (net == "testnet") {
+  } else if (net == 'testnet') {
     wsNetworkUrl = 'wss://s.altnet.rippletest.net:51233'
-  } else if (net === "devnet") {
+  } else if (net === 'devnet') {
     wsNetworkUrl = 'wss://s.devnet.rippletest.net:51233/'
-  } else if (net === "xahau") {
+  } else if (net === 'xahau') {
     wsNetworkUrl = 'wss://xahau-test.net:51233'
   } else {
     wsNetworkUrl = undefined
@@ -32,10 +32,12 @@ function getWsUrlForNetwork(net: string) {
 }
 
 async function validateAddressDomainOnNet(addressToVerify: string, domain: string, net: string) {
-  if (!domain) { return undefined } // Can't validate an empty domain value
-  
+  if (!domain) {
+    return undefined
+  } // Can't validate an empty domain value
+
   const wsNetworkUrl = getWsUrlForNetwork(net)
-  if(!wsNetworkUrl) {
+  if (!wsNetworkUrl) {
     console.error(`The XRPL TOML Checker does not currently support verifying addresses on ${net}. 
       Please open an issue to add support for this network.`)
     return undefined
@@ -46,10 +48,10 @@ async function validateAddressDomainOnNet(addressToVerify: string, domain: strin
   let accountInfoResponse
   try {
     accountInfoResponse = await api.request({
-      "command": "account_info",
-      "account": addressToVerify
+      command: 'account_info',
+      account: addressToVerify,
     })
-  } catch(e) {
+  } catch (e) {
     console.warn(`failed to look up address ${addressToVerify} on ${net} network"`, e)
     return undefined
   } finally {
@@ -64,99 +66,97 @@ async function validateAddressDomainOnNet(addressToVerify: string, domain: strin
   let decodedDomain
   try {
     decodedDomain = decodeHex(accountInfoResponse.result.account_data.Domain)
-  } catch(e) {
-    console.warn("error decoding domain value", accountInfoResponse.result.account_data.Domain, e)
+  } catch (e) {
+    console.warn('error decoding domain value', accountInfoResponse.result.account_data.Domain, e)
     return undefined
   }
 
-  if(decodedDomain) {
+  if (decodedDomain) {
     const doesDomainMatch = decodedDomain === domain
-    if(!doesDomainMatch) {
-      console.debug(addressToVerify, ": Domain mismatch ("+decodedDomain+" vs. "+domain+")")
+    if (!doesDomainMatch) {
+      console.debug(addressToVerify, ': Domain mismatch (' + decodedDomain + ' vs. ' + domain + ')')
     }
     return doesDomainMatch
   } else {
-    console.debug(addressToVerify, ": Domain is undefined in settings")
+    console.debug(addressToVerify, ': Domain is undefined in settings')
     return undefined
   }
 }
 
 /**
  * A formatted list item displaying content from a single field of a toml file.
- * 
+ *
  * @param props Field info to display
  * @returns A formatted list item
  */
-function FieldListItem(props: { fieldName: string, fieldValue: string}) {
-    return (
+function FieldListItem(props: { fieldName: string; fieldValue: string }) {
+  return (
     <li key={props.fieldName}>
       <strong>{props.fieldName}: </strong>
-      <span className={`fieldName`}>
-        {props.fieldValue}
-      </span>
-    </li>)
-  }
-  
+      <span className={`fieldName`}>{props.fieldValue}</span>
+    </li>
+  )
+}
+
 /**
- * Get an array of HTML lists that can be used to display toml data. 
+ * Get an array of HTML lists that can be used to display toml data.
  * If no data exists or none matches the filter it will return an empty array instead.
- * 
+ *
  * @param fields An array of objects to parse into bullet points
  * @param filter Optional function to filter displayed fields to only ones which return true.
  */
 export async function getListEntries(fields: Object[], filter?: Function, domainToVerify?: string) {
   const formattedEntries: JSX.Element[] = []
-  for(let i = 0; i < fields.length; i++) {
+  for (let i = 0; i < fields.length; i++) {
     const entry = fields[i]
-    if(!filter || filter(entry)) {
-
+    if (!filter || filter(entry)) {
       const fieldNames = Object.keys(entry)
       const displayedFields: JSX.Element[] = []
-      
+
       fieldNames.forEach((fieldName) => {
-        if(entry[fieldName] && Array.isArray(entry[fieldName])) {
-          
+        if (entry[fieldName] && Array.isArray(entry[fieldName])) {
           const internalList = []
           entry[fieldName].forEach((value) => {
-            internalList.push(
-              <FieldListItem key={value} fieldName={fieldName} fieldValue={value}/>
-            )
+            internalList.push(<FieldListItem key={value} fieldName={fieldName} fieldValue={value} />)
           })
-          
-          displayedFields.push(<ol key={`ol-${displayedFields.length}`}>{internalList}</ol>)
 
+          displayedFields.push(<ol key={`ol-${displayedFields.length}`}>{internalList}</ol>)
         } else {
-          displayedFields.push(
-            <FieldListItem key={fieldName} fieldName={fieldName} fieldValue={entry[fieldName]}/>
-          )
+          displayedFields.push(<FieldListItem key={fieldName} fieldName={fieldName} fieldValue={entry[fieldName]} />)
         }
       })
 
       const key = `entry-${formattedEntries.length}`
       const promises = []
-      if(domainToVerify) {
+      if (domainToVerify) {
         const accountEntry = entry as AccountFields
-        if(accountEntry.address) {
-          const net = accountEntry.network ?? "main"
-          const domainIsValid = validateAddressDomainOnNet(accountEntry.address, domainToVerify, net) 
+        if (accountEntry.address) {
+          const net = accountEntry.network ?? 'main'
+          const domainIsValid = validateAddressDomainOnNet(accountEntry.address, domainToVerify, net)
 
           domainIsValid.then((wasValidated) => {
-            if(wasValidated) {
+            if (wasValidated) {
               displayedFields.push(
-                <li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <i className="fa fa-check-circle"/></li>
+                <li className={CLASS_GOOD} key={`${key}-result`}>
+                  DOMAIN VALIDATED <i className="fa fa-check-circle" />
+                </li>,
               )
             }
           })
 
           promises.push(domainIsValid)
-        } 
+        }
       }
 
       await Promise.all(promises)
-      
-      formattedEntries.push((<li key={key}>
-          <ul className={clsx(domainToVerify && 'mb-3')} key={key + "-ul"}>{displayedFields}</ul>
-        </li>))
+
+      formattedEntries.push(
+        <li key={key}>
+          <ul className={clsx(domainToVerify && 'mb-3')} key={key + '-ul'}>
+            {displayedFields}
+          </ul>
+        </li>,
+      )
     }
   }
   return formattedEntries

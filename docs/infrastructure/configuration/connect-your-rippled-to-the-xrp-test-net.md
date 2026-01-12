@@ -2,12 +2,13 @@
 html: connect-your-rippled-to-the-xrp-test-net.html
 parent: configure-rippled.html
 seo:
-    description: Connect your rippled server to the test net to try out new features or test functionality with fake money.
+  description: Connect your rippled server to the test net to try out new features or test functionality with fake money.
 labels:
   - Core Server
   - Blockchain
   - Development
 ---
+
 # Connect Your rippled to a Parallel Network
 
 Various [alternative test and development networks](../../concepts/networks-and-servers/parallel-networks.md) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](../../concepts/networks-and-servers/index.md) to any of these test networks.
@@ -23,60 +24,61 @@ To connect your `rippled` server to the XRP Testnet or Devnet, complete these st
 Edit your `rippled.cfg` file.
 
 {% partial file="/docs/_snippets/conf-file-location.md" /%}
+
 <!--{_ }-->
 
 1. Set an `[ips]` stanza with the hub for the network you want to connect to:
 
-    {% tabs %}
+   {% tabs %}
 
-    ```{% label="Testnet" %}
-    [ips]
-    s.altnet.rippletest.net 51235
-    ```
+   ```{% label="Testnet" %}
+   [ips]
+   s.altnet.rippletest.net 51235
+   ```
 
-    ```{% label="Devnet" %}
-    [ips]
-    s.devnet.rippletest.net 51235
-    ```
+   ```{% label="Devnet" %}
+   [ips]
+   s.devnet.rippletest.net 51235
+   ```
 
-    ```{% label="Mainnet" %}
-    # No [ips] stanza. Use the default hubs to connect to Mainnet.
-    ```
+   ```{% label="Mainnet" %}
+   # No [ips] stanza. Use the default hubs to connect to Mainnet.
+   ```
 
-    {% /tabs %}
+   {% /tabs %}
 
 2. Comment out the previous `[ips]` stanza, if there is one:
 
-    ```
-    # [ips]
-    # r.ripple.com 51235
-    # sahyadri.isrdc.in 51235
-    ```
+   ```
+   # [ips]
+   # r.ripple.com 51235
+   # sahyadri.isrdc.in 51235
+   ```
 
 3. Add a `[network_id]` stanza with the appropriate value:
 
-    {% tabs %}
+   {% tabs %}
 
-    ```{% label="Testnet" %}
-    [network_id]
-    testnet
-    ```
+   ```{% label="Testnet" %}
+   [network_id]
+   testnet
+   ```
 
-    ```{% label="Devnet" %}
-    [network_id]
-    devnet
-    ```
+   ```{% label="Devnet" %}
+   [network_id]
+   devnet
+   ```
 
-    ```{% label="Mainnet" %}
-    [network_id]
-    main
-    ```
+   ```{% label="Mainnet" %}
+   [network_id]
+   main
+   ```
 
-    {% /tabs %}
+   {% /tabs %}
 
-    For custom networks, everyone who connects to the network should use a value unique to that network. When creating a new network, choose a network ID at random from the integers 11 to 4,294,967,295.
+   For custom networks, everyone who connects to the network should use a value unique to that network. When creating a new network, choose a network ID at random from the integers 11 to 4,294,967,295.
 
-    {% admonition type="info" name="Note" %}This setting helps your server find peers who are on the same network, but it is not a hard control on what network your server follows. The UNL / trusted validator settings (in the next step) are what actually define what network the server follows.{% /admonition %}
+   {% admonition type="info" name="Note" %}This setting helps your server find peers who are on the same network, but it is not a hard control on what network your server follows. The UNL / trusted validator settings (in the next step) are what actually define what network the server follows.{% /admonition %}
 
 ## 2. Set your trusted validator list.
 
@@ -84,57 +86,57 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
 1. Uncomment or add the `[validator_list_sites]` and `[validator_list_keys]` stanzas for the network you want to connect to:
 
-    {% tabs %}
+   {% tabs %}
 
-    ```{% label="Testnet" %}
-    [validator_list_sites]
-    https://vl.altnet.rippletest.net
+   ```{% label="Testnet" %}
+   [validator_list_sites]
+   https://vl.altnet.rippletest.net
 
-    [validator_list_keys]
-    ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
-    ```
+   [validator_list_keys]
+   ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
+   ```
 
-    ```{% label="Devnet" %}
-    [validator_list_sites]
-    https://vl.devnet.rippletest.net
+   ```{% label="Devnet" %}
+   [validator_list_sites]
+   https://vl.devnet.rippletest.net
 
-    [validator_list_keys]
-    EDBB54B0D9AEE071BB37784AF5A9E7CC49AC7A0EFCE868C54532BCB966B9CFC13B
-    ```
+   [validator_list_keys]
+   EDBB54B0D9AEE071BB37784AF5A9E7CC49AC7A0EFCE868C54532BCB966B9CFC13B
+   ```
 
-    ```{% label="Mainnet" %}
-    [validator_list_sites]
-    https://vl.ripple.com
+   ```{% label="Mainnet" %}
+   [validator_list_sites]
+   https://vl.ripple.com
 
-    [validator_list_keys]
-    ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-    ```
+   [validator_list_keys]
+   ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+   ```
 
-    {% /tabs %}
+   {% /tabs %}
 
-    {% admonition type="success" name="Tip" %}Preview packages might come with the necessary stanzas pre-configured, but check them just in case.{% /admonition %}
+   {% admonition type="success" name="Tip" %}Preview packages might come with the necessary stanzas pre-configured, but check them just in case.{% /admonition %}
 
 2. Comment out any previous `[validator_list_sites]`, `[validator_list_keys]`, or `[validators]` stanzas.
 
-    For example:
+   For example:
 
-    ```
-    # [validator_list_sites]
-    # https://vl.ripple.com
-    #
-    # [validator_list_keys]
-    # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+   ```
+   # [validator_list_sites]
+   # https://vl.ripple.com
+   #
+   # [validator_list_keys]
+   # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
-    # Old hard-coded List of Devnet Validators
-    # [validators]
-    # n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c
-    # n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B
-    # n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD
-    # n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U
-    # n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd
-    # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
-    # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
-    ```
+   # Old hard-coded List of Devnet Validators
+   # [validators]
+   # n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c
+   # n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B
+   # n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD
+   # n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U
+   # n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd
+   # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
+   # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
+   ```
 
 ## 3. Enable (or Disable) Features
 
@@ -143,24 +145,30 @@ For some test networks using experimental features, you must also forcefully ena
 {% tabs %}
 
 {% tab label="Testnet" %}
+
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Testnet.
 ```
+
 {% /tab %}
 
 {% tab label="Devnet" %}
+
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Devnet.
 ```
+
 {% /tab %}
 
 {% tab label="Mainnet" %}
+
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Mainnet.
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -187,21 +195,19 @@ rippled server_info | grep seq
 
 You can use [server_info in the WebSocket Tool](/resources/dev-tools/websocket-api-tool#server_info) to look up the latest ledger index (`seq`) on the intended network.
 
-
-
 ## See Also
 
 - **Tools:**
-    - [XRP Faucets](/resources/dev-tools/xrp-faucets)
-    - [WebSocket API Tool](/resources/dev-tools/websocket-api-tool) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
+  - [XRP Faucets](/resources/dev-tools/xrp-faucets)
+  - [WebSocket API Tool](/resources/dev-tools/websocket-api-tool) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
 - **Concepts:**
-    - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
-    - [Consensus](../../concepts/consensus-protocol/index.md)
+  - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
+  - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Run rippled as a Validator](server-modes/run-rippled-as-a-validator.md)
-    - [Test `rippled` Offline in Stand-Alone Mode](../testing-and-auditing/index.md)
-    - [Troubleshooting `rippled`](../troubleshooting/index.md)
+  - [Run rippled as a Validator](server-modes/run-rippled-as-a-validator.md)
+  - [Test `rippled` Offline in Stand-Alone Mode](../testing-and-auditing/index.md)
+  - [Troubleshooting `rippled`](../troubleshooting/index.md)
 - **References:**
-    - [server_info method][]
+  - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -2,10 +2,11 @@
 html: enable-link-compression.html
 parent: configure-peering.html
 seo:
-    description: ピアツーピア通信を圧縮して帯域幅を節約します。
+  description: ピアツーピア通信を圧縮して帯域幅を節約します。
 labels:
   - コアサーバ
 ---
+
 # 回線圧縮の有効化
 
 `rippled`サーバは[ピアツーピア通信](../../../concepts/networks-and-servers/peer-protocol.md)を圧縮することで帯域幅を節約できますが、その代償としてCPU使用率が高くなります。回線圧縮を有効にすると、サーバは回線圧縮を有効にしているピアサーバとの通信を自動的に圧縮します。

@@ -2,11 +2,13 @@
 html: checkcancel.html
 parent: transaction-types.html
 seo:
-    description: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
+  description: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
 labels:
   - Checks
 ---
+
 # CheckCancel
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CancelCheck.cpp "Source")
 
 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。Checkの送金元または送金先は、いつでもこのトランザクションタイプを使用してCheckを取り消すことができます。有効期限切れのCheckはすべてのアドレスが取り消すことができます。
@@ -17,21 +19,20 @@ _（[Checks Amendment][]が必要です）_
 
 ```json
 {
-   "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
-   "TransactionType": "CheckCancel",
-   "CheckID": "49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0",
-   "Fee": "12"
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "TransactionType": "CheckCancel",
+  "CheckID": "49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0",
+  "Fee": "12"
 }
 ```
 
 {% tx-example txid="D3328000315C6DCEC1426E4E549288E3672752385D86A40D56856DBD10382953" /%}
 
-
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド       | JSONの型 | [内部の型][] | 説明                    |
-|:------------|:----------|:------------------|:-------------------------------|
-| `CheckID`   | 文字列    | UInt256           | 取り消す[Checkレジャーオブジェクト](../../ledger-data/ledger-entry-types/check.md)のID（64文字の16進文字列）。 |
+| フィールド | JSONの型 | [内部の型][] | 説明                                                                                                           |
+| :--------- | :------- | :----------- | :------------------------------------------------------------------------------------------------------------- |
+| `CheckID`  | 文字列   | UInt256      | 取り消す[Checkレジャーオブジェクト](../../ledger-data/ledger-entry-types/check.md)のID（64文字の16進文字列）。 |
 
 ## エラーケース
 

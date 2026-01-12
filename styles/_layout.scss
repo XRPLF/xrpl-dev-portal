@@ -83,7 +83,6 @@ section {
   }
 }
 
-
 .col-lg {
   padding-left: 0;
   padding-right: 0;
@@ -96,7 +95,6 @@ section {
     }
   }
 }
-
 
 // Grid styles (often not for cards) -------------------------------------------
 
@@ -121,12 +119,11 @@ section {
     /* 4 equal columns and any number of auto-sized rows. */
     grid-auto-rows: auto;
     grid-template-columns: repeat(2, 1fr);
-    
+
     @include media-breakpoint-up(lg) {
       grid-template-columns: repeat(4, 1fr);
     }
   }
-
 
   &.card-grid-3xN {
     /* 3 equal columns and any number of auto-sized rows. */
@@ -164,7 +161,6 @@ section {
     }
   }
 
-
   .card {
     padding: 20px;
     border: 0;
@@ -196,7 +192,6 @@ section {
   &.section-hero {
     padding-left: 0;
   }
-
 }
 
 // New Page Layouts ---------------------------------------------------------------
@@ -218,7 +213,6 @@ section {
     max-width: 1280px;
   }
 }
-
 
 /* Responsive design for different viewscreens ------------------------------ */
 
@@ -252,24 +246,23 @@ section {
   }
 }
 
-
 /* TIMELINE */
 .timeline-wrapper {
-    z-index: 999;
-    position: relative;
+  z-index: 999;
+  position: relative;
 }
 .timeline:before {
-    content: '';
-    position: absolute;
-    top: -40px;
-    left: 18px;
-    height: 95%;
-    width: 4px;
-    background: linear-gradient(180deg, rgba(254, 255, 1, 1) 0%, rgba(255, 45, 154, 1) 33%, rgba(163, 8, 143, 1) 66%, rgba(44, 4, 128, 0.85) 100%);
-    @include media-breakpoint-down(md) {
-      left: 8px;
-    }
- }
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 18px;
+  height: 95%;
+  width: 4px;
+  background: linear-gradient(180deg, rgba(254, 255, 1, 1) 0%, rgba(255, 45, 154, 1) 33%, rgba(163, 8, 143, 1) 66%, rgba(44, 4, 128, 0.85) 100%);
+  @include media-breakpoint-down(md) {
+    left: 8px;
+  }
+}
 
 .timeline-dot {
   margin-top: 94px;
@@ -302,9 +295,9 @@ section {
   border: 3px solid $red-purple-900;
 }
 .timeline-block {
-    display: flex;
-    position: relative;
-    z-index: 1;
+  display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 .timeline-content {
@@ -338,7 +331,7 @@ section {
     margin-right: calc(5% - 9px);
   }
   .timeline-content {
-     width: 45%;
+    width: 45%;
     -ms-flex-positive: 0;
     flex-grow: 0;
     will-change: transform;
@@ -348,7 +341,7 @@ section {
 }
 
 @include media-breakpoint-up(lg) {
-  [data-component-name="TableOfContent/TableOfContent"] {
+  [data-component-name='TableOfContent/TableOfContent'] {
     margin-right: 32px;
   }
 }

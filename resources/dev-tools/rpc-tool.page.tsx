@@ -1,39 +1,39 @@
-import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useThemeHooks } from '@redocly/theme/core/hooks'
+import { Link } from '@redocly/theme/components/Link/Link'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import JsonView from 'react18-json-view'
 import { Client, isValidAddress } from 'xrpl'
 
-import { RPCResponseGroup } from './components/rpc-tool/rpc-response-group';
-import { clsx } from 'clsx';
+import { RPCResponseGroup } from './components/rpc-tool/rpc-response-group'
+import { clsx } from 'clsx'
 
 export const frontmatter = {
   seo: {
     title: 'RPC Tool',
-    description: "Quickly query several key details about an XRP Ledger account or transaction",
-  }
-};
+    description: 'Quickly query several key details about an XRP Ledger account or transaction',
+  },
+}
 
 export default function RpcTool() {
-  const { hash: slug } = useLocation();
-  const [accountInfoResponse, setAccountInfoResponse] = useState(null);
-  const [accountLinesResponse, setAccountLinesResponse] = useState(null);
-  const [accountTxResponse, setAccountTxResponse] = useState(null);
-  const [accountObjectsResponse, setAccountObjectsResponse] = useState(null);
-  const [txResponse, setTxResponse] = useState(null);
-  const [ledgerResponse, setLedgerResponse] = useState(null);
-  const [inputText, setInputText] = useState(slug ? slug.slice(1) : "");
-  const [errorText, setErrorText] = useState(null);
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
-  const [inputType, setInputType] = useState("");
-  const [showResult, setShowResult] = useState(false);
-  const [progressBarWidth, setProgressBarWidth] = useState("0%");
+  const { hash: slug } = useLocation()
+  const [accountInfoResponse, setAccountInfoResponse] = useState(null)
+  const [accountLinesResponse, setAccountLinesResponse] = useState(null)
+  const [accountTxResponse, setAccountTxResponse] = useState(null)
+  const [accountObjectsResponse, setAccountObjectsResponse] = useState(null)
+  const [txResponse, setTxResponse] = useState(null)
+  const [ledgerResponse, setLedgerResponse] = useState(null)
+  const [inputText, setInputText] = useState(slug ? slug.slice(1) : '')
+  const [errorText, setErrorText] = useState(null)
+  const { useTranslate } = useThemeHooks()
+  const { translate } = useTranslate()
+  const [inputType, setInputType] = useState('')
+  const [showResult, setShowResult] = useState(false)
+  const [progressBarWidth, setProgressBarWidth] = useState('0%')
 
-  const FULL_HISTORY_SERVER = "wss://s2.ripple.com";
-  const reTxId = /^[0-9A-Fa-f]{64}$/;
-  const reLedgerSeq = /^[0-9]+$/;
+  const FULL_HISTORY_SERVER = 'wss://s2.ripple.com'
+  const reTxId = /^[0-9A-Fa-f]{64}$/
+  const reLedgerSeq = /^[0-9]+$/
 
   /*
     XRPL requests
@@ -45,164 +45,142 @@ export default function RpcTool() {
     * ledger
   */
 
-  const accountInfo = async (
-    client: Client,
-    address: string
-  ): Promise<void> => {
+  const accountInfo = async (client: Client, address: string): Promise<void> => {
     const response = await client.request({
-      command: "account_info",
+      command: 'account_info',
       account: address,
-    });
-    setProgressBarWidth("20%");
-    setAccountInfoResponse(response);
-  };
+    })
+    setProgressBarWidth('20%')
+    setAccountInfoResponse(response)
+  }
 
-  const accountLines = async (
-    client: Client,
-    address: string
-  ): Promise<void> => {
+  const accountLines = async (client: Client, address: string): Promise<void> => {
     const response = await client.request({
-      command: "account_lines",
+      command: 'account_lines',
       account: address,
-    });
-    setProgressBarWidth("40%");
-    setAccountLinesResponse(response);
-  };
+    })
+    setProgressBarWidth('40%')
+    setAccountLinesResponse(response)
+  }
 
-  const accountTx = async (
-    client: Client,
-    address: string
-  ): Promise<void> => {
+  const accountTx = async (client: Client, address: string): Promise<void> => {
     const response = await client.request({
-      command: "account_tx",
+      command: 'account_tx',
       account: address,
       ledger_index_min: -1,
       ledger_index_max: -1,
       binary: false,
       limit: 20,
       forward: false,
-    });
-    setProgressBarWidth("60%");
-    setAccountTxResponse(response);
-  };
+    })
+    setProgressBarWidth('60%')
+    setAccountTxResponse(response)
+  }
 
-  const accountObjects = async (
-    client: Client,
-    address: string
-  ): Promise<void> => {
+  const accountObjects = async (client: Client, address: string): Promise<void> => {
     const response = await client.request({
-      command: "account_objects",
+      command: 'account_objects',
       account: address,
-    });
-    setProgressBarWidth("80%");
-    setAccountObjectsResponse(response);
-  };
+    })
+    setProgressBarWidth('80%')
+    setAccountObjectsResponse(response)
+  }
 
-  const tx = async (
-    client: Client,
-    transactionId: string
-  ): Promise<void> => {
+  const tx = async (client: Client, transactionId: string): Promise<void> => {
     const response = await client.request({
-      command: "tx",
+      command: 'tx',
       transaction: transactionId,
       binary: false,
-    });
-    setProgressBarWidth("100%");
-    setTxResponse(response);
-  };
+    })
+    setProgressBarWidth('100%')
+    setTxResponse(response)
+  }
 
-  const ledger = async (
-    client: Client,
-    ledgerSequence: string
-  ): Promise<void> => {
+  const ledger = async (client: Client, ledgerSequence: string): Promise<void> => {
     const response = await client.request({
-      command: "ledger",
+      command: 'ledger',
       ledger_index: parseInt(ledgerSequence),
       transactions: true,
       expand: true,
-    });
-    setProgressBarWidth("100%");
-    setLedgerResponse(response);
-  };
+    })
+    setProgressBarWidth('100%')
+    setLedgerResponse(response)
+  }
 
   useEffect(() => {
-    if (slug && slug !== "") {
-      getInfo();
+    if (slug && slug !== '') {
+      getInfo()
     }
-  }, []);
+  }, [])
 
   const getInfo = async (): Promise<void> => {
-    setAccountInfoResponse(null);
-    setAccountLinesResponse(null);
-    setAccountTxResponse(null);
-    setAccountObjectsResponse(null);
-    setTxResponse(null);
-    setLedgerResponse(null);
-    setErrorText(null);
-    setShowResult(true);
-    setProgressBarWidth("0%");
+    setAccountInfoResponse(null)
+    setAccountLinesResponse(null)
+    setAccountTxResponse(null)
+    setAccountObjectsResponse(null)
+    setTxResponse(null)
+    setLedgerResponse(null)
+    setErrorText(null)
+    setShowResult(true)
+    setProgressBarWidth('0%')
 
-    const client = new Client(FULL_HISTORY_SERVER);
-    await client.connect();
+    const client = new Client(FULL_HISTORY_SERVER)
+    await client.connect()
 
     if (isValidAddress(inputText)) {
       // Example input: rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR
-      setInputType("accounts");
-      setErrorText("");
+      setInputType('accounts')
+      setErrorText('')
 
-      setProgressBarWidth("10%");
+      setProgressBarWidth('10%')
 
       // account_info
-      await accountInfo(client, inputText);
+      await accountInfo(client, inputText)
 
       // account_lines
-      await accountLines(client, inputText);
+      await accountLines(client, inputText)
 
       // account_tx
-      await accountTx(client, inputText);
+      await accountTx(client, inputText)
 
       // account_objects
-      await accountObjects(client, inputText);
-      setProgressBarWidth("100%");
+      await accountObjects(client, inputText)
+      setProgressBarWidth('100%')
     } else if (reTxId.test(inputText)) {
       // Example input: A25795C88E176FFF85B8D595D1960229F4ACC825BAE634ADF38F6AE38E0D24D8
-      setInputType("transactions");
-      setErrorText("");
-      setProgressBarWidth("10%");
+      setInputType('transactions')
+      setErrorText('')
+      setProgressBarWidth('10%')
 
       // tx
-      await tx(client, inputText);
+      await tx(client, inputText)
     } else if (reLedgerSeq.test(inputText)) {
       // Example input: 131524184
-      setInputType("ledgers");
-      setErrorText("");
-      setProgressBarWidth("10%");
+      setInputType('ledgers')
+      setErrorText('')
+      setProgressBarWidth('10%')
 
       // ledger
-      await ledger(client, inputText);
+      await ledger(client, inputText)
     } else {
-      setProgressBarWidth("100%");
+      setProgressBarWidth('100%')
 
-      setErrorText("Input is not a valid address or transaction hash");
+      setErrorText('Input is not a valid address or transaction hash')
     }
 
-    await client.disconnect();
-  };
+    await client.disconnect()
+  }
 
   return (
     <div className="container-fluid rpc-tool" role="document" id="main_content_wrapper">
       <div className="row">
-        <main
-          className="main order-md-3"
-          role="main"
-          id="main_content_body"
-        >
+        <main className="main order-md-3" role="main" id="main_content_body">
           <section className="container-fluid pt-3 p-md-3">
             <h1>{translate('RPC Tool')}</h1>
             <div className="content">
               <p>
                 {translate(
-                  "This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number)."
+                  'This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).',
                 )}
               </p>
               <div className="input-group">
@@ -213,32 +191,27 @@ export default function RpcTool() {
                   className="form-control"
                   required
                   type="text"
-                  placeholder={translate(
-                    "XRP Ledger address, transaction ID, or ledger index"
-                  )}
+                  placeholder={translate('XRP Ledger address, transaction ID, or ledger index')}
                 />
               </div>
               <span className="help-block">
                 <small>
-                  {translate("resourses.rpc-tool.help-block.part1", "Try an account like ")}
+                  {translate('resourses.rpc-tool.help-block.part1', 'Try an account like ')}
                   <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>
-                  {translate("resourses.rpc-tool.help-block.part2", ".")}
+                  {translate('resourses.rpc-tool.help-block.part2', '.')}
                 </small>
-              </span>&nbsp;
+              </span>
+              &nbsp;
               <button className="btn btn-primary" onClick={getInfo}>
-                {translate("Get info")}
+                {translate('Get info')}
               </button>
               {showResult && (
                 <div id="result">
-                  <h2>{translate("Result")}</h2>
-                    <div
+                  <h2>{translate('Result')}</h2>
+                  <div
                     id="progress"
                     className="progress"
-                    style={
-                      progressBarWidth === "100%" ?
-                        { transition: 'opacity 0.5s ease-out', opacity: 0, } :
-                        { opacity: 1 }
-                    }
+                    style={progressBarWidth === '100%' ? { transition: 'opacity 0.5s ease-out', opacity: 0 } : { opacity: 1 }}
                   >
                     <div
                       className="progress-bar progress-bar-striped progress-bar-animated"
@@ -254,33 +227,26 @@ export default function RpcTool() {
                       {translate(errorText)}
                     </div>
                   )}
-                  {errorText === "" && (
+                  {errorText === '' && (
                     <ul id="links" className="nav nav-pills">
                       <li className="nav-link">
-                        <Link
-                          id="permalink"
-                          to={`/resources/dev-tools/rpc-tool#${inputText}`}
-                          target="_blank"
-                        >
-                          {translate("Permalink")}
+                        <Link id="permalink" to={`/resources/dev-tools/rpc-tool#${inputText}`} target="_blank">
+                          {translate('Permalink')}
                         </Link>
                       </li>
                       <li className="nav-link">
-                        <Link
-                          id="explorerlink"
-                          to={`https://livenet.xrpl.org/${inputType}/${inputText}`}
-                          target="_blank"
-                        >
-                          {translate("Explorer")}
+                        <Link id="explorerlink" to={`https://livenet.xrpl.org/${inputType}/${inputText}`} target="_blank">
+                          {translate('Explorer')}
                         </Link>
                       </li>
                     </ul>
                   )}
                   {txResponse && (
-                    <RPCResponseGroup response={txResponse}
-                                      anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx">tx</Link>}
-                                      customExpanded={3}
-                                      customExpandedText={translate("expand tx")}
+                    <RPCResponseGroup
+                      response={txResponse}
+                      anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx">tx</Link>}
+                      customExpanded={3}
+                      customExpandedText={translate('expand tx')}
                     />
                   )}
                   <div className="group group-account">
@@ -289,37 +255,47 @@ export default function RpcTool() {
                         <h3>
                           <Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_info">account_info</Link>
                         </h3>
-                        <JsonView
-                          src={accountInfoResponse}
-                          collapsed={1}
-                          collapseStringsAfterLength={100}
-                          enableClipboard={false}
-                        />
+                        <JsonView src={accountInfoResponse} collapsed={1} collapseStringsAfterLength={100} enableClipboard={false} />
                       </>
                     )}
                     {accountLinesResponse && (
-                      <RPCResponseGroup response={accountLinesResponse}
-                                        anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines">account_lines</Link>}
-                      />)
-                    }
+                      <RPCResponseGroup
+                        response={accountLinesResponse}
+                        anchor={
+                          <Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines">account_lines</Link>
+                        }
+                      />
+                    )}
                     {accountTxResponse && (
-                      <RPCResponseGroup response={accountTxResponse}
-                                        anchor={<><Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx">account_tx</Link>{" "} {translate("(last 20)")}</>}
-                                        customExpanded={3}
-                                        customExpandedText={translate("expand tx")}
-                      />)
-                    }
+                      <RPCResponseGroup
+                        response={accountTxResponse}
+                        anchor={
+                          <>
+                            <Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx">account_tx</Link>{' '}
+                            {translate('(last 20)')}
+                          </>
+                        }
+                        customExpanded={3}
+                        customExpandedText={translate('expand tx')}
+                      />
+                    )}
                     {accountObjectsResponse && (
-                        <RPCResponseGroup response={accountObjectsResponse}
-                                          anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects">account_objects</Link>}
-                        />)
-                    }
+                      <RPCResponseGroup
+                        response={accountObjectsResponse}
+                        anchor={
+                          <Link to="../../docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects">
+                            account_objects
+                          </Link>
+                        }
+                      />
+                    )}
                   </div>
                   {ledgerResponse && (
-                    <RPCResponseGroup response={ledgerResponse}
-                                      anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger">ledger</Link>}
-                    />)
-                  }
+                    <RPCResponseGroup
+                      response={ledgerResponse}
+                      anchor={<Link to="../../docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger">ledger</Link>}
+                    />
+                  )}
                 </div>
               )}
             </div>
@@ -327,5 +303,5 @@ export default function RpcTool() {
         </main>
       </div>
     </div>
-  );
+  )
 }

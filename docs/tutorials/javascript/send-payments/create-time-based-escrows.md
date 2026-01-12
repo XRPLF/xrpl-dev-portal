@@ -1,21 +1,20 @@
 ---
 seo:
-    description: Create, finish, or cancel time-based escrow transactions.
+  description: Create, finish, or cancel time-based escrow transactions.
 labels:
   - Accounts
   - Transaction Sending
   - XRP
 ---
+
 # Create Time-based Escrows Using JavaScript
 
 This example shows how to:
 
-
 1. Create escrow payments that become available at a specified time and expire at a specified time.
 2. Finish an escrow payment.
 3. Retrieve information on escrows attached to an account.
-3. Cancel an escrow payment and return the XRP to the sending account.
-
+4. Cancel an escrow payment and return the XRP to the sending account.
 
 [![Time-based Escrow Form](/docs/img/mt-time-escrow-1-empty-form.png)](/docs/img/mt-time-escrow-1-empty-form.png)
 
@@ -29,15 +28,15 @@ To get test accounts:
 
 1. Open `create-time-based-escrows.html` in a browser
 2. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   1. If you copied the gathered information from another tutorial:
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
 
 [![Escrow Tester with Account Information](/docs/img/mt-time-escrow-2-form-with-accounts.png)](/docs/img/mt-time-escrow-2-form-with-accounts.png)
 
@@ -49,10 +48,10 @@ To create a time-based escrow:
 
 1. Enter an **Amount** to transfer. For example, _10_.
 2. Enter the **Destination**. (For example, the Account 2 address.)
-4. Set the **Escrow Finish Time** value, in seconds. For example, enter _10_.
-5. Set the **Escrow Cancel Time** value, in seconds. For example, enter _120_.
-6. Click **Create Time-based Escrow**.
-7. Copy the _Sequence Number_ of the escrow called out in the **Standby Result** field.
+3. Set the **Escrow Finish Time** value, in seconds. For example, enter _10_.
+4. Set the **Escrow Cancel Time** value, in seconds. For example, enter _120_.
+5. Click **Create Time-based Escrow**.
+6. Copy the _Sequence Number_ of the escrow called out in the **Standby Result** field.
 
 The escrow is created on the XRP Ledger instance, reserving 10 XRP plus the transaction cost. When you create an escrow, capture and save the **Sequence Number** so that you can use it to finish the escrow transaction.
 
@@ -68,7 +67,7 @@ To finish a time-based escrow:
 
 1. Paste the sequence number in the Operational account **Escrow Sequence Number** field.
 2. Copy and paste the address that created the escrow in the **Escrow Owner** field.
-2. Click **Finish Time-based Escrow**.
+3. Click **Finish Time-based Escrow**.
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
@@ -84,7 +83,6 @@ Click **Get Escrows**.
 
 [![Get Escrows results](/docs/img/mt-time-escrow-5-get-escrows.png)](/docs/img/mt-time-escrow-5-get-escrows.png)
 
-
 ## Cancel Escrow
 
 When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. If you try to cancel the transaction prior to the **Escrow Cancel** time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.
@@ -95,7 +93,7 @@ To cancel an expired escrow:
 
 1. Enter the sequence number in the **Escrow Sequence Number** field.
 2. Enter the address of the account that created the escrow in the **Escrow Owner** field.
-2. Click **Cancel Escrow**.
+3. Click **Cancel Escrow**.
 
 The funds are returned to the owner account, less the initial transaction fee.
 
@@ -127,6 +125,7 @@ This example can be used with any XRP Ledger network, _Testnet_, or _Devnet_. Yo
 This function accomplishes two things. It creates a new date object and adds the number of seconds taken from a form field. Then, it adjusts the date from the JavaScript format to the XRP Ledger format.
 
 You provide the _numOfSeconds_ argument, the second parameter is a new Date object.
+
 ```javascript
 function addSeconds(numOfSeconds, date = new Date()) {
 ```
@@ -134,19 +133,19 @@ function addSeconds(numOfSeconds, date = new Date()) {
 Set the _seconds_ value to the date seconds plus the number of seconds you provide.
 
 ```javascript
-  date.setSeconds(date.getSeconds() + numOfSeconds);
+date.setSeconds(date.getSeconds() + numOfSeconds)
 ```
 
 JavaScript dates are in milliseconds. Divide the date by 1000 to base it on seconds.
 
 ```javascript
-  date = Math.floor(date / 1000)
+date = Math.floor(date / 1000)
 ```
 
 Subtract the number of seconds in the Ripple epoch to convert the value to an XRP Ledger compatible date value.
 
 ```javascript
-  date = date - 946684800
+date = date - 946684800
 ```
 
 Return the result.
@@ -165,20 +164,20 @@ async function createTimeBasedEscrow() {
 Instantiate two new date objects, then set the dates to the current date plus the set number of seconds for the finish and cancel dates.
 
 ```javascript
-  let escrow_finish_date = new Date()
-  let escrow_cancel_date = new Date()
-  escrow_finish_date = addSeconds(parseInt(escrowFinishTimeField.value))
-  escrow_cancel_date = addSeconds(parseInt(escrowCancelTimeField.value))
+let escrow_finish_date = new Date()
+let escrow_cancel_date = new Date()
+escrow_finish_date = addSeconds(parseInt(escrowFinishTimeField.value))
+escrow_cancel_date = addSeconds(parseInt(escrowCancelTimeField.value))
 ```
 
 Connect to the ledger and get the account wallet.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  let results = `===Connected to ${net}.===\n\n===Creating time-based escrow.===\n`
-  resultField.value = results
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = `===Connected to ${net}.===\n\n===Creating time-based escrow.===\n`
+resultField.value = results
 ```
 
 Define the transaction object.
@@ -196,9 +195,9 @@ Define the transaction object.
       "CancelAfter": escrow_cancel_date
     })
 
-  ```
+```
 
-  Sign the prepared transaction object.
+Sign the prepared transaction object.
 
 ```javascript
     const signed = wallet.sign(escrowTx)
@@ -208,7 +207,7 @@ Define the transaction object.
 Submit the signed transaction object and wait for the results.
 
 ```javascript
-    const tx = await client.submitAndWait(signed.tx_blob)
+const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Report the results.
@@ -232,7 +231,6 @@ Catch and report any errors, then disconnect from the XRP Ledger.
   }
 ```
 
-
 ### Finish Time-based Escrow
 
 ```javascript
@@ -242,49 +240,48 @@ async function finishEscrow() {
 Connect to the XRP Ledger.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  let results = `===Connected to ${net}. Finishing escrow.===\n`
-  resultField.value = results
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = `===Connected to ${net}. Finishing escrow.===\n`
+resultField.value = results
 ```
 
 Define the transaction. The _Owner_ is the account that created the escrow. The _OfferSequence_ is the sequence number of the escrow transaction. Automatically fill in the common fields for the transaction.
 
 ```javascript
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  const prepared = await client.autofill({
-    "TransactionType": "EscrowFinish",
-    "Account": accountAddressField.value,
-    "Owner": escrowOwnerField.value,
-    "OfferSequence": parseInt(escrowSequenceNumberField.value)
-  })
+const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+const prepared = await client.autofill({
+  TransactionType: 'EscrowFinish',
+  Account: accountAddressField.value,
+  Owner: escrowOwnerField.value,
+  OfferSequence: parseInt(escrowSequenceNumberField.value),
+})
 ```
 
 Sign the transaction definition.
 
 ```javascript
-  const signed = wallet.sign(prepared)
+const signed = wallet.sign(prepared)
 ```
 
 Submit the signed transaction to the XRP ledger.
 
 ```javascript
-  const tx = await client.submitAndWait(signed.tx_blob)
+const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Report the results.
 
 ```javascript
-  results  += "\n===Balance changes===" + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value = results
+results += '\n===Balance changes===' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+resultField.value = results
 ```
 
 Update the **XRP Balance** field.
 
 ```javascript
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
 ```
 
 Catch and report any errors, then disconnect from the XRP Ledger.
@@ -299,7 +296,7 @@ Catch and report any errors, then disconnect from the XRP Ledger.
   }
 ```
 
-### Get  Escrows
+### Get Escrows
 
 Get the escrows created by or destined to the current account.
 
@@ -310,11 +307,11 @@ async function getEscrows() {
 Connect to the network. The information you are looking for is public information, so there is no need to instantiate your wallet.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  let results = `\n===Connected to ${net}.\nGetting account escrows.===\n`
-  resultField.value = results
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = `\n===Connected to ${net}.\nGetting account escrows.===\n`
+resultField.value = results
 ```
 
 Create the `account_objects` request. Specify that you want objects of the type _escrow_.
@@ -337,8 +334,8 @@ Report the results.
     resultField.value = results
   }
 ```
-Catch and report any errors, then disconnect from the XRP Ledger.
 
+Catch and report any errors, then disconnect from the XRP Ledger.
 
 ```javascript
   catch (error) {
@@ -351,7 +348,7 @@ Catch and report any errors, then disconnect from the XRP Ledger.
 }
 ```
 
-### Get Transaction Info 
+### Get Transaction Info
 
 ```javascript
 async function getTransaction() {
@@ -360,15 +357,15 @@ async function getTransaction() {
 Connect to the XRP Ledger.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  let results = `\n===Connected to ${net}.===\n===Getting transaction information.===\n`
-  resultField.value = results
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = `\n===Connected to ${net}.===\n===Getting transaction information.===\n`
+resultField.value = results
 ```
-  
+
 Prepare and send the transaction information request. The only required parameter is the transaction ID.
-  
+
 ```javascript
   try {
     const tx_info = await client.request({
@@ -377,16 +374,17 @@ Prepare and send the transaction information request. The only required paramete
       "transaction": transactionField.value,
     })
 ```
+
 Report the results.
-  
+
 ```javascript
     results += JSON.stringify(tx_info.result, null, 2)
     resultField.value = results
   }
 ```
-  
-Catch and report any errors, then disconnect from the XRP Ledger.  
-  
+
+Catch and report any errors, then disconnect from the XRP Ledger.
+
 ```javascript
   catch (error) {
     results += "\nError: " + error.message
@@ -409,11 +407,11 @@ async function cancelEscrow() {
 Connect to the XRP Ledger instance and get the account wallet.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  let results = `\n===Connected to ${net}. Cancelling escrow.===`
-  resultField.value = results
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = `\n===Connected to ${net}. Cancelling escrow.===`
+resultField.value = results
 ```
 
 Prepare the EscrowCancel transaction, passing the escrow owner and offer sequence values.
@@ -431,14 +429,14 @@ Prepare the EscrowCancel transaction, passing the escrow owner and offer sequenc
 Sign the transaction.
 
 ```javascript
-    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-    const signed = wallet.sign(prepared)
+const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+const signed = wallet.sign(prepared)
 ```
 
 Submit the transaction and wait for the response.
 
-``` javascript
-    const tx = await client.submitAndWait(signed.tx_blob)
+```javascript
+const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Report the results.
@@ -537,7 +535,7 @@ Catch and report any errors, then disconnect from the XRP Ledger instance.
                         <label for="account1address">Account 1 Address</label>
                     </span>
                 </td>
-                <td> 
+                <td>
                     <input type="text" id="account1address" size="40"></input>
                 </td>
                 <td>
@@ -677,10 +675,10 @@ Catch and report any errors, then disconnect from the XRP Ledger instance.
                 <td>
                     <input type="text" id="escrowSequenceNumberField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
                     <button type="button" onClick="cancelEscrow()">Cancel Escrow</button>
-                </td>              
+                </td>
             </tr>
             <tr>
                 <td align="right">
@@ -691,10 +689,10 @@ Catch and report any errors, then disconnect from the XRP Ledger instance.
                 <td>
                     <input type="text" id="escrowOwnerField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
                     <button type="button" onClick="getTransaction()">Get Transaction</button>
-                </td>              
+                </td>
             </tr>
             <tr>
                 <td align="right">
@@ -705,9 +703,9 @@ Catch and report any errors, then disconnect from the XRP Ledger instance.
                 <td>
                     <input type="text" id="transactionField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
-                </td>              
+                </td>
             </tr>
             <tr>
                 <td colspan="2">

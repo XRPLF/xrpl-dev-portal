@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-02-08"
+date: '2022-02-08'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.8.5
 
 Version 1.8.5 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes fixes and updates for stability and security, and improvements to build scripts, including the ability to compile natively on Apple's M1 chips. There are no user-facing API or protocol changes in this release.
@@ -22,10 +23,10 @@ Version 1.8.5 of `rippled`, the reference server implementation of the XRP Ledge
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.8.5-1.el7.x86_64.rpm) | `c3a84dbf7c4b253f86a85369bf8ab92198cbc8b42c37dd17b62c88b7b5b986bf` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.8.5-1_amd64.deb) | `b63b786de318677a8b179c2712466846f5541566a10c66763b6d9b0ac9738154` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.8.5-1_amd64.deb)  | `b63b786de318677a8b179c2712466846f5541566a10c66763b6d9b0ac9738154` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 

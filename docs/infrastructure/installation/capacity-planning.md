@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Plan system specs and tune configuration for rippled in production environments.
+  description: Plan system specs and tune configuration for rippled in production environments.
 labels:
   - Core Server
   - Data Retention
 ---
+
 # Capacity Planning
 
 This document describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of an XRP Ledger server.
@@ -13,14 +14,11 @@ The load on an XRP Ledger server varies based on multiple factors. One is the ac
 
 You should consider these factors to ensure that your server has the capacity to handle XRP Ledger network activity today and in the future.
 
-
-
 ## Configuration Settings
 
 The default configuration file contains settings for a broad range of common use cases. You can get better performance by customizing the settings for your specific hardware and intended usage pattern.
 
 The settings in this section are parameters in the `rippled.cfg` file. You can access an example config file, `rippled-example.cfg`, in the [`cfg` directory](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) in the `rippled` GitHub repo. The settings in the example config file match the default config installed alongside the server.
-
 
 ### Node Size
 
@@ -34,16 +32,15 @@ Each `[node_size]` has a corresponding requirement for available RAM. For exampl
 
 To tune your server, it may be useful to start with `tiny` and increase the size to `small`, `medium`, and so on as you refine the requirements for your use case.
 
-| RAM available | `node_size` value | Notes                                    |
-|:--------------|:------------------|:-----------------------------------------|
-| < 8 GB        | `tiny`            | **Not recommended.** A server with this setting may not sync to a busy network. |
-| 8 GB          | `small`           | Recommended for test servers that only need to run occasionally. |
-| 16 GB         | `medium`          | The `rippled-example.cfg` file uses this value. |
+| RAM available | `node_size` value | Notes                                                                                                                                     |
+| :------------ | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| < 8 GB        | `tiny`            | **Not recommended.** A server with this setting may not sync to a busy network.                                                           |
+| 8 GB          | `small`           | Recommended for test servers that only need to run occasionally.                                                                          |
+| 16 GB         | `medium`          | The `rippled-example.cfg` file uses this value.                                                                                           |
 | 32 GB         | `large`           | **Not recommended.** In practice, this setting performs worse than `huge` in most circumstances. Always use `huge` if you want stability. |
-| 64 GB         | `huge`            | Recommended for production servers.      |
+| 64 GB         | `huge`            | Recommended for production servers.                                                                                                       |
 
 If you set the `[node_size]` parameter to an invalid value, the [server fails to start](../troubleshooting/server-wont-start.md#bad-node_size-value).
-
 
 ### Node DB Type
 
@@ -98,13 +95,11 @@ advisory_delete=0
 
 Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) and [Configure Advisory Deletion](../configuration/data-retention/configure-advisory-deletion.md).
 
-
 ### Log Level
 
 The example `rippled-example.cfg` file sets the logging verbosity to `warning` in the `[rpc_startup]` stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.
 
 {% admonition type="warning" name="Caution" %}If you omit the `log_level` command from the `[rpc_startup]` stanza, the server writes logs to disk at the `debug` level and outputs `warning` level logs to the console. Logging at the `debug` level requires several more GB of disk space per day than `warning` level, depending on transaction volumes and client activity.{% /admonition %}
-
 
 ## Network and Hardware
 
@@ -115,6 +110,7 @@ Each server in the XRP Ledger network performs all of the transaction processing
 See [System Requirements](system-requirements.md) for a summary of the recommended hardware specs.
 
 #### CPU Utilization and Virtualization
+
 <!-- STYLE_OVERRIDE: utilization -->
 
 You'll get the best performance on bare metal, but virtual machines can perform nearly as well as long as the host hardware has high enough specs.
@@ -137,15 +133,15 @@ You can control how much data you keep with [online deletion](../configuration/d
 The following table approximates the requirements for different amounts of history, at the time of writing (2023-07-19):
 
 | Real Time Amount | Number of Ledger Versions | Disk Space Required (NuDB) |
-|:-----------------|:--------------------------|:---------------------------|
-| 2 hours          | 2,000                     | 450 MB |
-| 1 day            | 25,000                    | 12 GB |
-| 14 days          | 350,000                   | 168 GB |
-| 30 days          | 750,000                   | 360 GB |
-| 90 days          | 2,250,000                 | 1 TB |
-| 1 year           | 10,000,000                | 4.5 TB |
-| 2 years          | 20,000,000                | 9 TB |
-| Full history     | 81,000,000+               | ~26 TB |
+| :--------------- | :------------------------ | :------------------------- |
+| 2 hours          | 2,000                     | 450 MB                     |
+| 1 day            | 25,000                    | 12 GB                      |
+| 14 days          | 350,000                   | 168 GB                     |
+| 30 days          | 750,000                   | 360 GB                     |
+| 90 days          | 2,250,000                 | 1 TB                       |
+| 1 year           | 10,000,000                | 4.5 TB                     |
+| 2 years          | 20,000,000                | 9 TB                       |
+| Full history     | 81,000,000+               | ~26 TB                     |
 
 These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data. You should provision extra storage capacity to prepare for future growth.
 
@@ -158,7 +154,6 @@ The `[database_path]` configures separate bookkeeping databases: these include t
 As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for a `rippled` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](../configuration/configure-amendment-voting.md) and [peer reservations](../configuration/peering/use-a-peer-reservation.md).
 
 If your config file has a `[shard_db]` stanza, you can safely remove it. This section is obsolete and has no effect. {% badge href="https://github.com/XRPLF/rippled/releases/tag/2.3.0" %}Removed in: rippled 2.3.0{% /badge %}
-
 
 ##### Amazon Web Services
 
@@ -181,7 +176,7 @@ During exceptionally high periods of transaction volume, some operators have rep
 Here are examples of observed uncompressed network bandwidth use for common tasks:
 
 | Task                                            | Send/Receive           |
-|:------------------------------------------------|:-----------------------|
+| :---------------------------------------------- | :--------------------- |
 | Process average transaction volumes             | 2 Mbps up, 2 Mbps down |
 | Process peak transaction volumes                | >100 Mbps up           |
 | Serve historical ledger and transaction reports | 100 Mbps up            |
@@ -189,21 +184,20 @@ Here are examples of observed uncompressed network bandwidth use for common task
 
 You can save bandwidth by [enabling compression on peer-to-peer communications](../configuration/peering/enable-link-compression.md), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
 
-
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Consensus](../../concepts/consensus-protocol/index.md)
+  - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+  - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Configure rippled](../configuration/index.md)
-        - [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) - Adjust how many historical ledger versions your server should keep at a time.
-    - [Troubleshoot rippled](../troubleshooting/index.md)
+  - [Configure rippled](../configuration/index.md)
+    - [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) - Adjust how many historical ledger versions your server should keep at a time.
+  - [Troubleshoot rippled](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
-        - [logrotate method][] - Closes and reopens the server's debug log so you can rotate it with standard tools.
-        - [server_info method][] - General information about the server including sync status and how many historical ledger versions it has available on disk.
-        - [get_counts method][] - Additional health information, especially how many objects of various types it holds in RAM.
+  - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [logrotate method][] - Closes and reopens the server's debug log so you can rotate it with standard tools.
+    - [server_info method][] - General information about the server including sync status and how many historical ledger versions it has available on disk.
+    - [get_counts method][] - Additional health information, especially how many objects of various types it holds in RAM.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

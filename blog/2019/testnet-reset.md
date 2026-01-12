@@ -1,13 +1,14 @@
 ---
 labels:
-    - Advisories
-date: "2019-08-30"
+  - Advisories
+date: '2019-08-30'
 template: '../../@theme/templates/blogpost'
 category: 2019
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # XRP Testnet Has Been Reset
 
 On 2019-08-27 at approximately 1:00 UTC (6 PM PDT), Ripple reset their XRP Testnet. This means that all accounts, balances, and settings in the Testnet have been deleted and all contents of the Testnet's decentralized exchange have been erased. However, in the process of resetting the XRP Testnet, a procedural issue caused amendments that were previously enabled to be disabled in the fresh ledger chain. Ripple plans to reset the XRP Testnet again today (2019-08-30) at 4 PM PDT. Starting at this time, the Testnet may be unavailable for a maintenance window lasting up to 4 hours.
@@ -29,7 +30,6 @@ Recently use of the Testnet Faucet has increased, causing it to fund over 1 mill
 In the future, Ripple intends to reset the Testnet approximately every 90 days or as needed. Ripple will make every effort to provide advance notice before resetting the XRP Testnet in the future.
 
 Furthermore, to better accommodate the increased usage, the Testnet Faucet has been reconfigured to distribute 1,000 Testnet XRP at a time to new accounts, instead of 10,000.
-
 
 ## Testnet Status
 

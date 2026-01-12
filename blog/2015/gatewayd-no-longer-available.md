@@ -1,13 +1,14 @@
 ---
-date: "2015-07-01"
+date: '2015-07-01'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 category: 2015
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Gatewayd No Longer Available
 
 In the interest of focusing our resources on other projects, starting today, Gatewayd will no longer be available on Github.

@@ -1,20 +1,20 @@
 ---
 category: 2024
-date: "2024-11-25"
+date: '2024-11-25'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 2.3.0
-    description: rippled version 2.3.0 is now available. This version introduces new features and stability fixes.
+  title: Introducing XRP Ledger version 2.3.0
+  description: rippled version 2.3.0 is now available. This version introduces new features and stability fixes.
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 2.3.0
 
 Version 2.3.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes 8 new amendments, including Multi-Purpose Tokens (MPTs), Credentials, Clawback support for AMMs, and the ability to make offers as part of minting NFTs. Additionally, this release includes important fixes for stability, so server operators are encouraged to upgrade as soon as possible.
-
 
 ## Action Required
 
@@ -26,18 +26,19 @@ Additionally, new amendments are now open for voting according to the XRP Ledger
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.3.0-1.el7.x86_64.rpm) | `fb74f401e5ba121bbc37e6188aa064488ad78ffef549a1e19bc8b71316d08031` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.3.0-1_amd64.deb) | `5d616d53218b47a2f0803c1d37d410f72d19b57cdb9cabdf77b1cf0134cce3ca` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.3.0-1_amd64.deb)  | `5d616d53218b47a2f0803c1d37d410f72d19b57cdb9cabdf77b1cf0134cce3ca` |
 
 {% admonition type="info" name="Note" %}
 The packages in the stable repository were accidentally overwritten with a different build from the same source code as a result of version 2.3.0 being merged to both the `release` and `master` source code branches. This post has been updated with the new package hashes based on the packages currently available in the stable branch of each repository. The previous package hashes, below, are also acceptable, and represent the same release:
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                           | SHA-256                                                            |
+| :-------------------------------- | :----------------------------------------------------------------- |
 | RPM for Red Hat / CentOS (x86-64) | `980547fc8eea56e4010f294305166df00f8962219e91493c4f687e9eed67d47a` |
-| DEB for Ubuntu / Debian (x86-64) | `c773c9e33cb0e661cc8805bd55bf1e28b36c399107a562bae1d2291515ef9838` |
+| DEB for Ubuntu / Debian (x86-64)  | `c773c9e33cb0e661cc8805bd55bf1e28b36c399107a562bae1d2291515ef9838` |
+
 {% /admonition %}
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
@@ -50,7 +51,6 @@ Date:   Mon Nov 25 12:27:17 2024 -0800
     Set version to 2.3.0
 ```
 
-
 ## Full Changelog
 
 ### Amendments
@@ -58,7 +58,7 @@ Date:   Mon Nov 25 12:27:17 2024 -0800
 The following amendments are open for voting with this release:
 
 - **XLS-70 Credentials** - Introduces the ability to issue Credentials on the ledger and use these Credentials to pre-approve incoming payments when using Deposit Authorization instead of individually approving payers. ([#5103](https://github.com/XRPLF/rippled/pull/5103))
-    - related fix: #5189 (https://github.com/XRPLF/rippled/pull/5189)
+  - related fix: #5189 (https://github.com/XRPLF/rippled/pull/5189)
 - **XLS-33 Multi-Purpose Tokens** - Introduces a new type of fungible token optimized for institutional DeFi including stablecoins. ([#5143](https://github.com/XRPLF/rippled/pull/5143))
 - **XLS-37 AMM Clawback** - Allows clawback-enabled tokens to be used in AMMs, with appropriate guardrails. ([#5142](https://github.com/XRPLF/rippled/pull/5142))
 - **XLS-52 NFTokenMintOffer** - Allows creating an NFT sell offer as part of minting a new NFT. ([#4845](https://github.com/XRPLF/rippled/pull/4845))
@@ -74,7 +74,7 @@ The following amendment is partially implemented but not open for voting:
 ### New Features
 
 - Allow configuration of SQLite database page size. ([#5135](https://github.com/XRPLF/rippled/pull/5135), [#5140](https://github.com/XRPLF/rippled/pull/5140))
-- In the `libxrpl` C++ library, provide a list of known amendments. ([#5026](https://github.com/XRPLF/rippled/pull/5026)) 
+- In the `libxrpl` C++ library, provide a list of known amendments. ([#5026](https://github.com/XRPLF/rippled/pull/5026))
 
 ### Deprecations
 

@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Get the holders of a given MPT issuance as of a given ledger.
+  description: Get the holders of a given MPT issuance as of a given ledger.
 labels:
   - Accounts
   - XRP
@@ -21,6 +21,7 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "command": "mpt_holders",
@@ -28,9 +29,11 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
   "ledger_index": "validated"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "method": "mpt_holders",
@@ -42,6 +45,7 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
   ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -50,18 +54,19 @@ For a given `MPTokenIssuanceID` and ledger sequence, `mpt_holders` returns all h
 
 The request contains the following parameters:
 
-| Field             | Type                       | Required? | Description |
-|:------------------|:---------------------------|:----------|-------------|
-| `mpt_issuance_id` | String                     | Yes       | The `MPTokenIssuance` to query. |
-| `ledger_index`    | [Ledger Index][] | No  | The [Ledger Index][] of the max ledger to use, or a shortcut string to choose a ledger automatically. You must specify either `ledger_index` or `ledger_hash`. See [Specifying Ledgers][].|
-| `ledger_hash`     | String                     | No        | A 32-byte hex string for the ledger version to use. You must specify either `ledger_index` or ledger_hash. See [Specifying Ledgers][]. |
-| `marker`          | [Marker][]                 | No        | Used to continue your query where it left off in paginating. |
-| `limit`           | Number (positive integer)  | No        | Specify a limit to the number of MPTs returned. |
+| Field             | Type                      | Required? | Description                                                                                                                                                                                |
+| :---------------- | :------------------------ | :-------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `mpt_issuance_id` | String                    | Yes       | The `MPTokenIssuance` to query.                                                                                                                                                            |
+| `ledger_index`    | [Ledger Index][]          | No        | The [Ledger Index][] of the max ledger to use, or a shortcut string to choose a ledger automatically. You must specify either `ledger_index` or `ledger_hash`. See [Specifying Ledgers][]. |
+| `ledger_hash`     | String                    | No        | A 32-byte hex string for the ledger version to use. You must specify either `ledger_index` or ledger_hash. See [Specifying Ledgers][].                                                     |
+| `marker`          | [Marker][]                | No        | Used to continue your query where it left off in paginating.                                                                                                                               |
+| `limit`           | Number (positive integer) | No        | Specify a limit to the number of MPTs returned.                                                                                                                                            |
 
 ## Response Format
 
 {% tabs %}
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -89,9 +94,11 @@ The request contains the following parameters:
   ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -119,6 +126,7 @@ The request contains the following parameters:
   ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -127,25 +135,25 @@ The request contains the following parameters:
 
 The response follows the [standard format][], with the result containing the following fields:
 
-| Field                  | Type             | Description                               |
-|:-----------------------|:-----------------|:------------------------------------------|
-| `mpt_issuance_id`      | String           | The `MPTokenIssuance` queried.            |
-| `mptokens`             | Array            | An array of [MPTokens](#mptoken). Includes all relevant fields in the underlying `MPToken` object. |
-| `marker`               | [Marker][]       | Used to continue querying where we left off when paginating. Omitted if there are no more entries after this result. |
-| `limit`                | Number           | The limit, as specified in the request. |
-| `ledger_index`         | [Ledger Index][] | The index of the ledger used.  |
-| `validated`            | Boolean          | If `true`, the ledger has been validated by the consensus process and is immutable. Otherwise, the contents of the ledger are not final and may change. In Clio, this is _always_ true as Clio stores and returns validated ledger data. |
+| Field             | Type             | Description                                                                                                                                                                                                                              |
+| :---------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mpt_issuance_id` | String           | The `MPTokenIssuance` queried.                                                                                                                                                                                                           |
+| `mptokens`        | Array            | An array of [MPTokens](#mptoken). Includes all relevant fields in the underlying `MPToken` object.                                                                                                                                       |
+| `marker`          | [Marker][]       | Used to continue querying where we left off when paginating. Omitted if there are no more entries after this result.                                                                                                                     |
+| `limit`           | Number           | The limit, as specified in the request.                                                                                                                                                                                                  |
+| `ledger_index`    | [Ledger Index][] | The index of the ledger used.                                                                                                                                                                                                            |
+| `validated`       | Boolean          | If `true`, the ledger has been validated by the consensus process and is immutable. Otherwise, the contents of the ledger are not final and may change. In Clio, this is _always_ true as Clio stores and returns validated ledger data. |
 
 #### MPToken
 
 An `MPToken` object has the following parameters:
 
-| Field                  | Type              | Description |
-|:-----------------------|:------------------|:------------------------------------------|
-| `account`              | String            | The account address of the holder who owns the `MPToken`. |
-| `flags`                | Number            | The flags assigned to the`MPToken` object. |
-| `mpt_amount`           | [String Number][] | Specifies a positive amount of tokens currently held by the owner. |
-| `mptoken_index`        | String            | Key of the `MPToken` object. |
+| Field           | Type              | Description                                                        |
+| :-------------- | :---------------- | :----------------------------------------------------------------- |
+| `account`       | String            | The account address of the holder who owns the `MPToken`.          |
+| `flags`         | Number            | The flags assigned to the`MPToken` object.                         |
+| `mpt_amount`    | [String Number][] | Specifies a positive amount of tokens currently held by the owner. |
+| `mptoken_index` | String            | Key of the `MPToken` object.                                       |
 
 ## Possible Errors
 

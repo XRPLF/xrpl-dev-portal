@@ -1,16 +1,17 @@
 ---
 category: 2025
-date: "2025-06-24"
+date: '2025-06-24'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 2.5.0
-    description: rippled version 2.5.0 is now available. This version introduces new features and bug fixes.
+  title: Introducing XRP Ledger version 2.5.0
+  description: rippled version 2.5.0 is now available. This version introduces new features and bug fixes.
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 2.5.0
 
 Version 2.5.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds new features and bug fixes, and introduces these amendments:
@@ -23,22 +24,20 @@ Version 2.5.0 of `rippled`, the reference server implementation of the XRP Ledge
 - `EnforceNFTokenTrustlineV2`
 - `PayChanCancelAfter`
 
-
 ## Action Required
 
 If you run an XRP Ledger server, upgrade to version 2.5.0 as soon as possible to ensure service continuity.
 
 Additionally, new amendments are now open for voting according to the XRP Ledger's [amendment process](../../docs/concepts/networks-and-servers/amendments.md), which enables protocol changes following two weeks of >80% support from trusted validators. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.5.0-1.el7.x86_64.rpm) | `7719be1889619a37a83795a9740d803bbc1c08b0bd8c755cbf266aeb68b875b6` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.5.0-1_amd64.deb) | `d935f678624349e422dff1944a40acaf3e287b11244b4f5b5056cb343fc31e9d` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.5.0-1_amd64.deb)  | `d935f678624349e422dff1944a40acaf3e287b11244b4f5b5056cb343fc31e9d` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -51,7 +50,6 @@ Date:   Tue Jun 17 10:38:07 2025 -0700
 ```
 
 {% admonition type="warning" name="Warning" %} After this release, we will no longer support GCC versions older than 12, Clang (including Apple Clang) versions older than 16, or Conan 1. {% /admonition %}
-
 
 ## Full Changelog
 
@@ -67,7 +65,6 @@ The following amendments are open for voting with this release:
 - **EnforceNFTokenTrustlineV2** - Fixes issues with NFT interactions bypassing the trustline authorization requirement. ([#5297](https://github.com/XRPLF/rippled/pull/5297))
 - **PayChanCancelAfter** - Fixes an issue that made it possible to create a payment channel when `CancelAfter` is in the past. ([#4717](https://github.com/XRPLF/rippled/pull/4717))
 
-
 ### New Features
 
 - Increased network I/O capacity to handle higher transaction loads. ([#5464](https://github.com/XRPLF/rippled/pull/5464))
@@ -75,7 +72,6 @@ The following amendments are open for voting with this release:
 - Added XRPL Commons as a new Bootstrap Cluster in the `rippled` configuration. ([#5263](https://github.com/XRPLF/rippled/pull/5263))
 - Improved how the `simulate` method handles transactions submitted from a multi-signing account. Also fixed an issue that allowed transactions when both single-signed and multi-signed keys were provided. ([#5479](https://github.com/XRPLF/rippled/pull/5479))
 - Updated code reviewers for RPC changes. ([#5266](https://github.com/XRPLF/rippled/pull/5266))
-
 
 ### Bug Fixes
 
@@ -102,7 +98,6 @@ The following amendments are open for voting with this release:
 - Fixed CTID to use the correct `ledger_index`. ([#5408](https://github.com/XRPLF/rippled/pull/5408))
 - Updated CODEOWNERS path configuration. ([#5440](https://github.com/XRPLF/rippled/pull/5440))
 - Removed unused code. ([#5475](https://github.com/XRPLF/rippled/pull/5475))
-
 
 ### Other Improvements
 
@@ -131,7 +126,6 @@ The following amendments are open for voting with this release:
 - Updated `validators-example.txt` to fix XRPLF example URL configuration. ([#5384](https://github.com/XRPLF/rippled/pull/5384))
 - Changed ledger close in `env.meta` to be conditionally on, making it easier to debug issues if you closed the ledger outside of the `meta` function. ([#5457](https://github.com/XRPLF/rippled/pull/5457))
 - Collapsed log messages for easier readability. ([#5347](https://github.com/XRPLF/rippled/pull/5347))
-
 
 ## Credits
 
@@ -168,7 +162,6 @@ The following people contributed directly to this release:
 - Wietse Wind <w.wind@ipublications.net>
 - Xun Zhao <xzhao@ripple.com>
 - Yinyi Qian <yqian@ripple.com>
-
 
 ## Bug Bounties and Responsible Disclosures
 

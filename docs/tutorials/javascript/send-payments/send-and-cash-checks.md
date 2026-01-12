@@ -6,11 +6,12 @@ labels:
   - Checks
   - XRP
 ---
+
 # Send and Cash Checks
 
 This example shows how to:
 
-1. Send a check to transfer XRP or issued currency to another account. 
+1. Send a check to transfer XRP or issued currency to another account.
 2. Get a list of checks you have sent or received.
 3. Cash a check received from another account.
 4. Cancel a check you have sent.
@@ -18,8 +19,7 @@ This example shows how to:
 Checks offer another option for transferring funds between accounts. Checks have two particular advantages.
 
 1. You can use a check to send [tokens](../../../concepts/tokens/index.md) to someone who has not already created a trust line. The trust line is created automatically when the receiver chooses to accept the funds.
-2. The receiver can choose to accept less than the full amount of the check. This allows you to authorize a maximum amount when the actual cost is not finalized. 
-
+2. The receiver can choose to accept less than the full amount of the check. This allows you to authorize a maximum amount when the actual cost is not finalized.
 
 [![Empty Check Form](/docs/img/mt-send-checks-1-empty-form.png)](/docs/img/mt-send-checks-1-empty-form.png)
 
@@ -37,15 +37,15 @@ To get test accounts:
 
 1. Open `send-checks.html` in a browser.
 2. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   1. If you copied the gathered information from another tutorial:
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
 
 [![Form with Accounts](/docs/img/mt-send-checks-2-form-with-accounts.png)](/docs/img/mt-send-checks-2-form-with-accounts.png)
 
@@ -55,9 +55,9 @@ To send a check for XRP:
 
 1. Select **Account 1** or **Account 2**.
 2. Enter the **Amount** of XRP to send, in drops.
-2. Enter the receiving account address in the **Destination** field.
-3. Set the **Currency Code** to _XRP_.
-4. Click **Send Check**.
+3. Enter the receiving account address in the **Destination** field.
+4. Set the **Currency Code** to _XRP_.
+5. Click **Send Check**.
 
 [![Send Check Settings](/docs/img/mt-send-checks-3-send-xrp.png)](/docs/img/mt-send-checks-3-send-xrp.png)
 
@@ -74,7 +74,6 @@ To send a check for an issued currency token:
 
 [![Send Token Check Settings](/docs/img/mt-send-checks-4-send-currency.png)](/docs/img/mt-send-checks-4-send-currency.png)
 
-
 ### Get Checks
 
 Click **Get Checks** to get a list of the current checks you have sent or received. To uniquely identify a check (for example, when cashing a check), use the check's ledger entry ID, in the `index` field.
@@ -88,10 +87,8 @@ To cash a check you have received:
 1. Enter the **Check ID** (**index** value).
 2. Enter the **Amount** you want to collect, up to the full amount of the check.
 3. Enter the currency code.
-   a. If you are cashing a check for XRP, enter _XRP_ in the **Currency Code** field. 
-   b. If you are cashing a check for an issued currency token:
-	    1. Enter the **Issuer** of the token.
-	    2. Enter the **Currency Code** code for the token.
+   a. If you are cashing a check for XRP, enter _XRP_ in the **Currency Code** field.
+   b. If you are cashing a check for an issued currency token: 1. Enter the **Issuer** of the token. 2. Enter the **Currency Code** code for the token.
 4. Click **Cash Check**.
 
 [![Cashed check results](/docs/img/mt-send-checks-6-cash-check.png)](/docs/img/mt-send-checks-6-cash-check.png)
@@ -130,66 +127,65 @@ async function sendCheck() {
   resultField.value = results
 ```
 
-Prepare the transaction. Set the *check_amount* variable to the value in the **Amount** field.
+Prepare the transaction. Set the _check_amount_ variable to the value in the **Amount** field.
 
 ```javascript
-  try {     
+  try {
     const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
     let check_amount = amountField.value
 ```
 
- If the currency field is not _XRP_, create an `amount` object with the _currency_, _value_, and _issuer_. Otherwise, use the *check_amount* value as is.
+If the currency field is not _XRP_, create an `amount` object with the _currency_, _value_, and _issuer_. Otherwise, use the _check_amount_ value as is.
 
- ```javascript
-    if (currencyField.value !=  "XRP") {
-      check_amount = {
-        "currency": currencyField.value,
-        "value": amountField.value,
-        "issuer": wallet.address  	
-      }
-    }
-  ```
-
-  Create the transaction object.
-
-  ```javascript
-  const send_check_tx = {
-    "TransactionType": "CheckCreate",
-    "Account": wallet.address,
-    "SendMax": check_amount,
-    "Destination": destinationField.value
+```javascript
+if (currencyField.value != 'XRP') {
+  check_amount = {
+    currency: currencyField.value,
+    value: amountField.value,
+    issuer: wallet.address,
   }
+}
+```
+
+Create the transaction object.
+
+```javascript
+const send_check_tx = {
+  TransactionType: 'CheckCreate',
+  Account: wallet.address,
+  SendMax: check_amount,
+  Destination: destinationField.value,
+}
 ```
 
 Autofill the remaining values and sign the prepared transaction.
 
 ```javascript
-    const check_prepared = await client.autofill(send_check_tx)
-    const check_signed = wallet.sign(check_prepared)
+const check_prepared = await client.autofill(send_check_tx)
+const check_signed = wallet.sign(check_prepared)
 ```
 
 Send the transaction and wait for the results.
 
 ```javascript
-    results += '\n===Sending ' + amountField.value + ' ' + currencyField.
-     value + ' to ' +  destinationField.value + '.===\n'
-    resultField.value = results
-    const check_result = await client.submitAndWait(check_signed.tx_blob)
+results += '\n===Sending ' + amountField.value + ' ' + currencyField.value + ' to ' + destinationField.value + '.===\n'
+resultField.value = results
+const check_result = await client.submitAndWait(check_signed.tx_blob)
 ```
 
 Report the results.
 
 ```javascript
-    if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
-      results = '===Transaction succeeded===\n\n'
-      resultField.value += results + JSON.stringify(check_result.result, null, 2)
-    }
+if (check_result.result.meta.TransactionResult == 'tesSUCCESS') {
+  results = '===Transaction succeeded===\n\n'
+  resultField.value += results + JSON.stringify(check_result.result, null, 2)
+}
 ```
 
 Update the **XRP Balance** field.
 
 ```javascript
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
 ```
 
 Report any errors, then disconnect from the XRP ledger.
@@ -208,11 +204,12 @@ Report any errors, then disconnect from the XRP ledger.
 ## getChecks()
 
 Connect to the XRP Ledger.
+
 ```javascript
 async function getChecks() {
   let net = getNet()
   const client = new xrpl.Client(net)
-  await client.connect()   
+  await client.connect()
   let results = `\n===Connected to ${net}.===\n===Getting account checks.===\n\n`
   resultField.value = results
 ```
@@ -229,10 +226,11 @@ Define an `account_objects` query, filtering for the _check_ object type.
       "type": "check"
     })
 ```
+
 Display the retrieved `Check` objects in the result field.
 
 ```javascript
-    resultField.value += JSON.stringify(check_objects.result, null, 2)
+resultField.value += JSON.stringify(check_objects.result, null, 2)
 ```
 
 Catch and report any errors, then disconnect from the XRP Ledger.
@@ -272,59 +270,59 @@ Set the check amount.
 If the currency is not _XRP_, create an `amount` object with _value_, _currency_, and _issuer_.
 
 ```javascript
-    if (currencyField.value !=  "XRP") {
-      check_amount = {
-        "value": amountField.value,
-        "currency": currencyField.value,
-        "issuer": issuerField.value  	
-      }
-    }
+if (currencyField.value != 'XRP') {
+  check_amount = {
+    value: amountField.value,
+    currency: currencyField.value,
+    issuer: issuerField.value,
+  }
+}
 ```
 
 Create the `CheckCash` transaction object.
 
 ```javascript
-    const cash_check_tx = {
-      "TransactionType": "CheckCash",
-      "Account": wallet.address,
-      "Amount": check_amount,
-      "CheckID": checkIdField.value
-    }
+const cash_check_tx = {
+  TransactionType: 'CheckCash',
+  Account: wallet.address,
+  Amount: check_amount,
+  CheckID: checkIdField.value,
+}
 ```
 
 Autofill the transaction details.
 
 ```javascript
-    const cash_prepared = await client.autofill(cash_check_tx)
+const cash_prepared = await client.autofill(cash_check_tx)
 ```
 
 Sign the prepared transaction.
 
 ```javascript
-    const cash_signed = wallet.sign(cash_prepared)
-    results = ' Receiving ' + amountField.value + ' ' + currencyField.value + '.\n'
-    resultField.value += results
+const cash_signed = wallet.sign(cash_prepared)
+results = ' Receiving ' + amountField.value + ' ' + currencyField.value + '.\n'
+resultField.value += results
 ```
 
 Submit the transaction and wait for the result.
 
 ```javascript
-  const check_result = await client.submitAndWait(cash_signed.tx_blob)
-  ```
+const check_result = await client.submitAndWait(cash_signed.tx_blob)
+```
 
 Report the transaction results.
 
 ```javascript
-    if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
-      results = '===Transaction succeeded===\n' + JSON.stringify(check_result.result, null, 2)
-      resultField.value += results
-    }
+if (check_result.result.meta.TransactionResult == 'tesSUCCESS') {
+  results = '===Transaction succeeded===\n' + JSON.stringify(check_result.result, null, 2)
+  resultField.value += results
+}
 ```
 
 Update the XRP Balance field.
 
 ```javascript
-  xrpBalanceField.value = (await client.getXrpBalance(wallet.address));
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
 ```
 
 Catch and report any errors, then disconnect from the XRP ledger.
@@ -367,34 +365,34 @@ Create the CheckCancel transaction object, passing the wallet address and the Ch
 Autofill the transaction details.
 
 ```javascript
-    const cancel_prepared = await client.autofill(cancel_check_tx)
+const cancel_prepared = await client.autofill(cancel_check_tx)
 ```
 
 Sign the prepared transaction.
 
 ```javascript
-    const cancel_signed = wallet.sign(cancel_prepared)
+const cancel_signed = wallet.sign(cancel_prepared)
 ```
 
 Submit the transaction and wait for the results.
 
 ```javascript
-    const check_result = await client.submitAndWait(cancel_signed.tx_blob)
+const check_result = await client.submitAndWait(cancel_signed.tx_blob)
 ```
 
 Report the transaction results.
 
 ```javascript
-    if (check_result.result.meta.TransactionResult == "tesSUCCESS") {
-      results += `===Transaction succeeded===\n${check_result.result.meta.TransactionResult}`
-      resultField.value = results
-    } 
+if (check_result.result.meta.TransactionResult == 'tesSUCCESS') {
+  results += `===Transaction succeeded===\n${check_result.result.meta.TransactionResult}`
+  resultField.value = results
+}
 ```
 
 Update the XRP Balance field.
 
 ```javascript
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
 ```
 
 Catch and report any errors, then disconnect from the XRP ledger.
@@ -485,7 +483,7 @@ Catch and report any errors, then disconnect from the XRP ledger.
                         <label for="account1address">Account 1 Address</label>
                     </span>
                 </td>
-                <td> 
+                <td>
                     <input type="text" id="account1address" size="40"></input>
                 </td>
                 <td>
@@ -572,10 +570,10 @@ Catch and report any errors, then disconnect from the XRP ledger.
                 <td>
                     <input type="text" id="currencyField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
                     <button type="button" onClick="sendCheck()">Send Check</button>
-                </td>               
+                </td>
             </tr>
             <tr>
                 <td align="right">
@@ -586,10 +584,10 @@ Catch and report any errors, then disconnect from the XRP ledger.
                 <td>
                     <input type="text" id="issuerField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
                     <button type="button" onClick="cashCheck()">Cash Check</button>
-                </td>              
+                </td>
             </tr>
             <tr>
                 <td align="right">

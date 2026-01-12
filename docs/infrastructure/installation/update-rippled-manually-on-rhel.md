@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Manually update rippled on CentOS or Red Hat Enterprise Linux.
+  description: Manually update rippled on CentOS or Red Hat Enterprise Linux.
 labels:
   - Core Server
   - Security
 ---
+
 # Update Manually on Red Hat Enterprise Linux
 
 This page describes how to update manually to the latest release of `rippled` on Red Hat Enterprise Linux. You can also set up [automatic updates](update-rippled-automatically-on-linux.md).
@@ -17,35 +18,34 @@ To update manually, complete the following steps:
 
 1. Download and install the latest `rippled` package:
 
-    ```
-    sudo yum update rippled
-    ```
+   ```
+   sudo yum update rippled
+   ```
 
-    This update procedure leaves your existing config files in place.
+   This update procedure leaves your existing config files in place.
 
 2. Reload the `systemd` unit files:
 
-    ```
-    sudo systemctl daemon-reload
-    ```
+   ```
+   sudo systemctl daemon-reload
+   ```
 
 3. Restart the `rippled` service:
 
-    ```
-    sudo service rippled restart
-    ```
-
+   ```
+   sudo service rippled restart
+   ```
 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Consensus](../../concepts/consensus-protocol/index.md)
+  - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+  - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Troubleshoot rippled](../troubleshooting/index.md)
+  - [Troubleshoot rippled](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
-        - [server_info method][]
+  - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

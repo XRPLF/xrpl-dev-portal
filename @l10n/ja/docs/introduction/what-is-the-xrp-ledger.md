@@ -2,14 +2,14 @@
 html: what-is-the-xrp-ledger.html
 parent: introduction.html
 seo:
-    description: ブロックチェーン「XRP Ledger」についてご紹介します。
+  description: ブロックチェーン「XRP Ledger」についてご紹介します。
 labels:
   - ブロックチェーン
 ---
+
 # XRP Ledgerとは?
 
 XRPは、中央集権的な機関が管理せずブロックチェーン暗号を用いた分散型システムであるXRP Ledgerによってトランザクションが検証され記録が管理されるデジタル通貨です。
-
 
 ## ブロックチェーンとは?
 

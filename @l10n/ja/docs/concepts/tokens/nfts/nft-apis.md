@@ -2,10 +2,11 @@
 html: nft-apis.html
 parent: non-fungible-tokens.html
 seo:
-    description: 専用のAPIを使用すると、有用なNFTメタデータにアクセスできます。
+  description: 専用のAPIを使用すると、有用なNFTメタデータにアクセスできます。
 labels:
   - 非代替性トークン, NFT
 ---
+
 # NFTのAPI
 
 このページでは、NFTに関連するトランザクションとリクエストを一覧でご紹介します。
@@ -14,8 +15,8 @@ labels:
 
 - [NFToken][]データ型 - 台帳に保存されるNFTのオブジェクト。
 - レジャーオブジェクト
-    - [NFTokenOfferオブジェクト][] - NFTを売買するためのオファー。
-    - [NFTokenPageオブジェクト][] - NFTページは最大32個のNFTオブジェクトを保持します。実際には、各NFTページは通常16～24個のNFTを保持します。
+  - [NFTokenOfferオブジェクト][] - NFTを売買するためのオファー。
+  - [NFTokenPageオブジェクト][] - NFTページは最大32個のNFTオブジェクトを保持します。実際には、各NFTページは通常16～24個のNFTを保持します。
 
 ## NFTのトランザクション
 
@@ -46,7 +47,7 @@ Clioサーバは、キャッシュに基づいて情報のリクエストを処�
 - [nft_info](../../../references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md) - 指定されたNFTに関する現在のステータスを取得します。
 - [nft_history](../../../references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md) - 指定されたNFTの過去のトランザクションメタデータを取得します。
 
-<!-- 
+<!--
 [nfts_by_issuer](nfts_by_issuer.html) - 指定した発行者が作成したNFTの一覧を取得します。
 -->
 

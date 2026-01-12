@@ -1,12 +1,13 @@
 ---
 seo:
-    description: Broker a sale between a sell offer and a buy offer.
+  description: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
   - NFTs
   - Batch
   - XRP
 ---
+
 # Batch Mint NFTs Using JavaScript
 
 You can create an application that mints multiple NFTs at one time. You can use a `for` loop to send one transaction after another.
@@ -23,21 +24,21 @@ You can download the [NFT Modular Samples](../../../../_code-samples/nft-modular
 
 1. Open `batch-minting.html` in a browser.
 2. Get a test account.
-    1. If you want to use an existing account seed:
-        1. Paste the account seed in the **Seed** field.
-        2. Click **Get Account from Seed**.
-    2. If you do not want to use an existing account seed, click **Get New Account 1**.
+   1. If you want to use an existing account seed:
+      1. Paste the account seed in the **Seed** field.
+      2. Click **Get Account from Seed**.
+   2. If you do not want to use an existing account seed, click **Get New Account 1**.
 
 ## Batch Mint NFTs
 
-This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. 
+This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items.
 
 To batch mint NFTs:
 
 1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
 2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../../../docs/references/protocol/transactions/types/nftokenmint.md) for information about all of the available flags for minting NFTs.
 3. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
-4. Set the **NFT Taxon**. If you don't have a use for this field, set it to _0_. 
+4. Set the **NFT Taxon**. If you don't have a use for this field, set it to _0_.
 5. Enter an **NFT Count** of up to 200 NFTs to create in one batch.
 6. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 7. Click **Batch Mint NFTs**.
@@ -90,24 +91,24 @@ Connect to the XRP Ledger and get the account wallet.
     resultField.value = results;
 ```
 
-Get the Sequence number from the most recent transaction  with an account information request.
+Get the Sequence number from the most recent transaction with an account information request.
 
 ```javascript
-    let account_info;
-    try {
-      account_info = await client.request({
-        "command": "account_info",
-        "account": wallet.address
-      });
-    } catch (error) {
-      results += `\nError retrieving account info for ${wallet.address}: ${error.message}`;
-      resultField.value = results;
-      return;
-    }
+let account_info
+try {
+  account_info = await client.request({
+    command: 'account_info',
+    account: wallet.address,
+  })
+} catch (error) {
+  results += `\nError retrieving account info for ${wallet.address}: ${error.message}`
+  resultField.value = results
+  return
+}
 
-    let my_sequence = account_info.result.account_data.Sequence;
-    results += "\n\nSequence Number: " + my_sequence + "\n\n";
-    resultField.value = results;
+let my_sequence = account_info.result.account_data.Sequence
+results += '\n\nSequence Number: ' + my_sequence + '\n\n'
+resultField.value = results
 ```
 
 Create ticket numbers for the batch.
@@ -117,103 +118,102 @@ Without tickets, if one transaction fails, all others in the batch fail. With ti
 Start by parsing the **NFT Count**.
 
 ```javascript
-    const nftCount = parseInt(nftCountField.value);
-    if (isNaN(nftCount) || nftCount <= 0) {
-      results += '\nError: Please enter a valid number of NFTs to mint.';
-      resultField.value = results;
-      return;
-    }
+const nftCount = parseInt(nftCountField.value)
+if (isNaN(nftCount) || nftCount <= 0) {
+  results += '\nError: Please enter a valid number of NFTs to mint.'
+  resultField.value = results
+  return
+}
 ```
 
 Create the transaction JSON object.
 
 ```javascript
-    let ticketTransaction;
-    try {
-      ticketTransaction = await client.autofill({
-        "TransactionType": "TicketCreate",
-        "Account": wallet.address,
-        "TicketCount": nftCount,
-        "Sequence": my_sequence
-      });
-    } catch (error) {
-      results += `\nError autofilling ticket creation transaction: ${error.message}`;
-      resultField.value = results;
-      return;
-    }
+let ticketTransaction
+try {
+  ticketTransaction = await client.autofill({
+    TransactionType: 'TicketCreate',
+    Account: wallet.address,
+    TicketCount: nftCount,
+    Sequence: my_sequence,
+  })
+} catch (error) {
+  results += `\nError autofilling ticket creation transaction: ${error.message}`
+  resultField.value = results
+  return
+}
 ```
 
 Sign the ticket transaction.
 
 ```javascript
-
-    //---------------------------------------------------- Sign the transaction.
-    const signedTransaction = wallet.sign(ticketTransaction);
+//---------------------------------------------------- Sign the transaction.
+const signedTransaction = wallet.sign(ticketTransaction)
 ```
 
 Submit the transaction and wait for the result.
 
 ```javascript
-  let tx;
-    try {
-      tx = await client.submitAndWait(signedTransaction.tx_blob);
-    } catch (error) {
-      results += `\nError submitting ticket creation transaction: ${error.message}`;
-      resultField.value = results;
-      return;
-    }
+let tx
+try {
+  tx = await client.submitAndWait(signedTransaction.tx_blob)
+} catch (error) {
+  results += `\nError submitting ticket creation transaction: ${error.message}`
+  resultField.value = results
+  return
+}
 ```
 
 Verify the transaction succeeded and report the result.
 
 ```javascript
-    if (tx.result.meta.TransactionResult !== 'tesSUCCESS') {
-      results += `\nError creating tickets. Transaction failed with result: ${tx.result.meta.TransactionResult}`;
-      resultField.value = results;
-      return;
-    }
-    results += `\nTickets created successfully. Transaction result: ${tx.result.meta.TransactionResult}\n\n`;
-    resultField.value = results;
+if (tx.result.meta.TransactionResult !== 'tesSUCCESS') {
+  results += `\nError creating tickets. Transaction failed with result: ${tx.result.meta.TransactionResult}`
+  resultField.value = results
+  return
+}
+results += `\nTickets created successfully. Transaction result: ${tx.result.meta.TransactionResult}\n\n`
+resultField.value = results
 ```
 
 Get the generated tickets.
 
 ```javascript
-    let response;
-    try {
-      response = await client.request({
-        "command": "account_objects",
-        "account": wallet.address,
-        "type": "ticket"
-      });
-    } catch (error) {
-      results += `\nError retrieving account tickets: ${error.message}`;
-      resultField.value = results;
-      return;
-    }
+let response
+try {
+  response = await client.request({
+    command: 'account_objects',
+    account: wallet.address,
+    type: 'ticket',
+  })
+} catch (error) {
+  results += `\nError retrieving account tickets: ${error.message}`
+  resultField.value = results
+  return
+}
 ```
 
 Populate an array variable with the tickets and report the results.
 
 ```javascript
-    let tickets = [];
-    if (response.result.account_objects && response.result.account_objects.length > 0) {
-      for (let i = 0; i < nftCount; i++) {
-        if (response.result.account_objects[i]) {
-          tickets[i] = response.result.account_objects[i].TicketSequence;
-        } else {
-          results += `\nWarning: Fewer tickets found than requested. Expected ${nftCount}, found ${response.result.account_objects.length}.`;
-          resultField.value = results;
-          break; // Exit loop if tickets run out
-        }
-      }
+let tickets = []
+if (response.result.account_objects && response.result.account_objects.length > 0) {
+  for (let i = 0; i < nftCount; i++) {
+    if (response.result.account_objects[i]) {
+      tickets[i] = response.result.account_objects[i].TicketSequence
     } else {
-      results += '\nError: No tickets found for the account.';
-      resultField.value = results;
-      return;
+      results += `\nWarning: Fewer tickets found than requested. Expected ${nftCount}, found ${response.result.account_objects.length}.`
+      resultField.value = results
+      break // Exit loop if tickets run out
     }
-    results += "Tickets generated, minting NFTs.\n\n";
-    resultField.value = results;
+  }
+} else {
+  results += '\nError: No tickets found for the account.'
+  resultField.value = results
+  return
+}
+results += 'Tickets generated, minting NFTs.\n\n'
+resultField.value = results
 ```
 
 Mint the NFTs by looping through the available tickets and creating NFTs one at a time.
@@ -237,22 +237,21 @@ Mint the NFTs by looping through the available tickets and creating NFTs one at 
 Add optional fields, as needed.
 
 ```javascript
-         // Add optional fields
-      if (amountField.value) {
-          transactionParams.Amount = configureAmount(amountField.value);
-      }
+// Add optional fields
+if (amountField.value) {
+  transactionParams.Amount = configureAmount(amountField.value)
+}
 
-      if (expirationField.value) {
-        transactionParams.Expiration = configureExpiration(expirationField.value);
-      }
+if (expirationField.value) {
+  transactionParams.Expiration = configureExpiration(expirationField.value)
+}
 
-      if (destinationField.value) {
-        transactionParams.Destination = destinationField.value;
-      }
+if (destinationField.value) {
+  transactionParams.Destination = destinationField.value
+}
 ```
 
 Submit the transaction and wait for the result.
-
 
 ```javascript
       try {
@@ -271,13 +270,11 @@ Submit the transaction and wait for the result.
     }
 ```
 
-
 Report the results.
 
 ```javascript
-    results += `\n\nAttempted to mint ${nftCount} NFTs. Successfully minted ${mintedNFTsCount} NFTs.`;
+results += `\n\nAttempted to mint ${nftCount} NFTs. Successfully minted ${mintedNFTsCount} NFTs.`
 ```
-
 
 Display the minted NFTs.
 
@@ -293,7 +290,7 @@ Display the minted NFTs.
       results += JSON.stringify(nfts, null, 2);
 ```
 
-Continue to retrieve NFTs 400 at a time until all NFTs are fetched. 
+Continue to retrieve NFTs 400 at a time until all NFTs are fetched.
 
 ```javascript
       while (nfts.result.marker) {
@@ -313,13 +310,13 @@ Continue to retrieve NFTs 400 at a time until all NFTs are fetched.
 Update the **XRP Balance** field.
 
 ```javascript
-    try {
-      xrpBalanceField.value = (await client.getXrpBalance(wallet.address));
-    } catch (error) {
-      results += `\nError fetching XRP balance: ${error.message}`;
-    }
+try {
+  xrpBalanceField.value = await client.getXrpBalance(wallet.address)
+} catch (error) {
+  results += `\nError fetching XRP balance: ${error.message}`
+}
 
-    resultField.value = results;
+resultField.value = results
 ```
 
 Catch and report any errors.
@@ -380,15 +377,15 @@ Retrieve the first 400 NFTs and report the results.
 While there are more NFTs, continue to retrieve them in batches of 400.
 
 ```javascript
-      while (nfts.result.marker) {
-        nfts = await client.request({
-          method: "account_nfts",
-          account: wallet.classicAddress,
-          limit: 400,
-          marker: nfts.result.marker
-        });
-        results += '\n' + JSON.stringify(nfts, null, 2);
-      }
+while (nfts.result.marker) {
+  nfts = await client.request({
+    method: 'account_nfts',
+    account: wallet.classicAddress,
+    limit: 400,
+    marker: nfts.result.marker,
+  })
+  results += '\n' + JSON.stringify(nfts, null, 2)
+}
 ```
 
 Catch and report any fetch errors.

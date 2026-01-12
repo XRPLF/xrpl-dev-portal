@@ -1,44 +1,51 @@
 ---
 seo:
-    description: Get the latest closed ledger version.
+  description: Get the latest closed ledger version.
 labels:
-    - Blockchain
+  - Blockchain
 ---
+
 # ledger_closed
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerClosed.cpp "Source")
 
 The `ledger_closed` method returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)
 
 ## Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-   "id": 2,
-   "command": "ledger_closed"
+  "id": 2,
+  "command": "ledger_closed"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "ledger_closed",
-    "params": [
-        {}
-    ]
+  "method": "ledger_closed",
+  "params": [{}]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: ledger_closed
 rippled ledger_closed
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -48,11 +55,13 @@ rippled ledger_closed
 This method accepts no parameters.
 
 ## Response Format
+
 An example of a successful response:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": 1,
@@ -64,9 +73,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -78,31 +89,34 @@ An example of a successful response:
     }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 {
-   "result" : {
-      "ledger_hash" : "6F5D3B97F1CAA8440AFCED3CA10FB9DC6472F64DEBC2EFAE7CAE7FC0123F32DA",
-      "ledger_index" : 56843991,
-      "status" : "success"
-   }
+  "result": {
+    "ledger_hash": "6F5D3B97F1CAA8440AFCED3CA10FB9DC6472F64DEBC2EFAE7CAE7FC0123F32DA",
+    "ledger_index": 56843991,
+    "status": "success"
+  }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`        | Type             | Description                              |
-|:---------------|:-----------------|:-----------------------------------------|
+| `Field`        | Type             | Description                                                 |
+| :------------- | :--------------- | :---------------------------------------------------------- |
 | `ledger_hash`  | String           | The unique [Hash][] of this ledger version, in hexadecimal. |
-| `ledger_index` | Unsigned Integer | The [ledger index][] of this ledger version.           |
+| `ledger_index` | Unsigned Integer | The [ledger index][] of this ledger version.                |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

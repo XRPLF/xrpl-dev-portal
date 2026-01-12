@@ -1,18 +1,17 @@
 ---
 seo:
-    description: 指定されたOracleインスタンスの集計価格を計算します。
+  description: 指定されたOracleインスタンスの集計価格を計算します。
 labels:
   - オラクル
 ---
+
 # get_aggregate_price
 
 _([PriceOracle amendment][])_
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/GetAggregatePrice.cpp "ソース")
 
-
 `get_aggregate_price`メソッドは、指定された`Oracle`オブジェクトの集計価格を取得し、平均値、中央値、整形された平均値の3つの価格情報を返します。
-
 
 ## リクエストフォーマット
 
@@ -21,6 +20,7 @@ _([PriceOracle amendment][])_
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "command": "get_aggregate_price",
@@ -52,9 +52,11 @@ _([PriceOracle amendment][])_
   ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "method": "get_aggregate_price",
@@ -82,6 +84,7 @@ _([PriceOracle amendment][])_
   ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -90,13 +93,13 @@ _([PriceOracle amendment][])_
 
 リクエストには以下のパラメータが含まれています:
 
-| フィールド       | 型     | 必須?  | 説明 |
-| ---------------- | ------ | ------ | ---- |
-| `base_asset`     | 文字列 | はい   | 価格を計算する資産の通貨コード。 |
-| `quote_asset`    | 文字列 | はい   | 基軸資産の価格を計算する資産の通貨コード。 |
+| フィールド       | 型     | 必須?  | 説明                                                                                                                |
+| ---------------- | ------ | ------ | ------------------------------------------------------------------------------------------------------------------- |
+| `base_asset`     | 文字列 | はい   | 価格を計算する資産の通貨コード。                                                                                    |
+| `quote_asset`    | 文字列 | はい   | 基軸資産の価格を計算する資産の通貨コード。                                                                          |
 | `trim`           | 数値   | いいえ | 外れ値を削除する割合。有効な削除範囲は1-25。削除範囲が含まれている場合、APIは整形された平均値の統計情報を返します。 |
 | `trim_threshold` | 数値   | いいえ | 古い価格データをフィルタリングする秒単位の時間範囲を定義します。デフォルト値は0で、データをフィルタリングしません。 |
-| `oracles`        | 配列   | はい   | Oracleを識別するオブジェクトの配列。Oracleオブジェクトは1から200のOracleの識別子をリストする必要があります。 |
+| `oracles`        | 配列   | はい   | Oracleを識別するオブジェクトの配列。Oracleオブジェクトは1から200のOracleの識別子をリストする必要があります。        |
 
 `oracles`配列の各メンバーは、次のフィールドを持つOracleオブジェクトです。
 
@@ -104,7 +107,6 @@ _([PriceOracle amendment][])_
 | -------------------- | ------ | ------ | -------------------------------------------- |
 | `account`            | 文字列 | はい   | `Oracle`オブジェクトを制御するXRPLアカウント |
 | `oracle_document_id` | 数値   | はい   | `Account`の価格Oracleの一意の識別子          |
-
 
 ## レスポンスフォーマット
 
@@ -133,17 +135,17 @@ _([PriceOracle amendment][])_
 }
 ```
 
-| フィールド                       | 型            | 説明 |
-| -------------------------------- | ------------- | ---- |
-| `entire_set`                     | オブジェクト  | 収集されたOracleの価格の統計情報。 |
-| `entire_set.mean`                | 文字列 - 数値 | 単純な平均値。 |
-| `entire_set.size`                | 数値          | 平均値を計算するデータセットのサイズ。 |
-| `entire_set.standard_deviation`  | 文字列 - 数値 | 標準偏差。 |
+| フィールド                       | 型            | 説明                                                                                                   |
+| -------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
+| `entire_set`                     | オブジェクト  | 収集されたOracleの価格の統計情報。                                                                     |
+| `entire_set.mean`                | 文字列 - 数値 | 単純な平均値。                                                                                         |
+| `entire_set.size`                | 数値          | 平均値を計算するデータセットのサイズ。                                                                 |
+| `entire_set.standard_deviation`  | 文字列 - 数値 | 標準偏差。                                                                                             |
 | `trimmed_set`                    | オブジェクト  | 整形されたOracleの価格の統計情報。`trim`フィールドがリクエストに指定されている場合にのみ表示されます。 |
-| `trimmed_set.mean`               | 文字列 - 数値 | 整形されたデータの単純な平均値。 |
-| `trimmed_set.size`               | 数値          | 整形された平均値を計算するデータセットのサイズ。 |
-| `trimmed_set.standard_deviation` | 文字列 - 数値 | 整形されたデータの標準偏差。 |
-| `time`                           | 数値          | すべての`LastUpdateTime`値の中で最も新しいタイムスタンプ。Unix時間で表されます。 |
+| `trimmed_set.mean`               | 文字列 - 数値 | 整形されたデータの単純な平均値。                                                                       |
+| `trimmed_set.size`               | 数値          | 整形された平均値を計算するデータセットのサイズ。                                                       |
+| `trimmed_set.standard_deviation` | 文字列 - 数値 | 整形されたデータの標準偏差。                                                                           |
+| `time`                           | 数値          | すべての`LastUpdateTime`値の中で最も新しいタイムスタンプ。Unix時間で表されます。                       |
 
 {% admonition type="info" name="注記" %}
 
@@ -154,7 +156,6 @@ _([PriceOracle amendment][])_
 
 {% /admonition %}
 
-
 ## 起こりうるエラー
 
 - すべての[汎用エラータイプ][]。
@@ -162,6 +163,6 @@ _([PriceOracle amendment][])_
 - `internal` - `trim_threshold`の設定によりすべての価格が削除された。
 - `objectNotFound` - データセットに価格がない。
 - `oracleMalformed` - `oracles`配列が不正。少なくとも1つのオブジェクトフィールドが正しく指定されていないか、オブジェクトの数が1から200の範囲外です。
-- 
+-
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

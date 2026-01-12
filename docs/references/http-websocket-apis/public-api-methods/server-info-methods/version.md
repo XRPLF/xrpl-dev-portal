@@ -1,45 +1,50 @@
 ---
 seo:
-    description: Retrieve API version information.
+  description: Retrieve API version information.
 labels:
-    - Core Server
+  - Core Server
 ---
+
 # version
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Version.h "Source")
 
 The `version` command retrieves the API version information for the rippled server. For `Clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
 
-
 ## Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "command": "version"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "version",
-    "params": [
-        {}
-    ]
+  "method": "version",
+  "params": [{}]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: version
 rippled version
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -55,6 +60,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -68,9 +74,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -86,9 +94,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 {
   "result": {
@@ -102,6 +112,7 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -110,14 +121,14 @@ The response follows the [standard format][], with a successful result containin
 
 The `version` object returns some arrangement of the following fields:
 
-| `Field`  | Type   | Description                   |
-|:---------|:-------|:------------------------------|
-| `first`  | String | Lowest supported API release  |
-| `last`   | String | Highest supported API release |
-| `good`   | String | Default API if none specified |
+| `Field` | Type   | Description                   |
+| :------ | :----- | :---------------------------- |
+| `first` | String | Lowest supported API release  |
+| `last`  | String | Highest supported API release |
+| `good`  | String | Default API if none specified |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

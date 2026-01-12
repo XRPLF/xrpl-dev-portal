@@ -2,10 +2,11 @@
 html: nft-storage.html
 parent: non-fungible-tokens.html
 seo:
-    description: NFTのペイロードのストレージオプション。
+  description: NFTのペイロードのストレージオプション。
 labels:
   - 非代替性トークン, NFT
 ---
+
 # NFTペイロードのストレージ
 
 NFTはブロックチェーン上で作成されます。しかし、メディア、メタデータ、属性を含むNFTのコンテンツは、XRP Ledger上、XRP Ledger外の分散型、XRP Ledger外の中央集権型など、様々な方法で保存することができます。

@@ -1,8 +1,9 @@
 ---
 seo:
-    description: Learn how a payments provider business can enable cross-currency payments using a permissioned on-chain decentralized exchange (DEX).
+  description: Learn how a payments provider business can enable cross-currency payments using a permissioned on-chain decentralized exchange (DEX).
 status: not_enabled
 ---
+
 # Enable Compliance-Focused Cross-Currency Payments Using a Permissioned DEX
 
 Payments provider businesses today can leverage cryptocurrency to enable low-cost global settlement in a variety of assets. But currency conversion (FX) is still a challenge: it may use off-chain, centralized exchanges (CEX); or it may use an on-chain, open decentralized exchange (DEX). Both of these models come with significant friction, which can be alleviated by instead using an on-chain, permissioned decentralized exchange (pDEX).
@@ -13,11 +14,11 @@ This page explains how a payments provider can use the features of the XRP Ledge
 
 ## Background: The challenges with other modes of currency exchange
 
-Cross-border payments often involve two to three currencies, which need to be exchanged as part of the payment process: 
+Cross-border payments often involve two to three currencies, which need to be exchanged as part of the payment process:
 
 - The sending currency provided by the sender.
 - The receiving currency paid out to the beneficiary.
-- Possibly a bridge currency, such as a cryptocurrency that is used to connect two off-chain, centralized exchanges located in different countries. 
+- Possibly a bridge currency, such as a cryptocurrency that is used to connect two off-chain, centralized exchanges located in different countries.
 
 Whether or not you use a bridge currency, at least one currency exchange must happen to facilitate the payment, and there are different challenges depending on where that exchange takes place.
 
@@ -34,7 +35,6 @@ Off-chain, centralized exchanges (CEX) are more commonly used by payments provid
 - **High Costs:** Centralized exchanges typically charge a trading fee, plus there may be costs for onboarding and KYC processes, in addition to the spread in the currency exchange rates.
 - **Loss of Control:** Relying on a centralized exchange, an external entity from the perspective of the payment provider, limits how much oversight and control the provider can exert over the overall payment lifecycle.
 
-
 ## Solution: Permissioned DEX on the XRP Ledger
 
 By setting up a permissioned DEX (pDEX) on the XRP Ledger, a payments provider can run its own regulated marketplace for currency conversion, getting the benefits of a decentralized exchange without the compliance risk:
@@ -44,7 +44,6 @@ By setting up a permissioned DEX (pDEX) on the XRP Ledger, a payments provider c
 - **End-to-End Control:** The payments provider has full control over the payments lifecycle and isn't dependent on CEX processing times, opaque matching algorithms, or similar limitations.
 - **Operational Resilience:** The XRP Ledger's battle-tested, highly stable blockchain and decentralized exchange technology powers the software side, so the payment provider can count on the DEX being operational, with no exposure to risk of outages at any CEX, and extremely high reliability.
 - **Lower Cost Base:** Using a pDEX eliminates trading fees and reduces the onboarding overhead.
-
 
 ## How to set up a permissioned DEX
 

@@ -2,10 +2,11 @@
 html: ledger-close-times.html
 parent: ledgers.html
 seo:
-    description: How the XRP Ledger calculates a unique close time value for each ledger version.
+  description: How the XRP Ledger calculates a unique close time value for each ledger version.
 labels:
   - Blockchain
 ---
+
 # Ledger Close Times
 
 The time that a ledger version closed is recorded at the `close_time` field of the [ledger header](../../references/protocol/ledger-data/ledger-header.md). To make it easier for the network to reach a consensus on an exact close time, this value is rounded to a number of seconds based on the close time resolution, currently 10 seconds. If rounding would cause a ledger's close time to be the same as (or earlier than) its parent ledger's, the child ledger has its close time set to the parent's close time plus 1. This guarantees that the close times of validated ledgers are strictly increasing. <!-- STYLE_OVERRIDE: a number of -->

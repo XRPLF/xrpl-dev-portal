@@ -2,11 +2,12 @@
 html: send-a-time-held-escrow.html
 parent: use-escrows.html
 seo:
-    description: Create an escrow whose only condition for release is that a specific time has passed.
+  description: Create an escrow whose only condition for release is that a specific time has passed.
 labels:
   - Escrow
   - Smart Contracts
 ---
+
 # Send a Time-Held Escrow
 
 The [EscrowCreate transaction][] type can create an escrow whose only condition for release is that a specific time has passed. To do this, use the `FinishAfter` field and omit the `Condition` field.
@@ -18,16 +19,19 @@ You must specify the time as whole **[seconds since the Ripple Epoch][]**, which
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 // JavaScript Date() is natively expressed in milliseconds; convert to seconds
-const release_date_unix = Math.floor( new Date("2017-11-13T00:00:00Z") / 1000 );
-const release_date_ripple = release_date_unix - 946684800;
-console.log(release_date_ripple);
+const release_date_unix = Math.floor(new Date('2017-11-13T00:00:00Z') / 1000)
+const release_date_ripple = release_date_unix - 946684800
+console.log(release_date_ripple)
 // 563846400
 ```
+
 {% /tab %}
 
 {% tab label="Python 3" %}
+
 ```python
 import datetime
 release_date_utc = datetime.datetime(2017,11,13,0,0,0,tzinfo=datetime.timezone.utc)
@@ -35,6 +39,7 @@ release_date_ripple = int(release_date_utc.timestamp()) - 946684800
 print(release_date_ripple)
 # 563846400
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -45,8 +50,7 @@ print(release_date_ripple)
 
 [Sign and submit](../../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
-
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 {% tabs %}
 
@@ -123,7 +127,6 @@ Response:
 
 {% /tabs %}
 
-
 ## 6. Submit EscrowFinish transaction
 
 [Sign and submit](../../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowFinish transaction][] to execute the release of the funds after the `FinishAfter` time has passed. Set the `Owner` field of the transaction to the `Account` address from the EscrowCreate transaction, and the `OfferSequence` to the `Sequence` number from the EscrowCreate transaction. For an escrow held only by time, omit the `Condition` and `Fulfillment` fields.
@@ -134,7 +137,7 @@ The EscrowFinish transaction is necessary because the XRP Ledger's state can onl
 
 If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.md) instead.
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 {% tabs %}
 
@@ -160,7 +163,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 7. Wait for validation
 
-{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 ## 8. Confirm final result
 
@@ -186,23 +189,22 @@ Response:
 
 {% /tabs %}
 
-
 ## See Also
 
 - **Concepts:**
-    - [What is XRP?](../../../../introduction/what-is-xrp.md)
-    - [Payment Types](../../../../concepts/payment-types/index.md)
-        - [Escrow](../../../../concepts/payment-types/escrow.md)
+  - [What is XRP?](../../../../introduction/what-is-xrp.md)
+  - [Payment Types](../../../../concepts/payment-types/index.md)
+    - [Escrow](../../../../concepts/payment-types/escrow.md)
 - **Tutorials:**
-    - [Send XRP](../../send-xrp.md)
-    - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
-    - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Send XRP](../../send-xrp.md)
+  - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+  - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [EscrowCancel transaction][]
-    - [EscrowCreate transaction][]
-    - [EscrowFinish transaction][]
-    - [account_objects method][]
-    - [tx method][]
-    - [Escrow ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+  - [EscrowCancel transaction][]
+  - [EscrowCreate transaction][]
+  - [EscrowFinish transaction][]
+  - [account_objects method][]
+  - [tx method][]
+  - [Escrow ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

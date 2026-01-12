@@ -2,23 +2,22 @@
 html: py-create-time-based-escrows.html
 parent: send-payments-using-python.html
 seo:
-    description: Create, finish, or cancel time-based escrow transactions.
+  description: Create, finish, or cancel time-based escrow transactions.
 labels:
   - Accounts
   - Quickstart
   - Transaction Sending
   - XRP
 ---
+
 # Create Time-based Escrows Using Python
 
 This example shows how to:
 
-
 1. Create escrow payments that become available at a specified time and expire at a specified time.
 2. Finish an escrow payment.
 3. Retrieve information on escrows attached to an account.
-3. Cancel an escrow payment and return the XRP to the sending account.
-
+4. Cancel an escrow payment and return the XRP to the sending account.
 
 [![Escrow Tester Form](/docs/img/quickstart-py-escrow1.png)](/docs/img/quickstart-py-escrow1.png)
 
@@ -32,18 +31,18 @@ To get test accounts:
 
 1. Open `lesson8-time-escrow.py.`
 2. Get test accounts.
-    1. If you have existing account seeds
-        1. Paste Standby account seed in the **Standby Seed** field.
-        2. Click **Get Standby Account**.
-        3. Click **Get Standby Account Info**.
-        4. Paste Operational account seed in the **Operational Seed** field.
-        5. Click **Get Operational Account**.
-        6. Click **Get Op Account Info**.
-    2. If you do not have account seeds:
-        1. Click **Get Standby Account**.
-        2. Click **Get Standby Account Info**.
-        3. Click **Get Operational Account**.
-        4. Click **Get Op Account Info**.
+   1. If you have existing account seeds
+      1. Paste Standby account seed in the **Standby Seed** field.
+      2. Click **Get Standby Account**.
+      3. Click **Get Standby Account Info**.
+      4. Paste Operational account seed in the **Operational Seed** field.
+      5. Click **Get Operational Account**.
+      6. Click **Get Op Account Info**.
+   2. If you do not have account seeds:
+      1. Click **Get Standby Account**.
+      2. Click **Get Standby Account Info**.
+      3. Click **Get Operational Account**.
+      4. Click **Get Op Account Info**.
 
 [![Escrow Tester with Account Information](/docs/img/quickstart-py-escrow2.png)](/docs/img/quickstart-py-escrow2.png)
 
@@ -91,7 +90,6 @@ For the purposes of this tutorial, you can follow the steps in [Create Escrow](#
 
 [![Get Escrows results](/docs/img/quickstart-py-escrow5.png)](/docs/img/quickstart-py-escrow5.png)
 
-
 ## Cancel Escrow
 
 When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP. If you try to cancel the transaction prior to the **Escrow Cancel** time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.
@@ -102,7 +100,7 @@ To cancel an expired escrow:
 
 1. Enter the sequence number in the Standby **Sequence Number** field.
 2. Copy the **Standby Account** value and paste it in the **Escrow Owner** field.
-2. Click **Cancel Time-based Escrow**.
+3. Click **Cancel Time-based Escrow**.
 
 The funds are returned to the Standby account, less the initial transaction fee.
 
@@ -166,7 +164,7 @@ Return the resulting date value.
 
 ### create_time_escrow
 
-Call the create_time_escrow function, passing the _seed_, _amount_, _destination_, _finish_ interval, and _cancel_ interval.
+Call the create*time_escrow function, passing the \_seed*, _amount_, _destination_, _finish_ interval, and _cancel_ interval.
 
 ```python
 def create_time_escrow(seed, amount, destination, finish, cancel):
@@ -200,7 +198,7 @@ Define the **EscrowCreate** transaction.
         destination=destination,
         finish_after=finish_date,
         cancel_after=cancel_date
-    ) 
+    )
 ```
 
 Submit the transaction and report the results.
@@ -404,12 +402,12 @@ def standby_cancel_time_escrow():
     )
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
-    
+
 def operational_get_transaction():
     results = get_transaction(ent_operational_account.get(),
                               ent_operational_look_up.get())
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 ## Mod 1 Handlers
 
@@ -494,7 +492,7 @@ ent_standby_escrow_cancel = tk.Entry(master=frm_form, width=50)
 lbl_standby_escrow_sequence_number = tk.Label(master=frm_form, text="Sequence Number")
 ent_standby_escrow_sequence_number = tk.Entry(master=frm_form, width=50)
 lbl_standby_escrow_owner = tk.Label(master=frm_form, text="Escrow Owner")
-ent_standby_escrow_owner = tk.Entry(master=frm_form, width=50)                    
+ent_standby_escrow_owner = tk.Entry(master=frm_form, width=50)
 lbl_standby_results = tk.Label(master=frm_form, text="Results")
 text_standby_results = tk.Text(master=frm_form, height = 20, width = 65)
 

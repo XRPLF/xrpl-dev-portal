@@ -1,20 +1,21 @@
 ---
 seo:
-    description: These common fields are part of every ledger entry.
+  description: These common fields are part of every ledger entry.
 ---
+
 # Ledger Entry Common Fields
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/LedgerFormats.cpp)
 
 Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has the same set of common fields, plus additional fields based on the [ledger entry type](ledger-entry-types/index.md). Field names are case-sensitive. The common fields for all ledger entries are:
 
-| Field                    | JSON Type | [Internal Type][] | Required? | Description |
-|:-------------------------|:----------|:------------------|:----------|:------------|
+| Field                    | JSON Type | [Internal Type][] | Required? | Description                                                                                                                                                                                                                                                                                                    |
+| :----------------------- | :-------- | :---------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `index` or `LedgerIndex` | String    | UInt256           | No        | The unique ID for this ledger entry. In JSON, this field is represented with different names depending on the context and API method. (Note, even though this is specified as "optional" in the code, every ledger entry should have one unless it's legacy data from very early in the XRP Ledger's history.) |
-| `LedgerEntryType`        | String    | UInt16            | Yes       | The type of ledger entry. Valid [ledger entry types](ledger-entry-types/index.md) include `AccountRoot`, `Offer`, `RippleState`, and others. |
-| `Flags`                  | Number    | UInt32            | Yes       | Set of bit-flags for this ledger entry. |
+| `LedgerEntryType`        | String    | UInt16            | Yes       | The type of ledger entry. Valid [ledger entry types](ledger-entry-types/index.md) include `AccountRoot`, `Offer`, `RippleState`, and others.                                                                                                                                                                   |
+| `Flags`                  | Number    | UInt32            | Yes       | Set of bit-flags for this ledger entry.                                                                                                                                                                                                                                                                        |
 
 {% admonition type="warning" name="Caution" %}In JSON, the ledger entry ID is in the `index` or `LedgerIndex` field. This is not the same as a [ledger index][] in the `ledger_index` field.{% /admonition %}
-
 
 ## Ledger Entry ID
 
@@ -26,8 +27,7 @@ Generally, a ledger entry's ID is returned as the `index` field in JSON, at the 
 
 Offer directories have special IDs, where part of the hash is replaced with the exchange rate of Offers in that directory.
 
-[{% inline-svg file="/docs/img/ledger-object-ids.svg" /%}](/docs/img/ledger-object-ids.svg "Diagram: ID calculations for different types of ledger entries. The space key prevents IDs for different types from colliding.")
-
+[{% inline-svg file="/docs/img/ledger-object-ids.svg" /%}](/docs/img/ledger-object-ids.svg 'Diagram: ID calculations for different types of ledger entries. The space key prevents IDs for different types from colliding.')
 
 ## Flags
 

@@ -2,13 +2,14 @@
 html: py-create-trustline-send-currency.html
 parent: send-payments-using-python.html
 seo:
-    description: Create trust lines and send currency.
+  description: Create trust lines and send currency.
 labels:
   - Cross-Currency
   - Payments
   - Quickstart
   - Tokens
 ---
+
 # Create Trust Line and Send Currency Using Python
 
 This example shows how to:
@@ -31,19 +32,18 @@ Open the Quickstart window and get accounts:
 
 1. Open and run `lesson2-send-currency.py`.
 2. Get test accounts.
-    1. If you have existing account seeds
-        1. Paste account seeds in the **Seeds** field.
-        2. Click **Get Accounts from Seeds**.
-    2. If you do not have account seeds:
-        1. Click **Get New Standby Account**.
-        2. Click **Get New Operational Account**.
+   1. If you have existing account seeds
+      1. Paste account seeds in the **Seeds** field.
+      2. Click **Get Accounts from Seeds**.
+   2. If you do not have account seeds:
+      1. Click **Get New Standby Account**.
+      2. Click **Get New Operational Account**.
 
 ## Create Trust Line
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6KWP0PV6J8Y?si=SSxFGrvfTo6pOPLD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-
 
 To create a trust line between accounts:
 
@@ -146,7 +146,8 @@ Return the results.
 ```python
     return response.result
 ```
-## send_currency 
+
+## send_currency
 
 Send currency to another account based on the sender wallet, destination account, the currency type, and the amount of the currency.
 
@@ -178,16 +179,16 @@ Define the payment transaction. The amount requires further description to ident
 
 Submit the transaction and get the response.
 
-```python
+````python
     response=xrpl.transaction.submit_and_wait(send_currency_tx, client, sending_wallet)```
 
 Return the results.
 
 ```python
     return response.result
-```
+````
 
-### get_balance 
+### get_balance
 
 Update the **XRP Balance** fields and list the balance information for issued currencies in the **Results** text areas.
 
@@ -202,7 +203,7 @@ Connect to the XRP Ledger and instantiate a client.
     client=JsonRpcClient(testnet_url)
 ```
 
-Create the `GatewayBalances` request. 
+Create the `GatewayBalances` request.
 
 ```python
     balance=xrpl.models.requests.GatewayBalances(
@@ -224,6 +225,7 @@ Return the result.
 This example shows how to set and clear configuration flags using the `AccountSet` method. The `ASF_DEFAULT_RIPPLE` flag is pertinent to experimentation with transfer of issued currencies to third-party accounts, so it is demonstrated here. You can set any of the configuration flags using the same structure, substituting the particular flags you want to set. See [AccountSet Flags](../../../references/protocol/transactions/types/accountset.md#accountset-flags).
 
 Send the account seed and a Boolean value for whether to enable or disable rippling.
+
 ```python
 def configure_account(seed, default_setting):
     """configure_account"
@@ -236,7 +238,7 @@ Get the account wallet and instantiate a client.
     client=JsonRpcClient(testnet_url)
 ```
 
-If  `default_setting` is true, create a `set_flag` transaction to enable rippling. If false, create a `clear_flag` transaction to disable rippling.
+If `default_setting` is true, create a `set_flag` transaction to enable rippling. If false, create a `clear_flag` transaction to disable rippling.
 
 ```python
     if (default_setting):
@@ -255,7 +257,7 @@ Submit the transaction and get results.
 
 ```python
     response=xrpl.transaction.submit_and_wait(setting_tx,client,wallet)
-    return response.result   
+    return response.result
 ```
 
 ## lesson2-send-currency.py

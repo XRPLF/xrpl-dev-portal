@@ -2,8 +2,9 @@
 html: ledger-structure.html
 parent: ledgers.html
 seo:
-    description: A closer look at the elements of an individual ledger block.
+  description: A closer look at the elements of an individual ledger block.
 ---
+
 # Ledger Structure
 
 The XRP Ledger is a blockchain, which means it consists of a history of data blocks in sequence. A block in the XRP Ledger blockchain is called a _ledger version_ or a _ledger_ for short.
@@ -12,8 +13,7 @@ The consensus protocol takes a previous ledger version as a starting point, form
 
 Each ledger version contains _state data_, a _transaction set_, and a _header_ containing metadata.
 
-[{% inline-svg file="/docs/img/ledger.svg" /%}](/docs/img/ledger.svg "Diagram: A ledger consists of a header, transaction set, and state data.")
-
+[{% inline-svg file="/docs/img/ledger.svg" /%}](/docs/img/ledger.svg 'Diagram: A ledger consists of a header, transaction set, and state data.')
 
 ## State Data
 
@@ -34,23 +34,21 @@ Every transaction in a ledger's transaction set has both of the following parts:
 - _Transaction instructions_ showing what its sender told the ledger to do.
 - _Transaction metadata_ showing exactly how the transaction was processed and how it affected the ledger's state data.
 
-
 ## Ledger Header
 
 The _ledger header_ is a block of data that summarizes a ledger version. Like the cover of a report, it uniquely identifies the ledger version, lists its contents, and shows the time it was created, along with some other notes. The ledger header contains the following information:
 
 <!-- Note: the alt text for the diagrams is intentionally empty because any caption would be redundant with the text. -->
 
-- [{% inline-svg file="/docs/img/ledger-index-icon.svg" /%}](/docs/img/ledger-index-icon.svg "") The _ledger index_, which identifies the ledger version's position in the chain. It builds on the ledger with an index that is one lower, back to the starting point known as the _genesis ledger_. This forms a public history of all transactions and results.
-- [{% inline-svg file="/docs/img/ledger-hash-icon.svg" /%}](/docs/img/ledger-hash-icon.svg "") The _ledger hash_, which uniquely identifies the ledger's contents. The hash is calculated so that if any detail of the ledger version changes, the hash is completely different, which makes it also like a checksum that shows that none of the data in the ledger has been lost, modified, or corrupted.
-- [{% inline-svg file="/docs/img/ledger-parent-icon.svg" /%}](/docs/img/ledger-parent-icon.svg "") The _parent ledger hash_. A ledger version is largely defined by the difference from the _parent ledger_ that came before it, so the header also contains the unique hash of its parent ledger.
-- [{% inline-svg file="/docs/img/ledger-timestamp-icon.svg" /%}](/docs/img/ledger-timestamp-icon.svg "") The _close time_, the official timestamp when this ledger's contents were finalized. This number is rounded off by a number of seconds, usually 10.
-- [{% inline-svg file="/docs/img/ledger-state-data-hash-icon.svg" /%}](/docs/img/ledger-state-data-hash-icon.svg "") A _state data hash_ which acts as a checksum on this ledger's state data.
-- [{% inline-svg file="/docs/img/ledger-tx-set-hash-icon.svg" /%}](/docs/img/ledger-tx-set-hash-icon.svg "") A _transaction set hash_ which acts as a checksum on this ledger's transaction set data.
-- [{% inline-svg file="/docs/img/ledger-notes-icon.svg" /%}](/docs/img/ledger-notes-icon.svg "") A few other notes like the total amount of XRP in existence and the amount the close time was rounded by.
+- [{% inline-svg file="/docs/img/ledger-index-icon.svg" /%}](/docs/img/ledger-index-icon.svg) The _ledger index_, which identifies the ledger version's position in the chain. It builds on the ledger with an index that is one lower, back to the starting point known as the _genesis ledger_. This forms a public history of all transactions and results.
+- [{% inline-svg file="/docs/img/ledger-hash-icon.svg" /%}](/docs/img/ledger-hash-icon.svg) The _ledger hash_, which uniquely identifies the ledger's contents. The hash is calculated so that if any detail of the ledger version changes, the hash is completely different, which makes it also like a checksum that shows that none of the data in the ledger has been lost, modified, or corrupted.
+- [{% inline-svg file="/docs/img/ledger-parent-icon.svg" /%}](/docs/img/ledger-parent-icon.svg) The _parent ledger hash_. A ledger version is largely defined by the difference from the _parent ledger_ that came before it, so the header also contains the unique hash of its parent ledger.
+- [{% inline-svg file="/docs/img/ledger-timestamp-icon.svg" /%}](/docs/img/ledger-timestamp-icon.svg) The _close time_, the official timestamp when this ledger's contents were finalized. This number is rounded off by a number of seconds, usually 10.
+- [{% inline-svg file="/docs/img/ledger-state-data-hash-icon.svg" /%}](/docs/img/ledger-state-data-hash-icon.svg) A _state data hash_ which acts as a checksum on this ledger's state data.
+- [{% inline-svg file="/docs/img/ledger-tx-set-hash-icon.svg" /%}](/docs/img/ledger-tx-set-hash-icon.svg) A _transaction set hash_ which acts as a checksum on this ledger's transaction set data.
+- [{% inline-svg file="/docs/img/ledger-notes-icon.svg" /%}](/docs/img/ledger-notes-icon.svg) A few other notes like the total amount of XRP in existence and the amount the close time was rounded by.
 
 A ledger's transaction set and state data are unlimited in size, but the ledger header is always a fixed size. For the exact data and binary format of a ledger header, see [Ledger Header](../../references/protocol/ledger-data/ledger-header.md).
-
 
 ## Validation Status
 
@@ -59,7 +57,6 @@ A ledger's transaction set and state data are unlimited in size, but the ledger 
 When a consensus of validators in a server's Unique Node List agree on the contents of a ledger version, that ledger version is marked as validated and immutable. The ledger's contents can only change by subsequent transactions making a new ledger version, continuing the chain.
 
 When a ledger version is first created, it is not yet validated. Due to differences in when candidate transactions arrive at different servers, the network may build and propose multiple different ledger versions to be the next step in the chain. The [consensus protocol](../consensus-protocol/index.md) decides which one of them becomes validated. (Any candidate transactions that weren't in the validated ledger version can typically be included in the next ledger version's transaction set instead.)
-
 
 ## Ledger Index or Ledger Hash?
 

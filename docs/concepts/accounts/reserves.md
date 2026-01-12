@@ -2,12 +2,13 @@
 html: reserves.html
 parent: accounts.html
 seo:
-    description: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data.
+  description: XRP Ledger accounts require a reserve of XRP to reduce spam in ledger data.
 labels:
   - Fees
   - Accounts
 top_nav_grouping: Popular Pages
 ---
+
 # Reserves
 
 The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM.
@@ -22,8 +23,8 @@ The reserve requirement changes from time to time due to the [Fee Voting](../con
 
 The reserve requirement has two parts:
 
-* The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger.
-* The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger. The cost per item is also called the _incremental reserve_.
+- The **Base Reserve** is a minimum amount of XRP that is required for each address in the ledger.
+- The **Owner Reserve** is an increase to the reserve requirement for each object that the address owns in the ledger. The cost per item is also called the _incremental reserve_.
 
 The current reserve requirements on Mainnet are:
 
@@ -53,14 +54,13 @@ Some special cases:
 Applications can look up the current base and incremental reserve values using the [server_info method][] or [server_state method][]:
 
 | Method                  | Units                | Base Reserve Field                  | Incremental Reserve Field          |
-|-------------------------|----------------------|-------------------------------------|------------------------------------|
+| ----------------------- | -------------------- | ----------------------------------- | ---------------------------------- |
 | [server_info method][]  | Decimal XRP          | `validated_ledger.reserve_base_xrp` | `validated_ledger.reserve_inc_xrp` |
 | [server_state method][] | Integer drops of XRP | `validated_ledger.reserve_base`     | `validated_ledger.reserve_inc`     |
 
 To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the [account_info method][] and take `account_data.OwnerCount`.
 
 To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#codeblock-17) of this calculation in Python.
-
 
 ## Going Below the Reserve Requirement
 
@@ -69,7 +69,6 @@ During transaction processing, the [transaction cost](../transactions/transactio
 When your account holds less XRP than its current reserve requirement, you cannot send XRP to others, or create new objects that would increase your account's reserve requirement. Even so, the account continues to exist in the ledger and you can still send transactions that don't do these things, as long as you have enough XRP to pay the transaction cost. You can go back above the reserve requirement by receiving enough XRP, or if the reserve requirement decreases below the amount you have.
 
 {% admonition type="success" name="Tip" %}If your address is below the reserve requirement, you can send an [OfferCreate transactions][] to acquire more XRP and get back above the reserve requirement. However, since you cannot create an [Offer entry in the ledger](../../references/protocol/ledger-data/ledger-entry-types/offer.md) while you are below the reserve, this transaction can only consume Offers that are already in the order books.{% /admonition %}
-
 
 ## Changing the Reserve Requirements
 

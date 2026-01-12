@@ -13,7 +13,7 @@ async function getTransaction(): Promise<void> {
     transactions: true,
     ledger_index: 'validated',
   })
-  console.log("Latest validated ledger:", ledger)
+  console.log('Latest validated ledger:', ledger)
 
   const transactions = ledger.result.ledger.transactions
   if (transactions) {
@@ -21,7 +21,7 @@ async function getTransaction(): Promise<void> {
       command: 'tx',
       transaction: transactions[0],
     })
-    console.log("First transaction in the ledger:")
+    console.log('First transaction in the ledger:')
     console.log(tx)
 
     // The meta field would be a string(hex) when the `binary` parameter is `true` for the `tx` request.

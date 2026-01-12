@@ -2,14 +2,14 @@
 html: what-is-the-xrp-ledger.html
 parent: introduction.html
 seo:
-    description: Learn about the XRP Ledger (XRPL) blockchain.
+  description: Learn about the XRP Ledger (XRPL) blockchain.
 labels:
   - Blockchain
 ---
+
 # What is the XRP Ledger?
 
 The XRP Ledger is a decentralized blockchain that uses its own digital currency to process and record financial transactions.
-
 
 ## What Is a Blockchain?
 

@@ -2,12 +2,13 @@
 html: ledger-history.html
 parent: networks-and-servers.html
 seo:
-    description: Los servidores rippled almacenan una cantidad variable de transacciones e historial del estado localmente.
+  description: Los servidores rippled almacenan una cantidad variable de transacciones e historial del estado localmente.
 labels:
   - Retención de datos
   - Blockchain
   - Servidor principal
 ---
+
 # Histórico del ledger
 
 El [proceso de consenso](../consensus-protocol/index.md) crea una cadena de [versiones de ledgers validados](../ledgers/index.md), cada uno derivado del anterior aplicando un conjunto de [transacciones](../transactions/index.md). Cada [servidor `rippled`](index.md) almacena versiones de ledgers y el historial de transacciones locálmente. La cantidad de histórico de transacciones que un servidor almacena depende de cuanto tiempo ese servidor ha estado online y cuanto histórico está configurado para recuperar y mantener.
@@ -34,16 +35,15 @@ Rellenar el histórico es uno de las prioridades más bajas del servidor, por lo
 
 El XRP Ledger identifica datos (en varios niveles diferentes) mediante un hash único de sus contenidos. Los datos de estado del XRP Ledger contienen un resumen breve del histórico del ledger, en forma de [tipos de objeto LedgerHashes](../../references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md). Los serivodres usan los objetos LedgerHashes para conocer qué versiones del ledger hay que buscar, y confirmar que los datos del ledger que recibe son correctos y completos.
 
-
 <a id="with-advisory-deletion"></a><!-- old anchor to this area -->
+
 ### Rellenar
+
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}Actualizado en: rippled 1.6.0{% /badge %}
 
 La cantidad de histórico que un servidor intenta descargar depende de su configuración. El servidor automáticamente intenta rellenar los huecos descargando el histórico hasta **el ledger más antiguo que está actualmente disponible**. Pues utilizar el campo `[ledger_history]` para hacer al servidor rellenar el histórico más allá de ese punto. Sin embargo, el servidor nunca descarga ledgers que estuviesen programados para su [eliminación](../../infrastructure/configuration/data-retention/online-deletion.md).
 
 El campo `[ledger_history]` define el número mínimo de ledgers que se acumulan antes del ledger actual validado. Utiliza el valor especial `full` para descargar el [histórico completo](#full-history) de la red. Si especificas un número de ledgers, debe ser igual o mayor que el campo `online_deletion`; no puedes utilizar `[ledger_history]` para hacer al servidor descargar _menos_ histórico. Para reducir la cantidad de histórico que un servidor almacena, cambia el ajuste [online deletion](../../infrastructure/configuration/data-retention/online-deletion.md). <!-- STYLE_OVERRIDE: a number of -->
-
-
 
 ## Histórico completo
 
@@ -58,22 +58,21 @@ Los proveedores de servidores Full History se reservan el derecho de bloquear ac
 
 Para instrucciones de cómo configurar un servidor full history, consultar [Configurar Full History](../../infrastructure/configuration/data-retention/configure-full-history.md).
 
-
 ## Ver también
 
 - **Conceptos:**
-    - [Ledgers](../ledgers/index.md)
-    - [Consenso](../consensus-protocol/index.md)
+  - [Ledgers](../ledgers/index.md)
+  - [Consenso](../consensus-protocol/index.md)
 - **Tutoriales:**
-    - [Configurar `rippled`](../../infrastructure/configuration/index.md)
-        - [Configurar Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
-        - [Configurar Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
-        - [Configurar Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)
+  - [Configurar `rippled`](../../infrastructure/configuration/index.md)
+    - [Configurar Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
+    - [Configurar Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
+    - [Configurar Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)
 - **Referencias:**
-    - [método ledger][]
-    - [método server_info][]
-    - [método ledger_request][]
-    - [método can_delete][]
-    - [método ledger_cleaner][]
+  - [método ledger][]
+  - [método server_info][]
+  - [método ledger_request][]
+  - [método can_delete][]
+  - [método ledger_cleaner][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

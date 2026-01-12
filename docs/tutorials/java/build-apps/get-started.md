@@ -5,7 +5,7 @@ funnel: Build
 doc_type: Tutorials
 category: Get Started
 seo:
-    description: Build a Java app that interacts with the XRP Ledger.
+  description: Build a Java app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 top_nav_name: Java
 top_nav_grouping: Get Started
@@ -13,6 +13,7 @@ labels:
   - Development
 showcase_icon: assets/img/logos/java.svg
 ---
+
 # Get Started Using Java Library
 
 This tutorial walks you through the basics of building an XRP Ledger-connected application using [`xrpl4j`](https://github.com/XRPLF/xrpl4j), a pure Java library built to interact with the XRP Ledger.
@@ -23,17 +24,16 @@ This tutorial is intended for beginners and should take no longer than 30 minute
 
 In this tutorial, you'll learn:
 
-* The basic building blocks of XRP Ledger-based applications.
-* How to connect to the XRP Ledger using `xrpl4j`.
-* How to get an account on the [Testnet](/resources/dev-tools/xrp-faucets) using `xrpl4j`.
-* How to use the `xrpl4j` library to look up information about an account on the XRP Ledger.
-* How to put these steps together to create a Java app.
+- The basic building blocks of XRP Ledger-based applications.
+- How to connect to the XRP Ledger using `xrpl4j`.
+- How to get an account on the [Testnet](/resources/dev-tools/xrp-faucets) using `xrpl4j`.
+- How to use the `xrpl4j` library to look up information about an account on the XRP Ledger.
+- How to put these steps together to create a Java app.
 
 ## Requirements
 
-* The `xrpl4j` library supports Java 1.8 and later.
-* A project management tool such as [Maven](https://maven.apache.org/) or [Gradle](https://gradle.org/). <!-- SPELLING_IGNORE: gradle -->
-
+- The `xrpl4j` library supports Java 1.8 and later.
+- A project management tool such as [Maven](https://maven.apache.org/) or [Gradle](https://gradle.org/). <!-- SPELLING_IGNORE: gradle -->
 
 ## Installation
 
@@ -85,7 +85,6 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 1. [Get an account.](#2-get-account)
 1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
-
 ### 1. Connect to the XRP Ledger
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl4j`,
@@ -97,21 +96,21 @@ you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/3.0.
 
 The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](../../../concepts/networks-and-servers/parallel-networks.md). When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:
 
-* By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+- By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
-    ```
-    final HttpUrl rippledUrl = HttpUrl.get("http://localhost:5005/");
-    XrplClient xrplClient = new XrplClient(rippledUrl);
-    ```
+  ```
+  final HttpUrl rippledUrl = HttpUrl.get("http://localhost:5005/");
+  XrplClient xrplClient = new XrplClient(rippledUrl);
+  ```
 
-    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+  See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
-* By using one of the available [public servers][]:
+- By using one of the available [public servers][]:
 
-    ```
-    final HttpUrl rippledUrl = HttpUrl.get("https://s2.ripple.com:51234/");
-    XrplClient xrplClient = new XrplClient(rippledUrl);
-    ```
+  ```
+  final HttpUrl rippledUrl = HttpUrl.get("https://s2.ripple.com:51234/");
+  XrplClient xrplClient = new XrplClient(rippledUrl);
+  ```
 
 ### 2. Get account
 
@@ -120,7 +119,6 @@ To store value and execute transactions on the XRP Ledger, you need to get an ac
 To generate a new account, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
 
 {% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Create a random KeyPair" before="// Derive the Classic and X-Addresses from testWallet" language="java" /%}
-
 
 The result of a call to `walletFactory.randomWallet(true).wallet()` is a [`Wallet` instance](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/Wallet.html):
 
@@ -149,7 +147,6 @@ Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) 
 
 {% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Look up your Account Info" before="// Print the result" language="java" /%}
 
-
 ### 4. Putting it all together
 
 Using these building blocks, we can create a Java app that:
@@ -157,7 +154,6 @@ Using these building blocks, we can create a Java app that:
 1. Gets an account on the Testnet.
 2. Connects to the XRP Ledger.
 3. Looks up and prints information about the account you created.
-
 
 {% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" language="java" /%}
 
@@ -209,20 +205,19 @@ AccountInfoResult{
 
 The response fields contained in `AccountInfoResult` that you want to inspect in most cases are:
 
-* `accountData.sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions.
+- `accountData.sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions.
 
-* `accountData.balance` — This is the account's balance of XRP, in drops. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
+- `accountData.balance` — This is the account's balance of XRP, in drops. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
 
-* `validated` — Indicates whether the returned data is from a [validated ledger](../../../concepts/ledgers/open-closed-validated-ledgers.md). When inspecting transactions, it's important to confirm that [the results are final](../../../concepts/transactions/finality-of-results/index.md) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).
+- `validated` — Indicates whether the returned data is from a [validated ledger](../../../concepts/ledgers/open-closed-validated-ledgers.md). When inspecting transactions, it's important to confirm that [the results are final](../../../concepts/transactions/finality-of-results/index.md) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).
 
 For a detailed description of every response field, see [account_info](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md#response-format).
-
 
 ## Keep on building
 
 Now that you know how to use `xrpl4j` to connect to the XRP Ledger, get an account, and look up information about it, you can also use `xrpl4j` to:
 
-* [Send XRP](../../how-tos/send-xrp.md).
-* [Set up secure signing](../../../concepts/transactions/secure-signing.md) for your account.
+- [Send XRP](../../how-tos/send-xrp.md).
+- [Set up secure signing](../../../concepts/transactions/secure-signing.md) for your account.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

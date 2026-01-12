@@ -3,41 +3,41 @@
   display: flex;
   justify-content: space-between;
   height: $banner-height;
-  background: #32E685 !important;
+  background: #32e685 !important;
   padding: 7px 35px;
-  font-family: "Space Grotesk";
+  font-family: 'Space Grotesk';
   z-index: 10;
   cursor: pointer;
-  
+
   &:hover {
     text-decoration: none;
     color: $white;
-    .button-icon{
+    .button-icon {
       animation: iconJitter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
   }
   color: $black !important;
   text-align: center;
-  font-family: "Space Grotesk";
+  font-family: 'Space Grotesk';
   font-size: 26px; // Further scaled down from 28px
   font-style: normal;
   font-weight: 600;
   letter-spacing: -0.32px;
   // Pseudo-element for the fill animation
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%; // Full width so that we can scale it
     height: 100%;
-    background-color: #E0E500;
+    background-color: #e0e500;
     z-index: 0;
-    transform: scaleX(0);       // Start scaled down to 0
-    transform-origin: left;     // Scale from the left edge
+    transform: scaleX(0); // Start scaled down to 0
+    transform-origin: left; // Scale from the left edge
     transition: transform 0.7s cubic-bezier(0.7, 0, 0.84, 0);
-    will-change: transform;     // Hint for smoother animations
+    will-change: transform; // Hint for smoother animations
   }
 
   // On hover, scale to full width
@@ -53,43 +53,43 @@
   @media (max-width: 768px) {
     font-size: 18px;
     padding: 11px 35px;
-    .banner-button{
+    .banner-button {
       gap: 11px !important;
     }
-    .button-text{
+    .button-text {
       margin-bottom: 4px;
     }
   }
   @media (max-width: 564px) {
     font-size: 15px;
     padding: 9px 40px;
-    .button-text{
+    .button-text {
       margin-bottom: 0px;
     }
-    .banner-event-details{
+    .banner-event-details {
       gap: 0px !important;
       flex-direction: column;
       text-align: left;
       line-height: 21px;
-      .event-date{
+      .event-date {
         position: relative;
         top: -5px;
       }
     }
-    .banner-button{
+    .banner-button {
       align-self: baseline;
       gap: 8px !important;
       margin-top: -2px !important;
       padding-top: 0px !important;
     }
   }
-  .banner-button{
+  .banner-button {
     display: flex;
     align-items: center;
     gap: 14.5px;
     padding-top: 1px;
-    img{
-      width: 24.5px; 
+    img {
+      width: 24.5px;
       height: 33.7px;
       @media (max-width: 768px) {
         width: 15.5px;
@@ -107,7 +107,6 @@
     display: flex;
     gap: 32px;
   }
-
 
   .button-icon {
     transform-style: preserve-3d;
@@ -129,7 +128,6 @@
       transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateZ(45deg) skew(0deg, 0deg);
     }
   }
-
 }
 
 .web-banner a {

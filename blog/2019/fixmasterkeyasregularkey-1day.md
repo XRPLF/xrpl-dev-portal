@@ -1,13 +1,14 @@
 ---
 labels:
-    - Amendments
-date: "2019-09-30"
+  - Amendments
+date: '2019-09-30'
 template: '../../@theme/templates/blogpost'
 category: 2019
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # fixMasterKeyAsRegularKey is Expected Tomorrow
 
 The fixMasterKeyAsRegularKey amendment to the XRP Ledger, introduced in [`rippled` v1.3.1](https://github.com/ripple/rippled/releases/tag/1.3.1), is expected to become enabled shortly past midnight UTC on 2019-10-02. Operators of `rippled` servers **must** upgrade to v1.3.1 (or higher) by that time.
@@ -32,21 +33,22 @@ With this amendment enabled, a SetRegularKey transaction cannot set the regular 
 
 If you operate a `rippled` server but don’t upgrade to version 1.3.1 (or higher) by 2019-10-02, when the fixMasterKeyAsRegularKey amendment is expected to become enabled, then your server will become amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If the fixMasterKeyAsRegularKey amendment does not become enabled, then your server will not become amendment blocked and should continue to operate.
 
 For instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](https://xrpl.org/install-rippled.html).
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the [XRP Ledger Dev Portal](https://xrpl.org/), including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* [The XRP Ledger Dev Blog](https://xrpl.org/blog/)
-* Ripple Technical Services: <support@ripple.com>
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [The XRP Ledger Dev Blog](https://xrpl.org/blog/)
+- Ripple Technical Services: <support@ripple.com>
+- [XRP Chat Forum](http://www.xrpchat.com/)

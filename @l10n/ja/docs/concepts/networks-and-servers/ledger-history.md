@@ -2,12 +2,13 @@
 html: ledger-history.html
 parent: networks-and-servers.html
 seo:
-    description: rippledサーバはトランザクションの変動金額と状態の履歴をローカルに保管します。
+  description: rippledサーバはトランザクションの変動金額と状態の履歴をローカルに保管します。
 labels:
   - データ保持
   - ブロックチェーン
   - コアサーバ
 ---
+
 # レジャー履歴
 
 [コンセンサスプロセス](../consensus-protocol/index.md)により、[検証済みレジャーバージョン](../ledgers/index.md)のチェーンが作成されます。各バージョンは、以前のバージョンに[トランザクション](../transactions/index.md)のセットを適用して生成されます。各[`rippled`サーバ](index.md)には、レジャーバージョンとトランザクション履歴がローカルに保管されます。サーバに保管されるトランザクション履歴の量は、サーバがオンラインであった期間と、サーバが取得し、保持する履歴量の設定に応じて異なります。
@@ -34,9 +35,10 @@ labels:
 
 XRP Ledgerは、コンテンツの一意のハッシュを使用して（さまざまなレベルの）データを識別します。XRP Ledgerの状態データには、レジャーの履歴の概要が[LedgerHashesオブジェクトタイプ](../../references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md)の形式で含まれています。サーバはLedgerHashesオブジェクトを使用して取得するレジャーバージョンを認識し、受信するレジャーデータが正しく完全であることを確認します。
 
-
 <a id="with-advisory-deletion"></a>
+
 ### 履歴の埋め戻し
+
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}新規: rippled 1.6.0{% /badge %}
 
 サーバがダウンロードしようとする履歴の量は、その設定に依存します。サーバは自動的に、**最も古い台帳までの履歴**をダウンロードしてギャップを埋めようとします。`[ledger_history]`設定を使用すると、サーバがそれ以降の履歴を埋め戻すようにすることができます。ただし、[削除](../../infrastructure/configuration/data-retention/online-deletion.md)が予定されている台帳は、サーバがダウンロードすることはありません。
@@ -54,22 +56,21 @@ XRP Ledger財団は、コミュニティメンバーが運営する一連の全�
 
 すべての履歴の設定については、[完全な履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)をご覧ください。
 
-
 ## 関連項目
 
 - **コンセプト:**
-    - [レジャー](../ledgers/index.md)
-    - [コンセンサス](../consensus-protocol/index.md)
+  - [レジャー](../ledgers/index.md)
+  - [コンセンサス](../consensus-protocol/index.md)
 - **チュートリアル:**
-    - [`rippled`の設定](../../infrastructure/configuration/index.md)
-        - [オンライン削除の設定](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
-        - [指示による削除の設定](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
-        - [全履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)
+  - [`rippled`の設定](../../infrastructure/configuration/index.md)
+    - [オンライン削除の設定](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
+    - [指示による削除の設定](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
+    - [全履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)
 - **リファレンス:**
-    - [ledgerメソッド][]
-    - [server_infoメソッド][]
-    - [ledger_requestメソッド][]
-    - [can_deleteメソッド][]
-    - [ledger_cleanerメソッド][]
+  - [ledgerメソッド][]
+  - [server_infoメソッド][]
+  - [ledger_requestメソッド][]
+  - [can_deleteメソッド][]
+  - [ledger_cleanerメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

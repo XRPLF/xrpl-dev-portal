@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Cancel a Check without sending money.
+  description: Cancel a Check without sending money.
 labels:
   - Checks
 ---
+
 # Cancel a Check
 
 This tutorial shows how to cancel a [Check](../../../../concepts/payment-types/checks.md), which removes the [Check entry](../../../../references/protocol/ledger-data/ledger-entry-types/check.md) from the ledger without sending money.
@@ -28,10 +29,10 @@ The complete source code for this tutorial is available in the source repository
 
 Figure out the values of the [CheckCancel transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
-| Field             | Value            | Description                           |
-|:------------------|:-----------------|:--------------------------------------|
-| `TransactionType` | String           | Use the string `CheckCancel` when canceling a Check. |
-| `Account`         | String (Address) | The address of the sender who is canceling the Check. (In other words, your address.) |
+| Field             | Value            | Description                                                                                                                                                   |
+| :---------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `TransactionType` | String           | Use the string `CheckCancel` when canceling a Check.                                                                                                          |
+| `Account`         | String (Address) | The address of the sender who is canceling the Check. (In other words, your address.)                                                                         |
 | `CheckID`         | String           | The ID of the Check entry to cancel. You can get this information when you [send a check](./send-a-check.md), or by [looking up checks](./look-up-checks.md). |
 
 For example:

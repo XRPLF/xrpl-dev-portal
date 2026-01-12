@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
+  description: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
 labels:
   - Tokens
   - Non-fungible Tokens, NFTs
 ---
+
 # Transfer NFTs Using JavaScript
 
 This example shows how to:
@@ -27,15 +28,15 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
 1. Open `transfer-nfts.html` in a browser.
 2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   1. If you copied the gathered information from another tutorial:
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
 
 [![Form with account information](../../../img/mt-transfer-nft-2-accounts-loaded.png)](../../../img/mt-transfer-nft-2-accounts-loaded.png)
 
@@ -57,10 +58,11 @@ To create an NFT sell offer:
 ## Get Offers
 
 To list the buy and sell offers associated with an NFT:
+
 1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
-The key piece of information is the NFT Offer ID (labeled as `nft_offer_index`), which you use to accept a sell or buy offer. 
+The key piece of information is the NFT Offer ID (labeled as `nft_offer_index`), which you use to accept a sell or buy offer.
 
 [![Get offers](../../../img/mt-transfer-nfts-4-get-offers.png)](../../../img/mt-transfer-nfts-4-get-offers.png)
 
@@ -124,7 +126,7 @@ You can download the [NFT Modular Examples](../../../../_code-samples/nft-modula
 // *******************************************************
 // ****************** Create Sell Offer ******************
 // *******************************************************
-      
+
 async function createSellOffer() {
 ```
 
@@ -144,55 +146,56 @@ Get the account wallet and connect to the XRP Ledger.
 If the destination field is populated, capture the value.
 
 ```javascript
-      const destination = destinationField.value || undefined;
+const destination = destinationField.value || undefined
 ```
 
 If the **Expiration** field is populated, configure the expiration date for the sell offer.
 
 ```javascript
-      const expiration = expirationField.value ? configureExpiration() : undefined;
+const expiration = expirationField.value ? configureExpiration() : undefined
 ```
 
 Begin constructing the transaction JSON object.
 
 ```javascript
-      const transactionJson = {
-        TransactionType: "NFTokenCreateOffer",
-        Account: wallet.classicAddress,
-        NFTokenID: nftIdField.value,
-        Flags: 1,
-      };
+const transactionJson = {
+  TransactionType: 'NFTokenCreateOffer',
+  Account: wallet.classicAddress,
+  NFTokenID: nftIdField.value,
+  Flags: 1,
+}
 ```
 
 Configure the amount. To give the NFT away, set the **Amount** to 0. `configureAmount()` determines whether the currency is XRP or an issued currency, and returns the properly formattted object to add to the JSON transaction object.
 
 ```javascript
-      const amount = configureAmount();
-      if (amount) { // Only add Amount if it's defined
-        transactionJson.Amount = amount;
-      } else {
-        console.warn("Amount is undefined. Sell offer might be invalid.");
-        resultField.value = results;
-      }
+const amount = configureAmount()
+if (amount) {
+  // Only add Amount if it's defined
+  transactionJson.Amount = amount
+} else {
+  console.warn('Amount is undefined. Sell offer might be invalid.')
+  resultField.value = results
+}
 ```
 
 If you have an expiration date or specified destination, add them to the JSON transaction object.
 
 ```javascript
-      if (expiration) {
-        transactionJson.Expiration = expiration;
-      }
-      if (destination) {
-        transactionJson.Destination = destination;
-      }
+if (expiration) {
+  transactionJson.Expiration = expiration
+}
+if (destination) {
+  transactionJson.Destination = destination
+}
 ```
 
 Submit the transaction, wait for and report the results.
 
 ```javascript
-      const tx = await client.submitAndWait(transactionJson, { wallet });
-      results += `\nSell offer created successfully!\nTransaction Hash: ${tx.result.hash}\nEngine Result: ${tx.result.engine_result}`;
-      resultField.value = results;
+const tx = await client.submitAndWait(transactionJson, { wallet })
+results += `\nSell offer created successfully!\nTransaction Hash: ${tx.result.hash}\nEngine Result: ${tx.result.engine_result}`
+resultField.value = results
 ```
 
 Disconnect from the XRP Ledger.
@@ -227,12 +230,12 @@ async function createBuyOffer() {
 Get the account wallet and connect to the ledger.
 
 ```javascript
-  const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
-  let net = getNet();
-  const client = new xrpl.Client(net);
-  await client.connect();
-  let results = '\n=== Connected. Creating buy offer. ===';
-  resultField.value = results;
+const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = '\n=== Connected. Creating buy offer. ==='
+resultField.value = results
 ```
 
 Configure the amount and expiration date, if present.
@@ -248,85 +251,84 @@ Configure the amount and expiration date, if present.
 Start constructing the transactionJson object.
 
 ```javascript
-    let transactionJson = {
-      "TransactionType": "NFTokenCreateOffer",
-      "Account": wallet.classicAddress,
-      "Owner": nftOwnerField.value,
-      "NFTokenID": nftIdField.value,
-      "Flags": 0, // Ensure no tfSellNFToken flag for a buy offer
-    };
+let transactionJson = {
+  TransactionType: 'NFTokenCreateOffer',
+  Account: wallet.classicAddress,
+  Owner: nftOwnerField.value,
+  NFTokenID: nftIdField.value,
+  Flags: 0, // Ensure no tfSellNFToken flag for a buy offer
+}
 ```
 
 Add the configured amount to the transaction.
 
 ```javascript
-    if (amount !== undefined && amount !== '') {
-        transactionJson.Amount = amount;
-    } else {
-        results += "\nError: Amount field is required for a buy offer.";
-        resultField.value = results;
-        client.disconnect();
-        return;
-    }
+if (amount !== undefined && amount !== '') {
+  transactionJson.Amount = amount
+} else {
+  results += '\nError: Amount field is required for a buy offer.'
+  resultField.value = results
+  client.disconnect()
+  return
+}
 ```
 
 Add the **Destination** value, if it is set.
 
 ```javascript
-    if (destinationField.value !== '') {
-      transactionJson.Destination = destinationField.value;
-    }
+if (destinationField.value !== '') {
+  transactionJson.Destination = destinationField.value
+}
 ```
 
 Add the Expiration date if it's not an empty string.
 
 ```javascript
-    if (expiration > 0) {
-      transactionJson.Expiration = expiration;
-    }
+if (expiration > 0) {
+  transactionJson.Expiration = expiration
+}
 ```
 
 Submit the transaction and wait for the results. List the sell offers and buy offers currently available.
 
 ```javascript
-    const tx = await client.submitAndWait(transactionJson, { wallet: wallet });
+const tx = await client.submitAndWait(transactionJson, { wallet: wallet })
 
-    results += "\n\n=== Sell Offers ===\n";
-    let nftSellOffers;
-    try {
-      nftSellOffers = await client.request({
-        method: "nft_sell_offers",
-        nft_id: nftIdField.value
-      });
-    } catch (err) {
-      nftSellOffers = "=== No sell offers. ===";
-    }
-    results += JSON.stringify(nftSellOffers, null, 2);
-    results += "\n\n=== Buy Offers ===\n";
-    let nftBuyOffers;
-    try {
-      nftBuyOffers = await client.request({
-        method: "nft_buy_offers",
-        nft_id: nftIdField.value
-      });
-      results += JSON.stringify(nftBuyOffers, null, 2);
-    } catch (err) {
-      results += "=== No buy offers. ===";
-    }
+results += '\n\n=== Sell Offers ===\n'
+let nftSellOffers
+try {
+  nftSellOffers = await client.request({
+    method: 'nft_sell_offers',
+    nft_id: nftIdField.value,
+  })
+} catch (err) {
+  nftSellOffers = '=== No sell offers. ==='
+}
+results += JSON.stringify(nftSellOffers, null, 2)
+results += '\n\n=== Buy Offers ===\n'
+let nftBuyOffers
+try {
+  nftBuyOffers = await client.request({
+    method: 'nft_buy_offers',
+    nft_id: nftIdField.value,
+  })
+  results += JSON.stringify(nftBuyOffers, null, 2)
+} catch (err) {
+  results += '=== No buy offers. ==='
+}
 ```
 
 Report the results of the transaction.
 
 ```javascript
-    // Check transaction results -------------------------------------------------
-    results += "\n\n=== Transaction result:\n" +
-      JSON.stringify(tx.result.meta.TransactionResult, null, 2);
-    results += "\n\n=== Balance changes:\n" +
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2);
-    resultField.value = results;
+// Check transaction results -------------------------------------------------
+results += '\n\n=== Transaction result:\n' + JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+results += '\n\n=== Balance changes:\n' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+resultField.value = results
 ```
 
 Catch and report any errors.
+
 ```javascript
   } catch (error) {
     console.error('Error creating buy offer:', error);
@@ -345,83 +347,81 @@ Disconnect from the XRP Ledger.
 
 ## Cancel Offer
 
-```javascript      
+```javascript
 // *******************************************************
 // ******************** Cancel Offer *********************
 // *******************************************************
 
-async function cancelOffer() {    
+async function cancelOffer() {
 ```
 
 Get the account wallet and connect to the ledger.
 
-```javascript      
-    const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  let results = "\n=== Connected. Cancelling offer. ==="
-  resultField.value = results
+```javascript
+const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = '\n=== Connected. Cancelling offer. ==='
+resultField.value = results
 ```
 
 Store the token offer ID in the `NFTokenOffers` array parameter.
 
 ```javascript
-  const tokenOfferIDs = [nftOfferIdField.value]
+const tokenOfferIDs = [nftOfferIdField.value]
 ```
 
 Construct the NFTokenCancelOffer JSON transaction.
 
 ```javascript
-  const transactionJson = {
-    "TransactionType": "NFTokenCancelOffer",
-    "Account": wallet.classicAddress,
-    "NFTokenOffers": tokenOfferIDs
-  }
+const transactionJson = {
+  TransactionType: 'NFTokenCancelOffer',
+  Account: wallet.classicAddress,
+  NFTokenOffers: tokenOfferIDs,
+}
 ```
 
 Submit the transaction and wait for the results.
 
 ```javascript
-  const tx = await client.submitAndWait(transactionJson, { wallet })
+const tx = await client.submitAndWait(transactionJson, { wallet })
 ```
 
 List the remaining sell offers and buy offers.
 
 ```javascript
-  results = "\n\n=== Sell Offers===\n"
-  let nftSellOffers
-  try {
-    nftSellOffers = await client.request({
-      method: "nft_sell_offers",
-      nft_id: nftIdField.value
-    })
-  } catch (err) {
-    nftSellOffers = '=== No sell offers. ===\n'
-  }
-  results += JSON.stringify(nftSellOffers, null, 2)
-  results += "\n\n=== Buy Offers ===\n"
-  let nftBuyOffers
-  try {
-    nftBuyOffers = await client.request({
-      method: "nft_buy_offers",
-      nft_id: nftIdField.value
-    })
-  } catch (err) {
-    nftBuyOffers = '=== No buy offers. ==='
-  } 
-  results += JSON.stringify(nftBuyOffers, null, 2)
-  resultField.value += results
+results = '\n\n=== Sell Offers===\n'
+let nftSellOffers
+try {
+  nftSellOffers = await client.request({
+    method: 'nft_sell_offers',
+    nft_id: nftIdField.value,
+  })
+} catch (err) {
+  nftSellOffers = '=== No sell offers. ===\n'
+}
+results += JSON.stringify(nftSellOffers, null, 2)
+results += '\n\n=== Buy Offers ===\n'
+let nftBuyOffers
+try {
+  nftBuyOffers = await client.request({
+    method: 'nft_buy_offers',
+    nft_id: nftIdField.value,
+  })
+} catch (err) {
+  nftBuyOffers = '=== No buy offers. ==='
+}
+results += JSON.stringify(nftBuyOffers, null, 2)
+resultField.value += results
 ```
 
 Report the transaction results and XRP balance changes.
 
 ```javascript
-  results = "\n=== Transaction result:\n" +
-    JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-  results += "\n\n=== Balance changes:\n" +
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-  resultField.value += results
+results = '\n=== Transaction result:\n' + JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+results += '\n\n=== Balance changes:\n' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+resultField.value += results
 ```
 
 Disconnect from the XRP Ledger.
@@ -433,7 +433,7 @@ Disconnect from the XRP Ledger.
 
 ## Get Offers
 
-```javascript      
+```javascript
 // *******************************************************
 // ******************** Get Offers ***********************
 // *******************************************************
@@ -444,52 +444,52 @@ async function getOffers() {
 
 Get the account wallet and connect to the ledger.
 
-```javascript      
+```javascript
 const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
- 
-  let results = '\nConnected. Getting offers...'
-  resultField.value = results 
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
 
-  // --- Sell Offers ---
-  results += '\n\n=== Sell Offers ===\n' 
+let results = '\nConnected. Getting offers...'
+resultField.value = results
+
+// --- Sell Offers ---
+results += '\n\n=== Sell Offers ===\n'
 ```
 
 Prepare and an `nft_sell_offers` request for the selected NFT ID. Catch any errors and report the results.
 
 ```javascript
-  let nftSellOffers
-  try {
-    nftSellOffers = await client.request({
-      method: "nft_sell_offers",
-      nft_id: nftIdField.value
-    })
-  } catch (err) {
-    nftSellOffers = 'No sell offers found for this NFT ID.'
-  }
-  results += JSON.stringify(nftSellOffers, null, 2)
-  resultField.value = results 
+let nftSellOffers
+try {
+  nftSellOffers = await client.request({
+    method: 'nft_sell_offers',
+    nft_id: nftIdField.value,
+  })
+} catch (err) {
+  nftSellOffers = 'No sell offers found for this NFT ID.'
+}
+results += JSON.stringify(nftSellOffers, null, 2)
+resultField.value = results
 ```
 
 Prepare and an `nft_buy_offers` request for the selected NFT ID. Catch any errors and report the results.
 
 ```javascript
-  // --- Buy Offers ---
-  results = '\n\n=== Buy Offers ===\n'
-  let nftBuyOffers
-  try {
-    nftBuyOffers = await client.request({
-      method: "nft_buy_offers",
-      nft_id: nftIdField.value
-    })
-  } catch (err) {
-    // Log the actual error for debugging
-    nftBuyOffers = 'No buy offers found for this NFT ID.' // More descriptive
-  }
-  results += JSON.stringify(nftBuyOffers, null, 2) // Append the JSON string
-  resultField.value += results // Update the display with buy offers
+// --- Buy Offers ---
+results = '\n\n=== Buy Offers ===\n'
+let nftBuyOffers
+try {
+  nftBuyOffers = await client.request({
+    method: 'nft_buy_offers',
+    nft_id: nftIdField.value,
+  })
+} catch (err) {
+  // Log the actual error for debugging
+  nftBuyOffers = 'No buy offers found for this NFT ID.' // More descriptive
+}
+results += JSON.stringify(nftBuyOffers, null, 2) // Append the JSON string
+resultField.value += results // Update the display with buy offers
 ```
 
 Disconnect from the XRP Ledger.
@@ -501,7 +501,7 @@ Disconnect from the XRP Ledger.
 
 ## Accept Sell Offer
 
-```javascript      
+```javascript
 // *******************************************************
 // ****************** Accept Sell Offer ******************
 // *******************************************************
@@ -512,7 +512,7 @@ async function acceptSellOffer() {
 
 Get the account wallet and connect to the ledger.
 
-```javascript      
+```javascript
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
   let net = getNet()
   const client = new xrpl.Client(net)
@@ -525,43 +525,43 @@ Get the account wallet and connect to the ledger.
 Prepare the transaction JSON object.
 
 ```javascript
-    const transactionJson = {
-      "TransactionType": "NFTokenAcceptOffer",
-      "Account": wallet.classicAddress,
-      "NFTokenSellOffer": nftOfferIdField.value,
-  }
+const transactionJson = {
+  TransactionType: 'NFTokenAcceptOffer',
+  Account: wallet.classicAddress,
+  NFTokenSellOffer: nftOfferIdField.value,
+}
 ```
 
 Submit the transaction and wait for the results.
 
 ```javascript
-   const tx = await client.submitAndWait(transactionJson, { wallet: wallet })
+const tx = await client.submitAndWait(transactionJson, { wallet: wallet })
 ```
 
 Get the current NFTs held by the account after the transaction.
 
 ```javascript
-    const nfts = await client.request({
-      method: "account_nfts",
-      account: wallet.classicAddress
-    })
+const nfts = await client.request({
+  method: 'account_nfts',
+  account: wallet.classicAddress,
+})
 ```
 
 Get the new XRP balance after the transaction.
 
 ```javascript
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
 ```
 
 Report the results.
 
 ```javascript
-    results += '=== Transaction result:\n'
-    results += JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-    results += '\n=== Balance changes:'
-    results += JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-    results += JSON.stringify(nfts, null, 2)
-    resultField.value += results
+results += '=== Transaction result:\n'
+results += JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+results += '\n=== Balance changes:'
+results += JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+results += JSON.stringify(nfts, null, 2)
+resultField.value += results
 ```
 
 Catch and report any errors.
@@ -571,9 +571,10 @@ Catch and report any errors.
     console.error('Error accepting sell offer:', error)
     resultField.value = `Error: ${error.message || error}`
 ```
+
 Disconnect from the XRP Ledger.
 
-```javascript
+````javascript
   } finally {
     client.disconnect()
   }
@@ -587,7 +588,7 @@ Disconnect from the XRP Ledger.
 // *******************************************************
 
 async function acceptBuyOffer() {
-``` 
+````
 
 Get the account wallet and connect to the XRP Ledger.
 
@@ -606,40 +607,38 @@ async function acceptBuyOffer() {
 Create the transactionJson object, passing the account address and the buy offer ID.
 
 ```javascript
-    const transactionJson = {
-      "TransactionType": "NFTokenAcceptOffer",
-      "Account": wallet.classicAddress,
-      "NFTokenBuyOffer": nftOfferIdField.value
-    };
+const transactionJson = {
+  TransactionType: 'NFTokenAcceptOffer',
+  Account: wallet.classicAddress,
+  NFTokenBuyOffer: nftOfferIdField.value,
+}
 ```
 
 Submit the transaction and wait for the results.
 
 ```javascript
-    const tx = await client.submitAndWait(transactionJson, { wallet: wallet });
+const tx = await client.submitAndWait(transactionJson, { wallet: wallet })
 ```
 
 Report the current list of account NFTs after the transaction.
 
 ```javascript
-    const nfts = await client.request({
-      method: "account_nfts",
-      account: wallet.classicAddress
-    });
+const nfts = await client.request({
+  method: 'account_nfts',
+  account: wallet.classicAddress,
+})
 
-    results += JSON.stringify(nfts, null, 2);
-    resultField.value = results;
+results += JSON.stringify(nfts, null, 2)
+resultField.value = results
 ```
 
 Report the result of the transaction and update the XRP Balance field.
 
 ```javascript
-    results += "\n\nTransaction result:\n" +
-      JSON.stringify(tx.result.meta.TransactionResult, null, 2);
-    results += "\nBalance changes:\n" +
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2);
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address));
-    resultField.value = results;
+results += '\n\nTransaction result:\n' + JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+results += '\nBalance changes:\n' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
+resultField.value = results
 ```
 
 Catch and report any errors.
@@ -647,7 +646,7 @@ Catch and report any errors.
 ```javascript
   } catch (error) {
     console.error('Error in acceptBuyOffer:', error); // Log the full error
-    results = `\n=== Error accepting buy offer: ${error.message || 'Unknown error'} ===`; 
+    results = `\n=== Error accepting buy offer: ${error.message || 'Unknown error'} ===`;
     resultField.value = results;
 ```
 

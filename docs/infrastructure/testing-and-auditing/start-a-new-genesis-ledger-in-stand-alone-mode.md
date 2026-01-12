@@ -2,15 +2,16 @@
 html: start-a-new-genesis-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
 seo:
-    description: Start from a fresh genesis ledger in stand-alone mode.
+  description: Start from a fresh genesis ledger in stand-alone mode.
 labels:
   - Core Server
 ---
+
 # Start a New Genesis Ledger in Stand-Alone Mode
 
 In stand-alone mode, you can have `rippled` create a new genesis ledger. This provides a known state, with none of the ledger history from the production XRP Ledger. (This is very useful for unit tests, among other things.)
 
-* To start `rippled` in stand-alone mode with a new genesis ledger, use the `-a` and `--start` options:
+- To start `rippled` in stand-alone mode with a new genesis ledger, use the `-a` and `--start` options:
 
 ```
 rippled -a --start --conf=/path/to/rippled.cfg
@@ -33,16 +34,16 @@ By default, a new genesis ledger has no [amendments](../../concepts/networks-and
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-        - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
-    - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
-    - [Amendments](../../concepts/networks-and-servers/amendments.md)
-    - [Fee Voting](../../concepts/consensus-protocol/fee-voting.md)
+  - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
+  - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
+  - [Amendments](../../concepts/networks-and-servers/amendments.md)
+  - [Fee Voting](../../concepts/consensus-protocol/fee-voting.md)
 - **References:**
-    - [ledger_accept method][]
-    - [server_info method][]
-    - [`rippled` Commandline Usage](../commandline-usage.md)
+  - [ledger_accept method][]
+  - [server_info method][]
+  - [`rippled` Commandline Usage](../commandline-usage.md)
 - **Use Cases:**
-    - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
+  - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

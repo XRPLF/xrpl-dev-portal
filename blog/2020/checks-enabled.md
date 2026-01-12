@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-06-17"
+date: '2020-06-17'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # The Checks Amendment is Now Enabled
 
 [As previously announced](https://xrpl.org/blog/2020/checks-expected.html), the Checks amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6) on 2020-06-18.
@@ -38,6 +39,6 @@ Related documentation is available in the [XRP Ledger Dev Portal](https://xrpl.o
 
 Other resources:
 
-* [XRPScan Amendments Dashboard](https://xrpscan.com/amendments)
-* [Xpring Forum](https://forum.xpring.io/)
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [XRPScan Amendments Dashboard](https://xrpscan.com/amendments)
+- [Xpring Forum](https://forum.xpring.io/)
+- [XRP Chat Forum](http://www.xrpchat.com/)

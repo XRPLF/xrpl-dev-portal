@@ -2,11 +2,12 @@
 html: stablecoin-settings.html
 parent: stablecoins.html
 seo:
-    description: Settings to configure before issuing your stablecoin.
+  description: Settings to configure before issuing your stablecoin.
 labels:
   - XRP
   - Stablecoin
 ---
+
 # Stablecoin Settings
 
 Before you mint your new stablecoin, you need to configure settings, some of which are immutable once you issue the first coin.
@@ -17,12 +18,11 @@ Create a new account that you designate as the _issuer_, sometimes called the "c
 
 Many implementations use a _standby_ account as a "warm" wallet. Trusted human operators use the standby account to distribute stablecoins to _operational_ accounts.
 
-![Stablecoin distribution flow](/docs/img/uc-stablecoin-distribution-flow.png "Stablecoin Distribution Flow")
+![Stablecoin distribution flow](/docs/img/uc-stablecoin-distribution-flow.png 'Stablecoin Distribution Flow')
 
 Operational accounts, or "hot" wallets, trade with other accounts on the XRPL. Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners.
 
 Using standby and operational accounts helps to insulate the issuing account against hacking attacks, and also makes it easier to monitor the creation and destruction of your stablecoins.
-
 
 ## Set Your Transfer Fee
 
@@ -32,7 +32,6 @@ When users send a token with a transfer fee, the amount of the transfer fee is d
 
 For more information, see [Transfer Fees](../transfer-fees.md).
 
-
 ## Set Your Tick Size
 
 The Tick Size setting controls how many decimal places are used when calculating exchange rates in the [Decentralized Exchange](../../decentralized-exchange/index.md). A higher Tick Size (more decimal places) means more precision and less rounding in the amounts of various trades. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by unreasonably small amounts.
@@ -41,7 +40,6 @@ The Tick Size is an account-level setting and applies to all tokens issued by th
 
 See [Tick Size](../../decentralized-exchange/ticksize.md).
 
-
 ## Set the Default Ripple Flag
 
 The Default Ripple flag controls whether the balances on a trust line are allowed to _ripple_ by default. Rippling is what allows customers to send and trade tokens among themselves. An issuer MUST allow rippling on all the trust lines to its issuing address.
@@ -49,7 +47,6 @@ The Default Ripple flag controls whether the balances on a trust line are allowe
 Before asking customers to create trust lines to your issuing address, enable the Default Ripple flag on that address. Otherwise, you must individually disable the No Ripple flag for each trust line that other addresses have created.
 
 See [Rippling](../rippling.md).
-
 
 ## Enable Destination Tags
 
@@ -61,13 +58,11 @@ See [Source and Destination Tags](../../../transactions/source-and-destination-t
 
 You have several options for controlling the creation and distribution of your stablecoins.
 
-
 ### Authorized Trust Lines
 
 When you need to follow compliance rules such as Know Your Customer (KYC) and Anti-Money Laundering (AML), you can use trust lines to create permissioned pools for the distribution of your stablecoin. This allows you to be certain to whom the funds are transferred.
 
 See [Authorized Trust Lines](../authorized-trust-lines.md).
-
 
 ### Freeze Flags
 
@@ -76,7 +71,6 @@ You have the ability to freeze your stablecoins in your holder accounts. You mig
 Conversely, you can set the No Freeze feature, which permanently gives up the ability to freeze tokens. This makes your stablecoin more like fiat currency, in the sense that you cannot interfere with counterparties trading the tokens among themselves.
 
 See [Freezing Tokens](../freezes.md).
-
 
 ### Clawback Flags
 

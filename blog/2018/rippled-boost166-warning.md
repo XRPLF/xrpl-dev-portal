@@ -1,14 +1,15 @@
 ---
-date: "2018-01-12"
+date: '2018-01-12'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Advisories
-    - Development
+  - Advisories
+  - Development
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Boost 1.66 Not Supported for rippled 0.81.0
 
 A warning to developers: `rippled` versions 0.81.0 and earlier do not compile with the recently-released Boost library version 1.66.0. To compile `rippled` yourself, Ripple recommends using **Boost version 1.65.1**. The minimum supported version of Boost is 1.58.0, which is included in the official repositories of Ubuntu 16.04 Xenial.

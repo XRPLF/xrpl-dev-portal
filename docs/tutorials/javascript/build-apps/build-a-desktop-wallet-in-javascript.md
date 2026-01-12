@@ -1,7 +1,8 @@
 ---
 seo:
-    description: Build a graphical desktop wallet for the XRPL using JavaScript.
+  description: Build a graphical desktop wallet for the XRPL using JavaScript.
 ---
+
 # Build a Desktop Wallet in JavaScript
 
 This tutorial demonstrates how to build a desktop wallet for the XRP Ledger using the JavaScript programming language, the [Electron Framework](https://www.electronjs.org/) and various libraries. This application can be used as a starting point for building a more complex and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.
@@ -16,7 +17,7 @@ To complete this tutorial, you should meet the following requirements:
 
 ### Source Code
 
-You can find the complete source code for all of this tutorial's examples in the {% repo-link path="_code-samples/build-a-desktop-wallet/js/" %}code samples section of this website's repository{% /repo-link %}. After a `npm install` in this directory you can run the application for each step as described in the `scripts` section of  `package.json`, e.g, `npm run ledger-index`.
+You can find the complete source code for all of this tutorial's examples in the {% repo-link path="_code-samples/build-a-desktop-wallet/js/" %}code samples section of this website's repository{% /repo-link %}. After a `npm install` in this directory you can run the application for each step as described in the `scripts` section of `package.json`, e.g, `npm run ledger-index`.
 
 {% admonition type="warning" name="Caution" %}Be careful if you copy-and-paste the source code from these directly from these files. The sample code is split up into different files per step, so some shared imports and files are in different directories in the examples. This especially applies to the `library`, `bootstrap`, and `WALLET_DIR` contents.{% /admonition %}
 
@@ -37,9 +38,9 @@ The application we are going to build here will be capable of the following:
 - Showing updates to the XRP Ledger in real-time.
 - Viewing any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
 - Sending [direct XRP payments](../../../concepts/payment-types/direct-xrp-payments.md), and providing feedback about the intended destination address, including:
-    - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
-    - If the address doesn't want to receive XRP (**Disallow XRP** flag enabled).
-    - If the address has a [verified domain name](../../../references/xrp-ledger-toml.md#account-verification) associated with it.
+  - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
+  - If the address doesn't want to receive XRP (**Disallow XRP** flag enabled).
+  - If the address has a [verified domain name](../../../references/xrp-ledger-toml.md#account-verification) associated with it.
 
 The application in this tutorial _doesn't_ have the ability to send or trade [tokens](../../../concepts/tokens/index.md) or use other [payment types](../../../concepts/payment-types/index.md) like [Escrow](../../../concepts/payment-types/escrow.md) or [Payment Channels](../../../concepts/payment-types/payment-channels.md). However, it provides a foundation that you can implement those and other features on top of.
 
@@ -56,6 +57,7 @@ In addition to the above features, you'll also learn a bit about Events, IPC (in
 Here we define the libraries our application will use in the `dependencies` section as well as shortcuts for running our application in the `scripts` section.
 
 2. After you create your package.json file, install those dependencies by running the following command:
+
 ```console
 npm install
 ```
@@ -72,7 +74,6 @@ application to work.
 5. Now, inside the `view` folder, add a `template.html` file with the following content:
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/js/0-hello/view/template.html" language="html" /%}
-
 
 6. Now, start the application with the following command:
 
@@ -116,22 +117,22 @@ This helper function does the following: It establishes a WebSocket connection t
 2. In order to attach a preloader script, modify the `createWindow` method in `index.js` by adding the following code:
 
 ```javascript
-  // Creates the application window
-  const appWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
-    // Step 1 code additions - start
-    webPreferences: {
-      preload: path.join(__dirname, 'view', 'preload.js'),
-    },
-    // Step 1 code additions - end
-  })
+// Creates the application window
+const appWindow = new BrowserWindow({
+  width: 1024,
+  height: 768,
+  // Step 1 code additions - start
+  webPreferences: {
+    preload: path.join(__dirname, 'view', 'preload.js'),
+  },
+  // Step 1 code additions - end
+})
 ```
 
 3. Now in the `view` folder, create a file `preload.js` with the following content:
 
 ```javascript
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer } = require('electron')
 
 // Expose functionality from main process (aka. "backend") to be used by the renderer process(aka. "backend")
 contextBridge.exposeInMainWorld('electronAPI', {
@@ -140,7 +141,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // The subscribed function gets triggered whenever the backend process triggers the event 'update-ledger-index'
   onUpdateLedgerIndex: (callback) => {
     ipcRenderer.on('update-ledger-index', callback)
-  }
+  },
 })
 ```
 
@@ -152,10 +153,10 @@ In the browser, `window.electronAPI.onUpdateLedgerIndex(callback)` can now be us
 
 ```html
 <body>
-    <!-- Step 1 code modifications - start -->
-    <h3>Build a XRPL Wallet</h3>
-    Latest validated ledger index: <strong id="ledger-index"></strong>
-    <!-- Step 1 code modifications - end -->
+  <!-- Step 1 code modifications - start -->
+  <h3>Build a XRPL Wallet</h3>
+  Latest validated ledger index: <strong id="ledger-index"></strong>
+  <!-- Step 1 code modifications - end -->
 </body>
 ```
 
@@ -177,7 +178,7 @@ const ledgerIndexEl = document.getElementById('ledger-index')
 // Here we define the callback function that performs the content update
 // whenever 'update-ledger-index' is called by the main process
 window.electronAPI.onUpdateLedgerIndex((_event, value) => {
-    ledgerIndexEl.innerText = value
+  ledgerIndexEl.innerText = value
 })
 ```
 
@@ -196,7 +197,6 @@ app.whenReady().then(() => {
     appWindow.webContents.send('update-ledger-index', value)
   })
   // Step 1 code additions - end
-
 })
 ```
 
@@ -223,7 +223,6 @@ To run the reference application found in `_code-samples/build-a-desktop-wallet/
 npm run ledger-index
 ```
 
-
 ### 2. Show Ledger Updates by using WebSocket subscriptions
 
 **Full code for this step:**
@@ -247,12 +246,12 @@ Here, we have reduced the `app.whenReady` logic to an one-liner and put the nece
 3. Then, update `preload.js` by renaming the `onUpdateLedgerIndex` to `onUpdateLedgerData` and the `update-ledger-index` event to `update-ledger-data`:
 
 ```javascript
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electronAPI', {
   onUpdateLedgerData: (callback) => {
     ipcRenderer.on('update-ledger-data', callback)
-  }
+  },
 })
 ```
 
@@ -262,13 +261,13 @@ This renaming might seem a bit nit-picky, but now we actually pass on an object 
 
 ```html
 <body>
-    <!-- Step 2 code additions - start -->
-    <h3>Build a XRPL Wallet - Part 2/8</h3>
-    <b>Latest validated ledger stats</b><br />
-    Ledger Index: <strong id="ledger-index"></strong><br />
-    Ledger Hash: <strong id="ledger-hash"></strong><br />
-    Close Time: <strong id="ledger-close-time"></strong><br />
-    <!-- Step 2 code additions - end -->
+  <!-- Step 2 code additions - start -->
+  <h3>Build a XRPL Wallet - Part 2/8</h3>
+  <b>Latest validated ledger stats</b><br />
+  Ledger Index: <strong id="ledger-index"></strong><br />
+  Ledger Hash: <strong id="ledger-hash"></strong><br />
+  Close Time: <strong id="ledger-close-time"></strong><br />
+  <!-- Step 2 code additions - end -->
 </body>
 ```
 
@@ -280,9 +279,9 @@ const ledgerHashEl = document.getElementById('ledger-hash')
 const ledgerCloseTimeEl = document.getElementById('ledger-close-time')
 
 window.electronAPI.onUpdateLedgerData((_event, value) => {
-    ledgerIndexEl.innerText = value.ledger_index
-    ledgerHashEl.innerText = value.ledger_hash
-    ledgerCloseTimeEl.innerText = value.ledger_time
+  ledgerIndexEl.innerText = value.ledger_index
+  ledgerHashEl.innerText = value.ledger_hash
+  ledgerCloseTimeEl.innerText = value.ledger_time
 })
 ```
 
@@ -328,15 +327,15 @@ Here we define three utility functions that will transform data we receive from 
 
 ```javascript
 // Step 3 code additions - start
-const { app, BrowserWindow, ipcMain} = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 // Step 3 code additions - end
 const path = require('path')
-const xrpl = require("xrpl")
+const xrpl = require('xrpl')
 // Step 3 code additions - start
 const { prepareAccountData, prepareLedgerData } = require('./library/3_helpers')
 // Step 3 code additions - end
 
-const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
+const TESTNET_URL = 'wss://s.altnet.rippletest.net:51233'
 ```
 
 3. Modify `index.js` in the following way:
@@ -346,21 +345,20 @@ const main = async () => {
   const appWindow = createWindow()
 
   // Step 3 code modifications - start
-  ipcMain.on('address-entered', async (event, address) =>  {
-
+  ipcMain.on('address-entered', async (event, address) => {
     const client = new xrpl.Client(TESTNET_URL)
 
     await client.connect()
 
     // Reference: https://xrpl.org/subscribe.html
     await client.request({
-      "command": "subscribe",
-      "streams": ["ledger"],
-      "accounts": [address]
+      command: 'subscribe',
+      streams: ['ledger'],
+      accounts: [address],
     })
 
     // Reference: https://xrpl.org/subscribe.html#ledger-stream
-    client.on("ledgerClosed", async (rawLedgerData) => {
+    client.on('ledgerClosed', async (rawLedgerData) => {
       const ledger = prepareLedgerData(rawLedgerData)
       appWindow.webContents.send('update-ledger-data', ledger)
     })
@@ -368,18 +366,18 @@ const main = async () => {
     // Initial Ledger Request -> Get account details on startup
     // Reference: https://xrpl.org/ledger.html
     const ledgerResponse = await client.request({
-      "command": "ledger"
+      command: 'ledger',
     })
     const initialLedgerData = prepareLedgerData(ledgerResponse.result.closed.ledger)
     appWindow.webContents.send('update-ledger-data', initialLedgerData)
 
     // Reference: https://xrpl.org/subscribe.html#transaction-streams
-    client.on("transaction", async (transaction) => {
+    client.on('transaction', async (transaction) => {
       // Reference: https://xrpl.org/account_info.html
       const accountInfoRequest = {
-        "command": "account_info",
-        "account": address,
-        "ledger_index": transaction.ledger_index
+        command: 'account_info',
+        account: address,
+        ledger_index: transaction.ledger_index,
       }
       const accountInfoResponse = await client.request(accountInfoRequest)
       const accountData = prepareAccountData(accountInfoResponse.result.account_data)
@@ -389,13 +387,12 @@ const main = async () => {
     // Initial Account Request -> Get account details on startup
     // Reference: https://xrpl.org/account_info.html
     const accountInfoResponse = await client.request({
-      "command": "account_info",
-      "account": address,
-      "ledger_index": "current"
+      command: 'account_info',
+      account: address,
+      ledger_index: 'current',
     })
     const accountData = prepareAccountData(accountInfoResponse.result.account_data)
     appWindow.webContents.send('update-account-data', accountData)
-
   })
   // Step 3 code modifications - end
 }
@@ -404,7 +401,7 @@ const main = async () => {
 As the account we want to query is known only after the user enters an address, we had to wrap our application logic into an event handler:
 
 ```javascript
-ipcMain.on('address-entered', async (event, address) =>  {
+ipcMain.on('address-entered', async (event, address) => {
   // ...
 })
 ```
@@ -413,9 +410,9 @@ In addition to the subscription to the ledger stream we also can subscribe the c
 
 ```javascript
 await client.request({
-  "command": "subscribe",
-  "streams": ["ledger"],
-  "accounts": [address]
+  command: 'subscribe',
+  streams: ['ledger'],
+  accounts: [address],
 })
 ```
 
@@ -426,7 +423,7 @@ In addition to the subscriptions we added an initial `ledger` and `accountInfo` 
 4. Now, add the following code to `preload.js`:
 
 ```javascript
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electronAPI', {
   onUpdateLedgerData: (callback) => {
@@ -439,7 +436,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   },
   onUpdateAccountData: (callback) => {
     ipcRenderer.on('update-account-data', callback)
-  }
+  },
   //Step 3 code additions - end
 })
 ```
@@ -448,7 +445,7 @@ Here is a notable difference from the previous step: previously we only used `ip
 
 ```javascript
 onEnterAccountAddress: (address) => {
-    ipcRenderer.send('address-entered', address)
+  ipcRenderer.send('address-entered', address)
 }
 ```
 
@@ -456,35 +453,33 @@ onEnterAccountAddress: (address) => {
 
 ```html
 <body>
+  <h3>Build a XRPL Wallet - Part 3/8</h3>
 
-    <h3>Build a XRPL Wallet - Part 3/8</h3>
+  <fieldset>
+    <legend>Account info</legend>
+    Classic Address: <strong id="account-address-classic"></strong><br />
+    X-Address: <strong id="account-address-x"></strong><br />
+    XRP Balance: <strong id="account-balance"></strong><br />
+  </fieldset>
 
-    <fieldset>
-        <legend>Account info</legend>
-        Classic Address: <strong id="account-address-classic"></strong><br/>
-        X-Address: <strong id="account-address-x"></strong><br/>
-        XRP Balance: <strong id="account-balance"></strong><br/>
-    </fieldset>
+  <fieldset>
+    <legend>Latest validated ledger stats</legend>
+    Ledger Index: <strong id="ledger-index"></strong><br />
+    Ledger Hash: <strong id="ledger-hash"></strong><br />
+    Close Time: <strong id="ledger-close-time"></strong><br />
+  </fieldset>
 
-    <fieldset>
-        <legend>Latest validated ledger stats</legend>
-        Ledger Index: <strong id="ledger-index"></strong><br/>
-        Ledger Hash: <strong id="ledger-hash"></strong><br/>
-        Close Time: <strong id="ledger-close-time"></strong><br/>
-    </fieldset>
-
-    <dialog id="account-address-dialog">
-        <form method="dialog">
-            <div>
-                <label for="address-input">Enter account address:</label>
-                <input type="text" id="address-input" name="address-input" />
-            </div>
-            <div>
-                <button type="submit">Confirm</button>
-            </div>
-        </form>
-    </dialog>
-
+  <dialog id="account-address-dialog">
+    <form method="dialog">
+      <div>
+        <label for="address-input">Enter account address:</label>
+        <input type="text" id="address-input" name="address-input" />
+      </div>
+      <div>
+        <button type="submit">Confirm</button>
+      </div>
+    </form>
+  </dialog>
 </body>
 ```
 
@@ -531,7 +526,7 @@ At this point, our wallet shows the account's balance getting updated, but doesn
 2. Now, in `index.js`, require the new helper function at the bottom of the import section like so:
 
 ```javascript
-const { prepareAccountData, prepareLedgerData} = require('./library/3_helpers')
+const { prepareAccountData, prepareLedgerData } = require('./library/3_helpers')
 const { prepareTxData } = require('./library/4_helpers')
 ```
 
@@ -539,12 +534,12 @@ const { prepareTxData } = require('./library/4_helpers')
 
 ```javascript
 // Wait for transaction on subscribed account and re-request account data
-client.on("transaction", async (transaction) => {
+client.on('transaction', async (transaction) => {
   // Reference: https://xrpl.org/account_info.html
   const accountInfoRequest = {
-    "command": "account_info",
-    "account": address,
-    "ledger_index": transaction.ledger_index
+    command: 'account_info',
+    account: address,
+    ledger_index: transaction.ledger_index,
   }
 
   const accountInfoResponse = await client.request(accountInfoRequest)
@@ -552,10 +547,9 @@ client.on("transaction", async (transaction) => {
   appWindow.webContents.send('update-account-data', accountData)
 
   // Step 4 code additions - start
-  const transactions = prepareTxData([{tx: transaction.transaction}])
+  const transactions = prepareTxData([{ tx: transaction.transaction }])
   appWindow.webContents.send('update-transaction-data', transactions)
   // Step 4 code additions - end
-
 })
 ```
 
@@ -565,9 +559,9 @@ client.on("transaction", async (transaction) => {
 // Initial Account Request -> Get account details on startup
 // Reference: https://xrpl.org/account_info.html
 const accountInfoResponse = await client.request({
-    "command": "account_info",
-    "account": address,
-    "ledger_index": "current"
+  command: 'account_info',
+  account: address,
+  ledger_index: 'current',
 })
 const accountData = prepareAccountData(accountInfoResponse.result.account_data)
 appWindow.webContents.send('update-account-data', accountData)
@@ -577,8 +571,8 @@ appWindow.webContents.send('update-account-data', accountData)
 // Initial Transaction Request -> List account transactions on startup
 // Reference: https://xrpl.org/account_tx.html
 const txResponse = await client.request({
-    "command": "account_tx",
-    "account": address
+  command: 'account_tx',
+  account: address,
 })
 const transactions = prepareTxData(txResponse.result.transactions)
 appWindow.webContents.send('update-transaction-data', transactions)
@@ -603,7 +597,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // Step 4 code additions - start
   onUpdateTransactionData: (callback) => {
     ipcRenderer.on('update-transaction-data', callback)
-  }
+  },
   // Step 4 code additions - end
 })
 ```
@@ -647,18 +641,31 @@ const txTableBodyEl = document.getElementById('tx-table').tBodies[0]
 window.testEl = txTableBodyEl
 
 window.electronAPI.onUpdateTransactionData((_event, transactions) => {
-    for (let transaction of transactions) {
-        txTableBodyEl.insertAdjacentHTML( 'beforeend',
-        "<tr>" +
-            "<td>" + transaction.confirmed + "</td>" +
-            "<td>" + transaction.type + "</td>" +
-            "<td>" + transaction.from + "</td>" +
-            "<td>" + transaction.to + "</td>" +
-            "<td>" + transaction.value + "</td>" +
-            "<td>" + transaction.hash + "</td>" +
-            "</tr>"
-        )
-    }
+  for (let transaction of transactions) {
+    txTableBodyEl.insertAdjacentHTML(
+      'beforeend',
+      '<tr>' +
+        '<td>' +
+        transaction.confirmed +
+        '</td>' +
+        '<td>' +
+        transaction.type +
+        '</td>' +
+        '<td>' +
+        transaction.from +
+        '</td>' +
+        '<td>' +
+        transaction.to +
+        '</td>' +
+        '<td>' +
+        transaction.value +
+        '</td>' +
+        '<td>' +
+        transaction.hash +
+        '</td>' +
+        '</tr>',
+    )
+  }
 })
 ```
 
@@ -693,7 +700,7 @@ After finishing this step the application should look like this:
 
 By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds.
 
-In this step we will query the user for a seed and a password they can use to access it later. In order to protect the password, we'll add a [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) to the password.
+In this step we will query the user for a seed and a password they can use to access it later. In order to protect the password, we'll add a [salt](<https://en.wikipedia.org/wiki/Salt_(cryptography)>) to the password.
 
 1. In the `library` folder, add a new file `5_helpers.js` with the following content:
 
@@ -759,51 +766,51 @@ contextBridge.exposeInMainWorld('electronAPI', {
 4. Then, in `view/template.html`, replace the existing HTML dialog element for the account with the new ones for seed and password:
 
 ```html
-    <dialog id="seed-dialog">
-        <form method="dialog">
-            <div>
-                <label for="seed-input">Enter seed:</label>
-                <input type="text" id="seed-input" name="seed-input" />
-            </div>
-            <div>
-                <button type="submit">Confirm</button>
-            </div>
-        </form>
-    </dialog>
+<dialog id="seed-dialog">
+  <form method="dialog">
+    <div>
+      <label for="seed-input">Enter seed:</label>
+      <input type="text" id="seed-input" name="seed-input" />
+    </div>
+    <div>
+      <button type="submit">Confirm</button>
+    </div>
+  </form>
+</dialog>
 
-    <dialog id="password-dialog">
-        <form method="dialog">
-            <div>
-                <label for="password-input">Enter password (min-length 5):</label>
-                <input type="text" id="password-input" name="password-input" /><br />
-                <span class="invalid-password"></span>
-            </div>
-            <div>
-                <button type="button">Change Seed</button>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    </dialog>
+<dialog id="password-dialog">
+  <form method="dialog">
+    <div>
+      <label for="password-input">Enter password (min-length 5):</label>
+      <input type="text" id="password-input" name="password-input" /><br />
+      <span class="invalid-password"></span>
+    </div>
+    <div>
+      <button type="button">Change Seed</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</dialog>
 ```
 
 6. In `view/renderer.js`, replace the `openAccountAddressDialog` part at the top:
 
 ```javascript
 // Remove the following section in Step 5
-document.addEventListener('DOMContentLoaded', openAccountAddressDialog);
+document.addEventListener('DOMContentLoaded', openAccountAddressDialog)
 
-function openAccountAddressDialog(){
-    const accountAddressDialog = document.getElementById('account-address-dialog');
-    const accountAddressInput = accountAddressDialog.querySelector('input');
-    const submitButton = accountAddressDialog.querySelector('button[type="submit"]');
+function openAccountAddressDialog() {
+  const accountAddressDialog = document.getElementById('account-address-dialog')
+  const accountAddressInput = accountAddressDialog.querySelector('input')
+  const submitButton = accountAddressDialog.querySelector('button[type="submit"]')
 
-    submitButton.addEventListener('click', () => {
-        const address = accountAddressInput.value;
-        window.electronAPI.onEnterAccountAddress(address)
-        accountAddressDialog.close()
-    });
+  submitButton.addEventListener('click', () => {
+    const address = accountAddressInput.value
+    window.electronAPI.onEnterAccountAddress(address)
+    accountAddressDialog.close()
+  })
 
-    accountAddressDialog.showModal()
+  accountAddressDialog.showModal()
 }
 ```
 
@@ -821,7 +828,7 @@ const seedSubmitFn = () => {
 }
 
 window.electronAPI.onOpenSeedDialog((_event) => {
-  seedSubmitButton.addEventListener('click', seedSubmitFn, {once : true});
+  seedSubmitButton.addEventListener('click', seedSubmitFn, { once: true })
 
   seedDialog.showModal()
 })
@@ -847,10 +854,10 @@ window.electronAPI.onOpenPasswordDialog((_event, showInvalidPassword = false) =>
   if (showInvalidPassword) {
     passwordError.innerHTML = 'INVALID PASSWORD'
   }
-  passwordSubmitButton.addEventListener('click', handlePasswordSubmitFn, {once : true});
-  changeSeedButton.addEventListener('click', handleChangeSeedFn, {once : true});
+  passwordSubmitButton.addEventListener('click', handlePasswordSubmitFn, { once: true })
+  changeSeedButton.addEventListener('click', handleChangeSeedFn, { once: true })
   passwordDialog.showModal()
-});
+})
 ```
 
 Start up the application:
@@ -891,134 +898,143 @@ After finishing this step the application should look like this:
 ![Screenshot: Step 6, style application with css](/docs/img/javascript-wallet-6.png)
 
 1. In the project root, create a new folder `bootstrap` and add the following files into that directory:
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap.bundle.min.js`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.css" %}`bootstrap.min.css`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/custom.css" %}`custom.css`{% /repo-link %},
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/XRPLedger_DevPortal-white.svg" %}`XRPLedger_DevPortal-white.svg`{% /repo-link %}
+   {% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap.bundle.min.js`{% /repo-link %},
+   {% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.css" %}`bootstrap.min.css`{% /repo-link %},
+   {% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/custom.css" %}`custom.css`{% /repo-link %},
+   {% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/XRPLedger_DevPortal-white.svg" %}`XRPLedger_DevPortal-white.svg`{% /repo-link %}
 
 2. Change the content of `view/template.html` to be the following code:
 
-````html
+```html
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
 
-  <title>XRPL Wallet Tutorial (JavaScript / Electron)</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="../bootstrap/custom.css" />
+  </head>
 
-  <link rel="stylesheet" href="../bootstrap/bootstrap.min.css"/>
-  <link rel="stylesheet" href="../bootstrap/custom.css"/>
-</head>
-
-<body>
-
-  <main class="bg-light">
-    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <img class="logo" height="40"/>
-      </a>
-      <hr>
-      <ul class="nav nav-pills flex-column mb-auto" role="tablist">
-        <li class="nav-item">
-          <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard"
-                  type="button" role="tab" aria-controls="dashboard" aria-selected="true">
-            Dashboard
-          </button>
-        </li>
-        <li>
-          <button class="nav-link" data-bs-toggle="tab" id="transactions-tab" data-bs-target="#transactions"
-                  type="button" role="tab" aria-controls="transactions" aria-selected="false">
-            Transactions
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="main-content tab-content d-flex flex-column flex-shrink-0 p-3">
-
-      <div class="header border-bottom">
-        <h3>
-          Build a XRPL Wallet
-          <small class="text-muted">- Part 6/8</small>
-        </h3>
-      </div>
-
-      <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-        <h3>Account:</h3>
-        <ul class="list-group">
-          <li class="list-group-item">Classic Address: <strong id="account-address-classic"></strong></li>
-          <li class="list-group-item">X-Address: <strong id="account-address-x"></strong></li>
-          <li class="list-group-item">XRP Balance: <strong id="account-balance"></strong></li>
-        </ul>
-        <div class="spacer"></div>
-        <h3>
-          Ledger
-          <small class="text-muted">(Latest validated ledger)</small>
-        </h3>
-        <ul class="list-group">
-          <li class="list-group-item">Ledger Index: <strong id="ledger-index"></strong></li>
-          <li class="list-group-item">Ledger Hash: <strong id="ledger-hash"></strong></li>
-          <li class="list-group-item">Close Time: <strong id="ledger-close-time"></strong></li>
+  <body>
+    <main class="bg-light">
+      <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <img class="logo" height="40" />
+        </a>
+        <hr />
+        <ul class="nav nav-pills flex-column mb-auto" role="tablist">
+          <li class="nav-item">
+            <button
+              class="nav-link active"
+              id="dashboard-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#dashboard"
+              type="button"
+              role="tab"
+              aria-controls="dashboard"
+              aria-selected="true"
+            >
+              Dashboard
+            </button>
+          </li>
+          <li>
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              id="transactions-tab"
+              data-bs-target="#transactions"
+              type="button"
+              role="tab"
+              aria-controls="transactions"
+              aria-selected="false"
+            >
+              Transactions
+            </button>
+          </li>
         </ul>
       </div>
 
-      <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
-        <h3>Transactions:</h3>
-        <table id="tx-table" class="table">
-          <thead>
-          <tr>
-            <th>Confirmed</th>
-            <th>Type</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Value Delivered</th>
-            <th>Hash</th>
-          </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="divider"></div>
+
+      <div class="main-content tab-content d-flex flex-column flex-shrink-0 p-3">
+        <div class="header border-bottom">
+          <h3>
+            Build a XRPL Wallet
+            <small class="text-muted">- Part 6/8</small>
+          </h3>
+        </div>
+
+        <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+          <h3>Account:</h3>
+          <ul class="list-group">
+            <li class="list-group-item">Classic Address: <strong id="account-address-classic"></strong></li>
+            <li class="list-group-item">X-Address: <strong id="account-address-x"></strong></li>
+            <li class="list-group-item">XRP Balance: <strong id="account-balance"></strong></li>
+          </ul>
+          <div class="spacer"></div>
+          <h3>
+            Ledger
+            <small class="text-muted">(Latest validated ledger)</small>
+          </h3>
+          <ul class="list-group">
+            <li class="list-group-item">Ledger Index: <strong id="ledger-index"></strong></li>
+            <li class="list-group-item">Ledger Hash: <strong id="ledger-hash"></strong></li>
+            <li class="list-group-item">Close Time: <strong id="ledger-close-time"></strong></li>
+          </ul>
+        </div>
+
+        <div class="tab-pane fade" id="transactions" role="tabpanel" aria-labelledby="transactions-tab">
+          <h3>Transactions:</h3>
+          <table id="tx-table" class="table">
+            <thead>
+              <tr>
+                <th>Confirmed</th>
+                <th>Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Value Delivered</th>
+                <th>Hash</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
+    </main>
 
-    </div>
+    <dialog id="seed-dialog">
+      <form method="dialog">
+        <div>
+          <label for="seed-input">Enter seed:</label>
+          <input type="text" id="seed-input" name="seed-input" />
+        </div>
+        <div>
+          <button type="submit">Confirm</button>
+        </div>
+      </form>
+    </dialog>
 
-  </main>
+    <dialog id="password-dialog">
+      <form method="dialog">
+        <div>
+          <label for="password-input">Enter password (min-length: 5):</label>
+          <input type="text" id="password-input" name="password-input" />
+        </div>
+        <div>
+          <button type="button">Change Seed</button>
+          <button type="submit">Confirm</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
 
-  <dialog id="seed-dialog">
-    <form method="dialog">
-      <div>
-        <label for="seed-input">Enter seed:</label>
-        <input type="text" id="seed-input" name="seed-input" />
-      </div>
-      <div>
-        <button type="submit">Confirm</button>
-      </div>
-    </form>
-  </dialog>
-
-  <dialog id="password-dialog">
-    <form method="dialog">
-      <div>
-        <label for="password-input">Enter password (min-length: 5):</label>
-        <input type="text" id="password-input" name="password-input" />
-      </div>
-      <div>
-        <button type="button">Change Seed</button>
-        <button type="submit">Confirm</button>
-      </div>
-    </form>
-  </dialog>
-
-</body>
-
-<script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="renderer.js"></script>
-
+  <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="renderer.js"></script>
 </html>
-````
+```
 
 Here we basically added the [Boostrap Framework](https://getbootstrap.com/) and a little custom styling to our application. We'll leave it at that for this Step - to get the application running at this stage of development, run the following command:
 
@@ -1054,9 +1070,7 @@ Up until now we have enabled our app to query and display data from the XRPL. No
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/js/library/7_helpers.js" language="js" /%}
 
-
-(There was no `6-helpers.js`, so don't worry!)
-2. Add the new function to the import section in `index.js`:
+(There was no `6-helpers.js`, so don't worry!) 2. Add the new function to the import section in `index.js`:
 
 ```javascript
 const { initialize, subscribe, saveSaltedSeed, loadSaltedSeed } = require('./library/5_helpers')
@@ -1064,18 +1078,20 @@ const { sendXrp } = require('./library/7_helpers')
 ```
 
 3. Still in `index.js`, add an event listener handling the `send-xrp-event` from the frontend dialog:
+
 ```javascript
-        await initialize(client, wallet, appWindow)
-        // Step 7 code additions - start
-        ipcMain.on('send-xrp-action', (event, paymentData) => {
-          sendXrp(paymentData, client, wallet).then((result) => {
-            appWindow.webContents.send('send-xrp-transaction-finish', result)
-          })
-        })
-        // Step 7 code additions - start
+await initialize(client, wallet, appWindow)
+// Step 7 code additions - start
+ipcMain.on('send-xrp-action', (event, paymentData) => {
+  sendXrp(paymentData, client, wallet).then((result) => {
+    appWindow.webContents.send('send-xrp-transaction-finish', result)
+  })
+})
+// Step 7 code additions - start
 ```
 
 4. Modify `view/preload.js` by adding two new functions:
+
 ```javascript
     onClickSendXrp: (paymentData) => {
       ipcRenderer.send('send-xrp-action', paymentData)
@@ -1086,50 +1102,50 @@ const { sendXrp } = require('./library/7_helpers')
 ```
 
 5. In `view/template.html`, add a button to toggle the modal dialog housing the "Send XRP" logic:
+
 ```html
-    <div class="header border-bottom">
-        <h3>
-            Build a XRPL Wallet
-            <small class="text-muted">- Part 7/8</small>
-        </h3>
-        <!-- Step 7 code additions - start -->
-        <button type="button" class="btn btn-primary" id="send-xrp-modal-button">
-            Send XRP
-        </button>
-        <!-- Step 7 code additions - end -->
-    </div>
+<div class="header border-bottom">
+  <h3>
+    Build a XRPL Wallet
+    <small class="text-muted">- Part 7/8</small>
+  </h3>
+  <!-- Step 7 code additions - start -->
+  <button type="button" class="btn btn-primary" id="send-xrp-modal-button">Send XRP</button>
+  <!-- Step 7 code additions - end -->
+</div>
 ```
 
 6. In the same file, at the end of the `<main>` section, add said modal dialog:
+
 ```html
-    <div class="modal fade" id="send-xrp-modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="send-xrp-modal-label">Send XRP</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="r9jEyy3nrB8D7uRc5w2k3tizKQ1q8cpeHU" id="input-destination-address">
-                        <span class="input-group-text">To (Address)</span>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="12345" id="input-destination-tag">
-                        <span class="input-group-text">Destination Tag</span>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="100" id="input-xrp-amount">
-                        <span class="input-group-text">Amount of XRP</span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="send-xrp-submit-button">Send</button>
-                </div>
-            </div>
+<div class="modal fade" id="send-xrp-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="send-xrp-modal-label">Send XRP</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="r9jEyy3nrB8D7uRc5w2k3tizKQ1q8cpeHU" id="input-destination-address" />
+          <span class="input-group-text">To (Address)</span>
         </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="12345" id="input-destination-tag" />
+          <span class="input-group-text">Destination Tag</span>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="100" id="input-xrp-amount" />
+          <span class="input-group-text">Amount of XRP</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="send-xrp-submit-button">Send</button>
+      </div>
     </div>
+  </div>
+</div>
 ```
 
 7. Add the following code to the bottom of `view/renderer.js`:
@@ -1138,7 +1154,7 @@ const { sendXrp } = require('./library/7_helpers')
 const modalButton = document.getElementById('send-xrp-modal-button')
 const modalDialog = new bootstrap.Modal(document.getElementById('send-xrp-modal'))
 modalButton.addEventListener('click', () => {
-    modalDialog.show()
+  modalDialog.show()
 })
 
 const destinationAddressEl = document.getElementById('input-destination-address')
@@ -1147,19 +1163,19 @@ const amountEl = document.getElementById('input-xrp-amount')
 const sendXrpButtonEl = document.getElementById('send-xrp-submit-button')
 
 sendXrpButtonEl.addEventListener('click', () => {
-    modalDialog.hide()
-    const destinationAddress = destinationAddressEl.value
-    const destinationTag = destinationTagEl.value
-    const amount = amountEl.value
+  modalDialog.hide()
+  const destinationAddress = destinationAddressEl.value
+  const destinationTag = destinationTagEl.value
+  const amount = amountEl.value
 
-    window.electronAPI.onClickSendXrp({destinationAddress, destinationTag, amount})
+  window.electronAPI.onClickSendXrp({ destinationAddress, destinationTag, amount })
 })
 
 window.electronAPI.onSendXrpTransactionFinish((_event, result) => {
-    alert('Result: ' + result.result.meta.TransactionResult)
-    destinationAddressEl.value = ''
-    destinationTagEl.value = ''
-    amountEl.value = ''
+  alert('Result: ' + result.result.meta.TransactionResult)
+  destinationAddressEl.value = ''
+  destinationTagEl.value = ''
+  amountEl.value = ''
 })
 ```
 
@@ -1253,13 +1269,13 @@ Finally, the code decodes the account's `Domain` field, if present, and performs
 
 ```html
 <div class="input-group mb-3">
-    <!-- Step 8 code additions - start -->
-    <div class="accountVerificationIndicator">
-        <span>Verification status:</span>
-    </div>
-    <!-- Step 8 code additions - end -->
-    <input type="text" class="form-control" placeholder="r9jEyy3nrB8D7uRc5w2k3tizKQ1q8cpeHU" id="input-destination-address">
-    <span class="input-group-text">To (Address)</span>
+  <!-- Step 8 code additions - start -->
+  <div class="accountVerificationIndicator">
+    <span>Verification status:</span>
+  </div>
+  <!-- Step 8 code additions - end -->
+  <input type="text" class="form-control" placeholder="r9jEyy3nrB8D7uRc5w2k3tizKQ1q8cpeHU" id="input-destination-address" />
+  <span class="input-group-text">To (Address)</span>
 </div>
 ```
 
@@ -1267,7 +1283,7 @@ Finally, the code decodes the account's `Domain` field, if present, and performs
 
 ```javascript
 modalButton.addEventListener('click', () => {
-    modalDialog.show()
+  modalDialog.show()
 })
 
 // Step 8 code additions - start
@@ -1281,21 +1297,21 @@ const sendXrpButtonEl = document.getElementById('send-xrp-submit-button')
 
 // Step 8 code additions - start
 destinationAddressEl.addEventListener('input', (event) => {
-    window.electronAPI.onDestinationAccountChange(destinationAddressEl.value)
+  window.electronAPI.onDestinationAccountChange(destinationAddressEl.value)
 })
 
 window.electronAPI.onUpdateDomainVerificationData((_event, result) => {
-    accountVerificationEl.textContent = `Domain: ${result.domain || 'n/a'} Verified: ${result.verified}`
+  accountVerificationEl.textContent = `Domain: ${result.domain || 'n/a'} Verified: ${result.verified}`
 })
 // Step 8 code additions - end
 
 sendXrpButtonEl.addEventListener('click', () => {
-    modalDialog.hide()
-    const destinationAddress = destinationAddressEl.value
-    const destinationTag = destinationTagEl.value
-    const amount = amountEl.value
+  modalDialog.hide()
+  const destinationAddress = destinationAddressEl.value
+  const destinationTag = destinationTagEl.value
+  const amount = amountEl.value
 
-    window.electronAPI.onClickSendXrp({destinationAddress, destinationTag, amount})
+  window.electronAPI.onClickSendXrp({ destinationAddress, destinationTag, amount })
 })
 ```
 
@@ -1308,7 +1324,7 @@ npm run start
 Test your wallet app the same way you did in the previous steps. It should display a hint about the receiving account when opening up the "Send XRP" dialog and entering the address. To test domain verification, try entering the following addresses in the "To" box of the Send XRP dialog:
 
 | Address                              | Domain       | Verified? |
-|:-------------------------------------|:-------------|:----------|
+| :----------------------------------- | :----------- | :-------- |
 | `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW` | `mduo13.com` | ✅ Yes    |
 | `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` | `xrpl.org`   | ❌ No     |
 | `rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe` | (Not set)    | ❌ No     |

@@ -1,18 +1,19 @@
 ---
-date: "2018-11-07"
+date: '2018-11-07'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.1.2
 
 Ripple is proud to announce the release of **XRP Ledger** (`rippled`) version 1.1.2.
 
-The XRP Ledger version 1.1.2 release includes a fix for a technical issue in the consensus "preferred ledger by branch" code, which could cause a validator to fail to settle on a single preferred branch of unconfirmed ledger history.  While this is not entirely unexpected and the code is designed to handle it, this issue exposed a corner case where the stringent safety guarantees of the consensus algorithm, as outlined in the recent [Analysis of the XRP Ledger Consensus Protocol](https://arxiv.org/abs/1802.07242) paper, make it difficult for the entire network to efficiently recover from this condition.
+The XRP Ledger version 1.1.2 release includes a fix for a technical issue in the consensus "preferred ledger by branch" code, which could cause a validator to fail to settle on a single preferred branch of unconfirmed ledger history. While this is not entirely unexpected and the code is designed to handle it, this issue exposed a corner case where the stringent safety guarantees of the consensus algorithm, as outlined in the recent [Analysis of the XRP Ledger Consensus Protocol](https://arxiv.org/abs/1802.07242) paper, make it difficult for the entire network to efficiently recover from this condition.
 
 <!-- BREAK -->
 
@@ -53,11 +54,11 @@ Related documentation is available in the [XRP Ledger Dev Portal](/docs/), inclu
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* Ripple Technical Services: <support@ripple.com>
+- Ripple Technical Services: <support@ripple.com>
 
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [XRP Chat Forum](http://www.xrpchat.com/)
 
 ## Other Information
 
@@ -73,9 +74,9 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 ### Bug Fixes
 
-* Improve preferred ledger calculation ([#2797](https://github.com/ripple/rippled/pull/2797/commits/bd2a38f5844ce824c02cce1ed97e9cf0cd04c019))
+- Improve preferred ledger calculation ([#2797](https://github.com/ripple/rippled/pull/2797/commits/bd2a38f5844ce824c02cce1ed97e9cf0cd04c019))
 
-* Properly bypass connection limits for cluster peers ([#2795](https://github.com/ripple/rippled/pull/2797/commits/61f443e3bbf3bf1f6e13f3ef25bb5fc60fe85078))
+- Properly bypass connection limits for cluster peers ([#2795](https://github.com/ripple/rippled/pull/2797/commits/61f443e3bbf3bf1f6e13f3ef25bb5fc60fe85078))
 
 ## Contributions
 

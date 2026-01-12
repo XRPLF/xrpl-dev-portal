@@ -2,7 +2,7 @@
 html: py-broker-sale.html
 parent: nfts-using-python.html
 seo:
-    description: Broker a sale between a sell offer and a buy offer.
+  description: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
   - Quickstart
@@ -30,20 +30,20 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 1. Open and run `broker-nfts.py`.
 2. Get test accounts.
-    1. If you have existing account seeds:
-        1. Paste account seed in the **Broker Seed** field.
-        2. Click **Get Broker Account**.
-        3. Paste account seed in the **Standby Seed** field.
-        4. Click **Get Standby Account**.
-        5. Paste account seed in the **Operational Seed** field.
-        6. Click **Get Operational Account**.
-    2. If you do not have account seeds:
-        1. Click **Get Broker Account**.
-        2. Click **Get Standby Account**.
-        2. Click **Get Operational Account**.
-    3. Click **Get Broker Account Info**.
-    4. Click **Get Standby Account Info**.
-    5. Click **Get Operational Account Info**.
+   1. If you have existing account seeds:
+      1. Paste account seed in the **Broker Seed** field.
+      2. Click **Get Broker Account**.
+      3. Paste account seed in the **Standby Seed** field.
+      4. Click **Get Standby Account**.
+      5. Paste account seed in the **Operational Seed** field.
+      6. Click **Get Operational Account**.
+   2. If you do not have account seeds:
+      1. Click **Get Broker Account**.
+      2. Click **Get Standby Account**.
+      3. Click **Get Operational Account**.
+   3. Click **Get Broker Account Info**.
+   4. Click **Get Standby Account Info**.
+   5. Click **Get Operational Account Info**.
 
 [![Quickstart form with Account Information](/docs/img/quickstart-py24.png)](/docs/img/quickstart-py24.png)
 
@@ -54,22 +54,21 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 </div>
 
 1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
-    1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
-    2. Enter the **NFT ID** of the NFT you want to sell.
-    3. Optionally, enter a number of seconds until **Expiration**.
-    4. Enter the Broker account number as the **Destination**.
-    5. Click **Create Sell Offer**.
-    6. Click **Get Offers** to see the new offer.
-
+   1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
+   2. Enter the **NFT ID** of the NFT you want to sell.
+   3. Optionally, enter a number of seconds until **Expiration**.
+   4. Enter the Broker account number as the **Destination**.
+   5. Click **Create Sell Offer**.
+   6. Click **Get Offers** to see the new offer.
 
 [![Sell Offer with Destination](/docs/img/quickstart25.png)](/docs/img/quickstart25.png)
 
 2. Use the Operational account to create a NFT Buy Offer.
-    1. Enter the **Amount** of your offer.
-    2. Enter the **NFT ID**.
-    3. Enter the owner’s account string in the **Owner** field.
-    4. Optionally enter the number of seconds until **Expiration**.
-    5. Click **Create Buy Offer**.
+   1. Enter the **Amount** of your offer.
+   2. Enter the **NFT ID**.
+   3. Enter the owner’s account string in the **Owner** field.
+   4. Optionally enter the number of seconds until **Expiration**.
+   5. Click **Create Buy Offer**.
 
 [![Buy Offer](/docs/img/quickstart-py26.png)](/docs/img/quickstart-py26.png)
 
@@ -89,7 +88,6 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 [![Brokered Sale](/docs/img/quickstart-py28.png)](/docs/img/quickstart-py28.png)
 
-
 ## Cancel Offer
 
 After accepting a buy offer, a best practice for the broker is to cancel all other offers, if the broker has permissions to do so. Use **Get Offers** to get the full list of buy offers. To cancel an offer:
@@ -104,13 +102,14 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) archive to examine the code samples.
 
 ## ripplex5-broker-nfts.js
+
 <!-- SPELLING_IGNORE: ripplex5 -->
 
 Four of the five buttons for the Broker are supported by existing methods. The only new method required is the Broker Sale method.
 
 Import dependencies and create a global variable for `testnet_url`.
 
-```python      
+```python
 import xrpl
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
@@ -119,7 +118,7 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 
 ## Broker Sale
 
-Pass the _seed_, _sell___offer___index_, _buy___offer___index_, and _broker___fee_.
+Pass the _seed_, \_sell***offer***index\_, \_buy***offer***index\_, and \_broker*\_\_fee*.
 
 ```python
 def broker_sale(seed, sell_offer_index, buy_offer_index, broker_fee):
@@ -606,7 +605,7 @@ text_broker_results.grid(row=9, column=1)
 
 Define and place the broker buttons.
 
-```python
+````python
 btn_broker_get_account = tk.Button(master=frm_broker, text="Get Broker Account",
                                    command = get_broker_account)
 btn_broker_get_account.grid(row=0, column=2, sticky = "nsew")
@@ -622,7 +621,7 @@ btn_broker_get_offers.grid(row=3, column=2, sticky = "nsew")
 btn_broker_cancel_offer = tk.Button(master=frm_broker, text="Cancel Offer",
                                     command = broker_cancel_offer)
 btn_broker_cancel_offer.grid(row=4, column=2, sticky="nsew")
-    
+
 # Form frame
 frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
 frm_form.pack()
@@ -881,3 +880,4 @@ btn_op_cancel_offer.grid(row=16, column=3, sticky="nsew")
 # Start the application
 window.mainloop()
 ```x
+````

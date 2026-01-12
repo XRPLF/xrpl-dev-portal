@@ -1,14 +1,15 @@
 ---
-date: "2016-07-05"
+date: '2016-07-05'
 template: '../../@theme/templates/blogpost'
 category: 2016
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
-# The TrustSetAuth Amendment Is Open For Voting #
+
+# The TrustSetAuth Amendment Is Open For Voting
 
 This notice is for all validator operators, and may be relevant to gateways that utilize the Authorized Account feature.
 
@@ -18,8 +19,8 @@ Ripple's validators will vote in favor of the TrustSetAuth amendment, and we exp
 
 For more information, see the following articles:
 
-* [Authorized Trust Lines](/docs/concepts/tokens/fungible-tokens/authorized-trust-lines)
-* [TrustSetAuth Amendment](/resources/known-amendments.md#trustsetauth)
+- [Authorized Trust Lines](/docs/concepts/tokens/fungible-tokens/authorized-trust-lines)
+- [TrustSetAuth Amendment](/resources/known-amendments.md#trustsetauth)
 
 To continue receiving updates about the rippled server, please subscribe to the Ripple Server Google Group:
 

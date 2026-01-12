@@ -2,11 +2,12 @@
 html: create-custom-transactors.html
 parent: contribute-code.html
 seo:
-    description: XRP Ledgerとやり取りするためのカスタムトランザクタを作成します。
+  description: XRP Ledgerとやり取りするためのカスタムトランザクタを作成します。
 labels:
   - 開発
   - ブロックチェーン
 ---
+
 # カスタムトランザクタの作成
 
 _トランザクタ_ はトランザクションを処理し、XRP Ledgerを変更するコードです。カスタムトランザクタを作成することで、`rippled`に新しい機能を追加することができます。このチュートリアルではトランザクタのコーディングについて説明しますが、それをXRPLに追加するにはAmendmentプロセスを経る必要があります。 [XRP Ledgerのコードへの貢献](index.md)をご覧ください。
@@ -23,7 +24,6 @@ _トランザクタ_ はトランザクションを処理し、XRP Ledgerを変�
 
 - [ヘッダファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.h)
 - [CPPファイル](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp)
-
 
 ## ヘッダファイル
 
@@ -60,7 +60,6 @@ public:
 - SLEのビュー。
 - エラーを記録するためのジャーナル。
 
-
 ## CPPファイル
 
 ### 1. `preflight`関数の追加
@@ -70,16 +69,16 @@ public:
 - `PreflightContext`はレジャーのビューを持っていません。
 - レジャーやトランザクションからフィールドを取得するには、次のようにブラケット記法を使用します。
 
-    ```
-    auto const curExpiration = (*sle*)[~sfExpiration];
-    (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
-    ```
+  ```
+  auto const curExpiration = (*sle*)[~sfExpiration];
+  (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
+  ```
 
-    {% admonition type="info" name="注記" %}`~`記号は optional型を返します。{% /admonition %}
+  {% admonition type="info" name="注記" %}`~`記号は optional型を返します。{% /admonition %}
 
 - レジャーとトランザクションのスキーマはこちらから確認できます。
-    - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
-    - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
+  - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
+  - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
 -` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/index.md)をご覧ください。
 
@@ -135,7 +134,6 @@ CreateCheck::preflight(PreflightContext const& ctx)
     return preflight2(ctx);
 }
 ```
-
 
 ### 2. `preclaim`関数の追加
 
@@ -228,7 +226,6 @@ CreateCheck::preclaim(PreclaimContext const& ctx)
 }
 ```
 
-
 ### 3. Add a `doApply()` function.
 
 The `doApply()` function has read/write access, enabling you to modify the ledger.
@@ -314,11 +311,9 @@ CreateCheck::doApply()
 }
 ```
 
-
 ## 追加の関数
 
 必要に応じて、カスタムトランザクタにヘルパー関数を追加することができます。特殊な場合に役立つ特別な関数がいくつかあります。
-
 
 ### `calculateBaseFee`
 
@@ -341,7 +336,6 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 }
 ```
 
-
 ### `makeTxConsequences`
 
 `rippled`は[`TxConsequences`](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/applySteps.h#L41-L44)クラスを使用して、トランザクション適用時のアカウントへの結果を記述します。このクラスは手数料、使用可能な最大XRP、トランザクションによって消費されたシーケンス番号の数を追跡します。結果には次の3つのタイプがあります。
@@ -357,7 +351,6 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 - 設定されたフラグやフィールドによって、正常またはブロッカーとなるトランザクション。
 
 {% admonition type="info" name="注記" %}`TxConsequences`は[トランザクションキュー](../../docs/concepts/transactions/transaction-queue.md)にのみ影響します。トランザクションがレジャーに適用されたときに手数料を請求する可能性が高い場合、それはピアに送信されます。手数料を請求する可能性がない場合、またはそれが判断できない場合は、送信されません。{% /admonition %}
-
 
 ```c++
 SetAccount::makeTxConsequences(PreflightContext const& ctx)
@@ -385,7 +378,6 @@ SetAccount::makeTxConsequences(PreflightContext const& ctx)
     return TxConsequences{ctx.tx, getTxConsequencesCategory(ctx.tx)};
 }
 ```
-
 
 ## 次のステップ
 

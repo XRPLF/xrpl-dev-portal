@@ -2,14 +2,28 @@
 html: use-tickets.html
 parent: manage-account-settings.html
 seo:
-    description: チケットは、通常のシーケンス順序以外でトランザクションを送信するために使用します。
+  description: チケットは、通常のシーケンス順序以外でトランザクションを送信するために使用します。
 embed_xrpl_js: true
 filters:
   - interactive_steps
 labels:
   - アカウント
-steps: ['Generate', 'Connect', 'Check Sequence', 'Prepare & Sign', 'Submit', 'Wait', 'Intermission', 'Check Tickets', 'Prepare Ticketed Tx', 'Submit Ticketed Tx', 'Wait Again']
+steps:
+  [
+    'Generate',
+    'Connect',
+    'Check Sequence',
+    'Prepare & Sign',
+    'Submit',
+    'Wait',
+    'Intermission',
+    'Check Tickets',
+    'Prepare Ticketed Tx',
+    'Submit Ticketed Tx',
+    'Wait Again',
+  ]
 ---
+
 # チケットの使用
 
 [チケット](../../../references/protocol/ledger-data/ledger-entry-types/ticket.md)は、通常の順序ではないトランザクションを送信する方法を提供します。このチュートリアルでは、チケットを作成し、それを使って別のトランザクションを送信する手順を説明します。
@@ -23,8 +37,6 @@ steps: ['Generate', 'Connect', 'Check Sequence', 'Prepare & Sign', 'Submit', 'Wa
 このページでは、[xrpl.js](https://js.xrpl.org/)ライブラリを使用したJavaScriptのサンプルを提供しています。設定方法は、[JavaScriptを使ってみよう](../../javascript/build-apps/get-started.md)をご覧ください。
 
 JavaScriptはWebブラウザ上で動作するため、セットアップなしで読み進められ、インタラクティブな手順を利用することができます。
-
-
 
 ## 手順
 
@@ -43,7 +55,6 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 [本番環境のソフトウェアを作成する場合](/docs/tutorials)には、既存のアカウントを使用し、[安全な署名](../../../concepts/transactions/secure-signing.md)を使用して鍵を管理する必要があります。
 
-
 ### 2. ネットワークへの接続
 
 トランザクションをネットワークに送信するには、ネットワークに接続している必要があります。チケットは今のところDevnetでしか利用できないので、Devnetサーバに接続する必要があります。例えば、以下のようになります。
@@ -61,7 +72,6 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 このチュートリアルでは、以下のボタンをクリックして接続します。
 
 {% partial file="/@l10n/ja/docs/_snippets/interactive-tutorials/connect-step.md" /%}
-
 
 ### 3. シーケンス番号の確認
 
@@ -85,8 +95,6 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% /interactive-block %}
 
-
-
 ### 4. TicketCreateの準備と署名
 
 前のステップで決定したシーケンス番号を使用して、[TicketCreateトランザクション][]を構築します。`TicketCount`フィールドを使って、作成するチケットの枚数を指定します。例えば、10枚のチケットを作成するトランザクションを準備するには、次のようにします。
@@ -101,15 +109,13 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 トランザクションのハッシュと`LastLedgerSequence`の値を記録しておけば、[後で検証されたかどうかを確認](../../../concepts/transactions/reliable-transaction-submission.md)することができます。
 
-
 {% interactive-block label="Prepare & Sign" steps=$frontmatter.steps %}
 
 <button id="prepare-and-sign" class="btn btn-primary previous-steps-required">Prepare & Sign</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
-
 
 ### 5. TicketCreateの提出
 
@@ -133,7 +139,6 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% /interactive-block %}
 
-
 ### 6. 検証の待機
 
 ほとんどのトランザクションは、送信された後に次の台帳のバージョンに受け入れられます。つまり、トランザクションの結果が確定するまでに4～7秒かかることがあります。XRP Ledgerが混雑している場合や、ネットワークの接続性が悪いためにトランザクションがネットワーク全体に中継されない場合は、トランザクションが確定するまでに時間がかかることがあります。(トランザクションの有効期限を設定する方法については、[信頼できるトランザクションの送信](../../../concepts/transactions/reliable-transaction-submission.md)をご覧ください)。
@@ -148,7 +153,6 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% partial file="/@l10n/ja/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
-
 ### (任意) 休憩
 
 チケットの強みは、チケットを使ったトランザクションの準備をしている間も、アカウントの業務を通常通り行うことができる点にあります。チケットを使用してトランザクションを送信する場合、別のチケットを使用しているものも含め、他のトランザクションの送信と並行して行うことができ、いつでもチケット付きトランザクションを送信することができます。唯一の制約は、1つのチケットは1回しか使用できないということです。
@@ -160,11 +164,10 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 <button id="intermission-payment" class="btn btn-primary previous-steps-required">Payment</button>
 <button id="intermission-escrowcreate" class="btn btn-primary previous-steps-required">EscrowCreate</button>
 <button id="intermission-accountset" class="btn btn-primary previous-steps-required">AccountSet</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
-
 
 ### 7. 有効なチケットの確認
 
@@ -178,10 +181,10 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% /tabs %}
 
-
 {% interactive-block label="Check Tickets" steps=$frontmatter.steps %}
 
 <button id="check-tickets" class="btn btn-primary previous-steps-required">Check Tickets</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
@@ -207,7 +210,7 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
 
 - **xrpl.js:** トランザクションの自動入力の際に、`"LastLedgerSequence": null`を指定する。
 - **`rippled`:** 用意された指示から`LastLedgerSequence`を省略します。サーバはデフォルトでは値を提供しません。
-{% /admonition %}
+  {% /admonition %}
 
 {% interactive-block label="Prepare Ticketed Tx" steps=$frontmatter.steps %}
 
@@ -219,7 +222,6 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ### 9. チケット付きトランザクションの送信
 
@@ -236,10 +238,10 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
 {% interactive-block label="Submit Ticketed Tx" steps=$frontmatter.steps %}
 
 <button id="ticketedtx-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob_t" data-wait-step-name="Wait Again">Submit</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ### 10. 検証の待機
 
@@ -255,20 +257,19 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
 
 複数の異なるトランザクションを処理する場合、それぞれが異なるチケットを使用する限り、この作業を並行して行うことができます。
 
-
 ## 関連項目
 
 - **Concepts:**
-    - [チケット](../../../concepts/accounts/tickets.md)
-    - [マルチシグ](../../../concepts/accounts/multi-signing.md)
+  - [チケット](../../../concepts/accounts/tickets.md)
+  - [マルチシグ](../../../concepts/accounts/multi-signing.md)
 - **Tutorials:**
-    - [マルチシグの設定](set-up-multi-signing.md)
-    - [信頼出来るトランザクションの送信](../../../concepts/transactions/reliable-transaction-submission.md)
+  - [マルチシグの設定](set-up-multi-signing.md)
+  - [信頼出来るトランザクションの送信](../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [account_objectsメソッド][]
-    - [sign_forメソッド][]
-    - [submit_multisignedメソッド][]
-    - [TicketCreateトランザクション][]
-    - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md)
+  - [account_objectsメソッド][]
+  - [sign_forメソッド][]
+  - [submit_multisignedメソッド][]
+  - [TicketCreateトランザクション][]
+  - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

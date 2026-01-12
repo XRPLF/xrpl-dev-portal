@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-07-17"
+date: '2020-07-17'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: XRP Toolkit
 
 [XRP Toolkit](https://www.xrptoolkit.com/), developed by [Towo Labs](https://towo.io), is a platform for managing crypto assets on the XRP Ledger, including a full-featured graphical user-interface (GUI) for the XRP Ledger's built-in decentralized exchange (DEX).

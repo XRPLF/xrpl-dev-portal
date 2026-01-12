@@ -2,12 +2,13 @@
 html: reserves.html
 parent: accounts.html
 seo:
-    description: Las cuentas XRP Ledger exigen una reserva de XRP para reducir el spam en la información del ledger.
+  description: Las cuentas XRP Ledger exigen una reserva de XRP para reducir el spam en la información del ledger.
 labels:
   - Comisiones
   - Cuentas
 top_nav_grouping: Páginas populares
 ---
+
 # Reservas
 
 El XRP Ledger aplica un _requisito de reserva_, en XRP, para proteger el ledger global compartido de crecer excesivamente como resultado del spam o del uso malicioso. El objetivo es limitar el crecimiento del ledger para coincida con las mejoras tecnológicas de tal forma que un equipo basico actual pueda siempre tener el ledger actual en RAM.
@@ -20,8 +21,8 @@ El requisito de reserva cambia de tanto en tanto debido al proceso de [Votación
 
 Los requisito de reserva consta de dos partes:
 
-* La **reserva base** es la cantidad mínima de XRP que es necesaria para cada dirección en el ledger.
-* La **reserva de propietario** es un incremento del requisito de reserva por cada objeto que la dirección posee en el ledger. El coste por artículo se le conoce como _reserva incremental_.
+- La **reserva base** es la cantidad mínima de XRP que es necesaria para cada dirección en el ledger.
+- La **reserva de propietario** es un incremento del requisito de reserva por cada objeto que la dirección posee en el ledger. El coste por artículo se le conoce como _reserva incremental_.
 
 Los requerimientos de reserva actuales en Mainnet son:
 
@@ -48,14 +49,13 @@ Algunos casos especiales:
 Las aplicaciones pueden buscar los valores de las reservas base e incremental actuales utilizando el [método server_info][] o el [método server_state][]:
 
 | Método                  | Unidades             | Campo de reserva base               | Campo de reserva incremental       |
-|-------------------------|----------------------|-------------------------------------|------------------------------------|
+| ----------------------- | -------------------- | ----------------------------------- | ---------------------------------- |
 | [método server_info][]  | Decimal XRP          | `validated_ledger.reserve_base_xrp` | `validated_ledger.reserve_inc_xrp` |
 | [método server_state][] | Drops enteros de XRP | `validated_ledger.reserve_base`     | `validated_ledger.reserve_inc`     |
 
 Para determinar las reservas de propietario de una cuenta, hay que multiplicar la reserva incremental por el número de objetos que la cuenta posee. Para mirar el número de objetos que una cuenta posee, llama al [método account_info][] y toma `account_data.OwnerCount`.
 
 Para calcular el requisito total de direcciones, multiplica `OwnerCount` por `reserve_inc_xrp`, y luego suma `reserve_base_xrp`. [Aquí tienes una demostración](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#codeblock-17) del cálculo en Python.
-
 
 ## Quedarse por debajo del requisito de reserva
 
@@ -64,7 +64,6 @@ Durante el procesamiento de transacciones, el [coste de transacción](../transac
 Cuando tu cuenta posee menos XRP XRP que el requisito actual de reserva, no puedes enviar XRP a otros, o crear nuevos objetos que incremente el requisito de reserva de la cuenta. Aun así, la cuenta continua existiendo en el ledger y puedes enviar transacciones que no hagan esas cosas, siempre que tengas suficiente XRP para pagar el coste de transacción. Puedes volver a superar el requisito de reserva recibiendo suficiente XRP, o si el requisito de reserva decrece debajo de la cantidad que tiene.
 
 **Consejo:** Si tu dirección está debajo del requisito de reserva, puedes enviar unas [transacciones OfferCreate][] para aadquirir más XRP y volver a superar el requisito de reeerva. Sin embargo, dado que no puedes crear una [entrada en el ledger Offer](../../references/protocol/ledger-data/ledger-entry-types/offer.md) cuando estás por debajo de la reserva, esta transacción puede consumir solo Offers que ya esté en el libro de ordenes.
-
 
 ## Cambiar los requisitos de reserva
 

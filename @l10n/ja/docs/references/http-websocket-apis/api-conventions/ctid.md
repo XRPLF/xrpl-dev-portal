@@ -2,10 +2,11 @@
 html: ctid.html
 parent: api-conventions.html
 seo:
-    description: CTID（Compact Transaction Identifier）は、検証済みトランザクションをチェーン全体で一意に識別する短い文字列です。
+  description: CTID（Compact Transaction Identifier）は、検証済みトランザクションをチェーン全体で一意に識別する短い文字列です。
 labels:
   - 開発
 ---
+
 # トランザクション軽量識別子
 
 CTID（トランザクション軽量識別子 / Compact Transaction Identifier）は、XRP Ledgerのメインネットを含む、あらゆる[ネットワーク](../../../concepts/networks-and-servers/parallel-networks.md)で利用可能な、検証済みトランザクションの一意な識別子です。

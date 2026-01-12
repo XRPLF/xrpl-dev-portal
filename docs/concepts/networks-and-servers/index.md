@@ -2,10 +2,11 @@
 html: networks-and-servers.html
 parent: concepts.html
 seo:
-    description: rippled is the core peer-to-peer server that manages the XRP Ledger.
+  description: rippled is the core peer-to-peer server that manages the XRP Ledger.
 metadata:
   indexPage: true
 ---
+
 # Networks and Servers
 
 There are two main types of server software that power the XRP Ledger:
@@ -23,9 +24,9 @@ There are lots of reasons you might want to run your own servers, but most of th
 
 You need to trust the server you use. If you connect to a malicious server, there are many ways that it can take advantage of you or cause you to lose money. For example:
 
-* A malicious server could report that you were paid when no such payment was made.
-* It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal.
-* If you sent it your address's secret key, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money your address holds.
+- A malicious server could report that you were paid when no such payment was made.
+- It could selectively show or hide payment paths and currency exchange offers to guarantee its own profit while not providing you the best deal.
+- If you sent it your address's secret key, it could make arbitrary transactions on your behalf, and even transfer or destroy all the money your address holds.
 
 Additionally, running your own server gives you [admin access](../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access), which allows you to run important admin-only and load-intensive commands. If you use a shared server, you have to worry about other users of the same server competing with you for the server's computing power. Many of the commands in the WebSocket API can put a lot of strain on the server, so the server has the option to scale back its responses when it needs to. If you share a server with others, you may not always get the best results possible.
 
@@ -36,6 +37,5 @@ Finally, if you run a validating server, you can use a stock server as a proxy t
 <!-- provided by the auto-generated table of children -->
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
-
 
 {% child-pages /%}

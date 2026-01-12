@@ -1,13 +1,13 @@
-a[href^="#"]:after {
-    display: none !important;
+a[href^='#']:after {
+  display: none !important;
 }
 
 .main code {
-    color: black;
+  color: black;
 }
 
 .main .hljs {
-    background: transparent;
+  background: transparent;
 }
 
 .main pre {

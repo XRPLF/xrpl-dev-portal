@@ -2,11 +2,12 @@
 html: ticksize.html
 parent: decentralized-exchange.html
 seo:
-    description: Los emisores pueden establecer tamaños de ticks personalizados para las monedas para reducir la rotación de libros de pedidos por diferencias minúsculas en los tipos de cambio.
+  description: Los emisores pueden establecer tamaños de ticks personalizados para las monedas para reducir la rotación de libros de pedidos por diferencias minúsculas en los tipos de cambio.
 labels:
   - Exchange Descentralizado
   - Tokens
 ---
+
 # Tamaño de Tick
 
 Cuando se coloca una Oferta en un libro de órdenes, su tasa de cambio se trunca en base a los valores de `TickSize` establecidos por los emisores de las monedas involucradas en la Oferta. Cuando se negocia XRP y un token, se aplica el `TickSize` del emisor del token. Cuando se negocian dos tokens, la Oferta utiliza el valor de `TickSize` más pequeño (es decir, el que tiene menos dígitos significativos). Si ninguno de los tokens tiene un `TickSize` establecido, se aplica el comportamiento predeterminado.
@@ -21,8 +22,8 @@ Cuando un emisor habilita, deshabilita o cambia el `TickSize`, las Ofertas que s
 
 - [Dev Blog: Introducción a la enmienda TickSize](https://xrpl.org/blog/2017/ticksize-voting.html#ticksize-amendment-overview)
 - **Referencias:**
-    - [transacción AccountSet][]
-    - [método book_offers][]
-    - [transacción OfferCreate][]
+  - [transacción AccountSet][]
+  - [método book_offers][]
+  - [transacción OfferCreate][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

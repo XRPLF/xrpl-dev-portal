@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Retrieve info about a transaction from a particular ledger version.
+  description: Retrieve info about a transaction from a particular ledger version.
 labels:
-    - Transaction Sending
+  - Transaction Sending
 ---
+
 # transaction_entry
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/TransactionEntry.cpp "Source")
 
 The `transaction_entry` method retrieves information on a single transaction from a specific ledger version. (The [tx method][], by contrast, searches all ledgers for the specified transaction. We recommend using that method instead.)
@@ -16,6 +18,7 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "example_transaction_entry",
@@ -25,28 +28,33 @@ An example of the request format:
   "api_version": 2
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "transaction_entry",
-    "params": [
-        {
-            "tx_hash": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
-            "ledger_index": 56865245,
-            "api_version": 2
-        }
-    ]
+  "method": "transaction_entry",
+  "params": [
+    {
+      "tx_hash": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
+      "ledger_index": 56865245,
+      "api_version": 2
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -55,11 +63,11 @@ rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444
 
 The request includes the following parameters:
 
-| `Field`        | Type                       | Description                    |
-|:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
+| `Field`        | Type                       | Description                                                                                                                                 |
+| :------------- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ledger_hash`  | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][])                                                     |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `tx_hash`      | String                     | Unique hash of the transaction you are looking up |
+| `tx_hash`      | String                     | Unique hash of the transaction you are looking up                                                                                           |
 
 {% admonition type="info" name="Note" %}This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.{% /admonition %}
 
@@ -70,6 +78,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -194,9 +203,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -320,9 +331,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/opt/ripple/rippled.cfg"
 2025-Dec-19 03:16:00.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -447,6 +460,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -457,25 +471,25 @@ The response follows the [standard format][], with a successful result containin
 
 {% tab label="API v2" %}
 
-| `Field`          | Type                      | Description                     |
-|:-----------------|:--------------------------|:--------------------------------|
-| `close_time_iso` | String                    | The time the ledger containing this transaction was closed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. |
-| `hash`           | String                    | The unique hash identifier of the transaction. |
-| `ledger_index`   | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `Field`          | Type                      | Description                                                                                                                               |
+| :--------------- | :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| `close_time_iso` | String                    | The time the ledger containing this transaction was closed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.                 |
+| `hash`           | String                    | The unique hash identifier of the transaction.                                                                                            |
+| `ledger_index`   | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request.                        |
 | `ledger_hash`    | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `meta`           | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail. |
-| `tx_json`        | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md) |
+| `meta`           | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail.       |
+| `tx_json`        | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md)                                                  |
 
 {% /tab %}
 
 {% tab label="API v1" %}
 
-| `Field`        | Type                      | Description                     |
-|:---------------|:--------------------------|:--------------------------------|
-| `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `Field`        | Type                      | Description                                                                                                                               |
+| :------------- | :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request.                        |
 | `ledger_hash`  | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `metadata`     | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail. |
-| `tx_json`      | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md) |
+| `metadata`     | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail.       |
+| `tx_json`      | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md)                                                  |
 
 {% /tab %}
 
@@ -483,16 +497,16 @@ The response follows the [standard format][], with a successful result containin
 
 There are a couple possible reasons the server may fail to find the transaction:
 
-* The transaction does not exist
-* The transaction exists, but not in the specified ledger version
-* The server does not have the specified ledger version available. Another server that has the correct version on hand may have a different response.
+- The transaction does not exist
+- The transaction exists, but not in the specified ledger version
+- The server does not have the specified ledger version available. Another server that has the correct version on hand may have a different response.
 
 ## Possible Errors
 
-* Any of the [universal error types][].
-* `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
-* `notYetImplemented` - A ledger version was not specified in the request.
-* `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* `transactionNotFound` - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
+- Any of the [universal error types][].
+- `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
+- `notYetImplemented` - A ledger version was not specified in the request.
+- `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+- `transactionNotFound` - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

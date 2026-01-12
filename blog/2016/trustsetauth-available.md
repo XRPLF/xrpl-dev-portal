@@ -1,13 +1,14 @@
 ---
-date: "2016-07-19"
+date: '2016-07-19'
 template: '../../@theme/templates/blogpost'
 category: 2016
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # TrustSetAuth is Now Available
 
 As [predicted previously](/blog/2016/trustsetauth-reminder.md), TrustSetAuth became available on the Ripple Consensus Ledger this afternoon (PDT) in ledger 22,721,281 ([2016-07-19T15:10](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF)).
@@ -32,8 +33,8 @@ With this amendment enabled, currency issuers can authorize other addresses to h
 
 For more information, please see the following documentation:
 
-* [Authorized Trust Lines](/docs/concepts/tokens/fungible-tokens/authorized-trust-lines)
+- [Authorized Trust Lines](/docs/concepts/tokens/fungible-tokens/authorized-trust-lines)
 
-* [TrustSetAuth Amendment](/resources/known-amendments.md#trustsetauth)
+- [TrustSetAuth Amendment](/resources/known-amendments.md#trustsetauth)
 
 To continue receiving updates about the rippled server, please subscribe to the Ripple Server Google Group: https://groups.google.com/forum/#!forum/ripple-server

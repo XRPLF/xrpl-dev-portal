@@ -1,13 +1,14 @@
 ---
-date: "2016-10-16"
+date: '2016-10-16'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Release Notes
+  - Release Notes
 category: 2016
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.33.0-hf1
 
 Ripple has released `rippled` version 0.33.0-hf1, which fixes a JSON parsing issue in all `rippled` servers. Ripple recommends upgrading to 0.33.0-hf1 only if server operators are experiencing a `jsonInvalid` error response to client requests. There are no new or updated features in the 0.33.0-hf1 release.
@@ -43,14 +44,16 @@ Set version to 0.33.0-hf1
 Fix a JSON parsing issue that can fail to parse valid JSON requests when the data received by the server is broken up into more than one contiguous buffer. [(#1863)](https://github.com/ripple/rippled/commit/69b47890e69cea46c403e6354742c3653f125c6f)
 
 ## Network Update
+
 The Ripple operations team has deployed version 0.33.0-hf1 to all client facing `rippled` servers under its operational control.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

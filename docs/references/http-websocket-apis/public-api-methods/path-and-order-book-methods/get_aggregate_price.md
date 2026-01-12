@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Calculate the aggregate price of specified Oracle instances.
+  description: Calculate the aggregate price of specified Oracle instances.
 labels:
-    - Oracle
+  - Oracle
 ---
+
 # get_aggregate_price
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/GetAggregatePrice.cpp "Source")
 
 The `get_aggregate_price` method retrieves the aggregate price of specified `Oracle` objects, returning three price statistics: mean, median, and trimmed mean.
@@ -18,6 +20,7 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "command": "get_aggregate_price",
@@ -49,9 +52,11 @@ An example of the request format:
   ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "method": "get_aggregate_price",
@@ -79,6 +84,7 @@ An example of the request format:
   ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -87,21 +93,20 @@ An example of the request format:
 
 The request contains the following parameters:
 
-| Field                        | Type   | Required? | Description |
-|------------------------------|--------|-----------|-------------|
-| `base_asset`                 | String | Yes       | The currency code of the asset to be priced. |
-| `quote_asset`                | String | Yes       | The currency code of the asset to quote the price of the base asset. |
-| `trim`                       | Number | No        | The percentage of outliers to trim. Valid trim range is 1-25. If included, the API returns statistics for the `trimmed mean`. |
-| `trim_threshold`             | Number | No        | Defines a time range in seconds for filtering out older price data. Default value is 0, which doesn't filter any data. |
-| `oracles`                    | Array  | Yes       | An array of oracle identifier objects. You must list between 1 and 200 oracle identifiers. |
+| Field            | Type   | Required? | Description                                                                                                                   |
+| ---------------- | ------ | --------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `base_asset`     | String | Yes       | The currency code of the asset to be priced.                                                                                  |
+| `quote_asset`    | String | Yes       | The currency code of the asset to quote the price of the base asset.                                                          |
+| `trim`           | Number | No        | The percentage of outliers to trim. Valid trim range is 1-25. If included, the API returns statistics for the `trimmed mean`. |
+| `trim_threshold` | Number | No        | Defines a time range in seconds for filtering out older price data. Default value is 0, which doesn't filter any data.        |
+| `oracles`        | Array  | Yes       | An array of oracle identifier objects. You must list between 1 and 200 oracle identifiers.                                    |
 
 Each member of the `oracles` array is an oracle identifier object with the following fields:
 
-| Field                | Type   | Required? | Description |
-|----------------------|--------|-----------|-------------|
-| `account`            | String | Yes       | The XRPL account that controls the `Oracle` object. |
+| Field                | Type   | Required? | Description                                               |
+| -------------------- | ------ | --------- | --------------------------------------------------------- |
+| `account`            | String | Yes       | The XRPL account that controls the `Oracle` object.       |
 | `oracle_document_id` | Number | Yes       | A unique identifier of the price oracle for the `Account` |
-
 
 ## Response Format
 
@@ -130,17 +135,17 @@ An example of the response format:
 }
 ```
 
-| Field                            | Type            | Description |
-|----------------------------------|-----------------|-------------|
-| `entire_set`                     | Object          | The statistics from the collected oracle prices. |
-| `entire_set.mean`                | String - Number | The simple mean. |
-| `entire_set.size`                | Number          | The size of the data set to calculate the mean. |
-| `entire_set.standard_deviation`  | String - Number | The standard deviation. |
+| Field                            | Type            | Description                                                                                                             |
+| -------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `entire_set`                     | Object          | The statistics from the collected oracle prices.                                                                        |
+| `entire_set.mean`                | String - Number | The simple mean.                                                                                                        |
+| `entire_set.size`                | Number          | The size of the data set to calculate the mean.                                                                         |
+| `entire_set.standard_deviation`  | String - Number | The standard deviation.                                                                                                 |
 | `trimmed_set`                    | Object          | The trimmed statistics from the collected oracle prices. Only appears if the `trim` field was specified in the request. |
-| `trimmed_set.mean`               | String - Number | The simple mean of the trimmed data. |
-| `trimmed_set.size`               | Number          | The size of the data to calculate the trimmed mean. |
-| `trimmed_set.standard_deviation` | String - Number | The standard deviation of the trimmed data. |
-| `time`                           | Number          | The most recent timestamp out of all `LastUpdateTime` values, represented in Unix time. |
+| `trimmed_set.mean`               | String - Number | The simple mean of the trimmed data.                                                                                    |
+| `trimmed_set.size`               | Number          | The size of the data to calculate the trimmed mean.                                                                     |
+| `trimmed_set.standard_deviation` | String - Number | The standard deviation of the trimmed data.                                                                             |
+| `time`                           | Number          | The most recent timestamp out of all `LastUpdateTime` values, represented in Unix time.                                 |
 
 {% admonition type="info" name="Notes" %}
 
@@ -150,7 +155,6 @@ An example of the response format:
 - If an `Oracle` object doesn't contain an `AssetPrice` for the specified token pair, then up to three previous `Oracle` objects are examined and the most recent one that fulfills the requirements is included.
 
 {% /admonition %}
-
 
 ## Possible Errors
 

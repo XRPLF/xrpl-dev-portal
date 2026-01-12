@@ -2,8 +2,9 @@
 html: basic-data-types.html
 parent: protocol-reference.html
 seo:
-    description: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
+  description: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
 ---
+
 # Basic Data Types
 
 Different types of objects are uniquely identified in different ways:
@@ -15,19 +16,19 @@ Different types of objects are uniquely identified in different ways:
 Each closed [Ledger](../ledger-data/index.md) has a [Ledger Index][] and a [Hash][] value. When [Specifying Ledgers][] you can use either one.
 
 ## Addresses
+
 [Address]: #addresses
 
 {% partial file="/docs/_snippets/data_types/address.md" /%}
 
-
-
 ## Hashes
+
 [Hash]: #hashes
 
 {% partial file="/docs/_snippets/data_types/hash.md" /%}
 
-
 ### Hash Prefixes
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/HashPrefix.h "Source")
 
 In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The existing 4-byte codes are structured as three alphabetic characters, encoded as ASCII, followed by a zero byte.
@@ -35,39 +36,36 @@ In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte cod
 Some types of hash appear in API requests and responses. Others are only calculated as the first step of signing a certain type of data, or calculating a higher-level hash. The following table shows all 4-byte hash prefixes the XRP Ledger uses:
 
 | Object Type                           | API Fields                           | Hash Prefix (Hex) | Hash Prefix (Text) |
-|:--------------------------------------|:-------------------------------------|:------------------|:--|
-| Consensus proposal                    | N/A                                  | `0x50525000`      | `PRP\0` |
-| Ledger Version                        | `ledger_hash`                        | `0x4C575200`      | `LWR\0` |
-| Ledger state data                     | `account_state` in [ledger header][] | `0x4D4C4E00`      | `MLN\0` |
-| Ledger data inner node                | N/A                                  | `0x4D494E00`      | `MIN\0` |
-| Ledger data inner node ([SHAMapv2][]) | N/A                                  | `0x494E5200`      | `INR\0` |
-| Payment Channel Claim                 | N/A                                  | `0x434C4D00`      | `CLM\0` |
-| Signed Transaction                    | `hash` of transactions               | `0x54584E00`      | `TXN\0` |
-| Transaction with metadata             | N/A                                  | `0x534E4400`      | `SND\0` |
-| Unsigned Transaction (Single-signing) | N/A                                  | `0x53545800`      | `STX\0` |
-| Unsigned Transaction (Multi-signing)  | N/A                                  | `0x534D5400`      | `SMT\0` |
-| Validation vote                       | N/A                                  | `0x56414C00`      | `VAL\0` |
-| Validator manifest                    | N/A                                  | `0x4D414E00`      | `MAN\0` |
+| :------------------------------------ | :----------------------------------- | :---------------- | :----------------- |
+| Consensus proposal                    | N/A                                  | `0x50525000`      | `PRP\0`            |
+| Ledger Version                        | `ledger_hash`                        | `0x4C575200`      | `LWR\0`            |
+| Ledger state data                     | `account_state` in [ledger header][] | `0x4D4C4E00`      | `MLN\0`            |
+| Ledger data inner node                | N/A                                  | `0x4D494E00`      | `MIN\0`            |
+| Ledger data inner node ([SHAMapv2][]) | N/A                                  | `0x494E5200`      | `INR\0`            |
+| Payment Channel Claim                 | N/A                                  | `0x434C4D00`      | `CLM\0`            |
+| Signed Transaction                    | `hash` of transactions               | `0x54584E00`      | `TXN\0`            |
+| Transaction with metadata             | N/A                                  | `0x534E4400`      | `SND\0`            |
+| Unsigned Transaction (Single-signing) | N/A                                  | `0x53545800`      | `STX\0`            |
+| Unsigned Transaction (Multi-signing)  | N/A                                  | `0x534D5400`      | `SMT\0`            |
+| Validation vote                       | N/A                                  | `0x56414C00`      | `VAL\0`            |
+| Validator manifest                    | N/A                                  | `0x4D414E00`      | `MAN\0`            |
 
 [ledger header]: ../ledger-data/ledger-header.md
 [SHAMapv2]: /resources/known-amendments.md#shamapv2
 
 [Ledger objects IDs](../ledger-data/common-fields.md) are calculated in a similar way, but they use a 2-byte prefix called a "space key" instead of a prefix in the form described here.
 
-
 ## Account Sequence
+
 [Sequence Number]: #account-sequence
 
 {% partial file="/docs/_snippets/data_types/account_sequence.md" /%}
 
-
-
 ## Ledger Index
+
 [Ledger Index]: #ledger-index
 
 {% partial file="/docs/_snippets/data_types/ledger_index.md" /%}
-
-
 
 ### Specifying Ledgers
 
@@ -75,36 +73,34 @@ Many API methods require you to specify an instance of the ledger, with the data
 
 1. Specify a ledger by its [Ledger Index][] in the `ledger_index` parameter. Each closed ledger has a ledger index that is 1 higher than the previous ledger. (The very first ledger had ledger index 1.)
 
-    ```
-    "ledger_index": 61546724
-    ```
+   ```
+   "ledger_index": 61546724
+   ```
 
 2. Specify a ledger by its [Hash][] value in the `ledger_hash` parameter.
 
-    ```
-    "ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
-    ```
+   ```
+   "ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+   ```
 
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
+   - `validated` for the most recent ledger that has been [validated by consensus](../../../concepts/consensus-protocol/consensus-structure.md#validation)
 
-    * `validated` for the most recent ledger that has been [validated by consensus](../../../concepts/consensus-protocol/consensus-structure.md#validation)
+     ```
+     "ledger_index": "validated"
+     ```
 
-        ```
-        "ledger_index": "validated"
-        ```
+   - `closed` for the most recent ledger that has been closed for modifications and proposed for validation
 
-    * `closed` for the most recent ledger that has been closed for modifications and proposed for validation
+   - `current` for the server's current working version of the ledger.
 
-    * `current` for the server's current working version of the ledger.
-
-There is also a deprecated `ledger` parameter which accepts any of the above three formats. *Do not* use this parameter; it may be removed without further notice.
+There is also a deprecated `ledger` parameter which accepts any of the above three formats. _Do not_ use this parameter; it may be removed without further notice.
 
 If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, peer-to-peer servers chooses the `current` (in-progress) ledger. Clio servers use the most recent validated ledger instead. Do not provide more than one field specifying ledgers.
 
 {% admonition type="info" name="Note" %}Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.{% /admonition %}
 
 Clio servers only record validated ledger data. If you make a request to a Clio server for the `current` or `closed` ledger, the server forwards the request to a P2P Mode server. If you request a ledger index or hash that is not validated, Clio responds with a `lgrNotFound` error.
-
 
 ## Specifying Currency Amounts
 
@@ -116,32 +112,31 @@ XRP is specified as a string containing an integer number of "drops" of XRP, whe
 
 - **XRP** - To specify an `Amount` field with a value of 13.1 XRP:
 
-    ```
-    "Amount": "13100000"
-    ```
+  ```
+  "Amount": "13100000"
+  ```
 
 - **Token** - To specify an `Amount` field with a value of 13.1 FOO issued by or to `rf1B...`:
 
-    ```
-    "Amount": {
-        "value": "13.1",
-        "currency": "FOO",
-        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-    }
-    ```
-    
-- **MPT** - Use `Amount` to specify the value of an MPT. Assuming an `AssetScale` of *1*, you would specify a value of 13.1 units of an MPT as follows:
-
-    ```
+  ```
   "Amount": {
-    "mpt_issuance_id": 
-     "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
-    "value": "131"
+      "value": "13.1",
+      "currency": "FOO",
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
   }
-    ```
+  ```
+
+- **MPT** - Use `Amount` to specify the value of an MPT. Assuming an `AssetScale` of _1_, you would specify a value of 13.1 units of an MPT as follows:
+
+  ```
+  "Amount": {
+  "mpt_issuance_id":
+   "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
+  "value": "131"
+  }
+  ```
 
 For more information, see [Currency Formats](currency-formats.md).
-
 
 ## Specifying Time
 

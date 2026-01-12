@@ -2,10 +2,11 @@
 html: forward-ports-for-peering.html
 parent: configure-peering.html
 seo:
-    description: Configure your firewall to allow incoming peers to your rippled server.
+  description: Configure your firewall to allow incoming peers to your rippled server.
 labels:
   - Core Server
 ---
+
 # Forward Ports for Peering
 
 Servers in the XRP Ledger peer-to-peer network communicate over the [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). For the best combination of security and connectivity to the rest of the network, you should use a firewall to protect your server from most ports, but open or forward the peer protocol port.
@@ -64,19 +65,18 @@ For other software and hardware firewalls, see the manufacturer's official docum
 
 If you are using a hosting service with a virtual firewall (for example, [AWS Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)), you do not need to use `firewalld`, but you still need to allow inbound traffic from the open internet on the peer port. Make sure you apply the relevant rules to your host or virtual machine.
 
-
 ## See Also
 
 - **Concepts:**
-    - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+  - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
+  - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
-    - [Capacity Planning](../../installation/capacity-planning.md)
-    - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
+  - [Capacity Planning](../../installation/capacity-planning.md)
+  - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
 - **References:**
-    - [connect method][]
-    - [peers method][]
-    - [print method][]
-    - [server_info method][]
+  - [connect method][]
+  - [peers method][]
+  - [print method][]
+  - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

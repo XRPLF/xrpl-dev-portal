@@ -12,7 +12,6 @@ _([PriceOracle Amendment][])_
 
 {% /admonition %}
 
-
 ## オラクルの仕組み
 
 ほとんどのオラクルブロックチェーンのやり取りは、次のような仕組みになっています。
@@ -23,7 +22,6 @@ _([PriceOracle Amendment][])_
 
 このプロセスは逆方向にも機能し、トランザクション情報を外部システムにプッシュすることも可能です。
 
-
 ## XRP Ledgerの価格オラクル
 
 XRPLの価格オラクルはネイティブのオンチェーンオラクルであり、XRP LedgerのネイティブDeFi機能を強化します。オフチェーン価格オラクルは、そのデータをXRPLオラクルに送信し、XRPLオラクルはオンチェーンにその情報を保存します。これにより、分散型アプリケーションは価格データについてXRPLオラクルに問い合わせることが可能になります。複数のXRPLオラクルに問い合わせることで、リスクと不正確性を最小限に抑えることができます。
@@ -33,9 +31,9 @@ XRPLの価格オラクルはネイティブのオンチェーンオラクルで�
 ## 関連項目
 
 - **リファレンス:**
-    - [get_aggregate_priceメソッド][]
-    - [Oracleエントリ][]
-    - [OracleDeleteトランザクション][]
-    - [OracleSetトランザクション][]
+  - [get_aggregate_priceメソッド][]
+  - [Oracleエントリ][]
+  - [OracleDeleteトランザクション][]
+  - [OracleSetトランザクション][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

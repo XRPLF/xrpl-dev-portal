@@ -1,14 +1,15 @@
-import * as React from 'react';
-import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { NavList } from "shared/components/nav-list";
-import { Link } from "@redocly/theme/components/Link/Link";
+import * as React from 'react'
+import { useThemeHooks } from '@redocly/theme/core/hooks'
+import { NavList } from 'shared/components/nav-list'
+import { Link } from '@redocly/theme/components/Link/Link'
 
 export const frontmatter = {
   seo: {
     title: 'XRP Ledger Documentation & Developer Resources',
-    description: "Explore XRP Ledger documentation and other blockchain developer resources needed to start building and integrating with the ledger.",
-  }
-};
+    description:
+      'Explore XRP Ledger documentation and other blockchain developer resources needed to start building and integrating with the ledger.',
+  },
+}
 
 const recommendedPages = [
   {
@@ -26,8 +27,8 @@ const recommendedPages = [
   {
     description: 'Transaction Types',
     link: '/docs/references/protocol/transactions/types/',
-  }
-];
+  },
+]
 
 const useCases = [
   {
@@ -87,7 +88,7 @@ const useCases = [
       },
     ],
   },
-];
+]
 const intermediateVideos = [
   {
     src: require('../static/img/backgrounds/docs-advanced-payment-features@2x.png'),
@@ -104,7 +105,7 @@ const intermediateVideos = [
     title: 'Federated Sidechains',
     url: 'https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
-];
+]
 const getStartedVideos = [
   {
     src: require('../static/img/backgrounds/docs-intro-to-XRP-ledger@2x.png'),
@@ -126,7 +127,7 @@ const getStartedVideos = [
     title: 'Tokenization',
     url: 'https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
-];
+]
 
 const devTools = [
   {
@@ -142,39 +143,37 @@ const devTools = [
   {
     title: 'XRP Ledger Explorer',
     link: 'https://livenet.xrpl.org',
-    description:
-      'View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.',
+    description: 'View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.',
   },
   {
     title: 'Transaction Sender',
     link: '/resources/dev-tools/tx-sender',
-    description:
-      'Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.',
+    description: 'Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.',
   },
-];
+]
 
 function UseCasesCard(props: {
   useCase: {
-    id: string;
-    title: string;
-    imgClass: string;
-    subItems: { description: string; link: string }[];
-  };
+    id: string
+    title: string
+    imgClass: string
+    subItems: { description: string; link: string }[]
+  }
 }) {
-  const { useCase } = props;
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
+  const { useCase } = props
+  const { useTranslate } = useThemeHooks()
+  const { translate } = useTranslate()
   return (
     <div className="col">
       <img className={'use-cases-img img-fluid mb-2 shadow ' + useCase.imgClass} alt={useCase.title} id={useCase.id} />
       <h5 className="mt-4">{translate(useCase.title)}</h5>
       <NavList pages={useCase.subItems} />
     </div>
-  );
+  )
 }
 
 function FlatCard(props: { href: string; title: string; description: string; linkText: string; imgClass }) {
-  const { title, description, linkText, href, imgClass } = props;
+  const { title, description, linkText, href, imgClass } = props
   return (
     <Link to={href} className="card flat-card float-up-on-hover">
       <img className={'mb-2 ' + imgClass} alt={title} />
@@ -188,11 +187,11 @@ function FlatCard(props: { href: string; title: string; description: string; lin
         </div>
       </div>
     </Link>
-  );
+  )
 }
 
 function VideoCard(props: { url: string; title: string; src: string }) {
-  const { url, title, src } = props;
+  const { url, title, src } = props
   return (
     <div className="col float-up-on-hover">
       <a href={url} id="playvideo" className="btn1" data-url={url}>
@@ -200,31 +199,31 @@ function VideoCard(props: { url: string; title: string; src: string }) {
         <h6 className="pt-3">{title}</h6>
       </a>
     </div>
-  );
+  )
 }
 
 function DevToolCard(props: { link: string; title: string; description: string }) {
-  const { link, title, description } = props;
+  const { link, title, description } = props
   return (
     <Link to={link} className="col dev-tools-link">
       <h6 className="btn-arrow">{title}</h6>
       <p> {description}</p>
     </Link>
-  );
+  )
 }
 
 function PrimaryButton(props: { href: string; text: string; isArrowUp: boolean }) {
-  const { href, text, isArrowUp } = props;
+  const { href, text, isArrowUp } = props
   return (
     <Link className={`btn btn-primary ${isArrowUp ? 'btn-arrow-out' : 'btn-arrow'}`} id={href + '-button'} to={href}>
       {text}
     </Link>
-  );
+  )
 }
 
 export default function Docs() {
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
+  const { useTranslate } = useThemeHooks()
+  const { translate } = useTranslate()
 
   return (
     <div className="landing page-docs page-docs-index landing-builtin-bg overflow-hidden styled-page">
@@ -262,9 +261,7 @@ export default function Docs() {
               <FlatCard
                 href="/docs/references/"
                 title={translate('References')}
-                description={translate(
-                  'Look up reference documentation for the XRP Ledger protocol, API methods, and more.'
-                )}
+                description={translate('Look up reference documentation for the XRP Ledger protocol, API methods, and more.')}
                 linkText={translate('View References')}
                 imgClass="ref-book-illustration"
               />
@@ -274,7 +271,7 @@ export default function Docs() {
         <section className="container-new">
           <h4 className="pb-4">{translate('Use Cases')}</h4>
           <div className="card-grid card-grid-3xN use-cases">
-            {useCases.map(useCase => (
+            {useCases.map((useCase) => (
               <UseCasesCard useCase={useCase} key={useCase.id} />
             ))}
           </div>
@@ -294,7 +291,7 @@ export default function Docs() {
             </div>
             <div className="col">
               <div className="card-grid card-grid-2xN video-grid">
-                {getStartedVideos.map(video => (
+                {getStartedVideos.map((video) => (
                   <VideoCard url={video.url} title={translate(video.title)} src={video.src} key={video.url} />
                 ))}
               </div>
@@ -336,12 +333,8 @@ export default function Docs() {
                 </div>
                 <div className="col langs">
                   <Link to="/docs/tutorials/go/">
-                    <img
-                      alt="Go Logo"
-                      src={require("../static/img/logos/golang.svg")}
-                      className="circled-logo"
-                    />
-                    <h5 className="btn-arrow">{translate("GoLang")}</h5>
+                    <img alt="Go Logo" src={require('../static/img/logos/golang.svg')} className="circled-logo" />
+                    <h5 className="btn-arrow">{translate('GoLang')}</h5>
                   </Link>
                 </div>
               </div>
@@ -354,7 +347,7 @@ export default function Docs() {
         <section className="container-new ">
           <h4 className="pb-4">{translate('Intermediate Learning Sources')}</h4>
           <div className="card-grid card-grid-3xN">
-            {intermediateVideos.map(video => (
+            {intermediateVideos.map((video) => (
               <VideoCard url={video.url} title={translate(video.title)} src={video.src} key={video.url} />
             ))}
           </div>
@@ -371,17 +364,12 @@ export default function Docs() {
               </div>
               <p className="mb-20">
                 {translate(
-                  'Use these web-based tools to assist during all stages of development, from getting your first payment to testing your implementation for best practices.'
+                  'Use these web-based tools to assist during all stages of development, from getting your first payment to testing your implementation for best practices.',
                 )}
               </p>
               <div className="card-grid card-grid-2xN">
-                {devTools.map(card => (
-                  <DevToolCard
-                    link={card.link}
-                    title={translate(card.title)}
-                    description={translate(card.description)}
-                    key={card.link}
-                  />
+                {devTools.map((card) => (
+                  <DevToolCard link={card.link} title={translate(card.title)} description={translate(card.description)} key={card.link} />
                 ))}
               </div>
               <PrimaryButton href="/resources/dev-tools" text={translate('View All tools')} isArrowUp={false} />
@@ -402,7 +390,7 @@ export default function Docs() {
                   <h2 className="h4 mb-8-sm mb-10-until-sm">{translate('Get Free Test XRP')}</h2>
                   <p className="mb-10">
                     {translate(
-                      'Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.'
+                      'Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.',
                     )}
                   </p>
                   <Link className="btn btn-primary btn-arrow" to="/resources/dev-tools/xrp-faucets/">
@@ -422,5 +410,5 @@ export default function Docs() {
         */}
       </div>
     </div>
-  );
+  )
 }

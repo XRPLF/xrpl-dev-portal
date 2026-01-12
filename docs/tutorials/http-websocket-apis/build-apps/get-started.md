@@ -2,7 +2,7 @@
 html: get-started-using-http-websocket-apis.html
 parent: http-websocket-apis-tutorials.html
 seo:
-    description: Unleash the full power of the XRP Ledger's native APIs.
+  description: Unleash the full power of the XRP Ledger's native APIs.
 cta_text: Get Started
 top_nav_name: HTTP / WebSocket
 top_nav_grouping: Get Started
@@ -10,6 +10,7 @@ labels:
   - Development
 showcase_icon: assets/img/logos/globe.svg
 ---
+
 # Get Started Using HTTP / WebSocket APIs
 
 If you don't have or don't want to use a [client library](../../../references/client-libraries.md) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`rippled`](../../../concepts/networks-and-servers/index.md). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `rippled`](../../../infrastructure/installation/index.md) you can still use a [public server][public servers].
@@ -25,13 +26,11 @@ Both JSON-RPC and WebSocket are HTTP-based protocols, and for the most part the 
 
 Both APIs can be served unencrypted (`http://` and `ws://`) or encrypted using TLS (`https://` and `wss://`). Unencrypted connections should not be served over open networks, but can be used when the client is on the same machine as the server.
 
-
 ## Admin Access
 
 The API methods are divided into [Public Methods](../../../references/http-websocket-apis/public-api-methods/index.md) and [Admin Methods](../../../references/http-websocket-apis/admin-api-methods/index.md) so that organizations can offer public servers for the benefit of the community. To access admin methods, or admin functionality of public methods, you must connect to the API on a **port and IP address marked as admin** in the server's config file.
 
 The [example config file](https://github.com/XRPLF/rippled/blob/f00f263852c472938bf8e993e26c7f96f435935c/cfg/rippled-example.cfg#L1154-L1179) listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.
-
 
 ## WebSocket API
 
@@ -87,7 +86,7 @@ rippled --conf=/etc/opt/ripple/rippled.cfg server_info
 
 Read more: [Commandline Usage Reference >](../../../infrastructure/commandline-usage.md)
 
-{% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_.  New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
+{% admonition type="warning" name="Caution" %}The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!{% /admonition %}
 
 ## Available Methods
 
@@ -96,18 +95,17 @@ For a full list of API methods, see:
 - [Public `rippled` Methods](../../../references/http-websocket-apis/public-api-methods/index.md): Methods available on public servers, including looking up data from the ledger and submitting transactions.
 - [Admin `rippled` Methods](../../../references/http-websocket-apis/admin-api-methods/index.md): Methods for [managing](../../../infrastructure/installation/install-rippled-on-ubuntu.md) the `rippled` server.
 
-
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](/about/)
-    - [Client Libraries](../../../references/client-libraries.md)
-    - [Parallel Networks](../../../concepts/networks-and-servers/parallel-networks.md)
+  - [XRP Ledger Overview](/about/)
+  - [Client Libraries](../../../references/client-libraries.md)
+  - [Parallel Networks](../../../concepts/networks-and-servers/parallel-networks.md)
 - **Tutorials:**
-    - [Get Started Using JavaScript](get-started.md)
-    - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
-    - [Manage the rippled Server](../../../infrastructure/installation/install-rippled-on-ubuntu.md)
+  - [Get Started Using JavaScript](get-started.md)
+  - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Manage the rippled Server](../../../infrastructure/installation/install-rippled-on-ubuntu.md)
 - **References:**
-    - [rippled API Reference](../../../references/http-websocket-apis/index.md)
+  - [rippled API Reference](../../../references/http-websocket-apis/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

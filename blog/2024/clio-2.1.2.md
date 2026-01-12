@@ -1,12 +1,12 @@
 ---
 category: 2024
-date: "2024-06-05"
+date: '2024-06-05'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Clio Release Notes
+  - Clio Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
 
 # Introducing Clio version 2.1.2
@@ -15,7 +15,7 @@ Version 2.1.2 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket
 
 ## rippled Dependency on Clio
 
-Clio needs to be updated to 2.1.2 or later before updating to rippled 2.2.0.  Clio will be blocked if it is not updated first.
+Clio needs to be updated to 2.1.2 or later before updating to rippled 2.2.0. Clio will be blocked if it is not updated first.
 
 ## Database Migration
 
@@ -23,8 +23,8 @@ If you are currently running Clio 1.0.4 or earlier and upgrading, you must perfo
 
 ## Install / Upgrade
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                           | SHA-256                                                            |
+| :------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------- |
 | [Ubuntu Deb (x86_64)](https://github.com/XRPLF/clio/releases/download/2.1.2/clio_2.1.2_amd64.deb) | `3cc864837a2e194cb9dc68e0cdb617149ab466b4512614ec18879792fdb41571` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/clio/releases/tag/2.1.2). The most recent commit in the git log should be:
@@ -39,7 +39,7 @@ Date:   Tue Jun 4 16:02:28 2024 +0100
 
 ## What's Changed
 
-* Upgrade xrpl to 2.2.0 by @kuznetsss in https://github.com/XRPLF/clio/pull/1443
+- Upgrade xrpl to 2.2.0 by @kuznetsss in https://github.com/XRPLF/clio/pull/1443
 
 See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.1.1...2.1.2).
 

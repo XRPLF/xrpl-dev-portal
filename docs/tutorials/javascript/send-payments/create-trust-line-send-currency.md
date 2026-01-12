@@ -1,12 +1,12 @@
 ---
 seo:
-    description: Create Trust Lines and send currency.
+  description: Create Trust Lines and send currency.
 labels:
   - Cross-Currency
   - Payments
   - Tokens
-
 ---
+
 # Create Trust Line and Send Currency Using JavaScript
 
 This example shows how to:
@@ -15,7 +15,7 @@ This example shows how to:
 2. Send issued currency between accounts.
 3. Display account balances for all currencies.
 
-[![Send Currency test harness](/docs/img/mt-send-currency-1-empty-form-info.png )](/docs/img/mt-send-currency-1-empty-form-info.png)
+[![Send Currency test harness](/docs/img/mt-send-currency-1-empty-form-info.png)](/docs/img/mt-send-currency-1-empty-form-info.png)
 
 You can download the [Payment Modular Tutorials](/_code-samples/modular-tutorials/payment-modular-tutorials.zip) from the source repository for this website.
 
@@ -27,15 +27,15 @@ Open the Send Currency test harness and get accounts:
 
 1. Open `send-currency.html` in a browser.
 2. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   1. If you copied the gathered information from another tutorial:
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
 
 [![Distribute Account Information](/docs/img/mt-send-currency-2-distribute-accounts.png)](/docs/img/mt-send-currency-2-distribute-accounts.png)
 
@@ -62,11 +62,11 @@ To create a trust line between accounts:
 To transfer an issued currency token, once you have created a trust line:
 
 1. Click **Account 1**.
-3. Enter the **Currency Code**.
-4. Copy and paste the **Account 1 Address** to the **Issuer** field.
+2. Enter the **Currency Code**.
+3. Copy and paste the **Account 1 Address** to the **Issuer** field.
 4. Enter the **Amount** of issued currency to send.
-2. Copy and paste the **Account 2 Address** to the **Destination** field.
-4. Click **Send Currency**.
+5. Copy and paste the **Account 2 Address** to the **Destination** field.
+6. Click **Send Currency**.
 
 [![Currency transfer](/docs/img/mt-send-currency-4-send-currency.png)](/docs/img/mt-send-currency-4-send-currency.png)
 
@@ -101,7 +101,7 @@ Connect to the XRPL server.
 
 ```javascript
 async function createTrustLine() {
-  const net = getNet() 
+  const net = getNet()
   const client = new xrpl.Client(net)
   await client.connect()
   let results = "\nConnected. Creating trust line.\n"
@@ -127,15 +127,15 @@ Create a `TrustSet` transaction, passing the currency code, issuer account, and 
 Autofill the remaining default transaction parameters.
 
 ```javascript
-    const ts_prepared = await client.autofill(trustSet_tx)
+const ts_prepared = await client.autofill(trustSet_tx)
 ```
 
 Sign and send the transaction to the XRPL server, then wait for the results.
 
 ```javascript
-  const ts_signed = wallet.sign(ts_prepared)
-  resultField.value = results
-  const ts_result = await client.submitAndWait(ts_signed.tx_blob)
+const ts_signed = wallet.sign(ts_prepared)
+resultField.value = results
+const ts_result = await client.submitAndWait(ts_signed.tx_blob)
 ```
 
 Report the results of the transaction.
@@ -147,7 +147,7 @@ Report the results of the transaction.
         resultField.value = results
     } else {
         results += `\n===Transaction failed: ${ts_result.result.meta.TransactionResult}`
-        resultField.value = results     
+        resultField.value = results
     }
   }
 ```
@@ -170,6 +170,7 @@ Catch and report any errors, then disconnect from the XRP Ledger.
 ```
 
 ### sendCurrency()
+
 This transaction actually sends a transaction that changes balances on both sides of the trust line.
 
 Connect to the XRP Ledger and get the account wallet.
@@ -200,12 +201,12 @@ Create a payment transaction to the destination account, specifying the amount u
       },
       "Destination": destinationField.value
     }
-  ```
+```
 
 Autofill the remaining default transaction parameters.
 
 ```javascript
-    const pay_prepared = await client.autofill(send_currency_tx)
+const pay_prepared = await client.autofill(send_currency_tx)
 ```
 
 Sign and send the prepared payment transaction to the XRP Ledger, then await and report the results.
@@ -319,7 +320,7 @@ Update the form to support the new functions.
                         <label for="account1address">Account 1 Address</label>
                     </span>
                 </td>
-                <td> 
+                <td>
                     <input type="text" id="account1address" size="40"></input>
                 </td>
                 <td>
@@ -406,10 +407,10 @@ Update the form to support the new functions.
                 <td>
                     <input type="text" id="currencyField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
                     <button type="button" onClick="createTrustLine()">Create Trust Line</button>
-                </td>               
+                </td>
             </tr>
             <tr>
                 <td align="right">
@@ -420,10 +421,10 @@ Update the form to support the new functions.
                 <td>
                     <input type="text" id="issuerField" size="40"></input>
                     <br>
-                </td> 
+                </td>
                 <td>
                     <button type="button" onClick="sendCurrency()">Send Currency</button>
-                </td>              
+                </td>
             </tr>
             <tr>
                 <td align="right">

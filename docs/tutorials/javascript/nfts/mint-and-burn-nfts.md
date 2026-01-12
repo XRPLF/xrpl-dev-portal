@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Mint and burn NFTs.
+  description: Mint and burn NFTs.
 labels:
   - Tokens
   - Non-fungible tokens, NFTs
 ---
+
 # Mint and Burn NFTs Using JavaScript
 
 This example shows how to:
@@ -24,15 +25,15 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
 1. Open `mint-nfts.html` in a browser.
 2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   1. If you copied the gathered information from another tutorial:
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
 
 [![Get accounts](../../../img/mt-mint-token-2-accounts.png)](../../../img/mt-mint-token-2-accounts.png)
 
@@ -42,16 +43,15 @@ To mint a non-fungible token object:
 
 1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
 2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account.
-2. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
-3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0. If you impose a transfer fee, your NFT can only be traded for tokens for which your account has a trust line. See [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md#trust-lines).
-4. Enter an **NFT Taxon**. This is a required value, but if you are not using the field to create an integer-based taxon entry, you can set the value to 0.
-5. (Optional) You can set an expected price for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
-6. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.
-7. Optionally, you can enter an **Expiration** value in days, after which the offer will no longer be available.
-8. Click **Mint NFT**.
+3. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
+4. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0. If you impose a transfer fee, your NFT can only be traded for tokens for which your account has a trust line. See [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md#trust-lines).
+5. Enter an **NFT Taxon**. This is a required value, but if you are not using the field to create an integer-based taxon entry, you can set the value to 0.
+6. (Optional) You can set an expected price for the NFT. To set a price in XRP, enter the amount in drops in the **Amount** field. To use an issued currency, enter the **Currency**, **Issuer**, and **Amount**.
+7. Optionally, you can enter a **Destination** address that will be the only account authorized to purchase the NFT.
+8. Optionally, you can enter an **Expiration** value in days, after which the offer will no longer be available.
+9. Click **Mint NFT**.
 
 [![Mint NFT fields](../../../img/mt-mint-token-3-mint-token.png)](../../../img/mt-mint-token-3-mint-token.png)
-
 
 ## Get Tokens
 
@@ -67,7 +67,7 @@ To permanently destroy an NFT:
 
 1. Enter or select the account that owns the NFT.
 2. Enter the **NFT ID**.
-2. Click **Burn NFT**.
+3. Click **Burn NFT**.
 
 [![Burn NFTs](../../../img/mt-mint-token-5-burn-token.png)](../../../img/mt-mint-token-5-burn-token.png)
 
@@ -76,11 +76,13 @@ To permanently destroy an NFT:
 You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modular-tutorials/nft-modular-tutorials.zip) archive to examine the code samples.
 
 ## mint-nfts.js
+
 <!-- SPELLING_IGNORE: ripplex3 -->
 
 ### Mint NFT
 
 Get the account wallet and connect to the XRP Ledger.
+
 ```javascript
 async function mintNFT() {
   const wallet = xrpl.Wallet.fromSeed(accountSeedField.value);
@@ -93,65 +95,64 @@ async function mintNFT() {
     await client.connect();
 ```
 
-Prepare the  transaction parameters.
+Prepare the transaction parameters.
 
 ```javascript
-    const transactionParams = {
-      TransactionType: "NFTokenMint",
-      Account: wallet.classicAddress,
-      URI: xrpl.convertStringToHex(nftURLfield.value),
-      Flags: parseInt(flagsField.value, 10), // Parse to integer
-      TransferFee: parseInt(transferFeeField.value, 10), // Parse to integer
-      NFTokenTaxon: parseInt(nftTaxonField.value, 10), // Parse to integer
-    };
+const transactionParams = {
+  TransactionType: 'NFTokenMint',
+  Account: wallet.classicAddress,
+  URI: xrpl.convertStringToHex(nftURLfield.value),
+  Flags: parseInt(flagsField.value, 10), // Parse to integer
+  TransferFee: parseInt(transferFeeField.value, 10), // Parse to integer
+  NFTokenTaxon: parseInt(nftTaxonField.value, 10), // Parse to integer
+}
 ```
 
 Add optional fields.
 
 ```javascript
-    // Add optional fields
-    if (amountField.value) {
-         transactionParams.Amount = configureAmount(amountField.value);
-    }
+// Add optional fields
+if (amountField.value) {
+  transactionParams.Amount = configureAmount(amountField.value)
+}
 
-    if (expirationField.value) {
-       transactionParams.Expiration = configureExpiration(expirationField.value);
-    }
+if (expirationField.value) {
+  transactionParams.Expiration = configureExpiration(expirationField.value)
+}
 
-    if (destinationField.value) {
-      transactionParams.Destination = destinationField.value;
-    }
+if (destinationField.value) {
+  transactionParams.Destination = destinationField.value
+}
 ```
 
 Log the transaction parameters before submission.
 
 ```javascript
-    console.log("Mint NFT Transaction Parameters:", transactionParams);
+console.log('Mint NFT Transaction Parameters:', transactionParams)
 ```
 
 Submit the transaction.
 
 ```javascript
-
-    const tx = await client.submitAndWait(transactionParams, { wallet });
+const tx = await client.submitAndWait(transactionParams, { wallet })
 ```
 
 Get the current list of NFTs owned by the account.
 
 ```javascript
-    const nfts = await client.request({
-      method: "account_nfts",
-      account: wallet.classicAddress,
-    });
+const nfts = await client.request({
+  method: 'account_nfts',
+  account: wallet.classicAddress,
+})
 ```
 
 Report the results of the transaction.
 
 ```javascript
-    results = `\n\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`;
-    results += `\n\n=== NFTs: ${JSON.stringify(nfts, null, 2)} ===`;
-    results += `\n\n=== XRP Balance: ${await client.getXrpBalance(wallet.address)} ===`; // Await here
-    resultField.value = results;
+results = `\n\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`
+results += `\n\n=== NFTs: ${JSON.stringify(nfts, null, 2)} ===`
+results += `\n\n=== XRP Balance: ${await client.getXrpBalance(wallet.address)} ===` // Await here
+resultField.value = results
 ```
 
 Catch and report any errors.
@@ -192,18 +193,17 @@ async function getNFTs() {
 Prepare and send the `account_nfts` request.
 
 ```javascript
-
-    const nfts = await client.request({
-      method: "account_nfts",
-      account: wallet.classicAddress,
-    });
+const nfts = await client.request({
+  method: 'account_nfts',
+  account: wallet.classicAddress,
+})
 ```
 
 Report the results.
 
 ```javascript
-    results = '\n=== NFTs:\n ' + JSON.stringify(nfts, null, 2) + ' ===';
-    resultField.value = results;
+results = '\n=== NFTs:\n ' + JSON.stringify(nfts, null, 2) + ' ==='
+resultField.value = results
 ```
 
 Catch and report any errors.
@@ -244,34 +244,34 @@ async function burnNFT() {
 Prepare the `NFTokenBurn` transaction.
 
 ```javascript
-    const transactionBlob = {
-      TransactionType: "NFTokenBurn",
-      Account: wallet.classicAddress,
-      NFTokenID: nftIdField.value,
-    };
+const transactionBlob = {
+  TransactionType: 'NFTokenBurn',
+  Account: wallet.classicAddress,
+  NFTokenID: nftIdField.value,
+}
 
-    console.log("Burn NFT Transaction Parameters:", transactionBlob); // Log before submit
+console.log('Burn NFT Transaction Parameters:', transactionBlob) // Log before submit
 ```
 
 Submit the transaction and wait for the results.
 
 ```javascript
-    const tx = await client.submitAndWait(transactionBlob, { wallet });
-    const nfts = await client.request({ // Get nfts after burning.
-      method: "account_nfts",
-      account: wallet.classicAddress,
-    });
+const tx = await client.submitAndWait(transactionBlob, { wallet })
+const nfts = await client.request({
+  // Get nfts after burning.
+  method: 'account_nfts',
+  account: wallet.classicAddress,
+})
 ```
 
 Report the results.
 
 ```javascript
-    results = `\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`; 
-    results += '\n\n=== Balance changes: ' +
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2) + ' ===';
-    results += '\n\n=== NFTs: \n' + JSON.stringify(nfts, null, 2) + ' ==='; 
-    resultField.value = results;
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address)); // Await
+results = `\n=== Transaction result: ${tx.result.meta.TransactionResult} ===`
+results += '\n\n=== Balance changes: ' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2) + ' ==='
+results += '\n\n=== NFTs: \n' + JSON.stringify(nfts, null, 2) + ' ==='
+resultField.value = results
+xrpBalanceField.value = await client.getXrpBalance(wallet.address) // Await
 ```
 
 Catch and report any errors.

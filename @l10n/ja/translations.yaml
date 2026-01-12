@@ -1,6 +1,6 @@
-page.previousButton: "前のページ"
-page.nextButton: "次のページ"
-page.lastUpdated.timeago: "最終更新: "
+page.previousButton: '前のページ'
+page.nextButton: '次のページ'
+page.lastUpdated.timeago: '最終更新: '
 markdown.editPage.text: 編集
 toc.header: 目次
 search.label: ドキュメントの検索
@@ -22,19 +22,19 @@ footer.resources: リソース
 footer.community: コミュニティ
 
 time.past.second: 1秒前
-time.past.seconds: "{{value}}秒前"
+time.past.seconds: '{{value}}秒前'
 time.past.minute: 1分前
-time.past.minutes: "{{value}}分前"
+time.past.minutes: '{{value}}分前'
 time.past.hour: 1時間前
-time.past.hours: "{{value}}時間前"
+time.past.hours: '{{value}}時間前'
 time.past.day: 1日前
-time.past.days: "{{value}}日前"
+time.past.days: '{{value}}日前'
 time.past.week: 1週間前
-time.past.weeks: "{{value}}週間前"
+time.past.weeks: '{{value}}週間前'
 time.past.month: 1ヶ月前
-time.past.months: "{{value}}ヶ月前"
+time.past.months: '{{value}}ヶ月前'
 time.past.year: 1年前
-time.past.years: "{{value}}年前"
+time.past.years: '{{value}}年前'
 
 sidebar.docs: ドキュメント
 sidebar.docs.introduction.what-is-xrp: XRPとは？
@@ -139,11 +139,11 @@ footer.community.report-a-scam: 詐欺の報告
 
 component.tryit: 試してみる
 component.queryexampletx: トランザクションの例を確認
-component.amendment-status.requires.1: " "
+component.amendment-status.requires.1: ' '
 component.amendment-status.requires.2: が必要です。
-component.amendment-status.added.1: " "
+component.amendment-status.added.1: ' '
 component.amendment-status.added.2: により追加されました。
-component.amendment-status.updated.1: " "
+component.amendment-status.updated.1: ' '
 component.amendment-status.updated.2: により更新されました。
 
 # Amendment tracker translations
@@ -209,8 +209,8 @@ Automated Market Makers: 自動マーケットメイカー
 Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.: XRPLに組み込み済みのオーダーブックDEXと相互に補完する、流動性を提供し、通貨交換を促進することで受動的な収入を得るためのスマートコントラクト。
 Enabled: 利用可能
 Non-Fungible Tokens: 非代替性トークン
-"Join the Community ": XRPL.orgの
-" at XRPL.org": コミュニティに参加
+'Join the Community ': XRPL.orgの
+' at XRPL.org': コミュニティに参加
 'Connect at XRPL.org, a community by and for the developers ': XRPL.orgは、XRPLを利用する開発者と
 ' and entrepreneurs who rely on the XRPL.': 起業家のためのコミュニティです。
 Get Involved: 参加する
@@ -307,18 +307,18 @@ about.xrp.xrp-in-trading.ppart2: 裁定機会の獲得
 about.xrp.xrp-in-trading.ppart3: 、マージンコールへの対応、一般的な取引在庫の管理をリアルタイムで行うことができます。
 Because of the properties inherent to XRP and the ecosystem around it, traders worldwide are able to shift collateral, bridge currencies and switch from one crypto into another nearly instantly, across any exchange on the planet.: XRPの特性とその周辺のエコシステムにより、世界中のトレーダーは、担保を移動し、通貨をブリッジし、暗号通貨をほぼ瞬時に別の暗号通貨に交換することが、地球上のあらゆる取引所で可能となっています。
 What Is the Relationship Between Ripple and XRP?: RippleとXRPの関係は？
-" is a technology company that makes it easier to build a high-performance, global payments business. XRP is a digital asset independent of this.": は、高パフォーマンスのグローバル決済業務を構築するための技術会社です。XRPはこの技術会社とは独立したデジタル資産です。
+' is a technology company that makes it easier to build a high-performance, global payments business. XRP is a digital asset independent of this.': は、高パフォーマンスのグローバル決済業務を構築するための技術会社です。XRPはこの技術会社とは独立したデジタル資産です。
 There is a finite amount of XRP. All XRP is already in existence today—no more than the original 100 billion can be created. The XRPL founders gifted 80 billion XRP, the platform’s native currency, to Ripple. To provide predictability to the XRP supply, Ripple has locked 55 billion XRP (55% of the total possible supply) into a series of escrows using the XRP Ledger itself. The XRPL's transaction processing rules, enforced by the consensus protocol, control the release of the XRP.: プラットフォームのネイティブ通貨であるXRPの総量はプロトコルにより一定量に設定されています。その上限は1000億枚であり、そのすべてが発行済みです。XRPLの発明者たちは、そのうち800億XRPをRipple社に寄付しました。XRPの供給量に予測可能性を持たせるため、Ripple社は550億XRP(総供給量の55%)をXRP Ledger自体を使用した一連のエスクローにロックしています。コンセンサスプロトコルによって強制されるXRPLのトランザクション処理ルールが、XRPの放出を管理しています。
-about.xrp.ripple-escrow.ppart1: " "
+about.xrp.ripple-escrow.ppart1: ' '
 about.xrp.ripple-escrow.ppart2: 2024年10月
 about.xrp.ripple-escrow.ppart3: 時点で
 38B: 380億
 XRP remains in escrow: がエスクローに存在
 What Wallets Support XRP?: XRPをサポートするウォレットは？
-"Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.": デジタルウォレットは、XRPを含む暗号通貨を送信、受け取り、および保管できるソフトウェアのピースです。デジタルウォレットにはハードウェア型とソフトウェア型の2種類があります。
+'Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software.': デジタルウォレットは、XRPを含む暗号通貨を送信、受け取り、および保管できるソフトウェアのピースです。デジタルウォレットにはハードウェア型とソフトウェア型の2種類があります。
 Software Wallets: ソフトウェアウォレット
 Hardware Wallets: ハードウェアウォレット
-"Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.": 免責事項：この情報はインターネット上の他の情報源から引用されています。XRPL.orgは、いかなる取引所も推奨または推薦せず、また、取引所またはデジタル資産の売買一般に関して表明を行なうものではありません。第三者の技術や第三者に依存する前に、ご自身でデューデリジェンスを実施されることをお勧めします。また、プロバイダーによってコンプライアンス、データセキュリティ、プライバシー慣行は大きく異なる場合があります。
+'Disclaimer: This information is drawn from other sources on the internet.  XRPL.org does not endorse or recommend any exchanges or make any representations with respect to exchanges or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.': 免責事項：この情報はインターネット上の他の情報源から引用されています。XRPL.orgは、いかなる取引所も推奨または推薦せず、また、取引所またはデジタル資産の売買一般に関して表明を行なうものではありません。第三者の技術や第三者に依存する前に、ご自身でデューデリジェンスを実施されることをお勧めします。また、プロバイダーによってコンプライアンス、データセキュリティ、プライバシー慣行は大きく異なる場合があります。
 What Exchanges Support XRP?: XRPをサポートする取引所は？
 Exchanges are where people trade currencies. XRP is traded on more than 100 markets and exchanges worldwide.: 取引所は人々が通貨を取引する場所です。XRPは世界中の100以上の市場と取引所で取引されています。
 There are different types of exchanges that vary depending on the type of market (spot, futures, options, swaps), and the type of security model (custodial, non-custodial).: 取引所の種類は、市場の種類（現物、先物、オプション、スワップ）やセキュリティモデルの種類（カストディアル、非カストディアル）によって異なります。
@@ -411,7 +411,7 @@ Building for the Future: 未来を見据えた開発
 Consensus protocol is efficient and sustainable: 効率的で持続可能なコンセンサスプロトコル
 For more than 272 million migrants worldwide, sending and receiving money across borders is expensive, unreliable and complex.: 世界で2億7,200万人を超える移民にとって、国境を越えた送金は高額で不確実かつ複雑です。
 about.impact.feature.ppart1: オープンで分散型のブロックチェーンと暗号資産は、リテールや機関投資家からCBDC、NFT、クロスボーダー決済などの
-about.impact.feature.ppart2: 商業ユースケース 
+about.impact.feature.ppart2: 商業ユースケース
 about.impact.feature.ppart3: まで、金融サービス業界全体で導入が進んでいます。
 A Sustainable Future: 持続可能な未来
 What makes the XRPL sustainable?: XRPLが持続可能な理由は？
@@ -421,18 +421,18 @@ Sustainable Projects: 持続可能なプロジェクト
 Learn more about companies and developers who are using the XRP Ledger to solve interesting problems efficiently and sustainably.: XRP Ledgerを利用して興味深い問題を効率的かつ持続的に解決している企業や開発者について、詳しくご紹介します。
 See More: 利用例を見る
 How can businesses and developers connect and contribute?: 開発者はどのように繋がり、貢献できるのでしょうか？
-"If you want to advance business with sustainable solutions to real-world problems, you’re invited to join the global, growing XRPL community. Here are some ways to get involved:": 現実世界の問題に対する持続可能なソリューションでビジネスを発展させたいと考える方は、グローバルに成長するXRPLコミュニティに参加しましょう。
+'If you want to advance business with sustainable solutions to real-world problems, you’re invited to join the global, growing XRPL community. Here are some ways to get involved:': 現実世界の問題に対する持続可能なソリューションでビジネスを発展させたいと考える方は、グローバルに成長するXRPLコミュニティに参加しましょう。
 Join the Community: コミュニティに参加
 Blog: ブログ
-about.impact.blog.ppart1: " "
+about.impact.blog.ppart1: ' '
 about.impact.blog.ppart2: XRPL開発者ブログ
 about.impact.blog.ppart3: をチェックして、XRPLコミュニティのイノベーションと開発について最新情報を入手しましょう。
 Events: イベント
-about.impact.events.ppart1: " "
+about.impact.events.ppart1: ' '
 about.impact.events.ppart2: ミートアップ、ハッカソン、カンファレンス
 about.impact.events.ppart3: に参加して、コミュニティの他のメンバーと交流しましょう。
 Code: コード
-about.impact.code.ppart1: " "
+about.impact.code.ppart1: ' '
 about.impact.code.ppart2: Githubリポジトリ
 about.impact.code.ppart3: からブロックチェーンプロジェクトを見つけ、どのように貢献できるか見てみましょう。
 Connect: 繋がる
@@ -493,7 +493,7 @@ Run a Validator: バリデータを運用
 Reserves: 準備金
 Transaction Types: トランザクションの種類
 Get Free Test XRP: テスト用XRPを入手
-Generate Testnet Credentials: テストネットのアカウントを作成 
+Generate Testnet Credentials: テストネットのアカウントを作成
 Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.: XRP Ledger Testnetに接続することで、現実の資産やMainnetユーザに影響を与えることなくXRP Ledger上に構築するアプリを開発・テストすることができます。
 
 # docs/use-cases/tokenization/index.page.tsx
@@ -513,7 +513,7 @@ Freeze & Clawbacks: フリーズとクローバック
 Freeze: フリーズ
 If you see signs of suspicious activity, you can suspend trading of your token while investigating the issue.: 不審な活動の兆候が見られた場合は、問題を調査する間、トークンの取引を停止することができます。
 Clawback: クローバック
-"Recover tokens distributed to accounts in error: for example, reclaim funds sent to an account sanctioned for illegal activity.": 誤ってアカウントに送信されたトークンを回収することができます。たとえば、違法行為に対して制裁を受けたアカウントに送金された資金を回収します。
+'Recover tokens distributed to accounts in error: for example, reclaim funds sent to an account sanctioned for illegal activity.': 誤ってアカウントに送信されたトークンを回収することができます。たとえば、違法行為に対して制裁を受けたアカウントに送金された資金を回収します。
 Non-transferable Tokens: 譲渡不可トークン
 Transferable flag: 譲渡可能フラグ
 Native support for nontransferable items such as identity tokens, airline credits, and consumer rewards, honored by all on-chain participants.: 譲渡不可のアイテム（IDトークン、航空会社のクレジット、消費者向けリワードなど）に対するネイティブサポートがあり、すべてのオンチェーン参加者によって認識されます。
@@ -565,7 +565,7 @@ Streamline cross-currency transactions and trading with XRP Ledger's auto-bridgi
 Learn About Auto-bridging: オートブリッジについて
 Explore Pathfinding: パスファインディングについて
 Developer Resources: 開発者リソース
-use-cases.rwa.dev-resources.p1: " "
+use-cases.rwa.dev-resources.p1: ' '
 use-cases.rwa.dev-resources.p2: 既存のインフラストラクチャ
 use-cases.rwa.dev-resources.p3: に簡単に統合し、開発の旅をサポートするリソースにアクセスできます。プロジェクトの資金調達にはXRPL Grantsを検討してみてください。または、Dev Advocateにご相談ください。
 Apply for XRPL Grants: XRPL Grantsへ応募
@@ -579,7 +579,7 @@ Sign up for the Newsletter: ニュースレターに登録
 XRPL Community: XRPLコミュニティ
 community.index.h1part1: 開発者とイノベーターによる
 community.index.h1part2: グローバルな
-community.index.h1part3: " "
+community.index.h1part3: ' '
 community.index.h1part4: ブロックチェーンコミュニティ
 Join the Conversation: 参加する
 Hot Topics Happening Now: 今話題のトピック
@@ -634,7 +634,7 @@ Find the XRPL Community Around the World: 世界中のXRPLコミュニティを�
 # TODO: translate event details
 Register Now: いますぐ登録
 Check out meetups, hackathons, and other events hosted by the XRPL Community: XRPLコミュニティが主催するミートアップ、ハッカソン、その他のイベントをチェックしましょう
-"Filter By:": "絞り込み:"
+'Filter By:': '絞り込み:'
 Conference: カンファレンス
 Meetups: ミートアップ
 Hackathons: ハッカソン
@@ -695,7 +695,7 @@ Participate in personalized learning and training sessions for Ambassadors on th
 Join a global cohort of Student Ambassadors: 学生アンバサダーのグローバルなコミュニティに参加する
 Global Community: グローバルコミュニティ
 Stay connected to the XRPL Community: XRPLコミュニティとの繋がりを持つ
-"To stay up-to-date on the latest activity, meetups, and events of the XRPL Community be sure to follow these channels:": XRPLコミュニティの最新の活動、ミートアップ、イベントに関する最新情報を得るには、次のチャンネルをフォローしましょう。
+'To stay up-to-date on the latest activity, meetups, and events of the XRPL Community be sure to follow these channels:': XRPLコミュニティの最新の活動、ミートアップ、イベントに関する最新情報を得るには、次のチャンネルをフォローしましょう。
 MeetUp: ミートアップ
 Attend an XRPL Meetup in your local area: 近隣のXRPLミートアップに参加しましょう
 Dev.to Blog: Dev.to ブログ
@@ -707,7 +707,7 @@ XRPL Developer Funding Programs: XRPL開発者向け資金提供プログラム
 Project Resources: プロジェクト資金
 Explore funding opportunities for developers and teams: 開発者やチームのための資金調達の方法を見つけましょう
 Funding Overview: 資金調達の概要
-"If you’re a software developer or team looking to build your next project or venture on the XRP Ledger (XRPL), there are a number of opportunities to fund your next innovation.": "XRP Ledger(XRPL)上に次のプロジェクトやベンチャーを構築しようとしているソフトウェア開発者やチーム向けの資金を提供されるチャンスは数多く存在します。"
+'If you’re a software developer or team looking to build your next project or venture on the XRP Ledger (XRPL), there are a number of opportunities to fund your next innovation.': 'XRP Ledger(XRPL)上に次のプロジェクトやベンチャーを構築しようとしているソフトウェア開発者やチーム向けの資金を提供されるチャンスは数多く存在します。'
 XRPL Hackathons: XRPLハッカソン
 Join an Event: イベントに参加
 Hackathons are open to all developers to explore and invent a project on the XRP Ledger. Visit the events page for updates on upcoming hackathons.: XRP Ledgerのハッカソンはプロジェクトを調査・考案するために、すべての開発者に開放されています。今後のハッカソンに関する最新情報は、イベントページでご確認ください。
@@ -723,7 +723,7 @@ Prize money and awards: 賞金および賞品
 XRPL Grants: XRPL Grants
 Fund Your Project: プロジェクトの資金調達
 Developer grants for projects that contribute to the growing XRP Ledger community.: 成長するXRP Ledgerコミュニティに貢献するプロジェクトに開発者向けの助成金を提供します。
-"Past awardees include:": "過去の受賞者:"
+'Past awardees include:': '過去の受賞者:'
 Visit XRPL Grants: XRPL Grantsを見る
 Software developers, teams, and start-ups building directly on the XRP Ledger: XRP Ledger上で直接開発を行うソフトウェア開発者やチーム、スタートアップ企業
 Coding experience: コーディング経験
@@ -817,7 +817,7 @@ Connected: 接続済み
 Not Connected: 未接続
 Failed to Connect: 接続に失敗
 Responses: レスポンス
-"Keep last:": 表示数
+'Keep last:': 表示数
 Pause Subscriptions: サブスクリプション停止
 Unpause Subscriptions: サブスクリプション停止を解除
 Delete All Responses: 全レスポンスを削除
@@ -853,7 +853,7 @@ Wallet Address to check: チェックするウォレットアドレス
 # resources/dev-tools/domain-verifier.page.tsx
 This tool allows you to verify that domain verification is properly configured.: このツールを使用すると、ドメイン検証が正しく設定されているかどうかを確認できます。
 Enter the manifest found in your validator-keys.json file. Do not confuse this with your validator's secret key.: validator-keys.jsonファイルにあるマニフェストを入力してください。これはバリデータの秘密鍵とは異なるものです。
-"To do this with the validator-keys-tool use the following command:": これをvalidator-keys-toolで行うには、次のコマンドを使用します。
+'To do this with the validator-keys-tool use the following command:': これをvalidator-keys-toolで行うには、次のコマンドを使用します。
 Verify: 検証
 Your Manifest Here: マニフェスト情報を入力してください
 Parsing TOML data...: TOMLデータを解析中...
@@ -864,7 +864,7 @@ Domain Verification Succeeded: ドメイン検証に成功しました
 Domain Verification Failed: ドメイン検証に失敗しました
 The validator key for this manifest was not found in the TOML file: このマニフェストのバリデータキーがTOMLファイルに見つかりませんでした
 No Validators Found: バリデータが見つかりません
-"Error decoding manifest:": マニフェストのデコードエラー
+'Error decoding manifest:': マニフェストのデコードエラー
 Domain not found in manifest: マニフェストにドメインが見つかりません
 Checking: 確認中
 resources.dev-tools.domain-verifier.checking.part1: ' '
@@ -880,8 +880,8 @@ resources.dev-tool.faucet.content.part4: これらの資金は
 resources.dev-tool.faucet.content.part5: テストのみ
 resources.dev-tool.faucet.content.part6: を目的としています。テストネットワークの履歴と残高は必要に応じてリセットされます。Devnetは警告なしにリセットされることがあります。
 resources.dev-tool.faucet.content.part7: これらのネットワーク上のすべての残高とXRPは、メインネットとは別のものです。安全のため、テストネットやDevnetの認証情報をメインネットで使用しないでください。
-resources.dev-tool.faucet.content.part8: "以下のツールは、認証情報を生成して即座にチャージします。既存のアドレスにチャージしたい場合は、こちらで行えます:"
-"Choose Network:": "ネットワークを選択:"
+resources.dev-tool.faucet.content.part8: '以下のツールは、認証情報を生成して即座にチャージします。既存のアドレスにチャージしたい場合は、こちらで行えます:'
+'Choose Network:': 'ネットワークを選択:'
 Mainnet-like network for testing applications.: アプリケーションのテスト用のメインネットに似たネットワーク。
 Preview of upcoming amendments.: 今後のAmendmentのプレビューネットワーク。
 Hooks (L1 smart contracts) enabled Xahau testnet.: Hooks（L1スマートコントラクト）が有効化されたXahau Networkのテストネット。
@@ -928,9 +928,9 @@ Create Payment Channel: Payment Channelを作成
 Send Issued Currency: トークンを送信
 Trust for: トラストラインの設定
 # resources/dev-tools/components/StatusSidebar.tsx
-"Sending Address:": 送信元アドレス
+'Sending Address:': 送信元アドレス
 (None): (なし)
-"Testnet XRP Available:": 利用可能なTestnet XRP
+'Testnet XRP Available:': 利用可能なTestnet XRP
 Transaction History: トランザクション履歴
 
 # blob/index.page.tsx
@@ -939,8 +939,8 @@ blog.banner.date.part1: YYYY
 blog.banner.date.part2: /
 blog.banner.date.part3: MM/DD
 blog.card.date: YYYY/MM/DD
-"Filter by Category:": カテゴリで絞り込む
-"Filter by:": 絞り込む
+'Filter by Category:': カテゴリで絞り込む
+'Filter by:': 絞り込む
 Category: カテゴリ
 General: 一般
 Release Notes: リリースノート
@@ -963,7 +963,7 @@ Find the community on the platforms below: 以下のプラットフォームで�
 Apply for funding to build your XRPL project: 将来のXRPLプロジェクトのための資金調達に応募する
 Awarded in a single grant: 1回のGrantでの助成金
 Distributed to grant recipients: 助成対象者への配布
-Open-source projects funded : オープンソースプロジェクトへの資金提供
+Open-source projects funded: オープンソースプロジェクトへの資金提供
 Learn More: もっと知る
 Showcase your XRPL project, application or product: XRPLプロジェクト、アプリケーション、製品の紹介
 Read the Blog: ブログを読む

@@ -2,11 +2,12 @@
 html: update-rippled-manually-on-ubuntu.html
 parent: install-rippled.html
 seo:
-    description: Ubuntu Linuxでrippledを手動更新します。
+  description: Ubuntu Linuxでrippledを手動更新します。
 labels:
   - コアサーバ
   - セキュリティ
 ---
+
 # UbuntuまたはDebianでの手動更新
 
 このページでは、Ubuntu Linuxで最新リリースの`rippled`に手動で更新する手順を説明します。以下の手順は、[`rippled`がすでにネイティブパッケージを使用してインストール](install-rippled-on-ubuntu.md)されていることを前提としています。可能であれば手動更新ではなく[自動更新](update-rippled-automatically-on-linux.md)を設定することが推奨されます。
@@ -19,40 +20,39 @@ labels:
 
 1. リポジトリを更新します。
 
-    ```
-    $ sudo apt -y update
-    ```
+   ```
+   $ sudo apt -y update
+   ```
 
 2. `rippled`パッケージをアップグレードします。
 
-    ```
-    $ sudo apt -y upgrade rippled
-    ```
+   ```
+   $ sudo apt -y upgrade rippled
+   ```
 
 3. `systemd`ユニットファイルを再度読み込みます。
 
-    ```
-    $ sudo systemctl daemon-reload
-    ```
+   ```
+   $ sudo systemctl daemon-reload
+   ```
 
 4. `rippled`サービスを再起動します。
 
-    ```
-    $ sudo service rippled restart
-    ```
-
+   ```
+   $ sudo service rippled restart
+   ```
 
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
-    - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+  - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [`rippled` v1.3.xへの移行手順](rippled-1-3-migration-instructions.md) <!-- Note: remove when versions older than v1.3 are basically extinct -->
-    - [rippledのトラブルシューティング](../troubleshooting/index.md)
+  - [`rippled` v1.3.xへの移行手順](rippled-1-3-migration-instructions.md) <!-- Note: remove when versions older than v1.3 are basically extinct -->
+  - [rippledのトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
-      - [`rippled`コマンドラインの使用](../commandline-usage.md)
-      - [server_infoメソッド][]
+  - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+    - [`rippled`コマンドラインの使用](../commandline-usage.md)
+    - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-05-08"
+date: '2020-05-08'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # DeletableAccounts is Now Enabled
 
 As previously announced, the DeletableAccounts amendment [became enabled on the XRP Ledger](https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE) on **2020-05-08**.
@@ -44,5 +45,5 @@ Related documentation is available in the [XRP Ledger Dev Portal](https://xrpl.o
 
 Other resources:
 
-* [The Xpring Forum](https://forum.xpring.io/)
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [The Xpring Forum](https://forum.xpring.io/)
+- [XRP Chat Forum](http://www.xrpchat.com/)

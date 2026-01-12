@@ -46,71 +46,70 @@ The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
 */
 
-jQuery.fn.minitabs = function(speed,effect) {
-
-  function saveToLocal(lang){
-    window.localStorage.setItem('user-preferred-devlanguage', lang);
+jQuery.fn.minitabs = function (speed, effect) {
+  function saveToLocal(lang) {
+    window.localStorage.setItem('user-preferred-devlanguage', lang)
   }
 
-  function setTabsToFirst(id){
-    $(".multicode[id='"+id+"']" + ">DIV").hide();   
-    $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
-    // 
-    $(".multicode[id='"+id+"']" + ">DIV:first").show(); 
-    $(".multicode[id='"+id+"']" + ">UL>LI>A:first").addClass("current");
-  }
-
-  function setTabsToLang(id, lang){
-    $(".multicode[id='"+id+"']" + ">DIV").hide();   
-    $(".multicode[id='"+id+"']" + ">UL>LI>A").removeClass("current"); 
+  function setTabsToFirst(id) {
+    $(".multicode[id='" + id + "']" + '>DIV').hide()
+    $(".multicode[id='" + id + "']" + '>UL>LI>A').removeClass('current')
     //
-    $(".multicode[id='"+id+"']" + ">UL>LI>A[class="+lang+"]").addClass("current");
-    $(".multicode[id='"+id+"']" + ">DIV."+lang).show();
+    $(".multicode[id='" + id + "']" + '>DIV:first').show()
+    $(".multicode[id='" + id + "']" + '>UL>LI>A:first').addClass('current')
   }
 
-  function showSelectedTabFromSaved(id){
-    var savedValue = window.localStorage.getItem('user-preferred-devlanguage');
+  function setTabsToLang(id, lang) {
+    $(".multicode[id='" + id + "']" + '>DIV').hide()
+    $(".multicode[id='" + id + "']" + '>UL>LI>A').removeClass('current')
+    //
+    $(".multicode[id='" + id + "']" + '>UL>LI>A[class=' + lang + ']').addClass('current')
+    $(".multicode[id='" + id + "']" + '>DIV.' + lang).show()
+  }
 
-    if(savedValue !== null) {
-      showSlectedTab(savedValue);
-    }else {
-      setTabsToFirst(id);
+  function showSelectedTabFromSaved(id) {
+    var savedValue = window.localStorage.getItem('user-preferred-devlanguage')
+
+    if (savedValue !== null) {
+      showSlectedTab(savedValue)
+    } else {
+      setTabsToFirst(id)
     }
   }
 
   function showSlectedTab(lang) {
-    $('.multicode').each(function() {
-      var hasLang = false;
-      $(this).find(">UL>LI>A").each(function() {
-        if ($(this).attr('class') == lang ) { 
-          hasLang = true;
-        }
-      })
+    $('.multicode').each(function () {
+      var hasLang = false
+      $(this)
+        .find('>UL>LI>A')
+        .each(function () {
+          if ($(this).attr('class') == lang) {
+            hasLang = true
+          }
+        })
 
-      if(hasLang) {
-        setTabsToLang($(this).attr('id'), lang);
+      if (hasLang) {
+        setTabsToLang($(this).attr('id'), lang)
       } else {
-        setTabsToFirst($(this).attr('id'));
+        setTabsToFirst($(this).attr('id'))
       }
     })
 
     // save in localstorage.
-    saveToLocal(lang);
+    saveToLocal(lang)
   }
 
-  this.each(function() {
-      var id = "#" + $(this).attr('id')
-      //Use saved value or set to first tab
-      showSelectedTabFromSaved($(this).attr('id'));
+  this.each(function () {
+    var id = '#' + $(this).attr('id')
+    //Use saved value or set to first tab
+    showSelectedTabFromSaved($(this).attr('id'))
 
-      //Add click on each tab
-      $(id + ">UL>LI>A").click(
-        function(){
-          if(!$(this).hasClass("current") ){
-            showSlectedTab($(this).attr('class'))
-          }
-          return false;
-        }
-     );
- });
+    //Add click on each tab
+    $(id + '>UL>LI>A').click(function () {
+      if (!$(this).hasClass('current')) {
+        showSlectedTab($(this).attr('class'))
+      }
+      return false
+    })
+  })
 }

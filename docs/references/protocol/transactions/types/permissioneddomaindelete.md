@@ -1,12 +1,14 @@
 ---
 seo:
-    description: Delete a permissioned domain.
+  description: Delete a permissioned domain.
 labels:
-    - Compliance
-    - Permissioned Domains
+  - Compliance
+  - Permissioned Domains
 status: not_enabled
 ---
+
 # PermissionedDomainDelete
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/PermissionedDomainDelete.cpp "Source")
 
 Delete a [permissioned domain][] that you own.
@@ -29,8 +31,8 @@ Delete a [permissioned domain][] that you own.
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field      | JSON Type         | [Internal Type][] | Required? | Description |
-|:-----------|:------------------|:------------------|:----------|:------------|
+| Field      | JSON Type         | [Internal Type][] | Required? | Description                                                     |
+| :--------- | :---------------- | :---------------- | :-------- | :-------------------------------------------------------------- |
 | `DomainID` | String - [Hash][] | UInt256           | Yes       | The ledger entry ID of the Permissioned Domain entry to delete. |
 
 ## {% $frontmatter.seo.title %} Flags
@@ -41,10 +43,10 @@ There are no flags defined for {% $frontmatter.seo.title %} transactions.
 
 Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
-| Error Code    | Description                                  |
-|:--------------|:---------------------------------------------|
+| Error Code    | Description                                                                            |
+| :------------ | :------------------------------------------------------------------------------------- |
 | `tecNO_ENTRY` | The permissioned domain specified in the `DomainID` field doesn't exist in the ledger. |
-| `temDISABLED` | The `PermissionedDomains` amendment is not enabled. |
+| `temDISABLED` | The `PermissionedDomains` amendment is not enabled.                                    |
 
 ## See Also
 

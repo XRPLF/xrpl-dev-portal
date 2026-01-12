@@ -2,7 +2,7 @@
 html: send-xrp.html
 parent: tasks.html
 seo:
-    description: Learn how to send test payments right from your browser.
+  description: Learn how to send test payments right from your browser.
 cta_text: Send XRP
 labels:
   - XRP
@@ -10,6 +10,7 @@ labels:
 top_nav_grouping: Popular Pages
 steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 ---
+
 # Send XRP
 
 This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java or `XRPL_PHP` for PHP. First, we step through the process with the [XRP Ledger Testnet](../../concepts/networks-and-servers/parallel-networks.md). Then, we compare that to the additional requirements for doing the equivalent in production.
@@ -66,7 +67,6 @@ The secret key shown here is for example only. For development purposes, you can
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
-
 ### 2. Connect to a Testnet Server
 
 First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to [automatically fill in some required fields of a transaction](../../references/protocol/transactions/common-fields.md#auto-fillable-fields). You also must be connected to the network to submit transactions to it.
@@ -101,7 +101,6 @@ For this tutorial, click the following button to connect:
 
 {% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
-
 ### 3. Prepare Transaction
 
 Typically, we create XRP Ledger transactions as objects in the JSON [transaction format](../../references/protocol/transactions/index.md). The following example shows a minimal Payment specification:
@@ -127,7 +126,7 @@ Technically, a transaction must contain some additional fields, and certain opti
 - If you're using `xrpl.js` for JavaScript, you can use the [`Client.autofill()` method](https://js.xrpl.org/classes/Client.html#autofill) to automatically fill in good defaults for the remaining fields of a transaction. In TypeScript, you can also use the transaction models like `xrpl.Payment` to enforce the correct fields.
 - With `xrpl-py` for Python, you can use the models in `xrpl.models.transactions` to construct transactions as native Python objects.
 - With xrpl4j for Java, you can use the model objects in the `xrpl4j-model` module to construct transactions as Java objects.
-    - Unlike the other libraries, you must provide the account `sequence` and the `signingPublicKey` of the source
+  - Unlike the other libraries, you must provide the account `sequence` and the `signingPublicKey` of the source
     account of a `Transaction` at the time of construction, as well as a `fee`.
 
 Here's an example of preparing the above payment:
@@ -175,7 +174,6 @@ Here's an example of preparing the above payment:
 
 {% /interactive-block %}
 
-
 ### 4. Sign the Transaction Instructions
 
 Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.
@@ -184,7 +182,7 @@ Signing a transaction uses your credentials to authorize the transaction on your
 - **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and `Wallet` object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
 - **PHP:** Use a [`sign()` method of a `Wallet` instance](https://alexanderbuzz.github.io/xrpl-php-docs/wallet.html#signing-a-transaction) instance to sign the transaction. The input to this step is a completed array of transaction instructions.
-- **Go:** Use the [`Sign()` method of the `Wallet` package](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/wallet) to sign the transaction. 
+- **Go:** Use the [`Sign()` method of the `Wallet` package](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/wallet) to sign the transaction.
 
 {% tabs %}
 
@@ -221,11 +219,11 @@ The result of the signing operation is a transaction object containing a signatu
 {% interactive-block label="Sign" steps=$frontmatter.steps %}
 
 <button id="sign-button" class="btn btn-primary previous-steps-required">Sign
-  example transaction</button>
+example transaction</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ### 5. Submit the Signed Blob
 
@@ -233,7 +231,7 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 
 - **JavaScript:** Use the [`submitAndWait()` method of the Client](https://js.xrpl.org/classes/Client.html#submitAndWait) to submit a signed transaction to the network and wait for the response, or use [`submitSigned()`](https://js.xrpl.org/classes/Client.html#submitSigned) to submit a transaction and get only the preliminary response.
 - **Python:** Use the [`xrpl.transaction.submit_and_wait()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) to submit a transaction to the network and wait for a response.
-- **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
+- **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](<https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)>) to submit a transaction to the network. Use the [`XrplClient.ledger()`](<https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)>) method to get the latest validated ledger index.
 - **PHP:** Use the [`submitAndWait()` method of the Client](https://alexanderbuzz.github.io/xrpl-php-docs/client.html) to submit a transaction to the network and wait for the response.
 - **Go:** Use [`SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods os the Client](https://pkg.go.dev/github.com/Peersyst/xrpl-go@v0.1.12/xrpl/websocket#Client.SubmitTxAndWait) to submit a transaction to the network and wait for the response.
 
@@ -283,18 +281,17 @@ example transaction</button>
 
 {% /interactive-block %}
 
-
 ### 6. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
-- **JavaScript:**  If you used the [`.submitAndWait()` method](https://js.xrpl.org/classes/Client.html#submitAndWait), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
+- **JavaScript:** If you used the [`.submitAndWait()` method](https://js.xrpl.org/classes/Client.html#submitAndWait), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
 - **Python:** If you used the [`xrpl.transaction.submit_and_wait()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait), you can wait for the function to return. Other approaches, including asynchronous ones using the WebSocket client, are also possible.
 
-- **Java** Poll the [`XrplClient.transaction()` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method.
+- **Java** Poll the [`XrplClient.transaction()` method](<https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)>) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the [`XrplClient.ledger()`](<https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)>) method.
 
-- **PHP:**  If you used the [`.submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
+- **PHP:** If you used the [`.submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
 
 - **Go:** If you used the `SubmitTxAndWait()` or `SubmitTxBlobAndWait()` methods, the client will handle submission and wait until the transaction is confirmed in a ledger. Internally, these methods use a polling mechanism, querying the transaction status with the client's `Request()` method and a `TxRequest`.
 
@@ -324,18 +321,17 @@ Most transactions are accepted into the next ledger version after they're submit
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
-
 ### 7. Check Transaction Status
 
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.
 
 - **JavaScript:** Use the response from `submitAndWait()` or call the [tx method][] using [`Client.request()`](https://js.xrpl.org/classes/Client.html#request).
 
-    {% admonition type="success" name="Tip" %}In **TypeScript** you can pass a [`TxRequest`](https://js.xrpl.org/interfaces/TxRequest.html) to the [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) method.{% /admonition %}
+  {% admonition type="success" name="Tip" %}In **TypeScript** you can pass a [`TxRequest`](https://js.xrpl.org/interfaces/TxRequest.html) to the [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) method.{% /admonition %}
 
 - **Python:** Use the response from [`submit_and_wait()`](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) or call the [`xrpl.transaction.get_transaction_from_hash()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.get_transaction_from_hash). (See the [tx method response format](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md#response-format) for a detailed reference of the fields this can contain.)
 
-- **Java:** Use the [`XrplClient.transaction()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) method to check the status of a transaction.
+- **Java:** Use the [`XrplClient.transaction()`](<https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)>) method to check the status of a transaction.
 
 - **PHP:** Use the response from `submitAndWait()` or call the `tx method` using [`$client->syncRequest()`](https://alexanderbuzz.github.io/xrpl-php-docs/client.html).
 
@@ -370,10 +366,10 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 {% interactive-block label="Check" steps=$frontmatter.steps %}
 
 <button id="get-tx-button" class="btn btn-primary previous-steps-required">Check transaction status</button>
+
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ## Differences for Production
 
@@ -389,23 +385,28 @@ This tutorial uses a button to get an address that's already funded with Test Ne
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const wallet = new xrpl.Wallet()
 console.log(wallet.address) // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 console.log(wallet.seed) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+
 {% /tab %}
 
 {% tab label="Python" %}
+
 ```py
 from xrpl.wallet import Wallet
 my_wallet = Wallet.create()
 print(my_wallet.address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 print(my_wallet.seed)            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+
 {% /tab %}
 
 {% tab label="Java" %}
+
 ```java
 WalletFactory walletFactory = DefaultWalletFactory.getInstance();
 SeedWalletGenerationResult generationResult = walletFactory.randomWallet(false);
@@ -413,9 +414,11 @@ Wallet wallet = generationResult.wallet();
 System.out.println(wallet.classicAddress()); // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+
 {% /tab %}
 
 {% tab label="PHP" %}
+
 ```php
 use XRPL_PHP\Wallet\Wallet;
 
@@ -424,6 +427,7 @@ $wallet = Wallet::generate();
 print_r("Address: " . $wallet->getAddress());  // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 print_r("Seed: " . $wallet->getSeed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+
 {% /tab %}
 
 {% tab label="Go" %}
@@ -434,6 +438,7 @@ fmt.Println("Classic Address:", wallet.ClassicAddress) // Example: r9ESeQQswbTxV
 fmt.Println("Seed:", wallet.Seed) // Example: sEd7XGFGSWteam777HQHvw7vHypEWy2
 
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -449,33 +454,41 @@ When you instantiate your client's connect to the XRP Ledger, you must specify a
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const xrpl = require('xrpl')
 const api = new xrpl.Client('wss://xrplcluster.com')
 api.connect()
 ```
+
 {% /tab %}
 
 {% tab label="Python" %}
+
 ```py
 from xrpl.clients import JsonRpcClient
 client = JsonRpcClient("https://xrplcluster.com")
 ```
+
 {% /tab %}
 
 {% tab label="Java" %}
+
 ```java
 final HttpUrl rippledUrl = HttpUrl.get("https://xrplcluster.com");
 XrplClient xrplClient = new XrplClient(rippledUrl);
 ```
+
 {% /tab %}
 
 {% tab label="PHP" %}
+
 ```
 use XRPL_PHP\Client\JsonRpcClient;
 
 $client = new JsonRpcClient("https://xrplcluster.com");
 ```
+
 {% /tab %}
 
 {% tab label="Go" %}
@@ -490,6 +503,7 @@ if err := client.Connect(); err != nil {
   return
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -499,33 +513,41 @@ If you [install `rippled`](../../infrastructure/installation/index.md) yourself,
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const xrpl = require('xrpl')
 const api = new xrpl.Client('ws://localhost:6006')
 api.connect()
 ```
+
 {% /tab %}
 
 {% tab label="Python" %}
+
 ```py
 from xrpl.clients import JsonRpcClient
 client = JsonRpcClient("http://localhost:5005")
 ```
+
 {% /tab %}
 
 {% tab label="Java" %}
+
 ```java
 final HttpUrl rippledUrl = HttpUrl.get("http://localhost:5005");
 XrplClient xrplClient = new XrplClient(rippledUrl);
 ```
+
 {% /tab %}
 
 {% tab label="PHP" %}
+
 ```php
 use XRPL_PHP\Client\JsonRpcClient;
 
 $client = new JsonRpcClient("http://localhost:5005");
 ```
+
 {% /tab %}
 
 {% tab label="Go" %}
@@ -540,6 +562,7 @@ if err := client.Connect(); err != nil {
   return
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}

@@ -17,7 +17,6 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 Without the Quickstart Samples, you will not be able to try the examples that follow.
 {% /admonition %}
 
-
 ## Usage
 
 ### Get Accounts
@@ -34,7 +33,6 @@ Without the Quickstart Samples, you will not be able to try the examples that fo
 
 [![Get account results](/docs/img/quickstart-trade-auction-slot2.png)](/docs/img/quickstart-trade-auction-slot2.png)
 
-
 ### Get the AMM
 
 Use the information from either the XRP/Token or Token/Token AMM you created in [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm/#create-an-xrp/token-amm).
@@ -45,7 +43,6 @@ Use the information from either the XRP/Token or Token/Token AMM you created in 
 4. Click **Check AMM**.
 
 [![Get AMM results](/docs/img/quickstart-trade-auction-slot3.png)](/docs/img/quickstart-trade-auction-slot3.png)
-
 
 ### Estimate Costs
 
@@ -62,7 +59,6 @@ Get a new standby account to ensure you aren't using an account with an auction 
 
 [![Estimate costs results](/docs/img/quickstart-trade-auction-slot4.png)](/docs/img/quickstart-trade-auction-slot4.png)
 
-
 ### Bid for the Auction Slot
 
 Make a single-asset deposit to the AMM to receive the required LP tokens for the auction slot bid. You can deposit either asset from the cost estimator.
@@ -74,7 +70,6 @@ Make a single-asset deposit to the AMM to receive the required LP tokens for the
 
 [![Bid auction slot results](/docs/img/quickstart-trade-auction-slot5.png)](/docs/img/quickstart-trade-auction-slot5.png)
 
-
 ### Swap Tokens with the AMM
 
 Get a new estimate to update the expected cost for swapping tokens.
@@ -85,11 +80,9 @@ Get a new estimate to update the expected cost for swapping tokens.
 
 [![Swap tokens with AMM results](/docs/img/quickstart-trade-auction-slot6.png)](/docs/img/quickstart-trade-auction-slot6.png)
 
-
 ## Code Walkthrough (ripplex13a-trade-with-auction-slot.js)
 
 You can open `ripplex13a-trade-with-auction-slot.js` from the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) to view the source code.
-
 
 ### Estimate AMM Costs
 
@@ -102,15 +95,15 @@ async function estimateCost() {
 Connect to the XRP Ledger.
 
 ```javascript
-    let net = getNet()
+let net = getNet()
 
-    const client = new xrpl.Client(net)
-    results = `\n\nConnecting to ${getNet()} ...`
-    standbyResultField.value = results
+const client = new xrpl.Client(net)
+results = `\n\nConnecting to ${getNet()} ...`
+standbyResultField.value = results
 
-    await client.connect()
-    results += '\n\nConnected.'
-    standbyResultField.value = results
+await client.connect()
+results += '\n\nConnected.'
+standbyResultField.value = results
 ```
 
 Format the `amm_info` command and get the AMM information. This code is wrapped in a `try-catch` block to handle any errors.
@@ -153,7 +146,7 @@ Format the `amm_info` command and get the AMM information. This code is wrapped 
         }
 
         const amm_info = (await client.request({
-            "command": "amm_info", 
+            "command": "amm_info",
             "asset": asset1_info,
             "asset2": asset2_info
         }))
@@ -174,70 +167,70 @@ Format the `amm_info` command and get the AMM information. This code is wrapped 
 Save the taker pays and taker gets fields; use these values to get the total amount of each asset in the AMM pool, using large significant digits for precise calculations. This also checks if the requested token amount is larger than what is available in the AMM pool, stopping the code if `true`.
 
 ```javascript
-        // Save taker pays and gets values.
-        
-        const takerPays = {
-            "currency": standbyTakerPaysCurrencyField.value,
-            "issuer": standbyTakerPaysIssuerField.value,
-            "amount": standbyTakerPaysAmountField.value
-        }
+// Save taker pays and gets values.
 
-        const takerGets = {
-            "currency": standbyTakerGetsCurrencyField.value,
-            "issuer": standbyTakerGetsIssuerField.value,
-            "amount": standbyTakerGetsAmountField.value
-        }
+const takerPays = {
+  currency: standbyTakerPaysCurrencyField.value,
+  issuer: standbyTakerPaysIssuerField.value,
+  amount: standbyTakerPaysAmountField.value,
+}
 
-        // Get amount of assets in the pool.
-        // Convert values to BigNumbers with the appropriate precision.
-        // Tokens always have 15 significant digits;
-        // XRP is precise to integer drops, which can be as high as 10^17
+const takerGets = {
+  currency: standbyTakerGetsCurrencyField.value,
+  issuer: standbyTakerGetsIssuerField.value,
+  amount: standbyTakerGetsAmountField.value,
+}
 
-        let asset_out_bn = null
-        let pool_in_bn = null
-        let pool_out_bn = null
-        let isAmmAsset1Xrp = false
-        let isAmmAsset2Xrp = false
+// Get amount of assets in the pool.
+// Convert values to BigNumbers with the appropriate precision.
+// Tokens always have 15 significant digits;
+// XRP is precise to integer drops, which can be as high as 10^17
 
-        if ( takerPays.currency == 'XRP' ) {
-            asset_out_bn = BigNumber(xrpl.xrpToDrops(takerPays.amount)).precision(17)
-        } else {
-            asset_out_bn = BigNumber(takerPays.amount).precision(15)
-        }
+let asset_out_bn = null
+let pool_in_bn = null
+let pool_out_bn = null
+let isAmmAsset1Xrp = false
+let isAmmAsset2Xrp = false
 
-        if ( takerGets.currency == 'XRP' && asset1_currency == 'XRP' ) {
-            pool_in_bn = BigNumber(pool_asset1).precision(17)
-            isAmmAsset1Xrp = true
-        } else if ( takerGets.currency == 'XRP' && asset2_currency == 'XRP' ) {
-            pool_in_bn = BigNumber(pool_asset2).precision(17)
-            isAmmAsset2Xrp = true
-        } else if ( takerGets.currency == asset1_currency ) {
-            pool_in_bn = BigNumber(pool_asset1.value).precision(15)
-        } else {
-            pool_in_bn = BigNumber(pool_asset2.value).precision(15)
-        }
+if (takerPays.currency == 'XRP') {
+  asset_out_bn = BigNumber(xrpl.xrpToDrops(takerPays.amount)).precision(17)
+} else {
+  asset_out_bn = BigNumber(takerPays.amount).precision(15)
+}
 
-        if (takerPays.currency == 'XRP' && asset1_currency == 'XRP' ) {
-            pool_out_bn = BigNumber(pool_asset1).precision(17)
-        } else if ( takerPays.currency == 'XRP' && asset2_currency == 'XRP' ) {
-            pool_out_bn = BigNumber(pool_asset2).precision(17)
-        } else if ( takerPays.currency == asset1_currency ) {
-            pool_out_bn = BigNumber(pool_asset1.value).precision(15)
-        } else {
-            pool_out_bn = BigNumber(pool_asset2.value).precision(15)
-        }
+if (takerGets.currency == 'XRP' && asset1_currency == 'XRP') {
+  pool_in_bn = BigNumber(pool_asset1).precision(17)
+  isAmmAsset1Xrp = true
+} else if (takerGets.currency == 'XRP' && asset2_currency == 'XRP') {
+  pool_in_bn = BigNumber(pool_asset2).precision(17)
+  isAmmAsset2Xrp = true
+} else if (takerGets.currency == asset1_currency) {
+  pool_in_bn = BigNumber(pool_asset1.value).precision(15)
+} else {
+  pool_in_bn = BigNumber(pool_asset2.value).precision(15)
+}
 
-        if ( takerPays.currency == 'XRP' && parseFloat(takerPays.amount) > parseFloat(xrpl.dropsToXrp(pool_out_bn)) ) {
-            results += `\n\nRequested ${takerPays.amount} ${takerPays.currency}, but AMM only holds ${xrpl.dropsToXrp(pool_out_bn)}. Quitting.`
-            standbyResultField.value = results
-            client.disconnect()
-            return
-        } else if ( parseFloat(takerPays.amount) > parseFloat(pool_out_bn) ) {
-            results += `\n\nRequested ${takerPays.amount} ${takerPays.currency}, but AMM only holds ${pool_out_bn}. Quitting.`
-            standbyResultField.value = results
-            client.disconnect()
-            return
-        }
+if (takerPays.currency == 'XRP' && asset1_currency == 'XRP') {
+  pool_out_bn = BigNumber(pool_asset1).precision(17)
+} else if (takerPays.currency == 'XRP' && asset2_currency == 'XRP') {
+  pool_out_bn = BigNumber(pool_asset2).precision(17)
+} else if (takerPays.currency == asset1_currency) {
+  pool_out_bn = BigNumber(pool_asset1.value).precision(15)
+} else {
+  pool_out_bn = BigNumber(pool_asset2.value).precision(15)
+}
+
+if (takerPays.currency == 'XRP' && parseFloat(takerPays.amount) > parseFloat(xrpl.dropsToXrp(pool_out_bn))) {
+  results += `\n\nRequested ${takerPays.amount} ${takerPays.currency}, but AMM only holds ${xrpl.dropsToXrp(pool_out_bn)}. Quitting.`
+  standbyResultField.value = results
+  client.disconnect()
+  return
+} else if (parseFloat(takerPays.amount) > parseFloat(pool_out_bn)) {
+  results += `\n\nRequested ${takerPays.amount} ${takerPays.currency}, but AMM only holds ${pool_out_bn}. Quitting.`
+  standbyResultField.value = results
+  client.disconnect()
+  return
+}
 ```
 
 Implement [AMM formulas](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/detail/AMMHelpers.cpp) to estimate values for:
@@ -266,7 +259,7 @@ Implement [AMM formulas](https://github.com/XRPLF/rippled/blob/master/src/xrpld/
 
         // Use SwapOut to calculate discounted swap amount with auction slot
         const raw_discounted = swapOut(asset_out_bn, pool_in_bn, pool_out_bn, discounted_fee)
-        const discounted_swap_amount = raw_discounted.dp(0, BigNumber.ROUND_CEIL)    
+        const discounted_swap_amount = raw_discounted.dp(0, BigNumber.ROUND_CEIL)
         results += `\n\nExpected cost with auction slot for ${takerPays.amount} ${takerPays.currency}: ${convert(takerGets.currency, discounted_swap_amount)} ${takerGets.currency}`
 
         // Calculate savings by using auction slot
@@ -316,7 +309,6 @@ Report the estimated values and close the client connection.
 }
 ```
 
-
 ### Bid on the Auction Slot
 
 This function bids on the AMM auction slot, using LP tokens.
@@ -328,15 +320,15 @@ async function bidAuction() {
 Connect to the ledger.
 
 ```javascript
-    let net = getNet()
+let net = getNet()
 
-    const client = new xrpl.Client(net)
-    results = `\n\nConnecting to ${getNet()} ...`
-    standbyResultField.value = results
+const client = new xrpl.Client(net)
+results = `\n\nConnecting to ${getNet()} ...`
+standbyResultField.value = results
 
-    await client.connect()
-    results += '\n\nConnected.'
-    standbyResultField.value = results
+await client.connect()
+results += '\n\nConnected.'
+standbyResultField.value = results
 ```
 
 Format the asset values, depending on if it's `XRP` or a token. Wrap the code in a `try-catch` block to handle any errors.
@@ -381,7 +373,7 @@ Format the asset values, depending on if it's `XRP` or a token. Wrap the code in
         }
 
         const amm_info = (await client.request({
-            "command": "amm_info", 
+            "command": "amm_info",
             "asset": asset1_info,
             "asset2": asset2_info
         }))
@@ -413,13 +405,13 @@ Submit the `AMMBid` transaction.
                 "value": valueLPT
             } // So rounding doesn't leave dust amounts of LPT
             }, {autofill: true, wallet: standby_wallet})
-    
+
         if (bid_result.result.meta.TransactionResult == "tesSUCCESS") {
             results += `\n\nTransaction succeeded.`
             checkAMM()
         } else {
             results += `\n\nError sending transaction: ${JSON.stringify(bid_result.result.meta.TransactionResult, null, 2)}`
-        }        
+        }
     } catch (error) {
         results += `\n\n${error.message}`
     }
@@ -435,7 +427,6 @@ Report the results.
 }
 ```
 
-
 ### Swap AMM Tokens
 
 This function submits an `OfferCreate` transaction, using precise values to format the transaction and have the AMM completely consume the offer.
@@ -447,15 +438,15 @@ async function swapTokens() {
 Connect to the XRP Ledger.
 
 ```javascript
-    let net = getNet()
+let net = getNet()
 
-    const client = new xrpl.Client(net)
-    results = `\n\nConnecting to ${getNet()} ...`
-    standbyResultField.value = results
+const client = new xrpl.Client(net)
+results = `\n\nConnecting to ${getNet()} ...`
+standbyResultField.value = results
 
-    await client.connect()
-    results += '\n\nConnected.'
-    standbyResultField.value = results
+await client.connect()
+results += '\n\nConnected.'
+standbyResultField.value = results
 ```
 
 Get the taker pays and taker gets fields and format the amounts depending on if it's `XRP` or a custom token. Wrap the code in a `try-catch` block to handle any errors.
@@ -509,13 +500,13 @@ Submit the `OfferCreate` transaction.
             "TakerPays": takerPays,
             "TakerGets": takerGets
         }, {autofill: true, wallet: standby_wallet})
-        
+
         if (offer_result.result.meta.TransactionResult == "tesSUCCESS") {
             results += `\n\nTransaction succeeded.`
             checkAMM()
         } else {
             results += `\n\nError sending transaction: ${JSON.stringify(offer_result.result.meta.TransactionResult, null, 2)}`
-        }        
+        }
     } catch (error) {
         results += `\n\n${error.message}`
     }
@@ -531,11 +522,9 @@ Report the results.
 }
 ```
 
-
-## Code Walkthrough (ripplex13b-amm-formulas.js) 
+## Code Walkthrough (ripplex13b-amm-formulas.js)
 
 You can open `ripplex13b-amm-formulas.js` from the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) to view the source code. This code implements several core [AMM formulas](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/detail/AMMHelpers.cpp) defined by the protocol.
-
 
 ### swapOut()
 
@@ -543,23 +532,20 @@ The `swapOut()` function calculates how much of an asset you must deposit into a
 
 The formula used is based on [AMM Swap](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#25-amm-swap), defined in XLS-30.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| asset_out_bn | BigNumber | The target amount to receive from the AMM. |
-| pool_in_bn | BigNumber | The amount of the input asset in the AMM's pool before the swap. |
-| pool_out_bn | BigNumber | The amount of the output asset in the AMM's pool before the swap. |
-| trading_fee | int | The trading fee as an integer {0, 1000} where 1000 represents a 1% fee. |
+| Parameter    | Type      | Description                                                             |
+| ------------ | --------- | ----------------------------------------------------------------------- |
+| asset_out_bn | BigNumber | The target amount to receive from the AMM.                              |
+| pool_in_bn   | BigNumber | The amount of the input asset in the AMM's pool before the swap.        |
+| pool_out_bn  | BigNumber | The amount of the output asset in the AMM's pool before the swap.       |
+| trading_fee  | int       | The trading fee as an integer {0, 1000} where 1000 represents a 1% fee. |
 
-| Returns | Type | Description |
-|---------|------|-------------|
+| Returns      | Type      | Description                                                                                                                                                                                                                                                                                                                       |
+| ------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Return Value | BigNumber | The amount of the input asset that must be swapped in to receive the target output amount. Unrounded, because the number of decimals depends on if this is drops of XRP or a decimal amount of a token; since this is a theoretical input to the pool, it should be rounded up (ceiling) to preserve the pool's constant product. |
 
 ```javascript
 function swapOut(asset_out_bn, pool_in_bn, pool_out_bn, trading_fee) {
-    return ( ( pool_in_bn.multipliedBy(pool_out_bn) ).dividedBy(
-                pool_out_bn.minus(asset_out_bn)
-             ).minus(pool_in_bn)
-           ).dividedBy(feeMult(trading_fee))
+  return pool_in_bn.multipliedBy(pool_out_bn).dividedBy(pool_out_bn.minus(asset_out_bn)).minus(pool_in_bn).dividedBy(feeMult(trading_fee))
 }
 ```
 
@@ -571,28 +557,25 @@ The formula used is based on the [slot pricing algorithm](https://github.com/XRP
 
 ```javascript
 function auctionDeposit(old_bid, time_interval, trading_fee, lpt_balance) {
-    const tfee_decimal = feeDecimal(trading_fee)
-    const lptokens = BigNumber(lpt_balance)
-    const b = BigNumber(old_bid)
-    let outbidAmount = BigNumber(0) // This is the case if time_interval >= 20
-    if (time_interval == 0) {
-        outbidAmount = b.multipliedBy("1.05")
-    } else if (time_interval <= 19) {
-        const t60 = BigNumber(time_interval).multipliedBy("0.05").exponentiatedBy(60)
-        outbidAmount = b.multipliedBy("1.05").multipliedBy(BigNumber(1).minus(t60))
-    }
+  const tfee_decimal = feeDecimal(trading_fee)
+  const lptokens = BigNumber(lpt_balance)
+  const b = BigNumber(old_bid)
+  let outbidAmount = BigNumber(0) // This is the case if time_interval >= 20
+  if (time_interval == 0) {
+    outbidAmount = b.multipliedBy('1.05')
+  } else if (time_interval <= 19) {
+    const t60 = BigNumber(time_interval).multipliedBy('0.05').exponentiatedBy(60)
+    outbidAmount = b.multipliedBy('1.05').multipliedBy(BigNumber(1).minus(t60))
+  }
 
-    const new_bid = lptokens.plus(outbidAmount).dividedBy(
-                            BigNumber(25).dividedBy(tfee_decimal).minus(1)
-                          ).plus(outbidAmount)
-    
-    // Significant digits for the deposit are limited by total LPTokens issued
-    // so we calculate lptokens + deposit - lptokens to determine where the
-    // rounding occurs. We use ceiling/floor to make sure the amount we receive
-    // after rounding is still enough to win the auction slot.
-    const rounded_bid = new_bid.plus(lptokens).precision(15, BigNumber.CEILING
-                              ).minus(lptokens).precision(15, BigNumber.FLOOR)
-    return rounded_bid
+  const new_bid = lptokens.plus(outbidAmount).dividedBy(BigNumber(25).dividedBy(tfee_decimal).minus(1)).plus(outbidAmount)
+
+  // Significant digits for the deposit are limited by total LPTokens issued
+  // so we calculate lptokens + deposit - lptokens to determine where the
+  // rounding occurs. We use ceiling/floor to make sure the amount we receive
+  // after rounding is still enough to win the auction slot.
+  const rounded_bid = new_bid.plus(lptokens).precision(15, BigNumber.CEILING).minus(lptokens).precision(15, BigNumber.FLOOR)
+  return rounded_bid
 }
 ```
 
@@ -600,41 +583,37 @@ function auctionDeposit(old_bid, time_interval, trading_fee, lpt_balance) {
 
 The `ammAssetIn()` function calculates how much to add in a single-asset deposit to receive a specified amount of LP tokens.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| pool_in | string | The quantity of the input asset the pool already has. |
-| lpt_balance | string | The quantity of LP tokens already issued by the AMM. |
-| desired_lpt | string | The quantity of new LP tokens you want to receive. |
-| trading_fee | int | The trading fee as an integer {0, 1000} where 1000 represents a 1% fee. |
+| Parameter   | Type   | Description                                                             |
+| ----------- | ------ | ----------------------------------------------------------------------- |
+| pool_in     | string | The quantity of the input asset the pool already has.                   |
+| lpt_balance | string | The quantity of LP tokens already issued by the AMM.                    |
+| desired_lpt | string | The quantity of new LP tokens you want to receive.                      |
+| trading_fee | int    | The trading fee as an integer {0, 1000} where 1000 represents a 1% fee. |
 
 ```javascript
 function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
-    // convert inputs to BigNumber
-    const lpTokens = BigNumber(desired_lpt)
-    const lptAMMBalance = BigNumber(lpt_balance)
-    const asset1Balance = BigNumber(pool_in)
+  // convert inputs to BigNumber
+  const lpTokens = BigNumber(desired_lpt)
+  const lptAMMBalance = BigNumber(lpt_balance)
+  const asset1Balance = BigNumber(pool_in)
 
-    const f1 = feeMult(trading_fee)
-    const f2 = feeMultHalf(trading_fee).dividedBy(f1)
-    const t1 = lpTokens.dividedBy(lptAMMBalance)
-    const t2 = t1.plus(1)
-    const d = f2.minus( t1.dividedBy(t2) )
-    const a = BigNumber(1).dividedBy( t2.multipliedBy(t2))
-    const b = BigNumber(2).multipliedBy(d).dividedBy(t2).minus( 
-                    BigNumber(1).dividedBy(f1)
-              )
-    const c = d.multipliedBy(d).minus( f2.multipliedBy(f2) )
-    return asset1Balance.multipliedBy(solveQuadraticEq(a,b,c))
+  const f1 = feeMult(trading_fee)
+  const f2 = feeMultHalf(trading_fee).dividedBy(f1)
+  const t1 = lpTokens.dividedBy(lptAMMBalance)
+  const t2 = t1.plus(1)
+  const d = f2.minus(t1.dividedBy(t2))
+  const a = BigNumber(1).dividedBy(t2.multipliedBy(t2))
+  const b = BigNumber(2).multipliedBy(d).dividedBy(t2).minus(BigNumber(1).dividedBy(f1))
+  const c = d.multipliedBy(d).minus(f2.multipliedBy(f2))
+  return asset1Balance.multipliedBy(solveQuadraticEq(a, b, c))
 }
 ```
 
 Compute the quadratic formula. This is a helper function for `ammAssetIn()`. Parameters and return value are `BigNumber` instances.
 
 ```javascript
-function solveQuadraticEq(a,b,c) {
-    const b2minus4ac = b.multipliedBy(b).minus( 
-                            a.multipliedBy(c).multipliedBy(4) 
-                       )
-    return ( b.negated().plus(b2minus4ac.sqrt()) ).dividedBy(a.multipliedBy(2))
+function solveQuadraticEq(a, b, c) {
+  const b2minus4ac = b.multipliedBy(b).minus(a.multipliedBy(c).multipliedBy(4))
+  return b.negated().plus(b2minus4ac.sqrt()).dividedBy(a.multipliedBy(2))
 }
 ```

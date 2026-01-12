@@ -2,10 +2,11 @@
 html: sending-payments-to-customers.html
 parent: payment-types.html
 seo:
-    description: Construct payments carefully to thwart malicious actors.
+  description: Construct payments carefully to thwart malicious actors.
 labels:
   - Tokens
 ---
+
 # Sending Payments to Customers
 
 When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.

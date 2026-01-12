@@ -1,7 +1,7 @@
 // Bootstrap-derived SASS. See README.md in this folder for instructions.
 
-@import "_colors.scss";
-@import "_font-face.scss";
+@import '_colors.scss';
+@import '_font-face.scss';
 
 $navbar-padding-y: 0;
 $nav-link-padding-x: 2rem;
@@ -29,51 +29,59 @@ $input-btn-line-height: 1.25;
 $input-font-size: 1rem;
 
 // @import "_font-face.scss";
-$font-family-monospace: "Space Mono", monospace;
-$font-family-sans-serif: "Work Sans", -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+$font-family-monospace: 'Space Mono', monospace;
+$font-family-sans-serif:
+  'Work Sans',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  Oxygen-Sans,
+  Ubuntu,
+  Cantarell,
+  'Helvetica Neue',
   sans-serif;
 $base-size: 16px;
 $line-height-base: 1.5;
 
 // Bootstrap v4
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
 
 // Import site styles
-@import "_font.scss";
-@import "_forms.scss";
-@import "_layout.scss";
-@import "_side-nav.scss";
-@import "_helpers.scss";
-@import "_buttons.scss";
-@import "_tables.scss";
-@import "_tables.scss";
-@import "_use-cases.scss";
-@import "_github-edit.scss";
-@import "_top-nav.scss";
-@import "_top-banner.scss";
-@import "_content.scss";
-@import "_code-tabs.scss";
-@import "_code-walkthrough.scss";
-@import "_diagrams.scss";
-@import "_external-links.scss";
-@import "_footer.scss";
-@import "_callouts.scss";
-@import "_cards.scss";
-@import "_breadcrumbs.scss";
-@import "_landings.scss";
-@import "_interactive-tutorials.scss";
-@import "_status-labels.scss";
-@import "_dev-tools.scss";
-@import "_print.scss";
-@import "_pages.scss";
-@import "_rpc-tool.scss";
-@import "_blog.scss";
-@import "_feedback.scss";
-@import "_video.scss";
-@import "_contribute.scss";
-@import "_docs-landing.scss";
-@import "_osano.scss";
+@import '_font.scss';
+@import '_forms.scss';
+@import '_layout.scss';
+@import '_side-nav.scss';
+@import '_helpers.scss';
+@import '_buttons.scss';
+@import '_tables.scss';
+@import '_tables.scss';
+@import '_use-cases.scss';
+@import '_github-edit.scss';
+@import '_top-nav.scss';
+@import '_top-banner.scss';
+@import '_content.scss';
+@import '_code-tabs.scss';
+@import '_code-walkthrough.scss';
+@import '_diagrams.scss';
+@import '_external-links.scss';
+@import '_footer.scss';
+@import '_callouts.scss';
+@import '_cards.scss';
+@import '_breadcrumbs.scss';
+@import '_landings.scss';
+@import '_interactive-tutorials.scss';
+@import '_status-labels.scss';
+@import '_dev-tools.scss';
+@import '_print.scss';
+@import '_pages.scss';
+@import '_rpc-tool.scss';
+@import '_blog.scss';
+@import '_feedback.scss';
+@import '_video.scss';
+@import '_contribute.scss';
+@import '_docs-landing.scss';
+@import '_osano.scss';
 // Light/Dark theme settings ---------------------------------------------------
 // Option to only change theme on user system settings.  No toggle.
 
@@ -88,5 +96,5 @@ $line-height-base: 1.5;
 // }
 
 html.light {
-  @import "light/_light-theme.scss";
+  @import 'light/_light-theme.scss';
 }

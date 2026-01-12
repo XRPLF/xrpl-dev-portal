@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-01-13"
+date: '2020-01-13'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # XRP Ledger version 1.4.0 Upgrade Advisory
 
 Version 1.4.0 of the XRP Ledger core server (`rippled`) contains a change that can cause upgrades to take much longer than usual.
@@ -33,55 +34,55 @@ We do not recommend this procedure to anyone not familiar with sqlite3.
 {% /admonition %}
 
 1. Install the required tool: `sqlite3`. This is operating-system dependent.
-    
-    On Ubuntu you can use the following commands:
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install sqlite3
-    ```
+   On Ubuntu you can use the following commands:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install sqlite3
+   ```
 
 2. Stop your `rippled` instance.
 
-    This is operating-system dependent. On Linux, you can use the following commands:
+   This is operating-system dependent. On Linux, you can use the following commands:
 
-    ```sh
-    sudo systemctl stop rippled.service
-    ```
+   ```sh
+   sudo systemctl stop rippled.service
+   ```
 
 3. Read your configuration file and find the `[database_path]` stanza.
 
-    On Linux, the configuration file is usually located at `/opt/ripple/etc/rippled.cfg`.
-    
-    The directory in the `[database_path]` stanza is where your server stores its SQL databases.
-    
-4. Change to a user that has permissions to read and write files in the SQL database directory you found in the previous step. 
+   On Linux, the configuration file is usually located at `/opt/ripple/etc/rippled.cfg`.
 
-    On Linux, you can use the `sudo -i` command.
-    
+   The directory in the `[database_path]` stanza is where your server stores its SQL databases.
+
+4. Change to a user that has permissions to read and write files in the SQL database directory you found in the previous step.
+
+   On Linux, you can use the `sudo -i` command.
+
 5. Open the `ledger.db` file using the SQLite commandline:
-    
-    ```sh
-    sqlite3 ledger.db
-    ```
-    
+
+   ```sh
+   sqlite3 ledger.db
+   ```
+
 6. Execute the following command (the trailing semicolon is required):
 
-    ```sql
-    ALTER TABLE Validations RENAME TO OldValidations;
-    ```
-    
+   ```sql
+   ALTER TABLE Validations RENAME TO OldValidations;
+   ```
+
 7. Execute the following command (the leading period is required):
 
-    ```text
-    .quit
-    ```
+   ```text
+   .quit
+   ```
 
 8. You should now be able to start `rippled` without experiencing any delay.
 
-    ```sh
-    sudo systemctl start rippled.service
-    ```
+   ```sh
+   sudo systemctl start rippled.service
+   ```
 
 For general instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](https://xrpl.org/install-rippled.html).
 
@@ -93,6 +94,6 @@ Related documentation is available in the [XRP Ledger Dev Portal](https://xrpl.o
 
 Other resources:
 
-* [The XRP Ledger Dev Blog](https://xrpl.org/blog/)
-* Ripple Technical Services: <support@ripple.com>
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [The XRP Ledger Dev Blog](https://xrpl.org/blog/)
+- Ripple Technical Services: <support@ripple.com>
+- [XRP Chat Forum](http://www.xrpchat.com/)

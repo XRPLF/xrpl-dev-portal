@@ -2,11 +2,12 @@
 html: transfer-fees.html
 parent: tokens.html
 seo:
-    description: トークンの発行者は、自己のトークンの送金に手数料を課すことができます。
+  description: トークンの発行者は、自己のトークンの送金に手数料を課すことができます。
 labels:
   - 手数料
   - トークン
 ---
+
 # 送金手数料
 
 [トークン](index.md)の発行者は、`TransferRate`の設定を使用して、ユーザに対し _送金手数料_ を請求できます。この送金の送金元からは送金手数料に基づく割合で引き落とされ、送金先へ入金されます。差額が送金手数料となります。
@@ -25,13 +26,11 @@ XRPは発行者が存在しないため、送金手数料がかかることは�
 
 以下の図は、AliceからCharlieへの2EUR.ACMEのXRP Ledger支払いを、送金手数料1%で表しています。
 
-[{% inline-svg file="/docs/img/transfer-fees.ja.svg" /%}](/docs/img/transfer-fees.ja.svg "Aliceが2,02€を送金し、Charlieが2,00€を受け取り、ACMEはXRP Ledgerで0,02€を受け取ります。")
+[{% inline-svg file="/docs/img/transfer-fees.ja.svg" /%}](/docs/img/transfer-fees.ja.svg 'Aliceが2,02€を送金し、Charlieが2,00€を受け取り、ACMEはXRP Ledgerで0,02€を受け取ります。')
 
 会計用語では、Alice、ACME、Charlieの貸借対照表はこのように変わっているでしょう。
 
-[{% inline-svg file="/docs/img/transfer-fees-balance-sheets.ja.svg" /%}](/docs/img/transfer-fees-balance-sheets.ja.svg "Aliceの資産は2,02€減少、Charlieは2,00€増加、ACMEの負債は0,02€減少。")
-
-
+[{% inline-svg file="/docs/img/transfer-fees-balance-sheets.ja.svg" /%}](/docs/img/transfer-fees-balance-sheets.ja.svg 'Aliceの資産は2,02€減少、Charlieは2,00€増加、ACMEの負債は0,02€減少。')
 
 ## ペイメントパスでの送金手数料
 
@@ -39,15 +38,13 @@ XRPは発行者が存在しないため、送金手数料がかかることは�
 
 送金手数料は、各送金においてイシュアンスが発行アカウントを通じて当事者間を移動するたびに適用されます。さらに複雑なトランザクションでは、手数料が複数回適用されます。送金手数料は、送金の終わりの時点から逆方向に適用されるので、最終的には支払いの送金者がすべての手数料をカバーするのに十分な額を送金する必要があります。例:
 
-[{% inline-svg file="/docs/img/transfer-fees-in-paths.ja.svg" /%}](/docs/img/transfer-fees-in-paths.ja.svg "手数料が適用されたクロスカレンシー支払いの図")
+[{% inline-svg file="/docs/img/transfer-fees-in-paths.ja.svg" /%}](/docs/img/transfer-fees-in-paths.ja.svg '手数料が適用されたクロスカレンシー支払いの図')
 
 このシナリオでは、ACMEが発行したEURをSalazar（送金元）が保有しており、WayGateが発行した100 USDをRosa（受取人）に送金したいと思っています。FXMakerはオーダーブックで最も良いレート（1 USD.WayGate = 0.9 EUR.ACME）のオファーを提供する通貨取引業者です。もし手数料がなければ、Salazarは90 EURを送金すればRosaに100 USDを送金することができます。しかしながら、ACMEで1%の送金手数料が発生し、WayGateで0.2%の送金手数料が発生します。つまり、次のようになります。
 
-* Rosaが100 USD.WayGateを受領するには、FXMakerから100.20 USD.WayGateを送金する必要があります。
-* 100.20 USD.WayGateを送金する場合のFXMakerの現在の買値は90.18 EUR.ACMEです。
-* FXMakerが90.18 EUR.ACMEを受領するには、Salazarが91.0818 EUR.ACMEを送金する必要があります。
-
-
+- Rosaが100 USD.WayGateを受領するには、FXMakerから100.20 USD.WayGateを送金する必要があります。
+- 100.20 USD.WayGateを送金する場合のFXMakerの現在の買値は90.18 EUR.ACMEです。
+- FXMakerが90.18 EUR.ACMEを受領するには、Salazarが91.0818 EUR.ACMEを送金する必要があります。
 
 # 技術詳細
 

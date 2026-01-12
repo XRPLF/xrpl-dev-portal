@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Create custom transactors to interact with the XRP Ledger.
+  description: Create custom transactors to interact with the XRP Ledger.
 labels:
-    - Development
-    - Blockchain
+  - Development
+  - Blockchain
 ---
+
 # Create Custom Transactors
 
 A _transactor_ is code that processes a transaction and modifies the XRP Ledger. Creating custom transactors enables you to add new functionality to `rippled`. This tutorial walks through coding transactors, but you'll have to go through the amendment process to add it to XRPL. See: [Contribute Code to the XRP Ledger](./index.md).
@@ -21,7 +22,6 @@ This tutorial uses the existing `CreateCheck` transactor as an example. You can 
 
 - [Header File](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.h)
 - [CPP File](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp)
-
 
 ## Header File
 
@@ -58,7 +58,6 @@ Initializing the transactor with `ApplyContext` gives it access to:
 - A view of the SLE.
 - A journal to log errors.
 
-
 ## CPP File
 
 ### 1. Add a `preflight` function.
@@ -68,16 +67,16 @@ The `preflight` function checks for errors in the transaction itself before acce
 - `PreflightContext` doesn't have a view of the ledger.
 - Use bracket notation to retrieve fields from ledgers and transactions:
 
-    ```
-    auto const curExpiration = (*sle*)[~sfExpiration];
-    (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
-    ```
+  ```
+  auto const curExpiration = (*sle*)[~sfExpiration];
+  (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
+  ```
 
-    {% admonition type="info" name="Note" %}The `~` symbol returns an optional type.{% /admonition %}
+  {% admonition type="info" name="Note" %}The `~` symbol returns an optional type.{% /admonition %}
 
 - You can view ledger and transaction schemas here:
-    - [`ledger_entries.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/ledger_entries.macro)
-    - [`transactions.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/transactions.macro)
+  - [`ledger_entries.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/ledger_entries.macro)
+  - [`transactions.macro`](https://github.com/XRPLF/rippled/blob/master/include/xrpl/protocol/detail/transactions.macro)
 
 - `rippled` summarizes transaction results with result codes. See: [Transaction Results](../../docs/references/protocol/transactions/transaction-results/index.md)
 
@@ -133,7 +132,6 @@ CreateCheck::preflight(PreflightContext const& ctx)
     return preflight2(ctx);
 }
 ```
-
 
 ### 2. Add a `preclaim` function.
 
@@ -226,7 +224,6 @@ CreateCheck::preclaim(PreclaimContext const& ctx)
 }
 ```
 
-
 ### 3. Add a `doApply()` function.
 
 The `doApply()` function has read/write access, enabling you to modify the ledger.
@@ -312,11 +309,9 @@ CreateCheck::doApply()
 }
 ```
 
-
 ## Additional Functions
 
 You can add more helper functions to your custom transactor as necessary. There are a few special functions that are relevant in special cases.
-
 
 ### `calculateBaseFee`
 
@@ -339,7 +334,6 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 }
 ```
 
-
 ### `makeTxConsequences`
 
 `rippled` uses a [`TxConsequences`](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/app/tx/applySteps.h#L58) class to describe the outcome to an account when applying a transaction. It tracks the fee, maximum possible XRP spent, and how many sequence numbers are consumed by the transaction. There are three types of consequences:
@@ -355,7 +349,6 @@ The `makeTxConsequences` function enables you to create custom consequences for 
 - Transactions that are normal or blockers, depending on flags or fields set.
 
 {% admonition type="info" name="Note" %}`TxConsequences` only affects the [transaction queue](../../docs/concepts/transactions/transaction-queue.md). If a transaction is likely to claim a fee when applied to the ledger, it will be broadcast to peers. If it's not likely to claim a fee, or that can't be determined, it won't be broadcast.{% /admonition %}
-
 
 ```c++
 SetAccount::makeTxConsequences(PreflightContext const& ctx)
@@ -383,7 +376,6 @@ SetAccount::makeTxConsequences(PreflightContext const& ctx)
     return TxConsequences{ctx.tx, getTxConsequencesCategory(ctx.tx)};
 }
 ```
-
 
 ## Next Steps
 

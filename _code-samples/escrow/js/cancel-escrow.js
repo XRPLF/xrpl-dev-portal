@@ -1,5 +1,5 @@
 'use strict'
-const xrpl = require('xrpl');
+const xrpl = require('xrpl')
 
 // Preqrequisites:
 // 1. Create an escrow using the create-escrow.js snippet
@@ -7,44 +7,43 @@ const xrpl = require('xrpl');
 // 3. Paste the seed of the account that created the escrow
 // 4. Run this snippet
 
-const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy"; // replace with your seed
-const sequenceNumber = 0; // replace with the sequence number of your escrow
+const seed = 'sEd7jfWyNG6J71dEojB3W9YdHp2KCjy' // replace with your seed
+const sequenceNumber = 0 // replace with the sequence number of your escrow
 
 async function main() {
   try {
     // Connect -------------------------------------------------------------------
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
-    await client.connect();
+    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+    await client.connect()
 
     // Prepare wallet to sign the transaction -------------------------------------
-    const wallet = await xrpl.Wallet.fromSeed(seed);
-    console.log("Wallet Address: ", wallet.address);
-    console.log("Seed: ", seed);
+    const wallet = await xrpl.Wallet.fromSeed(seed)
+    console.log('Wallet Address: ', wallet.address)
+    console.log('Seed: ', seed)
 
     // Construct the escrow cancel transaction ------------------------------------
 
-    if(!sequenceNumber){
-        throw new Error("Please specify the sequence number of the escrow you created");
-    };
+    if (!sequenceNumber) {
+      throw new Error('Please specify the sequence number of the escrow you created')
+    }
 
     const escrowCancelTransaction = {
-      "Account": wallet.address,
-      "TransactionType": "EscrowCancel",
-      "Owner": wallet.address,
-      "OfferSequence": sequenceNumber, // Sequence number
-    };
+      Account: wallet.address,
+      TransactionType: 'EscrowCancel',
+      Owner: wallet.address,
+      OfferSequence: sequenceNumber, // Sequence number
+    }
 
-    xrpl.validate(escrowCancelTransaction);
+    xrpl.validate(escrowCancelTransaction)
 
     // Sign and submit the transaction --------------------------------------------
-    console.log('Signing and submitting the transaction: ', JSON.stringify(escrowCancelTransaction, null,  "\t"));
-    const response  = await client.submitAndWait(escrowCancelTransaction, { wallet });
-    console.log(`Finished submitting! \n${JSON.stringify(response.result, null, "\t")}`);
+    console.log('Signing and submitting the transaction: ', JSON.stringify(escrowCancelTransaction, null, '\t'))
+    const response = await client.submitAndWait(escrowCancelTransaction, { wallet })
+    console.log(`Finished submitting! \n${JSON.stringify(response.result, null, '\t')}`)
 
-    await client.disconnect();
-
+    await client.disconnect()
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 

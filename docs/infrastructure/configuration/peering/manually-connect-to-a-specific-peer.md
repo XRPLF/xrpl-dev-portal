@@ -2,16 +2,16 @@
 html: manually-connect-to-a-specific-peer.html
 parent: configure-peering.html
 seo:
-    description: Connect your rippled server to a specific peer.
+  description: Connect your rippled server to a specific peer.
 labels:
   - Core Server
 ---
+
 # Manually Connect to a Specific Peer
 
 Use these steps to manually connect your server to a specific [peer](../../../concepts/networks-and-servers/peer-protocol.md) in the XRP Ledger network.
 
 {% admonition type="success" name="Tip" %}If you want to make sure your server automatically connects to this server on startup and remains connected later, you may want to configure a [peer reservation](use-a-peer-reservation.md) for that peer.{% /admonition %}
-
 
 ## Prerequisites
 
@@ -27,6 +27,7 @@ To connect, use the [connect method][]. For example:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
     "command": "connect",
@@ -34,9 +35,11 @@ To connect, use the [connect method][]. For example:
     "port": 51235
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {
     "method": "connect",
@@ -48,29 +51,31 @@ To connect, use the [connect method][]. For example:
     ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```
 rippled connect 169.54.2.151 51235
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
-
 ## See Also
 
 - **Concepts:**
-    - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+  - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
+  - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
-    - [Capacity Planning](../../installation/capacity-planning.md)
-    - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
+  - [Capacity Planning](../../installation/capacity-planning.md)
+  - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
 - **References:**
-    - [connect method][]
-    - [peers method][]
-    - [print method][]
-    - [server_info method][]
+  - [connect method][]
+  - [peers method][]
+  - [print method][]
+  - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

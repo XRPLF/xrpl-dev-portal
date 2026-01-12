@@ -2,7 +2,7 @@
 html: txn-and-requests.html
 parent: intro-to-xrpl.html
 seo:
-    description: Todas las interacciones con el ledger son transacciones o solicitudes.
+  description: Todas las interacciones con el ledger son transacciones o solicitudes.
 labels:
   - Blockchain
 ---
@@ -17,7 +17,7 @@ Utiliza las transacciones para realizar cambios en el ledger, como transferir XR
 
 - Siempre debes proporcionar el _TransactionType_ y la dirección pública de la _Account_ que realiza la transacción.
 
-- Dos campos obligatorios son la _Fee_ (comisión) de la transacción y el siguiente número de la  _Sequence_ (secuencia) para las transacciones de la cuenta. Estos campos se pueden completar automáticamente.
+- Dos campos obligatorios son la _Fee_ (comisión) de la transacción y el siguiente número de la _Sequence_ (secuencia) para las transacciones de la cuenta. Estos campos se pueden completar automáticamente.
 
 - Las transacciones también pueden tener campos obligatorios específicos del tipo de transacción. Por ejemplo, una transacción _Payment_ requiere un valor (cantidad) _Amount_ (en _drops_, o millonésimas de un XRP) y una dirección pública _Destination_ (destino) donde los fondos son acreditados.
 
@@ -34,7 +34,7 @@ Aquí hay un ejemplo de transacción en formato JSON. Esta transacción transfie
 
 Hay campos opcionales disponibles para todas las transacciones, con campos adicionales disponibles para transacciones específicas. Puedes incluir tantos campos opcionales como necsites, pero no es necesario incluir todos los campos en cada transacción.
 
-Puedes enviar la transacción al ledger como un comando de JavaScript, Python, línea de comandos, o cualquier servicio compatible. Los servidores rippled proponen las transacciones al XRPL. 
+Puedes enviar la transacción al ledger como un comando de JavaScript, Python, línea de comandos, o cualquier servicio compatible. Los servidores rippled proponen las transacciones al XRPL.
 
 ![Transacciones propuestas](/docs/img/introduction17-gather-txns.png)
 
@@ -110,6 +110,7 @@ La solicitud devuelve una gran cantidad de información. Aquí hay un ejemplo de
     }
 }
 ```
+
 Para obtener información sobre los campos de un registro de información de una cuenta, ver [Cuentas](../concepts/accounts/index.md).
 
 Siguiente: [Ecosistema de software](software-ecosystem.md)

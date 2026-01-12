@@ -4,23 +4,12 @@ import { Extension } from '@codemirror/state'
 
 import { Editor, EditorWrapperProps } from './editor'
 
-export const JsonEditor = ({value, onChange, readOnly, lineNumbers }: EditorWrapperProps) => {
-    const extensions: Extension[] = [
-        json()
-    ]
+export const JsonEditor = ({ value, onChange, readOnly, lineNumbers }: EditorWrapperProps) => {
+  const extensions: Extension[] = [json()]
 
-    if(!readOnly) {
-        extensions.push(
-            lintGutter(),
-            linter(jsonParseLinter())
-        )
-    }
+  if (!readOnly) {
+    extensions.push(lintGutter(), linter(jsonParseLinter()))
+  }
 
-    return <Editor
-        value={value}
-        onChange={onChange}
-        readOnly={readOnly}
-        extensions={extensions}
-        lineNumbers={lineNumbers}
-    />
+  return <Editor value={value} onChange={onChange} readOnly={readOnly} extensions={extensions} lineNumbers={lineNumbers} />
 }

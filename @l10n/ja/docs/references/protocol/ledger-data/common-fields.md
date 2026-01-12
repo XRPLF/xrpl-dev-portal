@@ -1,21 +1,22 @@
 ---
 html: ledger-entry-common-fields.html
 seo:
-    description: これらの共通フィールドは、すべてのレジャーエントリの一部です。
+  description: これらの共通フィールドは、すべてのレジャーエントリの一部です。
 ---
+
 # Ledger Entryの共通フィールド
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
 
 [レジャー](../../../concepts/ledgers/index.md)の状態データの各エントリは、同じ共通フィールドのセットと、[レジャーエントリのタイプ](ledger-entry-types/index.md)に基づく追加フィールドを持ちます。フィールド名は大文字と小文字を区別します。すべてのレジャーエントリの共通フィールドは以下の通りです。
 
-| `Field`                  | JSONの型 | [内部の型][] | 必須?  | 説明 |
-|:-------------------------|:--------|:------------|:------|:------------|
-| `index` or `LedgerIndex` | 文字列   | UInt256     | いいえ | このレジャーエントリの一意のID。JSONでは、このフィールドはコンテキストやAPIメソッドによって異なる名前で表現されます。(コード上では"任意(optional)"と指定されていますが、XRP Ledgerの歴史のごく初期からのレガシーデータでない限り、すべてのレジャーエントリは一意であるべきです)。 |
-| `LedgerEntryType`        | 文字列   | UInt16      | はい   | レジャーエントリのタイプ。有効な[レジャーエントリのタイプ](ledger-entry-types/index.md)には`AccountRoot`、`Offer`、`RippleState`などがあります。 |
-| `Flags`                  | 数値     | UInt32      | はい   | このレジャーエントリのビットフラグのセット。 |
+| `Field`                  | JSONの型 | [内部の型][] | 必須?  | 説明                                                                                                                                                                                                                                                                              |
+| :----------------------- | :------- | :----------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `index` or `LedgerIndex` | 文字列   | UInt256      | いいえ | このレジャーエントリの一意のID。JSONでは、このフィールドはコンテキストやAPIメソッドによって異なる名前で表現されます。(コード上では"任意(optional)"と指定されていますが、XRP Ledgerの歴史のごく初期からのレガシーデータでない限り、すべてのレジャーエントリは一意であるべきです)。 |
+| `LedgerEntryType`        | 文字列   | UInt16       | はい   | レジャーエントリのタイプ。有効な[レジャーエントリのタイプ](ledger-entry-types/index.md)には`AccountRoot`、`Offer`、`RippleState`などがあります。                                                                                                                                  |
+| `Flags`                  | 数値     | UInt32       | はい   | このレジャーエントリのビットフラグのセット。                                                                                                                                                                                                                                      |
 
 {% admonition type="warning" name="注意" %}JSONでは、レジャーエントリIDは`index`または`LedgerIndex`フィールドになります。これは`ledger_index`フィールドの[レジャーインデックス][]とは異なります。{% /admonition %}
-
 
 ## Ledger Entry ID
 
@@ -27,8 +28,7 @@ seo:
 
 オファーディレクトリには特別なIDがあり、ハッシュの一部がそのディレクトリ内のオファーの取引レートに置き換えられます。
 
-[{% inline-svg file="/docs/img/ledger-object-ids.ja.svg" /%}](/docs/img/ledger-object-ids.ja.svg "図: 異なるタイプのレジャーエントリのID計算。スペースキーは、異なるタイプのIDが衝突するのを防ぎます。")
-
+[{% inline-svg file="/docs/img/ledger-object-ids.ja.svg" /%}](/docs/img/ledger-object-ids.ja.svg '図: 異なるタイプのレジャーエントリのID計算。スペースキーは、異なるタイプのIDが衝突するのを防ぎます。')
 
 ## フラグ
 

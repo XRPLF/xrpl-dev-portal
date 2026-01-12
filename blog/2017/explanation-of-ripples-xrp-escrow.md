@@ -1,13 +1,14 @@
 ---
-date: "2017-12-15"
+date: '2017-12-15'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # An Explanation of Ripple’s XRP Escrow
 
 To provide additional predictability to the XRP supply, Ripple has locked 55 billion XRP (55% of the total possible supply) into a series of escrows. These escrows are on the ledger itself and the ledger mechanics, enforced by consensus, control the release of the XRP.

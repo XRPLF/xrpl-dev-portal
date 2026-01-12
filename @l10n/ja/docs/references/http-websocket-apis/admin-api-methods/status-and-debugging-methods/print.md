@@ -2,35 +2,42 @@
 html: print.html
 parent: status-and-debugging-methods.html
 seo:
-    description: さまざまな内部サブシステムの現在の状況を返します。
+  description: さまざまな内部サブシステムの現在の状況を返します。
 labels:
   - コアサーバ
 ---
+
 # print
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
 
 `print`コマンドは、さまざまな内部サブシステム（ピア、レジャークリーナー、リソースマネージャーなど）の現在の状況を返します。
 
-*`print`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。*
+_`print`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
+
 リクエストのフォーマットの例:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-   "id": "print_req_1",
-   "command": "print"
+  "id": "print_req_1",
+  "command": "print"
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 rippled print
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -44,6 +51,7 @@ rippled print
 {% tabs %}
 
 {% tab label="コマンドライン" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -229,6 +237,7 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -237,6 +246,6 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+- [汎用エラータイプ][]のすべて。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

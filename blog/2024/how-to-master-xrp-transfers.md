@@ -1,22 +1,22 @@
 ---
 category: 2024
-date: "2024-04-15"
+date: '2024-04-15'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: How to Master XRP Transfers using Python
-    description:  Discover how to create and manage accounts on the XRPL Testnet and master the art of transferring XRP using Python.
+  title: How to Master XRP Transfers using Python
+  description: Discover how to create and manage accounts on the XRPL Testnet and master the art of transferring XRP using Python.
 labels:
-    - Development
+  - Development
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # How to Master XRP Transfers using Python: A Beginner’s Guide
 
-Discover how to create and manage accounts on the XRPL [Testnet](https://xrpl.org/blog/2019/testnet-reset/#testnet-status) and master the art of transferring XRP using [Python](https://xrpl.org/docs/tutorials/python/#python). Whether you’re a budding coder or a crypto enthusiast looking to expand your skills, this tutorial is your gateway to understanding the basics of XRP transactions through a simple and interactive approach. 
+Discover how to create and manage accounts on the XRPL [Testnet](https://xrpl.org/blog/2019/testnet-reset/#testnet-status) and master the art of transferring XRP using [Python](https://xrpl.org/docs/tutorials/python/#python). Whether you’re a budding coder or a crypto enthusiast looking to expand your skills, this tutorial is your gateway to understanding the basics of XRP transactions through a simple and interactive approach.
 
 <!-- BREAK -->
-
 
 ## Getting Prepared
 
@@ -26,8 +26,7 @@ Before diving in, you’ll need to lay the groundwork. Start by creating a dedic
 pip3 install xrpl-py
 ```
 
-Next, equip yourself with the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) by downloading and expanding the archive. This treasure trove contains all the code examples you’ll be exploring. Remember, these magical scripts are your key to unlocking the potential of the XRP Ledger on the Testnet. It is worth noting that additional Python3 dependencies will be required such as [tkinter](https://docs.python.org/3/library/tkinter.html#module-tkinter). 
-
+Next, equip yourself with the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/) by downloading and expanding the archive. This treasure trove contains all the code examples you’ll be exploring. Remember, these magical scripts are your key to unlocking the potential of the XRP Ledger on the Testnet. It is worth noting that additional Python3 dependencies will be required such as [tkinter](https://docs.python.org/3/library/tkinter.html#module-tkinter).
 
 ## Initiating Test Accounts
 
@@ -58,7 +57,6 @@ Dive deeper into the realm of code with the `mod1.py` module. This script is the
 ## Building the Interface with lesson1-send-xrp.py
 
 The user interface, crafted with `Tkinter`, provides a simple and interactive way to execute transactions. It features entry fields for account details, buttons for fetching accounts and sending XRP, and text areas to display the outcomes. This script is your control panel for navigating the XRP Ledger.
-
 
 ## Embarking on Your Journey
 

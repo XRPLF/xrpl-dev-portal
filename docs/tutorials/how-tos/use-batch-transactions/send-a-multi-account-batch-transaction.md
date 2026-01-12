@@ -1,12 +1,13 @@
 ---
 seo:
-    description: Send a Batch transaction containing transactions from multiple accounts. 
+  description: Send a Batch transaction containing transactions from multiple accounts.
 metadata:
   indexPage: true
 labels:
   - Batch
   - Transactions
 ---
+
 # Send a Multi-Account Batch Transaction
 
 This tutorial shows you how to create a [Batch transaction][] containing transactions from multiple accounts, where each account must sign the `Batch` transaction. Any account, even one not involved in the inner transactions, can submit the batch.
@@ -81,13 +82,13 @@ You typically don't need to set these manually, but if you do, ensure `Fee` is s
 
 Create the `Batch` transaction and provide the inner transactions. The key fields to note are:
 
-| Field            | Value      |
-|:---------------- |:---------- |
-| TransactionType  | The type of transaction, in this case `Batch`.|
-| Account          | The wallet address of the account that is sending the `Batch` transaction. |
-| Flags            | The flags for the `Batch` transaction. For this example the transaction is configured with the `tfAllOrNothing` (0x00010000) flag to ensure that either all inner transactions succeed or they all fail atomically. See [Batch Flags](../../../references/protocol/transactions/types/batch.md#batch-flags) for other options. |
-| RawTransactions  | Contains the list of inner transactions to be applied. Must include a minimum of **2** transactions and a maximum of **8** transactions. These transactions can come from one account or multiple accounts. |
-| BatchSigners     | The list of signatures required for the `Batch` transaction. This is required because there are multiple accounts' transactions included in the batch. |
+| Field           | Value                                                                                                                                                                                                                                                                                                                          |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| TransactionType | The type of transaction, in this case `Batch`.                                                                                                                                                                                                                                                                                 |
+| Account         | The wallet address of the account that is sending the `Batch` transaction.                                                                                                                                                                                                                                                     |
+| Flags           | The flags for the `Batch` transaction. For this example the transaction is configured with the `tfAllOrNothing` (0x00010000) flag to ensure that either all inner transactions succeed or they all fail atomically. See [Batch Flags](../../../references/protocol/transactions/types/batch.md#batch-flags) for other options. |
+| RawTransactions | Contains the list of inner transactions to be applied. Must include a minimum of **2** transactions and a maximum of **8** transactions. These transactions can come from one account or multiple accounts.                                                                                                                    |
+| BatchSigners    | The list of signatures required for the `Batch` transaction. This is required because there are multiple accounts' transactions included in the batch.                                                                                                                                                                         |
 
 {% tabs %}
 {% tab label="Javascript" %}

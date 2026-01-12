@@ -1,16 +1,17 @@
 ---
 category: 2025
-date: "2025-07-24"
+date: '2025-07-24'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing Clio version 2.5.0
-    description: Version 2.5.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds new features and bug fixes.
+  title: Introducing Clio version 2.5.0
+  description: Version 2.5.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds new features and bug fixes.
 labels:
-    - Clio Release Notes
+  - Clio Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing Clio version 2.5.0
 
 Version 2.5.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds new features and bug fixes.
@@ -30,9 +31,9 @@ To check the current voting status of these amendments on Mainnet, see the [XRPL
 
 ## Install / Upgrade
 
-| Package  |
-| :------- |
-| [Clio Server Linux Release (GCC)](https://github.com/XRPLF/clio/releases/download/2.5.0/clio_server_Linux_Release_gcc.zip) |
+| Package                                                                                                                                       |
+| :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Clio Server Linux Release (GCC)](https://github.com/XRPLF/clio/releases/download/2.5.0/clio_server_Linux_Release_gcc.zip)                    |
 | [Clio Server macOS Release (Apple Clang 16)](https://github.com/XRPLF/clio/releases/download/2.5.0/clio_server_macOS_Release_apple-clang.zip) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/clio/releases/tag/2.5.0). The most recent commit in the git log should be:
@@ -105,7 +106,7 @@ See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.4.1..
 - Disabled conan uploads on schedule ([#2253](https://github.com/XRPLF/clio/pull/2253))
 - Ensured that CI image builds are not cancelled ([#2259](https://github.com/XRPLF/clio/pull/2259))
 - Pinned `lxml` dependency to version <6.0.0 ([#2269](https://github.com/XRPLF/clio/pull/2269))
-- Ensured that command injection is not allowed in GitHub workflows ([#2270](https://github.com/XRPLF/clio/pull/2270)) 
+- Ensured that command injection is not allowed in GitHub workflows ([#2270](https://github.com/XRPLF/clio/pull/2270))
 - Ensured that `package_id:confs` can only be set for sanitized builds ([#2261](https://github.com/XRPLF/clio/pull/2261))
 - Used `.contains()` method where available ([#2277](https://github.com/XRPLF/clio/pull/2277))
 - Cleaned up `fmt` headers ([#2285](https://github.com/XRPLF/clio/pull/2285))
@@ -238,13 +239,13 @@ See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.4.1..
 - Updated `fmt` to version 11.2.0 ([#2281](https://github.com/XRPLF/clio/pull/2281))
 - Updated LLVM tools to v20 ([#2278](https://github.com/XRPLF/clio/pull/2278))
 - Stopped hardcoding versions in Dockerfiles and workflows ([#2291](https://github.com/XRPLF/clio/pull/2291))
-- Added mold to tools image ([#2301](https://github.com/XRPLF/clio/pull/2301)) 
+- Added mold to tools image ([#2301](https://github.com/XRPLF/clio/pull/2301))
 - Built tools image separately for different architectures ([#2302](https://github.com/XRPLF/clio/pull/2302))
-- Bumped tools docker image version ([#2303](https://github.com/XRPLF/clio/pull/2303)) 
+- Bumped tools docker image version ([#2303](https://github.com/XRPLF/clio/pull/2303))
 - Updated conan revisions ([#2308](https://github.com/XRPLF/clio/pull/2308))
 - Removed redundant words in comment ([#2309](https://github.com/XRPLF/clio/pull/2309))
 - Unified how branches are dealt with ([#2320](https://github.com/XRPLF/clio/pull/2320))
-- Removed usage of BlockingCache due to a bug ([#2328](https://github.com/XRPLF/clio/pull/2328)) 
+- Removed usage of BlockingCache due to a bug ([#2328](https://github.com/XRPLF/clio/pull/2328))
 - Added trufflehog security tool ([#2334](https://github.com/XRPLF/clio/pull/2334))
 - Stopped hardcoding xrplf repo when building docker images ([#2336](https://github.com/XRPLF/clio/pull/2336))
 - Stopped hardcoding gcc version in ci/Dockerfile ([#2337](https://github.com/XRPLF/clio/pull/2337))

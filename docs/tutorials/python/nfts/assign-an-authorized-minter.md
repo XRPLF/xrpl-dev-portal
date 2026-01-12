@@ -2,7 +2,7 @@
 html: py-authorize-minter.html
 parent: nfts-using-python.html
 seo:
-    description: Authorize another account to mint NFTs for you.
+  description: Authorize another account to mint NFTs for you.
 labels:
   - Accounts
   - Quickstart
@@ -29,19 +29,19 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 1. Open and run `py-authorize-minter.md`.
 2. Get accounts.
-    1. If you have existing test account seeds:
-        1. Paste a seed in the **Standby Seed** field.
-        2. Click **Get Standby Account**.
-        3. Click **Get Standby Account Info**.
-        4. Paste a seed in the **Operational Seed** field.
-        5. Click **Get Operational Account**.
-        6. Click **Get Operational Account** info.
-    2. If you do not have existing test accounts:
-        1. Click **Get Standby Account**.
-        2. Click **Get Standby Account Info**.
-        3. Click **Get Operational Account**.
-        4. Click **Get Operational Account Info**.
-        
+   1. If you have existing test account seeds:
+      1. Paste a seed in the **Standby Seed** field.
+      2. Click **Get Standby Account**.
+      3. Click **Get Standby Account Info**.
+      4. Paste a seed in the **Operational Seed** field.
+      5. Click **Get Operational Account**.
+      6. Click **Get Operational Account** info.
+   2. If you do not have existing test accounts:
+      1. Click **Get Standby Account**.
+      2. Click **Get Standby Account Info**.
+      3. Click **Get Operational Account**.
+      4. Click **Get Operational Account Info**.
+
 ## Authorize an Account to Create NFTs
 
 <div align="center">
@@ -62,13 +62,13 @@ This example uses the Operational account, which was authorized in the previous 
 
 To mint a non-fungible token for another account:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_.
 2. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT. You can use the sample URI provided if you do not have one of your own.
 3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Enter a **Taxon** for the NFT. If you don't have a use for the field, set it to _0_.
-4. Copy the **Standby Account** value.
-5. Paste the **Standby Account** value in the Operational account **Issuer** field.
-6. Click the Operational account **Mint Other** button.
+5. Copy the **Standby Account** value.
+6. Paste the **Standby Account** value in the Operational account **Issuer** field.
+7. Click the Operational account **Mint Other** button.
 
 [![Minted NFT for Another Account](/docs/img/quickstart-py32.png)](/docs/img/quickstart-py32.png)
 
@@ -143,7 +143,7 @@ Define the AccountSet transaction that grants permission to another account to m
         account=granter_wallet.address,
         nftoken_minter=minter,
         set_flag=xrpl.models.transactions.AccountSetAsfFlag.ASF_AUTHORIZED_NFTOKEN_MINTER
-    )     
+    )
 ```
 
 Submit the transaction and return the results.
@@ -163,7 +163,7 @@ Submit the transaction and return the results.
 
 Get the minter wallet and instantiate a client connection to the XRP ledger.
 
-``` python
+```python
 def mint_other(seed, uri, flags, transfer_fee, taxon, issuer):
     """mint_other"""
     minter_wallet=Wallet.from_seed(seed)
@@ -705,7 +705,7 @@ lbl_operational_expiration = tk.Label(master=frm_form, text="Expiration")
 ent_operational_expiration = tk.Entry(master=frm_form, width="50")
 ```
 
-Add *Authorized Minter* and *Issuer* fields to the Operational side of the form.
+Add _Authorized Minter_ and _Issuer_ fields to the Operational side of the form.
 
 ```python
 lbl_operational_auth_minter = tk.Label(master=frm_form, text="Authorized Minter")
@@ -747,7 +747,7 @@ lbl_operational_expiration.grid(row=15, column=4, sticky="ne")
 ent_operational_expiration.grid(row=15, column=5, sticky="w")
 ```
 
-Add *Authorized Minter* and *Issuer* fields to the Operational grid.
+Add _Authorized Minter_ and _Issuer_ fields to the Operational grid.
 
 ```python
 lbl_operational_auth_minter.grid(row=16, column=4, sticky="ne")
@@ -817,7 +817,7 @@ btn_standby_cancel_offer = tk.Button(master=frm_form, text="Cancel Offer",
 btn_standby_cancel_offer.grid(row=16, column=2, sticky="nsew")
 ```
 
-Add buttons for *Set Minter* and *Mint Other* to the Standby side of the form.
+Add buttons for _Set Minter_ and _Mint Other_ to the Standby side of the form.
 
 ```python
 btn_standby_set_minter = tk.Button(master=frm_form, text="Set Minter",
@@ -881,7 +881,7 @@ btn_op_cancel_offer = tk.Button(master=frm_form, text="Cancel Offer",
 btn_op_cancel_offer.grid(row=16, column=3, sticky="nsew")
 ```
 
-Add *Set Minter* and *Mint Other* buttons to the Operational side of the form.
+Add _Set Minter_ and _Mint Other_ buttons to the Operational side of the form.
 
 ```python
 btn_op_set_minter = tk.Button(master=frm_form, text="Set Minter",

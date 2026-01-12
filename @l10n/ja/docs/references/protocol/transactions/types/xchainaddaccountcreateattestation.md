@@ -2,12 +2,14 @@
 html: xchainaddaccountcreateattestation.html
 parent: transaction-types.html
 seo:
-    description: XChainAddAccountCreateAttestationトランザクションは他のチェーンでXChainAccountCreateCommitトランザクションが発生した証明をWitnessサーバから提示します。
+  description: XChainAddAccountCreateAttestationトランザクションは他のチェーンでXChainAccountCreateCommitトランザクションが発生した証明をWitnessサーバから提示します。
 labels:
   - 相互運用性
 status: not_enabled
 ---
+
 # XChainAddAccountCreateAttestation
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L447-L464 "ソース")
 
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
@@ -19,7 +21,6 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 どのアカウントでも署名を提出することができます。
 
 {% admonition type="info" name="注記" %}報酬は現在のリストにある鍵を持っているアカウントにのみ送られます。署名者の定足数は`SignatureReward`に一致する必要があります。より大きな報酬を得ようとして、一つのWitnessサーバがこの値に不正な値を指定することはできません。{% /admonition %}
-
 
 ## XChainAddAccountCreateAttestation JSONの例
 
@@ -51,31 +52,29 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 }
 ```
 
-
 ## XChainAddAccountCreateAttestationのフィールド
 
-| フィールド                   | JSONの型     | [内部の型][]    | 必須? | 説明 |
-|:---------------------------|:-------------|:--------------|:------|:----|
-| `Amount`                   | [通貨額][]    | Amount        | はい  | `XChainAccountCreateCommit`トランザクションが送信元チェーンでCommitした金額。 |
-| `AttestationRewardAccount` | 文字列        | Account       | はい  | この署名者の`SignatureReward`を受け取るアカウント。 |
-| `AttestationSignerAccount` | 文字列        | Account       | はい  | ドアアカウントの署名者リストにある、トランザクションに署名したアカウント。 |
-| `Destination`              | 文字列        | Account       | はい  | 送信先チェーン上の資金の送金先アカウント。 |
-| `OtherChainSource`         | 文字列        | Account       | はい  | 証明に紐づくイベントをトリガーした`XChainAccountCreateCommit`トランザクションを送信した送信元チェーン上のアカウント。 |
-| `PublicKey`                | 文字列        | Blob          | はい  | 署名の検証に使用する公開鍵。 |
-| `Signature`                | 文字列        | Blob          | はい  | もう一方のチェーン上のイベントを証明する署名。 |
-| `SignatureReward`          | [通貨額][]    | Amount        | はい  | `XChainAccountCreateCommit`トランザクションで支払われた署名の報酬。 |
-| `WasLockingChainSend`      | 数値         | UInt8          | はい  | イベントが発生したチェーンを表す真偽値。 |
-| `XChainAccountCreateCount` | 文字列        | UInt64        | はい  | 請求(Claim)が処理される順序を表すカウンタ。 |
-| `XChainBridge`             | XChainBridge | XChain_Bridge | はい  | 証明に紐づくブリッジ。 |
-
+| フィールド                 | JSONの型     | [内部の型][]  | 必須? | 説明                                                                                                                  |
+| :------------------------- | :----------- | :------------ | :---- | :-------------------------------------------------------------------------------------------------------------------- |
+| `Amount`                   | [通貨額][]   | Amount        | はい  | `XChainAccountCreateCommit`トランザクションが送信元チェーンでCommitした金額。                                         |
+| `AttestationRewardAccount` | 文字列       | Account       | はい  | この署名者の`SignatureReward`を受け取るアカウント。                                                                   |
+| `AttestationSignerAccount` | 文字列       | Account       | はい  | ドアアカウントの署名者リストにある、トランザクションに署名したアカウント。                                            |
+| `Destination`              | 文字列       | Account       | はい  | 送信先チェーン上の資金の送金先アカウント。                                                                            |
+| `OtherChainSource`         | 文字列       | Account       | はい  | 証明に紐づくイベントをトリガーした`XChainAccountCreateCommit`トランザクションを送信した送信元チェーン上のアカウント。 |
+| `PublicKey`                | 文字列       | Blob          | はい  | 署名の検証に使用する公開鍵。                                                                                          |
+| `Signature`                | 文字列       | Blob          | はい  | もう一方のチェーン上のイベントを証明する署名。                                                                        |
+| `SignatureReward`          | [通貨額][]   | Amount        | はい  | `XChainAccountCreateCommit`トランザクションで支払われた署名の報酬。                                                   |
+| `WasLockingChainSend`      | 数値         | UInt8         | はい  | イベントが発生したチェーンを表す真偽値。                                                                              |
+| `XChainAccountCreateCount` | 文字列       | UInt64        | はい  | 請求(Claim)が処理される順序を表すカウンタ。                                                                           |
+| `XChainBridge`             | XChainBridge | XChain_Bridge | はい  | 証明に紐づくブリッジ。                                                                                                |
 
 ### XChainBridgeのフィールド
 
-| フィールド            | JSONの型 | [内部の型][] | 必須? | 説明 |
-|:--------------------|:---------|:-----------|:------|:----|
-| `IssuingChainDoor`  | 文字列    | Account    | はい  | 発行チェーンのドアアカウント。XRP-XRPブリッジの場合、これはジェネシスアカウント(ネットワークが最初に開始されたときに作成されるアカウントで、すべてのXRPを含む)でなければなりません。 |
-| `IssuingChainIssue` | Issue    | Issue      | はい  | 発行チェーン上で作成され、バーンされる資産。IOU-IOUブリッジの場合、供給量の問題を避けるため、資産の発行者は発行チェーンのドアアカウントでなければなりません。 |
-| `LockingChainDoor`  | 文字列    | Account    | はい  | ロックチェーンのドアアカウント。 |
-| `LockingChainIssue` | Issue    | Issue      | はい  | ロックチェーンでロック、アンロックされる資産。 |
+| フィールド          | JSONの型 | [内部の型][] | 必須? | 説明                                                                                                                                                                                 |
+| :------------------ | :------- | :----------- | :---- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `IssuingChainDoor`  | 文字列   | Account      | はい  | 発行チェーンのドアアカウント。XRP-XRPブリッジの場合、これはジェネシスアカウント(ネットワークが最初に開始されたときに作成されるアカウントで、すべてのXRPを含む)でなければなりません。 |
+| `IssuingChainIssue` | Issue    | Issue        | はい  | 発行チェーン上で作成され、バーンされる資産。IOU-IOUブリッジの場合、供給量の問題を避けるため、資産の発行者は発行チェーンのドアアカウントでなければなりません。                        |
+| `LockingChainDoor`  | 文字列   | Account      | はい  | ロックチェーンのドアアカウント。                                                                                                                                                     |
+| `LockingChainIssue` | Issue    | Issue        | はい  | ロックチェーンでロック、アンロックされる資産。                                                                                                                                       |
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

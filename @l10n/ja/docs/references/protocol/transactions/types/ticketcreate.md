@@ -2,10 +2,11 @@
 html: ticketcreate.html
 parent: transaction-types.html
 seo:
-    description: チケットとして1つ以上のシーケンス番号を確保する。
+  description: チケットとして1つ以上のシーケンス番号を確保する。
 labels:
   - Transaction Sending
 ---
+
 # TicketCreate
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateTicket.cpp "Source")
@@ -18,22 +19,23 @@ TicketCreateトランザクションは、1つまたは複数の[シーケンス
 
 ```json
 {
-    "TransactionType": "TicketCreate",
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "10",
-    "Sequence": 381,
-    "TicketCount": 10
+  "TransactionType": "TicketCreate",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Fee": "10",
+  "Sequence": 381,
+  "TicketCount": 10
 }
 ```
 
 {% tx-example txid="738AEF36B48CA4A2D85C2B74910DC34DDBBCA4C83643F2DB84A58785ED5AD3E3" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
+
 <!--{# fix md highlighting_ #}-->
 
-| フィールド         | JSONの型          | [内部の型][]       | 説明                |
-|:-----------------|:-----------------|:------------------|:-------------------|
-| `TicketCount`    | 数値              | UInt32            | 作成するチケットの枚数。これは正の数でなければならず、このトランザクションの実行の結果、アカウントが250枚以上のチケットを所有することはできません。 |
+| フィールド    | JSONの型 | [内部の型][] | 説明                                                                                                                                                |
+| :------------ | :------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TicketCount` | 数値     | UInt32       | 作成するチケットの枚数。これは正の数でなければならず、このトランザクションの実行の結果、アカウントが250枚以上のチケットを所有することはできません。 |
 
 トランザクションが要求されたチケット _全て_ を作成できない場合(250チケットの制限または[所有者準備金](../../../../concepts/accounts/reserves.md)のいずれかが原因)、失敗してチケットは作成されません。アカウントが現在所有しているチケットの数を調べるには、[account_infoメソッド][]を使用して、`account_data.TicketCount`フィールドを確認してください。
 
@@ -43,10 +45,10 @@ TicketCreateトランザクションは、1つまたは複数の[シーケンス
 
 すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/index.md)が発生する可能性があります。
 
-| エラーコード                | 説明                                              |
-|:--------------------------|:-------------------------------------------------|
-| `temINVALID_COUNT`        | TicketCount`フィールドが無効です。1から250までの整数でなければなりません。|
-| `tecDIR_FULL`             | この取引により、アカウントが一度に所有するチケットの上限である250枚を超えたり、一般的なレジャーオブジェクトの上限数を超えたりすることになります。 |
+| エラーコード              | 説明                                                                                                                                               |
+| :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `temINVALID_COUNT`        | TicketCount`フィールドが無効です。1から250までの整数でなければなりません。                                                                         |
+| `tecDIR_FULL`             | この取引により、アカウントが一度に所有するチケットの上限である250枚を超えたり、一般的なレジャーオブジェクトの上限数を超えたりすることになります。  |
 | `tecINSUFFICIENT_RESERVE` | 送信側のアカウントには、リクエストされたすべてのチケットの[所有者準備金](../../../../concepts/accounts/reserves.md)を満たすだけのXRPがありません。 |
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

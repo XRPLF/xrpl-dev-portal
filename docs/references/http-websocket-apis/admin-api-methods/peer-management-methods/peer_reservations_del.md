@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Remove a reserved slot for a specific peer server.
+  description: Remove a reserved slot for a specific peer server.
 labels:
-    - Core Server
+  - Core Server
 ---
+
 # peer_reservations_del
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
 
 The {% code-page-name /%} method removes a specific [peer reservation][], if one exists.
@@ -20,41 +22,48 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": "peer_reservations_del_example_1",
-    "command": "{% $frontmatter.seo.title %}",
-    "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+  "id": "peer_reservations_del_example_1",
+  "command": "{% $frontmatter.seo.title %}",
+  "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "{% $frontmatter.seo.title %}",
-    "params": [{
+  "method": "{% $frontmatter.seo.title %}",
+  "params": [
+    {
       "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
-    }]
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: {% $frontmatter.seo.title %} <public_key>
 rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The request includes the following parameter:
 
-| `Field`     | Type                      | Description                        |
-|:------------|:--------------------------|:-----------------------------------|
+| `Field`      | Type   | Description                                                                          |
+| :----------- | :----- | :----------------------------------------------------------------------------------- |
 | `public_key` | String | The [node public key][] of the [peer reservation][] to remove, in [base58][] format. |
-
 
 ### Response Format
 
@@ -63,6 +72,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "peer_reservations_del_example_1",
@@ -76,23 +86,27 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-  "result" : {
-    "previous" : {
-        "description" : "Ripple s1 server 'WOOL'",
-        "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+  "result": {
+    "previous": {
+      "description": "Ripple s1 server 'WOOL'",
+      "node": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
     },
-    "status" : "success"
+    "status": "success"
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -107,14 +121,15 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field` | Type   | Description                                               |
-|:--------|:-------|:----------------------------------------------------------|
+| `Field`    | Type   | Description                                                                                                                                                                                    |
+| :--------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `previous` | Object | _(May be omitted)_ A **peer reservation object** with the last state of the peer reservation before deleting it. This field is always provided if a peer reservation was successfully deleted. |
 
 {% admonition type="info" name="Note" %}If the specified reservation did not exist, this command returns success with an empty result object. In this case, the `previous` field is omitted.{% /admonition %}
@@ -124,7 +139,6 @@ The response follows the [standard format][], with a successful result containin
 If the `previous` field is provided, it shows the previous status of this peer reservation, with the following fields:
 
 {% partial file="/docs/_snippets/peer_reservation_object.md" /%}
-
 
 ### Possible Errors
 

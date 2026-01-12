@@ -149,7 +149,7 @@
     }
   }
 }
-.mt-1{
+.mt-1 {
   margin-top: 1rem;
 }
 .mt-12 {
@@ -485,21 +485,42 @@ br {
 
 // Arrow bouncing animation
 @keyframes arrowDance {
-  0% { padding-left: 7px; }
-  50% { padding-left: 14px; }
-  100% { padding-left: 7px; }
+  0% {
+    padding-left: 7px;
+  }
+  50% {
+    padding-left: 14px;
+  }
+  100% {
+    padding-left: 7px;
+  }
 }
 
 // Alt version for elements absolute-positioned to the right
 @keyframes arrowDance2 {
-  0% { right: 0; }
-  50% { right: 7px; }
-  100% { right: 0; }
+  0% {
+    right: 0;
+  }
+  50% {
+    right: 7px;
+  }
+  100% {
+    right: 0;
+  }
 }
 
 // Diagonal up-right arrow bouncing (also for absolute-positioned to the right)
 @keyframes arrowDanceDiag {
-  0% { right: 7px; margin-top: 0; }
-  50% { right: 0; margin-top: -7px; }
-  100% { right: 7px; margin-top: 0; }
+  0% {
+    right: 7px;
+    margin-top: 0;
+  }
+  50% {
+    right: 0;
+    margin-top: -7px;
+  }
+  100% {
+    right: 7px;
+    margin-top: 0;
+  }
 }

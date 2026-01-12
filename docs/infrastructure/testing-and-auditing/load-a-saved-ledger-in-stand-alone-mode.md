@@ -2,10 +2,11 @@
 html: load-a-saved-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
 seo:
-    description: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
+  description: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
 labels:
   - Core Server
 ---
+
 # Load a Saved Ledger in Stand-Alone Mode
 
 You can start a `rippled` server in [Stand-Alone Mode](../../concepts/networks-and-servers/rippled-server-modes.md) using a [historical ledger version](../../concepts/ledgers/index.md) that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](../../concepts/networks-and-servers/parallel-networks.md), you can load any ledger version your server had available.
@@ -26,9 +27,9 @@ rippled --conf=/path/to/rippled.cfg
 
 Use the [server_info method][] to check the state of your server relative to the network. Your server is synced when the `server_state` value shows any of the following values:
 
-* `full`
-* `proposing`
-* `validating`
+- `full`
+- `proposing`
+- `validating`
 
 For more information, see [Possible Server States](../../references/http-websocket-apis/api-conventions/rippled-server-states.md).
 
@@ -76,14 +77,13 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 
 This puts the transactions in canonical order and processes them to make a closed ledger.
 
-
 ## See Also
 
 - **References:**
-    - [ledger_accept method][]
-    - [server_info method][]
-    - [`rippled` Commandline Usage](../commandline-usage.md)
+  - [ledger_accept method][]
+  - [server_info method][]
+  - [`rippled` Commandline Usage](../commandline-usage.md)
 - **Use Cases:**
-    - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
+  - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

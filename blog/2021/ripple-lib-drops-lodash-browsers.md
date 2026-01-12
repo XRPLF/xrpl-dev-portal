@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-08-26"
+  editPage:
+    hide: true
+date: '2021-08-26'
 template: '../../@theme/templates/blogpost'
 labels:
-    - xrpl.js Release Notes
+  - xrpl.js Release Notes
 ---
+
 # ripple-lib Drops Lodash Requirement in Browsers
 
 [Version 1.10.0](https://github.com/ripple/ripple-lib/releases/tag/1.10.0) of ripple-lib, the JavaScript/TypeScript library for the XRP Ledger, no longer requires a separate Lodash script to run in web browsers. This change comes alongside other continued improvements in the library, improving the experience of developing applications on the XRP Ledger.
@@ -46,7 +47,7 @@ Example usage:
 ```js
 const ripple = require('ripple-lib') // Node.js only. Use a <script> tag in browsers
 async function main() {
-    const api = new ripple.RippleAPI({server: 'wss://s.altnet.rippletest.net:51233'})
+  const api = new ripple.RippleAPI({ server: 'wss://s.altnet.rippletest.net:51233' })
   await api.connect()
   const data = await api.generateFaucetWallet()
   console.log(data)

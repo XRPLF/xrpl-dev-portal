@@ -2,6 +2,7 @@
 
 <button id="generate-creds-button" class="btn btn-primary" data-fauceturl="https://faucet.altnet.rippletest.net/accounts">Testnetの暗号鍵を作成する</button>
 {% loading-icon message="暗号鍵を作成しています…" /%}
+
 <div class="output-area"></div>
 
 {% /interactive-block %}

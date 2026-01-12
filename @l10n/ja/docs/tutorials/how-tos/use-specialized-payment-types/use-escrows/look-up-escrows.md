@@ -2,11 +2,12 @@
 html: look-up-escrows.html
 parent: use-escrows.html
 seo:
-    description: 送金元または送金先のアドレスを使って保留中のEscrowを検索します。
+  description: 送金元または送金先のアドレスを使って保留中のEscrowを検索します。
 labels:
   - Escrow
   - スマートコントラクト
 ---
+
 # Escrowの検索
 
 保留中のEscrowはすべて[Escrowオブジェクト](../../../../concepts/payment-types/escrow.md)としてレジャーに保管されます。
@@ -28,7 +29,6 @@ Escrowオブジェクトを検索するには、[account_objectsメソッド][]�
 {% /tab %}
 
 {% /tabs %}
-
 
 レスポンスは以下の例のようになります。このレスポンスには、送金元アドレスまたは送金先アドレスが`rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`である保留中のEscrowオブジェクトがすべて含まれています。送金元アドレスは`Account`の値であり、送金先アドレスは`Destination`の値です。
 
@@ -61,7 +61,6 @@ Escrowオブジェクトを検索するには、[account_objectsメソッド][]�
 {% /tab %}
 
 {% /tabs %}
-
 
 レスポンスは以下の例のようになります。レスポンスには送金先アドレスまたは送金元アドレスが`rfztBskAVszuS3s5Kq7zDS74QtHrw893fm`である保留中のEscrowオブジェクトがすべて含まれています。送金先アドレスは`Destination`の値であり、送金元アドレスは`Account`の値です。
 

@@ -1,8 +1,9 @@
 ---
 seo:
-    title: Política de privacidad
-    description: Esta política describe cómo MTU XRP Ledger Trust respeta tu privacidad y detalla la recopilación, uso, y divulgación de los datos involucrados en el uso de este servicio.
+  title: Política de privacidad
+  description: Esta política describe cómo MTU XRP Ledger Trust respeta tu privacidad y detalla la recopilación, uso, y divulgación de los datos involucrados en el uso de este servicio.
 ---
+
 # Política de privacidad de XRPL.org
 
 Última actualización: 20 de enero, 2023
@@ -13,14 +14,14 @@ MTU XRP Ledger Trust (“MTU XRP Ledger Trust”, "Nosotros"", "Nuestro") respet
 
 Para los fines de esta Política de Privacidad:
 
-* _Compañía_ - (referida como "MTU XRP Ledger Trust", "Nosotros", "Nuestro" en esta política) se refiere a XRPL.org
-* _Cookies_ - son pequeños ficheros que se colocan en tu ordenador, dispositivo móvil o cualquier otro dispositivo por un sitio web, conteniendo detalles de tu historial de navegación en ese sitio web entre sus muchos usos.
-* _Dispositivo_ - significa cualquier dispositivo que puede acceder al servicio, como un ordenador, un teléfono móvil o una tablet digital.
-* _Datos personales_ - es cualquier información que se relacione con un usuario identificado o identificable.
-* _Servicio_ - se refiere a este sitio web XRPL.org.
-* _Proveedor de servicios_ - significa cualquier persona normal o jurídica que procesa los datos en nombre de MTU XRP Ledger Trust. Se refiere a tercaras compañías o individuos contratados por MTU XRP Ledger Trust para facilitar el Servicio, para proveer el Servicio en nombre de MTU XRP Ledger Trust, para realizar servicios relacionados con el Servicio o para asistir a MTU XRP Ledger Trust analizando como el Servicio es utilizado.
-* _Datos de Uso_ - se refiere a datos recopilados automáticamente, generados por el uso del Servicio o la infraestructura del Servicio en sí (por ejemplo, la duración de una página visitada).
-* _Tú_ - significa el individuo que accede o usa el Servicio, o MTU XRP Ledger Trust, u otra entidad legal en nombre de la cual dicho individuo accede al Servicio, según corresponda.
+- _Compañía_ - (referida como "MTU XRP Ledger Trust", "Nosotros", "Nuestro" en esta política) se refiere a XRPL.org
+- _Cookies_ - son pequeños ficheros que se colocan en tu ordenador, dispositivo móvil o cualquier otro dispositivo por un sitio web, conteniendo detalles de tu historial de navegación en ese sitio web entre sus muchos usos.
+- _Dispositivo_ - significa cualquier dispositivo que puede acceder al servicio, como un ordenador, un teléfono móvil o una tablet digital.
+- _Datos personales_ - es cualquier información que se relacione con un usuario identificado o identificable.
+- _Servicio_ - se refiere a este sitio web XRPL.org.
+- _Proveedor de servicios_ - significa cualquier persona normal o jurídica que procesa los datos en nombre de MTU XRP Ledger Trust. Se refiere a tercaras compañías o individuos contratados por MTU XRP Ledger Trust para facilitar el Servicio, para proveer el Servicio en nombre de MTU XRP Ledger Trust, para realizar servicios relacionados con el Servicio o para asistir a MTU XRP Ledger Trust analizando como el Servicio es utilizado.
+- _Datos de Uso_ - se refiere a datos recopilados automáticamente, generados por el uso del Servicio o la infraestructura del Servicio en sí (por ejemplo, la duración de una página visitada).
+- _Tú_ - significa el individuo que accede o usa el Servicio, o MTU XRP Ledger Trust, u otra entidad legal en nombre de la cual dicho individuo accede al Servicio, según corresponda.
 
 ## Recopilación y uso de tus datos
 
@@ -36,9 +37,9 @@ Nosotros también podemos recopilar información que Tu navegador envía cada ve
 
 Nosotros utilizamos Cookies y tecnologías de seguimiento similares para rastrear la actividad en Nuestro Servicio y almacenar cierta información. Las tecnologías de seguimiento utilizadas son beacons, tags y scripts para recopilar y rastrear información y para mejorar y analizar Nuestro Servicio. Las tecnologías que utilizamos pueden incluir:
 
-* _Cookies o Cookies del Navegador_ - Una cookie es un pequeño archivo colocado en Tu Dispositivo. Puede instruir a Tu navegador para que rechace todas las Cookies o para que te indique cuándo se envía una Cookie. Sin embargo, si Tu no aceptas Cookies, es posible que no puedas utilizar algunas partes de nuestro Servicio. A menos que hayas ajustado Tu configuración del navegador para que rechace Cookies, nuestro Servicio puede utilizar Cookies.
-* _Cookies Flash_ - Ciertas funciones de nuestro Servicio pueden utilizar objetos almacenados localmente (o Cookies Flash) para recopilar y almacenar información sobre Tus preferencias o Tu actividad en nuestro Servicio. Las Cookies Flash no son administradas por la misma configuración del navegador que se utiliza para las Cookies del Navegador.
-* _Web Beacons_ - Ciertas secciones de nuestro Servicio pueden contener pequeños archivos electrónicos conocidos como web beacons (también denominadas clear gifs, pixel tags y gifs de píxeles únicos) que permiten a la Compañía, por ejemplo, contar usuarios que han visitado esas páginas o abierto un correo electrónico y para otras estadísticas relacionadas con el sitio web (por ejemplo, registrar la popularidad de una cierta sección y verificar la integridad del sistema y del servidor).
+- _Cookies o Cookies del Navegador_ - Una cookie es un pequeño archivo colocado en Tu Dispositivo. Puede instruir a Tu navegador para que rechace todas las Cookies o para que te indique cuándo se envía una Cookie. Sin embargo, si Tu no aceptas Cookies, es posible que no puedas utilizar algunas partes de nuestro Servicio. A menos que hayas ajustado Tu configuración del navegador para que rechace Cookies, nuestro Servicio puede utilizar Cookies.
+- _Cookies Flash_ - Ciertas funciones de nuestro Servicio pueden utilizar objetos almacenados localmente (o Cookies Flash) para recopilar y almacenar información sobre Tus preferencias o Tu actividad en nuestro Servicio. Las Cookies Flash no son administradas por la misma configuración del navegador que se utiliza para las Cookies del Navegador.
+- _Web Beacons_ - Ciertas secciones de nuestro Servicio pueden contener pequeños archivos electrónicos conocidos como web beacons (también denominadas clear gifs, pixel tags y gifs de píxeles únicos) que permiten a la Compañía, por ejemplo, contar usuarios que han visitado esas páginas o abierto un correo electrónico y para otras estadísticas relacionadas con el sitio web (por ejemplo, registrar la popularidad de una cierta sección y verificar la integridad del sistema y del servidor).
 
 Las Cookies pueden ser "Persistentes" o de "Sesión". Las Cookies Persistentes permanecen en Tu computadora personal o dispositivo móvil cuando te desconectas, mientras que las Cookies de Sesión se eliminan tan pronto como cierras Tu navegador web.
 
@@ -79,11 +80,11 @@ Bajo ciertas circunstancias, La Compañía puede estar obligada a divulgar Tus D
 
 La Compañía puede divulgar Tus Datos de Uso en creencia de buena fe de que dicha accion es necesaria para:
 
-* Cumplir con una obligación legal
-* Proteger y defender los derechos y propiedades de La Compañía
-* Prevenir o investigar posibles irregularidades en relación con el Servicio
-* Proteger la seguridad personal de los Usuarios del Servicio o del público
-* Protegerse contra la responsabilidad legal
+- Cumplir con una obligación legal
+- Proteger y defender los derechos y propiedades de La Compañía
+- Prevenir o investigar posibles irregularidades en relación con el Servicio
+- Proteger la seguridad personal de los Usuarios del Servicio o del público
+- Protegerse contra la responsabilidad legal
 
 ## Seguridad de Tus Datos Personales
 

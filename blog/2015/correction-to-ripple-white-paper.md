@@ -1,13 +1,14 @@
 ---
-date: "2015-09-02"
+date: '2015-09-02'
 template: '../../@theme/templates/blogpost'
 category: 2015
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Correction to Ripple White Paper
 
 We've recently been made aware of a [paper](http://www.ghassankarame.com/ripple.pdf) discussing the possibility of forks in the Ripple system. We agree with the authors' conclusion that a fork is not possible given that the UNL overlap is greater than 40%. Unfortunately, this is different than the 20% figure stated in our [2014 white paper](https://ripple.com/consensus-whitepaper/). We apologize for the oversight and are issuing a corrected version.

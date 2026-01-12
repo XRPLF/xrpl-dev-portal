@@ -1,14 +1,15 @@
 ---
 category: 2023
-date: "2023-06-21"
+date: '2023-06-21'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
-    - Amendments
+  - rippled Release Notes
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.11.0
 
 Version 1.11.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release reduces memory usage, introduces the `fixNFTokenRemint` amendment, and adds other features and bug fixes.
@@ -23,16 +24,15 @@ The `fixNFTokenRemint` amendment is now open for voting according to the XRP Led
 
 If you operate an XRP Ledger server, upgrade to version 1.11.0 by July 5 to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                                | SHA-256                                                            |
+| :--------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.11.0-1.el7.x86_64.rpm) | `f986d28aed370bc747bff013834f4e9ed54e28885296467a5f465b32f04bebf0` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.11.0-1_amd64.deb) | `15fd0e7dd44b74cd8c8174db73f5cdbccfb2da1624db9b91c559dff62e651d4f` |
-| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.11.0-1_amd64.deb)  | `15fd0e7dd44b74cd8c8174db73f5cdbccfb2da1624db9b91c559dff62e651d4f` |
+| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds)                                     | (Use signature verification)                                       |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -42,18 +42,15 @@ Author: Elliot Lee <github.public@intelliot.com>
 Date:   Tue Jun 20 11:40:11 2023 -0700
 
     Set version to 1.11.0
-    
+
     * Add release notes
 ```
-
 
 ## New Amendment
 
 **`fixNFTokenRemint`**: Prevents an NFT with the same ID from being reminted. [#4406](https://github.com/XRPLF/rippled/pull/4406)
 
-
 ## Changelog
-
 
 ### New Features and Improvements
 
@@ -85,7 +82,6 @@ Date:   Tue Jun 20 11:40:11 2023 -0700
 
 - Added `nftoken_id`, `nftoken_ids` and `offer_id` meta fields into NFT `Tx` responses. [#4447](https://github.com/XRPLF/rippled/pull/4447)
 
-
 ### Bug Fixes
 
 - Fixed a bug in the sum totaling for `gateway_balances`. [#4355](https://github.com/XRPLF/rippled/pull/4355)
@@ -112,7 +108,6 @@ Date:   Tue Jun 20 11:40:11 2023 -0700
 
 - Fixed node size estimation. [#4536](https://github.com/XRPLF/rippled/pull/4536)
 
-
 ### Code Cleanup and Testing
 
 - Removed redundant uses of `std::move`. [#4564](https://github.com/XRPLF/rippled/pull/4565)
@@ -129,7 +124,6 @@ Date:   Tue Jun 20 11:40:11 2023 -0700
 
 - Added missing headers. [#4555](https://github.com/XRPLF/rippled/pull/4555)
 
-
 ### Docs
 
 - Added refactor build instructions. [#4381](https://github.com/XRPLF/rippled/pull/4381)
@@ -144,16 +138,13 @@ Date:   Tue Jun 20 11:40:11 2023 -0700
 
 - Added comments for NFToken-related invariants. [#4558](https://github.com/XRPLF/rippled/pull/4558)
 
-
 [Full Commit Log](https://github.com/XRPLF/rippled/compare/1.10.0...1.11.0)
-
 
 ### GitHub
 
 The public source code repository for `rippled` is hosted on GitHub at <https://github.com/XRPLF/rippled>.
 
 We welcome all contributions and invite everyone to join the community of XRP Ledger developers to help build the Internet of Value.
-
 
 ## Credits
 

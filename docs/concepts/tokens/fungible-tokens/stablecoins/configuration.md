@@ -2,24 +2,24 @@
 html: stablecoin-configuration.html
 parent: stablecoins.html
 seo:
-    description: Configure your stablecoin to fine tune its capabilities.
+  description: Configure your stablecoin to fine tune its capabilities.
 labels:
   - Tokens
 ---
+
 # Stablecoin Configuration
 
 There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see [Issue a Fungible Token](../../../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md).
 
 Settings you might want to configure include:
 
-| Setting | Notes |
-|---------|-------|
-| Default Ripple | Issuers must enable this field. |
-| Deposit Authorization | Block all incoming payments from users you haven't explicitly approved. |
-| Require Auth | Restrict your tokens to being held by users you've explicitly approved. |
-| Tick Size | Round off exchange rates in the decentralized exchange to facilitate faster price discovery. |
-| Transfer Fee | Charge a percentage fee when users send your token to each other. |
-
+| Setting               | Notes                                                                                        |
+| --------------------- | -------------------------------------------------------------------------------------------- |
+| Default Ripple        | Issuers must enable this field.                                                              |
+| Deposit Authorization | Block all incoming payments from users you haven't explicitly approved.                      |
+| Require Auth          | Restrict your tokens to being held by users you've explicitly approved.                      |
+| Tick Size             | Round off exchange rates in the decentralized exchange to facilitate faster price discovery. |
+| Transfer Fee          | Charge a percentage fee when users send your token to each other.                            |
 
 ## Default Ripple
 
@@ -28,7 +28,6 @@ The Default Ripple flag controls whether the balances on a trust line are allowe
 Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.
 
 You should _not_ enable the Default Ripple flag on other addresses, such as your operational or standby wallets.
-
 
 ## Deposit Authorization
 
@@ -43,20 +42,17 @@ Therefore, Deposit Authorization is not recommended for stablecoin issuers unles
 
 For more information, see [Deposit Authorization](../../../accounts/depositauth.md).
 
-
 ## Disallow Incoming Trust Line
 
 The Disallow Incoming Trust Line setting prevents other users from opening trust lines to an address. As a precaution, you should enable this setting on your operational and standby addresses so that those addresses cannot issue tokens even inadvertently. Do not enable this setting on your issuing address.
 
 To enable this setting, send an [AccountSet transaction](../../../../references/protocol/transactions/types/accountset.md) with `"SetFlag": 15` (`asfDisallowIncomingTrustline`).
 
-
 ## Disallow XRP
 
 The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments from addresses that aren't intended to receive and hold XRP. The Disallow XRP flag is not enforced at the protocol level, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default, but may allow users to ignore it.
 
 The Disallow XRP flag is optional, but if you don't intend to receive XRP from customers you may want to enable it on your issuing address and all your operational addresses.
-
 
 ## Require Auth
 
@@ -65,7 +61,6 @@ The Require Auth setting blocks users from holding the tokens you issue unless y
 Also, you must use your issuing address each time you authorize a trust line; if you must authorize a lot of trust lines, this can undermine the security of your issuing address because you have to use it so often. (If you only need to use the issuing address sparingly, you can put greater protections on its secret keys. The more often you use it, the more of a burden those protections become.)
 
 For more information, see [Authorized Trust Lines](../authorized-trust-lines.md).
-
 
 ## Tick Size
 
@@ -77,7 +72,6 @@ Tick Size only controls the precision of _exchange rates_, not the precision of 
 
 For more information, see [Tick Size](../../decentralized-exchange/ticksize.md).
 
-
 ## Transfer Fees
 
 A transfer fee setting charges users a percentage fee when sending your tokens to each other. The transfer fee does not apply when issuing tokens or redeeming them directly with the issuing address. (It _does_ apply when users send payments to your hot wallet.) If you issue multiple tokens from the same address, the same transfer fee applies to all of them.
@@ -87,7 +81,6 @@ When users send a token with a transfer fee, the amount of the transfer fee is d
 At a protocol level, the transfer fee is defined by the `TransferRate` account setting, which is an integer from 1 billion to 2 billion.
 
 For more information, see [Transfer Fees](../transfer-fees.md).
-
 
 ### Transfer Fees with Operational and Standby Addresses
 

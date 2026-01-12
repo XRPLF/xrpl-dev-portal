@@ -2,10 +2,11 @@
 html: offers.html
 parent: decentralized-exchange.html
 seo:
-    description: Las ofertas son la forma de órdenes de comercio de divisas del XRP Ledger. Comprende su ciclo de vida y propiedades.
+  description: Las ofertas son la forma de órdenes de comercio de divisas del XRP Ledger. Comprende su ciclo de vida y propiedades.
 labels:
   - Exchange Descentralizado
 ---
+
 # Ofertas
 
 En el [exchange descentralizado](index.md) del XRP Ledger, las órdenes de intercambio se llaman "Ofertas". Las Ofertas pueden intercambiar XRP con [tokens](../index.md), o tokens por otros tokens, incluyendo tokens con el mismo código de moneda pero diferentes emisores. (Los tokens con el mismo código pero diferentes emisores también a veces pueden intercambiarse a través de [rippling](../fungible-tokens/rippling.md).)
@@ -29,7 +30,6 @@ Mientras tengas una Oferta en el ledger, se aparta parte de tu XRP hacia la [res
 - Una Oferta **Completar o Cancelar** no se coloca en el ledger, _y_ se cancela si la cantidad total no se completa cuando se ejecuta inicialmente. Esto es similar a "Inmediata o Cancelar", excepto que _no puede_ completarse parcialmente.
 - Una Oferta **Pasiva** no consume Ofertas coincidentes que tengan el mismo tipo de cambio (en la otra dirección), y en su lugar se coloca directamente en el ledger. Puedes usar esto para crear un peg exacto entre dos activos. Las Ofertas Pasivas aún consumen otras Ofertas que tienen un tipo de cambio _mejor_ en la otra dirección.
 
-
 ### Requisitos de financiación
 
 Cuando intentas realizar una Oferta, la transacción se rechaza como "no financiada" si no tienes al menos parte del activo que la operación vendería. Más específicamente:
@@ -50,11 +50,11 @@ Si colocas una Oferta que cruza alguna de tus propias Ofertas que existen en el 
 Es posible que una Oferta se vuelva temporal o permanentemente _no financiada_ en los siguientes casos:
 
 - Si el propietario ya no tiene ningún activo de venta.
-    - La Oferta se vuelve financiada nuevamente cuando el propietario obtiene más de ese activo.
+  - La Oferta se vuelve financiada nuevamente cuando el propietario obtiene más de ese activo.
 - Si el activo en venta es un token en una [trust line congelada](../fungible-tokens/freezes.md).
-    - La Oferta se vuelve financiada nuevamente cuando la trust line ya no está congelada.
+  - La Oferta se vuelve financiada nuevamente cuando la trust line ya no está congelada.
 - Si la Oferta necesita crear una nueva trust line, pero el dueño no tiene suficiente XRP para el aumento de la [reserva](../../accounts/reserves.md). (Ver [Ofertas y confianza](#offers-and-trust).)
-    - La oferta vuelve a estar financiada cuando el propietario obtiene más XRP, o los requisitos de reserva disminuyen.
+  - La oferta vuelve a estar financiada cuando el propietario obtiene más XRP, o los requisitos de reserva disminuyen.
 - Si la Oferta ha expirado. (Ver [Expiración de ofertas](#offer-expiration).)
 
 Una Oferta no financiada permanece en el ledger hasta que una transacción la elimine. Las formas en que una Oferta puede ser eliminada del ledger incluyen:
@@ -63,14 +63,13 @@ Una Oferta no financiada permanece en el ledger hasta que una transacción la el
 - El propietario cancela explicitamente la Oferta.
 - El propietario cancela implícitamente la Oferta enviando una nueva Oferta que la cruza.
 - La Oferta es encontrada sin financiar o expirada durante el procesamiento de la transacción. Normalmente esto significa que otra Oferta intentó consumirla y no pudo hacerlo.
-    - Esto incluye casos donde la cantidad restante puede ser pagada mediante la Oferta redondeada a cero.
+  - Esto incluye casos donde la cantidad restante puede ser pagada mediante la Oferta redondeada a cero.
 
 ### Seguimiento de ofertas no financiadas
 
 Seguir el estado de financiación de todas las Ofertas puede ser computacionalmente exigente. En particular, las direcciones que están operando activamente pueden tener un gran número de Ofertas abiertas. Un solo balance puede afectar el estado de financiación de muchas Ofertas. Debido a esto, el XRP Ledger no encuentra y elimina _proactivamente_ Ofertas no financiadas o expiradas.
 
 Una aplicación de cliente puede seguir localmente el estado de financiación de las Ofertas. Para hacerlo, primero recupera un libro de órdenes utilizando el [método book_offers][] y verifica el campo `taker_gets_funded` de las Ofertas. Luego, [suscríbete](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md) al flujo de `transactions` y observa los metadatos de transacción para ver qué Ofertas se modifican.
-
 
 ## Ofertas y confianza
 
@@ -80,13 +79,11 @@ Sin embargo, mantener tokens aún requiere una trust line con el emisor. Cuando 
 
 Los límites de la trust line te protegen de recibir más de un token como pago de lo que deseas. Las Ofertas pueden superar esos límites porque son una declaración explícita de cuánto del token deseas.
 
-
 ## Preferencia de Oferta
 
 Las Ofertas existentes se agrupan por tipo de cambio, que se mide como la relación entre `TakerGets` y `TakerPays`. Las Ofertas con un tipo de cambio más alto se toman preferentemente. (Es decir, la persona que acepta la oferta recibe tanto como sea posible por la cantidad de moneda que paga). Las Ofertas con el mismo tipo de cambio se toman en función de cuál se colocó primero.
 
-Cuando las Ofertas se ejecutan en el mismo bloque del ledger, el orden en que se ejecutan se determina por el [orden canónico](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp "Código fuente: Ordenación de transacciones") en el que las transacciones fueron [aplicadas en el ledger](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Código fuente: Aplicando transacciones"). Este comportamiento está diseñado para ser determinista, eficiente y difícil de manipular.
-
+Cuando las Ofertas se ejecutan en el mismo bloque del ledger, el orden en que se ejecutan se determina por el [orden canónico](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp 'Código fuente: Ordenación de transacciones') en el que las transacciones fueron [aplicadas en el ledger](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 'Código fuente: Aplicando transacciones'). Este comportamiento está diseñado para ser determinista, eficiente y difícil de manipular.
 
 ## Caducidad de la oferta
 
@@ -98,17 +95,16 @@ Esto es una consecuencia de cómo la red alcanza un acuerdo. Para que toda la re
 
 **Nota:** Las Ofertas caducadas permanecen en los datos del ledger hasta que una transacción las elimine. Hasta entonces, pueden continuar apareciendo en los datos recuperados a través de la API (por ejemplo, utilizando el [método ledger_entry][]). Las transacciones eliminan automáticamente cualquier Oferta caducada y no financiada que encuentren, generalmente mientras ejecutan Ofertas o pagos de monedas cruzadas que las hubieran igualado o cancelado. La reserva del propietario asociada con una Oferta solo vuelve a estar disponible cuando la Oferta se elimina realmente.
 
-
 ## Ver también
 
 - **Conceptos:**
-    - [Tokens](../index.md)
-    - [Paths](../fungible-tokens/paths.md)
+  - [Tokens](../index.md)
+  - [Paths](../fungible-tokens/paths.md)
 - **Referencias:**
-    - [método account_offers][]
-    - [método book_offers][]
-    - [transacción OfferCreate][]
-    - [transacción OfferCancel][]
-    - [Objeto Offer](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
+  - [método account_offers][]
+  - [método book_offers][]
+  - [transacción OfferCreate][]
+  - [transacción OfferCancel][]
+  - [Objeto Offer](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

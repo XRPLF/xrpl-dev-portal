@@ -2,12 +2,13 @@
 html: cross-chain-bridges.html
 parent: xrpl-sidechains.html
 seo:
-    description: XRP Ledgerのクロスチェーンブリッジは、XRPや他のトークン(IOU)の価値をブロックチェーン間で効率的に移動させることを可能にします。
+  description: XRP Ledgerのクロスチェーンブリッジは、XRPや他のトークン(IOU)の価値をブロックチェーン間で効率的に移動させることを可能にします。
 status: not_enabled
 labels:
   - ブロックチェーン
   - 相互運用性
 ---
+
 # クロスチェーンブリッジ
 
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
@@ -22,7 +23,6 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 ロックチェーンと発行チェーンはともに、独立したノードとバリデータを持つ並列ネットワークとして動作します。2つのチェーン間の取引を監視し、資産が特別に指定されたアカウントに移動したことを証明するために、独立した[Witnessサーバ](witness-servers.md)を利用します。
 
-
 ## ブリッジの仕組み
 
 大まかに説明すると、ブリッジは以下のステップを通じてクロスチェーン取引を可能にします。
@@ -30,12 +30,12 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 1. 発行チェーン上にクロスチェーン請求IDを作成します。クロスチェーン請求IDは、ブロックチェーン間の1回の価値移転を表します。
 2. ロックチェーン上でコミットトランザクションを送信し、資産をドアアカウントへ送信します。このトランザクションには、クロスチェーン請求IDとWitnessサーバへの報酬が含まれます。
 
-    {% admonition type="info" name="注記" %}Witnessサーバは両方のチェーン上のトランザクションを監視します。Witnessサーバは、トランザクションが発生したことを検証するために、証明書(署名付きメッセージ)を提供します。`XChainCommit`トランザクションと`XChainAccountCreateCommit`トランザクションには証明書が含まれます。{% /admonition %}
+   {% admonition type="info" name="注記" %}Witnessサーバは両方のチェーン上のトランザクションを監視します。Witnessサーバは、トランザクションが発生したことを検証するために、証明書(署名付きメッセージ)を提供します。`XChainCommit`トランザクションと`XChainAccountCreateCommit`トランザクションには証明書が含まれます。{% /admonition %}
 
 3. Witnessサーバは、発行チェーンに対して、資産がロックチェーン上でロックされたことを証明します。
 4. 定足数に達する十分な署名があると、発行チェーン上でアセットが宛先アカウントに発行されます。
 
-    {% admonition type="info" name="注記" %}Deposit Authorizationが有効になっている場合など、いくつかのケースでは、発行チェーン上で移管された資産の請求トランザクションを提出する必要があります。{% /admonition %}
+   {% admonition type="info" name="注記" %}Deposit Authorizationが有効になっている場合など、いくつかのケースでは、発行チェーン上で移管された資産の請求トランザクションを提出する必要があります。{% /admonition %}
 
 5. 発行チェーン上のWitnessサーバのアカウントに報酬が分配されます。
 

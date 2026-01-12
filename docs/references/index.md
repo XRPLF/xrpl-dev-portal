@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Reference documentation for the XRP Ledger protocol, API methods, and more. 
+  description: Reference documentation for the XRP Ledger protocol, API methods, and more.
 ---
+
 # References
 
-The XRP Ledger References provides reference documentation for the XRP Ledger protocol, API methods, and more. 
+The XRP Ledger References provides reference documentation for the XRP Ledger protocol, API methods, and more.
 
 ## Client Libraries
 

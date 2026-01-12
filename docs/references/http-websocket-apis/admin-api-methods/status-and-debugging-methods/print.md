@@ -1,34 +1,41 @@
 ---
 seo:
-    description: Get information about internal subsystems.
+  description: Get information about internal subsystems.
 labels:
-    - Core Server
+  - Core Server
 ---
+
 # print
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Print.cpp "Source")
 
 The `print` command returns the current status of various internal subsystems, including peers, the ledger cleaner, and the resource manager.
 
-*The `print` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
+_The `print` method is an [admin method](../index.md) that cannot be run by unprivileged users!_
 
 ### Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": "print_req_1",
-    "command": "print"
+  "id": "print_req_1",
+  "command": "print"
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```
 rippled print
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -42,6 +49,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -227,6 +235,7 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -235,6 +244,6 @@ The response follows the [standard format][]. Additional fields in the result de
 
 ### Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

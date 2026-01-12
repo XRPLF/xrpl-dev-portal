@@ -2,31 +2,32 @@
 html: response-formatting.html
 parent: api-conventions.html
 seo:
-    description: WebSocket、JSON-RPC、コマンドラインインターフェイスのレスポンスのフォーマットとそのレスポンスに含まれるフィールド。
+  description: WebSocket、JSON-RPC、コマンドラインインターフェイスのレスポンスのフォーマットとそのレスポンスに含まれるフィールド。
 ---
+
 # レスポンスのフォーマット
 
 `rippled`APIからのレスポンスのフォーマットは、メソッドが呼び出されたインターフェイス（WebSocket、JSON-RPC、コマンドライン）に応じて多少異なります。コマンドラインインターフェイスがJSON-RPCを呼び出すため、コマンドラインインターフェイスとJSON-RPCインターフェイスは同じフォーマットを使用します。
 
 成功した場合のレスポンスに含まれるフィールドは、以下の通りです。
 
-| `Field`         | 型         | 説明                                            |
-|:----------------|:-----------|:------------------------------------------------|
-| `id`            | （場合により異なる） | （WebSocketのみ）このレスポンスのリクエスト元となったリクエストで指定されているID。    |
-| `status`        | 文字列      | （WebSocketのみ）値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。 |
-| `result.status` | 文字列      | （JSON-RPCおよびコマンドライン）値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。 |
-| `type`          | 文字列      | （WebSocketのみ）値が`response`の場合、コマンドに対する正常なレスポンスであることを示します。[非同期の通知](../public-api-methods/subscription-methods/subscribe.md)では、`ledgerClosed`や`transaction`など異なる値が使用されます。 |
-| `result`        | オブジェクト | クエリーの結果。内容はコマンドによって異なります。 |
-| `warning`       | 文字列      | _(省略可)_ このフィールドが存在する場合、値は文字列`load`です。これはクライアントがサーバがこのクライアントを切断する[レートリミット](rate-limiting.md)の閾値に近づいていることを意味します。 |
-| `warnings`      | 配列        | _(省略可)_ このフィールドが存在する場合、重要な警告を含む1つ以上の**Warningsオブジェクト**が含まれます。詳細については、[API警告](#apiの警告)をご覧ください。 |
-| `forwarded`     | 真偽値      | _(省略可)_ `true`の場合、このリクエストとレスポンスは[レポートモード][]サーバからP2Pモードサーバに転送されます。デフォルトは`false`です。 |
-
+| `Field`         | 型                   | 説明                                                                                                                                                                                                                                |
+| :-------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`            | （場合により異なる） | （WebSocketのみ）このレスポンスのリクエスト元となったリクエストで指定されているID。                                                                                                                                                 |
+| `status`        | 文字列               | （WebSocketのみ）値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。                                                                                                                      |
+| `result.status` | 文字列               | （JSON-RPCおよびコマンドライン）値が`success`である場合、リクエストがサーバによって正常に受信され、理解されたことを示します。                                                                                                       |
+| `type`          | 文字列               | （WebSocketのみ）値が`response`の場合、コマンドに対する正常なレスポンスであることを示します。[非同期の通知](../public-api-methods/subscription-methods/subscribe.md)では、`ledgerClosed`や`transaction`など異なる値が使用されます。 |
+| `result`        | オブジェクト         | クエリーの結果。内容はコマンドによって異なります。                                                                                                                                                                                  |
+| `warning`       | 文字列               | _(省略可)_ このフィールドが存在する場合、値は文字列`load`です。これはクライアントがサーバがこのクライアントを切断する[レートリミット](rate-limiting.md)の閾値に近づいていることを意味します。                                       |
+| `warnings`      | 配列                 | _(省略可)_ このフィールドが存在する場合、重要な警告を含む1つ以上の**Warningsオブジェクト**が含まれます。詳細については、[API警告](#apiの警告)をご覧ください。                                                                       |
+| `forwarded`     | 真偽値               | _(省略可)_ `true`の場合、このリクエストとレスポンスは[レポートモード][]サーバからP2Pモードサーバに転送されます。デフォルトは`false`です。                                                                                           |
 
 ## 成功した場合のレスポンスの例
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": 2,
@@ -48,9 +49,11 @@ seo:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 HTTP Status: 200 OK
 
@@ -72,42 +75,44 @@ HTTP Status: 200 OK
    }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```json
 {
-   "result": {
-       "account_data": {
-           "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-           "Balance": "27389517749",
-           "Flags": 0,
-           "LedgerEntryType": "AccountRoot",
-           "OwnerCount": 18,
-           "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
-           "PreviousTxnLgrSeq": 6592159,
-           "Sequence": 1400,
-           "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
-       },
-       "ledger_index": 6761012,
-       "status": "success"
-   }
+  "result": {
+    "account_data": {
+      "Account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+      "Balance": "27389517749",
+      "Flags": 0,
+      "LedgerEntryType": "AccountRoot",
+      "OwnerCount": 18,
+      "PreviousTxnID": "B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932",
+      "PreviousTxnLgrSeq": 6592159,
+      "Sequence": 1400,
+      "index": "4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"
+    },
+    "ledger_index": 6761012,
+    "status": "success"
+  }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 ## APIの警告
 
 レスポンスに`warnings`の配列が含まれる場合、その配列の各要素はサーバからの個別の警告を表します。このような**警告オブジェクト**はそれぞれ以下のフィールドを含みます：
 
-| フィールド  | 型         | 説明                                                     |
-|:----------|:-----------|:--------------------------------------------------------|
-| `id`      | 数値        | この警告メッセージの一意の数値コード。                        |
-| `message` | 文字列      | このメッセージの原因を説明する人間が読める文字列。このメッセージの内容に依存するようなソフトウェアを書かないでください。代わりに`id`(および`details`(もしあれば))を使って警告を識別してください。 |
-| `details` | オブジェクト | _(省略可)_ この警告に関する追加情報。内容は警告の種類によって異なります。 |
+| フィールド | 型           | 説明                                                                                                                                                                                              |
+| :--------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`       | 数値         | この警告メッセージの一意の数値コード。                                                                                                                                                            |
+| `message`  | 文字列       | このメッセージの原因を説明する人間が読める文字列。このメッセージの内容に依存するようなソフトウェアを書かないでください。代わりに`id`(および`details`(もしあれば))を使って警告を識別してください。 |
+| `details`  | オブジェクト | _(省略可)_ この警告に関する追加情報。内容は警告の種類によって異なります。                                                                                                                         |
 
 以下の資料では、考えられるすべての警告について説明しています。
 
@@ -134,13 +139,12 @@ HTTP Status: 200 OK
 
 この警告には、以下のフィールドを含む`details`フィールドが含まれます。
 
-| フィールド            | 型     | 説明                                           |
-|:--------------------|:-------|:----------------------------------------------|
-| `expected_date`     | 数値    | サポートされていない最初のAmendmentが有効になると予想される時刻([Rippleエポック以降の経過秒数][])。|
-| `expected_date_UTC` | 文字列  | サポートされていない最初のAmendmentが有効になると予想される時刻(UTCでのタイムスタンプ)。 |
+| フィールド          | 型     | 説明                                                                                                |
+| :------------------ | :----- | :-------------------------------------------------------------------------------------------------- |
+| `expected_date`     | 数値   | サポートされていない最初のAmendmentが有効になると予想される時刻([Rippleエポック以降の経過秒数][])。 |
+| `expected_date_UTC` | 文字列 | サポートされていない最初のAmendmentが有効になると予想される時刻(UTCでのタイムスタンプ)。            |
 
 レジャーのクローズ時間の変動により、これらはおおよその時刻となります。また、指定された時刻までにAmendmentが80%以上のバリデータからサポートされ続けない場合、Amendmentが有効にならず、期待された時刻にAmendmentが有効にならない可能性があります。サポートされていないAmendmentが有効にならない限り、サーバはAmendmentブロックされません。
-
 
 ### 1002. This server is amendment blocked
 
@@ -178,21 +182,20 @@ HTTP Status: 200 OK
 
 {% admonition type="warning" name="注意" %}レポートモードで検証されていないデータをリクエストする場合、明示的に[レジャーバージョンを指定][レジャーの指定]しない限り、レポートモードはデフォルトで最新の検証済みレジャーを使用します。{% /admonition %}
 
-
 ## 関連項目
 
 - [リクエストのフォーマット](request-formatting.md)
 - [エラーのフォーマット](error-formatting.md): APIレスポンスの失敗
 - **コンセプト:**
-    - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
-    - [コンセンサス](../../../concepts/consensus-protocol/index.md)
-    - [Amendment](../../../concepts/networks-and-servers/amendments.md)
-        - [既知のAmendment](/resources/known-amendments.md)
+  - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
+  - [コンセンサス](../../../concepts/consensus-protocol/index.md)
+  - [Amendment](../../../concepts/networks-and-servers/amendments.md)
+    - [既知のAmendment](/resources/known-amendments.md)
 - **チュートリアル:**
-    - [XRP LedgerのAPIを触ってみよう](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
-    - [`rippled`のインストールと更新](../../../infrastructure/installation/index.md)
+  - [XRP LedgerのAPIを触ってみよう](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
+  - [`rippled`のインストールと更新](../../../infrastructure/installation/index.md)
 - **リファレンス:**
-    - [featureメソッド][]
-    - [server_infoメソッド][]
+  - [featureメソッド][]
+  - [server_infoメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

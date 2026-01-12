@@ -1,10 +1,12 @@
 ---
 seo:
-    description: あらゆる種類のトランザクションを仮実行して、結果とメタデータをプレビューします。
+  description: あらゆる種類のトランザクションを仮実行して、結果とメタデータをプレビューします。
 labels:
   - トランザクション送信
 ---
+
 # simulate
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Simulate.cpp "ソース")
 
 `simulate` メソッドは、あらゆる トランザクションを仮実行し、XRP Ledger に反映することなく、その結果やメタデータを事前に確認できます。このコマンドはネットワークにトランザクションを送信しないため、手数料は発生しません。
@@ -13,7 +15,6 @@ labels:
 `simulate` メソッドの結果は、実際にトランザクションを送信したときと同じになるとは限りません。これは、トランザクションの処理に影響する台帳の状態が、シミュレーションと送信の間に変化する可能性があるためです。
 {% /admonition %}
 
-
 ## リクエストのフォーマット
 
 リクエストのフォーマットの例:
@@ -21,42 +22,46 @@ labels:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": 2,
-    "command": "simulate",
-    "tx_json" : {
-        "TransactionType" : "Payment",
-        "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "Amount" : {
-            "currency" : "USD",
-            "value" : "1",
-            "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-        }
+  "id": 2,
+  "command": "simulate",
+  "tx_json": {
+    "TransactionType": "Payment",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Amount": {
+      "currency": "USD",
+      "value": "1",
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
     }
+  }
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "simulate",
-    "params": {
-        "tx_json" : {
-            "TransactionType" : "Payment",
-            "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-            "Amount" : {
-                "currency" : "USD",
-                "value" : "1",
-                "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-            }
-        }
+  "method": "simulate",
+  "params": {
+    "tx_json": {
+      "TransactionType": "Payment",
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Amount": {
+        "currency": "USD",
+        "value": "1",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+      }
     }
+  }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -65,11 +70,11 @@ labels:
 
 リクエストには以下のパラメーターが含まれます。
 
-| フィールド     | 型    | 必須? | 説明                                                                                                                                                              |
-| --------- | ------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `tx_blob` | 文字列  | はい       | シミュレーション対象のトランザクションを[バイナリフォーマット](https://xrpl.org/ja/docs/references/protocol/binary-format)で指定します。このフィールドを使用する場合、`tx_json`は同時に指定しないでください。      |
-| `tx_json` | オブジェクト  | はい       | シミュレーション対象のトランザクションをJSON形式で指定します。このフィールドを使用する場合は、`tx_blob`を同時に指定しないでください。                                                                   |
-| `binary`  | ブール値 | いいえ        | デフォルト値は`false`であり、この場合はデータとメタデータがJSON形式で返されます。`true`を指定すると、データとメタデータはバイナリフォーマットで返され、16進文字列としてシリアライズされます。 |
+| フィールド | 型           | 必須?  | 説明                                                                                                                                                                                                          |
+| ---------- | ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tx_blob`  | 文字列       | はい   | シミュレーション対象のトランザクションを[バイナリフォーマット](https://xrpl.org/ja/docs/references/protocol/binary-format)で指定します。このフィールドを使用する場合、`tx_json`は同時に指定しないでください。 |
+| `tx_json`  | オブジェクト | はい   | シミュレーション対象のトランザクションをJSON形式で指定します。このフィールドを使用する場合は、`tx_blob`を同時に指定しないでください。                                                                         |
+| `binary`   | ブール値     | いいえ | デフォルト値は`false`であり、この場合はデータとメタデータがJSON形式で返されます。`true`を指定すると、データとメタデータはバイナリフォーマットで返され、16進文字列としてシリアライズされます。                 |
 
 - シミュレーションで使用するトランザクションは、未署名でなければなりません。
 - `Fee`、`Sequence`、`SigningPubKey`、または`NetworkID`フィールドが指定されている場合、それらはトランザクションに使用されます。指定されていない場合は、サーバーが自動的に補完します。
@@ -175,18 +180,17 @@ labels:
 
 レスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
-| フィールド          | 型   | 説明 |
-| -------------- | ------ | ----------- |
-| `tx_json`      | オブジェクト | 自動補完された値を含む、シミュレーションされたトランザクション。`binary`が`false`の場合に含まれます。 |
-| `tx_blob`      | 文字列 | 自動補完された値を含む、シリアライズされたシミュレーションされたトランザクション。`binary`が`true`の場合に含まれます。 |
-| `ledger_index` | [レジャーインデックス](https://xrpl.org/ja/docs/references/protocol/data-types/basic-data-types#レジャーインデックス) | このトランザクションが含まれていたであろうレジャーインデックス。 |
-| `meta`         | オブジェクト | トランザクションの結果を示すメタデータ。台帳に含まれないことを意味するコード（たとえば TEC 以外のコード）でトランザクションが失敗した場合は含まれません。`binary`が`false`の場合に含まれます。 |
-| `meta_blob`    | 文字列 | トランザクションの結果を示すメタデータ。台帳に含まれないことを意味するコード（たとえば TEC 以外のコード）でトランザクションが失敗した場合は含まれません。`binary`が`true`の場合に含まれます。 |
-
+| フィールド     | 型                                                                                                                    | 説明                                                                                                                                                                                           |
+| -------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tx_json`      | オブジェクト                                                                                                          | 自動補完された値を含む、シミュレーションされたトランザクション。`binary`が`false`の場合に含まれます。                                                                                          |
+| `tx_blob`      | 文字列                                                                                                                | 自動補完された値を含む、シリアライズされたシミュレーションされたトランザクション。`binary`が`true`の場合に含まれます。                                                                         |
+| `ledger_index` | [レジャーインデックス](https://xrpl.org/ja/docs/references/protocol/data-types/basic-data-types#レジャーインデックス) | このトランザクションが含まれていたであろうレジャーインデックス。                                                                                                                               |
+| `meta`         | オブジェクト                                                                                                          | トランザクションの結果を示すメタデータ。台帳に含まれないことを意味するコード（たとえば TEC 以外のコード）でトランザクションが失敗した場合は含まれません。`binary`が`false`の場合に含まれます。 |
+| `meta_blob`    | 文字列                                                                                                                | トランザクションの結果を示すメタデータ。台帳に含まれないことを意味するコード（たとえば TEC 以外のコード）でトランザクションが失敗した場合は含まれません。`binary`が`true`の場合に含まれます。  |
 
 ## 考えられるエラー
 
-* `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `transactionSigned` - トランザクションが署名済みです。シミュレーションで使用するトランザクションは、未署名でなければなりません。
+- `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
+- `transactionSigned` - トランザクションが署名済みです。シミュレーションで使用するトランザクションは、未署名でなければなりません。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

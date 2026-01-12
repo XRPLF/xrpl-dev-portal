@@ -1,14 +1,15 @@
 ---
 category: 2022
-date: "2022-12-13"
+date: '2022-12-13'
 template: '../../@theme/templates/blogpost'
 labels:
-    - xrpl-py Release Notes
+  - xrpl-py Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 author: Team RippleX
 ---
+
 # Introducing xrpl-py version 2.0.0-beta.0
 
 Today, [RippleX](https://ripple.com/ripplex/) and the [XRP Ledger Foundation (XRPLF)](https://xrpl.foundation) are proud to present **xrpl-py version 2.0.0-beta.0**. This beta version introduces three new ways to generate wallets, regular key support, and some breaking changes to the `Wallet` class.
@@ -19,9 +20,9 @@ Today, [RippleX](https://ripple.com/ripplex/) and the [XRP Ledger Foundation (XR
 
 The three main breaking changes made in this update are:
 
- - The sequence field has been removed from the `Wallet` class
- - Seed generation now uses hex strings instead of UTF-8 strings
- - `Wallet` class methods now use the Ed25519 algorithm by default.
+- The sequence field has been removed from the `Wallet` class
+- Seed generation now uses hex strings instead of UTF-8 strings
+- `Wallet` class methods now use the Ed25519 algorithm by default.
 
 The `Wallet` class previously included a sequence field to make sending transactions easier. In practice, it made things harder. You usually don't know the sequence number when you create a `Wallet` instance, and you needed to manually increment the number after each transaction. It is safer to get the sequence number from the ledger, the real source of truth, when you auto-fill transactions.
 
@@ -29,28 +30,27 @@ Generating seeds from an entropy string now takes in hex strings instead of UTF-
 
 Lastly, when you initialize a `Wallet` from a seed without specifying an algorithm, the library now uses Ed25519 by default since it has better performance and other convenient properties compared to the secp256k1 algorithm. Previously xrpl-py would try to interpret the algorithm from the seed. To use the old encoding, you can specify `algorithm=secp256k1` when initializing a `Wallet` object.
 
-
 ## Breaking Changes
 
 `Wallet` Class
 
-* Removed `sequence` field
-* Changed constructor to take in public and private key as required parameters
-* Changed class methods to use the Ed25519 cryptographic algorithm by default
-* Changed `address` and `classic_address` fields to read only
+- Removed `sequence` field
+- Changed constructor to take in public and private key as required parameters
+- Changed class methods to use the Ed25519 cryptographic algorithm by default
+- Changed `address` and `classic_address` fields to read only
 
 Core Keypairs
 
-* Changed the `generate_seed` method to take a hex string instead of a UTF-8 string
-* Ed25519 key string is formatted with padded zeros if length is less than 32 bytes
+- Changed the `generate_seed` method to take a hex string instead of a UTF-8 string
+- Ed25519 key string is formatted with padded zeros if length is less than 32 bytes
 
 ## New Features
 
 `Wallet` Class
 
-* Added methods to generate wallet from seed/secret, entropy, and XLS-12 secret numbers
-* Added support for regular key pairs
-* Added the field `address` which is an alias for `classic_address`
+- Added methods to generate wallet from seed/secret, entropy, and XLS-12 secret numbers
+- Added support for regular key pairs
+- Added the field `address` which is an alias for `classic_address`
 
 ## How to Migrate
 
@@ -86,6 +86,7 @@ OfferCancel(
 DUMMY_BYTES = b"\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10"
 seed = generate_seed(DUMMY_BYTES.decode("UTF-8"))
 ```
+
 **After:**
 
 ```python

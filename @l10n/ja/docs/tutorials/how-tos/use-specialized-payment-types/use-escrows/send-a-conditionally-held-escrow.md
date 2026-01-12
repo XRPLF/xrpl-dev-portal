@@ -2,11 +2,12 @@
 html: send-a-conditionally-held-escrow.html
 parent: use-escrows.html
 seo:
-    description: 満たされた条件に基づいてリリースとなるEscrowを作成します。
+  description: 満たされた条件に基づいてリリースとなるEscrowを作成します。
 labels:
   - Escrow
   - スマートコントラクト
 ---
+
 # 条件に基づくEscrowの送信
 
 ## 1.条件とフルフィルメントの生成
@@ -38,7 +39,6 @@ console.log('Fulfillment:', fulfillment)
 
 後で使用できるように条件とフルフィルメントを保存します。保留中の支払いの実行が完了するまでは、フルフィルメントを公開しないでください。フルフィルメントを知っていれば誰でもEscrowを終了でき、保留中の資金を指定された送金先にリリースできます。
 
-
 ## 2.リリース時刻または取消し時刻の計算
 
 条件付き`Escrow`トランザクションには、`CancelAfter`フィールドと`FinishAfter`フィールドのいずれか、または両方が含まれている必要があります。`CancelAfter`フィールドを使用すると、指定の時刻までに条件を満たすことができなかった場合に送金元へXRPを返金できます。`FinishAfter`フィールドに指定される時刻より前の時間は、正しいフルフィルメントが送信されてもEscrowを実行できません。いずれのフィールドでも、将来の時刻を指定する必要があります。
@@ -48,15 +48,18 @@ console.log('Fulfillment:', fulfillment)
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const rippleOffset = 946684800
-const CancelAfter = Math.floor(Date.now() / 1000) + (24*60*60) - rippleOffset
+const CancelAfter = Math.floor(Date.now() / 1000) + 24 * 60 * 60 - rippleOffset
 console.log(CancelAfter)
 // Example:556927412
 ```
+
 {% /tab %}
 
 {% tab label="Python 2/3" %}
+
 ```python
 from time import time
 ripple_offset = 946684800
@@ -64,6 +67,7 @@ cancel_after = int(time()) + (24*60*60) - 946684800
 print(cancel_after)
 # Example: 556927412
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -74,7 +78,7 @@ print(cancel_after)
 
 [EscrowCreateトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Condition`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。前の手順で算出した`CancelAfter`または`FinishAfter`の時刻も指定します。`Amount`を、Escrowする[XRPのdrop数][]の合計額に設定します。
 
-{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 リクエスト:
 
@@ -98,7 +102,7 @@ print(cancel_after)
 
 ## 4.検証の待機
 
-{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%}
 
 ## 5.Escrowが作成されたことの確認
 
@@ -132,7 +136,7 @@ print(cancel_after)
 
 Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired-escrow.md)だけが可能です。
 
-{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 {% tabs %}
 
@@ -156,7 +160,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 ## 7.検証の待機
 
-{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/wait-for-validation.md" /%}
 
 ## 8.最終結果の確認
 

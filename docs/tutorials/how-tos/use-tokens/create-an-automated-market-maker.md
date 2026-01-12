@@ -1,15 +1,16 @@
 ---
 seo:
-    description: Set up an Automated Market Maker (AMM)
+  description: Set up an Automated Market Maker (AMM)
 embed_xrpl_js: true
 filters:
   - interactive_steps
 labels:
-    - Decentralized Exchange
-    - Tokens
-    - AMM
+  - Decentralized Exchange
+  - Tokens
+  - AMM
 steps: ['Connect', 'Generate', 'Acquire tokens', 'Check for AMM', 'Look up AMMCreate cost', 'Create AMM', 'Check AMM info', 'Check trust lines']
 ---
+
 # Create an Automated Market Maker
 
 An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
@@ -24,18 +25,16 @@ An [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchang
 
 - You must have an XRP Ledger address and some XRP. For development and testing purposes, you can get these from a [Faucet](/resources/dev-tools/xrp-faucets).
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.11.0 or later**. See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
-    - You can also read along and use the interactive steps in your browser without any setup.
+  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.11.0 or later**. See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+  - You can also read along and use the interactive steps in your browser without any setup.
 - You should have a basic understanding of how [tokens](../../../concepts/tokens/index.md) work in the XRP Ledger.
 - You may want to read about [Automated Market Makers in the XRP Ledger](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) first.
-
 
 ## Example Code
 
 Complete sample code for all of the steps of these tutorials is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
 
 - See [Code Samples: Create an AMM](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/create-amm/) in the source repository for this website.
-
 
 ## Steps
 
@@ -70,7 +69,6 @@ When you're building production-ready software, you should use an existing accou
 {% /tab %}
 
 {% /tabs %}
-
 
 ### 3. Select and acquire assets
 
@@ -159,17 +157,16 @@ It is also a good practice to display this value and give a human operator a cha
 
 {% /interactive-block %}
 
-
 ### 6. Send AMMCreate transaction
 
 Send an [AMMCreate transaction][] to create the AMM. Important aspects of this transaction include:
 
-| Field | Value | Description |
-|-------|--------|-------------|
-| `Asset` | [Currency Amount][] | Starting amount of one asset to deposit in the AMM. |
-| `Asset2` | [Currency Amount][] | Starting amount of the other asset to deposit in the AMM. |
-| `TradingFee` | Number | The fee to charge when trading against this AMM instance. The maximum value is `1000`, meaning a 1% fee; the minimum value is `0`. If you set this too high, it may be too expensive for users to trade against the AMM; but the lower you set it, the more you expose yourself to currency risk from the AMM's assets changing in value relative to one another. |
-| `Fee` | String - XRP Amount | The transaction cost you looked up in a previous step. Client libraries may require that you add a special exception or reconfigure a setting to specify a `Fee` value this high. |
+| Field        | Value               | Description                                                                                                                                                                                                                                                                                                                                                       |
+| ------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Asset`      | [Currency Amount][] | Starting amount of one asset to deposit in the AMM.                                                                                                                                                                                                                                                                                                               |
+| `Asset2`     | [Currency Amount][] | Starting amount of the other asset to deposit in the AMM.                                                                                                                                                                                                                                                                                                         |
+| `TradingFee` | Number              | The fee to charge when trading against this AMM instance. The maximum value is `1000`, meaning a 1% fee; the minimum value is `0`. If you set this too high, it may be too expensive for users to trade against the AMM; but the lower you set it, the more you expose yourself to currency risk from the AMM's assets changing in value relative to one another. |
+| `Fee`        | String - XRP Amount | The transaction cost you looked up in a previous step. Client libraries may require that you add a special exception or reconfigure a setting to specify a `Fee` value this high.                                                                                                                                                                                 |
 
 For the two starting assets, it does not matter which is `Asset` and which is `Asset2`, but you should specify amounts that are about equal in total value, because otherwise other users can profit at your expense by trading against the AMM.
 
@@ -248,7 +245,7 @@ Initially, the AMM's total outstanding LP Tokens, reported in the `lp_token` fie
 
 {% /interactive-block %}
 
-###  8. Check trust lines
+### 8. Check trust lines
 
 You can also use the [account_lines method][] to get an updated view of your token balances. Your balances should be decreased by the amounts you deposited, but you now have a balance of LP Tokens that you received from the AMM.
 
@@ -273,7 +270,6 @@ The `account_lines` response shows only the tokens held by the account you looke
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ## Next Steps
 

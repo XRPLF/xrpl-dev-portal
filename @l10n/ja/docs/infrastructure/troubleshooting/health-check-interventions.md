@@ -2,10 +2,11 @@
 html: health-check-interventions.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: 自動化されたインフラ監視の一環として、rippledサーバのヘルスチェックを使用します。
+  description: 自動化されたインフラ監視の一環として、rippledサーバのヘルスチェックを使用します。
 labels:
   - コアサーバ
 ---
+
 # ヘルスチェックの導入
 
 [Health Checkメソッド](../../references/http-websocket-apis/peer-port-methods/health-check.md)は、自動監視によって`rippled`サーバが正常でないことを認識し、サーバの再起動や人間の管理者への警告などの介入を促すために利用することができます。
@@ -41,13 +42,11 @@ labels:
 - [ネットワークの調査](#ネットワークの調査): 問題が他の場所で発生した場合のためにネットワークを調査します。
 - [ハードウェアの交換](#ハードウェアの交換)
 
-
 ### トラフィックのリダイレクト
 
 一般的な信頼性のためのテクニックは、1つ以上の負荷分散プロキシを通して冗長なサーバのプールを実行することです。これは`rippled`サーバではできますが、[バリデータ](../../concepts/networks-and-servers/rippled-server-modes.md)ではすべきではありません。場合によっては、ロードバランサはプール内のサーバの健全性を監視し、現在健全であると報告しているサーバだけにトラフィックを向けることができます。これにより、サーバは一時的な過負荷から回復し、自動的にアクティブなサーバのプールに戻ることができます。
 
 特に`health`ステータスが`warning`と表示されたサーバに対しては、不健全なサーバからトラフィックをリダイレクトすることが適切な対応です。`critical`の範囲にあるサーバはより重要な介入が必要かもしれません。
-
 
 ### 再起動
 
@@ -68,7 +67,6 @@ $ sudo systemctl restart rippled.service
 
 **注意n:** サーバの起動後、ネットワークへの同期には通常最大15分を要します。この間、ヘルスチェックはcriticalまたはwarningステータスを報告する可能性があります。自動化システムでは、サーバを再起動する前に、同期に十分な時間をかける必要があります。
 
-
 ### 更新
 
 サーバがヘルスチェックで`"amendment_blocked": true`と報告した場合、これはXRP Ledgerがサーバが理解できない[プロトコルの修正(Amendment)](../../concepts/networks-and-servers/amendments.md)を有効にしたことを示しています。ネットワークの改訂されたルールを誤って解釈して損害を被らないようにするため、このようなサーバは正常に動作する代わりに"amendment blocked(Amendmentブロック)"となります。
@@ -76,7 +74,6 @@ $ sudo systemctl restart rippled.service
 Amendmentブロックを解消するには、[サーバをアップデート](../installation/index.md)して、Amendmentプログラムを理解できる新しいバージョンのソフトウェアにしてください。
 
 また、ソフトウェアのバグによってサーバが[同期できない](server-doesnt-sync.md)状態になることもあります。この場合、`server_state`メトリクスはwarningまたはcriticalな状態になっている可能性があります。最新の安定版リリースを使用していない場合は、アップグレードして、この問題を引き起こす可能性のある既知の問題に対する最新の修正を入手してください。
-
 
 ### ネットワークの調査
 
@@ -92,8 +89,6 @@ Amendmentブロックを解消するには、[サーバをアップデート](..
 - ネットワークインターフェース、スイッチ、ルーター、ケーブルの再起動または交換
 - 他のネットワークサービスプロバイダーに連絡して、そのプロバイダー側での問題の解決
 
-
-
 ### ハードウェアの交換
 
 ハードウェアの故障や、ハードウェアの処理能力を超える高負荷が原因で障害が発生した場合、コンポーネントの交換やサーバ全体の交換が必要になることがあります。
@@ -105,12 +100,6 @@ XRP Ledgerのサーバにかかる負荷の量は、ネットワークのトラ�
 - `load_factor`
 - `server_state`
 - `validated_ledger`
-
-
-
-
-
-
 
 [metrics]: ../../references/http-websocket-apis/peer-port-methods/health-check.md#レスポンスのフォーマット
 

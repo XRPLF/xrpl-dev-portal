@@ -1,9 +1,4 @@
-import {
-  MPTokenIssuanceCreateFlags,
-  Client,
-  encodeMPTokenMetadata,
-  decodeMPTokenMetadata
-} from 'xrpl'
+import { MPTokenIssuanceCreateFlags, Client, encodeMPTokenMetadata, decodeMPTokenMetadata } from 'xrpl'
 
 // Connect to network and get a wallet
 const client = new Client('wss://s.devnet.rippletest.net:51233')
@@ -26,21 +21,21 @@ const mptMetadata = {
     {
       uri: 'https://exampleyield.co/tbill',
       category: 'website',
-      title: 'Product Page'
+      title: 'Product Page',
     },
     {
       uri: 'https://exampleyield.co/docs',
       category: 'docs',
-      title: 'Yield Token Docs'
-    }
+      title: 'Yield Token Docs',
+    },
   ],
   additional_info: {
     interest_rate: '5.00%',
     interest_type: 'variable',
     yield_source: 'U.S. Treasury Bills',
     maturity_date: '2045-06-30',
-    cusip: '912796RX0'
-  }
+    cusip: '912796RX0',
+  },
 }
 
 // Encode the metadata.
@@ -59,10 +54,8 @@ const mptIssuanceCreate = {
   AssetScale: 4,
   MaximumAmount: '50000000',
   TransferFee: 0,
-  Flags:
-    MPTokenIssuanceCreateFlags.tfMPTCanTransfer |
-    MPTokenIssuanceCreateFlags.tfMPTCanTrade,
-  MPTokenMetadata: mptMetadataHex
+  Flags: MPTokenIssuanceCreateFlags.tfMPTCanTransfer | MPTokenIssuanceCreateFlags.tfMPTCanTrade,
+  MPTokenMetadata: mptMetadataHex,
 }
 
 // Sign and submit the transaction
@@ -70,7 +63,7 @@ console.log('\n=== Sending MPTokenIssuanceCreate transaction...===')
 console.log(JSON.stringify(mptIssuanceCreate, null, 2))
 const submitResponse = await client.submitAndWait(mptIssuanceCreate, {
   wallet: issuer,
-  autofill: true
+  autofill: true,
 })
 
 // Check transaction results
@@ -84,9 +77,7 @@ if (submitResponse.result.meta.TransactionResult !== 'tesSUCCESS') {
 }
 
 const issuanceId = submitResponse.result.meta.mpt_issuance_id
-console.log(
-  `\n- MPToken created successfully with issuance ID: ${issuanceId}`
-)
+console.log(`\n- MPToken created successfully with issuance ID: ${issuanceId}`)
 // View the MPT issuance on the XRPL Explorer
 console.log(`- Explorer URL: https://devnet.xrpl.org/mpt/${issuanceId}`)
 
@@ -95,7 +86,7 @@ console.log('\n=== Confirming MPT Issuance metadata in the validated ledger... =
 const ledgerEntryResponse = await client.request({
   command: 'ledger_entry',
   mpt_issuance: issuanceId,
-  ledger_index: 'validated'
+  ledger_index: 'validated',
 })
 
 // Decode the metadata.

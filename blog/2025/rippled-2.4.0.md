@@ -1,16 +1,17 @@
 ---
 category: 2025
-date: "2025-03-06"
+date: '2025-03-06'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 2.4.0
-    description: rippled version 2.4.0 is now available. This version introduces new features and stability fixes.
+  title: Introducing XRP Ledger version 2.4.0
+  description: rippled version 2.4.0 is now available. This version introduces new features and stability fixes.
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 2.4.0
 
 Version 2.4.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds new features and bug fixes, and introduces these amendments:
@@ -21,12 +22,12 @@ Version 2.4.0 of `rippled`, the reference server implementation of the XRP Ledge
 - `fixFrozenLPTokenTransfer`
 - `fixInvalidTxFlags`
 
-
 ## Notable Updates: New Public Key Provided by the new XRPL Foundation
 
 Following the recent announcement regarding the [move to the new XRPL Foundation](./move-to-the-new-xrpl-foundation-commences.md), the XRPL Foundation members have been working diligently to facilitate a smooth transition of the Unique Node List (UNL) from the old XRPL Foundation to the new XRPL Foundation.
 
 There are two key goals driving this transition:
+
 - Ensure continued network participation and avoid potential downtime.
 - Allow for a staged migration with minimal impact on validators and node operators.
 
@@ -36,22 +37,20 @@ In `rippled` release 2.4.0, the `validators-example.txt` file has been updated t
 
 Further information on the transition will be shared by the XRPL Foundation in the near future.
 
-
 ## Action Required
 
 If you run an XRP Ledger server, upgrade to version 2.4.0 as soon as possible to ensure service continuity.
 
 Additionally, new amendments are now open for voting according to the XRP Ledger's [amendment process](../../docs/concepts/networks-and-servers/amendments.md), which enables protocol changes following two weeks of >80% support from trusted validators. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.4.0-1.el7.x86_64.rpm) | `f87f44005b84b35606413313f7414bfdf2bf09f01ce88bfe9fafc3ff75fd5199` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.4.0-1_amd64.deb) | `a3df84ba3d21f7182a57c8ca11fb2fbd1707e5cf53112822e60aa89886d943ad` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.4.0-1_amd64.deb)  | `a3df84ba3d21f7182a57c8ca11fb2fbd1707e5cf53112822e60aa89886d943ad` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -62,7 +61,6 @@ Date:   Wed Mar 5 11:48:16 2025 -0800
 
     Set version to 2.4.0
 ```
-
 
 ## Full Changelog
 
@@ -76,19 +74,17 @@ The following amendments are open for voting with this release:
 - **fixFrozenLPTokenTransfer** - Prohibits the transfer of LP tokens when the associated liquidity pool contains at least one frozen asset. ([#5227](https://github.com/XRPLF/rippled/pull/5227))
 - **fixInvalidTxFlags** - Adds transaction flag checking for `CredentialCreate`, `CredentialAccept`, and `CredentialDelete` transactions. ([#5250](https://github.com/XRPLF/rippled/pull/5250))
 
-
 ### New Features
 
 - Added a new `simulate` API method to execute dry runs of transactions and see the simulated metadata. ([#5069](https://github.com/XRPLF/rippled/pull/5069), [#5265](https://github.com/XRPLF/rippled/pull/5265))
 - Added the ability to specify MPTs when defining assets in transactions. ([#5200](https://github.com/XRPLF/rippled/pull/5200))
-- Added a `state` alias for `ripple_state` in the `ledger_entry` API method. Also refactored `LedgerEntry.cpp` to make it easier to read.  ([#5199](https://github.com/XRPLF/rippled/pull/5199))
+- Added a `state` alias for `ripple_state` in the `ledger_entry` API method. Also refactored `LedgerEntry.cpp` to make it easier to read. ([#5199](https://github.com/XRPLF/rippled/pull/5199))
 - Improved UNL security by enabling validators to set a minimum number of UNL publishers to agree on validators. ([#5112](https://github.com/XRPLF/rippled/pull/5112))
 - Updated the XRPL Foundation UNL keys. ([#5289](https://github.com/XRPLF/rippled/pull/5289))
 - Added a new XRPL Foundation subdomain to enable a staged migration without modifying the key for the current UNL list. ([#5326](https://github.com/XRPLF/rippled/pull/5326))
 - Added support to filter ledger entry types by their canonical names in the `ledger`, `ledger_data`, and `account_objects` API methods. ([#5271](https://github.com/XRPLF/rippled/pull/5271))
 - Added detailed logging for each validation and proposal received from the network. ([#5291](https://github.com/XRPLF/rippled/pull/5291))
 - Improved git commit hash lookups when checking the version of a `rippled` debug build. Also added git commit hash info when using the `server_info` API method on an admin connection. ([#5225](https://github.com/XRPLF/rippled/pull/5225))
-
 
 ### Bug fixes
 
@@ -105,7 +101,6 @@ The following amendments are open for voting with this release:
 - Fixed a potential issue with double-charging fees. ([#5269](https://github.com/XRPLF/rippled/pull/5269))
 - Removed the `new parent hash` assert and replaced it with a log message. ([#5313](https://github.com/XRPLF/rippled/pull/5313))
 - Fixed an issue that prevented previously-failed inbound ledgers to not be acquired if a new trusted proposal arrived. ([#5318](https://github.com/XRPLF/rippled/pull/5318))
-
 
 ### Other Improvements
 
@@ -131,7 +126,6 @@ The following amendments are open for voting with this release:
 - Refactored `rotateWithLock()` to not hold a lock during callbacks. ([#5276](https://github.com/XRPLF/rippled/pull/5276))
 - Cleaned up debug logging by combining multiple data points into a single message. ([#5302](https://github.com/XRPLF/rippled/pull/5302))
 - Updated build flags to fix performance regressions. ([#5325](https://github.com/XRPLF/rippled/pull/5325))
-
 
 ## Credits
 
@@ -160,7 +154,6 @@ The following people contributed directly to this release:
 - Vijay Khanna Raviraj <vraviraj@ripple.com>
 - Vladislav Vysokikh <vvysokikh@gmail.com>
 - Xun Zhao <xzhao@ripple.com>
-
 
 ## Bug Bounties and Responsible Disclosures
 

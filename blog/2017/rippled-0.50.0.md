@@ -1,20 +1,21 @@
 ---
-date: "2017-01-27"
+date: '2017-01-27'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.50.0
 
 Ripple has released `rippled` version 0.50.0, which introduces several enhancements that improve the reliability and scalability of the Ripple Consensus Ledger (RCL). Ripple recommends that all server operators upgrade to version 0.50.0 by Tuesday, 2017-02-21, for service continuity.
 
 Highlights of this release include:
 
-* **TickSize**, which allows gateways to set a "tick size" for assets they issue to help promote faster price discovery and deeper liquidity, as well as reduce transaction spam and ledger churn on RCL. Ripple expects **TickSize** to be enabled via an [Amendment named “TickSize”](/resources/known-amendments.md#ticksize) on Tuesday, 2017-02-21. See below for details.
+- **TickSize**, which allows gateways to set a "tick size" for assets they issue to help promote faster price discovery and deeper liquidity, as well as reduce transaction spam and ledger churn on RCL. Ripple expects **TickSize** to be enabled via an [Amendment named “TickSize”](/resources/known-amendments.md#ticksize) on Tuesday, 2017-02-21. See below for details.
 
 ## Action Required
 
@@ -30,11 +31,11 @@ Highlights of this release include:
 
 If you operate a `rippled` server but don’t upgrade to version 0.50.0 by Tuesday, 2017-02-21, when **TickSize** is expected to be activated via Amendment, then your server will become amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If the **TickSize** amendment is vetoed or does not pass, then your server will not become amendment blocked and should continue to operate.
 
@@ -57,17 +58,19 @@ Date:   Thu Jan 26 13:26:03 2017 -0800
 ```
 
 ## Network Update
+
 The Ripple operations team plans to deploy version 0.50.0 to all `rippled` servers under its operational control, including private clusters, starting at 11:00 AM PDT on Friday, 2017-01-27. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
@@ -95,19 +98,19 @@ This change lets issuers quantize the exchange rates of offers to use a specifie
 
 The primary expected benefits of the TickSize amendment is the reduction of bots fighting over the tip of the order book, which means:
 
-* Quicker price discovery
-* Traders can't be outbid by a microscopic amount
-* More offers left on the books
-* A reduction in offer creation and cancellation spam
+- Quicker price discovery
+- Traders can't be outbid by a microscopic amount
+- More offers left on the books
+- A reduction in offer creation and cancellation spam
 
 We also expect larger tick sizes to benefit market makers in the following ways:
 
-* They increase the delta between the fair market value and the trade price, ultimately reducing spreads
-* They prevent market makers from consuming each other's offers due to slight changes in perceived fair market value, which promotes liquidity
-* They promote faster price discovery since traders have to adjust their prices in financially distinct increments
-* They reduce transaction spam by reducing fighting over the tip of the order book and reducing the need to change offers due to slight price changes
-* They reduce ledger churn and metadata sizes by reducing the number of indexes each order book must have
-* They allow the order book as presented to traders to better reflect the actual book since these presentations are inevitably aggregated into ticks
+- They increase the delta between the fair market value and the trade price, ultimately reducing spreads
+- They prevent market makers from consuming each other's offers due to slight changes in perceived fair market value, which promotes liquidity
+- They promote faster price discovery since traders have to adjust their prices in financially distinct increments
+- They reduce transaction spam by reducing fighting over the tip of the order book and reducing the need to change offers due to slight price changes
+- They reduce ledger churn and metadata sizes by reducing the number of indexes each order book must have
+- They allow the order book as presented to traders to better reflect the actual book since these presentations are inevitably aggregated into ticks
 
 **Hardened TLS configuration**
 
@@ -117,29 +120,29 @@ Server administrators who wish to have different settings can configure custom g
 
 ## 0.50.0 Change Log
 
-* Remove websocketpp support [(#1910)](https://github.com/ripple/rippled/pull/1910)
-* Increase OpenSSL requirements & harden default TLS cipher suites [(#1913)](https://github.com/ripple/rippled/pull/1913)
-* Move test support sources out of ripple directory [(#1916)](https://github.com/ripple/rippled/pull/1916)
-* Enhance ledger header RPC commands [(#1918)](https://github.com/ripple/rippled/pull/1918)
-* Add support for tick sizes [(#1922)](https://github.com/ripple/rippled/pull/1922)
-* Port discrepancy-test.coffee to c++ [(#1930)](https://github.com/ripple/rippled/pull/1930)
-* Remove redundant call to clearNeedNetworkLedger [(#1931)](https://github.com/ripple/rippled/pull/1931)
-* Port freeze-test.coffee to C++ unit test. [(#1934)](https://github.com/ripple/rippled/pull/1934)
-* Fix CMake docs target to work if BOOST_ROOT is not set [(#1937)](https://github.com/ripple/rippled/pull/1937)
-* Improve setup for account_tx paging test [(#1942)](https://github.com/ripple/rippled/pull/1942)
-* Eliminate npm tests [(#1943)](https://github.com/ripple/rippled/pull/1943)
-* Port uniport js test to cpp [(#1944)](https://github.com/ripple/rippled/pull/1944)
-* Enable amendments in genesis ledger [(#1944)](https://github.com/ripple/rippled/pull/1944)
-* Trim ledger data in Discrepancy_test [(#1948)](https://github.com/ripple/rippled/pull/1948)
-* Add "current_ledger" field to "fee" result [(#1949)](https://github.com/ripple/rippled/pull/1949)
-* Cleanup unit test support code [(#1953)](https://github.com/ripple/rippled/pull/1953)
-* Add ledger save / load tests [(#1955)](https://github.com/ripple/rippled/pull/1955)
-* Remove unused websocket files [(#1957)](https://github.com/ripple/rippled/pull/1957)
-* Update RPC handler role/usage [(#1966)](https://github.com/ripple/rippled/pull/1966)
+- Remove websocketpp support [(#1910)](https://github.com/ripple/rippled/pull/1910)
+- Increase OpenSSL requirements & harden default TLS cipher suites [(#1913)](https://github.com/ripple/rippled/pull/1913)
+- Move test support sources out of ripple directory [(#1916)](https://github.com/ripple/rippled/pull/1916)
+- Enhance ledger header RPC commands [(#1918)](https://github.com/ripple/rippled/pull/1918)
+- Add support for tick sizes [(#1922)](https://github.com/ripple/rippled/pull/1922)
+- Port discrepancy-test.coffee to c++ [(#1930)](https://github.com/ripple/rippled/pull/1930)
+- Remove redundant call to clearNeedNetworkLedger [(#1931)](https://github.com/ripple/rippled/pull/1931)
+- Port freeze-test.coffee to C++ unit test. [(#1934)](https://github.com/ripple/rippled/pull/1934)
+- Fix CMake docs target to work if BOOST_ROOT is not set [(#1937)](https://github.com/ripple/rippled/pull/1937)
+- Improve setup for account_tx paging test [(#1942)](https://github.com/ripple/rippled/pull/1942)
+- Eliminate npm tests [(#1943)](https://github.com/ripple/rippled/pull/1943)
+- Port uniport js test to cpp [(#1944)](https://github.com/ripple/rippled/pull/1944)
+- Enable amendments in genesis ledger [(#1944)](https://github.com/ripple/rippled/pull/1944)
+- Trim ledger data in Discrepancy_test [(#1948)](https://github.com/ripple/rippled/pull/1948)
+- Add "current_ledger" field to "fee" result [(#1949)](https://github.com/ripple/rippled/pull/1949)
+- Cleanup unit test support code [(#1953)](https://github.com/ripple/rippled/pull/1953)
+- Add ledger save / load tests [(#1955)](https://github.com/ripple/rippled/pull/1955)
+- Remove unused websocket files [(#1957)](https://github.com/ripple/rippled/pull/1957)
+- Update RPC handler role/usage [(#1966)](https://github.com/ripple/rippled/pull/1966)
 
 **Bug Fixes**
 
-* Validator's manifest not forwarded beyond directly connected peers [(#1919)](https://github.com/ripple/rippled/pull/1919)
+- Validator's manifest not forwarded beyond directly connected peers [(#1919)](https://github.com/ripple/rippled/pull/1919)
 
 ## Upcoming Features
 

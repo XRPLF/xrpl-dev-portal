@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-08-27"
+  editPage:
+    hide: true
+date: '2021-08-27'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 ---
+
 # Introducing XRP Ledger version 1.7.3
 
 Version 1.7.3 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release addresses an out-of-bounds memory read identified by Guido Vranken, as well as an unrelated issue identified by the Ripple C++ team that could result in incorrect use of internal data structures. By [community demand](https://github.com/ripple/rippled/issues/3898), this version also introduces the NegativeUNL amendment, which corresponds to the feature which was introduced in [the 1.6.0 release](https://xrpl.org/blog/2020/rippled-1.6.0.html).
@@ -26,10 +27,10 @@ If you operate an XRP Ledger validator, please [learn more about this amendment]
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.7.3-1.el7.x86_64.rpm) | `d994543be11edeb9c1256cd7e35c6bd7f5b53f23f97b8bdf380302b24269d47e` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.7.3-1_amd64.deb) | `5d13b32ac00796a50266030de5de40e85c310c762a88e72d435e5c8c2e30becb` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.7.3-1_amd64.deb)  | `5d13b32ac00796a50266030de5de40e85c310c762a88e72d435e5c8c2e30becb` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -40,7 +41,6 @@ Date:   Wed Aug 4 10:52:58 2021 -0700
 
     Set version to 1.7.3
 ```
-
 
 ## Changelog
 

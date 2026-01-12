@@ -22,13 +22,13 @@ async function partialPayment(): Promise<void> {
       value: '10000000000',
     },
   }
-  console.log("Submitting a TrustSet transaction...")
+  console.log('Submitting a TrustSet transaction...')
 
   const trust_set_res = await client.submitAndWait(trust_set_tx, {
     wallet: wallet2,
   })
 
-  console.log("TrustSet transaction response:")
+  console.log('TrustSet transaction response:')
   console.log(trust_set_res)
 
   console.log('Balances after trustline is created')
@@ -52,7 +52,7 @@ async function partialPayment(): Promise<void> {
   const initialPayment = await client.submitAndWait(payment, {
     wallet: wallet1,
   })
-  console.log("Initial payment response:", initialPayment)
+  console.log('Initial payment response:', initialPayment)
 
   console.log('Balances after issuer(wallet1) sends IOU("FOO") to wallet2')
   console.log(`Balance of ${wallet1.classicAddress} is ${await client.getBalances(wallet1.classicAddress)}`)
@@ -80,15 +80,13 @@ async function partialPayment(): Promise<void> {
   }
 
   // submit payment
-  console.log("Submitting a Partial Payment transaction...")
+  console.log('Submitting a Partial Payment transaction...')
   const submitResponse = await client.submitAndWait(partialPaymentTx, {
     wallet: wallet2,
   })
-  console.log("Partial Payment response: ", submitResponse)
+  console.log('Partial Payment response: ', submitResponse)
 
-  console.log(
-    "Balances after Partial Payment, when wallet2 tried to send 4000 FOO's",
-  )
+  console.log("Balances after Partial Payment, when wallet2 tried to send 4000 FOO's")
   console.log(`Balance of ${wallet1.classicAddress} is ${await client.getBalances(wallet1.classicAddress)}`)
   console.log(`Balance of ${wallet2.classicAddress} is ${await client.getBalances(wallet2.classicAddress)}`)
 

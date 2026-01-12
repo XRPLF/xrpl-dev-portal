@@ -1,13 +1,14 @@
 ---
-date: "2015-06-10"
+date: '2015-06-10'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 category: 2015
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Ripple Charts Update: Payment Volume and Issued Value
 
 Starting today, we are rolling out a small update to Ripple Charts that may seem minor but hopefully will have a big impact in the way we look at Ripple in the future.
@@ -27,6 +28,5 @@ As we spend more and more effort around building liquid assets on the Network, w
 As many users pointed out in the forums, "Total Network Value" often ranged quite a bit due to the large influence of XRP price. We believe that this new addition will allow us to watch our issued value grow on the network while still being able to track the value of XRP going forward as well.
 
 ![issued charts screenshot](https://cdn.ripple.com/wp-content/uploads/2015/06/issuedcharts.jpg)
-
 
 We’d like to thank all of our passionate fans who regularly use Ripple Charts. We love and appreciate your ongoing feedback given our commitment to improving the charts experience—not only from the perspective of user experience but also in a way that best reflects the evolving direction of Ripple Labs.

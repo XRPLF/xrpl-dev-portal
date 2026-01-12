@@ -2,10 +2,11 @@
 html: nftoken-marketplace.html
 parent: nft-mkt-overview.html
 seo:
-    description: Creating an NFT Marketplace for buying and selling NFTs.
+  description: Creating an NFT Marketplace for buying and selling NFTs.
 labels:
   - Tokenization
 ---
+
 # NFT Marketplace
 
 _In my NFToken Marketplace, I want to use the XRPL to create a web presence where I can arrange transfer of a curated selection of NFTokens to consumers, with the benefit that I can build a brand and earn broker fees based on sales._
@@ -16,13 +17,11 @@ NFToken Marketplaces act as intermediaries between NFToken creators and collecto
 
 ## Creating an NFT Marketplace
 
-[![NFT Marketplace Flow](/docs/img/nft-mkt-marketplace.png "NFT Marketplace Flow")](/docs/img/nft-mkt-marketplace.png)
-
+[![NFT Marketplace Flow](/docs/img/nft-mkt-marketplace.png 'NFT Marketplace Flow')](/docs/img/nft-mkt-marketplace.png)
 
 ## Set up a rippled instance
 
 When you set up a serious marketplace site with high volume, it justifies the decision to set up your own XRP Ledger server instance. See [Install rippled](../../infrastructure/installation/index.md).
-
 
 ### Setting up a wallet
 
@@ -39,7 +38,6 @@ You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transf
 You can sell your NFTs in an auction format. See [Running an NFT Auction](../../concepts/tokens/nfts/running-an-nft-auction.md).
 
 You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](../../tutorials/javascript/nfts/broker-an-nft-sale.md).
-
 
 ### Reserve requirements
 

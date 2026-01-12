@@ -1,13 +1,14 @@
 ---
 category: 2023
-date: "2023-08-29"
+date: '2023-08-29'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: Blockdaemon
 
 ![Screenshot: Blockdaemon](/blog/img/dev-reflections-blockdaemon-logo.png)
@@ -39,4 +40,3 @@ Every machine managed by Blockdaemon comes with 24/7 support and transparent ser
 Learn more about the project on the [Blockdaemon website](https://www.blockdaemon.com/).
 
 Want to be featured in the Developer Reflections series? [Submit your project](https://xrpl.org/contribute.html#xrpl-blog) today, and join the [developer Discord channel](https://xrpldevs.org/) to connect with other members of the XRP Ledger community.
-

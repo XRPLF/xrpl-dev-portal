@@ -2,14 +2,15 @@
 category: 2025
 date: 2025-05-16
 seo:
-    title: Integrating DIA Oracles on the XRP Ledger
-    description: Learn how to integrate DIA's oracle service with your XRPL-based application to fetch up-to-date asset price information, whether you're working on DeFi, tokenized assets, or next-gen payments.
+  title: Integrating DIA Oracles on the XRP Ledger
+  description: Learn how to integrate DIA's oracle service with your XRPL-based application to fetch up-to-date asset price information, whether you're working on DeFi, tokenized assets, or next-gen payments.
 labels:
-    - Development
+  - Development
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Integrating DIA Oracles on the XRP Ledger
 
 As institutional DeFi continues to grow on the XRP Ledger (XRPL), access to reliable, decentralized price feeds is becoming increasingly essential. To support this, DIA, a leading open-source oracle platform, is now live on the XRPL, offering robust, customizable oracles across thousands of assets. This blog post walks you through integrating DIA’s oracle service with your XRPL-based application, whether you’re working on DeFi, tokenized assets, or next-gen payments.
@@ -22,10 +23,10 @@ As institutional DeFi continues to grow on the XRP Ledger (XRPL), access to reli
 
 The providers to fetch data from:
 
-| Network | Provider | Oracle Document ID |
-|:--------|:---------| :------------------|
-| XRPL Mainnet | diadata (hex. 64696164617461) | 42 |
-| XRPL Testnet | diadata (hex: 64696164617461) | 1 |
+| Network      | Provider                      | Oracle Document ID |
+| :----------- | :---------------------------- | :----------------- |
+| XRPL Mainnet | diadata (hex. 64696164617461) | 42                 |
+| XRPL Testnet | diadata (hex: 64696164617461) | 1                  |
 
 Each oracle document contains real-time pricing data for key assets—including XRP, RLUSD, and more — making it simple for developers to retrieve trusted market prices directly from the ledger.
 
@@ -33,8 +34,8 @@ Each oracle document contains real-time pricing data for key assets—including 
 
 DIA uses the following accounts to publish oracle price data to the XRPL:
 
-| Network      | Account       |
-|:-------------|:--------------|
+| Network      | Account                                                                                                    |
+| :----------- | :--------------------------------------------------------------------------------------------------------- |
 | XRPL Mainnet | [rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7](https://livenet.xrpl.org/accounts/rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7) |
 | XRPL Testnet | [r3U1mL5u2SCPr4mApqYyF96nvwvKoGf7aH](https://testnet.xrpl.org/accounts/r3U1mL5u2SCPr4mApqYyF96nvwvKoGf7aH) |
 
@@ -44,11 +45,11 @@ You can monitor these wallets on-chain for transparency and operational assuranc
 
 Settings that dictate how the oracle computes and updates data.
 
-| Setting                           | Details      |
-|:----------------------------------|:-------------|
+| Setting                           | Details                                                                                                                                                |
+| :-------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Pricing Methodology               | [VWAPIR](https://www.diadata.org/docs/guides/methodologies/pricing-methodologies/vwapir-volume-weighted-average-price-with-interquartile-range-filter) |
-| Deviation (%) & Refresh Frequency | 1% and 120 seconds |
-| Heartbeat                         | 24h |
+| Deviation (%) & Refresh Frequency | 1% and 120 seconds                                                                                                                                     |
+| Heartbeat                         | 24h                                                                                                                                                    |
 
 This configuration ensures that price updates are both reactive and consistent, maintaining high accuracy without overwhelming the network.
 
@@ -56,14 +57,14 @@ This configuration ensures that price updates are both reactive and consistent, 
 
 These asset feeds serve as foundational infrastructure for a wide range of XRPL-based dApps—from AMMs to lending platforms—ensuring composability across the ecosystem.
 
-| Asset Ticker | Asset Ticker (Hex) | Asset Markets Overview |
-|:-----------|:----------|:-------------|
-| BTC | 4254430000000000000000000000000000000000 | [BTC markets](https://www.diadata.org/app/price/asset/Bitcoin/0x0000000000000000000000000000000000000000/) |
-| ETH | 4554480000000000000000000000000000000000 | [ETH markets](https://www.diadata.org/app/price/asset/Ethereum/0x0000000000000000000000000000000000000000/) |
-| XRP | 5852500000000000000000000000000000000000 | [XRP markets](https://www.diadata.org/app/price/asset/XRPL/0x0000000000000000000000000000000000000000/) |
-| RLUSD | 524C555344000000000000000000000000000000 | [RLUSD markets](https://www.diadata.org/app/price/asset/XRPL/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/) |
-| USDC | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | [USDC markets](https://www.diadata.org/app/price/asset/Ethereum/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/) |
-| USDT | 0xdAC17F958D2ee523a2206206994597C13D831ec7 | [USDT markets](https://www.diadata.org/app/price/asset/Ethereum/0xdAC17F958D2ee523a2206206994597C13D831ec7/) |
+| Asset Ticker | Asset Ticker (Hex)                         | Asset Markets Overview                                                                                       |
+| :----------- | :----------------------------------------- | :----------------------------------------------------------------------------------------------------------- |
+| BTC          | 4254430000000000000000000000000000000000   | [BTC markets](https://www.diadata.org/app/price/asset/Bitcoin/0x0000000000000000000000000000000000000000/)   |
+| ETH          | 4554480000000000000000000000000000000000   | [ETH markets](https://www.diadata.org/app/price/asset/Ethereum/0x0000000000000000000000000000000000000000/)  |
+| XRP          | 5852500000000000000000000000000000000000   | [XRP markets](https://www.diadata.org/app/price/asset/XRPL/0x0000000000000000000000000000000000000000/)      |
+| RLUSD        | 524C555344000000000000000000000000000000   | [RLUSD markets](https://www.diadata.org/app/price/asset/XRPL/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/)            |
+| USDC         | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | [USDC markets](https://www.diadata.org/app/price/asset/Ethereum/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/) |
+| USDT         | 0xdAC17F958D2ee523a2206206994597C13D831ec7 | [USDT markets](https://www.diadata.org/app/price/asset/Ethereum/0xdAC17F958D2ee523a2206206994597C13D831ec7/) |
 
 ### 1.5 Request a Custom Oracle
 
@@ -112,12 +113,12 @@ This method leverages XRPL’s native ledger-querying capabilities, meaning you 
 
 Understanding the following terms is crucial when configuring DIA oracles for your application logic, especially for price-sensitive dApps like derivatives, stablecoins, or automated market makers (AMMs).
 
-| Term       | Definition  |
-|:-----------|:------------|
-| Deviation  | The percentage threshold that triggers a price update when exceeded |
+| Term              | Definition                                                                     |
+| :---------------- | :----------------------------------------------------------------------------- |
+| Deviation         | The percentage threshold that triggers a price update when exceeded            |
 | Refresh frequency | A time interval for checking and updating prices if certain conditions are met |
-| Trade window | A time interval used to aggregate trades of an asset for price calculation |
-| Heartbeat | A forced price update at a fixed interval |
+| Trade window      | A time interval used to aggregate trades of an asset for price calculation     |
+| Heartbeat         | A forced price update at a fixed interval                                      |
 
 ## Support
 

@@ -1,13 +1,14 @@
-import { useThemeHooks } from '@redocly/theme/core/hooks';
-import { Link } from '@redocly/theme/components/Link/Link';
-import { BenefitsSection } from 'shared/components/benefits-section';
+import { useThemeHooks } from '@redocly/theme/core/hooks'
+import { Link } from '@redocly/theme/components/Link/Link'
+import { BenefitsSection } from 'shared/components/benefits-section'
 
 export const frontmatter = {
   seo: {
     title: 'XRP Ledger Home | XRPL.org',
-    description: "XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Gain access to technical documentation, reference materials, and blockchain ledger tools.",
-  }
-};
+    description:
+      'XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Gain access to technical documentation, reference materials, and blockchain ledger tools.',
+  },
+}
 
 const cards = [
   {
@@ -24,9 +25,12 @@ const cards = [
   {
     id: 'low-cost',
     title: 'Low Cost',
-    description: <>
-      At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of <Link to='/about/uses'>blockchain use cases</Link>
-    </>
+    description: (
+      <>
+        At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of{' '}
+        <Link to="/about/uses">blockchain use cases</Link>
+      </>
+    ),
   },
   {
     id: 'community',
@@ -38,14 +42,13 @@ const cards = [
     title: 'Proven Reliability',
     description: '10+ years of error-free, uninterrupted performance over more than 63 million ledgers',
   },
-];
+]
 
 const cards2 = [
   {
     href: '/docs/concepts/tokens/decentralized-exchange/',
     title: 'Decentralized Exchange',
-    description:
-      'A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain',
+    description: 'A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain',
   },
   {
     href: '/docs/concepts/payment-types/cross-currency-payments/',
@@ -54,7 +57,7 @@ const cards2 = [
   },
   {
     href: '/docs/concepts/payment-types/payment-channels/',
-    title: "Payment Channels",
+    title: 'Payment Channels',
     description: 'Batched micropayments with unlimited speed, secured with XRP',
   },
   {
@@ -65,10 +68,9 @@ const cards2 = [
   {
     href: '/docs/concepts/tokens/',
     title: 'Tokens',
-    description:
-      'All currencies other than XRP can be represented in the XRP Ledger as tokens',
+    description: 'All currencies other than XRP can be represented in the XRP Ledger as tokens',
   },
-];
+]
 
 const cards3 = [
   {
@@ -84,36 +86,42 @@ const cards3 = [
     description: 'Find tools, documentation, and sample code in Python, Java, Javascript, or use HTTP APIs',
   },
   { href: '/about/uses', title: 'Get Inspired', description: 'See what your peers have built on the XRPL' },
-];
+]
 
 const features = [
   {
     chip: 'In Development',
     title: 'Smart Contracts',
-    description:
-    <>
-      Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality.
-    </>,
+    description: (
+      <>
+        Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the{' '}
+        <a href="https://hooks-testnet.xrpl-labs.com/" target="_blank">
+          hooks amendment and public testnet
+        </a>{' '}
+        that enable smart contract functionality.
+      </>
+    ),
     href: 'https://hooks-testnet.xrpl-labs.com/',
   },
   {
     chip: 'Enabled',
     title: 'Automated Market Makers',
-    description: "Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.",
+    description:
+      'Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.',
     href: '/docs/concepts/tokens/decentralized-exchange/automated-market-makers/',
   },
-];
+]
 
 export default function Index() {
-  const { useTranslate } = useThemeHooks();
-  const { translate } = useTranslate();
+  const { useTranslate } = useThemeHooks()
+  const { translate } = useTranslate()
 
   return (
     <div className="landing page-home">
       <div className="overflow-hidden">
         <section className="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
           <div className="w-100">
-            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" loading='eager' />
+            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" loading="eager" />
           </div>
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
@@ -138,28 +146,21 @@ export default function Index() {
             <h2 className="h4 mb-8 h2-sm">{translate('The XRP Ledger: The Blockchain Built for Business')}</h2>
             <h6 className="longform mb-10">
               {translate(
-                'The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global community of businesses and developers looking to solve problems and create value.'
+                'The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global community of businesses and developers looking to solve problems and create value.',
               )}
             </h6>
             <p className="mb-0">
               {translate(
-                'Proven reliable over more than a decade of error-free functioning, the XRPL offers streamlined development, low transaction costs, high performance, and sustainability. So you can build with confidence–and move your most critical projects forward.'
+                'Proven reliable over more than a decade of error-free functioning, the XRPL offers streamlined development, low transaction costs, high performance, and sustainability. So you can build with confidence–and move your most critical projects forward.',
               )}
             </p>
           </div>
         </section>
-        <BenefitsSection
-          eyebrow="Benefits"
-          title="Why developers choose the XRP Ledger"
-          cards={cards}
-          showImages={true}
-        />
+        <BenefitsSection eyebrow="Benefits" title="Why developers choose the XRP Ledger" cards={cards} showImages={true} />
         <section className="container-new py-26">
           <div className="d-flex flex-column-reverse col-sm-8 p-0">
             <h3 className="h4 h2-sm">
-              {translate(
-                'Activate the proven potential of the XRP Ledger and find a trusted foundation for your next innovation'
-              )}
+              {translate('Activate the proven potential of the XRP Ledger and find a trusted foundation for your next innovation')}
             </h3>
             <h6 className="eyebrow mb-3">{translate('Powerful Features')}</h6>
           </div>
@@ -200,7 +201,7 @@ export default function Index() {
               <h2 className="h4 mb-8-sm mb-10-until-sm">{translate('Our Shared Vision for XRPL’s Future')}</h2>
               <p className="mb-10">
                 {translate(
-                  "Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life."
+                  "Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life.",
                 )}
               </p>
               <Link className="btn btn-primary btn-arrow" to="/about/">
@@ -211,21 +212,17 @@ export default function Index() {
         </section>
         <section className="container-new py-26">
           <div className="d-flex flex-column-reverse col-sm-8 p-0">
-            <h3 className="h4 h2-sm">
-              {translate('Explore what the community is building to enable new features and use cases on XRPL')}
-            </h3>
+            <h3 className="h4 h2-sm">{translate('Explore what the community is building to enable new features and use cases on XRPL')}</h3>
             <h6 className="eyebrow mb-3">{translate('Preview New Features')}</h6>
           </div>
           <ul className="mt-10 card-grid card-grid-3xN">
-            {features.map(feat => (
+            {features.map((feat) => (
               <li className="col ls-none pt-2" key={feat.href}>
                 <Link className="label chip-green" to={feat.href}>
                   {translate(feat.chip)}
                 </Link>
                 <h4 className="mt-3 mb-0 h5">{translate(feat.title)}</h4>
-                <p className="mt-6-until-sm mt-3 mb-0">
-                  {typeof feat.description === 'string' ? translate(feat.description) : feat.description}
-                </p>
+                <p className="mt-6-until-sm mt-3 mb-0">{typeof feat.description === 'string' ? translate(feat.description) : feat.description}</p>
               </li>
             ))}
           </ul>
@@ -254,5 +251,5 @@ export default function Index() {
         </section>
       </div>
     </div>
-  );
+  )
 }

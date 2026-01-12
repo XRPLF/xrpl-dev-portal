@@ -1,13 +1,14 @@
 ---
-date: "2017-02-10"
+date: '2017-02-10'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # TickSize Amendment Open for Voting
 
 Previously [introduced](/blog/2017/rippled-0.50.0.md) in `rippled` version 0.50.0, the [TickSize amendment](/resources/known-amendments.md#ticksize) to the Ripple Consensus Ledger is now open for voting. The amendment changes the way offers are ranked in the RCL's order books, so that currency issuers can configure how many significant digits are taken into account when ranking offers by exchange rate.
@@ -30,26 +31,26 @@ The introduction of TickSize demonstrates Ripple’s continued commitment to sup
 
 If you operate a `rippled` server but don’t upgrade to version 0.50.0 (or higher) by Tuesday, 2017-02-21, when **TickSize** is expected to be activated via Amendment, then your server will become amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If the **TickSize** amendment is vetoed or does not pass, then your server will not become amendment blocked and should continue to operate.
 
 For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
-
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## TickSize Amendment Overview
 
@@ -75,7 +76,7 @@ The TickSize feature permits assets issued on the RCL to configure their tick si
 
 This immediately makes price discovery much faster. Without the tick size, you might see a long string of offers with prices gradually going down from 1.08 to 1.07. And a payment processed at that time would get a rate worse than the fair rate.
 
-The TickSize feature also protects the time priority of larger orders by securing their position at the front of what may become a large queue at a specific price point;  this effectively prevents front running by microscopically better price improvements.  When volatility of a market becomes low versus the tick size, the economic impact of this can be significant.  To the same effect, enforcing a TickSize also gives traders a larger theoretical edge versus fair value of the same asset trading on other exchanges.  
+The TickSize feature also protects the time priority of larger orders by securing their position at the front of what may become a large queue at a specific price point; this effectively prevents front running by microscopically better price improvements. When volatility of a market becomes low versus the tick size, the economic impact of this can be significant. To the same effect, enforcing a TickSize also gives traders a larger theoretical edge versus fair value of the same asset trading on other exchanges.
 
 The most important long run impact of a fixed TickSize is to encourage traders to stack orders at several depths in the market in advance, with the hope of being filled when the market moves; this incentivizes traders to take inventory risk and therefore increases displayed liquidity in order books.
 
@@ -117,7 +118,7 @@ Tick sizes of between four and eight digits are reasonable. Four digits will pro
 
 ## Upcoming Features
 
-The [previously announced](/blog/2016/rippled-0.40.0.md) Suspended Payments amendment, which introduces new transaction types to the Ripple protocol that will permit users to cryptographically escrow XRP on the RCL, will be re-introduced as an amendment simply called *Escrow*, in the next release scheduled for March.
+The [previously announced](/blog/2016/rippled-0.40.0.md) Suspended Payments amendment, which introduces new transaction types to the Ripple protocol that will permit users to cryptographically escrow XRP on the RCL, will be re-introduced as an amendment simply called _Escrow_, in the next release scheduled for March.
 
 Also, we expect additional support for [crypto-conditions](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02), which are signature-like structures that can be used with suspended payments to support ILP integration, to be included in the next rippled release scheduled for March.
 

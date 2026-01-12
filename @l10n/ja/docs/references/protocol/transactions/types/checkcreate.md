@@ -2,11 +2,13 @@
 html: checkcreate.html
 parent: transaction-types.html
 seo:
-    description: レジャーにCheckオブジェクトを作成します
+  description: レジャーにCheckオブジェクトを作成します
 labels:
   - Checks
 ---
+
 # CheckCreate
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/CreateCheck.cpp "Source")
 
 レジャーにCheckオブジェクトを作成します。これにより指定の送金先は後日換金することができます。このトランザクションの送信者はCheckの送金元です。
@@ -17,14 +19,14 @@ _（[Checks Amendment][]が必要です）_
 
 ```json
 {
- "TransactionType": "CheckCreate",
- "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
- "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
- "SendMax": "100000000",
- "Expiration": 570113521,
- "InvoiceID": "6F1DFD1D0FE8A32E40E1F2C05CF1C15545BAB56B617F9C6C2D63A6B704BEF59B",
- "DestinationTag": 1,
- "Fee": "12"
+  "TransactionType": "CheckCreate",
+  "Account": "rUn84CUYbNjRoTQ6mSW7BVJPSVJNLb1QLo",
+  "Destination": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
+  "SendMax": "100000000",
+  "Expiration": 570113521,
+  "InvoiceID": "6F1DFD1D0FE8A32E40E1F2C05CF1C15545BAB56B617F9C6C2D63A6B704BEF59B",
+  "DestinationTag": 1,
+  "Fee": "12"
 }
 ```
 
@@ -32,13 +34,13 @@ _（[Checks Amendment][]が必要です）_
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド            | JSONの型           | [内部の型][] | 説明     |
-|:-----------------|:--------------------|:------------------|:----------------|
-| `Destination`    | 文字列              | AccountID          | Checkを換金できる[アカウント](../../../../concepts/accounts/index.md)の一意アドレス。 |
-| `SendMax`        | [通貨額][] | Amount            | Checkで送金元から引き落とすことができる送金元通貨の最大額（XRP以外の通貨の[送金手数料](../../../../concepts/tokens/fungible-tokens/transfer-fees.md)を含む）。Checkは同一通貨の送金先にのみ入金可能です（XRP以外の通貨の場合は同一イシュアーから）。XRP以外の金額の場合、入れ子フィールドの名前にはアルファベットの小文字のみ使用してください。 |
-| `DestinationTag` | 数値              | UInt32            | _（省略可）_ Checkの理由を明確にする任意のタグ、または支払先となる、ホスティングされている受取人。 |
-| `Expiration`     | 数値              | UInt32            | _（省略可）_ Checkが無効になる時刻（[Rippleエポック以降の経過秒数][]）。 |
-| `InvoiceID`      | 文字列              | UInt256           | _（省略可）_ このCheckの具体的な理由または識別子を表現する任意の256ビットハッシュ。 |
+| フィールド       | JSONの型   | [内部の型][] | 説明                                                                                                                                                                                                                                                                                                                                            |
+| :--------------- | :--------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Destination`    | 文字列     | AccountID    | Checkを換金できる[アカウント](../../../../concepts/accounts/index.md)の一意アドレス。                                                                                                                                                                                                                                                           |
+| `SendMax`        | [通貨額][] | Amount       | Checkで送金元から引き落とすことができる送金元通貨の最大額（XRP以外の通貨の[送金手数料](../../../../concepts/tokens/fungible-tokens/transfer-fees.md)を含む）。Checkは同一通貨の送金先にのみ入金可能です（XRP以外の通貨の場合は同一イシュアーから）。XRP以外の金額の場合、入れ子フィールドの名前にはアルファベットの小文字のみ使用してください。 |
+| `DestinationTag` | 数値       | UInt32       | _（省略可）_ Checkの理由を明確にする任意のタグ、または支払先となる、ホスティングされている受取人。                                                                                                                                                                                                                                              |
+| `Expiration`     | 数値       | UInt32       | _（省略可）_ Checkが無効になる時刻（[Rippleエポック以降の経過秒数][]）。                                                                                                                                                                                                                                                                        |
+| `InvoiceID`      | 文字列     | UInt256      | _（省略可）_ このCheckの具体的な理由または識別子を表現する任意の256ビットハッシュ。                                                                                                                                                                                                                                                             |
 
 ## エラーケース
 

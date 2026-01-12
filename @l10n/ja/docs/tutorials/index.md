@@ -1,7 +1,8 @@
 ---
 seo:
-    description: 開発者向けの暗号資産ウォレットやブロックチェーンのチュートリアルで、XRP Ledgerを使った開発方法を学びましょう。
+  description: 開発者向けの暗号資産ウォレットやブロックチェーンのチュートリアルで、XRP Ledgerを使った開発方法を学びましょう。
 ---
+
 # 暗号資産ウォレットやブロックチェーン開発のチュートリアル
 
 XRP Ledgerを学び、使い始め、そして高度なユースケースで使用するための手順を説明します。
@@ -36,6 +37,5 @@ XRP Ledgerを学び、使い始め、そして高度なユースケースで使�
 {% xrpl-card title="高度な支払い機能" body="エスクローやペイメントチャネルなどの高度な支払い機能を使って、XRP Ledger上に新しいアプリケーションを構築しましょう。" href="/docs/tutorials/how-tos/use-specialized-payment-types/" /%}
 {% xrpl-card title="トークンの利用" body="XRP Ledgerでトークン(代替可能またはそれ以外)を作成し、取引しましょう。" href="/docs/tutorials/how-tos/use-tokens/" /%}
 {% xrpl-card title="XRPLサイドチェーンの利用" body="メインネットからXRPLサイドチェーンにXRPやトークンをブリッジしましょう。" href="/docs/tutorials/how-tos/use-xrpl-sidechains/" /%}
-
 
 {% /card-grid %}

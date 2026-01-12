@@ -1,13 +1,14 @@
 ---
 labels:
-    - Release Notes
+  - Release Notes
 category: 2019
-date: "2019-03-06"
+date: '2019-03-06'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.2.2
 
 Ripple has released **version 1.2.2 of rippled**, our reference implementation of the core XRP Ledger server.
@@ -26,15 +27,15 @@ If you operate a rippled server, but do not upgrade to 1.2.2 as soon as possible
 
 Additionally, the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendments are expected to become enabled no earlier than Wednesday, 2019-03-20. When this happens, if you are not running [release 1.2.0](/blog/2019/rippled-1.2.0.md) or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
-* Cannot determine the validity of a ledger;
+- Cannot determine the validity of a ledger;
 
-* Cannot submit or process transactions;
+- Cannot submit or process transactions;
 
-* Cannot participate in the consensus process;
+- Cannot participate in the consensus process;
 
-* Cannot vote on future amendments; and
+- Cannot vote on future amendments; and
 
-* Could rely on potentially invalid data.
+- Could rely on potentially invalid data.
 
 If the **MultisignReserve**, **fixTakerDryOfferRemoval** and **fix1578** Amendments do not become enabled, then your XRP Ledger server will not become amendment blocked.
 
@@ -68,13 +69,13 @@ Related documentation is available in the [XRP Ledger Dev Portal](/docs/), inclu
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
-* Ripple Technical Services: <support@ripple.com>
+- Ripple Technical Services: <support@ripple.com>
 
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [XRP Chat Forum](http://www.xrpchat.com/)
 
 ## Other Information
 
@@ -90,7 +91,7 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 ### Bug Fixes
 
-* Fix a technical flaw in the fee escalation engine which could cause some fee metrics to be calculated incorrectly. ([4c03b3f](https://github.com/ripple/rippled/commit/4c06b3f86fdca59cc1fb14d0730c6de14662bcff))
+- Fix a technical flaw in the fee escalation engine which could cause some fee metrics to be calculated incorrectly. ([4c03b3f](https://github.com/ripple/rippled/commit/4c06b3f86fdca59cc1fb14d0730c6de14662bcff))
 
 ## Contributions
 

@@ -12,4 +12,3 @@ flask --app issuer_service run
 ```
 
 For more detail, see the full tutorial for [How to build a service that issues credentials on the XRP Ledger](https://xrpl.org/docs/tutorials/python/build-apps/credential-issuing-service).
-

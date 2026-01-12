@@ -1,16 +1,17 @@
 ---
 seo:
-    description: Create two accounts and transfer XRP between them.
+  description: Create two accounts and transfer XRP between them.
 labels:
   - Accounts
   - Transaction Sending
   - XRP
 ---
+
 # Create Accounts and Send XRP Using JavaScript
 
 This example shows how to:
 
-1. Create accounts on the Testnet, funded with 1000 test XRP with no actual value. 
+1. Create accounts on the Testnet, funded with 1000 test XRP with no actual value.
 2. Retrieve the accounts from seed values.
 3. Transfer XRP between accounts.
 
@@ -46,10 +47,10 @@ The name fields are there for you to create an arbitrary label to make the accou
 
 To transfer XRP from Account 1 to Account 2:
 
-1. Click the **Account 1** radio button. The information about Account 1 populates the uneditable fields of the form. 
+1. Click the **Account 1** radio button. The information about Account 1 populates the uneditable fields of the form.
 2. Enter the **Amount** of XRP to send.
-2. Copy and paste the **Account 2 Address** value to the **Destination** field.
-3. Click **Send XRP** to transfer XRP from Account 1 to Account 2.
+3. Copy and paste the **Account 2 Address** value to the **Destination** field.
+4. Click **Send XRP** to transfer XRP from Account 1 to Account 2.
 
 The **Results** field shows the change in balance in each of the accounts. Note that sending the XRP cost an additional .000001 XRP as the transfer fee. The transfer fee is small enough to be no burden for legitimate users, but is there to stop spammers from making DDS attacks against the XRP Ledger (sending millions of false transactions will quickly add up to real money).
 
@@ -64,7 +65,6 @@ To transfer XRP from Account 2 back to Account 1:
 3. Copy and paste the **Account 1 Address** value to the **Destination** field.
 4. Click **Send XRP** to transfer XRP from Account 1 to Account 2.
 5. Click the **Account 1** radio button to see its new XRP balance.
-
 
 [![Transferred XRP from Account 2 to Account 1](/docs/img/mt-send-xrp-4-account2-send-xrp.png)](/docs/img/mt-send-xrp-4-account2-send-xrp.png)
 
@@ -104,11 +104,12 @@ This function can be used with _Testnet_, or _Devnet_. It allows you to select b
 ```javascript
 function getNet() {
   let net
-  if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233/"
-  if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233/"
+  if (document.getElementById('tn').checked) net = 'wss://s.altnet.rippletest.net:51233/'
+  if (document.getElementById('dn').checked) net = 'wss://s.devnet.rippletest.net:51233/'
   return net
 } // End of getNet()
 ```
+
 ### getAccount()
 
 The `getAccount()` function uses the faucet host to fund a new account wallet
@@ -120,10 +121,10 @@ async function getAccount() {
 Get the selected network, create a new client, and connect to the XRPL serever.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
-  resultField.value = `===Getting Account===\n\nConnected to ${net}.`
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+resultField.value = `===Getting Account===\n\nConnected to ${net}.`
 ```
 
 Request a new wallet funded with play-money XRP for experimentation.
@@ -162,18 +163,17 @@ These are wrapper functions that call the getAccount() function, then populate t
 
 ```javascript
 async function getNewAccount1() {
-  account1address.value = "=== Getting new account. ===\n\n"
-  account1seed.value = ""
-  const accountInfo= await getAccount()
+  account1address.value = '=== Getting new account. ===\n\n'
+  account1seed.value = ''
+  const accountInfo = await getAccount()
   account1address.value = accountInfo[0]
   account1seed.value = accountInfo[1]
 }
 
-
 async function getNewAccount2() {
-  account2address.value = "=== Getting new account. ===\n\n"
-  account2seed.value = ""
-  const accountInfo= await getAccount()
+  account2address.value = '=== Getting new account. ===\n\n'
+  account2seed.value = ''
+  const accountInfo = await getAccount()
   account2address.value = accountInfo[0]
   account2seed.value = accountInfo[1]
 }
@@ -199,6 +199,7 @@ async function getAccountFromSeed(my_seed) {
     return (address)
   }
 ```
+
 Catch and report any errors.
 
 ```javascript
@@ -208,16 +209,17 @@ Catch and report any errors.
     resultField.value = results
     throw error; // Re-throw the error to be handled by the caller
   }
-  ```
+```
 
-  Disconnect from the XRP Ledger and return the .
+Disconnect from the XRP Ledger and return the .
 
-  ```javascript
-  finally {
-    await client.disconnect();
-  }
+```javascript
+finally {
+  await client.disconnect();
+}
 } // End of getAccountFromSeed()
 ```
+
 ### getAccountFromSeed1 and getAccountFromSeed2
 
 These wrapper functions populate the Account1 Address or Account2 address from a seed value, respectively.
@@ -238,8 +240,8 @@ This local function copies the name, account, and seed values for Account1 and A
 
 ```javascript
 function gatherAccountInfo() {
-  let accountData = account1name.value + "\n" + account1address.value + "\n" + account1seed.value + "\n"
-  accountData += account2name.value + "\n" + account2address.value + "\n" + account2seed.value
+  let accountData = account1name.value + '\n' + account1address.value + '\n' + account1seed.value + '\n'
+  accountData += account2name.value + '\n' + account2address.value + '\n' + account2seed.value
   resultField.value = accountData
 }
 ```
@@ -250,7 +252,7 @@ This local function parses structured account information from the **Result** fi
 
 ```javascript
 function distributeAccountInfo() {
-  let accountInfo = resultField.value.split("\n")
+  let accountInfo = resultField.value.split('\n')
   account1name.value = accountInfo[0]
   account1address.value = accountInfo[1]
   account1seed.value = accountInfo[2]
@@ -298,22 +300,23 @@ async function getXrpBalance() {
     xrpBalanceField.value = await client.getXrpBalance(accountAddressField.value)
     resultField.value = results
   }
-  ```
-
-  Catch any errors and disconnect from the XRP Ledger.
-
-  ```javascript
-  catch (error) {
-    console.error('Error getting XRP balance:', error);
-    results += `\nError: ${error.message}\n`
-    resultField.value = results
-    throw error; // Re-throw the error to be handled by the caller
-  }
-  finally {
-    // Disconnect from the client
-    await client.disconnect();
-  }
 ```
+
+Catch any errors and disconnect from the XRP Ledger.
+
+```javascript
+catch (error) {
+  console.error('Error getting XRP balance:', error);
+  results += `\nError: ${error.message}\n`
+  resultField.value = results
+  throw error; // Re-throw the error to be handled by the caller
+}
+finally {
+  // Disconnect from the client
+  await client.disconnect();
+}
+```
+
 ### getTokenBalance()
 
 Get the balance of all tokens for the current active account. This is a function that is used frequently in other modular tutorials that deal with currencies other than XRP.
@@ -325,11 +328,11 @@ async function getTokenBalance() {
 Connect with the network.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()   
-  let results = `===Connected to ${net}.===\n===Getting account token balance...===\n\n`
-  resultField.value += results
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
+let results = `===Connected to ${net}.===\n===Getting account token balance...===\n\n`
+resultField.value += results
 ```
 
 Send a request to get the account balance, then wait for the results.
@@ -362,12 +365,12 @@ Catch and report any errors, then disconnect from the XRP Ledger.
     // Disconnect from the client
     await client.disconnect();
   }
-} 
+}
 ```
 
 ## base-module.html
 
-Create a standard HTML form to send transactions and requests, then display the results.  
+Create a standard HTML form to send transactions and requests, then display the results.
 
 ```html
 <html>
@@ -435,7 +438,7 @@ Create a standard HTML form to send transactions and requests, then display the 
                         <label for="account1address">Account 1 Address</label>
                     </span>
                 </td>
-                <td> 
+                <td>
                     <input type="text" id="account1address" size="40"></input>
                 </td>
                 <td>

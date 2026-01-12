@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-02-24"
+  editPage:
+    hide: true
+date: '2021-02-24'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 ---
+
 # Introducing XRP Ledger version 1.7.0
 
 Ripple has released version 1.7.0 of `rippled`, the reference server implementation of the XRP Ledger protocol. This release [significantly improves memory usage](https://blog.ripplex.io/how-ripples-c-team-cut-rippleds-memory-footprint-down-to-size/), introduces a protocol amendment to allow out-of-order transaction execution with Tickets, and brings several other features and improvements.
@@ -43,7 +44,7 @@ Loading mirror speeds from cached hostfile
 * extras: ftp.osuosl.org
 * updates: mirrors.vcea.wsu.edu
 ripple-nightly/signature
-|  650 B  00:00:00    
+|  650 B  00:00:00
 Retrieving key from https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
 Importing GPG key 0xCCAFD9A2:
 Userid     : "TechOps Team at Ripple <techops+rippled@ripple.com>"
@@ -67,10 +68,10 @@ $ sudo apt -y install rippled
 
 On supported platforms, see the [instructions on updating rippled](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.7.0-1.el7.x86_64.rpm) | `da32137d460c6c2ce5b7035d82b637f71138fa92564f7ab1fdf04d1e59be8f2a` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.7.0-1_amd64.deb) | `1920881caab4fac02a4a99a67bb4f2746b89f7b99f2c28e83832039a2dd5d8a5` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.7.0-1_amd64.deb)  | `1920881caab4fac02a4a99a67bb4f2746b89f7b99f2c28e83832039a2dd5d8a5` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -100,9 +101,9 @@ Date:   Tue Feb 23 12:51:11 2021 -0800
 
 - **Persist API-configured voting settings:** Previously, the amendments that a server would vote in support of or against could be configured both via the configuration file and via the ["feature" API method](https://xrpl.org/feature.html). Changes made in the configuration file were only loaded at server startup; changes made via the command line take effect immediately but were not persisted across restarts. Starting with this release, changes made via the API are saved to the `wallet.db` database file so that they persist even if the server is restarted. ([#3617](https://github.com/ripple/rippled/pull/3617))
 
-    Amendment voting in the config file is deprecated. The first time the server starts with v1.7.0 or higher, it reads any amendment voting settings in the config file and saves the settings to the database; on later restarts the server prints a warning message and ignores the `[amendments]` and `[veto_amendments]` stanzas of the config file.
+  Amendment voting in the config file is deprecated. The first time the server starts with v1.7.0 or higher, it reads any amendment voting settings in the config file and saves the settings to the database; on later restarts the server prints a warning message and ignores the `[amendments]` and `[veto_amendments]` stanzas of the config file.
 
-    Going forward, use the [feature method](https://xrpl.org/feature.html) to view and configure amendment votes. If you want to use the config file to configure amendment votes, add a line to the `[rpc_startup]` stanza such as the following:
+  Going forward, use the [feature method](https://xrpl.org/feature.html) to view and configure amendment votes. If you want to use the config file to configure amendment votes, add a line to the `[rpc_startup]` stanza such as the following:
 
         [rpc_startup]
         { "command": "feature", "feature": "FlowSortStrands", "vetoed": true }
@@ -123,18 +124,17 @@ Date:   Tue Feb 23 12:51:11 2021 -0800
 
 - **The `manifest` command is now public:** The manifest API method returns public information about a given validator. The required permissions have been changed so it is now part of the public API. ([#3612](https://github.com/ripple/rippled/pull/3612))
 
-
 ### Bug Fixes
 
 - **Implement sticky DNS resolution for validator list retrieval:** When attempting to load a validator list from a configured site, attempt to reuse the last IP that was successfully used if that IP is still present in the DNS response. ([#3494](https://github.com/ripple/rippled/issues/3494))
 
 - **Improve handling of RPC ledger_index argument:** You can now provide the `ledger_index` as a numeric string. This allows you to copy and use the numeric string `ledger_index` value returned by certain RPC commands. Previously you could only send native JSON numbers or shortcut strings such as "validated" in the `ledger_index` field. ([#3533](https://github.com/ripple/rippled/issues/3533))
 
-- **Fix improper promotion of bool on return**  ([6968da1](https://github.com/ripple/rippled/commit/6968da1))
+- **Fix improper promotion of bool on return** ([6968da1](https://github.com/ripple/rippled/commit/6968da1))
 
 - **Fix ledger sequence on copynode** ([#3643](https://github.com/ripple/rippled/pull/3643))
 
--  **Fix parsing of node public keys in `manifest` CLI:** The previous code attempts to validate the provided node public key using a function that assumes that the encoded public key is for an account. This causes the parsing to fail. The caller can now specify the type of the public key being checked. ([#3317](https://github.com/ripple/rippled/issues/3317))
+- **Fix parsing of node public keys in `manifest` CLI:** The previous code attempts to validate the provided node public key using a function that assumes that the encoded public key is for an account. This causes the parsing to fail. The caller can now specify the type of the public key being checked. ([#3317](https://github.com/ripple/rippled/issues/3317))
 
 - **Fix idle peer timer:** Fixes a bug where a function to remove idle peers was called every second instead of every 4 seconds. ([#3754](https://github.com/ripple/rippled/issues/3754))
 
@@ -159,7 +159,6 @@ Date:   Tue Feb 23 12:51:11 2021 -0800
 **TicketBatch:** Add Tickets feature for executing transactions outside of the typical sequence order.
 For more information on these and other protocol amendments, please see [Known Amendments](https://xrpl.org/known-amendments.html).
 
-
 ## Contributions
 
 ### GitHub
@@ -169,10 +168,9 @@ The public git repository for `rippled` is hosted on GitHub at <https://github.c
 We welcome contributions, big and small, and invite everyone to join the community
 of XRP Ledger developers and help us build the Internet of Value.
 
-
 ### Credits
-The following people contributed directly to this release:
 
+The following people contributed directly to this release:
 
 - CJ Cobb <ccobb@ripple.com>
 - Carl Hua <carlhua@gmail.com>

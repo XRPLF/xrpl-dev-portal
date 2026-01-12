@@ -1,14 +1,15 @@
 ---
 category: 2014
-date: "2014-08-01"
+date: '2014-08-01'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Development
+  - Development
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 author: Rome Reginelli
 ---
+
 # Dev Portal Adds rippled APIs
 
 Today, the Ripple Dev Portal gets a big boost of content and usability. The new additions to our development portal include thorough and tested documentation of all the public API methods for our core server software, ‘rippled’, alongside a host of improvements in styling and formatting, as well as new introductory material to give you direction in navigating the sea of Ripple technology.
@@ -23,11 +24,9 @@ Just how much did we change this time? Let's have a look at what an arbitrary AP
 
 [![Old documentation screenshot](https://cdn.ripple.com/wp-content/uploads/2014/08/Screen-Shot-2014-08-01-at-2.45.28-PM.png)](https://cdn.ripple.com/wp-content/uploads/2014/08/Screen-Shot-2014-08-01-at-2.45.28-PM.png)
 
-
 **After:**
 
 [![New documentation screenshot](https://cdn.ripple.com/wp-content/uploads/2014/08/Screen-Shot-2014-08-01-at-2.47.50-PM1.png)](https://cdn.ripple.com/wp-content/uploads/2014/08/Screen-Shot-2014-08-01-at-2.47.50-PM1.png)
-
 
 You can see just from the size of the screenshots how much more information our new documentation brings to the table. We’ve standardized the structure of every method reference, and simplified the descriptions of what each one does. All the parameters in the request are listed and explained; so are all the fields in the response. Tested, complete examples are provided for both request and response in every method. Details have been checked against running instances and the source code, and the entire document has been proof-read multiple times by different experts. All the new examples scroll separately so they don’t overflow the layout. (Tip: You can expand any example to its full vertical size by double-clicking it. Careful: some of them are <i>long.</i>) To top it off, there's brand-new introductory material, ranging from why to run a server to how to select the right tool for the job.
 

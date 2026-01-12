@@ -3,23 +3,23 @@
 // ****************************************
 
 function configureAmount() {
-  let amount = '';
-  if (currencyField.value === "XRP" || currencyField.value === "") {
+  let amount = ''
+  if (currencyField.value === 'XRP' || currencyField.value === '') {
     if (amountField.value !== '') {
-      amount = amountField.value; // XRP amount should be a string of drops
+      amount = amountField.value // XRP amount should be a string of drops
     } else {
-      amount = undefined; 
+      amount = undefined
     }
-  } else if (currencyField.value !== "") {
+  } else if (currencyField.value !== '') {
     amount = {
       currency: currencyField.value,
       issuer: issuerField.value,
       value: amountField.value,
-    };
+    }
   } else {
-    amount = undefined; // Or handle the case where no currency is provided
+    amount = undefined // Or handle the case where no currency is provided
   }
-  return amount;
+  return amount
 }
 
 // ****************************************
@@ -27,7 +27,7 @@ function configureAmount() {
 // ****************************************
 
 function configureExpiration() {
-  let expiration = ""
+  let expiration = ''
   var days = expirationField.value
   let d = new Date()
   d.setDate(d.getDate() + parseInt(days))

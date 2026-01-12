@@ -2,10 +2,11 @@
 html: sending-payments-to-customers.html
 parent: payment-types.html
 seo:
-    description: Construct payments carefully to thwart malicious actors.
+  description: Construct payments carefully to thwart malicious actors.
 labels:
   - トークン
 ---
+
 # 顧客への送金
 
 顧客のためにXRP Ledgerに支払いを送信する自動化システムを構築する際には、支払いが確実に行われるように注意する必要があります。悪意のある行為者は常に、システムを騙して必要以上の金額を支払わせる方法を見つけようとしています。

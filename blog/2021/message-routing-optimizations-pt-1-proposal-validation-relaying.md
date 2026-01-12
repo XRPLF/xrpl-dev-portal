@@ -1,14 +1,15 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-03-16"
+  editPage:
+    hide: true
+date: '2021-03-16'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Development
+  - Development
 author: Gregory Tsipenyuk and Nikolaos D. Bougalis
 ---
+
 # Message Routing Optimizations, Pt. 1: Proposal & Validation Relaying
 
 Like all peer-to-peer networks, the XRP Ledger needs a strategy to ensure that messages are propagated across the network. Of course, some types of messages are more important or more time-sensitive than others, so the XRP Ledger uses different strategies for relaying different types of messages.
@@ -41,7 +42,6 @@ These percentages are not unexpected and confirmed the theory that the propagati
 
 We are proposing to mitigate the load on the network by optimizing the relaying strategy for proposal and validation messages by limiting transmission of duplicates, resulting in a net reduction of the number of messages relayed.
 
-
 ## How It Works
 
 The proposal, previously [outlined on xrpchat.com](https://www.xrpchat.com/topic/33075-suggestion-reduce-relaying/), accomplishes this by allowing a server to select a subset of its peers to function as the source of proposal and validation messages from a specific validator and suppressing the messages from the rest of its peers by sending a “squelch” message to them.
@@ -56,13 +56,13 @@ When the node gets a message from a new peer, or receives a message from a peer 
 
 This mechanism allows to adjust the peer’s selection process to changes in the network topology. Note that a node maintains a record of the squelch duration for each squelched peer and doesn’t start the selection process if a message from a squelched peer is received too soon.
 
-This process is further demonstrated on a sequence diagram in Figure 2(A). Node  _G_ propagates validation and proposal messages from a validator to nodes _B_  through _F_ (blue arrows) via some route (1).
+This process is further demonstrated on a sequence diagram in Figure 2(A). Node _G_ propagates validation and proposal messages from a validator to nodes _B_ through _F_ (blue arrows) via some route (1).
 
 > ![Figure 2. Relay Reduction concept sequence diagram and graph visualization.](../img/message-routing/fig-2-relay-reduction-concept.png)
 >
 > _Figure 2. Relay Reduction concept sequence diagram and graph visualization._
 
-Nodes _B_ through _F_ are peers of node _A_ and relay the messages to node _A_ (green arrows). Consequently, node _A_ receives each message 5 times. As node _A_ receives the messages from its peers, it determines that messages from nodes _C_, _D_, and _E_  arrive sooner than from the rest of the peers.
+Nodes _B_ through _F_ are peers of node _A_ and relay the messages to node _A_ (green arrows). Consequently, node _A_ receives each message 5 times. As node _A_ receives the messages from its peers, it determines that messages from nodes _C_, _D_, and _E_ arrive sooner than from the rest of the peers.
 
 Node _A_ selects these peers as the source of the messages from the validator and sends a “squelch” message to nodes _B_ and _F_ (red arrows). Node _G_ keeps on relaying the messages to nodes _B_ through _F_ but only nodes _C_, _D_, and _E_ relay the messages to node _A_ (2).
 
@@ -76,11 +76,11 @@ However, as can be seen from Figure 2(C), node _A_ still receives 3 redundant me
 >
 > _Figure 3. Pros and cons of a spanning tree broadcast._
 
-Consider a message propagation in a network represented by a directed graph in figure 3(A). A simulated message propagation via Breadth First Search (BFS) from a vertex _A_ through the graph forms the following paths: 1) _A→C_, _A→E_, _A→F_; 2)  _C→D_, _C→E_; 3) _E→B_; 4) _F→B_, _F→D_; 5) _D→B_. All together there are 9 edges in the graph and as can be seen, vertices _B_, _D_, and _E_ have multiple incoming edges; i.e. receive the message from _A_ redundantly 3, 2, and 2 times respectively. If we form a spanning tree by selecting one random incoming edge in each node then it forms a graph in Figure 3(B). This graph has 5 edges; i.e. a number of redundant messages is reduced by 45%.
+Consider a message propagation in a network represented by a directed graph in figure 3(A). A simulated message propagation via Breadth First Search (BFS) from a vertex _A_ through the graph forms the following paths: 1) _A→C_, _A→E_, _A→F_; 2) _C→D_, _C→E_; 3) _E→B_; 4) _F→B_, _F→D_; 5) _D→B_. All together there are 9 edges in the graph and as can be seen, vertices _B_, _D_, and _E_ have multiple incoming edges; i.e. receive the message from _A_ redundantly 3, 2, and 2 times respectively. If we form a spanning tree by selecting one random incoming edge in each node then it forms a graph in Figure 3(B). This graph has 5 edges; i.e. a number of redundant messages is reduced by 45%.
 
-This topology is optimal in an ideal network with no failures. But in a real crypto network where links and nodes can experience arbitrary byzantine failure, this topology loses resilience and reliability. Indeed, if a link _C→E_ fails then nodes _E_ and _B_ are not going to receive the message as shown in Figure 3(C). If on the other hand we select two random incoming edges in each node then node  _E_ can receive the message via link _A→E_ as shown in figure 3(D). Other failures are still possible in this hypothetical network since nodes _C_ and _F_ have only one incoming edge; i.e. there is no redundancy.
+This topology is optimal in an ideal network with no failures. But in a real crypto network where links and nodes can experience arbitrary byzantine failure, this topology loses resilience and reliability. Indeed, if a link _C→E_ fails then nodes _E_ and _B_ are not going to receive the message as shown in Figure 3(C). If on the other hand we select two random incoming edges in each node then node _E_ can receive the message via link _A→E_ as shown in figure 3(D). Other failures are still possible in this hypothetical network since nodes _C_ and _F_ have only one incoming edge; i.e. there is no redundancy.
 
-There are some strategies where an optimal broadcast tree can be constructed with the flooding used for fast recovery in case of failures as described in the [Epidemic Broadcast Tree](https://core.ac.uk/download/pdf/32330596.pdf) research paper.  We are collaborating with University of Luxembourg researchers to investigate how other overlay optimization strategies can be applied.
+There are some strategies where an optimal broadcast tree can be constructed with the flooding used for fast recovery in case of failures as described in the [Epidemic Broadcast Tree](https://core.ac.uk/download/pdf/32330596.pdf) research paper. We are collaborating with University of Luxembourg researchers to investigate how other overlay optimization strategies can be applied.
 
 ### Validating This Proposal
 
@@ -94,10 +94,10 @@ Note that the resulting paths are not the optimal paths since the source upstrea
 
 We took 100,000 snapshots of the graph constructed this way. For each snapshot we recorded:
 
-* if the graph is weakly connected;
-* a number of nodes in the largest strongly connected component;
-* if remaining nodes have an incoming edge from the component; and
-* a number of undirected edges.
+- if the graph is weakly connected;
+- a number of nodes in the largest strongly connected component;
+- if remaining nodes have an incoming edge from the component; and
+- a number of undirected edges.
 
 ## Results
 
@@ -121,17 +121,16 @@ The network starts in a normal mode with 9,926 links. After about 5 minutes all 
 >
 > _Figure 4. Model of a number of links over time._
 
-Validating the Results  To collect information, we instantiated a testnet with 40 nodes, 10 of which were configured as validators; each node had 20 peers. We conducted several one-hour runs of this network, both with and without the “reduce relay” feature. The results are shown in Table 1.
+Validating the Results To collect information, we instantiated a testnet with 40 nodes, 10 of which were configured as validators; each node had 20 peers. We conducted several one-hour runs of this network, both with and without the “reduce relay” feature. The results are shown in Table 1.
 
 The reduction in a number of messages and size is about 2.76 fold, which is within the estimated range of reduction 2.4-2.8 fold. Bandwidth savings in this case is about 528K/sec.
 
 | Metric       | Relay Reduction disabled | Relay Reduction enabled | Reduction |
-|:-------------|:-------------------------|:------------------------|:----------|
+| :----------- | :----------------------- | :---------------------- | :-------- |
 | Count        | 15,628,604               | 5,653,278               | 276%      |
 | Size (bytes) | 2,979,290,492            | 1,077,290,776           | 276%      |
 
 The expected bandwidth savings across the entire XRP Ledger main network from applying the relay reduction feature can be estimated using data from the model and information collected from the main network, and works out to approximately ~1MB/sec per validator.
-
 
 ## Key Takeaways
 

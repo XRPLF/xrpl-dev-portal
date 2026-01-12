@@ -3,7 +3,7 @@
 
 // Dependencies for Node.js.
 // In browsers, use <script> tags as in the example demo.html.
-if (typeof module !== "undefined") {
+if (typeof module !== 'undefined') {
   // Use var here because const/let are block-scoped to the if statement.
   var xrpl = require('xrpl')
   var BigNumber = require('bignumber.js')
@@ -12,11 +12,11 @@ if (typeof module !== "undefined") {
 // Connect ---------------------------------------------------------------------
 async function main() {
   const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
-  console.log("Connecting to Testnet...")
+  console.log('Connecting to Testnet...')
   await client.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
-  console.log("Requesting address from the Testnet faucet...")
+  console.log('Requesting address from the Testnet faucet...')
   const wallet = (await client.fundWallet()).wallet
   console.log(`Got address ${wallet.address}.`)
   // To use existing credentials, you can load them from a seed value, for
@@ -28,14 +28,14 @@ async function main() {
   // to look up order books using book_offers, but for this tutorial we reuse
   // these variables to construct the actual Offer later.
   const we_want = {
-    currency: "TST",
-    issuer: "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
-    value: "25"
+    currency: 'TST',
+    issuer: 'rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd',
+    value: '25',
   }
   const we_spend = {
-    currency: "XRP",
-           // 25 TST * 10 XRP per TST * 15% financial exchange (FX) cost
-    value: xrpl.xrpToDrops(25*10*1.15)
+    currency: 'XRP',
+    // 25 TST * 10 XRP per TST * 15% financial exchange (FX) cost
+    value: xrpl.xrpToDrops(25 * 10 * 1.15),
   }
   // "Quality" is defined as TakerPays / TakerGets. The lower the "quality"
   // number, the better the proposed exchange rate is for the taker.
@@ -46,11 +46,11 @@ async function main() {
   // Look up Offers. -----------------------------------------------------------
   // To buy TST, look up Offers where "TakerGets" is TST:
   const orderbook_resp = await client.request({
-    "command": "book_offers",
-    "taker": wallet.address,
-    "ledger_index": "current",
-    "taker_gets": we_want,
-    "taker_pays": we_spend
+    command: 'book_offers',
+    taker: wallet.address,
+    ledger_index: 'current',
+    taker_gets: we_want,
+    taker_pays: we_spend,
   })
   console.log(JSON.stringify(orderbook_resp.result, null, 2))
 
@@ -75,7 +75,7 @@ async function main() {
             ${we_want.currency}`)
         running_total = running_total.plus(BigNumber(o.owner_funds))
         if (running_total >= want_amt) {
-          console.log("Full Offer will probably fill")
+          console.log('Full Offer will probably fill')
           break
         }
       } else {
@@ -104,11 +104,11 @@ async function main() {
     // ours, so TakerGets and TakerPays are reversed from the previous
     // book_offers request.
     const orderbook2_resp = await client.request({
-      "command": "book_offers",
-      "taker": wallet.address,
-      "ledger_index": "current",
-      "taker_gets": we_spend,
-      "taker_pays": we_want
+      command: 'book_offers',
+      taker: wallet.address,
+      ledger_index: 'current',
+      taker_gets: we_spend,
+      taker_pays: we_want,
     })
     console.log(JSON.stringify(orderbook2_resp.result, null, 2))
 
@@ -118,7 +118,9 @@ async function main() {
 
     const offers2 = orderbook2_resp.result.offers
     let tally_currency = we_spend.currency
-    if (tally_currency == "XRP") { tally_currency = "drops of XRP" }
+    if (tally_currency == 'XRP') {
+      tally_currency = 'drops of XRP'
+    }
     let running_total2 = 0
     if (!offers2) {
       console.log(`No similar Offers in the book. Ours would be the first.`)
@@ -149,18 +151,18 @@ async function main() {
   // hard-coded TakerGets and TakerPays amounts.
 
   const offer_1 = {
-    "TransactionType": "OfferCreate",
-    "Account": wallet.address,
-    "TakerPays": we_want,
-    "TakerGets": we_spend.value // since it's XRP
+    TransactionType: 'OfferCreate',
+    Account: wallet.address,
+    TakerPays: we_want,
+    TakerGets: we_spend.value, // since it's XRP
   }
 
   const prepared = await client.autofill(offer_1)
-  console.log("Prepared transaction:", JSON.stringify(prepared, null, 2))
+  console.log('Prepared transaction:', JSON.stringify(prepared, null, 2))
   const signed = wallet.sign(prepared)
-  console.log("Sending OfferCreate transaction...")
+  console.log('Sending OfferCreate transaction...')
   const result = await client.submitAndWait(signed.tx_blob)
-  if (result.result.meta.TransactionResult == "tesSUCCESS") {
+  if (result.result.meta.TransactionResult == 'tesSUCCESS') {
     console.log(`Transaction succeeded:
           https://testnet.xrpl.org/transactions/${signed.hash}`)
   } else {
@@ -171,11 +173,11 @@ async function main() {
   // In JavaScript, you can use getBalanceChanges() to help summarize all the
   // balance changes caused by a transaction.
   const balance_changes = xrpl.getBalanceChanges(result.result.meta)
-  console.log("Total balance changes:", JSON.stringify(balance_changes, null,2))
+  console.log('Total balance changes:', JSON.stringify(balance_changes, null, 2))
 
   // Helper to convert an XRPL amount to a string for display
   function amt_str(amt) {
-    if (typeof amt == "string") {
+    if (typeof amt == 'string') {
       return `${xrpl.dropsToXrp(amt)} XRP`
     } else {
       return `${amt.value} ${amt.currency}.${amt.issuer}`
@@ -184,22 +186,22 @@ async function main() {
 
   let offers_affected = 0
   for (const affnode of result.result.meta.AffectedNodes) {
-    if (affnode.hasOwnProperty("ModifiedNode")) {
-      if (affnode.ModifiedNode.LedgerEntryType == "Offer") {
+    if (affnode.hasOwnProperty('ModifiedNode')) {
+      if (affnode.ModifiedNode.LedgerEntryType == 'Offer') {
         // Usually a ModifiedNode of type Offer indicates a previous Offer that
         // was partially consumed by this one.
         offers_affected += 1
       }
-    } else if (affnode.hasOwnProperty("DeletedNode")) {
-      if (affnode.DeletedNode.LedgerEntryType == "Offer") {
+    } else if (affnode.hasOwnProperty('DeletedNode')) {
+      if (affnode.DeletedNode.LedgerEntryType == 'Offer') {
         // The removed Offer may have been fully consumed, or it may have been
         // found to be expired or unfunded.
         offers_affected += 1
       }
-    } else if (affnode.hasOwnProperty("CreatedNode")) {
-      if (affnode.CreatedNode.LedgerEntryType == "RippleState") {
-        console.log("Created a trust line.")
-      } else if (affnode.CreatedNode.LedgerEntryType == "Offer") {
+    } else if (affnode.hasOwnProperty('CreatedNode')) {
+      if (affnode.CreatedNode.LedgerEntryType == 'RippleState') {
+        console.log('Created a trust line.')
+      } else if (affnode.CreatedNode.LedgerEntryType == 'Offer') {
         const offer = affnode.CreatedNode.NewFields
         console.log(`Created an Offer owned by ${offer.Account} with
           TakerGets=${amt_str(offer.TakerGets)} and
@@ -210,11 +212,11 @@ async function main() {
   console.log(`Modified or removed ${offers_affected} matching Offer(s)`)
 
   // Check balances ------------------------------------------------------------
-  console.log("Getting address balances as of validated ledger...")
+  console.log('Getting address balances as of validated ledger...')
   const balances = await client.request({
-    command: "account_lines",
+    command: 'account_lines',
     account: wallet.address,
-    ledger_index: "validated"
+    ledger_index: 'validated',
     // You could also use ledger_index: "current" to get pending data
   })
   console.log(JSON.stringify(balances.result, null, 2))
@@ -222,9 +224,9 @@ async function main() {
   // Check Offers --------------------------------------------------------------
   console.log(`Getting outstanding Offers from ${wallet.address} as of validated ledger...`)
   const acct_offers = await client.request({
-    command: "account_offers",
+    command: 'account_offers',
     account: wallet.address,
-    ledger_index: "validated"
+    ledger_index: 'validated',
   })
   console.log(JSON.stringify(acct_offers.result, null, 2))
 

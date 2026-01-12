@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Execute a dry run of any transaction type to preview results and metadata.
+  description: Execute a dry run of any transaction type to preview results and metadata.
 labels:
   - Transaction Sending
 ---
+
 # simulate
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Simulate.cpp "Source")
 
 The `simulate` method executes a dry run of _any_ transaction type, enabling you to preview the results and metadata of a transaction without committing them to the XRP Ledger. Since this command never submits a transaction to the network, it doesn't incur any fees.
@@ -13,7 +15,6 @@ The `simulate` method executes a dry run of _any_ transaction type, enabling you
 The `simulate` method isn't guaranteed to be the same when you actually submit a transaction because the ledger state--which affects how a transaction is processed--can change between the transaction simulation and submission.
 {% /admonition %}
 
-
 ## Request Format
 
 An example of the request format:
@@ -21,25 +22,28 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": 2,
-    "command": "simulate",
-    "tx_json" : {
-        "TransactionType" : "Payment",
-        "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
-        "Amount" : {
-            "currency" : "USD",
-            "value" : "1",
-            "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-        }
+  "id": 2,
+  "command": "simulate",
+  "tx_json": {
+    "TransactionType": "Payment",
+    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+    "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+    "Amount": {
+      "currency": "USD",
+      "value": "1",
+      "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
     }
+  }
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "method": "simulate",
@@ -59,6 +63,7 @@ An example of the request format:
   ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -75,7 +80,6 @@ The request includes the following parameters:
 
 - The simulated transaction must be unsigned.
 - If the `Fee`, `Sequence`, `SigningPubKey`, or `NetworkID` fields are provided, they will be used in the transaction. Otherwise, the server will autofill them.
-
 
 ## Response Format
 
@@ -178,18 +182,17 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| Field          | Type   | Description |
-| -------------- | ------ | ----------- |
-| `tx_json`      | Object | The transaction that was simulated, including auto-filled values. Included if `binary` was `false`. |
-| `tx_blob`      | String | The serialized transaction that was simulated, including auto-filled values. Included if `binary` was `true`. |
-| `ledger_index` | [Ledger Index](https://xrpl.org/docs/references/protocol/data-types/basic-data-types#ledger-index) | The ledger index of the ledger that would have included this transaction. |
-| `meta`         | Object | Transaction metadata, which describes the results of the transaction. Not included if the transaction fails with a code that means it wouldn’t be included in the ledger (such as a non-TEC code). Included if `binary` was `false`. |
-| `meta_blob`    | String | Transaction metadata, which describes the results of the transaction. Not included if the transaction fails with a code that means it wouldn’t be included in the ledger (such as a non-TEC code). Included if `binary` was `true`. |
-
+| Field          | Type                                                                                               | Description                                                                                                                                                                                                                          |
+| -------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tx_json`      | Object                                                                                             | The transaction that was simulated, including auto-filled values. Included if `binary` was `false`.                                                                                                                                  |
+| `tx_blob`      | String                                                                                             | The serialized transaction that was simulated, including auto-filled values. Included if `binary` was `true`.                                                                                                                        |
+| `ledger_index` | [Ledger Index](https://xrpl.org/docs/references/protocol/data-types/basic-data-types#ledger-index) | The ledger index of the ledger that would have included this transaction.                                                                                                                                                            |
+| `meta`         | Object                                                                                             | Transaction metadata, which describes the results of the transaction. Not included if the transaction fails with a code that means it wouldn’t be included in the ledger (such as a non-TEC code). Included if `binary` was `false`. |
+| `meta_blob`    | String                                                                                             | Transaction metadata, which describes the results of the transaction. Not included if the transaction fails with a code that means it wouldn’t be included in the ledger (such as a non-TEC code). Included if `binary` was `true`.  |
 
 ## Possible Errors
 
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `transactionSigned` - The transaction was signed. The simulated transaction must be unsigned.
+- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+- `transactionSigned` - The transaction was signed. The simulated transaction must be unsigned.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

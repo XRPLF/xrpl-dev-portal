@@ -2,8 +2,9 @@
 html: direct-xrp-payments.html
 parent: payment-types.html
 seo:
-    description: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。
+  description: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。
 ---
+
 # XRPによる直接支払い
 
 金融システムの基本は、 _価値の移動_ です。一言で言えば、決済です。XRP Ledgerでの最も簡単な支払いタイプは、XRP間の直接支払いで、XRP Ledgerのあるアカウントから別のアカウントにXRPを直接移動します。
@@ -27,13 +28,11 @@ seo:
 
 XRP間の直接支払いではPartial Paymentは使用できませんが、Partial Paymentでは複数の送金元通貨から変換後にXRPを送金できます。
 
-
 ## アカウントの資金提供
 
 XRP Ledgerにそのアドレスの記録が事前に存在していなくても、支払いで[口座準備金](../accounts/reserves.md)の最少額を満たすのに十分なXRPが送金されれば、数学的に有効なアドレスで支払いを受け取ることができます。支払いで十分なXRPを送金できない場合は失敗します。
 
 詳細は、[アカウント](../accounts/index.md#アカウントの作成)をご覧ください。
-
 
 ## アドレスの再利用
 
@@ -41,13 +40,11 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 
 送金元は、目的の受取人が最後に支払いを送信したときと同じアドレスを使用していると仮定しないことが重要です。必然的に、セキュリティの侵害が発生し、ユーザまたは企業はアドレスを変更しなければならない場合があります。送金する前に、現在の受取アドレスを受取人に尋ねてください。これにより、漏えいした古いアドレスを制御している不正ユーザに誤ってお金を送信することはありません。
 
-
 ## XRPによる直接支払いの処理方法
 
 大まかに言えば、XRP Ledgerのトランザクション処理エンジンでは、XRPによる直接支払いを次のように適用します。
 
 1. [Paymentトランザクション][]のパラメータを検証します。トランザクションがXRPを送信、送金するように構成されている場合、トランザクション処理エンジンはそのトランザクションをXRP間の直接支払いとして認識します。検証チェックは次のように行います。
-
    - すべてのフィールドが正しいフォーマットであることを確認します。たとえば、XRPによる直接支払いの場合、`Amount`フィールドは[XRPのdrop数][]でなければなりません。
    - 送信元アドレスがXRP Ledgerの資金供給された[アカウント](../accounts/index.md)であることを確認します。
    - 指定された署名がすべて、送信元アドレスに対して有効であることを確認します。
@@ -57,7 +54,6 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
    いずれかのチェックに失敗すると、支払いは失敗します。
 
 2. 受取アドレスが、資金供給されたアカウントかどうかを確認します。
-
    - 受取アドレスに資金が供給されている場合は、[DepositAuth](../accounts/depositauth.md)や[RequireDest](../transactions/source-and-destination-tags.md#タグの必須化)など、支払いの受け取りに関する制限が受取アドレスにあるかどうかを確認します。そのような制限を支払いが満たしていない場合、支払いは失敗します。
    - 受取アドレスに資金が供給されていない場合は、[必要準備金](../accounts/reserves.md)の最低額を満たすのに十分なXRPが支払いで送金されるかどうかを確認します。十分でない場合、支払いは失敗します。
 
@@ -67,7 +63,6 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 
    エンジンは、[トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)に`delivered_amount`フィールドを追加して、送金金額を示します。正しい金額のXRPを受け取ったことを確認できるように、必ず`delivered_amount`を使用する必要があります。`Amount`フィールドでは**ありません**。（通貨間の支払「Partial Payment」では、`Amount`フィールドに記載されているよりも少額のXRPが送金される場合があります。）詳細は、[Partial Payments](partial-payments.md)をご覧ください。
 
-
 ## 他の支払いタイプとの比較
 
 - **XRPによる直接支払い**は、単一のトランザクションでXRPを送受信する唯一の方法です。この方法は、速度、シンプルさ、低コストの面でバランスが取れています。
@@ -76,15 +71,14 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 - [Escrow](escrow.md)では、特定の条件が満たされたときに、意図した受取人が要求できるXRPを確保します。XRPの金額は完全に保証されており、Escrowの有効期限が切れない限り、送金元が使用することはできません。Escrowは、巨額のスマートコントラクトに適しています。
 - [Payment Channel](payment-channels.md)では、XRPが確保されます。受取人は、署名による認証を使用して、チャネルから一括でXRPを要求できます。XRP Ledgerの全トランザクションを送信せずに、認証を個々に確認できます。Payment Channelは、極めて大量の小口決済または「ストリーミング」支払いに適しています。
 
-
 ## 関連項目
 
 - **チュートリアル:**
-    - [XRPの送金（対話型チュートリアル）](../../tutorials/how-tos/send-xrp.md)
-    - [WebSocketを使用した着信ペイメントの監視](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
+  - [XRPの送金（対話型チュートリアル）](../../tutorials/how-tos/send-xrp.md)
+  - [WebSocketを使用した着信ペイメントの監視](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
 - **リファレンス:**
-    - [Paymentトランザクション][]
-    - [トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)
-    - [account_infoメソッド][] - XRP残高を確認します。
+  - [Paymentトランザクション][]
+  - [トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)
+  - [account_infoメソッド][] - XRP残高を確認します。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

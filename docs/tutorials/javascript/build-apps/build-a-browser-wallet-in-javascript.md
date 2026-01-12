@@ -5,9 +5,11 @@ targets:
   - en
   - ja # TODO: translate this page
 seo:
-    description: Build a graphical browser wallet for the XRPL using Javascript.
+  description: Build a graphical browser wallet for the XRPL using Javascript.
 ---
+
 # Build a Browser Wallet in JavaScript
+
 <!-- STYLE_OVERRIDE: wallet -->
 
 This tutorial demonstrates how to build a browser wallet for the XRP Ledger using the Javascript programming language and various libraries. This application can be used as a starting point for building a more complete and powerful application, as a reference point for building comparable apps, or as a learning experience to better understand how to integrate XRP Ledger functionality into a larger project.
@@ -36,10 +38,10 @@ This application can:
 - View any XRP Ledger account's activity, including showing how much XRP was delivered by each transaction.
 - Show how much XRP is set aside for the account's [reserve requirement](../../../concepts/accounts/reserves.md).
 - Send [direct XRP payments](../../../concepts/payment-types/direct-xrp-payments.md), and provide feedback about the intended destination address, including:
-    - Displaying your account's available balance
-    - Verifying that the destination address is valid
-    - Validating the account has enough XRP to send
-    - Allowing you to specify a destination tag
+  - Displaying your account's available balance
+  - Verifying that the destination address is valid
+  - Validating the account has enough XRP to send
+  - Allowing you to specify a destination tag
 
 ## Steps
 
@@ -60,7 +62,7 @@ yarn create vite simple-xrpl-wallet --template vanilla
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/package.json" language="js" /%}
 
-   - Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
+- Alternatively you can also do `yarn add <package-name>` for each individual package to add them to your `package.json` file.
 
 4. Install dependencies:
 
@@ -172,12 +174,12 @@ Destination Tag: (Not usually necessary unless you're paying an account tied to 
 
 Now that we have created the home page and the send XRP page, let's create the transactions page that will display the transaction history of the account. In order to see what's happening on the ledger, we're going to display the following fields:
 
-  - Account: The account that sent the transaction.
-  - Destination: The account that received the transaction.
-  - Transaction Type: The type of transaction.
-  - Result: The result of the transaction.
-  - Delivered amount: The amount of XRP or tokens delivered by the transaction, if applicable.
-  - Link: A link to the transaction on the XRP Ledger Explorer.
+- Account: The account that sent the transaction.
+- Destination: The account that received the transaction.
+- Transaction Type: The type of transaction.
+- Result: The result of the transaction.
+- Delivered amount: The amount of XRP or tokens delivered by the transaction, if applicable.
+- Link: A link to the transaction on the XRP Ledger Explorer.
 
 {% admonition type="warning" name="Caution" %}When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](../../../concepts/payment-types/partial-payments.md) can deliver much less than the stated `Amount` and still be successful.{% /admonition %}
 

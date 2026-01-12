@@ -2,10 +2,11 @@
 html: transaction-censorship-detection.html
 parent: networks-and-servers.html
 seo:
-    description: XRP Ledgerでは取引検閲の自動検知機能がすべてのrippledサーバで有効になっています。
+  description: XRP Ledgerでは取引検閲の自動検知機能がすべてのrippledサーバで有効になっています。
 labels:
   - ブロックチェーン
 ---
+
 # 取引検閲の検知
 
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}新規: rippled 1.2.0{% /badge %}
@@ -13,8 +14,6 @@ labels:
 XRP Ledgerは、高い検閲耐性を実現できるように設計されています。この設計をサポートするために、XRP Ledgerでは、取引検閲の自動検知機能がすべての`rippled`サーバで有効になっており、検閲によるネットワークへの影響の有無を、すべての参加者が確認できます。
 
 `rippled`サーバがネットワークと同期している間、検知機能は、`rippled`サーバの観点から、[コンセンサス](../consensus-protocol/index.md)の最終ラウンドで受け入れられ、最後に検証されたレジャーに取り込まれるトランザクションをすべて追跡します。検知機能では、数回のコンセンサスラウンド後、検証済みのレジャーに取り込まれていないトランザクションの重大度が高くなるというログメッセージを発行します。
-
-
 
 ## 仕組み
 
@@ -30,8 +29,6 @@ XRP Ledgerは、高い検閲耐性を実現できるように設計されてい�
 
    `rippled`サーバログにこれらのメッセージが表示される場合、他のサーバでトランザクションを取り込むことができない理由を調査する必要があります。まず、原因が悪意のある検閲よりも[誤検知](#誤検知の可能性)（無害なバグ）である可能性が高いと仮定します。
 
-
-
 ## 警告メッセージの例
 
 トランザクションE08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7がレジャー18851530～18851545までの15個のレジャーのトラッカーに残っている場合に、取引検閲検知機能によって発行される警告メッセージの例を次に示します。
@@ -40,7 +37,6 @@ XRP Ledgerは、高い検閲耐性を実現できるように設計されてい�
 LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851545.
 ```
 
-
 ## エラーメッセージの例
 
 トランザクションE08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7がレジャー18851530～18851605までの75個のレジャー（15個のレジャーの5セット）のトラッカーに残っている場合に、取引検閲検知機能によって発行されるエラーメッセージの例を以下に示します。
@@ -48,7 +44,6 @@ LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 ```text
 LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605.Additional warnings suppressed.
 ```
-
 
 ## 誤検知の可能性
 
@@ -63,7 +58,6 @@ LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 - ネットワーク内の`rippled`サーバ（自身のサーバも含まれる可能性が高い）は、`rippled`サーバがトランザクションをネットワーク内の他の`rippled`サーバに一貫性なく中継するバグのクラスの影響を受けています。
 
   現在、この予期しない動作の原因となる既知のバグはありません。ただし、バグの疑いがある影響を確認した場合は、[RippleのBug Bounty](https://ripple.com/bug-bounty/)プログラムへのご報告をお願いいたします。
-
 
 ## 関連項目
 

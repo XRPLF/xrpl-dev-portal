@@ -1,6 +1,6 @@
 ---
 seo:
-    description: Get information about protocol amendments.
+  description: Get information about protocol amendments.
 labels:
   - Blockchain
   - Core Server
@@ -23,32 +23,38 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "command": "feature",
   "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "feature",
-    "params": [
-        {
-            "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373"
-        }
-    ]
+  "method": "feature",
+  "params": [
+    {
+      "feature": "4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373"
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: feature [<feature_id>]
 rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -57,9 +63,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 
 The request includes the following parameters:
 
-| `Field`   | Type    | Description                                            |
-|:----------|:--------|:-------------------------------------------------------|
-| `feature` | String  | _(Optional)_ The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments. |
+| `Field`   | Type   | Description                                                                                                                                                                                      |
+| :-------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `feature` | String | _(Optional)_ The unique ID of an amendment, as hexadecimal; or the short name of the amendment. If provided, limits the response to one amendment. Otherwise, the response lists all amendments. |
 
 ## Response Format
 
@@ -68,6 +74,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -81,9 +88,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -98,9 +107,11 @@ An example of a successful response:
     }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -116,16 +127,17 @@ Connecting to 127.0.0.1:5005
     }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing **a map of amendments** as a JSON object. The keys of the object are amendment IDs. The values for each key are _amendment objects_ that describe the status of the amendment with that ID. If the request specified a `feature`, the map contains only the requested amendment object, after applying any changes from the request. Each amendment object has the following fields:
 
-| `Field`     | Type    | Description                                          |
-|:------------|:--------|:-----------------------------------------------------|
-| `enabled`   | Boolean | Whether this amendment is currently enabled in the latest ledger. |
-| `name`      | String  | (May be omitted) The human-readable name for this amendment, if known. |
+| `Field`     | Type    | Description                                                                                                                                                                                                                                                                                                                                                                      |
+| :---------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `enabled`   | Boolean | Whether this amendment is currently enabled in the latest ledger.                                                                                                                                                                                                                                                                                                                |
+| `name`      | String  | (May be omitted) The human-readable name for this amendment, if known.                                                                                                                                                                                                                                                                                                           |
 | `supported` | Boolean | Whether the server knows how to apply this amendment. If this field is set to `false` (the server does not know how to apply this amendment) and `enabled` is set to `true` (this amendment is enabled in the latest ledger), this amendment may cause your server to be [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). |
 
 {% admonition type="warning" name="Caution" %}The `name` for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.{% /admonition %}

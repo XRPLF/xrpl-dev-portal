@@ -1,13 +1,14 @@
 ---
 category: 2023
-date: "2022-01-27"
+date: '2022-01-27'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # The NFT-Devnet Decommissioned on January 31, 2023
 
 The "NFT-Devnet" was a test network running experimental code to support Non-Fungible Tokens (NFTs) natively on the XRP Ledger (per the XLS-20 standard).
@@ -22,13 +23,12 @@ The "NFT-Devnet" preview server is now decommissioned and will not return to ser
 
 To avoid interruption of your development and testing activities for NFT applications, update your URL to use the XRP Testnet or XRP Devnet at your earliest convenience.
 
-To move your application to XRP Testnet, change the NFT-Devnet URLs you are using to XRP Testnet URLs. 
+To move your application to XRP Testnet, change the NFT-Devnet URLs you are using to XRP Testnet URLs.
 
-| Type      | From NFT-Devnet URL                           | To XRP Testnet URL                       |  
-|:----------|:----------------------------------------------|:-----------------------------------------|
+| Type      | From NFT-Devnet URL                           | To XRP Testnet URL                       |
+| :-------- | :-------------------------------------------- | :--------------------------------------- |
 | WebSocket | `wss://xls20-sandbox.rippletest.net:51233/`   | `wss://s.altnet.rippletest.net:51233/`   |
 | JSON-RPC  | `https://xls20-sandbox.rippletest.net:51234/` | `https://s.altnet.rippletest.net:51234/` |
-
 
 ## Further Reading
 

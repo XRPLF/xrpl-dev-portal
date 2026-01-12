@@ -2,17 +2,17 @@
 html: change-or-remove-a-regular-key-pair.html
 parent: manage-account-settings.html
 seo:
-    description: アカウントですでに承認されているレギュラーキーペアを削除するか更新します。
+  description: アカウントですでに承認されているレギュラーキーペアを削除するか更新します。
 labels:
   - セキュリティ
   - アカウント
 ---
+
 # レギュラーキーペアの変更または削除
 
 XRP Ledgerでは、アカウントはその後のトランザクションには _レギュラーキーペア_ と呼ばれるセカンダリキーペアで署名することができます。アカウントのレギュラーキーペアが漏えいした場合、またはセキュリティ対策としてレギュラーキーペアを定期的に変更する必要がある場合は、[SetRegularKeyトランザクション][]を使用してアカウントレギュラーキーペアを削除または変更します。
 
 マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](../../../concepts/accounts/cryptographic-keys.md)をご覧ください。
-
 
 ## レギュラーキーペアの変更
 
@@ -20,11 +20,9 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 
 マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](../../../concepts/accounts/cryptographic-keys.md)をご覧ください。
 
-
 ## レギュラーキーペアの削除
 
 漏えいしたレギュラーキーペアを単にアカウントから削除する場合は、キーペアを最初に生成する必要はありません。`RegularKey`フィールドを省略した[SetRegularKeyトランザクション][]を使用します。アカウントの別の署名手段（マスターキーペアまたは[署名者リスト](../../../concepts/accounts/multi-signing.md)）が現在有効になっていない場合は、トランザクションが失敗することに注意してください。
-
 
 アカウントのレギュラーキーペアを削除する場合、`SetRegularKey`トランザクションでは、アカウントのマスター秘密鍵（シークレット）または既存のレギュラーキーペアによる署名が必要です。マスター秘密鍵またはレギュラー秘密鍵の送信は危険であるため、トランザクションの署名とネットワークへのトランザクションの送信を切り離した2段階方式でこのトランザクションを実行します。
 
@@ -32,14 +30,12 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 
 {% partial file="/@l10n/ja/docs/_snippets/tutorial-sign-step.md" /%}
 
-
 リクエストフィールドに以下の値を指定します。
 
-| リクエストフィールド | 値                                                        |
-|:--------------|:-------------------------------------------------------------|
-| `Account`     | アカウントのアドレス。                                 |
-| `secret`      | アカウントの`master_key`、`master_seed`、または`master_seed_hex`（マスター秘密鍵またはレギュラー秘密鍵） |
-
+| リクエストフィールド | 値                                                                                                       |
+| :------------------- | :------------------------------------------------------------------------------------------------------- |
+| `Account`            | アカウントのアドレス。                                                                                   |
+| `secret`             | アカウントの`master_key`、`master_seed`、または`master_seed_hex`（マスター秘密鍵またはレギュラー秘密鍵） |
 
 #### リクエストのフォーマット
 
@@ -48,6 +44,7 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
  "command":"sign",
@@ -58,9 +55,11 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
   "secret":"snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {
    "method":"sign",
@@ -75,17 +74,19 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
     ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 #Syntax: sign secret tx_json
 rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", "Account":"rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 #### レスポンスのフォーマット
 
@@ -94,6 +95,7 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
  "result":{
@@ -113,9 +115,11 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
  "type":"response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {NEWWWWWWWWWWWW
    "result":{
@@ -134,9 +138,11 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
    }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 {
   "result" :{
@@ -155,6 +161,7 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -162,7 +169,6 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
 `sign`コマンドのレスポンスには上記のような`tx_blob`値が含まれています。オフライン署名レスポンスには`signedTransaction`値が含まれています。いずれもトランザクションの署名済みバイナリ表現（ブロブ）です。
 
 次に`submit`コマンドを使用して、トランザクションブロブ（`tx_blob`または`signedTransaction`）をネットワークに送信します。
-
 
 ### トランザクションの送信
 
@@ -175,15 +181,18 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
    "command":"submit",
    "tx_blob":"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {
   "method":"submit",
@@ -194,17 +203,19 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
   ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 #Syntax: submit tx_blob
 rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 #### レスポンスのフォーマット
 
@@ -213,6 +224,7 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
  "result":{
@@ -235,9 +247,11 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
  "type":"response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {
    "result":{
@@ -259,9 +273,11 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
    }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 {
   "result" :{
@@ -283,6 +299,7 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -291,7 +308,6 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
 前述の`SetRegularKey`トランザクションにより削除されたレギュラー秘密鍵を使用して[AccountSetトランザクション][]に署名した際のエラーレスポンスの例を以下に示します。
 
-
 ### レスポンスのフォーマット
 
 処理が成功したレスポンスの例:
@@ -299,6 +315,7 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
  "error":"badSecret",
@@ -316,9 +333,11 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
  "type":"response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {NEWWWWWWWWWWWW
    "result":{
@@ -337,9 +356,11 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
    }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 {
   "result" :{
@@ -358,6 +379,7 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}

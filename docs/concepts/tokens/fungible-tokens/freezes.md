@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Issuers can freeze their issued tokens for compliance purposes.
+  description: Issuers can freeze their issued tokens for compliance purposes.
 labels:
   - Tokens
 ---
+
 # Freezing Tokens
 
 Issuers can freeze the tokens they issue in the XRP Ledger. **This does not apply to XRP,** which is the native asset of the XRP Ledger, not an issued token.
@@ -14,24 +15,23 @@ In certain cases, to meet regulatory requirements, or while investigating suspic
 
 Trust line tokens have these settings related to freezes:
 
-* [**Individual Freeze**](#individual-freeze) - Freeze one counterparty, so they cannot spend tokens.
-* [**Deep Freeze**](./deep-freeze.md) - Further freeze one counterparty, so that they cannot receive those tokens, either.
-* [**Global Freeze**](#global-freeze) - Freeze all counterparties.
-* [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
+- [**Individual Freeze**](#individual-freeze) - Freeze one counterparty, so they cannot spend tokens.
+- [**Deep Freeze**](./deep-freeze.md) - Further freeze one counterparty, so that they cannot receive those tokens, either.
+- [**Global Freeze**](#global-freeze) - Freeze all counterparties.
+- [**No Freeze**](#no-freeze) - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.
 
 All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the token issuer or the currency holder can freeze a trust line; however, the effect is minimal when a currency holder enacts a freeze.
 
 [MPTs](./multi-purpose-tokens.md) have similar functionality, but it is called "locking" and individual freezes always function like deep freeze.
 
-
 ## Individual Freeze
 
 The **Individual Freeze** feature is a setting on a [trust line](index.md). When an issuer enables the Individual Freeze setting, the following rules apply to the tokens in that trust line:
 
-* Payments can still occur directly between the two parties of the frozen trust line.
-* The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen currencies directly to the issuer.
-* The counterparty can still receive payments from others on the frozen trust line.
-* The counterparty's offers to sell the tokens in the frozen trust line are [considered unfunded](../decentralized-exchange/offers.md#lifecycle-of-an-offer).
+- Payments can still occur directly between the two parties of the frozen trust line.
+- The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen currencies directly to the issuer.
+- The counterparty can still receive payments from others on the frozen trust line.
+- The counterparty's offers to sell the tokens in the frozen trust line are [considered unfunded](../decentralized-exchange/offers.md#lifecycle-of-an-offer).
 
 Reminder: Trust lines do not hold XRP. XRP cannot be frozen.
 
@@ -43,14 +43,13 @@ The Individual Freeze applies to a single trust line. To freeze multiple tokens 
 
 An address cannot enable the Individual Freeze setting if it has enabled the [No Freeze](#no-freeze) setting.
 
-
 ## Global Freeze
 
 The **Global Freeze** feature is a setting on an account. An account can enable a global freeze only on itself. When an issuer enables the Global Freeze feature, the following rules apply to all tokens they issue:
 
-* All counterparties of the frozen issuer can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects the issuer's own [operational addresses](../../accounts/account-types.md).)
-* Counterparties of the frozen issuer can still send and receive payments directly to and from the issuing address.
-* All offers to sell tokens issued by the frozen address are [considered unfunded](../decentralized-exchange/offers.md#lifecycle-of-an-offer).
+- All counterparties of the frozen issuer can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects the issuer's own [operational addresses](../../accounts/account-types.md).)
+- Counterparties of the frozen issuer can still send and receive payments directly to and from the issuing address.
+- All offers to sell tokens issued by the frozen address are [considered unfunded](../decentralized-exchange/offers.md#lifecycle-of-an-offer).
 
 Reminder: addresses cannot issue XRP. Global freezes do not apply to XRP.
 
@@ -62,7 +61,6 @@ Global Freeze applies to _all_ tokens issued and held by the address. You cannot
 
 An address can always enable the Global Freeze setting. However, if the address has enabled the [No Freeze](#no-freeze) setting, it can never _disable_ Global Freeze.
 
-
 ## No Freeze
 
 The **No Freeze** feature is a setting on an address that permanently gives up the ability to freeze tokens arbitrarily. An issuer can use this feature to make its tokens as "more like physical money" in the sense that the issuer cannot interfere with counterparties trading the tokens among themselves.
@@ -71,8 +69,8 @@ Reminder: XRP already cannot be frozen. The No Freeze feature only applies to ot
 
 The No Freeze setting has two effects:
 
-* The issuer can no longer enable Individual Freeze on trust lines to any counterparty.
-* The issuer can still enact a Global Freeze, but cannot _disable_ the Global Freeze.
+- The issuer can no longer enable Individual Freeze on trust lines to any counterparty.
+- The issuer can still enact a Global Freeze, but cannot _disable_ the Global Freeze.
 
 The XRP Ledger cannot force an issuer to honor the obligations that its issued funds represent, so No Freeze does stop a stablecoin issuer from defaulting on its obligations. However, No Freeze ensures that an issuer does not use the Global Freeze feature unfairly against specific users.
 
@@ -80,23 +78,21 @@ The No Freeze setting applies to all tokens issued to and from an address. If yo
 
 You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [Regular Key](../../../references/protocol/transactions/types/setregularkey.md) or a [multi-signed transaction](../../accounts/multi-signing.md) to enable No Freeze.
 
-
-
 # See Also
 
 - [Freeze Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/freeze)
 - **Concepts:**
-    - [Trust Lines and Issuing](index.md)
+  - [Trust Lines and Issuing](index.md)
 - **Tutorials:**
-    - [Enable No Freeze](../../../tutorials/how-tos/use-tokens/enable-no-freeze.md)
-    - [Enact Global Freeze](../../../tutorials/how-tos/use-tokens/enact-global-freeze.md)
-    - [Freeze a Trust Line](../../../tutorials/how-tos/use-tokens/freeze-a-trust-line.md)
+  - [Enable No Freeze](../../../tutorials/how-tos/use-tokens/enable-no-freeze.md)
+  - [Enact Global Freeze](../../../tutorials/how-tos/use-tokens/enact-global-freeze.md)
+  - [Freeze a Trust Line](../../../tutorials/how-tos/use-tokens/freeze-a-trust-line.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
-    - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
+  - [account_lines method][]
+  - [account_info method][]
+  - [AccountSet transaction][]
+  - [TrustSet transaction][]
+  - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+  - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

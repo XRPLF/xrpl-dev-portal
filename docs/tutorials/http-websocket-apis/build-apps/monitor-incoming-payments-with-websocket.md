@@ -2,12 +2,13 @@
 html: monitor-incoming-payments-with-websocket.html
 parent: http-websocket-apis-tutorials.html
 seo:
-    description: Use the WebSocket API to actively monitor for new XRP payments (and more).
+  description: Use the WebSocket API to actively monitor for new XRP payments (and more).
 filters:
   - interactive_steps
 labels:
   - Payments
 ---
+
 # Monitor Incoming Payments with WebSocket
 
 This tutorial shows how to monitor for incoming [payments](../../../concepts/payment-types/index.md) using the [WebSocket API](../../../references/http-websocket-apis/index.md). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
@@ -21,7 +22,6 @@ WebSocket follows a model where the client and server open one connection, then 
 - The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.
 - You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` or Clio server](../../../infrastructure/installation/index.md), you can also connect to that server locally.
 - To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](../../../concepts/tokens/index.md), you need even more precision. For more information, see [Currency Precision](../../../references/protocol/data-types/currency-formats.md#xrp-precision).
-
 
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <!-- Big number support -->
@@ -37,7 +37,6 @@ function writeToConsole(console_selector, message) {
 }
 </script>
 
-
 ## 1. Connect to the XRP Ledger
 
 The first step of monitoring for incoming payments is to connect to the XRP Ledger, specifically a `rippled` server.
@@ -48,10 +47,10 @@ The following JavaScript code connects to one of Ripple's public server clusters
 const socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
 socket.addEventListener('open', (event) => {
   // This callback runs when the connection is open
-  console.log("Connected!")
+  console.log('Connected!')
   const command = {
-    "id": "on_open_ping_1",
-    "command": "ping"
+    id: 'on_open_ping_1',
+    command: 'ping',
   }
   socket.send(JSON.stringify(command))
 })
@@ -80,6 +79,7 @@ Example:
 <button id="connect-socket-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
+
 <h5>Console:</h5>
 <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
 
@@ -114,18 +114,16 @@ $("#connect-socket-button").click((event) => {
 })
 </script>
 
-
 ## 2. Dispatch Incoming Messages to Handlers
 
 Since WebSocket connections can have several messages going each way and there is not a strict 1:1 correlation between requests and responses, you need to identify what to do with each incoming message. A good model for coding this is to set up a "dispatcher" function that reads incoming messages and relays each message to the correct code path for handling it. To help dispatch messages appropriately, the `rippled` server provides a `type` field on every WebSocket message:
 
 - For any message that is a direct response to a request from the client side, the `type` is the string `response`. In this case, the server also provides the following:
+  - An `id` field that matches the `id` provided in the request this is a response for. (This is important because responses may arrive out of order.)
 
-    - An `id` field that matches the `id` provided in the request this is a response for. (This is important because responses may arrive out of order.)
+  - A `status` field that indicates whether the API successfully processed your request. The string value `success` indicates [a successful response](../../../references/http-websocket-apis/api-conventions/response-formatting.md). The string value `error` indicates [an error](../../../references/http-websocket-apis/api-conventions/error-formatting.md).
 
-    - A `status` field that indicates whether the API successfully processed your request. The string value `success` indicates [a successful response](../../../references/http-websocket-apis/api-conventions/response-formatting.md). The string value `error` indicates [an error](../../../references/http-websocket-apis/api-conventions/error-formatting.md).
-
-        {% admonition type="danger" name="Warning" %}When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md).{% /admonition %}
+    {% admonition type="danger" name="Warning" %}When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md).{% /admonition %}
 
 - For follow-up messages from [subscriptions](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md), the `type` indicates the type of follow-up message it is, such as the notification of a new transaction, ledger, or validation; or a follow-up to an ongoing [pathfinding request](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md). Your client only receives these messages if it subscribes to them.
 
@@ -135,41 +133,41 @@ The following JavaScript code defines a helper function to make API requests int
 
 ```js
 const AWAITING = {}
-const handleResponse = function(data) {
-  if (!data.hasOwnProperty("id")) {
-    console.error("Got response event without ID:", data)
+const handleResponse = function (data) {
+  if (!data.hasOwnProperty('id')) {
+    console.error('Got response event without ID:', data)
     return
   }
   if (AWAITING.hasOwnProperty(data.id)) {
     AWAITING[data.id].resolve(data)
   } else {
-    console.warn("Response to un-awaited request w/ ID " + data.id)
+    console.warn('Response to un-awaited request w/ ID ' + data.id)
   }
 }
 
 let autoid_n = 0
 function api_request(options) {
-  if (!options.hasOwnProperty("id")) {
-    options.id = "autoid_" + (autoid_n++)
+  if (!options.hasOwnProperty('id')) {
+    options.id = 'autoid_' + autoid_n++
   }
 
-  let resolveHolder;
+  let resolveHolder
   AWAITING[options.id] = new Promise((resolve, reject) => {
     // Save the resolve func to be called by the handleResponse function later
     resolveHolder = resolve
     try {
       // Use the socket opened in the previous example...
       socket.send(JSON.stringify(options))
-    } catch(error) {
+    } catch (error) {
       reject(error)
     }
   })
-  AWAITING[options.id].resolve = resolveHolder;
+  AWAITING[options.id].resolve = resolveHolder
   return AWAITING[options.id]
 }
 
 const WS_HANDLERS = {
-  "response": handleResponse
+  response: handleResponse,
   // Fill this out with your handlers in the following format:
   // "type": function(event) { /* handle event of this type */ }
 }
@@ -179,15 +177,15 @@ socket.addEventListener('message', (event) => {
     // Call the mapped handler
     WS_HANDLERS[parsed_data.type](parsed_data)
   } else {
-    console.log("Unhandled message from server", event)
+    console.log('Unhandled message from server', event)
   }
 })
 
 // Show api_request functionality
 async function pingpong() {
-  console.log("Ping...")
-  const response = await api_request({command: "ping"})
-  console.log("Pong!", response)
+  console.log('Ping...')
+  const response = await api_request({ command: 'ping' })
+  console.log('Pong!', response)
 }
 // Add pingpong() to the 'open' listener for socket
 ```
@@ -196,6 +194,7 @@ async function pingpong() {
 
 <button id="enable_dispatcher" class="btn btn-primary" disabled="disabled">Enable Dispatcher</button>
 <button id="dispatch_ping" class="btn btn-primary" disabled="disabled">Ping!</button>
+
 <h5>Responses</h5>
 <div class="ws-console" id="monitor-console-ping"><span class="placeholder">(Log is empty)</span></div>
 
@@ -274,25 +273,31 @@ The following code sample subscribes to the Test Net Faucet's sending address. I
 ```js
 async function do_subscribe() {
   const sub_response = await api_request({
-    command:"subscribe",
-    accounts: ["rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"]
+    command: 'subscribe',
+    accounts: ['rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe'],
   })
-  if (sub_response.status === "success") {
-    console.log("Successfully subscribed!")
+  if (sub_response.status === 'success') {
+    console.log('Successfully subscribed!')
   } else {
-    console.error("Error subscribing: ", sub_response)
+    console.error('Error subscribing: ', sub_response)
   }
 }
 // Add do_subscribe() to the 'open' listener for socket
 
-const log_tx = function(tx) {
-  console.log(tx.transaction.TransactionType + " transaction sent by " +
-              tx.transaction.Account +
-              "\n  Result: " + tx.meta.TransactionResult +
-              " in ledger " + tx.ledger_index +
-              "\n  Validated? " + tx.validated)
+const log_tx = function (tx) {
+  console.log(
+    tx.transaction.TransactionType +
+      ' transaction sent by ' +
+      tx.transaction.Account +
+      '\n  Result: ' +
+      tx.meta.TransactionResult +
+      ' in ledger ' +
+      tx.ledger_index +
+      '\n  Validated? ' +
+      tx.validated,
+  )
 }
-WS_HANDLERS["transaction"] = log_tx
+WS_HANDLERS['transaction'] = log_tx
 ```
 
 For the following example, try opening the [Transaction Sender](/resources/dev-tools/tx-sender) in a different window or even on a different device and sending transactions to the address you subscribed to:
@@ -302,6 +307,7 @@ For the following example, try opening the [Transaction Sender](/resources/dev-t
 <label for="subscribe_address">Test Net Address:</label>
 <input type="text" class="form-control" id="subscribe_address" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM">
 <button id="tx_subscribe" class="btn btn-primary" disabled="disabled">Subscribe</button>
+
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-subscribe"><span class="placeholder">(Log is empty)</span></div>
 
@@ -338,7 +344,6 @@ const log_tx = function(tx) {
 WS_HANDLERS["transaction"] = log_tx
 </script>
 
-
 ## 4. Read Incoming Payments
 
 When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [tokens](../../../concepts/tokens/index.md). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
@@ -347,19 +352,19 @@ When you subscribe to an account, you get messages for _all transactions to or f
 - The **`meta.TransactionResult` field** is the [transaction result](../../../references/protocol/transactions/transaction-results/index.md). If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
 - The **`transaction.Account`** field is the sender of the transaction. If you are only looking for transactions sent by others, you can ignore any transactions where this field matches your account's address. (Keep in mind, it _is_ possible to make a cross-currency payment to yourself.)
 - The **`transaction.TransactionType` field** is the type of transaction. The transaction types that can possibly deliver currency to an account are as follows:
-    - **[Payment transactions][]** can deliver XRP or [tokens](../../../concepts/tokens/index.md). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts).
+  - **[Payment transactions][]** can deliver XRP or [tokens](../../../concepts/tokens/index.md). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts).
 
-        {% admonition type="danger" name="Warning" %}If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](../../../concepts/payment-types/partial-payments.md#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.{% /admonition %}
+    {% admonition type="danger" name="Warning" %}If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](../../../concepts/payment-types/partial-payments.md#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.{% /admonition %}
 
-    - **[CheckCash transactions][]** allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
+  - **[CheckCash transactions][]** allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
 
-    - **[EscrowFinish transactions][]** can deliver XRP by finishing an [Escrow](../../../concepts/payment-types/escrow.md) created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
+  - **[EscrowFinish transactions][]** can deliver XRP by finishing an [Escrow](../../../concepts/payment-types/escrow.md) created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
 
-    - **[OfferCreate transactions][]** can deliver XRP or tokens by consuming offers your account has previously placed in the XRP Ledger's [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.
+  - **[OfferCreate transactions][]** can deliver XRP or tokens by consuming offers your account has previously placed in the XRP Ledger's [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.
 
-    - **[PaymentChannelClaim transactions][]** can deliver XRP from a [payment channel](../../../concepts/payment-types/payment-channels.md). Look at the metadata to see which accounts, if any, received XRP from the transaction.
+  - **[PaymentChannelClaim transactions][]** can deliver XRP from a [payment channel](../../../concepts/payment-types/payment-channels.md). Look at the metadata to see which accounts, if any, received XRP from the transaction.
 
-    - **[PaymentChannelFund transactions][]** can return XRP from a closed (expired) payment channel to the sender.
+  - **[PaymentChannelFund transactions][]** can return XRP from a closed (expired) payment channel to the sender.
 
 - The **`meta` field** contains [transaction metadata](../../../references/protocol/transactions/metadata.md), including exactly how much of which currency or currencies was delivered where. See [Look Up transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md) for more information on how to understand transaction metadata.
 
@@ -370,6 +375,7 @@ The following sample code looks at transaction metadata of all the above transac
 {% interactive-block label="Read Payments" steps=$frontmatter.steps %}
 
 <button id="tx_read" class="btn btn-primary" disabled="disabled">Start Reading</button>
+
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-read"><span class="placeholder">(Log is empty)</span></div>
 
@@ -495,7 +501,6 @@ Many programming languages have libraries for sending and receiving data over a 
 
 {% admonition type="success" name="Tip" %}Don't see the programming language of your choice? Click the "Edit on GitHub" link at the top of this page and contribute your own sample code!{% /admonition %}
 
-
 ## Footnotes
 
 [1.](#from-footnote-1) <a id="footnote-1"></a> In practice, when calling an HTTP-based API multiple times, the client and server may reuse the same connection for several requests and responses. This practice is called [HTTP persistent connection, or keep-alive](https://en.wikipedia.org/wiki/HTTP_persistent_connection). From a development standpoint, the code to use an HTTP-based API is the same regardless of whether the underlying connection is new or reused.
@@ -503,14 +508,14 @@ Many programming languages have libraries for sending and receiving data over a 
 ## See Also
 
 - **Concepts:**
-    - [Transactions](../../../concepts/transactions/index.md)
-    - [Finality of Results](../../../concepts/transactions/finality-of-results/index.md) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
+  - [Transactions](../../../concepts/transactions/index.md)
+  - [Finality of Results](../../../concepts/transactions/finality-of-results/index.md) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
 - **Tutorials:**
-    - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
-    - [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+  - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
 - **References:**
-    - [Transaction Types](../../../references/protocol/transactions/types/index.md)
-    - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
-    - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md) - Tables of all possible result codes for transactions.
+  - [Transaction Types](../../../references/protocol/transactions/types/index.md)
+  - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
+  - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md) - Tables of all possible result codes for transactions.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

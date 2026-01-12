@@ -2,26 +2,24 @@
 html: peer-to-peer-payments-uc.html
 parent: payments-uc.html
 seo:
-    description: XRP Ledgerを使用して、第三者の介入を受けずに日々の支払いを処理することができます。
+  description: XRP Ledgerを使用して、第三者の介入を受けずに日々の支払いを処理することができます。
 labels:
   - トランザクション
 ---
+
 # 個人間取引
 
 XRP Ledgerは、決済を処理するための効率的でボーダレスなサービスを提供します。従来の支払い方法とは異なり、資産を保有し価値を移転するために金融機関を必要としません。インターネットにアクセスできれば、誰かに現金を渡すのと同じくらい簡単に、XRP Ledger上で直接支払いを行うことができます。友人同士であれ、買い手と売り手であれ、XRP Ledgerは直接的な（ピアツーピアの）支払いを素早く、低いネットワーク手数料で処理することを可能にします。
 
-
 ## ウォレット
 
 XRP Ledgerを使用して直接支払いを処理する前に、使用するウォレットを決める必要があります。ウォレットは、レジャーとのやり取りや資金の管理を簡単にします。ニーズに応じて多くの中から選ぶことができ、自分で作成することも可能です。[暗号通貨のウォレット](../../introduction/crypto-wallets.md)をご覧ください。
-
 
 ## アカウントの作成
 
 アカウントを作成する前に、XRP Ledgerのどのネットワークを使用するかを決定する必要があります。異なるユースケースのために複数のネットワークがありますが、ネイティブのXRPトランザクションは`Mainnet`でしか起こりません。[パラレルネットワーク](../../concepts/networks-and-servers/parallel-networks.md)をご覧ください。
 
 一般に公開されているウォレットのほとんどは、アカウントを作成する機能を提供しており、公開鍵と秘密鍵を生成することができます。そうでない場合でも、数学的に有効である限り、自分でアカウントを作成することができます。[アカウントの作成](../../concepts/accounts/index.md#creating-accounts)をご覧ください。
-
 
 ## アカウントを探す
 
@@ -31,19 +29,16 @@ XRP Ledgerを使用して直接支払いを処理する前に、使用するウ�
 
 アカウントに資金を提供した後、XRP Ledger自体でアカウントが存在し、資金が提供されていることを確認する必要があります。次の方法などが利用できます。
 
-  - [XRPLエクスプローラー](https://livenet.xrpl.org/)
-  - [`account_info`コマンド](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)
-
+- [XRPLエクスプローラー](https://livenet.xrpl.org/)
+- [`account_info`コマンド](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)
 
 ## Paymentの利用
-
 
 ### XRPによる直接支払い
 
 XRP支払いは、XRP Ledger上で誰かに支払いをする最も簡単な方法です。Checkやエスクローを使うこともできますが、これらは複数回のトランザクションを必要とします。XRPの直接支払いは1回のトランザクションで済みますので、この方法は日々の取引に最適です。もしあなたが大量のトランザクションを扱う事業者であれば、迅速かつシンプルで、手数料が最も低いこの方法がぴったりかもしれません。[XRPによる直接支払い](../../concepts/payment-types/direct-xrp-payments.md)をご覧ください。
 
 XRPの直接支払いを実現するためには、受取人のアドレスを知るだけで十分です。
-
 
 ### クロスカレンシー支払い
 

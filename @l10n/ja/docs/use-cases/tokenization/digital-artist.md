@@ -2,10 +2,11 @@
 html: digital-artist.html
 parent: nft-mkt-overview.html
 seo:
-    description: Creating an NFT Marketplace for buying and selling NFTs.
+  description: Creating an NFT Marketplace for buying and selling NFTs.
 labels:
   - Tokenization
 ---
+
 # デジタルアーティスト
 
 _デジタルアーティストとして、私はXRPLを使って自分の作品のNFTokenを作成し、XRPLで販売したいと思います。XRPLはコスト効率がよく、カーボンニュートラルだからです。_
@@ -20,7 +21,7 @@ NFTokenを作成すると、実際の物理的またはデジタル資産の実�
 
 より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](../../tutorials/javascript/nfts/mint-and-burn-nfts.md)をご覧ください。
 
-[![デジタルアーティストのフロー](/docs/img/nft-mkt-digital-artist.png "デジタルアーティストのフロー")](/docs/img/nft-mkt-digital-artist.png)
+[![デジタルアーティストのフロー](/docs/img/nft-mkt-digital-artist.png 'デジタルアーティストのフロー')](/docs/img/nft-mkt-digital-artist.png)
 
 ## 公開サーバを利用する
 
@@ -32,11 +33,11 @@ NFTをミントして販売することで、マーケットプレイスを構�
 
 初めてNFTを作成する場合は、チュートリアル _NFTokenのミントとバーン_ の手順に従ってください。NFTを作成する際には、以下の点にも留意してください。
 
-* <code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](../../references/protocol/data-types/nftoken.md#transferfee)をご覧ください。
-* NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
+- <code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](../../references/protocol/data-types/nftoken.md#transferfee)をご覧ください。
+- NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
 <!--[Add link to blog post about alternative NFT cache options.] -->
-* `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](../../concepts/tokens/nfts/collections.md)をご覧ください。
-* 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)および[Transferableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)をご覧ください。
+- `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](../../concepts/tokens/nfts/collections.md)をご覧ください。
+- 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)および[Transferableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)をご覧ください。
 
 [NFTokenのミントとバーン](../../tutorials/javascript/nfts/mint-and-burn-nfts.md)をご覧ください。
 
@@ -75,7 +76,6 @@ NFTを出品する際、オブジェクトのメタデータを使って分類�
 - [Clioのセットアップ](../../infrastructure/installation/install-clio-on-ubuntu.md)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
-
 
 ## NFTのバーン
 

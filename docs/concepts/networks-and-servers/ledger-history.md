@@ -2,12 +2,13 @@
 html: ledger-history.html
 parent: networks-and-servers.html
 seo:
-    description: rippled servers store a variable amount of transaction and state history locally.
+  description: rippled servers store a variable amount of transaction and state history locally.
 labels:
   - Data Retention
   - Blockchain
   - Core Server
 ---
+
 # Ledger History
 
 The [consensus process](../consensus-protocol/index.md) creates a chain of [validated ledger versions](../ledgers/index.md), each derived from the previous one by applying a set of [transactions](../transactions/index.md). Every [`rippled` server](index.md) stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.
@@ -34,16 +35,15 @@ Backfilling history is one of the server's lowest priorities, so it may take a l
 
 The XRP Ledger identifies data (on several different levels) by a unique hash of its contents. The XRP Ledger's state data contains a short summary of the ledger's history, in the form of the [LedgerHashes object type](../../references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md). Servers use the LedgerHashes objects to know which ledger versions to fetch, and to confirm that the ledger data they receive is correct and complete.
 
-
 <a id="with-advisory-deletion"></a><!-- old anchor to this area -->
+
 ### Backfilling
+
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}Updated in: rippled 1.6.0{% /badge %}
 
 The amount of history a server attempts to download depends on its configuration. The server automatically tries to fill gaps by downloading history up to **the oldest ledger it already has available**. You can use the `[ledger_history]` setting to make the server backfill history beyond that point. However, the server never downloads ledgers that would be scheduled for [deletion](../../infrastructure/configuration/data-retention/online-deletion.md).
 
 The `[ledger_history]` setting defines a minimum number of ledgers to accumulate from before the current validated ledger. Use the special value `full` to download the [full history](#full-history) of the network. If you specify a number of ledgers, it must be equal to or more than the `online_deletion` setting; you cannot use `[ledger_history]` to make the server download _less_ history. To reduce the amount of history a server stores, change the [online deletion](../../infrastructure/configuration/data-retention/online-deletion.md) settings instead. <!-- STYLE_OVERRIDE: a number of -->
-
-
 
 ## Full History
 
@@ -58,22 +58,21 @@ Providers of Full History servers reserve the right to block access that is foun
 
 For instructions on setting up full history, see [Configure Full History](../../infrastructure/configuration/data-retention/configure-full-history.md).
 
-
 ## See Also
 
 - **Concepts:**
-    - [Ledgers](../ledgers/index.md)
-    - [Consensus](../consensus-protocol/index.md)
+  - [Ledgers](../ledgers/index.md)
+  - [Consensus](../consensus-protocol/index.md)
 - **Tutorials:**
-    - [Configure `rippled`](../../infrastructure/configuration/index.md)
-        - [Configure Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
-        - [Configure Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
-        - [Configure Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)
+  - [Configure `rippled`](../../infrastructure/configuration/index.md)
+    - [Configure Online Deletion](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
+    - [Configure Advisory Deletion](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
+    - [Configure Full History](../../infrastructure/configuration/data-retention/configure-full-history.md)
 - **References:**
-    - [ledger method][]
-    - [server_info method][]
-    - [ledger_request method][]
-    - [can_delete method][]
-    - [ledger_cleaner method][]
+  - [ledger method][]
+  - [server_info method][]
+  - [ledger_request method][]
+  - [can_delete method][]
+  - [ledger_cleaner method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

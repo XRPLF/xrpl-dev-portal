@@ -1,13 +1,14 @@
 ---
-date: "2014-06-26"
+date: '2014-06-26'
 template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Curves with a Twist
 
 Ripple Labs is considering the addition of a new elliptic curve implementation to the Ripple protocol to complement the existing cryptographic system. The addition of a Schnorr-based cryptosystem will produce more optimal and secure design schemes and provides a platform for robust and sophisticated functionality while preserving existing network structure and efficiency.
@@ -23,7 +24,6 @@ The Ed25519 cryptosystem was designed by prominent cryptographer [Daniel J. Bern
 [![Curve25519 compared to secp256k1](https://cdn.ripple.com/wp-content/uploads/2014/06/curved2.png)](https://cdn.ripple.com/wp-content/uploads/2014/06/curved2.png)
 
 _Image: secp256k1 (left) versus Curve25519 (right)_
-
 
 The [open and transparent nature](http://safecurves.cr.yp.to/) of how the curve parameters for Curve25519 were set mitigates the risk of a potential backdoor.
 
@@ -56,15 +56,15 @@ Summary of advantages versus ECDSA:
 
 - Simpler to securely implement
 - Composable threshold signatures without multi-party computation
-    - Verification happens off-network allowing for sophisticated functionality without increasing network load or complexity
-    - Conducive to highly distributed systems
+  - Verification happens off-network allowing for sophisticated functionality without increasing network load or complexity
+  - Conducive to highly distributed systems
 - Less constraints allows for more optimal and secure design schemes
 
 DSA schemes are difficult to manage because the schemes are easy to get wrong. An improper implementations is trivial to break, and what might seem like a minor misstep can precipitate a system-wide vulnerability—as demonstrated by [the highly publicized Playstation hack](http://nakedsecurity.sophos.com/2012/10/25/sony-ps3-hacked-for-good-master-keys-revealed/) in 2012.
 
 Hackers were able to access full control of the PS3 employing “simple algebra” after Sony set a constant in its custom DSA implementation instead of a randomly generated number. The sensitivity of DSA signatures to human error allowed this single oversight to fully compromise the console’s encryption protections, exposing the platform and Sony’s partners to the perpetual threat of piracy.
 
-Alternatively, Schnorr signatures are more forgiving and simpler to implement because its security is inherently [more robust based on the scheme’s dynamic hash function](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&amp;arnumber=4908440). The ephemeral public value _r_ is tightly bound to the message, which means that the security of the scheme is no longer [dependent on the collision resistance of the hash function](http://www.cs.bris.ac.uk/Publications/pub_master.jsp?id=2001023).
+Alternatively, Schnorr signatures are more forgiving and simpler to implement because its security is inherently [more robust based on the scheme’s dynamic hash function](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=4908440). The ephemeral public value _r_ is tightly bound to the message, which means that the security of the scheme is no longer [dependent on the collision resistance of the hash function](http://www.cs.bris.ac.uk/Publications/pub_master.jsp?id=2001023).
 
 [![DSA process compared to Schnorr process](https://cdn.ripple.com/wp-content/uploads/2014/06/dsa-schnorr.png)](https://cdn.ripple.com/wp-content/uploads/2014/06/dsa-schnorr.png)
 

@@ -2,8 +2,8 @@ Many objects in the XRP Ledger, particularly transactions and ledgers, are uniqu
 
 An XRP Ledger hash value has the following characteristics:
 
-* Exactly 64 characters in length
-* [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) character set: 0-9 and A-F.
-* Typically written in upper case.
+- Exactly 64 characters in length
+- [Hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) character set: 0-9 and A-F.
+- Typically written in upper case.
 
 {% admonition type="info" name="Note" %}SHA-512Half has similar security to the officially-defined _SHA-512/256_ hash function. However, the XRP Ledger's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.){% /admonition %}

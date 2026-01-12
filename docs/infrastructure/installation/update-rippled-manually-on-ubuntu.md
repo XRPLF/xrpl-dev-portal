@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Manually update rippled on Ubuntu Linux.
+  description: Manually update rippled on Ubuntu Linux.
 labels:
   - Core Server
   - Security
 ---
+
 # Update Manually on Ubuntu or Debian
 
 This page describes how to manually update to the latest release of `rippled` on Ubuntu Linux. You can also set up [automatic updates](update-rippled-automatically-on-linux.md).
@@ -17,39 +18,38 @@ To update manually, complete the following steps:
 
 1. Update repositories:
 
-    ```
-    sudo apt -y update
-    ```
+   ```
+   sudo apt -y update
+   ```
 
 2. Upgrade the `rippled` package:
 
-    ```
-    sudo apt -y upgrade rippled
-    ```
+   ```
+   sudo apt -y upgrade rippled
+   ```
 
 3. Reload the `systemd` unit files:
 
-    ```
-    sudo systemctl daemon-reload
-    ```
+   ```
+   sudo systemctl daemon-reload
+   ```
 
 4. Restart the `rippled` service:
 
-    ```
-    sudo systemctl restart rippled
-    ```
-
+   ```
+   sudo systemctl restart rippled
+   ```
 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Consensus](../../concepts/consensus-protocol/index.md)
+  - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+  - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Troubleshoot rippled](../troubleshooting/index.md)
+  - [Troubleshoot rippled](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
-        - [server_info method][]
+  - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [server_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

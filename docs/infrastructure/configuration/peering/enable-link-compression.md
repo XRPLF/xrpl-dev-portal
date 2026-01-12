@@ -2,10 +2,11 @@
 html: enable-link-compression.html
 parent: configure-peering.html
 seo:
-    description: Save bandwidth by compressing peer-to-peer communications.
+  description: Save bandwidth by compressing peer-to-peer communications.
 labels:
   - Core Server
 ---
+
 # Enable Link Compression
 
 The `rippled` server can save bandwidth by compressing its [peer-to-peer communications](../../../concepts/networks-and-servers/peer-protocol.md), at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled.

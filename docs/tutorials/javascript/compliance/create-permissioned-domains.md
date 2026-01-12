@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Create a permissioned domain to restrict access to financial services that meet compliance requirements.
+  description: Create a permissioned domain to restrict access to financial services that meet compliance requirements.
 labels:
   - Decentralized Finance
   - Permissioned Domains
 ---
+
 # Create Permissioned Domains
 
 Permissioned domains are controlled environments within the broader ecosystem of the XRP Ledger blockchain. Domains restrict access to other features such as Permissioned DEXes and Lending Protocols, only allowing access to them for accounts with specific credentials.
@@ -20,7 +21,7 @@ This example shows how to:
 Download the [Modular Tutorials](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/modular-tutorials/) folder.
 
 {% admonition type="info" name="Note" %}
-Without the Modular Tutorial Samples, you will not be able to try the examples that follow. 
+Without the Modular Tutorial Samples, you will not be able to try the examples that follow.
 {% /admonition %}
 
 ## Get Accounts
@@ -29,18 +30,17 @@ To get test accounts:
 
 1. Open `create-permissioned-domains.html` in a browser.
 2. Get test accounts.
-    - If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    - If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    - If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   - If you copied the gathered information from another tutorial:
+     1. Paste the gathered information to the **Result** field.
+     2. Click **Distribute Account Info**.
+   - If you have an existing account seed:
+     1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+     2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   - If you do not have existing accounts:
+     1. Click **Get New Account 1**.
+     2. Click **Get New Account 2**.
 
 [![Created Accounts](/docs/img/create-permissioned-domain-2.png)](/docs/img/create-permissioned-domain-2.png)
-
 
 ## Issue a Credential
 
@@ -50,7 +50,6 @@ To get test accounts:
 4. Click **Create Credential**.
 
 [![Created Credential](/docs/img/create-permissioned-domain-3.png)](/docs/img/create-permissioned-domain-3.png)
-
 
 ## Create a Permissioned Domain
 
@@ -64,15 +63,12 @@ To get test accounts:
 
 [![Created Domain](/docs/img/create-permissioned-domain-4.png)](/docs/img/create-permissioned-domain-4.png)
 
-
 ## Delete a Permissioned Domain
 
 1. Copy the _LedgerIndex_ value into **DomainID**.
 2. Click **Delete Permissioned Domain**.
 
 [![Deleted Domain](/docs/img/create-permissioned-domain-5.png)](/docs/img/create-permissioned-domain-5.png)
-
-
 
 # Code Walkthrough
 
@@ -91,7 +87,6 @@ Gather the issuer information, subject, and credential type. Convert the credent
 Submit the `CredentialCreate` transaction and report the results. Parse the metadata response to return only relevant credential info.
 
 {% code-snippet file="/_code-samples/modular-tutorials/credential-manager.js" language="js" from="// Submit transaction" /%}
-
 
 ## permissioned-domain-manager.js
 

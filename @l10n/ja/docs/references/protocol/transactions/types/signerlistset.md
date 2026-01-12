@@ -2,10 +2,11 @@
 html: signerlistset.html
 parent: transaction-types.html
 seo:
-    description: トランザクションのマルチシグに使用できる署名者のリストを作成、置換、削除します。
+  description: トランザクションのマルチシグに使用できる署名者のリストを作成、置換、削除します。
 labels:
   - セキュリティ
 ---
+
 # SignerListSet
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetSignerList.cpp "ソース")
@@ -16,43 +17,44 @@ SignerListSetトランザクションは、トランザクションの[マルチ
 
 ```json
 {
-   "Flags":0,
-   "TransactionType":"SignerListSet",
-   "Account":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-   "Fee":"12",
-   "SignerQuorum":3,
-   "SignerEntries":[
-       {
-           "SignerEntry":{
-               "Account":"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-               "SignerWeight":2
-           }
-       },
-       {
-           "SignerEntry":{
-               "Account":"rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-               "SignerWeight":1
-           }
-       },
-       {
-           "SignerEntry":{
-               "Account":"raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
-               "SignerWeight":1
-           }
-       }
-   ]
+  "Flags": 0,
+  "TransactionType": "SignerListSet",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Fee": "12",
+  "SignerQuorum": 3,
+  "SignerEntries": [
+    {
+      "SignerEntry": {
+        "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "SignerWeight": 2
+      }
+    },
+    {
+      "SignerEntry": {
+        "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+        "SignerWeight": 1
+      }
+    },
+    {
+      "SignerEntry": {
+        "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",
+        "SignerWeight": 1
+      }
+    }
+  ]
 }
 ```
 
 {% tx-example txid="09A9C86BF20695735AB03620EB1C32606635AC3DA0B70282F37C674FC889EFE7" /%}
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
+
 <!--{# fix md highlighting_ #}-->
 
-| フィールド         | JSONの型 | [内部の型][] | 説明                  |
-|:--------------|:----------|:------------------|:-----------------------------|
-| SignerQuorum  | 数値    | UInt32            | 署名者の重みのターゲット数。このリストの署名者によるマルチシグは、付与された署名の重みの合計がこの値以上である場合に限り有効となります。SignerListを削除するには、`0`の値を使用します。 |
-| SignerEntries | 配列     | 配列             | （削除する場合は省略）このリストの署名者のアドレスと重みを示す[SignerEntryオブジェクト](../../ledger-data/ledger-entry-types/signerlist.md#signerentryオブジェクト)の配列。SignerListには1～32人のメンバーが含まれている必要があります。リストに1つのアドレスが複数回表示されることはありません。また、トランザクションを送信する`Account`も表示されません。 |
+| フィールド    | JSONの型 | [内部の型][] | 説明                                                                                                                                                                                                                                                                                                                                                         |
+| :------------ | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SignerQuorum  | 数値     | UInt32       | 署名者の重みのターゲット数。このリストの署名者によるマルチシグは、付与された署名の重みの合計がこの値以上である場合に限り有効となります。SignerListを削除するには、`0`の値を使用します。                                                                                                                                                                      |
+| SignerEntries | 配列     | 配列         | （削除する場合は省略）このリストの署名者のアドレスと重みを示す[SignerEntryオブジェクト](../../ledger-data/ledger-entry-types/signerlist.md#signerentryオブジェクト)の配列。SignerListには1～32人のメンバーが含まれている必要があります。リストに1つのアドレスが複数回表示されることはありません。また、トランザクションを送信する`Account`も表示されません。 |
 
 アカウントは複数のSignerListを所有できません。既存のSignerListが存在する場合は、SignerListSetトランザクションが成功するとその既存のSignerListが置き換えられます。SignerListを削除するには、`SignerQuorum`を`0`に設定し、_かつ_`SignerEntries`フィールドを省略します。このようにしないと、トランザクションは[temMALFORMED](../transaction-results/tem-codes.md)エラーで失敗します。SignerListを削除するトランザクションは、削除するSignerListがない場合でも成功したとみなされます。
 

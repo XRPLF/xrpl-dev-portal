@@ -2,10 +2,11 @@
 html: set-max-number-of-peers.html
 parent: configure-peering.html
 seo:
-    description: rippledサーバが接続するピアの最大数を設定します。
+  description: rippledサーバが接続するピアの最大数を設定します。
 labels:
   - コアサーバ
 ---
+
 # ピアの最大数の設定
 
 `rippled`サーバには、接続先の[ピア](../../../concepts/networks-and-servers/peer-protocol.md)の数を定める設定可能なソフト最大数があります。ピアのデフォルトの最大数は**21**です。
@@ -16,18 +17,18 @@ labels:
 
 1. `rippled`の構成ファイルを編集します。
 
-    ```
-    $ vim /etc/opt/ripple/rippled.cfg
-    ```
+   ```
+   $ vim /etc/opt/ripple/rippled.cfg
+   ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
 2. 構成ファイルで、`[peers_max]`スタンザのコメントを解除して編集するか、まだない場合は追加します。
 
-    ```
-    [peers_max]
-    30
-    ```
+   ```
+   [peers_max]
+   30
+   ```
 
    スタンザの内容は、許可するピアの合計数を示す整数のみである必要があります。デフォルトでは、サーバは受信ピアが約85%、送信ピアが約15%という比率を維持するように試みますが、送信ピアの最小数が10であるため、68未満の値にしても、サーバが行う送信ピア接続の数は増えません。
 
@@ -37,10 +38,9 @@ labels:
 
 3. `rippled`サーバを再起動します。
 
-    ```
-    $ sudo systemctl restart rippled.service
-    ```
-
+   ```
+   $ sudo systemctl restart rippled.service
+   ```
 
 ## 関連項目
 

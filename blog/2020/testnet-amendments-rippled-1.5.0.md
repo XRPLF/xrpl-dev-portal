@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-04-10"
+date: '2020-04-10'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Postmortem: Testnet Amendments from rippled 1.5.0
 
 Like most new releases, version 1.5.0 of the XRP Ledger core server (`rippled`) contains new amendments which are not understood by earlier versions of the software.
@@ -48,6 +49,6 @@ Related documentation is available in the [XRP Ledger Dev Portal](https://xrpl.o
 
 Other resources:
 
-* Ripple Technical Services: <support@ripple.com>
-* [Xpring Forum](https://forum.xpring.io/)
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- Ripple Technical Services: <support@ripple.com>
+- [Xpring Forum](https://forum.xpring.io/)
+- [XRP Chat Forum](http://www.xrpchat.com/)

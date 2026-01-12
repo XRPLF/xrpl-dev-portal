@@ -1,21 +1,22 @@
 ---
-date: "2014-07-02"
+date: '2014-07-02'
 template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 author: Nikolaos D. Bougalis
 ---
+
 # Introducing: Offer Autobridging
 
 Ripple’s powerful system allows payments between any source and destination currency to be made easily. Pathfinding considers multiple conversions between currencies to find the best rate for a payment.
 
 The new **autobridging** feature improves offer placement in a similar fashion to pathfinding: when consuming existing offers, a newly placed offer will have the liquidity available in not only the direct order book (source to destination currency) but also in the corresponding books in which XRP is the destination and source respectively.
 
-This expands the Ripple protocol’s capabilities and brings improved market depth for heavily-used asset pairs and improved liquidity for less-heavily-used asset pairs. A primer for Ripple’s autobridging implementation is [available on the Ripple Forums](https://ripple.com/forum/viewtopic.php?f=1&amp;t=7127).
+This expands the Ripple protocol’s capabilities and brings improved market depth for heavily-used asset pairs and improved liquidity for less-heavily-used asset pairs. A primer for Ripple’s autobridging implementation is [available on the Ripple Forums](https://ripple.com/forum/viewtopic.php?f=1&t=7127).
 
 ## AUTOBRIDGING: Creating more efficient markets on the Ripple network
 

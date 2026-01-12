@@ -2,10 +2,11 @@
 html: forward-ports-for-peering.html
 parent: configure-peering.html
 seo:
-    description: 受信ピアがrippledサーバに接続できるようにファイアウォールを設定します。
+  description: 受信ピアがrippledサーバに接続できるようにファイアウォールを設定します。
 labels:
   - コアサーバ
 ---
+
 # ピアリングのポート転送
 
 XRP Ledgerのピアツーピアネットワーク内にあるサーバは、[ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)を介して通信します。セキュリティとネットワークの他の部分との接続を両立させるために、ファイアウォールを使用して、サーバをほとんどのポートから保護し、ピアプロトコルポートだけを開放するか転送するようにする必要があります。
@@ -45,7 +46,6 @@ $ sudo firewall-cmd --add-forward-port=port=51235:proto=tcp:toport=51235
 ```
 
 その他のソフトウェアファイアウォールとハードウェアファイアウォールについては、メーカー公式のドキュメントをご覧ください。
-
 
 ## 関連項目
 

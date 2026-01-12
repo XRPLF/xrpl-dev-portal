@@ -2,12 +2,12 @@
 html: nft-mkt-overview.html
 parent: tokenization.html
 seo:
-    description: NFTマーケットプレイスのユースケースの概要。
+  description: NFTマーケットプレイスのユースケースの概要。
 labels:
   - Tokenization
 ---
-# NFTマーケットプレイスの概要
 
+# NFTマーケットプレイスの概要
 
 ## 主な特徴
 
@@ -36,7 +36,7 @@ NFTビジネスを始めるにあたって、必要不可欠な4つの準備項�
 3. 必要なNFT情報のインデックス作成
 4. NFTをキャッシュするための永続的なストレージ戦略の決定
 
-[![NFTマーケットのフロー](/docs/img/nft-mkt-overview.png "NFTマーケットのフロー")](/docs/img/nft-mkt-overview.png)
+[![NFTマーケットのフロー](/docs/img/nft-mkt-overview.png 'NFTマーケットのフロー')](/docs/img/nft-mkt-overview.png)
 
 ## XRPLへの接続
 
@@ -46,7 +46,7 @@ NFTビジネスを始めるにあたって、必要不可欠な4つの準備項�
 
 関連項目:
 
-* [独自サーバ運用のメリットとデメリット](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server).
+- [独自サーバ運用のメリットとデメリット](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server).
 
 ## ブロックチェーンの基本機能のセットアップ
 
@@ -71,7 +71,6 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 ミント済みのNFTは、`NFTokenPage`に記録されます。アカウント上の`NFTokenPage`1つにつき2XRPの準備金が必要です。[NFT準備金](../../concepts/tokens/nfts/reserve-requirements.md)をご覧ください。
 
 各「NFTokenPage」は16～32個のNFTを保持します。大量のNFTをミントすると、あなたのXRPを大量に準備金としてロックすることになります。オンデマンドミント（または _遅延ミント_ ）を行うことで、XRPを柔軟に維持することができます。[遅延ミント](../../concepts/tokens/nfts/batch-minting.md#mint-on-demand-lazy-minting)と[スクリプトミント](../../concepts/tokens/nfts/batch-minting.md#scripted-minting)をご覧下さい。
-
 
 ### ウォレットのセットアップ
 
@@ -123,7 +122,6 @@ NFTを出品する際、オブジェクトのメタデータを使って分類�
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
-
 <!--
 Sorting and filtering [No link]
     Creator - nft_info (issuer field)
@@ -143,11 +141,13 @@ Supplement Information [No link]
  -->
 
 ## NFTのキャッシュ
+
 <!--
 
 Image optimization for web experience [No link]
 
  -->
+
 クリプト分野で作成されるNFTは、メディアや属性などのメタデータを保存することが想定されています。現在は中央集権化を避けるため、ほとんどがIPFSやArweaveに保存されています。
 
 <!--  We can't use this example.

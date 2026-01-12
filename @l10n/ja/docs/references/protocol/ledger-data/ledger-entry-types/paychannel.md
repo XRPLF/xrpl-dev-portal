@@ -1,10 +1,12 @@
 ---
 seo:
-    description: 非同期XRP支払い用のチャネルです。
+  description: 非同期XRP支払い用のチャネルです。
 labels:
-    - Payment Channel
+  - Payment Channel
 ---
+
 # PayChannel
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
 
 `PayChannel`エントリは1つの[支払いチャネル](../../../../concepts/payment-types/payment-channels.md)を表します。
@@ -39,30 +41,29 @@ labels:
 
 [共通フィールド][]に加えて、{% $frontmatter.seo.title %}エントリは以下のフィールドを使用します。
 
-| 名前                | JSONの型   | [内部の型][] | 必須? | 説明 |
-|:--------------------|:---------|:------------|:----- |:-----|
-| `Account`           | 文字列    | AccountID   | はい   | このPayment Channelを所有する支払元アドレス。これは、Channelを作成したトランザクションの送信側アドレスから取得されます。 |
-| `Amount`            | 文字列    | Amount      | はい   | このChannelに割り当てられている [XRPのdrop数][]の合計です。これには宛先アドレスに支払われたXRPも含まれます。最初にChannelを作成したトランザクションにより設定され、支払元アドレスがPaymentChannelFundトランザクションを送信する場合に増加できます。 |
-| `Balance`           | 文字列    | Amount      | はい   | このChannelがすでに支払った[XRPのdrop数][]の合計。この値と`Amount`フィールドの差異は、PaymentChannelClaimトランザクションの宛先アドレスに対して支払うことができるXRPの量を示します。Channelが閉鎖すると、残りの差額は支払元アドレスに返されます。 |
-| `CancelAfter`       | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
-| `Destination`       | 文字列    | AccountID   | はい   | このPayment Channelの宛先アドレス。Payment Channelが開いている場合、このアドレスは、このChannelからXRPを受領できる唯一のアドレスです。これは、Channelを作成したトランザクションの`Destination`フィールドから取得されます。 |
-| `DestinationTag`    | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
-| `DestinationNode`   | 文字列    | UInt64      | いいえ | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fixPayChanRecipientOwnerDir Amendment][]を有効にする前に作成されたPayment Channelでは省略されています。 |
-| `Expiration`        | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)をご覧ください。 |
-| `LedgerEntryType`   | 文字列    | UInt16      | はい   | 値`0x0078`が文字列`PayChannel`にマッピングされている場合は、このオブジェクトがPayment Channelオブジェクトであることを示します。 |
-| `OwnerNode`         | 文字列    | UInt64      | はい   | 支払元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
-| `PreviousTxnID`     | 文字列    | UInt256     | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値      | UInt32      | はい   | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
-| `PublicKey`         | 文字列    | PubKey      | はい   | このChannelに対するクレームの署名に使用できるキーペアの公開鍵（16進数）。有効なsecp256k1公開鍵またはEd25519公開鍵を指定できます。Channelを作成したトランザクションによって設定されます。Channelに対するクレームに使用される公開鍵と一致している必要があります。Channelの支払元アドレスは、署名付きクレームなしでこのChannelから宛先にXRPを送金することもできます。 |
-| `SettleDelay`       | 数値      | UInt32      | はい   | ChannelにXRPがまだある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する秒数。値が小さい場合、支払元アドレスがChannelの閉鎖を要求した後で、宛先アドレスが未処理のクレームを精算できる時間が短くなります。32ビットの符号なし整数に収まる値（0～2^32-1）であれば任意の値を指定できます。これは、Channelを作成するトランザクションにより設定されます。 |
-| `SourceTag`         | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの支払元（所有者のアドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
+| 名前                | JSONの型 | [内部の型][] | 必須?  | 説明                                                                                                                                                                                                                                                                                                                                                               |
+| :------------------ | :------- | :----------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Account`           | 文字列   | AccountID    | はい   | このPayment Channelを所有する支払元アドレス。これは、Channelを作成したトランザクションの送信側アドレスから取得されます。                                                                                                                                                                                                                                           |
+| `Amount`            | 文字列   | Amount       | はい   | このChannelに割り当てられている [XRPのdrop数][]の合計です。これには宛先アドレスに支払われたXRPも含まれます。最初にChannelを作成したトランザクションにより設定され、支払元アドレスがPaymentChannelFundトランザクションを送信する場合に増加できます。                                                                                                                |
+| `Balance`           | 文字列   | Amount       | はい   | このChannelがすでに支払った[XRPのdrop数][]の合計。この値と`Amount`フィールドの差異は、PaymentChannelClaimトランザクションの宛先アドレスに対して支払うことができるXRPの量を示します。Channelが閉鎖すると、残りの差額は支払元アドレスに返されます。                                                                                                                  |
+| `CancelAfter`       | 数値     | UInt32       | いいえ | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。                                                        |
+| `Destination`       | 文字列   | AccountID    | はい   | このPayment Channelの宛先アドレス。Payment Channelが開いている場合、このアドレスは、このChannelからXRPを受領できる唯一のアドレスです。これは、Channelを作成したトランザクションの`Destination`フィールドから取得されます。                                                                                                                                         |
+| `DestinationTag`    | 数値     | UInt32       | いいえ | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。                                                                                                                                                                                                                                        |
+| `DestinationNode`   | 文字列   | UInt64       | いいえ | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fixPayChanRecipientOwnerDir Amendment][]を有効にする前に作成されたPayment Channelでは省略されています。                                                                                                                          |
+| `Expiration`        | 数値     | UInt32       | いいえ | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)をご覧ください。                                                                  |
+| `LedgerEntryType`   | 文字列   | UInt16       | はい   | 値`0x0078`が文字列`PayChannel`にマッピングされている場合は、このオブジェクトがPayment Channelオブジェクトであることを示します。                                                                                                                                                                                                                                    |
+| `OwnerNode`         | 文字列   | UInt64       | はい   | 支払元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。                                                                                                                                                                                                                                   |
+| `PreviousTxnID`     | 文字列   | UInt256      | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。                                                                                                                                                                                                                                                                                                 |
+| `PreviousTxnLgrSeq` | 数値     | UInt32       | はい   | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。                                                                                                                                                                                                                                                                             |
+| `PublicKey`         | 文字列   | PubKey       | はい   | このChannelに対するクレームの署名に使用できるキーペアの公開鍵（16進数）。有効なsecp256k1公開鍵またはEd25519公開鍵を指定できます。Channelを作成したトランザクションによって設定されます。Channelに対するクレームに使用される公開鍵と一致している必要があります。Channelの支払元アドレスは、署名付きクレームなしでこのChannelから宛先にXRPを送金することもできます。 |
+| `SettleDelay`       | 数値     | UInt32       | はい   | ChannelにXRPがまだある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する秒数。値が小さい場合、支払元アドレスがChannelの閉鎖を要求した後で、宛先アドレスが未処理のクレームを精算できる時間が短くなります。32ビットの符号なし整数に収まる値（0～2^32-1）であれば任意の値を指定できます。これは、Channelを作成するトランザクションにより設定されます。       |
+| `SourceTag`         | 数値     | UInt32       | いいえ | _（省略可）_ このPayment Channelの支払元（所有者のアドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。                                                                                                                                                                                                                                  |
 
 ## Channelの有効期限
 
 Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールドが表す変更不可能な有効期限とは対照的な変更可能な有効期限です。Channelの有効期限は常に、前のレジャーの[`close_time`フィールド](../ledger-header.md)を基準にしているものとみなされます。`PayChannel`オブジェクトの作成時には、`Expiration`フィールドが省略されます。`PayChannel`オブジェクトの`Expiration`フィールドはさまざまな方法で更新できます。要約すると、Channelが最初の閉鎖試行の操作の後、`SettleDelay`秒以上チャネルが常に開いたままであれば、Channelの支払元アドレスはChannelの`Expiration`を自由に設定できます。
 
 Payment Channelが期限切れになると、新しいトランザクションだけが台帳の内容を変更できるため、最初は台帳に残ります。有効期限が切れた後にそのチャネルにアクセスするトランザクションがあると、トランザクション処理は自動的にそのチャネルを閉じます。期限切れのチャネルを閉じ、未使用のXRPを所有者に返却するには、何らかのアドレスがチャネルにアクセスする新しいPaymentChannelClaimまたはPaymentChannelFundトランザクションを送信する必要があります。
-
 
 ### 支払元アドレス
 
@@ -88,20 +89,17 @@ Payment Channelが期限切れになると、新しいトランザクション�
 
 その他のアドレスが`Expiration`フィールドを設定しようとすると、トランザクションはエラーコード`tecNO_PERMISSION`で失敗します。ただし、Channelがすでに有効期限切れになっている場合、このトランザクションでChannelが閉鎖し、その結果は`tesSUCCESS`になります。
 
-
-
 ## {% $frontmatter.seo.title %}の準備金
 
 {% code-page-name /%}エントリは、台帳上にエントリがある限り、支払いチャネルを作成したアカウントの所有者準備金の対象の1つとしてカウントされます。チャネルを削除すると、準備金が解放されます。これは、チャネルの有効期限が切れた後（明示的にクローズされた場合を含む）にのみ実行できます。
-
 
 ## PayChannel IDのフォーマット
 
 `PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512Half][]です。
 
-* PayChannelスペースキー（`0x0078`）
-* 支払元アカウントのAccountID
-* 宛先アカウントのAccountID
-* Channelを作成したトランザクションのシーケンス番号
+- PayChannelスペースキー（`0x0078`）
+- 支払元アカウントのAccountID
+- 宛先アカウントのAccountID
+- Channelを作成したトランザクションのシーケンス番号
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

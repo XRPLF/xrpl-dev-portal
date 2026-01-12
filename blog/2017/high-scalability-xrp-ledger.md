@@ -1,13 +1,14 @@
 ---
 labels:
-    - Features
+  - Features
 category: 2017
-date: "2017-10-02"
+date: '2017-10-02'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # The Most (Demonstrably) Scalable Blockchain
 
 Blockchain technology is set to fundamentally transform the way the world moves value, but to do so, it must first meet a number of challenges.

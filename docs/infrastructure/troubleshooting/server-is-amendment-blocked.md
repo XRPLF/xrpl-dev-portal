@@ -2,10 +2,11 @@
 html: server-is-amendment-blocked.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: Troubleshoot a server that can't implement amendment changes.
+  description: Troubleshoot a server that can't implement amendment changes.
 labels:
   - Core Server
 ---
+
 # rippled Server is Amendment Blocked
 
 Servers which are amendment blocked can't determine the validity of a ledger, submit or process transactions, or participate in the consensus process.
@@ -14,16 +15,16 @@ One of the first signs that your `rippled` server is [amendment blocked](../../c
 
 ```json
 {
-   "result":{
-      "error":"amendmentBlocked",
-      "error_code":14,
-      "error_message":"Amendment blocked, need upgrade.",
-      "request":{
-         "command":"submit",
-         "tx_blob":"479H0KQ4LUUXIHL48WCVN0C9VD7HWSX0MG1UPYNXK6PI9HLGBU2U10K3HPFJSROFEG5VD749WDPHWSHXXO72BOSY2G8TWUDOJNLRTR9LTT8PSOB9NNZ485EY2RD9D80FLDFRBVMP1RKMELILD7I922D6TBCAZK30CSV6KDEDUMYABE0XB9EH8C4LE98LMU91I9ZV2APETJD4AYFEN0VNMIT1XQ122Y2OOXO45GJ737HHM5XX88RY7CXHVWJ5JJ7NYW6T1EEBW9UE0NLB2497YBP9V1XVAEK8JJYVRVW0L03ZDXFY8BBHP6UBU7ZNR0JU9GJQPNHG0DK86S4LLYDN0BTCF4KWV2J4DEB6DAX4BDLNPT87MM75G70DFE9W0R6HRNWCH0X075WHAXPSH7S3CSNXPPA6PDO6UA1RCCZOVZ99H7968Q37HACMD8EZ8SU81V4KNRXM46N520S4FVZNSJHA"
-      },
-      "status":"error"
-   }
+  "result": {
+    "error": "amendmentBlocked",
+    "error_code": 14,
+    "error_message": "Amendment blocked, need upgrade.",
+    "request": {
+      "command": "submit",
+      "tx_blob": "479H0KQ4LUUXIHL48WCVN0C9VD7HWSX0MG1UPYNXK6PI9HLGBU2U10K3HPFJSROFEG5VD749WDPHWSHXXO72BOSY2G8TWUDOJNLRTR9LTT8PSOB9NNZ485EY2RD9D80FLDFRBVMP1RKMELILD7I922D6TBCAZK30CSV6KDEDUMYABE0XB9EH8C4LE98LMU91I9ZV2APETJD4AYFEN0VNMIT1XQ122Y2OOXO45GJ737HHM5XX88RY7CXHVWJ5JJ7NYW6T1EEBW9UE0NLB2497YBP9V1XVAEK8JJYVRVW0L03ZDXFY8BBHP6UBU7ZNR0JU9GJQPNHG0DK86S4LLYDN0BTCF4KWV2J4DEB6DAX4BDLNPT87MM75G70DFE9W0R6HRNWCH0X075WHAXPSH7S3CSNXPPA6PDO6UA1RCCZOVZ99H7968Q37HACMD8EZ8SU81V4KNRXM46N520S4FVZNSJHA"
+    },
+    "status": "error"
+  }
 }
 ```
 
@@ -56,7 +57,6 @@ You can verify that your `rippled` server is amendment blocked using the `server
     }
 }
 ```
-
 
 ## Unblock Servers
 
@@ -124,10 +124,10 @@ These values mean the amendment is required in the latest ledger, but your serve
 
 In this example, conflicts with the following features are causing your `rippled` server to be amendment blocked:
 
-* `157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1`
+- `157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1`
 
-* `67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172`
+- `67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172`
 
-* `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
+- `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
 
 To look up which `rippled` version supports these features, see [Known Amendments](/resources/known-amendments.md).

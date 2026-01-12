@@ -2,17 +2,17 @@
 html: consensus.html
 parent: concepts.html
 seo:
-    description: Consensus is how new blocks of transactions get confirmed by the XRP Ledger blockchain.
+  description: Consensus is how new blocks of transactions get confirmed by the XRP Ledger blockchain.
 labels:
   - Blockchain
 top_nav_grouping: Popular Pages
 ---
+
 # Consensus Protocol
 
 This topic explains how the decentralized XRP Ledger confirms new transactions and ledger versions, forming a blockchain.
 
 Consensus is the most important property of any decentralized payment system. In traditional centralized payment systems, one authoritative administrator gets the final say in how and when payments occur. Decentralized systems, by definition, don't have an administrator to do that. Instead, decentralized systems like the XRP Ledger define a set of rules all participants follow, so every participant can agree on the exact same series of events and their outcome at any point in time. We call this set of rules a _consensus protocol_.
-
 
 ## Consensus Protocol Properties
 
@@ -32,7 +32,6 @@ This protocol is still evolving, as is our knowledge of its limits and possible 
 
 Consensus protocols are a solution to the _double-spend problem_: the challenge of preventing someone from successfully spending the same digital money twice. The hardest part about this problem is putting transactions in order: without a central authority, it can be difficult to resolve disputes about which transaction comes first when you have two or more mutually-exclusive transactions sent around the same time. For a detailed analysis of the double-spend problem, how the XRP Ledger Consensus Protocol solves this problem, and the tradeoffs and limitations involved, see [Consensus Principles and Rules](consensus-principles-and-rules.md).
 
-
 ## Ledger History
 
 The XRP Ledger processes transactions in blocks called "ledger versions", or "ledgers" for short. Each ledger version contains three pieces:
@@ -41,12 +40,11 @@ The XRP Ledger processes transactions in blocks called "ledger versions", or "le
 - The set of transactions that have been applied to the previous ledger to result in this one.
 - Metadata about the current ledger version, such as its ledger index, a [cryptographic hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) that uniquely identifies its contents, and information about the parent ledger that was used as a basis for building this one.
 
-[{% inline-svg file="/docs/img/anatomy-of-a-ledger-simplified.svg" /%}](/docs/img/anatomy-of-a-ledger-simplified.svg "Figure 1: Anatomy of a ledger version, which includes transactions, state, and metadata")
+[{% inline-svg file="/docs/img/anatomy-of-a-ledger-simplified.svg" /%}](/docs/img/anatomy-of-a-ledger-simplified.svg 'Figure 1: Anatomy of a ledger version, which includes transactions, state, and metadata')
 
 Each ledger version is numbered with a _ledger index_ and builds on a previous ledger version whose index is one less, going all the way back to a starting point called the _genesis ledger_ with ledger index 1.[¹](#footnote-1) Like Bitcoin and other blockchain technologies, this forms a public history of all transactions and their results. Unlike many blockchain technologies, each new "block" in the XRP Ledger contains the entirety of the current state, so you don't need to collect the entire history to know what's happening now.[²](#footnote-2)
 
 The main goal of the XRP Ledger Consensus Protocol is to agree on a set of transactions to add to the next ledger version, apply them in a well-defined order, then confirm that everyone got the same results. When this happens successfully, a ledger version is considered _validated_, and final. From there, the process continues by building the next ledger version.
-
 
 ## Trust-Based Validation
 
@@ -54,14 +52,13 @@ The core principle behind the XRP Ledger's consensus mechanism is that a little 
 
 As the network progresses, each server listens to its trusted validators[³](#footnote-3); as long as a large enough percentage of them agree that a set of transactions should occur and that a given ledger is the result, the server declares a consensus. If they don't agree, validators modify their proposals to more closely match the other validators they trust, repeating the process in several rounds until they reach a consensus.
 
-[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg "Figure 2: Consensus rounds. Validators revise their proposals to match other validators they trust")
+[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg 'Figure 2: Consensus rounds. Validators revise their proposals to match other validators they trust')
 
 It's OK if a small proportion of validators don't work properly all the time. As long as fewer than 20% of trusted validators are faulty, consensus can continue unimpeded; and confirming an invalid transaction would require over 80% of trusted validators to collude. If more than 20% but less than 80% of trusted validators are faulty, the network stops making progress.
 
 For a longer exploration of how the XRP Ledger Consensus Protocol responds to various challenges, attacks, and failure cases, see [Consensus Protections Against Attacks and Failure Modes](consensus-protections.md).
 
-
-----
+---
 
 ## Footnotes
 

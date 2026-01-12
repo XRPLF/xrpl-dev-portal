@@ -7,9 +7,8 @@ const BigNumber = require('bignumber.js')
 
 // Wrap code in an async function so we can use await
 async function main() {
-
   // Define the network client
-  const client = new xrpl.Client("wss://s.altnet.rippletest.net:51233")
+  const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
   await client.connect()
 
   // ... custom code goes here

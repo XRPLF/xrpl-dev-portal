@@ -4,9 +4,9 @@ seo:
 metadata:
   indexPage: true
 ---
+
 # Ledger Entry Types
 
 {% partial file="/docs/_snippets/ledger-objects-intro.md" /%}
-
 
 {% child-pages /%}

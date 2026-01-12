@@ -1,17 +1,17 @@
 ---
 seo:
-    description: Issuers can claw back their tokens for compliance purposes if they enable the Clawback feature before issuing tokens.
+  description: Issuers can claw back their tokens for compliance purposes if they enable the Clawback feature before issuing tokens.
 labels:
   - Tokens
 ---
+
 # Clawing Back Tokens
 
-For regulatory purposes, some issuers need the ability to recover tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or *claw back*, the funds. The ability to claw back funds is controlled differently for different types of tokens:
+For regulatory purposes, some issuers need the ability to recover tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds. The ability to claw back funds is controlled differently for different types of tokens:
 
 - Issuers can gain the ability to claw back any of their [trust line tokens](./trust-line-tokens.md) by enabling the **Allow Clawback** flag on their issuing account. This flag cannot be enabled if the issuer has already issued trust line tokens. {% amendment-disclaimer name="Clawback" /%}
 - [MPTs](./multi-purpose-tokens.md) can be clawed back by the issuer if the **Can Clawback** flag is enabled for the MPT issuance. {% amendment-disclaimer name="MPTokensV1" /%}
 - XRP is not a token and cannot be clawed back.
-
 
 ## Allow Clawback for Trust Line Tokens
 
@@ -31,10 +31,10 @@ Clawback is disabled by default. To use clawback, the MPT must be configured wit
   "TransactionType": "Clawback",
   "Account": "rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S",
   "Amount": {
-      "currency": "FOO",
-      "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-      "value": "314.159"
-    }
+    "currency": "FOO",
+    "issuer": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "value": "314.159"
+  }
 }
 ```
 

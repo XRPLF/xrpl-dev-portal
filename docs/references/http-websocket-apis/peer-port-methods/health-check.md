@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Special API method for reporting server health.
+  description: Special API method for reporting server health.
 labels:
-    - Core Server
+  - Core Server
 ---
+
 # Health Check
+
 [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/overlay/detail/OverlayImpl.cpp#L943-L1038 "Source")
 
 The Health Check is a special [peer port method](index.md) for reporting on the health of an individual `rippled` server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}New in: rippled 1.6.0{% /badge %}
@@ -12,7 +14,6 @@ The Health Check is a special [peer port method](index.md) for reporting on the 
 This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that are unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, you should not raise alerts unless the health check fails multiple times in a row.
 
 {% admonition type="info" name="Note" %}Since the health check is a [peer port method](index.md), it is not available when testing the server in [stand-alone mode][].{% /admonition %}
-
 
 ## Request Format
 
@@ -32,6 +33,7 @@ To request the Health Check information, make the following HTTP request:
 {% tabs %}
 
 {% tab label="Healthy" %}
+
 ```json
 HTTP/1.1 200 OK
 Server: rippled-1.6.0-b8
@@ -43,9 +45,11 @@ Transfer-Encoding: chunked
   "info": {}
 }
 ```
+
 {% /tab %}
 
 {% tab label="Warning" %}
+
 ```json
 HTTP/1.1 503 Service Unavailable
 Server: rippled-1.6.0
@@ -60,9 +64,11 @@ Transfer-Encoding: chunked
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Critical" %}
+
 ```json
 HTTP/1.1 500 Internal Server Error
 Server: rippled-1.6.0
@@ -78,6 +84,7 @@ Transfer-Encoding: chunked
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -86,23 +93,23 @@ Transfer-Encoding: chunked
 
 The response's HTTP status code indicates the health of the server:
 
-| Status Code                   | Health Status | Description                  |
-|:------------------------------|:--------------|:-----------------------------|
-| **200 OK**                    | Healthy       | All health metrics are within acceptable ranges. |
-| **503 Service Unavailable**   | Warning       | One or more metrics are in the warning range. Manual intervention may or may not be necessary. |
+| Status Code                   | Health Status | Description                                                                                                               |
+| :---------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------ |
+| **200 OK**                    | Healthy       | All health metrics are within acceptable ranges.                                                                          |
+| **503 Service Unavailable**   | Warning       | One or more metrics are in the warning range. Manual intervention may or may not be necessary.                            |
 | **500 Internal Server Error** | Critical      | One or more metrics are in the critical range. There is a serious problem that probably needs manual intervention to fix. |
 
 The response body is a JSON object with a single `info` object at the top level. The `info` object contains values for each metric that is in a warning or critical range. The response omits metrics that are in a healthy range, so a fully healthy server has an empty object.
 
 The `info` object may contain the following fields:
 
-| `Field`             | Value   | Description                                  |
-|:--------------------|:--------|:---------------------------------------------|
-| `amendment_blocked` | Boolean | _(May be omitted)_ If `true`, the server is [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) and must be upgraded to remain synced with the network; this state is critical. If the server is not amendment blocked, this field is omitted. |
-| `load_factor`       | Number | _(May be omitted)_ A measure of the overall load the server is under. This reflects I/O, CPU, and memory limitations. This is a warning if the load factor is over 100, or critical if the load factor is 1000 or higher. |
-| `peers`             | Number | _(May be omitted)_ The number of [peer servers](../../../concepts/networks-and-servers/peer-protocol.md) this server is connected to. This is a warning if connected to 7 or fewer peers, and critical if connected to zero peers. |
-| `server_state`      | String | _(May be omitted)_ The current [server state](../api-conventions/rippled-server-states.md). This is a warning if the server is in the `tracking`, `syncing`, or `connected` states. This is critical if the server is in the `disconnected` state. |
-| `validated_ledger`  | Number | _(May be omitted)_ The number of seconds since the last time a ledger was validated by [consensus](../../../concepts/consensus-protocol/index.md). If there is no validated ledger available ([as during the initial sync period when starting the server](../../../infrastructure/troubleshooting/server-doesnt-sync.md#normal-syncing-behavior)), this is the value `-1` and is considered a warning. This metric is also a warning if the last validated ledger was at least 7 seconds ago, or critical if the last validated ledger was at least 20 seconds ago. |
+| `Field`             | Value   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| :------------------ | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `amendment_blocked` | Boolean | _(May be omitted)_ If `true`, the server is [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) and must be upgraded to remain synced with the network; this state is critical. If the server is not amendment blocked, this field is omitted.                                                                                                                                                                                                                                                                       |
+| `load_factor`       | Number  | _(May be omitted)_ A measure of the overall load the server is under. This reflects I/O, CPU, and memory limitations. This is a warning if the load factor is over 100, or critical if the load factor is 1000 or higher.                                                                                                                                                                                                                                                                                                                                            |
+| `peers`             | Number  | _(May be omitted)_ The number of [peer servers](../../../concepts/networks-and-servers/peer-protocol.md) this server is connected to. This is a warning if connected to 7 or fewer peers, and critical if connected to zero peers.                                                                                                                                                                                                                                                                                                                                   |
+| `server_state`      | String  | _(May be omitted)_ The current [server state](../api-conventions/rippled-server-states.md). This is a warning if the server is in the `tracking`, `syncing`, or `connected` states. This is critical if the server is in the `disconnected` state.                                                                                                                                                                                                                                                                                                                   |
+| `validated_ledger`  | Number  | _(May be omitted)_ The number of seconds since the last time a ledger was validated by [consensus](../../../concepts/consensus-protocol/index.md). If there is no validated ledger available ([as during the initial sync period when starting the server](../../../infrastructure/troubleshooting/server-doesnt-sync.md#normal-syncing-behavior)), this is the value `-1` and is considered a warning. This metric is also a warning if the last validated ledger was at least 7 seconds ago, or critical if the last validated ledger was at least 20 seconds ago. |
 
 ## See Also
 

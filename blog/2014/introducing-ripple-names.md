@@ -1,17 +1,17 @@
 ---
-date: "2014-04-28"
+date: '2014-04-28'
 template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing Ripple Names
 
 Ripple names work in conjunction with Ripple addresses as a destination to receive funds, as an identifier for the sender, and as a handle to set trustlines.
-
 
 ## Ripple name specifications
 
@@ -19,13 +19,13 @@ Ripple names work in conjunction with Ripple addresses as a destination to recei
 
 - Valid characters include “a” through “z”, “0” through “9”, and dash “-”
 
--  Leading, trailing, and two or more adjacent dashes are not allowed
+- Leading, trailing, and two or more adjacent dashes are not allowed
 
 Names will be canonicalized, meaning:
 
--  Case insensitive, e.g. TheABCs is the same as theabcs
+- Case insensitive, e.g. TheABCs is the same as theabcs
 
--  Hyphens are ignored, e.g. the-abcs is the same as theabcs
+- Hyphens are ignored, e.g. the-abcs is the same as theabcs
 
 ## Implementation
 

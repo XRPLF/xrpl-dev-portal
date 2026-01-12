@@ -1,14 +1,15 @@
 ---
 seo:
-    description: Steps to set up an IOU-IOU bridge.
+  description: Steps to set up an IOU-IOU bridge.
 labels:
-    - Interoperability
+  - Interoperability
 ---
+
 # Set Up an IOU-IOU Bridge
 
 Setting up an IOU-IOU bridge enables you to move tokens between chains.
 
-{% admonition type="info" name="Note" %}The code samples on this page illustrate how to bridge a hypotethical "TST" token from *Devnet* to *Sidechain-Devnet*, using a supported [client library](/docs/references/client-libraries.md) to query and submit transactions.{% /admonition %}
+{% admonition type="info" name="Note" %}The code samples on this page illustrate how to bridge a hypotethical "TST" token from _Devnet_ to _Sidechain-Devnet_, using a supported [client library](/docs/references/client-libraries.md) to query and submit transactions.{% /admonition %}
 
 {% amendment-disclaimer name="XChainBridge" /%}
 
@@ -30,16 +31,16 @@ const WS_URL_issuingchain = 'wss://example-sidechain.net:12345/' // Issuing chai
 
 // Define the XChainBridge, using the "TST" token.
 const xchainbridge = {
-  "LockingChainDoor": "rn895gh1MHnnAgL4hR9q464PJSFiYwQYcV",
-  "LockingChainIssue": {
-    "currency": "TST",
-    "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+  LockingChainDoor: 'rn895gh1MHnnAgL4hR9q464PJSFiYwQYcV',
+  LockingChainIssue: {
+    currency: 'TST',
+    issuer: 'rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd',
   },
-  "IssuingChainDoor": "ra1MsW5s6Qg4NXUAJVKw8f21ZghSYG1DQw", // Use the account issuing the wrapped token
-  "IssuingChainIssue": {
-    "currency": "TST",
-    "issuer": "ra1MsW5s6Qg4NXUAJVKw8f21ZghSYG1DQw"
-  }
+  IssuingChainDoor: 'ra1MsW5s6Qg4NXUAJVKw8f21ZghSYG1DQw', // Use the account issuing the wrapped token
+  IssuingChainIssue: {
+    currency: 'TST',
+    issuer: 'ra1MsW5s6Qg4NXUAJVKw8f21ZghSYG1DQw',
+  },
 }
 
 async function main() {
@@ -65,49 +66,58 @@ main()
 Don't include a `MinAccountCreateAmount` value.
 
 ```javascript
-  const wallet_lockingchain = xrpl.Wallet.fromSeed('s████████████████████████████') // Locking chain door account
-  const xchaincreatebridge_lockingchain = await client_lockingchain.submitAndWait({
-    "TransactionType": "XChainCreateBridge",
-    "Account": wallet_lockingchain.address,
-    "XChainBridge": xchainbridge,
-  "SignatureReward": 200
-  }, {autofill: true, wallet: wallet_lockingchain})
+const wallet_lockingchain = xrpl.Wallet.fromSeed('s████████████████████████████') // Locking chain door account
+const xchaincreatebridge_lockingchain = await client_lockingchain.submitAndWait(
+  {
+    TransactionType: 'XChainCreateBridge',
+    Account: wallet_lockingchain.address,
+    XChainBridge: xchainbridge,
+    SignatureReward: 200,
+  },
+  { autofill: true, wallet: wallet_lockingchain },
+)
 ```
 
 ### 3. Submit a `SignerListSet` transaction from the door account on the locking chain.
 
 ```javascript
-  const signerlistset_lockingchain = await client_lockingchain.submitAndWait({
-    "TransactionType": "SignerListSet",
-    "Account": wallet_lockingchain.address,
-    "Fee": "12",
-    "SignerQuorum": 2,    
+const signerlistset_lockingchain = await client_lockingchain.submitAndWait(
+  {
+    TransactionType: 'SignerListSet',
+    Account: wallet_lockingchain.address,
+    Fee: '12',
+    SignerQuorum: 2,
     // Use the witness servers' submitting accounts on the locking chain.
-    "SignerEntries": [
-        {
-            "SignerEntry": {
-                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
-                "SignerWeight": 1
-            }
+    SignerEntries: [
+      {
+        SignerEntry: {
+          Account: 'rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW',
+          SignerWeight: 1,
         },
-        {
-            "SignerEntry": {
-                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
-                "SignerWeight": 1
-            }
-        }
-    ]
-  }, {autofill: true, wallet: wallet_lockingchain})
+      },
+      {
+        SignerEntry: {
+          Account: 'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v',
+          SignerWeight: 1,
+        },
+      },
+    ],
+  },
+  { autofill: true, wallet: wallet_lockingchain },
+)
 ```
 
 ### 4. Disable the master key on the locking chain's door account with an `AccountSet` transaction.
 
 ```javascript
-const disablekey_lockingchain = await client_lockingchain.submitAndWait({
-    "TransactionType": "AccountSet",
-    "Account": wallet_lockingchain.address,
-    "SetFlag": 4
-  }, {autofill: true, wallet: wallet_lockingchain})
+const disablekey_lockingchain = await client_lockingchain.submitAndWait(
+  {
+    TransactionType: 'AccountSet',
+    Account: wallet_lockingchain.address,
+    SetFlag: 4,
+  },
+  { autofill: true, wallet: wallet_lockingchain },
+)
 ```
 
 ### 5. Submit an `XChainCreateBridge` transaction from the door account on the issuing chain.
@@ -115,49 +125,58 @@ const disablekey_lockingchain = await client_lockingchain.submitAndWait({
 Don't include a `MinAccountCreateAmount` value.
 
 ```javascript
-  const wallet_issuingchain = xrpl.Wallet.fromSeed('s████████████████████████████') // The account issuing the wrapped token
-  const xchaincreatebridge_issuingchain = await client_issuingchain.submitAndWait({
-    "TransactionType": "XChainCreateBridge",
-    "Account": wallet_issuingchain.address,
-    "XChainBridge": xchainbridge,
-  "SignatureReward": 200
-  }, {autofill: true, wallet: wallet_issuingchain})
+const wallet_issuingchain = xrpl.Wallet.fromSeed('s████████████████████████████') // The account issuing the wrapped token
+const xchaincreatebridge_issuingchain = await client_issuingchain.submitAndWait(
+  {
+    TransactionType: 'XChainCreateBridge',
+    Account: wallet_issuingchain.address,
+    XChainBridge: xchainbridge,
+    SignatureReward: 200,
+  },
+  { autofill: true, wallet: wallet_issuingchain },
+)
 ```
 
 ### 6. Submit a `SignerListSet` transaction from the door account on the issuing chain.
 
 ```javascript
-  const signerlistset_issuingchain = await client_issuingchain.submitAndWait({
-    "TransactionType": "SignerListSet",
-    "Account": wallet_issuingchain.address,
-    "Fee": "12",
-    "SignerQuorum": 2,    
+const signerlistset_issuingchain = await client_issuingchain.submitAndWait(
+  {
+    TransactionType: 'SignerListSet',
+    Account: wallet_issuingchain.address,
+    Fee: '12',
+    SignerQuorum: 2,
     // Use the witness servers' submitting accounts on the issuing chain.
-    "SignerEntries": [
-        {
-            "SignerEntry": {
-                "Account": "rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo",
-                "SignerWeight": 1
-            }
+    SignerEntries: [
+      {
+        SignerEntry: {
+          Account: 'rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo',
+          SignerWeight: 1,
         },
-        {
-            "SignerEntry": {
-                "Account": "rJMfWNVbyjcCtds8kpoEjEbYQ41J5B6MUd",
-                "SignerWeight": 1
-            }
-        }
-    ]
-  }, {autofill: true, wallet: wallet_issuingchain})
+      },
+      {
+        SignerEntry: {
+          Account: 'rJMfWNVbyjcCtds8kpoEjEbYQ41J5B6MUd',
+          SignerWeight: 1,
+        },
+      },
+    ],
+  },
+  { autofill: true, wallet: wallet_issuingchain },
+)
 ```
 
 ### 7. Disable the master key on the issuing chain's door account with an `AccountSet` transaction.
 
 ```javascript
-const disablekey_issuingchain = await client_issuingchain.submitAndWait({
-    "TransactionType": "AccountSet",
-    "Account": wallet_issuingchain.address,
-    "SetFlag": 4
-  }, {autofill: true, wallet: wallet_issuingchain})
+const disablekey_issuingchain = await client_issuingchain.submitAndWait(
+  {
+    TransactionType: 'AccountSet',
+    Account: wallet_issuingchain.address,
+    SetFlag: 4,
+  },
+  { autofill: true, wallet: wallet_issuingchain },
+)
 ```
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

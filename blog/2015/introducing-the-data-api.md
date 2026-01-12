@@ -1,24 +1,25 @@
 ---
-date: "2015-08-05"
+date: '2015-08-05'
 template: '../../@theme/templates/blogpost'
 category: 2015
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing the Data API
 
 Ripple Labs data is moving under one roof, the Data API – a version two of the Historical Database API – and one infrastructure, Hadoop. We are building a much more robust and reliable way to import, parse, and house data that is not taxing on the Ripple network. Housing all of our endpoints together will allow us to scale much faster and with more confidence as the ledger and our data needs grow.
 
 The Data API also includes a lot of new capabilities, including:
 
--   historical normalization of currency values against XRP
--   added fields for exchanges that show the makers and takers of liquidity
--   more information on each account, including the funding source and date
--   a new endpoint to show account balance changes
--   new metrics in transaction stats
+- historical normalization of currency values against XRP
+- added fields for exchanges that show the makers and takers of liquidity
+- more information on each account, including the funding source and date
+- a new endpoint to show account balance changes
+- new metrics in transaction stats
 
 We are making these changes quickly and are focusing our resources on building out and testing new endpoints. Documentation for the Data API will soon be available on `ripple.com/build`. The API will live at `data.ripple.com`. In the meantime, you can look through the [Data API in GitHub](https://github.com/ripple/rippled-historical-database/blob/develop/README.md).
 
@@ -26,20 +27,19 @@ Because we are pulling all of the data endpoints under one API, we are shutting 
 
 The following endpoints will be shut down:
 
-- /api/totalNetworkValue       
-- /api/totalValueSent          
-- /api/valueSent               
-- /api/offers                  
-- /api/currencyBalances        
+- /api/totalNetworkValue
+- /api/totalValueSent
+- /api/valueSent
+- /api/offers
+- /api/currencyBalances
 - /api/accounttransactionstats
-- /api/accounttrust            
-- /api/ledgersclosed           
-
+- /api/accounttrust
+- /api/ledgersclosed
 
 The following endpoints will be replicated on the Data API:
 
 | Current                     | Data API                        |
-|:----------------------------|:--------------------------------|
+| :-------------------------- | :------------------------------ |
 | /api/offersExercised        | /v2/exchanges                   |
 | /api/exchangeRates          | /v2/exchange_rates              |
 | /api/topMarkets             | TBD                             |

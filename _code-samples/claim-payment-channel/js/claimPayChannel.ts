@@ -2,13 +2,7 @@
  * Create, claim and verify a Payment Channel.
  * Reference: https://xrpl.org/docs/references/protocol/ledger-data/ledger-entry-types/paychannel
  */
-import {
-  AccountObjectsRequest,
-  Client,
-  PaymentChannelCreate,
-  PaymentChannelClaim,
-  hashes,
-} from 'xrpl'
+import { AccountObjectsRequest, Client, PaymentChannelCreate, PaymentChannelClaim, hashes } from 'xrpl'
 
 const client = new Client('wss://s.altnet.rippletest.net:51233')
 
@@ -30,16 +24,13 @@ async function claimPayChannel(): Promise<void> {
     Account: wallet1.classicAddress,
     Amount: '100', // 10 XRP
     Destination: wallet2.classicAddress,
-    SettleDelay: 86400,  // 1 day in seconds
+    SettleDelay: 86400, // 1 day in seconds
     PublicKey: wallet1.publicKey,
   }
-  
-  console.log("Submitting a PaymentChannelCreate transaction...")
-  const paymentChannelResponse = await client.submitAndWait(
-    paymentChannelCreate,
-    { wallet: wallet1 },
-  )
-  console.log("PaymentChannelCreate transaction response:")
+
+  console.log('Submitting a PaymentChannelCreate transaction...')
+  const paymentChannelResponse = await client.submitAndWait(paymentChannelCreate, { wallet: wallet1 })
+  console.log('PaymentChannelCreate transaction response:')
   console.log(paymentChannelResponse)
 
   // Check that the object was actually created
@@ -48,27 +39,22 @@ async function claimPayChannel(): Promise<void> {
     account: wallet1.classicAddress,
   }
 
-  const accountObjects = (await client.request(accountObjectsRequest)).result
-    .account_objects
-  console.log("Account Objects:", accountObjects)
+  const accountObjects = (await client.request(accountObjectsRequest)).result.account_objects
+  console.log('Account Objects:', accountObjects)
 
   // Destination claims the Payment Channel and we see the balances to verify.
   const paymentChannelClaim: PaymentChannelClaim = {
     Account: wallet2.classicAddress,
     TransactionType: 'PaymentChannelClaim',
-    Channel: hashes.hashPaymentChannel(
-      wallet1.classicAddress,
-      wallet2.classicAddress,
-      paymentChannelResponse.result.tx_json.Sequence ?? 0, 
-    ),
+    Channel: hashes.hashPaymentChannel(wallet1.classicAddress, wallet2.classicAddress, paymentChannelResponse.result.tx_json.Sequence ?? 0),
     Amount: '100',
   }
 
-  console.log("Submitting a PaymentChannelClaim transaction...")
+  console.log('Submitting a PaymentChannelClaim transaction...')
   const channelClaimResponse = await client.submit(paymentChannelClaim, {
     wallet: wallet2,
   })
-  console.log("PaymentChannelClaim transaction response:")
+  console.log('PaymentChannelClaim transaction response:')
   console.log(channelClaimResponse)
 
   console.log('Balances of wallets after Payment Channel is claimed:')

@@ -47,28 +47,28 @@
     .widget-form-footer {
       padding-right: 0 !important;
     }
-    
+
     .submit {
-        background-color: $blue-purple-500 !important;
-        font-weight: bold !important;
-        color: $white !important;
-        border: none !important;
-        border-color: transparent !important;
-        border-radius: 4px !important;
-        margin: 0 !important;
-        margin-top: 8px !important;
+      background-color: $blue-purple-500 !important;
+      font-weight: bold !important;
+      color: $white !important;
+      border: none !important;
+      border-color: transparent !important;
+      border-radius: 4px !important;
+      margin: 0 !important;
+      margin-top: 8px !important;
+      &:hover {
+        background: $blue-purple-600 !important;
+      }
+
+      &.disabled,
+      &[disabled='disabled'] {
+        background-color: $blue-purple-700 !important;
+
         &:hover {
-          background: $blue-purple-600 !important;
-        }
-
-        &.disabled,
-        &[disabled="disabled"] {
           background-color: $blue-purple-700 !important;
-
-          &:hover {
-            background-color: $blue-purple-700 !important;
-          }
         }
+      }
     }
 
     .cancel {

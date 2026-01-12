@@ -8,11 +8,12 @@ labels:
   - Checks
   - XRP
 ---
+
 # Send and Cash Checks
 
 This example shows how to:
 
-1. Send a check to transfer XRP or issued currency to another account. 
+1. Send a check to transfer XRP or issued currency to another account.
 2. Get a list of checks you have sent or received.
 3. Cash a check received from another account.
 4. Cancel a check you have sent.
@@ -20,8 +21,7 @@ This example shows how to:
 Checks offer another option for transferring funds between accounts. Checks have two particular advantages.
 
 1. You can use a check to send funds to another account without first creating a trust line - the trust line is created automatically when the receiver chooses to accept the funds.
-2. The receiver can choose to accept less than the full amount of the check. This allows you to authorize a maximum amount when the actual cost is not finalized. 
-
+2. The receiver can choose to accept less than the full amount of the check. This allows you to authorize a maximum amount when the actual cost is not finalized.
 
 [![Empty Check Form](/docs/img/quickstart-py-checks1.png)](/docs/img/quickstart-py-checks1.png)
 
@@ -46,7 +46,7 @@ To get test accounts:
 3. Click **Get Operational Account**.
 4. Click **Get Standby Account Info**.
 5. Click **Get Operational Account Info**.
-5. Copy and paste the **Standby Seed** and **Operational Seed** fields to a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
+6. Copy and paste the **Standby Seed** and **Operational Seed** fields to a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
 
 [![Form with New Accounts](/docs/img/quickstart-py-checks2.png)](/docs/img/quickstart-py-checks2.png)
 
@@ -79,7 +79,6 @@ To send a check for an issued currency token from the Standby account to the Ope
 
 [![Send Token Check Settings](/docs/img/quickstart-py-checks4.png)](/docs/img/quickstart-py-checks4.png)
 
-
 ### Get Checks
 
 Click **Get Checks** to get a list of the current checks you have sent or received. To uniquely identify a check (for existence, when cashing a check), capture the **index** value for the check.
@@ -94,13 +93,10 @@ To cash a check you have received:
 2. Enter the **Amount** you want to collect, up to the full amount of the check.
 3. Enter the currency code.
    a. If you cashing a check for XRP, enter _XRP_ in the **Currency** field.
-	 b. If you are cashing a check for an issued currency token:
-	    1. Enter the **Issuer** of the token.
-	    2. Enter the **Currency** code for the token.
+   b. If you are cashing a check for an issued currency token: 1. Enter the **Issuer** of the token. 2. Enter the **Currency** code for the token.
 4. Click **Cash Check**.
 
 [![Cashed check results](/docs/img/quickstart-py-checks6.png)](/docs/img/quickstart-py-checks6.png)
-
 
 ### Get Balances
 
@@ -116,7 +112,6 @@ To cancel a check you have previously sent to another account.
 2. Click **Cancel Check**.
 
 [![Canceled check results](/docs/img/quickstart-py-checks8.png)](/docs/img/quickstart-py-checks8.png)
-
 
 # Code Walkthrough
 
@@ -140,9 +135,10 @@ Set the TestNet URL.
 ```python
 testnet_url = "https://s.altnet.rippletest.net:51234"
 ```
+
 ### send_check
 
-Pass the arguments for the account seed, check amount, and destination account. Set the currency type to _XRP_, or if it is an issued currency token provide the currency type and  issuer. 
+Pass the arguments for the account seed, check amount, and destination account. Set the currency type to _XRP_, or if it is an issued currency token provide the currency type and issuer.
 
 ```python
 def send_check(seed, amount, destination, currency, issuer):
@@ -173,7 +169,7 @@ Define the `CheckCreate` transaction.
         account=wallet.address,
         send_max=amount,
         destination=destination
-    ) 
+    )
 ```
 
 Submit the transaction and report the results.
@@ -190,7 +186,7 @@ Submit the transaction and report the results.
 
 ### cash_check
 
-Pass the values for seed, amount, and check_id. Set the currency type to _XRP_, or include the currency type and issuer.
+Pass the values for seed, amount, and check*id. Set the currency type to \_XRP*, or include the currency type and issuer.
 
 ```python
 def cash_check(seed, amount, check_id, currency, issuer):
@@ -306,7 +302,7 @@ Send the request and report the results.
 
 ## lesson10-check.py
 
-This example builds on `lesson2-send-currency.py`. Changes are noted below. 
+This example builds on `lesson2-send-currency.py`. Changes are noted below.
 
 ```python
 import tkinter as tk
@@ -606,7 +602,6 @@ btn_standby_send_xrp.grid(row=2, column=2, sticky="nsew")
 
 Add standby buttons for **Send Check**, **Get Checks**, **Cash Check**, **Cancel Check**, and **Get Balances**.
 
-
 ```python
 btn_standby_send_check=tk.Button(master=frm_form, text="Send  Check",
                                  command=standby_send_check)
@@ -638,7 +633,6 @@ btn_op_send_xrp.grid(row=2, column=3, sticky="nsew")
 ```
 
 Add operational buttons for **Send Check**, **Get Checks**, **Cash Check**, **Cancel Check**, and **Get Balances**.
-
 
 ```javascript
 btn_op_send_check=tk.Button(master=frm_form, text="Send Check",

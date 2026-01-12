@@ -1,9 +1,10 @@
 ---
 seo:
-    description: XRP Ledgerのアカウントのプロパティーを修正します。
+  description: XRP Ledgerのアカウントのプロパティーを修正します。
 labels:
   - アカウント
 ---
+
 # AccountSet
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp "ソース")
@@ -14,13 +15,13 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 
 ```json
 {
-    "TransactionType": "AccountSet",
-    "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "12",
-    "Sequence": 5,
-    "Domain": "6578616D706C652E636F6D",
-    "SetFlag": 5,
-    "MessageKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"
+  "TransactionType": "AccountSet",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Fee": "12",
+  "Sequence": 5,
+  "Domain": "6578616D706C652E636F6D",
+  "SetFlag": 5,
+  "MessageKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"
 }
 ```
 
@@ -28,18 +29,18 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド         | JSONの型        | [内部の型][] | 説明        |
-|:-----------------|:-----------------|:------------------|:-------------------|
-| [`ClearFlag`](#accountsetのフラグ)    | 数値           | UInt32            |  _（省略可）_ このアカウントについてオプションを無効にするためのフラグの一意識別子。 |
-| [`Domain`](#domain)       | 文字列           | Blob              |  _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。[256バイトを超える長さは使用できません。](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
-| `EmailHash`        | 文字列           | Hash128           |  _（省略可）_ アバターイメージの生成に使用されるメールアドレスのハッシュ。一般的に、クライアントは[Gravatar](http://en.gravatar.com/site/implement/hash/)を使用してこのイメージを表示しています。 |
-| `MessageKey`       | 文字列           | Blob              |  _（省略可）_ 暗号化されたメッセージをこのアカウントに送信するための公開鍵です。キーを設定するには、正確に33バイトである必要があり、最初のバイトはキーの種類を示します。secp256k1鍵の場合は`0x02`または`0x03`、Ed25519鍵の場合は`0xED`です。キーを削除するには、空の値を使用します。 |
-| `NFTokenMinter`  | 文字列           | Blob              | _(省略可)_ あなたのために[NFTokensをミントする](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md)ことができる別のアカウント。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
-| [`SetFlag`](#accountsetのフラグ)      | 数値           | UInt32            |  _（省略可）_ このアカウントについてオプションを有効にするための整数フラグ。 |
-| [`TransferRate`](#transferrate) | 符号なし整数 | UInt32            |  _（省略可）_ ユーザがこのアカウントのトークンを送金するときに請求される手数料。通貨単位の10億分の1で表現されます。手数料なしを意味する特殊なケースの`0`を除いて、`2000000000`より大きくしたり、`1000000000`より小さくしたりすることはできません。 |
-| [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md)     | 符号なし整数 | UInt8             | _（省略可）_このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です{% amendment-disclaimer name="TickSize" /%} |
-| `WalletLocator`    | 文字列           | UInt256           |  _（省略可）_ 任意の256ビット値です。指定された場合、この値はアカウントの設定の一部として保存さ れますが、固有の定義や要件を持ちません。 |
-| `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません |
+| フィールド                                                                   | JSONの型     | [内部の型][] | 説明                                                                                                                                                                                                                                                                                |
+| :--------------------------------------------------------------------------- | :----------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`ClearFlag`](#accountsetのフラグ)                                           | 数値         | UInt32       | _（省略可）_ このアカウントについてオプションを無効にするためのフラグの一意識別子。                                                                                                                                                                                                 |
+| [`Domain`](#domain)                                                          | 文字列       | Blob         | _（省略可）_ このアカウントを保有するドメインのASCII小文字を表現する16進文字列。[256バイトを超える長さは使用できません。](https://github.com/XRPLF/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34)                                   |
+| `EmailHash`                                                                  | 文字列       | Hash128      | _（省略可）_ アバターイメージの生成に使用されるメールアドレスのハッシュ。一般的に、クライアントは[Gravatar](http://en.gravatar.com/site/implement/hash/)を使用してこのイメージを表示しています。                                                                                    |
+| `MessageKey`                                                                 | 文字列       | Blob         | _（省略可）_ 暗号化されたメッセージをこのアカウントに送信するための公開鍵です。キーを設定するには、正確に33バイトである必要があり、最初のバイトはキーの種類を示します。secp256k1鍵の場合は`0x02`または`0x03`、Ed25519鍵の場合は`0xED`です。キーを削除するには、空の値を使用します。 |
+| `NFTokenMinter`                                                              | 文字列       | Blob         | _(省略可)_ あなたのために[NFTokensをミントする](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md)ことができる別のアカウント。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}                                                                          |
+| [`SetFlag`](#accountsetのフラグ)                                             | 数値         | UInt32       | _（省略可）_ このアカウントについてオプションを有効にするための整数フラグ。                                                                                                                                                                                                         |
+| [`TransferRate`](#transferrate)                                              | 符号なし整数 | UInt32       | _（省略可）_ ユーザがこのアカウントのトークンを送金するときに請求される手数料。通貨単位の10億分の1で表現されます。手数料なしを意味する特殊なケースの`0`を除いて、`2000000000`より大きくしたり、`1000000000`より小さくしたりすることはできません。                                   |
+| [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md) | 符号なし整数 | UInt8        | *（省略可）*このアドレスによって発行されている通貨が関係するオファーに使用する為替レートの呼値の単位。それらのオファーの為替レートは、この有効桁数へと丸められます。有効な値は`3`から`15`、または無効にするための`0`です{% amendment-disclaimer name="TickSize" /%}                 |
+| `WalletLocator`                                                              | 文字列       | UInt256      | _（省略可）_ 任意の256ビット値です。指定された場合、この値はアカウントの設定の一部として保存さ れますが、固有の定義や要件を持ちません。                                                                                                                                             |
+| `WalletSize`                                                                 | 数値         | UInt32       | _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません                                                                                                                                                                           |
 
 (全てのフィールドは任意です。)
 
@@ -60,9 +61,9 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 
 アカウントについて、有効または無効にできる複数のオプションが用意されています。アカウントのオプションは、状況に応じてさまざまなタイプのフラグで表現します。
 
-* `AccountSet`タイプのトランザクションについては、`SetFlag`パラメーターとして渡すことでオプションを有効にしたり、`ClearFlag`パラメーターとして渡すことでオプションを無効にしたりできる複数の「AccountSetフラグ」が用意されています（プレフィクスは**asf**）。
-* `AccountSet`タイプのトランザクションについては、`Flags`パラメーターとして渡すことでアカウントの特定のオプションを有効または無効にできる複数のトランザクションフラグが用意されています（プレフィクスは**tf**）。このタイプの利用はお勧めしません。新しいアカウントオプションには、対応するトランザクションフラグ（tf）が存在しません。
-* `AccountRoot`レジャーオブジェクトタイプには、レジャー固有のフラグが用意されています（プレフィクスは**lsf**）。これらのフラグは、特定のレジャーに含まれている特定のアカウントオプションの状態を表します。これらの設定は、トランザクションによって変更されるまで適用されます。
+- `AccountSet`タイプのトランザクションについては、`SetFlag`パラメーターとして渡すことでオプションを有効にしたり、`ClearFlag`パラメーターとして渡すことでオプションを無効にしたりできる複数の「AccountSetフラグ」が用意されています（プレフィクスは**asf**）。
+- `AccountSet`タイプのトランザクションについては、`Flags`パラメーターとして渡すことでアカウントの特定のオプションを有効または無効にできる複数のトランザクションフラグが用意されています（プレフィクスは**tf**）。このタイプの利用はお勧めしません。新しいアカウントオプションには、対応するトランザクションフラグ（tf）が存在しません。
+- `AccountRoot`レジャーオブジェクトタイプには、レジャー固有のフラグが用意されています（プレフィクスは**lsf**）。これらのフラグは、特定のレジャーに含まれている特定のアカウントオプションの状態を表します。これらの設定は、トランザクションによって変更されるまで適用されます。
 
 アカウントのフラグを有効または無効にする手段としてお勧めするのは、AccountSetトランザクションの`SetFlag`パラメーターと`ClearFlag`パラメーターを使用する方法です。AccountSetのフラグは、名前が**asf**で始まります。
 
@@ -70,31 +71,31 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 
 使用できるAccountSetのフラグは、以下のとおりです。
 
-| フラグの名前                        | 10進値 | 説明   |
-|:----------------------------------|:------|:--------------|
-| `asfAccountTxnID`                 | 5     | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](../common-fields.md#accounttxnid)については必須です。 |
-| `asfAllowTrustLineClawback`       | 16      | アカウントの発行したトークンを回収する機能を有効にします。 {% amendment-disclaimer name="Clawback" /%}　所有者ディレクトリが存在する場合はClawback機能を有効にできません。つまり、トラストラインやオファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。このフラグは、有効にした後は無効にできません。|
-| `asfAuthorizedNFTokenMinter`      | 10    | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
-| `asfDefaultRipple`                | 8     | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。 |
-| `asfDepositAuth`                  | 9     | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします {% amendment-disclaimer name="DepositAuth" /%}  |
-| `asfDisableMaster`                | 4     | マスターキーペアの使用を禁止します。[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)や[署名者リスト](../../../../concepts/accounts/multi-signing.md)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
-| `asfDisallowIncomingCheck`        | 13    | チェックの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowIncomingNFTokenOffer` | 12    | NFTokenOffersの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowIncomingPayChan`      | 14    | ペイメントチャネルの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowIncomingTrustline`    | 15    | トラストラインの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowXRP`                  | 3     | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
-| `asfGlobalFreeze`                 | 7     | このアカウントによって発行されたすべての資産を[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
-| `asfNoFreeze`                     | 6     | [個々のトラストラインのフリーズまたはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |
-| `asfRequireAuth`                  | 2     | このアドレスによって発行された残高をユーザが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
-| `asfRequireDest`                  | 1     | トランザクションをこのアカウントに送信するための宛先タグを要求します。 |
+| フラグの名前                      | 10進値 | 説明                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| :-------------------------------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `asfAccountTxnID`                 | 5      | このアカウントの直近のトランザクションのIDを追跡します。[AccountTxnID](../common-fields.md#accounttxnid)については必須です。                                                                                                                                                                                                                                                                                             |
+| `asfAllowTrustLineClawback`       | 16     | アカウントの発行したトークンを回収する機能を有効にします。 {% amendment-disclaimer name="Clawback" /%}　所有者ディレクトリが存在する場合はClawback機能を有効にできません。つまり、トラストラインやオファー、エスクロー、ペイメントチャネル、チェック、または署名者リストを設定する前に行う必要があります。このフラグは、有効にした後は無効にできません。                                                                 |
+| `asfAuthorizedNFTokenMinter`      | 10     | このアカウントの代わりに、別のアカウントが非代替性トークン（NFToken）をミントすることを許可するために使用します。認可されたアカウントを[AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md)オブジェクトの`NFTokenMinter`フィールドで指定します。認可されたアカウントを削除するには、このフラグを有効にして`NFTokenMinter`フィールドを省略します。 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
+| `asfDefaultRipple`                | 8      | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。                                                                                                                                                                                                                                                                                    |
+| `asfDepositAuth`                  | 9      | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします {% amendment-disclaimer name="DepositAuth" /%}                                                                                                                                                                                                                                                                 |
+| `asfDisableMaster`                | 4      | マスターキーペアの使用を禁止します。[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)や[署名者リスト](../../../../concepts/accounts/multi-signing.md)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。                                                                                                                                              |
+| `asfDisallowIncomingCheck`        | 13     | チェックの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                                                      |
+| `asfDisallowIncomingNFTokenOffer` | 12     | NFTokenOffersの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                                                 |
+| `asfDisallowIncomingPayChan`      | 14     | ペイメントチャネルの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                                            |
+| `asfDisallowIncomingTrustline`    | 15     | トラストラインの着信をブロックします。{% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                                                |
+| `asfDisallowXRP`                  | 3      | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。                                                                                                                                                                                                                                                                                                              |
+| `asfGlobalFreeze`                 | 7      | このアカウントによって発行されたすべての資産を[フリーズ](../../../../concepts/tokens/fungible-tokens/freezes.md)します。                                                                                                                                                                                                                                                                                                 |
+| `asfNoFreeze`                     | 6      | [個々のトラストラインのフリーズまたはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。                                                                                                                                                                                                                            |
+| `asfRequireAuth`                  | 2      | このアドレスによって発行された残高をユーザが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。                                                                                                                                                                                                                                                                   |
+| `asfRequireDest`                  | 1      | トランザクションをこのアカウントに送信するための宛先タグを要求します。                                                                                                                                                                                                                                                                                                                                                   |
 
 参考のため、各AccountSetフラグに対応するレジャーフラグは以下のとおりです。
 
-| AccountSetフラグの名前             | 対応するレジャーフラグ               |
-|:----------------------------------|:----------------------------------|
-| `asfAccountTxnID`                 | （なし）                           |
-| `asfAllowTrustLineClawback` | `lsfAllowTrustlineClawback` |
-| `asfAuthorizedNFTokenMinter`      | （なし）                            |
+| AccountSetフラグの名前            | 対応するレジャーフラグ            |
+| :-------------------------------- | :-------------------------------- |
+| `asfAccountTxnID`                 | （なし）                          |
+| `asfAllowTrustLineClawback`       | `lsfAllowTrustlineClawback`       |
+| `asfAuthorizedNFTokenMinter`      | （なし）                          |
 | `asfDefaultRipple`                | `lsfDefaultRipple`                |
 | `asfDepositAuth`                  | `lsfDepositAuth`                  |
 | `asfDisableMaster`                | `lsfDisableMaster`                |
@@ -112,17 +113,16 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 
 以下の[トランザクションフラグ](../common-fields.md#flagsフィールド)はAccountSetタイプのトランザクションに固有のもので、同様の目的を果たしますが、使用することはお勧めしません。限られたスペースのため、いくつかの設定には関連する `tf` フラグがありません。また、新しい `tf` フラグは `AccountSet` トランザクションタイプには追加されていません。一つのトランザクションで複数の設定を有効にするには、`tf`フラグと`asf`フラグを組み合わせて使用することができます。
 
-| フラグの名前          | 16進値        | 10進値         | 後継のAccountSetのフラグ |
-|:--------------------|:-------------|:--------------|:----------------------------|
-| `tfRequireDestTag`  | `0x00010000` | 65536         | asfRequireDest（SetFlag）    |
-| `tfOptionalDestTag` | `0x00020000` | 131072        | asfRequireDest（ClearFlag）  |
-| `tfRequireAuth`     | `0x00040000` | 262144        | asfRequireAuth（SetFlag）    |
-| `tfOptionalAuth`    | `0x00080000` | 524288        | asfRequireAuth（ClearFlag）  |
-| `tfDisallowXRP`     | `0x00100000` | 1048576       | asfDisallowXRP（SetFlag）    |
-| `tfAllowXRP`        | `0x00200000` | 2097152       | asfDisallowXRP（ClearFlag）  |
+| フラグの名前        | 16進値       | 10進値  | 後継のAccountSetのフラグ    |
+| :------------------ | :----------- | :------ | :-------------------------- |
+| `tfRequireDestTag`  | `0x00010000` | 65536   | asfRequireDest（SetFlag）   |
+| `tfOptionalDestTag` | `0x00020000` | 131072  | asfRequireDest（ClearFlag） |
+| `tfRequireAuth`     | `0x00040000` | 262144  | asfRequireAuth（SetFlag）   |
+| `tfOptionalAuth`    | `0x00080000` | 524288  | asfRequireAuth（ClearFlag） |
+| `tfDisallowXRP`     | `0x00100000` | 1048576 | asfDisallowXRP（SetFlag）   |
+| `tfAllowXRP`        | `0x00200000` | 2097152 | asfDisallowXRP（ClearFlag） |
 
 {% admonition type="warning" name="注意" %}トランザクションに含まれている`tf`フラグと`asf`フラグの数値は、レジャーに含まれている静的なアカウントに設定された値と合致しません。レジャーに含まれているアカウントのフラグを読み取るには、[`AccountRoot`フラグ](../../ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)をご覧ください。{% /admonition %}
-
 
 ### 着信トランザクションのブロック
 
@@ -147,13 +147,12 @@ _すべての_ 支払いの着信をブロックしたい場合、[Deposit Autho
 
 TransferRateフィールドは、ユーザの発行する通貨を相手方が送金するときに請求する手数料を指定します。
 
-HTTPおよびWebSocketのAPIでは、TransferRate（相手方に10億単位の通貨を送金するのに必要な金額）は整数で表現します。例えば、送金手数料が20%である場合、値を`1200000000`と表現します。  値を1000000000未満にすることはできません（この値未満にした場合、トランザクションの送信について金銭の引き渡しが発生することになり、攻撃に利用されるおそれがあります）。`1000000000`の短縮形として、手数料なしを意味する`0`を指定できます。
+HTTPおよびWebSocketのAPIでは、TransferRate（相手方に10億単位の通貨を送金するのに必要な金額）は整数で表現します。例えば、送金手数料が20%である場合、値を`1200000000`と表現します。 値を1000000000未満にすることはできません（この値未満にした場合、トランザクションの送信について金銭の引き渡しが発生することになり、攻撃に利用されるおそれがあります）。`1000000000`の短縮形として、手数料なしを意味する`0`を指定できます。
 
 詳細は、[送金手数料](../../../../concepts/tokens/fungible-tokens/transfer-fees.md)をご覧ください。
 
 ## NFTokenMinter
 
 認可ミンターを削除するには、`ClearFlag`を10（`asfAuthorizedNFTokenMinter`）に設定し、`NFTokenMinter`フィールドを省略します。
-
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

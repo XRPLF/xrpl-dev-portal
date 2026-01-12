@@ -2,11 +2,12 @@
 html: cryptographic-keys.html
 parent: accounts.html
 seo:
-    description: Utiliza las claves criptográficas para aprobar transacciones para que el XRP Ledger pueda ejecutarlas.
+  description: Utiliza las claves criptográficas para aprobar transacciones para que el XRP Ledger pueda ejecutarlas.
 labels:
   - Smart Contracts
   - Seguridad
 ---
+
 # Claves criptográficas
 
 En el XRP Ledger, una firma digital _autoriza_ a una [transacción](../transactions/index.md) a hacer un grupo específico de acciones. Solo las transacciones firmadas pueden ser enviadas a la red y ser incluidas en un ledger validado.
@@ -19,14 +20,13 @@ Para realizar una firma digital, utilizas un par de claves criptográficas asoci
 
 Muchas [librerías de cliente](../../references/client-libraries.md) y aplicaciones pueden generar un par de claves adecuadas para usar con el XRP Ledger. Sin embargo, solo deberías utilizar los pares de claves que fueron generados en dispositivos y software en los que confías. Las aplicaciones comprometidas pueden exponer tu secreto a usuarios maliciosos que pueden enviar transacciones desde tu cuenta luego.
 
-
 ## Componentes de clave
 
 Un par de claves criptográficas es una **clave privada** y una **clave pública** que están conectadas matemáticamente a través de un proceso de derivación de claves. Cada clave es un número; la clave privada debería elegirse usando una fuente de aleatoriedad fuerte. El [algoritmo de firma criptográfica](#algoritmos-de-firma) define el proceso de derivación de claves y establece restricciones en los números que pueden ser claves criptográficas.
 
 Al tratar con el XRP Ledger, también puedes utilizar algunos valores relacionados como passphrase, semilla, ID de cuenta, y dirección.
 
-[{% inline-svg file="/docs/img/cryptographic-keys.svg" /%}](/docs/img/cryptographic-keys.svg "Diagrama: Passphrase → Semilla → Clave privada → Clave pública → ID de cuenta ←→ Dirección")
+[{% inline-svg file="/docs/img/cryptographic-keys.svg" /%}](/docs/img/cryptographic-keys.svg 'Diagrama: Passphrase → Semilla → Clave privada → Clave pública → ID de cuenta ←→ Dirección')
 _Figura: Una vista simplificada de la relación entre los valores de clave criptográfica._
 
 La passphrase, semilla, y la clave privada son **secretos**: si conoces alguno de estos valores para una cuenta, puedes generar firmas válidas y tienes el control total sobre la cuenta. Si tienes una cuenta, se **muy cuidadoso** con la información secreta de tu cuenta. Si no tienes estos secretos, no puedes usar tu cuenta. Si alguien más tiene acceso a ellos, puede tener el control de tu cuenta.
@@ -37,11 +37,11 @@ Para más detalles técnicos y como la derivación de clave funciona, ver [Deriv
 
 ### Passphrase
 
-Puedes, opcionalmente, usar una passphrase u algún otro valor de entrada como forma de elegir una semilla o una clave privada. Esto es menos seguro que elegir la semilla o la clave privada desde la aleatoriedad, pero hay algunos casos excepcionales dónde quieras hacer esto. (Por ejemplo, en 2018 "XRPuzzler" regaló XRP a la primera persona [en resolver un puzzle](https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/); él utilizó la solución del puzzle como la passphrase para la cuenta que tenía el premio en XRP.)  <!-- SPELLING_IGNORE: xrpuzzler -->
+Puedes, opcionalmente, usar una passphrase u algún otro valor de entrada como forma de elegir una semilla o una clave privada. Esto es menos seguro que elegir la semilla o la clave privada desde la aleatoriedad, pero hay algunos casos excepcionales dónde quieras hacer esto. (Por ejemplo, en 2018 "XRPuzzler" regaló XRP a la primera persona [en resolver un puzzle](https://bitcoinexchangeguide.com/cryptographic-puzzle-creator-xrpuzzler-offers-137-xrp-reward-to-anyone-who-can-solve-it/); él utilizó la solución del puzzle como la passphrase para la cuenta que tenía el premio en XRP.) <!-- SPELLING_IGNORE: xrpuzzler -->
 
 La passphrase es información secreta, por lo que debes protegerla con mucho cuidado. Cualquiera que conozca la passphrase de la dirección tiene control total efectivo sobre la cuenta.
 
-### Semilla 
+### Semilla
 
 Un valor _semilla_ es un valor compacto que se utiliza para [derivar](#derivación-de-claves) las claves privada y pública actual de una cuenta. En la respuesta de un [método wallet_propose][], las `master_key`, `master_seed`, y `master_seed_hex` todas representan el mismo valor semilla, en varios formatos. Cualquiera de esos formatos puede ser utilizado para firmar transacciones. A pesar de tener el prefijo `master_`, las claves que esta semilla representa no necesariamente representan las claves maestras de una cuenta; puedes usar un par de claves como una clave normal o un miembro de una lista de firmantes.
 
@@ -59,10 +59,9 @@ La _clave pública_ es un valor utilizado para verificar la autenticidad de una 
 
 Las transacciones en el XRP Ledger deben incluir las claves públicas para que la red pueda verificar las firmas de las transacciones. La clave pública no se puede utilizar para crear firmas válidas, así que es seguro compartirla públicamente.
 
-
 ### ID de cuenta y dirección
 
-El **ID de cuenta** es el identificador principal para una [cuenta](index.md) o para un par de claves. Se deriva de la clave pública. En el protocolo XRP Ledger, el ID de cuenta es un dato binario de 20 bytes. La mayoría de las APIs XRP Ledger representan la  Account ID como una dirección, en uno de dos formatos:
+El **ID de cuenta** es el identificador principal para una [cuenta](index.md) o para un par de claves. Se deriva de la clave pública. En el protocolo XRP Ledger, el ID de cuenta es un dato binario de 20 bytes. La mayoría de las APIs XRP Ledger representan la Account ID como una dirección, en uno de dos formatos:
 
 - Una "dirección clásica" escribe una ID de cuenta en [base58][] con un checksum. En una respuesta del [método wallet_propose][], este es el valor `account_id`.
 - Una "dirección-X" combina una ID de cuenta _y_ un [Tag de destino](../transactions/source-and-destination-tags.md) y escribe el valor combinado en [base58][] con un checksum.
@@ -79,7 +78,6 @@ El XRP Ledger soporta más de un [algoritmo de firma criptográfica](#algoritmos
 
 El campo `key_type` en el [método wallet_propose][] se refiere al algoritmo de firma criptográfica que se utilizará.
 
-
 ## Par de claves maestras
 
 El par de claves maestras consiste en una clave privada y una clave publica. La dirección de una cuenta es derivada del par de claves maestras, por lo que están intrinsecamente relacionadas. No puedes cambiar o eliminar el par de claves maestras, pero puedes desactivarlo.
@@ -91,8 +89,6 @@ El [metodo wallet_propose][] es una forma de generar el par de claves maestras. 
 Dado que cambiar el par de claves maestras es imposible, debes cuidarlo en proporción al valor de lo que posea. Una buena práctica es [guardar tu par de claves maestras offline](../../tutorials/how-tos/manage-account-settings/offline-account-setup.md) y configurar un par de claves normales para firmar transacciones en tu cuenta. Al mantener el par de claves maestras activadas pero offline, puedes estar razonablemente seguro de que nadie puede acceder a él a través de Internet, pero aun así deberías encontrarlo en caso de una emergencia.
 
 Mantener tu par de claves maestras offline significa no colocar tu información secreta (passphrase, semilla, or clave privada) en cualquier sitio en que los actores maliciosos puedan tener acceso a él. En general, esto quiere decir que no está al alcance de un programa inofrmático que interactúe con Internet. Por ejemplo, puedes guardarlo en un equipo que no se conecta nunca a Internet, en un trozo de papel guardado en una caja fuerte, o tenerla completamente memorizada. (Memorizarla tiene algunos puntos inconvenientes, incluido ser imposible pasar la clave una vez muerto.)
-
-
 
 ### Permisos especiales
 
@@ -108,7 +104,6 @@ Mantener tu par de claves maestras offline significa no colocar tu información 
 
 Una clave normal o [multi-firma](multi-signing.md) puede hacer cualquier otra cosa igual que el par de claves maestras. En particular, una vez has deshabilitado el par de claves maestras, puedes volver a habilitarlo utilizando un par de claves normales o multi firma. También puedes [eliminar una cuenta](deleting-accounts.md) si cumple con los requisitos para su eliminación.
 
-
 ## Par de claves normales
 
 Una cuenta XRP Ledger puede autorizar un par de claves secundario, conocido como _par de claves normales_. Tras hacerlo, puedes utilizar cualquiera, el [par de claves maestras](#par-de-claves-maestras) o el par de claves normales para autorizar transacciones. Puedes eliminar o reemplazar tu par de claves normales en cualquier momento sin cambiar el resto de la cuenta.
@@ -121,27 +116,24 @@ El par de claves normales tiene el mismo formato que el par de claves maestras. 
 
 La [transacción SetRegularKey][] asigna o cambia el par de claves normales de una cuenta. Para un tutorial de asignación o cambio de un par de claves normales, ver [Asignar par de claves normales](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md).
 
-
 ## Algorítmos de firma
 
 Los pares de claves criptográficas están siempre atadas a un algorítmo de firma específico, el cual define la relación matemática entre la clave secreta y la clave pública. Los algorítmos de firma criptográficos tienen la propiedad de, dado el estado actual de las técnicas de criptografía, es "fácil" utilizar una clave secreta para clacular la clave pública coincidente, pero es imposible calcular la clave secreta vinculante partiendo de la clave pública. <!-- STYLE_OVERRIDE: easy -->
 
 El XRP Ledger soporta los siguientes algoritmos de firma criptográfica:
 
-| Tipo de clave  | Algoritmo | Descripción |
-|-------------|-----------|---|
-| `secp256k1` | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) usando la curva eliptica [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | Este es el mismo esquema que utiliza Bitcoin. El XRP Ledger utiliza este tipo de claves por defecto. |
-| `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) usando la curva elíptica [Ed25519](https://ed25519.cr.yp.to/) | Este es un algoritmo más novedoso que tiene mejor rendimiento y otras propiedades convenientes. Como las claves públicas Ed25519 son un byte menos que las claves secp256k1, `rippled` prefija las claves públicas Ed25519 con el byte `0xED` así ambos tipos de claves públicas son de 33 bytes. |
+| Tipo de clave | Algoritmo                                                                                                                                                    | Descripción                                                                                                                                                                                                                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `secp256k1`   | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) usando la curva eliptica [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | Este es el mismo esquema que utiliza Bitcoin. El XRP Ledger utiliza este tipo de claves por defecto.                                                                                                                                                                                              |
+| `ed25519`     | [EdDSA](https://tools.ietf.org/html/rfc8032) usando la curva elíptica [Ed25519](https://ed25519.cr.yp.to/)                                                   | Este es un algoritmo más novedoso que tiene mejor rendimiento y otras propiedades convenientes. Como las claves públicas Ed25519 son un byte menos que las claves secp256k1, `rippled` prefija las claves públicas Ed25519 con el byte `0xED` así ambos tipos de claves públicas son de 33 bytes. |
 
 Cuando generas un par de claves con el [método wallet_propose][], puedes especificar el `key_type` para elegir que tipo de algorítmo criptográfico se utiliza para derivar las claves. Si has generado un tipo de clave disitnto al de por defecto, debes especificar también el `key_type` cuando firmas transacciones.
 
-Los tipos de pares de claves admitidos pueden utilizarse indistintatemente en todo el XRP Ledger como pares de claves maestras, pares de claves normales, y miembros de listas de firmantes. El proceso de  [derivación de una dirección](addresses.md#address-encoding) es el mismo para pares de claves secp256k1 y Ed25519.
-
+Los tipos de pares de claves admitidos pueden utilizarse indistintatemente en todo el XRP Ledger como pares de claves maestras, pares de claves normales, y miembros de listas de firmantes. El proceso de [derivación de una dirección](addresses.md#address-encoding) es el mismo para pares de claves secp256k1 y Ed25519.
 
 ### Algoritmos futuros
 
 En el futuro, es posible que el XRP Ledger necesite nuevos algoritmos de firma criptográficos para mantenerse al día con el desarrollo en criptográfia. Por ejemplo, si los ordenadores cuánticos utilizasen el [algoritmo de Shor](https://en.wikipedia.org/wiki/Shor's_algorithm) (o algo similar) no tardarán en romper la curva elíptica criptográfica, los desarrolladores XRP Ledger pueden añadir un algoritmo criptográfico que no es facil de romper. A mediados de 2020, no existe un algoritmo de firma "resistente a la cuántica" y los ordenadores cuánticos no son lo suficientemente prácticos para ser una amenaza, por lo que no hay planes inmediatos para añadir algoritmos específicos. <!-- STYLE_OVERRIDE: will, easily -->
-
 
 ## Derivación de claves
 
@@ -152,37 +144,39 @@ El proceso de derivar un par de claves depende del algoritmo de firma. En todos 
 Los procesos de derivación de claves descritos aquí están implementados en múltiples lugares y lenguajes de programación:
 
 - En C++ en el código base de `rippled`:
-    - [Definición de semilla](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
-    - [Derivación de clave general & Ed25519](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-    - [Derivación de clave secp256k1](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+  - [Definición de semilla](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
+  - [Derivación de clave general & Ed25519](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
+  - [Derivación de clave secp256k1](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
 - En Python 3 en {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}esta sección de códigos de ejemplo del repositorio{% /repo-link %}.
 - En JavaScript en el paquete [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs).
 
 ### Derivación de clave Ed25519
+
 [[Fuente]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Fuente")
 
-[{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Semilla → Clave secreta → Prefijo + Clave pública")
+[{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg 'Passphrase → Semilla → Clave secreta → Prefijo + Clave pública')
 
 1. Calcular el [SHA-512Half][] del valor de la semilla. El resultado es la clave secreta de 32-byte.
 
-    **Consejo:** Todos los números 32-byte son válidos como claves secretas Ed25519. Sin embargo, Sin embargo, solo los números elegidos aleatoriamente son suficientemente seguros para ser usados como claves secretas.
+   **Consejo:** Todos los números 32-byte son válidos como claves secretas Ed25519. Sin embargo, Sin embargo, solo los números elegidos aleatoriamente son suficientemente seguros para ser usados como claves secretas.
 
 2. Para calcular una clave pública Ed25519, utiliza la derivación estandar de clave pública para [Ed25519](https://ed25519.cr.yp.to/software.html) para derivar una clave pública de 32-byte.
 
-    **Atención:** Como con cualquier algoritmo criptográfico, utiliza una implementación estandar, reconocida y públicamente auditada cuando sea posible. Por ejemplo, [OpenSSL](https://www.openssl.org/) tiene implementaciones de las funciones principales para Ed25519 y secp256k1.
+   **Atención:** Como con cualquier algoritmo criptográfico, utiliza una implementación estandar, reconocida y públicamente auditada cuando sea posible. Por ejemplo, [OpenSSL](https://www.openssl.org/) tiene implementaciones de las funciones principales para Ed25519 y secp256k1.
 
 3. Prefija el byte `0xED` en la clave pública 32-byte para indicar que es una clave pública Ed25519, resultando en 33 bytes.
 
-    Si estás impementando código para firmar transacciones, elimina el prefijo `0xED` y utiliza la clave 32-byte para el proceso de firma actual.
+   Si estás impementando código para firmar transacciones, elimina el prefijo `0xED` y utiliza la clave 32-byte para el proceso de firma actual.
 
 4. Cuando serializas una clave pública de cuenta a [base58][], utiliza el prefijo de la clave pública de cuenta `0x23`.
 
-    Las claves efímeras de validador no pueden ser Ed25519.
+   Las claves efímeras de validador no pueden ser Ed25519.
 
 ### Derivación de clave secp256k1
+
 [[Fuente]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Fuente")
 
-[{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Semilla → Par de claves inicial (Root Key Pair) → Par de claves intermedias → Par de claves maestras")
+[{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg 'Passphrase → Semilla → Par de claves inicial (Root Key Pair) → Par de claves intermedias → Par de claves maestras')
 
 La derivación de claves de cuentas XRP Ledger secp256k1 involucra más pasos que con la derivación de clave Ed25519 por el siguiente par de razones:
 
@@ -191,23 +185,22 @@ La derivación de claves de cuentas XRP Ledger secp256k1 involucra más pasos qu
 
 Los pasos para derivar par de claves de cuenta XRP Ledger secp256k1 desde un valor semilla es como sigue:
 
-1. Calcular un par de claves iniciales (root key pair) a partir del valor semilla, como sigue:
-
+1.  Calcular un par de claves iniciales (root key pair) a partir del valor semilla, como sigue:
     1. Concatenar lo siguiente en orden, para un total de 20 bytes:
-        - El valor semilla  (16 bytes)
-        - El valor "sequencia root" (4 bytes), como un entero big-endian no asignado. Utiliza 0 como un valor inicial para la secuencia root.
+       - El valor semilla (16 bytes)
+       - El valor "sequencia root" (4 bytes), como un entero big-endian no asignado. Utiliza 0 como un valor inicial para la secuencia root.
 
     2. Calcular el [SHA-512Half][] del valor concatenado ( semilla+secuencia root).
 
     3. Si el resultado no es una clave secreta válida secp256k1, incrementa la secuencia root en 1 y vuelve a empezar. [[Fuente]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Fuente")
 
-        Una clave válida secp256k1 debe no ser cero, y debe ser numericamente menor que _secp256k1 group order_. El orden grupo secp256k1 es un valor constante `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
+       Una clave válida secp256k1 debe no ser cero, y debe ser numericamente menor que _secp256k1 group order_. El orden grupo secp256k1 es un valor constante `0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141`.
 
     4. Con una clave secreta secp256k1 válida, utiliza la derivación de clave pública ECDSA estandar con la curva secp256k1 para derivar la clave pública inicial (root). (Como siempre para algoritmos critográficos, utiliza una implementación auditada públicamente, conocida y estandar cuando sea posible. Por ejemplo, [OpenSSL](https://www.openssl.org/) tiene implementaciones para funciones principales de Ed25519 y secp256k1.)
 
     **Consejo:** Los validadores utilizan este par de claves iniciales (root). Si estás calculando un par de claves para un validador, puedes parar aquí. Para disntiguir entre estos dos tipos de claves públicas, la serialización para claves públicas de validador [base58][] usa el prefijo `0x1c`.
 
-2. Convierte la clave pública inicial (root) a su forma comprimida de 33-byte.
+2.  Convierte la clave pública inicial (root) a su forma comprimida de 33-byte.
 
     La forma no comprimida de cualquier clave pública ECDSA consiste en un par de enteros de 32-byte: una coordinada X, y una coordinada Y. La forma comprimida es la coordinada X y un prefijo de one-byte: `0x02` si la coordinada Y es par, o `0x03` si la coordinada Y es impar.
 
@@ -217,12 +210,11 @@ Los pasos para derivar par de claves de cuenta XRP Ledger secp256k1 desde un val
         $ openssl ec -in ec-pub.pem -pubin -text -noout -conv_form compressed
         ```
 
-3. Deriva un "par de claves intermedio" desde la clave pública ráiz comprimida, así:
-
+3.  Deriva un "par de claves intermedio" desde la clave pública ráiz comprimida, así:
     1. Concatena lo siguiente en orden, para un total de 41 bytes:
-        - La clave pública comprimida (33 bytes)
-        - `0x00000000000000000000000000000000` (4 bytes de ceros). (Este valor estaba pensado para derivar diferentes números de la misma familia, pero en la práctica solo el valor 0 es utilizado.)
-        - Una valor "secuencia clave" (4 bytes), como un entero no asignado big-endian. Utiliza 0 como valor inicial para la secuencia clave.
+       - La clave pública comprimida (33 bytes)
+       - `0x00000000000000000000000000000000` (4 bytes de ceros). (Este valor estaba pensado para derivar diferentes números de la misma familia, pero en la práctica solo el valor 0 es utilizado.)
+       - Una valor "secuencia clave" (4 bytes), como un entero no asignado big-endian. Utiliza 0 como valor inicial para la secuencia clave.
 
     2. Calcula el [SHA-512Half][] del valor concatenado.
 
@@ -230,30 +222,28 @@ Los pasos para derivar par de claves de cuenta XRP Ledger secp256k1 desde un val
 
     4. Con una clave secreta secp256k1 válida, utiliza la derivación de clave pública ECDSA estandar con la curva secp256k1 para derivar la clave pública intermedia. (Como siempre con los algoritmos criptográficos, utiliza una implementación públicamente auditada, conocida y estandar cuando sea posible. Por ejemplo, [OpenSSL](https://www.openssl.org/) tiene implementaciones de las funciones principales Ed25519 y secp256k1.)
 
-4. Deriva el par de claves públicas añadiendo la clave pública intermedia a la clave pública inicial (root). De manera similar, deriva la clave secreta añadiendo la clave secreta intermedia a la clave secreta inicial (root).
-
+4.  Deriva el par de claves públicas añadiendo la clave pública intermedia a la clave pública inicial (root). De manera similar, deriva la clave secreta añadiendo la clave secreta intermedia a la clave secreta inicial (root).
     - Una clave secreta ECDSA es un número entero muy largo, por lo que puedes calcular la suma de dos números secretos sumando el módulo el orden de grupo secp256k1.
 
     - Una clave pública ECDSA es un punto de la curva elíptica, por lo que necesitarás matemática de curva elíptica para sumar los puntos.
 
-5. Convierte la clave pública maestra asu forma comprimida de 33-byte, como antes.
+5.  Convierte la clave pública maestra asu forma comprimida de 33-byte, como antes.
 
-6. Cuando serialices la clave pública de la cuenta a su formato  [base58][], utiliza el prefijo de la clave pública de la cuenta, `0x23`.
+6.  Cuando serialices la clave pública de la cuenta a su formato [base58][], utiliza el prefijo de la clave pública de la cuenta, `0x23`.
 
     Ver [Codificación de dirección](addresses.md#address-encoding) para información y códigos de ejemplo para convertir de una clave pública de cuenta a su dirección.
-
 
 ## Ver también
 
 - **Conceptos:**
-    - [Direcciones de emisión y operacionales](account-types.md)
+  - [Direcciones de emisión y operacionales](account-types.md)
 - **Tutoriales:**
-    - [Asignación de par de claves normales](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
-    - [Cambiar o eliminar par de claves normales](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+  - [Asignación de par de claves normales](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
+  - [Cambiar o eliminar par de claves normales](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **Referencias:**
-    - [Transacción SetRegularKey][]
-    - [Objeto de ledger AccountRoot](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
-    - [método wallet_propose][]
-    - [método account_info][]
+  - [Transacción SetRegularKey][]
+  - [Objeto de ledger AccountRoot](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
+  - [método wallet_propose][]
+  - [método account_info][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

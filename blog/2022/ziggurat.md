@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-11-30"
+date: '2022-11-30'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: Ziggurat
 
 This week on Developer Reflections, we’re proud to highlight [Ziggurat](https://github.com/runziggurat), which provides multiple blockchain networks with multiple layers of stability. By reverse-engineering the network protocol and using lightweight "synthetic" nodes, Ziggurat provides XRP Ledger node developers with the foundation of reliability, performance, and scalability needed to realize their true potential.
@@ -15,7 +16,6 @@ This week on Developer Reflections, we’re proud to highlight [Ziggurat](https:
 <!-- BREAK -->
 
 ![Ziggurat logo](/blog/img/devreflections-ziggurat.png)
-
 
 ## Why XRP Ledger?
 
@@ -25,8 +25,8 @@ Currently, Ziggurat leverages the following open-source protocols: gRPC, JSON-RP
 
 Building on the XRP Ledger Testnet, Ziggurat provides multiple blockchain networks with multiple layers of stability including:
 
-* Conformance to spec
-* Performance under scale
-* Resistance to malicious actors
+- Conformance to spec
+- Performance under scale
+- Resistance to malicious actors
 
-To learn more about Ziggurat, visit <https://github.com/runziggurat>. 
+To learn more about Ziggurat, visit <https://github.com/runziggurat>.

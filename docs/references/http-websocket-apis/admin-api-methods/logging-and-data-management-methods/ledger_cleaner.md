@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Configure the ledger cleaner service to check for corrupted data.
+  description: Configure the ledger cleaner service to check for corrupted data.
 labels:
-    - Data Retention
+  - Data Retention
 ---
+
 # ledger_cleaner
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerCleanerHandler.cpp "Source")
 
 The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/XRPLF/rippled/tree/master/src/xrpld/app/ledger#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
@@ -12,34 +14,37 @@ The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/XR
 _The `ledger_cleaner` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "command": "ledger_cleaner",
-    "max_ledger": 13818756,
-    "min_ledger": 13818000,
-    "stop": false
+  "command": "ledger_cleaner",
+  "max_ledger": 13818756,
+  "min_ledger": 13818000,
+  "stop": false
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The request includes the following parameters:
 
-| `Field`       | Type                      | Description                      |
-|:--------------|:--------------------------|:---------------------------------|
-| `ledger`      | Number - [Ledger Index][] | _(Optional)_ If provided, check and correct the specified ledger only. |
-| `max_ledger`  | Number - [Ledger Index][] | _(Optional)_ Configure the ledger cleaner to check ledgers with ledger indexes equal or lower than this. |
-| `min_ledger`  | Number - [Ledger Index][] | _(Optional)_ Configure the ledger cleaner to check ledgers with ledger indexes equal or higher than this. |
+| `Field`       | Type                      | Description                                                                                                                                                         |
+| :------------ | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ledger`      | Number - [Ledger Index][] | _(Optional)_ If provided, check and correct the specified ledger only.                                                                                              |
+| `max_ledger`  | Number - [Ledger Index][] | _(Optional)_ Configure the ledger cleaner to check ledgers with ledger indexes equal or lower than this.                                                            |
+| `min_ledger`  | Number - [Ledger Index][] | _(Optional)_ Configure the ledger cleaner to check ledgers with ledger indexes equal or higher than this.                                                           |
 | `full`        | Boolean                   | _(Optional)_ If true, fix ledger state objects and transactions in the specified ledger(s). Defaults to false. Automatically set to `true` if `ledger` is provided. |
-| `fix_txns`    | Boolean                   | _(Optional)_ If true, correct transaction in the specified ledger(s). Overrides `full` if provided. |
-| `check_nodes` | Boolean                   | _(Optional)_ If true, correct ledger state objects in the specified ledger(s). Overrides `full` if provided. |
-| `stop`        | Boolean                   | _(Optional)_ If true, disable the ledger cleaner. |
+| `fix_txns`    | Boolean                   | _(Optional)_ If true, correct transaction in the specified ledger(s). Overrides `full` if provided.                                                                 |
+| `check_nodes` | Boolean                   | _(Optional)_ If true, correct ledger state objects in the specified ledger(s). Overrides `full` if provided.                                                        |
+| `stop`        | Boolean                   | _(Optional)_ If true, disable the ledger cleaner.                                                                                                                   |
 
 ### Response Format
 
@@ -48,6 +53,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -59,6 +65,7 @@ An example of a successful response:
 }
 
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -66,12 +73,12 @@ An example of a successful response:
 The response follows the [standard format][], with a successful result containing the following fields:
 
 | `Field`   | Type   | Description                      |
-|:----------|:-------|:---------------------------------|
+| :-------- | :----- | :------------------------------- |
 | `message` | String | `Cleaner configured` on success. |
 
 ### Possible Errors
 
-* Any of the [universal error types][].
-* `internal` if one the parameters is specified incorrectly. (This is a bug; the intended error code is `invalidParams`.)
+- Any of the [universal error types][].
+- `internal` if one the parameters is specified incorrectly. (This is a bug; the intended error code is `invalidParams`.)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -22,7 +22,7 @@ Creating a new wallet and funding it with Testnet XRP...
 Attempting to fund address ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
 Faucet fund successful.
 Wallet: ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
-Account Testnet Explorer URL: 
+Account Testnet Explorer URL:
  https://testnet.xrpl.org/accounts/ravbHNootpSNQkxyEFCWevSkHsFGDHfyop
 
 Getting account info...

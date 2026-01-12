@@ -2,8 +2,9 @@
 html: creating-diagrams.html
 parent: contribute-documentation.html
 seo:
-    description: Create diagrams that interact properly with light and dark mode settings.
+  description: Create diagrams that interact properly with light and dark mode settings.
 ---
+
 # Creating Diagrams
 
 The site contains code to automatically recolor SVG diagrams for light and dark mode. This is more than just inverting images. The recoloring keeps gradients going the same direction (so that things don't look bottom-lit) and replaces colors with equivalents that fit with the theme rather than their inverse. For example, "Ripple blue" gets recolored to XRPL green, not its inverse orange. Example:

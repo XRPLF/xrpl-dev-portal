@@ -1,12 +1,13 @@
 ---
 seo:
-    description: Send a Batch transaction from a single account.
+  description: Send a Batch transaction from a single account.
 metadata:
   indexPage: true
 labels:
   - Batch
   - Transactions
 ---
+
 # Send a Single Account Batch Transaction
 
 A [Batch transaction][] allows you to group multiple transactions together and execute them as a single atomic operation.
@@ -83,12 +84,12 @@ You typically don't need to set these manually, but if you do, ensure `Fee` is s
 
 Create the `Batch` transaction and provide the inner transactions. The key fields to note are:
 
-| Field            | Value      |
-|:---------------- |:---------- |
-| TransactionType  | The type of transaction, in this case `Batch`.|
-| Account          | The wallet address of the account that is sending the `Batch` transaction. |
-| Flags            | The flags for the `Batch` transaction. For this example the transaction is configured with the `tfAllOrNothing` (0x00010000) flag to ensure that either all inner transactions succeed or they all fail atomically. See [Batch Flags](../../../references/protocol/transactions/types/batch.md#batch-flags) for other options. |
-| RawTransactions  | Contains the list of inner transactions to be applied. Must include a minimum of **2** transactions and a maximum of **8** transactions. These transactions can come from one account or multiple accounts. |
+| Field           | Value                                                                                                                                                                                                                                                                                                                          |
+| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| TransactionType | The type of transaction, in this case `Batch`.                                                                                                                                                                                                                                                                                 |
+| Account         | The wallet address of the account that is sending the `Batch` transaction.                                                                                                                                                                                                                                                     |
+| Flags           | The flags for the `Batch` transaction. For this example the transaction is configured with the `tfAllOrNothing` (0x00010000) flag to ensure that either all inner transactions succeed or they all fail atomically. See [Batch Flags](../../../references/protocol/transactions/types/batch.md#batch-flags) for other options. |
+| RawTransactions | Contains the list of inner transactions to be applied. Must include a minimum of **2** transactions and a maximum of **8** transactions. These transactions can come from one account or multiple accounts.                                                                                                                    |
 
 {% tabs %}
 {% tab label="Javascript" %}

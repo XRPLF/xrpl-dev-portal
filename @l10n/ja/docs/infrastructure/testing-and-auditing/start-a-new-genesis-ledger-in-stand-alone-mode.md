@@ -2,15 +2,16 @@
 html: start-a-new-genesis-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
 seo:
-    description: スタンドアロンモードで新しいジェネシスレジャーを開始します。
+  description: スタンドアロンモードで新しいジェネシスレジャーを開始します。
 labels:
   - コアサーバ
 ---
+
 # スタンドアロンモードでの新しいジェネシスレジャーの開始
 
 スタンドアロンモードでは`rippled`に新しいジェネシスレジャーを作成させることができます。これにより既知の状態が実現され、本番環境のXRP Ledgerのレジャー履歴は使用されません。（これは単体テストなどに特に便利です。）
 
-* スタンドアロンモードで新しいジェネシスレジャーを使用して`rippled`を起動するには、`-a`オプションと`--start`オプションを使用します。
+- スタンドアロンモードで新しいジェネシスレジャーを使用して`rippled`を起動するには、`-a`オプションと`--start`オプションを使用します。
 
 ```
 rippled -a --start --conf=/path/to/rippled.cfg

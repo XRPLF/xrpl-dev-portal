@@ -1,13 +1,14 @@
 ---
-date: "2018-01-08"
+date: '2018-01-08'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled Version 0.81.0
 
 Ripple has released `rippled` version 0.81.0, which introduces changes that improve the scalability of the XRP Ledger and transitions the recommended validator configuration to a new hosted site, as described in [Ripple's Decentralization Strategy Update](/blog/2017/decent-strategy-update.md) post.
@@ -20,9 +21,9 @@ If you operate a `rippled` server, then you should upgrade to `rippled` version 
 
 Ripple recommends that you:
 
-* Edit your `rippled.cfg` to remove the `[validators]` section, if one is present.
-* Replace the contents of any existing `validators.txt` file with the [version included with this release](https://github.com/ripple/rippled/blob/4e8c8deeaac83d18eb62c95b7425d96e11847a41/doc/validators-example.txt#L51-L55). If you are upgrading to `rippled` version 0.81.0 [using the rippled RPM package](/docs/infrastructure/installation/update-rippled-automatically-on-linux), then your default `validators.txt` file may automatically be updated, in which case you will not need to modify the file. The `validators.txt` file is usually in the same directory as your `rippled.cfg` file.
-* After starting your `rippled` server, confirm that it is configured to use the new defaults by executing:
+- Edit your `rippled.cfg` to remove the `[validators]` section, if one is present.
+- Replace the contents of any existing `validators.txt` file with the [version included with this release](https://github.com/ripple/rippled/blob/4e8c8deeaac83d18eb62c95b7425d96e11847a41/doc/validators-example.txt#L51-L55). If you are upgrading to `rippled` version 0.81.0 [using the rippled RPM package](/docs/infrastructure/installation/update-rippled-automatically-on-linux), then your default `validators.txt` file may automatically be updated, in which case you will not need to modify the file. The `validators.txt` file is usually in the same directory as your `rippled.cfg` file.
+- After starting your `rippled` server, confirm that it is configured to use the new defaults by executing:
 
 `/opt/ripple/bin/rippled validators`
 
@@ -48,9 +49,9 @@ The result should include the following:
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to `rippled` version 0.81.0, then your `rippled` server may periodically drop transactions and fall out of sync with the network.
+- **If you operate a `rippled` server**, but do not upgrade to `rippled` version 0.81.0, then your `rippled` server may periodically drop transactions and fall out of sync with the network.
 
-* On Tuesday January 16, 2018, the current validator keys on all five Ripple-operated `rippled` validator servers will be replaced. **If you have been using the recommended default configuration** and do not reconfigure your `rippled` server before that time, then your `rippled` server will stop seeing validated ledgers.
+- On Tuesday January 16, 2018, the current validator keys on all five Ripple-operated `rippled` validator servers will be replaced. **If you have been using the recommended default configuration** and do not reconfigure your `rippled` server before that time, then your `rippled` server will stop seeing validated ledgers.
 
 For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
@@ -70,25 +71,25 @@ Date:   Wed Jan 3 14:43:42 2018 -0800
     Set version to 0.81.0
 ```
 
-
 ## Network Update
+
 The Ripple technical operations team will deploy `rippled` version 0.81.0 to all `rippled` servers under its operational control, Tuesday, 01/09/2018.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
-
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## 0.81.0 Change Log
 
-* New hosted validator configuration
+- New hosted validator configuration
 
 ## Bug Fixes
 
-* Filter SQL results in lieu of a search clause [(#2312)](https://github.com/ripple/rippled/pull/2312)
+- Filter SQL results in lieu of a search clause [(#2312)](https://github.com/ripple/rippled/pull/2312)

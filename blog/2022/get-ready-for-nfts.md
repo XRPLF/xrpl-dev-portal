@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-09-01"
+date: '2022-09-01'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Get Ready for NFTs
 
 The **NonFungibleTokensV1_1** amendment to the XRP Ledger, introduced in [version 1.9.2](https://github.com/ripple/rippled/releases/tag/1.9.2) of the `rippled` server implementation, has [gained support from a majority of trusted validators](https://livenet.xrpl.org/transactions/AEF4E0866F3CACB0108EA926DE504CC040B3D7F38B8DB9A68649E3555DE937F1). Currently, it is expected to become enabled on 2022-09-13. As long as the NonFungibleTokensV1_1 amendment continues to have the support of over 80% of trusted validators continuously, it will become enabled on the scheduled date, adding native support for non-fungible tokens (NFTs) to the ledger, following the XLS-20 specification.
@@ -21,11 +22,11 @@ The **NonFungibleTokensV1_1** amendment to the XRP Ledger, introduced in [versio
 
 If you operate an XRP Ledger server but don’t upgrade to version 1.9.2 (or higher) by 2022-09-13, when the NonFungibleTokensV1_1 amendment is expected to become enabled, then your server will become amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If the NonFungibleTokensV1_1 amendment does not become enabled, then your server will not become amendment blocked and should continue to operate.
 
@@ -51,7 +52,6 @@ The [**NonFungibleTokensV1_1** amendment](/resources/known-amendments#nonfungibl
 
 For more information on NFTs, see the [NFT Conceptual Overview](/docs/concepts/tokens/nfts) and related documentation.
 
-
 ## A Word of Caution
 
 Since the road to enabling native NFT support has been long, some members of the community have voiced concern regarding pent-up demand for minting NFTs and converting NFTs from the deprecated XLS-14d specification. When the NFT amendment becomes enabled, the onset of NFT minting may cause a temporary increase in traffic on the XRP Ledger network. Possible effects could include:
@@ -64,7 +64,6 @@ While performance testing has shown that the network is capable of handling the 
 
 Users should also be careful not to burn more XRP than they intended on temporarily-elevated transaction costs. If you have an automated system for submitting transactions, now is a good time to review your code to make sure you [properly handle](/docs/concepts/transactions/reliable-transaction-submission) `terQUEUED` and other non-final transaction results.
 
-
 ## Learn, ask questions, and discuss
 
 To learn more about the XRP Ledger, non-fungible tokens, the amendment process, or other topics, see the following resources:
@@ -72,6 +71,6 @@ To learn more about the XRP Ledger, non-fungible tokens, the amendment process, 
 - [XRPL.org](https://xrpl.org) documentation
 - [XRP Ledger Developers on Discord](https://discord.gg/427qqMYwHh)
 - [XRP Ledger Foundation](https://xrpl.foundation), on various platforms:
-    - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
-    - [Twitter](https://twitter.com/XRPLF/)
-    - [GitHub](https://github.com/XRPLF/)
+  - [YouTube](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg)
+  - [Twitter](https://twitter.com/XRPLF/)
+  - [GitHub](https://github.com/XRPLF/)

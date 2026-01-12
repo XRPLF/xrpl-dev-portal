@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-11-10"
+  editPage:
+    hide: true
+date: '2021-11-10'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 ---
+
 # Five Amendments Expected Soon
 
 Several amendments to the XRP Ledger protocol are expected to become enabled on the XRP Ledger Mainnet soon. Three of these amendments fix bugs in the XRP Ledger protocol, one (NegativeUNL) improves the ability of the network to make forward progress during periods of instability, and the last one (TicketBatch) adds the ability to prepare and send transactions in a more flexible order. The details are as follows (all dates are in UTC):
@@ -34,11 +35,11 @@ No action is needed for applications and integrations with the XRP Ledger. You m
 
 If you operate a `rippled` server but don’t upgrade to the minimum version by the time the amendments are expected to become enabled, then your server will become amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If some amendments do not become enabled, then your server will not be amendment blocked as long as it meets the minimum version for any amendments that did become enabled. However, version 1.7.3 is strongly recommended because it includes important fixes for server stability and supports all four amendments.
 
@@ -50,13 +51,11 @@ For instructions on upgrading `rippled` on supported platforms, see [Install `ri
 
 This amendment fixes an edge case in [deserializing](https://xrpl.org/serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
 
-
 ### FlowSortStrands
 
 This amendment improves the payment engine's calculations for finding the most cost-efficient way to execute a cross-currency transaction.
 
 Without this change, the engine simulates a payment through each possible path to calculate the quality (ratio of input to output) of each path. With this change, the engine calculates the theoretical quality of each path without simulating a full payment. With this amendment, the payment engine executes some cross-currency payments much faster, is able to find the most cost-efficient path in more cases, and can enable some payments to succeed in certain conditions where the old payment engine would fail to find enough liquidity.
-
 
 ### fixRmSmallIncreasedQOffers
 
@@ -66,16 +65,13 @@ Without this amendment, an Offer in this state blocks Offers with better rates d
 
 With this amendment, payments and trades can remove these types of Offers the same way that transactions normally remove fully consumed or unfunded Offers.
 
-
 ### NegativeUNL
 
 This amendment implements a ["Negative UNL" system](https://xrpl.org/negative-unl.html), where the network can track which validators are temporarily offline and disregard those validators for quorum calculations. This can improve the ability of the network to make progress during periods of network instability.
 
-
 ### TicketBatch
 
 This amendment adds [Tickets](https://xrpl.org/tickets.html) as a way of sending transactions out of the typical sequence number order. (Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16).) If you have an XRP Ledger account, you can create one or more Tickets, then use those Tickets to send transactions that can execute in any order. This allows for usage patterns such as preparing multiple multi-signed transactions in parallel when the process of collecting signatures can take a long time.
-
 
 ## Learn, ask questions, and discuss
 

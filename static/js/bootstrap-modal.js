@@ -1,9 +1,11 @@
 /**
-* bootstrap.js v3.0.0 by @fat and @mdo
-* Copyright 2013 Twitter Inc.
-* http://www.apache.org/licenses/LICENSE-2.0
-*/
-if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
+ * bootstrap.js v3.0.0 by @fat and @mdo
+ * Copyright 2013 Twitter Inc.
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+if (!jQuery) {
+  throw new Error('Bootstrap requires jQuery')
+}
 
 /* ========================================================================
  * Bootstrap: transition.js v3.0.0
@@ -24,8 +26,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * limitations under the License.
  * ======================================================================== */
 
-
-+function ($) { "use strict";
+;+(function ($) {
+  'use strict'
 
   // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
   // ============================================================
@@ -34,10 +36,10 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     var el = document.createElement('bootstrap')
 
     var transEndEventNames = {
-      'WebkitTransition' : 'webkitTransitionEnd'
-    , 'MozTransition'    : 'transitionend'
-    , 'OTransition'      : 'oTransitionEnd otransitionend'
-    , 'transition'       : 'transitionend'
+      WebkitTransition: 'webkitTransitionEnd',
+      MozTransition: 'transitionend',
+      OTransition: 'oTransitionEnd otransitionend',
+      transition: 'transitionend',
     }
 
     for (var name in transEndEventNames) {
@@ -49,9 +51,14 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   // http://blog.alexmaccaw.com/css-transitions
   $.fn.emulateTransitionEnd = function (duration) {
-    var called = false, $el = this
-    $(this).one($.support.transition.end, function () { called = true })
-    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+    var called = false,
+      $el = this
+    $(this).one($.support.transition.end, function () {
+      called = true
+    })
+    var callback = function () {
+      if (!called) $($el).trigger($.support.transition.end)
+    }
     setTimeout(callback, duration)
     return this
   }
@@ -59,29 +66,26 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   $(function () {
     $.support.transition = transitionEnd()
   })
+})(window.jQuery)
 
-}(window.jQuery);
-
-
-
-+function ($) { "use strict";
+;+(function ($) {
+  'use strict'
 
   // MODAL CLASS DEFINITION
   // ======================
 
   var Modal = function (element, options) {
-    this.options   = options
-    this.$element  = $(element)
-    this.$backdrop =
-    this.isShown   = null
+    this.options = options
+    this.$element = $(element)
+    this.$backdrop = this.isShown = null
 
     if (this.options.remote) this.$element.load(this.options.remote)
   }
 
   Modal.DEFAULTS = {
-      backdrop: true
-    , keyboard: true
-    , show: true
+    backdrop: true,
+    keyboard: true,
+    show: true,
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
@@ -90,7 +94,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   Modal.prototype.show = function (_relatedTarget) {
     var that = this
-    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+    var e = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
     this.$element.trigger(e)
 
@@ -115,21 +119,20 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
         that.$element[0].offsetWidth // force reflow
       }
 
-      that.$element
-        .addClass('in')
-        .attr('aria-hidden', false)
+      that.$element.addClass('in').attr('aria-hidden', false)
 
       that.enforceFocus()
 
       var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
 
-      transition ?
-        that.$element.find('.modal-dialog') // wait for modal to slide in
-          .one($.support.transition.end, function () {
-            that.$element.focus().trigger(e)
-          })
-          .emulateTransitionEnd(300) :
-        that.$element.focus().trigger(e)
+      transition
+        ? that.$element
+            .find('.modal-dialog') // wait for modal to slide in
+            .one($.support.transition.end, function () {
+              that.$element.focus().trigger(e)
+            })
+            .emulateTransitionEnd(300)
+        : that.$element.focus().trigger(e)
     })
   }
 
@@ -148,33 +151,34 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
     $(document).off('focusin.bs.modal')
 
-    this.$element
-      .removeClass('in')
-      .attr('aria-hidden', true)
-      .off('click.dismiss.modal')
+    this.$element.removeClass('in').attr('aria-hidden', true).off('click.dismiss.modal')
 
-    $.support.transition && this.$element.hasClass('fade') ?
-      this.$element
-        .one($.support.transition.end, $.proxy(this.hideModal, this))
-        .emulateTransitionEnd(300) :
-      this.hideModal()
+    $.support.transition && this.$element.hasClass('fade')
+      ? this.$element.one($.support.transition.end, $.proxy(this.hideModal, this)).emulateTransitionEnd(300)
+      : this.hideModal()
   }
 
   Modal.prototype.enforceFocus = function () {
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
-      .on('focusin.bs.modal', $.proxy(function (e) {
-        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-          this.$element.focus()
-        }
-      }, this))
+      .on(
+        'focusin.bs.modal',
+        $.proxy(function (e) {
+          if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
+            this.$element.focus()
+          }
+        }, this),
+      )
   }
 
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
-      this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
-      }, this))
+      this.$element.on(
+        'keyup.dismiss.bs.modal',
+        $.proxy(function (e) {
+          e.which == 27 && this.hide()
+        }, this),
+      )
     } else if (!this.isShown) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
@@ -195,21 +199,21 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
   }
 
   Modal.prototype.backdrop = function (callback) {
-    var that    = this
+    var that = this
     var animate = this.$element.hasClass('fade') ? 'fade' : ''
 
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .appendTo(document.body)
+      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />').appendTo(document.body)
 
-      this.$element.on('click.dismiss.modal', $.proxy(function (e) {
-        if (e.target !== e.currentTarget) return
-        this.options.backdrop == 'static'
-          ? this.$element[0].focus.call(this.$element[0])
-          : this.hide.call(this)
-      }, this))
+      this.$element.on(
+        'click.dismiss.modal',
+        $.proxy(function (e) {
+          if (e.target !== e.currentTarget) return
+          this.options.backdrop == 'static' ? this.$element[0].focus.call(this.$element[0]) : this.hide.call(this)
+        }, this),
+      )
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
@@ -217,26 +221,17 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
       if (!callback) return
 
-      doAnimate ?
-        this.$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(150) :
-        callback()
-
+      doAnimate ? this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(150) : callback()
     } else if (!this.isShown && this.$backdrop) {
       this.$backdrop.removeClass('in')
 
-      $.support.transition && this.$element.hasClass('fade')?
-        this.$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(150) :
-        callback()
-
+      $.support.transition && this.$element.hasClass('fade')
+        ? this.$backdrop.one($.support.transition.end, callback).emulateTransitionEnd(150)
+        : callback()
     } else if (callback) {
       callback()
     }
   }
-
 
   // MODAL PLUGIN DEFINITION
   // =======================
@@ -245,8 +240,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   $.fn.modal = function (option, _relatedTarget) {
     return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.modal')
+      var $this = $(this)
+      var data = $this.data('bs.modal')
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
@@ -257,7 +252,6 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
 
   $.fn.modal.Constructor = Modal
 
-
   // MODAL NO CONFLICT
   // =================
 
@@ -266,28 +260,23 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     return this
   }
 
-
   // MODAL DATA-API
   // ==============
 
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
-    var $this   = $(this)
-    var href    = $this.attr('href')
+    var $this = $(this)
+    var href = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
-    var option  = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+    var option = $target.data('modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     e.preventDefault()
 
-    $target
-      .modal(option, this)
-      .one('hide', function () {
-        $this.is(':visible') && $this.focus()
-      })
+    $target.modal(option, this).one('hide', function () {
+      $this.is(':visible') && $this.focus()
+    })
   })
 
   // $(document)
   //   .on('show.bs.modal',  '.modal', function () { $(document.body).addClass('modal-open') })
   //   .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
-
-}(window.jQuery);
-
+})(window.jQuery)

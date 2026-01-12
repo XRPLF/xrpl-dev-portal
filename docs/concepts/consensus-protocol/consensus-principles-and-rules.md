@@ -2,10 +2,11 @@
 html: consensus-principles-and-rules.html
 parent: consensus.html
 seo:
-    description: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
+  description: The rules and principles of the consensus algorithm that allow users to transfer funds (including fiat currencies, digital currencies and other forms of value) across national boundaries as seamlessly as sending an email.
 labels:
   - Blockchain
 ---
+
 # Consensus Principles and Rules
 
 The XRP Ledger is a universal payment system enabling users to transfer funds across national boundaries as seamlessly as sending an email. Like other peer-to-peer payment networks such as Bitcoin, the XRP Ledger enables peer-to-peer transaction settlement across a decentralized network of computers. Unlike other digital currency protocols, the XRP Ledger allows users to denominate their transactions with any currency they prefer, including fiat currencies, digital currencies and other forms of value, and XRP (the native asset of the XRP Ledger).
@@ -20,7 +21,6 @@ At the core, the XRP Ledger is a shared database that records information such a
 
 As a cryptographic system, the owners of XRP Ledger accounts are identified by _cryptographic identities_, which correspond to public/private key pairs. Transactions are authorized by cryptographic signatures matching these identities. Every server processes every transaction according to the same deterministic, known rules. Ultimately, the goal is for every server in the network to have a complete copy of the exact same ledger state, without needing a single central authority to arbitrate transactions.
 
-
 ### The Double Spend Problem
 
 The "double spend" problem is a fundamental challenge to any digital payment system. The problem comes from the requirement that when money is spent in one place, it can't also be spent in another place. More generally, the problem occurs when you have any two transactions such that either one is valid but not both together.
@@ -32,7 +32,6 @@ If Alice can send the "same" $10 to both Charlie and Bob, the payment system cea
 Conventionally, payment systems solve the double spend problem by having a central authority track and approve transactions. For example, a bank decides to clear a check based on the issuer's available balance, of which the bank is the sole custodian. In such a system, all participants follow the central authority's decisions.
 
 Distributed ledger technologies, like the XRP Ledger, have no central authority. They must solve the double spend problem in some other way.
-
 
 ## How Consensus Works
 
@@ -114,18 +113,18 @@ The XRP Ledger's consensus algorithm provides a robust alternative to proof of w
 ## See Also
 
 - **Concepts:**
-    - [Consensus](index.md)
-    - [Consensus Research](consensus-research.md)
-    - [XRPL Consensus Mechanism Video](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
+  - [Consensus](index.md)
+  - [Consensus Research](consensus-research.md)
+  - [XRPL Consensus Mechanism Video](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutorials:**
-    - [Reliable Transaction Submission](../transactions/reliable-transaction-submission.md)
-    - [Run `rippled` as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+  - [Reliable Transaction Submission](../transactions/reliable-transaction-submission.md)
+  - [Run `rippled` as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
 - **References:**
-    - [Ledger Format Reference](../../references/protocol/ledger-data/index.md)
-    - [Transaction Format Reference](../../references/protocol/transactions/index.md)
-    - [consensus_info method][]
-    - [validator_list_sites method][]
-    - [validators method][]
-    - [consensus_info method][]
+  - [Ledger Format Reference](../../references/protocol/ledger-data/index.md)
+  - [Transaction Format Reference](../../references/protocol/transactions/index.md)
+  - [consensus_info method][]
+  - [validator_list_sites method][]
+  - [validators method][]
+  - [consensus_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

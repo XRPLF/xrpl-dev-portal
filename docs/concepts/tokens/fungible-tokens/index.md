@@ -1,8 +1,10 @@
 ---
 seo:
-    description: Fungible tokens are a way of representing currency or assets on the blockchain where each unit can be swapped for each other. Learn about the different fungible token standards on the XRP Ledger and which one to use.
+  description: Fungible tokens are a way of representing currency or assets on the blockchain where each unit can be swapped for each other. Learn about the different fungible token standards on the XRP Ledger and which one to use.
 ---
+
 # Fungible Tokens
+
 Fungible tokens represent some sort of value, often a representation of assets that exist outside of the blockchain. Unlike [NFTs](../nfts/index.md), all units of a fungible token are interchangable for all other units of that token, just like how any US dollar is worth the same as another US dollar (even if one of them is a crisp, newly-printed dollar bill and the other is a number in a payment app on your phone).
 
 There are two standards for fungible tokens in the XRP Ledger, representing an evolution based on how tokens have been used over time:
@@ -40,13 +42,13 @@ Functionality relating to MPTs is being added by a series of amendments to the X
 
 Some notable features and their status:
 
-| MPT Feature | Amendment / Standard |
-|-------------|----------------------|
-| Issuing and direct payments | {% amendment-disclaimer name="MPTokensV1" compact=true /%} |
-| Escrow | {% amendment-disclaimer name="TokenEscrow" compact=true /%} (implements escrow for both trust line tokens and MPTs) |
-| Mutable token properties | In development: [XLS-94](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0094-dynamic-MPT) |
-| Confidentiality | [Proposed XLS](https://github.com/XRPLF/XRPL-Standards/discussions/372) |
-| Decentralized exchange (DEX), trading, cross-currency payments, and AMM compatibility | [Proposed XLS](https://github.com/XRPLF/XRPL-Standards/discussions/231) |
+| MPT Feature                                                                           | Amendment / Standard                                                                                                |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Issuing and direct payments                                                           | {% amendment-disclaimer name="MPTokensV1" compact=true /%}                                                          |
+| Escrow                                                                                | {% amendment-disclaimer name="TokenEscrow" compact=true /%} (implements escrow for both trust line tokens and MPTs) |
+| Mutable token properties                                                              | In development: [XLS-94](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0094-dynamic-MPT)                  |
+| Confidentiality                                                                       | [Proposed XLS](https://github.com/XRPLF/XRPL-Standards/discussions/372)                                             |
+| Decentralized exchange (DEX), trading, cross-currency payments, and AMM compatibility | [Proposed XLS](https://github.com/XRPLF/XRPL-Standards/discussions/231)                                             |
 
 ## Which Fungible Token Type to Use
 
@@ -54,9 +56,9 @@ If you are creating a new token on the XRP Ledger, it may be confusing that ther
 
 - For most new tokens, MPTs are preferred.
 - Specific cases where you might prefer trust line tokens include:
-    - If you need **compatibility with the DEX**. <!-- Note: revisit this when MPT DEX compatibility is closer to being available. -->
-    - Your use case is **community credit**.
-    - You need compatibility with legacy software, such as an integration that already works with trust line tokens.
-    - You need to be able to represent very large and very small quantities of the same token (20 orders of magnitude apart).
+  - If you need **compatibility with the DEX**. <!-- Note: revisit this when MPT DEX compatibility is closer to being available. -->
+  - Your use case is **community credit**.
+  - You need compatibility with legacy software, such as an integration that already works with trust line tokens.
+  - You need to be able to represent very large and very small quantities of the same token (20 orders of magnitude apart).
 
 This is not an exhaustive list of strengths and weaknesses of each format. If you aren't sure, you can read more about the specific properties of [trust line tokens](trust-line-tokens.md) and [MPTs](multi-purpose-tokens.md) before making a decision.

@@ -1,13 +1,14 @@
 ---
-date: "2016-06-12"
+date: '2016-06-12'
 template: '../../@theme/templates/blogpost'
 category: 2016
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing RippleAPI
 
 Ripple is proud to announce an improved, unified interface to the Ripple Consensus Ledger: the new **RippleAPI**! RippleAPI merges ripple-lib and Ripple-REST into a single high-level interface for JavaScript that is fully-documented, fully-tested, schema-validated, stateless, and easier to use.

@@ -19,7 +19,8 @@
 }
 
 .throbber {
-  width: 24px;height:24px;
+  width: 24px;
+  height: 24px;
 }
 
 #connection-status .card-body {
@@ -46,7 +47,7 @@
 }
 
 .progress small {
-  margin-top: .5rem; // Fix "Getting ready to send..." position
+  margin-top: 0.5rem; // Fix "Getting ready to send..." position
 }
 
 .page-tx-sender .input-group .form-control,
@@ -76,7 +77,9 @@
 }
 
 .rpc-tool .main {
-  h1::before, h2::before, h3::before {
+  h1::before,
+  h2::before,
+  h3::before {
     // These aren't anchors, and the placement of the anchor fix thing
     // causes things above them to be unclickable
     display: none;

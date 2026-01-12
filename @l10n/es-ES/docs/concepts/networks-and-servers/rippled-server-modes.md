@@ -2,24 +2,24 @@
 html: rippled-server-modes.html
 parent: networks-and-servers.html
 seo:
-    description: Aprende sobre los modos de servidor rippled, incluyendo servidores stock, servidores validadores y servidores que se ejecutan en modo solitario.
+  description: Aprende sobre los modos de servidor rippled, incluyendo servidores stock, servidores validadores y servidores que se ejecutan en modo solitario.
 labels:
   - Servidor principal
 ---
+
 # Modos de servidor rippled
 
 El software del servidor `rippled` puede ejecutarse en varios modos dependiendo de su configuración, incluyendo:
 
 - [**Modo P2P**](#modo-p2p) - Este es el modo principal del servidor: sigue la red peer-to-peer, procesa transacciones, y mantiene cierta cantidad de [histórico del ledger](ledger-history.md). Este modo se puede configurar para alguno o todos los siguientes roles:
-    - [**Validador**](#validadores) - Ayuda a asegurar la red participando en el consenso.
-    - [**Servidor API**](#servidores-api) - Proporciona [acceso API](../../tutorials/http-websocket-apis/build-apps/get-started.md) para leer datos del ledger compartido, enviar transacciones, y mirar la actividad en el ledger. Opcionalmente, puede ser un [**servidor full history**](#servidores-full-history), el cual guarda un registro completo de transacciones y el histórico del ledger.
-    - [**Servidor hub**](#hubs-públicos) - Transmite mensajes entre muchos otros miembros de la red peer-to-peer.
+  - [**Validador**](#validadores) - Ayuda a asegurar la red participando en el consenso.
+  - [**Servidor API**](#servidores-api) - Proporciona [acceso API](../../tutorials/http-websocket-apis/build-apps/get-started.md) para leer datos del ledger compartido, enviar transacciones, y mirar la actividad en el ledger. Opcionalmente, puede ser un [**servidor full history**](#servidores-full-history), el cual guarda un registro completo de transacciones y el histórico del ledger.
+  - [**Servidor hub**](#hubs-públicos) - Transmite mensajes entre muchos otros miembros de la red peer-to-peer.
 - [**Modo solitario**](#modo-solitario) - Un modo offline para pruebas. No se conecta a la red peer-to-peer ni usa consenso.
 
 Tambien puedes ejecutar el ejecutable `rippled` como una aplicación cliente para acceder [APIs `rippled`](../../references/http-websocket-apis/index.md) localmente. (Dos instancias del mismo binario pueden ejecutarse uno al lado del otro en este caso; uno como un servidor, y el otro ejecutándose brevemente como cliente y luego apagarlo.)
 
 Para más información sobre los comandos que ejecutar `rippled` en cada uno de estos modos, ver la [Referencia de línea de comandos](../../infrastructure/commandline-usage.md).
-
 
 ## Modo P2P
 
@@ -33,15 +33,13 @@ Los servidores en Modo P2P también pueden configurarse para proporcionar funcio
 
 Los servidores Modo P2P se conecta a [Mainnet](parallel-networks.md) por defecto.
 
-
 ### Servidores API
 
 Todos los servidores en Modo P2P proporcionan [APIs](../../references/http-websocket-apis/index.md) para propósitos como enviar transacciones, verificar balances y configuraciones, y administrar el servidor. Si consultas el XRP Ledger para obtener datos o enviar transacciones para uso comercial, puede ser útil [ejecutar tu propio servidor](index.md#razones-por-las-que-ejecutar-tu-propio-servidor).
 
 #### Servidores Full History
 
-A diferencia de algunas otras blockchains, el XRP Ledger no requiere que los servidores tengan un historial completo de transacciones para conocer el estado actual y procesar nuevas transacciones. Como operador de servidor, tú decides cuánto [histórico del ledger](ledger-history.md)  almacenar en un momento dado. Sin embargo, un servidor en Modo P2P solo puede responder a solicitudes de API utilizando el historial del ledger que tiene disponible localmente. Por ejemplo, si conservas seis meses de historial, tu servidor no puede describir el resultado de una transacción de hace un año. Los servidores API con histórico completo o [full history](ledger-history.md#full-history) pueden informar de todas las transacciones y balances desde el inicio del XRP Ledger.
-
+A diferencia de algunas otras blockchains, el XRP Ledger no requiere que los servidores tengan un historial completo de transacciones para conocer el estado actual y procesar nuevas transacciones. Como operador de servidor, tú decides cuánto [histórico del ledger](ledger-history.md) almacenar en un momento dado. Sin embargo, un servidor en Modo P2P solo puede responder a solicitudes de API utilizando el historial del ledger que tiene disponible localmente. Por ejemplo, si conservas seis meses de historial, tu servidor no puede describir el resultado de una transacción de hace un año. Los servidores API con histórico completo o [full history](ledger-history.md#full-history) pueden informar de todas las transacciones y balances desde el inicio del XRP Ledger.
 
 ### Hubs públicos
 
@@ -65,7 +63,6 @@ Puedes habilitar de forma segura la validación en un servidor que también se u
 
 Para más información sobre como ejecutar un validador, ver [Ejecutar `rippled` como un validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
 
-
 ## Modo solitario
 
 En el modo solitario, el servidor opera sin conectarse a la red y sin participar en el proceso de consenso. Sin el proceso de consenso, debes avanzar manualmente el ledger y no se hace ninguna distinción entre "cerrado" y "validado" ledgers. Sin embargo, el servidor sigue proporcionando acceso a la API y procesa transacciones de la misma manera. Esto te permite:
@@ -74,11 +71,10 @@ En el modo solitario, el servidor opera sin conectarse a la red y sin participar
 - [Crear un nuevo ledger génesis](../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md) desde el inicio.
 - [Cargar una versión de ledger existente](../../infrastructure/testing-and-auditing/load-a-saved-ledger-in-stand-alone-mode.md) desde el disco, luego reproducir transacciones específicas para recrear sus resultados y probar otras posibilidades.
 
-
 ## Ver también
 
 - **Tutoriales:**
-    - [Configurar `rippled`](../../infrastructure/configuration/index.md)
-    - [Usar rippled en modo solitario](../../infrastructure/testing-and-auditing/index.md)
+  - [Configurar `rippled`](../../infrastructure/configuration/index.md)
+  - [Usar rippled en modo solitario](../../infrastructure/testing-and-auditing/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

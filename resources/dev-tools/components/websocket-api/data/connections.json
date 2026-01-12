@@ -39,8 +39,7 @@
     "ws_url": "ws://localhost:6006/",
     "jsonrpc_url": "http://localhost:5005/",
     "shortname": "Local server",
-    "longname":
-    "localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>\n              <small>(Requires that you <a href=\"../../docs/infrastructure/installation\">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>"
+    "longname": "localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>\n              <small>(Requires that you <a href=\"../../docs/infrastructure/installation\">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>"
   },
   {
     "id": "connection-testnet-clio",

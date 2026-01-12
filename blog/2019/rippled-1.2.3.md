@@ -1,13 +1,14 @@
 ---
 labels:
-    - Release Notes
+  - Release Notes
 category: 2019
-date: "2019-04-02"
+date: '2019-04-02'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.2.3
 
 Ripple has released **version 1.2.3 of rippled**, the reference implementation of the core XRP Ledger protocol.
@@ -26,15 +27,15 @@ If you operate a rippled server, but do not upgrade to 1.2.3 immediately, then y
 
 Additionally, if you are not already running [release 1.2.0](/blog/2019/rippled-1.2.0.md) or greater, then your server is [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
-* Cannot determine the validity of a ledger;
+- Cannot determine the validity of a ledger;
 
-* Cannot submit or process transactions;
+- Cannot submit or process transactions;
 
-* Cannot participate in the consensus process;
+- Cannot participate in the consensus process;
 
-* Cannot vote on future amendments; and
+- Cannot vote on future amendments; and
 
-* Could rely on potentially invalid data.
+- Could rely on potentially invalid data.
 
 ### Upgrading
 
@@ -70,13 +71,13 @@ Related documentation is available in the [XRP Ledger Dev Portal](/docs/), inclu
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
-* Ripple Technical Services: <support@ripple.com>
+- Ripple Technical Services: <support@ripple.com>
 
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [XRP Chat Forum](http://www.xrpchat.com/)
 
 ## Other Information
 
@@ -92,7 +93,7 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 ### Bug Fixes
 
-* Better error checking in CachedViewImpl::read ([b347afcc5b](https://github.com/ripple/rippled/commit/b347afcc5b4c5228a425508d96e99b85cac7a1d7))
+- Better error checking in CachedViewImpl::read ([b347afcc5b](https://github.com/ripple/rippled/commit/b347afcc5b4c5228a425508d96e99b85cac7a1d7))
 
 ## Contributions
 

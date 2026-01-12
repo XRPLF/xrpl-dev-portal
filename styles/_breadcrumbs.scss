@@ -11,9 +11,9 @@
 }
 
 .breadcrumb-item + .breadcrumb-item:before {
-    content: "\f105"; /* fontawesome angle-right */
-    font-family: FontAwesome;
-    padding-right: 5px;
+  content: '\f105'; /* fontawesome angle-right */
+  font-family: FontAwesome;
+  padding-right: 5px;
 }
 .breadcrumbs-wrap .breadcrumb {
   padding: 0;
@@ -25,6 +25,6 @@
   text-decoration: none;
 
   &:hover {
-    color: $primary
+    color: $primary;
   }
 }

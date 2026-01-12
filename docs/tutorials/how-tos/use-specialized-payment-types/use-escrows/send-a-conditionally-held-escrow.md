@@ -2,11 +2,12 @@
 html: send-a-conditionally-held-escrow.html
 parent: use-escrows.html
 seo:
-    description: Create an escrow whose release is based on a condition being fulfilled.
+  description: Create an escrow whose release is based on a condition being fulfilled.
 labels:
   - Escrow
   - Smart Contracts
 ---
+
 # Send a Conditionally-Held Escrow
 
 ## 1. Generate condition and fulfillment
@@ -21,6 +22,7 @@ Example code for a random fulfillment and condition:
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const cc = require('five-bells-condition')
 const crypto = require('crypto')
@@ -36,9 +38,11 @@ console.log('Condition:', condition)
 const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
 console.log('Fulfillment:', fulfillment_hex)
 ```
+
 {% /tab %}
 
 {% tab label="Python" %}
+
 ```py
 from os import urandom
 from cryptoconditions import PreimageSha256
@@ -52,12 +56,12 @@ print("Condition", fulfillment.condition_binary.hex().upper())
 # Keep secret until you want to finish the escrow
 print("Fulfillment", fulfillment.serialize_binary().hex().upper())
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment. Anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.
-
 
 ## 2. Calculate release or cancel time
 
@@ -68,15 +72,18 @@ Example for setting a `CancelAfter` time of 24 hours in the future:
 {% tabs %}
 
 {% tab label="JavaScript" %}
+
 ```js
 const rippleOffset = 946684800
-const CancelAfter = Math.floor(Date.now() / 1000) + (24*60*60) - rippleOffset
+const CancelAfter = Math.floor(Date.now() / 1000) + 24 * 60 * 60 - rippleOffset
 console.log(CancelAfter)
 // Example: 556927412
 ```
+
 {% /tab %}
 
 {% tab label="Python 2/3" %}
+
 ```python
 from time import time
 ripple_offset = 946684800
@@ -84,6 +91,7 @@ cancel_after = int(time()) + (24*60*60) - 946684800
 print(cancel_after)
 # Example: 556927412
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -94,7 +102,7 @@ print(cancel_after)
 
 [Sign and submit](../../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender. Include the `CancelAfter` or `FinishAfter` time you calculated in the previous step. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 {% tabs %}
 
@@ -118,7 +126,7 @@ Response:
 
 ## 4. Wait for validation
 
-{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 ## 5. Confirm that the escrow was created
 
@@ -152,7 +160,7 @@ Response:
 
 If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.md) instead.
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 {% tabs %}
 
@@ -178,7 +186,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 7. Wait for validation
 
-{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 ## 8. Confirm final result
 
@@ -192,25 +200,23 @@ Response:
 
 {% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
 
-
-
 ## See Also
 
 - [Crypto-Conditions Specification][]
 - **Concepts:**
-    - [What is XRP?](../../../../introduction/what-is-xrp.md)
-    - [Payment Types](../../../../concepts/payment-types/index.md)
-        - [Escrow](../../../../concepts/payment-types/escrow.md)
+  - [What is XRP?](../../../../introduction/what-is-xrp.md)
+  - [Payment Types](../../../../concepts/payment-types/index.md)
+    - [Escrow](../../../../concepts/payment-types/escrow.md)
 - **Tutorials:**
-    - [Send XRP](../../send-xrp.md)
-    - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
-    - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Send XRP](../../send-xrp.md)
+  - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+  - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [EscrowCancel transaction][]
-    - [EscrowCreate transaction][]
-    - [EscrowFinish transaction][]
-    - [account_objects method][]
-    - [tx method][]
-    - [Escrow ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+  - [EscrowCancel transaction][]
+  - [EscrowCreate transaction][]
+  - [EscrowFinish transaction][]
+  - [account_objects method][]
+  - [tx method][]
+  - [Escrow ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -2,11 +2,12 @@
 html: configure-a-private-server.html
 parent: configure-peering.html
 seo:
-    description: サーバが特定の信頼できるピアのみに接続するように設定します。
+  description: サーバが特定の信頼できるピアのみに接続するように設定します。
 labels:
   - コアサーバ
   - セキュリティ
 ---
+
 # プライベートサーバの設定
 
 [プライベートサーバ](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)は、オープンなピアツーピアネットワーク内の検出されたピアに直接接続するのではなく、特定の信頼できるピアのみを通じてネットワークに接続する`rippled`サーバです。この種の構成は、[バリデータ](../server-modes/run-rippled-as-a-validator.md)に一般的に推奨される任意の対策ですが、その他の特定の目的でも役立ちます。
@@ -26,9 +27,9 @@ labels:
 
 1. `rippled`の構成ファイルを編集します。
 
-    ```
-    vim /etc/opt/ripple/rippled.cfg
-    ```
+   ```
+   vim /etc/opt/ripple/rippled.cfg
+   ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
@@ -36,10 +37,10 @@ labels:
 
    構成ファイルに以下のスタンザを追加するか、コメントを解除します。
 
-    ```
-    [peer_private]
-    1
-    ```
+   ```
+   [peer_private]
+   1
+   ```
 
 3. 固定数のピアを追加します。
 
@@ -47,42 +48,41 @@ labels:
 
    例えば、**公開ハブ**を使用して接続する場合は、以下のスタンザを使用できます。
 
-    ```
-    [ips_fixed]
-    r.ripple.com 51235
-    zaphod.alloy.ee 51235
-    ```
+   ```
+   [ips_fixed]
+   r.ripple.com 51235
+   zaphod.alloy.ee 51235
+   ```
 
    サーバが**プロキシ**を使用して接続している場合は、IPアドレスとポートが、プロキシとして使用している`rippled`サーバの構成と一致している必要があります。これらの各サーバについては、ポート番号が、サーバの構成ファイルに記載されている`protocol = peer`ポート（通常は51235）と一致している必要があります。例えば、構成は次のようになります。
 
-    ```
-    [ips_fixed]
-    192.168.0.1 51235
-    192.168.0.2 51235
-    ```
+   ```
+   [ips_fixed]
+   192.168.0.1 51235
+   192.168.0.2 51235
+   ```
 
 4. プロキシを使用している場合、プロキシをプライベートピアと互いを含めてクラスター化します。
 
    公開ハブを使用している場合は、このステップをスキップします。
 
-   プロキシを使用している場合、プライベートピアを含む[クラスターとしてプロキシを構成](cluster-rippled-servers.md)します。クラスターの各メンバーは、クラスターの_他の_各メンバーをリストにした`[ips_fixed]`スタンザを持っている必要があります。ただし、`[peer_private]`スタンザを持つのは**プライベートサーバのみ**とします。
+   プロキシを使用している場合、プライベートピアを含む[クラスターとしてプロキシを構成](cluster-rippled-servers.md)します。クラスターの各メンバーは、クラスターの*他の*各メンバーをリストにした`[ips_fixed]`スタンザを持っている必要があります。ただし、`[peer_private]`スタンザを持つのは**プライベートサーバのみ**とします。
 
    各プロキシで`rippled`を再起動します。各プロキシサーバで、次のようにします。
 
-    ```
-    sudo service systemctl restart rippled
-    ```
+   ```
+   sudo service systemctl restart rippled
+   ```
 
 5. プライベートサーバで`rippled`を起動します。
 
-    ```
-    sudo service systemctl start rippled
-    ```
+   ```
+   sudo service systemctl start rippled
+   ```
 
 6. [peersメソッド][]を使用して、プライベートサーバが自身のピアに _のみ_ 接続していることを確認します。
 
    レスポンスの`peers`配列に、構成済みのピアのいずれでもない`address`を持つオブジェクトが含まれていてはなりません。含まれている場合は、構成ファイルを再度確認して、プライベートサーバを再起動します。
-
 
 ## 次のステップ
 

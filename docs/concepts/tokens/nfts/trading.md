@@ -2,14 +2,14 @@
 html: non-fungible-token-transfers.html
 parent: non-fungible-tokens.html
 seo:
-    description: Trading NFTs in direct or brokered mode.
+  description: Trading NFTs in direct or brokered mode.
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
 
 # Trading NFTs
 
-You can transfer NFTs between accounts on the XRP Ledger. You can offer to buy or sell an NFT, or accept offers from other accounts to buy an NFT you own. You can even give away an NFT by offering to sell it at a price of 0.  All offers are created using [NFTokenCreateOffer transaction][].
+You can transfer NFTs between accounts on the XRP Ledger. You can offer to buy or sell an NFT, or accept offers from other accounts to buy an NFT you own. You can even give away an NFT by offering to sell it at a price of 0. All offers are created using [NFTokenCreateOffer transaction][].
 
 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
@@ -59,9 +59,9 @@ On the other hand, creators might not want to spend their time selling their cre
 
 Using a broker offers several advantages. For example:
 
-* The broker can act as an agent, working to maximize the selling price of the NFT. If the broker is paid a percentage of the sale price, the higher the price, the more the broker earns.
-* The broker can act as a curator, organizing NFTs based on a niche market, price point, or other criteria. This can attract groups of buyers who might not otherwise discover a creator’s work.
-* The broker can act as a marketplace, similar to Opensea.io, to handle the auction process at the application layer.
+- The broker can act as an agent, working to maximize the selling price of the NFT. If the broker is paid a percentage of the sale price, the higher the price, the more the broker earns.
+- The broker can act as a curator, organizing NFTs based on a niche market, price point, or other criteria. This can attract groups of buyers who might not otherwise discover a creator’s work.
+- The broker can act as a marketplace, similar to Opensea.io, to handle the auction process at the application layer.
 
 ### Brokered Sale Workflows
 

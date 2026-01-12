@@ -2,16 +2,16 @@
 html: manually-connect-to-a-specific-peer.html
 parent: configure-peering.html
 seo:
-    description: rippledサーバを特定のピアに接続します。
+  description: rippledサーバを特定のピアに接続します。
 labels:
   - コアサーバ
 ---
+
 # 特定のピアへの手動接続
 
 サーバをXRP Ledgerネットワーク内の特定の[ピア](../../../concepts/networks-and-servers/peer-protocol.md)に手動で接続するには、次の手順を実行します。
 
 {% admonition type="success" name="ヒント" %}サーバが起動時にこのサーバに自動的に接続して、以降も接続を維持するようにするには、そのピアに対して[ピアリザベーション](use-a-peer-reservation.md)を設定することができます。{% /admonition %}
-
 
 ## 前提条件
 
@@ -27,6 +27,7 @@ labels:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
     "command": "connect",
@@ -34,9 +35,11 @@ labels:
     "port": 51235
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {
     "method": "connect",
@@ -48,16 +51,18 @@ labels:
     ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 rippled connect 169.54.2.151 51235
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 ## 関連項目
 

@@ -7,14 +7,14 @@ import submitTransaction from '../helpers/submit-transaction';
 // Optional: Render the XRPL logo
 renderXrplLogo();
 
- // Get the client from the environment variables
+// Get the client from the environment variables
 const client = new Client(process.env.CLIENT);
 
 // Self-invoking function to connect to the client
 (async () => {
     try {
         await client.connect();
-        
+
         const wallet = Wallet.fromSeed(process.env.SEED);
 
         // Subscribe to account transaction stream
@@ -24,12 +24,10 @@ const client = new Client(process.env.CLIENT);
         });
 
         // Fetch the wallet details and show the available balance
-        await getWalletDetails({ client }).then((
-            { accountReserve, account_data }) => {
-                const bal = dropsToXrp(account_data.Balance) - accountReserve;
-                availableBalanceElement.textContent = `Available Balance: ${bal} XRP`;
+        await getWalletDetails({ client }).then(({ accountReserve, account_data }) => {
+            const bal = dropsToXrp(account_data.Balance) - accountReserve;
+            availableBalanceElement.textContent = `Available Balance: ${bal} XRP`;
         });
-
     } catch (error) {
         await client.disconnect();
         console.log(error);
@@ -128,13 +126,13 @@ submitTxBtn.addEventListener('click', async () => {
         if (destinationTag?.value !== '') {
             txJson.DestinationTag = parseInt(destinationTag.value);
         }
-        console.log("Sending...", txJson);
+        console.log('Sending...', txJson);
 
         // Submit the transaction to the ledger
         const { result } = await submitTransaction({ client, tx: txJson });
         const txResult = result?.meta?.TransactionResult || result?.engine_result || '';
 
-        // Check if the transaction was successful or not 
+        // Check if the transaction was successful or not
         // and show the appropriate message to the user
         if (txResult === 'tesSUCCESS') {
             alert('Transaction submitted successfully!');
@@ -146,7 +144,7 @@ submitTxBtn.addEventListener('click', async () => {
         console.error(error);
         submitTxBtn.disabled = false;
     } finally {
-        // Re-enable the submit button after the transaction is submitted 
+        // Re-enable the submit button after the transaction is submitted
         // so the user can submit another transaction
         submitTxBtn.disabled = false;
         submitTxBtn.textContent = 'Submit Transaction';

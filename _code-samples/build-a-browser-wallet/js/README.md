@@ -16,9 +16,9 @@ At the end of this tutorial, you should be able to build a simple XRP wallet tha
 
 - Shows updates to the XRP Ledger in real-time.
 - Can view any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
-- Shows how much XRP is set aside for the account's reserve requirement. 
+- Shows how much XRP is set aside for the account's reserve requirement.
 - Can send direct XRP payments, and provides feedback about the intended destination address, including:
-  - Displays available balance in your account
-  - Verifies that the destination address is valid
-  - Validates amount input to ensure it is a valid number and that the account has enough XRP to send
-  - Allows addition of the destination tag
+    - Displays available balance in your account
+    - Verifies that the destination address is valid
+    - Validates amount input to ensure it is a valid number and that the account has enough XRP to send
+    - Allows addition of the destination tag

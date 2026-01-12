@@ -1,35 +1,35 @@
 // Dependencies for Node.js.
 // In browsers, use a <script> tag instead.
-if (typeof module !== "undefined") {
+if (typeof module !== 'undefined') {
   // Use var here because const/let are block-scoped to the if statement.
   var xrpl = require('xrpl')
 }
 
 // Example credentials
-const wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
+const wallet = xrpl.Wallet.fromSeed('sn3nxiW7v8KXzPzAqzyHXbSSKNuN9')
 
 // Connect to Devnet (since that's where tickets are available)
 async function main() {
-  const client = new xrpl.Client("wss://s.devnet.rippletest.net:51233")
+  const client = new xrpl.Client('wss://s.devnet.rippletest.net:51233')
   await client.connect()
 
   // Get credentials from the Testnet Faucet -----------------------------------
-  console.log("Getting a wallet from the faucet...")
-  const {wallet, balance} = await client.fundWallet()
+  console.log('Getting a wallet from the faucet...')
+  const { wallet, balance } = await client.fundWallet()
 
   // Check Sequence Number -----------------------------------------------------
   const account_info = await client.request({
-    "command": "account_info",
-    "account": wallet.address
+    command: 'account_info',
+    account: wallet.address,
   })
   let current_sequence = account_info.result.account_data.Sequence
 
   // Prepare and Sign TicketCreate ---------------------------------------------
   const prepared = await client.autofill({
-    "TransactionType": "TicketCreate",
-    "Account": wallet.address,
-    "TicketCount": 10,
-    "Sequence": current_sequence
+    TransactionType: 'TicketCreate',
+    Account: wallet.address,
+    TicketCount: 10,
+    Sequence: current_sequence,
   })
   const signed = wallet.sign(prepared)
   console.log(`Prepared TicketCreate transaction ${signed.hash}`)
@@ -43,22 +43,22 @@ async function main() {
 
   // Check Available Tickets ---------------------------------------------------
   let response = await client.request({
-    "command": "account_objects",
-    "account": wallet.address,
-    "type": "ticket"
+    command: 'account_objects',
+    account: wallet.address,
+    type: 'ticket',
   })
-  console.log("Available Tickets:", response.result.account_objects)
+  console.log('Available Tickets:', response.result.account_objects)
 
   // Choose an arbitrary Ticket to use
   use_ticket = response.result.account_objects[0].TicketSequence
 
   // Prepare and Sign Ticketed Transaction -------------------------------------
   const prepared_t = await client.autofill({
-    "TransactionType": "AccountSet",
-    "Account": wallet.address,
-    "TicketSequence": use_ticket,
-    "LastLedgerSequence": null, // Never expire this transaction.
-    "Sequence": 0
+    TransactionType: 'AccountSet',
+    Account: wallet.address,
+    TicketSequence: use_ticket,
+    LastLedgerSequence: null, // Never expire this transaction.
+    Sequence: 0,
   })
   const signed_t = wallet.sign(prepared_t)
   console.log(`Prepared ticketed transaction ${signed_t.hash}`)

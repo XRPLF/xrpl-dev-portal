@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-05-24"
+  editPage:
+    hide: true
+date: '2021-05-24'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 ---
+
 # Introducing XRP Ledger version 1.7.2
 
 Version 1.7.2 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release protects against the security issue [CVE-2021-3499 affecting OpenSSL](https://www.openssl.org/news/secadv/20210325.txt), adds an amendment to fix an issue with small offers not being properly removed from order books in some cases, and includes various other minor fixes.
@@ -24,15 +25,14 @@ This release introduces a new amendment to the XRP Ledger protocol: fixRmSmallIn
 
 If you operate an XRP Ledger validator, please [learn more about this amendment](https://xrpl.org/known-amendments.html) so you can make informed decisions about [how your validator votes](https://xrpl.org/configure-amendment-voting.html). If you take no action, your validator begins voting in favor of any new amendments as soon as it has been upgraded.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.7.2-1.el7.x86_64.rpm) | `fbdc7a442b1cbcb04cacda40fc3eb0b6178329b5bf9ba3084b4728a0ed2d9b26` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.7.2-1_amd64.deb) | `71767ee966b3520796d03ffbdc14ddeeb44876097b897df0ff71b2da3e69e633` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.7.2-1_amd64.deb)  | `71767ee966b3520796d03ffbdc14ddeeb44876097b897df0ff71b2da3e69e633` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -64,7 +64,6 @@ Version 1.7.2 has the following fixes:
 
 - **Updates to Windows builds:** When building on Windows, use `vcpkg` 2021 by default and add compatibility with MSVC 2019. ([36fe196](https://github.com/ripple/rippled/pull/3843/commits/36fe1966c3cd37f668693b5d9910fab59c3f8b1f), [30fd458](https://github.com/ripple/rippled/pull/3843/commits/30fd45890b1d3d5f372a2091d1397b1e8e29d2ca))
 
-
 [Reporting Mode]: https://xrpl.org/rippled-server-modes.html#reporting-mode
 
 ## Contributions
@@ -76,8 +75,8 @@ The public git repository for `rippled` is hosted on GitHub at <https://github.c
 We welcome contributions, big and small, and invite everyone to join the community
 of XRP Ledger developers and help us build the Internet of Value.
 
-
 ### Credits
+
 The following people contributed directly to this release:
 
 - CJ Cobb <ccobb@ripple.com>

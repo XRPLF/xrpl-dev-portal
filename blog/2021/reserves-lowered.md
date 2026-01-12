@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-09-21"
+  editPage:
+    hide: true
+date: '2021-09-21'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 ---
+
 # Lower Reserves Are Now In Effect
 
 Over the course of the past year, several members of the XRP Ledger community have advocated for lowering the reserve requirements in the network to compensate for the sustained increase in the price of XRP. On 2021-09-19, [the new reserve values went into effect](https://livenet.xrpl.org/transactions/5922A0BA30621C60B2B6DDBC3FF6B5BB509EB3685C4C3D56696A9FE4FE6D48A3/raw) after gaining support from a majority of validators. The new reserve amounts are **10 XRP** base for an account plus **2 XRP** per object owned in the ledger, down from 20 XRP base and 5 XRP per object owned.
@@ -22,13 +23,11 @@ It is now possible to fund new accounts by sending a payment of as little as 10 
 
 The [special transaction cost](https://xrpl.org/transaction-cost.html) to [delete an account](https://xrpl.org/accounts.html#deletion-of-accounts) is based on the owner reserve, so deleting an account now requires burning only 2 XRP instead of 5 XRP.
 
-
 ## Action Recommended
 
 Most XRP Ledger users and integrations do not need to take action to benefit from the reduced reserve. However, if you have software with a hard-coded reserve of 20 XRP, you should consider adjusting it to use the new values, or better yet, occasionally query the reserve information from the API:
 
 To look up XRP reserves, see the [server_info method](https://xrpl.org/server_info.html)'s response. In particular, the `validated_ledger.reserve_base_xrp` field shows the base account reserve and the `validated_ledger.reserve_inc_xrp` shows the owner reserve (per item). You can also use the [server_state method](https://xrpl.org/server_state.html) to get the values in drops of XRP.
-
 
 ## Background
 

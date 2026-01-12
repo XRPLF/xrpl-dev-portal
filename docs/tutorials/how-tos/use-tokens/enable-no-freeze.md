@@ -2,7 +2,7 @@
 html: enable-no-freeze.html
 parent: use-tokens.html
 seo:
-    description: Permanently give up your account's ability to freeze tokens it issues.
+  description: Permanently give up your account's ability to freeze tokens it issues.
 embed_xrpl_js: true
 filters:
   - interactive_steps
@@ -10,6 +10,7 @@ labels:
   - Tokens
 steps: ['Generate', 'Connect', 'Send AccountSet', 'Wait', 'Confirm Settings']
 ---
+
 # Enable No Freeze
 
 If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can enable the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze) to permanently limit your own ability to use the token freezing features of the XRP Ledger. (As a reminder, this only applies to issued tokens, not XRP.) This tutorial shows how to enable the No Freeze setting on your issuing account.
@@ -18,13 +19,12 @@ If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can 
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
 - You don't need to have [issued a token](issue-a-fungible-token.md) in the XRP Ledger to enable No Freeze, but the main reason you would do so is if you intend to or have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript" src="/js/tutorials/enable-no-freeze.js"></script>
-
 
 ## Example Code
 
@@ -46,7 +46,6 @@ For this tutorial, you can get credentials from the following interface:
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../../concepts/transactions/secure-signing.md).
 
-
 ### 2. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../../references/client-libraries.md):
@@ -63,7 +62,6 @@ For this tutorial, click the following button to connect:
 
 {% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
-
 ### 3. Send AccountSet Transaction
 
 To enable the No Freeze setting, send an [AccountSet transaction][] with a `SetFlag` field containing the [`asfNoFreeze` value (`6`)](../../../references/protocol/transactions/types/accountset.md#accountset-flags). To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
@@ -77,6 +75,7 @@ For example:
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": 12,
@@ -93,10 +92,10 @@ For example:
   "secret": "s████████████████████████████"
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 {% interactive-block label="Send AccountSet" steps=$frontmatter.steps %}
 
@@ -108,14 +107,11 @@ For example:
 
 {% /interactive-block %}
 
-
-
 ### 4. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
-
 
 ### 5. Confirm Account Settings
 
@@ -128,6 +124,7 @@ After the transaction is validated, you can check your account's settings to con
 {% /tab %}
 
 {% tab label="WebSocket" %}
+
 ```json
 Request:
 
@@ -168,6 +165,7 @@ Response:
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -182,21 +180,20 @@ Response:
 
 {% /interactive-block %}
 
-
 ## See Also
 
 - **Concepts:**
-    - [Freezing Issued Currencies](../../../concepts/tokens/fungible-tokens/freezes.md)
-    - [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md)
+  - [Freezing Issued Currencies](../../../concepts/tokens/fungible-tokens/freezes.md)
+  - [Trust Lines](../../../concepts/tokens/fungible-tokens/index.md)
 - **Tutorials:**
-    - [Enact Global Freeze](enact-global-freeze.md)
-    - [Freeze a Trust Line](freeze-a-trust-line.md)
+  - [Enact Global Freeze](enact-global-freeze.md)
+  - [Freeze a Trust Line](freeze-a-trust-line.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
-    - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
+  - [account_lines method][]
+  - [account_info method][]
+  - [AccountSet transaction][]
+  - [TrustSet transaction][]
+  - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+  - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

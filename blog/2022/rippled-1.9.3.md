@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-08-26"
+date: '2022-08-26'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.9.3
 
 Version 1.9.3 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release corrects a technical flaw that could cause servers to incorrectly process stored amendment votes during startup and fixes a minor issue with with copy constructor of `PublicKey`.
@@ -24,10 +25,10 @@ If you are using version 1.9.1 or earlier, you must upgrade to **1.9.2 or later*
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.9.3-1.el7.x86_64.rpm) | `fc8cc3bbcff02291ce5ce5a466e1b4a3f54c1515befed36dcad92ceae69dafa9` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.9.3-1_amd64.deb) | `516195120cbb8ca68e1c596a69b0b9fe1ac7e0898dcc697d6289396fadae142d` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.9.3-1_amd64.deb)  | `516195120cbb8ca68e1c596a69b0b9fe1ac7e0898dcc697d6289396fadae142d` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 

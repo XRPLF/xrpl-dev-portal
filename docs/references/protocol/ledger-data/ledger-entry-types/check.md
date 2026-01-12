@@ -1,10 +1,12 @@
 ---
 seo:
-    description: A check that can be redeemed for money by its destination.
+  description: A check that can be redeemed for money by its destination.
 labels:
   - Checks
 ---
+
 # Check
+
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L50-L63 "Source")
 
 A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender. You can create a check by sending a [CheckCreate transaction][].
@@ -36,41 +38,39 @@ A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md
 
 In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
-| Field               | JSON Type        | [Internal Type][] | Required? | Description     |
-|:--------------------|:-----------------|:------------------|:----------|:----------------|
-| `Account`           | String           | Account           | Yes       | The sender of the Check. Cashing the Check debits this address's balance. |
-| `Destination`       | String           | Account           | Yes       | The intended recipient of the Check. Only this address can cash the Check, using a [CheckCash transaction][]. |
-| `DestinationNode`   | String           | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. |
-| `DestinationTag`    | Number           | UInt32            | No        | An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address. |
-| `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Check is considered expired. See [Specifying Time][] for details. |
-| `InvoiceID`         | String           | UInt256           | No        | Arbitrary 256-bit hash provided by the sender as a specific reason or identifier for this Check. |
-| `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String           | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
-| `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
+| Field               | JSON Type        | [Internal Type][] | Required? | Description                                                                                                                                                                  |
+| :------------------ | :--------------- | :---------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Account`           | String           | Account           | Yes       | The sender of the Check. Cashing the Check debits this address's balance.                                                                                                    |
+| `Destination`       | String           | Account           | Yes       | The intended recipient of the Check. Only this address can cash the Check, using a [CheckCash transaction][].                                                                |
+| `DestinationNode`   | String           | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages.                                    |
+| `DestinationTag`    | Number           | UInt32            | No        | An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address.                                                   |
+| `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Check is considered expired. See [Specifying Time][] for details.                                                                        |
+| `InvoiceID`         | String           | UInt256           | No        | Arbitrary 256-bit hash provided by the sender as a specific reason or identifier for this Check.                                                                             |
+| `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages.                                         |
+| `PreviousTxnID`     | String           | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object.                                                                                             |
+| `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object.                                                               |
 | `SendMax`           | String or Object | Amount            | Yes       | The maximum amount of currency this Check can debit the sender. If the Check is successfully cashed, the destination is credited in the same currency for up to this amount. |
-| `Sequence`          | Number           | UInt32            | Yes       | The sequence number of the [CheckCreate transaction][] that created this check. |
-| `SourceTag`         | Number           | UInt32            | No        | An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address. |
-
+| `Sequence`          | Number           | UInt32            | Yes       | The sequence number of the [CheckCreate transaction][] that created this check.                                                                                              |
+| `SourceTag`         | Number           | UInt32            | No        | An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address.                                                           |
 
 ## {% $frontmatter.seo.title %} Flags
 
 There are no flags defined for {% code-page-name /%} entries.
 
-
 ## {% $frontmatter.seo.title %} Reserve
 
 {% code-page-name /%} entries count as one item towards the owner reserve of the sender of the Check as long as the entry is in the ledger. This reserve is freed up when the check is cashed or canceled.
 
-
 ## Check ID Format
+
 [[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/Indexes.cpp#L335-L339 "Source")
 
 The ID of a `Check` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
-* The Check space key (`0x0043`)
-* The AccountID of the sender of the [CheckCreate transaction][] that created the `Check`
-* The `Sequence` number of the [CheckCreate transaction][] that created the `Check`.
-    If the CheckCreate transaction used a [Ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
+- The Check space key (`0x0043`)
+- The AccountID of the sender of the [CheckCreate transaction][] that created the `Check`
+- The `Sequence` number of the [CheckCreate transaction][] that created the `Check`.
+  If the CheckCreate transaction used a [Ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
 
 See the tutorial showing how to [Send a Check](../../../../tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md).
 

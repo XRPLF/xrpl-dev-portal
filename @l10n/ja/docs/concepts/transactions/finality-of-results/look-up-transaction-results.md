@@ -2,11 +2,12 @@
 html: look-up-transaction-results.html
 parent: finality-of-results.html
 seo:
-    description: 以前に送信したトランザクションの結果を確認します。
+  description: 以前に送信したトランザクションの結果を確認します。
 labels:
   - 支払い
   - 開発
 ---
+
 # トランザクションの結果の確認
 
 XRP Ledgerを効果的に使用するには、[トランザクション](../index.md)の結果を次のように把握することが重要です。トランザクションは成功したか？トランザクションは何を遂行したか？失敗した場合は、なぜか？
@@ -25,7 +26,6 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
   - 古いトランザクションの結果については、[全履歴を記録するサーバ](../../networks-and-servers/ledger-history.md#すべての履歴)を使用できます。
 
 {% admonition type="success" name="ヒント" %}この他にも、[Data API](../../../references/data-api.md)やエクスポートされた他のデータベースを使用するなど、XRP Ledgerからトランザクションのデータを照会する方法があります。ただし、これらのインターフェイスは正式なものではありません。このドキュメントでは、最も直接的で信頼できる結果を得るために、`rippled` APIを直接使用してデータを確認する方法を説明します。{% /admonition %}
-
 
 ## 1. トランザクションステータスの取得
 
@@ -65,13 +65,11 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 この例では、rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnというアドレスを持つ[アカウント](../../accounts/index.md)が、[シーケンス番号][] 376を使用して、[AccountSetトランザクション][]を送信したことを示しています。トランザクションの[識別用ハッシュ][]は`017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567`で、その[結果](../../../references/protocol/transactions/transaction-results/index.md)は`tesSUCCESS`です。トランザクションは、検証済みのレジャーバージョン46447423に記録されたため、結果は最終的なものです。
 
-
 ### ケース: 検証済みレジャーに記録されていない
 
 **トランザクションが検証済みレジャーに記録されていない場合は、共有XRP Ledgerの状態には _いかなる_ 影響も及ぼしません。** 今後レジャーに記録されるトランザクションの失敗が[_最終的_](index.md)となる場合、その失敗が将来影響を及ぼすことはありません。
 
 トランザクションの失敗が最終的でない場合は、 _将来の_ 検証済みレジャーに記録される可能性があります。トランザクションを現在のオープンレジャーに適用して得た暫定的な結果から、トランザクションが最終レジャーに及ぼすと思われる影響を事前に確認できます。ただし、実際の結果は[さまざまな要因](index.md#未確定の結果はどのように変更できますか)によって変わる場合があります。
-
 
 ### ケース: 検証済みレジャーに記録されている
 
@@ -83,12 +81,11 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 結果コードは、トランザクションの結果の要約にすぎません。トランザクションの実行内容を詳しく理解するには、トランザクションの指示とトランザクションの実行前のレジャーの状態に照らして残りのメタデータを確認する必要があります。
 
-
 ## 2. メタデータの解釈
 
 トランザクションメタデータは、以下に示すフィールドをはじめとして、トランザクションがレジャーに適用された方法を _正確に_ 示します。
 
-{% partial file="/@l10n/ja/docs/_snippets/tx-metadata-field-table.md" /%} 
+{% partial file="/@l10n/ja/docs/_snippets/tx-metadata-field-table.md" /%}
 
 ほとんどのメタデータは、[`AffectedNodes`配列](../../../references/protocol/transactions/metadata.md#affectednodes)に含まれています。この配列で探す対象は、トランザクションのタイプによって異なります。ほぼすべてのトランザクションが、送金元の[AccountRootオブジェクト][]を変更してXRP[トランザクションコスト](../transaction-cost.md)を消却し、[アカウントのシーケンス番号](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を増やします。
 
@@ -397,7 +394,7 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
 以下の例は、**rf1BiG...** が**rsA2Lp...** によって発行されたUSDを最大110 USDまで保持するという新しいトラストラインを示します。
 
 ```json
- {
+{
   "CreatedNode": {
     "LedgerEntryType": "RippleState",
     "LedgerIndex": "9CA88CDEDFF9252B3DE183CE35B038F57282BC9503CDFA1923EF9A95DF0D6F7B",
@@ -422,7 +419,6 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
   }
 }
 ```
-
 
 ### その他のトランザクション
 

@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Set options on an account.
+  description: Set options on an account.
 labels:
-    - Accounts
+  - Accounts
 ---
+
 # AccountSet
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetAccount.cpp "Source")
 
 Modify the settings or properties of an [account in the XRP Ledger](../../../../concepts/accounts/index.md).
@@ -13,13 +15,13 @@ Modify the settings or properties of an [account in the XRP Ledger](../../../../
 
 ```json
 {
-    "TransactionType": "AccountSet",
-    "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "12",
-    "Sequence": 5,
-    "Domain": "6578616D706C652E636F6D",
-    "SetFlag": 5,
-    "MessageKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"
+  "TransactionType": "AccountSet",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Fee": "12",
+  "Sequence": 5,
+  "Domain": "6578616D706C652E636F6D",
+  "SetFlag": 5,
+  "MessageKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"
 }
 ```
 
@@ -27,18 +29,18 @@ Modify the settings or properties of an [account in the XRP Ledger](../../../../
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field            | JSON Type        | [Internal Type][] | Description        |
-|:-----------------|:-----------------|:------------------|:-------------------|
-| [`ClearFlag`](#accountset-flags) | Number | UInt32      | Unique identifier of a flag to disable for this account. |
-| [`Domain`](#domain) | String        | Blob              | The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/include/xrpl/protocol/Protocol.h#L98) |
-| `EmailHash`      | String           | UInt128           | An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a [Gravatar](http://en.gravatar.com/site/implement/hash/) image. |
-| `MessageKey`     | String           | Blob              | Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value. |
-| `NFTokenMinter`  | String - [Address][] | AccountID     | Another account that can [mint NFTokens for you](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md). {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
-| [`SetFlag`](#accountset-flags) | Number | UInt32        | Integer flag to enable for this account. |
-| [`TransferRate`](#transferrate) | Number | UInt32       | The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee. |
-| [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md) | Number | UInt8            | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. {% amendment-disclaimer name="TickSize" /%} |
-| `WalletLocator`    | String           | UInt256         | An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements. |
-| `WalletSize`       | Number           | UInt32          | Not used. This field is valid in AccountSet transactions but does nothing. |
+| Field                                                                        | JSON Type            | [Internal Type][] | Description                                                                                                                                                                                                                                                                 |
+| :--------------------------------------------------------------------------- | :------------------- | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`ClearFlag`](#accountset-flags)                                             | Number               | UInt32            | Unique identifier of a flag to disable for this account.                                                                                                                                                                                                                    |
+| [`Domain`](#domain)                                                          | String               | Blob              | The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. [Cannot be more than 256 bytes in length.](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/include/xrpl/protocol/Protocol.h#L98)   |
+| `EmailHash`                                                                  | String               | UInt128           | An arbitrary 128-bit value. Conventionally, clients treat this as the md5 hash of an email address to use for displaying a [Gravatar](http://en.gravatar.com/site/implement/hash/) image.                                                                                   |
+| `MessageKey`                                                                 | String               | Blob              | Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: `0x02` or `0x03` for secp256k1 keys, `0xED` for Ed25519 keys. To remove the key, use an empty value.                   |
+| `NFTokenMinter`                                                              | String - [Address][] | AccountID         | Another account that can [mint NFTokens for you](../../../../tutorials/javascript/nfts/assign-an-authorized-minter.md). {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}                                                                                            |
+| [`SetFlag`](#accountset-flags)                                               | Number               | UInt32            | Integer flag to enable for this account.                                                                                                                                                                                                                                    |
+| [`TransferRate`](#transferrate)                                              | Number               | UInt32            | The fee to charge when users transfer this account's tokens, represented as billionths of a unit. Cannot be more than `2000000000` or less than `1000000000`, except for the special case `0` meaning no fee.                                                               |
+| [`TickSize`](../../../../concepts/tokens/decentralized-exchange/ticksize.md) | Number               | UInt8             | _(Optional)_ Tick size to use for offers involving a currency issued by this address. The exchange rates of those offers is rounded to this many significant digits. Valid values are `3` to `15` inclusive, or `0` to disable. {% amendment-disclaimer name="TickSize" /%} |
+| `WalletLocator`                                                              | String               | UInt256           | An arbitrary 256-bit value. If specified, the value is stored as part of the account but has no inherent meaning or requirements.                                                                                                                                           |
+| `WalletSize`                                                                 | Number               | UInt32            | Not used. This field is valid in AccountSet transactions but does nothing.                                                                                                                                                                                                  |
 
 (All fields are optional.)
 
@@ -46,7 +48,7 @@ If none of these options are provided, then the AccountSet transaction has no ef
 
 ## Domain
 
-The `Domain` field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain *example.com* would be represented as `"6578616D706C652E636F6D"`.
+The `Domain` field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain _example.com_ would be represented as `"6578616D706C652E636F6D"`.
 
 To remove the `Domain` field from an account, send an AccountSet with the Domain set to an empty string.
 
@@ -59,9 +61,9 @@ You can put any domain in your account's `Domain` field. To prove that an accoun
 
 There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:
 
-* The `AccountSet` transaction type has several "AccountSet Flags" (prefixed **`asf`**) that can enable an option when passed as the `SetFlag` parameter, or disable an option when passed as the `ClearFlag` parameter. Newer options have only this style of flag. You can enable up to one `asf` flag per transaction, and disable up to one `asf` flag per transaction.
-* The `AccountSet` transaction type has several transaction flags (prefixed **`tf`**) that can be used to enable or disable specific account options when passed in the `Flags` parameter. You can enable and disable a combination of settings in one transaction using multiple `tf` flags, but not all settings have `tf` flags.
-* The `AccountRoot` ledger object type has several ledger-state-flags (prefixed **`lsf`**) which represent the state of particular account options within a particular ledger. These settings apply until a transaction changes them.
+- The `AccountSet` transaction type has several "AccountSet Flags" (prefixed **`asf`**) that can enable an option when passed as the `SetFlag` parameter, or disable an option when passed as the `ClearFlag` parameter. Newer options have only this style of flag. You can enable up to one `asf` flag per transaction, and disable up to one `asf` flag per transaction.
+- The `AccountSet` transaction type has several transaction flags (prefixed **`tf`**) that can be used to enable or disable specific account options when passed in the `Flags` parameter. You can enable and disable a combination of settings in one transaction using multiple `tf` flags, but not all settings have `tf` flags.
+- The `AccountRoot` ledger object type has several ledger-state-flags (prefixed **`lsf`**) which represent the state of particular account options within a particular ledger. These settings apply until a transaction changes them.
 
 To enable or disable Account Flags, use the `SetFlag` and `ClearFlag` parameters of an AccountSet transaction. AccountSet flags have names that begin with **`asf`**.
 
@@ -69,29 +71,29 @@ All flags are disabled by default.
 
 The available AccountSet flags are:
 
-| Flag Name                         | Decimal Value | Description   |
-|:----------------------------------|:--------------|:--------------|
-| `asfAccountTxnID`                 | 5             | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](../common-fields.md#accounttxnid) |
-| `asfAllowTrustLineClawback`       | 16            | Allow account to claw back tokens it has issued. _(Requires the Clawback amendment.)_ Can only be set if the account has an empty owner directory (no trust lines, offers, escrows, payment channels, checks, or signer lists). After you set this flag, it cannot be reverted. The account permanently gains the ability to claw back issued assets on trust lines. |
-| `asfAllowTrustLineLocking`        | 17            | Allow Trust Line tokens issued by this account to be held in [escrow](../../../../concepts/payment-types/escrow.md). If not enabled, tokens issued by this account can't be escrowed. After you enable this flag, it cannot be disabled. {% amendment-disclaimer name="TokenEscrow" /%} |
+| Flag Name                         | Decimal Value | Description                                                                                                                                                                                                                                                                                                                                                                                  |
+| :-------------------------------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `asfAccountTxnID`                 | 5             | Track the ID of this account's most recent transaction. Required for [`AccountTxnID`](../common-fields.md#accounttxnid)                                                                                                                                                                                                                                                                      |
+| `asfAllowTrustLineClawback`       | 16            | Allow account to claw back tokens it has issued. _(Requires the Clawback amendment.)_ Can only be set if the account has an empty owner directory (no trust lines, offers, escrows, payment channels, checks, or signer lists). After you set this flag, it cannot be reverted. The account permanently gains the ability to claw back issued assets on trust lines.                         |
+| `asfAllowTrustLineLocking`        | 17            | Allow Trust Line tokens issued by this account to be held in [escrow](../../../../concepts/payment-types/escrow.md). If not enabled, tokens issued by this account can't be escrowed. After you enable this flag, it cannot be disabled. {% amendment-disclaimer name="TokenEscrow" /%}                                                                                                      |
 | `asfAuthorizedNFTokenMinter`      | 10            | Enable to allow another account to mint non-fungible tokens (NFTokens) on this account's behalf. Specify the authorized account in the `NFTokenMinter` field of the [AccountRoot](../../ledger-data/ledger-entry-types/accountroot.md) object. To remove an authorized minter, enable this flag and omit the `NFTokenMinter` field. {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
-| `asfDefaultRipple`                | 8             | Enable [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on this account's trust lines by default. |
-| `asfDepositAuth`                  | 9             | Enable [Deposit Authorization](../../../../concepts/accounts/depositauth.md) on this account. {% amendment-disclaimer name="DepositAuth" /%} |
-| `asfDisableMaster`                | 4             | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) or a [Signer List](../../../../concepts/accounts/multi-signing.md). |
-| `asfDisallowIncomingCheck`        | 13            | Block incoming Checks. {% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowIncomingNFTokenOffer` | 12            | Block incoming NFTokenOffers. {% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowIncomingPayChan`      | 14            | Block incoming Payment Channels. {% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowIncomingTrustline`    | 15            | Block incoming trust lines. {% amendment-disclaimer name="DisallowIncoming" /%} |
-| `asfDisallowXRP`                  | 3             | XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.) |
-| `asfGlobalFreeze`                 | 7             | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) all assets issued by this account. |
-| `asfNoFreeze`                     | 6             | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). This flag can never be disabled after being enabled. |
-| `asfRequireAuth`                  | 2             | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it. |
-| `asfRequireDest`                  | 1             | Require a destination tag to send transactions to this account. |
+| `asfDefaultRipple`                | 8             | Enable [rippling](../../../../concepts/tokens/fungible-tokens/rippling.md) on this account's trust lines by default.                                                                                                                                                                                                                                                                         |
+| `asfDepositAuth`                  | 9             | Enable [Deposit Authorization](../../../../concepts/accounts/depositauth.md) on this account. {% amendment-disclaimer name="DepositAuth" /%}                                                                                                                                                                                                                                                 |
+| `asfDisableMaster`                | 4             | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) or a [Signer List](../../../../concepts/accounts/multi-signing.md).                                                                                                                    |
+| `asfDisallowIncomingCheck`        | 13            | Block incoming Checks. {% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                                   |
+| `asfDisallowIncomingNFTokenOffer` | 12            | Block incoming NFTokenOffers. {% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                            |
+| `asfDisallowIncomingPayChan`      | 14            | Block incoming Payment Channels. {% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                         |
+| `asfDisallowIncomingTrustline`    | 15            | Block incoming trust lines. {% amendment-disclaimer name="DisallowIncoming" /%}                                                                                                                                                                                                                                                                                                              |
+| `asfDisallowXRP`                  | 3             | XRP should not be sent to this account. (Advisory; not enforced by the XRP Ledger protocol.)                                                                                                                                                                                                                                                                                                 |
+| `asfGlobalFreeze`                 | 7             | [Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md) all assets issued by this account.                                                                                                                                                                                                                                                                                          |
+| `asfNoFreeze`                     | 6             | Permanently give up the ability to [freeze individual trust lines or disable Global Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). This flag can never be disabled after being enabled.                                                                                                                                                                                    |
+| `asfRequireAuth`                  | 2             | Require authorization for users to hold balances issued by this address. Can only be enabled if the address has no trust lines connected to it.                                                                                                                                                                                                                                              |
+| `asfRequireDest`                  | 1             | Require a destination tag to send transactions to this account.                                                                                                                                                                                                                                                                                                                              |
 
 For reference, here are the corresponding ledger flags for each AccountSet flag:
 
 | AccountSet Flag Name              | Corresponding Ledger Flag         |
-|:----------------------------------|:----------------------------------|
+| :-------------------------------- | :-------------------------------- |
 | `asfAccountTxnID`                 | (None)                            |
 | `asfAllowTrustLineClawback`       | `lsfAllowTrustlineClawback`       |
 | `asfAuthorizedNFTokenMinter`      | (None)                            |
@@ -112,17 +114,16 @@ To enable the `asfDisableMaster` or `asfNoFreeze` flags, you must [authorize the
 
 The following [Transaction flags](../common-fields.md#flags-field) (`tf` flags), specific to the AccountSet transaction type, serve the same purpose. Due to limited space, some settings do not have associated `tf` flags, and new `tf` flags are not being added to the `AccountSet` transaction type. You can use a combination of `tf` and `asf` flags to enable multiple settings with a single transaction.
 
-| Flag Name           | Hex Value    | Decimal Value | Replaced by AccountSet Flag |
-|:--------------------|:-------------|:--------------|:----------------------------|
-| `tfRequireDestTag`  | `0x00010000` | 65536         | `asfRequireDest` (`SetFlag`)    |
-| `tfOptionalDestTag` | `0x00020000` | 131072        | `asfRequireDest` (`ClearFlag`)  |
-| `tfRequireAuth`     | `0x00040000` | 262144        | `asfRequireAuth` (`SetFlag`)    |
-| `tfOptionalAuth`    | `0x00080000` | 524288        | `asfRequireAuth` (`ClearFlag`)  |
-| `tfDisallowXRP`     | `0x00100000` | 1048576       | `asfDisallowXRP` (`SetFlag`)    |
-| `tfAllowXRP`        | `0x00200000` | 2097152       | `asfDisallowXRP` (`ClearFlag`)  |
+| Flag Name           | Hex Value    | Decimal Value | Replaced by AccountSet Flag    |
+| :------------------ | :----------- | :------------ | :----------------------------- |
+| `tfRequireDestTag`  | `0x00010000` | 65536         | `asfRequireDest` (`SetFlag`)   |
+| `tfOptionalDestTag` | `0x00020000` | 131072        | `asfRequireDest` (`ClearFlag`) |
+| `tfRequireAuth`     | `0x00040000` | 262144        | `asfRequireAuth` (`SetFlag`)   |
+| `tfOptionalAuth`    | `0x00080000` | 524288        | `asfRequireAuth` (`ClearFlag`) |
+| `tfDisallowXRP`     | `0x00100000` | 1048576       | `asfDisallowXRP` (`SetFlag`)   |
+| `tfAllowXRP`        | `0x00200000` | 2097152       | `asfDisallowXRP` (`ClearFlag`) |
 
 {% admonition type="warning" name="Caution" %}The numeric values of `tf` and `asf` flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see [`AccountRoot` flags](../../ledger-data/ledger-entry-types/accountroot.md#accountroot-flags).{% /admonition %}
-
 
 ### Blocking Incoming Transactions
 
@@ -145,12 +146,11 @@ If the [DisallowIncoming amendment][] is enabled, you also have the option to bl
 
 When a transaction would create one of these ledger entries, if the destination account has the corresponding flag enabled, the transaction fails with the result code `tecNO_PERMISSION`. Unlike Deposit Authorization, these settings do not prevent you from receiving payments in general. Also, enabling this setting doesn't stop you from creating these types of objects yourself (unless the destination of your transaction is also using the setting, of course).
 
-
 ## TransferRate
 
 The `TransferRate` field specifies a fee to charge whenever counterparties transfer the currency you issue.
 
-In the HTTP and WebSocket APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify `0` as a shortcut for `1000000000`, meaning no fee.
+In the HTTP and WebSocket APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value `1200000000`. The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify `0` as a shortcut for `1000000000`, meaning no fee.
 
 See [Transfer Fees](../../../../concepts/tokens/fungible-tokens/transfer-fees.md) for more information.
 

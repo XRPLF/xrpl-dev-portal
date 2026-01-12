@@ -2,10 +2,11 @@
 html: transaction-metadata.html
 parent: transaction-formats.html
 seo:
-    description: Transaction metadata describes the outcome of the transaction in detail, regardless of whether the transaction is successful.
+  description: Transaction metadata describes the outcome of the transaction in detail, regardless of whether the transaction is successful.
 labels:
   - Blockchain
 ---
+
 # Transaction Metadata
 
 Transaction metadata is a section of data that gets added to a transaction after it is processed. Any transaction that gets included in a ledger has metadata, regardless of whether it is successful. The transaction metadata describes the outcome of the transaction in detail.
@@ -14,8 +15,7 @@ Transaction metadata is a section of data that gets added to a transaction after
 
 Some fields that may appear in transaction metadata include:
 
-{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%} 
-
+{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%}
 
 ## Example Metadata
 
@@ -194,7 +194,6 @@ The following JSON object shows the metadata for an order, [trading XRP for USD]
 }
 ```
 
-
 ## AffectedNodes
 
 The `AffectedNodes` array contains a complete list of the [ledger entries](../ledger-data/ledger-entry-types/index.md) that this transaction modified in some way. Each item in this array is an object with one top-level field indicating what happened:
@@ -204,7 +203,6 @@ The `AffectedNodes` array contains a complete list of the [ledger entries](../le
 - `ModifiedNode` indicates that the transaction modified an existing ledger entry.
 
 The value of each of these fields is a JSON object describing the changes made to the ledger entry.
-
 
 ### CreatedNode Fields
 
@@ -216,7 +214,6 @@ A `CreatedNode` object contains the following fields:
 | `LedgerIndex`     | String - [Hash][] | The [ID of this ledger entry](../ledger-data/common-fields.md) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
 | `NewFields`       | Object            | The content fields of the newly created ledger entry. Which fields are present depends on what type of ledger entry was created.                                                                                                                                                     |
 
-
 ### DeletedNode Fields
 
 A `DeletedNode` object contains the following fields:
@@ -226,8 +223,7 @@ A `DeletedNode` object contains the following fields:
 | `LedgerEntryType` | String            | The [type of ledger entry](../ledger-data/ledger-entry-types/index.md) that was deleted.                                                                                                                                                                                             |
 | `LedgerIndex`     | String - [Hash][] | The [ID of this ledger entry](../ledger-data/common-fields.md) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
 | `FinalFields`     | Object            | The content fields of the ledger entry immediately before it was deleted. Which fields are present depends on what type of ledger entry was created.                                                                                                                                 |
-| `PreviousFields` | Object             | _(May be omitted)_ Selected fields of the ledger entry before it was deleted. Which fields are present depends on what type of ledger entry was created. |
-
+| `PreviousFields`  | Object            | _(May be omitted)_ Selected fields of the ledger entry before it was deleted. Which fields are present depends on what type of ledger entry was created.                                                                                                                             |
 
 ### ModifiedNode Fields
 
@@ -240,10 +236,9 @@ A `ModifiedNode` object contains the following fields:
 | `FinalFields`       | Object                    | The content fields of the ledger entry after applying any changes from this transaction. Which fields are present depends on what type of ledger entry was created. This omits the `PreviousTxnID` and `PreviousTxnLgrSeq` fields, even though most types of ledger entries have them. |
 | `PreviousFields`    | Object                    | The previous values for all fields of the object that were changed as a result of this transaction. If the transaction _only added_ fields to the object, this field is an empty object.                                                                                               |
 | `PreviousTxnID`     | String - [Hash][]         | _(May be omitted)_ The [identifying hash][] of the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnID` field.                                                                                                          |
-| `PreviousTxnLgrSeq` | Number - [Ledger Index][] | _(May be omitted)_  The [Ledger Index][] of the ledger version containing the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnLgrSeq` field.                                                                           |
+| `PreviousTxnLgrSeq` | Number - [Ledger Index][] | _(May be omitted)_ The [Ledger Index][] of the ledger version containing the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnLgrSeq` field.                                                                            |
 
 {% admonition type="info" name="Note" %}If the modified ledger entry has `PreviousTxnID` and `PreviousTxnLgrSeq` fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the `FinalFields` of the `ModifiedNode` object, and their previous values are listed at the top level of the `ModifiedNode` object rather than in the nested `PreviousFields` object.{% /admonition %}
-
 
 ## NFT Fields
 
@@ -254,14 +249,17 @@ Transactions (`tx` and `account_tx`) involving NFTs can contain the following fi
 | `nftoken_id`  | String | Shows the `NFTokenID` for the `NFToken` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenMint` or `NFTokenAcceptOffer`. See [NFTokenID](../data-types/nftoken.md#nftokenid). |
 | `nftoken_ids` | Array  | Shows all the `NFTokenIDs` for the `NFTokens` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenCancelOffer`.                                                                 |
 | `offer_id`    | String | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction.                                                                                                                                 |
+
 ## MPT Fields
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
 ### Synthetic mpt_issuance_id field
+
 `MPTokenIssuanceID` is an identifier that allows you to specify an `MPTokenIssuance` in RPCs. The server adds a synthetically parsed `mpt_issuance_id` field to API responses to avoid the need for client-side parsing of the `MPTokenIssuanceID`.
 
 ### Transaction Metadata
+
 An `mpt_issuance_id` field is provided in JSON transaction metadata (not available for binary) for all successful `MPTokenIssuanceCreate` transactions. The following APIs are impacted: `tx`, `account_tx`, `subscribe` and `ledger`.
 
 ## delivered_amount
@@ -270,8 +268,8 @@ The `Amount` of a [Payment transaction][] indicates the amount to deliver to the
 
 The `rippled` server provides a `delivered_amount` field in JSON transaction metadata for all successful Payment transactions. This field is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:
 
-* Is a partial payment
-* Included in a validated ledger before 2014-01-20
+- Is a partial payment
+- Included in a validated ledger before 2014-01-20
 
 If both conditions are true, then `delivered_amount` contains the string value `unavailable` instead of an actual amount. If this happens, you can only figure out the actual delivered amount by reading the `AffectedNodes` in the transaction's metadata.
 

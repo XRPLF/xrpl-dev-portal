@@ -2,10 +2,11 @@
 html: clustering.html
 parent: networks-and-servers.html
 seo:
-    description: 暗号処理の負荷を分散させるためにクラスターでrippledサーバを運用できます。
+  description: 暗号処理の負荷を分散させるためにクラスターでrippledサーバを運用できます。
 labels:
   - コアサーバ
 ---
+
 # クラスター化
 
 1つのデータセンターで複数の`rippled`サーバを運用している場合は、これらのサーバをクラスターに編成して、効率性を最大化できます。`rippled`サーバをクラスターで運用するメリットは以下のとおりです。

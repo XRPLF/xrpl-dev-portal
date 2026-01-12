@@ -1,20 +1,21 @@
 ---
-date: "2016-12-20"
+date: '2016-12-20'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Release Notes
+  - Release Notes
 category: 2016
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.40.0
 
 Ripple has released `rippled` version 0.40.0, which introduces several enhancements that improve the reliability and scalability of the Ripple Consensus Ledger (RCL). Ripple recommends that all server operators upgrade to version 0.40.0 by Tuesday, 2017-01-17, for service continuity.
 
 Highlights of this release include:
 
-* Suspended Payments, a new transaction type on the Ripple network that functions similar to an escrow service, which permits users to cryptographically escrow XRP on RCL with an expiration date. Ripple expects Suspended Payments to be enabled via an [Amendment named “SusPay”](/resources/known-amendments.md#suspay) on Tuesday, 2017-01-17. See below for details.
+- Suspended Payments, a new transaction type on the Ripple network that functions similar to an escrow service, which permits users to cryptographically escrow XRP on RCL with an expiration date. Ripple expects Suspended Payments to be enabled via an [Amendment named “SusPay”](/resources/known-amendments.md#suspay) on Tuesday, 2017-01-17. See below for details.
 
 ## Action Required
 
@@ -24,11 +25,11 @@ If you operate a `rippled` server, then you should upgrade to version 0.40.0 by 
 
 If you operate a `rippled` server but don’t upgrade to version 0.40.0 by Wednesday, 2017-01-17, when SusPay is expected to be activated via Amendment, then your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If the SusPay amendment is vetoed or does not pass via majority vote, then your server will not become amendment blocked.
 
@@ -51,17 +52,19 @@ Date:   Tue Dec 20 09:20:17 2016 -0800
 ```
 
 ## Network Update
+
 The Ripple operations team plans to deploy version 0.40.0 to a subset of rippled servers under its operational control configured with the new websocket implementation, starting at 2:00 PM PDT on Thursday, 2017-12-20. The network will continue operating during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
@@ -81,12 +84,12 @@ In the third phase towards making RCL more scalable and compatible with ILP, Rip
 
 Lastly, we do not have an update on the [previously announced](/blog/2016/rippled-0.33.0.md) changes to the hash tree structure that rippled uses to represent a ledger, called [SHAMapV2](/resources/known-amendments.md#shamapv2). This will require brief scheduled allowable downtime while the changes to the hash tree structure are propagated by the network. We will keep the community updated as we progress towards this date (TBA).
 
-* Consensus refactor [(#1874)](https://github.com/ripple/rippled/pull/1874)
+- Consensus refactor [(#1874)](https://github.com/ripple/rippled/pull/1874)
 
 **Bug Fixes**
 
-* Correct an issue in payment flow code that did not remove an unfunded offer [(#1860)](https://github.com/ripple/rippled/pull/1860)
+- Correct an issue in payment flow code that did not remove an unfunded offer [(#1860)](https://github.com/ripple/rippled/pull/1860)
 
-* Sign validator manifests with both ephemeral and master keys [(#1865)](https://github.com/ripple/rippled/pull/1865)
+- Sign validator manifests with both ephemeral and master keys [(#1865)](https://github.com/ripple/rippled/pull/1865)
 
-* Correctly parse multi-buffer JSON messages [(#1862)](https://github.com/ripple/rippled/pull/1862)
+- Correctly parse multi-buffer JSON messages [(#1862)](https://github.com/ripple/rippled/pull/1862)

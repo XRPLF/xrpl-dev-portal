@@ -1,15 +1,16 @@
 ---
 parent: use-tokens.html
 seo:
-    description: Buy or sell fungible tokens for each other or for XRP in the decentralized exchange.
+  description: Buy or sell fungible tokens for each other or for XRP in the decentralized exchange.
 embed_xrpl_js: true
 filters:
   - interactive_steps
 labels:
   - Decentralized Exchange
   - Tokens
-steps: ['Connect', 'Generate', 'Look Up Offers',' Send OfferCreate', 'Wait', 'Check Metadata', 'Check Balances and Offers']
+steps: ['Connect', 'Generate', 'Look Up Offers', ' Send OfferCreate', 'Wait', 'Check Metadata', 'Check Balances and Offers']
 ---
+
 # Trade in the Decentralized Exchange
 
 This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md) (DEX).
@@ -18,9 +19,9 @@ This tutorial demonstrates how you can buy and sell tokens in the [decentralized
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
-    - You can also read along and use the interactive steps in your browser without any setup.
+  - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+  - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
+  - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
@@ -33,15 +34,13 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 - See [Code Samples: Trade in the Decentralized Exchange](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/trade-in-the-decentralized-exchange/) in the source repository for this website.
 
-
 ## Steps
 
 This tutorial demonstrates how to buy a fungible token in the decentralized exchange by selling XRP. (Other types of trades are possible, but selling a token, for example, requires you to have it first.) The example token used in this tutorial is as follows:
 
-| Currency Code | Issuer | Notes |
-|---|---|---|
-| TST | `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd` | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens.  |
-
+| Currency Code | Issuer                               | Notes                                                                                                                                                          |
+| ------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| TST           | `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd` | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens. |
 
 ### 1. Connect to Network
 
@@ -160,10 +159,10 @@ The following block demonstrates these calculations in action:
 
 To actually make a trade, send an [OfferCreate transaction][]. In this case, you want to buy TST using XRP, so you should set the parameters as follows:
 
-| Field | Type | Description |
-|---|---|---|
+| Field       | Type                                   | Description                                                                                                                                        |
+| ----------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `TakerPays` | [Token Amount object][Currency Amount] | How much of what currency you want to buy, in total. For this tutorial, buy some amount of **TST** issued by `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd`. |
-| `TakerGets` | [XRP, in drops][] | How much of what currency you are offering to pay in total. For this tutorial, you should specify about 11.5 XRP per TST or slightly more. |
+| `TakerGets` | [XRP, in drops][]                      | How much of what currency you are offering to pay in total. For this tutorial, you should specify about 11.5 XRP per TST or slightly more.         |
 
 The following code shows how to prepare, sign, and submit the transaction:
 
@@ -196,7 +195,6 @@ You can use this interface to send the transaction specified by the amounts in t
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
-
 
 ### 6. Check Metadata
 
@@ -231,7 +229,6 @@ You can use this interface to test it out:
 <div class="output-area"></div>
 
 {% /interactive-block %}
-
 
 ### 7. Check Balances and Offers
 

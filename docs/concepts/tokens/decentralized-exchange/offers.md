@@ -2,10 +2,11 @@
 html: offers.html
 parent: decentralized-exchange.html
 seo:
-    description: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
+  description: Offers are the XRP Ledger's form of currency trading orders. Understand their lifecycle and properties.
 labels:
   - Decentralized Exchange
 ---
+
 # Offers
 
 In the XRP Ledger's [decentralized exchange](index.md), trade orders are called "Offers". Offers can trade XRP with [tokens](../index.md), or tokens for other tokens, including tokens with the same currency code but different issuers. (Tokens with the same code but different issuers can also sometimes be exchanged through [rippling](../fungible-tokens/rippling.md).)
@@ -29,7 +30,6 @@ While you have an Offer in the ledger, it sets aside some of your XRP toward the
 - A **Fill or Kill** Offer is not placed into the ledger, _and_ it is canceled if the full amount is not filled when it initially executes. This is similar to "Immediate or Cancel" except it _cannot_ be partially filled.
 - A **Passive** Offer does not consume matching Offers that have the exact same exchange rate (going the other direction), and instead is placed directly into the ledger. You can use this to create an exact peg between two assets. Passive Offers still consume other Offers that have a _better_ exchange rate going the other way.
 
-
 ### Funding Requirements
 
 When you try to place an Offer, the transaction is rejected as "unfunded" if you don't have at least some of the asset that the trade would sell. More specifically:
@@ -50,11 +50,11 @@ If you place an Offer that crosses any of your own Offers that exist in the ledg
 It is possible for an Offer to become temporarily or permanently _unfunded_ in the following cases:
 
 - If the owner no longer has any of the sell asset.
-    - The Offer becomes funded again when the owner obtains more of that asset.
+  - The Offer becomes funded again when the owner obtains more of that asset.
 - If the sell asset is a token in a [frozen trust line](../fungible-tokens/freezes.md).
-    - The Offer becomes funded again when the trust line is no longer frozen.
+  - The Offer becomes funded again when the trust line is no longer frozen.
 - If the Offer needs to create a new trust line, but the owner does not have enough XRP for the increased [reserve](../../accounts/reserves.md). (See [Offers and Trust](#offers-and-trust).)
-    - The offer becomes funded again when the owner obtains more XRP, or the reserve requirements decrease.
+  - The offer becomes funded again when the owner obtains more XRP, or the reserve requirements decrease.
 - If the Offer is expired. (See [Offer Expiration](#offer-expiration).)
 
 An unfunded Offer stays on the ledger until a transaction removes it. Ways that an Offer can be removed from the ledger include:
@@ -63,14 +63,13 @@ An unfunded Offer stays on the ledger until a transaction removes it. Ways that 
 - The owner explicitly cancels the Offer.
 - The owner implicitly cancels the Offer by sending a new Offer that crosses it.
 - The Offer is found to be unfunded or expired during transaction processing. Typically this means that another Offer tried to consume it and could not.
-    - This includes cases where the remaining amount that can be paid out by the Offer rounds down to zero.
+  - This includes cases where the remaining amount that can be paid out by the Offer rounds down to zero.
 
 ### Tracking Unfunded Offers
 
 Tracking the funding status of all Offers can be computationally taxing. In particular, addresses that are actively trading may have a large number of Offers open. A single balance can affect the funding status of many Offers. Because of this, the XRP Ledger does not _proactively_ find and remove unfunded or expired Offers.
 
 A client application can locally track the funding status of Offers. To do this, first retrieve an order book using the [book_offers method][] and check the `taker_gets_funded` field of Offers. Then, [subscribe](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md) to the `transactions` stream and watch the transaction metadata to see which Offers are modified.
-
 
 ## Offers and Trust
 
@@ -80,13 +79,11 @@ However, holding tokens still requires a trust line to the issuer. When an Offer
 
 Trust line limits protect you from receiving more of a token as payment than you want. Offers can go beyond those limits because they are an explicit statement of how much of the token you want.
 
-
 ## Offer Preference
 
 Existing Offers are grouped by exchange rate, which is measured as the ratio between `TakerGets` and `TakerPays`. Offers with a higher exchange rate are taken preferentially. (That is, the person accepting the offer receives as much as possible for the amount of currency they pay out.) Offers with the same exchange rate are taken on the basis of which offer was placed first.
 
-When Offers execute in the same ledger block, the order in which they execute is determined by the [canonical order](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/CanonicalTXSet.cpp "Source code: Transaction ordering") in which transactions were applied to the ledger. Transactions that fail initially can be pushed back and retried at the end of the ledger. This behavior is designed to be deterministic, efficient, and hard to game.
-
+When Offers execute in the same ledger block, the order in which they execute is determined by the [canonical order](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/misc/CanonicalTXSet.cpp 'Source code: Transaction ordering') in which transactions were applied to the ledger. Transactions that fail initially can be pushed back and retried at the end of the ledger. This behavior is designed to be deterministic, efficient, and hard to game.
 
 ## Offer Expiration
 
@@ -108,17 +105,16 @@ For more information, see [Permissioned DEXes](./permissioned-dexes.md).
 
 {% amendment-disclaimer name="PermissionedDEX" /%}
 
-
 ## See Also
 
 - **Concepts:**
-    - [Tokens](../index.md)
-    - [Paths](../fungible-tokens/paths.md)
+  - [Tokens](../index.md)
+  - [Paths](../fungible-tokens/paths.md)
 - **References:**
-    - [account_offers method][]
-    - [book_offers method][]
-    - [OfferCreate transaction][]
-    - [OfferCancel transaction][]
-    - [Offer object](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
+  - [account_offers method][]
+  - [book_offers method][]
+  - [OfferCreate transaction][]
+  - [OfferCancel transaction][]
+  - [Offer object](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

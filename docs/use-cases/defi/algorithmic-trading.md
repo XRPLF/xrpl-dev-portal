@@ -2,10 +2,11 @@
 html: algorithmic-trading.html
 parent: defi-uc.html
 seo:
-    description: The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. 
+  description: The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades.
 labels:
   - Transactions
 ---
+
 # Algorithmic Trading
 
 The XRP Ledger's decentralized exchange presents an opportunity to earn money through _algorithmic trading_, which means running a computer program to find and take profitable trading opportunities automatically. In algorithmic trading, you typically make many trades based on quantitative factors to earn steady, small profits; this is unlike traditional manual trading where you make a few long-term investments based on market fundamentals and wait to earn a large return over time. Blockchains are often more suitable for algorithmic trading than manual trading, because the high volatility of cryptocurrencies in general makes them less suitable for traditional "buy and hold" investing; the XRP Ledger is particularly suited for algorithmic trading, for several reasons:
@@ -30,7 +31,6 @@ You can use **circular payments** to complete multi-asset trades for a profit. T
 
 You can perform **cross-exchange arbitrage** if you have accounts at multiple private exchanges where the prices for an asset are different. For example, if you can buy XRP at ACME Exchange for $0.45 per 1 XRP, then move the XRP over to WayGate Exchange where you sell it for $0.50 per 1 XRP, you can make a profit of $0.05 per XRP minus the costs of trading and sending the relevant transactions, including exchanges' fees to withdraw and deposit your profits. As a more complex example, if the BTC:ETH price shifts at ACME Exchange to make ETH cheaper relative to BTC, you could potentially take advantage of this price shift by selling ETH→XRP at one exchange, then moving the XRP to ACME Exchange and trading XRP→BTC→ETH for a profit there. Since XRP Ledger transactions settle in seconds but Ethereum transactions can take minutes and Bitcoin transactions can take hours, using XRP as a bridge currency can potentially allow you to take advantage of this opportunity sooner than simply trading ETH→BTC and then BTC→ETH at ACME Exchange. (This only works, of course, if there is enough liquidity and tight enough spreads that exchanging to XRP and back doesn't cost more than your profits.)
 
-
 ## Background Reading
 
 You can familiarize yourself with algorithmic trading, in general, by reading the following resources:
@@ -45,7 +45,6 @@ The following pages describe key elements of how the XRP Ledger's decentralized 
 - [Decentralized Exchange](../../concepts/tokens/decentralized-exchange/index.md)
 - [Offers](../../concepts/tokens/decentralized-exchange/offers.md)
 
-
 ## Testing and Common Mistakes
 
 Like any type of trading, algorithmic trading is not a surefire way to make money; there are many ways you might take a loss. Compared with manual trading, algorithmic trading has much less room for error. If you make a small mistake, but multiply it by a large number of trades, your losses can add up quickly before you have a chance to fix the problem. Therefore, it's wise to do various tests to make sure that your trading strategy will actually make a profit. You might do any or all of the following to test your strategy or the actual implementation of it (often called a _bot_):
@@ -57,8 +56,8 @@ Like any type of trading, algorithmic trading is not a surefire way to make mone
 Common mistakes you might make in these calculations or in building your bot include:
 
 - Rounding errors. If your math is not sound, or does not match the precision that the blockchain uses, you could inaccurately predict the results of a trade and take a loss, or have your trade not execute at all. The XRP Ledger uses different precision for token and XRP amounts, which can lead to rounding in unexpected places when trading one for the other. For more details on the precision used in the protocol, see [Currency Formats](../../references/protocol/data-types/currency-formats.md).
-    - Be aware that token issuers can further limit the precision of exchange rates involving their tokens. See [Tick Size](../../concepts/tokens/decentralized-exchange/ticksize.md) for details.
-    - Typically, you need to adjust your amounts by some small percentage to account for potential differences in rounding or price movements between when you looked things up and when your trade executes. This amount is called _slippage_, and it's important to get the right amount. If it's too low, your transaction may not execute at all; but if it's too high, you're vulnerable to front-running, and the higher it is the more that price movements can cut into your profits in general.
+  - Be aware that token issuers can further limit the precision of exchange rates involving their tokens. See [Tick Size](../../concepts/tokens/decentralized-exchange/ticksize.md) for details.
+  - Typically, you need to adjust your amounts by some small percentage to account for potential differences in rounding or price movements between when you looked things up and when your trade executes. This amount is called _slippage_, and it's important to get the right amount. If it's too low, your transaction may not execute at all; but if it's too high, you're vulnerable to front-running, and the higher it is the more that price movements can cut into your profits in general.
 - Forgetting extra costs and delays. For example, if two stablecoins are both fully backed by US dollars, but one issuer charges a 0.5% transfer fee and a different issuer charges a 0.25% [transfer fee](../../concepts/tokens/fungible-tokens/transfer-fees.md), you should expect about a 0.25% difference in the effective price those stablecoins trade at. Don't forget the costs of sending a transaction, even though they're usually small, nor the consequences of other potential delays. For example, even if an off-ledger private exchange shows a favorable price now, if that exchange takes hours or even days to process a deposit, the price is likely to shift so you can't take advantage of it unless you already have liquidity at that exchange.
 - Not accounting for rare events. Even setting aside unprecented ("black swan") events, your calculations can be skewed by individual outliers. As one example (which is a true story), a trader reported that, when calculating the potential profits of a given strategy in a specific time range, over 80% of the profits came from a single "fat-fingered" transaction where another user had accidentally added an extra zero to their price. The same strategy was far less profitable when calculated against time ranges that didn't include the outlier transaction.
 - Not reading transaction flags. The flags of an XRP Ledger transaction can have significant impacts on the way that transaction is processed and when the protocol marks it as "successful". For example, the flags of "Offer" transactions can make it a "fill or kill" order that only trades if the full amount can be obtained immediately; the flags of "Payment" transactions can make them [partial payments](../../concepts/payment-types/partial-payments.md) that succeed even if they can't deliver the full amount to the intended destination. You need to do bitwise math to parse the `Flags` field of a transaction, but your expectations can be totally wrong if you skip doing so.
@@ -66,7 +65,6 @@ Common mistakes you might make in these calculations or in building your bot inc
 ## Taxes and Licensing
 
 The legal requirements for trading on a blockchain vary by jurisdiction. In many cases, there are no licensing or other legal barriers to getting started, but you may be required to report your profits for tax purposes, especially if your gains or losses are over some thresholds. In the United States, you typically report profits (or losses) from trading as capital gains, which means you need to calculate the cost basis for the assets you buy at the time you acquire them. There are various tools out there that may be able to help track your trading activity or even generate the appropriate tax forms, depending on your individual situation. Depending on which assets you are trading and your trading strategies, the details may vary. Be sure to do your research or consult with a tax professional before you get started with algorithmic trading.
-
 
 ## Technical Details
 

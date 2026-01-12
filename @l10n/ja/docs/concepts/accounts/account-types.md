@@ -2,21 +2,21 @@
 html: account-types.html
 parent: accounts.html
 seo:
-    description: XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。
+  description: XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。
 labels:
   - トークン
   - セキュリティ
 ---
+
 # アカウントの種類
 
 {% partial file="/@l10n/ja/docs/_snippets/issuing-and-operational-addresses-intro.md" /%}
-
 
 ## 資金のライフサイクル
 
 トークン発行者がこのような役割を分担すると、以下の図のように資金が一方向に流れるようになります。
 
-[{% inline-svg file="/docs/img/issued-currency-funds-flow.ja.svg" /%}](/docs/img/issued-currency-funds-flow.ja.svg "図: 発行アドレスから待機アドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー")
+[{% inline-svg file="/docs/img/issued-currency-funds-flow.ja.svg" /%}](/docs/img/issued-currency-funds-flow.ja.svg '図: 発行アドレスから待機アドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー')
 
 発行アドレスは、待機アドレスに支払いを送信することでトークンを作成します。これらのトークンは(多くの場合)債務を表すため、発行アドレスの観点からはマイナスの価値を持ちます。同じトークンは、待機アドレスの観点も含めると、他の観点からはプラスの価値を持ちます。
 
@@ -42,7 +42,6 @@ labels:
 
 金融機関はXRP Ledgerで1つの発行アドレスから複数の通貨を発行することができます。ただし、[送金手数料](../tokens/fungible-tokens/transfer-fees.md)のパーセンテージや[Global Freeze](../tokens/fungible-tokens/freezes.md)の状態など、1つのアドレスから発行される全ての(代替可能)トークンに等しく適用される設定もあります。トークンの種類ごとに設定を変えて柔軟に管理したい場合、金融機関は通貨ごとに異なる発行アドレスを使用する必要があります。
 
-
 ## 運用アドレス
 
 運用アドレスはレジに似ています。イシュアンスを顧客とパートナーに送信して、金融機関に代わって支払いを行います。トランザクションに自動的に署名するには、運用アドレスの秘密鍵をインターネットに接続されたサーバに保管する必要があります。(秘密鍵は暗号化して保管できますが、サーバがトランザクションに署名する際に秘密鍵を復号化する必要があります。)顧客やパートナーは、運用アドレスへのトラストラインを作成しませんし、作成すべきではありません。
@@ -66,18 +65,17 @@ labels:
 
 待機アドレスの秘密鍵が漏えいした場合、その影響は運用アドレスの場合と同じです。悪意のある第三者は、待機アドレスが保有するすべての残高を盗むことができ、金融機関は顧客やパートナーが何もしなくても、新しい待機アドレスに切り替えることができます。
 
-
 ## 関連項目
 
 - **コンセプト:**
-    - [アカウント](index.md)
-    - [暗号鍵](cryptographic-keys.md)
+  - [アカウント](index.md)
+  - [暗号鍵](cryptographic-keys.md)
 - **チュートリアル:**
-    - [レギュラーキーペアの割り当て](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
-    - [レギュラーキーペアの変更または削除](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+  - [レギュラーキーペアの割り当て](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
+  - [レギュラーキーペアの変更または削除](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **リファレンス:**
-    - [account_infoメソッド][]
-    - [SetRegularKeyトランザクション][]
-    - [AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
+  - [account_infoメソッド][]
+  - [SetRegularKeyトランザクション][]
+  - [AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

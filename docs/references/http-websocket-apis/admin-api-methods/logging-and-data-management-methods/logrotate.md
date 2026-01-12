@@ -1,10 +1,12 @@
 ---
 seo:
-   description: Reopen the log file.
+  description: Reopen the log file.
 labels:
-   - Data Retention
+  - Data Retention
 ---
+
 # logrotate
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LogRotate.cpp "Source")
 
 The `logrotate` command closes and reopens the log file. This is intended to help with log rotation on Linux file systems.
@@ -40,24 +42,29 @@ The official packages [for CentOS/Red Hat](../../../../infrastructure/installati
 _The `logrotate` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-   "id": "lr1",
-   "command": "logrotate"
+  "id": "lr1",
+  "command": "logrotate"
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: logrotate
 rippled logrotate
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -71,6 +78,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -82,9 +90,11 @@ An example of a successful response:
 }
 
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -97,18 +107,19 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`   | Type   | Description                                             |
-|:----------|:-------|:--------------------------------------------------------|
+| `Field`   | Type   | Description                                                              |
+| :-------- | :----- | :----------------------------------------------------------------------- |
 | `message` | String | On success, contains the message `The log file was closed and reopened.` |
 
 ### Possible Errors
 
-* Any of the [universal error types][].
+- Any of the [universal error types][].
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

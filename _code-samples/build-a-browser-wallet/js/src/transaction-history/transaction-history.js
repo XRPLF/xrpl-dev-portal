@@ -38,14 +38,14 @@ txHistoryElement.appendChild(header);
 
 // Converts the hex value to a string
 function getTokenName(currencyCode) {
-    if (!currencyCode) return "";
+    if (!currencyCode) return '';
     if (currencyCode.length === 3 && currencyCode.trim().toLowerCase() !== 'xrp') {
         // "Standard" currency code
         return currencyCode.trim();
     }
     if (currencyCode.match(/^[a-fA-F0-9]{40}$/)) {
         // Hexadecimal currency code
-        const text_code = convertHexToString(value).replaceAll('\u0000', '')
+        const text_code = convertHexToString(value).replaceAll('\u0000', '');
         if (text_code.match(/[a-zA-Z0-9]{3,}/) && text_code.trim().toLowerCase() !== 'xrp') {
             // ASCII or UTF-8 encoded alphanumeric code, 3+ characters long
             return text_code;
@@ -54,7 +54,7 @@ function getTokenName(currencyCode) {
         // For parsing other rare formats, see https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/normalize-currency-codes/js/normalize-currency-code.js
         return currencyCode;
     }
-    return "";
+    return '';
 }
 
 function renderAmount(delivered) {
@@ -69,7 +69,7 @@ function renderAmount(delivered) {
         return `${delivered.value} ${getTokenName(delivered.currency)}.${delivered.issuer}`;
     } else {
         // Could be undefined -- not all transactions deliver value
-        return "-"
+        return '-';
     }
 }
 
@@ -110,7 +110,7 @@ async function fetchTxHistory() {
                 Hash: hash,
                 TransactionType: tx_json.TransactionType,
                 result: meta?.TransactionResult,
-                delivered: meta?.delivered_amount
+                delivered: meta?.delivered_amount,
             };
         });
 

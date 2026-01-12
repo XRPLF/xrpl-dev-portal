@@ -1,11 +1,13 @@
 ---
 seo:
-    description: A record of attestations for creating an account via a cross-chain transfer. 
+  description: A record of attestations for creating an account via a cross-chain transfer.
 labels:
   - Interoperability
 status: not_enabled
 ---
+
 # XChainOwnedCreateAccountClaimID
+
 [[Source]](https://github.com/XRPLF/rippled/blob/f64cf9187affd69650907d0d92e097eb29693945/include/xrpl/protocol/detail/ledger_entries.macro#L315-L323 "Source")
 
 An `XChainOwnedCreateAccountClaimID` ledger entry collects attestations for creating an account via a cross-chain transfer.
@@ -15,7 +17,6 @@ You can create a new `XChainOwnedCreateAccountClaimID` entry by sending an [XCha
 An `XChainOwnedCreateAccountClaimID` ledger entry is destroyed when all the attestations have been received and the funds have transferred to the new account.
 
 {% amendment-disclaimer name="XChainBridge" /%}
-
 
 ## Example XChainOwnedCreateAccountClaimID JSON
 
@@ -51,38 +52,35 @@ An `XChainOwnedCreateAccountClaimID` ledger entry is destroyed when all the atte
 }
 ```
 
-
 ## XChainOwnedCreateAccountClaimID Fields
 
-| Field                             | JSON Type    | [Internal Type][] | Required? | Description |
-|:----------------------------------|:-------------|:------------------|:----------|:------------|
-| `Account`                         | String       | AccountID         | Yes       | The account that owns this object. |
-| `XChainAccountCreateCount`        | Number       | UInt64            | Yes       | An integer that determines the order that accounts created through cross-chain transfers must be performed. Smaller numbers must execute before larger numbers. |
-| `XChainBridge`                    | XChainBridge | XChainBridge      | Yes       | The door accounts and assets of the bridge this object correlates to. |
+| Field                             | JSON Type    | [Internal Type][] | Required? | Description                                                                                                                                                                                                                                                                                                                                     |
+| :-------------------------------- | :----------- | :---------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Account`                         | String       | AccountID         | Yes       | The account that owns this object.                                                                                                                                                                                                                                                                                                              |
+| `XChainAccountCreateCount`        | Number       | UInt64            | Yes       | An integer that determines the order that accounts created through cross-chain transfers must be performed. Smaller numbers must execute before larger numbers.                                                                                                                                                                                 |
+| `XChainBridge`                    | XChainBridge | XChainBridge      | Yes       | The door accounts and assets of the bridge this object correlates to.                                                                                                                                                                                                                                                                           |
 | `XChainCreateAccountAttestations` | Array        | Array             | Yes       | Attestations collected from the witness servers. This includes the parameters needed to recreate the message that was signed, including the amount, destination, signature reward amount, and reward account for that signature. With the exception of the reward account, all signatures must sign the message created with common parameters. |
-
 
 ### XChainCreateAccountAttestations Fields
 
-| Field                         | JSON Type           | [Internal Type][] | Required | Description |
-|-------------------------------|---------------------|-------------------|----------|-------------|
-| `XChainCreateAccountProofSig` | Array               | Object            | Yes      | An attestation from one witness server. |
+| Field                         | JSON Type           | [Internal Type][] | Required | Description                                                                              |
+| ----------------------------- | ------------------- | ----------------- | -------- | ---------------------------------------------------------------------------------------- |
+| `XChainCreateAccountProofSig` | Array               | Object            | Yes      | An attestation from one witness server.                                                  |
 | `Amount`                      | [Currency Amount][] | Amount            | Yes      | The amount committed by the `XChainAccountCreateCommit` transaction on the source chain. |
-| `AttestationRewardAccount`    | String              | AccountID         | Yes      | The account that should receive this signer's share of the `SignatureReward`. |
-| `AttestationSignerAccount`    | String              | AccountID         | Yes      | The account on the door account's signer list that is signing the transaction. |
-| `Destination`                 | String              | AccountID         | Yes      | The destination account for the funds on the destination chain. |
-| `PublicKey`                   | String              | Blob              | Yes      | The public key used to verify the signature. |
-| `WasLockingChainSend`         | Number              | UInt8             | Yes      | A boolean representing the chain where the event occurred. |
-
+| `AttestationRewardAccount`    | String              | AccountID         | Yes      | The account that should receive this signer's share of the `SignatureReward`.            |
+| `AttestationSignerAccount`    | String              | AccountID         | Yes      | The account on the door account's signer list that is signing the transaction.           |
+| `Destination`                 | String              | AccountID         | Yes      | The destination account for the funds on the destination chain.                          |
+| `PublicKey`                   | String              | Blob              | Yes      | The public key used to verify the signature.                                             |
+| `WasLockingChainSend`         | Number              | UInt8             | Yes      | A boolean representing the chain where the event occurred.                               |
 
 ### XChainBridge Fields
 
-| Field               | JSON Type | [Internal Type][] | Required? | Description     |
-|:--------------------|:----------|:------------------|:----------|:----------------|
+| Field               | JSON Type | [Internal Type][] | Required? | Description                                                                                                                                                                                    |
+| :------------------ | :-------- | :---------------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `IssuingChainDoor`  | String    | AccountID         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
-| `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
-| `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain. |
-| `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
+| `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues.                |
+| `LockingChainDoor`  | String    | AccountID         | Yes       | The door account on the locking chain.                                                                                                                                                         |
+| `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain.                                                                                                                                    |
 
 ## See Also
 

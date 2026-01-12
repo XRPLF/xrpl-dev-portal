@@ -1,10 +1,12 @@
 ---
 seo:
-    description: エスクローされたXRPを受取人へ送金します。
+  description: エスクローされたXRPを受取人へ送金します。
 labels:
-    - Escrow
+  - Escrow
 ---
+
 # EscrowFinish
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
 エスクロー(保留中の支払い)から受取人へXRPを送金します。
@@ -15,27 +17,26 @@ labels:
 
 ```json
 {
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "TransactionType": "EscrowFinish",
-    "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "OfferSequence": 7,
-    "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
-    "Fulfillment": "A0028000"
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "TransactionType": "EscrowFinish",
+  "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "OfferSequence": 7,
+  "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
+  "Fulfillment": "A0028000"
 }
 ```
 
 {% tx-example txid="317081AF188CDD4DBE55C418F41A90EC3B959CDB3B76105E0CBE6B7A0F56C5F7" /%}
 
-
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド      | JSONの型     | [内部の型][] | 必須?  | 説明 |
-| :-------------- | :----------- | :----------- | :----- | ---- |
-| `Owner`         | 文字列       | AccountID    | はい   | エスクローに資金を供給した支払元アカウントのアドレス。 |
-| `OfferSequence` | 数値         | UInt32       | はい   | 対象となるエスクローを作成した[EscrowCreateトランザクション][]のトランザクションシーケンス。 |
-| `Condition`     | 文字列       | Blob         | いいえ | 以前に指定されたエスクローの[PREIMAGE-SHA-256 Crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1)に一致する16進数値。 |
+| フィールド      | JSONの型     | [内部の型][] | 必須?  | 説明                                                                                                                                                                                                                                                               |
+| :-------------- | :----------- | :----------- | :----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Owner`         | 文字列       | AccountID    | はい   | エスクローに資金を供給した支払元アカウントのアドレス。                                                                                                                                                                                                             |
+| `OfferSequence` | 数値         | UInt32       | はい   | 対象となるエスクローを作成した[EscrowCreateトランザクション][]のトランザクションシーケンス。                                                                                                                                                                       |
+| `Condition`     | 文字列       | Blob         | いいえ | 以前に指定されたエスクローの[PREIMAGE-SHA-256 Crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1)に一致する16進数値。                                                                                                     |
 | `CredentialIDs` | 文字列の配列 | Vector256    | いいえ | このトランザクションによって作成されたエスクローによる資金提供を承認する資格証明書のセット。各配列のメンバーは、レジャーの資格証明書エントリのレジャーエントリIDでなければなりません。詳細については、[Credential ID](./payment.md#credential-ids)をご覧ください。 |
-| `Fulfillment`   | 文字列       | Blob         | いいえ | エスクローの`Condition`に一致する[PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4)の16進数値。 |
+| `Fulfillment`   | 文字列       | Blob         | いいえ | エスクローの`Condition`に一致する[PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4)の16進数値。                                                                                          |
 
 すべてのアカウントがEscrowFinishトランザクションを送信できます。
 

@@ -1,19 +1,19 @@
 ---
 category: 2020
-date: "2020-01-13"
+date: '2020-01-13'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # fixCheckThreading and fixPayChanRecipientOwnerDir Amendments Lost Majority
 
 On 2019-01-11, the fixCheckThreading and fixPayChanRecipientOwnerDir amendments lost the support of several validators, causing those amendments' support to fall below the 80% threshold for approval. (EnableAmendment LostMajority transactions: [fixCheckThreading](https://xrpcharts.ripple.com/#/transactions/3D10E846B1DA4BA07FA79BA1C13F802DD587F842F3810D997224C3693B120F51), [fixPayChanRecipientOwnerDir](https://xrpcharts.ripple.com/#/transactions/C848F96FDB815623753F27E8B5C83F4E38CFC8F50B28307142A6DFAC946EF070).) As a result, these amendments are no longer expected to become enabled on 2020-01-18, and their status depends on more validators to resume voting in favor of the amendments.
 
 For more information on the Amendment process, see [Amendments](https://xrpl.org/amendments.html) in the XRP Ledger Dev Portal.
-
 
 ## Ripple's Statement
 
@@ -27,7 +27,7 @@ All XRP Ledger servers should continue to operate as normal for now. If any new 
 
 - If you operate a `rippled` server, please [upgrade](https://xrpl.org/install-rippled.html) to version 1.4.0.
 
-    {% admonition type="warning" name="Caution" %}Upgrading to v1.4.0 may take longer than usual because of SQL database cleanup the server performs the first time after upgrading. For more information, see [XRP Ledger version 1.4.0 Upgrade Advisory](https://xrpl.org/blog/2020/rippled-1.4.0-upgrade-advisory.html).{% /admonition %}
+  {% admonition type="warning" name="Caution" %}Upgrading to v1.4.0 may take longer than usual because of SQL database cleanup the server performs the first time after upgrading. For more information, see [XRP Ledger version 1.4.0 Upgrade Advisory](https://xrpl.org/blog/2020/rippled-1.4.0-upgrade-advisory.html).{% /admonition %}
 
 - If you use the XRP Ledger APIs to list payment channels, such as using the [account_channels](https://xrpl.org/account_channels.html) method, be aware that the fixPayChanRecipientOwnerDir amendment affects the results of this API. Specifically, the method will list newly-created channels for which the specified account is the recipient. Previously, this method only listed channels for which the account is the sender. (Existing payment channels for which the specified account is the recipient will continue not to appear in the results. Only new channels, created after the amendment becomes enabled, are affected.)
 
@@ -41,7 +41,7 @@ Related documentation is available in the [XRP Ledger Dev Portal](https://xrpl.o
 
 Other resources:
 
-* [XRPScan Amendments Dashboard](https://xrpscan.com/amendments)
-* This XRP Ledger Dev Blog
-* Ripple Technical Services: <support@ripple.com>
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [XRPScan Amendments Dashboard](https://xrpscan.com/amendments)
+- This XRP Ledger Dev Blog
+- Ripple Technical Services: <support@ripple.com>
+- [XRP Chat Forum](http://www.xrpchat.com/)

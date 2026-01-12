@@ -1,13 +1,14 @@
 ---
-date: "2017-07-10"
+date: '2017-07-10'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.70.1
 
 The `rippled` team has released `rippled` version 0.70.1, which corrects a technical flaw in the newly [refactored](https://github.com/ripple/rippled/commit/00c60d408a887d8a986db81afbb5ead121e8310c#diff-dab2766c14d0ef8e760dc5e353fa7b9dR1389) consensus code that could, in rare cases, cause a node to get stuck in consensus due to stale votes from a peer. **Ripple requires upgrading to `rippled` version 0.70.1 immediately.**
@@ -24,7 +25,7 @@ This announcement now contains corrected SHA-256 values for the RPM and source R
 
 ## Impact of Not Upgrading
 
-* If you operate a `rippled` validator server, but do not upgrade to `rippled` version 0.70.1, then your `rippled` validator server could experience increased loss of synchronization with the network.
+- If you operate a `rippled` validator server, but do not upgrade to `rippled` version 0.70.1, then your `rippled` validator server could experience increased loss of synchronization with the network.
 
 For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
@@ -46,25 +47,25 @@ Date:   Wed Jun 28 07:15:07 2017 -0700
 
 ## 0.70.1 Change Log
 
-* Allow compiling against OpenSSL 1.1.0, which allows compiling under the latest version of Fedora. [(#2151)](https://github.com/ripple/rippled/pull/2151)
+- Allow compiling against OpenSSL 1.1.0, which allows compiling under the latest version of Fedora. [(#2151)](https://github.com/ripple/rippled/pull/2151)
 
 ## Bug Fixes
 
-* Log invariant check messages at "fatal" level [(#2154)](https://github.com/ripple/rippled/pull/2154)
+- Log invariant check messages at "fatal" level [(#2154)](https://github.com/ripple/rippled/pull/2154)
 
-* Fix the consensus code to update all disputed transactions after a node changes a position [(#2156)](https://github.com/ripple/rippled/pull/2156)
-
+- Fix the consensus code to update all disputed transactions after a node changes a position [(#2156)](https://github.com/ripple/rippled/pull/2156)
 
 ## Network Update
 
 The Ripple technical operations team deployed `rippled` version 0.70.1 to all `rippled` servers under its operational control, including private clusters, on Sunday, 2017-07-09.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

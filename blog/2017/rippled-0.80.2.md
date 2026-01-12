@@ -1,13 +1,14 @@
 ---
-date: "2017-12-15"
+date: '2017-12-15'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled Version 0.80.2
 
 Ripple has released `rippled` version 0.80.2, which improves the transaction dispatch logic of `rippled`, allows for more transactions to be in flight at any one time and reduces the overall resource usage of `rippled`. The improved transaction dispatch logic ensures that a transaction is dispatched at most once every 10 seconds, even if it received from multiple peers during that interval.
@@ -16,14 +17,13 @@ The fix should also improve load accounting on peer links, reducing the number o
 
 Ripple strongly recommends upgrading to `rippled` version 0.80.2 immediately.
 
-
 ## Action Required
 
 If you operate a `rippled` server, then you should upgrade to 0.80.2 immediately.
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to rippled version 0.80.2, then your `rippled` server will use more resources than necessary and may periodically drop transactions and fall out of sync with the network.
+- **If you operate a `rippled` server**, but do not upgrade to rippled version 0.80.2, then your `rippled` server will use more resources than necessary and may periodically drop transactions and fall out of sync with the network.
 
 For instructions on updating `rippled` on supported platforms, see [Updating `rippled` on supported platforms](/docs/infrastructure/installation/update-rippled-automatically-on-linux).
 
@@ -44,23 +44,24 @@ Date:   Thu Dec 14 15:30:20 2017 -0800
 ```
 
 ## Network Update
+
 The Ripple technical operations team will deploy `rippled` version 0.80.2 to all production `rippled` servers under its operational control, on Friday, 12/15/2017.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
-
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## 0.80.2 Change Log
 
-* Tune for higher transaction rate processing [(#2294)](https://github.com/ripple/rippled/pull/2294)
-* Control transaction dispatch rate [(#2297)](https://github.com/ripple/rippled/pull/2297)
+- Tune for higher transaction rate processing [(#2294)](https://github.com/ripple/rippled/pull/2294)
+- Control transaction dispatch rate [(#2297)](https://github.com/ripple/rippled/pull/2297)
 
 ## 0.80.1 Change Log
 

@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Get a list of pending checks sent from or to an account.
+  description: Get a list of pending checks sent from or to an account.
 labels:
   - Checks
 ---
+
 # Look Up Checks
 
 This tutorial shows how to look up [Checks](../../../../concepts/payment-types/checks.md) by their sender or recipient, in JavaScript.
@@ -27,7 +28,6 @@ To get a list of all incoming and outgoing Checks for an account, use the `accou
 
 {% code-snippet file="/_code-samples/checks/js/get-checks.js" from="// Loop through account objects" before="// Filter results" /%}
 
-
 ### 2. Filter the responses by recipient
 
 The response may include Checks where the account from the request is the sender or the recipient. Each member of the `account_objects` array of the response represents one Check. For each such Check object, the address in the `Destination` is address of that Check's recipient, such as in the following code:
@@ -37,6 +37,5 @@ The response may include Checks where the account from the request is the sender
 To filter by sender, check the address in the `Account` field of the Check instead.
 
 {% admonition type="success" name="tip" %}For each Check entry in the results, the Check's ID is in the `index` field. You'll need this value to cash or cancel the Check.{% /admonition %}
-
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

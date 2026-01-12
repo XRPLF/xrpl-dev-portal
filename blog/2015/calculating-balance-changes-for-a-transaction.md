@@ -1,14 +1,15 @@
 ---
-date: "2015-02-19"
+date: '2015-02-19'
 template: '../../@theme/templates/blogpost'
 category: 2015
 labels:
-    - Development
-    - Features
+  - Development
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Calculating Balance Changes for a Transaction
 
 ## Introduction
@@ -203,9 +204,9 @@ It might seem like you would need the concept of `issuer` in order to keep track
 
 The LowNode and HighNode fields may be confusing. They are hints to make node deletion happen in constant time in rippled and should always be ignored outside of rippled. More precisely, LowNode is the integer number of the page in the low account's owner directory that contains the reference to the trust line.
 
-### ACCOUNT\_ONE
+### ACCOUNT_ONE
 
-The issuer listed in the balance fields is `rrrrrrrrrrrrrrrrrrrrBZbvji`, which is referred to as [ACCOUNT\_ONE](https://xrpl.org/accounts.html#special-addresses) and is the encoding that corresponds to the numerical value 1. This convention is used because the addresses on the trustline are already specified in the HighLimit and LowLimit objects, so specifying them here would be redundant.
+The issuer listed in the balance fields is `rrrrrrrrrrrrrrrrrrrrBZbvji`, which is referred to as [ACCOUNT_ONE](https://xrpl.org/accounts.html#special-addresses) and is the encoding that corresponds to the numerical value 1. This convention is used because the addresses on the trustline are already specified in the HighLimit and LowLimit objects, so specifying them here would be redundant.
 
 ## Conclusion
 

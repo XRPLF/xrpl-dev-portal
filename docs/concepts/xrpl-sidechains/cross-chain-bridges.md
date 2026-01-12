@@ -1,11 +1,12 @@
 ---
 seo:
-    description: Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains.
+  description: Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains.
 status: not_enabled
 labels:
-    - Blockchain
-    - Interoperability
+  - Blockchain
+  - Interoperability
 ---
+
 # Cross-Chain Bridges
 
 Cross-chain bridges enable you to move XRP and tokens between the XRP Ledger and other blockchains. When referring to the blockchains connected by a bridge, one is the locking chain and the other the issuing chain.
@@ -20,7 +21,6 @@ Both the locking and issuing chains operate as parallel networks with independen
 
 {% amendment-disclaimer name="XChainBridge" /%}
 
-
 ## How Do Bridges Work?
 
 At a high-level, bridges enable cross-chain transactions through these steps:
@@ -28,12 +28,12 @@ At a high-level, bridges enable cross-chain transactions through these steps:
 1. Create a cross-chain claim ID on the issuing chain. A cross-chain claim ID represents one transfer of value between blockchains.
 2. Submit a commit transaction on the locking chain, putting the assets in a trust. The transaction includes the cross-chain claim ID and reward for witness servers.
 
-    {% admonition type="info" name="Note" %}Witness servers monitor transactions on both chains. They provide attestations, or signed messages, to verify a transaction occurred. There are attestations for `XChainCommit` and `XChainAccountCreateCommit` transactions.{% /admonition %}
+   {% admonition type="info" name="Note" %}Witness servers monitor transactions on both chains. They provide attestations, or signed messages, to verify a transaction occurred. There are attestations for `XChainCommit` and `XChainAccountCreateCommit` transactions.{% /admonition %}
 
 3. Witness servers provide attestations to the issuing chain, saying the assets were locked on the locking chain.
 4. When there are enough signatures to reach quorum, the assets are released on the issuing chain to the destination account.
 
-    {% admonition type="info" name="Note" %}In some cases, such as deposit authorization being enabled, you'll need to submit a transaction claim for the transferred assets on the issuing chain.{% /admonition %}
+   {% admonition type="info" name="Note" %}In some cases, such as deposit authorization being enabled, you'll need to submit a transaction claim for the transferred assets on the issuing chain.{% /admonition %}
 
 5. Rewards are distributed to the witness servers' accounts on the issuing chain.
 

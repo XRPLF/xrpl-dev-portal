@@ -1,9 +1,10 @@
 # Airgapped Wallet
+
 Airgapped describes a state where a device or a system becomes fully disconnected from other devices and systems. It is the maximum protection for a system against unwanted visitors/viruses, this allows any sensitive data like a private key to be stored without worry of it being compromised as long as reasonable security practices are being practiced.
 
 This airgapped XRP wallet allows users to sign a Payment transaction in a secure environment without the private key being exposed to a machine connected to the internet. The private key and seed is encrypted by password and stored securely.
 
-*Note*: You should not use this airgapped wallet in production, it should only be used for educational purposes only. 
+_Note_: You should not use this airgapped wallet in production, it should only be used for educational purposes only.
 
 This code sample consists of 2 parts:
 
@@ -13,6 +14,7 @@ This code sample consists of 2 parts:
 Preferably, `airgapped-wallet.py` should be on a Linux machine while `relay-transaction.py` could be on any operating system.
 
 # Security Practices
+
 Strongly note that an airgapped system's security is not determined by its code alone but the security practices that are being followed by an operator.
 
 There are channels that can be maliciously used by outside parties to infiltrate an airgapped system and steal sensitive information.
@@ -22,13 +24,14 @@ There are other ways malware could interact across airgapped networks, but they 
 This is why it is also recommended to encrypt sensitive information being stored in an airgapped machine.
 
 The airgapped machine should have a few rules enforced to close any possible channels getting abused to leak information outside of the machine:
+
 ### Wifi
 
 - Disable any wireless networking hardware on the airgapped machine. For example, if you have a desktop PC with a Wifi card, open the PC and remove the Wifi hardware. If you cannot do that, you could go to the system’s BIOS or UEFI firmware and disable the Wifi hardware.
 
 ### BlueTooth
 
-- BlueTooth can be maliciously used by neighboring devices to steal data from an airgapped machine. It is recommended to remove or disable the BlueTooth hardware.  
+- BlueTooth can be maliciously used by neighboring devices to steal data from an airgapped machine. It is recommended to remove or disable the BlueTooth hardware.
 
 ### USB
 
@@ -37,37 +40,44 @@ The airgapped machine should have a few rules enforced to close any possible cha
 Do not reconnect the airgapped machine to a network, even when you need to transfer files! An effective airgapped machine should only serve 1 purpose, which is to store data and never open up a gateway for hackers to abuse and steal data.
 
 # Tutorial
+
 For testing purposes, you would need to have 2 machines and 1 phone in hand to scan the QR code.
 
-1. 1st machine would be airgapped, following the security practices written [here](#security-practices). It stores and manages an XRPL Wallet. 
+1. 1st machine would be airgapped, following the security practices written [here](#security-practices). It stores and manages an XRPL Wallet.
 2. 2nd machine would be a normal computer connected to the internet. It relays a signed transaction blob to a rippled node.
 3. The phone would be used to scan a QR code, which contains a signed transaction blob. The phone would transmit it to the 2nd machine.
 
 The diagram below shows you the process of submitting a transaction to the XRPL:
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/87929946/197970678-2a1b7f7e-d91e-424e-915e-5ba7d34689cc.png" width=75% height=75%>
 </p>
 
 # Setup
+
 - Machine 1 - An airgapped computer (during setup, it must be connected to the internet to download the files)
 - Machine 2 - A normal computer connected to the internet
 - Phone - A normal phone with a working camera to scan a QR
 
 ## Machine 1 Setup
+
 Since this machine will be airgapped, it is best to use Linux as the Operating System.
 
 1. Install Python 3.8:
 
 **Linux Command Line**:
+
 ```
 sudo apt-get update
 sudo apt-get install python3.8 python3-pip
 ```
+
 **Website**: https://www.python.org/downloads/source/
 
 2. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/airgapped-wallet/py) directory
 
 3. Import all the modules required by running:
+
 ```
 pip install -r requirements.txt
 ```
@@ -76,27 +86,31 @@ pip install -r requirements.txt
 
 5. Run `airgapped-wallet.py`
 
-6. Scan the QR code and fund the account using the [testnet faucet](https://test.bithomp.com/faucet/) 
+6. Scan the QR code and fund the account using the [testnet faucet](https://test.bithomp.com/faucet/)
 
 7. Re-run the script and input '1' to generate a new transaction by following the instructions.
 
 8. Use your phone to scan the QR code, then to send the signed transaction to Machine 2 for submission
 
 ## Machine 2 Setup
+
 This machine will be used to transmit a signed transaction blob from Machine 1, it would require internet access.
 
 1. Install Python 3.8
 
 **Linux Command Line**:
+
 ```
 sudo apt-get update
 sudo apt-get install python3.8 python3-pip
 ```
+
 **Website**: https://www.python.org/downloads/source/
 
 2. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/airgapped-wallet/py) directory
 
 3. Import all the modules required by running:
+
 ```
 pip install -r requirements.txt
 ```
@@ -104,6 +118,7 @@ pip install -r requirements.txt
 4. Run `relay-transaction.py` with one argument, the signed transaction blob to submit.
 
 ## Phone Setup
+
 The phone requires a working camera that is able to scan a QR code and an internet connection for it to be able to transmit the signed transaction blob to Machine 2.
 
 Once you have signed a transaction in the airgapped machine, a QR code will be generated which will contain the signed transaction blob. Example:

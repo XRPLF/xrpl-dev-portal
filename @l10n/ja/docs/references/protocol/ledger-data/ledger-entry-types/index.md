@@ -6,9 +6,9 @@ metadata:
 labels:
   - データ保持
 ---
+
 # レジャーエントリのタイプ
 
 {% partial file="/@l10n/ja/docs/_snippets/ledger-objects-intro.md" /%}
-
 
 {% child-pages /%}

@@ -2,10 +2,11 @@
 html: nftoken-marketplace.html
 parent: nft-mkt-overview.html
 seo:
-    description: NFTを取引するための「NFTマーケットプレイス」を構築する。
+  description: NFTを取引するための「NFTマーケットプレイス」を構築する。
 labels:
   - Tokenization
 ---
+
 # NFTマーケットプレイス
 
 _NFTokenマーケットプレイスでは、XRPLを利用して、厳選されたNFTokenを消費者に譲渡するためのWeb上のサービスを提供し、ブランド構築と売上に応じた仲介手数料を得ることができるというメリットを得ることができるようになります。_
@@ -16,13 +17,11 @@ NFTokenマーケットプレイスは、NFTokenクリエイターとコレクタ
 
 ## NFTマーケットプレイスを作成する
 
-[![NFTマーケットプレイスのフロー](/docs/img/nft-mkt-marketplace.png "NFTマーケットプレイスのフロー")](/docs/img/nft-mkt-marketplace.png)
-
+[![NFTマーケットプレイスのフロー](/docs/img/nft-mkt-marketplace.png 'NFTマーケットプレイスのフロー')](/docs/img/nft-mkt-marketplace.png)
 
 ## rippledインスタンスのセットアップ
 
 取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](../../infrastructure/installation/index.md)をご覧ください。
-
 
 ### ウォレットのセットアップ
 
@@ -32,7 +31,6 @@ NFTokenマーケットプレイスは、NFTokenクリエイターとコレクタ
 
 Current wallet options on XRPL: This is a good opportunity for XRPL to highlight wallet providers in the ecosystem
 
-
 ### NFTの取引
 
 NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
@@ -40,7 +38,6 @@ NFTの取引は、売りオファーの作成または買いオファーの承�
 NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
 あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/javascript/nfts/broker-an-nft-sale.md)をご覧ください。
-
 
 ### 準備金要件
 
@@ -55,7 +52,6 @@ NFTをオークション形式で販売することができます。[NFTオー�
 1. [NFTokenOffer](../../concepts/tokens/nfts/reserve-requirements.md#nftokenoffer-reserve)
 2. NFToken page ([所有者準備金](../../concepts/tokens/nfts/reserve-requirements.md#owner-reserve))
 3. 少額の[取引手数料](../../concepts/tokens/fungible-tokens/transfer-fees.md)
-
 
 ブローカー販売については、トピック[XRP Ledgerでのトークン取引](../../concepts/tokens/nfts/trading.md)で詳しく説明しています。
 

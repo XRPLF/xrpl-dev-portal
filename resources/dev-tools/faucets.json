@@ -1,44 +1,44 @@
 {
-    "knownFaucets": [
-        {
-            "id": "faucet-select-testnet",
-            "wsUrl": "wss://s.altnet.rippletest.net:51233/",
-            "jsonRpcUrl": "https://s.altnet.rippletest.net:51234/",
-            "faucetHost": "faucet.altnet.rippletest.net",
-            "shortName": "Testnet",
-            "desc": "Mainnet-like network for testing applications."
-        },
-        {
-            "id": "faucet-select-devnet",
-            "wsUrl": "wss://s.devnet.rippletest.net:51233/",
-            "jsonRpcUrl": "https://s.devnet.rippletest.net:51234/",
-            "faucetHost": "faucet.devnet.rippletest.net",
-            "shortName": "Devnet",
-            "desc": "Preview of upcoming amendments."
-        },
-        {
-            "id": "faucet-select-xahau",
-            "wsUrl": "wss://xahau-test.net/",
-            "jsonRpcUrl": "https://xahau-test.net/",
-            "faucetHost": "xahau-test.net",
-            "shortName": "Xahau-Testnet",
-            "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
-        },
-        {
-            "id": "faucet-select-batch-devnet",
-            "wsUrl": "wss://batch.nerdnest.xyz",
-            "jsonRpcUrl": "https://batch.rpc.nerdnest.xyz",
-            "faucetHost": "batch.faucet.nerdnest.xyz",
-            "shortName": "Batch-Devnet",
-            "desc": "Preview of XLS-56d Batch transactions."
-        },
-        {
-            "id": "faucet-select-lending-devnet",
-            "wsUrl": "wss://lend.devnet.rippletest.net:51233/",
-            "jsonRpcUrl": "https://lend.devnet.rippletest.net:51234/",
-            "faucetHost": "lend-faucet.devnet.rippletest.net",
-            "shortName": "Lending-Devnet",
-            "desc": "Preview of XLS-66d Lending Protocol."
-        }
-    ]
+  "knownFaucets": [
+    {
+      "id": "faucet-select-testnet",
+      "wsUrl": "wss://s.altnet.rippletest.net:51233/",
+      "jsonRpcUrl": "https://s.altnet.rippletest.net:51234/",
+      "faucetHost": "faucet.altnet.rippletest.net",
+      "shortName": "Testnet",
+      "desc": "Mainnet-like network for testing applications."
+    },
+    {
+      "id": "faucet-select-devnet",
+      "wsUrl": "wss://s.devnet.rippletest.net:51233/",
+      "jsonRpcUrl": "https://s.devnet.rippletest.net:51234/",
+      "faucetHost": "faucet.devnet.rippletest.net",
+      "shortName": "Devnet",
+      "desc": "Preview of upcoming amendments."
+    },
+    {
+      "id": "faucet-select-xahau",
+      "wsUrl": "wss://xahau-test.net/",
+      "jsonRpcUrl": "https://xahau-test.net/",
+      "faucetHost": "xahau-test.net",
+      "shortName": "Xahau-Testnet",
+      "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
+    },
+    {
+      "id": "faucet-select-batch-devnet",
+      "wsUrl": "wss://batch.nerdnest.xyz",
+      "jsonRpcUrl": "https://batch.rpc.nerdnest.xyz",
+      "faucetHost": "batch.faucet.nerdnest.xyz",
+      "shortName": "Batch-Devnet",
+      "desc": "Preview of XLS-56d Batch transactions."
+    },
+    {
+      "id": "faucet-select-lending-devnet",
+      "wsUrl": "wss://lend.devnet.rippletest.net:51233/",
+      "jsonRpcUrl": "https://lend.devnet.rippletest.net:51234/",
+      "faucetHost": "lend-faucet.devnet.rippletest.net",
+      "shortName": "Lending-Devnet",
+      "desc": "Preview of XLS-66d Lending Protocol."
+    }
+  ]
 }

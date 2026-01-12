@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Common configurations for an XRP Ledger account.
+  description: Common configurations for an XRP Ledger account.
 labels:
   - Accounts
   - Configuration
 ---
+
 # Configuring Accounts
 
 There are three basic account configurations on the XRP Ledger.
@@ -27,12 +28,12 @@ To configure an account that is essentially going to hold and spend value on the
 
 If the primary purpose of an account is to facilitate exchange of value between third parties, you will likely start with these four settings:
 
-| Flag | Description |
-|------|-------------|
-| `defaultRipple` | Allow rippling on trust lines by default. Rippling is necessary in order for accounts to trade tokens you exchange with third-party accounts. See [Rippling](../tokens/fungible-tokens/rippling.md). |
-| `disallowIncomingNFTokenOffer` | Prevent other accounts from sending NFT buy or sell offers to this account. This avoids unsolicited offers unrelated to the primary purpose of the exchanger account. See [Trading NFTs](../tokens/nfts/trading.md). |
-| `disallowIncomingPayChan` | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../payment-types/payment-channels.md). |
-| `requireDestinationTag` | Require that all incoming payments have a destination tag. Destination tags provide a more lightweight mechanism for sending payments to a specific customer at a general receiver account. See [Source and Destination Tags](../transactions/source-and-destination-tags.md). |
+| Flag                           | Description                                                                                                                                                                                                                                                                                                     |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultRipple`                | Allow rippling on trust lines by default. Rippling is necessary in order for accounts to trade tokens you exchange with third-party accounts. See [Rippling](../tokens/fungible-tokens/rippling.md).                                                                                                            |
+| `disallowIncomingNFTokenOffer` | Prevent other accounts from sending NFT buy or sell offers to this account. This avoids unsolicited offers unrelated to the primary purpose of the exchanger account. See [Trading NFTs](../tokens/nfts/trading.md).                                                                                            |
+| `disallowIncomingPayChan`      | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../payment-types/payment-channels.md). |
+| `requireDestinationTag`        | Require that all incoming payments have a destination tag. Destination tags provide a more lightweight mechanism for sending payments to a specific customer at a general receiver account. See [Source and Destination Tags](../transactions/source-and-destination-tags.md).                                  |
 
 [![Account Configurator Exchanger Settings](../../img/cpt-account-configurator2.png)](../../img/cpt-account-configurator2.png)
 
@@ -42,11 +43,11 @@ An account intended for issuing tokens requires configuration of both fields and
 
 ### Issuer Fields
 
-| Field | Description |
-|-------|-------------|
-| `Domain` | The domain is the URL to the server where you serve the xrp-ledger.toml file. It is recommended that you serve a human-readable website from the same domain as the `xrp-ledger.toml` file. The website can provide further information about your identity and how you use the XRP Ledger, which helps to build trust toward you and your services. See [Domain](../../references/xrp-ledger-toml.md). |
+| Field          | Description                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Domain`       | The domain is the URL to the server where you serve the xrp-ledger.toml file. It is recommended that you serve a human-readable website from the same domain as the `xrp-ledger.toml` file. The website can provide further information about your identity and how you use the XRP Ledger, which helps to build trust toward you and your services. See [Domain](../../references/xrp-ledger-toml.md).                          |
 | `TransferRate` | The `TransferRate` value specifies a fee to charge whenever counterparties transfer the currency you issue. The value is sent in 1 billion units. For example, 1200000000 represents a transfer fee of 20%. Note that the values _0_ and _1000000000_ represent the default (no fee); if you explicitly set either value, the value is not stored, but assumed. See [Transfer Fees](../tokens/fungible-tokens/transfer-fees.md). |
-| `TickSize` | The `TickSize` value truncates the number of significant digits in the exchange rate of an offer when it gets placed in an order book. See [TickSize](../tokens/decentralized-exchange/ticksize.md). |
+| `TickSize`     | The `TickSize` value truncates the number of significant digits in the exchange rate of an offer when it gets placed in an order book. See [TickSize](../tokens/decentralized-exchange/ticksize.md).                                                                                                                                                                                                                             |
 
 ### Signers
 
@@ -54,14 +55,14 @@ Multi-signing in the XRP Ledger is a method of authorizing transactions by using
 
 ### Issuer Flags
 
-| Flag | Description |
-|------|-------------|
-| `defaultRipple` | Allow rippling on trust lines by default. Rippling is necessary in order for accounts to trade tokens you issue through this account. See [Rippling](../tokens/fungible-tokens/rippling.md). |
-| `depositAuth` | Deposit Authorization prevents unauthorized third parties from sending you payments. See [Deposit Authorization](./depositauth.md).
-| `disallowIncomingCheck` | Prevent other accounts from sending checks to this account. See [Checks](../payment-types/checks.md).
-| `disallowIncomingNFTokenOffer` | Prevent other accounts from sending NFT buy or sell offers to this account. This avoids unsolicited offers unrelated to the primary purpose of the exchanger account. See [Trading NFTs](../tokens/nfts/trading.md). |
-| `disallowIncomingPayChan` | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../payment-types/payment-channels.md). |
-| `disallowIncomingXRP` | Prevent other accounts from sending XRP to this account. (This is advisory, and not enforced by the protocol). See [Direct XRP Payments](../payment-types/direct-xrp-payments.md). |
+| Flag                           | Description                                                                                                                                                                                                                                                                                                     |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultRipple`                | Allow rippling on trust lines by default. Rippling is necessary in order for accounts to trade tokens you issue through this account. See [Rippling](../tokens/fungible-tokens/rippling.md).                                                                                                                    |
+| `depositAuth`                  | Deposit Authorization prevents unauthorized third parties from sending you payments. See [Deposit Authorization](./depositauth.md).                                                                                                                                                                             |
+| `disallowIncomingCheck`        | Prevent other accounts from sending checks to this account. See [Checks](../payment-types/checks.md).                                                                                                                                                                                                           |
+| `disallowIncomingNFTokenOffer` | Prevent other accounts from sending NFT buy or sell offers to this account. This avoids unsolicited offers unrelated to the primary purpose of the exchanger account. See [Trading NFTs](../tokens/nfts/trading.md).                                                                                            |
+| `disallowIncomingPayChan`      | Prevent other accounts from creating payment channels to this account. While you might want to create payment channels to other accounts yourself, you typically wouldn't want other accounts to create a payment channel to an exchange account. See [Payment Channels](../payment-types/payment-channels.md). |
+| `disallowIncomingXRP`          | Prevent other accounts from sending XRP to this account. (This is advisory, and not enforced by the protocol). See [Direct XRP Payments](../payment-types/direct-xrp-payments.md).                                                                                                                              |
 
 [![Account Configurator Issuer Settings](../../img/cpt-account-configurator3.png)](../../img/cpt-account-configurator3.png)
 
@@ -69,14 +70,14 @@ Multi-signing in the XRP Ledger is a method of authorizing transactions by using
 
 All of the configuration flags can be helpful for specific use cases. The following are the account configuration flags not used in the standard Holder, Exchanger, and Issuer configurations.
 
-| Flag | Description |
-|------|-------------|
-| `allowTrustLineClawback` | Allow account to claw back tokens it has issued. See [Clawing Back Tokens](../tokens/fungible-tokens/clawing-back-tokens.md). |
-| `disableMasterKey` | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a regular key or a signer list. See [Master Key Pair](./cryptographic-keys.md#master-key-pair). |
-| `disallowIncomingTrustLine` | Block incoming trust lines. See [Trust Lines](../tokens/fungible-tokens/index.md#trust-lines). |
-| `globalFreeze` | Freeze all tokens issued by this account. See [Global Freeze](../tokens/fungible-tokens/freezes.md#global-freeze).
-| `noFreeze` | Permanently remove the ability to freeze individual trust lines or end a global freeze. See [Freezing Tokens](../tokens/fungible-tokens/freezes.md). |
-| `requireAuthorization` | Requires authorized trust lines for other accounts to hold tokens issued by this account. See [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md).
+| Flag                        | Description                                                                                                                                                                                                                      |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `allowTrustLineClawback`    | Allow account to claw back tokens it has issued. See [Clawing Back Tokens](../tokens/fungible-tokens/clawing-back-tokens.md).                                                                                                    |
+| `disableMasterKey`          | Disallow use of the master key pair. Can only be enabled if the account has configured another way to sign transactions, such as a regular key or a signer list. See [Master Key Pair](./cryptographic-keys.md#master-key-pair). |
+| `disallowIncomingTrustLine` | Block incoming trust lines. See [Trust Lines](../tokens/fungible-tokens/index.md#trust-lines).                                                                                                                                   |
+| `globalFreeze`              | Freeze all tokens issued by this account. See [Global Freeze](../tokens/fungible-tokens/freezes.md#global-freeze).                                                                                                               |
+| `noFreeze`                  | Permanently remove the ability to freeze individual trust lines or end a global freeze. See [Freezing Tokens](../tokens/fungible-tokens/freezes.md).                                                                             |
+| `requireAuthorization`      | Requires authorized trust lines for other accounts to hold tokens issued by this account. See [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md).                                                     |
 
 ## Using the Account Configurator
 
@@ -89,7 +90,7 @@ You can also use the form embedded here.
 <!-- Account Configurator Form - - >
 <div class="container">
 <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-<script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script> 
+<script src='https://unpkg.com/xrpl@4.1.0/build/xrpl-latest.js'></script>
 <script>
     if (typeof module !== "undefined") {
       const xrpl = require('xrpl')
@@ -131,14 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // ******************************************************
 // ************* Get the Preferred Network **************
-// ******************************************************   
+// ******************************************************
 function getNet() {
   let net
   if (document.getElementById("mn").checked) net = "wss://xrplcluster.com/"
   if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233"
   if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233"
   return net
-} // End of getNet()        
+} // End of getNet()
 // *******************************************************
 // ************* Get Account *****************************
 // *******************************************************
@@ -164,7 +165,7 @@ async function getAccount() {
   getAccountInfo()
 } // End of getAccount()
 // *******************************************************
-// ************ Get Account from Seed ******************** 
+// ************ Get Account from Seed ********************
 // *******************************************************
 async function getAccountFromSeed() {
     accountField.value="Getting account from a seed..."
@@ -174,22 +175,22 @@ async function getAccountFromSeed() {
   await client.connect()
   results += '\nConnected, finding wallets.\n'
   resultField.value = results
-// --------------------------------------------------Find the test account wallet.    
-  const my_wallet = xrpl.Wallet.fromSeed(seedField.value)   
+// --------------------------------------------------Find the test account wallet.
+  const my_wallet = xrpl.Wallet.fromSeed(seedField.value)
 // -------------------------------------------------------Get the current balance.
   accountField.value = my_wallet.address
-  seedField.value = my_wallet.seed      
+  seedField.value = my_wallet.seed
   client.disconnect()
   getAccountInfo()
 } // End of getAccountFromSeed()
 // *******************************************************
-// ***************** Get Account Info ******************** 
+// ***************** Get Account Info ********************
 // *******************************************************
 async function getAccountInfo() {
  let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + getNet() + '....'
-  await client.connect()   
+  await client.connect()
   results += '\nConnected.'
   results+= "\nGetting account info...\n"
   const my_acct_info = await client.request({
@@ -248,7 +249,7 @@ async function configureAccount() {
   })
   json_results = JSON.stringify(my_acct_info, null, 2)
   var parsedResults = JSON.parse(json_results)
-  let defRipBool = document.getElementById("defaultRipple").checked 
+  let defRipBool = document.getElementById("defaultRipple").checked
   if (defRipBool != parsedResults.result.account_flags.defaultRipple) {
     if(defRipBool) {
       await setFlag(xrpl.AccountSetAsfFlags.asfDefaultRipple)
@@ -435,12 +436,12 @@ async function configureAccount() {
  resultField.value += '\nClearing flag ' + allFlags[my_flag] + "."
   const prepared = await client.autofill(settings_tx)
   const signed = my_wallet.sign(prepared)
-  const result = await client.submitAndWait(signed.tx_blob) 
+  const result = await client.submitAndWait(signed.tx_blob)
   if (result.result.meta.TransactionResult == "tesSUCCESS") {
     results += '\nAccount setting succeeded.'
   } else {
     throw `Error sending transaction: ${result}`
-  } 
+  }
   client.disconnect()
 }
  /*****************************************
@@ -730,7 +731,7 @@ async function removeSigners() {
       <div class="col align-self-start">
               <input type="checkbox" id="disallowIncomingPayChan">
       </div>
-    </div> 
+    </div>
     <div class="row">
       <div class="col align-self-start">
          <label for="disallowIncomingTrustline">disallowIncomingTrustline</label>
@@ -738,7 +739,7 @@ async function removeSigners() {
       <div class="col align-self-start">
               <input type="checkbox" id="disallowIncomingTrustline">
       </div>
-    </div>  
+    </div>
     <div class="row">
       <div class="col align-self-start">
          <label for="disallowIncomingXRP">disallowIncomingXRP</label>
@@ -746,7 +747,7 @@ async function removeSigners() {
       <div class="col align-self-start">
               <input type="checkbox" id="disallowIncomingXRP">
       </div>
-    </div> 
+    </div>
     <div class="row">
       <div class="col align-self-start">
          <label for="globalFreeze">globalFreeze</label>
@@ -793,7 +794,6 @@ async function removeSigners() {
 </div>
 </div>
 <!-- End of Account Configurator Form -->
-
 
 ### Getting Account Information
 
@@ -856,7 +856,7 @@ The standard Exchanger account configuration requires only four flags.
 To configure an Exchanger account:
 
 1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
-2. Click **Get New Account** or: 
+2. Click **Get New Account** or:
    1. Enter an existing seed value in the **Seed** field.
    2. Click **Get Account From Seed**.
 3. Choose the _Exchanger_ **Account Configuration Template**.
@@ -872,16 +872,16 @@ Configure an Issuer account by filling in additional fields and selecting flags 
 To configure an Issuer account:
 
 1. Choose the account's ledger instance (_Testnet_ or _Devnet_).
-2. Click **Get New Account** or: 
+2. Click **Get New Account** or:
    1. Enter an existing seed value in the **Seed** field.
    2. Click **Get Account From Seed**.
 3. Choose the _Issuer_ **Account Configuration Template**.
-   The configuration flag checkboxes update with the 6 standard configuration choices. You can choose more or fewer 
+   The configuration flag checkboxes update with the 6 standard configuration choices. You can choose more or fewer
    configuration settings to customize the account to your needs.
 4. Enter the **Domain**, a URL to the server where your `xrp-ledger.toml` resides. Note that you enter a human readable URL, which is converted to a hexidecimal string when you get the account information. If you want to reconfigure the account, you'll need to re-enter the **Domain** URL.
 5. Enter the **Transfer Rate**, a percentage fee to charge whenever counterparties transfer the currency you issue.
 6. Enter the **Tick Size**, which truncates the number of significant digits in the exchange.
-7. If you choose to include signers, this example module requires that you add valid account IDs in **Signer1 Account**, **Signer2 Account**, and **Signer3 Account**, a **Signer Weight** for each, and a **Signer Quorum** value. 
+7. If you choose to include signers, this example module requires that you add valid account IDs in **Signer1 Account**, **Signer2 Account**, and **Signer3 Account**, a **Signer Weight** for each, and a **Signer Quorum** value.
 8. Click **Configure Account**.
 
 [![Account Configurator Issuer Results](../../img/cpt-account-configurator3.png)](../../img/cpt-account-configurator3.png)

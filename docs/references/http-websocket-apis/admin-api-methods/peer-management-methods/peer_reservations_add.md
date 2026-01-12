@@ -1,16 +1,17 @@
 ---
 seo:
-    description: Add a reserved slot for a specific peer server.
+  description: Add a reserved slot for a specific peer server.
 labels:
-    - Core Server
+  - Core Server
 ---
+
 # peer_reservations_add
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
 
 The {% code-page-name /%} method adds or updates a reserved slot for a specific peer server in the XRP Ledger [peer-to-peer network](../../../../concepts/networks-and-servers/peer-protocol.md).
 
 _The {% code-page-name /%} method is an [admin method](../index.md) that cannot be run by unprivileged users._
-
 
 ### Request Format
 
@@ -19,45 +20,51 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": "peer_reservations_add_example_1",
-    "command": "{% $frontmatter.seo.title %}",
-    "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
-    "description": "Ripple s1 server 'WOOL'"
+  "id": "peer_reservations_add_example_1",
+  "command": "{% $frontmatter.seo.title %}",
+  "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
+  "description": "Ripple s1 server 'WOOL'"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "{% $frontmatter.seo.title %}",
-    "params": [{
+  "method": "{% $frontmatter.seo.title %}",
+  "params": [
+    {
       "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
       "description": "Ripple s1 server 'WOOL'"
-    }]
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: {% $frontmatter.seo.title %} <public_key> [<description>]
 rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The request includes the following parameters:
 
-| `Field`       | Type   | Description                                         |
-|:--------------|:-------|:----------------------------------------------------|
-| `public_key`  | String | The [node public key][] of the peer reservation to add a reservation for, in [base58][]. |
+| `Field`       | Type   | Description                                                                                                                               |
+| :------------ | :----- | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| `public_key`  | String | The [node public key][] of the peer reservation to add a reservation for, in [base58][].                                                  |
 | `description` | String | _(Optional)_ A custom description for the peer reservation. The server truncates descriptions longer than 64 characters when it restarts. |
-
-
 
 ### Response Format
 
@@ -66,6 +73,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "peer_reservations_add_example_1",
@@ -79,9 +87,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "result": {
@@ -93,9 +103,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -110,14 +122,15 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`    | Type   | Description                                            |
-|:-----------|:-------|:-------------------------------------------------------|
+| `Field`    | Type   | Description                                                                                                                                                                                                              |
+| :--------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `previous` | Object | _(May be omitted)_ The previous entry for the same [node public key][], if there was already a reservation with the same node public key. This object is formatted as a **Peer Reservation Object**, as described below. |
 
 If there was not a previous entry for the same [node public key][], the `result` object is empty.
@@ -127,8 +140,6 @@ If there was not a previous entry for the same [node public key][], the `result`
 If the `previous` field is provided, it shows the previous status of this peer reservation, with the following fields:
 
 {% partial file="/docs/_snippets/peer_reservation_object.md" /%}
-
-
 
 ### Possible Errors
 

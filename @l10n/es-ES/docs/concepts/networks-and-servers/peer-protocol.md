@@ -2,11 +2,12 @@
 html: peer-protocol.html
 parent: networks-and-servers.html
 seo:
-    description: El protocolo de pares especifica el lenguaje en el que los servidores rippled hablan entre sí.
+  description: El protocolo de pares especifica el lenguaje en el que los servidores rippled hablan entre sí.
 labels:
   - Servidor principal
   - Blockchain
 ---
+
 # Protocolo de pares
 
 Los servidores en el XRP Ledger se comunican entre sí utilizando el protocolo de pares del XRP Ledger.
@@ -24,12 +25,11 @@ Para establecer una conexión peer-to-peer, un servidor se conecta a otro usando
 
 El XRP Ledger utiliza el protocolo del "chismorreo" para ayudar a servidores a encontrar otros servidores para conectarse en la red XRP Ledger. Cuando un servidor se inicia, se reconecta a cualquier otro par al que se haya conectado anteriormente. Como alternativa, utiliza los [hubs públicos hardcodeados](https://github.com/XRPLF/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). Después de que un servidor se conecte correctamente a un par, le pregunta a ese par por información de contacto (generalmente, dirección IP y puerto) de otros servidores XRP Ledger que también pueden estar buscando pares. El servidor puede conectarse entonces a esos servidores, y preguntarles por información de contacto de todavía más servidores a los que conectarse. A través de este proceso, el servior hace suficientes conexiones de pares para que pueda permanecer contectado con el resto de la red incluso si pierde la conexión con cualquier par en particular.
 
-Normalmente, un servidor necesita conectarse a un hub público solo una vez, durante un corto período de tiempo, para encontrar otros pares. Después de hacerlo, el servidor puede o no permanecer conectado al hub, dependiendo de la estabilidad de su conexión de red, de lo ocupado que esté el hub y de cuántos otros pares de alta calidad encuentre el servidor. El servidor guarda las direcciones de estos otros pares para poder intentar reconectarse directamente a esos pares más tarde, después de una interrupción en la red o un reinicio. 
+Normalmente, un servidor necesita conectarse a un hub público solo una vez, durante un corto período de tiempo, para encontrar otros pares. Después de hacerlo, el servidor puede o no permanecer conectado al hub, dependiendo de la estabilidad de su conexión de red, de lo ocupado que esté el hub y de cuántos otros pares de alta calidad encuentre el servidor. El servidor guarda las direcciones de estos otros pares para poder intentar reconectarse directamente a esos pares más tarde, después de una interrupción en la red o un reinicio.
 
 El [método peers][] muestra una lista de pares a los que tu servidor está actualmente conectado.
 
 Para ciertos servidores de alto valor (tan importantes como [validadores](rippled-server-modes.md#modos-de-servidor-rippled)) puedes preferir no conectarte a pares no confiables a través del proceso de descubrimiento de pares. En este caso, puedes configurar tu servidor para usar solo [pares privados](#pares-privados).
-
 
 ## Puerto del protocolo de pares
 
@@ -58,7 +58,6 @@ El par de claves de nodo se guarda en la base de datos y se reutiliza cuando el 
 
 El par de claves de nodo también identifican otros servidores para propositos de [clustering](clustering.md) o [reservar huecos de pares](#pares-fijos-y-reservas-de-pares). Si tienes un cluster de servidores, debes configurar cada servidor en el cluster con un valor único en el apartado `[node_seed]`. Para más información de cómo configurar un cluster, ver [Servidores `rippled` clusterizados](../../infrastructure/configuration/peering/cluster-rippled-servers.md).
 
-
 ## Pares fijos y reservas de pares
 
 Normalmente, un servidor `rippled` intenta mantener un número saludable de pares, y se conecta automáticamente a pares no confiables hasta un número máximo. Puedes configurar un servidor `rippled` para permanecer conectado a servidores de pares específicos de varias maneras:
@@ -71,10 +70,9 @@ En los siguientes casos, un servidor `rippled` no se conecta a pares no confiabl
 - Si el servidor es configurado como un [par privado](#pares-privados), se conecta _solo_ a sus pares fijos.
 - Si el servidor esta ejecutando en [modo solitario][] no se conecta a _ningún_ par.
 
-
 ## Pares privados
 
-Puedes configurar un servidor `rippled` para actuar como un servidor "privado" para mantener oculta su dirección IP del público  general. Esta puede ser una precaución útil contra ataques de denegación de servicio e intentos de intrusión en servidores `rippled` importantes como los validadores de confianza. Para participar en la red peer-to-peer, un servidor privado debe estar configurado para conectarse a al menos un servidor no privado, que transmita sus mensajes al resto de la red.
+Puedes configurar un servidor `rippled` para actuar como un servidor "privado" para mantener oculta su dirección IP del público general. Esta puede ser una precaución útil contra ataques de denegación de servicio e intentos de intrusión en servidores `rippled` importantes como los validadores de confianza. Para participar en la red peer-to-peer, un servidor privado debe estar configurado para conectarse a al menos un servidor no privado, que transmita sus mensajes al resto de la red.
 
 **Atención:** Si configuras un servidor privado sin ningún [par fijo](#pares-fijos-y-reservas-de-pares), el servidor no puede conectarse a la red, por lo que no puede conocer el estado de la red, transmitir transacciones o participar en el proceso de consenso.
 
@@ -84,9 +82,9 @@ Configurar un servidor como un servidor privado tiene varios efectos:
 - El servidor no acepta conexiones entrantes de otros servidores a menos que se haya configurado explícitamente para aceptar conexiones de esos servidores.
 - El servidor pide a sus pares directos no revelar su dirección IP a comunicaciones no confiables, incluyendo a la [respuesta de la API del peer crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md). Esto no afecta a las comunicaciones confiables como el [método peers admin][peers method].
 
-    Los servidores siempre piden a sus pares ocultar las direcciones IP de validadores, independientemente de la configuración del servidor privada. Esto ayuda a proteger validadores de ser sobrecargados por ataques de denegación de servicio.
+  Los servidores siempre piden a sus pares ocultar las direcciones IP de validadores, independientemente de la configuración del servidor privada. Esto ayuda a proteger validadores de ser sobrecargados por ataques de denegación de servicio.
 
-    **Atención:** Es posible modificar el código fuente de un servidor para que ignore esta petición y comparta las direcciones IP de sus pares inmediatos de todos modos. Debes configurar tu servidor privado para que se conecte solo a servidores que sepas que no están modificados de esta manera.
+  **Atención:** Es posible modificar el código fuente de un servidor para que ignore esta petición y comparta las direcciones IP de sus pares inmediatos de todos modos. Debes configurar tu servidor privado para que se conecte solo a servidores que sepas que no están modificados de esta manera.
 
 ### Pros y contras de las configuraciones de pares
 
@@ -97,7 +95,6 @@ Para ser parte del XRP Ledger, un servidor `rippled` debe estar conectado al res
 - Como un **servidor privado utilizando hubs públicos**. Esto es similar a utilizar proxies, pero depende de terceros específicos.
 
 Los pros y contras de cada configuración son los siguientes:
-
 
 <table>
 <thead><tr>
@@ -148,27 +145,26 @@ Los pros y contras de cada configuración son los siguientes:
 
 Para configurar tu servidor como un servidor privado, establece la opción `[peer_private]` a `1` en el fichero de configuración. Para intrudciones más detalladas, ver [Configurar un servidor privado](../../infrastructure/configuration/peering/configure-a-private-server.md).
 
-
 ## Ver también
 
 - **Conceptos:**
-    - [Consenso](../consensus-protocol/index.md)
-    - [Redes paralelas](parallel-networks.md)
+  - [Consenso](../consensus-protocol/index.md)
+  - [Redes paralelas](parallel-networks.md)
 - **Tutoriales:**
-    - [Cluster de servidores rippled](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
-    - [Configurar un servidor privado](../../infrastructure/configuration/peering/configure-a-private-server.md)
-    - [Configurar el Peer Crawler](../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
-    - [Redireccionar puertos para pares](../../infrastructure/configuration/peering/forward-ports-for-peering.md)
-    - [Conectarse manualmente a un par específico](../../infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md)
-    - [Establecer número máximo de pares](../../infrastructure/configuration/peering/set-max-number-of-peers.md)
-    - [Utilizar la reserva de pares](../../infrastructure/configuration/peering/use-a-peer-reservation.md)
+  - [Cluster de servidores rippled](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
+  - [Configurar un servidor privado](../../infrastructure/configuration/peering/configure-a-private-server.md)
+  - [Configurar el Peer Crawler](../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
+  - [Redireccionar puertos para pares](../../infrastructure/configuration/peering/forward-ports-for-peering.md)
+  - [Conectarse manualmente a un par específico](../../infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md)
+  - [Establecer número máximo de pares](../../infrastructure/configuration/peering/set-max-number-of-peers.md)
+  - [Utilizar la reserva de pares](../../infrastructure/configuration/peering/use-a-peer-reservation.md)
 - **Referencias:**
-    - [método peers][]
-    - [método peer_reservations_add][]
-    - [método peer_reservations_del][]
-    - [método peer_reservations_list][]
-    - [método connect][]
-    - [método fetch_info][]
-    - [Peer Crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
+  - [método peers][]
+  - [método peer_reservations_add][]
+  - [método peer_reservations_del][]
+  - [método peer_reservations_list][]
+  - [método connect][]
+  - [método fetch_info][]
+  - [Peer Crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

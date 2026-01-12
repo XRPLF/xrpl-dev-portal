@@ -2,10 +2,11 @@
 html: nft-collections.html
 parent: non-fungible-tokens.html
 seo:
-    description: NFTのTaxonフィールドを使用して、NFTをコレクションとしてミントすることができます。
+  description: NFTのTaxonフィールドを使用して、NFTをコレクションとしてミントすることができます。
 labels:
- - 非代替性トークン, NFT
+  - 非代替性トークン, NFT
 ---
+
 # NFTのコレクション化
 
 `NFTokenTaxon`フィールドを使用すると、NFTをコレクションにグループ化することができます。ミント担当者は、`0x0`から`0xFFFFFFF`までの任意の数値を選択し、NFTを作成する際にそれを割り当てることができます。Taxon(分類群)の定義付けは完全に自由です。

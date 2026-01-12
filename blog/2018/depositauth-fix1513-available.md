@@ -1,19 +1,20 @@
 ---
-date: "2018-04-09"
+date: '2018-04-09'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # The DepositAuth & fix1513 Amendments are Now Available
 
 The DepositAuth & fix1513 Amendments became available on the XRP Ledger in ledger sequence number 37,753,345 [(2018-04-06T01:44:42Z)](https://xrpcharts.ripple.com/#/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25).
 
-* The DepositAuth Amendment lets an account strictly reject any incoming money from transactions sent by other accounts.
-* The fix1513 Amendment fixes an issue where calculation switchovers were not implemented in the fee escalation queue.
+- The DepositAuth Amendment lets an account strictly reject any incoming money from transactions sent by other accounts.
+- The fix1513 Amendment fixes an issue where calculation switchovers were not implemented in the fee escalation queue.
 
 ## Action Required
 
@@ -23,11 +24,11 @@ The DepositAuth & fix1513 Amendments became available on the XRP Ledger in ledge
 
 **If you operate a `rippled` server older than version 0.90.0**, your server is amendment blocked. A server that is amendment blocked:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If you are using `rippled` version 0.90.0, your server is not amendment blocked but you should upgrade to [`rippled` version **0.90.1**](/blog/2018/rippled-0.90.1.md) or higher to get important security fixes. `rippled` version 0.90.0 may stop or restart unexpectedly.
 

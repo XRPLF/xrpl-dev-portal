@@ -2,10 +2,11 @@
 html: amendments.html
 parent: networks-and-servers.html
 seo:
-    description: Amendmentはトランザクション処理の新しい機能やその他の変更を指します。バリデータはコンセンサスを通して連携し、XRP Ledgerにこれらのアップグレードを順序正しく適用します。
+  description: Amendmentはトランザクション処理の新しい機能やその他の変更を指します。バリデータはコンセンサスを通して連携し、XRP Ledgerにこれらのアップグレードを順序正しく適用します。
 labels:
   - ブロックチェーン
 ---
+
 # Amendment
 
 Amendmentは、トランザクション処理における新機能またはその他の変更を表します。
@@ -29,14 +30,13 @@ Amendmentのコードがソフトウェアリリースに組み込まれた後�
 1. **フラグレジャー -1:** `rippled`バリデータが検証メッセージを送信するとき、彼らは自身でAmendmentへの投票も送信します。
 2. **フラグレジャー:** サーバは、信頼できるバリデータからの投票を処理します。
 3. **フラグレジャー +1:** サーバは`EnableAmendment`疑似トランザクションを挿入し、発生したと思われることに基づいてフラグを立てます。
-    * `tfGotMajority`フラグは、そのAmendmentが80%超の支持を得ていることを意味します。
-    * `tfLostMajority`フラグはAmendmentへの支持が80%以下になったことを意味します。
-    * フラグなしは、Amendmentが有効であることを意味します。
+   - `tfGotMajority`フラグは、そのAmendmentが80%超の支持を得ていることを意味します。
+   - `tfLostMajority`フラグはAmendmentへの支持が80%以下になったことを意味します。
+   - フラグなしは、Amendmentが有効であることを意味します。
 
-    {% admonition type="info" name="注記" %}Amendmentが有効化されるために必要な2週間の期間に達したのと同一のレジャーで、80%の支持を失う可能性があります。このような場合、両方のシナリオで `EnableAmendment`擬似トランザクションが追加されますが、最終的にそのAmendmentは有効になります。{% /admonition %}
+   {% admonition type="info" name="注記" %}Amendmentが有効化されるために必要な2週間の期間に達したのと同一のレジャーで、80%の支持を失う可能性があります。このような場合、両方のシナリオで `EnableAmendment`擬似トランザクションが追加されますが、最終的にそのAmendmentは有効になります。{% /admonition %}
 
 4. **フラグレジャー +2:** Amendmentが有効になった場合、このレジャー以降のトランザクションに適用されます。
-
 
 ## Amendment投票
 
@@ -48,23 +48,23 @@ Amendmentが有効になるには、信頼できるバリデータの80%超か�
 
 有効化されずにソースコードが削除されたAmendmentは、ネットワークによって**撤回**されたとみなされます。
 
-
 ### Amendmentブロックされたサーバ
+
 <a id="amendment-blocked"></a>
 
 AmendmentブロックはXRP Ledgerデータの正確性を守るためのセキュリティ機能です。Amendmentが有効になると、Amendmentのソースコードなしで以前のバージョンの`rippled`を実行しているサーバは、ネットワークのルールを認識できなくなります。レジャーデータを推測して誤って解釈するのではなく、これらのサーバは**Amendmentブロック**された状態になります。Amendmentブロック状態のサーバは次のことが行えません。
 
-* レジャーのバリデータの判断
-* トランザクションの送信または処理
-* 合意プロセスへの参加
-* Amendmentへの投票
+- レジャーのバリデータの判断
+- トランザクションの送信または処理
+- 合意プロセスへの参加
+- Amendmentへの投票
 
 `rippled`サーバの投票設定は、そのサーバがAmendmentブロックされることに影響を与えません。`rippled`サーバは常に他のネットワークで有効になっているAmendmentに従うので、ブロックは単にルールの変更を認識するコードを持っているかどうかに基づいています。つまり、異なるAmendmentが有効になっている並列ネットワークにサーバを接続した場合も、Amendmentブロックされる可能性があるということです。例えば、XRP Ledgerの開発ネットでは通常、実験的なAmendmentが有効になっています。最新のプロダクションリリースのコードを使用している場合、あなたのサーバには実験的なAmendmentのコードが存在しない可能性が高いです。
 
 最新バージョンの`rippled`にアップグレードすることで、Amendmentブロックされたサーバのブロックを解除することができます。
 
-
 ### AmendmentブロックされたClioサーバ
+
 <a id="amendment-blocked-clio-servers"></a>
 
 Clioサーバが台帳データのロード中に未知のフィールドに遭遇した場合、Amendmentブロックが発生することがあります。これは、Clioのビルド時に使用された`libxrpl`の依存ファイルにそれらのフィールドが存在しない場合に発生します。Amendmentブロックを解除するには、互換性のある`libxrpl`でビルドされた新しいClioリリースにアップグレードしてください。
@@ -75,16 +75,15 @@ Amendmentを有効にすると、修正前の動作のソースコードは`ripp
 
 [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussions/19)では、古いレジャーと関連する以前のレジャーのコードを破棄するプロセスを定義しています。メインネット上でAmendmentが2年間有効である場合、古いコードは削除することができます。Amendmentは自動的にコアプロトコルの一部となり、その後は追跡されず、Amendmentとして扱われず、Amendment前のコードはすべて削除されます。
 
-
 ## 関連項目
 
 - **コンセプト:**
-    - [コンセンサスについて](../consensus-protocol/index.md)
+  - [コンセンサスについて](../consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてrippledを実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
-    - [Amendment投票機能の設定](../../infrastructure/configuration/configure-amendment-voting.md)
-    - [XRP Ledgerのコードへの貢献](/resources/contribute-code/index.md)
+  - [バリデータとしてrippledを実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+  - [Amendment投票機能の設定](../../infrastructure/configuration/configure-amendment-voting.md)
+  - [XRP Ledgerのコードへの貢献](/resources/contribute-code/index.md)
 - **リファレンス:**
-    - [既知のAmendment](/resources/known-amendments.md)
+  - [既知のAmendment](/resources/known-amendments.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

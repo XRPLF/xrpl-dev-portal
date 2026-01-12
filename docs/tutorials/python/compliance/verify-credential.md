@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Verify that an account holds a valid credential on the XRP Ledger.
+  description: Verify that an account holds a valid credential on the XRP Ledger.
 labels:
-    - Credentials
+  - Credentials
 ---
+
 # Verify Credentials in Python
 
 This tutorial describes how to verify that an account holds a valid [credential](/docs/concepts/decentralized-storage/credentials) on the XRP Ledger, which has different use cases depending on the type of credential and the meaning behind it. A few possible reasons to verify a credential include:
@@ -19,7 +20,7 @@ This tutorial uses sample code in Python using the [xrpl-py library](../index.md
 - You must have Python installed and know how to run Python code from the command line. Python 3.8 or later is required for xrpl-py.
 - You should have a basic understanding of the XRP Ledger.
 - The credential you want to verify should exist in the ledger already, and you should know the addresses of both the issuer and the holder, as well as the official credential type you want to check.
-     - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md).
+  - For sample code showing how to create credentials, see [Build a Credential Issuing Service](../build-apps/credential-issuing-service.md).
 
 ## Setup
 
@@ -91,6 +92,7 @@ The following examples show other possible scenarios. The data for these example
 
 {% tabs %}
 {% tab label="Valid with Expiration" %}
+
 ```text
 $ ./verify_credential.py rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S long_lasting_credential
 
@@ -104,9 +106,11 @@ Looking up validated ledger to check for expiration.
 Most recent validated ledger is: 2025-03-11T20:01:51+00:00
 Credential is valid.
 ```
+
 {% /tab %}
 
 {% tab label="Expired" %}
+
 ```text
 $ ./verify_credential.py rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S expiring_credential
 
@@ -120,9 +124,11 @@ Looking up validated ledger to check for expiration.
 Most recent validated ledger is: 2025-03-11T20:02:03+00:00
 Credential is expired.
 ```
+
 {% /tab %}
 
 {% tab label="Unaccepted" %}
+
 ```text
 $ ./verify_credential.py rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S unaccepted_credential
 
@@ -133,8 +139,10 @@ Found credential:
 {'CredentialType': '756E61636365707465645F63726564656E7469616C', 'Flags': 0, 'Issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'IssuerNode': '0', 'LedgerEntryType': 'Credential', 'PreviousTxnID': '59DB4B17E5552AB1CA1E2A89F5C03E51C2ACD0D293955FA701AE4A1801E94C96', 'PreviousTxnLgrSeq': 997107, 'Subject': 'rs9DtpwyCSGMCyxiYEvVG29ZXo99iFjZ9S', 'SubjectNode': '0', 'index': '8E5AD9444D566BE5C6F87C94D696139CEEE43ACB9A96137A59C003B48DF565C6'}
 Credential is not accepted.
 ```
+
 {% /tab %}
 {% tab label="Hexadecimal Credential Type" %}
+
 ```text
 $ ./verify_credential.py rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS rsYhHbanGpnYe3M6bsaMeJT5jnLTfDEzoA 6D795F63726564656E7469616C -b
 
@@ -144,16 +152,16 @@ Found credential:
 {'CredentialType': '6D795F63726564656E7469616C', 'Flags': 65536, 'Issuer': 'rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS', 'IssuerNode': '0', 'LedgerEntryType': 'Credential', 'PreviousTxnID': '7D1257779E2D298C07C7E0C73CD446534B143FBD1F13DB268A878E40FD153B9A', 'PreviousTxnLgrSeq': 803275, 'Subject': 'rsYhHbanGpnYe3M6bsaMeJT5jnLTfDEzoA', 'SubjectNode': '0', 'index': '9603F0E204A8B1C61823625682EB0ECE98A4ECF22FF46CD4845FA9BFA3606B24'}
 Credential is valid.
 ```
+
 {% /tab %}
 {% /tabs %}
-
 
 ## Code Walkthrough
 
 ### 1. Initial setup
 
-The `verify_credential.py` file implements the code for this tutorial. 
-This file can be run as a commandline tool, so it starts with a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)). Then it imports dependencies, with standard lib first and then specific parts of the `xrpl-py` library:
+The `verify_credential.py` file implements the code for this tutorial.
+This file can be run as a commandline tool, so it starts with a [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>). Then it imports dependencies, with standard lib first and then specific parts of the `xrpl-py` library:
 
 {% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" before="# Set up logging" /%}
 

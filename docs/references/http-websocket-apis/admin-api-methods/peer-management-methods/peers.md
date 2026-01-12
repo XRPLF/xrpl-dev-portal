@@ -1,34 +1,41 @@
 ---
 seo:
-    description: Get information about the peer servers connected.
+  description: Get information about the peer servers connected.
 labels:
-    - Core Server
+  - Core Server
 ---
+
 # peers
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Peers.cpp "Source")
 
 The `peers` command returns a list of all other `rippled` servers currently connected to this one over the [Peer Protocol](../../../../concepts/networks-and-servers/peer-protocol.md), including information on their connection and sync status.
 
-*The `peers` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
+_The `peers` method is an [admin method](../index.md) that cannot be run by unprivileged users!_
 
 ### Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": 2,
-    "command": "peers"
+  "id": 2,
+  "command": "peers"
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```
 rippled peers
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -42,6 +49,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "peers_example",
@@ -176,101 +184,104 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-  "result" : {
-    "cluster" : {},
-    "peers" : [
-        {
-          "address" : "50.22.123.222:51235",
-          "complete_ledgers" : "32570 - 51815097",
-          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-          "load" : 7,
-          "metrics" : {
-              "avg_bps_recv" : "1152",
-              "avg_bps_sent" : "332",
-              "total_bytes_recv" : "96601",
-              "total_bytes_sent" : "45322"
-          },
-          "public_key" : "n9LbkoB9ReSbaA9SGL317fm6CvjLcFG8hGoierLYfwiCDsEXHcP3",
-          "uptime" : 1,
-          "version" : "rippled-1.3.1"
+  "result": {
+    "cluster": {},
+    "peers": [
+      {
+        "address": "50.22.123.222:51235",
+        "complete_ledgers": "32570 - 51815097",
+        "ledger": "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+        "load": 7,
+        "metrics": {
+          "avg_bps_recv": "1152",
+          "avg_bps_sent": "332",
+          "total_bytes_recv": "96601",
+          "total_bytes_sent": "45322"
         },
-        {
-          "address" : "212.83.147.67:51235",
-          "complete_ledgers" : "51815014 - 51815040",
-          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-          "load" : 1,
-          "metrics" : {
-              "avg_bps_recv" : "0",
-              "avg_bps_sent" : "1490",
-              "total_bytes_recv" : "18348",
-              "total_bytes_sent" : "46013"
-          },
-          "public_key" : "n94s5V53w1g4HdEdHdUU1FVrqHTVDbcb7bt44ib9JcM3c281LoDr",
-          "sanity" : "unknown",
-          "uptime" : 2,
-          "version" : "rippled-1.3.1"
+        "public_key": "n9LbkoB9ReSbaA9SGL317fm6CvjLcFG8hGoierLYfwiCDsEXHcP3",
+        "uptime": 1,
+        "version": "rippled-1.3.1"
+      },
+      {
+        "address": "212.83.147.67:51235",
+        "complete_ledgers": "51815014 - 51815040",
+        "ledger": "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+        "load": 1,
+        "metrics": {
+          "avg_bps_recv": "0",
+          "avg_bps_sent": "1490",
+          "total_bytes_recv": "18348",
+          "total_bytes_sent": "46013"
         },
-        {
-          "address" : "158.69.24.50:51235",
-          "complete_ledgers" : "51478098 - 51815098",
-          "ledger" : "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
-          "load" : 55,
-          "metrics" : {
-              "avg_bps_recv" : "88080",
-              "avg_bps_sent" : "2703",
-              "total_bytes_recv" : "2786780",
-              "total_bytes_sent" : "89368"
-          },
-          "public_key" : "n9KfEhmmdxmjJdpbpRHGJ9ezoNzdyUepA11cT71jmq1fMDsZAcSh",
-          "uptime" : 3,
-          "version" : "rippled-1.3.1"
+        "public_key": "n94s5V53w1g4HdEdHdUU1FVrqHTVDbcb7bt44ib9JcM3c281LoDr",
+        "sanity": "unknown",
+        "uptime": 2,
+        "version": "rippled-1.3.1"
+      },
+      {
+        "address": "158.69.24.50:51235",
+        "complete_ledgers": "51478098 - 51815098",
+        "ledger": "223DB74FE021AB1A4AA9E1CC588E0DBCC3FC7C080B93C01C30C246D89F951EA2",
+        "load": 55,
+        "metrics": {
+          "avg_bps_recv": "88080",
+          "avg_bps_sent": "2703",
+          "total_bytes_recv": "2786780",
+          "total_bytes_sent": "89368"
         },
-        {
-          "address" : "[::ffff:174.64.99.193]:51235",
-          "complete_ledgers" : "51813091 - 51815091",
-          "latency" : 16000,
-          "ledger" : "CF72319DC762355C92BDD29E4CE066CEB03FF2A077A511D586B9FD7B74F55D94",
-          "load" : 325,
-          "metrics" : {
-              "avg_bps_recv" : "19012",
-              "avg_bps_sent" : "52053",
-              "total_bytes_recv" : "586809",
-              "total_bytes_sent" : "1678192"
-          },
-          "public_key" : "n9MH4Xu8FYPPoUFs679NQp7F6epFznM7x6bF4sAJWQvKkPBUHgd3",
-          "uptime" : 26,
-          "version" : "rippled-1.4.0-b8"
+        "public_key": "n9KfEhmmdxmjJdpbpRHGJ9ezoNzdyUepA11cT71jmq1fMDsZAcSh",
+        "uptime": 3,
+        "version": "rippled-1.3.1"
+      },
+      {
+        "address": "[::ffff:174.64.99.193]:51235",
+        "complete_ledgers": "51813091 - 51815091",
+        "latency": 16000,
+        "ledger": "CF72319DC762355C92BDD29E4CE066CEB03FF2A077A511D586B9FD7B74F55D94",
+        "load": 325,
+        "metrics": {
+          "avg_bps_recv": "19012",
+          "avg_bps_sent": "52053",
+          "total_bytes_recv": "586809",
+          "total_bytes_sent": "1678192"
         },
-        {
-          "address" : "[::ffff:94.237.45.66]:51235",
-          "complete_ledgers" : "51814966 - 51815093",
-          "latency" : 8773,
-          "ledger" : "61CF015A709122917B001367EE81E5E0D56E485A0BCAB53785A1CB830E0F9589",
-          "load" : 3522,
-          "metrics" : {
-              "avg_bps_recv" : "368875",
-              "avg_bps_sent" : "59308",
-              "total_bytes_recv" : "11558753",
-              "total_bytes_sent" : "2257872"
-          },
-          "public_key" : "n9Lg83FYh8YDivG9TcgXhq5Y3PwunmRqVfvibd19Ko9uu3DtqLBM",
-          "uptime" : 37,
-          "version" : "rippled-1.3.1"
-        }
+        "public_key": "n9MH4Xu8FYPPoUFs679NQp7F6epFznM7x6bF4sAJWQvKkPBUHgd3",
+        "uptime": 26,
+        "version": "rippled-1.4.0-b8"
+      },
+      {
+        "address": "[::ffff:94.237.45.66]:51235",
+        "complete_ledgers": "51814966 - 51815093",
+        "latency": 8773,
+        "ledger": "61CF015A709122917B001367EE81E5E0D56E485A0BCAB53785A1CB830E0F9589",
+        "load": 3522,
+        "metrics": {
+          "avg_bps_recv": "368875",
+          "avg_bps_sent": "59308",
+          "total_bytes_recv": "11558753",
+          "total_bytes_sent": "2257872"
+        },
+        "public_key": "n9Lg83FYh8YDivG9TcgXhq5Y3PwunmRqVfvibd19Ko9uu3DtqLBM",
+        "uptime": 37,
+        "version": "rippled-1.3.1"
+      }
     ],
-    "status" : "success"
+    "status": "success"
   }
 }
-
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -362,53 +373,54 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing a JSON object with the following fields:
 
-| `Field`   | Type   | Description                                             |
-|:----------|:-------|:--------------------------------------------------------|
+| `Field`   | Type   | Description                                                                                                                                    |
+| :-------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](../../../../concepts/networks-and-servers/clustering.md). |
-| `peers`   | Array  | Array of peer objects.                                  |
+| `peers`   | Array  | Array of peer objects.                                                                                                                         |
 
 Each field of the `cluster` object is the public key of that `rippled` server's identifying key pair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
 
-| `Field` | Type   | Description                                               |
-|:--------|:-------|:----------------------------------------------------------|
-| `tag`   | String | The display name for this cluster member as defined in the config file. |
+| `Field` | Type   | Description                                                                                                                                             |
+| :------ | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tag`   | String | The display name for this cluster member as defined in the config file.                                                                                 |
 | `fee`   | Number | _(May be omitted)_ The load multiplier this cluster member is applying to the [transaction cost](../../../../concepts/transactions/transaction-cost.md) |
-| `age`   | Number | The number of seconds since the last cluster report from this cluster member. |
+| `age`   | Number | The number of seconds since the last cluster report from this cluster member.                                                                           |
 
 Each member of the `peers` array is a peer object with the following fields:
 
-| `Field`            | Type    | Description                                   |
-|:-------------------|:--------|:----------------------------------------------|
-| `address`          | String  | The IP address and port where this peer is connected |
-| `cluster`          | Boolean | _(May be omitted)_ If `true`, the current server and the peer server are part of the same `rippled` cluster. |
-| `name`             | String  | _(May be omitted)_ If the peer is part of the same cluster, this is the display name for that server as defined in the config file. |
-| `complete_ledgers` | String  | Range expression indicating the [ledger indexes][ledger index] of the ledger versions the peer `rippled` server has available |
-| `inbound`          | Boolean | _(May be omitted)_ If `true`, the peer is connecting to the local server. |
-| `latency`          | Number  | The network latency to the peer (in milliseconds) |
-| `ledger`           | String  | The identifying [hash][Hash] of the peer's most recently closed ledger |
-| `load`             | Number  | A measure of the amount of load the peer server is putting on the local server. Larger numbers indicate more load. (The units by which load is measured are not formally defined.) |
-| `protocol`         | String  | _(May be omitted)_ The protocol version that the peer is using, if not the same as the local server. |
-| `metrics`          | Object  | Details on the amount of data sent to and received from this peer. See the description of the `metrics` object below for details. |
-| `public_key`       | String  | _(May be omitted)_ A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
+| `Field`            | Type    | Description                                                                                                                                                                                                                                                                                                                                                                                      |
+| :----------------- | :------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `address`          | String  | The IP address and port where this peer is connected                                                                                                                                                                                                                                                                                                                                             |
+| `cluster`          | Boolean | _(May be omitted)_ If `true`, the current server and the peer server are part of the same `rippled` cluster.                                                                                                                                                                                                                                                                                     |
+| `name`             | String  | _(May be omitted)_ If the peer is part of the same cluster, this is the display name for that server as defined in the config file.                                                                                                                                                                                                                                                              |
+| `complete_ledgers` | String  | Range expression indicating the [ledger indexes][ledger index] of the ledger versions the peer `rippled` server has available                                                                                                                                                                                                                                                                    |
+| `inbound`          | Boolean | _(May be omitted)_ If `true`, the peer is connecting to the local server.                                                                                                                                                                                                                                                                                                                        |
+| `latency`          | Number  | The network latency to the peer (in milliseconds)                                                                                                                                                                                                                                                                                                                                                |
+| `ledger`           | String  | The identifying [hash][Hash] of the peer's most recently closed ledger                                                                                                                                                                                                                                                                                                                           |
+| `load`             | Number  | A measure of the amount of load the peer server is putting on the local server. Larger numbers indicate more load. (The units by which load is measured are not formally defined.)                                                                                                                                                                                                               |
+| `protocol`         | String  | _(May be omitted)_ The protocol version that the peer is using, if not the same as the local server.                                                                                                                                                                                                                                                                                             |
+| `metrics`          | Object  | Details on the amount of data sent to and received from this peer. See the description of the `metrics` object below for details.                                                                                                                                                                                                                                                                |
+| `public_key`       | String  | _(May be omitted)_ A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format.                                                                                                                                                                                                          |
 | `sanity`           | String  | _(May be omitted)_ Whether this peer is following the same rules and ledger history as the current server. A value of `insane` probably indicates that the peer is part of a [parallel network](../../../../concepts/networks-and-servers/parallel-networks.md). The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
-| `status`           | String  | _(May be omitted)_ The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
-| `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. |
-| `version`          | string  | _(May be omitted)_ The `rippled` version number of the peer server |
+| `status`           | String  | _(May be omitted)_ The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`.                                                                                                                                                                                                                                                  |
+| `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer.                                                                                                                                                                                                                                                                                                   |
+| `version`          | string  | _(May be omitted)_ The `rippled` version number of the peer server                                                                                                                                                                                                                                                                                                                               |
 
 The `metrics` object contains the following fields:
 
-| `Field`            | Type    | Description                                   |
-|:-------------------|:--------|:----------------------------------------------|
-| `avg_bps_recv`     | String  | The average bytes per second of data received from this peer. |
-| `avg_bps_sent`     | String  | The average bytes per second of data sent to this peer. |
-| `total_bytes_recv` | String  | The total number of bytes of data received from this peer. |
-| `total_bytes_sent` | String  | The total number of bytes of data sent to this peer. |
+| `Field`            | Type   | Description                                                   |
+| :----------------- | :----- | :------------------------------------------------------------ |
+| `avg_bps_recv`     | String | The average bytes per second of data received from this peer. |
+| `avg_bps_sent`     | String | The average bytes per second of data sent to this peer.       |
+| `total_bytes_recv` | String | The total number of bytes of data received from this peer.    |
+| `total_bytes_sent` | String | The total number of bytes of data sent to this peer.          |
 
 {% admonition type="info" name="Note" %}All of the fields in the `metrics` object are 64-bit unsigned integers serialized to string format so that they do not lose precision in JSON encoding/decoding.{% /admonition %}
 

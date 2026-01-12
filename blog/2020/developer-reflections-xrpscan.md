@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-05-02"
+date: '2020-05-02'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: XRPScan
 
 This week on Developer Reflections, we’re proud to highlight [XRPScan](https://xrpscan.com/), one of the most popular blockchain explorers for XRP, used by over 50+ exchanges globally, including Coinbase, Bitfinex, Bitkub, and Bitpay, among others, to look up XRP Ledger account information and show Proof-of-Transaction to their users.

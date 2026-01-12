@@ -1,4 +1,4 @@
-import { Client, Payment } from 'xrpl';
+import { Client, Payment } from 'xrpl'
 
 /**
  * When implementing Reliable Transaction Submission, there are many potential solutions, each with different trade-offs.
@@ -37,45 +37,45 @@ import { Client, Payment } from 'xrpl';
  *     and cannot "succeed" in an unexpected way.
  */
 
-const client = new Client("wss://s.altnet.rippletest.net:51233");
+const client = new Client('wss://s.altnet.rippletest.net:51233')
 
-void sendReliableTx();
+void sendReliableTx()
 
 async function sendReliableTx(): Promise<void> {
-  await client.connect();
+  await client.connect()
 
   // creating wallets as prerequisite
-  const { wallet: wallet1 } = await client.fundWallet();
-  const { wallet: wallet2 } = await client.fundWallet();
+  const { wallet: wallet1 } = await client.fundWallet()
+  const { wallet: wallet2 } = await client.fundWallet()
 
-  console.log("Balances of wallets before Payment tx");
+  console.log('Balances of wallets before Payment tx')
 
-  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`);
-  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`);
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`)
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`)
 
   // create a Payment tx and submit and wait for tx to be validated
   const payment: Payment = {
-    TransactionType: "Payment",
+    TransactionType: 'Payment',
     Account: wallet1.classicAddress,
-    Amount: "1000",
+    Amount: '1000',
     Destination: wallet2.classicAddress,
-  };
+  }
 
-  console.log("Submitting a Payment transaction...")
+  console.log('Submitting a Payment transaction...')
   const paymentResponse = await client.submitAndWait(payment, {
     wallet: wallet1,
-  });
-  console.log("\nTransaction was submitted.\n");
+  })
+  console.log('\nTransaction was submitted.\n')
   const txResponse = await client.request({
-    command: "tx",
+    command: 'tx',
     transaction: paymentResponse.result.hash,
-  });
+  })
   // With the following reponse we are able to see that the tx was indeed validated.
-  console.log("Validated:", txResponse.result.validated);
+  console.log('Validated:', txResponse.result.validated)
 
-  console.log("Balances of wallets after Payment tx:");
-  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`);
-  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`);
+  console.log('Balances of wallets after Payment tx:')
+  console.log(`Balance of ${wallet1.classicAddress} is ${await client.getXrpBalance(wallet1.classicAddress)}XRP`)
+  console.log(`Balance of ${wallet2.classicAddress} is ${await client.getXrpBalance(wallet2.classicAddress)}XRP`)
 
-  await client.disconnect();
+  await client.disconnect()
 }

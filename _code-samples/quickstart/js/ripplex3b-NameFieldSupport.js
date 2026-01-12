@@ -1,14 +1,14 @@
 // ******************************************************
 // ************* Get the Preferred Network **************
-// ******************************************************  
+// ******************************************************
 
 function getNet() {
   let net
-  if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233/"
-  if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233/"
+  if (document.getElementById('tn').checked) net = 'wss://s.altnet.rippletest.net:51233/'
+  if (document.getElementById('dn').checked) net = 'wss://s.devnet.rippletest.net:51233/'
   return net
 } // End of getNet()
-              
+
 // *******************************************************
 // ************* Get Account *****************************
 // *******************************************************
@@ -17,9 +17,9 @@ async function getAccount(type) {
   let net = getNet()
   const client = new xrpl.Client(net)
   results = 'Connecting to ' + net + '....'
-        
-// This uses the default faucet for Testnet/Devnet
-// let faucetHost = 'batch.faucet.nerdnest.xyz'
+
+  // This uses the default faucet for Testnet/Devnet
+  // let faucetHost = 'batch.faucet.nerdnest.xyz'
   let faucetHost = null
 
   if (type == 'standby') {
@@ -28,7 +28,7 @@ async function getAccount(type) {
     operationalResultField.value = results
   }
   await client.connect()
-        
+
   results += '\nConnected, funding wallet.'
   if (type == 'standby') {
     standbyResultField.value = results
@@ -36,41 +36,39 @@ async function getAccount(type) {
     operationalResultField.value = results
   }
 
-// -----------------------------------Create and fund a test account wallet
-  const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
-        
+  // -----------------------------------Create and fund a test account wallet
+  const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
+
   results += '\nGot a wallet.'
   if (type == 'standby') {
     standbyResultField.value = results
   } else {
     operationalResultField.value = results
-  }       
-      
-// ------------------------------------------------------Get the current balance.
- // const my_balance = (await client.getXrpBalance(my_wallet.address))  
-        
+  }
+
+  // ------------------------------------------------------Get the current balance.
+  // const my_balance = (await client.getXrpBalance(my_wallet.address))
+
   if (type == 'standby') {
     standbyAccountField.value = my_wallet.address
-    standbyBalanceField.value = (await client.getXrpBalance(my_wallet.address))
+    standbyBalanceField.value = await client.getXrpBalance(my_wallet.address)
     standbySeedField.value = my_wallet.seed
     results += '\nAccount created named ' + standbyNameField.value + '.'
     standbyResultField.value = results
   } else {
     operationalAccountField.value = my_wallet.address
     operationalSeedField.value = my_wallet.seed
-    operationalBalanceField.value = (await client.getXrpBalance(my_wallet.address))
-    results += '\nAccount created named ' +  operationalNameField.value + '.'
+    operationalBalanceField.value = await client.getXrpBalance(my_wallet.address)
+    results += '\nAccount created named ' + operationalNameField.value + '.'
     operationalResultField.value = results
   }
-// --------------- Capture the seeds for both accounts for ease of reload.
-  seeds.value = standbySeedField.value + "." + standbyNameField.value + '\n' + 
-                operationalSeedField.value + "." + operationalNameField.value
+  // --------------- Capture the seeds for both accounts for ease of reload.
+  seeds.value = standbySeedField.value + '.' + standbyNameField.value + '\n' + operationalSeedField.value + '.' + operationalNameField.value
   client.disconnect()
 } // End of getAccount()
 
-
 // *******************************************************
-// ********** Get Accounts from Seeds ******************** 
+// ********** Get Accounts from Seeds ********************
 // *******************************************************
 
 async function getAccountsFromSeeds() {
@@ -95,113 +93,108 @@ async function getAccountsFromSeeds() {
 
   const standby_wallet = xrpl.Wallet.fromSeed(first_seed)
   const operational_wallet = xrpl.Wallet.fromSeed(second_seed)
-        
-// ----------------------Populate the fields for Standby and Operational accounts.
+
+  // ----------------------Populate the fields for Standby and Operational accounts.
   standbyAccountField.value = standby_wallet.address
   standbyNameField.value = first_name
   standbySeedField.value = first_seed
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-     
+  standbyBalanceField.value = await client.getXrpBalance(standby_wallet.address)
+
   operationalAccountField.value = operational_wallet.address
   operationalNameField.value = second_name
   operationalSeedField.value = second_seed
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))  
+  operationalBalanceField.value = await client.getXrpBalance(operational_wallet.address)
   client.disconnect()
-            
 } // End of getAccountsFromSeeds()
 
 // *******************************************************
 // ******************** Send XRP *************************
 // *******************************************************
 
-async function sendXRP() {    
-  results  = "Connecting to the selected ledger.\n"
+async function sendXRP() {
+  results = 'Connecting to the selected ledger.\n'
   standbyResultField.value = results
   let net = getNet()
   results = 'Connecting to ' + getNet() + '....'
   const client = new xrpl.Client(net)
   await client.connect()
-      
-  results  += "\nConnected. Sending XRP.\n"
+
+  results += '\nConnected. Sending XRP.\n'
   standbyResultField.value = results
-      
+
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const sendAmount = standbyAmountField.value
-        
-  results += "\nstandby_wallet.address: = " + standby_wallet.address
-  standbyResultField.value = results
-      
-// -------------------------------------------------------- Prepare transaction
-  const prepared = await client.autofill({
-    "TransactionType": "Payment",
-    "Account": standby_wallet.address,
-    "DeliverMax": xrpl.xrpToDrops(sendAmount),
-    "Destination": standbyDestinationField.value
-  })
-      
-// ------------------------------------------------- Sign prepared instructions
-  const signed = standby_wallet.sign(prepared)
-  
-// -------------------------------------------------------- Submit signed blob
-  const tx = await client.submitAndWait(signed.tx_blob)
-      
-  results  += "\nBalance changes: " + 
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+
+  results += '\nstandby_wallet.address: = ' + standby_wallet.address
   standbyResultField.value = results
 
-  standbyBalanceField.value =  (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))                 
-  client.disconnect()    
+  // -------------------------------------------------------- Prepare transaction
+  const prepared = await client.autofill({
+    TransactionType: 'Payment',
+    Account: standby_wallet.address,
+    DeliverMax: xrpl.xrpToDrops(sendAmount),
+    Destination: standbyDestinationField.value,
+  })
+
+  // ------------------------------------------------- Sign prepared instructions
+  const signed = standby_wallet.sign(prepared)
+
+  // -------------------------------------------------------- Submit signed blob
+  const tx = await client.submitAndWait(signed.tx_blob)
+
+  results += '\nBalance changes: ' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+  standbyResultField.value = results
+
+  standbyBalanceField.value = await client.getXrpBalance(standby_wallet.address)
+  operationalBalanceField.value = await client.getXrpBalance(operational_wallet.address)
+  client.disconnect()
 } // End of sendXRP()
-   
+
 // **********************************************************************
 // ****** Reciprocal Transactions ***************************************
 // **********************************************************************
-      
+
 // *******************************************************
 // ********* Send XRP from Operational account ***********
 // *******************************************************
-      
-async function oPsendXRP() {
 
-  results  = "Connecting to the selected ledger.\n"
+async function oPsendXRP() {
+  results = 'Connecting to the selected ledger.\n'
   operationalResultField.value = results
   let net = getNet()
   results = 'Connecting to ' + getNet() + '....'
   const client = new xrpl.Client(net)
   await client.connect()
-      
-  results  += "\nConnected. Sending XRP.\n"
+
+  results += '\nConnected. Sending XRP.\n'
   operationalResultField.value = results
-      
+
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
   const sendAmount = operationalAmountField.value
-        
-  results += "\noperational_wallet.address: = " + operational_wallet.address
+
+  results += '\noperational_wallet.address: = ' + operational_wallet.address
   operationalResultField.value = results
-      
-// ---------------------------------------------------------- Prepare transaction
+
+  // ---------------------------------------------------------- Prepare transaction
   const prepared = await client.autofill({
-    "TransactionType": "Payment",
-    "Account": operational_wallet.address,
-    "DeliverMax": xrpl.xrpToDrops(sendAmount),
-    "Destination": operationalDestinationField.value
+    TransactionType: 'Payment',
+    Account: operational_wallet.address,
+    DeliverMax: xrpl.xrpToDrops(sendAmount),
+    Destination: operationalDestinationField.value,
   })
 
-// ---------------------------------------------------- Sign prepared instructions
+  // ---------------------------------------------------- Sign prepared instructions
   const signed = operational_wallet.sign(prepared)
 
-// ------------------------------------------------------------ Submit signed blob
+  // ------------------------------------------------------------ Submit signed blob
   const tx = await client.submitAndWait(signed.tx_blob)
-      
-  results  += "\nBalance changes: " +
-    JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+
+  results += '\nBalance changes: ' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
   operationalResultField.value = results
-  standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-  operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))                 
-      
+  standbyBalanceField.value = await client.getXrpBalance(standby_wallet.address)
+  operationalBalanceField.value = await client.getXrpBalance(operational_wallet.address)
+
   client.disconnect()
-      
 } // End of oPsendXRP()

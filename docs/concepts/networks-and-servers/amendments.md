@@ -2,13 +2,14 @@
 html: amendments.html
 parent: networks-and-servers.html
 seo:
-    description: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
+  description: Amendments represent new features or other changes to transaction processing. Validators coordinate through consensus to apply these upgrades to the XRP Ledger in an orderly fashion.
 labels:
   - Blockchain
 ---
+
 # Amendments
 
-Amendments represent new features or other changes to transaction processing. 
+Amendments represent new features or other changes to transaction processing.
 
 The amendment system uses the consensus process to approve any changes that affect transaction processing on the XRP Ledger. Fully-functional, transaction process changes are introduced as amendments; validators then vote on these changes. If an amendment receives more than 80% support for two weeks, the amendment passes and the change applies permanently to all subsequent ledger versions. Disabling a passed amendment requires a new amendment to do so.
 
@@ -29,14 +30,13 @@ Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have spe
 1. **Flag Ledger -1:** When `rippled` validators send validation messages, they also submit their amendment votes.
 2. **Flag Ledger:** Servers interpret the votes from trusted validators.
 3. **Flag Ledger +1:** Servers insert an `EnableAmendment` pseudo-transaction and flag based on what they think happened:
-    * The `tfGotMajority` flag means the amendment has more than 80% support.
-    * The `tfLostMajority` flag means support for the amendment has decreased to 80% or less.
-    * No flag means the amendment is enabled.
+   - The `tfGotMajority` flag means the amendment has more than 80% support.
+   - The `tfLostMajority` flag means support for the amendment has decreased to 80% or less.
+   - No flag means the amendment is enabled.
 
-    {% admonition type="info" name="Note" %}It's possible for an amendment to lose 80% support on the same ledger it reaches the required two-week period to be enabled. In these cases, an `EnableAmendment` pseudo-transactions is added for both scenarios, but the amendment is ultimately enabled. {% /admonition %}
+   {% admonition type="info" name="Note" %}It's possible for an amendment to lose 80% support on the same ledger it reaches the required two-week period to be enabled. In these cases, an `EnableAmendment` pseudo-transactions is added for both scenarios, but the amendment is ultimately enabled. {% /admonition %}
 
 4. **Flag Ledger +2:** Enabled amendments apply to transactions on this ledger onwards.
-
 
 ## Amendment Voting
 
@@ -48,16 +48,16 @@ Amendments must maintain two weeks of support from more than 80% of trusted vali
 
 Amendments that have had their source code removed without being enabled are considered **Vetoed** by the network.
 
-
 ## Amendment Blocked Servers
+
 <a id="amendment-blocked"></a>
 
 Amendment blocking is a security feature to protect the accuracy of XRP Ledger data. When an amendment is enabled, servers running earlier versions of `rippled` without the amendment's source code no longer understand the rules of the network. Rather than guess and misinterpret ledger data, these servers become **amendment blocked** and can't:
 
-* Determine the validity of a ledger.
-* Submit or process transactions.
-* Participate in the consensus process.
-* Vote on future amendments.
+- Determine the validity of a ledger.
+- Submit or process transactions.
+- Participate in the consensus process.
+- Vote on future amendments.
 
 The voting configuration of a `rippled` server has no impact on it becoming amendment blocked. A `rippled` server always follows the amendments enabled by the rest of the network, so blockages are based solely on having the code to understand rule changes. This means you can also become amendment blocked if you connect your server to a parallel network with different amendments enabled. For example, the XRP Ledger Devnet typically has experimental amendments enabled. If you are using the latest production release, your server likely won't have the code for those experimental amendments.
 
@@ -73,16 +73,15 @@ When amendments are enabled, the source code for pre-amendment behaviors remain 
 
 The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussions/19) defines a process for retiring old amendments and associated pre-amendment code. After an amendment has been enabled on the Mainnet for two years, it can be retired. Retiring an amendment makes it part of the core protocol unconditionally; it's no longer tracked or treated as an amendment, and all pre-amendment code is removed.
 
-
 ## See Also
 
 - **Concepts:**
-    - [Consensus](../consensus-protocol/index.md)
+  - [Consensus](../consensus-protocol/index.md)
 - **Tutorials:**
-    - [Run rippled as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
-    - [Configure Amendment Voting](../../infrastructure/configuration/configure-amendment-voting.md)
-    - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
+  - [Run rippled as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+  - [Configure Amendment Voting](../../infrastructure/configuration/configure-amendment-voting.md)
+  - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
 - **References:**
-    - [Known Amendments](/resources/known-amendments.md)
+  - [Known Amendments](/resources/known-amendments.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

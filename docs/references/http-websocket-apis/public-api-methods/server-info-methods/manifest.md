@@ -1,14 +1,15 @@
 ---
 seo:
-    description: Look up the public information about a known validator.
+  description: Look up the public information about a known validator.
 labels:
-    - Blockchain
+  - Blockchain
 ---
+
 # manifest
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/DoManifest.cpp "Source")
 
 The {% code-page-name /%} method reports the current "manifest" information for a given validator public key. The "manifest" is a block of data that authorizes an ephemeral signing key with a signature from the validator's master key pair. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}Updated in: rippled 1.7.0{% /badge %}
-
 
 ### Request Format
 
@@ -17,30 +18,38 @@ An example of the request format:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "command": "{% $frontmatter.seo.title %}",
-    "public_key": "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
+  "command": "{% $frontmatter.seo.title %}",
+  "public_key": "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "{% $frontmatter.seo.title %}",
-    "params": [{
-        "public_key":"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
-    }]
+  "method": "{% $frontmatter.seo.title %}",
+  "params": [
+    {
+      "public_key": "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: {% $frontmatter.seo.title %} public_key
 rippled {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -49,10 +58,9 @@ rippled {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsf
 
 The request includes the following parameters:
 
-| `Field`      | Type   | Description                        |
-|:-------------|:-------|:-----------------------------------|
+| `Field`      | Type   | Description                                                                                                               |
+| :----------- | :----- | :------------------------------------------------------------------------------------------------------------------------ |
 | `public_key` | String | The [base58][]-encoded public key of the validator to look up. This can be the master public key or ephemeral public key. |
-
 
 ### Response Format
 
@@ -61,6 +69,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -77,9 +86,11 @@ An example of a successful response:
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -97,9 +108,11 @@ An example of a successful response:
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -118,6 +131,7 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -126,23 +140,22 @@ Connecting to 127.0.0.1:5005
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`     | Type   | Description                                           |
-|:------------|:-------|:------------------------------------------------------|
-| `details`   | Object | _(May be omitted)_ The data contained in this manifest. Omitted if the server does not have a manifest for the `public_key` from the request. See **Details Object** below for a full description of its contents. |
+| `Field`     | Type   | Description                                                                                                                                                                                                                                            |
+| :---------- | :----- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `details`   | Object | _(May be omitted)_ The data contained in this manifest. Omitted if the server does not have a manifest for the `public_key` from the request. See **Details Object** below for a full description of its contents.                                     |
 | `manifest`  | String | _(May be omitted)_ The full manifest data in base64 format. This data is [serialized](../../../protocol/binary-format.md) to binary before being base64-encoded. Omitted if the server does not have a manifest for the `public_key` from the request. |
-| `requested` | String | The `public_key` from the request.                    |
+| `requested` | String | The `public_key` from the request.                                                                                                                                                                                                                     |
 
 #### Details Object
 
 If provided, the `details` object contains the following fields:
 
-| `Field`         | Type   | Description                                       |
-|:----------------|:-------|:--------------------------------------------------|
-| `domain`        | String | The domain name this validator claims to be associated with. If the manifest does not contain a domain, this is an empty string. |
-| `ephemeral_key` | String | The ephemeral public key for this validator, in [base58][]. |
-| `master_key`    | String | The master public key for this validator, in [base58][]. |
+| `Field`         | Type   | Description                                                                                                                                                            |
+| :-------------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `domain`        | String | The domain name this validator claims to be associated with. If the manifest does not contain a domain, this is an empty string.                                       |
+| `ephemeral_key` | String | The ephemeral public key for this validator, in [base58][].                                                                                                            |
+| `master_key`    | String | The master public key for this validator, in [base58][].                                                                                                               |
 | `seq`           | Number | The sequence number of this manifest. This number increases whenever the validator operator updates the validator's token to rotate ephemeral keys or change settings. |
-
 
 ### Possible Errors
 

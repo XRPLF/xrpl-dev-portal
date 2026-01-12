@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Escrow holds funds until specified conditions are met.
+  description: Escrow holds funds until specified conditions are met.
 labels:
   - Escrow
 ---
+
 # Escrow
 
 Traditionally, an escrow is a contract between two parties to facilitate financial transactions. An impartial third party receives and holds funds, and only releases them to the intended recipient when conditions specified by the contract are met. This method ensures both parties meet their obligations.
@@ -35,20 +36,19 @@ The XRP Ledger supports three types of escrow:
 The lifecycle of an escrow is as follows:
 
 1. The sender creates an escrow using the `EscrowCreate` transaction. This transaction defines:
-
-    - An amount of XRP or fungible tokens to lock up.
-    - The conditions to release the funds.
-      - For **XRP escrows** this can include a time when the escrow can complete, a cryptographic condition that must be fulfilled, and optionally a time when the escrow expires.
-      - For **token escrows** similar conditions apply, but an expiration time is _mandatory_.
-    - The recipient of the funds. Any applicable transfer rates or fees are captured at creation time and will apply when the escrow completes, ensuring predictability for the recipient.
+   - An amount of XRP or fungible tokens to lock up.
+   - The conditions to release the funds.
+     - For **XRP escrows** this can include a time when the escrow can complete, a cryptographic condition that must be fulfilled, and optionally a time when the escrow expires.
+     - For **token escrows** similar conditions apply, but an expiration time is _mandatory_.
+   - The recipient of the funds. Any applicable transfer rates or fees are captured at creation time and will apply when the escrow completes, ensuring predictability for the recipient.
 
 2. When the transaction is processed successfully, the XRP Ledger creates an `Escrow` object that holds the escrowed funds.
 
 3. The recipient sends an `EscrowFinish` transaction to deliver the funds. If the conditions are met, this destroys the `Escrow` object and delivers the funds to the recipient. Additionally, any missing trust lines or MPT entries may be auto-created for recipients if authorization isn't required.
 
-    {% admonition type="info" name="Note" %}
-    If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, returning the escrowed funds to the sender.
-    {% /admonition %}
+   {% admonition type="info" name="Note" %}
+   If the escrow has an expiration time and isn't successfully finished before then, the escrow becomes expired. An expired escrow remains in the ledger until an `EscrowCancel` transaction cancels it, returning the escrowed funds to the sender.
+   {% /admonition %}
 
 ## Escrow States
 
@@ -71,8 +71,8 @@ While XRP escrows can sometimes exist without an expiration time, token escrows 
 ## Limitations
 
 - The costs can make it infeasible for small amounts.
-    - Escrow requires two transactions: one to create the escrow, and one to finish or cancel it. Crypto-Conditions incur a higher [transaction cost](../transactions/transaction-cost.md) than usual.
-    - While the escrow is incomplete, the sender is responsible for the [reserve requirement](../accounts/reserves.md) of the `Escrow` object.
+  - Escrow requires two transactions: one to create the escrow, and one to finish or cancel it. Crypto-Conditions incur a higher [transaction cost](../transactions/transaction-cost.md) than usual.
+  - While the escrow is incomplete, the sender is responsible for the [reserve requirement](../accounts/reserves.md) of the `Escrow` object.
 - You can't create an escrow with past time values.
 - Timed releases and expirations resolve according to [ledger close times](../ledgers/ledger-close-times.md). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
 - The only supported crypto-condition type is PREIMAGE-SHA-256.
@@ -96,18 +96,16 @@ If [Fee Voting](../consensus-protocol/fee-voting.md) changes the `reference_fee`
 reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 ```
 
-
-
 ## See Also
 
 For more information about Escrow in the XRP Ledger, see the following:
 
 - [Escrow Tutorials](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md)
 - [Transaction Reference](../../references/protocol/transactions/index.md)
-    - [EscrowCreate transaction][]
-    - [EscrowFinish transaction][]
-    - [EscrowCancel transaction][]
+  - [EscrowCreate transaction][]
+  - [EscrowFinish transaction][]
+  - [EscrowCancel transaction][]
 - [Ledger Reference](../../references/protocol/ledger-data/index.md)
-    - [Escrow object](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+  - [Escrow object](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

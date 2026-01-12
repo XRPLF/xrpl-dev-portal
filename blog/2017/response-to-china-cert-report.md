@@ -1,13 +1,14 @@
 ---
 category: 2017
 labels:
-    - Security
-date: "2017-01-12"
+  - Security
+date: '2017-01-12'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Response to China CERT Report
 
 As a leader in open-source, distributed financial technology, Ripple recognizes the importance of security researchers and we always encourage responsible disclosure of potential security vulnerabilities via our [bug bounty program](https://ripple.com/bug-bounty/). Ripple also employs regular external security audits and, as a matter of practice, the maintainers of the Ripple Consensus Ledger (RCL) technology (`rippled`) routinely use static and dynamic analysis tools on the C++ codebase (most recently version 0.50.0-b1).

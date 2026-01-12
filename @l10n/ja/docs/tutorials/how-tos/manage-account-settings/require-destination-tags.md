@@ -2,10 +2,11 @@
 html: require-destination-tags.html
 parent: manage-account-settings.html
 seo:
-    description: ユーザがあなたのアドレスに送金するときに宛先タグを必ず指定しなければならないようにします。
+  description: ユーザがあなたのアドレスに送金するときに宛先タグを必ず指定しなければならないようにします。
 labels:
   - アカウント
 ---
+
 # 宛先タグの必須化
 
 `RequireDest`設定は、送金先を識別する[宛先タグ](../../../concepts/transactions/source-and-destination-tags.md)を顧客が付け忘れている場合にあなたのアドレスに[送金](../../../concepts/payment-types/index.md)できないようにするためのものです。有効にすると、XRP Ledgerは宛先タグが付いていないあなたのアドレスへの送金を拒否します。
@@ -17,6 +18,7 @@ labels:
 {% tabs %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 POST http://localhost:5005/
 Content-Type: application/json
@@ -37,6 +39,7 @@ Content-Type: application/json
     ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -46,6 +49,7 @@ Content-Type: application/json
 {% tabs %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -71,10 +75,10 @@ Content-Type: application/json
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
-
 
 ## 関連項目
 

@@ -1,13 +1,14 @@
 ---
-date: "2018-09-17"
+date: '2018-09-17'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.1.0
 
 Ripple is pleased to announce the release of **XRP Ledger (`rippled`) version 1.1.0.**
@@ -24,15 +25,15 @@ Ripple recommends that all server operators upgrade to XRP Ledger version 1.1.0 
 
 Ripple expects the **DepositPreAuth** or **fix1515** amendments to become enabled on or after Thursday, 2018-09-27. When this happens, if you are not running release 1.1.0 or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
-* Cannot determine the validity of a ledger;
+- Cannot determine the validity of a ledger;
 
-* Cannot be able to submit or process transactions;
+- Cannot be able to submit or process transactions;
 
-* Cannot participate in the consensus process;
+- Cannot participate in the consensus process;
 
-* Cannot vote on future amendments; and
+- Cannot vote on future amendments; and
 
-* Could rely on potentially invalid data.
+- Could rely on potentially invalid data.
 
 If the **DepositPreAuth** and **fix1515** Amendments do not become enabled, then your XRP Ledger server will not become Amendment blocked and should continue to operate.
 
@@ -66,10 +67,10 @@ Related documentation is available in the [XRP Ledger Dev Portal](/docs/), inclu
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat: <http://www.xrpchat.com/>
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat: <http://www.xrpchat.com/>
 
 ## Other Information
 
@@ -83,57 +84,57 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 ## 1.1.0 Change Log
 
-* Add DepositPreAuth ledger type and transaction ([#2513](https://github.com/ripple/rippled/pull/2513))  
+- Add DepositPreAuth ledger type and transaction ([#2513](https://github.com/ripple/rippled/pull/2513))
 
-* Increase fault tolerance and raise validation quorum to 80%, which fixes issue [2604](https://github.com/ripple/rippled/issues/2604) ([#2613](https://github.com/ripple/rippled/pull/2613))
+- Increase fault tolerance and raise validation quorum to 80%, which fixes issue [2604](https://github.com/ripple/rippled/issues/2604) ([#2613](https://github.com/ripple/rippled/pull/2613))
 
-* Support ipv6 for peer and RPC comms ([#2321](https://github.com/ripple/rippled/pull/2321))
+- Support ipv6 for peer and RPC comms ([#2321](https://github.com/ripple/rippled/pull/2321))
 
-* Refactor ledger replay logic ([#2477](https://github.com/ripple/rippled/pull/2477))
+- Refactor ledger replay logic ([#2477](https://github.com/ripple/rippled/pull/2477))
 
-* Improve Invariant Checking ([#2532](https://github.com/ripple/rippled/pull/2532/commits/2ac1c2b433b8825b9a6f203f1ee65a126e20620c))
+- Improve Invariant Checking ([#2532](https://github.com/ripple/rippled/pull/2532/commits/2ac1c2b433b8825b9a6f203f1ee65a126e20620c))
 
-* Expand SQLite potential storage capacity ([#2650](https://github.com/ripple/rippled/pull/2650/commits/04745b11a888cea412f410d0036a0db23574d61c))
+- Expand SQLite potential storage capacity ([#2650](https://github.com/ripple/rippled/pull/2650/commits/04745b11a888cea412f410d0036a0db23574d61c))
 
-* Replace UptimeTimer with UptimeClock ([#2532](https://github.com/ripple/rippled/pull/2532/commits/7d163a45dcd2c5cca0fc45eb8775f169575995c1))
+- Replace UptimeTimer with UptimeClock ([#2532](https://github.com/ripple/rippled/pull/2532/commits/7d163a45dcd2c5cca0fc45eb8775f169575995c1))
 
-* Don’t read Amount field if it is not present ([#2566](https://github.com/ripple/rippled/pull/2566/commits/34d3f93868b87f33fdf76a5b6c8b376956346a16))
+- Don’t read Amount field if it is not present ([#2566](https://github.com/ripple/rippled/pull/2566/commits/34d3f93868b87f33fdf76a5b6c8b376956346a16))
 
-* Remove Transactor:: mFeeDue member variable ([#2586](https://github.com/ripple/rippled/pull/2586/commits/5b733fb4857ff1076d2e106afeb9931fca198d51))
+- Remove Transactor:: mFeeDue member variable ([#2586](https://github.com/ripple/rippled/pull/2586/commits/5b733fb4857ff1076d2e106afeb9931fca198d51))
 
-* Remove conditional check for using Boost.Process ([#2586](https://github.com/ripple/rippled/pull/2586/commits/06d0ff6e5281ca237d358e953fe8069d16a6926a))
+- Remove conditional check for using Boost.Process ([#2586](https://github.com/ripple/rippled/pull/2586/commits/06d0ff6e5281ca237d358e953fe8069d16a6926a))
 
-* Improve charge handling in NoRippleCheckLimits test ([#2629](https://github.com/ripple/rippled/pull/2629/commits/49bcdda41881f6cac140879a236be6ac1a7a734d))
+- Improve charge handling in NoRippleCheckLimits test ([#2629](https://github.com/ripple/rippled/pull/2629/commits/49bcdda41881f6cac140879a236be6ac1a7a734d))
 
-* Migrate more code into the chrono type system ([#2629](https://github.com/ripple/rippled/pull/2629/commits/d257d1b2c9e0a50f6cef2d1fc977573944408723))
+- Migrate more code into the chrono type system ([#2629](https://github.com/ripple/rippled/pull/2629/commits/d257d1b2c9e0a50f6cef2d1fc977573944408723))
 
-* Supply ConsensusTimer with milliseconds for finer precision ([#2629](https://github.com/ripple/rippled/pull/2629/commits/d98c4992dd82090bb6d4f7593768624f6e109b32))
+- Supply ConsensusTimer with milliseconds for finer precision ([#2629](https://github.com/ripple/rippled/pull/2629/commits/d98c4992dd82090bb6d4f7593768624f6e109b32))
 
-* Refactor / modernize Cmake ([#2629](https://github.com/ripple/rippled/pull/2629/commits/37d9544ef722730d34899754654b71e84d9f7851))
+- Refactor / modernize Cmake ([#2629](https://github.com/ripple/rippled/pull/2629/commits/37d9544ef722730d34899754654b71e84d9f7851))
 
-* Add delimiter when appending to cmake_cxx_flags ([#2650](https://github.com/ripple/rippled/pull/2650/commits/4aa0bc37c0fdfb871f5929e7bd544f787db412af))
+- Add delimiter when appending to cmake_cxx_flags ([#2650](https://github.com/ripple/rippled/pull/2650/commits/4aa0bc37c0fdfb871f5929e7bd544f787db412af))
 
-* Remove using namespace declarations at namespace scope in headers ([#2650](https://github.com/ripple/rippled/pull/2650/commits/2901577be73fc2e6f2fd71d693258660c2f5f724))
+- Remove using namespace declarations at namespace scope in headers ([#2650](https://github.com/ripple/rippled/pull/2650/commits/2901577be73fc2e6f2fd71d693258660c2f5f724))
 
 ### Bug Fixes
 
-* Deprecate the ‘sign’ and ‘sign_for’ APIs ([#2657](https://github.com/ripple/rippled/pull/2657))
+- Deprecate the ‘sign’ and ‘sign_for’ APIs ([#2657](https://github.com/ripple/rippled/pull/2657))
 
-* Use liquidity from strands that consume too many offers, which will be enabled on [fix1515](/resources/known-amendments.md#fix1515) Amendment ([#2546](https://github.com/ripple/rippled/pull/2546))
+- Use liquidity from strands that consume too many offers, which will be enabled on [fix1515](/resources/known-amendments.md#fix1515) Amendment ([#2546](https://github.com/ripple/rippled/pull/2546))
 
-* Fix a corner case when decoding base64 ([#2605](https://github.com/ripple/rippled/pull/2605/commits/0439dcfa7a5215cc74a8e254a28eadace6a524b7))
+- Fix a corner case when decoding base64 ([#2605](https://github.com/ripple/rippled/pull/2605/commits/0439dcfa7a5215cc74a8e254a28eadace6a524b7))
 
-* Trim space in Endpoint::from_string ([#2593](https://github.com/ripple/rippled/pull/2593))
+- Trim space in Endpoint::from_string ([#2593](https://github.com/ripple/rippled/pull/2593))
 
-* Correctly suppress sent messages ([#2564](https://github.com/ripple/rippled/pull/2564))
+- Correctly suppress sent messages ([#2564](https://github.com/ripple/rippled/pull/2564))
 
-* Detect when a unit test child process crashes ([#2415](https://github.com/ripple/rippled/pull/2415))
+- Detect when a unit test child process crashes ([#2415](https://github.com/ripple/rippled/pull/2415))
 
-* Add missing virtual destructors ([#2532](https://github.com/ripple/rippled/pull/2532/commits/717f874767f2a431294244c0b532b00e508705ca))
+- Add missing virtual destructors ([#2532](https://github.com/ripple/rippled/pull/2532/commits/717f874767f2a431294244c0b532b00e508705ca))
 
-* Improve JSON exception handling ([#2605](https://github.com/ripple/rippled/pull/2605/commits/00df097e5f2f533b81038b2c350bb2d896febd2e))
+- Improve JSON exception handling ([#2605](https://github.com/ripple/rippled/pull/2605/commits/00df097e5f2f533b81038b2c350bb2d896febd2e))
 
-* Handle WebSocket construction exceptions ([#2629](https://github.com/ripple/rippled/pull/2629/commits/d89ff1b63d6792a25af872746013387001ebb72b))
+- Handle WebSocket construction exceptions ([#2629](https://github.com/ripple/rippled/pull/2629/commits/d89ff1b63d6792a25af872746013387001ebb72b))
 
 ## Contributions
 

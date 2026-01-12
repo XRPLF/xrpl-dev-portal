@@ -2,10 +2,11 @@
 html: contribute-blog.html
 parent: resources.html
 seo:
-    description: XRPLブログへの投稿手順
+  description: XRPLブログへの投稿手順
 labels:
   - ブロックチェーン
 ---
+
 # ブログ記事を投稿する
 
 XRP Ledger開発者ブログへの投稿をご検討いただきありがとうございます！
@@ -13,7 +14,6 @@ XRP Ledger開発者ブログへの投稿をご検討いただきありがとう�
 このページでは、新しいブログ記事を作成するための概要手順を紹介しています。XRP Ledger開発者ポータルへの投稿に関する詳細な手順やガイドラインについては、[ドキュメントへの貢献](../contribute-documentation/index.md)をご覧ください。
 
 {% admonition type="info" name="Note" %}現在、ブログ記事は英語のみで提供されており、まだ翻訳は行われていません。{% /admonition %}
-
 
 ## ブログ投稿用のディレクトリ構成
 

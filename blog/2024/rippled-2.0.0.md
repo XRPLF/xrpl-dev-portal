@@ -1,14 +1,15 @@
 ---
 category: 2024
-date: "2024-01-09"
+date: '2024-01-09'
 labels:
-    - rippled Release Notes
-    - Amendments
+  - rippled Release Notes
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 template: '../../@theme/templates/blogpost'
 ---
+
 # Introducing XRP Ledger version 2.0.0
 
 Version 2.0.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds new features and bug fixes, and introduces these amendments:
@@ -22,23 +23,21 @@ Version 2.0.0 of `rippled`, the reference server implementation of the XRP Ledge
 
 <!-- BREAK -->
 
-
 ## Action Required
 
 Four new amendments are now open for voting according to the XRP Ledger's [amendment process](https://xrpl.org/amendments.html), which enables protocol changes following two weeks of >80% support from trusted validators.
 
 If you operate an XRP Ledger server, upgrade to version 2.0.0 by January 22, 2024 to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.0.0-1.el7.x86_64.rpm) | `4f765d2f38c2b2ef4825fb715b1dfcbb8ecaef0063ef99005f54252c90a29cab` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.0.0-1_amd64.deb) | `69568c467a5291b441ce6f1385bd20cdfaf02e4496ca9043441fdb842d9975dc` |
-| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.0.0-1_amd64.deb)  | `69568c467a5291b441ce6f1385bd20cdfaf02e4496ca9043441fdb842d9975dc` |
+| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds)                                    | (Use signature verification)                                       |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -50,11 +49,10 @@ Date:   Mon Jan 8 13:13:37 2024 -0800
     Set version to 2.0.0
 ```
 
-
 ## Changelog
 
-
 ### Amendments, New Features, and Changes
+
 (These are changes which may impact or be useful to end users. For example, you may be able to update your code/workflow to take advantage of these changes.)
 
 - **XChainBridge**: Introduces cross-chain bridges, enabling interoperability between the XRP Ledger and sidechains. [#4292](https://github.com/XRPLF/rippled/pull/4292)
@@ -66,16 +64,15 @@ Date:   Mon Jan 8 13:13:37 2024 -0800
 - **fixFillOrKill**: Fixes an issue introduced in the `flowCross` amendment. The `tfFillOrKill` and `tfSell` flags are now properly handled to allow offers to cross in certain scenarios. [#4694](https://github.com/XRPLF/rippled/pull/4694)
 
 - **API v2 released with these changes:**
-
-    - Bumped API support to v2, but kept the command-line interface for `rippled` and unit tests at v1. [#4803](https://github.com/XRPLF/rippled/pull/4803)
-    - Accepts currency codes in ASCII, using the full alphabet. [#4566](https://github.com/XRPLF/rippled/pull/4566)
-    - Added test to verify the `check` field is a string. [#4630](https://github.com/XRPLF/rippled/pull/4630)
-    - Added errors for malformed `account_tx` and `noripple_check` fields. [#4620](https://github.com/XRPLF/rippled/pull/4620)
-    - Added errors for malformed `gateway_balances` and `channel_authorize` requests. [#4618](https://github.com/XRPLF/rippled/pull/4618)
-    - Added a `DeliverMax` alias to `Amount` and removed `Amount`. [#4733](https://github.com/XRPLF/rippled/pull/4733)
-    - Removed `tx_history` and `ledger_header` methods. Also updated `RPC::Handler` to allow for version-specific methods. [#4759](https://github.com/XRPLF/rippled/pull/4759)
-    - Standardized the JSON serialization format of transactions. [#4727](https://github.com/XRPLF/rippled/issues/4727)
-    - Standardized `ledger_index` to return as a number. [#4820](https://github.com/XRPLF/rippled/pull/4820)
+  - Bumped API support to v2, but kept the command-line interface for `rippled` and unit tests at v1. [#4803](https://github.com/XRPLF/rippled/pull/4803)
+  - Accepts currency codes in ASCII, using the full alphabet. [#4566](https://github.com/XRPLF/rippled/pull/4566)
+  - Added test to verify the `check` field is a string. [#4630](https://github.com/XRPLF/rippled/pull/4630)
+  - Added errors for malformed `account_tx` and `noripple_check` fields. [#4620](https://github.com/XRPLF/rippled/pull/4620)
+  - Added errors for malformed `gateway_balances` and `channel_authorize` requests. [#4618](https://github.com/XRPLF/rippled/pull/4618)
+  - Added a `DeliverMax` alias to `Amount` and removed `Amount`. [#4733](https://github.com/XRPLF/rippled/pull/4733)
+  - Removed `tx_history` and `ledger_header` methods. Also updated `RPC::Handler` to allow for version-specific methods. [#4759](https://github.com/XRPLF/rippled/pull/4759)
+  - Standardized the JSON serialization format of transactions. [#4727](https://github.com/XRPLF/rippled/issues/4727)
+  - Standardized `ledger_index` to return as a number. [#4820](https://github.com/XRPLF/rippled/pull/4820)
 
 - Added a `server_definitions` command that returns an SDK-compatible `definitions.json` file, generated from the `rippled` instance currently running. [#4703](https://github.com/XRPLF/rippled/pull/4703)
 
@@ -85,13 +82,13 @@ Date:   Mon Jan 8 13:13:37 2024 -0800
 
 - Changed the reserved hook error code name from `tecHOOK_ERROR` to `tecHOOK_REJECTED`. [#4559](https://github.com/XRPLF/rippled/pull/4559)
 
-
 ### Bug Fixes and Performance Improvements
+
 (These are behind-the-scenes improvements, such as internal changes to the code, which are not expected to impact end users.)
 
 - Simplified `TxFormats` common fields logic. [#4637](https://github.com/XRPLF/rippled/pull/4637)
 
-- Improved transaction throughput by asynchronously writing batches to *NuDB*. [#4503](https://github.com/XRPLF/rippled/pull/4503)
+- Improved transaction throughput by asynchronously writing batches to _NuDB_. [#4503](https://github.com/XRPLF/rippled/pull/4503)
 
 - Removed 2 unused functions. [#4708](https://github.com/XRPLF/rippled/pull/4708)
 
@@ -117,29 +114,28 @@ Date:   Mon Jan 8 13:13:37 2024 -0800
 
 - Fixed an issue with enabling new amendments on a network with an ID greater than 1024. [#4737](https://github.com/XRPLF/rippled/pull/4737)
 
-
 ### Docs and Build System
 
-- Updated `rippled-example.cfg` docs to clarify usage of *ssl_cert* vs *ssl_chain*. [#4667](https://github.com/XRPLF/rippled/pull/4667)
+- Updated `rippled-example.cfg` docs to clarify usage of _ssl_cert_ vs _ssl_chain_. [#4667](https://github.com/XRPLF/rippled/pull/4667)
 
 - Updated `SECURITY.md`:
-    - Clarified bug bounty program info. [#4338](https://github.com/XRPLF/rippled/pull/4338)
-    - Fixed typo. [#4662](https://github.com/XRPLF/rippled/pull/4662)
+  - Clarified bug bounty program info. [#4338](https://github.com/XRPLF/rippled/pull/4338)
+  - Fixed typo. [#4662](https://github.com/XRPLF/rippled/pull/4662)
 
 - Updated `BUILD.md`:
-    - Made the `environment.md` link easier to find. Also made it easier to find platform-specific info. [#4507](https://github.com/XRPLF/rippled/pull/4507)
-    - Fixed typo. [#4718](https://github.com/XRPLF/rippled/pull/4718)
-    - Updated the minimum compiler requirements. [#4700](https://github.com/XRPLF/rippled/pull/4700)
-    - Added note about enabling `XRPFees`. [#4741](https://github.com/XRPLF/rippled/pull/4741)
+  - Made the `environment.md` link easier to find. Also made it easier to find platform-specific info. [#4507](https://github.com/XRPLF/rippled/pull/4507)
+  - Fixed typo. [#4718](https://github.com/XRPLF/rippled/pull/4718)
+  - Updated the minimum compiler requirements. [#4700](https://github.com/XRPLF/rippled/pull/4700)
+  - Added note about enabling `XRPFees`. [#4741](https://github.com/XRPLF/rippled/pull/4741)
 
 - Updated `RELEASENOTES.md` to match 1.12.0 release notes to the dev blog.
 
 - Updated `API-CHANGELOG.md`:
-    - Explained API v2 is releasing with `rippled` 2.0.0. [#4633](https://github.com/XRPLF/rippled/pull/4633)
-    - Clarified the location of the `signer_lists` field in the `account_info` response for API v2. [#4724](https://github.com/XRPLF/rippled/pull/4724)
-    - Added documentation for the new `DeliverMax` field. [#4784](https://github.com/XRPLF/rippled/pull/4784)
-    - Removed references to API v2 being "in progress" and "in beta". [#4828](https://github.com/XRPLF/rippled/pull/4828)
-    - Clarified that all breaking API changes will now occur in API v3 or later. [#4773](https://github.com/XRPLF/rippled/pull/4773)
+  - Explained API v2 is releasing with `rippled` 2.0.0. [#4633](https://github.com/XRPLF/rippled/pull/4633)
+  - Clarified the location of the `signer_lists` field in the `account_info` response for API v2. [#4724](https://github.com/XRPLF/rippled/pull/4724)
+  - Added documentation for the new `DeliverMax` field. [#4784](https://github.com/XRPLF/rippled/pull/4784)
+  - Removed references to API v2 being "in progress" and "in beta". [#4828](https://github.com/XRPLF/rippled/pull/4828)
+  - Clarified that all breaking API changes will now occur in API v3 or later. [#4773](https://github.com/XRPLF/rippled/pull/4773)
 
 - Fixed a mistake in the overlay README. [#4635](https://github.com/XRPLF/rippled/pull/4635)
 
@@ -185,16 +181,13 @@ Date:   Mon Jan 8 13:13:37 2024 -0800
 
 - Fixed a minor typo in the code comments of `AMMCreate.h`. [4821](https://github.com/XRPLF/rippled/pull/4821)
 
-
 [Full Commit Log](https://github.com/XRPLF/rippled/compare/1.12.0...2.0.0)
-
 
 ### GitHub
 
 The public source code repository for `rippled` is hosted on GitHub at <https://github.com/XRPLF/rippled>.
 
 We welcome all contributions and invite everyone to join the community of XRP Ledger developers to help build the Internet of Value.
-
 
 ## Credits
 

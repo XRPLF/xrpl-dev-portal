@@ -1,19 +1,20 @@
 ---
 seo:
-    title: Automated Market Makers (AMMs)
-    description: Automated Market Makers (AMMs) are an essential part of cryptocurrency, providing liquidity between asset pairs. Learn more about AMMs and the XRP Ledger.
+  title: Automated Market Makers (AMMs)
+  description: Automated Market Makers (AMMs) are an essential part of cryptocurrency, providing liquidity between asset pairs. Learn more about AMMs and the XRP Ledger.
 labels:
-    - XRP
-    - Decentralized Exchange
-    - AMM
+  - XRP
+  - Decentralized Exchange
+  - AMM
 ---
+
 # Automated Market Makers
 
 Automated Market Makers (AMMs) provide liquidity in the XRP Ledger's decentralized exchange (DEX). Each AMM holds a pool of two assets. You can swap between the two assets at an exchange rate set by a mathematical formula.
 
 ![Automated Market Maker](/docs/img/cpt-amm.png)
 
-Those who deposit assets into an AMM are called _liquidity providers_. In return, liquidity providers receive _LP tokens_ from the AMM. 
+Those who deposit assets into an AMM are called _liquidity providers_. In return, liquidity providers receive _LP tokens_ from the AMM.
 
 ![LP receiving LP Tokens](/docs/img/cpt-amm-lp-receiving-lpts.png)
 
@@ -25,10 +26,9 @@ LP tokens enable liquidity providers to:
 
 {% amendment-disclaimer name="AMM" /%}
 
-
 ## How the AMM Works
 
-An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md). 
+An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md).
 For any given pair of assets, there can be up to one AMM in the ledger. Anyone can create the AMM for an asset pair if it doesn't exist, or deposit to an AMM if it already exists.
 
 When you want to trade in the decentralized exchange, your [offers](offers.md) and [cross-currency payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching offers, AMMs, or a mix of both, depending on what's cheaper. You can [read a transaction's metadata](../../transactions/finality-of-results/look-up-transaction-results.md) to see what liquidity it consumed.
@@ -47,7 +47,7 @@ The XRP Ledger implements a _geometric mean_ AMM with a weight parameter of 0.5,
 
 ### Token Issuers
 
-Tokens with different issuers are considered different assets. This means that there can be an AMM for two tokens with the same currency code but different issuers.  For example, _FOO_ issued by WayGate is different than _FOO_ issued by StableFoo. Similarly, the tokens can have the same issuer but different currency codes. The trade direction doesn't matter; the AMM for FOO.WayGate to XRP is the same as the AMM for XRP to FOO.WayGate.
+Tokens with different issuers are considered different assets. This means that there can be an AMM for two tokens with the same currency code but different issuers. For example, _FOO_ issued by WayGate is different than _FOO_ issued by StableFoo. Similarly, the tokens can have the same issuer but different currency codes. The trade direction doesn't matter; the AMM for FOO.WayGate to XRP is the same as the AMM for XRP to FOO.WayGate.
 
 ### Currency Risk
 
@@ -137,7 +137,7 @@ Frozen LP tokens affect the following transactions:
 
 Trading fees are a source of passive income for liquidity providers. They offset the currency risk of letting others trade against the pool's assets. Trading fees are paid to the AMM, not directly to liquidity providers. Liquidity providers benefit because they can redeem their LP tokens for a percentage of the AMM pool.
 
-Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%. Liquidity providers have an incentive to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will --> 
+Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%. Liquidity providers have an incentive to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will -->
 
 Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the number of LP tokens they hold. To vote, a liquidity provider sends an [AMMVote][] transaction. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes, weighted by how many LP tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote, then only the top 8 votes (by most LP tokens held) are counted. Even though liquidity providers' share of LP tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.md)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
 
@@ -145,11 +145,11 @@ Each AMM gives its liquidity providers the power to vote on its fees, in proport
 
 _Trading fees_ differ from _transfer fees_.
 
-| Differences | AMM Trading Fees | Token Transfer Fees |
-|-------------|------------------|---------------------|
-| Who sets the fee? | AMM liquidity providers. | Token issuer. |
-| When does the fee apply? | When swapping against the AMM. | Any time the token transfers accounts, except when sending or receiving _directly_ to and from the token issuer. |
-| Can fees be redeemed? | Yes, by liquidity providers when they turn in their LP tokens. | No, fees are burned. |
+| Differences              | AMM Trading Fees                                               | Token Transfer Fees                                                                                              |
+| ------------------------ | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Who sets the fee?        | AMM liquidity providers.                                       | Token issuer.                                                                                                    |
+| When does the fee apply? | When swapping against the AMM.                                 | Any time the token transfers accounts, except when sending or receiving _directly_ to and from the token issuer. |
+| Can fees be redeemed?    | Yes, by liquidity providers when they turn in their LP tokens. | No, fees are burned.                                                                                             |
 
 {% /admonition %}
 
@@ -171,12 +171,11 @@ In the ledger's state data, an AMM consists of multiple [ledger entries](../../.
 
 - A special [AccountRoot entry][] that issues the AMM's LP tokens, and holds the AMM's XRP (if it has any).
 
-    The address of this AccountRoot is chosen somewhat randomly when the AMM is created, and it is different if the AMM is deleted and re-created. This is to prevent people from funding the AMM account with excess XRP in advance.
+  The address of this AccountRoot is chosen somewhat randomly when the AMM is created, and it is different if the AMM is deleted and re-created. This is to prevent people from funding the AMM account with excess XRP in advance.
 
 - [Trust lines](../fungible-tokens/index.md) to the special AMM Account for the tokens in the AMM's pool.
 
 These ledger entries are not owned by any account, so the [reserve requirement](../../accounts/reserves.md) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](../../transactions/transaction-cost.md) that requires the sender to burn a larger than usual amount of XRP.
-
 
 ## AMM Deletion
 

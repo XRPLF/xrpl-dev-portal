@@ -17,7 +17,8 @@ article table {
     border-bottom: 1px solid $gray-200;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.2em;
     vertical-align: text-top;
   }
@@ -28,13 +29,14 @@ article table {
 }
 
 .landing-table {
-  th, tr {
+  th,
+  tr {
     border-bottom: 2px solid $gray-600;
   }
   td {
     width: 33.33%;
     padding: 16px 40px 16px 0;
-    &:nth-child(1){
+    &:nth-child(1) {
       font-weight: normal;
     }
     @include media-breakpoint-down(sm) {
@@ -49,15 +51,14 @@ article table {
   }
 }
 
-
 .dblue {
   color: $gray-600;
 }
 #overview-table {
-  td:nth-child(1){
+  td:nth-child(1) {
     width: 40%;
   }
-  td:nth-child(2){
+  td:nth-child(2) {
     width: 30%;
   }
   tbody td {

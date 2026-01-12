@@ -1,15 +1,16 @@
 ---
 category: 2025
-date: "2025-09-18"
+date: '2025-09-18'
 template: '../../@theme/templates/blogpost'
 seo:
-    description: If you run a rippled node that uses the default UNL, you must migrate your configuration to the new XRPL Foundation's list by 2025-09-30.
+  description: If you run a rippled node that uses the default UNL, you must migrate your configuration to the new XRPL Foundation's list by 2025-09-30.
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Default UNL Migration
 
 As [previously announced](./move-to-the-new-xrpl-foundation-commences.md), stewardship of the XRP Ledger has moved to a new XRPL Foundation. As part of the migration, the default UNL for XRP Ledger servers is now served from a new URL and uses a new key pair. If you run a server on the XRP Ledger mainnet and uses the default UNL, you must migrate to the new UNL settings before the old UNL publisher shuts down on September 30 (2025-09-30), to maintain service continuity.
@@ -32,61 +33,61 @@ This process is two steps:
 
 1. Edit your server's `validators.txt` file. This file is typically located at `/etc/opt/ripple/validators.txt` by default. In some configurations, it could be located at `$HOME/.config/ripple/validators.txt` (where `$HOME` is the home directory of the user running `rippled`), `$HOME/.local/ripple/validators.txt`, or the current working directory from where you start the `rippled` server.
 
-    Update the `[validator_list_keys]` and `[validator_list_sites]` sections of the config file to remove the key and URL of the old Foundation and add the key and URL of the new Foundation, as in the following table:
+   Update the `[validator_list_keys]` and `[validator_list_sites]` sections of the config file to remove the key and URL of the old Foundation and add the key and URL of the new Foundation, as in the following table:
 
-    |              | URL in `[validator_list_sites]` | Key in `[validator_list_keys]` |
-    |--------------|-------------------------|-----|
-    | Old (remove) | `https://vl.xrplf.org`  | `ED45D1840EE724BE327ABE9146503D5848EFD5F38B6D5FEDE71E80ACCE5E6E738B` |
-    | New (add)    | `https://unl.xrplf.org` | `ED42AEC58B701EEBB77356FFFEC26F83C1F0407263530F068C7C73D392C7E06FD1` |
+   |              | URL in `[validator_list_sites]` | Key in `[validator_list_keys]`                                       |
+   | ------------ | ------------------------------- | -------------------------------------------------------------------- |
+   | Old (remove) | `https://vl.xrplf.org`          | `ED45D1840EE724BE327ABE9146503D5848EFD5F38B6D5FEDE71E80ACCE5E6E738B` |
+   | New (add)    | `https://unl.xrplf.org`         | `ED42AEC58B701EEBB77356FFFEC26F83C1F0407263530F068C7C73D392C7E06FD1` |
 
-    Keys and URLs for other validator publishers (such as `vl.ripple.com`) can remain the same.
+   Keys and URLs for other validator publishers (such as `vl.ripple.com`) can remain the same.
 
-    {% admonition type="success" name="Tip: HTTP vs HTTPS" %}
-    The URLs can also use unsecured `http://` in case there is a problem with TLS certificates. The contents of the validator list are cryptographically signed by the key listed above, so SSL/TLS is not strictly necessarity to ensure the integrity of the contents.
-    {% /admonition %}
+   {% admonition type="success" name="Tip: HTTP vs HTTPS" %}
+   The URLs can also use unsecured `http://` in case there is a problem with TLS certificates. The contents of the validator list are cryptographically signed by the key listed above, so SSL/TLS is not strictly necessarity to ensure the integrity of the contents.
+   {% /admonition %}
 
 2. Restart your server.
 
-    ```sh
-    sudo systemctl restart rippled.service
-    ```
+   ```sh
+   sudo systemctl restart rippled.service
+   ```
 
 3. Confirm new settings.
 
-    After restarting, you can use the `validators` admin command to confirm the new settings.
+   After restarting, you can use the `validators` admin command to confirm the new settings.
 
-    ```sh
-    /opt/ripple/bin/rippled validators
-    ```
+   ```sh
+   /opt/ripple/bin/rippled validators
+   ```
 
-    If you are using a non-default configuration, change the path to your `rippled` executable as needed.
+   If you are using a non-default configuration, change the path to your `rippled` executable as needed.
 
-    The response should display the updated values in the `publisher_lists` key. The new list should be available with an expiration on 2026-02-13 (February 13, 2026). For example (response trimmed for length):
+   The response should display the updated values in the `publisher_lists` key. The new list should be available with an expiration on 2026-02-13 (February 13, 2026). For example (response trimmed for length):
 
-    ```json
-    {
-    "result": {
-        "local_static_keys": [],
-        "publisher_lists": [
-        {
-            "available": true,
-            "expiration": "2026-Feb-13 14:15:03.000000000 UTC",
-            ...
-            "list": [
-            ...
-            ],
-            "pubkey_publisher": "ED42AEC58B701EEBB77356FFFEC26F83C1F0407263530F068C7C73D392C7E06FD1",
-            "seq": 1,
-            "uri": "https://unl.xrplf.org",
-            "version": 1
-        },
-        ...
-        ]
-        ...
-    }
-    ```
+   ```json
+   {
+   "result": {
+       "local_static_keys": [],
+       "publisher_lists": [
+       {
+           "available": true,
+           "expiration": "2026-Feb-13 14:15:03.000000000 UTC",
+           ...
+           "list": [
+           ...
+           ],
+           "pubkey_publisher": "ED42AEC58B701EEBB77356FFFEC26F83C1F0407263530F068C7C73D392C7E06FD1",
+           "seq": 1,
+           "uri": "https://unl.xrplf.org",
+           "version": 1
+       },
+       ...
+       ]
+       ...
+   }
+   ```
 
-    For more information and troubleshooting steps, see [Configuration Guidance for Using the new UNL (discussion on rippled GitHub)](https://github.com/XRPLF/rippled/discussions/5463).
+   For more information and troubleshooting steps, see [Configuration Guidance for Using the new UNL (discussion on rippled GitHub)](https://github.com/XRPLF/rippled/discussions/5463).
 
 ## Impact of not updating the configuration
 

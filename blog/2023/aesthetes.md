@@ -1,13 +1,14 @@
 ---
 category: 2023
-date: "2023-01-18"
+date: '2023-01-18'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: Aesthetes
 
 This week on Developer Reflections, we’re proud to highlight [Aesthetes](https://aesthetes.com/), which aims to merge fine art and blockchain by creating Phygital NFTs—NFTs based on both digital and physical artwork. Aesthetes serves as a marketplace where people can discover, collect and sell fine art phygital NFTs, with the goal of democratizing and breaking down barriers to the art industry.
@@ -17,7 +18,6 @@ This week on Developer Reflections, we’re proud to highlight [Aesthetes](https
 Within the first month of launch, the project onboarded thousands of users and continues to grow.
 
 ![Screenshot: Aesthetes homepage](/blog/img/dev-reflections-aesthetes.png)
-
 
 ## Why the XRP Ledger?
 

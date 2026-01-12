@@ -1,9 +1,10 @@
 ---
 metadata:
-    indexPage: true
+  indexPage: true
 seo:
-    description: Contribution guides for XRP Ledger documentation.
+  description: Contribution guides for XRP Ledger documentation.
 ---
+
 # Contribute Documentation
 
 Thanks for considering a contribution to the XRP Ledger Developer Portal!
@@ -11,7 +12,6 @@ Thanks for considering a contribution to the XRP Ledger Developer Portal!
 We're thrilled you're interested and your help is greatly appreciated. Contributing is a great way to learn about the XRP Ledger (XRPL).
 
 We are happy to review your pull requests. To make the process as smooth as possible, please read this document and follow the stated guidelines.
-
 
 ## About This Site
 
@@ -29,9 +29,9 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 - `blog/` - Source files for the XRPL Dev Blog.
 - `community/` - Source files for the Community section's pages.
 - `docs/` - Source files used to build the documentation. Mostly in Markdown.
-    - `docs/_snippets/` - Reusable pieces of text used in the documentation.
-    - `docs/img/` - Diagrams and other images used in the documentation. Diagrams can also be placed in the folder with the files that reference them.
-    - `docs/img/_sources/` - Source files for images used in the documentation, where available.
+  - `docs/_snippets/` - Reusable pieces of text used in the documentation.
+  - `docs/img/` - Diagrams and other images used in the documentation. Diagrams can also be placed in the folder with the files that reference them.
+  - `docs/img/_sources/` - Source files for images used in the documentation, where available.
 - `resources/` - Source files for the Resources section's pages.
 - `shared/` - Configuration files for some dependencies like CodeMirror, and React components for some specially styled pages.
 - `static/` - Static files used by the site's templates and theme.
@@ -40,7 +40,6 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 - `redocly.yaml` - Main config file for the site.
 - `sidebars.yaml` - Defines sidebars for the Documentation and Resources sections.
 - `top-nav.yaml` - Defines the main top nav elements.
-
 
 ## Requirements for a Successful Pull Request
 
@@ -71,7 +70,6 @@ npm run start
 ```
 
 You can view the preview in a web browser, probably at http://localhost:4000/
-
 
 ## Config Formatting
 
@@ -120,7 +118,7 @@ Links can and should be used regularly, but without going overboard. Some additi
 Use the following conventions when creating a page:
 
 - Filenames (aside from `index.md`) should generally match the title of the page, including words like "and" and "the", but should be in all lowercase with hyphens instead of spaces and punctuation. For example, `cash-a-check-for-an-exact-amount.md`. If you change the title of a page, change the filename too. (If it has already been published at another URL, leave a redirect from the old URL.)
-    - The page within a category should be in a subfolder named for that category but can be less verbose (especially if the page title includes words also in the parent directories), should have the filename `index.md`, and a title that is similar to the folder name. For example, the "Protocol Reference" index page is at `references/protocol/index.md`.
+  - The page within a category should be in a subfolder named for that category but can be less verbose (especially if the page title includes words also in the parent directories), should have the filename `index.md`, and a title that is similar to the folder name. For example, the "Protocol Reference" index page is at `references/protocol/index.md`.
 - Always start a page with a h1 header.
 - Don't link to the top h1 anchor of a page, link to the page itself without an anchor. This helps prevent broken links in translation. It's OK to link to later headers.
 - Don't use any formatting (like _italics_ or `code font`) in the title of the page.
@@ -138,27 +136,27 @@ When documenting a new feature, include a [badge](./markdoc-tags.md#badge) indic
 
 Use the following words and phrases as described:
 
-| Term              | Terms to Avoid | Notes |
-|-------------------|----------------|-------|
-| API, APIs         | API's, RPC | Application Programming Interface, a set of functions and definitions for software to connect to other software. |
-| core server, core XRP Ledger server | `rippled` | The `rippled` name is probably going to be retired in the near future, so it's better to refer to it by the more generic name. When necessary, refer to `rippled` in all lowercase and code font. (It's pronounced "ripple dee", and the "d" stands for "daemon" per UNIX tradition.)
-| financial institution | bank, FI, PSP (payment services provider) | This term encompasses a wider range of businesses than just _bank_ or other terms and does not rely on an understanding of industry jargon. |
-| ledger entry      | ledger object, node | A single object inside the state data of the XRP Ledger. The term _ledger object_ could refer to one of these or to the whole ledger. The term _node_ was sometimes used for this case because the ledger's state data can be envisioned as a graph, but this is confusing because _node_ has other uses. |
-| liquidity provider | market maker | A business or individual who offers to exchange between two currencies or assets, often deriving income from the price differential between trades. The term _market maker_ has a specific legal definition in some jurisdictions and may not apply in all the same circumstances. |
-| malicious actor   | hacker | A person, organization, or even an automated tool which might attempt to acquire secrets, break encryption, deny service, or otherwise attack a secure resource. |
-| a NFT             | an NFT | A NFT object in the XRP Ledger tracks or represents a non-fungible token. Pronounced "nifty" and written _a NFT_ rather than _an NFT_. |
-| PostgreSQL        | Postgres | A specific brand of relational database software. Always use the full name, not an informal short version. |
-| order book        | orderbook, offer book | A collection of trade orders waiting to be matched and executed, typically sorted by exchange rate. Use two words. |
-| server            | node | A server is software and/or hardware, especially the ones that connect to the XRP Ledger peer-to-peer network. The term _node_ is sometimes used for this purpose but is also overloaded with other meanings including entries in a graph and Node.js, a JavaScript interpreter. |
-| stablecoin issuer | gateway | An issuer is the organization that issues a token in the XRP Ledger. A stablecoin is a token where the issuer promises that it is fully backed by some outside asset (such as fiat currency), with the stablecoin issuer providing deposit and withdraw operations to convert between the two (possibly for a fee). Previously the term _gateway_ was used (especially by Ripple, the company) to describe this use case, but the rest of the industry adopted _stablecoin issuer_ instead. |
-| transaction cost  | transaction fee | The amount of XRP burnt to send a transaction in the XRP Ledger. Even though this is specified in the `Fee` field of transactions, the term _fee_ implies that the money is paid to someone, so _cost_ is preferable. |_
-| trust line        | trustline | Use two words. A trust line is a relationship between two accounts in the XRP Ledger that tracks a balance of tokens between those accounts. |
-| tokens            | IOUs, issuances, issues, issued currencies | A token in the XRP ledger may not represent money owed outside of the ledger as the name _IOU_ implies. Specify _fungible tokens_ if necessary to distinguish from non-fungible tokens. |
-| wallet            | wallet | Depending on the context, _wallet_ could refer to hardware, software, a cryptographic key pair, or an online service. Be sure to provide enough context that the meaning is clear, or use an alternative such as _key pair_ or _client application_. |
-| WebSocket         | web socket, Websockets | A two way protocol for communication on the web. Always singular and in CamelCase. |
-| XRP               | XRPs, ripples | The native digital asset, or cryptocurrency, of the XRP Ledger. XRP is not a token. |
-| the XRP Ledger    | XRP Ledger (no the), Ripple, Ripple Network, RCL | The XRP Ledger was called _the Ripple network_ and the _Ripple Consensus Ledger_ or _RCL_ at various times in the past. These names were confusing and have been retired because of their similarity to the name of the company, Ripple (formerly Ripple Labs) which develops the reference implementation of the core server. |
-| XRPL              | XRPL | Short for _XRP Ledger_. As much as possible, spell out _XRP Ledger_ instead; _XRPL_ is cryptic and looks like it could be a typo for _XRP_. |
+| Term                                | Terms to Avoid                                   | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ----------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| API, APIs                           | API's, RPC                                       | Application Programming Interface, a set of functions and definitions for software to connect to other software.                                                                                                                                                                                                                                                                                                                                                                            |
+| core server, core XRP Ledger server | `rippled`                                        | The `rippled` name is probably going to be retired in the near future, so it's better to refer to it by the more generic name. When necessary, refer to `rippled` in all lowercase and code font. (It's pronounced "ripple dee", and the "d" stands for "daemon" per UNIX tradition.)                                                                                                                                                                                                       |
+| financial institution               | bank, FI, PSP (payment services provider)        | This term encompasses a wider range of businesses than just _bank_ or other terms and does not rely on an understanding of industry jargon.                                                                                                                                                                                                                                                                                                                                                 |
+| ledger entry                        | ledger object, node                              | A single object inside the state data of the XRP Ledger. The term _ledger object_ could refer to one of these or to the whole ledger. The term _node_ was sometimes used for this case because the ledger's state data can be envisioned as a graph, but this is confusing because _node_ has other uses.                                                                                                                                                                                   |
+| liquidity provider                  | market maker                                     | A business or individual who offers to exchange between two currencies or assets, often deriving income from the price differential between trades. The term _market maker_ has a specific legal definition in some jurisdictions and may not apply in all the same circumstances.                                                                                                                                                                                                          |
+| malicious actor                     | hacker                                           | A person, organization, or even an automated tool which might attempt to acquire secrets, break encryption, deny service, or otherwise attack a secure resource.                                                                                                                                                                                                                                                                                                                            |
+| a NFT                               | an NFT                                           | A NFT object in the XRP Ledger tracks or represents a non-fungible token. Pronounced "nifty" and written _a NFT_ rather than _an NFT_.                                                                                                                                                                                                                                                                                                                                                      |
+| PostgreSQL                          | Postgres                                         | A specific brand of relational database software. Always use the full name, not an informal short version.                                                                                                                                                                                                                                                                                                                                                                                  |
+| order book                          | orderbook, offer book                            | A collection of trade orders waiting to be matched and executed, typically sorted by exchange rate. Use two words.                                                                                                                                                                                                                                                                                                                                                                          |
+| server                              | node                                             | A server is software and/or hardware, especially the ones that connect to the XRP Ledger peer-to-peer network. The term _node_ is sometimes used for this purpose but is also overloaded with other meanings including entries in a graph and Node.js, a JavaScript interpreter.                                                                                                                                                                                                            |
+| stablecoin issuer                   | gateway                                          | An issuer is the organization that issues a token in the XRP Ledger. A stablecoin is a token where the issuer promises that it is fully backed by some outside asset (such as fiat currency), with the stablecoin issuer providing deposit and withdraw operations to convert between the two (possibly for a fee). Previously the term _gateway_ was used (especially by Ripple, the company) to describe this use case, but the rest of the industry adopted _stablecoin issuer_ instead. |
+| transaction cost                    | transaction fee                                  | The amount of XRP burnt to send a transaction in the XRP Ledger. Even though this is specified in the `Fee` field of transactions, the term _fee_ implies that the money is paid to someone, so _cost_ is preferable.                                                                                                                                                                                                                                                                       | \_  |
+| trust line                          | trustline                                        | Use two words. A trust line is a relationship between two accounts in the XRP Ledger that tracks a balance of tokens between those accounts.                                                                                                                                                                                                                                                                                                                                                |
+| tokens                              | IOUs, issuances, issues, issued currencies       | A token in the XRP ledger may not represent money owed outside of the ledger as the name _IOU_ implies. Specify _fungible tokens_ if necessary to distinguish from non-fungible tokens.                                                                                                                                                                                                                                                                                                     |
+| wallet                              | wallet                                           | Depending on the context, _wallet_ could refer to hardware, software, a cryptographic key pair, or an online service. Be sure to provide enough context that the meaning is clear, or use an alternative such as _key pair_ or _client application_.                                                                                                                                                                                                                                        |
+| WebSocket                           | web socket, Websockets                           | A two way protocol for communication on the web. Always singular and in CamelCase.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| XRP                                 | XRPs, ripples                                    | The native digital asset, or cryptocurrency, of the XRP Ledger. XRP is not a token.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| the XRP Ledger                      | XRP Ledger (no the), Ripple, Ripple Network, RCL | The XRP Ledger was called _the Ripple network_ and the _Ripple Consensus Ledger_ or _RCL_ at various times in the past. These names were confusing and have been retired because of their similarity to the name of the company, Ripple (formerly Ripple Labs) which develops the reference implementation of the core server.                                                                                                                                                              |
+| XRPL                                | XRPL                                             | Short for _XRP Ledger_. As much as possible, spell out _XRP Ledger_ instead; _XRPL_ is cryptic and looks like it could be a typo for _XRP_.                                                                                                                                                                                                                                                                                                                                                 |
 
 ## Frontmatter Fields
 
@@ -167,9 +165,9 @@ Frontmatter for Markdown files can include details such as the following:
 ```yaml
 ---
 metadata:
-    indexPage: true # Use if you want to use the {% child-pages /%} macro to display a list of page children
+  indexPage: true # Use if you want to use the {% child-pages /%} macro to display a list of page children
 seo:
-    description: Transact with confidence using the XRP Ledger's suite of compliance features for following government regulations and security practices.
+  description: Transact with confidence using the XRP Ledger's suite of compliance features for following government regulations and security practices.
 ---
 ```
 
@@ -209,19 +207,18 @@ For example:
 
 For reference, here's the hierarchy that determines which title gets used where:
 
-| Location | Which title it uses |
-|----------|---------------------|
-| `<title>` element (the text that displays in the tab name and the title bar of your browser, if it has one) | `seo.title`, falling back to md h1 |
-| `<meta name="title" ...>`, `<meta name="og:title" ...>`, `<meta name="twitter:title" ...>` and so on in the `<head>` of the page, which are used when "unfurling" a link (showing a preview) in various chat and social media apps like Discord, Slack, or X (Twitter) | `seo.title`, falling back to md h1 |
-| Sidebar navigation | `label` from `sidebars.yaml`, then `seo.title`, and finally md h1 |
-| In-page header, that is, the big text in the center column | md h1 only |
-
+| Location                                                                                                                                                                                                                                                               | Which title it uses                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `<title>` element (the text that displays in the tab name and the title bar of your browser, if it has one)                                                                                                                                                            | `seo.title`, falling back to md h1                                |
+| `<meta name="title" ...>`, `<meta name="og:title" ...>`, `<meta name="twitter:title" ...>` and so on in the `<head>` of the page, which are used when "unfurling" a link (showing a preview) in various chat and social media apps like Discord, Slack, or X (Twitter) | `seo.title`, falling back to md h1                                |
+| Sidebar navigation                                                                                                                                                                                                                                                     | `label` from `sidebars.yaml`, then `seo.title`, and finally md h1 |
+| In-page header, that is, the big text in the center column                                                                                                                                                                                                             | md h1 only                                                        |
 
 ### Next and Previous Buttons
 
-The documentation and blog pages have "Next" and "Previous" buttons at the bottom of the page. 
+The documentation and blog pages have "Next" and "Previous" buttons at the bottom of the page.
 
-If these buttons don't make sense as a proper reading order in context you can disable them by updating the frontmatter of the page. 
+If these buttons don't make sense as a proper reading order in context you can disable them by updating the frontmatter of the page.
 
 ```yaml
 ---
@@ -283,10 +280,10 @@ The GitHub Flavored Markdown syntax uses the pipe character (|) to separate colu
 
 This table displays as follows:
 
-| Key | Value |
-|-----|-------|
-| Name | H. G. Wells |
-| Genre | Science Fiction |
+| Key       | Value                                                                                                                                                                                        |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name      | H. G. Wells                                                                                                                                                                                  |
+| Genre     | Science Fiction                                                                                                                                                                              |
 | Hyperbole | The greatest story ever told! No one has ever written anything more important than this Victorian era classic. Oh, how swells the heart to ponder the heady philosophies introduced therein! |
 
 The cells do not have to be the same width. The renderer aligns the columns and wraps text as needed. However, it is often helpful for editors if you align the columns of the table in the markdown source file.
@@ -301,12 +298,11 @@ Optionally, use colons in the heading lines to align columns left (:--), middle 
 | Zhanu | Neon Green | 234,000 XRP |
 ```
 
-| Model    | Color | Price |
-|:--------:|:------|------:|
-| Protexra | Electric Blue | 50,000 XRP |
-| Joatic | Hot Pink | 165,000 XRP |
-| Zhanu | Neon Green | 234,000 XRP |
-
+|  Model   | Color         |       Price |
+| :------: | :------------ | ----------: |
+| Protexra | Electric Blue |  50,000 XRP |
+|  Joatic  | Hot Pink      | 165,000 XRP |
+|  Zhanu   | Neon Green    | 234,000 XRP |
 
 ## Links
 
@@ -352,12 +348,12 @@ const prepared = await client.autofill({
 renders as
 
 ```javascript
-  const prepared = await client.autofill({
-    "TransactionType": "Payment",
-    "Account": standby_wallet.address,
-    "Amount": xrpl.xrpToDrops(sendAmount),
-    "Destination": standbyDestinationField.value
-  })
+const prepared = await client.autofill({
+  TransactionType: 'Payment',
+  Account: standby_wallet.address,
+  Amount: xrpl.xrpToDrops(sendAmount),
+  Destination: standbyDestinationField.value,
+})
 ```
 
 ## Markdoc Tags

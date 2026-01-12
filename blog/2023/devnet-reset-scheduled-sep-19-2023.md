@@ -1,14 +1,16 @@
 ---
 category: 2023
-date: "2023-09-11"
+date: '2023-09-11'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Devnet Reset Scheduled for Tue, Sep 19, 2023
+
 _by Team RippleX_
 
 As [previously announced](https://xrpl.org/blog/2023/upcoming-devnet-reset.html), the RippleX-managed Devnet test network will be reset. This reset has been scheduled for **Tuesday, September 19, 2023**.
@@ -47,4 +49,4 @@ To learn more about the XRP Ledger, the amendment process, or other topics, see 
 - [XRPL.org](https://xrpl.org) documentation
 - [XRP Ledger Developers on Discord](https://xrpldevs.org/)
 - [XRPL Server Software (rippled) on GitHub](https://github.com/XRPLF/rippled)
-    - [Create a new issue](https://github.com/XRPLF/rippled/issues/new/choose)
+  - [Create a new issue](https://github.com/XRPLF/rippled/issues/new/choose)

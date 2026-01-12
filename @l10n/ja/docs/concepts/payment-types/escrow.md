@@ -2,10 +2,11 @@
 html: escrow.html
 parent: payment-types.html
 seo:
-    description: XRPはEscrowに預託され、後日特定の条件が満たされた時点で送金されます。Escrowは時間制限、暗号条件、あるいはその両方によって異なる場合があります。
+  description: XRPはEscrowに預託され、後日特定の条件が満たされた時点で送金されます。Escrowは時間制限、暗号条件、あるいはその両方によって異なる場合があります。
 labels:
   - Escrow
 ---
+
 # Escrow
 
 従来より、Escrowとは、金融取引を円滑に行うための二者間の契約です。公平な第三者が資金を受領・保管し、契約で指定された条件が満たされた場合にのみ、目的の受取人に資金を提供します。この方法により、両当事者は確実に義務を果たすことができます。
@@ -23,16 +24,15 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 ## Escrowのライフサイクル
 
 1. 送信者は`EscrowCreate`トランザクションを用いてEscrowを作成します。このトランザクションは以下を指定します。
-
-    - ロックするXRPの量
-    - XRPをリリースする条件
-    - XRPの受取人
+   - ロックするXRPの量
+   - XRPをリリースする条件
+   - XRPの受取人
 
 2. トランザクションが処理されると、XRP LedgerはEscrowされたXRPを保持する`Escrow`オブジェクトを作成します。
 
 3. 受取人はXRPを受け渡すために`EscrowFinish`トランザクションを送信します。条件が満たされた場合、`Escrow`オブジェクトは破棄され、XRPは受取人に引き渡されます。
 
-    {% admonition type="info" name="注記" %}Escrowに有効期限があり、それまでに正常に終了しなかった場合、Escrowは期限切れになります。期限切れのEscrowは`EscrowCancel`トランザクションがそれをキャンセルするまで台帳に残り、`Escrow`オブジェクトを破棄してXRPを送信者に返します。{% /admonition %}
+   {% admonition type="info" name="注記" %}Escrowに有効期限があり、それまでに正常に終了しなかった場合、Escrowは期限切れになります。期限切れのEscrowは`EscrowCancel`トランザクションがそれをキャンセルするまで台帳に残り、`Escrow`オブジェクトを破棄してXRPを送信者に返します。{% /admonition %}
 
 ## 状態遷移図
 
@@ -48,17 +48,15 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 
 - **条件付きEscrow（右）:** EscrowでCrypto-condition（`Condition`フィールド）が指定されており、Finish-after時刻が指定されていない場合、Escrowは作成時点で即時に**Conditionally Ready**になります。この時点では、Crypto-conditionに対する正しいフルフィルメントを提供した人だけがEscrowを終了できます。有効期限（`CancelAfter`フィールド）までに終了されなかったEscrowは**Expired**になります。（Finish-after時刻が設定されていないEscrowには、有効期限が設定されている _必要があります_ 。）Expired状態では、Escrowを終了できなくなり、誰でもEscrowをキャンセルできるようになります。
 
-
 ## 制約事項
 
 - EscrowはXRPでのみ実行でき、発行済み通貨では実行できません。
 - 少額での利用はコスト面で難しいかもしれません。
-    - Crypto-conditionを使用する場合、[EscrowFinishトランザクションのコスト](#escrowfinishトランザクションのコスト)が通常よりも高くなります。
-    - エスクローが未成立な間は、`Escrow`オブジェクトの[準備金](../accounts/reserves.md)は送信者の責任となります。
+  - Crypto-conditionを使用する場合、[EscrowFinishトランザクションのコスト](#escrowfinishトランザクションのコスト)が通常よりも高くなります。
+  - エスクローが未成立な間は、`Escrow`オブジェクトの[準備金](../accounts/reserves.md)は送信者の責任となります。
 - Escrowを作成するトランザクションの実行時には、時刻の値が過去の時間であってはなりません。
 - 時限リリースおよび有効期限は、レジャークローズに制約されます。つまり実際には、レジャーの正確なクローズ時刻に基づいて、これらの時刻が約5秒単位で丸められる場合があります。
 - サポートされている唯一の[Crypto-condition][]タイプはPREIMAGE-SHA-256です。
-
 
 ## EscrowFinishトランザクションのコスト
 
@@ -76,20 +74,17 @@ Crypto-conditionを使用する場合、Crypto-conditionフルフィルメント
 reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 ```
 
-
-
 ## 参考情報
 
 XRP LedgerのEscrowの詳細は、以下をご覧ください:
 
 - [Escrowチュートリアル](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md)
 - [トランザクションのリファレンス](../../references/protocol/transactions/index.md)
-    - [EscrowCreateトランザクション][]
-    - [EscrowFinishトランザクション][]
-    - [EscrowCancelトランザクション][]
+  - [EscrowCreateトランザクション][]
+  - [EscrowFinishトランザクション][]
+  - [EscrowCancelトランザクション][]
 - [レジャーリファレンス](../../references/protocol/ledger-data/index.md)
-    - [Escrowオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
-
+  - [Escrowオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 Rippleによる550億XRPのロックアップについては、[Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/)をご覧ください。
 

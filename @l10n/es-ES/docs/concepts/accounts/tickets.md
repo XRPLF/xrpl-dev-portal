@@ -2,11 +2,12 @@
 html: tickets.html
 parent: accounts.html
 seo:
-    description: Envía transacciones en un orden no secuencial.
+  description: Envía transacciones en un orden no secuencial.
 labels:
   - Cuentas
   - Enviar transacciones
 ---
+
 # Tickets
 
 _(Añadido por la [enmienda TicketBatch][].)_
@@ -25,18 +26,17 @@ Sin embargo, hay situaciones donde los números de secuencia son demasiado limit
 
 Los Tickets facilitan una solución para todos estos problemas apartando números de secuencia que se pueden uitlizar más adelante, fuera de su orden normal, pero aún así no más de una vez cada uno.
 
-
 ## Los tickets son números de secuencia reservados
 
 Un Ticket es un registro de que se ha apartado un número de secuencia para utilizar más adelante. Una cuenta envía primero una [transacción TicketCreate][] para apartar una o más números de secuencia como Tickets; esto deja un registro en los [datos de estado del ledger](../ledgers/index.md), en la forma de un [objeto Ticket][], para cada número de secuencia reservado.
 
 Los Tickets están numerados usando los números de secuencia que han sido apartado para crearlos. Por ejemplo, si un número de secuencia de cuenta actual es 101 y has creado 3 Tickets, esos Tickets tienen los números de secuencia de Ticket 102, 103, y 104. Haciendo esto se incrementa el número de secuencia de la cuenta a 105.
 
-[{% inline-svg file="/docs/img/ticket-creation.svg" /%}](/docs/img/ticket-creation.svg "Diagrama: Creación de tres tickets")
+[{% inline-svg file="/docs/img/ticket-creation.svg" /%}](/docs/img/ticket-creation.svg 'Diagrama: Creación de tres tickets')
 
 Más tarde, puedes enviar una transacción utilizando un Ticket específico en vez de un número de secuencia; haciendo eso eliminas el Ticket correspondiente de los datos de estado del ledger y no cambia el número de secuencia normal de tu cuenta. También puedes todavía enviar transacciones utilizando el números de secuencia normal sin utilizar Tickets. Puedes utilizar cualquiera de tus Tickets disponibles en cualquier orden en cualquier momento, pero cada Ticket puede utilizarse solo una vez.
 
-[{% inline-svg file="/docs/img/ticket-usage.svg" /%}](/docs/img/ticket-usage.svg "Diagrama: Usando el ticket 103.")
+[{% inline-svg file="/docs/img/ticket-usage.svg" /%}](/docs/img/ticket-usage.svg 'Diagrama: Usando el ticket 103.')
 
 Continuando con el ejemplo anterior, puedes enviar una transacción utilizando el número de secuencia 105 o cualquiera de los tres Tickets que has creado. Si envías una transacción utilizando el Ticket 103, esto eliminará el Ticket 103 del ledger. Tu próxima transacción despues de esa puede uitlizar el número de secuencia 105, el Ticket 102, o el Ticket 104.
 
@@ -59,15 +59,14 @@ Cualquier cuenta puede crear y utilizar Tickets en cualquier tipo de transaccion
 
 ## Ver también
 
-
 - **Conceptos:**
-    - [Multi-Signing](multi-signing.md)
+  - [Multi-Signing](multi-signing.md)
 - **Tutoriales:**
-    - [Usar Tickets](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
+  - [Usar Tickets](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
 - **Referencias:**
-    - [Transacción TicketCreate][]
-    - [Campos comunes de una transacción](../../references/protocol/transactions/common-fields.md)
-    - [Objeto Ticket](../../references/protocol/ledger-data/ledger-entry-types/ticket.md)
-    - [Método account_objects ][]
+  - [Transacción TicketCreate][]
+  - [Campos comunes de una transacción](../../references/protocol/transactions/common-fields.md)
+  - [Objeto Ticket](../../references/protocol/ledger-data/ledger-entry-types/ticket.md)
+  - [Método account_objects ][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

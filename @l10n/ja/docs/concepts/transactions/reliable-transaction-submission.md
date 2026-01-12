@@ -2,11 +2,12 @@
 html: reliable-transaction-submission.html
 parent: transactions.html
 seo:
-    description: XRP Ledgerにトランザクションを送信することができるシステムを構築し、最終結果を素早く安全に受け取ります。
+  description: XRP Ledgerにトランザクションを送信することができるシステムを構築し、最終結果を素早く安全に受け取ります。
 labels:
   - トランザクション送信
   - 開発
 ---
+
 # 信頼できるトランザクションの送信
 
 XRP Ledgerを使用する金融機関やその他のサービスは、ここで説明するベストプラクティスを使用し、迅速で確認可能な方法で、トランザクションが検証または拒否されるようにする必要があります。信頼できる（ローカルで運営されている）`rippled`サーバにトランザクションを送信してください。
@@ -69,7 +70,8 @@ APIは、現在の進行中のレジャーにトランザクション候補を�
 次の図は、トランザクションの送信と結果の判断に推奨されるフローを示します。
 
 <!-- TODO: translate -->
-[{% inline-svg file="/docs/img/reliable-tx-submission.svg" /%}](/docs/img/reliable-tx-submission.svg "信頼できるトランザクションの送信フローチャート")
+
+[{% inline-svg file="/docs/img/reliable-tx-submission.svg" /%}](/docs/img/reliable-tx-submission.svg '信頼できるトランザクションの送信フローチャート')
 
 ### 信頼できるトランザクションの送信
 
@@ -143,13 +145,11 @@ For each persisted transaction without validated result:
 - 失敗のケース（1）では、トランザクションはレジャーに含まれ、[XRPトランザクションコスト](transaction-cost.md)は消却されましたが、それ以外には何も起こりませんでした。この原因としては、流動性の欠如、適切でない[パス](../tokens/fungible-tokens/paths.md)、またはその他の状況が考えられます。多くの場合、このような失敗の場合には、同様のトランザクションをすぐに試すと同じ結果が出ることが多いです。状況が変わるのを待ってから送信すると、別の結果が得られることがあります。
 
 - 失敗のケース（2）では、トランザクションは検証済みレジャーには含まれないため、何も起こらず、トランザクションコストも消却されませんでした。これは、XRP Ledgerの現在の負荷に対してトランザクションコストが低すぎる、`LastLedgerSequence`が早すぎる、または不安定なネットワーク接続などの状況が原因である可能性があります。
-
   - 失敗のケース（1）と異なり、このケースでは`LastLedgerSequence`のみを変更（または`Fee`も変更）するだけで、新しいトランザクションが成功する可能性があります。元のトランザクションと同じ`Sequence`番号を使用します。
 
   - また、トランザクションが成功しないのはレジャーのステータスが原因である可能性もあります。例えば、トランザクションに署名するために使用されたキーペアが送信アドレスで無効になっている場合などです。トランザクションの暫定的な結果が[`tef`-class code](../../references/protocol/transactions/transaction-results/tef-codes.md)の場合には、修正をしない限りそのトランザクションが成功する可能性は低くなります。
 
 - 失敗のケース（3）は、予期しない状態を表します。トランザクションが未処理の場合、最新の検証済みレジャーにある送信元アカウントの`Sequence`番号を確認する必要があります。（[account_infoメソッド][]を使用して確認できます。）最新の検証済みレジャーにあるアカウントの`Sequence`値がトランザクションの`Sequence`値より大きい場合、同じ`Sequence`値を持つ別のトランザクションが検証済みレジャーに含まれています。システムがこの別のトランザクションを認識していない場合、予期しない状態となり、その原因が特定されるまで処理を停止しなければならなくなります。そうしないと、システムが同じ目標を達成するために複数のトランザクションを送信する可能性があります。行う必要のある手順は、具体的な原因によって変わります。考えられる原因と手順は次のとおりです。
-
   - 前回送信したトランザクションに[展性](finality-of-results/transaction-malleability.md)があり、実際に検証済みレジャーに含まれていたが、予想と異なるハッシュだった場合。この問題は、`tfFullyCanonicalSig`フラグが含まれないフラグのセットを指定した場合か、必要以上の署名者によってマルチシグされたトランザクションであった場合に起こる可能性があります。これに該当する場合は、その異なるハッシュとトランザクションの最終結果を保存し、通常のアクティビティーを再開します。
 
   - トランザクションを[キャンセル](finality-of-results/canceling-a-transaction.md)して置き換えたため、置き換え後のトランザクションが代わりに処理された場合。障害から復旧しようとしている場合、置き換え後のトランザクションでレコードが失われている可能性があります。その場合、当初確認していたトランザクションは恒久的に失敗し、置き換え後のトランザクションの最終結果が検証済みレジャーバージョンに記録されます。両方の最終結果を保存し、他に欠落したトランザクションや置き換えられたトランザクションがないか確認してから、通常のアクティビティーを再開します。
@@ -173,15 +173,15 @@ For each persisted transaction without validated result:
 トランザクションの送信および確認のベストプラクティスを実施するには、アプリケーションで以下を実行する必要があります。
 
 1. 署名するアカウントの次のシーケンス番号を判断します
-   * 各トランザクションにはアカウント固有の[シーケンス番号](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)があります。これにより、アカウントによって署名されたトランザクションの実行順序が保証され、再送信しても同じトランザクションがレジャーに二重に適用されることがなくなります。
+   - 各トランザクションにはアカウント固有の[シーケンス番号](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)があります。これにより、アカウントによって署名されたトランザクションの実行順序が保証され、再送信しても同じトランザクションがレジャーに二重に適用されることがなくなります。
 2. `LastLedgerSequence`を決定します
-   * トランザクションの`LastLedgerSequence`は、最後の検証済みレジャーインデックスから計算されます。
+   - トランザクションの`LastLedgerSequence`は、最後の検証済みレジャーインデックスから計算されます。
 3. トランザクションを生成して署名します
-   * 送信前に、署名されたトランザクションの詳細を保持します。
+   - 送信前に、署名されたトランザクションの詳細を保持します。
 4. トランザクションを送信します
-   * 初期の結果は暫定的なものであり、変化する可能性があります。
+   - 初期の結果は暫定的なものであり、変化する可能性があります。
 5. トランザクションの最終結果を判断します
-   * 最終結果は、レジャー履歴における不変部分です。
+   - 最終結果は、レジャー履歴における不変部分です。
 
 アプリケーションでのこれらのアクションの実行方法は、アプリケーションが使用するAPIによって異なります。アプリケーションでは、以下のインターフェイスを使用できます。
 
@@ -213,22 +213,22 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "result": {
-        "validated": true,
-        "status": "success",
-        "ledger_index": 10266396,
-        "account_data": {
-            "index": "96AB97A1BBC37F4F8A22CE28109E0D39D709689BDF412FE8EDAFB57A55E37F38",
-            "Sequence": 4,
-            "PreviousTxnLgrSeq": 9905632,
-            "PreviousTxnID": "CAEE0E34B3DB50A7A0CA486E3A236513531DE9E52EAC47CE4C26332CC847DE26",
-            "OwnerCount": 2,
-            "LedgerEntryType": "AccountRoot",
-            "Flags": 0,
-            "Balance": "49975988",
-            "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
-        }
+  "result": {
+    "validated": true,
+    "status": "success",
+    "ledger_index": 10266396,
+    "account_data": {
+      "index": "96AB97A1BBC37F4F8A22CE28109E0D39D709689BDF412FE8EDAFB57A55E37F38",
+      "Sequence": 4,
+      "PreviousTxnLgrSeq": 9905632,
+      "PreviousTxnID": "CAEE0E34B3DB50A7A0CA486E3A236513531DE9E52EAC47CE4C26332CC847DE26",
+      "OwnerCount": 2,
+      "LedgerEntryType": "AccountRoot",
+      "Flags": 0,
+      "Balance": "49975988",
+      "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
     }
+  }
 }
 ```
 
@@ -253,34 +253,34 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "result": {
-        "status": "success",
-        "state": {
-            "validation_quorum": 3,
-            "validated_ledger": {
-                "seq": 10268596,
-                "reserve_inc": 5000000,
-                "reserve_base": 20000000,
-                "hash": "0E0901DA980251B8A4CCA17AB4CA6C3168FE83FA1D3F781AFC5B9B097FD209EF",
-                "close_time": 470798600,
-                "base_fee": 10
-            },
-            "server_state": "full",
-            "published_ledger": 10268596,
-            "pubkey_node": "n9LGg37Ya2SS9TdJ4XEuictrJmHaicdgTKiPJYi8QRSdvQd3xMnK",
-            "peers": 58,
-            "load_factor": 256000,
-            "load_base": 256,
-            "last_close": {
-                "proposers": 5,
-                "converge_time": 3004
-            },
-            "io_latency_ms": 2,
-            "fetch_pack": 10121,
-            "complete_ledgers": "10256331-10256382,10256412-10268596",
-            "build_version": "0.26.4-sp3-private"
-        }
+  "result": {
+    "status": "success",
+    "state": {
+      "validation_quorum": 3,
+      "validated_ledger": {
+        "seq": 10268596,
+        "reserve_inc": 5000000,
+        "reserve_base": 20000000,
+        "hash": "0E0901DA980251B8A4CCA17AB4CA6C3168FE83FA1D3F781AFC5B9B097FD209EF",
+        "close_time": 470798600,
+        "base_fee": 10
+      },
+      "server_state": "full",
+      "published_ledger": 10268596,
+      "pubkey_node": "n9LGg37Ya2SS9TdJ4XEuictrJmHaicdgTKiPJYi8QRSdvQd3xMnK",
+      "peers": 58,
+      "load_factor": 256000,
+      "load_base": 256,
+      "last_close": {
+        "proposers": 5,
+        "converge_time": 3004
+      },
+      "io_latency_ms": 2,
+      "fetch_pack": 10121,
+      "complete_ledgers": "10256331-10256382,10256412-10268596",
+      "build_version": "0.26.4-sp3-private"
     }
+  }
 }
 ```
 
@@ -294,26 +294,26 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "method": "sign",
-    "params": [
-        {
-            "offline": true,
-            "secret": "s████████████████████████████",
-            "tx_json": {
-               "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
-                "Sequence": 4,
-                "LastLedgerSequence": 10268600,
-                "Fee": "10000",
-                "Amount": {
-                    "currency": "FOO",
-                    "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
-                    "value": "10"
-                },
-                "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
-                "TransactionType": "Payment"
-            }
-        }
-    ]
+  "method": "sign",
+  "params": [
+    {
+      "offline": true,
+      "secret": "s████████████████████████████",
+      "tx_json": {
+        "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+        "Sequence": 4,
+        "LastLedgerSequence": 10268600,
+        "Fee": "10000",
+        "Amount": {
+          "currency": "FOO",
+          "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+          "value": "10"
+        },
+        "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
+        "TransactionType": "Payment"
+      }
+    }
+  ]
 }
 ```
 
@@ -325,27 +325,27 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "result": {
-        "tx_json": {
-            "hash": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
-            "TxnSignature": "304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C753",
-            "TransactionType": "Payment",
-            "SigningPubKey": "0267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC5",
-            "Sequence": 4,
-            "LastLedgerSequence": 10268600,
-            "Flags": 2147483648,
-            "Fee": "10000",
-            "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
-            "Amount": {
-                "value": "10",
-                "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
-                "currency": "FOO"
-            },
-            "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
-        },
-        "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C",
-        "status": "success"
-    }
+  "result": {
+    "tx_json": {
+      "hash": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
+      "TxnSignature": "304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C753",
+      "TransactionType": "Payment",
+      "SigningPubKey": "0267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC5",
+      "Sequence": 4,
+      "LastLedgerSequence": 10268600,
+      "Flags": 2147483648,
+      "Fee": "10000",
+      "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
+      "Amount": {
+        "value": "10",
+        "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+        "currency": "FOO"
+      },
+      "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
+    },
+    "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C",
+    "status": "success"
+  }
 }
 ```
 
@@ -359,12 +359,12 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "method": "submit",
-    "params": [
-        {
-        "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C"
-        }
-    ]
+  "method": "submit",
+  "params": [
+    {
+      "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C"
+    }
+  ]
 }
 ```
 
@@ -372,30 +372,30 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "result": {
-        "tx_json": {
-            "hash": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
-            "TxnSignature": "304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C753",
-            "TransactionType": "Payment",
-            "SigningPubKey": "0267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC5",
-            "Sequence": 4,
-            "LastLedgerSequence": 10268600,
-            "Flags": 2147483648,
-            "Fee": "10000",
-            "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
-            "Amount": {
-                "value": "10",
-                "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
-                "currency": "FOO"
-            },
-            "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
-        },
-        "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C",
-        "status": "success",
-        "engine_result_message": "The transaction was applied.",
-        "engine_result_code": 0,
-        "engine_result": "tesSUCCESS"
-    }
+  "result": {
+    "tx_json": {
+      "hash": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
+      "TxnSignature": "304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C753",
+      "TransactionType": "Payment",
+      "SigningPubKey": "0267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC5",
+      "Sequence": 4,
+      "LastLedgerSequence": 10268600,
+      "Flags": 2147483648,
+      "Fee": "10000",
+      "Destination": "rawz2WQ8i9FdTHp4KSNpBdyxgFqNpKe8fM",
+      "Amount": {
+        "value": "10",
+        "issuer": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W",
+        "currency": "FOO"
+      },
+      "Account": "rG5Ro9e3uGEZVCh3zu5gB9ydKUskCs221W"
+    },
+    "tx_blob": "12000022800000002400000004201B009CAFB861D4C38D7EA4C68000000000000000000000000000464F4F0000000000AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A68400000000000271073210267268EE0DDDEE6A862C9FF9DDAF898CF17060A673AF771B565AA2F4AE24E3FC57446304402202646962A21EC0516FCE62DC9280F79E7265778C571E9410D795E67BB72A2D8E402202FF4AF7B2E2160F5BCA93011CB548014626CAC7FCBEBDB81FE8193CEFF69C7538114AC5FA3BB28A09BD2EC1AE0EED2315060E83D796A831438BC6F9F5A6F6C4E474DB0D59892E90C2C7CED5C",
+    "status": "success",
+    "engine_result_message": "The transaction was applied.",
+    "engine_result_code": 0,
+    "engine_result": "tesSUCCESS"
+  }
 }
 ```
 
@@ -409,13 +409,13 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "method": "tx",
-    "params": [
-        {
-            "transaction": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
-            "binary": false
-        }
-    ]
+  "method": "tx",
+  "params": [
+    {
+      "transaction": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE57",
+      "binary": false
+    }
+  ]
 }
 ```
 
@@ -463,17 +463,17 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "result": {
-        "status": "error",
-        "request": {
-            "transaction": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE56",
-            "command": "tx",
-            "binary": false
-        },
-        "error_message": "Transaction not found.",
-        "error_code": 24,
-        "error": "txnNotFound"
-    }
+  "result": {
+    "status": "error",
+    "request": {
+      "transaction": "395C313F6F11F70FEBAF3785529A6D6DE3F44C7AF679515A7EAE22B30146DE56",
+      "command": "tx",
+      "binary": false
+    },
+    "error_message": "Transaction not found.",
+    "error_code": 24,
+    "error": "txnNotFound"
+  }
 }
 ```
 
@@ -483,32 +483,32 @@ JSON-RPCリクエスト:
 
 ```json
 {
-    "result": {
-        "status": "success",
-        "state": {
-            "validation_quorum": 3,
-            "validated_ledger": {
-                "seq": 10269447,
-                "reserve_inc": 5000000,
-                "reserve_base": 20000000,
-                "hash": "D05C7ECC66DD6F4FEA3A6394F209EB5D6824A76C16438F562A1749CCCE7EAFC2",
-                "close_time": 470802340,
-                "base_fee": 10
-            },
-            "server_state": "full",
-            "pubkey_node": "n9LJ5eCNjeUXQpNXHCcLv9PQ8LMFYy4W8R1BdVNcpjc1oDwe6XZF",
-            "peers": 84,
-            "load_factor": 256000,
-            "load_base": 256,
-            "last_close": {
-                "proposers": 5,
-                "converge_time": 2002
-            },
-            "io_latency_ms": 1,
-            "complete_ledgers": "10256331-10256382,10256412-10269447",
-            "build_version": "0.26.4-sp3-private"
-        }
+  "result": {
+    "status": "success",
+    "state": {
+      "validation_quorum": 3,
+      "validated_ledger": {
+        "seq": 10269447,
+        "reserve_inc": 5000000,
+        "reserve_base": 20000000,
+        "hash": "D05C7ECC66DD6F4FEA3A6394F209EB5D6824A76C16438F562A1749CCCE7EAFC2",
+        "close_time": 470802340,
+        "base_fee": 10
+      },
+      "server_state": "full",
+      "pubkey_node": "n9LJ5eCNjeUXQpNXHCcLv9PQ8LMFYy4W8R1BdVNcpjc1oDwe6XZF",
+      "peers": 84,
+      "load_factor": 256000,
+      "load_base": 256,
+      "last_close": {
+        "proposers": 5,
+        "converge_time": 2002
+      },
+      "io_latency_ms": 1,
+      "complete_ledgers": "10256331-10256382,10256412-10269447",
+      "build_version": "0.26.4-sp3-private"
     }
+  }
 }
 ```
 

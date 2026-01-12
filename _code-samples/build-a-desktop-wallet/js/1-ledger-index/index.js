@@ -12,16 +12,16 @@ const TESTNET_URL = 'wss://s.altnet.rippletest.net:51233'
  * @returns {Promise<number>}
  */
 const getValidatedLedgerIndex = async () => {
-    const client = new xrpl.Client(TESTNET_URL)
-    await client.connect()
-    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger
-    const ledgerRequest = {
-        "command": "ledger",
-        "ledger_index": "validated"
-    }
-    const ledgerResponse = await client.request(ledgerRequest)
-    await client.disconnect()
-    return ledgerResponse.result.ledger_index
+  const client = new xrpl.Client(TESTNET_URL)
+  await client.connect()
+  // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger
+  const ledgerRequest = {
+    command: 'ledger',
+    ledger_index: 'validated',
+  }
+  const ledgerResponse = await client.request(ledgerRequest)
+  await client.disconnect()
+  return ledgerResponse.result.ledger_index
 }
 // Ledger index code additions - end
 
@@ -31,18 +31,18 @@ const getValidatedLedgerIndex = async () => {
  * and perform the main logic.
  */
 const createWindow = () => {
-    // Create the application window
-    const appWindow = new BrowserWindow({
-        width: 1024,
-        height: 768,
-        webPreferences: {
-            preload: path.join(__dirname, 'view', 'preload.js'),
-        },
-    })
+  // Create the application window
+  const appWindow = new BrowserWindow({
+    width: 1024,
+    height: 768,
+    webPreferences: {
+      preload: path.join(__dirname, 'view', 'preload.js'),
+    },
+  })
 
-    // Load a layout
-    appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
-    return appWindow
+  // Load a layout
+  appWindow.loadFile(path.join(__dirname, 'view', 'template.html'))
+  return appWindow
 }
 
 // Here we have to wait for the application to signal that it is ready
@@ -50,10 +50,9 @@ const createWindow = () => {
 // the ledger for its latest index and submit the result to the main
 // window where it will be displayed
 app.whenReady().then(() => {
+  const appWindow = createWindow()
 
-    const appWindow = createWindow()
-
-    getValidatedLedgerIndex().then((value) => {
-        appWindow.webContents.send('update-ledger-index', value)
-    })
+  getValidatedLedgerIndex().then((value) => {
+    appWindow.webContents.send('update-ledger-index', value)
+  })
 })

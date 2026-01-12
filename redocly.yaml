@@ -78,7 +78,7 @@ navbar:
   items:
     $ref: top-nav.yaml
 markdown:
-  partialsFolders: ["docs/_snippets", "_code-samples", "_api-examples"]
+  partialsFolders: ['docs/_snippets', '_code-samples', '_api-examples']
   editPage:
     baseUrl: https://github.com/XRPLF/xrpl-dev-portal/tree/master/
     hide: false

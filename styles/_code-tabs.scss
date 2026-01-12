@@ -44,7 +44,8 @@ pre {
     }
   }
 
-  ul { // code tabs
+  ul {
+    // code tabs
     margin: 0 !important;
     padding: 0;
 
@@ -59,11 +60,12 @@ pre {
     }
   }
 
-  a { // clickable part of the tabs
+  a {
+    // clickable part of the tabs
     text-decoration: none;
     color: $white;
     background-color: transparent;
-    padding: .75rem 2rem;
+    padding: 0.75rem 2rem;
     margin: 0;
     border-radius: 4px 4px 0 0;
 
@@ -78,7 +80,8 @@ pre {
     }
   }
 
-  .btn { // expand/collapse, copy-to-clipboard, etc.
+  .btn {
+    // expand/collapse, copy-to-clipboard, etc.
     z-index: 10;
   }
 
@@ -92,7 +95,6 @@ pre {
   z-index: 10;
   margin-right: 10px;
 }
-
 
 // Syntax highlighting via Codehilite ------------------------------------------
 
@@ -111,11 +113,11 @@ pre {
     color: $gray-500;
   }
 
-  .err { // error
-
+  .err {
+    // error
   }
-  .esc { // escape
-
+  .esc {
+    // escape
   }
   .g, // generic
   .gd, // generic, deleted
@@ -129,7 +131,6 @@ pre {
   .gu, // generic, underline / subheading
   .gt // generic, traceback
   {
-
   }
   .k, // keyword
   .kc, // keyword, constant
@@ -144,7 +145,6 @@ pre {
   .l, // literal
   .ld // literal, date
   {
-
   }
   .m, // literal, number
   .mb, // number, bin
@@ -177,9 +177,9 @@ pre {
   .o, // operator
   .ow // operator, word
   {
-
   }
-  .p { // punctuation
+  .p {
+    // punctuation
     color: $gray-200;
   }
   .s, // literal, string
@@ -205,16 +205,14 @@ pre {
   .vi, // variable, instance
   .vm // variable, magic
   {
-
   }
 
-
-  .w { // whitespace
-
+  .w {
+    // whitespace
   }
 
-  .x { // "other"
-
+  .x {
+    // "other"
   }
 }
 
@@ -233,7 +231,6 @@ pre {
     }
   }
 }
-
 
 // CodeMirror (editable code blocks) -------------------------------------------
 // Have to nest due to the order Redocly loads in the styles

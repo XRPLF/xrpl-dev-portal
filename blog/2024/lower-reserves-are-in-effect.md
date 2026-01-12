@@ -1,13 +1,14 @@
 ---
 category: 2024
 markdown:
-    editPage:
-        hide: true
-date: "2024-12-12"
+  editPage:
+    hide: true
+date: '2024-12-12'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 ---
+
 # Lower Reserves Are In Effect
 
 On 2024-12-02, the reserve requirements for using the XRP Ledger blockchain changed by the collective voting of the validators. The new requirements are **1 XRP** base reserve per account (down from 10 XRP), and **0.2 XRP** owner reserve increment per item (down from 2 XRP).

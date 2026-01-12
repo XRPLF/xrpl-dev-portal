@@ -1,20 +1,21 @@
 ---
 category: 2025
-date: "2025-09-10"
+date: '2025-09-10'
 template: '../../@theme/templates/blogpost'
 seo:
-    description: Learn how FortStock is using the XRP Ledger’s Multi-Purpose Token (MPT) standard to turn idle warehouse inventory into usable collateral.
+  description: Learn how FortStock is using the XRP Ledger’s Multi-Purpose Token (MPT) standard to turn idle warehouse inventory into usable collateral.
 labels:
-    - Development
+  - Development
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # How XRP Ledger’s MPT Standard Helps FortStock Unlock Trillions in Idle Inventory
 
 Learn how FortStock is using the XRP Ledger’s Multi-Purpose Token (MPT) standard to turn idle warehouse inventory into usable collateral.
 
-Global trade moves over $25 trillion in goods every year. Containers cross oceans, fill warehouses, and wait silently at distribution centers. Yet much of this physical inventory remains frozen in financial terms -  unleveraged, undocumented in capital markets, and untapped as collateral.
+Global trade moves over $25 trillion in goods every year. Containers cross oceans, fill warehouses, and wait silently at distribution centers. Yet much of this physical inventory remains frozen in financial terms - unleveraged, undocumented in capital markets, and untapped as collateral.
 
 This reality is more than a quirk of trade logistics. It creates a multi-trillion-dollar inefficiency. According to the ADB and WTO, the global trade finance gap now stands between $2.5 and $5 trillion - a hole that disproportionately impacts the very economies most dependent on trade: emerging markets.
 
@@ -26,11 +27,10 @@ To bring real-world assets like warehouse receipts into on-chain finance, a toke
 
 The MPT standard is engineered to solve this, offering precisely the functionality FortStock needed:
 
-* A way to embed legally relevant metadata directly on-chain (e.g., warrant number, expiry date, or the hash of the original receipt).
-* A token object that reflects the full lifecycle of an asset-from origination to collateralization to settlement-without requiring complex, external smart contracts.
+- A way to embed legally relevant metadata directly on-chain (e.g., warrant number, expiry date, or the hash of the original receipt).
+- A token object that reflects the full lifecycle of an asset-from origination to collateralization to settlement-without requiring complex, external smart contracts.
 
 With MPT, we can mirror how warehouse receipts and trade credit behave in the real world-but do it in a format that is native to blockchain and global from day one.
-
 
 ## Warehouse Receipts as MPT: What It Looks Like in Practice
 
@@ -42,13 +42,13 @@ We then transferred the token to a creditor address, mimicking the pledge of col
 
 These are test transactions, but the data is live, open, and verifiable by anyone:
 
-* Issuance of the warehouse receipt token with detailed memo fields.
-  
-   ![MPTokenIssuanceCreate Transaction](/blog/img/fortstock-mptokenissuancecreate.png)
+- Issuance of the warehouse receipt token with detailed memo fields.
 
-* Transfer to another wallet to simulate collateralization
+  ![MPTokenIssuanceCreate Transaction](/blog/img/fortstock-mptokenissuancecreate.png)
 
-   ![Transfer to simulate collateralization](/blog/img/fortstock-mpt-simulate-collateralization.png)
+- Transfer to another wallet to simulate collateralization
+
+  ![Transfer to simulate collateralization](/blog/img/fortstock-mpt-simulate-collateralization.png)
 
 ## The Capital Flows That Follow
 

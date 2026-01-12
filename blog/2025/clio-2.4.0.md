@@ -1,16 +1,17 @@
 ---
 category: 2025
-date: "2025-03-18"
+date: '2025-03-18'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing Clio version 2.4.0
-    description: Version 2.4.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds bug fixes.
+  title: Introducing Clio version 2.4.0
+  description: Version 2.4.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds bug fixes.
 labels:
-    - Clio Release Notes
+  - Clio Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing Clio version 2.4.0
 
 Version 2.4.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds bug fixes.
@@ -99,9 +100,9 @@ See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.3.1..
 
 ## Install / Upgrade
 
-| Package  |
-| :------- |
-| [Clio Server Linux Release (GCC)](https://github.com/XRPLF/clio/releases/download/2.4.0/clio_server_Linux_Release_gcc_2.4.0.zip) |
+| Package                                                                                                                                                |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Clio Server Linux Release (GCC)](https://github.com/XRPLF/clio/releases/download/2.4.0/clio_server_Linux_Release_gcc_2.4.0.zip)                       |
 | [Clio Server macOS Release (Apple Clang 16)](https://github.com/XRPLF/clio/releases/download/2.4.0/clio_server_macOS_Release_apple_clang_16_2.4.0.zip) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/clio/releases/tag/2.4.0). The most recent commit in the git log should be:

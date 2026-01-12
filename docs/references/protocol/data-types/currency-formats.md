@@ -2,12 +2,13 @@
 html: currency-formats.html
 parent: basic-data-types.html
 seo:
-    description: Precision and range for currency numbers, plus formats of custom currency codes.
+  description: Precision and range for currency numbers, plus formats of custom currency codes.
 label:
   - XRP
   - Tokens
   - MPTs
 ---
+
 # Currency Formats
 
 The XRP Ledger has three kinds of digital asset: XRP, [tokens](../../../concepts/tokens/index.md), and [Multi-purpose Tokens (MPTs)](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). All three types have high precision, although their formats are different.
@@ -18,18 +19,18 @@ The XRP Ledger has three kinds of digital asset: XRP, [tokens](../../../concepts
 
 The following table summarizes some of the differences between XRP, tokens, and MPTs in the XRP Ledger:
 
-| XRP                                                      | Tokens            | MPTs                 |
-|:---------------------------------------------------------|:------------------|:---------------------|
-| Has no issuer.                                           | Always issued by an XRP Ledger account. | Always issued by an XRP Ledger account. |
-| Specified as a string.                                   | Specified as an object. | Specified as an object. |
-| Tracked in [accounts](../ledger-data/ledger-entry-types/accountroot.md).                 | Tracked in [trust lines](../ledger-data/ledger-entry-types/ripplestate.md). | Tracked in holder's account. |
-| Can never be created; can only be destroyed.             | Can be issued or redeemed freely. | Can be issued or redeemed freely. |
-| Minimum value: `0`. (Cannot be negative.)                | Minimum value: `-9999999999999999e80`. Minimum nonzero absolute value: `1000000000000000e-96`. | Minimum value: `0`. (Cannot be negative.)   |
-| Maximum value `100000000000` (10<sup>11</sup>) XRP. That's `100000000000000000` (10<sup>17</sup>) "drops". | Maximum value `9999999999999999e80`. | Maximum value `0x7FFFFFFFFFFFFFFF`. |
-| Precise to the nearest "drop" (0.000001 XRP)             | 15 decimal digits of precision. |
-| Can't be [frozen](../../../concepts/tokens/fungible-tokens/freezes.md).                         | The issuer can [freeze](../../../concepts/tokens/fungible-tokens/freezes.md) balances. | The issuer can lock balances individually and globally. |
-| No transfer fees; XRP-to-XRP payments are always direct. | Can take indirect [paths](../../../concepts/tokens/fungible-tokens/paths.md) with each issuer charging a percentage [transfer fee](../../../concepts/tokens/fungible-tokens/transfer-fees.md). | Can charge a transfer fee for secondary sales of the token. |
-| Can be used in [Payment Channels](../../../concepts/payment-types/payment-channels.md) and [Escrow](../../../concepts/payment-types/escrow.md). | Not compatible with Payment Channels or Escrow. | Not compatible with Payment Channels or Escrow. |
+| XRP                                                                                                                                             | Tokens                                                                                                                                                                                         | MPTs                                                        |
+| :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- |
+| Has no issuer.                                                                                                                                  | Always issued by an XRP Ledger account.                                                                                                                                                        | Always issued by an XRP Ledger account.                     |
+| Specified as a string.                                                                                                                          | Specified as an object.                                                                                                                                                                        | Specified as an object.                                     |
+| Tracked in [accounts](../ledger-data/ledger-entry-types/accountroot.md).                                                                        | Tracked in [trust lines](../ledger-data/ledger-entry-types/ripplestate.md).                                                                                                                    | Tracked in holder's account.                                |
+| Can never be created; can only be destroyed.                                                                                                    | Can be issued or redeemed freely.                                                                                                                                                              | Can be issued or redeemed freely.                           |
+| Minimum value: `0`. (Cannot be negative.)                                                                                                       | Minimum value: `-9999999999999999e80`. Minimum nonzero absolute value: `1000000000000000e-96`.                                                                                                 | Minimum value: `0`. (Cannot be negative.)                   |
+| Maximum value `100000000000` (10<sup>11</sup>) XRP. That's `100000000000000000` (10<sup>17</sup>) "drops".                                      | Maximum value `9999999999999999e80`.                                                                                                                                                           | Maximum value `0x7FFFFFFFFFFFFFFF`.                         |
+| Precise to the nearest "drop" (0.000001 XRP)                                                                                                    | 15 decimal digits of precision.                                                                                                                                                                |
+| Can't be [frozen](../../../concepts/tokens/fungible-tokens/freezes.md).                                                                         | The issuer can [freeze](../../../concepts/tokens/fungible-tokens/freezes.md) balances.                                                                                                         | The issuer can lock balances individually and globally.     |
+| No transfer fees; XRP-to-XRP payments are always direct.                                                                                        | Can take indirect [paths](../../../concepts/tokens/fungible-tokens/paths.md) with each issuer charging a percentage [transfer fee](../../../concepts/tokens/fungible-tokens/transfer-fees.md). | Can charge a transfer fee for secondary sales of the token. |
+| Can be used in [Payment Channels](../../../concepts/payment-types/payment-channels.md) and [Escrow](../../../concepts/payment-types/escrow.md). | Not compatible with Payment Channels or Escrow.                                                                                                                                                | Not compatible with Payment Channels or Escrow.             |
 
 See [What is XRP?](../../../introduction/what-is-xrp.md), [Tokens](../../../concepts/tokens/index.md), and [Multi-purpose Tokens](../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md).
 
@@ -57,11 +58,11 @@ XRP amounts cannot be negative.
 
 To specify an amount of a [(fungible) token](../../../concepts/tokens/index.md), use an `Amount` object. Tokens use the `currency`, `value`, and `issuer` fields.
 
-| `Field`    | Type                       | Description                        |
-|:-----------|:---------------------------|:-----------------------------------|
-| `currency` | String - [Currency Code][] | Arbitrary currency code for the token. Cannot be `XRP`. |
+| `Field`    | Type                       | Description                                                                                                                                                                                                                                                                                                       |
+| :--------- | :------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currency` | String - [Currency Code][] | Arbitrary currency code for the token. Cannot be `XRP`.                                                                                                                                                                                                                                                           |
 | `value`    | [String Number][]          | Quoted decimal representation of the amount of the token. This can include scientific notation, such as `1.23e11` meaning 123,000,000,000. Both `e` and `E` may be used. This can be negative when displaying balances, but negative values are disallowed in other contexts such as specifying how much to send. |
-| `issuer`   | String                     | Generally, the [account](../../../concepts/accounts/index.md) that issues this token. In special cases, this can refer to the account that holds the token instead (for example, in a [Clawback](../transactions/types/clawback.md) transaction). |
+| `issuer`   | String                     | Generally, the [account](../../../concepts/accounts/index.md) that issues this token. In special cases, this can refer to the account that holds the token instead (for example, in a [Clawback](../transactions/types/clawback.md) transaction).                                                                 |
 
 [String Number]: #string-numbers
 
@@ -71,30 +72,29 @@ For example, to represent $153.75 US dollars issued by account `r9cZA1mLK5R5Am25
 
 ```json
 {
-    "currency": "USD",
-    "value": "153.75",
-    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
+  "currency": "USD",
+  "value": "153.75",
+  "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
+
 ### MPT Amounts
 
-Specify the amount of MPTs using the `value` field. 
+Specify the amount of MPTs using the `value` field.
 
-| `Field`    | Type                       | Description                        |
-|:-----------|:---------------------------|:-----------------------------------|
-| `mpt_issuance_id` | String              | Arbitrary unique identifier for a Multi-purpose Token. |
-| `value`    | [String Number][]          | A string representing a positive integer value.  Valid values for this field are between 0x0 and 0x7FFFFFFFFFFFFFFF. Use `AssetScale` to enable values as fractions of the MPT value. See [MPT Precision](#mpt-precision). |
+| `Field`           | Type              | Description                                                                                                                                                                                                               |
+| :---------------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `mpt_issuance_id` | String            | Arbitrary unique identifier for a Multi-purpose Token.                                                                                                                                                                    |
+| `value`           | [String Number][] | A string representing a positive integer value. Valid values for this field are between 0x0 and 0x7FFFFFFFFFFFFFFF. Use `AssetScale` to enable values as fractions of the MPT value. See [MPT Precision](#mpt-precision). |
 
 For example, to specify 1 million units of an MPT you would specify:
 
 ```json
 {
-    "mpt_issuance_id": 
-	     "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
-    "value": "1000000"
+  "mpt_issuance_id": "0000012FFD9EE5DA93AC614B4DB94D7E0FCE415CA51BED47",
+  "value": "1000000"
 }
 ```
-
 
 ### Specifying Without Amounts
 
@@ -156,11 +156,10 @@ For example, to express a value of 13.1 MPT, the MPT would require that the `Ass
 ```
 
 ## Currency Codes
+
 [Currency Code]: #currency-codes
 
 {% partial file="/docs/_snippets/data_types/currency_code.md" /%}
-
-
 
 ### Standard Currency Codes
 
@@ -181,5 +180,3 @@ You can also use a 160-bit (40-character) hexadecimal string, such as `444F4C4C4
 - Not all hexadecimal strings have a direct, human-readable format. See: [Normalize Currency Codes](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/normalize-currency-codes).
 
 **Deprecated:** Some previous versions of [ripple-lib](https://github.com/XRPLF/xrpl.js) supported an "interest-bearing" or "demurraging" currency code type, such as `015841551A748AD2C1F76FF6ECB0CCCD00000000`. These codes have the first 8 bits `0x01`. Demurraging / interest-bearing currencies are no longer supported, but you may find them in ledger data. For more information, see [Demurrage](../../../concepts/tokens/fungible-tokens/demurrage.md).
-
-

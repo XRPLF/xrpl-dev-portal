@@ -2,9 +2,10 @@
 html: demurrage.html
 parent: trust-lines-and-issuing.html
 seo:
-    description: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
+  description: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
 status: removed
 ---
+
 # Demurrage
 
 {% admonition type="danger" name="Warning" %}Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of XRP Ledger software.{% /admonition %}
@@ -40,10 +41,9 @@ To convert between display amounts and ledger amounts, you can use the following
 
 1. Calculate the value of `( e ^ (t ÷ τ) )`. We call this number the "demurrage coefficient". The demurrage coefficient is always relative to a specific time, such as the current time.
 2. Apply it to the amount to convert:
-    - To convert ledger values to display values, multiply by the demurrage coefficient.
-    - To convert display values to ledger values, divide by the demurrage coefficient.
+   - To convert ledger values to display values, multiply by the demurrage coefficient.
+   - To convert display values to ledger values, divide by the demurrage coefficient.
 3. If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's [token format](../../../references/protocol/data-types/currency-formats.md#token-precision).
-
 
 ## Interest-Bearing Currency Code Format
 
@@ -53,7 +53,7 @@ Rather than using the [standard currency code format](../../../references/protoc
 
 1. The first 8 bits must be `0x01`.
 2. The next 24 bits represent 3 characters of ASCII.
-    This is expected to be an ISO 4217 code. It supports the same characters as the standard format's ASCII characters.
+   This is expected to be an ISO 4217 code. It supports the same characters as the standard format's ASCII characters.
 3. The next 24 bits MUST be all `0`s.
 4. The next 64 bits are the interest rate of the currency, represented as "[e-folding time](http://en.wikipedia.org/wiki/E-folding)" in an IEEE 754 double format.
 5. The next 24 bits are reserved and should be all `0`s.
@@ -83,7 +83,7 @@ To support interest-bearing and demurraging tokens, client applications must imp
 
 ### ripple-lib Support
 
-Demurrage was supported in ripple-lib versions **0.7.37** through **0.12.9**. Demurrage is ***not supported*** in most modern libraries.
+Demurrage was supported in ripple-lib versions **0.7.37** through **0.12.9**. Demurrage is **_not supported_** in most modern libraries.
 
 The following code samples show how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the [Ripple Demurrage Calculator](https://ripple.github.io/ripple-demurrage-tool/).
 
@@ -94,14 +94,13 @@ To convert from a display value to a ledger value, use `Amount.from_human()`:
 // and pass in a reference_date that represents the current date
 // (in this case, ledger value 10 XAU with 0.5% annual demurrage,
 //  at 2017-11-04T00:07:50Z.)
-var demAmount = ripple.Amount.from_human('10 0158415500000000C1F76FF6ECB0BAC600000000',
-                                  {reference_date:563069270});
+var demAmount = ripple.Amount.from_human('10 0158415500000000C1F76FF6ECB0BAC600000000', { reference_date: 563069270 })
 
 // set the issuer
-demAmount.set_issuer("rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh");
+demAmount.set_issuer('rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh')
 
 // get the JSON format for the ledger amount
-console.log(demAmount.to_json());
+console.log(demAmount.to_json())
 
 // { "value": "10.93625123082769",
 //   "currency": "0158415500000000C1F76FF6ECB0BAC600000000",
@@ -113,14 +112,15 @@ To convert from a ledger value to a display value:
 ```js
 // create an Amount object with the ledger value,
 ledgerAmount = ripple.Amount.from_json({
-  "currency": "015841551A748AD2C1F76FF6ECB0CCCD00000000",
-  "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-  "value": "10.93625123082769"})
+  currency: '015841551A748AD2C1F76FF6ECB0CCCD00000000',
+  issuer: 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh',
+  value: '10.93625123082769',
+})
 
 // apply interest up to the current time to get the display amount
-var displayAmount = demAmount.applyInterest(new Date());
+var displayAmount = demAmount.applyInterest(new Date())
 
-console.log(displayAmount.to_json());
+console.log(displayAmount.to_json())
 
 // { "value": "9.999998874657716",
 //   "currency": "0158415500000000C1F76FF6ECB0BAC600000000",

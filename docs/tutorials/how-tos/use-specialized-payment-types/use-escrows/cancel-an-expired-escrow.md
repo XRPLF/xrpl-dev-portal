@@ -2,11 +2,12 @@
 html: cancel-an-expired-escrow.html
 parent: use-escrows.html
 seo:
-    description: Cancel an expired escrow.
+  description: Cancel an expired escrow.
 labels:
   - Escrow
   - Smart Contracts
 ---
+
 # Cancel an Expired Escrow
 
 An escrow in the XRP Ledger is expired when its `CancelAfter` time is lower than the `close_time` of the latest validated ledger. Escrows without a `CancelAfter` time never expire.
@@ -61,11 +62,11 @@ Response:
 
 ## 3. Submit EscrowCancel transaction
 
-***Anyone*** can cancel an expired escrow in the XRP Ledger by sending an [EscrowCancel transaction][]. Set the `Owner` field of the transaction to the `Account` of the `EscrowCreate` transaction that created this escrow. Set the `OfferSequence` field to the `Sequence` of the `EscrowCreate` transaction.
+**_Anyone_** can cancel an expired escrow in the XRP Ledger by sending an [EscrowCancel transaction][]. Set the `Owner` field of the transaction to the `Account` of the `EscrowCreate` transaction that created this escrow. Set the `OfferSequence` field to the `Sequence` of the `EscrowCreate` transaction.
 
 {% admonition type="success" name="Tip" %}If you don't know what `OfferSequence` to use, you can look up the transaction that created the Escrow: call the [tx method][] with the value of the Escrow's `PreviousTxnID` field. In `tx` response, use the `Sequence` value of that transaction as the `OfferSequence` value of the EscrowCancel transaction.{% /admonition %}
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 {% tabs %}
 
@@ -119,23 +120,22 @@ Response:
 
 In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the escrow, and the increase in `Balance` from 99999**8**9990 drops to 99999**9**9990 drops represents the return of the escrowed 10,000 drops of XRP (0.01 XRP).
 
-
 ## See Also
 
 - **Concepts:**
-    - [What is XRP?](../../../../introduction/what-is-xrp.md)
-    - [Payment Types](../../../../concepts/payment-types/index.md)
-        - [Escrow](../../../../concepts/payment-types/escrow.md)
+  - [What is XRP?](../../../../introduction/what-is-xrp.md)
+  - [Payment Types](../../../../concepts/payment-types/index.md)
+    - [Escrow](../../../../concepts/payment-types/escrow.md)
 - **Tutorials:**
-    - [Send XRP](../../send-xrp.md)
-    - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
-    - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
+  - [Send XRP](../../send-xrp.md)
+  - [Look Up Transaction Results](../../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+  - [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [EscrowCancel transaction][]
-    - [EscrowCreate transaction][]
-    - [EscrowFinish transaction][]
-    - [account_objects method][]
-    - [tx method][]
-    - [Escrow ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+  - [EscrowCancel transaction][]
+  - [EscrowCreate transaction][]
+  - [EscrowFinish transaction][]
+  - [account_objects method][]
+  - [tx method][]
+  - [Escrow ledger object](../../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Stablecoins are a type of fungible token that are backed by various assets.
+  description: Stablecoins are a type of fungible token that are backed by various assets.
 labels:
   - XRP
   - Stablecoin
 ---
+
 # Stablecoins
 
 A stablecoin is a type of fungible token that is backed by assets of value outside of the blockchain in which is issued. Typically, the stablecoin's issuer holds backing assets representing the equivalent value of the tokens issued on the XRP ledger. A stablecoin issuer is sometimes called a _gateway_, because currency can move into and out of the XRP Ledger through their service. If the assets that back a token use the same amounts and denomination as the tokens in the ledger, that token can be considered a "stablecoin" because—in theory—the exchange rate between that token and its off-ledger representation should be stable at 1:1.
@@ -25,7 +26,7 @@ Crypto-backed stablecoins are similar to fiat-backed stablecoins, but using cryp
 
 ## Commodity Backed
 
-Commodity-backed stablecoins are based on a fungible asset such as gold, real estate, oil,  or electricity. Commodities are relatively stable and liquid, but are centralized and require regular audits to verify their value.
+Commodity-backed stablecoins are based on a fungible asset such as gold, real estate, oil, or electricity. Commodities are relatively stable and liquid, but are centralized and require regular audits to verify their value.
 
 ## Financial Instrument Backed
 

@@ -1,14 +1,15 @@
 ---
 category: 2023
-date: "2023-09-06"
+date: '2023-09-06'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
-    - Amendments
+  - rippled Release Notes
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.12.0
 
 Version 1.12.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds new features and bug fixes, and introduces these amendments:
@@ -21,23 +22,21 @@ Version 1.12.0 of `rippled`, the reference server implementation of the XRP Ledg
 
 <!-- BREAK -->
 
-
 ## Action Required
 
 Three new amendments are now open for voting according to the XRP Ledger's [amendment process](https://xrpl.org/amendments.html), which enables protocol changes following two weeks of >80% support from trusted validators.
 
 If you operate an XRP Ledger server, upgrade to version 1.12.0 by September 20, 2023 to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                                | SHA-256                                                            |
+| :--------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.12.0-1.el7.x86_64.rpm) | `9907ee871f3a42e3fb5bde7cfc41d9fd82f495f8a8f85135086a5624c29c74de` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.12.0-1_amd64.deb) | `cf7b7b2130b8255d8c13fc18b3a4a0ec251d88386b69ec2e60c34b31df310f91` |
-| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.12.0-1_amd64.deb)  | `cf7b7b2130b8255d8c13fc18b3a4a0ec251d88386b69ec2e60c34b31df310f91` |
+| [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds)                                     | (Use signature verification)                                       |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -49,16 +48,15 @@ Date:   Wed Sep 6 13:09:04 2023 -0700
     Set version to 1.12.0
 ```
 
-
 ## Changelog
 
-
 ### Amendments, New Features, and Changes
+
 (These are changes which may impact or be useful to end users. For example, you may be able to update your code/workflow to take advantage of these changes.)
 
 - **`AMM`**: Introduces an automated market maker (AMM) protocol to the XRP Ledger's decentralized exchange, enabling you to trade assets without a counterparty. For more information about AMMs, see: [Automated Market Maker](https://opensource.ripple.com/docs/xls-30d-amm/amm-uc/). [#4294](https://github.com/XRPLF/rippled/pull/4294)
 
-- **`Clawback`**: Adds a setting, *Allow Clawback*, which lets an issuer recover, or _claw back_, tokens that they previously issued. Issuers cannot enable this setting if they have issued tokens already. For additional documentation on this feature, see: [#4553](https://github.com/XRPLF/rippled/pull/4553).
+- **`Clawback`**: Adds a setting, _Allow Clawback_, which lets an issuer recover, or _claw back_, tokens that they previously issued. Issuers cannot enable this setting if they have issued tokens already. For additional documentation on this feature, see: [#4553](https://github.com/XRPLF/rippled/pull/4553).
 
 - **`fixReducedOffersV1`**: Reduces the occurrence of order books that are blocked by reduced offers. [#4512](https://github.com/XRPLF/rippled/pull/4512)
 
@@ -66,8 +64,8 @@ Date:   Wed Sep 6 13:09:04 2023 -0700
 
 - Removed the deprecated `accepted`, `seqNum`, `hash`, and `totalCoins` fields from the `ledger` method. [#4244](https://github.com/XRPLF/rippled/pull/4244)
 
-
 ### Bug Fixes and Performance Improvements
+
 (These are behind-the-scenes improvements, such as internal changes to the code, which are not expected to impact end users.)
 
 - Added a pre-commit hook that runs the clang-format linter locally before committing changes. To install this feature, see: [CONTRIBUTING](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md). [#4599](https://github.com/XRPLF/rippled/pull/4599)
@@ -81,7 +79,6 @@ Date:   Wed Sep 6 13:09:04 2023 -0700
 - Replaced hand-rolled code with `std::from_chars` for better maintainability. [#4473](https://github.com/XRPLF/rippled/pull/4473)
 
 - Removed an unused `TypedField` move constructor. [#4567](https://github.com/XRPLF/rippled/pull/4567)
-
 
 ### Docs and Build System
 
@@ -106,16 +103,13 @@ Date:   Wed Sep 6 13:09:04 2023 -0700
 
 - Added quality-of-life improvements to workflows, using new [concurrency control](https://docs.github.com/en/actions/using-jobs/using-concurrency) features. [#4597](https://github.com/XRPLF/rippled/pull/4597)
 
-
 [Full Commit Log](https://github.com/XRPLF/rippled/compare/1.11.0...1.12.0)
-
 
 ### GitHub
 
 The public source code repository for `rippled` is hosted on GitHub at <https://github.com/XRPLF/rippled>.
 
 We welcome all contributions and invite everyone to join the community of XRP Ledger developers to help build the Internet of Value.
-
 
 ## Credits
 

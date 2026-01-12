@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Deliver escrowed funds to the intended recipient.
+  description: Deliver escrowed funds to the intended recipient.
 labels:
-    - Escrow
+  - Escrow
 ---
+
 # EscrowFinish
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/Escrow.cpp "Source")
 
 Deliver funds from an [escrow](../../../../concepts/payment-types/escrow.md) to the recipient.
@@ -13,27 +15,26 @@ Deliver funds from an [escrow](../../../../concepts/payment-types/escrow.md) to 
 
 ```json
 {
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "TransactionType": "EscrowFinish",
-    "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "OfferSequence": 7,
-    "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
-    "Fulfillment": "A0028000"
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "TransactionType": "EscrowFinish",
+  "Owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "OfferSequence": 7,
+  "Condition": "A0258020E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855810100",
+  "Fulfillment": "A0028000"
 }
 ```
 
 {% tx-example txid="317081AF188CDD4DBE55C418F41A90EC3B959CDB3B76105E0CBE6B7A0F56C5F7" /%}
 
-
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field           | JSON Type            | [Internal Type][] | Required? | Description |
-|:----------------|:---------------------|:------------------|:----------|:------------|
-| `Owner`         | String - [Address][] | AccountID         | Yes       | The source account that funded the escrow. |
-| `OfferSequence` | Number               | UInt32            | Yes       | Transaction sequence of [EscrowCreate transaction][] that created the escrow to finish. |
-| `Condition`     | String - Hexadecimal | Blob              | No        | The (previously-supplied) [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the escrow. |
+| Field           | JSON Type            | [Internal Type][] | Required? | Description                                                                                                                                                                                                                   |
+| :-------------- | :------------------- | :---------------- | :-------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Owner`         | String - [Address][] | AccountID         | Yes       | The source account that funded the escrow.                                                                                                                                                                                    |
+| `OfferSequence` | Number               | UInt32            | Yes       | Transaction sequence of [EscrowCreate transaction][] that created the escrow to finish.                                                                                                                                       |
+| `Condition`     | String - Hexadecimal | Blob              | No        | The (previously-supplied) [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the escrow.                                                                       |
 | `CredentialIDs` | Array of Strings     | Vector256         | No        | Set of Credentials to authorize a deposit made by this transaction. Each member of the array must be the ledger entry ID of a Credential entry in the ledger. For details, see [Credential IDs](./payment.md#credential-ids). |
-| `Fulfillment`   | String - Hexadecmial | Blob              | No        | The [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the escrow's `Condition`. |
+| `Fulfillment`   | String - Hexadecmial | Blob              | No        | The [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the escrow's `Condition`.                                                           |
 
 Any account may submit an EscrowFinish transaction.
 
@@ -49,13 +50,13 @@ In [non-production networks](../../../../concepts/networks-and-servers/parallel-
 
 Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
-| Error Code                | Description |
-|:------------------------- |:------------|
+| Error Code                | Description                                                                                                                                                   |
+| :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `tecNO_AUTH`              | The transaction failed because authorization requirements were not met. For example, the issuer requires authorization and the destination is not authorized. |
-| `tecNO_LINE`              | The destination account does not have a trust line with the issuer. For Trust Line Tokens only. |
-| `tecNO_ENTRY`             | The destination account does not hold the MPT. |
-| `tecINSUFFICIENT_RESERVE` | Unable to create a trust line or MPToken due to lack of reserves. |
-| `tecFROZEN` | The token is deep frozen (Trust Line Tokens) or locked (for MPTs). |
+| `tecNO_LINE`              | The destination account does not have a trust line with the issuer. For Trust Line Tokens only.                                                               |
+| `tecNO_ENTRY`             | The destination account does not hold the MPT.                                                                                                                |
+| `tecINSUFFICIENT_RESERVE` | Unable to create a trust line or MPToken due to lack of reserves.                                                                                             |
+| `tecFROZEN`               | The token is deep frozen (Trust Line Tokens) or locked (for MPTs).                                                                                            |
 
 ## See Also
 

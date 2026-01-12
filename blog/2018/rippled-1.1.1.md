@@ -1,13 +1,14 @@
 ---
-date: "2018-10-23"
+date: '2018-10-23'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled Version 1.1.1
 
 Ripple has released `rippled` version 1.1.1, which improves handling of validator list sites. These changes improve retrieval of Ripple's recommended UNL for servers in restrictive network environments, and prevent incorrect behavior in cases where a server is unable to fetch a validator list update before the previous list expires.
@@ -18,7 +19,7 @@ Ripple has released `rippled` version 1.1.1, which improves handling of validato
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to version 1.1.1, then your server may behave incorrectly if it is unable to fetch a new validator list before its current list expires. (If your network configuration causes `rippled` to encounter HTTP redirects when fetching the validator list, this can prevent `rippled` 1.1.0 and lower from correctly downloading the updated list in a timely manner.)
+- **If you operate a `rippled` server**, but do not upgrade to version 1.1.1, then your server may behave incorrectly if it is unable to fetch a new validator list before its current list expires. (If your network configuration causes `rippled` to encounter HTTP redirects when fetching the validator list, this can prevent `rippled` 1.1.0 and lower from correctly downloading the updated list in a timely manner.)
 
 ## Upgrading
 
@@ -58,12 +59,10 @@ Related documentation is available in the [XRP Ledger Developer Portal](/docs/),
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
-
-
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## 1.1.1 Change Log
 
@@ -72,6 +71,6 @@ Other resources:
 - Follow the `Location:` HTTP header when fetching a validator list results in a redirect status code such as **301 Moved Permanently**, **302 Found**, **307 Temporary Redirect**, or **308 Permanent Redirect**. (RIPD-1669)
 
 - Improve behavior of `rippled` servers when their latest available validator list is past its expiration (RIPD-1661):
-    - Report the problem with an ERROR-level log message.
-    - Stop sending validation messages for new ledgers until a non-expired validator list is available.
-    - Report the validator list as `expired` in the [server_info method](/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info) and [server_state method](/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state).
+  - Report the problem with an ERROR-level log message.
+  - Stop sending validation messages for new ledgers until a non-expired validator list is available.
+  - Report the validator list as `expired` in the [server_info method](/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info) and [server_state method](/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state).

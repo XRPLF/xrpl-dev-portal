@@ -2,11 +2,12 @@
 html: partial-payments.html
 parent: payment-types.html
 seo:
-    description: Los pagos parciales restan costes a la cantidad enviada, entregando una cantidad flexible. Los pagos parciales son útiles para devolver pagos no deseados sin incurrir en costes adicionales.
+  description: Los pagos parciales restan costes a la cantidad enviada, entregando una cantidad flexible. Los pagos parciales son útiles para devolver pagos no deseados sin incurrir en costes adicionales.
 labels:
   - Pagos
   - Seguridad
 ---
+
 # Pagos parciales
 
 El remitente de cualquier [transacción de pago][] puede habilitar el [flag de"Partial Payment"](../../references/protocol/transactions/types/payment.md#payment-flags) y enviar un pago que entregue menos de lo que indica el campo `Amount`. Al procesar cualquier Pago, utiliza el campo de metadatos `delivered_amount`, no el campo `Amount`. El `delivered_amount` es la cantidad que un pago realmente entregó.
@@ -51,7 +52,7 @@ Los pagos parciales tienen las siguientes limitaciones:
 
 - Un pago parcial no puede proporcionar el XRP para crear una dirección; en este caso se devuelve el [código de resultado][] `telNO_DST_PARTIAL`.
 - Pagos directoss de XRP a XRP no pueden ser pagos parciales; este caso devuelve el [código de resultado][] `temBAD_SEND_XRP_PARTIAL`.
-    - Sin embargo, los pagos entre divisas que involucran a XRP como una de las divisas _pueden_ ser pagos parciales.
+  - Sin embargo, los pagos entre divisas que involucran a XRP como una de las divisas _pueden_ ser pagos parciales.
 
 [código de resultado]: ../../references/protocol/transactions/transaction-results/index.md
 
@@ -70,15 +71,15 @@ Si ambas condiciones son verdaderas, entonces `delivered_amount` contiene el val
 
 Puedes encontrar el campo `delivered_amount` en los siguientes lugares:
 
-| API | Método | Campo |
-|-----|--------|-------|
-| [JSON-RPC / WebSocket][] | [método account_tx][] | `result.transactions` miembros del array `meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [método tx][] | `result.meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [método transaction_entry][] | `result.metadata.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [método ledger][] (con las transacciones ampliadas) | `result.ledger.transactions` miembros del array `metaData.delivered_amount` |
-| [WebSocket][] | [subscripciones Transaction](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) | Mensajes de subscripción de `meta.delivered_amount` |
-| ripple-lib v1.x | método `getTransaction` | `outcome.deliveredAmount` |
-| ripple-lib v1.x | método `getTransactions` | miembros del array `outcome.deliveredAmount` |
+| API                      | Método                                                                                                                                      | Campo                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [JSON-RPC / WebSocket][] | [método account_tx][]                                                                                                                       | `result.transactions` miembros del array `meta.delivered_amount`            |
+| [JSON-RPC / WebSocket][] | [método tx][]                                                                                                                               | `result.meta.delivered_amount`                                              |
+| [JSON-RPC / WebSocket][] | [método transaction_entry][]                                                                                                                | `result.metadata.delivered_amount`                                          |
+| [JSON-RPC / WebSocket][] | [método ledger][] (con las transacciones ampliadas)                                                                                         | `result.ledger.transactions` miembros del array `metaData.delivered_amount` |
+| [WebSocket][]            | [subscripciones Transaction](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) | Mensajes de subscripción de `meta.delivered_amount`                         |
+| ripple-lib v1.x          | método `getTransaction`                                                                                                                     | `outcome.deliveredAmount`                                                   |
+| ripple-lib v1.x          | método `getTransactions`                                                                                                                    | miembros del array `outcome.deliveredAmount`                                |
 
 [WebSocket]: ../../references/http-websocket-apis/index.md
 [JSON-RPC / WebSocket]: ../../references/http-websocket-apis/index.md
@@ -89,18 +90,17 @@ Si la integración de una institución financiera con el XRP Ledger asume que el
 
 **La forma correcta de procesar las transacciones de Pago entrantes es utilizar [el campo `delivered_amount` de los metadatos](#the-delivered_amount-field),** no el campo `Amount`. De este modo, una institución nunca se equivocará sobre cuanto recibe _realmente_.
 
-
 ### Pasos del escenario del Exploit
 
 Para realizar un exploit a una institución financiera vulnerable, un actor malicioso puede hacer lo siguiente:
 
-1. El actor malicioso envía una transacción de Pago a la institución. Esta transacción tiene un campo  `Amount` grande y tiene el flag de **`tfPartialPayment`** activado.
+1. El actor malicioso envía una transacción de Pago a la institución. Esta transacción tiene un campo `Amount` grande y tiene el flag de **`tfPartialPayment`** activado.
 2. El pago parcial tiene éxito (código de resultado `tesSUCCESS`) pero en realidad entrega una cantidad muy pequeña de la divisa especificada.
 3. La institución vulnerable lee el campo `Amount` sin mirar el campo `Flags` o el campo de metadatos `delivered_amount`.
 4. La institutución vulnerable acredita al actor malicioso en un sistema externo, como el propio ledger de la institución, por el `Amount` completo, a pesar de recibir solo un `delivered_amount` pequeño en el XRP Ledger.
 5. El actor malicioso retira tanto saldo como sea posible antes de que la institución vulnerable note la discrepancia.
-    - Los actores maliciosos suelen preferir convertir el saldo a otra criptomoneda como Bitcoin, porque las transacciones de blockchain suelen ser irreversibles. Con un retiro a un sistema de moneda fiduciaria, la institución financiera podría revertir o cancelar la transacción varios días después de que se ejecute inicialmente.
-    - En el caso de un exchange, el actor malicioso también puede retirar un saldo de XRP directamente de nuevo al XRP Ledger.
+   - Los actores maliciosos suelen preferir convertir el saldo a otra criptomoneda como Bitcoin, porque las transacciones de blockchain suelen ser irreversibles. Con un retiro a un sistema de moneda fiduciaria, la institución financiera podría revertir o cancelar la transacción varios días después de que se ejecute inicialmente.
+   - En el caso de un exchange, el actor malicioso también puede retirar un saldo de XRP directamente de nuevo al XRP Ledger.
 
 En el caso de un comerciante, el orden de las operaciones es ligeramente diferente, pero el concepto es el mismo:
 
@@ -119,22 +119,21 @@ Utilizar [el campo `delivered_amount`](#the-delivered_amount-field) al procesar 
 - Añade chequeos adicionales a la lógica de tu negocio para procesar los retiros. Nunca proceses un retiro si el balance total que tienes en el XRP Ledger no coincide con tus activos y obligaciones esperados.
 - Sigue las directrices "Know Your Customer" y verifica estrictamente las identidades de tus clientes. Puede que reconozcas y bloquees usuarios maliciosos de antemano, o emprender acciones legales contra el actor malicioso que genera exploits a tu sistema.
 
-
 ## Ver también
 
 - **Herramientas:**
-    - [Remitente de la transacción](/resources/dev-tools/tx-sender)
+  - [Remitente de la transacción](/resources/dev-tools/tx-sender)
 - **Conceptos:**
-    - [Transacciones](../transactions/index.md)
+  - [Transacciones](../transactions/index.md)
 - **Tutoriales:**
-    - [Buscar resultados de transacciones](../transactions/finality-of-results/look-up-transaction-results.md)
-    - [Monitorear pagos recibidos con WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
-    - [Usar tipos de pagos especializados](../../tutorials/how-tos/use-specialized-payment-types/index.md)
-    - [Listar XRP en un Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
+  - [Buscar resultados de transacciones](../transactions/finality-of-results/look-up-transaction-results.md)
+  - [Monitorear pagos recibidos con WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+  - [Usar tipos de pagos especializados](../../tutorials/how-tos/use-specialized-payment-types/index.md)
+  - [Listar XRP en un Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **Referencias:**
-    - [Transacción de Pago][]
-    - [Metadatos de transacción](../../references/protocol/transactions/metadata.md)
-    - [método account_tx][]
-    - [método tx][]
+  - [Transacción de Pago][]
+  - [Metadatos de transacción](../../references/protocol/transactions/metadata.md)
+  - [método account_tx][]
+  - [método tx][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

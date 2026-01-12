@@ -1,44 +1,51 @@
 ---
 seo:
-    description: Query peer servers for a specific ledger version.
+  description: Query peer servers for a specific ledger version.
 labels:
-    - Data Retention
+  - Data Retention
 ---
+
 # ledger_request
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LedgerRequest.cpp "Source")
 
 The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
 
-*The `ledger_request` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
+_The `ledger_request` method is an [admin method](../index.md) that cannot be run by unprivileged users!_
 
 ### Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": 102,
-    "command": "ledger_request",
-    "ledger_index": 13800000
+  "id": 102,
+  "command": "ledger_request",
+  "ledger_index": 13800000
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```
 rippled ledger_request 13800000
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The request includes the following parameters:
 
-| `Field`        | Type   | Description                                        |
-|:---------------|:-------|:---------------------------------------------------|
-| `ledger_index` | Number | _(Optional)_ Retrieve the specified ledger by its [Ledger Index][]. |
+| `Field`        | Type   | Description                                                             |
+| :------------- | :----- | :---------------------------------------------------------------------- |
+| `ledger_index` | Number | _(Optional)_ Retrieve the specified ledger by its [Ledger Index][].     |
 | `ledger_hash`  | String | _(Optional)_ Retrieve the specified ledger by its identifying [Hash][]. |
 
 You must provide either `ledger_index` or `ledger_hash` but not both.
@@ -54,6 +61,7 @@ A failure response indicates the status of fetching the ledger. A successful res
 {% tabs %}
 
 {% tab label="Commandline (failure)" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -77,9 +85,11 @@ Connecting to 127.0.0.1:5005
     }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline (in-progress)" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -124,9 +134,11 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline (success)" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -155,6 +167,7 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -169,16 +182,16 @@ The three possible response formats are as follows:
 
 When the server is in the progress of fetching a ledger, but has not yet finished, the `rippled` server returns a ledger request object indicating its progress towards fetching the ledger. This object has the following fields:
 
-| `Field`                     | Type             | Description                 |
-|:----------------------------|:-----------------|:----------------------------|
-| `hash`                      | String           | (May be omitted) The [Hash][] of the requested ledger, if the server knows it. |
-| `have_header`               | Boolean          | Whether the server has the header section of the requested ledger. |
-| `have_state`                | Boolean          | (May be omitted) Whether the server has the full state data of the requested ledger. |
-| `have_transactions`         | Boolean          | (May be omitted) Whether the server has the full transaction set of the requested ledger. |
-| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of objects in the state data that the server still needs to retrieve. |
+| `Field`                     | Type             | Description                                                                                                 |
+| :-------------------------- | :--------------- | :---------------------------------------------------------------------------------------------------------- |
+| `hash`                      | String           | (May be omitted) The [Hash][] of the requested ledger, if the server knows it.                              |
+| `have_header`               | Boolean          | Whether the server has the header section of the requested ledger.                                          |
+| `have_state`                | Boolean          | (May be omitted) Whether the server has the full state data of the requested ledger.                        |
+| `have_transactions`         | Boolean          | (May be omitted) Whether the server has the full transaction set of the requested ledger.                   |
+| `needed_state_hashes`       | Array of Strings | (May be omitted) Up to 16 hashes of objects in the state data that the server still needs to retrieve.      |
 | `needed_transaction_hashes` | Array of Strings | (May be omitted) Up to 16 hashes of objects in the transaction set that the server still needs to retrieve. |
-| `peers`                     | Number           | How many peers the server is querying to find this ledger. |
-| `timeouts`                  | Number           | Number of times fetching this ledger has timed out so far. |
+| `peers`                     | Number           | How many peers the server is querying to find this ledger.                                                  |
+| `timeouts`                  | Number           | Number of times fetching this ledger has timed out so far.                                                  |
 
 ### Possible Errors
 

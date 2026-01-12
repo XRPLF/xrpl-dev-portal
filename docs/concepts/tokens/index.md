@@ -1,15 +1,16 @@
 ---
 seo:
-    description: Anyone can make tokens representing digital value on the XRP Ledger. Learn about types of tokens and how they are used.
+  description: Anyone can make tokens representing digital value on the XRP Ledger. Learn about types of tokens and how they are used.
 labels:
   - Tokens
 ---
+
 # Tokens
 
 All assets other than XRP can be represented in the XRP Ledger as _tokens_. Tokens can be fungible, meaning all units of that token are interchangeable and indistinguishable; or non-fungible, meaning each token is unique and indivisible. The XRP has three token standards to choose from, depending on the type of asset you need:
 
 - **Trust line tokens** are the "version 1" fungible token standard. They are fully available in production on the XRP Ledger, and can be used for [cross-currency payments](../payment-types/cross-currency-payments.md) or traded in the [decentralized exchange](decentralized-exchange/index.md). However, they have some edge cases that are important to know about before using them.
-    {% admonition type="info" name="Note" %}Trust line tokens on the XRP Ledger have also been called "IOUs" (as in [I-owe-you](https://en.wikipedia.org/wiki/IOU)) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that these tokens can represent. <!-- STYLE_OVERRIDE: ious -->{% /admonition %}
+  {% admonition type="info" name="Note" %}Trust line tokens on the XRP Ledger have also been called "IOUs" (as in [I-owe-you](https://en.wikipedia.org/wiki/IOU)) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that these tokens can represent. <!-- STYLE_OVERRIDE: ious -->{% /admonition %}
 - **Multi-Purpose Tokens (MPTs)** are the "version 2" fungible token standard. They are in active development, but do not have full feature parity with trust line tokens. They have been designed for greater efficiency and ease of use based on lessons learned from trust line tokens on the XRP Ledger. {% amendment-disclaimer name="MPTokensV1" /%}
 - **[Non-fungible tokens (NFTs)](nfts/index.md)** encode ownership of unique and indivisible tokens, which could represent physical, non-physical, or purely digital goods, such as works of art or in-game items.
 
@@ -17,7 +18,7 @@ Anyone can issue any of these types of tokens on the XRP Ledger, for any use cas
 
 ## Stablecoins
 
-Stablecoins are a common model for tokens in the XRP Ledger. The issuer holds assets of  value outside of the XRP Ledger, and issues tokens representing the equivalent value on the ledger.
+Stablecoins are a common model for tokens in the XRP Ledger. The issuer holds assets of value outside of the XRP Ledger, and issues tokens representing the equivalent value on the ledger.
 
 See [Stablecoins](fungible-tokens/stablecoins/index.md).
 

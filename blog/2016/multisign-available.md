@@ -1,14 +1,15 @@
 ---
-date: "2016-06-27"
+date: '2016-06-27'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 category: 2016
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
-# Multi-Signing Now Available #
+
+# Multi-Signing Now Available
 
 As [predicted previously](/blog/2016/multisign-reminder), multi-signing became available on the Ripple Consensus Ledger this afternoon in Pacific time ([2016-06-27T11:34:41Z](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7), to be exact).
 
@@ -28,17 +29,15 @@ The Ripple Consensus Ledger's multi-signing feature also allows signers to indep
 3. [Assign a Regular Key Pair](/docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair) to the signer's address and disable its master key. (Funded addresses can only sign using their master key pair if it's not disabled.)
 4. Have that signer use its regular key pair to contribute to your multi-signatures.
 
-
-## Further Reading ##
+## Further Reading
 
 - [Multi-Signing Summary](/docs/concepts/accounts/multi-signing)
 - [How to Multi-Sign](/docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction)
 - [MultiSign Amendment](/resources/known-amendments.md#multisign)
 
+## Other resources:
 
-## Other resources: ##
-
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: [support@ripple.com](mailto:support@ripple.com)
-* XRP Chat: <http://www.xrpchat.com/>
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: [support@ripple.com](mailto:support@ripple.com)
+- XRP Chat: <http://www.xrpchat.com/>

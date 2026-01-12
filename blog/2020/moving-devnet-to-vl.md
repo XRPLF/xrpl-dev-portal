@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-08-10"
+date: '2020-08-10'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Moving Devnet to a Validator List
 
 Ripple plans to upgrade [the XRP Ledger Devnet](https://xrpl.org/parallel-networks.html) to use a recommended validator list like the ones used on the Testnet and Mainnet. Ripple also plans to reset the Devnet history and state at this time. If you operate a server on the XRP Ledger Devnet, or run software on the Devnet, you must upgrade your configuration to remain synced.
@@ -22,19 +23,17 @@ Ripple plans to add more trusted validators to the Devnet before testing the upc
 
 Balances in the Devnet have no real-world value. To enforce this and to keep the Devnet a free place to run tests, Ripple resets the ledger state and history of the Devnet periodically.
 
-
 ## Actions Required
 
 Ripple plans to upgrade and reset its Devnet validators on Tuesday, 2020-08-11. After the upgrade, the way to [connect your server to the Devnet](https://xrpl.org/connect-your-rippled-to-the-xrp-test-net.html) will be to use a validator list site, as described below.
 
 If you had any Devnet accounts, balances, or in-ledger settings, you must re-create those accounts and settings. Use the [Devnet Faucet](https://xrpl.org/xrp-testnet-faucet.html) to fund new addresses with a new supply of Devnet Test XRP.
 
-
 ### Configuration Changes
 
 To connect to the Devnet after the update, complete the following steps:
 
-1. Add the new validator list and key to your `validators.txt`.
+1.  Add the new validator list and key to your `validators.txt`.
 
         [validator_list_sites]
         https://vl.devnet.rippletest.net
@@ -44,7 +43,7 @@ To connect to the Devnet after the update, complete the following steps:
 
     The `validators.txt` file defines a server's trusted validator settings. The [recommended installation](https://xrpl.org/install-rippled.html) places this file at `/etc/opt/ripple/validators.txt` by default.
 
-2. Remove or comment-out any other URLs in `[validator_list_sites]` and any other keys in `[validator_list_keys]`. If this server was previously connected to the devnet, **remove or comment out the `[validators]` stanza and any hard-coded validator public keys in that stanza**.
+2.  Remove or comment-out any other URLs in `[validator_list_sites]` and any other keys in `[validator_list_keys]`. If this server was previously connected to the devnet, **remove or comment out the `[validators]` stanza and any hard-coded validator public keys in that stanza**.
 
     For example:
 
@@ -58,14 +57,13 @@ To connect to the Devnet after the update, complete the following steps:
         # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
         # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
 
-3. After changing your config, **restart** the `rippled` service.
+3.  After changing your config, **restart** the `rippled` service.
 
         $ sudo systemctl restart rippled
 
 {% admonition type="success" name="Update" %}
 The `validator_list_keys` above has been updated for the new key introduced on February 3, 2025.
 {% /admonition %}
-
 
 ## Next Steps
 
@@ -74,5 +72,6 @@ Stay tuned to the [XRP Ledger Dev Blog](https://xrpl.org/blog/) for the upcoming
 Other resources:
 
 - [XRP Ledger Dev Portal](https://xrpl.org/)
+
 * [The Xpring Forum](https://forum.xpring.io/)
 * [XRP Chat Forum](http://www.xrpchat.com/)

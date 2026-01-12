@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-05-30"
+date: '2020-05-30'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: Xrplorer
 
 This week on Developer Reflections, we're proud to highlight [Xrplorer](https://xrplorer.com), a powerful open analytics platform built on top of a graph database representation of the XRP Ledger.

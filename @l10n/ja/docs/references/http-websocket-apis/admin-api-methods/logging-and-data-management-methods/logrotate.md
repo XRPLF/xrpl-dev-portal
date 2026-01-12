@@ -2,11 +2,13 @@
 html: logrotate.html
 parent: logging-and-data-management-methods.html
 seo:
-    description: ログファイルを閉じて再度開きます。
+  description: ログファイルを閉じて再度開きます。
 labels:
   - データ保持
 ---
+
 # logrotate
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/743bd6c9175c472814448ea889413be79dfd1c07/src/ripple/rpc/handlers/LogRotate.cpp "Source")
 
 `logrotate`コマンドは、ログファイルを閉じて再度開きます。これは、Linuxファイルシステムでのログローテーションを促進することを目的としています。
@@ -42,24 +44,29 @@ labels:
 _`logrotate`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
+
 リクエストのフォーマットの例:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": "lr1",
-    "command": "logrotate"
+  "id": "lr1",
+  "command": "logrotate"
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 #Syntax: logrotate
 rippled logrotate
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -73,6 +80,7 @@ rippled logrotate
 {% tabs %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 200 OK
 
@@ -84,9 +92,11 @@ rippled logrotate
 }
 
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -99,18 +109,19 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
-| `Field`   | 型     | 説明                                                    |
-|:----------|:-------|:--------------------------------------------------------|
+| `Field`   | 型     | 説明                                                                                        |
+| :-------- | :----- | :------------------------------------------------------------------------------------------ |
 | `message` | 文字列 | 正常に完了した場合、次のメッセージが含まれています。`The log file was closed and reopened.` |
 
 ### 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+- いずれかの[汎用エラータイプ][]。
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

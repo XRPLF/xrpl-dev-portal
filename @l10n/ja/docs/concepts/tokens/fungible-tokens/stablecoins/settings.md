@@ -2,11 +2,12 @@
 html: stablecoin-settings.html
 parent: stablecoins.html
 seo:
-    description: Settings to configure before issuing your stablecoin.
+  description: Settings to configure before issuing your stablecoin.
 labels:
   - XRP
   - ステーブルコイン
 ---
+
 # ステーブルコインの設定
 
 新しいステーブルコインを発行する前に、最初にコインを発行すると変更不可能とする設定を行う必要があります。
@@ -25,7 +26,6 @@ labels:
 
 スタンバイアカウントと運用アカウントを使用することで、発行アカウントをハッキング攻撃から守ることができ、またステーブルコインの作成と破棄を監視しやすくなります。
 
-
 ## 取引手数料の設定
 
 送金手数料の設定は、アカウント間でトークンを送金する際にパーセンテージの手数料をユーザに請求します。
@@ -33,7 +33,6 @@ labels:
 ユーザが送金手数料ありのトークンを送信すると、送信側からは送信金額に加えて送金手数料が引き落とされ、受信側には送信金額のみが入金されます。送金手数料の金額はXRP Ledgerから「消滅」します。つまり、ユーザが送金手数料を支払うたびに、担保として保持する必要のある金額が減少するのです。
 
 詳しくは[送金手数料](../transfer-fees.md)をご覧ください。
-
 
 ## ティックサイズの設定
 
@@ -43,7 +42,6 @@ labels:
 
 [ティックサイズ](../../decentralized-exchange/ticksize.md)をご覧ください。
 
-
 ## Default Rippleフラグの設定
 
 Default Rippleフラグはトラストラインの残高をデフォルトでRipple(波及)させるかどうかを制御します。Ripplingは顧客間でトークンを送ったり取引したりすることを可能にするものです。発行者はその発行アドレスへの全てのトラストラインでRipplingを許可しなければなりません(MUST)。
@@ -51,7 +49,6 @@ Default Rippleフラグはトラストラインの残高をデフォルトでRip
 顧客に発行アドレスへのトラストラインの作成を依頼する前に、発行アドレスのDefault Rippleフラグを有効にしてください。そうでない場合は、他のアドレスが作成したトラストラインごとに、個別にNo Rippleフラグを無効にする必要があります。
 
 [Rippling](../rippling.md)をご覧ください。
-
 
 ## 宛先タグの有効化
 
@@ -63,13 +60,11 @@ Default Rippleフラグはトラストラインの残高をデフォルトでRip
 
 ステーブルコインの作成と配布をコントロールするには、いくつかのオプションがあります。
 
-
 ### 認可トラストライン
 
 KYC(Know Your Customer)やAML(Anti-Money Laundering)などのコンプライアンスルールに従う必要がある場合、トラストラインを使用して、ステーブルコインの配布を許可されたプールを作成することができます。これにより、資金が誰に送金されるかを確認することができます。
 
 [認可トラストライン](../authorized-trust-lines.md)をご覧ください。
-
 
 ### Freezeフラグ
 
@@ -78,7 +73,6 @@ KYC(Know Your Customer)やAML(Anti-Money Laundering)などのコンプライア�
 逆に、トークンをフリーズする能力を永久に放棄する「No Freeze」を設定することもできます。これにより、発行者がトークン同士の取引を妨害でき無くなるという意味で、そのステーブルコインはより現実の通貨に近くなります。
 
 [トークンのフリーズ](../freezes.md)をご覧ください。
-
 
 ### Clawbackフラグ
 

@@ -1,14 +1,15 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-04-14"
+  editPage:
+    hide: true
+date: '2021-04-14'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Development
+  - Development
 author: Javier Romero
 ---
+
 # XRP Ledger Node Configurator
 
 The XRP Ledger is open to anyone: all you need is a computer. For many people, using one of the many available client applications, user interfaces or portals is sufficient. But if you want to go beyond [exploring the ledger](https://livenet.xrpl.org/) or sending a payment, you need to run a server to participate as a node in the peer-to-peer network that manages the Ledger.
@@ -21,15 +22,14 @@ Before you set up an XRPL node, you need to know why you're setting up a server.
 
 Here are some questions you need to answer when configuring a node:
 
-* Do you need full transaction history, none, or just some of it?  
-* What ports and protocols do you need?  
-* What database do you want to use?  
-* What Node Size should you choose?  
-* Are you following best practices for your use case? For example, if you're running a validator, you should not reveal your IP address or allow public WebSocket connections.
-* Are you running your node on Mainnet, Testnet, or just for your testing?
+- Do you need full transaction history, none, or just some of it?
+- What ports and protocols do you need?
+- What database do you want to use?
+- What Node Size should you choose?
+- Are you following best practices for your use case? For example, if you're running a validator, you should not reveal your IP address or allow public WebSocket connections.
+- Are you running your node on Mainnet, Testnet, or just for your testing?
 
 Choosing suitable configuration settings means you can meet your requirements. But each decision also has potential tradeoffs that could impact performance and security.
-
 
 ## XRP Ledger Node Configurator to the Rescue
 
@@ -41,14 +41,12 @@ It also provides contextual information about each decision and links to the off
 
 For example:
 
-* If you are going to run a Validator server: you should probably use RocksDB, do not broadcast your address, and should not store more than about 300,000 ledgers (approximately two weeks' worth of historical data) in the ledger store.  
-* If you want to run on Mainnet, you should probably choose a `Huge` node size.
-
+- If you are going to run a Validator server: you should probably use RocksDB, do not broadcast your address, and should not store more than about 300,000 ledgers (approximately two weeks' worth of historical data) in the ledger store.
+- If you want to run on Mainnet, you should probably choose a `Huge` node size.
 
 ## Server Decisions
 
 It’s essential to understand what the primary purpose of your node is and to choose configuration settings accordingly. Let’s review the use cases for the following server decisions below:
-
 
 ### Dedicated Validator
 
@@ -58,13 +56,11 @@ Maybe you don’t even use the XRPL much directly, but you’re associated with 
 
 Most likely, you run this as a private peer even though it might be clustered with several other servers you also operate, such as a hub server and API servers.
 
-
 ### All-Purpose Server
 
 You are using the XRPL, but you’re a small enough entity that you don’t want to maintain a whole farm of servers for all the things you do, so you have one high-quality server that does a little bit of everything you need.
 
 This machine acts as a validator, provides admin APIs to authorized users to send and monitor for transactions as they arrive, keeps a moderate amount of ledger history to facilitate day-to-day use, and maybe even signs transactions that you send.
-
 
 ### Dedicated API Server
 
@@ -76,13 +72,11 @@ This machine stores a moderate to high amount of history but has little to no un
 
 It may or may not serve a public API to the open internet, and if you run several servers, they may be clustered with one another.
 
-
 ### Full History Server
 
 You need to have all the history since the genesis block because you will be making use of that data. This server maintains special hardware specs that make it capable of storing the entire history of the XRP Ledger.
 
 This also means it’s not cheap and replacements cannot be easily brought online because [full history](https://xrpl.org/ledger-history.html#full-history) is too large to quickly acquire/copy into a new instance.
-
 
 ### Hub Server
 
@@ -92,7 +86,6 @@ This server does not do much other than relay messages throughout the network an
 
 Hub servers that are especially reliable may be hard-coded into the rippled source code as connection points where new servers can go to bootstrap their connectivity with the rest of the network.
 
-
 ### Development Machine
 
 You are experimenting with XRP Ledger software, either developing rippled itself or some kind of integration or app on top of it. You don’t need your server to have production-quality stability and you are likely to start it up or shut it down frequently.
@@ -101,21 +94,18 @@ Retaining some history is nice so that you can look up transactions you sent or 
 
 You need an admin API, and you might experiment with any other features of the code, but you likely don’t have a cluster. It’s likely you may want to run with a higher level of logging than any other use case.
 
-
 ## Other Server Settings
 
 In this step, you will also decide what protocols (Peer, WebSockets, JSON-RPC, gRPC…) you need to run, on which ports, and what kind of access they will allow.
-
 
 ### Protocol Settings
 
 You know so far what your server is for and how you want to configure it but here you will make decisions at the protocol level:
 
-* What Node size you want/need to run?
-* How much ledger history you need?
-* What Network do you want to run it on?
-* What Validators do you want to trust?
-
+- What Node size you want/need to run?
+- How much ledger history you need?
+- What Network do you want to run it on?
+- What Validators do you want to trust?
 
 ### Storage
 
@@ -123,26 +113,22 @@ Choosing storage settings wisely is important to avoid future problems. Dependin
 
 Another important decision to make is how much data do we want to purge automatically (or manually) if any.
 
-
 ### SSL
 
 When running an XRP Ledger node, our server will be making client connections as well as receiving connections as a server. SSL settings are important to make sure we support secure outgoing and incoming connections.
-
 
 ### Other Settings
 
 The tool also allows you to configure other settings like:
 
-* Broadcasting your address
-* Providing signing support
-* Determining the level of logs you want to have
-* Configuring the outgoing and incoming connections number
-
+- Broadcasting your address
+- Providing signing support
+- Determining the level of logs you want to have
+- Configuring the outgoing and incoming connections number
 
 ## Output
 
 Once you are ready to go, click on ‘Generate’, and the tool will produce a zip file with all the files needed to run our server, and in cases where further configuration is required (like keys generation), instructions will be provided on how to do it:
-
 
 ### Configuration Files
 
@@ -150,13 +136,11 @@ Once you are ready to go, click on ‘Generate’, and the tool will produce a z
 
 `validators.txt`: Validators configuration.
 
-
 ### Other files
 
 `instructions.txt`: Follow up instructions to finish your node configuration.
 
 `cfg.json`: JSON Export of the configuration. This is useful if later on, you want to load it in the tool to make amendments.
-
 
 ## It’s Open Source and Multi-language
 
@@ -165,7 +149,6 @@ The tool is built using [Vue.js](https://vuejs.org) and [Tailwind CSS](https://t
 It supports being run locally or from a web server.
 
 Although it is the very first version, we encourage the community to participate and work on fixing bugs, adding new features, languages...
-
 
 ## Use It Today
 

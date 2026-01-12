@@ -5,11 +5,11 @@ top_nav_grouping: Article Types
 metadata:
   indexPage: true
 seo:
-    description: Mint and sell NFTs on the XRP Ledger using Python.
+  description: Mint and sell NFTs on the XRP Ledger using Python.
 ---
+
 # NFTs Using Python
 
 Mint and sell NFTs on the XRP Ledger using Python.
-
 
 {% child-pages /%}

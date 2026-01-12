@@ -2,10 +2,11 @@
 html: contribute-code.html
 parent: resources.html
 seo:
-    description: Learn how features can be coded into the XRP Ledger protocol.
+  description: Learn how features can be coded into the XRP Ledger protocol.
 labels:
   - Blockchain
 ---
+
 # Contribute Code
 
 The software that powers the XRP Ledger is open source. Anyone can download, modify, extend, or explore it. If you want to contribute code, it's important to work with the community to define the specifications of your changes and test the code before it becomes a part of the XRP Ledger protocol and blockchain.
@@ -14,14 +15,13 @@ The software that powers the XRP Ledger is open source. Anyone can download, mod
 
 The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the [documentation](/docs/) to jump directly into the related source code, or browse the source code on GitHub:
 
-| XRP Ledger Source Code |                                                     |
-|:-----------------------|:----------------------------------------------------|
-| Repository             | <https://github.com/XRPLF/rippled>                |
+| XRP Ledger Source Code |                                                                                        |
+| :--------------------- | :------------------------------------------------------------------------------------- |
+| Repository             | <https://github.com/XRPLF/rippled>                                                     |
 | License                | [Multiple; ISC (permissive)](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md) |
-| Programming Language   | C++                                                 |
+| Programming Language   | C++                                                                                    |
 
 If you're not sure where to start, Dev Null Productions provides a detailed and thorough [**Source Code Guide**](https://xrpintel.com/source) that describes the structure and functions of the core XRP Ledger server (`rippled`) implementation.
-
 
 ## XRP Ledger Standards
 
@@ -36,7 +36,6 @@ Creating an XLS has its own process, but can be summarized as:
 3. Publishing the XLS draft as a Candidate Specification.
 
 For details, see the [XLS contributing guide](https://github.com/XRPLF/XRPL-Standards/blob/master/CONTRIBUTING.md).
-
 
 ## Amendment Implementation
 
@@ -58,38 +57,35 @@ Implementing code as an amendment requires you to add the amendment to these fil
 
 - **Feature.h**: Increment the `numFeatures` counter and declare an `extern uint256 const` variable.
 
-
 ## Coding and Deployment
 
 The general development path breaks down as follows:
 
 1. Create a fork or branch in the [`rippled` repository](https://github.com/XRPLF/rippled) to develop your code.
 
-    {% admonition type="success" name="Tip" %}If you're not sure where to start, _Dev Null Productions_ provides a detailed and thorough [`rippled` Source Code Guide](https://xrpintel.com/source).{% /admonition %}
+   {% admonition type="success" name="Tip" %}If you're not sure where to start, _Dev Null Productions_ provides a detailed and thorough [`rippled` Source Code Guide](https://xrpintel.com/source).{% /admonition %}
 
 2. Run unit and integration tests. Running a server in _stand-alone mode_ is useful for testing your changes in an isolated environment, but you may want to stand up a private network for extensive changes.
 
 3. Create a pull request on `XRPLF:develop`.
 
-    **Note for Amendments:** Update the `Supported` paramter to `yes` in **Feature.cpp**.
+   **Note for Amendments:** Update the `Supported` paramter to `yes` in **Feature.cpp**.
 
 4. After the pull request is approved by XRP Ledger maintainers, your code is merged into `develop` and additional testing can be done on Devnet.
 
-    **Note for Amendments:**
-    - The `DefaultVote` parameter is now locked.
-    - If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the default vote in the new PR.
+   **Note for Amendments:**
+   - The `DefaultVote` parameter is now locked.
+   - If problems are found with the amendment, you must restart the process of making fixes and submitting a new PR. You can change the default vote in the new PR.
 
 5. On a quarterly basis, a release candidate is built from approved PRs on `develop`. The package is deployed to Testnet and a few nodes on Mainnet. If no issues are found with the release candidate, the code is merged into `master` and nodes on Mainnet can upgrade to this build.
 
 6. New amendments go through the consensus process and validators vote on whether to enable them.
 
-
 ## Code Flowchart
 
 ![Code Flowchart](/docs/img/contribute-code-flowchart.png)
 
-
 ## See Also
 
 - **Concepts:**
-    - [Amendments](../../docs/concepts/networks-and-servers/amendments.md)
+  - [Amendments](../../docs/concepts/networks-and-servers/amendments.md)

@@ -2,11 +2,12 @@
 html: stablecoin-issuer.html
 parent: tokenization.html
 seo:
-    description: Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger.
+  description: Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger.
 labels:
   - Tokens
   - Stablecoin
 ---
+
 # Stablecoin Issuer
 
 _As a financial professional, I want to issue a stablecoin so that I can earn revenue by charging fees for withdrawals or transfers of the stablecoin._
@@ -47,7 +48,6 @@ Alternatively, you can use an external node service provider like OpenNode. See 
 
 For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See [XRP Faucets](/resources/dev-tools/xrp-faucets).
 
-
 ## Stablecoin Settings
 
 Before you mint your new stablecoin, you need to configure settings, some of which are immutable once you issue the first coin.
@@ -60,10 +60,9 @@ For more detail on configuration capbilities, see [Stablecoin Issuer Configurati
 
 Publish standard information about your stablecoin to enable potential traders to verify the coin's stability.
 
-
 ### Asset Nomenclature
 
-Choose a 3-character string for your currency code. Per ISO 4217, supranational currency codes begin with the letter _X_ for a currency that is not associated with a country. See [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217#X_currencies_(funds,_precious_metals,_supranationals,_other)).
+Choose a 3-character string for your currency code. Per ISO 4217, supranational currency codes begin with the letter _X_ for a currency that is not associated with a country. See [ISO 4217](<https://en.wikipedia.org/wiki/ISO_4217#X_currencies_(funds,_precious_metals,_supranationals,_other)>).
 
 Currency codes do not have to be unique. For instance, if you're issuing a stablecoin backed by a national fiat currency, it's better to use the official code for that currency, such as _EUR_.
 
@@ -72,7 +71,6 @@ Currency codes do not have to be unique. For instance, if you're issuing a stabl
 You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an `xrp-ledger.toml` file on your website. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.
 
 You can use the _Currencies_ table to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See [xrp-ledger.toml File](../../references/xrp-ledger-toml.md#currencies).
-
 
 ## Account and Key Management
 
@@ -138,7 +136,6 @@ To use the Authorized Trust Lines feature, enable the `Require Auth` flag on you
 
 See [Authorized Trust Lines](../../concepts/tokens/fungible-tokens/authorized-trust-lines.md).
 
-
 ### Freeze a Trust Line
 
 If you issue tokens in the XRP Ledger, you can enable the _No Freeze_ setting to permanently limit your own ability to use the token freezing features of the XRP Ledger. (As a reminder, this only applies to issued tokens, not XRP.)
@@ -147,7 +144,6 @@ If you do not enable the _No Freeze_ setting, when an account shows suspicious a
 
 See [Freezing Tokens](../../concepts/tokens/fungible-tokens/freezes.md).
 
-
 ### Global Freeze
 
 If you see signs of suspicious activity, you can enact a global freeze on your account to prevent users from sending your tokens to each other and trading your token in the decentralized exchange.
@@ -155,7 +151,6 @@ If you see signs of suspicious activity, you can enact a global freeze on your a
 ![Global Freeze](/docs/img/uc-stablecoin-global-freeze.png)
 
 See [Enact Global Freeze](../../tutorials/how-tos/use-tokens/enact-global-freeze.md).
-
 
 ### Clawback
 
@@ -170,8 +165,9 @@ See [Clawback](../../references/protocol/transactions/types/clawback.md).
 ### Partial Payments
 
 Look out for partial payments. Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.
-* Check the transaction for a `delivered_amount` field. If present, that field indicates how much money _actually_ got delivered to the `Destination` address.
-* In xrpl.js, you can use the [`xrpl.getBalanceChanges()` method](https://js.xrpl.org/modules.html#getBalanceChanges) to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.
+
+- Check the transaction for a `delivered_amount` field. If present, that field indicates how much money _actually_ got delivered to the `Destination` address.
+- In xrpl.js, you can use the [`xrpl.getBalanceChanges()` method](https://js.xrpl.org/modules.html#getBalanceChanges) to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.
 
 See [Partial Payments](../../concepts/payment-types/partial-payments.md).
 
@@ -189,21 +185,20 @@ See [Disable Master Key Pair](../../tutorials/how-tos/manage-account-settings/di
 
 The goal of reliably submitting transactions is to achieve the following two properties in a finite amount of time:
 
-* Idempotency - Transactions should be processed once and only once, or not at all.
-* Verifiability - Applications can determine the final result of a transaction.
+- Idempotency - Transactions should be processed once and only once, or not at all.
+- Verifiability - Applications can determine the final result of a transaction.
 
 To submit transactions reliably, follow these guidelines:
 
-* Persist details of the transaction before submitting it.
-* Use the `LastLedgerSequence` parameter. (Many [client libraries](../../references/client-libraries.md) do this by default.)
-* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is bigger than or equal to the transaction's `LastLedgerSequence` parameter.
+- Persist details of the transaction before submitting it.
+- Use the `LastLedgerSequence` parameter. (Many [client libraries](../../references/client-libraries.md) do this by default.)
+- Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is bigger than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For more information, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
 ### List on the XRPL Native DEX
 
 Decentralized exchanges (DEXes) are integral to the decentralized finance ecosystem. Listing your token on the XRP Ledger's built-in DEX enhances its visibility and accessibility, thereby attracting more liquidity. Begin by placing sell offers using a suitable interface, such as [Sologenic](https://sologenic.org/trade). As a precaution, use a separate account, not your issuing address, to trade.
-
 
 ### List on an AMM
 

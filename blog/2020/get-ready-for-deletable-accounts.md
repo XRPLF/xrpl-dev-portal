@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-05-06"
+date: '2020-05-06'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Get Ready for Deletable Accounts
 
 The XRP Ledger is currently [expected to enable](https://xrpl.org/blog/2020/deletableaccounts-expected.html) the deletion of on-ledger accounts for the first time, through the [DeletableAccounts Amendment](https://xrpl.org/known-amendments.html#deletableaccounts), on **2020-05-08 (UTC)**. This amendment comes with changes to some fairly fundamental details of the XRP Ledger protocol. If you use the XRP Ledger for your business, this is a good time to do a last check to make sure you're ready.
@@ -29,7 +30,6 @@ After the amendment, any account that meets [the prerequisites](https://xrpl.org
 
 After an account has been deleted, anyone can re-create it by sending at least 20 XRP to its address to fund the account, just like with any other valid XRP Ledger address. The newly created account is initialized like any other new account: settings from before it was deleted _do not_ carry over. Just like any other address, you don't get any special powers over the account for funding it; you need the cryptographic keys associated with the address to have control over the account.
 
-
 ## Handling changes to account creation
 
 The DeletableAccounts amendment changes the way new accounts' [sequence numbers](https://xrpl.org/basic-data-types.html#account-sequence) work in the XRP Ledger: instead of starting at sequence number 1, the starting sequence number matches the current ledger index when the account was created. This change protects accounts from having their old transactions replayed if the account gets deleted and then re-created.
@@ -39,7 +39,6 @@ Sequence numbers otherwise work the same. There are no changes necessary if you 
 Sending transactions from newly-funded accounts is mostly the same as before; the main difference with deletable accounts is that you should check the account's starting sequence number when you confirm that the account has been funded, instead of assuming the starting sequence number is 1. If you let your signing software [auto-fill](https://xrpl.org/sign.html#auto-fillable-fields) the `Sequence` number, no changes are necessary.
 
 In cases where you must explicitly specify the sequence number, you can look it up using the [account_info method](https://xrpl.org/account_info.html) first. For a detailed walkthrough of how to do this process with an airgapped machine, see [Offline Account Setup](https://xrpl.org/offline-account-setup.html).
-
 
 ## Dealing with accounts that could be deleted
 
@@ -57,7 +56,6 @@ Payment Channels are a little more complicated because channels that have been g
 - The sender of the payment channel can request to close the channel, according to the normal restrictions.
 - If the channel has an immutable expiration time or is already scheduled to close, you can wait for it to close and then remove the expired channel from the ledger as normal.
 
-
 ## Getting XRP back by deleting your extra accounts
 
 If you have any accounts on the XRP Ledger that you're not using, you may have up to 20 XRP locked up for the [reserve requirements](https://xrpl.org/reserves.html) for each of those accounts. (It's possible for an account to have less than 20 XRP if you've destroyed XRP to pay [transaction costs](https://xrpl.org/transaction-cost.html).) If your account meets the prerequisites, you can get most of the reserved XRP back by deleting your unused accounts.
@@ -72,7 +70,6 @@ To delete an account, it must have _no_ [trust lines](https://xrpl.org/trust-lin
 
 If your account meets the requirements to be deleted, send an [AccountDelete transaction](https://xrpl.org/accountdelete.html) from that account. The `Destination` address in the transaction receives the deleted account's remaining XRP (after subtracting the destroyed XRP). If you are withdrawing to an account at an exchange or hosted wallet, don't forget to include your `DestinationTag` at that exchange.
 
-
 ## Next steps
 
 Stay tuned for updates on whether the DeletableAccounts amendment becomes enabled as expected, as well as the status of other amendments that are currently in voting such as the Checks amendment.
@@ -83,5 +80,5 @@ Related documentation is available in the [XRP Ledger Dev Portal](https://xrpl.o
 
 Other resources:
 
-* [The Xpring Forum](https://forum.xpring.io/)
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [The Xpring Forum](https://forum.xpring.io/)
+- [XRP Chat Forum](http://www.xrpchat.com/)

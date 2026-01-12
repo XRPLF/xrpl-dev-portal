@@ -1,13 +1,14 @@
 ---
 category: 2023
-date: "2023-12-05"
+date: '2023-12-05'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Decommissioning AMM-Devnet
 
 The `AMM-Devnet` will be decommissioned on December 8, 2023.

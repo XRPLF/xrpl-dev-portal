@@ -1,10 +1,12 @@
 ---
 seo:
-    description: Multi-Purpose Tokenを削除します。
+  description: Multi-Purpose Tokenを削除します。
 labels:
- - Multi-Purpose Token, MPT
+  - Multi-Purpose Token, MPT
 ---
+
 # MPTokenIssuanceDestroy
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/MPTokenIssuanceDestroy.cpp "ソース")
 
 {% partial file="/@l10n/ja/docs/_snippets/mpts-disclaimer.md" /%}
@@ -15,11 +17,11 @@ labels:
 
 ## MPTokenIssuanceDestroyのJSONの例
 
-```json 
+```json
 {
-    "TransactionType": "MPTokenIssuanceDestroy",
-    "Fee": "10",
-    "MPTokenIssuanceID": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000"
+  "TransactionType": "MPTokenIssuanceDestroy",
+  "Fee": "10",
+  "MPTokenIssuanceID": "00070C4495F14B0E44F78A264E41713C64B5F89242540EE255534400000000000000"
 }
 ```
 
@@ -27,9 +29,9 @@ labels:
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
-| フィールド          | JSONの型            | [内部の型][] | 説明              |
-|:--------------------|:--------------------|:-------------|:------------------|
-| `TransactionType`   | 文字列              | UInt16       | 新しいトランザクションタイプMPTokenIssuanceDestroyを示します。 |
-| `MPTokenIssuanceID` | 文字列              | UInt192      | トランザクションによって削除される`MPTokenIssuance`オブジェクトの識別子。 |
+| フィールド          | JSONの型 | [内部の型][] | 説明                                                                      |
+| :------------------ | :------- | :----------- | :------------------------------------------------------------------------ |
+| `TransactionType`   | 文字列   | UInt16       | 新しいトランザクションタイプMPTokenIssuanceDestroyを示します。            |
+| `MPTokenIssuanceID` | 文字列   | UInt192      | トランザクションによって削除される`MPTokenIssuance`オブジェクトの識別子。 |
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

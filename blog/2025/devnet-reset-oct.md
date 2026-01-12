@@ -1,15 +1,16 @@
 ---
 category: 2025
-date: "2025-09-24"
+date: '2025-09-24'
 template: '../../@theme/templates/blogpost'
 seo:
-    description: Devnet is scheduled to reset on Friday, October 3, 2025 to prevent validators from becoming amendment blocked when PermissionDelegation is temporarily disabled.
+  description: Devnet is scheduled to reset on Friday, October 3, 2025 to prevent validators from becoming amendment blocked when PermissionDelegation is temporarily disabled.
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Upcoming Devnet Reset
 
 Devnet is scheduled for a reset on **Friday, October 3, 2025**. The `PermissionDelegation` amendment requires more development and will be set to unsupported in the next rippled release. To prevent validators that upgrade to this version from becoming amendment blocked, Devnet will be reset.
@@ -18,11 +19,9 @@ Devnet is scheduled for a reset on **Friday, October 3, 2025**. The `PermissionD
 The reset has completed successfully. Devnet is online and fully operational.
 {% /admonition %}
 
-
 ## Background
 
 A bug was discovered in the implementation of `PermissionDelegation` released with 2.5.0. Due to the severity of the bug, the feature will be disabled in the upcoming rippled release while the bug is resolved. Since the feature was enabled on Devnet with the 2.5.0 release, this upcoming change will cause validators to become amendment blocked. To prevent this, Devnet must be reset.
-
 
 ## Impact
 
@@ -34,7 +33,6 @@ Any existing accounts or other data will need new test XRP from the faucet and w
 
 If code relies on specific addresses, a request to the faucet can fund the same address again. However, any AMMs that are re-created after the reset will generally have different account addresses. As a reminder, it's best not to use the same addresses or key pairs on Mainnet and any developer networks.
 
-
 ## Actions Required
 
 If you run a `rippled` server that is connected to Devnet, after the reset you should delete your database data and restart the server. Database files and folders are defined in the config file in the `[database_path]` and `[node_db]` stanzas. If you use the default config, you can run the following commands:
@@ -45,7 +43,6 @@ rm -r /var/lib/rippled/db/*
 systemctl restart rippled.service
 ```
 
-
 ## Learn, Ask Questions, and Discuss
 
-We’d like to hear from you!  Join the [XRPL Dev Discord](https://discord.gg/sfX3ERAMjH) to share your feedback. Your input and feedback on what changes would be beneficial is invaluable to improve devnet management and better support the community's needs.
+We’d like to hear from you! Join the [XRPL Dev Discord](https://discord.gg/sfX3ERAMjH) to share your feedback. Your input and feedback on what changes would be beneficial is invaluable to improve devnet management and better support the community's needs.

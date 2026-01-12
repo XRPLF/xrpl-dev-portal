@@ -1,6 +1,6 @@
 .external-link {
   &::after {
-    content: "\00a0";
+    content: '\00a0';
     background-image: url(../img/icons/arrow-up-right.svg);
     background-repeat: no-repeat;
     display: inline-block;
@@ -63,17 +63,17 @@
     &::after {
       position: absolute;
       right: 4px;
-      content: "\00a0";
+      content: '\00a0';
       background-image: url(../img/icons/arrow-up-right.svg);
       background-repeat: no-repeat;
       display: inline-block;
       background-size: 1.5rem;
-      padding: 0 .5rem;
-      background-position: left 0 bottom -.1rem;
+      padding: 0 0.5rem;
+      background-position: left 0 bottom -0.1rem;
       transition: background-position 100ms ease-in-out;
     }
     &:hover::after {
-      background-position: left .2rem bottom .1rem;
+      background-position: left 0.2rem bottom 0.1rem;
     }
   }
 }

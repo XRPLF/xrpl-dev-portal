@@ -2,11 +2,12 @@
 html: tickets.html
 parent: accounts.html
 seo:
-    description: Send transactions in non-sequential order.
+  description: Send transactions in non-sequential order.
 labels:
   - Accounts
   - Transaction Sending
 ---
+
 # Tickets
 
 A Ticket in the XRP Ledger is a way of setting aside a [sequence number][Sequence Number] for a transaction without sending it right away. Tickets allow transactions to be sent outside of the normal sequence order. One use case for this is to allow for [multi-signed transactions](multi-signing.md) where it may take a while to collect the necessary signatures: while collecting signatures for a transaction that uses a Ticket, you can still send other transactions.
@@ -25,18 +26,17 @@ However, there are some situations where sequence numbers are too limiting. For 
 
 Tickets provide a solution to all of these problems by setting aside sequence numbers that can be used later, outside of their usual order, but still no more than once each.
 
-
 ## Tickets Are Reserved Sequence Numbers
 
 A Ticket is a record that a sequence number has been set aside to be used later. An account first sends a [TicketCreate transaction][] to set aside one or more sequence numbers as Tickets; this puts a record in the [ledger's state data](../ledgers/index.md), in the form of a [Ticket object][], for each sequence number reserved.
 
 Tickets are numbered using the sequence numbers that were set aside to create them. For example, if your account's current sequence number is 101 and you create 3 Tickets, those Tickets have Ticket Sequence numbers 102, 103, and 104. Doing so increases your account's sequence number to 105.
 
-[{% inline-svg file="/docs/img/ticket-creation.svg" /%}](/docs/img/ticket-creation.svg "Diagram: Creating three Tickets")
+[{% inline-svg file="/docs/img/ticket-creation.svg" /%}](/docs/img/ticket-creation.svg 'Diagram: Creating three Tickets')
 
 Later, you can send a transaction using a specific Ticket instead of a sequence number; doing so removes the corresponding Ticket from the ledger's state data and does not change your account's normal sequence number. You can also still send transactions using normal sequence numbers without using Tickets. You can use any of your available Tickets in any order at any time, but each Ticket can only be used once.
 
-[{% inline-svg file="/docs/img/ticket-usage.svg" /%}](/docs/img/ticket-usage.svg "Diagram: Using Ticket 103.")
+[{% inline-svg file="/docs/img/ticket-usage.svg" /%}](/docs/img/ticket-usage.svg 'Diagram: Using Ticket 103.')
 
 Continuing the above example, you can send a transaction using sequence number 105 or any of the three Tickets you created. If you send a transaction using Ticket 103, doing so deletes Ticket 103 from the ledger. Your next transaction after that can use sequence number 105, Ticket 102, or Ticket 104.
 
@@ -59,15 +59,14 @@ Any account can create and use Tickets on any type of transaction. However, some
 
 ## See Also
 
-
 - **Concepts:**
-    - [Multi-Signing](multi-signing.md)
+  - [Multi-Signing](multi-signing.md)
 - **Tutorials:**
-    - [Use Tickets](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
+  - [Use Tickets](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
 - **References:**
-    - [TicketCreate transaction][]
-    - [Transaction Common Fields](../../references/protocol/transactions/common-fields.md)
-    - [Ticket object](../../references/protocol/ledger-data/ledger-entry-types/ticket.md)
-    - [account_objects method][]
+  - [TicketCreate transaction][]
+  - [Transaction Common Fields](../../references/protocol/transactions/common-fields.md)
+  - [Ticket object](../../references/protocol/ledger-data/ledger-entry-types/ticket.md)
+  - [account_objects method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

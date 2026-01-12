@@ -2,10 +2,11 @@
 html: escrow.html
 parent: payment-types.html
 seo:
-    description: El Escrow retiene fondos hasta que las condiciones específicas se cumplan.
+  description: El Escrow retiene fondos hasta que las condiciones específicas se cumplan.
 labels:
   - Escrow
 ---
+
 # Escrow
 
 Tradicionalmente, un escrow es un contrato entre dos partes para facilitar transacciones financieras. Un tercero imparcial recibe y retiene los fondos, y solo los libera al destinatario previsto cuando se cumplen las condiciones especificadas en el contrato. Este método asegura que ambas partes cumplan con sus obligaciones.
@@ -23,16 +24,15 @@ El XRP Ledger soporta tres tipos de escrow:
 ## Ciclo de vida de un escrow
 
 1. El remitente crea un escrow utilizando la transacción `EscrowCreate`. Esta transacción define:
-
-    - Una cantidad de XRP para bloquear.
-    - Las condiciones para liberar el XRP.
-    - El destinatario del XRP.
+   - Una cantidad de XRP para bloquear.
+   - Las condiciones para liberar el XRP.
+   - El destinatario del XRP.
 
 2. Cuando se procesa la transacción, el XRP Ledger crea un objeto `Escrow` que retiene el XRP en el escrow.
 
 3. El destinatario envía una transacción `EscrowFinish` para entregar el XRP. Si las condiciones se han cumplido, esto destruye el objeto `Escrow` y entrega el XRP al destinatario.
 
-    **Nota:** Si el escrow tiene una fecha de caducidad y no se completa con éxito antes de este tiempo, el escrow se caduca. Un escrow caducado permanece en el ledger hasta que una transacción `EscrowCancel` lo cancele, destruyendo el objeto `Escrow` y devuelve el XRP al remitente.
+   **Nota:** Si el escrow tiene una fecha de caducidad y no se completa con éxito antes de este tiempo, el escrow se caduca. Un escrow caducado permanece en el ledger hasta que una transacción `EscrowCancel` lo cancele, destruyendo el objeto `Escrow` y devuelve el XRP al remitente.
 
 ## Estados del escrow
 
@@ -48,17 +48,15 @@ El diagrama muestra tres casos diferentes para tres posibles combinaciones de lo
 
 - **Escrow condicional (derecha):** Si el escrow especifica una criptocondición (campo `Condition`) y no por una fecha "terminar trás", el escrow se convierte en **Condicionalmente preparado** inmediatamente cuando se crea. Durante este tiempo, cualquiera puede finalizar el escrow, pero solo si suministran el cumplimiento correcto a la criptocondición. Si nadie finaliza el escrow antes de la fecha de caducidad (campo `CancelAfter`), el escrow se convierte en **Caducado**. (Un escrow sin una fecha de "finalizar-tras" _debe_ tener una fecha de caducidad.) En el estado de caducado, el escrow no puede ser finalizado, y cualquiera puede cancelarlo.
 
-
 ## Limitaciones
 
 - El escrow solo funciona con XRP, no con tokens.
 - Los costes pueden hacerlo poco práctico para cantidades pequeñas.
-    - El escrow requiere de dos transacciones: una para crear el escrow, y una para finalizarlo o cancelarlo. Las criptocondiciones incurren en un [coste de transacción](../transactions/transaction-cost.md) mayor al usual.
-    - Mientras que el escrow no se completa, el remitente es responsable del [requisito de reserva](../accounts/reserves.md) del objeto del `Escrow`.
+  - El escrow requiere de dos transacciones: una para crear el escrow, y una para finalizarlo o cancelarlo. Las criptocondiciones incurren en un [coste de transacción](../transactions/transaction-cost.md) mayor al usual.
+  - Mientras que el escrow no se completa, el remitente es responsable del [requisito de reserva](../accounts/reserves.md) del objeto del `Escrow`.
 - No puedes crear un escrow con valores de fechas pasados.
 - Las liberaciones y caducidad se resuelven en [tiempos de cierre de ledgers](../ledgers/ledger-close-times.md). En la práctica, los tiempos de liberaciones o caducidad pueden variar en 5 segundos respecto a los cierres de ledgers.
 - El único tipo de criptocondición aceptado es PREIMAGE-SHA-256.
-
 
 ## Coste de la transacción EscrowFinish
 
@@ -76,20 +74,17 @@ Si el [coste de votar](../consensus-protocol/fee-voting.md) cambia el valor de `
 reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 ```
 
-
-
 ## Ver también
 
 Para más información sobre Escrow en el XRP Ledger, consulta lo siguiente:
 
 - [Tutoriales Escrow](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md)
 - [Referencia de transacciones](../../references/protocol/transactions/index.md)
-    - [Transacción EscrowCreate][]
-    - [Transacción EscrowFinish][]
-    - [Transacción EscrowCancel][]
+  - [Transacción EscrowCreate][]
+  - [Transacción EscrowFinish][]
+  - [Transacción EscrowCancel][]
 - [Referencia Ledger](../../references/protocol/ledger-data/index.md)
-    - [Objeto Escrow](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
-
+  - [Objeto Escrow](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 Para más información sobre el bloqueo de 55 mil millones de Ripple, consulta [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 

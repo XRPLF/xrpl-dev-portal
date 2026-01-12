@@ -1,13 +1,14 @@
 ---
-date: "2016-06-15"
+date: '2016-06-15'
 template: '../../@theme/templates/blogpost'
 category: 2016
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Data API v2.2 Released
 
 The Data team is proud to announce the release of the [Ripple Data API v2.2](https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0)! This release includes lots of new features, including a total of 15 new methods, improvements in data quality, and documentation.
@@ -18,7 +19,7 @@ Also part of the new release is a method to calculate the distribution of XRP fr
 
 For more information, check out the following resources:
 
-* [Data API source code](https://github.com/ripple/rippled-historical-database)
+- [Data API source code](https://github.com/ripple/rippled-historical-database)
 
 _\[Update: Data API docs and Data visualizations on Ripple Charts are no longer available. The links have been removed.\]_
 

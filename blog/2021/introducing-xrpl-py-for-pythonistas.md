@@ -1,14 +1,15 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-04-06"
+  editPage:
+    hide: true
+date: '2021-04-06'
 template: '../../@theme/templates/blogpost'
 labels:
-    - xrpl-py Release Notes
+  - xrpl-py Release Notes
 author: Team RippleX
 ---
+
 # Introducing xrpl-py for Pythonistas
 
 Today, [RippleX](https://ripple.com/) and the [XRP Ledger Foundation (XRPLF)](https://xrplf.org/) are excited to announce the launch of [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure Python implementation for interacting with the XRP Ledger. The `xrpl-py` library simplifies the hardest parts of XRP Ledger interaction—like serialization and transaction signing—by providing native Python methods and models for [XRP Ledger transactions](https://xrpl.org/transaction-formats.html) and [core server API](https://xrpl.org/api-conventions.html) ([rippled](https://github.com/ripple/rippled)) objects.
@@ -21,13 +22,13 @@ Previously, the only actively maintained libraries were for [JavaScript](https:/
 
 The `xrpl-py` library offers a range of features including:
 
-* Serializing, signing, and submitting transactions
-* [Cryptographic key generation](https://github.com/XRPLF/xrpl-py#manage-keys-and-wallets)  
-* [Converting between X-Addresses and classic addresses](https://github.com/XRPLF/xrpl-py#encode-addresses)
-* Retrieving account information, including balances
-* [Model objects for all transaction types](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.models.transactions.html)     and all core server [requests](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.models.requests.html)
+- Serializing, signing, and submitting transactions
+- [Cryptographic key generation](https://github.com/XRPLF/xrpl-py#manage-keys-and-wallets)
+- [Converting between X-Addresses and classic addresses](https://github.com/XRPLF/xrpl-py#encode-addresses)
+- Retrieving account information, including balances
+- [Model objects for all transaction types](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.models.transactions.html) and all core server [requests](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.models.requests.html)
 
-We think of `xrpl-py` v1.0.0 as the first step in a longer journey. We built  `xrpl-py` as part of our larger goal to facilitate development on the XRP Ledger by decreasing the learning curve, creating more inclusive tools and expanding the choice of programming languages.
+We think of `xrpl-py` v1.0.0 as the first step in a longer journey. We built `xrpl-py` as part of our larger goal to facilitate development on the XRP Ledger by decreasing the learning curve, creating more inclusive tools and expanding the choice of programming languages.
 
 The feature set for the first available version is limited but it implements the most common use cases of XRP Ledger development. We're working on adding new features to `xrpl-py` and aim to include everything else the XRP Ledger offers within the library soon. We plan on using this framework to create even more libraries for the XRP Ledger in other languages in the near future.
 

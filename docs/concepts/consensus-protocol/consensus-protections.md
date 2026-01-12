@@ -2,10 +2,11 @@
 html: consensus-protections.html
 parent: consensus.html
 seo:
-    description: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system.
+  description: Learn how the XRP Ledger Consensus Protocol is protected against various problems and attacks that may occur in a decentralized financial system.
 labels:
   - Blockchain
 ---
+
 # Consensus Protections Against Attacks and Failure Modes
 
 The XRP Ledger Consensus Protocol is a _byzantine fault tolerant_ consensus mechanism, which means it's designed to work even if all kinds of things can go wrong: participants depend on an unreliable open network to communicate, and malicious actors may be attempting to control or interrupt the system at any given time. On top of that, the set of participants in the XRP Ledger Consensus Protocol isn't known in advance and can change over time.
@@ -30,7 +31,6 @@ If more than about 20% of validators are unreachable or not behaving properly, t
 
 The only way to confirm an invalid transaction would be to get at least 80% of trusted validators to approve of the transaction and agree on its exact outcome. (Invalid transactions include those spending money that has already been spent, or otherwise breaking the rules of the network.) In other words, a large majority of trusted validators would have to _collude_. With dozens of trusted validators run by different people and businesses in different parts of the world, this would be very difficult to achieve intentionally.
 
-
 ## Software Vulnerabilities
 
 As with any software system, bugs (or intentionally malicious code) in the implementation of the XRP Ledger Consensus Protocol, commonly deployed software packages, or their dependencies, are a problem to be taken seriously. Even bugs that cause a server to crash when it sees carefully crafted inputs can be abused to disrupt the progress of the network. XRP Ledger developers take precautions to address this threat in the reference implementations of XRP Ledger software, including:
@@ -41,7 +41,6 @@ As with any software system, bugs (or intentionally malicious code) in the imple
 - Regularly-commissioned professional reviews for security vulnerabilities and insecurities.
 - A [bug bounty program](https://ripple.com/bug-bounty/) that rewards security researchers who responsibly disclose vulnerabilities.
 
-
 ## Sybil Attacks
 
 A _[Sybil attack](https://en.wikipedia.org/wiki/Sybil_attack)_ is an attempt to take control of a network using a large number of fake identities. In the XRP Ledger, a Sybil attack would take the form of running a large number of validators, then convincing others to trust those validators. This sort of attack is theoretically possible, but would be very difficult to do because human intervention is necessary for validators to become trusted.
@@ -50,11 +49,9 @@ No matter how many validating servers a would-be attacker runs, those servers ha
 
 This trust does not happen automatically, so performing a successful Sybil attack would involve the difficult work of convincing targeted humans and businesses to reconfigure their XRP Ledger servers to trust the attacker's validators. Even in the case that one individual entity was fooled into doing so, this would have a minimal impact on others who do not change their configurations.
 
-
 ## 51% Attack
 
 A "51% attack" is an attack on a blockchain system where one party controls more than 50% of all mining or voting power. (Technically, the attack is slightly misnamed because _any_ amount over 50% is enough.) The XRP Ledger is not vulnerable to a 51% attack because it does not use mining in its consensus mechanism. The next closest analogue for the XRP Ledger is a [Sybil attack](#sybil-attacks), which would also be difficult.
-
 
 ## Validator Overlap Requirements
 
@@ -65,7 +62,6 @@ By default, XRP Ledger servers are configured to use validator list sites run by
 Technically, if you run a server, you can configure your own list site or explicitly choose validators to trust on an individual basis, but this is not recommended. If your chosen set of validators does not have enough overlap with others, your server may diverge from the rest of the network, and you could lose money by taking action based on your server's divergent state.
 
 Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.md) page.
-
 
 ## See Also
 

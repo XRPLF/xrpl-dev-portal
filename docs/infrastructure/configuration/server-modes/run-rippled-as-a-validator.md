@@ -2,13 +2,14 @@
 html: run-rippled-as-a-validator.html
 parent: server-modes.html
 seo:
-    description: Have your server vote on the consensus ledger.
+  description: Have your server vote on the consensus ledger.
 labels:
   - Core Server
   - Blockchain
 top_nav_grouping: Popular Pages
 top_nav_name: Join UNL
 ---
+
 # Run rippled as a Validator
 
 A [`rippled` server](../../../concepts/networks-and-servers/index.md) running in [validator mode](../../../concepts/networks-and-servers/rippled-server-modes.md) does everything a stock server does:
@@ -27,39 +28,33 @@ Even if your validator isn't a _trusted_ validator, it still plays an important 
 
 {% admonition type="danger" name="Warning" %}Validators should not be accessible to the public. Do not allow public WebSocket access to your validator server or any other form of public access.{% /admonition %}
 
-
-
 ## 1. Understand the traits of a good validator
 
 Strive to have your validator embody the following properties. Being a good validator helps `rippled` server operators and validator list publishers (such as https://vl.ripple.com and https://vl.xrplf.org) trust your validator before adding it to their UNLs.
 
 - **Available**
 
-    A good validator is always running and submitting validation votes for every proposed ledger. Strive for 100% uptime.
+  A good validator is always running and submitting validation votes for every proposed ledger. Strive for 100% uptime.
 
 - **In agreement**
 
-    A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/XRPLF/rippled/tree/release) without modifications. [Watch `rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
+  A good validator's votes match the outcome of the consensus process as often as possible. To do otherwise could indicate that your validator's software is outdated, buggy, or intentionally biased. Always run the [latest `rippled` release](https://github.com/XRPLF/rippled/tree/release) without modifications. [Watch `rippled` releases](https://github.com/XRPLF/rippled/releases) and subscribe to the [Google Group](https://groups.google.com/g/ripple-server) to be notified of new releases.
 
 - **Issuing prompt votes**
 
-    A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes on time, make sure your validator meets the recommended [system requirements](../../installation/system-requirements.md), which include a fast internet connection.
+  A good validator's votes arrive quickly and not after a consensus round has already finished. To keep your votes on time, make sure your validator meets the recommended [system requirements](../../installation/system-requirements.md), which include a fast internet connection.
 
-    It is possible to submit new transactions and query data using a validator, but heavy loads of API queries may make the validator less reliable at keeping up with consensus. If your API needs are light enough, then you can use a server for both purposes. Ideally, a validator should be dedicated to participating in consensus.
+  It is possible to submit new transactions and query data using a validator, but heavy loads of API queries may make the validator less reliable at keeping up with consensus. If your API needs are light enough, then you can use a server for both purposes. Ideally, a validator should be dedicated to participating in consensus.
 
 - **Identified**
 
-    A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators. <!-- STYLE_OVERRIDE: clearly -->
+  A good validator has a clearly identified owner. Providing [domain verification](#6-provide-domain-verification) is a good start. Ideally, XRP Ledger network UNLs include validators run by different owners in multiple legal jurisdictions and geographic areas. This reduces the chance that any localized events could interfere with the impartial operations of trusted validators. <!-- STYLE_OVERRIDE: clearly -->
 
 It is strongly recommended that operators use the list providers that are present in this [example file](https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt).
-
-
 
 ## 2. Install a `rippled` server
 
 For more information, see [Install `rippled`](../../installation/index.md).
-
-
 
 ## 3. Enable validation on your `rippled` server
 
@@ -69,80 +64,81 @@ In a secure location **not** on your validator:
 
 1. Generate a validator key pair using the `validator-keys` tool, which is included in the `rippled` package:
 
-    ```
-    $ cd /opt/ripple/bin/
-    ```
-    Then run:
+   ```
+   $ cd /opt/ripple/bin/
+   ```
 
-    ```
-    $ ./validator-keys create_keys
-    ```
+   Then run:
 
-      Sample output on Ubuntu:
+   ```
+   $ ./validator-keys create_keys
+   ```
 
-    ```
-    Validator keys stored in /home/my-user/.ripple/validator-keys.json
+   Sample output on Ubuntu:
 
-    This file should be stored securely and not shared.
-    ```
+   ```
+   Validator keys stored in /home/my-user/.ripple/validator-keys.json
 
-      Sample output on macOS:
+   This file should be stored securely and not shared.
+   ```
 
-    ```
-    Validator keys stored in /Users/my-user/.ripple/validator-keys.json
+   Sample output on macOS:
 
-    This file should be stored securely and not shared.
-    ```
+   ```
+   Validator keys stored in /Users/my-user/.ripple/validator-keys.json
 
-      {% admonition type="danger" name="Warning" %}Store the generated `validator-keys.json` key file in a secure, offline, and recoverable location, such as an encrypted USB flash drive. Do not store keys on the validator where you intend to use the keys. If your `secret_key` is compromised, [revoke the key](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation) immediately. Do not modify the contents of `validator-keys.json`, except to update the backup after generating a new token. If you generate more than one token from the same backup without updating, the network ignores the later tokens because they use the same `token_sequence` number.{% /admonition %}
+   This file should be stored securely and not shared.
+   ```
 
-      For more information about the `validator-keys` tool and the key pairs it generates, see the [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md).
+   {% admonition type="danger" name="Warning" %}Store the generated `validator-keys.json` key file in a secure, offline, and recoverable location, such as an encrypted USB flash drive. Do not store keys on the validator where you intend to use the keys. If your `secret_key` is compromised, [revoke the key](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation) immediately. Do not modify the contents of `validator-keys.json`, except to update the backup after generating a new token. If you generate more than one token from the same backup without updating, the network ignores the later tokens because they use the same `token_sequence` number.{% /admonition %}
+
+   For more information about the `validator-keys` tool and the key pairs it generates, see the [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md).
 
 2. Generate a validator token using the `create_token` command. [Make sure you are at `/opt/ripple/bin/`]
 
-    ```
-    $ ./validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
-    ```
+   ```
+   $ ./validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
+   ```
 
-    Sample output:
+   Sample output:
 
-    ```
-    Update rippled.cfg file with these values:
+   ```
+   Update rippled.cfg file with these values:
 
-    # validator public key: nHUtNnLVx7odrz5dnfb2xpIgbEeJPbzJWfdicSkGyVw1eE5GpjQr
+   # validator public key: nHUtNnLVx7odrz5dnfb2xpIgbEeJPbzJWfdicSkGyVw1eE5GpjQr
 
-    [validator_token]
-    eyJ2YWxpZGF0aW9uX3NlY3J|dF9rZXkiOiI5ZWQ0NWY4NjYyNDFjYzE4YTI3NDdiNT
-    QzODdjMDYyNTkwNzk3MmY0ZTcxOTAyMzFmYWE5Mzc0NTdmYT|kYWY2IiwibWFuaWZl
-    c3QiOiJKQUFBQUFGeEllMUZ0d21pbXZHdEgyaUNjTUpxQzlnVkZLaWxHZncxL3ZDeE
-    hYWExwbGMyR25NaEFrRTFhZ3FYeEJ3RHdEYklENk9NU1l1TTBGREFscEFnTms4U0tG
-    bjdNTzJmZGtjd1JRSWhBT25ndTlzQUtxWFlvdUorbDJWMFcrc0FPa1ZCK1pSUzZQU2
-    hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
-    NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
-    VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==
-    ```
+   [validator_token]
+   eyJ2YWxpZGF0aW9uX3NlY3J|dF9rZXkiOiI5ZWQ0NWY4NjYyNDFjYzE4YTI3NDdiNT
+   QzODdjMDYyNTkwNzk3MmY0ZTcxOTAyMzFmYWE5Mzc0NTdmYT|kYWY2IiwibWFuaWZl
+   c3QiOiJKQUFBQUFGeEllMUZ0d21pbXZHdEgyaUNjTUpxQzlnVkZLaWxHZncxL3ZDeE
+   hYWExwbGMyR25NaEFrRTFhZ3FYeEJ3RHdEYklENk9NU1l1TTBGREFscEFnTms4U0tG
+   bjdNTzJmZGtjd1JRSWhBT25ndTlzQUtxWFlvdUorbDJWMFcrc0FPa1ZCK1pSUzZQU2
+   hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
+   NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
+   VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==
+   ```
 
 On your validator:
 
 1. Add `[validator_token]` and its value to your validator's `rippled.cfg` file.
 
-    If you previously configured your validator without the `validator-keys` tool, delete `[validation_seed]` and its value from your `rippled.cfg` file. This changes your validator public key.
+   If you previously configured your validator without the `validator-keys` tool, delete `[validation_seed]` and its value from your `rippled.cfg` file. This changes your validator public key.
 
 2. Restart `rippled`.
 
-    ```
-    $ sudo systemctl restart rippled.service
-    ```
+   ```
+   $ sudo systemctl restart rippled.service
+   ```
 
 3. Use the `server_info` command to get information about your validator to verify that it is running as a validator.
 
-    ```
-    $ rippled server_info
-    ```
+   ```
+   $ rippled server_info
+   ```
 
-      - The `pubkey_validator` value in the response should match the `public_key` in the `validator-keys.json` file that you generated for use with your validator.
+   - The `pubkey_validator` value in the response should match the `public_key` in the `validator-keys.json` file that you generated for use with your validator.
 
-      - The `server_state` value should be _**proposing**_.
+   - The `server_state` value should be _**proposing**_.
 
 **Security Tip:** Change the permissions on your `rippled.cfg` file to be more restrictive. On Linux it is recommended to be `0600`. You can do this with `chmod 0600 rippled.cfg`
 
@@ -158,13 +154,11 @@ This section describes three different configurations you can use to connect you
 
 For a comparison of these approaches, see [Pros and Cons of Peering Configurations](../../../concepts/networks-and-servers/peer-protocol.md#pros-and-cons-of-peering-configurations).
 
-
 ### Connect using discovered peers
 
 This configuration connects your validator to the XRP Ledger network using [discovered peers](../../../concepts/networks-and-servers/peer-protocol.md#peer-discovery). This is the default behavior for `rippled` servers.
 
 _**To connect your validator to the XRP Ledger network using discovered peers,**_ omit the `[peer_private]` stanza or set it to `0` in your validator's `rippled.cfg` file. The [example `rippled.cfg` file](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) is delivered with this configuration.
-
 
 ### Connect using proxies
 
@@ -178,28 +172,26 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 
 3. In your validator's `rippled.cfg` file, set `[peer_private]` to `1`. This prevents your validator's IP address from being forwarded. For more information, see [Private Peers](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). It also prevents your validator from connecting to servers other than those defined in the `[ips_fixed]` stanza you defined to run your validator in a cluster.
 
-    {% admonition type="danger" name="Warning" %}Be sure that you don't publish your validator's IP address in other ways.{% /admonition %}
+   {% admonition type="danger" name="Warning" %}Be sure that you don't publish your validator's IP address in other ways.{% /admonition %}
 
 4. Configure your validator host machine's firewall to allow the following traffic only:
+   - Inbound traffic: Only from IP addresses of the stock `rippled` servers in the cluster you configured.
 
-    - Inbound traffic: Only from IP addresses of the stock `rippled` servers in the cluster you configured.
-
-    - Outbound traffic: Only to the IP addresses of the stock `rippled` servers in the cluster you configured and to your UNL list providers through port 443.
+   - Outbound traffic: Only to the IP addresses of the stock `rippled` servers in the cluster you configured and to your UNL list providers through port 443.
 
 5. Restart `rippled`.
 
-    ```
-    $ sudo systemctl restart rippled.service
-    ```
+   ```
+   $ sudo systemctl restart rippled.service
+   ```
 
 6. Use the [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md) endpoint on one of your stock `rippled` servers. The response should not include your validator. This verifies that your validator's `[peer_private]` configuration is working. One of the effects of enabling `[peer_private]` on your validator is that your validator's peers do not include it in their Peer Crawler results.
 
-    ```
-    $ curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
-    ```
+   ```
+   $ curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
+   ```
 
 <!-- { TODO: Future: add a recommended network architecture diagram to represent the proxy, clustering, and firewall setup: https://ripplelabs.atlassian.net/browse/DOC-2046 }-->
-
 
 ### Connect using public hubs
 
@@ -207,20 +199,19 @@ This configuration connects your validator to the network using three [public hu
 
 _**To connect your validator to the network using public hubs:**_
 
-1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs. 
+1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs.
 
-    ```
-    [ips_fixed]
-    r.ripple.com 51235
-    sahyadri.isrdc.in 51235
-    hubs.xrpkuwait.com 51235
-    hub.xrpl-commons.org 51235
-    ```
+   ```
+   [ips_fixed]
+   r.ripple.com 51235
+   sahyadri.isrdc.in 51235
+   hubs.xrpkuwait.com 51235
+   hub.xrpl-commons.org 51235
+   ```
 
 {% admonition type="info" name="Note" %}
 The above list may evolve over time. To ensure you're using the most current set of public hubs, refer to the official [`rippled-example.cfg`](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) maintained by XRPLF.
 {% /admonition %}
-
 
     {% admonition type="warning" name="Caution" %}This configuration connects your validator to the network using default public hubs. Because these are the _default_ public hubs, they may sometimes be too busy to provide your validator with a connection to the network. To help avoid this issue, connect to more public hubs and, even better, connect to non-default public hubs.{% /admonition %}
 
@@ -234,22 +225,20 @@ The above list may evolve over time. To ensure you're using the most current set
 
 2. Also in your validator's `rippled.cfg` file, include the following `[peer_private]` stanza and set it to `1`. This instructs your validator’s peers not to broadcast your validator’s IP address. This setting also instructs your validator to connect to only the peers configured in your `[ips_fixed]` stanza. This ensures that your validator connects to and shares its IP with only peer `rippled` servers you know and trust.
 
-    ```
-    [peer_private]
-    1
-    ```
+   ```
+   [peer_private]
+   1
+   ```
 
-    {% admonition type="danger" name="Warning" %}Be sure that you don't publish your validator's IP address in other ways.{% /admonition %}
+   {% admonition type="danger" name="Warning" %}Be sure that you don't publish your validator's IP address in other ways.{% /admonition %}
 
-    With `[peer_private]` enabled, `rippled` ignores any connections suggested by the `[ips]` stanza. If you need to connect to an IP currently in your `[ips]` stanza, put it in the `[ips_fixed]` stanza instead, but _**only**_ if you can expect them to behave responsibly as described in step 1.
+   With `[peer_private]` enabled, `rippled` ignores any connections suggested by the `[ips]` stanza. If you need to connect to an IP currently in your `[ips]` stanza, put it in the `[ips_fixed]` stanza instead, but _**only**_ if you can expect them to behave responsibly as described in step 1.
 
 3. Restart `rippled`.
 
-    ```
-    $ sudo systemctl restart rippled.service
-    ```
-
-
+   ```
+   $ sudo systemctl restart rippled.service
+   ```
 
 ## 5. Verify your network connection
 
@@ -257,17 +246,15 @@ Here are some methods you can use to verify that your validator has a healthy co
 
 - Use the [`peers`](../../../references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md) command to return a list of all `rippled` servers currently connected to your validator. If the `peers` array is `null`, you don’t have a healthy connection to the network. If you've set up your validator using the instructions in this document, the `peers` array should include the same number of objects as the number of peers defined in your `[ips_fixed]` stanza.
 
-    If you listed a public hub in your `[ips_fixed]` stanza and it is busy, it may reject your validator's connection. In this case, you may end up with fewer connections than configured in your `[ips_fixed]` stanza. Your validator retries the connection if it's initially rejected.
+  If you listed a public hub in your `[ips_fixed]` stanza and it is busy, it may reject your validator's connection. In this case, you may end up with fewer connections than configured in your `[ips_fixed]` stanza. Your validator retries the connection if it's initially rejected.
 
-    If you are having trouble maintaining a reliable and safe connection to the network and haven't set up connections using public hubs or proxies, see [4. Connect to the network](#4-connect-to-the-network). Using one of the methods described in the section may help your validator remain healthily connected to the network.
+  If you are having trouble maintaining a reliable and safe connection to the network and haven't set up connections using public hubs or proxies, see [4. Connect to the network](#4-connect-to-the-network). Using one of the methods described in the section may help your validator remain healthily connected to the network.
 
 - Use the [`server_info`](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md) command to return some basic information about your validator. The `server_state` should be set to `proposing`. It may also be set to `full` or `validating`, but only for a few minutes before moving into `proposing`.
 
-    If the `server_state` does not spend the majority of its time set to `proposing`, it may be a sign that your validator is unable to fully participate in the XRP Ledger network. For more information about server states and using the `server_info` endpoint to diagnose issues with your validator, see [`rippled` Server States](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md) and [Get the `server_info`](../../troubleshooting/diagnosing-problems.md#get-the-server_info).
+  If the `server_state` does not spend the majority of its time set to `proposing`, it may be a sign that your validator is unable to fully participate in the XRP Ledger network. For more information about server states and using the `server_info` endpoint to diagnose issues with your validator, see [`rippled` Server States](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md) and [Get the `server_info`](../../troubleshooting/diagnosing-problems.md#get-the-server_info).
 
 - Use the [`validators`](../../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md) command to return the current list of published and trusted validators used by the validator. Ensure that the `validator_list_expires` value is either `never` or not expired or about to expire.
-
-
 
 ## 6. Provide domain verification
 
@@ -287,27 +274,25 @@ To provide domain verification:
 
 3. Share your validator's public key with the public, especially other `rippled` operators. For example, you can share your validator's public key on your website, on social media, in the [XRPChat community forum](https://www.xrpchat.com/), or in a press release.
 
-
 ## Revoke validator keys
 
 If your validator's master private key is compromised, you must revoke it immediately and permanently.
 
 For information about how to revoke a master key pair you generated for your validator using the `validator-keys` tool, see [Key Revocation](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation).
 
-
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](/about/)
-    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+  - [XRP Ledger Overview](/about/)
+  - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
-    - [Cluster rippled Servers](../peering/cluster-rippled-servers.md)
-    - [Install `rippled`](../../installation/index.md)
-    - [Capacity Planning](../../installation/capacity-planning.md)
+  - [Cluster rippled Servers](../peering/cluster-rippled-servers.md)
+  - [Install `rippled`](../../installation/index.md)
+  - [Capacity Planning](../../installation/capacity-planning.md)
 - **References:**
-    - [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
-    - [consensus_info method][]
-    - [validator_list_sites method][]
-    - [validators method][]
+  - [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
+  - [consensus_info method][]
+  - [validator_list_sites method][]
+  - [validators method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

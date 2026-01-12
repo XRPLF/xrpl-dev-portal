@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-06-29"
+date: '2022-06-29'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Clio Release Notes
+  - Clio Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing Clio version 1.0.0
 
 Today, RippleX and the XRP Ledger Foundation (XRPLF) are pleased to announce the 1.0 release of Clio—an XRP Ledger API server optimized for HTTP and WebSocket API calls.
@@ -28,8 +29,8 @@ To get started with Clio, read the [conceptual document](https://xrpl.org/the-cl
 
 The SHA-256 hash for the official package is as follows:
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                     | SHA-256                                                            |
+| :---------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [Ubuntu Deb (x86_64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/clio-server_1.0.0-1_amd64.deb) | `4a7acdeb9629c3bbeed4d95df67368b27e6e487715b2d442ac3e1d2530ad19f9` |
 
 When building from source, the first log entry should be the commit setting the version:

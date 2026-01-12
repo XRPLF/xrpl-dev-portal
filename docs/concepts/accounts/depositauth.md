@@ -1,10 +1,11 @@
 ---
 seo:
-    description: The DepositAuth setting lets an account block incoming payments by default.
+  description: The DepositAuth setting lets an account block incoming payments by default.
 labels:
   - Payments
   - Security
 ---
+
 # Deposit Authorization
 
 Deposit Authorization is an optional [account](index.md) setting in the XRP Ledger. If enabled, Deposit Authorization blocks all transfers from strangers, including transfers of XRP and [tokens](../tokens/index.md). An account with Deposit Authorization can only receive value in two ways:
@@ -39,28 +40,26 @@ To get the full effect of Deposit Authorization, Ripple recommends also doing th
 An account with Deposit Authorization enabled:
 
 - **Cannot** be the destination of [Payment transactions][], with **the following exceptions**:
-    - If the destination has [preauthorized](#preauthorization) the sender of the Payment.
-    - If the account's XRP balance is equal to or below the minimum account [reserve requirement](reserves.md), it can be the destination of an XRP Payment whose `Amount` is equal or less than the minimum account reserve (currently {% $env.PUBLIC_BASE_RESERVE %}). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.
+  - If the destination has [preauthorized](#preauthorization) the sender of the Payment.
+  - If the account's XRP balance is equal to or below the minimum account [reserve requirement](reserves.md), it can be the destination of an XRP Payment whose `Amount` is equal or less than the minimum account reserve (currently {% $env.PUBLIC_BASE_RESERVE %}). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.
 - Can receive XRP from [PaymentChannelClaim transactions][] **only in the following cases**:
-    - The sender of the PaymentChannelClaim transaction is the destination of the payment channel.
-    - The destination of the PaymentChannelClaim transaction has [preauthorized](#preauthorization) the sender of the PaymentChannelClaim.
+  - The sender of the PaymentChannelClaim transaction is the destination of the payment channel.
+  - The destination of the PaymentChannelClaim transaction has [preauthorized](#preauthorization) the sender of the PaymentChannelClaim.
 - Can receive XRP from [EscrowFinish transactions][] **only in the following cases**:
-    - The sender of the EscrowFinish transaction is the destination of the escrow.
-    - The destination of the EscrowFinish transaction has [preauthorized](#preauthorization) the sender of the EscrowFinish.
+  - The sender of the EscrowFinish transaction is the destination of the escrow.
+  - The destination of the EscrowFinish transaction has [preauthorized](#preauthorization) the sender of the EscrowFinish.
 - **Can** receive XRP or tokens by sending a [CheckCash][] transaction.
 - **Can** receive XRP or tokens by sending [OfferCreate transactions][].
-    - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the rest of the ordered XRP or token later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
+  - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the rest of the ordered XRP or token later when the offer is consumed by other accounts' [Payment][] and [OfferCreate][] transactions.
 - If the account has created any trust lines without the [No Ripple flag](../tokens/fungible-tokens/rippling.md) enabled, or has enabled the Default Ripple flag and issued any currency, the account **can** receive the tokens of those trust lines in [Payment transactions][] as a result of rippling. It cannot be the destination of those transactions.
 - In general, an account in the XRP Ledger **cannot** receive any non-XRP currencies in the XRP Ledger as long as all of the following are true. (This rule is not specific to the DepositAuth flag.)
-    - The account has not created any trust lines with a nonzero limit.
-    - The account has not issued tokens on trust lines created by others.
-    - The account has not placed any offers.
+  - The account has not created any trust lines with a nonzero limit.
+  - The account has not issued tokens on trust lines created by others.
+  - The account has not placed any offers.
 
 The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:
 
 {% partial file="/docs/_snippets/depositauth-semantics-table.md" /%}
-
-
 
 ## Enabling or Disabling Deposit Authorization
 
@@ -92,14 +91,12 @@ Preauthorization has no effect on the other ways to send money to an account wit
 
 {% amendment-disclaimer name="DepositPreauth" /%}
 
-
 ### Checking for Authorization
 
 You can use the [deposit_authorized method][] to see if an account is authorized to deposit to another account. This method checks two things: <!-- STYLE_OVERRIDE: is authorized to -->
 
 - Whether the destination account requires Deposit Authorization. (If it does not require authorization, then all source accounts are considered authorized.)
 - Whether the source account is preauthorized to send money to the destination.
-
 
 ## See Also
 
@@ -110,6 +107,5 @@ You can use the [deposit_authorized method][] to see if an account is authorized
 - The `DisallowXRP` flag indicates that an account should not receive XRP. This is a softer protection than Deposit Authorization, and is not enforced by the XRP Ledger. (Client applications should honor this flag or at least warn about it.)
 - The `RequireDest` flag indicates that an account can only receive currency amounts if the sending transaction specifies a [Destination Tag](../transactions/source-and-destination-tags.md). This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.
 - [Partial Payments](../payment-types/partial-payments.md) provide a way for accounts to return unwanted payments while subtracting [transfer fees](../tokens/fungible-tokens/transfer-fees.md) and exchange rates from the amount delivered instead of adding them to the amount sent.
-
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

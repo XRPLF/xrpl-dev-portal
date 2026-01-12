@@ -1,16 +1,17 @@
 ---
 category: 2022
-date: "2022-11-15"
+date: '2022-11-15'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: CryptoIso20022 Interop
 
-We’re excited to be reigniting Developer Reflections, and kicking off this week we’re proud to highlight [CryptoIso20022 Interop](https://github.com/radynamics/CryptoIso20022Interop), which enables interoperability between ISO 20022 file formats and cryptocurrency payments to facilitate sending and processing received crypto payments within existing financial software's ISO 20022 capabilities. In other words, CryptoIso20022 Interop is a product to simplify accounting workflows for small to medium-sized enterprizes. 
+We’re excited to be reigniting Developer Reflections, and kicking off this week we’re proud to highlight [CryptoIso20022 Interop](https://github.com/radynamics/CryptoIso20022Interop), which enables interoperability between ISO 20022 file formats and cryptocurrency payments to facilitate sending and processing received crypto payments within existing financial software's ISO 20022 capabilities. In other words, CryptoIso20022 Interop is a product to simplify accounting workflows for small to medium-sized enterprizes.
 
 <!-- BREAK -->
 
@@ -26,8 +27,8 @@ As a payee you can fetch received cryptocurrency payments from your wallet and t
 
 ![Screenshot: Send Payments](/blog/img/cryptoiso20022-send-payments.png)
 
-Built on the XRP Ledger Mainnet using [xrpl4j](https://github.com/XRPLF/xrpl4j), CryptoIso20022 Interop only needs a connection to the XRP Ledger, without any other backend software. What’s more, no registration/software account is needed. 
+Built on the XRP Ledger Mainnet using [xrpl4j](https://github.com/XRPLF/xrpl4j), CryptoIso20022 Interop only needs a connection to the XRP Ledger, without any other backend software. What’s more, no registration/software account is needed.
 
-CryptoIso20022 Interop chose the XRP Ledger for its speed, transaction costs and sustainability. 
+CryptoIso20022 Interop chose the XRP Ledger for its speed, transaction costs and sustainability.
 
 To learn more about CryptoIso20022 Interop, visit <https://github.com/radynamics/CryptoIso20022Interop>.

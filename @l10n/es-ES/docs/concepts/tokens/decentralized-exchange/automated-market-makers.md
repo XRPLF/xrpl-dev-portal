@@ -2,13 +2,14 @@
 html: automated-market-makers.html
 parent: decentralized-exchange.html
 seo:
-    title: ¿Qué es un Automated Market Maker (AMM)?
-    description: Los Automated Market Makers (AMMs) son una parte esencial de las criptomonedas, proveen liquidez entre dos pares de activos. Aprende más sobre AMMs y el XRP Ledger.
+  title: ¿Qué es un Automated Market Maker (AMM)?
+  description: Los Automated Market Makers (AMMs) son una parte esencial de las criptomonedas, proveen liquidez entre dos pares de activos. Aprende más sobre AMMs y el XRP Ledger.
 labels:
   - XRP
   - Exchange Descentralizado
   - AMM
 ---
+
 # ¿Qué es un Automated Market Maker (AMM)?
 
 _(Requiere la [enmienda AMM][] XLS-30)_
@@ -43,9 +44,10 @@ Para evitar el mal uso, se aplican algunas restricciones a los activos utilizado
 - Si el activo es un token cuyo emisor utiliza [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), el creador del AMM debe estar autorizado para poseer esos tokens. Solo los usuarios cuyas líneas de confianza (trustlines) estén autorizadas pueden depositar ese token en el AMM o retirarlo; sin embargo, los usuarios aún pueden depositar o retirar el otro activo.
 - Si la [enmienda Clawback][] está habilitada, el emisor del token no debe haber habilitado la capacidad de recuperar sus tokens.
 
-
 ## Tokens LP
+
 <!-- TODO: add diagrams showcasing flow of funds -->
+
 Quien crea el AMM se convierte en el primer proveedor de liquidez y recibe Tokens LP que representan el 100% de la propiedad de los activos en el pool del AMM. Pueden canjear algunos o todos esos Tokens LP para retirar activos del AMM en proporción a las cantidades actualmente allí. (Las proporciones cambian con el tiempo a medida que las personas comercian contra el AMM). El AMM no cobra una tarifa al retirar ambos activos.
 
 Por ejemplo, si creaste un AMM con 5 ETH y 5 USD, y luego alguien cambió 1.26 USD por 1 ETH, el pool ahora tiene 4 ETH y 6.26 USD en él. Puedes gastar la mitad de tus Tokens LP para retirar 2 ETH y 3.13 USD.
@@ -59,7 +61,6 @@ El AMM está diseñado de manera que el pool de activos de un AMM esté vacío s
 ### Códigos de moneda de Tokens LP
 
 Los Tokens LP utilizan un tipo especial de código de moneda en el formato hexadecimal de 160 bits ["no estándar"](../../../references/protocol/data-types/currency-formats.md#nonstandard-currency-codes). Estos códigos tienen los primeros 8 bits `0x03`. El resto del código es un hash SHA-512, truncado a los primeros 152 bits, de los códigos de moneda de los dos activos y sus emisores. (Los activos se colocan en un "orden canónico" con el par de moneda+emisor numéricamente inferior primero). Como resultado, los Tokens LP para un par de activos dado de un AMM tienen un código de moneda predecible y consistente.
-
 
 ## Tarifas de intercambio
 
@@ -75,7 +76,6 @@ A diferencia de cualquier Automated Market Maker anterior, el diseño de AMM del
 
 Con cualquier AMM, cuando el precio de sus activos cambia significativamente en los mercados externos, los traders pueden usar arbitraje para obtener beneficios del AMM, lo que resulta en una pérdida para los proveedores de liquidez. El mecanismo de subasta tiene como objetivo devolver más de ese valor a los proveedores de liquidez y llevar los precios del AMM más rápidamente de vuelta al equilibrio con los mercados externos.
 
-
 ## Representación en el Ledger
 
 En los datos de estado del ledger, un AMM consiste en múltiples [entradas de ledger](../../../references/protocol/ledger-data/ledger-entry-types/index.md):
@@ -84,12 +84,11 @@ En los datos de estado del ledger, un AMM consiste en múltiples [entradas de le
 
 - Una [entrada AccountRoot][] especial que emite Tokens LP del AMM, y tiene XRP del AMM (si lo tiene).
 
-    La dirección de esta AccountRoot se elige de forma algo aleatoria cuando se crea el AMM, y es diferente si el AMM se elimina y se vuelve a crear. Esto puede prevenir que las personas financien la cuenta AMM con XRP excesivo por adelantado.
+  La dirección de esta AccountRoot se elige de forma algo aleatoria cuando se crea el AMM, y es diferente si el AMM se elimina y se vuelve a crear. Esto puede prevenir que las personas financien la cuenta AMM con XRP excesivo por adelantado.
 
 - Las [Trust lines](../fungible-tokens/index.md) a la cuenta especial AMM para los tokens en el pool del AMM.
 
 Estas entradas de ledger no son propiedad de ninguna cuenta, por lo que el [requisito de reserva](../../accounts/reserves.md) no se aplica a ellas. Sin embargo, para prevenir el spam, la transacción para crear un AMM tiene un [coste de transacción](../../transactions/transaction-cost.md) especial que requiere que el remitente queme una cantidad de XRP mayor de lo habitual.
-
 
 ## Eliminación
 
@@ -102,7 +101,7 @@ Un AMM se elimina cuando una [transacción AMMWithdraw][] retira todos los activ
 
 Si hay más de 512 trust lines enlazadas a la cuenta del AMM cuando se eliminase, el proceso de retiro tiene éxito y elimina tantas trust lines como puede, pero deja el AMM en el ledger sin activos en su pool.
 
-Mientras un AMM no tenga activos en su pool, cualquiera puede eliminarlo enviando una [transacción AMMDelete][]; si el número restante de líneas de confianza sigue siendo mayor que el límite, pueden ser necesarias múltiples transacciones AMMDelete para eliminar completamente el AMM. Alternativamente, cualquier persona puede realizar un [depósito especial](../../../references/protocol/transactions/types/ammdeposit.md#empty-amm-special-case) para financiar el AMM como si fuera nuevo. 
+Mientras un AMM no tenga activos en su pool, cualquiera puede eliminarlo enviando una [transacción AMMDelete][]; si el número restante de líneas de confianza sigue siendo mayor que el límite, pueden ser necesarias múltiples transacciones AMMDelete para eliminar completamente el AMM. Alternativamente, cualquier persona puede realizar un [depósito especial](../../../references/protocol/transactions/types/ammdeposit.md#empty-amm-special-case) para financiar el AMM como si fuera nuevo.
 
 No hay reembolso o incentivo para eliminar un AMM vacío.
 

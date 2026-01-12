@@ -1,10 +1,12 @@
 ---
 seo:
-    description: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
+  description: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
 labels:
-    - 手数料
+  - 手数料
 ---
+
 # FeeSettings
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L115-L120 "Source")
 
 `FeeSettings`オブジェク
@@ -30,15 +32,15 @@ labels:
 
 `FeeSettings`オブジェクトのフィールドは次のとおりです。
 
-| 名前                | JSONの型  | [内部の型][] | 説明            |
-|:--------------------|:----------|:-------------|:-----------------------|
-| `LedgerEntryType`   | 文字列    | UInt16       | 値`0x0073`が文字列`FeeSettings`にマッピングされている場合は、このオブジェクトにレジャーの手数料設定が含まれていることを示します。 |
-| `BaseFee`           | 文字列    | UInt64       | 「リファレンストランザクション」の[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（XRPのdrop数、16進数） |
-| `ReferenceFeeUnits` | 数値      | UInt32       | 「手数料単位」に変換された`BaseFee` |
-| `ReserveBase`       | 数値      | UInt32       | XRP Ledgerのアカウントの[基本準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。 |
-| `ReserveIncrement`  | 数値      | UInt32       | 所有するオブジェクトごとに増加する[所有者準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。 |
-| `PreviousTxnID`     | 文字列    | UInt256      | このエントリを最後に変更したトランザクションの識別ハッシュ。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
-| `PreviousTxnLgrSeq` | 数値      | UInt32       | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
+| 名前                | JSONの型 | [内部の型][] | 説明                                                                                                                                                   |
+| :------------------ | :------- | :----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `LedgerEntryType`   | 文字列   | UInt16       | 値`0x0073`が文字列`FeeSettings`にマッピングされている場合は、このオブジェクトにレジャーの手数料設定が含まれていることを示します。                      |
+| `BaseFee`           | 文字列   | UInt64       | 「リファレンストランザクション」の[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（XRPのdrop数、16進数）               |
+| `ReferenceFeeUnits` | 数値     | UInt32       | 「手数料単位」に変換された`BaseFee`                                                                                                                    |
+| `ReserveBase`       | 数値     | UInt32       | XRP Ledgerのアカウントの[基本準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。                              |
+| `ReserveIncrement`  | 数値     | UInt32       | 所有するオブジェクトごとに増加する[所有者準備金](../../../../concepts/accounts/reserves.md#基本準備金と所有者準備金)（XRPのdrop数）。                  |
+| `PreviousTxnID`     | 文字列   | UInt256      | このエントリを最後に変更したトランザクションの識別ハッシュ。{% amendment-disclaimer name="fixPreviousTxnID" /%}                                        |
+| `PreviousTxnLgrSeq` | 数値     | UInt32       | このエントリを最後に変更したトランザクションが含まれる[レジャーインデックス](../ledger-header.md)。{% amendment-disclaimer name="fixPreviousTxnID" /%} |
 
 {% admonition type="danger" name="警告" %}このレジャーオブジェクトのJSONフォーマットは一般的ではありません。`BaseFee`、`ReserveBase`、および`ReserveIncrement`はXRPのdrop数を示しますが、通常の[XRP指定][通貨額]フォーマットでは***ありません*** 。{% /admonition %}
 

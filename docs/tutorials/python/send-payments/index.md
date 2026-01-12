@@ -2,7 +2,7 @@
 html: send-payments-using-python.html
 parent: modular-tutorials-in-python.html
 seo:
-    description: Use a Python test harness to send XRP,trade currencies, and more.
+  description: Use a Python test harness to send XRP,trade currencies, and more.
 labels:
   - Accounts
   - Cross-Currency
@@ -14,9 +14,9 @@ labels:
 metadata:
   indexPage: true
 ---
+
 # Send Payments Using Python
 
 Send XRP and issued currency on the XRP Ledger using Python.
-
 
 {% child-pages /%}

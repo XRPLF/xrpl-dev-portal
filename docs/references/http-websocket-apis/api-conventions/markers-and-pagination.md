@@ -2,8 +2,9 @@
 html: markers-and-pagination.html
 parent: api-conventions.html
 seo:
-    description: Convention for paginating large queries into multiple responses.
+  description: Convention for paginating large queries into multiple responses.
 ---
+
 # Markers and Pagination
 
 Some methods return more data than can efficiently fit into one response. When there are more results than contained, the response includes a `marker` field. You can use this to retrieve more pages of data across multiple calls. In each request, pass the `marker` value from the previous response to resume from the point where you left off. If the `marker` is omitted from a response, then you have reached the end of the data set.

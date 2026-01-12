@@ -2,10 +2,11 @@
 html: transaction-queue.html
 parent: transactions.html
 seo:
-    description: Transactions can be queued before being processed.
+  description: Transactions can be queued before being processed.
 labels:
   - Transaction Sending
 ---
+
 # Transaction Queue
 
 The `rippled` server uses a transaction queue to help enforce the [open ledger cost](transaction-cost.md#open-ledger-cost). The open ledger cost sets a target number of transactions in a given ledger, and escalates the required transaction cost very quickly when the open ledger surpasses this size. Rather than discarding transactions that cannot pay the escalated transaction cost, `rippled` tries to put them in a transaction queue, which it uses to build the next ledger.
@@ -14,7 +15,7 @@ The `rippled` server uses a transaction queue to help enforce the [open ledger c
 
 The transaction queue plays an important role in selecting the transactions that are included or excluded from a given ledger version in the consensus process. The following steps describe how the transaction queue relates to the [consensus process](../consensus-protocol/index.md).
 
-[{% inline-svg file="/docs/img/consensus-with-queue.svg" /%}](/docs/img/consensus-with-queue.svg "Transaction queue and consensus diagram")
+[{% inline-svg file="/docs/img/consensus-with-queue.svg" /%}](/docs/img/consensus-with-queue.svg 'Transaction queue and consensus diagram')
 
 1. **Consensus Round 1** - Each validator proposes a set of transactions to be included in the next ledger version. Each also keeps a queue of candidate transactions not currently proposed.
 
@@ -28,7 +29,7 @@ The transaction queue plays an important role in selecting the transactions that
 
 6. **Adding to the Queue** - If the next proposed ledger is already full, incoming transactions are queued for a later ledger version. (Transactions that pay the [open ledger cost](transaction-cost.md#open-ledger-cost) can still get into the next proposed ledger even if it's "full", but the open ledger cost grows exponentially with each transaction added this way.)
 
-    After this step, the process repeats from the beginning.
+   After this step, the process repeats from the beginning.
 
 {% admonition type="info" name="Note" %}Technically, several of the steps described in the above process occur in parallel, because each server is always listening for new transactions, and starts preparing its next ledger proposal while the consensus process for the previous ledger version is ongoing.{% /admonition %}
 
@@ -40,9 +41,9 @@ The `rippled` server uses a variety of heuristics to estimate which transactions
 - Transactions with an `AccountTxnID` field cannot be queued.
 - A single sending address can have at most 10 transactions queued at the same time.
 - To queue a transaction, the sender must have enough XRP for all of the following:
-    - Destroying the XRP [transaction cost](transaction-cost.md) as specified in the `Fee` fields of all the sender's queued transactions. The total amount among queued transactions cannot be more than the base account reserve (currently {% $env.PUBLIC_BASE_RESERVE %}). (Transactions paying significantly more than the minimum transaction cost of 0.00001 XRP typically skip the queue and go straight into the open ledger.)
-    - Sending the maximum sum of XRP that all the sender's queued transactions could send.
-    - Keeping enough XRP to meet the account's [reserve requirements](../accounts/reserves.md).
+  - Destroying the XRP [transaction cost](transaction-cost.md) as specified in the `Fee` fields of all the sender's queued transactions. The total amount among queued transactions cannot be more than the base account reserve (currently {% $env.PUBLIC_BASE_RESERVE %}). (Transactions paying significantly more than the minimum transaction cost of 0.00001 XRP typically skip the queue and go straight into the open ledger.)
+  - Sending the maximum sum of XRP that all the sender's queued transactions could send.
+  - Keeping enough XRP to meet the account's [reserve requirements](../accounts/reserves.md).
 - If a transaction affects how the sending address authorizes transactions, no other transactions from the same address can be queued behind it.
 - If a transaction includes a `LastLedgerSequence` field, the value of that field must be at least **the current ledger index + 2**.
 
@@ -52,20 +53,19 @@ If a sending address has one or more transactions queued, that sender can "push"
 
 This feature helps you work around a particular situation. If you submitted one or more transactions with a low cost that were queued, you cannot send new transactions from the same address unless you do one of the following:
 
-* Wait for the queued transactions to be included in a validated ledger, _or_
-* Wait for the queued transactions to be permanently invalidated if the transactions have the [`LastLedgerSequence` field](reliable-transaction-submission.md#lastledgersequence) set, _or_
-* [Cancel the queued transactions](finality-of-results/canceling-a-transaction.md) by submitting a new transaction with the same sequence number and a higher transaction cost.
+- Wait for the queued transactions to be included in a validated ledger, _or_
+- Wait for the queued transactions to be permanently invalidated if the transactions have the [`LastLedgerSequence` field](reliable-transaction-submission.md#lastledgersequence) set, _or_
+- [Cancel the queued transactions](finality-of-results/canceling-a-transaction.md) by submitting a new transaction with the same sequence number and a higher transaction cost.
 
 If none of the above occur, transactions can stay in the queue for a theoretically unlimited amount of time, while other senders can "cut in line" by submitting transactions with higher transaction costs. Since signed transactions are immutable, you cannot increase the transaction cost of the queued transactions to increase their priority. If you do not want to invalidate the previously submitted transactions, fee averaging provides a workaround. If you increase the transaction cost of your new transaction to compensate, you can ensure the queued transactions are included in an open ledger right away.
 
 ## Order Within the Queue
 
-Transactions that were previously proposed in the consensus process but did not achieve the threshold to be validated are the first ones to be added to the next open ledger. After that, transactions are pulled from the queue to be proposed in a normalized order so that, during periods of high traffic, different servers propose similar sets of transactions. Within the transaction queue, transactions are ranked so that transactions paying a higher transaction cost come first. This ranking is not by the transactions' _absolute_ XRP cost, but by costs _relative to the [minimum cost for that type of transaction](transaction-cost.md#special-transaction-costs)_.  Transactions that pay the same transaction cost are ranked in ascending order by hash. Other factors may also affect the order of transactions in the queue; for example, transactions from the same sender are sorted by their `Sequence` numbers so that they are submitted in order.
+Transactions that were previously proposed in the consensus process but did not achieve the threshold to be validated are the first ones to be added to the next open ledger. After that, transactions are pulled from the queue to be proposed in a normalized order so that, during periods of high traffic, different servers propose similar sets of transactions. Within the transaction queue, transactions are ranked so that transactions paying a higher transaction cost come first. This ranking is not by the transactions' _absolute_ XRP cost, but by costs _relative to the [minimum cost for that type of transaction](transaction-cost.md#special-transaction-costs)_. Transactions that pay the same transaction cost are ranked in ascending order by hash. Other factors may also affect the order of transactions in the queue; for example, transactions from the same sender are sorted by their `Sequence` numbers so that they are submitted in order.
 
 The precise order of transactions in the queue decides which transactions get added to the next in-progress ledger version in cases where there are more transactions in the queue than the expected size of the next ledger version. The order of the transactions **does not affect the order the transactions are executed within a validated ledger**. In each validated ledger version, the transaction set for that version executes in [canonical order](../consensus-protocol/consensus-structure.md#calculate-and-share-validations).
 
 {% admonition type="info" name="Note" %}When `rippled` queues a transaction, the provisional [transaction response code](../../references/protocol/transactions/transaction-results/index.md) is `terQUEUED`. This means that the transaction is likely to succeed in a future ledger version. As with all provisional response codes, the outcome of the transaction is not final until the transaction is either included in a validated ledger, or [rendered permanently invalid](finality-of-results/index.md).{% /admonition %}
-
 
 ## See Also
 

@@ -30,10 +30,10 @@ async function createTxWithPaths(): Promise<void> {
   }
 
   const resp: RipplePathFindResponse = await client.request(request)
-  console.log("Ripple Path Find response: ", resp)
+  console.log('Ripple Path Find response: ', resp)
 
   const paths = resp.result.alternatives[0].paths_computed
-  console.log("Computed paths: ", paths)
+  console.log('Computed paths: ', paths)
 
   const tx: Payment = {
     TransactionType: 'Payment',

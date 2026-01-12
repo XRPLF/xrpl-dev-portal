@@ -3,7 +3,6 @@
 // *******************************************************
 
 async function createConditionalEscrow() {
-
   //------------------------------------------------------Connect to the Ledger
   let net = getNet()
   const client = new xrpl.Client(net)
@@ -18,12 +17,12 @@ async function createConditionalEscrow() {
   // ------------------------------------------------------- Prepare transaction
   try {
     const escrowTx = await client.autofill({
-      "TransactionType": "EscrowCreate",
-      "Account": wallet.address,
-      "Amount": xrpl.xrpToDrops(sendAmount),
-      "Destination": destinationField.value,
-      "CancelAfter": escrow_cancel_date,
-      "Condition": escrowConditionField.value
+      TransactionType: 'EscrowCreate',
+      Account: wallet.address,
+      Amount: xrpl.xrpToDrops(sendAmount),
+      Destination: destinationField.value,
+      CancelAfter: escrow_cancel_date,
+      Condition: escrowConditionField.value,
     })
 
     // ------------------------------------------------ Sign prepared instructions
@@ -31,17 +30,14 @@ async function createConditionalEscrow() {
 
     // -------------------------------------------------------- Submit signed blob
     const tx = await client.submitAndWait(signed.tx_blob)
-    results = "\n=== *** Sequence Number (Save!): " + tx.result.tx_json.Sequence 
-    results += "\n\n===Balance changes===\n" + 
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
+    results = '\n=== *** Sequence Number (Save!): ' + tx.result.tx_json.Sequence
+    results += '\n\n===Balance changes===\n' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    xrpBalanceField.value = await client.getXrpBalance(wallet.address)
     resultField.value += results
-  }
-  catch (error) {
-    results += "\n===Error: " + error.message
+  } catch (error) {
+    results += '\n===Error: ' + error.message
     resultField.value = results
-  }
-  finally {
+  } finally {
     // -------------------------------------------------------- Disconnect
     client.disconnect()
   }
@@ -61,25 +57,22 @@ async function finishConditionalEscrow() {
   try {
     // ------------------------------------------------------- Prepare transaction
     const prepared = await client.autofill({
-      "TransactionType": "EscrowFinish",
-      "Account": accountAddressField.value,
-      "Owner": escrowOwnerField.value,
-      "OfferSequence": parseInt(escrowSequenceNumberField.value),
-      "Condition": escrowConditionField.value,
-      "Fulfillment": escrowFulfillmentField.value
+      TransactionType: 'EscrowFinish',
+      Account: accountAddressField.value,
+      Owner: escrowOwnerField.value,
+      OfferSequence: parseInt(escrowSequenceNumberField.value),
+      Condition: escrowConditionField.value,
+      Fulfillment: escrowFulfillmentField.value,
     })
     const signed = wallet.sign(prepared)
     const tx = await client.submitAndWait(signed.tx_blob)
-    results += "\n===Balance changes===" + 
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    results += '\n===Balance changes===' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
     resultField.value = results
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-  }
-  catch (error) {
-    results += "\n===Error: " + error.message + ".===\n"
+    xrpBalanceField.value = await client.getXrpBalance(wallet.address)
+  } catch (error) {
+    results += '\n===Error: ' + error.message + '.===\n'
     resultField.value = results
-  }
-  finally {
+  } finally {
     // -------------------------------------------------------- Disconnect
     client.disconnect()
   }

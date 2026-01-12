@@ -2,11 +2,12 @@
 html: transfer-fees.html
 parent: tokens.html
 seo:
-    description: Token issuers can charge a fee for transferring their tokens.
+  description: Token issuers can charge a fee for transferring their tokens.
 labels:
   - Fees
   - Tokens
 ---
+
 # Transfer Fees
 
 [Token](index.md) issuers can charge a _transfer fee_ that applies when users transfer those tokens among themselves. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee.
@@ -25,13 +26,11 @@ In this example, ACME Bank issues a EUR stablecoin on the XRP Ledger. ACME Bank 
 
 The following diagram shows an XRP Ledger payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
 
-[{% inline-svg file="/docs/img/transfer-fees.svg" /%}](/docs/img/transfer-fees.svg "Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger")
+[{% inline-svg file="/docs/img/transfer-fees.svg" /%}](/docs/img/transfer-fees.svg 'Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger')
 
 In accounting terms, Alice's, ACME's, and Charlie's balance sheets may have changed like this:
 
 [{% inline-svg file="/docs/img/transfer-fees-balance-sheets.svg" /%}](/docs/img/transfer-fees-balance-sheets.svg "Alice's assets are down 2,02€, Charlie's are up 2,00€, and ACME's liabilities are down 0,02€")
-
-
 
 ## Transfer Fees in Payment Paths
 
@@ -39,13 +38,13 @@ In accounting terms, Alice's, ACME's, and Charlie's balance sheets may have chan
 
 A transfer fee applies whenever an individual transfer would move tokens from one party to another (except when going to/from the issuing account directly). In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the sender of a payment must send enough to account for all fees. For example:
 
-[{% inline-svg file="/docs/img/transfer-fees-in-paths.svg" /%}](/docs/img/transfer-fees-in-paths.svg "Diagram of cross-currency payment with transfer fees")
+[{% inline-svg file="/docs/img/transfer-fees-in-paths.svg" /%}](/docs/img/transfer-fees-in-paths.svg 'Diagram of cross-currency payment with transfer fees')
 
 In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to deliver 100 USD issued by WayGate to Rosa (the recipient). FXMaker is a trader with the best offer in the order book, at a rate of 1 USD.WayGate for every 0.9 EUR.ACME. If there were no transfer fees, Salazar could deliver 100 USD to Rosa by sending 90 EUR. However, ACME has a transfer fee of 1% and WayGate has a transfer fee of 0.2%. This means:
 
-* FXMaker must send 100.20 USD.WayGate for Rosa to receive 100 USD.WayGate.
-* FXMaker's current ask is 90.18 EUR.ACME to send 100.20 USD.WayGate.
-* For FXMaker to receive 90.18 EUR.ACME, Salazar must send 91.0818 EUR.ACME.
+- FXMaker must send 100.20 USD.WayGate for Rosa to receive 100 USD.WayGate.
+- FXMaker's current ask is 90.18 EUR.ACME to send 100.20 USD.WayGate.
+- For FXMaker to receive 90.18 EUR.ACME, Salazar must send 91.0818 EUR.ACME.
 
 <!-- SPELLING_IGNORE: waygate, fxmaker -->
 
@@ -70,13 +69,13 @@ Some [client libraries](../../../references/client-libraries.md) have convenienc
 ## See Also
 
 - **Concepts:**
-    - [Fees (Disambiguation)](../../transactions/fees.md)
-    - [Transaction Cost](../../transactions/transaction-cost.md)
-    - [Paths](paths.md)
+  - [Fees (Disambiguation)](../../transactions/fees.md)
+  - [Transaction Cost](../../transactions/transaction-cost.md)
+  - [Paths](paths.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+  - [account_lines method][]
+  - [account_info method][]
+  - [AccountSet transaction][]
+  - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

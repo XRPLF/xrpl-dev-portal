@@ -1,8 +1,10 @@
 ---
 seo:
-    description: Build a credential issuing microservice in Python.
+  description: Build a credential issuing microservice in Python.
 ---
+
 # Build a Credential Issuing Service
+
 _(Requires the Credentials amendment. {% not-enabled /%})_
 
 This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Flask](https://flask.palletsprojects.com/) framework for Python.
@@ -25,23 +27,21 @@ This should install appropriate versions of Flask and xrpl-py.
 
 To use the API that this microservice provides, you also need an HTTP client such as [Postman](https://www.postman.com/downloads/), [RESTED](https://github.com/RESTEDClient/RESTED), or [cURL](https://curl.se/).
 
-
 ## Overview
 
 The Credential Issuer microservice, mostly implemented in `issuer_service.py`, provides a RESTlike API with the following methods:
 
-| Method | Description |
-|---|----|
-| `POST /credential` | Request that the issuer issue a specific credential to a specific account. |
-| `GET /admin/credential` | List all credentials issued by the issuer's address, optionally filtering only for credentials that have or have not been accepted by their subject. |
-| `DELETE /admin/credential` | Delete a specific credential from the XRP Ledger, which revokes it. |
+| Method                     | Description                                                                                                                                          |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `POST /credential`         | Request that the issuer issue a specific credential to a specific account.                                                                           |
+| `GET /admin/credential`    | List all credentials issued by the issuer's address, optionally filtering only for credentials that have or have not been accepted by their subject. |
+| `DELETE /admin/credential` | Delete a specific credential from the XRP Ledger, which revokes it.                                                                                  |
 
 {% admonition type="info" name="Note" %}Some of the methods have `/admin` in the path because they are intended to be used by the microservice's administrator. However, the sample code does not implement any authentication.{% /admonition %}
 
 The sample code also contains a simple commmandline interface for a user account to accept a credential issued to it, as `accept_credential.py`.
 
 The other files contain helper code that is used by one or both tools.
-
 
 ## Usage
 
@@ -68,7 +68,7 @@ It should prompt you for your **issuer account** seed. Input the secret key you 
 The output should look like the following:
 
 ```txt
-Issuer account seed: 
+Issuer account seed:
 Starting credential issuer with XRPL address rJ6XzCCSapCaWZxExArkcBWLgJvT6bXCbV
  * Serving Flask app 'issuer_service'
  * Debug mode: off
@@ -86,13 +86,14 @@ To request a credential, make a request such as the following:
 {% tabs %}
 
 {% tab label="Summary" %}
-* HTTP method: `POST`
-* URL: `http://localhost:5000/credential`
-    {% admonition type="info" name="Note for macOS Users" %}If you specified a different port when starting the service, change `:5000` in this and other examples to match the port you specified.{% /admonition %}
-* Headers:
-    * `Content-Type: application/json`
-* Request Body:
-    ```json
+
+- HTTP method: `POST`
+- URL: `http://localhost:5000/credential`
+  {% admonition type="info" name="Note for macOS Users" %}If you specified a different port when starting the service, change `:5000` in this and other examples to match the port you specified.{% /admonition %}
+- Headers:
+  - `Content-Type: application/json`
+- Request Body:
+  `json
     {
         "subject": "rGtnKx7veDhV9CgYenkiCV5HMLpgU2BfcQ",
         "credential": "TestCredential",
@@ -100,26 +101,28 @@ To request a credential, make a request such as the following:
             "reason": "please"
         }
     }
-    ```
-{% /tab %}
+    `
+  {% /tab %}
 
 {% tab label="cURL" %}
+
 ```sh
 curl -H "Content-Type: application/json" -X POST -d '{"subject": "rGtnKx7veDhV9CgYenkiCV5HMLpgU2BfcQ", "credential": "TestCredential", "documents": {"reason": "please"}}' http://localhost:5000/credential
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The parameters of the JSON request body should be as follows:
 
-| Field | Type | Required? | Description |
-|---|---|---|---|
-| `subject` | String - Address | Yes | The XRPL classic address of the subject of the credential. Set this to the address that you generated at the start of this tutorial for the credential holder account. |
-| `credential` | String | Yes | The type of credential to issue. The example microservice accepts any string consisting of alphanumeric characters as well as the special characters underscore (`_`), dash (`-`), and period (`.`), with a minimum length of 1 and a maximum length of 64 characters. |
-| `documents` | Object | Yes | As a credential issuer, you typically need to verify some confidential information about someone before you issue them a credential. As a placeholder, the sample code checks for a nested field named `reason` that contains the string `please`. |
-| `expiration` | String - ISO8601 Datetime | No | The time after which the credential expires, such as `2025-12-31T00:00:00Z`. |
-| `uri` | String | No | Optional URI data to store with the credential. This data will become public on the XRP Ledger. If provided, this must be a string with minimum length 1 and max length 256, consisting of only characters that are valid in URIs, which are numbers, letters, and the following special characters: `-._~:/?#[]@!$&'()*+,;=%`. Conventionally, it should link to a Verifiable Credential document as defined by the W3C. |
+| Field        | Type                      | Required? | Description                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------ | ------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `subject`    | String - Address          | Yes       | The XRPL classic address of the subject of the credential. Set this to the address that you generated at the start of this tutorial for the credential holder account.                                                                                                                                                                                                                                                    |
+| `credential` | String                    | Yes       | The type of credential to issue. The example microservice accepts any string consisting of alphanumeric characters as well as the special characters underscore (`_`), dash (`-`), and period (`.`), with a minimum length of 1 and a maximum length of 64 characters.                                                                                                                                                    |
+| `documents`  | Object                    | Yes       | As a credential issuer, you typically need to verify some confidential information about someone before you issue them a credential. As a placeholder, the sample code checks for a nested field named `reason` that contains the string `please`.                                                                                                                                                                        |
+| `expiration` | String - ISO8601 Datetime | No        | The time after which the credential expires, such as `2025-12-31T00:00:00Z`.                                                                                                                                                                                                                                                                                                                                              |
+| `uri`        | String                    | No        | Optional URI data to store with the credential. This data will become public on the XRP Ledger. If provided, this must be a string with minimum length 1 and max length 256, consisting of only characters that are valid in URIs, which are numbers, letters, and the following special characters: `-._~:/?#[]@!$&'()*+,;=%`. Conventionally, it should link to a Verifiable Credential document as defined by the W3C. |
 
 This microservice immediately issues any credential that the user requests. A successful response from the API uses the HTTP status code `201 Created` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` or `ctid` value from the response to look up the transaction using an explorer such as [https://devnet.xrpl.org/](https://devnet.xrpl.org/).
 
@@ -132,15 +135,18 @@ To show a list of credentials issued by the issuing account, make the following 
 {% tabs %}
 
 {% tab label="Summary" %}
-* HTTP method: `GET`
-* URL: `http://localhost:5000/admin/credential`
-* Query parameters (optional): Use `?accepted=yes` to filter results to only credentials that the subject has accepted, or `?accepted=no` for credentials the user has not accepted.
-{% /tab %}
+
+- HTTP method: `GET`
+- URL: `http://localhost:5000/admin/credential`
+- Query parameters (optional): Use `?accepted=yes` to filter results to only credentials that the subject has accepted, or `?accepted=no` for credentials the user has not accepted.
+  {% /tab %}
 
 {% tab label="cURL" %}
+
 ```sh
 curl http://localhost:5000/admin/credential
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -190,33 +196,36 @@ To revoke an issued credential, make a request such as the following:
 {% tabs %}
 
 {% tab label="Summary" %}
-* HTTP method: `DELETE`
-* URL: `http://localhost:5000/admin/credential`
-* Headers:
-    * `Content-Type: application/json`
-* Request Body:
-    ```json
+
+- HTTP method: `DELETE`
+- URL: `http://localhost:5000/admin/credential`
+- Headers:
+  - `Content-Type: application/json`
+- Request Body:
+  `json
     {
         "subject": "rGtnKx7veDhV9CgYenkiCV5HMLpgU2BfcQ",
         "credential": "TestCredential"
     }
-    ```
-{% /tab %}
+    `
+  {% /tab %}
 
 {% tab label="cURL" %}
+
 ```sh
 curl -H "Content-Type: application/json" -X DELETE -d '{"subject": "rGtnKx7veDhV9CgYenkiCV5HMLpgU2BfcQ", "credential": "TestCredential"}' http://localhost:5000/admin/credential
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The parameters of the JSON request body should be as follows:
 
-| Field | Type | Required? | Description |
-|---|---|---|---|
-| `subject` | String - Address | Yes | The XRPL classic address of the subject of the credential to revoke. |
-| `credential` | String | Yes | The type of credential to revoke. This must match a credential type previously issued. |
+| Field        | Type             | Required? | Description                                                                            |
+| ------------ | ---------------- | --------- | -------------------------------------------------------------------------------------- |
+| `subject`    | String - Address | Yes       | The XRPL classic address of the subject of the credential to revoke.                   |
+| `credential` | String           | Yes       | The type of credential to revoke. This must match a credential type previously issued. |
 
 A successful response from the API uses the HTTP status code `200 OK` and has a response body with the result of submitting the transaction to the XRP Ledger. You can use the `hash` or `ctid` value from the response to look up the transaction using an explorer.
 
@@ -224,17 +233,17 @@ A successful response from the API uses the HTTP status code `200 OK` and has a 
 
 The code for this tutorial is divided among the following files:
 
-| File | Purpose |
-|---|---|
-| `accept_credential.py` | Commandline interface for a credential subject to look up and accept Credentials. |
-| `credential_mode.py` | A model class for Credentials that validates user input, and maps between the microservice's simplified Credential format and the full XRPL representation of Credentials. |
-| `decode_hex.py` | A helper function for decoding hexadecimal into human-readable strings, used by both the credential issuer and holder. |
-| `issuer_service.py` | Defines the microservice as a Flask app, including API methods and error handling. |
-| `look_up_credentials.py` | A helper function for looking up Credentials tied to an account, including pagination and filtering, used by both the credential issuer and holder. |
+| File                     | Purpose                                                                                                                                                                    |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accept_credential.py`   | Commandline interface for a credential subject to look up and accept Credentials.                                                                                          |
+| `credential_mode.py`     | A model class for Credentials that validates user input, and maps between the microservice's simplified Credential format and the full XRPL representation of Credentials. |
+| `decode_hex.py`          | A helper function for decoding hexadecimal into human-readable strings, used by both the credential issuer and holder.                                                     |
+| `issuer_service.py`      | Defines the microservice as a Flask app, including API methods and error handling.                                                                                         |
+| `look_up_credentials.py` | A helper function for looking up Credentials tied to an account, including pagination and filtering, used by both the credential issuer and holder.                        |
 
 ### accept_credential.py
 
-This file is meant to be run as a commandline tool so it starts with a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)), followed by dependencies grouped by type: standard lib, then PyPI packages, and local files last.
+This file is meant to be run as a commandline tool so it starts with a [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>), followed by dependencies grouped by type: standard lib, then PyPI packages, and local files last.
 
 {% code-snippet file="/_code-samples/issue-credentials/py/accept_credential.py" language="py" before="XRPL_SERVER =" /%}
 

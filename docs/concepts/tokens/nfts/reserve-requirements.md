@@ -2,10 +2,11 @@
 html: nft-reserve-requirements.html
 parent: non-fungible-tokens.html
 seo:
-    description: Understand reserve requirements for minting and holding NFTs.
+  description: Understand reserve requirements for minting and holding NFTs.
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
+
 # NFT Reserve Requirements
 
 Minting, holding, and offering NFTs for sale require XRP held in reserve. The reserve charges can add up quickly. Understanding the reserve requirements can help you choose the best approach for your business case.
@@ -28,7 +29,7 @@ Therefore, you can estimate the reserve requirements for minting or owning _N_ N
 The following table provides examples of how much the total owner reserve might be, depending on the number of NFTs owned and the number of pages holding them.
 
 | NFTs Owned  | Best Case | Typical Case | Worst Case |
-|:------------|:----------|:-------------|:-----------|
+| :---------- | :-------- | :----------- | :--------- |
 | 32 or fewer | 0.2 XRP   | 0.2 XRP      | 0.2 XRP    |
 | 50          | 0.4 XRP   | 0.6 XRP      | 0.8 XRP    |
 | 200         | 1.4 XRP   | 1.8 XRP      | 2.6 XRP    |
@@ -48,22 +49,22 @@ When minting, holding, and offering to buy and sell NFTs, the reserve requiremen
 
 If you create a new account, mint an NFT, and create an `NFTokenSellOffer` on the XRP Ledger, that requires a minimum reserve of 1.4 XRP.
 
-| Reserve Type        | Amount  |
-|:--------------------|--------:|
-| Base                | 1 XRP   |
-| NFToken Page        | 0.2 XRP |
-| NFToken Offers      | 0.2 XRP |
-| Total               | 1.4 XRP |
+| Reserve Type   |  Amount |
+| :------------- | ------: |
+| Base           |   1 XRP |
+| NFToken Page   | 0.2 XRP |
+| NFToken Offers | 0.2 XRP |
+| Total          | 1.4 XRP |
 
 {% admonition type="info" name="Note" %}While not a reserve requirement, keep in mind that you would want to have at least 1 XRP above your reserves to cover the trivial fee for each transaction in the mint and sell process (typically 12 drops, or .000012 XRP).{% /admonition %}
 
 If you were to mint 200 NFTs and create an `NFTokenSellOffer`for each, that would require as much as 43.6 XRP held in reserve.
 
-| Reserve Type        | Amount  |
-|:--------------------|--------:|
-| Base                | 1 XRP   |
-| NFToken Pages       | 2.6 XRP |
-| NFToken Offers      | 40 XRP  |
-| Total               | 43.6 XRP |
+| Reserve Type   |   Amount |
+| :------------- | -------: |
+| Base           |    1 XRP |
+| NFToken Pages  |  2.6 XRP |
+| NFToken Offers |   40 XRP |
+| Total          | 43.6 XRP |
 
 If the required reserves exceed the amount you are comfortable setting aside, consider using the mint-on-demand model to reduce the number of NFTs and offers you hold at any one time. For details, see [Batch Minting](batch-minting.md).

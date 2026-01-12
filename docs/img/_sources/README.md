@@ -13,7 +13,6 @@ Some tips to using it correctly:
 - The [`_diagrams.scss` file](../../styles/_diagrams.scss) defines the remapped colorings for the diagrams. If you use a color that isn't remapped, and it looks bad, you need to edit this file and [re-build the CSS](../../styles/README.md).
 - The recoloring may not be capable of handling text on top of several different background colors, because it doesn't have a way of recognizing what text is on top of what else. Use with care.
 
-
 This error happens if you try to include a file that isn't text-based (for example, if you try to `include_svg()` on a PNG file instead of SVG):
 
 ```

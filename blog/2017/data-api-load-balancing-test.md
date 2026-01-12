@@ -1,13 +1,14 @@
 ---
-date: "2017-01-18"
+date: '2017-01-18'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Load Testing Data API
 
 The Ripple Data team will be running load balancing tests on Ripple Data API starting Wednesday, 2017-01-18, at 2pm PST, which will last approximately 15 minutes. The Ripple Data API is an open and free resource that provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data.
@@ -23,11 +24,12 @@ If you operate software or services that rely on the Ripple Data API, then you m
 For more information regarding the Ripple Data API, please see **Ripple Data API Documentation**.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

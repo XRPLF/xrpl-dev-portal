@@ -1,25 +1,25 @@
 ---
-date: "2017-03-17"
+date: '2017-03-17'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled Version 0.60.0
 
 Ripple has released `rippled` version 0.60.0, which introduces several enhancements that improve the reliability and scalability of the Ripple Consensus Ledger (RCL), including [Interledger Protocol](https://interledger.org/overview.html) compatibility for ledger interoperability. Ripple recommends that all server operators upgrade to version 0.60.0 by Thursday, 2017-03-30, for service continuity.
 
 Highlights of this release include:
 
-* **Escrow** (previously called SusPay), which permits users to cryptographically escrow XRP on RCL with an expiration date using a [hashlock crypto-condition](https://interledgerjs.github.io/five-bells-condition/jsdoc/).
+- **Escrow** (previously called SusPay), which permits users to cryptographically escrow XRP on RCL with an expiration date using a [hashlock crypto-condition](https://interledgerjs.github.io/five-bells-condition/jsdoc/).
 
-* **[Dynamic UNL Lite](https://github.com/ripple/rippled/pull/1842)**, which allows `rippled` to automatically adjust which validators it trusts based on recommended lists from trusted publishers.
+- **[Dynamic UNL Lite](https://github.com/ripple/rippled/pull/1842)**, which allows `rippled` to automatically adjust which validators it trusts based on recommended lists from trusted publishers.
 
 Ripple expects Escrow, the [previously announced **Payment Channels**](/blog/2016/rippled-0.33.0.md), and the new [**fix1368** amendment](#fix1368-amendment) to be enabled via Amendments called [Escrow](/resources/known-amendments.md#escrow), [PayChan](/resources/known-amendments.md#paychan), and `fix1368`, respectively, on Thursday, 2017-03-30.
-
 
 ## Action Required
 
@@ -29,11 +29,11 @@ Ripple expects Escrow, the [previously announced **Payment Channels**](/blog/201
 
 If you operate a `rippled` server but don’t upgrade to version 0.60.0 by Thursday, 2017-03-30, when Escrow and PayChan are expected to be activated via Amendment, then your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If the **Escrow** and **PayChan** amendments do not get approved, then your server will not become amendment blocked and should continue to operate.
 
@@ -56,17 +56,19 @@ Date:   Thu Mar 16 13:33:29 2017 -0700
 ```
 
 ## Network Update
+
 The Ripple operations team plans to deploy version 0.60.0 to all `rippled` servers under its operational control, including private clusters, starting at 7:00 PM PST on Thursday, 2017-03-16. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
@@ -100,37 +102,36 @@ We do not have an update on the [previously announced](/blog/2016/rippled-0.33.0
 
 You can [update to the new version](/docs/infrastructure/installation/update-rippled-automatically-on-linux) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md).
 
-
 ## 0.60.0 Change Log
 
-* Add Escrow support [(#2039)](https://github.com/ripple/rippled/pull/2039/commits/cfde591ac9deb683b9d1be8f8d4c7a14d9598507)
-* Dynamize trusted validator list and quorum [(#1842)](https://github.com/ripple/rippled/pull/1842)
-* Simplify fee handling during transaction submission [(#1992)](https://github.com/ripple/rippled/commit/8345475bc37a4d6bddf1e47dc06f22ef9396bbd8)
-* Publish server stream when fee changes [(#2016)](https://github.com/ripple/rippled/pull/2016)
-* Replace manifest with validator token [(#1975)](https://github.com/ripple/rippled/pull/1975)
-* Add validator key revocations [(#2019)](https://github.com/ripple/rippled/pull/2019)
-* Add SecretKey comparison operator [(#2004)](https://github.com/ripple/rippled/pull/2004/commits/a00e684bf2a088bb432b9f7c4c859ee98c730817)
-* Reduce LEDGER_MIN_CONSENSUS [(#2013)](https://github.com/ripple/rippled/pull/2013)
-* Update libsecp256k1 and Beast B30 [(#1983)](https://github.com/ripple/rippled/pull/1983)
-* Make Config extensible via lambda [(#1993)](https://github.com/ripple/rippled/pull/1993)
-* WebSocket permessage-deflate integration [(#1995)](https://github.com/ripple/rippled/pull/1995)
-* Do not close socket on a foreign thread [(#2014)](https://github.com/ripple/rippled/pull/2014)
-* Update build scripts to support latest boost and ubuntu distros [(#1997)](https://github.com/ripple/rippled/pull/1997)
-* Handle protoc targets in scons ninja build [(#2022)](https://github.com/ripple/rippled/pull/2022)
-* Specify syntax version for ripple.proto file [(#2007)](https://github.com/ripple/rippled/pull/2007)
-* Eliminate protocol header dependency [(#1962)](https://github.com/ripple/rippled/pull/1962)
-* Use gnu gold or clang lld linkers if available [(#2031)](https://github.com/ripple/rippled/pull/2031)
-* Add tests for lookupLedger [(#1989)](https://github.com/ripple/rippled/pull/1989)
-* Add unit test for get_counts RPC method [(#2011)](https://github.com/ripple/rippled/pull/2011)
-* Add test for transaction_entry request [(#2017)](https://github.com/ripple/rippled/pull/2017)
-* Unit tests of RPC "sign" [(#2010)](https://github.com/ripple/rippled/pull/2010)
-* Add failure only unit test reporter [(#2018)](https://github.com/ripple/rippled/pull/2018)
+- Add Escrow support [(#2039)](https://github.com/ripple/rippled/pull/2039/commits/cfde591ac9deb683b9d1be8f8d4c7a14d9598507)
+- Dynamize trusted validator list and quorum [(#1842)](https://github.com/ripple/rippled/pull/1842)
+- Simplify fee handling during transaction submission [(#1992)](https://github.com/ripple/rippled/commit/8345475bc37a4d6bddf1e47dc06f22ef9396bbd8)
+- Publish server stream when fee changes [(#2016)](https://github.com/ripple/rippled/pull/2016)
+- Replace manifest with validator token [(#1975)](https://github.com/ripple/rippled/pull/1975)
+- Add validator key revocations [(#2019)](https://github.com/ripple/rippled/pull/2019)
+- Add SecretKey comparison operator [(#2004)](https://github.com/ripple/rippled/pull/2004/commits/a00e684bf2a088bb432b9f7c4c859ee98c730817)
+- Reduce LEDGER_MIN_CONSENSUS [(#2013)](https://github.com/ripple/rippled/pull/2013)
+- Update libsecp256k1 and Beast B30 [(#1983)](https://github.com/ripple/rippled/pull/1983)
+- Make Config extensible via lambda [(#1993)](https://github.com/ripple/rippled/pull/1993)
+- WebSocket permessage-deflate integration [(#1995)](https://github.com/ripple/rippled/pull/1995)
+- Do not close socket on a foreign thread [(#2014)](https://github.com/ripple/rippled/pull/2014)
+- Update build scripts to support latest boost and ubuntu distros [(#1997)](https://github.com/ripple/rippled/pull/1997)
+- Handle protoc targets in scons ninja build [(#2022)](https://github.com/ripple/rippled/pull/2022)
+- Specify syntax version for ripple.proto file [(#2007)](https://github.com/ripple/rippled/pull/2007)
+- Eliminate protocol header dependency [(#1962)](https://github.com/ripple/rippled/pull/1962)
+- Use gnu gold or clang lld linkers if available [(#2031)](https://github.com/ripple/rippled/pull/2031)
+- Add tests for lookupLedger [(#1989)](https://github.com/ripple/rippled/pull/1989)
+- Add unit test for get_counts RPC method [(#2011)](https://github.com/ripple/rippled/pull/2011)
+- Add test for transaction_entry request [(#2017)](https://github.com/ripple/rippled/pull/2017)
+- Unit tests of RPC "sign" [(#2010)](https://github.com/ripple/rippled/pull/2010)
+- Add failure only unit test reporter [(#2018)](https://github.com/ripple/rippled/pull/2018)
 
 ## Bug Fixes
 
-* Enforce rippling constraints during payments [(#2049)](https://github.com/ripple/rippled/pull/2049)
-* Fix limiting step re-execute bug [(#1936)](https://github.com/ripple/rippled/pull/1936)
-* Make "wss" work the same as "wss2" [(#2033)](https://github.com/ripple/rippled/pull/2033)
-* Check for malformed public key on payment channel [(#2027)](https://github.com/ripple/rippled/pull/2027)
-* Config test uses unique directories for each test [(#1984)](https://github.com/ripple/rippled/pull/1984)
-* Send a websocket ping before timing out in server [(#2035)](https://github.com/ripple/rippled/pull/2035)
+- Enforce rippling constraints during payments [(#2049)](https://github.com/ripple/rippled/pull/2049)
+- Fix limiting step re-execute bug [(#1936)](https://github.com/ripple/rippled/pull/1936)
+- Make "wss" work the same as "wss2" [(#2033)](https://github.com/ripple/rippled/pull/2033)
+- Check for malformed public key on payment channel [(#2027)](https://github.com/ripple/rippled/pull/2027)
+- Config test uses unique directories for each test [(#1984)](https://github.com/ripple/rippled/pull/1984)
+- Send a websocket ping before timing out in server [(#2035)](https://github.com/ripple/rippled/pull/2035)

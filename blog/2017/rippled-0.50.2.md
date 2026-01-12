@@ -1,12 +1,12 @@
 ---
-date: "2017-01-30"
+date: '2017-01-30'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
 
 # rippled version 0.50.2
@@ -39,20 +39,21 @@ Date:   Mon Jan 30 15:45:35 2017 -0800
     Set version to 0.50.2
 ```
 
-
 ## Bug Fixes
 
 Adjust the default cipher list and correct a flaw that would not allow an SSL handshake to properly complete if the port was configured using the wss keyword. [(#1985)](https://github.com/ripple/rippled/pull/1985/commits/708fc6cd6f3c75d08fa409f6815ed915854438a5)
 
 ## Network Update
+
 The Ripple operations team has deployed a configuration-based fix to all client-facing `rippled` servers under its operational control and will not be updating to 0.50.2 at this time.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

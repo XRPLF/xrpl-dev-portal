@@ -2,10 +2,11 @@
 html: negative-unl.html
 parent: consensus.html
 seo:
-    description: Comprende cómo la UNL negativa mejora la resiliencia durante interrupciones parciales.
+  description: Comprende cómo la UNL negativa mejora la resiliencia durante interrupciones parciales.
 labels:
   - Blockchain
 ---
+
 # UNL negativa
 
 _Añadida por la [enmienda NegativeUNL](/resources/known-amendments.md#negativeunl)._
@@ -36,13 +37,11 @@ Si más del 20% de los validadores de repente se desconectan todos a la vez, los
 
 La UNL negativa no tiene efecto sobre el modo solitario o [stand-alone mode](../networks-and-servers/rippled-server-modes.md) porque el servidor no utiliza el consenso en el modo solitario.
 
-
 ## Cómo funciona
 
 La UNL negativa está estrechamente ligada al [proceso de consenso](index.md) y está diseñada con salvaguardas para mantener la continuidad y confiabilidad de la red en situaciones adversas. Cuando todos los validadores confiables están funcionando normalmente, la UNL negativa no se utiliza y no tiene efecto. Cuando algunos validadores parecen estar desconectados o desincronizados, se aplican las reglas de la UNL negativa.
 
 La UNL negativa está diseñada intencionalmente para cambiar a una velocidad lenta, para evitar desacuerdos basados en el tiempo sobre qué la UNL negativa debería aplicarse al proceso de consenso de una versión dada del ledger.
-
 
 ### Medición de fiabilidad
 
@@ -64,8 +63,6 @@ Cada servidor, incluidos los validadores, calcula de forma independiente las pun
 
 **Consejo:** Los validadores siguen su propia fiabilidad, pero no proponen agregarse a la UNL negativa. La medida de fiabilidad de un validador por sí sola no puede tener en cuenta cuán exitosamente se propagan sus votos de validación a través de la red, por lo que es menos confiable que las mediciones de servidores externos.
 
-
-
 ### Modificación de la UNL negativa
 
 Una versión del ledger se considera un _flag ledger_ si su índice de ledger o index es divisible entera por 256. La UNL negativa solo se puede modificar en flag ledgers. (Los flag ledgers ocurren una vez cada 15 minutos en la red principal, Mainnet, de XRP Ledger. Pueden estar más separados en redes de prueba (test) que tienen un volumen de transacciones bajo).
@@ -74,32 +71,30 @@ En cada flag ledger, se aplican todos los siguientes cambios:
 
 1. Los cambios la UNL negativa que se programaron en el flag ledger anterior entran en vigencia para la siguiente versión del ledger. El proceso de consenso para validar este flag ledger en sí mismo no utiliza el cambio programado.
 
-    **Nota:** Esto es uno de los únicos momentos en los que el estado de datos del ledger se modifica sin una [transacción](../transactions/index.md) o [pseudo-transacción](../../references/protocol/transactions/pseudo-transaction-types/index.md).
+   **Nota:** Esto es uno de los únicos momentos en los que el estado de datos del ledger se modifica sin una [transacción](../transactions/index.md) o [pseudo-transacción](../../references/protocol/transactions/pseudo-transaction-types/index.md).
 
 2. Si la UNL negativa no está llena, cada servidor propone añadir **hasta 1** validador a la UNL negativa entre sus validadores confiables con una fiabilidad inferior al 50%.
 3. Si la UNL negativa no está vacía, cada servidor propone eliminar **hasta 1** validador de la UNL negativa. Un servidor puede proponer eliminar un validador de la UNL negativa por dos motivos:
-    - Califica a ese validador con una fiabilidad > 80%.
-    - No tiene a ese validador en su UNL. (Si un validador deja de funcionar permanentemente, esta regla garantiza que se elimine de la UNL negativa en el ledger después de que se haya eliminado de las UNL configuradas de los servidores).
+   - Califica a ese validador con una fiabilidad > 80%.
+   - No tiene a ese validador en su UNL. (Si un validador deja de funcionar permanentemente, esta regla garantiza que se elimine de la UNL negativa en el ledger después de que se haya eliminado de las UNL configuradas de los servidores).
 4. Si un cambio propuesto a la UNL negativa logra un consenso, el cambio se programa para entrar en vigencia en el siguiente flag ledger. Se puede programar hasta una adición y una eliminación de esta manera.
 
 Las propuestas para agregar y eliminar validadores de la UNL negativa toman la forma de [pseudo-transacciones de UNLModify][]. El proceso de consenso determina si cada pseudo-transacción logra un consenso o se descarta, de la misma manera que otras [pseudo-transacciones](../../references/protocol/transactions/pseudo-transaction-types/index.md). En otras palabras, para que un validador en particular se agregue o elimine a la UNL negativa, se debe lograr un consenso de servidores sobre el mismo cambio.
 
 Los cambios programados y efectivos de la UNL negativa se rastrean en el [objeto NegativeUNL](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md) en los datos de estado del ledger.
 
-
 ### Límites de la UNL negativa
 
 Para prevenir que la red se fragmente en dos o más subredes, la UNL negativa no puede reducir el requisito de cuórum a menos del 60% de las entradas de UNL _totales_. Para hacer cumplir esto, un servidor considera que la UNL negativa está "llena" si el número de validadores en la UNL negativa es del 25% (redondeado hacia abajo) del número de validadores en la UNL configurada del servidor. (El 25% se basa en el cálculo de que si se eliminan el 25% de los validadores, un consenso del 80% del 75% restante equivale al 60% del número original). Si un servidor considera que la UNL negativa está llena, no propondrá nuevas adiciones a la UNL negativa; pero, como siempre, el resultado final depende de lo que haga un consenso de validadores de confianza.
-
 
 ### Elección de múltiples validadores candidatos
 
 Es posible que múltiples validadores sean candidatos para ser agregados a la UNL negativa, según el umbral de fiabilidad. Dado que como máximo se puede agregar un validador a la UNL negativa a la vez, los servidores deben elegir qué validador proponer agregar. Si hay múltiples candidatos, el servidor elige cuál proponer con el siguiente mecanismo:
 
 1. Comienza con el hash del ledger de la versión anterior.
-0. Toma la clave pública de cada validador candidato.
-0. Cacula el valor de exclusión-o (XOR) del validador candidato y el hash del ledger padre.
-0. Propón el validador con el resultado numéricamente más bajo de la operación XOR.
+2. Toma la clave pública de cada validador candidato.
+3. Cacula el valor de exclusión-o (XOR) del validador candidato y el hash del ledger padre.
+4. Propón el validador con el resultado numéricamente más bajo de la operación XOR.
 
 Si hay múltiples candidatos para ser eliminados de la UNL negativa en un flag ledger dado, los servidores utilizan el mismo mecanismo para elegir entre ellos.
 
@@ -108,7 +103,6 @@ Este mecanismo tiene varias propiedades útiles:
 - Utiliza información que está fácilmente disponible para todos los servidores y se puede calcular rápidamente.
 - La mayoría de los servidores eligen el mismo candidato incluso si calculan puntuaciones ligeramente diferentes para sus validadores de confianza. Esto se mantiene incluso si esos servidores discrepan sobre qué validador es _menos_ o _más_ confiable. Esto incluso se mantiene en muchos casos en los que los servidores discrepan sobre si algunos validadores están por encima o por debajo de los umbrales de fiabilidad. Por lo tanto, es probable que la red llegue a un consenso sobre qué validador agregar o eliminar.
 - No siempre da los mismos resultados en cada versión del ledger. Si un cambio propuesto a la UNL negativa no logra un consenso, la red no queda atrapada con algunos servidores intentando y fallando en agregar o eliminar ese validador cada vez. La red puede intentar agregar o eliminar un candidato diferente de la UNL negativa en un flag ledger posterior.
-
 
 ### Filtrado de validaciones
 
@@ -124,55 +118,53 @@ El siguiente ejemplo demuestra cómo afecta la UNL negativa al proceso de consen
 
 1. Supón que la UNL de tu servidor consta de 38 validadores de confianza, por lo que un cuórum del 80% es al menos 31 de 38 validadores.
 
-[{% inline-svg file="/docs/img/negative-unl-01.svg" /%}](/docs/img/negative-unl-01.svg "Diagrama: Caso normal: UNL negativa sin utilizar, el cuorum es 80% de los validadores configurados.")
+[{% inline-svg file="/docs/img/negative-unl-01.svg" /%}](/docs/img/negative-unl-01.svg 'Diagrama: Caso normal: UNL negativa sin utilizar, el cuorum es 80% de los validadores configurados.')
 
 2. Imagina que 2 de esos validadores, llamados MissingA y UnsteadyB, parecen haberse desconectado. (Ambos tienen puntuaciones de fiabilidad < 50%.) Durante el proceso de consenso para el ledger _N_, muchos de los validadores restantes proponen agregar a UnsteadyB en la UNL negativa. La moción pasa mediante un cuórum de al menos 31 de los validadores restantes, y el ledger _N_ se valida con UnsteadyB programado para ser desactivado.
 
-[{% inline-svg file="/docs/img/negative-unl-02.svg" /%}](/docs/img/negative-unl-02.svg "Diagrama: UnsteadyB está programado para desactivarse.")
-
+[{% inline-svg file="/docs/img/negative-unl-02.svg" /%}](/docs/img/negative-unl-02.svg 'Diagrama: UnsteadyB está programado para desactivarse.')
 
 3. Para ledgers desde _N+1_ hasta _N+256_, el proceso de consenso continua sin cambios.
 
 4. En el siguiente flag ledger, ledger _N+256_, UnsteadyB se mueve automáticamente de "programado" a la lista "desconectados" en el ledger. Además, dado que MissingA está todavía offline, un consenso de validadores programa a MissingA para ser desactivado en el siguiente flag ledger.
 
-[{% inline-svg file="/docs/img/negative-unl-04.svg" /%}](/docs/img/negative-unl-04.svg "Diagrama: UnsteadyB se desactiva y MissingA es programado para ser desactivado, también.")
+[{% inline-svg file="/docs/img/negative-unl-04.svg" /%}](/docs/img/negative-unl-04.svg 'Diagrama: UnsteadyB se desactiva y MissingA es programado para ser desactivado, también.')
 
 5. Para los ledgers _N+257_ a _N+512_, el cuorum es ahora 30 de 37 validadores.
 
 6. UnsteadyB vuelve a estar online en el ledger _N+270_. Envía votos de validación que están de acuerdo con el resto de la red de los ledgers _N+270_ a _N+511_, dándole una puntuación de confiabilidad de > 80%.
 
-[{% inline-svg file="/docs/img/negative-unl-06.svg" /%}](/docs/img/negative-unl-06.svg "Diagrama: UnsteadyB vuelve a estar online, pero sigue desactivado.")
+[{% inline-svg file="/docs/img/negative-unl-06.svg" /%}](/docs/img/negative-unl-06.svg 'Diagrama: UnsteadyB vuelve a estar online, pero sigue desactivado.')
 
 7. En el siguiente flag ledger, _N+256_, MissingA se mueve automáticamente a la lista de desactivados, como estaba programado. Mientras tanto, un consenso de validadores programa que UnsteadyB sea eliminado de la UNL negativa, debido a su mejora en la puntuación de confianza.
 
-[{% inline-svg file="/docs/img/negative-unl-07.svg" /%}](/docs/img/negative-unl-07.svg "Diagrama: MissingA está desactivado y UnsteadyB está programado para ser reactivado.")
+[{% inline-svg file="/docs/img/negative-unl-07.svg" /%}](/docs/img/negative-unl-07.svg 'Diagrama: MissingA está desactivado y UnsteadyB está programado para ser reactivado.')
 
 8. Para los ledgers _N+513_ a _N+768_, el cuorum es 29 de 36 validadores. UnsteadyB continua enviando validaciones de manera estable mientras que MissingA continua offline.
 
 9. En el flag ledger _N+768_, UnsteadyB es automáticamente eliminado de la lista de desactivados, como estaba programado.
 
-[{% inline-svg file="/docs/img/negative-unl-09.svg" /%}](/docs/img/negative-unl-09.svg "Diagrama: UnsteadyB es eliminado de la lista de desactivados.")
+[{% inline-svg file="/docs/img/negative-unl-09.svg" /%}](/docs/img/negative-unl-09.svg 'Diagrama: UnsteadyB es eliminado de la lista de desactivados.')
 
 10. Eventualmente, tú decides que MissingA es probable que no vuelva, así que lo eliminas de tu UNL. Tu servidor empieza a proponer eliminando a MissingA de la UNL negativa en cada flag ledger posterior.
 
-[{% inline-svg file="/docs/img/negative-unl-10.svg" /%}](/docs/img/negative-unl-10.svg "Diagrama: Después de eliminar a MissingA de tu UNL, se propone eliminarlo de la UNL negativa también.")
+[{% inline-svg file="/docs/img/negative-unl-10.svg" /%}](/docs/img/negative-unl-10.svg 'Diagrama: Después de eliminar a MissingA de tu UNL, se propone eliminarlo de la UNL negativa también.')
 
 11. A medida que los operadores de validadores eliminar a MissingA de sus UNLs, sus validadores también votan para eliminar MissingA de la UNL negativa. Cuando suficientes validadores lo han hecho, la propuesta de eliminar a MissingA consigue un consenso, y MissingA está programado para ser eliminado de la UNL negativa.
 
-[{% inline-svg file="/docs/img/negative-unl-11.svg" /%}](/docs/img/negative-unl-11.svg "Diagrama: MissingA es eliminado de la UNL negativa.")
-
+[{% inline-svg file="/docs/img/negative-unl-11.svg" /%}](/docs/img/negative-unl-11.svg 'Diagrama: MissingA es eliminado de la UNL negativa.')
 
 ## Ver también
 
 - **Conceptos:**
-    - [Protocolo de consenso](index.md)
+  - [Protocolo de consenso](index.md)
 - **Tutoriales:**
-    - [Conecta tu `rippled` a la red paralela](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
-    - [Ejecuta `rippled` como validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+  - [Conecta tu `rippled` a la red paralela](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
+  - [Ejecuta `rippled` como validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
 - **Referencias:**
-    - [Objeto NegativeUNL](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
-    - [Pseudo-transacción UNLModify][]
-    - [método ledger_entry][]
-    - [método consensus_info][]
+  - [Objeto NegativeUNL](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
+  - [Pseudo-transacción UNLModify][]
+  - [método ledger_entry][]
+  - [método consensus_info][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

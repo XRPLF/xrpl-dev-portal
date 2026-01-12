@@ -15,7 +15,6 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 Without the Quickstart Samples, you will not be able to try the examples that follow.
 {% /admonition %}
 
-
 ## Usage
 
 ### Get Accounts
@@ -32,7 +31,6 @@ Without the Quickstart Samples, you will not be able to try the examples that fo
 
 [![Get account results](/docs/img/quickstart-create-amm2.png)](/docs/img/quickstart-create-amm2.png)
 
-
 ### Check AMM
 
 Check if an AMM pair already exists. An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](/docs/concepts/tokens).
@@ -43,7 +41,6 @@ Check if an AMM pair already exists. An AMM holds two different assets: at most 
 4. Click **Check AMM**.
 
 [![Check AMM results](/docs/img/quickstart-create-amm3.png)](/docs/img/quickstart-create-amm3.png)
-
 
 ### Create Trustline
 
@@ -56,22 +53,20 @@ Create a trustline from the operational account to the standby account. In the s
 
 [![Create trustline results](/docs/img/quickstart-create-amm4.png)](/docs/img/quickstart-create-amm4.png)
 
-
 ### Issue Tokens
 
 Send issued tokens from the operational account to the standby account. In the operational account fields:
 
-1. Select **Allow Rippling** and click **Configure Account**. 
-    {% admonition type="info" name="Note" %}
-      This enables the `defaultRipple` flag on the issuing account, which is set to `false` by default. You need to enable this in order to trade tokens issued by the account. See [Configure Issuer Settings](../../how-tos/use-tokens/issue-a-fungible-token.md#3-configure-issuer-settings) to learn more.
-    {% /admonition %}
+1. Select **Allow Rippling** and click **Configure Account**.
+   {% admonition type="info" name="Note" %}
+   This enables the `defaultRipple` flag on the issuing account, which is set to `false` by default. You need to enable this in order to trade tokens issued by the account. See [Configure Issuer Settings](../../how-tos/use-tokens/issue-a-fungible-token.md#3-configure-issuer-settings) to learn more.
+   {% /admonition %}
 2. Enter a value in the **Amount** field, up to the maximum transfer amount you set in the trustline.
 3. Enter the standby account address in the **Destination** field.
 4. Enter the currency code from the trustline in the **Currency** field.
 5. Click **Send Currency**.
 
 [![Issue token results](/docs/img/quickstart-create-amm5.png)](/docs/img/quickstart-create-amm5.png)
-
 
 ### Create an XRP/Token AMM
 
@@ -90,7 +85,6 @@ Save the seed values of the standby and operational accounts for subsequent AMM 
 
 [![Create AMM results](/docs/img/quickstart-create-amm6.png)](/docs/img/quickstart-create-amm6.png)
 
-
 ### Create a Token/Token AMM
 
 Create a second AMM pool with two issued tokens.
@@ -107,7 +101,6 @@ Create a second AMM pool with two issued tokens.
 
 [![Create AMM results](/docs/img/quickstart-create-amm7.png)](/docs/img/quickstart-create-amm7.png)
 
-
 ## Code Walkthrough
 
 You can open `ripplex11-create-amm.js` from the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) to view the source code.
@@ -123,127 +116,121 @@ async function createAMM() {
 Connect to the XRP Ledger.
 
 ```javascript
-  let net = getNet()
+let net = getNet()
 
-  const client = new xrpl.Client(net)
-  results = `\n\nConnecting to ${getNet()} ...`
-  standbyResultField.value = results
+const client = new xrpl.Client(net)
+results = `\n\nConnecting to ${getNet()} ...`
+standbyResultField.value = results
 
-  await client.connect()
-  results += '\n\nConnected.'
-  standbyResultField.value = results
+await client.connect()
+results += '\n\nConnected.'
+standbyResultField.value = results
 ```
 
 Get the AMM information fields.
 
 ```javascript
-  const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
+const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
 
-  const asset1_currency = asset1CurrencyField.value
-  const asset1_issuer = asset1IssuerField.value
-  const asset1_amount = asset1AmountField.value
+const asset1_currency = asset1CurrencyField.value
+const asset1_issuer = asset1IssuerField.value
+const asset1_amount = asset1AmountField.value
 
-  const asset2_currency = asset2CurrencyField.value
-  const asset2_issuer = asset2IssuerField.value
-  const asset2_amount = asset2AmountField.value
+const asset2_currency = asset2CurrencyField.value
+const asset2_issuer = asset2IssuerField.value
+const asset2_amount = asset2AmountField.value
 ```
 
 Format the `AMMCreate` transaction based on the combination of `XRP` and tokens.
 
 ```javascript
-  let ammCreate = null
-  
-  results += '\n\nCreating AMM ...'
-  standbyResultField.value = results
-  
-  // AMMCreate requires burning one owner reserve. We can look up that amount
-  // (in drops) on the current network using server_state:
-  const ss = await client.request({"command": "server_state"})
-  const amm_fee_drops = ss.result.state.validated_ledger.reserve_inc.toString()
+let ammCreate = null
 
-  if (asset1_currency == 'XRP') {
+results += '\n\nCreating AMM ...'
+standbyResultField.value = results
 
-    ammCreate = {
-      "TransactionType": "AMMCreate",
-      "Account": standby_wallet.address,
-      "Amount": JSON.stringify(asset1_amount * 1000000), // convert XRP to drops
-      "Amount2": {
-        "currency": asset2_currency,
-        "issuer": asset2_issuer,
-        "value": asset2_amount
-      },
-      "TradingFee": 500, // 500 = 0.5%
-      "Fee": amm_fee_drops
-    }
+// AMMCreate requires burning one owner reserve. We can look up that amount
+// (in drops) on the current network using server_state:
+const ss = await client.request({ command: 'server_state' })
+const amm_fee_drops = ss.result.state.validated_ledger.reserve_inc.toString()
 
-  } else if (asset2_currency =='XRP') {
-
-    ammCreate = {
-      "TransactionType": "AMMCreate",
-      "Account": standby_wallet.address,
-      "Amount": {
-        "currency": asset1_currency,
-        "issuer": asset1_issuer,
-        "value": asset1_amount
-      },
-      "Amount2": JSON.stringify(asset2_amount * 1000000), // convert XRP to drops
-      "TradingFee": 500, // 500 = 0.5%
-      "Fee": amm_fee_drops
-    }
-
-  } else {
-
-    ammCreate = {
-      "TransactionType": "AMMCreate",
-      "Account": standby_wallet.address,
-      "Amount": {
-        "currency": asset1_currency,
-        "issuer": asset1_issuer,
-        "value": asset1_amount
-      },
-      "Amount2": {
-        "currency": asset2_currency,
-        "issuer": asset2_issuer,
-        "value": asset2_amount
-      },
-      "TradingFee": 500, // 500 = 0.5%
-      "Fee": amm_fee_drops
-    }
-    
+if (asset1_currency == 'XRP') {
+  ammCreate = {
+    TransactionType: 'AMMCreate',
+    Account: standby_wallet.address,
+    Amount: JSON.stringify(asset1_amount * 1000000), // convert XRP to drops
+    Amount2: {
+      currency: asset2_currency,
+      issuer: asset2_issuer,
+      value: asset2_amount,
+    },
+    TradingFee: 500, // 500 = 0.5%
+    Fee: amm_fee_drops,
   }
+} else if (asset2_currency == 'XRP') {
+  ammCreate = {
+    TransactionType: 'AMMCreate',
+    Account: standby_wallet.address,
+    Amount: {
+      currency: asset1_currency,
+      issuer: asset1_issuer,
+      value: asset1_amount,
+    },
+    Amount2: JSON.stringify(asset2_amount * 1000000), // convert XRP to drops
+    TradingFee: 500, // 500 = 0.5%
+    Fee: amm_fee_drops,
+  }
+} else {
+  ammCreate = {
+    TransactionType: 'AMMCreate',
+    Account: standby_wallet.address,
+    Amount: {
+      currency: asset1_currency,
+      issuer: asset1_issuer,
+      value: asset1_amount,
+    },
+    Amount2: {
+      currency: asset2_currency,
+      issuer: asset2_issuer,
+      value: asset2_amount,
+    },
+    TradingFee: 500, // 500 = 0.5%
+    Fee: amm_fee_drops,
+  }
+}
 ```
 
 Prepare the transaction for submission. Wrap the submission in a `try-catch` block to handle any errors.
 
 ```javascript
   try {
- 
+
     const prepared_create = await client.autofill(ammCreate)
     results += `\n\nPrepared transaction:\n${JSON.stringify(prepared_create, null, 2)}`
     standbyResultField.value = results
-    standbyResultField.scrollTop = standbyResultField.scrollHeight  
+    standbyResultField.scrollTop = standbyResultField.scrollHeight
 ```
 
 Sign the prepared transaction using the standy account wallet.
 
 ```javascript
-    const signed_create = standby_wallet.sign(prepared_create)
-    results += `\n\nSending AMMCreate transaction ...`
-    standbyResultField.value = results
-    standbyResultField.scrollTop = standbyResultField.scrollHeight
+const signed_create = standby_wallet.sign(prepared_create)
+results += `\n\nSending AMMCreate transaction ...`
+standbyResultField.value = results
+standbyResultField.scrollTop = standbyResultField.scrollHeight
 ```
 
 Submit the signed transaction to the XRPL.
 
 ```javascript
     const amm_create = await client.submitAndWait(signed_create.tx_blob)
-    
+
     if (amm_create.result.meta.TransactionResult == "tesSUCCESS") {
       results += `\n\nTransaction succeeded.`
     } else {
       results += `\n\nError sending transaction: ${JSON.stringify(amm_create.result.meta.TransactionResult, null, 2)}`
     }
-  
+
   } catch (error) {
     results += `\n\n${error.message}`
   }
@@ -256,12 +243,11 @@ Report the transaction results in the standby account log. Run the `checkAMM()` 
   standbyResultField.scrollTop = standbyResultField.scrollHeight
 
   checkAMM()
-      
+
   client.disconnect()
-  
+
 }
 ```
-
 
 ### Check AMM
 
@@ -274,73 +260,67 @@ async function checkAMM() {
 Connect to the XRP Ledger.
 
 ```javascript
-  let net = getNet()
-  const client = new xrpl.Client(net)
-  await client.connect()
+let net = getNet()
+const client = new xrpl.Client(net)
+await client.connect()
 ```
 
 Get the AMM info fields. When checking an AMM, you only need the currency code and issuer.
 
 ```javascript
-  // Gets the issuer and currency code
-  const asset1_currency = asset1CurrencyField.value
-  const asset1_issuer = asset1IssuerField.value
+// Gets the issuer and currency code
+const asset1_currency = asset1CurrencyField.value
+const asset1_issuer = asset1IssuerField.value
 
-  const asset2_currency = asset2CurrencyField.value
-  const asset2_issuer = asset2IssuerField.value
+const asset2_currency = asset2CurrencyField.value
+const asset2_issuer = asset2IssuerField.value
 ```
 
 Format the `amm_info` command based on the combination of `XRP` and tokens.
 
 ```javascript
-  let amm_info_request = null
+let amm_info_request = null
 
-  // Get AMM info transaction
+// Get AMM info transaction
 
-  if (asset1_currency == 'XRP') {
-
-    amm_info_request = {
-      "command": "amm_info",
-      "asset": {
-        "currency": "XRP"
-      },
-      "asset2": {
-        "currency": asset2_currency,
-        "issuer": asset2_issuer
-      },
-      "ledger_index": "validated"
-    }
-
-  } else if (asset2_currency =='XRP') {
-
-    amm_info_request = {
-      "command": "amm_info",
-      "asset": {
-        "currency": asset1_currency,
-        "issuer": asset1_issuer
-      },
-      "asset2": {
-        "currency": "XRP"
-      },
-      "ledger_index": "validated"
-    }
-
-  } else {
-
-    amm_info_request = {
-      "command": "amm_info",
-      "asset": {
-        "currency": asset1_currency,
-        "issuer": asset1_issuer
-      },
-      "asset2": {
-        "currency": asset2_currency,
-        "issuer": asset2_issuer
-      },
-      "ledger_index": "validated"
-    }
-    
+if (asset1_currency == 'XRP') {
+  amm_info_request = {
+    command: 'amm_info',
+    asset: {
+      currency: 'XRP',
+    },
+    asset2: {
+      currency: asset2_currency,
+      issuer: asset2_issuer,
+    },
+    ledger_index: 'validated',
   }
+} else if (asset2_currency == 'XRP') {
+  amm_info_request = {
+    command: 'amm_info',
+    asset: {
+      currency: asset1_currency,
+      issuer: asset1_issuer,
+    },
+    asset2: {
+      currency: 'XRP',
+    },
+    ledger_index: 'validated',
+  }
+} else {
+  amm_info_request = {
+    command: 'amm_info',
+    asset: {
+      currency: asset1_currency,
+      issuer: asset1_issuer,
+    },
+    asset2: {
+      currency: asset2_currency,
+      issuer: asset2_issuer,
+    },
+    ledger_index: 'validated',
+  }
+}
 ```
 
 Submit the request in a `try-catch` block and update the AMM log.
@@ -352,10 +332,10 @@ Submit the request in a `try-catch` block and update the AMM log.
   } catch(error) {
     ammInfo = `AMM Info:\n\n${error}`
   }
-  
+
   ammInfoField.value = ammInfo
-      
+
   client.disconnect()
-  
+
 }
 ```

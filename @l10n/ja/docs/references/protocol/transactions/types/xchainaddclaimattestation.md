@@ -1,13 +1,15 @@
 ---
-html: xchainaddclaimattestation.html 
+html: xchainaddclaimattestation.html
 parent: transaction-types.html
 seo:
-    description: 送信元チェーンで発生したイベントを、送信先チェーンに証明(アテスト)します。
+  description: 送信元チェーンで発生したイベントを、送信先チェーンに証明(アテスト)します。
 labels:
   - 相互運用性
 status: not_enabled
 ---
+
 # XChainAddClaimAttestation
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L429-L445 "ソース")
 
 _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
@@ -19,7 +21,6 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 どのアカウントでも署名を提出できます。
 
 {% admonition type="info" name="注記" %}報酬は現在のリストにある鍵を持っているアカウントにのみ送られます。署名者の定足数は`SignatureReward`に一致する必要があります。より大きな報酬を得ようとして、一つのWitnessサーバがこの値に不正な値を指定することはできません。{% /admonition %}
-
 
 ## XChainAddClaimAttestation JSONの例
 
@@ -38,17 +39,17 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
         "currency": "XRP"
       }
     },
-    "XChainClaimAttestationBatch" : [
+    "XChainClaimAttestationBatch": [
       {
-        "XChainClaimAttestationBatchElement" : {
-          "Account" : "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
-          "Amount" : "100000000",
-          "AttestationSignerAccount" : "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
-          "Destination" : "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
-          "PublicKey" : "03DAB289CA36FF377F3F4304C7A7203FDE5EDCBFC209F430F6A4355361425526D0",
-          "Signature" : "616263",
-          "WasLockingChainSend" : 1,
-          "XChainClaimID" : "0000000000000000"
+        "XChainClaimAttestationBatchElement": {
+          "Account": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
+          "Amount": "100000000",
+          "AttestationSignerAccount": "rnJmYAiqEVngtnb5ckRroXLtCbWC7CRUBx",
+          "Destination": "r9A8UyNpW3X46FUc6P7JZqgn6WgAPjBwPg",
+          "PublicKey": "03DAB289CA36FF377F3F4304C7A7203FDE5EDCBFC209F430F6A4355361425526D0",
+          "Signature": "616263",
+          "WasLockingChainSend": 1,
+          "XChainClaimID": "0000000000000000"
         }
       }
     ],
@@ -71,30 +72,28 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 }
 ```
 
-
 ## XChainAddClaimAttestationのフィールド
 
-| フィールド                   | JSONの型     | [内部の型][]    | 必須? | 説明 |
-|:---------------------------|:-------------|:--------------|:------|-----|
-| `Amount`                   | [通貨額][]    | Amount        | はい  | `XChainCommit`トランザクションが送信元チェーンでCommitした金額。 |
-| `AttestationRewardAccount` | 文字列        | Account       | はい  | この署名者の`SignatureReward`を受け取るアカウント。 |
-| `AttestationSignerAccount` | 文字列        | Account       | はい  | ドアアカウントの署名者リストにある、トランザクションに署名したアカウント。 |
-| `Destination`              | 文字列        | Account       | いいえ | 送信先チェーン上の資金の送金先アカウント。 (`XChainCommit` トランザクションから取得)。 |
-| `OtherChainSource`         | 文字列        | Account       | はい  | 証明に紐づくイベントをトリガーした`XChainCommit`トランザクションを送信した送信元チェーン上のアカウント。 |
-| `PublicKey`                | 文字列        | Blob          | はい  | 署名の検証に使用する公開鍵。 |
-| `Signature`                | 文字列        | Blob          | はい  | もう一方のチェーン上のイベントを証明する署名。 |
-| `WasLockingChainSend`      | 数値          | UInt8         | はい  | イベントが発生したチェーンを表す真偽値。 |
-| `XChainBridge`             | XChainBridge | XChain_Bridge | はい  | 資金の移動に使用するブリッジ。 |
-| `XChainClaimID`            | 文字列        | UInt64        | はい  | `XChainCommit` トランザクションに含まれる、送金に紐づく`XChainClaimID`。 |
-
+| フィールド                 | JSONの型     | [内部の型][]  | 必須?  | 説明                                                                                                     |
+| :------------------------- | :----------- | :------------ | :----- | -------------------------------------------------------------------------------------------------------- |
+| `Amount`                   | [通貨額][]   | Amount        | はい   | `XChainCommit`トランザクションが送信元チェーンでCommitした金額。                                         |
+| `AttestationRewardAccount` | 文字列       | Account       | はい   | この署名者の`SignatureReward`を受け取るアカウント。                                                      |
+| `AttestationSignerAccount` | 文字列       | Account       | はい   | ドアアカウントの署名者リストにある、トランザクションに署名したアカウント。                               |
+| `Destination`              | 文字列       | Account       | いいえ | 送信先チェーン上の資金の送金先アカウント。 (`XChainCommit` トランザクションから取得)。                   |
+| `OtherChainSource`         | 文字列       | Account       | はい   | 証明に紐づくイベントをトリガーした`XChainCommit`トランザクションを送信した送信元チェーン上のアカウント。 |
+| `PublicKey`                | 文字列       | Blob          | はい   | 署名の検証に使用する公開鍵。                                                                             |
+| `Signature`                | 文字列       | Blob          | はい   | もう一方のチェーン上のイベントを証明する署名。                                                           |
+| `WasLockingChainSend`      | 数値         | UInt8         | はい   | イベントが発生したチェーンを表す真偽値。                                                                 |
+| `XChainBridge`             | XChainBridge | XChain_Bridge | はい   | 資金の移動に使用するブリッジ。                                                                           |
+| `XChainClaimID`            | 文字列       | UInt64        | はい   | `XChainCommit` トランザクションに含まれる、送金に紐づく`XChainClaimID`。                                 |
 
 ### XChainBridgeのフィールド
 
-| フィールド            | JSONの型 | [内部の型][] | 必須? | 説明 |
-|:--------------------|:---------|:-----------|:------|:----|
-| `IssuingChainDoor`  | 文字列    | Account    | はい  | 発行チェーンのドアアカウント。XRP-XRPブリッジの場合、これはジェネシスアカウント(ネットワークが最初に開始されたときに作成されるアカウントで、すべてのXRPを含む)でなければなりません。 |
-| `IssuingChainIssue` | Issue    | Issue      | はい  | 発行チェーン上で作成され、バーンされる資産。IOU-IOUブリッジの場合、供給量の問題を避けるため、資産の発行者は発行チェーンのドアアカウントでなければなりません。 |
-| `LockingChainDoor`  | 文字列    | Account    | はい  | ロックチェーンのドアアカウント。 |
-| `LockingChainIssue` | Issue    | Issue      | はい  | ロックチェーンでロック、アンロックされる資産。 |
+| フィールド          | JSONの型 | [内部の型][] | 必須? | 説明                                                                                                                                                                                 |
+| :------------------ | :------- | :----------- | :---- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `IssuingChainDoor`  | 文字列   | Account      | はい  | 発行チェーンのドアアカウント。XRP-XRPブリッジの場合、これはジェネシスアカウント(ネットワークが最初に開始されたときに作成されるアカウントで、すべてのXRPを含む)でなければなりません。 |
+| `IssuingChainIssue` | Issue    | Issue        | はい  | 発行チェーン上で作成され、バーンされる資産。IOU-IOUブリッジの場合、供給量の問題を避けるため、資産の発行者は発行チェーンのドアアカウントでなければなりません。                        |
+| `LockingChainDoor`  | 文字列   | Account      | はい  | ロックチェーンのドアアカウント。                                                                                                                                                     |
+| `LockingChainIssue` | Issue    | Issue        | はい  | ロックチェーンでロック、アンロックされる資産。                                                                                                                                       |
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

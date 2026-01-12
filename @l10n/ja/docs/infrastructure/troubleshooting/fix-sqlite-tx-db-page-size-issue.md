@@ -2,8 +2,9 @@
 html: fix-sqlite-tx-db-page-size-issue.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: rippledバージョン0.40.0以前で起動された完全履歴サーバでのSQLiteのページサイズに関する問題を解決します。
+  description: rippledバージョン0.40.0以前で起動された完全履歴サーバでのSQLiteのページサイズに関する問題を解決します。
 ---
+
 # SQLiteトランザクションデータベースのページサイズの問題の解決
 
 全トランザクション履歴（または極めて大量のトランザクション履歴）が記録されている`rippled`サーバと、0.40.0（2017年1月リリース）よりも古いバージョンの`rippled`で最初に作成されたデータベースでは、SQLiteデータベースのページサイズが原因でサーバが適切に稼働しなくなる問題が発生する可能性があります。最近のトランザクション履歴のみが保管されているサーバ（デフォルト構成）と、バージョン0.40.0以降の`rippled`でデータベースファイルが作成されているサーバでは、この問題が発生する可能性はそれほどありません。
@@ -17,7 +18,6 @@ seo:
 SQLiteデータベースの容量は、データベースの _ページサイズ_ パラメーターによって決まります。この容量は、データベース作成後は容易に変更できません。（SQLiteの内部についての詳細は、[SQLite公式ドキュメント](https://www.sqlite.org/fileformat.html)をご覧ください。）データベースが保管されているディスクとファイルシステムに空き容量がある場合でも、データベースが容量いっぱいになることがあります。以下の「[解決策](#解決策)」で説明するように、この問題を回避するためにページサイズを再構成するには、時間のかかる移行プロセスが必要です。
 
 {% admonition type="success" name="ヒント" %}ほとんどの場合、`rippled`サーバの稼働に全履歴が必要となることはありません。サーバにトランザクションの全履歴が記録されていれば、長期分析やアーカイブ、または災害に対する事前対策に役立ちます。{% /admonition %}
-
 
 ## 検出
 
@@ -68,7 +68,6 @@ Terminating thread doJob:AcquisitionDone: unhandled
  disk is full while executing "INSERT INTO [...]
 ```
 
-
 ## 解決策
 
 この問題を解決するには、このドキュメントで説明する手順に従い、サポートされているLinuxシステムで`rippled`を使用します。[推奨されるハードウェア構成](../installation/capacity-planning.md#推奨事項-1)とおおよそ一致するシステムスペックで全履歴を記録するサーバの場合、このプロセスにかかる日数は2日を超える可能性があります。
@@ -76,22 +75,21 @@ Terminating thread doJob:AcquisitionDone: unhandled
 ### 前提条件
 
 - **[rippledバージョン1.1.0][新規: rippled 1.1.0]以上**を実行している必要があります。
+  - このプロセスを開始する前に、安定した最新バージョンに[rippledをアップグレード](../installation/index.md)します。
 
-    - このプロセスを開始する前に、安定した最新バージョンに[rippledをアップグレード](../installation/index.md)します。
+  - 以下のコマンドを実行して、ローカルにインストールした`rippled`のバージョンを確認できます。
 
-    - 以下のコマンドを実行して、ローカルにインストールした`rippled`のバージョンを確認できます。
-
-        ```
-        rippled --version
-        ```
+    ```
+    rippled --version
+    ```
 
 - `rippled`ユーザが書き込めるディレクトリーに、トランザクションデータベースの2つめのコピーを一時的に保管するのに十分な空き容量が必要です。この空き容量は、既存のトランザクションデータベースと同じファイルシステムに設ける必要はありません。
 
-    トランザクションデータベースは、構成の`[database_path]`設定で指定されるフォルダーの`transaction.db`ファイルに保管されます。このファイルのサイズを調べ、必要な空き容量を確認できます。次に例を示します。
+  トランザクションデータベースは、構成の`[database_path]`設定で指定されるフォルダーの`transaction.db`ファイルに保管されます。このファイルのサイズを調べ、必要な空き容量を確認できます。次に例を示します。
 
-    ```
-    ls -l /var/lib/rippled/db/transaction.db
-    ```
+  ```
+  ls -l /var/lib/rippled/db/transaction.db
+  ```
 
 ### 移行プロセス
 
@@ -101,78 +99,78 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 2. 移行プロセスの実行中に一時ファイルを保管するフォルダーを作成します。
 
-    ```
-    mkdir /tmp/rippled_txdb_migration
-    ```
+   ```
+   mkdir /tmp/rippled_txdb_migration
+   ```
 
 3. `rippled`ユーザに、一時フォルダーの所有権を付与します。これにより、ユーザは一時フォルダー内のファイルに書き込みできるようになります。（`rippled`ユーザがすでにアクセス権限を持つ場所に一時フォルダーがある場合は、この操作は不要です。）
 
-    ```
-    chown rippled /tmp/rippled_txdb_migration
-    ```
+   ```
+   chown rippled /tmp/rippled_txdb_migration
+   ```
 
 4. 一時フォルダーに、トランザクションデータベースのコピーを保管するのに十分な空き容量があることを確認します。
 
-    たとえば、`df`コマンドの`Avail`出力と、[`transaction.db`ファイルのサイズ](#前提条件)を比較します。
+   たとえば、`df`コマンドの`Avail`出力と、[`transaction.db`ファイルのサイズ](#前提条件)を比較します。
 
-    ```
-    df -h /tmp/rippled_txdb_migration
+   ```
+   df -h /tmp/rippled_txdb_migration
 
-    Filesystem      Size  Used Avail Use% Mounted on
-    /dev/sda2       5.4T  2.6T  2.6T  50% /tmp
-    ```
+   Filesystem      Size  Used Avail Use% Mounted on
+   /dev/sda2       5.4T  2.6T  2.6T  50% /tmp
+   ```
 
 5. `rippled`がまだ稼働している場合は停止します。
 
-    ```
-    sudo systemctl stop rippled
-    ```
+   ```
+   sudo systemctl stop rippled
+   ```
 
 6. `screen`セッション（または類似のツール）を開き、ログアウトしてもプロセスが停止しないようにします。
 
-    ```
-    screen
-    ```
+   ```
+   screen
+   ```
 
 7. `rippled`ユーザになります。
 
-    ```
-    sudo su - rippled
-    ```
+   ```
+   sudo su - rippled
+   ```
 
 8. 一時ディレクトリへのパスを指定した`--vacuum`コマンドで、`rippled`実行可能ファイルを直接実行できます。
 
-    ```
-    /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
-    ```
+   ```
+   /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+   ```
 
-    `rippled`実行可能ファイルにより次のメッセージが即時に表示されます。
+   `rippled`実行可能ファイルにより次のメッセージが即時に表示されます。
 
-    ```
-    VACUUM beginning. page_size:1024
-    ```
+   ```
+   VACUUM beginning. page_size:1024
+   ```
 
 9. プロセスが完了するまで待ちます。これには丸2日以上かかることがあります。
 
-    プロセスが完了したら、`rippled`実行可能ファイルは以下のメッセージを表示して終了します。
+   プロセスが完了したら、`rippled`実行可能ファイルは以下のメッセージを表示して終了します。
 
-    ```
-    VACUUM finished. page_size:4096
-    ```
+   ```
+   VACUUM finished. page_size:4096
+   ```
 
-    待機している間に`screen`セッションを切り離すには、**CTRL-A**を押してから**D**を押します。その後、以下のようなコマンドでスクリーンセッションを再接続します。
+   待機している間に`screen`セッションを切り離すには、**CTRL-A**を押してから**D**を押します。その後、以下のようなコマンドでスクリーンセッションを再接続します。
 
-    ```
-    screen -x -r
-    ```
+   ```
+   screen -x -r
+   ```
 
-    プロセスが完了したら、スクリーンセッションを終了します。
+   プロセスが完了したら、スクリーンセッションを終了します。
 
-    ```
-    exit
-    ```
+   ```
+   exit
+   ```
 
-    `screen`コマンドについての詳細は、[公式Screenユーザマニュアル](https://www.gnu.org/software/screen/manual/screen.html)またはオンラインで使用可能なその他の多数のリソースをご覧ください。
+   `screen`コマンドについての詳細は、[公式Screenユーザマニュアル](https://www.gnu.org/software/screen/manual/screen.html)またはオンラインで使用可能なその他の多数のリソースをご覧ください。
 
 10. `rippled`サービスを再起動します。
 

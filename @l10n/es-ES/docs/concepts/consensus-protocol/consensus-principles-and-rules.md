@@ -2,10 +2,11 @@
 html: consensus-principles-and-rules.html
 parent: consensus.html
 seo:
-    description: Las reglas y principios del algoritmo de consenso que permite a los usuarios para transferir fondos (incluidas divisas fiat, divisas digitales y cualquier otra forma de valor) a través de fronteras nacionales igual de facil que enviar un correo electrónico.
+  description: Las reglas y principios del algoritmo de consenso que permite a los usuarios para transferir fondos (incluidas divisas fiat, divisas digitales y cualquier otra forma de valor) a través de fronteras nacionales igual de facil que enviar un correo electrónico.
 labels:
   - Blockchain
 ---
+
 # Los principios y reglas del consenso
 
 El XRP Ledger es un sistema de pagos universal que permite a los usuarios transferir fondos a través de fronteras nacionales de la misma forma que se envía un correo electrónico. Como otras redes de pagos peer-to-peer como Bitcoin, el XRP Ledger permite transacciones de liquidación peer-to-peer a través de una red descentralizada de ordenadores. A diferencia de otros protocolos de divisas digitales, el XRP Ledger permite a los usuarios denominar sus transacciones con cualquier divisa que prefieran, incluyendo divisas fiat, divisas digitales y cualquier otra forma de valor, y XRP (el activo nativo del XRP Ledger).
@@ -20,7 +21,6 @@ Principalmente, el XRP Ledger es una base de datos compartida que registra infor
 
 Como sistema criptográfico, los dueños de cuentas del XRP Ledger son identificados como _identidades criptográficas_, las cuales corresponden a pares de claves públicas/privadas. Las transacciones son autorizadas por firmas criptográficas que coinciden con esas identidades. Cada servidor procesa cada transacción de acuerdo con las mismas reglas deterministas conocidas. Finalmente, el objetivo es para cada servidor en la red tener una copia completa de exactamente el estado del mismo ledger, sin necesidad de una única autoridad central que arbitre las transacciones.
 
-
 ### El problema del doble gasto
 
 El problema del "doble gasto" es un desafío fundamental para cualquier sistema de pagos digital. El problema viene del requisito de que cuando el dinero es gastado en un sitio, no puede ser gastado en otro lugar. Generalmente, el problema ocurre cuando tiene dos transacciones cualesquiera de las cuales una es válida pero no ambas juntas.
@@ -32,7 +32,6 @@ Si Alice puede enviar los "mismos" 10$ a ambos Charlie y Bob, el sistema de pago
 Convencionalmente, los sistemas de pagos resuelven el problema del doble gasto teniendo una autoridad central que rastrea y aprueba transaciones. Por ejemplo, un banco decide compensar un cheque en función del saldo disponible del emisor, del cual el banco es el único custodio. En tal sistema, todos los participantes siguen las deicisiones de la autoridad central.
 
 Las tecnologías de contabilidad distribuida, como el XRP Ledger, no tiene una autoridad central. Estas tecnologías deben resolver el problema del doble gasto de alguna otra forma.
-
 
 ## Cómo funciona el consenso
 
@@ -56,14 +55,14 @@ La función principal del consenso es que los participantes en el proceso acuerd
 
 1. Si no hay ninguna razón por la que una transacción debería no estar incluida en dicho grupo de transacciones, todos los participantes honestos aceptan incluirla. Si todos los participantes ya están de acuerdo, el consenso no tiene trabajo que hacer.
 2. Si hay alguna razón por la que una transacción no debe incluirse en dicho grupo de transacciones, todos los participantes honestos estarán dispuestos a excluirla. Si la transacción todavía es válida, no hay razón para incluirla en la siguiente ronda, y todos deberían aceptar incluirla en ese momento.
-3. Es extremadamente raro para un participante que le importe cómo las transacciones fueron agrupadas. El acuerdo es más fácil cuando la prioridad de cualquiera es llegar a un acuerdo y  sólo desafiarlo cuando hay intereses divergentes.
+3. Es extremadamente raro para un participante que le importe cómo las transacciones fueron agrupadas. El acuerdo es más fácil cuando la prioridad de cualquiera es llegar a un acuerdo y sólo desafiarlo cuando hay intereses divergentes.
 4. Las reglas deterministas pueden ser usadas incluso para formar agrupaciones, llegando a desacuerdos solo en los casos extremos. Por ejemplo, si hay dos transacciones conflictivas en una ronda, las reglas deterministas pueden ser utilizadas para determinar cuál se incluye en la siguiente ronda.
 
 La principal prioridad de cada participante es la exactitud. Primero deben hacer cumplir las reglas para estar seguros de que nadie viola la integridad del ledger compartido. Por ejemplo, una transacción que no está correctamente firmada nunca debe ser procesada (incluso si otros participantes quieren que se procese). Sin embargo, la segunda prioridad de cada participante honesto es el llegar a un acuerdo. Una red con posibles gastos dobles no tiene ninguna utilidad, así que cada participante honesto valora el acuerdo por encima de la exactitud.
 
 ### Rondas de consenso
 
-Una ronda de consenso es una intento de ponerse de acuerdo en un grupo de transacciones para que puedan ser procesadas. Una ronda de consenso empieza con cada participante que lo desea  tomando una posición inicial. Este es el conjunto de transacciones válidas que han visto.
+Una ronda de consenso es una intento de ponerse de acuerdo en un grupo de transacciones para que puedan ser procesadas. Una ronda de consenso empieza con cada participante que lo desea tomando una posición inicial. Este es el conjunto de transacciones válidas que han visto.
 
 Después, los participantes se "avalanzan" al consenso: Si una transacción particular no tiene apoyo mayoritario, los participantes concuerdan apartar esa transacción. Si una transacción en concreto sí tiene el apoyo mayoritario, los participantes concuerdan incluir esa transacción. Así leves mayorías rápidamente consiguen apoyo completo y leves minorías rápidamente consiguen rechazo universal en la ronda actual.
 
@@ -73,7 +72,7 @@ Cuando un participante ve a una sobremayoría que está de acuerdo en el conjunt
 
 ### El consenso puede fallar
 
-No es práctico desarrollar un algoritmo de consenso que nunca falla para alcanzar un consenso perfecto. Para entender el por qué, considera cómo finaliza el proceso de consenso. En algún momento, cada participante debe declarar que ha alcanzado consenso y que un grupo de transacciones conocido ha sido el resultado de  ese proceso. Esta declaración compromete al participante de que un particular grupo de transacciones como resultado de ese proceso de consenso.
+No es práctico desarrollar un algoritmo de consenso que nunca falla para alcanzar un consenso perfecto. Para entender el por qué, considera cómo finaliza el proceso de consenso. En algún momento, cada participante debe declarar que ha alcanzado consenso y que un grupo de transacciones conocido ha sido el resultado de ese proceso. Esta declaración compromete al participante de que un particular grupo de transacciones como resultado de ese proceso de consenso.
 
 Algún participante debe hacer esto primero o ningún participante podrá hacerlo nunca, y nunca llegarán a alcanzar consenso. Ahora, considera al participante que hace esto primero. Cuando este participante decide que el consenso ha finalizado, otros participantes no han llegado todavía a tomar esa decisión. Si fuesen incapaces de cambiar el conjunto acordado desde su punto de vista, ellos habrían decidido que el consenso se había alacanzado ya. Por lo que deben todavía ser capaces de cambiar el conjunto agregado.. <!-- STYLE_OVERRIDE: will -->
 
@@ -114,18 +113,18 @@ El algoritmo de consenso del XRP Ledger provee una alternativa robusta a sistema
 ## Ver también
 
 - **Conceptos:**
-    - [Consenso](index.md)
-    - [Investigación del consenso](consensus-research.md)
-    - [Vídeo del mecanismo de consenso del XRPL](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
+  - [Consenso](index.md)
+  - [Investigación del consenso](consensus-research.md)
+  - [Vídeo del mecanismo de consenso del XRPL](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutoriales:**
-    - [Envío de transacciones confiable](../transactions/reliable-transaction-submission.md)
-    - [Ejecutar `rippled` como Validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+  - [Envío de transacciones confiable](../transactions/reliable-transaction-submission.md)
+  - [Ejecutar `rippled` como Validador](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
 - **Referencias:**
-    - [Referencia del formato ledger](../../references/protocol/ledger-data/index.md)
-    - [Referencia del formato de transacción](../../references/protocol/transactions/index.md)
-    - [método consensus_info][]
-    - [método validator_list_sites][]
-    - [método validators][]
-    - [método consensus_info][]
+  - [Referencia del formato ledger](../../references/protocol/ledger-data/index.md)
+  - [Referencia del formato de transacción](../../references/protocol/transactions/index.md)
+  - [método consensus_info][]
+  - [método validator_list_sites][]
+  - [método validators][]
+  - [método consensus_info][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

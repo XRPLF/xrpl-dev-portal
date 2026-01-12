@@ -1,11 +1,12 @@
 ---
 seo:
-    description: Broker a sale between a sell offer and a buy offer.
+  description: Broker a sale between a sell offer and a buy offer.
 labels:
   - Broker
   - NFT
   - XRP
 ---
+
 # Broker an NFT Sale Using JavaScript
 
 Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFT are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFT creators and traders.
@@ -36,18 +37,17 @@ To create a brokered sale, you need a broker account, a Sell Offer with the brok
 1. Open `broker-nfts.html` in a browser.
 2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
-    1. If you copied the gathered information from another tutorial (in this case, it would be best to load the Broker account and the Issuer account from the Prerequisite step):
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
+   1. If you copied the gathered information from another tutorial (in this case, it would be best to load the Broker account and the Issuer account from the Prerequisite step):
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
 
 [![Broker NFTs form with Account Information](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)](../../../img/mt-broker-nfts-2-broker-form-with-accounts.png)
-
 
 ## Get Offers
 
@@ -60,14 +60,13 @@ To create a brokered sale, you need a broker account, a Sell Offer with the brok
 
 1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
 1. Copy the _nft_offer_index_ of the sell offer and paste it in the **Sell Offer Index** field.
-2. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy Offer Index** field.
-3. Enter a **Broker Fee**, in drops.
-4. Click **Broker Sale**.
+1. Copy the _nft_offer_index_ of the buy offer and paste it in the **Buy Offer Index** field.
+1. Enter a **Broker Fee**, in drops.
+1. Click **Broker Sale**.
 
 In this example, the sale succeeds with 25 XRP going to the issuer account (Felicia), 30 XRP taken from the buyer account (Unknown 3rd Pary), and 5 XRP minus the transaction cost going to the broker account (Hisham).
 
 [![Brokered Sale](../../../img/mt-broker-nfts-4-broker-sale.png)](../../../img/mt-broker-nfts-4-broker-sale.png)
-
 
 ## Cancel Offer
 
@@ -81,7 +80,7 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
 
 ## brokerSale()
 
-```javascript    
+```javascript
 // *******************************************************
 // ******************* Broker Sale ***********************
 // *******************************************************
@@ -106,32 +105,30 @@ Get the account wallet and connect to the XRP Ledger.
 Prepare an NFTokenAcceptOffer, passing both the sell offer and the buy offer, and also the broker fee. With the additional arguments, the API interprets this as a brokered sale.
 
 ```javascript
-    const brokerTx = {
-      "TransactionType": "NFTokenAcceptOffer",
-      "Account": wallet.classicAddress,
-      "NFTokenSellOffer": nftSellOfferIndexField.value,
-      "NFTokenBuyOffer": nftBuyOfferIndexField.value,
-      "NFTokenBrokerFee": brokerFeeField.value
-    }
+const brokerTx = {
+  TransactionType: 'NFTokenAcceptOffer',
+  Account: wallet.classicAddress,
+  NFTokenSellOffer: nftSellOfferIndexField.value,
+  NFTokenBuyOffer: nftBuyOfferIndexField.value,
+  NFTokenBrokerFee: brokerFeeField.value,
+}
 ```
 
-Display the transaction object  in the console.
+Display the transaction object in the console.
 
 ```javascript
-    console.log(JSON.stringify(brokerTx, null, 2));
+console.log(JSON.stringify(brokerTx, null, 2))
 ```
 
 Submit the transaction and report the results.
 
 ```javascript
-    const tx = await client.submitAndWait(brokerTx, { wallet: wallet })
+const tx = await client.submitAndWait(brokerTx, { wallet: wallet })
 
-    results += "\n\nTransaction result:\n" +
-      JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-    results += "\nBalance changes:\n" +
-      JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-    resultField.value += results
+results += '\n\nTransaction result:\n' + JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+results += '\nBalance changes:\n' + JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+xrpBalanceField.value = await client.getXrpBalance(wallet.address)
+resultField.value += results
 ```
 
 Catch and report any errors.
@@ -152,7 +149,7 @@ Disconnect from the XRP Ledger.
       await client.disconnect();
     }
   }
-}// End of brokerSale()  
+}// End of brokerSale()
 ```
 
 ## broker-nfts.html
@@ -330,7 +327,7 @@ Disconnect from the XRP Ledger.
                 <td>
                     <input type="text" id="nftIdField" size="40"></input>
                 </td>
-            
+
                 <td align="center" valign="top">
                     <button type="button" onClick="getNFTs()">Get NFTs</button>
                 </td>

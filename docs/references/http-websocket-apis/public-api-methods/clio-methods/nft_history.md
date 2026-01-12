@@ -2,10 +2,11 @@
 html: nft_history.html
 parent: clio-methods.html
 seo:
-    description: Retrieve the history of ownership and transfers for the specified NFT using Clio server's `nft_history` API.
+  description: Retrieve the history of ownership and transfers for the specified NFT using Clio server's `nft_history` API.
 labels:
   - Non-fungible Tokens, NFTs
 ---
+
 # nft_history
 
 [[Source]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/NFTHistory.cpp "Source")
@@ -15,11 +16,13 @@ The `nft_history` command asks the Clio server for past transaction metadata for
 {% admonition type="info" name="Note" %}`nft_history` returns only _successful_ transactions associated with the NFT.{% /admonition %}
 
 ## Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": 1,
@@ -27,19 +30,22 @@ An example of the request format:
   "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "nft_history",
-    "params": [
-      {
-          "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9"
-      }
-    ]
+  "method": "nft_history",
+  "params": [
+    {
+      "nft_id": "000827106807BF848FACD972F2F617E27003D75B2CAAC9816CEE14840521D1E9"
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -48,17 +54,17 @@ An example of the request format:
 
 The request contains the following parameters:
 
-| `Field`            | Type                       | Description |
-|:-------------------|:---------------------------|:------------|
-| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer                    | _(Optional)_ Use to specify the earliest ledger from which to include NFTs. A value of `-1` instructs the server to use the earliest validated ledger version available. |
-| `ledger_index_max` | Integer                    | _(Optional)_ Use to specify the most recent ledger to include NFTs from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`      | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][]) |
+| `Field`            | Type                       | Description                                                                                                                                                                                                                                                                                                                |
+| :----------------- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT).                                                                                                                                                                                                                                                                      |
+| `ledger_index_min` | Integer                    | _(Optional)_ Use to specify the earliest ledger from which to include NFTs. A value of `-1` instructs the server to use the earliest validated ledger version available.                                                                                                                                                   |
+| `ledger_index_max` | Integer                    | _(Optional)_ Use to specify the most recent ledger to include NFTs from. A value of `-1` instructs the server to use the most recent validated ledger version available.                                                                                                                                                   |
+| `ledger_hash`      | String                     | _(Optional)_ The unique hash of the ledger version to use. (See [Specifying Ledgers][])                                                                                                                                                                                                                                    |
 | `ledger_index`     | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_history` API is not available on `rippled`. (See [Specifying Ledgers][]) |
-| `binary`           | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
-| `forward`          | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
-| `limit`            | UInt32                     | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
-| `marker`           | Marker                     | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging. |
+| `binary`           | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON.                                                                                                                                                                                                                   |
+| `forward`          | Boolean                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.)                                                       |
+| `limit`            | UInt32                     | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value.                                                                                                                                                                                                                         |
+| `marker`           | Marker                     | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging.                          |
 
 {% admonition type="info" name="Note" %}If you do not specify a ledger version, Clio uses the latest validated ledger.{% /admonition %}
 
@@ -69,6 +75,7 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -294,9 +301,11 @@ An example of a successful response:
   ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "result": {
@@ -519,6 +528,7 @@ An example of a successful response:
   ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -532,6 +542,7 @@ The example response below uses `api_version: 2`.
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "result": {
@@ -583,9 +594,11 @@ The example response below uses `api_version: 2`.
   ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
   "result": {
@@ -634,43 +647,44 @@ The example response below uses `api_version: 2`.
   ]
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`            | Type                       | Description                |
-|:-------------------|:---------------------------|:---------------------------|
-| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
-| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
-| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
+| `Field`            | Type                       | Description                                                                                                                                             |
+| :----------------- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT).                                                                                                   |
+| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions.                                                                             |
+| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions.                                                                          |
+| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.)                                            |
+| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off.                               |
+| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below.                                                                              |
 | `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 {% admonition type="info" name="Note" %}The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.{% /admonition %}
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 
-| `Field`         | Type                             | Description              |
-|:----------------|:---------------------------------|:-------------------------|
-| `ledger_index`  | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
-| `meta` (API v1) | Object (JSON) or String (Binary) | If `binary` is true, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
-| `meta_blob` (API v2) | String (Binary) | If `binary` is true, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included as `meta` in JSON format. |
-| `tx`            | Object                           | (JSON mode only) JSON object defining the transaction |
-| `tx_blob`       | String                           | (Binary mode only) Unique hashed String representing the transaction. |
-| `validated`     | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
+| `Field`              | Type                             | Description                                                                                                                                           |
+| :------------------- | :------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ledger_index`       | Integer                          | The [ledger index][] of the ledger version that included this transaction.                                                                            |
+| `meta` (API v1)      | Object (JSON) or String (Binary) | If `binary` is true, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format.           |
+| `meta_blob` (API v2) | String (Binary)                  | If `binary` is true, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included as `meta` in JSON format. |
+| `tx`                 | Object                           | (JSON mode only) JSON object defining the transaction                                                                                                 |
+| `tx_blob`            | String                           | (Binary mode only) Unique hashed String representing the transaction.                                                                                 |
+| `validated`          | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change.                 |
 
 For definitions of the fields returned in the `tx` object, see [Transaction Metadata](../../../protocol/transactions/metadata.md).
 
 ## Possible Errors
 
-* Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
-* `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).
+- Any of the [universal error types][].
+- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+- `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
+- `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
+- `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

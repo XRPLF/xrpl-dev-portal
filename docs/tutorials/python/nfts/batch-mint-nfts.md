@@ -2,7 +2,7 @@
 html: py-batch-minting.html
 parent: nfts-using-python.html
 seo:
-    description: Mint multiple NFTs with the press of a button.
+  description: Mint multiple NFTs with the press of a button.
 labels:
   - Accounts
   - Quickstart
@@ -26,12 +26,11 @@ You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl
 
 1. Open and run `lesson7-batch-minting.py`.
 2. Get a test account.
-    1. If you want to use an existing account seed:
-        1. Paste the account seed in the **Standby Seed** field.
-        2. Click **Get Standby Account**.
-    2. If you do not want to use an existing account seed, just click **Get Standby Account**.
+   1. If you want to use an existing account seed:
+      1. Paste the account seed in the **Standby Seed** field.
+      2. Click **Get Standby Account**.
+   2. If you do not want to use an existing account seed, just click **Get Standby Account**.
 3. Click **Get Standby Account Info** to get the current XRP balance.
-
 
 ## Batch Mint NFTs
 
@@ -39,7 +38,7 @@ You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NjEqEWcqhwc?si=E8ws75gts_7TtOuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. 
+This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items.
 
 To batch mint non-fungible token objects:
 
@@ -60,7 +59,7 @@ The difference between this function and the `getTokens()` function used earlier
 
 You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)to try each of the samples locally.
 
-Import dependencies and define the testnet_url variable. 
+Import dependencies and define the testnet_url variable.
 
 ```python
 import xrpl
@@ -89,14 +88,14 @@ Get the account wallet and a client instance.
 
 Request the full account info.
 
-```python    
+```python
     acct_info = xrpl.models.requests.account_info.AccountInfo(
         account=wallet.classic_address,
         ledger_index='validated'
     )
     get_seq_request = client.request(acct_info)
 
-```    
+```
 
 Parse the current sequence value.
 
@@ -110,7 +109,7 @@ Create a transaction to create tickets, starting at the current sequence number.
     ticket_tx=xrpl.models.transactions.TicketCreate(
         account=wallet.address,
         ticket_count=int(count),
-        sequence=current_sequence  
+        sequence=current_sequence
     )
 ```
 
@@ -165,13 +164,14 @@ Use a `for` loop to send repeated mint requests, using the `ticket_sequence` fie
             nftoken_taxon=int(taxon)
         )
 ```
+
 Submit each transaction and report the results.
 
 ```python
         try:
             response=xrpl.transaction.submit_and_wait(mint_tx,client,
                 wallet)
-            create_count+=1 
+            create_count+=1
         except xrpl.transaction.XRPLReliableSubmissionException as e:
             reply+=f"Submit failed: {e}\n"
     reply+=str(create_count)+' NFTs generated.'

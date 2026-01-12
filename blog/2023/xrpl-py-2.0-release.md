@@ -1,14 +1,16 @@
 ---
 category: 2023
-date: "2023-07-05"
+date: '2023-07-05'
 template: '../../@theme/templates/blogpost'
 labels:
-    - xrpl-py Release Notes
+  - xrpl-py Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Migration Guide: Upgrading to xrpl-py Version 2.0.0
+
 _by Team RippleX_
 
 We are excited to introduce xrpl-py version 2.0.0, which brings several improvements and new features, especially for the `Wallet` class. However, this update includes some breaking changes that require modifications to your existing code. This migration guide will help you navigate through the necessary changes to ensure a smooth transition.
@@ -18,24 +20,24 @@ We are excited to introduce xrpl-py version 2.0.0, which brings several improvem
 ## Summary of Breaking Changes
 
 1. Simplifying signing and submitting functions:
-    - Replacing `send_reliable_submission` with `submit_and_wait`
-    - Shortening function names for `submit_transaction` and `safe_sign_..._transaction` functions
-    - Updating parameter order for `autofill_and_sign` and `sign_and_submit` functions to match `submit_and_wait`
+   - Replacing `send_reliable_submission` with `submit_and_wait`
+   - Shortening function names for `submit_transaction` and `safe_sign_..._transaction` functions
+   - Updating parameter order for `autofill_and_sign` and `sign_and_submit` functions to match `submit_and_wait`
 
 2. Revamping the `Wallet` class:
-    - Removing the sequence field from `Wallet`
-    - Changing the constructor to use public and private keys instead of seeds
-    - Updating class methods to use the faster `Ed25519` cryptographic algorithm by default
-    - Adding support for various key representation methods (for example, [XLS-12 Secret Numbers](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-12))
+   - Removing the sequence field from `Wallet`
+   - Changing the constructor to use public and private keys instead of seeds
+   - Updating class methods to use the faster `Ed25519` cryptographic algorithm by default
+   - Adding support for various key representation methods (for example, [XLS-12 Secret Numbers](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-12))
 
 3. Other fixes:
-    - Splitting `AccountSetFlags` into two enums: `AccountSetAsfFlags` and `AccountSetFlags`
-    - Making the `sign` method synchronous by removing the `check_fee` parameter
-    - Updating `XRP.to_amount()` to assume the given amount is in XRP instead of drops (and to convert to drops)
+   - Splitting `AccountSetFlags` into two enums: `AccountSetAsfFlags` and `AccountSetFlags`
+   - Making the `sign` method synchronous by removing the `check_fee` parameter
+   - Updating `XRP.to_amount()` to assume the given amount is in XRP instead of drops (and to convert to drops)
 
 ## Detailed Explanation of Changes
 
-Optionally, [jump to the migration steps](#detailed-migration-steps). 
+Optionally, [jump to the migration steps](#detailed-migration-steps).
 
 ### 1. Simplifying Signing/Submitting Functions
 
@@ -54,19 +56,20 @@ In order to make code more readable, we've also shortened the name of 4 function
 3. `Wallet` class methods now use the faster `Ed25519` algorithm by default.
 4. Seed generation now uses hex strings instead of `UTF-8` strings
 
-We've revamped `Wallet` to better support its goal of making managing your keys easy. As part of that, we removed the unnecessary `sequence` field, and made it so you can create a `Wallet` with whatever form your keys are in. That includes secrets, public/private key pairs, entropy, or secret numbers. 
+We've revamped `Wallet` to better support its goal of making managing your keys easy. As part of that, we removed the unnecessary `sequence` field, and made it so you can create a `Wallet` with whatever form your keys are in. That includes secrets, public/private key pairs, entropy, or secret numbers.
 
-The default encoding for keys has been updated from `secp256k1` to `ed25519` since it has better performance. You can still specify that you would like to use the old encoding by including `algorithm=secp256k1` in any of the new `Wallet` generator functions. 
+The default encoding for keys has been updated from `secp256k1` to `ed25519` since it has better performance. You can still specify that you would like to use the old encoding by including `algorithm=secp256k1` in any of the new `Wallet` generator functions.
 
 Lastly, as part of this revamp, we fixed a bug where seed generation was only accepting `UTF-8` strings, which limited the range of random input you could provide to a subset of all possible hex string inputs.
 
 ### 3. Other Fixes
+
 1. Splitting `AccountSetFlags` into two enums
 2. Making `sign` synchronous by removing `check_fee` from it
 
 `AccountSetFlags` has been split into two enums: `AccountSetAsfFlags` contains unique `'ASF...'` flags for AccountSet transactions, while `AccountSetFlags` aligns with our standard transaction flag naming convention. This separation resolves a bug where both types of flags were combined in a single enum.
 
-Previously `sign` had an optional check that used the `Client` to see if the `fee` used in a transaction was way too high. This made the function asynchronous when it didn't have to be. So, we moved that check into higher level functions to make `sign` synchronous and clearly offline. 
+Previously `sign` had an optional check that used the `Client` to see if the `fee` used in a transaction was way too high. This made the function asynchronous when it didn't have to be. So, we moved that check into higher level functions to make `sign` synchronous and clearly offline.
 
 ## Detailed Migration Steps
 
@@ -77,6 +80,7 @@ These will show line for line how you can update your code in response to these 
 #### `send_reliable_submission` -> `submit_and_wait`
 
 **Before:**
+
 ```python
 # Sign the transaction locally
 signed_tx = safe_sign_and_autofill_transaction(tx, test_wallet, client)
@@ -207,7 +211,6 @@ Payment(
 
 {% admonition type="success" name="Tip" %}You can also omit the `sequence` field and use `autofill` before signing your transaction. The `submit_and_wait` method does this automatically when you give it an unsigned transaction.{% /admonition %}
 
-
 #### `Wallet.classic_address` -> `Wallet.address`
 
 **Before:**
@@ -227,6 +230,7 @@ Payment(
     amount="10",
 )
 ```
+
 {% admonition type="success" name="Tip" %}
 `classic_address` still exists as an alias, and both are now also read-only since they should never change.
 {% /admonition %}
@@ -244,7 +248,7 @@ AccountSetFlag.ASF_DISABLE_MASTER
 
 **After:**
 
-```pythonfrom 
+```pythonfrom
 xrpl.models.transactions AccountSetAsfFlag
 AccountSetAsfFlag.ASF_DISABLE_MASTER
 ```
@@ -257,6 +261,7 @@ AccountSetAsfFlag.ASF_DISABLE_MASTER
 DUMMY_BYTES = b"\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10"
 seed = generate_seed(DUMMY_BYTES.decode("UTF-8"))
 ```
+
 **After:**
 
 ```python
@@ -281,14 +286,17 @@ signed_tx = sign(autofilled_tx, wallet, multisign = True)
 ```
 
 #### XRP.to_amount() from str() wrapper to xrp_to_drops() wrapper
+
 Note: This only applies to the specific `XRP` object used in `IssuedCurrencies` which does not have an associated amount. Other XRP Amounts are specified as drops in a string, and are unaffected.
 
 **Before:**
+
 ```python
-XRP().to_amount(12000000) # -> "12000000" 
+XRP().to_amount(12000000) # -> "12000000"
 ```
 
 **After:**
+
 ```python
 XRP().to_amount(12) # -> "12000000"
 ```
@@ -298,13 +306,15 @@ XRP().to_amount(12) # -> "12000000"
 There were four functions which simply wrapped a rippled request, and so were removed as part of this release. The recommended method of getting that information is to directly use `client.request` with the corresponding request type.
 
 #### `get_account_info` -> `AccountInfo` request
- 
+
 **Before:**
+
 ```python
 account_info = await get_account_info(address, client, ledger_index)
 ```
 
 **After:**
+
 ```python
 account_info = await client.request(AccountInfo(
             account=address,
@@ -315,11 +325,13 @@ account_info = await client.request(AccountInfo(
 #### `get_account_transactions` -> `AccountTx` request
 
 **Before:**
+
 ```python
 transactions = await get_account_transactions(address, client)
 ```
 
 **After:**
+
 ```python
 response = await client.request(AccountTx(account=address))
 transactions = response.result["transactions"]
@@ -328,11 +340,13 @@ transactions = response.result["transactions"]
 #### `get_account_payment_transactions` -> `AccountTx` request
 
 **Before:**
+
 ```python
 transactions = await get_account_payment_transactions(address, client)
 ```
 
 **After:**
+
 ```python
 response = await client.request(AccountTx(account=address))
 transactions = response.result["transactions"]
@@ -342,11 +356,13 @@ payment_transactions = [tx for tx in transactions if tx["tx"]["TransactionType"]
 #### `get_transaction_from_hash` -> `Tx` request
 
 **Before:**
+
 ```python
 response = await get_transaction_from_hash(tx_hash, client, binary, min_ledger, max_ledger)
 ```
 
 **After:**
+
 ```python
 response = await client.request(Tx(
             transaction=tx_hash,

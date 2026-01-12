@@ -2,12 +2,12 @@
 html: test-amendments.html
 parent: configure-rippled.html
 seo:
-    description: ネットワーク上で有効になる前に、Amendmentをテストすることができます。
+  description: ネットワーク上で有効になる前に、Amendmentをテストすることができます。
 labels:
   - ブロックチェーン
 ---
-# Amendmentのテスト
 
+# Amendmentのテスト
 
 本番ネットワークでAmendmentが完全に有効になる前に、スタンドアロンモードを使って`rippled` の動作をテストすることができます。
 
@@ -18,11 +18,13 @@ labels:
 {% tabs %}
 
 {% tab label="Example" %}
+
 ```
 [features]
 MultiSign
 TrustSetAuth
 ```
+
 {% /tab %}
 
 {% /tabs %}

@@ -1,13 +1,14 @@
 ---
-date: "2018-06-14"
+date: '2018-06-14'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled Version 1.0.1
 
 Ripple has released `rippled` version 1.0.1, which includes fixes for issues identified by Ripple engineers and reported by external security researchers. These issues, when exploited, could cause a `rippled` instance to restart or, in some circumstances, stop executing.
@@ -20,7 +21,7 @@ While these issues can result in a denial of service attack, none affect the int
 
 ## Impact of Not Upgrading
 
-* **If you operate a `rippled` server**, but do not upgrade to version 1.0.1 as soon as possible, then your server may experience restarts or outages.
+- **If you operate a `rippled` server**, but do not upgrade to version 1.0.1 as soon as possible, then your server may experience restarts or outages.
 
 ## Upgrading
 
@@ -68,11 +69,10 @@ Related documentation is available in the [XRP Ledger Developer Portal](/docs/),
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
-
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Upcoming Features
 
@@ -82,11 +82,10 @@ An upcoming version of `rippled` will switch to using the **Boost.Beast** librar
 
 Ripple does not expect to enable the **SHAMapV2**, **Tickets**, or **OwnerPaysFee** Amendments before the next release of `rippled`. These Amendments have been disabled in the source code so `rippled` version 1.0.1 will not show them as available. Ripple plans to re-introduce some or all of these amendments in a future version of `rippled`.
 
-
 ## 1.0.1 Change Log
 
 ### Bug Fixes
 
-* Improve JSON exception handling
+- Improve JSON exception handling
 
-* Fix a corner case when decoding base64: Under some corner cases, the base64 decoder would not allocate enough memory, which could result in spurious errors.
+- Fix a corner case when decoding base64: Under some corner cases, the base64 decoder would not allocate enough memory, which could result in spurious errors.

@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Interpret and respond to warning and error messages in the debug log.
+  description: Interpret and respond to warning and error messages in the debug log.
 labels:
-    - Core Server
+  - Core Server
 ---
+
 # Understanding Log Messages
 
 The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](../../concepts/networks-and-servers/index.md) debug log and how to interpret them.
@@ -31,7 +32,6 @@ Each line represents one log entry, with the following parts in order, separated
 
 For simplicity, the examples in this page omit the date, time, and time zone indicator.
 
-
 ## Crashes
 
 Messages in the log that mention runtime errors can indicate that the server crashed. These messages usually start with a message such as one of the following examples:
@@ -54,7 +54,6 @@ If your server crashes randomly during operation or as a result of particular co
 
 If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <https://ripple.com/bug-bounty/> for details.
 
-
 ## Already validated sequence at or past
 
 Log messages such as the following indicate that a server received validations for different ledger indexes out of order.
@@ -68,7 +67,6 @@ Occasional messages of this type do not usually indicate a problem. If this type
 - The server writing the message is having network issues.
 - The validator described in the message is having network issues.
 - The validator described in the message is behaving maliciously.
-
 
 ## async_send failed
 
@@ -87,7 +85,6 @@ Check the `[insight]` stanza in your `rippled`'s config file and confirm that yo
 
 This error has no other impact on the `rippled` server, which should continue to work as normal except for the sending of StatsD metrics.
 
-
 ## Check for upgrade
 
 The following message indicates that the server has detected that it is running an older software version than at least 60% of its trusted validators:
@@ -97,7 +94,6 @@ LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running
 ```
 
 This is not strictly a problem, but an old server version is likely to become [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). You should [update `rippled`](../installation/index.md) to the latest stable version. (If you are connected to [devnet](../../concepts/networks-and-servers/parallel-networks.md), update to the latest nightly version instead.)
-
 
 ## Connection reset by peer
 
@@ -113,7 +109,6 @@ A large number of these messages around the same time may indicate a problem, su
 
 - Your internet connection to one or more specific peers was cut off.
 - Your server may have been overloading the peer with requests, causing the peer to disconnect your server.
-
 
 ## Consumer entry dropped with balance at or above drop threshold
 
@@ -144,7 +139,6 @@ This is not strictly a problem, but if you want to acquire ledger history faster
 s2.ripple.com 51235
 ```
 
-
 ## InboundLedger Want hash
 
 Log messages such as the following indicate that the server is requesting ledger data from other servers:
@@ -154,7 +148,6 @@ InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CD
 ```
 
 This is normal if your server is syncing or backfilling.
-
 
 ## LoadMonitor Job
 
@@ -199,7 +192,6 @@ The `state` indicates the [server state](../../references/http-websocket-apis/ap
 
 During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](../installation/system-requirements.md), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
 
-
 ## Potential Censorship
 
 Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](../../concepts/networks-and-servers/transaction-censorship-detection.md).
@@ -216,7 +208,6 @@ LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
 ```
 
-
 ## rotating validatedSeq
 
 This message indicates that [online deletion](../configuration/data-retention/online-deletion.md) has started running:
@@ -229,11 +220,11 @@ This log message is normal and indicates that online deletion is operating as ex
 
 The log message contains values describing the current online deletion run. Each keyword corresponds to the value immediately following it:
 
-| Keyword          | Value            | Description                            |
-|:-----------------|:-----------------|:---------------------------------------|
-| `validatedSeq`   | [Ledger Index][] | The current validated ledger version.  |
-| `lastRotated`    | [Ledger Index][] | The end of the ledger range in the ["old" (read-only) database](../configuration/data-retention/online-deletion.md#how-it-works). Online deletion deletes this ledger version and earlier. |
-| `deleteInterval` | Number           | How many ledger versions to keep after online deletion. The [`online_delete` setting](../configuration/data-retention/online-deletion.md#configuration) controls this value. |
+| Keyword          | Value            | Description                                                                                                                                                                                                                |
+| :--------------- | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `validatedSeq`   | [Ledger Index][] | The current validated ledger version.                                                                                                                                                                                      |
+| `lastRotated`    | [Ledger Index][] | The end of the ledger range in the ["old" (read-only) database](../configuration/data-retention/online-deletion.md#how-it-works). Online deletion deletes this ledger version and earlier.                                 |
+| `deleteInterval` | Number           | How many ledger versions to keep after online deletion. The [`online_delete` setting](../configuration/data-retention/online-deletion.md#configuration) controls this value.                                               |
 | `canDelete_`     | [Ledger Index][] | The newest ledger version that the server is allowed to delete, if using [advisory deletion](../configuration/data-retention/online-deletion.md#advisory-deletion). If not using advisory deletion, this value is ignored. |
 
 When online deletion finishes, it writes the following log message:
@@ -246,7 +237,6 @@ The number at the end of the message is the [ledger index][] of the validated le
 
 If the server falls out of sync while running online deletion, it interrupts online deletion and writes a ["Not deleting" log message](#not-deleting) instead of a "finished rotation" message.
 
-
 ## Unable to determine hash of ancestor
 
 Log messages such as the following occur when the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This can occur when the server is not in sync with the rest of the network:
@@ -257,19 +247,17 @@ Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1
 
 {% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
-
-
 ## [veto_amendments] section in config file ignored
+
 <!-- SPELLING_IGNORE: veto_amendments -->
 
-Log messages such as the following occur when  your `rippled.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
+Log messages such as the following occur when your `rippled.cfg` file contains a legacy `[veto_amendments]` stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the `[amendments]` and `[veto_amendments]` stanzas and prints this message instead.
 
 ```text
 Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
 ```
 
 To resolve this error, remove the `[amendments]` and `[veto_amendments]` stanzas from your config file. For more information, see [Amendment Voting](../../concepts/networks-and-servers/amendments.md#amendment-voting).
-
 
 ## View of consensus changed during open
 
@@ -283,8 +271,6 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
 {% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
-
-
 ## We are not running on the consensus ledger
 
 ```text
@@ -293,20 +279,18 @@ NetworkOPs:WRN We are not running on the consensus ledger
 
 {% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
-
-
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Technical FAQ](/about/faq.md)
+  - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+  - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
-    - [Diagnosing Problems](diagnosing-problems.md)
-    - [Capacity Planning](../installation/capacity-planning.md)
+  - [Diagnosing Problems](diagnosing-problems.md)
+  - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](../../references/http-websocket-apis/index.md)
-        - [`rippled` Commandline Usage](../commandline-usage.md)
-        - [server_info method][]
+  - [rippled API Reference](../../references/http-websocket-apis/index.md)
+    - [`rippled` Commandline Usage](../commandline-usage.md)
+    - [server_info method][]
 
 <!-- SPELLING_IGNORE: oom, async_send, statsd, inboundledger, loadmonitor, validatedseq -->
 

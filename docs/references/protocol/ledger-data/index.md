@@ -2,10 +2,11 @@
 html: ledger-data-formats.html
 parent: protocol-reference.html
 seo:
-    description: Learn about individual entries that comprise the XRP Ledger's shared state data.
+  description: Learn about individual entries that comprise the XRP Ledger's shared state data.
 metadata:
   indexPage: true
 ---
+
 # Ledger Data Formats
 
 Each [ledger version](../../../concepts/ledgers/index.md) in the XRP Ledger is made up of three parts:
@@ -19,4 +20,3 @@ Each [ledger version](../../../concepts/ledgers/index.md) in the XRP Ledger is m
 {% partial file="/docs/_snippets/ledger-objects-intro.md" /%}
 
 {% child-pages /%}
-

@@ -1,13 +1,14 @@
 ---
 category: 2022
-date: "2022-04-07"
+date: '2022-04-07'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.9.0
 
 Version 1.9.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release includes the XLS-20 amendment and fixes and updates for stability and security.
@@ -42,7 +43,7 @@ This release contains the following features and improvements.
 
 ### New and Improved Features
 
-- **Introduce NFT support (XLS-20):** This release introduces support for non-fungible tokens, currently available to the developer community for broader review and testing.  Developers can create applications that allow users to mint, transfer, and ultimately burn (if desired) NFTs on the XRP Ledger. You can try out the new NFT transactions using the [nft-devnet](https://xrpl.org/xrp-testnet-faucet.html). Note that some fields and error codes from earlier releases of the supporting code have been refactored for this release, shown in the Code Refactoring section, below. [70779f](https://github.com/ripple/rippled/commit/70779f6850b5f33cdbb9cf4129bc1c259af0013e)
+- **Introduce NFT support (XLS-20):** This release introduces support for non-fungible tokens, currently available to the developer community for broader review and testing. Developers can create applications that allow users to mint, transfer, and ultimately burn (if desired) NFTs on the XRP Ledger. You can try out the new NFT transactions using the [nft-devnet](https://xrpl.org/xrp-testnet-faucet.html). Note that some fields and error codes from earlier releases of the supporting code have been refactored for this release, shown in the Code Refactoring section, below. [70779f](https://github.com/ripple/rippled/commit/70779f6850b5f33cdbb9cf4129bc1c259af0013e)
 
 - **Simplify the Job Queue:** This is a refactor aimed at cleaning up and simplifying the existing job queue. Currently, all jobs are canceled at the same time and in the same way, so this commit removes the unnecessary per-job cancellation token. [#3656](https://github.com/ripple/rippled/pull/3656)
 
@@ -60,7 +61,6 @@ This release contains the following features and improvements.
 
 - **Simplify and improve order book tracking:** The order book tracking code would use `std::shared_ptr` to track the lifetime of objects. This commit changes the logic to eliminate the overhead of `std::shared_ptr` by using value types, resulting in significant memory savings. [b9903b](https://github.com/ripple/rippled/commit/b9903bbcc483a384decf8d2665f559d123baaba2)
 
-
 - **Negative cache support for node store:** This commit allows the cache to service requests for nodes that were previously looked up but not found, reducing the need to perform I/O in several common scenarios. [3eb8aa](https://github.com/ripple/rippled/commit/3eb8aa8b80bd818f04c99cee2cfc243192709667)
 
 - **Improve asynchronous database handlers:** This commit optimizes the way asynchronous node store operations are processed, both by reducing the number of times locks are held and by minimizing the number of memory allocations and data copying. [6faaa9](https://github.com/ripple/rippled/commit/6faaa91850d6b2eb9fbf16c1256bf7ef11ac4646)
@@ -70,45 +70,44 @@ This release contains the following features and improvements.
 ### Code Refactoring
 
 This release includes name changes in the NFToken API for SFields, RPC return labels, and error codes for clarity and consistency. To refactor your code, migrate the names of these items to the new names as listed below.
- 
+
 #### `SField` name changes
 
-| Old name | New name |
-|:---------|:----------|
-| TokenTaxon | NFTokenTaxon |
-| MintedTokens | MintedNFTokens |
-| BurnedTokens | BurnedNFTokens |
-| TokenID | NFTokenID |
-| TokenOffers | NFTokenOffers |
-| BrokerFee | NFTokenBrokerFee |
-| Minter | NFTokenMinter |
-| NonFungibleToken | NFToken |
-| NonFungibleTokens | NFTokens |
-| BuyOffer | NFTokenBuyOffer |
-| SellOffer | NFTokenSellOffer |
-| OfferNode | NFTokenOfferNode |
+| Old name            | New name                   |
+| :------------------ | :------------------------- |
+| TokenTaxon          | NFTokenTaxon               |
+| MintedTokens        | MintedNFTokens             |
+| BurnedTokens        | BurnedNFTokens             |
+| TokenID             | NFTokenID                  |
+| TokenOffers         | NFTokenOffers              |
+| BrokerFee           | NFTokenBrokerFee           |
+| Minter              | NFTokenMinter              |
+| NonFungibleToken    | NFToken                    |
+| NonFungibleTokens   | NFTokens                   |
+| BuyOffer            | NFTokenBuyOffer            |
+| SellOffer           | NFTokenSellOffer           |
+| OfferNode           | NFTokenOfferNode           |
 | asfAuthorizedMinter | asfAuthorizedNFTokenMinter |
-| tfSellToken | tfSellNFToken |
-| lsfSellToken | lsfSellNFToken |
- 
+| tfSellToken         | tfSellNFToken              |
+| lsfSellToken        | lsfSellNFToken             |
+
 #### RPC return labels
 
-| Old name | New name |
-|:---------|:----------|
-| tokenid | nft_id |
-| index | nft_offer_index (in responses to `nft_buy_offers` and `nft_sell_offers` requests) |
- 
+| Old name | New name                                                                          |
+| :------- | :-------------------------------------------------------------------------------- |
+| tokenid  | nft_id                                                                            |
+| index    | nft_offer_index (in responses to `nft_buy_offers` and `nft_sell_offers` requests) |
+
 #### Error codes
 
-| Old name | New name |
-|:---------|:----------|
-| temBAD_TRANSFER_FEE | temBAD_NFTOKEN_TRANSFER_FEE |
-| tefTOKEN_IS_NOT_TRANSFERABLE | tefNFTOKEN_IS_NOT_TRANSFERABLE |
-| tecNO_SUITABLE_PAGE | tecNO_SUITABLE_NFTOKEN_PAGE |
-| tecBUY_SELL_MISMATCH | tecNFTOKEN_BUY_SELL_MISMATCH |
-| tecOFFER_TYPE_MISMATCH | tecNFTOKEN_OFFER_TYPE_MISMATCH |
-| tecCANT_ACCEPT_OWN_OFFER | tecCANT_ACCEPT_OWN_NFTOKEN_OFFER |
-
+| Old name                     | New name                         |
+| :--------------------------- | :------------------------------- |
+| temBAD_TRANSFER_FEE          | temBAD_NFTOKEN_TRANSFER_FEE      |
+| tefTOKEN_IS_NOT_TRANSFERABLE | tefNFTOKEN_IS_NOT_TRANSFERABLE   |
+| tecNO_SUITABLE_PAGE          | tecNO_SUITABLE_NFTOKEN_PAGE      |
+| tecBUY_SELL_MISMATCH         | tecNFTOKEN_BUY_SELL_MISMATCH     |
+| tecOFFER_TYPE_MISMATCH       | tecNFTOKEN_OFFER_TYPE_MISMATCH   |
+| tecCANT_ACCEPT_OWN_OFFER     | tecCANT_ACCEPT_OWN_NFTOKEN_OFFER |
 
 ### Bug Fixes
 

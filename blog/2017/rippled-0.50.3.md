@@ -1,13 +1,14 @@
 ---
-date: "2017-03-14"
+date: '2017-03-14'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.50.3
 
 The `rippled` team has released version 0.50.3, which patches a reported exploit that would allow a combination of trust lines and order books in a payment path to bypass the blocking effect of the `NoRipple` flag. Ripple recommends that all `rippled` server operators immediately upgrade to version 0.50.3, which contains a patch that fixes the exploit. There are no new or updated features in the 0.50.3 release.
@@ -19,6 +20,7 @@ Ripple will be following up with a postmortem, explaining the exploit, the timel
 **If you operate a `rippled` server**, then you should upgrade to version 0.50.3 immediately.
 
 **If you operate a gateway**, then you should:
+
 1. Make sure your issuing account has not set the `NoRipple` flag on any trust lines
 2. Your issuing account should have a zero limit on all trust lines
 3. Make sure the `DefaultRipple` flag is set on your issuing account
@@ -61,11 +63,12 @@ Patch a reported exploit that would allow a combination of trust lines and order
 Ripple engineers have deployed the fix to all `rippled` validating servers under Ripple’s operational control and will not be updating client-facing `rippled` servers to 0.50.3 at this time. _(Editor's note: an earlier version of this post incorrectly stated that the fix was configuration-based. The fix was to update Ripple's validating servers to 0.50.3.)_
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

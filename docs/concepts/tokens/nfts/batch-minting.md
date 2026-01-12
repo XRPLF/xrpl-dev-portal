@@ -2,9 +2,9 @@
 html: nftoken-batch-minting.html
 parent: non-fungible-tokens.html
 seo:
-    description: Minting NFTs in batches.
+  description: Minting NFTs in batches.
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
 
 # Batch Minting
@@ -17,8 +17,8 @@ When using a mint on demand model, you and potential customers make buy or sell 
 
 ### Benefits
 
-* There is no reserve requirement for holding unsold NFTs.
-* You mint NFTs in real time when you know that it will sell. <!-- STYLE_OVERRIDE: will -->
+- There is no reserve requirement for holding unsold NFTs.
+- You mint NFTs in real time when you know that it will sell. <!-- STYLE_OVERRIDE: will -->
 
 ### Downside
 
@@ -32,8 +32,8 @@ For a practical example, see the [Batch Mint NFTs Using JavaScript](../../../tut
 
 ### Benefits
 
-* NFTs are minted ahead of time.
-* Market activity for the initial sale of the NFT is captured on the ledger.
+- NFTs are minted ahead of time.
+- Market activity for the initial sale of the NFT is captured on the ledger.
 
 ### Downside
 

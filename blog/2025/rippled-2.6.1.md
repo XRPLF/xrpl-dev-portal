@@ -1,34 +1,33 @@
 ---
 category: 2025
-date: "2025-10-06"
+date: '2025-10-06'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing XRP Ledger version 2.6.1
-    description: rippled version 2.6.1 is now available. This version contains various bug fixes and minor improvements.
+  title: Introducing XRP Ledger version 2.6.1
+  description: rippled version 2.6.1 is now available. This version contains various bug fixes and minor improvements.
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 2.6.1
 
 Version 2.6.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release supersedes version 2.6.0, adding new features and bug fixes.
-
 
 ## Action Required
 
 If you run an XRP Ledger server, upgrade to version 2.6.1 as soon as possible to ensure service continuity.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](../../docs/infrastructure/installation/index.md).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                               | SHA-256                                                            |
+| :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.6.1-1.el9.x86_64.rpm) | `0fbbff570e962fea4df4d604cb848976fc9af9ebc34512a1002eb4866549850d` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.6.1-1_amd64.deb) | `de3bfdae5fb95d922a4b5bffa5bc9441f1bc4bac15bd7b83f77f14166c65bb7e` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.6.1-1_amd64.deb)  | `de3bfdae5fb95d922a4b5bffa5bc9441f1bc4bac15bd7b83f77f14166c65bb7e` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -40,20 +39,17 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
     Set version to 2.6.1
 ```
 
-
 ## Full Changelog
 
 ### Amendments
 
 - **PermissionDelegation (XLS-75)** - A bug was discovered in `PermissionDelegation`, and the amendment was disabled. The fix for this feature will be included in a future release as `PermissionDelegationV1_1`. ([#5805](https://github.com/XRPLF/rippled/pull/5805))
 
-
 ### New Features
 
 - Improved the `account_tx` method to show MPT-related transactions for an issuer. ([#5530](https://github.com/XRPLF/rippled/pull/5530))
 - Added the `network_id` field to `validations` and `ledger` subscription streams. ([#5579](https://github.com/XRPLF/rippled/pull/5579))
 - Added `nftoken_id`, `nftoken_ids`, and `offer_id` to the `meta` field of transaction streams from the `subscribe` method. ([#5230](https://github.com/XRPLF/rippled/pull/5230))
-
 
 ### Bug Fixes
 
@@ -71,7 +67,6 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
 - Added `-Wno-deprecated-declarations` for Clang only. ([#5680](https://github.com/XRPLF/rippled/pull/5680))
 - Fixed a crash due to a recurrent call to `Slot::deletePeer` when a peer is disconnected at just the wrong moment. ([#5635](https://github.com/XRPLF/rippled/pull/5635))
 - Fixed a MacOS pipeline issue. ([#5585](https://github.com/XRPLF/rippled/pull/5585))
-
 
 ### Other Improvements
 
@@ -113,7 +108,6 @@ Date:   Tue Sep 30 16:09:11 2025 -0400
 - Updated the list of maintainers and common code reviewers. ([#5687](https://github.com/XRPLF/rippled/pull/5687))
 - Reverted to `std::shared_mutex` from `boost::shared_mutex`. ([#5576](https://github.com/XRPLF/rippled/pull/5576))
 
-
 ## Credits
 
 The following GitHub users contributed to this release:
@@ -125,7 +119,6 @@ The following GitHub users contributed to this release:
 - @dangell7
 - @hgandhi-perfx
 - @tequdev
-
 
 ## Bug Bounties and Responsible Disclosures
 

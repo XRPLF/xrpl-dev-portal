@@ -1,11 +1,12 @@
 ---
 category: 2015
-date: "2015-03-18"
+date: '2015-03-18'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Do You Have What It Takes to Be a Gateway?
 
 We're proud to announce the first release of our new Gateway Guide, a comprehensive manual to operating a gateway in the Ripple network. Whether you're trying to understand how a gateway makes revenue, or how to use the authorized accounts feature, or even just what a warm wallet is, the gateway guide has you covered.

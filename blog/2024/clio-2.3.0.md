@@ -1,15 +1,15 @@
 ---
 category: 2024
-date: "2024-12-12"
+date: '2024-12-12'
 template: '../../@theme/templates/blogpost'
 seo:
-    title: Introducing Clio version 2.3.0
-    description: Version 2.3.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds new features and bug fixes.
+  title: Introducing Clio version 2.3.0
+  description: Version 2.3.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds new features and bug fixes.
 labels:
-    - Clio Release Notes
+  - Clio Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
 
 # Introducing Clio version 2.3.0
@@ -40,8 +40,8 @@ To check the current voting status of these amendments on Mainnet, see the [XRPL
 
 ## Install / Upgrade
 
-| Package |
-|:--------|
+| Package                                                                                                  |
+| :------------------------------------------------------------------------------------------------------- |
 | [Clio server Linux package](https://github.com/XRPLF/clio/releases/download/2.3.0/clio_server_Linux.zip) |
 
 For other platforms, please [build from source](https://github.com/XRPLF/clio/releases/tag/2.3.0). The most recent commit in the git log should be:
@@ -169,7 +169,6 @@ See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.2.5..
 - Bump wandalen/wretry.action from 3.5.0 to 3.7.0 ([#1714](https://github.com/XRPLF/clio/pull/1714))
 - Bump wandalen/wretry.action from 3.7.0 to 3.7.2 ([#1723](https://github.com/XRPLF/clio/pull/1723))
 - Add relevant changes from develop ([#1762](https://github.com/XRPLF/clio/pull/1762))
-
 
 ## Feedback
 

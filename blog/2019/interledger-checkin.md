@@ -1,13 +1,14 @@
 ---
 labels:
-    - Features
+  - Features
 category: 2019
-date: "2019-04-03"
+date: '2019-04-03'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Interledger Check-in
 
 Here at Ripple, we've been eagerly following and contributing to the progress of [Interledger](https://interledger.org), a neutral standard for connecting all money systems into an Internet-like network of networks. Since finalizing the core protocol suite in late 2017, contributors from a variety of companies and backgrounds have been working hard on growing the ecosystem with implementations and infrastructure. Progress has been rapid and wild, so we thought we'd help make sense of it by checking in to see where Interledger stands today.
@@ -32,7 +33,6 @@ If you're not ready to use real money yet, you can start by [building on the Int
 
 Production users can run the [ILP Connector reference implementation](https://github.com/interledgerjs/ilp-connector) directly using [Kubernetes](https://kubernetes.io/) or a similar system. The Coil team has also just recently introduced an [alternative ILP Connector implementation called Rafiki](https://medium.com/interledger-blog/introducing-rafiki-e3de4710d3de), which is well-positioned to become a major component of the Interledger ecosystem.
 
-
 ## Interledger Use Cases
 
 The Interledger ecosystem is still relatively small today; you can't yet pay your utility bills or buy a coffee through Interledger. Existing payment systems with strong network effects, like PayPal, Venmo, and Alipay, are already pretty effective at serving those use cases, especially within regions where they're in widespread use. One case that Interledger already serves much better than legacy payment systems is **micropayments**.
@@ -50,7 +50,6 @@ Decentralized apps, or DApps, are an emerging trend in finance technology that h
 ### Other Use Cases
 
 A variety of other use cases for Interledger are possible, and the viability of some use cases will grow as the ecosystems and tools become more standardized. From [trust-minimized cryptocurrency trading](https://github.com/Kava-Labs/ilp-sdk), to [Quake deathmatches](https://medium.com/interledger-blog/ildeathmatch-monetize-your-quake-games-788b0a7c624c), to pay-for-use APIs, to [crowd-funded power outlets](https://medium.com/@WietseWind/raspberry-pi-interledger-enabled-power-switch-d6966662b04b), there are lots of crazy ideas out there of what you can do when you're [programming with money](https://medium.com/interledger-blog/program-with-money-on-codius-5bec60386c5c).
-
 
 ## You Are Not the Product
 

@@ -1,13 +1,14 @@
 ---
 category: 2023
-date: "2023-02-01"
+date: '2023-02-01'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: Mandla Money
 
 This week on Developer Reflections, we’re proud to highlight [Mandla Money](https://mandla.money/web/), a digital wallet that allows users to receive, transact, and store value using digital assets via SMS, with no need for a smartphone or an internet connection.
@@ -24,8 +25,8 @@ In short, the way the Mandla SMS wallet works is akin to sending a payment using
 
 The XRP Ledger has proven reliability (8+ years of consistent performance with more than 63 million closed ledgers), fast transactions that settle in 3-5 seconds, low cost transaction fees, and native support for transaction tags. By making use of XRP Ledger destination tags, Mandla wallet users can send and receive XRP Ledger-based digital assets over SMS using their cell number or Mandla ID, which is also what makes the offline capability possible. It's important to note that the XRP Ledger itself does not have offline capabilities. The offline functionality is provided specifically by Mandla through its use of SMS technology.
 
-Further, the ability to issue assets and set up corresponding trust lines with ease makes integrating various XRP Ledger-issued stablecoins from different jurisdictions into the Mandla wallet easier and much more scalable. 
+Further, the ability to issue assets and set up corresponding trust lines with ease makes integrating various XRP Ledger-issued stablecoins from different jurisdictions into the Mandla wallet easier and much more scalable.
 
-To learn more, visit [Mandla Wallet](https://mandla.money/web/). 
+To learn more, visit [Mandla Wallet](https://mandla.money/web/).
 
 Want to be featured in Developer Reflections? Learn more and [submit your project](https://xrpl.org/contribute.html#xrpl-blog) today.

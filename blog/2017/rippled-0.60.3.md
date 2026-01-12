@@ -1,13 +1,14 @@
 ---
-date: "2017-05-11"
+date: '2017-05-11'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.60.3
 
 The `rippled` team has released `rippled` version 0.60.3, which helps to increase the stability of the overlay network under increased load. Ripple recommends server operators upgrade to `rippled` version 0.60.3 immediately. There are no new features in the 0.60.3 release.
@@ -46,13 +47,13 @@ Server overlay improvements [(#2110)](https://github.com/ripple/rippled/pull/211
 
 The Ripple technical operations team plans to deploy `rippled` version 0.60.3 to all `rippled` servers under its operational control, including private clusters and hubs, starting at 4:00 PM PDT on Thursday, 2017-05-11. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
-
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

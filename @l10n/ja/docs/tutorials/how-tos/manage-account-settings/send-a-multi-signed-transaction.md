@@ -2,10 +2,11 @@
 html: send-a-multi-signed-transaction.html
 parent: manage-account-settings.html
 seo:
-    description: マルチシグトランザクションを作成、署名、送信する。
+  description: マルチシグトランザクションを作成、署名、送信する。
 labels:
   - セキュリティ
 ---
+
 # マルチシグトランザクションの送信
 
 マルチシグトランザクションを作成、署名、送信する方法を以下で説明します。
@@ -15,7 +16,6 @@ labels:
 - 事前にアドレスの[マルチシグの設定](set-up-multi-signing.md)をする必要があります。
 
 - マルチシグは使用可能である必要があります。マルチシグは、XRP Ledgerコンセンサスプロトコルに対する[**Amendment**](../../../concepts/networks-and-servers/amendments.md)により2016/06/27以降利用可能になりました。
-
 
 ## 1.トランザクションの作成
 
@@ -43,13 +43,11 @@ labels:
 
 （このトランザクションは、残高上限額が100 USDのrEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQCから rHb9CJAWyB4rj91VRWn96DkukG4bwdtyThへの会計上の関係を作成します。）
 
-
 ## 2.1つの署名の取得
 
 SlignerListのメンバーの1人のシークレットキーとアドレスを指定した[sign_forメソッド][]を使用して、そのメンバーの署名を取得します。
 
 {% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
-
 
 ```
 $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2L..'s secret> '{
@@ -106,11 +104,10 @@ Connecting to 127.0.0.1:5005
 
 追加の署名は平行して取得するか、または順次取得することができます。　
 
-* 並行して取得する場合: トランザクションの元のJSONを指定した`sign_for`コマンドを使用します。各レスポンスの`Signers`配列に1つの署名が含まれています。
-* 順次取得する場合: 前の`sign_for`レスポンスの`tx_json`値を指定した`sign_for`コマンドを使用します。各レスポンスの既存の`Signers`配列に新しい署名が追加されます。
+- 並行して取得する場合: トランザクションの元のJSONを指定した`sign_for`コマンドを使用します。各レスポンスの`Signers`配列に1つの署名が含まれています。
+- 順次取得する場合: 前の`sign_for`レスポンスの`tx_json`値を指定した`sign_for`コマンドを使用します。各レスポンスの既存の`Signers`配列に新しい署名が追加されます。
 
 {% partial file="/@l10n/ja/docs/_snippets/secret-key-warning.md" /%}
-
 
 ```
 $ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v <rUpy..'s secret> '{
@@ -177,7 +174,6 @@ Connecting to 127.0.0.1:5005
 ```
 
 構成したSignerListによっては、必要なすべての当事者からの署名を取得するためにこのステップを複数回繰り返す必要があります。
-
 
 ## 4.署名の結合と送信
 
@@ -256,9 +252,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-
 レスポンスの`hash`値をメモしておきます。これにより、後でトランザクションの結果を確認できます。（この例ではハッシュは`BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6`です。）
-
 
 ## 5.レジャーの閉鎖
 
@@ -277,7 +271,6 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
-
 
 ## 6.トランザクション結果の確認
 

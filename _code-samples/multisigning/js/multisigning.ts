@@ -1,14 +1,8 @@
 /*
  * Create and submit a SignerListSet and multisign a transaction.
  * Reference: https://xrpl.org/multi-signing.html
-*/
-import {
-  multisign,
-  Client,
-  AccountSet,
-  convertStringToHex,
-  SignerListSet,
-} from 'xrpl'
+ */
+import { multisign, Client, AccountSet, convertStringToHex, SignerListSet } from 'xrpl'
 
 const client = new Client('wss://s.altnet.rippletest.net:51233')
 
@@ -62,7 +56,7 @@ async function multisigning(): Promise<void> {
   const { tx_blob: tx_blob2 } = wallet2.sign(accountSetTx, true)
   const multisignedTx = multisign([tx_blob1, tx_blob2])
 
-  console.log("Successfully multisigned the transaction")
+  console.log('Successfully multisigned the transaction')
   console.log(multisignedTx)
 
   const submitResponse = await client.submit(multisignedTx)
@@ -71,14 +65,10 @@ async function multisigning(): Promise<void> {
     console.log('The multisigned transaction was accepted by the ledger:')
     console.log(submitResponse)
     if (submitResponse.result.tx_json.Signers) {
-      console.log(
-        `The transaction had ${submitResponse.result.tx_json.Signers.length} signatures`,
-      )
+      console.log(`The transaction had ${submitResponse.result.tx_json.Signers.length} signatures`)
     }
   } else {
-    console.log(
-      "The multisigned transaction was rejected by rippled. Here's the response from rippled:",
-    )
+    console.log("The multisigned transaction was rejected by rippled. Here's the response from rippled:")
     console.log(submitResponse)
   }
 

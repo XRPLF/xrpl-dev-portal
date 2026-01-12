@@ -2,17 +2,17 @@
 html: consensus.html
 parent: concepts.html
 seo:
-    description: El consenso es cómo los nuevos bloques de transacciones son confirmados por la blockchain XRP Ledger.
+  description: El consenso es cómo los nuevos bloques de transacciones son confirmados por la blockchain XRP Ledger.
 labels:
   - Blockchain
 top_nav_grouping: Popular Pages
 ---
+
 # El protocolo de consenso
 
 Este tema explica cómo el XRP Ledger descentralizado confirma nuevas transacciones y nuevas versiones de ledgers, creando una blockchain.
 
 El consenso es la propiedad más importante de cualquier sistema de pagos descentralizado. En sistemas de pagos centralizados tradicionales, un administrador autorizado tiene la última palabra en cómo los pagos deben ocurrir. En sistemas descentralizados, por definición, no hay un administrador para hacerlo. En cambio, los sistemas descentralizados como el XRP Ledger definen un conjunto de reglas que todos los participantes siguen, así cada participante puede estar de acuerdo en la misma exacta serie de eventos y sus resultados en cualquier momento. A este conjunto de reglas les llamamos un _protocolo de consenso_.
-
 
 ## Propiedades del protocolo de consenso
 
@@ -32,7 +32,6 @@ Este protocolo sigue evolucionando, al igual que nuestro conocimiento de sus lí
 
 Los protocolos de consenso son una solución al _problema del doble gasto_: el desafío de prevenir a alguien de gastar con éxito dos veces el mismo dinero digital. La parte más dificil de este problema es poner las transacciones en orden: sin una autoridad central, puede ser dificil resolver disputas sobre qué transacciones van primero cuando dos o más transacciones mutuamente excluyentes se envían al mismo tiempo. Para un análisis del problema del doble gasto, cómo el Protocolo de Consenso XRP Ledger resuelve este problema, las concesiones y limitaciones involucradas, ver [Principios y reglas del consenso](consensus-principles-and-rules.md).
 
-
 ## Histórico del ledger
 
 El XRP Ledger procesa transacciones en bloques llamadados "versiones del ledger", o "ledgers" abreviado. Cada versión del ledger contiene tres partes:
@@ -41,12 +40,11 @@ El XRP Ledger procesa transacciones en bloques llamadados "versiones del ledger"
 - El conjunto de transacciones que han sido aplicadas en el ledger anterior para dar como resultado este.
 - Metadatos sobre la versión actual del ledger, como el índice del ledger, un [hash criptográfico](https://en.wikipedia.org/wiki/Cryptographic_hash_function) que identifica de forma única su contenido, e información sobre el ledger parental que se usó como base para construir este.
 
-[{% inline-svg file="/docs/img/anatomy-of-a-ledger-simplified.svg" /%}](/docs/img/anatomy-of-a-ledger-simplified.svg "Figura 1: Anatomía de una versión de un ledger, que incluye transacciones, estado, y metadatos")
+[{% inline-svg file="/docs/img/anatomy-of-a-ledger-simplified.svg" /%}](/docs/img/anatomy-of-a-ledger-simplified.svg 'Figura 1: Anatomía de una versión de un ledger, que incluye transacciones, estado, y metadatos')
 
 Cada versión del ledger está numerado por un _ledger index_ o índice ledger y se basa en una versión anterior del ledger cuyo índice es uno menos, y se remonta hasta el punto de partida llamado el _ledger génesis_ con un índice ledger 1.[¹](#footnote-1) Como Bitcoin y otras tecnologías blockchain, esto forma el histórico público de todas las transacciones y sus resultados. A diferencia de otras tecnologías blockchain, cada nuevo "bloque" en el XRP Ledger contiene la totalidad del estado actual, por lo que no tienes que recopilar toda el histórico completo para conocer qué esta pasando ahora.[²](#footnote-2)
 
 El objetivo principal del Protocolo de Consenso del XRP Ledger es acordar un conjunto de transacciones para añadir la nueva siguiente versión del ledger, aplicarlos en un orden bien definido, y después confirmar con todo el mundo para tener los mismos resultados. Cuando esto ocurre satisfactoriamente, una versión del ledger es considerado _validado_, y definitivo. A partir de aquí, el proceso continua construyendo la siguiente versión del ledger.
-
 
 ## Validación basada en la confianza
 
@@ -54,14 +52,13 @@ El principio básico detrás del mecanismo de consenso del XRP Ledger es que un 
 
 A medida que la red avanza, cada servidor escucha a sus validadores de confianza[³](#footnote-3); siempre y cuando un porcentaje lo suficientemente grande de ellos esté de acuerdo en que un conjunto de transacciones debería ocurrir y que un ledger dado es el resultado, el servidor declara un consenso. Si no están de acuerdo, los validadores modifican sus propuestas para que coincidan más con las de otros validadores en los que confían, repitiendo el proceso en varias rondas hasta alcanzar un consenso.
 
-[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg "Figura 2: Rondas de consenso. Los validadores revisan sus propuestas para coincidir con otros validadores en los que confían")
+[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg 'Figura 2: Rondas de consenso. Los validadores revisan sus propuestas para coincidir con otros validadores en los que confían')
 
-Esta bien si una pequeña porción de los validadores no funciona correctamente todo el tiempo. Siempre que menos del 20% de los  validadores de confianza fallen, el consenso puede continuar sin impedimentos; y confirman una transacción inválida requeriría que más del 80% de los validadodres de confianza se confabulasen. Si más del 20% o menos del 80% de los validadores confiables fallan, la red para de progresar.
+Esta bien si una pequeña porción de los validadores no funciona correctamente todo el tiempo. Siempre que menos del 20% de los validadores de confianza fallen, el consenso puede continuar sin impedimentos; y confirman una transacción inválida requeriría que más del 80% de los validadodres de confianza se confabulasen. Si más del 20% o menos del 80% de los validadores confiables fallan, la red para de progresar.
 
 Para una exploración de cómo el Protocolo de Consenso del XRP Ledger responde a varios desafíos, ataques, y casos de fallo, ver [Protecciones del Consenso contra Ataques y Modos de Fallo](consensus-protections.md).
 
-
-----
+---
 
 ## Pies de página
 

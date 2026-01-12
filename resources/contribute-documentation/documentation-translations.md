@@ -1,19 +1,19 @@
 ---
 seo:
-    description: Learn how to contribute and maintain translations of the documentation on this website.
+  description: Learn how to contribute and maintain translations of the documentation on this website.
 ---
+
 # Translations
 
 The XRP Ledger Dev Portal (XRPL.org) is mostly written in English, so the English version is generally the most up-to-date and accurate version. However, to broaden the reach of the XRP Ledger software and community, this repository also contains translated versions of the documentation. We strongly encourage members of the community who understand other languages to contribute translations of the dev portal contents in their native languages.
 
 The languages currently provided are:
 
-| Language          | Code | Status |
-|-------------------|------|--------|
-| English           | (N/A) | Primary language, with most work and updates being done in English first. |
-| Japanese (日本語)  | `ja` | Available on the site. Maintained on a best-effort basis, but sometimes not as up-to-date as the English version. |
-| Spanish (Español) | `es-ES` | Incomplete, not actively maintained. Not currently served on the production site. |
-
+| Language          | Code    | Status                                                                                                            |
+| ----------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| English           | (N/A)   | Primary language, with most work and updates being done in English first.                                         |
+| Japanese (日本語) | `ja`    | Available on the site. Maintained on a best-effort basis, but sometimes not as up-to-date as the English version. |
+| Spanish (Español) | `es-ES` | Incomplete, not actively maintained. Not currently served on the production site.                                 |
 
 ## Translations Folder
 
@@ -21,20 +21,17 @@ The `@l10n` folder of the repository contains the translated docs for the site, 
 
 If there is not a parallel version of a file in the translation folder, the English version displays when you navigate to that page on the translated version of the site.
 
-
 ## Strings File
 
 The `translations.yaml` file contains strings of text that are used in specially-stylized pages (with the `.page.tsx` extension) including dev tools and the "marketing" pages in the `about/` and `community/` sections of the site, and in some cases the `sidebars.yaml` file too.
 
 Preferably, strings should use a key such as `topnav.docs.tutorials` to uniquely indicate the text being translated. Strings can also be matched by exactly the English text being translated, but matching by the English text is not ideal because the same text may need to be translated differently based on context, or different segments of text may need to be translated non-exactly to display correctly. The original files should be updated to use translation keys as needed.
 
-
 ## Moving or Renaming Files
 
 When files are moved or renamed, the translated files also need to be moved or renamed the same way.
 
 When you add redirects to the `redirects.yaml` file at the repository top, also add redirects for each translation (these are grouped later in the file).
-
 
 ## Where to Start
 

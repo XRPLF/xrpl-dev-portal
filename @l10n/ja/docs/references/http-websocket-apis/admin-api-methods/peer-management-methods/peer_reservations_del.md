@@ -2,10 +2,11 @@
 html: peer_reservations_del.html
 parent: peer-management-methods.html
 seo:
-    description: 特定のピアサーバ用の予約済みスロットを削除します。
+  description: 特定のピアサーバ用の予約済みスロットを削除します。
 labels:
   - コアサーバ
 ---
+
 # peer_reservations_del
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
@@ -23,41 +24,48 @@ _{% code-page-name /%}メソッドは、権限のないユーザは実行でき�
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-    "id": "peer_reservations_del_example_1",
-    "command": "{% $frontmatter.seo.title %}",
-    "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+  "id": "peer_reservations_del_example_1",
+  "command": "{% $frontmatter.seo.title %}",
+  "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "{% $frontmatter.seo.title %}",
-    "params": [{
+  "method": "{% $frontmatter.seo.title %}",
+  "params": [
+    {
       "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
-    }]
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 #Syntax: {% $frontmatter.seo.title %} <public_key>
 rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
-| `Field`     | 型                        | 説明                               |
-|:------------|:--------------------------|:-----------------------------------|
+| `Field`      | 型     | 説明                                                                       |
+| :----------- | :----- | :------------------------------------------------------------------------- |
 | `public_key` | 文字列 | 削除する[ピアリザベーション][]の[ノード公開鍵][]（[base58][]フォーマット） |
-
 
 ### レスポンスのフォーマット
 
@@ -66,6 +74,7 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "peer_reservations_del_example_1",
@@ -79,23 +88,27 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
   "type": "response"
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-   "result" : {
-      "previous" : {
-         "description" : "Ripple s1 server 'WOOL'",
-         "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
-      },
-      "status" : "success"
-   }
+  "result": {
+    "previous": {
+      "description": "Ripple s1 server 'WOOL'",
+      "node": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+    },
+    "status": "success"
+  }
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -110,14 +123,15 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
-| `Field` | 型     | 説明                                                      |
-|:--------|:-------|:----------------------------------------------------------|
+| `Field`    | 型           | 説明                                                                                                                                                                                                        |
+| :--------- | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `previous` | オブジェクト | _（省略される場合があります）_ 削除する前のピアリザベーションの最後のステータスを伴った、**ピアリザベーションオブジェクト**。このフィールドは、ピアリザベーションが正常に削除された場合、必ず表示されます。 |
 
 {% admonition type="info" name="注記" %}指定された予約が存在しなかった場合は、このコマンドによって、成功を示す空の結果オブジェクトが返されます。この場合、`previous`フィールドは省略されます。{% /admonition %}
@@ -127,7 +141,6 @@ Connecting to 127.0.0.1:5005
 `previous`フィールドが指定されている場合は、このピアリザベーションの以前のステータスが次のフィールドとともに表示されます。
 
 {% partial file="/@l10n/ja/docs/_snippets/peer_reservation_object.md" /%}
-
 
 ### 考えられるエラー
 

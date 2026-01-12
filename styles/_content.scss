@@ -1,6 +1,6 @@
 /* Content text styling (applies mostly to Markdown-generated content)------- */
 
-[data-component-name="Markdown/Markdown"] article {
+[data-component-name='Markdown/Markdown'] article {
   padding-bottom: 50px;
 
   p code,
@@ -26,7 +26,8 @@
     }
   }
 
-  h2, h2.md {
+  h2,
+  h2.md {
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
     font-size: 2.5rem;
@@ -34,7 +35,8 @@
     line-height: 1.2;
   }
 
-  h3, h3.md {
+  h3,
+  h3.md {
     font-size: 2.125rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -64,7 +66,9 @@
 
   /* Some list items contain <p> tags, some don't. These styles make sure both
    kinds are spaced consistently. */
-  > ul, > ol, .children-display {
+  > ul,
+  > ol,
+  .children-display {
     li {
       margin: 6px;
       margin-top: 24px;
@@ -76,13 +80,13 @@
       margin: 0;
     }
   }
-  [data-component-name="Markdoc/Tabs/Tabs"] li {
+  [data-component-name='Markdoc/Tabs/Tabs'] li {
     margin: 0;
   }
 
   // "Source" links float right
-  a[title="Source"],
-  a[title="ソース"] {
+  a[title='Source'],
+  a[title='ソース'] {
     float: right;
     padding-left: 20px;
   }
@@ -122,7 +126,12 @@
   font-size: 1.25rem;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   &:hover .hover_anchor {
     visibility: visible;
     text-decoration: none;

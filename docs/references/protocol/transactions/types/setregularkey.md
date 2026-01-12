@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Add, remove, or modify an account's regular key pair.
+  description: Add, remove, or modify an account's regular key pair.
 labels:
-    - Security
+  - Security
 ---
+
 # SetRegularKey
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetRegularKey.cpp "Source")
@@ -16,11 +17,11 @@ You can protect your account by assigning a regular key pair to it and using it 
 
 ```json
 {
-    "Flags": 0,
-    "TransactionType": "SetRegularKey",
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "Fee": "12",
-    "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
+  "Flags": 0,
+  "TransactionType": "SetRegularKey",
+  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+  "Fee": "12",
+  "RegularKey": "rAR8rR8sUkBoCZFawhkWzY4Y5YoyuznwD"
 }
 ```
 
@@ -28,8 +29,8 @@ You can protect your account by assigning a regular key pair to it and using it 
 
 {% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
-| Field        | JSON Type | [Internal Type][] | Description                   |
-|:-------------|:----------|:------------------|:------------------------------|
+| Field        | JSON Type | [Internal Type][] | Description                                                                                                                                                                                                                           |
+| :----------- | :-------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `RegularKey` | String    | AccountID         | _(Optional)_ A base-58-encoded [Address][] that indicates the regular key pair to be assigned to the account. If omitted, removes any existing regular key pair from the account. Must not match the master key pair for the address. |
 
 ## See Also

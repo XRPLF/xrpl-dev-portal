@@ -1,14 +1,15 @@
 ---
 category: 2023
-date: "2023-03-14"
+date: '2023-03-14'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
-    - Amendments
+  - rippled Release Notes
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.10.0
 
 Version 1.10.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release introduces six new amendments and cleans up code to improve performance.
@@ -23,15 +24,14 @@ Six new amendments are now open for voting according to the XRP Ledger's [amendm
 
 If you operate an XRP Ledger server, upgrade to version 1.10.0 by March 28 to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
-
 ## Install / Upgrade
 
 On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                                | SHA-256                                                            |
+| :--------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.10.0-1.el7.x86_64.rpm) | `568ee33b4560be0505a0be0966f9ca1f477444a60c2632eff8ab71864c6b020b` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.10.0-1_amd64.deb) | `5015efad92743a57cfdba573cf968b740b2418360034c6c6e8d3a514d60b6a89` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.10.0-1_amd64.deb)  | `5015efad92743a57cfdba573cf968b740b2418360034c6c6e8d3a514d60b6a89` |
 
 For other platforms, please [build from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md). The most recent commit in the git log should be the change setting the version:
 
@@ -41,10 +41,9 @@ Author: Elliot Lee <github.public@intelliot.com>
 Date:   Tue Mar 14 09:30:22 2023 -0700
 
     Set version to 1.10.0
-    
+
     Merge #4451
 ```
-
 
 ## New Amendments
 
@@ -52,21 +51,19 @@ Date:   Tue Mar 14 09:30:22 2023 -0700
 
 - **`featureDisallowIncoming`**: Enables an account to block incoming checks, payment channels, NFToken offers, and trust lines. [#4336](https://github.com/XRPLF/rippled/pull/4336)
 
-- **`featureXRPFees`**: Simplifies transaction cost calculations to use XRP directly, rather than calculating indirectly in "fee units" and translating the results to XRP. Updates all instances of "fee units" in the protocol and ledger data to be drops of XRP instead. [#4247](https://github.com/XRPLF/rippled/pull/4247) 
+- **`featureXRPFees`**: Simplifies transaction cost calculations to use XRP directly, rather than calculating indirectly in "fee units" and translating the results to XRP. Updates all instances of "fee units" in the protocol and ledger data to be drops of XRP instead. [#4247](https://github.com/XRPLF/rippled/pull/4247)
 
 - **`fixUniversalNumber`**: Simplifies and unifies the code for decimal floating point math. In some cases, this provides slightly better accuracy than the previous code, resulting in calculations whose least significant digits are different than when calculated with the previous code. The different results may cause other edge case differences where precise calculations are used, such as ranking of offers or processing of payments that use several different paths. [#4192](https://github.com/XRPLF/rippled/pull/4192)
 
 - **`fixNonFungibleTokensV1_2`**: This amendment is a combination of NFToken fixes. [#4417](https://github.com/XRPLF/rippled/pull/4417)
-    - Fixes unburnable NFTokens when it has over 500 offers. [#4346](https://github.com/XRPLF/rippled/pull/4346)
-    - Fixes 3 NFToken offer acceptance issues. [#4380](https://github.com/XRPLF/rippled/pull/4380)
-    - Prevents brokered sales of NFTokens to owners. [#4403](https://github.com/XRPLF/rippled/pull/4403)
-    - Only allows the destination to settle NFToken offers through brokerage. [#4399](https://github.com/XRPLF/rippled/pull/4399)
+  - Fixes unburnable NFTokens when it has over 500 offers. [#4346](https://github.com/XRPLF/rippled/pull/4346)
+  - Fixes 3 NFToken offer acceptance issues. [#4380](https://github.com/XRPLF/rippled/pull/4380)
+  - Prevents brokered sales of NFTokens to owners. [#4403](https://github.com/XRPLF/rippled/pull/4403)
+  - Only allows the destination to settle NFToken offers through brokerage. [#4399](https://github.com/XRPLF/rippled/pull/4399)
 
 - **`fixTrustLinesToSelf`**: Trust lines must be between two different accounts, but two exceptions exist because of a bug that briefly existed. This amendment removes those trust lines. [69bb2be](https://github.com/XRPLF/rippled/pull/4270/commits/69bb2be446e3cc24c694c0835b48bd2ecd3d119e)
 
-
 ## Changelog
-
 
 ### New Features and Improvements
 
@@ -92,7 +89,6 @@ Date:   Tue Mar 14 09:30:22 2023 -0700
 
 - **Improve self-signed certificate generation**: Improved speed and security of TLS certificate generation on fresh startup. [0ecfc7c](https://github.com/XRPLF/rippled/pull/4270/commits/0ecfc7cb1a958b731e5f184876ea89ae2d4214ee)
 
-
 ### Bug Fixes
 
 - **Update command-line usage help message**: Added `manifest` and `validator_info` to the `rippled` CLI usage statement. [b88ed5a](https://github.com/XRPLF/rippled/pull/4270/commits/b88ed5a8ec2a0735031ca23dc6569d54787dc2f2)
@@ -110,7 +106,6 @@ Date:   Tue Mar 14 09:30:22 2023 -0700
 - **Don't try to read SLE with key 0 from the ledger**: Fixed the `preclaim` function to check for 0 in `NFTokenSellOffer` and `NFTokenBuyOffer` before calling `Ledger::read`. This issue only affected debug builds. [#4351](https://github.com/XRPLF/rippled/pull/4351)
 
 - **Update broken link to hosted Doxygen content**: [5e1cb09](https://github.com/XRPLF/rippled/pull/4270/commits/5e1cb09b8892e650f6c34a66521b6b1673bd6b65)
-
 
 ### Code Cleanup
 
@@ -140,9 +135,7 @@ Date:   Tue Mar 14 09:30:22 2023 -0700
 
 - **Improve move semantics in Expected**: [#4326](https://github.com/XRPLF/rippled/pull/4326)
 
-
 [Full Commit Log](https://github.com/XRPLF/rippled/compare/1.9.4...1.10.0)
-
 
 ### GitHub
 

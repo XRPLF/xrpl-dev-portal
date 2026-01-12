@@ -2,12 +2,13 @@
 html: data-api.html
 parent: references.html
 seo:
-    description: (DEPRECATED) RESTful interface to XRP Ledger analytics and historical data.
+  description: (DEPRECATED) RESTful interface to XRP Ledger analytics and historical data.
 status: removed
 nav_omit: true
-sidebar: 
-    path: ../../sidebars.yaml
+sidebar:
+  path: ../../sidebars.yaml
 ---
+
 # Ripple Data API v2
 
 {% admonition type="danger" name="Warning" %}The Ripple Data API v2 is deprecated with no ongoing support. Please use the native [XRP Ledger HTTP APIs](http-websocket-apis/index.md) instead.{% /admonition %}

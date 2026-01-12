@@ -12,17 +12,17 @@ let my_seq = 21404872
 
 // Provide *all* required fields before signing a transaction
 const txJSON = {
-  "Account": my_wallet.address,
-  "TransactionType":"Payment",
-  "Destination":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "DeliverMax":"13000000",
-  "Flags":2147483648,
-  "LastLedgerSequence":7835923, // Optional, but recommended.
-  "Fee":"13",
-  "Sequence": my_seq
+  Account: my_wallet.address,
+  TransactionType: 'Payment',
+  Destination: 'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn',
+  DeliverMax: '13000000',
+  Flags: 2147483648,
+  LastLedgerSequence: 7835923, // Optional, but recommended.
+  Fee: '13',
+  Sequence: my_seq,
 }
 
 const signed = my_wallet.sign(txJSON)
 
-console.log("tx_blob is:", signed.tx_blob)
-console.log("tx hash is:", signed.tx_json.hash)
+console.log('tx_blob is:', signed.tx_blob)
+console.log('tx hash is:', signed.tx_json.hash)

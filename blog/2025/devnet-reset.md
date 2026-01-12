@@ -1,15 +1,16 @@
 ---
 category: 2025
-date: "2025-01-24"
+date: '2025-01-24'
 template: '../../@theme/templates/blogpost'
 seo:
-    description: Devnet is scheduled to reset on Monday, February 3, 2025 due to Clio databases nearing capacity. Learn more.
+  description: Devnet is scheduled to reset on Monday, February 3, 2025 due to Clio databases nearing capacity. Learn more.
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Upcoming Devnet Reset
 
 Devnet is scheduled for a reset on **Monday, February 3, 2025**. Clio server databases on the network are nearing storage capacity and need to be cleared.
@@ -60,8 +61,8 @@ EDBB54B0D9AEE071BB37784AF5A9E7CC49AC7A0EFCE868C54532BCB966B9CFC13B
 
 We’re exploring long-term solutions to enhance network resilience and ensure you’re well-prepared, including:
 
-* Optimizing resource allocation to manage devnet resources to prevent overuse.
-* Implementing additional safeguards and resource management strategies.
-* Establishing a regular reset schedule to provide consistency and predictability for developers by setting a clear timeline for devnet maintenance.
+- Optimizing resource allocation to manage devnet resources to prevent overuse.
+- Implementing additional safeguards and resource management strategies.
+- Establishing a regular reset schedule to provide consistency and predictability for developers by setting a clear timeline for devnet maintenance.
 
-We’d like to hear from you!  Join the [XRPL Dev Discord](https://discord.gg/sfX3ERAMjH) to share your feedback. Your input and feedback on what changes would be beneficial is invaluable to improve devnet management and better support the community's needs.
+We’d like to hear from you! Join the [XRPL Dev Discord](https://discord.gg/sfX3ERAMjH) to share your feedback. Your input and feedback on what changes would be beneficial is invaluable to improve devnet management and better support the community's needs.

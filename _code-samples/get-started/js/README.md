@@ -24,7 +24,7 @@ Creating a new wallet and funding it with Testnet XRP...
 Wallet: rMnXR9p2sZT9iZ6ew3iEqvBMyPts1ADc4i
 Balance: 10
 
-Account Testnet Explorer URL: 
+Account Testnet Explorer URL:
 https://testnet.xrpl.org/accounts/rMnXR9p2sZT9iZ6ew3iEqvBMyPts1ADc4i
 
 Getting account info...

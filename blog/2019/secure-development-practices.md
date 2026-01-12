@@ -1,15 +1,16 @@
 ---
 labels:
-    - Features
-    - Security
+  - Features
+  - Security
 category: 2019
-date: "2019-04-05"
+date: '2019-04-05'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 author: Nik Bougalis
 ---
+
 # Protecting the Ledger: Secure Development Practices
 
 The primary mission of the C++ team at Ripple is to contribute to `rippled`, the reference implementation of the protocol that underpins the XRP Ledger. The codebase—which is now over 6 years old—has contributions from over 100 developers from all over the world.

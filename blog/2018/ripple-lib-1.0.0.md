@@ -1,13 +1,14 @@
 ---
-date: "2018-09-10"
+date: '2018-09-10'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # ripple-lib version 1.0.0
 
 We are pleased to announce the release of **[ripple-lib version 1.0.0](https://github.com/ripple/ripple-lib/releases/tag/1.0.0)**!
@@ -18,41 +19,38 @@ When using this version with `rippled` for online functionality, we recommend us
 
 Below is a summary of the changes since ripple-lib version 0.22.0 (the previous non-beta version).
 
-
 ## Release Notes
 
 ### New Features
 
-* [Add `request()`, `hasNextPage()`, and `requestNextPage()` for accessing `rippled` APIs](https://github.com/ripple/ripple-lib/blob/09541dae86bc859bf5928ac65b2645dfaaf7f8b1/docs/index.md#rippled-apis).
-* Add `prepareTransaction()` for preparing raw `txJSON`.
-* XRP amounts can be specified in drops. Also, `xrpToDrops()` and `dropsToXrp()` are available to make conversions.
-* `getTransaction()` responses can include a new `channelChanges` property that describes the details of a payment channel.
+- [Add `request()`, `hasNextPage()`, and `requestNextPage()` for accessing `rippled` APIs](https://github.com/ripple/ripple-lib/blob/09541dae86bc859bf5928ac65b2645dfaaf7f8b1/docs/index.md#rippled-apis).
+- Add `prepareTransaction()` for preparing raw `txJSON`.
+- XRP amounts can be specified in drops. Also, `xrpToDrops()` and `dropsToXrp()` are available to make conversions.
+- `getTransaction()` responses can include a new `channelChanges` property that describes the details of a payment channel.
 
 ### Data Validation and Errors
 
-* [Amounts in drops and XRP are checked for validity](https://github.com/ripple/ripple-lib/blob/develop/HISTORY.md#100-beta1-2018-05-24).
-* [A maximum fee is now imposed](https://github.com/ripple/ripple-lib/blob/develop/HISTORY.md#100-beta2-2018-06-08). Exceeding it causes a `ValidationError` to be thrown.
-* Errors are improved and more data validation was added.
-* Bug fix: `getPaths` now filters paths correctly and works correctly when the destination currency is XRP.
-
+- [Amounts in drops and XRP are checked for validity](https://github.com/ripple/ripple-lib/blob/develop/HISTORY.md#100-beta1-2018-05-24).
+- [A maximum fee is now imposed](https://github.com/ripple/ripple-lib/blob/develop/HISTORY.md#100-beta2-2018-06-08). Exceeding it causes a `ValidationError` to be thrown.
+- Errors are improved and more data validation was added.
+- Bug fix: `getPaths` now filters paths correctly and works correctly when the destination currency is XRP.
 
 ### Breaking Changes
 
 The following changes were introduced in 1.0.0.
 
-* `getTransaction()` and `getTransactions()`
-    * The `specification.destination.amount` field has been removed from the parsed transaction response.
-    * To determine the amount that a transaction delivered, use `outcome.deliveredAmount`.
-    * If you require the provisional requested `Amount` from the original transaction:
-        * Use `getTransaction()`'s `includeRawTransaction` option, or
-        * Use `getTransactions()`'s `includeRawTransactions` option, or
-        * Use the `rippled` APIs directly with `request()`. For example, call the API methods `tx`, `account_tx`, etc.
-* `getLedger()` response object
-    * The `rawTransactions` field has been removed (for consistency with `getTransaction()` and `getTransactions()`).
-    * Instead, within each transaction, use the new `rawTransaction` JSON string.
-    * The `metaData` field has been renamed to `meta` for consistency with `rippled`'s `tx` method.
-    * `ledger_index` has been added to each raw transaction.
-
+- `getTransaction()` and `getTransactions()`
+  - The `specification.destination.amount` field has been removed from the parsed transaction response.
+  - To determine the amount that a transaction delivered, use `outcome.deliveredAmount`.
+  - If you require the provisional requested `Amount` from the original transaction:
+    - Use `getTransaction()`'s `includeRawTransaction` option, or
+    - Use `getTransactions()`'s `includeRawTransactions` option, or
+    - Use the `rippled` APIs directly with `request()`. For example, call the API methods `tx`, `account_tx`, etc.
+- `getLedger()` response object
+  - The `rawTransactions` field has been removed (for consistency with `getTransaction()` and `getTransactions()`).
+  - Instead, within each transaction, use the new `rawTransaction` JSON string.
+  - The `metaData` field has been renamed to `meta` for consistency with `rippled`'s `tx` method.
+  - `ledger_index` has been added to each raw transaction.
 
 ## Learn, ask questions, and discuss
 
@@ -60,10 +58,10 @@ ripple-lib Documentation is available in the XRP Ledger Dev Portal.
 
 Other resources:
 
-* [Full Release History](https://github.com/ripple/ripple-lib/blob/develop/HISTORY.md)
-* [GitHub Issues](https://github.com/ripple/ripple-lib/issues)
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat Forum _(Shut down. Formerly `www.xrpchat.com`)_
+- [Full Release History](https://github.com/ripple/ripple-lib/blob/develop/HISTORY.md)
+- [GitHub Issues](https://github.com/ripple/ripple-lib/issues)
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat Forum _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Other Information
 

@@ -1,6 +1,5 @@
 /* Landing Pages ------------------------------------------------------------ */
 .landing {
-
   .container-fluid.section-hero {
     padding: 48px 0;
   }
@@ -29,7 +28,7 @@
   }
 
   .level-1,
-  .level-2{
+  .level-2 {
     margin-top: 0;
   }
 
@@ -45,7 +44,8 @@
     line-height: 1.71em;
   }
 
-  .doc-index { // "All Pages" listings
+  .doc-index {
+    // "All Pages" listings
     .level-1 {
       list-style-type: disc;
       margin-left: 1rem;
@@ -113,7 +113,6 @@
   //   border-top: none;
   // }
 
-
   #main_content_wrapper {
     border-bottom: none;
     // Offset for top nav bar
@@ -141,7 +140,7 @@
       }
 
       &:not(.external-link)::after {
-        content: " ";
+        content: ' ';
         background-image: url(../img/icons/arrow-right-purple.svg);
         background-repeat: no-repeat;
         background-position: center;
@@ -150,23 +149,23 @@
         right: 0;
         width: 1.5rem;
         height: 1.5rem;
-        transition: all .2s ease;
+        transition: all 0.2s ease;
       }
       &:not(.external-link):hover::after {
         animation: arrowDance2 1.2s infinite;
       }
 
       &.external-link::after {
-        content: " ";
+        content: ' ';
         background-image: url(../img/icons/arrow-up-right.svg);
         background-repeat: no-repeat;
         position: absolute;
         background-position: center;
-        background-size: .75rem;
+        background-size: 0.75rem;
         right: 7px;
         width: 1.5rem;
         height: 1.5rem;
-        transition: all .2s ease;
+        transition: all 0.2s ease;
       }
 
       &.external-link:hover::after {

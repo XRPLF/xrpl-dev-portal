@@ -2,10 +2,11 @@
 html: authorized-minter.html
 parent: nft-mkt-overview.html
 seo:
-    description: Minting and selling NFTs for another account.
+  description: Minting and selling NFTs for another account.
 labels:
   - Tokenization
 ---
+
 # Authorized Minter
 
 _As an authorized minter, I want to mint tokens for a token issuer at an agreed upon rate and sell the tokens at a profit, with royalties returning to the issuer._
@@ -14,7 +15,7 @@ You can act as an authorized minter for token issuers. When you do this, you own
 
 You can learn more in the tutorial [Assign an Authorized Minter](../../tutorials/javascript/nfts/assign-an-authorized-minter.md).
 
-[![Authorized Minter Flow](/docs/img/nft-mkt-auth-minter.png "Authorized Minter Flow")](/docs/img/nft-mkt-auth-minter.png)
+[![Authorized Minter Flow](/docs/img/nft-mkt-auth-minter.png 'Authorized Minter Flow')](/docs/img/nft-mkt-auth-minter.png)
 
 ## Set up a rippled instance
 
@@ -40,10 +41,10 @@ The NFToken URL is a link to the location where the content of the NFT is stored
 
 Considerations that might be most interesting to you:
 
-* [Minting NFTs into Collections](../../concepts/tokens/nfts/collections.md)
-Use the TokenTaxon field to gather a set of NFTs centered around a specific theme or purpose.
-* [Guaranteeing a Fixed Supply of NFTs](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)
-You can assure scarcity of NFTs you create by creating them with what might be characterized as a “burner” account that you use to mint a set number of NFTs for another account, then delete the account you used to mint the NFTs. See [Guaranteeing a Fixed Supply of NFTs](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md).
+- [Minting NFTs into Collections](../../concepts/tokens/nfts/collections.md)
+  Use the TokenTaxon field to gather a set of NFTs centered around a specific theme or purpose.
+- [Guaranteeing a Fixed Supply of NFTs](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)
+  You can assure scarcity of NFTs you create by creating them with what might be characterized as a “burner” account that you use to mint a set number of NFTs for another account, then delete the account you used to mint the NFTs. See [Guaranteeing a Fixed Supply of NFTs](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md).
 
 ## Transferring NFTs
 

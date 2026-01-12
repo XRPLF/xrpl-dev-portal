@@ -2,14 +2,14 @@
 html: non-fungible-tokens.html
 parent: tokens.html
 seo:
-    description: Introduction to XRPL NFTs.
+  description: Introduction to XRPL NFTs.
 labels:
- - Non-fungible Tokens, NFTs
+  - Non-fungible Tokens, NFTs
 ---
 
 # Non-Fungible Tokens
 
-The XRP Ledger natively supports non-fungible tokens (NFTs, or “nifties” in the vernacular).  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
+The XRP Ledger natively supports non-fungible tokens (NFTs, or “nifties” in the vernacular). Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.
 
 {% amendment-disclaimer name="NonFungibleTokensV1_1" /%}
 
@@ -37,7 +37,7 @@ Anyone can create a new NFT using the [NFTokenMint transaction][]. The NFT lives
 
 You can destroy an NFT you own using the [NFTokenBurn transaction][]. If the issuer minted the token with the `tfBurnable` flag enabled, the issuer can also burn the token, regardless of the current owner. (This could be useful, for example, for a token that represents a ticket to an event that is used up at some point.)
 
-![The NFT Lifecycle](/docs/img/nft-lifecycle.png "NFT Lifecycle Image")
+![The NFT Lifecycle](/docs/img/nft-lifecycle.png 'NFT Lifecycle Image')
 
 For more info about transferring NFTs, see [Trading NFTs on the XRP Ledger](trading.md).
 

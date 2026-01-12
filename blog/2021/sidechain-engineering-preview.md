@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-09-30"
+  editPage:
+    hide: true
+date: '2021-09-30'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Development
+  - Development
 ---
+
 # RippleX Releases Engineering Preview of Proposed Federated Sidechains System
 
 Earlier this year, Ripple [shared](https://ripple.com/insights/a-vision-for-federated-sidechains-xrp-ledger/) a vision for Federated Sidechains that can complement the XRP Ledger (XRPL) Mainnet. Federated Sidechains support the developer community by unlocking new capabilities related to smart contracts and DeFi, interoperability, NFTs and more.
@@ -18,14 +19,14 @@ At a high level, each sidechain acts as its own blockchain, while federation ena
 
 Federated Sidechains create exciting new opportunities for developers. They expand the scope for developers to customize the core, proven XRPL technology to the needs of a specific use case or project. Examples of the kinds of customization enabled include:
 
-* Innovative design characteristics that can be tuned to specific use cases like tokenization, DeFi, or payments 
-* Flexibility to make permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet DEX
-* Choice in validators and flexibility of system rules (e.g. optional transaction fees and reserve requirements)
-* Opportunity to temporarily manage a sidechain and shut it down after it has served its purpose 
+- Innovative design characteristics that can be tuned to specific use cases like tokenization, DeFi, or payments
+- Flexibility to make permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet DEX
+- Choice in validators and flexibility of system rules (e.g. optional transaction fees and reserve requirements)
+- Opportunity to temporarily manage a sidechain and shut it down after it has served its purpose
 
-Note that successful new sidechain features may even eventually be ported to the XRPL Mainnet. 
+Note that successful new sidechain features may even eventually be ported to the XRPL Mainnet.
 
-Federated Sidechains give developers an opportunity to launch new features and innovative applications built on foundational XRP Ledger technology, like a smart sidechain with [Hooks](https://hooks-testnet.xrpl-labs.com/) enabled. Developers can also create private or public sidechains, with public sidechains available for the community to leverage for various use cases. 
+Federated Sidechains give developers an opportunity to launch new features and innovative applications built on foundational XRP Ledger technology, like a smart sidechain with [Hooks](https://hooks-testnet.xrpl-labs.com/) enabled. Developers can also create private or public sidechains, with public sidechains available for the community to leverage for various use cases.
 
 Ripple itself will be looking to leverage the flexibility and customizability that Federated Sidechains afford in its own [CBDC efforts](https://ripple.com/insights/ripple-pilots-a-private-ledger-for-central-banks-launching-cbdcs/), making it possible for private CBDC ledgers to easily and seamlessly interconnect.
 

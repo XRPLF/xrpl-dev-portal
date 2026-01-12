@@ -2,19 +2,20 @@
 html: xrp-ledger-toml.html
 parent: references.html
 seo:
-    description: Provide machine-readable information about yourself to other XRP Ledger users. #TODO:translate
+  description: Provide machine-readable information about yourself to other XRP Ledger users. #TODO:translate
 curated_anchors:
-    - name: Serving the File
-      anchor: "#serving-the-file"
-    - name: Contents
-      anchor: "#contents"
-    - name: CORS Setup
-      anchor: "#cors-setup"
-    - name: Domain Verification
-      anchor: "#domain-verification"
-    - name: Account Verification
-      anchor: "#account-verification"
+  - name: Serving the File
+    anchor: '#serving-the-file'
+  - name: Contents
+    anchor: '#contents'
+  - name: CORS Setup
+    anchor: '#cors-setup'
+  - name: Domain Verification
+    anchor: '#domain-verification'
+  - name: Account Verification
+    anchor: '#account-verification'
 ---
+
 # xrp-ledger.toml File
 
 If you run an XRP Ledger validator or use the XRP Ledger for your business, you can provide information about your usage of the XRP Ledger to the world in a machine-readable **`xrp-ledger.toml`** file. Scripts and applications can use the information contained in your `xrp-ledger.toml` file to better understand and represent you in the XRP Ledger. In some cases, humans may also find it useful to read the same file.
@@ -46,7 +47,6 @@ The contents MUST be served through the **HTTPS protocol** for security, using a
 
 The plain HTTP protocol is vulnerable to man-in-the-middle attacks; for example, some internet services have been known to modify contents retrieved over plain HTTP to inject their own advertisements. To prevent similar techniques from misrepresenting the contents of the `xrp-ledger.toml` file and potentially causing scripts to behave incorrectly or deceptively, one SHOULD NOT trust the contents of an `xrp-ledger.toml` file that is served over plain HTTP.
 
-
 ### Domain
 
 The domain where you serve the `xrp-ledger.toml` file is a statement of ownership. The file's contents are not as useful or trustworthy when they stand on their own. For practical reasons, it may be undesirable to serve the file from your main domain, so you MAY use any number of subdomains. When setting the [`Domain` field of XRP Ledger accounts](protocol/transactions/types/accountset.md#domain), you MUST provide the full domain, including all subdomains you used. See [Account Verification](#account-verification) for details.
@@ -55,13 +55,11 @@ You MAY serve the same file from multiple subdomains, if desired. For example, i
 
 It is RECOMMENDED that you serve a human-readable website from the same domain as the `xrp-ledger.toml` file. The website can provide further information about your identity and how you use the XRP Ledger, which helps to build trust toward you and your services.
 
-
 ### Path
 
 In compliance with [RFC5785](https://tools.ietf.org/html/rfc5785), the path MUST start with `/.well-known/`. The file MUST be available at the path `/.well-known/xrp-ledger.toml` exactly (case-sensitive, all lower case). <!-- SPELLING_IGNORE: rfc5785 -->
 
 You MAY, if desired, serve the same file from paths with different capitalization, such as `/.well-known/XRP-Ledger.TOML`. You MUST NOT serve different contents depending on how the path is capitalized.
-
 
 ### Headers
 
@@ -86,8 +84,6 @@ The server MAY use other standard HTTP headers as desired, including ones for co
 ### Generation
 
 The `xrp-ledger.toml` file MAY be an actual file stored on the web server, or it MAY be generated on-demand by the web server. The latter case may be preferable depending on the contents provided in the file or the configuration of your website.
-
-
 
 ## Contents
 
@@ -165,11 +161,11 @@ symbol = "😆" # In practical situations, it may be unwise to use emoji
 
 ### Metadata
 
-The metadata section provides information about the `xrp-ledger.toml` file itself. If present, this section MUST BE presented as a single table, headed by the line  `[METADATA]`, using _single_ square brackets. (Most other sections of the `xrp-ledger.toml` file use double brackets, for arrays of information, but there is at most one `[METADATA]` section.) You MAY provide any of the following fields (case-sensitive):
+The metadata section provides information about the `xrp-ledger.toml` file itself. If present, this section MUST BE presented as a single table, headed by the line `[METADATA]`, using _single_ square brackets. (Most other sections of the `xrp-ledger.toml` file use double brackets, for arrays of information, but there is at most one `[METADATA]` section.) You MAY provide any of the following fields (case-sensitive):
 
-| Field      | Type             | Description                                  |
-|:-----------|:-----------------|:---------------------------------------------|
-| `modified` | Offset Date-Time | The time the `xrp-leder.toml` file was last modified.    |
+| Field      | Type             | Description                                                                                                      |
+| :--------- | :--------------- | :--------------------------------------------------------------------------------------------------------------- |
+| `modified` | Offset Date-Time | The time the `xrp-leder.toml` file was last modified.                                                            |
 | `expires`  | Offset Date-Time | If the current time is equal or greater than this time, the `xrp-ledger.toml` file should be considered expired. |
 
 The specification does not define a `domain` field; the field should be determined from the site serving the file.
@@ -184,68 +180,63 @@ The _first_ `[[VALIDATORS]]` entry in the file is treated as your primary valida
 
 For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 
-| Field        | Type   | Description                                          |
-|:-------------|:-------|:-----------------------------------------------------|
-| `public_key` | String | The master public key of your primary validator, encoded in the XRP Ledger's base58 format (typically, this starts with `n`). |
-| `attestation`| String | A signed message, in hexadecimal, indicating that the same entity runs this validator and the domain serving this TOML file. For more information, see [Domain Verification](xrp-ledger-toml.md#domain-verification).
-| `network`  | String | Which network chain this validator follows. If omitted, clients SHOULD assume that the validator follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
-| `owner_country` | String | The two-letter ISO-3166-2 country code describing the main legal jurisdiction that you (the validator's owner) are subject to. |
-| `server_country` | String | The two-letter ISO-3166-2 country code describing the physical location where this validating server is. |
-| `unl` | String | An HTTPS URL where one can find the list of other validators this validator trusts. If the validator is configured to use a validator list site for UNL recommendations, this MUST match the server's configuration. For the production XRP Ledger network, use `https://vl.ripple.com` (trailing slash optional). |
-
+| Field            | Type   | Description                                                                                                                                                                                                                                                                                                                              |
+| :--------------- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `public_key`     | String | The master public key of your primary validator, encoded in the XRP Ledger's base58 format (typically, this starts with `n`).                                                                                                                                                                                                            |
+| `attestation`    | String | A signed message, in hexadecimal, indicating that the same entity runs this validator and the domain serving this TOML file. For more information, see [Domain Verification](xrp-ledger-toml.md#domain-verification).                                                                                                                    |
+| `network`        | String | Which network chain this validator follows. If omitted, clients SHOULD assume that the validator follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+| `owner_country`  | String | The two-letter ISO-3166-2 country code describing the main legal jurisdiction that you (the validator's owner) are subject to.                                                                                                                                                                                                           |
+| `server_country` | String | The two-letter ISO-3166-2 country code describing the physical location where this validating server is.                                                                                                                                                                                                                                 |
+| `unl`            | String | An HTTPS URL where one can find the list of other validators this validator trusts. If the validator is configured to use a validator list site for UNL recommendations, this MUST match the server's configuration. For the production XRP Ledger network, use `https://vl.ripple.com` (trailing slash optional).                       |
 
 ### Accounts
 
 The accounts list provides information about XRP Ledger accounts you own. If present, the accounts list MUST BE presented as an array of tables, with each entry using the header `[[ACCOUNTS]]`, including double square brackets. Each entry describes a separate account. For _each_ `[[ACCOUNTS]]` entry, you MAY provide any of the following fields:
 
-| Field     | Type   | Description                                             |
-|:----------|:-------|:--------------------------------------------------------|
-| `address` | String | The public address of the account, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). |
+| Field     | Type   | Description                                                                                                                                                                                                                                                                                                                                                                |
+| :-------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `address` | String | The public address of the account, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`).                                                                                                                                                                                                                                                         |
 | `network` | String | The network chain where this account is primarily used. If omitted, clients SHOULD assume that the account is claimed on the production XRP Ledger _and_ possibly other network chains. Use `main` for the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
-| `desc`    | String | A human-readable description of this account's purpose or how you use it. |
+| `desc`    | String | A human-readable description of this account's purpose or how you use it.                                                                                                                                                                                                                                                                                                  |
 
 {% admonition type="warning" name="Caution" %}Anyone could claim ownership of any account by hosting an `xrp-ledger.toml` file, so the presence of an account here SHOULD NOT be considered authoritative unless the [`Domain` field for these accounts in the XRP Ledger](protocol/transactions/types/accountset.md#domain) also matches the domain that this `xrp-ledger.toml` file was served from. See [Account Verification](#account-verification) for details.{% /admonition %}
-
 
 ### Principals
 
 The principals list provides information about the people (or business entities) involved in your XRP Ledger businesses and services. If present, the principals list MUST BE presented as an array of tables, with each entry using the header `[[PRINCIPALS]]`, including double square brackets. Each entry describes a different point of contact. For _each_ `[[PRINCIPALS]]` entry, you MAY provide any of the following fields:
 
-| Field   | Type   | Description                                              |
-|:--------|:-------|:---------------------------------------------------------|
-| `name`  | String | The name of this principal.                              |
-| `email` | String | The email address where this principal can be contacted. |
+| Field      | Type   | Description                                                                                                                                                                                                             |
+| :--------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`     | String | The name of this principal.                                                                                                                                                                                             |
+| `email`    | String | The email address where this principal can be contacted.                                                                                                                                                                |
 | `social_1` | String | The social media username/handle where this principal can be contacted. For consistency, use site names, not domains, when specifying social media platforms. For example, `x = "@username"` or `linkedin = "username"` |
 
 You may provide other contact information as desired. (See [Custom Fields](#custom-fields) for information about custom fields.)
-
 
 ### Servers
 
 The servers list provides information about XRP Ledger servers (`rippled`) you run with public access. If present, the servers list MUST BE presented as an array of tables, with each entry using the header `[[SERVERS]]`, including double square brackets. Each entry describes a different server or server cluster. For _each_ `[[SERVERS]]` entry, you MAY provide any of the following fields:
 
-| Field   | Type   | Description                                              |
-|:--------|:-------|:---------------------------------------------------------|
-| `json_rpc` | String (URL) | The URL where you serve a public JSON-RPC API. This MUST begin with either `http://` or `https://`. HTTPS is RECOMMENDED for public APIs. |
-| `ws` | String (URL) | The URL where you serve a public WebSocket API. This MUST begin with either `ws://` or `wss://`. WSS is RECOMMENDED for public APIs. |
-| `peer` | String (URL) | The URL where your server is listening for the XRP Ledger Peer Protocol. Other XRP Ledger servers can connect at this URL. If your server provides a Peer Crawler response, it is served from this URL with `crawl` appended. |
-| `network`  | String | Which network chain this server follows. If omitted, clients SHOULD assume that the server follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
+| Field      | Type         | Description                                                                                                                                                                                                                                                                                                                        |
+| :--------- | :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `json_rpc` | String (URL) | The URL where you serve a public JSON-RPC API. This MUST begin with either `http://` or `https://`. HTTPS is RECOMMENDED for public APIs.                                                                                                                                                                                          |
+| `ws`       | String (URL) | The URL where you serve a public WebSocket API. This MUST begin with either `ws://` or `wss://`. WSS is RECOMMENDED for public APIs.                                                                                                                                                                                               |
+| `peer`     | String (URL) | The URL where your server is listening for the XRP Ledger Peer Protocol. Other XRP Ledger servers can connect at this URL. If your server provides a Peer Crawler response, it is served from this URL with `crawl` appended.                                                                                                      |
+| `network`  | String       | Which network chain this server follows. If omitted, clients SHOULD assume that the server follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 
 For all URLs in this section, the trailing slash is RECOMMENDED. If omitted, client applications SHOULD assume that there is a trailing slash implied.
-
 
 ### Currencies
 
 If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the `[[CURRENCIES]]` list. If present, the currencies list MUST BE presented as an array of tables, with each entry using the header `[[CURRENCIES]]`, including double square brackets. Each entry describes a separate token or asset. For _each_ `[[CURRENCIES]]` entry, you MAY provide any of the following fields:
 
-| Field   | Type   | Description                                           |
-|:--------|:-------|:------------------------------------------------------|
-| `code` | String | The (case-sensitive) ticker symbol of this token in the XRP Ledger. This can be a three-digit code, a 40-character hex code, or a custom format (for clients that know how to represent the non-standard code in the XRP Ledger). See the [Currency Code reference](protocol/data-types/currency-formats.md#currency-codes) for information on the XRP Ledger's currency code formats. |
-| `display_decimals` | Number | The number of decimals that a client application should use to display amounts of this currency. |
-| `issuer` | String | The address of the XRP Ledger account where you issue this currency, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). You SHOULD also list this address in the `[[ACCOUNTS]]` list. (Reminder: the presence of an address here is not authoritative on its own. See [Account Verification](#account-verification) for details.) |
-| `network` | String | The network chain where you issue this token. Use `main` to explicitly specify the production XRP Ledger. If omitted, clients SHOULD assume that the currency is issued on the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
-| `symbol` | String | The text symbol, such "$" or "€", that should be used with amounts of this asset or currency, if it has a symbol in the Unicode standard. |
-
+| Field              | Type   | Description                                                                                                                                                                                                                                                                                                                                                                            |
+| :----------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `code`             | String | The (case-sensitive) ticker symbol of this token in the XRP Ledger. This can be a three-digit code, a 40-character hex code, or a custom format (for clients that know how to represent the non-standard code in the XRP Ledger). See the [Currency Code reference](protocol/data-types/currency-formats.md#currency-codes) for information on the XRP Ledger's currency code formats. |
+| `display_decimals` | Number | The number of decimals that a client application should use to display amounts of this currency.                                                                                                                                                                                                                                                                                       |
+| `issuer`           | String | The address of the XRP Ledger account where you issue this currency, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). You SHOULD also list this address in the `[[ACCOUNTS]]` list. (Reminder: the presence of an address here is not authoritative on its own. See [Account Verification](#account-verification) for details.)                         |
+| `network`          | String | The network chain where you issue this token. Use `main` to explicitly specify the production XRP Ledger. If omitted, clients SHOULD assume that the currency is issued on the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains.                                         |
+| `symbol`           | String | The text symbol, such "$" or "€", that should be used with amounts of this asset or currency, if it has a symbol in the Unicode standard.                                                                                                                                                                                                                                              |
 
 ### Custom Fields
 
@@ -256,7 +247,6 @@ Tools that parse the `xrp-ledger.toml` file MUST accept documents that contain a
 Tools MAY return an error if a field they recognize is not formatted as expected, even if that field is not defined in this specification.
 
 When creating custom fields, be mindful of the field name you choose. If you use a very generic field name, other users may use the same name to mean something different, or formatted in a conflicting way. If you use a custom field that you think others will find useful, please contribute a specification for your field to the maintainers of this document. <!-- STYLE_OVERRIDE: will -->
-
 
 ## CORS Setup
 
@@ -278,7 +268,6 @@ Alternatively, you can add the following to a `.htaccess` file in the `/.well-kn
 </Files>
 ```
 
-
 If you use nginx, add the following to your config file:
 
 ```
@@ -291,7 +280,6 @@ For other web servers, see [I want to add CORS support to my server](https://ena
 
 [CORS]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
-
 ## Domain Verification
 
 One use for the `xrp-ledger.toml` file is verifying that the same entity that runs a particular domain also runs a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see [Properties of a Good Validator](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#1-understand-the-traits-of-a-good-validator).)
@@ -299,25 +287,22 @@ One use for the `xrp-ledger.toml` file is verifying that the same entity that ru
 Domain verification requires establishing a two-way link between the domain operator and the validator:
 
 1. The domain claims ownership of the validator:
+   - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
 
-    - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
-
-    - In that `xrp-ledger.toml` file, provide a `[[VALIDATORS]]` entry with the validator's master public key in the `public_key` field.
+   - In that `xrp-ledger.toml` file, provide a `[[VALIDATORS]]` entry with the validator's master public key in the `public_key` field.
 
 2. The validator claims ownership of the domain:
+   - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#revoke-validator-keys) and generate new keys.
 
-    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#revoke-validator-keys) and generate new keys.
+     Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**.
 
-        Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**.
+   - **In a location not on your validator**, build the [validator-keys-tool](https://github.com/ripple/validator-keys-tool).
 
-    - **In a location not on your validator**, build the [validator-keys-tool](https://github.com/ripple/validator-keys-tool).  
+   - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
 
-    - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
-
-
-        ```
-        $./validator-keys set_domain example.com
-        ```
+     ```
+     $./validator-keys set_domain example.com
+     ```
 
 {% admonition type="danger" name="Warning" %}This command updates your validator-keys.json file. Please be sure to store the `validator-keys.json` file in a secure location.{% /admonition %}
 
@@ -349,13 +334,10 @@ hYWExwbGMyR25NaEFrRTFhZ3FYeEJ3RHdEYklENk9NU1l1TTBGREFscEFnTms4U0tG
 bjdNTzJmZGtjd1JRSWhBT25ndTlzQUtxWFlvdUorbDJWMFcrc0FPa1ZCK1pSUzZQU2
 hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
 NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
-VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==     
+VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==
 ```
 
 Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attestation` block, and update the `rippled.cfg` file with the `[validator_token]` block from the sample output.
-
-
-
 
 {% admonition type="danger" name="Warning" %}Your validator token is meant to be kept secret. Do not share it on your `xrp-ledger.toml` file or anywhere else.{% /admonition %}
 
@@ -366,19 +348,17 @@ Similar to [Domain Verification](#domain-verification), account verification is 
 Account verification requires establishing a two-way link between the domain operator and the address:
 
 1. The domain claims ownership of the address.
+   - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
 
-    - Serve an `xrp-ledger.toml` file, following all the [requirements described in this document](#serving-the-file), from the domain in question.
-
-    - In that `xrp-ledger.toml` file, provide an `[[ACCOUNTS]]` entry with the address of the account you want to verify. If you issue currency from this address, you may also provide this account in the `issuer` field of a `[[CURRENCIES]]` entry.
+   - In that `xrp-ledger.toml` file, provide an `[[ACCOUNTS]]` entry with the address of the account you want to verify. If you issue currency from this address, you may also provide this account in the `issuer` field of a `[[CURRENCIES]]` entry.
 
 2. The address claims ownership by a domain.
 
-    [Set the account's `Domain` field](protocol/transactions/types/accountset.md#domain) to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492). <!-- SPELLING_IGNORE: punycode, rfc3492 -->
+   [Set the account's `Domain` field](protocol/transactions/types/accountset.md#domain) to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492). <!-- SPELLING_IGNORE: punycode, rfc3492 -->
 
-    Since setting the `Domain` requires sending a transaction, whoever set the `Domain` value must have possessed the account's secret key when the transaction was sent.
+   Since setting the `Domain` requires sending a transaction, whoever set the `Domain` value must have possessed the account's secret key when the transaction was sent.
 
 Either of these two links, on their own, SHOULD NOT be considered authoritative. Anyone could host an `xrp-ledger.toml` file claiming ownership of any account, and any account operator could set its `Domain` field to any string it wants. If the two match, it provides strong evidence that the same entity controls both.
-
 
 ## Acknowledgements
 

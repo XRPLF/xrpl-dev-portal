@@ -6,25 +6,25 @@ These code samples demonstrate how to delegate permissions to another account an
 
 1. Install dependencies.
 
-    ```sh
-    npm i
-    ```
+   ```sh
+   npm i
+   ```
 
 2. Run `delegate-permisions.js`.
 
-    ```sh
-    node delegate-permissions.js
-    ```
+   ```sh
+   node delegate-permissions.js
+   ```
 
-    If it runs successfully, it should output several things including "Delegate successfully set." followed by an [account_objects API method](https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects) response showing the delegate permissions.
+   If it runs successfully, it should output several things including "Delegate successfully set." followed by an [account_objects API method](https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects) response showing the delegate permissions.
 
-    Take note of the **Delegator address** and **Delegate seed** from the output.
+   Take note of the **Delegator address** and **Delegate seed** from the output.
 
 3. Run `use-delegate-permissions.js` and provide both the delegator's address and the delegate's secret key that were output in the previous step.
 
-    If it runs successfully, it should output various things ending in the following:
-    
-    ```text
-    Transaction successful.
-    Domain is example.com
-    ```
+   If it runs successfully, it should output various things ending in the following:
+
+   ```text
+   Transaction successful.
+   Domain is example.com
+   ```

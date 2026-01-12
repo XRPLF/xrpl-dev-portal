@@ -2,10 +2,11 @@
 html: use-a-peer-reservation.html
 parent: configure-peering.html
 seo:
-    description: ピアリザベーションを使用して特定のピアへのより信頼できる接続を設定します。
+  description: ピアリザベーションを使用して特定のピアへのより信頼できる接続を設定します。
 lables:
   - コアサーバ
 ---
+
 # ピアリザベーションの使用
 
 [ピアリザベーション][]を使用すると、`rippled`サーバが予約とマッチしたピアからの通信を常に受け入れるように設定できます。このページでは、ピアリザベーションを使用して2台のサーバ間のピアツーピア通信を、各サーバの管理者の協力のもと一貫して維持する方法について説明します。
@@ -42,28 +43,28 @@ lables:
 
    例:
 
-    ```
-    rippled validation_create
+   ```
+   rippled validation_create
 
-    Loading: "/etc/rippled.cfg"
-    Connecting to 127.0.0.1:5005
-    {
-       "result" : {
-          "status" : "success",
-          "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
-          "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
-          "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
-       }
-    }
-    ```
+   Loading: "/etc/rippled.cfg"
+   Connecting to 127.0.0.1:5005
+   {
+      "result" : {
+         "status" : "success",
+         "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
+         "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
+         "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
+      }
+   }
+   ```
 
    `validation_seed`（ノードシード値）と`validation_public_key`値（ノード公開鍵）を保存します。
 
 2. `rippled`の構成ファイルを編集します。
 
-    ```
-    vim /etc/opt/ripple/rippled.cfg
-    ```
+   ```
+   vim /etc/opt/ripple/rippled.cfg
+   ```
 
    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
@@ -71,18 +72,18 @@ lables:
 
    例:
 
-    ```
-    [node_seed]
-    ssZkdwURFMBXenJPbrpE14b6noJSu
-    ```
+   ```
+   [node_seed]
+   ssZkdwURFMBXenJPbrpE14b6noJSu
+   ```
 
    {% admonition type="danger" name="警告" %}すべてのサーバの`[node_seed]`値が一意である必要があります。構成ファイルを別のサーバにコピーする場合は、`[node_seed]`値を削除するか、変更してください。`[node_seed]`は公開しないようにします。不正使用者がこの値にアクセスできた場合、それを使用してサーバを偽装し、XRP Ledgerのピアツーピア通信を行う可能性があります。{% /admonition %}
 
 4. `rippled`サーバを再起動します。
 
-    ```
-    systemctl restart rippled
-    ```
+   ```
+   systemctl restart rippled
+   ```
 
 ### 2.ストックサーバのノード公開鍵を連絡する
 
@@ -122,6 +123,7 @@ Connecting to 127.0.0.1:5005
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```
 {
     "command": "connect",
@@ -129,9 +131,11 @@ Connecting to 127.0.0.1:5005
     "port": 51235
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```
 {
     "method": "connect",
@@ -144,18 +148,20 @@ Connecting to 127.0.0.1:5005
     ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```
 rippled connect 169.54.2.151 51235
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 ハブサーバの管理者が上記の手順に従ってピアリザベーションを設定した場合、自動的に接続され、可能な限り接続が維持されます。
-
 
 ## 次のステップ
 
@@ -167,7 +173,6 @@ rippled connect 169.54.2.151 51235
 - [peersメソッド][]を使用して、現在接続しているピアと使用している帯域幅の量を確認する。
 
 {% admonition type="success" name="ヒント" %}不正なピアからの接続を即座に切断するAPIメソッドはありませんが、`firewalld`などのソフトウェアファイアウォールを使用すれば、不正なピアからのサーバへの接続をブロックできます。例については、コミュニティーによって作成された[rbhスクリプト](https://github.com/gnanderson/rbh)をご覧ください。{% /admonition %}
-
 
 ## 関連項目
 

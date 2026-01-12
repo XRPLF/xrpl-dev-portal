@@ -1,14 +1,15 @@
 ---
 category: 2020
-date: "2021-02-07"
+date: '2021-02-07'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Features
+  - Features
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 author: Mayur Bhandary
 ---
+
 # Running an XRP Ledger Validator
 
 Validators are the lifeblood of the XRP Ledger. This post seeks to explain the function and importance of validators on the XRP Ledger network.
@@ -23,7 +24,6 @@ Validators agree on the set of the candidate transactions to be considered for t
 
 Finally, every rippled server independently computes a new ledger version with the new set of transactions. Validators broadcast the hash of the new ledger version to all rippled servers, and if a supermajority of a server’s trusted validators computes the same hash, then the ledger version is considered fully validated.
 
-
 ## Why Run a Validator
 
 Those who operate validators do so because they have a demonstrated interest in the long term health of the network. For example, individuals and entities that rely on XRP for their business operations, all stand to benefit from the continued reliability, stability and performance of the XRP Ledger.
@@ -32,13 +32,11 @@ For those more familiar with crypto, the rationale for running a validator is si
 
 Validator operators that appear on a UNL also partake in the governance of the XRP Ledger through voting on fees and amendments, which are proposed changes to the protocol.
 
-
 ## Being a Good Validator
 
 The characteristics of a good validator include high availability, agreement with the network, timeliness, and identification. In order to achieve these properties, it is important to adhere to the [recommended system specifications](https://xrpl.org/system-requirements.html#recommended-specifications) for production servers and [properly configure](https://xrpl.org/run-rippled-as-a-validator.html) the validator.
 
 Beyond the administrative elements of running a validator, it is important for validator operators to be involved in the XRP community by announcing potential downtime or maintenance work ahead of time. Validators that appear on a UNL have the opportunity to vote on amendments and fees, thereby having a voice in the evolution of the network. Therefore, it is imperative that validator operators stay abreast of the [latest updates](https://xrpl.org/blog/) coming to the XRP Ledger.
-
 
 ## No Incentive: A Design Decision
 

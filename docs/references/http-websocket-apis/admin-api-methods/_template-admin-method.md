@@ -2,17 +2,18 @@
 html: TODO_PAGE_NAME.html
 parent: TODO_CATEGORY_FILENAME.html
 seo:
-    description: TODO BLURB
+  description: TODO BLURB
 labels:
   # TODO At least one label
 ---
+
 # TODO_method_name
+
 [[Source]](TODO_URL "Source")
 
 The `{{currentpage.name}}` method TODO_description.
 
 _The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
-
 
 ### Request Format
 
@@ -20,7 +21,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_START -->
 
-*WebSocket*
+_WebSocket_
 
 ```json
 {
@@ -28,7 +29,7 @@ An example of the request format:
 }
 ```
 
-*JSON-RPC*
+_JSON-RPC_
 
 ```json
 {
@@ -39,7 +40,7 @@ An example of the request format:
 }
 ```
 
-*Commandline*
+_Commandline_
 
 ```sh
 #Syntax: {{currentpage.name}} TODO
@@ -50,10 +51,10 @@ rippled {{currentpage.name}}
 
 The request includes the following parameters:
 
-| `Field`     | Type                      | Description                        |
-|:------------|:--------------------------|:-----------------------------------|
-TODO_request_params
+| `Field` | Type | Description |
+| :------ | :--- | :---------- |
 
+TODO_request_params
 
 ### Response Format
 
@@ -61,7 +62,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_START -->
 
-*WebSocket*
+_WebSocket_
 
 ```json
 {
@@ -69,7 +70,7 @@ An example of a successful response:
 }
 ```
 
-*JSON-RPC*
+_JSON-RPC_
 
 ```json
 {
@@ -77,7 +78,7 @@ An example of a successful response:
 }
 ```
 
-*Commandline*
+_Commandline_
 
 ```json
 Loading: "/etc/rippled.cfg"
@@ -92,10 +93,10 @@ Connecting to 127.0.0.1:5005
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field` | Type   | Description                                               |
-|:--------|:-------|:----------------------------------------------------------|
-TODO_response_params
+| `Field` | Type | Description |
+| :------ | :--- | :---------- |
 
+TODO_response_params
 
 ### Possible Errors
 
@@ -104,6 +105,7 @@ TODO_response_params
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 
 <!--{# common link defs #}-->
+
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

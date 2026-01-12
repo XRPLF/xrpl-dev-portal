@@ -1,5 +1,4 @@
 function getConditionAndFulfillment() {
-
   const cc = require('five-bells-condition')
   const crypto = require('crypto')
 
@@ -9,7 +8,7 @@ function getConditionAndFulfillment() {
 
   const condition = fulfillment.getConditionBinary().toString('hex').toUpperCase()
   console.log('Condition:', condition)
- 
+
   // Keep secret until you want to finish the escrow
   const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
   console.log('Fulfillment:', fulfillment_hex)

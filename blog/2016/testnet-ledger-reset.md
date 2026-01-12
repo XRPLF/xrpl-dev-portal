@@ -1,13 +1,14 @@
 ---
-date: "2016-09-01"
+date: '2016-09-01'
 template: '../../@theme/templates/blogpost'
 category: 2016
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Ripple Test Network Ledger Will Be Reset
 
 On 2016-09-02, Ripple will be resetting the [test network](https://xrpl.org/xrp-test-net-faucet.html) ledger and balances. This means that all test net order books will be deleted and all account balances will be depleted.
@@ -34,7 +35,7 @@ Please refer to the Test Net page for information on generating new test net cre
 
 ### Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: <support@ripple.com>
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: <support@ripple.com>
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_

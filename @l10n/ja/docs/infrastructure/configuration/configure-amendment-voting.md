@@ -2,11 +2,12 @@
 html: configure-amendment-voting.html
 parent: configure-rippled.html
 seo:
-    description: プロトコル修正に伴うサーバの投票を設定する。
+  description: プロトコル修正に伴うサーバの投票を設定する。
 labels:
   - コアサーバ
   - ブロックチェーン
 ---
+
 # Amendment投票機能の設定
 
 バリデータとして設定されたサーバは、[featureメソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](../../tutorials/http-websocket-apis/build-apps/get-started.md#管理者アクセス権限)が必要です).
@@ -16,6 +17,7 @@ labels:
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
   "id": "any_id_here",
@@ -24,26 +26,31 @@ labels:
   "vetoed": true
 }
 ```
+
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
+
 ```json
 {
-    "method": "feature",
-    "params": [
-        {
-            "feature": "SHAMapV2",
-            "vetoed": true
-        }
-    ]
+  "method": "feature",
+  "params": [
+    {
+      "feature": "SHAMapV2",
+      "vetoed": true
+    }
+  ]
 }
 ```
+
 {% /tab %}
 
 {% tab label="コマンドライン" %}
+
 ```sh
 rippled feature SHAMapV2 reject
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -66,7 +73,7 @@ rippled feature SHAMapV2 reject
 ## 関連項目
 
 - [Amendment](../../concepts/networks-and-servers/amendments.md)
-    - [既知のAmendment](/resources/known-amendments.md)
+  - [既知のAmendment](/resources/known-amendments.md)
 - [featureメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

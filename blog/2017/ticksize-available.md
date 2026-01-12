@@ -1,19 +1,19 @@
 ---
-date: "2017-02-22"
+date: '2017-02-22'
 template: '../../@theme/templates/blogpost'
 category: 2017
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # TickSize is Now Available
 
 As [predicted previously](/blog/2017/ticksize-3days.md), the TickSize amendment became available on the Ripple Consensus Ledger yesterday afternoon (PST) in ledger 27841793 ([2017-02-21T23:02:52Z](https://xrpcharts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E)).
 
 The amendment changes the way RCL offers are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking offers by exchange rate.
-
 
 ## Action Required
 
@@ -25,16 +25,14 @@ The amendment changes the way RCL offers are ranked in order books, so that curr
 
 4. **If you have backend software** which constructs and submits transactions related to the issuing of assets on the Ripple Consensus Ledger, then please review documentation for the TickSize amendment to adapt your software for correct usage.
 
-
 ## Impact of Not Upgrading
 
 If you operate a `rippled` server but don’t upgrade to version 0.50.0 or higher, immediately, then your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
 
 ## Learn More
 

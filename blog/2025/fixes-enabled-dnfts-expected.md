@@ -1,15 +1,16 @@
 ---
 category: 2025
-date: "2025-06-03"
+date: '2025-06-03'
 template: '../../@theme/templates/blogpost'
 seo:
-    description: Two fix amendments to the XRP Ledger protocol have become enabled, and the DynamicNFT is expect to be enabled soon.
+  description: Two fix amendments to the XRP Ledger protocol have become enabled, and the DynamicNFT is expect to be enabled soon.
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Two Fix Amendments Enabled, dNFTs Expected
 
 Two fixes to the XRP Ledger protocol, [fixFrozenLPTokenTransfer](/resources/known-amendments#fixfrozenlptokentransfer) and [fixInvalidTxFlags](/resources/known-amendments#fixinvalidtxflags), became enabled on 2025-05-15. Additionally, the [DynamicNFT amendment](/resources/known-amendments#dynamicnft) has gained support from a supermajority of validators and will become enabled on 2025-06-11 if it maintains continuous support. The minimum core server version to support these amendments is **v2.4.0**; any servers on older versions are now amendment blocked.
@@ -25,11 +26,11 @@ Two fixes to the XRP Ledger protocol, [fixFrozenLPTokenTransfer](/resources/know
 
 If you operate a `rippled` server that is older than version 2.4.0, then your server is now amendment blocked, meaning that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
-* Could rely on potentially invalid data
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
+- Could rely on potentially invalid data
 
 If you operate a Clio server that is older than version 2.4.0, then your server cannot process new ledgers from the network.
 

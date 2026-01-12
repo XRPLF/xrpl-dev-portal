@@ -1,9 +1,10 @@
 ---
 seo:
-    description: Enable and configure the gRPC API.
+  description: Enable and configure the gRPC API.
 labels:
   - Core Server
 ---
+
 # Configure gRPC
 
 The `rippled` server has a limited [gRPC API](https://grpc.io/) it can provide. Clio servers use this API to retrieve data about the latest validated ledgers and transactions. You can enable the gRPC API on your server with a new configuration stanza.
@@ -24,33 +25,33 @@ To enable gRPC on your server, complete the following steps:
 
 1. Ensure the `[port_grpc]` stanza is in your `rippled` config file.
 
-    ```
-    [port_grpc]
-    port = 50051
-    ip = 127.0.0.1
-    ```
+   ```
+   [port_grpc]
+   port = 50051
+   ip = 127.0.0.1
+   ```
 
-    - `port` defines the port the server listens on for gRPC connections from client applications. The recommended port is `50051`.
-    - `ip` defines which interfaces the server listens on. `127.0.0.1` limits connections to the local loopback network (same machine) and is enabled by default. Changing the value to `0.0.0.0` listens on all available network interfaces.
+   - `port` defines the port the server listens on for gRPC connections from client applications. The recommended port is `50051`.
+   - `ip` defines which interfaces the server listens on. `127.0.0.1` limits connections to the local loopback network (same machine) and is enabled by default. Changing the value to `0.0.0.0` listens on all available network interfaces.
 
-    {% partial file="/docs/_snippets/conf-file-location.md" /%}
+   {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. Start (or restart) the `rippled` service.
 
-    ```
-    sudo systemctl restart rippled
-    ```
+   ```
+   sudo systemctl restart rippled
+   ```
 
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](/about/)
-    - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
+  - [XRP Ledger Overview](/about/)
+  - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
 - **Tutorials:**
-    - [Get Started Using HTTP / WebSocket APIs](../../tutorials/http-websocket-apis/build-apps/get-started.md)
-    - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
-    - [Manage the rippled Server](../installation/install-rippled-on-ubuntu.md)
+  - [Get Started Using HTTP / WebSocket APIs](../../tutorials/http-websocket-apis/build-apps/get-started.md)
+  - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
+  - [Manage the rippled Server](../installation/install-rippled-on-ubuntu.md)
 - **References:**
-    - [HTTP / WebSocket API Reference](../../references/http-websocket-apis/index.md)
+  - [HTTP / WebSocket API Reference](../../references/http-websocket-apis/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,13 +1,14 @@
 ---
 category: 2021
 markdown:
-    editPage:
-        hide: true
-date: "2021-02-24"
+  editPage:
+    hide: true
+date: '2021-02-24'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 ---
+
 # Road to XRP Ledger 1.7: Improving Efficiency and Security
 
 Today, [version 1.7.0](https://xrpl.org/blog/2021/rippled-1.7.0.html) of the reference implementation of the software behind the XRP Ledger (XRPL) was released with key contributions from RippleX aimed at improving the Ledger’s decentralization, security and efficiency.
@@ -25,7 +26,6 @@ Other optimizations include: improved validation and proposal routing, which ben
 Also being introduced today is **forward ledger replay**—a pivotal improvement to XRPL that enhances security and reduces the amount of bandwidth needed by allowing servers to more easily retain synchronization with the rest of the network. This is an experimental feature that can be enabled via options.
 
 Proposed and agreed upon by XRPL server operators, the features in this latest release of the code demonstrates a shared commitment to improving the XRP Ledger’s performance, innovation and decentralization.
-
 
 ## Looking Ahead
 

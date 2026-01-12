@@ -2,11 +2,12 @@
 html: authorized-trust-lines.html
 parent: trust-lines-and-issuing.html
 seo:
-    description: Authorized trust lines is a setting to limit who can hold a token.
+  description: Authorized trust lines is a setting to limit who can hold a token.
 labels:
   - Tokens
   - Security
 ---
+
 # Authorized Trust Lines
 
 The Authorized Trust Lines feature enables issuers to create [trust line tokens](./trust-line-tokens.md) that can only be held by accounts that the issuer specifically authorizes—in other words, allow-listing access to all of an issuer's tokens. This page describes the feature as it applies to trust line tokens, but [multi-purpose tokens](./multi-purpose-tokens.md) have a similar setting on a per-token basis. Allow-listing does not apply to XRP.
@@ -38,7 +39,6 @@ With a stablecoin on the XRP Ledger and the use of Authorized Trust Lines, the p
 
 Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on [operational and standby accounts](../../accounts/account-types.md), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
 
-
 ## Technical Details
 
 ### Enabling Require Auth
@@ -67,7 +67,6 @@ POST http://localhost:5005/
 ```
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%}
-
 
 ## Checking Whether an Account Has Require Auth Enabled
 
@@ -111,25 +110,23 @@ POST http://localhost:8088/
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
-
 ## Checking Whether Trust Lines Are Authorized
 
 To see whether a trust line has been authorized, use the [account_lines method][] to look up the trust line. In the request, provide the customer's address in the `account` field and the issuer's address in the `peer` field.
 
 In the response's `result.lines` array, find the object whose `currency` field indicates that it represents a trust line for the currency you want. If that object has a `peer_authorized` field with the value `true`, then the issuer (the address you used as the request's `peer` field) has authorized the trust line.
 
-
 ## See Also
 
 - **Concepts:**
-    - [Deposit Authorization](../../accounts/depositauth.md)
-    - [Freezing Issued Currencies](freezes.md)
+  - [Deposit Authorization](../../accounts/depositauth.md)
+  - [Freezing Issued Currencies](freezes.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
-    - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
+  - [account_lines method][]
+  - [account_info method][]
+  - [AccountSet transaction][]
+  - [TrustSet transaction][]
+  - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+  - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

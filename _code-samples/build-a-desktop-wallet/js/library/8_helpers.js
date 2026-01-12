@@ -1,8 +1,8 @@
 const fetch = require('node-fetch')
-const toml = require('toml');
-const { convertHexToString } = require("xrpl/dist/npm/utils/stringConversion");
+const toml = require('toml')
+const { convertHexToString } = require('xrpl/dist/npm/utils/stringConversion')
 
-const lsfDisallowXRP = 0x00080000;
+const lsfDisallowXRP = 0x00080000
 
 /*  Example lookups
 
@@ -25,16 +25,16 @@ const lsfDisallowXRP = 0x00080000;
  * @returns {Promise<{domain: string, verified: boolean}|{domain: string, verified: boolean}>}
  */
 async function checkDestination(accountData) {
-    const accountStatus = {
-        "funded": null,
-        "disallow_xrp": null,
-        "domain_verified": null,
-        "domain_str": "" // the decoded domain, regardless of verification
-    }
+  const accountStatus = {
+    funded: null,
+    disallow_xrp: null,
+    domain_verified: null,
+    domain_str: '', // the decoded domain, regardless of verification
+  }
 
-    accountStatus["disallow_xrp"] = !!(accountData & lsfDisallowXRP);
+  accountStatus['disallow_xrp'] = !!(accountData & lsfDisallowXRP)
 
-    return verifyAccountDomain(accountData)
+  return verifyAccountDomain(accountData)
 }
 
 /**
@@ -45,40 +45,40 @@ async function checkDestination(accountData) {
  * @returns {Promise<{domain: string, verified: boolean}>}
  */
 async function verifyAccountDomain(accountData) {
-    const domainHex = accountData["Domain"]
-    if (!domainHex) {
-        return {
-            domain:"",
-            verified: false
-        }
-    }
-
-    let verified = false
-    const domain = convertHexToString(domainHex)
-    const tomlUrl = `https://${domain}/.well-known/xrp-ledger.toml`
-    const tomlResponse = await fetch(tomlUrl)
-
-    if (!tomlResponse.ok) {
-        return {
-            domain: domain,
-            verified: false
-        }
-    }
-
-    const tomlData = await tomlResponse.text()
-    const parsedToml = toml.parse(tomlData)
-    const tomlAccounts = parsedToml["ACCOUNTS"]
-
-    for (const tomlAccount of tomlAccounts) {
-        if (tomlAccount["address"] === accountData["Account"]) {
-            verified = true
-        }
-    }
-
+  const domainHex = accountData['Domain']
+  if (!domainHex) {
     return {
-        domain: domain,
-        verified: verified
+      domain: '',
+      verified: false,
     }
+  }
+
+  let verified = false
+  const domain = convertHexToString(domainHex)
+  const tomlUrl = `https://${domain}/.well-known/xrp-ledger.toml`
+  const tomlResponse = await fetch(tomlUrl)
+
+  if (!tomlResponse.ok) {
+    return {
+      domain: domain,
+      verified: false,
+    }
+  }
+
+  const tomlData = await tomlResponse.text()
+  const parsedToml = toml.parse(tomlData)
+  const tomlAccounts = parsedToml['ACCOUNTS']
+
+  for (const tomlAccount of tomlAccounts) {
+    if (tomlAccount['address'] === accountData['Account']) {
+      verified = true
+    }
+  }
+
+  return {
+    domain: domain,
+    verified: verified,
+  }
 }
 
 /**
@@ -89,22 +89,22 @@ async function verifyAccountDomain(accountData) {
  * @returns {Promise<{domain: string, verified: boolean}>}
  */
 async function verify(accountAddress, client) {
-    // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info
-    const request = {
-        "command": "account_info",
-        "account": accountAddress,
-        "ledger_index": "validated"
-    }
+  // Reference: https://xrpl.org/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info
+  const request = {
+    command: 'account_info',
+    account: accountAddress,
+    ledger_index: 'validated',
+  }
 
-    try {
-        const response = await client.request(request)
-        return await checkDestination(response.result.account_data)
-    } catch (err) {
-        return {
-            domain: '',
-            verified: false
-        }
+  try {
+    const response = await client.request(request)
+    return await checkDestination(response.result.account_data)
+  } catch (err) {
+    return {
+      domain: '',
+      verified: false,
     }
+  }
 }
 
 module.exports = { verify }

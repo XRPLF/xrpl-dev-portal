@@ -1,10 +1,12 @@
 ---
 seo:
-   description: Get or modify log verbosity.
+  description: Get or modify log verbosity.
 labels:
-   - Data Retention
+  - Data Retention
 ---
+
 # log_level
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/LogLevel.cpp "Source")
 
 The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
@@ -12,36 +14,41 @@ The `log_level` command changes the `rippled` server's logging verbosity, or ret
 _The `log_level` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
+
 An example of the request format:
 
 {% tabs %}
 
 {% tab label="WebSocket" %}
+
 ```json
 {
-   "id": "ll1",
-   "command": "log_level",
-   "severity": "debug",
-   "partition": "PathRequest"
+  "id": "ll1",
+  "command": "log_level",
+  "severity": "debug",
+  "partition": "PathRequest"
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline" %}
+
 ```sh
 #Syntax: log_level [[partition] severity]
 rippled log_level PathRequest debug
 ```
+
 {% /tab %}
 
 {% /tabs %}
 
 The request includes the following parameters:
 
-| `Field`     | Type   | Description                                           |
-|:------------|:-------|:------------------------------------------------------|
+| `Field`     | Type   | Description                                                                                                                                                                                                                         |
+| :---------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `severity`  | String | _(Optional)_ What level of verbosity to set logging at. Valid values are, in order from least to most verbose: `fatal`, `error`, `warn`, `info`, `debug`, and `trace`. If omitted, return current log verbosity for all categories. |
-| `partition` | String | _(Optional)_ Ignored unless `severity` is provided. Which logging category to modify. If omitted, or if provided with the value `base`, set logging level for all categories. |
+| `partition` | String | _(Optional)_ Ignored unless `severity` is provided. Which logging category to modify. If omitted, or if provided with the value `base`, set logging level for all categories.                                                       |
 
 ### Response Format
 
@@ -50,6 +57,7 @@ Examples of successful responses:
 {% tabs %}
 
 {% tab label="Commandline (set log level)" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -60,9 +68,11 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Commandline (check log levels)" %}
+
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -125,6 +135,7 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+
 {% /tab %}
 
 {% /tabs %}
@@ -133,13 +144,13 @@ The response follows the [standard format][]. The response format depends on whe
 
 Otherwise, the response contains the following field:
 
-| `Field` | Type   | Description                                               |
-|:--------|:-------|:----------------------------------------------------------|
+| `Field` | Type   | Description                                                                                                                                                                                                |
+| :------ | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `level` | Object | The current log levels of each category. This list of categories is subject to change without notice in future releases. You can use the field names as values to `partition` in requests to this command. |
 
 ### Possible Errors
 
-* Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+- Any of the [universal error types][].
+- `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

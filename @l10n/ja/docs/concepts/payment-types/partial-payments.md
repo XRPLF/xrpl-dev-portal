@@ -2,11 +2,12 @@
 html: partial-payments.html
 parent: payment-types.html
 seo:
-    description: Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。
+  description: Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。
 labels:
   - 支払い
   - セキュリティ
 ---
+
 # Partial Payment
 
 {% admonition type="warning" name="警告" %}このページでは、`Payment`トランザクションおよび各種APIメソッドに表示される`Amount`フィールドの詳細について説明します。`Amount`とPartial Paymentに関するコンテキスト情報は依然として関連性がありますが、`rippled` [API v2](../../references/http-websocket-apis/index.md)においてフィールド名が`DeliverMax`に変更されました。これは、フィールド名をその動作に特化させ、以下に説明する誤解や悪用を防ぐためです。{% /admonition %}
@@ -51,7 +52,7 @@ Partial Paymentには次の制限事項があります。
 
 - Partial Paymentでは、アドレスにXRPにて資金を供給できません。この場合、[結果コード][]`telNO_DST_PARTIAL`が返されます。
 - Partial Paymentでは、XRP間の直接決済はできません。この場合、[結果コード][]`temBAD_SEND_XRP_PARTIAL`が返されます。
-    - ただし、イシュアンスからXRPへの支払またはXRPからイシュアンスへの支払は、Partial Paymentが可能です。
+  - ただし、イシュアンスからXRPへの支払またはXRPからイシュアンスへの支払は、Partial Paymentが可能です。
 
 [結果コード]: ../../references/protocol/transactions/transaction-results/index.md
 
@@ -70,15 +71,15 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 
 `delivered_amount`フィールドは以下のフィールドに含まれています。
 
-| API | メソッド | フィールド |
-|-----|--------|-------|
-| [JSON-RPC / WebSocket][] | [account_txメソッド][] | `result.transactions` 配列メンバーの `meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [txメソッド][] | `result.meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [transaction_entryメソッド][] | `result.metadata.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [ledgerメソッド][]（トランザクションが展開されている状態） | `result.ledger.transactions` 配列メンバーの`metaData.delivered_amount` {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}新規: rippled 1.2.1{% /badge %} |
-| [WebSocket][] | [トランザクションサブスクリプション](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#トランザクションストリーム) | サブスクリプションメッセージの`meta.delivered_amount` {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}新規: rippled 1.2.1{% /badge %} |
-| ripple-lib v1.x | `getTransaction` メソッド | `outcome.deliveredAmount` |
-| ripple-lib v1.x | `getTransactions` メソッド | 配列メンバーの `outcome.deliveredAmount` |
+| API                      | メソッド                                                                                                                                                   | フィールド                                                                                                                                                                   |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [JSON-RPC / WebSocket][] | [account_txメソッド][]                                                                                                                                     | `result.transactions` 配列メンバーの `meta.delivered_amount`                                                                                                                 |
+| [JSON-RPC / WebSocket][] | [txメソッド][]                                                                                                                                             | `result.meta.delivered_amount`                                                                                                                                               |
+| [JSON-RPC / WebSocket][] | [transaction_entryメソッド][]                                                                                                                              | `result.metadata.delivered_amount`                                                                                                                                           |
+| [JSON-RPC / WebSocket][] | [ledgerメソッド][]（トランザクションが展開されている状態）                                                                                                 | `result.ledger.transactions` 配列メンバーの`metaData.delivered_amount` {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}新規: rippled 1.2.1{% /badge %} |
+| [WebSocket][]            | [トランザクションサブスクリプション](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#トランザクションストリーム) | サブスクリプションメッセージの`meta.delivered_amount` {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}新規: rippled 1.2.1{% /badge %}                  |
+| ripple-lib v1.x          | `getTransaction` メソッド                                                                                                                                  | `outcome.deliveredAmount`                                                                                                                                                    |
+| ripple-lib v1.x          | `getTransactions` メソッド                                                                                                                                 | 配列メンバーの `outcome.deliveredAmount`                                                                                                                                     |
 
 [WebSocket]: ../../references/http-websocket-apis/index.md
 [JSON-RPC / WebSocket]: ../../references/http-websocket-apis/index.md
@@ -89,7 +90,6 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 
 **着信Paymentトランザクションを正しく処理するには、**`Amount`フィールドではなく **[`delivered_amount`メタデータフィールド](#delivered_amountフィールド)を使用します。** これにより、金融機関が _実際の_ 受取金額を間違えることがなくなります。
 
-
 ### 悪用シナリオの流れ
 
 脆弱な金融機関を攻撃するため、不正使用者は次のような操作を試みます。
@@ -99,8 +99,8 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 3. 脆弱な金融機関はトランザクションの`Amount`フィールドを確認しますが、`Flags`フィールドや`delivered_amount`メタデータフィールドは確認しません。
 4. 脆弱な金融機関は、XRP Ledgerへ入金された`delivered_amount`が非常に少額のであるにもかかわらず、外部システム（金融機関独自のレジャーなど）で`Amount`の総額を不正使用者に入金します。
 5. 不正使用者は、脆弱な機関がこの差異に気付く前に、可能な限りの多くの残高を別のシステムに出金します。
-    - ブロックチェーントランザクションは通常不可逆であるため、不正使用者は一般的にBitcoinなどの他の仮想通貨に残高を換金することを好みます。法定通貨システムに出金した場合、金融機関がトランザクションを撤回または取り消せるのは、最初にトランザクションが実行されてから数日後になります。
-    - 取引所の場合、不正使用者はXRPから残高を出金し、直接XRP Ledgerに戻すこともできます。
+   - ブロックチェーントランザクションは通常不可逆であるため、不正使用者は一般的にBitcoinなどの他の仮想通貨に残高を換金することを好みます。法定通貨システムに出金した場合、金融機関がトランザクションを撤回または取り消せるのは、最初にトランザクションが実行されてから数日後になります。
+   - 取引所の場合、不正使用者はXRPから残高を出金し、直接XRP Ledgerに戻すこともできます。
 
 業者の場合、操作の順序がやや異なりますが、概念は同じです:
 

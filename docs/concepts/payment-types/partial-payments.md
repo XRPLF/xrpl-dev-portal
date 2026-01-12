@@ -2,11 +2,12 @@
 html: partial-payments.html
 parent: payment-types.html
 seo:
-    description: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
+  description: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
 labels:
   - Payments
   - Security
 ---
+
 # Partial Payments
 
 {% admonition type="warning" name="Caution" %}This page describes the specifics of the `Amount` field that appears in `Payment` transactions and various API methods. While the contextual information regarding `Amount` and partial payments is still relevant, the field has been renamed to `DeliverMax` in `rippled` [API v2][]. This was done to make the field name more specific to its behavior and help prevent the misunderstandings and exploit described below.{% /admonition %}
@@ -53,7 +54,7 @@ Partial Payments have the following limitations:
 
 - A partial payment cannot provide the XRP to fund an address; this case returns the [result code][] `telNO_DST_PARTIAL`.
 - Direct XRP-to-XRP payments cannot be partial payments; this case returns the [result code][] `temBAD_SEND_XRP_PARTIAL`.
-    - However, cross-currency payments that involve XRP as one of the currencies _can_ be partial payments.
+  - However, cross-currency payments that involve XRP as one of the currencies _can_ be partial payments.
 
 [result code]: ../../references/protocol/transactions/transaction-results/index.md
 
@@ -72,15 +73,15 @@ If both conditions are true, then `delivered_amount` contains the string value `
 
 You can find the `delivered_amount` field in the following places:
 
-| API | Method | Field |
-|-----|--------|-------|
-| [JSON-RPC / WebSocket][] | [account_tx method][] | `result.transactions` array members' `meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [tx method][] | `result.meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [transaction_entry method][] | `result.metadata.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [ledger method][] (with transactions expanded) | `result.ledger.transactions` array members' `metaData.delivered_amount` |
-| [WebSocket][] | [Transaction subscriptions](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) | Subscription messages' `meta.delivered_amount` |
-| ripple-lib v1.x | `getTransaction` method | `outcome.deliveredAmount` |
-| ripple-lib v1.x | `getTransactions` method | array members' `outcome.deliveredAmount` |
+| API                      | Method                                                                                                                                     | Field                                                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| [JSON-RPC / WebSocket][] | [account_tx method][]                                                                                                                      | `result.transactions` array members' `meta.delivered_amount`            |
+| [JSON-RPC / WebSocket][] | [tx method][]                                                                                                                              | `result.meta.delivered_amount`                                          |
+| [JSON-RPC / WebSocket][] | [transaction_entry method][]                                                                                                               | `result.metadata.delivered_amount`                                      |
+| [JSON-RPC / WebSocket][] | [ledger method][] (with transactions expanded)                                                                                             | `result.ledger.transactions` array members' `metaData.delivered_amount` |
+| [WebSocket][]            | [Transaction subscriptions](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) | Subscription messages' `meta.delivered_amount`                          |
+| ripple-lib v1.x          | `getTransaction` method                                                                                                                    | `outcome.deliveredAmount`                                               |
+| ripple-lib v1.x          | `getTransactions` method                                                                                                                   | array members' `outcome.deliveredAmount`                                |
 
 [WebSocket]: ../../references/http-websocket-apis/index.md
 [JSON-RPC / WebSocket]: ../../references/http-websocket-apis/index.md
@@ -91,7 +92,6 @@ If a financial institution's integration with the XRP Ledger assumes that the `A
 
 **The correct way to process incoming Payment transactions is to use [the `delivered_amount` metadata field](#the-delivered_amount-field),** not the `Amount` field. This way, an institution is never mistaken about how much it _actually_ received.
 
-
 ### Exploit Scenario Steps
 
 To exploit a vulnerable financial institution, a malicious actor does something like this:
@@ -101,8 +101,8 @@ To exploit a vulnerable financial institution, a malicious actor does something 
 3. The vulnerable institution reads the transaction's `Amount` field without looking at the `Flags` field or `delivered_amount` metadata field.
 4. The vulnerable institution credits the malicious actor in an external system, such as the institution's own ledger, for the full `Amount`, despite only receiving a much smaller `delivered_amount` in the XRP Ledger.
 5. The malicious actor withdraws as much of the balance as possible to another system before the vulnerable institution notices the discrepancy.
-    - Malicious actors usually prefer to convert the balance to another crypto-currency such as Bitcoin, because blockchain transactions are usually irreversible. With a withdrawal to a fiat currency system, the financial institution may be able to reverse or cancel the transaction several days after it initially executes.
-    - In the case of an exchange, the malicious actor can also withdraw an XRP balance directly back into the XRP Ledger.
+   - Malicious actors usually prefer to convert the balance to another crypto-currency such as Bitcoin, because blockchain transactions are usually irreversible. With a withdrawal to a fiat currency system, the financial institution may be able to reverse or cancel the transaction several days after it initially executes.
+   - In the case of an exchange, the malicious actor can also withdraw an XRP balance directly back into the XRP Ledger.
 
 In the case of a merchant, the order of operations is slightly different, but the concept is the same:
 
@@ -121,22 +121,21 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
 - Add additional sanity checks to your business logic for processing withdrawals. Never process a withdrawal if the total balance you hold in the XRP Ledger does not match your expected assets and obligations.
 - Follow "Know Your Customer" guidelines and strictly verify your customers' identities. You may be able to recognize and block malicious users in advance, or pursue legal action against a malicious actor who exploits your system.
 
-
 ## See Also
 
 - **Tools:**
-    - [Transaction Sender](/resources/dev-tools/tx-sender)
+  - [Transaction Sender](/resources/dev-tools/tx-sender)
 - **Concepts:**
-    - [Transactions](../transactions/index.md)
+  - [Transactions](../transactions/index.md)
 - **Tutorials:**
-    - [Look Up Transaction Results](../transactions/finality-of-results/look-up-transaction-results.md)
-    - [Monitor Incoming Payments with WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
-    - [Use Specialized Payment Types](../../tutorials/how-tos/use-specialized-payment-types/index.md)
-    - [List XRP as an Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
+  - [Look Up Transaction Results](../transactions/finality-of-results/look-up-transaction-results.md)
+  - [Monitor Incoming Payments with WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
+  - [Use Specialized Payment Types](../../tutorials/how-tos/use-specialized-payment-types/index.md)
+  - [List XRP as an Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **References:**
-    - [Payment transaction][]
-    - [Transaction Metadata](../../references/protocol/transactions/metadata.md)
-    - [account_tx method][]
-    - [tx method][]
+  - [Payment transaction][]
+  - [Transaction Metadata](../../references/protocol/transactions/metadata.md)
+  - [account_tx method][]
+  - [tx method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

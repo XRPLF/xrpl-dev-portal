@@ -8,19 +8,19 @@ Con el fin de fomentar un ambiente abierto y acogedor, nosotros, como contribuid
 
 Ejemplos de comportamiento que contribuyen a crear un ambiente positivo incluyen:
 
-* Utilizar lenguaje acogedor e inclusivo
-* Ser respetuoso con los diferentes puntos de vista y experiencias
-* Saber aceptar las críticas constructivas
-* Centrarse en lo que es lo mejor para la comunidad
-* Mostrar empatía hacia otros miembros de la comunidad
+- Utilizar lenguaje acogedor e inclusivo
+- Ser respetuoso con los diferentes puntos de vista y experiencias
+- Saber aceptar las críticas constructivas
+- Centrarse en lo que es lo mejor para la comunidad
+- Mostrar empatía hacia otros miembros de la comunidad
 
 Ejemplos de comportamiento que no contribuyen a crear un ambiente positivo incluyen:
 
-* Utilizar un lenguaje o imágenes sexualizadas y atención o insinuaciones sexuales no deseadas
-* Trolear, comentario insultantes/peyorativos y ataques personales o políticos
-* Acoso público o en privado
-* Publicar información privada de otras personas, así cómo direcciones físicas o electrónicas, sin permiso explícito
-* Cualquier otra conducta que pueda ser razonablemente considerada inapropiada en un sentido profesional
+- Utilizar un lenguaje o imágenes sexualizadas y atención o insinuaciones sexuales no deseadas
+- Trolear, comentario insultantes/peyorativos y ataques personales o políticos
+- Acoso público o en privado
+- Publicar información privada de otras personas, así cómo direcciones físicas o electrónicas, sin permiso explícito
+- Cualquier otra conducta que pueda ser razonablemente considerada inapropiada en un sentido profesional
 
 ## Nuestras responsabilidades
 

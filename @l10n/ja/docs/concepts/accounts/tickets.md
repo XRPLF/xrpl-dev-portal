@@ -1,10 +1,11 @@
 ---
 seo:
-    description: トランザクションを非連続的な順序で送信する
+  description: トランザクションを非連続的な順序で送信する
 labels:
-    - アカウント
-    - トランザクション送信
+  - アカウント
+  - トランザクション送信
 ---
+
 # Ticket
 
 XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引のために[シーケンス番号][]を確保する方法です。チケットを使うことで、通常の順序以外で取引を送信することができます。この使用例としては、必要な署名を集めるのに時間がかかるような[マルチサイン取引](multi-signing.md)などが挙げられます。
@@ -23,18 +24,17 @@ XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引�
 
 チケットでは、これらの問題を解決するために、通常の順番とは別に、後からでも（ただし、それぞれ1回まで）使用可能なシーケンス番号を用意しています。
 
-
 ## チケットは予約済みのシーケンス番号
 
 チケットとは、あるシーケンス番号が後に使用されるために確保されたという記録です。アカウントは、まず[TicketCreateトランザクション][]を送信して、1つまたは複数のシーケンス番号をチケットとして確保します。これにより、[台帳の状態データ](../ledgers/index.md)に、予約された各シーケンス番号について[Ticketオブジェクト][]の形で記録が残されます。
 
 チケットには、チケット作成時に設定されたシーケンス番号が使用されます。例えば、あなたのアカウントの現在のシーケンス番号が101で、3枚のチケットを作成した場合、それらのチケットにはチケットシーケンス番号102、103、104が付けられます。これにより、あなたのアカウントのシーケンス番号は105になります。
 
-[{% inline-svg file="/docs/img/ticket-creation.ja.svg" /%}](/docs/img/ticket-creation.ja.svg "図: 3つのTicketの作成")
+[{% inline-svg file="/docs/img/ticket-creation.ja.svg" /%}](/docs/img/ticket-creation.ja.svg '図: 3つのTicketの作成')
 
 後から、シーケンス番号の代わりに特定のチケットを使用してトランザクションを送信することができます。これにより、元帳の状態データから対応するチケットが削除され、アカウントの通常のシーケンス番号は変更されません。また、チケットを使用せずに、通常のシーケンス番号を使用してトランザクションを送信することもできます。利用可能なチケットは、いつでもどのような順番でも使用できますが、各チケットは1回しか使用できません。
 
-[{% inline-svg file="/docs/img/ticket-usage.ja.svg" /%}](/docs/img/ticket-usage.ja.svg "図: 103のTicketを利用")
+[{% inline-svg file="/docs/img/ticket-usage.ja.svg" /%}](/docs/img/ticket-usage.ja.svg '図: 103のTicketを利用')
 
 上記の例では、シーケンス番号105または作成した3つのチケットのいずれかを使用してトランザクションを送信できます。チケット103を使ってトランザクションを送信すると、それによってチケット103は元帳から削除されます。その後の次のトランザクションでは、シーケンス番号105、チケット102、またはチケット104を使用できます。
 
@@ -57,15 +57,14 @@ XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引�
 
 ## 関連項目
 
-
 - **Concepts:**
-    - [マルチシグ](multi-signing.md)
+  - [マルチシグ](multi-signing.md)
 - **Tutorials:**
-    - [チケットを使用する](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
+  - [チケットを使用する](../../tutorials/how-tos/manage-account-settings/use-tickets.md)
 - **References:**
-    - [TicketCreateトランザクション][]
-    - [トランザクションの共通フィールド](../../references/protocol/transactions/common-fields.md)
-    - [Ticket オブジェクト](../../references/protocol/ledger-data/ledger-entry-types/ticket.md)
-    - [account_objectsメソッド][]
+  - [TicketCreateトランザクション][]
+  - [トランザクションの共通フィールド](../../references/protocol/transactions/common-fields.md)
+  - [Ticket オブジェクト](../../references/protocol/ledger-data/ledger-entry-types/ticket.md)
+  - [account_objectsメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

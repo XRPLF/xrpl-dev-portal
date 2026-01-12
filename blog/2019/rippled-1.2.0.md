@@ -1,13 +1,14 @@
 ---
 labels:
-    - Release Notes
+  - Release Notes
 category: 2019
-date: "2019-02-13"
+date: '2019-02-13'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.2.0
 
 Ripple is pleased to announce the release of **XRP Ledger (`rippled`) version 1.2.0.**
@@ -26,15 +27,15 @@ One of the major benefits of decentralized blockchain technologies, such as the 
 
 Ripple expects the **MultisignReserve**, **fixTakerDryOfferRemoval**, and **fix1578** amendments to become enabled no earlier than Wednesday, 2019-02-27. When this happens, if you are not running release 1.2.0 or greater, your server will become [amendment blocked](/docs/concepts/networks-and-servers/amendments#amendment-blocked-servers), meaning that it:
 
-* Cannot determine the validity of a ledger;
+- Cannot determine the validity of a ledger;
 
-* Cannot submit or process transactions;
+- Cannot submit or process transactions;
 
-* Cannot participate in the consensus process;
+- Cannot participate in the consensus process;
 
-* Cannot vote on future amendments; and
+- Cannot vote on future amendments; and
 
-* Could rely on potentially invalid data.
+- Could rely on potentially invalid data.
 
 If the **MultisignReserve**, **fixTakerDryOfferRemoval**, and **fix1578** amendments do not become enabled, then your XRP Ledger server will not become amendment blocked and should continue to operate.
 
@@ -68,11 +69,11 @@ Related documentation is available in the [XRP Ledger Dev Portal](/docs/), inclu
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* Ripple Technical Services: <support@ripple.com>
+- Ripple Technical Services: <support@ripple.com>
 
-* [XRP Chat Forum](http://www.xrpchat.com/)
+- [XRP Chat Forum](http://www.xrpchat.com/)
 
 ## Other Information
 
@@ -88,137 +89,137 @@ When compiling XRP Ledger from source, you must use a compatible version of the 
 
 ### New and Updated Features
 
-* Enhance /crawl API endpoint with local server information ([#2823](https://github.com/ripple/rippled/pull/2823))
+- Enhance /crawl API endpoint with local server information ([#2823](https://github.com/ripple/rippled/pull/2823))
 
-* Report duration in current state ([#2772](https://github.com/ripple/rippled/pull/2772))
+- Report duration in current state ([#2772](https://github.com/ripple/rippled/pull/2772))
 
-* Allow servers to detect transaction censorship attempts ([#2700](https://github.com/ripple/rippled/pull/2700))
+- Allow servers to detect transaction censorship attempts ([#2700](https://github.com/ripple/rippled/pull/2700))
 
-* Add RPC command shard crawl ([#2697](https://github.com/ripple/rippled/pull/2697))
+- Add RPC command shard crawl ([#2697](https://github.com/ripple/rippled/pull/2697))
 
-* Default ledger_entry by index to return JSON, not hex ([#2713](https://github.com/ripple/rippled/pull/2713))
+- Default ledger_entry by index to return JSON, not hex ([#2713](https://github.com/ripple/rippled/pull/2713))
 
-* Add support for Ed25519 seeds encoded using ripple-lib ([#2734](https://github.com/ripple/rippled/pull/2734))
+- Add support for Ed25519 seeds encoded using ripple-lib ([#2734](https://github.com/ripple/rippled/pull/2734))
 
 ### New and Changed Amendments
 
-* Improve error indicators on two transactions ([#2584](https://github.com/ripple/rippled/pull/2584))
+- Improve error indicators on two transactions ([#2584](https://github.com/ripple/rippled/pull/2584))
 
-* Reduce the account reserve for a Multisign SignerList ([#2649](https://github.com/ripple/rippled/pull/2649))
+- Reduce the account reserve for a Multisign SignerList ([#2649](https://github.com/ripple/rippled/pull/2649))
 
-* fixTakerDryOfferRemoval Amendment to fix non-removal of dry offers when autobridging ([#2695](https://github.com/ripple/rippled/pull/2695))
+- fixTakerDryOfferRemoval Amendment to fix non-removal of dry offers when autobridging ([#2695](https://github.com/ripple/rippled/pull/2695))
 
-* Retire the FeeEscalation amendment ([#2730](https://github.com/ripple/rippled/pull/2730))
+- Retire the FeeEscalation amendment ([#2730](https://github.com/ripple/rippled/pull/2730))
 
 ### Config Changes
 
-* Remove [ips] section from sample config (e5d6f16)
+- Remove [ips] section from sample config (e5d6f16)
 
-* "Add zaphod.alloy.ee to default hub config" ([#2807](https://github.com/ripple/rippled/pull/2807))
+- "Add zaphod.alloy.ee to default hub config" ([#2807](https://github.com/ripple/rippled/pull/2807))
 
-* Load validator list from file: ([#2744](https://github.com/ripple/rippled/pull/2744))
+- Load validator list from file: ([#2744](https://github.com/ripple/rippled/pull/2744))
 
-* Change conflicting example websocket port ([#2726](https://github.com/ripple/rippled/pull/2726))
+- Change conflicting example websocket port ([#2726](https://github.com/ripple/rippled/pull/2726))
 
-* Remove outdated example configs. ([#2648](https://github.com/ripple/rippled/pull/2648))
+- Remove outdated example configs. ([#2648](https://github.com/ripple/rippled/pull/2648))
 
 ### Bug Fixes
 
-* Improve preferred ledger calculation ([#2784](https://github.com/ripple/rippled/pull/2784))
+- Improve preferred ledger calculation ([#2784](https://github.com/ripple/rippled/pull/2784))
 
-* Account for minimum reserve in potential spend ([#2750](https://github.com/ripple/rippled/pull/2750))
+- Account for minimum reserve in potential spend ([#2750](https://github.com/ripple/rippled/pull/2750))
 
-* STObject:setType() returns description of error if any ([#2753](https://github.com/ripple/rippled/pull/2753))
+- STObject:setType() returns description of error if any ([#2753](https://github.com/ripple/rippled/pull/2753))
 
-* Improve RPC error message for fee command ([#2704](https://github.com/ripple/rippled/pull/2704))
+- Improve RPC error message for fee command ([#2704](https://github.com/ripple/rippled/pull/2704))
 
-* Eliminate potential undefined behavior ([#2762](https://github.com/ripple/rippled/pull/2762))
+- Eliminate potential undefined behavior ([#2762](https://github.com/ripple/rippled/pull/2762))
 
-* Fix memory leak in Json move assignment operator ([#2747](https://github.com/ripple/rippled/pull/2747))
+- Fix memory leak in Json move assignment operator ([#2747](https://github.com/ripple/rippled/pull/2747))
 
-* Use after move fix ([#2752](https://github.com/ripple/rippled/pull/2752))
+- Use after move fix ([#2752](https://github.com/ripple/rippled/pull/2752))
 
-* Use correct manifest cache when loading ValidatorList ([#2745](https://github.com/ripple/rippled/pull/2745))
+- Use correct manifest cache when loading ValidatorList ([#2745](https://github.com/ripple/rippled/pull/2745))
 
 ### Other Improvements:
 
-* Support for boost 1.68 ([#2652](https://github.com/ripple/rippled/pull/2652))
+- Support for boost 1.68 ([#2652](https://github.com/ripple/rippled/pull/2652))
 
-* Improve ssl and NIH in cmake ([#2655](https://github.com/ripple/rippled/pull/2655))
+- Improve ssl and NIH in cmake ([#2655](https://github.com/ripple/rippled/pull/2655))
 
-* Refine json object test for NDEBUG case ([#2656](https://github.com/ripple/rippled/pull/2656))
+- Refine json object test for NDEBUG case ([#2656](https://github.com/ripple/rippled/pull/2656))
 
-* Use ExternalProject for some third party deps ([#2678](https://github.com/ripple/rippled/pull/2678))
+- Use ExternalProject for some third party deps ([#2678](https://github.com/ripple/rippled/pull/2678))
 
-* Report fetch pack errors with shards ([#2680](https://github.com/ripple/rippled/pull/2680))
+- Report fetch pack errors with shards ([#2680](https://github.com/ripple/rippled/pull/2680))
 
-* Rollup of small changes ([#2714](https://github.com/ripple/rippled/pull/2714))
+- Rollup of small changes ([#2714](https://github.com/ripple/rippled/pull/2714))
 
-* Prefer regex to manual parsing in parseURL ([#2763](https://github.com/ripple/rippled/pull/2763))
+- Prefer regex to manual parsing in parseURL ([#2763](https://github.com/ripple/rippled/pull/2763))
 
-* Remove custom terminate handler ([#2773](https://github.com/ripple/rippled/pull/2773))
+- Remove custom terminate handler ([#2773](https://github.com/ripple/rippled/pull/2773))
 
-* Implement missing string conversions for JSON ([#2779](https://github.com/ripple/rippled/pull/2779))
+- Implement missing string conversions for JSON ([#2779](https://github.com/ripple/rippled/pull/2779))
 
-* Properly handle the `--rpc_port` command line argument ([#2777](https://github.com/ripple/rippled/pull/2777))
+- Properly handle the `--rpc_port` command line argument ([#2777](https://github.com/ripple/rippled/pull/2777))
 
-* Correct amount serialization comments ([#2790](https://github.com/ripple/rippled/pull/2790))
+- Correct amount serialization comments ([#2790](https://github.com/ripple/rippled/pull/2790))
 
-* Reserve correct vector size for fee calculations ([#2794](https://github.com/ripple/rippled/pull/2794))
+- Reserve correct vector size for fee calculations ([#2794](https://github.com/ripple/rippled/pull/2794))
 
-* Improve crawl shard resource usage ([#2805](https://github.com/ripple/rippled/pull/2805))
+- Improve crawl shard resource usage ([#2805](https://github.com/ripple/rippled/pull/2805))
 
-* Ensure no overflow in casts between enums and integral types ([#2814](https://github.com/ripple/rippled/pull/2814))
+- Ensure no overflow in casts between enums and integral types ([#2814](https://github.com/ripple/rippled/pull/2814))
 
-* Upgrade sqlite to 3.26 ([#2818](https://github.com/ripple/rippled/pull/2818))
+- Upgrade sqlite to 3.26 ([#2818](https://github.com/ripple/rippled/pull/2818))
 
-* Include more information LedgerTrie log messages ([#2826](https://github.com/ripple/rippled/pull/2826))
+- Include more information LedgerTrie log messages ([#2826](https://github.com/ripple/rippled/pull/2826))
 
-* Simplify strHex ([#2668](https://github.com/ripple/rippled/pull/2668))
+- Simplify strHex ([#2668](https://github.com/ripple/rippled/pull/2668))
 
-* Add a flag that track whether we've already dispatched ([#2468](https://github.com/ripple/rippled/pull/2468))
+- Add a flag that track whether we've already dispatched ([#2468](https://github.com/ripple/rippled/pull/2468))
 
-* Add user defined literals for megabytes and kilobytes ([#2631](https://github.com/ripple/rippled/pull/2631))
+- Add user defined literals for megabytes and kilobytes ([#2631](https://github.com/ripple/rippled/pull/2631))
 
-* TxQ developer docs, and faster ledger size growth ([#2682](https://github.com/ripple/rippled/pull/2682))
+- TxQ developer docs, and faster ledger size growth ([#2682](https://github.com/ripple/rippled/pull/2682))
 
-* Add RPCCall unit tests ([#2685](https://github.com/ripple/rippled/pull/2685))
+- Add RPCCall unit tests ([#2685](https://github.com/ripple/rippled/pull/2685))
 
-* Remove unused function in AutoSocket.h ([#2692](https://github.com/ripple/rippled/pull/2692))
+- Remove unused function in AutoSocket.h ([#2692](https://github.com/ripple/rippled/pull/2692))
 
-* Report fetch pack errors with shards ([#2680](https://github.com/ripple/rippled/pull/2680))
+- Report fetch pack errors with shards ([#2680](https://github.com/ripple/rippled/pull/2680))
 
-* Improve codecov builds ([#2690](https://github.com/ripple/rippled/pull/2690))
+- Improve codecov builds ([#2690](https://github.com/ripple/rippled/pull/2690))
 
-* Remove beast::Journal default constructor ([#2691](https://github.com/ripple/rippled/pull/2691))
+- Remove beast::Journal default constructor ([#2691](https://github.com/ripple/rippled/pull/2691))
 
-* Add dependency for NuDB ExternalProject ([#2703](https://github.com/ripple/rippled/pull/2703))
+- Add dependency for NuDB ExternalProject ([#2703](https://github.com/ripple/rippled/pull/2703))
 
-* Include entire src tree in multiconfig projects ([#2707](https://github.com/ripple/rippled/pull/2707))
+- Include entire src tree in multiconfig projects ([#2707](https://github.com/ripple/rippled/pull/2707))
 
-* Remove unused execinfo.h header ([#2712](https://github.com/ripple/rippled/pull/2712))
+- Remove unused execinfo.h header ([#2712](https://github.com/ripple/rippled/pull/2712))
 
-* Build protobuf as ExternalProject when not found ([#2760](https://github.com/ripple/rippled/pull/2760))
+- Build protobuf as ExternalProject when not found ([#2760](https://github.com/ripple/rippled/pull/2760))
 
-* Reset the validator list fetch timer if an error occurs ([#2761](https://github.com/ripple/rippled/pull/2761))
+- Reset the validator list fetch timer if an error occurs ([#2761](https://github.com/ripple/rippled/pull/2761))
 
-* Remove WaitableEvent ([#2737](https://github.com/ripple/rippled/pull/2737))
+- Remove WaitableEvent ([#2737](https://github.com/ripple/rippled/pull/2737))
 
-* Cleanup unused Beast bits and pieces ([#2739](https://github.com/ripple/rippled/pull/2739))
+- Cleanup unused Beast bits and pieces ([#2739](https://github.com/ripple/rippled/pull/2739))
 
-* Add source filtering for coverage with option to disable ([#2742](https://github.com/ripple/rippled/pull/2742))
+- Add source filtering for coverage with option to disable ([#2742](https://github.com/ripple/rippled/pull/2742))
 
-* Remove unused json_batchallocator.h ([#2743](https://github.com/ripple/rippled/pull/2743))
+- Remove unused json_batchallocator.h ([#2743](https://github.com/ripple/rippled/pull/2743))
 
-* Inline calls to cachedRead ([#2749](https://github.com/ripple/rippled/pull/2749))
+- Inline calls to cachedRead ([#2749](https://github.com/ripple/rippled/pull/2749))
 
-* Remove the state file for the random number generator ([#2754](https://github.com/ripple/rippled/pull/2754))
+- Remove the state file for the random number generator ([#2754](https://github.com/ripple/rippled/pull/2754))
 
-* Remove duplicated include ([#2732](https://github.com/ripple/rippled/pull/2732))
+- Remove duplicated include ([#2732](https://github.com/ripple/rippled/pull/2732))
 
-* CI rpm build fix (7c96bba)
+- CI rpm build fix (7c96bba)
 
-* Allow rippled to compile with C++17 ([#2718](https://github.com/ripple/rippled/pull/2718))
+- Allow rippled to compile with C++17 ([#2718](https://github.com/ripple/rippled/pull/2718))
 
 ## Contributions
 

@@ -1,13 +1,14 @@
 ---
-date: "2018-03-22"
+date: '2018-03-22'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Release Notes
+  - Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.90.1
 
 Ripple has released `rippled` version 0.90.1, which includes fixes for issues reported by external security researchers. These issues, when exploited, could cause a `rippled` instance to restart or, in some circumstances, stop executing.
@@ -67,13 +68,13 @@ Related documentation is available in the Ripple Developer Portal, including det
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
 
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
 
-* Ripple Technical Services: <support@ripple.com>
+- Ripple Technical Services: <support@ripple.com>
 
-* XRP Chat: <http://www.xrpchat.com/>
+- XRP Chat: <http://www.xrpchat.com/>
 
 ### Upcoming Features
 
@@ -91,14 +92,13 @@ Ripple does not expect to enable the **SHAMapV2**, **Tickets**, or **OwnerPaysFe
 
 ### Bug Fixes
 
-* Address issues identified by external review
+- Address issues identified by external review
+  - Verify serialized public keys more strictly before using them (RIPD-1617, RIPD-1619, RIPD-1621)
 
-    * Verify serialized public keys more strictly before using them (RIPD-1617, RIPD-1619, RIPD-1621)
+  - Eliminate a potential out-of-bounds memory access in the base58 encoding/decoder logic. (RIPD-1618)
 
-    * Eliminate a potential out-of-bounds memory access in the base58 encoding/decoder logic. (RIPD-1618)
+  - Avoid invoking undefined behavior in memcpy (RIPD-1616)
 
-    * Avoid invoking undefined behavior in memcpy (RIPD-1616)
+- Limit STVar recursion during deserialization (RIPD-1603)
 
-* Limit STVar recursion during deserialization (RIPD-1603)
-
-* Use lock when creating a peer shard rangeset
+- Use lock when creating a peer shard rangeset

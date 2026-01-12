@@ -2,7 +2,7 @@
 html: txn-and-requests.html
 parent: intro-to-xrpl.html
 seo:
-    description: All interactions with the ledger are either transactions or requests.
+  description: All interactions with the ledger are either transactions or requests.
 labels:
   - Blockchain
 ---
@@ -34,7 +34,7 @@ Here is a sample transaction in JSON format. This transaction transfers 1 XRP fr
 
 Optional fields are available for all transactions, with additional fields available for specific transactions. You can include as many optional fields as you need, but do not have to include every field in every transaction.
 
-You send the transaction to the ledger as a command from JavaScript, Python, the command line, or any compatible service. The rippled servers propose transactions to the XRPL. 
+You send the transaction to the ledger as a command from JavaScript, Python, the command line, or any compatible service. The rippled servers propose transactions to the XRPL.
 
 ![Proposed Transacations](/docs/img/introduction17-gather-txns.png)
 
@@ -110,6 +110,7 @@ The request returns a wealth of information. Here is an example response for an 
     }
 }
 ```
+
 For information on the fields in an Account record, see [Accounts](../concepts/accounts/index.md).
 
 Next: [Software Ecosystem](software-ecosystem.md)

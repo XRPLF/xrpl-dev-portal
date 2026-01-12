@@ -1,13 +1,14 @@
 ---
 labels:
-    - Release Notes
+  - Release Notes
 category: 2019
-date: "2019-07-25"
+date: '2019-07-25'
 template: '../../@theme/templates/blogpost'
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger (rippled) version 1.3.1
 
 Ripple has released **version 1.3.1 of `rippled`**, the reference implementation of the core XRP Ledger protocol. To learn more about how to build and run a `rippled` server, see [Manage the Rippled Server](https://xrpl.org/manage-the-rippled-server.html).
@@ -16,8 +17,8 @@ This release supersedes version 1.3.0. Version 1.3.1 addresses deadlock conditio
 
 <!-- BREAK -->
 
-
 ## Installing or Updating `rippled`
+
 The installation instructions on supported platforms have changed for `rippled` 1.3.x.
 
 - For all new installs, see [Install `rippled`](https://xrpl.org/install-rippled.html).
@@ -25,8 +26,7 @@ The installation instructions on supported platforms have changed for `rippled` 
 - On Ubuntu Linux (16.04, 18.04, or newer), native (APT) packages are now available. If you already have `rippled` installed using the previous method (installing RPMs with Alien), see [Migration Instructions for Ubuntu Linux](https://xrpl.org/rippled-1-3-migration-instructions.html#migration-on-ubuntu-linux) for steps to migrate to the new, native packages. Additionally, it is now possible to enable [automatic updates](https://xrpl.org/update-rippled-automatically-on-linux.html) on Ubuntu.
 - Debian 9 Stretch is now a supported operating system. See [Installation on Ubuntu or Debian Linux](https://xrpl.org/install-rippled-on-ubuntu.html) for instructions.
 - For other platforms, please [compile from source](https://github.com/ripple/rippled/tree/develop/Builds/).
-    - Step-by-step instructions for compiling `rippled` are also available for [macOS](https://xrpl.org/build-run-rippled-macos.html) and [Ubuntu](https://xrpl.org/build-run-rippled-ubuntu.html).
-
+  - Step-by-step instructions for compiling `rippled` are also available for [macOS](https://xrpl.org/build-run-rippled-macos.html) and [Ubuntu](https://xrpl.org/build-run-rippled-ubuntu.html).
 
 ## Summary of Changes
 
@@ -52,10 +52,10 @@ This release is currently live on the [XRP Ledger Test Net](https://xrpl.org/xrp
 
 On supported platforms, see the [instructions on updating rippled](https://xrpl.org/install-rippled.html).
 
-| Package Type | Platform      | Link | SHA-256 |
-|--------------|---------------|------|:-------:|
-| RPM          | Linux x86-64  | [rippled-1.3.1-1.el7.x86_64.rpm](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.3.1-1.el7.x86_64.rpm) | `98ffea13716c3b37472d75cbb25870bfb6a7ee2360fe89a2b86833774174b370`  |
-| DEB          | Linux x86-64  | [rippled_1.3.1-1_amd64.deb](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.3.1-1_amd64.deb) | `3ecd391ba12f69060851952cef8ee1079a6f5e22ecb784bf05f50ef8f294aa92`  |
+| Package Type | Platform     | Link                                                                                                               |                              SHA-256                               |
+| ------------ | ------------ | ------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------: |
+| RPM          | Linux x86-64 | [rippled-1.3.1-1.el7.x86_64.rpm](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.3.1-1.el7.x86_64.rpm) | `98ffea13716c3b37472d75cbb25870bfb6a7ee2360fe89a2b86833774174b370` |
+| DEB          | Linux x86-64 | [rippled_1.3.1-1_amd64.deb](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.3.1-1_amd64.deb)      | `3ecd391ba12f69060851952cef8ee1079a6f5e22ecb784bf05f50ef8f294aa92` |
 
 ### Git commit
 
@@ -163,6 +163,7 @@ Date:   Wed Jul 24 15:21:56 2019 -0700
 ## Contributions
 
 ### GitHub
+
 [![GitHub: Stars](https://img.shields.io/github/stars/ripple/rippled.svg)](https://img.shields.io/github/stars/ripple/rippled.svg)
 [![GitHub: Watchers](https://img.shields.io/github/watchers/ripple/rippled.svg)](https://img.shields.io/github/watchers/ripple/rippled.svg)
 
@@ -172,6 +173,7 @@ We welcome contributions, big and small, and invite everyone to join the communi
 of XRP Ledger developers and help us build the Internet of Value.
 
 ### Credits
+
 The following people contributed directly to this release:
 
 - [Crypto Brad Garlinghouse](https://github.com/cryptobrad) (cryptobradgarlinghouse@protonmail.com)

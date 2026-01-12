@@ -1,11 +1,12 @@
 ---
 seo:
-    description: DepositAuth設定をすると、アカウントは着信ペイメントをデフォルトでブロックします。
+  description: DepositAuth設定をすると、アカウントは着信ペイメントをデフォルトでブロックします。
 labels:
-    - セキュリティ
-    - 支払い
-outdated_translation: true　
+  - セキュリティ
+  - 支払い
+outdated_translation: true
 ---
+
 # Deposit Authorization
 
 Deposit Authorizationは、XRP Ledgerの[アカウント](index.md)のオプション機能です。Deposit Authorizationが有効な場合、トランザクションはそのトランザクションの送信者がアカウント自体でない限り、アカウントへはどのような資産も送信できません。Deposit Authorizationのアカウントは、次の2つの方法でのみ入金することができます。
@@ -40,22 +41,22 @@ Deposit Authorizationを最大限に活用するため、以下の実施を推�
 Deposit Authorizationが有効化されているアカウントの特徴は次のとおりです。
 
 - [Paymentトランザクション][]の送信先には**できません**。ただし**以下の例外**は除きます。
-    - 送金先により、支払の送金元が[事前承認](#事前承認)されている場合。{% amendment-disclaimer name="DepositPreauth" /%}
-    - アカウントのXRP残高がアカウントの最低[必要準備金](reserves.md)以下で、XRP PaymentのAmountがアカウントの最低準備金（現時点では10XRP）以下である場合は、このアカウントを送金先に指定できます。これにより、アカウントがトランザクションを送信することも、XRPを受領することもできずに操作不可能な状態になるのを防ぎます。この場合、アカウントの所有者の準備金は関係ありません。
+  - 送金先により、支払の送金元が[事前承認](#事前承認)されている場合。{% amendment-disclaimer name="DepositPreauth" /%}
+  - アカウントのXRP残高がアカウントの最低[必要準備金](reserves.md)以下で、XRP PaymentのAmountがアカウントの最低準備金（現時点では10XRP）以下である場合は、このアカウントを送金先に指定できます。これにより、アカウントがトランザクションを送信することも、XRPを受領することもできずに操作不可能な状態になるのを防ぎます。この場合、アカウントの所有者の準備金は関係ありません。
 - **以下に該当する場合にのみ**[PaymentChannelClaimトランザクション][]からXRPを受領できます。
-    - PaymentChannelClaimトランザクションの送金元がPayment Channelの送金先である場合。
-    - PaymentChannelClaimトランザクションの送金先がPaymentChannelClaimの送金元を[事前承認している](#事前承認)場合。{% amendment-disclaimer name="DepositPreauth" /%}
+  - PaymentChannelClaimトランザクションの送金元がPayment Channelの送金先である場合。
+  - PaymentChannelClaimトランザクションの送金先がPaymentChannelClaimの送金元を[事前承認している](#事前承認)場合。{% amendment-disclaimer name="DepositPreauth" /%}
 - **以下に該当する場合にのみ**[EscrowFinishトランザクション][]からXRPを受領できます。
-    - EscrowFinishトランザクションの送金元がEscrowの送金先である場合。
-    - EscrowFinishトランザクションの送金先がEscrowFinishの送金元を[事前承認している](#事前承認)場合。{% amendment-disclaimer name="DepositPreauth" /%}
+  - EscrowFinishトランザクションの送金元がEscrowの送金先である場合。
+  - EscrowFinishトランザクションの送金先がEscrowFinishの送金元を[事前承認している](#事前承認)場合。{% amendment-disclaimer name="DepositPreauth" /%}
 - [CheckCash][]トランザクションを送信してXRPまたはトークンを受領**できます**。 {% amendment-disclaimer name="Checks" /%}
 - [OfferCreateトランザクション][]を送信してXRPまたはトークンを受領**できます**。
-    - 即時には完全に実行されないOfferCreateトランザクションがアカウントから送信される場合、このアカウントは、後でオファーが他のアカウントの[Payment][]トランザクションと[OfferCreate][]トランザクションによって消費される時点で、注文済みXRPとトークンのリマインダーを受信する**ことがあります**。
+  - 即時には完全に実行されないOfferCreateトランザクションがアカウントから送信される場合、このアカウントは、後でオファーが他のアカウントの[Payment][]トランザクションと[OfferCreate][]トランザクションによって消費される時点で、注文済みXRPとトークンのリマインダーを受信する**ことがあります**。
 - アカウントが[NoRippleフラグ](../tokens/fungible-tokens/rippling.md)を有効にせずにトラストラインを作成している場合、またはDefaultRippleフラグを有効にして通貨を発行した場合は、アカウントはRipplingの結果として、[Paymentトランザクション][]でそれらのトラストラインのトークンを受領**できます**。このようなトランザクションの送金先にすることはできません。
 - 一般的に、以下のすべての条件に該当する場合は、XRP LedgerのアカウントはXRP LedgerでXRP以外の通貨を受領**できません**。（このルールは、DepositAuthフラグに特有のものではありません。）
-    - アカウントにより、ゼロ以外の限度を指定したトラストラインが作成されていない。
-    - アカウントが、その他のアカウントにより作成されたトラストラインで通貨を発行していない。
-    - アカウントがまだオファーを出していない。
+  - アカウントにより、ゼロ以外の限度を指定したトラストラインが作成されていない。
+  - アカウントが、その他のアカウントにより作成されたトラストラインで通貨を発行していない。
+  - アカウントがまだオファーを出していない。
 
 以下の表に、トランザクションタイプ別にDepositAuthが有効または無効な状態での入金の可否をまとめました。
 
@@ -63,8 +64,6 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 <!-- {% partial file="/@l10n/ja/docs/_snippets/depositauth-semantics-table.md" /%} -->
 
 {% partial file="/docs/_snippets/depositauth-semantics-table.md" /%}
-
-
 
 ## Deposit Authorizationの有効化または無効化
 
@@ -103,7 +102,6 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 - 送金先アカウントがDeposit Authorizationを必要としているかどうか。（承認を必要としていない場合は、すべての送金元アカウントが承認済みとみなされます。）
 - 送金元アカウントに対し、送金先への送金が事前承認されているかどうか。
 
-
 ## 関連項目
 
 - [DepositPreauthトランザクション][]リファレンス。
@@ -114,7 +112,6 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 - 送信トランザクションが[Destinationタグ](../transactions/source-and-destination-tags.md)を指定している場合には、`RequireDest`フラグは、アカウントが通貨額のみを受領できることを示します。これにより、ユーザが支払の目的を指定し忘れることがなくなりますが、恣意的な送金先タグを作成できる不明な送金元から受取人が保護されるわけではありません。
 - [Partial Payment](../payment-types/partial-payments.md)により、アカウントは不要な支払を返金できます。この際、[送金手数料](../tokens/fungible-tokens/transfer-fees.md)と為替レートは送金額には追加されず、送金された金額から差し引かれます。
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
-
 
 [DepositPreauth Amendment]: /resources/known-amendments.md#depositpreauth
 

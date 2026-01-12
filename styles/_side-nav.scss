@@ -52,7 +52,6 @@ aside .active-parent > a {
 }
 
 .dactyl-tree-nav {
-
   nav {
     margin-left: 1rem;
     padding-left: 0;
@@ -95,7 +94,7 @@ aside .active-parent > a {
   }
 
   > .nav-item {
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     font-size: 1.125rem;
 
     > .nav-link {
@@ -109,9 +108,7 @@ aside .active-parent > a {
   }
 }
 
-
 /* Right navigation --------------------------------------------------------- */
-
 
 .toc-header {
   font-weight: bold;
@@ -150,13 +147,13 @@ aside .active-parent > a {
     padding: 0;
 
     &.separator {
-      padding: .25rem 1rem;
+      padding: 0.25rem 1rem;
     }
 
     a {
       display: block;
       margin-top: 5px;
-      padding: .25rem 1rem;
+      padding: 0.25rem 1rem;
       font-size: 0.9rem;
 
       &:hover,
@@ -187,11 +184,11 @@ aside .active-parent > a {
     }
   }
 
-
   &.no-sideline {
     border-left: 0;
 
-    a:hover, a.active {
+    a:hover,
+    a.active {
       border-left: 0;
       margin-left: 0;
     }

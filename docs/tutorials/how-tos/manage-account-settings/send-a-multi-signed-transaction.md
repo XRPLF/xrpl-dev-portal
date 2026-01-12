@@ -2,10 +2,11 @@
 html: send-a-multi-signed-transaction.html
 parent: manage-account-settings.html
 seo:
-    description: Send a transaction authorized with multiple signatures.
+  description: Send a transaction authorized with multiple signatures.
 labels:
   - Security
 ---
+
 # Send a Multi-Signed Transaction
 
 The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.
@@ -15,7 +16,6 @@ The following procedure demonstrates how to create, sign, and submit a multi-sig
 - You must have already [set up multi-signing](set-up-multi-signing.md) for your address.
 
 - Multi-signing must be available. Multi-signing has been enabled by an [**Amendment**](../../../concepts/networks-and-servers/amendments.md) to the XRP Ledger Consensus Protocol since 2016-06-27.
-
 
 ## 1. Create the transaction
 
@@ -28,19 +28,20 @@ Here's an example transaction ready to be multi-signed:
 {% tabs %}
 
 {% tab label="JSON" %}
+
 ```json
 {
-    "TransactionType": "TrustSet",
-    "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
-    "Flags": 262144,
-    "LimitAmount": {
-        "currency": "USD",
-        "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
-        "value": "100"
-    },
-    "Sequence": 2,
-    "SigningPubKey": "",
-    "Fee": "30000"
+  "TransactionType": "TrustSet",
+  "Account": "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
+  "Flags": 262144,
+  "LimitAmount": {
+    "currency": "USD",
+    "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "value": "100"
+  },
+  "Sequence": 2,
+  "SigningPubKey": "",
+  "Fee": "30000"
 }
 ```
 
@@ -62,7 +63,6 @@ Here's an example transaction ready to be multi-signed:
 Use the [sign_for method][] with the secret key and address of one of the members of your SignerList to get a signature for that member.
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%}
-
 
 ```
 $ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW <rsA2L..'s secret> '{
@@ -119,11 +119,10 @@ If you have a problem in stand-alone mode or a non-production network, check tha
 
 You can collect additional signatures in parallel or in serial:
 
-* In parallel: Use the `sign_for` command with the original JSON for the transaction. Each response has a single signature in the `Signers` array.
-* In serial: Use the `sign_for` command with the `tx_json` value from the previous `sign_for` response. Each response adds a new signature to the existing `Signers` array.
+- In parallel: Use the `sign_for` command with the original JSON for the transaction. Each response has a single signature in the `Signers` array.
+- In serial: Use the `sign_for` command with the `tx_json` value from the previous `sign_for` response. Each response adds a new signature to the existing `Signers` array.
 
 {% partial file="/docs/_snippets/secret-key-warning.md" /%}
-
 
 ```
 $ rippled sign_for rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v <rUpy..'s secret> '{
@@ -191,7 +190,6 @@ Connecting to 127.0.0.1:5005
 
 Depending on the SignerList you configured, you may need to repeat this step several times to get signatures from all the necessary parties.
 
-
 ## 4. Combine signatures and submit
 
 If you collected the signatures in serial, the `tx_json` from the last `sign_for` response has all the signatures assembled, so you can use that as the argument to the [submit_multisigned method][].
@@ -201,6 +199,7 @@ If you collected the signatures in parallel, you must manually construct a `tx_j
 {% tabs %}
 
 {% tab label="Commandline" %}
+
 ```
 $ rippled submit_multisigned '{
 >              "Account" : "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",
@@ -272,7 +271,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-Take note of the `hash` value from the response so you can check the results of the transaction later.  (In this case, the hash is `BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6`.)
+Take note of the `hash` value from the response so you can check the results of the transaction later. (In this case, the hash is `BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6`.)
 {% /tab %}
 
 {% tab label="Javascript" %}
@@ -314,6 +313,7 @@ In stand-alone mode, the server automatically considers a ledger to be `validate
 {% tabs %}
 
 {% tab label="Commandline" %}
+
 ```
 $ rippled tx BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6
 Loading: "/etc/opt/ripple/rippled.cfg"
@@ -426,6 +426,7 @@ Connecting to 127.0.0.1:5005
     }
 }
 ```
+
 {% /tab %}
 
 {% tab label="Javascript" %}
@@ -437,6 +438,5 @@ Connecting to 127.0.0.1:5005
 {% /tab %}
 
 {% /tabs %}
-
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

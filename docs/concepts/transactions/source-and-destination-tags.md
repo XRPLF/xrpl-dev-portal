@@ -2,12 +2,13 @@
 html: source-and-destination-tags.html
 parent: transactions.html
 seo:
-    description: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
+  description: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
 labels:
   - Payments
   - Accounts
   - Security
 ---
+
 # Source and Destination Tags
 
 _Source tags_ and _destination tags_ are a feature of XRP Ledger [payments](../payment-types/index.md) that can indicate specific purposes for payments from and to multi-purpose addresses. Source and destination tags do not have direct on-ledger functionality; source and destination tags merely provide information about how off-ledger systems should process a payment. In transactions, both source and destination tags are formatted as 32-bit unsigned integers.
@@ -39,11 +40,9 @@ To prevent overlap while protecting privacy, a business can divide the total ran
 
 Assigning tags in numerical order provides less privacy to customers. Since all XRP Ledger transactions are public, assigning tags in this way can make it possible to guess which tags correspond to various users' addresses or to derive information about users' accounts based on the tags used.
 
-
 ## Requiring Tags
 
 For an XRP Ledger address that may receive payments intended for several customer accounts, receiving a payment _without_ a destination tag can be a problem: it is not immediately obvious which customer to credit, which can require a manual intervention and a discussion with the sender to figure out who was the intended recipient. To reduce cases like this, you can [enable the `RequireDest` setting](../../tutorials/how-tos/manage-account-settings/require-destination-tags.md). That way, if a user forgets to include a destination tag in a payment, the XRP Ledger rejects their payment instead of giving you money you don't know what to do with. The user can then send the payment again, using the tag as they should have.
-
 
 ## See Also
 

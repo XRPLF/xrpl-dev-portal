@@ -1,13 +1,14 @@
 ---
-date: "2014-10-22"
+date: '2014-10-22'
 template: '../../@theme/templates/blogpost'
 category: 2014
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Gateway Advisory On Partial Payment Flag
 
 Ripple Labs has issued a Gateway Bulletin on the Partial Payment flag which describes the flag and best practices around balancing activity on and off the ledger. The tfPartialPayment flag is set by the sender to specify a payment where the beneficiary can receive less than the specified amount.

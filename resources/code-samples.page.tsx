@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { useThemeHooks } from '@redocly/theme/core/hooks';
+import * as React from 'react'
+import { useThemeHooks } from '@redocly/theme/core/hooks'
 
 export const frontmatter = {
   seo: {
     title: 'Code Samples',
-    description: "Browse sample code for building common use cases on the XRP Ledger.",
-  }
-};
+    description: 'Browse sample code for building common use cases on the XRP Ledger.',
+  },
+}
 
 const langIcons = {
   cli: require('../static/img/logos/cli.svg'),
@@ -17,16 +17,16 @@ const langIcons = {
   php: require('../static/img/logos/php.svg'),
   py: require('../static/img/logos/python.svg'),
   ts: require('../static/img/logos/typescript.svg'),
-};
+}
 const target = {
   github_forkurl: 'https://github.com/XRPLF/xrpl-dev-portal',
   github_branch: 'master',
-};
+}
 
 export default function CodeSamples() {
-  const { useTranslate, usePageSharedData } = useThemeHooks();
-  const { translate } = useTranslate();
-  const { codeSamples, langs } = usePageSharedData<any>('code-samples');
+  const { useTranslate, usePageSharedData } = useThemeHooks()
+  const { translate } = useTranslate()
+  const { codeSamples, langs } = usePageSharedData<any>('code-samples')
 
   return (
     <main className="landing page-code-samples">
@@ -41,28 +41,22 @@ export default function CodeSamples() {
           </div>
         </section>
         <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require('../static/img/backgrounds/xrpl-overview-orange.svg')}
-            id="xrpl-overview-orange"
-          />
+          <img alt="orange waves" src={require('../static/img/backgrounds/xrpl-overview-orange.svg')} id="xrpl-overview-orange" />
         </div>
         <section className="container-new py-26">
           <div className="d-flex flex-column col-sm-8 p-0">
-            <h3 className="h4 h2-sm">
-              {translate('Browse sample code for building common use cases on the XRP Ledger')}
-            </h3>
+            <h3 className="h4 h2-sm">{translate('Browse sample code for building common use cases on the XRP Ledger')}</h3>
           </div>
           <div className="row col-12  card-deck mt-10" id="code-samples-deck">
             <div className="row col-md-12 px-0" id="code_samples_list">
-              {codeSamples.map(card => (
+              {codeSamples.map((card) => (
                 <a
                   key={card.href}
                   className={`card cardtest col-12 col-lg-5 ${card.langs.join(' ')}`}
-                  href={target.github_forkurl + `/tree/${target.github_branch}/${card.href}`.replace('/content','')}
+                  href={target.github_forkurl + `/tree/${target.github_branch}/${card.href}`.replace('/content', '')}
                 >
                   <div className="card-header">
-                    {card.langs.map(lang => (
+                    {card.langs.map((lang) => (
                       <span className="circled-logo" key={lang}>
                         <img alt={lang} src={langIcons[lang]} />
                       </span>
@@ -82,9 +76,7 @@ export default function CodeSamples() {
           <div>
             <div className="d-flex flex-column">
               <h3 className="h4 h2-sm pb-4">{translate('Contribute Code Samples')}</h3>
-              <h6 className="eyebrow mb-20">
-                {translate('Help the XRPL community by submitting your own code samples')}
-              </h6>
+              <h6 className="eyebrow mb-20">{translate('Help the XRPL community by submitting your own code samples')}</h6>
             </div>
             <div className="row pl-4">
               <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_1">
@@ -92,9 +84,7 @@ export default function CodeSamples() {
                 <h5 className="pb-4 pt-md-5">{translate('Fork and clone')}</h5>
                 <p className="pb-4">
                   {translate('resources.contribute.1.part1', 'Fork the ')}
-                  <a href="https://github.com/XRPLF/xrpl-dev-portal">
-                    {translate('resources.contribute.1.part2', 'xrpl-dev-portal repo')}
-                  </a>
+                  <a href="https://github.com/XRPLF/xrpl-dev-portal">{translate('resources.contribute.1.part2', 'xrpl-dev-portal repo')}</a>
                   {translate('resources.contribute.1.part3', '. Using git, clone the fork to your computer.')}
                 </p>
               </div>
@@ -118,7 +108,10 @@ export default function CodeSamples() {
                 <span className="dot" />
                 <h5 className="pb-4 pt-md-5">{translate('Open a pull request')}</h5>
                 <p className="pb-0 mb-0">
-                  {translate('resources.contribute.4.part1', "Open a pull request to the original repo. Maintainers will review your submission and suggest changes if necessary. If the code sample is helpful, it'll be merged and added to XRPL.org!")}
+                  {translate(
+                    'resources.contribute.4.part1',
+                    "Open a pull request to the original repo. Maintainers will review your submission and suggest changes if necessary. If the code sample is helpful, it'll be merged and added to XRPL.org!",
+                  )}
                 </p>
               </div>
             </div>
@@ -127,5 +120,5 @@ export default function CodeSamples() {
         </section>
       </div>
     </main>
-  );
+  )
 }

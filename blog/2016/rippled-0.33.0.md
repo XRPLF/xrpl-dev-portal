@@ -1,22 +1,23 @@
 ---
-date: "2016-09-29"
+date: '2016-09-29'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Release Notes
+  - Release Notes
 category: 2016
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # rippled version 0.33.0
 
 Ripple has released `rippled` version 0.33.0, which introduces several new enhancements that improve the reliability and scalability of the Ripple Consensus Ledger (RCL). Ripple recommends that all server operators upgrade to version 0.33.0 by Wednesday, 2016-10-20, for service continuity.
 
 Highlights of this release include:
 
-* An improved version of the payment code, which Ripple expects to be available via an [Amendment named "Flow"](/resources/known-amendments.md#flow) on Wednesday, 2016-10-20. See below for details.
-* Payment Channels that permit scalable, off-ledger checkpoints for high volume, low value payments flowing in a single direction, which Ripple expects to be activated via an [Amendment named “PayChan”](/resources/known-amendments.md#paychan) on a future date TBA. See below for details.
-* SHAMapV2 changes the hash tree structure that rippled uses to represent a ledger, which Ripple expects to be activated via an [Amendment named SHAMapV2](/resources/known-amendments.md#shamapv2) on a future date TBA. See below for details.
+- An improved version of the payment code, which Ripple expects to be available via an [Amendment named "Flow"](/resources/known-amendments.md#flow) on Wednesday, 2016-10-20. See below for details.
+- Payment Channels that permit scalable, off-ledger checkpoints for high volume, low value payments flowing in a single direction, which Ripple expects to be activated via an [Amendment named “PayChan”](/resources/known-amendments.md#paychan) on a future date TBA. See below for details.
+- SHAMapV2 changes the hash tree structure that rippled uses to represent a ledger, which Ripple expects to be activated via an [Amendment named SHAMapV2](/resources/known-amendments.md#shamapv2) on a future date TBA. See below for details.
 
 ## Action Required
 
@@ -26,10 +27,10 @@ Highlights of this release include:
 
 The Flow amendment is expected to be activated on Wednesday, 2016-10-20. If you operate a rippled server but don't upgrade to version 0.33.0 by that time, then your server will become amendment blocked, which means that your server:
 
-* Cannot determine the validity of a ledger
-* Cannot submit or process transactions
-* Does not participate in the consensus process
-* Does not vote on future amendments
+- Cannot determine the validity of a ledger
+- Cannot submit or process transactions
+- Does not participate in the consensus process
+- Does not vote on future amendments
 
 If the Flow amendment is vetoed or does not pass via majority vote, then your server will not become amendment blocked and should continue to operate.
 
@@ -52,27 +53,29 @@ Set version to 0.33.0
 ```
 
 ## Network Update
+
 The Ripple operations team plans to deploy version 0.33.0 to all rippled servers under its operational control, including private clusters, starting at 2:00 PM PDT on Thursday, 2016-09-29. The deployment is expected to complete within 4 hours. The network should continue to operate during deployment and no outage is expected.
 
 ## Learn, ask questions, and discuss
+
 Related documentation is available in the Ripple Developer Portal, including detailed example API calls and web tools for API testing.
 
 Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: support@ripple.com
-* XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: support@ripple.com
+- XRP Chat _(Shut down. Formerly `www.xrpchat.com`)_
 
 ## Full Release Notes
 
 The `rippled` 0.33.0 release includes:
 
-* The  ["Flow"](/resources/known-amendments.md#flow) amendment. Ripple expects this amendment to be on Wednesday, 2016-10-20. 
+- The ["Flow"](/resources/known-amendments.md#flow) amendment. Ripple expects this amendment to be on Wednesday, 2016-10-20.
 
-* XRP Payment Channels. Payment channels are a new structure in the ledger designed to support [Interledger Protocol](https://interledger.org/) trust lines as balances get substantial. Ripple expects to be activated via Amendment on a future date (TBA) with the name [“PayChan”](/resources/known-amendments.md#paychan).
+- XRP Payment Channels. Payment channels are a new structure in the ledger designed to support [Interledger Protocol](https://interledger.org/) trust lines as balances get substantial. Ripple expects to be activated via Amendment on a future date (TBA) with the name [“PayChan”](/resources/known-amendments.md#paychan).
 
-* Changes to the hash tree structure, which `rippled` uses hash trees to represent a ledger. Ripple expects these changes expect to be available via Amendment on a future date (TBA) with the name [SHAMapV2](/resources/known-amendments.md#shamapv2).
+- Changes to the hash tree structure, which `rippled` uses hash trees to represent a ledger. Ripple expects these changes expect to be available via Amendment on a future date (TBA) with the name [SHAMapV2](/resources/known-amendments.md#shamapv2).
 
 You can [update to the new version](/docs/infrastructure/installation/update-rippled-automatically-on-linux) on Red Hat Enterprise Linux 7 or CentOS 7 using yum. For other platforms, please [compile the new version from source](https://github.com/XRPLF/rippled/blob/master/BUILD.md).
 
@@ -88,15 +91,15 @@ XRP Payment Channels permit scalable, intermittent, off-ledger settlement of ILP
 
 The initial concept behind payment channels was discussed as [early as 2011](https://bitcointalk.org/index.php?topic=25786.0) and the first implementation was done by Mike Hearn [in bitcoinj](https://bitcoinj.github.io/working-with-micropayments). Recent work being done by [Lightning Network](https://en.bitcoin.it/wiki/Lightning_Network) has showcased examples of the many use cases for payment channels. The introduction of XRP Payment Channels allows for a more efficient integration between RCL and ILP to further support enterprise use cases for high volume, low value payments.
 
-* The account_info command can now return information about queued transactions - [RIPD-1205]
-* Automatically-provided sequence numbers now consider the transaction queue - [RIPD-1206]
-* The server_info and server_state commands now include the queue-related escalated fee factor in the load_factor field of the response - [RIPD-1207]
-* A transaction with a high transaction cost can now cause transactions from the same sender queued in front of it to get into the open ledger if the transaction costs are high enough on average across all such transactions. - [RIPD-1246]
-* Reorganization: Move LoadFeeTrack to app/tx and clean up functions - [RIPD-956]
-* Reorganization: unit test source files -  [RIPD-1132]
-* Reorganization: NuDB stand-alone repository - [RIPD-1163]
-* Reorganization: Add BEAST_EXPECT to Beast - [RIPD-1243]
-* Reorganization: Beast 64-bit CMake/Bjam target on Windows - [RIPD-1262]
+- The account_info command can now return information about queued transactions - [RIPD-1205]
+- Automatically-provided sequence numbers now consider the transaction queue - [RIPD-1206]
+- The server_info and server_state commands now include the queue-related escalated fee factor in the load_factor field of the response - [RIPD-1207]
+- A transaction with a high transaction cost can now cause transactions from the same sender queued in front of it to get into the open ledger if the transaction costs are high enough on average across all such transactions. - [RIPD-1246]
+- Reorganization: Move LoadFeeTrack to app/tx and clean up functions - [RIPD-956]
+- Reorganization: unit test source files - [RIPD-1132]
+- Reorganization: NuDB stand-alone repository - [RIPD-1163]
+- Reorganization: Add BEAST_EXPECT to Beast - [RIPD-1243]
+- Reorganization: Beast 64-bit CMake/Bjam target on Windows - [RIPD-1262]
 
 **Bug Fixes**
 

@@ -1,13 +1,14 @@
 ---
 category: 2020
-date: "2020-04-10"
+date: '2020-04-10'
 template: '../../@theme/templates/blogpost'
 labels:
-    - rippled Release Notes
+  - rippled Release Notes
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Introducing XRP Ledger version 1.5.0
 
 **XRP Ledger (`rippled` server) version 1.5.0** has been released. The `rippled` 1.5.0 release introduces several improvements and new features, including support for gRPC API, API versioning, UNL propagation via the peer network, new RPC methods `validator_info` and `manifest`, augmented `submit` method, improved `tx` method, improved CLI parsing, improved protocol-level handshaking protocol, improved package building and various other minor bug fixes and improvements.
@@ -26,11 +27,11 @@ If you operate an XRP Ledger validator, please [learn more about these amendment
 
 When one or both of the new amendments become enabled, any server on a version earlier than 1.5.0 will become [amendment blocked](https://xrpl.org/amendments.html#amendment-blocked), meaning that it:
 
-* Cannot determine the validity of a ledger;
-* Cannot submit or process transactions;
-* Cannot participate in the consensus process;
-* Cannot vote on future amendments; and
-* Could rely on potentially invalid data.
+- Cannot determine the validity of a ledger;
+- Cannot submit or process transactions;
+- Cannot participate in the consensus process;
+- Cannot vote on future amendments; and
+- Could rely on potentially invalid data.
 
 If the amendments do not become enabled, then your XRP Ledger server will not become amendment blocked and should continue to operate.
 
@@ -42,18 +43,18 @@ For instructions on updating XRP Ledger on supported platforms, see here:
 
 The SHA-256 hashes for the official packages are as follows:
 
-| Package | SHA-256 |
-|:--------|:--------|
+| Package                                                                                                  | SHA-256                                                            |
+| :------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------- |
 | [Red Hat RPM (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-1.5.0-1.el7.x86_64.rpm) | `fe6b5ba0958fd4531a917af4ba58efecf51c951e534f06e025a684c2777aa7f8` |
-| [Ubuntu DEB (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.5.0-1_amd64.deb) | `4ed13ab7cd65fcfe95d2ea85522414509b13e49f8a1633ac51b3457974cad6c6` |
+| [Ubuntu DEB (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_1.5.0-1_amd64.deb)  | `4ed13ab7cd65fcfe95d2ea85522414509b13e49f8a1633ac51b3457974cad6c6` |
 
 For other platforms, please compile version 1.5.0 from source.
 
-* [Build on Ubuntu Linux](https://xrpl.org/build-run-rippled-ubuntu.html)
+- [Build on Ubuntu Linux](https://xrpl.org/build-run-rippled-ubuntu.html)
 
-* [Build on macOS](https://xrpl.org/build-run-rippled-macos.html)
+- [Build on macOS](https://xrpl.org/build-run-rippled-macos.html)
 
-* [Build on other platforms](https://github.com/XRPLF/rippled/blob/master/BUILD.md)
+- [Build on other platforms](https://github.com/XRPLF/rippled/blob/master/BUILD.md)
 
 The first log entry should be the change setting the version:
 
@@ -73,7 +74,6 @@ Other resources:
 
 - [XRP Chat Forum](http://www.xrpchat.com/)
 - [Xpring Forum](https://forum.xpring.io/)
-
 
 ## Other Information
 
@@ -109,10 +109,10 @@ Compiling `rippled` 1.5.0 from source on any platform requires a compiler that s
 - Remove unused `Beast` code. [`172ead822`](https://github.com/ripple/rippled/commit/172ead822159a3c1f9b73217da4316df48851ab6)
 - Lag ratchet code fix to use proper ephemeral public keys instead of the long-term master public keys.[`6529d3e6f`](https://github.com/ripple/rippled/commit/6529d3e6f7333fc5226e5aa9ae65f834cb93dfe5)
 
-
 ## Contributions
 
 ### GitHub
+
 [![GitHub: Stars](https://img.shields.io/github/stars/ripple/rippled.svg)](https://img.shields.io/github/stars/ripple/rippled.svg)
 [![GitHub: Watchers](https://img.shields.io/github/watchers/ripple/rippled.svg)](https://img.shields.io/github/watchers/ripple/rippled.svg)
 

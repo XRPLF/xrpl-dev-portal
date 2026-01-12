@@ -2,10 +2,11 @@
 html: rate-limiting.html
 parent: api-conventions.html
 seo:
-    description: パブリックAPIがどのようにクライアントのリクエスト数を制限しているかについての説明です。
+  description: パブリックAPIがどのようにクライアントのリクエスト数を制限しているかについての説明です。
 labels:
   - コアサーバ
 ---
+
 # レート制限
 
 `rippled`サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、[ネットワークアドレス変換](https://ja.wikipedia.org/wiki/ネットワークアドレス変換)の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。
@@ -23,8 +24,8 @@ WebSocket APIの場合、サーバは接続を閉じ、切断メッセージと�
 ```js
 const WebSocket = require('ws')
 const ws = new WebSocket('ws://localhost:6007/')
-ws.on('close', (code,reason) => {
-  console.log("Disconnected. \ncode: ", code, "\nreason: ", reason)
+ws.on('close', (code, reason) => {
+  console.log('Disconnected. \ncode: ', code, '\nreason: ', reason)
 })
 
 // If rate limited, prints:
@@ -46,6 +47,7 @@ Server is overloaded
 ```
 
 ## リクエストあたりのレート
+
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/resource/Fees.h "ソース")
 
 サーバは時間の経過とともに行われるリクエストの数に基づいてクライアントの使用率を計算し、サーバがリクエストにレスポンスするためにどれだけの作業をしなければならないかに基づいて、異なるタイプのリクエストに重みをつけます。[subscribeメソッド][]と[path_findメソッド][]に対するサーバからの後続メッセージもクライアントの使用率にカウントされます。
@@ -55,13 +57,13 @@ Server is overloaded
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
-    - [ソフトウェアエコシステム](../../../introduction/software-ecosystem.md)
+  - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
+  - [ソフトウェアエコシステム](../../../introduction/software-ecosystem.md)
 - **チュートリアル:**
-    - [XRP Ledger APIの使用開始](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
-    - [rippledのトラブルシューティング](../../../infrastructure/troubleshooting/index.md)
+  - [XRP Ledger APIの使用開始](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
+  - [rippledのトラブルシューティング](../../../infrastructure/troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](../index.md)
-        - [エラーのフォーマット](error-formatting.md)
+  - [rippled APIリファレンス](../index.md)
+    - [エラーのフォーマット](error-formatting.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

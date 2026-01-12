@@ -1,26 +1,27 @@
 ---
-date: "2016-06-27"
+date: '2016-06-27'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Release Notes
+  - Release Notes
 category: 2016
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
-# rippled version 0.32.0 has been released #
+
+# rippled version 0.32.0 has been released
 
 Ripple is proud to announce the release of `rippled` version 0.32.0. This release introduces several enhancements that improve the reliability and scalability of the Ripple Consensus Ledger. Ripple recommends that all server operators upgrade to the new version.
 
 Highlights of this release include:
 
-* The transaction queue now supports batching and can hold up to 10 transactions per account, allowing users to queue multiple transactions for processing when the network load is high. This encourages liquidity for XRP since important transactions now have a more reliable way of getting into the ledger. For more information, see [Transaction Queue](/docs/concepts/transactions/transaction-queue).
-* The `server_info` and `server_state` commands now include information on transaction cost multipliers. Customers who want to robustly submit transactions now have additional tools for accurately setting the fee based on changing network conditions. Furthermore, the `fee` command is now available to unprivileged users. For more information, see the [`rippled` API Method Reference](/docs/references/http-websocket-apis).
-* There's a new WebSocket implementation based on [Beast](https://github.com/vinniefalco/Beast). Use of this implementation is optional. A future version of `rippled` will make this WebSocket implementation the default, with the old implementation removed.
+- The transaction queue now supports batching and can hold up to 10 transactions per account, allowing users to queue multiple transactions for processing when the network load is high. This encourages liquidity for XRP since important transactions now have a more reliable way of getting into the ledger. For more information, see [Transaction Queue](/docs/concepts/transactions/transaction-queue).
+- The `server_info` and `server_state` commands now include information on transaction cost multipliers. Customers who want to robustly submit transactions now have additional tools for accurately setting the fee based on changing network conditions. Furthermore, the `fee` command is now available to unprivileged users. For more information, see the [`rippled` API Method Reference](/docs/references/http-websocket-apis).
+- There's a new WebSocket implementation based on [Beast](https://github.com/vinniefalco/Beast). Use of this implementation is optional. A future version of `rippled` will make this WebSocket implementation the default, with the old implementation removed.
 
 Read the complete [release notes in GitHub](https://github.com/ripple/rippled/releases/tag/0.32.0).
 
-## Actions Required ##
+## Actions Required
 
 1. If you operate a `rippled` server, you should upgrade to version 0.32.0 for the best performance.
 2. If you have backend software which constructs and submits transactions to the Ripple network, you may need to adapt it to correctly use the network’s new transaction queue mechanism.
@@ -46,15 +47,17 @@ Date:   Fri Jun 24 11:30:09 2016 -0400
     Set version to 0.32.0
 ```
 
-## Network Update ##
-The Ripple operations team plans to deploy version 0.32.0  to all rippled servers under its operational control, including private clusters, starting at 1:00 PM PDT on Wednesday, 2016-06-29. The deployment is expected to complete within 4 hours.
+## Network Update
 
-## Learn, ask questions, and discuss ##
+The Ripple operations team plans to deploy version 0.32.0 to all rippled servers under its operational control, including private clusters, starting at 1:00 PM PDT on Wednesday, 2016-06-29. The deployment is expected to complete within 4 hours.
+
+## Learn, ask questions, and discuss
+
 Ripple supported documentation including detailed example API calls and web tools for API testing are located on the Ripple Developer Portal.
 
-### Other resources: ###
+### Other resources:
 
-* The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
-* The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
-* Ripple Technical Services: [support@ripple.com](mailto:support@ripple.com)
-* XRP Chat: <http://www.xrpchat.com/>
+- The Ripple Forum (_Disabled._ Formerly `forum.ripple.com`)
+- The Ripple Dev Blog _(Replaced with [xrpl.org/blog](https://xrpl.org/blog/))_
+- Ripple Technical Services: [support@ripple.com](mailto:support@ripple.com)
+- XRP Chat: <http://www.xrpchat.com/>

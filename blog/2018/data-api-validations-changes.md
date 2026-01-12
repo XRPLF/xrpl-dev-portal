@@ -1,17 +1,17 @@
 ---
-date: "2018-10-23"
+date: '2018-10-23'
 template: '../../@theme/templates/blogpost'
 category: 2018
 labels:
-    - Advisories
+  - Advisories
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Updates Coming to Data API
 
 The Data API, which provides data to XRP Charts and third-party tools, is scheduled to update to **version 2.4.0** in approximately two weeks, on **2018-11-07**. This version improves the way the Data API imports and summarizes data on XRP Ledger validators.
-
 
 ## Improvements
 
@@ -29,13 +29,13 @@ See the "Action Required" section below for a summary of which methods these cha
 This release contains the following breaking changes:
 
 - **Removed methods.** The following methods are removed in v2.4.0 and will no longer be available after the release on **2018-11-07**:
-    - **Get Validations** (`/v2/network/validations`)
-    - **Get Validator Validations** (`/v2/network/validators/{pubkey}/validations`)
+  - **Get Validations** (`/v2/network/validations`)
+  - **Get Validator Validations** (`/v2/network/validators/{pubkey}/validations`)
 - **Format Changes.** The request and response formats of the following methods have changed.
-    - **Get Validator** (`/v2/network/validators/{pubkey}`)
-    - **Get Validators** (`/v2/network/validators`)
-    - **Get Daily Validator Reports** (`/v2/network/validator_reports`)
-    - **Get Single Validator Daily Reports** (`/v2/network/validators/{pubkey}/validator_reports`)
+  - **Get Validator** (`/v2/network/validators/{pubkey}`)
+  - **Get Validators** (`/v2/network/validators`)
+  - **Get Daily Validator Reports** (`/v2/network/validator_reports`)
+  - **Get Single Validator Daily Reports** (`/v2/network/validators/{pubkey}/validator_reports`)
 
 If you use any of the above API methods, you may need to make changes to use the updated API.
 

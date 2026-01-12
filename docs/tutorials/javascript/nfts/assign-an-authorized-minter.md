@@ -2,13 +2,14 @@
 html: assign-an-authorized-minter-using-javascript.html
 parent: nfts-using-javascript.html
 seo:
-    description: Authorize another account to mint NFTs for you.
+  description: Authorize another account to mint NFTs for you.
 labels:
   - Accounts
   - Quickstart
   - XRP
   - NFTs, NFTokens
 ---
+
 # Assign an Authorized Minter Using JavaScript
 
 You can assign another account permission to mint NFTs for you.
@@ -29,16 +30,16 @@ You can download the [NFT Modular Sam;ples](../../../../_code-samples/nft-modula
 1. Open `authorized-minter.html` in a browser.
 2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
-    1. If you copied the gathered information from another tutorial:
-        1. Paste the gathered information to the **Result** field.
-        2. Click **Distribute Account Info**.
-    2. If you have an existing account seed:
-        1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
-        2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
-    2. If you do not have existing accounts:
-        1. Click **Get New Account 1**.
-        2. Click **Get New Account 2**.
-        
+   1. If you copied the gathered information from another tutorial:
+      1. Paste the gathered information to the **Result** field.
+      2. Click **Distribute Account Info**.
+   2. If you have an existing account seed:
+      1. Paste the account seed to the **Account 1 Seed** or **Account 2 Seed** field.
+      2. Click **Get Account 1 from Seed** or **Get Account 2 from Seed**.
+   3. If you do not have existing accounts:
+      1. Click **Get New Account 1**.
+      2. Click **Get New Account 2**.
+
 ## Authorize an Account to Create NFTs
 
 To authorize another account to create NFTs for your account:
@@ -54,7 +55,7 @@ To authorize another account to create NFTs for your account:
 To mint a non-fungible token for another account:
 
 1. Click the Account 1 or Account 2 radio button. The account information populates the uneditable fields of the form.
-2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. 
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_.
 3. Enter the **NFT URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
 4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 5. Enter the account number on whose behalf you are minting the NFT in the **NFT Issuer** field.
@@ -80,7 +81,7 @@ This function sets the authorized minter for an account. Each account can have 0
 // ****************  Authorize Minter  *******************
 // *******************************************************
 
-async function authorizeMinter() {    
+async function authorizeMinter() {
 ```
 
 Get the account wallet and connect to the XRP Ledger.
@@ -99,28 +100,28 @@ Get the account wallet and connect to the XRP Ledger.
 Create the transaction JSON.
 
 ```javascript
-    tx_json = {
-      "TransactionType": "AccountSet",
-      "Account": wallet.address,
-      "NFTokenMinter": authorizedMinterField.value,
-      "SetFlag": xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter
-    }
+tx_json = {
+  TransactionType: 'AccountSet',
+  Account: wallet.address,
+  NFTokenMinter: authorizedMinterField.value,
+  SetFlag: xrpl.AccountSetAsfFlags.asfAuthorizedNFTokenMinter,
+}
 ```
 
 Sign and send the prepared transaction, then wait for the results.
 
 ```javascript
-    const prepared = await client.autofill(tx_json)
-    const signed = wallet.sign(prepared)
-    const result = await client.submitAndWait(signed.tx_blob)
+const prepared = await client.autofill(tx_json)
+const signed = wallet.sign(prepared)
+const result = await client.submitAndWait(signed.tx_blob)
 ```
 
 Report the results.
 
 ```javascript
-    results += '\nAccount setting succeeded.\n'
-    results += JSON.stringify(result, null, 2)
-    resultField.value = results
+results += '\nAccount setting succeeded.\n'
+results += JSON.stringify(result, null, 2)
+resultField.value = results
 ```
 
 Catch and report any errors.
@@ -174,63 +175,63 @@ async function mintOther() {
 Create the JSON transaction object.
 
 ```javascript
-    // ------------------------------------------------------------------------
-    const tx_json = {
-      "TransactionType": "NFTokenMint",
-      "Account": wallet.classicAddress,
-      "URI": xrpl.convertStringToHex(nftURLfield.value),
-      "Flags": parseInt(flagsField.value),
-      "TransferFee": parseInt(transferFeeField.value),
-      "Issuer": nftIssuerField.value,
-      "NFTokenTaxon": nftTaxonField.value //Required, but if you have no use for it, set to zero.
-    }
+// ------------------------------------------------------------------------
+const tx_json = {
+  TransactionType: 'NFTokenMint',
+  Account: wallet.classicAddress,
+  URI: xrpl.convertStringToHex(nftURLfield.value),
+  Flags: parseInt(flagsField.value),
+  TransferFee: parseInt(transferFeeField.value),
+  Issuer: nftIssuerField.value,
+  NFTokenTaxon: nftTaxonField.value, //Required, but if you have no use for it, set to zero.
+}
 ```
 
 If the **Amount** field is populated, configure and add the expected amount the NFT will sell for.
 
 ```javascript
-    if (amountField.value) {
-         tx_json.Amount = configureAmount(amountField.value);
-    }
+if (amountField.value) {
+  tx_json.Amount = configureAmount(amountField.value)
+}
 ```
 
 If the **Expiration (days)** field is populated, configure and add the expiration date.
 
 ```javascript
-    if (expirationField.value) {
-       tx_json.Expiration = configureExpiration(expirationField.value);
-    }
+if (expirationField.value) {
+  tx_json.Expiration = configureExpiration(expirationField.value)
+}
 ```
 
 If the **Destination** field is populated, add it to the transaction JSON object.
 
 ```javascript
-    if (destinationField.value) {
-      tx_json.Destination = destinationField.value;
-    }
+if (destinationField.value) {
+  tx_json.Destination = destinationField.value
+}
 ```
 
 Submit the transaction and wait for the result.
 
 ```javascript
-    const tx = await client.submitAndWait(tx_json, { wallet: wallet })
+const tx = await client.submitAndWait(tx_json, { wallet: wallet })
 ```
 
 Request the list of NFTs for the current account.
 
 ```javascript
-    const nfts = await client.request({
-      method: "account_nfts",
-      account: wallet.classicAddress
-    })
+const nfts = await client.request({
+  method: 'account_nfts',
+  account: wallet.classicAddress,
+})
 ```
 
 Report the results.
 
 ```javascript
-    results += '\n\n=== Transaction result: ' + tx.result.meta.TransactionResult
-    results += '\n\n=== NFTs: ' + JSON.stringify(nfts, null, 2)
-    resultField.value = results + (await client.getXrpBalance(wallet.address))
+results += '\n\n=== Transaction result: ' + tx.result.meta.TransactionResult
+results += '\n\n=== NFTs: ' + JSON.stringify(nfts, null, 2)
+resultField.value = results + (await client.getXrpBalance(wallet.address))
 ```
 
 Catch and report any errors.
@@ -254,7 +255,6 @@ Disconnect from the XRP Ledger.
   }
 } //End of mintOther()
 ```
-
 
 ## authorized-minter.html
 

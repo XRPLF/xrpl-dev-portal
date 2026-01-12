@@ -1,11 +1,11 @@
 // ******************************************************
 // ************* Get the Preferred Network **************
-// ******************************************************  
+// ******************************************************
 
 function getNet() {
   let net
-  if (document.getElementById("tn").checked) net = "wss://s.altnet.rippletest.net:51233/"
-  if (document.getElementById("dn").checked) net = "wss://s.devnet.rippletest.net:51233/"
+  if (document.getElementById('tn').checked) net = 'wss://s.altnet.rippletest.net:51233/'
+  if (document.getElementById('dn').checked) net = 'wss://s.devnet.rippletest.net:51233/'
   return net
 } // End of getNet()
 
@@ -20,41 +20,40 @@ async function getAccount() {
   resultField.value = `===Getting Account===\n\nConnected to ${net}.`
   try {
     let faucetHost = null
-    const my_wallet = (await client.fundWallet(null, { faucetHost})).wallet
+    const my_wallet = (await client.fundWallet(null, { faucetHost })).wallet
     const newAccount = [my_wallet.address, my_wallet.seed]
-    return (newAccount)
-  }
-  catch (error) {
-    console.error('===Error getting account:', error);
+    return newAccount
+  } catch (error) {
+    console.error('===Error getting account:', error)
     results += `\nError: ${error.message}\n`
     resultField.value = results
-    throw error; // Re-throw the error to be handled by the caller
-  }
-  finally {
+    throw error // Re-throw the error to be handled by the caller
+  } finally {
     // Disconnect from the client
     if (client && client.isConnected()) {
-      await client.disconnect();
-    } }
+      await client.disconnect()
+    }
+  }
 } // End of getAccount()
 
 async function getNewAccount1() {
-  account1address.value = "=== Getting new account. ===\n\n"
-  account1seed.value = ""
-  const accountInfo= await getAccount()
+  account1address.value = '=== Getting new account. ===\n\n'
+  account1seed.value = ''
+  const accountInfo = await getAccount()
   account1address.value = accountInfo[0]
   account1seed.value = accountInfo[1]
 }
 
 async function getNewAccount2() {
-  account2address.value = "=== Getting new account. ===\n\n"
-  account2seed.value = ""
-  const accountInfo= await getAccount()
+  account2address.value = '=== Getting new account. ===\n\n'
+  account2seed.value = ''
+  const accountInfo = await getAccount()
   account2address.value = accountInfo[0]
   account2seed.value = accountInfo[1]
 }
 
 // *****************************************************
-// ********** Get Account from Seed ******************** 
+// ********** Get Account from Seed ********************
 // *****************************************************
 
 async function getAccountFromSeed(my_seed) {
@@ -66,26 +65,25 @@ async function getAccountFromSeed(my_seed) {
   try {
     const wallet = xrpl.Wallet.fromSeed(my_seed)
     const address = wallet.address
-    results += "===Wallet found.===\n\n"
-    results += "Account address: " + address + "\n\n"
+    results += '===Wallet found.===\n\n'
+    results += 'Account address: ' + address + '\n\n'
     resultField.value = results
-    return (address)
-  }
-  catch (error) {
-    console.error('===Error getting account from seed:', error);
+    return address
+  } catch (error) {
+    console.error('===Error getting account from seed:', error)
     results += `\nError: ${error.message}\n`
     resultField.value = results
-    throw error; // Re-throw the error to be handled by the caller
-  }
-  finally {
+    throw error // Re-throw the error to be handled by the caller
+  } finally {
     // Disconnect from the client
     if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+      await client.disconnect()
+    }
+  }
 } // End of getAccountFromSeed()
 
 // *****************************************************
-// ********** Get Account from Seed1 ******************* 
+// ********** Get Account from Seed1 *******************
 // *****************************************************
 
 async function getAccountFromSeed1() {
@@ -93,7 +91,7 @@ async function getAccountFromSeed1() {
 }
 
 // *****************************************************
-// ********** Get Account from Seed2 ******************* 
+// ********** Get Account from Seed2 *******************
 // *****************************************************
 
 async function getAccountFromSeed2() {
@@ -105,8 +103,8 @@ async function getAccountFromSeed2() {
 // *****************************************************
 
 function gatherAccountInfo() {
-  let accountData = account1name.value + "\n" + account1address.value + "\n" + account1seed.value + "\n"
-  accountData += account2name.value + "\n" + account2address.value + "\n" + account2seed.value
+  let accountData = account1name.value + '\n' + account1address.value + '\n' + account1seed.value + '\n'
+  accountData += account2name.value + '\n' + account2address.value + '\n' + account2seed.value
   resultField.value = accountData
 }
 
@@ -115,7 +113,7 @@ function gatherAccountInfo() {
 // *****************************************************
 
 function distributeAccountInfo() {
-  let accountInfo = resultField.value.split("\n")
+  let accountInfo = resultField.value.split('\n')
   account1name.value = accountInfo[0]
   account1address.value = accountInfo[1]
   account1seed.value = accountInfo[2]
@@ -159,21 +157,20 @@ async function getXrpBalance() {
   try {
     const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
     const balance = await client.getXrpBalance(wallet.address)
-    results += accountNameField.value + " current XRP balance: " + balance + "\n\n"
+    results += accountNameField.value + ' current XRP balance: ' + balance + '\n\n'
     xrpBalanceField.value = await client.getXrpBalance(accountAddressField.value)
     resultField.value = results
-  }
-  catch (error) {
-    console.error('Error getting XRP balance:', error);
+  } catch (error) {
+    console.error('Error getting XRP balance:', error)
     results += `\nError: ${error.message}\n`
     resultField.value = results
-    throw error; // Re-throw the error to be handled by the caller
-  }
-  finally {
+    throw error // Re-throw the error to be handled by the caller
+  } finally {
     // Disconnect from the client
     if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+      await client.disconnect()
+    }
+  }
 } // End of getXrpBalance()
 
 // *******************************************************
@@ -183,31 +180,30 @@ async function getXrpBalance() {
 async function getTokenBalance() {
   let net = getNet()
   const client = new xrpl.Client(net)
-  await client.connect()   
+  await client.connect()
   let results = `===Connected to ${net}.===\n===Getting account token balance...===\n\n`
   resultField.value += results
   try {
     const wallet = xrpl.Wallet.fromSeed(accountSeedField.value)
     const balance = await client.request({
-      command: "gateway_balances",
+      command: 'gateway_balances',
       account: wallet.address,
-      ledger_index: "validated",
+      ledger_index: 'validated',
     })
-    results = accountNameField.value + "\'s token balance(s): " + JSON.stringify(balance.result, null, 2) + "\n"
+    results = accountNameField.value + "\'s token balance(s): " + JSON.stringify(balance.result, null, 2) + '\n'
     resultField.value += results
-    xrpBalanceField.value = (await client.getXrpBalance(wallet.address))
-  }
-  catch (error) {
-    console.error('Error getting token balance:', error);
+    xrpBalanceField.value = await client.getXrpBalance(wallet.address)
+  } catch (error) {
+    console.error('Error getting token balance:', error)
     results = `\nError: ${error.message}\n`
     resultField.value += results
-    throw error; // Re-throw the error to be handled by the caller
-  }
-  finally {
+    throw error // Re-throw the error to be handled by the caller
+  } finally {
     // Disconnect from the client
     if (client && client.isConnected()) {
-      await client.disconnect();
-    }  }
+      await client.disconnect()
+    }
+  }
 } // End of getTokenBalance()
 
 // *******************************************************
@@ -216,8 +212,8 @@ async function getTokenBalance() {
 let results
 
 async function updateResults() {
-  resultField.value += results;
-  resultField.scrollTop = resultField.scrollHeight;
+  resultField.value += results
+  resultField.scrollTop = resultField.scrollHeight
 }
 
 // End of updateResults()

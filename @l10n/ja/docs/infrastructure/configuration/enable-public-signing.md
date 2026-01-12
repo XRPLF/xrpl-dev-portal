@@ -2,11 +2,12 @@
 html: enable-public-signing.html
 parent: configure-rippled.html
 seo:
-    description: 他の人があなたのサーバを使ってトランザクションに署名できるようにします。（非推奨）
+  description: 他の人があなたのサーバを使ってトランザクションに署名できるようにします。（非推奨）
 labels:
   - コアサーバ
   - セキュリティ
 ---
+
 # パブリック署名の有効化
 
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}新規: rippled 1.1.0{% /badge %}デフォルトでは、`rippled`の署名メソッドは管理者接続に限定されています。v1.1.0以前のバージョンの`rippled`のように、署名メソッドをパブリックAPIメソッドとして使用できるようにするには、構成を変更することで、これを使用できるようにします。
@@ -25,23 +26,23 @@ labels:
 
 1. `rippled`の構成ファイルを編集します。
 
-    ```
-    vim /etc/opt/ripple/rippled.cfg
-    ```
+   ```
+   vim /etc/opt/ripple/rippled.cfg
+   ```
 
-    {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
+   {% partial file="/@l10n/ja/docs/_snippets/conf-file-location.md" /%}
 
 2. 以下のスタンザを構成ファイルに追加し、変更を保存します。
 
-    ```
-    [signing_support]
-    true
-    ```
+   ```
+   [signing_support]
+   true
+   ```
 
 3. `rippled`サーバを再起動します。
 
-    ```
-    systemctl restart rippled
-    ```
+   ```
+   systemctl restart rippled
+   ```
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

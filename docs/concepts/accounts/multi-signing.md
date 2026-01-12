@@ -1,10 +1,11 @@
 ---
 seo:
-    description: Use multi-signing for greater security sending transactions.
+  description: Use multi-signing for greater security sending transactions.
 labels:
   - Smart Contracts
   - Security
 ---
+
 # Multi-Signing
 
 Multi-signing in the XRP Ledger is a method of [authorizing transactions](../transactions/index.md#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.md#master-key-pair), and a [regular key pair](cryptographic-keys.md#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
@@ -32,12 +33,12 @@ You assign a weight to each signer in the list. The weight represents the author
 The quorum value of a list is the minimum weight total required to authorize a transaction. The quorum must be greater than 0 but less than or equal to the sum of the weight values in the signer list: meaning, it must be possible to achieve a quorum with the given signer weights.
 
 ### Wallet Locator
+
 <!-- STYLE_OVERRIDE: wallet -->
 
 You can also add up to 256 bits of arbitrary data to each signer's entry in the list. This data is not required or used by the network, but can be used by smart contracts or other applications to identify or confirm other data about the signers.
 
 {% amendment-disclaimer name="ExpandedSignerList" /%}
-
 
 ### Examples Using Signer Weight and Quorum
 
@@ -53,32 +54,31 @@ In each of the previous three use cases, you would disable the master key withou
 
 There might be a scenario where you create a multi-signing list as a "backup plan." The account owner normally uses a regular key for their transactions (not a multi-signing key). For safety, the owner adds a signer list containing 3 friends, each with a weight of 1, and a quorum of 3. If the account owner were to lose the private key, they can ask their friends to multi-sign a transaction to replace the regular key.
 
-
 ## Sending Multi-Signed Transactions
 
 To successfully submit a multi-signed transaction, you must do all of the following:
 
-* The address sending the transaction (specified in the `Account` field) must have a [`SignerList` object in the ledger](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md). For instructions on how to do this, see [Set Up Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md).
-* The transaction must include the `SigningPubKey` field as an empty string.
-* The transaction must include a [`Signers` field](../../references/protocol/transactions/common-fields.md#signers-field) containing an array of signatures.
-* The signatures present in the `Signers` array must match signers defined in the `SignerList`.
-* For the provided signatures, the total weight associated with those signers must be equal or greater than the quorum for the `SignerList`.
-* The [transaction cost](../transactions/transaction-cost.md) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
-* All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) any fields.
-* If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [submit_multisigned method][] handles this automatically.)
+- The address sending the transaction (specified in the `Account` field) must have a [`SignerList` object in the ledger](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md). For instructions on how to do this, see [Set Up Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md).
+- The transaction must include the `SigningPubKey` field as an empty string.
+- The transaction must include a [`Signers` field](../../references/protocol/transactions/common-fields.md#signers-field) containing an array of signatures.
+- The signatures present in the `Signers` array must match signers defined in the `SignerList`.
+- For the provided signatures, the total weight associated with those signers must be equal or greater than the quorum for the `SignerList`.
+- The [transaction cost](../transactions/transaction-cost.md) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
+- All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) any fields.
+- If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [submit_multisigned method][] handles this automatically.)
 
 ## See Also
 
 - **Tutorials:**
-    - [Set Up Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)
-    - [Send a Multi-Signed Transaction](../../tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md)
+  - [Set Up Multi-Signing](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)
+  - [Send a Multi-Signed Transaction](../../tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md)
 - **Concepts:**
-    - [Cryptographic Keys](cryptographic-keys.md)
-    - [Special Transaction Cost for Multi-signed transactions](../transactions/transaction-cost.md#special-transaction-costs)
+  - [Cryptographic Keys](cryptographic-keys.md)
+  - [Special Transaction Cost for Multi-signed transactions](../transactions/transaction-cost.md#special-transaction-costs)
 - **References:**
-    - [SignerListSet transaction][]
-    - [SignerList object](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
-    - [sign_for method][]
-    - [submit_multisigned method][]
+  - [SignerListSet transaction][]
+  - [SignerList object](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
+  - [sign_for method][]
+  - [submit_multisigned method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

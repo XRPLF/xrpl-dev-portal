@@ -1,13 +1,14 @@
 ---
 category: 2024
-date: "2024-03-21"
+date: '2024-03-21'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Amendments
+  - Amendments
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Get Ready for AMM
 
 The [AMM Amendment](/resources/known-amendments#amm) to the XRP Ledger protocol, which adds Automated Market Maker functionality, is on track to become enabled on Mainnet on 2024-03-22. If it maintains support from a supermajority of validators and becomes enabled as expected, this represents the culmination of a 2-year project to bring AMM to the XRPL, starting from the XLS-30 draft specification proposed by Aanchal Malhotra and David Schwartz of Ripple and incorporating the work and feedback of numerous contributors in the XRPL community during that time.

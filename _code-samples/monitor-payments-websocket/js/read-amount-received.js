@@ -6,14 +6,13 @@ function CountXRPDifference(affected_nodes, address) {
   // Note: this reports the net balance change. If the address is the sender,
   // the transaction cost is deducted and combined with XRP sent/received
 
-  for (let i=0; i<affected_nodes.length; i++) {
-    if ((affected_nodes[i].hasOwnProperty("ModifiedNode"))) {
+  for (let i = 0; i < affected_nodes.length; i++) {
+    if (affected_nodes[i].hasOwnProperty('ModifiedNode')) {
       // modifies an existing ledger entry
       let ledger_entry = affected_nodes[i].ModifiedNode
-      if (ledger_entry.LedgerEntryType === "AccountRoot" &&
-          ledger_entry.FinalFields.Account === address) {
-        if (!ledger_entry.PreviousFields.hasOwnProperty("Balance")) {
-          console.log("XRP balance did not change.")
+      if (ledger_entry.LedgerEntryType === 'AccountRoot' && ledger_entry.FinalFields.Account === address) {
+        if (!ledger_entry.PreviousFields.hasOwnProperty('Balance')) {
+          console.log('XRP balance did not change.')
         }
         // Balance is in PreviousFields, so it changed. Time for
         // high-precision math!
@@ -22,55 +21,51 @@ function CountXRPDifference(affected_nodes, address) {
         const diff_in_drops = new_balance.minus(old_balance)
         const xrp_amount = diff_in_drops.div(1e6)
         if (xrp_amount.gte(0)) {
-          console.log("Received " + xrp_amount.toString() + " XRP.")
+          console.log('Received ' + xrp_amount.toString() + ' XRP.')
           return
         } else {
-          console.log("Spent " + xrp_amount.abs().toString() + " XRP.")
+          console.log('Spent ' + xrp_amount.abs().toString() + ' XRP.')
           return
         }
       }
-    } else if ((affected_nodes[i].hasOwnProperty("CreatedNode"))) {
+    } else if (affected_nodes[i].hasOwnProperty('CreatedNode')) {
       // created a ledger entry. maybe the account just got funded?
       let ledger_entry = affected_nodes[i].CreatedNode
-      if (ledger_entry.LedgerEntryType === "AccountRoot" &&
-          ledger_entry.NewFields.Account === address) {
+      if (ledger_entry.LedgerEntryType === 'AccountRoot' && ledger_entry.NewFields.Account === address) {
         const balance_drops = new Big(ledger_entry.NewFields.Balance)
         const xrp_amount = balance_drops.div(1e6)
-        console.log("Received " + xrp_amount.toString() + " XRP (account funded).")
+        console.log('Received ' + xrp_amount.toString() + ' XRP (account funded).')
         return
       }
     } // accounts cannot be deleted at this time, so we ignore DeletedNode
   }
 
-  console.log("Did not find address in affected nodes.")
+  console.log('Did not find address in affected nodes.')
   return
 }
 
 function CountXRPReceived(tx, address) {
-  if (tx.meta.TransactionResult !== "tesSUCCESS") {
-    console.log("Transaction failed.")
+  if (tx.meta.TransactionResult !== 'tesSUCCESS') {
+    console.log('Transaction failed.')
     return
   }
-  if (tx.tx_json.TransactionType === "Payment") {
+  if (tx.tx_json.TransactionType === 'Payment') {
     if (tx.tx_json.Destination !== address) {
-      console.log("Not the destination of this payment.")
+      console.log('Not the destination of this payment.')
       return
     }
-    if (typeof tx.meta.delivered_amount === "string") {
+    if (typeof tx.meta.delivered_amount === 'string') {
       const amount_in_drops = new Big(tx.meta.delivered_amount)
       const xrp_amount = amount_in_drops.div(1e6)
-      console.log("Received " + xrp_amount.toString() + " XRP.")
+      console.log('Received ' + xrp_amount.toString() + ' XRP.')
       return
     } else {
-      console.log("Received non-XRP currency.")
+      console.log('Received non-XRP currency.')
       return
     }
-  } else if (["PaymentChannelClaim", "PaymentChannelFund", "OfferCreate",
-          "CheckCash", "EscrowFinish"].includes(
-          tx.tx_json.TransactionType)) {
+  } else if (['PaymentChannelClaim', 'PaymentChannelFund', 'OfferCreate', 'CheckCash', 'EscrowFinish'].includes(tx.tx_json.TransactionType)) {
     CountXRPDifference(tx.meta.AffectedNodes, address)
   } else {
-    console.log("Not a currency-delivering transaction type (" +
-                tx.tx_json.TransactionType + ").")
+    console.log('Not a currency-delivering transaction type (' + tx.tx_json.TransactionType + ').')
   }
 }

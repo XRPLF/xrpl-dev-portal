@@ -6,36 +6,40 @@
     <button id="startButton" type="button" class="btn btn-primary" style="margin-bottom: 5px">Start Demo</button>
   </div>
   <div id="amm-box" style="border: 1px solid black; height: 250px; margin-bottom: 5px; padding: 5px; background-color: #f0f0f0">
-  <p style="font-weight: bold">XRP/USD AMM</p>
-  <textarea id="ammInfoField" style="height: 80%; width: 100%; resize: none" disabled></textarea>
+    <p style="font-weight: bold">XRP/USD AMM</p>
+    <textarea id="ammInfoField" style="height: 80%; width: 100%; resize: none" disabled></textarea>
   </div>
-  <div id="offers-box" style="display:flex; gap: 5px">
+  <div id="offers-box" style="display: flex; gap: 5px">
     <div id="alice-box" style="border: 1px solid black; width: 50%; background-color: #f0f0f0; padding: 5px">
       <p style="font-weight: bold">Alice's Wallet</p>
       <textarea readonly id="aliceWalletField" style="height: 30px; width: 225px; resize: none" disabled></textarea>
       <div style="display: flex; gap: 10px">
-        <label style="display: flex; align-items: center; gap: 10px">Taker Gets:
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Taker Gets:
           <textarea id="aliceTakerGetsAmount" style="height: 30px; width: 100px; resize: none"></textarea>
         </label>
-        <label style="display: flex; align-items: center; gap: 10px">Currency:
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Currency:
           <select id="aliceTakerGetsCurrency" style="height: 30px">
             <option>XRP</option>
             <option>USD</option>
           </select>
         </label>
       </div>
-      <div style="display:flex; gap: 10px">
-        <label style="display: flex; align-items: center; gap: 10px">Taker Pays:
+      <div style="display: flex; gap: 10px">
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Taker Pays:
           <textarea id="aliceTakerPaysAmount" style="height: 30px; width: 100px; resize: none"></textarea>
         </label>
-        <label style="display: flex; align-items: center; gap: 10px">Currency:
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Currency:
           <select id="aliceTakerPaysCurrency" style="height: 30px">
             <option>USD</option>
             <option>XRP</option>
           </select>
         </label>
       </div>
-      <button id= "aCreateOfferButton" type="button" class="btn btn-primary" style="margin-bottom: 5px">Create Offer</button>
+      <button id="aCreateOfferButton" type="button" class="btn btn-primary" style="margin-bottom: 5px">Create Offer</button>
       <p style="font-weight: bold">Alice's Offers</p>
       <textarea id="aliceOffersField" style="height: 210px; width: 100%; resize: none" disabled></textarea>
     </div>
@@ -43,21 +47,25 @@
       <p style="font-weight: bold">Bob's Wallet</p>
       <textarea readonly id="bobWalletField" style="height: 30px; width: 225px; resize: none" disabled></textarea>
       <div style="display: flex; gap: 10px">
-        <label style="display: flex; align-items: center; gap: 10px">Taker Gets:
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Taker Gets:
           <textarea id="bobTakerGetsAmount" style="height: 30px; width: 100px; resize: none"></textarea>
         </label>
-        <label style="display: flex; align-items: center; gap: 10px">Currency:
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Currency:
           <select id="bobTakerGetsCurrency" style="height: 30px">
             <option>XRP</option>
             <option>USD</option>
           </select>
         </label>
       </div>
-      <div style="display:flex; gap: 10px">
-        <label style="display: flex; align-items: center; gap: 10px">Taker Pays:
+      <div style="display: flex; gap: 10px">
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Taker Pays:
           <textarea id="bobTakerPaysAmount" style="height: 30px; width: 100px; resize: none"></textarea>
         </label>
-        <label style="display: flex; align-items: center; gap: 10px">Currency:
+        <label style="display: flex; align-items: center; gap: 10px"
+          >Currency:
           <select id="bobTakerPaysCurrency" style="height: 30px">
             <option>USD</option>
             <option>XRP</option>

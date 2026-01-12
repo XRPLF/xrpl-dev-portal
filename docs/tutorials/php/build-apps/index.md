@@ -5,10 +5,9 @@ top_nav_grouping: Article Types
 metadata:
   indexPage: true
 ---
+
 # Build Applications in PHP
 
 Build applications in PHP.
 
-
 {% child-pages /%}
-

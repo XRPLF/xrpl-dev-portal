@@ -2,10 +2,11 @@
 html: health-check-interventions.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: Use the rippled server's health check as part of automated infrastructure monitoring.
+  description: Use the rippled server's health check as part of automated infrastructure monitoring.
 labels:
   - Core Server
 ---
+
 # Health Check Interventions
 
 The [Health Check method](../../references/http-websocket-apis/peer-port-methods/health-check.md) can be used by automated monitoring to recognize when a `rippled` server is not healthy and prompt interventions such as restarting the server or alerting a human administrator.
@@ -41,13 +42,11 @@ The following sections suggest some common interventions you may want to attempt
 - [Investigate network](#investigate-network) in case the problem originates elsewhere
 - [Replace hardware](#replace-hardware)
 
-
 ### Redirect Traffic
 
 A common reliability technique is to run a pool of redundant servers through one or more load-balancing proxies. You can do this with `rippled` servers, but should not do this with [validators](../../concepts/networks-and-servers/rippled-server-modes.md). In some cases, the load balancers can monitor the health of servers in their pools and direct traffic only to the servers that are currently reporting themselves as healthy. This allows servers to recover from being temporarily overloaded and automatically rejoin the pool of active servers.
 
 Redirecting traffic away from a server that is unhealthy is an appropriate response, especially for servers that report a `health` status of `warning`. Servers in the `critical` range may need more significant interventions.
-
 
 ### Restart
 
@@ -68,7 +67,6 @@ A stronger intervention is to restart the entire machine.
 
 {% admonition type="warning" name="Caution" %}After a server starts, it typically needs up to 15 minutes to sync to the network. During this time, the health check is likely to report a critical or warning status. You should be sure your automated systems give servers enough time to sync before restarting them again.{% /admonition %}
 
-
 ### Upgrade
 
 If the server reports `"amendment_blocked": true` in the health check, this indicates that the XRP Ledger has enabled a [protocol amendment](../../concepts/networks-and-servers/amendments.md) that your server does not understand. As a precaution against misinterpreting the revised rules of the network in a way that causes you to lose money, such servers become "amendment blocked" instead of operating normally.
@@ -76,7 +74,6 @@ If the server reports `"amendment_blocked": true` in the health check, this indi
 To resolve being amendment blocked, [update your server](../installation/index.md) to a newer software version that understands the amendment.
 
 Also, software bugs can cause a server to get [stuck not syncing](server-doesnt-sync.md). In this case, the `server_state` metric is likely to be in a warning or critical state. If you are not using the latest stable release, you should upgrade to get the latest fixes for any known issues that could cause this.
-
 
 ### Investigate Network
 
@@ -92,8 +89,6 @@ In this case, the necessary interventions may involve changes to other systems, 
 - Restarting or replacing network interfaces, switches, routers, or cabling
 - Contacting other network service providers to resolve an issue on their end
 
-
-
 ### Replace Hardware
 
 If the outage is caused by a hardware failure or by higher load than the hardware is capable of handling, you may need to replace some components or even the entire server.
@@ -105,12 +100,6 @@ Warning or critical values for the following [metrics][] may indicate insufficie
 - `load_factor`
 - `server_state`
 - `validated_ledger`
-
-
-
-
-
-
 
 [metrics]: ../../references/http-websocket-apis/peer-port-methods/health-check.md#response-format
 

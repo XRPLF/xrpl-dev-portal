@@ -2,10 +2,11 @@
 html: offers.html
 parent: decentralized-exchange.html
 seo:
-    description: オファーはXRP Ledgerの通貨取引に関する機能の一つです。オファーのライフサイクルと特性について説明します。
+  description: オファーはXRP Ledgerの通貨取引に関する機能の一つです。オファーのライフサイクルと特性について説明します。
 labels:
   - 分散型取引所
 ---
+
 # オファー
 
 XRP Ledgerの[分散型取引所](index.md)では、通貨の取引注文は「オファー」と呼ばれます。オファーはXRPと[トークン](../index.md)の取引、またはトークン間の取引（同一通貨コードだが発行者が異なるトークンを含む）を行うことができます。（同一通貨コードで発行者が異なる通貨は、[rippling](../fungible-tokens/rippling.md)によって取引することもできます。）
@@ -13,7 +14,6 @@ XRP Ledgerの[分散型取引所](index.md)では、通貨の取引注文は「�
 - オファーを作成するには、[OfferCreateトランザクション][]を送信します。
 - 即時に約定されないオファーはレジャーデータの[Offerオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)になります。その後のオファーとPaymentにより、レジャーのOfferオブジェクトは約定されます。
 - [クロスカレンシー支払い](../../payment-types/cross-currency-payments.md)はオファーを約定して流動性を提供します。
-
 
 ## オファーのライフサイクル
 
@@ -45,28 +45,26 @@ Offerオブジェクトは、他のオファーやクロスカレンシー決済
 次のような場合には、オファーが一時的または長期に渡って「資金不足」になる可能性があります。
 
 - 所有者が売却する資産を一切保有しなくなった場合。
-    - オーナーがその資産を再度取得すると、オファーに資金が供給されるようになります。
+  - オーナーがその資産を再度取得すると、オファーに資金が供給されるようになります。
 - 売却する資産が[フリーズされたトラストライン](../fungible-tokens/freezes.md)に含まれるトークンである場合。
-    - トラストラインがフリーズ解除されると、オファーは再び資金が供給されるようになります。
+  - トラストラインがフリーズ解除されると、オファーは再び資金が供給されるようになります。
 - オファーが新しいトラストラインを作成する必要があるが、オーナーがその[準備金](../../accounts/reserves.md)の増加に伴う十分なXRPを持っていない場合。
-    - オーナーが追加のXRPを調達するか、準備金の必要量が減少すると、オファーは自動的に使用可能になります。
+  - オーナーが追加のXRPを調達するか、準備金の必要量が減少すると、オファーは自動的に使用可能になります。
 - オファーが失効した場合。([オファーの有効期限](#オファーの有効期限)を参照)
 
 資金不足のOfferオブジェクトは、トランザクションによって削除されるまで、台帳に残ります。台帳からOfferオブジェクトを削除するには、以下の方法があります。
-
 
 - 約定するオファーまたは[クロスカレンシー支払い](../../payment-types/cross-currency-payments.md)によってオファーが全額約定される。
 - 所有者が明示的にオファーをキャンセルする。
 - 所有者が交差する新しいオファーを作成することにより、暗黙のうちにオファーをキャンセルする。
 - トランザクション処理中にオファーが資金不足または期限切れであることが判明する。
-    - これには、オファーが支払うことができる残額がゼロになる場合も含まれます。
+  - これには、オファーが支払うことができる残額がゼロになる場合も含まれます。
 
 ### 資金不足のオファーの追跡
 
 すべてのオファーの資金状況の追跡は、コンピュータにとって負荷の高い処理となることがあります。特に積極的に取引しているアドレスでは大量のオファーがオープンです。1つの残高が、さまざまな通貨を購入する多数のオファーの資金状況に影響することがあります。このため、XRP Ledgerでは資金不足や期限切れのオファーの検出と削除を _積極的には_ 行なっていません。
 
 クライアントアプリケーションでオファーの資金化の状況をローカルで追跡できます。このためには、最初に[book_offersメソッド][]を使用してオーダーブックを取得し、次にオファーの`taker_gets_funded`フィールドを調べます。次に`transactions`ストリームを[サブスクライブ](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md)し、トランザクションメタデータを監視してどのオファーが変更されるかを確認します。
-
 
 ## オファーとトラスト
 
@@ -76,13 +74,11 @@ Offerオブジェクトは、他のオファーやクロスカレンシー決済
 
 トラストラインの制限は、あなたの希望以上のトークンを受け取ることを防ぐためのものです。オファーとは、トークンをどれだけ欲しいかを明示的に示すものであるため、この制限を超えることができます。
 
-
 ## オファーの優先度
 
 台帳内のOfferオブジェクトは取引レートによってグループにまとめられます。取引レートは、`TakerGets`と`TakerPays`の比率として計算されます。取引レートが高いOfferオブジェクトが優先的に処理されます。（つまり、オファーを約定する人は、支払われる通貨額に対して可能な限り多くの額を受領します。）同じ取引レートのオファーは、オファーの作成タイミングを基準にして処理されます。
 
-同じ取引レートのOfferオブジェクトが同じ台帳ブロックに記録されている場合、オファーの処理順序は[レジャーへトランザクションを適用する](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 "Source Code: Applying transactions")ための[正規順序](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp "Source Code: Transaction ordering")によって決定します。この動作は確定的かつ効率的であり、操作することが困難であるように設計されています。
-
+同じ取引レートのOfferオブジェクトが同じ台帳ブロックに記録されている場合、オファーの処理順序は[レジャーへトランザクションを適用する](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/consensus/LedgerConsensus.cpp#L1435-L1538 'Source Code: Applying transactions')ための[正規順序](https://github.com/XRPLF/rippled/blob/release/src/ripple/app/misc/CanonicalTXSet.cpp 'Source Code: Transaction ordering')によって決定します。この動作は確定的かつ効率的であり、操作することが困難であるように設計されています。
 
 ## オファーの有効期限
 
@@ -97,13 +93,13 @@ Offerオブジェクトは、他のオファーやクロスカレンシー決済
 ## 関連項目
 
 - **コンセプト:**
-    - [トークン](../index.md)
-    - [パス](../fungible-tokens/paths.md)
+  - [トークン](../index.md)
+  - [パス](../fungible-tokens/paths.md)
 - **リファレンス:**
-    - [account_offersメソッド][]
-    - [book_offersメソッド][]
-    - [OfferCreateトランザクション][]
-    - [OfferCancelトランザクション][]
-    - [Offerオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
+  - [account_offersメソッド][]
+  - [book_offersメソッド][]
+  - [OfferCreateトランザクション][]
+  - [OfferCancelトランザクション][]
+  - [Offerオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}

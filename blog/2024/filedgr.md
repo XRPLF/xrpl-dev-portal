@@ -1,15 +1,15 @@
 ---
 category: 2024
-date: "2024-07-24"
+date: '2024-07-24'
 template: '../../@theme/templates/blogpost'
 labels:
-    - Developer Reflections
+  - Developer Reflections
 markdown:
-    editPage:
-        hide: true
+  editPage:
+    hide: true
 ---
+
 # Developer Reflections: Filedgr – Transforming Data Control with XRPL Integration
- 
 
 Welcome to another edition of Developer Reflections. Today, we’ll discuss [Filedgr](https://filedgr.com), a platform that empowers users with Web3 solutions for secure data control and transparency. Filedgr stands out by offering unique features like Digital Certificates and the Digital Twin Data Hub, revolutionizing industries with authenticated data and fostering trust in product information. Let's explore how Filedgr uses the [XRP Ledger (XRPL)](https://xrpl.org/) to enhance its offerings and drive innovation in data management.
 
@@ -23,8 +23,8 @@ The promise of Web3 is a decentralized internet where users have greater control
 
 **Key Features**
 
-* **Digital Certificates**: Powered by smart NFTs, Filedgr’s Digital Certificates ensure the authenticity and secure management of physical objects and their associated data.
-* **Digital Twin Data Hub**: This feature acts as a secure center for managing digital assets, offering advanced notarization and live data capture for informed decision-making.
+- **Digital Certificates**: Powered by smart NFTs, Filedgr’s Digital Certificates ensure the authenticity and secure management of physical objects and their associated data.
+- **Digital Twin Data Hub**: This feature acts as a secure center for managing digital assets, offering advanced notarization and live data capture for informed decision-making.
 
 ## Data Authentication and AI
 
@@ -32,7 +32,7 @@ Data authentication is critical in bolstering trust in AI systems. Filedgr looks
 
 ![Screenshot: Filedgr Core](/blog/img/dev-reflections-filedgr-core.png)
 
-_Learn more about about Filedgr via their published [Lite Paper](https://filedgr.notion.site/Technology-and-Web3-771d1f316fc04f0994f94968370aadad)._ 
+_Learn more about about Filedgr via their published [Lite Paper](https://filedgr.notion.site/Technology-and-Web3-771d1f316fc04f0994f94968370aadad)._
 
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/kriw0SDzhiw?si=Uud5ewQADbuMY2tU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
@@ -46,18 +46,17 @@ Filedgr ensures data redundancy through a Java sidecar application that monitors
 **Access Control**
 Access control in Filedgr is implemented via token gating. Digital certificates are hosted as Single Page Applications (SPAs) on a Private IPFS Cluster, ensuring secure and token-gated access to data.
 
-
 ## Leveraging the XRP Ledger (XRPL)
 
 Filedgr integrates with the XRP Ledger to enhance transparency and efficiency in data management. XRPL's fast transaction speeds and low costs make it an ideal choice for Filedgr's needs, particularly for managing the lifecycle information of products without incurring high costs.
 
 By integrating with the XRP Ledger, Filedgr enhances its capabilities, providing secure, transparent, and efficient data management solutions.
 
-**Why XRPL?** 
+**Why XRPL?**
 
-* **Efficiency**: XRPL offers high transaction speeds and low fees, crucial for Filedgr's extensive data transactions.
-* **Transparency**: By using XRPL, Filedgr ensures that all data interactions are transparent and verifiable.
-* **NFT Support**: XRPL's support for NFTs allows Filedgr to manage digital certificates efficiently, ensuring the authenticity and integrity of data.
+- **Efficiency**: XRPL offers high transaction speeds and low fees, crucial for Filedgr's extensive data transactions.
+- **Transparency**: By using XRPL, Filedgr ensures that all data interactions are transparent and verifiable.
+- **NFT Support**: XRPL's support for NFTs allows Filedgr to manage digital certificates efficiently, ensuring the authenticity and integrity of data.
 
 Filedgr's integration with XRPL was recognized with a developer grant, underscoring the platform's commitment to leveraging decentralized technology for innovative solutions.
 
