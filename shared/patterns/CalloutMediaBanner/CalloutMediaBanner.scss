@@ -21,15 +21,40 @@
 // Design Tokens
 // =============================================================================
 
-// Color variants from Figma design
-$bds-cmb-default-bg: $white;                    // #FFFFFF
-$bds-cmb-light-gray-bg: $gray-200;              // #E6EAF0
-$bds-cmb-lilac-bg: $lilac-300;                  // #C0A7FF
-$bds-cmb-green-bg: $green-200;                  // #70EE97
-$bds-cmb-gray-bg: $gray-300;                    // #CAD4DF
-
-// Text colors
-$bds-cmb-text-color: $black;                    // #141414
+// Color variants map - centralizes all variant configurations
+// Structure: variant-name: (light-bg, light-text, dark-bg, dark-text)
+$bds-cmb-variants: (
+  'default': (
+    light-bg: $white,           // #FFFFFF
+    light-text: $black,         // #141414
+    dark-bg: $gray-800,         // #232325
+    dark-text: $white           // #FFFFFF
+  ),
+  'light-gray': (
+    light-bg: $gray-200,        // #E6EAF0
+    light-text: $black,         // #141414
+    dark-bg: $gray-700,         // #343437
+    dark-text: $white           // #FFFFFF
+  ),
+  'lilac': (
+    light-bg: $lilac-300,       // #C0A7FF
+    light-text: $black,         // #141414
+    dark-bg: $lilac-400,        // #7649E3
+    dark-text: $white           // #FFFFFF
+  ),
+  'green': (
+    light-bg: $green-200,       // #70EE97
+    light-text: $black,         // #141414
+    dark-bg: $green-300,        // #21E46B
+    dark-text: $black           // #141414
+  ),
+  'gray': (
+    light-bg: $gray-300,        // #CAD4DF
+    light-text: $black,         // #141414
+    dark-bg: $gray-600,         // #454549
+    dark-text: $white           // #FFFFFF
+  )
+);
 
 // Spacing tokens - responsive
 // Mobile (<768px)
@@ -55,19 +80,21 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 // =============================================================================
 
 .bds-callout-media-banner {
-  // Layout
-  position: relative;
-  display: flex;
-  flex-direction: row; // Changed to row since this is a PageGridRow
-  width: 100%;
+  // Extend Bootstrap utilities for common properties
+  @extend .position-relative;
+  @extend .d-flex;
+  @extend .flex-row;
+  @extend .w-100;
+  @extend .align-items-stretch;
+  
+  // Custom properties not covered by Bootstrap
   box-sizing: border-box;
   min-height: 280px;
-  align-items: stretch; // Force children (PageGridCol) to stretch to full height
   
   // Ensure PageGridCol stretches to full height
   > [class*="bds-grid__col"] {
-    display: flex; // Make column a flex container
-    flex-direction: column; // Stack content vertically
+    @extend .d-flex;
+    @extend .flex-column;
   }
   
   // Background positioning for image variant
@@ -133,7 +160,7 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 .bds-callout-media-banner__text {
   display: flex;
   flex-direction: column;
-  color: $bds-cmb-text-color;
+  color: var(--bds-cmb-text-color, #232021);
   
   // Mobile-first gap
   gap: 16px;
@@ -184,30 +211,12 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 // =============================================================================
 // Color Variants (only applied when NO backgroundImage is provided)
 // =============================================================================
+// Generated from $bds-cmb-variants map
 
-// Default variant - white background
-.bds-callout-media-banner--default {
-  background-color: $bds-cmb-default-bg;
-}
-
-// Light Gray variant
-.bds-callout-media-banner--light-gray {
-  background-color: $bds-cmb-light-gray-bg;
-}
-
-// Lilac variant
-.bds-callout-media-banner--lilac {
-  background-color: $bds-cmb-lilac-bg;
-}
-
-// Green variant
-.bds-callout-media-banner--green {
-  background-color: $bds-cmb-green-bg;
-}
-
-// Gray variant
-.bds-callout-media-banner--gray {
-  background-color: $bds-cmb-gray-bg;
+@each $variant-name, $variant-colors in $bds-cmb-variants {
+  .bds-callout-media-banner--#{$variant-name} {
+    background-color: map-get($variant-colors, light-bg);
+  }
 }
 
 // =============================================================================
@@ -227,6 +236,7 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
     left: 0;
     right: 0;
     bottom: 0;
+    inset: 0;
     background: linear-gradient(
       135deg,
       rgba(0, 0, 0, 0.4) 0%,
@@ -260,50 +270,17 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 // =============================================================================
 // Dark Mode Styles
 // =============================================================================
+// Generated from $bds-cmb-variants map
 
 html.dark {
-  // Default variant - dark background
-  .bds-callout-media-banner--default {
-    background-color: $gray-800;
-    
-    .bds-callout-media-banner__text {
-      color: $white;
-    }
-  }
-  
-  // Light Gray variant - darker gray in dark mode
-  .bds-callout-media-banner--light-gray {
-    background-color: $gray-700;
-    
-    .bds-callout-media-banner__text {
-      color: $white;
-    }
-  }
-  
-  // Lilac variant - slightly darker in dark mode
-  .bds-callout-media-banner--lilac {
-    background-color: $lilac-400;
-    
-    .bds-callout-media-banner__text {
-      color: $white;
-    }
-  }
-  
-  // Green variant - same green, adjust text if needed
-  .bds-callout-media-banner--green {
-    background-color: $green-300;
-    
-    .bds-callout-media-banner__text {
-      color: $black;
-    }
-  }
-  
-  // Gray variant - darker gray in dark mode
-  .bds-callout-media-banner--gray {
-    background-color: $gray-600;
-    
-    .bds-callout-media-banner__text {
-      color: $white;
+  // Generate dark mode styles for each variant
+  @each $variant-name, $variant-colors in $bds-cmb-variants {
+    .bds-callout-media-banner--#{$variant-name} {
+      background-color: map-get($variant-colors, dark-bg);
+      
+      .bds-callout-media-banner__text {
+        color: map-get($variant-colors, dark-text);
+      }
     }
   }
   
@@ -325,50 +302,17 @@ html.dark {
 // =============================================================================
 // Light Mode Explicit Styles (for specificity)
 // =============================================================================
+// Generated from $bds-cmb-variants map
 
 html.light {
-  // Default variant
-  .bds-callout-media-banner--default {
-    background-color: $bds-cmb-default-bg;
-    
-    .bds-callout-media-banner__text {
-      color: $bds-cmb-text-color;
-    }
-  }
-  
-  // Light Gray variant
-  .bds-callout-media-banner--light-gray {
-    background-color: $bds-cmb-light-gray-bg;
-    
-    .bds-callout-media-banner__text {
-      color: $bds-cmb-text-color;
-    }
-  }
-  
-  // Lilac variant
-  .bds-callout-media-banner--lilac {
-    background-color: $bds-cmb-lilac-bg;
-    
-    .bds-callout-media-banner__text {
-      color: $bds-cmb-text-color;
-    }
-  }
-  
-  // Green variant
-  .bds-callout-media-banner--green {
-    background-color: $bds-cmb-green-bg;
-    
-    .bds-callout-media-banner__text {
-      color: $bds-cmb-text-color;
-    }
-  }
-  
-  // Gray variant
-  .bds-callout-media-banner--gray {
-    background-color: $bds-cmb-gray-bg;
-    
-    .bds-callout-media-banner__text {
-      color: $bds-cmb-text-color;
+  // Generate light mode styles for each variant
+  @each $variant-name, $variant-colors in $bds-cmb-variants {
+    .bds-callout-media-banner--#{$variant-name} {
+      background-color: map-get($variant-colors, light-bg);
+      
+      .bds-callout-media-banner__text {
+        color: map-get($variant-colors, light-text);
+      }
     }
   }
   

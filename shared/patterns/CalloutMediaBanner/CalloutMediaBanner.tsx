@@ -18,13 +18,13 @@ export interface CalloutMediaBannerProps {
   primaryButton?: {
     label: string;
     href?: string;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   };
   /** Tertiary button configuration */
   tertiaryButton?: {
     label: string;
     href?: string;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   };
   /** Additional CSS classes */
   className?: string;
@@ -105,7 +105,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
     : {};
 
   return (
-    <PageGrid containerWide={true} >
+    <PageGrid containerType="wide">
       <PageGridRow className={classNames} style={inlineStyle}>
         <PageGridCol span={{base: 4, md: 6, lg: 8}}>
           <div className="bds-callout-media-banner__content">
@@ -123,7 +123,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
                     variant="primary"
                     color={buttonColor}
                     href={primaryButton.href}
-                    onClick={primaryButton.onClick}
+                    onClick={primaryButton?.onClick as (() => void) | undefined}
                   >
                     {primaryButton.label}
                   </Button>
@@ -133,7 +133,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
                     variant="tertiary"
                     color={buttonColor}
                     href={tertiaryButton.href}
-                    onClick={tertiaryButton.onClick}
+                    onClick={tertiaryButton?.onClick as (() => void) | undefined}
                   >
                     {tertiaryButton.label}
                   </Button>
