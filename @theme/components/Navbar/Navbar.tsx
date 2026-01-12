@@ -23,6 +23,8 @@ import blueWallet from "../../../static/img/navbar/blue-wallet.svg";
 // Network submenu pattern images
 import resourcesPurplePattern from "../../../static/img/navbar/resources-purple.svg";
 import insightsGreenPattern from "../../../static/img/navbar/insights-green.svg";
+import darkInsightsGreenPattern from "../../../static/img/navbar/dark-insights-green.svg";
+import darkLilacPattern from "../../../static/img/navbar/dark-lilac.svg";
 
 // Alert Banner Configuration
 const alertBanner = {
@@ -612,11 +614,31 @@ function CommunitySubmenu({ isActive, isClosing }: { isActive: boolean; isClosin
 // Desktop Network Submenu Component
 // Two sections side by side with decorative images at bottom
 function NetworkSubmenu({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
-  // Pattern image mapping
-  const patternImages: Record<'lilac' | 'green', string> = {
-    lilac: resourcesPurplePattern,
-    green: insightsGreenPattern,
-  };
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  // Detect theme changes
+  React.useEffect(() => {
+    const checkTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+    };
+
+    checkTheme();
+
+    // Listen for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Pattern image mapping - theme-aware
+  const patternImages: Record<'lilac' | 'green', string> = React.useMemo(() => ({
+    lilac: isDarkMode ? darkLilacPattern : resourcesPurplePattern,
+    green: isDarkMode ? darkInsightsGreenPattern : insightsGreenPattern,
+  }), [isDarkMode]);
 
   const classNames = [
     'bds-submenu',
@@ -853,7 +875,7 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
     >
       <path
         d="M1 1L6.5 6.5L12 1"
-        stroke="#141414"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -1090,7 +1112,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       {/* Header */}
       <div className="bds-mobile-menu__header">
         <BdsLink href="/" className="bds-navbar__logo" aria-label="XRP Ledger Home" onClick={onClose} variant="inline">
-          <img src={xrpSymbolBlack} alt="XRP Ledger" style={{ width: 33, height: 28 }} />
+          <img src={xrpSymbolBlack} alt="XRP Ledger" className="bds-navbar__logo-symbol" style={{ width: 33, height: 28 }} />
         </BdsLink>
         <button
           type="button"
