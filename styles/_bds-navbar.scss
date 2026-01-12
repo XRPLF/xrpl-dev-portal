@@ -338,6 +338,471 @@ body:has(.bds-navbar) {
   overflow-x: hidden;
 }
 
+// =============================================================================
+// Dark Mode Styles
+// Using html.dark selectors as specified in requirements
+// =============================================================================
+
+// Main navbar dark mode
+html.dark .bds-navbar {
+  background-color: $black;
+
+  // Content wrapper
+  &__content {
+    // No changes needed for content wrapper
+  }
+
+  // Logo
+  &__logo {
+    // Invert logo colors for dark mode
+    &-symbol,
+    &-full {
+      filter: invert(1); // Invert from black to white
+    }
+  }
+
+  // Navigation items
+  &__items {
+    // Items remain the same
+  }
+
+  &__item {
+    color: $white;
+
+    &:hover,
+    &--active {
+      color: $green-300; // Use green-300 from Figma design
+    }
+
+    &:focus {
+      color: $green-300;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+  }
+
+  // Controls
+  &__controls {
+    // Controls remain the same
+  }
+
+  &__icon {
+    // Invert icon colors for dark mode
+    img, svg {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+  }
+
+  // Language pill
+  &__lang-pill {
+    border-color: $white;
+    color: $white;
+
+    // Invert language pill icon colors for dark mode
+    &-icon,
+    &-chevron {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      background-color: $gray-800;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+  }
+
+  // Hamburger menu
+  &__hamburger {
+    // Invert hamburger icon colors for dark mode
+    img, svg {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Dark mode for alert banner
+html.dark .top-banner {
+  // Alert banner styling would go here if needed
+}
+
+// Dark mode for submenu backdrop
+html.dark .bds-submenu-backdrop {
+  background-color: rgba($gray-900, 0.8); // Darker backdrop for dark mode
+  backdrop-filter: blur(17.5px);
+  -webkit-backdrop-filter: blur(17.5px);
+}
+
+// Dark mode for desktop submenus
+html.dark .bds-submenu {
+  background: #343434;  
+  &__left,
+  &__right {
+    background: #343434; // Dark background for columns
+  }
+
+  &__section {
+    background: #111112; // Black background for sections (darker than container)
+  }
+
+  &__link {
+    color: $white;
+
+    .bds-submenu__arrow svg path {
+      stroke: $white;
+    }
+  }
+
+  &__sublink {
+    color: $white; // Secondary text color from Figma design
+
+    &:hover {
+      color: $green-300; // Primary green accent from Figma
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+      color: $green-300;
+    }
+  }
+
+  &__parent-link {
+    .bds-submenu__link {
+      color: $white;
+
+      .bds-submenu__arrow svg path {
+        stroke: $white;
+      }
+    }
+
+    &:hover .bds-submenu__link {
+      color: $green-300; // Primary green accent
+
+      .bds-submenu__arrow svg path {
+        stroke: $green-300;
+      }
+    }
+
+    &:active .bds-submenu__link {
+      color: $green-400;
+
+      .bds-submenu__arrow svg path {
+        stroke: $green-400;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+
+      .bds-submenu__link {
+        color: $green-300;
+
+        .bds-submenu__arrow svg path {
+          stroke: $green-300;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode overrides for submenu links (higher specificity)
+html.dark .bds-submenu {
+  a.bds-submenu__sublink:not(.bds-link) {
+    color: $white; // Secondary text color from Figma 
+    font-weight: 400;
+    text-decoration: none;
+
+    &:hover {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-submenu__parent-link:not(.bds-link) {
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-submenu__link {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &:hover .bds-submenu__link {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+    }
+
+    &:active .bds-submenu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-submenu__link {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+}
+
+// Dark mode for mobile menu
+html.dark .bds-mobile-menu {
+  background-color: $black;
+
+  &__header {
+    background-color: $black;
+    border-bottom-color: $gray-700;
+  }
+
+  &__content {
+    // Content area remains same
+  }
+
+  &__accordion-header {
+    background-color: $gray-900; // Darker background for headers
+    border-bottom-color: $gray-700;
+    color: $white;
+
+    &:hover {
+      background-color: $gray-800;
+    }
+  }
+
+  &__accordion-content {
+    background-color: $black;
+    border-bottom-color: $gray-700;
+  }
+
+  &__tier-list {
+    // Tier list remains same
+  }
+
+  &__tier1 {
+    // Tier 1 remains same
+  }
+
+  &__link {
+    color: $white;
+
+    .bds-mobile-menu__arrow svg path {
+      stroke: $white;
+    }
+  }
+
+  &__sublink {
+    color: $white; // Secondary text color
+
+    &:hover {
+      color: $green-300; // Primary green accent
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+      color: $green-300;
+    }
+  }
+
+  &__parent-link {
+    .bds-mobile-menu__link {
+      color: $white;
+
+      .bds-mobile-menu__arrow svg path {
+        stroke: $white;
+      }
+    }
+
+    &:hover .bds-mobile-menu__link {
+      color: $green-300; // Primary green accent
+
+      .bds-mobile-menu__arrow svg path {
+        stroke: $green-300;
+      }
+    }
+
+    &:active .bds-mobile-menu__link {
+      color: $green-400;
+
+      .bds-mobile-menu__arrow svg path {
+        stroke: $green-400;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+
+      .bds-mobile-menu__link {
+        color: $green-300;
+
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-300;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    background-color: $black;
+  }
+
+  &__lang-pill {
+    border-color: $white;
+    color: $white;
+
+    // Invert language pill icon colors for dark mode
+    &-icon,
+    &-chevron {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      background-color: $gray-800;
+    }
+  }
+
+  &__footer-icon {
+    // Invert footer icon colors for dark mode
+    img, svg {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__close {
+    // Invert close icon colors for dark mode
+    svg line {
+      stroke: $white; // Make close icon white in dark mode
+    }
+  }
+}
+
+// Dark mode overrides for mobile menu links (higher specificity)
+html.dark .bds-mobile-menu {
+  a.bds-mobile-menu__sublink:not(.bds-link) {
+
+    text-decoration: none;
+
+    &:hover {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-mobile-menu__parent-link:not(.bds-link) {
+    text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-mobile-menu__link {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &:hover .bds-mobile-menu__link {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+    }
+
+    &:active .bds-mobile-menu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-mobile-menu__link {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+}
+
 // Style scrollbar to match navbar background (light mode)
 html.light:has(.bds-navbar) {
   // Webkit browsers (Chrome, Safari, Edge)
@@ -362,6 +827,33 @@ html.light:has(.bds-navbar) {
 
   // Firefox
   scrollbar-color: $gray-300 $white;
+  scrollbar-width: thin;
+}
+
+// Style scrollbar to match navbar background (dark mode)
+html.dark:has(.bds-navbar) {
+  // Webkit browsers (Chrome, Safari, Edge)
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: $black;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $black;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray-600;
+    border-radius: 6px;
+    border: 3px solid $black;
+
+    &:hover {
+      background-color: $gray-500;
+    }
+  }
+
+  // Firefox
+  scrollbar-color: $gray-600 $black;
   scrollbar-width: thin;
 }
 
@@ -1235,9 +1727,33 @@ html.light .bds-submenu {
       height: 100%;
     }
 
-    // Expanded state - rotate chevron
+    // Default: black in light mode
+    svg path {
+      stroke: $black;
+    }
+
+    // Expanded state - rotate chevron and make green in both modes
     &--expanded {
       transform: rotate(180deg);
+
+      svg path {
+        stroke: $green-300;
+      }
+    }
+  }
+
+  // Dark mode chevron colors
+  html.dark & {
+    &__chevron {
+      // White in dark mode when collapsed
+      svg path {
+        stroke: $white;
+      }
+
+      // Green when expanded (higher specificity than regular expanded rule)
+      &--expanded svg path {
+        stroke: $green-300;
+      }
     }
   }
 
