@@ -306,11 +306,10 @@
                 - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-timed-escrow.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow.md
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows.md
-                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
                 - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md
                   expanded: false
                   items:

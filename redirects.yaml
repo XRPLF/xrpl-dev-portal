@@ -1,6 +1,9 @@
 /resources/contribute-documentation/tutorial-structure/:
     to: /resources/contribute-documentation/tutorial-guidelines/
     type: 301
+/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract:
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
+    type: 301
 /docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types/:
     to: /docs/references/protocol/transactions/pseudo-transaction-types/
     type: 301
@@ -758,7 +761,7 @@ send-a-time-held-escrow.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
     type: 301
 send-a-conditionally-held-escrow.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
     type: 301
 cancel-an-expired-escrow.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
@@ -767,7 +770,7 @@ look-up-escrows.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows
     type: 301
 use-an-escrow-as-a-smart-contract.html:
-    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
     type: 301
 use-payment-channels.html:
     to: /docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels
@@ -2362,6 +2365,9 @@ code_of_conduct.ja:
 /ja/resources/contribute-documentation/tutorial-structure/:
     to: /ja/resources/contribute-documentation/tutorial-guidelines/
     type: 301
+/ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract:
+    to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
+    type: 301
 /ja/docs/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types/:
     to: /ja/docs/references/protocol/transactions/pseudo-transaction-types/
     type: 301
@@ -3110,7 +3116,7 @@ code_of_conduct.ja:
     to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
     type: 301
 /ja/send-a-conditionally-held-escrow.html:
-    to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow
+    to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
     type: 301
 /ja/cancel-an-expired-escrow.html:
     to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
@@ -3119,7 +3125,7 @@ code_of_conduct.ja:
     to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows
     type: 301
 /ja/use-an-escrow-as-a-smart-contract.html:
-    to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract
+    to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow
     type: 301
 /ja/use-payment-channels.html:
     to: /ja/docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels
