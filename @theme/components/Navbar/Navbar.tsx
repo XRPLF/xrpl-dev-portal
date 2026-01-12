@@ -6,6 +6,7 @@ import moment from "moment-timezone";
 // Icons
 import xrpSymbolBlack from "../../../static/img/navbar/xrp-symbol-black.svg";
 import xrpLogotypeBlack from "../../../static/img/navbar/xrp-logotype-black.svg";
+import xrpLedgerNav from "../../../static/img/navbar/xrp-ledger-nav.svg";
 import searchIcon from "../../../static/img/navbar/search-icon.svg";
 import modeToggleIcon from "../../../static/img/navbar/mode-toggle.svg";
 import globeIcon from "../../../static/img/navbar/globe-icon.svg";
@@ -394,6 +395,7 @@ export function AlertBanner({ message, button, link, show }) {
 }
 
 // Logo Component - Shows symbol on desktop/mobile, full logotype on tablet
+// On desktop hover, the "XRP LEDGER" text animates out to the right
 function NavLogo() {
   return (
     <BdsLink href="/" className="bds-navbar__logo" aria-label="XRP Ledger Home" variant="inline">
@@ -401,6 +403,11 @@ function NavLogo() {
         src={xrpSymbolBlack}
         alt="XRP Ledger"
         className="bds-navbar__logo-symbol"
+      />
+      <img
+        src={xrpLedgerNav}
+        alt=""
+        className="bds-navbar__logo-text"
       />
       <img
         src={xrpLogotypeBlack}
