@@ -1088,6 +1088,10 @@ html.dark:has(.bds-navbar) {
     }
   }
 
+  // Animation timing (same as Link component)
+  $bds-submenu-transition-duration: 150ms;
+  $bds-submenu-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
   // Main link item (Tier 1) - text span inside parent link
   // Hover states are controlled by the parent &__parent-link styles
   &__link {
@@ -1101,7 +1105,7 @@ html.dark:has(.bds-navbar) {
     font-weight: 400;
     line-height: 23.2px;
     white-space: nowrap;
-    transition: color 0.2s ease;
+    transition: color $bds-submenu-transition-duration $bds-submenu-transition-timing, gap $bds-submenu-transition-duration $bds-submenu-transition-timing;
 
     // Bold style for main items
     &--bold {
@@ -1288,10 +1292,6 @@ html.light .bds-submenu {
   // States: Enabled (black) → Hover (green-400) → Active/Pressed (green-500) → Focused (outline)
   // Animation: Internal arrow horizontal line shrinks to chevron on hover
   // =============================================================================
-  
-  // Animation timing (same as Link component)
-  $bds-submenu-transition-duration: 150ms;
-  $bds-submenu-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
   &__parent-link {
     display: flex;
@@ -1330,15 +1330,16 @@ html.light .bds-submenu {
     // Hover state - Green text and arrow animates to chevron
     &:hover {
       text-decoration: none;
-      
+
       .bds-submenu__link {
         color: $green-400;
         text-decoration: none;
-        
+        gap: 20px; // Increase gap to move arrow right (similar to button animation)
+
         .bds-submenu__arrow svg path {
           stroke: $green-400;
         }
-        
+
         // Animate horizontal line to shrink (show chevron only)
         .bds-submenu__arrow svg .arrow-horizontal {
           transform: scaleX(0);
@@ -1349,15 +1350,16 @@ html.light .bds-submenu {
     // Active/Pressed state - Darker green text and arrow
     &:active {
       text-decoration: none;
-      
+
       .bds-submenu__link {
         color: $green-500;
         text-decoration: none;
-        
+        gap: 20px; // Increase gap to move arrow right (similar to button animation)
+
         .bds-submenu__arrow svg path {
           stroke: $green-500;
         }
-        
+
         .bds-submenu__arrow svg .arrow-horizontal {
           transform: scaleX(0);
         }
@@ -1374,15 +1376,16 @@ html.light .bds-submenu {
       outline: 2px solid $black;
       outline-offset: 2px;
       text-decoration: none;
-      
+
       .bds-submenu__link {
         color: $green-400;
         text-decoration: none;
-        
+        gap: 20px; // Increase gap to move arrow right (similar to button animation)
+
         .bds-submenu__arrow svg path {
           stroke: $green-400;
         }
-        
+
         .bds-submenu__arrow svg .arrow-horizontal {
           transform: scaleX(0);
         }
