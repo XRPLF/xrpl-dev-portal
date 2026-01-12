@@ -60,9 +60,17 @@ $bds-navbar-padding-mobile: 0 20px;
     align-items: center;
     flex-shrink: 0;
     text-decoration: none;
+    position: relative;
 
     &:hover {
       opacity: 0.8;
+    }
+
+    // Desktop: remove opacity change since we have animation
+    @include media-breakpoint-up(lg) {
+      &:hover {
+        opacity: 1;
+      }
     }
 
     // Symbol logo (all breakpoints - mobile, tablet, desktop)
@@ -81,6 +89,36 @@ $bds-navbar-padding-mobile: 0 20px;
       @include media-breakpoint-up(lg) {
         width: 37px;
         height: 32px;
+      }
+    }
+
+    // "XRP LEDGER" text that animates out on hover (desktop only)
+    // Positioned absolutely to the right of the symbol, slides in from left
+    &-text {
+      display: none; // Hidden on mobile/tablet
+
+      // Desktop only - show and enable animation
+      @include media-breakpoint-up(lg) {
+        display: block;
+        position: absolute;
+        left: 37px; // Position right after the symbol
+        top: 50%;
+        transform: translateY(-50%) translateX(-100%); // Center vertically, hide to the left
+        height: 15px;
+        width: 125px;
+        opacity: 0;
+        margin-left: 8px;
+        transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                    opacity 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+        pointer-events: none;
+      }
+    }
+
+    // Hover state - slide text out to the right on desktop
+    @include media-breakpoint-up(lg) {
+      &:hover &-text {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0); // Keep centered vertically, slide into view
       }
     }
 
@@ -358,7 +396,8 @@ html.dark .bds-navbar {
   &__logo {
     // Invert logo colors for dark mode
     &-symbol,
-    &-full {
+    &-full,
+    &-text {
       filter: invert(1); // Invert from black to white
     }
   }
@@ -460,10 +499,20 @@ html.dark .bds-submenu-backdrop {
 
 // Dark mode for desktop submenus
 html.dark .bds-submenu {
-  background: #343434;  
+  // Container always transparent - columns provide background
+  background: transparent;
+
   &__left,
   &__right {
-    background: #343434; // Dark background for columns
+    background: #343434; // Background moves with the column animation
+  }
+
+  // When closing, immediately make column backgrounds transparent
+  &--closing {
+    .bds-submenu__left,
+    .bds-submenu__right {
+      background: transparent;
+    }
   }
 
   &__section {
@@ -602,6 +651,24 @@ html.dark .bds-submenu {
   }
 }
 
+// Dark mode for Network submenu
+html.dark .bds-submenu--network {
+  .bds-submenu__section {
+    background-color: #111112 !important; // Dark card background
+    // Dark gray frame using box-shadow
+    box-shadow: -8px 0 0 0 #343434, 8px 0 0 0 #343434, 0 -8px 0 0 #343434, 0 8px 0 0 #343434,
+                -8px -8px 0 0 #343434, 8px -8px 0 0 #343434, -8px 8px 0 0 #343434, 8px 8px 0 0 #343434;
+  }
+
+  // When closing, remove box-shadow
+  &.bds-submenu--closing {
+    .bds-submenu__section:nth-child(1),
+    .bds-submenu__section:nth-child(2) {
+      box-shadow: none;
+    }
+  }
+}
+
 // Dark mode for mobile menu
 html.dark .bds-mobile-menu {
   background-color: $black;
@@ -628,6 +695,16 @@ html.dark .bds-mobile-menu {
   &__accordion-content {
     background-color: $black;
     border-bottom-color: $gray-700;
+  }
+
+  // Chevron colors in dark mode
+  &__chevron {
+    color: $white; // White when collapsed (inherited by currentColor in SVG)
+
+    // Green when expanded
+    &--expanded {
+      color: $green-300;
+    }
   }
 
   &__tier-list {
@@ -939,14 +1016,14 @@ html.dark:has(.bds-navbar) {
   overflow: hidden; // Clip content during animation
   opacity: 0; // Hidden by default
   visibility: hidden; // Prevent interaction when hidden
-  
-  // Container with gray background
+
+  // Container always transparent - columns provide the background
   width: 612px;
   height: 390px;
   padding: 8px;
-  gap: 8px;
-  background-color: $gray-200; // #E6EAF0 - Neutral 200
-  
+  gap: 0; // No gap - columns will handle spacing internally
+  background-color: transparent; // Always transparent
+
   // On close: wait for column animations (300ms + 200ms delay), then hide container
   transition: opacity 100ms ease-out 400ms, visibility 0ms linear 500ms;
 
@@ -961,7 +1038,7 @@ html.dark:has(.bds-navbar) {
     opacity: 1;
     visibility: visible;
     z-index: 1003; // Higher z-index to appear above closing/inactive submenus
-    // On open: show immediately
+    // Container stays transparent - columns provide background
     transition: opacity 0ms, visibility 0ms;
 
     .bds-submenu__left {
@@ -989,7 +1066,9 @@ html.dark:has(.bds-navbar) {
     // Container fades out after columns animate (300ms animation)
     transition: opacity 100ms ease-out 250ms, visibility 0ms linear 350ms;
 
-    .bds-submenu__left {
+    .bds-submenu__left,
+    .bds-submenu__right {
+      background-color: transparent; // Immediately transparent when closing
       animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
     }
 
@@ -997,7 +1076,7 @@ html.dark:has(.bds-navbar) {
       animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
     }
   }
-  
+
   // Wrapper to bridge gap between nav item and submenu
   &-wrapper {
     position: absolute;
@@ -1009,21 +1088,36 @@ html.dark:has(.bds-navbar) {
 
   // Left column - slides down from top (starts completely above)
   &__left {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 298px;
+    width: 306px; // 298px + 8px to cover the gap between columns
     height: 374px; // Fixed height to match design
+    padding-right: 8px; // Internal padding to maintain visual spacing
     transform: translateY(-100%); // Start completely above (hidden)
     opacity: 0;
-    background-color: $gray-200; // Background on column so it animates with content
+    background-color: $gray-200; // Background moves with the column animation
     // On close: left slides back up immediately (no delay)
-    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
                 opacity 150ms ease-in;
+
+    // Pseudo-element to cover outer padding (left side frame: top, left, bottom)
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      bottom: -8px;
+      right: 0;
+      background-color: inherit;
+      z-index: -1;
+    }
   }
 
   // Right column - slides from left (starts completely to the left)
   &__right {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -1031,10 +1125,22 @@ html.dark:has(.bds-navbar) {
     height: 374px; // Fixed height to match design
     transform: translateX(-100%); // Start completely to the left (hidden behind left column)
     opacity: 0;
-    background-color: $gray-200; // Background on column so it animates with content
+    background-color: $gray-200; // Background moves with the column animation
     // On close: right animates first (no delay), slides back left
-    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
                 opacity 150ms ease-in 150ms;
+
+    // Pseudo-element to cover outer padding (right side frame: top, right, bottom)
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 0;
+      bottom: -8px;
+      right: -8px;
+      background-color: inherit;
+      z-index: -1;
+    }
   }
 
   // Section card (white background)
@@ -1505,8 +1611,10 @@ html.light .bds-submenu {
   // Container dimensions from Figma
   width: 604px;
   height: 390px;
-  gap: 8px;
-  
+  gap: 0; // No gap - sections handle spacing with pseudo-elements
+  // Container always transparent - sections provide the background via pseudo-elements
+  background-color: transparent;
+
   // Network doesn't use left/right columns - sections are direct children
   // Remove flex column direction, use row
   flex-direction: row;
@@ -1516,8 +1624,9 @@ html.light .bds-submenu {
   .bds-submenu__right {
     display: none; // Not used in Network submenu
   }
-  
+
   // Section styling - 290px wide, 374px tall
+  // Use box-shadow to create the gray frame that moves with the card
   .bds-submenu__section {
     flex: none !important;
     width: 290px;
@@ -1526,61 +1635,74 @@ html.light .bds-submenu {
     flex-direction: column;
     padding: 16px 24px;
     gap: 0; // Control spacing manually
-    
+    background-color: $white !important; // Explicit white background for the card
+    // Use large box-shadow to create the gray frame around the card
+    box-shadow: -8px 0 0 0 $gray-200, 8px 0 0 0 $gray-200, 0 -8px 0 0 $gray-200, 0 8px 0 0 $gray-200,
+                -8px -8px 0 0 $gray-200, 8px -8px 0 0 $gray-200, -8px 8px 0 0 $gray-200, 8px 8px 0 0 $gray-200;
+
     // First section (Resources) - drops down from top like left column
     &:nth-child(1) {
+      width: 298px; // 290px + 8px to cover gap
+      padding-right: 32px; // 24px + 8px for the gap coverage
       transform: translateY(-100%);
       opacity: 0;
       // On close: slides back up immediately (no delay)
-      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
-                  opacity 150ms ease-in;
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                  opacity 150ms ease-in,
+                  box-shadow 0ms;
     }
-    
+
     // Second section (Insights) - slides from left like right column
     &:nth-child(2) {
       transform: translateX(-100%);
       opacity: 0;
       // On close: animates first (no delay), slides back left
-      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
-                  opacity 150ms ease-in 150ms;
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                  opacity 150ms ease-in 150ms,
+                  box-shadow 0ms;
     }
   }
-  
+
   // Active state animations for sections
   &.bds-submenu--active {
     .bds-submenu__section:nth-child(1) {
       transform: translateY(0);
       opacity: 1;
       // On open: drops down first (no delay)
-      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98), 
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
                   opacity 150ms ease-out;
     }
-    
+
     .bds-submenu__section:nth-child(2) {
       transform: translateX(0);
       opacity: 1;
       // On open: slides out second (delayed by 200ms)
-      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms, 
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms,
                   opacity 150ms ease-out 200ms;
     }
   }
 
   // Closing state animations for sections (diagonal exit for second section)
   &.bds-submenu--closing {
+    .bds-submenu__section:nth-child(1),
+    .bds-submenu__section:nth-child(2) {
+      box-shadow: none; // Immediately remove gray frame when closing
+    }
+
     .bds-submenu__section:nth-child(1) {
       animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
     }
-    
+
     .bds-submenu__section:nth-child(2) {
       animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
     }
   }
-  
+
   // Tier 1 (header) - positioned at top
   .bds-submenu__tier1 {
     flex-shrink: 0;
   }
-  
+
   // Network content wrapper - contains list and pattern
   .bds-submenu__network-content {
     display: flex;
@@ -1721,40 +1843,18 @@ html.light .bds-submenu {
     justify-content: center;
     width: 13px;
     height: 8px;
-    transition: transform 200ms ease;
+    transition: transform 200ms ease, color 200ms ease;
+    color: $black; // Default: black in light mode (inherited by currentColor in SVG)
 
     img, svg {
       width: 100%;
       height: 100%;
     }
 
-    // Default: black in light mode
-    svg path {
-      stroke: $black;
-    }
-
-    // Expanded state - rotate chevron and make green in both modes
+    // Expanded state - rotate chevron and make green
     &--expanded {
       transform: rotate(180deg);
-
-      svg path {
-        stroke: $green-300;
-      }
-    }
-  }
-
-  // Dark mode chevron colors
-  html.dark & {
-    &__chevron {
-      // White in dark mode when collapsed
-      svg path {
-        stroke: $white;
-      }
-
-      // Green when expanded (higher specificity than regular expanded rule)
-      &--expanded svg path {
-        stroke: $green-300;
-      }
+      color: $green-300;
     }
   }
 
@@ -2049,6 +2149,9 @@ html.light .bds-submenu {
     background-color: $white;
     flex-shrink: 0;
     margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
   }
 
   // Footer language pill (smaller version)
