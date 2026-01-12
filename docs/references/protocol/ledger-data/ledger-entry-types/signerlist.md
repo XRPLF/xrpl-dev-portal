@@ -52,7 +52,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Name                | JSON Type | Internal Type | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
-| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0053`, mapped to the string `SignerList`, indicates that this is a SignerList ledger entry. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this object, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | UInt256       | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
