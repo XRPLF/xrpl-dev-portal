@@ -115,7 +115,7 @@ $bds-grid-gutter: 8px;
         padding-right: 80px;
         padding-left: 80px;
       }
-      @media (min-width: 1512px) {
+      @include media-breakpoint-up(xxl) {
         padding-right: 112px;
         padding-left: 112px;
         max-width: 1504px;
