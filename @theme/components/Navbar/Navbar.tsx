@@ -20,6 +20,26 @@ import yellowWallet from "../../../static/img/navbar/yellow-wallet.svg";
 import pinkWallet from "../../../static/img/navbar/pink-wallet.svg";
 import blueWallet from "../../../static/img/navbar/blue-wallet.svg";
 
+// Develop submenu icons
+import devHomeIcon from "../../../static/img/navbar/dev_home.svg";
+import learnIcon from "../../../static/img/navbar/learn.svg";
+import codeSamplesIcon from "../../../static/img/navbar/code_samples.svg";
+import docsIcon from "../../../static/img/navbar/docs.svg";
+import clientLibIcon from "../../../static/img/navbar/client_lib.svg";
+
+// Use Cases submenu icons
+import paymentsIcon from "../../../static/img/navbar/payments.svg";
+import tokenizationIcon from "../../../static/img/navbar/tokenization.svg";
+import creditIcon from "../../../static/img/navbar/credit.svg";
+import tradingIcon from "../../../static/img/navbar/trading.svg";
+
+// Community submenu icons
+import communityIcon from "../../../static/img/navbar/community.svg";
+
+// Network submenu icons
+import insightsIcon from "../../../static/img/navbar/insights.svg";
+import resourcesIcon from "../../../static/img/navbar/resources.svg";
+
 // Network submenu pattern images
 import resourcesPurplePattern from "../../../static/img/navbar/resources-purple.svg";
 import insightsGreenPattern from "../../../static/img/navbar/insights-green.svg";
@@ -49,6 +69,18 @@ const walletIcons: Record<string, string> = {
   yellow: yellowWallet,
   pink: pinkWallet,
   blue: blueWallet,
+  dev_home: devHomeIcon,
+  learn: learnIcon,
+  code_samples: codeSamplesIcon,
+  docs: docsIcon,
+  client_lib: clientLibIcon,
+  payments: paymentsIcon,
+  tokenization: tokenizationIcon,
+  credit: creditIcon,
+  trading: tradingIcon,
+  community: communityIcon,
+  insights: insightsIcon,
+  resources: resourcesIcon,
 };
 
 // Types for submenu data
@@ -76,15 +108,15 @@ const developSubmenuData: {
   right: SubmenuItemWithChildren[];
 } = {
   left: [
-    { label: "Developer's Home", href: "/docs", icon: "green" },
-    { label: "Learn", href: "/docs/tutorials", icon: "lilac" },
-    { label: "Code Samples", href: "/_code-samples", icon: "yellow" },
+    { label: "Developer's Home", href: "/docs", icon: "dev_home" },
+    { label: "Learn", href: "/docs/tutorials", icon: "learn" },
+    { label: "Code Samples", href: "/_code-samples", icon: "code_samples" },
   ],
   right: [
     {
       label: "Docs",
       href: "/docs",
-      icon: "pink",
+      icon: "docs",
       children: [
         { label: "API Reference", href: "/docs/references" },
         { label: "Tutorials", href: "/docs/tutorials" },
@@ -95,7 +127,7 @@ const developSubmenuData: {
     {
       label: "Client Libraries",
       href: "/docs/references/client-libraries",
-      icon: "blue",
+      icon: "client_lib",
       children: [
         { label: "JavaScript", href: "/docs/references/xrpljs" },
         { label: "Python", href: "/docs/references/xrpl-py" },
@@ -115,7 +147,7 @@ const useCasesSubmenuData: {
     {
       label: "Payments",
       href: "/about/uses/payments",
-      icon: "green",
+      icon: "payments",
       children: [
         { label: "Direct XRP Payments", href: "/about/uses/direct-xrp-payments" },
         { label: "Cross-currency Payments", href: "/about/uses/cross-currency-payments" },
@@ -126,7 +158,7 @@ const useCasesSubmenuData: {
     {
       label: "Tokenization",
       href: "/about/uses/tokenization",
-      icon: "pink",
+      icon: "tokenization",
       children: [
         { label: "Stablecoin", href: "/about/uses/stablecoin" },
         { label: "NFT", href: "/about/uses/nft" },
@@ -137,7 +169,7 @@ const useCasesSubmenuData: {
     {
       label: "Credit",
       href: "/about/uses/credit",
-      icon: "lilac",
+      icon: "credit",
       children: [
         { label: "Lending", href: "/about/uses/lending" },
         { label: "Collateralization", href: "/about/uses/collateralization" },
@@ -147,7 +179,7 @@ const useCasesSubmenuData: {
     {
       label: "Trading",
       href: "/about/uses/trading",
-      icon: "yellow",
+      icon: "trading",
       children: [
         { label: "DEX", href: "/about/uses/dex" },
         { label: "Permissioned Trading", href: "/about/uses/permissioned-trading" },
@@ -167,7 +199,7 @@ const communitySubmenuData: {
     {
       label: "Community",
       href: "/community",
-      icon: "pink",
+      icon: "community",
       children: [
         { label: "Events", href: "/community/events" },
         { label: "News", href: "/blog", active: true },
@@ -176,20 +208,20 @@ const communitySubmenuData: {
         { label: "Partner Connect", href: "/community/partner-connect" },
       ],
     },
-    { label: "Funding", href: "/community/developer-funding", icon: "yellow" },
+    { label: "Funding", href: "/community/developer-funding", icon: "code_samples" },
   ],
   right: [
     {
       label: "Contribute",
       href: "/resources/contribute-documentation",
-      icon: "blue",
+      icon: "client_lib",
       children: [
         { label: "Ecosystem Map", href: "/community/ecosystem-map" },
         { label: "Bug Bounty", href: "/community/bug-bounty" },
         { label: "Research", href: "/community/research" },
       ],
     },
-    { label: "Creators", href: "/community/ambassadors", icon: "green" },
+    { label: "Creators", href: "/community/ambassadors", icon: "learn" },
   ],
 };
 
@@ -207,7 +239,7 @@ const networkSubmenuData: NetworkSubmenuSection[] = [
   {
     label: "Resources",
     href: "/docs/concepts/networks-and-servers",
-    icon: "pink",
+    icon: "resources",
     children: [
       { label: "Validators", href: "/docs/concepts/networks-and-servers/validators" },
       { label: "Governance", href: "/docs/concepts/networks-and-servers/governance", active: true },
@@ -218,7 +250,7 @@ const networkSubmenuData: NetworkSubmenuSection[] = [
   {
     label: "Insights",
     href: "/docs/concepts/networks-and-servers/insights",
-    icon: "green",
+    icon: "insights",
     children: [
       { label: "Explorer", href: "https://livenet.xrpl.org" },
       { label: "Data Dashboard", href: "/docs/concepts/networks-and-servers/data-dashboard" },
