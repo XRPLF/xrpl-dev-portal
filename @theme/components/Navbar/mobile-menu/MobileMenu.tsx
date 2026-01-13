@@ -9,13 +9,14 @@ import { MobileMenuContent, type MobileMenuKey } from "./MobileMenuContent";
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  onSearch?: () => void;
 }
 
 /**
  * Mobile Menu Component.
  * Full-screen slide-out menu for mobile devices.
  */
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, onSearch }: MobileMenuProps) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [expandedItem, setExpandedItem] = React.useState<string | null>("Develop");
@@ -37,9 +38,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   };
 
   const handleSearch = () => {
-    const searchTrigger = document.querySelector('[data-component-name="Search/SearchTrigger"]') as HTMLElement;
-    if (searchTrigger) {
-      searchTrigger.click();
+    if (onSearch) {
+      onSearch();
     }
     onClose();
   };

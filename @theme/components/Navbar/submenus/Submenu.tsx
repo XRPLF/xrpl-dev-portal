@@ -72,7 +72,9 @@ export function Submenu({ variant, isActive, isClosing }: SubmenuProps) {
 
 /** Network submenu with theme-aware pattern images */
 function NetworkSubmenuContent({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  // Start with null to indicate "not yet determined" - avoids hydration mismatch
+  // by ensuring server and client both render the same initial state
+  const [isDarkMode, setIsDarkMode] = React.useState<boolean | null>(null);
 
   React.useEffect(() => {
     const checkTheme = () => {
@@ -84,9 +86,10 @@ function NetworkSubmenuContent({ isActive, isClosing }: { isActive: boolean; isC
     return () => observer.disconnect();
   }, []);
 
+  // Default to light mode patterns until client-side detection runs
   const patternImages = React.useMemo(() => ({
-    lilac: isDarkMode ? darkLilacPattern : resourcesPurplePattern,
-    green: isDarkMode ? darkInsightsGreenPattern : insightsGreenPattern,
+    lilac: isDarkMode === true ? darkLilacPattern : resourcesPurplePattern,
+    green: isDarkMode === true ? darkInsightsGreenPattern : insightsGreenPattern,
   }), [isDarkMode]);
 
   const classNames = [
