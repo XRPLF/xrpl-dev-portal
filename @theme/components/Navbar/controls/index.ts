@@ -6,5 +6,6 @@ export { NavControls } from './NavControls';
 export { SearchButton } from './SearchButton';
 export { ModeToggleButton } from './ModeToggleButton';
 export { LanguagePill } from './LanguagePill';
+export { LanguageDropdown } from './LanguageDropdown';
 export { HamburgerButton } from './HamburgerButton';
 

@@ -1,6 +1,8 @@
+import * as React from "react";
 import { SearchButton } from "./SearchButton";
 import { ModeToggleButton } from "./ModeToggleButton";
 import { LanguagePill } from "./LanguagePill";
+import { LanguageDropdown } from "./LanguageDropdown";
 
 interface NavControlsProps {
   onSearch?: () => void;
@@ -11,6 +13,8 @@ interface NavControlsProps {
  * Right side of the navbar containing search, mode toggle, and language selector.
  */
 export function NavControls({ onSearch }: NavControlsProps) {
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = React.useState(false);
+
   const handleModeToggle = () => {
     // Toggle between light and dark theme
     const newTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
@@ -21,15 +25,21 @@ export function NavControls({ onSearch }: NavControlsProps) {
   };
 
   const handleLanguageClick = () => {
-    // Placeholder - language selection will be enhanced in future phases
-    console.log("Language selector clicked");
+    setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
+  };
+
+  const handleLanguageDropdownClose = () => {
+    setIsLanguageDropdownOpen(false);
   };
 
   return (
     <div className="bds-navbar__controls">
       <SearchButton onClick={onSearch} />
       <ModeToggleButton onClick={handleModeToggle} />
-      <LanguagePill onClick={handleLanguageClick} />
+      <div className="bds-navbar__lang-wrapper">
+        <LanguagePill onClick={handleLanguageClick} isOpen={isLanguageDropdownOpen} />
+        <LanguageDropdown isOpen={isLanguageDropdownOpen} onClose={handleLanguageDropdownClose} />
+      </div>
     </div>
   );
 }
