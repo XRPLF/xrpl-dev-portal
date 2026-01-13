@@ -274,9 +274,9 @@ $bds-hero-mobile-content-gap: 32px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
 
-    // Tablet - 2:1 aspect ratio
+    // Tablet - 16:9 aspect ratio based on 8-column grid width
     @include media-breakpoint-up(md) {
-      aspect-ratio: 2 / 1;
+      aspect-ratio: 16 / 9;
     }
 
     // Desktop - 1:1 aspect ratio
@@ -411,10 +411,10 @@ html.light .bds-hero-split-media--accent {
 // =============================================================================
 
 // Title only - no description or CTAs
-// When there's no description group content, the title section should expand
+// When there's no description group content, align title to top
 .bds-hero-split-media--title-only {
   .bds-hero-split-media__content {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
