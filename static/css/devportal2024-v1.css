@@ -11320,6 +11320,21 @@ aside .active-parent > a {
   margin-top: 0;
 }
 
+/**
+ * Theme mode mixin
+ * 
+ * Applies styles conditionally based on the theme mode (light or dark).
+ * SCSS doesn't support type constraints in parameter declarations, so we use
+ * runtime validation with @if/@error to ensure only valid values are accepted.
+ * 
+ * @param {string} $mode - Theme mode: "dark" or "light" (default: "dark")
+ * @throws Error if $mode is not "dark" or "light"
+ * 
+ * @example
+ *   @include theme-mode(light) {
+ *     background-color: white;
+ *   }
+ */
 /* HEIGHT AND WIDTH HELPERS */
 .h32 {
   height: 32px;
@@ -17478,6 +17493,9 @@ html.light .bds-card-icon--neutral .bds-card-icon__arrow {
 html.light .bds-card-icon--neutral .bds-card-icon__overlay {
   background-color: #CAD4DF;
 }
+html.light .bds-card-icon--neutral:focus {
+  background-color: #E6EAF0 !important;
+}
 html.light .bds-card-icon--neutral:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
   background-color: #8A919A;
   clip-path: inset(0 0 0 0);
@@ -17491,6 +17509,9 @@ html.light .bds-card-icon--green .bds-card-icon__arrow {
 }
 html.light .bds-card-icon--green .bds-card-icon__overlay {
   background-color: #21E46B;
+}
+html.light .bds-card-icon--green:focus {
+  background-color: #70EE97 !important;
 }
 html.light .bds-card-icon--green:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
   background-color: #0DAA3E;
