@@ -15,6 +15,8 @@ interface SubmenuProps {
   isActive: boolean;
   /** Whether this submenu is in closing animation */
   isClosing: boolean;
+  /** Callback when submenu should close (e.g., Escape key) */
+  onClose?: () => void;
 }
 
 /** Get submenu data based on variant */
@@ -34,13 +36,96 @@ function getVariantClass(variant: SubmenuVariant): string {
 }
 
 /**
+ * Get all focusable elements within a container
+ */
+function getFocusableElements(container: HTMLElement | null): HTMLElement[] {
+  if (!container) return [];
+  return Array.from(
+    container.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+  );
+}
+
+/**
+ * Find the next nav item button after the current expanded one
+ */
+function getNextNavItem(): HTMLElement | null {
+  const navItems = document.querySelectorAll<HTMLElement>('.bds-navbar__item');
+  const currentIndex = Array.from(navItems).findIndex(item =>
+    item.getAttribute('aria-expanded') === 'true'
+  );
+  if (currentIndex >= 0 && currentIndex < navItems.length - 1) {
+    return navItems[currentIndex + 1];
+  }
+  // If at the last nav item, go to the first control button (search, etc.)
+  const controls = document.querySelector<HTMLElement>('.bds-navbar__controls button, .bds-navbar__controls a');
+  return controls;
+}
+
+/**
  * Unified Submenu component.
  * Handles all submenu variants (develop, use-cases, community, network).
+ * ARIA compliant with full keyboard navigation support.
  */
-export function Submenu({ variant, isActive, isClosing }: SubmenuProps) {
+export function Submenu({ variant, isActive, isClosing, onClose }: SubmenuProps) {
+  const submenuRef = React.useRef<HTMLDivElement>(null);
+
+  // Handle keyboard events for accessibility
+  const handleKeyDown = React.useCallback((event: KeyboardEvent) => {
+    if (!isActive) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      onClose?.();
+      // Return focus to the trigger button
+      const triggerButton = document.querySelector<HTMLButtonElement>(
+        `.bds-navbar__item[aria-expanded="true"]`
+      );
+      triggerButton?.focus();
+    }
+
+    // Handle Tab at end of submenu - move to next nav item
+    if (event.key === 'Tab' && !event.shiftKey) {
+      const activeSubmenu = document.querySelector<HTMLElement>('.bds-submenu--active');
+      const focusableElements = getFocusableElements(activeSubmenu);
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      if (document.activeElement === lastFocusable) {
+        event.preventDefault();
+        onClose?.();
+        const nextItem = getNextNavItem();
+        nextItem?.focus();
+      }
+    }
+
+    // Handle Shift+Tab at start of submenu - move back to trigger button
+    if (event.key === 'Tab' && event.shiftKey) {
+      const activeSubmenu = document.querySelector<HTMLElement>('.bds-submenu--active');
+      const focusableElements = getFocusableElements(activeSubmenu);
+      const firstFocusable = focusableElements[0];
+
+      if (document.activeElement === firstFocusable) {
+        event.preventDefault();
+        onClose?.();
+        // Return focus to the trigger button
+        const triggerButton = document.querySelector<HTMLButtonElement>(
+          `.bds-navbar__item[aria-expanded="true"]`
+        );
+        triggerButton?.focus();
+      }
+    }
+  }, [isActive, onClose]);
+
+  // Add keyboard event listener when submenu is active
+  React.useEffect(() => {
+    if (isActive) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isActive, handleKeyDown]);
+
   // Network submenu needs special handling for theme-aware patterns
   if (variant === 'network') {
-    return <NetworkSubmenuContent isActive={isActive} isClosing={isClosing} />;
+    return <NetworkSubmenuContent isActive={isActive} isClosing={isClosing} onClose={onClose} />;
   }
 
   const data = getSubmenuData(variant);
@@ -56,7 +141,12 @@ export function Submenu({ variant, isActive, isClosing }: SubmenuProps) {
   const rightItems = 'right' in data ? data.right : [];
 
   return (
-    <div className={classNames}>
+    <div
+      ref={submenuRef}
+      className={classNames}
+      role="menu"
+      aria-hidden={!isActive}
+    >
       <div className="bds-submenu__left">
         {leftItems.map((item: SubmenuItem | SubmenuItemWithChildren) => (
           <SubmenuSection key={item.label} item={item} />
@@ -72,12 +162,66 @@ export function Submenu({ variant, isActive, isClosing }: SubmenuProps) {
 }
 
 /** Network submenu with theme-aware pattern images */
-function NetworkSubmenuContent({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
+function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boolean; isClosing: boolean; onClose?: () => void }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   // Start with null to indicate "not yet determined" - avoids hydration mismatch
   // by ensuring server and client both render the same initial state
   const [isDarkMode, setIsDarkMode] = React.useState<boolean | null>(null);
+
+  // Handle keyboard events for accessibility
+  const handleKeyDown = React.useCallback((event: KeyboardEvent) => {
+    if (!isActive) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      onClose?.();
+      // Return focus to the trigger button
+      const triggerButton = document.querySelector<HTMLButtonElement>(
+        `.bds-navbar__item[aria-expanded="true"]`
+      );
+      triggerButton?.focus();
+    }
+
+    // Handle Tab at end of submenu - move to next nav item
+    if (event.key === 'Tab' && !event.shiftKey) {
+      const activeSubmenu = document.querySelector<HTMLElement>('.bds-submenu--active');
+      const focusableElements = getFocusableElements(activeSubmenu);
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      if (document.activeElement === lastFocusable) {
+        event.preventDefault();
+        onClose?.();
+        const nextItem = getNextNavItem();
+        nextItem?.focus();
+      }
+    }
+
+    // Handle Shift+Tab at start of submenu - move back to trigger button
+    if (event.key === 'Tab' && event.shiftKey) {
+      const activeSubmenu = document.querySelector<HTMLElement>('.bds-submenu--active');
+      const focusableElements = getFocusableElements(activeSubmenu);
+      const firstFocusable = focusableElements[0];
+
+      if (document.activeElement === firstFocusable) {
+        event.preventDefault();
+        onClose?.();
+        // Return focus to the trigger button
+        const triggerButton = document.querySelector<HTMLButtonElement>(
+          `.bds-navbar__item[aria-expanded="true"]`
+        );
+        triggerButton?.focus();
+      }
+    }
+  }, [isActive, onClose]);
+
+  // Add keyboard event listener when submenu is active
+  React.useEffect(() => {
+    if (isActive) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isActive, handleKeyDown]);
 
   React.useEffect(() => {
     const checkTheme = () => {
@@ -103,7 +247,7 @@ function NetworkSubmenuContent({ isActive, isClosing }: { isActive: boolean; isC
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={classNames}>
+    <div className={classNames} role="menu" aria-hidden={!isActive}>
       {networkSubmenuData.map((section: NetworkSubmenuSection) => (
         <div key={section.label} className="bds-submenu__section">
           <a href={section.href} className="bds-submenu__tier1 bds-submenu__parent-link">

@@ -1865,10 +1865,8 @@ html.light .bds-submenu {
     display: flex;
     flex-direction: column;
     flex: 1;
-    width: 343px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
+    width: 100%;
+    padding: 0 16px;
   }
 
   // Accordion item container
@@ -2309,9 +2307,18 @@ body.bds-mobile-menu-open {
   overflow: hidden;
 }
 
-// Body scroll lock when desktop submenu is open
+// Body scroll lock when desktop submenu is open (tablet and desktop only)
+// Uses overflow: hidden on both html and body for cross-browser support
 body.bds-submenu-open {
-  overflow: hidden;
+  @include media-breakpoint-up(md) {
+    overflow: hidden;
+  }
+}
+
+html:has(body.bds-submenu-open) {
+  @include media-breakpoint-up(md) {
+    overflow: hidden;
+  }
 }
 
 // =============================================================================
