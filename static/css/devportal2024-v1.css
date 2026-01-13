@@ -15851,10 +15851,8 @@ html.light .bds-submenu a.bds-submenu__parent-link:not(.bds-link):focus-visible 
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 343px;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
+  width: 100%;
+  padding: 0 16px;
 }
 .bds-mobile-menu__accordion {
   display: flex;
@@ -16180,8 +16178,16 @@ body.bds-mobile-menu-open {
   overflow: hidden;
 }
 
-body.bds-submenu-open {
-  overflow: hidden;
+@media (min-width: 576px) {
+  body.bds-submenu-open {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 576px) {
+  html:has(body.bds-submenu-open) {
+    overflow: hidden;
+  }
 }
 
 html.light .bds-mobile-menu a.bds-mobile-menu__sublink:not(.bds-link) {

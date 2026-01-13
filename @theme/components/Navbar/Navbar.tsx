@@ -68,13 +68,26 @@ export function Navbar(_props: NavbarProps = {}) {
       if (currentSubmenu) {
         setClosingSubmenu(currentSubmenu);
         setActiveSubmenu(null);
-        
+
         // After animation completes (300ms), clear closing state
         closingTimeoutRef.current = setTimeout(() => {
           setClosingSubmenu(null);
         }, 350); // Slightly longer than animation to ensure completion
       }
     }, 150);
+  };
+
+  const handleSubmenuClose = () => {
+    // Close submenu immediately (for keyboard navigation)
+    if (activeSubmenu) {
+      setClosingSubmenu(activeSubmenu);
+      setActiveSubmenu(null);
+
+      // After animation completes, clear closing state
+      closingTimeoutRef.current = setTimeout(() => {
+        setClosingSubmenu(null);
+      }, 350);
+    }
   };
 
   // Handle scroll lock when submenu is open or closing
@@ -119,16 +132,16 @@ export function Navbar(_props: NavbarProps = {}) {
       >
         <div className="bds-navbar__content">
           <NavLogo />
-          <NavItems activeSubmenu={activeSubmenu} onSubmenuEnter={handleSubmenuMouseEnter} />
+          <NavItems activeSubmenu={activeSubmenu} onSubmenuEnter={handleSubmenuMouseEnter} onSubmenuClose={handleSubmenuClose} />
           <NavControls onSearch={onSearchOpen} />
           <HamburgerButton onClick={handleHamburgerClick} />
         </div>
         {/* Submenus positioned relative to navbar */}
         <div onMouseEnter={() => activeSubmenu && handleSubmenuMouseEnter(activeSubmenu)}>
-          <DevelopSubmenu isActive={activeSubmenu === 'Develop'} isClosing={closingSubmenu === 'Develop'} />
-          <UseCasesSubmenu isActive={activeSubmenu === 'Use Cases'} isClosing={closingSubmenu === 'Use Cases'} />
-          <CommunitySubmenu isActive={activeSubmenu === 'Community'} isClosing={closingSubmenu === 'Community'} />
-          <NetworkSubmenu isActive={activeSubmenu === 'Network'} isClosing={closingSubmenu === 'Network'} />
+          <DevelopSubmenu isActive={activeSubmenu === 'Develop'} isClosing={closingSubmenu === 'Develop'} onClose={handleSubmenuClose} />
+          <UseCasesSubmenu isActive={activeSubmenu === 'Use Cases'} isClosing={closingSubmenu === 'Use Cases'} onClose={handleSubmenuClose} />
+          <CommunitySubmenu isActive={activeSubmenu === 'Community'} isClosing={closingSubmenu === 'Community'} onClose={handleSubmenuClose} />
+          <NetworkSubmenu isActive={activeSubmenu === 'Network'} isClosing={closingSubmenu === 'Network'} onClose={handleSubmenuClose} />
         </div>
       </header>
       <MobileMenu isOpen={mobileMenuOpen} onClose={handleMobileMenuClose} onSearch={onSearchOpen} />
