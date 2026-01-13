@@ -1,0 +1,133 @@
+import React from 'react';
+import clsx from 'clsx';
+import { Button } from '../../components/Button/Button';
+import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
+
+export interface CalloutMediaBannerProps {
+  /** Color variant - determines background color (ignored if backgroundImage is provided) */
+  variant?: 'default' | 'light-gray' | 'lilac' | 'green' | 'gray';
+  /** Background image URL - overrides variant color when provided */
+  backgroundImage?: string;
+  /** Main heading text */
+  heading: string;
+  /** Subheading/description text */
+  subheading: string;
+  /** Primary button configuration */
+  primaryButton?: {
+    label: string;
+    href?: string;
+    onClick?: () => void;
+  };
+  /** Tertiary button configuration */
+  tertiaryButton?: {
+    label: string;
+    href?: string;
+    onClick?: () => void;
+  };
+  /** Additional CSS classes */
+  className?: string;
+}
+
+/**
+ * CalloutMediaBanner Component
+ * 
+ * A full-width banner component featuring a heading, subheading, and optional action buttons.
+ * Supports 5 color variants or a custom background image. Responsive across mobile, tablet, and desktop.
+ * 
+ * @example
+ * // Color variant
+ * <CalloutMediaBanner
+ *   variant="green"
+ *   heading="The Compliant Ledger Protocol"
+ *   subheading="A decentralized public Layer 1 blockchain..."
+ *   primaryButton={{ label: "Get Started", href: "/docs" }}
+ *   tertiaryButton={{ label: "Learn More", href: "/about" }}
+ * />
+ * 
+ * @example
+ * // With background image
+ * <CalloutMediaBanner
+ *   backgroundImage="/images/hero-bg.jpg"
+ *   heading="Build on XRPL"
+ *   subheading="Start building your next project"
+ *   primaryButton={{ label: "Start Building", onClick: handleClick }}
+ * />
+ */
+export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
+  variant = 'default',
+  backgroundImage,
+  heading,
+  subheading,
+  primaryButton,
+  tertiaryButton,
+  className = '',
+}) => {
+  // Check if there are any buttons
+  const hasButtons = !!(primaryButton || tertiaryButton);
+
+  // Determine button color: black for all variants except 'default' and 'image'
+  const buttonColor: 'green' | 'black' = 
+    !backgroundImage && variant !== 'default' ? 'black' : 'green';
+
+  // Build class names using BEM with bds namespace
+  const classNames = clsx(
+    'bds-callout-media-banner',
+    // Only apply variant class if NO backgroundImage is provided
+    !backgroundImage && `bds-callout-media-banner--${variant}`,
+    // Add image class when backgroundImage is provided
+    backgroundImage && 'bds-callout-media-banner--image',
+    // Add no-actions class when there are no buttons
+    !hasButtons && 'bds-callout-media-banner--no-actions',
+    className
+  );
+
+  // Inline style for background image (when provided)
+  const inlineStyle: React.CSSProperties = backgroundImage
+    ? { backgroundImage: `url(${backgroundImage})` }
+    : {};
+
+  return (
+    <PageGrid containerWide={true}>
+    <PageGridRow className={classNames}>
+      <PageGridCol span={{base: 4, md: 6, lg: 8}}>
+        <div className="bds-callout-media-banner__content">
+          {/* Text Content */}
+          <div className="bds-callout-media-banner__text">
+            <h2 className="bds-callout-media-banner__heading">{heading}</h2>
+            <p className="bds-callout-media-banner__subheading">{subheading}</p>
+          </div>
+
+          {/* Buttons */}
+          {(primaryButton || tertiaryButton) && (
+            <div className="bds-callout-media-banner__actions">
+              {primaryButton && (
+                <Button
+                  variant="primary"
+                  color={buttonColor}
+                  href={primaryButton.href}
+                  onClick={primaryButton.onClick}
+                >
+                  {primaryButton.label}
+                </Button>
+              )}
+              {tertiaryButton && (
+                <Button
+                  variant="tertiary"
+                  color={buttonColor}
+                  href={tertiaryButton.href}
+                  onClick={tertiaryButton.onClick}
+                >
+                  {tertiaryButton.label}
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+      </PageGridCol>
+    </PageGridRow>
+    </PageGrid>
+  );
+};
+
+export default CalloutMediaBanner;
+
