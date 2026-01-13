@@ -1585,7 +1585,12 @@ html.light .bds-submenu {
   .bds-submenu__section {
     display: flex;
     flex-direction: column;
-    gap: 32px; // Space between tier1 header and tier2 list
+    justify-content: space-between; // Distribute space between header and items
+  }
+
+  // Override tier2 margin-top: auto for Use Cases - let space-between handle it
+  .bds-submenu__tier2 {
+    margin-top: 0;
   }
 }
 
