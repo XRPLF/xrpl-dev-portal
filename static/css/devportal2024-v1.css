@@ -16562,7 +16562,7 @@ html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-im
 }
 @media (min-width: 576px) {
   .bds-hero-split-media__media {
-    aspect-ratio: 2/1;
+    aspect-ratio: 16/9;
   }
 }
 @media (min-width: 992px) {
@@ -16649,7 +16649,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 }
 
 .bds-hero-split-media--title-only .bds-hero-split-media__content {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .bds-hero-split-media--no-description .bds-hero-split-media__description-group {
