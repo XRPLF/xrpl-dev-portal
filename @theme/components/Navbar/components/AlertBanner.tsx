@@ -18,7 +18,8 @@ export function AlertBanner({ message, button, link, show }: AlertBannerProps) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const bannerRef = React.useRef<HTMLAnchorElement>(null);
-  const [displayDate, setDisplayDate] = React.useState("JUNE 10-12");
+  // Use null initial state to avoid hydration mismatch - server and client both render null initially
+  const [displayDate, setDisplayDate] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     const calculateCountdown = () => {
@@ -69,7 +70,7 @@ export function AlertBanner({ message, button, link, show }: AlertBannerProps) {
     >
       <div className="banner-event-details">
         <div className="event-info">{translate(message)}</div>
-        <div className="event-date">{displayDate}</div>
+        <div className="event-date">{displayDate ?? "JUNE 10-12"}</div>
       </div>
       <div className="banner-button">
         <div className="button-text">{translate(button)}</div>

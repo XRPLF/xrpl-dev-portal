@@ -1,21 +1,16 @@
-import * as React from "react";
 import { SearchButton } from "./SearchButton";
 import { ModeToggleButton } from "./ModeToggleButton";
 import { LanguagePill } from "./LanguagePill";
+
+interface NavControlsProps {
+  onSearch?: () => void;
+}
 
 /**
  * Nav Controls Component.
  * Right side of the navbar containing search, mode toggle, and language selector.
  */
-export function NavControls() {
-  const handleSearch = () => {
-    // Trigger the search modal
-    const searchTrigger = document.querySelector('[data-component-name="Search/SearchTrigger"]') as HTMLElement;
-    if (searchTrigger) {
-      searchTrigger.click();
-    }
-  };
-
+export function NavControls({ onSearch }: NavControlsProps) {
   const handleModeToggle = () => {
     // Toggle between light and dark theme
     const newTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
@@ -32,7 +27,7 @@ export function NavControls() {
 
   return (
     <div className="bds-navbar__controls">
-      <SearchButton onClick={handleSearch} />
+      <SearchButton onClick={onSearch} />
       <ModeToggleButton onClick={handleModeToggle} />
       <LanguagePill onClick={handleLanguageClick} />
     </div>

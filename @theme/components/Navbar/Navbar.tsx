@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useSearchDialog } from "@redocly/theme/core/hooks";
+import { SearchDialog } from "@redocly/theme/components/Search/SearchDialog";
 
 // Import from modular components
 import { AlertBanner } from "./components/AlertBanner";
@@ -32,6 +34,9 @@ export function Navbar(_props: NavbarProps = {}) {
   const [closingSubmenu, setClosingSubmenu] = React.useState<string | null>(null);
   const submenuTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const closingTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  // Use Redocly's search dialog hook - shared across navbar and mobile menu
+  const { isOpen: isSearchOpen, onOpen: onSearchOpen, onClose: onSearchClose } = useSearchDialog();
 
   const handleHamburgerClick = () => {
     setMobileMenuOpen(true);
@@ -115,7 +120,7 @@ export function Navbar(_props: NavbarProps = {}) {
         <div className="bds-navbar__content">
           <NavLogo />
           <NavItems activeSubmenu={activeSubmenu} onSubmenuEnter={handleSubmenuMouseEnter} />
-          <NavControls />
+          <NavControls onSearch={onSearchOpen} />
           <HamburgerButton onClick={handleHamburgerClick} />
         </div>
         {/* Submenus positioned relative to navbar */}
@@ -126,7 +131,9 @@ export function Navbar(_props: NavbarProps = {}) {
           <NetworkSubmenu isActive={activeSubmenu === 'Network'} isClosing={closingSubmenu === 'Network'} />
         </div>
       </header>
-      <MobileMenu isOpen={mobileMenuOpen} onClose={handleMobileMenuClose} />
+      <MobileMenu isOpen={mobileMenuOpen} onClose={handleMobileMenuClose} onSearch={onSearchOpen} />
+      {/* Render SearchDialog when open - this is the actual search modal */}
+      {isSearchOpen && <SearchDialog onClose={onSearchClose} />}
     </>
   );
 }
