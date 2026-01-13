@@ -9,7 +9,10 @@ type PageGridBreakpoint = "base" | "sm" | "md" | "lg" | "xl";
 // Define the ResponsiveValue type using Partial<Record> for breakpoints
 type ResponsiveValue<T> = T | Partial<Record<PageGridBreakpoint, T>>;
 
-export interface PageGridProps extends PageGridElementProps {}
+export interface PageGridProps extends PageGridElementProps {
+  /** Container layout type - "standard" (default) or "wide" (1504px max-width, 144px padding at xl breakpoint) */
+  containerType?: "standard" | "wide";
+}
 
 export interface PageGridRowProps extends PageGridElementProps {}
 
@@ -65,8 +68,16 @@ const classForOffset = (prefix: string | null, value: PageGridOffsetValue): stri
 
 // --- PageGrid Root Component ---
 const PageGridRoot = React.forwardRef<HTMLDivElement, PageGridProps>(
-  ({ className, ...rest }, ref) => (
-    <div ref={ref} className={clsx("bds-grid__container", className)} {...rest} />
+  ({ className, containerType = "standard", ...rest }, ref) => (
+    <div 
+      ref={ref} 
+      className={clsx(
+        "bds-grid__container",
+        containerType === "wide" && "bds-grid__container--wide",
+        className
+      )} 
+      {...rest} 
+    />
   )
 );
 

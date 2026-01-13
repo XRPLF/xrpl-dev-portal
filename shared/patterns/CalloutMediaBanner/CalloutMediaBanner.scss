@@ -1,0 +1,332 @@
+// BDS CalloutMediaBanner Component Styles
+// Brand Design System - Full-width banner with color variants and image support
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-callout-media-banner                - Base banner (responsive layout)
+// .bds-callout-media-banner--default       - Default variant (white background)
+// .bds-callout-media-banner--light-gray    - Light gray variant
+// .bds-callout-media-banner--lilac         - Lilac variant
+// .bds-callout-media-banner--green         - Green variant
+// .bds-callout-media-banner--gray          - Gray variant
+// .bds-callout-media-banner--image         - Background image variant (white text by default)
+// .bds-callout-media-banner--image-text-black - Image variant with black text (fixed across light/dark)
+// .bds-callout-media-banner--centered      - Centered content modifier (no buttons or no heading)
+// .bds-callout-media-banner__content       - Content wrapper
+// .bds-callout-media-banner__text          - Text content container
+// .bds-callout-media-banner__heading       - Heading element
+// .bds-callout-media-banner__subheading    - Subheading element
+// .bds-callout-media-banner__actions       - Button container
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Color variants map - centralizes all variant configurations
+// Structure: variant-name: (light-bg, light-text, dark-bg, dark-text)
+$bds-cmb-variants: (
+  'default': (
+    light-bg: $white,           // #FFFFFF
+    light-text: $black,         // #141414
+    dark-bg: $gray-800,         // #232325
+    dark-text: $white           // #FFFFFF
+  ),
+  'light-gray': (
+    light-bg: $gray-200,        // #E6EAF0
+    light-text: $black,         // #141414
+    dark-bg: $gray-700,         // #343437
+    dark-text: $white           // #FFFFFF
+  ),
+  'lilac': (
+    light-bg: $lilac-300,       // #C0A7FF
+    light-text: $black,         // #141414
+    dark-bg: $lilac-400,        // #7649E3
+    dark-text: $white           // #FFFFFF
+  ),
+  'green': (
+    light-bg: $green-200,       // #70EE97
+    light-text: $black,         // #141414
+    dark-bg: $green-300,        // #21E46B
+    dark-text: $black           // #141414
+  ),
+  'gray': (
+    light-bg: $gray-300,        // #CAD4DF
+    light-text: $black,         // #141414
+    dark-bg: $gray-600,         // #454549
+    dark-text: $white           // #FFFFFF
+  )
+);
+
+// Spacing tokens - responsive
+// Mobile (<768px)
+$bds-cmb-gap-mobile: 48px;
+$bds-cmb-padding-mobile: 16px;
+
+// Tablet (768px-1023px)
+$bds-cmb-gap-tablet: 64px;
+$bds-cmb-padding-tablet: 24px;
+
+// Desktop (≥1024px)
+$bds-cmb-gap-desktop: 80px;
+$bds-cmb-padding-desktop: 40px 32px;
+
+// Button spacing
+$bds-cmb-button-gap: 24px;
+
+// Image overlay for readability
+$bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
+
+// =============================================================================
+// Base Banner Styles
+// =============================================================================
+
+.bds-callout-media-banner {
+  // Extend Bootstrap utilities for common properties
+  @extend .position-relative;
+  @extend .d-flex;
+  @extend .flex-row;
+  @extend .w-100;
+  @extend .align-items-stretch;
+  
+  // Custom properties not covered by Bootstrap
+  box-sizing: border-box;
+  min-height: 280px;
+  
+  // Ensure PageGridCol stretches to full height
+  > [class*="bds-grid__col"] {
+    @extend .d-flex;
+    @extend .flex-column;
+  }
+  
+  // Background positioning for image variant
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  // Mobile-first padding and gap (default)
+  padding: $bds-cmb-padding-mobile;
+  
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    padding: $bds-cmb-padding-tablet;
+  }
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(lg) {
+    padding: $bds-cmb-padding-desktop;
+    min-height: 360px;
+  }
+}
+
+// =============================================================================
+// Content Container
+// =============================================================================
+
+.bds-callout-media-banner__content {
+  @extend .position-relative;
+  @extend .z-index-1;
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .w-100;
+  @extend .h-100;
+  @extend .justify-content-between;
+  
+  // Mobile-first gap
+  gap: $bds-cmb-gap-mobile;
+  
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    gap: $bds-cmb-gap-tablet;
+  }
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(xl) {
+    gap: $bds-cmb-gap-desktop;
+  }
+}
+
+// When there are no action buttons OR no heading, vertically center the content
+.bds-callout-media-banner--centered {
+  .bds-callout-media-banner__content {
+    justify-content: center;
+  }
+}
+
+// =============================================================================
+// Text Content
+// =============================================================================
+
+.bds-callout-media-banner__text {
+  @extend .d-flex;
+  @extend .flex-column;
+  flex-direction: column;
+  color: var(--bds-cmb-text-color, #232021);
+  
+  // Mobile-first gap
+  gap: 16px;
+  
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    gap: 24px;
+  }
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(xl) {
+    gap: 32px;
+  }
+}
+
+.bds-callout-media-banner__heading {
+  // Typography - Heading MD token (Tobias Light)
+  @include type(heading-md);
+  margin: 0;
+  color: inherit !important;
+}
+
+.bds-callout-media-banner__subheading {
+  // Typography - Subhead LG R token (Booton Regular)
+  @include type(subhead-lg-r);
+  margin: 0;
+  color: inherit;
+}
+
+// =============================================================================
+// Action Buttons
+// ==================================================================== c=========
+
+.bds-callout-media-banner__actions {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .align-items-start;
+  @extend .flex-wrap;
+  gap: 8px;
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    align-items: center;
+    gap: 0px;
+  }
+}
+
+// =============================================================================
+// Color Variants (only applied when NO backgroundImage is provided)
+// =============================================================================
+// Generated from $bds-cmb-variants map
+
+@each $variant-name, $variant-colors in $bds-cmb-variants {
+  .bds-callout-media-banner--#{$variant-name} {
+    background-color: map-get($variant-colors, light-bg);
+  }
+}
+
+// =============================================================================
+// Image Variant
+// =============================================================================
+// When backgroundImage is provided, add an overlay for text readability
+
+.bds-callout-media-banner--image {
+  // No background-color (image takes precedence)
+  background-color: transparent;
+  
+  // Add overlay gradient for text readability (default: dark overlay for white text)
+  &::before {
+    content: '';
+    @extend .position-absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.2) 50%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+// Image variant with black text modifier
+// Fixed black text across both light and dark modes
+.bds-callout-media-banner--image-text-black {
+  // Light overlay for black text readability
+  &::before {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+  }
+  
+  // Force black text in both light and dark modes
+  .bds-callout-media-banner__text {
+    color: $black !important;
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles
+// =============================================================================
+// Generated from $bds-cmb-variants map
+
+html.dark {
+  // Generate dark mode styles for each variant
+  @each $variant-name, $variant-colors in $bds-cmb-variants {
+    .bds-callout-media-banner--#{$variant-name} {
+      background-color: map-get($variant-colors, dark-bg);
+      
+      .bds-callout-media-banner__text {
+        color: map-get($variant-colors, dark-text);
+      }
+    }
+  }
+  
+  // Image variant with white text remains white
+  .bds-callout-media-banner--image {
+    .bds-callout-media-banner__text {
+      color: $white;
+    }
+  }
+  
+  // Image variant with black text remains black (fixed across modes)
+  .bds-callout-media-banner--image-text-black {
+    .bds-callout-media-banner__text {
+      color: $black !important;
+    }
+  }
+}
+
+// =============================================================================
+// Light Mode Explicit Styles (for specificity)
+// =============================================================================
+// Generated from $bds-cmb-variants map
+
+html.light {
+  // Generate light mode styles for each variant
+  @each $variant-name, $variant-colors in $bds-cmb-variants {
+    .bds-callout-media-banner--#{$variant-name} {
+      background-color: map-get($variant-colors, light-bg);
+      
+      .bds-callout-media-banner__text {
+        color: map-get($variant-colors, light-text);
+      }
+    }
+  }
+  
+  // Image variant with white text remains white
+  .bds-callout-media-banner--image {
+    .bds-callout-media-banner__text {
+      color: $white;
+    }
+  }
+  
+  // Image variant with black text remains black (fixed across modes)
+  .bds-callout-media-banner--image-text-black {
+    .bds-callout-media-banner__text {
+      color: $black !important;
+    }
+  }
+}
+
