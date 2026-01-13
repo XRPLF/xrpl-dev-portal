@@ -445,6 +445,11 @@ html.light {
       background-color: $gray-300;
     }
 
+    // Maintain background color on focus (override generic link focus styles)
+    &:focus {
+      background-color: $gray-200 !important;
+    }
+
     &:active:not(.bds-card-icon--disabled) {
       .bds-card-icon__overlay {
         background-color: $gray-400;
@@ -466,6 +471,11 @@ html.light {
 
     .bds-card-icon__overlay {
       background-color: $green-300;
+    }
+
+    // Maintain background color on focus (override generic link focus styles)
+    &:focus {
+      background-color: $green-200 !important;
     }
 
     &:active:not(.bds-card-icon--disabled) {
