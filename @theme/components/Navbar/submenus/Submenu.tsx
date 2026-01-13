@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { SubmenuSection } from "./SubmenuSection";
 import { ArrowIcon } from "../icons";
 import { walletIcons, resourcesPurplePattern, insightsGreenPattern, darkInsightsGreenPattern, darkLilacPattern } from "../constants/icons";
@@ -72,6 +73,8 @@ export function Submenu({ variant, isActive, isClosing }: SubmenuProps) {
 
 /** Network submenu with theme-aware pattern images */
 function NetworkSubmenuContent({ isActive, isClosing }: { isActive: boolean; isClosing: boolean }) {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
   // Start with null to indicate "not yet determined" - avoids hydration mismatch
   // by ensuring server and client both render the same initial state
   const [isDarkMode, setIsDarkMode] = React.useState<boolean | null>(null);
@@ -108,7 +111,7 @@ function NetworkSubmenuContent({ isActive, isClosing }: { isActive: boolean; isC
               <img src={walletIcons[section.icon]} alt="" />
             </span>
             <span className="bds-submenu__link bds-submenu__link--bold">
-              {section.label}
+              {translate(section.label)}
               <span className="bds-submenu__arrow">
                 <ArrowIcon animated />
               </span>
@@ -124,7 +127,7 @@ function NetworkSubmenuContent({ isActive, isClosing }: { isActive: boolean; isC
                   target={child.href.startsWith('http') ? '_blank' : undefined}
                   rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
-                  {child.label}
+                  {translate(child.label)}
                   <span className="bds-submenu__sublink-arrow">
                     <ArrowIcon animated={false} />
                   </span>

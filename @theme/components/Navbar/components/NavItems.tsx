@@ -39,7 +39,7 @@ export function NavItems({ activeSubmenu, onSubmenuEnter }: NavItemsProps) {
   }, [activeSubmenu]);
 
   return (
-    <nav className="bds-navbar__items" aria-label="Main navigation">
+    <nav className="bds-navbar__items" aria-label={translate("Main navigation")}>
       {navItems.map((item) => (
         item.hasSubmenu ? (
           <span
