@@ -297,7 +297,30 @@ $bds-navbar-padding-mobile: 0 20px;
       height: 13px;
       transform: rotate(90deg);
       flex-shrink: 0;
+      transition: transform 0.2s ease, filter 0.2s ease;
     }
+
+    // When dropdown is open: rotate chevron and turn green (light mode)
+    // Filter converts black (#141414) to green-400 (#0DAA3E)
+    &--open {
+      border-color: $green-400;
+
+      .bds-navbar__lang-pill-chevron {
+        transform: rotate(-90deg);
+        // CSS filter to convert black to green-400 (#0DAA3E)
+        filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+      }
+
+      .bds-navbar__lang-pill-icon {
+        // Turn globe icon green as well
+        filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+      }
+    }
+  }
+
+  // Language wrapper for positioning dropdown
+  &__lang-wrapper {
+    position: relative;
   }
 
   // Hamburger menu button (mobile only)
@@ -464,6 +487,23 @@ html.dark .bds-navbar {
     &:focus-visible {
       outline: 2px solid $green-300;
       outline-offset: 2px;
+    }
+
+    // When dropdown is open in dark mode: green-300 border and icons
+    &--open {
+      border-color: $green-300;
+
+      .bds-navbar__lang-pill-chevron {
+        transform: rotate(-90deg);
+        // Filter to convert white to green-300 (#21E46B)
+        // First invert to get white base, then apply green filter
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
+
+      .bds-navbar__lang-pill-icon {
+        // Turn globe icon green-300 as well
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
     }
   }
 
@@ -800,6 +840,21 @@ html.dark .bds-mobile-menu {
 
     &:hover {
       background-color: $gray-800;
+    }
+
+    // When dropdown is open in dark mode mobile
+    &--open {
+      border-color: $green-300;
+
+      .bds-mobile-menu__lang-pill-chevron {
+        transform: rotate(-90deg);
+        // Filter to convert white to green-300 (#21E46B)
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
+
+      .bds-mobile-menu__lang-pill-icon {
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
     }
   }
 
@@ -2159,6 +2214,11 @@ html.light .bds-submenu {
     z-index: 10;
   }
 
+  // Language wrapper for positioning dropdown in mobile footer
+  &__lang-wrapper {
+    position: relative;
+  }
+
   // Footer language pill (smaller version)
   &__lang-pill {
     display: flex;
@@ -2198,6 +2258,22 @@ html.light .bds-submenu {
     height: 13px;
     transform: rotate(90deg);
     flex-shrink: 0;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  // When dropdown is open in light mode mobile: green-400 border and icons
+  &__lang-pill--open {
+    border-color: $green-400;
+
+    .bds-mobile-menu__lang-pill-chevron {
+      transform: rotate(-90deg);
+      // CSS filter to convert black to green-400 (#0DAA3E)
+      filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+    }
+
+    .bds-mobile-menu__lang-pill-icon {
+      filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+    }
   }
 
   // Footer icon buttons
@@ -2305,3 +2381,145 @@ html.light .bds-mobile-menu {
   }
 }
 
+// =============================================================================
+// Language Dropdown Component
+// =============================================================================
+
+.bds-lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1000;
+
+  // Base styles
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 18px;
+  min-width: 120px;
+
+  // Light mode (default): white bg, black border
+  background-color: $white;
+  border: 1.3px solid $black;
+
+  // Animation
+  animation: bds-dropdown-fade-in 0.2s ease;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 8px 13px 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23.2px;
+    text-align: left;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    // Light mode (default): black text
+    color: $black;
+
+    // Light mode hover: green-100 bg
+    &:hover {
+      background-color: $green-100;
+    }
+
+    // Light mode pressed/active
+    &:active {
+      background-color: $green-200;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: -2px;
+    }
+
+    // Active/selected language - green-400 text in light mode
+    &--active {
+      color: $green-400;
+    }
+  }
+}
+
+// Dark mode styles for language dropdown
+html.dark .bds-lang-dropdown {
+  background-color: $black;
+  border-color: $white;
+
+  .bds-lang-dropdown__item {
+    color: $white;
+
+    // Dark mode hover: green-200 bg, black text
+    &:hover {
+      background-color: $green-200;
+      color: $black;
+    }
+
+    // Dark mode pressed: green-300 bg, black text
+    &:active {
+      background-color: $green-300;
+      color: $black;
+    }
+
+    &:focus-visible {
+      outline-color: $green-300;
+    }
+
+    // Active/selected language in dark mode - green-300 text
+    &--active {
+      color: $green-300;
+
+      // Active item hover in dark mode
+      &:hover {
+        background-color: $green-200;
+        color: $black;
+      }
+
+      // Active item pressed in dark mode
+      &:active {
+        background-color: $green-300;
+        color: $black;
+      }
+    }
+  }
+}
+
+@keyframes bds-dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile-specific dropdown positioning (opens upward from footer)
+.bds-lang-dropdown--mobile {
+  top: auto;
+  bottom: calc(100% + 8px);
+  animation: bds-dropdown-fade-in-mobile 0.2s ease;
+}
+
+@keyframes bds-dropdown-fade-in-mobile {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

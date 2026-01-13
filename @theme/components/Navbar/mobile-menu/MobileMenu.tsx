@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { useThemeHooks, useLanguagePicker } from "@redocly/theme/core/hooks";
 import { BdsLink } from "../../../../shared/components/Link/Link";
 import { CloseIcon, ChevronIcon } from "../icons";
 import { xrpSymbolBlack, globeIcon, chevronDown, modeToggleIcon, searchIcon } from "../constants/icons";
@@ -141,16 +141,64 @@ interface MobileMenuFooterProps {
   onSearch: () => void;
 }
 
+/**
+ * Get short display name for a locale code.
+ */
+function getLocaleShortName(code: string | undefined): string {
+  if (!code) return "En";
+  const shortNames: Record<string, string> = {
+    "en-US": "En",
+    "en": "En",
+    "ja": "日本語",
+  };
+  return shortNames[code] || code.substring(0, 2).toUpperCase();
+}
+
 function MobileMenuFooter({ onModeToggle, onSearch }: MobileMenuFooterProps) {
+  const { currentLocale, locales, setLocale } = useLanguagePicker();
+  const [isLangOpen, setIsLangOpen] = React.useState(false);
+  const displayName = getLocaleShortName(currentLocale?.code);
+
+  const handleLanguageSelect = (localeCode: string) => {
+    setLocale(localeCode);
+    setIsLangOpen(false);
+  };
+
   return (
     <div className="bds-mobile-menu__footer">
-      <button type="button" className="bds-mobile-menu__lang-pill" aria-label="Select language">
-        <img src={globeIcon} alt="" className="bds-mobile-menu__lang-pill-icon" />
-        <span className="bds-mobile-menu__lang-pill-text">
-          <span>En</span>
-          <img src={chevronDown} alt="" className="bds-mobile-menu__lang-pill-chevron" />
-        </span>
-      </button>
+      <div className="bds-mobile-menu__lang-wrapper">
+        <button
+          type="button"
+          className={`bds-mobile-menu__lang-pill ${isLangOpen ? 'bds-mobile-menu__lang-pill--open' : ''}`}
+          aria-label="Select language"
+          aria-expanded={isLangOpen}
+          onClick={() => setIsLangOpen(!isLangOpen)}
+        >
+          <img src={globeIcon} alt="" className="bds-mobile-menu__lang-pill-icon" />
+          <span className="bds-mobile-menu__lang-pill-text">
+            <span>{displayName}</span>
+            <img src={chevronDown} alt="" className="bds-mobile-menu__lang-pill-chevron" />
+          </span>
+        </button>
+        {isLangOpen && locales.length >= 2 && (
+          <div className="bds-lang-dropdown bds-lang-dropdown--mobile" role="menu">
+            {locales.map((locale) => {
+              const isActive = locale.code === currentLocale?.code;
+              return (
+                <button
+                  key={locale.code}
+                  type="button"
+                  role="menuitem"
+                  className={`bds-lang-dropdown__item ${isActive ? 'bds-lang-dropdown__item--active' : ''}`}
+                  onClick={() => handleLanguageSelect(locale.code)}
+                >
+                  {locale.name || locale.code}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
       <button type="button" className="bds-mobile-menu__footer-icon" aria-label="Toggle color mode" onClick={onModeToggle}>
         <img src={modeToggleIcon} alt="" />
       </button>
