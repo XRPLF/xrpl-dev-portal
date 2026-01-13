@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { BdsLink } from "../../../../shared/components/Link/Link";
 import { xrpSymbolBlack, xrpLogotypeBlack, xrpLedgerNav } from "../constants/icons";
 
@@ -8,11 +8,14 @@ import { xrpSymbolBlack, xrpLogotypeBlack, xrpLedgerNav } from "../constants/ico
  * On desktop hover, the "XRP LEDGER" text animates out to the right.
  */
 export function NavLogo() {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+
   return (
-    <BdsLink href="/" className="bds-navbar__logo" aria-label="XRP Ledger Home" variant="inline">
+    <BdsLink href="/" className="bds-navbar__logo" aria-label={translate("XRP Ledger Home")} variant="inline">
       <img
         src={xrpSymbolBlack}
-        alt="XRP Ledger"
+        alt={translate("XRP Ledger")}
         className="bds-navbar__logo-symbol"
       />
       <img
@@ -22,7 +25,7 @@ export function NavLogo() {
       />
       <img
         src={xrpLogotypeBlack}
-        alt="XRP Ledger"
+        alt={translate("XRP Ledger")}
         className="bds-navbar__logo-full"
       />
     </BdsLink>

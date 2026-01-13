@@ -66,15 +66,15 @@ export function AlertBanner({ message, button, link, show }: AlertBannerProps) {
       ref={bannerRef}
       className="top-banner fixed-top web-banner"
       rel="noopener noreferrer"
-      aria-label="Get Tickets for the APEX 2025 Event"
+      aria-label={translate("Get Tickets for the APEX 2025 Event")}
     >
       <div className="banner-event-details">
         <div className="event-info">{translate(message)}</div>
-        <div className="event-date">{displayDate ?? "JUNE 10-12"}</div>
+        <div className="event-date">{displayDate ?? translate("JUNE 10-12")}</div>
       </div>
       <div className="banner-button">
         <div className="button-text">{translate(button)}</div>
-        <img className="button-icon" src={arrowUpRight} alt="Get Tickets Icon" />
+        <img className="button-icon" src={arrowUpRight} alt="" />
       </div>
     </a>
   );

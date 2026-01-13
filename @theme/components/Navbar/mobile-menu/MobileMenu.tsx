@@ -65,13 +65,13 @@ export function MobileMenu({ isOpen, onClose, onSearch }: MobileMenuProps) {
     <div className={`bds-mobile-menu ${isOpen ? 'bds-mobile-menu--open' : ''}`}>
       {/* Header */}
       <div className="bds-mobile-menu__header">
-        <BdsLink href="/" className="bds-navbar__logo" aria-label="XRP Ledger Home" onClick={onClose} variant="inline">
-          <img src={xrpSymbolBlack} alt="XRP Ledger" className="bds-navbar__logo-symbol" style={{ width: 33, height: 28 }} />
+        <BdsLink href="/" className="bds-navbar__logo" aria-label={translate("XRP Ledger Home")} onClick={onClose} variant="inline">
+          <img src={xrpSymbolBlack} alt={translate("XRP Ledger")} className="bds-navbar__logo-symbol" style={{ width: 33, height: 28 }} />
         </BdsLink>
         <button
           type="button"
           className="bds-mobile-menu__close"
-          aria-label="Close menu"
+          aria-label={translate("Close menu")}
           onClick={onClose}
         >
           <CloseIcon />
@@ -156,11 +156,15 @@ function getLocaleShortName(code: string | undefined): string {
 
 function MobileMenuFooter({ onModeToggle, onSearch }: MobileMenuFooterProps) {
   const { currentLocale, locales, setLocale } = useLanguagePicker();
+  const { useL10n, useTranslate } = useThemeHooks();
+  const { changeLanguage } = useL10n();
+  const { translate } = useTranslate();
   const [isLangOpen, setIsLangOpen] = React.useState(false);
   const displayName = getLocaleShortName(currentLocale?.code);
 
   const handleLanguageSelect = (localeCode: string) => {
     setLocale(localeCode);
+    changeLanguage(localeCode);
     setIsLangOpen(false);
   };
 
@@ -170,7 +174,7 @@ function MobileMenuFooter({ onModeToggle, onSearch }: MobileMenuFooterProps) {
         <button
           type="button"
           className={`bds-mobile-menu__lang-pill ${isLangOpen ? 'bds-mobile-menu__lang-pill--open' : ''}`}
-          aria-label="Select language"
+          aria-label={translate("Select language")}
           aria-expanded={isLangOpen}
           onClick={() => setIsLangOpen(!isLangOpen)}
         >
@@ -199,10 +203,10 @@ function MobileMenuFooter({ onModeToggle, onSearch }: MobileMenuFooterProps) {
           </div>
         )}
       </div>
-      <button type="button" className="bds-mobile-menu__footer-icon" aria-label="Toggle color mode" onClick={onModeToggle}>
+      <button type="button" className="bds-mobile-menu__footer-icon" aria-label={translate("Toggle color mode")} onClick={onModeToggle}>
         <img src={modeToggleIcon} alt="" />
       </button>
-      <button type="button" className="bds-mobile-menu__footer-icon" aria-label="Search" onClick={onSearch}>
+      <button type="button" className="bds-mobile-menu__footer-icon" aria-label={translate("Search")} onClick={onSearch}>
         <img src={searchIcon} alt="" />
       </button>
     </div>

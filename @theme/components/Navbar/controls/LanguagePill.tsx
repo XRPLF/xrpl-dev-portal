@@ -1,4 +1,4 @@
-import { useLanguagePicker } from "@redocly/theme/core/hooks";
+import { useLanguagePicker, useThemeHooks } from "@redocly/theme/core/hooks";
 import { globeIcon, chevronDown } from "../constants/icons";
 
 interface LanguagePillProps {
@@ -29,13 +29,15 @@ function getLocaleShortName(code: string | undefined): string {
  */
 export function LanguagePill({ onClick, isOpen }: LanguagePillProps) {
   const { currentLocale } = useLanguagePicker();
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
   const displayName = getLocaleShortName(currentLocale?.code);
 
   return (
     <button
       type="button"
       className={`bds-navbar__lang-pill ${isOpen ? 'bds-navbar__lang-pill--open' : ''}`}
-      aria-label="Select language"
+      aria-label={translate("Select language")}
       aria-expanded={isOpen}
       aria-haspopup="menu"
       onClick={onClick}

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { SubmenuArrow, SubmenuChildArrow } from "../icons";
 import { walletIcons } from "../constants/icons";
 import { hasChildren, type SubmenuItem } from "../types";
@@ -12,6 +13,8 @@ interface MobileMenuSectionProps {
  * Renders a parent link with icon, and optionally child links.
  */
 export function MobileMenuSection({ item }: MobileMenuSectionProps) {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
   const itemHasChildren = hasChildren(item);
 
   return (
@@ -21,7 +24,7 @@ export function MobileMenuSection({ item }: MobileMenuSectionProps) {
           <img src={walletIcons[item.icon]} alt="" />
         </span>
         <span className="bds-mobile-menu__link bds-mobile-menu__link--bold">
-          {item.label}
+          {translate(item.label)}
           <span className="bds-mobile-menu__arrow">
             <SubmenuArrow />
           </span>
@@ -37,7 +40,7 @@ export function MobileMenuSection({ item }: MobileMenuSectionProps) {
               target={child.href.startsWith('http') ? '_blank' : undefined}
               rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
-              {child.label}
+              {translate(child.label)}
               <span className="bds-mobile-menu__sublink-arrow">
                 <SubmenuChildArrow />
               </span>

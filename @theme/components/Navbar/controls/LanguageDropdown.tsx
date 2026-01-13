@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLanguagePicker } from "@redocly/theme/core/hooks";
+import { useLanguagePicker, useThemeHooks } from "@redocly/theme/core/hooks";
 
 interface LanguageDropdownProps {
   isOpen: boolean;
@@ -13,6 +13,9 @@ interface LanguageDropdownProps {
  */
 export function LanguageDropdown({ isOpen, onClose }: LanguageDropdownProps) {
   const { currentLocale, locales, setLocale } = useLanguagePicker();
+  const { useL10n, useTranslate } = useThemeHooks();
+  const { changeLanguage } = useL10n();
+  const { translate } = useTranslate();
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   // Handle clicking outside to close
@@ -50,15 +53,16 @@ export function LanguageDropdown({ isOpen, onClose }: LanguageDropdownProps) {
 
   const handleLanguageSelect = (localeCode: string) => {
     setLocale(localeCode);
+    changeLanguage(localeCode);
     onClose();
   };
 
   return (
-    <div 
+    <div
       ref={dropdownRef}
       className="bds-lang-dropdown"
       role="menu"
-      aria-label="Language selection"
+      aria-label={translate("Language selection")}
     >
       {locales.map((locale) => {
         const isActive = locale.code === currentLocale?.code;

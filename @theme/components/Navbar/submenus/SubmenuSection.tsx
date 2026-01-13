@@ -1,3 +1,4 @@
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { ArrowIcon } from "../icons";
 import { walletIcons } from "../constants/icons";
 import { hasChildren, type SubmenuItem, type SubmenuItemWithChildren, type SubmenuItemBase } from "../types";
@@ -18,6 +19,8 @@ interface SubmenuSectionProps {
  * - For parent-only rendering: <SubmenuSection item={item} showChildren={false} />
  */
 export function SubmenuSection({ item, showChildren = true }: SubmenuSectionProps) {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
   const itemHasChildren = hasChildren(item as SubmenuItem);
   const shouldShowChildren = showChildren && itemHasChildren;
 
@@ -28,7 +31,7 @@ export function SubmenuSection({ item, showChildren = true }: SubmenuSectionProp
           <img src={walletIcons[item.icon]} alt="" />
         </span>
         <span className="bds-submenu__link bds-submenu__link--bold">
-          {item.label}
+          {translate(item.label)}
           <span className="bds-submenu__arrow">
             <ArrowIcon animated />
           </span>
@@ -44,7 +47,7 @@ export function SubmenuSection({ item, showChildren = true }: SubmenuSectionProp
               target={child.href.startsWith('http') ? '_blank' : undefined}
               rel={child.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
-              {child.label}
+              {translate(child.label)}
               <span className="bds-submenu__sublink-arrow">
                 <ArrowIcon animated={false} />
               </span>
