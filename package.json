@@ -36,7 +36,10 @@
   },
   "overrides": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "string-width-cjs": "npm:string-width@^4.2.0",
+    "strip-ansi-cjs": "npm:strip-ansi@^6.0.1",
+    "wrap-ansi-cjs": "npm:wrap-ansi@^7.0.0"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
