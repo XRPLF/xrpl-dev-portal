@@ -20167,11 +20167,11 @@ html.light .bds-callout-media-banner--image-text-black .bds-callout-media-banner
   }
 }
 .bds-feature-two-column__content--multiple {
-  gap: 0;
+  gap: 32px;
 }
 @media (min-width: 576px) {
   .bds-feature-two-column__content--multiple {
-    gap: 0;
+    gap: 32px;
   }
 }
 @media (min-width: 992px) {
