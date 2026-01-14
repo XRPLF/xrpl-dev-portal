@@ -23,6 +23,12 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'tertiary';
   /** Color theme - green (default) or black */
   color?: 'green' | 'black';
+  /**
+   * Force the color to remain constant regardless of theme mode.
+   * When true, the button color will not change between light/dark modes.
+   * Use this for buttons on colored backgrounds where black should stay black.
+   */
+  forceColor?: boolean;
   /** Button content/label */
   children: React.ReactNode;
   /** Click handler */
@@ -48,6 +54,7 @@ interface ButtonProps {
 
 - `variant`: `'primary'`
 - `color`: `'green'`
+- `forceColor`: `false`
 - `disabled`: `false`
 - `type`: `'button'`
 - `className`: `''`
@@ -131,6 +138,37 @@ The black theme provides an alternative color scheme:
   Dark Button
 </Button>
 ```
+
+### Force Color (Theme-Independent)
+
+By default, black buttons automatically switch to green in dark mode for better visibility. However, when placing buttons on colored backgrounds (e.g., lilac, yellow, green), you may want black buttons to remain black regardless of theme mode.
+
+Use the `forceColor` prop to prevent automatic color switching:
+
+**Usage:**
+```tsx
+{/* Black button that stays black in both light and dark modes */}
+<Button variant="primary" color="black" forceColor onClick={handleClick}>
+  Always Black
+</Button>
+
+{/* Useful for colored backgrounds like in FeatureTwoColumn pattern */}
+<FeatureTwoColumn color="lilac">
+  <Button variant="primary" color="black" forceColor href="/get-started">
+    Get Started
+  </Button>
+  <Button variant="tertiary" color="black" forceColor href="/learn-more">
+    Learn More
+  </Button>
+</FeatureTwoColumn>
+```
+
+**When to use `forceColor`:**
+- Buttons on colored backgrounds (lilac, yellow, green variants)
+- When you need consistent button colors regardless of user's theme preference
+- Pattern components like `FeatureTwoColumn` where black text is required for readability
+
+**Note:** The `forceColor` prop only affects the color behavior; all other button functionality (hover animations, focus states, etc.) remains the same.
 
 ## Link Buttons
 

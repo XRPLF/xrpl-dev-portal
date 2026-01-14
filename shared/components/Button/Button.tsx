@@ -7,6 +7,12 @@ export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'tertiary';
   /** Color theme - green (default) or black */
   color?: 'green' | 'black';
+  /**
+   * Force the color to remain constant regardless of theme mode.
+   * When true, the button color will not change between light/dark modes.
+   * Use this for buttons on colored backgrounds where black should stay black.
+   */
+  forceColor?: boolean;
   /** Button content/label */
   children: React.ReactNode;
   /** Click handler */
@@ -99,6 +105,7 @@ const getTextFromChildren = (children: React.ReactNode): string => {
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   color = 'green',
+  forceColor = false,
   children,
   onClick,
   disabled = false,
@@ -123,6 +130,7 @@ export const Button: React.FC<ButtonProps> = ({
     {
       'bds-btn--disabled': disabled,
       'bds-btn--no-icon': !shouldShowIcon,
+      'bds-btn--force-color': forceColor,
     },
     className
   );

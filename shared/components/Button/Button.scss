@@ -1110,6 +1110,315 @@ html.dark {
 }
 
 // =============================================================================
+// Force Color Modifier
+// =============================================================================
+// When .bds-btn--force-color is applied, the button color remains constant
+// regardless of theme mode. This is used for buttons on colored backgrounds
+// where black should stay black even in dark mode.
+//
+// Usage: <Button color="black" forceColor />
+// =============================================================================
+
+.bds-btn--force-color {
+  // Black buttons with force-color should maintain black styling in dark mode
+  &.bds-btn--black {
+    // Primary black - force black background
+    &.bds-btn--primary {
+      color: $bds-btn-primary-black-text !important;
+      background-color: $bds-btn-primary-black-bg !important;
+
+      &::before {
+        background-color: $bds-btn-primary-black-bg-hover !important;
+      }
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-black-text !important;
+        stroke: $bds-btn-primary-black-text !important;
+      }
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-primary-black-text !important;
+
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-primary-black-text !important;
+          stroke: $bds-btn-primary-black-text !important;
+        }
+      }
+
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        outline-color: $bds-btn-neutral-black !important;
+      }
+    }
+
+    // Secondary black - force black text/border
+    &.bds-btn--secondary {
+      color: $bds-btn-secondary-black-text !important;
+      border-color: $bds-btn-secondary-black-border !important;
+
+      &::before {
+        background-color: $bds-btn-secondary-black-bg-hover !important;
+      }
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-secondary-black-text !important;
+        stroke: $bds-btn-secondary-black-text !important;
+      }
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-secondary-black-text !important;
+        border-color: $bds-btn-secondary-black-border !important;
+
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-secondary-black-text !important;
+          stroke: $bds-btn-secondary-black-text !important;
+        }
+      }
+
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        outline-color: $bds-btn-neutral-black !important;
+      }
+    }
+
+    // Tertiary black - force black text
+    &.bds-btn--tertiary {
+      color: $bds-btn-tertiary-black-text !important;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-tertiary-black-text !important;
+        stroke: $bds-btn-tertiary-black-text !important;
+      }
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        color: $bds-btn-tertiary-black-text !important;
+
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-tertiary-black-text !important;
+          stroke: $bds-btn-tertiary-black-text !important;
+        }
+      }
+
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+        outline-color: $bds-btn-tertiary-black-focus-outline !important;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Force Color Modifier - Dark Mode Overrides
+// =============================================================================
+// These overrides must have higher specificity than the dark mode color swaps
+// to ensure black buttons stay black on colored backgrounds in dark mode.
+// =============================================================================
+
+html.dark {
+  // Primary black with force-color - override dark mode green swap
+  .bds-btn.bds-btn.bds-btn--primary.bds-btn--primary.bds-btn--black.bds-btn--force-color {
+    color: $bds-btn-primary-black-text !important;
+    background-color: $bds-btn-primary-black-bg !important;
+
+    &::before {
+      background-color: $bds-btn-primary-black-bg-hover !important;
+    }
+
+    .bds-btn__icon,
+    .bds-btn__icon-line,
+    .bds-btn__icon-chevron {
+      color: $bds-btn-primary-black-text !important;
+      stroke: $bds-btn-primary-black-text !important;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-primary-black-text !important;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-black-text !important;
+        stroke: $bds-btn-primary-black-text !important;
+      }
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      outline-color: $white !important; // White outline for visibility on dark backgrounds
+    }
+  }
+
+  // Secondary black with force-color - override dark mode green swap
+  .bds-btn.bds-btn.bds-btn--secondary.bds-btn--secondary.bds-btn--black.bds-btn--force-color {
+    color: $bds-btn-secondary-black-text !important;
+    border-color: $bds-btn-secondary-black-border !important;
+    background-color: transparent !important;
+
+    &::before {
+      background-color: $bds-btn-secondary-black-bg-hover !important;
+    }
+
+    .bds-btn__icon,
+    .bds-btn__icon-line,
+    .bds-btn__icon-chevron {
+      color: $bds-btn-secondary-black-text !important;
+      stroke: $bds-btn-secondary-black-text !important;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-secondary-black-text !important;
+      border-color: $bds-btn-secondary-black-border !important;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-secondary-black-text !important;
+        stroke: $bds-btn-secondary-black-text !important;
+      }
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      outline-color: $white !important; // White outline for visibility on dark backgrounds
+    }
+  }
+
+  // Tertiary black with force-color - override dark mode green swap
+  .bds-btn.bds-btn.bds-btn--tertiary.bds-btn--tertiary.bds-btn--black.bds-btn--force-color {
+    color: $bds-btn-tertiary-black-text !important;
+    background-color: transparent !important;
+
+    .bds-btn__icon,
+    .bds-btn__icon-line,
+    .bds-btn__icon-chevron {
+      color: $bds-btn-tertiary-black-text !important;
+      stroke: $bds-btn-tertiary-black-text !important;
+    }
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      color: $bds-btn-tertiary-black-text !important;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-tertiary-black-text !important;
+        stroke: $bds-btn-tertiary-black-text !important;
+      }
+    }
+
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
+      outline-color: $white !important; // White outline for visibility on dark backgrounds
+    }
+  }
+
+  // Anchor link buttons with force-color - dark mode overrides
+  a.bds-btn.bds-btn--force-color {
+    &.bds-btn--primary.bds-btn--black {
+      color: $bds-btn-primary-black-text !important;
+      background-color: $bds-btn-primary-black-bg !important;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-primary-black-text !important;
+        stroke: $bds-btn-primary-black-text !important;
+      }
+
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-primary-black-text !important;
+        background-color: $bds-btn-primary-black-bg !important;
+
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-primary-black-text !important;
+          stroke: $bds-btn-primary-black-text !important;
+        }
+      }
+    }
+
+    &.bds-btn--secondary.bds-btn--black {
+      color: $bds-btn-secondary-black-text !important;
+      border-color: $bds-btn-secondary-black-border !important;
+      background-color: transparent !important;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-secondary-black-text !important;
+        stroke: $bds-btn-secondary-black-text !important;
+      }
+
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-secondary-black-text !important;
+        border-color: $bds-btn-secondary-black-border !important;
+
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-secondary-black-text !important;
+          stroke: $bds-btn-secondary-black-text !important;
+        }
+      }
+    }
+
+    &.bds-btn--tertiary.bds-btn--black {
+      color: $bds-btn-tertiary-black-text !important;
+      background-color: transparent !important;
+
+      .bds-btn__icon,
+      .bds-btn__icon-line,
+      .bds-btn__icon-chevron {
+        color: $bds-btn-tertiary-black-text !important;
+        stroke: $bds-btn-tertiary-black-text !important;
+      }
+
+      &:hover,
+      &:focus,
+      &:focus-visible,
+      &:active,
+      &:visited {
+        color: $bds-btn-tertiary-black-text !important;
+
+        .bds-btn__icon,
+        .bds-btn__icon-line,
+        .bds-btn__icon-chevron {
+          color: $bds-btn-tertiary-black-text !important;
+          stroke: $bds-btn-tertiary-black-text !important;
+        }
+      }
+    }
+  }
+}
+
+// =============================================================================
 // Tertiary Variant
 // =============================================================================
 // NOTE: Arrow icon animation is inherited from base .bds-btn class.

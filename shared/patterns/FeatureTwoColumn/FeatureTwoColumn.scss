@@ -1,0 +1,389 @@
+// FeatureTwoColumn Pattern Styles
+// =============================================================================
+// A feature section pattern with two-column layout for content and media.
+// Supports color themes (neutral, lilac, yellow, green) and arrangement variants.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Background colors for each color variant (light mode)
+// From styles/_colors.scss - Design tokens
+$bds-feature-neutral-bg: $gray-100;   // #F0F3F7 (Neutral-100)
+$bds-feature-lilac-bg: $lilac-200;    // #D9CAFF (Primary-Lilac-200)
+$bds-feature-yellow-bg: $yellow-100;  // #F3F1EB (Secondary-Yellow-100)
+$bds-feature-green-bg: $green-300;    // #21E46B (Primary-Green-300default)
+
+// Background colors for dark mode
+// From styles/_colors.scss - Design tokens
+$bds-feature-neutral-bg-dark: $gray-200;  // #E6EAF0 (Neutral-200)
+$bds-feature-lilac-bg-dark: $lilac-200;   // #D9CAFF (Primary-Lilac-200)
+$bds-feature-yellow-bg-dark: $yellow-100; // #F3F1EB (Secondary-Yellow-100)
+$bds-feature-green-bg-dark: $green-300;   // #21E46B (Primary-Green-300default)
+
+// Text colors - same for light and dark modes
+// From styles/_colors.scss: $black = #141414 (Neutral-black)
+$bds-feature-title-color: $black;          // #141414 (Neutral-black)
+$bds-feature-title-color-dark: $black;     // #141414 (same in dark mode)
+$bds-feature-description-color: $black;    // #141414 (Neutral-black)
+$bds-feature-description-color-dark: $black; // #141414 (same in dark mode)
+
+// Spacing - Desktop (≥992px) - based on Figma 1280px design
+$bds-feature-desktop-py: 96px;
+$bds-feature-desktop-text-gap: 16px;
+$bds-feature-desktop-cta-gap-row: 0px;    // Gap between buttons in row (from Figma FeatureCTA_Default)
+$bds-feature-desktop-cta-gap-col: 0;       // Gap between button rows
+$bds-feature-desktop-content-gap: 0;       // Gap between text-group and cta (space-between handles this)
+
+// Spacing - Tablet (576px - 991px) - based on Figma 768px design
+$bds-feature-tablet-py: 80px;
+$bds-feature-tablet-pl: 115px;  // Left padding from Figma
+$bds-feature-tablet-pr: 107px;  // Right padding from Figma
+$bds-feature-tablet-text-gap: 8px;
+$bds-feature-tablet-cta-gap-row: 16px; // Gap between buttons in row from Figma
+$bds-feature-tablet-cta-gap-col: 0;
+$bds-feature-tablet-content-gap: 32px;
+
+// Spacing - Mobile (<576px) - based on Figma 375px design
+$bds-feature-mobile-py: 64px;
+$bds-feature-mobile-px: 16px;
+$bds-feature-mobile-text-gap: 8px;
+$bds-feature-mobile-cta-gap: 16px;  // Gap between stacked buttons from Figma
+$bds-feature-mobile-content-gap: 24px;
+
+// =============================================================================
+// Base Styles
+// =============================================================================
+
+.bds-feature-two-column {
+  width: 100%;
+
+  // Desktop layout - hidden on mobile/tablet, shown on desktop
+  &__desktop-layout {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      width: 100%;
+      max-width: 1280px; // Max container width from Figma
+      margin: 0 auto; // Center the container
+      align-items: stretch; // Both columns match height
+    }
+  }
+
+  // Mobile layout - shown on mobile/tablet, hidden on desktop
+  &__mobile-layout {
+    display: block;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  // Container - uses PageGrid with wide variant (for mobile layout)
+  // Override all PageGrid padding - content columns have their own padding
+  &__container {
+    padding: 0 !important; // Override PageGrid default padding at all breakpoints
+  }
+
+  // Row - uses PageGrid.Row (for mobile layout)
+  &__row {
+    gap: 0 !important; // No gap between content and media sections, override PageGrid
+  }
+
+  // Content column wrapper
+  &__content-col {
+    display: flex;
+    flex-direction: column;
+
+    // Mobile: horizontal and vertical padding from Figma
+    padding: $bds-feature-mobile-py $bds-feature-mobile-px;
+
+    // Tablet: specific left/right padding from Figma (115px left, 107px right)
+    @include media-breakpoint-up(md) {
+      padding: $bds-feature-tablet-py $bds-feature-tablet-pr $bds-feature-tablet-py $bds-feature-tablet-pl;
+    }
+
+    // Desktop: 50% width with padding from Figma: pl-32px, pr-102px, py-96px
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      padding: $bds-feature-desktop-py 102px $bds-feature-desktop-py 32px;
+      // Match height of media column (which has aspect-ratio 1/1)
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  // Media column wrapper - desktop layout (background image)
+  &__media-col {
+    display: flex;
+    flex-direction: column;
+
+    // Desktop: 50% width with background image, square aspect ratio
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  // Mobile media column
+  &__media-col--mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    gap: $bds-feature-mobile-content-gap;
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-feature-tablet-content-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-feature-desktop-content-gap;
+    }
+  }
+
+  // Content with multiple links - no gap, space-between handles distribution
+  &__content--multiple {
+    gap: 0;
+
+    @include media-breakpoint-up(md) {
+      gap: 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: 0;
+    }
+
+    // Secondary button should not stretch - keep intrinsic width
+    > .bds-btn--secondary {
+      align-self: flex-start;
+    }
+  }
+
+  // Text group - title + description
+  &__text-group {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-feature-mobile-text-gap;
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-feature-tablet-text-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-feature-desktop-text-gap;
+    }
+  }
+
+  // Title - Heading MD from styles/_font.scss
+  // Font: Tobias (secondary), Size: 40px, Weight: 300, Line-height: 46px, Letter-spacing: -1px
+  &__title {
+    @include type(heading-md);
+    color: $bds-feature-title-color; // #141414 (Neutral-black) - same in light/dark
+    margin: 0;
+  }
+
+  // Description - Body L from styles/_font.scss
+  // Font: Booton (primary), Size: 18px, Weight: 300, Line-height: 26.1px, Letter-spacing: -0.5px
+  &__description {
+    @include type(body-l);
+    color: $bds-feature-description-color; // #141414 (Neutral-black) - same in light/dark
+    margin: 0;
+  }
+
+  // CTA container - base styles
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $bds-feature-mobile-cta-gap;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: $bds-feature-tablet-cta-gap-row;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-feature-desktop-cta-gap-row;
+    }
+  }
+
+  // CTA variants
+  &__cta--single {
+    // Single secondary button - vertical on mobile
+    flex-direction: column;
+  }
+
+  &__cta--double {
+    // Primary + tertiary - horizontal on tablet+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  // CTA row - for first two buttons in multiple links layout (Primary + Tertiary)
+  &__cta-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $bds-feature-mobile-cta-gap;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      align-items: center;
+      gap: $bds-feature-tablet-cta-gap-row;
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+      align-items: center;
+      gap: $bds-feature-desktop-cta-gap-row; // 25px from Figma
+    }
+  }
+
+  // Tertiary group - groups remaining tertiary links together as a single unit
+  // No gap between tertiary links - they stack tightly as a group
+  &__tertiary-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0; // No spacing between tertiary links in the group
+
+    // Tertiary links need left padding removed to align text with title
+    .bds-btn--tertiary {
+      padding-left: 0 !important;
+      margin-left: 0;
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        padding-left: 0 !important;
+      }
+    }
+  }
+
+  // Media container
+  &__media {
+    width: 100%;
+    overflow: hidden;
+
+    // Mobile - 1:1 aspect ratio
+    aspect-ratio: 1 / 1;
+
+    // Tablet - 16:9 aspect ratio
+    @include media-breakpoint-up(md) {
+      aspect-ratio: 16 / 9;
+    }
+
+    // Desktop - 1:1 aspect ratio (square)
+    @include media-breakpoint-up(lg) {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  // Media image
+  &__media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+// =============================================================================
+// Color Theme Modifiers
+// =============================================================================
+
+// Neutral variant (default white/black)
+.bds-feature-two-column--neutral {
+  background-color: $bds-feature-neutral-bg;
+}
+
+// Lilac variant
+.bds-feature-two-column--lilac {
+  background-color: $bds-feature-lilac-bg;
+}
+
+// Yellow variant
+.bds-feature-two-column--yellow {
+  background-color: $bds-feature-yellow-bg;
+}
+
+// Green variant
+.bds-feature-two-column--green {
+  background-color: $bds-feature-green-bg;
+}
+
+// =============================================================================
+// Dark Mode Theme Overrides
+// =============================================================================
+
+html.dark {
+  .bds-feature-two-column {
+    &__title {
+      color: $bds-feature-title-color-dark;
+    }
+
+    &__description {
+      color: $bds-feature-description-color-dark;
+    }
+  }
+
+  .bds-feature-two-column--neutral {
+    background-color: $bds-feature-neutral-bg-dark;
+  }
+
+  .bds-feature-two-column--lilac {
+    background-color: $bds-feature-lilac-bg-dark;
+  }
+
+  .bds-feature-two-column--yellow {
+    background-color: $bds-feature-yellow-bg-dark;
+  }
+
+  .bds-feature-two-column--green {
+    background-color: $bds-feature-green-bg-dark;
+  }
+}
+
+// =============================================================================
+// Layout Modifiers (Arrange)
+// =============================================================================
+
+// Right arrangement - content on right, media on left (media first on mobile/tablet)
+// Use flex-direction to swap columns on all screen sizes
+.bds-feature-two-column--right {
+  // Mobile/Tablet layout - reverse the column order to show media first
+  .bds-feature-two-column__row {
+    flex-direction: column-reverse !important;
+  }
+
+  // Desktop layout - reverse the flex direction for side-by-side
+  .bds-feature-two-column__desktop-layout {
+    @include media-breakpoint-up(lg) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  // Desktop content column padding adjustment for right layout
+  .bds-feature-two-column__content-col {
+    @include media-breakpoint-up(lg) {
+      padding-right: $bds-feature-desktop-py;
+      padding-left: 48px;
+    }
+  }
+}
+
