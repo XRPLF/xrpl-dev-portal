@@ -344,7 +344,7 @@ Transaction stream messages have the following fields:
 
 | Field                   | Type                      | Description            |
 |:------------------------|:--------------------------|:-----------------------|
-| `close_time_iso`        | String                    | The ledger close time represented in ISO 8601 time format. |
+| `close_time_iso`        | String                    | The time the ledger containing this transaction was closed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. |
 | `type`                  | String                    | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
 | `engine_result`         | String                    | String [Transaction result code](../../../protocol/transactions/transaction-results/index.md) |
 | `engine_result_code`    | Number                    | Numeric [transaction response code](../../../protocol/transactions/transaction-results/index.md), if applicable. |

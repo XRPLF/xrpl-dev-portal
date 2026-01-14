@@ -1,0 +1,75 @@
+{
+  "id": 8,
+  "result": {
+    "alternatives": [
+      {
+        "paths_computed": [
+          [
+            {
+              "currency": "USD",
+              "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+              "type": 48
+            },
+            {
+              "account": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+              "type": 1
+            },
+            {
+              "account": "rLzpfEnrB2Ro2LtaGd6Af7znRqGxULc4rW",
+              "type": 1
+            }
+          ],
+          [
+            {
+              "currency": "USD",
+              "issuer": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+              "type": 48
+            },
+            {
+              "account": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y",
+              "type": 1
+            },
+            {
+              "account": "rQhbp2h133vD3TJGWkNY5zePHKQUq6vSVm",
+              "type": 1
+            }
+          ],
+          [
+            {
+              "currency": "USD",
+              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+              "type": 48
+            }
+          ],
+          [
+            {
+              "currency": "USD",
+              "issuer": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+              "type": 48
+            },
+            {
+              "account": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq",
+              "type": 1
+            },
+            {
+              "account": "r4cjaKtZqP2GDjwK3eT9qua4Hqk9Zk2kSy",
+              "type": 1
+            }
+          ]
+        ],
+        "source_amount": "390"
+      }
+    ],
+    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+    "destination_amount": {
+      "currency": "USD",
+      "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "value": "0.001"
+    },
+    "full_reply": false,
+    "id": 8,
+    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
+  },
+  "status": "success",
+  "type": "response"
+}

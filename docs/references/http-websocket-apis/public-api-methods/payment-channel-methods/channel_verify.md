@@ -1,13 +1,11 @@
 ---
-html: channel_verify.html
-parent: payment-channel-methods.html
 seo:
     description: Check a payment channel claim's signature.
 labels:
-  - Payment Channels
+    - Payment Channels
 ---
 # channel_verify
-[[Source]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/PayChanClaim.cpp "Source")
 
 The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
 

@@ -26,7 +26,6 @@ labels:
 | Ripple[¹][]    | Testnet (Clio)   | `https://clio.altnet.rippletest.net:51234/` | `wss://clio.altnet.rippletest.net:51233/` | Clioを使用したTestnet公開サーバ |
 | Ripple[¹][]    | Devnet           | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet 公開サーバ |
 | Ripple[¹][]    | Devnet (Clio)    | `https://clio.devnet.rippletest.net:51234/` | `wss://clio.devnet.rippletest.net:51233/` | Clioを使用したDevnet公開サーバ |
-| Ripple[¹][]    | Sidechain-Devnet | `https://sidechain-net2.devnet.rippletest.net:51234/` | `wss://sidechain-net2.devnet.rippletest.net:51233/` | クロスチェーンブリッジ機能をテストするためのサイドチェーンDevnet。Devnetはロックチェーンとして機能し、このサイドチェーンは発行チェーンとして機能します。 |
 | XRPL Labs      | Xahau Testnet     | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooksが有効](https://hooks.xrpl.org/)なXahau Testnet |
 
 [ネットワーク]: ../concepts/networks-and-servers/parallel-networks.md

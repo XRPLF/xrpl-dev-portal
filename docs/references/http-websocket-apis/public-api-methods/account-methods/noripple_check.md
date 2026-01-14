@@ -1,13 +1,11 @@
 ---
-html: noripple_check.html
-parent: account-methods.html
 seo:
     description: Get recommended changes to an account's Default Ripple and No Ripple settings.
 labels:
-  - Tokens
+    - Tokens
 ---
 # noripple_check
-[[Source]](https://github.com/XRPLF/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/NoRippleCheck.cpp "Source")
 
 The `noripple_check` command provides a quick way to check the status of [the Default Ripple field for an account and the No Ripple flag of its trust lines](../../../../concepts/tokens/fungible-tokens/rippling.md), compared with the recommended settings.
 

@@ -29,13 +29,13 @@ The providers to fetch data from:
 
 Each oracle document contains real-time pricing data for key assets—including XRP, RLUSD, and more — making it simple for developers to retrieve trusted market prices directly from the ledger.
 
-### 1.2 Account Funding for Transaction Fees
+### 1.2 Oracle Accounts
 
-To ensure uninterrupted oracle operation when pushing data to your contracts, it is crucial to maintain a sufficient XRP balance in the relevant XRPL account. This balance must cover the XRP reserve requirements for the account and the minor transaction fees incurred with each transaction. You can monitor the accounts listed below to ensure they remain adequately funded at all times.
+DIA uses the following accounts to publish oracle price data to the XRPL:
 
 | Network      | Account       |
-|:-------------|:------------------|
-| XRPL Mainnet | [rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7](https://livenet.xrpl.org/accounts/rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7) | 
+|:-------------|:--------------|
+| XRPL Mainnet | [rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7](https://livenet.xrpl.org/accounts/rP24Lp7bcUHvEW7T7c8xkxtQKKd9fZyra7) |
 | XRPL Testnet | [r3U1mL5u2SCPr4mApqYyF96nvwvKoGf7aH](https://testnet.xrpl.org/accounts/r3U1mL5u2SCPr4mApqYyF96nvwvKoGf7aH) |
 
 You can monitor these wallets on-chain for transparency and operational assurance.
@@ -44,11 +44,11 @@ You can monitor these wallets on-chain for transparency and operational assuranc
 
 Settings that dictate how the oracle computes and updates data.
 
-| Setting      | Details      |
-|:-------------|:------------------|
-| Pricing Methodology | [VWAP](https://nexus.diadata.org/reference/pricing-methodologies/vwap-volume-weighted-average-price) |
+| Setting                           | Details      |
+|:----------------------------------|:-------------|
+| Pricing Methodology               | [VWAPIR](https://www.diadata.org/docs/guides/methodologies/pricing-methodologies/vwapir-volume-weighted-average-price-with-interquartile-range-filter) |
 | Deviation (%) & Refresh Frequency | 1% and 120 seconds |
-| Heartbeat | 24h |
+| Heartbeat                         | 24h |
 
 This configuration ensures that price updates are both reactive and consistent, maintaining high accuracy without overwhelming the network.
 
@@ -65,6 +65,18 @@ These asset feeds serve as foundational infrastructure for a wide range of XRPL-
 | USDC | 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 | [USDC markets](https://www.diadata.org/app/price/asset/Ethereum/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/) |
 | USDT | 0xdAC17F958D2ee523a2206206994597C13D831ec7 | [USDT markets](https://www.diadata.org/app/price/asset/Ethereum/0xdAC17F958D2ee523a2206206994597C13D831ec7/) |
 
+### 1.5 Request a Custom Oracle
+
+DIA offers highly customizable oracles that are individually tailored to each dApp's needs. Each oracle can be customized in the following ways:
+
+- Data sources (specific exchanges/DEXs or aggregated feeds)
+- Pricing methodologies (VWAPIR, MAIR, TWAP, custom models)
+- Update triggers (deviation thresholds or time-based)
+- Asset coverage (any of 20,000+ supported assets)
+
+These custom oracle feeds are designed to support everything from DeFi and RWAs to advanced financial applications, and are available for free for dApps to set up and use.
+
+You can reach out to the [DIA team](https://www.diadata.org/docs/guides/how-to-guides/request-a-custom-oracle) to request and deploy oracles that match their specific protocol requirements.
 
 ## How the Oracle Works
 
@@ -74,13 +86,11 @@ The `oracleUpdater` in the `DIAOracleV2` contract is the gas wallet responsible 
 
 Check out the full audit report [here](https://content.gitbook.com/content/TURK2sDMSvoX6oxbS6WA/blobs/vJuu8yMWLXokC7m3aqKg/02_Smart%20Contract%20Audit_DIA_Oracle_v2.pdf) for the DIAOracleV2 contract.
 
-
 ## How to Access Data
 
 The DIA oracle object can be retrieved with the [ledger_entry API](https://xrpl.org/resources/dev-tools/websocket-api-tool#ledger_entry-oracle) call by specifying the `account` and `oracle_document_id`. You can access the mainnet and testnet accounts [here](https://docs.google.com/document/d/1GGLxcKSYlCP-yxrcP5Gzd8nsm-WzcjNvwWMvvJjXwbw/edit?tab=t.0#heading=h.e29ryp9qtwct).
 
 This is the request JSON for mainnet:
-
 
 ```json
 {

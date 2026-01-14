@@ -1,11 +1,9 @@
 ---
-html: tx_history.html
-parent: transaction-methods.html
 seo:
     description: Retrieve info about all recent transactions.
 ---
 # tx_history
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/TxHistory.cpp "Source")
 
 The `tx_history` method retrieves some of the most recent transactions made.
 

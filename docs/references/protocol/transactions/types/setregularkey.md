@@ -6,7 +6,7 @@ labels:
 ---
 # SetRegularKey
 
-[[Source]](https://github.com/XRPLF/rippled/blob/4239880acb5e559446d2067f00dabb31cf102a23/src/ripple/app/transactors/SetRegularKey.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/SetRegularKey.cpp "Source")
 
 Assign, change, or remove the [regular key pair](../../../../concepts/accounts/cryptographic-keys.md) associated with your account.
 

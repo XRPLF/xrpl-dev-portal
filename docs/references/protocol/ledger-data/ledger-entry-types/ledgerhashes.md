@@ -47,7 +47,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `FirstLedgerSequence` | Number           | UInt32            | No        | **DEPRECATED** Do not use. (The "recent hashes" object on Mainnet has the value `2` in this field as a result of an old software bug. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](../../../../concepts/networks-and-servers/parallel-networks.md) started with more recent versions of `rippled`.) |
 | `Hashes`              | Array of Strings | Vector256         | Yes       | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
 | `LastLedgerSequence`  | Number           | UInt32            | No        | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
-| `LedgerEntryType`     | String           | UInt16            | Yes       | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
 
 
 ## Recent History LedgerHashes
@@ -72,7 +71,7 @@ There are no flags defined for {% code-page-name /%} entries.
 
 
 ## LedgerHashes ID Formats
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L26-L42)
+[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/Indexes.cpp#L195-L211)
 
 There are two formats for `LedgerHashes` ledger entry IDs, depending on whether the entry is a "recent history" sub-type or a "previous history" sub-type.
 

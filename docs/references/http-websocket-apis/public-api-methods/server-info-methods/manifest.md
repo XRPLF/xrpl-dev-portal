@@ -2,10 +2,10 @@
 seo:
     description: Look up the public information about a known validator.
 labels:
-  - Blockchain
+    - Blockchain
 ---
 # manifest
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/DoManifest.cpp "Source")
 
 The {% code-page-name /%} method reports the current "manifest" information for a given validator public key. The "manifest" is a block of data that authorizes an ephemeral signing key with a signature from the validator's master key pair. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}Updated in: rippled 1.7.0{% /badge %}
 

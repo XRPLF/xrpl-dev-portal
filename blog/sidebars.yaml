@@ -10,6 +10,8 @@
     - group: '2025'
       expanded: false
       items:
+        - page: 2025/rippled-3.0.0.md
+        - page: 2025/rippled-2.6.2.md
         - page: 2025/rippled-2.6.1.md
         - page: 2025/vulnerabilitydisclosurereport-bug-sep2025.md
         - page: 2025/devnet-reset-oct.md

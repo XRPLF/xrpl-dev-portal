@@ -1,14 +1,12 @@
 ---
-html: random.html
-parent: utility-methods.html
 seo:
     description: Generate a random number.
 labels:
-  - Core Server
+    - Core Server
 ---
 # random
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Random.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Random.cpp "Source")
 
 The `random` command provides a random number to be used as a source of entropy for random number generation by clients.
 
