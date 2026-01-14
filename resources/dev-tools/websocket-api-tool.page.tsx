@@ -55,8 +55,8 @@ export function WebsocketApiTool() {
   const getInitialMethod = (): CommandMethod => {
     for (const group of (commandList as CommandGroup[])) {
       for (const method of group.methods) {
-        if (slug.slice(1) === slugify(method.name) || params.req?.command == method.body.command) {
-          return method;
+        if (params.req?.command === method.body.command) {
+          return method
         }
       }
     }
@@ -73,6 +73,19 @@ export function WebsocketApiTool() {
     JSON.stringify(params.req || currentMethod.body, null, 2)
   );
   streamPausedRef.current = streamPaused;
+
+  useEffect(() => {
+    if (slug) {
+      for (const group of (commandList as CommandGroup[])) {
+        for (const method of group.methods) {
+          if (slug.slice(1) === slugify(method.name)) {
+            setMethod(method)
+            return
+          }
+        }
+      }
+    }
+  }, [slug])
 
   const handleCurrentBodyChange = (value: any) => {
     setCurrentBody(value);

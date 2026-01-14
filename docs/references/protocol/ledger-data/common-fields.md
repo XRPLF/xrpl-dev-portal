@@ -1,10 +1,9 @@
 ---
-html: ledger-entry-common-fields.html
 seo:
     description: These common fields are part of every ledger entry.
 ---
 # Ledger Entry Common Fields
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/LedgerFormats.cpp)
 
 Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has the same set of common fields, plus additional fields based on the [ledger entry type](ledger-entry-types/index.md). Field names are case-sensitive. The common fields for all ledger entries are:
 
@@ -19,9 +18,9 @@ Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has t
 
 ## Ledger Entry ID
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp)
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/Indexes.cpp)
 
-Each ledger entry has a unique ID. The ID is derived by hashing important contents of the entry, along with a [namespace identifier](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/LedgerFormats.h). The [ledger entry type](ledger-entry-types/index.md) determines the namespace identifier to use and which contents to include in the hash. This ensures every ID is unique. The hash function is [SHA-512Half][].
+Each ledger entry has a unique ID. The ID is derived by hashing important contents of the entry, along with a _namespace identifier_ which is a 16 bit value. The [ledger entry type](ledger-entry-types/index.md) determines the namespace identifier to use and which contents to include in the hash. This ensures every ID is unique. The hash function is [SHA-512Half][].
 
 Generally, a ledger entry's ID is returned as the `index` field in JSON, at the same level as the object's contents. In [transaction metadata](../transactions/metadata.md), the ledger object's ID in JSON is `LedgerIndex`.
 

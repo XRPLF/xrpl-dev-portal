@@ -49,8 +49,6 @@ In addition to the [common fields](../common-fields.md), the {% code-page-name /
 | Name                | JSON Type | [Internal Type][] | Required? | Description |
 |---------------------|-----------|-------------------|-----------|-------------|
 | `Amendments`        | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](../../../../concepts/networks-and-servers/amendments.md) for all currently enabled amendments. If omitted, there are no enabled amendments. |
-| `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Amendments` objects. The value is always `0`. |
-| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
 | `Majorities`        | Array     | Array           | No        | Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
 | `PreviousTxnID`     | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |

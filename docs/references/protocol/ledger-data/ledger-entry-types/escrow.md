@@ -47,7 +47,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment][]. |
 | `DestinationTag`    | Number    | UInt32            | No        | An arbitrary tag to further specify the destination for this escrow, such as a hosted recipient at the destination address. |
 | `FinishAfter`       | Number    | UInt32            | No        | The time, in [seconds since the Ripple Epoch][], after which this escrow can be finished. Any [EscrowFinish transaction][] before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
-| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0075`, mapped to the string `Escrow`, indicates that this is an `Escrow` entry. |
 | `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |

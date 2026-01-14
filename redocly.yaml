@@ -5,6 +5,7 @@ ignore:
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
   - resources/contribute-blog/_blog-template.md
+  - resources/contribute-documentation/_tutorial-template.md
 l10n:
   defaultLocale: en-US
   locales:
@@ -42,9 +43,6 @@ metadataGlobs:
     redocly_category: Community
 seo:
   siteUrl: https://xrpl.org/
-rbac:
-  reunite:
-    xrpl-org-editors: maintain
 analytics:
   gtm:
     includeInDevelopment: true

@@ -1,6 +1,6 @@
 ---
-html: contribute-documentation.html
-parent: resources.html
+metadata:
+    indexPage: true
 seo:
     description: Contribution guides for XRP Ledger documentation.
 ---
@@ -23,18 +23,17 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 
 - `_api-examples/` - Sample API requests and responses, especially ones used in the documentation.
 - `_code-samples/` - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
-- `@l10n` - Translations into languages other than English. Currently, only Japanese.
+- `@l10n` - Translations into languages other than English. See [Documentation Translations](./documentation-translations.md) for details.
 - `@theme` - Overrides and custom components used in Markdoc contents as well as custom React pages.
 - `about/` - Source files for the About section's pages.
 - `blog/` - Source files for the XRPL Dev Blog.
 - `community/` - Source files for the Community section's pages.
 - `docs/` - Source files used to build the documentation. Mostly in Markdown.
     - `docs/_snippets/` - Reusable pieces of text used in the documentation.
-    - `docs/img/` - Diagrams and other images used in the documentation.
+    - `docs/img/` - Diagrams and other images used in the documentation. Diagrams can also be placed in the folder with the files that reference them.
     - `docs/img/_sources/` - Source files for images used in the documentation, where available.
-- `locale/` - **DEPRECATED** Old localization files.
 - `resources/` - Source files for the Resources section's pages.
-- `shared/` - Configuration files for some dependencies like CodeMirror.
+- `shared/` - Configuration files for some dependencies like CodeMirror, and React components for some specially styled pages.
 - `static/` - Static files used by the site's templates and theme.
 - `styles/` - SCSS source files for custom CSS.
 - `redirects.yaml` - Definitions of redirects from old site URLs to current paths.
@@ -45,11 +44,13 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 
 ## Requirements for a Successful Pull Request
 
-Before being considered for review or merging, each pull request must:
+Before being considered for merging, each pull request must:
 
-- Pass continuous integration tests.
-- Be [marked as drafts](https://github.blog/2019-02-14-introducing-draft-pull-requests/) until they are ready for review.
-- Adhere to the [code of conduct](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE-OF-CONDUCT.md) for this repository.
+1. Pass continuous integration tests.
+2. Adhere to the [code of conduct](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE-OF-CONDUCT.md) for this repository.
+3. Pass review from at least one maintainer, who will consider the quality, relevance, and maintainability of the contents in their review.
+
+If your PR is not yet ready to be merged, [mark it as a draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/).
 
 ## Redocly Setup
 
@@ -84,6 +85,36 @@ If you add a new page, you should add it to the appropriate `sidebars.yaml` file
 
 The Markdown file for a page should start with a [frontmatter stanza](#frontmatter-fields).
 
+## Writing Style
+
+In general, follow the [Microsoft Style Guide](https://learn.microsoft.com/en-us/style-guide/)'s recommendations for tone, phrasing, and structure. You are allowed to deviate from the Microsoft guide.
+
+Try to split documentation pages into the following categories, based on their contents:
+
+- **Concepts:** Explain the _how_ and _why_ of a topic, feature, or practice. Don't go overboard with specific names, values, or code. Use [diagrams](./creating-diagrams.md) to help with understanding.
+- **References:** Describe all the possible properties, modes, or features of a piece of technology. Provide only small amounts of context, while linking to concepts for the bigger picture. Use tables or bulleted lists, sorted, to help users find what they need.
+- **Tutorials:** Demonstrate how to accomplish a task or use a feature. Provide step-by-step instructions with working code samples if possible. Link to references for more details of the functions used and alternative options. For more recommendations on how to build tutorials, see the [Tutorial Guidelines](./tutorial-guidelines.md).
+
+These types of documents serve people with different roles, or sometimes the same people at different points in their process. For example, software architects or CTOs making technical decisions might read a concept page to decide how to structure their integration or to determine which technology meets their needs; engineers might copy code from tutorials while building, then use the reference to adapt it for their use case.
+
+Some pages, like **Use Cases**, don't fit cleanly into these categories. It is OK to have exceptions where justified.
+
+### Interlinking
+
+Linking is useful for readers, who may arrive at any page in any order, without full context. Links in the body text help humans navigate through the site, since it's common to end up on a page that does not actually have the information you are looking for, but is related in some way to the page that does; links can send people to the right place while also building an understanding of the relationship between pieces of the whole. Frequent usage of links also helps machines point people at the right place, both in terms of search engine optimization and generative engine (AI) optimization.
+
+Links commonly fall into these categories:
+
+- _external links_ go to other sites. These should be used sparingly and clearly indicated; otherwise, suddenly ending up on a different site can be jarring. External links may open in a new tab or window; non-external links should always stay within the same tab.
+- _deep links_ go into greater detail than the current page, explaining a topic or option with more specifics. They are called "deep" links because the pages they link to typically exist at a level that is deeper into the site's hierarchical navigation and information architecture. Deep links are commonly introduced with a phrase such as, "For more information about {topic}," or placed in a "See Also" section at the bottom of a page, but that is not always necessary.
+- _backlinks_ provide background information or context for understanding the current page. They are called "back" links because they typically send readers "back" to shallower levels of the information architecture instead of following the typical progression of knowledge.
+
+Links can and should be used regularly, but without going overboard. Some additional guidelines:
+
+- In the first paragraph or even first sentence of any reference page, include a backlink to a concept page that provides more context about when and why that reference may be used.
+- When using a keyword that may need some explanation, to link the first instance of that keyword back to a concept page that explains it. Don't make every instance of the keyword into a link, which is overkill and distracting, but you may want to link it again if it comes up again in a separate section of the same page, especially if readers are likely to jump ahead to a specific section rather than reading straight through from the first mention to the later one.
+- On concept pages that are in the shallower parts of the information architecture, use caution when putting deep links into the text body. Readers may interpret these as backlinks, implying that they need additional background reading to understand the current section, interrupting the flow of information from simpler to more advanced. It is OK to use deep links in concepts when introduced with a warning phrase such as "For more information," or when context makes it clear that it is a deep link—for example, when saying that users can use a particular transaction type to accomplish a certain goal, it is appropriate to use a deep link to the transaction type reference documentation.
+
 ## Conventions
 
 Use the following conventions when creating a page:
@@ -101,29 +132,7 @@ Use the following conventions when creating a page:
 
 ### New Features
 
-When documenting a new feature, include a badge indicating the version of the program when the feature was introduced. The badge tag takes the structure:
-
-<pre><code>
-{% badge href="url" date="date of release" %}New in: program version{% /badge%}
-</code></pre>
-
-For example, the following badge definition:
-
-<pre><code>
-{% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" date="February 18, 2024" %}New in: Clio v2.0.0{% /badge %}
-</code></pre>
-
-renders as {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" date="February 18, 2024" %}New in: Clio v2.0.0{% /badge %}.
-
-When updating a feature, replace _New in:_ with _Updated in:_. For example, the following badge definition:
-
-`{% badge href="https://github.com/XRPLF/clio/releases/tag/2.1.0" date="May 4, 2024" %} Updated  in: Clio v2.1.0{% /badge %}`
-
-renders as {% badge href="https://github.com/XRPLF/clio/releases/tag/2.1.0" date="May 4, 2024" %}Updated in: Clio v2.1.0{% /badge %}.
-
-Some phrases automatically set the color of the badge, or you can add a color parameter such as `color="purple"` to the tag to set the color explicitly.
-
-It is a best practice to remove any new/updated badges more than 2 years old.
+When documenting a new feature, include a [badge](./markdoc-tags.md#badge) indicating the version of the program when the feature was introduced. It is a best practice to remove any new/updated badges more than 2 years old.
 
 ### Terminology
 
@@ -153,20 +162,60 @@ Use the following words and phrases as described:
 
 ## Frontmatter Fields
 
-***Note: The details of Realm's frontmatter specification are not fully documented. Update this with a link when Realm exits closed beta.***
-
 Frontmatter for Markdown files can include details such as the following:
 
 ```yaml
 ---
 metadata:
-  indexPage: true # Add this if you want the page to contain an auto-generated list of its child pages.
+    indexPage: true # Use if you want to use the {% child-pages /%} macro to display a list of page children
 seo:
-  description: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+    description: Transact with confidence using the XRP Ledger's suite of compliance features for following government regulations and security practices.
 ---
 ```
 
-Some pages in the site have leftover metadata from the previous (Dactyl) toolchain, such as `html`, `parent`, or `targets` fields. These fields have no effect and can be omitted from new pages.
+Some pages in the site have leftover metadata from the previous (Dactyl) toolchain, such as `html`, `parent`, or `targets` fields. These fields have no effect and can be removed. For a reference of frontmatter fields that are supported by the current (Redocly) toolchain, see [Front matter configuration options (Realm docs)](https://redocly.com/docs/realm/config/front-matter-config).
+
+Usually, you should not specify a title in the frontmatter, but you might use the `seo` field's `title` sub-field (see below) for non-Markdown pages or when recommended for search engine optimization.
+
+### seo.title, default title, and sidebar label
+
+Every markdown page should have an h1 on the first line of the markdown contents, such as this:
+
+```
+# What is XRP?
+```
+
+By default, the text of this title is used as the title of the page. You don't need to specify a title separately in the frontmatter, especially since someone might change it in one place and forget to update the other. Sometimes pages have a longer title in the frontmatter's `seo.title` field, for purposes of search engine optimization (SEO). These titles are usually longer and optimized to include phrases or search terms that are likely to match queries people might type while looking for the page. **Titles in the frontmatter should only be used when recommended for SEO.** For example:
+
+```
+---
+seo:
+    title: What is XRP and Why is it Valuable?
+---
+```
+
+A third place a page might have a title is in a `label` field in the `sidebars.yaml` file. This should always come with a translation key in the `labelTranslationKey` field. Labels in the `sidebars.yaml` file should only be used in these cases:
+
+- To provide a translatable title for a `.page.tsx` file.
+- To shorten an SEO title so that it fits better in the sidebar. In this case, the label contents should match the original h1 title.
+
+For example:
+
+```
+- page: docs/introduction/what-is-xrp.md
+  label: What is XRP?
+  labelTranslationKey: sidebar.docs.introduction.what-is-xrp
+```
+
+For reference, here's the hierarchy that determines which title gets used where:
+
+| Location | Which title it uses |
+|----------|---------------------|
+| `<title>` element (the text that displays in the tab name and the title bar of your browser, if it has one) | `seo.title`, falling back to md h1 |
+| `<meta name="title" ...>`, `<meta name="og:title" ...>`, `<meta name="twitter:title" ...>` and so on in the `<head>` of the page, which are used when "unfurling" a link (showing a preview) in various chat and social media apps like Discord, Slack, or X (Twitter) | `seo.title`, falling back to md h1 |
+| Sidebar navigation | `label` from `sidebars.yaml`, then `seo.title`, and finally md h1 |
+| In-page header, that is, the big text in the center column | md h1 only |
+
 
 ### Next and Previous Buttons
 
@@ -188,9 +237,9 @@ Store your graphics in the `/docs/img` directory. Embed graphics using the synta
 
 `![image_description](/docs/img/my_image.png)`
 
-For example, `![XRPL Foundation Logo](/docs/img/xrplf-logo.png)` renders as follows.
+For example, `![XRPL X mark](/static/img/xrp-x-logo.png)` renders as follows.
 
-![XRPL Foundation Logo](/docs/img/xrplf-logo.png)
+![XRPL X mark](/static/img/xrp-x-logo.png)
 
 ## Videos
 
@@ -220,71 +269,44 @@ referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Tables
 
-Markdoc provides three different syntax styles for generating tables.
+Use Markdown tables liberally. Tables are a good way to convey possible options, especially in reference documentation.
 
-In most cases, create tables using the pipe character (|) to separate columns and three or more hyphens (---) to create the column headers.
-
-```
-|          | Head 1 |
-| -------  | ------ |
-| Label 1  | Val 1  |
-```
-
-This code renders as follows.
-
-|          | Head 1 |
-| -------  | ------ |
-| Label 1  | Val 1  |
-
-The cells do not have to be the same width. The renderer aligns the columns and wraps text as needed, as shown.
+The GitHub Flavored Markdown syntax uses the pipe character (|) to separate columns and three or more hyphens (---) to create the column headers. For example:
 
 ```
 | Key | Value |
-| --- | ----- |
+|-----|-------|
 | Name | H. G. Wells |
 | Genre | Science Fiction |
 | Hyperbole | The greatest story ever told! No one has ever written anything more important than this Victorian era classic. Oh, how swells the heart to ponder the heady philosophies introduced therein! |
 ```
 
+This table displays as follows:
+
 | Key | Value |
-| --- | ----- |
+|-----|-------|
 | Name | H. G. Wells |
 | Genre | Science Fiction |
 | Hyperbole | The greatest story ever told! No one has ever written anything more important than this Victorian era classic. Oh, how swells the heart to ponder the heady philosophies introduced therein! |
 
-Use colons in the heading lines to align columns left (:--), middle (:-:), or right (--:).
+The cells do not have to be the same width. The renderer aligns the columns and wraps text as needed. However, it is often helpful for editors if you align the columns of the table in the markdown source file.
+
+Optionally, use colons in the heading lines to align columns left (:--), middle (:-:), or right (--:). For example:
 
 ```
-| Model | Color | Price |
-| :-: | :--  | --:  |
+| Model    | Color | Price |
+|:--------:|:------|------:|
 | Protexra | Electric Blue | 50,000 XRP |
 | Joatic | Hot Pink | 165,000 XRP |
 | Zhanu | Neon Green | 234,000 XRP |
 ```
 
-| Model | Color | Price |
-| :-: | :--  | --:  |
+| Model    | Color | Price |
+|:--------:|:------|------:|
 | Protexra | Electric Blue | 50,000 XRP |
 | Joatic | Hot Pink | 165,000 XRP |
-| Zhanu | Impetuous Green | 1,728,000 XRP |
+| Zhanu | Neon Green | 234,000 XRP |
 
-The left column is bold by default. If you don't want a bold label in the left column, you can use an empty left column and start your table one column over.
-
-```
-|     | French | English | German |
-| --- | ---    | ---     | ---    |
-|     | Fromage | Cheese | Käse |
-|     | Maux d'estomac | Stomach ache | Magenschmerzen |
-|     | Cornichon | Pickle | Essiggurke |
-```
-
-|     | French | English | German |
-| --- | ---    | ---     | ---    |
-|     | Fromage | Cheese | Käse |
-|     | Maux d'estomac | Stomach ache | Magenschmerzen |
-|     | Cornichon | Pickle | Essiggurke |
-
-Use these basic tables whenever possible. If you genuinely require special formatting not provided by the examples above, you can create a table using HTML syntax.
 
 ## Links
 
@@ -306,11 +328,11 @@ To make it easier to link to pages that are commonly cited, you can add a `{% ra
 
 Format method names and other code structures inline enclosing the code in backtick (&#96;) characters. For example:
 
-&nbsp;&nbsp;&nbsp;&nbsp;My favorite method ever is &#96;nft_info&#96;.
+> My favorite method ever is &#96;nft_info&#96;.
 
 renders as
 
-&nbsp;&nbsp;&nbsp;&nbsp;My favorite method ever is `nft_info`.
+> My favorite method ever is `nft_info`.
 
 For longer code blocks, use three backtics (&#96;&#96;&#96;) followed by the language name. Type a return, and enter the sample code. At the end of your code sample, type a return and close the block again with three backticks (&#96;&#96;&#96;).
 
@@ -338,123 +360,10 @@ renders as
   })
 ```
 
-## Markdoc Components
+## Markdoc Tags
 
-The files are processed with [Markdoc](https://markdoc.dev/), which means they can contain special tags in `{% ... %}` syntax. In addition to Redocly's built-in tags, this repository has some custom tags defined in `/@theme/markdoc/`.
+The files are processed with [Markdoc](https://markdoc.dev/), which means they can contain special tags in `{% ... %}` syntax. In addition to Redocly's built-in tags, this repository has some custom tags. For details on markdoc tags and their usage, see [Markdoc Tags](./markdoc-tags.md).
 
-### Badges
-
-See [New Features](#new-features).
-
-### Partials
-
-If you have text that you use frequently, or  text that requires periodic update in a number of places in the documentation, you can create a &#95;snippet file for reuse. 
-
-Store your file in the `_snippet` directory. To insert the partial file, use the syntax `{% partial file="<file url>" /%}`.
-
-For example, here is the snippet `/docs/_snippets/secret-key-warning.md`.
-
-<blockquote>
-{&#37; admonition type="warning" name="Caution" &#37;}<br/>
-Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.<br/>
-{% /admonition %}
-</blockquote>
-
-To embed the text, use the tag `{% partial file="/docs/_snippets/secret-key-warning.md" /%}`.
-
-For example:
-
-<blockquote>
-There I was, happy as a lark, skipping through the daisies, when I shyly handed my secret
- key to my one true love.
-
-{&#37; partial file="/docs/_snippets/secret-key-warning.md" /&#37;}
-
-Alas, if only I had heeded that sage advice, I would not rue the day as I do today.
-</blockquote>
-
-renders as:
-
-<blockquote>
-There I was, happy as a lark, skipping through the daisies, when I shyly handed my secret key to my one true love.
-
-{% partial file="/docs/_snippets/secret-key-warning.md" /%}
-
-Alas, if only I had heeded that sage advice, I would not rue the day as I do today.
-</blockquote>
-
-### Not-Enabled Badge
-
-The `{% not-enabled /%}` Markdoc component displays a yellow flask icon with a tooltip about how the feature is not available on the production XRP Ledger. Use this when discussing amendments that are open for voting but not currently enabled. Example: {% not-enabled /%}
-
-This tag is self-closing, and it takes no parameters.
-
-### Repo Link
-
-This tag links to a particular file in the source code repository for this site, usually a code sample. For example:
-
-<pre><code>
-{% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
-</code></pre>
-
-becomes: {% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %}
-
-If you are working from a fork or branch of the site, all such links can be updated at once with a site configuration change.
-
-
-### Try It
-
-The `{% try-it ... /%}` Markdoc tag provides a convenient shortcut for linking to the WebSocket tool as a button. This tag is self-closing.
-Example:
-
-{% try-it method="account_currencies" server="testnet" /%}
-
-Example syntax:
-
-<pre><code>
-{% try-it method="account_currencies" server="testnet" /%}
-</code></pre>
-
-The text of the button is normally "Try it!" in English, and can be translated by setting the `component.tryit` key in the localization's `translations.yaml` file.
-
-This tag takes the following parameters:
-
-| Parameter | Required? | Description |
-|---|---|---|
-| `method` | Yes | The ID of the anchor to use on the WebSocket Tool page. For most WebSocket API methods, this is the API method exactly, but it could contain more. For example, different `ledger_entry` variations use a suffix like `ledger_entry-nft-page`. If you are documenting a new method, you must also add that method to the WebSocket tool by editing `/resources/dev-tools/components/websocket-api/data/command-list.json`. |
-| `server` | No | A specific server to use for the request. You may want to specify the server if a method is specific to Clio or `rippled` servers, or if the example uses data or amendments that are only on a specific test network. |
-
-The values you can provide to the `server` parameter are as follows:
-
-| `server` value | Server to use |
-|---|---|
-| (Omitted) | The WebSocket tool's default server (currently `s1.ripple.com`) |
-| `s1` | Ripple's `s1.ripple.com` Mainnet public cluster, typically served by Clio servers. |
-| `s2` | Ripple's `s2.ripple.com` Mainnet full-history public cluster, typically served by Clio servers. |
-| `xrplcluster` | The `xrplcluster.com` cluster of public servers, typically served by `rippled` servers with a lightweight proxy in front. |
-| `devnet` | The `s.altnet.rippletest.net` cluster of Testnet servers. |
-| `testnet` | The `s.devnet.rippletest.net` cluster of Devnet servers. |
-
-### Tx Example
-
-The `{% tx-example ... /%}` Markdoc tag provides a convenient shortcut for linking to the WebSocket tool as a button with a body pre-filled to look up a specific example transaction. This tag is self-closing. Example:
-
-{% tx-example txid="1AF19BF9717DA0B05A3BFC5007873E7743BA54C0311CCCCC60776AAEAC5C4635" /%}
-
-Example syntax:
-
-<pre><code>
-{% tx-example txid="1AF19BF9717DA0B05A3BFC5007873E7743BA54C0311CCCCC60776AAEAC5C4635" /%}
-</code></pre>
-
-The text of the button is normally "Query example transaction" in English, and can be translated by setting the `component.queryexampletx` key in the localization's `translations.yaml` file.
-
-This tag takes the following parameters:
-
-| Parameter | Required? | Description |
-|---|---|---|
-| `txid` | Yes | The unique hash of the transaction to look up. |
-| `server` | No | A specific server to use for the request. Possible values are the same as `{% try-it %}` as defined above. For example, you may need to specify `devnet` to show a transaction added by an amendment that isn't enabled on Mainnet. |
-
+## More Contributor Documentation
 
 {% child-pages /%}

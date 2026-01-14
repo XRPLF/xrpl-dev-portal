@@ -62,10 +62,10 @@ Click **Download** on the top right of the code preview panel to download the so
 
 Follow the steps to create a simple application with `xrpl.js`.
 
-### 1. Install Dependencies
-
 <!-- Web steps -->
 {% step id="import-web-tag" when={ "environment": "Web" } %}
+### 1. Install Dependencies
+
 To load `xrpl.js` into your project, add a `<script>` tag to your HTML.
 
 You can load the library from a CDN as in the example, or download a release and host it on your own website.
@@ -74,7 +74,8 @@ This loads the module into the top level as `xrpl`.
 {% /step %}
 
 <!-- Node.js steps -->
-{% step id="install-node-tag" when={ "environment": "Node" } %}
+{% step id="import-node-tag" when={ "environment": "Node" } %}
+### 1. Install Dependencies
 
 Start a new project by creating an empty folder, then move into that folder and use [NPM](https://www.npmjs.com/) to install the latest version of xrpl.js:
 
@@ -94,7 +95,7 @@ Your `package.json` file should look something like this:
 {% step id="connect-tag" %}
 #### Connect to the XRP Ledger Testnet
 
-To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl.js`, you create an instance of the `Client` class and use the `connect()` method.
+To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl.js`, you create an instance of the [`Client`](https://js.xrpl.org/classes/Client.html) class and use the [`connect()`](https://js.xrpl.org/classes/Client.html#connect) method.
 
 {% admonition type="success" name="Tip" %}Many network functions in `xrpl.js` use [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to return values asynchronously. The code samples here use the [`async/await` pattern](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await) to wait for the actual result of the Promises.{% /admonition %}
 
@@ -130,46 +131,48 @@ The sample code shows you how to connect to the Testnet, which is one of the ava
 {% step id="get-account-create-wallet-tag" %}
 #### Create and Fund a Wallet
 
-The `xrpl.js` library has a `Wallet` class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account as shown in the example.
+The `xrpl.js` library has a [`Wallet`](https://js.xrpl.org/classes/Wallet.html) class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account as shown in the example.
 {% /step %}
 
 {% step id="get-account-create-wallet-b-tag" %}
 #### (Optional) Generate a Wallet Only
 
-If you want to generate a wallet without funding it, you can create a new `Wallet` instance. Keep in mind that you need to send XRP to the wallet for it to be a valid account on the ledger.
+If you want to generate a wallet without funding it, you can create a new [`Wallet`](https://js.xrpl.org/classes/Wallet.html) instance. Keep in mind that you need to send XRP to the wallet for it to be a valid account on the ledger.
 {% /step %}
 
 {% step id="get-account-create-wallet-c-tag" %}
 #### (Optional) Use Your Own Wallet Seed
 
-To use an existing wallet seed encoded in [base58][], you can create a `Wallet` instance from it.
+To use an existing wallet seed encoded in [base58][], you can create a [`Wallet`](https://js.xrpl.org/classes/Wallet.html) instance from it.
 {% /step %}
-
-### 4. Query the XRP Ledger
 
 {% step id="query-xrpl-tag" %}
-Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md).
-{% /step %}
+### 4. Query the XRP Ledger
 
-### 5. Listen for Events
+Use the Client's [`request()`](https://js.xrpl.org/classes/Client.html#request) method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md).
+{% /step %}
 
 {% step id="listen-for-events-tag" %}
-You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](../../../concepts/consensus-protocol/index.md) produces a new [ledger version](../../../concepts/ledgers/index.md). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
+### 5. Listen for Events
+
+You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](../../../concepts/consensus-protocol/index.md) produces a new [ledger version](../../../concepts/ledgers/index.md). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the [`on(eventType, callback)`](https://js.xrpl.org/classes/Client.html#on) method of the client.
 {% /step %}
 
+{% step id="disconnect-node-tag" when={ "environment": "Node" } %}
 ### 6. Disconnect
 
-{% step id="disconnect-node-tag" when={ "environment": "Node" } %}
-Disconnect when done so Node.js can end the process. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
+Call the [`disconnect()`](https://js.xrpl.org/classes/Client.html#disconnect) function so Node.js can end the process. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
 {% /step %}
 
 {% step id="disconnect-web-tag" when={ "environment": "Web" } %}
-Disconnect from the ledger when done. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
+### 6. Disconnect
+
+Call the [`disconnect()`](https://js.xrpl.org/classes/Client.html#disconnect) function to disconnect from the ledger when done. The example code waits 10 seconds before disconnecting to allow time for the ledger event listener to receive and display events.
 {% /step %}
 
+{% step id="run-app-node-tag" when={ "environment": "Node" } %}
 ### 7. Run the Application
 
-{% step id="run-app-node-tag" when={ "environment": "Node" } %}
 Finally, in your terminal, run the application like so:
 
 ```sh
@@ -237,6 +240,8 @@ Disconnected
 {% /step %}
 
 {% step id="run-app-web-tag" when={ "environment": "Web" } %}
+### 7. Run the Application
+
 Open the `index.html` file in a web browser.
 
 You should see output similar to the following:

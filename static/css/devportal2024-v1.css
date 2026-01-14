@@ -23167,11 +23167,48 @@ html.light .page-dev-tools #trasaction-sender .card-footer {
   align-items: center;
   justify-content: center;
 }
+.page-rwa-tokenization .token-title-container .button-container,
+.use-case-payments .token-title-container .button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+.page-rwa-tokenization .token-title-container .button-container .internal-link,
+.use-case-payments .token-title-container .button-container .internal-link {
+  color: #9a52ff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  background: none !important;
+}
 @media (max-width: 767px) {
-  .page-rwa-tokenization .token-title-container,
-  .use-case-payments .token-title-container {
+  .page-rwa-tokenization .token-title-container .button-container,
+  .use-case-payments .token-title-container .button-container {
     padding-bottom: 0px;
+    gap: 16px;
+    flex-direction: column;
+    width: 100%;
   }
+  .page-rwa-tokenization .token-title-container .button-container .btn-primary.p-12,
+  .use-case-payments .token-title-container .button-container .btn-primary.p-12 {
+    width: 100%;
+  }
+  .page-rwa-tokenization .token-title-container .button-container .internal-link,
+  .use-case-payments .token-title-container .button-container .internal-link {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+}
+.page-rwa-tokenization .token-title-container .button-container .btn-primary.p-12,
+.use-case-payments .token-title-container .button-container .btn-primary.p-12 {
+  padding: 12px;
 }
 .page-rwa-tokenization .token-video-container,
 .use-case-payments .token-video-container {

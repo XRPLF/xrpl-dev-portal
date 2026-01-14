@@ -2,11 +2,11 @@
 seo:
     description: Check whether an account is authorized to send money directly to another.
 labels:
-  - Accounts
-  - Security
+    - Accounts
+    - Security
 ---
 # deposit_authorized
-[[Source]](https://github.com/XRPLF/rippled/blob/817d2339b8632cb2f97d3edd6f7af33aa7631744/src/ripple/rpc/handlers/DepositAuthorized.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/DepositAuthorized.cpp "Source")
 
 The `deposit_authorized` command indicates whether one account is authorized to send payments directly to another. See [Deposit Authorization](../../../../concepts/accounts/depositauth.md) for information on how to require authorization to deliver money to your account.
 

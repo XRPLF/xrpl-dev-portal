@@ -45,7 +45,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field Name          | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
-| `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0050`, mapped to the string `NFTokenPage`, indicates that this is a page containing `NFToken` objects.|
 | `NextPageMin`       | String    | UInt256           | No        | The locator of the next page, if any. Details about this field and how it should be used are outlined below. |
 | `NFTokens`          | Array     | Array             | Yes       | The collection of `NFToken` objects contained in this NFTokenPage object. This specification places an upper bound of 32 NFToken objects per page. Objects are sorted from low to high with the `NFTokenID` used as the sorting parameter.|
 | `PreviousPageMin`   | String    | UInt256           | No        | The locator of the previous page, if any. Details about this field and how it should be used are outlined below. |

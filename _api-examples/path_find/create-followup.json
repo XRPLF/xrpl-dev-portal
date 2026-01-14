@@ -1,0 +1,15 @@
+{
+  "alternatives": [
+    // ... paths omitted from this example; same format as the initial response ...
+  ],
+  "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "destination_amount": {
+    "currency": "USD",
+    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+    "value": "0.001"
+  },
+  "full_reply": true,
+  "id": 8,
+  "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "type": "path_find"
+}

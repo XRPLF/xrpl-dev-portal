@@ -1,11 +1,9 @@
 ---
-html: peer-protocol.html
-parent: networks-and-servers.html
 seo:
     description: The peer protocol specifies the language rippled servers speak to each other.
 labels:
-  - Core Server
-  - Blockchain
+    - Core Server
+    - Blockchain
 ---
 # Peer Protocol
 
@@ -18,11 +16,11 @@ The peer protocol is the main mode of communication between servers in the XRP L
 - Requesting ledger data from historical ledgers, or providing that data.
 - Proposing a set of transactions for consensus, or sharing the calculated outcome of applying a consensus transaction set.
 
-To set up a peer-to-peer connection, one server connects to another using HTTPS and requests an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to the `XRPL/2.0` protocol (formerly `RTXP/1.2`). (For more information, see the [Overlay Network](https://github.com/XRPLF/rippled/blob/96bbabbd2ece106779bb544aa0e4ce174e99fdf6/src/ripple/overlay/README.md#handshake) article in the [`rippled` repository](https://github.com/ripple/rippled).)
+To set up a peer-to-peer connection, one server connects to another using HTTPS and requests an [HTTP upgrade](https://tools.ietf.org/html/rfc7230#section-6.7) to switch to the `XRPL/2.0` protocol (formerly `RTXP/1.2`). For more information, see the source code's [Overlay Network](https://github.com/XRPLF/rippled/blob/master/src/xrpld/overlay/README.md#handshake) article.
 
 ## Peer Discovery
 
-The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it reconnects to any other peers it previously connected to. As a fallback, it uses the [hardcoded public hubs](https://github.com/XRPLF/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525). After a server successfully connects to a peer, it asks that peer for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server makes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.
+The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it reconnects to any other peers it previously connected to. As a fallback, it uses the [hardcoded public hubs](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/xrpld/overlay/detail/OverlayImpl.cpp#L495-L508). After a server successfully connects to a peer, it asks that peer for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server makes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.
 
 Typically, a server needs to connect to a public hub only once, for a short amount of time, to find other peers. After doing so, the server may or may not remain connected to the hub, depending on how stable its network connection is, how busy the hub is, and how many other high-quality peers the server finds. The server saves the addresses of these other peers so it can try reconnecting directly to those peers later, after a network outage or a restart.
 

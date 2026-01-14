@@ -43,11 +43,6 @@ Edit your `rippled.cfg` file.
     # No [ips] stanza. Use the default hubs to connect to Mainnet.
     ```
 
-    ```{% label="Sidechain-Devnet" %}
-    [ips]
-    sidechain-net2.devnet.rippletest.net 51235
-    ```
-
     {% /tabs %}
 
 2. Comment out the previous `[ips]` stanza, if there is one:
@@ -75,11 +70,6 @@ Edit your `rippled.cfg` file.
     ```{% label="Mainnet" %}
     [network_id]
     main
-    ```
-
-    ```{% label="Sidechain-Devnet" %}
-    [network_id]
-    262
     ```
 
     {% /tabs %}
@@ -118,14 +108,6 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
     [validator_list_keys]
     ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-    ```
-
-    ```{% label="Sidechain-Devnet" %}
-    [validator_list_sites]
-    https://vlsidechain-net2.devnet.rippletest.net
-
-    [validator_list_keys]
-    EDA5504C7133743FADA46342229B4E9CBBE1CF9BCA19D16633574F7CBB72F79569
     ```
 
     {% /tabs %}
@@ -178,13 +160,6 @@ For some test networks using experimental features, you must also forcefully ena
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Mainnet.
-```
-{% /tab %}
-
-{% tab label="Sidechain-Devnet" %}
-```
-[features]
-XChainBridge
 ```
 {% /tab %}
 

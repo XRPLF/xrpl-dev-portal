@@ -2,11 +2,11 @@
 seo:
     description: Get info about offers to exchange two currencies.
 labels:
-  - Decentralized Exchange
-  - Cross-Currency
+    - Decentralized Exchange
+    - Cross-Currency
 ---
 # book_offers
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/BookOffers.cpp "Source")
 
 The `book_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) between two currencies, also known as an _order book_. The response omits [unfunded offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) and reports how much of each remaining offer's total is currently funded.
 
