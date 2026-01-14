@@ -1,0 +1,2537 @@
+// BDS Navbar Styles - Phase 1 (Light Mode Only)
+// Uses color variables from _colors.scss
+// Follows breakpoints from _breakpoints.scss
+// Animation timing (same as Link component)
+$bds-submenu-transition-duration: 150ms;
+$bds-submenu-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+$bds-navbar-height-desktop: 80px;
+$bds-navbar-height-tablet: 80px;
+$bds-navbar-height-mobile: 80px;
+$bds-navbar-padding-desktop: 0 32px;
+$bds-navbar-padding-tablet: 0 32px;
+$bds-navbar-padding-mobile: 0 20px;
+
+// Main navbar container
+.bds-navbar {
+  position: relative;
+  width: 100%;
+  height: $bds-navbar-height-mobile;
+  margin: 0;
+  padding: 0;
+  background-color: $white;
+  border-bottom: none; // Remove border, submenu has its own styling
+  box-sizing: border-box;
+  z-index: 1000;
+
+  // Tablet
+  @include media-breakpoint-up(md) {
+    height: $bds-navbar-height-tablet;
+  }
+
+  // Desktop
+  @include media-breakpoint-up(lg) {
+    height: $bds-navbar-height-desktop;
+  }
+
+  // Content wrapper - flex container
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: $bds-navbar-padding-mobile;
+    max-width: 100%;
+    margin: 0 auto;
+
+    // Tablet
+    @include media-breakpoint-up(md) {
+      padding: $bds-navbar-padding-tablet;
+    }
+
+    // Desktop
+    @include media-breakpoint-up(lg) {
+      padding: $bds-navbar-padding-desktop;
+    }
+  }
+
+  // Logo container
+  &__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
+    position: relative;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    // Desktop: remove opacity change since we have animation
+    @include media-breakpoint-up(lg) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    // Symbol logo (all breakpoints - mobile, tablet, desktop)
+    &-symbol {
+      display: block;
+      width: 33px;
+      height: 28px;
+
+      // Tablet
+      @include media-breakpoint-up(md) {
+        width: 33px;
+        height: 28px;
+      }
+
+      // Desktop
+      @include media-breakpoint-up(lg) {
+        width: 37px;
+        height: 32px;
+      }
+    }
+
+    // "XRP LEDGER" text that animates out on hover (desktop only)
+    // Positioned absolutely to the right of the symbol, slides in from left
+    &-text {
+      display: none; // Hidden on mobile/tablet
+
+      // Desktop only - show and enable animation
+      @include media-breakpoint-up(lg) {
+        display: block;
+        position: absolute;
+        left: 37px; // Position right after the symbol
+        top: 50%;
+        transform: translateY(-50%) translateX(-100%); // Center vertically, hide to the left
+        height: 15px;
+        width: 125px;
+        opacity: 0;
+        margin-left: 8px;
+        transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                    opacity 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+        pointer-events: none;
+      }
+    }
+
+    // Hover state - slide text out to the right on desktop
+    @include media-breakpoint-up(lg) {
+      &:hover &-text {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0); // Keep centered vertically, slide into view
+      }
+    }
+
+    // Full logotype - hidden for now (same logo across all breakpoints)
+    &-full {
+      display: none;
+    }
+  }
+
+  // Navigation items container - centered
+  &__items {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+
+    // Tablet - show nav items
+    @include media-breakpoint-up(md) {
+      display: flex;
+      font-size: 14px;
+      line-height: 20.1px;
+      gap: 24px;
+    }
+
+    // Desktop - larger font and gap
+    @include media-breakpoint-up(lg) {
+      font-size: 16px;
+      line-height: 23.2px;
+      gap: 32px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  // Individual nav item
+  &__item {
+    color: $black;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 4px 0;
+
+    &:hover,
+    &--active {
+      color: $green-400;
+    }
+
+    &:focus {
+      outline: none;
+      color: $green-400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+  }
+
+  // Right side controls container
+  &__controls {
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    flex-shrink: 0;
+
+    // Tablet - show controls
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+  }
+
+  // Icon buttons (search, mode toggle)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    // Desktop - larger icons
+    @include media-breakpoint-up(lg) {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Language selector pill button
+  &__lang-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 8px 9px 8px 8px;
+    background: transparent;
+    border: 1px solid $black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20.1px;
+    color: $black;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    // Desktop - larger pill
+    @include media-breakpoint-up(lg) {
+      height: 32px;
+      padding: 8px 13px 8px 12px;
+      border-width: 1.3px;
+      gap: 8px;
+      font-size: 16px;
+      line-height: 23.2px;
+    }
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+
+      @include media-breakpoint-up(lg) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &-text {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    &-chevron {
+      width: 8px;
+      height: 13px;
+      transform: rotate(90deg);
+      flex-shrink: 0;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    // When dropdown is open: rotate chevron and turn green (light mode)
+    // Filter converts black (#141414) to green-400 (#0DAA3E)
+    &--open {
+      border-color: $green-400;
+
+      .bds-navbar__lang-pill-chevron {
+        transform: rotate(-90deg);
+        // CSS filter to convert black to green-400 (#0DAA3E)
+        filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+      }
+
+      .bds-navbar__lang-pill-icon {
+        // Turn globe icon green as well
+        filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+      }
+    }
+  }
+
+  // Language wrapper for positioning dropdown
+  &__lang-wrapper {
+    position: relative;
+  }
+
+  // Hamburger menu button (mobile only)
+  &__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    // Hide on tablet and desktop
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: 2px;
+    }
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// When alert banner is shown, add margin to navbar
+.bds-navbar--with-banner {
+  margin-top: 52px;
+}
+
+// Override old top-nav padding when using new BDS navbar
+// The _top-nav.scss adds padding-top: 80px to RootLayout for old fixed navbar
+// We need to reset this for the new non-fixed navbar
+[data-component-name="layouts/RootLayout"]:has(.bds-navbar) {
+  padding-top: 0 !important;
+}
+
+// Additional override with body context for higher specificity
+body [data-component-name="layouts/RootLayout"]:has(> .bds-navbar),
+body [data-component-name="layouts/RootLayout"]:has(header.bds-navbar) {
+  padding-top: 0 !important;
+}
+
+// Ensure full-width layout when BDS navbar is present
+html:has(.bds-navbar) {
+  overflow-x: hidden;
+}
+
+body:has(.bds-navbar) {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+[data-component-name="layouts/RootLayout"]:has(.bds-navbar) {
+  width: 100%;
+  max-width: none;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+// =============================================================================
+// Dark Mode Styles
+// Using html.dark selectors as specified in requirements
+// =============================================================================
+
+// Main navbar dark mode
+html.dark .bds-navbar {
+  background-color: $black;
+
+  // Content wrapper
+  &__content {
+    // No changes needed for content wrapper
+  }
+
+  // Logo
+  &__logo {
+    // Invert logo colors for dark mode
+    &-symbol,
+    &-full,
+    &-text {
+      filter: invert(1); // Invert from black to white
+    }
+  }
+
+  // Navigation items
+  &__items {
+    // Items remain the same
+  }
+
+  &__item {
+    color: $white;
+
+    &:hover,
+    &--active {
+      color: $green-300; // Use green-300 from Figma design
+    }
+
+    &:focus {
+      color: $green-300;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+  }
+
+  // Controls
+  &__controls {
+    // Controls remain the same
+  }
+
+  &__icon {
+    // Invert icon colors for dark mode
+    img, svg {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+  }
+
+  // Language pill
+  &__lang-pill {
+    border-color: $white;
+    color: $white;
+
+    // Invert language pill icon colors for dark mode
+    &-icon,
+    &-chevron {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      background-color: $gray-800;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+
+    // When dropdown is open in dark mode: green-300 border and icons
+    &--open {
+      border-color: $green-300;
+
+      .bds-navbar__lang-pill-chevron {
+        transform: rotate(-90deg);
+        // Filter to convert white to green-300 (#21E46B)
+        // First invert to get white base, then apply green filter
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
+
+      .bds-navbar__lang-pill-icon {
+        // Turn globe icon green-300 as well
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
+    }
+  }
+
+  // Hamburger menu
+  &__hamburger {
+    // Invert hamburger icon colors for dark mode
+    img, svg {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-300;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Dark mode for alert banner
+html.dark .top-banner {
+  // Alert banner styling would go here if needed
+}
+
+// Dark mode for submenu backdrop
+html.dark .bds-submenu-backdrop {
+  background-color: rgba($gray-900, 0.8); // Darker backdrop for dark mode
+  backdrop-filter: blur(17.5px);
+  -webkit-backdrop-filter: blur(17.5px);
+}
+
+// Dark mode for desktop submenus
+html.dark .bds-submenu {
+  // Container always transparent - columns provide background
+  background: transparent;
+
+  &__left,
+  &__right {
+    background: #343434; // Background moves with the column animation
+  }
+
+  // When closing, immediately make column backgrounds transparent
+  &--closing {
+    .bds-submenu__left,
+    .bds-submenu__right {
+      background: transparent;
+    }
+  }
+
+  &__section {
+    background: #111112; // Black background for sections (darker than container)
+  }
+
+  &__link {
+    color: $white;
+
+    .bds-submenu__arrow svg path {
+      stroke: $white;
+    }
+  }
+
+  &__sublink {
+    color: $white; // Secondary text color from Figma design
+
+    &:hover {
+      color: $green-300; // Primary green accent from Figma
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+      color: $green-300;
+    }
+  }
+
+  &__parent-link {
+    .bds-submenu__link {
+      color: $white;
+
+      .bds-submenu__arrow svg path {
+        stroke: $white;
+      }
+    }
+
+    &:hover .bds-submenu__link {
+      color: $green-300; // Primary green accent
+
+      .bds-submenu__arrow svg path {
+        stroke: $green-300;
+      }
+    }
+
+    &:active .bds-submenu__link {
+      color: $green-400;
+
+      .bds-submenu__arrow svg path {
+        stroke: $green-400;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+
+      .bds-submenu__link {
+        color: $green-300;
+
+        .bds-submenu__arrow svg path {
+          stroke: $green-300;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode overrides for submenu links (higher specificity)
+html.dark .bds-submenu {
+  a.bds-submenu__sublink:not(.bds-link) {
+    color: $white; // Secondary text color from Figma 
+    font-weight: 400;
+    text-decoration: none;
+
+    &:hover {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-submenu__parent-link:not(.bds-link) {
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-submenu__link {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &:hover .bds-submenu__link {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+    }
+
+    &:active .bds-submenu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-submenu__link {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+}
+
+// Dark mode for Network submenu
+html.dark .bds-submenu--network {
+  .bds-submenu__section {
+    background-color: #111112 !important; // Dark card background
+    // Dark gray frame using box-shadow
+    box-shadow: -8px 0 0 0 #343434, 8px 0 0 0 #343434, 0 -8px 0 0 #343434, 0 8px 0 0 #343434,
+                -8px -8px 0 0 #343434, 8px -8px 0 0 #343434, -8px 8px 0 0 #343434, 8px 8px 0 0 #343434;
+  }
+
+  // When closing, remove box-shadow
+  &.bds-submenu--closing {
+    .bds-submenu__section:nth-child(1),
+    .bds-submenu__section:nth-child(2) {
+      box-shadow: none;
+    }
+  }
+}
+
+// Dark mode for mobile menu
+html.dark .bds-mobile-menu {
+  background-color: $black;
+
+  &__header {
+    background-color: $black;
+    border-bottom-color: $gray-700;
+  }
+
+  &__content {
+    // Content area remains same
+  }
+
+  &__accordion-header {
+    background-color: $gray-900; // Darker background for headers
+    border-bottom-color: $gray-700;
+    color: $white;
+
+    &:hover {
+      background-color: $gray-800;
+    }
+  }
+
+  &__accordion-content {
+    background-color: $black;
+    border-bottom-color: $gray-700;
+  }
+
+  // Chevron colors in dark mode
+  &__chevron {
+    color: $white; // White when collapsed (inherited by currentColor in SVG)
+
+    // Green when expanded
+    &--expanded {
+      color: $green-300;
+    }
+  }
+
+  &__tier-list {
+    // Tier list remains same
+  }
+
+  &__tier1 {
+    // Tier 1 remains same
+  }
+
+  &__link {
+    color: $white;
+
+    .bds-mobile-menu__arrow svg path {
+      stroke: $white;
+    }
+  }
+
+  &__sublink {
+    color: $white; // Secondary text color
+
+    &:hover {
+      color: $green-300; // Primary green accent
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+      color: $green-300;
+    }
+  }
+
+  &__parent-link {
+    .bds-mobile-menu__link {
+      color: $white;
+
+      .bds-mobile-menu__arrow svg path {
+        stroke: $white;
+      }
+    }
+
+    &:hover .bds-mobile-menu__link {
+      color: $green-300; // Primary green accent
+
+      .bds-mobile-menu__arrow svg path {
+        stroke: $green-300;
+      }
+    }
+
+    &:active .bds-mobile-menu__link {
+      color: $green-400;
+
+      .bds-mobile-menu__arrow svg path {
+        stroke: $green-400;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+
+      .bds-mobile-menu__link {
+        color: $green-300;
+
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-300;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    background-color: $black;
+  }
+
+  &__lang-pill {
+    border-color: $white;
+    color: $white;
+
+    // Invert language pill icon colors for dark mode
+    &-icon,
+    &-chevron {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      background-color: $gray-800;
+    }
+
+    // When dropdown is open in dark mode mobile
+    &--open {
+      border-color: $green-300;
+
+      .bds-mobile-menu__lang-pill-chevron {
+        transform: rotate(-90deg);
+        // Filter to convert white to green-300 (#21E46B)
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
+
+      .bds-mobile-menu__lang-pill-icon {
+        filter: invert(73%) sepia(48%) saturate(580%) hue-rotate(86deg) brightness(98%) contrast(93%);
+      }
+    }
+  }
+
+  &__footer-icon {
+    // Invert footer icon colors for dark mode
+    img, svg {
+      filter: invert(1); // Invert from black to white
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__close {
+    // Invert close icon colors for dark mode
+    svg line {
+      stroke: $white; // Make close icon white in dark mode
+    }
+  }
+}
+
+// Dark mode overrides for mobile menu links (higher specificity)
+html.dark .bds-mobile-menu {
+  a.bds-mobile-menu__sublink:not(.bds-link) {
+
+    text-decoration: none;
+
+    &:hover {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-mobile-menu__parent-link:not(.bds-link) {
+    text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-mobile-menu__link {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &:hover .bds-mobile-menu__link {
+      color: $green-300; // Primary green accent
+      text-decoration: none;
+    }
+
+    &:active .bds-mobile-menu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-mobile-menu__link {
+      color: $green-300;
+      text-decoration: none;
+    }
+  }
+}
+
+// Style scrollbar to match navbar background (light mode)
+html.light:has(.bds-navbar) {
+  // Webkit browsers (Chrome, Safari, Edge)
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: $white;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray-300;
+    border-radius: 6px;
+    border: 3px solid $white;
+
+    &:hover {
+      background-color: $gray-400;
+    }
+  }
+
+  // Firefox
+  scrollbar-color: $gray-300 $white;
+  scrollbar-width: thin;
+}
+
+// Style scrollbar to match navbar background (dark mode)
+html.dark:has(.bds-navbar) {
+  // Webkit browsers (Chrome, Safari, Edge)
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: $black;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $black;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $gray-600;
+    border-radius: 6px;
+    border: 3px solid $black;
+
+    &:hover {
+      background-color: $gray-500;
+    }
+  }
+
+  // Firefox
+  scrollbar-color: $gray-600 $black;
+  scrollbar-width: thin;
+}
+
+// =============================================================================
+// Submenu Backdrop Blur Overlay
+// Blurs the page content when submenu is open
+// =============================================================================
+
+.bds-submenu-backdrop {
+  display: none;
+  position: fixed;
+  top: $bds-navbar-height-desktop; // Start below navbar
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999; // Below navbar (1000) and submenu (1001)
+  pointer-events: none;
+  opacity: 0;
+  background-color: rgba($gray-200, 0.65); // Semi-transparent gray
+  backdrop-filter: blur(17.5px);
+  -webkit-backdrop-filter: blur(17.5px);
+  transition: opacity 300ms ease-out;
+
+  // Only show on tablet and desktop
+  @include media-breakpoint-up(md) {
+    display: block;
+    top: $bds-navbar-height-tablet;
+  }
+
+  @include media-breakpoint-up(lg) {
+    top: $bds-navbar-height-desktop;
+  }
+
+  // Active state
+  &--active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// =============================================================================
+// Desktop Submenu Styles
+// Two-column layout with sequential animation
+// Matches Figma design: 612px wide, 390px tall, gray background container
+// Animation: Open = left drops down from top, then right slides out from left
+//            Close = left goes straight up, right snaps diagonally to origin
+// =============================================================================
+
+// Keyframes for diagonal exit animation (right column)
+@keyframes submenu-right-exit-diagonal {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, -100%);
+    opacity: 0;
+  }
+}
+
+// Keyframes for left column exit (straight up)
+@keyframes submenu-left-exit-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.bds-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  pointer-events: none;
+  overflow: hidden; // Clip content during animation
+  opacity: 0; // Hidden by default
+  visibility: hidden; // Prevent interaction when hidden
+
+  // Container always transparent - columns provide the background
+  width: 612px;
+  height: 390px;
+  padding: 8px;
+  gap: 0; // No gap - columns will handle spacing internally
+  background-color: transparent; // Always transparent
+
+  // On close: wait for column animations (300ms + 200ms delay), then hide container
+  transition: opacity 100ms ease-out 400ms, visibility 0ms linear 500ms;
+
+  // Only show on tablet and desktop
+  @include media-breakpoint-up(md) {
+    display: flex;
+  }
+
+  // Active state - triggered by hover
+  &--active {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    z-index: 1003; // Higher z-index to appear above closing/inactive submenus
+    // Container stays transparent - columns provide background
+    transition: opacity 0ms, visibility 0ms;
+
+    .bds-submenu__left {
+      transform: translateY(0);
+      opacity: 1;
+      // On open: left drops down first (delayed by 100ms)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 100ms,
+                  opacity 150ms ease-out 100ms;
+    }
+
+    .bds-submenu__right {
+      transform: translateX(0);
+      opacity: 1;
+      // On open: right slides out second (delayed by 300ms)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 300ms,
+                  opacity 150ms ease-out 300ms;
+    }
+  }
+
+  // Closing state - triggered when submenu is closing
+  // Uses keyframe animations for different exit paths
+  &--closing {
+    pointer-events: none;
+    z-index: 1002; // Lower than active, but above default to ensure exit animation is visible
+    // Container fades out after columns animate (300ms animation)
+    transition: opacity 100ms ease-out 250ms, visibility 0ms linear 350ms;
+
+    .bds-submenu__left,
+    .bds-submenu__right {
+      background-color: transparent; // Immediately transparent when closing
+      animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+    }
+
+    .bds-submenu__right {
+      animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+    }
+  }
+
+  // Wrapper to bridge gap between nav item and submenu
+  &-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding-top: 0; // No gap - submenu starts right at navbar bottom
+  }
+
+  // Left column - slides down from top (starts completely above)
+  &__left {
+    position: relative;
+    z-index: 2; // Higher z-index so right column slides from underneath
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 306px; // 298px + 8px to cover the gap between columns
+    height: 374px; // Fixed height to match design
+    padding-right: 8px; // Internal padding to maintain visual spacing
+    transform: translateY(-100%); // Start completely above (hidden)
+    opacity: 0;
+    background-color: $gray-200; // Background moves with the column animation
+    // On close: left slides back up immediately (no delay)
+    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                opacity 150ms ease-in;
+
+    // Pseudo-element to cover outer padding (left side frame: top, left, bottom)
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      bottom: -8px;
+      right: 0;
+      background-color: inherit;
+      z-index: -1;
+    }
+  }
+
+  // Right column - slides from left (starts completely to the left)
+  &__right {
+    position: relative;
+    z-index: 1; // Lower z-index so it slides from underneath the left column
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 290px;
+    height: 374px; // Fixed height to match design
+    transform: translateX(-100%); // Start completely to the left (hidden behind left column)
+    opacity: 0;
+    background-color: $gray-200; // Background moves with the column animation
+    // On close: right animates first (no delay), slides back left
+    transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                opacity 150ms ease-in 150ms;
+
+    // Pseudo-element to cover outer padding (right side frame: top, right, bottom)
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 0;
+      bottom: -8px;
+      right: -8px;
+      background-color: inherit;
+      z-index: -1;
+    }
+  }
+
+  // Section card (white background)
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 0 0;
+    min-height: 1px;
+    min-width: 1px;
+    padding: 16px 24px;
+    background-color: $white;
+  }
+
+  // Tier 1 item (main item with icon)
+  &__tier1 {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  // Center left column items vertically in Develop submenu (no modifier class)
+  // Target base .bds-submenu (Develop) but not --use-cases or --community
+  &:not(.bds-submenu--use-cases):not(.bds-submenu--community) {
+    .bds-submenu__left .bds-submenu__section {
+      justify-content: center; // Center vertically within section
+    }
+  }
+
+  // Tier 2 list (sub-items)
+  &__tier2 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  // Icon container (SVGs have background colors built in)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Main link item (Tier 1) - text span inside parent link
+  // Hover states are controlled by the parent &__parent-link styles
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.2px;
+    white-space: nowrap;
+    transition: color $bds-submenu-transition-duration $bds-submenu-transition-timing, gap $bds-submenu-transition-duration $bds-submenu-transition-timing;
+
+    // Bold style for main items
+    &--bold {
+      font-weight: 500;
+    }
+  }
+
+  // Sub-link item (Tier 2) - Child links in submenu
+  // Styled according to Figma: Behavior-Links (child)
+  // States: Enabled (black, regular, no arrow) → Hover (green-400, arrow shows) → Active (green-500) → Focused (outline)
+  &__sublink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 400; // Regular weight by default
+    line-height: 23.2px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+
+    // Hover state - green text, arrow appears
+    &:hover {
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Active/Pressed state - darker green
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Focus state
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+  }
+
+  // Sublink arrow (chevron, hidden by default, shown on hover)
+  &__sublink-arrow {
+    display: none; // Hidden by default
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 14px;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    // Arrow inherits color from parent link via currentColor
+    svg path {
+      stroke: currentColor;
+    }
+  }
+}
+
+// =============================================================================
+// Light Mode Overrides for Submenu Links
+// Higher specificity to override global html.light a:not(.bds-link) styles
+// =============================================================================
+html.light .bds-submenu {
+  a.bds-submenu__sublink:not(.bds-link) {
+    color: $black;
+    font-weight: 400;
+    text-decoration: none;
+
+    &:visited {
+      color: $black;
+      font-weight: 400;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-submenu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-submenu__parent-link:not(.bds-link) {
+    text-decoration: none;
+
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-submenu__link {
+      color: $black;
+      text-decoration: none;
+    }
+
+    &:hover .bds-submenu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:active .bds-submenu__link {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-submenu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
+}
+
+// Continue .bds-submenu styles
+.bds-submenu {
+  // Arrow icon for parent links
+  &__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // =============================================================================
+  // Parent Link Styles (for tier1 items with icons)
+  // Styled according to Figma design: Behavior-Links
+  // States: Enabled (black) → Hover (green-400) → Active/Pressed (green-500) → Focused (outline)
+  // Animation: Internal arrow horizontal line shrinks to chevron on hover
+  // =============================================================================
+
+  &__parent-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+    
+    // Enabled state (default)
+    .bds-submenu__link {
+      color: $black;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      .bds-submenu__arrow svg path {
+        stroke: $black;
+        transition: stroke 0.2s ease;
+      }
+      
+      // Internal arrow horizontal line animation setup
+      .bds-submenu__arrow svg .arrow-horizontal {
+        transform-origin: right center;
+        transition: transform $bds-submenu-transition-duration $bds-submenu-transition-timing;
+      }
+    }
+
+    // Hover state - Green text and arrow animates to chevron
+    &:hover {
+      text-decoration: none;
+
+      .bds-submenu__link {
+        color: $green-400;
+        text-decoration: none;
+        gap: 20px; // Increase gap to move arrow right (similar to button animation)
+
+        .bds-submenu__arrow svg path {
+          stroke: $green-400;
+        }
+
+        // Animate horizontal line to shrink (show chevron only)
+        .bds-submenu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Active/Pressed state - Darker green text and arrow
+    &:active {
+      text-decoration: none;
+
+      .bds-submenu__link {
+        color: $green-500;
+        text-decoration: none;
+        gap: 20px; // Increase gap to move arrow right (similar to button animation)
+
+        .bds-submenu__arrow svg path {
+          stroke: $green-500;
+        }
+
+        .bds-submenu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Focus state - Outline around entire link
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      text-decoration: none;
+
+      .bds-submenu__link {
+        color: $green-400;
+        text-decoration: none;
+        gap: 20px; // Increase gap to move arrow right (similar to button animation)
+
+        .bds-submenu__arrow svg path {
+          stroke: $green-400;
+        }
+
+        .bds-submenu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+  }
+}
+
+// Nav item wrapper (no longer used for submenu positioning)
+.bds-navbar__item-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+// =============================================================================
+// Use Cases Submenu Modifier
+// Adjustments for 4-section layout (2x2 grid) vs Develop's 5-section layout
+// =============================================================================
+
+.bds-submenu--use-cases {
+  // Same width as Develop submenu
+  width: 612px;
+  // Let height be determined by content (4 sections with children)
+  height: auto;
+  min-height: 390px;
+
+  .bds-submenu__left,
+  .bds-submenu__right {
+    // Let columns grow based on content
+    height: auto;
+    min-height: 374px;
+  }
+
+  // All sections in Use Cases have children, so adjust spacing
+  .bds-submenu__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // Distribute space between header and items
+  }
+
+  // Override tier2 margin-top: auto for Use Cases - let space-between handle it
+  .bds-submenu__tier2 {
+    margin-top: 0;
+  }
+}
+
+// =============================================================================
+// Community Submenu Modifier
+// Mixed layout: some sections have children (Community, Contribute), 
+// some are header-only (Funding, Creators)
+// Exact dimensions from Figma: 612px total width, specific section heights
+// Left: Community (270px) + Funding (96px) = 366px + 8px gap + 8px padding = 382px
+// Right: Contribute (270px) + Creators (96px) = 366px + 8px gap + 8px padding = 382px
+// =============================================================================
+
+.bds-submenu--community {
+  // Container dimensions - same as other submenus
+  width: 612px;
+  height: 390px; // 8px padding * 2 + 374px content height
+
+  .bds-submenu__left {
+    width: 290px;
+    height: 374px; // Match other submenus
+  }
+
+  .bds-submenu__right {
+    width: 298px;
+    height: 374px; // Match other submenus
+  }
+
+  // Override flex for all sections in community menu
+  .bds-submenu__section {
+    flex: none !important; // Override the flex: 1 from base styles
+  }
+
+  // Left column sections
+  .bds-submenu__left {
+    // First section (Community) - 270px with children
+    .bds-submenu__section:nth-child(1) {
+      height: 270px;
+      justify-content: space-between;
+    }
+
+    // Second section (Funding) - 96px header only, vertically centered
+    .bds-submenu__section:nth-child(2) {
+      height: 96px;
+      justify-content: center;
+    }
+  }
+
+  // Right column sections
+  .bds-submenu__right {
+    // First section (Contribute) - 270px with children
+    .bds-submenu__section:nth-child(1) {
+      height: 270px;
+      justify-content: space-between;
+    }
+
+    // Second section (Creators) - 96px header only, vertically centered
+    .bds-submenu__section:nth-child(2) {
+      height: 96px;
+      justify-content: center;
+    }
+  }
+  
+  // Tier2 list styling - 4px gap between items, aligned to bottom
+  .bds-submenu__tier2 {
+    margin-top: auto;
+    gap: 4px;
+  }
+}
+
+// =============================================================================
+// Network Submenu Modifier
+// Two sections side by side with decorative images at bottom
+// Container: 604px wide, 390px tall
+// Each section: 290px wide, 374px tall
+// Header at top (y=16), content block at y=148 (list + pattern image)
+// Animation: First section drops down, second section slides from left
+// =============================================================================
+
+.bds-submenu--network {
+  // Container dimensions from Figma
+  width: 604px;
+  height: 390px;
+  gap: 0; // No gap - sections handle spacing with pseudo-elements
+  // Container always transparent - sections provide the background via pseudo-elements
+  background-color: transparent;
+
+  // Network doesn't use left/right columns - sections are direct children
+  // Remove flex column direction, use row
+  flex-direction: row;
+
+  // Override column styles - sections are direct children, not in columns
+  .bds-submenu__left,
+  .bds-submenu__right {
+    display: none; // Not used in Network submenu
+  }
+
+  // Section styling - 290px wide, 374px tall
+  // Use box-shadow to create the gray frame that moves with the card
+  .bds-submenu__section {
+    position: relative;
+    flex: none !important;
+    width: 290px;
+    height: 374px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 0; // Control spacing manually
+    background-color: $white !important; // Explicit white background for the card
+    // Use large box-shadow to create the gray frame around the card
+    box-shadow: -8px 0 0 0 $gray-200, 8px 0 0 0 $gray-200, 0 -8px 0 0 $gray-200, 0 8px 0 0 $gray-200,
+                -8px -8px 0 0 $gray-200, 8px -8px 0 0 $gray-200, -8px 8px 0 0 $gray-200, 8px 8px 0 0 $gray-200;
+
+    // First section (Resources) - drops down from top like left column
+    &:nth-child(1) {
+      z-index: 2; // Higher z-index so second section slides from underneath
+      width: 298px; // 290px + 8px to cover gap
+      padding-right: 32px; // 24px + 8px for the gap coverage
+      transform: translateY(-100%);
+      opacity: 0;
+      // On close: slides back up immediately (no delay)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                  opacity 150ms ease-in,
+                  box-shadow 0ms;
+    }
+
+    // Second section (Insights) - slides from left like right column
+    &:nth-child(2) {
+      z-index: 1; // Lower z-index so it slides from underneath the first section
+      transform: translateX(-100%);
+      opacity: 0;
+      // On close: animates first (no delay), slides back left
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                  opacity 150ms ease-in 150ms,
+                  box-shadow 0ms;
+    }
+  }
+
+  // Active state animations for sections
+  &.bds-submenu--active {
+    .bds-submenu__section:nth-child(1) {
+      transform: translateY(0);
+      opacity: 1;
+      // On open: drops down first (no delay)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98),
+                  opacity 150ms ease-out;
+    }
+
+    .bds-submenu__section:nth-child(2) {
+      transform: translateX(0);
+      opacity: 1;
+      // On open: slides out second (delayed by 200ms)
+      transition: transform 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) 200ms,
+                  opacity 150ms ease-out 200ms;
+    }
+  }
+
+  // Closing state animations for sections (diagonal exit for second section)
+  &.bds-submenu--closing {
+    .bds-submenu__section:nth-child(1),
+    .bds-submenu__section:nth-child(2) {
+      box-shadow: none; // Immediately remove gray frame when closing
+    }
+
+    .bds-submenu__section:nth-child(1) {
+      animation: submenu-left-exit-up 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+    }
+
+    .bds-submenu__section:nth-child(2) {
+      animation: submenu-right-exit-diagonal 300ms cubic-bezier(0.98, 0.12, 0.12, 0.98) forwards;
+    }
+  }
+
+  // Tier 1 (header) - positioned at top
+  .bds-submenu__tier1 {
+    flex-shrink: 0;
+  }
+
+  // Network content wrapper - contains list and pattern
+  .bds-submenu__network-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 108px; // Position at y=148 from section top (148 - 16 padding - 24 header area)
+    width: 242px;
+    height: 210px;
+  }
+  
+  // Tier 2 (links list) - 80px height, 4px gap
+  .bds-submenu__tier2 {
+    flex-shrink: 0;
+    height: 80px;
+    margin-top: 0;
+    gap: 4px;
+  }
+  
+  // Pattern container - 242px x 114px, positioned below links with 16px gap
+  .bds-submenu__pattern-container {
+    margin-top: 16px;
+    width: 242px;
+    height: 114px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  // Pattern SVG
+  .bds-submenu__pattern {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// =============================================================================
+// Mobile Menu Styles
+// Full-screen accordion menu for mobile devices
+// =============================================================================
+
+.bds-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $white;
+  z-index: 1002;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 300ms ease-out;
+
+  // Only show on mobile (below tablet breakpoint)
+  @include media-breakpoint-down(sm) {
+    display: flex;
+  }
+
+  // Open state
+  &--open {
+    transform: translateX(0);
+  }
+
+  // Mobile menu header
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 24px;
+    background-color: $white;
+    border-bottom: 1px solid $gray-200;
+    flex-shrink: 0;
+  }
+
+  // Close button (X icon)
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    img, svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Menu content area
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  // Accordion item container
+  &__accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  // Accordion item header (clickable)
+  &__accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 8px;
+    background-color: $white;
+    border: none;
+    border-bottom: 1px solid $gray-300;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.1px;
+    color: $black;
+    text-align: left;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+
+  // Accordion chevron
+  &__chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13px;
+    height: 8px;
+    transition: transform 200ms ease, color 200ms ease;
+    color: $black; // Default: black in light mode (inherited by currentColor in SVG)
+
+    img, svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    // Expanded state - rotate chevron and make green
+    &--expanded {
+      transform: rotate(180deg);
+      color: $green-300;
+    }
+  }
+
+  // Accordion content (collapsible)
+  &__accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease-out;
+    background-color: $white;
+    border-bottom: 1px solid $gray-300;
+
+    // Expanded state
+    &--expanded {
+      max-height: 600px;
+    }
+  }
+
+  // Tier list inside accordion
+  &__tier-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px 8px 16px 8px;
+  }
+
+  // Tier 1 item (main item with icon)
+  &__tier1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  // Tier 2 list (sub-items)
+  &__tier2 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    padding-left: 26px; // Indent for sub-items (icon width + gap)
+  }
+
+  // Mobile icon container (smaller than desktop, SVGs have background colors built in)
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Mobile link item - text span inside parent link
+  // Hover states are controlled by the parent &__parent-link styles
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20.1px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    // Bold style for main items
+    &--bold {
+      font-weight: 500;
+    }
+  }
+
+  // Mobile sub-link item - Child links in mobile menu
+  // Styled according to Figma: Behavior-Links (child)
+  // States: Enabled (black, regular, no arrow) → Hover (green-400, arrow shows) → Active (green-500) → Focused (outline)
+  &__sublink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $black;
+    text-decoration: none;
+    font-family: $font-family-sans-serif;
+    font-size: 14px;
+    font-weight: 300; // Light weight by default
+    line-height: 20.1px;
+    white-space: nowrap;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+
+    // Hover state - green text, arrow appears
+    &:hover {
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Active/Pressed state - darker green
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    // Focus state
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+  }
+
+  // Mobile sublink arrow (chevron, hidden by default, shown on hover)
+  &__sublink-arrow {
+    display: none; // Hidden by default
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 13px;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    // Arrow inherits color from parent link via currentColor
+    svg path {
+      stroke: currentColor;
+    }
+  }
+
+  // Mobile arrow icon (for parent links)
+  &__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 13px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // =============================================================================
+  // Mobile Parent Link Styles (for tier1 items with icons)
+  // Styled according to Figma design: Behavior-Links
+  // States: Enabled (black) → Hover (green-400) → Active/Pressed (green-500) → Focused (outline)
+  // Animation: Internal arrow horizontal line shrinks to chevron on hover
+  // =============================================================================
+  
+  // Animation timing (same as Link component)
+  $bds-mobile-transition-duration: 150ms;
+  $bds-mobile-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+  &__parent-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    
+    // Never show underline
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+    
+    // Enabled state (default)
+    .bds-mobile-menu__link {
+      color: $black;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      .bds-mobile-menu__arrow svg path {
+        stroke: $black;
+        transition: stroke 0.2s ease;
+      }
+      
+      // Internal arrow horizontal line animation setup
+      .bds-mobile-menu__arrow svg .arrow-horizontal {
+        transform-origin: right center;
+        transition: transform $bds-mobile-transition-duration $bds-mobile-transition-timing;
+      }
+    }
+
+    // Hover state - Green text and arrow animates to chevron
+    &:hover {
+      text-decoration: none;
+      
+      .bds-mobile-menu__link {
+        color: $green-400;
+        text-decoration: none;
+        
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-400;
+        }
+        
+        // Animate horizontal line to shrink (show chevron only)
+        .bds-mobile-menu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Active/Pressed state - Darker green text and arrow
+    &:active {
+      text-decoration: none;
+      
+      .bds-mobile-menu__link {
+        color: $green-500;
+        text-decoration: none;
+        
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-500;
+        }
+        
+        .bds-mobile-menu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+
+    // Focus state - Outline around entire link
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $black;
+      outline-offset: 2px;
+      text-decoration: none;
+      
+      .bds-mobile-menu__link {
+        color: $green-400;
+        text-decoration: none;
+        
+        .bds-mobile-menu__arrow svg path {
+          stroke: $green-400;
+        }
+        
+        .bds-mobile-menu__arrow svg .arrow-horizontal {
+          transform: scaleX(0);
+        }
+      }
+    }
+  }
+
+  // Mobile menu footer
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background-color: $white;
+    flex-shrink: 0;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+  }
+
+  // Language wrapper for positioning dropdown in mobile footer
+  &__lang-wrapper {
+    position: relative;
+  }
+
+  // Footer language pill (smaller version)
+  &__lang-pill {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 8px 9px 8px 8px;
+    background: transparent;
+    border: 1px solid $black;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20.1px;
+    color: $black;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+
+  &__lang-pill-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  &__lang-pill-text {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__lang-pill-chevron {
+    width: 8px;
+    height: 13px;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  // When dropdown is open in light mode mobile: green-400 border and icons
+  &__lang-pill--open {
+    border-color: $green-400;
+
+    .bds-mobile-menu__lang-pill-chevron {
+      transform: rotate(-90deg);
+      // CSS filter to convert black to green-400 (#0DAA3E)
+      filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+    }
+
+    .bds-mobile-menu__lang-pill-icon {
+      filter: invert(42%) sepia(93%) saturate(1095%) hue-rotate(108deg) brightness(92%) contrast(93%);
+    }
+  }
+
+  // Footer icon buttons
+  &__footer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    img, svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+// Body scroll lock when mobile menu is open
+body.bds-mobile-menu-open {
+  overflow: hidden;
+}
+
+// Body scroll lock when desktop submenu is open (tablet and desktop only)
+// Uses overflow: hidden on both html and body for cross-browser support
+body.bds-submenu-open {
+  @include media-breakpoint-up(md) {
+    overflow: hidden;
+  }
+}
+
+html:has(body.bds-submenu-open) {
+  @include media-breakpoint-up(md) {
+    overflow: hidden;
+  }
+}
+
+// =============================================================================
+// Light Mode Overrides for Mobile Menu Links
+// Higher specificity to override global html.light a:not(.bds-link) styles
+// =============================================================================
+html.light .bds-mobile-menu {
+  a.bds-mobile-menu__sublink:not(.bds-link) {
+    color: $black;
+    font-weight: 300;
+    text-decoration: none;
+
+    &:visited {
+      color: $black;
+      font-weight: 300;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $green-400;
+      text-decoration: none;
+
+      .bds-mobile-menu__sublink-arrow {
+        display: inline-flex;
+      }
+    }
+
+    &:active {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
+
+  a.bds-mobile-menu__parent-link:not(.bds-link) {
+    text-decoration: none;
+
+    &:visited,
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    .bds-mobile-menu__link {
+      color: $black;
+      text-decoration: none;
+    }
+
+    &:hover .bds-mobile-menu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+
+    &:active .bds-mobile-menu__link {
+      color: $green-500;
+      text-decoration: none;
+    }
+
+    &:focus-visible .bds-mobile-menu__link {
+      color: $green-400;
+      text-decoration: none;
+    }
+  }
+}
+
+// =============================================================================
+// Language Dropdown Component
+// =============================================================================
+
+.bds-lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1000;
+
+  // Base styles
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 18px;
+  min-width: 120px;
+
+  // Light mode (default): white bg, black border
+  background-color: $white;
+  border: 1.3px solid $black;
+
+  // Animation
+  animation: bds-dropdown-fade-in 0.2s ease;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 8px 13px 8px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23.2px;
+    text-align: left;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    // Light mode (default): black text
+    color: $black;
+
+    // Light mode hover: green-100 bg
+    &:hover {
+      background-color: $green-100;
+    }
+
+    // Light mode pressed/active
+    &:active {
+      background-color: $green-200;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $green-400;
+      outline-offset: -2px;
+    }
+
+    // Active/selected language - green-400 text in light mode
+    &--active {
+      color: $green-400;
+    }
+  }
+}
+
+// Dark mode styles for language dropdown
+html.dark .bds-lang-dropdown {
+  background-color: $black;
+  border-color: $white;
+
+  .bds-lang-dropdown__item {
+    color: $white;
+
+    // Dark mode hover: green-200 bg, black text
+    &:hover {
+      background-color: $green-200;
+      color: $black;
+    }
+
+    // Dark mode pressed: green-300 bg, black text
+    &:active {
+      background-color: $green-300;
+      color: $black;
+    }
+
+    &:focus-visible {
+      outline-color: $green-300;
+    }
+
+    // Active/selected language in dark mode - green-300 text
+    &--active {
+      color: $green-300;
+
+      // Active item hover in dark mode
+      &:hover {
+        background-color: $green-200;
+        color: $black;
+      }
+
+      // Active item pressed in dark mode
+      &:active {
+        background-color: $green-300;
+        color: $black;
+      }
+    }
+  }
+}
+
+@keyframes bds-dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile-specific dropdown positioning (opens upward from footer)
+.bds-lang-dropdown--mobile {
+  top: auto;
+  bottom: calc(100% + 8px);
+  animation: bds-dropdown-fade-in-mobile 0.2s ease;
+}
+
+@keyframes bds-dropdown-fade-in-mobile {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
