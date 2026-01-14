@@ -1,9 +1,7 @@
 ---
-html: private-network-with-docker.html
 name: Run a Private Network with Docker
-parent: use-stand-alone-mode.html
 seo:
-    description: Learn how to set up your own XRP private ledger network with Docker and Docker Compose.
+  description: Learn how to set up your own XRP private ledger network with Docker and Docker Compose.
 labels:
   - Core Server
 ---
@@ -261,17 +259,25 @@ For each validator node, follow these steps:
 
 Now that you have created the configuration files for your validators, you need to add a `validator.txt` file. This file defines which validators are trusted by your network.
 
-For each node, follow these steps:
+Follow these steps to add validator configuration files to each validator:
 
-1. Create a `validators.txt` file in the configuration directory.
+1. Create a `validators.txt` file.
 2. Copy the public keys from the `validator-keys.json` files that you generated at the [beginning](#generate-the-validator-keys) of the tutorial.
 3. Add the public keys of _all_ the validators. For example:
 
     ```
     [validators]
-        nHBgaEDL8buUECuk4Rck4QBYtmUgbAoeYJLpWLzG9iXsznTRYrQu
-        nHBCHX7iLDTyap3LumqBNuKgG7JLA5tc6MSJxpLs3gjkwpu836mY
-        nHU5STUKTgWdreVqJDx6TopLUymzRUZshTSGcWNtjfByJkYdiiRc
+    nHBgaEDL8buUECuk4Rck4QBYtmUgbAoeYJLpWLzG9iXsznTRYrQu
+    nHBCHX7iLDTyap3LumqBNuKgG7JLA5tc6MSJxpLs3gjkwpu836mY
+    nHU5STUKTgWdreVqJDx6TopLUymzRUZshTSGcWNtjfByJkYdiiRc
+    ```
+
+4. Copy the same `validators.txt` file into the `config` directory for _each_ validator.
+
+    ```sh
+    cp validators.txt validator_1/config/
+    cp validators.txt validator_2/config/
+    cp validators.txt validator_3/config/
     ```
 
 ## Start the Network
@@ -285,7 +291,6 @@ To start running your private network, follow these steps:
 1. Create a `docker-compose.yml` file in the root of the private network directory, `xrpl-private-network`, and add the following content:
 
     ```
-    version: "3.9"
     services:
       validator_1:
         platform: linux/amd64
@@ -338,9 +343,15 @@ To start running your private network, follow these steps:
 
 Now that the private ledger network is up, you need to verify that **each** validator node is running as expected:
 
-1. In your terminal, run `docker exec -it <validator_name> bin/bash` to execute commands in the validator Docker container. Replace `<validator_name>` with the name of the container (e.g., `validator_1`).
+1. Open a terminal in the validator_1 container:
 
-2. Run the `rippled server_info` command to check the state of the validator:
+   ```
+   docker exec -it validator_1 bin/bash
+   ```
+
+   {% admonition type="success" name="Tip" %}You can use the same syntax to execute commands in the other Docker containers. Replace `bin/bash` with the command to run and `validator_1` with the name of the container.{% /admonition %}
+
+3. Run the `rippled server_info` command to check the state of the validator:
 
     ```
     rippled server_info | grep server_state
@@ -354,7 +365,7 @@ Now that the private ledger network is up, you need to verify that **each** vali
 
     {% admonition type="info" name="Note" %}If the state is not updated to **proposing**, repeat step **2** after a few minutes as the ledger can take some time to update.{% /admonition %}
 
-3. Verify the number of peers connected to the validator.
+4. Verify the number of peers connected to the validator.
 
     ```
     rippled server_info | grep peers
@@ -366,10 +377,10 @@ Now that the private ledger network is up, you need to verify that **each** vali
     "peers" : 2
     ```
 
-4. Run the following command to check the genesis account information:
+5. Run the following command to check the genesis account information:
 
     ```
-    rippled account_info rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh validated strict
+    rippled account_info rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh validated
     ```
 
     Sample Output:
@@ -396,7 +407,9 @@ Now that the private ledger network is up, you need to verify that **each** vali
     }
     ```
 
-5. To leave the Docker container shell, enter `exit` in the terminal.
+    If the ledger does not have `"validated": true`, double check that you put matching `validators.txt` files with all three public keys in each container's config directory, and restart the container if you need to make changes.
+
+6. To leave the Docker container shell, enter `exit` in the terminal.
 
 ### Perform a test transaction
 
@@ -439,7 +452,7 @@ Perform a **test** transaction to ensure you can send money to an account.
 
     ```
     docker exec -it validator_1 \
-        rippled account_info r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs validated strict
+        rippled account_info r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs validated
     ```
 
     Sample Output:
