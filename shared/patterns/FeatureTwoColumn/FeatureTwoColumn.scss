@@ -152,16 +152,18 @@ $bds-feature-mobile-content-gap: 24px;
     }
   }
 
-  // Content with multiple links - no gap, space-between handles distribution
+  // Content with multiple links
+  // Mobile/tablet: use explicit gaps (32px from Figma tablet design)
+  // Desktop: no gap, space-between handles distribution
   &__content--multiple {
-    gap: 0;
+    gap: $bds-feature-tablet-content-gap; // 32px for mobile
 
     @include media-breakpoint-up(md) {
-      gap: 0;
+      gap: $bds-feature-tablet-content-gap; // 32px for tablet
     }
 
     @include media-breakpoint-up(lg) {
-      gap: 0;
+      gap: 0; // Desktop uses space-between
     }
 
     // Secondary button should not stretch - keep intrinsic width
