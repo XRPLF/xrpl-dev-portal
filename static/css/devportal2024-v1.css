@@ -11247,6 +11247,21 @@ aside .active-parent > a {
   margin-top: 0;
 }
 
+/**
+ * Theme mode mixin
+ * 
+ * Applies styles conditionally based on the theme mode (light or dark).
+ * SCSS doesn't support type constraints in parameter declarations, so we use
+ * runtime validation with @if/@error to ensure only valid values are accepted.
+ * 
+ * @param {string} $mode - Theme mode: "dark" or "light" (default: "dark")
+ * @throws Error if $mode is not "dark" or "light"
+ * 
+ * @example
+ *   @include theme-mode(light) {
+ *     background-color: white;
+ *   }
+ */
 /* HEIGHT AND WIDTH HELPERS */
 .h32 {
   height: 32px;
@@ -19180,6 +19195,9 @@ html.light .bds-card-icon--neutral .bds-card-icon__arrow {
 html.light .bds-card-icon--neutral .bds-card-icon__overlay {
   background-color: #CAD4DF;
 }
+html.light .bds-card-icon--neutral:focus {
+  background-color: #E6EAF0 !important;
+}
 html.light .bds-card-icon--neutral:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
   background-color: #8A919A;
   clip-path: inset(0 0 0 0);
@@ -19193,6 +19211,9 @@ html.light .bds-card-icon--green .bds-card-icon__arrow {
 }
 html.light .bds-card-icon--green .bds-card-icon__overlay {
   background-color: #21E46B;
+}
+html.light .bds-card-icon--green:focus {
+  background-color: #70EE97 !important;
 }
 html.light .bds-card-icon--green:active:not(.bds-card-icon--disabled) .bds-card-icon__overlay {
   background-color: #0DAA3E;
@@ -19220,6 +19241,58 @@ html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__arrow {
 }
 html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-img {
   opacity: 0.5;
+}
+
+.bds-small-tiles-section__headline {
+  margin-bottom: 8px;
+}
+@media (min-width: 992px) {
+  .bds-small-tiles-section__headline {
+    margin-bottom: 16px;
+  }
+}
+.bds-small-tiles-section__cards-grid-wrapper {
+  margin-top: 24px;
+}
+@media (min-width: 576px) {
+  .bds-small-tiles-section__cards-grid-wrapper {
+    margin-top: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-small-tiles-section__cards-grid-wrapper {
+    margin-top: 40px;
+  }
+}
+.bds-small-tiles-section__cards-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  grid-auto-flow: row;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+@media (min-width: 576px) {
+  .bds-small-tiles-section__cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .bds-small-tiles-section__cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .bds-small-tiles-section__cards-grid.__needs-spacer {
+    grid-template-columns: repeat(2, 1fr);
+    direction: rtl;
+  }
+}
+.bds-small-tiles-section__cards-grid__card {
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 
 .bds-hero-split-media {

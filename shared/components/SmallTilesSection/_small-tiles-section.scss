@@ -1,0 +1,66 @@
+$bds-grid-gutter: 8px;
+
+.bds-small-tiles-section {
+
+    &__headline {
+        margin-bottom: 8px;
+
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__cards-grid-wrapper {
+        margin-top: 24px;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 32px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-top: 40px;
+        }
+    }
+
+    &__cards-grid {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $bds-grid-gutter;
+        grid-auto-flow: row;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        // When card count is <= 8 (needs spacer), use 2-column centered layout
+        // with right-to-left flow to align cards from right to left visually
+        // while maintaining left-to-right text direction within each card
+        &.__needs-spacer {
+            @include media-breakpoint-up(lg) {
+                grid-template-columns: repeat(2, 1fr);
+                // Use RTL direction to reverse grid item order (visual design requirement)
+                // This only affects the grid layout flow, not text content (see &__card below)
+                // Note: If the site adds RTL language support (Arabic/Hebrew), this may need
+                // to be made language-aware using CSS :lang() selector or JS
+                direction: rtl;
+            }
+        }
+
+        &__card {
+            // Reset direction to LTR for card content to ensure proper text rendering
+            // This prevents the RTL direction from affecting icons, labels, or any content
+            // inside individual cards, even if user's browser/system has RTL preferences
+            direction: ltr;
+            unicode-bidi: isolate;
+        }
+    }
+
+}

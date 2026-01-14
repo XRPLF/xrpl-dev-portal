@@ -1,3 +1,31 @@
+/**
+ * Theme mode mixin
+ * 
+ * Applies styles conditionally based on the theme mode (light or dark).
+ * SCSS doesn't support type constraints in parameter declarations, so we use
+ * runtime validation with @if/@error to ensure only valid values are accepted.
+ * 
+ * @param {string} $mode - Theme mode: "dark" or "light" (default: "dark")
+ * @throws Error if $mode is not "dark" or "light"
+ * 
+ * @example
+ *   @include theme-mode(light) {
+ *     background-color: white;
+ *   }
+ */
+ @mixin bds-theme-mode($mode: "dark") {
+  @if $mode != "dark" and $mode != "light" {
+      @error "Invalid theme mode: #{$mode}. Must be either 'dark' or 'light'.";
+  }
+
+  html.#{$mode} & {
+      @content;
+  }
+}
+
+
+
+
 /* HEIGHT AND WIDTH HELPERS */
 .h32 {
   height: 32px;
