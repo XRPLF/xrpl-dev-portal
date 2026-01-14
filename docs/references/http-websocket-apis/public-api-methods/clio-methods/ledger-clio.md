@@ -69,7 +69,7 @@ An example of a successful response:
 {% /tab %}
 
 {% tab label="JSON-RPC (with diff)" %}
-{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-diff-response.json" language="json" /%}
+{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-diff-response.json" language="json" prefix="200 OK\n\n" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -84,6 +84,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger.close_flags`           | Integer | A bit-map of [flags relating to the closing of this ledger](../../../protocol/ledger-data/ledger-header.md#close-flags). |
 | `ledger.close_time`            | Integer | The time this ledger was closed, in [seconds since the Ripple Epoch][]. |
 | `ledger.close_time_human`      | String  | The time this ledger was closed, in human-readable format. Always uses the UTC time zone. |
+| `ledger.close_time_iso`        | String  | The time this ledger was closed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. |
 | `ledger.close_time_resolution` | Integer | Ledger close times are rounded to within this many seconds. |
 | `ledger.closed`                | Boolean | Whether or not this ledger has been closed. |
 | `ledger.ledger_hash`           | String  | Unique identifying hash of the entire ledger. |

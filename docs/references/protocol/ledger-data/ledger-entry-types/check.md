@@ -44,7 +44,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `DestinationTag`    | Number           | UInt32            | No        | An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address. |
 | `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Check is considered expired. See [Specifying Time][] for details. |
 | `InvoiceID`         | String           | UInt256           | No        | Arbitrary 256-bit hash provided by the sender as a specific reason or identifier for this Check. |
-| `LedgerEntryType`   | String           | UInt16            | Yes       | The value `0x0043`, mapped to the string `Check`, indicates that this object is a Check object. |
 | `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String           | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
@@ -64,7 +63,7 @@ There are no flags defined for {% code-page-name /%} entries.
 
 
 ## Check ID Format
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/70d5c624e8cf732a362335642b2f5125ce4b43c1/src/libxrpl/protocol/Indexes.cpp#L335-L339 "Source")
 
 The ID of a `Check` entry is the [SHA-512Half][] of the following values, concatenated in order:
 

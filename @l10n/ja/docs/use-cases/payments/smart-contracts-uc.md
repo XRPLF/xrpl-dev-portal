@@ -37,7 +37,7 @@ XRP Ledger上のスマートコントラクトは、条件付きで保有する�
 
 オラクルのプログラムが条件を満たしたことを検知した後、エスクローの受取人にfulfillmentの16進数値を渡します。この時点以降、オラクルはエスクローを終了させるなど、何も行いません。エスクローの受取人は、ほとんどの場合、エスクローを終了することになります。
 
-[conditionとfulfillmentの生成](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md#1-generate-condition-and-fulfillment)をご覧ください。
+[条件に基づくEscrowの送信](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditional-escrow.md)をご覧ください。
 
 ## 例
 

@@ -1,17 +1,15 @@
 ---
-html: unsubscribe.html
-parent: subscription-methods.html
 seo:
     description: Stop listening for updates about a particular subject.
 labels:
-  - Payments
-  - Blockchain
-  - Accounts
-  - Smart Contracts
+    - Payments
+    - Blockchain
+    - Accounts
+    - Smart Contracts
 ---
 # unsubscribe
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Unsubscribe.cpp "Source")
 
 The `unsubscribe` command tells the server to stop sending messages for a particular subscription or set of subscriptions.
 

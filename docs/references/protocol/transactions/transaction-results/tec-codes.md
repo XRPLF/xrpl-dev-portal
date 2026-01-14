@@ -7,7 +7,7 @@ labels:
   - Transaction Sending
 ---
 # tec Codes
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TER.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/libxrpl/protocol/TER.cpp "Source")
 
 These codes indicate that the transaction did not succeed, but it was applied to a ledger to apply the [transaction cost](../../../../concepts/transactions/transaction-cost.md) and may have had other side effects to the ledger. The `tec` codes have numerical values in the range 100 to 199. It is recommended to use the text code, not the numeric value.
 
@@ -27,7 +27,7 @@ A transaction that fails with a `tec` code destroys the XRP paid as a [transacti
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | 157 | The transaction tried to accept an offer that was placed by the same account to buy or sell a [non-fungible token](../../../../concepts/tokens/nfts/index.md). {% amendment-disclaimer name="NonFungibleTokensV1_1" /%} |
 | `tecCLAIM`                 | 100   | Unspecified failure, with transaction cost destroyed. |
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
-| `tecDIR_FULL`              | 121   | The transaction tried to add an object (such as a trust line, Check, Escrow, or Payment Channel) to an account's owner directory, but that account cannot own any more objects in the ledger. |
+| `tecDIR_FULL`              | 121   | The transaction tried to add an object (such as a trust line, Check, Escrow, or Payment Channel) to an account's owner directory, but that account cannot own any more objects in the ledger.<br>This error is effectively impossible to receive if {% amendment-disclaimer name="fixDirectoryLimit" compact=true /%} is enabled. |
 | `tecDUPLICATE`             | 149   | The transaction tried to create an object (such as a [DepositPreauth][] authorization) that already exists. |
 | `tecDST_TAG_NEEDED`        | 143   | The [Payment transaction][] omitted a [destination tag](../../../../concepts/transactions/source-and-destination-tags.md), but the destination account has the `lsfRequireDestTag` flag enabled. |
 | `tecEMPTY_DID`             | 187   | The transaction tried to create a [DID entry][] with no contents. A DID must not be empty. {% amendment-disclaimer name="DID" /%} |

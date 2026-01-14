@@ -80,8 +80,9 @@
         "description": "Retrieves a list of transactions that affected the specified account.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
         "body": {
+          "id": "example_account_tx",
           "command": "account_tx",
-          "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+          "account": "rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w",
           "ledger_index_min": -1,
           "ledger_index_max": -1,
           "binary": false,
@@ -128,6 +129,7 @@
         "description": "Retrieves information about the public ledger.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger",
         "body": {
+          "id": "example_ledger_req",
           "command": "ledger",
           "ledger_index": "validated",
           "transactions": false,
@@ -157,10 +159,11 @@
         "description": "Retrieves contents of the specified ledger.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data",
         "body": {
-          "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
+          "id": "example_ledger_data",
           "command": "ledger_data",
+          "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",          
           "limit": 5,
-          "binary": true
+          "api_version": 2
         }
       },
       {
@@ -247,9 +250,10 @@
         "description": "Retrieves information on a single transaction from a specific ledger version.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry",
         "body": {
+          "id": "example_transaction_entry",
           "command": "transaction_entry",
-          "tx_hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
-          "ledger_index": 348734,
+          "tx_hash": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
+          "ledger_index": 56865245,
           "api_version": 2
         }
       },
@@ -258,8 +262,9 @@
         "description": "Retrieves information on a single transaction.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx",
         "body": {
+          "id": "example_tx_hash",
           "command": "tx",
-          "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
+          "transaction": "C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9",
           "binary": false,
           "api_version": 2
         }
@@ -420,7 +425,7 @@
         "body": {
           "id": "example_mpt_holders",
           "command": "mpt_holders",
-          "mpt_issuance_id": "0024D204E07DDDFBCD83B1649C07FE27FD536A3A32E6FDD8",
+          "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
           "ledger_index": "validated"
         }
       }
@@ -801,6 +806,30 @@
             "ticket_seq": 389
           },
           "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - MPTokenIssuance",
+        "description": "Returns an MPTokenIssuance object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-mpt-issuance-entry",
+        "body": {
+          "id": "example_get_mpt_issuance",
+          "command": "ledger_entry",
+          "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - MPToken",
+        "description": "Returns an MPToken object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-mptoken-entry",
+        "body": {
+          "id": "example_get_mpt",
+          "command": "ledger_entry",
+          "mptoken": {
+            "mpt_issuance_id": "05EECEBE97A7D635DE2393068691A015FED5A89AD203F5AA",
+            "account":"rsNw23ygZatXv7h8QVSgAE4jktY2uW1iZP"
+          }
         }
       }
     ]

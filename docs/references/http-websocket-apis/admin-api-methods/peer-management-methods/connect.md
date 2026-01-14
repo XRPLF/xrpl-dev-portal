@@ -1,15 +1,13 @@
 ---
-html: connect.html
-parent: peer-management-methods.html
 seo:
     description: Force the rippled server to connect to a specific peer.
 labels:
-  - Core Server
+    - Core Server
 ---
 # connect
-[[Source]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Connect.cpp "Source")
 
-The `connect` command forces the `rippled` server to connect to a specific peer `rippled` server.
+The `connect` command forces the `rippled` server to connect to a specific peer server.
 
 *The `connect` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
 

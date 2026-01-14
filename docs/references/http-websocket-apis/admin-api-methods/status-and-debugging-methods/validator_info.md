@@ -1,14 +1,12 @@
 ---
-html: validator_info.html
-parent: status-and-debugging-methods.html
 seo:
     description: Get the server's validation settings, if configured as a validator.
 labels:
-  - コアサーバ
-  - ブロックチェーン
+    - Core Server
+    - Blockchain
 ---
 # validator_info
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ValidatorInfo.cpp "Source")
 
 The {% code-page-name /%} method returns the current validator settings of the server, if it is configured as a validator.
 

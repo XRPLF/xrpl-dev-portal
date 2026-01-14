@@ -1,13 +1,11 @@
 ---
-html: peer_reservations_del.html
-parent: peer-management-methods.html
 seo:
     description: Remove a reserved slot for a specific peer server.
 labels:
-  - Core Server
+    - Core Server
 ---
 # peer_reservations_del
-[[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/Reservations.cpp "Source")
 
 The {% code-page-name /%} method removes a specific [peer reservation][], if one exists.
 
@@ -83,13 +81,13 @@ An example of a successful response:
 {% tab label="JSON-RPC" %}
 ```json
 {
-   "result" : {
-      "previous" : {
-         "description" : "Ripple s1 server 'WOOL'",
-         "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
-      },
-      "status" : "success"
-   }
+  "result" : {
+    "previous" : {
+        "description" : "Ripple s1 server 'WOOL'",
+        "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+    },
+    "status" : "success"
+  }
 }
 ```
 {% /tab %}
@@ -100,13 +98,13 @@ Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
 
 {
-   "result" : {
-      "previous" : {
-         "description" : "Ripple s1 server 'WOOL'",
-         "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
-      },
-      "status" : "success"
-   }
+  "result" : {
+    "previous" : {
+        "description" : "Ripple s1 server 'WOOL'",
+        "node" : "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
+    },
+    "status" : "success"
+  }
 }
 ```
 {% /tab %}

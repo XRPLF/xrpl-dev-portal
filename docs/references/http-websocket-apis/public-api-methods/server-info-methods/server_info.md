@@ -1,13 +1,11 @@
 ---
-html: server_info.html
-parent: server-info-methods.html
 seo:
     description: Retrieve status of the server in human-readable format.
 labels:
-  - Core Server
+    - Core Server
 ---
 # server_info (rippled)
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/ServerInfo.cpp "Source")
 
 The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](../../../../concepts/networks-and-servers/index.md) being queried. For [Clio servers](../../../../concepts/networks-and-servers/the-clio-server.md), see [`server_info` (Clio)](../clio-methods/server_info-clio.md) instead.
 

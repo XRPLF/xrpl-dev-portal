@@ -1,14 +1,12 @@
 ---
-html: ripple_path_find.html
-parent: path-and-order-book-methods.html
 seo:
     description: Find a path for payment between two accounts, once.
 labels:
-  - Cross-Currency
-  - Tokens
+    - Cross-Currency
+    - Tokens
 ---
 # ripple_path_find
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/RipplePathFind.cpp "Source")
 
 The `ripple_path_find` method is a simplified version of the [path_find method][] that provides a single response with a [payment path](../../../../concepts/tokens/fungible-tokens/paths.md) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should instead use the [path_find method][] to subscribe to continued updates where possible.
 

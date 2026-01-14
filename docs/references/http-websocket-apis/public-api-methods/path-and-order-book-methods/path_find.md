@@ -1,16 +1,18 @@
 ---
-html: path_find.html
-parent: path-and-order-book-methods.html
 seo:
     description: Find a path for a payment between two accounts and receive updates.
 labels:
-  - Cross-Currency
-  - Tokens
+    - Cross-Currency
+    - Tokens
 ---
 # path_find
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/PathFind.cpp "Source")
 
-*WebSocket API only!* The `path_find` method searches for a [path](../../../../concepts/tokens/fungible-tokens/paths.md) along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see the [ripple_path_find method][]. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.
+{% admonition type="warning" name="Caution" %}
+WebSocket API only!
+{% /admonition %}
+
+The `path_find` method searches for a [path](../../../../concepts/tokens/fungible-tokens/paths.md) along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see the [ripple_path_find method][]. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.
 
 There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the `subcommand` parameter:
 
@@ -21,7 +23,6 @@ There are three different modes, or sub-commands, of the path_find command. Spec
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (**Note:** A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)
 
 ## path_find create
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56 "Source")
 
 The `create` sub-command of `path_find` creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with `"type": "path_find"`, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.
 
@@ -62,9 +63,8 @@ The request includes the following parameters:
 | `destination_account` | String - [Address][] | Yes       | The account to find a path to. (In other words, the account that would receive a payment.) |
 | `destination_amount`  | [Currency Amount][]  | Yes       | How much the destination account would receive. **Special case:** You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for tokens). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
 | `domain`              | String - [Hash][]    | No        | The ledger entry ID of a permissioned domain. If provided, only return paths that use the corresponding [permissioned DEX](../../../../concepts/tokens/decentralized-exchange/permissioned-dexes.md). {% amendment-disclaimer name="PermissionedDEX" /%} |
-| `paths`               | Array                | No        | Array of arrays of objects, representing [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to check. 
-| `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Not compatible with `source_currencies`. |
-You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+| `paths`               | Array                | No        | Array of arrays of objects, representing [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+| `send_max`            | [Currency Amount][]  | No        | Maximum amount that would be spent. Not compatible with `source_currencies`.  |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
@@ -75,392 +75,28 @@ An example of a successful response:
 {% tabs %}
 
 {% tab label="WebSocket" %}
-```json
-{
-  "id": 1,
-  "status": "success",
-  "type": "response",
-  "result": {
-    "alternatives": [
-      {
-        "paths_computed": [
-          [
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "currency": "USD",
-              "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "currency": "USD",
-              "issuer": "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "currency": "USD",
-              "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ]
-        ],
-        "source_amount": "251686"
-      },
-      {
-        "paths_computed": [
-          [
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ]
-        ],
-        "source_amount": {
-          "currency": "BTC",
-          "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-          "value": "0.000001541291269274307"
-        }
-      },
-      {
-        "paths_computed": [
-          [
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ]
-        ],
-        "source_amount": {
-          "currency": "CHF",
-          "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-          "value": "0.0009211546262510451"
-        }
-      },
-      {
-        "paths_computed": [
-          [
-            {
-              "account": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "account": "razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ]
-        ],
-        "source_amount": {
-          "currency": "CNY",
-          "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-          "value": "0.006293562"
-        }
-      },
-      {
-        "paths_computed": [
-          [
-            {
-              "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "account": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ]
-        ],
-        "source_amount": {
-          "currency": "DYM",
-          "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-          "value": "0.0007157142857142858"
-        }
-      },
-      {
-        "paths_computed": [
-          [
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ],
-          [
-            {
-              "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ]
-        ],
-        "source_amount": {
-          "currency": "EUR",
-          "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-          "value": "0.0007409623616236163"
-        }
-      },
-      {
-        "paths_computed": [
-          [
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            },
-            {
-              "currency": "USD",
-              "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 48,
-              "type_hex": "0000000000000030"
-            },
-            {
-              "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-              "type": 1,
-              "type_hex": "0000000000000001"
-            }
-          ]
-        ],
-        "source_amount": {
-          "currency": "JPY",
-          "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-          "value": "0.103412412"
-        }
-      }
-    ],
-    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "destination_amount": {
-      "currency": "USD",
-      "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-      "value": "0.001"
-    },
-    "id": 1,
-    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "full_reply": false
-  }
-}
-```
+{% code-snippet file="/_api-examples/path_find/create-response.json" /%}
 {% /tab %}
 
 {% /tabs %}
 
 The initial response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
-| Field                 | Type             | Description                       |
-|:----------------------|:-----------------|:----------------------------------|
-| `alternatives`        | Array            | Array of objects with suggested [paths](../../../../concepts/tokens/fungible-tokens/paths.md) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
-| `destination_account` | String           | Unique address of the account that would receive a transaction. |
-| `destination_amount`  | String or Object | [Currency Amount][] that the destination would receive in a transaction. |
-| `source_account`      | String           | Unique address that would send a transaction. |
-| `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. |
+| Field                 | Type                 | Description                       |
+|:----------------------|:---------------------|:----------------------------------|
+| `alternatives`        | Array                | Array of objects with suggested [paths](../../../../concepts/tokens/fungible-tokens/paths.md) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
+| `destination_account` | String - [Address][] | The account that would receive a transaction. |
+| `destination_amount`  | [Currency Amount][]  | How much the destination would receive in a transaction. |
+| `source_account`      | String - [Address][] | The account that would send a transaction. |
+| `full_reply`          | Boolean              | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
-| Field                | Type             | Description                            |
-|:---------------------|:-----------------|:---------------------------------------|
-| `paths_computed`     | Array            | Array of arrays of objects defining [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) |
-| `source_amount`      | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount. |
-| `destination_amount` | String or Object | _(May be omitted)_ [Currency Amount][] that the destination would receive along this path. Only included if the `destination_amount` from the request was the "-1" special case. |
+| Field                | Type                | Description                            |
+|:---------------------|:--------------------|:---------------------------------------|
+| `paths_computed`     | Array               | Array of arrays of objects defining [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) |
+| `source_amount`      | [Currency Amount][] | How much the source would have to send along this path for the destination to receive the desired amount. |
+| `destination_amount` | [Currency Amount][] | _(May be omitted)_ How much the destination would receive along this path. Only included if the `destination_amount` from the request was the "-1" special case. |
 
 ### Possible Errors
 
@@ -479,28 +115,12 @@ Here is an example of an asynchronous follow-up from a path_find create request:
 {% tabs %}
 
 {% tab label="WebSocket" %}
-```json
-{
-    "id": 1,
-    "type": "path_find",
-    "alternatives": [
-        /* paths omitted from this example; same format as the initial response */
-    ],
-    "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-    "destination_amount": {
-        "currency": "USD",
-        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-        "value": "0.001"
-    },
-    "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-}
-```
+{% code-snippet file="/_api-examples/path_find/create-followup.json" /%}
 {% /tab %}
 
 {% /tabs %}
 
 ## path_find close
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67 "Source")
 
 The `close` sub-command of `path_find` instructs the server to stop sending information about the current open pathfinding request.
 
@@ -545,7 +165,6 @@ If there was no outstanding pathfinding request, an error is returned instead.
 * `noPathRequest` - You tried to close a pathfinding request when there is not an open one.
 
 ## path_find status
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77 "Source")
 
 The `status` sub-command of `path_find` requests an immediate update about the client's currently-open pathfinding request.
 

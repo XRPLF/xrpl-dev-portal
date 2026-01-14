@@ -1,6 +1,6 @@
 // @ts-check
 
-import { getInnerText } from '@redocly/realm/dist/shared/markdoc.js';
+import { getInnerText } from '@redocly/realm/dist/server/plugins/markdown/markdoc/helpers/get-inner-text.js';
 
 import { dirname, relative, join as joinPath } from 'path';
 import markdoc from '@markdoc/markdoc';
@@ -47,6 +47,7 @@ export function blogPosts() {
         actions.createSharedData('blog-posts', { blogPosts: sortedPosts });
         actions.addRouteSharedData('/blog/', 'blog-posts', 'blog-posts');
         actions.addRouteSharedData('/ja/blog/', 'blog-posts', 'blog-posts');
+        actions.addRouteSharedData('/es-es/blog/', 'blog-posts', 'blog-posts');
       } catch (e) {
         console.log(e);
       }

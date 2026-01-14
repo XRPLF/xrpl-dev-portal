@@ -1,6 +1,6 @@
 // @ts-check
 
-import { getInnerText } from '@redocly/realm/dist/shared/markdoc.js';
+import { getInnerText } from '@redocly/realm/dist/server/plugins/markdown/markdoc/helpers/get-inner-text.js';
 
 import { dirname, relative, join as joinPath } from 'path';
 
@@ -44,6 +44,7 @@ export function codeSamples() {
         });
         actions.addRouteSharedData('/resources/code-samples/', 'code-samples', 'code-samples');
         actions.addRouteSharedData('/ja/resources/code-samples/', 'code-samples', 'code-samples');
+        actions.addRouteSharedData('/es-es/resources/code-samples/', 'code-samples', 'code-samples');
       } catch (e) {
         console.log(e);
       }

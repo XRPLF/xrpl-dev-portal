@@ -62,7 +62,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `Account`           | String            | Account           | Yes       | The account that granted the preauthorization. (The destination of the preauthorized payments.) |
 | `Authorize`         | String            | Account           | No        | The account that received the preauthorization. (The sender of the preauthorized payments.) |
 | `AuthorizeCredentials` | Array          | Array             | No        | The set of credentials that received preauthorization. (Any account with these credentials is preauthorized.) This array has a minimum length of 1 and a maximum length of 8 credentials. |
-| `LedgerEntryType`   | String            | UInt16            | Yes       | The value `0x0070`, mapped to the string `DepositPreauth`, indicates that this is a DepositPreauth object. |
 | `OwnerNode`         | String            | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. **Note:** The object does not contain a direct link to the owner directory containing it, since that value can be derived from the `Account`. |
 | `PreviousTxnID`     | String - [Hash][] | UInt256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number            | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
