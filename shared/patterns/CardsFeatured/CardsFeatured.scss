@@ -121,7 +121,7 @@ $bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
   @include media-breakpoint-up(md) {
     grid-template-columns: repeat(2, 1fr);
     column-gap: $bds-cards-featured-cards-gap-md;
-    row-gap: 53px;
+    row-gap: 52px;
     margin-top: $bds-cards-featured-section-gap-md;
   }
 

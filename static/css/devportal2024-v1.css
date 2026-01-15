@@ -19658,7 +19658,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
   .bds-cards-featured__cards {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 8px;
-    row-gap: 53px;
+    row-gap: 52px;
     margin-top: 32px;
   }
 }
