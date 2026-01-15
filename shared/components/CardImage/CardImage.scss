@@ -32,20 +32,20 @@ $bds-card-image-height-sm: 536px;
 $bds-card-image-image-height-sm: 268px;
 
 // Spacing - LG (Large) variant (default, ≥992px)
-$bds-card-image-gap-lg: 24px;              // Gap between image and title
+$bds-card-image-gap-lg: 24px;              // Gap between image and content
 $bds-card-image-title-gap-lg: 12px;        // Gap between title and subtitle
 $bds-card-image-content-padding: 8px;      // Horizontal padding for content (same for all)
-$bds-card-image-button-margin-lg: 30px;    // Margin above button
+$bds-card-image-button-margin-lg: 32px;    // Margin above button
 
 // Spacing - MD (Medium) variant (576px - 991px)
-$bds-card-image-gap-md: 20px;              // Gap between image and title
+$bds-card-image-gap-md: 16px;              // Gap between image and content
 $bds-card-image-title-gap-md: 8px;         // Gap between title and subtitle
-$bds-card-image-button-margin-md: 34px;    // Margin above button
+$bds-card-image-button-margin-md: 24px;    // Margin above button
 
 // Spacing - SM (Small) variant (<576px)
-$bds-card-image-gap-sm: 16px;              // Gap between image and title
-$bds-card-image-title-gap-sm: 4px;         // Gap between title and subtitle
-$bds-card-image-button-margin-sm: 35px;    // Margin above button
+$bds-card-image-gap-sm: 16px;              // Gap between image and content
+$bds-card-image-title-gap-sm: 8px;         // Gap between title and subtitle
+$bds-card-image-button-margin-sm: 24px;    // Margin above button
 
 // Colors
 $bds-card-image-bg: $white;
@@ -66,9 +66,7 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   flex-direction: column;
   gap: $bds-card-image-gap-lg; // Gap between image container and content
   width: 100%; // Fill available width (4-column span on LG+)
-  height: $bds-card-image-height-lg;
   background-color: $bds-card-image-bg;
-  overflow: hidden;
   cursor: pointer;
 
   // When inside a grid column, fill the column width
@@ -124,8 +122,21 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 // Full Bleed Modifier
 // =============================================================================
 // When fullBleed is true, image fills entire container with object-fit: cover
+// and uses aspect-ratio for responsive sizing
 
 .bds-card-image--full-bleed {
+  // Override fixed heights - use auto height with aspect ratio
+  height: auto;
+  width: 100%; // Ensure card fills parent container
+
+  .bds-card-image__image-container {
+    // Use aspect-ratio instead of fixed height for responsive scaling
+    width: 100%;
+    height: auto;
+    // 1:1 aspect ratio for all breakpoints (from Figma designs)
+    aspect-ratio: 1 / 1;
+  }
+
   .bds-card-image__image {
     width: 100%;
     height: 100%;
@@ -187,7 +198,15 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 .bds-card-image__content .bds-btn {
   align-self: flex-start;
   flex-shrink: 0; // Don't shrink button
-  // Button positioned at bottom via justify-content: space-between on parent
+  margin-top: $bds-card-image-button-margin-sm; // Mobile: 24px
+
+  @include media-breakpoint-up(md) {
+    margin-top: $bds-card-image-button-margin-md; // Tablet: 24px
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: $bds-card-image-button-margin-lg; // Desktop: 32px
+  }
 }
 
 // =============================================================================
@@ -229,7 +248,6 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 @include media-breakpoint-down(lg) {
   .bds-card-image {
-    height: $bds-card-image-height-md;
     gap: $bds-card-image-gap-md; // Gap between image container and content for MD
   }
 
@@ -252,7 +270,6 @@ $bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 @include media-breakpoint-down(sm) {
   .bds-card-image {
-    height: $bds-card-image-height-sm;
     gap: $bds-card-image-gap-sm; // Gap between image container and content for SM
   }
 

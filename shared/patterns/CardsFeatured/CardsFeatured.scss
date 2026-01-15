@@ -113,19 +113,22 @@ $bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
 .bds-cards-featured__cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $bds-cards-featured-cards-gap-sm;
+  column-gap: $bds-cards-featured-cards-gap-sm;
+  row-gap: 48px;
   width: 100%;
   margin-top: $bds-cards-featured-section-gap-sm;
 
   @include media-breakpoint-up(md) {
     grid-template-columns: repeat(2, 1fr);
-    gap: $bds-cards-featured-cards-gap-md;
+    column-gap: $bds-cards-featured-cards-gap-md;
+    row-gap: 53px;
     margin-top: $bds-cards-featured-section-gap-md;
   }
 
   @include media-breakpoint-up(lg) {
     grid-template-columns: repeat(3, 1fr);
-    gap: $bds-cards-featured-cards-gap-lg;
+    column-gap: $bds-cards-featured-cards-gap-lg;
+    row-gap: 56px;
     margin-top: $bds-cards-featured-section-gap-lg;
   }
 }
@@ -133,6 +136,12 @@ $bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
 .bds-cards-featured__card-wrapper {
   display: flex;
   min-width: 0; // Allow flex child to shrink below content size
+  width: 100%; // Ensure wrapper fills grid cell
+
+  // Ensure CardImage fills the wrapper
+  .bds-card-image {
+    width: 100%;
+  }
 }
 
 // =============================================================================
