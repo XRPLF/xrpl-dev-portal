@@ -1,0 +1,169 @@
+// BDS CardsFeatured Pattern Styles
+// Brand Design System - Section with heading, description, and grid of CardImage components
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-cards-featured                    - Base section container
+// .bds-cards-featured__header            - Header wrapper for heading and description
+// .bds-cards-featured__heading           - Section heading (uses .h-md)
+// .bds-cards-featured__description       - Section description (uses .body-l)
+// .bds-cards-featured__cards             - Cards grid container
+// .bds-cards-featured__card-wrapper      - Individual card wrapper
+//
+// Design tokens from Figma:
+// Light Mode:
+// - Heading: Neutral Black (#141414) → $black
+// - Description: Neutral Black (#141414) → $black
+//
+// Dark Mode:
+// - Heading: Neutral White (#FFFFFF) → $white
+// - Description: Neutral White (#FFFFFF) → $white
+//
+// - Header content max-width: 808px (approximately 8 columns at desktop)
+// - Gap between heading and description: 16px
+// - Gap between cards: 8px (matches $bds-grid-gutter)
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+
+$bds-grid-gutter: 8px;
+
+// Spacing - Header gap (between heading and description)
+$bds-cards-featured-header-gap-sm: 8px;         // Mobile: 8px
+$bds-cards-featured-header-gap-md: 8px;         // Tablet: 8px
+$bds-cards-featured-header-gap-lg: 16px;        // Desktop: 16px
+
+// Spacing - Section gap (between header and cards)
+$bds-cards-featured-section-gap-sm: 24px;       // Mobile
+$bds-cards-featured-section-gap-md: 32px;       // Tablet
+$bds-cards-featured-section-gap-lg: 40px;       // Desktop
+
+// Spacing - Cards gap
+$bds-cards-featured-cards-gap-sm: 48px;         // Mobile: 48px vertical
+$bds-cards-featured-cards-gap-md: 8px;          // Tablet: 8px
+$bds-cards-featured-cards-gap-lg: 8px;          // Desktop: 8px
+
+// Spacing - Section padding (vertical)
+$bds-cards-featured-padding-y-sm: 48px;         // Mobile
+$bds-cards-featured-padding-y-md: 64px;         // Tablet
+$bds-cards-featured-padding-y-lg: 80px;         // Desktop
+
+// Spacing - Section padding (horizontal) - handled by PageGrid
+
+// Colors - Light Mode (default)
+$bds-cards-featured-heading-color: $black;      // #141414 - Neutral black
+$bds-cards-featured-description-color: $black;  // #141414 - Neutral black
+
+// Colors - Dark Mode (from Figma node 27020-3045)
+$bds-cards-featured-heading-color-dark: $white;      // #FFFFFF - Neutral white
+$bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-cards-featured {
+  width: 100%;
+  padding-top: $bds-cards-featured-padding-y-sm;
+  padding-bottom: $bds-cards-featured-padding-y-sm;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-cards-featured-padding-y-md;
+    padding-bottom: $bds-cards-featured-padding-y-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-cards-featured-padding-y-lg;
+    padding-bottom: $bds-cards-featured-padding-y-lg;
+  }
+}
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-cards-featured__header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-cards-featured-header-gap-sm;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-cards-featured-header-gap-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-cards-featured-header-gap-lg;
+  }
+}
+
+.bds-cards-featured__heading {
+  margin: 0;
+  // Typography handled by .h-md class from _font.scss
+}
+
+.bds-cards-featured__description {
+  margin: 0;
+  // Typography handled by .body-l class from _font.scss
+}
+
+// =============================================================================
+// Cards Grid
+// =============================================================================
+
+.bds-cards-featured__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $bds-cards-featured-cards-gap-sm;
+  width: 100%;
+  margin-top: $bds-cards-featured-section-gap-sm;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $bds-cards-featured-cards-gap-md;
+    margin-top: $bds-cards-featured-section-gap-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $bds-cards-featured-cards-gap-lg;
+    margin-top: $bds-cards-featured-section-gap-lg;
+  }
+}
+
+.bds-cards-featured__card-wrapper {
+  display: flex;
+  min-width: 0; // Allow flex child to shrink below content size
+}
+
+// =============================================================================
+// Light Mode Styles (from Figma node 27020-3048)
+// =============================================================================
+
+html.light {
+  .bds-cards-featured {
+    background-color: $white;
+  }
+
+  .bds-cards-featured__heading {
+    color: $bds-cards-featured-heading-color;
+  }
+
+  .bds-cards-featured__description {
+    color: $bds-cards-featured-description-color;
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles (from Figma node 27020-3045)
+// =============================================================================
+
+html.dark {
+  .bds-cards-featured__heading {
+    color: $bds-cards-featured-heading-color-dark;
+  }
+
+  .bds-cards-featured__description {
+    color: $bds-cards-featured-description-color-dark;
+  }
+}
+
