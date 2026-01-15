@@ -114,41 +114,41 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
       );
     }
 
-    // 3-5 links: Text group + CTA row + Secondary button + Tertiary links group
-    // Uses space-between for even distribution, tertiary links grouped together
+    // 3-5 links: Text group + Button group (contains all buttons with consistent 16px spacing)
+    // Desktop: space-between distribution between text-group and button-group
+    // Tablet: 32px gap, Mobile: 24px gap
     return (
       <div className="bds-feature-two-column__content bds-feature-two-column__content--multiple">
         <div className="bds-feature-two-column__text-group">
           <h2 className="bds-feature-two-column__title">{title}</h2>
           <p className="bds-feature-two-column__description">{description}</p>
         </div>
-        {/* First two links in a row: Primary + Tertiary */}
-        <div className="bds-feature-two-column__cta-row">
-          <Button variant="primary" color={buttonColor} forceColor={forceColor} href={links[0].href}>
-            {links[0].label}
-          </Button>
-          {links[1] && (
-            <Button variant="tertiary" color={buttonColor} forceColor={forceColor} href={links[1].href}>
-              {links[1].label}
+        {/* Button group - all buttons grouped with 16px spacing between them */}
+        <div className="bds-feature-two-column__button-group">
+          {/* First two links in a row: Primary + Tertiary */}
+          <div className="bds-feature-two-column__cta-row">
+            <Button variant="primary" color={buttonColor} forceColor={forceColor} href={links[0].href}>
+              {links[0].label}
+            </Button>
+            {links[1] && (
+              <Button variant="tertiary" color={buttonColor} forceColor={forceColor} href={links[1].href}>
+                {links[1].label}
+              </Button>
+            )}
+          </div>
+          {/* Secondary button */}
+          {links[2] && (
+            <Button variant="secondary" color={buttonColor} forceColor={forceColor} href={links[2].href}>
+              {links[2].label}
             </Button>
           )}
+          {/* Remaining tertiary links */}
+          {links.slice(3).map((link, index) => (
+            <Button key={index} variant="tertiary" color={buttonColor} forceColor={forceColor} href={link.href}>
+              {link.label}
+            </Button>
+          ))}
         </div>
-        {/* Secondary button as separate item for space-between distribution */}
-        {links[2] && (
-          <Button variant="secondary" color={buttonColor} forceColor={forceColor} href={links[2].href}>
-            {links[2].label}
-          </Button>
-        )}
-        {/* Remaining tertiary links grouped together */}
-        {links.length > 3 && (
-          <div className="bds-feature-two-column__tertiary-group">
-            {links.slice(3).map((link, index) => (
-              <Button key={index} variant="tertiary" color={buttonColor} forceColor={forceColor} href={link.href}>
-                {link.label}
-              </Button>
-            ))}
-          </div>
-        )}
       </div>
     );
   };
@@ -169,7 +169,11 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
       {/* Desktop layout - simple two-column flex with background image */}
       <div className="bds-feature-two-column__desktop-layout">
         <div className="bds-feature-two-column__content-col">
-          {renderContent()}
+          <div className="bds-feature-two-column__content-grid">
+            <div className="bds-feature-two-column__content-wrapper">
+              {renderContent()}
+            </div>
+          </div>
         </div>
         <div
           className="bds-feature-two-column__media-col"
@@ -187,7 +191,11 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
               span={{ base: 4, md: 8 }}
               className="bds-feature-two-column__content-col"
             >
-              {renderContent()}
+              <div className="bds-feature-two-column__content-grid">
+                <div className="bds-feature-two-column__content-wrapper">
+                  {renderContent()}
+                </div>
+              </div>
             </PageGrid.Col>
             <PageGrid.Col
               span={{ base: 4, md: 8 }}
