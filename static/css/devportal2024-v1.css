@@ -18580,9 +18580,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  height: 620px;
   background-color: #FFFFFF;
-  overflow: hidden;
   cursor: pointer;
 }
 .bds-grid__col .bds-card-image {
@@ -18622,6 +18620,15 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   transition: transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
+.bds-card-image--full-bleed {
+  height: auto;
+  width: 100%;
+}
+.bds-card-image--full-bleed .bds-card-image__image-container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
 .bds-card-image--full-bleed .bds-card-image__image {
   width: 100%;
   height: 100%;
@@ -18670,6 +18677,17 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
 .bds-card-image__content .bds-btn {
   align-self: flex-start;
   flex-shrink: 0;
+  margin-top: 24px;
+}
+@media (min-width: 576px) {
+  .bds-card-image__content .bds-btn {
+    margin-top: 24px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-image__content .bds-btn {
+    margin-top: 32px;
+  }
 }
 
 .bds-card-image--hovered:not(.bds-card-image--disabled) .bds-card-image__image,
@@ -18688,8 +18706,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
 
 @media (max-width: 991.98px) {
   .bds-card-image {
-    height: 560px;
-    gap: 20px;
+    gap: 16px;
   }
   .bds-card-image__image-container {
     height: 280px;
@@ -18703,7 +18720,6 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
 }
 @media (max-width: 575.98px) {
   .bds-card-image {
-    height: 536px;
     gap: 16px;
   }
   .bds-card-image__image-container {
@@ -18713,7 +18729,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
     padding: 0 8px;
   }
   .bds-card-image__text {
-    gap: 4px;
+    gap: 8px;
   }
 }
 html.light .bds-card-image:focus {
@@ -19633,21 +19649,24 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 .bds-cards-featured__cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 48px;
+  column-gap: 48px;
+  row-gap: 48px;
   width: 100%;
   margin-top: 24px;
 }
 @media (min-width: 576px) {
   .bds-cards-featured__cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    column-gap: 8px;
+    row-gap: 53px;
     margin-top: 32px;
   }
 }
 @media (min-width: 992px) {
   .bds-cards-featured__cards {
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    column-gap: 8px;
+    row-gap: 56px;
     margin-top: 40px;
   }
 }
@@ -19655,6 +19674,10 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 .bds-cards-featured__card-wrapper {
   display: flex;
   min-width: 0;
+  width: 100%;
+}
+.bds-cards-featured__card-wrapper .bds-card-image {
+  width: 100%;
 }
 
 html.light .bds-cards-featured {

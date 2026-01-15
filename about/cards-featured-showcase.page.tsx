@@ -12,7 +12,7 @@ export const frontmatter = {
 // Sample image URL for demonstration
 const SAMPLE_IMAGE = "/img/cards/card-image-showcase.png";
 
-// Sample cards data
+// Sample cards data - 6 cards for full showcase
 const sampleCards = [
   {
     image: SAMPLE_IMAGE,
@@ -37,6 +37,30 @@ const sampleCards = [
     subtitle: "Comprehensive API documentation for all XRPL methods.",
     buttonLabel: "Explore API",
     href: "#api",
+  },
+  {
+    image: SAMPLE_IMAGE,
+    imageAlt: "Use Cases illustration",
+    title: "Use Cases",
+    subtitle: "Explore real-world applications built on the XRP Ledger.",
+    buttonLabel: "View Use Cases",
+    href: "#use-cases",
+  },
+  {
+    image: SAMPLE_IMAGE,
+    imageAlt: "Community illustration",
+    title: "Community",
+    subtitle: "Join the global community of XRPL developers and enthusiasts.",
+    buttonLabel: "Join Community",
+    href: "#community",
+  },
+  {
+    image: SAMPLE_IMAGE,
+    imageAlt: "Resources illustration",
+    title: "Resources",
+    subtitle: "Tools, libraries, and resources to accelerate your development.",
+    buttonLabel: "Browse Resources",
+    href: "#resources",
   },
 ];
 
@@ -70,11 +94,35 @@ export default function CardsFeaturedShowcase() {
                   </ul>
                 </div>
                 <div style={{ flex: '1 1 250px' }}>
-                  <h6 className="mb-3">Spacing</h6>
+                  <h6 className="mb-3">Header Gap</h6>
                   <ul className="mb-0">
-                    <li><strong>Header gap:</strong> 16px</li>
-                    <li><strong>Cards gap:</strong> 8px</li>
-                    <li><strong>Section gap:</strong> 24-40px (responsive)</li>
+                    <li><strong>Desktop:</strong> 16px</li>
+                    <li><strong>Tablet:</strong> 8px</li>
+                    <li><strong>Mobile:</strong> 8px</li>
+                  </ul>
+                </div>
+                <div style={{ flex: '1 1 250px' }}>
+                  <h6 className="mb-3">Cards Column Gap</h6>
+                  <ul className="mb-0">
+                    <li><strong>Desktop:</strong> 8px</li>
+                    <li><strong>Tablet:</strong> 8px</li>
+                    <li><strong>Mobile:</strong> 48px</li>
+                  </ul>
+                </div>
+                <div style={{ flex: '1 1 250px' }}>
+                  <h6 className="mb-3">Cards Row Gap (Vertical)</h6>
+                  <ul className="mb-0">
+                    <li><strong>Desktop:</strong> 56px</li>
+                    <li><strong>Tablet:</strong> 53px</li>
+                    <li><strong>Mobile:</strong> 48px</li>
+                  </ul>
+                </div>
+                <div style={{ flex: '1 1 250px' }}>
+                  <h6 className="mb-3">Section Padding (Vertical)</h6>
+                  <ul className="mb-0">
+                    <li><strong>Desktop:</strong> 80px</li>
+                    <li><strong>Tablet:</strong> 64px</li>
+                    <li><strong>Mobile:</strong> 48px</li>
                   </ul>
                 </div>
                 <div style={{ flex: '1 1 250px' }}>
@@ -99,48 +147,25 @@ export default function CardsFeaturedShowcase() {
 
         <Divider />
 
-        {/* Example */}
-        <section className="py-26">
-          <PageGrid>
-            <PageGridRow>
-              <PageGridCol span={12}>
-                <h2 className="h4 mb-2">Example</h2>
-                <p className="mb-8">
-                  Toggle the site theme to see the component adapt to light and dark modes.
-                </p>
-              </PageGridCol>
-            </PageGridRow>
-          </PageGrid>
-          <div className="pt-10">
-            <CardsFeatured
-              heading="Trusted by Leaders in Real-World Asset Tokenization"
-              description="Powering institutions and builders who are bringing real world assets on chain at global scale."
-              cards={sampleCards}
-            />
-          </div>
-        </section>
-
-        <Divider />
-        <div style={{paddingTop: '100px'}}></div>
-        {/* Two Cards Example */}
-        <section className="py-26">
-          <PageGrid>
-            <PageGridRow>
-              <PageGridCol span={12}>
-                <h2 className="h4 mb-2">Two Cards Layout</h2>
-                <p className="mb-8" style={{ color: '#72777E' }}>
-                  The pattern gracefully handles fewer than 3 cards.
-                </p>
-              </PageGridCol>
-            </PageGridRow>
-          </PageGrid>
+        {/* 6 Cards Example - Full Showcase */}
+        <section>
           <CardsFeatured
-            heading="Developer Resources"
-            description="Everything you need to start building on the XRP Ledger."
-            cards={sampleCards.slice(0, 2)}
+            heading="Trusted by Leaders in Real-World Asset Tokenization"
+            description="Powering institutions and builders who are bringing real world assets on chain at global scale."
+            cards={sampleCards}
           />
         </section>
 
+        <Divider />
+
+        {/* 3 Cards Example */}
+        <section>
+          <CardsFeatured
+            heading="Developer Resources"
+            description="Everything you need to start building on the XRP Ledger."
+            cards={sampleCards.slice(0, 3)}
+          />
+        </section>
 
         <Divider />
       </div>
