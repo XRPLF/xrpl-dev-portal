@@ -113,7 +113,7 @@ export default function CardsFeaturedShowcase() {
                   <h6 className="mb-3">Cards Row Gap (Vertical)</h6>
                   <ul className="mb-0">
                     <li><strong>Desktop:</strong> 56px</li>
-                    <li><strong>Tablet:</strong> 53px</li>
+                    <li><strong>Tablet:</strong> 52px</li>
                     <li><strong>Mobile:</strong> 48px</li>
                   </ul>
                 </div>
