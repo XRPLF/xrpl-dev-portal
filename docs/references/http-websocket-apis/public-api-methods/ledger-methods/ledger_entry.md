@@ -12,11 +12,13 @@ The `ledger_entry` method returns a single ledger entry from the XRP Ledger in i
 
 ## Request Format
 
-This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard [request formatting](../../api-conventions/request-formatting.md). (For example, a WebSocket request always has the `command` field and optionally an `id` field, and a JSON-RPC request uses the `method` and `params` fields.)
+This method can retrieve data on various types of ledger entries. You must specify _exactly 1_ type from the list below, and follow the standard [request format](../../api-conventions/request-formatting.md). (For example, a WebSocket request always has the `command` field and optionally an `id` field, and a JSON-RPC request uses the `method` and `params` fields.)
 
 {% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
 
 ### General Fields
+
+These fields are optional, but provide additional parameters when retrieving ledger entry data.
 
 | Field             | Type                       | Required? | Description           |
 |:------------------|:---------------------------|:---------|:----------------------|
@@ -28,8 +30,6 @@ This method can retrieve several different types of data. You can select which t
 {% admonition type="warning" name="Caution" %}
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 {% /admonition %}
-
-In addition to the general fields above, you must specify _exactly 1_ of the following fields to indicate what type of entry to retrieve:
 
 
 ### Get Ledger Entry by ID
