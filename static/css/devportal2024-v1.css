@@ -19295,6 +19295,117 @@ html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-im
   unicode-bidi: isolate;
 }
 
+.bds-header-hero-primary-media {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-header-hero-primary-media {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-header-hero-primary-media {
+    padding-top: 170px;
+    padding-bottom: 40px;
+  }
+}
+html.light .bds-header-hero-primary-media {
+  background-color: #FFFFFF;
+}
+html.dark .bds-header-hero-primary-media {
+  background-color: #141414;
+}
+.bds-header-hero-primary-media__headline-container {
+  margin-bottom: 32px;
+}
+@media (min-width: 992px) {
+  .bds-header-hero-primary-media__headline-container {
+    margin-bottom: 0px;
+  }
+}
+.bds-header-hero-primary-media__headline {
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+.bds-header-hero-primary-media__headline * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.bds-header-hero-primary-media__subtitle {
+  margin: 0;
+  padding: 0;
+}
+html.light .bds-header-hero-primary-media__subtitle {
+  color: #72777E;
+}
+.bds-header-hero-primary-media__cta-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: flex-end;
+  min-height: 100%;
+}
+@media (min-width: 992px) {
+  .bds-header-hero-primary-media__cta-container {
+    gap: 40px;
+  }
+}
+.bds-header-hero-primary-media__cta-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+@media (min-width: 576px) {
+  .bds-header-hero-primary-media__cta-buttons {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+@media (min-width: 992px) {
+  .bds-header-hero-primary-media__cta-buttons {
+    gap: 24px;
+  }
+}
+.bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary {
+  padding: 0;
+}
+.bds-header-hero-primary-media__media-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  position: relative;
+  margin-top: 24px;
+  height: auto;
+}
+@media (min-width: 576px) {
+  .bds-header-hero-primary-media__media-container {
+    margin-top: 32px;
+    aspect-ratio: 2/1;
+  }
+}
+@media (min-width: 992px) {
+  .bds-header-hero-primary-media__media-container {
+    margin-top: 40px;
+    aspect-ratio: 3/1;
+  }
+}
+.bds-header-hero-primary-media__media-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .bds-hero-split-media {
   width: 100%;
 }
