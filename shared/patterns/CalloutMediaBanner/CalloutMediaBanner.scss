@@ -15,7 +15,8 @@
 // .bds-callout-media-banner__text          - Text content container
 // .bds-callout-media-banner__heading       - Heading element
 // .bds-callout-media-banner__subheading    - Subheading element
-// .bds-callout-media-banner__actions       - Button container
+//
+// Note: Button layout is handled by the ButtonGroup component
 
 // =============================================================================
 // Design Tokens
@@ -191,21 +192,8 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
 
 // =============================================================================
 // Action Buttons
-// ==================================================================== c=========
-
-.bds-callout-media-banner__actions {
-  @extend .d-flex;
-  @extend .flex-column;
-  @extend .align-items-start;
-  @extend .flex-wrap;
-  gap: 8px;
-  // Tablet breakpoint
-  @include media-breakpoint-up(md) {
-    flex-direction: row;
-    align-items: center;
-    gap: 0px;
-  }
-}
+// =============================================================================
+// Note: Button layout is now handled by the ButtonGroup component
 
 // =============================================================================
 // Color Variants (only applied when NO backgroundImage is provided)
