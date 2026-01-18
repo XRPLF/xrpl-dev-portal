@@ -1,0 +1,90 @@
+import React from 'react';
+import clsx from 'clsx';
+import { Button } from '../../components/Button/Button';
+
+export interface ButtonConfig {
+  label: string;
+  href?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export interface ButtonGroupProps {
+  /** Primary button configuration */
+  primaryButton?: ButtonConfig;
+  /** Tertiary button configuration */
+  tertiaryButton?: ButtonConfig;
+  /** Button color theme */
+  color?: 'green' | 'black';
+  /** Gap between buttons on tablet+ (0px or 8px) */
+  gap?: 'none' | 'small';
+  /** Additional CSS classes */
+  className?: string;
+}
+
+/**
+ * ButtonGroup Component
+ * 
+ * A responsive button group container that displays primary and/or tertiary buttons.
+ * Stacks vertically on mobile and horizontally on tablet+.
+ * 
+ * @example
+ * // Basic usage with both buttons
+ * <ButtonGroup
+ *   primaryButton={{ label: "Get Started", href: "/start" }}
+ *   tertiaryButton={{ label: "Learn More", href: "/learn" }}
+ *   color="green"
+ * />
+ * 
+ * @example
+ * // With custom gap
+ * <ButtonGroup
+ *   primaryButton={{ label: "Action", onClick: handleClick }}
+ *   color="black"
+ *   gap="small"
+ * />
+ */
+export const ButtonGroup: React.FC<ButtonGroupProps> = ({
+  primaryButton,
+  tertiaryButton,
+  color = 'green',
+  gap = 'small',
+  className = '',
+}) => {
+  // Don't render if no buttons are provided
+  if (!primaryButton && !tertiaryButton) {
+    return null;
+  }
+
+  const classNames = clsx(
+    'bds-button-group',
+    `bds-button-group--gap-${gap}`,
+    className
+  );
+
+  return (
+    <div className={classNames}>
+      {primaryButton && (
+        <Button
+          variant="primary"
+          color={color}
+          href={primaryButton.href}
+          onClick={primaryButton?.onClick as (() => void) | undefined}
+        >
+          {primaryButton.label}
+        </Button>
+      )}
+      {tertiaryButton && (
+        <Button
+          variant="tertiary"
+          color={color}
+          href={tertiaryButton.href}
+          onClick={tertiaryButton?.onClick as (() => void) | undefined}
+        >
+          {tertiaryButton.label}
+        </Button>
+      )}
+    </div>
+  );
+};
+
+export default ButtonGroup;
