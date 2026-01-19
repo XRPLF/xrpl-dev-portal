@@ -95,7 +95,7 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   return (
     <PageGrid className="">
       <PageGridRow>
-        <PageGridCol span={{ base: 4, md: 8, lg: 8 }}>
+        <PageGridCol span={{ base: 4, md: 6, lg: 8 }}>
             {/* Header Section */}
             {hasHeader && (
               <div className="bds-logo-square-grid__header">
