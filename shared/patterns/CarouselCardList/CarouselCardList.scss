@@ -1,0 +1,514 @@
+// BDS CarouselCardList Pattern Styles
+// Brand Design System - Horizontal scrolling carousel with CardOffgrid components
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-carousel-card-list                      - Base section container
+// .bds-carousel-card-list--neutral             - Neutral color variant
+// .bds-carousel-card-list--green               - Green color variant
+// .bds-carousel-card-list__header              - Header wrapper (title, subtitle, nav)
+// .bds-carousel-card-list__header-content      - Title and subtitle wrapper
+// .bds-carousel-card-list__heading             - Section heading (uses .h-md)
+// .bds-carousel-card-list__description         - Section description (uses .body-l)
+// .bds-carousel-card-list__nav                 - Navigation buttons wrapper
+// .bds-carousel-card-list__button              - Navigation button
+// .bds-carousel-card-list__track-wrapper       - Scroll container wrapper
+// .bds-carousel-card-list__track               - Horizontal scroll track
+// .bds-carousel-card-list__card                - Individual card wrapper
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+
+$bds-grid-gutter: 8px;
+
+// Grid padding (matches PageGrid container padding)
+$bds-carousel-grid-padding-sm: 18px;            // Mobile
+$bds-carousel-grid-padding-md: 24px;            // Tablet
+$bds-carousel-grid-padding-lg: 32px;            // Desktop (lg+)
+$bds-carousel-grid-max-width: 1280px;           // Max container width (per _breakpoints.scss $xl)
+
+// Spacing - Header gap (between heading and description)
+$bds-carousel-header-gap-sm: 8px;           // Mobile
+$bds-carousel-header-gap-md: 8px;           // Tablet
+$bds-carousel-header-gap-lg: 16px;          // Desktop
+
+// Spacing - Section gap (between header content and buttons row on mobile)
+$bds-carousel-section-gap-sm: 24px;         // Mobile
+$bds-carousel-section-gap-md: 32px;         // Tablet
+$bds-carousel-section-gap-lg: 40px;         // Desktop
+
+// Spacing - Gap between header and cards
+$bds-carousel-cards-gap-sm: 24px;           // Mobile
+$bds-carousel-cards-gap-md: 32px;           // Tablet
+$bds-carousel-cards-gap-lg: 40px;           // Desktop
+
+// Button dimensions
+$bds-carousel-button-size-sm: 37px;         // Mobile/Tablet
+$bds-carousel-button-size-lg: 40px;         // Desktop
+$bds-carousel-button-gap: 8px;
+
+// Card dimensions per breakpoint
+$bds-carousel-card-width-sm: 343px;         // Mobile
+$bds-carousel-card-height-sm: 400px;
+$bds-carousel-card-width-md: 356px;         // Tablet
+$bds-carousel-card-height-md: 440px;
+$bds-carousel-card-width-lg: 400px;         // Desktop
+$bds-carousel-card-height-lg: 480px;
+
+// Card padding per breakpoint
+$bds-carousel-card-padding-sm: 16px;
+$bds-carousel-card-padding-md: 20px;
+$bds-carousel-card-padding-lg: 24px;
+
+// Transition
+$bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-carousel-card-list {
+  width: 100%;
+  // Constrain to max-width at xl breakpoint (per _breakpoints.scss)
+  @include media-breakpoint-up(xl) {
+    max-width: $bds-carousel-grid-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  // Allow focus rings to be visible (no overflow:hidden)
+}
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-carousel-card-list__header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-carousel-section-gap-sm;
+  // Apply same padding as track to align header with cards
+  padding-left: $bds-carousel-grid-padding-sm;
+  padding-right: $bds-carousel-grid-padding-sm;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-carousel-section-gap-md;
+    padding-left: $bds-carousel-grid-padding-md;
+    padding-right: $bds-carousel-grid-padding-md;
+  }
+
+  // Row layout only at desktop (lg and up)
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $bds-carousel-section-gap-lg;
+    padding-left: $bds-carousel-grid-padding-lg;
+    padding-right: $bds-carousel-grid-padding-lg;
+  }
+}
+
+.bds-carousel-card-list__header-content {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-carousel-header-gap-sm;
+  // Full width on mobile and tablet
+  max-width: 100%;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-carousel-header-gap-md;
+  }
+
+  // Constrain heading/description to grid (8 columns at desktop)
+  @include media-breakpoint-up(lg) {
+    gap: $bds-carousel-header-gap-lg;
+    max-width: 808px; // Desktop: 8 columns
+  }
+}
+
+.bds-carousel-card-list__heading {
+  margin: 0;
+  // Typography handled by .h-md class from _font.scss
+}
+
+.bds-carousel-card-list__description {
+  margin: 0;
+  // Typography handled by .body-l class from _font.scss
+}
+
+// =============================================================================
+// Navigation Buttons Container
+// =============================================================================
+
+.bds-carousel-card-list__nav {
+  display: flex;
+  gap: $bds-carousel-button-gap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  // Add padding to allow focus ring to be visible without clipping
+  padding: 4px;
+  margin: -4px;
+}
+
+// =============================================================================
+// Navigation Buttons
+// =============================================================================
+
+.bds-carousel-card-list__button {
+  // Reset button styles
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  // Layout
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $bds-carousel-button-size-sm;
+  height: $bds-carousel-button-size-sm;
+
+  // Transition
+  transition: background-color $bds-carousel-transition,
+              opacity $bds-carousel-transition;
+
+  @include media-breakpoint-up(lg) {
+    width: $bds-carousel-button-size-lg;
+    height: $bds-carousel-button-size-lg;
+  }
+
+  // Focus styles
+  &:focus {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+}
+
+// Arrow icon
+.bds-carousel-card-list__arrow-icon {
+  width: 18px;
+  height: 16px;
+
+  @include media-breakpoint-down(lg) {
+    width: 18px;
+    height: 15px;
+  }
+}
+
+// =============================================================================
+// Scroll Track
+// =============================================================================
+
+.bds-carousel-card-list__track-wrapper {
+  margin-top: $bds-carousel-cards-gap-sm;
+  overflow: visible;
+  // Add left padding here so it's OUTSIDE the scrollable area
+  padding-left: $bds-carousel-grid-padding-sm;
+
+  @include media-breakpoint-up(md) {
+    margin-top: $bds-carousel-cards-gap-md;
+    padding-left: $bds-carousel-grid-padding-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: $bds-carousel-cards-gap-lg;
+    padding-left: $bds-carousel-grid-padding-lg;
+  }
+}
+
+.bds-carousel-card-list__track {
+  display: flex;
+  gap: $bds-grid-gutter;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar but keep functionality
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Vertical padding to prevent focus ring clipping
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -4px;
+  margin-bottom: -4px;
+
+  // Focus outline for keyboard navigation
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 4px;
+  }
+}
+
+// =============================================================================
+// Card Wrapper
+// =============================================================================
+
+.bds-carousel-card-list__card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+
+  // Override CardOffgrid dimensions for carousel
+  .bds-card-offgrid {
+    width: $bds-carousel-card-width-sm;
+    height: $bds-carousel-card-height-sm;
+    padding: $bds-carousel-card-padding-sm;
+
+    @include media-breakpoint-up(md) {
+      width: $bds-carousel-card-width-md;
+      height: $bds-carousel-card-height-md;
+      padding: $bds-carousel-card-padding-md;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: $bds-carousel-card-width-lg;
+      height: $bds-carousel-card-height-lg;
+      padding: $bds-carousel-card-padding-lg;
+    }
+
+    // Fix: Prevent unwanted hover styles from parent styles
+    // No text underline on hover
+    &:hover {
+      text-decoration: none;
+    }
+
+    // Ensure title and description never have underline
+    .bds-card-offgrid__title,
+    .bds-card-offgrid__description {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    // Ensure icon does not change color on hover
+    .bds-card-offgrid__icon-container {
+      // Icon color is inherited from card text color, which CardOffgrid manages
+      // No additional color changes should happen on hover
+      > * {
+        transition: none;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// DARK MODE (Default) - Section Text Colors
+// =============================================================================
+
+// Section text colors - Dark Mode (applies to both neutral and green card variants)
+.bds-carousel-card-list--neutral,
+.bds-carousel-card-list--green {
+  .bds-carousel-card-list__heading,
+  .bds-carousel-card-list__description {
+    color: $white;
+  }
+}
+
+// =============================================================================
+// DARK MODE (Default) - Button Color Variants
+// Button colors are independent of card colors - use buttonVariant prop
+// =============================================================================
+
+// Neutral button variant - Dark Mode
+// Enabled: #CAD4DF (gray-300), Hover: #E6EAF0 (gray-200), Active: #CAD4DF (gray-300)
+// Disabled: opacity 0.5
+.bds-carousel-card-list__button--neutral {
+  background-color: $gray-300; // #CAD4DF
+  color: $black; // #141414
+
+  &:hover:not(:disabled) {
+    background-color: $gray-200; // #E6EAF0
+  }
+
+  &:active:not(:disabled) {
+    background-color: $gray-300; // #CAD4DF (same as enabled)
+  }
+
+  &.bds-carousel-card-list__button--disabled,
+  &:disabled {
+    background-color: $gray-300; // #CAD4DF
+    color: $gray-400; // #8A919A
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Green button variant - Dark Mode
+// Enabled: #21E46B (green-300), Hover: #70EE97 (green-200), Active: #21E46B (green-300)
+// Disabled: opacity 0.5
+.bds-carousel-card-list__button--green {
+  background-color: $green-300; // #21E46B
+  color: $black; // #141414
+
+  &:hover:not(:disabled) {
+    background-color: $green-200; // #70EE97
+  }
+
+  &:active:not(:disabled) {
+    background-color: $green-300; // #21E46B (same as enabled)
+  }
+
+  &.bds-carousel-card-list__button--disabled,
+  &:disabled {
+    background-color: $green-300; // #21E46B
+    color: $gray-400; // #8A919A
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Black variant becomes White in Dark Mode (inverts for contrast)
+// Enabled: #FFFFFF (white), Hover: #E6EAF0 (gray-200), Active: #FFFFFF (white)
+// Disabled: opacity 0.5
+.bds-carousel-card-list__button--black {
+  background-color: $white; // #FFFFFF
+  color: $black; // #141414
+
+  &:hover:not(:disabled) {
+    background-color: $gray-200; // #E6EAF0
+  }
+
+  &:active:not(:disabled) {
+    background-color: $white; // #FFFFFF (same as enabled)
+  }
+
+  &.bds-carousel-card-list__button--disabled,
+  &:disabled {
+    background-color: $white; // #FFFFFF
+    color: $gray-400; // #8A919A
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// =============================================================================
+// LIGHT MODE (html.light) - Color Variants
+// =============================================================================
+
+html.light {
+  // Focus styles - Light Mode
+  .bds-carousel-card-list__button {
+    &:focus {
+      outline-color: $gray-900;
+    }
+
+    &:focus-visible {
+      outline-color: $gray-900;
+    }
+  }
+
+  .bds-carousel-card-list__track {
+    &:focus-visible {
+      outline-color: $gray-900;
+    }
+  }
+
+  // Section text colors - Light Mode
+  .bds-carousel-card-list--neutral,
+  .bds-carousel-card-list--green {
+    .bds-carousel-card-list__heading,
+    .bds-carousel-card-list__description {
+      color: $black;
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Button Color Variants - Light Mode
+  // Button colors are independent of card colors - use buttonVariant prop
+  // ---------------------------------------------------------------------------
+
+  // Neutral button variant - Light Mode
+  // Enabled: #CAD4DF (gray-300), Hover: #E6EAF0 (gray-200), Active: #CAD4DF (gray-300)
+  // Disabled: opacity 0.5
+  .bds-carousel-card-list__button--neutral {
+    background-color: $gray-300; // #CAD4DF
+    color: $black; // #141414
+
+    &:hover:not(:disabled) {
+      background-color: $gray-200; // #E6EAF0
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gray-300; // #CAD4DF (same as enabled)
+    }
+
+    &.bds-carousel-card-list__button--disabled,
+    &:disabled {
+      background-color: $gray-300; // #CAD4DF
+      color: $gray-400; // #8A919A
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // Green button variant - Light Mode
+  // Enabled: #21E46B (green-300), Hover: #70EE97 (green-200), Active: #21E46B (green-300)
+  // Disabled: opacity 0.5
+  .bds-carousel-card-list__button--green {
+    background-color: $green-300; // #21E46B
+    color: $black; // #141414
+
+    &:hover:not(:disabled) {
+      background-color: $green-200; // #70EE97
+    }
+
+    &:active:not(:disabled) {
+      background-color: $green-300; // #21E46B (same as enabled)
+    }
+
+    &.bds-carousel-card-list__button--disabled,
+    &:disabled {
+      background-color: $green-300; // #21E46B
+      color: $gray-400; // #8A919A
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  // Black variant in Light Mode (stays black for contrast)
+  // Enabled: #141414 (black), Hover: #72777E (gray-500), Active: #141414 (black)
+  // Disabled: opacity 0.5
+  .bds-carousel-card-list__button--black {
+    background-color: $black; // #141414
+    color: $white; // #FFFFFF
+
+    &:hover:not(:disabled) {
+      background-color: $gray-500; // #72777E
+    }
+
+    &:active:not(:disabled) {
+      background-color: $black; // #141414 (same as enabled)
+    }
+
+    &.bds-carousel-card-list__button--disabled,
+    &:disabled {
+      background-color: $black; // #141414
+      color: $gray-400; // #8A919A
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+

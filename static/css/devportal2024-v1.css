@@ -19938,6 +19938,326 @@ html.light .bds-callout-media-banner--image-text-black .bds-callout-media-banner
   color: #141414 !important;
 }
 
+.bds-carousel-card-list {
+  width: 100%;
+}
+@media (min-width: 1280px) {
+  .bds-carousel-card-list {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.bds-carousel-card-list__header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+@media (min-width: 576px) {
+  .bds-carousel-card-list__header {
+    gap: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-carousel-card-list__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.bds-carousel-card-list__header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 100%;
+}
+@media (min-width: 576px) {
+  .bds-carousel-card-list__header-content {
+    gap: 8px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-carousel-card-list__header-content {
+    gap: 16px;
+    max-width: 808px;
+  }
+}
+
+.bds-carousel-card-list__heading {
+  margin: 0;
+}
+
+.bds-carousel-card-list__description {
+  margin: 0;
+}
+
+.bds-carousel-card-list__nav {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  padding: 4px;
+  margin: -4px;
+}
+
+.bds-carousel-card-list__button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  height: 37px;
+  transition: background-color 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98), opacity 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+}
+@media (min-width: 992px) {
+  .bds-carousel-card-list__button {
+    width: 40px;
+    height: 40px;
+  }
+}
+.bds-carousel-card-list__button:focus {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+.bds-carousel-card-list__button:focus:not(:focus-visible) {
+  outline: none;
+}
+.bds-carousel-card-list__button:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+.bds-carousel-card-list__arrow-icon {
+  width: 18px;
+  height: 16px;
+}
+@media (max-width: 991.98px) {
+  .bds-carousel-card-list__arrow-icon {
+    width: 18px;
+    height: 15px;
+  }
+}
+
+.bds-carousel-card-list__track-wrapper {
+  margin-top: 24px;
+  overflow: visible;
+  padding-left: 18px;
+}
+@media (min-width: 576px) {
+  .bds-carousel-card-list__track-wrapper {
+    margin-top: 32px;
+    padding-left: 24px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-carousel-card-list__track-wrapper {
+    margin-top: 40px;
+    padding-left: 32px;
+  }
+}
+
+.bds-carousel-card-list__track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.bds-carousel-card-list__track::-webkit-scrollbar {
+  display: none;
+}
+.bds-carousel-card-list__track {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: -4px;
+  margin-bottom: -4px;
+}
+.bds-carousel-card-list__track:focus {
+  outline: none;
+}
+.bds-carousel-card-list__track:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 4px;
+}
+
+.bds-carousel-card-list__card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+.bds-carousel-card-list__card .bds-card-offgrid {
+  width: 343px;
+  height: 400px;
+  padding: 16px;
+}
+@media (min-width: 576px) {
+  .bds-carousel-card-list__card .bds-card-offgrid {
+    width: 356px;
+    height: 440px;
+    padding: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-carousel-card-list__card .bds-card-offgrid {
+    width: 400px;
+    height: 480px;
+    padding: 24px;
+  }
+}
+.bds-carousel-card-list__card .bds-card-offgrid:hover {
+  text-decoration: none;
+}
+.bds-carousel-card-list__card .bds-card-offgrid .bds-card-offgrid__title,
+.bds-carousel-card-list__card .bds-card-offgrid .bds-card-offgrid__description {
+  text-decoration: none;
+}
+.bds-carousel-card-list__card .bds-card-offgrid .bds-card-offgrid__title:hover,
+.bds-carousel-card-list__card .bds-card-offgrid .bds-card-offgrid__description:hover {
+  text-decoration: none;
+}
+.bds-carousel-card-list__card .bds-card-offgrid .bds-card-offgrid__icon-container > * {
+  transition: none;
+}
+
+.bds-carousel-card-list--neutral .bds-carousel-card-list__heading,
+.bds-carousel-card-list--neutral .bds-carousel-card-list__description,
+.bds-carousel-card-list--green .bds-carousel-card-list__heading,
+.bds-carousel-card-list--green .bds-carousel-card-list__description {
+  color: #FFFFFF;
+}
+
+.bds-carousel-card-list__button--neutral {
+  background-color: #CAD4DF;
+  color: #141414;
+}
+.bds-carousel-card-list__button--neutral:hover:not(:disabled) {
+  background-color: #E6EAF0;
+}
+.bds-carousel-card-list__button--neutral:active:not(:disabled) {
+  background-color: #CAD4DF;
+}
+.bds-carousel-card-list__button--neutral.bds-carousel-card-list__button--disabled, .bds-carousel-card-list__button--neutral:disabled {
+  background-color: #CAD4DF;
+  color: #8A919A;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bds-carousel-card-list__button--green {
+  background-color: #21E46B;
+  color: #141414;
+}
+.bds-carousel-card-list__button--green:hover:not(:disabled) {
+  background-color: #70EE97;
+}
+.bds-carousel-card-list__button--green:active:not(:disabled) {
+  background-color: #21E46B;
+}
+.bds-carousel-card-list__button--green.bds-carousel-card-list__button--disabled, .bds-carousel-card-list__button--green:disabled {
+  background-color: #21E46B;
+  color: #8A919A;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bds-carousel-card-list__button--black {
+  background-color: #FFFFFF;
+  color: #141414;
+}
+.bds-carousel-card-list__button--black:hover:not(:disabled) {
+  background-color: #E6EAF0;
+}
+.bds-carousel-card-list__button--black:active:not(:disabled) {
+  background-color: #FFFFFF;
+}
+.bds-carousel-card-list__button--black.bds-carousel-card-list__button--disabled, .bds-carousel-card-list__button--black:disabled {
+  background-color: #FFFFFF;
+  color: #8A919A;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+html.light .bds-carousel-card-list__button:focus {
+  outline-color: #111112;
+}
+html.light .bds-carousel-card-list__button:focus-visible {
+  outline-color: #111112;
+}
+html.light .bds-carousel-card-list__track:focus-visible {
+  outline-color: #111112;
+}
+html.light .bds-carousel-card-list--neutral .bds-carousel-card-list__heading,
+html.light .bds-carousel-card-list--neutral .bds-carousel-card-list__description,
+html.light .bds-carousel-card-list--green .bds-carousel-card-list__heading,
+html.light .bds-carousel-card-list--green .bds-carousel-card-list__description {
+  color: #141414;
+}
+html.light .bds-carousel-card-list__button--neutral {
+  background-color: #CAD4DF;
+  color: #141414;
+}
+html.light .bds-carousel-card-list__button--neutral:hover:not(:disabled) {
+  background-color: #E6EAF0;
+}
+html.light .bds-carousel-card-list__button--neutral:active:not(:disabled) {
+  background-color: #CAD4DF;
+}
+html.light .bds-carousel-card-list__button--neutral.bds-carousel-card-list__button--disabled, html.light .bds-carousel-card-list__button--neutral:disabled {
+  background-color: #CAD4DF;
+  color: #8A919A;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+html.light .bds-carousel-card-list__button--green {
+  background-color: #21E46B;
+  color: #141414;
+}
+html.light .bds-carousel-card-list__button--green:hover:not(:disabled) {
+  background-color: #70EE97;
+}
+html.light .bds-carousel-card-list__button--green:active:not(:disabled) {
+  background-color: #21E46B;
+}
+html.light .bds-carousel-card-list__button--green.bds-carousel-card-list__button--disabled, html.light .bds-carousel-card-list__button--green:disabled {
+  background-color: #21E46B;
+  color: #8A919A;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+html.light .bds-carousel-card-list__button--black {
+  background-color: #141414;
+  color: #FFFFFF;
+}
+html.light .bds-carousel-card-list__button--black:hover:not(:disabled) {
+  background-color: #72777E;
+}
+html.light .bds-carousel-card-list__button--black:active:not(:disabled) {
+  background-color: #141414;
+}
+html.light .bds-carousel-card-list__button--black.bds-carousel-card-list__button--disabled, html.light .bds-carousel-card-list__button--black:disabled {
+  background-color: #141414;
+  color: #8A919A;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 pre {
   color: #FFFFFF;
   background-color: #232325;
@@ -26341,33 +26661,33 @@ html.light .progress {
 html.light [data-component-name="Search/SearchIcon"] > path {
   fill: black;
 }
-html.light a:not(.bds-link),
-html.light nav a:not(.bds-link),
-html.light a:not([role=button]):not(.bds-link) {
+html.light a:not(.bds-link):not(.bds-card-offgrid),
+html.light nav a:not(.bds-link):not(.bds-card-offgrid),
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid) {
   color: #141414;
 }
-html.light a:not(.bds-link).btn-primary,
-html.light nav a:not(.bds-link).btn-primary,
-html.light a:not([role=button]):not(.bds-link).btn-primary {
+html.light a:not(.bds-link):not(.bds-card-offgrid).btn-primary,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid).btn-primary,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).btn-primary {
   color: #FFFFFF;
 }
-html.light a:not(.bds-link).btn-primary:hover,
-html.light nav a:not(.bds-link).btn-primary:hover,
-html.light a:not([role=button]):not(.bds-link).btn-primary:hover {
+html.light a:not(.bds-link):not(.bds-card-offgrid).btn-primary:hover,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid).btn-primary:hover,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).btn-primary:hover {
   color: #FFFFFF;
 }
-html.light a:not(.bds-link):hover, html.light a:not(.bds-link):active, html.light a:not(.bds-link).active,
-html.light nav a:not(.bds-link):hover,
-html.light nav a:not(.bds-link):active,
-html.light nav a:not(.bds-link).active,
-html.light a:not([role=button]):not(.bds-link):hover,
-html.light a:not([role=button]):not(.bds-link):active,
-html.light a:not([role=button]):not(.bds-link).active {
+html.light a:not(.bds-link):not(.bds-card-offgrid):hover, html.light a:not(.bds-link):not(.bds-card-offgrid):active, html.light a:not(.bds-link):not(.bds-card-offgrid).active,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):hover,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):active,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid).active,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):hover,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):active,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).active {
   color: #5429A1;
 }
-html.light a:not(.bds-link):not(.btn):focus,
-html.light nav a:not(.bds-link):not(.btn):focus,
-html.light a:not([role=button]):not(.bds-link):not(.btn):focus {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.btn):focus,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.btn):focus,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.btn):focus {
   background-color: transparent;
 }
 html.light a.card:hover, html.light:active, html.light.active {

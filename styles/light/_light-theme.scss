@@ -123,9 +123,9 @@ h6,
 
 // Navigation ------------------------------------------------------------------
 
-a:not(.bds-link),
-nav a:not(.bds-link),
-a:not([role="button"]):not(.bds-link) {
+a:not(.bds-link):not(.bds-card-offgrid),
+nav a:not(.bds-link):not(.bds-card-offgrid),
+a:not([role="button"]):not(.bds-link):not(.bds-card-offgrid) {
   color: $light-fg;
 
   &.btn-primary {
