@@ -1,0 +1,180 @@
+// BDS CardsIconGrid Pattern Styles
+// Brand Design System - Section with heading, optional description, and grid of CardIcon components
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-cards-icon-grid                    - Base section container
+// .bds-cards-icon-grid__header            - Header wrapper for heading and description
+// .bds-cards-icon-grid__heading           - Section heading (uses .h-md)
+// .bds-cards-icon-grid__description       - Section description (uses .body-l)
+// .bds-cards-icon-grid__cards             - Cards grid container
+// .bds-cards-icon-grid__card-wrapper      - Individual card wrapper
+//
+// Design tokens from Figma:
+// Light Mode:
+// - Heading: Neutral Black (#141414) → $black
+// - Description: Neutral Black (#141414) → $black
+//
+// Dark Mode:
+// - Heading: Neutral White (#FFFFFF) → $white
+// - Description: Neutral White (#FFFFFF) → $white
+//
+// - Header content max-width: 808px (approximately 8 columns at desktop)
+// - Gap between heading and description: 8px mobile/tablet, 16px desktop
+// - Gap between cards: 8px (matches $bds-grid-gutter)
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+
+$bds-grid-gutter: 8px;
+
+// Spacing - Header gap (between heading and description)
+$bds-cards-icon-grid-header-gap-sm: 8px;         // Mobile: 8px
+$bds-cards-icon-grid-header-gap-md: 8px;         // Tablet: 8px
+$bds-cards-icon-grid-header-gap-lg: 16px;        // Desktop: 16px
+
+// Spacing - Section gap (between header and cards)
+$bds-cards-icon-grid-section-gap-sm: 24px;       // Mobile
+$bds-cards-icon-grid-section-gap-md: 32px;       // Tablet
+$bds-cards-icon-grid-section-gap-lg: 40px;       // Desktop
+
+// Spacing - Cards gap
+$bds-cards-icon-grid-cards-gap-sm: 24px;         // Mobile: 24px vertical stack
+$bds-cards-icon-grid-cards-gap-md: 8px;          // Tablet: 8px
+$bds-cards-icon-grid-cards-gap-lg: 8px;          // Desktop: 8px
+
+// Spacing - Row gap (between rows of cards)
+$bds-cards-icon-grid-row-gap-sm: 24px;           // Mobile
+$bds-cards-icon-grid-row-gap-md: 32px;           // Tablet
+$bds-cards-icon-grid-row-gap-lg: 40px;           // Desktop
+
+// Spacing - Section padding (vertical)
+$bds-cards-icon-grid-padding-y-sm: 48px;         // Mobile
+$bds-cards-icon-grid-padding-y-md: 64px;         // Tablet
+$bds-cards-icon-grid-padding-y-lg: 80px;         // Desktop
+
+// Colors - Light Mode (default)
+$bds-cards-icon-grid-heading-color: $black;      // #141414 - Neutral black
+$bds-cards-icon-grid-description-color: $black;  // #141414 - Neutral black
+
+// Colors - Dark Mode
+$bds-cards-icon-grid-heading-color-dark: $white;      // #FFFFFF - Neutral white
+$bds-cards-icon-grid-description-color-dark: $white;  // #FFFFFF - Neutral white
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-cards-icon-grid {
+  width: 100%;
+  padding-top: $bds-cards-icon-grid-padding-y-sm;
+  padding-bottom: $bds-cards-icon-grid-padding-y-sm;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-cards-icon-grid-padding-y-md;
+    padding-bottom: $bds-cards-icon-grid-padding-y-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-cards-icon-grid-padding-y-lg;
+    padding-bottom: $bds-cards-icon-grid-padding-y-lg;
+  }
+}
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-cards-icon-grid__header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-cards-icon-grid-header-gap-sm;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-cards-icon-grid-header-gap-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-cards-icon-grid-header-gap-lg;
+  }
+}
+
+.bds-cards-icon-grid__heading {
+  margin: 0;
+  // Typography handled by .h-md class from _font.scss
+}
+
+.bds-cards-icon-grid__description {
+  margin: 0;
+  // Typography handled by .body-l class from _font.scss
+}
+
+// =============================================================================
+// Cards Grid
+// =============================================================================
+
+.bds-cards-icon-grid__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $bds-cards-icon-grid-cards-gap-sm;
+  width: 100%;
+  margin-top: $bds-cards-icon-grid-section-gap-sm;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: $bds-cards-icon-grid-cards-gap-md;
+    row-gap: $bds-cards-icon-grid-row-gap-md;
+    margin-top: $bds-cards-icon-grid-section-gap-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: $bds-cards-icon-grid-cards-gap-lg;
+    row-gap: $bds-cards-icon-grid-row-gap-lg;
+    margin-top: $bds-cards-icon-grid-section-gap-lg;
+  }
+}
+
+.bds-cards-icon-grid__card-wrapper {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+
+  // Ensure CardIcon fills the wrapper
+  .bds-card-icon {
+    width: 100%;
+  }
+}
+
+// =============================================================================
+// Light Mode Styles
+// =============================================================================
+
+html.light {
+  .bds-cards-icon-grid {
+    background-color: $white;
+  }
+
+  .bds-cards-icon-grid__heading {
+    color: $bds-cards-icon-grid-heading-color;
+  }
+
+  .bds-cards-icon-grid__description {
+    color: $bds-cards-icon-grid-description-color;
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles
+// =============================================================================
+
+html.dark {
+  .bds-cards-icon-grid__heading {
+    color: $bds-cards-icon-grid-heading-color-dark;
+  }
+
+  .bds-cards-icon-grid__description {
+    color: $bds-cards-icon-grid-description-color-dark;
+  }
+}
+
