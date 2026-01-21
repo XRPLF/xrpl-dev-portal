@@ -100,19 +100,26 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
         </PageGridCol>
       </PageGridRow>
       <PageGridRow>
-        {logos.map((logo, index) => (
-          <PageGridCol key={index} span={{ base: 2, md: 2, lg: 3 }}>
-            <TileLogo
-              shape="rectangle"
-              variant={variant === 'gray' ? 'neutral' : 'green'}
-              logo={logo.src}
-              alt={logo.alt}
-              href={logo.href}
-              onClick={logo.onClick}
-              disabled={logo.disabled}
-            />
-          </PageGridCol>
-        ))}
+        <PageGridCol 
+          span={{ base: "fill", lg: alignRight ? 8 : "fill" }}
+          offset={{ base: 0, lg: alignRight ? 4 : 0 }}
+        >
+          <PageGridRow>
+            {logos.map((logo, index) => (
+              <PageGridCol key={index} span={{ base: 2, md: 2, lg: 3 }}>
+                <TileLogo
+                  shape="rectangle"
+                  variant={variant === 'gray' ? 'neutral' : 'green'}
+                  logo={logo.src}
+                  alt={logo.alt}
+                  href={logo.href}
+                  onClick={logo.onClick}
+                  disabled={logo.disabled}
+                />
+              </PageGridCol>
+            ))}
+          </PageGridRow>
+        </PageGridCol>
       </PageGridRow>
     </PageGrid>
   );

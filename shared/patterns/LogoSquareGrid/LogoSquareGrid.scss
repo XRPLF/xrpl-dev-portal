@@ -107,70 +107,9 @@ $bds-lsg-text-gap-desktop: 16px;
 // Note: Button layout is now handled by the ButtonGroup component
 
 // =============================================================================
-// Logo Grid
+// Logo Grid Row
 // =============================================================================
-// Uses ul > li semantic structure for accessibility
-// Grid layout uses CSS Grid for responsive columns
-
-.bds-logo-square-grid__logos-wrapper {
-  width: 100%;
-}
-
-.bds-logo-square-grid__logos-grid {
-  display: grid;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 0;
-  width: 100%;
-
-  // Mobile: 2 columns (matching span 2/4)
-  grid-template-columns: repeat(2, 1fr);
-
-  // Tablet: 3 columns (matching span 2/6)
-  @include media-breakpoint-up(md) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  // Desktop: 4 columns (matching span 3/12)
-  @include media-breakpoint-up(lg) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  // Single logo variant - 1 column always
-  &--single {
-    grid-template-columns: 1fr;
-    max-width: 150px; // Constrain single logo width
-
-    @include media-breakpoint-up(md) {
-      grid-template-columns: 1fr;
-      max-width: 180px;
-    }
-
-    @include media-breakpoint-up(lg) {
-      grid-template-columns: 1fr;
-      max-width: 200px;
-    }
-  }
-
-  // Double logo variant - 2 columns always
-  &--double {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 300px;
-
-    @include media-breakpoint-up(md) {
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 360px;
-    }
-
-    @include media-breakpoint-up(lg) {
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 400px;
-    }
-  }
-}
-
-.bds-logo-square-grid__logo-item {
-  display: block;
-  width: 100%;
-}
+// Note: Grid layout is now handled by PageGridRow/PageGridCol
+// Each tile uses PageGridCol with span={{ base: 2, lg: 3 }}
+// This gives us 2 columns on mobile (2/4) and 4 columns on desktop (3/12)
+// Tile rendering and styling is handled by the TileLogo component
