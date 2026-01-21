@@ -6,8 +6,8 @@ import { Button, ButtonProps } from "shared/components/Button/Button";
 const isEmpty = (val: unknown): boolean => {
   if (val === null || val === undefined) return true;
   if (typeof val === "string") return val.trim().length === 0;
-  if (Array.isArray(val)) return val.length === 0 || !val[0];
-  return Boolean(val);
+  if (Array.isArray(val)) return val.length === 0;
+  return !Boolean(val);
 };
 
 type DesignContrainedButtonProps = Omit<ButtonProps, "variant" | "color">;
@@ -99,9 +99,7 @@ const MediaRenderer: React.FC<{ media: HeaderHeroMedia }> = memo(
             </div>
           );
         }
-        {
-          /* className and style are omitted from video props and only available on the container */
-        }
+ 
       case "video": {
         const { type, alt, ...videoProps } = media;
         return (
@@ -132,7 +130,7 @@ const MediaRenderer: React.FC<{ media: HeaderHeroMedia }> = memo(
 );
 
 const HeaderHeroPrimaryMedia = forwardRef<
-  HTMLHeadElement,
+  HTMLElement,
   HeaderHeroPrimaryMediaProps
 >((props, ref) => {
   const { headline, subtitle, callsToAction, media, className, ...restProps } =
@@ -150,13 +148,13 @@ const HeaderHeroPrimaryMedia = forwardRef<
   // Note: These props log warnings but don't prevent rendering
   useEffect(() => {
     const propsToValidate = {
-      subtitle: subtitle,
-      callsToAction: callsToAction,
-      media: media,
+      subtitle,
+      callsToAction,
+      media,
     };
 
     Object.entries(propsToValidate).forEach(([key, value]) => {
-      if (!isEmpty(value)) {
+      if (isEmpty(value)) {
         console.warn(`${key} is required for HeaderHeroPrimaryMedia`);
       }
     });
@@ -171,7 +169,7 @@ const HeaderHeroPrimaryMedia = forwardRef<
       <PageGrid>
         <PageGrid.Row>
           <PageGrid.Col
-            span={{ base: 12, md: 6, lg: 6 }}
+            span={{ base: 12, md: 6, lg: 5 }}
             className="bds-header-hero-primary-media__headline-container"
           >
             <h1 className="bds-header-hero-primary-media__headline display-md">
@@ -180,12 +178,12 @@ const HeaderHeroPrimaryMedia = forwardRef<
           </PageGrid.Col>
           <PageGrid.Col offset={{ base: 0, lg: 1 }} span={{ base: 12, lg: 5 }}>
             <div className="bds-header-hero-primary-media__cta-container">
-              {subtitle && (
-                <div className="bds-header-hero-primary-media__subtitle label-l">
+              {!isEmpty(subtitle) && (
+                <div className="bds-header-hero-primary-media__subtitle body-l">
                   {subtitle}
                 </div>
               )}
-              {(primaryCta || secondaryCta) && (
+              {(!isEmpty(primaryCta) || !isEmpty(secondaryCta)) && (
                 <div className="bds-header-hero-primary-media__cta-buttons">
                   <Button
                     {...primaryCta}
@@ -193,7 +191,7 @@ const HeaderHeroPrimaryMedia = forwardRef<
                     color="green"
                     showIcon={true}
                   />
-                  {secondaryCta && (
+                  {!isEmpty(secondaryCta) && (
                     <Button
                       {...secondaryCta}
                       className={clsx(
@@ -211,7 +209,7 @@ const HeaderHeroPrimaryMedia = forwardRef<
           </PageGrid.Col>
         </PageGrid.Row>
         {/* Media */}
-        {media && (
+        {!isEmpty(media) && (
           <PageGrid.Row>
             <PageGrid.Col span={12}>
               <MediaRenderer media={media} />
