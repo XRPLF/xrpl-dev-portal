@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Button } from '../../components/Button/Button';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */
@@ -116,30 +116,12 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
             </div>
 
             {/* Buttons */}
-            {(primaryButton || tertiaryButton) && (
-              <div className="bds-callout-media-banner__actions">
-                {primaryButton && (
-                  <Button
-                    variant="primary"
-                    color={buttonColor}
-                    href={primaryButton.href}
-                    onClick={primaryButton?.onClick as (() => void) | undefined}
-                  >
-                    {primaryButton.label}
-                  </Button>
-                )}
-                {tertiaryButton && (
-                  <Button
-                    variant="tertiary"
-                    color={buttonColor}
-                    href={tertiaryButton.href}
-                    onClick={tertiaryButton?.onClick as (() => void) | undefined}
-                  >
-                    {tertiaryButton.label}
-                  </Button>
-                )}
-              </div>
-            )}
+            <ButtonGroup
+              primaryButton={primaryButton}
+              tertiaryButton={tertiaryButton}
+              color={buttonColor}
+              gap="none"
+            />
           </div>
         </PageGridCol>
       </PageGridRow>
