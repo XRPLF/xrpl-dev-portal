@@ -90,7 +90,7 @@ export const CardStat: React.FC<CardStatProps> = ({
           <div className="bds-card-stat__buttons">
             {primaryButton && (
               <Button
-                // forceColor  - prop to be added once feature two column is merged 
+                forceColor
                 variant="primary"
                 color="black"
                 href={primaryButton.href}
@@ -101,7 +101,7 @@ export const CardStat: React.FC<CardStatProps> = ({
             )}
             {secondaryButton && (
               <Button
-                // forceColor  - prop to be added once feature two column is merged 
+                forceColor
                 variant="secondary"
                 color="black"
                 href={secondaryButton.href}

@@ -1,0 +1,465 @@
+// FeatureTwoColumn Pattern Styles
+// =============================================================================
+// A feature section pattern with two-column layout for content and media.
+// Supports color themes (neutral, lilac, yellow, green) and arrangement variants.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Color variants map - centralizes all variant configurations
+// Structure: variant-name: (light-bg, dark-bg)
+$bds-feature-variants: (
+  'neutral': (
+    light-bg: $gray-100,   // #F0F3F7 (Neutral-100)
+    dark-bg: $gray-200     // #E6EAF0 (Neutral-200)
+  ),
+  'lilac': (
+    light-bg: $lilac-200,  // #D9CAFF (Primary-Lilac-200)
+    dark-bg: $lilac-200    // #D9CAFF (Primary-Lilac-200)
+  ),
+  'yellow': (
+    light-bg: $yellow-100, // #F3F1EB (Secondary-Yellow-100)
+    dark-bg: $yellow-100   // #F3F1EB (Secondary-Yellow-100)
+  ),
+  'green': (
+    light-bg: $green-300,  // #21E46B (Primary-Green-300default)
+    dark-bg: $green-300    // #21E46B (Primary-Green-300default)
+  )
+);
+
+// Text colors - same for light and dark modes
+// From styles/_colors.scss: $black = #141414 (Neutral-black)
+$bds-feature-title-color: $black; // #141414 (Neutral-black)
+$bds-feature-title-color-dark: $black; // #141414 (same in dark mode)
+$bds-feature-description-color: $black; // #141414 (Neutral-black)
+$bds-feature-description-color-dark: $black; // #141414 (same in dark mode)
+
+// Spacing - Desktop (≥992px) - based on Figma 1280px design
+$bds-feature-desktop-py: 96px;
+$bds-feature-desktop-text-gap: 16px;
+$bds-feature-desktop-cta-gap-col: 0; // Gap between button rows
+$bds-feature-desktop-content-gap: 0; // Gap between text-group and cta (space-between handles this)
+$bds-feature-desktop-button-gap: 16px; // Gap between buttons in ButtonGroup (consistent across all sizes)
+
+// Spacing - Tablet (576px - 991px) - based on Figma 768px design
+$bds-feature-tablet-py: 80px;
+$bds-feature-tablet-pl: 115px; // Left padding from Figma
+$bds-feature-tablet-pr: 107px; // Right padding from Figma
+$bds-feature-tablet-text-gap: 8px;
+$bds-feature-tablet-cta-gap-row: 16px; // Gap between buttons in row from Figma
+$bds-feature-tablet-cta-gap-col: 0;
+$bds-feature-tablet-content-gap: 32px;
+$bds-feature-tablet-button-gap: 16px; // Gap between buttons in ButtonGroup (consistent across all sizes)
+
+// Spacing - Mobile (<576px) - based on Figma 375px design
+$bds-feature-mobile-py: 64px;
+$bds-feature-mobile-px: 16px;
+$bds-feature-mobile-text-gap: 8px;
+$bds-feature-mobile-cta-gap: 16px; // Gap between stacked buttons from Figma
+$bds-feature-mobile-content-gap: 24px;
+$bds-feature-mobile-button-gap: 16px; // Gap between buttons in ButtonGroup (consistent across all sizes)
+
+// Grid gutter - consistent with PageGrid
+$bds-grid-gutter: 8px;
+
+// =============================================================================
+// Base Styles
+// =============================================================================
+.bds-feature-two-column__button-group {
+  .bds-btn--tertiary {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+}
+
+.bds-feature-two-column__cta-row{
+  .bds-btn--tertiary {
+    padding-top: 16px !important;
+  }
+}
+.bds-feature-two-column {
+  width: 100%;
+
+  // Extra large screens (>1280px): constrain component width and center
+  // Background color stays within 1280px, parent section background shows beyond
+  @include media-breakpoint-up(lg) {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  // Desktop layout - hidden on mobile/tablet, shown on desktop
+  &__desktop-layout {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      width: 100%;
+      align-items: stretch; // Both columns match height
+    }
+  }
+
+  // Mobile layout - shown on mobile/tablet, hidden on desktop
+  &__mobile-layout {
+    display: block;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  // Container - uses PageGrid with wide variant (for mobile layout)
+  // Override all PageGrid padding - content columns have their own padding
+  &__container {
+    padding: 0 !important; // Override PageGrid default padding at all breakpoints
+  }
+
+  // Row - uses PageGrid.Row (for mobile layout)
+  &__row {
+    gap: 0 !important; // No gap between content and media sections, override PageGrid
+  }
+
+  // Content column wrapper
+  &__content-col {
+    display: flex;
+    flex-direction: column;
+
+    // Mobile: vertical padding, no horizontal padding (grid handles positioning)
+    padding: $bds-feature-mobile-py 0;
+
+    // Tablet: vertical padding, no horizontal padding (grid handles positioning)
+    @include media-breakpoint-up(md) {
+      padding: $bds-feature-tablet-py 0;
+    }
+
+    // Desktop: 50% width, vertical padding (grid handles horizontal positioning)
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      padding: $bds-feature-desktop-py 0;
+      // Match height of media column (which has aspect-ratio 1/1)
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  // Content grid - positions content within column using grid system
+  // Desktop: 6-column grid within the content half, content spans cols 2-5 (offset-1, span-4)
+  // Tablet: 8-column grid, content spans cols 2-7 (offset-1, span-6)
+  // Mobile: 4-column grid, content spans cols 1-4 (no offset, span-4)
+  &__content-grid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+
+    // Mobile: 4 columns, content full width
+    grid-template-columns: repeat(4, 1fr);
+    gap: $bds-grid-gutter;
+    padding: 0 16px; // Mobile edge padding
+
+    // Tablet: 8 columns
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(8, 1fr);
+      padding: 0 24px; // Tablet edge padding
+    }
+
+    // Desktop: 6 columns (within the 50% content half)
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(6, 1fr);
+      padding: 0 32px; // Desktop edge padding
+    }
+  }
+
+  // Content wrapper - positioned within the grid
+  &__content-wrapper {
+    // Mobile: span all 4 columns (cols 1-4)
+    grid-column: 1 / -1;
+
+    // Tablet: start at col 2, span 6 columns (cols 2-7)
+    @include media-breakpoint-up(md) {
+      grid-column: 2 / span 6;
+    }
+
+    // Desktop: start at col 2, span 4 columns (cols 2-5)
+    @include media-breakpoint-up(lg) {
+      grid-column: 2 / span 4;
+    }
+  }
+
+  // Media column wrapper - desktop layout (background image)
+  &__media-col {
+    display: flex;
+    flex-direction: column;
+
+    // Desktop: 50% width with background image, square aspect ratio
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  // Mobile media column
+  &__media-col--mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    gap: $bds-feature-mobile-content-gap;
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-feature-tablet-content-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-feature-desktop-content-gap;
+    }
+  }
+
+  // Content with multiple links
+  // Mobile: 24px gap between text-group and button-group
+  // Tablet: 32px gap between text-group and button-group
+  // Desktop: space-between with no gap (auto distribution between text-group and button-group)
+  &__content--multiple {
+    // Mobile: no gap since we only have 2 items (text-group and button-group)
+    // The 24px gap is handled via button-group margin or flex gap
+    gap: 0;
+    justify-content: flex-start;
+
+    @include media-breakpoint-up(lg) {
+      gap: 0; // Desktop uses space-between for auto distribution
+      justify-content: space-between;
+    }
+
+    // Secondary button should not stretch - keep intrinsic width
+    >.bds-btn--secondary {
+      align-self: flex-start;
+    }
+  }
+
+  // Button group - contains all buttons in the multiple links layout
+  // 16px gap between buttons on ALL screen sizes
+  &__button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $bds-feature-mobile-button-gap; // 16px on mobile
+    margin-top: $bds-feature-mobile-content-gap; // 24px spacing from text-group on mobile
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-feature-tablet-button-gap; // 16px on tablet
+      margin-top: $bds-feature-tablet-content-gap; // 32px spacing from text-group on tablet
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-feature-desktop-button-gap; // 16px on desktop
+      margin-top: 0; // Desktop uses space-between, no explicit margin needed
+    }
+
+    // Tertiary links need left padding removed to align text with title
+    >.bds-btn--tertiary {
+      padding-left: 0 !important;
+      margin-left: 0;
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        padding-left: 0 !important;
+      }
+    }
+  }
+
+  // Text group - title + description
+  &__text-group {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-feature-mobile-text-gap;
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-feature-tablet-text-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-feature-desktop-text-gap;
+    }
+  }
+
+  // Title - Heading MD from styles/_font.scss
+  // Font: Tobias (secondary), Size: 40px, Weight: 300, Line-height: 46px, Letter-spacing: -1px
+  &__title {
+    @include type(heading-md);
+    color: $bds-feature-title-color; // #141414 (Neutral-black) - same in light/dark
+    margin: 0;
+  }
+
+  // Description - Body L from styles/_font.scss
+  // Font: Booton (primary), Size: 18px, Weight: 300, Line-height: 26.1px, Letter-spacing: -0.5px
+  &__description {
+    @include type(body-l);
+    color: $bds-feature-description-color; // #141414 (Neutral-black) - same in light/dark
+    margin: 0;
+  }
+
+  // CTA container - base styles
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  // CTA variant: Single secondary button - maintains vertical layout
+  &__cta--single {
+    flex-direction: column;
+  }
+
+  // CTA variant: Primary + tertiary - horizontal on tablet+
+  &__cta--double {
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  // CTA row - for first two buttons in multiple links layout (Primary + Tertiary)
+  // Horizontal layout on tablet+ (md and lg share same styles)
+  &__cta-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      align-items: center;
+    }
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  // Tertiary group - groups remaining tertiary links together as a single unit
+  // No gap between tertiary links - they stack tightly as a group
+  &__tertiary-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0; // No spacing between tertiary links in the group
+
+    // Tertiary links need left padding removed to align text with title
+    .bds-btn--tertiary {
+      padding-left: 0 !important;
+      margin-left: 0;
+
+      &:hover:not(:disabled):not(.bds-btn--disabled),
+      &:focus:not(:disabled):not(.bds-btn--disabled),
+      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+      &:active:not(:disabled):not(.bds-btn--disabled) {
+        padding-left: 0 !important;
+      }
+    }
+  }
+
+  // Media container
+  &__media {
+    width: 100%;
+    overflow: hidden;
+
+    // Mobile - 1:1 aspect ratio
+    aspect-ratio: 1 / 1;
+
+    // Tablet - 16:9 aspect ratio
+    @include media-breakpoint-up(md) {
+      aspect-ratio: 16 / 9;
+    }
+
+    // Desktop - 1:1 aspect ratio (square)
+    @include media-breakpoint-up(lg) {
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  // Media image
+  &__media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+// =============================================================================
+// Color Theme Modifiers
+// =============================================================================
+// Generated from $bds-feature-variants map
+
+@each $variant-name, $variant-colors in $bds-feature-variants {
+  .bds-feature-two-column--#{$variant-name} {
+    background-color: map-get($variant-colors, light-bg);
+  }
+}
+
+// =============================================================================
+// Dark Mode Theme Overrides
+// =============================================================================
+
+html.dark {
+  .bds-feature-two-column {
+    &__title {
+      color: $bds-feature-title-color-dark;
+    }
+
+    &__description {
+      color: $bds-feature-description-color-dark;
+    }
+  }
+
+  // Generate dark mode styles for each variant
+  @each $variant-name, $variant-colors in $bds-feature-variants {
+    .bds-feature-two-column--#{$variant-name} {
+      background-color: map-get($variant-colors, dark-bg);
+    }
+  }
+}
+
+// =============================================================================
+// Layout Modifiers (Arrange)
+// =============================================================================
+
+// Right arrangement - content on right, media on left (media first on mobile/tablet)
+// Use flex-direction to swap columns on all screen sizes
+.bds-feature-two-column--right {
+
+  // Mobile/Tablet layout - reverse the column order to show media first
+  .bds-feature-two-column__row {
+    flex-direction: column-reverse !important;
+  }
+
+  // Desktop layout - reverse the flex direction for side-by-side
+  .bds-feature-two-column__desktop-layout {
+    @include media-breakpoint-up(lg) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  // Desktop content wrapper - mirror the grid positioning for right layout
+  // Content should start from col 2 and span 4 cols (same as left, grid handles positioning)
+  .bds-feature-two-column__content-wrapper {
+    @include media-breakpoint-up(lg) {
+      // Same positioning as left layout - grid alignment handles visual positioning
+      grid-column: 2 / span 4;
+    }
+  }
+}
