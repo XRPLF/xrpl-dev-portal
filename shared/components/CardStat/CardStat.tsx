@@ -82,42 +82,30 @@ export const CardStat: React.FC<CardStatProps> = ({
           <div className="body-r">{label}</div>
         </div>
 
-        {/* Buttons section */} 
+        {/* Buttons section */}
         {hasButtons && (
           <div className="bds-card-stat__buttons">
             {primaryButton && (
-              primaryButton.href ? (
-                <a href={primaryButton.href}>
-                  <Button variant="primary" color="black">
-                    {primaryButton.label}
-                  </Button>
-                </a>
-              ) : (
-                <Button 
-                  variant="primary" 
-                  color="black"
-                  onClick={primaryButton.onClick}
-                >
-                  {primaryButton.label}
-                </Button>
-              )
+              <Button
+                // forceColor  - prop to be added once feature two column is merged 
+                variant="primary"
+                color="black"
+                href={primaryButton.href}
+                onClick={primaryButton.onClick}
+              >
+                {primaryButton.label}
+              </Button>
             )}
             {secondaryButton && (
-              secondaryButton.href ? (
-                <a href={secondaryButton.href}>
-                  <Button variant="secondary" color="black">
-                    {secondaryButton.label}
-                  </Button>
-                </a>
-              ) : (
-                <Button 
-                  variant="secondary" 
-                  color="black"
-                  onClick={secondaryButton.onClick}
-                >
-                  {secondaryButton.label}
-                </Button>
-              )
+              <Button
+                // forceColor  - prop to be added once feature two column is merged 
+                variant="secondary"
+                color="black"
+                href={secondaryButton.href}
+                onClick={secondaryButton.onClick}
+              >
+                {secondaryButton.label}
+              </Button>
             )}
           </div>
         )}

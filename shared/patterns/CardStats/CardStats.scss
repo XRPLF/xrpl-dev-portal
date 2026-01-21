@@ -1,0 +1,176 @@
+// BDS CardStats Pattern Styles
+// Brand Design System - Section with heading, description, and grid of CardStat components
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-card-stats                    - Base section container
+// .bds-card-stats__header            - Header wrapper for heading and description
+// .bds-card-stats__heading           - Section heading (uses .h-md)
+// .bds-card-stats__description       - Section description (uses .body-l)
+// .bds-card-stats__cards             - Cards grid container
+// .bds-card-stats__card-wrapper      - Individual card wrapper
+//
+// Design tokens from Figma:
+// Light Mode:
+// - Background: White (#FFFFFF)
+// - Heading: Neutral Black (#141414) → $black
+// - Description: Neutral Black (#141414) → $black
+//
+// Dark Mode:
+// - Background: transparent (inherits page background)
+// - Heading: Neutral White (#FFFFFF) → $white
+// - Description: Neutral White (#FFFFFF) → $white
+//
+// - Header content max-width: 808px (approximately 8 columns at desktop)
+// - Gap between heading and description: 16px
+// - Gap between cards: 8px (matches $bds-grid-gutter)
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+
+$bds-grid-gutter: 8px;
+
+// Color tokens - Light Mode (from Figma: node 32051-2839)
+$bds-card-stats-bg-light: $white;           // --neutral/white (#FFFFFF)
+$bds-card-stats-heading-light: $black;      // --neutral/black (#141414)
+$bds-card-stats-description-light: $black;  // --neutral/black (#141414)
+
+// Color tokens - Dark Mode (from Figma: node 32051-2524)
+$bds-card-stats-bg-dark: transparent;       // Inherits page background
+$bds-card-stats-heading-dark: $white;       // --neutral/white (#FFFFFF)
+$bds-card-stats-description-dark: $white;   // --neutral/white (#FFFFFF)
+
+// Spacing - Header gap (between heading and description)
+$bds-card-stats-header-gap-sm: 8px;         // Mobile: 8px
+$bds-card-stats-header-gap-md: 8px;         // Tablet: 8px
+$bds-card-stats-header-gap-lg: 16px;        // Desktop: 16px
+
+// Spacing - Section gap (between header and cards)
+$bds-card-stats-section-gap-sm: 24px;       // Mobile: 24px
+$bds-card-stats-section-gap-md: 32px;       // Tablet: 32px
+$bds-card-stats-section-gap-lg: 40px;       // Desktop: 40px
+
+// Spacing - Section padding
+$bds-card-stats-padding-y-sm: 24px;         // Mobile: 24px
+$bds-card-stats-padding-y-md: 32px;         // Tablet: 32px
+$bds-card-stats-padding-y-lg: 40px;         // Desktop: 40px
+
+// =============================================================================
+// Base Section Styles
+// =============================================================================
+
+.bds-card-stats {
+  // Layout
+  display: block;
+  width: 100%;
+  background-color: $bds-card-stats-bg-light;
+  
+  // Vertical padding
+  padding-top: $bds-card-stats-padding-y-sm;
+  padding-bottom: $bds-card-stats-padding-y-sm;
+  
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-card-stats-padding-y-md;
+    padding-bottom: $bds-card-stats-padding-y-md;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-card-stats-padding-y-lg;
+    padding-bottom: $bds-card-stats-padding-y-lg;
+  }
+}
+
+// =============================================================================
+// Header Styles
+// =============================================================================
+
+.bds-card-stats__header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-card-stats-header-gap-sm;
+  max-width: 808px;
+  
+  // Responsive header gap
+  @include media-breakpoint-up(md) {
+    gap: $bds-card-stats-header-gap-md;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    gap: $bds-card-stats-header-gap-lg;
+  }
+  
+  // Margin below header (gap between header and cards)
+  margin-bottom: $bds-card-stats-section-gap-sm;
+  
+  @include media-breakpoint-up(md) {
+    margin-bottom: $bds-card-stats-section-gap-md;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    margin-bottom: $bds-card-stats-section-gap-lg;
+  }
+}
+
+.bds-card-stats__heading {
+  color: $black;
+  margin-bottom: 0;
+}
+
+.bds-card-stats__description {
+  color: $black;
+  margin-bottom: 0;
+}
+
+// =============================================================================
+// Cards Grid Styles
+// Breakpoints from _breakpoints.scss:
+// - xs: 0 (mobile - 1 column)
+// - sm/md: 576px (tablet - 2 columns)
+// - lg: 992px (desktop - 3 columns)
+// - xl: 1280px, xxl: 1512px
+// =============================================================================
+
+.bds-card-stats__cards {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-grid-gutter;
+  width: 100%;
+
+  // Tablet and above: switch to flex-wrap row layout
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.bds-card-stats__card-wrapper {
+  // Mobile (base): 1 column - full width
+  flex: 0 0 100%;
+  min-width: 0;
+
+  // Tablet (md - 576px): 2 columns
+  @include media-breakpoint-up(md) {
+    flex: 0 0 calc(50% - #{$bds-grid-gutter / 2});
+  }
+
+  // Desktop (lg - 992px): 3 columns
+  @include media-breakpoint-up(lg) {
+    flex: 0 0 calc(33.333% - #{$bds-grid-gutter * 2 / 3});
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles
+// =============================================================================
+
+html.dark {
+  .bds-card-stats {
+    background-color: transparent;
+  }
+  
+  .bds-card-stats__heading,
+  .bds-card-stats__description {
+    color: $white;
+  }
+}
+
