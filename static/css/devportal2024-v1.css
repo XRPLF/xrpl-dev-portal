@@ -13057,6 +13057,11 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   top: -0.4em;
   font-size: 0.7em;
 }
+.bds-card-stat__statistic sup.bds-card-stat__superscript--numeric {
+  font-size: 0.5em;
+  top: -0.75em;
+  font-weight: 400;
+}
 .bds-card-stat__buttons {
   display: flex;
   flex-wrap: wrap;

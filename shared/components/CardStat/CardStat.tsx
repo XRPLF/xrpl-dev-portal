@@ -13,8 +13,8 @@ interface ButtonConfig {
 export interface CardStatProps {
   /** The main statistic to display (e.g., "6 Million+") */
   statistic: string;
-  /** Superscript text for the statistic */
-  superscript?: '*' | '+' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0';
+  /** Superscript text for the statistic (symbols like '*', '+' or numeric strings like '1', '12') */
+  superscript?: string;
   /** Descriptive label for the statistic */
   label: string;
   /** Background color variant
@@ -72,13 +72,16 @@ export const CardStat: React.FC<CardStatProps> = ({
 
   const hasButtons = primaryButton || secondaryButton;
 
+  // Check if superscript is a number (one or more digits), excluding + or - signs
+  const isNumericSuperscript = superscript && /^[0-9]+$/.test(superscript);
+
   return (
     <div className={classNames}>
       <div className="bds-card-stat__content">
         {/* Text section */}
         <div className="bds-card-stat__text">
           <div className="bds-card-stat__statistic">
-            {statistic}{superscript && <sup>{superscript}</sup>}</div>
+            {statistic}{superscript && <sup className={isNumericSuperscript ? 'bds-card-stat__superscript--numeric' : ''}>{superscript}</sup>}</div>
           <div className="body-r">{label}</div>
         </div>
 
