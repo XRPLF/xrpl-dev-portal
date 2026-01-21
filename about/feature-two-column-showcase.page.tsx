@@ -299,8 +299,8 @@ export default function FeatureTwoColumnShowcase() {
             title="Content Left"
             description="This content appears on the left side of the layout on desktop, and above the media on mobile/tablet. This is the default arrangement."
             links={[
-              { label: "Primary Action", href: "#primary" },
-              { label: "Secondary Action", href: "#secondary" }
+              { label: "Primary", href: "#primary" },
+              { label: "Learn More", href: "#secondary" }
             ]}
             media={{ src: placeholderImage, alt: "Left arrangement" }}
           />
@@ -327,8 +327,8 @@ export default function FeatureTwoColumnShowcase() {
             title="Content Right"
             description="This content appears on the right side on desktop, and below the media on mobile/tablet. The media-first approach works well for visual hierarchy."
             links={[
-              { label: "Primary Action", href: "#primary" },
-              { label: "Secondary Action", href: "#secondary" }
+              { label: "Primary", href: "#primary" },
+              { label: "Learn More", href: "#secondary" }
             ]}
             media={{ src: placeholderImage, alt: "Right arrangement" }}
           />
