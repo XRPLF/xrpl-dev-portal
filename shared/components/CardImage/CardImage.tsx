@@ -140,7 +140,7 @@ export const CardImage: React.FC<CardImageProps> = ({
       {/* Content area: title, subtitle, and button */}
       <div className="bds-card-image__content">
         <div className="bds-card-image__text">
-          <h3 className="bds-card-image__title sh-md-r">{title}</h3>
+          <h3 className="bds-card-image__title sh-md-l">{title}</h3>
           <p className="bds-card-image__subtitle body-l">{subtitle}</p>
         </div>
 
