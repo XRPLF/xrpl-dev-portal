@@ -7,19 +7,26 @@
 // Design Tokens
 // =============================================================================
 
-// Background colors for each color variant (light mode)
-// From styles/_colors.scss - Design tokens
-$bds-feature-neutral-bg: $gray-100; // #F0F3F7 (Neutral-100)
-$bds-feature-lilac-bg: $lilac-200; // #D9CAFF (Primary-Lilac-200)
-$bds-feature-yellow-bg: $yellow-100; // #F3F1EB (Secondary-Yellow-100)
-$bds-feature-green-bg: $green-300; // #21E46B (Primary-Green-300default)
-
-// Background colors for dark mode
-// From styles/_colors.scss - Design tokens
-$bds-feature-neutral-bg-dark: $gray-200; // #E6EAF0 (Neutral-200)
-$bds-feature-lilac-bg-dark: $lilac-200; // #D9CAFF (Primary-Lilac-200)
-$bds-feature-yellow-bg-dark: $yellow-100; // #F3F1EB (Secondary-Yellow-100)
-$bds-feature-green-bg-dark: $green-300; // #21E46B (Primary-Green-300default)
+// Color variants map - centralizes all variant configurations
+// Structure: variant-name: (light-bg, dark-bg)
+$bds-feature-variants: (
+  'neutral': (
+    light-bg: $gray-100,   // #F0F3F7 (Neutral-100)
+    dark-bg: $gray-200     // #E6EAF0 (Neutral-200)
+  ),
+  'lilac': (
+    light-bg: $lilac-200,  // #D9CAFF (Primary-Lilac-200)
+    dark-bg: $lilac-200    // #D9CAFF (Primary-Lilac-200)
+  ),
+  'yellow': (
+    light-bg: $yellow-100, // #F3F1EB (Secondary-Yellow-100)
+    dark-bg: $yellow-100   // #F3F1EB (Secondary-Yellow-100)
+  ),
+  'green': (
+    light-bg: $green-300,  // #21E46B (Primary-Green-300default)
+    dark-bg: $green-300    // #21E46B (Primary-Green-300default)
+  )
+);
 
 // Text colors - same for light and dark modes
 // From styles/_colors.scss: $black = #141414 (Neutral-black)
@@ -310,18 +317,15 @@ $bds-grid-gutter: 8px;
       flex-direction: row;
       flex-wrap: wrap;
     }
-
   }
 
-  // CTA variants
+  // CTA variant: Single secondary button - maintains vertical layout
   &__cta--single {
-    // Single secondary button - vertical on mobile
     flex-direction: column;
   }
 
+  // CTA variant: Primary + tertiary - horizontal on tablet+
   &__cta--double {
-
-    // Primary + tertiary - horizontal on tablet+
     @include media-breakpoint-up(md) {
       flex-direction: row;
       align-items: center;
@@ -329,6 +333,7 @@ $bds-grid-gutter: 8px;
   }
 
   // CTA row - for first two buttons in multiple links layout (Primary + Tertiary)
+  // Horizontal layout on tablet+ (md and lg share same styles)
   &__cta-row {
     display: flex;
     flex-direction: column;
@@ -338,7 +343,6 @@ $bds-grid-gutter: 8px;
       flex-direction: row;
       align-items: center;
     }
-
     @include media-breakpoint-up(lg) {
       flex-direction: row;
       align-items: center;
@@ -398,25 +402,12 @@ $bds-grid-gutter: 8px;
 // =============================================================================
 // Color Theme Modifiers
 // =============================================================================
+// Generated from $bds-feature-variants map
 
-// Neutral variant (default white/black)
-.bds-feature-two-column--neutral {
-  background-color: $bds-feature-neutral-bg;
-}
-
-// Lilac variant
-.bds-feature-two-column--lilac {
-  background-color: $bds-feature-lilac-bg;
-}
-
-// Yellow variant
-.bds-feature-two-column--yellow {
-  background-color: $bds-feature-yellow-bg;
-}
-
-// Green variant
-.bds-feature-two-column--green {
-  background-color: $bds-feature-green-bg;
+@each $variant-name, $variant-colors in $bds-feature-variants {
+  .bds-feature-two-column--#{$variant-name} {
+    background-color: map-get($variant-colors, light-bg);
+  }
 }
 
 // =============================================================================
@@ -434,20 +425,11 @@ html.dark {
     }
   }
 
-  .bds-feature-two-column--neutral {
-    background-color: $bds-feature-neutral-bg-dark;
-  }
-
-  .bds-feature-two-column--lilac {
-    background-color: $bds-feature-lilac-bg-dark;
-  }
-
-  .bds-feature-two-column--yellow {
-    background-color: $bds-feature-yellow-bg-dark;
-  }
-
-  .bds-feature-two-column--green {
-    background-color: $bds-feature-green-bg-dark;
+  // Generate dark mode styles for each variant
+  @each $variant-name, $variant-colors in $bds-feature-variants {
+    .bds-feature-two-column--#{$variant-name} {
+      background-color: map-get($variant-colors, dark-bg);
+    }
   }
 }
 

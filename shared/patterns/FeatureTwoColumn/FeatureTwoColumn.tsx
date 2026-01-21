@@ -143,8 +143,14 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
             </Button>
           )}
           {/* Remaining tertiary links */}
-          {links.slice(3).map((link, index) => (
-            <Button key={index} variant="tertiary" color={buttonColor} forceColor={forceColor} href={link.href}>
+          {links.slice(3).map((link) => (
+            <Button
+              key={`${link.href}-${link.label}`}
+              variant="tertiary"
+              color={buttonColor}
+              forceColor={forceColor}
+              href={link.href}
+            >
               {link.label}
             </Button>
           ))}
