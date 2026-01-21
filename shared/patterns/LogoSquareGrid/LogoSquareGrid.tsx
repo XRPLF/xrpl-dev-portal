@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo, memo } from 'react';
 import clsx from 'clsx';
-import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
+import { PageGrid, PageGridCol, PageGridRow, type PageGridColProps } from 'shared/components/PageGrid/page-grid';
 import { TileLogo } from '../../components/TileLogo/TileLogo';
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 
@@ -43,11 +43,48 @@ export interface LogoSquareGridProps {
 }
 
 /**
+ * Generates a stable key for a logo based on its properties.
+ * Falls back to index if no stable identifier is available.
+ */
+const getLogoKey = (logo: LogoItem, index: number): string | number => {
+  if (logo.href) return logo.href;
+  if (logo.alt) return `${logo.alt}-${index}`;
+  return index;
+};
+
+/**
+ * Memoized logo list item component to prevent unnecessary re-renders
+ */
+const LogoListItem = memo<{
+  logo: LogoItem;
+  variant: 'neutral' | 'green';
+}>(({ logo, variant }) => (
+  <li className="bds-logo-square-grid__logo-item">
+    <TileLogo
+      shape="square"
+      variant={variant}
+      logo={logo.src}
+      alt={logo.alt}
+      href={logo.href}
+      onClick={logo.onClick}
+      disabled={logo.disabled}
+    />
+  </li>
+));
+
+LogoListItem.displayName = 'LogoListItem';
+
+/**
  * LogoSquareGrid Component
- * 
+ *
  * A responsive grid pattern for displaying company/partner logos with an optional header section.
  * Features square tiles arranged in a responsive grid with 2 color variants and dark mode support.
- * 
+ *
+ * Offset Logic (based on logo count):
+ * - 1 logo: lg offset 11, md offset 6, base no offset
+ * - 2 logos: lg offset 10, md offset 4, base no offset
+ * - 3+ logos: no offset (left-aligned)
+ *
  * @example
  * // Basic usage with gray variant
  * <LogoSquareGrid
@@ -59,7 +96,7 @@ export interface LogoSquareGridProps {
  *     { src: "/logos/company2.svg", alt: "Company 2" }
  *   ]}
  * />
- * 
+ *
  * @example
  * // With buttons and clickable logos
  * <LogoSquareGrid
@@ -82,18 +119,59 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   logos,
   className = '',
 }) => {
-  // Build class names using BEM with bds namespace
-  const classNames = clsx(
-    'bds-logo-square-grid',
-    `bds-logo-square-grid--${variant}`,
-    className
-  );
+  const logoCount = logos.length;
+  const tileVariant = variant === 'gray' ? 'neutral' : 'green';
 
   // Determine if we should show the header section
   const hasHeader = !!(heading || description || primaryButton || tertiaryButton);
 
+  // Calculate offset based on logo count
+  // 1 logo: lg offset 11, md offset 6, base no offset
+  // 2 logos: lg offset 10, md offset 4, base no offset
+  // 3+ logos: no offset
+  const gridOffsetConfig: NonNullable<PageGridColProps['offset']> = useMemo(() => {
+    if (logoCount === 1) {
+      return { base: 0, md: 6, lg: 11 };
+    } else if (logoCount === 2) {
+      return { base: 0, md: 4, lg: 10 };
+    }
+    return { base: 0 };
+  }, [logoCount]);
+
+  // Calculate span based on logo count
+  const gridSpanConfig: NonNullable<PageGridColProps['span']> = useMemo(() => {
+    if (logoCount <= 2) {
+      // For 1-2 logos, use auto span to fit content
+      return 'fill';
+    }
+    return 'fill';
+  }, [logoCount]);
+
+  // Memoize logo items to prevent unnecessary re-renders
+  const logoItems = useMemo(
+    () =>
+      logos.map((logo, index) => (
+        <LogoListItem
+          key={getLogoKey(logo, index)}
+          logo={logo}
+          variant={tileVariant}
+        />
+      )),
+    [logos, tileVariant]
+  );
+
+  // Memoize grid class names
+  const gridClassName = useMemo(
+    () =>
+      clsx('bds-logo-square-grid__logos-grid', {
+        'bds-logo-square-grid__logos-grid--single': logoCount === 1,
+        'bds-logo-square-grid__logos-grid--double': logoCount === 2,
+      }),
+    [logoCount]
+  );
+
   return (
-    <PageGrid className="">
+    <PageGrid className={className}>
       <PageGridRow>
         <PageGridCol span={{ base: 4, md: 6, lg: 8 }}>
             {/* Header Section */}
@@ -119,19 +197,15 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
         </PageGridCol>
       </PageGridRow>
       <PageGridRow>
-        {logos.map((logo, index) => (
-          <PageGridCol key={index} span={{ base: 2, lg: 3 }}>
-            <TileLogo
-              shape="square"
-              variant={variant === 'gray' ? 'neutral' : 'green'}
-              logo={logo.src}
-              alt={logo.alt}
-              href={logo.href}
-              onClick={logo.onClick}
-              disabled={logo.disabled}
-            />
-          </PageGridCol>
-        ))}
+        <PageGridCol
+          className="bds-logo-square-grid__logos-wrapper"
+          span={gridSpanConfig}
+          offset={gridOffsetConfig}
+        >
+          <ul className={gridClassName} role="list">
+            {logoItems}
+          </ul>
+        </PageGridCol>
       </PageGridRow>
     </PageGrid>
   );
