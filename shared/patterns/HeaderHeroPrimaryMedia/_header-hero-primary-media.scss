@@ -1,0 +1,130 @@
+.bds-header-hero-primary-media {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+
+  @include media-breakpoint-up(md) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 170px;
+    padding-bottom: 40px;
+  }
+
+  @include bds-theme-mode(light) {
+    background-color: $white;
+  }
+
+  @include bds-theme-mode(dark) {
+    background-color: $black;
+  }
+
+  &__headline-container {
+    margin-bottom: 32px; // this margin is also default with the class - however, to avoid regressive changes we are reinforcing here
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__headline {
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+
+    * {
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+  }
+
+  &__subtitle {
+    margin: 0;
+    padding: 0;
+
+    @include bds-theme-mode(light) {
+      color: $gray-500
+    }
+  }
+
+
+  &__cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: flex-end;
+    min-height: 100%;
+
+    @include media-breakpoint-up(lg) {
+      gap: 40px;
+    }
+
+  }
+
+
+  &__cta-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    @include media-breakpoint-up(lg) {
+      gap: 24px;
+    }
+
+    & .bds-btn--tertiary {
+      padding: 0; // Design requires this button in this use-case to be overwritten with no padding
+
+      &:hover,
+      &:focus-visible,
+      &:focus {
+        padding: 0;
+      }
+    }
+  }
+
+
+
+  &__media-container {
+    width: 100%;
+    aspect-ratio: 16 / 9; // Design req uirement: 16/9 aspect ratio
+    overflow: hidden;
+    position: relative;
+    margin-top: 24px;
+    height: auto;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 32px;
+      aspect-ratio: 2 / 1;
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 40px;
+      aspect-ratio: 3 / 1;
+    }
+  }
+
+  &__media-element {
+    // Styles are applied inline to ensure object-fit: cover
+    // This ensures the media covers the entire container area
+    // while maintaining the aspect ratio constraint
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
