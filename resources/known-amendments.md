@@ -1684,11 +1684,11 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 | Amendment    | PermissionDelegation |
 |:-------------|:---------------------|
 | Amendment ID | AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5 |
-| Status       | Obsolete |
+| Status       | Disabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Allows accounts to delegate some permissions to other accounts. This amendment is obsolete because a bug was discovered and it was disabled. It will be replaced by `PermissionDelegationV1_1` in a future release.
+Allows accounts to delegate some permissions to other accounts. This amendment was disabled in v2.6.1 due to a bug. It will be replaced by `PermissionDelegationV1_1` in a future release.
 
 Specification: [XLS-75](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0075-permission-delegation).
 
