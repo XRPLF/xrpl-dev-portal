@@ -30,18 +30,67 @@ export interface LogoRectangleGridProps {
 }
 
 /**
+ * Calculates the md and lg offsets for the first tile of each row to right-align the grid.
+ *
+ * This is a 3-tile-per-row grid. To right-align, we offset based on how many tiles are in that row:
+ *
+ * lg (12 columns, each tile = 3 cols):
+ * - 3 tiles in row: offset 3
+ * - 2 tiles in row: offset 6
+ * - 1 tile in row: offset 9
+ *
+ * md (8 columns, each tile = 2 cols):
+ * - 3 tiles in row: offset 2
+ * - 2 tiles in row: offset 4
+ * - 1 tile in row: offset 6
+ *
+ * Only tiles 1-9 (positions 0-8) are right-aligned. 10+ tiles = no offset.
+ *
+ * @param index - The tile's position (0-based)
+ * @param total - Total number of tiles
+ * @returns Object with md and lg offset values for this tile (both 0 if not first of row)
+ */
+const calculateTileOffset = (index: number, total: number): { md: number; lg: number } => {
+  // No offset if 10+ tiles total
+  if (total >= 10) return { md: 0, lg: 0 };
+
+  // Only first tile of each row gets offset (every 3rd position starting at 0)
+  if (index % 3 !== 0) return { md: 0, lg: 0 };
+
+  // Calculate which row this tile is in
+  const row = Math.floor(index / 3);
+
+  // Calculate how many tiles are in this row
+  const tilesInThisRow = Math.min(3, total - row * 3);
+
+  // Calculate offset to right-align
+  // lg: (4 - tilesInRow) * 3 → 3 tiles = 3, 2 tiles = 6, 1 tile = 9
+  // md: (4 - tilesInRow) * 2 → 3 tiles = 2, 2 tiles = 4, 1 tile = 6
+  const lgOffset = (4 - tilesInThisRow) * 3;
+  const mdOffset = (4 - tilesInThisRow) * 2;
+
+  return { md: mdOffset, lg: lgOffset };
+};
+
+/**
  * LogoRectangleGrid Component
- * 
+ *
  * A responsive grid pattern for displaying company/partner logos with rectangle tiles
- * and dynamic alignment based on tile count. Features 9:5 aspect ratio rectangle tiles
+ * and dynamic offset based on tile count. Features 9:5 aspect ratio rectangle tiles
  * with 2 color variants and dark mode support.
- * 
- * Alignment Logic:
- * - 1-3 tiles: Right-aligned
- * - 4 tiles: Left-aligned
- * - 5-9 tiles: Right-aligned
- * - 9+ tiles: Left-aligned
- * 
+ *
+ * Offset Logic (lg breakpoint only, applied to first tile):
+ * - 1 tile: offset 9
+ * - 2 tiles: offset 6
+ * - 3 tiles: offset 3
+ * - 4 tiles: offset 9
+ * - 5 tiles: offset 6
+ * - 6 tiles: offset 3
+ * - 7 tiles: offset 9
+ * - 8 tiles: offset 6
+ * - 9 tiles: offset 3
+ * - 10+ tiles: no offset
+ *
  * @example
  * // Basic usage with gray variant
  * <LogoRectangleGrid
@@ -53,7 +102,7 @@ export interface LogoRectangleGridProps {
  *     { src: "/logos/company2.svg", alt: "Company 2" }
  *   ]}
  * />
- * 
+ *
  * @example
  * // With clickable logos
  * <LogoRectangleGrid
@@ -79,12 +128,7 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
     className
   );
 
-  // Calculate alignment based on logo count
-  // 1-3: right aligned, 4: left, 5-9: right, 9+: left
-  const logoCount = logos.length;
-  const alignRight = 
-    (logoCount >= 1 && logoCount <= 3) || 
-    (logoCount >= 5 && logoCount <= 9);
+  const total = logos.length;
 
   return (
     <PageGrid className={classNames}>
@@ -100,26 +144,27 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
         </PageGridCol>
       </PageGridRow>
       <PageGridRow>
-        <PageGridCol 
-          span={{ base: "fill", lg: alignRight ? 8 : "fill" }}
-          offset={{ base: 0, lg: alignRight ? 4 : 0 }}
-        >
-          <PageGridRow>
-            {logos.map((logo, index) => (
-              <PageGridCol key={index} span={{ base: 2, md: 2, lg: 3 }}>
-                <TileLogo
-                  shape="rectangle"
-                  variant={variant === 'gray' ? 'neutral' : 'green'}
-                  logo={logo.src}
-                  alt={logo.alt}
-                  href={logo.href}
-                  onClick={logo.onClick}
-                  disabled={logo.disabled}
-                />
-              </PageGridCol>
-            ))}
-          </PageGridRow>
-        </PageGridCol>
+        {logos.map((logo, index) => {
+          const offset = calculateTileOffset(index, total);
+          const hasOffset = offset.md > 0 || offset.lg > 0;
+          return (
+            <PageGridCol
+              key={index}
+              span={{ base: 2, md: 2, lg: 3 }}
+              offset={hasOffset ? { md: offset.md, lg: offset.lg } : undefined}
+            >
+              <TileLogo
+                shape="rectangle"
+                variant={variant === 'gray' ? 'neutral' : 'green'}
+                logo={logo.src}
+                alt={logo.alt}
+                href={logo.href}
+                onClick={logo.onClick}
+                disabled={logo.disabled}
+              />
+            </PageGridCol>
+          );
+        })}
       </PageGridRow>
     </PageGrid>
   );
