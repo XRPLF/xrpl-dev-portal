@@ -37,7 +37,6 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [PermissionDelegation][]          | v2.5.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [fixNFTokenNegOffer][]            | v1.9.2     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [NonFungibleTokensV1][]           | v1.9.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
