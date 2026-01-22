@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup } from '../../components/ButtonGroup/ButtonGroup';
 
 export interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */
@@ -18,13 +18,13 @@ export interface CalloutMediaBannerProps {
   primaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Tertiary button configuration */
   tertiaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Additional CSS classes */
   className?: string;
