@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { TileLogo } from '../../components/TileLogo/TileLogo';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup } from '../../components/ButtonGroup/ButtonGroup';
 
 export interface LogoItem {
   /** Logo image source URL */
@@ -28,13 +28,13 @@ export interface LogoSquareGridProps {
   primaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Tertiary button configuration */
   tertiaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Array of logo items to display in the grid */
   logos: LogoItem[];

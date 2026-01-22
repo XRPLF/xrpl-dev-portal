@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { TileLogo } from '../../components/TileLogo/TileLogo';
@@ -128,7 +128,11 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
     className
   );
 
-  const total = logos.length;
+  // Memoize offset calculations - only recalculate when logos array changes
+  const logoOffsets = useMemo(() => {
+    const total = logos.length;
+    return logos.map((_, index) => calculateTileOffset(index, total));
+  }, [logos]);
 
   return (
     <PageGrid className={classNames}>
@@ -145,7 +149,7 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
       </PageGridRow>
       <PageGridRow>
         {logos.map((logo, index) => {
-          const offset = calculateTileOffset(index, total);
+          const offset = logoOffsets[index];
           const hasOffset = offset.md > 0 || offset.lg > 0;
           return (
             <PageGridCol
