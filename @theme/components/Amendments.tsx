@@ -23,6 +23,7 @@ type AmendmentsCachePayload = {
 
 // API data caching
 const amendmentsEndpoint = 'https://vhs.prod.ripplex.io/v1/network/amendments/vote/main/'
+const amendmentsInfoEndpoint = 'https://vhs.prod.ripplex.io/v1/network/amendments/info/main/'
 const amendmentsCacheKey = 'xrpl.amendments.mainnet.cache'
 const amendmentsTTL = 15 * 60 * 1000 // 15 minutes in milliseconds
 
@@ -180,6 +181,8 @@ function AmendmentBadge(props: { amendment: Amendment }) {
   const enabledLabel = translate("amendment.status.enabled", "Enabled")
   const votingLabel = translate("amendment.status.openForVoting", "Open for Voting")
   const etaLabel = translate("amendment.status.eta", "Expected")
+  const inactiveLabel = translate("amendment.status.inactive", "Inactive")
+  const inactiveButton = translate("amendment.status.inactiveButton", "Get details")
 
   React.useEffect(() => {
     const amendment = props.amendment
@@ -202,10 +205,16 @@ function AmendmentBadge(props: { amendment: Amendment }) {
     else if (amendment.consensus) {
       setStatus(`${votingLabel}: ${amendment.consensus}`)
       setColor('80d0e0')
-      setHref(undefined) // No link for voting amendments
+      setHref(undefined)
     }
-  }, [props.amendment, enabledLabel, etaLabel, votingLabel])
-
+    // Fallback: amendment is inactive
+    else {
+      setStatus(`${inactiveLabel}: ${inactiveButton}`)
+      setColor('lightgrey')
+      setHref(`/resources/known-amendments#${amendment.name.toLowerCase()}`)
+    }
+  }, [props.amendment, enabledLabel, etaLabel, votingLabel, inactiveLabel])
+  
   // Split the status at the colon to create two-color badge
   const parts = status.split(':')
   const label = shieldsIoEscape(parts[0])
@@ -257,15 +266,32 @@ export function AmendmentDisclaimer(props: {
         const response = await fetch(amendmentsEndpoint)
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
+          throw new Error(`HTTP error! Status: ${response.status}`)
         }
 
         const data: AmendmentsResponse = await response.json()
         writeAmendmentsCache(data.amendments)
 
         const found = data.amendments.find(a => a.name === props.name)
+        
+        // 3. If not found in live data, try the info endpoint.
         if (!found) {
-          throw new Error(`Couldn't find ${props.name} amendment in status table.`)
+          
+          const infoResponse = await fetch(amendmentsInfoEndpoint)
+          
+          if (!infoResponse.ok) {
+            throw new Error(`HTTP error from info endpoint! Status: ${infoResponse.status}`)
+          }
+          
+          const infoData: AmendmentsResponse = await infoResponse.json()
+          const foundInInfo = infoData.amendments.find(a => a.name === props.name)
+          
+          if (!foundInInfo) {
+            throw new Error(`Couldn't find ${props.name} amendment in status tables.`)
+          }
+          
+          setStatus(foundInInfo)
+          return
         }
 
         setStatus(found)
@@ -389,6 +415,8 @@ export function Badge(props: {
       "更新": "blue", // ja: updated in
       "in development": "lightgrey",
       "開発中": "lightgrey", // ja: in development
+      "inactive": "lightgrey",
+      "非アクティブ": "lightgrey" // ja: inactive
     }
 
     let childstrings = ""
