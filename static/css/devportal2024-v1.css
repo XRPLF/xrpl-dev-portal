@@ -19651,6 +19651,9 @@ html.light .bds-header-hero-primary-media__subtitle {
 .bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary {
   padding: 0;
 }
+.bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary:hover, .bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary:focus-visible, .bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary:focus {
+  padding: 0 !important;
+}
 .bds-header-hero-primary-media__media-container {
   width: 100%;
   aspect-ratio: 16/9;
