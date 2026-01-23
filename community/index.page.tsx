@@ -406,6 +406,66 @@ const events = [
     start_date: "November 14, 2025",
     end_date: "December 06, 2025",
   },
+    {
+    name: "XRP Community Day EMEA",
+    description:
+      "Join the EMEA XRP community on February 11, 2026 for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/w118fmkh?utm_source=xrplorg",
+    location: "Virtual",
+    date: "February 11, 2026",
+    image: require("../static/img/events/emea_xrplorg.png"),
+    start_date: "February 11, 2026",
+    end_date: "February 11, 2026",
+  },
+  {
+    name: "XRP Community Day AMERICAS",
+    description:
+      "​Join the Americas XRP community on February 11, 2026 (February 12 in APAC) for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/1powvqnc?utm_source=xrplorg",
+    location: "Virtual - X Spaces",
+    date: "February 11, 2026",
+    image: require("../static/img/events/amer_xrplorg.png"),
+    start_date: "February 11, 2026",
+    end_date: "February 11, 2026",
+  },
+  {
+    name: "XRP Community Day APAC",
+    description:
+      "​Join the APAC XRP community on February 12 for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/ckzg3l3r?utm_source=xrplorg",
+    location: "Virtual - X Spaces",
+    date: "February 12, 2026",
+    image: require("../static/img/events/apac_xrplorg.png"),
+    start_date: "February 12, 2026",
+    end_date: "February 12, 2026",
+  },
+  {
+    name: "Building On The XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who are  curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://luma.com/lxb5ttsc",
+    location: "Paris, France",
+    date: "January 26 - 27, 2026",
+    image: require("../static/img/events/building-xrpl.png"),
+    start_date: "January 26, 2026",
+    end_date: "January 27, 2026",
+  },
+  {
+    name: "XRPL Meetup in London",
+    description:
+      "Calling all blockchain and XRP Ledger enthusiasts in London! Join XRPL  Meetups to share knowledge, build real-life connections, and foster  communities centered around blockchain and XRP Ledger.  We're establishing local “XRPL Hubs” across Europe, and we want you  to be a part of it!",
+    type: "meetup",
+    link: "https://luma.com/xshnm19t",
+    location: "London, UK",
+    date: "February 18, 2026",
+    image: require("../static/img/events/meetup-london.png"),
+    start_date: "February 18, 2026",
+    end_date: "February 18, 2026",
+  },
 
 ];
 
