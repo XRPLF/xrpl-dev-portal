@@ -13,7 +13,7 @@ In its default configuration, the `rippled` server automatically deletes outdate
 
 ## Warnings
 
-Storing full history is expensive. As of 2023-07-19, the full history of the XRP Ledger occupies approximately **26 terabytes** of disk space, which must be entirely stored on fast solid state disk drives for proper server performance. Such a large amount of solid state storage is not cheap, and the total amount of history you must store increases by approximately 12 GB per day.
+Storing full history is expensive. As of 2026-01-25, the full history of the XRP Ledger occupies approximately **39 terabytes** of disk space, which must be entirely stored on fast solid state disk drives for proper server performance. Such a large amount of solid state storage is not cheap, and the total amount of history you must store increases by approximately 12 GB per day.
 
 Additionally, storing full history in NuDB requires single files that are larger than the 16 TB limit of ext4 filesystems, which is the default on many Linux distributions. You must use a filesystem with a larger single-file limit, such as XFS (recommended) or ZFS.
 
