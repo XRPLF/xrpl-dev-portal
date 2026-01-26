@@ -19651,6 +19651,9 @@ html.light .bds-header-hero-primary-media__subtitle {
 .bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary {
   padding: 0;
 }
+.bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary:hover, .bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary:focus-visible, .bds-header-hero-primary-media__cta-buttons .bds-btn--tertiary:focus {
+  padding: 0;
+}
 .bds-header-hero-primary-media__media-container {
   width: 100%;
   aspect-ratio: 16/9;
@@ -20945,6 +20948,208 @@ html.dark .bds-feature-two-column--green {
   .bds-feature-two-column--right .bds-feature-two-column__content-wrapper {
     grid-column: 2/span 4;
   }
+}
+
+.bds-cards-two-column {
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+.bds-cards-two-column__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  gap: 24px;
+}
+@media (min-width: 576px) {
+  .bds-cards-two-column__container {
+    padding: 32px 24px;
+    gap: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-two-column__container {
+    padding: 40px 32px;
+    gap: 40px;
+  }
+}
+
+.bds-cards-two-column__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (min-width: 992px) {
+  .bds-cards-two-column__header {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    height: 340px;
+  }
+}
+
+.bds-cards-two-column__header-left {
+  flex: 1 0 0;
+  min-width: 0;
+}
+@media (min-width: 992px) {
+  .bds-cards-two-column__header-left {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.bds-cards-two-column__header-right {
+  flex: 1 0 0;
+  min-width: 0;
+}
+@media (min-width: 992px) {
+  .bds-cards-two-column__header-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+.bds-cards-two-column__title {
+  margin: 0;
+  color: #141414;
+}
+
+.bds-cards-two-column__description {
+  color: #72777E;
+}
+.bds-cards-two-column__description p {
+  margin: 0;
+}
+.bds-cards-two-column__description p + p {
+  margin-top: 16px;
+}
+
+.bds-cards-two-column__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .bds-cards-two-column__cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+.bds-cards-two-column__cards .bds-text-card {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .bds-cards-two-column__cards .bds-text-card {
+    width: calc(50% - 4px);
+  }
+}
+
+.bds-text-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-decoration: none;
+  box-sizing: border-box;
+  height: 274px;
+  padding: 16px;
+}
+@media (min-width: 576px) {
+  .bds-text-card {
+    height: 309px;
+    padding: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-text-card {
+    height: 340px;
+    padding: 24px;
+  }
+}
+.bds-text-card:hover {
+  text-decoration: none;
+}
+
+.bds-text-card--green {
+  background-color: #21E46B;
+}
+
+.bds-text-card--neutral-light {
+  background-color: #E6EAF0;
+}
+
+.bds-text-card--neutral-dark {
+  background-color: #CAD4DF;
+}
+
+.bds-text-card--lilac {
+  background-color: #D9CAFF;
+}
+
+.bds-text-card__header {
+  width: 100%;
+}
+
+.bds-text-card__title {
+  margin: 0;
+  color: #141414;
+}
+
+.bds-text-card__footer {
+  width: 100%;
+}
+
+.bds-text-card__description {
+  margin: 0;
+  color: #141414;
+  max-width: 478px;
+}
+
+html.light .bds-cards-two-column {
+  background-color: #FFFFFF;
+}
+html.light .bds-cards-two-column__title {
+  color: #141414;
+}
+html.light .bds-cards-two-column__description {
+  color: #72777E;
+}
+html.light .bds-text-card__title,
+html.light .bds-text-card__description {
+  color: #141414;
+}
+
+html.dark .bds-cards-two-column {
+  background-color: #141414;
+}
+html.dark .bds-cards-two-column__title {
+  color: #FFFFFF;
+}
+html.dark .bds-cards-two-column__description {
+  color: #FFFFFF;
+}
+html.dark .bds-text-card__title,
+html.dark .bds-text-card__description {
+  color: #141414;
+}
+html.dark .bds-text-card--green {
+  background-color: #21E46B;
+}
+html.dark .bds-text-card--neutral-light {
+  background-color: #CAD4DF;
+}
+html.dark .bds-text-card--neutral-dark {
+  background-color: #8A919A;
+}
+html.dark .bds-text-card--lilac {
+  background-color: #D9CAFF;
 }
 
 pre {
