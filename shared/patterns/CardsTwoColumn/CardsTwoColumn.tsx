@@ -25,7 +25,7 @@ export interface CardsTwoColumnProps extends Omit<React.ComponentPropsWithoutRef
  * CardsTwoColumn Pattern Component
  *
  * A section pattern that displays a header with title/description and a 2x2 grid
- * of TextCard components. Follows the "Section Cards - Two Column" design from Figma.
+ * of TextCard components.
  *
  * Structure:
  * - Header: Title (left) + Description (right) on desktop, stacked on tablet/mobile
