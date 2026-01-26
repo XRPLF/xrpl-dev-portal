@@ -1453,33 +1453,33 @@ export default function Events() {
             <div className="pr-2 col">
               <img
                 alt="xrp ledger events hero"
-                src={require("../static/img/events/xrp-community-night.png")}
+                src={require("../static/img/events/xrpl-hero.png")}
                 className="w-100"
               />
             </div>
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRP Community Night NYC")}
+                  {translate("XRP Community Night Denver")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "Join the XRP community in NYC—meet builders, users, and projects innovating on the XRP Ledger."
+                  "Attending ETHDenver? ​Join us for an evening with the XRP community in Denver. Connect with the users, builders and projects innovating with and utilizing XRP."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
-                {translate("Location: New York, NY")}
+                {translate("Location: Denver, CO")}
               </div>
               <div className="py-2 my-3 event-small-gray">
-                {translate("November 5, 2025")}
+                {translate("February 18, 2026")}
               </div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://lu.ma/g5uja58m?utm_source=xrpleventspage"
+                  href="https://luma.com/chz145tf?utm_source=xprlorg"
                 >
                   {translate("Register Now")}
                 </a>
