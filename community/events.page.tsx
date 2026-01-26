@@ -1329,7 +1329,7 @@ const events = [
     end_date: "February 11, 2026",
   },
   {
-    name: "XRP Community Day AMERICAS",
+    name: "XRP Community Day Americas",
     description:
       "​Join the Americas XRP community on February 11, 2026 (February 12 in APAC) for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
     type: "meetup",
