@@ -466,6 +466,18 @@ const events = [
     start_date: "February 18, 2026",
     end_date: "February 18, 2026",
   },
+  {
+    name: "XRP Community Night Denver",
+    description:
+      "Attending ETHDenver? ​Join us for an evening with the XRP community in Denver. Connect with the users, builders and projects innovating with and utilizing XRP.",
+    type: "meetup",
+    link: "https://luma.com/chz145tf?utm_source=xprlorg",
+    location: "Denver, CO",
+    date: "February 18, 2026",
+    image: require("../static/img/events/denver_xrplorg.png"),
+    start_date: "February 18, 2026",
+    end_date: "February 18, 2026",
+  },
 
 ];
 
