@@ -1323,7 +1323,7 @@ const events = [
       "Join the EMEA XRP community on February 11, 2026 for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
     type: "meetup",
     link: "https://luma.com/w118fmkh?utm_source=xrplorg",
-    location: "Virtual",
+    location: "Virtual - X Spaces",
     date: "February 11, 2026",
     image: require("../static/img/events/emea_xrplorg.png"),
     end_date: "February 11, 2026",
