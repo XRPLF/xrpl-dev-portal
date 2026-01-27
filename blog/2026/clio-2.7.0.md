@@ -1,6 +1,6 @@
 ---
 category: 2026
-date: "2026-01-22"
+date: "2026-01-27"
 template: '../../@theme/templates/blogpost'
 seo:
     title: Introducing Clio version 2.7.0
