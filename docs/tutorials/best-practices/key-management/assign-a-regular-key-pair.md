@@ -41,6 +41,16 @@ From the code sample folder, use `npm` to install dependencies:
 npm i
 ```
 {% /tab %}
+
+{% tab label="Python" %}
+From the code sample folder, set up a virtual environment and use `pip` to install dependencies:
+
+```sh
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+{% /tab %}
 {% /tabs %}
 
 ### 2. Connect and get account(s)
@@ -50,6 +60,10 @@ To get started, import the client library and instantiate an API client. For thi
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/assign-regular-key/js/assign-regular-key.js" language="js" before="// Generate a new key pair" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/assign-regular-key/py/assign-regular-key.py" language="py" before="# Generate a new key pair" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -70,6 +84,11 @@ It's important to generate and store the key pair securely; otherwise, it may be
 Use the [`Wallet.generate()` class method](https://js.xrpl.org/classes/Wallet.html#generate) to generate a key pair locally on your machine.
 {% code-snippet file="/_code-samples/assign-regular-key/js/assign-regular-key.js" language="js" from="// Generate a new key pair" before="// Send SetRegularKey transaction" /%}
 {% /tab %}
+
+{% tab label="Python" %}
+Use the [`Wallet.create()` class method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.wallet.html#xrpl.wallet.Wallet.create) to generate a key pair locally on your machine.
+{% code-snippet file="/_code-samples/assign-regular-key/py/assign-regular-key.py" language="py" from="# Generate a new key pair" before="# Send SetRegularKey transaction" /%}
+{% /tab %}
 {% /tabs %}
 
 ### 4. Send a SetRegularKey transaction
@@ -81,6 +100,10 @@ Use a [SetRegularKey transaction][] to assign the new key pair to your account a
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/assign-regular-key/js/assign-regular-key.js" language="js" from="// Send SetRegularKey transaction" before="// Send a test transaction" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/assign-regular-key/py/assign-regular-key.py" language="py" from="# Send SetRegularKey transaction" before="# Send a test transaction" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -94,6 +117,10 @@ To test the key, send any type of transaction, signing it using the regular key 
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/assign-regular-key/js/assign-regular-key.js" language="js" from="// Send a test transaction" before="// Check result of the test" /%}
 {% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/assign-regular-key/py/assign-regular-key.py" language="py" from="# Send a test transaction" before="# Check result of the test" /%}
+{% /tab %}
 {% /tabs %}
 
 ### 6. Confirm that the test transaction succeeded as expected
@@ -103,6 +130,10 @@ If the test transaction succeeds, your regular key pair works as expected. For f
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/assign-regular-key/js/assign-regular-key.js" language="js" from="// Check result of the test" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/assign-regular-key/py/assign-regular-key.py" language="py" from="# Check result of the test" /%}
 {% /tab %}
 {% /tabs %}
 
