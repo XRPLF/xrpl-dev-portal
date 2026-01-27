@@ -3,6 +3,7 @@ import { CardIconProps, CardIcon } from "../CardIcon";
 import clsx from "clsx";
 import { PageGrid } from "../PageGrid/page-grid";
 import type { PageGridColProps } from "../PageGrid/page-grid";
+import { getCardKey, isEnvironment } from "../../utils";
 
 /**
  * Card icon props without the variant prop (which is controlled at section level)
@@ -29,22 +30,6 @@ export interface SmallTilesSectionProps
  * When card count is <= this value, a centered spacer layout is used.
  */
 const SPACER_THRESHOLD = 8 as const;
-
-/**
- * Generates a stable key for a card based on its properties.
- * Falls back to index if no stable identifier is available.
- */
-const getCardKey = (
-  card: ConstrainedCardIconProps,
-  index: number
-): string | number => {
-  // Prefer href as a stable identifier
-  if (card.href) return card.href;
-  // Use label as identifier if available
-  if (card.label) return `${card.label}-${index}`;
-  // Fallback to index (acceptable since cards array is readonly)
-  return index;
-};
 
 /**
  * Memoized card item component to prevent unnecessary re-renders
@@ -97,7 +82,9 @@ export const SmallTilesSection = forwardRef<
 
   // Early return for empty cards array
   if (cardsCount === 0) {
-    console.warn("SmallTilesSection: No cards provided");
+    if (isEnvironment("development")) {
+      console.warn("SmallTilesSection: No cards provided");
+    }
     return null;
   }
 
@@ -141,7 +128,7 @@ export const SmallTilesSection = forwardRef<
     () =>
       cards.map((card, index) => (
         <CardListItem
-          key={getCardKey(card, index)}
+          key={getCardKey(card.href || card.label, index, "small-tile")}
           card={card}
           variant={cardVariant}
         />
