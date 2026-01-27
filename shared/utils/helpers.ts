@@ -64,22 +64,6 @@ export const getTextFromChildren = (children: React.ReactNode): string => {
 };
 
 /**
- *
- * Checks if a React element has children.
- *
- * @param element
- * @returns
- */
-export const hasChildren = (
-  element: React.ReactNode,
-): element is ReactElement => {
-  return (
-    isValidElement<{ children?: React.ReactNode }>(element) &&
-    Boolean(element.props?.children)
-  );
-};
-
-/**
  * Generates a stable key for a card or list item.
  *
  * @param identifier - Optional string identifier (e.g., href, title, label). If provided, combined with prefix and index.

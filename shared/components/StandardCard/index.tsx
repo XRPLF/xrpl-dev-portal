@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import {
   DesignContrainedButtonProps,
   isEnvironment,
-  hasChildren,
+  isEmpty,
 } from "../../utils";
 
 /**
@@ -67,7 +67,7 @@ const StandardCard = forwardRef<HTMLElement, StandardCardProps>(
       >
         <div className="bds-standard-card__content">
           <h2 className="bds-standard-card__headline sh-md-r">{headline}</h2>
-          {hasChildren(children) && (
+          {!isEmpty(children) && (
             <div className="bds-standard-card__description body-l">
               {children}
             </div>

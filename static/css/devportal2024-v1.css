@@ -19628,16 +19628,15 @@ html.light .bds-card-icon--disabled.bds-card-icon--green .bds-card-icon__icon-im
 .bds-standard-card__buttons {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   width: 100%;
   flex-wrap: wrap;
   align-items: flex-start;
 }
 @media (min-width: 992px) {
   .bds-standard-card__buttons {
-    gap: 24px;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
   }
 }
 
