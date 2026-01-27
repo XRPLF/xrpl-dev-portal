@@ -57,7 +57,7 @@ In addition to the [common ledger entry fields](../../../protocol/ledger-data/co
 | `OwnerNode`         | Number        | UInt64            | Yes       | Identifies the page where this item is referenced in the owner's directory. |
 | `Owner`             | String        | AccountID         | Yes       | The account address of the Vault Owner. |
 | `Account`           | String        | AccountID         | Yes       | The address of the vault's pseudo-account. |
-| `Data`              | String        | Blob              | No        | Arbitrary metadata about the vault. Limited to 256 bytes. |
+| `Data`              | String        | Blob              | No        | Arbitrary metadata, in hex format, about the vault. Limited to 256 bytes. See [Data Field Format](#data-field-format) for more information. |
 | `Asset`             | Object        | Issue             | Yes       | The asset of the vault. The vault supports XRP, trust line tokens, and MPTs. |
 | `AssetsTotal`       | Number        | Number            | Yes       | The total value of the vault. |
 | `AssetsAvailable`   | Number        | Number            | Yes       | The asset amount that is available in the vault. |
@@ -65,7 +65,44 @@ In addition to the [common ledger entry fields](../../../protocol/ledger-data/co
 | `LossUnrealized`    | Number        | Number            | Yes       | The potential loss amount that is not yet realized, expressed as the vault's asset. Only a protocol connected to the vault can modify this attribute. |
 | `ShareMPTID`        | String        | UInt192           | Yes       | The identifier of the share `MPTokenIssuance` object. |
 | `WithdrawalPolicy`  | String        | UInt8             | Yes       | Indicates the withdrawal strategy used by the vault. |
-| `Scale`             | Number        | UInt8             | No        | Specifies decimal precision for share calculations. Assets are multiplied by 10<sup>Scale</sup > to convert fractional amounts into whole number shares. For example, with a `Scale` of `6`, depositing 20.3 units creates 20,300,000 shares (20.3 × 10<sup>Scale</sup >). For **trust line tokens** this can be configured at vault creation, and valid values are between 0-18, with the default being `6`. For **XRP** and **MPTs**, this is fixed at `0`. |
+| `Scale`             | Number        | UInt8             | No        | Specifies decimal precision for share calculations. Assets are multiplied by 10<sup>Scale</sup > to convert fractional amounts into whole number shares. For example, with a `Scale` of `6`, depositing 20.3 units creates 20,300,000 shares (20.3 × 10<sup>Scale</sup >). For **trust line tokens** this can be configured at vault creation, and valid values are between 0-18, with the default being `6`. For **XRP** and **MPTs**, this is fixed at `0`. See [Scaling Factor](#scaling-factor) for more information. |
+
+### Data Field Format
+
+While any data structure is allowed in the `Data` field, the following format is recommended:
+
+| Field Name | Key | Type   | Description                                                                                |
+| ---------- | --- | ------ | ------------------------------------------------------------------------------------------ |
+| Name       | n   | String | Human-readable name of the vault. Should clearly reflect the vault's strategy or mandate.  |
+| Website    | w   | String | Website associated with the vault. Omit protocol (`https://`) and `www` to conserve space. |
+
+To fit within the 256-byte limit, vault metadata should use the _compressed_ JSON keys.
+
+Following this format helps XRPL explorers and other tools parse and display vault information in a standardized way, improving discoverability and user experience.
+
+#### Example JSON
+
+For a vault named "LATAM Fund II" with website "examplefund.com":
+
+```json
+{
+  "n": "LATAM Fund II",
+  "w": "examplefund.com"
+}
+```
+
+1. Remove any whitespace from the JSON:
+
+    `{"n":"LATAM Fund II","w":"examplefund.com"}`
+
+2. Hex-encode the JSON. For example:
+
+    ```sh
+    # Using xxd (macOS/Linux)
+    echo -n '{"n":"LATAM Fund II","w":"examplefund.com"}' | xxd -p | tr -d '\n'
+    ```
+
+    You should see this result: `7b226e223a224c4154414d2046756e64204949222c2277223a226578616d706c6566756e642e636f6d227d`
 
 ### Scaling Factor
 

@@ -42,7 +42,7 @@ In addition to the [common fields](../../../protocol/transactions/common-fields#
 | Field Name        | JSON Type | [Internal Type][] | Required? | Description         |
 | :---------------- | :-------- | :---------------- | :-------- | :-------------------|
 | `VaultID`         | String    | Hash256           | Yes       | The unique identifier of the vault that needs to be updated. |
-| `Data`            | String    | Blob              | No        | Arbitrary vault metadata, limited to 256 bytes. |
+| `Data`            | String    | Blob              | No        | Arbitrary vault metadata, limited to 256 bytes. See [Data Field Format](../../ledger-data/ledger-entry-types/vault.md#data-field-format) for the recommended format. |
 | `AssetsMaximum`   | Number    | Number            | No        | The maximum asset amount that can be held in a vault. The value cannot be lower than the current `AssetsTotal`, unless the value is 0. |
 | `DomainID`        | String    | Hash256           | No        | The [PermissionedDomain](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md) object ID associated with the shares of this vault. The `DomainID` is only required when updating a private vault. |
 
