@@ -1,0 +1,82 @@
+.bds-standard-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  width: 100%;
+  height: 100%; // Stretch to fill parent column (ensures equal heights in grid rows)
+  // aspect-ratio sets a preferred ratio but allows growth if content requires more space
+  // The card will be at least this tall, but can grow taller if needed
+  aspect-ratio: 4/3;
+  gap: 16px;
+
+  @include media-breakpoint-up(md) {
+    aspect-ratio: 1;
+    padding: 20px;
+  }
+
+
+  @include media-breakpoint-up(lg) {
+    padding: 24px;
+  }
+
+  &#{&}--neutral {
+    background-color: $gray-200;
+  }
+
+  &#{&}--green {
+    background-color: $green-300;
+  }
+
+  &#{&}--yellow {
+    background-color: $yellow-100;
+  }
+
+  &#{&}--blue {
+    background-color: $blue-100;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    color: $bds-btn-neutral-black;
+
+
+    @include media-breakpoint-up(lg) {
+      gap: 16px;
+    }
+  }
+
+  &__headline {
+    @include wordbreak('break-word');
+    color: $bds-btn-neutral-black;
+
+
+    margin: 0;
+    
+    &:before{
+      display: none;
+    }
+  }
+
+  &__description {
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    @include media-breakpoint-up(lg) {
+      gap: 24px;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+}
