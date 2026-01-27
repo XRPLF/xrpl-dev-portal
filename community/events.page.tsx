@@ -1331,7 +1331,7 @@ const events = [
   {
     name: "XRP Community Day Americas",
     description:
-      "​Join the Americas XRP community on February 11, 2026 (February 12 in APAC) for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
+      "​Join the Americas XRP community on February 11, 2026 for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
     type: "meetup",
     link: "https://luma.com/1powvqnc?utm_source=xrplorg",
     location: "Virtual - X Spaces",
