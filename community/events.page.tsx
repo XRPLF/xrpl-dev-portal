@@ -1353,7 +1353,7 @@ const events = [
   {
     name: "Building On The XRP Ledger",
     description:
-      "This 2-day intensive hands-on training is designed for developers who are  curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+      "This 2-day intensive hands-on training is designed for developers who are curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
     type: "meetup",
     link: "https://luma.com/lxb5ttsc",
     location: "Paris, France",
