@@ -57,7 +57,6 @@ See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.6.0..
 
 ### Bug Fixes
 
-- Fixed flaky `DeadlineIsHandledCorrectly` test. ([#2716](https://github.com/XRPLF/clio/pull/2716))
 - Fixed an issue where `account_info` was omitting the `signer_lists` field when requested for accounts with no signer lists. ([#2746](https://github.com/XRPLF/clio/pull/2746))
 - Fixed an issue where `ledger_entry` error codes didn't match with `rippled`. ([#2549](https://github.com/XRPLF/clio/pull/2549))
 - Enhanced cache saving error to include more information. ([#2794](https://github.com/XRPLF/clio/pull/2794))
