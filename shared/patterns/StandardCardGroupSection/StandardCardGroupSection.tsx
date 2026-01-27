@@ -67,7 +67,7 @@ export const StandardCardGroupSection = React.forwardRef<
   // Early return for empty cards array
   if (cards.length === 0) {
     if (isEnvironment("development")) {
-      console.warn("StandardCardGroupSection: No cards provided");
+      console.error("StandardCardGroupSection: No cards provided");
     }
     return null;
   }
