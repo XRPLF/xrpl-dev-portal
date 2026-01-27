@@ -67,16 +67,17 @@
 
   &__buttons {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: column;  
     width: 100%;
     flex-wrap: wrap;
     align-items: flex-start;
 
+
     @include media-breakpoint-up(lg) {
-      gap: 24px;
+  
       flex-direction: row;
       justify-content: flex-start;
+      align-items: center;
     }
   }
 }

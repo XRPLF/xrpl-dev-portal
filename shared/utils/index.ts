@@ -11,7 +11,6 @@ export {
   getTextFromChildren,
   getCardKey,
   isEnvironment,
-  hasChildren,
 } from "./helpers";
 export type { Environment } from "./helpers";
 
