@@ -39,6 +39,7 @@ import { TextCard } from 'shared/components/TextCard';
 | `description` | `ReactNode` | - | Card description (body-l typography) |
 | `href` | `string` | - | Optional link URL (makes card clickable) |
 | `color` | `TextCardColor` | `'neutral-light'` | Background color variant |
+| `disabled` | `boolean` | `false` | Whether the card is disabled |
 | `className` | `string` | - | Additional CSS classes |
 
 ### TextCardColor
@@ -57,19 +58,39 @@ type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac' | 'yel
 
 ## Color Variants & States
 
-Each color variant has three states with a "window shade" hover animation.
-Background colors are the same in both light and dark modes.
+Each color variant has four interactive states with a "window shade" hover animation.
 
-| Variant | Default | Hover | Pressed |
-|---------|---------|-------|---------|
-| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
-| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
-| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) | `$gray-500` (#72777E) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
-| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
-| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+### Light Mode
 
-### Focus State
+| Variant | Default | Hover | Focus | Pressed |
+|---------|---------|-------|-------|---------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
+| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+
+### Dark Mode
+
+| Variant | Default | Hover | Focus | Pressed |
+|---------|---------|-------|-------|---------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-400` (#8A919A) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-500` (#72777E) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
+| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+
+### Disabled State
+
+| Mode | Background | Text |
+|------|------------|------|
+| Light | `$gray-100` (#F0F3F7) | `$gray-500` (#72777E) |
+| Dark | `rgba($gray-500, 0.3)` | Default text color |
+
+### Focus Outline
+
 | Mode | Focus Outline |
 |------|---------------|
 | Light Mode | 2px solid black outline with 2px offset |
@@ -114,6 +135,17 @@ Background colors are the same in both light and dark modes.
 <TextCard title="Lilac" description="$lilac-200" color="lilac" />
 <TextCard title="Yellow" description="$yellow-100" color="yellow" />
 <TextCard title="Blue" description="$blue-100" color="blue" />
+```
+
+### Disabled Card
+
+```tsx
+<TextCard
+  title="Disabled Card"
+  description="This card is disabled and cannot be interacted with."
+  color="neutral-light"
+  disabled
+/>
 ```
 
 ### Within CardsTwoColumn Pattern
