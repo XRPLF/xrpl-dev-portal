@@ -37,6 +37,7 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [PermissionDelegation]            | v2.5.0     | {% badge href="https://xrpl.org/blog/2025/rippled-2.6.1" %}Obsolete: Removed in v2.6.1{% /badge %} |
 | [fixNFTokenNegOffer][]            | v1.9.2     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
 | [NonFungibleTokensV1][]           | v1.9.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
@@ -1683,7 +1684,7 @@ For more information, see the [Payment Channels Tutorial](../docs/tutorials/how-
 | Amendment    | PermissionDelegation |
 |:-------------|:---------------------|
 | Amendment ID | AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5 |
-| Status       | Disabled |
+| Status       | Obsolete |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
