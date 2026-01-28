@@ -1,20 +1,9 @@
 import React, { useMemo } from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
-import { TileLogo } from '../../components/TileLogo/TileLogo';
+import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
 
-export interface LogoItem {
-  /** Logo image source URL */
-  src: string;
-  /** Alt text for the logo image */
-  alt: string;
-  /** Optional link URL - makes the logo clickable */
-  href?: string;
-  /** Optional click handler - makes the logo a button */
-  onClick?: () => void;
-  /** Disabled state */
-  disabled?: boolean;
-}
+export interface LogoItem extends TileLogoProps {}
 
 export interface LogoRectangleGridProps {
   /** Color variant - determines background color */
@@ -160,11 +149,7 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
               <TileLogo
                 shape="rectangle"
                 variant={variant === 'gray' ? 'neutral' : 'green'}
-                logo={logo.src}
-                alt={logo.alt}
-                href={logo.href}
-                onClick={logo.onClick}
-                disabled={logo.disabled}
+                {...logo}
               />
             </PageGridCol>
           );

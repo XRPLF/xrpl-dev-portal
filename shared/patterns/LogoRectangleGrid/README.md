@@ -52,7 +52,7 @@ Colors are managed by the TileLogo component and automatically adapt between lig
 ```typescript
 interface LogoItem {
   /** Logo image source URL */
-  src: string;
+  logo: string;
   /** Alt text for the logo image */
   alt: string;
   /** Optional link URL - makes the logo clickable */
@@ -77,6 +77,8 @@ interface LogoRectangleGridProps {
 }
 ```
 
+**Note**: `LogoItem` extends `TileLogoProps` from the TileLogo component. The `variant` property is NOT included in individual logo items - it's controlled at the component level via the `LogoRectangleGridProps.variant` prop, which applies to all tiles in the grid.
+
 ### Default Values
 
 - `variant`: `'gray'`
@@ -99,10 +101,10 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   variant="gray"
   heading="Developer tools & APIs"
   logos={[
-    { src: "/img/logos/company1.svg", alt: "Company 1" },
-    { src: "/img/logos/company2.svg", alt: "Company 2" },
-    { src: "/img/logos/company3.svg", alt: "Company 3" },
-    { src: "/img/logos/company4.svg", alt: "Company 4" }
+    { logo: "/img/logos/company1.svg", alt: "Company 1" },
+    { logo: "/img/logos/company2.svg", alt: "Company 2" },
+    { logo: "/img/logos/company3.svg", alt: "Company 3" },
+    { logo: "/img/logos/company4.svg", alt: "Company 4" }
   ]}
 />
 ```
@@ -115,14 +117,14 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   heading="Developer tools & APIs"
   description="Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset."
   logos={[
-    { src: "/img/logos/tool1.svg", alt: "Tool 1" },
-    { src: "/img/logos/tool2.svg", alt: "Tool 2" },
-    { src: "/img/logos/tool3.svg", alt: "Tool 3" },
-    { src: "/img/logos/tool4.svg", alt: "Tool 4" },
-    { src: "/img/logos/tool5.svg", alt: "Tool 5" },
-    { src: "/img/logos/tool6.svg", alt: "Tool 6" },
-    { src: "/img/logos/tool7.svg", alt: "Tool 7" },
-    { src: "/img/logos/tool8.svg", alt: "Tool 8" }
+    { logo: "/img/logos/tool1.svg", alt: "Tool 1" },
+    { logo: "/img/logos/tool2.svg", alt: "Tool 2" },
+    { logo: "/img/logos/tool3.svg", alt: "Tool 3" },
+    { logo: "/img/logos/tool4.svg", alt: "Tool 4" },
+    { logo: "/img/logos/tool5.svg", alt: "Tool 5" },
+    { logo: "/img/logos/tool6.svg", alt: "Tool 6" },
+    { logo: "/img/logos/tool7.svg", alt: "Tool 7" },
+    { logo: "/img/logos/tool8.svg", alt: "Tool 8" }
   ]}
 />
 ```
@@ -135,13 +137,13 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   heading="Our Partners"
   description="Leading companies building on XRPL."
   logos={[
-    { 
-      src: "/img/logos/partner1.svg", 
+    {
+      logo: "/img/logos/partner1.svg",
       alt: "Partner 1",
       href: "https://partner1.com"
     },
-    { 
-      src: "/img/logos/partner2.svg", 
+    {
+      logo: "/img/logos/partner2.svg",
       alt: "Partner 2",
       href: "https://partner2.com"
     }
@@ -157,13 +159,13 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   heading="Interactive Partners"
   description="Click any logo to learn more."
   logos={[
-    { 
-      src: "/img/logos/partner1.svg", 
+    {
+      logo: "/img/logos/partner1.svg",
       alt: "Partner 1",
       onClick: () => openModal('partner1')
     },
-    { 
-      src: "/img/logos/partner2.svg", 
+    {
+      logo: "/img/logos/partner2.svg",
       alt: "Partner 2",
       onClick: () => openModal('partner2')
     }
@@ -179,13 +181,13 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   heading="Coming Soon"
   description="New partners joining the ecosystem."
   logos={[
-    { 
-      src: "/img/logos/partner1.svg", 
+    {
+      logo: "/img/logos/partner1.svg",
       alt: "Partner 1",
       href: "/partners/partner1"
     },
-    { 
-      src: "/img/logos/coming-soon.svg", 
+    {
+      logo: "/img/logos/coming-soon.svg",
       alt: "Coming Soon",
       disabled: true
     }
@@ -200,10 +202,10 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   variant="gray"
   heading="Ecosystem Members"
   logos={[
-    { src: "/img/logos/sponsor1.svg", alt: "Sponsor 1" },
-    { src: "/img/logos/sponsor2.svg", alt: "Sponsor 2" },
-    { src: "/img/logos/sponsor3.svg", alt: "Sponsor 3" },
-    { src: "/img/logos/sponsor4.svg", alt: "Sponsor 4" }
+    { logo: "/img/logos/sponsor1.svg", alt: "Sponsor 1" },
+    { logo: "/img/logos/sponsor2.svg", alt: "Sponsor 2" },
+    { logo: "/img/logos/sponsor3.svg", alt: "Sponsor 3" },
+    { logo: "/img/logos/sponsor4.svg", alt: "Sponsor 4" }
   ]}
 />
 ```
@@ -216,8 +218,8 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   variant="green"
   heading="Featured Partners"
   logos={[
-    { src: "/img/logos/partner1.svg", alt: "Partner 1" },
-    { src: "/img/logos/partner2.svg", alt: "Partner 2" }
+    { logo: "/img/logos/partner1.svg", alt: "Partner 1" },
+    { logo: "/img/logos/partner2.svg", alt: "Partner 2" }
   ]}
 />
 
@@ -226,10 +228,10 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   variant="gray"
   heading="Core Technologies"
   logos={[
-    { src: "/img/logos/tech1.svg", alt: "Tech 1" },
-    { src: "/img/logos/tech2.svg", alt: "Tech 2" },
-    { src: "/img/logos/tech3.svg", alt: "Tech 3" },
-    { src: "/img/logos/tech4.svg", alt: "Tech 4" }
+    { logo: "/img/logos/tech1.svg", alt: "Tech 1" },
+    { logo: "/img/logos/tech2.svg", alt: "Tech 2" },
+    { logo: "/img/logos/tech3.svg", alt: "Tech 3" },
+    { logo: "/img/logos/tech4.svg", alt: "Tech 4" }
   ]}
 />
 
@@ -238,12 +240,12 @@ import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
   variant="green"
   heading="Developer Tools"
   logos={[
-    { src: "/img/logos/tool1.svg", alt: "Tool 1" },
-    { src: "/img/logos/tool2.svg", alt: "Tool 2" },
-    { src: "/img/logos/tool3.svg", alt: "Tool 3" },
-    { src: "/img/logos/tool4.svg", alt: "Tool 4" },
-    { src: "/img/logos/tool5.svg", alt: "Tool 5" },
-    { src: "/img/logos/tool6.svg", alt: "Tool 6" }
+    { logo: "/img/logos/tool1.svg", alt: "Tool 1" },
+    { logo: "/img/logos/tool2.svg", alt: "Tool 2" },
+    { logo: "/img/logos/tool3.svg", alt: "Tool 3" },
+    { logo: "/img/logos/tool4.svg", alt: "Tool 4" },
+    { logo: "/img/logos/tool5.svg", alt: "Tool 5" },
+    { logo: "/img/logos/tool6.svg", alt: "Tool 6" }
   ]}
 />
 
