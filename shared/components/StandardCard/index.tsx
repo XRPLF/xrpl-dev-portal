@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import clsx from "clsx";
 import Button from "../Button/Button";
 import {
-  DesignContrainedButtonProps,
+  DesignConstrainedButtonProps,
   isEnvironment,
   isEmpty,
 } from "../../utils";
@@ -20,7 +20,7 @@ export interface StandardCardProps extends React.ComponentPropsWithoutRef<"artic
   headline: React.ReactNode;
   /** Background color variant */
   variant: StandardCardVariant;
-  callsToAction: [DesignContrainedButtonProps, DesignContrainedButtonProps?];
+  callsToAction: [DesignConstrainedButtonProps, DesignConstrainedButtonProps?];
   children?: React.ReactNode;
 }
 
