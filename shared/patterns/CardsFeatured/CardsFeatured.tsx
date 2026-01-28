@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { CardImage, CardImageProps } from '../../components/CardImage';
 import { PageGrid } from '../../components/PageGrid/page-grid';
+import { getCardKey, isEnvironment } from '../../utils';
 
 /**
  * Configuration for a single card in the CardsFeatured pattern
@@ -19,16 +20,6 @@ export interface CardsFeaturedProps extends React.ComponentPropsWithoutRef<'sect
   /** Array of card configurations (uses CardImageProps) */
   cards: readonly CardsFeaturedCardConfig[];
 }
-
-/**
- * Generates a stable key for a card based on its properties.
- * Falls back to index if no stable identifier is available.
- */
-const getCardKey = (card: CardsFeaturedCardConfig, index: number): string | number => {
-  if (card.href) return card.href;
-  if (card.title) return `${card.title}-${index}`;
-  return index;
-};
 
 /**
  * CardsFeatured Pattern Component
@@ -68,7 +59,9 @@ export const CardsFeatured = React.forwardRef<HTMLElement, CardsFeaturedProps>(
 
     // Early return for empty cards array
     if (cards.length === 0) {
-      console.warn('CardsFeatured: No cards provided');
+      if (isEnvironment('development')) {
+        console.warn('CardsFeatured: No cards provided');
+      }
       return null;
     }
 
@@ -101,7 +94,7 @@ export const CardsFeatured = React.forwardRef<HTMLElement, CardsFeaturedProps>(
               <div className="bds-cards-featured__cards">
                 {cards.map((card, index) => (
                   <div
-                    key={getCardKey(card, index)}
+                    key={getCardKey(card.href || card.title, index, "card-featured")}
                     className="bds-cards-featured__card-wrapper"
                   >
                     <CardImage {...card} fullBleed />
