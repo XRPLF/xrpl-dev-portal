@@ -1,24 +1,19 @@
 // BDS CardsTwoColumn Pattern Styles
 // Brand Design System - Section with header and 2x2 card grid
+// Uses PageGrid for responsive layout
 //
 // Naming Convention: BEM with 'bds' namespace
 // .bds-cards-two-column                    - Base section container
-// .bds-cards-two-column__container         - Inner container with max-width
-// .bds-cards-two-column__header            - Header section (title + description)
-// .bds-cards-two-column__header-left       - Left side of header (title)
-// .bds-cards-two-column__header-right      - Right side of header (description)
+// .bds-cards-two-column__container         - PageGrid container with vertical padding
+// .bds-cards-two-column__header            - Header row (title + description)
+// .bds-cards-two-column__header-left       - Left column (title)
+// .bds-cards-two-column__header-right      - Right column (description)
 // .bds-cards-two-column__title             - Section title (heading-md)
 // .bds-cards-two-column__description       - Section description (body-l, muted)
-// .bds-cards-two-column__cards             - Cards grid container (2x2 on desktop)
-// .bds-text-card                           - Individual text card
-// .bds-text-card--green                    - Green variant
-// .bds-text-card--neutral-light            - Neutral light variant
-// .bds-text-card--neutral-dark             - Neutral dark variant
-// .bds-text-card--lilac                    - Lilac variant
-// .bds-text-card__header                   - Card header (title)
-// .bds-text-card__footer                   - Card footer (description)
-// .bds-text-card__title                    - Card title (heading-lg)
-// .bds-text-card__description              - Card description (body-l)
+// .bds-cards-two-column__cards             - Cards row (2x2 on desktop)
+//
+// Note: TextCard styles are in shared/components/TextCard/TextCard.scss
+// Note: PageGrid handles horizontal padding and column widths
 //
 // Design tokens from Figma (Section Cards - Two Column):
 //
@@ -31,48 +26,22 @@
 // Design Tokens from Figma
 // =============================================================================
 
-// Section padding
-$bds-section-padding-x-mobile: 16px;
-$bds-section-padding-x-tablet: 24px;
-$bds-section-padding-x-desktop: 32px;
-
+// Section vertical padding (horizontal handled by PageGrid)
 $bds-section-padding-y-mobile: 24px;
 $bds-section-padding-y-tablet: 32px;
 $bds-section-padding-y-desktop: 40px;
 
-// Gap between header and cards
-$bds-section-gap-mobile: 24px;
-$bds-section-gap-tablet: 32px;
-$bds-section-gap-desktop: 40px;
+// Gap between header row and cards row
+$bds-section-row-gap-mobile: 24px;
+$bds-section-row-gap-tablet: 32px;
+$bds-section-row-gap-desktop: 40px;
 
-// Gap between cards (consistent 8px across all breakpoints)
-$bds-cards-gap: 8px;
-
-// Card internal padding
-$bds-text-card-padding-mobile: 16px;
-$bds-text-card-padding-tablet: 20px;
-$bds-text-card-padding-desktop: 24px;
-
-// Card heights (fixed per breakpoint)
-$bds-text-card-height-mobile: 274px;
-$bds-text-card-height-tablet: 309px;
+// Card height for header alignment (desktop only)
 $bds-text-card-height-desktop: 340px;
-
-// Card description max-width (from Figma)
-$bds-text-card-description-max-width: 478px;
-
-// Container max-width
-$bds-container-max-width: 1280px;
 
 // Colors - Light Mode (from Figma)
 $bds-text-color: $black;           // #141414 - Neutral black
 $bds-text-color-muted: $gray-500;  // #72777E - Neutral/500 for description
-
-// Card background colors
-$bds-text-card-bg-green: $green-300;        // #21E46B
-$bds-text-card-bg-neutral-light: $gray-200; // #E6EAF0
-$bds-text-card-bg-neutral-dark: $gray-300;  // #CAD4DF
-$bds-text-card-bg-lilac: $lilac-200;        // #D9CAFF
 
 // =============================================================================
 // Section Container
@@ -84,68 +53,57 @@ $bds-text-card-bg-lilac: $lilac-200;        // #D9CAFF
 }
 
 // =============================================================================
-// Inner Container
+// PageGrid Container Override
 // =============================================================================
 
 .bds-cards-two-column__container {
-  display: flex;
-  flex-direction: column;
-  max-width: $bds-container-max-width;
-  margin: 0 auto;
-
-  // Mobile
-  padding: $bds-section-padding-y-mobile $bds-section-padding-x-mobile;
-  gap: $bds-section-gap-mobile;
+  // Add vertical padding (PageGrid handles horizontal)
+  padding-top: $bds-section-padding-y-mobile;
+  padding-bottom: $bds-section-padding-y-mobile;
 
   @include media-breakpoint-up(md) {
-    // Tablet
-    padding: $bds-section-padding-y-tablet $bds-section-padding-x-tablet;
-    gap: $bds-section-gap-tablet;
+    padding-top: $bds-section-padding-y-tablet;
+    padding-bottom: $bds-section-padding-y-tablet;
   }
 
   @include media-breakpoint-up(lg) {
-    // Desktop
-    padding: $bds-section-padding-y-desktop $bds-section-padding-x-desktop;
-    gap: $bds-section-gap-desktop;
+    padding-top: $bds-section-padding-y-desktop;
+    padding-bottom: $bds-section-padding-y-desktop;
   }
 }
 
 // =============================================================================
-// Header Section
+// Header Row
 // =============================================================================
 
 .bds-cards-two-column__header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  // Add margin-bottom for gap between header and cards rows
+  margin-bottom: $bds-section-row-gap-mobile;
 
-  // Mobile/Tablet: stacked layout
+  @include media-breakpoint-up(md) {
+    margin-bottom: $bds-section-row-gap-tablet;
+  }
+
   @include media-breakpoint-up(lg) {
-    // Desktop: side-by-side layout
-    flex-direction: row;
-    align-items: center;
-    gap: $bds-cards-gap;
-    height: $bds-text-card-height-desktop;
+    margin-bottom: $bds-section-row-gap-desktop;
+    // Desktop: align items to match card height
+    align-items: stretch;
   }
 }
 
 .bds-cards-two-column__header-left {
-  flex: 1 0 0;
-  min-width: 0;
-
   @include media-breakpoint-up(lg) {
-    height: 100%;
+    // Desktop: match card height for alignment
+    min-height: $bds-text-card-height-desktop;
     display: flex;
     flex-direction: column;
   }
 }
 
 .bds-cards-two-column__header-right {
-  flex: 1 0 0;
-  min-width: 0;
-
   @include media-breakpoint-up(lg) {
-    height: 100%;
+    // Desktop: match card height, align description to bottom
+    min-height: $bds-text-card-height-desktop;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -172,111 +130,12 @@ $bds-text-card-bg-lilac: $lilac-200;        // #D9CAFF
 }
 
 // =============================================================================
-// Cards Grid
+// Cards Row
 // =============================================================================
 
 .bds-cards-two-column__cards {
-  display: flex;
-  flex-direction: column;
-  gap: $bds-cards-gap;
-  width: 100%;
-
-  @include media-breakpoint-up(lg) {
-    // Desktop: 2x2 grid with flex-wrap
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  // Cards fill available width
-  .bds-text-card {
-    width: 100%;
-
-    @include media-breakpoint-up(lg) {
-      // Desktop: 2 cards per row (50% - gap adjustment)
-      width: calc(50% - #{$bds-cards-gap / 2});
-    }
-  }
-}
-
-// =============================================================================
-// TextCard Component
-// =============================================================================
-
-.bds-text-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  text-decoration: none;
-  box-sizing: border-box;
-
-  // Mobile dimensions and padding
-  height: $bds-text-card-height-mobile;
-  padding: $bds-text-card-padding-mobile;
-
-  @include media-breakpoint-up(md) {
-    height: $bds-text-card-height-tablet;
-    padding: $bds-text-card-padding-tablet;
-  }
-
-  @include media-breakpoint-up(lg) {
-    height: $bds-text-card-height-desktop;
-    padding: $bds-text-card-padding-desktop;
-  }
-
-  // Hover state for linked cards
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-// =============================================================================
-// Color Variants
-// =============================================================================
-
-.bds-text-card--green {
-  background-color: $bds-text-card-bg-green;
-}
-
-.bds-text-card--neutral-light {
-  background-color: $bds-text-card-bg-neutral-light;
-}
-
-.bds-text-card--neutral-dark {
-  background-color: $bds-text-card-bg-neutral-dark;
-}
-
-.bds-text-card--lilac {
-  background-color: $bds-text-card-bg-lilac;
-}
-
-// =============================================================================
-// Card Header (Title)
-// =============================================================================
-
-.bds-text-card__header {
-  width: 100%;
-}
-
-.bds-text-card__title {
-  margin: 0;
-  color: $bds-text-color;
-  // Typography handled by .h-lg class from _font.scss
-}
-
-// =============================================================================
-// Card Footer (Description)
-// =============================================================================
-
-.bds-text-card__footer {
-  width: 100%;
-}
-
-.bds-text-card__description {
-  margin: 0;
-  color: $bds-text-color;
-  max-width: $bds-text-card-description-max-width;
-  // Typography handled by .body-l class from _font.scss
+  // PageGrid.Row handles the flex layout and gap
+  // TextCards fill their column width automatically
 }
 
 // =============================================================================
@@ -295,11 +154,6 @@ html.light {
   .bds-cards-two-column__description {
     color: $bds-text-color-muted;
   }
-
-  .bds-text-card__title,
-  .bds-text-card__description {
-    color: $bds-text-color;
-  }
 }
 
 // =============================================================================
@@ -309,11 +163,6 @@ html.light {
 // - Section background: Neutral/black (#141414) → $black
 // - Section title: Neutral/white (#FFFFFF) → $white
 // - Section description: Neutral/white (#FFFFFF) → $white
-// - Card text: Neutral/black (#141414) → $black (unchanged - cards have colored backgrounds)
-// - Green card: Primary/Green/300default (#21E46B) → $green-300 (unchanged)
-// - Neutral Light card: Neutral/300default (#CAD4DF) → $gray-300 (unchanged)
-// - Neutral Dark card: Neutral/400 (#8A919A) → $gray-400 (darker in dark mode)
-// - Lilac card: Primary/Lilac/200 (#D9CAFF) → $lilac-200 (unchanged)
 
 html.dark {
   .bds-cards-two-column {
@@ -327,30 +176,5 @@ html.dark {
 
   .bds-cards-two-column__description {
     color: $white;
-  }
-
-  // Card text stays dark (cards have light colored backgrounds)
-  .bds-text-card__title,
-  .bds-text-card__description {
-    color: $bds-text-color;
-  }
-
-  // Card background colors for dark mode
-  // Green, Neutral Light, and Lilac remain the same
-  // Neutral Dark uses a darker shade ($gray-400) in dark mode
-  .bds-text-card--green {
-    background-color: $green-300;
-  }
-
-  .bds-text-card--neutral-light {
-    background-color: $gray-300;
-  }
-
-  .bds-text-card--neutral-dark {
-    background-color: $gray-400;
-  }
-
-  .bds-text-card--lilac {
-    background-color: $lilac-200;
   }
 }

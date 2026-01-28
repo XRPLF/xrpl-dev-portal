@@ -4,7 +4,8 @@ A card component with a title at the top and description at the bottom. Used wit
 
 ## Features
 
-- **4 Color Variants**: Green, neutral-light, neutral-dark, and lilac backgrounds
+- **6 Color Variants**: Green, neutral-light, neutral-dark, lilac, yellow, and blue backgrounds
+- **Interactive States**: Default, hover (window shade animation), focus, and pressed states
 - **Responsive Design**: Adapts height and padding across breakpoints
 - **Optional Link**: Can be made clickable with an `href` prop
 - **Flexible Content**: Title and description support ReactNode
@@ -12,7 +13,7 @@ A card component with a title at the top and description at the bottom. Used wit
 ## Usage
 
 ```tsx
-import { TextCard } from 'shared/patterns/CardsTwoColumn';
+import { TextCard } from 'shared/components/TextCard';
 
 // Basic usage
 <TextCard
@@ -43,7 +44,7 @@ import { TextCard } from 'shared/patterns/CardsTwoColumn';
 ### TextCardColor
 
 ```tsx
-type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac';
+type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac' | 'yellow' | 'blue';
 ```
 
 ## Responsive Behavior
@@ -54,14 +55,25 @@ type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac';
 | Tablet (576-991px) | 309px | 20px |
 | Mobile (<576px) | 274px | 16px |
 
-## Color Variants
+## Color Variants & States
 
-| Variant | Light Mode | Dark Mode |
-|---------|------------|-----------|
-| `green` | `$green-300` (#21E46B) | `$green-300` (#21E46B) |
-| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) |
-| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-200` (#D9CAFF) |
+Each color variant has three states with a "window shade" hover animation.
+Background colors are the same in both light and dark modes.
+
+| Variant | Default | Hover | Pressed |
+|---------|---------|-------|---------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) | `$gray-500` (#72777E) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
+| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+
+### Focus State
+| Mode | Focus Outline |
+|------|---------------|
+| Light Mode | 2px solid black outline with 2px offset |
+| Dark Mode | 2px solid white outline with 2px offset |
 
 ## CSS Classes
 
@@ -71,6 +83,9 @@ type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac';
 .bds-text-card--neutral-light     // Neutral light variant
 .bds-text-card--neutral-dark      // Neutral dark variant
 .bds-text-card--lilac             // Lilac variant
+.bds-text-card--yellow            // Yellow variant
+.bds-text-card--blue              // Blue variant
+.bds-text-card__overlay           // Hover animation overlay
 .bds-text-card__header            // Title container
 .bds-text-card__title             // Title element
 .bds-text-card__footer            // Description container
@@ -93,10 +108,12 @@ type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac';
 ### All Color Variants
 
 ```tsx
-<TextCard title="Green" description="$green-300" color="green" />
+<TextCard title="Green" description="$green-200" color="green" />
 <TextCard title="Neutral Light" description="$gray-200" color="neutral-light" />
 <TextCard title="Neutral Dark" description="$gray-300" color="neutral-dark" />
 <TextCard title="Lilac" description="$lilac-200" color="lilac" />
+<TextCard title="Yellow" description="$yellow-100" color="yellow" />
+<TextCard title="Blue" description="$blue-100" color="blue" />
 ```
 
 ### Within CardsTwoColumn Pattern
@@ -116,12 +133,19 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 />
 ```
 
+## Files
+
+- `TextCard.tsx` - Component implementation
+- `TextCard.scss` - Styles with color variants and responsive breakpoints
+- `index.ts` - Barrel exports
+- `TextCard.md` - This documentation
+
 ## Related Components
 
-- **CardsTwoColumn**: Parent pattern that uses TextCard in a 2×2 grid layout
+- **CardsTwoColumn**: Pattern that uses TextCard in a 2×2 grid layout
 
 ## Design References
 
 - **Figma Design**: [Section Cards - Two Column](https://www.figma.com/design/MP5gjNp7yPBnKBKleb8LRL/Section-Cards---Two-Column)
-- **Component Location**: `shared/patterns/CardsTwoColumn/TextCard.tsx`
+- **Component Location**: `shared/components/TextCard/`
 
