@@ -1,0 +1,115 @@
+// BDS LogoSquareGrid Component Styles
+// Brand Design System - Logo grid pattern with optional header section
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-logo-square-grid                  - Base component
+// .bds-logo-square-grid--gray            - Gray variant (maps to TileLogo 'neutral')
+// .bds-logo-square-grid--green           - Green variant (maps to TileLogo 'green')
+// .bds-logo-square-grid__header          - Header section container
+// .bds-logo-square-grid__text            - Text content container
+// .bds-logo-square-grid__heading         - Heading element
+// .bds-logo-square-grid__description     - Description element
+//
+// Note: Individual logo tiles are rendered using the TileLogo component
+// Note: Button layout is handled by the ButtonGroup component
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+// Note: Color variants are now handled by the TileLogo component
+// LogoSquareGrid 'gray' maps to TileLogo 'neutral'
+// LogoSquareGrid 'green' maps to TileLogo 'green'
+
+// Spacing tokens - responsive
+// Mobile (<768px)
+$bds-lsg-header-gap-mobile: 24px;
+$bds-lsg-text-gap-mobile: 8px;
+
+// Tablet (768px-1023px)
+$bds-lsg-header-gap-tablet: 32px;
+
+// Desktop (≥1024px)
+$bds-lsg-header-gap-desktop: 40px;
+$bds-lsg-text-gap-desktop: 16px;
+
+// =============================================================================
+// Base Component Styles
+// =============================================================================
+
+.bds-logo-square-grid {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .w-100;
+  
+  // Mobile-first gap
+  gap: $bds-lsg-header-gap-mobile;
+  
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    gap: $bds-lsg-header-gap-tablet;
+  }
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(lg) {
+    gap: $bds-lsg-header-gap-desktop;
+  }
+}
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-logo-square-grid__header {
+  @extend .d-flex;
+  @extend .flex-column;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  
+  // Mobile-first gap
+  gap: $bds-lsg-header-gap-mobile;
+
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    gap: $bds-lsg-header-gap-tablet;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(lg) {
+    gap: $bds-lsg-header-gap-desktop;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+// =============================================================================
+// Text Content
+// =============================================================================
+
+.bds-logo-square-grid__text {
+  @extend .d-flex;
+  @extend .flex-column;
+  
+  // Mobile-first gap
+  gap: $bds-lsg-text-gap-mobile;
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(lg) {
+    gap: $bds-lsg-text-gap-desktop;
+  }
+}
+
+
+// =============================================================================
+// Action Buttons
+// =============================================================================
+// Note: Button layout is now handled by the ButtonGroup component
+
+// =============================================================================
+// Logo Grid Row
+// =============================================================================
+// Note: Grid layout is now handled by PageGridRow/PageGridCol
+// Each tile uses PageGridCol with span={{ base: 2, lg: 3 }}
+// This gives us 2 columns on mobile (2/4) and 4 columns on desktop (3/12)
+// Tile rendering and styling is handled by the TileLogo component
