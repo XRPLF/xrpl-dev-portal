@@ -13,7 +13,7 @@ import clsx from 'clsx';
  */
 export type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac' | 'yellow' | 'blue';
 
-export interface TextCardProps extends React.ComponentPropsWithoutRef<'article'> {
+export interface TextCardProps extends Omit<React.ComponentPropsWithoutRef<'article'>, 'title'> {
   /** Card title text (heading-lg typography) */
   title: React.ReactNode;
   /** Card description text (body-l typography) */
@@ -22,6 +22,8 @@ export interface TextCardProps extends React.ComponentPropsWithoutRef<'article'>
   href?: string;
   /** Background color variant */
   color?: TextCardColor;
+  /** Whether the card is disabled */
+  disabled?: boolean;
 }
 
 /**
@@ -58,6 +60,7 @@ export const TextCard = React.forwardRef<HTMLElement, TextCardProps>(
       description,
       href,
       color = 'neutral-light',
+      disabled = false,
       className,
       ...rest
     } = props;
@@ -65,6 +68,7 @@ export const TextCard = React.forwardRef<HTMLElement, TextCardProps>(
     const rootClasses = clsx(
       'bds-text-card',
       `bds-text-card--${color}`,
+      disabled && 'bds-text-card--disabled',
       className
     );
 

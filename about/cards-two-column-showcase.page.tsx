@@ -218,6 +218,72 @@ export default function CardsTwoColumnShowcase() {
         />
 
         <Divider />
+
+        {/* Disabled State Section */}
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGridCol span={12}>
+              <h2 className="h4 mb-6">Disabled State</h2>
+              <p className="mb-6">
+                TextCards can be disabled. In light mode, disabled cards have a $gray-100 background with $gray-500 text.
+                In dark mode, disabled cards have a $gray-500 background with 30% opacity. Toggle dark mode to see the difference.
+              </p>
+            </PageGridCol>
+          </PageGridRow>
+        </PageGrid>
+
+        <PageGrid className="pb-26">
+          <PageGridRow>
+            <PageGridCol span={12}>
+              <div className="d-flex flex-wrap gap-3">
+                <TextCard
+                  title="Disabled Green"
+                  description="This card is disabled and cannot be interacted with."
+                  color="green"
+                  disabled
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Disabled Neutral Light"
+                  description="This card is disabled and cannot be interacted with."
+                  color="neutral-light"
+                  disabled
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Disabled Neutral Dark"
+                  description="This card is disabled and cannot be interacted with."
+                  color="neutral-dark"
+                  disabled
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Disabled Lilac"
+                  description="This card is disabled and cannot be interacted with."
+                  color="lilac"
+                  disabled
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Disabled Yellow"
+                  description="This card is disabled and cannot be interacted with."
+                  color="yellow"
+                  disabled
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Disabled Blue"
+                  description="This card is disabled and cannot be interacted with."
+                  color="blue"
+                  disabled
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+              </div>
+            </PageGridCol>
+          </PageGridRow>
+        </PageGrid>
+
+        <Divider />
       </div>
     </div>
   );
