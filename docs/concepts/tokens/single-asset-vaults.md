@@ -230,7 +230,7 @@ Depending on the connected on-chain protocol, vaults can be applied to various u
 - Yield-bearing tokens
 - Asset management
 
-The only supported use cases right now are _asset management_ and [_lending markets_](https://github.com/XRPLF/XRPL-Standards/discussions/190).
+The only supported use cases right now are _asset management_ and [_lending markets_](./lending-protocol.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
 
