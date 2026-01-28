@@ -10,7 +10,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/VaultWithdraw.cpp "Source")
 
-Redeem vault shares for assets. The amount of assets received depends on the [exchange rate](../../../../concepts/tokens/single-asset-vault.md#exchange-algorithm), which adjusts based on the vault’s total assets and any [unrealized losses](../../../../concepts/tokens/single-asset-vault.md#unrealized-loss).
+Redeem vault shares for assets. The amount of assets received depends on the [exchange rate](../../../../concepts/tokens/single-asset-vaults.md#exchange-algorithm), which adjusts based on the vault’s total assets and any [unrealized losses](../../../../concepts/tokens/single-asset-vaults.md#unrealized-loss).
 
 {% admonition type="info" name="Note" %}
 The `VaultWithdraw` transaction does not respect the Permissioned Domain rules. In other words, any account that holds the shares of the vault can redeem them. This is to avoid a situation where a depositor deposits assets to a private vault to then have their access revoked by invalidating their credentials, and thus losing access to their funds.

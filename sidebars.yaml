@@ -157,7 +157,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
             - page: docs/concepts/tokens/lending-protocol.md
-            - page: docs/concepts/tokens/single-asset-vault.md
+            - page: docs/concepts/tokens/single-asset-vaults.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:
@@ -337,6 +337,12 @@
                     - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan.md
                     - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/manage-a-loan.md
                     - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/pay-off-a-loan.md
+                - page: docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/index.md
+                  expanded: false
+                  items:
+                    - page: docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/create-a-single-asset-vault.md
+                    - page: docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/deposit-into-a-vault.md
+                    - page: docs/tutorials/how-tos/set-up-lending/use-single-asset-vaults/withdraw-from-a-vault.md
             - page: docs/tutorials/how-tos/use-tokens/index.md
               expanded: false
               items:
