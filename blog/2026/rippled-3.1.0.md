@@ -48,26 +48,20 @@ Date:   Tue Jan 27 21:13:06 2026 -0400
 
 - **SingleAssetVault**: Adds vaults, which pool a single asset for use with the Lending Protocol. ([#5632](https://github.com/XRPLF/rippled/pull/5632))
 - **LendingProtocol**: Adds the ability to create loans on the XRP Ledger. Loan brokers can create fixed-term, uncollateralized loans using the pooled funds from a Single Asset Vault. The protocol is highly configurable, enabling loan brokers to tune risk appetite, depostitor protections, and economic incentives. ([#5632](https://github.com/XRPLF/rippled/pull/5632))
-
-
-### Features
-
-- Expand `Number` to support full integer range. ([#6192](https://github.com/XRPLF/rippled/pull/6192))
+- **fixBatchInnerSigs**: Fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Inner transactions never have valid signatures. ([#6069](https://github.com/XRPLF/rippled/pull/6069))
 
 
 ### Bug Fixes
 
+- Expand `Number` to support full integer range. ([#6192](https://github.com/XRPLF/rippled/pull/6192))
 - fix: Reorder Batch Preflight Errors. ([#6176](https://github.com/XRPLF/rippled/pull/6176))
-- fix: Inner batch transactions never have valid signatures. ([#6069](https://github.com/XRPLF/rippled/pull/6069))
-- VaultClawback: Burn shares of an empty vault. ([#6120](https://github.com/XRPLF/rippled/pull/6120))
-- Improve and fix bugs in Lending Protocol - XLS-66. ([#6156](https://github.com/XRPLF/rippled/pull/6156))
 - Fix dependencies so clio can use libxrpl. ([#6251](https://github.com/XRPLF/rippled/pull/6251))
 - fix: Remove DEFAULT fields that change to the default in associateAsset (was Add Vault creation tests for showing valid range for AssetsMaximum). ([#6259](https://github.com/XRPLF/rippled/pull/6259))
 
 
 ## Credits
 
-The following GitHub users contributed to this release:
+The following RippleX teams and GitHub users contributed to this release:
 
 - RippleX Engineering
 - RippleX Docs
