@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
-import { ButtonGroup } from '../../components/ButtonGroup/ButtonGroup';
+import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */

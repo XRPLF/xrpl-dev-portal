@@ -19,28 +19,28 @@ export default function LogoSquareGridShowcase() {
 
   // Sample logos using Ondo Finance logo
   const sampleLogos = [
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
-    { src: sampleLogo, alt: "Ondo Finance", variant: "gray" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
   ];
 
   const clickableLogos = [
-    { src: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
-    { src: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
-    { src: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
-    { src: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
+    { logo: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
+    { logo: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
+    { logo: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
+    { logo: sampleLogo, alt: "Ondo Finance", href: "https://example.com" },
   ];
 
   const smallLogoSet = [
-    { src: sampleLogo, alt: "Ondo Finance" },
-    { src: sampleLogo, alt: "Ondo Finance" },
-    { src: sampleLogo, alt: "Ondo Finance" },
-    { src: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
+    { logo: sampleLogo, alt: "Ondo Finance" },
   ];
 
   return (
