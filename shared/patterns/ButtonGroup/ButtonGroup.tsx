@@ -3,9 +3,14 @@ import clsx from 'clsx';
 import { Button } from '../../components/Button/Button';
 
 export interface ButtonConfig {
+  /** Button text label */
   label: string;
+  /** URL to navigate to - renders button as a link */
   href?: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  /** Force the color to remain constant regardless of theme mode */
+  forceColor?: boolean;
+  /** Click handler - matches Button component's onClick signature */
+  onClick?: () => void;
 }
 
 export interface ButtonGroupProps {
@@ -15,7 +20,9 @@ export interface ButtonGroupProps {
   tertiaryButton?: ButtonConfig;
   /** Button color theme */
   color?: 'green' | 'black';
-  /** Gap between buttons on tablet+ (0px or 8px) */
+  /** Whether to force the color to remain constant regardless of theme mode */
+  forceColor?: boolean; 
+  /** Gap between buttons on tablet+ (0px or 4px) */
   gap?: 'none' | 'small';
   /** Additional CSS classes */
   className?: string;
@@ -47,6 +54,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   primaryButton,
   tertiaryButton,
   color = 'green',
+  forceColor = false,
   gap = 'small',
   className = '',
 }) => {
@@ -67,8 +75,9 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         <Button
           variant="primary"
           color={color}
+          forceColor={forceColor}
           href={primaryButton.href}
-          onClick={primaryButton?.onClick as (() => void) | undefined}
+          onClick={primaryButton.onClick}
         >
           {primaryButton.label}
         </Button>
@@ -77,8 +86,9 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
         <Button
           variant="tertiary"
           color={color}
+          forceColor={forceColor}
           href={tertiaryButton.href}
-          onClick={tertiaryButton?.onClick as (() => void) | undefined}
+          onClick={tertiaryButton.onClick}
         >
           {tertiaryButton.label}
         </Button>

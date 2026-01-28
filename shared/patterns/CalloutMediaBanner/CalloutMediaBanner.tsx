@@ -18,13 +18,13 @@ export interface CalloutMediaBannerProps {
   primaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Tertiary button configuration */
   tertiaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Additional CSS classes */
   className?: string;
