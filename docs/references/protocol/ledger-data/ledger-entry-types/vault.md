@@ -15,7 +15,7 @@ A {% code-page-name /%} object defines the state of a tokenized vault. It contai
 The {% code-page-name /%} object is tracked in an [Owner Directory](../../../protocol/ledger-data/ledger-entry-types/directorynode) owned by the Vault Owner account.
 Additionally, to facilitate `Vault` object lookup, the object is tracked in the owner directory of the vault's [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md).
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Example Vault JSON
 

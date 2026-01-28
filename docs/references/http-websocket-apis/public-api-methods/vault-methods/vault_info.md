@@ -11,7 +11,7 @@ labels:
 
 The `vault_info` command retrieves information about a vault, its owner, available assets, and details on issued shares. All information retrieved is relative to a particular version of the ledger. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.3.0" %}New in: rippled 3.3.0{% /badge %}
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Request Format
 

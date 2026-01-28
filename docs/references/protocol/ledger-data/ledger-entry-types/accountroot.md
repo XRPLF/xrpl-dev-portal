@@ -56,7 +56,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | `TicketCount`                 | Number    | UInt32            | No        | How many [Tickets](../../../../concepts/accounts/tickets.md) this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. _(Added by the [TicketBatch amendment][].)_ |
 | `TickSize`                    | Number    | UInt8             | No        | How many significant digits to use for exchange rates of Offers involving currencies issued by this address. Valid values are `3` to `15`, inclusive. _(Added by the [TickSize amendment][].)_ |
 | `TransferRate`                | Number    | UInt32            | No        | A [transfer fee](../../../../concepts/tokens/fungible-tokens/transfer-fees.md) to charge other users for sending currency issued by this account to each other. |
-| `VaultID`                     | String    | UInt256           | No        | _(Requires the [SingleAssetVault amendment][] {% not-enabled /%}.)_ The ID of the `Vault` entry associated with this account. Set during account creation; cannot be modified. If present, indicates that this is a special Vault [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md) AccountRoot; always omitted on non-Vault accounts. |
+| `VaultID`                     | String    | UInt256           | No        | {% amendment-disclaimer name="SingleAssetVault" /%} The ID of the `Vault` entry associated with this account. Set during account creation; cannot be modified. If present, indicates that this is a special Vault [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md) AccountRoot; always omitted on non-Vault accounts. |
 | `WalletLocator`               | String    | UInt256           | No        | An arbitrary 256-bit value that users can set. |
 | `WalletSize`                  | Number    | UInt32            | No        | Unused. (The code supports this field but there is no way to set it.) |
 
@@ -81,7 +81,7 @@ Other than those exceptions, these accounts are like ordinary accounts; the LP T
 
 ## Special Vault AccountRoot (Pseudo-Account)
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 Vaults use an AccountRoot ledger entry (pseudo-account) to issue their shares and hold the assets deposited into the vault, and a [Vault entry][] for tracking the vault's configuration and state. The address of a vault's AccountRoot is randomized so that users cannot identify and fund the address in advance of the vault being created. Unlike normal accounts, vault AccountRoot objects are created with the following settings:
 

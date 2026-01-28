@@ -14,7 +14,7 @@ Permanently deletes an existing `Vault` object from the ledger, removes all asso
 
 Only the Vault Owner can initiate this transaction, and the vault must be completely empty before deletion.
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

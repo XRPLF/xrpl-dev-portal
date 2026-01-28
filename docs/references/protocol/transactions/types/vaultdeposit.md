@@ -26,7 +26,7 @@ A depositor cannot deposit assets into the vault if:
 
 If successful, the transaction moves the assets from the depositor's account to the vault's pseudo-account, issues the corresponding vault shares, and updates the vault’s balance.
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

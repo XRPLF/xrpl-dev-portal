@@ -18,7 +18,7 @@ The `VaultWithdraw` transaction does not respect the Permissioned Domain rules. 
 
 A depositor cannot redeem liquidity if the trust line between the pseudo-account and the issuer of the vault asset is frozen, or the `MPToken` is locked.
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 
