@@ -18,7 +18,7 @@ Under the hood, the transaction performs a [VaultWithdraw](./vaultwithdraw.md) o
 Clawbacks cannot be performed on native XRP.
 {% /admonition %}
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

@@ -16,7 +16,7 @@ Modifies a single asset vault that you own. This transaction allows the Vault Ow
 Once a vault is created, its public or private status is permanent and cannot be changed. The [tfVaultPrivate](../../ledger-data/ledger-entry-types/vault.md#vault-flags) flag determines this status, and once set, it cannot be updated.
 {% /admonition %}
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

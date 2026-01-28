@@ -12,7 +12,7 @@ A single asset vault is an XRP Ledger primitive that aggregates assets from mult
 
 A Vault Owner account manages the vault and can create, update, or delete it as needed. When creating a vault, the Vault Owner can also specify whether shares are transferable or non-transferable. Non-transferable shares cannot be transferred to any other account, and can only be redeemed.
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Public vs. Private Vaults
 

@@ -18,7 +18,7 @@ Only the Vault Owner can initiate this transaction.
 Currently, the same account that creates the vault must also create other protocols, though this may change in the future.
 {% /admonition %}
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%})_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 ## Example {% $frontmatter.seo.title %} JSON
 

@@ -1088,7 +1088,7 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2
 
 Retrieve a `Vault` object from the ledger. This is similar to the [vault_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 
-_(Requires the [SingleAssetVault amendment][] {% not-enabled /%}.)_
+{% amendment-disclaimer name="SingleAssetVault" /%}
 
 | Field        | Type             | Description           |
 |:-------------|:-----------------|:----------------------|
