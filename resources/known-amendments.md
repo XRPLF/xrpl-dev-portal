@@ -23,7 +23,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
-| [LendingProtocol][]               | {% badge %}In Development: TBD{% /badge %} | [Lending Protocol (Ripple Opensource)](https://opensource.ripple.com/docs/xls-66d-lending-protocol) |
 | [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="success" name="Tip" %}
@@ -1469,13 +1468,13 @@ This amendment adds several new invariants to protect the ledger against bugs in
 | Amendment    | LendingProtocol |
 |:-------------|:-----------------|
 | Amendment ID | 565B90CA1AB2B9D42208ED10884188C64F9E19083DECB9634AAF06EB03299509 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 The Lending Protocol enables on-chain, fixed-term, uncollateralized loans using pooled funds from a Single Asset Vault. This implementation relies on off-chain underwriting and risk management to assess the creditworthiness of borrowers, but offers configurable, peer-to-peer loans.
 
-Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066d-lending-protocol).
+Specification: [XLS-66](https://github.com/Tapanito/XRPL-Standards/tree/xls-66-lending-protocol/XLS-0066-lending-protocol).
 
 
 ### MPTokensV1

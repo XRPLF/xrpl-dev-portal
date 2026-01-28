@@ -42,6 +42,7 @@
           expanded: false
           items:
             - page: docs/use-cases/defi/algorithmic-trading.md
+            - page: docs/use-cases/defi/institutional-credit-facilities.md
             - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
             - page: docs/use-cases/defi/enable-compliance-focused-cross-currency-payments-using-a-permissioned-dex.md
         
@@ -155,6 +156,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-domains.md
                 - page: docs/concepts/tokens/decentralized-exchange/permissioned-dexes.md
+            - page: docs/concepts/tokens/lending-protocol.md
         - page: docs/concepts/accounts/index.md
           expanded: false
           items:
@@ -322,6 +324,17 @@
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md
                     - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks.md
+            - page: docs/tutorials/how-tos/set-up-lending/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/index.md
+                  expanded: false
+                  items:
+                    - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan-broker.md
+                    - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/deposit-and-withdraw-cover.md
+                    - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan.md
+                    - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/manage-a-loan.md
+                    - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/pay-off-a-loan.md
             - page: docs/tutorials/how-tos/use-tokens/index.md
               expanded: false
               items:
@@ -374,6 +387,8 @@
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/escrow.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/feesettings.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/loan.md
+                    - page: docs/references/protocol/ledger-data/ledger-entry-types/loanbroker.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/mptoken.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/mptokenissuance.md
                     - page: docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
@@ -420,6 +435,15 @@
                     - page: docs/references/protocol/transactions/types/escrowcreate.md
                     - page: docs/references/protocol/transactions/types/escrowfinish.md
                     - page: docs/references/protocol/transactions/types/ledgerstatefix.md
+                    - page: docs/references/protocol/transactions/types/loanbrokercoverclawback.md
+                    - page: docs/references/protocol/transactions/types/loanbrokercoverdeposit.md
+                    - page: docs/references/protocol/transactions/types/loanbrokercoverwithdraw.md
+                    - page: docs/references/protocol/transactions/types/loanbrokerdelete.md
+                    - page: docs/references/protocol/transactions/types/loanbrokerset.md
+                    - page: docs/references/protocol/transactions/types/loandelete.md
+                    - page: docs/references/protocol/transactions/types/loanmanage.md
+                    - page: docs/references/protocol/transactions/types/loanpay.md
+                    - page: docs/references/protocol/transactions/types/loanset.md
                     - page: docs/references/protocol/transactions/types/mptokenauthorize.md
                     - page: docs/references/protocol/transactions/types/mptokenissuancecreate.md
                     - page: docs/references/protocol/transactions/types/mptokenissuancedestroy.md

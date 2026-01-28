@@ -128,6 +128,15 @@
 [LedgerStateFix transaction]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFix transactions]: /docs/references/protocol/transactions/types/ledgerstatefix.md
 [LedgerStateFix]: /docs/references/protocol/transactions/types/ledgerstatefix.md
+[LoanBrokerCoverClawback transaction]: /docs/references/protocol/transactions/types/loanbrokercoverclawback.md
+[LoanBrokerCoverDeposit transaction]: /docs/references/protocol/transactions/types/loanbrokercoverdeposit.md
+[LoanBrokerCoverWithdraw transaction]: /docs/references/protocol/transactions/types/loanbrokercoverwithdraw.md
+[LoanBrokerDelete transaction]: /docs/references/protocol/transactions/types/loanbrokerdelete.md
+[LoanBrokerSet transaction]: /docs/references/protocol/transactions/types/loanbrokerset.md
+[LoanDelete transaction]: /docs/references/protocol/transactions/types/loandelete.md
+[LoanManage transaction]: /docs/references/protocol/transactions/types/loanmanage.md
+[LoanPay transaction]: /docs/references/protocol/transactions/types/loanpay.md
+[LoanSet transaction]: /docs/references/protocol/transactions/types/loanset.md
 [Marker]: /docs/references/http-websocket-apis/api-conventions/markers-and-pagination.md
 [MPTokenIssuanceSet]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
 [MPTokenIssuanceSet transaction]: /docs/references/protocol/transactions/types/mptokenissuanceset.md
@@ -266,6 +275,7 @@
 [XChainOwnedClaimID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid
 [XRP, in drops]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [XRPFees amendment]: /resources/known-amendments.md#xrpfees
+[AccountID]: /docs/references/protocol/binary-format/#accountid-fields
 [account_channels command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
 [account_channels method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
 [account_currencies command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
@@ -295,6 +305,7 @@
 [channel_verify command]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [channel_verify method]: /docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
 [common fields]: /docs/references/protocol/transactions/common-fields.md
+[common ledger entry fields]: /docs/references/protocol/ledger-data/common-fields/
 [connect command]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
 [connect method]: /docs/references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
 [consensus_info command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
@@ -341,12 +352,14 @@
 [fixRemoveNFTokenAutoTrustLine amendment]: /resources/known-amendments.md#fixremovenftokenautotrustline
 [fixTakerDryOfferRemoval amendment]: /resources/known-amendments.md#fixtakerdryofferremoval
 [fixTrustLinesToSelf amendment]: /resources/known-amendments.md#fixtrustlinestoself
+[flags field]: /docs/references/protocol/transactions/common-fields#flags-field
 [get_aggregate_price command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
 [get_aggregate_price method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
 [gateway_balances command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [gateway_balances method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [get_counts command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
 [get_counts method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
+[Get Started Using JavaScript]: /docs/tutorials/javascript/build-apps/get-started.md
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 [identifying hash]: /docs/concepts/transactions/index.md#identifying-transactions
 [json command]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md
@@ -369,6 +382,13 @@
 [ledger_entry method]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md
 [ledger_request command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
 [ledger_request method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
+[Lending Protocol]: /docs/concepts/tokens/lending-protocol.md
+[Loan]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md
+[Loan entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md
+[Loan ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loan.md
+[LoanBroker]: /docs/references/protocol/ledger-data/ledger-entry-types/loanbroker.md
+[LoanBroker entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loanbroker.md
+[LoanBroker ledger entry]: /docs/references/protocol/ledger-data/ledger-entry-types/loanbroker.md
 [log_level command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
 [log_level method]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
 [logrotate command]: /docs/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
@@ -408,6 +428,7 @@
 [ripple-lib]: https://github.com/XRPLF/xrpl.js
 [ripple_path_find command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [ripple_path_find method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
+[Ripple Epoch]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [seconds since the Ripple Epoch]: /docs/references/protocol/data-types/basic-data-types.md#specifying-time
 [server_definitions method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
 [server_info command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
@@ -432,6 +453,7 @@
 [transaction cost]: /docs/concepts/transactions/transaction-cost.md
 [transaction_entry command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
 [transaction_entry method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
+[transaction result codes]: /docs/references/protocol/transactions/transaction-results
 [tx command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
 [tx method]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
 [tx_history command]: /docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
@@ -449,3 +471,4 @@
 [validators method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
 [wallet_propose command]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
 [wallet_propose method]: /docs/references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
+[xrpl.js library]: https://github.com/XRPLF/xrpl.js
