@@ -15,4 +15,4 @@ export {
 export type { Environment } from "./helpers";
 
 // Shared types
-export type { DesignContrainedButtonProps } from "./types";
+export type { DesignConstrainedButtonProps } from "./types";

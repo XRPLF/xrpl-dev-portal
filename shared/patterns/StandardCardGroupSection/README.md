@@ -68,7 +68,7 @@ The `cards` prop accepts an array of `StandardCardPropsWithoutVariant`, which in
 
 - `headline: React.ReactNode` - Card headline (required)
 - `children?: React.ReactNode` - Card description/content (optional, uses React composition)
-- `callsToAction: [DesignContrainedButtonProps, DesignContrainedButtonProps?]` - Array with primary CTA (required) and optional secondary CTA
+- `callsToAction: [DesignConstrainedButtonProps, DesignConstrainedButtonProps?]` - Array with primary CTA (required) and optional secondary CTA
 
 **Note:** The `variant` prop is omitted from individual card configurations. The section's `variant` prop is applied uniformly to all cards.
 

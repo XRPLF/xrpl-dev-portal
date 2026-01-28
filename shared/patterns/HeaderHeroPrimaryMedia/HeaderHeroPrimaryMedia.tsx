@@ -4,7 +4,7 @@ import { PageGrid } from "shared/components/PageGrid/page-grid";
 import { Button, ButtonProps } from "shared/components/Button/Button";
 import {
   isEmpty,
-  DesignContrainedButtonProps,
+  DesignConstrainedButtonProps,
   isEnvironment,
 } from "shared/utils";
 
@@ -68,7 +68,7 @@ export interface HeaderHeroPrimaryMediaProps extends React.ComponentPropsWithout
   headline: React.ReactNode;
   /** Hero subtitle text (subhead-sm-l typography) */
   subtitle: React.ReactNode;
-  callsToAction: [DesignContrainedButtonProps, DesignContrainedButtonProps?];
+  callsToAction: [DesignConstrainedButtonProps, DesignConstrainedButtonProps?];
   /** Media element - supports image, video, or custom React element */
   media: HeaderHeroMedia;
 }
