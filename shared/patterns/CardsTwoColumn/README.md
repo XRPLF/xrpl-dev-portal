@@ -1,12 +1,13 @@
 # CardsTwoColumn Pattern
 
-A section pattern featuring a header with title and description, plus a 2×2 grid of TextCard components. Designed for showcasing multiple related content areas with visual variety through 4 color variants.
+A section pattern featuring a header with title and description, plus a 2×2 grid of TextCard components. Designed for showcasing multiple related content areas with visual variety through 5 color variants.
 
 ## Features
 
 - **Header Section**: Title (heading-md) with optional description (body-l, muted)
 - **4-Card Grid**: 2×2 layout on desktop, single column stacked on tablet/mobile
-- **4 Color Variants**: Green, neutral-light, neutral-dark, and lilac
+- **5 Color Variants**: Green, neutral-light, neutral-dark, lilac, and yellow
+- **Interactive States**: Hover (window shade animation), focus, and pressed states
 - **Responsive Design**: Adapts layout and spacing across all breakpoints
 - **Dark Mode Support**: Full dark mode styling via `html.dark`
 
@@ -45,7 +46,7 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 | `title` | `ReactNode` | *required* | Card title (heading-lg typography) |
 | `description` | `ReactNode` | - | Card description (body-l typography) |
 | `href` | `string` | - | Optional link URL (makes card clickable) |
-| `color` | `'green' \| 'neutral-light' \| 'neutral-dark' \| 'lilac'` | `'neutral-light'` | Background color variant |
+| `color` | `'green' \| 'neutral-light' \| 'neutral-dark' \| 'lilac' \| 'yellow'` | `'neutral-light'` | Background color variant |
 
 ## Responsive Behavior
 
@@ -70,14 +71,17 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 - Gap between header and cards: 24px
 - Card height: 274px, padding: 16px
 
-## Color Variants
+## Color Variants & States (Light Mode)
 
-| Variant | Light Mode | Dark Mode |
-|---------|------------|-----------|
-| `green` | `$green-300` (#21E46B) | `$green-300` (#21E46B) |
-| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) |
-| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-200` (#D9CAFF) |
+Each color variant has three interactive states with a "window shade" hover animation:
+
+| Variant | Default | Hover | Pressed |
+|---------|---------|-------|---------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) | `$gray-500` (#72777E) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
 
 ## CSS Classes
 
@@ -113,14 +117,13 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 ## Files
 
 - `CardsTwoColumn.tsx` - Main pattern component
-- `TextCard.tsx` - Individual card component
 - `CardsTwoColumn.scss` - Styles with responsive breakpoints
 - `index.ts` - Barrel exports
 - `README.md` - This documentation
 
 ## Related Components
 
-- **TextCard**: Core component for individual cards within the grid
+- **TextCard**: Core component for individual cards within the grid (`shared/components/TextCard`)
 - **PageGrid**: Can be used alongside for additional layout needs
 
 ## Design References
@@ -133,7 +136,8 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 
 - **January 2026**: Initial implementation
   - Header section with title and description
-  - 2×2 card grid with 4 color variants
+  - 2×2 card grid with 5 color variants (green, neutral-light, neutral-dark, lilac, yellow)
+  - Window shade hover animation
   - Full responsive design
   - Dark mode support
 

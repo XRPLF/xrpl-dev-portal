@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { TextCard, TextCardProps } from './TextCard';
+import { TextCard, TextCardProps } from 'shared/components/TextCard';
+import { PageGrid } from 'shared/components/PageGrid';
 
 /**
  * Configuration for a card in the CardsTwoColumn pattern
@@ -25,7 +26,7 @@ export interface CardsTwoColumnProps extends Omit<React.ComponentPropsWithoutRef
  * CardsTwoColumn Pattern Component
  *
  * A section pattern that displays a header with title/description and a 2x2 grid
- * of TextCard components.
+ * of TextCard components. Uses PageGrid for responsive layout.
  *
  * Structure:
  * - Header: Title (left) + Description (right) on desktop, stacked on tablet/mobile
@@ -33,21 +34,21 @@ export interface CardsTwoColumnProps extends Omit<React.ComponentPropsWithoutRef
  *
  * Responsive behavior:
  * - Desktop (≥992px):
- *   - Header: Title left, description right (flex row)
- *   - Cards: 2x2 grid (2 columns, 2 rows)
+ *   - Header: Title left (6 cols), description right (6 cols)
+ *   - Cards: 2x2 grid (6 cols each)
  *   - Section padding: 40px vertical, 32px horizontal
  *   - Gap between header and cards: 40px
  *   - Gap between cards: 8px
  *
  * - Tablet (576-991px):
- *   - Header: Stacked (title above description)
+ *   - Header: Stacked (title above description, full width)
  *   - Cards: Single column, stacked vertically
  *   - Section padding: 32px vertical, 24px horizontal
  *   - Gap between header and cards: 32px
  *   - Gap between cards: 8px
  *
  * - Mobile (<576px):
- *   - Header: Stacked (title above description)
+ *   - Header: Stacked (title above description, full width)
  *   - Cards: Single column, stacked vertically
  *   - Section padding: 24px vertical, 16px horizontal
  *   - Gap between header and cards: 24px
@@ -83,29 +84,31 @@ export const CardsTwoColumn = React.forwardRef<HTMLElement, CardsTwoColumnProps>
         className={clsx('bds-cards-two-column', className)}
         {...rest}
       >
-        <div className="bds-cards-two-column__container">
-          {/* Header Section */}
-          <div className="bds-cards-two-column__header">
-            <div className="bds-cards-two-column__header-left">
+        <PageGrid className="bds-cards-two-column__container">
+          {/* Header Row */}
+          <PageGrid.Row className="bds-cards-two-column__header">
+            <PageGrid.Col span={{ md: 8, lg: 6 }} className="bds-cards-two-column__header-left">
               <h2 className="bds-cards-two-column__title h-md">{title}</h2>
-            </div>
+            </PageGrid.Col>
             {(description || secondaryDescription) && (
-              <div className="bds-cards-two-column__header-right">
+              <PageGrid.Col span={{ md: 8, lg: 6 }} className="bds-cards-two-column__header-right">
                 <div className="bds-cards-two-column__description body-l">
                   {description && <p>{description}</p>}
                   {secondaryDescription && <p>{secondaryDescription}</p>}
                 </div>
-              </div>
+              </PageGrid.Col>
             )}
-          </div>
+          </PageGrid.Row>
 
-          {/* Cards Grid - 2x2 on desktop, stacked on tablet/mobile */}
-          <div className="bds-cards-two-column__cards">
+          {/* Cards Row - 2x2 on desktop, stacked on tablet/mobile */}
+          <PageGrid.Row className="bds-cards-two-column__cards">
             {cards.map((card, index) => (
-              <TextCard key={index} {...card} />
+              <PageGrid.Col key={index} span={{ md: 8, lg: 6 }}>
+                <TextCard {...card} />
+              </PageGrid.Col>
             ))}
-          </div>
-        </div>
+          </PageGrid.Row>
+        </PageGrid>
       </section>
     );
   }

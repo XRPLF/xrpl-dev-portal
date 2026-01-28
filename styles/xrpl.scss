@@ -1,6 +1,7 @@
 // Bootstrap-derived SASS. See README.md in this folder for instructions.
 
 @import "_colors.scss";
+@import "_animations.scss";
 @import "_font-face.scss";
 
 $navbar-padding-y: 0;
@@ -97,6 +98,7 @@ $line-height-base: 1.5;
 @import "../shared/components/CardImage/CardImage.scss";
 @import "../shared/components/TileLogo/TileLogo.scss";
 @import "../shared/components/CardIcon/CardIcon.scss";
+@import "../shared/components/TextCard/TextCard.scss";
 @import "../shared/components/SmallTilesSection/_small-tiles-section.scss";
 @import "../shared/patterns/HeaderHeroPrimaryMedia/_header-hero-primary-media.scss";
 @import "../shared/patterns/HeaderHeroSplitMedia/HeaderHeroSplitMedia.scss";

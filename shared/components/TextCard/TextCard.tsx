@@ -3,13 +3,15 @@ import clsx from 'clsx';
 
 /**
  * Color variants for the TextCard component
- * Maps to Figma design tokens:
- * - green: Primary/Green/300 (#21E46B) → $green-300
- * - neutral-light: Neutral/200 (#E6EAF0) → $gray-200
- * - neutral-dark: Neutral/300 (#CAD4DF) → $gray-300
- * - lilac: Primary/Lilac/200 (#D9CAFF) → $lilac-200
+ * Maps to Figma design tokens (Light Mode):
+ * - green: Default $green-200, Hover $green-300, Pressed $green-400
+ * - neutral-light: Default $gray-200, Hover $gray-300, Pressed $gray-400
+ * - neutral-dark: Default $gray-300, Hover $gray-400, Pressed $gray-500
+ * - lilac: Default $lilac-200, Hover $lilac-300, Pressed $lilac-400
+ * - yellow: Default $yellow-100, Hover $yellow-200, Pressed $yellow-300
+ * - blue: Default $blue-100, Hover $blue-200, Pressed $blue-300
  */
-export type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac';
+export type TextCardColor = 'green' | 'neutral-light' | 'neutral-dark' | 'lilac' | 'yellow' | 'blue';
 
 export interface TextCardProps extends React.ComponentPropsWithoutRef<'article'> {
   /** Card title text (heading-lg typography) */
@@ -29,7 +31,7 @@ export interface TextCardProps extends React.ComponentPropsWithoutRef<'article'>
  * Used within the CardsTwoColumn pattern to display content in a 2x2 grid.
  *
  * Features:
- * - 4 color variants: green, neutral-light, neutral-dark, lilac
+ * - 6 color variants: green, neutral-light, neutral-dark, lilac, yellow, blue
  * - Responsive typography and spacing
  * - Title uses heading-lg typography (Tobias Light)
  * - Description uses body-l typography (Booton Light)
@@ -73,6 +75,9 @@ export const TextCard = React.forwardRef<HTMLElement, TextCardProps>(
 
     return (
       <CardWrapper {...(wrapperProps as any)} {...rest}>
+        {/* Overlay for window shade animation */}
+        <div className="bds-text-card__overlay" aria-hidden="true" />
+
         {/* Title at top */}
         <div className="bds-text-card__header">
           <h3 className="bds-text-card__title h-lg">{title}</h3>

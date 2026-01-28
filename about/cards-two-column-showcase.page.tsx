@@ -135,37 +135,85 @@ export default function CardsTwoColumnShowcase() {
         <PageGrid className="py-26">
           <PageGridRow>
             <PageGridCol span={12}>
-              <h2 className="h4 mb-6">Color Variant Combinations</h2>
+              <h2 className="h4 mb-6">All 6 Color Variants</h2>
               <p className="mb-6">
-                TextCard supports 4 color variants: green ($green-300), neutral-light ($gray-200), neutral-dark ($gray-300), and lilac ($lilac-200).
+                TextCard supports 6 color variants with hover and pressed states. Hover over cards to see the window shade animation.
               </p>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
 
-        {/* All Green Cards */}
+        {/* All Color Variants - Standalone TextCards */}
+        <PageGrid className="pb-26">
+          <PageGridRow>
+            <PageGridCol span={12}>
+              <div className="d-flex flex-wrap gap-3">
+                <TextCard
+                  title="Green"
+                  description="Default: $green-200 → Hover: $green-300 → Pressed: $green-400"
+                  color="green"
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Neutral Light"
+                  description="Default: $gray-200 → Hover: $gray-300 → Pressed: $gray-400"
+                  color="neutral-light"
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Neutral Dark"
+                  description="Default: $gray-300 → Hover: $gray-400 → Pressed: $gray-500"
+                  color="neutral-dark"
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Lilac"
+                  description="Default: $lilac-200 → Hover: $lilac-300 → Pressed: $lilac-400"
+                  color="lilac"
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Yellow"
+                  description="Default: $yellow-100 → Hover: $yellow-200 → Pressed: $yellow-300"
+                  color="yellow"
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+                <TextCard
+                  title="Blue"
+                  description="Default: $blue-100 → Hover: $blue-200 → Pressed: $blue-300"
+                  color="blue"
+                  style={{ flex: '1 1 300px', minWidth: 280 }}
+                />
+              </div>
+            </PageGridCol>
+          </PageGridRow>
+        </PageGrid>
+
+        <Divider />
+
+        {/* Mixed Colors in Pattern */}
         <CardsTwoColumn
-          title="All Green Variant"
-          description="Using the same color creates a unified, cohesive look for related content."
+          title="All 6 Colors in Pattern"
+          description="The CardsTwoColumn pattern accepts exactly 4 cards. Here we show various color combinations including the new blue variant."
           cards={[
-            { title: "Payments", description: "Fast, low-cost cross-border payments.", color: "green" },
-            { title: "Tokenization", description: "Issue and manage digital assets.", color: "green" },
-            { title: "DeFi", description: "Decentralized finance solutions.", color: "green" },
-            { title: "NFTs", description: "Non-fungible token marketplace.", color: "green" }
+            { title: "Lilac", description: "Primary accent color for highlights.", color: "lilac" },
+            { title: "Blue", description: "Secondary accent for cool tones.", color: "blue" },
+            { title: "Green", description: "Brand color for positive actions.", color: "green" },
+            { title: "Yellow", description: "Secondary accent for warm tones.", color: "yellow" }
           ]}
         />
 
         <Divider />
 
-        {/* Mixed Colors */}
+        {/* Alternative Color Combo */}
         <CardsTwoColumn
-          title="Mixed Color Arrangement"
+          title="Alternative Color Arrangement"
           description="Different colors can be used to create visual hierarchy and distinguish between content types."
           cards={[
-            { title: "Documentation", description: "Comprehensive guides and API references.", color: "lilac" },
+            { title: "Documentation", description: "Comprehensive guides and API references.", color: "neutral-dark" },
             { title: "Tutorials", description: "Step-by-step learning resources.", color: "green" },
-            { title: "Use Cases", description: "Real-world applications and success stories.", color: "neutral-light" },
-            { title: "Resources", description: "Tools and libraries for development.", color: "neutral-dark" }
+            { title: "Use Cases", description: "Real-world applications and success stories.", color: "yellow" },
+            { title: "Resources", description: "Tools and libraries for development.", color: "lilac" }
           ]}
         />
 
