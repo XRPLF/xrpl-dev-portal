@@ -1,5 +1,5 @@
 import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";
-import { CardStats } from "shared/patterns/CardStats";
+import { CardStats, CardStatsCardConfig } from "shared/patterns/CardStats";
 import { Divider } from "shared/components/Divider";
 
 export const frontmatter = {
@@ -10,46 +10,46 @@ export const frontmatter = {
 };
 
 // Sample cards data matching Figma design (node 32051:2839)
-const sampleCards = [
+const sampleCards: CardStatsCardConfig[] = [
   {
     statistic: "12",
-    superscript: "+" as const,
+    superscript: "+",
     label: "Continuous uptime years",
-    variant: "lilac" as const,
+    variant: "lilac",
     primaryButton: { label: "Learn More", href: "#uptime" },
   },
   {
     statistic: "6M",
-    superscript: "2" as const,
+    superscript: "2",
     label: "Active wallets",
-    variant: "light-gray" as const,
+    variant: "light-gray",
     primaryButton: { label: "Explore", href: "#wallets" },
   },
   {
     statistic: "$1T",
-    superscript: "+" as const,
+    superscript: "+",
     label: "Value transferred",
-    variant: "green" as const,
+    variant: "green",
     primaryButton: { label: "View Stats", href: "#value" },
   },
   {
     statistic: "3-5s",
     label: "Transaction finality",
-    variant: "green" as const,
+    variant: "green",
     primaryButton: { label: "Learn More", href: "#speed" },
   },
   {
     statistic: "70",
-    superscript: "+" as const,
+    superscript: "+",
     label: "Ecosystem partners",
-    variant: "dark-gray" as const,
+    variant: "dark-gray",
     primaryButton: { label: "Meet Partners", href: "#partners" },
   },
   {
     statistic: "100K",
-    superscript: "+" as const,
+    superscript: "+",
     label: "Developer community",
-    variant: "lilac" as const,
+    variant: "lilac",
     primaryButton: { label: "Join Us", href: "#community" },
   },
 ];
@@ -108,34 +108,52 @@ export default function CardStatsShowcase() {
         <Divider />
 
         {/* Full Example - 6 Cards with Heading and Description */}
-        <section>
-          <CardStats
-            heading="Blockchain Trusted at Scale"
-            description="Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset."
-            cards={sampleCards}
-          />
-        </section>
+        <CardStats
+          heading="Blockchain Trusted at Scale"
+          description="Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset."
+          cards={sampleCards}
+        />
 
         <Divider />
 
         {/* Heading Only - No Description */}
-        <section>
-          <CardStats
-            heading="XRPL Network Statistics"
-            cards={sampleCards.slice(0, 3)}
-          />
-        </section>
+        <CardStats
+          heading="XRPL Network Statistics"
+          cards={[
+            {
+            statistic: "12",
+            superscript: "+",
+            label: "Continuous uptime years",
+            variant: "lilac",
+            primaryButton: { label: "Learn More", href: "#uptime" },
+            span: { base: 4, md: 4, lg: 6 },
+          },
+          {
+            statistic: "6M",
+            superscript: "2",
+            label: "Active wallets",
+            variant: "light-gray",
+            primaryButton: { label: "Explore", href: "#wallets" },
+            span: { base: 4, md: 4, lg: 6 },
+          },
+          {
+            statistic: "$1T",
+            superscript: "+",
+            label: "Value transferred",
+            variant: "green",
+            primaryButton: { label: "View Stats", href: "#value" },
+            span: { base: 4, md: 8, lg: 12 },
+          }]}
+        />
 
         <Divider />
 
         {/* 4 Cards Example */}
-        <section>
-          <CardStats
-            heading="Why Build on XRPL?"
-            description="The XRP Ledger provides enterprise-grade infrastructure for building the future of finance."
-            cards={sampleCards.slice(0, 4)}
-          />
-        </section>
+        <CardStats
+          heading="Why Build on XRPL?"
+          description="The XRP Ledger provides enterprise-grade infrastructure for building the future of finance."
+          cards={sampleCards.slice(0, 4)}
+        />
 
         <Divider />
 
@@ -148,38 +166,37 @@ export default function CardStatsShowcase() {
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
-        <section>
-          <CardStats
-            heading="Get Started with XRPL"
-            description="Explore the XRP Ledger ecosystem with comprehensive documentation and developer resources."
-            cards={[
-              {
-                statistic: "12",
-                superscript: "+" as const,
-                label: "Continuous uptime years",
-                variant: "lilac" as const,
-                primaryButton: { label: "Learn More", href: "#learn" },
-                secondaryButton: { label: "View Docs", href: "#docs" },
-              },
-              {
-                statistic: "6M",
-                superscript: "+" as const,
-                label: "Active wallets",
-                variant: "green" as const,
-                primaryButton: { label: "Get Started", href: "#start" },
-                secondaryButton: { label: "Explore", href: "#explore" },
-              },
-              {
-                statistic: "$1T",
-                superscript: "+" as const,
-                label: "Value transferred",
-                variant: "light-gray" as const,
-                primaryButton: { label: "View Stats", href: "#stats" },
-                secondaryButton: { label: "Learn More", href: "#about" },
-              },
-            ]}
-          />
-        </section>
+
+        <CardStats
+          heading="Get Started with XRPL"
+          description="Explore the XRP Ledger ecosystem with comprehensive documentation and developer resources."
+          cards={[
+            {
+              statistic: "12",
+              superscript: "+",
+              label: "Continuous uptime years",
+              variant: "lilac",
+              primaryButton: { label: "Learn More", href: "#learn" },
+              secondaryButton: { label: "View Docs", href: "#docs" },
+            },
+            {
+              statistic: "6M",
+              superscript: "+",
+              label: "Active wallets",
+              variant: "green",
+              primaryButton: { label: "Get Started", href: "#start" },
+              secondaryButton: { label: "Explore", href: "#explore" },
+            },
+            {
+              statistic: "$1T",
+              superscript: "+",
+              label: "Value transferred",
+              variant: "light-gray",
+              primaryButton: { label: "View Stats", href: "#stats" },
+              secondaryButton: { label: "Learn More", href: "#about" },
+            },
+          ]}
+        />
 
         <Divider />
 

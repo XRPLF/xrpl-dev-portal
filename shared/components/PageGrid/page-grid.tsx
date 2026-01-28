@@ -4,7 +4,7 @@ import clsx from "clsx";
 type PageGridElementProps = React.HTMLAttributes<HTMLDivElement>;
 
 // Define the standard PageGrid breakpoints
-type PageGridBreakpoint = "base" | "sm" | "md" | "lg" | "xl";
+export type PageGridBreakpoint = "base" | "sm" | "md" | "lg" | "xl";
 
 // Define the ResponsiveValue type using Partial<Record> for breakpoints
 type ResponsiveValue<T> = T | Partial<Record<PageGridBreakpoint, T>>;
