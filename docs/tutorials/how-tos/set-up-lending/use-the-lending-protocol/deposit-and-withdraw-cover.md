@@ -34,7 +34,7 @@ To complete this tutorial, you should:
 
 ## Source Code
 
-You can find the complete source code for this tutorial's examples in the [code samples section of this website's repository](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/lending-protocol/).
+You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/lending-protocol/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Steps
 
