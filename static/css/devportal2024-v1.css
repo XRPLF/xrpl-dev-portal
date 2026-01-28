@@ -13247,25 +13247,22 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   flex-direction: column;
   width: 100%;
   min-height: 200px;
-  background-color: #C0A7FF;
-  color: #141414;
-  transition: transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
-}
-.bds-card-stat__content {
-  display: flex;
-  flex-direction: column;
+  height: 100%;
   justify-content: space-between;
   flex: 1;
   padding: 8px;
   gap: 4px;
+  background-color: #C0A7FF;
+  color: #141414;
+  transition: transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 @media (min-width: 576px) {
-  .bds-card-stat__content {
+  .bds-card-stat {
     padding: 12px;
   }
 }
 @media (min-width: 992px) {
-  .bds-card-stat__content {
+  .bds-card-stat {
     padding: 16px;
   }
 }
@@ -13313,6 +13310,11 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   top: -0.4em;
   font-size: 0.7em;
 }
+.bds-card-stat__statistic sup.bds-card-stat__superscript--numeric {
+  font-size: 0.5em;
+  top: -0.75em;
+  font-weight: 400;
+}
 .bds-card-stat__buttons {
   display: flex;
   flex-wrap: wrap;
@@ -13332,13 +13334,14 @@ html.dark .bds-btn--tertiary:not(.bds-btn--black):disabled, html.dark .bds-btn--
   background-color: #E6EAF0;
 }
 
+html.dark .bds-card-stat--light-gray {
+  background-color: #CAD4DF;
+}
+
 .bds-card-stat--dark-gray {
   background-color: #CAD4DF;
 }
 
-html.dark .bds-card-stat--light-gray {
-  background-color: #CAD4DF;
-}
 html.dark .bds-card-stat--dark-gray {
   background-color: #8A919A;
 }
@@ -18836,9 +18839,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  height: 620px;
   background-color: #FFFFFF;
-  overflow: hidden;
   cursor: pointer;
 }
 .bds-grid__col .bds-card-image {
@@ -18878,6 +18879,15 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
   transition: transform 150ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
+.bds-card-image--full-bleed {
+  height: auto;
+  width: 100%;
+}
+.bds-card-image--full-bleed .bds-card-image__image-container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
 .bds-card-image--full-bleed .bds-card-image__image {
   width: 100%;
   height: 100%;
@@ -18926,6 +18936,17 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
 .bds-card-image__content .bds-btn {
   align-self: flex-start;
   flex-shrink: 0;
+  margin-top: 24px;
+}
+@media (min-width: 576px) {
+  .bds-card-image__content .bds-btn {
+    margin-top: 24px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-image__content .bds-btn {
+    margin-top: 32px;
+  }
 }
 
 .bds-card-image--hovered:not(.bds-card-image--disabled) .bds-card-image__image,
@@ -18944,8 +18965,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
 
 @media (max-width: 991.98px) {
   .bds-card-image {
-    height: 560px;
-    gap: 20px;
+    gap: 16px;
   }
   .bds-card-image__image-container {
     height: 280px;
@@ -18959,7 +18979,6 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
 }
 @media (max-width: 575.98px) {
   .bds-card-image {
-    height: 536px;
     gap: 16px;
   }
   .bds-card-image__image-container {
@@ -18969,7 +18988,7 @@ html.light .bds-card-offgrid--disabled .bds-card-offgrid__icon-container {
     padding: 0 8px;
   }
   .bds-card-image__text {
-    gap: 4px;
+    gap: 8px;
   }
 }
 html.light .bds-card-image:focus {
@@ -19844,6 +19863,99 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
   gap: 0;
 }
 
+.bds-cards-featured {
+  width: 100%;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+@media (min-width: 576px) {
+  .bds-cards-featured {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-featured {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.bds-cards-featured__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (min-width: 576px) {
+  .bds-cards-featured__header {
+    gap: 8px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-featured__header {
+    gap: 16px;
+  }
+}
+
+.bds-cards-featured__heading {
+  margin: 0;
+}
+
+.bds-cards-featured__description {
+  margin: 0;
+}
+
+.bds-cards-featured__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 48px;
+  row-gap: 48px;
+  width: 100%;
+  margin-top: 24px;
+}
+@media (min-width: 576px) {
+  .bds-cards-featured__cards {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+    row-gap: 52px;
+    margin-top: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-cards-featured__cards {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 8px;
+    row-gap: 56px;
+    margin-top: 40px;
+  }
+}
+
+.bds-cards-featured__card-wrapper {
+  display: flex;
+  min-width: 0;
+  width: 100%;
+}
+.bds-cards-featured__card-wrapper .bds-card-image {
+  width: 100%;
+}
+
+html.light .bds-cards-featured {
+  background-color: #FFFFFF;
+}
+html.light .bds-cards-featured__heading {
+  color: #141414;
+}
+html.light .bds-cards-featured__description {
+  color: #141414;
+}
+
+html.dark .bds-cards-featured__heading {
+  color: #FFFFFF;
+}
+html.dark .bds-cards-featured__description {
+  color: #FFFFFF;
+}
+
 .bds-callout-media-banner {
   box-sizing: border-box;
   min-height: 280px;
@@ -20083,6 +20195,46 @@ html.light .bds-callout-media-banner--image .bds-callout-media-banner__text {
 }
 html.light .bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
   color: #141414 !important;
+}
+
+.bds-card-stats {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-card-stats {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-stats {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.bds-card-stats__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-card-stats__header {
+    margin-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-card-stats__header {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+}
+
+html.dark .bds-card-stats__heading,
+html.dark .bds-card-stats__description {
+  color: #FFFFFF;
 }
 
 .bds-feature-two-column__button-group .bds-btn--tertiary {

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '../Button';
+import { PageGridCol } from '../PageGrid/page-grid';
+import type { PageGridBreakpoint } from '../PageGrid/page-grid';
 
 interface ButtonConfig {
   /** Button label text */
@@ -9,6 +11,9 @@ interface ButtonConfig {
   /** Link href for button */
   href?: string;
 }
+
+/** Responsive span configuration for PageGridCol */
+type SpanConfig = Partial<Record<PageGridBreakpoint, number>>;
 
 export interface CardStatProps {
   /** The main statistic to display (e.g., "6 Million+") */
@@ -28,6 +33,8 @@ export interface CardStatProps {
   primaryButton?: ButtonConfig;
   /** Secondary button configuration */
   secondaryButton?: ButtonConfig;
+  /** Grid column span configuration - defaults to { base: 4, md: 4, lg: 4 } */
+  span?: SpanConfig;
   /** Additional CSS classes */
   className?: string;
 }
@@ -52,6 +59,9 @@ export interface CardStatProps {
  *   primaryButton={{ label: "Learn More", href: "/docs" }}
  * />
  */
+/** Default span configuration */
+const DEFAULT_SPAN: SpanConfig = { base: 4, md: 4, lg: 4 };
+
 export const CardStat: React.FC<CardStatProps> = ({
   statistic,
   superscript,
@@ -59,6 +69,7 @@ export const CardStat: React.FC<CardStatProps> = ({
   variant = 'lilac',
   primaryButton,
   secondaryButton,
+  span = DEFAULT_SPAN,
   className = '',
 }) => {
   // Build class names using BEM with bds namespace
@@ -76,8 +87,8 @@ export const CardStat: React.FC<CardStatProps> = ({
   const isNumericSuperscript = superscript && /^[0-9]+$/.test(superscript);
 
   return (
-    <div className={classNames}>
-      <div className="bds-card-stat__content">
+    <PageGridCol span={span}>
+      <div className={classNames}>
         {/* Text section */}
         <div className="bds-card-stat__text">
           <div className="bds-card-stat__statistic">
@@ -113,7 +124,7 @@ export const CardStat: React.FC<CardStatProps> = ({
           </div>
         )}
       </div>
-    </div>
+    </PageGridCol>
   );
 };
 
