@@ -17,7 +17,7 @@ export interface CardStatsProps extends React.ComponentPropsWithoutRef<'section'
   /** Optional section description text */
   description?: React.ReactNode;
   /** Array of CardStat configurations */
-  cards: readonly CardStatsCardConfig[];
+  cards: CardStatsCardConfig[];
 }
 
 /**
@@ -68,39 +68,33 @@ export const CardStats = React.forwardRef<HTMLElement, CardStatsProps>(
     }
 
     return (
-      <section
-        ref={ref}
+      <PageGrid ref={ref as React.Ref<HTMLDivElement>}
         className={clsx('bds-card-stats', className)}
         {...rest}
       >
-        <PageGrid>
-          <PageGrid.Row>
-            <PageGrid.Col span={{ base: 4, md: 8, lg: 12 }}>
-              {/* Header section */}
-              <div className="bds-card-stats__header">
-                <h2 className="bds-card-stats__heading h-md">{heading}</h2>
-                {description && (
-                  <p className="bds-card-stats__description body-l">
-                    {description}
-                  </p>
-                )}
-              </div>
-
-              {/* Cards grid */}
-              <div className="bds-card-stats__cards">
-                {cards.map((cardConfig, index) => (
-                  <div
-                    key={`card-stat-${index}`}
-                    className="bds-card-stats__card-wrapper"
-                  >
-                    <CardStat {...cardConfig} />
-                  </div>
-                ))}
-              </div>
-            </PageGrid.Col>
-          </PageGrid.Row>
-        </PageGrid>
-      </section>
+        <PageGrid.Row>
+          <PageGrid.Col span={{ base: 4, md: 6, lg: 8 }}>
+            {/* Header section */}
+            <div className="bds-card-stats__header">
+              <h2 className="mb-0 h-md">{heading}</h2>
+              {description && (
+                <p className="bmb-0 body-l">
+                  {description}
+                </p>
+              )}
+            </div>
+          </PageGrid.Col>
+        </PageGrid.Row>
+        <PageGrid.Row>
+          {cards.map((cardConfig, index) => (
+            <CardStat
+              key={index}
+              {...cardConfig}
+              span={cardConfig.span ?? { base: 4, md: 4, lg: 4 }}
+            />
+          ))}
+        </PageGrid.Row>
+      </PageGrid>
     );
   }
 );
