@@ -1,33 +1,47 @@
-# LogoSquareGrid Component
+# LogoRectangleGrid Component
 
-A responsive grid pattern for displaying company/partner logos with an optional header section. Built on top of the TileLogo component, featuring square tiles arranged in a responsive grid with 2 color variants and full dark mode support.
+A responsive grid pattern for displaying company/partner logos with rectangle tiles and dynamic alignment based on tile count. Built on top of the TileLogo component, featuring 9:5 aspect ratio rectangle tiles with 2 color variants and full dark mode support.
 
 ## Features
 
 - **2 Color Variants**: Gray and Green backgrounds
-- **Responsive Grid**: Automatically adapts from 2 columns (mobile) to 4 columns (tablet/desktop)
-- **Optional Header**: Includes heading, description, and action buttons
+- **Dynamic Alignment**: Grid alignment changes based on logo count (1-3: right, 4: left, 5-9: right, 9+: left)
+- **Responsive Grid**: Automatically adapts from 2 columns (mobile) to 3 columns (tablet) to 4 columns (desktop)
+- **Required Header**: Heading is required, description is optional
 - **Clickable Logos**: Support for optional links on individual logos
 - **Dark Mode Support**: Full light and dark mode compatibility
-- **Square Tiles**: Maintains perfect square aspect ratio at all breakpoints
+- **Rectangle Tiles**: Maintains 9:5 aspect ratio at all breakpoints
 - **Grid Integration**: Built-in PageGrid wrapper with standard container support
 
 ## Responsive Behavior
 
 The component automatically adapts its grid layout based on viewport width:
 
-| Breakpoint | Columns | Gap | Tile Size |
-|------------|---------|-----|-----------|
-| Mobile (< 768px) | 2 | 8px | ~183px |
-| Tablet (768px - 1023px) | 4 | 8px | ~178px |
-| Desktop (≥ 1024px) | 4 | 8px | ~298px |
+| Breakpoint | Columns | Gap | Tile Aspect Ratio |
+|------------|---------|-----|-------------------|
+| Mobile (< 768px) | 2 | 8px | 9:5 |
+| Tablet (768px - 1023px) | 3 | 8px | 9:5 |
+| Desktop (≥ 1024px) | 4 | 8px | 9:5 |
+
+## Dynamic Alignment
+
+The grid alignment changes based on the number of logos:
+
+| Logo Count | Alignment | Offset |
+|------------|-----------|--------|
+| 1-3 | Right | 4 columns |
+| 4 | Left | 0 columns |
+| 5-9 | Right | 4 columns |
+| 9+ | Left | 0 columns |
+
+This creates a visually balanced layout that adapts to different content volumes.
 
 ## Color Variants
 
-The LogoSquareGrid pattern uses two color variants that map directly to TileLogo component variants:
+The LogoRectangleGrid pattern uses two color variants that map directly to TileLogo component variants:
 
-| LogoSquareGrid Variant | TileLogo Variant | Description |
-|------------------------|------------------|-------------|
+| LogoRectangleGrid Variant | TileLogo Variant | Description |
+|---------------------------|------------------|-------------|
 | `gray` | `neutral` | Subtle, professional appearance for general partner showcases |
 | `green` | `green` | Highlights featured or primary partners |
 
@@ -49,25 +63,13 @@ interface LogoItem {
   disabled?: boolean;
 }
 
-interface LogoSquareGridProps {
+interface LogoRectangleGridProps {
   /** Color variant - determines background color */
   variant?: 'gray' | 'green';
-  /** Optional heading text */
-  heading?: string;
+  /** Heading text (required) */
+  heading: string;
   /** Optional description text */
   description?: string;
-  /** Primary button configuration */
-  primaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
-  /** Tertiary button configuration */
-  tertiaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
   /** Array of logo items to display in the grid */
   logos: LogoItem[];
   /** Additional CSS classes */
@@ -75,19 +77,17 @@ interface LogoSquareGridProps {
 }
 ```
 
-**Note**: `LogoItem` extends `TileLogoProps` from the TileLogo component. The `variant` property is NOT included in individual logo items - it's controlled at the component level via the `LogoSquareGridProps.variant` prop, which applies to all tiles in the grid.
+**Note**: `LogoItem` extends `TileLogoProps` from the TileLogo component. The `variant` property is NOT included in individual logo items - it's controlled at the component level via the `LogoRectangleGridProps.variant` prop, which applies to all tiles in the grid.
 
 ### Default Values
 
 - `variant`: `'gray'`
-- `heading`: `undefined`
 - `description`: `undefined`
-- `primaryButton`: `undefined`
-- `tertiaryButton`: `undefined`
 - `className`: `''`
 
 ### Required Props
 
+- `heading`: Heading text (required)
 - `logos`: Array of logo items (required)
 
 ## Usage Examples
@@ -95,10 +95,11 @@ interface LogoSquareGridProps {
 ### Basic Usage with Gray Variant
 
 ```tsx
-import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
+import { LogoRectangleGrid } from 'shared/patterns/LogoRectangleGrid';
 
-<LogoSquareGrid
+<LogoRectangleGrid
   variant="gray"
+  heading="Developer tools & APIs"
   logos={[
     { logo: "/img/logos/company1.svg", alt: "Company 1" },
     { logo: "/img/logos/company2.svg", alt: "Company 2" },
@@ -108,15 +109,13 @@ import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
 />
 ```
 
-### With Header Section
+### With Description
 
 ```tsx
-<LogoSquareGrid
+<LogoRectangleGrid
   variant="green"
   heading="Developer tools & APIs"
   description="Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset."
-  primaryButton={{ label: "View Documentation", href: "/docs" }}
-  tertiaryButton={{ label: "Explore Tools", href: "/tools" }}
   logos={[
     { logo: "/img/logos/tool1.svg", alt: "Tool 1" },
     { logo: "/img/logos/tool2.svg", alt: "Tool 2" },
@@ -133,7 +132,7 @@ import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
 ### With Clickable Logos
 
 ```tsx
-<LogoSquareGrid
+<LogoRectangleGrid
   variant="gray"
   heading="Our Partners"
   description="Leading companies building on XRPL."
@@ -155,7 +154,7 @@ import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
 ### With Button Handlers
 
 ```tsx
-<LogoSquareGrid
+<LogoRectangleGrid
   variant="green"
   heading="Interactive Partners"
   description="Click any logo to learn more."
@@ -177,7 +176,7 @@ import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
 ### With Disabled State
 
 ```tsx
-<LogoSquareGrid
+<LogoRectangleGrid
   variant="gray"
   heading="Coming Soon"
   description="New partners joining the ecosystem."
@@ -196,11 +195,12 @@ import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
 />
 ```
 
-### Without Header (Logo Grid Only)
+### Heading Only (No Description)
 
 ```tsx
-<LogoSquareGrid
+<LogoRectangleGrid
   variant="gray"
+  heading="Ecosystem Members"
   logos={[
     { logo: "/img/logos/sponsor1.svg", alt: "Sponsor 1" },
     { logo: "/img/logos/sponsor2.svg", alt: "Sponsor 2" },
@@ -210,38 +210,51 @@ import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
 />
 ```
 
-### With Single Button
+### Demonstrating Alignment Logic
 
 ```tsx
-<LogoSquareGrid
+// 1-3 logos: Right-aligned
+<LogoRectangleGrid
   variant="green"
-  heading="Featured Integrations"
-  description="Connect with leading platforms and services."
-  primaryButton={{ label: "See All Integrations", href: "/integrations" }}
+  heading="Featured Partners"
   logos={[
-    { logo: "/img/logos/integration1.svg", alt: "Integration 1" },
-    { logo: "/img/logos/integration2.svg", alt: "Integration 2" }
+    { logo: "/img/logos/partner1.svg", alt: "Partner 1" },
+    { logo: "/img/logos/partner2.svg", alt: "Partner 2" }
   ]}
 />
-```
 
-### With Click Handler
-
-```tsx
-<LogoSquareGrid
+// 4 logos: Left-aligned
+<LogoRectangleGrid
   variant="gray"
-  heading="Developer Resources"
-  description="Access comprehensive tools and libraries."
-  primaryButton={{
-    label: "Get Started",
-    onClick: () => console.log('Primary clicked')
-  }}
-  tertiaryButton={{
-    label: "Learn More",
-    href: "/learn"
-  }}
+  heading="Core Technologies"
   logos={[
-    { logo: "/img/logos/resource1.svg", alt: "Resource 1" }
+    { logo: "/img/logos/tech1.svg", alt: "Tech 1" },
+    { logo: "/img/logos/tech2.svg", alt: "Tech 2" },
+    { logo: "/img/logos/tech3.svg", alt: "Tech 3" },
+    { logo: "/img/logos/tech4.svg", alt: "Tech 4" }
+  ]}
+/>
+
+// 5-9 logos: Right-aligned
+<LogoRectangleGrid
+  variant="green"
+  heading="Developer Tools"
+  logos={[
+    { logo: "/img/logos/tool1.svg", alt: "Tool 1" },
+    { logo: "/img/logos/tool2.svg", alt: "Tool 2" },
+    { logo: "/img/logos/tool3.svg", alt: "Tool 3" },
+    { logo: "/img/logos/tool4.svg", alt: "Tool 4" },
+    { logo: "/img/logos/tool5.svg", alt: "Tool 5" },
+    { logo: "/img/logos/tool6.svg", alt: "Tool 6" }
+  ]}
+/>
+
+// 9+ logos: Left-aligned
+<LogoRectangleGrid
+  variant="gray"
+  heading="Partner Ecosystem"
+  logos={[
+    // ... 12 logos
   ]}
 />
 ```
@@ -253,17 +266,38 @@ import { LogoSquareGrid } from 'shared/patterns/LogoSquareGrid';
 For best results, logo images should:
 - Be SVG format for crisp scaling
 - Have transparent backgrounds
-- Be reasonably sized (width: 120-200px recommended)
+- Be reasonably sized (width: 150-250px recommended for 9:5 aspect ratio)
 - Use monochrome or simple color schemes
 - Have consistent visual weight across all logos
 
 ### Grid Behavior
 
 - The grid uses PageGridCol components for responsive layout
-- Each tile uses `span={{ base: 2, lg: 3 }}` (2 cols on mobile out of 4, 3 cols on desktop out of 12)
-- Tiles maintain a 1:1 aspect ratio using `aspect-ratio: 1`
+- Each tile uses `span={{ base: 2, md: 2, lg: 3 }}` (2 cols on mobile out of 4, 2 cols on tablet out of 6, 3 cols on desktop out of 12)
+- This creates 2 columns on mobile, 3 columns on tablet, and 4 columns on desktop
+- Tiles maintain a 9:5 aspect ratio using the TileLogo rectangle shape
 - Gaps between tiles are handled by PageGrid's built-in gutter system
 - Grid automatically wraps to new rows as needed
+- Grid alignment changes dynamically based on logo count
+
+### Alignment Logic Implementation
+
+The alignment is controlled by the `alignRight` variable:
+
+```typescript
+const logoCount = logos.length;
+const alignRight = 
+  (logoCount >= 1 && logoCount <= 3) || 
+  (logoCount >= 5 && logoCount <= 9);
+```
+
+When `alignRight` is true:
+- Grid container spans 8 columns on desktop (lg breakpoint)
+- Grid container has 4-column offset on desktop (pushes content right)
+
+When `alignRight` is false:
+- Grid container spans full width
+- Grid container has 0 offset (content aligns left)
 
 ### Clickable Logo Behavior
 
@@ -275,36 +309,19 @@ Logo tiles leverage the TileLogo component's interactive capabilities:
 - **Animation**: Window shade effect that wipes from bottom to top on hover
 - All tiles automatically maintain focus states for keyboard accessibility
 
-### Header Section Logic
-
-The header section only renders if at least one of the following is provided:
-- `heading`
-- `description`
-- `primaryButton`
-- `tertiaryButton`
-
-### Button Styling
-
-- Both primary and tertiary buttons use green color scheme
-- Buttons stack vertically on mobile, horizontal on tablet+
-- Button spacing: 8px gap on mobile, 4px gap on tablet+
-- Button layout is handled by the shared ButtonGroup component
-
 ## Styling
 
 ### BEM Class Structure
 
 ```scss
-.bds-logo-square-grid                  // Base component
-.bds-logo-square-grid--gray            // Gray variant (maps to TileLogo 'neutral')
-.bds-logo-square-grid--green           // Green variant (maps to TileLogo 'green')
-.bds-logo-square-grid__header          // Header section container
-.bds-logo-square-grid__text            // Text content container
-.bds-logo-square-grid__heading         // Heading element
-.bds-logo-square-grid__description     // Description element
+.bds-logo-rectangle-grid                  // Base component
+.bds-logo-rectangle-grid--gray            // Gray variant (maps to TileLogo 'neutral')
+.bds-logo-rectangle-grid--green           // Green variant (maps to TileLogo 'green')
+.bds-logo-rectangle-grid__header          // Header section container
+.bds-logo-rectangle-grid__text            // Text content container
 ```
 
-**Note**: Individual logo tiles are rendered using the TileLogo component with its own BEM structure (`bds-tile-logo`). Grid layout is handled by PageGridRow and PageGridCol components. Button layout is handled by the ButtonGroup component (`bds-button-group`).
+**Note**: Individual logo tiles are rendered using the TileLogo component with its own BEM structure (`bds-tile-logo`) and `shape="rectangle"`. Grid layout is handled by PageGridRow and PageGridCol components.
 
 ### Typography Tokens
 
@@ -336,7 +353,6 @@ $green-300    // Green variant (dark mode)
 - All logos include descriptive alt text
 - Clickable logos have proper link semantics
 - Keyboard navigation support with visible focus states
-- ARIA labels provided through Button component
 - Color contrast meets WCAG AA standards in all variants
 
 ## Best Practices
@@ -348,9 +364,9 @@ $green-300    // Green variant (dark mode)
 
 ### Content Guidelines
 
-- **Heading**: Keep concise (1 line preferred), use sentence case
-- **Description**: Provide context (2-3 lines max), complete sentences
-- **Logo Count**: Aim for multiples of 4 for visual balance on desktop
+- **Heading**: Required, keep concise (1-2 lines preferred), use sentence case
+- **Description**: Optional, provide context (2-3 lines max), complete sentences
+- **Logo Count**: Consider the alignment logic when choosing how many logos to display
 - **Alt Text**: Use company/product names, not generic "logo"
 
 ### Logo Preparation
@@ -358,7 +374,7 @@ $green-300    // Green variant (dark mode)
 1. **Consistent Sizing**: Ensure all logos have similar visual weight
 2. **Format**: Use SVG for scalability and crisp rendering
 3. **Background**: Transparent backgrounds work best
-4. **Color**: Consider providing light/dark variants if needed
+4. **Aspect Ratio**: Rectangle tiles work well with horizontal logos
 5. **Padding**: Include minimal internal padding in the SVG itself
 
 ### Performance
@@ -370,38 +386,39 @@ $green-300    // Green variant (dark mode)
 
 ### Technical Implementation
 
-- **Grid System**: Uses PageGridCol with `span={{ base: 2, lg: 3 }}` for responsive layout (2 cols mobile, 4 cols desktop)
-- **Tile Rendering**: Leverages TileLogo component for all logo tiles
-- **Variant Mapping**: LogoSquareGrid 'gray' → TileLogo 'neutral', LogoSquareGrid 'green' → TileLogo 'green'
+- **Grid System**: Uses PageGridCol with `span={{ base: 2, md: 2, lg: 3 }}` for responsive layout
+- **Tile Rendering**: Leverages TileLogo component with `shape="rectangle"` for all logo tiles
+- **Variant Mapping**: LogoRectangleGrid 'gray' → TileLogo 'neutral', LogoRectangleGrid 'green' → TileLogo 'green'
 - **Interactive States**: TileLogo handles href (links), onClick (buttons), and disabled states
-- **Aspect Ratio**: Square tiles maintained by TileLogo with CSS `aspect-ratio: 1`
+- **Aspect Ratio**: Rectangle tiles maintained by TileLogo with CSS `aspect-ratio: 9/5`
 - **Animations**: Window shade hover effect managed by TileLogo component
-- **Button Layout**: Uses shared ButtonGroup component with `gap="small"` (4px on tablet+)
+- **Dynamic Alignment**: Grid alignment controlled by conditional offset based on logo count
 
 ## Files
 
-- `LogoSquareGrid.tsx` - Component implementation
-- `LogoSquareGrid.scss` - Styles with color variants and responsive breakpoints
+- `LogoRectangleGrid.tsx` - Component implementation
+- `LogoRectangleGrid.scss` - Styles with color variants and responsive breakpoints
 - `index.ts` - Barrel exports
 - `README.md` - This documentation
 
 ## Related Components
 
-- **TileLogo**: Core component used to render individual logo tiles with interactive states
-- **ButtonGroup**: Shared pattern used for responsive button layout in the header
+- **TileLogo**: Core component used to render individual logo tiles with interactive states and rectangle shape
+- **LogoSquareGrid**: Similar pattern but with square tiles instead of rectangle tiles
 - **PageGrid**: Used internally for responsive grid structure and standard container support
 
 ## Design References
 
-- **Figma Design**: [Pattern Logo - Square Grid](https://www.figma.com/design/ThBcoYLNKsBGw3r9g1L6Z8/Pattern-Logo---Square-Grid?node-id=1-2)
-- **Showcase Page**: `/about/logo-square-grid-showcase.page.tsx`
-- **Component Location**: `shared/patterns/LogoSquareGrid/`
+- **Figma Design**: [Section Logo - Rectangle Grid](https://www.figma.com/design/gaTsImoTRsiRXAGzbGKcCd/Section-Logo---Rectangle-Grid?node-id=1-2)
+- **Showcase Page**: `/about/logo-rectangle-grid-showcase.page.tsx`
+- **Component Location**: `shared/patterns/LogoRectangleGrid/`
 
 ## Version History
 
 - **January 2026**: Initial implementation
   - Figma design alignment with 2 color variants
-  - Responsive grid with 2/4 column layout
-  - Optional header section with buttons
+  - Responsive grid with 2/3/4 column layout
+  - Dynamic alignment based on logo count
+  - Required header section with optional description
   - Clickable logo support
-  - Refactored to use shared ButtonGroup component for button layout
+  - Rectangle tiles with 9:5 aspect ratio

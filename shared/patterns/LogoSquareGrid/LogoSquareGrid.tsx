@@ -1,21 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
-import { TileLogo } from '../../components/TileLogo/TileLogo';
+import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 
-export interface LogoItem {
-  /** Logo image source URL */
-  src: string;
-  /** Alt text for the logo image */
-  alt: string;
-  /** Optional link URL - makes the logo clickable */
-  href?: string;
-  /** Optional click handler - makes the logo a button */
-  onClick?: () => void;
-  /** Disabled state */
-  disabled?: boolean;
-}
+export interface LogoItem extends TileLogoProps {}
 
 export interface LogoSquareGridProps {
   /** Color variant - determines background color */
@@ -28,13 +17,13 @@ export interface LogoSquareGridProps {
   primaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Tertiary button configuration */
   tertiaryButton?: {
     label: string;
     href?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: () => void;
   };
   /** Array of logo items to display in the grid */
   logos: LogoItem[];
@@ -93,7 +82,7 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   const hasHeader = !!(heading || description || primaryButton || tertiaryButton);
 
   return (
-    <PageGrid className="">
+    <PageGrid className={classNames}>
       <PageGridRow>
         <PageGridCol span={{ base: 4, md: 6, lg: 8 }}>
             {/* Header Section */}
@@ -124,11 +113,7 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
             <TileLogo
               shape="square"
               variant={variant === 'gray' ? 'neutral' : 'green'}
-              logo={logo.src}
-              alt={logo.alt}
-              href={logo.href}
-              onClick={logo.onClick}
-              disabled={logo.disabled}
+              {...logo}
             />
           </PageGridCol>
         ))}

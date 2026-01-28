@@ -5332,7 +5332,7 @@ textarea.form-control-lg {
   display: table-cell !important;
 }
 
-.d-flex, .bds-logo-square-grid__text, .bds-logo-square-grid__header, .bds-logo-square-grid, .bds-callout-media-banner__text, .bds-callout-media-banner__content, .bds-callout-media-banner > [class*=bds-grid__col], .bds-callout-media-banner, .bds-button-group {
+.d-flex, .bds-logo-rectangle-grid__text, .bds-logo-rectangle-grid__header, .bds-logo-rectangle-grid, .bds-logo-square-grid__text, .bds-logo-square-grid__header, .bds-logo-square-grid, .bds-callout-media-banner__text, .bds-callout-media-banner__content, .bds-callout-media-banner > [class*=bds-grid__col], .bds-callout-media-banner, .bds-button-group {
   display: flex !important;
 }
 
@@ -5646,7 +5646,7 @@ textarea.form-control-lg {
   width: 75% !important;
 }
 
-.w-100, .bds-logo-square-grid, .bds-callout-media-banner__content, .bds-callout-media-banner {
+.w-100, .bds-logo-rectangle-grid, .bds-logo-square-grid, .bds-callout-media-banner__content, .bds-callout-media-banner {
   width: 100% !important;
 }
 
@@ -5706,7 +5706,7 @@ textarea.form-control-lg {
   flex-direction: row !important;
 }
 
-.flex-column, .bds-logo-square-grid__text, .bds-logo-square-grid__header, .bds-logo-square-grid, .bds-callout-media-banner__text, .bds-callout-media-banner__content, .bds-callout-media-banner > [class*=bds-grid__col], .bds-button-group {
+.flex-column, .bds-logo-rectangle-grid__text, .bds-logo-rectangle-grid__header, .bds-logo-rectangle-grid, .bds-logo-square-grid__text, .bds-logo-square-grid__header, .bds-logo-square-grid, .bds-callout-media-banner__text, .bds-callout-media-banner__content, .bds-callout-media-banner > [class*=bds-grid__col], .bds-button-group {
   flex-direction: column !important;
 }
 
@@ -11295,7 +11295,7 @@ aside .active-parent > a {
   width: 48px;
 }
 
-.w-100, .bds-logo-square-grid, .bds-callout-media-banner__content, .bds-callout-media-banner {
+.w-100, .bds-logo-rectangle-grid, .bds-logo-square-grid, .bds-callout-media-banner__content, .bds-callout-media-banner {
   width: 100%;
 }
 
@@ -20362,234 +20362,47 @@ html.dark .bds-cards-featured__description {
   color: #FFFFFF;
 }
 
-.bds-callout-media-banner {
-  box-sizing: border-box;
-  min-height: 280px;
-}
-.bds-callout-media-banner {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 16px;
+.bds-logo-rectangle-grid {
+  gap: 24px;
 }
 @media (min-width: 576px) {
-  .bds-callout-media-banner {
-    padding: 24px;
-  }
-}
-@media (min-width: 992px) {
-  .bds-callout-media-banner {
-    padding: 40px 32px;
-    min-height: 360px;
-  }
-}
-
-.bds-callout-media-banner__content {
-  gap: 48px;
-}
-@media (min-width: 576px) {
-  .bds-callout-media-banner__content {
-    gap: 64px;
-  }
-}
-@media (min-width: 1280px) {
-  .bds-callout-media-banner__content {
-    gap: 80px;
-  }
-}
-
-.bds-callout-media-banner--centered .bds-callout-media-banner__content {
-  justify-content: center;
-}
-
-.bds-callout-media-banner__text {
-  flex-direction: column;
-  color: var(--bds-cmb-text-color, #232021);
-  gap: 16px;
-}
-@media (min-width: 576px) {
-  .bds-callout-media-banner__text {
-    gap: 24px;
-  }
-}
-@media (min-width: 1280px) {
-  .bds-callout-media-banner__text {
+  .bds-logo-rectangle-grid {
     gap: 32px;
   }
 }
+@media (min-width: 992px) {
+  .bds-logo-rectangle-grid {
+    gap: 40px;
+  }
+}
 
-.bds-callout-media-banner__heading {
-  font-family: "Tobias", "Noto Serif", monospace;
-  font-weight: 300;
-  font-size: 32px;
-  line-height: 40px;
-  letter-spacing: 0px;
-  margin-bottom: 16px;
+.bds-logo-rectangle-grid__header {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  gap: 24px;
 }
 @media (min-width: 576px) {
-  .bds-callout-media-banner__heading {
-    font-size: 36px;
-    line-height: 45px;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
+  .bds-logo-rectangle-grid__header {
+    gap: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
   }
 }
 @media (min-width: 992px) {
-  .bds-callout-media-banner__heading {
-    font-size: 40px;
-    line-height: 46px;
-    letter-spacing: -1px;
-    margin-bottom: 16px;
+  .bds-logo-rectangle-grid__header {
+    gap: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
-}
-.bds-callout-media-banner__heading {
-  margin: 0;
-  color: inherit !important;
 }
 
-.bds-callout-media-banner__subheading {
-  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 30px;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
-}
-@media (min-width: 576px) {
-  .bds-callout-media-banner__subheading {
-    font-size: 28px;
-    line-height: 35px;
-    letter-spacing: -0.75px;
-    margin-bottom: 16px;
-  }
+.bds-logo-rectangle-grid__text {
+  gap: 8px;
 }
 @media (min-width: 992px) {
-  .bds-callout-media-banner__subheading {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
+  .bds-logo-rectangle-grid__text {
+    gap: 16px;
   }
-}
-.bds-callout-media-banner__subheading {
-  margin: 0;
-  color: inherit;
-}
-
-.bds-callout-media-banner--default {
-  background-color: #FFFFFF;
-}
-
-.bds-callout-media-banner--light-gray {
-  background-color: #E6EAF0;
-}
-
-.bds-callout-media-banner--lilac {
-  background-color: #C0A7FF;
-}
-
-.bds-callout-media-banner--green {
-  background-color: #70EE97;
-}
-
-.bds-callout-media-banner--gray {
-  background-color: #CAD4DF;
-}
-
-.bds-callout-media-banner--image {
-  background-color: transparent;
-}
-.bds-callout-media-banner--image::before {
-  content: "";
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 100%);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.bds-callout-media-banner--image-text-black::before {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 100%);
-}
-.bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
-  color: #141414 !important;
-}
-
-html.dark .bds-callout-media-banner--default {
-  background-color: #232325;
-}
-html.dark .bds-callout-media-banner--default .bds-callout-media-banner__text {
-  color: #FFFFFF;
-}
-html.dark .bds-callout-media-banner--light-gray {
-  background-color: #343437;
-}
-html.dark .bds-callout-media-banner--light-gray .bds-callout-media-banner__text {
-  color: #FFFFFF;
-}
-html.dark .bds-callout-media-banner--lilac {
-  background-color: #7649E3;
-}
-html.dark .bds-callout-media-banner--lilac .bds-callout-media-banner__text {
-  color: #FFFFFF;
-}
-html.dark .bds-callout-media-banner--green {
-  background-color: #21E46B;
-}
-html.dark .bds-callout-media-banner--green .bds-callout-media-banner__text {
-  color: #141414;
-}
-html.dark .bds-callout-media-banner--gray {
-  background-color: #454549;
-}
-html.dark .bds-callout-media-banner--gray .bds-callout-media-banner__text {
-  color: #FFFFFF;
-}
-html.dark .bds-callout-media-banner--image .bds-callout-media-banner__text {
-  color: #FFFFFF;
-}
-html.dark .bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
-  color: #141414 !important;
-}
-
-html.light .bds-callout-media-banner--default {
-  background-color: #FFFFFF;
-}
-html.light .bds-callout-media-banner--default .bds-callout-media-banner__text {
-  color: #141414;
-}
-html.light .bds-callout-media-banner--light-gray {
-  background-color: #E6EAF0;
-}
-html.light .bds-callout-media-banner--light-gray .bds-callout-media-banner__text {
-  color: #141414;
-}
-html.light .bds-callout-media-banner--lilac {
-  background-color: #C0A7FF;
-}
-html.light .bds-callout-media-banner--lilac .bds-callout-media-banner__text {
-  color: #141414;
-}
-html.light .bds-callout-media-banner--green {
-  background-color: #70EE97;
-}
-html.light .bds-callout-media-banner--green .bds-callout-media-banner__text {
-  color: #141414;
-}
-html.light .bds-callout-media-banner--gray {
-  background-color: #CAD4DF;
-}
-html.light .bds-callout-media-banner--gray .bds-callout-media-banner__text {
-  color: #141414;
-}
-html.light .bds-callout-media-banner--image .bds-callout-media-banner__text {
-  color: #FFFFFF;
-}
-html.light .bds-callout-media-banner--image-text-black .bds-callout-media-banner__text {
-  color: #141414 !important;
 }
 
 .bds-feature-two-column__button-group .bds-btn--tertiary {
