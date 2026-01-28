@@ -40,25 +40,17 @@ export default function CodeSamples() {
             {/* <a className="mt-12 btn btn-primary btn-arrow">Submit Code Samples</a> */}
           </div>
         </section>
-        <div className="position-relative d-none-sm">
-          <img
-            alt="orange waves"
-            src={require('../static/img/backgrounds/xrpl-overview-orange.svg')}
-            id="xrpl-overview-orange"
-          />
-        </div>
         <section className="container-new py-26">
           <div className="d-flex flex-column col-sm-8 p-0">
             <h3 className="h4 h2-sm">
               {translate('Browse sample code for building common use cases on the XRP Ledger')}
             </h3>
           </div>
-          <div className="row col-12  card-deck mt-10" id="code-samples-deck">
-            <div className="row col-md-12 px-0" id="code_samples_list">
-              {codeSamples.map(card => (
+          <div className="row gx-4 gy-5 mt-10 mb-20" id="code-samples-deck">
+            {codeSamples.map(card => (
+              <div key={card.href} className="col-12 col-lg-6 mb-4">
                 <a
-                  key={card.href}
-                  className={`card cardtest col-12 col-lg-5 ${card.langs.join(' ')}`}
+                  className={`card cardtest h-100 ${card.langs.join(' ')}`}
                   href={target.github_forkurl + `/tree/${target.github_branch}/${card.href}`.replace('/content','')}
                 >
                   <div className="card-header">
@@ -72,10 +64,9 @@ export default function CodeSamples() {
                     <h4 className="card-title h5">{card.title}</h4>
                     <p className="card-text">{card.description}</p>
                   </div>
-                  <div className="card-footer">&nbsp;</div>
                 </a>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
         <section className="container-new py-26">
@@ -86,8 +77,8 @@ export default function CodeSamples() {
                 {translate('Help the XRPL community by submitting your own code samples')}
               </h6>
             </div>
-            <div className="row pl-4">
-              <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_1">
+            <div className="row ps-4">
+              <div className=" col-lg-3 ps-4 ps-lg-0 pe-4 contribute  dot contribute_1">
                 <span className="dot" />
                 <h5 className="pb-4 pt-md-5">{translate('Fork and clone')}</h5>
                 <p className="pb-4">
@@ -98,7 +89,7 @@ export default function CodeSamples() {
                   {translate('resources.contribute.1.part3', '. Using git, clone the fork to your computer.')}
                 </p>
               </div>
-              <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_2">
+              <div className=" col-lg-3 ps-4 ps-lg-0 pe-4 contribute  dot contribute_2">
                 <span className="dot" />
                 <h5 className="pb-4 pt-md-5">{translate('Add to folder')}</h5>
                 <p className="pb-4">

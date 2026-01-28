@@ -1,0 +1,43 @@
+// BDS ButtonGroup Component Styles
+// Brand Design System - Responsive button group pattern
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-button-group                - Base component
+// .bds-button-group--gap-none      - No gap between buttons on tablet+ (0px)
+// .bds-button-group--gap-small     - Small gap between buttons on tablet+ (8px)
+
+// =============================================================================
+// Base Component Styles
+// =============================================================================
+
+.bds-button-group {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .align-items-start;
+  @extend .flex-wrap;
+  gap: 8px;
+  
+  // Tablet breakpoint - horizontal layout
+  @include media-breakpoint-up(md) {
+    flex-direction: row !important;
+    align-items: center;
+  }
+}
+
+// =============================================================================
+// Gap Modifiers
+// =============================================================================
+
+.bds-button-group--gap-none {
+  // Tablet breakpoint - no gap
+  @include media-breakpoint-up(md) {
+    gap: 0px;
+  }
+}
+
+.bds-button-group--gap-small {
+  // Tablet breakpoint - keep 8px gap
+  @include media-breakpoint-up(md) {
+    gap: 4px;
+  }
+}

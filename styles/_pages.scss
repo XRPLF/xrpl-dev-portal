@@ -1,16 +1,4 @@
 /* HOME STYLINGS */
-#home-purple {
-  position: absolute;
-  left: 0;
-  top: -400px;
-}
-
-#home-green {
-  position: absolute;
-  right: -3px;
-  top: 60px;
-}
-
 .sidelinks {
   &:hover {
     color: $blue-purple-400;
@@ -365,7 +353,7 @@
     padding: 2px 16px;
     width: 24px;
     height: 16px;
-    background: $blue-purple-800;
+    background: $blue-purple-400;
     border-radius: 100px;
 
     font-weight: 600;
@@ -850,6 +838,11 @@
     font-size: 16px;
   }
 
+  // Add spacing to filter checkboxes to match Bootstrap 4
+  .form-check-inline {
+    margin-right: 2rem;
+  }
+
   .events-filter {
     height: 20px;
     width: 20px;
@@ -915,7 +908,7 @@
     background-position: center;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 
@@ -930,7 +923,7 @@
     border: none;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 }
@@ -974,14 +967,6 @@
 }
 
 .page-faq {
-  &::before {
-    background-image: url(../img/backgrounds/faq-bg.svg);
-
-    @include media-breakpoint-up(md) {
-      background-size: contain;
-    }
-  }
-
   article {
     @include media-breakpoint-up(lg) {
       max-width: 704px;
@@ -1498,7 +1483,6 @@ html.light {
   .token-title {
     color: var(--black-black-0-white, #FFF);
     text-align: center;
-    font-family: "Work Sans";
     font-size: 62px;
     font-style: normal;
     font-weight: 700;
@@ -1596,7 +1580,6 @@ html.light {
 
       p {
         color: var(--black-black-10-gray-200, #E0E0E1);
-        font-family: "Work Sans";
         font-size: 24px;
         font-style: normal;
         font-weight: 400;
@@ -1664,7 +1647,6 @@ html.light {
 
     .cards-title-token {
       color: var(--black-black-0-white, #FFF);
-      font-family: "Work Sans";
       font-size: 32px;
       font-style: normal;
       font-weight: 700;
@@ -1677,7 +1659,6 @@ html.light {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-family: 'Work Sans', sans-serif;
       overflow: hidden;
     }
 
@@ -1894,7 +1875,6 @@ html.light {
 .token-developer-tools-section,
 .payments-integration-section {
   .developer-tools {
-    font-family: 'Work Sans', sans-serif;
     color: #fff;
   }
 
@@ -1986,7 +1966,6 @@ html.light {
 
 .token-features-section {
   .rwa-tokenization {
-    font-family: 'Work Sans', sans-serif;
     padding: 100px 40px;
     padding-top: 0px;
     color: #fff;
@@ -2185,23 +2164,6 @@ html.light {
         min-width: 100% !important;
         margin-bottom: 0 !important;
         flex: none !important;
-      }
-
-      &.developer-spotlight {
-        background-image: url(../img/community/bug-bounty-card-bg.png);
-        background-position: top right;
-        background-size: 169px 88px;
-        background-repeat: no-repeat;
-      }
-      &.learn-stay-updated {
-        background-image: url(../img/community/bug-bounty-card-bg-2.png);
-        background-position: bottom right;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-size: 136px 177px;
-        @media (max-width: 767px) {
-          background-image: url(../img/community/bug-bounty-card-bg-2-mobile.png);
-        }
       }
       
       .card-content {

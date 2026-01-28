@@ -850,17 +850,17 @@ export default function Uses() {
             </div>
             <a
               className="btn d-block d-lg-none"
-              data-toggle="modal"
-              data-target="#categoryFilterModal"
+              data-bs-toggle="modal"
+              data-bs-target="#categoryFilterModal"
             >
-              <span className="mr-3">
+              <span className="me-3">
                 <img
                   src={require("../static/img/uses/usecase-filter.svg")}
                   alt="Filter button"
                 />
               </span>
               {translate("Filter by Categories")}
-              <span className="ml-3 total_count category_count">2</span>
+              <span className="ms-3 total_count category_count">2</span>
             </a>
             {/* Start company cards */}
             <div className="row col-12 m-0 p-0 mt-4 pt-2">

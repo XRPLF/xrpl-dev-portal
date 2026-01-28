@@ -1,0 +1,109 @@
+// BDS LogoRectangleGrid Component Styles
+// Brand Design System - Logo grid pattern with rectangle tiles
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-logo-rectangle-grid                  - Base component
+// .bds-logo-rectangle-grid--gray            - Gray variant (maps to TileLogo 'neutral')
+// .bds-logo-rectangle-grid--green           - Green variant (maps to TileLogo 'green')
+// .bds-logo-rectangle-grid__header          - Header section container
+// .bds-logo-rectangle-grid__text            - Text content container
+//
+// Note: Individual logo tiles are rendered using the TileLogo component with shape="rectangle"
+// Note: Alignment is handled dynamically by PageGridCol offset prop
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+// Note: Color variants are now handled by the TileLogo component
+// LogoRectangleGrid 'gray' maps to TileLogo 'neutral'
+// LogoRectangleGrid 'green' maps to TileLogo 'green'
+
+// Spacing tokens - responsive
+// Mobile (<768px)
+$bds-lrg-header-gap-mobile: 24px;
+$bds-lrg-text-gap-mobile: 8px;
+
+// Tablet (768px-1023px)
+$bds-lrg-header-gap-tablet: 32px;
+
+// Desktop (≥1024px)
+$bds-lrg-header-gap-desktop: 40px;
+$bds-lrg-text-gap-desktop: 16px;
+
+// =============================================================================
+// Base Component Styles
+// =============================================================================
+
+.bds-logo-rectangle-grid {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .w-100;
+  
+  // Mobile-first gap
+  gap: $bds-lrg-header-gap-mobile;
+  
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    gap: $bds-lrg-header-gap-tablet;
+  }
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(lg) {
+    gap: $bds-lrg-header-gap-desktop;
+  }
+}
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-logo-rectangle-grid__header {
+  @extend .d-flex;
+  @extend .flex-column;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  
+  // Mobile-first gap
+  gap: $bds-lrg-header-gap-mobile;
+
+  // Tablet breakpoint
+  @include media-breakpoint-up(md) {
+    gap: $bds-lrg-header-gap-tablet;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(lg) {
+    gap: $bds-lrg-header-gap-desktop;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+// =============================================================================
+// Text Content
+// =============================================================================
+
+.bds-logo-rectangle-grid__text {
+  @extend .d-flex;
+  @extend .flex-column;
+  
+  // Mobile-first gap
+  gap: $bds-lrg-text-gap-mobile;
+  
+  // Desktop breakpoint
+  @include media-breakpoint-up(lg) {
+    gap: $bds-lrg-text-gap-desktop;
+  }
+}
+
+// =============================================================================
+// Logo Grid Row
+// =============================================================================
+// Note: Grid layout is now handled by PageGridRow/PageGridCol
+// Each tile uses PageGridCol with span={{ base: 2, md: 2, lg: 3 }}
+// This gives us 2 columns on mobile (2/4), 3 columns on tablet (2/6), 
+// and 4 columns on desktop (3/12)
+// Alignment is handled by offset prop based on logo count
+// Tile rendering and styling is handled by the TileLogo component

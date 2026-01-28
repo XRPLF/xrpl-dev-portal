@@ -1,4 +1,5 @@
 .card, .cta-card, .q-wrapper {
+  position: relative;
   @include media-breakpoint-up(lg) {
     box-shadow: $dropdown-box-shadow;
   }
@@ -168,6 +169,7 @@ a.card:hover h3 {
   .card {
     flex-grow: 0;
     flex-basis: 100%;
+    padding: 0;
     margin: 0 $card-deck-margin (4 * $card-deck-margin) $card-deck-margin;
     background-position: bottom;
     background-repeat: no-repeat;

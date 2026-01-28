@@ -1,5 +1,5 @@
 // Variables
-$grid-gap: 40px;
+$grid-gap: 8px;
 $grid-gap-lg: 80px;
 
 // General stuff ---------------------------------------------------------------
@@ -177,18 +177,15 @@ section {
       padding: 40px;
     }
 
-    .card-body {
-      padding: 8px;
-      padding-bottom: 24px;
+    // Removed card-body padding override - using Bootstrap 5 defaults
 
-      .card-icon-container {
-        width: 50px;
-        height: 50px;
+    .card-body .card-icon-container {
+      width: 50px;
+      height: 50px;
 
-        img {
-          width: 70%;
-          height: 70%;
-        }
+      img {
+        width: 70%;
+        height: 70%;
       }
     }
   }
@@ -200,7 +197,6 @@ section {
 }
 
 // New Page Layouts ---------------------------------------------------------------
-
 .container-new {
   display: flex;
   flex-wrap: wrap;

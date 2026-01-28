@@ -199,7 +199,7 @@ export default function Tokenization() {
                   "Work with a variety of tokens supported by the XRP Ledger."
                 )}
               </h2>
-              <h6 className="eyebrow mb-3 text-large">
+              <h6 className="eyebrow mb-3 subhead-sm-r">
                 {translate("Tokenization")}
               </h6>
             </div>
@@ -220,7 +220,7 @@ export default function Tokenization() {
                 {translate("Quick Start")}
               </Link>{" "}
               <a
-                className="ml-4 video-external-link btn-none"
+                className="ms-4 video-external-link btn-none"
                 target="_blank"
                 href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
               >
@@ -273,7 +273,7 @@ export default function Tokenization() {
                 target="_blank"
                 href={article.url}
               >
-                <div className="time h4 normal mb-8">
+                <div className="time h4 mb-8">
                   {translate(article.time)}
                 </div>
                 <div className="h5 mb-4">{translate(article.title)}</div>

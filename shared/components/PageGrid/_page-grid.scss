@@ -1,0 +1,173 @@
+// XRPL Grid
+// -----------------------------------------------------------------------------
+// A namespaced grid layer that reuses Bootstrap's grid mixins while providing
+// XRPL-specific gutters and container padding.
+
+$bds-grid-gutter: 8px;
+
+// Custom mixin that accounts for gap spacing in width calculations
+@mixin bds-make-col($size, $columns) {
+  flex: 0 0 auto;
+  // Calculate width accounting for gap spacing
+  // Formula: width per column * span + gap spacing between spanned columns
+  // Total gaps in grid: ($columns - 1)
+  // Total available width: 100% - (gap * total gaps)
+  // Width per column: available width / columns
+  // For span of $size: (width per column * size) + (gap * (size - 1))
+  width: calc(((100% - (#{$bds-grid-gutter} * (#{$columns} - 1))) / #{$columns}) * #{$size} + (#{$bds-grid-gutter} * (#{$size} - 1)));
+}
+
+@mixin bds-grid-generate-cols($columns, $suffix: null) {
+  @for $i from 1 through $columns {
+    $selector: if($suffix, ".bds-grid__col-#{$suffix}-#{$i}", ".bds-grid__col-#{$i}");
+
+    #{$selector} {
+      @include bds-make-col($i, $columns);
+    }
+  }
+}
+
+@mixin bds-grid-generate-auto($suffix: null) {
+  $selector: if($suffix, ".bds-grid__col-#{$suffix}-auto", ".bds-grid__col-auto");
+
+  #{$selector} {
+    @include make-col-auto();
+  }
+}
+
+@mixin bds-grid-generate-fill($suffix: null) {
+  $selector: if($suffix, ".bds-grid__col-#{$suffix}-fill", ".bds-grid__col-fill");
+
+  #{$selector} {
+    flex: 1 0 0;
+    width: auto;
+  }
+}
+
+@mixin bds-grid-generate-offsets($columns, $suffix: null) {
+  @for $i from 0 through ($columns - 1) {
+    $selector: if($suffix, ".bds-grid__offset-#{$suffix}-#{$i}", ".bds-grid__offset-#{$i}");
+
+    #{$selector} {
+      @include make-col-offset($i, $columns);
+    }
+  }
+}
+
+// Mixin to generate responsive base column classes (1-12) with built-in breakpoint behavior
+@mixin bds-grid-generate-responsive-base-cols() {
+  @for $i from 1 through 12 {
+    .bds-grid__col-#{$i} {
+      // Base breakpoint (4 columns): if span > 4, clamp to 4 (which gives 4/4 = 100%)
+      @if $i > 4 {
+        @include bds-make-col(4, 4);
+      } @else {
+        @include bds-make-col($i, 4);
+      }
+
+      // SM / MD breakpoint (8 columns): if span > 8, clamp to 8 (which gives 8/8 = 100%)
+      @include media-breakpoint-up(md) {
+        @if $i > 8 {
+          @include bds-make-col(8, 8);
+        } @else {
+          @include bds-make-col($i, 8);
+        }
+      }
+
+      // LG+ breakpoints (12 columns): always calculate based on 12 cols
+      @include media-breakpoint-up(lg) {
+        @include bds-make-col($i, 12);
+      }
+    }
+  }
+}
+
+.bds-grid {
+  &__container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    box-sizing: border-box;
+
+    @include media-breakpoint-up(sm) {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-right: 32px;
+      padding-left: 32px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding-right: 112px;
+      padding-left: 112px;
+      max-width: 1440px;
+    }
+
+    // Wide container variant - larger at xl breakpoint
+    &--wide {
+      padding-left: 0px;
+      padding-right: 0px;
+      @include media-breakpoint-up(xl) {
+        padding-right: 80px;
+        padding-left: 80px;
+      }
+      @include media-breakpoint-up(xxl) {
+        padding-right: 112px;
+        padding-left: 112px;
+        max-width: 1504px;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    // Use gap for spacing - works with our calc-based column widths
+    gap: $bds-grid-gutter;
+  }
+
+  &__col {
+    box-sizing: border-box;
+    flex: auto;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    // No padding/margin for gutters - spacing handled by gap on row
+    // Column widths are calculated to account for gap spacing
+    // Padding can be added via style prop without affecting grid spacing
+  }
+}
+
+// Base (0 - 575px) — 4-column grid with responsive behavior built-in
+@include bds-grid-generate-fill();
+@include bds-grid-generate-responsive-base-cols();
+@include bds-grid-generate-auto();
+@include bds-grid-generate-offsets(4);
+
+// Tablet (≥576px) — maintain 8-column grid across sm/md ranges
+@include media-breakpoint-up(md) {
+  @include bds-grid-generate-fill('md');
+  @include bds-grid-generate-cols(8, 'md');
+  @include bds-grid-generate-auto('md');
+  @include bds-grid-generate-offsets(8, 'md');
+}
+
+// Large (≥992px) — 12-column grid
+@include media-breakpoint-up(lg) {
+  @include bds-grid-generate-fill('lg');
+  @include bds-grid-generate-cols(12, 'lg');
+  @include bds-grid-generate-auto('lg');
+  @include bds-grid-generate-offsets(12, 'lg');
+}
+
+// XL (≥1280px) — retain 12-column grid with wider margins
+@include media-breakpoint-up(xl) {
+  @include bds-grid-generate-fill('xl');
+  @include bds-grid-generate-cols(12, 'xl');
+  @include bds-grid-generate-auto('xl');
+  @include bds-grid-generate-offsets(12, 'xl');
+}

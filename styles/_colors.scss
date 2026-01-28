@@ -1,60 +1,67 @@
-// XRP Visual Guidelines 2021 palette
+// XRPL Design Tokens 2026 - Figma Design System
+// https://figma.com/design/zRyhXG4hRP3Lk3B6Owr3eo/XRPL.org-Design-Tokens
+//
+// Migration Strategy: Smart Merge Approach
+// Old 10-level scale (100-1000) consolidated to new 5-level scale (100-500)
+// Mapping: 100,200→100 | 300,400→200 | 500,600→300 | 700,800→400 | 900,1000→500
 
-// Full color palette first ----------------------------------------------------
+// Base colors ----------------------------------------------------
 $white:    #FFFFFF;
+$black:    #141414;
+
 $gray-050: #FCFCFD;
-$gray-100: #F5F5F7;
-$gray-200: #E0E0E1;
-$gray-300: #C1C1C2;
-$gray-400: #A2A2A4;
-$gray-500: #838386;
+// Gray (Neutral) - New Design Tokens
+$gray-100: #F0F3F7;  // New design token
+$gray-200: #E6EAF0;  // New design token
+$gray-300: #CAD4DF;  // New design token (default)
+$gray-400: #8A919A;  // New design token
+$gray-500: #72777E;  // New design token
+// Legacy gray values (600-900 for dark mode)
 $gray-600: #454549;
 $gray-700: #343437;
 $gray-800: #232325;
 $gray-900: #111112;
-$black:    #000000;
+
+// Legacy aliases
 $black-10: $gray-100;
 $black-40: $gray-400;
 $black-60: $gray-600;
 
-$green-100: #D6FAE7;
-$green-200: #ADF5CE;
-$green-300: #84F0B6;
-$green-400: #5BEB9D;
-$green-500: #32E685;
-$green-600: #2DCF78;
-$green-700: #28B86A;
-$green-800: #1E8A50;
-$green-900: #145C35;
-$green-1000: #0A2E1B;
+// Green - New Design Tokens
+$green-100: #EAFCF1;  // New design token
+$green-200: #70EE97;  // New design token
+$green-300: #21E46B;  // New design token (default)
+$green-400: #0DAA3E;  // New design token
+$green-500: #078139;  // New design token
 $green: $green-500;
-$apex-2023-green: #00FF76;
-$token-2049-purple: #410bb9;
+$apex-2023-green: #00FF76;  // Special event color - preserved
+$token-2049-purple: #410bb9; // Special event color - preserved
 
-$blue-100: #E5F5FF;
-$blue-200: #B2E0FF;
-$blue-300: #80CCFF;
-$blue-400: #4BB7FF;
-$blue-500: #19A3FF;
-$blue-600: #008AE5;
-$blue-700: #006BB2;
-$blue-800: #004D80;
-$blue-900: #002E4C;
+// Blue (Secondary) - New Design Tokens
+$blue-100: #EDF4FF;  // New design token
+$blue-200: #93BFF1;  // New design token
+$blue-300: #428CFF;  // New design token (default)
+$blue-400: #0179E7;  // New design token
+$blue-500: #0A4DC0;  // New design token
 $blue: $blue-500;
+$accent-blue-90: #001133; // Special event color - preserved
 
-$accent-blue-90: #001133; // Used in APEX 2023 banner
+// Lilac (Primary) - New Design Tokens (replaces blue-purple)
+$lilac-100: #F2EDFF;  // New design token
+$lilac-200: #D9CAFF;  // New design token
+$lilac-300: #C0A7FF;  // New design token (default)
+$lilac-400: #7649E3;  // New design token
+$lilac-500: #5429A1;  // New design token
 
-$blue-purple-100: #F0E5FF;
-$blue-purple-200: #D2B2FF;
-$blue-purple-300: #B480FF;
-$blue-purple-400: #9A52FF;
-$blue-purple-500: #7919FF;
-$blue-purple-600: #5F00E5;
-$blue-purple-700: #4A00B2;
-$blue-purple-800: #350080;
-$blue-purple-900: #20004C;
-$purple: $blue-purple-400;
+// Legacy blue-purple aliases (map to new lilac)
+$blue-purple-100: $lilac-100;
+$blue-purple-200: $lilac-200;
+$blue-purple-300: $lilac-300;
+$blue-purple-400: $lilac-400;
+$blue-purple-500: $lilac-500;
+$purple: $lilac-400;
 
+// Red-purple - Legacy (no design token replacement)
 $red-purple-100: #FBE5FF;
 $red-purple-200: #F2B2FF;
 $red-purple-300: #EA80FF;
@@ -65,18 +72,31 @@ $red-purple-700: #9500B2;
 $red-purple-800: #6B0080;
 $red-purple-900: #40004C;
 
-$magenta-100: #FFE5F2;
-$magenta-200: #FFB2D8;
-$magenta-300: #FF80BF;
-$magenta-400: #FF4BA4;
-$magenta-500: #FF198B;
-$magenta-600: #E50071;
-$magenta-700: #B20058;
-$magenta-800: #80003F;
-$magenta-900: #4C0026;
-$magenta: $magenta-500;
-$pink: $magenta-500;
+// Pink (Secondary) - New Design Tokens (replaces magenta)
+$pink-100: #FDF1F4;  // New design token
+$pink-200: #F2B5C3;  // New design token
+$pink-300: #F18DA5;  // New design token (default)
+$pink-400: #FF577F;  // New design token
+$pink-500: #DC466F;  // New design token
 
+// Legacy magenta aliases (map to new pink)
+$magenta-100: $pink-100;
+$magenta-200: $pink-200;
+$magenta-300: $pink-300;
+$magenta-400: $pink-400;
+$magenta-500: $pink-500;
+$magenta: $pink-500;
+$pink: $pink-500;
+
+// Red (Secondary) - New Design Tokens
+$red-100: #FDECE7;  // New design token
+$red-200: #F27A66;  // New design token
+$red-300: #F0643A;  // New design token (default)
+$red-400: #DA4518;  // New design token
+$red-500: #A22514;  // New design token
+$red: $red-500;
+
+// Orange - Legacy (no design token replacement)
 $orange-100: #FFEEE5;
 $orange-200: #FFCCB2;
 $orange-300: #FFAA80;
@@ -88,15 +108,12 @@ $orange-800: #802B00;
 $orange-900: #4C1A00;
 $orange: $orange-500;
 
-$yellow-100: #FEFFE5;
-$yellow-200: #FDFFB2;
-$yellow-300: #FCFF80;
-$yellow-400: #FBFF4C;
-$yellow-500: #FAFF19;
-$yellow-600: #E0E500;
-$yellow-700: #AEB200;
-$yellow-800: #7D8000;
-$yellow-900: #4B4C00;
+// Yellow (Secondary) - New Design Tokens
+$yellow-100: #F3F1EB;  // New design token
+$yellow-200: #E6F1A7;  // New design token
+$yellow-300: #DBF15E;  // New design token (default)
+$yellow-400: #E1DB26;  // New design token
+$yellow-500: #D4C02D;  // New design token
 $yellow: $yellow-500;
 
 // Common colors & colors used in Bootstrap ------------------------------------
@@ -123,6 +140,13 @@ $breadcrumb-bg:   $body-bg;
 $breadcrumb-active-color: $gray-400;
 
 $card-bg:   $gray-800;
+
+// Link styles - Bootstrap 5 defaults to underlined, we don't want that
+$link-decoration: none;
+$link-hover-decoration: underline;
+// Bootstrap 5 uses shade-amount for hover, we want explicit color
+$link-shade-percentage: 0%; // Disable auto-shading
+$link-hover-color: $purple; // Explicit hover color
 
 $dropdown-bg:     $gray-900;
 $dropdown-divider-bg: $black;
@@ -167,4 +191,4 @@ $light-fg-disabled: $gray-400;
 $light-form-bg: $gray-200;
 $light-box-shadow: 0px 5px 20px 0px $gray-300;
 $light-link-hover-color: $blue-purple-500;
-$light-standout-bg: $gray-050;
+$light-standout-bg: $gray-100;

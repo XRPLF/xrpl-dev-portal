@@ -25,7 +25,7 @@ export function XRPLCard(props: XRPLCardProps) {
                 <p className="card-text">{props.body}</p>
               )}
             </div>
-            <div className="card-footer">&nbsp;</div>
+            {/* <div className="card-footer">&nbsp;</div> */}
         </Link>
     )
 }

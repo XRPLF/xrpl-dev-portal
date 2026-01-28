@@ -28,7 +28,7 @@
 
 /* stylelint-disable selector-class-pattern -- react18-json-view uses these */
 .json-view--boolean {
-  color: $magenta-600 !important;
+  color: $magenta-300 !important;
 }
 
 .json-view--pair {
@@ -50,7 +50,7 @@
 }
 
 .json-view--number {
-  color: $green-300 !important;
+  color: $green-200 !important;
 }
 
 .json-view--string {

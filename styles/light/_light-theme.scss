@@ -15,7 +15,7 @@ body {
 }
 
 #topnav-theme .custom-theme-toggle {
-  .custom-control-label::before {
+  .form-check-input {
     background-color: transparent;
     background-position: bottom right;
     transform: rotate(-15deg);
@@ -39,7 +39,7 @@ h6,
   }
 
   &.green-500 {
-    color: $green-700;
+    color: $green-400;
     text-shadow: white 0 0 2px, white -1px -1px 2px, white 1px 1px 2px;
   }
 }
@@ -123,9 +123,9 @@ h6,
 
 // Navigation ------------------------------------------------------------------
 
-a,
-nav a,
-a:not([role="button"]) {
+a:not(.bds-link),
+nav a:not(.bds-link),
+a:not([role="button"]):not(.bds-link) {
   color: $light-fg;
 
   &.btn-primary {
@@ -407,7 +407,7 @@ aside .card {
 
 // Status labels
 .status.not_enabled {
-  color: $yellow-700;
+  color: $yellow-400;
 }
 
 // Parent ("category") page in label landings
@@ -429,8 +429,8 @@ aside .card {
     }
   }
 
-  p a,
-  .longform a {
+  p a:not(.bds-link),
+  .longform a:not(.bds-link) {
     color: $light-link-hover-color;
   }
 }
@@ -438,19 +438,19 @@ aside .card {
 // Callouts
 .devportal-callout.caution,
 .devportal-callout.注意 {
-  border-color: $yellow-700;
+  border-color: $yellow-400;
 
   >strong:first-child::before {
-    color: $yellow-700;
+    color: $yellow-400;
   }
 }
 
 .devportal-callout.tip,
 .devportal-callout.ヒント {
-  border-color: $green-600;
+  border-color: $green-300;
 
   >strong:first-child::before {
-    color: $green-600;
+    color: $green-300;
   }
 }
 
@@ -495,7 +495,7 @@ pre {
 
 .interactive-block {
   .breadcrumb-item.done a::after {
-    color: $green-900;
+    color: $green-500;
   }
 }
 
@@ -1023,10 +1023,10 @@ $placeholder-color: $gray-600;
     background-image: url(../img/events/event-check.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: $blue-purple-600;
+    background-color: $blue-purple-300;
     border-width: 2px;
     border-style: solid;
-    border-color: $blue-purple-600;
+    border-color: $blue-purple-300;
     border-radius: 4px;
   }
 
