@@ -1,13 +1,14 @@
 # CardsTwoColumn Pattern
 
-A section pattern featuring a header with title and description, plus a 2×2 grid of TextCard components. Designed for showcasing multiple related content areas with visual variety through 5 color variants.
+A section pattern featuring a header with title and description, plus a 2×2 grid of TextCard components. Designed for showcasing multiple related content areas with visual variety through 6 color variants.
 
 ## Features
 
 - **Header Section**: Title (heading-md) with optional description (body-l, muted)
 - **4-Card Grid**: 2×2 layout on desktop, single column stacked on tablet/mobile
-- **5 Color Variants**: Green, neutral-light, neutral-dark, lilac, and yellow
+- **6 Color Variants**: Green, neutral-light, neutral-dark, lilac, yellow, and blue
 - **Interactive States**: Hover (window shade animation), focus, and pressed states
+- **Disabled State**: Cards can be disabled with appropriate styling for light/dark modes
 - **Responsive Design**: Adapts layout and spacing across all breakpoints
 - **Dark Mode Support**: Full dark mode styling via `html.dark`
 
@@ -46,7 +47,8 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 | `title` | `ReactNode` | *required* | Card title (heading-lg typography) |
 | `description` | `ReactNode` | - | Card description (body-l typography) |
 | `href` | `string` | - | Optional link URL (makes card clickable) |
-| `color` | `'green' \| 'neutral-light' \| 'neutral-dark' \| 'lilac' \| 'yellow'` | `'neutral-light'` | Background color variant |
+| `color` | `'green' \| 'neutral-light' \| 'neutral-dark' \| 'lilac' \| 'yellow' \| 'blue'` | `'neutral-light'` | Background color variant |
+| `disabled` | `boolean` | `false` | Whether the card is disabled |
 
 ## Responsive Behavior
 
@@ -71,17 +73,38 @@ import { CardsTwoColumn } from 'shared/patterns/CardsTwoColumn';
 - Gap between header and cards: 24px
 - Card height: 274px, padding: 16px
 
-## Color Variants & States (Light Mode)
+## Color Variants & States
 
-Each color variant has three interactive states with a "window shade" hover animation:
+Each color variant has four interactive states with a "window shade" hover animation.
 
-| Variant | Default | Hover | Pressed |
-|---------|---------|-------|---------|
-| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
-| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
-| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) | `$gray-500` (#72777E) |
-| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
-| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
+### Light Mode
+
+| Variant | Default | Hover | Focus | Pressed |
+|---------|---------|-------|-------|---------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-200` (#E6EAF0) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
+| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+
+### Dark Mode
+
+| Variant | Default | Hover | Focus | Pressed |
+|---------|---------|-------|-------|---------|
+| `green` | `$green-200` (#70EE97) | `$green-300` (#21E46B) | `$green-300` (#21E46B) | `$green-400` (#0DAA3E) |
+| `neutral-light` | `$gray-300` (#CAD4DF) | `$gray-200` (#E6EAF0) | `$gray-200` (#E6EAF0) | `$gray-400` (#8A919A) |
+| `neutral-dark` | `$gray-400` (#8A919A) | `$gray-300` (#CAD4DF) | `$gray-300` (#CAD4DF) | `$gray-500` (#72777E) |
+| `lilac` | `$lilac-200` (#D9CAFF) | `$lilac-300` (#C0A7FF) | `$lilac-300` (#C0A7FF) | `$lilac-400` (#7649E3) |
+| `yellow` | `$yellow-100` (#F3F1EB) | `$yellow-200` (#E6F1A7) | `$yellow-200` (#E6F1A7) | `$yellow-300` (#DBF15E) |
+| `blue` | `$blue-100` (#EDF4FF) | `$blue-200` (#93BFF1) | `$blue-200` (#93BFF1) | `$blue-300` (#428CFF) |
+
+### Disabled State
+
+| Mode | Background | Text |
+|------|------------|------|
+| Light | `$gray-100` (#F0F3F7) | `$gray-500` (#72777E) |
+| Dark | `rgba($gray-500, 0.3)` | Default text color |
 
 ## CSS Classes
 
@@ -136,8 +159,8 @@ Each color variant has three interactive states with a "window shade" hover anim
 
 - **January 2026**: Initial implementation
   - Header section with title and description
-  - 2×2 card grid with 5 color variants (green, neutral-light, neutral-dark, lilac, yellow)
+  - 2×2 card grid with 6 color variants (green, neutral-light, neutral-dark, lilac, yellow, blue)
   - Window shade hover animation
   - Full responsive design
-  - Dark mode support
-
+  - Dark mode support with correct color mappings for neutral-light and neutral-dark
+  - Disabled state support for light and dark modes
