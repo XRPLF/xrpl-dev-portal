@@ -54,9 +54,9 @@ Date:   Tue Jan 27 21:13:06 2026 -0400
 ### Bug Fixes
 
 - Expand `Number` to support full integer range. ([#6192](https://github.com/XRPLF/rippled/pull/6192))
-- fix: Reorder Batch Preflight Errors. ([#6176](https://github.com/XRPLF/rippled/pull/6176))
+- Fix: Reorder Batch Preflight Errors. ([#6176](https://github.com/XRPLF/rippled/pull/6176))
 - Fix dependencies so clio can use libxrpl. ([#6251](https://github.com/XRPLF/rippled/pull/6251))
-- fix: Remove DEFAULT fields that change to the default in associateAsset (was Add Vault creation tests for showing valid range for AssetsMaximum). ([#6259](https://github.com/XRPLF/rippled/pull/6259))
+- Fix: Remove DEFAULT fields that change to the default in associateAsset (was Add Vault creation tests for showing valid range for AssetsMaximum). ([#6259](https://github.com/XRPLF/rippled/pull/6259))
 
 
 ## Credits
