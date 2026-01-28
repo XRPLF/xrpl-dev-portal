@@ -41,7 +41,7 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 
 - [Paymentトランザクション][]の送信先には**できません**。ただし**以下の例外**は除きます。
     - 送金先により、支払の送金元が[事前承認](#事前承認)されている場合。{% amendment-disclaimer name="DepositPreauth" /%}
-    - アカウントのXRP残高がアカウントの最低[必要準備金](reserves.md)以下で、XRP PaymentのAmountがアカウントの最低準備金（現時点では10XRP）以下である場合は、このアカウントを送金先に指定できます。これにより、アカウントがトランザクションを送信することも、XRPを受領することもできずに操作不可能な状態になるのを防ぎます。この場合、アカウントの所有者の準備金は関係ありません。
+    - アカウントのXRP残高がアカウントの最低[必要準備金](reserves.md)以下で、XRP PaymentのAmountがアカウントの最低準備金（現時点では{% $env.PUBLIC_BASE_RESERVE %}）以下である場合は、このアカウントを送金先に指定できます。これにより、アカウントがトランザクションを送信することも、XRPを受領することもできずに操作不可能な状態になるのを防ぎます。この場合、アカウントの所有者の準備金は関係ありません。
 - **以下に該当する場合にのみ**[PaymentChannelClaimトランザクション][]からXRPを受領できます。
     - PaymentChannelClaimトランザクションの送金元がPayment Channelの送金先である場合。
     - PaymentChannelClaimトランザクションの送金先がPaymentChannelClaimの送金元を[事前承認している](#事前承認)場合。{% amendment-disclaimer name="DepositPreauth" /%}

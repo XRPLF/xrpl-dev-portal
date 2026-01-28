@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '../Button';
+import { PageGridCol } from '../PageGrid/page-grid';
+import type { PageGridBreakpoint } from '../PageGrid/page-grid';
 
 interface ButtonConfig {
   /** Button label text */
@@ -10,11 +12,14 @@ interface ButtonConfig {
   href?: string;
 }
 
+/** Responsive span configuration for PageGridCol */
+type SpanConfig = Partial<Record<PageGridBreakpoint, number>>;
+
 export interface CardStatProps {
   /** The main statistic to display (e.g., "6 Million+") */
   statistic: string;
-  /** Superscript text for the statistic */
-  superscript?: '*' | '+' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '0';
+  /** Superscript text for the statistic (symbols like '*', '+' or numeric strings like '1', '12') */
+  superscript?: string;
   /** Descriptive label for the statistic */
   label: string;
   /** Background color variant
@@ -28,6 +33,8 @@ export interface CardStatProps {
   primaryButton?: ButtonConfig;
   /** Secondary button configuration */
   secondaryButton?: ButtonConfig;
+  /** Grid column span configuration - defaults to { base: 4, md: 4, lg: 4 } */
+  span?: SpanConfig;
   /** Additional CSS classes */
   className?: string;
 }
@@ -52,6 +59,9 @@ export interface CardStatProps {
  *   primaryButton={{ label: "Learn More", href: "/docs" }}
  * />
  */
+/** Default span configuration */
+const DEFAULT_SPAN: SpanConfig = { base: 4, md: 4, lg: 4 };
+
 export const CardStat: React.FC<CardStatProps> = ({
   statistic,
   superscript,
@@ -59,6 +69,7 @@ export const CardStat: React.FC<CardStatProps> = ({
   variant = 'lilac',
   primaryButton,
   secondaryButton,
+  span = DEFAULT_SPAN,
   className = '',
 }) => {
   // Build class names using BEM with bds namespace
@@ -72,57 +83,48 @@ export const CardStat: React.FC<CardStatProps> = ({
 
   const hasButtons = primaryButton || secondaryButton;
 
+  // Check if superscript is a number (one or more digits), excluding + or - signs
+  const isNumericSuperscript = superscript && /^[0-9]+$/.test(superscript);
+
   return (
-    <div className={classNames}>
-      <div className="bds-card-stat__content">
+    <PageGridCol span={span}>
+      <div className={classNames}>
         {/* Text section */}
         <div className="bds-card-stat__text">
           <div className="bds-card-stat__statistic">
-            {statistic}{superscript && <sup>{superscript}</sup>}</div>
+            {statistic}{superscript && <sup className={isNumericSuperscript ? 'bds-card-stat__superscript--numeric' : ''}>{superscript}</sup>}</div>
           <div className="body-r">{label}</div>
         </div>
 
-        {/* Buttons section */} 
+        {/* Buttons section */}
         {hasButtons && (
           <div className="bds-card-stat__buttons">
             {primaryButton && (
-              primaryButton.href ? (
-                <a href={primaryButton.href}>
-                  <Button variant="primary" color="black">
-                    {primaryButton.label}
-                  </Button>
-                </a>
-              ) : (
-                <Button 
-                  variant="primary" 
-                  color="black"
-                  onClick={primaryButton.onClick}
-                >
-                  {primaryButton.label}
-                </Button>
-              )
+              <Button
+                forceColor
+                variant="primary"
+                color="black"
+                href={primaryButton.href}
+                onClick={primaryButton.onClick}
+              >
+                {primaryButton.label}
+              </Button>
             )}
             {secondaryButton && (
-              secondaryButton.href ? (
-                <a href={secondaryButton.href}>
-                  <Button variant="secondary" color="black">
-                    {secondaryButton.label}
-                  </Button>
-                </a>
-              ) : (
-                <Button 
-                  variant="secondary" 
-                  color="black"
-                  onClick={secondaryButton.onClick}
-                >
-                  {secondaryButton.label}
-                </Button>
-              )
+              <Button
+                forceColor
+                variant="secondary"
+                color="black"
+                href={secondaryButton.href}
+                onClick={secondaryButton.onClick}
+              >
+                {secondaryButton.label}
+              </Button>
             )}
           </div>
         )}
       </div>
-    </div>
+    </PageGridCol>
   );
 };
 
