@@ -1,12 +1,12 @@
 ---
 seo:
-  description: A single asset vault aggregates assets from multiple depositors and makes them available to other on-chain protocols.
+  description: Single asset vaults aggregate assets from multiple depositors and make them available to other on-chain protocols.
 labels:
   - Single Asset Vault 
 status: not_enabled
 ---
 
-# Single Asset Vault
+# Single Asset Vaults
 
 A single asset vault is an XRP Ledger primitive that aggregates assets from multiple depositors and makes them available to other on-chain protocols, such as the Lending Protocol. A vault asset can be [XRP](../../introduction/what-is-xrp.md), a [trust line token](../tokens/fungible-tokens/index.md), or an [MPT (Multi-Purpose Token)](../tokens/fungible-tokens/multi-purpose-tokens.md).
 
