@@ -1,6 +1,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import clsx from 'clsx';
 import { CardOffgrid, CardOffgridProps } from '../../components/CardOffgrid';
+import type { ButtonProps } from '../../components/Button';
 
 /**
  * Configuration for a single card in the CarouselCardList pattern
@@ -8,14 +9,17 @@ import { CardOffgrid, CardOffgridProps } from '../../components/CardOffgrid';
  */
 export type CarouselCardConfig = Omit<CardOffgridProps, 'variant'>;
 
+/** BEM class name for card elements */
+const CARD_CLASS_NAME = 'bds-carousel-card-list__card';
+
 /**
  * Props for the CarouselCardList pattern component
  */
 export interface CarouselCardListProps extends React.ComponentPropsWithoutRef<'section'> {
   /** Color variant of the cards */
   variant?: 'neutral' | 'green';
-  /** Color variant of the navigation buttons (independent of card color). Defaults to 'neutral' */
-  buttonVariant?: 'neutral' | 'green' | 'black';
+  /** Color variant of the navigation buttons (independent of card color). Defaults to 'neutral'. Derived from Button color prop. */
+  buttonVariant?: ButtonProps['color'] | 'neutral';
   /** Section heading text */
   heading: React.ReactNode;
   /** Section description text */
@@ -94,7 +98,7 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
       if (!container) return;
 
       // Get the first card to determine scroll amount
-      const card = container.querySelector('.bds-carousel-card-list__card') as HTMLElement;
+      const card = container.querySelector(`.${CARD_CLASS_NAME}`) as HTMLElement;
       if (!card) return;
 
       const cardWidth = card.offsetWidth;
@@ -153,7 +157,7 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
             tabIndex={0}
           >
             {cards.map((card, index) => (
-              <div key={getCardKey(card, index)} className="bds-carousel-card-list__card">
+              <div key={getCardKey(card, index)} className={CARD_CLASS_NAME}>
                 <CardOffgrid {...card} variant={variant} />
               </div>
             ))}
