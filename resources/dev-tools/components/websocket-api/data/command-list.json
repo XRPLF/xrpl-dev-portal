@@ -786,6 +786,36 @@
         }
       },
       {
+        "name": "ledger_entry - Loan",
+        "description": "Returns a single Loan object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-loan-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_loan",
+          "command": "ledger_entry",
+          "loan": {
+            "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D",
+            "loan_seq": 2
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - LoanBroker",
+        "description": "Returns a single LoanBroker object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-loanbroker-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_loanbroker",
+          "command": "ledger_entry",
+          "loan_broker": {
+            "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8",
+            "seq": 3213616
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - MPToken",
         "description": "Returns an MPToken object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-mptoken-entry",
@@ -810,17 +840,6 @@
         }
       },
       {
-        "name": "ledger_entry - NFTokenOffer",
-        "description": "Returns an NFTokenOffer object in its raw ledger format.",
-        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-nftokenoffer-entry",
-        "body": {
-          "id": "example_get_nftokenoffer",
-          "command": "ledger_entry",
-          "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
-          "ledger_index": "validated"
-        }
-      },
-      {
         "name": "ledger_entry - NegativeUNL",
         "description": "Returns the NegativeUNL object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-negativeunl-entry",
@@ -839,6 +858,17 @@
           "id": "example_get_nft_page",
           "command": "ledger_entry",
           "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF",
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - NFTokenOffer",
+        "description": "Returns an NFTokenOffer object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-nftokenoffer-entry",
+        "body": {
+          "id": "example_get_nftokenoffer",
+          "command": "ledger_entry",
+          "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC007A6B4F936C43B2F38BD8FFC14",
           "ledger_index": "validated"
         }
       },

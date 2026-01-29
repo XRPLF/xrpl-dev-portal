@@ -37,9 +37,9 @@ The `generator` and `ledger` parameters are deprecated and may be removed withou
 
 Retrieve any type of ledger entry by its unique ID.
 
-| Field   | Type   | Description                                               |
-|:--------|:-------|:----------------------------------------------------------|
-| `index` | String | The [ledger entry ID][] of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
+| Field   | Type   | Required? | Description                                               |
+|:--------|:-------|:----------|:----------------------------------------------------------|
+| `index` | String | Yes       | The [ledger entry ID][] of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
 
 {% tabs %}
 
@@ -92,9 +92,9 @@ You can use this type of request to get any singleton ledger entry, if it exists
 
 Retrieve an [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) by its address. This is roughly equivalent to the [account_info method][].
 
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `account_root`          | String - [Address][]       | The classic address of the [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) to retrieve. |
+| Field                   | Type                       | Required? | Description           |
+|:------------------------|:---------------------------|:----------|:----------------------|
+| `account_root`          | String - [Address][]       | Yes       | The classic address of the [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) to retrieve. |
 
 {% tabs %}
 
@@ -185,11 +185,11 @@ rippled json ledger_entry '{ "amendments": "7DB0788C020F02780A673DC74757F23823FA
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 
-| Field        | Type             | Description           |
-|:-------------|:-----------------|:----------------------|
-| `amm`        | Object or String | The [AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md) to retrieve. If you specify a string, it must be the [ledger entry ID][] of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
-| `amm.asset`  | Object           | One of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `amm.asset2` | Object           | The other of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| Field        | Type             | Required? | Description           |
+|:-------------|:-----------------|:----------|:----------------------|
+| `amm`        | Object or String | Yes       | The [AMM entry][] to retrieve. If you specify a string, it must be the [ledger entry ID][] of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
+| `amm.asset`  | Object           | No        | One of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| `amm.asset2` | Object           | No        | The other of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 
 {% tabs %}
 
@@ -323,9 +323,9 @@ rippled json ledger_entry '{ "bridge_account": "rf7zCh1aPD2DpeJVo6keG5Cf1TVyAKMF
 
 Retrieve a [Check entry][], which is a potential payment that can be cashed by its recipient.
 
-| Field   | Type   | Description                                               |
-|:--------|:-------|:----------------------------------------------------------|
-| `check` | String | The [ledger entry ID][] of a [Check entry][] to retrieve. |
+| Field   | Type   | Required? | Description                                               |
+|:--------|:-------|:----------|:----------------------------------------------------------|
+| `check` | String | Yes       | The [ledger entry ID][] of a [Check entry][] to retrieve. |
 
 {% tabs %}
 
@@ -483,9 +483,9 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 
 Retrieve a [DID entry][], which holds references to, or data associated with, a single Decentralized Identifier.
 
-| Field | Type     | Required | Description |
-|-------|----------|----------|-------------|
-| `did` | String   | Yes      | The account that controls the DID. |
+| Field | Type     | Required? | Description |
+|:------|:---------|:----------|:------------|
+| `did` | String   | Yes       | The account that controls the DID. |
 
 {% tabs %}
 
@@ -528,12 +528,12 @@ rippled json ledger_entry '{ "did": "rFtKiHYdvmAiVvxAr6U6TNjcPSrAeANQa", "ledger
 
 Retrieve a [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md), which contains a list of other ledger objects. Can be provided as string (object ID of the Directory) or as an object.
 
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `directory`             | Object or String           | The [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md) to retrieve. If a string, must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
-| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md). |
-| `directory.dir_root`    | String                     | _(Optional)_ Unique index identifying the directory to retrieve, as a hex string. |
-| `directory.owner`       | String                     | _(Optional)_ Unique address of the account associated with this directory. |
+| Field                   | Type                       | Required? | Description           |
+|:------------------------|:---------------------------|:----------|:----------------------|
+| `directory`             | Object or String           | Yes       | The [DirectoryNode entry][] to retrieve. If a string, must be the [ledger entry ID][] of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| `directory.sub_index`   | Unsigned Integer           | No        | If provided, jumps to a later "page" of the [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md). |
+| `directory.dir_root`    | String                     | No        | Unique index identifying the directory to retrieve, as a hex string. |
+| `directory.owner`       | String                     | No        | Unique address of the account associated with this directory. |
 
 {% tabs %}
 
@@ -584,11 +584,11 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escrow.md), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object.
 
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `escrow`                | Object or String           | The Escrow to retrieve. If a string, must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
-| `escrow.owner`          | String - [Address][]       | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
-| `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The [Sequence Number][] of the transaction that created the Escrow object. |
+| Field                   | Type                       | Required? | Description           |
+|:------------------------|:---------------------------|:----------|:----------------------|
+| `escrow`                | Object or String           | Yes       | The [Escrow entry][] to retrieve. If a string, must be the [ledger entry ID][] of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
+| `escrow.owner`          | String - [Address][]       | No        | The owner (sender) of the Escrow object. |
+| `escrow.seq`            | Unsigned Integer           | No        | The [Sequence Number][] of the transaction that created the Escrow object. |
 
 {% tabs %}
 
@@ -636,9 +636,9 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 Retrieve the [FeeSettings entry][], which contains the current base [transaction cost][] and [reserves][] determined by [fee voting][].
 
-| Field | Type   | Required | Description |
-|-------|--------|----------|-------------|
-| `fee` | String | Yes      | The `FeeSettings` entry. This value must be `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`. |
+| Field | Type   | Required? | Description |
+|:------|:-------|:----------|:------------|
+| `fee` | String | Yes       | The `FeeSettings` entry. This value must be `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`. |
 
 {% tabs %}
 
@@ -720,17 +720,125 @@ rippled json ledger_entry '{ "hashes": "B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA87
 {% try-it method="ledger_entry-ledgerhashes" server="testnet" /%}
 
 
-### Get MPToken Entry
+### Get Loan Entry
 
-Return an `MPToken` object.
+{% amendment-disclaimer name="LendingProtocol" /%}
+
+Retrieve a [Loan entry][], which defines the state of an on-chain loan agreement between a Loan Broker and a Borrower.
+
+| Field | Type | Required? | Description |
+|:------|:-----|:----------|:------------|
+| `loan` | Object or String | Yes | Specify the `Loan` to retrieve. If a string, must be the [ledger entry ID][] of the `Loan`, as hexadecimal. If an object, requires `loan_broker_id` and `loan_seq` sub-fields. |
+| `loan.loan_broker_id` | String | No | The [ledger entry ID][] of the [LoanBroker][] that created the loan, as hexadecimal. |
+| `loan.loan_seq` | Number | No | The sequence number of the loan. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_loan",
+  "command": "ledger_entry",
+  "loan": {
+    "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D",
+    "loan_seq": 2
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+    "loan": {
+      "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D",
+      "loan_seq": 2
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "loan": { "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D", "loan_seq": 2 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-loan" server="devnet" /%}
+
+
+### Get LoanBroker Entry
+
+{% amendment-disclaimer name="LendingProtocol" /%}
+
+Retrieve a [LoanBroker entry][], which defines the configuration and state of a lending protocol instance.
+
+| Field | Type | Required? | Description |
+|:------|:-----|:----------|:------------|
+| `loan_broker` | Object or String | Yes | Specify the `LoanBroker` to retrieve. If a string, must be the [ledger entry ID][] of the `LoanBroker`, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
+| `loan_broker.owner` | String - [Address][] | No | The account that controls the `LoanBroker`. |
+| `loan_broker.seq` | Number | No | The [Sequence Number][] of the transaction that created the `LoanBroker`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_loanbroker",
+  "command": "ledger_entry",
+  "loan_broker": {
+    "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8",
+    "seq": 3213616
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+    "loan_broker": {
+      "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8",
+      "seq": 3213616
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "loan_broker": { "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8", "seq": 3213616 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-loanbroker" server="devnet" /%}
+
+
+### Get MPToken Entry
 
 {% amendment-disclaimer name="MPTokensV1" /%}
 
-| Field                     | Type             | Description |
-|:--------------------------|:-----------------|:------------|
-| `mptoken`                 | ️Object or String | If a string, interpret as ledger entry ID of the MPToken to retrieve. If an object, requires the sub-fields `account` and `mpt_issuance_id` to uniquely identify the MPToken. |
-| `mptoken.mpt_issuance_id` | String           | (Required if the `MPToken` is specified as an object) The 192-bit MPTokenIssuanceID that's associated with the MPTokenIssuance. |
-| `mptoken.account` ️        | String           | (Required if the `MPToken` is specified as an object) The account that owns the MPToken. |
+Return an `MPToken` object.
+
+| Field                     | Type             | Required? | Description |
+|:--------------------------|:-----------------|:----------|:------------|
+| `mptoken`                 | ️Object or String | Yes       | Specify the [MPToken entry][] to retrieve. If a string, must be the [ledger entry ID][] of the MPToken. If an object, requires the sub-fields `account` and `mpt_issuance_id` to uniquely identify the MPToken. |
+| `mptoken.mpt_issuance_id` | String           | No        | The 192-bit MPTokenIssuanceID that's associated with the MPTokenIssuance. |
+| `mptoken.account` ️        | String           | No        | The account that owns the MPToken. |
 
 {% tabs %}
 
@@ -775,13 +883,13 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2
 
 ### Get MPTokenIssuance Entry
 
-Return an `MPTokenIssuance` object.
-
 {% amendment-disclaimer name="MPTokensV1" /%}
 
-| Field          | Type   | Description           |
-|:---------------|:-------|:----------------------|
-| `mpt_issuance` | String | The 192-bit `MPTokenIssuanceID` that's associated with the MPTokenIssuance, as hexadecimal. |
+Return an `MPTokenIssuance` object.
+
+| Field          | Type   | Required? | Description           |
+|:---------------|:-------|:----------|:----------------------|
+| `mpt_issuance` | String | Yes       | The 192-bit `MPTokenIssuanceID` that's associated with the MPTokenIssuance, as hexadecimal. |
 
 {% tabs %}
 
@@ -822,9 +930,9 @@ rippled json ledger_entry '{ "mpt_issuance": "05EECEBE97A7D635DE2393068691A015FE
 
 Retrieve the [NegativeUNL entry][], which contains the current status of the [Negative UNL][]. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
 
-| Field  | Type   | Required | Description |
-|--------|--------|----------|-------------|
-| `nunl` | String | Yes      | The `NegativeUNL` entry. This value must be `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. |
+| Field  | Type   | Required? | Description |
+|:-------|:-------|:----------|:------------|
+| `nunl` | String | Yes       | The `NegativeUNL` entry. This value must be `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`. |
 
 {% tabs %}
 
@@ -866,9 +974,9 @@ rippled json ledger_entry '{ "nunl": "2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D7
 
 Return an NFT Page in its raw ledger format.
 
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `nft_page`              | String | The [ledger entry ID][] of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
+| Field                   | Type   | Required? | Description           |
+|:------------------------|:-------|:----------|:----------------------|
+| `nft_page`              | String | Yes       | The [ledger entry ID][] of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
 
 {% tabs %}
 
@@ -910,9 +1018,9 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 Retrieve an [NFTokenOffer entry][], which represents an offer to buy, sell, or transfer an [NFT][].
 
-| Field       | Type   | Required | Description |
-|-------------|--------|----------|-------------|
-| `nft_offer` | String | Yes      | The [ledger entry ID][] of an NFT offer to retrieve. |
+| Field       | Type   | Required? | Description |
+|:------------|:-------|:----------|:------------|
+| `nft_offer` | String | Yes       | The [ledger entry ID][] of an NFT offer to retrieve. |
 
 {% tabs %}
 
@@ -955,11 +1063,11 @@ rippled json ledger_entry '{ "nft_offer": "6C4FC85B1F64FF2E30C3F657E41E373E5C1AC
 
 Retrieve an [Offer entry](../../../protocol/ledger-data/ledger-entry-types/offer.md), which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.
 
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `offer`                 | Object or String           | If a string, interpret as [ledger entry ID][] of the Offer to retrieve. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
-| `offer.account`         | String - [Address][]       | _(Required if `offer` is specified as an object)_ The account that placed the offer. |
-| `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number][] of the transaction that created the Offer entry. |
+| Field                   | Type                       | Required? | Description           |
+|:------------------------|:---------------------------|:----------|:----------------------|
+| `offer`                 | Object or String           | Yes       | If a string, interpret as [ledger entry ID][] of the Offer to retrieve. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| `offer.account`         | String - [Address][]       | No        | The account that placed the offer. |
+| `offer.seq`             | Unsigned Integer           | No        | The [Sequence Number][] of the transaction that created the Offer entry. |
 
 {% tabs %}
 
@@ -1067,9 +1175,9 @@ rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4Q
 
 Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/paychannel.md), which holds XRP for asynchronous payments.
 
-| Field             | Type   | Description                                     |
-|:------------------|:-------|:------------------------------------------------|
-| `payment_channel` | String | The [object ID](../../../protocol/ledger-data/common-fields.md) of the PayChannel to retrieve. |
+| Field             | Type   | Required? | Description                                     |
+|:------------------|:-------|:----------|:------------------------------------------------|
+| `payment_channel` | String | Yes       | The [ledger entry ID][] of the `PayChannel` to retrieve. |
 
 {% tabs %}
 
@@ -1166,12 +1274,12 @@ rippled json ledger_entry '{ "permissioned_domain": { "account": "rf7zCh1aPD2Dpe
 
 Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance between two accounts.
 
-| Field                   | Type                       | Description           |
-|:------------------------|:---------------------------|:----------------------|
-| `state`                 | Object                     | Alias to `ripple_state`. |
-| `ripple_state`          | Object                     | Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
-| `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address][]es, defining the two accounts linked by this RippleState entry. |
-| `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the RippleState entry to retrieve. |
+| Field                   | Type                       | Required? | Description           |
+|:------------------------|:---------------------------|:----------|:----------------------|
+| `state`                 | Object                     | No        | Alias to `ripple_state`. |
+| `ripple_state`          | Object                     | Yes       | Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
+| `ripple_state.accounts` | Array                      | Yes       | 2-length array of account [Address][]es, defining the two accounts linked by this RippleState entry. |
+| `ripple_state.currency` | String                     | Yes       | [Currency Code][] of the RippleState entry to retrieve. |
 
 {% tabs %}
 
@@ -1225,9 +1333,9 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 Retrieve a [SignerList entry][], which contains a list of accounts that, as a group, are authorized to sign a transaction in place of an individual account by multi-signing.
 
-| Field         | Type   | Required | Description |
-|---------------|--------|----------|-------------|
-| `signer_list` | String | Yes      | The [ledger entry ID][] of the `SignerList`. |
+| Field         | Type   | Required? | Description |
+|:--------------|:-------|:----------|:------------|
+| `signer_list` | String | Yes       | The [ledger entry ID][] of the `SignerList`. |
 
 {% tabs %}
 
@@ -1267,14 +1375,15 @@ rippled json ledger_entry '{ "signer_list": "A9C28A28B85CD533217F5C0A0C7767666B0
 
 ### Get Ticket Entry
 <a id="get-ticket-object"></a><!-- legacy ID -->
+{% amendment-disclaimer name="TicketBatch" /%}
 
-Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use. {% amendment-disclaimer name="TicketBatch" /%}
+Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use.
 
-| Field               | Type                 | Description           |
-|:--------------------|:---------------------|:----------------------|
-| `ticket`            | Object or String     | The Ticket to retrieve. If a string, must be the [ledger entry ID][] of the Ticket, as hexadecimal. If an object, the `account` and `ticket_seq` sub-fields are required to uniquely specify the Ticket entry. |
-| `ticket.account`    | String - [Address][] | _(Required if `ticket` is specified as an object)_ The owner of the Ticket. |
-| `ticket.ticket_seq` | Number               | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket to retrieve. |
+| Field               | Type                 | Required? | Description           |
+|:--------------------|:---------------------|:----------|:----------------------|
+| `ticket`            | Object or String     | Yes       | The `Ticket` to retrieve. If a string, must be the [ledger entry ID][] of the `Ticket`, as hexadecimal. If an object, the `account` and `ticket_seq` sub-fields are required to uniquely specify the Ticket entry. |
+| `ticket.account`    | String - [Address][] | No        | The owner of the Ticket. |
+| `ticket.ticket_seq` | Number               | No        | The Ticket Sequence number of the Ticket to retrieve. |
 
 {% tabs %}
 
