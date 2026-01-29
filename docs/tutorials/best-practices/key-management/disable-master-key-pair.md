@@ -1,6 +1,4 @@
 ---
-html: disable-master-key-pair.html
-parent: manage-account-settings.html
 seo:
     description: Disable the master key that is mathematically associated with an address.
 labels:
@@ -9,494 +7,140 @@ labels:
 ---
 # Disable Master Key Pair
 
-This page describes how to disable the [master key pair](../../../concepts/accounts/cryptographic-keys.md) that is mathematically associated with an [account](../../../concepts/accounts/index.md)'s address. You should do this if your account's master key pair may have been compromised, or if you want to make [multi-signing](../../../concepts/accounts/multi-signing.md) the _only_ way to submit transactions from your account.
+This page describes how to disable the [master key pair](../../../concepts/accounts/cryptographic-keys.md) for an account. You should do this if your account's master key pair may have been compromised, or if you want to make [multi-signing](../../../concepts/accounts/multi-signing.md) the _only_ way to submit transactions from your account.
 
-{% admonition type="danger" name="Warning" %}Disabling the master key pair removes one method of [authorizing transactions](../../../concepts/transactions/index.md#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.md), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.{% /admonition %}
+{% admonition type="danger" name="Warning" %}Disabling the master key pair removes the default method of [authorizing transactions](../../../concepts/transactions/index.md#authorizing-transactions). Before doing this, it's best to double-check that you can successfully send transactions using your regular key pair or multi-signing list. Due to the decentralized nature of the XRP Ledger, there is no one who can restore access to your account if something goes wrong.{% /admonition %}
 
-**To disable the master key pair, you must use the master key pair.** However, you can _re-enable_ the master key pair using any other method of authorizing transactions.
+## Goals
+
+By following this tutorial, you should learn how to:
+
+- Disable the master key pair for an account.
+- Check an account to see if its master key pair is disabled.
 
 ## Prerequisites
 
-To disable the master key pair for an account, you must meet the following prerequisites:
+To complete this tutorial, you should:
 
-- You must have an XRP Ledger [account](../../../concepts/accounts/index.md) and you must be able to sign and submit transactions from that account using the master key pair. See also: [Set Up Secure Signing](../../../concepts/transactions/secure-signing.md). Two common ways this can work are:
-    - You know the account's master seed value. A seed value is commonly represented as a [base58][] value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`.
-    - Or, you use a [dedicated signing device](../../../concepts/transactions/secure-signing.md#use-a-dedicated-signing-device) that stores the seed value securely, so you don't need to know it.
-- Your account must have at least one method of authorizing transactions other than the master key pair. In other words, you must do one or both of the following:
-    - [Assign a Regular Key Pair](assign-a-regular-key-pair.md).
-    - [Set Up Multi-Signing](set-up-multi-signing.md).
+- Have a basic understanding of the XRP Ledger.
+- Have an [XRP Ledger client library](../../../references/client-libraries.md), such as **xrpl.js**, installed.
+- Have a basic understanding of [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md).
+- Know how to [assign a regular key pair](assign-a-regular-key-pair.md) or [set up multi-signing](set-up-multi-signing.md) for an account.
+
+## Source Code
+
+You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/disable-master-key/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Steps
 
-### 1. Construct Transaction JSON
-
-Prepare an [AccountSet transaction][] from your account with the field `"SetValue": 4`. This is the value for the AccountSet flag "Disable Master" (`asfDisableMaster`). The only other required fields for this transaction are the required [common fields](../../../references/protocol/transactions/common-fields.md). For example, if you leave off the [auto-fillable fields](../../../references/protocol/transactions/common-fields.md#auto-fillable-fields), the following transaction instructions are enough:
-
-```json
-{
-  "TransactionType": "AccountSet",
-  "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "SetFlag": 4
-}
-```
-
-{% admonition type="success" name="Tip" %}It is strongly recommended to also provide the `LastLedgerSequence` field so that you can [reliably get the outcome of the transaction in a predictable amount of time](../../../concepts/transactions/reliable-transaction-submission.md).{% /admonition %}
-
-### 2. Sign Transaction
-
-You must use the **master key pair** to sign the transaction.
-
-{% admonition type="danger" name="Warning" %}Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](../../../concepts/transactions/secure-signing.md#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](../../../concepts/transactions/secure-signing.md).{% /admonition %}
-
-#### Example Request
+### 1. Install dependencies
 
 {% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "command": "sign",
-  "tx_json": {
-    "TransactionType": "AccountSet",
-    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-    "SetFlag": 4
-  },
-  "secret": "s████████████████████████████"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-   "method": "sign",
-   "params": [
-      {
-         "tx_json": {
-           "TransactionType": "AccountSet",
-           "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-           "SetFlag": 4
-         },
-         "secret": "s████████████████████████████"
-      }
-   ]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-$ rippled sign s████████████████████████████ '{"TransactionType":"AccountSet",
-    "Account":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "SetFlag":4}'
-```
-{% /tab %}
-
-{% /tabs %}
-
-#### Example Response
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "result": {
-    "deprecated": "This command has been deprecated and will be removed in a future version of the server. Please migrate to a standalone signing tool.",
-    "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-    "tx_json": {
-      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Fee": "10",
-      "Flags": 2147483648,
-      "Sequence": 380,
-      "SetFlag": 4,
-      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-      "TransactionType": "AccountSet",
-      "TxnSignature": "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-      "hash": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
-    }
-  },
-  "status": "success",
-  "type": "response"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-    "result": {
-        "deprecated": "This command has been deprecated and will be removed in a future version of the server. Please migrate to a standalone signing tool.",
-        "status": "success",
-        "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-        "tx_json": {
-            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "Fee": "10",
-            "Flags": 2147483648,
-            "Sequence": 380,
-            "SetFlag": 4,
-            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-            "TransactionType": "AccountSet",
-            "TxnSignature": "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-            "hash": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
-        }
-    }
-}
-
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-Loading: "/etc/opt/ripple/rippled.cfg"
-2020-Feb-13 00:13:24.783570867 HTTPClient:NFO Connecting to 127.0.0.1:5005
-
-{
-   "result" : {
-      "deprecated" : "This command has been deprecated and will be removed in a future version of the server. Please migrate to a standalone signing tool.",
-      "status" : "success",
-      "tx_blob" : "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-      "tx_json" : {
-         "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-         "Fee" : "10",
-         "Flags" : 2147483648,
-         "Sequence" : 380,
-         "SetFlag" : 4,
-         "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-         "TransactionType" : "AccountSet",
-         "TxnSignature" : "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-         "hash" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
-      }
-   }
-}
-```
-{% /tab %}
-
-{% /tabs %}
-
-Look for `"status": "success"` to indicate that the server successfully signed the transaction. If you get `"status": "error"` instead, check the `error` and `error_message` fields for more information. Some common possibilities include:
-
-- `"error": "badSecret"` usually means you made a typo in the `secret` of the request.
-- `"error": "masterDisabled"` means this address's master key pair is _already_ disabled.
-
-Take note of the `tx_blob` value from the response. This is a signed transaction binary you can submit to the network.
-
-### 3. Submit Transaction
-
-Submit the signed transaction blob from the previous step to the XRP Ledger.
-
-#### Example Request
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-    "command": "submit",
-    "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-   "method":"submit",
-   "params": [
-      {
-         "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
-      }
-   ]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```
-$ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
-```
-{% /tab %}
-
-{% /tabs %}
-
-#### Example Response
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "result": {
-    "engine_result" : "tesSUCCESS",
-    "engine_result_code" : 0,
-    "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-    "tx_blob" : "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-    "tx_json" : {
-      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Fee" : "10",
-      "Flags" : 2147483648,
-      "Sequence" : 380,
-      "SetFlag" : 4,
-      "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-      "TransactionType" : "AccountSet",
-      "TxnSignature" : "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-      "hash" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
-    }
-  },
-  "status": "success",
-  "type": "response"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "result" : {
-    "engine_result" : "tesSUCCESS",
-    "engine_result_code" : 0,
-    "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-    "status" : "success",
-    "tx_blob" : "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-    "tx_json" : {
-      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "Fee" : "10",
-      "Flags" : 2147483648,
-      "Sequence" : 380,
-      "SetFlag" : 4,
-      "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-      "TransactionType" : "AccountSet",
-      "TxnSignature" : "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-      "hash" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
-    }
-  }
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-Loading: "/etc/opt/ripple/rippled.cfg"
-2020-Feb-13 00:25:49.361743460 HTTPClient:NFO Connecting to 127.0.0.1:5005
-
-{
-   "result" : {
-      "engine_result" : "tesSUCCESS",
-      "engine_result_code" : 0,
-      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-      "status" : "success",
-      "tx_blob" : "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
-      "tx_json" : {
-         "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-         "Fee" : "10",
-         "Flags" : 2147483648,
-         "Sequence" : 380,
-         "SetFlag" : 4,
-         "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-         "TransactionType" : "AccountSet",
-         "TxnSignature" : "304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D",
-         "hash" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70"
-      }
-   }
-}
-```
-{% /tab %}
-
-{% /tabs %}
-
-If the transaction fails with the result `tecNO_ALTERNATIVE_KEY`, your account does not have another method of authorizing transactions currently enabled. You must [assign a regular key pair](assign-a-regular-key-pair.md) or [set up multi-signing](set-up-multi-signing.md), then try again to disable the master key pair.
-
-
-### 4. Wait for validation
-
-{% raw-partial file="/docs/_snippets/wait-for-validation.md" /%}
-
-### 5. Confirm Account Flags
-
-Confirm that your account's master key is disabled using the [account_info method][]. Be sure to specify the following parameters:
-
-| Field          | Value                                                       |
-|:---------------|:------------------------------------------------------------|
-| `account`      | The address of your account.                                |
-| `ledger_index` | `"validated"` to get results from the latest validated ledger version. |
-
-#### Example Request
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "command": "account_info",
-  "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-  "ledger_index": "validated"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-    "method": "account_info",
-    "params": [{
-        "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-        "ledger_index": "validated"
-    }]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
-```
-{% /tab %}
-
-{% /tabs %}
-
-
-#### Example Response
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "result": {
-    "account_data": {
-      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "AccountTxnID": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70",
-      "Balance": "423013688",
-      "Domain": "6D64756F31332E636F6D",
-      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
-      "Flags": 9633792,
-      "LedgerEntryType": "AccountRoot",
-      "MessageKey": "0000000000000000000000070000000300",
-      "OwnerCount": 9,
-      "PreviousTxnID": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70",
-      "PreviousTxnLgrSeq": 53391321,
-      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
-      "Sequence": 381,
-      "TransferRate": 4294967295,
-      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-      "urlgravatar": "http://www.gravatar.com/avatar/98b4375e1d753e5b91627516f6d70977"
-    },
-    "ledger_hash": "A90CEBD4AEDA24470AAC5CD307B6D26267ACE79C03669A0A0B8C41ACAEDAA6F0",
-    "ledger_index": 53391576,
-    "validated": true
-  },
-  "status": "success",
-  "type": "response"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-  "result": {
-    "account_data": {
-      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-      "AccountTxnID": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70",
-      "Balance": "423013688",
-      "Domain": "6D64756F31332E636F6D",
-      "EmailHash": "98B4375E1D753E5B91627516F6D70977",
-      "Flags": 9633792,
-      "LedgerEntryType": "AccountRoot",
-      "MessageKey": "0000000000000000000000070000000300",
-      "OwnerCount": 9,
-      "PreviousTxnID": "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70",
-      "PreviousTxnLgrSeq": 53391321,
-      "RegularKey": "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
-      "Sequence": 381,
-      "TransferRate": 4294967295,
-      "index": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-      "urlgravatar": "http://www.gravatar.com/avatar/98b4375e1d753e5b91627516f6d70977"
-    },
-    "ledger_hash": "4C4AC95149B13B539369998675FE6860C52695E83658366F18872181C9F1AEBF",
-    "ledger_index": 53391589,
-    "status": "success",
-    "validated": true
-  }
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```sh
-Loading: "/etc/opt/ripple/rippled.cfg"
-2020-Feb-13 00:41:38.642710734 HTTPClient:NFO Connecting to 127.0.0.1:5005
-
-{
-   "result" : {
-      "account_data" : {
-         "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-         "AccountTxnID" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70",
-         "Balance" : "423013688",
-         "Domain" : "6D64756F31332E636F6D",
-         "EmailHash" : "98B4375E1D753E5B91627516F6D70977",
-         "Flags" : 9633792,
-         "LedgerEntryType" : "AccountRoot",
-         "MessageKey" : "0000000000000000000000070000000300",
-         "OwnerCount" : 9,
-         "PreviousTxnID" : "327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70",
-         "PreviousTxnLgrSeq" : 53391321,
-         "RegularKey" : "rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ",
-         "Sequence" : 381,
-         "TransferRate" : 4294967295,
-         "index" : "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-         "urlgravatar" : "http://www.gravatar.com/avatar/98b4375e1d753e5b91627516f6d70977"
-      },
-      "ledger_hash" : "BBA4034FB5D5D89987E0987A9491E7B62B16708EECFF04CDB0367BD4D28EB1B5",
-      "ledger_index" : 53391568,
-      "status" : "success",
-      "validated" : true
-   }
-}
-```
-{% /tab %}
-
-{% /tabs %}
-
-
-In the response's `account_data` object, compare the `Flags` field with the `lsfDisableMaster` flag value (`0x00100000` in hex, or `1048576` in decimal) using bitwise-AND (the `&` operator in most common programming languages).
-
-Example code:
-
-{% tabs %}
-
 {% tab label="JavaScript" %}
-```js
-// Assuming the JSON-RPC response above is saved as account_info_response
-const lsfDisableMaster = 0x00100000;
-let acct_flags = account_info_response.result.account_data.Flags;
-if ((lsfDisableMaster & acct_flags) === lsfDisableMaster) {
-  console.log("Master key pair is DISABLED");
-} else {
-  console.log("Master key pair is available for use");
-}
+From the code sample folder, use `npm` to install dependencies:
+
+```sh
+npm i
 ```
 {% /tab %}
 
 {% tab label="Python" %}
-```python
-# Assuming the JSON-RPC response above is parsed from JSON
-#  and saved as the variable account_info_response
-lsfDisableMaster = 0x00100000
-acct_flags = account_info_response["result"]["account_data"]["Flags"]
-if lsfDisableMaster & acct_flags == lsfDisableMaster:
-    print("Master key pair is DISABLED")
-else:
-    print("Master key pair is available for use")
+From the code sample folder, set up a virtual environment and use `pip` to install dependencies:
+
+```sh
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 {% /tab %}
-
 {% /tabs %}
 
-This operation has only two possible outcomes:
+### 2. Connect and get account(s)
 
-- A nonzero result, equal to the `lsfDisableMaster` value, indicates **the master key has been successfully disabled**.
-- A zero result indicates the account's master key is not disabled.
+To get started, import the client library and instantiate an API client. For this tutorial, you need one account, which the sample code funds using the Testnet faucet; you could also use an existing account.
 
-If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history ([account_tx method][]) and it should have the result code `tesSUCCESS`. If you see any other [result code](../../../references/protocol/transactions/transaction-results/index.md), the transaction was not executed successfully. Depending on the cause of the error, you may want to restart these steps from the beginning.
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/disable-master-key/js/disable-master-key.js" language="js" before="// Generate a regular key" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/disable-master-key/py/disable-master-key.py" language="py" before="# Generate a regular key" /%}
+{% /tab %}
+{% /tabs %}
+
+### 3. Set up another way of authorizing transactions
+
+Before you can disable the master key pair, your account must have another way of authorizing transactions, either a regular key pair or a multi-signing list. Since the sample code uses a newly-funded account, it does not yet have either one, so it generates and assigns a regular key the same way as in the [Assign a Regular Key Pair tutorial](assign-a-regular-key-pair.md). **Skip this step if you are using an existing account that already has a regular key pair or multi-signing list set up.**
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/disable-master-key/js/disable-master-key.js" language="js" from="// Generate a regular key" before="// Disable master key" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/disable-master-key/py/disable-master-key.py" language="py" from="# Generate a regular key" before="# Disable master key" /%}
+{% /tab %}
+{% /tabs %}
+
+{% admonition type="success" name="Tip" %}If your goal is to make the account a [black hole](/docs/concepts/accounts/addresses#special-addresses) that cannot send transactions at all, you still need to set a regular key. Instead of generating a key pair, use a known black hole address such as **rrrrrrrrrrrrrrrrrrrrrhoLvTp**.{% /admonition %}
+
+### 4. Disable the master key pair
+
+To disable the master key pair, send an [AccountSet transaction][] with the `SetFlag` value set to the `asfDisableMaster` value (4). Unlike most transactions, this one MUST be signed with the **master key pair** for the account.
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/disable-master-key/js/disable-master-key.js" language="js" from="// Disable master key" before="// Confirm account flags" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/disable-master-key/py/disable-master-key.py" language="py" from="# Disable master key" before="# Confirm account flags" /%}
+{% /tab %}
+{% /tabs %}
+
+If the transaction fails with the result `tecNO_ALTERNATIVE_KEY`, your account does not have another method of authorizing transactions currently enabled. You must [assign a regular key pair](assign-a-regular-key-pair.md) or [set up multi-signing](set-up-multi-signing.md), then try again to disable the master key pair.
+
+{% admonition type="success" name="Tip" %}
+If you later want to re-enable the master key pair, you can send an AccountSet transaction almost like this one, except for the following changes:
+- Use the `ClearFlag` field instead of the `SetFlag` field.
+- Sign the transaction using a regular key pair or multi-signing list. Naturally, you can't use the master key pair because it's disabled.
+{% /admonition %}
+
+### 5. Confirm account flags
+
+At this point the master key pair for the account should be disabled. You can confirm that this is the case using the [account_info method][] and checking the `disableMasterKey` field of `account_flags` in the result.
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/disable-master-key/js/disable-master-key.js" language="js" from="// Confirm account flags" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/disable-master-key/py/disable-master-key.py" language="py" from="# Confirm account flags" /%}
+{% /tab %}
+{% /tabs %}
+
+If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history and it should have the result code `tesSUCCESS`. If you see any other [result code](../../../references/protocol/transactions/transaction-results/index.md), the transaction was not executed successfully.
+
+Another possibility that may occur is that the `account_info` response you received was slightly out of date, because it used the validated ledger from just _before_ your transaction was validated. This is especially likely when using public server clusters, where requests may go to different machines, but it can happen any time you request data from the ledger immediately after a transaction is validated. If you wait at least half a second and send the same `account_info` request again, you should get the updated results.
+
+You can look up the account on the [Testnet Explorer](https://testnet.xrpl.org/) to see if its master key pair is disabled in the most recent ledger version.
+
+## See Also
+
+For more information about this and related topics, see:
+
+- **Concepts:**
+    - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
+    - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
+    - [Issuing and Operational Addresses](../../../concepts/accounts/account-types.md)
+- **Tutorials:**
+    - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
+    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
+    - [Set Up Multi-Signing](set-up-multi-signing.md)
+- **References:**
+    - [AccountSet transaction][]
+    - [account_info method][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
