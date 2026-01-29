@@ -8,14 +8,14 @@ labels:
 
 # VaultCreate
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/VaultCreate.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultCreate.cpp "Source")
 
 Creates a new `Vault` ledger entry, an `MPTokenIssuance` ledger entry for the vault’s shares, and an `AccountRoot` for the vault’s [pseudo-account](../../../../concepts/accounts/pseudo-accounts.md).
 
 Only the Vault Owner can initiate this transaction.
 
 {% admonition type="info" name="Note" %}
-Currently, the same account that creates the vault must also create other protocols, though this may change in the future.
+Currently, the account that creates the vault must also create other protocols that utilize the vault, though this may change in the future.
 {% /admonition %}
 
 {% amendment-disclaimer name="SingleAssetVault" /%}

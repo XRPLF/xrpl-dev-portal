@@ -4,11 +4,12 @@ seo:
 labels:
   - Transactions
   - Single Asset Vault
+status: not_enabled
 ---
 
 # VaultDeposit
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/VaultDeposit.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultDeposit.cpp "Source")
 
 Deposits a specified number of assets into a vault in exchange for shares.
 

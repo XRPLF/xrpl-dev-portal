@@ -4,11 +4,12 @@ seo:
 labels:
   - Transactions
   - Single Asset Vault
+status: not_enabled
 ---
 
 # VaultDelete
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/VaultDelete.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultDelete.cpp "Source")
 
 Permanently deletes an existing `Vault` object from the ledger, removes all associated ledger entries, and frees up the reserve requirement for the Vault Owner.
 

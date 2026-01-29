@@ -9,7 +9,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/rpc/handlers/VaultInfo.cpp "Source")
 
-The `vault_info` command retrieves information about a vault, its owner, available assets, and details on issued shares. All information retrieved is relative to a particular version of the ledger. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.3.0" %}New in: rippled 3.3.0{% /badge %}
+The `vault_info` command retrieves information about a vault, its owner, available assets, and details on issued shares. All information retrieved is relative to a particular version of the ledger. {% badge href="https://github.com/XRPLF/rippled/releases/tag/3.1.0" %}New in: rippled 3.1.0{% /badge %}
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
 
@@ -55,11 +55,11 @@ rippled vault_info 45E6742527EDE6A2B537AE8A77B8D8CCFEFE115A22B3BF664A39407631F9A
 
 The request includes the following parameters:
 
-| `Field`    | Type   | Description                                |
-| :--------- | :----- | :----------------------------------------- |
-| `vault_id` | String | The object ID of the Vault to be returned. |
-| `owner`    | String | The account address of the Vault Owner.    |
-| `seq`      | Number | The transaction sequence number that created the vault. |
+| Field      | Type                 | Required? | Description                                             |
+| :--------- | :------------------- | :-------- | :------------------------------------------------------ |
+| `vault_id` | String               | No        | The [ledger entry ID][] of the `Vault` to be returned.  |
+| `owner`    | String - [Address][] | No        | The account address of the `Vault` owner.               |
+| `seq`      | Number               | No        | The transaction sequence number that created the vault. |
 
 You can provide either the `vault_id`, or both `owner` and `seq` values in the request.
 
@@ -224,9 +224,9 @@ Connecting to 127.0.0.1:5005
 
 {% /tabs %}
 
-The response follows the [standard format][], with a successful result containing following fields:
+The response follows the [standard format][], with a successful result containing the following fields:
 
-| `Field`                | Type             | Description |
+|  Field                 | Type             | Description |
 | :--------------------- | :--------------- | :---------- |
 | `ledger_hash`          | [Hash][]         | _(Omitted if `ledger_current_index` is provided instead)_ The identifying hash of the ledger version that was used when retrieving this data. |
 | `ledger_current_index` | [Ledger Index][] | _(Omitted if `ledger_index` is provided instead)_ The [ledger index][] of the current in-progress ledger, which was used when retrieving this information. |
@@ -236,7 +236,7 @@ The response follows the [standard format][], with a successful result containin
 
 ### Vault Description Object
 
-The `vault` field is an object describing the current status of a Vault entry in the ledger, and contains the following fields:
+The `vault` field is an object describing the current status of a `Vault` entry in the ledger, and contains the following fields:
 
 | `Field`                | Type                 | Description |
 | :--------------------- | :------------------- | :---------- |
@@ -272,7 +272,7 @@ The `shares` object contains the following nested fields:
 | `DomainID`             | String           | _(Omitted if the vault is public)_ The permissioned domain associated with the vault's shares. |
 | `Flags`                | Number           | Set of bit-flags for this ledger object. |
 | `Issuer`               | String           | The address issuing the shares. This is always the vault's pseudo-account. |
-| `LedgerEntryType`      | String           | The ledger object type (i.e., `MPTokenIssuance`). |
+| `LedgerEntryType`      | String           | The ledger object type. Shares objects are always `MPTokenIssuance`. |
 | `OutstandingAmount`    | String           | The total outstanding shares issued. |
 | `OwnerNode`            | String           | Identifies the page where this item is referenced in the owner's directory. |
 | `PreviousTxnID`        | String           | Identifies the transaction ID that most recently modified this object. |

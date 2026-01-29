@@ -4,11 +4,12 @@ seo:
 labels:
   - Transactions
   - Single Asset Vault
+status: not_enabled
 ---
 
 # VaultClawback
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/VaultClawback.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultClawback.cpp "Source")
 
 Performs a [Clawback](../../../../use-cases/tokenization/stablecoin-issuer#clawback) from the vault, exchanging the shares of an account for assets.
 

@@ -4,11 +4,12 @@ seo:
 labels:
   - Transactions
   - Single Asset Vault
+status: not_enabled
 ---
 
 # VaultSet
 
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/xrpld/app/tx/detail/VaultSet.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/release-3.1/src/xrpld/app/tx/detail/VaultSet.cpp "Source")
 
 Modifies a single asset vault that you own. This transaction allows the Vault Owner to update certain mutable fields, including vault metadata and the maximum asset amount.
 

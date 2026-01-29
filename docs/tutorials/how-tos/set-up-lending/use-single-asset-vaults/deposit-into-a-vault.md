@@ -5,6 +5,7 @@ metadata:
   indexPage: true
 labels:
   - Single Asset Vault
+status: not_enabled
 ---
 
 # Deposit into a Vault
@@ -31,7 +32,7 @@ By the end of this tutorial, you will be able to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have access to an existing vault. See [Create a Single Asset Vault](./create-a-single-asset-vault.md).
+- Have access to an existing vault. This tutorial uses a preconfigured vault. To create your own vault, see [Create a Single Asset Vault](./create-a-single-asset-vault.md).
 - Have an XRP Ledger client library set up in your development environment. This page provides examples for the following:
   - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js). See [Get Started Using JavaScript](../../../javascript/build-apps/get-started.md) for setup steps.
 
@@ -75,12 +76,10 @@ Provide the depositing account and specify the vault details. The depositor must
 {% /tab %}
 {% /tabs %}
 
-{% admonition type="info" name="Note" %}
-This example uses an existing vault and depositor account from the `vaultSetup.js` script, but you can replace these values with your own. The preconfigured depositor account has:
+This example uses an existing vault, depositor account, and MPT from the `vaultSetup.js` script, but you can replace these values with your own. The preconfigured depositor account has:
 
 - Valid [Credentials](../../../../concepts/decentralized-storage/credentials.md) in the vault's [Permissioned Domain](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md).
 - A positive balance of the MPT in the vault.
-{% /admonition %}
 
 ### 3. Check initial vault state
 

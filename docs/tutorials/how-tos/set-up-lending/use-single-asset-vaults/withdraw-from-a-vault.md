@@ -5,6 +5,7 @@ metadata:
   indexPage: true
 labels:
   - Single Asset Vault
+status: not_enabled
 ---
 
 # Withdraw from a Vault
@@ -26,7 +27,7 @@ By the end of this tutorial, you will be able to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have previously deposited into a vault. See [Deposit into a Vault](./deposit-into-a-vault.md).
+- Have previously deposited into a vault. This tutorial uses an account that has already deposited into a vault. To deposit your own asset, see [Deposit into a Vault](./deposit-into-a-vault.md).
 - Have an XRP Ledger client library set up in your development environment. This page provides examples for the following:
   - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js). See [Get Started Using JavaScript](../../../../tutorials/javascript/build-apps/get-started.md) for setup steps.
 
@@ -58,7 +59,7 @@ To get started, import the necessary libraries and instantiate a client to conne
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/vaults/js/withdraw.js" language="js" from="import xrpl" before="// You can replace" /%}
+{% code-snippet file="/_code-samples/vaults/js/withdraw.js" language="js" before="// You can replace" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -154,7 +155,7 @@ Finally, verify the correct asset amount has been received by the depositor acco
 
 {% tabs %}
 {% tab label="JavaScript" %}
-{% code-snippet file="/_code-samples/vaults/js/withdraw.js" language="js" from="// Get the depositor's asset balance" before="await client.disconnect" /%}
+{% code-snippet file="/_code-samples/vaults/js/withdraw.js" language="js" from="// Get the depositor's asset balance" /%}
 {% /tab %}
 {% /tabs %}
 

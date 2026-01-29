@@ -5,6 +5,7 @@ metadata:
   indexPage: true
 labels:
   - Single Asset Vault
+status: not_enabled
 ---
 
 # Create a Single Asset Vault
@@ -90,7 +91,7 @@ Create the [VaultCreate transaction][] object:
 
 The `tfVaultPrivate` flag and `DomainID` field restrict deposits to accounts with valid credentials in the specified permissioned domain. These can be omitted if you want to create a public vault instead.
 
-The `AssetsMaximum` is set to `0` to indicate no cap on how many assets the vault can hold, but you can adjust as needed.
+The `AssetsMaximum` is set to `0` to indicate no cap on how much of the asset the vault can hold, but you can adjust as needed.
 
 Vault shares are **transferable** by default, meaning depositors can transfer their shares to other accounts. If you don't want the vault's shares to be transferable, enable the `tfVaultShareNonTransferable` flag.
 
