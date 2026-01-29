@@ -111,7 +111,7 @@ The loan broker pseudo-account is a special account that holds first-loss capita
 
 **Concepts**:
   - [Lending Protocol][]
-  - [Single Asset Vault](../../../../concepts/tokens/single-asset-vault.md)
+  - [Single Asset Vault](../../../../concepts/tokens/single-asset-vaults.md)
 
 **Tutorials**:
   - [Create a Single Asset Vault](../use-single-asset-vaults/create-a-single-asset-vault.md)
