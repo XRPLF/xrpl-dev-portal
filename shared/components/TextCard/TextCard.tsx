@@ -83,15 +83,11 @@ export const TextCard = React.forwardRef<HTMLElement, TextCardProps>(
         <div className="bds-text-card__overlay" aria-hidden="true" />
 
         {/* Title at top */}
-        <div className="bds-text-card__header">
-          <h3 className="bds-text-card__title h-lg">{title}</h3>
-        </div>
+        <h3 className="bds-text-card__title h-lg">{title}</h3>
 
         {/* Description at bottom */}
         {description && (
-          <div className="bds-text-card__footer">
-            <p className="bds-text-card__description body-l">{description}</p>
-          </div>
+          <p className="bds-text-card__description body-l">{description}</p>
         )}
       </CardWrapper>
     );
