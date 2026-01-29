@@ -404,6 +404,113 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 {% try-it method="ledger_entry-directorynode" /%}
 
 
+### Get Loan Entry
+
+{% amendment-disclaimer name="LendingProtocol" /%}
+
+Retrieve a [Loan entry][], which defines the state of an on-chain loan agreement between a Loan Broker and a Borrower.
+
+| Field | Type | Required? | Description |
+|:------|:-----|:----------|:------------|
+| `loan` | Object or String | Yes | Specify the `Loan` to retrieve. If a string, must be the [ledger entry ID][] of the `Loan`, as hexadecimal. If an object, requires `loan_broker_id` and `loan_seq` sub-fields. |
+| `loan.loan_broker_id` | String | No | The [ledger entry ID][] of the [LoanBroker][] that created the loan, as hexadecimal. |
+| `loan.loan_seq` | Number | No | The sequence number of the loan. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_loan",
+  "command": "ledger_entry",
+  "loan": {
+    "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D",
+    "loan_seq": 2
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+    "loan": {
+      "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D",
+      "loan_seq": 2
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "loan": { "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D", "loan_seq": 2 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-loan" server="devnet" /%}
+
+
+### Get LoanBroker Entry
+
+{% amendment-disclaimer name="LendingProtocol" /%}
+
+Retrieve a [LoanBroker entry][], which defines the configuration and state of a lending protocol instance.
+
+| Field | Type | Required? | Description |
+|:------|:-----|:----------|:------------|
+| `loan_broker` | Object or String | Yes | Specify the `LoanBroker` to retrieve. If a string, must be the [ledger entry ID][] of the `LoanBroker`, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
+| `loan_broker.owner` | String - [Address][] | No | The account that controls the `LoanBroker`. |
+| `loan_broker.seq` | Number | No | The [Sequence Number][] of the transaction that created the `LoanBroker`. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_loanbroker",
+  "command": "ledger_entry",
+  "loan_broker": {
+    "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8",
+    "seq": 3213616
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [{
+    "loan_broker": {
+      "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8",
+      "seq": 3213616
+    },
+    "ledger_index": "validated"
+  }]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "loan_broker": { "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8", "seq": 3213616 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-loanbroker" server="devnet" /%}
+
 
 ### Get Offer Entry
 <a id="get-offer-object"></a><!-- legacy ID -->
