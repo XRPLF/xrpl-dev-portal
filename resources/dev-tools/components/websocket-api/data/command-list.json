@@ -609,6 +609,20 @@
     ]
   },
   {
+    "group": "Vault Methods",
+    "methods": [
+      {
+        "name": "vault_info",
+        "description": "Retrieves information about a vault, its owner, available assets, and details on issued shares.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/vault-methods/vault_info",
+        "body": {
+          "command": "vault_info",
+          "vault_id": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA"
+        }
+      }
+    ]
+  },
+  {
     "group": "Ledger Entry Examples",
     "methods": [
       {
@@ -1009,6 +1023,17 @@
             },
             "xchain_owned_create_account_claim_id": 1
           },
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - Vault",
+        "description": "Returns a Vault object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-vault-entry",
+        "body": {
+          "id": "example_get_vault",
+          "command": "ledger_entry",
+          "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA",
           "ledger_index": "validated"
         }
       }

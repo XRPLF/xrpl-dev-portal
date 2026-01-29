@@ -1573,6 +1573,53 @@ rippled json ledger_entry '{ "xchain_owned_create_account_claim_id": { "IssuingC
 {% try-it method="ledger_entry-xchainownedcreateaccountclaimid" server="devnet" /%}
 
 
+### Get Vault Entry
+
+Retrieve a `Vault` entry from the ledger. This is similar to the [vault_info method][], but the `ledger_entry` version doesn't return information about vault shares.
+
+{% amendment-disclaimer name="SingleAssetVault" /%}
+
+| Field        | Type             | Description           |
+|:-------------|:-----------------|:----------------------|
+| `vault`      | String           | The [ledger entry ID](../../../protocol/ledger-data/common-fields.md#ledger-entry-id) of a [Vault](../../../protocol/ledger-data/ledger-entry-types/vault.md) object to retrieve. |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+    "id": "example_get_vault",
+    "command": "ledger_entry",
+    "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA",
+    "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA",
+            "ledger_index": "validated"
+        }
+    ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA", "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+{% try-it method="ledger_entry-vault" server="devnet" /%}
+
 ## Response Format
 
 The response follows the [standard format][], with a successful result containing the following fields:

@@ -23,7 +23,6 @@ The following is a list of [amendments](../docs/concepts/networks-and-servers/am
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [InvariantsV1_1][]                | {% badge %}In Development: TBD{% /badge %} |  |
-| [SingleAssetVault][]              | {% badge %}In Development: TBD{% /badge %} | [Single Asset Vault (Ripple Opensource)](https://opensource.ripple.com/docs/xls-65d-single-asset-vault) |
 
 {% admonition type="success" name="Tip" %}
 This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/index.md).
@@ -1789,14 +1788,30 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 | Amendment    | SingleAssetVault |
 |:-------------|:-----------------|
 | Amendment ID | 81BD2619B6B3C8625AC5D0BC01DE17F06C3F0AB95C7C87C93715B87A4FD240D8 |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Creates a structure for aggregating assets from multiple depositors. This is intended to be used with the proposed on-chain Lending Protocol.
+Creates a structure for aggregating assets from multiple depositors. This is intended to be used with the on-chain Lending Protocol.
 
-Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065d-single-asset-vault).
+**New ledger entry types**:
 
+- [Vault entry][]
+
+**New transactions**:
+
+- [VaultClawback transaction][]
+- [VaultCreate transaction][]
+- [VaultDelete transaction][]
+- [VaultDeposit transaction][]
+- [VaultSet transaction][]
+- [VaultWithdraw transaction][]
+
+**New API methods**:
+
+- [vault_info method][]
+
+Specification: [XLS-65](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0065-single-asset-vault).
 
 ### SortedDirectories
 [SortedDirectories]: #sorteddirectories
