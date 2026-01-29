@@ -3,7 +3,7 @@ import fs from 'fs'
 
 // Setup script for vault tutorials
 
-process.stdout.write('Setting up tutorial: 0/5\r')
+process.stdout.write('Setting up tutorial: 0/7\r')
 
 const client = new xrpl.Client('wss://s.devnet.rippletest.net:51233')
 await client.connect()
@@ -22,7 +22,7 @@ const [
 ])
 
 // Step 1: Create MPT issuance
-process.stdout.write('Setting up tutorial: 1/5\r')
+process.stdout.write('Setting up tutorial: 1/7\r')
 
 const mptCreateResult = await client.submitAndWait(
   {
@@ -71,7 +71,7 @@ const mptCreateResult = await client.submitAndWait(
 const mptIssuanceId = mptCreateResult.result.meta.mpt_issuance_id
 
 // Step 2: Create Permissioned Domain
-process.stdout.write('Setting up tutorial: 2/5\r')
+process.stdout.write('Setting up tutorial: 2/7\r')
 
 const credType = 'VaultAccess'
 const domainResult = await client.submitAndWait(
@@ -95,7 +95,7 @@ const domainId = domainResult.result.meta.AffectedNodes.find(
 ).CreatedNode.LedgerIndex
 
 // Step 3: Create depositor account with credentials and MPT balance
-process.stdout.write('Setting up tutorial: 3/5\r')
+process.stdout.write('Setting up tutorial: 3/7\r')
 
 await Promise.all([
   client.submitAndWait(
@@ -136,7 +136,7 @@ await Promise.all([
   )
 ])
 
-process.stdout.write('Setting up tutorial: 4/6\r')
+process.stdout.write('Setting up tutorial: 4/7\r')
 
 const paymentResult = await client.submitAndWait(
   {
@@ -158,7 +158,7 @@ if (paymentResult.result.meta.TransactionResult !== 'tesSUCCESS') {
 }
 
 // Step 5: Create a vault for deposit/withdraw examples
-process.stdout.write('Setting up tutorial: 5/6\r')
+process.stdout.write('Setting up tutorial: 5/7\r')
 
 const vaultCreateResult = await client.submitAndWait(
   {

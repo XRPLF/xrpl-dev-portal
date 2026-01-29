@@ -45,13 +45,10 @@ Additionally, to facilitate `Vault` object lookup, the object is tracked in the 
 
 ## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common ledger entry fields](../../../protocol/ledger-data/common-fields), {% code-page-name /%} {% code-page-name /%} entries have the following fields:
+In addition to the [common ledger entry fields](../../../protocol/ledger-data/common-fields), {% code-page-name /%} entries have the following fields:
 
 | Name                | JSON Type     | [Internal Type][] | Required? | Description      |
 | :------------------ | :------------ | :---------------- | :-------- | -----------------|
-| `LedgerEntryType`   | String        | UInt16            | Yes       | Ledger object type. The default value is `0x0081`. |
-| `LedgerIndex`       | String        | UInt16            | Yes       | The unique identifier of the ledger object. |
-| `Flags`             | String        | UInt32            | Yes       | Set of bit-flags for this ledger object. |
 | `PreviousTxnID`     | String        | Hash256           | Yes       | Identifies the transaction ID that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number        | UInt32            | Yes       | The sequence of the ledger that contains the transaction that most recently modified this object. |
 | `Sequence`          | Number        | UInt32            | Yes       | The transaction sequence number that created the vault. |

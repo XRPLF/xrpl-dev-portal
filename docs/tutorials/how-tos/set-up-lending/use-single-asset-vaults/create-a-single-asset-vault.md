@@ -91,6 +91,8 @@ Create the [VaultCreate transaction][] object:
 
 The `tfVaultPrivate` flag and `DomainID` field restrict deposits to accounts with valid credentials in the specified permissioned domain. These can be omitted if you want to create a public vault instead.
 
+The `Data` field contains hex-encoded metadata about the vault itself, such as its name (`n`) and website (`w`). While any data structure is allowed, it's recommended to follow the [defined data schema](../../../../references/protocol/ledger-data/ledger-entry-types/vault.md#data-field-format) for better discoverability in the XRPL ecosystem.
+
 The `AssetsMaximum` is set to `0` to indicate no cap on how much of the asset the vault can hold, but you can adjust as needed.
 
 Vault shares are **transferable** by default, meaning depositors can transfer their shares to other accounts. If you don't want the vault's shares to be transferable, enable the `tfVaultShareNonTransferable` flag.

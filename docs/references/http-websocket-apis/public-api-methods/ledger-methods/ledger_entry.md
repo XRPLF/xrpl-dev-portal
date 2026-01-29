@@ -1086,7 +1086,7 @@ rippled json ledger_entry '{ "mptoken": {"mpt_issuance_id": "05EECEBE97A7D635DE2
 
 ### Get Vault Entry
 
-Retrieve a `Vault` object from the ledger. This is similar to the [vault_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
+Retrieve a `Vault` entry from the ledger. This is similar to the [vault_info method][], but the `ledger_entry` version doesn't return information about vault shares.
 
 {% amendment-disclaimer name="SingleAssetVault" /%}
 
@@ -1099,9 +1099,9 @@ Retrieve a `Vault` object from the ledger. This is similar to the [vault_info me
 {% tab label="WebSocket" %}
 ```json
 {
-    "id": "example_get_vault_entry",
+    "id": "example_get_vault",
     "command": "ledger_entry",
-    "vault": "45E6742527EDE6A2B537AE8A77B8D8CCFEFE115A22B3BF664A39407631F9A166",
+    "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA",
     "ledger_index": "validated"
 }
 ```
@@ -1113,7 +1113,7 @@ Retrieve a `Vault` object from the ledger. This is similar to the [vault_info me
     "method": "ledger_entry",
     "params": [
         {
-            "vault": "45E6742527EDE6A2B537AE8A77B8D8CCFEFE115A22B3BF664A39407631F9A166",
+            "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA",
             "ledger_index": "validated"
         }
     ]
@@ -1123,14 +1123,13 @@ Retrieve a `Vault` object from the ledger. This is similar to the [vault_info me
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "vault": "45E6742527EDE6A2B537AE8A77B8D8CCFEFE115A22B3BF664A39407631F9A166", "ledger_index": "validated" }'
+rippled json ledger_entry '{ "vault": "9E48171960CD9F62C3A7B6559315A510AE544C3F51E02947B5D4DAC8AA66C3BA", "ledger_index": "validated" }'
 ```
 {% /tab %}
 
 {% /tabs %}
 
-<!-- TODO: Add when deployed to Devnet/Testnet -->
-<!-- {% try-it method="ledger_entry-single-asset-vault" server="testnet" /%} -->
+{% try-it method="ledger_entry-vault" server="devnet" /%}
 
 ## Response Format
 
