@@ -170,7 +170,7 @@ A transaction is considered successful if it receives a `tesSUCCESS` result.
 | Error Code                | Description                                       |
 |:--------------------------|:--------------------------------------------------|
 | `temARRAY_EMPTY`          | The batch transaction contains zero or one inner transaction. You must submit at least two inner transactions. |
-| `temINVALID_INNER_BATCH`  | An inner transaction is malformed.               |
+| `temINVALID_INNER_BATCH`  | - An inner transaction is malformed.<br>- You are attempting to submit a lending or vault-related transaction, which are currently disabled. Invalid transactions include: `LoanBrokerCoverClawback`, `LoanBrokerCoverDeposit`, `LoanBrokerCoverWithdraw`, `LoanBrokerDelete`, `LoanBrokerSet`, `LoanDelete`, `LoanManage`, `LoanPay`, `LoanSet`, `VaultCreate`, `VaultSet`, `VaultDelete`, `VaultDeposit`, `VaultWithdraw`, and `VaultClawback`. |
 | `temSEQ_AND_TICKET`       | The transaction contains both a `TicketSequence` field and a non-zero `Sequence` value. A transaction can't include both fields, but must have at least one. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -8,6 +8,7 @@ yarn-error.log
 *.iml
 .venv/
 _code-samples/*/js/package-lock.json
+_code-samples/*/js/*[Ss]etup.json
 
 # PHP
 composer.lock
