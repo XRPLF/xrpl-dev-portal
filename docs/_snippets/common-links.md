@@ -32,8 +32,8 @@
 [AccountSet transactions]: /docs/references/protocol/transactions/types/accountset.md
 [AccountSet]: /docs/references/protocol/transactions/types/accountset.md
 [Address]: /docs/references/protocol/data-types/basic-data-types.md#addresses
-[Amendments entry]: /docs/concepts/networks-and-servers/amendments.md
-[Amendments object]: /docs/concepts/networks-and-servers/amendments.md
+[Amendments entry]: /docs/references/protocol/ledger-data/ledger-entry-types/amendments.md
+[Amendments object]: /docs/references/protocol/ledger-data/ledger-entry-types/amendments.md
 [Batch amendment]: /resources/known-amendments.md#batch
 [Batch]: /docs/references/protocol/transactions/types/batch.md
 [Batch transaction]: /docs/references/protocol/transactions/types/batch.md
@@ -144,6 +144,7 @@
 [MPTokensV1 amendment]: /resources/known-amendments.md#mptokensv1
 [MultiSign amendment]: /resources/known-amendments.md#multisign
 [MultiSignReserve amendment]: /resources/known-amendments.md#multisignreserve
+[NFT]: /docs/references/protocol/data-types/nftoken.md
 [NFTokenAcceptOffer transaction]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
 [NFTokenAcceptOffer transactions]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
 [NFTokenAcceptOffer]: /docs/references/protocol/transactions/types/nftokenacceptoffer.md
@@ -164,6 +165,7 @@
 [NFTokenPage entry]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
 [NFTokenPage object]: /docs/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
 [NFToken]: /docs/references/protocol/data-types/nftoken.md
+[Negative UNL]: /docs/concepts/consensus-protocol/negative-unl.md
 [NegativeUNL amendment]: /resources/known-amendments.md#negativeunl
 [NegativeUNL entry]: /docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
 [NegativeUNL object]: /docs/references/protocol/ledger-data/ledger-entry-types/negativeunl.md
@@ -320,6 +322,7 @@
 [fee command]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
 [fee levels]: /docs/concepts/transactions/transaction-cost.md#fee-levels
 [fee method]: /docs/references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
+[fee voting]: /docs/concepts/consensus-protocol/fee-voting.md
 [fetch_info command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
 [fetch_info method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
 [fix1201 amendment]: /resources/known-amendments.md#fix1201
@@ -425,6 +428,7 @@
 [public servers]: /docs/tutorials/public-servers.md
 [random command]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
 [random method]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
+[reserves]: /docs/concepts/accounts/reserves.md
 [result code]: /docs/references/protocol/transactions/transaction-results/index.md
 [ripple-lib]: https://github.com/XRPLF/xrpl.js
 [ripple_path_find command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
