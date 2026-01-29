@@ -688,6 +688,36 @@
         }
       },
       {
+        "name": "ledger_entry - Loan",
+        "description": "Returns a single Loan object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-loan-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_loan",
+          "command": "ledger_entry",
+          "loan": {
+            "loan_broker_id": "7430D67254BAE93A8CAD43596D26BBDAAA5BCD2DB7D2FB6E81B302916E8BD48D",
+            "loan_seq": 2
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - LoanBroker",
+        "description": "Returns a single LoanBroker object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-loanbroker-entry",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_loanbroker",
+          "command": "ledger_entry",
+          "loan_broker": {
+            "owner": "rsgmF1wgf43LmqmU8MBJ2kzU2akkC1KCG8",
+            "seq": 3213616
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - NFT Page",
         "description": "Returns an NFT Page object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-nft-page",

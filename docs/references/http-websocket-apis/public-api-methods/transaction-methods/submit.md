@@ -81,6 +81,7 @@ The request includes the following parameters:
 | `Field`        | Type    | Description                                       |
 |:---------------|:--------|:--------------------------------------------------|
 | `tx_json`      | Object  | [Transaction definition](../../../protocol/transactions/index.md) in JSON format, optionally omitting any auto-fillable fields. |
+| `signature_target` | String | _(Optional)_ Specifies where in the transaction metadata the signature information should be stored. Currently, the only valid value is `CounterpartySignature`. |
 | `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
 | `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
