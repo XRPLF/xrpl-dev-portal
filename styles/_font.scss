@@ -172,6 +172,36 @@ p {
   }
 }
 
+// Mixin to add wordbreaks
+// Provides common word-breaking strategies for handling long text
+@mixin wordbreak($strategy: 'normal') {
+  @if $strategy == 'normal' {
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+  } @else if $strategy == 'break-word' {
+    // Break long words to prevent overflow
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  } @else if $strategy == 'break-all' {
+    // Break at any character to prevent overflow
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    hyphens: none;
+  } @else if $strategy == 'keep-all' {
+    // Keep words together (useful for CJK languages)
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  } @else if $strategy == 'hyphenate' {
+    // Enable hyphenation for better text flow
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
 // ---------------------------------------
 // Typography Tokens (parsed from your image)
 // Notes:

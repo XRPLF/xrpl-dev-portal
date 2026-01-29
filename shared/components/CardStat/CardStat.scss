@@ -18,14 +18,17 @@
 // Design Tokens
 // =============================================================================
 
-// Color variants
-$bds-card-stat-lilac-bg: $lilac-300;
-$bds-card-stat-green-bg: $green-300;   // #EAFCF1
-$bds-card-stat-light-gray-bg: #E6EAF0;       // Light gray
-$bds-card-stat-dark-gray-bg: #CAD4DF;     // Dark gray
+// Color variant map: (variant-name: (light-mode-bg, dark-mode-bg))
+// null for dark-mode-bg means no change in dark mode
+$bds-card-stat-variants: (
+  'lilac': ($lilac-300, null),
+  'green': ($green-300, null),
+  'light-gray': (#E6EAF0, #CAD4DF),
+  'dark-gray': (#CAD4DF, #8A919A)
+);
 
 // Text colors
-$bds-card-stat-text: $black;          // Neutral black
+$bds-card-stat-text: $black; // Neutral black
 
 // Spacing
 $bds-card-stat-gap: 8px;
@@ -44,53 +47,56 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   flex-direction: column;
   width: 100%;
   min-height: 200px;
-  
-  // Visual
-  background-color: $bds-card-stat-lilac-bg; // Default
-  
+  height: 100%;
+  justify-content: space-between;
+  flex: 1;
+  padding: 8px;
+  gap: 4px;
+
+  // Visual - default to lilac
+  background-color: nth(map-get($bds-card-stat-variants, 'lilac'), 1);
+
   // Typography
   color: $bds-card-stat-text;
-  
+
   // Transitions
   transition: transform $bds-card-stat-transition-duration $bds-card-stat-transition-timing;
-  
-  // Content wrapper
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    padding: 8px;
-    gap: 4px;
-    
-    // Tablet (md) breakpoint
-    @include media-breakpoint-up(md) {
-      padding: 12px;
-    }
-    
-    // Desktop (lg+) breakpoint
-    @include media-breakpoint-up(lg) {
-      padding: 16px;
-    }
+
+  // Tablet (md) breakpoint
+  @include media-breakpoint-up(md) {
+    padding: 12px;
   }
-  
+
+  // Desktop (lg+) breakpoint
+  @include media-breakpoint-up(lg) {
+    padding: 16px;
+  }
+
   // Text section
   &__text {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-  
+
   // Statistic (large number)
   &__statistic {
     @include type(display-lg);
     margin-bottom: 0;
+
     sup {
       top: -0.4em;
       font-size: 0.7em;
+
+      // Numeric superscript modifier - smaller size for numbers
+      &.bds-card-stat__superscript--numeric {
+        font-size: 0.5em;
+        top: -0.75em;
+        font-weight: 400;
+      }
     }
   }
-  
+
   // Buttons section
   &__buttons {
     display: flex;
@@ -101,43 +107,21 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
 // =============================================================================
-// Color Variants
+// Color Variants (generated from map)
 // =============================================================================
 
-// Lilac variant (default)
-.bds-card-stat--lilac {
-  background-color: $bds-card-stat-lilac-bg;
-}
+@each $variant, $colors in $bds-card-stat-variants {
+  $light-bg: nth($colors, 1);
+  $dark-bg: nth($colors, 2);
 
-// Green variant
-.bds-card-stat--green {
-  background-color: $bds-card-stat-green-bg;
-}
+  .bds-card-stat--#{$variant} {
+    background-color: $light-bg;
+  }
 
-// Light gray variant
-.bds-card-stat--light-gray {
-  background-color: $bds-card-stat-light-gray-bg;
-}
-
-// Dark gray variant
-.bds-card-stat--dark-gray {
-  background-color: $bds-card-stat-dark-gray-bg;
-}
-
-// =============================================================================
-// Dark Mode Styles
-// =============================================================================
-
-html.dark {
-  .bds-card-stat {
-    // Light gray variant gets dark-gray background in dark mode
-    &--light-gray {
-      background-color: $bds-card-stat-dark-gray-bg; // Darker gray for dark mode
-    }
-    
-    // Dark gray variant gets darker gray background in dark mode
-    &--dark-gray {
-      background-color: #8A919A; // Darker gray for dark mode
+  // Dark mode override (only if dark-mode color is defined)
+  @if $dark-bg != null {
+    html.dark .bds-card-stat--#{$variant} {
+      background-color: $dark-bg;
     }
   }
 }
@@ -149,11 +133,12 @@ html.dark {
 .bds-card-stat {
   // Base (mobile) - ~200px height
   min-height: 200px;
-  
+
   // Tablet (md) - ~208px height
   @include media-breakpoint-up(md) {
     min-height: 208px;
   }
+
   // Desktop (lg+) - ~298px height (more vertical space)
   @include media-breakpoint-up(lg) {
     min-height: 298px;

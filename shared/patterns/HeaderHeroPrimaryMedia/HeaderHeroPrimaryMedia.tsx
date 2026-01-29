@@ -2,15 +2,11 @@ import React, { forwardRef, memo, useEffect } from "react";
 import clsx from "clsx";
 import { PageGrid } from "shared/components/PageGrid/page-grid";
 import { Button, ButtonProps } from "shared/components/Button/Button";
-
-const isEmpty = (val: unknown): boolean => {
-  if (val === null || val === undefined) return true;
-  if (typeof val === "string") return val.trim().length === 0;
-  if (Array.isArray(val)) return val.length === 0;
-  return !Boolean(val);
-};
-
-type DesignContrainedButtonProps = Omit<ButtonProps, "variant" | "color">;
+import {
+  isEmpty,
+  DesignConstrainedButtonProps,
+  isEnvironment,
+} from "shared/utils";
 
 /**
  * Base props that all media elements must have to ensure proper styling.
@@ -67,13 +63,12 @@ export type HeaderHeroMedia =
   | VideoMediaProps
   | CustomMediaProps;
 
-export interface HeaderHeroPrimaryMediaProps
-  extends React.ComponentPropsWithoutRef<"header"> {
+export interface HeaderHeroPrimaryMediaProps extends React.ComponentPropsWithoutRef<"header"> {
   /** Hero title text (display-md typography) */
   headline: React.ReactNode;
   /** Hero subtitle text (subhead-sm-l typography) */
   subtitle: React.ReactNode;
-  callsToAction: [DesignContrainedButtonProps, DesignContrainedButtonProps?];
+  callsToAction: [DesignConstrainedButtonProps, DesignConstrainedButtonProps?];
   /** Media element - supports image, video, or custom React element */
   media: HeaderHeroMedia;
 }
@@ -90,16 +85,15 @@ const MediaRenderer: React.FC<{ media: HeaderHeroMedia }> = memo(
       "bds-header-hero-primary-media__media-element";
 
     switch (media.type) {
-      case "image":
-        {
-          const { type, ...imgProps } = media;
-          return (
-            <div className={mediaContainerClassName}>
-              <img {...imgProps} className={mediaElementClassName} />
-            </div>
-          );
-        }
- 
+      case "image": {
+        const { type, ...imgProps } = media;
+        return (
+          <div className={mediaContainerClassName}>
+            <img {...imgProps} className={mediaElementClassName} />
+          </div>
+        );
+      }
+
       case "video": {
         const { type, alt, ...videoProps } = media;
         return (
@@ -126,7 +120,7 @@ const MediaRenderer: React.FC<{ media: HeaderHeroMedia }> = memo(
         return null;
       }
     }
-  }
+  },
 );
 
 const HeaderHeroPrimaryMedia = forwardRef<
@@ -140,13 +134,19 @@ const HeaderHeroPrimaryMedia = forwardRef<
 
   // Headline is critical - exit early if missing
   if (!headline) {
-    console.error("Headline is required for HeaderHeroPrimaryMedia");
+    if (isEnvironment("development")) {
+      console.error("Headline is required for HeaderHeroPrimaryMedia");
+    }
     return null;
   }
 
   // Validate other props and log warnings for missing optional/required fields
   // Note: These props log warnings but don't prevent rendering
   useEffect(() => {
+    if (!isEnvironment(["development", "test"])) {
+      return;
+    }
+
     const propsToValidate = {
       subtitle,
       callsToAction,
@@ -185,18 +185,20 @@ const HeaderHeroPrimaryMedia = forwardRef<
               )}
               {(!isEmpty(primaryCta) || !isEmpty(secondaryCta)) && (
                 <div className="bds-header-hero-primary-media__cta-buttons">
-                  <Button
-                    {...primaryCta}
-                    variant="primary"
-                    color="green"
-                    showIcon={true}
-                  />
+                  {!isEmpty(primaryCta) && (
+                    <Button
+                      {...primaryCta!}
+                      variant="primary"
+                      color="green"
+                      showIcon={true}
+                    />
+                  )}
                   {!isEmpty(secondaryCta) && (
                     <Button
-                      {...secondaryCta}
+                      {...secondaryCta!}
                       className={clsx(
                         "bds-header-hero-primary-media__cta-button-tertiary",
-                        secondaryCta?.className
+                        secondaryCta?.className,
                       )}
                       variant="tertiary"
                       color="green"
