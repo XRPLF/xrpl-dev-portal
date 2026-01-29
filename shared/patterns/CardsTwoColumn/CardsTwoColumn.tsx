@@ -14,9 +14,9 @@ export type CardsTwoColumnCardConfig = TextCardProps;
 export interface CardsTwoColumnProps extends Omit<React.ComponentPropsWithoutRef<'section'>, 'title'> {
   /** Section title (heading-md typography) */
   title: React.ReactNode;
-  /** Section description text (body-l typography, muted color) */
+  /** Section description (body-l typography, muted color). Can be string or ReactNode */
   description?: React.ReactNode;
-  /** Secondary description paragraph (body-l typography, muted color) */
+  /** Secondary description paragraph (body-l typography, muted color). Can be string or ReactNode */
   secondaryDescription?: React.ReactNode;
   /** Array of 4 card configurations for the 2x2 grid */
   cards: readonly [CardsTwoColumnCardConfig, CardsTwoColumnCardConfig, CardsTwoColumnCardConfig, CardsTwoColumnCardConfig];
@@ -91,11 +91,9 @@ export const CardsTwoColumn = React.forwardRef<HTMLElement, CardsTwoColumnProps>
               <h2 className="bds-cards-two-column__title h-md">{title}</h2>
             </PageGrid.Col>
             {(description || secondaryDescription) && (
-              <PageGrid.Col span={{ md: 8, lg: 6 }} className="bds-cards-two-column__header-right">
-                <div className="bds-cards-two-column__description body-l">
-                  {description && <p>{description}</p>}
-                  {secondaryDescription && <p>{secondaryDescription}</p>}
-                </div>
+              <PageGrid.Col span={{ md: 8, lg: 6 }} className="bds-cards-two-column__header-right bds-cards-two-column__description body-l">
+                {description && <p>{description}</p>}
+                {secondaryDescription && <p>{secondaryDescription}</p>}
               </PageGrid.Col>
             )}
           </PageGrid.Row>

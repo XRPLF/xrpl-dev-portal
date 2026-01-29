@@ -10,9 +10,6 @@
 // .bds-text-card--yellow                   - Yellow variant
 // .bds-text-card--blue                     - Blue variant
 // .bds-text-card__overlay                  - Hover gradient overlay (window shade animation)
-// .bds-text-card__content                  - Content wrapper (above overlay)
-// .bds-text-card__header                   - Card header (title)
-// .bds-text-card__footer                   - Card footer (description)
 // .bds-text-card__title                    - Card title (heading-lg)
 // .bds-text-card__description              - Card description (body-l)
 //
@@ -97,21 +94,6 @@ $bds-text-color: $black; // #141414 - Neutral black
 // Hover state: reveal overlay
 .bds-text-card:hover .bds-text-card__overlay {
   @include bds-window-shade-revealed;
-}
-
-// =============================================================================
-// Content Wrapper (above overlay)
-// =============================================================================
-
-.bds-text-card__content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  height: 100%;
 }
 
 // =============================================================================
@@ -251,32 +233,26 @@ $bds-text-color: $black; // #141414 - Neutral black
 }
 
 // =============================================================================
-// Card Header (Title)
+// Card Title
 // =============================================================================
 
-.bds-text-card__header {
+.bds-text-card__title {
   width: 100%;
   position: relative;
   z-index: 1;
-}
-
-.bds-text-card__title {
   margin: 0;
   color: $bds-text-color;
   // Typography handled by .h-lg class from _font.scss
 }
 
 // =============================================================================
-// Card Footer (Description)
+// Card Description
 // =============================================================================
 
-.bds-text-card__footer {
+.bds-text-card__description {
   width: 100%;
   position: relative;
   z-index: 1;
-}
-
-.bds-text-card__description {
   margin: 0;
   color: $bds-text-color;
   max-width: $bds-text-card-description-max-width;
