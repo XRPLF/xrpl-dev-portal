@@ -1,0 +1,88 @@
+// BDS Shared Animation Tokens and Mixins
+// Brand Design System - Reusable animation patterns
+//
+// This file contains shared animation tokens and mixins used across
+// multiple components (TileLogo, TextCard, etc.)
+
+// =============================================================================
+// Animation Tokens
+// =============================================================================
+
+// Standard transition duration for interactive elements
+$bds-transition-duration: 200ms;
+
+// Standard easing curve for smooth interactions
+$bds-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// Focus border width
+$bds-focus-border-width: 2px;
+
+// =============================================================================
+// Window Shade Animation Mixin
+// =============================================================================
+// Creates a "window shade" hover effect where a color overlay wipes up from
+// the bottom on hover-in and wipes down on hover-out.
+//
+// Usage:
+//   .my-component {
+//     @include bds-window-shade-base;
+//   }
+//   .my-component__overlay {
+//     @include bds-window-shade-overlay;
+//   }
+//   .my-component--hovered .my-component__overlay,
+//   .my-component:hover .my-component__overlay {
+//     @include bds-window-shade-revealed;
+//   }
+
+@mixin bds-window-shade-base {
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin bds-window-shade-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  
+  // Default: hidden (shade is "rolled up" at bottom, top is 100% clipped)
+  // When transitioning TO this state, the top inset increases = shade falls down
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path $bds-transition-duration $bds-transition-timing;
+}
+
+@mixin bds-window-shade-revealed {
+  // Shade fully raised (visible)
+  // When transitioning TO this state, the top inset decreases = shade rises up
+  clip-path: inset(0 0 0 0);
+}
+
+// =============================================================================
+// Background Color Transition Mixin
+// =============================================================================
+
+@mixin bds-background-transition {
+  transition: background-color $bds-transition-duration $bds-transition-timing;
+}
+
+// =============================================================================
+// Focus Styles Mixin
+// =============================================================================
+
+@mixin bds-focus-styles($color: $black) {
+  &:focus {
+    outline: $bds-focus-border-width solid $color;
+    outline-offset: 1px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: $bds-focus-border-width solid $color;
+    outline-offset: 2px;
+  }
+}
+
