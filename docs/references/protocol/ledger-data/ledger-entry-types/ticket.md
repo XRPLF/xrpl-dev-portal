@@ -33,7 +33,6 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 | Name                | JSON Type            | [Internal Type][] | Required? | Description                |
 |:--------------------|:---------------------|:------------------|:----------|:---------------------------|
 | `Account`           | String - [Address][] | AccountID         | Yes       | The [account](../../../../concepts/accounts/index.md) that owns this Ticket. |
-| `LedgerEntryType`   | String               | UInt16            | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this is a {% $frontmatter.seo.title %} entry. |
 | `OwnerNode`         | String - Hexadecimal | UInt64            | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String - [Hash][]    | UInt256           | Yes       | The identifying hash of the [transaction](../../../../concepts/transactions/index.md) that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number               | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |

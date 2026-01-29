@@ -40,7 +40,6 @@ In addition to the [common fields](../common-fields.md), the {% code-page-name /
 | Name                  | JSON Type | [Internal Type][] | Required? | Description          |
 |:----------------------|:----------|:------------------|:----------|:---------------------|
 | `DisabledValidators`  | Array     | Array             | No        | A list of `DisabledValidator` objects (see below), each representing a trusted validator that is currently disabled. |
-| `LedgerEntryType`     | String    | UInt16            | Yes       | The value `0x004E`, mapped to the string `NegativeUNL`, indicates that this entry is the Negative UNL. |
 | `PreviousTxnID`       | String    | UInt256           | No        | The identifying hash of the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `PreviousTxnLgrSeq`   | Number    | UInt32            | No        | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. {% amendment-disclaimer name="fixPreviousTxnID" /%} |
 | `ValidatorToDisable`  | String    | Blob              | No        | The public key of a trusted validator that is scheduled to be disabled in the next flag ledger. |

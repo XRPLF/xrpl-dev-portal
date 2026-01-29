@@ -1,7 +1,9 @@
+// @chunk {"steps": ["import-node-tag"]}
 // Import the library
-// @chunk {"steps": ["connect-tag"]}
 import xrpl from "xrpl"
+// @chunk-end
 
+// @chunk {"steps": ["connect-tag"]}
 // Define the network client
 const SERVER_URL = "wss://s.altnet.rippletest.net:51233/"
 const client = new xrpl.Client(SERVER_URL)

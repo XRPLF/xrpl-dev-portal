@@ -1,2 +1,2 @@
 xrpl-py>=3.0.0
-cryptoconditions
+cryptoconditions==0.8.1

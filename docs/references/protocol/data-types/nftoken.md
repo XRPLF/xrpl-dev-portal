@@ -57,6 +57,7 @@ Flags are properties or other options associated with the `NFToken` object.
 | `lsfTrustLine`    | `0x0004`   | **DEPRECATED** If enabled, automatically create [trust lines](../../../concepts/tokens/fungible-tokens/index.md) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to enable this flag. |
 | `lsfTransferable` | `0x0008`   | If enabled, this `NFToken` can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer. |
 | `lsfReservedFlag` | `0x8000`   | This flag is reserved for future use. Attempts to set this flag fail. |
+| `lsfMutable`      | `0x0010`   | If enabled, the `URI` field of the `NFToken` can be updated using the `NFTokenModify` transaction. |
 
 `NFToken` flags are immutable: they can only be set during the [NFTokenMint transaction][] and cannot be changed later.
 

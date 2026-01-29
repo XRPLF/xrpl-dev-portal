@@ -1317,6 +1317,61 @@ const events = [
     image: require("../static/img/events/hackathon-kaigi.png"),
     end_date: "December 06, 2025",
   },
+  {
+    name: "XRP Community Day EMEA",
+    description:
+      "Join the EMEA XRP community on February 11, 2026 for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/w118fmkh?utm_source=xrplorg",
+    location: "Virtual - X Spaces",
+    date: "February 11, 2026",
+    image: require("../static/img/events/emea_xrplorg.png"),
+    end_date: "February 11, 2026",
+  },
+  {
+    name: "XRP Community Day Americas",
+    description:
+      "​Join the Americas XRP community on February 11, 2026 for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/1powvqnc?utm_source=xrplorg",
+    location: "Virtual - X Spaces",
+    date: "February 11, 2026",
+    image: require("../static/img/events/amer_xrplorg.png"),
+    end_date: "February 11, 2026",
+  },
+  {
+    name: "XRP Community Day APAC",
+    description:
+      "​Join the APAC XRP community on February 12 for XRP Community Day, a global virtual event celebrating innovation, utility, and growth across the XRP ecosystem.",
+    type: "meetup",
+    link: "https://luma.com/ckzg3l3r?utm_source=xrplorg",
+    location: "Virtual - X Spaces",
+    date: "February 12, 2026",
+    image: require("../static/img/events/apac_xrplorg.png"),
+    end_date: "February 12, 2026",
+  },
+  {
+    name: "Building On The XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who are curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://luma.com/lxb5ttsc",
+    location: "Paris, France",
+    date: "January 26 - 27, 2026",
+    image: require("../static/img/events/building-xrpl.png"),
+    end_date: "January 27, 2026",
+  },
+  {
+    name: "XRPL Meetup in London",
+    description:
+      "Calling all blockchain and XRP Ledger enthusiasts in London! Join XRPL  Meetups to share knowledge, build real-life connections, and foster  communities centered around blockchain and XRP Ledger.  We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+    type: "meetup",
+    link: "https://luma.com/xshnm19t",
+    location: "London, UK",
+    date: "February 18, 2026",
+    image: require("../static/img/events/meetup-london.png"),
+    end_date: "February 18, 2026",
+  },
 ];
 
 
@@ -1398,33 +1453,33 @@ export default function Events() {
             <div className="pr-2 col">
               <img
                 alt="xrp ledger events hero"
-                src={require("../static/img/events/xrp-community-night.png")}
+                src={require("../static/img/events/xrpl-hero.png")}
                 className="w-100"
               />
             </div>
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRP Community Night NYC")}
+                  {translate("XRP Community Night Denver")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "Join the XRP community in NYC—meet builders, users, and projects innovating on the XRP Ledger."
+                  "Attending ETHDenver? ​Join us for an evening with the XRP community in Denver. Connect with the users, builders and projects innovating with and utilizing XRP."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
-                {translate("Location: New York, NY")}
+                {translate("Location: Denver, CO")}
               </div>
               <div className="py-2 my-3 event-small-gray">
-                {translate("November 5, 2025")}
+                {translate("February 18, 2026")}
               </div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://lu.ma/g5uja58m?utm_source=xrpleventspage"
+                  href="https://luma.com/chz145tf?utm_source=xprlorg"
                 >
                   {translate("Register Now")}
                 </a>
