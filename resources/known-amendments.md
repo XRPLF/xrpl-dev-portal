@@ -740,6 +740,19 @@ Adds several fixes to Automated Market Maker code, specifically:
 - Fix validation of [AMMBid transactions][] to ensure that `AuthAccounts` cannot contain duplicates or the transaction sender.
 
 
+### fixBatchInnerSigs
+[fixBatchInnerSigs]: #fixbatchinnersigs
+
+| Amendment    | fixBatchInnerSigs |
+|:-------------|:----------------|
+| Amendment ID | 267624F8F744C4A4F1B5821A7D54410BCEBABE987F0172EE89E5FC4B6EDBC18A |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue where inner transactions of a `Batch` transaction would be flagged as having valid signatures. Since inner transactions aren't signed directly, they should never have valid signatures.
+
+
 ### fixCheckThreading
 [fixCheckThreading]: #fixcheckthreading
 
