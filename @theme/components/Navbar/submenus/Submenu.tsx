@@ -2,7 +2,7 @@ import * as React from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import { SubmenuSection } from "./SubmenuSection";
 import { ArrowIcon } from "../icons";
-import { walletIcons, resourcesPurplePattern, insightsGreenPattern, darkInsightsGreenPattern, darkLilacPattern } from "../constants/icons";
+import { walletIcons, resourcesIconPattern, insightsIconPattern } from "../constants/icons";
 import { developSubmenuData, useCasesSubmenuData, communitySubmenuData, networkSubmenuData } from "../constants/navigation";
 import type { SubmenuItem, SubmenuItemWithChildren, NetworkSubmenuSection } from "../types";
 
@@ -161,13 +161,10 @@ export function Submenu({ variant, isActive, isClosing, onClose }: SubmenuProps)
   );
 }
 
-/** Network submenu with theme-aware pattern images */
+/** Network submenu with pattern images (same for light and dark mode) */
 function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boolean; isClosing: boolean; onClose?: () => void }) {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  // Start with null to indicate "not yet determined" - avoids hydration mismatch
-  // by ensuring server and client both render the same initial state
-  const [isDarkMode, setIsDarkMode] = React.useState<boolean | null>(null);
 
   // Handle keyboard events for accessibility
   const handleKeyDown = React.useCallback((event: KeyboardEvent) => {
@@ -223,21 +220,11 @@ function NetworkSubmenuContent({ isActive, isClosing, onClose }: { isActive: boo
     }
   }, [isActive, handleKeyDown]);
 
-  React.useEffect(() => {
-    const checkTheme = () => {
-      setIsDarkMode(document.documentElement.classList.contains('dark'));
-    };
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
-  }, []);
-
-  // Default to light mode patterns until client-side detection runs
-  const patternImages = React.useMemo(() => ({
-    lilac: isDarkMode === true ? darkLilacPattern : resourcesPurplePattern,
-    green: isDarkMode === true ? darkInsightsGreenPattern : insightsGreenPattern,
-  }), [isDarkMode]);
+  // Use same pattern images for both light and dark mode
+  const patternImages = {
+    lilac: resourcesIconPattern,
+    green: insightsIconPattern,
+  };
 
   const classNames = [
     'bds-submenu',

@@ -38,11 +38,9 @@ export { default as communityIcon } from "../../../../static/img/navbar/communit
 export { default as insightsIcon } from "../../../../static/img/navbar/insights.svg";
 export { default as resourcesIcon } from "../../../../static/img/navbar/resources.svg";
 
-// Network submenu pattern images
-export { default as resourcesPurplePattern } from "../../../../static/img/navbar/resources-purple.svg";
-export { default as insightsGreenPattern } from "../../../../static/img/navbar/insights-green.svg";
-export { default as darkInsightsGreenPattern } from "../../../../static/img/navbar/dark-insights-green.svg";
-export { default as darkLilacPattern } from "../../../../static/img/navbar/dark-lilac.svg";
+// Network submenu pattern images (used for both light and dark mode)
+export { default as resourcesIconPattern } from "../../../../static/img/navbar/resources-icon.svg";
+export { default as insightsIconPattern } from "../../../../static/img/navbar/insights-icon.svg";
 
 // Wallet icon mapping for dynamic icon lookup
 import greenWallet from "../../../../static/img/navbar/green-wallet.svg";

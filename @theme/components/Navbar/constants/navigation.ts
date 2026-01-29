@@ -10,10 +10,10 @@ export const alertBanner = {
 
 // Main navigation items
 export const navItems: NavItem[] = [
-  { label: "Develop", labelTranslationKey: "navbar.develop", href: "/docs", hasSubmenu: true },
-  { label: "Use Cases", labelTranslationKey: "navbar.usecases", href: "/about/uses", hasSubmenu: true },
+  { label: "Develop", labelTranslationKey: "navbar.develop", href: "/develop", hasSubmenu: true },
+  { label: "Use Cases", labelTranslationKey: "navbar.usecases", href: "/use-cases", hasSubmenu: true },
   { label: "Community", labelTranslationKey: "navbar.community", href: "/community", hasSubmenu: true },
-  { label: "Network", labelTranslationKey: "navbar.network", href: "/docs/concepts/networks-and-servers", hasSubmenu: true },
+  { label: "Network", labelTranslationKey: "navbar.network", href: "/resources", hasSubmenu: true },
 ];
 
 // Develop submenu data structure
@@ -22,9 +22,9 @@ export const developSubmenuData: {
   right: SubmenuItemWithChildren[];
 } = {
   left: [
-    { label: "Developer's Home", href: "/docs", icon: "dev_home" },
-    { label: "Learn", href: "/docs/tutorials", icon: "learn" },
-    { label: "Code Samples", href: "/_code-samples", icon: "code_samples" },
+    { label: "Developer's Home", href: "/develop", icon: "dev_home" },
+    { label: "Learn", href: "https://learn.xrpl.org", icon: "learn" },
+    { label: "Code Samples", href: "/resources/code-samples", icon: "code_samples" },
   ],
   right: [
     {
@@ -32,21 +32,21 @@ export const developSubmenuData: {
       href: "/docs",
       icon: "docs",
       children: [
-        { label: "API Reference", href: "/docs/references" },
+        { label: "API Reference", href: "/references" },
         { label: "Tutorials", href: "/docs/tutorials" },
-        { label: "Concepts", href: "/docs/concepts" },
+        { label: "Concepts", href: "/concepts" },
         { label: "Infrastructure", href: "/docs/infrastructure" },
       ],
     },
     {
       label: "Client Libraries",
-      href: "/docs/references/client-libraries",
+      href: "#",
       icon: "client_lib",
       children: [
-        { label: "JavaScript", href: "/docs/references/xrpljs" },
-        { label: "Python", href: "/docs/references/xrpl-py" },
-        { label: "PHP", href: "/docs/references/xrpl-php" },
-        { label: "Go", href: "/docs/references/xrpl-go" },
+        { label: "JavaScript", href: "#" },
+        { label: "Python", href: "#" },
+        { label: "PHP", href: "#" },
+        { label: "Go", href: "#" },
       ],
     },
   ],
@@ -60,44 +60,44 @@ export const useCasesSubmenuData: {
   left: [
     {
       label: "Payments",
-      href: "/about/uses/payments",
+      href: "/use-cases/payments",
       icon: "payments",
       children: [
-        { label: "Direct XRP Payments", href: "/about/uses/direct-xrp-payments" },
-        { label: "Cross-currency Payments", href: "/about/uses/cross-currency-payments" },
-        { label: "Escrow", href: "/about/uses/escrow" },
-        { label: "Checks", href: "/about/uses/checks" },
+        { label: "Direct XRP Payments", href: "/use-cases/payments/direct-xrp-payments" },
+        { label: "Cross-currency Payments", href: "/use-cases/payments/cross-currency-payments" },
+        { label: "Escrow", href: "/use-cases/payments/escrow" },
+        { label: "Checks", href: "/use-cases/payments/checks" },
       ],
     },
     {
       label: "Tokenization",
-      href: "/about/uses/tokenization",
+      href: "/use-cases/tokenization",
       icon: "tokenization",
       children: [
-        { label: "Stablecoin", href: "/about/uses/stablecoin" },
-        { label: "NFT", href: "/about/uses/nft" },
+        { label: "Stablecoin", href: "/use-cases/tokenization/stablecoin" },
+        { label: "NFT", href: "/use-cases/tokenization/nft" },
       ],
     },
   ],
   right: [
     {
       label: "Credit",
-      href: "/about/uses/credit",
+      href: "/use-cases/credit",
       icon: "credit",
       children: [
-        { label: "Lending", href: "/about/uses/lending" },
-        { label: "Collateralization", href: "/about/uses/collateralization" },
-        { label: "Sustainability", href: "/about/uses/sustainability" },
+        { label: "Lending", href: "/use-cases/credit/lending" },
+        { label: "Collateralization", href: "/use-cases/credit/collateralization" },
+        { label: "Sustainability", href: "/use-cases/credit/sustainability" },
       ],
     },
     {
       label: "Trading",
-      href: "/about/uses/trading",
+      href: "/use-cases/trading",
       icon: "trading",
       children: [
-        { label: "DEX", href: "/about/uses/dex" },
-        { label: "Permissioned Trading", href: "/about/uses/permissioned-trading" },
-        { label: "AMM", href: "/about/uses/amm" },
+        { label: "DEX", href: "/use-cases/trading/dex" },
+        { label: "Permissioned Trading", href: "/use-cases/trading/permissioned-trading" },
+        { label: "AMM", href: "/use-cases/trading/amm" },
       ],
     },
   ],
@@ -115,10 +115,7 @@ export const communitySubmenuData: {
       icon: "community",
       children: [
         { label: "Events", href: "/community/events" },
-        { label: "News", href: "/blog", active: true },
         { label: "Blog", href: "/blog" },
-        { label: "Marketplace", href: "/community/marketplace" },
-        { label: "Partner Connect", href: "/community/partner-connect" },
       ],
     },
     { label: "Funding", href: "/community/developer-funding", icon: "code_samples" },
@@ -126,15 +123,14 @@ export const communitySubmenuData: {
   right: [
     {
       label: "Contribute",
-      href: "/resources/contribute-documentation",
+      href: "/community/contribute",
       icon: "client_lib",
       children: [
-        { label: "Ecosystem Map", href: "/community/ecosystem-map" },
-        { label: "Bug Bounty", href: "/community/bug-bounty" },
-        { label: "Research", href: "/community/research" },
+        { label: "Bug Bounty", href: "/blog/2020/rippled-1.5.0#bug-bounties-and-responsible-disclosures" },
+        { label: "Research", href: "https://xls.xrpl.org/" },
       ],
     },
-    { label: "Creators", href: "/community/ambassadors", icon: "learn" },
+    { label: "Ecosystem Map", href: "/about/uses", icon: "learn" },
   ],
 };
 
@@ -142,23 +138,21 @@ export const communitySubmenuData: {
 export const networkSubmenuData: NetworkSubmenuSection[] = [
   {
     label: "Resources",
-    href: "/docs/concepts/networks-and-servers",
+    href: "/resources",
     icon: "resources",
     children: [
-      { label: "Validators", href: "/docs/concepts/networks-and-servers/validators" },
-      { label: "Governance", href: "/docs/concepts/networks-and-servers/governance", active: true },
-      { label: "XRPL Roadmap", href: "/docs/concepts/networks-and-servers/xrpl-roadmap" },
+      { label: "About", href: "/about/history" },
+      { label: "XRPL Brand Kit", href: "/community/brand-kit" },
     ],
     patternColor: 'lilac',
   },
   {
     label: "Insights",
-    href: "/docs/concepts/networks-and-servers/insights",
+    href: "/insights",
     icon: "insights",
     children: [
       { label: "Explorer", href: "https://livenet.xrpl.org" },
-      { label: "Data Dashboard", href: "/docs/concepts/networks-and-servers/data-dashboard" },
-      { label: "Amendment Voting Status", href: "/docs/concepts/networks-and-servers/amendments" },
+      { label: "Amendment Voting Status", href: "https://xrpl.org/resources/known-amendments" },
     ],
     patternColor: 'green',
   },
