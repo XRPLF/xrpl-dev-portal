@@ -365,6 +365,7 @@
 [json command]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md
 [json method]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md
 [ledger command]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
+[ledger entry ID]: /docs/references/protocol/ledger-data/common-fields.md#ledger-entry-id
 [ledger format]: /docs/references/protocol/ledger-data/ledger-entry-types/index.md
 [ledger index]: /docs/references/protocol/data-types/basic-data-types.md#ledger-index
 [ledger method]: /docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
