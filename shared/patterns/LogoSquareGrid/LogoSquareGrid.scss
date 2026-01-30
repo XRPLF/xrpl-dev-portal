@@ -40,19 +40,6 @@ $bds-lsg-text-gap-desktop: 16px;
   @extend .d-flex;
   @extend .flex-column;
   @extend .w-100;
-  
-  // Mobile-first gap
-  gap: $bds-lsg-header-gap-mobile;
-  
-  // Tablet breakpoint
-  @include media-breakpoint-up(md) {
-    gap: $bds-lsg-header-gap-tablet;
-  }
-  
-  // Desktop breakpoint
-  @include media-breakpoint-up(lg) {
-    gap: $bds-lsg-header-gap-desktop;
-  }
 }
 
 // =============================================================================
