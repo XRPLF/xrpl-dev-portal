@@ -31,6 +31,12 @@ export interface ButtonProps {
   href?: string;
   /** Link target - only applies when href is provided */
   target?: '_self' | '_blank';
+  /**
+   * Force no padding and left-align text.
+   * When true, removes all padding and aligns content to the left.
+   * Useful for tertiary buttons in block layouts where left alignment is needed.
+   */
+  forceNoPadding?: boolean;
 }
 
 /**
@@ -115,6 +121,7 @@ export const Button: React.FC<ButtonProps> = ({
   ariaLabel,
   href,
   target = '_self',
+  forceNoPadding = false,
 }) => {
   // Hide icon when disabled (per design spec)
   const shouldShowIcon = showIcon && !disabled;
@@ -131,6 +138,7 @@ export const Button: React.FC<ButtonProps> = ({
       'bds-btn--disabled': disabled,
       'bds-btn--no-icon': !shouldShowIcon,
       'bds-btn--force-color': forceColor,
+      'bds-btn--no-padding': forceNoPadding,
     },
     className
   );

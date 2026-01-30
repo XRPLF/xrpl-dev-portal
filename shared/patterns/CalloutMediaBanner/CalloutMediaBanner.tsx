@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
 
 export interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */
@@ -14,18 +14,8 @@ export interface CalloutMediaBannerProps {
   heading?: string;
   /** Subheading/description text */
   subheading: string;
-  /** Primary button configuration */
-  primaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
-  /** Tertiary button configuration */
-  tertiaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
+  /** Button configurations (1-2 buttons supported) */
+  buttons?: ButtonConfig[];
   /** Additional CSS classes */
   className?: string;
 }
@@ -42,19 +32,21 @@ export interface CalloutMediaBannerProps {
  *   variant="green"
  *   heading="The Compliant Ledger Protocol"
  *   subheading="A decentralized public Layer 1 blockchain..."
- *   primaryButton={{ label: "Get Started", href: "/docs" }}
- *   tertiaryButton={{ label: "Learn More", href: "/about" }}
+ *   buttons={[
+ *     { label: "Get Started", href: "/docs" },
+ *     { label: "Learn More", href: "/about" }
+ *   ]}
  * />
- * 
+ *
  * @example
  * // With background image (white text - default)
  * <CalloutMediaBanner
  *   backgroundImage="/images/hero-bg.jpg"
  *   heading="Build on XRPL"
  *   subheading="Start building your next project"
- *   primaryButton={{ label: "Start Building", onClick: handleClick }}
+ *   buttons={[{ label: "Start Building", onClick: handleClick }]}
  * />
- * 
+ *
  * @example
  * // With background image and black text (fixed across light/dark modes)
  * <CalloutMediaBanner
@@ -62,7 +54,7 @@ export interface CalloutMediaBannerProps {
  *   textColor="black"
  *   heading="Build on XRPL"
  *   subheading="Start building your next project"
- *   primaryButton={{ label: "Start Building", onClick: handleClick }}
+ *   buttons={[{ label: "Start Building", onClick: handleClick }]}
  * />
  */
 export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
@@ -71,12 +63,11 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   textColor = 'white',
   heading,
   subheading,
-  primaryButton,
-  tertiaryButton,
+  buttons,
   className = '',
 }) => {
   // Check if there are any buttons
-  const hasButtons = !!(primaryButton || tertiaryButton);
+  const hasButtons = !!(buttons && buttons.length > 0);
   
   // Check if we should center content: no buttons OR (no heading but has buttons)
   const shouldCenter = !hasButtons || (!heading && hasButtons);
@@ -116,12 +107,13 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
             </div>
 
             {/* Buttons */}
-            <ButtonGroup
-              primaryButton={primaryButton}
-              tertiaryButton={tertiaryButton}
-              color={buttonColor}
-              gap="none"
-            />
+            {hasButtons && (
+              <ButtonGroup
+                buttons={buttons!}
+                color={buttonColor}
+                gap="none"
+              />
+            )}
           </div>
         </PageGridCol>
       </PageGridRow>

@@ -64,14 +64,10 @@ export default function LogoSquareGridShowcase() {
           variant="green"
           heading="Developer tools & APIs"
           description="Streamline development and build powerful RWA tokenization solutions with XRP Ledger's comprehensive developer toolset."
-          primaryButton={{ 
-            label: "View Documentation", 
-            onClick: () => handleClick('green-primary') 
-          }}
-          tertiaryButton={{ 
-            label: "Explore Tools", 
-            onClick: () => handleClick('green-tertiary')
-          }}
+          buttons={[
+            { label: "View Documentation", onClick: () => handleClick('green-primary') },
+            { label: "Explore Tools", onClick: () => handleClick('green-tertiary') }
+          ]}
           logos={sampleLogos}
         />
 
@@ -150,8 +146,10 @@ export default function LogoSquareGridShowcase() {
             variant="gray"
             heading="Our Partners"
             description="Leading companies building innovative solutions on the XRP Ledger."
-            primaryButton={{ label: "View All Partners", href: "#partners" }}
-            tertiaryButton={{ label: "Become a Partner", href: "#partner-program" }}
+            buttons={[
+              { label: "View All Partners", href: "#partners" },
+              { label: "Become a Partner", href: "#partner-program" }
+            ]}
             logos={sampleLogos}
           />
         </div>
@@ -173,7 +171,9 @@ export default function LogoSquareGridShowcase() {
             variant="green"
             heading="Featured Integrations"
             description="Connect with leading platforms and services built on XRPL."
-            primaryButton={{ label: "See All Integrations", href: "#integrations" }}
+            buttons={[
+              { label: "See All Integrations", href: "#integrations" }
+            ]}
             logos={sampleLogos}
           />
         </div>
@@ -247,7 +247,9 @@ export default function LogoSquareGridShowcase() {
             variant="green"
             heading="Developer Resources"
             description="Access comprehensive tools and libraries for building on XRPL."
-            primaryButton={{ label: "Get Started", onClick: () => handleClick('single-button') }}
+            buttons={[
+              { label: "Get Started", onClick: () => handleClick('single-button') }
+            ]}
             logos={smallLogoSet}
           />
         </div>
@@ -431,20 +433,12 @@ export default function LogoSquareGridShowcase() {
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>Optional description text</div>
                 </div>
 
-                {/* primaryButton */}
+                {/* buttons */}
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem', borderBottom: '1px solid var(--bs-border-color, #dee2e6)' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>primaryButton</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>{`{ label, href?, onClick? }`}</code></div>
+                  <div style={{ width: '140px', flexShrink: 0 }}><code>buttons</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>{`Array<{ label, href?, onClick?, forceColor? }>`}</code></div>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>undefined</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Primary button configuration</div>
-                </div>
-
-                {/* tertiaryButton */}
-                <div className="d-flex flex-row py-3" style={{ gap: '1rem', borderBottom: '1px solid var(--bs-border-color, #dee2e6)' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>tertiaryButton</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>{`{ label, href?, onClick? }`}</code></div>
-                  <div style={{ width: '120px', flexShrink: 0 }}><code>undefined</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Tertiary button configuration</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Button configurations (1-2 buttons supported)</div>
                 </div>
 
                 {/* logos */}
