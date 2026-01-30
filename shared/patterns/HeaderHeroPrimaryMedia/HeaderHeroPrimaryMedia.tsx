@@ -1,48 +1,30 @@
 import React, { forwardRef, memo, useEffect } from "react";
 import clsx from "clsx";
 import { PageGrid } from "shared/components/PageGrid/page-grid";
-import { Button, ButtonProps } from "shared/components/Button/Button";
+import { Button } from "shared/components/Button/Button";
 import {
   isEmpty,
   DesignConstrainedButtonProps,
   isEnvironment,
 } from "shared/utils";
-
-/**
- * Base props that all media elements must have to ensure proper styling.
- * These props are automatically applied to maintain the 9:16 aspect ratio
- * and object-fit: cover behavior.
- */
-type MediaStyleProps = {
-  className?: string;
-  style?: React.CSSProperties;
-};
+import {
+  DesignConstrainedImageProps,
+  DesignConstrainedVideoProps,
+} from "shared/utils/types";
 
 /**
  * Image media type - extends native img element props
  */
 type ImageMediaProps = {
   type: "image";
-} & Omit<
-  React.ComponentPropsWithoutRef<"img">,
-  keyof MediaStyleProps | "src" | "alt"
-> & {
-    src: string; // Required for image media
-    alt: string; // Required for image media
-  };
+} & DesignConstrainedImageProps;
 
 /**
  * Video media type - extends native video element props
  */
 type VideoMediaProps = {
   type: "video";
-} & Omit<
-  React.ComponentPropsWithoutRef<"video">,
-  keyof MediaStyleProps | "src"
-> & {
-    src: string; // Required for video media
-    alt?: string; // Optional for video, but recommended for accessibility
-  };
+} & DesignConstrainedVideoProps;
 
 /**
  * Custom element media type - allows passing any React element
@@ -95,6 +77,7 @@ const MediaRenderer: React.FC<{ media: HeaderHeroMedia }> = memo(
       }
 
       case "video": {
+        // alt here is being used as a aria label value
         const { type, alt, ...videoProps } = media;
         return (
           <div className={mediaContainerClassName}>
