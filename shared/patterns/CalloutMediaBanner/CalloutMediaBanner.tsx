@@ -112,6 +112,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
                 buttons={buttons!}
                 color={buttonColor}
                 gap="none"
+                maxButtons={2}
               />
             )}
           </div>
