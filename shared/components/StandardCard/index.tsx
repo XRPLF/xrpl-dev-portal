@@ -6,6 +6,7 @@ import {
   isEnvironment,
   isEmpty,
 } from "../../utils";
+import { DesignConstrainedCallToActionsProps } from "shared/utils/types";
 
 /**
  * Available background color variants for StandardCard:
@@ -16,11 +17,13 @@ import {
  */
 export type StandardCardVariant = "neutral" | "green" | "yellow" | "blue";
 
-export interface StandardCardProps extends React.ComponentPropsWithoutRef<"article"> {
+export interface StandardCardProps
+  extends
+    React.ComponentPropsWithoutRef<"article">,
+    DesignConstrainedCallToActionsProps {
   headline: React.ReactNode;
   /** Background color variant */
   variant: StandardCardVariant;
-  callsToAction: [DesignConstrainedButtonProps, DesignConstrainedButtonProps?];
   children?: React.ReactNode;
 }
 
@@ -46,7 +49,7 @@ const StandardCard = forwardRef<HTMLElement, StandardCardProps>(
 
     const [primaryButton, secondaryButton] = callsToAction;
 
-    const hasButtons = callsToAction.some((button) => button !== undefined);
+    const hasButtons = callsToAction.some((button) => !isEmpty(button));
 
     if (!headline) {
       if (isEnvironment("development")) {
