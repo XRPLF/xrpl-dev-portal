@@ -1,6 +1,6 @@
 ---
 seo:
-  description: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
+  description: Authorize a regular key pair to sign transactions from your account. This key pair can be changed or removed later.
 labels:
   - Security
   - Accounts
@@ -8,6 +8,8 @@ labels:
 # Assign a Regular Key Pair
 
 This tutorial shows how to authorize a secondary key pair, called a _[regular key pair](../../../concepts/accounts/cryptographic-keys.md)_, to sign future transactions. Unlike the master key pair, which is mathematically linked to the account's address, you can remove or replace the regular key pair, which is better for security.
+
+You can use these steps to assign a regular key pair for the first time or to replace an existing regular key pair with a new one.
 
 ## Goals
 
@@ -95,7 +97,7 @@ Use the [`Wallet.create()` class method](https://xrpl-py.readthedocs.io/en/stabl
 
 Use a [SetRegularKey transaction][] to assign the new key pair to your account as a regular key pair.
 
-{% admonition type="success" name="Tip" %}This example uses the master key pair to assign the regular key pair, but you can also use an existing regular key pair to replace itself, or assign a regular key pair using a [multi-signing list](../../../concepts/accounts/multi-signing.md) if your account has multi-signing set up.{% /admonition %}
+{% admonition type="success" name="Tip" %}This example signs the transaction using the master key pair, but you could also use an existing regular key pair, or a[multi-signing list](../../../concepts/accounts/multi-signing.md) if your account has multi-signing set up.{% /admonition %}
 
 {% tabs %}
 {% tab label="JavaScript" %}
