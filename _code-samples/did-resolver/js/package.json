@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "dependencies": {
+    "did-resolver": "^4.1.0",
+    "elliptic": "^6.6.1",
+    "express": "^4.21.1",
+    "node-fetch": "^3.3.2",
+    "xrpl": "^4.0.0"
+  }
+}
