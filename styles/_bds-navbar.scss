@@ -2310,6 +2310,10 @@ body.bds-mobile-menu-open {
   overflow: hidden;
 }
 
+html:has(body.bds-mobile-menu-open) {
+  overflow: hidden;
+}
+
 // Body scroll lock when desktop submenu is open (tablet and desktop only)
 // Uses overflow: hidden on both html and body for cross-browser support
 body.bds-submenu-open {
