@@ -553,41 +553,41 @@ html.dark {
       stroke: $green-300;
     }
 
-    // Hover state
+    // Hover state - use !important to override light mode global styles
     &:hover:not(:disabled):not(.bds-btn--disabled) {
-      color: $green-200;
-      
+      color: $green-200 !important;
+
       .bds-btn__icon,
       .bds-btn__icon-line,
       .bds-btn__icon-chevron {
-        color: $green-200;
-        stroke: $green-200;
+        color: $green-200 !important;
+        stroke: $green-200 !important;
       }
     }
 
-    // Focus state
+    // Focus state - use !important to override light mode global styles
     &:focus-visible:not(:disabled):not(.bds-btn--disabled) {
-      color: $green-200;
+      color: $green-200 !important;
       outline: $bds-btn-focus-border-width solid $white;
       outline-offset: 2px;
-      
+
       .bds-btn__icon,
       .bds-btn__icon-line,
       .bds-btn__icon-chevron {
-        color: $green-200;
-        stroke: $green-200;
+        color: $green-200 !important;
+        stroke: $green-200 !important;
       }
     }
 
-    // Active state
+    // Active state - use !important to override light mode global styles
     &:active:not(:disabled):not(.bds-btn--disabled) {
-      color: $green-300;
-      
+      color: $green-300 !important;
+
       .bds-btn__icon,
       .bds-btn__icon-line,
       .bds-btn__icon-chevron {
-        color: $green-300;
-        stroke: $green-300;
+        color: $green-300 !important;
+        stroke: $green-300 !important;
       }
     }
 
