@@ -1901,3 +1901,33 @@ html.dark {
     }
   }
 }
+
+// =============================================================================
+// No Padding Modifier
+// =============================================================================
+// When .bds-btn--no-padding is applied, removes all padding and left-aligns content.
+// Useful for tertiary buttons in block layouts where left alignment is needed.
+// =============================================================================
+
+.bds-btn--no-padding {
+  padding: 0 !important;
+  justify-content: flex-start !important;
+
+  // Override all state paddings
+  &:hover:not(:disabled):not(.bds-btn--disabled),
+  &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+  &:active:not(:disabled):not(.bds-btn--disabled) {
+    padding: 0 !important;
+  }
+
+  // Responsive overrides
+  @include media-breakpoint-down(xl) {
+    padding: 0 !important;
+
+    &:hover:not(:disabled):not(.bds-btn--disabled),
+    &:focus-visible:not(:disabled):not(.bds-btn--disabled),
+    &:active:not(:disabled):not(.bds-btn--disabled) {
+      padding: 0 !important;
+    }
+  }
+}

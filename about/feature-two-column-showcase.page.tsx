@@ -34,12 +34,12 @@ export default function FeatureTwoColumnShowcase() {
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Button Behavior</h2>
               <p className="mb-4">
-                The component automatically adjusts button rendering based on the number of links provided:
+                The component uses the ButtonGroup pattern which automatically adjusts button rendering based on the number of links provided:
               </p>
               <ul className="mb-6">
                 <li><strong>1 link:</strong> Secondary button</li>
-                <li><strong>2 links:</strong> Primary + Tertiary buttons</li>
-                <li><strong>3-5 links:</strong> Primary + Tertiary (row), Secondary, then remaining Tertiary links</li>
+                <li><strong>2 links:</strong> Primary + Tertiary buttons (responsive layout)</li>
+                <li><strong>3+ links:</strong> All Tertiary buttons in block layout (vertical on all screen sizes)</li>
               </ul>
             </PageGridCol>
           </PageGridRow>

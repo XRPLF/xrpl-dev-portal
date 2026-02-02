@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface LogoItem extends TileLogoProps {}
 
@@ -13,18 +13,8 @@ export interface LogoSquareGridProps {
   heading?: string;
   /** Optional description text */
   description?: string;
-  /** Primary button configuration */
-  primaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
-  /** Tertiary button configuration */
-  tertiaryButton?: {
-    label: string;
-    href?: string;
-    onClick?: () => void;
-  };
+  /** Button configurations (1-2 buttons supported) */
+  buttons?: ButtonConfig[];
   /** Array of logo items to display in the grid */
   logos: LogoItem[];
   /** Additional CSS classes */
@@ -55,8 +45,10 @@ export interface LogoSquareGridProps {
  *   variant="green"
  *   heading="Our Partners"
  *   description="Leading companies building on XRPL."
- *   primaryButton={{ label: "View All Partners", href: "/partners" }}
- *   tertiaryButton={{ label: "Become a Partner", href: "/partner-program" }}
+ *   buttons={[
+ *     { label: "View All Partners", href: "/partners" },
+ *     { label: "Become a Partner", href: "/partner-program" }
+ *   ]}
  *   logos={[
  *     { src: "/logos/partner1.svg", alt: "Partner 1", href: "https://partner1.com" }
  *   ]}
@@ -66,11 +58,18 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   variant = 'gray',
   heading,
   description,
-  primaryButton,
-  tertiaryButton,
+  buttons,
   logos,
   className = '',
 }) => {
+  // Validate buttons if provided (max 2 buttons supported)
+  const buttonValidation = buttons ? validateButtonGroup(buttons, 2) : null;
+
+  // Log warnings in development mode
+  if (process.env.NODE_ENV === 'development' && buttonValidation?.warnings.length) {
+    buttonValidation.warnings.forEach(warning => console.warn(warning));
+  }
+
   // Build class names using BEM with bds namespace
   const classNames = clsx(
     'bds-logo-square-grid',
@@ -79,7 +78,8 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   );
 
   // Determine if we should show the header section
-  const hasHeader = !!(heading || description || primaryButton || tertiaryButton);
+  const hasButtons = buttonValidation?.isValid && buttonValidation.buttons.length > 0;
+  const hasHeader = !!(heading || description || hasButtons);
 
   return (
     <PageGrid className={classNames}>
@@ -97,12 +97,13 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
                 )}
 
                 {/* Buttons */}
-                <ButtonGroup
-                  primaryButton={primaryButton}
-                  tertiaryButton={tertiaryButton}
-                  color="green"
-                  gap="small"
-                />
+                {hasButtons && (
+                  <ButtonGroup
+                    buttons={buttonValidation.buttons}
+                    color="green"
+                    gap="small"
+                  />
+                )}
               </div>
             )}
         </PageGridCol>

@@ -1,0 +1,180 @@
+// BDS CardsTwoColumn Pattern Styles
+// Brand Design System - Section with header and 2x2 card grid
+// Uses PageGrid for responsive layout
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-cards-two-column                    - Base section container
+// .bds-cards-two-column__container         - PageGrid container with vertical padding
+// .bds-cards-two-column__header            - Header row (title + description)
+// .bds-cards-two-column__header-left       - Left column (title)
+// .bds-cards-two-column__header-right      - Right column (description)
+// .bds-cards-two-column__title             - Section title (heading-md)
+// .bds-cards-two-column__description       - Section description (body-l, muted)
+// .bds-cards-two-column__cards             - Cards row (2x2 on desktop)
+//
+// Note: TextCard styles are in shared/components/TextCard/TextCard.scss
+// Note: PageGrid handles horizontal padding and column widths
+//
+// Design tokens from Figma (Section Cards - Two Column):
+//
+// Breakpoints:
+// - Mobile: < 576px (min-width: 240px, max-width: 575px)
+// - Tablet: 576px - 991px (min-width: 576px, max-width: 991px)
+// - Desktop: ≥ 992px (min-width: 992px, max-width: 1280px)
+
+// =============================================================================
+// Design Tokens from Figma
+// =============================================================================
+
+// Section vertical padding (horizontal handled by PageGrid)
+$bds-section-padding-y-mobile: 24px;
+$bds-section-padding-y-tablet: 32px;
+$bds-section-padding-y-desktop: 40px;
+
+// Gap between header row and cards row
+$bds-section-row-gap-mobile: 24px;
+$bds-section-row-gap-tablet: 32px;
+$bds-section-row-gap-desktop: 40px;
+
+// Card height for header alignment (desktop only)
+$bds-text-card-height-desktop: 340px;
+
+// Colors - Light Mode (from Figma)
+$bds-text-color: $black;           // #141414 - Neutral black
+$bds-text-color-muted: $gray-500;  // #72777E - Neutral/500 for description
+
+// =============================================================================
+// Section Container
+// =============================================================================
+
+.bds-cards-two-column {
+  width: 100%;
+  background-color: $white;
+}
+
+// =============================================================================
+// PageGrid Container Override
+// =============================================================================
+
+.bds-cards-two-column__container {
+  // Add vertical padding (PageGrid handles horizontal)
+  padding-top: $bds-section-padding-y-mobile;
+  padding-bottom: $bds-section-padding-y-mobile;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-section-padding-y-tablet;
+    padding-bottom: $bds-section-padding-y-tablet;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-section-padding-y-desktop;
+    padding-bottom: $bds-section-padding-y-desktop;
+  }
+}
+
+// =============================================================================
+// Header Row
+// =============================================================================
+
+.bds-cards-two-column__header {
+  // Add margin-bottom for gap between header and cards rows
+  margin-bottom: $bds-section-row-gap-mobile;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: $bds-section-row-gap-tablet;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: $bds-section-row-gap-desktop;
+    // Desktop: align items to match card height
+    align-items: stretch;
+  }
+}
+
+.bds-cards-two-column__header-left {
+  @include media-breakpoint-up(lg) {
+    // Desktop: match card height for alignment
+    min-height: $bds-text-card-height-desktop;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.bds-cards-two-column__header-right {
+  @include media-breakpoint-up(lg) {
+    // Desktop: match card height, align description to bottom
+    min-height: $bds-text-card-height-desktop;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+.bds-cards-two-column__title {
+  margin: 0;
+  color: $bds-text-color;
+  // Typography handled by .h-md class from _font.scss
+}
+
+.bds-cards-two-column__description {
+  color: $bds-text-color-muted;
+  // Typography handled by .body-l class from _font.scss
+
+  p {
+    margin: 0;
+
+    & + p {
+      margin-top: 16px; // Paragraph spacing from Figma
+    }
+  }
+}
+
+// =============================================================================
+// Cards Row
+// =============================================================================
+
+.bds-cards-two-column__cards {
+  // PageGrid.Row handles the flex layout and gap
+  // TextCards fill their column width automatically
+}
+
+// =============================================================================
+// Light Mode Styles
+// =============================================================================
+
+html.light {
+  .bds-cards-two-column {
+    background-color: $white;
+  }
+
+  .bds-cards-two-column__title {
+    color: $bds-text-color;
+  }
+
+  .bds-cards-two-column__description {
+    color: $bds-text-color-muted;
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles
+// =============================================================================
+// Dark mode color mappings from Figma (node 33054:969):
+// - Section background: Neutral/black (#141414) → $black
+// - Section title: Neutral/white (#FFFFFF) → $white
+// - Section description: Neutral/white (#FFFFFF) → $white
+
+html.dark {
+  .bds-cards-two-column {
+    background-color: $black;
+  }
+
+  // Section header text colors inverted for dark mode
+  .bds-cards-two-column__title {
+    color: $white;
+  }
+
+  .bds-cards-two-column__description {
+    color: $white;
+  }
+}

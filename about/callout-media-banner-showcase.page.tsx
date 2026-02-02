@@ -40,8 +40,10 @@ export default function CalloutMediaBannerShowcase() {
           variant="green"
           heading="The Compliant Ledger Protocol"
           subheading="A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance."
-          primaryButton={{ label: "Get Started", onClick: () => handleClick('responsive-demo-primary') }}
-          tertiaryButton={{ label: "Learn More", onClick: () => handleClick('responsive-demo-tertiary') }}
+          buttons={[
+            { label: "Get Started", onClick: () => handleClick('responsive-demo-primary') },
+            { label: "Learn More", onClick: () => handleClick('responsive-demo-tertiary') }
+          ]}
         />
 
         {/* Responsive Behavior */}
@@ -122,7 +124,9 @@ export default function CalloutMediaBannerShowcase() {
             variant="default"
             heading="Build on XRPL"
             subheading="Start building your next decentralized application on the XRP Ledger."
-            primaryButton={{ label: "Start Building", href: "#start" }}
+            buttons={[
+              { label: "Start Building", href: "#start" }
+            ]}
           />
         </div>
 
@@ -143,8 +147,10 @@ export default function CalloutMediaBannerShowcase() {
             variant="light-gray"
             heading="Developer Resources"
             subheading="Access comprehensive documentation, tutorials, and code samples."
-            primaryButton={{ label: "View Docs", href: "#docs" }}
-            tertiaryButton={{ label: "Browse Tutorials", href: "#tutorials" }}
+            buttons={[
+              { label: "View Docs", href: "#docs" },
+              { label: "Browse Tutorials", href: "#tutorials" }
+            ]}
           />
         </div>
 
@@ -165,7 +171,9 @@ export default function CalloutMediaBannerShowcase() {
             variant="lilac"
             heading="New Feature Release"
             subheading="Discover the latest enhancements and capabilities added to the XRP Ledger."
-            primaryButton={{ label: "Learn More", href: "#features" }}
+            buttons={[
+              { label: "Learn More", href: "#features" }
+            ]}
           />
         </div>
 
@@ -186,8 +194,10 @@ export default function CalloutMediaBannerShowcase() {
             variant="green"
             heading="The Compliant Ledger Protocol"
             subheading="A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance."
-            primaryButton={{ label: "Get Started", href: "#get-started" }}
-            tertiaryButton={{ label: "Learn More", href: "#learn" }}
+            buttons={[
+              { label: "Get Started", href: "#get-started" },
+              { label: "Learn More", href: "#learn" }
+            ]}
           />
         </div>
 
@@ -208,8 +218,10 @@ export default function CalloutMediaBannerShowcase() {
             variant="gray"
             heading="Join the Community"
             subheading="Connect with developers building on XRPL."
-            primaryButton={{ label: "Join Discord", href: "#discord" }}
-            tertiaryButton={{ label: "View Events", href: "#events" }}
+            buttons={[
+              { label: "Join Discord", href: "#discord" },
+              { label: "View Events", href: "#events" }
+            ]}
           />
         </div>
 
@@ -255,7 +267,9 @@ export default function CalloutMediaBannerShowcase() {
           <CalloutMediaBanner
             backgroundImage={sampleBackgroundImage}
             subheading="A decentralized public Layer 1 blockchain for creating, transferring, and exchanging digital assets with a focus on compliance."
-            primaryButton={{ label: "Start Building", onClick: () => handleClick('image-white-primary') }}
+            buttons={[
+              { label: "Start Building", onClick: () => handleClick('image-white-primary') }
+            ]}
           />
         </div>
 
@@ -277,8 +291,10 @@ export default function CalloutMediaBannerShowcase() {
             textColor="black"
             heading="Build the Future of Finance"
             subheading="Create powerful decentralized applications with XRPL's fast, efficient, and sustainable blockchain technology."
-            primaryButton={{ label: "Start Building", onClick: () => handleClick('image-black-primary') }}
-            tertiaryButton={{ label: "Explore Features", onClick: () => handleClick('image-black-tertiary') }}
+            buttons={[
+              { label: "Start Building", onClick: () => handleClick('image-black-primary') },
+              { label: "Explore Features", onClick: () => handleClick('image-black-tertiary') }
+            ]}
           />
         </div>
 
@@ -321,8 +337,10 @@ export default function CalloutMediaBannerShowcase() {
             variant="default"
             heading="Complete Feature Set"
             subheading="Access all the tools you need to build on XRPL."
-            primaryButton={{ label: "Get Started", href: "#start" }}
-            tertiaryButton={{ label: "Learn More", href: "#learn" }}
+            buttons={[
+              { label: "Get Started", href: "#start" },
+              { label: "Learn More", href: "#learn" }
+            ]}
           />
         </div>
 
@@ -343,7 +361,9 @@ export default function CalloutMediaBannerShowcase() {
             variant="light-gray"
             heading="Simple Call-to-Action"
             subheading="Focus user attention on a single primary action."
-            primaryButton={{ label: "Take Action", href: "#action" }}
+            buttons={[
+              { label: "Take Action", href: "#action" }
+            ]}
           />
         </div>
 
@@ -383,8 +403,10 @@ export default function CalloutMediaBannerShowcase() {
           <CalloutMediaBanner
             variant="green"
             subheading="Important information or announcement without requiring user action."
-            primaryButton={{ label: "Take Action", href: "#action" }}
-            tertiaryButton={{ label: "Learn More", href: "#learn" }}
+            buttons={[
+              { label: "Take Action", href: "#action" },
+              { label: "Learn More", href: "#learn" }
+            ]}
           />
         </div>
 
@@ -564,20 +586,12 @@ export default function CalloutMediaBannerShowcase() {
                   <div style={{ flex: '1 1 0', minWidth: 0 }}>Subheading/description text</div>
                 </div>
 
-                {/* primaryButton */}
+                {/* buttons */}
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem', borderBottom: '1px solid var(--bs-border-color, #dee2e6)' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>primaryButton</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>{`{ label, href?, onClick? }`}</code></div>
+                  <div style={{ width: '140px', flexShrink: 0 }}><code>buttons</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>{`Array<{ label, href?, onClick?, forceColor? }>`}</code></div>
                   <div style={{ width: '120px', flexShrink: 0 }}><code>undefined</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Primary button configuration</div>
-                </div>
-
-                {/* tertiaryButton */}
-                <div className="d-flex flex-row py-3" style={{ gap: '1rem', borderBottom: '1px solid var(--bs-border-color, #dee2e6)' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>tertiaryButton</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>{`{ label, href?, onClick? }`}</code></div>
-                  <div style={{ width: '120px', flexShrink: 0 }}><code>undefined</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Tertiary button configuration</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Button configurations (1-2 buttons supported)</div>
                 </div>
 
                 {/* className */}

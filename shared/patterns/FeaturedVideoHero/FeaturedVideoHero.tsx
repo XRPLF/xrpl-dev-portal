@@ -1,7 +1,7 @@
 import React, { forwardRef, useCallback } from "react";
 import clsx from "clsx";
 import { PageGrid } from "shared/components/PageGrid/page-grid";
-import { Button, ButtonProps } from "shared/components/Button/Button";
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from "shared/patterns/ButtonGroup/ButtonGroup";
 import { isEmpty, isEnvironment } from "shared/utils";
 import {
   DesignConstrainedCallToActionsProps,
@@ -46,10 +46,25 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
       return null;
     }
 
-    const [primaryCta, secondaryCta] = callsToAction ?? [];
+    // Convert callsToAction to ButtonConfig format for ButtonGroup
+    const buttonConfigs: ButtonConfig[] = (callsToAction ?? [])
+      .filter((cta) => !isEmpty(cta))
+      .map((cta) => ({
+        label: typeof cta?.children === 'string' ? cta.children : '',
+        href: cta?.href,
+        onClick: cta?.onClick,
+        forceColor: true,
+      }));
 
-    /** At least one CTA must be non-empty to show the CTA section */
-    const hasCallsToAction = callsToAction?.some((cta) => !isEmpty(cta));
+    // Validate buttons (max 2 CTAs supported)
+    const buttonValidation = validateButtonGroup(buttonConfigs, 2);
+
+    // Log warnings in development mode
+    if (isEnvironment(["development", "test"]) && buttonValidation.warnings.length > 0) {
+      buttonValidation.warnings.forEach(warning => console.warn(warning));
+    }
+
+    const hasCallsToAction = buttonValidation.isValid && buttonValidation.buttons.length > 0;
 
     return (
       <header
@@ -61,39 +76,30 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
           <PageGrid.Row>
             <PageGrid.Col span={{ base: 4, md: 8, lg: 5 }}>
               <div className="bds-featured-video-hero__content">
-                <h1 className="bds-featured-video-hero__title h-md">
+                <h1 className="mb-0 h-md">
                   {headline}
                 </h1>
-                {subtitle && (
-                  <PageGrid.Row className="bds-featured-video-hero__subtitle body-l">
-                    <PageGrid.Col
-                      span={{ base: "fill", md: 6, lg: 10 }}
-                      className="bds-featured-video-hero__subtitle-col"
-                    >
-                      {subtitle}
-                    </PageGrid.Col>
-                  </PageGrid.Row>
-                )}
-                {hasCallsToAction && (
-                  <div className="bds-featured-video-hero__cta-buttons">
-                    {!isEmpty(primaryCta) && (
-                      <Button
-                        {...primaryCta}
-                        variant="primary"
-                        color="green"
-                        forceColor={true}
-                      />
-                    )}
-                    {!isEmpty(secondaryCta) && (
-                      <Button
-                        {...secondaryCta}
-                        variant="tertiary"
-                        color="green"
-                        forceColor={true}
-                      />
-                    )}
-                  </div>
-                )}
+                
+                <div className="bds-featured-video-hero__bottom-group">
+                  {subtitle && (
+                    <PageGrid.Row className="bds-featured-video-hero__subtitle body-l">
+                      <PageGrid.Col
+                        span={{ base: "fill", md: 6, lg: 10 }}
+                        className="bds-featured-video-hero__subtitle-col"
+                      >
+                        {subtitle}
+                      </PageGrid.Col>
+                    </PageGrid.Row>
+                  )}
+                  {hasCallsToAction && (
+                    <ButtonGroup
+                      buttons={buttonValidation.buttons}
+                      color="green"
+                      forceColor
+                      gap="small"
+                    />
+                  )}
+                </div>
               </div>
             </PageGrid.Col>
             <PageGrid.Col

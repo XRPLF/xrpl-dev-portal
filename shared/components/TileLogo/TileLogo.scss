@@ -12,25 +12,12 @@
 // .bds-tile-logo__overlay     - Hover gradient overlay (window shade animation)
 // .bds-tile-logo__image       - Logo image element
 
-@import '../../../styles/breakpoints';
-
 // Grid gutter (matching PageGrid)
 $bds-grid-gutter: 8px;
 
-// =============================================================================
-// Design Tokens
-// =============================================================================
-
-// Focus border colors
+// Focus border colors (component-specific, dark mode default)
 $bds-tile-logo-focus-border-light: $black;
 $bds-tile-logo-focus-border-dark: $white;
-
-// Focus border width
-$bds-tile-logo-focus-border-width: 2px;
-
-// Animation (matching CardOffgrid)
-$bds-tile-logo-transition-duration: 200ms;
-$bds-tile-logo-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 // -----------------------------------------------------------------------------
 // Shape Tokens - Square (1:1 aspect ratio)
@@ -74,14 +61,14 @@ $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
   // Interaction
   cursor: pointer;
 
-  // Transitions
+  // Transitions (using shared animation tokens)
   transition:
-    background-color $bds-tile-logo-transition-duration $bds-tile-logo-transition-timing,
-    opacity $bds-tile-logo-transition-duration $bds-tile-logo-transition-timing;
+    background-color $bds-transition-duration $bds-transition-timing,
+    opacity $bds-transition-duration $bds-transition-timing;
 
   // Focus styles - Dark Mode (default)
   &:focus {
-    outline: $bds-tile-logo-focus-border-width solid $bds-tile-logo-focus-border-dark;
+    outline: $bds-focus-border-width solid $bds-tile-logo-focus-border-dark;
     outline-offset: 1px;
   }
 
@@ -90,7 +77,7 @@ $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
   }
 
   &:focus-visible {
-    outline: $bds-tile-logo-focus-border-width solid $bds-tile-logo-focus-border-dark;
+    outline: $bds-focus-border-width solid $bds-tile-logo-focus-border-dark;
     outline-offset: 2px;
   }
 }
@@ -145,21 +132,14 @@ $bds-tile-logo-rect-padding-lg: 32px 64px; // LG: vertical 32px, horizontal 64px
 // Hover out: shade falls from top to bottom (hides)
 
 .bds-tile-logo__overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  // Default: hidden (shade is "rolled up" at bottom, top is 100% clipped)
-  // When transitioning TO this state, the top inset increases = shade falls down
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path $bds-tile-logo-transition-duration $bds-tile-logo-transition-timing;
+  // Use shared window shade animation mixin
+  @include bds-window-shade-overlay;
 }
 
 // Hovered state: shade fully raised (visible)
 // When transitioning TO this state, the top inset decreases = shade rises up
 .bds-tile-logo--hovered .bds-tile-logo__overlay {
-  clip-path: inset(0 0 0 0);
+  @include bds-window-shade-revealed;
 }
 
 // =============================================================================

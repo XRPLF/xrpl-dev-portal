@@ -1,0 +1,389 @@
+// BDS TextCard Component Styles
+// Brand Design System - Card with title and description
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-text-card                           - Base card container
+// .bds-text-card--green                    - Green variant
+// .bds-text-card--neutral-light            - Neutral light variant
+// .bds-text-card--neutral-dark             - Neutral dark variant
+// .bds-text-card--lilac                    - Lilac variant
+// .bds-text-card--yellow                   - Yellow variant
+// .bds-text-card--blue                     - Blue variant
+// .bds-text-card__overlay                  - Hover gradient overlay (window shade animation)
+// .bds-text-card__title                    - Card title (heading-lg)
+// .bds-text-card__description              - Card description (body-l)
+//
+// Color states from Figma (Light Mode):
+// - Green: Default $green-200, Hover $green-300, Pressed $green-400
+// - NeutralLight: Default $gray-200, Hover $gray-300, Pressed $gray-400
+// - NeutralDark: Default $gray-300, Hover $gray-400, Pressed $gray-500
+// - Lilac: Default $lilac-200, Hover $lilac-300, Pressed $lilac-400
+// - Yellow: Default $yellow-100, Hover $yellow-200, Pressed $yellow-300
+// - Blue: Default $blue-100, Hover $blue-200, Pressed $blue-300
+
+// =============================================================================
+// Design Tokens from Figma
+// =============================================================================
+
+// Card internal padding
+$bds-text-card-padding-mobile: 16px;
+$bds-text-card-padding-tablet: 20px;
+$bds-text-card-padding-desktop: 24px;
+
+// Card heights (fixed per breakpoint)
+$bds-text-card-height-mobile: 274px;
+$bds-text-card-height-tablet: 309px;
+$bds-text-card-height-desktop: 340px;
+
+// Card description max-width (from Figma)
+$bds-text-card-description-max-width: 478px;
+
+// Colors - Light Mode (from Figma)
+$bds-text-color: $black; // #141414 - Neutral black
+
+// =============================================================================
+// TextCard Component
+// =============================================================================
+
+.bds-text-card {
+  // Use shared window shade animation base
+  @include bds-window-shade-base;
+
+  // Layout
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  // Mobile dimensions and padding
+  height: $bds-text-card-height-mobile;
+  padding: $bds-text-card-padding-mobile;
+
+  @include media-breakpoint-up(md) {
+    height: $bds-text-card-height-tablet;
+    padding: $bds-text-card-padding-tablet;
+  }
+
+  @include media-breakpoint-up(lg) {
+    height: $bds-text-card-height-desktop;
+    padding: $bds-text-card-padding-desktop;
+  }
+
+  // Interaction
+  cursor: pointer;
+
+  // Focus styles - Light Mode
+  @include bds-focus-styles($black);
+
+  // Hover state for linked cards
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// =============================================================================
+// Overlay (Window Shade Animation)
+// =============================================================================
+
+.bds-text-card__overlay {
+  @include bds-window-shade-overlay;
+}
+
+// Hover state: reveal overlay
+.bds-text-card:hover .bds-text-card__overlay {
+  @include bds-window-shade-revealed;
+}
+
+// =============================================================================
+// Color Variants - Light Mode
+// =============================================================================
+
+// Green Variant
+// Default: $green-200, Hover: $green-300, Pressed: $green-400
+.bds-text-card--green {
+  background-color: $green-200;
+
+  // Preserve background on focus (overrides light theme transparent rule)
+  &:focus {
+    background-color: $green-200;
+  }
+
+  .bds-text-card__overlay {
+    background-color: $green-300;
+  }
+
+  &:active {
+    .bds-text-card__overlay {
+      background-color: $green-400;
+      @include bds-window-shade-revealed;
+    }
+  }
+}
+
+// Neutral Light Variant (Light Mode)
+// Default: $gray-200, Hover: $gray-300, Focus: $gray-300, Pressed: $gray-400
+.bds-text-card--neutral-light {
+  background-color: $gray-200;
+
+  // Focus uses hover color ($gray-300)
+  &:focus {
+    background-color: $gray-300;
+  }
+
+  .bds-text-card__overlay {
+    background-color: $gray-300;
+  }
+
+  &:active {
+    .bds-text-card__overlay {
+      background-color: $gray-400;
+      @include bds-window-shade-revealed;
+    }
+  }
+}
+
+// Neutral Dark Variant (Light Mode)
+// Default: $gray-300, Hover: $gray-200, Focus: $gray-200, Pressed: $gray-400
+.bds-text-card--neutral-dark {
+  background-color: $gray-300;
+
+  // Focus uses hover color ($gray-200)
+  &:focus {
+    background-color: $gray-200;
+  }
+
+  .bds-text-card__overlay {
+    background-color: $gray-200;
+  }
+
+  &:active {
+    .bds-text-card__overlay {
+      background-color: $gray-400;
+      @include bds-window-shade-revealed;
+    }
+  }
+}
+
+// Lilac Variant
+// Default: $lilac-200, Hover: $lilac-300, Pressed: $lilac-400
+.bds-text-card--lilac {
+  background-color: $lilac-200;
+
+  // Preserve background on focus (overrides light theme transparent rule)
+  &:focus {
+    background-color: $lilac-200;
+  }
+
+  .bds-text-card__overlay {
+    background-color: $lilac-300;
+  }
+
+  &:active {
+    .bds-text-card__overlay {
+      background-color: $lilac-400;
+      @include bds-window-shade-revealed;
+    }
+  }
+}
+
+// Yellow Variant
+// Default: $yellow-100, Hover: $yellow-200, Pressed: $yellow-300
+.bds-text-card--yellow {
+  background-color: $yellow-100;
+
+  // Preserve background on focus (overrides light theme transparent rule)
+  &:focus {
+    background-color: $yellow-100;
+  }
+
+  .bds-text-card__overlay {
+    background-color: $yellow-200;
+  }
+
+  &:active {
+    .bds-text-card__overlay {
+      background-color: $yellow-300;
+      @include bds-window-shade-revealed;
+    }
+  }
+}
+
+// Blue Variant
+// Default: $blue-100, Hover: $blue-200, Pressed: $blue-300
+.bds-text-card--blue {
+  background-color: $blue-100;
+
+  // Preserve background on focus (overrides light theme transparent rule)
+  &:focus {
+    background-color: $blue-100;
+  }
+
+  .bds-text-card__overlay {
+    background-color: $blue-200;
+  }
+
+  &:active {
+    .bds-text-card__overlay {
+      background-color: $blue-300;
+      @include bds-window-shade-revealed;
+    }
+  }
+}
+
+// =============================================================================
+// Card Title
+// =============================================================================
+
+.bds-text-card__title {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: $bds-text-color;
+  // Typography handled by .h-lg class from _font.scss
+}
+
+// =============================================================================
+// Card Description
+// =============================================================================
+
+.bds-text-card__description {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: $bds-text-color;
+  max-width: $bds-text-card-description-max-width;
+  // Typography handled by .body-l class from _font.scss
+}
+
+// =============================================================================
+// Disabled State
+// =============================================================================
+
+.bds-text-card--disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+// =============================================================================
+// Light Mode Overrides
+// =============================================================================
+// Override the light theme rule: a:not(.bds-link):not(.btn):focus { background-color: transparent }
+// This rule has higher specificity, so we need html.light scoped rules
+
+html.light {
+  a.bds-text-card.bds-text-card--green:focus {
+    background-color: $green-200;
+  }
+  a.bds-text-card.bds-text-card--neutral-light:focus {
+    background-color: $gray-300;
+  }
+  a.bds-text-card.bds-text-card--neutral-dark:focus {
+    background-color: $gray-200;
+  }
+  a.bds-text-card.bds-text-card--lilac:focus {
+    background-color: $lilac-200;
+  }
+  a.bds-text-card.bds-text-card--yellow:focus {
+    background-color: $yellow-100;
+  }
+  a.bds-text-card.bds-text-card--blue:focus {
+    background-color: $blue-100;
+  }
+
+  // Disabled state in light mode: $gray-100 background, $gray-500 text
+  .bds-text-card--disabled {
+    background-color: $gray-100 !important;
+
+    .bds-text-card__title,
+    .bds-text-card__description {
+      color: $gray-500;
+    }
+
+    .bds-text-card__overlay {
+      display: none;
+    }
+  }
+}
+
+// =============================================================================
+// Dark Mode Styles
+// =============================================================================
+// In dark mode:
+// - Focus border changes from black to white
+// - Text color remains black (cards have light-colored backgrounds)
+// - Neutral-light dark mode: Default $gray-300, Hover $gray-200, Focus $gray-200, Pressed $gray-400
+// - Neutral-dark dark mode: Default $gray-400, Hover $gray-300, Focus $gray-300, Pressed $gray-500
+
+html.dark {
+  .bds-text-card {
+    // Focus styles - Dark Mode (white border)
+    &:focus-visible {
+      outline-color: $white;
+    }
+  }
+
+  // Neutral Light in dark mode
+  // Default: $gray-300, Hover: $gray-200, Focus: $gray-200, Pressed: $gray-400
+  .bds-text-card--neutral-light {
+    background-color: $gray-300;
+
+    &:focus {
+      background-color: $gray-200;
+    }
+
+    .bds-text-card__overlay {
+      background-color: $gray-200;
+    }
+
+    &:active {
+      .bds-text-card__overlay {
+        background-color: $gray-400;
+        @include bds-window-shade-revealed;
+      }
+    }
+  }
+
+  // Neutral Dark in dark mode
+  // Default: $gray-400, Hover: $gray-300, Focus: $gray-300, Pressed: $gray-500
+  .bds-text-card--neutral-dark {
+    background-color: $gray-400;
+
+    &:focus {
+      background-color: $gray-300;
+    }
+
+    .bds-text-card__overlay {
+      background-color: $gray-300;
+    }
+
+    &:active {
+      .bds-text-card__overlay {
+        background-color: $gray-500;
+        @include bds-window-shade-revealed;
+      }
+    }
+  }
+
+  // Focus overrides for dark mode (to override light theme rules)
+  a.bds-text-card.bds-text-card--neutral-light:focus {
+    background-color: $gray-200;
+  }
+
+  a.bds-text-card.bds-text-card--neutral-dark:focus {
+    background-color: $gray-300;
+  }
+
+  // Disabled state in dark mode: $gray-500 background with 30% opacity
+  .bds-text-card--disabled {
+    background-color: rgba($gray-500, 0.3) !important;
+
+    .bds-text-card__overlay {
+      display: none;
+    }
+  }
+}
+
