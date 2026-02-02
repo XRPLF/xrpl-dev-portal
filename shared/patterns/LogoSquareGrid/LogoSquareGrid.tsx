@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
-import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface LogoItem extends TileLogoProps {}
 
@@ -62,6 +62,14 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   logos,
   className = '',
 }) => {
+  // Validate buttons if provided (max 2 buttons supported)
+  const buttonValidation = buttons ? validateButtonGroup(buttons, 2) : null;
+
+  // Log warnings in development mode
+  if (process.env.NODE_ENV === 'development' && buttonValidation?.warnings.length) {
+    buttonValidation.warnings.forEach(warning => console.warn(warning));
+  }
+
   // Build class names using BEM with bds namespace
   const classNames = clsx(
     'bds-logo-square-grid',
@@ -70,7 +78,8 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   );
 
   // Determine if we should show the header section
-  const hasHeader = !!(heading || description || (buttons && buttons.length > 0));
+  const hasButtons = buttonValidation?.isValid && buttonValidation.buttons.length > 0;
+  const hasHeader = !!(heading || description || hasButtons);
 
   return (
     <PageGrid className={classNames}>
@@ -88,9 +97,9 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
                 )}
 
                 {/* Buttons */}
-                {buttons && buttons.length > 0 && (
+                {hasButtons && (
                   <ButtonGroup
-                    buttons={buttons}
+                    buttons={buttonValidation.buttons}
                     color="green"
                     gap="small"
                   />

@@ -108,7 +108,6 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
   heading,
   description,
   logos,
-  className = '',
 }) => {
   // Build class names using BEM with bds namespace
   const classNames = clsx(
