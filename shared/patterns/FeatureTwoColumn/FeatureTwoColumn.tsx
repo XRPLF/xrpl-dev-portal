@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid } from '../../components/PageGrid/page-grid';
-import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface FeatureTwoColumnLink {
   /** Link label text */
@@ -59,14 +59,6 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
   media,
   className,
 }) => {
-  // Build root class names
-  const rootClasses = clsx(
-    'bds-feature-two-column',
-    `bds-feature-two-column--${color}`,
-    `bds-feature-two-column--${arrange}`,
-    className
-  );
-
   // Determine button color based on background
   // Rule: Black buttons must be used for all backgrounds (including neutral)
   const buttonColor = 'black';
@@ -79,15 +71,29 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
     forceColor: forceColor,
   }));
 
+  // Validate buttons (FeatureTwoColumn supports 1-5 links per design spec)
+  const buttonValidation = validateButtonGroup(buttonConfigs, 5);
+
+  // Log warnings in development mode
+  if (process.env.NODE_ENV === 'development' && buttonValidation.warnings.length > 0) {
+    buttonValidation.warnings.forEach(warning => console.warn(warning));
+  }
+
+  // Build root class names
+  const rootClasses = clsx(
+    'bds-feature-two-column',
+    `bds-feature-two-column--${color}`,
+    `bds-feature-two-column--${arrange}`,
+    className
+  );
+
   // Render content section with ButtonGroup
   const renderContent = () => {
-    const linkCount = links.length;
-
-    // Determine content class based on link count
+    // Determine content class based on validated button count
     const contentClass = clsx(
       'bds-feature-two-column__content',
       {
-        'bds-feature-two-column__content--multiple': linkCount >= 3,
+        'bds-feature-two-column__content--multiple': buttonValidation.buttons.length >= 3,
       }
     );
 
@@ -97,13 +103,15 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
           <h2 className="bds-feature-two-column__title">{title}</h2>
           <p className="bds-feature-two-column__description">{description}</p>
         </div>
-        <ButtonGroup
-          buttons={buttonConfigs}
-          color={buttonColor}
-          forceColor={forceColor}
-          gap="none"
-          singleButtonVariant="secondary"
-        />
+        {buttonValidation.isValid && (
+          <ButtonGroup
+            buttons={buttonValidation.buttons}
+            color={buttonColor}
+            forceColor={forceColor}
+            gap="none"
+            singleButtonVariant="secondary"
+          />
+        )}
       </div>
     );
   };

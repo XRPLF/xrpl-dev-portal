@@ -13,6 +13,74 @@ export interface ButtonConfig {
   onClick?: () => void;
 }
 
+export interface ButtonGroupValidationResult {
+  /** The validated and potentially trimmed list of buttons */
+  buttons: ButtonConfig[];
+  /** Whether the button list is valid and should render */
+  isValid: boolean;
+  /** Any warnings generated during validation */
+  warnings: string[];
+}
+
+/**
+ * Validates and processes a ButtonConfig array for ButtonGroup.
+ *
+ * Performs the following validations:
+ * - Applies maxButtons limit if specified
+ * - Checks for empty button arrays
+ * - Validates individual button configs (label required, href or onClick recommended)
+ *
+ * @param buttons - Array of button configurations
+ * @param maxButtons - Optional maximum number of buttons to render
+ * @returns Validation result with processed buttons, validity flag, and warnings
+ *
+ * @example
+ * const result = validateButtonGroup(buttons, 2);
+ * if (!result.isValid) return null;
+ * // Use result.buttons for rendering
+ */
+export function validateButtonGroup(
+  buttons: ButtonConfig[],
+  maxButtons?: number
+): ButtonGroupValidationResult {
+  const warnings: string[] = [];
+  let buttonList = [...buttons];
+
+  // Validate individual button configs
+  buttonList.forEach((button, index) => {
+    if (!button.label || button.label.trim() === '') {
+      warnings.push(
+        `[ButtonGroup] Button at index ${index} is missing a label. This button may not render correctly.`
+      );
+    }
+    if (!button.href && !button.onClick) {
+      warnings.push(
+        `[ButtonGroup] Button "${button.label || `at index ${index}`}" has no href or onClick. Consider adding an action.`
+      );
+    }
+  });
+
+  // Apply maxButtons limit if specified
+  if (maxButtons !== undefined && maxButtons > 0 && buttons.length > maxButtons) {
+    warnings.push(
+      `[ButtonGroup] ${buttons.length} buttons were passed but maxButtons is set to ${maxButtons}. ` +
+      `Only the first ${maxButtons} button(s) will be rendered.`
+    );
+    buttonList = buttonList.slice(0, maxButtons);
+  }
+
+  // Check for empty array
+  if (buttonList.length === 0) {
+    warnings.push(
+      `[ButtonGroup] No buttons to render. ` +
+      `Either an empty buttons array was passed or all buttons were removed by maxButtons limit.`
+    );
+    return { buttons: [], isValid: false, warnings };
+  }
+
+  return { buttons: buttonList, isValid: true, warnings };
+}
+
 export interface ButtonGroupProps {
   /** Array of button configurations
    * - 1 button: renders with singleButtonVariant (default: primary)
@@ -79,18 +147,20 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   singleButtonVariant = 'primary',
   maxButtons,
 }) => {
-  // Start with the provided buttons array
-  let buttonList: ButtonConfig[] = [...buttons];
+  // Validate and process buttons
+  const validation = validateButtonGroup(buttons, maxButtons);
 
-  // Apply maxButtons limit if specified
-  if (maxButtons !== undefined && maxButtons > 0) {
-    buttonList = buttonList.slice(0, maxButtons);
+  // Log warnings in development mode
+  if (process.env.NODE_ENV === 'development' && validation.warnings.length > 0) {
+    validation.warnings.forEach(warning => console.warn(warning));
   }
 
-  // Don't render if no buttons are provided
-  if (buttonList.length === 0) {
+  // Don't render if validation failed
+  if (!validation.isValid) {
     return null;
   }
+
+  const buttonList = validation.buttons;
 
   const isMultiButton = buttonList.length >= 3;
 
@@ -136,8 +206,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           variant={firstButtonVariant}
           color={color}
           forceColor={forceColor}
-          href={buttonList[0].href}
-          onClick={buttonList[0].onClick}
+          {...buttonList[0]}
         >
           {buttonList[0].label}
         </Button>
@@ -147,8 +216,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           variant="tertiary"
           color={color}
           forceColor={forceColor}
-          href={buttonList[1].href}
-          onClick={buttonList[1].onClick}
+          {...buttonList[1]}
         >
           {buttonList[1].label}
         </Button>
