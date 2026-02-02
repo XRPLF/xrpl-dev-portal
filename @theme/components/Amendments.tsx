@@ -416,7 +416,7 @@ export function Badge(props: {
       "in development": "lightgrey",
       "開発中": "lightgrey", // ja: in development
       "inactive": "lightgrey",
-      "非アクティブ": "lightgrey" // ja: inactive
+      "無効": "lightgrey" // ja: inactive
     }
 
     let childstrings = ""
