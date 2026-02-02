@@ -17278,6 +17278,10 @@ body.bds-mobile-menu-open {
   overflow: hidden;
 }
 
+html:has(body.bds-mobile-menu-open) {
+  overflow: hidden;
+}
+
 @media (min-width: 576px) {
   body.bds-submenu-open {
     overflow: hidden;
