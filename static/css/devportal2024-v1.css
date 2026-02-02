@@ -16522,7 +16522,9 @@ html.dark:has(.bds-navbar) {
 .bds-submenu__tier2 {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 4px;
+  padding-bottom: 16px;
   width: 100%;
   margin-top: auto;
 }
@@ -16809,6 +16811,7 @@ html.light .bds-submenu a.bds-submenu__parent-link:not(.bds-link):focus-visible 
 }
 .bds-submenu--community .bds-submenu__tier2 {
   margin-top: auto;
+  justify-content: flex-end;
   gap: 4px;
 }
 
@@ -16886,7 +16889,7 @@ html.light .bds-submenu a.bds-submenu__parent-link:not(.bds-link):focus-visible 
   gap: 4px;
 }
 .bds-submenu--network .bds-submenu__pattern-container {
-  margin-top: 16px;
+  margin-top: 8px;
   width: 242px;
   height: 114px;
   overflow: hidden;
@@ -17272,6 +17275,10 @@ html.light .bds-submenu a.bds-submenu__parent-link:not(.bds-link):focus-visible 
 }
 
 body.bds-mobile-menu-open {
+  overflow: hidden;
+}
+
+html:has(body.bds-mobile-menu-open) {
   overflow: hidden;
 }
 
