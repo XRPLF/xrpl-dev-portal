@@ -1,0 +1,244 @@
+// BDS CarouselButton Component Styles
+// Brand Design System - Circular navigation button for carousels
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-carousel-button              - Base button
+// .bds-carousel-button--prev        - Previous/left direction
+// .bds-carousel-button--next        - Next/right direction
+// .bds-carousel-button--neutral     - Neutral/gray color variant
+// .bds-carousel-button--green       - Green color variant
+// .bds-carousel-button--black       - Black/white color variant
+// .bds-carousel-button--disabled    - Disabled state modifier
+// .bds-carousel-button__arrow-icon  - Arrow icon element
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Button dimensions
+$bds-carousel-button-size-sm: 37px;     // Mobile/Tablet
+$bds-carousel-button-size-lg: 40px;     // Desktop
+
+// Transition
+$bds-carousel-button-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// =============================================================================
+// Base Button Styles
+// =============================================================================
+
+.bds-carousel-button {
+  // Reset button styles
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  // Layout
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $bds-carousel-button-size-sm;
+  height: $bds-carousel-button-size-sm;
+
+  // Transition
+  transition: background-color $bds-carousel-button-transition,
+              opacity $bds-carousel-button-transition;
+
+  @include media-breakpoint-up(lg) {
+    width: $bds-carousel-button-size-lg;
+    height: $bds-carousel-button-size-lg;
+  }
+
+  // Focus styles
+  &:focus {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 2px;
+  }
+}
+
+// =============================================================================
+// Arrow Icon
+// =============================================================================
+
+.bds-carousel-button__arrow-icon {
+  width: 18px;
+  height: 16px;
+
+  @include media-breakpoint-down(lg) {
+    width: 18px;
+    height: 15px;
+  }
+}
+
+// =============================================================================
+// DARK MODE (Default) - Color Variants
+// =============================================================================
+
+// Green button variant - Dark Mode
+// Enabled: green-300, Hover: green-400, Active/Pressed: green-300, Disabled: green-500 @ 0.5 opacity
+.bds-carousel-button--green {
+  background-color: $green-300;
+  color: $black;
+
+  &:hover:not(:disabled) {
+    background-color: $green-400;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $green-300;
+  }
+
+  &.bds-carousel-button--disabled,
+  &:disabled {
+    background-color: $green-500 !important;
+    color: #F0F3F7 !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+}
+
+// Neutral/Grey button variant - Dark Mode
+// Enabled: gray-300, Hover: gray-400, Active/Pressed: gray-300, Disabled: gray-500 @ 0.5 opacity
+.bds-carousel-button--neutral {
+  background-color: $gray-300;
+  color: $black;
+
+  &:hover:not(:disabled) {
+    background-color: $gray-400;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $gray-300;
+  }
+
+  &.bds-carousel-button--disabled,
+  &:disabled {
+    background-color: $gray-500 !important;
+    color: $gray-300 !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+}
+
+// Black variant becomes White in Dark Mode
+// Enabled: white, Hover: gray-300, Active/Pressed: white, Disabled: gray-500 @ 0.5 opacity
+.bds-carousel-button--black {
+  background-color: $white;
+  color: $black;
+
+  &:hover:not(:disabled) {
+    background-color: $gray-300;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $white;
+  }
+
+  &.bds-carousel-button--disabled,
+  &:disabled {
+    background-color: $gray-500 !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+}
+
+// =============================================================================
+// LIGHT MODE (html.light) - Color Variants
+// =============================================================================
+
+html.light {
+  // Focus styles - Light Mode
+  .bds-carousel-button {
+    &:focus {
+      outline-color: $gray-900;
+    }
+
+    &:focus-visible {
+      outline-color: $gray-900;
+    }
+  }
+
+  // Green button variant - Light Mode
+  // Enabled: green-300, Hover: green-200, Active/Pressed: green-300, Disabled: green-100
+  .bds-carousel-button--green {
+    background-color: $green-300;
+    color: $black;
+
+    &:hover:not(:disabled) {
+      background-color: $green-200;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $green-300;
+    }
+
+    &.bds-carousel-button--disabled,
+    &:disabled {
+      background-color: $green-100 !important;
+      color: $gray-300 !important;
+      opacity: 1 !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  // Neutral/Grey button variant - Light Mode
+  // Enabled: gray-300, Hover: gray-200, Active/Pressed: gray-300, Disabled: gray-100
+  .bds-carousel-button--neutral {
+    background-color: $gray-300;
+    color: $black;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-200;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $gray-300;
+    }
+
+    &.bds-carousel-button--disabled,
+    &:disabled {
+      background-color: $gray-100 !important;
+      color: $gray-300 !important;
+      opacity: 1 !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  // Black button variant - Light Mode
+  // Enabled: black, Hover: gray-500, Active/Pressed: black, Disabled: #F0F3F7
+  .bds-carousel-button--black {
+    background-color: $black;
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-500;
+    }
+
+    &:active:not(:disabled) {
+      background-color: $black;
+    }
+
+    &.bds-carousel-button--disabled,
+    &:disabled {
+      background-color: #F0F3F7 !important;
+      color: $gray-300 !important;
+      opacity: 1 !important;
+      cursor: not-allowed !important;
+    }
+  }
+}
+
