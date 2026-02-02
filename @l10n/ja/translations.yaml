@@ -155,6 +155,8 @@ amendment.table.status: ステータス
 amendment.status.enabled: 有効
 amendment.status.eta: 予定
 amendment.status.openForVoting: 投票中
+amendment.status.inactive: 無効
+amendment.status.inactiveButton: 詳細を取得する
 
 # index.page.tsx
 home.hero.h1part1: ビジネスのための
