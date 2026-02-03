@@ -215,11 +215,14 @@ $bds-grid-gutter: 8px;
   &__content--multiple {
     // Mobile: no gap since we only have 2 items (text-group and button-group)
     // The 24px gap is handled via button-group margin or flex gap
-    gap: 0;
+    gap: 24px;
     justify-content: flex-start;
 
+    @include media-breakpoint-up(md) {
+      gap: 0;
+    }
+
     @include media-breakpoint-up(lg) {
-      gap: 0; // Desktop uses space-between for auto distribution
       justify-content: space-between;
     }
 

@@ -21299,12 +21299,16 @@ html.dark .bds-cards-featured__description {
   }
 }
 .bds-feature-two-column__content--multiple {
-  gap: 0;
+  gap: 24px;
   justify-content: flex-start;
+}
+@media (min-width: 576px) {
+  .bds-feature-two-column__content--multiple {
+    gap: 0;
+  }
 }
 @media (min-width: 992px) {
   .bds-feature-two-column__content--multiple {
-    gap: 0;
     justify-content: space-between;
   }
 }
