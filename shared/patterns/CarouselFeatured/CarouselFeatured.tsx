@@ -181,20 +181,16 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
             <div className="bds-carousel-featured__header">
               <h2 className="bds-carousel-featured__heading h-md">{heading}</h2>
               <div className="bds-carousel-featured__nav bds-carousel-featured__nav--desktop">
-                <CarouselButton
-                  direction="prev"
-                  variant={buttonVariant}
-                  disabled={!canGoPrev}
-                  onClick={goToPrev}
-                  aria-label="Previous slide"
-                />
-                <CarouselButton
-                  direction="next"
-                  variant={buttonVariant}
-                  disabled={!canGoNext}
-                  onClick={goToNext}
-                  aria-label="Next slide"
-                />
+                {(['prev', 'next'] as const).map((direction) => (
+                  <CarouselButton
+                    key={direction}
+                    direction={direction}
+                    variant={buttonVariant}
+                    disabled={direction === 'prev' ? !canGoPrev : !canGoNext}
+                    onClick={direction === 'prev' ? goToPrev : goToNext}
+                    aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}
+                  />
+                ))}
               </div>
             </div>
 
@@ -231,20 +227,16 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
 
                 {/* Mobile/Tablet nav buttons */}
                 <div className="bds-carousel-featured__nav bds-carousel-featured__nav--mobile">
-                  <CarouselButton
-                    direction="prev"
-                    variant={buttonVariant}
-                    disabled={!canGoPrev}
-                    onClick={goToPrev}
-                    aria-label="Previous slide"
-                  />
-                  <CarouselButton
-                    direction="next"
-                    variant={buttonVariant}
-                    disabled={!canGoNext}
-                    onClick={goToNext}
-                    aria-label="Next slide"
-                  />
+                  {(['prev', 'next'] as const).map((direction) => (
+                    <CarouselButton
+                      key={direction}
+                      direction={direction}
+                      variant={buttonVariant}
+                      disabled={direction === 'prev' ? !canGoPrev : !canGoNext}
+                      onClick={direction === 'prev' ? goToPrev : goToNext}
+                      aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}
+                    />
+                  ))}
                 </div>
               </div>
             </div> {/* Close bottom */}
