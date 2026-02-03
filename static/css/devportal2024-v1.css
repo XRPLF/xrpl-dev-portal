@@ -5770,7 +5770,7 @@ textarea.form-control-lg {
   justify-content: space-evenly !important;
 }
 
-.align-items-start, .bds-button-group {
+.align-items-start {
   align-items: flex-start !important;
 }
 
@@ -19898,6 +19898,95 @@ html.dark .bds-text-card--disabled .bds-text-card__overlay {
   }
 }
 
+.bds-featured-video-hero {
+  padding: 24px 0;
+}
+@media (min-width: 576px) {
+  .bds-featured-video-hero {
+    padding: 32px 0;
+  }
+}
+@media (min-width: 992px) {
+  .bds-featured-video-hero {
+    padding: 40px 0;
+  }
+}
+html.light .bds-featured-video-hero {
+  background-color: #FFFFFF;
+}
+html.dark .bds-featured-video-hero {
+  background-color: #141414;
+}
+.bds-featured-video-hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+@media (min-width: 576px) {
+  .bds-featured-video-hero__content {
+    gap: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-featured-video-hero__content {
+    gap: 40px;
+  }
+}
+.bds-featured-video-hero__subtitle {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.bds-featured-video-hero__video-container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  margin-top: 16px;
+}
+@media (min-width: 576px) {
+  .bds-featured-video-hero__video-container {
+    margin-top: 24px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-featured-video-hero__video-container {
+    margin-top: 0px;
+  }
+}
+.bds-featured-video-hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: inline-block;
+}
+.bds-featured-video-hero__bottom-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: auto;
+  width: 100%;
+}
+@media (min-width: 576px) {
+  .bds-featured-video-hero__bottom-group {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-featured-video-hero__bottom-group {
+    gap: 40px;
+  }
+}
+.bds-featured-video-hero__bottom-group p:last-child {
+  margin-bottom: 0;
+}
+
 .bds-header-hero-primary-media {
   padding-top: 24px;
   padding-bottom: 24px;
@@ -20306,6 +20395,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 }
 
 .bds-button-group {
+  align-items: start;
   gap: 8px;
 }
 @media (min-width: 576px) {
@@ -21209,12 +21299,16 @@ html.dark .bds-cards-featured__description {
   }
 }
 .bds-feature-two-column__content--multiple {
-  gap: 0;
+  gap: 24px;
   justify-content: flex-start;
+}
+@media (min-width: 576px) {
+  .bds-feature-two-column__content--multiple {
+    gap: 0;
+  }
 }
 @media (min-width: 992px) {
   .bds-feature-two-column__content--multiple {
-    gap: 0;
     justify-content: space-between;
   }
 }

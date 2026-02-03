@@ -108,7 +108,6 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
             buttons={buttonValidation.buttons}
             color={buttonColor}
             forceColor={forceColor}
-            gap="none"
             singleButtonVariant="secondary"
           />
         )}
