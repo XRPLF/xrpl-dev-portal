@@ -33,6 +33,7 @@
   }
 
   &__subtitle {
+    width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -45,7 +46,7 @@
     margin-top: 16px;
 
     @include media-breakpoint-up(md) {
-      margin-top: 32px;
+      margin-top: 24px;
     }
 
     @include media-breakpoint-up(lg) {
@@ -68,6 +69,7 @@
     flex-wrap: wrap;
     gap: 24px;
     margin-top: auto;
+    width: 100%;
 
     @include media-breakpoint-up(md) {
       flex-direction: row !important;

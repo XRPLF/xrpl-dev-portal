@@ -74,7 +74,7 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
       >
         <PageGrid>
           <PageGrid.Row>
-            <PageGrid.Col span={{ base: 4, md: 8, lg: 5 }}>
+            <PageGrid.Col span={{ base: 4, md: 8, lg: 6 }}>
               <div className="bds-featured-video-hero__content">
                 <h1 className="mb-0 h-md">
                   {headline}
@@ -104,7 +104,6 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
             </PageGrid.Col>
             <PageGrid.Col
               span={{ base: 4, md: 8, lg: 6 }}
-              offset={{ base: 0, md: 0, lg: 1 }}
             >
               <div className="bds-featured-video-hero__video-container">
                 <video

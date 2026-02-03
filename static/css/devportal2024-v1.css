@@ -5770,7 +5770,7 @@ textarea.form-control-lg {
   justify-content: space-evenly !important;
 }
 
-.align-items-start, .bds-button-group {
+.align-items-start {
   align-items: flex-start !important;
 }
 
@@ -19934,6 +19934,7 @@ html.dark .bds-featured-video-hero {
   }
 }
 .bds-featured-video-hero__subtitle {
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -19946,7 +19947,7 @@ html.dark .bds-featured-video-hero {
 }
 @media (min-width: 576px) {
   .bds-featured-video-hero__video-container {
-    margin-top: 32px;
+    margin-top: 24px;
   }
 }
 @media (min-width: 992px) {
@@ -19968,6 +19969,7 @@ html.dark .bds-featured-video-hero {
   flex-wrap: wrap;
   gap: 24px;
   margin-top: auto;
+  width: 100%;
 }
 @media (min-width: 576px) {
   .bds-featured-video-hero__bottom-group {
@@ -20393,6 +20395,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 }
 
 .bds-button-group {
+  align-items: start;
   gap: 8px;
 }
 @media (min-width: 576px) {
