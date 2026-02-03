@@ -1,10 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import clsx from 'clsx';
-import { Button } from '../../components/Button';
 import { CarouselButton } from '../../components/CarouselButton';
 import { Divider } from '../../components/Divider';
 import { PageGrid, PageGridRow, PageGridCol } from '../../components/PageGrid';
-import { ButtonConfig } from '../ButtonGroup';
+import { ButtonGroup, ButtonConfig } from '../ButtonGroup';
 
 /**
  * Props for a single slide in the CarouselFeatured component
@@ -221,35 +220,14 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
                 primaryButton && tertiaryButton && 'bds-carousel-featured__cta--two-buttons'
               )}>
                 {/* Buttons wrapper - groups primary and tertiary together */}
-                <div className="bds-carousel-featured__buttons">
-                  {/* Primary button */}
-                  {primaryButton && (
-                    <Button
-                      variant="primary"
-                      color="black"
-                      forceColor={background !== 'neutral'}
-                      href={primaryButton.href}
-                      onClick={primaryButton.onClick}
-                      className="bds-carousel-featured__primary-btn"
-                    >
-                      {primaryButton.label}
-                    </Button>
-                  )}
-
-                  {/* Tertiary button */}
-                  {tertiaryButton && (
-                    <Button
-                      variant="tertiary"
-                      color="black"
-                      forceColor={background !== 'neutral'}
-                      href={tertiaryButton.href}
-                      onClick={tertiaryButton.onClick}
-                      className="bds-carousel-featured__tertiary-btn"
-                    >
-                      {tertiaryButton.label}
-                    </Button>
-                  )}
-                </div>
+                {(primaryButton || tertiaryButton) && (
+                  <ButtonGroup
+                    buttons={[primaryButton, tertiaryButton].filter((btn): btn is ButtonConfig => !!btn)}
+                    color="black"
+                    forceColor={background !== 'neutral'}
+                    className="bds-carousel-featured__buttons"
+                  />
+                )}
 
                 {/* Mobile/Tablet nav buttons */}
                 <div className="bds-carousel-featured__nav bds-carousel-featured__nav--mobile">
