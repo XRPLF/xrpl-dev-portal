@@ -131,20 +131,16 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
             <p className="bds-carousel-card-list__description body-l">{description}</p>
           </div>
           <div className="bds-carousel-card-list__nav">
-            <CarouselButton
-              direction="prev"
-              variant={buttonVariant}
-              disabled={!canScrollPrev}
-              onClick={() => scroll('prev')}
-              aria-label="Previous cards"
-            />
-            <CarouselButton
-              direction="next"
-              variant={buttonVariant}
-              disabled={!canScrollNext}
-              onClick={() => scroll('next')}
-              aria-label="Next cards"
-            />
+            {(['prev', 'next'] as const).map((direction) => (
+              <CarouselButton
+                key={direction}
+                direction={direction}
+                variant={buttonVariant}
+                disabled={direction === 'prev' ? !canScrollPrev : !canScrollNext}
+                onClick={() => scroll(direction)}
+                aria-label={direction === 'prev' ? 'Previous cards' : 'Next cards'}
+              />
+            ))}
           </div>
         </div>
 
