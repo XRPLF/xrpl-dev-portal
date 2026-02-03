@@ -5,6 +5,7 @@
 // .bds-button-group                - Base component
 // .bds-button-group--gap-none      - No gap between buttons on tablet+ (0px)
 // .bds-button-group--gap-small     - Small gap between buttons on tablet+ (8px)
+// .bds-button-group--block         - Block layout for 3+ buttons (all tertiary)
 
 // =============================================================================
 // Base Component Styles
@@ -13,8 +14,8 @@
 .bds-button-group {
   @extend .d-flex;
   @extend .flex-column;
-  @extend .align-items-start;
   @extend .flex-wrap;
+  align-items: start;
   gap: 8px;
   
   // Tablet breakpoint - horizontal layout
@@ -39,5 +40,20 @@
   // Tablet breakpoint - keep 8px gap
   @include media-breakpoint-up(md) {
     gap: 4px;
+  }
+}
+
+// =============================================================================
+// Block Layout Modifier (3+ buttons)
+// =============================================================================
+
+.bds-button-group--block {
+  // Override default flex layout - force column layout on all screen sizes
+  flex-direction: column !important;
+  gap: 16px !important;
+
+  // All buttons should be full width in block layout
+  .bds-btn {
+    width: 100%;
   }
 }

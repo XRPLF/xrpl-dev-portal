@@ -40,7 +40,6 @@ $bds-feature-desktop-py: 96px;
 $bds-feature-desktop-text-gap: 16px;
 $bds-feature-desktop-cta-gap-col: 0; // Gap between button rows
 $bds-feature-desktop-content-gap: 0; // Gap between text-group and cta (space-between handles this)
-$bds-feature-desktop-button-gap: 16px; // Gap between buttons in ButtonGroup (consistent across all sizes)
 
 // Spacing - Tablet (576px - 991px) - based on Figma 768px design
 $bds-feature-tablet-py: 80px;
@@ -50,7 +49,6 @@ $bds-feature-tablet-text-gap: 8px;
 $bds-feature-tablet-cta-gap-row: 16px; // Gap between buttons in row from Figma
 $bds-feature-tablet-cta-gap-col: 0;
 $bds-feature-tablet-content-gap: 32px;
-$bds-feature-tablet-button-gap: 16px; // Gap between buttons in ButtonGroup (consistent across all sizes)
 
 // Spacing - Mobile (<576px) - based on Figma 375px design
 $bds-feature-mobile-py: 64px;
@@ -58,7 +56,6 @@ $bds-feature-mobile-px: 16px;
 $bds-feature-mobile-text-gap: 8px;
 $bds-feature-mobile-cta-gap: 16px; // Gap between stacked buttons from Figma
 $bds-feature-mobile-content-gap: 24px;
-$bds-feature-mobile-button-gap: 16px; // Gap between buttons in ButtonGroup (consistent across all sizes)
 
 // Grid gutter - consistent with PageGrid
 $bds-grid-gutter: 8px;
@@ -66,18 +63,6 @@ $bds-grid-gutter: 8px;
 // =============================================================================
 // Base Styles
 // =============================================================================
-.bds-feature-two-column__button-group {
-  .bds-btn--tertiary {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-  }
-}
-
-.bds-feature-two-column__cta-row{
-  .bds-btn--tertiary {
-    padding-top: 16px !important;
-  }
-}
 .bds-feature-two-column {
   width: 100%;
 
@@ -230,50 +215,20 @@ $bds-grid-gutter: 8px;
   &__content--multiple {
     // Mobile: no gap since we only have 2 items (text-group and button-group)
     // The 24px gap is handled via button-group margin or flex gap
-    gap: 0;
+    gap: 24px;
     justify-content: flex-start;
 
+    @include media-breakpoint-up(md) {
+      gap: 0;
+    }
+
     @include media-breakpoint-up(lg) {
-      gap: 0; // Desktop uses space-between for auto distribution
       justify-content: space-between;
     }
 
     // Secondary button should not stretch - keep intrinsic width
     >.bds-btn--secondary {
       align-self: flex-start;
-    }
-  }
-
-  // Button group - contains all buttons in the multiple links layout
-  // 16px gap between buttons on ALL screen sizes
-  &__button-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: $bds-feature-mobile-button-gap; // 16px on mobile
-    margin-top: $bds-feature-mobile-content-gap; // 24px spacing from text-group on mobile
-
-    @include media-breakpoint-up(md) {
-      gap: $bds-feature-tablet-button-gap; // 16px on tablet
-      margin-top: $bds-feature-tablet-content-gap; // 32px spacing from text-group on tablet
-    }
-
-    @include media-breakpoint-up(lg) {
-      gap: $bds-feature-desktop-button-gap; // 16px on desktop
-      margin-top: 0; // Desktop uses space-between, no explicit margin needed
-    }
-
-    // Tertiary links need left padding removed to align text with title
-    >.bds-btn--tertiary {
-      padding-left: 0 !important;
-      margin-left: 0;
-
-      &:hover:not(:disabled):not(.bds-btn--disabled),
-      &:focus:not(:disabled):not(.bds-btn--disabled),
-      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
-      &:active:not(:disabled):not(.bds-btn--disabled) {
-        padding-left: 0 !important;
-      }
     }
   }
 
@@ -308,69 +263,7 @@ $bds-grid-gutter: 8px;
     margin: 0;
   }
 
-  // CTA container - base styles
-  &__cta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 
-    @include media-breakpoint-up(md) {
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-  }
-
-  // CTA variant: Single secondary button - maintains vertical layout
-  &__cta--single {
-    flex-direction: column;
-  }
-
-  // CTA variant: Primary + tertiary - horizontal on tablet+
-  &__cta--double {
-    @include media-breakpoint-up(md) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  // CTA row - for first two buttons in multiple links layout (Primary + Tertiary)
-  // Horizontal layout on tablet+ (md and lg share same styles)
-  &__cta-row {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    @include media-breakpoint-up(md) {
-      flex-direction: row;
-      align-items: center;
-    }
-    @include media-breakpoint-up(lg) {
-      flex-direction: row;
-      align-items: center;
-    }
-  }
-
-  // Tertiary group - groups remaining tertiary links together as a single unit
-  // No gap between tertiary links - they stack tightly as a group
-  &__tertiary-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0; // No spacing between tertiary links in the group
-
-    // Tertiary links need left padding removed to align text with title
-    .bds-btn--tertiary {
-      padding-left: 0 !important;
-      margin-left: 0;
-
-      &:hover:not(:disabled):not(.bds-btn--disabled),
-      &:focus:not(:disabled):not(.bds-btn--disabled),
-      &:focus-visible:not(:disabled):not(.bds-btn--disabled),
-      &:active:not(:disabled):not(.bds-btn--disabled) {
-        padding-left: 0 !important;
-      }
-    }
-  }
 
   // Media container
   &__media {

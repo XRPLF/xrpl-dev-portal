@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Button } from '../../components/Button/Button';
 import { PageGrid } from '../../components/PageGrid/page-grid';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface FeatureTwoColumnLink {
   /** Link label text */
@@ -59,6 +59,26 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
   media,
   className,
 }) => {
+  // Determine button color based on background
+  // Rule: Black buttons must be used for all backgrounds (including neutral)
+  const buttonColor = 'black';
+  const forceColor = true;
+
+  // Convert links to ButtonConfig format
+  const buttonConfigs: ButtonConfig[] = links.map(link => ({
+    label: link.label,
+    href: link.href,
+    forceColor: forceColor,
+  }));
+
+  // Validate buttons (FeatureTwoColumn supports 1-5 links per design spec)
+  const buttonValidation = validateButtonGroup(buttonConfigs, 5);
+
+  // Log warnings in development mode
+  if (process.env.NODE_ENV === 'development' && buttonValidation.warnings.length > 0) {
+    buttonValidation.warnings.forEach(warning => console.warn(warning));
+  }
+
   // Build root class names
   const rootClasses = clsx(
     'bds-feature-two-column',
@@ -67,94 +87,30 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
     className
   );
 
-  // Determine button color based on background
-  // Rule: Black buttons must be used for all backgrounds (including neutral)
-  const buttonColor = 'black';
-  const forceColor = true;
-
-  // Render content section with appropriate CTA layout based on link count
-  // For 3-5 links, items are direct children for space-between distribution
+  // Render content section with ButtonGroup
   const renderContent = () => {
-    const linkCount = links.length;
+    // Determine content class based on validated button count
+    const contentClass = clsx(
+      'bds-feature-two-column__content',
+      {
+        'bds-feature-two-column__content--multiple': buttonValidation.buttons.length >= 3,
+      }
+    );
 
-    // 1 link: Secondary button
-    if (linkCount === 1) {
-      return (
-        <div className="bds-feature-two-column__content">
-          <div className="bds-feature-two-column__text-group">
-            <h2 className="bds-feature-two-column__title">{title}</h2>
-            <p className="bds-feature-two-column__description">{description}</p>
-          </div>
-          <div className="bds-feature-two-column__cta bds-feature-two-column__cta--single">
-            <Button variant="secondary" color={buttonColor} forceColor={forceColor} href={links[0].href}>
-              {links[0].label}
-            </Button>
-          </div>
-        </div>
-      );
-    }
-
-    // 2 links: Primary + Tertiary in a row
-    if (linkCount === 2) {
-      return (
-        <div className="bds-feature-two-column__content">
-          <div className="bds-feature-two-column__text-group">
-            <h2 className="bds-feature-two-column__title">{title}</h2>
-            <p className="bds-feature-two-column__description">{description}</p>
-          </div>
-          <div className="bds-feature-two-column__cta bds-feature-two-column__cta--double">
-            <Button variant="primary" color={buttonColor} forceColor={forceColor} href={links[0].href}>
-              {links[0].label}
-            </Button>
-            <Button variant="tertiary" color={buttonColor} forceColor={forceColor} href={links[1].href}>
-              {links[1].label}
-            </Button>
-          </div>
-        </div>
-      );
-    }
-
-    // 3-5 links: Text group + Button group (contains all buttons with consistent 16px spacing)
-    // Desktop: space-between distribution between text-group and button-group
-    // Tablet: 32px gap, Mobile: 24px gap
     return (
-      <div className="bds-feature-two-column__content bds-feature-two-column__content--multiple">
+      <div className={contentClass}>
         <div className="bds-feature-two-column__text-group">
           <h2 className="bds-feature-two-column__title">{title}</h2>
           <p className="bds-feature-two-column__description">{description}</p>
         </div>
-        {/* Button group - all buttons grouped with 16px spacing between them */}
-        <div className="bds-feature-two-column__button-group">
-          {/* First two links in a row: Primary + Tertiary */}
-          <div className="bds-feature-two-column__cta-row">
-            <Button variant="primary" color={buttonColor} forceColor={forceColor} href={links[0].href}>
-              {links[0].label}
-            </Button>
-            {links[1] && (
-              <Button variant="tertiary" color={buttonColor} forceColor={forceColor} href={links[1].href}>
-                {links[1].label}
-              </Button>
-            )}
-          </div>
-          {/* Secondary button */}
-          {links[2] && (
-            <Button variant="secondary" color={buttonColor} forceColor={forceColor} href={links[2].href}>
-              {links[2].label}
-            </Button>
-          )}
-          {/* Remaining tertiary links */}
-          {links.slice(3).map((link) => (
-            <Button
-              key={`${link.href}-${link.label}`}
-              variant="tertiary"
-              color={buttonColor}
-              forceColor={forceColor}
-              href={link.href}
-            >
-              {link.label}
-            </Button>
-          ))}
-        </div>
+        {buttonValidation.isValid && (
+          <ButtonGroup
+            buttons={buttonValidation.buttons}
+            color={buttonColor}
+            forceColor={forceColor}
+            singleButtonVariant="secondary"
+          />
+        )}
       </div>
     );
   };
