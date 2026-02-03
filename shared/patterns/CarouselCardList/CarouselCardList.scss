@@ -29,8 +29,7 @@ $bds-carousel-grid-padding-lg: 32px;            // Desktop (lg+)
 $bds-carousel-grid-max-width: 1280px;           // Max container width (per _breakpoints.scss $xl)
 
 // Spacing - Header gap (between heading and description)
-$bds-carousel-header-gap-sm: 8px;           // Mobile
-$bds-carousel-header-gap-md: 8px;           // Tablet
+$bds-carousel-header-gap-base: 8px;         // Base
 $bds-carousel-header-gap-lg: 16px;          // Desktop
 
 // Spacing - Section gap (between header content and buttons row on mobile)
@@ -109,29 +108,14 @@ $bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 .bds-carousel-card-list__header-content {
   display: flex;
   flex-direction: column;
-  gap: $bds-carousel-header-gap-sm;
+  gap: $bds-carousel-header-gap-base;
   // Full width on mobile and tablet
   max-width: 100%;
-
-  @include media-breakpoint-up(md) {
-    gap: $bds-carousel-header-gap-md;
-  }
 
   // Constrain heading/description to grid (8 columns at desktop)
   @include media-breakpoint-up(lg) {
     gap: $bds-carousel-header-gap-lg;
-    max-width: 808px; // Desktop: 8 columns
   }
-}
-
-.bds-carousel-card-list__heading {
-  margin: 0;
-  // Typography handled by .h-md class from _font.scss
-}
-
-.bds-carousel-card-list__description {
-  margin: 0;
-  // Typography handled by .body-l class from _font.scss
 }
 
 // =============================================================================
@@ -143,9 +127,16 @@ $bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
   gap: $bds-carousel-button-gap;
   justify-content: flex-end;
   flex-shrink: 0;
-  // Add padding to allow focus ring to be visible without clipping
-  padding: 4px;
-  margin: -4px;
+  margin-top: 24px;
+
+   @include media-breakpoint-up(md) {
+    margin-top: 32px;
+  }
+
+  // Constrain heading/description to grid (8 columns at desktop)
+  @include media-breakpoint-up(lg) {
+    margin-top: 40px;
+  }
 }
 
 // =============================================================================
@@ -156,16 +147,16 @@ $bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
   margin-top: $bds-carousel-cards-gap-sm;
   overflow: visible;
   // Add left padding here so it's OUTSIDE the scrollable area
-  padding-left: $bds-carousel-grid-padding-sm;
+  // padding-left: $bds-carousel-grid-padding-sm;
 
   @include media-breakpoint-up(md) {
     margin-top: $bds-carousel-cards-gap-md;
-    padding-left: $bds-carousel-grid-padding-md;
+    // padding-left: $bds-carousel-grid-padding-md;
   }
 
   @include media-breakpoint-up(lg) {
     margin-top: $bds-carousel-cards-gap-lg;
-    padding-left: $bds-carousel-grid-padding-lg;
+    // padding-left: $bds-carousel-grid-padding-lg;
   }
 }
 
@@ -269,6 +260,19 @@ $bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
   }
 }
 
+
+.bds-carousel-card-list__grid {
+  gap: $bds-carousel-section-gap-sm;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-carousel-section-gap-md;
+  }
+
+  // Row layout only at desktop (lg and up)
+  @include media-breakpoint-up(lg) {
+    gap: $bds-carousel-section-gap-lg;
+  }
+}
 // =============================================================================
 // LIGHT MODE (html.light) - Color Variants
 // =============================================================================

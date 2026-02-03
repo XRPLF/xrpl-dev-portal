@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { CardOffgrid, CardOffgridProps } from '../../components/CardOffgrid';
 import { CarouselButton } from '../../components/CarouselButton';
 import type { ButtonProps } from '../../components/Button';
+import { PageGrid } from 'shared/components/PageGrid/page-grid';
 
 /**
  * Configuration for a single card in the CarouselCardList pattern
@@ -121,49 +122,55 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
     return (
       <section
         ref={ref}
-        className={clsx('bds-carousel-card-list', `bds-carousel-card-list--${variant}`, className)}
+        className={clsx(`bds-carousel-card-list--${variant}`, className)}
         {...rest}
       >
-        {/* Header with title, description, and navigation buttons */}
-        <div className="bds-carousel-card-list__header">
-          <div className="bds-carousel-card-list__header-content">
-            <h2 className="bds-carousel-card-list__heading h-md">{heading}</h2>
-            <p className="bds-carousel-card-list__description body-l">{description}</p>
-          </div>
-          <div className="bds-carousel-card-list__nav">
-            <CarouselButton
-              direction="prev"
-              variant={buttonVariant}
-              disabled={!canScrollPrev}
-              onClick={() => scroll('prev')}
-              aria-label="Previous cards"
-            />
-            <CarouselButton
-              direction="next"
-              variant={buttonVariant}
-              disabled={!canScrollNext}
-              onClick={() => scroll('next')}
-              aria-label="Next cards"
-            />
-          </div>
-        </div>
+        <PageGrid className="bds-carousel-card-list__grid"> 
+          {/* Header with title, description, and navigation buttons */}
+          <PageGrid.Row>
+            <PageGrid.Col span={{ base: "fill", md: 6, lg: 8 }}>
+            <div className="bds-carousel-card-list__header-content">
+              <h2 className="mb-0 h-md">{heading}</h2>
+              <p className="mb-0 body-l">{description}</p>
+            </div>
+            </PageGrid.Col>
+          </PageGrid.Row>
+          <PageGrid.Row>
+            <PageGrid.Col className="bds-carousel-card-list__nav">
+              <CarouselButton
+                direction="prev"
+                variant={buttonVariant}
+                disabled={!canScrollPrev}
+                onClick={() => scroll('prev')}
+                aria-label="Previous cards"
+              />
+              <CarouselButton
+                direction="next"
+                variant={buttonVariant}
+                disabled={!canScrollNext}
+                onClick={() => scroll('next')}
+                aria-label="Next cards"
+              />
+            </PageGrid.Col>
+          </PageGrid.Row>
 
-        {/* Cards scroll container - full bleed */}
-        <div className="bds-carousel-card-list__track-wrapper">
-          <div
-            ref={scrollContainerRef}
-            className="bds-carousel-card-list__track"
-            role="region"
-            aria-label="Card carousel"
-            tabIndex={0}
-          >
-            {cards.map((card, index) => (
-              <div key={getCardKey(card, index)} className={CARD_CLASS_NAME}>
-                <CardOffgrid {...card} variant={variant} />
-              </div>
-            ))}
+          {/* Cards scroll container - full bleed */}
+          <div className="bds-carousel-card-list__track-wrapper">
+            <div
+              ref={scrollContainerRef}
+              className="bds-carousel-card-list__track"
+              role="region"
+              aria-label="Card carousel"
+              tabIndex={0}
+            >
+              {cards.map((card, index) => (
+                <div key={getCardKey(card, index)} className={CARD_CLASS_NAME}>
+                  <CardOffgrid {...card} variant={variant} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </PageGrid>
       </section>
     );
   }
