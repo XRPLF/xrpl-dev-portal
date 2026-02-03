@@ -14,8 +14,8 @@
 .bds-button-group {
   @extend .d-flex;
   @extend .flex-column;
-  @extend .align-items-start;
   @extend .flex-wrap;
+  align-items: start;
   gap: 8px;
   
   // Tablet breakpoint - horizontal layout
