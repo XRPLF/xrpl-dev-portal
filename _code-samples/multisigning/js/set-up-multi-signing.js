@@ -15,24 +15,24 @@ console.log(`Funded. Master key pair:
 // key pairs and send you just the address. These key pairs don't need to be
 // funded accounts in the ledger.
 const algorithm = 'ed25519'
-const signers = []
+const signerAddresses = []
 for (let i = 0; i < 3; i++) {
   const signer = xrpl.Wallet.generate(algorithm)
-  console.log(`Generated key pair for signer ${i+1}:
+  console.log(`Generated key pair for signer ${i + 1}:
   Address: ${signer.address}
   Seed: ${signer.seed}
   Algorithm: ${algorithm}
 `)
-  signers.push(signer)
+  signerAddresses.push(signer.address)
 }
 
 // Send SignerListSet transaction ----------------------------------------------
 // This example sets up a 2-of-3 requirement with all signers weighted equally
 const signerEntries = []
-for (const signer of signers) {
+for (const signerAddress of signerAddresses) {
   signerEntries.push({
     SignerEntry: {
-      Account: signer.address,
+      Account: signerAddress,
       SignerWeight: 1
     }
   })

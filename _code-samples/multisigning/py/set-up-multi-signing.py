@@ -19,7 +19,7 @@ print(f"""Funded. Master key pair:
 # key pairs and send you just the address. These key pairs don't need to be
 # funded accounts in the ledger.
 algorithm = "ed25519"
-signers = []
+signer_addresses = []
 for i in range(3):
     signer = Wallet.create(algorithm=algorithm)
     print(f"""Generated regular key pair:
@@ -27,7 +27,7 @@ for i in range(3):
   Seed: {signer.seed}
   Algorithm: {algorithm}
 """)
-    signers.append(signer)
+    signer_addresses.append(signer.address)
 
 # Send SignerListSet transaction -----------------------------------------------
 # This example sets up a 2-of-3 requirement with all signers weighted equally
@@ -35,7 +35,8 @@ signer_list_set_tx = SignerListSet(
     account=wallet.address,
     signer_quorum=2,
     signer_entries=[
-        SignerEntry(account=signer.address, signer_weight=1) for signer in signers
+        SignerEntry(account=signer_address, signer_weight=1)
+        for signer_address in signer_addresses
     ],
 )
 
@@ -58,6 +59,7 @@ else:
     print(f"SignerListSet failed with code {signer_list_set_result_code}.")
     exit(1)
 
+# Confirm signer list ----------------------------------------------------------
 try:
     account_info_resp = client.request(
         AccountInfo(account=wallet.address, ledger_index="validated", signer_lists=True)
