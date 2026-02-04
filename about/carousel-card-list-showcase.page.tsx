@@ -1,5 +1,6 @@
 import { PageGrid, PageGridRow, PageGridCol } from "shared/components/PageGrid/page-grid";
 import { CarouselCardList } from "shared/patterns/CarouselCardList";
+import { CarouselButton } from "shared/components/CarouselButton";
 import { Divider } from "shared/components/Divider";
 
 export const frontmatter = {
@@ -351,7 +352,84 @@ export default function CarouselCardListShowcase() {
           </PageGridRow>
         </PageGrid>
 
-        
+        {/* Button Visual Showcase */}
+        <PageGrid className="py-26">
+          <PageGridRow>
+            <PageGridCol span={12}>
+              <h2 className="h4 mb-6">Button Visual Showcase</h2>
+              <p className="mb-6">Interactive carousel buttons showing all variants and states.</p>
+
+              {/* Grey/Neutral Buttons */}
+              <div className="mb-8">
+                <h5 className="mb-4">Grey (Neutral) Buttons</h5>
+                <div className="d-flex flex-row gap-4 align-items-center mb-3" style={{ padding: '24px', backgroundColor: 'var(--bs-body-bg)', borderRadius: '8px' }}>
+                  <div className="text-center">
+                    <CarouselButton direction="prev" variant="neutral" aria-label="Previous" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Enabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="next" variant="neutral" aria-label="Next" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Enabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="prev" variant="neutral" disabled aria-label="Previous disabled" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Disabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="next" variant="neutral" disabled aria-label="Next disabled" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Disabled</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Green Buttons */}
+              <div className="mb-8">
+                <h5 className="mb-4">Green Buttons</h5>
+                <div className="d-flex flex-row gap-4 align-items-center mb-3" style={{ padding: '24px', backgroundColor: 'var(--bs-body-bg)', borderRadius: '8px' }}>
+                  <div className="text-center">
+                    <CarouselButton direction="prev" variant="green" aria-label="Previous" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Enabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="next" variant="green" aria-label="Next" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Enabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="prev" variant="green" disabled aria-label="Previous disabled" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Disabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="next" variant="green" disabled aria-label="Next disabled" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Disabled</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Black Buttons */}
+              <div className="mb-8">
+                <h5 className="mb-4">Black Buttons</h5>
+                <div className="d-flex flex-row gap-4 align-items-center mb-3" style={{ padding: '24px', backgroundColor: 'var(--bs-body-bg)', borderRadius: '8px' }}>
+                  <div className="text-center">
+                    <CarouselButton direction="prev" variant="black" aria-label="Previous" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Enabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="next" variant="black" aria-label="Next" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Enabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="prev" variant="black" disabled aria-label="Previous disabled" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Disabled</div>
+                  </div>
+                  <div className="text-center">
+                    <CarouselButton direction="next" variant="black" disabled aria-label="Next disabled" />
+                    <div className="mt-2" style={{ fontSize: '12px' }}>Disabled</div>
+                  </div>
+                </div>
+              </div>
+            </PageGridCol>
+          </PageGridRow>
+        </PageGrid>
 
         {/* Spacing Tokens */}
         <PageGrid className="py-26">

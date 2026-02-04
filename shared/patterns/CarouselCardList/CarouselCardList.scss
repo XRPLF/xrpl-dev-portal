@@ -10,10 +10,11 @@
 // .bds-carousel-card-list__heading             - Section heading (uses .h-md)
 // .bds-carousel-card-list__description         - Section description (uses .body-l)
 // .bds-carousel-card-list__nav                 - Navigation buttons wrapper
-// .bds-carousel-card-list__button              - Navigation button
 // .bds-carousel-card-list__track-wrapper       - Scroll container wrapper
 // .bds-carousel-card-list__track               - Horizontal scroll track
 // .bds-carousel-card-list__card                - Individual card wrapper
+//
+// Note: Navigation button styles are in shared/components/CarouselButton/CarouselButton.scss
 
 // =============================================================================
 // Design Tokens (from Figma)
@@ -42,9 +43,7 @@ $bds-carousel-cards-gap-sm: 24px;           // Mobile
 $bds-carousel-cards-gap-md: 32px;           // Tablet
 $bds-carousel-cards-gap-lg: 40px;           // Desktop
 
-// Button dimensions
-$bds-carousel-button-size-sm: 37px;         // Mobile/Tablet
-$bds-carousel-button-size-lg: 40px;         // Desktop
+// Button gap (button styles are in shared/components/CarouselButton)
 $bds-carousel-button-gap: 8px;
 
 // Card dimensions per breakpoint
@@ -147,62 +146,6 @@ $bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
   // Add padding to allow focus ring to be visible without clipping
   padding: 4px;
   margin: -4px;
-}
-
-// =============================================================================
-// Navigation Buttons
-// =============================================================================
-
-.bds-carousel-card-list__button {
-  // Reset button styles
-  appearance: none;
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-
-  // Layout
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: $bds-carousel-button-size-sm;
-  height: $bds-carousel-button-size-sm;
-
-  // Transition
-  transition: background-color $bds-carousel-transition,
-              opacity $bds-carousel-transition;
-
-  @include media-breakpoint-up(lg) {
-    width: $bds-carousel-button-size-lg;
-    height: $bds-carousel-button-size-lg;
-  }
-
-  // Focus styles
-  &:focus {
-    outline: 2px solid $white;
-    outline-offset: 2px;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $white;
-    outline-offset: 2px;
-  }
-}
-
-// Arrow icon
-.bds-carousel-card-list__arrow-icon {
-  width: 18px;
-  height: 16px;
-
-  @include media-breakpoint-down(lg) {
-    width: 18px;
-    height: 15px;
-  }
 }
 
 // =============================================================================
@@ -327,98 +270,10 @@ $bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 }
 
 // =============================================================================
-// DARK MODE (Default) - Button Color Variants
-// Button colors are independent of card colors - use buttonVariant prop
-// =============================================================================
-
-// Neutral button variant - Dark Mode
-// Enabled: #CAD4DF (gray-300), Hover: #E6EAF0 (gray-200), Active: #CAD4DF (gray-300)
-// Disabled: opacity 0.5
-.bds-carousel-card-list__button--neutral {
-  background-color: $gray-300; // #CAD4DF
-  color: $black; // #141414
-
-  &:hover:not(:disabled) {
-    background-color: $gray-200; // #E6EAF0
-  }
-
-  &:active:not(:disabled) {
-    background-color: $gray-300; // #CAD4DF (same as enabled)
-  }
-
-  &.bds-carousel-card-list__button--disabled,
-  &:disabled {
-    background-color: $gray-300; // #CAD4DF
-    color: $gray-400; // #8A919A
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-}
-
-// Green button variant - Dark Mode
-// Enabled: #21E46B (green-300), Hover: #70EE97 (green-200), Active: #21E46B (green-300)
-// Disabled: opacity 0.5
-.bds-carousel-card-list__button--green {
-  background-color: $green-300; // #21E46B
-  color: $black; // #141414
-
-  &:hover:not(:disabled) {
-    background-color: $green-200; // #70EE97
-  }
-
-  &:active:not(:disabled) {
-    background-color: $green-300; // #21E46B (same as enabled)
-  }
-
-  &.bds-carousel-card-list__button--disabled,
-  &:disabled {
-    background-color: $green-300; // #21E46B
-    color: $gray-400; // #8A919A
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-}
-
-// Black variant becomes White in Dark Mode (inverts for contrast)
-// Enabled: #FFFFFF (white), Hover: #E6EAF0 (gray-200), Active: #FFFFFF (white)
-// Disabled: opacity 0.5
-.bds-carousel-card-list__button--black {
-  background-color: $white; // #FFFFFF
-  color: $black; // #141414
-
-  &:hover:not(:disabled) {
-    background-color: $gray-200; // #E6EAF0
-  }
-
-  &:active:not(:disabled) {
-    background-color: $white; // #FFFFFF (same as enabled)
-  }
-
-  &.bds-carousel-card-list__button--disabled,
-  &:disabled {
-    background-color: $white; // #FFFFFF
-    color: $gray-400; // #8A919A
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-}
-
-// =============================================================================
 // LIGHT MODE (html.light) - Color Variants
 // =============================================================================
 
 html.light {
-  // Focus styles - Light Mode
-  .bds-carousel-card-list__button {
-    &:focus {
-      outline-color: $gray-900;
-    }
-
-    &:focus-visible {
-      outline-color: $gray-900;
-    }
-  }
-
   .bds-carousel-card-list__track {
     &:focus-visible {
       outline-color: $gray-900;
@@ -431,83 +286,6 @@ html.light {
     .bds-carousel-card-list__heading,
     .bds-carousel-card-list__description {
       color: $black;
-    }
-  }
-
-  // ---------------------------------------------------------------------------
-  // Button Color Variants - Light Mode
-  // Button colors are independent of card colors - use buttonVariant prop
-  // ---------------------------------------------------------------------------
-
-  // Neutral button variant - Light Mode
-  // Enabled: #CAD4DF (gray-300), Hover: #E6EAF0 (gray-200), Active: #CAD4DF (gray-300)
-  // Disabled: opacity 0.5
-  .bds-carousel-card-list__button--neutral {
-    background-color: $gray-300; // #CAD4DF
-    color: $black; // #141414
-
-    &:hover:not(:disabled) {
-      background-color: $gray-200; // #E6EAF0
-    }
-
-    &:active:not(:disabled) {
-      background-color: $gray-300; // #CAD4DF (same as enabled)
-    }
-
-    &.bds-carousel-card-list__button--disabled,
-    &:disabled {
-      background-color: $gray-300; // #CAD4DF
-      color: $gray-400; // #8A919A
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  // Green button variant - Light Mode
-  // Enabled: #21E46B (green-300), Hover: #70EE97 (green-200), Active: #21E46B (green-300)
-  // Disabled: opacity 0.5
-  .bds-carousel-card-list__button--green {
-    background-color: $green-300; // #21E46B
-    color: $black; // #141414
-
-    &:hover:not(:disabled) {
-      background-color: $green-200; // #70EE97
-    }
-
-    &:active:not(:disabled) {
-      background-color: $green-300; // #21E46B (same as enabled)
-    }
-
-    &.bds-carousel-card-list__button--disabled,
-    &:disabled {
-      background-color: $green-300; // #21E46B
-      color: $gray-400; // #8A919A
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  // Black variant in Light Mode (stays black for contrast)
-  // Enabled: #141414 (black), Hover: #72777E (gray-500), Active: #141414 (black)
-  // Disabled: opacity 0.5
-  .bds-carousel-card-list__button--black {
-    background-color: $black; // #141414
-    color: $white; // #FFFFFF
-
-    &:hover:not(:disabled) {
-      background-color: $gray-500; // #72777E
-    }
-
-    &:active:not(:disabled) {
-      background-color: $black; // #141414 (same as enabled)
-    }
-
-    &.bds-carousel-card-list__button--disabled,
-    &:disabled {
-      background-color: $black; // #141414
-      color: $gray-400; // #8A919A
-      opacity: 0.5;
-      cursor: not-allowed;
     }
   }
 }
