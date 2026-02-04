@@ -42,6 +42,7 @@ import { FeatureSingleTopic } from 'shared/patterns/FeatureSingleTopic';
 | `title` | `string` | *required* | Feature title (heading-md typography) |
 | `description` | `string` | - | Feature description (label-l typography) |
 | `links` | `FeatureSingleTopicLink[]` | `[]` | Array of CTA links (1-5 supported) |
+| `singleButtonVariant` | `'primary' \| 'secondary'` | `'primary'` | Button variant for single button configuration |
 | `media` | `{ src: string; alt: string }` | *required* | Image configuration |
 | `className` | `string` | - | Additional CSS classes |
 
@@ -60,10 +61,11 @@ The component automatically determines button variants based on count:
 
 | Count | Layout |
 |-------|--------|
-| 1 link | Primary button |
+| 1 link | Primary or Secondary button (configurable via `singleButtonVariant` prop) |
 | 2 links | Primary + Tertiary side by side |
-| 3 links | Primary + Tertiary side by side, Secondary button below |
-| 4-5 links | Primary + Tertiary side by side, remaining Tertiary stacked |
+| 3+ links | All Tertiary buttons stacked |
+
+**Note:** On mobile, the first two buttons (Primary + Tertiary) remain side by side.
 
 ## Variants
 
@@ -84,10 +86,12 @@ Gray background (#E6EAF0 light / #CAD4DF dark) on the title section.
 ## Orientation
 
 ### Left (default)
-Image on left, content on right on desktop. On mobile/tablet, content appears above image.
+Image on left, content on right on desktop.
 
 ### Right
-Image on right, content on left on desktop. On mobile/tablet, image appears above content.
+Image on right, content on left on desktop.
+
+**Note:** On mobile/tablet, content always appears above image regardless of orientation.
 
 ## Responsive Behavior
 

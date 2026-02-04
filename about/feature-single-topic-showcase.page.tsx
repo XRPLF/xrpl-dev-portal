@@ -110,8 +110,9 @@ export default function FeatureSingleTopicShowcase() {
               <div className="mb-4 p-3" style={{ backgroundColor: '#f0f3f7', borderRadius: '8px' }}>
                 <strong>📱 Responsive Behavior:</strong>
                 <ul className="mb-0 mt-2">
-                  <li><code>orientation="left"</code>: Image left, content right on desktop; image above content on mobile</li>
-                  <li><code>orientation="right"</code>: Image right, content left on desktop; content above image on mobile</li>
+                  <li><code>orientation="left"</code>: Image left, content right on desktop</li>
+                  <li><code>orientation="right"</code>: Image right, content left on desktop</li>
+                  <li><strong>Mobile/Tablet:</strong> Content always appears above image regardless of orientation</li>
                 </ul>
               </div>
             </PageGridCol>
@@ -127,7 +128,7 @@ export default function FeatureSingleTopicShowcase() {
                   <strong>Orientation Left (Default)</strong> - <code>orientation="left"</code>
                   <br />
                   <small className="text-muted">
-                    Desktop: Image left, content right | Mobile: Image above content
+                    Desktop: Image left, content right | Mobile/Tablet: Content above image
                   </small>
                 </div>
               </PageGridCol>
@@ -155,7 +156,7 @@ export default function FeatureSingleTopicShowcase() {
                   <strong>Orientation Right</strong> - <code>orientation="right"</code>
                   <br />
                   <small className="text-muted">
-                    Desktop: Image right, content left | Mobile: Content above image
+                    Desktop: Image right, content left | Mobile/Tablet: Content above image
                   </small>
                 </div>
               </PageGridCol>
@@ -180,24 +181,24 @@ export default function FeatureSingleTopicShowcase() {
             <PageGridCol span={12}>
               <h2 className="h4 mb-6">Button Behavior</h2>
               <p className="mb-4">
-                The component uses the ButtonGroup pattern which automatically adjusts button rendering based on the number of links provided:
+                The component automatically adjusts button rendering based on the number of links provided:
               </p>
               <ul className="mb-6">
-                <li><strong>1 link:</strong> Primary button</li>
-                <li><strong>2 links:</strong> Primary + Tertiary buttons (responsive layout)</li>
-                <li><strong>3+ links:</strong> All Tertiary buttons in block layout</li>
+                <li><strong>1 link:</strong> Primary or Secondary button (configurable via <code>singleButtonVariant</code> prop)</li>
+                <li><strong>2 links:</strong> Primary + Tertiary buttons side by side</li>
+                <li><strong>3+ links:</strong> All Tertiary buttons stacked</li>
               </ul>
             </PageGridCol>
           </PageGridRow>
         </PageGrid>
 
-        {/* 1 Link */}
+        {/* 1 Link - Primary */}
         <div className="mb-5">
           <PageGrid>
             <PageGridRow>
               <PageGridCol span={12}>
                 <div className="mb-3">
-                  <strong>1 Link</strong> - Primary Button
+                  <strong>ex: 1 button</strong> - Primary Button (default)
                   <br />
                   <small className="text-muted">Single action rendered as a primary (filled) button.</small>
                 </div>
@@ -207,11 +208,37 @@ export default function FeatureSingleTopicShowcase() {
           <FeatureSingleTopic
             variant="default"
             orientation="left"
-            title="Single Action"
-            description="This example shows a single call-to-action button."
+            title="Developer Spotlight"
+            description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Single button" }}
             links={[
-              { label: "Get Started", href: "#start" }
+              { label: "Primary Link", href: "#start" }
+            ]}
+          />
+        </div>
+
+        {/* 1 Link - Secondary */}
+        <div className="mb-5">
+          <PageGrid>
+            <PageGridRow>
+              <PageGridCol span={12}>
+                <div className="mb-3">
+                  <strong>ex: 1 button</strong> - Secondary Button
+                  <br />
+                  <small className="text-muted">Single action rendered as a secondary (outlined) button using <code>singleButtonVariant="secondary"</code>.</small>
+                </div>
+              </PageGridCol>
+            </PageGridRow>
+          </PageGrid>
+          <FeatureSingleTopic
+            variant="default"
+            orientation="left"
+            title="Developer Spotlight"
+            description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
+            media={{ src: placeholderImage, alt: "Single button secondary" }}
+            singleButtonVariant="secondary"
+            links={[
+              { label: "Secondary Link", href: "#start" }
             ]}
           />
         </div>
@@ -222,9 +249,9 @@ export default function FeatureSingleTopicShowcase() {
             <PageGridRow>
               <PageGridCol span={12}>
                 <div className="mb-3">
-                  <strong>2 Links</strong> - Primary + Tertiary Side by Side
+                  <strong>ex: 2 button</strong> - Primary + Tertiary Side by Side
                   <br />
-                  <small className="text-muted">Primary and tertiary buttons displayed side by side on desktop.</small>
+                  <small className="text-muted">Primary and tertiary buttons displayed side by side on all breakpoints.</small>
                 </div>
               </PageGridCol>
             </PageGridRow>
@@ -232,39 +259,12 @@ export default function FeatureSingleTopicShowcase() {
           <FeatureSingleTopic
             variant="default"
             orientation="left"
-            title="Two Actions"
-            description="This example shows primary and tertiary buttons side by side."
+            title="Developer Spotlight"
+            description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Two buttons" }}
             links={[
               { label: "Primary Link", href: "#primary" },
               { label: "Tertiary Link", href: "#tertiary" }
-            ]}
-          />
-        </div>
-
-        {/* 3 Links */}
-        <div className="mb-5">
-          <PageGrid>
-            <PageGridRow>
-              <PageGridCol span={12}>
-                <div className="mb-3">
-                  <strong>3 Links</strong> - Primary + Tertiary + Secondary
-                  <br />
-                  <small className="text-muted">Primary + tertiary side by side on first row, secondary button below.</small>
-                </div>
-              </PageGridCol>
-            </PageGridRow>
-          </PageGrid>
-          <FeatureSingleTopic
-            variant="default"
-            orientation="left"
-            title="Three Actions"
-            description="This example shows the 3-link layout with secondary button."
-            media={{ src: placeholderImage, alt: "Three buttons" }}
-            links={[
-              { label: "Primary Link", href: "#primary" },
-              { label: "Tertiary Link", href: "#tertiary" },
-              { label: "Secondary Link", href: "#secondary" }
             ]}
           />
         </div>
@@ -275,9 +275,9 @@ export default function FeatureSingleTopicShowcase() {
             <PageGridRow>
               <PageGridCol span={12}>
                 <div className="mb-3">
-                  <strong>5 Links</strong> - Primary + Tertiary + Stacked Tertiary
+                  <strong>ex: 5 button</strong> - All Tertiary Stacked
                   <br />
-                  <small className="text-muted">Primary + tertiary side by side on first row, remaining tertiary buttons stacked below.</small>
+                  <small className="text-muted">3+ links render as all tertiary buttons stacked vertically.</small>
                 </div>
               </PageGridCol>
             </PageGridRow>
@@ -285,15 +285,42 @@ export default function FeatureSingleTopicShowcase() {
           <FeatureSingleTopic
             variant="accentSurface"
             orientation="left"
-            title="Multiple Actions"
-            description="This example shows the 5-link layout with stacked tertiary buttons."
+            title="Developer Spotlight"
+            description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Multiple buttons" }}
             links={[
-              { label: "Primary Link", href: "#primary" },
-              { label: "Tertiary Link", href: "#tertiary" },
+              { label: "Tertiary Link", href: "#link1" },
+              { label: "Tertiary Link", href: "#link2" },
               { label: "Tertiary Link", href: "#link3" },
               { label: "Tertiary Link", href: "#link4" },
               { label: "Tertiary Link", href: "#link5" }
+            ]}
+          />
+        </div>
+
+        {/* 3 Links */}
+        <div className="mb-5">
+          <PageGrid>
+            <PageGridRow>
+              <PageGridCol span={12}>
+                <div className="mb-3">
+                  <strong>ex: 3 button</strong> - All Tertiary Stacked
+                  <br />
+                  <small className="text-muted">3+ links render as all tertiary buttons stacked vertically.</small>
+                </div>
+              </PageGridCol>
+            </PageGridRow>
+          </PageGrid>
+          <FeatureSingleTopic
+            variant="default"
+            orientation="left"
+            title="Developer Spotlight"
+            description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
+            media={{ src: placeholderImage, alt: "Three buttons" }}
+            links={[
+              { label: "Tertiary Link", href: "#link1" },
+              { label: "Tertiary Link", href: "#link2" },
+              { label: "Tertiary Link", href: "#link3" }
             ]}
           />
         </div>

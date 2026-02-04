@@ -1,4 +1,3 @@
-// FeatureSingleTopic Pattern Styles
 // =============================================================================
 // A feature section pattern with single topic layout for title and media.
 // Supports variants (default, accentSurface) and orientation (left, right).
@@ -29,11 +28,13 @@ $bds-single-topic-desktop-height: 565px; // Fixed height from Figma design
 $bds-single-topic-tablet-py: 32px;
 $bds-single-topic-tablet-content-gap: 32px; // Gap between image and content on tablet
 $bds-single-topic-tablet-content-min-height: 320px; // Min height for content on tablet
+$bds-single-topic-tablet-title-description-gap: 80px; // Gap between accent/title and description on tablet
 
 // Spacing - Mobile (<576px)
 $bds-single-topic-mobile-py: 24px;
 $bds-single-topic-mobile-content-gap: 24px; // Gap between image and content on mobile
 $bds-single-topic-mobile-content-min-height: 280px; // Min height for content on mobile
+$bds-single-topic-mobile-title-description-gap: 40px; // Gap between accent/title and description on mobile
 
 // =============================================================================
 // Base Styles
@@ -127,13 +128,14 @@ $bds-single-topic-mobile-content-min-height: 280px; // Min height for content on
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: $bds-single-topic-mobile-content-gap;
+    // Gap between accent/title section and description section
+    gap: $bds-single-topic-mobile-title-description-gap; // 40px on mobile
     // Min height on mobile to prevent squished content
     min-height: $bds-single-topic-mobile-content-min-height;
     justify-content: space-between;
 
     @include media-breakpoint-up(md) {
-      gap: $bds-single-topic-tablet-content-gap;
+      gap: $bds-single-topic-tablet-title-description-gap; // 80px on tablet
       min-height: $bds-single-topic-tablet-content-min-height;
     }
 
@@ -183,17 +185,15 @@ $bds-single-topic-mobile-content-min-height: 280px; // Min height for content on
     gap: $bds-single-topic-desktop-cta-gap;
   }
 
-  // CTA row - primary + tertiary side by side
+  // CTA row - primary + tertiary side by side on all breakpoints
   &__cta-row {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px; // Gap between primary and tertiary on mobile
 
     @include media-breakpoint-up(md) {
-      flex-direction: row;
-      align-items: center;
-      gap: 24px; // 24px gap between primary and tertiary per Figma
+      gap: 24px; // 24px gap between primary and tertiary on tablet/desktop per Figma
     }
   }
 }
@@ -215,9 +215,17 @@ $bds-single-topic-mobile-content-min-height: 280px; // Min height for content on
   .bds-feature-single-topic__title-section {
     background-color: $bds-single-topic-title-bg;
     padding: $bds-single-topic-desktop-title-padding;
+    // Mobile min-height
+    min-height: 160px;
+
+    @include media-breakpoint-up(md) {
+      // Tablet min-height
+      min-height: 200px;
+    }
 
     @include media-breakpoint-up(lg) {
-      height: 200px;
+      // Desktop min-height
+      min-height: 200px;
     }
   }
 }
@@ -249,8 +257,14 @@ $bds-single-topic-mobile-content-min-height: 280px; // Min height for content on
 }
 
 // Right orientation - image on right, content on left on desktop
-// On mobile/tablet: image appears ABOVE content (default column order)
+// On mobile/tablet: content appears ABOVE image (column-reverse) - same as left
 .bds-feature-single-topic--right {
+  .bds-feature-single-topic__row {
+    @include media-breakpoint-down(lg) {
+      flex-direction: column-reverse;
+    }
+  }
+
   .bds-feature-single-topic__media-col {
     @include media-breakpoint-up(lg) {
       order: 2;

@@ -27,12 +27,16 @@ export interface FeatureSingleTopicProps {
   /** Feature description text (label-l typography) */
   description?: string;
   /** Array of links (1-5 links supported)
-   * - 1 link: renders as primary button
+   * - 1 link: renders as primary or secondary button (based on singleButtonVariant)
    * - 2 links: renders as primary + tertiary buttons side by side
-   * - 3 links: primary + tertiary side by side, secondary button below
-   * - 4-5 links: primary + tertiary side by side, remaining as tertiary stacked
+   * - 3+ links: all tertiary buttons stacked
    */
   links?: FeatureSingleTopicLink[];
+  /** Button variant for single button configuration
+   * - 'primary': Primary button (default)
+   * - 'secondary': Secondary button
+   */
+  singleButtonVariant?: 'primary' | 'secondary';
   /** Feature media (image) configuration */
   media: {
     src: string;
@@ -59,6 +63,7 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   title,
   description,
   links = [],
+  singleButtonVariant = 'primary',
   media,
   className,
 }) => {
@@ -97,19 +102,18 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   );
 
   // Render CTA buttons based on count
-  // - 1 link: primary button
+  // - 1 link: primary or secondary button (based on singleButtonVariant prop)
   // - 2 links: primary + tertiary side by side
-  // - 3 links: primary + tertiary side by side, secondary button below
-  // - 4-5 links: primary + tertiary side by side, remaining as tertiary stacked
+  // - 3+ links: all tertiary buttons stacked
   const renderCTA = () => {
     const buttons = buttonValidation.buttons;
     if (!buttonValidation.isValid || buttons.length === 0) return null;
 
-    // 1 button: just primary
+    // 1 button: primary or secondary based on singleButtonVariant prop
     if (buttons.length === 1) {
       return (
         <div className="bds-feature-single-topic__cta">
-          <Button variant="primary" color={buttonColor} href={buttons[0].href}>
+          <Button variant={singleButtonVariant} color={buttonColor} href={buttons[0].href}>
             {buttons[0].label}
           </Button>
         </div>
@@ -132,38 +136,10 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
       );
     }
 
-    // 3 buttons: primary + tertiary side by side, secondary button below
-    if (buttons.length === 3) {
-      return (
-        <div className="bds-feature-single-topic__cta">
-          <div className="bds-feature-single-topic__cta-row">
-            <Button variant="primary" color={buttonColor} href={buttons[0].href}>
-              {buttons[0].label}
-            </Button>
-            <Button variant="tertiary" color={buttonColor} href={buttons[1].href} forceNoPadding>
-              {buttons[1].label}
-            </Button>
-          </div>
-          <Button variant="secondary" color={buttonColor} href={buttons[2].href}>
-            {buttons[2].label}
-          </Button>
-        </div>
-      );
-    }
-
-    // 4-5 buttons: primary + tertiary side by side, remaining as tertiary stacked
-    const remainingButtons = buttons.slice(2);
+    // 3+ buttons: all tertiary buttons stacked
     return (
       <div className="bds-feature-single-topic__cta">
-        <div className="bds-feature-single-topic__cta-row">
-          <Button variant="primary" color={buttonColor} href={buttons[0].href}>
-            {buttons[0].label}
-          </Button>
-          <Button variant="tertiary" color={buttonColor} href={buttons[1].href} forceNoPadding>
-            {buttons[1].label}
-          </Button>
-        </div>
-        {remainingButtons.map((button, index) => (
+        {buttons.map((button, index) => (
           <Button
             key={index}
             variant="tertiary"
