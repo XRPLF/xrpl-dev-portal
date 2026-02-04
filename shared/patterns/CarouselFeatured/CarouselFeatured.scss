@@ -410,10 +410,10 @@ $bds-carousel-featured-variants-light: (
 }
 
 // =============================================================================
-// LIGHT MODE - Color Overrides
+// LIGHT MODE (html.light) - Color Overrides
 // =============================================================================
 
-@include bds-theme-mode(light) {
+html.light {
   // Default (no variant class) - Light mode: gray-200 background
   .bds-carousel-featured {
     background-color: $gray-200;
