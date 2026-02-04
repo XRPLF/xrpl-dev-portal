@@ -21536,13 +21536,13 @@ html.dark .bds-feature-two-column--green {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 24px;
+  gap: 40px;
   min-height: 280px;
   justify-content: space-between;
 }
 @media (min-width: 576px) {
   .bds-feature-single-topic__content {
-    gap: 32px;
+    gap: 80px;
     min-height: 320px;
   }
 }
@@ -21629,14 +21629,12 @@ html.dark .bds-feature-two-column--green {
 }
 .bds-feature-single-topic__cta-row {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 }
 @media (min-width: 576px) {
   .bds-feature-single-topic__cta-row {
-    flex-direction: row;
-    align-items: center;
     gap: 24px;
   }
 }
@@ -21649,10 +21647,16 @@ html.dark .bds-feature-two-column--green {
 .bds-feature-single-topic--accentSurface .bds-feature-single-topic__title-section {
   background-color: #E6EAF0;
   padding: 16px;
+  min-height: 160px;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic--accentSurface .bds-feature-single-topic__title-section {
+    min-height: 200px;
+  }
 }
 @media (min-width: 992px) {
   .bds-feature-single-topic--accentSurface .bds-feature-single-topic__title-section {
-    height: 200px;
+    min-height: 200px;
   }
 }
 
@@ -21672,6 +21676,11 @@ html.dark .bds-feature-two-column--green {
   }
 }
 
+@media (max-width: 991.98px) {
+  .bds-feature-single-topic--right .bds-feature-single-topic__row {
+    flex-direction: column-reverse;
+  }
+}
 @media (min-width: 992px) {
   .bds-feature-single-topic--right .bds-feature-single-topic__media-col {
     order: 2;
@@ -28259,33 +28268,33 @@ html.light .progress {
 html.light [data-component-name="Search/SearchIcon"] > path {
   fill: black;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid),
-html.light nav a:not(.bds-link):not(.bds-card-offgrid),
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid) {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn),
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn),
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn) {
   color: #141414;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid).btn-primary,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid).btn-primary,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).btn-primary {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary {
   color: #FFFFFF;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid).btn-primary:hover,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid).btn-primary:hover,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).btn-primary:hover {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary:hover,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary:hover,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary:hover {
   color: #FFFFFF;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid):hover, html.light a:not(.bds-link):not(.bds-card-offgrid):active, html.light a:not(.bds-link):not(.bds-card-offgrid).active,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid):hover,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid):active,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid).active,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):hover,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):active,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).active {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):hover, html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):active, html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).active,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):hover,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):active,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).active,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):hover,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):active,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).active {
   color: #5429A1;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid):not(.btn):not(.bds-text-card):focus,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.btn):not(.bds-text-card):focus,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.btn):not(.bds-text-card):focus {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):not(.btn):not(.bds-text-card):focus,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):not(.btn):not(.bds-text-card):focus,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):not(.btn):not(.bds-text-card):focus {
   background-color: transparent;
 }
 html.light a.card:hover, html.light:active, html.light.active {
