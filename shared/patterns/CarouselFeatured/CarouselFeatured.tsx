@@ -142,7 +142,6 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
               span={{ base: 4, md: 8, lg: 6 }}
               className="bds-carousel-featured__content-col order-1 order-lg-2"
             >
-            {/* Content Column - Right on desktop, top on mobile */}
               <div className="bds-carousel-featured__content">
                 {/* Header row with heading and nav buttons */}
                 <div className="bds-carousel-featured__header">
@@ -208,7 +207,7 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
                       ))}
                     </div>
                   </div>
-                </div> {/* Close bottom */}
+                </div>
               </div>
             </PageGridCol>
 

@@ -26,6 +26,101 @@ $bds-carousel-button-size-lg: 40px;     // Desktop
 $bds-carousel-button-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
 // =============================================================================
+// Color Variant Configuration Maps
+// =============================================================================
+
+// Dark Mode color variants
+$bds-carousel-button-variants-dark: (
+  'green': (
+    'bg': $green-300,
+    'color': $black,
+    'hover': $green-400,
+    'active': $green-300,
+    'disabled-bg': $green-500,
+    'disabled-color': #F0F3F7,
+    'disabled-opacity': 0.5
+  ),
+  'neutral': (
+    'bg': $gray-300,
+    'color': $black,
+    'hover': $gray-400,
+    'active': $gray-300,
+    'disabled-bg': $gray-500,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 0.5
+  ),
+  'black': (
+    'bg': $white,
+    'color': $black,
+    'hover': $gray-300,
+    'active': $white,
+    'disabled-bg': $gray-500,
+    'disabled-color': null,
+    'disabled-opacity': 0.5
+  )
+);
+
+// Light Mode color variants
+$bds-carousel-button-variants-light: (
+  'green': (
+    'bg': $green-300,
+    'color': $black,
+    'hover': $green-200,
+    'active': $green-300,
+    'disabled-bg': $green-100,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 1
+  ),
+  'neutral': (
+    'bg': $gray-300,
+    'color': $black,
+    'hover': $gray-200,
+    'active': $gray-300,
+    'disabled-bg': $gray-100,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 1
+  ),
+  'black': (
+    'bg': $black,
+    'color': $white,
+    'hover': $gray-500,
+    'active': $black,
+    'disabled-bg': #F0F3F7,
+    'disabled-color': $gray-300,
+    'disabled-opacity': 1
+  )
+);
+
+// =============================================================================
+// Mixin: Apply Color Variant Styles
+// =============================================================================
+
+@mixin carousel-button-variant($variant-name, $config) {
+  .bds-carousel-button--#{$variant-name} {
+    background-color: map-get($config, 'bg');
+    color: map-get($config, 'color');
+
+    &:hover:not(:disabled) {
+      background-color: map-get($config, 'hover');
+    }
+
+    &:active:not(:disabled) {
+      background-color: map-get($config, 'active');
+    }
+
+    &.bds-carousel-button--disabled,
+    &:disabled {
+      background-color: map-get($config, 'disabled-bg') !important;
+      @if map-get($config, 'disabled-color') {
+        color: map-get($config, 'disabled-color') !important;
+      }
+      opacity: map-get($config, 'disabled-opacity') !important;
+      cursor: not-allowed !important;
+    }
+  }
+}
+
+// =============================================================================
 // Base Button Styles
 // =============================================================================
 
@@ -88,72 +183,9 @@ $bds-carousel-button-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);
 // DARK MODE (Default) - Color Variants
 // =============================================================================
 
-// Green button variant - Dark Mode
-// Enabled: green-300, Hover: green-400, Active/Pressed: green-300, Disabled: green-500 @ 0.5 opacity
-.bds-carousel-button--green {
-  background-color: $green-300;
-  color: $black;
-
-  &:hover:not(:disabled) {
-    background-color: $green-400;
-  }
-
-  &:active:not(:disabled) {
-    background-color: $green-300;
-  }
-
-  &.bds-carousel-button--disabled,
-  &:disabled {
-    background-color: $green-500 !important;
-    color: #F0F3F7 !important;
-    opacity: 0.5 !important;
-    cursor: not-allowed !important;
-  }
-}
-
-// Neutral/Grey button variant - Dark Mode
-// Enabled: gray-300, Hover: gray-400, Active/Pressed: gray-300, Disabled: gray-500 @ 0.5 opacity
-.bds-carousel-button--neutral {
-  background-color: $gray-300;
-  color: $black;
-
-  &:hover:not(:disabled) {
-    background-color: $gray-400;
-  }
-
-  &:active:not(:disabled) {
-    background-color: $gray-300;
-  }
-
-  &.bds-carousel-button--disabled,
-  &:disabled {
-    background-color: $gray-500 !important;
-    color: $gray-300 !important;
-    opacity: 0.5 !important;
-    cursor: not-allowed !important;
-  }
-}
-
-// Black variant becomes White in Dark Mode
-// Enabled: white, Hover: gray-300, Active/Pressed: white, Disabled: gray-500 @ 0.5 opacity
-.bds-carousel-button--black {
-  background-color: $white;
-  color: $black;
-
-  &:hover:not(:disabled) {
-    background-color: $gray-300;
-  }
-
-  &:active:not(:disabled) {
-    background-color: $white;
-  }
-
-  &.bds-carousel-button--disabled,
-  &:disabled {
-    background-color: $gray-500 !important;
-    opacity: 0.5 !important;
-    cursor: not-allowed !important;
-  }
+// Generate all dark mode variant styles using the mixin
+@each $variant-name, $config in $bds-carousel-button-variants-dark {
+  @include carousel-button-variant($variant-name, $config);
 }
 
 // =============================================================================
@@ -172,73 +204,9 @@ html.light {
     }
   }
 
-  // Green button variant - Light Mode
-  // Enabled: green-300, Hover: green-200, Active/Pressed: green-300, Disabled: green-100
-  .bds-carousel-button--green {
-    background-color: $green-300;
-    color: $black;
-
-    &:hover:not(:disabled) {
-      background-color: $green-200;
-    }
-
-    &:active:not(:disabled) {
-      background-color: $green-300;
-    }
-
-    &.bds-carousel-button--disabled,
-    &:disabled {
-      background-color: $green-100 !important;
-      color: $gray-300 !important;
-      opacity: 1 !important;
-      cursor: not-allowed !important;
-    }
-  }
-
-  // Neutral/Grey button variant - Light Mode
-  // Enabled: gray-300, Hover: gray-200, Active/Pressed: gray-300, Disabled: gray-100
-  .bds-carousel-button--neutral {
-    background-color: $gray-300;
-    color: $black;
-
-    &:hover:not(:disabled) {
-      background-color: $gray-200;
-    }
-
-    &:active:not(:disabled) {
-      background-color: $gray-300;
-    }
-
-    &.bds-carousel-button--disabled,
-    &:disabled {
-      background-color: $gray-100 !important;
-      color: $gray-300 !important;
-      opacity: 1 !important;
-      cursor: not-allowed !important;
-    }
-  }
-
-  // Black button variant - Light Mode
-  // Enabled: black, Hover: gray-500, Active/Pressed: black, Disabled: #F0F3F7
-  .bds-carousel-button--black {
-    background-color: $black;
-    color: $white;
-
-    &:hover:not(:disabled) {
-      background-color: $gray-500;
-    }
-
-    &:active:not(:disabled) {
-      background-color: $black;
-    }
-
-    &.bds-carousel-button--disabled,
-    &:disabled {
-      background-color: #F0F3F7 !important;
-      color: $gray-300 !important;
-      opacity: 1 !important;
-      cursor: not-allowed !important;
-    }
+  // Generate all light mode variant overrides using the mixin
+  @each $variant-name, $config in $bds-carousel-button-variants-light {
+    @include carousel-button-variant($variant-name, $config);
   }
 }
 

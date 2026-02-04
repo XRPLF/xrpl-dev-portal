@@ -206,7 +206,8 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           variant={firstButtonVariant}
           color={color}
           forceColor={forceColor}
-          {...buttonList[0]}
+          href={buttonList[0].href}
+          onClick={buttonList[0].onClick}
         >
           {buttonList[0].label}
         </Button>
@@ -216,7 +217,8 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
           variant="tertiary"
           color={color}
           forceColor={forceColor}
-          {...buttonList[1]}
+          href={buttonList[1].href}
+          onClick={buttonList[1].onClick}
         >
           {buttonList[1].label}
         </Button>
