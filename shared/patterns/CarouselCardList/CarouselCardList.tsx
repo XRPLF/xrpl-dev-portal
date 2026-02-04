@@ -1,6 +1,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import clsx from 'clsx';
 import { CardOffgrid, CardOffgridProps } from '../../components/CardOffgrid';
+import { CarouselButton } from '../../components/CarouselButton';
 import type { ButtonProps } from '../../components/Button';
 
 /**
@@ -130,20 +131,16 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
             <p className="bds-carousel-card-list__description body-l">{description}</p>
           </div>
           <div className="bds-carousel-card-list__nav">
-            <CarouselButton
-              direction="prev"
-              variant={buttonVariant}
-              disabled={!canScrollPrev}
-              onClick={() => scroll('prev')}
-              aria-label="Previous cards"
-            />
-            <CarouselButton
-              direction="next"
-              variant={buttonVariant}
-              disabled={!canScrollNext}
-              onClick={() => scroll('next')}
-              aria-label="Next cards"
-            />
+            {(['prev', 'next'] as const).map((direction) => (
+              <CarouselButton
+                key={direction}
+                direction={direction}
+                variant={buttonVariant}
+                disabled={direction === 'prev' ? !canScrollPrev : !canScrollNext}
+                onClick={() => scroll(direction)}
+                aria-label={direction === 'prev' ? 'Previous cards' : 'Next cards'}
+              />
+            ))}
           </div>
         </div>
 
@@ -169,88 +166,6 @@ export const CarouselCardList = React.forwardRef<HTMLElement, CarouselCardListPr
 );
 
 CarouselCardList.displayName = 'CarouselCardList';
-
-/**
- * Props for the CarouselButton component
- */
-interface CarouselButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** Arrow direction */
-  direction: 'prev' | 'next';
-  /** Color variant (independent of card color) */
-  variant: 'neutral' | 'green' | 'black';
-}
-
-/**
- * Internal CarouselButton component for navigation
- */
-const CarouselButton: React.FC<CarouselButtonProps> = ({
-  direction,
-  variant,
-  disabled,
-  className,
-  ...buttonProps
-}) => {
-  return (
-    <button
-      type="button"
-      className={clsx(
-        'bds-carousel-card-list__button',
-        `bds-carousel-card-list__button--${direction}`,
-        `bds-carousel-card-list__button--${variant}`,
-        { 'bds-carousel-card-list__button--disabled': disabled },
-        className
-      )}
-      disabled={disabled}
-      {...buttonProps}
-    >
-      {direction === 'prev' ? <CarouselArrowIconLeft /> : <CarouselArrowIconRight />}
-    </button>
-  );
-};
-
-/**
- * SVG Arrow Icon for carousel navigation - Right arrow
- */
-const CarouselArrowIconRight: React.FC = () => (
-  <svg
-    className="bds-carousel-card-list__arrow-icon"
-    width="18"
-    height="16"
-    viewBox="0 0 18 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M9.33387 1.33461L15.9999 8.00058L9.33387 14.6666M15.9982 7.99893L-0.000149269 7.99893"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeMiterlimit="10"
-    />
-  </svg>
-);
-
-/**
- * SVG Arrow Icon for carousel navigation - Left arrow
- */
-const CarouselArrowIconLeft: React.FC = () => (
-  <svg
-    className="bds-carousel-card-list__arrow-icon"
-    width="18"
-    height="15"
-    viewBox="0 0 18 15"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path
-      d="M7.72667 0.530285L1.0607 7.19626L7.72667 13.8622M1.06235 7.19461L17.0607 7.19461"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeMiterlimit="10"
-    />
-  </svg>
-);
 
 export default CarouselCardList;
 

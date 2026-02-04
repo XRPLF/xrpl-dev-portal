@@ -1,0 +1,437 @@
+// BDS CarouselFeatured Pattern Styles
+// Brand Design System - Featured image carousel with two-column layout
+//
+// Layout:
+// - Desktop (lg+): Two-column layout - Image LEFT (50%), Content RIGHT (50%)
+// - Tablet/Mobile: Single column - Content TOP, Image BOTTOM
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-carousel-featured                    - Base section container
+// .bds-carousel-featured__media-col         - Image/media column wrapper
+// .bds-carousel-featured__content-col       - Content column wrapper
+// .bds-carousel-featured__content           - Content column
+// .bds-carousel-featured__header            - Header row (heading + nav)
+// .bds-carousel-featured__heading           - Section heading
+// .bds-carousel-featured__nav               - Navigation buttons wrapper
+// .bds-carousel-featured__bottom            - Bottom section (features + CTA)
+// .bds-carousel-featured__features          - Feature list container
+// .bds-carousel-featured__feature           - Individual feature item
+// .bds-carousel-featured__feature-title     - Feature title
+// .bds-carousel-featured__feature-description - Feature description
+// .bds-carousel-featured__cta               - CTA section (buttons + mobile nav)
+// .bds-carousel-featured__buttons           - Button group wrapper
+// .bds-carousel-featured__slides            - Slides container
+// .bds-carousel-featured__slide-track       - Sliding track
+// .bds-carousel-featured__slide             - Individual slide
+// .bds-carousel-featured__slide--active     - Active slide modifier
+// .bds-carousel-featured__image             - Slide image
+//
+// Note: This file is imported within xrpl.scss after Bootstrap and project
+// variables are loaded, so $grid-breakpoints, colors, and mixins are available.
+
+// =============================================================================
+// Design Tokens (from Figma)
+// =============================================================================
+
+// Spacing
+$bds-carousel-featured-padding-sm: 24px 16px;
+$bds-carousel-featured-padding-md: 32px 24px;
+$bds-carousel-featured-padding-lg: 40px 32px;
+
+// Content gap between image and content columns
+$bds-carousel-featured-column-gap: 8px;
+
+// Transition
+$bds-carousel-featured-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// =============================================================================
+// Color Variant Configuration Map
+// =============================================================================
+
+// Define all background variants with their color properties (Dark Mode)
+$bds-carousel-featured-variants: (
+  'grey': (
+    'bg-color': $gray-300,
+    'text-color': $black,
+    'divider-color': $black,
+    'button-variant': 'black',
+    'button-bg': $black,
+    'button-color': $white,
+    'button-hover': $gray-500,
+    'button-active': $black
+  ),
+  'neutral': (
+    'bg-color': $black,
+    'text-color': $white,
+    'divider-color': $white,
+    'button-variant': 'green',
+    'button-bg': $green-300,
+    'button-color': $black,
+    'button-hover': $green-200,
+    'button-active': $green-300
+  ),
+  'yellow': (
+    'bg-color': $yellow-100,
+    'text-color': $black,
+    'divider-color': $black,
+    'button-variant': 'black',
+    'button-bg': $black,
+    'button-color': $white,
+    'button-hover': $gray-500,
+    'button-active': $black
+  )
+);
+
+// Define light mode variant overrides
+$bds-carousel-featured-variants-light: (
+  'grey': (
+    'bg-color': $gray-200,
+    'text-color': $black,
+    'divider-color': $black
+  ),
+  'neutral': (
+    'bg-color': $white,
+    'text-color': $black,
+    'divider-color': $black
+  ),
+  'yellow': (
+    'bg-color': $yellow-100,
+    'text-color': $black,
+    'divider-color': $black
+  )
+);
+
+// =============================================================================
+// Mixins: Apply Background Variant Styles
+// =============================================================================
+
+// Full variant mixin (for dark mode with button styles)
+@mixin carousel-featured-variant($variant-name, $config) {
+  &--bg-#{$variant-name} {
+    background-color: map-get($config, 'bg-color');
+
+    // Text colors
+    .bds-carousel-featured__heading,
+    .bds-carousel-featured__feature-title,
+    .bds-carousel-featured__feature-description {
+      color: map-get($config, 'text-color');
+    }
+
+    // Divider color
+    .bds-divider {
+      background-color: map-get($config, 'divider-color');
+    }
+
+    // Carousel nav buttons - enabled states only
+    // Disabled states are handled by CarouselButton component styles
+    .bds-carousel-button--#{map-get($config, 'button-variant')} {
+      background-color: map-get($config, 'button-bg');
+      color: map-get($config, 'button-color');
+
+      &:hover:not(:disabled) {
+        background-color: map-get($config, 'button-hover');
+      }
+
+      &:active:not(:disabled) {
+        background-color: map-get($config, 'button-active');
+      }
+    }
+  }
+}
+
+// Light mode variant mixin (only colors, no button states)
+@mixin carousel-featured-variant-light($variant-name, $config) {
+  .bds-carousel-featured--bg-#{$variant-name} {
+    background-color: map-get($config, 'bg-color');
+
+    .bds-carousel-featured__heading,
+    .bds-carousel-featured__feature-title,
+    .bds-carousel-featured__feature-description {
+      color: map-get($config, 'text-color');
+    }
+
+    .bds-divider {
+      background-color: map-get($config, 'divider-color');
+    }
+  }
+}
+
+// =============================================================================
+// Base Container Styles
+// =============================================================================
+
+.bds-carousel-featured {
+  width: 100%;
+  overflow: hidden;
+  // Default background - dark mode default (grey variant)
+  background-color: $gray-300;
+
+  // Mobile (default)
+  padding: $bds-carousel-featured-padding-sm;
+
+  // Tablet
+  @include media-breakpoint-up(md) {
+    padding: $bds-carousel-featured-padding-md;
+  }
+
+  // Desktop
+  @include media-breakpoint-up(lg) {
+    padding: $bds-carousel-featured-padding-lg;
+  }
+
+  // Max width constraint
+  @include media-breakpoint-up(xl) {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Background Color Variants
+  // ---------------------------------------------------------------------------
+
+  // Dark Mode (default) - Generate all variant styles using the mixin
+  @include bds-theme-mode(dark) {
+    @each $variant-name, $config in $bds-carousel-featured-variants {
+      @include carousel-featured-variant($variant-name, $config);
+    }
+  }
+}
+
+// =============================================================================
+// Content Column
+// =============================================================================
+
+.bds-carousel-featured__content-col {
+  display: flex;
+  flex-direction: column;
+
+  @include media-breakpoint-up(lg) {
+    // Stretch to match image height
+    align-self: stretch;
+    // Add 8px padding-left to create 16px total gap (8px row gap + 8px padding)
+    padding-left: 8px;
+  }
+}
+
+.bds-carousel-featured__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0; // Use space-between instead
+  min-height: 500px; // Mobile min height
+  justify-content: space-between; // Header at top, features+CTA at bottom
+
+  @include media-breakpoint-up(md) {
+    min-height: 440px; // Tablet min height
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex: 1;
+    min-height: auto; // Reset min-height on desktop
+  }
+}
+
+// =============================================================================
+// Header Section (Heading + Nav)
+// =============================================================================
+
+.bds-carousel-featured__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.bds-carousel-featured__heading {
+  margin: 0;
+  // Dark mode default: light text on dark background
+  color: $white;
+  max-width: 392px;
+}
+
+// =============================================================================
+// Bottom Section (Features + CTA grouped together)
+// =============================================================================
+
+.bds-carousel-featured__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; // Mobile
+
+  @include media-breakpoint-up(md) {
+    gap: 32px; // Tablet
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: 40px; // Desktop
+  }
+}
+
+// =============================================================================
+// Navigation Buttons
+// =============================================================================
+
+.bds-carousel-featured__nav {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+
+  // Desktop nav (in header row)
+  &--desktop {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+    }
+  }
+
+  // Mobile/Tablet nav (in CTA row)
+  &--mobile {
+    display: flex;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}
+
+// =============================================================================
+// Feature List
+// =============================================================================
+
+.bds-carousel-featured__features {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.bds-carousel-featured__feature {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  // Spacing between description and next divider
+  // Mobile/Tablet: 16px, Desktop: 24px
+  &:not(:first-child) {
+    padding-top: 16px;
+
+    @include media-breakpoint-up(lg) {
+      padding-top: 24px;
+    }
+  }
+}
+
+.bds-carousel-featured__feature-title {
+  margin: 0;
+  // Dark mode default: light text on dark background
+  color: $white;
+}
+
+.bds-carousel-featured__feature-description {
+  margin: 0;
+  // Dark mode default: muted light text on dark background
+  color: $gray-400;
+}
+
+// =============================================================================
+// CTA Section (Buttons + Mobile Nav)
+// =============================================================================
+
+.bds-carousel-featured__cta {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  gap: 16px;
+
+  // Tablet+: no wrap needed
+  @include media-breakpoint-up(md) {
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+
+  // Desktop: nav is hidden, so buttons just align left
+  @include media-breakpoint-up(lg) {
+    justify-content: flex-start;
+  }
+}
+
+// =============================================================================
+// Slides Container
+// =============================================================================
+
+.bds-carousel-featured__slides {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.bds-carousel-featured__slide-track {
+  display: flex;
+  transition: transform $bds-carousel-featured-transition;
+  will-change: transform;
+}
+
+// =============================================================================
+// Individual Slides
+// =============================================================================
+
+.bds-carousel-featured__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  position: relative;
+
+  // Mobile: 343/193 aspect ratio
+  aspect-ratio: 343 / 193;
+
+  // Tablet: 16/9 aspect ratio
+  @include media-breakpoint-up(md) {
+    aspect-ratio: 16 / 9;
+  }
+
+  // Desktop: Square aspect ratio (604x604)
+  @include media-breakpoint-up(lg) {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.bds-carousel-featured__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+// =============================================================================
+// LIGHT MODE - Color Overrides
+// =============================================================================
+
+@include bds-theme-mode(light) {
+  // Default (no variant class) - Light mode: gray-200 background
+  .bds-carousel-featured {
+    background-color: $gray-200;
+
+    .bds-carousel-featured__heading,
+    .bds-carousel-featured__feature-title,
+    .bds-carousel-featured__feature-description {
+      color: $black;
+    }
+
+    .bds-divider {
+      background-color: $black;
+    }
+  }
+
+  // Generate all light mode variant overrides using the mixin
+  @each $variant-name, $config in $bds-carousel-featured-variants-light {
+    @include carousel-featured-variant-light($variant-name, $config);
+  }
+}
+
