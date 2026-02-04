@@ -21,6 +21,7 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 |:----------|:------------|:-------------|:---------------------|
 | InFTF full history paid API via [Dhali](https://dhali.io/) | **Mainnet** | `https://xrplcluster.dhali.io/` | You must [create a paid API key](https://pay.dhali.io/?uuids=199fd80b-1776-4708-b1a1-4b2bb386435d) and embed it in the request's `Payment-Claim` header. |
 | [QuickNode](https://www.quicknode.com/chains/xrpl) | Testnet/Mainnet | N/A | QuickNode provides hosted XRPL RPC mainnet and testnet under their free and paid plans, granting flexible and reliable access to the network.
+| [dRPC NodeCloud](https://drpc.org/nodecloud-multichain-rpc-management) | **Mainnet** | `https://xrpl.drpc.org` | Get HTTPS and WSS access to XRPL Mainnet and another 180+ networks via NodeCloud, featuring smart routing, 40+ providers in 9 geoclusters, advanced key settings, and front-end protection. Start Free or go unlimited starting at $10.|
 
 
 ## Test Networks
