@@ -91,7 +91,7 @@ const assetIssuerInfo = await client.request({
   ledger_index: 'validated'
 })
 
-if ( assetIssuerInfo.result.node.Issuer !== mptIssuer.address ) {
+if (assetIssuerInfo.result.node.Issuer !== mptIssuer.address) {
   console.error(`Error: ${assetIssuerInfo.result.node.Issuer} does not match account (${mptIssuer.address}) attempting clawback!`)
   await client.disconnect()
   process.exit(1)
