@@ -45,6 +45,71 @@ LoanBroker Psuedo-Account Address: rfhftuQGpqUVRcERZbY9htJshijKur7dS4
 
 ---
 
+## Claw Back First-loss Capital
+
+```sh
+node coverClawback.js
+```
+
+The script should output the cover available, the LoanBrokerCoverDeposit transaction, cover available after the deposit, the LoanBrokerCoverClawback transaction, and the final cover available after the clawback:
+
+```sh
+Loan broker address: r9tQSk5rQdjjVGn1brt8K5XNYFvNSLv3xU
+MPT issuer address: rJ7DiJdcThwLD5rZjC7D1neXmvLFAGk9t3
+LoanBrokerID: 655C32ADFCA0712F3CB32CA034C29FE3DE9DE876A86141F0902FB1E05DA0E442
+MPT ID: 00349F41BFA01892C83AC779E4BBB80C8CE3B92D401E4B6E
+
+=== Cover Available ===
+
+0 TSTUSD
+
+=== Preparing LoanBrokerCoverDeposit transaction ===
+
+{
+  "TransactionType": "LoanBrokerCoverDeposit",
+  "Account": "r9tQSk5rQdjjVGn1brt8K5XNYFvNSLv3xU",
+  "LoanBrokerID": "655C32ADFCA0712F3CB32CA034C29FE3DE9DE876A86141F0902FB1E05DA0E442",
+  "Amount": {
+    "mpt_issuance_id": "00349F41BFA01892C83AC779E4BBB80C8CE3B92D401E4B6E",
+    "value": "1000"
+  }
+}
+
+=== Submitting LoanBrokerCoverDeposit transaction ===
+
+Cover deposit successful!
+
+=== Cover Available After Deposit ===
+
+1000 TSTUSD
+
+=== Verifying Asset Issuer ===
+
+MPT issuer account verified: rJ7DiJdcThwLD5rZjC7D1neXmvLFAGk9t3. Proceeding to clawback.
+
+=== Preparing LoanBrokerCoverClawback transaction ===
+
+{
+  "TransactionType": "LoanBrokerCoverClawback",
+  "Account": "rJ7DiJdcThwLD5rZjC7D1neXmvLFAGk9t3",
+  "LoanBrokerID": "655C32ADFCA0712F3CB32CA034C29FE3DE9DE876A86141F0902FB1E05DA0E442",
+  "Amount": {
+    "mpt_issuance_id": "00349F41BFA01892C83AC779E4BBB80C8CE3B92D401E4B6E",
+    "value": "1000"
+  }
+}
+
+=== Submitting LoanBrokerCoverClawback transaction ===
+
+Successfully clawed back 1000 TSTUSD!
+
+=== Final Cover Available After Clawback ===
+
+0 TSTUSD
+```
+
+---
+
 ## Deposit and Withdraw First-loss Capital
 
 ```sh
