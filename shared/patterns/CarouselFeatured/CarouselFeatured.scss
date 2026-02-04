@@ -189,12 +189,12 @@ $bds-carousel-featured-variants-light: (
   // ---------------------------------------------------------------------------
   // Background Color Variants
   // ---------------------------------------------------------------------------
-  // Each variant has light/dark mode colors defined below in html.light/html.dark sections
-  // Default styles are for dark mode (site default)
 
-  // Generate all variant styles using the mixin
-  @each $variant-name, $config in $bds-carousel-featured-variants {
-    @include carousel-featured-variant($variant-name, $config);
+  // Dark Mode (default) - Generate all variant styles using the mixin
+  @include bds-theme-mode(dark) {
+    @each $variant-name, $config in $bds-carousel-featured-variants {
+      @include carousel-featured-variant($variant-name, $config);
+    }
   }
 }
 
@@ -410,10 +410,10 @@ $bds-carousel-featured-variants-light: (
 }
 
 // =============================================================================
-// LIGHT MODE (html.light) - Color Overrides
+// LIGHT MODE - Color Overrides
 // =============================================================================
 
-html.light {
+@include bds-theme-mode(light) {
   // Default (no variant class) - Light mode: gray-200 background
   .bds-carousel-featured {
     background-color: $gray-200;
