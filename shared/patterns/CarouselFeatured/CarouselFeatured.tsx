@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { CarouselButton } from '../../components/CarouselButton';
 import { Divider } from '../../components/Divider';
 import { PageGrid, PageGridRow, PageGridCol } from '../../components/PageGrid';
-import { ButtonGroup, ButtonConfig } from '../ButtonGroup';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 /**
  * Props for a single slide in the CarouselFeatured component
@@ -46,10 +46,8 @@ export interface CarouselFeaturedProps extends React.ComponentPropsWithoutRef<'s
   heading: string;
   /** Array of feature items to display in the list */
   features: readonly CarouselFeatureItem[];
-  /** Primary button configuration (optional) */
-  primaryButton?: ButtonConfig;
-  /** Tertiary button configuration (optional) */
-  tertiaryButton?: ButtonConfig;
+  /** Button configurations (1-2 buttons supported) */
+  buttons?: ButtonConfig[];
   /** Background color variant. Defaults to 'grey'. */
   background?: CarouselFeaturedBackground;
 }
@@ -69,8 +67,10 @@ export interface CarouselFeaturedProps extends React.ComponentPropsWithoutRef<'s
  *     { title: "Easy-to-Integrate APIs", description: "Build with common languages..." },
  *     { title: "Full Lifecycle Support", description: "From dev tools to deployment..." },
  *   ]}
- *   primaryButton={{ label: "Get Started", href: "/docs" }}
- *   tertiaryButton={{ label: "Learn More", href: "/about" }}
+ *   buttons={[
+ *     { label: "Get Started", href: "/docs" },
+ *     { label: "Learn More", href: "/about" }
+ *   ]}
  *   slides={[
  *     { id: 1, imageSrc: '/image1.jpg', imageAlt: 'Slide 1' },
  *   ]}
@@ -83,8 +83,7 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
       slides,
       heading,
       features,
-      primaryButton,
-      tertiaryButton,
+      buttons,
       background = 'grey',
       className,
       children,
@@ -95,6 +94,14 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
 
     const canGoPrev = currentIndex > 0;
     const canGoNext = currentIndex < slides.length - 1;
+
+    // Validate buttons if provided (max 2 buttons supported)
+    const buttonValidation = buttons ? validateButtonGroup(buttons, 2) : null;
+
+    // Log warnings in development mode
+    if (process.env.NODE_ENV === 'development' && buttonValidation?.warnings.length) {
+      buttonValidation.warnings.forEach(warning => console.warn(warning));
+    }
 
     const goToPrev = useCallback(() => {
       if (canGoPrev) {
@@ -119,8 +126,8 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
     const buttonVariant = background === 'neutral' ? 'green' : 'black';
 
     return (
-      <section
-        ref={ref}
+      <PageGrid
+        ref={ref as React.Ref<HTMLDivElement>}
         className={clsx(
           'bds-carousel-featured',
           `bds-carousel-featured--bg-${background}`,
@@ -128,126 +135,124 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
         )}
         aria-roledescription="carousel"
         aria-label={heading}
-        {...rest}
-      >
-        <PageGrid className="bds-carousel-featured__container">
+        {...rest}>
           <PageGridRow>
-            {/* Image/Media Column - Left on desktop, bottom on mobile */}
+            {/* Content Column - Right on desktop, top on mobile */}
             <PageGridCol
               span={{ base: 4, md: 8, lg: 6 }}
-              className="bds-carousel-featured__media-col"
+              className="bds-carousel-featured__content-col order-1 order-lg-2"
             >
-              <div className="bds-carousel-featured__media">
-                <div
-                  className="bds-carousel-featured__slides"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={`Slide ${currentIndex + 1} of ${slides.length}`}
-                >
-                  <div
-                    className="bds-carousel-featured__slide-track"
-                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                  >
-                    {slides.map((slide, index) => (
-                      <div
-                        key={slide.id}
-                        className={clsx(
-                          'bds-carousel-featured__slide',
-                          { 'bds-carousel-featured__slide--active': index === currentIndex }
-                        )}
-                        aria-hidden={index !== currentIndex}
-                      >
-                        <img
-                          src={slide.imageSrc}
-                          alt={slide.imageAlt}
-                          className="bds-carousel-featured__image"
-                          loading={index === 0 ? 'eager' : 'lazy'}
-                        />
-                      </div>
+            {/* Content Column - Right on desktop, top on mobile */}
+              <div className="bds-carousel-featured__content">
+                {/* Header row with heading and nav buttons */}
+                <div className="bds-carousel-featured__header">
+                  <h2 className="bds-carousel-featured__heading h-md">{heading}</h2>
+                  <div className={clsx(
+                    'bds-carousel-featured__nav',
+                    'bds-carousel-featured__nav--desktop',
+                    slides.length === 1 && 'd-none'
+                  )}>
+                    {(['prev', 'next'] as const).map((direction) => (
+                      <CarouselButton
+                        key={direction}
+                        direction={direction}
+                        variant={buttonVariant}
+                        disabled={direction === 'prev' ? !canGoPrev : !canGoNext}
+                        onClick={direction === 'prev' ? goToPrev : goToNext}
+                        aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}
+                      />
                     ))}
                   </div>
                 </div>
+
+                {/* Bottom section: features + CTA grouped together */}
+                <div className="bds-carousel-featured__bottom">
+                  {/* Feature list with dividers */}
+                  <div className="bds-carousel-featured__features">
+                    {features.map((feature, index) => (
+                      <div key={index} className="bds-carousel-featured__feature">
+                        <Divider color="base" weight="regular" />
+                        <p className="bds-carousel-featured__feature-title body-r">{feature.title}</p>
+                        <p className="bds-carousel-featured__feature-description label-l">{feature.description}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA section with buttons and mobile nav */}
+                  <div className="bds-carousel-featured__cta">
+                    {/* Buttons wrapper - groups primary and tertiary together */}
+                    {buttonValidation?.isValid && (
+                      <ButtonGroup
+                        buttons={buttonValidation.buttons}
+                        color="black"
+                        forceColor={background !== 'neutral'}
+                        className="bds-carousel-featured__buttons"
+                      />
+                    )}
+
+                    {/* Mobile/Tablet nav buttons */}
+                    <div className={clsx(
+                      'bds-carousel-featured__nav',
+                      'bds-carousel-featured__nav--mobile',
+                      slides.length === 1 && 'd-none'
+                    )}>
+                      {(['prev', 'next'] as const).map((direction) => (
+                        <CarouselButton
+                          key={direction}
+                          direction={direction}
+                          variant={buttonVariant}
+                          disabled={direction === 'prev' ? !canGoPrev : !canGoNext}
+                          onClick={direction === 'prev' ? goToPrev : goToNext}
+                          aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div> {/* Close bottom */}
               </div>
             </PageGridCol>
 
-            {/* Content Column - Right on desktop, top on mobile */}
+            {/* Image/Media Column - Left on desktop, bottom on mobile */}
             <PageGridCol
               span={{ base: 4, md: 8, lg: 6 }}
-              className="bds-carousel-featured__content-col"
+              className="bds-carousel-featured__media-col order-2 order-lg-1"
             >
-            {/* Content Column - Right on desktop, top on mobile */}
-          <div className="bds-carousel-featured__content">
-            {/* Header row with heading and nav buttons */}
-            <div className="bds-carousel-featured__header">
-              <h2 className="bds-carousel-featured__heading h-md">{heading}</h2>
-              <div className="bds-carousel-featured__nav bds-carousel-featured__nav--desktop">
-                {(['prev', 'next'] as const).map((direction) => (
-                  <CarouselButton
-                    key={direction}
-                    direction={direction}
-                    variant={buttonVariant}
-                    disabled={direction === 'prev' ? !canGoPrev : !canGoNext}
-                    onClick={direction === 'prev' ? goToPrev : goToNext}
-                    aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Bottom section: features + CTA grouped together */}
-            <div className="bds-carousel-featured__bottom">
-              {/* Feature list with dividers */}
-              <div className="bds-carousel-featured__features">
-                {features.map((feature, index) => (
-                  <div key={index} className="bds-carousel-featured__feature">
-                    <Divider color="base" weight="regular" />
-                    <p className="bds-carousel-featured__feature-title body-r">{feature.title}</p>
-                    <p className="bds-carousel-featured__feature-description label-l">{feature.description}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA section with buttons and mobile nav */}
-              <div className={clsx(
-                'bds-carousel-featured__cta',
-                // Only one button provided (not both)
-                ((primaryButton && !tertiaryButton) || (!primaryButton && tertiaryButton)) && 'bds-carousel-featured__cta--single-button',
-                // Both buttons provided
-                primaryButton && tertiaryButton && 'bds-carousel-featured__cta--two-buttons'
-              )}>
-                {/* Buttons wrapper - groups primary and tertiary together */}
-                {(primaryButton || tertiaryButton) && (
-                  <ButtonGroup
-                    buttons={[primaryButton, tertiaryButton].filter((btn): btn is ButtonConfig => !!btn)}
-                    color="black"
-                    forceColor={background !== 'neutral'}
-                    className="bds-carousel-featured__buttons"
-                  />
-                )}
-
-                {/* Mobile/Tablet nav buttons */}
-                <div className="bds-carousel-featured__nav bds-carousel-featured__nav--mobile">
-                  {(['prev', 'next'] as const).map((direction) => (
-                    <CarouselButton
-                      key={direction}
-                      direction={direction}
-                      variant={buttonVariant}
-                      disabled={direction === 'prev' ? !canGoPrev : !canGoNext}
-                      onClick={direction === 'prev' ? goToPrev : goToNext}
-                      aria-label={direction === 'prev' ? 'Previous slide' : 'Next slide'}
-                    />
+              <div
+                className="bds-carousel-featured__slides"
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`Slide ${currentIndex + 1} of ${slides.length}`}
+              >
+                <div
+                  className="bds-carousel-featured__slide-track"
+                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                  {slides.map((slide, index) => (
+                    <div
+                      key={slide.id}
+                      className={clsx(
+                        'bds-carousel-featured__slide',
+                        { 'bds-carousel-featured__slide--active': index === currentIndex }
+                      )}
+                      aria-hidden={index !== currentIndex}
+                    >
+                      <img
+                        src={slide.imageSrc}
+                        alt={slide.imageAlt}
+                        className="bds-carousel-featured__image"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
-            </div> {/* Close bottom */}
-          </div>
             </PageGridCol>
           </PageGridRow>
-        </PageGrid>
+
 
         {/* Render any additional children */}
         {children}
-      </section>
+      </PageGrid>
     );
   }
 );

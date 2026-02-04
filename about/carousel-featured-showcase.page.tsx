@@ -109,7 +109,7 @@ export default function CarouselFeaturedShowcase() {
           </PageGridRow>
         </PageGrid>
 
-        <Divider weight="thick" color="gray" />
+        <Divider weight="strong" color="gray" />
 
         {/* Default: gray-200 background */}
         <section className="py-10">
@@ -128,13 +128,15 @@ export default function CarouselFeaturedShowcase() {
             background="grey"
             heading="Powered by Developers"
             features={sampleFeatures}
-            primaryButton={{ label: "Get Started", href: "#get-started" }}
-            tertiaryButton={{ label: "Learn More", href: "#learn-more" }}
-            slides={sampleSlides}
+            buttons={[
+              { label: "Get Started", href: "#get-started" },
+              { label: "Learn More", href: "#learn-more" }
+            ]}
+            slides={sampleSlides.slice(0,1)}
           />
         </section>
 
-        <Divider weight="thick" color="gray" />
+        <Divider weight="strong" color="gray" />
 
         {/* neutral background */}
         <section className="py-10">
@@ -153,13 +155,15 @@ export default function CarouselFeaturedShowcase() {
             background="neutral"
             heading="Platform Updates"
             features={sampleFeatures}
-            primaryButton={{ label: "View Updates", href: "#updates" }}
-            tertiaryButton={{ label: "See All", href: "#all" }}
+            buttons={[
+              { label: "View Updates", href: "#updates" },
+              { label: "See All", href: "#all" }
+            ]}
             slides={sampleSlides}
           />
         </section>
 
-        <Divider weight="thick" color="gray" />
+        <Divider weight="strong" color="gray" />
 
         {/* yellow background */}
         <section className="py-10">
@@ -178,13 +182,15 @@ export default function CarouselFeaturedShowcase() {
             background="yellow"
             heading="Community Highlights"
             features={sampleFeatures}
-            primaryButton={{ label: "Join Community", href: "#community" }}
-            tertiaryButton={{ label: "Learn More", href: "#learn" }}
+            buttons={[
+              { label: "Join Community", href: "#community" },
+              { label: "Learn More", href: "#learn" }
+            ]}
             slides={sampleSlides}
           />
         </section>
 
-        <Divider weight="thick" color="gray" />
+        <Divider weight="strong" color="gray" />
 
         {/* Single button example */}
         <section className="py-10">
@@ -203,12 +209,14 @@ export default function CarouselFeaturedShowcase() {
             background="grey"
             heading="Single Button Example"
             features={sampleFeatures}
-            primaryButton={{ label: "Get Started", href: "#get-started" }}
+            buttons={[
+              { label: "Get Started", href: "#get-started" }
+            ]}
             slides={sampleSlides}
           />
         </section>
 
-        <Divider weight="thick" color="gray" />
+        <Divider weight="strong" color="gray" />
 
         {/* API Reference */}
         <PageGrid className="py-26">
@@ -242,18 +250,10 @@ export default function CarouselFeaturedShowcase() {
                 <Divider weight="thin" color="gray" />
 
                 <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>primaryButton</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>ButtonConfig</code></div>
+                  <div style={{ width: '140px', flexShrink: 0 }}><code>buttons</code></div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>ButtonConfig[]</code></div>
                   <div style={{ width: '100px', flexShrink: 0 }}>optional</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Primary button configuration (uses ButtonGroup)</div>
-                </div>
-                <Divider weight="thin" color="gray" />
-
-                <div className="d-flex flex-row py-3" style={{ gap: '1rem' }}>
-                  <div style={{ width: '140px', flexShrink: 0 }}><code>tertiaryButton</code></div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}><code>ButtonConfig</code></div>
-                  <div style={{ width: '100px', flexShrink: 0 }}>optional</div>
-                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Tertiary button configuration (uses ButtonGroup)</div>
+                  <div style={{ flex: '1 1 0', minWidth: 0 }}>Array of button configurations (1-2 buttons supported, uses ButtonGroup)</div>
                 </div>
                 <Divider weight="thin" color="gray" />
 
