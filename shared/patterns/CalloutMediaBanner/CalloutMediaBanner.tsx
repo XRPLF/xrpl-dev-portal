@@ -67,15 +67,8 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   className = '',
 }) => {
   // Validate buttons if provided (max 2 buttons supported)
-  const buttonValidation = buttons ? validateButtonGroup(buttons, 2) : null;
-
-  // Log warnings in development mode
-  if (process.env.NODE_ENV === 'development' && buttonValidation?.warnings.length) {
-    buttonValidation.warnings.forEach(warning => console.warn(warning));
-  }
-
-  // Check if there are any valid buttons
-  const hasButtons = buttonValidation?.isValid && buttonValidation.buttons.length > 0;
+  const buttonValidation = validateButtonGroup(buttons, 2);
+  const hasButtons = buttonValidation.hasButtons;
 
   // Check if we should center content: no buttons OR (no heading but has buttons)
   const shouldCenter = !hasButtons || (!heading && hasButtons);

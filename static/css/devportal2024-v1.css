@@ -21762,6 +21762,210 @@ html.dark .bds-feature-two-column--green {
   }
 }
 
+.bds-feature-single-topic {
+  width: 100%;
+  background-color: #FFFFFF;
+}
+.bds-feature-single-topic__container {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic__container {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+.bds-feature-single-topic__row {
+  align-items: stretch;
+  row-gap: 24px;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic__row {
+    row-gap: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__row {
+    row-gap: 0;
+    height: 565px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__media-col {
+    height: 100%;
+  }
+}
+.bds-feature-single-topic__content-col {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__content-col {
+    padding-left: 8px;
+    height: 100%;
+  }
+}
+.bds-feature-single-topic__media {
+  width: 100%;
+  overflow: hidden;
+}
+.bds-feature-single-topic__media-img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 343/193;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic__media-img {
+    aspect-ratio: 16/9;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__media-img {
+    aspect-ratio: 701/561;
+    height: 565px;
+  }
+}
+.bds-feature-single-topic__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 40px;
+  min-height: 280px;
+  justify-content: space-between;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic__content {
+    gap: 80px;
+    min-height: 320px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__content {
+    min-height: auto;
+    gap: 0;
+  }
+}
+.bds-feature-single-topic__title-section {
+  flex-shrink: 0;
+}
+.bds-feature-single-topic__title {
+  font-family: "Tobias", "Noto Serif", monospace;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: 0px;
+  margin-bottom: 16px;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic__title {
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__title {
+    font-size: 40px;
+    line-height: 46px;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+}
+.bds-feature-single-topic__title {
+  color: #141414;
+  margin: 0;
+}
+.bds-feature-single-topic__description-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__description-section {
+    gap: 40px;
+  }
+}
+.bds-feature-single-topic__description {
+  font-family: "Booton", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20.1px;
+  letter-spacing: 0px;
+  margin-bottom: 16px;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic__description {
+    font-size: 14px;
+    line-height: 20.1px;
+    letter-spacing: 0px;
+    margin-bottom: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic__description {
+    font-size: 16px;
+    line-height: 23.2px;
+    letter-spacing: 0px;
+    margin-bottom: 16px;
+  }
+}
+.bds-feature-single-topic__description {
+  color: #72777E;
+  margin: 0;
+}
+
+.bds-feature-single-topic--default .bds-feature-single-topic__title-section {
+  background-color: transparent;
+  padding: 0;
+}
+
+.bds-feature-single-topic--accentSurface .bds-feature-single-topic__title-section {
+  background-color: #E6EAF0;
+  padding: 16px;
+  min-height: 160px;
+}
+@media (min-width: 576px) {
+  .bds-feature-single-topic--accentSurface .bds-feature-single-topic__title-section {
+    min-height: 200px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-feature-single-topic--accentSurface .bds-feature-single-topic__title-section {
+    min-height: 200px;
+  }
+}
+
+html.dark .bds-feature-single-topic {
+  background-color: #141414;
+}
+html.dark .bds-feature-single-topic__title {
+  color: #FFFFFF;
+}
+html.dark .bds-feature-single-topic__description {
+  color: #FFFFFF;
+}
+html.dark .bds-feature-single-topic--default .bds-feature-single-topic__title-section {
+  background-color: transparent;
+}
+html.dark .bds-feature-single-topic--default .bds-feature-single-topic__title {
+  color: #FFFFFF;
+}
+html.dark .bds-feature-single-topic--accentSurface .bds-feature-single-topic__title-section {
+  background-color: #CAD4DF;
+}
+html.dark .bds-feature-single-topic--accentSurface .bds-feature-single-topic__title {
+  color: #141414;
+}
+
 .bds-cards-two-column {
   width: 100%;
   background-color: #FFFFFF;
@@ -28316,33 +28520,33 @@ html.light .progress {
 html.light [data-component-name="Search/SearchIcon"] > path {
   fill: black;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid),
-html.light nav a:not(.bds-link):not(.bds-card-offgrid),
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid) {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn),
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn),
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn) {
   color: #141414;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid).btn-primary,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid).btn-primary,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).btn-primary {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary {
   color: #FFFFFF;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid).btn-primary:hover,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid).btn-primary:hover,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).btn-primary:hover {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary:hover,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary:hover,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).btn-primary:hover {
   color: #FFFFFF;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid):hover, html.light a:not(.bds-link):not(.bds-card-offgrid):active, html.light a:not(.bds-link):not(.bds-card-offgrid).active,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid):hover,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid):active,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid).active,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):hover,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):active,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid).active {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):hover, html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):active, html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).active,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):hover,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):active,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).active,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):hover,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):active,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn).active {
   color: #5429A1;
 }
-html.light a:not(.bds-link):not(.bds-card-offgrid):not(.btn):not(.bds-text-card):focus,
-html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.btn):not(.bds-text-card):focus,
-html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.btn):not(.bds-text-card):focus {
+html.light a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):not(.btn):not(.bds-text-card):focus,
+html.light nav a:not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):not(.btn):not(.bds-text-card):focus,
+html.light a:not([role=button]):not(.bds-link):not(.bds-card-offgrid):not(.bds-btn):not(.btn):not(.bds-text-card):focus {
   background-color: transparent;
 }
 html.light a.card:hover, html.light:active, html.light.active {

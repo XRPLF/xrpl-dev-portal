@@ -96,12 +96,8 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
     const canGoNext = currentIndex < slides.length - 1;
 
     // Validate buttons if provided (max 2 buttons supported)
-    const buttonValidation = buttons ? validateButtonGroup(buttons, 2) : null;
-
-    // Log warnings in development mode
-    if (process.env.NODE_ENV === 'development' && buttonValidation?.warnings.length) {
-      buttonValidation.warnings.forEach(warning => console.warn(warning));
-    }
+    const buttonValidation = validateButtonGroup(buttons, 2);
+    const hasButtons = buttonValidation.hasButtons;
 
     const goToPrev = useCallback(() => {
       if (canGoPrev) {
@@ -180,7 +176,7 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
                   {/* CTA section with buttons and mobile nav */}
                   <div className="bds-carousel-featured__cta">
                     {/* Buttons wrapper - groups primary and tertiary together */}
-                    {buttonValidation?.isValid && (
+                    {hasButtons && (
                       <ButtonGroup
                         buttons={buttonValidation.buttons}
                         color="black"

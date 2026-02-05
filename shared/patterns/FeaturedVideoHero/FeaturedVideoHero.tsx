@@ -57,14 +57,12 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
       }));
 
     // Validate buttons (max 2 CTAs supported)
-    const buttonValidation = validateButtonGroup(buttonConfigs, 2);
-
-    // Log warnings in development mode
-    if (isEnvironment(["development", "test"]) && buttonValidation.warnings.length > 0) {
-      buttonValidation.warnings.forEach(warning => console.warn(warning));
-    }
-
-    const hasCallsToAction = buttonValidation.isValid && buttonValidation.buttons.length > 0;
+    const buttonValidation = validateButtonGroup(
+      buttonConfigs,
+      2,
+      isEnvironment(["development", "test"]) // Only log warnings in dev/test
+    );
+    const hasCallsToAction = buttonValidation.hasButtons;
 
     return (
       <header

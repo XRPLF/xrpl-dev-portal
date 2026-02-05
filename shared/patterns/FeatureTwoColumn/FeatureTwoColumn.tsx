@@ -73,11 +73,7 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
 
   // Validate buttons (FeatureTwoColumn supports 1-5 links per design spec)
   const buttonValidation = validateButtonGroup(buttonConfigs, 5);
-
-  // Log warnings in development mode
-  if (process.env.NODE_ENV === 'development' && buttonValidation.warnings.length > 0) {
-    buttonValidation.warnings.forEach(warning => console.warn(warning));
-  }
+  const hasButtons = buttonValidation.hasButtons;
 
   // Build root class names
   const rootClasses = clsx(
@@ -93,7 +89,7 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
     const contentClass = clsx(
       'bds-feature-two-column__content',
       {
-        'bds-feature-two-column__content--multiple': buttonValidation.buttons.length >= 3,
+        'bds-feature-two-column__content--multiple': hasButtons && buttonValidation.buttons.length >= 3,
       }
     );
 
@@ -103,7 +99,7 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
           <h2 className="bds-feature-two-column__title">{title}</h2>
           <p className="bds-feature-two-column__description">{description}</p>
         </div>
-        {buttonValidation.isValid && (
+        {hasButtons && (
           <ButtonGroup
             buttons={buttonValidation.buttons}
             color={buttonColor}

@@ -1,0 +1,260 @@
+// =============================================================================
+// FeatureSingleTopic Pattern
+// =============================================================================
+// A feature section pattern with single topic layout for title and media.
+// Supports variants (default, accentSurface).
+// Orientation (left, right) is handled via Bootstrap utility classes in TSX.
+// Based on Figma: 1280px desktop design with 706px image + content area
+//
+// Note: Buttons are rendered using the ButtonGroup component.
+// =============================================================================
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Background colors from _colors.scss
+$bds-single-topic-bg: $white; // #FFFFFF (Neutral-white)
+$bds-single-topic-title-bg: $gray-200; // #E6EAF0 (Neutral-200) for accentSurface variant
+
+// Text colors from _colors.scss
+$bds-single-topic-title-color: $black; // #141414 (Neutral-black)
+$bds-single-topic-description-color: $gray-500; // #72777E (Neutral-500)
+
+// Spacing - Desktop (≥992px) - based on Figma 1280px design
+$bds-single-topic-desktop-py: 40px; // Vertical padding from Figma
+$bds-single-topic-desktop-content-pl: 8px; // Content left padding
+$bds-single-topic-desktop-description-gap: 40px; // Gap between description and ButtonGroup
+$bds-single-topic-desktop-title-padding: 16px; // Title section padding for accentSurface
+$bds-single-topic-desktop-height: 565px; // Fixed height from Figma design
+
+// Spacing - Tablet (576px - 991px)
+$bds-single-topic-tablet-py: 32px;
+$bds-single-topic-tablet-content-gap: 32px; // Gap between image and content on tablet
+$bds-single-topic-tablet-content-min-height: 320px; // Min height for content on tablet
+$bds-single-topic-tablet-title-description-gap: 80px; // Gap between accent/title and description on tablet
+
+// Spacing - Mobile (<576px)
+$bds-single-topic-mobile-py: 24px;
+$bds-single-topic-mobile-content-gap: 24px; // Gap between image and content on mobile
+$bds-single-topic-mobile-content-min-height: 280px; // Min height for content on mobile
+$bds-single-topic-mobile-title-description-gap: 40px; // Gap between accent/title and description on mobile
+
+// =============================================================================
+// Base Styles
+// =============================================================================
+.bds-feature-single-topic {
+  width: 100%;
+  background-color: $bds-single-topic-bg;
+
+  // Container - uses PageGrid with vertical padding
+  &__container {
+    padding-top: $bds-single-topic-mobile-py;
+    padding-bottom: $bds-single-topic-mobile-py;
+
+    @include media-breakpoint-up(md) {
+      padding-top: $bds-single-topic-tablet-py;
+      padding-bottom: $bds-single-topic-tablet-py;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-top: $bds-single-topic-desktop-py;
+      padding-bottom: $bds-single-topic-desktop-py;
+    }
+  }
+
+  // Row - align items stretch so columns match height
+  // Use row-gap for spacing between image and content on mobile/tablet
+  &__row {
+    align-items: stretch;
+    row-gap: $bds-single-topic-mobile-content-gap;
+
+    @include media-breakpoint-up(md) {
+      row-gap: $bds-single-topic-tablet-content-gap;
+    }
+
+    @include media-breakpoint-up(lg) {
+      row-gap: 0;
+      // Fixed height from Figma design
+      height: $bds-single-topic-desktop-height;
+    }
+  }
+
+  // Media column
+  &__media-col {
+    @include media-breakpoint-up(lg) {
+      height: 100%;
+    }
+  }
+
+  // Content column - flex container with left padding on desktop
+  &__content-col {
+    display: flex;
+    flex-direction: column;
+
+    @include media-breakpoint-up(lg) {
+      padding-left: $bds-single-topic-desktop-content-pl;
+      height: 100%;
+    }
+  }
+
+  // Media container
+  &__media {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  // Media image - responsive aspect ratios per Figma
+  &__media-img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    // Mobile: 343/193 aspect ratio
+    aspect-ratio: 343 / 193;
+
+    @include media-breakpoint-up(md) {
+      // Tablet: 16/9 aspect ratio
+      aspect-ratio: 16 / 9;
+    }
+
+    @include media-breakpoint-up(lg) {
+      // Desktop: 701/561 aspect ratio (fills the 565px height)
+      aspect-ratio: 701 / 561;
+      height: $bds-single-topic-desktop-height;
+    }
+  }
+
+  // Content wrapper - uses space-between to push title to top, description/CTA to bottom
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    // Gap between accent/title section and description section
+    gap: $bds-single-topic-mobile-title-description-gap; // 40px on mobile
+    // Min height on mobile to prevent squished content
+    min-height: $bds-single-topic-mobile-content-min-height;
+    justify-content: space-between;
+
+    @include media-breakpoint-up(md) {
+      gap: $bds-single-topic-tablet-title-description-gap; // 80px on tablet
+      min-height: $bds-single-topic-tablet-content-min-height;
+    }
+
+    @include media-breakpoint-up(lg) {
+      min-height: auto; // Desktop uses fixed height from row
+      gap: 0; // space-between handles the gap on desktop
+    }
+  }
+
+  // Title section - at the top
+  &__title-section {
+    flex-shrink: 0;
+  }
+
+  // Title - Heading MD from styles/_font.scss
+  // Font: Tobias (secondary/monospace), Size: 40px, Weight: 300, Line-height: 46px, Letter-spacing: -1px
+  &__title {
+    @include type(heading-md);
+    color: $bds-single-topic-title-color;
+    margin: 0;
+  }
+
+  // Description section - at the bottom, contains description + ButtonGroup
+  &__description-section {
+    display: flex;
+    flex-direction: column;
+    gap: $bds-single-topic-mobile-content-gap;
+
+    @include media-breakpoint-up(lg) {
+      gap: $bds-single-topic-desktop-description-gap;
+    }
+  }
+
+  // Description - Label L from styles/_font.scss
+  // Font: Booton (primary/sans-serif), Size: 16px, Weight: 300 (light), Line-height: 23.2px
+  &__description {
+    @include type(label-l);
+    color: $bds-single-topic-description-color;
+    margin: 0;
+  }
+}
+
+// =============================================================================
+// Variant Modifiers
+// =============================================================================
+
+// Default variant - no background on title section
+.bds-feature-single-topic--default {
+  .bds-feature-single-topic__title-section {
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+// AccentSurface variant - gray background on title section
+.bds-feature-single-topic--accentSurface {
+  .bds-feature-single-topic__title-section {
+    background-color: $bds-single-topic-title-bg;
+    padding: $bds-single-topic-desktop-title-padding;
+    // Mobile min-height
+    min-height: 160px;
+
+    @include media-breakpoint-up(md) {
+      // Tablet min-height
+      min-height: 200px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      // Desktop min-height
+      min-height: 200px;
+    }
+  }
+}
+
+// =============================================================================
+// Dark Mode Theme Overrides
+// =============================================================================
+
+// Dark mode design tokens from Figma
+$bds-single-topic-dark-bg: $black; // #141414 (Neutral/black)
+$bds-single-topic-dark-title-bg: $gray-300; // #CAD4DF (Neutral/300default) for accentSurface variant
+$bds-single-topic-dark-title-color: $black; // #141414 - title stays black on light background
+$bds-single-topic-dark-description-color: $white; // #FFFFFF - description is white in dark mode
+
+html.dark {
+  .bds-feature-single-topic {
+    background-color: $bds-single-topic-dark-bg;
+
+    &__title {
+      color: $white; // White title on dark background for default variant
+    }
+
+    &__description {
+      color: $bds-single-topic-dark-description-color;
+    }
+  }
+
+  // Default variant in dark mode - title is white on dark background
+  .bds-feature-single-topic--default {
+    .bds-feature-single-topic__title-section {
+      background-color: transparent;
+    }
+
+    .bds-feature-single-topic__title {
+      color: $white;
+    }
+  }
+
+  // AccentSurface variant in dark mode - title section has light background
+  .bds-feature-single-topic--accentSurface {
+    .bds-feature-single-topic__title-section {
+      background-color: $bds-single-topic-dark-title-bg;
+    }
+
+    // Title stays black on the light gray background
+    .bds-feature-single-topic__title {
+      color: $bds-single-topic-dark-title-color;
+    }
+  }
+}
+
