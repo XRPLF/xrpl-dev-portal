@@ -57,7 +57,7 @@ print(json.dumps(account_data, indent=2))
 if "RegularKey" in account_data.keys():
     print("Current regular key:", account_data["RegularKey"])
 else:
-    print("❌ No regular key set.")
+    print("No regular key set.")
     exit(1)
 
 # Remove regular key from account ---------------------------------------------
@@ -90,6 +90,6 @@ print(f"Account info for {wallet.address}:")
 print(json.dumps(account_data2, indent=2))
 
 if "RegularKey" in account_data2.keys():
-    print("❌ Regular key address is:", account_data2["RegularKey"])
+    print("Regular key address is:", account_data2["RegularKey"])
 else:
-    print("✅ No regular key set.")
+    print("No regular key set.")

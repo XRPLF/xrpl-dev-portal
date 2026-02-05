@@ -56,7 +56,7 @@ if (accountInfoResp.result.account_data.RegularKey) {
     accountInfoResp.result.account_data.RegularKey
   )
 } else {
-  console.log('❌ No regular key set.')
+  console.log('No regular key set.')
   client.disconnect()
   process.exit(1)
 }
@@ -99,11 +99,11 @@ if (accountInfoResp2.error) {
 console.log(`Account info for ${wallet.address}:`)
 console.log(JSON.stringify(accountInfoResp2.result.account_data, null, 2))
 if (accountInfoResp2.result.account_data.RegularKey) {
-  console.log('❌ Regular key address is:', 
+  console.log('Regular key address is:', 
     accountInfoResp2.result.account_data.RegularKey
   )
 } else {
-  console.log('✅ No regular key set.')
+  console.log('No regular key set.')
 }
 
 client.disconnect()
