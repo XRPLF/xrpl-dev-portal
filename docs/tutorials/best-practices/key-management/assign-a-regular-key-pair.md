@@ -97,7 +97,7 @@ Use the [`Wallet.create()` class method](https://xrpl-py.readthedocs.io/en/stabl
 
 Use a [SetRegularKey transaction][] to assign the new key pair to your account as a regular key pair.
 
-{% admonition type="success" name="Tip" %}This example signs the transaction using the master key pair, but you could also use an existing regular key pair, or a[multi-signing list](../../../concepts/accounts/multi-signing.md) if your account has multi-signing set up.{% /admonition %}
+{% admonition type="success" name="Tip" %}This example signs the transaction using the master key pair, but you could also use an existing regular key pair, or a [multi-signing list](../../../concepts/accounts/multi-signing.md) if your account has multi-signing set up.{% /admonition %}
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -111,7 +111,7 @@ Use a [SetRegularKey transaction][] to assign the new key pair to your account a
 
 ### 5. Send a test transaction using the regular key
 
-After the SetRegularKey transaction succeeds, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. **To avoid losing control of your account,** it is important that you test your regular key before you take any additional steps such as [disabling the master key pair](disable-master-key-pair.md). If you make a mistake and lose access to your account, no one can restore it for you.
+After the SetRegularKey transaction succeeds, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. **To avoid losing control of your account**, it is important that you test your regular key before you take any additional steps such as [disabling the master key pair](disable-master-key-pair.md). If you make a mistake and lose access to your account, no one can restore it for you.
 
 To test the key, send any type of transaction, signing it using the regular key pair. The sample code sends an [AccountSet transaction][] with no parameters, which is a "no-op" that does nothing besides use a sequence number and burn the transaction cost.
 
