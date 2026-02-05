@@ -1,382 +1,149 @@
 ---
-html: change-or-remove-a-regular-key-pair.html
-parent: manage-account-settings.html
 seo:
-    description: Remove or update a regular key pair already authorized by your account.
+  description: Remove a regular key pair already authorized by your account.
 labels:
   - Security
   - Accounts
 ---
-# Change or Remove a Regular Key Pair
+# Remove a Regular Key Pair
 
-The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](../../../concepts/accounts/cryptographic-keys.md)_, to sign future transactions.  If your [account](../../../concepts/accounts/index.md)'s regular key pair is compromised, or if you want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
+This tutorial shows how to remove a [regular key pair](../../../concepts/accounts/cryptographic-keys.md) from an [account](../../../concepts/accounts/index.md). You can do this if you suspect your regular key pair is compromised.
 
-For more information about master and regular key pairs, see [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md).
+{% admonition type="success" name="Tip: Change Regular Key Pair" %}
+To replace an existing regular key pair with a new regular key pair, follow the exact same process as [assigning a regular key pair](assign-a-regular-key-pair.md) for the first time.
+{% /admonition %}
 
+## Goals
 
-## Changing a Regular Key Pair
+By following this tutorial, you should learn how to:
 
-The steps to change your existing regular key pair are almost the same as the steps to [assign a regular key](assign-a-regular-key-pair.md) for the first time. You generate the key pair and assign it to your account as a regular key pair, overwriting the existing regular key pair. However, the main difference is that when changing the existing regular key pair, you can use the existing regular private key to replace itself; but when assigning a regular key pair to an account for the first time, you have to use the account's master private key to do it.
+- Look up the regular key pair associated with an account, if any.
+- Remove the regular key pair from an account.
 
-For more information about master and regular key pairs, see [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md).
+## Prerequisites
 
+To complete this tutorial, you should:
 
-## Removing a Regular Key Pair
+- Have a basic understanding of the XRP Ledger.
+- Have an [XRP Ledger client library](../../../references/client-libraries.md), such as **xrpl.js**, installed.
+- Have a basic understanding of [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md).
 
-If you want to remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](../../../concepts/accounts/multi-signing.md)).
+## Source Code
 
+You can find the complete source code for this tutorial's examples in the {% repo-link path="_code-samples/remove-regular-key/" %}code samples section of this website's repository{% /repo-link %}.
 
-When removing a regular key pair to your account, the `SetRegularKey` transaction requires signing by your account's master private key (secret) or existing regular key pair. Sending your master or regular private key anywhere is dangerous, so we keep transaction signing separate from transaction submission to the network.
+## Steps
 
-### Sign Your Transaction
-
-{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
-
-
-Populate the request fields with the following values:
-
-| Request Field | Value                                                        |
-|:--------------|:-------------------------------------------------------------|
-| `Account`     | The address of your account.                                 |
-| `secret`      | `master_key`, `master_seed`, or `master_seed_hex` (master or regular private key) for your account. |
-
-
-#### Request Format
-
-An example of the request format:
+### 1. Install dependencies
 
 {% tabs %}
+{% tab label="JavaScript" %}
+From the code sample folder, use `npm` to install dependencies:
 
-{% tab label="WebSocket" %}
-```json
-{
-  "command": "sign",
-  "tx_json": {
-      "TransactionType": "SetRegularKey",
-      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
-      },
-   "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-    "method": "sign",
-    "params": [
-        {
-        "secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-        "tx_json" : {
-            "TransactionType" : "SetRegularKey",
-            "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
-            }
-        }
-    ]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
 ```sh
-#Syntax: sign secret tx_json
-rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
+npm i
 ```
 {% /tab %}
 
-{% /tabs %}
+{% tab label="Python" %}
+From the code sample folder, set up a virtual environment and use `pip` to install dependencies:
 
-
-#### Response Format
-
-An example of a successful response:
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "result": {
-    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-    "tx_json": {
-      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-      "Fee": "10",
-      "Flags": 2147483648,
-      "Sequence": 2,
-      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-      "TransactionType": "SetRegularKey",
-      "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-      "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-    }
-  },
-  "status": "success",
-  "type": "response"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-    "result": {
-        "status": "success",
-        "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-        "tx_json": {
-            "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-            "Fee": "10",
-            "Flags": 2147483648,
-            "Sequence": 2,
-            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-            "TransactionType": "SetRegularKey",
-            "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-            "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-        }
-    }
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
-```json
-{
-   "result" : {
-      "status" : "success",
-      "tx_blob" : "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-      "tx_json" : {
-         "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-         "Fee" : "10",
-         "Flags" : 2147483648,
-         "Sequence" : 2,
-         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-         "TransactionType" : "SetRegularKey",
-         "TxnSignature" : "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-         "hash" : "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-      }
-   }
-}
-```
-{% /tab %}
-
-{% /tabs %}
-
-The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
-
-Next, use the `submit` command to send the transaction blob (`tx_blob` or `signedTransaction`) to the network.
-
-
-### Submit Your Transaction
-
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method][].
-
-#### Request Format
-
-An example of the request format:
-
-{% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-    "command": "submit",
-    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
-}
-```
-{% /tab %}
-
-{% tab label="JSON-RPC" %}
-```json
-{
-   "method":"submit",
-   "params":[
-      {
-         "tx_blob":"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
-      }
-   ]
-}
-```
-{% /tab %}
-
-{% tab label="Commandline" %}
 ```sh
-#Syntax: submit tx_blob
-rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 {% /tab %}
-
 {% /tabs %}
 
+### 2. Connect and get account(s)
 
-#### Response Format
-
-An example of a successful response:
+To get started, import the client library and instantiate an API client. For this tutorial, you need one account, which the sample code funds using the Testnet faucet; you could also use an existing account.
 
 {% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "result": {
-    "engine_result": "tesSUCCESS",
-    "engine_result_code": 0,
-    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-    "tx_json": {
-      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-      "Fee": "10",
-      "Flags": 2147483648,
-      "Sequence": 2,
-      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-      "TransactionType": "SetRegularKey",
-      "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-      "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-    }
-  },
-  "status": "success",
-  "type": "response"
-}
-```
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/remove-regular-key/js/remove-regular-key.js" language="js" before="// Generate a regular key" /%}
 {% /tab %}
 
-{% tab label="JSON-RPC" %}
-```json
-{
-    "result": {
-        "engine_result": "tesSUCCESS",
-        "engine_result_code": 0,
-        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
-        "status": "success",
-        "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-        "tx_json": {
-            "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-            "Fee": "10",
-            "Flags": 2147483648,
-            "Sequence": 2,
-            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-            "TransactionType": "SetRegularKey",
-            "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-            "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-        }
-    }
-}
-```
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/remove-regular-key/py/remove-regular-key.py" language="py" before="# Generate a regular key" /%}
 {% /tab %}
-
-{% tab label="Commandline" %}
-```json
-{
-   "result" : {
-      "engine_result" : "tesSUCCESS",
-      "engine_result_code" : 0,
-      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
-      "status" : "success",
-      "tx_blob" : "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
-      "tx_json" : {
-         "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-         "Fee" : "10",
-         "Flags" : 2147483648,
-         "Sequence" : 2,
-         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
-         "TransactionType" : "SetRegularKey",
-         "TxnSignature" : "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
-         "hash" : "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
-      }
-   }
-}
-```
-{% /tab %}
-
 {% /tabs %}
 
-The way to verify that regular key pair removal succeeded is to confirm that you can't send a transaction using the removed regular private key.
-
-Here's an example error response for an [AccountSet transaction][] signed using the regular private key removed by the `SetRegularKey` transaction above.
-
-
-### Response Format
-
-An example of a successful response:
+Before you can remove the regular key pair from an account, the account has to have a regular key pair assigned in the first place. Since the sample code uses a fresh account from the faucet, it needs to generate and assign a regular key pair. **Skip this part if you are using an existing account that already has a regular key pair assigned.**
 
 {% tabs %}
-
-{% tab label="WebSocket" %}
-```json
-{
-  "error": "badSecret",
-  "error_code": 41,
-  "error_message": "Secret does not match account.",
-  "request": {
-    "command": "submit",
-    "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-    "tx_json": {
-      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-      "TransactionType": "AccountSet"
-    }
-  },
-  "status": "error",
-  "type": "response"
-}
-```
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/remove-regular-key/js/remove-regular-key.js" language="js" from="// Generate a regular key" before="// Check regular key" /%}
 {% /tab %}
 
-{% tab label="JSON-RPC" %}
-```json
-{
-    "result": {
-        "error": "badSecret",
-        "error_code": 41,
-        "error_message": "Secret does not match account.",
-        "request": {
-            "command": "submit",
-            "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-            "tx_json": {
-                "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-                "TransactionType": "AccountSet"
-            }
-        },
-        "status": "error"
-    }
-}
-```
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/remove-regular-key/py/remove-regular-key.py" language="py" from="# Generate a regular key" before="# Check regular key" /%}
 {% /tab %}
-
-{% tab label="Commandline" %}
-```json
-{
-   "result" : {
-      "error" : "badSecret",
-      "error_code" : 41,
-      "error_message" : "Secret does not match account.",
-      "request" : {
-         "command" : "submit",
-         "secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-         "tx_json" : {
-            "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
-            "TransactionType" : "AccountSet"
-         }
-      },
-      "status" : "error"
-   }
-}
-```
-{% /tab %}
-
 {% /tabs %}
 
-In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](../../../concepts/transactions/transaction-cost.md#key-reset-transaction) without paying the [transaction cost](../../../concepts/transactions/transaction-cost.md). The XRP Ledger's [transaction queue](../../../concepts/transactions/transaction-queue.md) prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+### 3. Check regular key pair associated with account
 
+Before you disable the regular key, you may want to confirm that the account has a regular key assigned and check which key it is. To do this, use the [account_info method][] and look at for a `RegularKey` field in the account data. If the field is present, it contains the [address](../../../concepts/accounts/addresses.md) of the regular key pair; if the field is absent, the account does not currently have a regular key pair authorized.
+
+This step is optional; you can remove the regular key pair without knowing which key it is.
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/remove-regular-key/js/remove-regular-key.js" language="js" from="// Check regular key" before="// Remove regular key" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/remove-regular-key/py/remove-regular-key.py" language="py" from="# Check regular key" before="# Remove regular key" /%}
+{% /tab %}
+{% /tabs %}
+
+### 4. Remove regular key pair
+
+To remove the regular key pair, send a [SetRegularKey transaction][] without a `RegularKey` field. You can sign this transaction with the regular key pair itself, with the master key pair, or with a multi-signing list.
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/remove-regular-key/js/remove-regular-key.js" language="js" from="// Remove regular key" before="// Confirm that the account has no regular key" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/remove-regular-key/py/remove-regular-key.py" language="py" from="# Remove regular key" before="# Confirm that the account has no regular key" /%}
+{% /tab %}
+{% /tabs %}
+
+If the transaction fails with the result code `tecNO_ALTERNATIVE_KEY`, you cannot remove the regular key because the account does not have any other method of authorizing transactions: this means the master key pair is disabled and the account does not have a multi-signing list. Before you can remove the regular key pair, you must either re-enable the master key pair or set up a multi-signing list.
+
+### 5. Confirm that the account has no regular key authorized
+
+After removing the regular key pair, you can confirm that the account has no regular key pair using the [account_info method][] in the same way as in step 3. If the account data does not have a `RegularKey` field, then no regular key pair is authorized.
+
+{% tabs %}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/remove-regular-key/js/remove-regular-key.js" language="js" from="// Confirm that the account has no regular key" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/remove-regular-key/py/remove-regular-key.py" language="py" from="# Confirm that the account has no regular key" /%}
+{% /tab %}
+{% /tabs %}
+
+Another way to verify that you succeeded at removing the regular key pair is to attempt to send a transaction signed using the removed key pair. Submitting the transaction should fail with the `badSecret` error and an error message such as `Secret does not match account`.
+
+## See Also
 
 - **Concepts:**
     - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
     - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
     - [Transaction Cost](../../../concepts/transactions/transaction-cost.md)
+        - [Key Reset Transaction](../../../concepts/transactions/transaction-cost.md#key-reset-transaction): a special case where you can send a SetRegularKey transaction with a transaction cost of 0.
 - **Tutorials:**
     - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
     - [Set Up Multi-Signing](set-up-multi-signing.md)
-    - [List XRP as an Exchange](../../../use-cases/defi/list-xrp-as-an-exchange.md)
+    - [Disable Master Key Pair](disable-master-key-pair.md)
 - **References:**
-    - [wallet_propose method][]
-    - [sign method][]
     - [SetRegularKey transaction][]
-    - [AccountRoot object](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) where the regular key is stored in the field `RegularKey`
+    - [account_info method][]
+    - [AccountRoot entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
