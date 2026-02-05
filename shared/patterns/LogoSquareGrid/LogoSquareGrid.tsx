@@ -2,8 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
-import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
-import { useButtonValidation } from '../ButtonGroup/buttonGroupUtils';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface LogoItem extends TileLogoProps {}
 
@@ -64,7 +63,8 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
   className = '',
 }) => {
   // Validate buttons if provided (max 2 buttons supported)
-  const { validation: buttonValidation, hasButtons } = useButtonValidation(buttons, 2);
+  const buttonValidation = validateButtonGroup(buttons, 2);
+  const hasButtons = buttonValidation.hasButtons;
 
   // Build class names using BEM with bds namespace
   const classNames = clsx(
@@ -94,7 +94,7 @@ export const LogoSquareGrid: React.FC<LogoSquareGridProps> = ({
                 {/* Buttons */}
                 {hasButtons && (
                   <ButtonGroup
-                    buttons={buttonValidation!.buttons}
+                    buttons={buttonValidation.buttons}
                     color="green"
                     gap="small"
                   />

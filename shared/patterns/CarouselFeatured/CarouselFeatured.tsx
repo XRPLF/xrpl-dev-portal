@@ -3,8 +3,7 @@ import clsx from 'clsx';
 import { CarouselButton } from '../../components/CarouselButton';
 import { Divider } from '../../components/Divider';
 import { PageGrid, PageGridRow, PageGridCol } from '../../components/PageGrid';
-import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
-import { useButtonValidation } from '../ButtonGroup/buttonGroupUtils';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 /**
  * Props for a single slide in the CarouselFeatured component
@@ -97,7 +96,8 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
     const canGoNext = currentIndex < slides.length - 1;
 
     // Validate buttons if provided (max 2 buttons supported)
-    const { validation: buttonValidation, hasButtons } = useButtonValidation(buttons, 2);
+    const buttonValidation = validateButtonGroup(buttons, 2);
+    const hasButtons = buttonValidation.hasButtons;
 
     const goToPrev = useCallback(() => {
       if (canGoPrev) {
@@ -178,7 +178,7 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
                     {/* Buttons wrapper - groups primary and tertiary together */}
                     {hasButtons && (
                       <ButtonGroup
-                        buttons={buttonValidation!.buttons}
+                        buttons={buttonValidation.buttons}
                         color="black"
                         forceColor={background !== 'neutral'}
                         className="bds-carousel-featured__buttons"

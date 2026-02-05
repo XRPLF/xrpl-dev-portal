@@ -18,6 +18,8 @@ export interface ButtonGroupValidationResult {
   buttons: ButtonConfig[];
   /** Whether the button list is valid and should render */
   isValid: boolean;
+  /** True if there are valid buttons to render (convenience flag) */
+  hasButtons: boolean;
   /** Any warnings generated during validation */
   warnings: string[];
 }
@@ -29,20 +31,40 @@ export interface ButtonGroupValidationResult {
  * - Applies maxButtons limit if specified
  * - Checks for empty button arrays
  * - Validates individual button configs (label required, href or onClick recommended)
+ * - Automatically logs warnings in development mode
  *
- * @param buttons - Array of button configurations
+ * @param buttons - Array of button configurations (can be undefined)
  * @param maxButtons - Optional maximum number of buttons to render
- * @returns Validation result with processed buttons, validity flag, and warnings
+ * @param autoLogWarnings - Whether to automatically log warnings in development mode (default: true)
+ * @returns Validation result with processed buttons, validity flag, hasButtons flag, and warnings
  *
  * @example
- * const result = validateButtonGroup(buttons, 2);
- * if (!result.isValid) return null;
- * // Use result.buttons for rendering
+ * // Basic usage with auto-logging
+ * const validation = validateButtonGroup(buttons, 2);
+ * if (validation.hasButtons) {
+ *   <ButtonGroup buttons={validation.buttons} />
+ * }
+ *
+ * @example
+ * // Disable auto-logging
+ * const validation = validateButtonGroup(buttons, 2, false);
+ * // Handle warnings manually
+ * validation.warnings.forEach(w => customLogger(w));
  */
 export function validateButtonGroup(
-  buttons: ButtonConfig[],
-  maxButtons?: number
+  buttons: ButtonConfig[] | undefined,
+  maxButtons?: number,
+  autoLogWarnings: boolean = true
 ): ButtonGroupValidationResult {
+  // Handle undefined/null buttons
+  if (!buttons || buttons.length === 0) {
+    return {
+      buttons: [],
+      isValid: false,
+      hasButtons: false,
+      warnings: []
+    };
+  }
   const warnings: string[] = [];
   let buttonList = [...buttons];
 
@@ -75,10 +97,22 @@ export function validateButtonGroup(
       `[ButtonGroup] No buttons to render. ` +
       `Either an empty buttons array was passed or all buttons were removed by maxButtons limit.`
     );
-    return { buttons: [], isValid: false, warnings };
+
+    // Auto-log warnings in development mode
+    if (autoLogWarnings && process.env.NODE_ENV === 'development' && warnings.length > 0) {
+      warnings.forEach(warning => console.warn(warning));
+    }
+
+    return { buttons: [], isValid: false, hasButtons: false, warnings };
   }
 
-  return { buttons: buttonList, isValid: true, warnings };
+  // Auto-log warnings in development mode
+  if (autoLogWarnings && process.env.NODE_ENV === 'development' && warnings.length > 0) {
+    warnings.forEach(warning => console.warn(warning));
+  }
+
+  const hasButtons = buttonList.length > 0;
+  return { buttons: buttonList, isValid: true, hasButtons, warnings };
 }
 
 export interface ButtonGroupProps {

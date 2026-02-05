@@ -1,8 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
-import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
-import { useButtonValidation } from '../ButtonGroup/buttonGroupUtils';
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export interface CalloutMediaBannerProps {
   /** Color variant - determines background color (ignored if backgroundImage is provided) */
@@ -68,7 +67,8 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
   className = '',
 }) => {
   // Validate buttons if provided (max 2 buttons supported)
-  const { validation: buttonValidation, hasButtons } = useButtonValidation(buttons, 2);
+  const buttonValidation = validateButtonGroup(buttons, 2);
+  const hasButtons = buttonValidation.hasButtons;
 
   // Check if we should center content: no buttons OR (no heading but has buttons)
   const shouldCenter = !hasButtons || (!heading && hasButtons);
@@ -110,7 +110,7 @@ export const CalloutMediaBanner: React.FC<CalloutMediaBannerProps> = ({
             {/* Buttons */}
             {hasButtons && (
               <ButtonGroup
-                buttons={buttonValidation!.buttons}
+                buttons={buttonValidation.buttons}
                 color={buttonColor}
                 gap="none"
               />
