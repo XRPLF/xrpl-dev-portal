@@ -1,6 +1,6 @@
 # Lending Protocol Examples (JavaScript)
 
-This directory contains JavaScript examples demonstrating how to create a Loan Broker, deposit and withdraw first-loss capital, create a loan, and manage a loan.
+This directory contains JavaScript examples demonstrating how to create a loan broker, claw back first-loss capital, deposit and withdraw first-loss capital, create a loan, manage a loan, and repay a loan.
 
 ## Setup
 

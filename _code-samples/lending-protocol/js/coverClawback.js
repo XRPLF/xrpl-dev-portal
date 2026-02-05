@@ -83,7 +83,8 @@ currentCoverAvailable = loanBrokerNode.ModifiedNode.FinalFields.CoverAvailable
 console.log(`${currentCoverAvailable} TSTUSD`)
 
 // Verify issuer of cover asset matches ----------------------
-// Only the issuer of the asset can submit claw back transactions.
+// Only the issuer of the asset can submit clawback transactions.
+// The asset must also have clawback enabled.
 console.log(`\n=== Verifying Asset Issuer ===\n`)
 const assetIssuerInfo = await client.request({
   command: 'ledger_entry',
@@ -100,8 +101,6 @@ if (assetIssuerInfo.result.node.Issuer !== mptIssuer.address) {
 console.log(`MPT issuer account verified: ${mptIssuer.address}. Proceeding to clawback.`)
 
 // Prepare LoanBrokerCoverClawback transaction ----------------------
-// Only the issuer of the asset can submit clawback transactions.
-// The asset must also have clawback enabled.
 console.log(`\n=== Preparing LoanBrokerCoverClawback transaction ===\n`)
 const coverClawbackTx = {
   TransactionType: 'LoanBrokerCoverClawback',
@@ -133,7 +132,7 @@ if (clawbackResponse.result.meta.TransactionResult !== 'tesSUCCESS') {
 
 console.log(`Successfully clawed back ${currentCoverAvailable} TSTUSD!`)
 
-// Extract final cover balance ----------------------
+// Extract final cover available ----------------------
 console.log(`\n=== Final Cover Available After Clawback ===\n`)
 loanBrokerNode = clawbackResponse.result.meta.AffectedNodes.find(node =>
   node.ModifiedNode?.LedgerEntryType === 'LoanBroker'
