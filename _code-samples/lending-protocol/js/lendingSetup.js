@@ -69,6 +69,7 @@ const [ticketCreateResponse, mptIssuanceResponse] = await Promise.all([
     TransferFee: 0,
     Flags:
       xrpl.MPTokenIssuanceCreateFlags.tfMPTCanTransfer |
+      xrpl.MPTokenIssuanceCreateFlags.tfMPTCanClawback |
       xrpl.MPTokenIssuanceCreateFlags.tfMPTCanTrade,
     MPTokenMetadata: xrpl.encodeMPTokenMetadata(mptData)
   }, { wallet: depositor, autofill: true }),

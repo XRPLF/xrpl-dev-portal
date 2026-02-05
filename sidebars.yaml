@@ -333,6 +333,7 @@
                   expanded: false
                   items:
                     - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan-broker.md
+                    - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/claw-back-cover.md
                     - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/deposit-and-withdraw-cover.md
                     - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan.md
                     - page: docs/tutorials/how-tos/set-up-lending/use-the-lending-protocol/manage-a-loan.md
