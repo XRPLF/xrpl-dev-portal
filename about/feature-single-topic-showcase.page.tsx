@@ -63,7 +63,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Developer Spotlight"
             description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Feature illustration" }}
-            links={[
+            buttons={[
               { label: "Get Started", href: "#start" },
               { label: "Learn More", href: "#learn" }
             ]}
@@ -91,7 +91,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Developer Spotlight"
             description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Feature illustration" }}
-            links={[
+            buttons={[
               { label: "Get Started", href: "#start" },
               { label: "Learn More", href: "#learn" }
             ]}
@@ -140,7 +140,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Image on Left"
             description="This layout places the image on the left side and content on the right on desktop screens."
             media={{ src: placeholderImage, alt: "Left orientation" }}
-            links={[
+            buttons={[
               { label: "Primary Action", href: "#primary" },
               { label: "Secondary", href: "#secondary" }
             ]}
@@ -168,7 +168,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Image on Right"
             description="This layout places the image on the right side and content on the left on desktop screens."
             media={{ src: placeholderImage, alt: "Right orientation" }}
-            links={[
+            buttons={[
               { label: "Primary Action", href: "#primary" },
               { label: "Secondary", href: "#secondary" }
             ]}
@@ -211,7 +211,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Developer Spotlight"
             description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Single button" }}
-            links={[
+            buttons={[
               { label: "Primary Link", href: "#start" }
             ]}
           />
@@ -237,7 +237,7 @@ export default function FeatureSingleTopicShowcase() {
             description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Single button secondary" }}
             singleButtonVariant="secondary"
-            links={[
+            buttons={[
               { label: "Secondary Link", href: "#start" }
             ]}
           />
@@ -262,7 +262,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Developer Spotlight"
             description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Two buttons" }}
-            links={[
+            buttons={[
               { label: "Primary Link", href: "#primary" },
               { label: "Tertiary Link", href: "#tertiary" }
             ]}
@@ -288,7 +288,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Developer Spotlight"
             description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Multiple buttons" }}
-            links={[
+            buttons={[
               { label: "Tertiary Link", href: "#link1" },
               { label: "Tertiary Link", href: "#link2" },
               { label: "Tertiary Link", href: "#link3" },
@@ -317,7 +317,7 @@ export default function FeatureSingleTopicShowcase() {
             title="Developer Spotlight"
             description="Are you building a peer-to-peer payments solution, integrating stablecoins, or exploring RLUSD on the XRP Ledger?"
             media={{ src: placeholderImage, alt: "Three buttons" }}
-            links={[
+            buttons={[
               { label: "Tertiary Link", href: "#link1" },
               { label: "Tertiary Link", href: "#link2" },
               { label: "Tertiary Link", href: "#link3" }
@@ -344,7 +344,7 @@ export default function FeatureSingleTopicShowcase() {
           orientation="left"
           title="First Feature"
           description="Banks, asset managers, PSPs, and fintechs use XRPL to build financial products."
-          links={[{ label: "Learn More", href: "#learn" }]}
+          buttons={[{ label: "Learn More", href: "#learn" }]}
           media={{ src: placeholderImage, alt: "First feature" }}
         />
 
@@ -353,7 +353,7 @@ export default function FeatureSingleTopicShowcase() {
           orientation="right"
           title="Second Feature"
           description="Build powerful applications on XRPL with comprehensive documentation and tools."
-          links={[
+          buttons={[
             { label: "Get Started", href: "#start" },
             { label: "Documentation", href: "#docs" }
           ]}
@@ -365,7 +365,7 @@ export default function FeatureSingleTopicShowcase() {
           orientation="left"
           title="Third Feature"
           description="Scale your business with blockchain technology and enterprise-grade solutions."
-          links={[
+          buttons={[
             { label: "Contact Sales", href: "#contact" },
             { label: "View Plans", href: "#plans" }
           ]}

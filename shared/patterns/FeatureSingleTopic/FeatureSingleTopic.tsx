@@ -1,15 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid } from '../../components/PageGrid/page-grid';
-import { Button } from '../../components/Button/Button';
-import { ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
-
-export interface FeatureSingleTopicLink {
-  /** Link label text */
-  label: string;
-  /** Link URL */
-  href: string;
-}
+import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
+import { useButtonValidation } from '../ButtonGroup/buttonGroupUtils';
 
 export interface FeatureSingleTopicProps {
   /** Background variant for the title section
@@ -31,7 +24,7 @@ export interface FeatureSingleTopicProps {
    * - 2 links: renders as primary + tertiary buttons side by side
    * - 3+ links: all tertiary buttons stacked
    */
-  links?: FeatureSingleTopicLink[];
+  buttons?: ButtonConfig[];
   /** Button variant for single button configuration
    * - 'primary': Primary button (default)
    * - 'secondary': Secondary button
@@ -62,113 +55,51 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   orientation = 'left',
   title,
   description,
-  links = [],
+  buttons = [],
   singleButtonVariant = 'primary',
   media,
   className,
 }) => {
+  // Validate buttons if provided (max 5 buttons supported)
+  const { validation: buttonValidation, hasButtons } = useButtonValidation(buttons, 5);
+
   // Button color is always green for this component
   const buttonColor = 'green';
   const forceColor = false;
-
-  // Convert links to ButtonConfig format
-  const buttonConfigs: ButtonConfig[] = links.map(link => ({
-    label: link.label,
-    href: link.href,
-    forceColor: forceColor,
-  }));
-
-  // Validate buttons (supports up to 5 links)
-  const buttonValidation = validateButtonGroup(buttonConfigs, 5);
-
-  // Log warnings in development mode
-  if (process.env.NODE_ENV === 'development' && buttonValidation.warnings.length > 0) {
-    buttonValidation.warnings.forEach(warning => console.warn(warning));
-  }
 
   // Build root class names
   const rootClasses = clsx(
     'bds-feature-single-topic',
     `bds-feature-single-topic--${variant}`,
-    `bds-feature-single-topic--${orientation}`,
     className
   );
 
-  // Render title section
-  const renderTitleSection = () => (
-    <div className="bds-feature-single-topic__title-section">
-      <h2 className="bds-feature-single-topic__title">{title}</h2>
-    </div>
+  // Build row class names - column-reverse on mobile/tablet for both orientations
+  const rowClasses = clsx(
+    'bds-feature-single-topic__row',
+    'flex-column-reverse flex-lg-row' // Content above image on mobile, side-by-side on desktop
   );
 
-  // Render CTA buttons based on count
-  // - 1 link: primary or secondary button (based on singleButtonVariant prop)
-  // - 2 links: primary + tertiary side by side
-  // - 3+ links: all tertiary buttons stacked
-  const renderCTA = () => {
-    const buttons = buttonValidation.buttons;
-    if (!buttonValidation.isValid || buttons.length === 0) return null;
-
-    // 1 button: primary or secondary based on singleButtonVariant prop
-    if (buttons.length === 1) {
-      return (
-        <div className="bds-feature-single-topic__cta">
-          <Button variant={singleButtonVariant} color={buttonColor} href={buttons[0].href}>
-            {buttons[0].label}
-          </Button>
-        </div>
-      );
-    }
-
-    // 2 buttons: primary + tertiary side by side
-    if (buttons.length === 2) {
-      return (
-        <div className="bds-feature-single-topic__cta">
-          <div className="bds-feature-single-topic__cta-row">
-            <Button variant="primary" color={buttonColor} href={buttons[0].href}>
-              {buttons[0].label}
-            </Button>
-            <Button variant="tertiary" color={buttonColor} href={buttons[1].href} forceNoPadding>
-              {buttons[1].label}
-            </Button>
-          </div>
-        </div>
-      );
-    }
-
-    // 3+ buttons: all tertiary buttons stacked
-    return (
-      <div className="bds-feature-single-topic__cta">
-        {buttons.map((button, index) => (
-          <Button
-            key={index}
-            variant="tertiary"
-            color={buttonColor}
-            href={button.href}
-            forceNoPadding
-          >
-            {button.label}
-          </Button>
-        ))}
-      </div>
-    );
-  };
-
-  // Render description and CTA section
-  const renderDescriptionSection = () => (
-    <div className="bds-feature-single-topic__description-section">
-      {description && (
-        <p className="bds-feature-single-topic__description">{description}</p>
-      )}
-      {renderCTA()}
-    </div>
-  );
 
   // Render content section (title at top, description/CTA at bottom)
   const renderContent = () => (
     <div className="bds-feature-single-topic__content">
-      {renderTitleSection()}
-      {renderDescriptionSection()}
+      <div className="bds-feature-single-topic__title-section">
+        <h2 className="bds-feature-single-topic__title">{title}</h2>
+      </div>
+      <div className="bds-feature-single-topic__description-section">
+      {description && (
+        <p className="bds-feature-single-topic__description">{description}</p>
+      )}
+      {hasButtons && (
+        <ButtonGroup
+          buttons={buttonValidation!.buttons}
+          color={buttonColor}
+          forceColor={forceColor}
+          singleButtonVariant={singleButtonVariant}
+        />
+      )}
+      </div>
     </div>
   );
 
@@ -186,16 +117,22 @@ export const FeatureSingleTopic: React.FC<FeatureSingleTopicProps> = ({
   return (
     <section className={rootClasses}>
       <PageGrid className="bds-feature-single-topic__container" containerType="standard">
-        <PageGrid.Row className="bds-feature-single-topic__row">
+        <PageGrid.Row className={rowClasses}>
           <PageGrid.Col
             span={{ base: 4, md: 8, lg: 7 }}
-            className="bds-feature-single-topic__media-col"
+            className={clsx(
+              'bds-feature-single-topic__media-col',
+              orientation === 'left' ? 'order-lg-1' : 'order-lg-2'
+            )}
           >
             {renderMedia()}
           </PageGrid.Col>
           <PageGrid.Col
             span={{ base: 4, md: 8, lg: 5 }}
-            className="bds-feature-single-topic__content-col"
+            className={clsx(
+              'bds-feature-single-topic__content-col',
+              orientation === 'left' ? 'order-lg-2' : 'order-lg-1'
+            )}
           >
             {renderContent()}
           </PageGrid.Col>
