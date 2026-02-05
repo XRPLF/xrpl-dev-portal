@@ -1,8 +1,7 @@
 import React, { forwardRef, useCallback } from "react";
 import clsx from "clsx";
 import { PageGrid } from "shared/components/PageGrid/page-grid";
-import { ButtonGroup, ButtonConfig } from "shared/patterns/ButtonGroup/ButtonGroup";
-import { useButtonValidation } from "shared/patterns/ButtonGroup/buttonGroupUtils";
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from "shared/patterns/ButtonGroup/ButtonGroup";
 import { isEmpty, isEnvironment } from "shared/utils";
 import {
   DesignConstrainedCallToActionsProps,
@@ -58,11 +57,12 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
       }));
 
     // Validate buttons (max 2 CTAs supported)
-    const { validation: buttonValidation, hasButtons: hasCallsToAction } = useButtonValidation(
+    const buttonValidation = validateButtonGroup(
       buttonConfigs,
       2,
       isEnvironment(["development", "test"]) // Only log warnings in dev/test
     );
+    const hasCallsToAction = buttonValidation.hasButtons;
 
     return (
       <header
@@ -91,7 +91,7 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
                   )}
                   {hasCallsToAction && (
                     <ButtonGroup
-                      buttons={buttonValidation!.buttons}
+                      buttons={buttonValidation.buttons}
                       color="green"
                       forceColor
                       gap="small"
