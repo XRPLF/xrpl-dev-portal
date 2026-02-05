@@ -78,9 +78,9 @@ const response2 = await client.submitAndWait(multisignedTx)
 const multisignedResultCode = response2.result.meta.TransactionResult
 if (multisignedResultCode === 'tesSUCCESS') {
   const txHash = response2.result.hash
-  console.log(`✅ Multi-signed transaction ${txHash} succeeded!`)
+  console.log(`Multi-signed transaction ${txHash} succeeded!`)
 } else {
-  console.error('❌ Multi-signed transaction failed with result code',
+  console.error('Multi-signed transaction failed with result code',
     multisignedResultCode
   )
   client.disconnect()

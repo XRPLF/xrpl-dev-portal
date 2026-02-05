@@ -82,7 +82,7 @@ multisigned_result_code = response2.result["meta"]["TransactionResult"]
 
 if multisigned_result_code == "tesSUCCESS":
     tx_hash = response2.result["hash"]
-    print(f"✅ Multi-signed transaction {tx_hash} succeeded!")
+    print(f"Multi-signed transaction {tx_hash} succeeded!")
 else:
-    print(f"❌ Multi-signed transaction failed with result code {multisigned_result_code}")
+    print(f"Multi-signed transaction failed with result code {multisigned_result_code}")
     exit(1)
