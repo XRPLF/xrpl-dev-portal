@@ -1,0 +1,9 @@
+{
+    "name": "disable-master-key",
+    "version": "1.0.0",
+    "license": "MIT",
+    "dependencies": {
+        "xrpl": "^4.5.0"
+    },
+    "type": "module"
+}
