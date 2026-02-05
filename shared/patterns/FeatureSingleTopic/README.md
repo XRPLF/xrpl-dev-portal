@@ -41,19 +41,23 @@ import { FeatureSingleTopic } from 'shared/patterns/FeatureSingleTopic';
 | `orientation` | `'left' \| 'right'` | `'left'` | Image position relative to content |
 | `title` | `string` | *required* | Feature title (heading-md typography) |
 | `description` | `string` | - | Feature description (label-l typography) |
-| `links` | `FeatureSingleTopicLink[]` | `[]` | Array of CTA links (1-5 supported) |
+| `buttons` | `ButtonConfig[]` | `[]` | Array of button configurations (1-5 supported) |
 | `singleButtonVariant` | `'primary' \| 'secondary'` | `'primary'` | Button variant for single button configuration |
 | `media` | `{ src: string; alt: string }` | *required* | Image configuration |
 | `className` | `string` | - | Additional CSS classes |
 
-### FeatureSingleTopicLink
+### ButtonConfig
 
 ```tsx
-interface FeatureSingleTopicLink {
+interface ButtonConfig {
   label: string;
-  href: string;
+  href?: string;
+  onClick?: () => void;
+  forceColor?: boolean;
 }
 ```
+
+**Note:** Button configurations are handled by the `ButtonGroup` component. See [ButtonGroup documentation](../ButtonGroup/README.md) for more details.
 
 ## Button Behavior
 
@@ -61,11 +65,11 @@ The component automatically determines button variants based on count:
 
 | Count | Layout |
 |-------|--------|
-| 1 link | Primary or Secondary button (configurable via `singleButtonVariant` prop) |
-| 2 links | Primary + Tertiary side by side |
-| 3+ links | All Tertiary buttons stacked |
+| 1 button | Primary or Secondary button (configurable via `singleButtonVariant` prop) |
+| 2 buttons | Primary + Tertiary side by side |
+| 3-5 buttons | All Tertiary buttons stacked |
 
-**Note:** On mobile, the first two buttons (Primary + Tertiary) remain side by side.
+**Note:** The component supports a maximum of 5 buttons. Additional buttons beyond 5 will trigger a validation warning in development mode and will be ignored. On mobile, the first two buttons (Primary + Tertiary) remain side by side.
 
 ## Variants
 
@@ -116,22 +120,24 @@ Image on right, content on left on desktop.
 .bds-feature-single-topic                    // Section container
 .bds-feature-single-topic--default           // Default variant modifier
 .bds-feature-single-topic--accentSurface     // AccentSurface variant modifier
-.bds-feature-single-topic--left              // Left orientation modifier
-.bds-feature-single-topic--right             // Right orientation modifier
 .bds-feature-single-topic__container         // PageGrid container
-.bds-feature-single-topic__row               // PageGrid row
-.bds-feature-single-topic__media-col         // Media column
-.bds-feature-single-topic__content-col       // Content column
+.bds-feature-single-topic__row               // PageGrid row (uses flex-column-reverse flex-lg-row)
+.bds-feature-single-topic__media-col         // Media column (uses order-lg-1 or order-lg-2)
+.bds-feature-single-topic__content-col       // Content column (uses order-lg-1 or order-lg-2)
 .bds-feature-single-topic__media             // Media wrapper
 .bds-feature-single-topic__media-img         // Image element
 .bds-feature-single-topic__content           // Content wrapper
 .bds-feature-single-topic__title-section     // Title section
 .bds-feature-single-topic__title             // Title element
-.bds-feature-single-topic__description-section // Description + CTA wrapper
+.bds-feature-single-topic__description-section // Description + buttons wrapper
 .bds-feature-single-topic__description       // Description element
-.bds-feature-single-topic__cta               // CTA buttons wrapper
-.bds-feature-single-topic__cta-row           // Primary + Tertiary row
 ```
+
+**Note:**
+- Orientation logic is handled via Bootstrap utility classes (`order-lg-1`, `order-lg-2`) applied dynamically in TSX
+- Buttons are rendered by the `ButtonGroup` component with its own class structure
+- Mobile/tablet layout uses `flex-column-reverse` to show content above image
+- Desktop layout uses `flex-lg-row` for side-by-side display
 
 ## Typography Tokens
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid } from '../../components/PageGrid/page-grid';
-import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
+import { useButtonValidation } from '../ButtonGroup/buttonGroupUtils';
 
 export interface FeatureTwoColumnLink {
   /** Link label text */
@@ -72,12 +73,7 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
   }));
 
   // Validate buttons (FeatureTwoColumn supports 1-5 links per design spec)
-  const buttonValidation = validateButtonGroup(buttonConfigs, 5);
-
-  // Log warnings in development mode
-  if (process.env.NODE_ENV === 'development' && buttonValidation.warnings.length > 0) {
-    buttonValidation.warnings.forEach(warning => console.warn(warning));
-  }
+  const { validation: buttonValidation, hasButtons } = useButtonValidation(buttonConfigs, 5);
 
   // Build root class names
   const rootClasses = clsx(
@@ -93,7 +89,7 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
     const contentClass = clsx(
       'bds-feature-two-column__content',
       {
-        'bds-feature-two-column__content--multiple': buttonValidation.buttons.length >= 3,
+        'bds-feature-two-column__content--multiple': hasButtons && buttonValidation!.buttons.length >= 3,
       }
     );
 
@@ -103,9 +99,9 @@ export const FeatureTwoColumn: React.FC<FeatureTwoColumnProps> = ({
           <h2 className="bds-feature-two-column__title">{title}</h2>
           <p className="bds-feature-two-column__description">{description}</p>
         </div>
-        {buttonValidation.isValid && (
+        {hasButtons && (
           <ButtonGroup
-            buttons={buttonValidation.buttons}
+            buttons={buttonValidation!.buttons}
             color={buttonColor}
             forceColor={forceColor}
             singleButtonVariant="secondary"

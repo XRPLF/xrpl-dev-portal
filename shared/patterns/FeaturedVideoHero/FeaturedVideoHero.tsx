@@ -1,20 +1,33 @@
 import React, { forwardRef, useCallback } from "react";
 import clsx from "clsx";
 import { PageGrid } from "shared/components/PageGrid/page-grid";
-import { Button, ButtonProps } from "shared/components/Button/Button";
+import { Video, type VideoSource } from "shared/components/Video";
+import { ButtonGroup, ButtonConfig, validateButtonGroup } from "shared/patterns/ButtonGroup/ButtonGroup";
 import { isEmpty, isEnvironment } from "shared/utils";
 import {
-  DesignConstrainedCallToActionsProps,
+  DesignConstrainedLinksProps,
   DesignConstrainedVideoProps,
 } from "shared/utils/types";
+
+/** Video config for embed (YouTube/Vimeo/Wistia) with optional cover image */
+export interface FeaturedVideoHeroVideoConfig {
+  source: VideoSource;
+  coverImage?: {
+    src: string;
+    alt: string;
+  };
+}
 
 export interface FeaturedVideoHeroProps
   extends
     React.ComponentPropsWithoutRef<"header">,
-    DesignConstrainedCallToActionsProps {
+    DesignConstrainedLinksProps {
   headline: React.ReactNode;
   subtitle?: React.ReactNode;
-  videoElement: DesignConstrainedVideoProps;
+  /** Native HTML video props (use when video is not provided) */
+  videoElement?: DesignConstrainedVideoProps;
+  /** Video config for embed + optional cover modal (use when videoElement is not provided) */
+  video?: FeaturedVideoHeroVideoConfig;
 }
 const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
   (props, ref) => {
@@ -22,34 +35,50 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
       headline,
       subtitle,
       videoElement,
-      callsToAction,
+      video,
+      links,
       className,
       ...rest
     } = props;
 
-    const validateProps = useCallback<() => boolean>(() => {
-      const requiredProps = { headline, videoElement } as const;
-      let isValid = true;
+    const hasVideo = !isEmpty(video) || !isEmpty(videoElement);
 
-      for (const [key, value] of Object.entries(requiredProps)) {
-        if (isEmpty(value)) {
-          if (isEnvironment(["development", "test"])) {
-            console.warn(`${key} is required for FeaturedVideoHero`);
-          }
-          isValid = false;
+    const validateProps = useCallback<() => boolean>(() => {
+      if (isEmpty(headline)) {
+        if (isEnvironment(["development", "test"])) {
+          console.warn("headline is required for FeaturedVideoHero");
         }
+        return false;
       }
-      return isValid;
-    }, [headline, videoElement]);
+      if (!hasVideo) {
+        if (isEnvironment(["development", "test"])) {
+          console.warn("videoElement or video is required for FeaturedVideoHero");
+        }
+        return false;
+      }
+      return true;
+    }, [headline, hasVideo]);
 
     if (!validateProps()) {
       return null;
     }
 
-    const [primaryCta, secondaryCta] = callsToAction ?? [];
+    // Map links to ButtonConfig format for ButtonGroup
+    const buttonConfigs: ButtonConfig[] = (links ?? [])
+      .filter((link) => !isEmpty(link) && link.label && link.href)
+      .map((link) => ({
+        label: link.label,
+        href: link.href,
+        forceColor: true,
+      }));
 
-    /** At least one CTA must be non-empty to show the CTA section */
-    const hasCallsToAction = callsToAction?.some((cta) => !isEmpty(cta));
+    // Validate buttons (max 2 CTAs supported)
+    const buttonValidation = validateButtonGroup(
+      buttonConfigs,
+      2,
+      isEnvironment(["development", "test"]) // Only log warnings in dev/test
+    );
+    const hasLinks = buttonValidation.hasButtons;
 
     return (
       <header
@@ -61,49 +90,48 @@ const FeaturedVideoHero = forwardRef<HTMLElement, FeaturedVideoHeroProps>(
           <PageGrid.Row>
             <PageGrid.Col span={{ base: 4, md: 8, lg: 6 }}>
               <div className="bds-featured-video-hero__content">
-                <h1 className="bds-featured-video-hero__title h-md">
+                <h1 className="mb-0 h-md">
                   {headline}
                 </h1>
-                {subtitle && (
-                  <PageGrid.Row className="bds-featured-video-hero__subtitle body-l">
-                    <PageGrid.Col
-                      span={{ base: "fill", md: 6, lg: 10 }}
-                      className="bds-featured-video-hero__subtitle-col"
-                    >
-                      {subtitle}
-                    </PageGrid.Col>
-                  </PageGrid.Row>
-                )}
-                {hasCallsToAction && (
-                  <div className="bds-featured-video-hero__cta-buttons">
-                    {!isEmpty(primaryCta) && (
-                      <Button
-                        {...primaryCta}
-                        variant="primary"
-                        color="green"
-                        forceColor={true}
-                      />
-                    )}
-                    {!isEmpty(secondaryCta) && (
-                      <Button
-                        {...secondaryCta}
-                        variant="tertiary"
-                        color="green"
-                        forceColor={true}
-                      />
-                    )}
-                  </div>
-                )}
+
+                <div className="bds-featured-video-hero__bottom-group">
+                  {subtitle && (
+                    <PageGrid.Row className="bds-featured-video-hero__subtitle body-l">
+                      <PageGrid.Col
+                        span={{ base: "fill", md: 6, lg: 10 }}
+                        className="bds-featured-video-hero__subtitle-col"
+                      >
+                        {subtitle}
+                      </PageGrid.Col>
+                    </PageGrid.Row>
+                  )}
+                  {hasLinks && (
+                    <ButtonGroup
+                      buttons={buttonValidation.buttons}
+                      color="green"
+                      forceColor
+                      gap="small"
+                    />
+                  )}
+                </div>
               </div>
             </PageGrid.Col>
             <PageGrid.Col
               span={{ base: 4, md: 8, lg: 6 }}
             >
               <div className="bds-featured-video-hero__video-container">
-                <video
-                  {...videoElement}
-                  className="bds-featured-video-hero__video"
-                />
+                {video ? (
+                  <Video
+                    source={video.source}
+                    coverImage={video.coverImage}
+                    className="bds-featured-video-hero__video"
+                  />
+                ) : videoElement ? (
+                  <Video
+                    source={{ type: "native", props: videoElement }}
+                    className="bds-featured-video-hero__video"
+                  />
+                ) : null}
               </div>
             </PageGrid.Col>
           </PageGrid.Row>

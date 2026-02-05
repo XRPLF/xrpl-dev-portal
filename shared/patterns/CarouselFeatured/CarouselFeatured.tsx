@@ -3,7 +3,8 @@ import clsx from 'clsx';
 import { CarouselButton } from '../../components/CarouselButton';
 import { Divider } from '../../components/Divider';
 import { PageGrid, PageGridRow, PageGridCol } from '../../components/PageGrid';
-import { ButtonGroup, ButtonConfig, validateButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup, ButtonConfig } from '../ButtonGroup/ButtonGroup';
+import { useButtonValidation } from '../ButtonGroup/buttonGroupUtils';
 
 /**
  * Props for a single slide in the CarouselFeatured component
@@ -96,12 +97,7 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
     const canGoNext = currentIndex < slides.length - 1;
 
     // Validate buttons if provided (max 2 buttons supported)
-    const buttonValidation = buttons ? validateButtonGroup(buttons, 2) : null;
-
-    // Log warnings in development mode
-    if (process.env.NODE_ENV === 'development' && buttonValidation?.warnings.length) {
-      buttonValidation.warnings.forEach(warning => console.warn(warning));
-    }
+    const { validation: buttonValidation, hasButtons } = useButtonValidation(buttons, 2);
 
     const goToPrev = useCallback(() => {
       if (canGoPrev) {
@@ -180,9 +176,9 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
                   {/* CTA section with buttons and mobile nav */}
                   <div className="bds-carousel-featured__cta">
                     {/* Buttons wrapper - groups primary and tertiary together */}
-                    {buttonValidation?.isValid && (
+                    {hasButtons && (
                       <ButtonGroup
-                        buttons={buttonValidation.buttons}
+                        buttons={buttonValidation!.buttons}
                         color="black"
                         forceColor={background !== 'neutral'}
                         className="bds-carousel-featured__buttons"
