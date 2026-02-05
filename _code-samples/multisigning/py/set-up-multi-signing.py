@@ -80,5 +80,5 @@ if account_info_resp.result.get("signer_lists"):
             se = se_wrapper["SignerEntry"]
             print(f"    Signer {se['Account']} Weight = {se['SignerWeight']}")
 else:
-    print(f"❌ No signer lists associated with {wallet.address}")
+    print(f"No signer lists associated with {wallet.address}")
     exit(1)

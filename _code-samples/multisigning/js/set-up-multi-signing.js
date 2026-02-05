@@ -84,7 +84,7 @@ if (accountInfoResp.result.signer_lists) {
     }
   }
 } else {
-  console.error(`❌ No signer lists associated with ${wallet.address}`)
+  console.error(`No signer lists associated with ${wallet.address}`)
   client.disconnect()
   process.exit(1)
 }
