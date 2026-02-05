@@ -65,11 +65,11 @@ if (testResultCode === 'tesSUCCESS') {
   console.log(`Test transaction failed with code ${testResultCode}`)
 }
 if (testSigningPubKey === regularKeyPair.publicKey) {
-  console.log('✅ This transaction was signed with the regular key pair.')
+  console.log('This transaction was signed with the regular key pair.')
 } else if (testSigningPubKey === wallet.publicKey) {
-  console.warn('❌ This transaction was signed with the master key pair.')
+  console.warn('This transaction was signed with the master key pair.')
 } else {
-  console.warn(`⚠️ Unexpected signing key mismatch.
+  console.warn(`Unexpected signing key mismatch.
     Regular key: ${regularKeyPair.publicKey}
     Key used: ${testSigningPubKey}`)
 }

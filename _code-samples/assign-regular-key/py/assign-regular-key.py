@@ -69,10 +69,10 @@ else:
     print(f"Test transaction failed with code {test_result_code}")
 
 if test_signing_pub_key == regular_key_pair.public_key:
-    print("✅ This transaction was signed with the regular key pair.")
+    print("This transaction was signed with the regular key pair.")
 elif test_signing_pub_key == wallet.public_key:
-    print("❌ This transaction was signed with the master key pair.")
+    print("This transaction was signed with the master key pair.")
 else:
-    print(f"""⚠️ Unexpected signing key mismatch.
+    print(f"""Unexpected signing key mismatch.
     Regular key: {regular_key_pair.public_key}
     Key used: {test_signing_pub_key}""")
