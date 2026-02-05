@@ -76,9 +76,9 @@ if (accountInfoResp.error) {
 console.log(`Flags for account ${wallet.address}:`)
 console.log(JSON.stringify(accountInfoResp.result.account_flags, null, 2))
 if (accountInfoResp.result.account_flags.disableMasterKey) {
-  console.log('✅ Master key pair is disabled')
+  console.log('Master key pair is disabled')
 } else {
-  console.log('❌ Master key pair is ENABLED')
+  console.log('Master key pair is ENABLED')
 }
 
 client.disconnect()

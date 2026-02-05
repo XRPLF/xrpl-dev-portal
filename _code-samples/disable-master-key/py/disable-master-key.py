@@ -77,6 +77,6 @@ print(f"Flags for account {wallet.address}:")
 print(json.dumps(account_flags, indent=2))
 
 if account_flags["disableMasterKey"]:
-    print("✅ Master key pair is disabled")
+    print("Master key pair is disabled")
 else:
-    print("❌ Master key pair is ENABLED")
+    print("Master key pair is ENABLED")
