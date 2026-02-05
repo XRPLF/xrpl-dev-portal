@@ -172,16 +172,14 @@
 }
 
 #wallets {
-  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "towo", "keystone", "dcent", "coin", "gem", "joey" {
+  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "bifrost", "keystone", "dcent", "coin", "gem", "joey" {
     #wallet-#{$wallet} {
       content: url("../img/wallets/#{$wallet}.svg");
     }
   }
 
-  @each $wallet in "bitfrost", "crossmark" {
-    #wallet-#{$wallet} {
-      content: url("../img/wallets/#{$wallet}.png");
-    }
+  #wallet-crossmark {
+    content: url("../img/wallets/crossmark.png");
   }
 }
 
@@ -406,6 +404,7 @@
     "x-tokenize": "svg",
     "multichain": "svg",
     "xumm-wallet": "svg",
+    "bifrost-wallet": "svg",
     "gem-wallet": "svg",
     "aesthetes": "svg",
     "audiotarky": "svg",
