@@ -22,7 +22,7 @@ algorithm = "ed25519"
 signer_addresses = []
 for i in range(3):
     signer = Wallet.create(algorithm=algorithm)
-    print(f"""Generated regular key pair:
+    print(f"""Generated key pair for signer {i + 1}:
   Address: {signer.address}
   Seed: {signer.seed}
   Algorithm: {algorithm}
@@ -46,7 +46,7 @@ print(
 )
 try:
     response = submit_and_wait(signer_list_set_tx, client, wallet)
-except err:
+except Exception as err:
     print("Submitting SignerListSet transaction failed with error", err)
     exit(1)
 
@@ -64,7 +64,7 @@ try:
     account_info_resp = client.request(
         AccountInfo(account=wallet.address, ledger_index="validated", signer_lists=True)
     )
-except err:
+except Exception as err:
     print("Error requesting account_info:", err)
     exit(1)
 if not account_info_resp.is_successful():

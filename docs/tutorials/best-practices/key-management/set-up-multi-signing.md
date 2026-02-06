@@ -70,7 +70,7 @@ To get started, import the client library and instantiate an API client. For thi
 
 ### 3. Prepare signer keys
 
-Each signer on your list needs a key pair they can use to sign transactions. As the account owner, you only need to know the addresses, not the secret keys, of each signer. (One party knowing all the secret keys might defeat the purpose of multi-signing, depending on your use case.) These addresses _can_ have funded accounts in the ledger, but they don't have to.
+Each signer on your list needs a key pair they can use to sign transactions. As the account owner, you only need to know the addresses, not the secret keys, of each signer. One party knowing all the secret keys might defeat the purpose of multi-signing, depending on your use case. These addresses _can_ have funded accounts in the ledger, but they don't have to.
 
 Each signer should securely generate and store their own key pair, as you would any time you generate keys for an XRP Ledger account.
 
