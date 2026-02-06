@@ -134,10 +134,11 @@ At this point, you can [send a multi-signed transaction](send-a-multi-signed-tra
 - **Concepts:**
    - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
    - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
+   - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
 - **Tutorials:**
    - [Send a Multi-signed Transaction](send-a-multi-signed-transaction.md)
    - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
-   - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
+   - [Disable Master Key Pair](disable-master-key-pair.md)
 - **References:**
    - [account_info method][]
    - [SignerListSet transaction][]
