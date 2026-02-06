@@ -24,7 +24,7 @@ algorithm = "ed25519"
 signers = []
 for i in range(3):
     signer = Wallet.create(algorithm=algorithm)
-    print(f"""Generated regular key pair:
+    print(f"""Generated key pair for signer {i + 1}:
   Address: {signer.address}
   Seed: {signer.seed}
   Algorithm: {algorithm}
@@ -42,7 +42,7 @@ signer_list_set_tx = SignerListSet(
 print("Setting up multi-signing...")
 try:
     response = submit_and_wait(signer_list_set_tx, client, wallet)
-except err:
+except Exception as err:
     print("Submitting SignerListSet transaction failed with error", err)
     exit(1)
 list_set_result_code = response.result["meta"]["TransactionResult"]
@@ -75,7 +75,7 @@ print(json.dumps(multisigned_tx.to_xrpl(), indent=2))
 
 try:
     response2 = submit_and_wait(multisigned_tx, client)
-except err:
+except Exception as err:
     print("Submitting multi-signed transaction failed with error", err)
     exit(1)
 multisigned_result_code = response2.result["meta"]["TransactionResult"]

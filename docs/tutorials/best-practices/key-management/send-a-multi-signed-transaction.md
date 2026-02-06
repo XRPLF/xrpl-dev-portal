@@ -140,7 +140,7 @@ For more information about multi-signing and related topics, see:
 - **Concepts:**
     - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
     - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
-    - [Issuing and Operational Addresses](../../../concepts/accounts/account-types.md)
+    - [Account Types](../../../concepts/accounts/account-types.md)
     - [Transaction Malleability](../../../concepts/transactions/finality-of-results/transaction-malleability.md)
 - **Tutorials:**
     - [Set Up Multi-Signing](set-up-multi-signing.md)
