@@ -1,0 +1,69 @@
+// BDS LinkSmallGrid Pattern Styles
+// Brand Design System - Link grid section pattern with heading and responsive tile grid
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-link-small-grid                - Base section container
+// .bds-link-small-grid--gray          - Gray color variant
+// .bds-link-small-grid--lilac         - Lilac color variant
+// .bds-link-small-grid__header        - Header container (heading + description)
+// .bds-link-small-grid__heading       - Heading text
+// .bds-link-small-grid__description   - Description text
+
+@import '../../../styles/breakpoints';
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Spacing tokens
+$bds-link-small-grid-spacing-base: 24px;           // Vertical section padding
+$bds-link-small-grid-spacing-md: 32px;           // Vertical section padding
+$bds-link-small-grid-spacing-lg: 40px;           // Vertical section padding
+
+// Typography tokens (using existing typography classes)
+// - Heading: h-md class (handled in component)
+// - Description: body-l class (handled in component)
+
+// =============================================================================
+// Base Section Styles
+// =============================================================================
+
+.bds-link-small-grid {
+  // Section spacing
+  padding-top: $bds-link-small-grid-spacing-base;
+  padding-bottom: $bds-link-small-grid-spacing-base;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-link-small-grid-spacing-md;
+    padding-bottom: $bds-link-small-grid-spacing-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-link-small-grid-spacing-lg;
+    padding-bottom: $bds-link-small-grid-spacing-lg;
+  }
+
+  // Background color - default to transparent
+  background-color: transparent;
+}
+
+// =============================================================================
+// Header Section
+// =============================================================================
+
+.bds-link-small-grid__header {
+  gap: 8px;
+  margin-bottom: $bds-link-small-grid-spacing-base;
+
+  @include media-breakpoint-up(md) {
+    gap: 16px;
+    margin-bottom: $bds-link-small-grid-spacing-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: 16px;
+    margin-bottom: $bds-link-small-grid-spacing-lg;
+  }
+}
+
+

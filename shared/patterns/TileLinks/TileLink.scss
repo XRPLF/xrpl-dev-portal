@@ -1,0 +1,303 @@
+// BDS TileLink Component Styles
+// Brand Design System - Tile link component with responsive sizing
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-tile-link              - Base tile (responsive layout)
+// .bds-tile-link--gray        - Gray color variant
+// .bds-tile-link--lilac       - Lilac color variant
+// .bds-tile-link--hovered     - Hovered state (triggers overlay animation)
+// .bds-tile-link--disabled    - Disabled state modifier
+// .bds-tile-link__overlay     - Hover gradient overlay (window shade animation)
+// .bds-tile-link__content     - Content wrapper (label + arrow)
+// .bds-tile-link__label       - Text label
+// .bds-tile-link__arrow       - Arrow icon wrapper
+
+@import '../../../styles/breakpoints';
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Focus border
+$bds-tile-link-focus-border-color-light: $black;
+$bds-tile-link-focus-border-color-dark: $white;
+$bds-tile-link-focus-border-width: 2px;
+
+// Animation (matching TileLogo/CardIcon)
+$bds-tile-link-transition-duration: 200ms;
+$bds-tile-link-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+
+// -----------------------------------------------------------------------------
+// Responsive Size Tokens
+// -----------------------------------------------------------------------------
+
+// SM breakpoint (mobile - default)
+$bds-tile-link-height-base: 64px;
+$bds-tile-link-padding-sm: 12px;
+$bds-tile-link-font-size-sm: 16px;
+$bds-tile-link-line-height-sm: 26.1px;
+
+// MD breakpoint (tablet)
+$bds-tile-link-padding-md: 16px;
+$bds-tile-link-font-size-md: 16px;
+$bds-tile-link-line-height-md: 26.1px;
+
+// LG breakpoint (desktop)
+$bds-tile-link-padding-lg: 20px;
+$bds-tile-link-font-size-lg: 18px;
+$bds-tile-link-line-height-lg: 26.1px;
+
+// =============================================================================
+// Color Variants Map
+// =============================================================================
+// Structure: variant-name: (light-bg, light-hover, light-pressed, light-text, dark-bg, dark-hover, dark-pressed, dark-text)
+
+$bds-tile-link-variants: (
+  'gray': (
+    light-bg: $gray-200,           // #E6EAF0
+    light-hover: $gray-300,        // #CAD4DF
+    light-pressed: $gray-400,      // #A8B4C4
+    light-text: $black,            // #141414
+    dark-bg: $gray-500,            // #5A5A5E
+    dark-hover: $gray-400,         // #A8B4C4
+    dark-pressed: rgba($gray-500, 0.7),  // 70% opacity
+    dark-text: $white              // #FFFFFF
+  ),
+  'lilac': (
+    light-bg: $lilac-100,          // Light mode background
+    light-hover: $lilac-200,       // Light mode hover
+    light-pressed: $lilac-300,     // Light mode pressed
+    light-text: $black,            // Light mode text
+    dark-bg: $lilac-100,           // Dark mode background (same as light)
+    dark-hover: $lilac-200,        // Dark mode hover (same as light)
+    dark-pressed: $lilac-300,      // Dark mode pressed (same as light)
+    dark-text: $black              // Dark mode text (same as light)
+  )
+);
+
+// =============================================================================
+// Base Tile Styles
+// =============================================================================
+
+.bds-tile-link {
+  // Reset button/anchor styles
+  appearance: none;
+  border: none;
+  background: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  text-align: left;
+
+  // Layout
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+
+  // Responsive sizing - SM (mobile-first)
+  height: $bds-tile-link-height-base;
+  padding: $bds-tile-link-padding-sm;
+
+  @media (min-width: map-get($grid-breakpoints, md)) {
+    padding: $bds-tile-link-padding-md;
+  }
+
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    padding: $bds-tile-link-padding-lg;
+  }
+
+  // Interaction
+  cursor: pointer;
+
+  // Transitions
+  transition:
+    background-color $bds-tile-link-transition-duration $bds-tile-link-transition-timing,
+    opacity $bds-tile-link-transition-duration $bds-tile-link-transition-timing;
+
+  // Hover styles - prevent text underline
+  &:hover {
+    text-decoration: none;
+  }
+
+  // Focus styles (light mode default)
+  &:focus {
+    outline: $bds-tile-link-focus-border-width solid $bds-tile-link-focus-border-color-light;
+    outline-offset: 1px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: $bds-tile-link-focus-border-width solid $bds-tile-link-focus-border-color-light;
+    outline-offset: 2px;
+  }
+
+  // Dark mode focus styles
+  @include bds-theme-mode(dark) {
+    &:focus {
+      outline-color: $bds-tile-link-focus-border-color-dark;
+    }
+
+    &:focus-visible {
+      outline-color: $bds-tile-link-focus-border-color-dark;
+    }
+  }
+}
+
+// =============================================================================
+// Overlay (Color wipe animation - "Window Shade" effect)
+// =============================================================================
+
+.bds-tile-link__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  // Default: hidden (shade is "rolled up" at bottom)
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path $bds-tile-link-transition-duration $bds-tile-link-transition-timing;
+}
+
+// Hovered state: shade fully raised (visible)
+.bds-tile-link--hovered .bds-tile-link__overlay {
+  clip-path: inset(0 0 0 0);
+}
+
+// =============================================================================
+// Content Wrapper
+// =============================================================================
+
+.bds-tile-link__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bds-tile-link__arrow {
+  flex-shrink: 0;
+}
+
+// Arrow animation on hover - works for both <a> and <button> elements
+.bds-tile-link:hover .bds-tile-link__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-tile-link:focus .bds-tile-link__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal,
+.bds-tile-link--hovered .bds-tile-link__arrow .bds-link-icon--internal:not(.bds-link-icon--disabled) svg .arrow-horizontal {
+  transform: scaleX(0);
+}
+
+// =============================================================================
+// Color Variants (Light Mode - Default)
+// =============================================================================
+
+@each $variant-name, $variant-colors in $bds-tile-link-variants {
+  .bds-tile-link--#{$variant-name} {
+    background-color: map-get($variant-colors, light-bg);
+
+    .bds-tile-link__label,
+    .bds-tile-link__arrow {
+      color: map-get($variant-colors, light-text);
+    }
+
+    // Overlay color for hover wipe
+    .bds-tile-link__overlay {
+      background-color: map-get($variant-colors, light-hover);
+    }
+
+    // Pressed state
+    &:active:not(.bds-tile-link--disabled) {
+      .bds-tile-link__overlay {
+        background-color: map-get($variant-colors, light-pressed);
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    // Dark mode overrides
+    @include bds-theme-mode(dark) {
+      background-color: map-get($variant-colors, dark-bg);
+
+      .bds-tile-link__label,
+      .bds-tile-link__arrow {
+        color: map-get($variant-colors, dark-text);
+      }
+
+      // Overlay color for hover wipe
+      .bds-tile-link__overlay {
+        background-color: map-get($variant-colors, dark-hover);
+      }
+
+      // Pressed state
+      &:active:not(.bds-tile-link--disabled) {
+        .bds-tile-link__overlay {
+          background-color: map-get($variant-colors, dark-pressed);
+          clip-path: inset(0 0 0 0);
+        }
+      }
+    }
+  }
+}
+
+// =============================================================================
+// Disabled State
+// =============================================================================
+
+.bds-tile-link--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  // Light mode disabled (default)
+  &.bds-tile-link--gray {
+    background-color: $gray-100;
+
+    .bds-tile-link__label,
+    .bds-tile-link__arrow {
+      color: $gray-400;
+    }
+  }
+
+  &.bds-tile-link--lilac {
+    background-color: $lilac-100;
+
+    .bds-tile-link__label,
+    .bds-tile-link__arrow {
+      color: $gray-400;
+    }
+  }
+
+  // Dark mode disabled - 30% opacity
+  @include bds-theme-mode(dark) {
+    opacity: 0.3;
+
+    &.bds-tile-link--gray {
+      background-color: $gray-500;
+
+      .bds-tile-link__label,
+      .bds-tile-link__arrow {
+        color: $white;
+      }
+    }
+
+    &.bds-tile-link--lilac {
+      background-color: $lilac-400;
+
+      .bds-tile-link__label,
+      .bds-tile-link__arrow {
+        color: $white;
+      }
+    }
+  }
+}
