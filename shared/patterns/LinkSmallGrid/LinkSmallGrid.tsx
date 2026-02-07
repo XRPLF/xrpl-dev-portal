@@ -26,16 +26,23 @@ export interface LinkSmallGridProps {
  * Features a heading, optional description, and a grid of clickable tiles with 2 color variants
  * and full light/dark mode support.
  *
- * Grid Layout:
- * - Mobile (< 768px): 1 column (full width)
- * - Tablet (768px - 1023px): 2 columns
- * - Desktop (≥ 1024px): 4 columns
+ * Grid Layout (12-column grid system):
+ * - Base (< 576px): 1 tile per row (each tile spans 4 of 4 columns = full width)
+ * - MD (576px - 991px): 2 tiles per row (each tile spans 4 of 8 columns = 50% width)
+ * - LG (≥ 992px): 4 tiles per row (each tile spans 3 of 12 columns = 25% width)
+ *
+ * Right-Alignment Logic (applied when < 10 total tiles):
+ * The first tile of each row gets an offset to right-align the grid at LG breakpoint only:
+ * - LG: 1 tile = offset 9, 2 tiles = offset 6, 3 tiles = offset 3, 4 tiles = offset 0
+ * - 10+ tiles: no offset (left-aligned grid)
+ * - MD and Base: no offset applied
  *
  * Each tile uses the TileLink component which features:
  * - Window shade hover animation
  * - Arrow icon with animation
- * - Responsive sizing (64px height)
+ * - Responsive sizing (64px height at all breakpoints)
  * - Support for both links (href) and buttons (onClick)
+ * - Gray and Lilac color variants
  *
  * @example
  * // Basic usage with gray variant
