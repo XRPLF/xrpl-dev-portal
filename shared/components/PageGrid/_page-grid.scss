@@ -17,6 +17,21 @@ $bds-grid-gutter: 8px;
   width: calc(((100% - (#{$bds-grid-gutter} * (#{$columns} - 1))) / #{$columns}) * #{$size} + (#{$bds-grid-gutter} * (#{$size} - 1)));
 }
 
+// Custom mixin that accounts for gap spacing in offset calculations
+@mixin bds-make-col-offset($size, $columns) {
+  // Calculate margin-left accounting for gap spacing
+  // Formula: (width per column * offset) + (gap * offset)
+  // This accounts for both the column widths AND the gaps between them
+  // Total available width: 100% - (gap * total gaps in grid)
+  // Width per column: available width / columns
+  // For offset of $size: (width per column * size) + (gap * size)
+  @if $size == 0 {
+    margin-left: 0;
+  } @else {
+    margin-left: calc(((100% - (#{$bds-grid-gutter} * (#{$columns} - 1))) / #{$columns}) * #{$size} + (#{$bds-grid-gutter} * #{$size}));
+  }
+}
+
 @mixin bds-grid-generate-cols($columns, $suffix: null) {
   @for $i from 1 through $columns {
     $selector: if($suffix, ".bds-grid__col-#{$suffix}-#{$i}", ".bds-grid__col-#{$i}");
@@ -49,7 +64,7 @@ $bds-grid-gutter: 8px;
     $selector: if($suffix, ".bds-grid__offset-#{$suffix}-#{$i}", ".bds-grid__offset-#{$i}");
 
     #{$selector} {
-      @include make-col-offset($i, $columns);
+      @include bds-make-col-offset($i, $columns);
     }
   }
 }

@@ -108,3 +108,72 @@ export const isEnvironment = (
     : [environments];
   return envsToCheck.includes(currentEnv);
 };
+
+/**
+ * Calculates grid offset for tile alignment in responsive grids.
+ *
+ * This function implements right-alignment logic for tile grids by calculating
+ * the appropriate offset for the first tile in each row. The offset ensures that
+ * tiles are right-aligned when there are fewer than 10 total tiles.
+ *
+ * Grid Layout Assumptions:
+ * - lg (12 columns): Each tile spans 3 columns, 4 tiles per row
+ * - md (8 columns): Each tile spans 2 columns, 4 tiles per row
+ * - base (4 columns): Each tile spans full width or 2 columns
+ *
+ * Offset Logic (lg breakpoint, 12-column grid):
+ * - 3 tiles in row: offset 3 (right-aligned)
+ * - 2 tiles in row: offset 6 (right-aligned)
+ * - 1 tile in row: offset 9 (right-aligned)
+ *
+ * Offset Logic (md breakpoint, 8-column grid):
+ * - 3 tiles in row: offset 2 (right-aligned)
+ * - 2 tiles in row: offset 4 (right-aligned)
+ * - 1 tile in row: offset 6 (right-aligned)
+ *
+ * Only tiles 1-9 (positions 0-8) are right-aligned. 10+ tiles = no offset (left-aligned).
+ *
+ * @param index - The tile's position in the array (0-based)
+ * @param total - Total number of tiles in the grid
+ * @returns Object with md and lg offset values for this tile (both 0 if not first tile of row)
+ *
+ * @example
+ * // First tile of 3 total tiles
+ * calculateTileOffset(0, 3) // { md: 2, lg: 3 }
+ *
+ * @example
+ * // Second tile (no offset)
+ * calculateTileOffset(1, 3) // { md: 0, lg: 0 }
+ *
+ * @example
+ * // First tile of second row with 5 total tiles
+ * calculateTileOffset(3, 5) // { md: 4, lg: 6 }
+ *
+ * @example
+ * // 10+ tiles (no offset)
+ * calculateTileOffset(0, 12) // { md: 0, lg: 0 }
+ */
+export const calculateTileOffset = (
+  index: number,
+  total: number,
+): { md: number; lg: number } => {
+  // No offset if 10+ tiles total (left-aligned grid)
+  if (total >= 10) return { md: 0, lg: 0 };
+
+  // Only first tile of each row gets offset (every 3rd position starting at 0)
+  if (index % 3 !== 0) return { md: 0, lg: 0 };
+
+  // Calculate which row this tile is in
+  const row = Math.floor(index / 3);
+
+  // Calculate how many tiles are in this row
+  const tilesInThisRow = Math.min(3, total - row * 3);
+
+  // Calculate offset to right-align
+  // lg: (4 - tilesInRow) * 3 → 3 tiles = 3, 2 tiles = 6, 1 tile = 9
+  // md: (4 - tilesInRow) * 2 → 3 tiles = 2, 2 tiles = 4, 1 tile = 6
+  const lgOffset = (4 - tilesInThisRow) * 3;
+  const mdOffset = (4 - tilesInThisRow) * 2;
+
+  return { md: mdOffset, lg: lgOffset };
+};

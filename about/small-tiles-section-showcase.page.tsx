@@ -4,7 +4,7 @@ import {
   PageGridRow,
   PageGridCol,
 } from "shared/components/PageGrid/page-grid";
-import { SmallTilesSection } from "shared/components/SmallTilesSection/SmallTilesSection";
+import { SmallTilesSection } from "shared/patterns/SmallTilesSection/SmallTilesSection";
 
 export const frontmatter = {
   seo: {
