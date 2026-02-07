@@ -1,8 +1,8 @@
 import React, { forwardRef, useMemo, memo } from "react";
-import { CardIconProps, CardIcon } from "../CardIcon";
+import { CardIconProps, CardIcon } from "../../components/CardIcon";
 import clsx from "clsx";
-import { PageGrid } from "../PageGrid/page-grid";
-import type { PageGridColProps } from "../PageGrid/page-grid";
+import { PageGrid } from "../../components/PageGrid/page-grid";
+import type { PageGridColProps } from "../../components/PageGrid/page-grid";
 import { getCardKey, isEnvironment } from "../../utils";
 
 /**

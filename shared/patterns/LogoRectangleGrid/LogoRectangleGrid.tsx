@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridCol, PageGridRow } from 'shared/components/PageGrid/page-grid';
 import { TileLogo, TileLogoProps } from '../../components/TileLogo/TileLogo';
+import { calculateTileOffset } from 'shared/utils/helpers';
 
 export interface LogoItem extends TileLogoProps {}
 
@@ -17,49 +18,6 @@ export interface LogoRectangleGridProps {
   /** Additional CSS classes */
   className?: string;
 }
-
-/**
- * Calculates the md and lg offsets for the first tile of each row to right-align the grid.
- *
- * This is a 3-tile-per-row grid. To right-align, we offset based on how many tiles are in that row:
- *
- * lg (12 columns, each tile = 3 cols):
- * - 3 tiles in row: offset 3
- * - 2 tiles in row: offset 6
- * - 1 tile in row: offset 9
- *
- * md (8 columns, each tile = 2 cols):
- * - 3 tiles in row: offset 2
- * - 2 tiles in row: offset 4
- * - 1 tile in row: offset 6
- *
- * Only tiles 1-9 (positions 0-8) are right-aligned. 10+ tiles = no offset.
- *
- * @param index - The tile's position (0-based)
- * @param total - Total number of tiles
- * @returns Object with md and lg offset values for this tile (both 0 if not first of row)
- */
-const calculateTileOffset = (index: number, total: number): { md: number; lg: number } => {
-  // No offset if 10+ tiles total
-  if (total >= 10) return { md: 0, lg: 0 };
-
-  // Only first tile of each row gets offset (every 3rd position starting at 0)
-  if (index % 3 !== 0) return { md: 0, lg: 0 };
-
-  // Calculate which row this tile is in
-  const row = Math.floor(index / 3);
-
-  // Calculate how many tiles are in this row
-  const tilesInThisRow = Math.min(3, total - row * 3);
-
-  // Calculate offset to right-align
-  // lg: (4 - tilesInRow) * 3 → 3 tiles = 3, 2 tiles = 6, 1 tile = 9
-  // md: (4 - tilesInRow) * 2 → 3 tiles = 2, 2 tiles = 4, 1 tile = 6
-  const lgOffset = (4 - tilesInThisRow) * 3;
-  const mdOffset = (4 - tilesInThisRow) * 2;
-
-  return { md: mdOffset, lg: lgOffset };
-};
 
 /**
  * LogoRectangleGrid Component
@@ -108,12 +66,12 @@ export const LogoRectangleGrid: React.FC<LogoRectangleGridProps> = ({
   heading,
   description,
   logos,
+  className,
 }) => {
   // Build class names using BEM with bds namespace
   const classNames = clsx(
     'bds-logo-rectangle-grid',
     `bds-logo-rectangle-grid--${variant}`,
-    className
   );
 
   // Memoize offset calculations - only recalculate when logos array changes
