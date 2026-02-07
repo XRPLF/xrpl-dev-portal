@@ -97,10 +97,12 @@ export const LinkSmallGrid: React.FC<LinkSmallGridProps> = ({
         <PageGridRow>
           {links.map((link, index) => {
             const offset = linkOffsets[index];
-            const hasOffset = offset.md > 0 || offset.lg > 0;
+            const hasOffset = offset.lg > 0;
+            // Use href or label as key, fallback to index
+            const key = link.href || link.label || index;
             return (
               <PageGridCol
-                key={index}
+                key={key}
                 span={{ base: 4, md: 4, lg: 3 }}
                 offset={hasOffset ? { lg: offset.lg } : undefined}
               >
