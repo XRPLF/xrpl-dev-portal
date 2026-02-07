@@ -27,10 +27,14 @@ export interface TileLinkProps {
  * Features a "window shade" hover animation where the hover color wipes from
  * bottom to top on mouse enter, and top to bottom on mouse leave.
  *
- * The component is fully responsive, adapting its size at breakpoints:
- * - SM (< 576px): 80px height, 12px padding, 16px font
- * - MD (576px - 991px): 88px height, 16px padding, 16px font
- * - LG (>= 992px): 96px height, 20px padding, 18px font
+ * Responsive Sizing:
+ * - Base (< 576px): 64px height, 12px padding, 16px font, 26.1px line-height
+ * - MD (576px - 991px): 64px height, 16px padding, 16px font, 26.1px line-height
+ * - LG (≥ 992px): 64px height, 20px padding, 18px font, 26.1px line-height
+ *
+ * Color Variants:
+ * - Gray: Light mode (gray-200 bg), Dark mode (gray-500 bg)
+ * - Lilac: Same in both light and dark modes (lilac-100 bg)
  *
  * @example
  * // Basic usage with link (gray variant - default)
