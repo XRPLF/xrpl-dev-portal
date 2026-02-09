@@ -34,7 +34,7 @@ regular_key_tx = SetRegularKey(
 print("Assigning regular key to the account...")
 try:
     response = submit_and_wait(regular_key_tx, client, wallet)
-except err:
+except Exception as err:
     print("Submitting SetRegularKey transaction failed with error", err)
     exit(1)
 set_regular_key_result_code = response.result["meta"]["TransactionResult"]
@@ -77,6 +77,6 @@ print(f"Flags for account {wallet.address}:")
 print(json.dumps(account_flags, indent=2))
 
 if account_flags["disableMasterKey"]:
-    print("Master key pair is disabled")
+    print("Master key pair is DISABLED")
 else:
     print("Master key pair is ENABLED")

@@ -134,13 +134,13 @@ For more information about this and related topics, see:
 - **Concepts:**
     - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
     - [Multi-Signing](../../../concepts/accounts/multi-signing.md)
-    - [Issuing and Operational Addresses](../../../concepts/accounts/account-types.md)
+    - [Account Types](../../../concepts/accounts/account-types.md)
 - **Tutorials:**
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.md)
     - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
     - [Set Up Multi-Signing](set-up-multi-signing.md)
 - **References:**
-    - [AccountSet transaction][]
     - [account_info method][]
+    - [AccountSet transaction][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
