@@ -86,7 +86,7 @@ Before you can remove the regular key pair from an account, the account has to h
 
 Before you disable the regular key, you may want to confirm that the account has a regular key assigned and check which key it is. To do this, use the [account_info method][] and look at for a `RegularKey` field in the account data. If the field is present, it contains the [address](../../../concepts/accounts/addresses.md) of the regular key pair; if the field is absent, the account does not currently have a regular key pair authorized.
 
-This step is optional; you can remove the regular key pair without knowing which key it is.
+**This step is optional; you can remove the regular key pair without knowing which key it is.**
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -116,7 +116,7 @@ If the transaction fails with the result code `tecNO_ALTERNATIVE_KEY`, you canno
 
 ### 5. Confirm that the account has no regular key authorized
 
-After removing the regular key pair, you can confirm that the account has no regular key pair using the [account_info method][] in the same way as in step 3. If the account data does not have a `RegularKey` field, then no regular key pair is authorized.
+After removing the regular key pair, you can confirm that the account has no regular key pair using the [account_info method][] in the same way as in [step 3](#3-check-regular-key-pair-associated-with-account). If the account data does not have a `RegularKey` field, then no regular key pair is authorized.
 
 {% tabs %}
 {% tab label="JavaScript" %}
@@ -138,7 +138,6 @@ Another way to verify that you succeeded at removing the regular key pair is to 
     - [Transaction Cost](../../../concepts/transactions/transaction-cost.md)
         - [Key Reset Transaction](../../../concepts/transactions/transaction-cost.md#key-reset-transaction): a special case where you can send a SetRegularKey transaction with a transaction cost of 0.
 - **Tutorials:**
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
     - [Set Up Multi-Signing](set-up-multi-signing.md)
     - [Disable Master Key Pair](disable-master-key-pair.md)
 - **References:**
