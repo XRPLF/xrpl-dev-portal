@@ -19,7 +19,7 @@ This example shows how to:
 
 [![Offer Create Token Test Harness](/docs/img/mt-create-offers-1-empty-form-info.png)](/docs/img/mt-create-offers-1-empty-form-info.png)
 
-Download and expand the [Modular Tutorials](../../../_code-samples/modular-tutorials/payment-modular-tutorials.zip)<!-- {.github-code-download} --> archive.
+Use the {% repo-link path="_code-samples/modular-tutorials/" %}Modular Tutorials Sample Code{% /repo-link %} for this tutorial.
 
 **Note:** Without the Modular Tutorial Samples, you will not be able to try the examples that follow. 
 
@@ -27,7 +27,7 @@ Download and expand the [Modular Tutorials](../../../_code-samples/modular-tutor
 
 To get test accounts:
 
-1. Open `create-offers.html` in a browser.
+1. Open `create-offer.html` in a browser.
 2. Choose your preferred test network (**Devnet** or **Testnet**).
 3. Get test accounts.
     1. If you copied the gathered information from another tutorial:

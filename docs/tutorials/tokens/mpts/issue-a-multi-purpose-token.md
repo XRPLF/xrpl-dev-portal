@@ -27,8 +27,8 @@ To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
 - Have an XRP Ledger client library set up in your development environment. This page provides examples for the following:
-	- **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
-    - **Python** with the [xrpl-py library](https://github.com/XRPLF/xrpl-py). See [Get Started Using Python](../../python/build-apps/get-started.md) for setup steps.
+	- **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js). See [Get Started Using JavaScript](../../get-started/get-started-javascript.md) for setup steps.
+    - **Python** with the [xrpl-py library](https://github.com/XRPLF/xrpl-py). See [Get Started Using Python](../../get-started/get-started-python.md) for setup steps.
 
 ## Source Code
 

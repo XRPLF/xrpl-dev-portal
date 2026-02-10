@@ -90,4 +90,4 @@ For more information, see:
 - [Permissioned DEXes](../../concepts/tokens/decentralized-exchange/permissioned-dexes.md)
 - [Cross-Currency Payments](../../concepts/payment-types/cross-currency-payments.md)
 - [Offers](../../concepts/tokens/decentralized-exchange/offers.md)
-- [Trade in the Decentralized Exchange](../../tutorials/dex/trade-in-the-decentralized-exchange.md)
+- [Trade in the Decentralized Exchange](../../tutorials/defi/dex/trade-in-the-decentralized-exchange.md)

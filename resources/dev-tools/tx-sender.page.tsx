@@ -221,7 +221,7 @@ function TxSenderBody({ alert }: { alert: (message: string, type?: string) => vo
                                 {{
                                     buttonText: "Send XRP Payment",
                                     units: "drops of XRP",
-                                    longerDescription: (<div>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part1", "Send a ")}<Link to="../../docs/tutorials/how-tos/send-xrp">{translate("resources.dev-tool.tx-sender.send-xrp-desc.part2", "simple XRP-to-XRP payment")}</Link>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part3", ".")}</div>),
+                                    longerDescription: (<div>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part1", "Send a ")}<Link to="../../docs/tutorials/payments/send-xrp">{translate("resources.dev-tool.tx-sender.send-xrp-desc.part2", "simple XRP-to-XRP payment")}</Link>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part3", ".")}</div>),
                                 }}
                                 inputSettings={
                                 {

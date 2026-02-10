@@ -370,7 +370,7 @@
 [gateway_balances method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [get_counts command]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
 [get_counts method]: /docs/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
-[Get Started Using JavaScript]: /docs/tutorials/javascript/build-apps/get-started.md
+[Get Started Using JavaScript]: /docs/tutorials/get-started/get-started-javascript
 [hexadecimal]: https://en.wikipedia.org/wiki/Hexadecimal
 [identifying hash]: /docs/concepts/transactions/index.md#identifying-transactions
 [json command]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/json.md

@@ -171,7 +171,7 @@ Retrieve the final cover available from the transaction result.
   - [Clawing Back Tokens](../../../../concepts/tokens/fungible-tokens/clawing-back-tokens.md)
 
 **Tutorials**:
-  - [Issue a Multi-Purpose Token (MPT)](../../use-tokens/issue-a-multi-purpose-token.md)
+  - [Issue a Multi-Purpose Token (MPT)](../../../tokens/mpts/issue-a-multi-purpose-token.md)
 
 **References**:
   - [LoanBrokerCoverDeposit transaction][]

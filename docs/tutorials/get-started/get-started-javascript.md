@@ -308,7 +308,7 @@ Disconnected
     - [Client Libraries](../../references/client-libraries.md)
 - **Tutorials:**
     - [Send XRP](../payments/send-xrp)
-    - [Issue a Fungible Token](../how-tos/use-tokens/issue-a-fungible-token.md)
+    - [Issue a Fungible Token](../tokens/fungible-tokens/issue-a-fungible-token.md)
     - [Set up Secure Signing](../../concepts/transactions/secure-signing.md)
 - **References:**
     - [`xrpl.js` Reference](https://js.xrpl.org/)

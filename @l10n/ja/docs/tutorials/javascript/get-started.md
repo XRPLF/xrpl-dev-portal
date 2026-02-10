@@ -153,7 +153,7 @@ XRP Ledgerの[コンセンサス プロセス](../../concepts/consensus-protocol
 次のようなことも可能です。
 
 * [XRPの送信](../how-tos/send-xrp.md).
-* [代替可能トークンの発行](../how-tos/use-tokens/issue-a-fungible-token.md)
+* [代替可能トークンの発行](../tokens/fungible-tokens/issue-a-fungible-token.md)
 * アカウントに[安全な署名](../../concepts/transactions/secure-signing.md) を設定する。
 
 

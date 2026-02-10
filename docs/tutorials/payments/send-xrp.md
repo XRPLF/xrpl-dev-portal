@@ -550,11 +550,10 @@ if err := client.Connect(); err != nil {
 
 After completing this tutorial, you may want to try the following:
 
-- [Issue a token](../how-tos/use-tokens/issue-a-fungible-token.md) on the XRP Ledger Testnet.
-- [Trade in the Decentralized Exchange](../dex/trade-in-the-decentralized-exchange.md).
+- [Issue a token](../tokens/fungible-tokens/issue-a-fungible-token.md) on the XRP Ledger Testnet.
+- [Trade in the Decentralized Exchange](../defi/dex/trade-in-the-decentralized-exchange.md).
 - Build [Reliable transaction submission](../../concepts/transactions/reliable-transaction-submission.md) for production systems.
 - Check your [client library](../../references/client-libraries.md)'s API reference for the full range of XRP Ledger functionality.
-- Customize your [Account Settings](../how-tos/manage-account-settings/index.md).
 - Learn how [Transaction Metadata](../../references/protocol/transactions/metadata.md) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](../../concepts/payment-types/index.md) such as Escrows and Payment Channels.
 

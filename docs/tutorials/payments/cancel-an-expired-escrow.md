@@ -6,7 +6,7 @@ labels:
 ---
 # Cancel an Expired Escrow
 
-This tutorial demonstrates how to cancel an [escrow](../../../../concepts/payment-types/escrow.md) that has passed its expiration time. You can use this to reclaim funds that you escrowed but were never claimed by the recipient, or to remove an expired escrow that is stopping you from deleting your account.
+This tutorial demonstrates how to cancel an [escrow](../../concepts/payment-types/escrow.md) that has passed its expiration time. You can use this to reclaim funds that you escrowed but were never claimed by the recipient, or to remove an expired escrow that is stopping you from deleting your account.
 
 ## Goals
 
@@ -20,7 +20,7 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an [XRP Ledger client library](../../../../references/client-libraries.md), such as **xrpl.js**, installed.
+- Have an [XRP Ledger client library](../../references/client-libraries.md), such as **xrpl.js**, installed.
 - Already know how to send a [timed](./send-a-timed-escrow.md) or [conditional](./send-a-conditional-escrow.md) escrow.
 
 ## Source Code
@@ -128,7 +128,7 @@ This is one of several ways to find expired escrows. Use the [account_objects me
 
 To cancel an escrow, you need to know its owner and the sequence number of the transaction that created it. If you already know the sequence number (for example, you saved it when you created the escrow) you can skip this step. The sample code shows how you can look it up for an unknown escrow using the escrow ledger entry's transaction history.
 
-The `PreviousTxnID` field contains the identifying hash of the last transaction to modify the escrow. Generally, this is the EscrowCreate transaction, so you can look up that transaction, using the [tx method][] to get the sequence number from the `Sequence` field. If the transaction used a [Ticket](../../../../concepts/accounts/tickets.md), then the `Sequence` field has a value of `0` and you need to use value of the `TicketSequence` field instead.
+The `PreviousTxnID` field contains the identifying hash of the last transaction to modify the escrow. Generally, this is the EscrowCreate transaction, so you can look up that transaction, using the [tx method][] to get the sequence number from the `Sequence` field. If the transaction used a [Ticket](../../concepts/accounts/tickets.md), then the `Sequence` field has a value of `0` and you need to use value of the `TicketSequence` field instead.
 
 {% admonition type="success" name="Tip" %}The {% amendment-disclaimer name="fixIncludeKeyletFields" compact=true /%} adds a `Sequence` field to new Escrow ledger entries. For any escrow created after that amendment goes live, you can get the sequence number directly from that field.{% /admonition %}
 
