@@ -19,32 +19,32 @@
 // =============================================================================
 // Design Tokens (from Figma)
 // =============================================================================
-
-$bds-grid-gutter: 8px;
+// Note: Uses centralized spacing tokens from _spacing.scss.
+// $bds-grid-gutter is defined in _spacing.scss (8px).
 
 // Grid padding (matches PageGrid container padding)
-$bds-carousel-grid-padding-sm: 18px;            // Mobile
-$bds-carousel-grid-padding-md: 24px;            // Tablet
-$bds-carousel-grid-padding-lg: 32px;            // Desktop (lg+)
+$bds-carousel-grid-padding-sm: 18px;            // Mobile (non-standard)
+$bds-carousel-grid-padding-md: $bds-space-2xl;  // 24px - spacing('2xl')
+$bds-carousel-grid-padding-lg: $bds-space-3xl;  // 32px - spacing('3xl')
 $bds-carousel-grid-max-width: 1280px;           // Max container width (per _breakpoints.scss $xl)
 
 // Spacing - Header gap (between heading and description)
-$bds-carousel-header-gap-sm: 8px;           // Mobile
-$bds-carousel-header-gap-md: 8px;           // Tablet
-$bds-carousel-header-gap-lg: 16px;          // Desktop
+$bds-carousel-header-gap-sm: $bds-space-sm;     // 8px - spacing('sm')
+$bds-carousel-header-gap-md: $bds-space-sm;     // 8px - spacing('sm')
+$bds-carousel-header-gap-lg: $bds-space-lg;     // 16px - spacing('lg')
 
 // Spacing - Section gap (between header content and buttons row on mobile)
-$bds-carousel-section-gap-sm: 24px;         // Mobile
-$bds-carousel-section-gap-md: 32px;         // Tablet
-$bds-carousel-section-gap-lg: 40px;         // Desktop
+$bds-carousel-section-gap-sm: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-carousel-section-gap-md: $bds-space-3xl;   // 32px - spacing('3xl')
+$bds-carousel-section-gap-lg: $bds-space-4xl;   // 40px - spacing('4xl')
 
 // Spacing - Gap between header and cards
-$bds-carousel-cards-gap-sm: 24px;           // Mobile
-$bds-carousel-cards-gap-md: 32px;           // Tablet
-$bds-carousel-cards-gap-lg: 40px;           // Desktop
+$bds-carousel-cards-gap-sm: $bds-space-2xl;     // 24px - spacing('2xl')
+$bds-carousel-cards-gap-md: $bds-space-3xl;     // 32px - spacing('3xl')
+$bds-carousel-cards-gap-lg: $bds-space-4xl;     // 40px - spacing('4xl')
 
 // Button gap (button styles are in shared/components/CarouselButton)
-$bds-carousel-button-gap: 8px;
+$bds-carousel-button-gap: $bds-space-sm;        // 8px - spacing('sm')
 
 // Card dimensions per breakpoint
 $bds-carousel-card-width-sm: 343px;         // Mobile
@@ -55,9 +55,9 @@ $bds-carousel-card-width-lg: 400px;         // Desktop
 $bds-carousel-card-height-lg: 480px;
 
 // Card padding per breakpoint
-$bds-carousel-card-padding-sm: 16px;
-$bds-carousel-card-padding-md: 20px;
-$bds-carousel-card-padding-lg: 24px;
+$bds-carousel-card-padding-sm: $bds-space-lg;   // 16px - spacing('lg')
+$bds-carousel-card-padding-md: $bds-space-xl;   // 20px - spacing('xl')
+$bds-carousel-card-padding-lg: $bds-space-2xl;  // 24px - spacing('2xl')
 
 // Transition
 $bds-carousel-transition: 200ms cubic-bezier(0.98, 0.12, 0.12, 0.98);

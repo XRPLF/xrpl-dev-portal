@@ -11,9 +11,9 @@
 // .bds-tile-logo--disabled    - Disabled state modifier
 // .bds-tile-logo__overlay     - Hover gradient overlay (window shade animation)
 // .bds-tile-logo__image       - Logo image element
-
-// Grid gutter (matching PageGrid)
-$bds-grid-gutter: 8px;
+//
+// Note: Uses centralized spacing tokens from _spacing.scss.
+// $bds-grid-gutter is now defined in _spacing.scss as the single source of truth.
 
 // Focus border colors (component-specific, dark mode default)
 $bds-tile-logo-focus-border-light: $black;

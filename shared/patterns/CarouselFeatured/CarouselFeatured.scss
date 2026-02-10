@@ -32,14 +32,15 @@
 // =============================================================================
 // Design Tokens (from Figma)
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
 
 // Spacing
-$bds-carousel-featured-padding-sm: 24px 16px;
-$bds-carousel-featured-padding-md: 32px 24px;
-$bds-carousel-featured-padding-lg: 40px 32px;
+$bds-carousel-featured-padding-sm: $bds-space-2xl $bds-space-lg;   // 24px 16px
+$bds-carousel-featured-padding-md: $bds-space-3xl $bds-space-2xl;  // 32px 24px
+$bds-carousel-featured-padding-lg: $bds-space-4xl $bds-space-3xl;  // 40px 32px
 
 // Content gap between image and content columns
-$bds-carousel-featured-column-gap: 8px;
+$bds-carousel-featured-column-gap: $bds-space-sm; // 8px - spacing('sm')
 
 // Transition
 $bds-carousel-featured-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -210,7 +211,7 @@ $bds-carousel-featured-variants-light: (
     // Stretch to match image height
     align-self: stretch;
     // Add 8px padding-left to create 16px total gap (8px row gap + 8px padding)
-    padding-left: 8px;
+    padding-left: $bds-space-sm; // 8px - spacing('sm')
   }
 }
 
@@ -257,14 +258,14 @@ $bds-carousel-featured-variants-light: (
 .bds-carousel-featured__bottom {
   display: flex;
   flex-direction: column;
-  gap: 24px; // Mobile
+  gap: $bds-space-2xl; // 24px - spacing('2xl')
 
   @include media-breakpoint-up(md) {
-    gap: 32px; // Tablet
+    gap: $bds-space-3xl; // 32px - spacing('3xl')
   }
 
   @include media-breakpoint-up(lg) {
-    gap: 40px; // Desktop
+    gap: $bds-space-4xl; // 40px - spacing('4xl')
   }
 }
 
@@ -274,7 +275,7 @@ $bds-carousel-featured-variants-light: (
 
 .bds-carousel-featured__nav {
   display: flex;
-  gap: 8px;
+  gap: $bds-space-sm; // 8px - spacing('sm')
   flex-shrink: 0;
 
   // Desktop nav (in header row)
@@ -309,16 +310,16 @@ $bds-carousel-featured-variants-light: (
 .bds-carousel-featured__feature {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: $bds-space-sm; // 8px - spacing('sm')
   width: 100%;
 
   // Spacing between description and next divider
   // Mobile/Tablet: 16px, Desktop: 24px
   &:not(:first-child) {
-    padding-top: 16px;
+    padding-top: $bds-space-lg; // 16px - spacing('lg')
 
     @include media-breakpoint-up(lg) {
-      padding-top: 24px;
+      padding-top: $bds-space-2xl; // 24px - spacing('2xl')
     }
   }
 }
@@ -346,7 +347,7 @@ $bds-carousel-featured-variants-light: (
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
-  gap: 16px;
+  gap: $bds-space-lg; // 16px - spacing('lg')
 
   // Tablet+: no wrap needed
   @include media-breakpoint-up(md) {

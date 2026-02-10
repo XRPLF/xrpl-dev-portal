@@ -23,21 +23,22 @@
 // =============================================================================
 // Design Tokens (from Figma)
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
 
 // Spacing - Header gap (between headline and description)
-$bds-standard-card-group-section-header-gap-sm: 8px;         // Mobile: 8px
-$bds-standard-card-group-section-header-gap-md: 8px;         // Tablet: 8px
-$bds-standard-card-group-section-header-gap-lg: 16px;        // Desktop: 16px
+$bds-standard-card-group-section-header-gap-sm: $bds-space-sm;   // 8px - spacing('sm')
+$bds-standard-card-group-section-header-gap-md: $bds-space-sm;   // 8px - spacing('sm')
+$bds-standard-card-group-section-header-gap-lg: $bds-space-lg;   // 16px - spacing('lg')
 
 // Spacing - Section gap (between header and cards)
-$bds-standard-card-group-section-section-gap-sm: 24px;       // Mobile
-$bds-standard-card-group-section-section-gap-md: 32px;       // Tablet
-$bds-standard-card-group-section-section-gap-lg: 40px;       // Desktop
+$bds-standard-card-group-section-section-gap-sm: $bds-space-2xl; // 24px - spacing('2xl')
+$bds-standard-card-group-section-section-gap-md: $bds-space-3xl; // 32px - spacing('3xl')
+$bds-standard-card-group-section-section-gap-lg: $bds-space-4xl; // 40px - spacing('4xl')
 
 // Spacing - Section padding (vertical)
-$bds-standard-card-group-section-padding-y-sm: 48px;         // Mobile
-$bds-standard-card-group-section-padding-y-md: 64px;         // Tablet
-$bds-standard-card-group-section-padding-y-lg: 80px;         // Desktop
+$bds-standard-card-group-section-padding-y-sm: $bds-space-5xl;   // 48px - spacing('5xl')
+$bds-standard-card-group-section-padding-y-md: $bds-space-6xl;   // 64px - spacing('6xl')
+$bds-standard-card-group-section-padding-y-lg: $bds-space-8xl;   // 80px - spacing('8xl')
 
 
 // =============================================================================

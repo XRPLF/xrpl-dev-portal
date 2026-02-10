@@ -3,8 +3,6 @@
 // Styles for link arrow icons with hover animations that transform arrow to chevron
 // Animation: 150ms with custom cubic-bezier per Figma specs
 
-@import "../../../styles/_colors.scss";
-
 // Animation timing per Figma
 $bds-link-transition-duration: 150ms;
 $bds-link-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);

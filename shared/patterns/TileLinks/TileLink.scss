@@ -15,11 +15,12 @@
 // =============================================================================
 // Design Tokens
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
 
 // Focus border
 $bds-tile-link-focus-border-color-light: $black;
 $bds-tile-link-focus-border-color-dark: $white;
-$bds-tile-link-focus-border-width: 2px;
+$bds-tile-link-focus-border-width: $bds-focus-border-width; // 2px - from _spacing.scss
 
 // Animation (matching TileLogo/CardIcon)
 $bds-tile-link-transition-duration: 200ms;
@@ -30,18 +31,18 @@ $bds-tile-link-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 // -----------------------------------------------------------------------------
 
 // SM breakpoint (mobile - default)
-$bds-tile-link-height-base: 64px;
-$bds-tile-link-padding-sm: 12px;
+$bds-tile-link-height-base: $bds-space-6xl;   // 64px - spacing('6xl')
+$bds-tile-link-padding-sm: $bds-space-md;     // 12px - spacing('md')
 $bds-tile-link-font-size-sm: 16px;
 $bds-tile-link-line-height-sm: 26.1px;
 
 // MD breakpoint (tablet)
-$bds-tile-link-padding-md: 16px;
+$bds-tile-link-padding-md: $bds-space-lg;     // 16px - spacing('lg')
 $bds-tile-link-font-size-md: 16px;
 $bds-tile-link-line-height-md: 26.1px;
 
 // LG breakpoint (desktop)
-$bds-tile-link-padding-lg: 20px;
+$bds-tile-link-padding-lg: $bds-space-xl;     // 20px - spacing('xl')
 $bds-tile-link-font-size-lg: 18px;
 $bds-tile-link-line-height-lg: 26.1px;
 

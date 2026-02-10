@@ -24,18 +24,20 @@
 // =============================================================================
 // Design Tokens from Figma
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss where applicable.
+// Component-specific values (heights, max-widths) remain local.
 
-// Card internal padding
-$bds-text-card-padding-mobile: 16px;
-$bds-text-card-padding-tablet: 20px;
-$bds-text-card-padding-desktop: 24px;
+// Card internal padding - uses centralized spacing tokens
+$bds-text-card-padding-mobile: $bds-space-lg;   // 16px - spacing('lg')
+$bds-text-card-padding-tablet: $bds-space-xl;   // 20px - spacing('xl')
+$bds-text-card-padding-desktop: $bds-space-2xl; // 24px - spacing('2xl')
 
-// Card heights (fixed per breakpoint)
+// Card heights (fixed per breakpoint) - component-specific
 $bds-text-card-height-mobile: 274px;
 $bds-text-card-height-tablet: 309px;
 $bds-text-card-height-desktop: 340px;
 
-// Card description max-width (from Figma)
+// Card description max-width (from Figma) - component-specific
 $bds-text-card-description-max-width: 478px;
 
 // Colors - Light Mode (from Figma)

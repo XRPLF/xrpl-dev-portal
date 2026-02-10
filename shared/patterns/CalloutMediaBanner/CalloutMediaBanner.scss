@@ -58,20 +58,21 @@ $bds-cmb-variants: (
 );
 
 // Spacing tokens - responsive
+// Note: Uses centralized spacing tokens from _spacing.scss where applicable.
 // Mobile (<768px)
-$bds-cmb-gap-mobile: 48px;
-$bds-cmb-padding-mobile: 16px;
+$bds-cmb-gap-mobile: $bds-space-5xl;       // 48px - spacing('5xl')
+$bds-cmb-padding-mobile: $bds-space-lg;    // 16px - spacing('lg')
 
 // Tablet (768px-1023px)
-$bds-cmb-gap-tablet: 64px;
-$bds-cmb-padding-tablet: 24px;
+$bds-cmb-gap-tablet: $bds-space-6xl;       // 64px - spacing('6xl')
+$bds-cmb-padding-tablet: $bds-space-2xl;   // 24px - spacing('2xl')
 
 // Desktop (≥1024px)
-$bds-cmb-gap-desktop: 80px;
-$bds-cmb-padding-desktop: 40px 32px;
+$bds-cmb-gap-desktop: $bds-space-8xl;      // 80px - spacing('8xl')
+$bds-cmb-padding-desktop: $bds-space-4xl $bds-space-3xl; // 40px 32px
 
 // Button spacing
-$bds-cmb-button-gap: 24px;
+$bds-cmb-button-gap: $bds-space-2xl;       // 24px - spacing('2xl')
 
 // Image overlay for readability
 $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
@@ -161,18 +162,18 @@ $bds-cmb-image-overlay: rgba(0, 0, 0, 0.3);
   @extend .flex-column;
   flex-direction: column;
   color: var(--bds-cmb-text-color, #232021);
-  
+
   // Mobile-first gap
-  gap: 16px;
-  
+  gap: $bds-space-lg; // 16px - spacing('lg')
+
   // Tablet breakpoint
   @include media-breakpoint-up(md) {
-    gap: 24px;
+    gap: $bds-space-2xl; // 24px - spacing('2xl')
   }
-  
+
   // Desktop breakpoint
   @include media-breakpoint-up(xl) {
-    gap: 32px;
+    gap: $bds-space-3xl; // 32px - spacing('3xl')
   }
 }
 

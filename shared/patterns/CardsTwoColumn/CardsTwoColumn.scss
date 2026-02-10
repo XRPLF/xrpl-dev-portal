@@ -25,16 +25,17 @@
 // =============================================================================
 // Design Tokens from Figma
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
 
 // Section vertical padding (horizontal handled by PageGrid)
-$bds-section-padding-y-mobile: 24px;
-$bds-section-padding-y-tablet: 32px;
-$bds-section-padding-y-desktop: 40px;
+$bds-section-padding-y-mobile: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-section-padding-y-tablet: $bds-space-3xl;   // 32px - spacing('3xl')
+$bds-section-padding-y-desktop: $bds-space-4xl;  // 40px - spacing('4xl')
 
 // Gap between header row and cards row
-$bds-section-row-gap-mobile: 24px;
-$bds-section-row-gap-tablet: 32px;
-$bds-section-row-gap-desktop: 40px;
+$bds-section-row-gap-mobile: $bds-space-2xl;     // 24px - spacing('2xl')
+$bds-section-row-gap-tablet: $bds-space-3xl;     // 32px - spacing('3xl')
+$bds-section-row-gap-desktop: $bds-space-4xl;    // 40px - spacing('4xl')
 
 // Card height for header alignment (desktop only)
 $bds-text-card-height-desktop: 340px;
@@ -124,7 +125,7 @@ $bds-text-color-muted: $gray-500;  // #72777E - Neutral/500 for description
     margin: 0;
 
     & + p {
-      margin-top: 16px; // Paragraph spacing from Figma
+      margin-top: $bds-space-lg; // 16px - spacing('lg')
     }
   }
 }

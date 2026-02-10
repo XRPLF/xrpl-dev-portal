@@ -14,8 +14,8 @@ $bds-transition-duration: 200ms;
 // Standard easing curve for smooth interactions
 $bds-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
-// Focus border width
-$bds-focus-border-width: 2px;
+// Focus border width - now uses centralized value from _spacing.scss
+// Note: $bds-focus-border-width is defined in _spacing.scss for single source of truth
 
 // =============================================================================
 // Window Shade Animation Mixin

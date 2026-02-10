@@ -1,24 +1,26 @@
-$bds-grid-gutter: 8px;
+// BDS SmallTilesSection Pattern Styles
+// Note: Uses centralized spacing tokens from _spacing.scss.
+// $bds-grid-gutter is defined in _spacing.scss (8px).
 
 .bds-small-tiles-section {
 
     &__headline {
-        margin-bottom: 8px;
+        margin-bottom: $bds-space-sm; // 8px - spacing('sm')
 
         @include media-breakpoint-up(lg) {
-            margin-bottom: 16px;
+            margin-bottom: $bds-space-lg; // 16px - spacing('lg')
         }
     }
 
     &__cards-grid-wrapper {
-        margin-top: 24px;
+        margin-top: $bds-space-2xl; // 24px - spacing('2xl')
 
         @include media-breakpoint-up(md) {
-            margin-top: 32px;
+            margin-top: $bds-space-3xl; // 32px - spacing('3xl')
         }
 
         @include media-breakpoint-up(lg) {
-            margin-top: 40px;
+            margin-top: $bds-space-4xl; // 40px - spacing('4xl')
         }
     }
 

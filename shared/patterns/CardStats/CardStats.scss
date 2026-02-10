@@ -35,18 +35,19 @@ $bds-card-stats-heading-dark: $white;       // --neutral/white (#FFFFFF)
 $bds-card-stats-description-dark: $white;   // --neutral/white (#FFFFFF)
 
 // Spacing - Header gap (between heading and description)
-$bds-card-stats-header-gap-base: 8px;       // Base: 8px
-$bds-card-stats-header-gap-lg: 16px;        // Desktop: 16px
+// Note: Uses centralized spacing tokens from _spacing.scss.
+$bds-card-stats-header-gap-base: $bds-space-sm;   // 8px - spacing('sm')
+$bds-card-stats-header-gap-lg: $bds-space-lg;     // 16px - spacing('lg')
 
 // Spacing - Section gap (between header and cards)
-$bds-card-stats-section-gap-sm: 24px;       // Mobile: 24px
-$bds-card-stats-section-gap-md: 32px;       // Tablet: 32px
-$bds-card-stats-section-gap-lg: 40px;       // Desktop: 40px
+$bds-card-stats-section-gap-sm: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-card-stats-section-gap-md: $bds-space-3xl;   // 32px - spacing('3xl')
+$bds-card-stats-section-gap-lg: $bds-space-4xl;   // 40px - spacing('4xl')
 
 // Spacing - Section padding
-$bds-card-stats-padding-y-sm: 24px;         // Mobile: 24px
-$bds-card-stats-padding-y-md: 32px;         // Tablet: 32px
-$bds-card-stats-padding-y-lg: 40px;         // Desktop: 40px
+$bds-card-stats-padding-y-sm: $bds-space-2xl;     // 24px - spacing('2xl')
+$bds-card-stats-padding-y-md: $bds-space-3xl;     // 32px - spacing('3xl')
+$bds-card-stats-padding-y-lg: $bds-space-4xl;     // 40px - spacing('4xl')
 
 // =============================================================================
 // Base Section Styles

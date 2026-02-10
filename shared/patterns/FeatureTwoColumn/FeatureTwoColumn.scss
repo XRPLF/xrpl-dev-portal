@@ -36,29 +36,28 @@ $bds-feature-description-color: $black; // #141414 (Neutral-black)
 $bds-feature-description-color-dark: $black; // #141414 (same in dark mode)
 
 // Spacing - Desktop (≥992px) - based on Figma 1280px design
-$bds-feature-desktop-py: 96px;
-$bds-feature-desktop-text-gap: 16px;
+// Note: Uses centralized spacing tokens from _spacing.scss.
+// $bds-grid-gutter is defined in _spacing.scss (8px).
+$bds-feature-desktop-py: 96px; // Non-standard value, kept as-is
+$bds-feature-desktop-text-gap: $bds-space-lg; // 16px - spacing('lg')
 $bds-feature-desktop-cta-gap-col: 0; // Gap between button rows
 $bds-feature-desktop-content-gap: 0; // Gap between text-group and cta (space-between handles this)
 
 // Spacing - Tablet (576px - 991px) - based on Figma 768px design
-$bds-feature-tablet-py: 80px;
-$bds-feature-tablet-pl: 115px; // Left padding from Figma
-$bds-feature-tablet-pr: 107px; // Right padding from Figma
-$bds-feature-tablet-text-gap: 8px;
-$bds-feature-tablet-cta-gap-row: 16px; // Gap between buttons in row from Figma
+$bds-feature-tablet-py: $bds-space-8xl; // 80px - spacing('8xl')
+$bds-feature-tablet-pl: 115px; // Left padding from Figma (non-standard)
+$bds-feature-tablet-pr: 107px; // Right padding from Figma (non-standard)
+$bds-feature-tablet-text-gap: $bds-space-sm; // 8px - spacing('sm')
+$bds-feature-tablet-cta-gap-row: $bds-space-lg; // 16px - spacing('lg')
 $bds-feature-tablet-cta-gap-col: 0;
-$bds-feature-tablet-content-gap: 32px;
+$bds-feature-tablet-content-gap: $bds-space-3xl; // 32px - spacing('3xl')
 
 // Spacing - Mobile (<576px) - based on Figma 375px design
-$bds-feature-mobile-py: 64px;
-$bds-feature-mobile-px: 16px;
-$bds-feature-mobile-text-gap: 8px;
-$bds-feature-mobile-cta-gap: 16px; // Gap between stacked buttons from Figma
-$bds-feature-mobile-content-gap: 24px;
-
-// Grid gutter - consistent with PageGrid
-$bds-grid-gutter: 8px;
+$bds-feature-mobile-py: $bds-space-6xl; // 64px - spacing('6xl')
+$bds-feature-mobile-px: $bds-space-lg; // 16px - spacing('lg')
+$bds-feature-mobile-text-gap: $bds-space-sm; // 8px - spacing('sm')
+$bds-feature-mobile-cta-gap: $bds-space-lg; // 16px - spacing('lg')
+$bds-feature-mobile-content-gap: $bds-space-2xl; // 24px - spacing('2xl')
 
 // =============================================================================
 // Base Styles
@@ -138,18 +137,18 @@ $bds-grid-gutter: 8px;
     // Mobile: 4 columns, content full width
     grid-template-columns: repeat(4, 1fr);
     gap: $bds-grid-gutter;
-    padding: 0 16px; // Mobile edge padding
+    padding: 0 $bds-space-lg; // 16px - spacing('lg')
 
     // Tablet: 8 columns
     @include media-breakpoint-up(md) {
       grid-template-columns: repeat(8, 1fr);
-      padding: 0 24px; // Tablet edge padding
+      padding: 0 $bds-space-2xl; // 24px - spacing('2xl')
     }
 
     // Desktop: 6 columns (within the 50% content half)
     @include media-breakpoint-up(lg) {
       grid-template-columns: repeat(6, 1fr);
-      padding: 0 32px; // Desktop edge padding
+      padding: 0 $bds-space-3xl; // 32px - spacing('3xl')
     }
   }
 
@@ -215,7 +214,7 @@ $bds-grid-gutter: 8px;
   &__content--multiple {
     // Mobile: no gap since we only have 2 items (text-group and button-group)
     // The 24px gap is handled via button-group margin or flex gap
-    gap: 24px;
+    gap: $bds-space-2xl; // 24px - spacing('2xl')
     justify-content: flex-start;
 
     @include media-breakpoint-up(md) {

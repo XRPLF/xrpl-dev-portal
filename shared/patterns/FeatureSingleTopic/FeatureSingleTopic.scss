@@ -22,23 +22,24 @@ $bds-single-topic-title-color: $black; // #141414 (Neutral-black)
 $bds-single-topic-description-color: $gray-500; // #72777E (Neutral-500)
 
 // Spacing - Desktop (≥992px) - based on Figma 1280px design
-$bds-single-topic-desktop-py: 40px; // Vertical padding from Figma
-$bds-single-topic-desktop-content-pl: 8px; // Content left padding
-$bds-single-topic-desktop-description-gap: 40px; // Gap between description and ButtonGroup
-$bds-single-topic-desktop-title-padding: 16px; // Title section padding for accentSurface
+// Note: Uses centralized spacing tokens from _spacing.scss.
+$bds-single-topic-desktop-py: $bds-space-4xl; // 40px - spacing('4xl')
+$bds-single-topic-desktop-content-pl: $bds-space-sm; // 8px - spacing('sm')
+$bds-single-topic-desktop-description-gap: $bds-space-4xl; // 40px - spacing('4xl')
+$bds-single-topic-desktop-title-padding: $bds-space-lg; // 16px - spacing('lg')
 $bds-single-topic-desktop-height: 565px; // Fixed height from Figma design
 
 // Spacing - Tablet (576px - 991px)
-$bds-single-topic-tablet-py: 32px;
-$bds-single-topic-tablet-content-gap: 32px; // Gap between image and content on tablet
+$bds-single-topic-tablet-py: $bds-space-3xl; // 32px - spacing('3xl')
+$bds-single-topic-tablet-content-gap: $bds-space-3xl; // 32px - spacing('3xl')
 $bds-single-topic-tablet-content-min-height: 320px; // Min height for content on tablet
-$bds-single-topic-tablet-title-description-gap: 80px; // Gap between accent/title and description on tablet
+$bds-single-topic-tablet-title-description-gap: $bds-space-8xl; // 80px - spacing('8xl')
 
 // Spacing - Mobile (<576px)
-$bds-single-topic-mobile-py: 24px;
-$bds-single-topic-mobile-content-gap: 24px; // Gap between image and content on mobile
+$bds-single-topic-mobile-py: $bds-space-2xl; // 24px - spacing('2xl')
+$bds-single-topic-mobile-content-gap: $bds-space-2xl; // 24px - spacing('2xl')
 $bds-single-topic-mobile-content-min-height: 280px; // Min height for content on mobile
-$bds-single-topic-mobile-title-description-gap: 40px; // Gap between accent/title and description on mobile
+$bds-single-topic-mobile-title-description-gap: $bds-space-4xl; // 40px - spacing('4xl')
 
 // =============================================================================
 // Base Styles

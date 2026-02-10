@@ -17,6 +17,7 @@
 // =============================================================================
 // Design Tokens
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss where applicable.
 
 // Color variant map: (variant-name: (light-mode-bg, dark-mode-bg))
 // null for dark-mode-bg means no change in dark mode
@@ -30,12 +31,12 @@ $bds-card-stat-variants: (
 // Text colors
 $bds-card-stat-text: $black; // Neutral black
 
-// Spacing
-$bds-card-stat-gap: 8px;
+// Spacing - uses centralized tokens
+$bds-card-stat-gap: $bds-space-sm; // 8px - spacing('sm')
 
 // Transitions
-$bds-card-stat-transition-duration: 150ms;
-$bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+$bds-card-stat-transition-duration: 150ms; // Component-specific (faster than default)
+$bds-card-stat-transition-timing: $bds-transition-timing;
 
 // =============================================================================
 // Base Card Styles
@@ -50,8 +51,8 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
   height: 100%;
   justify-content: space-between;
   flex: 1;
-  padding: 8px;
-  gap: 4px;
+  padding: $bds-space-sm; // 8px - spacing('sm')
+  gap: $bds-space-xs; // 4px - spacing('xs')
 
   // Visual - default to lilac
   background-color: nth(map-get($bds-card-stat-variants, 'lilac'), 1);
@@ -64,19 +65,19 @@ $bds-card-stat-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
 
   // Tablet (md) breakpoint
   @include media-breakpoint-up(md) {
-    padding: 12px;
+    padding: $bds-space-md; // 12px - spacing('md')
   }
 
   // Desktop (lg+) breakpoint
   @include media-breakpoint-up(lg) {
-    padding: 16px;
+    padding: $bds-space-lg; // 16px - spacing('lg')
   }
 
   // Text section
   &__text {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: $bds-space-sm; // 8px - spacing('sm')
   }
 
   // Statistic (large number)
