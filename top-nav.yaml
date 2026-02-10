@@ -84,12 +84,12 @@
     - group: Get Started
       groupTranslationKey: topnav.docs.get-started
       items:
-        - page: ./docs/tutorials/javascript/index.md
-        - page: ./docs/tutorials/python/index.md
-        - page: ./docs/tutorials/java/index.md
-        - page: ./docs/tutorials/php/index.md
-        - page: ./docs/tutorials/go/index.md
-        - page: ./docs/tutorials/http-websocket-apis/index.md
+        - page: ./docs/tutorials/get-started/get-started-javascript.md
+        - page: ./docs/tutorials/get-started/get-started-python.md
+        - page: ./docs/tutorials/get-started/get-started-java.md
+        - page: ./docs/tutorials/get-started/get-started-php.md
+        - page: ./docs/tutorials/get-started/get-started-go.md
+        - page: ./docs/tutorials/get-started/get-started-http-websocket-apis.md
 
 - group: Resources
   groupTranslationKey: navbar.resources
