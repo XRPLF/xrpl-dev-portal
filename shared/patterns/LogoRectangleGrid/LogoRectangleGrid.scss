@@ -19,16 +19,17 @@
 // LogoRectangleGrid 'green' maps to TileLogo 'green'
 
 // Spacing tokens - responsive
+// Note: Uses centralized spacing tokens from _spacing.scss.
 // Mobile (<768px)
-$bds-lrg-header-gap-mobile: 24px;
-$bds-lrg-text-gap-mobile: 8px;
+$bds-lrg-header-gap-mobile: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-lrg-text-gap-mobile: $bds-space-sm;      // 8px - spacing('sm')
 
 // Tablet (768px-1023px)
-$bds-lrg-header-gap-tablet: 32px;
+$bds-lrg-header-gap-tablet: $bds-space-3xl;   // 32px - spacing('3xl')
 
 // Desktop (≥1024px)
-$bds-lrg-header-gap-desktop: 40px;
-$bds-lrg-text-gap-desktop: 16px;
+$bds-lrg-header-gap-desktop: $bds-space-4xl;  // 40px - spacing('4xl')
+$bds-lrg-text-gap-desktop: $bds-space-lg;     // 16px - spacing('lg')
 
 // =============================================================================
 // Base Component Styles
@@ -60,24 +61,24 @@ $bds-lrg-text-gap-desktop: 16px;
 .bds-logo-rectangle-grid__header {
   @extend .d-flex;
   @extend .flex-column;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  
+  margin-top: $bds-space-2xl; // 24px - spacing('2xl')
+  margin-bottom: $bds-space-2xl; // 24px - spacing('2xl')
+
   // Mobile-first gap
   gap: $bds-lrg-header-gap-mobile;
 
   // Tablet breakpoint
   @include media-breakpoint-up(md) {
     gap: $bds-lrg-header-gap-tablet;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-top: $bds-space-3xl; // 32px - spacing('3xl')
+    margin-bottom: $bds-space-3xl; // 32px - spacing('3xl')
   }
-  
+
   // Desktop breakpoint
   @include media-breakpoint-up(lg) {
     gap: $bds-lrg-header-gap-desktop;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: $bds-space-4xl; // 40px - spacing('4xl')
+    margin-bottom: $bds-space-4xl; // 40px - spacing('4xl')
   }
 }
 

@@ -14,37 +14,40 @@
 // .bds-card-icon__label       - Text label
 // .bds-card-icon__arrow       - Arrow icon wrapper
 
-@import '../../../styles/breakpoints';
 
 // =============================================================================
 // Design Tokens
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss where applicable.
+// Component-specific values (heights, icon sizes) remain local.
 
-// Focus border
+// Focus border - uses centralized token
 $bds-card-icon-focus-border-color: $black;
-$bds-card-icon-focus-border-width: 2px;
+$bds-card-icon-focus-border-width: $bds-focus-border-width; // 2px from _spacing.scss
 
-// Animation (matching TileLogo/CardOffgrid)
-$bds-card-icon-transition-duration: 200ms;
-$bds-card-icon-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+// Animation - uses centralized tokens from _animations.scss
+$bds-card-icon-transition-duration: $bds-transition-duration; // 200ms
+$bds-card-icon-transition-timing: $bds-transition-timing;
 
 // -----------------------------------------------------------------------------
 // Responsive Size Tokens
 // -----------------------------------------------------------------------------
+// Heights and icon sizes are component-specific (not part of spacing scale)
+// Padding uses centralized spacing tokens
 
 // SM breakpoint (mobile - default)
 $bds-card-icon-height-sm: 136px;
-$bds-card-icon-padding-sm: 8px;
+$bds-card-icon-padding-sm: $bds-space-sm;  // 8px - spacing('sm')
 $bds-card-icon-icon-size-sm: 56px;
 
 // MD breakpoint (tablet)
 $bds-card-icon-height-md: 140px;
-$bds-card-icon-padding-md: 12px;
+$bds-card-icon-padding-md: $bds-space-md;  // 12px - spacing('md')
 $bds-card-icon-icon-size-md: 60px;
 
 // LG breakpoint (desktop)
 $bds-card-icon-height-lg: 144px;
-$bds-card-icon-padding-lg: 16px;
+$bds-card-icon-padding-lg: $bds-space-lg;  // 16px - spacing('lg')
 $bds-card-icon-icon-size-lg: 64px;
 
 // =============================================================================

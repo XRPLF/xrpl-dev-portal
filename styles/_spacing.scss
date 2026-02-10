@@ -1,0 +1,129 @@
+// =============================================================================
+// BDS Spacing Scale
+// =============================================================================
+// Brand Design System - Centralized spacing tokens
+//
+// Based on 4px base unit with consistent scaling.
+// T-shirt sizing approach: xs, sm, md, lg, xl, 2xl, 3xl, 4xl, etc.
+//
+// Migration Note: This file introduces a centralized spacing system.
+// Existing component variables are preserved as aliases to ensure
+// backward compatibility. New code should use spacing() function or
+// CSS custom properties.
+
+// =============================================================================
+// Spacing Scale Map
+// =============================================================================
+
+$bds-spacing-base: 4px;
+
+$bds-spacing: (
+  'none': 0,
+  'xs':   4px,   // 1 unit
+  'sm':   8px,   // 2 units
+  'md':   12px,  // 3 units
+  'lg':   16px,  // 4 units
+  'xl':   20px,  // 5 units
+  '2xl':  24px,  // 6 units
+  '3xl':  32px,  // 8 units
+  '4xl':  40px,  // 10 units
+  '5xl':  48px,  // 12 units
+  '6xl':  64px,  // 16 units
+  '7xl':  72px,  // 18 units
+  '8xl':  80px,  // 20 units
+);
+
+// =============================================================================
+// Spacing Function
+// =============================================================================
+// Usage: padding: spacing('lg'); // Returns 16px
+
+@function spacing($key) {
+  @if not map-has-key($bds-spacing, $key) {
+    @error "Unknown spacing key: #{$key}. Available keys: #{map-keys($bds-spacing)}";
+  }
+  @return map-get($bds-spacing, $key);
+}
+
+// =============================================================================
+// Core SCSS Variables (for backward compatibility)
+// =============================================================================
+// These provide a single source of truth for commonly used values
+$bds-space-none: spacing('none'); // 0px
+$bds-space-xs: spacing('xs');   // 4px
+$bds-space-sm: spacing('sm');   // 8px
+$bds-space-md: spacing('md');   // 12px
+$bds-space-lg: spacing('lg');   // 16px
+$bds-space-xl: spacing('xl');   // 20px
+$bds-space-2xl: spacing('2xl'); // 24px
+$bds-space-3xl: spacing('3xl'); // 32px
+$bds-space-4xl: spacing('4xl'); // 40px
+$bds-space-5xl: spacing('5xl'); // 48px
+$bds-space-6xl: spacing('6xl'); // 64px
+$bds-space-7xl: spacing('7xl'); // 72px
+$bds-space-8xl: spacing('8xl'); // 80px
+
+// =============================================================================
+// Grid Gutter (Single Source of Truth)
+// =============================================================================
+// Previously duplicated in PageGrid, TileLogo, and pattern files
+
+$bds-grid-gutter: spacing('sm'); // 8px
+
+// =============================================================================
+// Common Responsive Padding Presets
+// =============================================================================
+// Standard card padding pattern used across CardIcon, TextCard, StandardCard
+
+$bds-padding-card-sm: spacing('lg');   // 16px - Mobile
+$bds-padding-card-md: spacing('xl');   // 20px - Tablet
+$bds-padding-card-lg: spacing('2xl');  // 24px - Desktop
+
+// =============================================================================
+// Common Gap Presets
+// =============================================================================
+// Standard gap patterns used across multiple components
+
+// Header gap (between heading and description)
+$bds-gap-header-sm: spacing('sm');  // 8px
+$bds-gap-header-md: spacing('sm');  // 8px
+$bds-gap-header-lg: spacing('lg');  // 16px
+
+// Section gap (between header and content)
+$bds-gap-section-sm: spacing('2xl'); // 24px
+$bds-gap-section-md: spacing('3xl'); // 32px
+$bds-gap-section-lg: spacing('4xl'); // 40px
+
+// =============================================================================
+// Focus Border Width
+// =============================================================================
+
+$bds-focus-border-width: 2px;
+
+// =============================================================================
+// CSS Custom Properties
+// =============================================================================
+// These enable runtime theming and JavaScript access to spacing values
+
+:root {
+  // Spacing scale
+  --bds-space-xs: #{spacing('xs')};
+  --bds-space-sm: #{spacing('sm')};
+  --bds-space-md: #{spacing('md')};
+  --bds-space-lg: #{spacing('lg')};
+  --bds-space-xl: #{spacing('xl')};
+  --bds-space-2xl: #{spacing('2xl')};
+  --bds-space-3xl: #{spacing('3xl')};
+  --bds-space-4xl: #{spacing('4xl')};
+  --bds-space-5xl: #{spacing('5xl')};
+  --bds-space-6xl: #{spacing('6xl')};
+  --bds-space-7xl: #{spacing('7xl')};
+  --bds-space-8xl: #{spacing('8xl')};
+  
+  // Grid gutter
+  --bds-grid-gutter: #{$bds-grid-gutter};
+  
+  // Focus border
+  --bds-focus-border-width: #{$bds-focus-border-width};
+}
+

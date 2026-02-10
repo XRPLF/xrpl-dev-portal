@@ -2,8 +2,9 @@
 // -----------------------------------------------------------------------------
 // A namespaced grid layer that reuses Bootstrap's grid mixins while providing
 // XRPL-specific gutters and container padding.
-
-$bds-grid-gutter: 8px;
+//
+// Note: $bds-grid-gutter is now defined in _spacing.scss as the single source
+// of truth for grid gutter spacing (8px).
 
 // Custom mixin that accounts for gap spacing in width calculations
 @mixin bds-make-col($size, $columns) {
