@@ -106,7 +106,7 @@ const features = [
   },
   {
     title: "DEX Integration",
-    link: "/docs/tutorials/dex/trade-in-the-decentralized-exchange",
+    link: "/docs/tutorials/defi/dex/trade-in-the-decentralized-exchange",
   },
   {
     title: "Cross-chain Interoperability",

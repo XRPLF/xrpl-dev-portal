@@ -27,8 +27,8 @@ You can download the [NFT Modular Tutorials](../../../../_code-samples/nft-modul
 To create a brokered sale, you need a broker account, a Sell Offer with the broker account as its **Destination**, and one or more Buy Offers for the same NFT.
 
 1. Optionally use the [Account Configurator](../../../concepts/accounts/configuring-accounts.md) to create your Broker account.
-2. Use a different issuer account in the [Mint NFT](./mint-and-burn-nfts.md) form to mint a new NFT to sell.
-3. Use the issuer account in the [Transfer NFTs](./transfer-nfts.md) form to create a **Sell Offer** for the NFT with the Broker account as its **Destination**.
+2. Use a different issuer account in the [Mint NFT](./mint-and-burn-nfts-js.md) form to mint a new NFT to sell.
+3. Use the issuer account in the [Transfer NFTs](./transfer-nfts-js.md) form to create a **Sell Offer** for the NFT with the Broker account as its **Destination**.
 4. Use one or more other accounts to create **Buy Offers** for the NFT.
 
 ## Get Accounts

@@ -15,7 +15,7 @@ This tutorial shows you how to create a [single asset vault](../../../../concept
 You can create either a:
 
 - **Public vault**: Anyone can deposit assets.
-- **Private vault**: Only users with valid [Credentials](../../../../concepts/decentralized-storage/credentials) can deposit, managed through [Permissioned Domains](../../../../concepts/tokens/decentralized-exchange/permissioned-domains).
+- **Private vault**: Only users with valid [Credentials](../../../../concepts/decentralized-storage/credentials.md) can deposit, managed through [Permissioned Domains](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md).
 
 The tutorial demonstrates how a financial institution could use a **private vault** to pool lender assets for uncollateralized lending while maintaining regulatory compliance through credential-based access control.
 
@@ -176,12 +176,12 @@ This confirms that you have successfully created an empty single asset vault.
 
 **Concepts**:
   - [Single Asset Vaults](../../../../concepts/tokens/single-asset-vaults.md)
-  - [Credentials](../../../../concepts/decentralized-storage/credentials)
-  - [Permissioned Domains](../../../../concepts/tokens/decentralized-exchange/permissioned-domains)
+  - [Credentials](../../../../concepts/decentralized-storage/credentials.md)
+  - [Permissioned Domains](../../../../concepts/tokens/decentralized-exchange/permissioned-domains.md)
 
 **Tutorials**:
-  - [Issue Credentials](../../../javascript/build-apps/credential-issuing-service.md)
-  - [Create Permissioned Domain](../../../javascript/compliance/create-permissioned-domains.md)
+  - [Issue Credentials](../../../sample-apps/credential-issuing-service-in-javascript.md)
+  - [Create Permissioned Domain](../../../compliance-features/create-permissioned-domains-in-javascript.md)
   - [Deposit Assets into a Vault](./deposit-into-a-vault.md)
 
 **References**:

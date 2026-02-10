@@ -23,7 +23,7 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an [XRP Ledger client library](../../../../references/client-libraries.md), such as **xrpl.js**, installed.
+- Have an [XRP Ledger client library](../../references/client-libraries.md), such as **xrpl.js**, installed.
 
 ## Steps
 
@@ -90,7 +90,7 @@ To get a list of all escrows linked to an account, use the [account_objects meth
 
 ### 5. Define helper function for displaying amounts
 
-With {% amendment-disclaimer name="TokenEscrow" compact=true /%}, escrows can send three types of funds: XRP, [trust line tokens](../../../../concepts/tokens/fungible-tokens/trust-line-tokens.md), or [multi-purpose tokens](../../../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). To help handle all three types of amount object, create a function that takes an unknown amount value from the ledger and returns a string containing a display value that is more human-readable.
+With {% amendment-disclaimer name="TokenEscrow" compact=true /%}, escrows can send three types of funds: XRP, [trust line tokens](../../concepts/tokens/fungible-tokens/trust-line-tokens.md), or [multi-purpose tokens](../../concepts/tokens/fungible-tokens/multi-purpose-tokens.md). To help handle all three types of amount object, create a function that takes an unknown amount value from the ledger and returns a string containing a display value that is more human-readable.
 
 {% admonition type="info" name="Note" %}This sample function provides only the most basic level of formatting for currency amounts. Better user interfaces can and should provide a higher level of parsing, including normalizing currency codes and looking up MPT information.{% /admonition %}
 

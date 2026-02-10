@@ -68,9 +68,9 @@ As a **Loan Broker**, I need to:
 
 | Step                           | Description | Technical Implementation |
 |:-------------------------------|:------------|:-------------------------|
-| Vault Setup                    | The Loan Broker creates a Single Asset Vault to aggregate one type of asset to lend out. They define a [permissioned domain][] to ensure only accounts that meet KYB (Know Your Business) compliance requirements can deposit into the vault. | - [Create Permissioned Domains](../../tutorials/javascript/compliance/create-permissioned-domains.md)<br>- [Create a Single Asset Vault](../../tutorials/how-tos/set-up-lending/use-single-asset-vaults/create-a-single-asset-vault.md) |
-| Lending Protocol Setup         | The Loan Broker sets up the Lending Protocol instance, linking it to the Single Asset Vault they created, and defining parameters such as payment fees. | [Create a Loan Broker](../../tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan-broker.md) |
-| First-loss Capital Maintenance | The Loan Broker deposits first-loss capital into the Lending Protocol to meet the minimum cover required. When there is excess cover, they withdraw first-loss capital. | [Deposit and Withdraw First-Loss Capital](../../tutorials/how-tos/set-up-lending/use-the-lending-protocol/deposit-and-withdraw-cover.md) |
+| Vault Setup                    | The Loan Broker creates a Single Asset Vault to aggregate one type of asset to lend out. They define a [permissioned domain][] to ensure only accounts that meet KYB (Know Your Business) compliance requirements can deposit into the vault. | - [Create Permissioned Domains](../../tutorials/compliance-features/create-permissioned-domains-in-javascript.md)<br>- [Create a Single Asset Vault](../../tutorials/defi/lending/use-single-asset-vaults/create-a-single-asset-vault.md) |
+| Lending Protocol Setup         | The Loan Broker sets up the Lending Protocol instance, linking it to the Single Asset Vault they created, and defining parameters such as payment fees. | [Create a Loan Broker](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan-broker.md) |
+| First-loss Capital Maintenance | The Loan Broker deposits first-loss capital into the Lending Protocol to meet the minimum cover required. When there is excess cover, they withdraw first-loss capital. | [Deposit and Withdraw First-Loss Capital](../../tutorials/defi/lending/use-the-lending-protocol/deposit-and-withdraw-cover.md) |
 {% /tab %}
 
 {% tab label="Lender" %}
@@ -80,9 +80,9 @@ As a **Lender**, I need to:
 
 | Step            | Description | Technical Implementation |
 |:----------------|:------------|:-------------------------|
-| Onboarding      | The Lender triggers a verification workflow with the Loan Broker managing the Lending Protocol. The Loan Broker can issue their own credentials or utilize a credential issuer. Upon successful KYB, a credential is issued and the Lender accepts the credential. | [Build a Credential Issuing Service](../../tutorials/javascript/build-apps/credential-issuing-service.md) |
-| Deposit Asset   | The Lender deposits assets into a Single Asset Vault to lend out. Vault shares are minted and sent back to the Lender, representing their stake in the vault. | [Deposit into a Vault](../../tutorials/how-tos/set-up-lending/use-single-asset-vaults/deposit-into-a-vault.md) |
-| Withdraw Asset  | Vault shares are yield-bearing assets; the vault collects interest and fees on loans, which increases the underlying value of each vault share. The Lender collects their deposit (plus yield) by redeeming vault shares. | [Withdraw from a Vault](../../tutorials/how-tos/set-up-lending/use-single-asset-vaults/withdraw-from-a-vault.md) |
+| Onboarding      | The Lender triggers a verification workflow with the Loan Broker managing the Lending Protocol. The Loan Broker can issue their own credentials or utilize a credential issuer. Upon successful KYB, a credential is issued and the Lender accepts the credential. | [Build a Credential Issuing Service](../../tutorials/sample-apps/credential-issuing-service-in-javascript.md) |
+| Deposit Asset   | The Lender deposits assets into a Single Asset Vault to lend out. Vault shares are minted and sent back to the Lender, representing their stake in the vault. | [Deposit into a Vault](../../tutorials/defi/lending/use-single-asset-vaults/deposit-into-a-vault.md) |
+| Withdraw Asset  | Vault shares are yield-bearing assets; the vault collects interest and fees on loans, which increases the underlying value of each vault share. The Lender collects their deposit (plus yield) by redeeming vault shares. | [Withdraw from a Vault](../../tutorials/defi/lending/use-single-asset-vaults/withdraw-from-a-vault.md) |
 {% /tab %}
 
 {% tab label="Borrower" %}
@@ -92,9 +92,9 @@ As a **Borrower**, I need to:
 
 | Step             | Description | Technical Implementation |
 |:-----------------|:------------|:-------------------------|
-| Onboarding       | The Borrower triggers a verification workflow with the Loan Broker managing the Lending Protocol. The Loan Broker can issue their own credentials or utilize a credential issuer. Upon successful KYB, a credential is issued and the Borrower accepts the credential. | [Build a Credential Issuing Service](../../tutorials/javascript/build-apps/credential-issuing-service.md) |
-| Loan Application | The Borrower applies for a loan with the Loan Broker. Both parties agree on the terms and co-sign the loan. | [Create a Loan](../../tutorials/how-tos/set-up-lending/use-the-lending-protocol/create-a-loan.md) |
-| Repayment        | The Borrower makes payments on principal, interest, and fees according to the loan agreement. | [Pay Off a Loan](../../tutorials/how-tos/set-up-lending/use-the-lending-protocol/pay-off-a-loan.md) |
+| Onboarding       | The Borrower triggers a verification workflow with the Loan Broker managing the Lending Protocol. The Loan Broker can issue their own credentials or utilize a credential issuer. Upon successful KYB, a credential is issued and the Borrower accepts the credential. | [Build a Credential Issuing Service](../../tutorials/sample-apps/credential-issuing-service-in-javascript.md) |
+| Loan Application | The Borrower applies for a loan with the Loan Broker. Both parties agree on the terms and co-sign the loan. | [Create a Loan](../../tutorials/defi/lending/use-the-lending-protocol/create-a-loan.md) |
+| Repayment        | The Borrower makes payments on principal, interest, and fees according to the loan agreement. | [Pay Off a Loan](../../tutorials/defi/lending/use-the-lending-protocol/pay-off-a-loan.md) |
 {% /tab %}
 {% /tabs %}
 

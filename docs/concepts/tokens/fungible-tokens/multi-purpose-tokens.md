@@ -196,7 +196,7 @@ The data type that holds MPT balances has a valid range of **0** to **2<sup>63</
 
 - **Tutorial**
 
-    - [Sending MPTs](../../../tutorials/tokens/sending-mpts-in-javascript.md)
+    - [Sending MPTs](../../../tutorials/tokens/mpts/sending-mpts-in-javascript.md)
 
 - **References:**
     - [MPToken](../../../references/protocol/ledger-data/ledger-entry-types/mptoken.md)

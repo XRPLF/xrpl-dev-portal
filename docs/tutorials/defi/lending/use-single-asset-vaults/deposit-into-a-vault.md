@@ -32,7 +32,7 @@ By the end of this tutorial, you will be able to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have access to an existing vault. This tutorial uses a preconfigured vault. To create your own vault, see [Create a Single Asset Vault](./create-a-single-asset-vault.md).
+- Have access to an existing vault. This tutorial uses a preconfigured vault. To create your own vault, see [Create a Single Asset Vault](create-a-single-asset-vault.md).
 - Have an XRP Ledger client library set up in your development environment. This page provides examples for the following:
   - **JavaScript** with the [xrpl.js library][]. See [Get Started Using JavaScript][] for setup steps.
   - **Python** with the [xrpl-py library][]. See [Get Started Using Python][] for setup steps.

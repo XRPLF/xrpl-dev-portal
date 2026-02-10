@@ -48,7 +48,7 @@ For more information about Checks in the XRP Ledger, see:
     - [CheckCreate][]
     - [CheckCash][]
     - [CheckCancel][]
-- [Checks Tutorials](../../tutorials/how-tos/use-specialized-payment-types/use-checks/index.md)
+- Checks Tutorials:
     - [Send a Check](../../tutorials/payments/send-a-check.md)
     - [Look up Checks](../../tutorials/payments/look-up-checks.md)
     - [Cash a Check for an exact amount](../../tutorials/payments/cash-a-check-for-an-exact-amount.md)
@@ -60,6 +60,6 @@ For more information about related features, see:
 
 * [Deposit Authorization](../accounts/depositauth.md)
 * [Escrow](escrow.md)
-* [Payment Channels Tutorial](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md)
+* [Payment Channels Tutorial](../../tutorials/payments/use-payment-channels.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
