@@ -39,7 +39,6 @@ rippledサーバの管理には、以下のメソッドを使用します。
 * **[`connect`](peer-management-methods/connect.md)** - rippledサーバを特定のピアに強制的に接続します。
 * **[`ledger_accept`](server-control-methods/ledger_accept.md)** - スタンドアロンモードでレジャーを閉鎖し、次のレジャーに進みます。
 * **[`stop`](server-control-methods/stop.md)** - rippledサーバをシャットダウンします。
-* **[`validation_seed`](server-control-methods/validation_seed.md)** - 検証に使用するキーを一時的に設定します。
 
 
 ## [ステータスおよびデバッグメソッド](status-and-debugging-methods/index.md)

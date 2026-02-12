@@ -1,6 +1,4 @@
 ---
-parent: concepts.html
-html: tokens.html
 seo:
     description: XRP Ledger上でデジタルな価値を表すトークンを作成することができます。
 labels:
@@ -55,24 +53,5 @@ XRP Ledgerにおけるトークンは、[XRPと異なる性質](../../references
 発行者は、ユーザがトークンを送金する際に自動で差し引かれる「送金手数料」(transfer-fees.html)を設定することができます。発行者は、自分のトークンを含む取引レートの[ティックサイズ](decentralized-exchange/ticksize.md)を定義することもできます。発行者と一般アカウントのどちらも、トラストラインを[フリーズ](fungible-tokens/freezes.md)することができ、トラストライン内のトークンの使用方法を制限することができます。( XRPにはこのいずれも適用されません。)
 
 トークン発行の技術的な手順については、[代替可能トークンの発行](../../tutorials/tokens/fungible-tokens/issue-a-fungible-token.md) をご覧ください。
-
-## 関連項目
-
-- **コンセプト:**
-  - [XRP?](../../introduction/what-is-xrp.md)
-  - [クロスカレンシー支払い](../payment-types/cross-currency-payments.md)
-  - [分散型取引所](decentralized-exchange/index.md)
-- **チュートリアル:**
-  - [代替可能トークンの発行](../../tutorials/tokens/fungible-tokens/issue-a-fungible-token.md)
-  - [XRP Ledgerゲートウェイの開設](../../use-cases/tokenization/stablecoin-issuer.md)
-  - [トランザクションの結果の確認](../transactions/finality-of-results/look-up-transaction-results.md)
-  - [専門化した支払いタイプの使用](../../tutorials/how-tos/use-specialized-payment-types/index.md)
-- **リファレンス:**
-  - [Paymentトランザクション][]
-  - [TrustSetトランザクション][]
-  - [RippleStateオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)
-  - [account_linesメソッド][]
-  - [account_currenciesメソッド][]
-  - [gateway_balancesメソッド][]
 
 {% raw-partial file="/@l10n/ja/docs/_snippets/common-links.md" /%}
