@@ -112,6 +112,6 @@ For more information about Escrow in the XRP Ledger, see the following:
     - [EscrowFinish transaction][]
     - [EscrowCancel transaction][]
 - [Ledger Reference](../../references/protocol/ledger-data/index.md)
-    - [Escrow object](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
+    - [Escrow entry][]
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
