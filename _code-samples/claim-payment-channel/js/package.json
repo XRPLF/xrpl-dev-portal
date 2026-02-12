@@ -1,0 +1,13 @@
+{
+    "name": "claim-payment-channel",
+    "license": "MIT",
+    "dependencies": {
+        "xrpl": "^4.5.0"
+    },
+    "devDependencies": {
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.0",
+        "@types/node": "^20.0.0"
+    }
+}
+

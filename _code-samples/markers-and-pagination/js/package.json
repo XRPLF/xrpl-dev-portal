@@ -1,0 +1,8 @@
+{
+    "name": "markers-and-pagination",
+    "license": "MIT",
+    "dependencies": {
+        "xrpl": "^4.5.0"
+    }
+}
+

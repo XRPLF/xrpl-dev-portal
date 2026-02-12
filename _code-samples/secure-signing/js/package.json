@@ -1,0 +1,8 @@
+{
+    "name": "secure-signing",
+    "license": "MIT",
+    "dependencies": {
+        "xrpl": "^4.5.0"
+    }
+}
+
