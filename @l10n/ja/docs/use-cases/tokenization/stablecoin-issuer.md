@@ -183,7 +183,7 @@ Clawbackは、ステーブルコインの配布を開始する前に選択でき
 
 {% admonition type="warning" name="注意" %}ブラックホール済アカウントはトランザクションを送信する手段を持たないため、その後アカウントに関する設定を更新したり、メンテナンスを行ったりすることはできません！{% /admonition %}
 
-[マスターキーペアの無効化](../../tutorials/how-tos/manage-account-settings/disable-master-key-pair.md)をご覧ください。
+[マスターキーペアの無効化](../../tutorials/best-practices/key-management/disable-master-key-pair.md)をご覧ください。
 
 ### 信頼できるトランザクションの送信
 

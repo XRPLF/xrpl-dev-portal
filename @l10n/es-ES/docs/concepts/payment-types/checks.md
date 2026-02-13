@@ -51,7 +51,7 @@ Para más información sobre Cheques en el XRP Ledger, ver:
     - [CheckCancel][]
 - **Tutoriales de cheques:**
     - [Enviar un cheque](/docs/tutorials/payments/send-a-check.md)
-    - [Buscar cheques](/docs/tutorials/ /how-tos/use-specialized-payment-types/use-checks/look-up-checks.md)
+    - [Buscar cheques](/docs/tutorials/payments/look-up-checks.md)
     - [Canjear un cheque por la cantidad exacta](/docs/tutorials/payments/cash-a-check-for-an-exact-amount.md)
     - [Canjear un cheque por una cantidad flexible](/docs/tutorials/payments/cash-a-check-for-a-flexible-amount.md)
     - [Cancelar un cheque](/docs/tutorials/payments/cancel-a-check.md)
