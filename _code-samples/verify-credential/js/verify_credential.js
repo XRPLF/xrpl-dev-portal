@@ -1,10 +1,10 @@
 import { Client, rippleTimeToISOTime, convertStringToHex } from "xrpl"
 
-const client = new Client("wss://s.devnet.rippletest.net:51233")
+const client = new Client("wss://xrplcluster.com")
 await client.connect()
 
-const SUBJECT_ADDRESS = "rsYhHbanGpnYe3M6bsaMeJT5jnLTfDEzoA"
-const ISSUER_ADDRESS = "rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS"
+const SUBJECT_ADDRESS = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+const ISSUER_ADDRESS = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
 const CREDENTIAL_TYPE = convertStringToHex("my_credential").toUpperCase()
 
 // Look up Credential ledger entry --------------------------------------------

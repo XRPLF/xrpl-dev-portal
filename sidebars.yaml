@@ -303,8 +303,7 @@
           expanded: false
           items:
             - page: docs/tutorials/compliance-features/require-destination-tags.md
-            - page: docs/tutorials/compliance-features/verify-credentials-in-python.md
-            - page: docs/tutorials/compliance-features/verify-credentials-javascript.md
+            - page: docs/tutorials/compliance-features/verify-credentials.md
             - page: docs/tutorials/compliance-features/create-permissioned-domains-in-javascript.md
         - group: Programmability
           groupTranslationKey: sidebar.docs.tutorials.programmability
