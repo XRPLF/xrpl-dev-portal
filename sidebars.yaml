@@ -189,6 +189,7 @@
       labelTranslationKey: sidebar.docs.tutorials
       expanded: false
       items:
+        - page: docs/tutorials/public-servers.md
         - group: Get Started
           groupTranslationKey: sidebar.docs.tutorials.getStarted
           expanded: false
