@@ -2,7 +2,7 @@
 seo:
     description: Build a credential issuing microservice in Python.
 ---
-# Build a Credential Issuing Service
+# Build a Credential Issuing Service in Python
 _(Requires the Credentials amendment. {% not-enabled /%})_
 
 This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Flask](https://flask.palletsprojects.com/) framework for Python.
