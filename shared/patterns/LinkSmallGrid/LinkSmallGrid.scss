@@ -8,11 +8,12 @@
 // =============================================================================
 // Design Tokens
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
 
 // Spacing tokens
-$bds-link-small-grid-spacing-base: 24px;           // Vertical section padding
-$bds-link-small-grid-spacing-md: 32px;           // Vertical section padding
-$bds-link-small-grid-spacing-lg: 40px;           // Vertical section padding
+$bds-link-small-grid-spacing-base: $bds-space-2xl;   // 24px - spacing('2xl')
+$bds-link-small-grid-spacing-md: $bds-space-3xl;     // 32px - spacing('3xl')
+$bds-link-small-grid-spacing-lg: $bds-space-4xl;     // 40px - spacing('4xl')
 
 // Typography tokens (using existing typography classes)
 // - Heading: h-md class (handled in component)
@@ -46,16 +47,16 @@ $bds-link-small-grid-spacing-lg: 40px;           // Vertical section padding
 // =============================================================================
 
 .bds-link-small-grid__header {
-  gap: 8px;
+  gap: $bds-space-sm; // 8px - spacing('sm')
   margin-bottom: $bds-link-small-grid-spacing-base;
 
   @include media-breakpoint-up(md) {
-    gap: 16px;
+    gap: $bds-space-lg; // 16px - spacing('lg')
     margin-bottom: $bds-link-small-grid-spacing-md;
   }
 
   @include media-breakpoint-up(lg) {
-    gap: 16px;
+    gap: $bds-space-lg; // 16px - spacing('lg')
     margin-bottom: $bds-link-small-grid-spacing-lg;
   }
 }

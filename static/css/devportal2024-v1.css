@@ -1,4 +1,21 @@
 @charset "UTF-8";
+:root {
+  --bds-space-xs: 4px;
+  --bds-space-sm: 8px;
+  --bds-space-md: 12px;
+  --bds-space-lg: 16px;
+  --bds-space-xl: 20px;
+  --bds-space-2xl: 24px;
+  --bds-space-3xl: 32px;
+  --bds-space-4xl: 40px;
+  --bds-space-5xl: 48px;
+  --bds-space-6xl: 64px;
+  --bds-space-7xl: 72px;
+  --bds-space-8xl: 80px;
+  --bds-grid-gutter: 8px;
+  --bds-focus-border-width: 2px;
+}
+
 @font-face {
   font-family: "Booton";
   font-style: normal;
@@ -20100,7 +20117,7 @@ html.dark .bds-featured-video-hero {
 }
 @media (min-width: 992px) {
   .bds-featured-video-hero__video-container {
-    margin-top: 0px;
+    margin-top: 0;
   }
 }
 .bds-featured-video-hero__video {
@@ -20162,7 +20179,7 @@ html.dark .bds-header-hero-primary-media {
 }
 @media (min-width: 992px) {
   .bds-header-hero-primary-media__headline-container {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 .bds-header-hero-primary-media__headline {
@@ -20555,7 +20572,7 @@ html.light .bds-hero-split-media--accent .bds-hero-split-media__subtitle {
 
 @media (min-width: 576px) {
   .bds-button-group--gap-none {
-    gap: 0px;
+    gap: 0;
   }
 }
 
@@ -22927,7 +22944,7 @@ html.light svg[fill=black] g[stroke="rgb(255,255,0)"] {
   stroke: #DC466F;
 }
 html.light svg[fill=none] rect[fill="#111112"] {
-  fill: #F0F3F7;
+  fill: #CAD4DF;
 }
 html.light svg[fill=none] path[fill=white] {
   fill: #141414;
@@ -28844,7 +28861,7 @@ html.light .form-group .ds-input:focus {
 }
 html.light .list-group-item {
   border-color: #232325;
-  background-color: #F0F3F7;
+  background-color: #CAD4DF;
 }
 html.light .list-group-item.disabled {
   color: #8A919A;
@@ -28906,7 +28923,7 @@ html.light .navbar-dark .navbar-nav .nav-link.btn-outline-secondary:not(:disable
   background-color: transparent;
 }
 html.light .breadcrumb {
-  background: #F0F3F7;
+  background: #CAD4DF;
 }
 html.light .breadcrumb-item a {
   color: #454549;
@@ -28915,7 +28932,7 @@ html.light .breadcrumb-item a:hover {
   color: #7649E3;
 }
 html.light .top-nav {
-  background: #F0F3F7;
+  background: #CAD4DF;
 }
 html.light .top-nav #topnav-pages .nav-link {
   color: #141414;
@@ -29213,7 +29230,7 @@ html.light #top-exchanges #exch-lmax {
   content: url("../img/exchanges/lightmode/lmax.png");
 }
 html.light .timeline-dot {
-  background-color: #F0F3F7;
+  background-color: #CAD4DF;
 }
 html.light .page-uses .card-body {
   background: #FFFFFF;

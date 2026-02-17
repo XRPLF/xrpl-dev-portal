@@ -25,28 +25,28 @@
 // =============================================================================
 // Design Tokens (from Figma)
 // =============================================================================
-
-$bds-grid-gutter: 8px;
+// Note: Uses centralized spacing tokens from _spacing.scss.
+// $bds-grid-gutter is defined in _spacing.scss (8px).
 
 // Spacing - Header gap (between heading and description)
-$bds-cards-featured-header-gap-sm: 8px;         // Mobile: 8px
-$bds-cards-featured-header-gap-md: 8px;         // Tablet: 8px
-$bds-cards-featured-header-gap-lg: 16px;        // Desktop: 16px
+$bds-cards-featured-header-gap-sm: $bds-space-sm;   // 8px - spacing('sm')
+$bds-cards-featured-header-gap-md: $bds-space-sm;   // 8px - spacing('sm')
+$bds-cards-featured-header-gap-lg: $bds-space-lg;   // 16px - spacing('lg')
 
 // Spacing - Section gap (between header and cards)
-$bds-cards-featured-section-gap-sm: 24px;       // Mobile
-$bds-cards-featured-section-gap-md: 32px;       // Tablet
-$bds-cards-featured-section-gap-lg: 40px;       // Desktop
+$bds-cards-featured-section-gap-sm: $bds-space-2xl; // 24px - spacing('2xl')
+$bds-cards-featured-section-gap-md: $bds-space-3xl; // 32px - spacing('3xl')
+$bds-cards-featured-section-gap-lg: $bds-space-4xl; // 40px - spacing('4xl')
 
 // Spacing - Cards gap
-$bds-cards-featured-cards-gap-sm: 48px;         // Mobile: 48px vertical
-$bds-cards-featured-cards-gap-md: 8px;          // Tablet: 8px
-$bds-cards-featured-cards-gap-lg: 8px;          // Desktop: 8px
+$bds-cards-featured-cards-gap-sm: $bds-space-5xl;   // 48px - spacing('5xl')
+$bds-cards-featured-cards-gap-md: $bds-space-sm;    // 8px - spacing('sm')
+$bds-cards-featured-cards-gap-lg: $bds-space-sm;    // 8px - spacing('sm')
 
 // Spacing - Section padding (vertical)
-$bds-cards-featured-padding-y-sm: 48px;         // Mobile
-$bds-cards-featured-padding-y-md: 64px;         // Tablet
-$bds-cards-featured-padding-y-lg: 80px;         // Desktop
+$bds-cards-featured-padding-y-sm: $bds-space-5xl;   // 48px - spacing('5xl')
+$bds-cards-featured-padding-y-md: $bds-space-6xl;   // 64px - spacing('6xl')
+$bds-cards-featured-padding-y-lg: $bds-space-8xl;   // 80px - spacing('8xl')
 
 // Spacing - Section padding (horizontal) - handled by PageGrid
 
@@ -114,21 +114,21 @@ $bds-cards-featured-description-color-dark: $white;  // #FFFFFF - Neutral white
   display: grid;
   grid-template-columns: 1fr;
   column-gap: $bds-cards-featured-cards-gap-sm;
-  row-gap: 48px;
+  row-gap: $bds-space-5xl; // 48px - spacing('5xl')
   width: 100%;
   margin-top: $bds-cards-featured-section-gap-sm;
 
   @include media-breakpoint-up(md) {
     grid-template-columns: repeat(2, 1fr);
     column-gap: $bds-cards-featured-cards-gap-md;
-    row-gap: 52px;
+    row-gap: 52px; // Non-standard value, kept as-is
     margin-top: $bds-cards-featured-section-gap-md;
   }
 
   @include media-breakpoint-up(lg) {
     grid-template-columns: repeat(3, 1fr);
     column-gap: $bds-cards-featured-cards-gap-lg;
-    row-gap: 56px;
+    row-gap: 56px; // Non-standard value, kept as-is
     margin-top: $bds-cards-featured-section-gap-lg;
   }
 }

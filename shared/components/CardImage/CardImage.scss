@@ -18,6 +18,8 @@
 // =============================================================================
 // Design Tokens (from Figma)
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss where applicable.
+// Component-specific values (heights, dimensions) remain local.
 
 // Card dimensions - LG (Large) variant (default, ≥992px)
 $bds-card-image-height-lg: 620px;
@@ -32,29 +34,29 @@ $bds-card-image-height-sm: 536px;
 $bds-card-image-image-height-sm: 268px;
 
 // Spacing - LG (Large) variant (default, ≥992px)
-$bds-card-image-gap-lg: 24px;              // Gap between image and content
-$bds-card-image-title-gap-lg: 12px;        // Gap between title and subtitle
-$bds-card-image-content-padding: 8px;      // Horizontal padding for content (same for all)
-$bds-card-image-button-margin-lg: 32px;    // Margin above button
+$bds-card-image-gap-lg: $bds-space-2xl;           // 24px - Gap between image and content
+$bds-card-image-title-gap-lg: $bds-space-md;      // 12px - Gap between title and subtitle
+$bds-card-image-content-padding: $bds-space-sm;   // 8px - Horizontal padding for content
+$bds-card-image-button-margin-lg: $bds-space-3xl; // 32px - Margin above button
 
 // Spacing - MD (Medium) variant (576px - 991px)
-$bds-card-image-gap-md: 16px;              // Gap between image and content
-$bds-card-image-title-gap-md: 8px;         // Gap between title and subtitle
-$bds-card-image-button-margin-md: 24px;    // Margin above button
+$bds-card-image-gap-md: $bds-space-lg;            // 16px - Gap between image and content
+$bds-card-image-title-gap-md: $bds-space-sm;      // 8px - Gap between title and subtitle
+$bds-card-image-button-margin-md: $bds-space-2xl; // 24px - Margin above button
 
 // Spacing - SM (Small) variant (<576px)
-$bds-card-image-gap-sm: 16px;              // Gap between image and content
-$bds-card-image-title-gap-sm: 8px;         // Gap between title and subtitle
-$bds-card-image-button-margin-sm: 24px;    // Margin above button
+$bds-card-image-gap-sm: $bds-space-lg;            // 16px - Gap between image and content
+$bds-card-image-title-gap-sm: $bds-space-sm;      // 8px - Gap between title and subtitle
+$bds-card-image-button-margin-sm: $bds-space-2xl; // 24px - Margin above button
 
 // Colors
 $bds-card-image-bg: $white;
 $bds-card-image-image-bg: $gray-100;
 $bds-card-image-text-color: #141414;    // Neutral black from Figma
 
-// Animation
-$bds-card-image-transition-duration: 150ms;
-$bds-card-image-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+// Animation - uses centralized tokens from _animations.scss
+$bds-card-image-transition-duration: 150ms; // Component-specific (faster than default)
+$bds-card-image-transition-timing: $bds-transition-timing;
 
 // =============================================================================
 // Base Card Styles

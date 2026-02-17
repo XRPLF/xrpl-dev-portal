@@ -1,23 +1,28 @@
+// =============================================================================
+// BDS StandardCard Component Styles
+// =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss.
+
 .bds-standard-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
+  padding: $bds-space-lg; // 16px - spacing('lg')
   width: 100%;
   height: 100%; // Stretch to fill parent column (ensures equal heights in grid rows)
   // aspect-ratio sets a preferred ratio but allows growth if content requires more space
   // The card will be at least this tall, but can grow taller if needed
   aspect-ratio: 4/3;
-  gap: 16px;
+  gap: $bds-space-lg; // 16px - spacing('lg')
 
   @include media-breakpoint-up(md) {
     aspect-ratio: 1;
-    padding: 20px;
+    padding: $bds-space-xl; // 20px - spacing('xl')
   }
 
 
   @include media-breakpoint-up(lg) {
-    padding: 24px;
+    padding: $bds-space-2xl; // 24px - spacing('2xl')
   }
 
   &#{&}--neutral {
@@ -39,13 +44,13 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: $bds-space-sm; // 8px - spacing('sm')
     width: 100%;
     color: $bds-btn-neutral-black;
 
 
     @include media-breakpoint-up(lg) {
-      gap: 16px;
+      gap: $bds-space-lg; // 16px - spacing('lg')
     }
   }
 

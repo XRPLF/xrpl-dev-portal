@@ -21,18 +21,20 @@
 // =============================================================================
 // Design Tokens
 // =============================================================================
+// Note: Uses centralized spacing tokens from _spacing.scss where applicable.
+// Component-specific values (dimensions, icon sizes) remain local.
 
 // Dimensions (from Figma design spec)
 $bds-card-offgrid-width: 400px;
 $bds-card-offgrid-height: 480px;
-$bds-card-offgrid-padding: 24px;
+$bds-card-offgrid-padding: $bds-space-2xl;    // 24px - spacing('2xl')
 $bds-card-offgrid-icon-container: 84px;
 $bds-card-offgrid-icon-size: 68px;
-$bds-card-offgrid-content-gap: 40px;
+$bds-card-offgrid-content-gap: $bds-space-4xl; // 40px - spacing('4xl')
 
-// Animation (from Figma design spec)
-$bds-card-offgrid-transition-duration: 200ms;
-$bds-card-offgrid-transition-timing: cubic-bezier(0.98, 0.12, 0.12, 0.98);
+// Animation - uses centralized tokens from _animations.scss
+$bds-card-offgrid-transition-duration: $bds-transition-duration; // 200ms
+$bds-card-offgrid-transition-timing: $bds-transition-timing;
 
 // Typography - Title (now using .subhead-lg-l from _font.scss)
 // Typography - Description (now using .body-l from _font.scss)
