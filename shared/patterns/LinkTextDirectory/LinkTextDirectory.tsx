@@ -89,7 +89,7 @@ export const LinkTextDirectory: React.FC<LinkTextDirectoryProps> = ({
           <ul className="list-none pl-0">
           {cards.map((card, index) => (
             <LinkTextCard
-              key={index}
+              key={card.heading || index}
               index={index}
               heading={card.heading}
               description={card.description}

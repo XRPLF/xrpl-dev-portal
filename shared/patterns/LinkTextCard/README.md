@@ -99,44 +99,54 @@ LinkTextCard is a pattern component designed for sequential content presentation
 ## Component Structure
 
 ```tsx
-<div className="bds-link-text-card">
-  <p className="body-l">01</p>
-  <h3 className="subhead-lg-l">Fast Settlement and Low Fees</h3>
-  <p className="body-l">Settle transactions in 3-5 seconds...</p>
-  <ButtonGroup buttons={[...]} color="green" />
-</div>
+<li className="bds-link-text-card">
+  <div className="bds-link-text-card__header">
+    <p className="body-l">01</p>
+    <h5 className="sh-lg-l">Fast Settlement and Low Fees</h5>
+  </div>
+  <div className="bds-link-text-card__content">
+    <p className="body-l">Settle transactions in 3-5 seconds...</p>
+    <ButtonGroup buttons={[...]} color="green" />
+  </div>
+</li>
 ```
 
 **Key Design Decisions:**
-- **Flat Structure**: No nested wrapper divs for minimal DOM depth
+- **List Item Element**: Renders as `<li>` for semantic list markup
+- **Two-Section Layout**: Header (number + heading) and Content (description + buttons)
 - **Border-Top Divider**: Applied directly to container (no separate element)
-- **Typography Classes**: Uses existing `body-l` and `subhead-lg-l` classes
+- **Typography Classes**: Uses existing `body-l` and `sh-lg-l` classes
 - **Flexbox Gap**: Responsive spacing via gap property
+- **75% Width at MD+**: Content is constrained to 75% width on tablet and desktop
 
 ## Responsive Spacing
 
-| Breakpoint | Gap | Content Gap | Padding Top |
-|------------|-----|-------------|-------------|
-| Base (< 576px) | 8px | 24px | 8px |
-| MD (576px - 991px) | 12px | 32px | 12px |
-| LG (≥ 992px) | 16px | 40px | 16px |
+| Breakpoint | Card Gap | Header Gap | Content Gap | Padding Top | Padding Bottom |
+|------------|----------|------------|-------------|-------------|----------------|
+| Base (< 576px) | 24px | 8px | 16px | 8px | 24px |
+| MD (576px - 991px) | 32px | 12px | 24px | 12px | 32px |
+| LG (≥ 992px) | 40px | 16px | 32px | 16px | 40px |
 
-**Gap**: Space between number, heading, description, and buttons  
-**Content Gap**: Additional space between description and ButtonGroup  
+**Card Gap**: Space between header and content sections
+**Header Gap**: Space between number and heading
+**Content Gap**: Space between description and ButtonGroup
 **Padding Top**: Space from top border to content
+**Padding Bottom**: Space after content (removed on last card)
 
 ## Styling
 
 ### CSS Classes
 
-- `.bds-link-text-card` - Main container with flexbox layout
-- Leverages existing typography utilities: `body-l`, `subhead-lg-l`
+- `.bds-link-text-card` - Main list item container with flexbox layout and border-top
+- `.bds-link-text-card__header` - Header section (number + heading)
+- `.bds-link-text-card__content` - Content section (description + buttons)
+- Typography utilities: `body-l`, `sh-lg-l`
 
-### Color Variables (Light/Dark Mode)
+### Color Variables
 
-- `--neutral-300` - Border color
-- `--neutral-500` - Number text color
-- Heading and description colors handled by typography classes
+- `$gray-300` - Border color (light mode)
+- `$gray-500` - Number text color
+- `$white` - Text color in dark mode (applied to entire card)
 
 ## Number Formatting
 
@@ -191,6 +201,9 @@ Part of the Brand Design System (BDS) with `bds-` namespace prefix.
 
 ## Accessibility
 
-- Semantic HTML with proper heading hierarchy (`<h3>`)
+- Semantic HTML: Renders as `<li>` for use within `<ul>` lists
+- Heading hierarchy: Uses `<h5>` for card headings (adjust based on parent context)
 - Button labels should be descriptive
 - Maintains focus order: number → heading → description → buttons
+
+**Note on Heading Semantics**: The component uses `<h5>` inside a list item, which is acceptable when the parent section has appropriate heading hierarchy. The heading level can be adjusted based on your specific use case.

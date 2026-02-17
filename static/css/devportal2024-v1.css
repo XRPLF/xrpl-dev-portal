@@ -22365,12 +22365,6 @@ html.dark .bds-tile-link--disabled.bds-tile-link--lilac .bds-tile-link__arrow {
 html.dark .bds-link-text-card {
   color: #FFFFFF;
 }
-html.dark .bds-link-text-card h5, html.dark .bds-link-text-card .h5 {
-  color: #FFFFFF;
-}
-html.dark .bds-link-text-card p {
-  color: #FFFFFF;
-}
 
 .bds-link-text-card__header {
   display: flex;
@@ -22435,14 +22429,10 @@ html.dark .bds-link-text-card p {
 html.dark .bds-link-text-directory {
   color: #FFFFFF;
 }
-html.dark .bds-link-text-directory h2, html.dark .bds-link-text-directory .h2 {
-  color: #FFFFFF;
-}
-html.dark .bds-link-text-directory p {
-  color: #FFFFFF;
-}
 
 .bds-link-text-directory__header {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
   margin-bottom: 24px;
 }
@@ -22458,15 +22448,7 @@ html.dark .bds-link-text-directory p {
     margin-bottom: 40px;
   }
 }
-.bds-link-text-directory__header h2, .bds-link-text-directory__header .h2 {
-  margin-bottom: 8px;
-}
-@media (min-width: 992px) {
-  .bds-link-text-directory__header h2, .bds-link-text-directory__header .h2 {
-    margin-bottom: 16px;
-  }
-}
-.bds-link-text-directory__header p {
+.bds-link-text-directory__header h2, .bds-link-text-directory__header .h2, .bds-link-text-directory__header p {
   margin-bottom: 0;
 }
 

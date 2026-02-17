@@ -50,12 +50,6 @@ $bds-link-text-directory-header-margin-lg: 40px;
   }
   @include bds-theme-mode(dark) {
     color: $white;
-    h2 {
-      color: $white;
-    }
-    p {
-      color: $white;
-    }
   }
 }
 
@@ -64,6 +58,8 @@ $bds-link-text-directory-header-margin-lg: 40px;
 // =============================================================================
 
 .bds-link-text-directory__header {
+  display: flex;
+  flex-direction: column;
   gap: $bds-link-text-directory-header-gap-base;
   margin-bottom: $bds-link-text-directory-header-margin-base;
 
@@ -76,14 +72,7 @@ $bds-link-text-directory-header-margin-lg: 40px;
     gap: $bds-link-text-directory-header-gap-lg;
     margin-bottom: $bds-link-text-directory-header-margin-lg;
   }
-  h2 {
-    margin-bottom: 8px;
-
-    @include media-breakpoint-up(lg) {
-      margin-bottom: 16px;
-    }
-  }
-  p {
+  h2, p {
     margin-bottom: 0;
   }
 }

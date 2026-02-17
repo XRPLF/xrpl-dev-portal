@@ -119,59 +119,74 @@ const features = [
 ## Component Structure
 
 ```tsx
-<section className="bds-link-text-directory">
-  <div className="bds-link-text-directory__header">
-    <h2 className="h-md">{heading}</h2>
-    <p className="body-l">{description}</p>
-  </div>
-  
-  <div className="bds-link-text-directory__list">
-    {cards.map((card, index) => (
-      <LinkTextCard
-        index={index}
-        heading={card.heading}
-        description={card.description}
-        buttons={card.buttons}
-      />
-    ))}
-  </div>
-</section>
+<PageGrid className="bds-link-text-directory">
+  <PageGridRow>
+    <PageGridCol className="bds-link-text-directory__header" span={{ base: 12, md: 6, lg: 8 }}>
+      <h2 className="h-md">{heading}</h2>
+      <p className="body-l">{description}</p>
+    </PageGridCol>
+  </PageGridRow>
+
+  <PageGridRow>
+    <PageGridCol span={{ base: 12, md: 8, lg: 8 }} offset={{ lg: 4 }}>
+      <ul>
+        {cards.map((card, index) => (
+          <LinkTextCard
+            key={index}
+            index={index}
+            heading={card.heading}
+            description={card.description}
+            buttons={card.buttons}
+          />
+        ))}
+      </ul>
+    </PageGridCol>
+  </PageGridRow>
+</PageGrid>
 ```
 
 **Key Design Decisions:**
-- **Flat Structure**: Minimal nesting for optimal performance
+- **PageGrid Integration**: Uses PageGrid system for responsive layout
 - **Typography Classes**: Uses existing `h-md` and `body-l` utility classes
-- **Flexbox Layout**: Simple flex column with gap for spacing
-- **Desktop Alignment**: `align-items: flex-end` on desktop only
+- **Flexbox Header**: Header uses flexbox with gap for spacing between heading and description
+- **Desktop Right-Alignment**: Cards offset by 4 columns at LG breakpoint (right-aligned)
+- **Semantic List**: Cards wrapped in `<ul>` with each card as `<li>`
 
 ## Responsive Spacing
 
-The component uses responsive gaps for visual hierarchy:
+| Breakpoint | Section Padding | Header Gap | Header Margin-Bottom |
+|------------|-----------------|------------|----------------------|
+| Base (< 576px) | 24px | 8px | 24px |
+| MD (576px - 991px) | 32px | 8px | 32px |
+| LG (≥ 992px) | 40px | 16px | 40px |
 
-```scss
-// Mobile: Compact spacing
-gap: 24px;
-
-// Tablet: Medium spacing
-gap: 32px;
-
-// Desktop: Spacious layout
-gap: 40px;
-```
+**Section Padding**: Top and bottom padding on the entire section
+**Header Gap**: Space between heading and description (via flexbox gap)
+**Header Margin-Bottom**: Space between header and cards list
 
 ## Styling
 
 ### CSS Classes
 
-- `.bds-link-text-directory` - Main section container
-- `.bds-link-text-directory__header` - Header section wrapper
-- `.bds-link-text-directory__list` - Cards list container
+- `.bds-link-text-directory` - Main PageGrid container with section padding
+- `.bds-link-text-directory__header` - Header section (flexbox column with gap)
 
 ### Typography
 
 - **Heading**: `h-md` class (responsive heading)
 - **Description**: `body-l` class (large body text)
 - Card content uses LinkTextCard's built-in typography
+
+### Grid Layout
+
+- **Header Column**: `span={{ base: 12, md: 6, lg: 8 }}`
+- **Cards Column**: `span={{ base: 12, md: 8, lg: 8 }}` with `offset={{ lg: 4 }}`
+- Cards are right-aligned on desktop via the 4-column offset
+
+### Dark Mode
+
+- Text color changes to white in dark mode
+- Applied to entire section via `bds-theme-mode(dark)` mixin
 
 ## Card Numbering
 
@@ -222,10 +237,39 @@ Part of the Brand Design System (BDS) with `bds-` namespace prefix.
 
 ## Accessibility
 
-- Semantic HTML with proper heading hierarchy (`<h2>` for section, `<h3>` for cards)
+- Semantic HTML with proper heading hierarchy (`<h2>` for section, `<h5>` for cards)
+- Semantic list structure: `<ul>` containing `<li>` elements
 - Sequential tab order through cards and buttons
 - ARIA-compliant button and link elements (via ButtonGroup)
 - Maintains focus order: heading → description → card 1 → card 2 → etc.
+
+## Best Practices for React Keys
+
+When mapping over cards, use a stable identifier instead of array index:
+
+```tsx
+// ❌ Avoid using index as key
+{cards.map((card, index) => (
+  <LinkTextCard key={index} ... />
+))}
+
+// ✅ Better: Use a unique identifier
+{cards.map((card, index) => (
+  <LinkTextCard key={card.id || card.heading} ... />
+))}
+
+// ✅ Best: Add an id field to LinkTextCardData
+interface LinkTextCardData {
+  id: string;  // Unique identifier
+  heading: string;
+  description: string;
+  buttons: ButtonConfig[];
+}
+
+{cards.map((card) => (
+  <LinkTextCard key={card.id} ... />
+))}
+```
 
 ## Example with All Features
 
