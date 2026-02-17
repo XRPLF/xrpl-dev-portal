@@ -316,6 +316,7 @@
           groupTranslationKey: sidebar.docs.tutorials.bestPractices
           expanded: false
           items:
+            - page: docs/tutorials/best-practices/api-usage/index.md
             - group: Transaction Sending
               groupTranslationKey: sidebar.docs.tutorials.bestPractices.transactionSending
               expanded: false
