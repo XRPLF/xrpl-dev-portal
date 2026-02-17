@@ -22337,6 +22337,121 @@ html.dark .bds-tile-link--disabled.bds-tile-link--lilac .bds-tile-link__arrow {
   }
 }
 
+.bds-link-text-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #CAD4DF;
+  padding-top: 8px;
+  padding-bottom: 24px;
+  gap: 24px;
+}
+@media (min-width: 576px) {
+  .bds-link-text-card {
+    padding-top: 12px;
+    padding-bottom: 32px;
+    gap: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-link-text-card {
+    padding-top: 16px;
+    padding-bottom: 40px;
+    gap: 40px;
+  }
+}
+.bds-link-text-card:last-child {
+  padding-bottom: 0;
+}
+
+.bds-link-text-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (min-width: 576px) {
+  .bds-link-text-card__header {
+    gap: 12px;
+    width: calc(75% - 2px);
+  }
+}
+@media (min-width: 992px) {
+  .bds-link-text-card__header {
+    gap: 16px;
+  }
+}
+.bds-link-text-card__header p {
+  color: #72777E;
+}
+
+.bds-link-text-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 576px) {
+  .bds-link-text-card__content {
+    gap: 24px;
+    width: calc(75% - 2px);
+  }
+}
+@media (min-width: 992px) {
+  .bds-link-text-card__content {
+    gap: 32px;
+  }
+}
+.bds-link-text-card__content p {
+  color: #72777E;
+}
+
+.bds-link-text-directory {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-link-text-directory {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-link-text-directory {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+.bds-link-text-directory ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.bds-link-text-directory__header {
+  gap: 8px;
+  margin-bottom: 24px;
+}
+@media (min-width: 576px) {
+  .bds-link-text-directory__header {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+}
+@media (min-width: 992px) {
+  .bds-link-text-directory__header {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+}
+.bds-link-text-directory__header h2, .bds-link-text-directory__header .h2 {
+  margin-bottom: 8px;
+}
+@media (min-width: 992px) {
+  .bds-link-text-directory__header h2, .bds-link-text-directory__header .h2 {
+    margin-bottom: 16px;
+  }
+}
+.bds-link-text-directory__header p {
+  margin-bottom: 0;
+}
+
 pre {
   color: #FFFFFF;
   background-color: #232325;
