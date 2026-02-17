@@ -29,6 +29,7 @@ try {
   } else {
     console.error(err)
   }
+  client.disconnect()
   process.exit(1)
 }
 
@@ -40,6 +41,7 @@ console.log(JSON.stringify(credential, null, 2))
 const lsfAccepted = 0x00010000
 if (!(credential.Flags & lsfAccepted)) {
   console.log("Credential is not accepted.")
+  client.disconnect()
   process.exit(2)
 }
 
@@ -49,17 +51,25 @@ if (credential.Expiration) {
   console.log(`Credential has expiration: ${expirationTime}`)
   console.log("Looking up validated ledger to check for expiration.")
 
-  const ledgerResponse = await client.request({
-    command: "ledger",
-    ledger_index: "validated",
-  })
+  let ledgerResponse
+  try {
+    ledgerResponse = await client.request({
+      command: "ledger",
+      ledger_index: "validated",
+    })
+  } catch (err) {
+    console.error("Error looking up most recent validated ledger:", err)
+    client.disconnect()
+    process.exit(3)
+  }
 
   const closeTime = rippleTimeToISOTime(ledgerResponse.result.ledger.close_time)
   console.log(`Most recent validated ledger was at: ${closeTime}`)
 
   if (new Date(closeTime) > new Date(expirationTime)) {
     console.log("Credential is expired.")
-    process.exit(3)
+    client.disconnect()
+    process.exit(4)
   }
 }
 
