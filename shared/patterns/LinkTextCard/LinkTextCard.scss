@@ -1,0 +1,124 @@
+// BDS LinkTextCard Pattern Styles
+// Brand Design System - Numbered card with heading, description, and CTA buttons
+//
+// Naming Convention: BEM with 'bds' namespace
+// .bds-link-text-card           - Base card container with border-top divider
+// .bds-link-text-card__header   - Header section (number + heading)
+// .bds-link-text-card__content  - Content section (description + buttons)
+
+// =============================================================================
+// Design Tokens
+// =============================================================================
+
+// Header gap (between number and heading)
+$bds-link-text-card-header-gap-base: 8px;
+$bds-link-text-card-header-gap-md: 12px;
+$bds-link-text-card-header-gap-lg: 16px;
+
+// Content gap (between description and buttons)
+$bds-link-text-card-content-gap-base: 16px;
+$bds-link-text-card-content-gap-md: 24px;
+$bds-link-text-card-content-gap-lg: 32px;
+
+// Card gap (between header and content sections)
+$bds-link-text-card-gap-base: 24px;
+$bds-link-text-card-gap-md: 32px;
+$bds-link-text-card-gap-lg: 40px;
+
+// Padding
+$bds-link-text-card-padding-top-base: 8px;
+$bds-link-text-card-padding-top-md: 12px;
+$bds-link-text-card-padding-top-lg: 16px;
+
+$bds-link-text-card-padding-bottom-base: 24px;
+$bds-link-text-card-padding-bottom-md: 32px;
+$bds-link-text-card-padding-bottom-lg: 40px;
+
+// Border
+$bds-link-text-card-border-width: 1px;
+$bds-link-text-card-border-color: $gray-300;
+
+// Text color
+$bds-link-text-card-number-color: $gray-500;
+
+// Content width at MD+
+$bds-link-text-card-content-width-md: calc(75% - 2px);
+
+// =============================================================================
+// Card Component
+// =============================================================================
+
+.bds-link-text-card {
+  display: flex;
+  flex-direction: column;
+  border-top: $bds-link-text-card-border-width solid $bds-link-text-card-border-color;
+  padding-top: $bds-link-text-card-padding-top-base;
+  padding-bottom: $bds-link-text-card-padding-bottom-base;
+  gap: $bds-link-text-card-gap-base;
+
+  @include media-breakpoint-up(md) {
+    padding-top: $bds-link-text-card-padding-top-md;
+    padding-bottom: $bds-link-text-card-padding-bottom-md;
+    gap: $bds-link-text-card-gap-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $bds-link-text-card-padding-top-lg;
+    padding-bottom: $bds-link-text-card-padding-bottom-lg;
+    gap: $bds-link-text-card-gap-lg;
+  }
+
+  // Remove padding-bottom for the last card in the list
+  &:last-child {
+    padding-bottom: 0;
+  }
+  @include bds-theme-mode(dark) {
+    color: $white;
+  }
+}
+
+// =============================================================================
+// Header Section (Number + Heading)
+// =============================================================================
+
+.bds-link-text-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-link-text-card-header-gap-base;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-link-text-card-header-gap-md;
+    width: $bds-link-text-card-content-width-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-link-text-card-header-gap-lg;
+  }
+
+  p {
+    color: $bds-link-text-card-number-color;
+  }
+}
+
+// =============================================================================
+// Content Section (Description + Buttons)
+// =============================================================================
+
+.bds-link-text-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: $bds-link-text-card-content-gap-base;
+
+  @include media-breakpoint-up(md) {
+    gap: $bds-link-text-card-content-gap-md;
+    width: $bds-link-text-card-content-width-md;
+  }
+
+  @include media-breakpoint-up(lg) {
+    gap: $bds-link-text-card-content-gap-lg;
+  }
+
+  p {
+    color: $bds-link-text-card-number-color;
+  }
+}

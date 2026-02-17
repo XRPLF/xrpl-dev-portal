@@ -163,15 +163,15 @@ export const CarouselFeatured = React.forwardRef<HTMLElement, CarouselFeaturedPr
                 {/* Bottom section: features + CTA grouped together */}
                 <div className="bds-carousel-featured__bottom">
                   {/* Feature list with dividers */}
-                  <div className="bds-carousel-featured__features">
+                  <ul className="bds-carousel-featured__features">
                     {features.map((feature, index) => (
-                      <div key={index} className="bds-carousel-featured__feature">
+                      <li key={index} className="bds-carousel-featured__feature">
                         <Divider color="base" weight="regular" />
                         <p className="bds-carousel-featured__feature-title body-r">{feature.title}</p>
                         <p className="bds-carousel-featured__feature-description label-l">{feature.description}</p>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
                   {/* CTA section with buttons and mobile nav */}
                   <div className="bds-carousel-featured__cta">
