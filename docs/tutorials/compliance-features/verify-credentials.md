@@ -24,7 +24,7 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an XRP Ledger client library, such as [xrpl.js](../get-started/get-started-javascript.md), installed.
+- Have an [XRP Ledger client library](../../references/client-libraries.md), such as **xrpl.js**, installed.
 - Know the issuer, subject, and credential type of the credential you want to verify. For purposes of this tutorial, you can use sample values of data that exists in the public network.
     - For information on how to create your own credentials, see the [Build a Credential Issuing Service in JavaScript](../sample-apps/credential-issuing-service-in-javascript.md) (or [in Python](../sample-apps/credential-issuing-service-in-python.md)) tutorial.
 
