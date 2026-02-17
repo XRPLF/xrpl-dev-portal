@@ -22362,6 +22362,15 @@ html.dark .bds-tile-link--disabled.bds-tile-link--lilac .bds-tile-link__arrow {
 .bds-link-text-card:last-child {
   padding-bottom: 0;
 }
+html.dark .bds-link-text-card {
+  color: #FFFFFF;
+}
+html.dark .bds-link-text-card h5, html.dark .bds-link-text-card .h5 {
+  color: #FFFFFF;
+}
+html.dark .bds-link-text-card p {
+  color: #FFFFFF;
+}
 
 .bds-link-text-card__header {
   display: flex;
@@ -22422,6 +22431,15 @@ html.dark .bds-tile-link--disabled.bds-tile-link--lilac .bds-tile-link__arrow {
 .bds-link-text-directory ul {
   padding-left: 0;
   list-style: none;
+}
+html.dark .bds-link-text-directory {
+  color: #FFFFFF;
+}
+html.dark .bds-link-text-directory h2, html.dark .bds-link-text-directory .h2 {
+  color: #FFFFFF;
+}
+html.dark .bds-link-text-directory p {
+  color: #FFFFFF;
 }
 
 .bds-link-text-directory__header {
