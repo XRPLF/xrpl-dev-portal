@@ -246,21 +246,13 @@
           expanded: false
           items:
             - page: docs/tutorials/payments/send-xrp.md
-            - page: docs/tutorials/payments/create-accounts-send-xrp-in-javascript.md
-            - page: docs/tutorials/payments/create-accounts-send-xrp-in-python.md
             - page: docs/tutorials/payments/create-trust-line-send-currency-in-javascript.md
             - page: docs/tutorials/payments/create-trust-line-send-currency-in-python.md
             - page: docs/tutorials/payments/send-a-conditional-escrow.md
-            - page: docs/tutorials/payments/create-conditional-escrows-in-javascript.md
-            - page: docs/tutorials/payments/create-conditional-escrows-in-python.md
             - page: docs/tutorials/payments/send-a-timed-escrow.md
-            - page: docs/tutorials/payments/create-time-based-escrows-in-javascript.md
-            - page: docs/tutorials/payments/create-time-based-escrows-in-python.md
             - page: docs/tutorials/payments/look-up-escrows.md
             - page: docs/tutorials/payments/cancel-an-expired-escrow.md
             - page: docs/tutorials/payments/send-a-check.md
-            - page: docs/tutorials/payments/send-and-cash-checks-in-javascript.md
-            - page: docs/tutorials/payments/send-and-cash-checks-in-python.md
             - page: docs/tutorials/payments/cash-a-check-for-an-exact-amount.md
             - page: docs/tutorials/payments/cash-a-check-for-a-flexible-amount.md
             - page: docs/tutorials/payments/look-up-checks.md
