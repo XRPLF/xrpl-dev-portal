@@ -24,9 +24,9 @@ By following this tutorial, you should learn how to:
 To complete this tutorial, you should:
 
 - Have a basic understanding of the XRP Ledger.
-- Have an XRP Ledger client library, such as [xrpl.js](../get-started/get-started-javascript.md), installed.
+- Have an [XRP Ledger client library](../../references/client-libraries.md), such as **xrpl.js**, installed.
 - Know the issuer, subject, and credential type of the credential you want to verify. For purposes of this tutorial, you can use sample values of data that exists in the public network.
-    - For information on how to create your own credentials, see the [Build a Credential Issuing Service](../sample-apps/credential-issuing-service-in-javascript.md) tutorial.
+    - For information on how to create your own credentials, see the [Build a Credential Issuing Service in JavaScript](../sample-apps/credential-issuing-service-in-javascript.md) (or [in Python](../sample-apps/credential-issuing-service-in-python.md)) tutorial.
 
 ## Source Code
 
@@ -45,7 +45,6 @@ npm i
 ```
 {% /tab %}
 
-<!-- re-add Python tab when merging the tutorials
 {% tab label="Python" %}
 From the code sample folder, set up a virtual environment and use `pip` to install dependencies:
 
@@ -55,16 +54,19 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 {% /tab %}
--->
 {% /tabs %}
 
 ### 2. Set up client and define constants
 
-To get started, import the client library and instantiate an API client. You also need to specify the details of the credential you want to verify.
+To get started, import the client library and instantiate an API client. You also need to specify the details of the credential you want to verify. The sample code looks up a credential on Mainnet that is set to expire on January 1, 2038.
 
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" before="// Look up Credential" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" before="# Look up Credential" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -78,6 +80,10 @@ If the request fails with an `entryNotFound` error, then the specified credentia
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Look up Credential" before="// Check if the credential has been accepted" /%}
 {% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Look up Credential" before="# Check if the credential has been accepted" /%}
+{% /tab %}
 {% /tabs %}
 
 ### 4. Check if the credential has been accepted
@@ -87,6 +93,10 @@ Since a credential isn't valid until the subject has accepted it, you need to ch
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Check if the credential has been accepted" before="// Confirm that the credential is not expired" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Check if the credential has been accepted" before="# Confirm that the credential is not expired" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -99,6 +109,10 @@ If the credential does not have an expiration time, then it remains valid indefi
 {% tabs %}
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Confirm that the credential is not expired" before="// Credential has passed" /%}
+{% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Confirm that the credential is not expired" before="# Credential has passed" /%}
 {% /tab %}
 {% /tabs %}
 
@@ -114,6 +128,10 @@ If the credential has passed all checks to this point, it is valid. In summary, 
 {% tab label="JavaScript" %}
 {% code-snippet file="/_code-samples/verify-credential/js/verify_credential.js" language="js" from="// Credential has passed" /%}
 {% /tab %}
+
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/verify-credential/py/verify_credential.py" language="py" from="# Credential has passed" /%}
+{% /tab %}
 {% /tabs %}
 
 
@@ -126,7 +144,11 @@ Now that you know how to use `xrpl.js` to verify credentials, you can try buildi
 
 ## See Also
 
-- [Verify Credentials in Python](./verify-credentials-in-python.md)
+- **Concepts:**
+    - [Credentials](../../concepts/decentralized-storage/credentials.md)
+- **Tutorials:**
+    - [Build a Credential Issuing Service in JavaScript](../sample-apps/credential-issuing-service-in-javascript.md)
+    - [Build a Credential Issuing Service in Python](../sample-apps/credential-issuing-service-in-python.md)
 - **References:**
     - API methods:
         - [ledger_entry method][]

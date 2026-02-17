@@ -1,10 +1,10 @@
 import { Client, rippleTimeToISOTime, convertStringToHex } from "xrpl"
 
-const client = new Client("wss://s.devnet.rippletest.net:51233")
+const client = new Client("wss://xrplcluster.com")
 await client.connect()
 
-const SUBJECT_ADDRESS = "rsYhHbanGpnYe3M6bsaMeJT5jnLTfDEzoA"
-const ISSUER_ADDRESS = "rEzikzbnH6FQJ2cCr4Bqmf6c3jyWLzkonS"
+const SUBJECT_ADDRESS = "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+const ISSUER_ADDRESS = "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"
 const CREDENTIAL_TYPE = convertStringToHex("my_credential").toUpperCase()
 
 // Look up Credential ledger entry --------------------------------------------
@@ -29,6 +29,7 @@ try {
   } else {
     console.error(err)
   }
+  client.disconnect()
   process.exit(1)
 }
 
@@ -40,6 +41,7 @@ console.log(JSON.stringify(credential, null, 2))
 const lsfAccepted = 0x00010000
 if (!(credential.Flags & lsfAccepted)) {
   console.log("Credential is not accepted.")
+  client.disconnect()
   process.exit(2)
 }
 
@@ -49,17 +51,25 @@ if (credential.Expiration) {
   console.log(`Credential has expiration: ${expirationTime}`)
   console.log("Looking up validated ledger to check for expiration.")
 
-  const ledgerResponse = await client.request({
-    command: "ledger",
-    ledger_index: "validated",
-  })
+  let ledgerResponse
+  try {
+    ledgerResponse = await client.request({
+      command: "ledger",
+      ledger_index: "validated",
+    })
+  } catch (err) {
+    console.error("Error looking up most recent validated ledger:", err)
+    client.disconnect()
+    process.exit(3)
+  }
 
   const closeTime = rippleTimeToISOTime(ledgerResponse.result.ledger.close_time)
   console.log(`Most recent validated ledger was at: ${closeTime}`)
 
   if (new Date(closeTime) > new Date(expirationTime)) {
     console.log("Credential is expired.")
-    process.exit(3)
+    client.disconnect()
+    process.exit(4)
   }
 }
 
