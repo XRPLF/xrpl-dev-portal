@@ -3,7 +3,7 @@ seo:
     description: Build a credential issuing microservice with Javascript and Node.js.
 ---
 
-# Build a Credential Issuing Service
+# Build a Credential Issuing Service in Javascript
 
 _(Requires the Credentials amendment. {% not-enabled /%})_
 
