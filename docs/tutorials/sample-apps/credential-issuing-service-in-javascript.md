@@ -3,9 +3,9 @@ seo:
     description: Build a credential issuing microservice with Javascript and Node.js.
 ---
 
-# Build a Credential Issuing Service
+# Build a Credential Issuing Service in Javascript
 
-_(Requires the Credentials amendment. {% not-enabled /%})_
+{% amendment-disclaimer name="Credentials" /%}
 
 This tutorial demonstrates how to build and use a microservice that issues [Credentials](../../concepts/decentralized-storage/credentials.md) on the XRP Ledger, in the form of a RESTlike API, using the [Express](https://expressjs.com/) framework for Node.js.
 
