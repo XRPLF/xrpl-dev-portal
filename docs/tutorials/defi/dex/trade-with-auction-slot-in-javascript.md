@@ -1,6 +1,6 @@
 # Trade with an AMM Auction Slot
 
-Follow the steps from the [Create an AMM](./create-an-amm-in-javascript.md) tutorial before proceeding.
+Follow the steps from the [Create an AMM](./create-an-automated-market-maker.md) tutorial before proceeding.
 
 This example shows how to:
 
@@ -37,7 +37,7 @@ Without the Quickstart Samples, you will not be able to try the examples that fo
 
 ### Get the AMM
 
-Use the information from either the XRP/Token or Token/Token AMM you created in [Create an AMM](create-an-amm-in-javascript.md#create-an-xrp/token-amm).
+Use the information from either the XRP/Token or Token/Token AMM you created in [Create an AMM](./create-an-automated-market-maker.md#3-select-and-acquire-assets).
 
 1. Enter a [currency code](../../../references/protocol/data-types/currency-formats.md#currency-codes) in the **Asset 1 Currency** field. For example, `XRP`.
 2. Enter a second currency code in the **Asset 2 Currency** field. For example, `TST`.
