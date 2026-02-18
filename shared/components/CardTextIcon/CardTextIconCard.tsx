@@ -75,7 +75,7 @@ const cardContent = (
       <strong className="bds-card-text-icon-card__heading sh-md-r">{heading}</strong>
     </div>
     <p className="bds-card-text-icon-card__description body-l">
-      {typeof description === 'string' ? <span dangerouslySetInnerHTML={{ __html: description }} /> : description}
+      {description}
     </p>
   </>
 );
@@ -109,12 +109,12 @@ export const CardTextIconCard: React.FC<CardTextIconCardProps> = ({
   }
 
   return (
-    <li
+    <div
       className={clsx('bds-card-text-icon-card', className)}
       style={style}
     >
       {cardContent(heading, description, icon, iconAlt, height, width)}
-    </li>
+    </div>
   );
 };
 

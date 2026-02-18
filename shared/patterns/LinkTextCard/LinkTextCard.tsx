@@ -65,7 +65,7 @@ export const LinkTextCard: React.FC<LinkTextCardProps> = ({
   <li className={clsx('bds-link-text-card', className)}>
     <div className="bds-link-text-card__header">
       <p className="mb-0 body-l">{formattedNumber}</p>
-      <strong className="mb-0 sh-lg-l">{heading}</strong>
+      <h5 className="mb-0 sh-lg-l">{heading}</h5>
     </div>
     <div className="bds-link-text-card__content">
       <p className="mb-0 body-l">{description}</p>

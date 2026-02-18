@@ -1,18 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { PageGrid, PageGridRow, PageGridCol } from 'shared/components/PageGrid/page-grid';
-import { CardTextIconCard } from 'shared/components/CardTextIcon';
-
-export interface CardTextIconCardData {
-  /** Icon image URL */
-  icon?: string;
-  /** Alt text for the icon image */
-  iconAlt?: string;
-  /** Card heading */
-  heading: string;
-  /** Card description; accepts rich content (e.g., text with inline links) */
-  description: React.ReactNode;
-}
+import { CardTextIconCard, CardTextIconCardProps } from 'shared/components/CardTextIcon';
 
 export interface CardsTextGridProps {
   /** Section heading (required) */
@@ -20,7 +9,7 @@ export interface CardsTextGridProps {
   /** Optional description text */
   description?: string;
   /** Array of card data to display */
-  cards: CardTextIconCardData[];
+  cards: CardTextIconCardProps[];
   /** Additional CSS classes */
   className?: string;
 }

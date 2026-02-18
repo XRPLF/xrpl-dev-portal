@@ -1,7 +1,6 @@
 import * as React from "react";
 import { CardsIconGrid } from "shared/patterns/CardsIconGrid";
 import { Divider } from "shared/components/Divider";
-import { hexToBytes } from "@xrplf/isomorphic/dist/utils";
 
 export const frontmatter = {
   seo: {

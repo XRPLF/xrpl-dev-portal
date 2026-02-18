@@ -8,7 +8,7 @@ CardTextIconCard displays an icon at the top, followed by a heading and descript
 
 ## Features
 
-- **Icon + Text Layout**: Icon container, heading, and description in a vertical stack
+- **Icon + Text Layout**: Icon container, heading, and description in a vertical stack (optional)
 - **Rich Description**: `description` accepts `ReactNode` for inline links and formatted content
 - **Aspect Ratio Foundation**: Optional `aspectRatio` prop for future responsive sizing
 - **Light/Dark Mode**: Full theming support
@@ -59,8 +59,8 @@ CardTextIconCard displays an icon at the top, followed by a heading and descript
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `icon` | `string` | Required | Icon image URL |
-| `iconAlt` | `string` | `''` | Alt text for the icon image |
+| `icon` | `string` | Optional | Icon image URL |
+| `iconAlt` | `string` | `''` | Optional | Alt text for the icon image |
 | `heading` | `string` | Required | Card heading |
 | `description` | `React.ReactNode` | Required | Card description; accepts rich content (e.g., text with inline links) |
 | `aspectRatio` | `number` | - | Optional ratio for future use; applied via CSS variable |
@@ -98,9 +98,9 @@ CardTextIconCard displays an icon at the top, followed by a heading and descript
 ## Import
 
 ```tsx
-import { CardTextIconCard } from 'shared/patterns/CardTextIcon';
+import { CardTextIconCard } from 'shared/components/CardTextIcon';
 // or
-import { CardTextIconCard, type CardTextIconCardProps } from 'shared/patterns/CardTextIcon';
+import { CardTextIconCard, type CardTextIconCardProps } from 'shared/components/CardTextIcon';
 ```
 
 ## Design System

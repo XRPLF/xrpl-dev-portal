@@ -22623,18 +22623,15 @@ html.dark .bds-cards-icon-grid {
 
 .bds-cards-text-grid {
   padding-top: 24px;
-  padding-bottom: 24px;
 }
 @media (min-width: 576px) {
   .bds-cards-text-grid {
     padding-top: 32px;
-    padding-bottom: 32px;
   }
 }
 @media (min-width: 992px) {
   .bds-cards-text-grid {
     padding-top: 40px;
-    padding-bottom: 40px;
   }
 }
 .bds-cards-text-grid ul {

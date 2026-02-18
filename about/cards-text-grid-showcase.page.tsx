@@ -1,4 +1,3 @@
-import * as React from "react";
 import { CardsTextGrid } from "shared/patterns/CardsTextGrid";
 import { Divider } from "shared/components/Divider";
 
@@ -9,8 +8,6 @@ export const frontmatter = {
       "A comprehensive showcase of the CardsTextGrid section pattern with icon cards, responsive grid layout, and aspect ratios.",
   },
 };
-
-const SAMPLE_ICON = "/img/icons/docs.svg";
 
 const sampleCards = [
   {
@@ -97,7 +94,6 @@ export default function CardsTextGridShowcase() {
           description="Learn more about our documentation and community."
           cards={[
             {
-              icon: SAMPLE_ICON,
               heading: "Documentation",
               description: (
                 <>
@@ -107,7 +103,6 @@ export default function CardsTextGridShowcase() {
               ),
             },
             {
-              icon: SAMPLE_ICON,
               heading: "Community",
               description: (
                 <>
