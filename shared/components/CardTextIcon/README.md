@@ -69,15 +69,23 @@ CardTextIconCard displays an icon at the top, followed by a heading and descript
 ## Component Structure
 
 ```tsx
-<article className="bds-card-text-icon-card">
+<>
   <div className="bds-card-text-icon-card__icon">
-    <img className="bds-card-text-icon-card__icon-img" ... />
+    {icon && (  
+    <img
+      src={icon}
+      alt={iconAlt}
+      {...(iconHeight != null && { height: iconHeight })}
+      {...(iconWidth != null && { width: iconWidth })}
+      className="bds-card-text-icon-card__icon-img"
+    />
+    )}
+    <strong className="bds-card-text-icon-card__heading sh-md-r">{heading}</strong>
   </div>
-  <h3 className="bds-card-text-icon-card__heading sh-md-l">...</h3>
-  <div className="bds-card-text-icon-card__description body-l">
+  <p className="bds-card-text-icon-card__description body-l">
     {description}
-  </div>
-</article>
+  </p>  
+</>
 ```
 
 ## Responsive Sizing

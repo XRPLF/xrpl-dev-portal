@@ -13,7 +13,7 @@ const sampleCards = [
   {
     heading: "Fast Settlement and Low Fees",
     description:
-      "Settle transactions in 3-5 seconds for a fraction of a cent, ideal for large-scale, high-volume RWA tokenization. ",
+      "Settle transactions in 3-5 seconds for a fraction of a cent, ideal for large-scale, high-volume RWA tokenization.",
   },
   {
     heading: "Tutorials",
