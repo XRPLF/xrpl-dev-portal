@@ -1,8 +1,0 @@
-{
-    "name": "delete-account",
-    "license": "MIT",
-    "dependencies": {
-        "xrpl": "^4.5.0"
-    }
-}
-
