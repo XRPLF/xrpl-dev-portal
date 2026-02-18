@@ -282,6 +282,68 @@ main article .card-grid {
         width: 70%;
         height: 70%;
       }
+
+      // Multi-icon support for tutorials with multiple languages
+      &.multi-icon {
+        width: auto;
+        min-width: 50px;
+        padding: 0 8px;
+        border-radius: 25px;
+        gap: 6px;
+
+        img {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+
+    // Multi-link card with explicit language buttons
+    &.multi-link-card {
+      display: flex;
+      flex-direction: column;
+
+      .card-body {
+        flex: 1;
+      }
+
+      .card-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 0 1rem 1rem;
+
+        .card-link-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 8px 16px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: $white;
+          background: $blue-purple-500;
+          border-radius: 4px;
+          text-decoration: none;
+          transition: background-color 0.2s ease;
+
+          &::after {
+            content: url(../img/icons/arrow-right.svg);
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease-out;
+          }
+
+          &:hover {
+            background: $blue-purple-600;
+            text-decoration: none;
+
+            &::after {
+              transform: translateX(4px);
+            }
+          }
+        }
+      }
     }
 
       .card-footer {

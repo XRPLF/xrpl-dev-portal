@@ -243,3 +243,28 @@ export const amendmentDisclaimer: Schema &  { tagName: string } = {
   render: 'AmendmentDisclaimer',
   selfClosing: true
 }
+
+export const tutorialCategory: Schema & { tagName: string } = {
+  tagName: 'tutorial-category',
+  attributes: {
+    title: {
+      type: 'String',
+      required: true
+    },
+    description: {
+      type: 'String',
+      required: false
+    },
+    tutorials: {
+      type: 'Array',
+      required: true
+    },
+    maxTutorials: {
+      type: 'Number',
+      required: false,
+      default: 6
+    }
+  },
+  render: 'TutorialCategory',
+  selfClosing: true
+}

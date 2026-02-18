@@ -10,6 +10,7 @@ import { Button } from '@redocly/theme/components/Button/Button'
 export { default as XRPLoader } from '../components/XRPLoader'
 export { XRPLCard, CardGrid } from '../components/XRPLCard'
 export { AmendmentsTable, AmendmentDisclaimer, Badge } from '../components/Amendments'
+export { TutorialCategory } from '../components/TutorialCategory'
 
 export function IndexPageItems() {
   const { usePageSharedData } = useThemeHooks()
